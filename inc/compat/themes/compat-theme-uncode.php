@@ -131,6 +131,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 	/**
 	 * Get required container info from the theme.
+	 * The function contains modified code from the theme's template 'page.php'.
 	 */
 	public function get_container_info() {
 		// Bail if function is not available
@@ -146,29 +147,33 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 			$is_page_specific_width = $metabox_data['_uncode_specific_layout_width'][0];
 		}
 
-		// Get global page width
+		// Maybe get global page width
 		if ( '' === $is_page_specific_width ) {
 			// Get global page width
 			$global_content_full = ot_get_option( '_uncode_page_layout_width' );
 
-			if ( '' === $global_content_full ) {
-				$main_content_full = ot_get_option( '_uncode_body_full' );
-				if ( $main_content_full !== 'on' ) {
-					$container_info['container_width_class'] = ' limit-width';
-				}
-			} else {
-				if ( $global_content_full === 'limit' ) {
-					$generic_custom_width = ot_get_option( '_uncode_page_layout_width_custom' );
+			// Check if the page width is set to full width
+			if ( '' === $global_content_full && 'on' !== ot_get_option( '_uncode_body_full' ) ) {
+				$container_info['container_width_class'] = ' limit-width';
+			} 
+			// Otherwise, maybe set custom global page width
+			elseif ( 'limit' === $global_content_full ) {
+				$generic_custom_width = ot_get_option( '_uncode_page_layout_width_custom' );
 
-					if ( 'px' === $generic_custom_width[1] ) {
-						if ( '' == $generic_custom_width[0] || ! is_numeric( $generic_custom_width[0] ) ) {
-							$generic_custom_width[0] = 1200;
-						}
-						$generic_custom_width[0] = 12 * round( ( $generic_custom_width[0] ) / 12 );
+				// Check if the units are set to 'px'
+				if ( 'px' === $generic_custom_width[1] ) {
+					// Maybe set default value
+					if ( '' == $generic_custom_width[0] || ! is_numeric( $generic_custom_width[0] ) ) {
+						$generic_custom_width[0] = 1200;
 					}
-					if ( is_array( $generic_custom_width ) && !empty( $generic_custom_width ) ) {
-						$container_info['custom_styles'] = ' style="max-width: '.implode( '', $generic_custom_width ) . '; margin: auto;"';
-					}
+
+					// Round width in 12 columns grid
+					$generic_custom_width[0] = 12 * round( ( $generic_custom_width[0] ) / 12 );
+				}
+				
+				// Set custom width attribute
+				if ( is_array( $generic_custom_width ) && ! empty( $generic_custom_width ) ) {
+					$container_info['custom_styles'] = ' style="max-width: ' . implode( '', $generic_custom_width ) . '; margin: auto;"';
 				}
 			}
 		} 
@@ -176,19 +181,23 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		else {
 			if ( 'limit' === $is_page_specific_width ) {
 				$container_info['container_width_class'] = ' limit-width';
-
 				$container_info['custom_styles'] = '';
+				$page_settings_value = '';
+
+				// Check if custom width is set in the page settings
 				if ( isset( $metabox_data['_uncode_specific_layout_width_custom'][0] ) ) {
-					$container_info['custom_styles'] = unserialize( $metabox_data['_uncode_specific_layout_width_custom'][0] );
+					$page_settings_value = unserialize( $metabox_data['_uncode_specific_layout_width_custom'][0] );
 				}
 
-				if ( is_array( $container_info['custom_styles'] ) && !empty( $container_info['custom_styles'] ) && '' !== $container_info['custom_styles'][0] ) {
-					if ( $container_info['custom_styles'][1] === 'px' ) {
-						$container_info['custom_styles'][0] = 12 * round( ( $container_info['custom_styles'][0] ) / 12 );
+				// Check if custom width is set
+				if ( is_array( $page_settings_value ) && ! empty( $page_settings_value ) && '' !== $page_settings_value[0] ) {
+					// Round width in 12 columns grid if the units are set to 'px'
+					if ( $page_settings_value[1] === 'px' ) {
+						$page_settings_value[0] = 12 * round( ( $page_settings_value[0] ) / 12 );
 					}
-					$container_info['custom_styles'] = ' style="max-width: ' . implode( "", $container_info['custom_styles'] ) . '; margin: auto;"';
-				} else {
-					$container_info['custom_styles'] = '';
+
+					// Set custom width attribute
+					$container_info['custom_styles'] = ' style="max-width: ' . implode( '', $page_settings_value ) . '; margin: auto;"';
 				}
 			}
 		}
@@ -198,7 +207,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		if ( ! empty( $metabox_data['_uncode_specific_style'][0] ) ) {
 			$container_info['color_scheme_class'] = ' style-' . $metabox_data['_uncode_specific_style'][0];
 		} else {
-			$container_info['color_scheme_class'] = ' style-' . ot_get_option('_uncode_general_style');
+			$container_info['color_scheme_class'] = ' style-' . ot_get_option( '_uncode_general_style' );
 		}
 
 		return $container_info;
