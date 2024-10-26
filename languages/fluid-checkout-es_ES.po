@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-19 07:56+0000\n"
-"PO-Revision-Date: 2024-10-25 21:19+0000\n"
+"PO-Revision-Date: 2024-10-26 10:26+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -1287,7 +1287,7 @@ msgstr "Ir a la página de inicio"
 #: inc/admin/admin-setting-type-fc-addons.php:165
 #: inc/admin/admin-setting-type-fc-addons.php:167
 msgid "Google Address Autocomplete"
-msgstr "Autocompletar direcciones de Google"
+msgstr "Autocompletar direcciones con Google Maps"
 
 #: inc/admin/admin-setting-type-fc-setup.php:42
 msgid "Great! Your checkout page is now running on Fluid Checkout."
