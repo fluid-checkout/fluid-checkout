@@ -39,6 +39,9 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 		// Product price HTML
 		remove_filter( 'woocommerce_get_price_html', 'uncode_price_html', 10, 2 );
+
+		// Enhanced select2 styles
+		add_filter( 'uncode_deregister_select2_style', array( $this, 'maybe_set_uncode_deregister_select2_style' ), 10 );
 	}
 
 	/**
@@ -83,6 +86,23 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Theme's inner containers
 		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tags' ), 10 );
 		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tags' ), 10 );
+	}
+
+
+
+	/**
+	 * Maybe set theme to not deregister select2 styles.
+	 *
+	 * @param  bool  $deregister  Whether to deregister select2 styles.
+	 */
+	public function maybe_set_uncode_deregister_select2_style( $deregister ) {
+		// Maybe set to not deregister select2
+		// if using enhanced select components, as the select2 styles are replaced with an empty file for better compatibility
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
+			$deregister = false;
+		}
+
+		return $deregister;
 	}
 
 
