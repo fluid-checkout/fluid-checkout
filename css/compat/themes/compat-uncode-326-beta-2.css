@@ -13,6 +13,10 @@ body.theme-uncode .fc-content .row-parent {
   }
 }
 
+body.theme-uncode .woocommerce-billing-fields__field-wrapper {
+  border: 0;
+}
+
 body.theme-uncode .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
   text-transform: var(--fluidcheckout--uncode--button--text-transform);
 }
