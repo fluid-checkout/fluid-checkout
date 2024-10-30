@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Fluid Checkout for WooCommerce &#8211; Lite - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-10-10 12:47+0000\n"
+"PO-Revision-Date: 2024-10-25 21:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-22 12:39+0000\n"
 "Last-Translator: Diego Versiani\n"
-"X-Loco-Version: 2.6.11; wp-6.6.1"
+"X-Loco-Version: 2.6.11; wp-6.6.2"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "\"Add\" link button"
@@ -185,7 +185,7 @@ msgstr "Přidání oblastí widgetů na stránku s poděkováním"
 msgid "Add-ons"
 msgstr "Doplňky"
 
-#: inc/checkout-steps.php:2627
+#: inc/checkout-steps.php:2643
 msgid "Additional notes"
 msgstr "Další poznámky"
 
@@ -304,7 +304,7 @@ msgstr "Už máte účet?"
 msgid "Always show"
 msgstr "Vždy ukazujte"
 
-#: inc/checkout-steps.php:2399
+#: inc/checkout-steps.php:2415
 msgid "An account will be created with the information provided."
 msgstr "Na základě zadaných údajů bude vytvořen účet."
 
@@ -413,7 +413,7 @@ msgstr "Fakturační adresa"
 msgid "Billing phone"
 msgstr "Fakturační telefon"
 
-#: inc/checkout-steps.php:3753
+#: inc/checkout-steps.php:3769
 msgid "Billing to"
 msgstr "Fakturace na"
 
@@ -474,7 +474,7 @@ msgstr "Před umístěním objednávky"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro od BestWebSoft"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:393
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
 msgid "Carrier:"
 msgstr "Přepravce:"
 
@@ -515,7 +515,7 @@ msgstr ""
 "Změna viditelnosti pole s názvem společnosti v sekci dodací adresy na "
 "pokladním formuláři."
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 #, php-format
 msgid "Change: %s"
 msgstr "Změna: %s"
@@ -597,32 +597,32 @@ msgstr "Průběh kontroly"
 msgid "Checkout Sidebar"
 msgstr "Pokladna Postranní panel"
 
-#: inc/checkout-steps.php:1668
+#: inc/checkout-steps.php:1682
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Fakturace"
 
-#: inc/checkout-steps.php:1647
+#: inc/checkout-steps.php:1659
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: inc/checkout-steps.php:1677
+#: inc/checkout-steps.php:1692
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Platba"
 
-#: inc/checkout-steps.php:1656
+#: inc/checkout-steps.php:1669
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Přeprava"
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Změna"
 
-#: inc/checkout-steps.php:2038
+#: inc/checkout-steps.php:2054
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Uložení změn"
@@ -1001,7 +1001,7 @@ msgstr "Neukládejte žádnou dodací adresu"
 msgid "Don't show this again"
 msgstr "Už to neukazujte"
 
-#: inc/checkout-steps.php:5287
+#: inc/checkout-steps.php:5303
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Upravit košík"
@@ -1511,7 +1511,7 @@ msgstr "Přihlášen jako %1$s. <a href=\"%2$s\">Odhlásit se</a>"
 msgid "Logo image"
 msgstr "Obrázek loga"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:73
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:74
 msgid "Mailchimp for WooCommerce"
 msgstr "Mailchimp pro WooCommerce"
 
@@ -1577,7 +1577,7 @@ msgstr "Více uložených adres pro přepravu a fakturaci."
 msgid "My account layout"
 msgstr "Rozložení mého účtu"
 
-#: inc/checkout-steps.php:2336
+#: inc/checkout-steps.php:2352
 msgid "My contact"
 msgstr "Můj kontakt"
 
@@ -1607,8 +1607,8 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:3196
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:560
+#: inc/checkout-steps.php:3212
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:563
 msgid "Not selected yet."
 msgstr "Zatím nevybráno."
 
@@ -1650,7 +1650,7 @@ msgid ""
 "Only applicable when using the Impreza theme header at the checkout page."
 msgstr "Platí pouze při použití záhlaví motivu Impreza na stránce pokladny."
 
-#: inc/checkout-shipping-phone-field.php:94
+#: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
 msgstr "Používá se pouze pro dotazy týkající se přepravy."
 
@@ -1713,7 +1713,7 @@ msgstr "Průběh objednávky"
 msgid "Order status"
 msgstr "Stav objednávky"
 
-#: inc/checkout-steps.php:5222 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:5238 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:248
 msgid "Order summary"
@@ -1775,7 +1775,7 @@ msgstr ""
 "Výstup sekce kroků pokladny z tématu Woodmart při použití záhlaví a zápatí "
 "Fluid Checkout."
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:81
 msgid ""
 "Override the position for the subscribe checkbox on the checkout page and "
 "always display it on the contact step"
@@ -1791,7 +1791,7 @@ msgstr "Barva pozadí stránky"
 msgid "Parcel terminal"
 msgstr "Balíkový terminál"
 
-#: inc/checkout-steps.php:5001
+#: inc/checkout-steps.php:5017
 msgid "Payment method"
 msgstr "Způsob platby"
 
@@ -1803,7 +1803,7 @@ msgstr "Datum vyzvednutí"
 msgid "Pickup point"
 msgstr "Místo vyzvednutí"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:412
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
 #: inc/compat/plugins/compat-plugin-seur.php:382
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:313
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297
@@ -1811,7 +1811,7 @@ msgstr "Místo vyzvednutí"
 msgid "Pickup point not selected yet."
 msgstr "Místo vyzvednutí ještě nebylo vybráno."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:400
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
 #: inc/compat/plugins/compat-plugin-seur.php:387
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:307
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312
@@ -1827,10 +1827,26 @@ msgid "Prevent automatic selection of the first shipping method"
 msgstr "Zabránit automatickému výběru prvního způsobu přepravy"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1533
+#: inc/checkout-steps.php:1536
 #, php-format
 msgid "Proceed to %s"
 msgstr "Přejděte na %s"
+
+#: inc/checkout-steps.php:1683
+msgid "Proceed to billing"
+msgstr "Přejděte k fakturaci"
+
+#: inc/checkout-steps.php:1660
+msgid "Proceed to contact"
+msgstr "Přejděte ke kontaktu"
+
+#: inc/checkout-steps.php:1693
+msgid "Proceed to payment"
+msgstr "Přejděte k platbě"
+
+#: inc/checkout-steps.php:1670
+msgid "Proceed to shipping"
+msgstr "Přejděte k přepravě"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1923,11 +1939,11 @@ msgstr ""
 msgid "Required"
 msgstr "Požadované"
 
-#: inc/checkout-steps.php:3983
+#: inc/checkout-steps.php:3999
 msgid "Same as billing address"
 msgstr "Stejná jako fakturační adresa"
 
-#: inc/checkout-steps.php:3938
+#: inc/checkout-steps.php:3954
 msgid "Same as shipping address"
 msgstr "Stejná jako dodací adresa"
 
@@ -2054,7 +2070,7 @@ msgstr "Přeprava"
 msgid "Shipping address"
 msgstr "Dodací adresa"
 
-#: inc/checkout-steps.php:2603
+#: inc/checkout-steps.php:2619
 msgid "Shipping method"
 msgstr "Způsob přepravy"
 
@@ -2062,12 +2078,12 @@ msgstr "Způsob přepravy"
 msgid "Shipping methods"
 msgstr "Způsoby přepravy"
 
-#: inc/checkout-shipping-phone-field.php:93
+#: inc/checkout-shipping-phone-field.php:104
 #: inc/admin/admin-settings-checkout.php:577
 msgid "Shipping phone"
 msgstr "Přepravní telefon"
 
-#: inc/checkout-steps.php:2579
+#: inc/checkout-steps.php:2595
 msgid "Shipping to"
 msgstr "Doprava do"
 
@@ -2142,30 +2158,30 @@ msgid "Split"
 msgstr "Split"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1800
+#: inc/checkout-steps.php:1816
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Krok %1$s z %2$s"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:79
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
 msgid "Subscribe checkbox"
 msgstr "Zaškrtávací políčko Přihlásit se k odběru"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2781
+#: inc/checkout-steps.php:2797
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2786
+#: inc/checkout-steps.php:2802
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2150
+#: inc/checkout-steps.php:2166
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Žádné."

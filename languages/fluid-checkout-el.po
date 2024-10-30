@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-29 17:17+0000\n"
-"PO-Revision-Date: 2024-10-10 12:47+0000\n"
+"PO-Revision-Date: 2024-10-25 21:10+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Greek\n"
 "Language: el\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.7; wp-6.5.2"
+"X-Loco-Version: 2.6.11; wp-6.6.2"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "\"Add\" link button"
@@ -183,7 +183,7 @@ msgstr "Προσθέστε περιοχές widget στη σελίδα ευχα�
 msgid "Add-ons"
 msgstr "Πρόσθετα"
 
-#: inc/checkout-steps.php:2627
+#: inc/checkout-steps.php:2643
 msgid "Additional notes"
 msgstr "Πρόσθετες σημειώσεις"
 
@@ -311,7 +311,7 @@ msgstr "Έχετε ήδη λογαριασμό"
 msgid "Always show"
 msgstr "Πάντα να δείχνετε"
 
-#: inc/checkout-steps.php:2399
+#: inc/checkout-steps.php:2415
 msgid "An account will be created with the information provided."
 msgstr "Θα δημιουργηθεί ένας λογαριασμός με τις πληροφορίες που παρέχονται."
 
@@ -421,7 +421,7 @@ msgstr "Διεύθυνση χρέωσης"
 msgid "Billing phone"
 msgstr "Τηλέφωνο χρέωσης"
 
-#: inc/checkout-steps.php:3753
+#: inc/checkout-steps.php:3769
 msgid "Billing to"
 msgstr "Χρέωση σε"
 
@@ -483,7 +483,7 @@ msgstr "Πριν από το τμήμα παραγγελίας"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro από την BestWebSoft"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:393
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
 msgid "Carrier:"
 msgstr "Μεταφορέας:"
 
@@ -523,7 +523,7 @@ msgstr ""
 "Αλλαγή της ορατότητας του πεδίου ονόματος εταιρείας για την ενότητα "
 "διεύθυνσης αποστολής στη φόρμα πληρωμής."
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 #, php-format
 msgid "Change: %s"
 msgstr "Αλλαγή: %s"
@@ -606,32 +606,32 @@ msgstr "Πρόοδος πληρωμής"
 msgid "Checkout Sidebar"
 msgstr "Πλαϊνή μπάρα πληρωμής"
 
-#: inc/checkout-steps.php:1668
+#: inc/checkout-steps.php:1682
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Τιμολόγηση"
 
-#: inc/checkout-steps.php:1647
+#: inc/checkout-steps.php:1659
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Επικοινωνία"
 
-#: inc/checkout-steps.php:1677
+#: inc/checkout-steps.php:1692
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Πληρωμή"
 
-#: inc/checkout-steps.php:1656
+#: inc/checkout-steps.php:1669
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Αποστολή"
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Αλλαγή"
 
-#: inc/checkout-steps.php:2038
+#: inc/checkout-steps.php:2054
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Αποθήκευση αλλαγών"
@@ -1026,7 +1026,7 @@ msgstr "Μην αποθηκεύετε καμία διεύθυνση αποστο
 msgid "Don't show this again"
 msgstr "Μην το ξαναδείξετε αυτό"
 
-#: inc/checkout-steps.php:5287
+#: inc/checkout-steps.php:5303
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Επεξεργασία καλαθιού"
@@ -1548,7 +1548,7 @@ msgstr "Συνδεθήκατε ως %1$s. <a href=\"%2$s\">Έξοδος</a>"
 msgid "Logo image"
 msgstr "Εικόνα λογότυπου"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:73
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:74
 msgid "Mailchimp for WooCommerce"
 msgstr "Mailchimp για το WooCommerce"
 
@@ -1615,7 +1615,7 @@ msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις γ�
 msgid "My account layout"
 msgstr "Η διάταξη του λογαριασμού μου"
 
-#: inc/checkout-steps.php:2336
+#: inc/checkout-steps.php:2352
 msgid "My contact"
 msgstr "Η επαφή μου"
 
@@ -1645,8 +1645,8 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:3196
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:560
+#: inc/checkout-steps.php:3212
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:563
 msgid "Not selected yet."
 msgstr "Δεν έχει επιλεγεί ακόμη."
 
@@ -1691,7 +1691,7 @@ msgstr ""
 "Ισχύει μόνο όταν χρησιμοποιείτε την επικεφαλίδα του θέματος Impreza στη "
 "σελίδα πληρωμής."
 
-#: inc/checkout-shipping-phone-field.php:94
+#: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
 msgstr "Χρησιμοποιείται μόνο για ερωτήσεις που σχετίζονται με τη ναυτιλία."
 
@@ -1754,7 +1754,7 @@ msgstr "Πρόοδος της παραγγελίας"
 msgid "Order status"
 msgstr "Κατάσταση παραγγελίας"
 
-#: inc/checkout-steps.php:5222 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:5238 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:177
 #: inc/admin/admin-settings-checkout.php:248
 msgid "Order summary"
@@ -1819,7 +1819,7 @@ msgstr ""
 "Εξαγωγή της ενότητας των βημάτων πληρωμής από το θέμα Woodmart όταν "
 "χρησιμοποιείτε την κεφαλίδα και το υποσέλιδο Fluid Checkout."
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:81
 msgid ""
 "Override the position for the subscribe checkbox on the checkout page and "
 "always display it on the contact step"
@@ -1835,7 +1835,7 @@ msgstr "Χρώμα φόντου σελίδας"
 msgid "Parcel terminal"
 msgstr "Τερματικός σταθμός δεμάτων"
 
-#: inc/checkout-steps.php:5001
+#: inc/checkout-steps.php:5017
 msgid "Payment method"
 msgstr "Μέθοδος πληρωμής"
 
@@ -1847,7 +1847,7 @@ msgstr "Ημερομηνία παραλαβής"
 msgid "Pickup point"
 msgstr "Σημείο παραλαβής"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:412
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
 #: inc/compat/plugins/compat-plugin-seur.php:382
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:313
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297
@@ -1855,7 +1855,7 @@ msgstr "Σημείο παραλαβής"
 msgid "Pickup point not selected yet."
 msgstr "Το σημείο παραλαβής δεν έχει επιλεγεί ακόμα."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:400
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
 #: inc/compat/plugins/compat-plugin-seur.php:387
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:307
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312
@@ -1871,10 +1871,26 @@ msgid "Prevent automatic selection of the first shipping method"
 msgstr "Αποτροπή της αυτόματης επιλογής της πρώτης μεθόδου αποστολής"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1533
+#: inc/checkout-steps.php:1536
 #, php-format
 msgid "Proceed to %s"
 msgstr "Προχωρήστε στην %s"
+
+#: inc/checkout-steps.php:1683
+msgid "Proceed to billing"
+msgstr "Προχωρήστε στην τιμολόγηση"
+
+#: inc/checkout-steps.php:1660
+msgid "Proceed to contact"
+msgstr "Προχωρήστε στην επαφή"
+
+#: inc/checkout-steps.php:1693
+msgid "Proceed to payment"
+msgstr "Προχωρήστε στην πληρωμή"
+
+#: inc/checkout-steps.php:1670
+msgid "Proceed to shipping"
+msgstr "Προχωρήστε στη ναυτιλία"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1968,11 +1984,11 @@ msgstr ""
 msgid "Required"
 msgstr "Απαιτούμενο"
 
-#: inc/checkout-steps.php:3983
+#: inc/checkout-steps.php:3999
 msgid "Same as billing address"
 msgstr "Ίδια με τη διεύθυνση χρέωσης"
 
-#: inc/checkout-steps.php:3938
+#: inc/checkout-steps.php:3954
 msgid "Same as shipping address"
 msgstr "Ίδια με τη διεύθυνση αποστολής"
 
@@ -2106,7 +2122,7 @@ msgstr "Αποστολή"
 msgid "Shipping address"
 msgstr "Διεύθυνση αποστολής"
 
-#: inc/checkout-steps.php:2603
+#: inc/checkout-steps.php:2619
 msgid "Shipping method"
 msgstr "Μέθοδος αποστολής"
 
@@ -2114,12 +2130,12 @@ msgstr "Μέθοδος αποστολής"
 msgid "Shipping methods"
 msgstr "Μέθοδοι αποστολής"
 
-#: inc/checkout-shipping-phone-field.php:93
+#: inc/checkout-shipping-phone-field.php:104
 #: inc/admin/admin-settings-checkout.php:577
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
 
-#: inc/checkout-steps.php:2579
+#: inc/checkout-steps.php:2595
 msgid "Shipping to"
 msgstr "Αποστολή σε"
 
@@ -2199,30 +2215,30 @@ msgid "Split"
 msgstr "Split"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1800
+#: inc/checkout-steps.php:1816
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Βήμα %1$s από %2$s"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:79
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
 msgid "Subscribe checkbox"
 msgstr "Πλαίσιο ελέγχου εγγραφής"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2781
+#: inc/checkout-steps.php:2797
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2786
+#: inc/checkout-steps.php:2802
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2150
+#: inc/checkout-steps.php:2166
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Καμία."
