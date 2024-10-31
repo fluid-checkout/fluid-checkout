@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	width: 100% !important;
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button:disabled:hover {
+	background-color: var(--fluidcheckout--uncode--accent-background-color) !important; // Needed to override theme styles
+	color: var(--fluidcheckout--uncode--accent-color) !important; // Needed to override theme styles
+}
