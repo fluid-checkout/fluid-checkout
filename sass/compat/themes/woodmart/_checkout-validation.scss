@@ -1,14 +1,11 @@
 // ------------------------------------
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
-body#{ $_body-theme-selector } div.woocommerce .form-row.form-row .woocommerce-error:before {
-	padding-top: remsize( .6rem );
-}
 
-body#{ $_body-theme-selector } div.woocommerce .form-row.form-row .woocommerce-error {
+body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error {
+	padding: $checkout-message-error-padding !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override theme styles
 	background-color: none;
-	-webkit-transform: none;
-	-webkit-animation: none;
 	transform: none;
 	animation: none;
 	z-index: 0;
@@ -16,6 +13,6 @@ body#{ $_body-theme-selector } div.woocommerce .form-row.form-row .woocommerce-e
 	min-height: 0;
 }
 
-body#{ $_body-theme-selector } div.woocommerce .form-row.form-row .woocommerce-error::after {
+body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error::after {
 	display: none;
 }
