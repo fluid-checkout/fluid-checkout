@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce (by Wawp).
  */
-class FluidCheckout_WawpOTPVerification extends FluidCheckout {
+class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 	/**
 	 * Class name for the plugin which this compatibility class is related to.
@@ -390,4 +390,4 @@ class FluidCheckout_WawpOTPVerification extends FluidCheckout {
 
 }
 
-FluidCheckout_WawpOTPVerification::instance();
+FluidCheckout_AutomationWebPlatform::instance();
