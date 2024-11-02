@@ -109,7 +109,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 
 				// Checkout validation styles
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '20px',
-				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '30px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '25px',
 
 				// Primary button colors
 				'--fluidcheckout--button--primary--border-color' => 'var(--btn-accented-bgcolor)',
