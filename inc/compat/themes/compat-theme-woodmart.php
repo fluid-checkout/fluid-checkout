@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
+		// Buttons
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
+
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
@@ -89,6 +93,8 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+		// Get theme colors
+
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
@@ -104,6 +110,26 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 				// Checkout validation styles
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '20px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '30px',
+
+				// Primary button colors
+				'--fluidcheckout--button--primary--border-color' => 'var(--btn-accented-bgcolor)',
+				'--fluidcheckout--button--primary--background-color' => 'var(--btn-accented-bgcolor)',
+				'--fluidcheckout--button--primary--text-color' => 'var(--btn-accented-color)',
+				'--fluidcheckout--button--primary--border-color--hover' => 'var(--btn-accented-bgcolor-hover)',
+				'--fluidcheckout--button--primary--background-color--hover' => 'var(--btn-accented-bgcolor-hover)',
+				'--fluidcheckout--button--primary--text-color--hover' => 'var(--btn-accented-color)',
+
+				// Secondary button colors
+				'--fluidcheckout--button--secondary--border-color' => 'var(--btn-default-bgcolor)',
+				'--fluidcheckout--button--secondary--background-color' => 'var(--btn-default-bgcolor)',
+				'--fluidcheckout--button--secondary--text-color' => 'var(--btn-default-color)',
+				'--fluidcheckout--button--secondary--border-color--hover' => 'var(--btn-default-bgcolor-hover)',
+				'--fluidcheckout--button--secondary--background-color--hover' => 'var(--btn-default-bgcolor-hover)',
+				'--fluidcheckout--button--secondary--text-color--hover' => 'var(--btn-default-color)',
+
+				// Button design styles
+				'--fluidcheckout--button--height' => 'var(--btn-height)',
+				'--fluidcheckout--button--font-weight' => 'var(--btn-font-weight)',
 			),
 		);
 
