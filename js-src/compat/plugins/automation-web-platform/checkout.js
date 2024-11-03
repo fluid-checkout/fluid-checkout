@@ -119,6 +119,19 @@ jQuery(document).ready(function($) {
                 // CHANGE: Trigger update checkout event
                 $( document.body ).trigger( 'update_checkout' );
 
+                // CHANGE: Re-add plugin's previosly removed code to update the user's phone number as meta data
+                const phoneNumber = $billingPhoneInput.val();
+                if ( otpAjax.isLoggedIn ) {
+                    await $.post({
+                        url: otpAjax.ajaxurl,
+                        data: {
+                            action: 'update_user_phone_number',
+                            phone_number: phoneNumber,
+                            security: otpAjax.nonce
+                        }
+                    });
+                }
+
                 // CHANGE: Replace the checkout form submit event with the default one
                 return true;
             } else {
