@@ -21,6 +21,7 @@
 	var _publicMethods = {};
 	var _settings = {
 		phoneFieldSelector: '#billing_phone',
+		successMessageSelector: '.fc-wawp-message.woocommerce-success',
 	};
 
 
@@ -42,12 +43,29 @@
 
 
 	/**
+	 * Clear success messages from the plugin.
+	 */
+	var clearSuccessMessages = function() {
+		var successMessages = document.querySelectorAll( _settings.successMessageSelector );
+
+		// Remove all success messages if exist
+		if ( successMessages.length ) {
+			successMessages.forEach( function( message ) {
+				message.remove();
+			});
+		}
+	}
+
+
+
+	/**
 	 * Handle captured `input` event and route to the appropriate functions.
 	 */
 	var handleInput = function( e ) {
 		// PHONE NUMBER FIELD
 		if ( e.target.matches( _settings.phoneFieldSelector ) ) {
 			triggerCheckoutUpdate();
+			clearSuccessMessages();
 		}
 	}
 

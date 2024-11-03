@@ -151,10 +151,15 @@ jQuery(document).ready(function($) {
 
     // Event Handlers
     $(document).on('click', '#fc-wawp-verify-button', async function(e) {
-        if (!otpSent && $awpOtpPopup.is(':hidden')) {
+        // CHANGE: Allow repeated OTP verification
+        if ($awpOtpPopup.is(':hidden')) {
             e.preventDefault();
             var phoneNumber = $('#billing_phone').val();
             var firstName = $('#billing_first_name').val();
+
+            // CHANGE: Clear previously entered OTP code
+            clearOtpInputs();
+
             $userPhoneNumber.text(phoneNumber);
             sendOtp(phoneNumber, firstName);
             $awpOtpPopup.show();
