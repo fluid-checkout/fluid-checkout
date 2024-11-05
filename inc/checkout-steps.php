@@ -4613,7 +4613,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
 					// Maybe update new address data
 					if ( '0' === $is_billing_same_as_shipping_previous && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
-						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
+						$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
 					}
 
 					// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
