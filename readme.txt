@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Styles of the order summary section cutting off some elements when they needed to be visible. Remove `overflow: hidden` from styles to allow elements to be displayed.
 * Fixed: Compatibility with plugin WooCommerce Memberships. Prevent PHP warnings when trying to determine if the distraction free header should be used on the checkout page when user is not logged in.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when processing checkout updates if cart contains only digital products.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix shipping fees label on the order summary and make it translatable from WooCommerce.
 * Fixed: Compatibility with plugin MyParcel. Fixed issue with the delivery options keeping triggering the checkout updates indefinitely.
 * Fixed: Some translations to the Italian language.
 * Fixed: Instant validation skipping some fields added by 3rd-party plugins.
