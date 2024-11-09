@@ -379,6 +379,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Instant validation skipping some fields added by 3rd-party plugins.
 * Fixed: Use checkout field attributes `optional_expand_link_label` directly when setting the optional field expansible link button label. The link label should now contain the `Add ` part as well as the desired field name.
 * Fixed: Showing shipping methods even when option to hide them until full address provided is enabled.
+* Fixed: Text domain for translatable strings on address sections for email notifications.
 
 = 3.2.5 - 2024-10-10 =
 
