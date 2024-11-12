@@ -358,7 +358,7 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 		// Add validation settings
 		$settings[ 'checkoutValidationWAWP' ] = array(
-			'validationMessages'  => array(
+				'validationMessages'  => array(
 				'phone_number_not_verified' => __( 'Please verify your phone number.', 'fluid-checkout' ),
 			),
 		);
