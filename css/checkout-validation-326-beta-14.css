@@ -12,8 +12,8 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
   z-index: 2;
   position: relative;
   margin: 0;
-  padding: 5px 10px 5px;
   padding-inline: 0 !important;
+  padding: 5px 10px 5px !important;
   padding-left: 28px !important;
   min-height: auto;
   border: 0;
@@ -62,10 +62,11 @@ div.woocommerce .shipping-method__package .woocommerce-error:before {
   height: 18px;
   font-size: 18px;
   position: absolute;
+  display: block !important;
   top: 16px;
   left: 5px;
   transform: translateY(-50%);
-  color: inherit;
+  color: inherit !important;
   speak: never;
 }
 
