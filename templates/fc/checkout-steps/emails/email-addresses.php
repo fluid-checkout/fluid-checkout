@@ -31,8 +31,8 @@ $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 $show_shipping = apply_filters( 'fc_pro_order_details_customer_information_show_shipping', $show_shipping, $order );
 
 // CHANGE: Define labels for shipping and billing columns
-$billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'billing_address', __( 'Billing to', 'fluid-checkout-pro' ) ), $order );
-$shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'shipping_address', __( 'Shipping to', 'fluid-checkout-pro' ) ), $order );
+$billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'billing_address', __( 'Billing to', 'fluid-checkout' ) ), $order );
+$shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'shipping_address', __( 'Shipping to', 'fluid-checkout' ) ), $order );
 
 ?><table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top; margin-bottom: 40px; padding:0;" border="0">
 	<?php // CHANGE: Move addresses titles to a separate row ?>

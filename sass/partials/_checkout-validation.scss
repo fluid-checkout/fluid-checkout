@@ -18,8 +18,9 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 	z-index: z( 'default' ) + 1;
 	position: relative;
 	margin: 0;
-	padding: $checkout-message-error-padding;
-	padding-#{ $alignment-left }: $checkout-message-error-padding-left;
+	padding-inline: 0 !important; // Needed to override theme styles
+	padding: $checkout-message-error-padding !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override theme styles
 	min-height: auto;
 	border: 0;
 	background-color: $checkout-message-error-background-color;
@@ -59,10 +60,11 @@ div.woocommerce .shipping-method__package .woocommerce-error:before {
 	@include icon-size( $checkout-message-error-icon-size );
 
 	position: absolute;
+	display: block !important; // Needed to override theme styles
 	top: $checkout-message-error-icon-position-top;
 	#{ $alignment-left }: $checkout-message-error-icon-position-left;
 	transform: translateY( -50% );
-	color: inherit;
+	color: inherit !important; // Needed to override theme styles
 	speak: never;
 }
 
