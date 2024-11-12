@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Uncode.
+* Added: Compatibility with plugin Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce.
 * Added: Add notice for incompatible plugin WooCommerce Checkout Manager by Quadlayers.
 * Added: Add specific labels for proceed to next step buttons, and add filter `fc_proceed_to_next_step_button_label` to allow more control when changing these button labels.
 * Improved: Compatibility with plugin Mailchimp for WooCommerce. Prevent hiding the newsletter checkbox field behind a link button when set as optional.
@@ -386,7 +387,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Bump tested up to WooCommerce 9.3.3
 * Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
 * Added: Compatibility with theme Kapee.
-* Added: Compatibility with plugin Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce.
 * Added: Compatibility with plugin Customer Email Verification PRO by Zorem.
 * Added: Compatibility with plugin Mollie Payments for WooCommerce. Fix company field value empty when using payment method Billie from Mollie.
 * Improved: Set all Javascript assets to be loaded at the page footer and defered for better page loading performance.
