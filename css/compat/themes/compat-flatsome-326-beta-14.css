@@ -13,7 +13,7 @@ body.theme-flatsome.admin-bar .fc-progress-bar[data-sticky-states].is-sticky--to
 body.theme-flatsome div.woocommerce form .form-row .fl-wrap label.fl-label,
 body.theme-flatsome div.woocommerce form #billing_address_2_field .fl-wrap > label.fl-label,
 body.theme-flatsome div.woocommerce form #shipping_address_2_field .fl-wrap > label.fl-label {
-  z-index: 2;
+  z-index: 6;
 }
 
 body.theme-flatsome div.woocommerce form select {
