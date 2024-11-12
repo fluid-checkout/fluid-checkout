@@ -23,7 +23,7 @@ body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
   cursor: auto;
 }
 
-body.theme-woodmart div.woocommerce .form-row .woocommerce-error::after {
+body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after {
   display: none;
 }
 
