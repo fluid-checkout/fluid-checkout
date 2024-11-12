@@ -28,7 +28,7 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 	public function hooks() {
 		add_action( 'admin_init', array( $this, 'maybe_dismiss_migrate_success_message' ), 10 );
 		add_action( 'admin_init', array( $this, 'maybe_migrate_database' ), 10 );
-		add_action( 'plugins_loaded', array( $this, 'maybe_migrate_database_on_first_activation' ), 10 );
+		add_action( 'init', array( $this, 'maybe_migrate_database_on_first_activation' ), 10 );
 	}
 
 
@@ -206,7 +206,7 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 	public function get_migrations_to_apply() {
 		// Get db version
 		$db_version = $this->get_db_version();
-		$db_version = ! empty( $db_version ) ? $db_version : '0.0.1';
+		$db_version = ! empty( $db_version ) ? $db_version : '0.0.0';
 
 		// Get available migrations
 		$available_migrations = $this->get_available_migrations();

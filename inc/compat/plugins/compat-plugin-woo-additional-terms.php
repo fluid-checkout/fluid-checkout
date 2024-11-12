@@ -33,7 +33,7 @@ class FluidCheckout_WooAdditionalTerms extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-compat-woo-additional-terms-checkbox-states', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-additional-terms/checkbox-states' ), array(), NULL );
+		wp_register_script( 'fc-compat-woo-additional-terms-checkbox-states', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-additional-terms/checkbox-states' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-compat-woo-additional-terms-checkbox-states', 'window.addEventListener("load",function(){WooAdditionalTermsCheckboxStates.init();})' );
 	}
 
@@ -49,8 +49,8 @@ class FluidCheckout_WooAdditionalTerms extends FluidCheckout {
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		// Bail if not on checkout page.
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		$this->enqueue_assets();
 	}

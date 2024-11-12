@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.6.2
-Stable tag: 3.2.4
+Stable tag: 3.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -364,17 +364,42 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Uncode.
+* Added: Add notice for incompatible plugin WooCommerce Checkout Manager by Quadlayers.
+* Added: Add specific labels for proceed to next step buttons, and add filter `fc_proceed_to_next_step_button_label` to allow more control when changing these button labels.
+* Improved: Compatibility with plugin Mailchimp for WooCommerce. Prevent hiding the newsletter checkbox field behind a link button when set as optional.
+* Improved: Compatibility with plugin WooCommerce Multilingual & Multicurrency by WPML. Fix language switcher getting cut off when added inside the order summary section below the order summary table.
+* Improved: Compatibility with Hubspot. Mark billing fields to send for to Hubspot as the customer lead information when using the Hubspot Tracking scripts.
+* Improved: Styles of the order summary section cutting off some elements when they needed to be visible. Remove `overflow: hidden` from styles to allow elements to be displayed.
+* Fixed: Compatibility with plugin WooCommerce Memberships. Prevent PHP warnings when trying to determine if the distraction free header should be used on the checkout page when user is not logged in.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when processing checkout updates if cart contains only digital products.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix shipping fees label on the order summary and make it translatable from WooCommerce.
+* Fixed: Compatibility with plugin MyParcel. Fixed issue with the delivery options keeping triggering the checkout updates indefinitely.
+* Fixed: Some translations to the Italian language.
+* Fixed: Instant validation skipping some fields added by 3rd-party plugins.
+* Fixed: Use checkout field attributes `optional_expand_link_label` directly when setting the optional field expansible link button label. The link label should now contain the `Add ` part as well as the desired field name.
+* Fixed: Showing shipping methods even when option to hide them until full address provided is enabled.
+* Fixed: Text domain for translatable strings on address sections for email notifications.
+
+= 3.2.5 - 2024-10-10 =
+
+* Bump tested up to WooCommerce 9.3.3
 * Added: Option to define which address to save as the shipping address when using a local pickup shipping method. (PRO feature)
 * Added: Compatibility with theme Kapee.
 * Added: Compatibility with plugin Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce.
 * Added: Compatibility with plugin Customer Email Verification PRO by Zorem.
+* Added: Compatibility with plugin Mollie Payments for WooCommerce. Fix company field value empty when using payment method Billie from Mollie.
+* Improved: Set all Javascript assets to be loaded at the page footer and defered for better page loading performance.
 * Improved: Compatibility with plugin WooCommerce Subscriptions. Move shipping methods available for subscription plans from the order summary to the shipping methods section.
 * Improved: Add new CSS variables for customizing the coupon code elements and coupon section.
 * Improved: Accept a new parameter `$context` for the hook `fc_css_variables`. Defaults to `frontend`.
+* Improved: Change hook used to run database migrations on first activation.
 * Fixed: Do not save shipping phone number to order data when shipping address is not needed for the order.
 * Fixed: Deprecated PHP messages saved to log files when using Fluid Checkout with recent versions of PHP.
 * Fixed: Javascript error when trying to re-set the focus on the element after refreshing fragments in some cases.
 * Fixed: Substeps keeping expanding, collapsing or changing its visibility state in some cases.
+* Fixed: Compatibility issue between Brazilian Market and PayPal Brasil plugins where the state field would be cleared in some cases.
+* Fixed: Wrong focused element and scroll positions when first loading the checkout page in some cases.
 
 = 3.2.4 - 2024-09-15 =
 

@@ -87,7 +87,7 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'woo-ml-public-script', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-mailerlite/public' ), array( 'jquery' ), NULL );
+		wp_register_script( 'woo-ml-public-script', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-mailerlite/public' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 

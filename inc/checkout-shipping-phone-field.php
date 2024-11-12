@@ -19,6 +19,17 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Privacy data managers
+		// Shipping phone data export and erasure is handled by the core WooCommerce privacy class.
+
+		// Shipping phone
+		$this->shipping_phone_hooks();
+	}
+
+	/**
+	 * Add or remove shipping phone hooks.
+	 */
+	public function shipping_phone_hooks() {
 		// Bail if feature is not enabled
 		if( ! FluidCheckout_Steps::instance()->is_shipping_phone_enabled() ) { return; }
 

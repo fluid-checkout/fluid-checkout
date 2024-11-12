@@ -196,11 +196,11 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Checkout scripts
-		wp_register_script( 'fc-checkout-customer-email-verification', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/customer-email-verification/checkout-customer-email-verification' ), array( 'jquery', 'fc-utils', 'cev-inline-front-js' ), NULL, true );
+		wp_register_script( 'fc-checkout-customer-email-verification', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/customer-email-verification/checkout-customer-email-verification' ), array( 'jquery', 'fc-utils', 'cev-inline-front-js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-customer-email-verification', 'window.addEventListener("load",function(){CheckoutCustomerEmailVerification.init(fcSettings.checkoutCustomerEmailVerification);})' );
 
 		// Add validation script
-		wp_register_script( 'fc-checkout-validation-customer-email-verification', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/customer-email-verification/checkout-validation-customer-email-verification' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-customer-email-verification', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/customer-email-verification/checkout-validation-customer-email-verification' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-customer-email-verification', 'window.addEventListener("load",function(){CheckoutValidationCustomerEmailVerification.init(fcSettings.checkoutValidationCustomerEmailVerification);})' );
 	}
 

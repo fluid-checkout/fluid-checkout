@@ -114,15 +114,19 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		ob_start();
 
 		// Prepare field label for the toggle
-		$form_field_label = array_key_exists( 'optional_expand_link_label', $args ) ? $args[ 'optional_expand_link_label' ] : $args[ 'label' ];
+		$form_field_label = $args[ 'label' ];
 
 		// Maybe set field label as lowercase
 		if ( ( ! array_key_exists( 'optional_expand_link_lowercase', $args ) || false !== $args[ 'optional_expand_link_lowercase' ] ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_optional_fields_link_label_lowercase' ) ) {
 			$form_field_label = strtolower( $form_field_label );
 		}
 
+		// Get toggle label
 		/* translators: %s: Form field label */
-		$toggle_label = apply_filters( "fc_expansible_section_toggle_label_{$key}", sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label ) );
+		$toggle_label = array_key_exists( 'optional_expand_link_label', $args ) ? sanitize_text_field( $args[ 'optional_expand_link_label' ] ) : sprintf( __( 'Add %s', 'fluid-checkout' ), $form_field_label );
+
+		// Filter to allow developer to change the optional field expansible toggle label
+		$toggle_label = apply_filters( "fc_expansible_section_toggle_label_{$key}", $toggle_label );
 
 		// Maybe add "optional" to toggle label
 		if ( true === apply_filters( 'fc_expansible_section_toggle_label_add_optional_text', true ) && true === apply_filters( "fc_expansible_section_toggle_label_{$key}_add_optional_text", true ) ) {
