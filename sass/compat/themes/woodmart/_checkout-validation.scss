@@ -1,19 +1,13 @@
 // ------------------------------------
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
-body#{ $_body-theme-selector } div.woocommerce .form-row.form-row .woocommerce-error:before {
-	padding-top: remsize( .6rem );
-}
 
 body#{ $_body-theme-selector } div.woocommerce .form-row.form-row .woocommerce-error {
-	background-color: none;
-	-webkit-transform: none;
-	-webkit-animation: none;
+	z-index: 0;
+	min-height: 0;
 	transform: none;
 	animation: none;
-	z-index: 0;
 	cursor: auto;
-	min-height: 0;
 }
 
 body#{ $_body-theme-selector } div.woocommerce .form-row.form-row .woocommerce-error::after {

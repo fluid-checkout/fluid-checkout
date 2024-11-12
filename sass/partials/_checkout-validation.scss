@@ -19,7 +19,8 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 	position: relative;
 	margin: 0;
 	padding: $checkout-message-error-padding;
-	padding-#{ $alignment-left }: $checkout-message-error-padding-left;
+	padding-inline: 0 !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override theme styles
 	min-height: auto;
 	border: 0;
 	background-color: $checkout-message-error-background-color;
