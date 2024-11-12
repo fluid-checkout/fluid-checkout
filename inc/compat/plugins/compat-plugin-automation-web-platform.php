@@ -31,7 +31,6 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 		// International phone fields
 		add_filter( 'fc_pro_enable_international_phone_fields', '__return_false', 10 );
-		wp_dequeue_style( 'fc-pro-intl-tel-input' );
 	}
 
 	/**
