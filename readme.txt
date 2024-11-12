@@ -368,7 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce.
 * Added: Add notice for incompatible plugin WooCommerce Checkout Manager by Quadlayers.
 * Added: Add specific labels for proceed to next step buttons, and add filter `fc_proceed_to_next_step_button_label` to allow more control when changing these button labels.
-* Improved: Compatibility with theme Woodmart.
+* Improved: Compatibility with theme Woodmart. Added compatibility with the Free Gifts feature of the theme.
 * Improved: Compatibility with plugin Mailchimp for WooCommerce. Prevent hiding the newsletter checkbox field behind a link button when set as optional.
 * Improved: Compatibility with plugin WooCommerce Multilingual & Multicurrency by WPML. Fix language switcher getting cut off when added inside the order summary section below the order summary table.
 * Improved: Compatibility with Hubspot. Mark billing fields to send for to Hubspot as the customer lead information when using the Hubspot Tracking scripts.
