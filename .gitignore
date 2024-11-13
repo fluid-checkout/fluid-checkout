@@ -31,3 +31,8 @@ bower_compoents/**
 
 # Zip files
 **/*.zip
+
+# Cypress automated tests
+cypress/downloads
+cypress/screenshots
+cypress/videos

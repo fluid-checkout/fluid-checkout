@@ -4,11 +4,11 @@
   "description": "Provides a fluid checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.",
   "main": "fluid-checkout.php",
   "scripts": {
-    "version": "git pull && gulp update-ver-release && gulp build && git add -A",
+    "version": "git pull && gulp update-ver-release && gulp build && npm test && git add -A",
     "postversion": "git push && git push --tags && gulp copy-plugin-files && gulp pack-plugin-zip",
     "start": "wp-scripts start --webpack-src-dir=blocks",
     "build": "wp-scripts build --webpack-src-dir=blocks",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run && gulp build"
   },
   "repository": {},
   "author": "Fluid Checkout",
@@ -18,6 +18,7 @@
   "devDependencies": {
     "@wordpress/scripts": "^27.0.0",
     "browser-sync": "^2.27.9",
+    "cypress": "^13.15.2",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
