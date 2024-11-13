@@ -1,0 +1,17 @@
+{
+	"name": "fluid-checkout/fluid-checkout",
+	"description": "Provides a fluid checkout experience for any WooCommerce store. Ask for shipping information before billing in a linear and multi-step checkout, add options for gift message and packaging and add a coupon code field at the checkout page that does not distract your customers. Similar to the Shopify checkout, and even better.",
+	"type": "wordpress-plugin",
+	"license": "GPLv3",
+	"require": {
+		"php": "^7.4 || ^8.0 || ^8.1 || ^8.2 || ^8.3"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.5",
+		"wp-phpunit/wp-phpunit": "^5.0",
+		"yoast/phpunit-polyfills": "^2.0"
+	},
+	"scripts": {
+		"test": "phpunit"
+	}
+ }

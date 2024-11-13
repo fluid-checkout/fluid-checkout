@@ -23,7 +23,16 @@ node_modules
 node_modules/**
 bower_components
 bower_compoents/**
-/vendor/**/.git
+vendor/**/.git
+
+# Composer dependencies
+composer.lock
+composer.dev.json
+composer.dev.lock
+vendor-dev
+
+# PHPUnit
+.phpunit.result.cache
 
 # Git files
 .git
