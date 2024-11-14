@@ -25,6 +25,11 @@ body.theme-colibri-wp.woocommerce-checkout .fc-content label {
   color: #313439;
 }
 
+body.theme-colibri-wp .fc-wrapper .fc-coupon-codes__coupon:before,
+body.theme-colibri-wp .fc-wrapper .fc-coupon-codes__coupon:after {
+  content: none;
+}
+
 body.theme-colibri-wp .fc-place-order {
   padding: 30px 0 10px;
 }
