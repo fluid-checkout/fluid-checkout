@@ -1,3 +1,9 @@
+@media (min-width: 1000px) {
+  body.theme-colibri-wp .fc-sidebar__inner {
+    padding-top: 5px;
+  }
+}
+
 body.theme-colibri-wp.woocommerce-checkout .fc-content {
   color: #6B7C93;
 }

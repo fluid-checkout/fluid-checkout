@@ -12,6 +12,7 @@ $_body-theme-selector:                 '.theme-colibri-wp' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-columns",
 	"checkout-content-area",
 	"order-summary",
 	"woocommerce-form-fields",
