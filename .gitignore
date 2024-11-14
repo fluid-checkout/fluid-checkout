@@ -9,8 +9,9 @@ __MACOSX
 package-lock.json
 
 # local environment files
-gulp-settings.local.json
 .vscode
+gulp-settings.local.json
+env.local.config.sh
 
 # Translation backup files
 **/*.po~

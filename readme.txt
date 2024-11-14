@@ -362,6 +362,28 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WordPress 6.7 and WooCommerce 9.4.1
+* Added: Compatibility with theme Uncode.
+* Added: Compatibility with plugin Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce.
+* Added: Add notice for incompatible plugin WooCommerce Checkout Manager by Quadlayers.
+* Added: Add specific labels for proceed to next step buttons, and add filter `fc_proceed_to_next_step_button_label` to allow more control when changing these button labels.
+* Improved: Compatibility with theme Woodmart. Added compatibility with the Free Gifts feature of the theme.
+* Improved: Compatibility with plugin Mailchimp for WooCommerce. Prevent hiding the newsletter checkbox field behind a link button when set as optional.
+* Improved: Compatibility with plugin WooCommerce Multilingual & Multicurrency by WPML. Fix language switcher getting cut off when added inside the order summary section below the order summary table.
+* Improved: Compatibility with Hubspot. Mark billing fields to send for to Hubspot as the customer lead information when using the Hubspot Tracking scripts.
+* Improved: Styles of the order summary section cutting off some elements when they needed to be visible. Remove `overflow: hidden` from styles to allow elements to be displayed.
+* Fixed: Compatibility with plugin WooCommerce Memberships. Prevent PHP warnings when trying to determine if the distraction free header should be used on the checkout page when user is not logged in.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when processing checkout updates if cart contains only digital products.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix shipping fees label on the order summary and make it translatable from WooCommerce.
+* Fixed: Compatibility with plugin MyParcel. Fixed issue with the delivery options keeping triggering the checkout updates indefinitely.
+* Fixed: Some translations to the Italian language.
+* Fixed: Instant validation skipping some fields added by 3rd-party plugins.
+* Fixed: Use checkout field attributes `optional_expand_link_label` directly when setting the optional field expansible link button label. The link label should now contain the `Add ` part as well as the desired field name.
+* Fixed: Showing shipping methods even when option to hide them until full address provided is enabled.
+* Fixed: Text domain for translatable strings on address sections for email notifications.
+
 = 3.2.5 - 2024-10-10 =
 
 * Bump tested up to WooCommerce 9.3.3

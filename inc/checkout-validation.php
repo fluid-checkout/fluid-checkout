@@ -177,8 +177,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
-			'validateFieldsSelector'             => '.input-text, .input-checkbox, select, .shipping-method__options',
-			'referenceNodeSelector'              => '.input-text, .input-checkbox, select, .shipping-method__options',
+			'validateFieldsSelector'             => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
+			'referenceNodeSelector'              => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */

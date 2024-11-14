@@ -1,0 +1,21 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-uncode' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"buttons--checkout",
+	"checkout-content-area",
+	"checkout-billing",
+	"checkout-coupon-code",
+	"checkout-place-order",
+	"tom-select-control",
+	"woocommerce-form-fields";

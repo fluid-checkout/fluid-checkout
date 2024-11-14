@@ -74,6 +74,10 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 	text-align: $alignment-left;
 }
 
+.fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox {
+	float: none;
+}
+
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type="checkbox"] {
 	top: 0;
 	margin-#{ $alignment-left }: 0;

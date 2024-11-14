@@ -1,8 +1,6 @@
 <?php
 /**
  * Fluid Checkout PRO Order Received Settings
- *
- * @package fluid-checkout-pro
  */
 
 defined( 'ABSPATH' ) || exit;

@@ -33,24 +33,32 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-
 		// Account edit address
-		if ( 'yes' === apply_filters( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes', 'yes' ) ) {
-			// Get the plugin public class object
-			self::$thwcfd_public = FluidCheckout::instance()->get_object_by_class_name_from_hooks( 'THWCFD_Public_Checkout' );
+		$this->account_edit_address_hooks();
+	}
 
-			if ( null !== self::$thwcfd_public ) {
-				/**
-				 * @see THWCFD_Public_Checkout::define_public_hooks()
-				 */
-				$hp_billing_fields  = apply_filters( 'thwcfd_billing_fields_priority', 1000 );
-				$hp_shipping_fields = apply_filters( 'thwcfd_shipping_fields_priority', 1000 );
+	/**
+	 * Add or remove hooks for account edit address.
+	 */
+	public function account_edit_address_hooks() {
+		// Bail if account edit address is disabled for this plugin
+		if ( 'yes' !== apply_filters( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes', 'yes' ) ) { return; }
 
-				add_filter( 'woocommerce_billing_fields', array( $this, 'apply_billing_fields_changes'), $hp_billing_fields, 2 );
-				add_filter( 'woocommerce_shipping_fields', array( $this, 'apply_shipping_fields_changes'), $hp_shipping_fields, 2 );
-			}
-		}
+		// Get the plugin public class object
+		self::$thwcfd_public = FluidCheckout::instance()->get_object_by_class_name_from_hooks( 'THWCFD_Public_Checkout' );
 
+		// Bail if class object not found
+		if ( ! self::$thwcfd_public ) { return; }
+
+		/**
+		 * @see THWCFD_Public_Checkout::define_public_hooks()
+		 */
+		$hp_billing_fields  = apply_filters( 'thwcfd_billing_fields_priority', 1000 );
+		$hp_shipping_fields = apply_filters( 'thwcfd_shipping_fields_priority', 1000 );
+
+		// Add filters to apply changes to the billing and shipping fields on the edit address screen
+		add_filter( 'woocommerce_billing_fields', array( $this, 'apply_billing_fields_changes'), $hp_billing_fields, 2 );
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'apply_shipping_fields_changes'), $hp_shipping_fields, 2 );
 	}
 
 

@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT CONTENT
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-content .row-parent {
+	padding-top: 0;
+
+	@media (#{$bp-smaller-than-tablet}) { 
+		padding-#{ $alignment-left }: remsize( 2rem ) !important; // Needed to override theme styles
+		padding-#{ $alignment-right }: remsize( 2rem ) !important; // Needed to override theme styles
+	}
+}

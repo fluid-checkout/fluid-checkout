@@ -29,6 +29,7 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_add_newsletter_as_checkout_field' ), 100 );
 		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'maybe_add_newsletter_to_contact_fields' ), 100 );
 		add_filter( 'woocommerce_form_field_mailchimp_newsletter', array( $this, 'maybe_change_newsletter_field_html' ), 10, 4 );
+		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields' ), 10 );
 	}
 
 	/**
@@ -140,6 +141,14 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 		return $display_fields;
 	}
 
+	/**
+	 * Maybe change HTML code of the Mailchimp newsletter field.
+	 *
+	 * @param   string  $field  The field html.
+	 * @param   string  $key    The field key.
+	 * @param   array   $args   The field args.
+	 * @param   mixed   $value  The field value.
+	 */
 	public function maybe_change_newsletter_field_html( $field, $key, $args, $value ) {
 		// Bail if option to move subscribe box is not enabled
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return $field; }
@@ -153,6 +162,16 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 		$field = ob_get_clean();
 
 		return $field;
+	}
+
+	/**
+	 * Prevent hiding optional the Mailchimp newsletter field behind a link button.
+	 *
+	 * @param   array  $skip_list  List of optional fields to skip hidding.
+	 */
+	public function prevent_hide_optional_fields( $skip_list ) {
+		$skip_list[] = 'mailchimp_woocommerce_newsletter';
+		return $skip_list;
 	}
 
 }
