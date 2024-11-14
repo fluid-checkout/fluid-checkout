@@ -2,6 +2,10 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-input-wrapper {
+	color: initial;
+}
+
 body#{ $_body-theme-selector } div.woocommerce form {
 	textarea,
 	select,

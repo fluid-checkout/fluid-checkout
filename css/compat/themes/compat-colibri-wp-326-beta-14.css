@@ -17,6 +17,10 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review_
   content: none;
 }
 
+body.theme-colibri-wp div.woocommerce .woocommerce-input-wrapper {
+  color: initial;
+}
+
 body.theme-colibri-wp div.woocommerce form textarea,
 body.theme-colibri-wp div.woocommerce form select,
 body.theme-colibri-wp div.woocommerce form input[type=email],
