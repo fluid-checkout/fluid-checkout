@@ -28,9 +28,6 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
-
-		// International phone fields
-		add_filter( 'fc_pro_enable_international_phone_fields', '__return_false', 10 );
 	}
 
 	/**
