@@ -3,6 +3,9 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.h-section-boxed-container {
+	@media (#{$bp-larger-than-tablet}) and (#{$bp-smaller-than-desktop}) {
+		padding-top: $global-spacing-tiny;
+	}
 	@media (#{$bp-smaller-than-tablet}) { 
 		width: 100%;
 		padding-#{ $alignment-left }: remsize( 2rem ) !important; // Needed to override theme styles

@@ -56,7 +56,7 @@ class FluidCheckout_ThemeCompat_ColibriWP extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.h-navigation_sticky';
+		$attributes['data-sticky-relative-to'] = '{ "sm": { "breakpointInitial": 1024, "breakpointFinal": 100000, "selector": ".h-navigation_sticky" } }';
 
 		return $attributes;
 	}

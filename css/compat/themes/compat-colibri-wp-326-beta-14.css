@@ -4,6 +4,11 @@
   }
 }
 
+@media (min-width: 750px) and (max-width: 999px) {
+  body.theme-colibri-wp.woocommerce-checkout .fc-content.h-section-boxed-container {
+    padding-top: 5px;
+  }
+}
 @media (max-width: 749px) {
   body.theme-colibri-wp.woocommerce-checkout .fc-content.h-section-boxed-container {
     width: 100%;
