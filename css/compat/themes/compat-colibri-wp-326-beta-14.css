@@ -1,3 +1,11 @@
+body.theme-colibri-wp.woocommerce-checkout .fc-content {
+  color: #6B7C93;
+}
+
+body.theme-colibri-wp.woocommerce-checkout .fc-content label {
+  color: #313439;
+}
+
 body.theme-colibri-wp div.woocommerce form textarea,
 body.theme-colibri-wp div.woocommerce form select,
 body.theme-colibri-wp div.woocommerce form input[type=email],

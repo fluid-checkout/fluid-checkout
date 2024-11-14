@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content {
+	color: #6B7C93; // Needed to use theme color to match its styles
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content label {
+	color: #313439; // Needed to use theme color to match its styles
+}
