@@ -25,6 +25,10 @@ body.theme-colibri-wp.woocommerce-checkout .fc-content label {
   color: #313439;
 }
 
+body.theme-colibri-wp .fc-place-order {
+  padding: 30px 0 10px;
+}
+
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review__head:before,
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review__head:after {
   content: none;
