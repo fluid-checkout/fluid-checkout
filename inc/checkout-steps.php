@@ -2621,7 +2621,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$this->output_substep_fields_start_tag( $step_id, $substep_id );
 		$this->output_shipping_methods_available();
-		$this->output_substep_fields_end_tag();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
 
 		// Only output substep text format for multi-step checkout layout
 		if ( $this->is_checkout_layout_multistep() ) {
