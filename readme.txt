@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WordPress 6.7 and WooCommerce 9.4.1
 * Added: Compatibility with theme Uncode.
 * Added: Compatibility with plugin Wawp - OTP Verification, Order Notifications, and Country Code Selector for WooCommerce.
 * Added: Add notice for incompatible plugin WooCommerce Checkout Manager by Quadlayers.
