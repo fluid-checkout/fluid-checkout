@@ -41,3 +41,11 @@ body.theme-colibri-wp div.woocommerce form textarea {
   padding: 0.75rem 16px;
   line-height: 1.5;
 }
+
+body.theme-colibri-wp .select2-container--default .select2-search--dropdown {
+  padding: 4px;
+}
+
+body.theme-colibri-wp .select2-container--default .select2-results__option {
+  padding: 6px;
+}
