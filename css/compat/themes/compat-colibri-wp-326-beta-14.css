@@ -4,25 +4,25 @@
   }
 }
 
-@media (min-width: 750px) and (max-width: 999px) {
-  body.theme-colibri-wp.woocommerce-checkout .fc-content.h-section-boxed-container {
-    padding-top: 5px;
-  }
-}
-@media (max-width: 749px) {
-  body.theme-colibri-wp.woocommerce-checkout .fc-content.h-section-boxed-container {
-    width: 100%;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
-}
-
 body.theme-colibri-wp.woocommerce-checkout .fc-content {
   color: #6B7C93;
+  background-color: #F5FAFD;
+}
+
+body.theme-colibri-wp.woocommerce-checkout:not(.has-checkout-header) .fc-content {
+  box-shadow: 0 20px 20px -10px rgba(49, 52, 57, 0.3), 0 20px 30px rgba(0, 0, 0, 0.08);
 }
 
 body.theme-colibri-wp.woocommerce-checkout .fc-content label {
   color: #313439;
+}
+
+@media (max-width: 749px) {
+  body.theme-colibri-wp.woocommerce-checkout .fc-content .h-section-boxed-container {
+    width: 100%;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 
 body.theme-colibri-wp .fc-wrapper .fc-coupon-codes__coupon:before,

@@ -19,6 +19,9 @@ class FluidCheckout_ThemeCompat_ColibriWP extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Checkout template hooks
+		$this->checkout_template_hooks();
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -38,6 +41,40 @@ class FluidCheckout_ThemeCompat_ColibriWP extends FluidCheckout {
 
 
 	/**
+	 * Add checkout template hooks.
+	 */
+	public function checkout_template_hooks() {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Theme's inner containers
+		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tag' ), 10 );
+		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tag' ), 10 );
+	}
+
+
+
+	/**
+	 * Add opening tag for inner container from the theme.
+	 */
+	public function add_inner_container_opening_tag() {
+		?>
+		<div class="h-section-boxed-container">
+		<?php
+	}
+
+	/**
+	 * Add closing tag for inner container from the theme.
+	 */
+	public function add_inner_container_closing_tag() {
+		?>
+		</div>
+		<?php
+	}
+
+
+
+	/**
 	 * Add container class to the main content element.
 	 *
 	 * @param string $class Main content element classes.
@@ -46,7 +83,7 @@ class FluidCheckout_ThemeCompat_ColibriWP extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
-		return $class . ' h-section-boxed-container';
+		return $class . ' page-content';
 	}
 
 
