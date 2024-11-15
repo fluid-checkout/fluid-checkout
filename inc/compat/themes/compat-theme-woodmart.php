@@ -78,7 +78,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		$builder_instance = XTS\Modules\Layouts\Main::get_instance();
 
 		// Checkout page
-		if ( woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) {
+		if ( woodmart_get_opt( 'shipping_progress_bar_enabled' ) && woodmart_get_opt( 'shipping_progress_bar_location_checkout' ) ) {
 			remove_action( 'woocommerce_checkout_before_customer_details', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
 			remove_action( 'woocommerce_checkout_billing', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 10 );
 			add_action( 'fc_checkout_before_steps', array( $free_shipping_bar_instance, 'render_shipping_progress_bar_with_wrapper' ), 5 ); // Right before coupon code section

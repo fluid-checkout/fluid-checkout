@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled.
+
 = 3.2.6 - 2024-11-14 =
 
 * Bump tested up to WordPress 6.7 and WooCommerce 9.4.1
