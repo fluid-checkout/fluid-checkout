@@ -63,6 +63,15 @@ body.theme-colibri-wp .fc-place-order {
   padding: 30px 0 10px;
 }
 
+body.theme-colibri-wp .fc-progress-bar__count {
+  margin: 0 0 5px;
+}
+@media (min-width: 1000px) {
+  body.theme-colibri-wp .fc-progress-bar__count {
+    margin: 0 0 5px;
+  }
+}
+
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review__head:before,
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review__head:after {
   content: none;
