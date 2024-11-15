@@ -124,7 +124,7 @@ body.theme-colibri-wp .fc-wrapper .fc-coupon-code-messages .woocommerce-error:be
   color: #b81c23;
 }
 
-body.theme-colibri-wp div.woocommerce .woocommerce-input-wrapper {
+body.theme-colibri-wp div.woocommerce p.form-row {
   color: initial;
 }
 
