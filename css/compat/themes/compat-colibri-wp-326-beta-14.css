@@ -68,6 +68,11 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review_
   content: none;
 }
 
+body.theme-colibri-wp .ts-control {
+  padding-right: 30px;
+  padding-left: var(--fluidcheckout--field--padding-left, 8px);
+}
+
 body.theme-colibri-wp div.woocommerce .woocommerce-input-wrapper {
   color: initial;
 }
