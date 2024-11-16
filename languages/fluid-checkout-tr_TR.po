@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2024-10-25 21:10+0000\n"
+"PO-Revision-Date: 2024-11-14 08:54+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -112,7 +112,7 @@ msgstr ""
 "kısa kodunu <code>[woocommerce_checkout]</code> kullanması gerekir.</p><p>"
 "Daha fazla bilgi için Fluid'i ziyaret edin Ödeme belgeleri.</p>"
 
-#: fluid-checkout.php:564
+#: fluid-checkout.php:565
 #, php-format
 #| msgid ""
 #| "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -137,7 +137,7 @@ msgstr "Hesap eşleştirme / kullanıcı eşleştirme"
 msgid "Action link on the order summary at checkout."
 msgstr "Ödeme sırasında sipariş özetindeki Eylem bağlantısı."
 
-#: fluid-checkout.php:560
+#: fluid-checkout.php:561
 #, php-format
 msgid "Activate %s"
 msgstr "Etkinleştir %s"
@@ -150,7 +150,7 @@ msgid "Activated"
 msgstr "Etkinleştirilmiş"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:237 inc/checkout-hide-optional-fields.php:125
+#: inc/checkout-coupon-codes.php:237 inc/checkout-hide-optional-fields.php:126
 #, php-format
 msgid "Add %s"
 msgstr "%s ekle"
@@ -175,7 +175,7 @@ msgstr "Sepet sayfasına widget alanları ekleyin"
 msgid "Add widget areas to the checkout page"
 msgstr "Ödeme sayfasına widget alanları ekleyin"
 
-#: inc/admin/admin-settings-order-received.php:128
+#: inc/admin/admin-settings-order-received.php:126
 msgid "Add widget areas to the thank you page"
 msgstr "Teşekkür sayfasına widget alanları ekleyin"
 
@@ -204,7 +204,7 @@ msgstr ""
 "Gönderi adresi bölümüne ekstra bir gönderi e-postası ve gönderi telefonu "
 "alanı ekler."
 
-#: inc/admin/admin-settings-order-received.php:159
+#: inc/admin/admin-settings-order-received.php:157
 msgid "After order sections"
 msgstr "Sipariş bölümlerinden sonra"
 
@@ -224,18 +224,18 @@ msgstr "Sepet işlemlerinden sonra"
 msgid "After the cart items section"
 msgstr "Sepet öğeleri bölümünden sonra"
 
-#: inc/admin/admin-settings-order-received.php:185
-#: inc/admin/admin-settings-order-received.php:201
-#: inc/admin/admin-settings-order-received.php:216
-#: inc/admin/admin-settings-order-received.php:231
+#: inc/admin/admin-settings-order-received.php:183
+#: inc/admin/admin-settings-order-received.php:199
+#: inc/admin/admin-settings-order-received.php:214
+#: inc/admin/admin-settings-order-received.php:229
 msgid "After the order items section"
 msgstr "Sipariş kalemleri bölümünden sonra"
 
-#: inc/admin/admin-settings-order-received.php:158
+#: inc/admin/admin-settings-order-received.php:156
 msgid "After the order overview"
 msgstr "Siparişe genel bakıştan sonra"
 
-#: inc/admin/admin-settings-order-received.php:182
+#: inc/admin/admin-settings-order-received.php:180
 msgid "After the order overview and payment instructions"
 msgstr "Siparişe genel bakış ve ödeme talimatlarından sonra"
 
@@ -384,10 +384,10 @@ msgstr "Sepet öğeleri bölümünden önce"
 msgid "Before the checkout steps"
 msgstr "Ödeme adımlarından önce"
 
-#: inc/admin/admin-settings-order-received.php:183
-#: inc/admin/admin-settings-order-received.php:199
-#: inc/admin/admin-settings-order-received.php:214
-#: inc/admin/admin-settings-order-received.php:229
+#: inc/admin/admin-settings-order-received.php:181
+#: inc/admin/admin-settings-order-received.php:197
+#: inc/admin/admin-settings-order-received.php:212
+#: inc/admin/admin-settings-order-received.php:227
 msgid "Before the order items section"
 msgstr "Sipariş kalemleri bölümünden önce"
 
@@ -423,6 +423,8 @@ msgid "Billing phone"
 msgstr "Fatura telefonu"
 
 #: inc/checkout-steps.php:3769
+#: templates/fc/checkout-steps/emails/email-addresses.php:34
+#: templates/fc/checkout-steps/emails/plain/email-addresses.php:26
 msgid "Billing to"
 msgstr "Fatura Bilgileri"
 
@@ -528,7 +530,7 @@ msgstr ""
 msgid "Change: %s"
 msgstr "Değiştir: %s"
 
-#: inc/admin/admin-settings-order-received.php:80
+#: inc/admin/admin-settings-order-received.php:78
 msgid ""
 "Changes the layout of order details on the thank you page and account pages."
 msgstr ""
@@ -584,7 +586,7 @@ msgstr "Ödeme Sayfası Başlığı - Mobil"
 msgid "Checkout layout"
 msgstr "Ödeme düzeni"
 
-#: inc/compat/themes/compat-theme-woodmart.php:141
+#: inc/compat/themes/compat-theme-woodmart.php:167
 msgid "Checkout options"
 msgstr "Ödeme seçenekleri"
 
@@ -592,7 +594,7 @@ msgstr "Ödeme seçenekleri"
 msgid "Checkout Order Summary"
 msgstr "Ödeme Sayfası Sipariş Özeti"
 
-#: inc/compat/themes/compat-theme-woodmart.php:132
+#: inc/compat/themes/compat-theme-woodmart.php:158
 #: inc/compat/themes/compat-theme-kapee.php:129
 #: inc/compat/themes/compat-theme-betheme.php:178
 #: inc/compat/themes/compat-theme-pressmart.php:186
@@ -674,14 +676,14 @@ msgstr ""
 "Ödeme sayfası üstbilgisinde görüntülenecek bir resim seçin. Yalnızca dikkat "
 "dağıtmayan üstbilgi ve altbilgi kullanıldığında geçerlidir."
 
-#: inc/admin/admin-settings-order-received.php:153
+#: inc/admin/admin-settings-order-received.php:151
 msgid "Choose in which position to display the order actions."
 msgstr "Sipariş eylemlerinin hangi konumda görüntüleneceğini seçin."
 
-#: inc/admin/admin-settings-order-received.php:178
-#: inc/admin/admin-settings-order-received.php:195
-#: inc/admin/admin-settings-order-received.php:210
-#: inc/admin/admin-settings-order-received.php:225
+#: inc/admin/admin-settings-order-received.php:176
+#: inc/admin/admin-settings-order-received.php:193
+#: inc/admin/admin-settings-order-received.php:208
+#: inc/admin/admin-settings-order-received.php:223
 msgid "Choose in which position to display the section."
 msgstr "Bölümün hangi konumda görüntüleneceğini seçin."
 
@@ -737,6 +739,10 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:562
 msgid "Company name field for shipping address"
 msgstr "Gönderi adresi için şirket adı alanı"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:146
+msgid "Confirm"
+msgstr "Onaylayın"
 
 #: inc/admin/admin-settings-checkout.php:597
 #: inc/admin/admin-settings-checkout.php:624
@@ -850,7 +856,7 @@ msgstr ""
 msgid "Did you mean %s?"
 msgstr "%s mi demek istediniz?"
 
-#: inc/compat/themes/compat-theme-woodmart.php:142
+#: inc/compat/themes/compat-theme-woodmart.php:168
 msgid "Disable the theme checkout options"
 msgstr "Tema ödeme seçeneklerini devre dışı bırakma"
 
@@ -884,7 +890,7 @@ msgstr ""
 msgid "Display message when an account exists with the email address provided"
 msgstr "Sağlanan e-posta adresiyle bir hesap mevcut olduğunda mesajı görüntüle"
 
-#: inc/admin/admin-settings-order-received.php:92
+#: inc/admin/admin-settings-order-received.php:90
 msgid ""
 "Display new sections and change order of sections on email notifications. "
 "Styles of order details on email notifications remain unchanged."
@@ -931,11 +937,11 @@ msgstr ""
 msgid "Display the gift message fields always expanded"
 msgstr "Hediye mesajı alanlarını her zaman genişletilmiş olarak görüntüleme"
 
-#: inc/admin/admin-settings-order-received.php:118
+#: inc/admin/admin-settings-order-received.php:116
 msgid "Display the order details with wide layout on the thank you page"
 msgstr "Sipariş ayrıntılarını teşekkür sayfasında geniş düzende görüntüleyin"
 
-#: inc/admin/admin-settings-order-received.php:168
+#: inc/admin/admin-settings-order-received.php:166
 msgid "Display the order status progress bar"
 msgstr "Sipariş durumu ilerleme çubuğunu görüntüleme"
 
@@ -1065,7 +1071,7 @@ msgstr "Posta Kontrolünü Etkinleştir: (devre dışı bırakılmış özellik)
 msgid "Enable options to edit cart items on the checkout page"
 msgstr "Ödeme sayfasında sepet öğelerini düzenleme seçeneklerini etkinleştirin"
 
-#: inc/admin/admin-settings-order-received.php:91
+#: inc/admin/admin-settings-order-received.php:89
 msgid "Enable order details customizations on email notifications"
 msgstr ""
 "E-posta bildirimlerinde sipariş ayrıntıları özelleştirmelerini etkinleştirme"
@@ -1074,7 +1080,7 @@ msgstr ""
 msgid "Enable phone number validation based on country rules"
 msgstr "Ülke kurallarına göre telefon numarası doğrulamayı etkinleştirin"
 
-#: inc/admin/admin-settings-order-received.php:79
+#: inc/admin/admin-settings-order-received.php:77
 msgid "Enable thank you page and order details optimizations"
 msgstr ""
 "Teşekkür sayfası ve sipariş ayrıntıları optimizasyonlarını etkinleştirin"
@@ -1247,7 +1253,7 @@ msgstr "Bu eklentiyi edinin &mdash; 39 EUR"
 msgid "Get this add-on &mdash; 59 EUR"
 msgstr "Bu eklentiyi edinin &mdash; 59 EUR"
 
-#: inc/admin/admin-settings-order-received.php:209
+#: inc/admin/admin-settings-order-received.php:207
 msgid "Gift message"
 msgstr "Hediye mesajı"
 
@@ -1263,7 +1269,7 @@ msgstr "Hediye seçenekleri"
 msgid "Go to Germanized settings"
 msgstr "Almanlaştırılmış ayarlara git"
 
-#: fluid-checkout.php:556
+#: fluid-checkout.php:557
 msgid "Go to Plugin Search"
 msgstr "Eklenti Aramaya Git"
 
@@ -1405,14 +1411,14 @@ msgstr "Hiç görüntü seçilmedi."
 msgid "Inside the cart items section"
 msgstr "Sepet öğeleri bölümünün içinde"
 
-#: inc/admin/admin-settings-order-received.php:184
-#: inc/admin/admin-settings-order-received.php:200
-#: inc/admin/admin-settings-order-received.php:215
-#: inc/admin/admin-settings-order-received.php:230
+#: inc/admin/admin-settings-order-received.php:182
+#: inc/admin/admin-settings-order-received.php:198
+#: inc/admin/admin-settings-order-received.php:213
+#: inc/admin/admin-settings-order-received.php:228
 msgid "Inside the order items section"
 msgstr "Sipariş kalemleri bölümünün içinde"
 
-#: inc/admin/admin-settings-order-received.php:157
+#: inc/admin/admin-settings-order-received.php:155
 msgid "Inside the order overview"
 msgstr "Siparişe genel bakış içinde"
 
@@ -1652,7 +1658,7 @@ msgstr "Sepet sayfasında görüntülenecek çapraz satış öğelerinin sayıs�
 msgid "Ok"
 msgstr "Tamam"
 
-#: inc/admin/admin-settings-order-received.php:186
+#: inc/admin/admin-settings-order-received.php:184
 msgid "On the sidebar"
 msgstr "Kenar çubuğunda"
 
@@ -1705,24 +1711,24 @@ msgstr "Opsiyonel"
 msgid "Optional fields"
 msgstr "Opsiyonel alanlar"
 
-#: inc/admin/admin-settings-order-received.php:152
+#: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Sipariş işlemleri"
 
-#: inc/admin/admin-settings-order-received.php:117
-#: inc/admin/admin-settings-order-received.php:145
+#: inc/admin/admin-settings-order-received.php:115
+#: inc/admin/admin-settings-order-received.php:143
 msgid "Order details layout"
 msgstr "Sipariş detayları düzeni"
 
-#: inc/admin/admin-settings-order-received.php:78
+#: inc/admin/admin-settings-order-received.php:76
 msgid "Order details optimizations"
 msgstr "Sipariş ayrıntıları optimizasyonları"
 
-#: inc/admin/admin-settings-order-received.php:194
+#: inc/admin/admin-settings-order-received.php:192
 msgid "Order downloads"
 msgstr "İndirmeleri sipariş edin"
 
-#: inc/admin/admin-settings-order-received.php:224
+#: inc/admin/admin-settings-order-received.php:222
 #: inc/admin/admin-settings-checkout.php:679
 msgid "Order notes"
 msgstr "Sipariş notları"
@@ -1735,12 +1741,12 @@ msgstr "Sipariş numarası ve makbuz bu e-posta adresine gönderilecektir."
 msgid "Order progress"
 msgstr "Sipariş ilerleme durumu"
 
-#: inc/admin/admin-settings-order-received.php:167
+#: inc/admin/admin-settings-order-received.php:165
 msgid "Order status"
 msgstr "Sipariş durumu"
 
 #: inc/checkout-steps.php:5238 inc/admin/admin-settings-cart.php:131
-#: inc/admin/admin-settings-order-received.php:177
+#: inc/admin/admin-settings-order-received.php:175
 #: inc/admin/admin-settings-checkout.php:248
 msgid "Order summary"
 msgstr "Sipariş özeti"
@@ -1793,7 +1799,7 @@ msgstr ""
 "Ödeme, sepet ve sipariş alındı sayfalarında Pressmart temasından ödeme "
 "adımları bölümünün çıktısını alın."
 
-#: inc/compat/themes/compat-theme-woodmart.php:133
+#: inc/compat/themes/compat-theme-woodmart.php:159
 #| msgid ""
 #| "Output the checkout steps section from the Woodmart theme when using "
 #| "Fluid Checkout header and footer"
@@ -1851,6 +1857,10 @@ msgstr "Buluşma noktası:"
 msgid "Place order"
 msgstr "Sipariş verin"
 
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:362
+msgid "Please verify your phone number."
+msgstr "Lütfen telefon numaranızı doğrulayın."
+
 #: inc/admin/admin-settings-checkout.php:515
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "İlk gönderi yönteminin otomatik olarak seçilmesini önleyin"
@@ -1896,6 +1906,10 @@ msgstr ""
 #: inc/admin/admin-notice-review-request.php:48
 msgid "Rate the plugin"
 msgstr "Eklentiyi değerlendirin"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "Belgeleri okuyun"
 
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104
 #: inc/admin/admin.php:184
@@ -2068,7 +2082,7 @@ msgctxt "Settings section"
 msgid "Cart"
 msgstr "Araba"
 
-#: inc/admin/admin-settings-order-received.php:49
+#: inc/admin/admin-settings-order-received.php:47
 msgctxt "Settings section"
 msgid "Thank you"
 msgstr "Teşekkür ederim"
@@ -2116,6 +2130,8 @@ msgid "Shipping phone"
 msgstr "Telefon numarası"
 
 #: inc/checkout-steps.php:2595
+#: templates/fc/checkout-steps/emails/email-addresses.php:35
+#: templates/fc/checkout-steps/emails/plain/email-addresses.php:27
 msgid "Shipping to"
 msgstr "Alıcı Bilgileri"
 
@@ -2174,6 +2190,17 @@ msgstr ""
 "olduğu gibi, devam etmeden önce <strong>web sitenizin tam bir yedeğini "
 "almanızı</strong> öneririz."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+#, php-format
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"WooCommerce Checkout Manager by Quadlayers'ın bazı özellikleri Fluid "
+"Checkout ile kullanıldığında beklendiği gibi çalışmayabilir. Daha fazla "
+"bilgi ve alternatif çözümler için <a href=\"%s\">belgelerimizi</a> okuyun."
+
 #: inc/admin/admin-settings-checkout.php:315
 msgid "Some options might not be compatible with some plugins and themes."
 msgstr "Bazı seçenekler bazı eklentiler ve temalarla uyumlu olmayabilir."
@@ -2223,11 +2250,11 @@ msgstr "Yok."
 msgid "Support"
 msgstr "Destek"
 
-#: inc/admin/admin-settings-order-received.php:110
+#: inc/admin/admin-settings-order-received.php:108
 msgid "Thank you page"
 msgstr "Teşekkür sayfası"
 
-#: inc/admin/admin-settings-order-received.php:71
+#: inc/admin/admin-settings-order-received.php:69
 msgid "Thank you page & order details layout"
 msgstr "Teşekkür sayfası ve sipariş ayrıntıları düzeni"
 
@@ -2301,13 +2328,21 @@ msgstr "CPF numarası \"{cpf_number}\" geçersiz."
 msgid "The database changes where applied successfully."
 msgstr "Veritabanı değişiklikleri başarıyla uygulandı."
 
-#: inc/compat/themes/compat-theme-woodmart.php:143
+#: inc/compat/themes/compat-theme-woodmart.php:169
 msgid ""
 "The options display product image, quantity field, remove button and link to "
 "product page added by the theme are disabled by default."
 msgstr ""
 "Tema tarafından eklenen ürün resmini göster, miktar alanı, kaldır düğmesi ve "
 "ürün sayfasına bağlantı seçenekleri varsayılan olarak devre dışıdır."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers tarafından sunulan WooCommerce Checkout Manager eklentisi Fluid "
+"Checkout ile uyumlu değildir"
 
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
@@ -2359,7 +2394,7 @@ msgstr "Tema Pressmart"
 msgid "Theme The Gem"
 msgstr "Tema The Gem"
 
-#: inc/compat/themes/compat-theme-woodmart.php:126
+#: inc/compat/themes/compat-theme-woodmart.php:152
 msgid "Theme Woodmart"
 msgstr "Tema Woodmart"
 
@@ -2376,7 +2411,7 @@ msgstr "Temanın çapraz satış düzeni"
 msgid "Theme's header and footer"
 msgstr "Temanın üstbilgisi ve altbilgisi"
 
-#: inc/admin/admin-settings-order-received.php:147
+#: inc/admin/admin-settings-order-received.php:145
 msgid ""
 "These options affect the thank you page , view order details on account "
 "pages and on email notifications."
@@ -2384,7 +2419,7 @@ msgstr ""
 "Bu seçenekler teşekkür sayfasını, hesap sayfalarında ve e-posta "
 "bildirimlerinde sipariş ayrıntılarını görüntülemeyi etkiler."
 
-#: inc/admin/admin-settings-order-received.php:112
+#: inc/admin/admin-settings-order-received.php:110
 msgid ""
 "These options affect the thank you page, also known as order received or "
 "order confirmation pages."
@@ -2410,7 +2445,7 @@ msgstr ""
 "Bu widget alanları, ödeme sayfasına güven sembolleri ve güven rozetleri "
 "eklemek için kullanılır."
 
-#: inc/admin/admin-settings-order-received.php:129
+#: inc/admin/admin-settings-order-received.php:127
 msgid ""
 "These widget areas are used to add trust symbols and trust badges on the "
 "thank you page."
@@ -2467,7 +2502,7 @@ msgid "Troubleshooting"
 msgstr "Sorun Giderme"
 
 #: inc/admin/admin-settings-cart.php:219
-#: inc/admin/admin-settings-order-received.php:127
+#: inc/admin/admin-settings-order-received.php:125
 #: inc/admin/admin-settings-checkout.php:328
 msgid "Trust symbols &amp; badges"
 msgstr "Güven sembolleri ve rozetleri"
@@ -2505,6 +2540,10 @@ msgstr ""
 #, php-format
 msgid "Valid until %s."
 msgstr "%s tarihine kadar geçerlidir."
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:261
+msgid "Verify Phone Number"
+msgstr "Telefon Numarasını Doğrula"
 
 #: inc/admin/admin-setting-type-fc-setup.php:51
 #, php-format
@@ -2587,7 +2626,7 @@ msgstr ""
 "hatalara</strong> neden olabilir. Lütfen eklenti ayarlarından Germanized PRO "
 "çok adımlı ödeme özelliğini devre dışı bırakın."
 
-#: fluid-checkout.php:553
+#: fluid-checkout.php:554
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
