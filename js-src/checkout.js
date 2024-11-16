@@ -125,7 +125,7 @@ jQuery( function( $ ) {
 			this.maybe_init_enhanced_dropdowns();
 
 			// CHANGE: Add event listener to sync terms checkbox state
-			this.$checkout_form.on( 'change', _settings.checkoutTermsSelector, this.terms_checked_changed );
+			$( document.body ).on( 'change', _settings.checkoutTermsSelector, this.terms_checked_changed );
 
 			// Trigger events
 			// CHANGE: Removed shipping to different address checkout `change` trigger
