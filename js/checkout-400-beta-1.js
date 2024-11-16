@@ -119,6 +119,10 @@ jQuery( function( $ ) {
 			// CHANGE: Trigger reinitialization functions after checkout is updated
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_flyout_blocks );
+			$( document.body ).on( 'updated_checkout', this.maybe_init_enhanced_dropdowns );
+			
+			// CHANGE: Enhance dropdown fields on initialization
+			this.maybe_init_enhanced_dropdowns();
 
 			// CHANGE: Add event listener to sync terms checkbox state
 			this.$checkout_form.on( 'change', _settings.checkoutTermsSelector, this.terms_checked_changed );
@@ -138,15 +142,11 @@ jQuery( function( $ ) {
 
 			// CHANGE: Add handler for login form modal initialization
 			document.addEventListener( 'click', this.maybe_copy_email_to_login_form, true );
-
-			// CHANGE: Enhance dropdown fields on initialization and updates
-			if ( window.FCEnhancedSelect ) {
-				this.init_enhanced_dropdowns();
-				$( document.body ).on( 'fc_checkout_fragments_replace_after', this.init_enhanced_dropdowns );
-			}
 		},
 		// CHANGE: Enhance dropdown fields
-		init_enhanced_dropdowns: function() {
+		maybe_init_enhanced_dropdowns: function() {
+			if ( ! window.FCEnhancedSelect ) { return; }
+
 			FCEnhancedSelect.enhanceFields();
 		},
 		// CHANGE: Check if the "same as" address checkbox option is checked

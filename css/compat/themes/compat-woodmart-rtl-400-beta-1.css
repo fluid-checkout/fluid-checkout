@@ -13,19 +13,14 @@ body.theme-woodmart.has-checkout-layout--multi-step .fc-step__actions .fc-step__
   background-color: var(--btn-accented-bgcolor, #83b735);
 }
 
-body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error:before {
-  padding-top: 6px;
-}
-
 body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
-  background-color: none;
-  -webkit-transform: none;
-  -webkit-animation: none;
+  z-index: 0;
+  padding: 5px 10px 5px !important;
+  padding-right: 28px !important;
+  min-height: 0;
   transform: none;
   animation: none;
-  z-index: 0;
   cursor: auto;
-  min-height: 0;
 }
 
 body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after {

@@ -1861,6 +1861,7 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review-
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
   display: table;
   margin: 0 -20px;
+  margin-bottom: 0px;
   padding: 0;
   width: calc(100% + 40px);
   max-width: calc(100% + 40px);
@@ -1873,8 +1874,31 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 @media (min-width: 1000px) {
   div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
     margin: 0 -20px -1px;
+    margin-bottom: 0px;
     width: calc(100% + 40px);
     font-size: 15px;
+  }
+}
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total th,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td:first-child {
+  border-radius: 0 !important;
+}
+@media (min-width: 1000px) {
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total th,
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td:first-child {
+    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td {
+  border-radius: 0 !important;
+}
+@media (min-width: 1000px) {
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
   }
 }
 
@@ -2175,7 +2199,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   width: calc(100% + 40px);
   max-width: calc(100% + 40px);
   background-color: var(--fluidcheckout--order-summary--background-color, var(--fluidcheckout--color--white, #fff));
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 3px 8px var(--fluidcheckout--order-summary--shadow-color, transparent);
 }
 @media (min-width: 750px) {
