@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-03 18:38+0000\n"
-"PO-Revision-Date: 2024-10-10 12:47+0000\n"
+"PO-Revision-Date: 2024-11-14 08:53+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.7; wp-6.5.2"
+"X-Loco-Version: 2.6.11; wp-6.6.2"
 
 #: inc/admin/admin-settings-checkout.php:406
 msgid "\"Add\" link button"
@@ -114,7 +114,7 @@ msgstr ""
 "WooCommerce <code>[woocommerce_checkout]</code>, aby działać poprawnie.</p>"
 "<p>Aby uzyskać więcej informacji, odwiedź dokumentację Fluid Checkout.</p>"
 
-#: fluid-checkout.php:564
+#: fluid-checkout.php:565
 #, php-format
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -136,7 +136,7 @@ msgstr "Dopasowywanie kont / dopasowywanie użytkowników"
 msgid "Action link on the order summary at checkout."
 msgstr "Link do akcji w podsumowaniu zamówienia przy kasie."
 
-#: fluid-checkout.php:560
+#: fluid-checkout.php:561
 #, php-format
 msgid "Activate %s"
 msgstr "Aktywować %s"
@@ -149,7 +149,7 @@ msgid "Activated"
 msgstr "Aktywowany"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:237 inc/checkout-hide-optional-fields.php:125
+#: inc/checkout-coupon-codes.php:237 inc/checkout-hide-optional-fields.php:126
 #, php-format
 msgid "Add %s"
 msgstr "Dodaj %s"
@@ -174,7 +174,7 @@ msgstr "Dodaj obszary widżetów do strony koszyka"
 msgid "Add widget areas to the checkout page"
 msgstr "Dodaj obszary widżetów do strony kasy"
 
-#: inc/admin/admin-settings-order-received.php:128
+#: inc/admin/admin-settings-order-received.php:126
 msgid "Add widget areas to the thank you page"
 msgstr "Dodaj obszary widżetów do strony z podziękowaniem"
 
@@ -182,7 +182,7 @@ msgstr "Dodaj obszary widżetów do strony z podziękowaniem"
 msgid "Add-ons"
 msgstr "Dodatki"
 
-#: inc/checkout-steps.php:2627
+#: inc/checkout-steps.php:2643
 msgid "Additional notes"
 msgstr "Uwagi dodatkowe"
 
@@ -203,7 +203,7 @@ msgstr ""
 "Dodaje dodatkowe pole adresu e-mail i telefonu do wysyłki do sekcji adresu "
 "wysyłki."
 
-#: inc/admin/admin-settings-order-received.php:159
+#: inc/admin/admin-settings-order-received.php:157
 msgid "After order sections"
 msgstr "Po sekcjach zamówienia"
 
@@ -223,18 +223,18 @@ msgstr "Po wykonaniu akcji koszyka"
 msgid "After the cart items section"
 msgstr "Po sekcji elementów koszyka"
 
-#: inc/admin/admin-settings-order-received.php:185
-#: inc/admin/admin-settings-order-received.php:201
-#: inc/admin/admin-settings-order-received.php:216
-#: inc/admin/admin-settings-order-received.php:231
+#: inc/admin/admin-settings-order-received.php:183
+#: inc/admin/admin-settings-order-received.php:199
+#: inc/admin/admin-settings-order-received.php:214
+#: inc/admin/admin-settings-order-received.php:229
 msgid "After the order items section"
 msgstr "Po sekcji pozycji zamówienia"
 
-#: inc/admin/admin-settings-order-received.php:158
+#: inc/admin/admin-settings-order-received.php:156
 msgid "After the order overview"
 msgstr "Po przeglądzie zamówienia"
 
-#: inc/admin/admin-settings-order-received.php:182
+#: inc/admin/admin-settings-order-received.php:180
 msgid "After the order overview and payment instructions"
 msgstr "Po przeglądzie zamówienia i instrukcjach dotyczących płatności"
 
@@ -310,7 +310,7 @@ msgstr "Masz już konto?"
 msgid "Always show"
 msgstr "Zawsze pokazuj"
 
-#: inc/checkout-steps.php:2399
+#: inc/checkout-steps.php:2415
 msgid "An account will be created with the information provided."
 msgstr "Konto zostanie utworzone na podstawie podanych informacji."
 
@@ -382,10 +382,10 @@ msgstr "Przed sekcją elementów koszyka"
 msgid "Before the checkout steps"
 msgstr "Przed krokami realizacji transakcji"
 
-#: inc/admin/admin-settings-order-received.php:183
-#: inc/admin/admin-settings-order-received.php:199
-#: inc/admin/admin-settings-order-received.php:214
-#: inc/admin/admin-settings-order-received.php:229
+#: inc/admin/admin-settings-order-received.php:181
+#: inc/admin/admin-settings-order-received.php:197
+#: inc/admin/admin-settings-order-received.php:212
+#: inc/admin/admin-settings-order-received.php:227
 msgid "Before the order items section"
 msgstr "Przed sekcją pozycji zamówienia"
 
@@ -419,7 +419,9 @@ msgstr "Adres do faktury"
 msgid "Billing phone"
 msgstr "Telefon rozliczeniowy"
 
-#: inc/checkout-steps.php:3753
+#: inc/checkout-steps.php:3769
+#: templates/fc/checkout-steps/emails/email-addresses.php:34
+#: templates/fc/checkout-steps/emails/plain/email-addresses.php:26
 msgid "Billing to"
 msgstr "Rozliczenie z"
 
@@ -480,7 +482,7 @@ msgstr "Przed złożeniem zamówienia dział"
 msgid "Captcha Pro by BestWebSoft"
 msgstr "Captcha Pro by BestWebSoft"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:393
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
 msgid "Carrier:"
 msgstr "Przewoźnik:"
 
@@ -520,12 +522,12 @@ msgstr ""
 "Zmiana widoczności pola nazwy firmy w sekcji adresu wysyłki w formularzu "
 "realizacji zakupu."
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 #, php-format
 msgid "Change: %s"
 msgstr "Zmiana: %s"
 
-#: inc/admin/admin-settings-order-received.php:80
+#: inc/admin/admin-settings-order-received.php:78
 msgid ""
 "Changes the layout of order details on the thank you page and account pages."
 msgstr ""
@@ -582,7 +584,7 @@ msgstr "Nagłówek kasy - Mobile"
 msgid "Checkout layout"
 msgstr "Układ kasy"
 
-#: inc/compat/themes/compat-theme-woodmart.php:141
+#: inc/compat/themes/compat-theme-woodmart.php:167
 msgid "Checkout options"
 msgstr "Opcje kasy"
 
@@ -590,7 +592,7 @@ msgstr "Opcje kasy"
 msgid "Checkout Order Summary"
 msgstr "Kasa Podsumowanie zamówienia"
 
-#: inc/compat/themes/compat-theme-woodmart.php:132
+#: inc/compat/themes/compat-theme-woodmart.php:158
 #: inc/compat/themes/compat-theme-kapee.php:129
 #: inc/compat/themes/compat-theme-betheme.php:178
 #: inc/compat/themes/compat-theme-pressmart.php:186
@@ -603,32 +605,32 @@ msgstr "Postęp realizacji transakcji"
 msgid "Checkout Sidebar"
 msgstr "Pasek boczny kasy"
 
-#: inc/checkout-steps.php:1668
+#: inc/checkout-steps.php:1682
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Billing"
 
-#: inc/checkout-steps.php:1647
+#: inc/checkout-steps.php:1659
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: inc/checkout-steps.php:1677
+#: inc/checkout-steps.php:1692
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Płatność"
 
-#: inc/checkout-steps.php:1656
+#: inc/checkout-steps.php:1669
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Wysyłka"
 
-#: inc/checkout-steps.php:2037
+#: inc/checkout-steps.php:2053
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Zmiana"
 
-#: inc/checkout-steps.php:2038
+#: inc/checkout-steps.php:2054
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Zapisz zmiany"
@@ -672,14 +674,14 @@ msgstr ""
 "Wybierz obraz, który będzie wyświetlany w nagłówku strony kasy. Dotyczy "
 "tylko korzystania z nagłówka i stopki bez rozpraszania uwagi."
 
-#: inc/admin/admin-settings-order-received.php:153
+#: inc/admin/admin-settings-order-received.php:151
 msgid "Choose in which position to display the order actions."
 msgstr "Wybierz, w której pozycji mają być wyświetlane akcje zamówienia."
 
-#: inc/admin/admin-settings-order-received.php:178
-#: inc/admin/admin-settings-order-received.php:195
-#: inc/admin/admin-settings-order-received.php:210
-#: inc/admin/admin-settings-order-received.php:225
+#: inc/admin/admin-settings-order-received.php:176
+#: inc/admin/admin-settings-order-received.php:193
+#: inc/admin/admin-settings-order-received.php:208
+#: inc/admin/admin-settings-order-received.php:223
 msgid "Choose in which position to display the section."
 msgstr "Wybierz pozycję wyświetlania sekcji."
 
@@ -736,6 +738,10 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:562
 msgid "Company name field for shipping address"
 msgstr "Pole nazwy firmy dla adresu wysyłki"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:146
+msgid "Confirm"
+msgstr "Potwierdzenie"
 
 #: inc/admin/admin-settings-checkout.php:597
 #: inc/admin/admin-settings-checkout.php:624
@@ -847,7 +853,7 @@ msgstr ""
 msgid "Did you mean %s?"
 msgstr "Czy chodziło ci o %s?"
 
-#: inc/compat/themes/compat-theme-woodmart.php:142
+#: inc/compat/themes/compat-theme-woodmart.php:168
 msgid "Disable the theme checkout options"
 msgstr "Wyłącz opcje kasy w motywie"
 
@@ -884,7 +890,7 @@ msgstr ""
 msgid "Display message when an account exists with the email address provided"
 msgstr "Wyświetla komunikat, gdy istnieje konto z podanym adresem e-mail"
 
-#: inc/admin/admin-settings-order-received.php:92
+#: inc/admin/admin-settings-order-received.php:90
 msgid ""
 "Display new sections and change order of sections on email notifications. "
 "Styles of order details on email notifications remain unchanged."
@@ -932,13 +938,13 @@ msgstr ""
 msgid "Display the gift message fields always expanded"
 msgstr "Pola wiadomości prezentu są zawsze rozwinięte"
 
-#: inc/admin/admin-settings-order-received.php:118
+#: inc/admin/admin-settings-order-received.php:116
 msgid "Display the order details with wide layout on the thank you page"
 msgstr ""
 "Wyświetlaj szczegóły zamówienia w szerokim układzie na stronie z "
 "podziękowaniem"
 
-#: inc/admin/admin-settings-order-received.php:168
+#: inc/admin/admin-settings-order-received.php:166
 msgid "Display the order status progress bar"
 msgstr "Wyświetlanie paska postępu statusu zamówienia"
 
@@ -1017,7 +1023,7 @@ msgstr "Nie zapisuj żadnego adresu wysyłki"
 msgid "Don't show this again"
 msgstr "Nie pokazuj tego więcej"
 
-#: inc/checkout-steps.php:5287
+#: inc/checkout-steps.php:5303
 #: templates/fc/checkout-steps/checkout/review-order-section.php:62
 msgid "Edit cart"
 msgstr "Wózek na zakupy"
@@ -1065,7 +1071,7 @@ msgstr "Enable Mail Check: (funkcja wyłączona)"
 msgid "Enable options to edit cart items on the checkout page"
 msgstr "Włącz opcje edycji pozycji koszyka na stronie realizacji zakupu"
 
-#: inc/admin/admin-settings-order-received.php:91
+#: inc/admin/admin-settings-order-received.php:89
 msgid "Enable order details customizations on email notifications"
 msgstr ""
 "Włączenie dostosowywania szczegółów zamówienia w powiadomieniach e-mail"
@@ -1076,7 +1082,7 @@ msgstr ""
 "Włącz weryfikację numeru telefonu na podstawie reguł obowiązujących w danym "
 "kraju"
 
-#: inc/admin/admin-settings-order-received.php:79
+#: inc/admin/admin-settings-order-received.php:77
 msgid "Enable thank you page and order details optimizations"
 msgstr "Włącz optymalizację strony z podziękowaniem i szczegółów zamówienia"
 
@@ -1247,7 +1253,7 @@ msgstr "Pobierz ten dodatek &mdash; 39 EUR"
 msgid "Get this add-on &mdash; 59 EUR"
 msgstr "Pobierz ten dodatek &mdash; 59 EUR"
 
-#: inc/admin/admin-settings-order-received.php:209
+#: inc/admin/admin-settings-order-received.php:207
 msgid "Gift message"
 msgstr "Wiadomość o prezencie"
 
@@ -1263,7 +1269,7 @@ msgstr "Opcje prezentów"
 msgid "Go to Germanized settings"
 msgstr "Przejdź do ustawień germanizacyjnych"
 
-#: fluid-checkout.php:556
+#: fluid-checkout.php:557
 msgid "Go to Plugin Search"
 msgstr "Przejdź do wyszukiwania wtyczek"
 
@@ -1405,14 +1411,14 @@ msgstr "Nie wybrano żadnego obrazu."
 msgid "Inside the cart items section"
 msgstr "Wewnątrz sekcji elementów koszyka"
 
-#: inc/admin/admin-settings-order-received.php:184
-#: inc/admin/admin-settings-order-received.php:200
-#: inc/admin/admin-settings-order-received.php:215
-#: inc/admin/admin-settings-order-received.php:230
+#: inc/admin/admin-settings-order-received.php:182
+#: inc/admin/admin-settings-order-received.php:198
+#: inc/admin/admin-settings-order-received.php:213
+#: inc/admin/admin-settings-order-received.php:228
 msgid "Inside the order items section"
 msgstr "Wewnątrz sekcji pozycji zamówienia"
 
-#: inc/admin/admin-settings-order-received.php:157
+#: inc/admin/admin-settings-order-received.php:155
 msgid "Inside the order overview"
 msgstr "Wewnątrz przeglądu zamówienia"
 
@@ -1531,7 +1537,7 @@ msgstr "Zalogowano się jako %1$s. <a href=\"%2$s\">wyloguj się</a>"
 msgid "Logo image"
 msgstr "Obraz logo"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:73
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:74
 msgid "Mailchimp for WooCommerce"
 msgstr "Mailchimp dla WooCommerce"
 
@@ -1598,7 +1604,7 @@ msgstr "Wiele zapisanych adresów do wysyłki i fakturowania."
 msgid "My account layout"
 msgstr "Układ mojego konta"
 
-#: inc/checkout-steps.php:2336
+#: inc/checkout-steps.php:2352
 msgid "My contact"
 msgstr "Mój kontakt"
 
@@ -1627,8 +1633,8 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:3196
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:560
+#: inc/checkout-steps.php:3212
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:563
 msgid "Not selected yet."
 msgstr "Jeszcze nie wybrano."
 
@@ -1645,7 +1651,7 @@ msgstr "Liczba pozycji sprzedaży krzyżowej do wyświetlenia na stronie koszyka
 msgid "Ok"
 msgstr "Ok"
 
-#: inc/admin/admin-settings-order-received.php:186
+#: inc/admin/admin-settings-order-received.php:184
 msgid "On the sidebar"
 msgstr "Na pasku bocznym"
 
@@ -1672,7 +1678,7 @@ msgstr ""
 "Ma zastosowanie tylko w przypadku korzystania z nagłówka motywu Impreza na "
 "stronie kasy."
 
-#: inc/checkout-shipping-phone-field.php:94
+#: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
 msgstr "Używane tylko do pytań związanych z wysyłką."
 
@@ -1699,24 +1705,24 @@ msgstr "Opcjonalnie"
 msgid "Optional fields"
 msgstr "Pola opcjonalne"
 
-#: inc/admin/admin-settings-order-received.php:152
+#: inc/admin/admin-settings-order-received.php:150
 msgid "Order actions"
 msgstr "Działania porządkowe"
 
-#: inc/admin/admin-settings-order-received.php:117
-#: inc/admin/admin-settings-order-received.php:145
+#: inc/admin/admin-settings-order-received.php:115
+#: inc/admin/admin-settings-order-received.php:143
 msgid "Order details layout"
 msgstr "Układ szczegółów zamówienia"
 
-#: inc/admin/admin-settings-order-received.php:78
+#: inc/admin/admin-settings-order-received.php:76
 msgid "Order details optimizations"
 msgstr "Optymalizacja szczegółów zamówienia"
 
-#: inc/admin/admin-settings-order-received.php:194
+#: inc/admin/admin-settings-order-received.php:192
 msgid "Order downloads"
 msgstr "Zamawianie plików do pobrania"
 
-#: inc/admin/admin-settings-order-received.php:224
+#: inc/admin/admin-settings-order-received.php:222
 #: inc/admin/admin-settings-checkout.php:679
 msgid "Order notes"
 msgstr "Uwagi do zamówienia"
@@ -1731,12 +1737,12 @@ msgstr ""
 msgid "Order progress"
 msgstr "Postęp zamówienia"
 
-#: inc/admin/admin-settings-order-received.php:167
+#: inc/admin/admin-settings-order-received.php:165
 msgid "Order status"
 msgstr "Status zamówienia"
 
-#: inc/checkout-steps.php:5222 inc/admin/admin-settings-cart.php:131
-#: inc/admin/admin-settings-order-received.php:177
+#: inc/checkout-steps.php:5238 inc/admin/admin-settings-cart.php:131
+#: inc/admin/admin-settings-order-received.php:175
 #: inc/admin/admin-settings-checkout.php:248
 msgid "Order summary"
 msgstr "Streszczenie zamówienia"
@@ -1789,7 +1795,7 @@ msgstr ""
 "Wyprowadź sekcję kroków realizacji zakupu z motywu Pressmart na stronach "
 "realizacji zakupu, koszyka i otrzymanego zamówienia."
 
-#: inc/compat/themes/compat-theme-woodmart.php:133
+#: inc/compat/themes/compat-theme-woodmart.php:159
 #| msgid ""
 #| "Output the checkout steps section from the Woodmart theme when using "
 #| "Fluid Checkout header and footer"
@@ -1800,7 +1806,7 @@ msgstr ""
 "Wyprowadź sekcję kroków realizacji zakupu z motywu Woodmart podczas "
 "korzystania z nagłówka i stopki Fluid Checkout."
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:81
 msgid ""
 "Override the position for the subscribe checkbox on the checkout page and "
 "always display it on the contact step"
@@ -1816,7 +1822,7 @@ msgstr "Kolor tła strony"
 msgid "Parcel terminal"
 msgstr "Terminal paczkowy"
 
-#: inc/checkout-steps.php:5001
+#: inc/checkout-steps.php:5017
 msgid "Payment method"
 msgstr "Sposób płatności"
 
@@ -1828,7 +1834,7 @@ msgstr "Data odbioru"
 msgid "Pickup point"
 msgstr "Punkt odbioru"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:412
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
 #: inc/compat/plugins/compat-plugin-seur.php:382
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:313
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297
@@ -1836,7 +1842,7 @@ msgstr "Punkt odbioru"
 msgid "Pickup point not selected yet."
 msgstr "Punkt odbioru nie został jeszcze wybrany."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:400
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
 #: inc/compat/plugins/compat-plugin-seur.php:387
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:307
 #: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312
@@ -1847,15 +1853,35 @@ msgstr "Miejsce odbioru:"
 msgid "Place order"
 msgstr "Złóż zamówienie"
 
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:362
+msgid "Please verify your phone number."
+msgstr "Prosimy o weryfikację numeru telefonu."
+
 #: inc/admin/admin-settings-checkout.php:515
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Zapobieganie automatycznemu wybieraniu pierwszej metody wysyłki"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1533
+#: inc/checkout-steps.php:1536
 #, php-format
 msgid "Proceed to %s"
 msgstr "Przejdź do %s"
+
+#: inc/checkout-steps.php:1683
+msgid "Proceed to billing"
+msgstr "Przejdź do rozliczenia"
+
+#: inc/checkout-steps.php:1660
+msgid "Proceed to contact"
+msgstr "Przejdź do kontaktu"
+
+#: inc/checkout-steps.php:1693
+msgid "Proceed to payment"
+msgstr "Przejdź do płatności"
+
+#: inc/checkout-steps.php:1670
+msgid "Proceed to shipping"
+msgstr "Przejdź do wysyłki"
 
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
@@ -1876,6 +1902,10 @@ msgstr ""
 #: inc/admin/admin-notice-review-request.php:48
 msgid "Rate the plugin"
 msgstr "Oceń wtyczkę"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "Przeczytaj dokumentację"
 
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104
 #: inc/admin/admin.php:184
@@ -1948,11 +1978,11 @@ msgstr ""
 msgid "Required"
 msgstr "Wymagane"
 
-#: inc/checkout-steps.php:3983
+#: inc/checkout-steps.php:3999
 msgid "Same as billing address"
 msgstr "Taki sam jak adres rozliczeniowy"
 
-#: inc/checkout-steps.php:3938
+#: inc/checkout-steps.php:3954
 msgid "Same as shipping address"
 msgstr "Taki sam jak adres wysyłki"
 
@@ -2049,7 +2079,7 @@ msgctxt "Settings section"
 msgid "Cart"
 msgstr "Wózek"
 
-#: inc/admin/admin-settings-order-received.php:49
+#: inc/admin/admin-settings-order-received.php:47
 msgctxt "Settings section"
 msgid "Thank you"
 msgstr "Dziękuję"
@@ -2084,7 +2114,7 @@ msgstr "Wysyłka"
 msgid "Shipping address"
 msgstr "Adres do wysyłki"
 
-#: inc/checkout-steps.php:2603
+#: inc/checkout-steps.php:2619
 msgid "Shipping method"
 msgstr "Sposób wysyłki"
 
@@ -2092,12 +2122,14 @@ msgstr "Sposób wysyłki"
 msgid "Shipping methods"
 msgstr "Sposoby wysyłki"
 
-#: inc/checkout-shipping-phone-field.php:93
+#: inc/checkout-shipping-phone-field.php:104
 #: inc/admin/admin-settings-checkout.php:577
 msgid "Shipping phone"
 msgstr "Telefon do wysyłki"
 
-#: inc/checkout-steps.php:2579
+#: inc/checkout-steps.php:2595
+#: templates/fc/checkout-steps/emails/email-addresses.php:35
+#: templates/fc/checkout-steps/emails/plain/email-addresses.php:27
 msgid "Shipping to"
 msgstr "Wysyłka do"
 
@@ -2154,6 +2186,18 @@ msgstr ""
 "aktualizacji, zalecamy <strong>wykonanie pełnej kopii zapasowej witryny "
 "przed kontynuowaniem</strong>."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+#, php-format
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"Niektóre funkcje WooCommerce Checkout Manager by Quadlayers mogą nie działać "
+"zgodnie z oczekiwaniami, gdy są używane z Fluid Checkout. Przeczytaj <a "
+"href=\"%s\">naszą dokumentację</a>, aby uzyskać więcej informacji i poznać "
+"alternatywne rozwiązania."
+
 #: inc/admin/admin-settings-checkout.php:315
 msgid "Some options might not be compatible with some plugins and themes."
 msgstr ""
@@ -2172,30 +2216,30 @@ msgid "Split"
 msgstr "Podział"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:1800
+#: inc/checkout-steps.php:1816
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Krok %1$s z %2$s"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:79
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
 msgid "Subscribe checkbox"
 msgstr "Pole wyboru subskrypcji"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2781
+#: inc/checkout-steps.php:2797
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:2786
+#: inc/checkout-steps.php:2802
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2150
+#: inc/checkout-steps.php:2166
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Nie."
@@ -2204,11 +2248,11 @@ msgstr "Nie."
 msgid "Support"
 msgstr "Wsparcie"
 
-#: inc/admin/admin-settings-order-received.php:110
+#: inc/admin/admin-settings-order-received.php:108
 msgid "Thank you page"
 msgstr "Strona z podziękowaniami"
 
-#: inc/admin/admin-settings-order-received.php:71
+#: inc/admin/admin-settings-order-received.php:69
 msgid "Thank you page & order details layout"
 msgstr "Strona z podziękowaniem i układ szczegółów zamówienia"
 
@@ -2282,13 +2326,21 @@ msgstr "Numer CPF \"{cpf_number}\" jest nieprawidłowy."
 msgid "The database changes where applied successfully."
 msgstr "Zmiany w bazie danych zostały pomyślnie zastosowane."
 
-#: inc/compat/themes/compat-theme-woodmart.php:143
+#: inc/compat/themes/compat-theme-woodmart.php:169
 msgid ""
 "The options display product image, quantity field, remove button and link to "
 "product page added by the theme are disabled by default."
 msgstr ""
 "Opcje wyświetlania obrazu produktu, pola ilości, przycisku usuwania i linku "
 "do strony produktu dodane przez motyw są domyślnie wyłączone."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr ""
+"Wtyczka WooCommerce Checkout Manager firmy Quadlayers nie jest kompatybilna "
+"z Fluid Checkout"
 
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
@@ -2340,7 +2392,7 @@ msgstr "Temat Pressmart"
 msgid "Theme The Gem"
 msgstr "Temat The Gem"
 
-#: inc/compat/themes/compat-theme-woodmart.php:126
+#: inc/compat/themes/compat-theme-woodmart.php:152
 msgid "Theme Woodmart"
 msgstr "Temat Woodmart"
 
@@ -2357,7 +2409,7 @@ msgstr "Układ sprzedaży krzyżowej motywu"
 msgid "Theme's header and footer"
 msgstr "Nagłówek i stopka motywu"
 
-#: inc/admin/admin-settings-order-received.php:147
+#: inc/admin/admin-settings-order-received.php:145
 msgid ""
 "These options affect the thank you page , view order details on account "
 "pages and on email notifications."
@@ -2365,7 +2417,7 @@ msgstr ""
 "Opcje te mają wpływ na stronę z podziękowaniem, wyświetlanie szczegółów "
 "zamówienia na stronach konta i w powiadomieniach e-mail."
 
-#: inc/admin/admin-settings-order-received.php:112
+#: inc/admin/admin-settings-order-received.php:110
 msgid ""
 "These options affect the thank you page, also known as order received or "
 "order confirmation pages."
@@ -2391,7 +2443,7 @@ msgstr ""
 "Te obszary widżetów służą do dodawania symboli zaufania i odznak zaufania na "
 "stronie kasy."
 
-#: inc/admin/admin-settings-order-received.php:129
+#: inc/admin/admin-settings-order-received.php:127
 msgid ""
 "These widget areas are used to add trust symbols and trust badges on the "
 "thank you page."
@@ -2447,7 +2499,7 @@ msgid "Troubleshooting"
 msgstr "Rozwiązywanie problemów"
 
 #: inc/admin/admin-settings-cart.php:219
-#: inc/admin/admin-settings-order-received.php:127
+#: inc/admin/admin-settings-order-received.php:125
 #: inc/admin/admin-settings-checkout.php:328
 msgid "Trust symbols &amp; badges"
 msgstr "Symbole i odznaki zaufania"
@@ -2485,6 +2537,10 @@ msgstr ""
 #, php-format
 msgid "Valid until %s."
 msgstr "Obowiązuje do %s."
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:261
+msgid "Verify Phone Number"
+msgstr "Zweryfikuj numer telefonu"
 
 #: inc/admin/admin-setting-type-fc-setup.php:51
 #, php-format
@@ -2567,7 +2623,7 @@ msgstr ""
 "błędy podczas przetwarzania nowych zamówień</strong>. Proszę wyłączyć "
 "funkcję wieloetapowej kasy Germanized PRO w ustawieniach wtyczki."
 
-#: fluid-checkout.php:553
+#: fluid-checkout.php:554
 msgid "WooCommerce"
 msgstr "WooCommerce"
 

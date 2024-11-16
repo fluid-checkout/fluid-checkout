@@ -56,9 +56,6 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Add or remove template parts hooks.
 	 */
 	public function template_parts_hooks() {
-		// Bail if not using distraction free header and footer
-		if ( ! $this->is_distraction_free_header_footer_checkout() ) { return; }
-
           // Checkout header and footer
           add_action( 'fc_checkout_header', array( $this, 'output_checkout_header' ), 1 );
           add_action( 'fc_checkout_footer', array( $this, 'output_checkout_footer' ), 100 );

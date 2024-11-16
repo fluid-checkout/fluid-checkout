@@ -23,8 +23,8 @@ $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_a
 $show_shipping = apply_filters( 'fc_pro_order_details_customer_information_show_shipping', $show_shipping, $order );
 
 // CHANGE: Define labels for shipping and billing columns
-$billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'billing_address', __( 'Billing to', 'fluid-checkout-pro' ) ), $order );
-$shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'shipping_address', __( 'Shipping to', 'fluid-checkout-pro' ) ), $order );
+$billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'billing_address', __( 'Billing to', 'fluid-checkout' ) ), $order );
+$shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title_with_filters( 'shipping_address', __( 'Shipping to', 'fluid-checkout' ) ), $order );
 
 // CHANGE: Replace variables for formatted addresses with filters to allow plugins to change the displayed addresses
 $billing_address_formatted = apply_filters( 'fc_pro_order_details_customer_billing_address_formatted', $order->get_formatted_billing_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );

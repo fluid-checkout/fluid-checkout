@@ -1664,12 +1664,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get next step args
 		$next_step_args = $this->get_next_step( $step_id, $context );
 
-		// Get title of the next step
-		$next_step_id = $next_step_args[ 'step_id' ];
-		$next_step_title = $this->get_step_title( $next_step_id, $context );
-
+		// Get default label for next step button
 		/** translators: Next checkout step title */
-		return sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_title );
+		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
+
+		// Check whether a specific button label is available for the next step
+		if ( array_key_exists( 'proceed_to_step_button_label', $next_step_args ) ) {
+			$button_label = $next_step_args[ 'proceed_to_step_button_label' ];
+		}
+
+		// Filter to allow changes to the proceed to next step button label
+		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $next_step_args );
+
+		return $button_label;
 	}
 
 
@@ -2186,6 +2193,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_contact,
 			'step_title' => apply_filters( 'fc_step_title_contact', _x( 'Contact', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to contact', 'fluid-checkout' ),
 			'priority' => 10,
 		) );
 
@@ -2194,6 +2202,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_shipping,
 			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to shipping', 'fluid-checkout' ),
 			'priority' => 20,
 			// Need to set condition as an anonymous function that returns checks if shipping is needed directly,
 			// because if the step is registered before the object `WC()->cart` is available, the condition will always return false.
@@ -2205,6 +2214,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_billing,
 			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to billing', 'fluid-checkout' ),
 			'priority' => $this->get_billing_step_hook_priority(),
 		) );
 
@@ -2213,6 +2223,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_payment,
 			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
+			'proceed_to_step_button_label' => __( 'Proceed to payment', 'fluid-checkout' ),
 			'priority' => 100,
 		) );
 
@@ -3341,6 +3352,85 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 
 
+
+	/**
+	 * Output shipping step.
+	 */
+	public function output_step_shipping() {
+		do_action( 'fc_output_step_shipping', 'shipping' );
+	}
+
+	/**
+	 * Output shipping address substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 */
+	public function output_substep_shipping_address( $step_id ) {
+		$substep_id = 'shipping_address';
+		$substep_title = __( 'Shipping to', 'fluid-checkout' );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
+
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
+		$this->output_substep_shipping_address_fields();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
+
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
+			$this->output_substep_text_shipping_address();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
+		}
+
+		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
+	}
+
+	/**
+	 * Output shipping method substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 */
+	public function output_substep_shipping_method( $step_id ) {
+		$substep_id = 'shipping_method';
+		$substep_title = __( 'Shipping method', 'fluid-checkout' );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
+
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
+		$this->output_shipping_methods_available();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
+
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
+			$this->output_substep_text_shipping_method();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
+		}
+
+		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
+	}
+
+	/**
+	 * Output order notes substep.
+	 *
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 */
+	public function output_substep_order_notes( $step_id ) {
+		$substep_id = 'order_notes';
+		$substep_title = __( 'Additional notes', 'fluid-checkout' );
+		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
+
+		$this->output_substep_fields_start_tag( $step_id, $substep_id );
+		$this->output_additional_fields();
+		$this->output_substep_fields_end_tag( $step_id, $substep_id );
+
+		// Only output substep text format for multi-step checkout layout
+		if ( $this->is_checkout_layout_multistep() ) {
+			$this->output_substep_text_start_tag( $step_id, $substep_id );
+			$this->output_substep_text_order_notes();
+			$this->output_substep_text_end_tag( $step_id, $substep_id );
+		}
+
+		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
+	}
 
 	/**
 	 * Run additional order notes hooks, for when the order notes fields are disabled.
@@ -5331,7 +5421,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
 					// Maybe update new address data
 					if ( '0' === $is_billing_same_as_shipping_previous && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
-						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
+						$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
 					}
 
 					// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields

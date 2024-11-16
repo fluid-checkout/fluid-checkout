@@ -127,11 +127,11 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$billing_company_class = 'required' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) ? 'form-row-last' : 'form-row-wide';
 
 		$fields_args = array(
-			'billing_email'         => array( 'priority' => 5, 'description' => $billing_email_description, 'type' => 'email', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact email' ) ),
+			'billing_email'         => array( 'priority' => 5, 'description' => $billing_email_description, 'type' => 'email', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact email', 'data-leadin-email' => true ) ),
 
-			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact given-name' ) ),
-			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact family-name' ) ),
-			'billing_phone'         => array( 'priority' => 30, 'class' => array( 'form-row-first' ), 'type' => 'tel', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact tel' ) ),
+			'billing_first_name'    => array( 'priority' => 10, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact given-name', 'data-leadin-fname' => true ) ),
+			'billing_last_name'     => array( 'priority' => 20, 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact family-name', 'data-leadin-lname' => true ) ),
+			'billing_phone'         => array( 'priority' => 30, 'class' => array( 'form-row-first' ), 'type' => 'tel', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact tel', 'data-leadin-telephone' => true ) ),
 			'billing_company'       => array( 'priority' => 40, 'class' => array( $billing_company_class ), 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing organization' ) ),
 			'billing_address_1'     => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing address-line1' ) ),
 			'billing_address_2'     => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'billing address-line2' ) ),
