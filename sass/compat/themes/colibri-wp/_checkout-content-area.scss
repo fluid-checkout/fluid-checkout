@@ -2,12 +2,12 @@
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content {
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.page-content {
 	color: #6B7C93; // Needed to use theme color to match its styles
 	background-color: #F5FAFD; // Needed to use theme color to match its styles
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .has-checkout-header ) .fc-content {
+body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .has-checkout-header ) .fc-content.page-content {
 	box-shadow: 0 20px 20px -10px rgba( 49, 52, 57, 0.3 ), 0 20px 30px rgba( 0, 0, 0, 0.08 ); // Needed to use theme value to match its styles
 }
 

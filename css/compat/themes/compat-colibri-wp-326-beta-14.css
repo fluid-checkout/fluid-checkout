@@ -4,12 +4,12 @@
   }
 }
 
-body.theme-colibri-wp.woocommerce-checkout .fc-content {
+body.theme-colibri-wp.woocommerce-checkout .fc-content.page-content {
   color: #6B7C93;
   background-color: #F5FAFD;
 }
 
-body.theme-colibri-wp.woocommerce-checkout:not(.has-checkout-header) .fc-content {
+body.theme-colibri-wp.woocommerce-checkout:not(.has-checkout-header) .fc-content.page-content {
   box-shadow: 0 20px 20px -10px rgba(49, 52, 57, 0.3), 0 20px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -91,6 +91,8 @@ body.theme-colibri-wp div.woocommerce .woocommerce-notices-wrapper .woocommerce-
 body.theme-colibri-wp .fc-wrapper .fc-coupon-code-messages .woocommerce-error,
 body.theme-colibri-wp .fc-wrapper .fc-coupon-code-messages .woocommerce-message {
   padding: 1em 2em 1em 3.5em;
+  border-radius: 4px;
+  line-height: 2.2em;
 }
 body.theme-colibri-wp div.woocommerce .woocommerce-NoticeGroup .woocommerce-error:before,
 body.theme-colibri-wp div.woocommerce .woocommerce-NoticeGroup .woocommerce-info:before,
@@ -113,8 +115,6 @@ body.theme-colibri-wp div.woocommerce .woocommerce-notices-wrapper .woocommerce-
 body.theme-colibri-wp .fc-wrapper .fc-coupon-code-messages .woocommerce-error {
   background-color: rgba(208, 2, 27, 0.1);
   border: solid 1px rgba(208, 2, 27, 0.2);
-  border-radius: 4px;
-  line-height: 2.2em;
 }
 
 body.theme-colibri-wp div.woocommerce .woocommerce-NoticeGroup .woocommerce-error:before,
@@ -122,6 +122,13 @@ body.theme-colibri-wp div.woocommerce .woocommerce-notices-wrapper .woocommerce-
 body.theme-colibri-wp .fc-wrapper .fc-coupon-code-messages .woocommerce-error:before {
   content: "\e016";
   color: #b81c23;
+}
+
+body.theme-colibri-wp div.woocommerce .woocommerce-NoticeGroup .woocommerce-info,
+body.theme-colibri-wp div.woocommerce .woocommerce-notices-wrapper .woocommerce-info,
+body.theme-colibri-wp .fc-wrapper .fc-coupon-code-messages .woocommerce-info {
+  background-color: rgba(3, 169, 244, 0.1);
+  border: solid 1px rgba(74, 144, 226, 0.2);
 }
 
 body.theme-colibri-wp div.woocommerce p.form-row {
