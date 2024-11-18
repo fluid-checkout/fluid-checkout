@@ -1,0 +1,11 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .select2-container--default .select2-search--dropdown {
+	padding: 4px; // Use default component's value to override theme styles
+}
+
+body#{ $_body-theme-selector } .select2-container--default .select2-results__option {
+	padding: 6px; // Use default component's value to override theme styles
+}

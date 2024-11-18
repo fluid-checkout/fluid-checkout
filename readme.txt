@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Colibri WP.
 * Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled.
 
 = 3.2.6 - 2024-11-14 =
