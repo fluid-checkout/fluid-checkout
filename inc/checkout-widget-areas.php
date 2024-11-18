@@ -91,7 +91,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Register widget areas.
 	 */
 	public function register_widgets_areas() {
-		// Only register header widget areas when using Fluid Checkout header
+		// Only register header widget areas when using distraction free header and footer
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' ) ) {
 
 			register_sidebar( array(
@@ -152,7 +152,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 
-		// Only register footer widget areas when using Fluid Checkout footer
+		// Only register header widget areas when using distraction free header and footer
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' ) ) {
 			register_sidebar( array(
 				'name'          => __( 'Checkout Footer', 'fluid-checkout' ),

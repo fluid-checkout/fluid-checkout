@@ -88,6 +88,17 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ),
+						'desc'              => __( 'Add widget areas to the order pay page', 'fluid-checkout' ),
+						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the order pay page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
+						'id'                => 'fc_pro_enable_order_pay_widget_areas',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_pay_widget_areas' ),
+						'type'              => 'checkbox',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_pro_order_pay_layout_options',
 					),
