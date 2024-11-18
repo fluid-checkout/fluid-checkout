@@ -6166,7 +6166,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Output checkout place order section for the sidebar.
 	 */
-	public function output_checkout_place_order_section_for_sidebar( $is_sidebar_widget ) {
+	public function output_checkout_place_order_section_for_sidebar() {
 		$this->output_checkout_place_order_section( '__sidebar', true );
 	}
 
