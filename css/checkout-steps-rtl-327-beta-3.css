@@ -1879,23 +1879,23 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   }
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total th,
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td:first-child {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child th:first-child,
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child td:first-child {
   border-radius: 0 !important;
 }
 @media (min-width: 1000px) {
-  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total th,
-  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td:first-child {
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child th:first-child,
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child td:first-child {
     border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
     border-bottom-left-radius: 0 !important;
   }
 }
 
-div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td {
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child td:last-child {
   border-radius: 0 !important;
 }
 @media (min-width: 1000px) {
-  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total td {
+  div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child td:last-child {
     border-bottom-right-radius: 0 !important;
     border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
   }
