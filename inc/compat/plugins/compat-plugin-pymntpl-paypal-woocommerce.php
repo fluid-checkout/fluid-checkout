@@ -31,7 +31,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Checkout events
-		wp_register_script( 'fc-compat-pymntpl-paypal-woocommerce-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/pymntpl-paypal-woocommerce/paypal-checkout-events' ), array( 'jquery' ), NULL, true );
+		wp_register_script( 'fc-compat-pymntpl-paypal-woocommerce-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/pymntpl-paypal-woocommerce/paypal-checkout-events' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-compat-pymntpl-paypal-woocommerce-checkout', 'window.addEventListener("load",function(){PaymentPluginsPayPalCheckoutEvents.init();})' );
 	}
 
@@ -48,7 +48,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function maybe_enqueue_assets() {
 		// Bail if not at checkout
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		$this->enqueue_assets();
 	}

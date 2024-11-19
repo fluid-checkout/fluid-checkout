@@ -62,6 +62,7 @@
 		ENTER: 'Enter',
 		SPACE: ' ',
 	}
+	var _canChangeFocus = false;
 
 
 
@@ -494,7 +495,7 @@
 
 		// Maybe set focus state
 		var manager = _publicMethods.getInstance( element.closest( _settings.elementSelector ) );
-		if ( manager && manager.isActivated === true && manager.withFocus ) {
+		if ( _canChangeFocus && manager && manager.isActivated === true && manager.withFocus ) {
 			var focusElement = null;
 
 			// Maybe set focus to the child element marked as auto-focus that is visible, skipping those in nested collapsible blocks
@@ -702,6 +703,20 @@
 				finishExpand( manager.contentElement );
 			}, heightTransitionDuration + 50 );
 		} );
+	}
+
+	/**
+	 * Enable focus on expand.
+	 */
+	_publicMethods.enableFocusOnExpand = function() {
+		_canChangeFocus = true;
+	}
+
+	/**
+	 * Disable focus on expand.
+	 */
+	_publicMethods.disableFocusOnExpand = function() {
+		_canChangeFocus = false;
 	}
 
 
@@ -917,6 +932,9 @@
 
 		// Set body class
 		document.body.classList.add( _settings.bodyClass );
+
+		// Enable focus
+		_publicMethods.enableFocusOnExpand();
 
 		// Set as initialized
 		requestAnimationFrame( function() {

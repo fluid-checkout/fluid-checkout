@@ -1,0 +1,37 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+div.woocommerce .form-row .woocommerce-success {
+	display: block;
+	z-index: z( 'default' ) + 1;
+	position: relative;
+	margin: 0;
+	padding: $checkout-message-error-padding;
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left;
+	min-height: auto;
+	border: 0;
+	background-color: $checkout-message-error-background-color;
+	font-size: $font-size-extra-small;
+	text-align: #{ $alignment-left };
+	line-height: 1.6;
+	animation: none;
+	transform: none;
+}
+
+div.woocommerce .shipping-method__package .woocommerce-success {
+	padding-#{ $alignment-left }: calc( #{ $global-spacing-extra-small } + #{ $option-box-radio-size } + #{ $option-box-padding-horizontal } + remsize( .1rem ) );
+	background-color: transparent;
+}
+
+div.woocommerce .form-row .woocommerce-success:before {
+	@include icon( $checkout-message-success-icon );
+	@include icon-size( $checkout-message-success-icon-size );
+
+	position: absolute;
+	top: $checkout-message-success-icon-position-top;
+	#{ $alignment-left }: $checkout-message-success-icon-position-left;
+	transform: translateY( -50% );
+	color: inherit;
+	speak: never;
+}

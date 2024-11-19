@@ -1,0 +1,24 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.page-content {
+	color: #6B7C93; // Needed to use theme color to match its styles
+	background-color: #F5FAFD; // Needed to use theme color to match its styles
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector }:not( .has-checkout-header ) .fc-content.page-content {
+	box-shadow: 0 20px 20px -10px rgba( 49, 52, 57, 0.3 ), 0 20px 30px rgba( 0, 0, 0, 0.08 ); // Needed to use theme value to match its styles
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content label {
+	color: #313439; // Needed to use theme color to match its styles
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content .h-section-boxed-container {
+	@media (#{$bp-smaller-than-tablet}) { 
+		width: 100%;
+		padding-#{ $alignment-left }: remsize( 2rem ) !important; // Needed to override theme styles
+		padding-#{ $alignment-right }: remsize( 2rem ) !important; // Needed to override theme styles
+	}
+}

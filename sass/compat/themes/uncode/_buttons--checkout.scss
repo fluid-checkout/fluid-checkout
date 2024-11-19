@@ -1,0 +1,8 @@
+// ------------------------------------
+// BUTTONS -- CHECKOUT
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-save,
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__next-step {
+	text-transform: var(--fluidcheckout--uncode--button--text-transform);
+}

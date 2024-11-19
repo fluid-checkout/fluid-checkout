@@ -37,7 +37,7 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 		// Bail if not on WooCommerce Settings
 		if ( 'woocommerce_page_wc-settings' !== $hook ) { return; }
 		
-		wp_register_script( 'fc-admin-image-uploader', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-image-uploader' ), array( 'jquery', 'media-upload', 'media-views' ), null, true );
+		wp_register_script( 'fc-admin-image-uploader', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-image-uploader' ), array( 'jquery', 'media-upload', 'media-views' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 

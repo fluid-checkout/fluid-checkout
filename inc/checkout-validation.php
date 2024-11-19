@@ -114,14 +114,14 @@ class FluidCheckout_Validation extends FluidCheckout {
 		wp_register_style( 'fc-checkout-validation', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-validation' ), NULL, NULL );
 
 		// Scripts
-		wp_register_script( 'fc-checkout-validation', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation' ), array( 'jquery', 'wc-checkout', 'fc-utils' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation' ), array( 'jquery', 'wc-checkout', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
-		wp_register_script( 'fc-mailcheck', FluidCheckout_Enqueue::instance()->get_script_url( 'js/lib/mailcheck' ), array( 'jquery' ), NULL );
-		wp_register_script( 'fc-mailcheck-init', FluidCheckout_Enqueue::instance()->get_script_url( 'js/mailcheck-init' ), array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL );
+		wp_register_script( 'fc-mailcheck', FluidCheckout_Enqueue::instance()->get_script_url( 'js/lib/mailcheck' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-mailcheck-init', FluidCheckout_Enqueue::instance()->get_script_url( 'js/mailcheck-init' ), array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
 
 		// Brazilian documents validation script
-		wp_register_script( 'fc-checkout-validation-brazilian-documents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation-brazilian-documents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_register_script( 'fc-checkout-validation-brazilian-documents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation-brazilian-documents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);})' );
 	}
 
@@ -189,8 +189,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
-			'validateFieldsSelector'             => '.input-text, .input-checkbox, select, .shipping-method__options',
-			'referenceNodeSelector'              => '.input-text, .input-checkbox, select, .shipping-method__options',
+			'validateFieldsSelector'             => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
+			'referenceNodeSelector'              => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */

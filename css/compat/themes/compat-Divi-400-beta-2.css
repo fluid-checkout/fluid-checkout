@@ -23,8 +23,6 @@ body.theme-Divi .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:
 }
 
 body.theme-Divi div.woocommerce .form-row .woocommerce-error {
-  padding: 5px 10px 5px !important;
-  padding-left: 28px !important;
   font-size: 13px !important;
   color: var(--fluidcheckout--color--error, #cc1818) !important;
 }

@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+	text-transform: var(--fluidcheckout--uncode--button--text-transform);
+}

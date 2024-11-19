@@ -1,0 +1,14 @@
+// ------------------------------------
+// INTL-TEL-INPUT STYLES
+// 
+// This file is required on the Lite plugin
+// to fix style issues with the intl-tel-input
+// component added by this plugin, whether the
+// international phone number feature of
+// Fluid Checkout PRO is enabled or not.
+// ------------------------------------
+
+.iti__country-container {
+	height: $form-field-height;
+	z-index: z( 'float-element' );
+}

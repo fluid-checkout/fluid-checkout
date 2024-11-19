@@ -91,6 +91,7 @@ jQuery(function ($) {
 
 				if ('2' === personType) {
 					if ('BR' === country) {
+						$('#billing_company_field label .optional').remove();
 						$('#billing_company_field')
 							.addClass(
 								'validate-required is-active woocommerce-validated'
@@ -139,7 +140,10 @@ jQuery(function ($) {
 
 							handleFields(personType, checkCountry);
 						})
-						.change();
+						// CHANGE: Do not trigger `change` event for the field, as it might cause other plugins to behave errorneusly
+
+					// CHANGE: Run the function `handleFields` directly, to handle the field changes without triggering the `change` event remove above
+					handleFields( '1', checkCountry );
 				}
 			};
 
@@ -177,7 +181,7 @@ jQuery(function ($) {
 							);
 						} else {
 							$('.person-type-field').removeClass(
-								'validate-required'
+								'validate-required is-active woocommerce-validated'
 							);
 							$('.person-type-field label .required').remove();
 						}

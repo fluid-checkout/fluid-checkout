@@ -21,14 +21,17 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 	public function hooks() {
 		// Styles
 		// Applies only to Legacy Stripe Checkout experience.
-		// For the New Stripe Checkout, the is currently no way to customize the styles of the payment fields.
 		add_filter( 'wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles' ), 10 );
+
+		// Styles
+		// Applies only to the New Stripe Checkout experience, since version 
+		add_filter( 'wc_stripe_upe_params', array( $this, 'change_stripe_appearance_parameters' ), 10 );
 	}
 
 
 
 	/**
-	 * Change styles for the Stripe credit card fields.
+	 * Change styles for the Stripe checkout fields for the Legacy Stripe Checkout experience.
 	 *
 	 * @param   array  $styles  The Stripe elements style properties.
 	 */
@@ -49,6 +52,33 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 		);
 		return $styles;
 	}
+
+
+
+	/**
+	 * Change styles for the Stripe checkout fields for the New Stripe Checkout experience.
+	 *
+	 * @param   array  $stripe_params   The Stripe Javascript parameters.
+	 * 
+	 * @see  https://docs.stripe.com/elements/appearance-api
+	 */
+	public function change_stripe_appearance_parameters( $stripe_params ) {
+		// Define default theme for the Stripe Checkout
+		$stripe_theme = 'stripe';
+
+		// Maybe set "dark mode" theme for the Stripe Checkout
+		// when Fluid Checkout is set to "dark mode".
+		if ( class_exists( 'FluidCheckout_DesignTemplates' ) && FluidCheckout_DesignTemplates::instance()->is_dark_mode_enabled() ) {
+			$stripe_theme = 'night';
+		}
+
+		// Set the theme for the Stripe Checkout
+		$stripe_params[ 'appearance' ] = (object) [
+			'theme' => $stripe_theme,
+		];
+
+		return $stripe_params;
+	 }
 
 
 }

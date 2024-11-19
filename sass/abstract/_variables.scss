@@ -625,8 +625,9 @@ $payment-method-font-weight:                normal !default;
 
 $coupon-code-coupon-margin:                 0 #{ - $global-spacing-extra-small } $global-spacing-tiny !default;
 $coupon-code-coupon-padding:                $global-spacing-tiny $global-spacing-extra-small !default;
-$coupon-code-coupon-border:                 dashed remsize( .1rem ) var( --fluidcheckout--coupon-code--border-color, $border-color ) !default;
-$coupon-code-coupon-border-radius:          $global-radius-small !default;
+$coupon-code-coupon-border-style:           var( --fluidcheckout--coupon-code--border-style, dashed ) !default;
+$coupon-code-coupon-border:                 $coupon-code-coupon-border-style remsize( .1rem ) var( --fluidcheckout--coupon-code--border-color, $border-color ) !default;
+$coupon-code-coupon-border-radius:          var( --fluidcheckout--coupon-code--border-radius, $global-radius-small ) !default;
 $coupon-code-coupon-background-color:       var( --fluidcheckout--coupon-code--background-color, transparent ) !default;
 
 $coupon-code-remove-spacing:                $global-spacing-extra-small !default;
@@ -637,6 +638,19 @@ $coupon-code-remove-color:                  inherit !default;
 $coupon-code-remove-background-color:       transparent !default;
 
 // END - COUPON CODES
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// DISCOUNT SECTIONS
+
+$discount-section-border:                   var( --fluidcheckout--discount-section--border-style, $coupon-code-coupon-border-style ) remsize( .1rem ) var( --fluidcheckout--discount-section--border-color, $success-color ) !default;
+$discount-section-border-radius:            $checkout-substep-border-radius !default;
+
+// END - DISCOUNT SECTIONS
 // ----------------------------------------
 
 

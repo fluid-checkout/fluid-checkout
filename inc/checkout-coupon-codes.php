@@ -210,7 +210,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-coupons' ), array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, true );
+		wp_register_script( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-coupons' ), array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
 
 		// Styles
@@ -311,12 +311,18 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Output section
 		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $section_key, $coupon_code_toggle_label, $coupon_code_expansible_args );
+
+		do_action( 'fc_coupon_code_section_before' );
+
 		?>
 		<div class="fc-coupon-code-section">
 			<?php woocommerce_form_field( $field_key, $coupon_code_field_args ); ?>
 			<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
 		</div>
 		<?php
+
+		do_action( 'fc_coupon_code_section_after' );
+
 		FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
 	}
 
@@ -368,7 +374,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			// Get coupon label with changed "remove" link
 			ob_start();
 			wc_cart_totals_coupon_html( $coupon );
-			$coupon_html_esc = str_replace( esc_html( __( '[Remove]', 'woocommerce' ) ), esc_html( __( 'Remove', 'fluid-checkout' ) ), ob_get_clean() );
+			$coupon_html_esc = ob_get_clean();
+
+			// Change the "remove" link text
+			$coupon_html_esc = str_replace( esc_html( __( '[Remove]', 'woocommerce' ) ), esc_html( __( 'Remove', 'fluid-checkout' ) ), $coupon_html_esc );
 			?>
 			<?php // The function `sanitize_title` is used below to convert the string into a CSS-class-like string ?>
 			<div class="fc-coupon-codes__coupon coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">

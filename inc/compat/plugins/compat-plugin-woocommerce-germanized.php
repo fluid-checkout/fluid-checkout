@@ -32,6 +32,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'woocommerce_gzd_checkout_use_legacy_table_replacement_template', '__return_false', 10 );
 		add_filter( 'pre_option_woocommerce_gzd_display_checkout_thumbnails', array( $this, 'change_germanized_display_checkout_thumbnails_option' ), 10, 3 );
 
+		// Coupon as vouchers
+		add_filter( 'woocommerce_coupon_discount_amount_html', array( $this, 'maybe_change_voucher_coupon_discount_amount_html' ), 10, 3 );
+		add_filter( 'woocommerce_cart_totals_coupon_label', array( $this, 'maybe_change_voucher_coupon_label' ), 10, 3 );
 	}
 
 	/**
@@ -207,6 +210,101 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function change_substep_text_extra_fields_skip_list_billing( $skip_list ) {
 		return $this->change_substep_text_extra_fields_skip_list_by_address_type( $skip_list, 'billing' );
+	}
+
+
+
+	/**
+	 * Register voucher coupon validation for this plugin. 
+	 */
+	public function register_coupon_validation_filters() {
+		// Bail if class is not available
+		if ( ! class_exists( 'WC_GZD_Coupon_Helper' ) ) { return; }
+
+		add_filter( 'woocommerce_coupon_is_valid_for_product', array( WC_GZD_Coupon_Helper::instance(), 'is_valid_for_product_filter' ), 1000, 3 );
+		add_filter( 'woocommerce_coupon_is_valid_for_cart', array( WC_GZD_Coupon_Helper::instance(), 'is_valid' ), 1000, 2 );
+		add_filter( 'woocommerce_coupon_get_free_shipping', array( WC_GZD_Coupon_Helper::instance(), 'is_valid_free_shipping_filter' ), 1000, 2 );
+	}
+
+	/**
+	 * Unregister voucher coupon validation for this plugin.
+	 */
+	public function unregister_coupon_validation_filters() {
+		// Bail if class is not available
+		if ( ! class_exists( 'WC_GZD_Coupon_Helper' ) ) { return; }
+
+		remove_filter( 'woocommerce_coupon_is_valid_for_product', array( WC_GZD_Coupon_Helper::instance(), 'is_valid_for_product_filter' ), 1000 );
+		remove_filter( 'woocommerce_coupon_is_valid_for_cart', array( WC_GZD_Coupon_Helper::instance(), 'is_valid' ), 1000 );
+		remove_filter( 'woocommerce_coupon_get_free_shipping', array( WC_GZD_Coupon_Helper::instance(), 'is_valid_free_shipping_filter' ), 1000 );
+	}
+
+	/**
+	 * Check whether a coupon is a voucher from this plugin.
+	 * 
+	 * @param  WC_Coupon|string   $coupon   Coupon object or coupon code.
+	 *
+	 * @see    WC_GZD_Coupon_Helper::coupon_is_voucher()
+	 */
+	public function coupon_is_voucher( $coupon ) {
+		if ( is_string( $coupon ) ) {
+			$coupon = new WC_Coupon( $coupon );
+		}
+
+		if ( ! is_a( $coupon, 'WC_Coupon' ) ) {
+			return false;
+		}
+
+		return apply_filters( 'woocommerce_gzd_coupon_is_voucher', ( 'yes' === $coupon->get_meta( 'is_voucher', true ) ), $coupon );
+	}
+
+
+
+	/**
+	 * Maybe change the amount HTML for the coupon for voucher coupons from this plugin.
+	 *
+	 * @param   string     $discount_amount_html   The HTML for the discount amount.
+	 * @param   WC_Coupon  $coupon                 The coupon object.
+	 */
+	public function maybe_change_voucher_coupon_discount_amount_html( $discount_amount_html, $coupon ) {
+		// Bail if not a voucher coupon
+		if ( ! $this->coupon_is_voucher( $coupon ) ) { return $discount_amount_html; }
+
+		// Get coupon code
+		$coupon_code = is_string( $coupon ) ? $coupon : $coupon->get_code();
+
+		// Get the voucher discount amount
+		$this->unregister_coupon_validation_filters();
+		$discounts = new WC_GZD_Voucher_Discounts( WC()->cart, $coupon );
+		$discounts->apply_coupon( $coupon, false );
+		$total_discounts = $discounts->get_discounts_by_coupon();
+		$this->register_coupon_validation_filters();
+
+		// Bail if coupon is not available in the discounts totals
+		if ( ! array_key_exists( $coupon_code, $total_discounts ) ) { return $discount_amount_html; }
+
+		// Get coupon discount and convert to negative value for presentation
+		$coupon_discount_amount = $total_discounts[ $coupon_code ] * -1;
+
+		// Get the voucher amount HTML
+		$discount_amount_html = wc_price( $coupon_discount_amount );
+
+		return $discount_amount_html;
+	}
+
+	/**
+	 * Maybe change the label for the coupon for voucher coupons from this plugin.
+	 *
+	 * @param   string     $label    The coupon label.
+	 * @param   string     $coupon   The coupon object.
+	 */
+	public function maybe_change_voucher_coupon_label( $label, $coupon ) {
+		// Bail if not a voucher coupon
+		if ( ! $this->coupon_is_voucher( $coupon ) ) { return $label; }
+
+		// Get the voucher label
+		$label = apply_filters( 'woocommerce_gzd_voucher_name', sprintf( __( 'Voucher: %1$s', 'woocommerce-germanized' ), $coupon->get_code() ), $coupon->get_code() );
+
+		return $label;
 	}
 
 }
