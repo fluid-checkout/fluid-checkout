@@ -208,7 +208,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 
 	/**
-	 * Maybe set the shipping step as incomplete.
+	 * Set the shipping method substep as incomplete.
 	 *
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */

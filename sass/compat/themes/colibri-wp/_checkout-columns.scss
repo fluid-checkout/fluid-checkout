@@ -1,0 +1,9 @@
+// ------------------------------------
+// CHECKOUT COLUMNS LAYOUT
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-sidebar__inner {
+	@media (#{$bp-larger-than-desktop}) {
+		padding-top: $global-spacing-tiny;
+	}
+}

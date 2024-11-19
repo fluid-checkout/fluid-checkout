@@ -504,9 +504,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Formatted Address
 		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'maybe_add_phone_localisation_address_formats' ), 10 );
 		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
-		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
-		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
-		remove_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100, 1 );
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10);
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10 );
+		remove_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100);
 
 		// Place order
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10 );
@@ -3102,39 +3102,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $contact_fields;
 	}
 
-
-
-	/**
-	 * Output contact step.
-	 */
-	public function output_step_contact() {
-		do_action( 'fc_output_step_contact', 'contact' );
-	}
-
-	/**
-	 * Output contact substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_contact( $step_id ) {
-		$substep_id = 'contact';
-		$substep_title = __( 'My contact', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_step_contact_fields();
-		$this->output_substep_fields_end_tag( $step_id, $substep_id );
-
-		// Only output substep text format for multi-step checkout layout
-		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_contact();
-			$this->output_substep_text_end_tag( $step_id, $substep_id );
-		}
-
-		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
-	}
-
 	/**
 	 * Output contact step fields.
 	 * 
@@ -3352,85 +3319,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 
 
-
-	/**
-	 * Output shipping step.
-	 */
-	public function output_step_shipping() {
-		do_action( 'fc_output_step_shipping', 'shipping' );
-	}
-
-	/**
-	 * Output shipping address substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_shipping_address( $step_id ) {
-		$substep_id = 'shipping_address';
-		$substep_title = __( 'Shipping to', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_substep_shipping_address_fields();
-		$this->output_substep_fields_end_tag( $step_id, $substep_id );
-
-		// Only output substep text format for multi-step checkout layout
-		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_shipping_address();
-			$this->output_substep_text_end_tag( $step_id, $substep_id );
-		}
-
-		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
-	}
-
-	/**
-	 * Output shipping method substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_shipping_method( $step_id ) {
-		$substep_id = 'shipping_method';
-		$substep_title = __( 'Shipping method', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_shipping_methods_available();
-		$this->output_substep_fields_end_tag( $step_id, $substep_id );
-
-		// Only output substep text format for multi-step checkout layout
-		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_shipping_method();
-			$this->output_substep_text_end_tag( $step_id, $substep_id );
-		}
-
-		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
-	}
-
-	/**
-	 * Output order notes substep.
-	 *
-	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
-	 */
-	public function output_substep_order_notes( $step_id ) {
-		$substep_id = 'order_notes';
-		$substep_title = __( 'Additional notes', 'fluid-checkout' );
-		$this->output_substep_start_tag( $step_id, $substep_id, $substep_title );
-
-		$this->output_substep_fields_start_tag( $step_id, $substep_id );
-		$this->output_additional_fields();
-		$this->output_substep_fields_end_tag( $step_id, $substep_id );
-
-		// Only output substep text format for multi-step checkout layout
-		if ( $this->is_checkout_layout_multistep() ) {
-			$this->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_order_notes();
-			$this->output_substep_text_end_tag( $step_id, $substep_id );
-		}
-
-		$this->output_substep_end_tag( $step_id, $substep_id, $substep_title, true );
-	}
 
 	/**
 	 * Run additional order notes hooks, for when the order notes fields are disabled.

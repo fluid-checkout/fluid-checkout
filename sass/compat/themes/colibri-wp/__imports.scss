@@ -1,0 +1,25 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-colibri-wp' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"checkout-columns",
+	"checkout-content-area",
+	"checkout-coupon-code",
+	"checkout-header",
+	"checkout-place-order",
+	"checkout-progress-bar",
+	"order-summary",
+	"tom-select-control",
+	"checkout-validation",
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";

@@ -1,0 +1,46 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-NoticeGroup .woocommerce-error,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-NoticeGroup .woocommerce-info,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-NoticeGroup .woocommerce-message,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-notices-wrapper .woocommerce-error,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-notices-wrapper .woocommerce-info,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-notices-wrapper .woocommerce-message,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message {
+	padding: 1em 2em 1em 3.5em; // Needed to use `em` as units to match theme styles
+	border-radius: 4px; // Needed to use theme value to match its styles
+	line-height: 2.2em; // Needed to use `em` as units to match theme styles
+
+	&:before {
+		content: "\E028";
+		font-family: WooCommerce;
+		display: inline-block;
+		position: absolute;
+		top: 1em; // Needed to use `em` as units to match theme styles
+		#{ $alignment-left }: 1.5em; // Needed to use `em` as units to match theme styles
+	}
+}
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-NoticeGroup .woocommerce-error,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-notices-wrapper .woocommerce-error,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error {
+	background-color: rgba( 208, 2, 27, 0.1 ); // Needed to use theme color to match its styles
+	border: solid 1px rgba( 208, 2, 27, 0.2 ); // Needed to use theme value to match its styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-NoticeGroup .woocommerce-error:before,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-notices-wrapper .woocommerce-error:before,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error:before {
+	content: "\E016";
+	color: #b81c23; // Needed to use theme color to match its styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-NoticeGroup .woocommerce-info,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-notices-wrapper .woocommerce-info,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-info {
+	background-color: rgba( 3, 169, 244, 0.1 ); // Needed to use theme color to match its styles
+	border: solid 1px rgba( 74, 144, 226, 0.2 ); // Needed to use theme value to match its styles
+}

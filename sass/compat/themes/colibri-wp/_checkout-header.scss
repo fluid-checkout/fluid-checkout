@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT HEADER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-checkout-header__inner {
+	padding: 0 $container-spacing-mobile;
+
+	@media (#{$bp-larger-than-tablet}) { padding: 0 $container-spacing-tablet; }
+	@media (#{$bp-larger-than-desktop}) { padding: 0 $container-spacing-desktop; }
+	@media (#{$bp-larger-than-desktop-medium}) { padding: 0 $container-spacing-desktop-medium; }
+	@media (#{$bp-larger-than-desktop-large}) { padding: 0 $container-spacing-desktop-large; }
+	@media (#{$bp-larger-than-desktop-extra-large}) { padding: 0 $container-spacing-desktop-extra-large; }
+}
