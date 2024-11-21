@@ -2396,12 +2396,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
 		$checkout_fields = WC()->checkout->get_checkout_fields();
 
+		// Define list of address fields to skip as the formatted address has already been added
+		$field_keys_skip_list = apply_filters( "fc_substep_text_contact_field_keys_skip_list", array() );
+
 		// Add a text line for each field
 		foreach( $contact_field_ids as $field_key ) {
+			// Maybe skip some fields
+			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
+			
 			// Iterate checkout fields
 			foreach ( $checkout_fields as $field_group => $field_group_fields ) {
 				if ( array_key_exists( $field_key, $field_group_fields ) ) {
+					// Get field value
 					$field_value = WC()->checkout->get_value( $field_key );
+
+					// Add field value and continue to next field
 					$review_text_lines[] = $this->get_field_display_value( $field_value, $field_key, $field_group_fields[ $field_key ] );
 					continue 2;
 				}

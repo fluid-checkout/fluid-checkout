@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Colibri WP.
+* Added: Filter hook `fc_substep_text_contact_field_keys_skip_list` to allow skipping displaying some fields in the contact substep review text.
 * Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled.
 * Fixed: Instant validation for confirmation fields not working as expected.
 
