@@ -167,12 +167,26 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 	/**
 	 * Get HTML for PRO features label.
+	 * 
+	 * 
 	 */
-	public function get_pro_feature_option_html() {
+	public function get_pro_feature_option_html( $add_space_after = false ) {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
 
-		return __( '(PRO feature)', 'fluid-checkout' );
+		// Get the HTML for the PRO feature labels
+		$html = __( '(PRO)', 'fluid-checkout' );
+
+		// Maybe add space after the text
+		if ( $add_space_after ) {
+			$html = $html . ' ';
+		}
+		// Otherwise add the space before
+		else {
+			$html = ' ' . $html;
+		}
+
+		return $html;
 	}
 
 	/**
