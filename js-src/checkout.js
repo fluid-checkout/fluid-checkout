@@ -792,13 +792,13 @@ jQuery( function( $ ) {
 
 							if ( replaceFragment && ( ! wc_checkout_form.fragments || wc_checkout_form.fragments[ key ] !== value ) ) {
 								// CHANGE: Log replaced fragment to console if debug mode is enabled.
-								if ( fcSettings.debugMode ) {
+								if ( 'yes' === fcSettings.debugMode ) {
 									console.log( 'Replacing fragment: ' + key );
 								}
 								$( key ).replaceWith( value );
 							}
 							// CHANGE: Log skipped fragment to console if debug mode is enabled.
-							else if ( fcSettings.debugMode ) {
+							else if ( 'yes' === fcSettings.debugMode ) {
 								console.log( 'Skipping fragment: ' + key );
 							}
 
