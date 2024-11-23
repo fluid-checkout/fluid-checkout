@@ -27,6 +27,10 @@ body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after
   display: none;
 }
 
+body.theme-woodmart .woocommerce-shipping-fields {
+  display: block !important;
+}
+
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
   position: relative;
   margin-left: 5px;
