@@ -38,48 +38,60 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		if ( class_exists( 'Coderockz_Woo_Delivery' ) && class_exists( 'Coderockz_Woo_Delivery_Public' ) ) {
-			// Remove plugin hooks
-			$this->remove_action_for_class( 'woocommerce_checkout_billing', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
-			$this->remove_action_for_class( 'woocommerce_after_checkout_billing_form', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
-			$this->remove_action_for_class( 'woocommerce_checkout_shipping', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
-			$this->remove_action_for_class( 'woocommerce_after_checkout_shipping_form', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
-			$this->remove_action_for_class( 'woocommerce_before_order_notes', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
-			$this->remove_action_for_class( 'woocommerce_after_order_notes', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
-			$this->remove_action_for_class( 'woocommerce_review_order_before_payment', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
-			$this->remove_action_for_class( 'woocommerce_checkout_before_order_review_heading', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		// Plugin elements hooks
+		$this->plugin_elements_hooks();
 
-			// Define substep hook and priority for each position
-			$substep_position_priority = array(
-				'before_billing' => array( 'fc_output_step_billing', 9 ),
-				'after_billing' => array( 'fc_output_step_billing', 11 ),
-				'before_shipping' => array( 'fc_output_step_shipping', 9 ),
-				'after_shipping' => array( 'fc_output_step_shipping', 21 ),
-				'before_notes' => array( 'fc_output_step_shipping', 99 ),
-				'after_notes' => array( 'fc_output_step_shipping', 101 ),
-				'before_payment' => array( 'fc_output_step_payment', 89 ), // Intentionally same as for `before_your_order`
-				'before_your_order' => array( 'fc_output_step_payment', 89 ),
-			);
+		// Add substep review text fragment
+		add_filter( 'fc_substep_delivery_date_text_lines', array( $this, 'add_substep_text_lines_delivery_date' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
 
-			// Get selected position for delivery date
-			$woodelivery_settings = FluidCheckout_Settings::instance()->get_option( 'coderockz_woo_delivery_other_settings' );
-			$position = is_array( $woodelivery_settings ) && isset( $woodelivery_settings['field_position'] ) && $woodelivery_settings['field_position'] != '' ? $woodelivery_settings['field_position'] : 'after_notes';
-			if ( ! array_key_exists( $position, $substep_position_priority ) ) {
-				$position = 'after_notes';
-			}
-			
-			// Add delivery date substep at the selected position
-			$hook = $substep_position_priority[ $position ][ 0 ];
-			$priority = $substep_position_priority[ $position ][ 1 ];
-			add_action( $hook, array( $this, 'output_substep_delivery_options' ), $priority );
+		// Maybe set step as incomplete
+		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete' ), 10 );
+	}
 
-			// Add substep review text fragment
-			add_filter( 'fc_substep_delivery_date_text_lines', array( $this, 'add_substep_text_lines_delivery_date' ), 10 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
 
-			// Maybe set step as incomplete
-			add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete' ), 10 );
+
+	/**
+	 * Add or remove hooks for the plugin elements.
+	 */
+	public function plugin_elements_hooks() {
+		// Bail if plugin classes and methods are not available
+		if ( ! class_exists( 'Coderockz_Woo_Delivery' ) || ! class_exists( 'Coderockz_Woo_Delivery_Public' ) ) { return; }
+		if ( ! method_exists( 'Coderockz_Woo_Delivery', 'get_plugin_name' ) || ! method_exists( 'Coderockz_Woo_Delivery', 'get_version' ) ) { return; }
+
+		// Remove plugin hooks
+		$this->remove_action_for_class( 'woocommerce_checkout_billing', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_after_checkout_billing_form', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_checkout_shipping', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_after_checkout_shipping_form', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_before_order_notes', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_after_order_notes', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_review_order_before_payment', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_checkout_before_order_review_heading', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
+
+		// Define substep hook and priority for each position
+		$substep_position_priority = array(
+			'before_billing' => array( 'fc_output_step_billing', 9 ),
+			'after_billing' => array( 'fc_output_step_billing', 11 ),
+			'before_shipping' => array( 'fc_output_step_shipping', 9 ),
+			'after_shipping' => array( 'fc_output_step_shipping', 21 ),
+			'before_notes' => array( 'fc_output_step_shipping', 99 ),
+			'after_notes' => array( 'fc_output_step_shipping', 101 ),
+			'before_payment' => array( 'fc_output_step_payment', 89 ), // Intentionally same as for `before_your_order`
+			'before_your_order' => array( 'fc_output_step_payment', 89 ),
+		);
+
+		// Get selected position for delivery date
+		$woodelivery_settings = FluidCheckout_Settings::instance()->get_option( 'coderockz_woo_delivery_other_settings' );
+		$position = is_array( $woodelivery_settings ) && isset( $woodelivery_settings['field_position'] ) && $woodelivery_settings['field_position'] != '' ? $woodelivery_settings['field_position'] : 'after_notes';
+		if ( ! array_key_exists( $position, $substep_position_priority ) ) {
+			$position = 'after_notes';
 		}
+		
+		// Add delivery date substep at the selected position
+		$hook = $substep_position_priority[ $position ][ 0 ];
+		$priority = $substep_position_priority[ $position ][ 1 ];
+		add_action( $hook, array( $this, 'output_substep_delivery_options' ), $priority );
 	}
 
 
@@ -232,7 +244,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// Check order type
 		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
-		if ( is_array( $delivery_option_settings ) && array_key_exists( 'enable_option_time_pickup', $delivery_option_settings ) &&true === $delivery_option_settings[ 'enable_option_time_pickup' ] && ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
+		if ( is_array( $delivery_option_settings ) && array_key_exists( 'enable_option_time_pickup', $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] && ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
 			$is_step_complete = false;
 		}
 

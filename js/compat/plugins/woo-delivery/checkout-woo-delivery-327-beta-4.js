@@ -24,8 +24,8 @@
 		timeFieldSelector: '#coderockz_woo_delivery_time_field, #coderockz_woo_delivery_pickup_time_field',
 		deliveryDateHiddenFieldSelector: '#fc_coderockz_woo_delivery_date',
 		deliveryTimeHiddenFieldSelector: '#fc_coderockz_woo_delivery_time',
-		pickupDateHiddenFieldSelector: '#fc_coderockz_woo_delivery_date',
-		pickupTimeHiddenFieldSelector: '#fc_coderockz_woo_delivery_time',
+		pickupDateHiddenFieldSelector: '#fc_coderockz_woo_pickup_date',
+		pickupTimeHiddenFieldSelector: '#fc_coderockz_woo_pickup_time',
 	};
 
 
@@ -46,21 +46,22 @@
 		if ( ! datepickerFields.length ) { return; }
 
 		// Update each Flatpickr field
-		datepickerFields.forEach( function( flatPickerField ) {
+		for ( var i = 0; i < datepickerFields.length; i++ ) {
+			var flatPickerField = datepickerFields[ i ];
 			var hiddenFieldSelector = flatPickerField.id.includes( 'pickup' ) ? _settings.pickupDateHiddenFieldSelector : _settings.deliveryDateHiddenFieldSelector;
-			var hiddenDateField = document.querySelector( hiddenFieldSelector );
+			var hiddenDateField = document.querySelector(hiddenFieldSelector);
 
 			// Get Flatpickr instance for the field if exists
-			var flatPickerInstance = flatPickerField._flatpickr || null;
-
-			// Bail if Flatpickr instance doesn't exist
-			if ( ! flatPickerInstance ) { return; }
+			var flatPickerInstance = null;
+			if ( flatPickerField._flatpickr ) {
+				flatPickerInstance = flatPickerField._flatpickr;
+			}
 
 			// Update the Flatpickr field only if there's no value selected
-			if ( hiddenDateField && hiddenDateField.value && ! flatPickerInstance.selectedDates.length ) {
+			if ( flatPickerInstance && hiddenDateField && hiddenDateField.value && !flatPickerInstance.selectedDates.length ) {
 				flatPickerInstance.setDate( hiddenDateField.value, false, 'Y-m-d' );
 			}
-		});
+		}
 	}
 
 
@@ -75,20 +76,21 @@
 		if ( ! timeSelectFields.length ) { return; }
 
 		// Update each time select field
-		timeSelectFields.forEach( function( timeSelectField ) {
+		for ( var i = 0; i < timeSelectFields.length; i++ ) {
+			var timeSelectField = timeSelectFields[ i ];
 			var hiddenFieldSelector = timeSelectField.id.includes( 'pickup' ) ? _settings.pickupTimeHiddenFieldSelector : _settings.deliveryTimeHiddenFieldSelector;
 			var hiddenTimeField = document.querySelector( hiddenFieldSelector );
 
 			// Bail if hidden field doesn't exist or has no value
-			if ( ! hiddenTimeField || ! hiddenTimeField.value ) { return; }
+			if ( ! hiddenTimeField || ! hiddenTimeField.value ) { continue; }
 
 			// Bail if there's already a value selected
-			if ( timeSelectField.value ) { return; }
+			if ( timeSelectField.value ) { continue; }
 
 			// Loop through select field options to find one that matches the hidden field value and isn't disabled
 			var validTimeOption = null;
-			for ( var i = 0; i < timeSelectField.options.length; i++ ) {
-				var option = timeSelectField.options[ i ];
+			for ( var j = 0; j < timeSelectField.options.length; j++ ) {
+				var option = timeSelectField.options[ j ];
 				if ( option.value === hiddenTimeField.value && ! option.disabled ) {
 					validTimeOption = option;
 					break;
@@ -99,7 +101,7 @@
 			if ( validTimeOption ) {
 				timeSelectField.value = validTimeOption.value;
 			}
-		});
+		}
 	}
 
 
