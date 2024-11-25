@@ -59,7 +59,7 @@
 
 			// Update the Flatpickr field only if there's no value selected
 			if ( flatPickerInstance && hiddenDateField && hiddenDateField.value && !flatPickerInstance.selectedDates.length ) {
-				flatPickerInstance.setDate( hiddenDateField.value, false, 'Y-m-d' );
+				flatPickerInstance.setDate( hiddenDateField.value, true, 'Y-m-d' );
 			}
 		}
 	}
@@ -110,7 +110,6 @@
 	 * Trigger update checkout.
 	 */
 	var triggerCheckoutUpdate = function() {
-		// Trigger update checkout
 		$( document.body ).trigger( 'update_checkout' );
 	}
 
