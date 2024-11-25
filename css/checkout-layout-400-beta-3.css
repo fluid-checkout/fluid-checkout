@@ -316,6 +316,10 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   }
 }
 
+.fc-checkout__title {
+  margin-top: 20px;
+}
+
 @media (min-width: 1000px) {
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-message,
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-info,
