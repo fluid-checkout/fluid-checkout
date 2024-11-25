@@ -39,6 +39,9 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 
 		// Skip optional fields
 		add_filter( 'fc_hide_optional_fields_skip_types', array( $this, 'add_optional_fields_skip_types' ), 10 );
+
+		// Enhanced select fields
+		add_filter( 'option_thwcfe_advanced_settings', array( $this, 'maybe_disable_enhanced_select2_fields_option' ), 10, 3 );
 		
 		// Add select2 field types
 		add_filter( 'fc_select2_field_types', array( $this, 'add_select2_field_types' ), 10 );
@@ -104,6 +107,25 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	public function add_optional_fields_skip_types( $skip_types ) {
 		$skip_types = array_merge( $skip_types, array( 'heading', 'label', 'checkboxgroup' ) );
 		return $skip_types;
+	}
+
+
+
+	/**
+	 * Maybe disable enhanced select2 fields option for Checkout Field Editor for WooCommerce
+	 * when using Fluid Checkout enhanced select fields.
+	 *
+	 * @param  mixed   $value   The value to return instead of the option value.
+	 * @param  string  $option  Option name.
+	 */
+	public function maybe_disable_enhanced_select2_fields_option( $value, $option ) {
+		// Bail if Fluid Checkout enhanced select fields are not enabled
+		if ( ! FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) { return $value; }
+
+		// Disable enhanced select2 fields option for Checkout Field Editor for WooCommerce
+		$value[ 'disable_select2_for_select_fields' ] = 'yes';
+
+		return $value;
 	}
 
 

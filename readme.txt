@@ -368,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Filter hook `fc_substep_text_contact_field_keys_skip_list` to allow skipping displaying some fields in the contact substep review text.
 * Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled, and with versions 8.0+ of the theme.
 * Fixed: Instant validation for confirmation fields not working as expected.
+* Fixed: Compatibility with plugin Checkout Field Editor for WooCommerce PRO by ThemeHigh. Automatically disable enhanced `select2` component from the plugin when using the enhanced select fields (with `TomSelect`) from Fluid Checkout.
 
 = 3.2.6 - 2024-11-14 =
 
