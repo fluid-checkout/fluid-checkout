@@ -1,0 +1,13 @@
+body.theme-striz .fc-wrapper #payment .payment_methods > li.wc_payment_method > input[type=radio]:first-child:checked + label:before {
+  margin: 0;
+  width: 24px;
+  height: 24px;
+}
+
+body.theme-striz .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a {
+  float: none;
+}
+
+body.theme-striz .select2-container--default .select2-selection--single {
+  height: auto !important;
+}

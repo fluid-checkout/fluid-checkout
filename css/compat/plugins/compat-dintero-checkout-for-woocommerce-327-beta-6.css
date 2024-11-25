@@ -1,0 +1,13 @@
+@media (min-width: 1000px) {
+  body.dintero-checkout-one-selected:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup {
+    float: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1000px) {
+  body.dintero-checkout-one-selected:not(.has-checkout-must-login-notice):not(.has-fc-sidebar).woocommerce-checkout .woocommerce-NoticeGroup {
+    width: 100%;
+    margin-left: 0;
+  }
+}

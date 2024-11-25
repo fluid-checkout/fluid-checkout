@@ -1,0 +1,40 @@
+.fc-wrapper .fc-step__substep .vp-woo-pont-pickup-location__title {
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: var(--fluidcheckout--color--dark-grey, #535156);
+  font-weight: bold;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 1.2;
+  overflow: unset;
+}
+@media (min-width: 1000px) {
+  .fc-wrapper .fc-step__substep .vp-woo-pont-pickup-location__title {
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 0;
+    font-size: 15px;
+  }
+}
+
+.fc-wrapper .fc-substep__fields--shipping_method .vp-woo-pont-pickup-location {
+  margin-top: 20px;
+}
+
+.fc-wrapper .fc-step__substep .vp-woo-pont-review-order-selected {
+  position: relative;
+  display: block;
+  padding-left: calc(32px + 10px);
+}
+
+.fc-wrapper .fc-step__substep .vp-woo-pont-review-order-selected .vp-woo-pont-provider-icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.fc-wrapper .woocommerce-checkout-review-order-table .vp-woo-pont-shipping-method-icons {
+  justify-content: flex-end;
+  margin-top: 5px;
+}

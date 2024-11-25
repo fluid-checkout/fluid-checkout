@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT SHIPPING ADDRESS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce-shipping-fields {
+	display: block !important; // Needed to override theme styles
+}
