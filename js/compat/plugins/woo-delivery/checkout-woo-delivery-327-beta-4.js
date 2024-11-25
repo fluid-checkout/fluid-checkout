@@ -57,8 +57,8 @@
 				flatPickerInstance = flatPickerField._flatpickr;
 			}
 
-			// Update the Flatpickr field only if there's no value selected
-			if ( flatPickerInstance && hiddenDateField && hiddenDateField.value && !flatPickerInstance.selectedDates.length ) {
+			// Update the Flatpickr field if there's no value selected
+			if ( flatPickerInstance && hiddenDateField && hiddenDateField.value && ! flatPickerInstance.selectedDates.length ) {
 				flatPickerInstance.setDate( hiddenDateField.value, true, 'Y-m-d' );
 			}
 		}
@@ -84,7 +84,7 @@
 			// Bail if hidden field doesn't exist or has no value
 			if ( ! hiddenTimeField || ! hiddenTimeField.value ) { continue; }
 
-			// Bail if there's already a value selected
+			// Bail if there's already a selected option
 			if ( timeSelectField.value ) { continue; }
 
 			// Loop through select field options to find one that matches the hidden field value and isn't disabled
