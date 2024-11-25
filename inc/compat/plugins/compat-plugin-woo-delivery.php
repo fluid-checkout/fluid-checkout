@@ -47,6 +47,9 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// Maybe set step as incomplete
 		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete' ), 10 );
+
+		// Skip optional fields
+		add_filter( 'fc_hide_optional_fields_skip_by_class', array( $this, 'add_optional_fields_skip_classes' ), 10 );
 	}
 
 
@@ -446,6 +449,16 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add fields to the optional fields skip class list.
+	 */
+	public function add_optional_fields_skip_classes( $skip_classes ) {
+		$skip_classes = array_merge( $skip_classes, array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' ) );
+		return $skip_classes;
 	}
 
 }
