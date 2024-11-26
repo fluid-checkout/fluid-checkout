@@ -40,6 +40,9 @@ jQuery( function( $ ) {
 	// CHANGE: Remove "Make form field descriptions toggle on focus."
 
 	$( '.woocommerce-input-wrapper' ).on( 'click', function( event ) {
+		// CHANGE: Exclude the 'show password' button from the event propagation block.
+		if ( $( event.target ).is( '.show-password-input' ) ) { return; }
+		
 		event.stopPropagation();
 	} );
 
