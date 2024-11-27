@@ -87,10 +87,12 @@
 
 	/**
 	 * Set the variables that track the current focused element and its value.
+	 * 
+	 * @param  {Boolean}  setToRelativeSelect2  Whether to set to relative `select2` field element.
 	 */
 	var getCurrentFocusedElementGlobalVariables = function( setToRelativeSelect2 ) {
 		// Set defaults
-		if ( setToRelativeSelect2 !== true ) {
+		if ( true !== setToRelativeSelect2 ) {
 			setToRelativeSelect2 = false;
 		}
 
