@@ -368,6 +368,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Improved: Refactor how substeps are registered and output to the checkout form. Needed for the upcoming feature optimized Order Pay page.
 * Removed: Filter `fc_force_register_steps` as checkout steps and substeps needs to be registered for some functions to be available.
+* Removed: Action hooks `fc_checkout_before_step_<step_id>` and `fc_checkout_after_step_<step_id>` and replaced them with `fc_checkout_before_step` and `fc_checkout_after_step` which passes the step id as a parameter.
+* Removed: Action hooks `fc_checkout_start_step_<step_id>` and `fc_checkout_end_step_<step_id>` and replaced them with `fc_checkout_start_step` and `fc_checkout_end_step` which passes the step id as a parameter.
 * Removed: Deprecated parameters `$is_sidebar_widget` from action hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_after_order_review_title_before`, `fc_checkout_after_order_review_title_after`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside`, `fc_checkout_after_order_review`.
 
 = Unreleased =

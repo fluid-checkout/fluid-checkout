@@ -65,7 +65,7 @@ class FluidCheckout_DinteroCheckoutForWooCommerce extends FluidCheckout {
 		remove_action( 'woocommerce_order_button_html', array( FluidCheckout_Steps::instance(), 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
-		remove_action( 'fc_checkout_end_step_payment', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_placeholder' ), 100 );
+		remove_action( 'fc_checkout_end_step', array( FluidCheckout_Steps::instance(), 'maybe_output_checkout_place_order_placeholder_for_substep' ), 100 );
 		remove_action( 'fc_checkout_after_order_review_inside', array( FluidCheckout_Steps::instance(), 'output_checkout_place_order_placeholder' ), 1 );
 
 		// Widget areas

@@ -30,23 +30,47 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		// Remove hooks
 		remove_action( 'woocommerce_after_checkout_billing_form', 'cptch_woocommerce_checkout', 10 );
-		
+
+		// Add hooks
 		$captcha_position_args = $this->get_captcha_position_args();
-		add_action( $captcha_position_args[ 'hook' ], 'cptch_woocommerce_checkout', $captcha_position_args[ 'priority' ], $captcha_position_args[ 'args_count' ] );
+		add_action( $captcha_position_args[ 'hook' ], $captcha_position_args[ 'callback' ], 'cptch_woocommerce_checkout', $captcha_position_args[ 'priority' ], $captcha_position_args[ 'args_count' ] );
 	}
 
 
 
+	/**
+	 * Get captcha position arguments.
+	 */
 	public function get_captcha_position_args() {
 		$captcha_position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_captcha_pro_captcha_position' );
-		
+
 		$captcha_position_hook_priority = array(
-			'before_place_order_section' => array( 'hook' => 'fc_checkout_end_step_payment', 'priority' => 95, 'args_count' => 2 ),
-			'before_place_order_button'  => array( 'hook' => 'woocommerce_review_order_before_submit', 'priority' => 20, 'args_count' => 1 ),
+			'before_place_order_section' => array( 'hook' => 'fc_checkout_end_step', 'callback' => array( $this, 'maybe_run_cptch_woocommerce_checkout_for_substep' ), 'priority' => 95, 'args_count' => 4 ),
+			'before_place_order_button'  => array( 'hook' => 'woocommerce_review_order_before_submit', 'callback' => 'cptch_woocommerce_checkout', 'priority' => 20, 'args_count' => 1 ),
 		);
 
 		return $captcha_position_hook_priority[ $captcha_position ];
+	}
+
+	/**
+	 * Maybe run cptch_woocommerce_checkout for substep positions.
+	 * 
+	 * @param   string  $step_id     Id of the step in which the substep will be rendered.
+	 * @param   array   $step_args   Arguments of the checkout step. For more details of what is expected see the documentation of the property `$checkout_steps` of this class.
+	 * @param   array   $step_index  Position of the checkout step in the steps order, uses zero-based index,`0` is the first step.
+	 * @param   string  $context     Context in which the function is running. Defaults to `checkout`.
+	 */
+	public function maybe_run_cptch_woocommerce_checkout_for_substep( $step_id, $step_args, $step_index, $context = 'checkout' ) {
+		// Bail if not on the payment step
+		if ( 'payment' !== $step_id ) { return; }
+
+		// Bail if function not available
+		if ( ! function_exists( 'cptch_woocommerce_checkout' ) ) { return; }
+
+		// Run function
+		cptch_woocommerce_checkout();
 	}
 
 
