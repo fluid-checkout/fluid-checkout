@@ -70,7 +70,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 					array(
 						'title' => __( 'Order pay page', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
 						'type'  => 'title',
-						'desc'  => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
+						'desc'  => FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html() . FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
 						'id'    => 'fc_pro_order_pay_layout_options',
 					),
 
