@@ -68,7 +68,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 				array(
 
 					array(
-						'title' => __( 'Order pay page', 'fluid-checkout' ),
+						'title' => __( 'Order pay page', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
 						'type'  => 'title',
 						'desc'  => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
 						'id'    => 'fc_pro_order_pay_layout_options',
@@ -76,7 +76,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Order pay', 'fluid-checkout' ),
-						'desc'              => __( 'Enable order pay page optimizations', 'fluid-checkout' ),
+						'desc'              => __( 'Enable order pay page optimizations', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
 						'desc_tip'          => __( 'Changes the layout of order pay page for existing orders pending payment from the customer.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_order_pay',
 						'type'              => 'checkbox',
