@@ -6,7 +6,6 @@
 	position: relative;
 }
 
-
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper #payment,
 body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment {
 	margin: 0;
@@ -26,7 +25,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	padding: 0;
 	display: block;
 	width: 100%;
-	border: $option-box-border;
+	border: $option-box-border !important; // Needed to override theme styles
 	border-radius: $option-box-border-radius;
 	overflow: visible;
 }
@@ -68,10 +67,10 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	justify-content: space-between;
 	flex-wrap: wrap;
 	margin: 0;
-	padding-top: $option-box-padding-vertical;
-	padding-bottom: $option-box-padding-vertical;
-	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } );
-	padding-#{ $alignment-right }: $option-box-padding-horizontal;
+	padding-top: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-bottom: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } ) !important; // Needed to override theme styles
+	padding-#{ $alignment-right }: $option-box-padding-horizontal !important; // Needed to override theme styles
 	width: 100%;
 	max-width: 100%;
 	border: $option-box-label-border;

@@ -1100,7 +1100,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   padding: 0;
   display: block;
   width: 100%;
-  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
   border-radius: var(--fluidcheckout--option-box--border-radius, 13px);
   overflow: visible;
 }
@@ -1136,10 +1136,10 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0;
-  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  padding-right: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px);
-  padding-left: var(--fluidcheckout--option-box--spacing--horizontal, 10px);
+  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-right: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
+  padding-left: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
   width: 100%;
   max-width: 100%;
   border: var(--fluidcheckout--option-box--label-border-style, solid) var(--fluidcheckout--option-box--label-border-width, 1px) var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));

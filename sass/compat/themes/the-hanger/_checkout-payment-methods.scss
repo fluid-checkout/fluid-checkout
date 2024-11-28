@@ -5,6 +5,6 @@
 body#{ $_body-theme-selector } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	display: flex !important; // Needed to override theme styles set with `!important`
 	margin: 0 !important; // Needed to override theme styles set with `!important`
-	padding: $option-box-padding-vertical $option-box-padding-horizontal !important; // Needed to override theme styles set with `!important`;
-	padding-#{ $alignment-left }: #{ $option-box-radio-size + $option-box-padding-horizontal } !important; // Needed to override theme styles set with `!important`;
+	// padding: $option-box-padding-vertical $option-box-padding-horizontal !important; // Needed to override theme styles set with `!important`;
+	// padding-#{ $alignment-left }: #{ $option-box-radio-size + $option-box-padding-horizontal } !important; // Needed to override theme styles set with `!important`;
 }
