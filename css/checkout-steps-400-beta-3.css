@@ -1813,11 +1813,11 @@ body.has-checkout-layout--multi-step.fc-checkout-step-current-last .fc-wrapper .
 body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review {
   position: static !important;
   float: none !important;
-  padding: 0;
-  margin: 0;
-  border: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
   width: 100% !important;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review:before,
