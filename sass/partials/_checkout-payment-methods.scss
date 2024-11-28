@@ -27,6 +27,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	width: 100%;
 	border: $option-box-border !important; // Needed to override theme styles
 	border-radius: $option-box-border-radius;
+	background-color: transparent !important; // Needed to override theme styles
 	overflow: visible;
 }
 
