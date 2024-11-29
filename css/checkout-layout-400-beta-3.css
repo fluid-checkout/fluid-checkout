@@ -152,7 +152,8 @@ body.woocommerce-checkout {
 body.woocommerce-checkout .fc-content,
 form.woocommerce-checkout {
   display: block !important;
-  margin: 0;
+  margin: 0 auto;
+  overflow: visible !important;
 }
 
 .fc-content form.woocommerce-checkout {
