@@ -1446,7 +1446,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   margin-bottom: 0;
 }
 
-.fc-place-order {
+.fc-wrapper .fc-place-order {
   padding: 30px 0 10px;
   text-align: center;
 }
