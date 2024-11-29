@@ -111,7 +111,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 }
 
 .fc-wrapper #payment .payment_methods > li.wc_payment_method:not( .woocommerce-notice ) {
-	background-color: transparent;
+	background-color: transparent !important; // Needed to override theme styles
 }
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name="payment_method"]:checked + label {

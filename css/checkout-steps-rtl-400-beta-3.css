@@ -1179,7 +1179,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 
 .fc-wrapper #payment .payment_methods > li.wc_payment_method:not(.woocommerce-notice) {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:checked + label {
