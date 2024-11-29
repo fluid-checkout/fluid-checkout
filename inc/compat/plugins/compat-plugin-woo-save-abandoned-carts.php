@@ -25,7 +25,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		// Bail if class object is not found in hooks
 		if ( ! $class_object ) { return; }
 
-		// Remove input data restoring feature conflicting with Fluid Checkout
+		// Remove input data recovery from CartBounty conflicting with a similar feature from Fluid Checkout
 		remove_filter( 'wp', array( $class_object, 'restore_input_data' ), 10 );
 	}
 
