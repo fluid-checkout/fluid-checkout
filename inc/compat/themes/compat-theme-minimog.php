@@ -26,6 +26,10 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_deregister_woocommerce_scripts' ), 20 );
 		add_action( 'wp_enqueue_scripts', array( FluidCheckout_Enqueue::instance(), 'maybe_replace_woocommerce_scripts' ), 21 );
 
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
+		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
+
 		// Remove checkout payment info heading
 		if ( class_exists( 'Minimog\Woo\Checkout' ) ) {
 			remove_action( 'woocommerce_checkout_after_order_review',array( Minimog\Woo\Checkout::instance(), 'template_checkout_payment_title' ),10 );
@@ -64,6 +68,20 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 		
 		FluidCheckout_Enqueue::instance()->deregister_woocommerce_scripts();
+	}
+
+
+
+	/**
+	 * Add container class to the main content element for the cart page.
+	 *
+	 * @param string $class Main content element classes.
+	 */
+	public function change_fc_content_section_class( $class ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
+
+		return $class . ' container-wide';
 	}
 }
 
