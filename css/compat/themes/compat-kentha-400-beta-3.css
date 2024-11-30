@@ -109,13 +109,6 @@ body.theme-kentha .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_met
   height: auto;
 }
 
-body.theme-kentha .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:after {
-  top: 5px;
-  left: 4px;
-  border-color: transparent;
-  background-color: transparent;
-}
-
 body.theme-kentha .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label {
   height: auto;
 }

@@ -135,9 +135,11 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	#{ $alignment-right }: auto;
 	display: block;
 	margin: 0;
+	padding: 0;
 	width: $option-box-radio-size;
 	height: $option-box-radio-size;
 	border: $option-box-radio-border;
+	border-color: $option-box-radio-color;
 	border-radius: 100%;
 	background-color: transparent;
 	box-shadow: none;
@@ -174,13 +176,16 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	top: $option-box-padding-vertical;
 	#{ $alignment-left }: $global-spacing-extra-small;
 	#{ $alignment-right }: auto;
-	color: transparent;
-	background-color: transparent;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	color: transparent !important; // Needed to override theme styles
+	background-color: transparent !important; // Needed to override theme styles
 	transition: all $global-animation-duration-fast linear;
 	transform: none;
 }
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:after {
-	color: $option-box-radio-icon-color--checked;
+	color: $option-box-radio-icon-color--checked !important; // Needed to override theme styles
 }
 
 
