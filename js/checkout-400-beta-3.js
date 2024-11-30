@@ -20,6 +20,9 @@ jQuery( function( $ ) {
 
 	// CHANGE: Add default settings object
 	var _settings = {
+		checkoutFormSelector:                         'form.checkout',
+		orderPayFormSelector:                         '#order_review',
+
 		formRowSelector:                              '.form-row',
 		checkoutPlaceOrderSelector:                   '#place_order, .fc-place-order-button',
 		checkoutTermsSelector:                        '.fc-terms-checkbox',
@@ -54,13 +57,18 @@ jQuery( function( $ ) {
 		dirtyInput: false,
 		selectedPaymentMethod: false,
 		xhr: false,
-		$order_review: $( '#order_review' ),
-		$checkout_form: $( 'form.checkout' ),
+		// CHANGE: Use checkout form and order pay form selectors from settings
+		$order_review: $( _settings.orderPayFormSelector ),
+		$checkout_form: $( _settings.checkoutFormSelector ),
 		init: function() {
 			// CHANGE: Maybe merge default settings object with values from the server settings object
 			if ( window.fcSettings ) {
 				_settings = FCUtils.extendObject( true, _settings, window.fcSettings.checkout );
 			}
+
+			// CHANGE: Update checkout form and order pay form element variables, as the selector might have changed on initialization
+			wc_checkout_form.$checkout_form = $( _settings.checkoutFormSelector );
+			wc_checkout_form.$order_review = $( _settings.orderPayFormSelector );
 
 			$( document.body ).on( 'update_checkout', this.update_checkout );
 			$( document.body ).on( 'init_checkout', this.init_checkout );
@@ -474,7 +482,7 @@ jQuery( function( $ ) {
 		},
 		// CHANGE: Add function to set the autocomplete attribute values form data attributes. This fixes issue with lost user data when refreshing the page while using the Firefox Browser.
 		set_autocomplete_attribute_from_data: function( e ) {
-			var $fields = $( 'form.checkout' ).find( 'input, select, textarea' );
+			var $fields = $( _settings.checkoutFormSelector ).find( 'input, select, textarea' );
 			$fields.each( function() {
 				if ( $( this ).attr( 'data-autocomplete' ) ) {
 					$( this ).attr( 'autocomplete', $( this ).attr( 'data-autocomplete' ) );
@@ -631,7 +639,8 @@ jQuery( function( $ ) {
 				wc_checkout_form.xhr.abort();
 			}
 
-			if ( $( 'form.checkout' ).length === 0 ) {
+			// CHANGE: Use checkout form selector from settings
+			if ( $( _settings.checkoutFormSelector ).length === 0 ) {
 				return;
 			}
 
@@ -844,7 +853,8 @@ jQuery( function( $ ) {
 					// Check for error
 					if ( data && 'failure' === data.result ) {
 
-						var $form = $( 'form.checkout' );
+						// CHANGE: Use checkout form selector from settings
+						var $form = $( _settings.checkoutFormSelector );
 
 						// Remove notices from all sources
 						$( '.woocommerce-error, .woocommerce-message' ).remove();
@@ -1109,7 +1119,8 @@ jQuery( function( $ ) {
 			var scrollElement           = $( '.woocommerce-NoticeGroup-updateOrderReview, .woocommerce-NoticeGroup-checkout' );
 
 			if ( ! scrollElement.length ) {
-				scrollElement = $( 'form.checkout' );
+				// CHANGE: Use checkout form selector from settings
+				scrollElement = $( _settings.checkoutFormSelector );
 			}
 			$.scroll_to_notices( scrollElement );
 		}
