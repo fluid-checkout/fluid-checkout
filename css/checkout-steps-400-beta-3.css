@@ -1930,6 +1930,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   border-top: solid var(--fluidcheckout--order-summary--cell-border-width, 1px) var(--fluidcheckout--order-summary--cell-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   height: auto;
   display: table-row;
+  background-color: transparent;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody tr.cart-item {

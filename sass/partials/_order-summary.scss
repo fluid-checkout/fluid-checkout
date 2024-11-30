@@ -135,6 +135,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	border-top: $order-summary-cell-border;
 	height: auto;
 	display: table-row;
+	background-color: transparent;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody tr.cart-item {
