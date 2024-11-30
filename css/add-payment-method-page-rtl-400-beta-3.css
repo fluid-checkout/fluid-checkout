@@ -150,6 +150,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:before {
+  z-index: 2;
   box-sizing: border-box;
   content: "" !important;
   position: absolute;
@@ -214,6 +215,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   width: 24px;
   height: 24px;
   font-size: 24px;
+  z-index: 3;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
   right: 10px;

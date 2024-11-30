@@ -126,6 +126,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"] + label:before {
+	z-index: z( 'default' ) + 1;
 	box-sizing: border-box;
 	content: '' !important; // Needed to override theme styles
 	position: absolute;
@@ -168,6 +169,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	@include icon( 'i-check-small' );
 	@include icon-size( $option-box-radio-size );
 
+	z-index: z( 'default' ) + 2;
 	position: absolute;
 	top: $option-box-padding-vertical;
 	#{ $alignment-left }: $global-spacing-extra-small;

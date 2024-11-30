@@ -1192,6 +1192,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:before {
+  z-index: 2;
   box-sizing: border-box;
   content: "" !important;
   position: absolute;
@@ -1256,6 +1257,7 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   width: 24px;
   height: 24px;
   font-size: 24px;
+  z-index: 3;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
   right: 10px;
