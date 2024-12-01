@@ -336,7 +336,6 @@ class FluidCheckout {
 	private function register_features() {
 		self::$features = array(
 			// Utility features
-			'FluidCheckout_Settings'                       => array( 'file' => self::$directory_path . 'inc/settings.php' ),
 			'FluidCheckout_Enqueue'                        => array( 'file' => self::$directory_path . 'inc/enqueue.php' ),
 			'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php' ),
