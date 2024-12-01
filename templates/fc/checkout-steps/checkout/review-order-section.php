@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.2.0
+ * @version 4.0.0
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
  */
