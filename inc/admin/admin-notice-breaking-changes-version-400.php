@@ -40,7 +40,7 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_400 extends FluidChecko
 		$install_date = get_option( 'fc_plugin_activation_time' );
 
 		// Bail if first installation was after the release date
-		if ( $install_date && $install_date > $release_date ) { return $notices; }
+		if ( ! $install_date || $install_date > $release_date ) { return $notices; }
 
 		$notices[] = array(
 			'name'           => 'breaking_changes_version_400',
