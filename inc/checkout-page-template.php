@@ -42,6 +42,7 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 
 		// Shortcode wrapper
 		add_action( 'wp', array( $this, 'maybe_setup_checkout_shortcode_wrapper' ), 10 );
+		add_filter( 'fc_enable_checkout_shortcode_wrapper', array( $this, 'maybe_enable_checkout_shortcode_wrapper' ), 10 );
 	}
 
 	/**
@@ -130,14 +131,26 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 * Output the checkout shortcode contents with a wrapper `fc-content` element around it, for when the custom checkout page template is disabled.
 	 */
 	public function output_checkout_shortcode_wrapper( $attributes ) {
-		// Bail if not on checkout page
-		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) {
-			// Output the checkout shortcode contents without a wrapper
-			return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes );
+		// Maybe output the checkout shortcode contents with a `fc-content` wrapper
+		if ( true === apply_filters( 'fc_enable_checkout_shortcode_wrapper', false ) ) {
+			return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
 		}
 
-		// Output the checkout shortcode contents with a wrapper
-		return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
+		// Output the checkout shortcode contents without any wrapper
+		return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes );
+	}
+
+	/**
+	 * Maybe enable the checkout shortcode wrapper on the checkout page.
+	 *
+	 * @param   bool  $enable_wrapper  Whether to enable the checkout shortcode wrapper.
+	 */
+	public function maybe_enable_checkout_shortcode_wrapper( $enable_wrapper ) {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $enable_wrapper; }
+		
+		// Otherwise, enable the wrapper
+		return true;
 	}
 
 

@@ -3,8 +3,8 @@ body.theme-woodmart.has-checkout-header .page-title {
 }
 
 body.theme-woodmart.woocommerce-checkout .content-layout-wrapper {
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body.theme-woodmart.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
@@ -25,6 +25,10 @@ body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error {
 
 body.theme-woodmart div.woocommerce .form-row.form-row .woocommerce-error::after {
   display: none;
+}
+
+body.theme-woodmart .woocommerce-shipping-fields {
+  display: block !important;
 }
 
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {

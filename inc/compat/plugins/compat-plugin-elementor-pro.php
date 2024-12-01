@@ -24,7 +24,7 @@ class FluidCheckout_ElementorPRO extends FluidCheckout {
 		add_action( 'elementor/widgets/register', array( $this, 'register_widgets' ), 110 );
 
 		// Order received page template
-		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template_for_order_received_page' ), 100 );
+		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template_for_order_received_page' ), 300 );
 	}
 
 

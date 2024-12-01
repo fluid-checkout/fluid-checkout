@@ -225,7 +225,7 @@
 						// Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM
 						if ( replaceFragment && ( ! _fragments || _fragments[ key ] !== value ) ) {
 							// Log replaced fragment to console if debug mode is enabled.
-							if ( fcSettings.debugMode ) {
+							if ( 'yes' === fcSettings.debugMode ) {
 								console.log( 'Replacing fragment: ' + key );
 							}
 							$( key ).replaceWith( value );

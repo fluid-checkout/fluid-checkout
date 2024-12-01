@@ -8,22 +8,6 @@ body#{ $_body-theme-selector }.woocommerce-page.woocommerce-checkout .fc-wrapper
 
 
 
-body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method {
-	margin: $payment-method-margin !important; // Needed to override theme styles set with `!important`
-}
-
-
-
-body#{ $_body-theme-selector } .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
-	padding: $option-box-padding-vertical $option-box-padding-horizontal !important; // Needed to override theme styles set with `!important`;
-	padding-#{ $alignment-left }: #{ $option-box-radio-size + $option-box-padding-horizontal } !important; // Needed to override theme styles set with `!important`;
-}
-body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method:last-child {
-	margin-bottom: #{ - remsize( .1rem ) } !important; // Needed to override theme styles set with `!important`
-}
-
-
-
 body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	background-color: $success-color !important; // Needed to override theme styles set with `!important`
 }

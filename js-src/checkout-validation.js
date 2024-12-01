@@ -321,7 +321,7 @@
 	 * @return {Boolean}                   Whether the field is a confirmation field that is related to another field in the form.
 	 */
 	var isConfirmationField = function( field, formRow, validationEvent ) {
-		if ( ! formRow.querySelector( _settings.typeConfirmationSelector ) ) { return false; }
+		if ( ! field.matches( _settings.typeConfirmationSelector ) ) { return false; }
 		return true;
 	};
 
@@ -340,8 +340,8 @@
 		var form = formRow.closest( 'form' );
 		var confirmWith = form ? form.querySelector( field.getAttribute( 'data-confirm-with' ) ) : null;
 
-		// Validate fields have same value
-		if ( confirmWith && field.value == confirmWith.value ) { return { valid: false, message: _settings.validationMessages.confirmation }; }
+		// Validate whether fields do not have the same value
+		if ( confirmWith && field.value != confirmWith.value ) { return { valid: false, message: _settings.validationMessages.confirmation }; }
 
 		return { valid: true };
 	};

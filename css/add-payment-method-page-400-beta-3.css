@@ -58,8 +58,9 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   padding: 0;
   display: block;
   width: 100%;
-  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
   border-radius: var(--fluidcheckout--option-box--border-radius, 13px);
+  background-color: transparent !important;
   overflow: visible;
 }
 
@@ -86,6 +87,14 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   opacity: 0;
 }
 
+.fc-wrapper #payment ul.wc_payment_methods {
+  background-color: transparent;
+}
+
+.fc-wrapper #payment ul.wc_payment_methods::before {
+  display: none;
+}
+
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
   box-sizing: border-box !important;
   position: relative;
@@ -94,10 +103,10 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0;
-  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  padding-left: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px);
-  padding-right: var(--fluidcheckout--option-box--spacing--horizontal, 10px);
+  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
+  padding-left: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
+  padding-right: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
   width: 100%;
   max-width: 100%;
   border: var(--fluidcheckout--option-box--label-border-style, solid) var(--fluidcheckout--option-box--label-border-width, 1px) var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
@@ -136,7 +145,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 }
 
 .fc-wrapper #payment .payment_methods > li.wc_payment_method:not(.woocommerce-notice) {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:checked + label {
@@ -149,6 +158,7 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name=payment_method] + label:before {
+  z-index: 2;
   box-sizing: border-box;
   content: "" !important;
   position: absolute;
@@ -157,9 +167,11 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   right: auto;
   display: block;
   margin: 0;
+  padding: 0;
   width: 24px;
   height: 24px;
   border: solid 2px var(--fluidcheckout--option-box--radio-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  border-color: var(--fluidcheckout--option-box--radio-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-radius: 100%;
   background-color: transparent;
   box-shadow: none;
@@ -213,18 +225,22 @@ body.woocommerce-add-payment-method div.woocommerce #add_payment_method .fc-wrap
   width: 24px;
   height: 24px;
   font-size: 24px;
+  z-index: 3;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
   left: 10px;
   right: auto;
-  color: transparent;
-  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: transparent !important;
+  background-color: transparent !important;
   transition: all 0.15s linear;
   transform: none;
 }
 
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name=payment_method]:checked + label:after {
-  color: var(--fluidcheckout--option-box--radio-icon-color--checked, var(--fluidcheckout--color--white, #fff));
+  color: var(--fluidcheckout--option-box--radio-icon-color--checked, var(--fluidcheckout--color--white, #fff)) !important;
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {

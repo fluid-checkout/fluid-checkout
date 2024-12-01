@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.1.9
+ * @version 4.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -25,6 +25,9 @@ if ( class_exists( 'FluidCheckout_CheckoutPageTemplate' ) && FluidCheckout_Check
 else {
 	get_header( 'checkout' );
 }
+
+// Get page title
+$esc_title = sanitize_text_field( apply_filters( 'fc_checkout_page_title', get_the_title() ) );
 ?>
 
 <?php do_action( 'fc_checkout_before_main_section_wrapper' ); ?>
@@ -33,7 +36,7 @@ else {
 
 	<?php do_action( 'fc_checkout_before_main_section' ); ?>
 
-	<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php the_title(); ?></h1>
+	<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php echo $esc_title; // PHPCS: XSS ok. ?></h1>
 
 	<?php
 	// Load the checkout page content

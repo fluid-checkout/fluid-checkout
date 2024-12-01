@@ -162,6 +162,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Maybe register the substep hooks.
 	 */
 	public function maybe_register_substep_hooks() {
+		// Bail if feature is not enabled
+		if ( ! $this->is_feature_enabled() ) { return; }
+
 		// Auxiliary sections
 		add_action( 'fc_before_substep_coupon_codes', array( $this, 'output_substep_coupon_codes_auxiliary_sections' ), 10, 2 );
 

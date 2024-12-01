@@ -54,7 +54,7 @@ class FluidCheckout_ThemeCompat_Cartsy extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Prevent theme's page template from being replaced by FC checkout template
-		add_filter( 'fc_enable_checkout_page_template', '__return_false', 10 );
+		add_filter( 'fc_enable_checkout_page_template', '__return_false', 300 );
 	}
 
 

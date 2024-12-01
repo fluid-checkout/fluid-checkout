@@ -18,11 +18,6 @@ body.theme-astra .woocommerce #fc-substep__fields--shipping_method ul#shipping_m
   text-indent: 0;
 }
 
-body.theme-astra.woocommerce-page.woocommerce-checkout form.woocommerce-checkout #fc-wrapper.fc-wrapper #order_review {
-  padding: 0;
-  border: 0;
-}
-
 body.theme-astra .select2-container .select2-selection--single {
   padding: 0 !important;
 }

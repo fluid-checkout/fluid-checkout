@@ -56,6 +56,10 @@ body.theme-betheme.has-highlighted-shipping-section div.woocommerce form .fc-ste
   border-color: var(--fluidcheckout--betheme--form-field--border-color--focus) !important;
 }
 
+body.theme-betheme .fc-wrapper #payment .mfn-payment-check {
+  display: none !important;
+}
+
 body.theme-betheme #order_review .woocommerce-checkout-review-order-table .order-total .amount {
   font-size: 15px;
 }

@@ -42,13 +42,6 @@ body.theme-diza .fc-content form.woocommerce-checkout:before {
   content: none;
 }
 
-body.theme-diza .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
-  padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
-  padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
-  padding-left: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
-  padding-right: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
-}
-
 body.theme-diza .woocommerce table.shop_table > thead > tr > th .woocommerce-Price-amount,
 body.theme-diza .woocommerce table.shop_table > thead > tr > td .woocommerce-Price-amount,
 body.theme-diza .woocommerce table.shop_table > tbody > tr > td .woocommerce-Price-amount,
