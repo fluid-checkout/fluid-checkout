@@ -33,14 +33,14 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_400 extends FluidChecko
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
 		// Define variables
-		$release_date = strtotime( '2024-08-31' );
+		$release_date = strtotime( '2024-12-01' );
 
 		// Get install date
 		// Need to get option directly as the Lite plugin might not be activated at this point
 		$install_date = get_option( 'fc_plugin_activation_time' );
 
 		// Bail if first installation was after the release date
-		if ( ! $install_date || $install_date > $release_date ) { return $notices; }
+		if ( $install_date && $install_date > $release_date ) { return $notices; }
 
 		$notices[] = array(
 			'name'           => 'breaking_changes_version_400',
