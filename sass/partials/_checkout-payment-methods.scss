@@ -60,6 +60,15 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 
 
+.fc-wrapper #payment ul.wc_payment_methods {
+	background-color: transparent;
+}
+.fc-wrapper #payment ul.wc_payment_methods::before {
+	display: none;
+}
+
+
+
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	box-sizing: border-box !important; // Needed to override theme styles
 	position: relative;
