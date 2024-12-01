@@ -364,24 +364,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased 4.0.0 =
-
-* BREAKING CHANGES - Changes to how substeps are added to the checkout page can break functionality of Fluid Checkout PRO and other add-ons until they are also updated to the latest versions.
-
-* Improved: Refactor how substeps are registered and output to the checkout form. Needed for the upcoming feature optimized Order Pay page.
-* Removed: Filter `fc_force_register_steps` as checkout steps and substeps needs to be registered for some functions to be available.
-* Removed: Action hooks `fc_checkout_before_step_<step_id>` and `fc_checkout_after_step_<step_id>` and replaced them with `fc_checkout_before_step` and `fc_checkout_after_step` which passes the step id as a parameter.
-* Removed: Action hooks `fc_checkout_start_step_<step_id>` and `fc_checkout_end_step_<step_id>` and replaced them with `fc_checkout_start_step` and `fc_checkout_end_step` which passes the step id as a parameter.
-* Removed: Deprecated parameters `$is_sidebar_widget` from action hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_after_order_review_title_before`, `fc_checkout_after_order_review_title_after`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside`, `fc_checkout_after_order_review`.
-
 = Unreleased =
 
+* POSSIBLY BREAKING CHANGES - Changes to how substeps are added to the checkout page can break functionality of Fluid Checkout PRO and other add-ons until they are also updated to the latest versions, which might affect custom code on your website.
+
+* Added: Support for the Order Pay page feature of Fluid Checkout PRO.
 * Added: Compatibility with theme Colibri WP.
 * Added: Filter hook `fc_substep_text_contact_field_keys_skip_list` to allow skipping displaying some fields in the contact substep review text.
 * Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled, and with versions 8.0+ of the theme.
 * Improved: Compatibility with plugin Germanized for WooCommerce (free). Prevent hiding optional fields added by the pickup location feature from Germanized.
+* Improved: Refactor how substeps are registered and output to the checkout form. Needed for the upcoming feature optimized Order Pay page.
 * Fixed: Instant validation for confirmation fields not working as expected.
 * Fixed: Compatibility with plugin Checkout Field Editor for WooCommerce PRO by ThemeHigh. Automatically disable enhanced `select2` component from the plugin when using the enhanced select fields (with `TomSelect`) from Fluid Checkout.
+* Removed: Filter `fc_force_register_steps` as checkout steps and substeps needs to be registered for some functions to be available.
+* Removed: Action hooks `fc_checkout_before_step_<step_id>` and `fc_checkout_after_step_<step_id>` and replaced them with `fc_checkout_before_step` and `fc_checkout_after_step` which passes the step id as a parameter.
+* Removed: Action hooks `fc_checkout_start_step_<step_id>` and `fc_checkout_end_step_<step_id>` and replaced them with `fc_checkout_start_step` and `fc_checkout_end_step` which passes the step id as a parameter.
+* Removed: Deprecated parameters `$is_sidebar_widget` from action hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_after_order_review_title_before`, `fc_checkout_after_order_review_title_after`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside`, `fc_checkout_after_order_review`.
 
 = 3.2.6 - 2024-11-14 =
 
