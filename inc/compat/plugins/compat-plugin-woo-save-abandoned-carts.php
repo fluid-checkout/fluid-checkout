@@ -33,7 +33,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 
 	/**
-	 * Myabe restore abandoned cart values to session.
+	 * Maybe restore abandoned cart values to session.
 	 */
 	public function maybe_restore_abandoned_cart_values_to_session() {
 		// Bail if not on checkout page
@@ -45,6 +45,9 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 		// Bail if class objects are not found in hooks
 		if ( ! $public_class_object && ! $admin_class_object ) { return; }
+
+		// Bail if required methods are not found in the class objects
+		if ( ! method_exists( $public_class_object, 'get_saved_cart' ) || ! method_exists( $admin_class_object, 'get_cart_location' ) ) { return; }
 
 		// Get saved (abandoned) cart object
 		$saved_cart = $public_class_object->get_saved_cart();
