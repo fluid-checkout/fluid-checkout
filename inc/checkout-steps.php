@@ -4367,7 +4367,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $step_id     Id of the step in which the substep will be rendered.
 	 * @param  string  $substep_id  Id of the substep.
 	 */
-	public function output_shipping_methods_available( $step_id, $substep_id ) {
+	public function output_shipping_methods_available( $step_id = 'shipping', $substep_id = 'shipping_methods' ) {
 		do_action( 'fc_shipping_methods_before_packages' );
 		echo $this->get_shipping_methods_available();
 		do_action( 'fc_shipping_methods_after_packages' );
