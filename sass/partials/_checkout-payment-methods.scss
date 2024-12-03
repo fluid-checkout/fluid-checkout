@@ -6,7 +6,6 @@
 	position: relative;
 }
 
-
 body#{ $_body-page-selector } div.woocommerce .fc-wrapper #payment,
 body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #payment {
 	margin: 0;
@@ -26,8 +25,9 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	padding: 0;
 	display: block;
 	width: 100%;
-	border: $option-box-border;
+	border: $option-box-border !important; // Needed to override theme styles
 	border-radius: $option-box-border-radius;
+	background-color: transparent !important; // Needed to override theme styles
 	overflow: visible;
 }
 
@@ -60,6 +60,15 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 
 
+.fc-wrapper #payment ul.wc_payment_methods {
+	background-color: transparent;
+}
+.fc-wrapper #payment ul.wc_payment_methods::before {
+	display: none;
+}
+
+
+
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
 	box-sizing: border-box !important; // Needed to override theme styles
 	position: relative;
@@ -68,10 +77,10 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	justify-content: space-between;
 	flex-wrap: wrap;
 	margin: 0;
-	padding-top: $option-box-padding-vertical;
-	padding-bottom: $option-box-padding-vertical;
-	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } );
-	padding-#{ $alignment-right }: $option-box-padding-horizontal;
+	padding-top: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-bottom: $option-box-padding-vertical !important; // Needed to override theme styles
+	padding-#{ $alignment-left }: calc( #{ $option-box-padding-horizontal } + #{ $option-box-radio-size } + #{ $global-spacing-extra-small } ) !important; // Needed to override theme styles
+	padding-#{ $alignment-right }: $option-box-padding-horizontal !important; // Needed to override theme styles
 	width: 100%;
 	max-width: 100%;
 	border: $option-box-label-border;
@@ -111,7 +120,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 }
 
 .fc-wrapper #payment .payment_methods > li.wc_payment_method:not( .woocommerce-notice ) {
-	background-color: transparent;
+	background-color: transparent !important; // Needed to override theme styles
 }
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name="payment_method"]:checked + label {
@@ -126,6 +135,7 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method > input[name="payment_method"] + label:before {
+	z-index: z( 'default' ) + 1;
 	box-sizing: border-box;
 	content: '' !important; // Needed to override theme styles
 	position: absolute;
@@ -134,9 +144,11 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	#{ $alignment-right }: auto;
 	display: block;
 	margin: 0;
+	padding: 0;
 	width: $option-box-radio-size;
 	height: $option-box-radio-size;
 	border: $option-box-radio-border;
+	border-color: $option-box-radio-color;
 	border-radius: 100%;
 	background-color: transparent;
 	box-shadow: none;
@@ -168,17 +180,21 @@ body#{ $_body-page-selector } div.woocommerce #add_payment_method .fc-wrapper #p
 	@include icon( 'i-check-small' );
 	@include icon-size( $option-box-radio-size );
 
+	z-index: z( 'default' ) + 2;
 	position: absolute;
 	top: $option-box-padding-vertical;
 	#{ $alignment-left }: $global-spacing-extra-small;
 	#{ $alignment-right }: auto;
-	color: transparent;
-	background-color: transparent;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	color: transparent !important; // Needed to override theme styles
+	background-color: transparent !important; // Needed to override theme styles
 	transition: all $global-animation-duration-fast linear;
 	transform: none;
 }
 .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[name="payment_method"]:checked + label:after {
-	color: $option-box-radio-icon-color--checked;
+	color: $option-box-radio-icon-color--checked !important; // Needed to override theme styles
 }
 
 

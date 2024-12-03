@@ -16,6 +16,18 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
+	 * Check whether the feature is enabled or not.
+	 */
+	public function is_feature_enabled() {
+		// Bail if feature is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_validation' ) ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
@@ -23,7 +35,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		if ( is_admin() ) { return; }
 
 		// Bail if feature is not enabled
-		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_validation' ) ) { return; }
+		if( ! $this->is_feature_enabled() ) { return; }
 
 		// Body class
 		add_filter( 'body_class', array( $this, 'add_body_class' ) );

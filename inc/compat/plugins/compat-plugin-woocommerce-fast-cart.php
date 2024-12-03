@@ -20,7 +20,7 @@ class FluidCheckout_WooCommerceFastCart extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Checkout page template
-		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 10 );
+		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template' ), 300 );
 
 		// Container class
 		// Needs to run at priority (100), after themes add their container class so we can effectively remove it.

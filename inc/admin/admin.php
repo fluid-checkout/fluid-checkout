@@ -113,6 +113,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
@@ -191,9 +192,11 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 	/**
 	 * Get HTML for Experimental features label.
+	 * 
+	 * @param  bool  $new_line  Whether to add a new line before.
 	 */
-	public function get_experimental_feature_html() {
-		return ' ' . __( '(experimental)', 'fluid-checkout' );
+	public function get_experimental_feature_html( $new_line = false ) {
+		return ' ' . ( $newline ? '<br>' : '' ) . __( '(experimental)', 'fluid-checkout' );
 	}
 
 	/**

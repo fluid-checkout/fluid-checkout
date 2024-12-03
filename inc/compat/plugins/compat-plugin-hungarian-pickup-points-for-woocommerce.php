@@ -37,8 +37,8 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_pickup_point', array( $this, 'maybe_set_substep_incomplete_pickup_point' ), 10 );
 
 		// Shipping address
 		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
@@ -211,6 +211,9 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Get selected pont
 		$selected_vp_pont = WC()->session->get( 'selected_vp_pont' );
 
+		// Get selected pont ID
+		$selected_vp_pont_id = $selected_vp_pont ? $selected_vp_pont[ 'id' ] : '';
+
 		// Get shipping cost
 		$shipping_costs = VP_Woo_Pont_Helpers::calculate_shipping_costs();
 		$shipping_cost = VP_Woo_Pont_Helpers::get_shipping_cost();
@@ -268,7 +271,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		}
 
 		// Hidden fields
-		$html .= '<input type="hidden" id="vp_pont_id" name="vp_pont_id" value="'. esc_attr( $selected_vp_pont[ 'id' ] ) .'" class="validate-hungarian-shipping-method">';
+		$html .= '<input type="hidden" id="vp_pont_id" name="vp_pont_id" value="'. esc_attr( $selected_vp_pont_id ) .'" class="validate-hungarian-shipping-method">';
 		
 		$html .= '</div>';
 
@@ -320,23 +323,23 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete when shipping method is Hungarian Pickup Points and no pickup point is selected.
+	 * Set the substep as incomplete when shipping method is Hungarian Pickup Points and no pickup point is selected.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
-		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+	public function maybe_set_substep_incomplete_pickup_point( $is_substep_complete ) {
+		// Bail if substep is already incomplete
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 		
 		// Bail if Hungarian Pickup Points shipping method is not selected
-		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $is_step_complete; }
+		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $is_substep_complete; }
 
-		// Maybe set step as incomplete if a Hungarian Pickup Points location is not yet selected
+		// Maybe set substep as incomplete if a Hungarian Pickup Points location is not yet selected
 		if ( ! $this->is_vp_pont_location_selected() ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 

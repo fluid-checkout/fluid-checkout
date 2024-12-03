@@ -16,11 +16,23 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 	/**
+	 * Check whether the feature is enabled or not.
+	 */
+	public function is_feature_enabled() {
+		// Bail if feature is not enabled
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_areas' ) ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
 		// Bail if feature is not enabled
-		if( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_areas' ) ) { return; }
+		if( ! $this->is_feature_enabled() ) { return; }
 
 		// General
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
@@ -63,7 +75,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
 		// Maybe add extra body class
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_area_sidebar_last_step' ) ) {
@@ -79,8 +91,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Register widget areas.
 	 */
 	public function register_widgets_areas() {
-
-		// Only register header widget areas when using Fluid Checkout header
+		// Only register header widget areas when using distraction free header and footer
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' ) ) {
 
 			register_sidebar( array(
@@ -141,9 +152,8 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 
 
 
-		// Only register footer widget areas when using Fluid Checkout footer
+		// Only register header widget areas when using distraction free header and footer
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' ) ) {
-
 			register_sidebar( array(
 				'name'          => __( 'Checkout Footer', 'fluid-checkout' ),
 				'id'            => 'fc_checkout_footer',
@@ -153,9 +163,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 				'before_title'  => '<h2 class="widget-title">',
 				'after_title'   => '</h2>',
 			) );
-
 		}
-
 	}
 
 
@@ -169,13 +177,14 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		// Bail if not on the checkout page
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
 
-		if ( is_active_sidebar( 'fc_checkout_header' ) || has_action( 'fc_checkout_header_widgets_inside_before' ) || has_action( 'fc_checkout_header_widgets_inside_after' ) ) :
-			echo '<div class="fc-widget-area fc-checkout__header-widgets">';
-			do_action( 'fc_checkout_header_widgets_inside_before' );
-			dynamic_sidebar( 'fc_checkout_header' );
-			do_action( 'fc_checkout_header_widgets_inside_after' );
-			echo '</div>';
-		endif;
+		// Bail if widget area is not active, or hooks not used
+		if ( ! is_active_sidebar( 'fc_checkout_header' ) && ! has_action( 'fc_checkout_header_widgets_inside_before' ) && ! has_action( 'fc_checkout_header_widgets_inside_after' ) ) { return; }
+
+		echo '<div class="fc-widget-area fc-checkout__header-widgets">';
+		do_action( 'fc_checkout_header_widgets_inside_before' );
+		dynamic_sidebar( 'fc_checkout_header' );
+		do_action( 'fc_checkout_header_widgets_inside_after' );
+		echo '</div>';
 	}
 
 	/**
@@ -185,48 +194,41 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		// Bail if not on the checkout page
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
 
-		if ( is_active_sidebar( 'fc_checkout_below_header' ) ) :
-			echo '<div class="fc-widget-area fc-checkout__below-header-widgets">';
-			dynamic_sidebar( 'fc_checkout_below_header' );
-			echo '</div>';
-		endif;
+		// Bail if widget area is not active
+		if ( ! is_active_sidebar( 'fc_checkout_below_header' ) ) { return; }
+
+		echo '<div class="fc-widget-area fc-checkout__below-header-widgets">';
+		dynamic_sidebar( 'fc_checkout_below_header' );
+		echo '</div>';
 	}
 
 
 
 	/**
 	 * Output widget area outside order review section.
-	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_widget_area_order_review_outside( $is_sidebar_widget ) {
-		// Bail if not outputting widget areas for the sidebar
-		if ( ! $is_sidebar_widget ) { return; }
+	public function output_widget_area_order_review_outside() {
+		// Bail if widget area is not active
+		if ( ! is_active_sidebar( 'fc_checkout_sidebar_after' ) ) { return; }
 
-		if ( is_active_sidebar( 'fc_checkout_sidebar_after' ) ) :
-			$additional_classes = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_area_sidebar_last_step' ) ? 'last-step-only' : '';
-			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside fc-clearfix ' . $additional_classes . '">';
-			dynamic_sidebar( 'fc_checkout_sidebar_after' );
-			echo '</div>';
-		endif;
+		$additional_classes = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_area_sidebar_last_step' ) ? 'last-step-only' : '';
+		echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside fc-clearfix ' . $additional_classes . '">';
+		dynamic_sidebar( 'fc_checkout_sidebar_after' );
+		echo '</div>';
 	}
 
 
 
 	/**
 	 * Output widget area inside order review section.
-	 *
-	 * @param   bool  $is_sidebar_widget  Whether or not outputting the sidebar.
 	 */
-	public function output_widget_area_order_review_inside( $is_sidebar_widget ) {
-		// Bail if not outputting widget areas for the sidebar
-		if ( ! $is_sidebar_widget ) { return; }
+	public function output_widget_area_order_review_inside() {
+		// Bail if widget area is not active
+		if ( ! is_active_sidebar( 'fc_order_summary_after' ) ) { return; }
 
-		if ( is_active_sidebar( 'fc_order_summary_after' ) ) :
-			echo '<div class="fc-widget-area fc-checkout-order-review__widgets-inside fc-clearfix">';
-			dynamic_sidebar( 'fc_order_summary_after' );
-			echo '</div>';
-		endif;
+		echo '<div class="fc-widget-area fc-checkout-order-review__widgets-inside fc-clearfix">';
+		dynamic_sidebar( 'fc_order_summary_after' );
+		echo '</div>';
 	}
 
 
@@ -235,11 +237,12 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 	 * Output widget area below the checkout place order button.
 	 */
 	public function output_widget_area_checkout_place_order_below() {
-		if ( is_active_sidebar( 'fc_place_order_after' ) ) :
-			echo '<div class="fc-widget-area fc-checkout__below-place-order-widgets fc-clearfix">';
-			dynamic_sidebar( 'fc_place_order_after' );
-			echo '</div>';
-		endif;
+		// Bail if widget area is not active
+		if ( ! is_active_sidebar( 'fc_place_order_after' ) ) { return; }
+		
+		echo '<div class="fc-widget-area fc-checkout__below-place-order-widgets fc-clearfix">';
+		dynamic_sidebar( 'fc_place_order_after' );
+		echo '</div>';
 	}
 
 
@@ -251,11 +254,12 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		// Bail if not on the checkout page
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
 
-		if ( is_active_sidebar( 'fc_checkout_footer' ) || has_action( 'fc_checkout_footer_widgets_inside_before' ) || has_action( 'fc_checkout_footer_widgets_inside_after' ) ) :
-			do_action( 'fc_checkout_footer_widgets_inside_before' );
-			dynamic_sidebar( 'fc_checkout_footer' );
-			do_action( 'fc_checkout_footer_widgets_inside_after' );
-		endif;
+		// Bail if widget are is not active, or hooks not used
+		if ( ! is_active_sidebar( 'fc_checkout_footer' ) && ! has_action( 'fc_checkout_footer_widgets_inside_before' ) && ! has_action( 'fc_checkout_footer_widgets_inside_after' ) ) { return; }
+
+		do_action( 'fc_checkout_footer_widgets_inside_before' );
+		dynamic_sidebar( 'fc_checkout_footer' );
+		do_action( 'fc_checkout_footer_widgets_inside_after' );
 	}
 
 }

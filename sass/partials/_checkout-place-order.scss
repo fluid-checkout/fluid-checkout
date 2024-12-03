@@ -11,6 +11,7 @@
 .fc-wrapper .fc-inside .fc-place-order__section {
 	float: none;
 	margin: 0;
+	padding: $place-order-padding;
 
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
@@ -109,7 +110,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 
 
-.fc-place-order {
+.fc-wrapper .fc-place-order {
 	padding: $global-spacing 0 $global-spacing-extra-small;
 	text-align: center;
 }

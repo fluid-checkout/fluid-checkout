@@ -3,9 +3,10 @@
 // ------------------------------------
 
 .fc-wrapper .fc-checkout-step[data-step-id="payment"] > .cptch_block {
-	margin-bottom: 0;
+	margin: 0;
 	padding: $checkout-substep-padding;
-	padding-bottom: 0;
+	padding-top: $global-spacing-small;
+	padding-bottom: $global-spacing-small;
 }
 
 .fc-wrapper .fc-checkout-step[data-step-id="payment"] > #cptch_slide_captcha_container {
