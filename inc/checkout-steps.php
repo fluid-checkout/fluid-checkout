@@ -3219,7 +3219,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach( $contact_field_ids as $field_key ) {
 			// Maybe break if email field is not valid
 			if ( 'billing_email' === $field_key && ( empty( WC()->checkout()->get_value( $field_key ) ) || ! is_email( WC()->checkout()->get_value( $field_key ) ) ) ) {
-				$is_step_complete = false;
+				$is_substep_complete = false;
 				break;
 			}
 
