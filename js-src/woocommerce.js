@@ -41,7 +41,7 @@ jQuery( function( $ ) {
 
 	$( '.woocommerce-input-wrapper' ).on( 'click', function( event ) {
 		// CHANGE: Exclude the 'show password' button from the event propagation block.
-		if ( $( event.target ).is( '.show-password-input' ) ) { return; }
+		if ( $( event.target ).closest( '.show-password-input' ) ) { return; }
 		
 		event.stopPropagation();
 	} );
