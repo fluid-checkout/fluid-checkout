@@ -161,7 +161,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	public function change_shipping_company_field_args( $field_args ) {
 		// Bail if not hidding optional fields behind a link button
 		// Use loose comparison for `required` attribute to allow type casting as some plugins use `1` instead of `true` to set fields as required.
-		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_hide_optional_fields' ) && array_key_exists( 'shipping_phone', $field_args ) && array_key_exists( 'required', $field_args['shipping_phone'] ) && true != $field_args['shipping_phone']['required'] ) { return $field_args; }
+		if ( class_exists( 'FluidCheckout_CheckoutHideOptionalFields' ) && FluidCheckout_CheckoutHideOptionalFields::instance()->is_feature_enabled() && array_key_exists( 'shipping_phone', $field_args ) && array_key_exists( 'required', $field_args['shipping_phone'] ) && true != $field_args['shipping_phone']['required'] ) { return $field_args; }
 
 		if ( array_key_exists( 'shipping_company', $field_args ) ) {
 			$field_args['shipping_company']['class'] = array( 'form-row-last' );

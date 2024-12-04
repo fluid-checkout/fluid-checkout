@@ -32,10 +32,12 @@ class FluidCheckout_AdminNotices_ReviewRequest extends FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
+		// Define variables
+		$past_date = strtotime( '-7 days' );
+
 		// Get install date
 		// Need to get option directly as the Lite plugin might not be activated at this point
 		$install_date = get_option( 'fc_plugin_activation_time' );
-		$past_date = strtotime( '-7 days' );
 
 		// Bail if 7 days have not passed since installation
 		if ( $past_date < $install_date ) { return $notices; }

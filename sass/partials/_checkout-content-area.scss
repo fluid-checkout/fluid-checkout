@@ -11,7 +11,8 @@ body#{ $_body-page-selector } {
 body#{ $_body-page-selector } .fc-content,
 form.woocommerce-checkout {
 	display: block !important; // Needed to override theme styles breaking the layout
-	margin: 0;
+	margin: 0 auto;
+	overflow: visible !important; // Needed to override theme styles
 }
 
 .fc-content form.woocommerce-checkout {

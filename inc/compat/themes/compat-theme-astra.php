@@ -38,7 +38,7 @@ class FluidCheckout_ThemeCompat_Astra extends FluidCheckout {
 
 		// Remove shipping fields from the billing section added by the theme
 		// @see themes/astra/inc/compatibility/woocommerce/class-astra-woocommerce.php:LN759
-		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout(), 'checkout_form_shipping' ) );
+		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout(), 'checkout_form_shipping' ), 10 );
 	}
 
 
