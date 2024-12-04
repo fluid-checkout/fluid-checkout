@@ -59,15 +59,15 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		$location_data = $admin_class_object->get_cart_location( $saved_cart->location );
 
 		// Map the session data values to the saved cart values
-		$billing_fields = [
+		$billing_fields = array(
 			'billing_first_name' => $saved_cart->name,
 			'billing_last_name' => $saved_cart->surname,
 			'billing_email' => $saved_cart->email,
 			'billing_phone' => $saved_cart->phone,
-			'billing_country' => $location_data['country'],
-			'billing_city' => $location_data['city'],
-			'billing_postcode' => $location_data['postcode'],
-		];
+			'billing_country' => $location_data[ 'country' ],
+			'billing_city' => $location_data[ 'city' ],
+			'billing_postcode' => $location_data[ 'postcode' ],
+		);
 
 		// Get the rest of the checkout fields
 		$other_fields = maybe_unserialize( $saved_cart->other_fields );
