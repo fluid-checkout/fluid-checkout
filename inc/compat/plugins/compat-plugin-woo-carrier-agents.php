@@ -22,6 +22,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	public const SESSION_FIELD_NAME_DATA = 'carrier-agents-data';
 
 
+
 	/**
 	 *	Carrier agent IDs.
 	 *
@@ -65,8 +66,8 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -345,26 +346,26 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete when shipping method is Woo Carrier Agents and no pickup point is selected.
+	 * Set the shipping substep as incomplete when shipping method is Woo Carrier Agents and no pickup point is selected.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_shipping( $is_substep_complete ) {
 		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 		
 		// Bail if Woo Carrier Agent is not selected as a shipping method
-		if ( ! $this->is_shipping_method_carrier_agent_selected() ) { return $is_step_complete; }
+		if ( ! $this->is_shipping_method_carrier_agent_selected() ) { return $is_substep_complete; }
 
 		// Get pickup location of the selected carrier agent
 		$selected_pickup_location = WC()->session->get( 'carrier-agent' );
 
 		// Maybe set step as incomplete if a carrier agent is not yet selected
 		if ( ! $selected_pickup_location ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 

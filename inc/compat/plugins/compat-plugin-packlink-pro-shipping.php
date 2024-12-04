@@ -52,8 +52,8 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -334,29 +334,29 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete when no pickup point is selected for the target shipping method.
+	 * Set the shipping substep as incomplete when no pickup point is selected for the target shipping method.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_shipping( $is_substep_complete ) {
 		// Get selected shipping method
 		$shipping_method = $this->maybe_get_selected_shipping_method();
 
 		// Bail if selected shipping method is not available
-		if ( ! is_object( $shipping_method ) ) { return $is_step_complete; }
+		if ( ! is_object( $shipping_method ) ) { return $is_substep_complete; }
 
 		// Bail if selected shipping method is not a local pickup method
-		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return $is_step_complete; }
+		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return $is_substep_complete; }
 
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
 
 		// Maybe set step as incomplete if terminal data is not set
 		if ( empty( $terminal_data ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 

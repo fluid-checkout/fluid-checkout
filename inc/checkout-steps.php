@@ -159,17 +159,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
-		// Billing phone
-		// Maybe move billing phone to contact step
-		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
-			// Add billing phone to contact fields
-			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
-			add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
-
-			// Remove phone field from billing address data
-			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
-		}
-
 		// Payment
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_remove_links' ), 10, 2 );
@@ -248,6 +237,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		$this->customer_address_data_hooks();
+
+		// Billing phone
+		// Maybe move billing phone to contact step
+		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
+			// Add billing phone to contact fields
+			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+			add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
+
+			// Remove phone field from billing address data
+			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
+		}
 	}
 
 	/**
