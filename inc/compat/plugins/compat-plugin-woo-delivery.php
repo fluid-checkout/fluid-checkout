@@ -223,6 +223,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	 */
 	public function maybe_set_datepicker_fields_session_values( $posted_data ) {
 		$fields = array(
+			'coderockz_woo_delivery_delivery_selection_box',
 			'coderockz_woo_delivery_date_field',
 			'coderockz_woo_delivery_time_field',
 			'coderockz_woo_delivery_pickup_date_field',
@@ -251,6 +252,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$pickup_date_session_value = WC()->session->get( 'coderockz_woo_delivery_pickup_date_field' );
 		$delivery_time = WC()->session->get( 'coderockz_woo_delivery_time_field' );
 		$pickup_time = WC()->session->get( 'coderockz_woo_delivery_pickup_time_field' );
+		$delivery_type = WC()->session->get( 'coderockz_woo_delivery_delivery_selection_box' );
 
 		// Convert date values to Y-m-d format
 		if ( $delivery_date_session_value ) {
@@ -262,6 +264,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// Output hidden fields
 		echo '<div id="woo-delivery-custom_hidden_fields" class="form-row fc-no-validation-icon woo-delivery-custom_hidden_fields">';
+		echo '<input type="hidden" id="fc_coderockz_woo_delivery_type" name="fc_coderockz_woo_delivery_type" value="' . esc_attr( $delivery_type ) . '">';
 		echo '<input type="hidden" id="fc_coderockz_woo_delivery_date" name="fc_coderockz_woo_delivery_date" value="' . esc_attr( $delivery_date ) . '">';
 		echo '<input type="hidden" id="fc_coderockz_woo_delivery_time" name="fc_coderockz_woo_delivery_time" value="' . esc_attr( $delivery_time ) . '">';
 		echo '<input type="hidden" id="fc_coderockz_woo_pickup_date" name="fc_coderockz_woo_pickup_date" value="' . esc_attr( $pickup_date ) . '">';

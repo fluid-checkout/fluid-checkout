@@ -22,10 +22,12 @@
 	var _settings = {
 		dateFieldSelector: '#coderockz_woo_delivery_date_datepicker, #coderockz_woo_delivery_pickup_date_datepicker',
 		timeFieldSelector: '#coderockz_woo_delivery_time_field, #coderockz_woo_delivery_pickup_time_field',
+		deliveryTypeFieldSelector: '#coderockz_woo_delivery_delivery_selection_box',
 		deliveryDateHiddenFieldSelector: '#fc_coderockz_woo_delivery_date',
 		deliveryTimeHiddenFieldSelector: '#fc_coderockz_woo_delivery_time',
 		pickupDateHiddenFieldSelector: '#fc_coderockz_woo_pickup_date',
 		pickupTimeHiddenFieldSelector: '#fc_coderockz_woo_pickup_time',
+		deliveryTypeHiddenFieldSelector: '#fc_coderockz_woo_delivery_type',
 	};
 
 
@@ -33,6 +35,41 @@
 	/**
 	 * METHODS
 	 */
+
+
+
+	/**
+	 * Maybe update delivery type field with WC session value.
+	 */
+	var maybeUpdateDeliveryTypeField = function() {
+		var deliveryTypeField = document.querySelector( _settings.deliveryTypeFieldSelector );
+		var hiddenField = document.querySelector( _settings.deliveryTypeHiddenFieldSelector );
+
+		// Bail if no fields found
+		if ( ! deliveryTypeField || ! hiddenField ) { return; }
+
+		// Bail if there's already a selected option
+		if ( deliveryTypeField.value ) { return; }
+
+		// Loop through select field options to find one that matches the hidden field value and isn't disabled
+		var validOption = null;
+		for ( var i = 0; i < deliveryTypeField.options.length; i++ ) {
+			var option = deliveryTypeField.options[ i ];
+			if ( option.value === hiddenField.value && ! option.disabled ) {
+				validOption = option;
+				break;
+			}
+		}
+
+		// Update the select field
+		if ( validOption ) {
+			deliveryTypeField.value = validOption.value;
+
+			// Trigger change event
+			var event = new Event( 'change', { bubbles: true } );
+			deliveryTypeField.dispatchEvent( event );
+		}
+	}
 
 
 
@@ -119,6 +156,10 @@
 	 * Handle captured `change` event and route to the appropriate functions.
 	 */
 	var handleChange = function( e ) {
+		// DELIVERY TYPE FIELD
+		if ( e.target.matches( _settings.deliveryTypeFieldSelector ) ) {
+			triggerCheckoutUpdate();
+		}
 		// DATEPICKER FIELDS
 		if ( e.target.matches( _settings.dateFieldSelector ) ) {
 			triggerCheckoutUpdate();
@@ -137,13 +178,18 @@
 	_publicMethods.init = function() {
 		if ( _hasInitialized ) return;
 
+		// Maybe update fields at initialization
+		maybeUpdateDeliveryTypeField();
 		maybeUpdateDatepickerFields();
 		maybeUpdateTimeSelectFields();
 
+		// Add event listeners
 		window.addEventListener( 'change', handleChange );
 
+		// Add jQuery event listeners
 		if ( _hasJQuery ) {
 			$( document.body ).on( 'change.select2', handleChange );
+			$( document.body ).on( 'updated_checkout', maybeUpdateDeliveryTypeField );
 			$( document.body ).on( 'updated_checkout', maybeUpdateDatepickerFields );
 			$( document.body ).on( 'updated_checkout', maybeUpdateTimeSelectFields );
 		}
