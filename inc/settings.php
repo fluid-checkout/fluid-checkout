@@ -101,7 +101,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
 			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
-
+			
 			// Settings order received.
 			'fc_pro_enable_order_received'                                  => 'no',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
@@ -113,6 +113,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
+			
+			// Settings order pay.
+			'fc_pro_enable_pay_received'                                    => 'no',
+			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
 
 			// Settings tools.
 			'fc_debug_mode'                                                 => 'no',

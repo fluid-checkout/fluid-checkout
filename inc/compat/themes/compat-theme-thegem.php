@@ -59,7 +59,7 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_after_customer_details', 'thegem_woocommerce_customer_details_end', 1000 );
 		remove_action( 'woocommerce_checkout_before_order_review_heading', 'thegem_woocommerce_order_review_start', 1 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'thegem_woocommerce_order_review_end', 1000 );
-		remove_action( 'woocommerce_after_checkout_form', 'thegem_woocommerce_checkout_form_steps_script' );
+		remove_action( 'woocommerce_after_checkout_form', 'thegem_woocommerce_checkout_form_steps_script', 10 );
 		remove_action( 'woocommerce_after_checkout_registration_form', 'thegem_woocommerce_checkout_registration_buttons', 100 );
 		remove_action( 'woocommerce_checkout_before_order_review', 'thegem_woocommerce_order_review_table_start', 1 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'thegem_woocommerce_order_review_table_end', 1000 );

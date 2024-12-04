@@ -45,8 +45,8 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Add substep text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 	}
 
 
@@ -205,13 +205,13 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping step as incomplete when shipping method is Fermopoint but a location has not yet been selected.
+	 * Set the shipping substep as incomplete when shipping method is Fermopoint but a location has not yet been selected.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
-		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
+		// Bail if substep is already incomplete
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get shipping packages
 		$packages = WC()->shipping->get_packages();
@@ -227,14 +227,14 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 			// Get the selected pudo ID
 			$pudo_id = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-pudo_id' );
 
-			// Maybe mark step as incomplete if pickup location code is empty
+			// Maybe mark substep as incomplete if pickup location code is empty
 			if ( empty( $pudo_id ) ) {
-				$is_step_complete = false;
+				$is_substep_complete = false;
 				break;
 			}
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 }

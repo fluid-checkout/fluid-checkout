@@ -46,7 +46,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_scripts' ), 100 );
 
 		// Remove redundant theme elements
-		remove_action( 'woocommerce_review_order_after_submit', 'mfn_return_cart_link' );
+		remove_action( 'woocommerce_review_order_after_submit', 'mfn_return_cart_link', 10 );
 	}
 
 	/**

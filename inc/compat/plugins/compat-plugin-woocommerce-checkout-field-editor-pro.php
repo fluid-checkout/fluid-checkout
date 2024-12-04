@@ -39,12 +39,16 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 
 		// Skip optional fields
 		add_filter( 'fc_hide_optional_fields_skip_types', array( $this, 'add_optional_fields_skip_types' ), 10 );
+
+		// Enhanced select fields
+		add_filter( 'option_thwcfe_advanced_settings', array( $this, 'maybe_disable_enhanced_select2_fields_option' ), 10, 3 );
 		
 		// Add select2 field types
 		add_filter( 'fc_select2_field_types', array( $this, 'add_select2_field_types' ), 10 );
 		add_filter( 'fc_no_validation_icon_field_types', array( $this, 'add_no_validation_icon_field_types' ), 10 );
 
 		// Persisted fields
+		add_filter( 'thwcfe_woocommerce_form_field_value', array( FluidCheckout_Steps::instance(), 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_filter( 'fc_customer_persisted_data_clear_fields_order_processed', array( $this, 'change_customer_persisted_data_clear_fields_order_processed' ), 10 );
 
 		// Checkout field args
@@ -71,10 +75,11 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		// Output hidden fields
 		add_filter( 'thwcfe_hidden_fields_display_position', array( $this, 'change_hidden_fields_display_position_hook' ), 10 );
 
-		// Set steps as incomplete
-		add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
-		add_filter( 'fc_is_step_complete_billing', array( $this, 'maybe_set_step_incomplete_billing' ), 10 );
+		// Set substeps as incomplete
+		add_filter( 'fc_is_substep_complete_contact', array( $this, 'maybe_set_substep_incomplete_contact' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_address', array( $this, 'maybe_set_substep_incomplete_shipping_address' ), 10 );
+		add_filter( 'fc_is_substep_complete_order_notes', array( $this, 'maybe_set_substep_incomplete_order_notes' ), 10 );
+		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing_address' ), 10 );
 	}
 
 
@@ -109,6 +114,25 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 
 
 	/**
+	 * Maybe disable enhanced select2 fields option for Checkout Field Editor for WooCommerce
+	 * when using Fluid Checkout enhanced select fields.
+	 *
+	 * @param  mixed   $value   The value to return instead of the option value.
+	 * @param  string  $option  Option name.
+	 */
+	public function maybe_disable_enhanced_select2_fields_option( $value, $option ) {
+		// Bail if Fluid Checkout enhanced select fields are not enabled
+		if ( ! FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) { return $value; }
+
+		// Disable enhanced select2 fields option for Checkout Field Editor for WooCommerce
+		$value[ 'disable_select2_for_select_fields' ] = 'yes';
+
+		return $value;
+	}
+
+
+
+	/**
 	 * Add field types to the select2 field types list.
 	 */
 	public function add_select2_field_types( $select2_field_types ) {
@@ -131,15 +155,15 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	/**
 	 * Maybe set a step as incomplete if required fields from custom sections are missing a value.
 	 *
-	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
+	 * @param   bool   $is_substep_complete  Whether the substep is to be considered complete or not.
 	 * @param   array  $hooks             The checkout hook names where to check for custom sections.
 	 */
-	public function maybe_set_step_incomplete( $is_step_complete, $hooks = array() ) {
+	public function maybe_set_step_incomplete( $is_substep_complete, $hooks = array() ) {
 		// Bail if checkout editor object not available
-		if ( null === $this->thwcfe ) { return $is_step_complete; }
+		if ( null === $this->thwcfe ) { return $is_substep_complete; }
 
 		// Bail if hooks is empty or not an array
-		if ( ! is_array( $hooks ) || empty( $hooks ) ) { return $is_step_complete; }
+		if ( ! is_array( $hooks ) || empty( $hooks ) ) { return $is_substep_complete; }
 		
 		// Get section ids
 		$sections = array();
@@ -212,73 +236,101 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 			}
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 	/**
-	 * Maybe set the contact step as incomplete if required fields from custom sections are missing a value.
+	 * Maybe set the contact substep as incomplete if required fields from custom sections are missing a value.
 	 *
-	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
+	 * @param   bool   $is_substep_complete  Whether the substep is to be considered complete or not.
 	 */
-	public function maybe_set_step_incomplete_contact( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_contact( $is_substep_complete ) {
 		// Maybe return from cache
-		$cache_key = 'step_incomplete_contact';
+		$cache_key = 'substep_incomplete_contact';
+		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
+			return self::$cached_values[ $cache_key ];
+		}
+
+		// Get hooks to check for custom sections
+		$hooks = array( 'before_customer_details' );
+		if ( ! is_user_logged_in() ) {
+			$hooks[] = 'before_checkout_registration_form';
+			$hooks[] = 'after_checkout_registration_form';
+		}
+
+		// Check if custom sections are complete
+		$is_substep_complete = $this->maybe_set_step_incomplete( $is_substep_complete, $hooks );
+
+		// Update cache
+		self::$cached_values[ $cache_key ] = $is_substep_complete;
+
+		return $is_substep_complete;
+	}
+
+	/**
+	 * Maybe set the shipping address substep as incomplete if required fields from custom sections are missing a value.
+	 *
+	 * @param   bool   $is_substep_complete  Whether the substep is to be considered complete or not.
+	 */
+	public function maybe_set_substep_incomplete_shipping_address( $is_substep_complete ) {
+		// Maybe return from cache
+		$cache_key = 'substep_incomplete_shipping_address';
 		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
 			return self::$cached_values[ $cache_key ];
 		}
 
 		// Check if custom sections are complete
-		$hooks = array( 'before_customer_details', 'after_customer_details', 'before_checkout_registration_form', 'after_checkout_registration_form' );
-		$is_step_complete = $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+		$hooks = array( 'before_checkout_shipping_form', 'after_checkout_shipping_form' );
+		$is_substep_complete = $this->maybe_set_step_incomplete( $is_substep_complete, $hooks );
 
 		// Update cache
-		self::$cached_values[ $cache_key ] = $is_step_complete;
+		self::$cached_values[ $cache_key ] = $is_substep_complete;
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 	/**
-	 * Maybe set the shipping step as incomplete if required fields from custom sections are missing a value.
+	 * Maybe set the order notes substep as incomplete if required fields from custom sections are missing a value.
 	 *
-	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
+	 * @param   bool   $is_substep_complete   Whether the substep is to be considered complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_order_notes( $is_substep_complete ) {
 		// Maybe return from cache
-		$cache_key = 'step_incomplete_shipping';
+		$cache_key = 'substep_incomplete_order_notes';
 		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
 			return self::$cached_values[ $cache_key ];
 		}
 
 		// Check if custom sections are complete
-		$hooks = array( 'before_checkout_shipping_form', 'after_checkout_shipping_form', 'before_order_notes', 'after_order_notes' );
-		$is_step_complete = $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+		$hooks = array( 'before_order_notes', 'after_order_notes' );
+		$is_substep_complete = $this->maybe_set_step_incomplete( $is_substep_complete, $hooks );
 
 		// Update cache
-		self::$cached_values[ $cache_key ] = $is_step_complete;
+		self::$cached_values[ $cache_key ] = $is_substep_complete;
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 	/**
-	 * Maybe set the billing step as incomplete if required fields from custom sections are missing a value.
+	 * Maybe set the billing address substep as incomplete if required fields from custom sections are missing a value.
 	 *
-	 * @param   bool   $is_step_complete  Whether the step is to be considered complete or not.
+	 * @param   bool   $is_substep_complete  Whether the substep is to be considered complete or not.
 	 */
-	public function maybe_set_step_incomplete_billing( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_billing_address( $is_substep_complete ) {
 		// Maybe return from cache
-		$cache_key = 'step_incomplete_billing';
+		$cache_key = 'substep_incomplete_billing_address';
 		if ( array_key_exists( $cache_key, self::$cached_values ) ) {
 			return self::$cached_values[ $cache_key ];
 		}
 
 		// Check if custom sections are complete
-		$hooks = array( 'before_checkout_billing_form', 'after_checkout_billing_form' );
-		$is_step_complete = $this->maybe_set_step_incomplete( $is_step_complete, $hooks );
+		$hooks = array( 'after_customer_details', 'before_checkout_billing_form', 'after_checkout_billing_form' );
+		$is_substep_complete = $this->maybe_set_step_incomplete( $is_substep_complete, $hooks );
 
 		// Update cache
-		self::$cached_values[ $cache_key ] = $is_step_complete;
+		self::$cached_values[ $cache_key ] = $is_substep_complete;
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 

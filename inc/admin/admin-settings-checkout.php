@@ -278,8 +278,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'              => 'fc_select',
 						'options'           => array(
 							'edit_cart_link'           => array( 'label' => __( 'Edit cart link', 'fluid-checkout' ) ),
-							'cart_items_count'         => array( 'label' => __( 'Cart items count', 'fluid-checkout' ), 'disabled' => true ),
-							'shop_link'                => array( 'label' => __( 'Link to shop page', 'fluid-checkout' ), 'disabled' => true ),
+							'cart_items_count'         => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Cart items count', 'fluid-checkout' ), 'disabled' => true ),
+							'shop_link'                => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Link to shop page', 'fluid-checkout' ), 'disabled' => true ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' ),
 						'autoload'          => false,
@@ -386,12 +386,13 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'fc_pro_checkout_coupon_codes_position',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'before_checkout_steps'    => array( 'label' => __( 'Before the checkout steps', 'fluid-checkout' ), 'disabled' => true ),
+							'none'                     => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Hidden', 'fluid-checkout' ), 'disabled' => true ),
+							'before_checkout_steps'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before the checkout steps', 'fluid-checkout' ), 'disabled' => true ),
 							'substep_before_payment'   => array( 'label' => __( 'As a substep before payment methods', 'fluid-checkout' ) ),
-							'substep_after_payment'    => array( 'label' => __( 'As a substep after payment methods', 'fluid-checkout' ), 'disabled' => true ),
-							'inside_order_summary'     => array( 'label' => __( 'Inside the order summary', 'fluid-checkout' ), 'disabled' => true ),
-							'before_order_totals'      => array( 'label' => __( 'Before the order totals', 'fluid-checkout' ), 'disabled' => true ),
-							'after_order_totals'       => array( 'label' => __( 'After the order totals', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_after_payment'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'As a substep after payment methods', 'fluid-checkout' ), 'disabled' => true ),
+							'inside_order_summary'     => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Inside the order summary', 'fluid-checkout' ), 'disabled' => true ),
+							'before_order_totals'      => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before the order totals', 'fluid-checkout' ), 'disabled' => true ),
+							'after_order_totals'       => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'After the order totals', 'fluid-checkout' ), 'disabled' => true ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_coupon_codes_position' ),
 						'autoload'          => false,
@@ -461,12 +462,12 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'fc_pro_checkout_billing_address_position',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'step_before_shipping'       => array( 'label' => __( 'As a step before shipping', 'fluid-checkout' ), 'disabled' => true ),
-							'substep_before_shipping'    => array( 'label' => __( 'As a sub-step before the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
-							'substep_after_shipping'     => array( 'label' => __( 'As a sub-step after the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
+							'step_before_shipping'       => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'As a step before shipping', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_before_shipping'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'As a sub-step before the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_after_shipping'     => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'As a sub-step after the shipping address section', 'fluid-checkout' ), 'disabled' => true ),
 							'step_after_shipping'        => array( 'label' => __( 'As a step after shipping', 'fluid-checkout' ) ),
-							'substep_before_payment'     => array( 'label' => __( 'As a sub-step before the payment section', 'fluid-checkout' ), 'disabled' => true ),
-							'force_single_address'       => array( 'label' => __( 'Force billing and shipping addresses to the same (single section)', 'fluid-checkout' ), 'disabled' => true ),
+							'substep_before_payment'     => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'As a sub-step before the payment section', 'fluid-checkout' ), 'disabled' => true ),
+							'force_single_address'       => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Force billing and shipping addresses to the same (single section)', 'fluid-checkout' ), 'disabled' => true ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_billing_address_position' ),
 						'autoload'          => false,
@@ -513,7 +514,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'desc'              => __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
-						'desc_tip'          => __( 'When enabled, the first shipping method available will not be automatically selected when no other shipping method was previously selected for each shipping package. <br>This option will be automatically enabled if the option for clearing the selected shipping method is enabled for the Local Pickup feature.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'When enabled, the first shipping method available will not be automatically selected when no other shipping method was previously selected for each shipping package. <br>This option will be automatically enabled if the option for clearing the selected shipping method is enabled for the Local Pickup feature.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_shipping_methods_disable_auto_select',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
@@ -548,7 +549,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					array(
 						'desc'              => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
 						'id'                => 'fc_local_pickup_save_shipping_address',
-						'type'              => 'select',
+						'type'              => 'fc_select',
 						'options'           => array(
 							'same_as_pickup_location'    => __( 'Save the selected pickup location', 'fluid-checkout' ),
 							'same_as_billing'            => __( 'Save same as the billing address', 'fluid-checkout' ),
@@ -556,6 +557,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_save_shipping_address' ),
 						'autoload'          => false,
+						'disabled'          => true,
 					),
 
 					array(

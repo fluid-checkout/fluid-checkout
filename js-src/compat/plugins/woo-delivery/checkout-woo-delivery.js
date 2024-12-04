@@ -137,11 +137,14 @@
 	_publicMethods.init = function() {
 		if ( _hasInitialized ) return;
 
+		// Maybe update fields at initialization
 		maybeUpdateDatepickerFields();
 		maybeUpdateTimeSelectFields();
 
+		// Add event listeners
 		window.addEventListener( 'change', handleChange );
 
+		// Add jQuery event listeners
 		if ( _hasJQuery ) {
 			$( document.body ).on( 'change.select2', handleChange );
 			$( document.body ).on( 'updated_checkout', maybeUpdateDatepickerFields );

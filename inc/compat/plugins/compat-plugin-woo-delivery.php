@@ -22,6 +22,9 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_datepicker_fields_session_values' ), 10 );
 
@@ -32,34 +35,22 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 	}
 
-
-
 	/**
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		// Plugin elements hooks
+		// Plugin element hooks
 		$this->plugin_elements_hooks();
-
-		// Add substep review text fragment
-		add_filter( 'fc_substep_delivery_date_text_lines', array( $this, 'add_substep_text_lines_delivery_date' ), 10 );
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
-
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete' ), 10 );
-
-		// Skip optional fields
-		add_filter( 'fc_hide_optional_fields_skip_by_class', array( $this, 'add_optional_fields_skip_classes' ), 10 );
 	}
-
-
 
 	/**
 	 * Add or remove hooks for the plugin elements.
 	 */
 	public function plugin_elements_hooks() {
-		// Bail if plugin classes and methods are not available
+		// Bail if plugin classes available
 		if ( ! class_exists( 'Coderockz_Woo_Delivery' ) || ! class_exists( 'Coderockz_Woo_Delivery_Public' ) ) { return; }
+
+		// Bail if plugin methods are not available
 		if ( ! method_exists( 'Coderockz_Woo_Delivery', 'get_plugin_name' ) || ! method_exists( 'Coderockz_Woo_Delivery', 'get_version' ) ) { return; }
 
 		// Remove plugin hooks
@@ -72,48 +63,32 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$this->remove_action_for_class( 'woocommerce_review_order_before_payment', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
 		$this->remove_action_for_class( 'woocommerce_checkout_before_order_review_heading', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
 
-		// Define substep hook and priority for each position
-		$substep_position_priority = array(
-			'before_billing' => array( 'fc_output_step_billing', 9 ),
-			'after_billing' => array( 'fc_output_step_billing', 11 ),
-			'before_shipping' => array( 'fc_output_step_shipping', 9 ),
-			'after_shipping' => array( 'fc_output_step_shipping', 21 ),
-			'before_notes' => array( 'fc_output_step_shipping', 99 ),
-			'after_notes' => array( 'fc_output_step_shipping', 101 ),
-			'before_payment' => array( 'fc_output_step_payment', 89 ), // Intentionally same as for `before_your_order`
-			'before_your_order' => array( 'fc_output_step_payment', 89 ),
-		);
+		// TODO: CHECK WHY IT WAS REMOVED
+		// // Get delivery date value from session
+		// add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 200, 2 );
 
-		// Get selected position for delivery date
-		$woodelivery_settings = FluidCheckout_Settings::instance()->get_option( 'coderockz_woo_delivery_other_settings' );
-		$position = is_array( $woodelivery_settings ) && isset( $woodelivery_settings['field_position'] ) && $woodelivery_settings['field_position'] != '' ? $woodelivery_settings['field_position'] : 'after_notes';
-		if ( ! array_key_exists( $position, $substep_position_priority ) ) {
-			$position = 'after_notes';
-		}
-		
-		// Add delivery date substep at the selected position
-		$hook = $substep_position_priority[ $position ][ 0 ];
-		$priority = $substep_position_priority[ $position ][ 1 ];
-		add_action( $hook, array( $this, 'output_substep_delivery_options' ), $priority );
+		// Skip optional fields
+		add_filter( 'fc_hide_optional_fields_skip_by_class', array( $this, 'add_optional_fields_skip_classes' ), 10 );
+
+		// Change delivery date field args
+		add_filter( 'woocommerce_form_field_args', array( $this, 'change_delivery_date_field_args' ), 10, 3 );
 	}
 
-
-
 	/**
-	 * Return the values allowed for the order type field.
+	 * Add or remove very late hooks.
 	 */
-	public function get_allowed_order_type_values() {
-		return array( 'delivery', 'pickup' );
+	public function very_late_hooks() {
+		// Substep
+		$this->maybe_register_substep_delivery_date();
 	}
 
-
-
 	/**
-	 * Output delivery date substep.
-	 *
-	 * @param   string  $step_id  Id of the step in which the substep will be rendered.
+	 * Maybe register the delivery date substep.
 	 */
-	public function output_substep_delivery_options( $step_id ) {
+	public function maybe_register_substep_delivery_date() {
+		// Bail if plugin classes and functions are not available
+		if ( ! class_exists( 'Coderockz_Woo_Delivery' ) || ! class_exists( 'Coderockz_Woo_Delivery_Public' ) ) { return; }
+
 		// Get settings
 		$delivery_option_settings = FluidCheckout_Settings::instance()->get_option( 'coderockz_woo_delivery_option_delivery_settings' );
 		$delivery_date_settings = FluidCheckout_Settings::instance()->get_option( 'coderockz_woo_delivery_date_settings' );
@@ -128,6 +103,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// Define substep title
 		$substep_title = __( 'Delivery Options', 'fluid-checkout' );
+
 		// Both delivery and pickup enabled
 		if ( is_array( $delivery_date_settings ) && is_array( $pickup_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && true === $pickup_date_settings[ 'enable_pickup_date' ] ) {
 			$substep_title = __( 'Delivery or Pickup', 'fluid-checkout' );
@@ -141,28 +117,101 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 			$substep_title = __( 'Pickup Date', 'fluid-checkout' );
 		}
 
+		// Filter substep title
 		$substep_title = apply_filters( 'fc_woodelivery_substep_title', $substep_title );
 
+		// Get substep position args
+		$substep_position_args = $this->get_substep_position_args();
+
+		// Get substep position
+		$step_id = $substep_position_args[ 'step_id' ];
+		$substep_priority = $substep_position_args[ 'priority' ];
 		$substep_id = 'coderockz_delivery_date';
-		FluidCheckout_Steps::instance()->output_substep_start_tag( $step_id, $substep_id, $substep_title );
 
-		// Get Woo Delivery instances
-		$woodelivery_main = new Coderockz_Woo_Delivery();
-		$woodelivery_public = new Coderockz_Woo_Delivery_Public( $woodelivery_main->get_plugin_name(), $woodelivery_main->get_version() );
+		// Register substep
+		FluidCheckout_Steps::instance()->register_checkout_substep( $step_id, array(
+			'substep_id' => $substep_id,
+			'substep_title' => $substep_title,
+			'priority' => $substep_priority,
+			'render_fields_callback' => array( $this, 'output_substep_fields_delivery_options' ),
+			'render_review_text_callback' => array( $this, 'output_substep_text_delivery_options' ),
+			'is_complete_callback' => array( $this, 'is_substep_complete_delivery_date' ),
+		) );
 
-		FluidCheckout_Steps::instance()->output_substep_fields_start_tag( $step_id, $substep_id );
-		$woodelivery_public->coderockz_woo_delivery_add_custom_field();
-		$this->output_custom_hidden_fields();
-		FluidCheckout_Steps::instance()->output_substep_fields_end_tag( $step_id, $substep_id );
+		// Add substep review text fragment
+		add_filter( 'fc_substep_delivery_date_text_lines', array( $this, 'add_substep_text_lines_delivery_date' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_delivery_date_text_fragment' ), 10 );
+	}
 
-		// Only output substep text format for multi-step checkout layout
-		if ( FluidCheckout_Steps::instance()->is_checkout_layout_multistep() ) {
-			FluidCheckout_Steps::instance()->output_substep_text_start_tag( $step_id, $substep_id );
-			$this->output_substep_text_delivery_options();
-			FluidCheckout_Steps::instance()->output_substep_text_end_tag();
+	/**
+	 * Get the substep hook and priority values for each position which is displayed as a substep.
+	 */
+	public function get_substep_position_options() {
+		// Only positions which are substeps are defined here.
+		$substep_position_priority = array(
+			'before_billing'        => array( 'step_id' => 'billing', 'priority' => 9 ),
+			'after_billing'         => array( 'step_id' => 'billing', 'priority' => 11 ),
+			'before_shipping'       => array( 'step_id' => 'shipping', 'priority' => 9 ),
+			'after_shipping'        => array( 'step_id' => 'shipping', 'priority' => 21 ),
+			'before_notes'          => array( 'step_id' => 'shipping', 'priority' => 99 ),
+			'after_notes'           => array( 'step_id' => 'shipping', 'priority' => 101 ),
+			'before_payment'        => array( 'step_id' => 'payment', 'priority' => 89 ), // Intentionally same as for `before_your_order`
+			'before_your_order'     => array( 'step_id' => 'payment', 'priority' => 89 ),
+		);
+
+		return $substep_position_priority;
+	}
+
+	/**
+	 * Get the substep position args for the delivery date substep.
+	 */
+	public function get_substep_position_args() {
+		// Get the plugins settings
+		$woodelivery_settings = FluidCheckout_Settings::instance()->get_option( 'coderockz_woo_delivery_other_settings' );
+
+		// Get substep position options
+		$substep_position_options = $this->get_substep_position_options();
+		
+		// Get selected position for delivery date
+		// or fallback to default position.
+		$selected_position = is_array( $woodelivery_settings ) && isset( $woodelivery_settings['field_position'] ) && $woodelivery_settings['field_position'] != '' ? $woodelivery_settings['field_position'] : 'after_notes';
+		if ( ! array_key_exists( $selected_position, $substep_position_options ) ) {
+			$selected_position = 'after_notes';
 		}
 
-		FluidCheckout_Steps::instance()->output_substep_end_tag( $step_id, $substep_id, $substep_title );
+		// Bail if selected position is not found
+		if ( ! array_key_exists( $selected_position, $substep_position_options ) ) { return false; }
+
+		return $substep_position_options[ $selected_position ];
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-woo-delivery', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-delivery/checkout-woo-delivery' ), array( 'jquery', 'selectWoo', 'flatpickr_js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-woo-delivery', 'window.addEventListener("load",function(){CheckoutWooDelivery.init();})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-woo-delivery' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
@@ -223,13 +272,14 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 
 	/**
-	 * Set the related checkout step as incomplete depending on the `woo-delivery` plugin settings and its field values.
+	 * Determines if all required data for the delivery date substep has been provided.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @return  boolean  `true` if the user has provided all the required data for this substep, `false` otherwise. Defaults to `true`.
 	 */
-	public function maybe_set_step_incomplete( $is_step_complete ) {
-		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+	public function is_substep_complete_delivery_date() {
+		// Initialize variables
+		$substep_id = 'coderockz_delivery_date';
+		$is_substep_complete = true;
 
 		// Get settings
 		$delivery_option_settings = FluidCheckout_Settings::instance()->get_option( 'coderockz_woo_delivery_option_delivery_settings' );
@@ -254,30 +304,39 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Always set set as incomplete if option to select between delivery and pickup is enabled
 		// This is a limitation of the since it does not allow to set a default value for that option
 		if ( is_array( $delivery_option_settings ) && array_key_exists( 'enable_option_time_pickup', $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
 		// Check delivery date is enabled and mandatory
 		if ( is_array( $delivery_date_settings ) && array_key_exists( 'enable_delivery_date', $delivery_date_settings ) && true === $delivery_date_settings[ 'enable_delivery_date' ] && true === $delivery_date_settings[ 'delivery_date_mandatory' ] && empty( $delivery_date ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
 		// Check delivery time is enabled and mandatory
 		if ( is_array( $delivery_time_settings ) && array_key_exists( 'enable_delivery_time', $delivery_date_settings ) && true === $delivery_time_settings[ 'enable_delivery_time' ] && true === $delivery_time_settings[ 'delivery_time_mandatory' ] && empty( $delivery_time ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
 		// Check pickup date is enabled and mandatory
 		if ( is_array( $pickup_date_settings ) && array_key_exists( 'enable_pickup_date', $delivery_date_settings ) && true === $pickup_date_settings[ 'enable_pickup_date' ] && true === $pickup_date_settings[ 'pickup_date_mandatory' ] && empty( $pickup_date ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
 		// Check pickup time is enabled and mandatory
 		if ( is_array( $pickup_time_settings ) && array_key_exists( 'enable_pickup_time', $delivery_date_settings ) && true === $pickup_time_settings[ 'enable_pickup_time' ] && true === $pickup_time_settings[ 'pickup_time_mandatory' ] && empty( $pickup_time ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
+	}
+
+
+
+	/**
+	 * Return the values allowed for the order type field.
+	 */
+	public function get_allowed_order_type_values() {
+		return array( 'delivery', 'pickup' );
 	}
 
 
@@ -416,6 +475,21 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	}
 
 	/**
+	 * Output the substep fields for delivery options.
+	 */
+	public function output_substep_fields_delivery_options() {
+		// Get Woo Delivery instances
+		$woodelivery_main = new Coderockz_Woo_Delivery();
+		$woodelivery_public = new Coderockz_Woo_Delivery_Public( $woodelivery_main->get_plugin_name(), $woodelivery_main->get_version() );
+
+		// Output fields from the plugin
+		$woodelivery_public->coderockz_woo_delivery_add_custom_field();
+
+		// Output custom hidden fields
+		$this->output_custom_hidden_fields();
+	}
+
+	/**
 	 * Output delivery date substep review text.
 	 */
 	public function output_substep_text_delivery_options() {
@@ -425,30 +499,34 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 
 	/**
-	 * Register assets.
+	 * Change default delivery date field value, getting it from the persisted fields session.
+	 *
+	 * @param   mixed    $value   Value of the field.
+	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
-	public function register_assets() {
-		// Checkout scripts
-		wp_register_script( 'fc-checkout-woo-delivery', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-delivery/checkout-woo-delivery' ), array( 'jquery', 'selectWoo', 'flatpickr_js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-woo-delivery', 'window.addEventListener("load",function(){CheckoutWooDelivery.init();})' );
-	}
+	public function change_default_field_values_from_session( $value, $input ) {
+		// Define target fields
+		$target_field_ids = array(
+			'coderockz_woo_delivery_delivery_selection_box',
+			'coderockz_woo_delivery_date_field',
+			'coderockz_woo_delivery_time_field',
+			'coderockz_woo_delivery_pickup_date_field', 'coderockz_woo_delivery_pickup_time_field',
+		);
 
-	/**
-	 * Enqueue scripts.
-	 */
-	public function enqueue_assets() {
-		// Scripts
-		wp_enqueue_script( 'fc-checkout-woo-delivery' );
-	}
+		// Bail if not a target field
+		if ( ! in_array( $input, $target_field_ids ) ) { return $value; }
 
-	/**
-	 * Maybe enqueue assets.
-	 */
-	public function maybe_enqueue_assets() {
-		// Bail if not at checkout
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+		// Get field value from session
+		$field_session_value = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( $input );
 
-		$this->enqueue_assets();
+		// Maybe return field value from session
+		$date_field_ids = array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' );
+		if ( null !== $field_session_value && in_array( $input, $date_field_ids ) ) {
+			$date_converted_value = date( 'Y-m-d', strtotime( $field_session_value ) );
+			return $date_converted_value;
+		}
+
+		return $value;
 	}
 
 
@@ -459,6 +537,21 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	public function add_optional_fields_skip_classes( $skip_classes ) {
 		$skip_classes = array_merge( $skip_classes, array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' ) );
 		return $skip_classes;
+	}
+
+
+
+	public function change_delivery_date_field_args( $args, $key, $value ) {
+		// Bail if not a target field
+		$allowed_field_ids = array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' );
+		if ( ! in_array( $key, $allowed_field_ids ) ) { return $args; }
+
+		// Maybe add default date attribute
+		if ( ! empty( WC()->checkout->get_value( $key ) ) ) {
+			$args['custom_attributes']['data-default_date'] = WC()->checkout->get_value( $key );
+		}
+
+		return $args;
 	}
 
 }
