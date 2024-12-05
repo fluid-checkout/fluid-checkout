@@ -50,9 +50,6 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Bail if plugin classes available
 		if ( ! class_exists( 'Coderockz_Woo_Delivery' ) || ! class_exists( 'Coderockz_Woo_Delivery_Public' ) ) { return; }
 
-		// Bail if plugin methods are not available
-		if ( ! method_exists( 'Coderockz_Woo_Delivery', 'get_plugin_name' ) || ! method_exists( 'Coderockz_Woo_Delivery', 'get_version' ) ) { return; }
-
 		// Remove plugin hooks
 		$this->remove_action_for_class( 'woocommerce_checkout_billing', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
 		$this->remove_action_for_class( 'woocommerce_after_checkout_billing_form', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
