@@ -7,6 +7,14 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 	/**
+	 * Plugin class names.
+	 */
+	public const PUBLIC_CLASS_NAME = 'CartBounty_Public';
+	public const ADMIN_CLASS_NAME  = 'CartBounty_Admin';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -19,8 +27,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Get plugin object instance
-		$class_object = $this->get_object_by_class_name_from_hooks( 'CartBounty_Public' );
+		$class_object = $this->get_object_by_class_name_from_hooks( self::PUBLIC_CLASS_NAME );
 
 		// Bail if class object is not found in hooks
 		if ( ! $class_object ) { return; }
@@ -36,12 +43,10 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 * Maybe restore abandoned cart values to session.
 	 */
 	public function maybe_restore_abandoned_cart_values_to_session() {
-		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		// Get plugin class objects
-		$public_class_object = $this->get_object_by_class_name_from_hooks( 'CartBounty_Public' );
-		$admin_class_object = $this->get_object_by_class_name_from_hooks( 'CartBounty_Admin' );
+		$public_class_object = $this->get_object_by_class_name_from_hooks( self::PUBLIC_CLASS_NAME );
+		$admin_class_object  = $this->get_object_by_class_name_from_hooks( self::ADMIN_CLASS_NAME );
 
 		// Bail if class objects are not found in hooks
 		if ( ! $public_class_object && ! $admin_class_object ) { return; }
