@@ -6694,7 +6694,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get values for a checkout field from the session.
+	 * Get values for a checkout field from the session. Session keys are saved with a prefix from this plugin.
 	 *
 	 * @param   string  $field_key  Checkout field key name (ie. order_comments ).
 	 * 
@@ -6708,7 +6708,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Set values for a checkout field to the session.
+	 * Set values for a checkout field to the session. Session keys are saved with a prefix from this plugin.
 	 *
 	 * @param   string  $field_key  Checkout field key name (ie. order_comments ).
 	 * @param   mixed   $value      Value of the field.
