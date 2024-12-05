@@ -62,7 +62,7 @@
 		}
 
 		// Update the select field
-		if ( validOption ) {
+		if ( validOption && validOption.value ) {
 			deliveryTypeField.value = validOption.value;
 
 			// Trigger change event
@@ -135,7 +135,7 @@
 			}
 
 			// Update the select field
-			if ( validTimeOption ) {
+			if ( validTimeOption && validTimeOption.value ) {
 				timeSelectField.value = validTimeOption.value;
 			}
 		}
