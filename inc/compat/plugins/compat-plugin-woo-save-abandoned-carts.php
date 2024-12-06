@@ -14,6 +14,12 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 
 	/**
+	 * Data prefix.
+	 */
+	public $prefix = 'cartbounty_';
+
+
+	/**
 	 * Script name.
 	 */
 	public $script_name = 'cartbounty';
@@ -21,7 +27,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	/**
 	 * Script file path.
 	 */
-	public $script_file_path = 'js/compat/plugins/cartbounty/cartbounty-public';
+	public $script_file_path = 'js/compat/plugins/woo-save-abandoned-carts/cartbounty-public';
 
 
 
@@ -41,10 +47,11 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		if ( class_exists( 'CartBounty_Public' ) && class_exists( 'CartBounty_Admin' ) ) { return; }
 
 		// Otherwise, set the variables for the PRO plugin
-		$public_class_name = 'CartBounty_Pro_Public';
-		$admin_class_name  = 'CartBounty_Pro_Admin';
-		$script_name       = 'cartbounty-pro';
-		$script_file_path  = 'js/compat/plugins/cartbounty-pro/cartbounty-pro-public';
+		$this->public_class_name = 'CartBounty_Pro_Public';
+		$this->admin_class_name  = 'CartBounty_Pro_Admin';
+		$this->prefix            = 'cartbounty_pro_';
+		$this->script_name       = 'cartbounty-pro';
+		$this->script_file_path  = 'js/compat/plugins/woo-save-abandoned-carts-pro/cartbounty-pro-public';
 	}
 
 
@@ -54,7 +61,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Bail if plugin class is not available
-		if ( ! class_exists( $this->class_name ) ) { return; }
+		if ( ! class_exists( $this->public_class_name ) ) { return; }
 
 		$class_object = $this->get_object_by_class_name_from_hooks( $this->public_class_name );
 
@@ -118,15 +125,11 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		// Loop through the fields, and maybe set the session values
 		foreach ( $checkout_fields as $key => $value ) {
 			// Remove plugin prefix from the field keys
-			$prefix = 'cartbounty_';
-			$key = str_replace( $prefix, '', $key );
+			$key = str_replace( $this->prefix, '', $key );
 
-			// Get current session value
-			$current_value = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( $key );
-
-			// Set the session value if it's empty
-			if ( empty( $current_value ) ) {
-				FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $key, $value );
+			// Set the field value to the session
+			if ( NULL !== $value ) {
+				FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $key, esc_html( $value ) );
 			}
 		}
 	}
