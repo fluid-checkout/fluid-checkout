@@ -67,7 +67,7 @@ class FluidCheckout_PaypalBrasilParaWooCommerce extends FluidCheckout {
 		if ( WC()->cart->needs_shipping_address() ) { return $data; }
 
 		// Get posted data
-		$posted_data = $this->get_parsed_posted_data();
+		$posted_data = FluidCheckout_Steps::instance()->get_parsed_posted_data();
 
 		// Bail if billing country is not Brazil
 		if ( ! array_key_exists( 'billing_country', $posted_data ) || 'BR' !== $posted_data[ 'billing_country' ] ) { return $data; }
