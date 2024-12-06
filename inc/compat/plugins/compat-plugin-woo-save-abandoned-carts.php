@@ -9,19 +9,19 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	/**
 	 * Plugin class names.
 	 */
-	protected $public_class_name = 'CartBounty_Public';
-	protected $admin_class_name  = 'CartBounty_Admin';
+	public $public_class_name = 'CartBounty_Public';
+	public $admin_class_name  = 'CartBounty_Admin';
 
 
 	/**
 	 * Script name.
 	 */
-	protected $script_name = 'cartbounty';
+	public $script_name = 'cartbounty';
 
 	/**
 	 * Script file path.
 	 */
-	protected $script_file_path = 'js/compat/plugins/cartbounty/cartbounty-public';
+	public $script_file_path = 'js/compat/plugins/cartbounty/cartbounty-public';
 
 
 
@@ -29,7 +29,22 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
+		$this->maybe_set_class_properties();
 		$this->hooks();
+	}
+
+	/**
+	 * Maybe set class properties for the PRO plugin.
+	 */
+	public function maybe_set_class_properties() {
+		// Bail if class for CartBounty Lite was found, as it is the default plugin class name
+		if ( class_exists( 'CartBounty_Public' ) && class_exists( 'CartBounty_Admin' ) ) { return; }
+
+		// Otherwise, set the variables for the PRO plugin
+		$public_class_name = 'CartBounty_Pro_Public';
+		$admin_class_name  = 'CartBounty_Pro_Admin';
+		$script_name       = 'cartbounty-pro';
+		$script_file_path  = 'js/compat/plugins/cartbounty-pro/cartbounty-pro-public';
 	}
 
 
@@ -38,6 +53,9 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if plugin class is not available
+		if ( ! class_exists( $this->class_name ) ) { return; }
+
 		$class_object = $this->get_object_by_class_name_from_hooks( $this->public_class_name );
 
 		// Bail if class object is not found in hooks
@@ -125,7 +143,4 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 }
 
-// Initialize if not called from the child class file
-if ( ! defined( 'FLUIDCHECKOUT_SKIP_PARENT_CLASS_INIT' ) ) {
-	FluidCheckout_WooSaveAbandonedCarts::instance();
-}
+FluidCheckout_WooSaveAbandonedCarts::instance();
