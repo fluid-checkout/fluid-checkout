@@ -45,7 +45,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 		// Change the way input data is recovered from CartBounty to avoid conflicts with a similar feature from Fluid Checkout 
 		remove_filter( 'wp', array( $class_object, 'restore_input_data' ), 10 );
-		add_action( 'woocommerce_before_checkout_form', array( $this, 'maybe_restore_abandoned_cart_values_to_session' ), 10 );
+		add_filter( 'wp', array( $this, 'maybe_restore_abandoned_cart_values_to_session' ), 10 );
 
 		// Replace assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_assets' ), 5 );
