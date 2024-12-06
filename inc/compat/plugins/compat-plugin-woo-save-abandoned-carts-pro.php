@@ -1,6 +1,9 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// Define a constant to prevent parent class initialization
+define( 'FLUIDCHECKOUT_SKIP_PARENT_CLASS_INIT', true );
+
 // Load Lite plugin's compatibility file
 $lite_plugin_compat_file_path = self::$directory_path . 'inc/compat/plugins/compat-plugin-woo-save-abandoned-carts.php';
 if ( file_exists( $lite_plugin_compat_file_path ) ) {
@@ -15,17 +18,19 @@ class FluidCheckout_WooSaveAbandonedCartsPro extends FluidCheckout_WooSaveAbando
 	/**
 	 * Plugin class names.
 	 */
-	public const PUBLIC_CLASS_NAME = 'CartBounty_Pro_Public';
-	public const ADMIN_CLASS_NAME  = 'CartBounty_Pro_Admin';
-
+	protected $public_class_name = 'CartBounty_Pro_Public';
+	protected $admin_class_name  = 'CartBounty_Pro_Admin';
 
 
 	/**
-	 * __construct function.
+	 * Script name.
 	 */
-	public function __construct() {
-		parent::__construct();
-	}
+	protected $script_name = 'cartbounty-pro';
+
+	/**
+	 * Script file path.
+	 */
+	protected $script_file_path = 'js/compat/plugins/woo-save-abandoned-carts-pro/cartbounty-pro-public';
 
 }
 

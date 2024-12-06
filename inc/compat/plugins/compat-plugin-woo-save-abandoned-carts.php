@@ -9,8 +9,19 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	/**
 	 * Plugin class names.
 	 */
-	public const PUBLIC_CLASS_NAME = 'CartBounty_Public';
-	public const ADMIN_CLASS_NAME  = 'CartBounty_Admin';
+	protected $public_class_name = 'CartBounty_Public';
+	protected $admin_class_name  = 'CartBounty_Admin';
+
+
+	/**
+	 * Script name.
+	 */
+	protected $script_name = 'cartbounty';
+
+	/**
+	 * Script file path.
+	 */
+	protected $script_file_path = 'js/compat/plugins/cartbounty/cartbounty-public';
 
 
 
@@ -27,7 +38,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		$class_object = $this->get_object_by_class_name_from_hooks( self::PUBLIC_CLASS_NAME );
+		$class_object = $this->get_object_by_class_name_from_hooks( $this->public_class_name );
 
 		// Bail if class object is not found in hooks
 		if ( ! $class_object ) { return; }
@@ -35,6 +46,9 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		// Change the way input data is recovered from CartBounty to avoid conflicts with a similar feature from Fluid Checkout 
 		remove_filter( 'wp', array( $class_object, 'restore_input_data' ), 10 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'maybe_restore_abandoned_cart_values_to_session' ), 10 );
+
+		// Replace assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'replace_assets' ), 5 );
 	}
 
 
@@ -45,11 +59,11 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	public function maybe_restore_abandoned_cart_values_to_session() {
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
-		$public_class_object = $this->get_object_by_class_name_from_hooks( self::PUBLIC_CLASS_NAME );
-		$admin_class_object  = $this->get_object_by_class_name_from_hooks( self::ADMIN_CLASS_NAME );
+		$public_class_object = $this->get_object_by_class_name_from_hooks( $this->public_class_name );
+		$admin_class_object  = $this->get_object_by_class_name_from_hooks( $this->admin_class_name );
 
 		// Bail if class objects are not found in hooks
-		if ( ! $public_class_object && ! $admin_class_object ) { return; }
+		if ( ! $public_class_object || ! $admin_class_object ) { return; }
 
 		// Bail if required methods are not found in the class objects
 		if ( ! method_exists( $public_class_object, 'get_saved_cart' ) || ! method_exists( $admin_class_object, 'get_cart_location' ) ) { return; }
@@ -99,6 +113,19 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		}
 	}
 
+
+
+	/**
+	 * Replace plugin assets.
+	 */
+	public function replace_assets() {
+		// Enqueue the script with the same handle but different file path
+		wp_enqueue_script( $this->script_name, FluidCheckout_Enqueue::instance()->get_script_url( $this->script_file_path ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
 }
 
-FluidCheckout_WooSaveAbandonedCarts::instance();
+// Initialize if not called from the child class file
+if ( ! defined( 'FLUIDCHECKOUT_SKIP_PARENT_CLASS_INIT' ) ) {
+	FluidCheckout_WooSaveAbandonedCarts::instance();
+}
