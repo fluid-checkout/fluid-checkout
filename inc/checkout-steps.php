@@ -4180,7 +4180,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_prevent_autoselect_shipping_method( $default, $rates, $chosen_method ) {
 		// Bail if option is not enabled
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' ) ) { return $default; }
+		if ( apply_filters( 'fc_shipping_methods_disable_auto_select', 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' ), $default, $rates, $chosen_method ) ) { return $default; }
 
 		// Prevent autoselect
 		return false;
