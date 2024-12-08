@@ -131,7 +131,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 			$key = str_replace( $this->prefix, '', $key );
 
 			// Set the field value to the session
-			if ( NULL !== $value ) {
+			if ( null !== $value ) {
 				FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $key, esc_html( $value ) );
 			}
 		}
