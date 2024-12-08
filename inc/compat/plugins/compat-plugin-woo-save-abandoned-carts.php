@@ -74,6 +74,9 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 		// Replace assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_assets' ), 5 );
+
+		// Shipping method
+		add_filter( 'pre_option_fc_shipping_methods_disable_auto_select', array( $this, 'set_option_prevent_shipping_method_autoselect' ), 10, 3 );
 	}
 
 
@@ -142,6 +145,20 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	public function replace_assets() {
 		// Enqueue the script with the same handle but different file path
 		wp_enqueue_script( $this->script_name, FluidCheckout_Enqueue::instance()->get_script_url( $this->script_file_path ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
+
+
+	/**
+	 * Force the option value for preventing shipping method autoselection to be enabled.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_prevent_shipping_method_autoselect( $pre_option, $option, $default ) {
+		// Prevent autoselect
+		return 'yes';
 	}
 
 }
