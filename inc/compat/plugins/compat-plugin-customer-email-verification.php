@@ -26,8 +26,8 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
+		// Maybe subset step as incomplete
+		add_filter( 'fc_is_substep_complete_contact', array( $this, 'maybe_set_substep_incomplete_contact' ), 10 );
 
 		// Output hidden fields
 		add_action( 'fc_checkout_contact_after_fields', array( $this, 'output_custom_hidden_fields' ), 10 );
@@ -123,16 +123,16 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 
 
 	/**
-	 * Set the contact step as incomplete.
+	 * Set the contact substep as incomplete.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_contact( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_contact( $is_substep_complete ) {
 		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Bail if inline verification is not enabled
-		if ( ! $this->is_inline_verification_enabled() ) { return $is_step_complete; }
+		if ( ! $this->is_inline_verification_enabled() ) { return $is_substep_complete; }
 
 		// Get entered email
 		$email = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_email' );
@@ -142,10 +142,10 @@ class FluidCheckout_CustomerEmailVerification extends FluidCheckout {
 
 		// Maybe set step as incomplete
 		if ( ! $is_verified ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 
