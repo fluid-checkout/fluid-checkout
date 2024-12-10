@@ -33,7 +33,7 @@ class FluidCheckout_AdminNotices_BreakingChanges_Version_400 extends FluidChecko
 		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
 		// Define variables
-		$release_date = strtotime( '2024-12-01' );
+		$release_date = strtotime( '2024-12-10' );
 
 		// Get install date
 		// Need to get option directly as the Lite plugin might not be activated at this point

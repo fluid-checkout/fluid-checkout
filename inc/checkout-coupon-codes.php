@@ -146,7 +146,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$step_id = $this->get_substep_step_id();
 		$substep_priority = $this->get_substep_priority();
 		$substep_id = 'coupon_codes';
-		$substep_title = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_display_coupon_code_section_title' ) ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'fluid-checkout' ) ) : null;
+		$substep_title = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_display_coupon_code_section_title' ) ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'woocommerce' ) ) : null;
 
 		// Register substep
 		FluidCheckout_Steps::instance()->register_checkout_substep( $step_id, array(

@@ -379,6 +379,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Instant validation for confirmation fields not working as expected.
 * Fixed: Compatibility with plugin Checkout Field Editor for WooCommerce PRO by ThemeHigh. Automatically disable enhanced `select2` component from the plugin when using the enhanced select fields (with `TomSelect`) from Fluid Checkout.
 * Fixed: Show password button not always working on the login form at checkout when the button is present.
+* Fixed: How the plugin translation files are loaded. Fixes issue with WordPress 6.7 and Loco Translate not loading the correct translations.
 * Removed: Filter `fc_force_register_steps` as checkout steps and substeps needs to be registered for some functions to be available.
 * Removed: Action hooks `fc_checkout_before_step_<step_id>` and `fc_checkout_after_step_<step_id>` and replaced them with `fc_checkout_before_step` and `fc_checkout_after_step` which passes the step id as a parameter.
 * Removed: Action hooks `fc_checkout_start_step_<step_id>` and `fc_checkout_end_step_<step_id>` and replaced them with `fc_checkout_start_step` and `fc_checkout_end_step` which passes the step id as a parameter.

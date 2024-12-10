@@ -28,6 +28,9 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// Phone number field position
+		add_filter( 'pre_option_fc_billing_phone_field_position', array( $this, 'maybe_change_billing_phone_position' ), 10, 3 );
 	}
 
 	/**
@@ -53,29 +56,8 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	 * Add or remove hooks when OTP verification is enabled.
 	 */
 	public function otp_verification_hooks() {
-		// Bail if billing phone field is disabled
-		if ( ! FluidCheckout_Steps::instance()->is_billing_phone_enabled() ) { return; }
-
-		// Bail if class is not available
-		if ( ! class_exists( self::CLASS_NAME ) ) { return; }
-
-		// Get object
-		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
-
-		// Bail if class object is not available
-		if ( ! is_object( $class_object ) ) { return; }
-
-		$is_enabled = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp', 'no' );
-		$is_visitors_only = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp_for_visitors', 'no' );
-
 		// Bail if OTP verification is not enabled
-		if ( 'yes' !== $is_enabled ) { return; }
-
-		// Bail if OTP verification is enabled for visitors only and the user is logged in
-		if ( 'yes' === $is_visitors_only && is_user_logged_in() ) { return; }
-
-		// Phone number field position
-		add_filter( 'pre_option_fc_billing_phone_field_position', array( $this, 'maybe_change_billing_phone_position' ), 10, 3 );
+		if ( ! $this->is_otp_verification_enabled() ) { return; }
 		
 		// Move OTP verification popup
 		remove_action( 'woocommerce_after_order_notes', array( $class_object, 'add_otp_verification_popup' ), 10 );
@@ -91,8 +73,8 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_hidden_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_verification_button_fragment' ), 10 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_contact', array( $this, 'maybe_set_step_incomplete_contact' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_contact', array( $this, 'maybe_set_substep_incomplete_contact' ), 10 );
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -108,6 +90,37 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	}
 
 
+	/**
+	 * Check if OTP verification is enabled.
+	 */
+	public function is_otp_verification_enabled() {
+		// Bail if billing phone field is disabled
+		if ( ! FluidCheckout_Steps::instance()->is_billing_phone_enabled() ) { return false; }
+
+		// Bail if class is not available
+		if ( ! class_exists( self::CLASS_NAME ) ) { return false; }
+
+		// Get object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
+
+		// Bail if class object is not available
+		if ( ! is_object( $class_object ) ) { return false; }
+
+		// Get options
+		$is_enabled = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp', 'no' );
+		$is_visitors_only = FluidCheckout_Settings::instance()->get_option( 'awp_enable_otp_for_visitors', 'no' );
+
+		// Bail if OTP verification is not enabled
+		if ( 'yes' !== $is_enabled ) { return false; }
+
+		// Bail if OTP verification is enabled for visitors only and the user is logged in
+		if ( 'yes' === $is_visitors_only && is_user_logged_in() ) { return false; }
+
+		// Otherwise, return true
+		return true;
+	}
+
+
 
 	/**
 	 * Maybe force change the position of the billing phone field.
@@ -117,6 +130,9 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function maybe_change_billing_phone_position( $pre_option, $option, $default ) {
+		// Bail if OTP verification is not enabled
+		if ( ! $this->is_otp_verification_enabled() ) { return $pre_option; }
+
 		return 'contact';
 	}
 
@@ -296,13 +312,13 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 
 	/**
-	 * Set the contact step as incomplete.
+	 * Set the contact substep as incomplete.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_contact( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_contact( $is_substep_complete ) {
 		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get entered phone number
 		$phone_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_phone' );
@@ -312,10 +328,10 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 		// Maybe set step as incomplete
 		if ( ! $is_verified ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 
