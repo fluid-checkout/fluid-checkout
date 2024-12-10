@@ -75,8 +75,8 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		// Replace assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_assets' ), 5 );
 
-		// Shipping method
-		add_filter( 'pre_option_fc_shipping_methods_disable_auto_select', array( $this, 'set_option_prevent_shipping_method_autoselect' ), 10, 3 );
+		// Shipping methods
+		add_filter( 'fc_shipping_methods_disable_auto_select', array( $this, 'maybe_change_shipping_methods_disable_auto_select' ), 10, 4 );
 	}
 
 
@@ -85,8 +85,10 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 * Maybe restore abandoned cart values to session.
 	 */
 	public function maybe_restore_abandoned_cart_values_to_session() {
+		// Bail if not on checkout page or fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
+		// Get class objects
 		$public_class_object = $this->get_object_by_class_name_from_hooks( $this->public_class_name );
 		$admin_class_object  = $this->get_object_by_class_name_from_hooks( $this->admin_class_name );
 
@@ -150,15 +152,20 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 
 	/**
-	 * Force the option value for preventing shipping method autoselection to be enabled.
+	 * Maybe set to enable shipping methods auto selection when processing data recovery from this plugin email notifications.
 	 *
-	 * @param  mixed   $pre_option   The value to return instead of the option value.
-	 * @param  string  $option       Option name.
-	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 * @param   bool    $should_disable  Whether to disable auto selection of shipping methods.
+	 * @param   mixed   $default         The default value for the shipping method.
+	 * @param   array   $rates           The shipping rates.
+	 * @param   string  $chosen_method   The chosen shipping method.
 	 */
-	public function set_option_prevent_shipping_method_autoselect( $pre_option, $option, $default ) {
-		// Prevent autoselect
-		return 'yes';
+	public function maybe_change_shipping_methods_disable_auto_select( $should_disable, $default, $rates, $chosen_method ) {
+
+		// TODO: Add criteria for when to disable auto selection of shipping methods
+
+		// Should not disable auto selection of shipping,
+		// when processing an express checkout order
+		return true;
 	}
 
 }
