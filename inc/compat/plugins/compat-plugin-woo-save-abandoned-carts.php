@@ -75,9 +75,6 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 
 		// Replace assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'replace_assets' ), 5 );
-
-		// Shipping methods
-		add_filter( 'fc_shipping_methods_disable_auto_select', array( $this, 'maybe_change_shipping_methods_disable_auto_select' ), 10, 4 );
 	}
 
 
@@ -148,25 +145,6 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	public function replace_assets() {
 		// Enqueue the script with the same handle but different file path
 		wp_enqueue_script( $this->script_name, FluidCheckout_Enqueue::instance()->get_script_url( $this->script_file_path ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-	}
-
-
-
-	/**
-	 * Maybe set to enable shipping methods auto selection when processing data recovery from this plugin email notifications.
-	 *
-	 * @param   bool    $should_disable  Whether to disable auto selection of shipping methods.
-	 * @param   mixed   $default         The default value for the shipping method.
-	 * @param   array   $rates           The shipping rates.
-	 * @param   string  $chosen_method   The chosen shipping method.
-	 */
-	public function maybe_change_shipping_methods_disable_auto_select( $should_disable, $default, $rates, $chosen_method ) {
-
-		// TODO: Add criteria for when to disable auto selection of shipping methods
-
-		// Should not disable auto selection of shipping,
-		// when processing an express checkout order
-		return true;
 	}
 
 }
