@@ -65,9 +65,6 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// Skip optional fields
 		add_filter( 'fc_hide_optional_fields_skip_by_class', array( $this, 'add_optional_fields_skip_classes' ), 10 );
-
-		// Change delivery date field args
-		add_filter( 'woocommerce_form_field_args', array( $this, 'change_delivery_date_field_args' ), 10, 3 );
 	}
 
 	/**
@@ -536,21 +533,6 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 	public function add_optional_fields_skip_classes( $skip_classes ) {
 		$skip_classes = array_merge( $skip_classes, array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' ) );
 		return $skip_classes;
-	}
-
-
-
-	public function change_delivery_date_field_args( $args, $key, $value ) {
-		// Bail if not a target field
-		$allowed_field_ids = array( 'coderockz_woo_delivery_date_field', 'coderockz_woo_delivery_pickup_date_field' );
-		if ( ! in_array( $key, $allowed_field_ids ) ) { return $args; }
-
-		// Maybe add default date attribute
-		if ( ! empty( WC()->checkout->get_value( $key ) ) ) {
-			$args['custom_attributes']['data-default_date'] = WC()->checkout->get_value( $key );
-		}
-
-		return $args;
 	}
 
 }
