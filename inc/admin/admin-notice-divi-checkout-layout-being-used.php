@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Admin notice: multistep feature from Germanized PRO plugin enabled.
+ * Admin notice: Divi Builder checkout layout being used.
  */
 class FluidCheckout_AdminNotices_Divi_CheckoutLayoutBeingUsed extends FluidCheckout {
 
