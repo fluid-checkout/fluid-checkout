@@ -234,7 +234,6 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Checkout Field Editor for WooCommerce (free and PRO) - by ThemeHigh
 * Captcha Pro
 * Creative Mail
-* Delivery & Pickup Date Time for WooCommerce - by CodeRockz
 * Elementor (free and PRO)
 * Flexible Checkout Fields for WooCommerce
 * FluentCRM Pro
@@ -247,7 +246,6 @@ Only the themes that we have added explicit compatibility with or that we have t
 * Oxygen Builder
 * Brevo WooCommerce Email Marketing (formerly Sendinblue)
 * WooCommerce Correios - by Claudio Sanches
-* WooCommerce Delivery & Pickup Date Time Pro - by CodeRockz
 * WP Crowdfunding
 
 = Plugins (PRO feature) =
