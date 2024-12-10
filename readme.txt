@@ -376,7 +376,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Refactor how substeps are registered and output to the checkout form.
 * Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled, and with versions 8.0+ of the theme.
 * Improved: Compatibility with plugin Germanized for WooCommerce (free). Prevent hiding optional fields added by the pickup location feature from Germanized.
-* Improved: Compatibility with plugin Delivery & Pickup Date Time for WooCommerce.
 * Fixed: Instant validation for confirmation fields not working as expected.
 * Fixed: Compatibility with plugin Checkout Field Editor for WooCommerce PRO by ThemeHigh. Automatically disable enhanced `select2` component from the plugin when using the enhanced select fields (with `TomSelect`) from Fluid Checkout.
 * Fixed: Show password button not always working on the login form at checkout when the button is present.
@@ -385,6 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Removed: Action hooks `fc_checkout_before_step_<step_id>` and `fc_checkout_after_step_<step_id>` and replaced them with `fc_checkout_before_step` and `fc_checkout_after_step` which passes the step id as a parameter.
 * Removed: Action hooks `fc_checkout_start_step_<step_id>` and `fc_checkout_end_step_<step_id>` and replaced them with `fc_checkout_start_step` and `fc_checkout_end_step` which passes the step id as a parameter.
 * Removed: Deprecated parameters `$is_sidebar_widget` from action hooks `fc_checkout_before_order_review`, `fc_checkout_before_order_review_inside`, `fc_checkout_after_order_review_title_before`, `fc_checkout_after_order_review_title_after`, `fc_checkout_order_review_sidebar_before_actions`, `fc_checkout_after_order_review_inside`, `fc_checkout_after_order_review`.
+* Removed: Compatibility with plugin Delivery & Pickup Date Time for WooCommerce. Moved to Fluid Checkout PRO.
 
 = 3.2.6 - 2024-11-14 =
 
