@@ -35,14 +35,14 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
-		$this->maybe_set_class_properties();
+		$this->maybe_set_pro_class_properties();
 		$this->hooks();
 	}
 
 	/**
-	 * Maybe set class properties for the PRO plugin.
+	 * Maybe set class properties for the CartBounty PRO plugin.
 	 */
-	public function maybe_set_class_properties() {
+	public function maybe_set_pro_class_properties() {
 		// Bail if class for CartBounty Lite was found, as it is the default plugin class name
 		if ( class_exists( 'CartBounty_Public' ) && class_exists( 'CartBounty_Admin' ) ) { return; }
 
@@ -63,6 +63,7 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		// Bail if plugin class is not available
 		if ( ! class_exists( $this->public_class_name ) ) { return; }
 
+		// Get class object
 		$class_object = $this->get_object_by_class_name_from_hooks( $this->public_class_name );
 
 		// Bail if class object is not found in hooks
