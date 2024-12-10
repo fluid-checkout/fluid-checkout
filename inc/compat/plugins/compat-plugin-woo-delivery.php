@@ -62,7 +62,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 
 		// TODO: CHECK WHY IT WAS REMOVED
 		// // Get delivery date value from session
-		// add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 200, 2 );
+		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 200, 2 );
 
 		// Skip optional fields
 		add_filter( 'fc_hide_optional_fields_skip_by_class', array( $this, 'add_optional_fields_skip_classes' ), 10 );
@@ -298,7 +298,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		// Check order type
 		// Note that `enable_option_time_pickup` means that the user can choose between delivery and pickup
 		if ( is_array( $delivery_option_settings ) && array_key_exists( 'enable_option_time_pickup', $delivery_option_settings ) && true === $delivery_option_settings[ 'enable_option_time_pickup' ] && ! in_array( $order_type, $this->get_allowed_order_type_values() ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
 		// Always set set as incomplete if option to select between delivery and pickup is enabled
