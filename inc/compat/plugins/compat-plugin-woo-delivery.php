@@ -60,8 +60,7 @@ class FluidCheckout_WooDelivery extends FluidCheckout {
 		$this->remove_action_for_class( 'woocommerce_review_order_before_payment', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
 		$this->remove_action_for_class( 'woocommerce_checkout_before_order_review_heading', array( 'Coderockz_Woo_Delivery_Public', 'coderockz_woo_delivery_add_custom_field' ), 10 );
 
-		// TODO: CHECK WHY IT WAS REMOVED
-		// // Get delivery date value from session
+		// Get delivery date value from session
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_field_values_from_session' ), 200, 2 );
 
 		// Skip optional fields
