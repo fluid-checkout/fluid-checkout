@@ -370,6 +370,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Support for the Order Pay page feature of Fluid Checkout PRO.
 * Added: Compatibility with theme Colibri WP.
+* Added: Compatibility with plugin CartBounty - Save and recover abandoned carts for WooCommerce.
+* Added: Compatibility with plugin CartBounty Pro - Save and recover abandoned carts for WooCommerce.
 * Added: Filter hook `fc_substep_text_contact_field_keys_skip_list` to allow skipping displaying some fields in the contact substep review text.
 * Improved: Refactor how substeps are registered and output to the checkout form.
 * Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled, and with versions 8.0+ of the theme.
