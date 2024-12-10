@@ -373,9 +373,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin CartBounty - Save and recover abandoned carts for WooCommerce.
 * Added: Compatibility with plugin CartBounty Pro - Save and recover abandoned carts for WooCommerce.
 * Added: Filter hook `fc_substep_text_contact_field_keys_skip_list` to allow skipping displaying some fields in the contact substep review text.
+* Improved: Refactor how substeps are registered and output to the checkout form.
 * Improved: Compatibility with theme Woodmart. Fix layout issue when free shipping bar feature from theme is disabled, and with versions 8.0+ of the theme.
 * Improved: Compatibility with plugin Germanized for WooCommerce (free). Prevent hiding optional fields added by the pickup location feature from Germanized.
-* Improved: Refactor how substeps are registered and output to the checkout form. Needed for the upcoming feature optimized Order Pay page.
+* Improved: Compatibility with plugin Delivery & Pickup Date Time for WooCommerce.
 * Fixed: Instant validation for confirmation fields not working as expected.
 * Fixed: Compatibility with plugin Checkout Field Editor for WooCommerce PRO by ThemeHigh. Automatically disable enhanced `select2` component from the plugin when using the enhanced select fields (with `TomSelect`) from Fluid Checkout.
 * Fixed: Show password button not always working on the login form at checkout when the button is present.
