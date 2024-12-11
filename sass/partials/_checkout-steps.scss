@@ -35,6 +35,8 @@
 
 
 .fc-wrapper .fc-step__substep {
+	@include clearfix();
+
 	position: relative;
 	padding: $checkout-substep-padding;
 	margin: remsize( -.1rem ) 0 0; // Prevent double borders
@@ -62,8 +64,8 @@
 	display: none !important; // Needed to override theme styles set with `!important`
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
+.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
 	display: none !important; // Needed to override theme styles set with `!important`
 }
 
@@ -110,12 +112,6 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	float: none;
 	width: 100%;
 	text-align: $alignment-left;
-}
-
-
-
-.fc-wrapper .fc-step__substep-text {
-	display: none;
 }
 
 
@@ -187,7 +183,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 }
 
 
-.has-checkout-layout--multi-step.woocommerce-checkout form.woocommerce-checkout .fc-wrapper [data-step-complete] .fc-step__substep .fc-step__substep-title {
+
+.has-checkout-layout--multi-step.woocommerce-checkout form .fc-wrapper .fc-checkout-step[data-step-complete] .fc-step__substep .fc-step__substep-title {
 	position: relative;
 	display: block;
 	margin: 0 0 $global-radius-extra-small;
@@ -234,8 +231,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 
 
-
-.has-checkout-layout--multi-step .fc-step__substep-text {
+.fc-wrapper .fc-step__substep-text {
 	display: none;
 	margin: $checkout-substep-text-margin;
 	padding: $checkout-substep-text-padding;
@@ -255,21 +251,21 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 	@media (#{$bp-larger-than-desktop-medium}) { width: calc( 100% - #{ remsize( 22rem ) } ); }
 }
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__substep-text {
+.fc-wrapper [data-step-complete] .fc-step__substep-text {
 	display: block;
 }
 
-.has-checkout-layout--multi-step .fc-step__substep-text-content.is-loading {
+.fc-wrapper .fc-step__substep-text-content.is-loading {
 	min-height: $global-spacing-medium;
 }
 
-.has-checkout-layout--multi-step .fc-step__substep-text-line {
+.fc-wrapper .fc-step__substep-text-line {
 	display: block;
 	width: 100%;
 	text-align: $alignment-left;
 }
 
-.has-checkout-layout--multi-step .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
+.fc-wrapper .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
 	font-size: 80%;
 }
 
@@ -334,7 +330,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	}
 }
 
-.has-checkout-layout--multi-step .fc-wrapper .fc-step__substep-save {
+.fc-wrapper .fc-step__substep-save {
 	display: none !important; // Needed to override theme styles
 	margin: $global-spacing-small 0 0 !important; // Needed to override theme styles
 	width: 100% !important; // Needed to override theme styles
@@ -346,13 +342,13 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	}
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep-edit,
+.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
 	display: inline-block !important; // Needed to override theme styles
 }
 
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
-.has-checkout-layout--multi-step .fc-wrapper [data-step-complete] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
+.fc-wrapper [data-step-complete] .fc-step__substep-save {
 	display: none !important; // Needed to override theme styles
 }
 

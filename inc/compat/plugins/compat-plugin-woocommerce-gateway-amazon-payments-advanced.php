@@ -39,7 +39,7 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 			
 			if ( null !== $this->amazon_pay_gateway ) {
 				// Run checkout initialization later
-				remove_action( 'woocommerce_checkout_init', array( $this->amazon_pay_gateway, 'checkout_init' ) );
+				remove_action( 'woocommerce_checkout_init', array( $this->amazon_pay_gateway, 'checkout_init' ), 10 );
 				$this->amazon_pay_gateway->checkout_init( WC()->checkout );
 			}
 
@@ -53,7 +53,7 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 
 			if ( null !== $this->amazon_pay_gateway_legacy ) {
 				// Run checkout initialization later
-				remove_action( 'woocommerce_checkout_init', array( $this->amazon_pay_gateway_legacy, 'checkout_init' ) );
+				remove_action( 'woocommerce_checkout_init', array( $this->amazon_pay_gateway_legacy, 'checkout_init' ), 10 );
 				$this->amazon_pay_gateway_legacy->checkout_init( WC()->checkout );
 			}
 

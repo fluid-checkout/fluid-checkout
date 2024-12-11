@@ -36,10 +36,10 @@ class FluidCheckout_Seur extends FluidCheckout {
 		add_filter( 'fc_shipping_method_option_markup', array( $this, 'change_shipping_method_options_markup_set_selected_value' ), 100, 5 );
 		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );
 
-		// Maybe set step as incomplete
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
-		add_filter( 'fc_is_step_complete_shipping', array( $this, 'maybe_set_step_incomplete_shipping' ), 10 );
-		add_filter( 'fc_is_step_complete_billing', array( $this, 'maybe_set_step_incomplete_billing' ), 10 );
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_address', array( $this, 'maybe_set_substep_incomplete_shipping_address' ), 10 );
+		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing_address' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -208,13 +208,13 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 
 	/**
-	 * Maybe set the shipping step as incomplete.
+	 * Set the shipping method substep as incomplete.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_shipping( $is_step_complete ) {
-		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
+		// Bail if substep is already incomplete
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
@@ -235,75 +235,79 @@ class FluidCheckout_Seur extends FluidCheckout {
 			// Get location id
 			$location_id = WC()->checkout->get_value( 'seur_pickup' );
 
-			// Maybe set step as incomplete
+			// Maybe set substep as incomplete
 			if ( empty( $location_id ) || 'all' === $location_id ) {
-				$is_step_complete = false;
+				$is_substep_complete = false;
 				break;
 			}
 		}
 
-		// Bail if already set as incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		return $is_substep_complete;
+	}
 
-		// Otherwise, continue to check if the shipping mobile phone field is required
-
+	/**
+	 * Maybe set the shipping step as incomplete.
+	 *
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
+	 */
+	public function maybe_set_substep_incomplete_shipping_address( $is_substep_complete ) {
 		// Get fields
 		$mobile_phone_field_key = 'shipping_mobile_phone';
 		$checkout_fields = WC()->checkout->get_checkout_fields( 'shipping' );
 
 		// Bail if mobile phone field is not set
-		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_step_complete; }
+		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_substep_complete; }
 
 		// Check if mobile phone field is required
 		$mobile_phone_field = $checkout_fields[ $mobile_phone_field_key ];
 		$is_mobile_phone_field_required = array_key_exists( 'required', $mobile_phone_field ) && $mobile_phone_field[ 'required' ];
 
 		// Bail if mobile phone field is not required
-		if ( ! $is_mobile_phone_field_required ) { return $is_step_complete; }
+		if ( ! $is_mobile_phone_field_required ) { return $is_substep_complete; }
 
 		// Get mobile phone field value
 		$mobile_phone = WC()->checkout->get_value( $mobile_phone_field_key );
 
 		// Maybe set step as incomplete
 		if ( empty( $mobile_phone ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 	/**
-	 * Maybe set the billing step as incomplete.
+	 * Maybe set the billing address substep step as incomplete.
 	 *
-	 * @param   bool  $is_step_complete  Whether the step is complete or not.
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_step_incomplete_billing( $is_step_complete ) {
+	public function maybe_set_substep_incomplete_billing_address( $is_substep_complete ) {
 		// Bail if step is already incomplete
-		if ( ! $is_step_complete ) { return $is_step_complete; }
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get fields
 		$mobile_phone_field_key = 'billing_mobile_phone';
 		$checkout_fields = WC()->checkout->get_checkout_fields( 'billing' );
 
 		// Bail if mobile phone field is not set
-		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_step_complete; }
+		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_substep_complete; }
 
 		// Check if mobile phone field is required
 		$mobile_phone_field = $checkout_fields[ $mobile_phone_field_key ];
 		$is_mobile_phone_field_required = array_key_exists( 'required', $mobile_phone_field ) && $mobile_phone_field[ 'required' ];
 
 		// Bail if mobile phone field is not required
-		if ( ! $is_mobile_phone_field_required ) { return $is_step_complete; }
+		if ( ! $is_mobile_phone_field_required ) { return $is_substep_complete; }
 
 		// Get mobile phone field value
 		$mobile_phone = WC()->checkout->get_value( $mobile_phone_field_key );
 
 		// Maybe set step as incomplete
 		if ( empty( $mobile_phone ) ) {
-			$is_step_complete = false;
+			$is_substep_complete = false;
 		}
 
-		return $is_step_complete;
+		return $is_substep_complete;
 	}
 
 

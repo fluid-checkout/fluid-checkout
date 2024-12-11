@@ -1,0 +1,8 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head:before,
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-review__head:after {
+	content: none;
+}

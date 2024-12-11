@@ -113,6 +113,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
@@ -151,6 +152,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * @param  bool  $new_line  Whether to add a new line before.
 	 */
 	public function get_upgrade_pro_html( $new_line = true ) {
+		// Bail if PRO is already activated
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
+
+		// Get HTML for the upgrade link
 		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
 		
 		// Maybe add line break
@@ -162,10 +167,36 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
-	 * Get HTML experimental features label.
+	 * Get HTML for PRO features label.
+	 * 
+	 * @param  bool  $add_space_after  Whether to add a space after the text. Defaults to `false`, which adds the space before.
 	 */
-	public function get_experimental_feature_html() {
-		return ' ' . __( '(experimental)', 'fluid-checkout' );
+	public function get_pro_feature_option_html( $add_space_after = false ) {
+		// Bail if PRO is already activated
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
+
+		// Get the HTML for the PRO feature labels
+		$html = __( '(PRO)', 'fluid-checkout' );
+
+		// Maybe add space after the text
+		if ( $add_space_after ) {
+			$html = $html . ' ';
+		}
+		// Otherwise add the space before
+		else {
+			$html = ' ' . $html;
+		}
+
+		return $html;
+	}
+
+	/**
+	 * Get HTML for Experimental features label.
+	 * 
+	 * @param  bool  $new_line  Whether to add a new line before.
+	 */
+	public function get_experimental_feature_html( $new_line = false ) {
+		return ' ' . ( $newline ? '<br>' : '' ) . __( '(experimental)', 'fluid-checkout' );
 	}
 
 	/**

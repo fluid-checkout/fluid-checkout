@@ -1,0 +1,19 @@
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-progress-bar {
+	margin: $checkout-progress-margin;
+
+	@media (#{$bp-larger-than-tablet}) {
+		margin: $checkout-progress-margin--large-screen;
+	}
+}
+
+body#{ $_body-theme-selector } .fc-progress-bar__count {
+	margin: $checkout-step-count-margin;
+
+	@media (#{$bp-larger-than-desktop}) {
+		margin: $checkout-step-count-margin--large-screen;
+	}
+}

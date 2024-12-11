@@ -96,317 +96,145 @@ gulp.task( 'clean-js', function( done ) {
 
 
 
+// Process CSS for production environment.
+function processCss( src, dest ) {
+	return gulp.src( src )
+		.pipe(plumber())
+		// No source maps
+		.pipe(sassImportJson({
+			isScss: true
+		}))
+		.pipe(sass())
+		.pipe(autoprefixer({ cascade: false }))
+		.pipe(rename({suffix: _assetsVersion}))
+		.pipe(gulp.dest( dest )) // save .css
+		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
+		.pipe(rename( { suffix: '.min' } ) )
+		.pipe(sourcemaps.write('maps'))
+		.pipe(gulp.dest( dest )); // save .min.css
+}
+
+// Process CSS for development environment.
+function processCssDev( src, dest ) {
+	return gulp.src( src )
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(sassImportJson({ isScss: true }))
+		.pipe(sass())
+		.pipe(autoprefixer({ cascade: false }))
+		.pipe(rename({ suffix: _assetsVersion }))
+		.pipe(gulp.dest( dest )) // save .css
+		.pipe(rename({ suffix: '.min' })) // Files are not minified on dev build but file name needs the .min suffix
+		.pipe(sourcemaps.write('maps'))
+		.pipe(gulp.dest( dest )) // save .min.css
+		.pipe(browserSync.stream());
+}
+
+
+
+// Build all css for production
+function buildCss( done ) {
+	// Define functions for each css source
+	var buildMainStyles = function() { if ( _gulpSettings.sassSources.main ) { return processCss( _gulpSettings.sassSources.main, './css/' ); } else { return Promise.resolve(); } };
+	var buildAdminStyles = function() { if ( _gulpSettings.sassSources.admin ) { return processCss( _gulpSettings.sassSources.admin, './css/admin/' ); } else { return Promise.resolve(); } };
+	var buildDesignTemplatesStyles = function() { if ( _gulpSettings.sassSources.designTemplates ) { return processCss( _gulpSettings.sassSources.designTemplates, './css/design-templates/' ); } else { return Promise.resolve(); } };
+	var buildPluginCompatStyles = function() { if ( _gulpSettings.sassSources.pluginCompat ) { return processCss( _gulpSettings.sassSources.pluginCompat, './css/compat/plugins/' ); } else { return Promise.resolve(); } };
+	var buildThemeCompatStyles = function() { if ( _gulpSettings.sassSources.themeCompat ) { return processCss( _gulpSettings.sassSources.themeCompat, './css/compat/themes/' ); } else { return Promise.resolve(); } };
+
+	// Define tasks
+	var tasks = [
+		buildMainStyles,
+		buildAdminStyles,
+		buildDesignTemplatesStyles,
+		buildPluginCompatStyles,
+		buildThemeCompatStyles
+	];
+
+	// Run tasks in parallel
+	return gulp.parallel( tasks )( done );
+}
+
 // Run:
 // gulp build-css
 // Builds css from scss for production environment and apply other changes.
-gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', function( done ) {
-	
-	// MAIN STYLES
-	if ( _gulpSettings.sassSources.main ) {
-		gulp.src( _gulpSettings.sassSources.main )
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(plumber())
-		// No source maps
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/')) // save .css
-		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
-		.pipe(rename( { suffix: '.min' } ) )
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/')); // save .min.css
-	}
-
-	// ADMIN STYLES
-	if ( _gulpSettings.sassSources.admin ) {
-		gulp.src( _gulpSettings.sassSources.admin )
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(plumber())
-		// No source maps
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/admin/')) // save .css
-		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
-		.pipe(rename( { suffix: '.min' } ) )
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/admin/')); // save .min.css
-	}
-
-	// DESIGN TEMPLATES STYLES
-	if ( _gulpSettings.sassSources.designTemplates ) {
-		gulp.src( _gulpSettings.sassSources.designTemplates )
-		.pipe(plumber())
-		// No source maps
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/design-templates/')) // save .css
-		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
-		.pipe(rename( { suffix: '.min' } ) )
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/design-templates/')); // save .min.css
-	}
-	
-	// PLUGIN COMPATIBILITY STYLES
-	if ( _gulpSettings.sassSources.pluginCompat ) {
-		gulp.src( _gulpSettings.sassSources.pluginCompat )
-		.pipe(plumber())
-		// No source maps
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/compat/plugins/')) // save .css
-		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
-		.pipe(rename( { suffix: '.min' } ) )
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/compat/plugins/')); // save .min.css
-	}
-
-	// THEME COMPATIBILITY STYLES
-	if ( _gulpSettings.sassSources.themeCompat ) {
-		gulp.src( _gulpSettings.sassSources.themeCompat )
-		.pipe(plumber())
-		// No source maps
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/compat/themes/')) // save .css
-		.pipe(cssnano( { zindex:false, discardComments: {removeAll: true}, discardUnused: {fontFace: false}, reduceIdents: {keyframes: false} } ) )
-		.pipe(rename( { suffix: '.min' } ) )
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/compat/themes/')); // save .min.css
-	}
-
-	done();
-} ) );
+gulp.task( 'build-css', gulp.series( 'update-ver', 'clean-css', buildCss ) );
 
 
+
+
+// Build all CSS for development
+function buildCssDev( done ) {
+	// Define functions for each css source
+	var buildMainStylesDev = function() { if ( _gulpSettings.sassSources.main ) { return processCssDev( _gulpSettings.sassSources.main, './css/' ); } else { return Promise.resolve(); } };
+	var buildAdminStylesDev = function() { if ( _gulpSettings.sassSources.admin ) { return processCssDev( _gulpSettings.sassSources.admin, './css/admin/' ); } else { return Promise.resolve(); } };
+	var buildDesignTemplatesStylesDev = function() { if ( _gulpSettings.sassSources.designTemplates ) { return processCssDev( _gulpSettings.sassSources.designTemplates, './css/design-templates/' ); } else { return Promise.resolve(); } };
+	var buildPluginCompatStylesDev = function() { if ( _gulpSettings.sassSources.pluginCompat ) { return processCssDev( _gulpSettings.sassSources.pluginCompat, './css/compat/plugins/' ); } else { return Promise.resolve(); } };
+	var buildThemeCompatStylesDev = function() { if ( _gulpSettings.sassSources.themeCompat ) { return processCssDev( _gulpSettings.sassSources.themeCompat, './css/compat/themes/' ); } else { return Promise.resolve(); } };
+
+	// Define tasks
+	var tasks = [
+		buildMainStylesDev,
+		buildAdminStylesDev,
+		buildDesignTemplatesStylesDev,
+		buildPluginCompatStylesDev,
+		buildThemeCompatStylesDev
+	];
+
+	// Run tasks in parallel
+	return gulp.parallel( tasks )( done );
+}
 
 // Run:
 // gulp build-css-dev
 // Builds css from scss for development environment and apply other changes.
-gulp.task( 'build-css-dev', gulp.series( 'update-ver', 'clean-css', function( done ) {
-	
-	// MAIN STYLES
-	if ( _gulpSettings.sassSources.main ) {
-		gulp.src( _gulpSettings.sassSources.main )
-		.pipe(plumber())
+gulp.task( 'build-css-dev', gulp.series( 'update-ver', 'clean-css', buildCssDev ) );
+
+
+
+
+// Process JS for production environment.
+function processJs( src, dest ) {
+	return gulp.src( src )
 		.pipe(sourcemaps.init())
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
 		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/')) // save .css
-		// No css nano
-		.pipe(rename( { suffix: '.min' } ) ) // Files are not minified on dev build but file name needs the .min sufix
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/')) // save .min.css
-		.pipe(browserSync.stream());
-	}
+		.pipe(gulp.dest( dest )) // save .js
+		.pipe(uglify())
+		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest( dest )); // save .min.js
+}
 
-	// ADMIN STYLES
-	if ( _gulpSettings.sassSources.admin ) {
-		gulp.src( _gulpSettings.sassSources.admin )
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/admin/')) // save .css
-		// No css nano
-		.pipe(rename( { suffix: '.min' } ) ) // Files are not minified on dev build but file name needs the .min sufix
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/admin/')) // save .min.css
-		.pipe(browserSync.stream());
-	}
+// Build all JS for production
+function buildJS( done ) {
+	// Define functions for each js source
+	var buildLibraries = function() { if ( _gulpSettings.jsSources.libraries ) { return processJs( _gulpSettings.jsSources.libraries, './js/lib/' ); } else { return Promise.resolve(); } };
+	var buildPolyfills = function() { if ( _gulpSettings.jsSources.polyfills ) { return processJs( _gulpSettings.jsSources.polyfills, './js/lib/' ); } else { return Promise.resolve(); } };
+	var buildBundles = function() { if ( _gulpSettings.jsSources.bundles ) { return processJs( _gulpSettings.jsSources.bundles, './js/' ); } else { return Promise.resolve(); } };
+	var buildMain = function() { if ( _gulpSettings.jsSources.main ) { return processJs( _gulpSettings.jsSources.main, './js/' ); } else { return Promise.resolve(); } };
+	var buildStandalone = function() { if ( _gulpSettings.jsSources.standalone ) { return processJs( _gulpSettings.jsSources.standalone, './js/' ); } else { return Promise.resolve(); } };
+	var buildAdmin = function() { if ( _gulpSettings.jsSources.admin ) { return processJs( _gulpSettings.jsSources.admin, './js/admin/' ); } else { return Promise.resolve(); } };
+	var buildPluginCompat = function() { if ( _gulpSettings.jsSources.pluginCompat ) { return processJs( _gulpSettings.jsSources.pluginCompat, './js/compat/plugins/' ); } else { return Promise.resolve(); } };
+	var buildThemeCompat = function() { if ( _gulpSettings.jsSources.themeCompat ) { return processJs( _gulpSettings.jsSources.themeCompat, './js/compat/themes/' ); } else { return Promise.resolve(); } };
 
-	// DESIGN TEMPLATES STYLES
-	if ( _gulpSettings.sassSources.designTemplates ) {
-		gulp.src( _gulpSettings.sassSources.designTemplates )
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/design-templates/')) // save .css
-		// No css nano
-		.pipe(rename( { suffix: '.min' } ) ) // Files are not minified on dev build but file name needs the .min sufix
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/design-templates/')) // save .min.css
-		.pipe(browserSync.stream());
-	}
+	// Define tasks
+	var tasks = [
+		buildLibraries,
+		buildPolyfills,
+		buildBundles,
+		buildMain,
+		buildStandalone,
+		buildAdmin,
+		buildPluginCompat,
+		buildThemeCompat
+	];
 
-	// PLUGIN COMPATIBILITY STYLES
-	if ( _gulpSettings.sassSources.pluginCompat ) {
-		gulp.src( _gulpSettings.sassSources.pluginCompat )
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/compat/plugins/')) // save .css
-		// No css nano
-		.pipe(rename( { suffix: '.min' } ) ) // Files are not minified on dev build but file name needs the .min sufix
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/compat/plugins/')) // save .min.css
-		.pipe(browserSync.stream());
-	}
-
-	// THEME COMPATIBILITY STYLES
-	if ( _gulpSettings.sassSources.themeCompat ) {
-		gulp.src( _gulpSettings.sassSources.themeCompat )
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(sassImportJson({
-			isScss: true
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer({ cascade: false }))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./css/compat/themes/')) // save .css
-		// No css nano
-		.pipe(rename( { suffix: '.min' } ) ) // Files are not minified on dev build but file name needs the .min sufix
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./css/compat/themes/')) // save .min.css
-		.pipe(browserSync.stream());
-	}
-
-	done();
-} ) );
-
-
+	// Run tasks in parallel
+	return gulp.parallel( tasks )( done );
+}
 
 // Run:
 // gulp build-js.
 // Uglifies and concat all JS files into one
-gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', function( done ) {
-
-	// JS LIBRARIES
-	if ( _gulpSettings.jsSources.libraries ) {
-		gulp.src( _gulpSettings.jsSources.libraries )
-		.pipe(sourcemaps.init())
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./js/lib/')) // save .js
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulp.dest('./js/lib/')); // save .min.js
-	}
-
-	// POLYFILLS
-	if ( _gulpSettings.jsSources.polyfills ) {
-		gulp.src( _gulpSettings.jsSources.polyfills )
-		.pipe(sourcemaps.init())
-		.pipe(uglify())
-		.pipe(gulp.dest('./js/lib/')); // save .min.js
-	}
-
-	// BUNDLES.JS
-	if ( _gulpSettings.jsSources.bundles ) {
-		gulp.src( _gulpSettings.jsSources.bundles )
-		.pipe(sourcemaps.init())
-		.pipe(concat('bundles.js'))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./js/')) // save .js
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./js/')); // save .min.js
-	}
-
-	// MAIN SCRIPT
-	if ( _gulpSettings.jsSources.main ) {
-		gulp.src( _gulpSettings.jsSources.main )
-		.pipe(sourcemaps.init())
-		.pipe(concat('main.js'))
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./js/')) // save .js
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./js/')); // save .min.js
-	}
-
-	// STANDALONE SCRIPTS
-	if ( _gulpSettings.jsSources.standalone ) {
-		gulp.src( _gulpSettings.jsSources.standalone )
-		.pipe(sourcemaps.init())
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./js/')) // save .js
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./js/')); // save .min.js
-	}
-
-	// ADMIN SCRIPTS
-	if ( _gulpSettings.jsSources.admin ) {
-		gulp.src( _gulpSettings.jsSources.admin )
-		.pipe(sourcemaps.init())
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./js/admin/')) // save .js
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./js/admin/')); // save .min.js
-	}
-
-	// PLUGIN COMPAT SCRIPTS
-	if ( _gulpSettings.jsSources.pluginCompat ) {
-		gulp.src( _gulpSettings.jsSources.pluginCompat )
-		.pipe(sourcemaps.init())
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./js/compat/plugins/')) // save .js
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./js/compat/plugins/')); // save .min.js
-	}
-
-	// THEME COMPAT SCRIPTS
-	if ( _gulpSettings.jsSources.themeCompat ) {
-		gulp.src( _gulpSettings.jsSources.themeCompat )
-		.pipe(sourcemaps.init())
-		.pipe(rename({suffix: _assetsVersion}))
-		.pipe(gulp.dest('./js/compat/themes/')) // save .js
-		.pipe(uglify())
-		.pipe(rename({suffix: '.min'}))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('./js/compat/themes/')); // save .min.js
-	}
-
-	done();
-} ) );
+gulp.task( 'build-js', gulp.series( 'update-ver', 'clean-js', buildJS ) );
 
 
 
@@ -428,6 +256,8 @@ gulp.task( 'npm-run-build', gulp.series( function( done ) {
 
 	done();
 } ) );
+
+
 
 // Run:
 // gulp build

@@ -35,6 +35,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Coupon as vouchers
 		add_filter( 'woocommerce_coupon_discount_amount_html', array( $this, 'maybe_change_voucher_coupon_discount_amount_html' ), 10, 3 );
 		add_filter( 'woocommerce_cart_totals_coupon_label', array( $this, 'maybe_change_voucher_coupon_label' ), 10, 3 );
+
+		// Pickup location
+		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_pickup_location' ), 10 );
 	}
 
 	/**
@@ -305,6 +308,23 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		$label = apply_filters( 'woocommerce_gzd_voucher_name', sprintf( __( 'Voucher: %1$s', 'woocommerce-germanized' ), $coupon->get_code() ), $coupon->get_code() );
 
 		return $label;
+	}
+
+
+
+	/**
+	 * Prevent hiding pickup location optional fields behind a link button.
+	 *
+	 * @param   array  $skip_list  List of optional fields to skip hidding.
+	 */
+	public function prevent_hide_optional_fields_pickup_location( $skip_list ) {
+		$skip_list = array_merge( $skip_list, array(
+			'billing_pickup_location_notice',
+			'shipping_pickup_location_notice',
+			'pickup_location_customer_number',
+			'current_pickup_location',
+		) );
+		return $skip_list;
 	}
 
 }

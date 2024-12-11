@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper #payment .mfn-payment-check {
+	display: none !important; // Needed to override theme styles
+}

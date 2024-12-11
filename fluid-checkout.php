@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 3.2.6
+Version: 4.0.0-beta-11
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 9.4.1
+WC tested up to: 9.4.3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -138,14 +138,6 @@ class FluidCheckout {
 
 
 	/**
-	 * Load plugin textdomain.
-	 */
-	public function load_textdomain() {		
-		$this->maybe_load_translation_from_safe_location();
-		load_plugin_textdomain( self::$plugin_slug, false, self::$plugin_slug . '/languages' );
-	}
-
-	/**
 	 * Get the locales to be used for each language variant.
 	 */
 	public function get_locale_language_variants() {
@@ -176,80 +168,100 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Check if a translation file exists for the locale in the safe, global or plugin language directories.
+	 * Get main locale for a language variant, or the current locale if no language variant is found.
 	 *
-	 * @param   string  $locale  The locale to be used for the plugin language files.
+	 * @param   string  $locale_variant  The locale variant to get the main locale for.
 	 */
-	public function locale_translation_file_exists( $locale ) {
-		// Check if language variant file exists in the plugin safe language dir.
-		if ( file_exists( trailingslashit( WP_LANG_DIR ) . self::$plugin_slug . '/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return true; }
-
-		// Check if language variant file exists in the WP_LANG_DIR.
-		if ( file_exists( trailingslashit( WP_LANG_DIR ) . 'plugins/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return true; }
-
-		// Check if language variant file exists in the plugin language dir.
-		if ( file_exists( self::$directory_path . 'languages/' . self::$plugin_slug . '-' . $locale . '.mo' ) ) { return true; }
-
-		return false;
-	}
-
-	/**
-	 * Maybe load plugin textdomain from the safe language dir.
-	 */
-	public function maybe_load_translation_from_safe_location() {
-		// Get locale
-		$locale = apply_filters( 'plugin_locale', determine_locale(), self::$plugin_slug );
-
-		// Maybe fall back to main locale translation file.
-		if ( ! $this->locale_translation_file_exists( $locale ) ) {
-			// Get main locale for the language variant.
-			$locale_language_variants = $this->get_locale_language_variants();
-			if ( array_key_exists( $locale, $locale_language_variants ) ) {
-				$locale = $locale_language_variants[ $locale ];
-			}
-		}
-
-		// Get translation file
-		$translation_file = trailingslashit( WP_LANG_DIR ) . self::$plugin_slug . '/' . self::$plugin_slug . '-' . $locale . '.mo';
-
-		// Bail if language variant file does not exist in the plugin safe language dir.
-		if ( ! file_exists( $translation_file ) ) { return false; }
-	
-		unload_textdomain( self::$plugin_slug );
-		load_textdomain( self::$plugin_slug, $translation_file );
-
-		return false;
-	}
-
-	/**
-	 * Maybe set a different locale for the plugin language files for the language variants.
-	 *
-	 * @param   string  $mofile  The MO file path.
-	 * @param   string  $domain  The text domain.
-	 */
-	public function maybe_set_locale_file_for_language_variants( $mofile, $domain ) {
-		// Bail if not loading the plugin text domain.
-		if ( self::$plugin_slug !== $domain ) { return $mofile; }
-
-		// Get current locale
-		$current_locale = apply_filters( 'plugin_locale', determine_locale(), self::$plugin_slug );
-		$locale = $current_locale;
-
-		// Bail if a translation file was found for the locale.
-		if ( $this->locale_translation_file_exists( $locale ) ) { return $mofile; }
+	public function get_main_locale_for_language_variant( $locale_variant ) {
+		// Initialize locale with the current locale
+		$locale = $locale_variant;
 
 		// Define language to load for the language variants.
 		$locale_language_variants = $this->get_locale_language_variants();
 
 		// Maybe set locale for the language variant.
-		if ( array_key_exists( $locale, $locale_language_variants ) ) {
-			$locale = $locale_language_variants[ $locale ];
+		if ( array_key_exists( $locale_variant, $locale_language_variants ) ) {
+			$locale = $locale_language_variants[ $locale_variant ];
 		}
 
-		// Replace locale in the translation file path
-		$mofile = str_replace( $current_locale . '.mo', $locale . '.mo', $mofile );
+		return $locale;
+	}
 
-		return $mofile;
+	/**
+	 * Get the translation file path for the locale, or the main locale for language variants.
+	 *
+	 * @param  string  $file    Path to the translation file to load.
+	 * @param  string  $domain  The text domain.
+	 * @param  string  $locale  The locale.
+	 */
+	public function get_translation_file_path( $file, $locale, $plugin_slug = null, $plugin_directory = null ) {
+		// Maybe set plugin slug if not provided
+		if ( ! $plugin_slug ) {
+			$plugin_slug = self::$plugin_slug;
+		}
+
+		// Maybe set plugin directory if not provided
+		if ( ! $plugin_directory ) {
+			$plugin_directory = self::$directory_path;
+		}
+
+		// Initialize variables
+		$file_extension = explode( '.', basename( $file ), 2 )[1];
+		$main_locale = $this->get_main_locale_for_language_variant( $locale );
+
+		// Define possible translation file paths, in order of priority.
+		$translation_file_paths = array(
+			// Locale (e.g. de_CH)
+			trailingslashit( WP_LANG_DIR ) . $plugin_slug . '/' . $plugin_slug . '-' . $locale . '.' . $file_extension, // safe location
+			$plugin_directory . 'languages/' . $plugin_slug . '-' . $locale . '.' . $file_extension, // author location
+			trailingslashit( WP_LANG_DIR ) . 'plugins/' . $plugin_slug . '-' . $locale . '.' . $file_extension, // system location
+
+			// Main locale for language variants (e.g. de_DE_formal, when locale is de_CH)
+			trailingslashit( WP_LANG_DIR ) . $plugin_slug . '/' . $plugin_slug . '-' . $main_locale . '.' . $file_extension, // safe location
+			$plugin_directory . 'languages/' . $plugin_slug . '-' . $main_locale . '.' . $file_extension, // author location
+			trailingslashit( WP_LANG_DIR ) . 'plugins/' . $plugin_slug . '-' . $main_locale . '.' . $file_extension, // system location
+		);
+
+		// Iterate through the translation file paths
+		foreach ( $translation_file_paths as $translation_file_path ) {
+			// Skip to next translation file, if file does not exist
+			if ( ! file_exists( $translation_file_path ) ) { continue; }
+
+			// Set the translation file path
+			$file = $translation_file_path;
+			break;
+		}
+
+		// Otherwise, return unchanged file path
+		return $file;
+	}
+
+	/**
+	 * Maybe change the translation file path to load the main locale for language variants.
+	 *
+	 * @param  string  $file    Path to the translation file to load.
+	 * @param  string  $domain  The text domain.
+	 * @param  string  $locale  The locale.
+	 */
+	public function maybe_change_translation_file_path( $file, $domain, $locale ) {
+		// Bail if not loading the plugin text domain.
+		if ( self::$plugin_slug !== $domain ) { return $file; }
+
+		// Get whether current file is saved to the system directory
+		$is_system_file = -1 !== strpos( $file, trailingslashit( WP_LANG_DIR ) . 'plugins/' );
+
+		// Bail if custom translation file location, and file exists
+		if ( ! $is_system_file && file_exists( $file ) ) { return $file; }
+
+		// Return the correct translation file path
+		return $this->get_translation_file_path( $file, $locale, self::$plugin_slug, self::$directory_path );
+	}
+
+	/**
+	 * Load plugin textdomain.
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( self::$plugin_slug, false, self::$plugin_slug . '/languages' );
 	}
 
 
@@ -265,7 +277,7 @@ class FluidCheckout {
 		}
 
 		// Language locale
-		add_filter( 'load_textdomain_mofile', array( $this, 'maybe_set_locale_file_for_language_variants' ), 10, 2 );
+		add_action( 'load_translation_file', array( $this, 'maybe_change_translation_file_path' ), 100, 3 ); // High priority to override locale files defined from other plugins (ie. Loco Translate at priority `11`)
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 
 		// Load features
@@ -325,6 +337,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-400.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
 	}
 
 
@@ -335,19 +348,26 @@ class FluidCheckout {
 	 */
 	private function register_features() {
 		self::$features = array(
+			// Utility features
+			'FluidCheckout_Enqueue'                        => array( 'file' => self::$directory_path . 'inc/enqueue.php' ),
+			'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
+			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php' ),
+
+			// Design templates
 			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
+
+			// Checkout features
 			'FluidCheckout_CheckoutPageTemplate'           => array( 'file' => self::$directory_path . 'inc/checkout-page-template.php' ),
 			'FluidCheckout_CheckoutBlock'                  => array( 'file' => self::$directory_path . 'inc/checkout-block.php' ),
-			'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 			'FluidCheckout_Steps'                          => array( 'file' => self::$directory_path . 'inc/checkout-steps.php' ),
 			'FluidCheckout_CouponCodes'                    => array( 'file' => self::$directory_path . 'inc/checkout-coupon-codes.php' ),
-			'FluidCheckout_CartShippingCalculator'         => array( 'file' => self::$directory_path . 'inc/cart-shipping-calculator.php' ),
-
 			'FluidCheckout_CheckoutFields'                 => array( 'file' => self::$directory_path . 'inc/checkout-fields.php' ),
 			'FluidCheckout_CheckoutHideOptionalFields'     => array( 'file' => self::$directory_path . 'inc/checkout-hide-optional-fields.php' ),
 			'FluidCheckout_CheckoutShippingPhoneField'     => array( 'file' => self::$directory_path . 'inc/checkout-shipping-phone-field.php' ),
-			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php' ),
 			'FluidCheckout_CheckoutWidgetAreas'            => array( 'file' => self::$directory_path . 'inc/checkout-widget-areas.php' ),
+
+			// Cart features
+			'FluidCheckout_CartShippingCalculator'         => array( 'file' => self::$directory_path . 'inc/cart-shipping-calculator.php' ),
 		);
 	}
 
@@ -379,9 +399,6 @@ class FluidCheckout {
 	public function load_features() {
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
-
-		// Load enqueue
-		require_once self::$directory_path . 'inc/enqueue.php';
 
 		// Load each features
 		foreach ( self::$features as $feature_key => $feature ) {
@@ -517,8 +534,6 @@ class FluidCheckout {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( $plugin_file );
 	}
-
-
 
 
 
