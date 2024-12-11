@@ -146,7 +146,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$step_id = $this->get_substep_step_id();
 		$substep_priority = $this->get_substep_priority();
 		$substep_id = 'coupon_codes';
-		$substep_title = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_display_coupon_code_section_title' ) ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'woocommerce' ) ) : null;
+		$substep_title = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_display_coupon_code_section_title' ) ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'woocommerce' ) ) : null; // Intentionally using text domain from WooCommerce
 
 		// Register substep
 		FluidCheckout_Steps::instance()->register_checkout_substep( $step_id, array(
@@ -270,7 +270,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function output_section_coupon_codes_fields( $field_args = array(), $expansible_section_args = array(), $output_handle = true, $section_key = null ) {
 		// Define labels
-		$coupon_code_field_label       = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'fluid-checkout' ) );
+		$coupon_code_field_label       = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'woocommerce' ) ); // Intentionally using text domain from WooCommerce
 		$coupon_code_field_description = apply_filters( 'fc_coupon_code_field_description', '' );
 		$coupon_code_field_placeholder = apply_filters( 'fc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
 		$coupon_code_button_label      = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );

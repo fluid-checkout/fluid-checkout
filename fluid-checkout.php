@@ -337,6 +337,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-breaking-changes-version-400.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
 	}
 
 
@@ -533,8 +534,6 @@ class FluidCheckout {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( $plugin_file );
 	}
-
-
 
 
 
