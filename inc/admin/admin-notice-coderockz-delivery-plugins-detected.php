@@ -29,15 +29,18 @@ class FluidCheckout_AdminNotices_CodeRockzDeliveryPlugins extends FluidCheckout 
 	 */
 	public function is_component_activated() {
 		// Slug to compare to
-		$plugin_slugs = array( 'woo-delivery', 'coderockz-woocommerce-delivery-date-time-pro' );
+		$plugin_files = array(
+			'woo-delivery/coderockz-woo-delivery.php',
+			'coderockz-woocommerce-delivery-date-time-pro/coderockz-woo-delivery.php',
+		);
 
 		// Get list of current active plugins
 		// Needs to use `get_option` directly as `FluidCheckout_Settings::get_option()` wrapper function is not available yet
 		$active_plugins = (array) get_option( 'active_plugins', array() );
 
-		// Check if any of the plugin slugs is in the list of active plugins
-		foreach ( $plugin_slugs as $plugin_slug ) {
-			if ( in_array( $plugin_slug, $active_plugins ) ) {
+		// Check if any of the plugin files is in the list of active plugins
+		foreach ( $plugin_files as $plugin_file ) {
+			if ( in_array( $plugin_file, $active_plugins ) ) {
 				return true;
 			}
 		}
@@ -51,14 +54,14 @@ class FluidCheckout_AdminNotices_CodeRockzDeliveryPlugins extends FluidCheckout 
 	 */
 	public function is_legacy_integrations_activated() {
 		// Slug to compare to
-		$plugin_slug = 'fluid-checkout-legacy2';
+		$plugin_file = 'fluid-checkout-legacy2/fluid-checkout-legacy2.php';
 
 		// Get list of current active plugins
 		// Needs to use `get_option` directly as `FluidCheckout_Settings::get_option()` wrapper function is not available yet
 		$active_plugins = (array) get_option( 'active_plugins', array() );
 
-		// Check if any of the plugin slugs is in the list of active plugins
-		if ( in_array( $plugin_slug, $active_plugins ) ) {
+		// Check if any of the plugin files is in the list of active plugins
+		if ( in_array( $plugin_file, $active_plugins ) ) {
 			return true;
 		}
 
@@ -76,8 +79,8 @@ class FluidCheckout_AdminNotices_CodeRockzDeliveryPlugins extends FluidCheckout 
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'manage_options' ) ) { return $notices; }
 
-		// Bail if any target component is activated
-		if ( $this->is_component_activated() ) { return $notices; }
+		// Bail if none of target component are activated
+		if ( ! $this->is_component_activated() ) { return $notices; }
 
 		// Bail if Legacy Integrations plugins is detected
 		if ( $this->is_legacy_integrations_activated() ) { return $notices; }
