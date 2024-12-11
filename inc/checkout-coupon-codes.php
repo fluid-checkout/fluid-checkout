@@ -335,7 +335,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   string  $step_id      Id of the step in which the substep will be rendered.
 	 * @param   string  $substep_id   Id of the substep in which the fields will be rendered.
 	 */
-	public function output_substep_coupon_codes_fields( $step_id, $substep_id ) {
+	public function output_substep_coupon_codes_fields( $step_id = 'payment', $substep_id = 'coupon_codes' ) {
 		$this->output_section_coupon_codes_fields();
 	}
 
