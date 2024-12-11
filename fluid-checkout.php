@@ -537,8 +537,6 @@ class FluidCheckout {
 
 
 
-
-
 	/**
 	 * Check if Fluid Checkout PRO is installed on a single install or network wide.
 	 *
