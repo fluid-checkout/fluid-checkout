@@ -3,7 +3,7 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.6.2
+Tested up to: 6.7.1
 Stable tag: 3.2.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * POSSIBLY BREAKING CHANGES - Changes to how substeps are added to the checkout page can break functionality of Fluid Checkout PRO and other add-ons until they are also updated to the latest versions, which might affect custom code on your website.
 
+* Bump tested up to WordPress 6.7.1 and WooCommerce 9.4.3
 * Added: Support for the Order Pay page feature of Fluid Checkout PRO.
 * Added: Compatibility with theme Colibri WP.
 * Added: Compatibility with plugin CartBounty - Save and recover abandoned carts for WooCommerce.
