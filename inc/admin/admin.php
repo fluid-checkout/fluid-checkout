@@ -169,7 +169,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	/**
 	 * Get HTML for PRO features label.
 	 * 
-	 * 
+	 * @param  bool  $add_space_after  Whether to add a space after the text. Defaults to `false`, which adds the space before.
 	 */
 	public function get_pro_feature_option_html( $add_space_after = false ) {
 		// Bail if PRO is already activated
