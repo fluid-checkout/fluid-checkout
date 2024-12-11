@@ -92,7 +92,6 @@ class FluidCheckout_AdminNotices_CodeRockzDeliveryPlugins extends FluidCheckout 
 			'name'           => 'coderockz_plugins_detected',
 			'title'          => __( 'Fluid Checkout and Delivery Date plugins by CodeRockz', 'fluid-checkout' ),
 			'description'    => __( '<p>We detected that you are using the plugins Delivery & Pickup Date Time for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins have been moved to Fluid Checkout PRO.</p>', 'fluid-checkout' ),
-			'dismissable'    => false,
 			'error'          => true,
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary">%s</a>', 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=coderockz-integrations&mtm_source=lite-plugin', __( 'Upgrade to PRO', 'fluid-checkout' ) ),
