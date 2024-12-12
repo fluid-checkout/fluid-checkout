@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. PHP warning when trying to output information for recurring shipping packages.
+* Fixed: Fatal error when trying to change the translation file loaded for language variations on versions of WordPress prior to 6.6.0.
 
 = 4.0.0 - 2024-12-11 =
 
