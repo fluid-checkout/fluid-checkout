@@ -145,6 +145,7 @@ div.woocommerce form .fc-expansible-form-section.form-row + .form-row {
   clear: left;
 }
 
+html,
 body.woocommerce-checkout {
   overflow-x: hidden;
 }

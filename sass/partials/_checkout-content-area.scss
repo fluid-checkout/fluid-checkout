@@ -1,8 +1,9 @@
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
+html,
 body#{ $_body-page-selector } {
-	overflow-x: hidden;
+	overflow-x: hidden; // Prevents horizontal scroll on IE, EDGE and Safari
 }
 
 
