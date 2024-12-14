@@ -19,6 +19,15 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if plugin class or method is not available
+		if ( ! class_exists( 'Xoo_Ml_Phone_Frontend' ) || ! method_exists( 'Xoo_Ml_Phone_Frontend', 'get_instance' ) ) { return; }
+
+		// Get plugin class instance
+		$class_instance = Xoo_Ml_Phone_Frontend::get_instance();
+
+		// Bail if OTP field is not enabled for WooCommerce
+		if ( ! isset( $class_instance->settings[ 'wc-en-chk' ] ) || 'yes' !== $class_instance->settings[ 'wc-en-chk' ] ) { return; }
+
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
@@ -28,13 +37,14 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Billing step hooks
 		$this->billing_step_hooks();
 
+		// Add additional condition to display plugin's phone field
+		$this->maybe_add_plugin_phone_field_to_checkout();
+
 		// Plugin phone field args
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_plugin_phone_field_args' ), 10000 ); // Set hight priority to run after the plugin's function
 
 		// Add hidden fields fragment
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_hidden_fields_fragment' ), 10 );
-
-		$this->maybe_add_plugin_phone_field_to_checkout();
 	}
 
 	/**
@@ -97,14 +107,16 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * Myabe add the plugin's phone field to the checkout page even if a user already verified phone number.
 	 */
 	public function maybe_add_plugin_phone_field_to_checkout() {
-		// Bail if plugin class is not available
+		// Bail if plugin class or method is not available
 		if ( ! class_exists( 'Xoo_Ml_Phone_Frontend' ) || ! method_exists( 'Xoo_Ml_Phone_Frontend', 'get_instance' ) ) { return; }
-		
+
 		// Get plugin class instance
 		$class_instance = Xoo_Ml_Phone_Frontend::get_instance();
 
-		// Bail if the plugin's phone field is not enabled or user phone number is not set
-		if ( ! isset( $class_instance->settings[ 'wc-en-chk' ] ) || 'yes' !== $class_instance->settings[ 'wc-en-chk' ] || ! get_user_meta( get_current_user_id(), 'xoo_ml_phone_no', true ) ) { return; }
+		$user_phone_number = xoo_ml_get_user_phone( get_current_user_id(), 'number' );
+
+		// Bail if user's phone number is not set
+		if ( ! $user_phone_number ) { return; }
 
 		// Add plugin's phone field to the checkout page
 		add_filter( 'woocommerce_form_field', array( $class_instance, 'wc_checkout_otp_field_html' ), 10, 4 );
