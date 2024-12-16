@@ -7,10 +7,6 @@ body.theme-shoptimizer .site-header {
   z-index: 2000;
 }
 
-body.theme-shoptimizer .col-full-nav {
-  z-index: 2000;
-}
-
 body.theme-shoptimizer .main-navigation ul.menu > li.menu-item-has-children > .sub-menu-wrapper {
   z-index: 2000;
 }
