@@ -45,6 +45,18 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Add hidden fields fragment
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_hidden_fields_fragment' ), 10 );
+
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 	}
 
 	/**
@@ -222,10 +234,8 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Bail if plugin function is not available
 		if ( ! function_exists( 'xoo_ml_get_user_phone' ) ) { return $args; }
 
-		// Get new args
-		$new_args = array(
-			'form_type' => 'update_user',
-		);
+		// New args to set
+		$new_args = array();
 
 		// Get phone number from session
 		$phone_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone' );
@@ -314,6 +324,78 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		}
 
 		return $is_substep_complete;
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-mobile-login-woocommerce-premium', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/checkout-mobile-login-woocommerce-premium' ), array( 'jquery', 'fc-utils' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutMobileLoginWoocommercePremium.init(fcSettings.checkoutMobileLoginWoocommercePremium);})' );
+
+		// Validation scripts
+		wp_register_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/checkout-validation-mobile-login-woocommerce-premium' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
+		wp_add_inline_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutValidationMobileLoginWoocommercePremium.init(fcSettings.checkoutValidationMobileLoginWoocommercePremium);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function maybe_enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-mobile-login-woocommerce-premium' );
+		wp_enqueue_script( 'fc-checkout-validation-mobile-login-woocommerce-premium' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add checkout settings
+		$settings[ 'checkoutMobileLoginWoocommercePremium' ] = array(
+			// Use the same values as in the plugin to replicate the same functionality
+			'strings'  => array(
+				'verified' => __( '<span class="dashicons dashicons-yes"></span>', 'mobile-login-woocommerce' ),
+				'verify' => __( 'Verify', 'mobile-login-woocommerce' ),
+			),
+		);
+
+		// Add validation settings
+		$settings[ 'checkoutValidationMobileLoginWoocommercePremium' ] = array(
+			'validationMessages'  => array(
+				'phone_number_not_verified' => __( 'Please verify your phone number.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object for the checkout validation.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'validateFieldsSelector' ] = 'input[name="mobile-login-woo-is_verified"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = '.xoo-ml-phinput-cont' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="mobile-login-woo-is_verified"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
 	}
 
 }
