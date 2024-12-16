@@ -125,6 +125,7 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Get plugin class instance
 		$class_instance = Xoo_Ml_Phone_Frontend::get_instance();
 
+		// Get phone number from user meta
 		$user_phone_number = xoo_ml_get_user_phone( get_current_user_id(), 'number' );
 
 		// Bail if user's phone number is not set
@@ -240,6 +241,21 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Get phone number from session
 		$phone_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone' );
 		$country_code = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone-cc' );
+
+		// Maybe get verified phone number for logged in users
+		if ( is_user_logged_in() ) {
+			$user_id = get_current_user_id();
+
+			// Get user's phone number
+			$user_phone_number = xoo_ml_get_user_phone( $user_id, 'number' );
+			$user_country_code = xoo_ml_get_user_phone( $user_id, 'code' );
+
+			// Maybe set existing phone number and country code
+			if ( $user_phone_number && $user_country_code ) {
+				$phone_number = $user_phone_number;
+				$country_code = $user_country_code;
+			}
+		}
 
 		// If phone number and country code are set, update the args
 		if ( $phone_number && $country_code ) {
