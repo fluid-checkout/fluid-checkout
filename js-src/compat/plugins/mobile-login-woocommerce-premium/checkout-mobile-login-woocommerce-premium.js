@@ -190,6 +190,9 @@
 		if ( _hasJQuery ) {
 			$( document.body ).on( 'updated_checkout', maybeMarkAsVerified );
 			$( document.body ).on( 'change.select2', handleChange );
+
+			// OTP verification success
+			$( document.body ).on( 'xoo_ml_on_otp_success', triggerCheckoutUpdate );
 		}
 
 		_hasInitialized = true;
