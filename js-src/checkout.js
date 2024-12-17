@@ -128,7 +128,7 @@ jQuery( function( $ ) {
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_flyout_blocks );
 			$( document.body ).on( 'updated_checkout', this.maybe_init_enhanced_dropdowns );
-			
+
 			// CHANGE: Enhance dropdown fields on initialization
 			this.maybe_init_enhanced_dropdowns();
 
