@@ -865,10 +865,10 @@
 		var initialState = initialStateAttribute ? initialStateAttribute : manager.settings.initialState;
 		var index = Array.prototype.indexOf.call( manager.element.parentNode.children, manager.element );
 		if ( initialState == _publicMethods.states.EXPANDED || ( initialState == _publicMethods.states.FIRST_EXPANDED && index == 0 ) ) {
-			_publicMethods.expand( manager.element, false );
+			_publicMethods.expand( manager.element, false, false ); // No transition, no focus
 		}
 		else {
-			_publicMethods.collapse( manager.element, false );
+			_publicMethods.collapse( manager.element, false ); // No transition
 		}
 
 		// Maybe change state on resize
