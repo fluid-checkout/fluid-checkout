@@ -411,6 +411,10 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   display: block;
 }
 
+.fc-wrapper .fc-step__substep-fields.is-expanded:not(.is-transitioning) + .fc-step__substep-text {
+  display: none;
+}
+
 .fc-wrapper .fc-step__substep-text-content.is-loading {
   min-height: 50px;
 }

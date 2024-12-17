@@ -41,6 +41,7 @@
 		isCollapsedClass: 'is-collapsed',
 		isExpandedClass: 'is-expanded',
 		isActivatedClass: 'is-activated',
+		isTransitioningClass: 'is-transitioning',
 		cssTransition: 'height .15s linear',
 
 		targetAttribute: 'aria-controls',
@@ -485,16 +486,21 @@
 		if ( 'target' in element && element.target ) {
 			element = element.target;
 		}
+		
+		// Get the manager
+		var manager = _publicMethods.getInstance( element );
 
 		// Remove content element properties when transition is complete
 		element.style.height = '';
 		element.style.overflow = '';
 
+		// Remove `is-transitioning` class
+		element.classList.remove( manager.settings.isTransitioningClass );
+
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, true );
 
 		// Maybe set focus state
-		var manager = _publicMethods.getInstance( element.closest( _settings.elementSelector ) );
 		if ( _canChangeFocus && manager && manager.isActivated === true && manager.withFocus ) {
 			var focusElement = null;
 
@@ -557,8 +563,14 @@
 			element = element.target;
 		}
 
+		// Get the manager instance from the element
+		var manager = _publicMethods.getInstance( element );
+
 		// Hide the element from the screen and from the accessibility tree
 		element.style.display = 'none';
+
+		// Remove `is-transitioning` class
+		element.classList.remove( manager.settings.isTransitioningClass );
 
 		// Syncronize `aria-expanded` for every handler on the page
 		syncAriaExpanded( element, false );
@@ -605,9 +617,12 @@
 		// Set default value for withTransition
 		withTransition = withTransition === false ? false : true;
 
+		// Set element as transitioning
+		manager.element.classList.add( _settings.isTransitioningClass );
+
 		// Update element's state to `collapsed`
-		manager.element.classList.add( manager.settings.isCollapsedClass );
 		manager.element.classList.remove( manager.settings.isExpandedClass );
+		manager.element.classList.add( manager.settings.isCollapsedClass );
 
 		// Remove `finishExpand` event listener to prevent block from expanding at the end of the transition
 		manager.contentElement.removeEventListener( getTransitionEndEvent(), finishExpand );
@@ -678,6 +693,11 @@
 		// Get the duration of the `height` property transition in milliseconds
 		var heightTransitionDuration = getHeightTransitionDuration( manager.contentElement );
 
+		// Set element as transitioning
+		// Needs to happen before setting delay to the height transition
+		// to prevent jerkiness when transitioning from `collapsed` to `expanded` state
+		manager.element.classList.add( manager.settings.isTransitioningClass );
+
 		// Expand element to its content height
 		requestAnimationFrame( function() {
 			var computedHeight = getComputedHeight( manager.contentElement );
@@ -689,8 +709,8 @@
 			setHeight( manager.contentElement, computedHeight, withTransition );
 
 			// Update element's state to `expanded`
-			manager.element.classList.add( manager.settings.isExpandedClass );
 			manager.element.classList.remove( manager.settings.isCollapsedClass );
+			manager.element.classList.add( manager.settings.isExpandedClass );
 
 			// Make sure to finish the "expand" state change when transitions are not used
 			if ( ! withTransition ) {

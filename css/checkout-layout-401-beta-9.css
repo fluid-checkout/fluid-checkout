@@ -76,6 +76,14 @@ body.has-fc-button-colors .fc-wrapper .fc-step__substep-save:not([disabled]):not
   margin-top: 0;
 }
 
+.fc-wrapper [data-collapsible].is-activated.is-transitioning > .collapsible-content__inner {
+  display: block;
+}
+
+.fc-wrapper [data-collapsible].is-collapsed:not(.is-transitioning) > .collapsible-content__inner {
+  display: none;
+}
+
 body:not(.has-collapsible-block) .fc-wrapper [data-collapsible].is-collapsed > .collapsible-content__inner {
   display: none;
 }
