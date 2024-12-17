@@ -24,6 +24,9 @@
 		countryCodeFieldSelector: '.xoo-ml-phone-cc',
 		verificationStatusFieldSelector: '.validate-mobile-login-woo',
 		inlineVerifyButtonSelector: '.xoo-ml-inline-verify',
+		loginModalButtonSelector: 'a[data-flyout-target="[data-flyout-checkout-login]"]',
+		OTPLoginFormSelector: '.xoo-lwo-form',
+		defaultLoginFormSelector: '.woocommerce-form-login',
 
 		verifiedClass: 'verified',
 	};
@@ -104,6 +107,24 @@
 
 
 	/**
+	 * Maybe show OTP login form.
+	 * This function is used to fix the plugin's function 'adjustPositions' hiding the OTP login form when it's not visible on page load.
+	 */
+	var maybeShowOTPLoginForm = function() {
+		// Get forms
+		var OTPLoginForm = document.querySelector( _settings.OTPLoginFormSelector );
+		var defaultLoginForm = document.querySelector( _settings.defaultLoginFormSelector );
+
+		// Bail if any of the forms is visible to prevent breaking plugin's form toggle buttons
+		if ( 'none' !== OTPLoginForm.style.display || 'none' !== defaultLoginForm.style.display ) { return; }
+
+		// Show OTP login form
+		OTPLoginForm.style.display = 'block';
+	}
+
+
+
+	/**
 	 * Trigger update checkout.
 	 */
 	var triggerCheckoutUpdate = function() {
@@ -136,6 +157,16 @@
 		}
 	}
 
+	/**
+	 * Handle click event and route to the appropriate function.
+	 */
+	var handleClick = function( e ) {
+		// LOGIN MODAL BUTTON
+		if ( e.target.matches( _settings.loginModalButtonSelector ) ) {
+			maybeShowOTPLoginForm();
+		}
+	}
+
 
 
 	/**
@@ -153,6 +184,7 @@
 		// Add event listeners
 		window.addEventListener( 'input', handleInput );
 		window.addEventListener( 'change', handleChange );
+		window.addEventListener( 'click', handleClick );
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
