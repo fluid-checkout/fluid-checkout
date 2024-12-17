@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Fixed: Compatibility with theme Shoptimizer. Fix layout of the header when using some header variations from the theme.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. PHP warning when trying to output information for recurring shipping packages.
+* Fixed: Compatibility with plugin Germanized for WooCommerce PRO. Fixes VAT ID being displayed twice on the substep review text for billing and shipping.
 * Fixed: Add hooks for billing phone on contact step earlier to prevent compatibility issues with other plugins.
 * Fixed: Prevent horizontal scroll on IE, EDGE and Safari.
 * Fixed: Fatal error when trying to change the translation file loaded for language variations on versions of WordPress prior to 6.6.0.
