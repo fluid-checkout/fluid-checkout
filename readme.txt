@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Compatibility with theme Shoptimizer. Fix layout of the header when using some header variations from the theme.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. PHP warning when trying to output information for recurring shipping packages.
 * Fixed: Prevent horizontal scroll on IE, EDGE and Safari.
 * Fixed: Fatal error when trying to change the translation file loaded for language variations on versions of WordPress prior to 6.6.0.
