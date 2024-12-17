@@ -159,6 +159,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
+		// Billing phone
+		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
+		add_filter( 'fc_billing_substep_text_address_data', array( $this, 'maybe_remove_phone_address_data' ), 10 );
+
 		// Payment
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_remove_links' ), 10, 2 );
@@ -237,17 +242,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		$this->customer_address_data_hooks();
-
-		// Billing phone
-		// Maybe move billing phone to contact step
-		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
-			// Add billing phone to contact fields
-			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
-			add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
-
-			// Remove phone field from billing address data
-			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
-		}
 	}
 
 	/**
@@ -484,14 +478,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
 		// Billing phone
-		// Maybe move billing phone to contact step
-		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
-			// Add billing phone to contact fields
-			remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
-
-			// Remove phone field from billing address data
-			remove_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
-		}
+		remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+		remove_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
+		remove_filter( 'fc_billing_substep_text_address_data', array( $this, 'maybe_remove_phone_address_data' ), 10 );
 
 		// Payment
 		remove_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
@@ -5660,7 +5649,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $display_fields  List of fields to display on the contact step.
 	 */
 	public function add_billing_phone_field_to_contact_fields( $display_fields ) {
+		// Bail if billing phone not set to contact step
+		if ( 'contact' !== FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) { return $display_fields; }
+
+		// Add billing phone field
 		$display_fields[] = 'billing_phone';
+
 		return $display_fields;
 	}
 
@@ -5685,15 +5679,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $fields;
 	}
 
-
-
 	/**
 	 * Remove phone from address data.
 	 *
 	 * @param   array  $html  HTML for the substep text.
 	 */
-	public function remove_phone_address_data( $address_data ) {
+	public function maybe_remove_phone_address_data( $address_data ) {
+		// Define variables
+		$field_key = 'billing_phone';
+
+		// Bail if field is not set to be displayed on the contact step
+		if ( ! in_array( $field_key, FluidCheckout_Steps::instance()->get_contact_step_display_field_ids() ) ) { return $address_data; }
+
+		// Remove phone from address data
 		unset( $address_data[ 'phone' ] );
+
 		return $address_data;
 	}
 
