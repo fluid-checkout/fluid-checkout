@@ -40,6 +40,9 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Add additional condition to display plugin's phone field
 		$this->maybe_add_plugin_phone_field_to_checkout();
 
+		// Plugin's list of forms with phone input field
+		add_filter( 'xoo_ml_get_phone_forms', array( $this, 'maybe_add_form_for_verified_users' ), 10 );
+
 		// Plugin phone field args
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_plugin_phone_field_args' ), 10000 ); // Set hight priority to run after the plugin's function
 
@@ -116,7 +119,7 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 
 	/**
-	 * Myabe add the plugin's phone field to the checkout page even if a user already verified phone number.
+	 * Maybe add the plugin's phone field to the checkout page even if a user already verified phone number.
 	 */
 	public function maybe_add_plugin_phone_field_to_checkout() {
 		// Bail if plugin class or method is not available
@@ -136,6 +139,48 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields' , array( $class_instance, 'wc_checkout_add_otp_field' ), 9999 );
 	}
 
+
+
+	/**
+	 * Maybe add form for verified users.
+	 * This is for repeated verification of the phone number on the checkout page.
+	 *
+	 * @param   array  $forms  List of forms with phone input field.
+	 */
+	public function maybe_add_form_for_verified_users( $forms ) {
+		// Bail if plugin class or method is not available
+		if ( ! class_exists( 'Xoo_Ml_Phone_Frontend' ) || ! method_exists( 'Xoo_Ml_Phone_Frontend', 'get_instance' ) ) { return $forms; }
+
+		// Get plugin class instance
+		$class_instance = Xoo_Ml_Phone_Frontend::get_instance();
+
+		// Bail if plugin settings are not set
+		if ( ! isset( $class_instance->settings ) ) { return $forms; }
+
+		// Get phone number from user meta
+		$user_phone_number = xoo_ml_get_user_phone( get_current_user_id(), 'number' );
+
+		// Bail if user's phone number is not set
+		if ( ! $user_phone_number ) { return $forms; }
+
+		// Bail if array with the same 'key' already exists
+		foreach ( $forms as $form ) {
+			if ( 'woocommerce-process-checkout-nonce' === $form[ 'key' ] ) {
+				return $forms;
+			}
+		}
+
+		// Add form for users with verified phone number
+		$forms[] = array(
+			'key'         => 'woocommerce-process-checkout-nonce',
+			'value'       => '',
+			'form'        => 'register_user',
+			'required'    => 'required' === $class_instance->settings[ 'r-phone-field' ] ? 'yes' : 'no',
+			'cc_required' => 'yes' === $class_instance->settings[ 'r-enable-cc-field' ] ? 'yes' : 'no',
+		);
+
+		return $forms;
+	}
 
 
 
