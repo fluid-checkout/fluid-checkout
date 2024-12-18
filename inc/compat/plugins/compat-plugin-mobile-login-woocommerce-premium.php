@@ -100,6 +100,10 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_contact', array( $this, 'maybe_set_substep_incomplete' ), 10 );
+
+		// Review text lines
+		add_filter( 'fc_substep_text_contact_field_keys_skip_list', array( $this, 'maybe_remove_phone_number_from_text_lines' ), 10 );
+		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 	}
 
 	/*
@@ -385,6 +389,40 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		}
 
 		return $is_substep_complete;
+	}
+
+
+
+	/**
+	 * Maybe remove the plugin's phone field from the substep review text lines.
+	 * 
+	 * @param  array  $field_keys_skip_list  The list of field keys to skip in the substep review text.
+	 */
+	public function maybe_remove_phone_number_from_text_lines( $field_keys_skip_list ) {
+		$field_keys_skip_list[] = 'xoo-ml-reg-phone';
+		return $field_keys_skip_list;
+	}
+
+	/**
+	 * Add the plugin's phone field value to the substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_contact( $review_text_lines = array() ) {
+		$phone_number_field_key = 'xoo-ml-reg-phone';
+		$country_code_field_key = 'xoo-ml-reg-phone-cc';
+
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get entered phone number
+		$country_code = WC()->checkout->get_value( $country_code_field_key );
+		$phone_number = WC()->checkout->get_value( $phone_number_field_key );
+
+		// Add phone number with country code to the review text
+		$review_text_lines[] = $country_code . $phone_number;
+
+		return $review_text_lines;
 	}
 
 
