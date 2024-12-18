@@ -452,9 +452,9 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
 
 		// Prepend new values to existing settings
-		$settings[ 'validateFieldsSelector' ] = 'input[name="mobile-login-woo-is_verified"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'validateFieldsSelector' ] = '.xoo-ml-phone-input' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
 		$settings[ 'referenceNodeSelector' ] = '.xoo-ml-phinput-cont' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
-		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="mobile-login-woo-is_verified"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = '.xoo-ml-phone-input' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
 
 		return $settings;
 	}
