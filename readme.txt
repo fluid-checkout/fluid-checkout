@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Debloat by asadkn.
 * Fixed: Compatibility with theme Shoptimizer. Fix layout of the header when using some header variations from the theme.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. PHP warning when trying to output information for recurring shipping packages.
 * Fixed: Compatibility with plugin Germanized for WooCommerce PRO. Fixes VAT ID being displayed twice on the substep review text for billing and shipping.
