@@ -479,8 +479,11 @@
 		// Bail if element is invalid
 		if ( ! element ) { return; }
 
+		// Bail if element height property is empty, as it indicates that the element has already completed expanding
+		if ( element.style && '' === element.style.height ) { return; }
+
 		// Maybe bail when handling a transition event but not for the right property
-		if ( 'propertyName' in element && element.propertyName !== 'height' ) return;
+		if ( 'propertyName' in element && element.propertyName !== 'height' ) { return; }
 
 		// Get target element from property, usually passed in an event object
 		if ( 'target' in element && element.target ) {
@@ -717,7 +720,7 @@
 				finishExpand( manager.contentElement );
 			}
 
-			// Make sure to finish the "expand" state change after the duration of the height transition,
+			// Make sure to finish the "expand" state change after the expected duration of the height transition,
 			// so we don't need to rely completely on the browser's transitionend event.
 			setTimeout( function() {
 				finishExpand( manager.contentElement );
