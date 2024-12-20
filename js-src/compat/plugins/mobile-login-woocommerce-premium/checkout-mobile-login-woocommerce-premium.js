@@ -57,24 +57,6 @@
 		return phoneNumber;
 	}
 
-	/**
-	 * Get country code.
-	 */
-	var getCountryCode = function() {
-		var countryCode = '';
-		
-		// Get country code field
-		var countryCodeField = document.querySelector( _settings.countryCodeFieldSelector );
-
-		// Bail if country code is not set
-		if ( ! countryCodeField || ! countryCodeField.value ) { return countryCode; }
-
-		// Get country code and process it the same way as in the plugin
-		countryCode = countryCodeField.value.trim().toString();
-
-		return countryCode;
-	}
-
 
 
 	/**
@@ -89,13 +71,12 @@
 
 		// Get phone number and country code
 		var phoneNumber = getPhoneNumber();
-		var countryCode = getCountryCode();
 
 		// Get hidden field with verification status
 		var verificationStatusField = document.querySelector( _settings.verificationStatusFieldSelector );
 
 		// Maybe add or move verification status indicator as how it is done in the plugin
-		if ( countryCode && phoneNumber && verificationStatusField && verificationStatusField.value ) {
+		if ( phoneNumber && verificationStatusField && verificationStatusField.value ) {
 			inlineVerifyButton.innerHTML = _settings.strings.verified;
 			inlineVerifyButton.classList.add( _settings.verifiedClass );
 		} else {

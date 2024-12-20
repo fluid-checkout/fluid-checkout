@@ -7,10 +7,50 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 	/**
+	 * Class name for the plugin which this compatibility class is related to.
+	 */
+	public const CLASS_NAME = 'Xoo_Ml_Phone_Frontend';
+
+
+
+	/**
+	 * Class instance for the plugin which this compatibility class is related to.
+	 */
+	public $class_instance;
+
+	/**
+	 * Plugin settings array.
+	 */
+	public $plugin_settings;
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
+		$this->get_plugin_settings();
+
 		$this->hooks();
+	}
+
+
+
+	/**
+	 * Get plugin instance.
+	 */
+	public function get_plugin_settings() {
+		// Bail if plugin class or method is not available
+		if ( ! class_exists( self::CLASS_NAME ) || ! method_exists( self::CLASS_NAME, 'get_instance' ) ) { return; }
+
+		// Get plugin class instance
+		$this->class_instance = call_user_func( array( self::CLASS_NAME, 'get_instance' ) );
+
+		// Bail if plugin settings are not avaialble
+		if ( ! isset( $this->class_instance->settings ) ) { return; }
+
+		// Get plugin settings
+		$this->plugin_settings = $this->class_instance->settings;
 	}
 
 
@@ -19,15 +59,6 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Bail if plugin class or method is not available
-		if ( ! class_exists( 'Xoo_Ml_Phone_Frontend' ) || ! method_exists( 'Xoo_Ml_Phone_Frontend', 'get_instance' ) ) { return; }
-
-		// Get plugin class instance
-		$class_instance = Xoo_Ml_Phone_Frontend::get_instance();
-
-		// Bail if OTP field is not enabled for WooCommerce
-		if ( ! isset( $class_instance->settings[ 'wc-en-chk' ] ) || 'yes' !== $class_instance->settings[ 'wc-en-chk' ] ) { return; }
-
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
@@ -48,18 +79,6 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Add hidden fields fragment
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_hidden_fields_fragment' ), 10 );
-
-		// Register assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-
-		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
-		// JS settings object
-		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
-
-		// Checkout validation settings
-		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 	}
 
 	/**
@@ -81,6 +100,18 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Default plugin phone field args
 		add_filter( 'xoo_ml_phone_input_field_args', array( $this, 'change_default_plugin_phone_field_args' ), 10 );
+
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 	}
 
 
@@ -126,11 +157,8 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * Maybe add the plugin's phone field to the checkout page even if a user already verified phone number.
 	 */
 	public function maybe_add_plugin_phone_field_to_checkout() {
-		// Bail if plugin class or method is not available
-		if ( ! class_exists( 'Xoo_Ml_Phone_Frontend' ) || ! method_exists( 'Xoo_Ml_Phone_Frontend', 'get_instance' ) ) { return; }
-
-		// Get plugin class instance
-		$class_instance = Xoo_Ml_Phone_Frontend::get_instance();
+		// Bail if plugin class instance is not available
+		if ( ! $this->class_instance ) { return; }
 
 		// Get phone number from user meta
 		$user_phone_number = xoo_ml_get_user_phone( get_current_user_id(), 'number' );
@@ -139,8 +167,8 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		if ( ! $user_phone_number ) { return; }
 
 		// Add plugin's phone field to the checkout page
-		add_filter( 'woocommerce_form_field', array( $class_instance, 'wc_checkout_otp_field_html' ), 10, 4 );
-		add_filter( 'woocommerce_checkout_fields' , array( $class_instance, 'wc_checkout_add_otp_field' ), 9999 );
+		add_filter( 'woocommerce_form_field', array( $this->class_instance, 'wc_checkout_otp_field_html' ), 10, 4 );
+		add_filter( 'woocommerce_checkout_fields' , array( $this->class_instance, 'wc_checkout_add_otp_field' ), 9999 );
 	}
 
 
@@ -152,14 +180,8 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * @param   array  $forms  List of forms with phone input field.
 	 */
 	public function maybe_add_form_for_verified_users( $forms ) {
-		// Bail if plugin class or method is not available
-		if ( ! class_exists( 'Xoo_Ml_Phone_Frontend' ) || ! method_exists( 'Xoo_Ml_Phone_Frontend', 'get_instance' ) ) { return $forms; }
-
-		// Get plugin class instance
-		$class_instance = Xoo_Ml_Phone_Frontend::get_instance();
-
-		// Bail if plugin settings are not set
-		if ( ! isset( $class_instance->settings ) ) { return $forms; }
+		// Bail if plugin class instance or plugin settings are not available
+		if ( ! $this->class_instance || ! $this->plugin_settings ) { return; }
 
 		// Get phone number from user meta
 		$user_phone_number = xoo_ml_get_user_phone( get_current_user_id(), 'number' );
@@ -178,12 +200,55 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		$forms[] = array(
 			'key'         => 'woocommerce-process-checkout-nonce',
 			'value'       => '',
-			'form'        => 'register_user',
-			'required'    => 'required' === $class_instance->settings[ 'r-phone-field' ] ? 'yes' : 'no',
-			'cc_required' => 'yes' === $class_instance->settings[ 'r-enable-cc-field' ] ? 'yes' : 'no',
+			'form'        => is_user_logged_in() ? 'update_user' : 'register_user',
+			'required'    => 'required' === $this->plugin_settings[ 'r-phone-field' ] ? 'yes' : 'no',
+			'cc_required' => 'yes' === $this->plugin_settings[ 'r-enable-cc-field' ] ? 'yes' : 'no',
 		);
 
 		return $forms;
+	}
+
+
+
+	/**
+	 * Check if country code field is enabled.
+	 */
+	public function is_country_code_field_enabled() {
+		$is_enabled = false;
+
+		// Bail if plugin settings are not available
+		if ( ! $this->plugin_settings ) { return $is_enabled; }
+
+		// Check if country code field is enabled
+		if ( isset( $this->plugin_settings[ 'r-enable-cc-field' ] ) && 'yes' === $this->plugin_settings[ 'r-enable-cc-field' ] ) {
+			$is_enabled = true;
+		}
+
+		return $is_enabled;
+	}
+
+
+
+	/**
+	 * Get default country code.
+	 */
+	public function get_default_country_code() {
+		$country_code = '';
+
+		// Bail if plugin settings are not available
+		if ( ! $this->plugin_settings ) { return $country_code; }
+
+		// Bail required class and method are not available
+		if ( class_exists( 'Xoo_Ml_Geolocation' ) && method_exists( 'Xoo_Ml_Geolocation', 'get_phone_code' )) { return $country_code; }
+
+		// Maybe get default country code based on the plugin settings
+		if ( 'geolocation' === $this->plugin_settings[ 'r-enable-cc-field' ] ) {
+			$country_code = Xoo_Ml_Geolocation::get_phone_code();
+		} else {
+			$country_code = $this->plugin_settings[ 'r-default-country-code' ];
+		}
+
+		return $country_code;
 	}
 
 
@@ -194,7 +259,7 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * @param   string  $phone_number  Phone number to check.
 	 * @param   string  $country_code  Country code of the phone number.
 	 */
-	public function is_phone_number_verified( $phone_number, $country_code ) {
+	public function is_phone_number_verified( $phone_number, $country_code = '' ) {
 		$is_verified = false;
 
 		// Bail if plugin class or method is not available
@@ -203,8 +268,13 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Bail if plugin function is not available
 		if ( ! function_exists( 'xoo_ml_get_user_phone' ) ) { return $is_verified; }
 
-		// Bailf if phone number or country code is not set
-		if ( ! $phone_number || ! $country_code ) { return $is_verified; }
+		// Bail if phone number is not set
+		if ( ! $phone_number ) { return $is_verified; }
+
+		// Maybe get default country code
+		if ( ! $this->is_country_code_field_enabled() ) {
+			$country_code = $this->get_default_country_code();
+		}
 
 		if ( is_user_logged_in() ) {
 			$user_id = get_current_user_id();
@@ -306,9 +376,16 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 			}
 		}
 
-		// If phone number and country code are set, update the args
-		if ( $phone_number && $country_code ) {
+		// Maybe set default phone number
+		if ( $phone_number ) {
 			$new_args[ 'default_phone' ] = $phone_number;
+		}
+
+		// Set default country code
+		$new_args[ 'default_cc' ] = $this->get_default_country_code();
+
+		// Change default country code if the field is enabled and has a value
+		if ( $this->is_country_code_field_enabled() && $country_code ) {
 			$new_args[ 'default_cc' ] = $country_code;
 		}
 
@@ -378,7 +455,10 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Get entered phone number
 		$phone_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone' );
-		$country_code = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone-cc' );
+		$country_code = '';
+		if ( $this->is_country_code_field_enabled() ) {
+			$country_code = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone-cc' );
+		}
 
 		// Check if phone_number is verified
 		$is_verified = $this->is_phone_number_verified( $phone_number, $country_code );
