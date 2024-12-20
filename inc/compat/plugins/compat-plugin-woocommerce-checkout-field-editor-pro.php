@@ -124,6 +124,14 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		// Bail if Fluid Checkout enhanced select fields are not enabled
 		if ( ! FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) { return $value; }
 
+		// Maybe convert `$value` into an array
+		if ( ! is_array( $value ) ) {
+			$value = maybe_unserialize( $value );
+			if ( ! is_array( $value ) ) {
+				$value = array();
+			}
+		}
+
 		// Disable enhanced select2 fields option for Checkout Field Editor for WooCommerce
 		$value[ 'disable_select2_for_select_fields' ] = 'yes';
 
