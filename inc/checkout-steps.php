@@ -217,14 +217,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		// Unhook WooCommerce functions
-		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
-		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
-		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
-
 		// Place order position
 		$this->place_order_position_hooks();
 
@@ -237,6 +229,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
+		// Unhook WooCommerce functions
+		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
+		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
+
 		// Order notes
 		$this->order_notes_hooks();
 
