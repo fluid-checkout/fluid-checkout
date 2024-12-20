@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Prevent substep review text from being visible at the same time as the fields section.
 * Fixed: Add hooks for billing phone on contact step earlier to prevent compatibility issues with other plugins.
 * Fixed: Prevent horizontal scroll on IE, EDGE and Safari.
+* Fixed: Fix error when trying to remove phone number from address data in some cases.
 * Fixed: Fatal error when trying to change the translation file loaded for language variations on versions of WordPress prior to 6.6.0.
 
 = 4.0.0 - 2024-12-11 =
