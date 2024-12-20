@@ -367,6 +367,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Debloat by asadkn.
 * Fixed: Compatibility with theme Shoptimizer. Fix layout of the header when using some header variations from the theme, and restore the padlock icon on proceed to checkout and place order buttons.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. PHP warning when trying to output information for recurring shipping packages.
+* Fixed: Compatibility with plugin Germanized for WooCommerce. Remove duplicate place order button that appears briefly on the checkout page.
 * Fixed: Compatibility with plugin Germanized for WooCommerce PRO. Fixes VAT ID being displayed twice on the substep review text for billing and shipping.
 * Fixed: Issues with collapsible/expansible sections wrongly setting focus at initialization.
 * Fixed: Prevent substep review text from being visible at the same time as the fields section.
