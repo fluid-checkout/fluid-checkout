@@ -201,14 +201,31 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 			'key'         => 'woocommerce-process-checkout-nonce',
 			'value'       => '',
 			'form'        => is_user_logged_in() ? 'update_user' : 'register_user',
-			'required'    => 'required' === $this->plugin_settings[ 'r-phone-field' ] ? 'yes' : 'no',
-			'cc_required' => 'yes' === $this->plugin_settings[ 'r-enable-cc-field' ] ? 'yes' : 'no',
+			'required'    => $this->is_phone_field_required() ? 'yes' : 'no',
+			'cc_required' => $this->is_country_code_field_enabled() ? 'yes' : 'no',
 		);
 
 		return $forms;
 	}
 
 
+
+	/**
+	 * Check if plugin's phone field is required.
+	 */
+	public function is_phone_field_required() {
+		$is_required = false;
+
+		// Bail if plugin settings are not available
+		if ( ! $this->plugin_settings ) { return $is_required; }
+
+		// Check if phone field is required
+		if ( isset( $this->plugin_settings[ 'r-phone-field' ] ) && 'required' === $this->plugin_settings[ 'r-phone-field' ] ) {
+			$is_required = true;
+		}
+
+		return $is_required;
+	}
 
 	/**
 	 * Check if country code field is enabled.
@@ -239,10 +256,10 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		if ( ! $this->plugin_settings ) { return $country_code; }
 
 		// Bail required class and method are not available
-		if ( class_exists( 'Xoo_Ml_Geolocation' ) && method_exists( 'Xoo_Ml_Geolocation', 'get_phone_code' )) { return $country_code; }
+		if ( ! class_exists( 'Xoo_Ml_Geolocation' ) || ! method_exists( 'Xoo_Ml_Geolocation', 'get_phone_code' )) { return $country_code; }
 
 		// Maybe get default country code based on the plugin settings
-		if ( 'geolocation' === $this->plugin_settings[ 'r-enable-cc-field' ] ) {
+		if ( 'geolocation' === $this->plugin_settings[ 'r-default-country-code-type' ] ) {
 			$country_code = Xoo_Ml_Geolocation::get_phone_code();
 		} else {
 			$country_code = $this->plugin_settings[ 'r-default-country-code' ];
@@ -453,8 +470,13 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Bail if step is already incomplete
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
+		// Bail if phone field is not required
+		if ( ! $this->is_phone_field_required() ) { return $is_substep_complete; }
+
 		// Get entered phone number
 		$phone_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone' );
+
+		// Maybe get entered country code
 		$country_code = '';
 		if ( $this->is_country_code_field_enabled() ) {
 			$country_code = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'xoo-ml-reg-phone-cc' );
@@ -526,7 +548,11 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	public function maybe_enqueue_assets() {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-mobile-login-woocommerce-premium' );
-		wp_enqueue_script( 'fc-checkout-validation-mobile-login-woocommerce-premium' );
+
+		// Add validation script if phone field is required
+		if ( $this->is_phone_field_required() ) {
+			wp_enqueue_script( 'fc-checkout-validation-mobile-login-woocommerce-premium' );
+		}
 	}
 
 
