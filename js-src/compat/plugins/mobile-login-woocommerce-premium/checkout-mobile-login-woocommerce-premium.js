@@ -126,6 +126,10 @@
 		if ( e.target.matches( _settings.phoneFieldSelector ) ) {
 			triggerCheckoutUpdate();
 		}
+		// PHONE COUNTRY CODE FIELD
+		if ( e.target.matches( _settings.countryCodeFieldSelector ) ) {
+			triggerCheckoutUpdate();
+		}
 	}
 
 	/**
