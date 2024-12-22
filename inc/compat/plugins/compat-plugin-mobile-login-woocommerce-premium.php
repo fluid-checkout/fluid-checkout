@@ -511,6 +511,9 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_contact( $review_text_lines = array() ) {
+		// Bail if default billing field is not disabled in the plugin setttings
+		if ( isset( $this->plugin_settings['wc-chk-bphone'] ) && 'nothing' === $this->plugin_settings['wc-chk-bphone'] ) { return $review_text_lines; }
+
 		$phone_number_field_key = 'xoo-ml-reg-phone';
 		$country_code_field_key = 'xoo-ml-reg-phone-cc';
 
