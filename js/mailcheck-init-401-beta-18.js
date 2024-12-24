@@ -155,6 +155,9 @@
 		// Get the target field
 		_tempTarget = e.target;
 
+		// Bail if target field not found
+		if ( ! _tempTarget.matches( _settings.mailFieldSelector ) ) { return; }
+
 		// Run Mailcheck and handle suggestions
 		Mailcheck.run( {
 			email: _tempTarget.value,
