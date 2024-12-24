@@ -1973,7 +1973,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Look for a substep with the same id within the step and get the substep index.
 		$substep_index = false;
 		foreach ( $_substeps as $key => $substep_args ) {
-			if ( $substep_args[ 'step_id' ] == sanitize_title( $substep_id ) ) {
+			if ( $substep_args[ 'substep_id' ] == sanitize_title( $substep_id ) ) {
 				$substep_index = $key;
 				break;
 			}
