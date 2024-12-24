@@ -385,6 +385,25 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
   min-height: auto;
 }
 
+body.has-form-field-font-size-fix textarea,
+body.has-form-field-font-size-fix select,
+body.has-form-field-font-size-fix input[type=button],
+body.has-form-field-font-size-fix input[type=color],
+body.has-form-field-font-size-fix input[type=date],
+body.has-form-field-font-size-fix input[type=datetime-local],
+body.has-form-field-font-size-fix input[type=email],
+body.has-form-field-font-size-fix input[type=month],
+body.has-form-field-font-size-fix input[type=number],
+body.has-form-field-font-size-fix input[type=password],
+body.has-form-field-font-size-fix input[type=search],
+body.has-form-field-font-size-fix input[type=tel],
+body.has-form-field-font-size-fix input[type=text],
+body.has-form-field-font-size-fix input[type=time],
+body.has-form-field-font-size-fix input[type=url],
+body.has-form-field-font-size-fix input[type=week] {
+  font-size: 16px;
+}
+
 div.woocommerce .fc-expansible-form-section {
   background-color: transparent;
   box-shadow: none;

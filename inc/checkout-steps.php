@@ -694,6 +694,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-highlighted-order-totals';
 		}
 
+		// Add extra class to enable form fields font-size styles
+		if ( true === apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_fix_zoom_in_form_fields_mobile_devices' ) ) ) ) {
+			$add_classes[] = 'has-form-field-font-size-fix';
+		}
+
 		return array_merge( $classes, $add_classes );
 	}
 
