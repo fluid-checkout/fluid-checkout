@@ -51,7 +51,7 @@ class FluidCheckout_AccountEditAddress extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on account address edit page
-		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return; }
+		if ( is_admin() || ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return $classes; }
 
 		// Initialize variables
 		$add_classes = array();
