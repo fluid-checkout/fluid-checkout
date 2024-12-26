@@ -1836,12 +1836,12 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
 }
 
 .fc-wrapper .fc-checkout-order-review {
-  display: block;
   margin: 0;
   padding: 0;
 }
 @media (min-width: 1000px) {
   .fc-wrapper .fc-checkout-order-review {
+    display: block;
     margin: 0;
     padding: 0;
   }

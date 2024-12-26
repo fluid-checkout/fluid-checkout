@@ -318,6 +318,10 @@ body.has-flyout--open {
     transform: translate3d(10%, 0, 0);
   }
 }
+[data-flyout] {
+  display: none;
+}
+
 [data-flyout-content] {
   display: none;
   max-width: 100%;

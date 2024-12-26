@@ -4,11 +4,11 @@
 // ORDER SUMMARY
 // ------------------------------------
 .fc-wrapper .fc-checkout-order-review {
-	display: block;
 	margin: $order-summary-container-margin;
 	padding: $order-summary-container-padding;
 
 	@media (#{$bp-larger-than-desktop}) {
+		display: block;
 		margin: $order-summary-container-margin--large-screen;
 		padding: $order-summary-container-padding--large-screen;
 	}

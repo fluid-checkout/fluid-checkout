@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Germanized for WooCommerce PRO. Fixes VAT ID being displayed twice on the substep review text for billing and shipping.
 * Fixed: Issues with collapsible/expansible sections wrongly setting focus at initialization.
 * Fixed: Prevent substep review text from being visible at the same time as the fields section.
+* Fixed: Prevent order summary from being visible on mobile view at first while still loading the checkout page.
 * Fixed: Add hooks for billing phone on contact step earlier to prevent compatibility issues with other plugins.
 * Fixed: Prevent horizontal scroll on IE, EDGE and Safari.
 * Fixed: Make sure Mailcheck typo checks is run only on targeted email fields.

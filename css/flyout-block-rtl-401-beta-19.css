@@ -73,6 +73,10 @@ body.has-flyout--open {
   }
 }
 
+[data-flyout] {
+  display: none;
+}
+
 [data-flyout-content] {
   display: none;
   max-width: 100%;
