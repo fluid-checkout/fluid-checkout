@@ -378,6 +378,9 @@ class FluidCheckout {
 
 			// Cart features
 			'FluidCheckout_CartShippingCalculator'         => array( 'file' => self::$directory_path . 'inc/cart-shipping-calculator.php' ),
+
+			// Edit address features
+			'FluidCheckout_AccountEditAddress'             => array( 'file' => self::$directory_path . 'inc/account-edit-address.php' ),
 		);
 	}
 
