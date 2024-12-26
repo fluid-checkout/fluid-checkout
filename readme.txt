@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin Debloat by asadkn.
 * Added: Option to set form fields font size to 16px and avoid automatic zoom in issue on some mobile browsers.
+* Improved: Use template file from checkout page to display available payment methods on the account add payment method page.
 * Fixed: Compatibility with theme Shoptimizer. Fix layout of the header when using some header variations from the theme, and restore the padlock icon on proceed to checkout and place order buttons.
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. PHP warning when trying to output information for recurring shipping packages.
 * Fixed: Compatibility with plugin Germanized for WooCommerce. Remove duplicate place order button that appears briefly on the checkout page.
