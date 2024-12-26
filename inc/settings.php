@@ -122,7 +122,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_debug_mode'                                                 => 'no',
 			'fc_load_unminified_assets'                                     => 'no',
 			'fc_use_enhanced_select_components'                             => 'no',
-			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'no',
+			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,
