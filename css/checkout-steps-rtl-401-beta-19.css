@@ -1903,7 +1903,7 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review-
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
   display: table;
   margin: 0 -20px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   padding: 0;
   width: calc(100% + 40px);
   max-width: calc(100% + 40px);
@@ -1916,7 +1916,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 @media (min-width: 1000px) {
   div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
     margin: 0 -20px -1px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     width: calc(100% + 40px);
     font-size: 15px;
   }

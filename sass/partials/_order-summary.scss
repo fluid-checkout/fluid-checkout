@@ -73,7 +73,7 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-checkout-order-rev
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
 	display: table;
 	margin: $order-summary-table-margin;
-	margin-bottom: 0px; // Needs to set to 0px to avoid issue with element overlapping with enclosing element's borders.
+	margin-bottom: 0; // Needs to set to 0px to avoid issue with element overlapping with enclosing element's borders.
 	padding: 0;
 	width: $order-summary-table-width;
 	max-width: $order-summary-table-width;
@@ -85,7 +85,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 	@media (#{$bp-larger-than-desktop}) {
 		margin: $order-summary-table-margin--large-screen;
-		margin-bottom: 0px; // Needs to set to 0px to avoid issue with element overlapping with enclosing element's borders.
+		margin-bottom: 0; // Needs to set to 0px to avoid issue with element overlapping with enclosing element's borders.
 		width: $order-summary-table-width--large-screen;
 		font-size: $order-summary-font-size--large-screen;
 	}
