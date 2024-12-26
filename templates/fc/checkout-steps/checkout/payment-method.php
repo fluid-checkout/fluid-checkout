@@ -37,7 +37,6 @@ $icon_html_from_output_buffer = ob_get_clean();
 if ( ( null !== $icon_html_from_output_buffer && ! empty( $icon_html_from_output_buffer ) ) || ( null !== $icon_html && ! empty( trim( $icon_html ) ) ) ) {
 	$extra_classes[] = 'has-icon';
 }
-
 ?>
 <?php // CHANGE: Output extra classes to the payment method list item. ?>
 <li class="wc_payment_method payment_method_<?php echo esc_attr( $gateway->id ); ?> <?php echo esc_attr( implode( ' ', $extra_classes ) ); ?>">
