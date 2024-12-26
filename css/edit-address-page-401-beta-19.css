@@ -385,22 +385,24 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
   min-height: auto;
 }
 
-body.woocommerce-edit-address.has-form-field-font-size-fix textarea,
-body.woocommerce-edit-address.has-form-field-font-size-fix select,
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=color],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=date],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=datetime-local],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=email],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=month],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=number],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=password],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=search],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=tel],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=text],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=time],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=url],
-body.woocommerce-edit-address.has-form-field-font-size-fix input[type=week] {
-  font-size: 16px !important;
+@media (max-width: 999px) {
+  body.woocommerce-edit-address.has-form-field-font-size-fix textarea,
+  body.woocommerce-edit-address.has-form-field-font-size-fix select,
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=color],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=date],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=datetime-local],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=email],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=month],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=number],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=password],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=search],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=tel],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=text],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=time],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=url],
+  body.woocommerce-edit-address.has-form-field-font-size-fix input[type=week] {
+    font-size: 16px !important;
+  }
 }
 
 div.woocommerce .fc-expansible-form-section {
