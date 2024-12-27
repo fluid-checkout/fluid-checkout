@@ -135,6 +135,9 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Review text lines
 		add_filter( 'fc_substep_text_contact_field_keys_skip_list', array( $this, 'maybe_remove_phone_number_from_text_lines' ), 10 );
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
+
+		// Review text lines on the order pay page
+		add_filter( 'fc_pro_order_pay_substep_contact_text_lines', array( $this, 'maybe_add_phone_field_to_review_text_lines_contact' ), 20, 2 );
 	}
 
 	/*
@@ -512,7 +515,7 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_contact( $review_text_lines = array() ) {
 		// Bail if default billing field is not disabled in the plugin setttings
-		if ( isset( $this->plugin_settings['wc-chk-bphone'] ) && 'nothing' === $this->plugin_settings['wc-chk-bphone'] ) { return $review_text_lines; }
+		if ( isset( $this->plugin_settings[ 'wc-chk-bphone' ] ) && 'nothing' === $this->plugin_settings[ 'wc-chk-bphone' ] ) { return $review_text_lines; }
 
 		$phone_number_field_key = 'xoo-ml-reg-phone';
 		$country_code_field_key = 'xoo-ml-reg-phone-cc';
@@ -526,6 +529,31 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Add phone number with country code to the review text
 		$review_text_lines[] = $country_code . $phone_number;
+
+		return $review_text_lines;
+	}
+
+
+
+	/**
+	 * Myabe add plugin's phone field value to the contact substep review text lines.
+	 * 
+	 * @param   array     $review_text_lines   The list of lines to show in the substep review text.
+	 * @param   WC_Order  $order               The order object.
+	 */
+	public function maybe_add_phone_field_to_review_text_lines_contact( $review_text_lines, $order ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Bail if default billing field is not replaced by the plugin field
+		if ( ! isset( $this->plugin_settings[ 'wc-chk-bphone' ] ) || ! 'disable_merge' === $this->plugin_settings[ 'wc-chk-bphone' ] ) { return $review_text_lines; }
+
+		// Get the default billing phone key since the plugin replaces it after order is created
+		$field_key = 'billing_phone';
+
+		// Add field value to the review text
+		$field_value = FluidCheckout_PRO_OrderPayPage::instance()->get_order_data( $field_key, $order );
+		$review_text_lines[] = FluidCheckout_Steps::instance()->get_field_display_value( $field_value, $field_key, array() );
 
 		return $review_text_lines;
 	}
