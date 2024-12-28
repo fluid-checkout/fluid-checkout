@@ -29,6 +29,9 @@ class FluidCheckout_ThemeCompat_Loobek extends FluidCheckout {
 		// Quantity buttons
 		remove_action( 'woocommerce_before_quantity_input_field', 'loobek_before_quantity_input_field', 1 );
 		remove_action( 'woocommerce_before_quantity_input_field', 'loobek_after_quantity_input_field', 99 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -53,6 +56,31 @@ class FluidCheckout_ThemeCompat_Loobek extends FluidCheckout {
 		$attributes['data-sticky-relative-to'] = '.ts-header.is-sticky';
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '45.14px',
+				'--fluidcheckout--field--padding-left' => '20px',
+				'--fluidcheckout--field--font-size' => 'var(--loobek-main-font-size)',
+				'--fluidcheckout--field--text-color--accent' => 'var(--loobek-primary-color)',
+				'--fluidcheckout--field--border-color' => 'var(--loobek-input-border-color, #000)',
+				'--fluidcheckout--field--border-width' => '1px',
+				'--fluidcheckout--field--background-color--accent' => 'rgba(153,153,153,0.1)',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
