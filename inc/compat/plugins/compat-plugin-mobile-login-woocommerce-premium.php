@@ -112,6 +112,10 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+
+		// Change plugin's scripts hook priority
+		remove_action( 'wp_enqueue_scripts' , array( $this->class_instance, 'enqueue_scripts' ), 0 );
+		add_action( 'wp_enqueue_scripts' , array( $this->class_instance, 'enqueue_scripts' ), 6 );
 	}
 
 
@@ -564,6 +568,9 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Plugin's phone field script
+		wp_register_script( 'xoo-ml-phone-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/xoo-ml-phone-js' ), array( 'jquery' ), NULL );
+
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-mobile-login-woocommerce-premium', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/checkout-mobile-login-woocommerce-premium' ), array( 'jquery', 'fc-utils' ), NULL, true );
 		wp_add_inline_script( 'fc-checkout-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutMobileLoginWoocommercePremium.init(fcSettings.checkoutMobileLoginWoocommercePremium);})' );
