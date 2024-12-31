@@ -50,6 +50,7 @@ class FluidCheckout_ThemeCompat_Loobek extends FluidCheckout {
 		// Bail if theme functions isn't available
 		if ( ! function_exists( 'loobek_get_theme_options' ) || ! function_exists( 'loobek_get_theme_options' ) ) { return $attributes; }
 
+		// Get option from theme
 		$is_sticky = loobek_get_theme_options( 'ts_enable_sticky_header' );
 
 		// Bail if theme's conditions for sticky header are not met
