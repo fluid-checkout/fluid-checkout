@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout {
+	padding-top: 0;
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .woocommerce-billing-fields {
+	overflow: visible;
+}

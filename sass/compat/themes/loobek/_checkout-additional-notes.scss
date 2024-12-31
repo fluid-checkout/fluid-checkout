@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT ADDITIONAL NOTES
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .woocommerce-additional-fields {
+	margin-top: 0;
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .woocommerce-additional-fields #order_comments_field {
+	padding-top: 0;
+}

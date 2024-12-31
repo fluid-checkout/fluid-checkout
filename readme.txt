@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Loobek.
 * Added: Compatibility with plugin Debloat by asadkn.
 * Added: Option to set form fields font size to 16px and avoid automatic zoom in issue on some mobile browsers.
 * Added: Option to only show allowed countries for shipping or billing for the International Phone Number feature (PRO).
