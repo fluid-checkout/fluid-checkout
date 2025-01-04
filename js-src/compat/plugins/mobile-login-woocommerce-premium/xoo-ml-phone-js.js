@@ -448,13 +448,8 @@ jQuery(document).ready(function($){
 
 			var _thisObj = event.data._thisObj;
 
-			if(  ( _thisObj.formType === 'update_user' && _thisObj.initialPhone === _thisObj.getPhoneNumber() ) || ( _thisObj.verifiedPHone && _thisObj.verifiedPHone === _thisObj.getPhoneNumber() ) ){
-				_thisObj.$inlineVerifyBtn.html( xoo_ml_phone_localize.strings.verified ).addClass('verified').show();
-				_thisObj.verifiedPHone = _thisObj.getPhoneNumber();
-			}
-			else{
-				_thisObj.$inlineVerifyBtn.html( xoo_ml_phone_localize.strings.verify ).removeClass('verified').show();
-			}
+ 			// CHANGE: remove default verification status icon update (replaced with custom logic in checkout-mobile-login-woocommerce-premium.js)
+
 			_thisObj.otpFormHandler.$otpForm.hide();
 			_thisObj.$noticeCont.hide();
 		}
@@ -658,6 +653,9 @@ jQuery(document).ready(function($){
 
 		formSubmit( event ){
 
+			// CHANGE: Add bail statement to prevent OTP from being sent on checkout form submit
+			if ( event.target.matches( 'form.checkout' ) ) { return; }
+
 			var _thisObj = event.data._thisObj;
 
 			_thisObj.$noticeCont.hide();
@@ -675,8 +673,8 @@ jQuery(document).ready(function($){
 			event.preventDefault();
 	 		event.stopImmediatePropagation();
 
-	 		$(window).scrollTop( _thisObj.$phoneInput.offset().top - 200 );
-
+			//CHANGE: Remove scroll to top
+			
 	 		if( !_thisObj.fieldsValidation() ) return;
 
 	 		//If requested for changing phone number & same number is not put again.
@@ -727,17 +725,28 @@ jQuery(document).ready(function($){
 		}
 	}
 
-	$('input[name="xoo-ml-reg-phone"]').each( function( key, form ){
+	// CHANGE: Transform phone field initialization into a function
+	var initPhoneField = function() {
+		$('input[name="xoo-ml-reg-phone"]').each( function( key, form ){
 
-		var $formType = $(this).parents('form').find('input[name="xoo-ml-form-type"]');
+			var $formType = $(this).parents('form').find('input[name="xoo-ml-form-type"]');
+			// CHANGE: Add new variable
+			var $formInput = $(this).parents('form').find('.xoo-ml-inline-verify');
 
-		if( $formType.length && $formType.val() !== 'login_with_otp' ){
+			// CHANGE: Add additional condition to check if the form already has the verification indicator
+			if( ! $formInput.length && $formType.length && $formType.val() !== 'login_with_otp' ){
 
-			new RegisterPhoneFormHandler( $(this).closest('form') );
-		}
+				new RegisterPhoneFormHandler( $(this).closest('form') );
+			}
+	
+		} );
+	}
 
-	} );
-
+	// CHANGE: Add phone field initialization on checkout update event
+	initPhoneField();
+	$( document.body ).on( 'updated_checkout', function() {
+		initPhoneField();
+	});
 
 	class LoginPhoneFormHandler extends PhoneFormHandler{
 
@@ -1387,10 +1396,19 @@ jQuery(document).ready(function($){
 
 		};
 
-		
-		$('select.xoo-ml-phone-cc, select.xoo-aff-phone_code').each(function( key, el ){
-			$(el).select2({ templateResult: formatState, templateSelection: formatState });
+		// CHANGE: Transform 'Select2' field initialization into a function
+		var initSelect2Fields = function() {
+			$('select.xoo-ml-phone-cc, select.xoo-aff-phone_code').each(function( key, el ){
+				$(el).select2({ templateResult: formatState, templateSelection: formatState });
+			});
+		}
+
+		// CHANGE: Add 'Select2' field initialization on checkout update event
+		initSelect2Fields();
+		$( document.body ).on( 'updated_checkout', function() {
+			initSelect2Fields();
 		});
+
 	}
 
 	$('.xoo-ml-inline-otp-cont').on('xoo_ml_on_otp_success', function( event, response ){
