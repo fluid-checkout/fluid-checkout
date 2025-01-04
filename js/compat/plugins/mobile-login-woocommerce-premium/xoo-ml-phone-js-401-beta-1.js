@@ -1399,6 +1399,9 @@ jQuery(document).ready(function($){
 		// CHANGE: Transform 'Select2' field initialization into a function
 		var initSelect2Fields = function() {
 			$('select.xoo-ml-phone-cc, select.xoo-aff-phone_code').each(function( key, el ){
+				// CHANGE: Add bail statement to prevent reinitialization of 'Select2' fields
+				if ( $(el).hasClass( 'select2-hidden-accessible' ) ) { return; }
+
 				$(el).select2({ templateResult: formatState, templateSelection: formatState });
 			});
 		}
