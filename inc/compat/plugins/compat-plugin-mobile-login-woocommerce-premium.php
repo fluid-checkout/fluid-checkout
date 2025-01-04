@@ -138,7 +138,7 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Review text lines
 		add_filter( 'fc_substep_text_contact_field_keys_skip_list', array( $this, 'maybe_remove_phone_number_from_text_lines' ), 10 );
-		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
+		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines' ), 10 );
 
 		// Review text lines on the order pay page
 		add_filter( 'fc_pro_order_pay_substep_contact_text_lines', array( $this, 'maybe_add_phone_field_to_review_text_lines_contact' ), 20, 2 );
@@ -154,8 +154,15 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		// Add hidden fields
 		add_action( 'woocommerce_checkout_billing', array( $this, 'output_custom_hidden_fields' ), 10 );
 
+		// Review text lines
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'maybe_remove_phone_number_from_text_lines' ), 10 );
+		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines' ), 10 );
+
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete' ), 10 );
+
+		// Review text lines on the order pay page
+		add_filter( 'fc_pro_order_pay_substep_billing_address_text_lines', array( $this, 'maybe_add_phone_field_to_review_text_lines_contact' ), 20, 2 );
 	}
 
 
@@ -517,8 +524,8 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 	 * 
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
-	public function add_substep_text_lines_contact( $review_text_lines = array() ) {
-		// Bail if default billing field is not disabled in the plugin setttings
+	public function add_substep_text_lines( $review_text_lines = array() ) {
+		// Bail if default billing field is not disabled in the plugin setttings to avoid phone number duplication
 		if ( isset( $this->plugin_settings[ 'wc-chk-bphone' ] ) && 'nothing' === $this->plugin_settings[ 'wc-chk-bphone' ] ) { return $review_text_lines; }
 
 		$phone_number_field_key = 'xoo-ml-reg-phone';
@@ -540,12 +547,12 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 
 	/**
-	 * Myabe add plugin's phone field value to the contact substep review text lines.
+	 * Myabe add plugin's phone field value to the substep review text lines.
 	 * 
 	 * @param   array     $review_text_lines   The list of lines to show in the substep review text.
 	 * @param   WC_Order  $order               The order object.
 	 */
-	public function maybe_add_phone_field_to_review_text_lines_contact( $review_text_lines, $order ) {
+	public function maybe_add_phone_field_to_review_text_lines( $review_text_lines, $order ) {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
