@@ -141,7 +141,7 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines' ), 10 );
 
 		// Review text lines on the order pay page
-		add_filter( 'fc_pro_order_pay_substep_contact_text_lines', array( $this, 'maybe_add_phone_field_to_review_text_lines_contact' ), 20, 2 );
+		add_filter( 'fc_pro_order_pay_substep_contact_text_lines', array( $this, 'maybe_add_phone_field_to_review_text_lines' ), 20, 2 );
 	}
 
 	/*
@@ -162,7 +162,7 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete' ), 10 );
 
 		// Review text lines on the order pay page
-		add_filter( 'fc_pro_order_pay_substep_billing_address_text_lines', array( $this, 'maybe_add_phone_field_to_review_text_lines_contact' ), 20, 2 );
+		add_filter( 'fc_pro_order_pay_substep_billing_address_text_lines', array( $this, 'maybe_add_phone_field_to_review_text_lines' ), 20, 2 );
 	}
 
 
