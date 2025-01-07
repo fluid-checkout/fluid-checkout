@@ -44,6 +44,12 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 		// Quantity controls
 		remove_action( 'woocommerce_before_quantity_input_field', array( $general_class_object, 'quantity_icon_decrease' ), 10 );
 		remove_action( 'woocommerce_after_quantity_input_field', array( $general_class_object, 'quantity_icon_increase' ), 10 );
+
+		// Theme elements before checkout form
+		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'before_login_form' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'login_form' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'coupon_form' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'after_login_form' ), 10 );
 	}
 
 }
