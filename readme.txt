@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 9.5.1
 * Added: Compatibility with theme Loobek.
 * Added: Compatibility with plugin Debloat by asadkn.
 * Added: Compatibility with plugin OTP Login/Signup Woocommerce Premium.
