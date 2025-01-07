@@ -26,17 +26,24 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Bail if class method is not available
-		if ( ! method_exists( self::CLASS_NAME, 'instance' ) ) { return $is_verified; }
+		$general_class_name = 'Motta\WooCommerce\General';
 
-		// Get class object
+		// Bail if class methods are not available
+		if ( ! method_exists( self::CLASS_NAME, 'instance' ) || ! method_exists( $general_class_name, 'instance' ) ) { return $is_verified; }
+
+		// Get class objects
 		$class_object = call_user_func( array( self::CLASS_NAME, 'instance' ) );
+		$general_class_object = call_user_func( array( $general_class_name, 'instance' ) );
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// Product thumbnails
 		remove_filter( 'woocommerce_cart_item_name', array( $class_object, 'review_product_name_html' ), 10, 3);
+
+		// Quantity controls
+		remove_action( 'woocommerce_before_quantity_input_field', array( $general_class_object, 'quantity_icon_decrease' ), 10 );
+		remove_action( 'woocommerce_after_quantity_input_field', array( $general_class_object, 'quantity_icon_increase' ), 10 );
 	}
 
 }
