@@ -10,7 +10,7 @@ class FluidCheckout_WooCommerceGermanizedPRO extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
-		// $this->hooks();
+		$this->hooks();
 	}
 
 

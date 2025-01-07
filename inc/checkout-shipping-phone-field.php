@@ -55,7 +55,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 			add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_change_shipping_phone_field_args_for_contact' ), 10 );
 
 			// Remove phone field from shipping address data
-			add_filter( 'fc_shipping_substep_text_address_data', array( FluidCheckout_Steps::instance(), 'remove_phone_address_data' ), 10 );
+			add_filter( 'fc_shipping_substep_text_address_data', array( FluidCheckout_Steps::instance(), 'maybe_remove_phone_address_data' ), 10 );
 		}
 	}
 

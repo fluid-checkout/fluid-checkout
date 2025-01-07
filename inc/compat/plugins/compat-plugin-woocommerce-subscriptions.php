@@ -544,13 +544,14 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	 * @param  object  $recurring_cart  The recurring cart object.
 	 */
 	public function get_packages_review_text_lines( $recurring_cart ) {
+		// Initialize variables
+		$package_review_text_lines = array();
+
 		// Determine allowed kses attributes and tags
 		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array(), 'br' => array() );
 
 		// Iterate over each shipping package in the recurring cart
 		foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
-			$package_review_text_lines = array();
-
 			// Get the chosen shipping method for the recurring cart package
 			$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package );
 			$available_methods = $package['rates'];

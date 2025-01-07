@@ -254,6 +254,9 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 .fc-wrapper [data-step-complete] .fc-step__substep-text {
 	display: block;
 }
+.fc-wrapper .fc-step__substep-fields.is-expanded:not( .is-transitioning ) + .fc-step__substep-text {
+	display: none;
+}
 
 .fc-wrapper .fc-step__substep-text-content.is-loading {
 	min-height: $global-spacing-medium;
