@@ -159,6 +159,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
+		// Billing phone
+		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
+		add_filter( 'fc_billing_substep_text_address_data', array( $this, 'maybe_remove_phone_address_data' ), 10 );
+
 		// Payment
 		add_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'change_payment_gateway_icon_html_remove_links' ), 10, 2 );
@@ -212,14 +217,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		// Unhook WooCommerce functions
-		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
-		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
-		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
-		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
-
 		// Place order position
 		$this->place_order_position_hooks();
 
@@ -232,22 +229,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
+		// Unhook WooCommerce functions
+		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
+		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
+
 		// Order notes
 		$this->order_notes_hooks();
 
 		// Persisted data
 		$this->customer_address_data_hooks();
-
-		// Billing phone
-		// Maybe move billing phone to contact step
-		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
-			// Add billing phone to contact fields
-			add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
-			add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
-
-			// Remove phone field from billing address data
-			add_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
-		}
 	}
 
 	/**
@@ -484,14 +478,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
 		// Billing phone
-		// Maybe move billing phone to contact step
-		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) {
-			// Add billing phone to contact fields
-			remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
-
-			// Remove phone field from billing address data
-			remove_filter( 'fc_billing_substep_text_address_data', array( $this, 'remove_phone_address_data' ), 10 );
-		}
+		remove_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_billing_phone_field_to_contact_fields' ), 10 );
+		remove_filter( 'woocommerce_billing_fields', array( $this, 'maybe_change_billing_phone_field_args_for_contact' ), 10 );
+		remove_filter( 'fc_billing_substep_text_address_data', array( $this, 'maybe_remove_phone_address_data' ), 10 );
 
 		// Payment
 		remove_action( 'fc_checkout_payment', 'woocommerce_checkout_payment', 20 );
@@ -703,6 +692,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add extra class to highlight the order totals row in the order summary table
 		if ( true === apply_filters( 'fc_show_order_totals_row_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_order_totals_row_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-order-totals';
+		}
+
+		// Add extra class to enable form fields font-size styles
+		if ( true === apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_fix_zoom_in_form_fields_mobile_devices' ) ) ) ) {
+			$add_classes[] = 'has-form-field-font-size-fix';
 		}
 
 		return array_merge( $classes, $add_classes );
@@ -1984,7 +1978,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Look for a substep with the same id within the step and get the substep index.
 		$substep_index = false;
 		foreach ( $_substeps as $key => $substep_args ) {
-			if ( $substep_args[ 'step_id' ] == sanitize_title( $substep_id ) ) {
+			if ( $substep_args[ 'substep_id' ] == sanitize_title( $substep_id ) ) {
 				$substep_index = $key;
 				break;
 			}
@@ -5660,7 +5654,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $display_fields  List of fields to display on the contact step.
 	 */
 	public function add_billing_phone_field_to_contact_fields( $display_fields ) {
+		// Bail if billing phone not set to contact step
+		if ( 'contact' !== FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) { return $display_fields; }
+
+		// Add billing phone field
 		$display_fields[] = 'billing_phone';
+
 		return $display_fields;
 	}
 
@@ -5685,15 +5684,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return $fields;
 	}
 
-
-
 	/**
 	 * Remove phone from address data.
 	 *
 	 * @param   array  $html  HTML for the substep text.
 	 */
-	public function remove_phone_address_data( $address_data ) {
+	public function maybe_remove_phone_address_data( $address_data ) {
+		// Define variables
+		$field_key = 'billing_phone';
+
+		// Bail if field is not set to be displayed on the contact step
+		if ( ! in_array( $field_key, FluidCheckout_Steps::instance()->get_contact_step_display_field_ids() ) ) { return $address_data; }
+
+		// Remove phone from address data
 		unset( $address_data[ 'phone' ] );
+
 		return $address_data;
 	}
 

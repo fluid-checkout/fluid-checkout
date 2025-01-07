@@ -179,11 +179,10 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function unregister_substep() {
 		// Get variables for the substep
-		$step_id = $this->get_substep_step_id();
 		$substep_id = 'coupon_codes';
 
 		// Unregister substep
-		FluidCheckout_Steps::instance()->unregister_checkout_substep( $step_id, $substep_id );
+		FluidCheckout_Steps::instance()->unregister_checkout_substep( $substep_id );
 
 		// Auxiliary sections
 		remove_action( 'fc_before_substep_coupon_codes', array( $this, 'output_substep_coupon_codes_auxiliary_sections' ), 10, 2 );

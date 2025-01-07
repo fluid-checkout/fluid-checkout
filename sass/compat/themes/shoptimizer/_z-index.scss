@@ -13,10 +13,6 @@ body#{ $_body-theme-selector } .site-header {
 	z-index: z( 'header-element' )
 }
 
-body#{ $_body-theme-selector } .col-full-nav {
-	z-index: z( 'header-element' );
-}
-
 
 
 body#{ $_body-theme-selector } .main-navigation ul.menu > li.menu-item-has-children > .sub-menu-wrapper {

@@ -79,6 +79,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_international_phone_fields'                      => 'no',
 			'fc_pro_enable_international_phone_validation'                  => 'no',
 			'fc_pro_enable_international_phone_country_code'                => 'yes',
+			'fc_pro_enable_international_phone_country_list_filter'         => 'yes',
 			'fc_pro_international_phone_fields_placeholder'                 => 'off',
 			'woocommerce_enable_order_comments'                             => 'yes',
 			'fc_enable_checkout_gift_options'                               => 'no',
@@ -122,6 +123,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_debug_mode'                                                 => 'no',
 			'fc_load_unminified_assets'                                     => 'no',
 			'fc_use_enhanced_select_components'                             => 'no',
+			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,

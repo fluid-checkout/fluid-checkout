@@ -18,6 +18,16 @@
 
 
 
+// Maybe hide collapsed content
+.fc-wrapper [data-collapsible].is-activated.is-transitioning > .collapsible-content__inner {
+	display: block;
+}
+.fc-wrapper [data-collapsible].is-collapsed:not( .is-transitioning ) > .collapsible-content__inner {
+	display: none;
+}
+
+
+
 // Temporarily hide collapsible block contents while the collapsible-block script is not yet loaded
 body:not( .has-collapsible-block ) .fc-wrapper [data-collapsible].is-collapsed > .collapsible-content__inner {
 	display: none;

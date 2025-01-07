@@ -13,7 +13,7 @@
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
  * @version 7.0.1
- * @fc-version 2.2.2
+ * @fc-version 4.0.1
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -36,20 +36,8 @@ if ( $available_gateways ) : ?>
 				}
 
 				foreach ( $available_gateways as $gateway ) {
-					?>
-					<?php // CHANGE: Add class `wc_payment_method` ?>
-					<li class="wc_payment_method woocommerce-PaymentMethod woocommerce-PaymentMethod--<?php echo esc_attr( $gateway->id ); ?> payment_method_<?php echo esc_attr( $gateway->id ); ?>">
-						<input id="payment_method_<?php echo esc_attr( $gateway->id ); ?>" type="radio" class="input-radio" name="payment_method" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?> />
-						<label for="payment_method_<?php echo esc_attr( $gateway->id ); ?>"><?php echo wp_kses_post( $gateway->get_title() ); ?> <?php echo wp_kses_post( $gateway->get_icon() ); ?></label>
-						<?php
-						if ( $gateway->has_fields() || $gateway->get_description() ) {
-							echo '<div class="woocommerce-PaymentBox woocommerce-PaymentBox--' . esc_attr( $gateway->id ) . ' payment_box payment_method_' . esc_attr( $gateway->id ) . '" style="display: none;">';
-							$gateway->payment_fields();
-							echo '</div>';
-						}
-						?>
-					</li>
-					<?php
+					// CHANGE: Use template file from checkout to display payment method.
+					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 				}
 				?>
 			</ul>

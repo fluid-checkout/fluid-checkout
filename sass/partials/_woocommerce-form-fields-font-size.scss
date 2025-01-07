@@ -1,0 +1,24 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS FONT SIZE
+// ------------------------------------
+body#{$_body-page-selector}.has-form-field-font-size-fix {
+	textarea,
+	select,
+	input[type="color"],
+	input[type="date"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="password"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="text"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"] {
+		@media (#{$bp-smaller-than-desktop}) {
+			font-size: remsize( 1.6rem ) !important; // Needed to override theme styles
+		}
+	}
+}

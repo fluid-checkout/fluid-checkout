@@ -87,7 +87,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Design template', 'fluid-checkout' ),
-						'desc'              => __( 'General styles for the checkout steps, order summary and other sections. Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'General styles for the checkout steps, order summary and other sections. Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' <br>' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_design_template',
 						'type'              => 'fc_template_selector',
 						'options'           => FluidCheckout_DesignTemplates::instance()->get_design_template_options(),
@@ -653,11 +653,23 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'disabled'          => true,
 					),
 					array(
+						'desc'              => __( 'Only show allowed countries for shipping or billing', 'fluid-checkout' ),
+						'desc_tip'          => __( 'When enabled, only the countries allowed for shipping will be available in the shipping phone field, and only countries allowed for billing will be available for the billing phone field.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_enable_international_phone_country_list_filter',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_list_filter' ),
+						'checkboxgroup'     => '',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+					array(
 						'desc'              => __( 'Show country code beside the flag', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_international_phone_country_code',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_code' ),
 						'checkboxgroup'     => 'end',
+						'checkboxgroup'     => '',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 						'disabled'          => true,

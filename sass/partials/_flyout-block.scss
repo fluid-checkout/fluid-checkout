@@ -2,6 +2,10 @@
 // FLYOUT BLOCK
 // ------------------------------------
 
+[data-flyout] {
+	display: none;
+}
+
 [data-flyout-content] {
 	display: none;
 	max-width: $container-width-mobile;

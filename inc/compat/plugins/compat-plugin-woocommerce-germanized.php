@@ -62,6 +62,11 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
 
+		// Place order
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_gzd_template_order_submit', wc_gzd_get_hook_priority( 'checkout_order_submit' ) );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_gzd_template_order_submit_fallback', 50 );
+		add_action( 'fc_place_order', 'woocommerce_gzd_template_order_submit', wc_gzd_get_hook_priority( 'checkout_order_submit' ) );
+
 		// Display back to cart button
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_gzd_display_checkout_back_to_cart_button' ) ) {
 			remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_back_to_cart', 10 );

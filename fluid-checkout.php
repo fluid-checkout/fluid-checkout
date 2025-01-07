@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 4.0.1-beta-1
+Version: 4.0.1-beta-24
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -241,11 +241,21 @@ class FluidCheckout {
 	 *
 	 * @param  string  $file    Path to the translation file to load.
 	 * @param  string  $domain  The text domain.
-	 * @param  string  $locale  The locale.
+	 * @param  string  $locale  The locale. Defaults to `null`.
 	 */
-	public function maybe_change_translation_file_path( $file, $domain, $locale ) {
+	public function maybe_change_translation_file_path( $file, $domain, $locale = null ) {
 		// Bail if not loading the plugin text domain.
 		if ( self::$plugin_slug !== $domain ) { return $file; }
+
+		// Try get locale from file name, for WordPress versions prior to 6.6.0
+		if ( ! $locale ) {
+			$domain_locale = explode( '.', basename( $file ), 2 )[0];
+			$locale_parts = explode( '-', $domain_locale );
+			$locale = end( $locale_parts );
+		}
+
+		// Bail if locale is not provided
+		if ( ! $locale ) { return $file; }
 
 		// Get whether current file is saved to the system directory
 		$is_system_file = -1 !== strpos( $file, trailingslashit( WP_LANG_DIR ) . 'plugins/' );
@@ -368,6 +378,9 @@ class FluidCheckout {
 
 			// Cart features
 			'FluidCheckout_CartShippingCalculator'         => array( 'file' => self::$directory_path . 'inc/cart-shipping-calculator.php' ),
+
+			// Edit address features
+			'FluidCheckout_AccountEditAddress'             => array( 'file' => self::$directory_path . 'inc/account-edit-address.php' ),
 		);
 	}
 
