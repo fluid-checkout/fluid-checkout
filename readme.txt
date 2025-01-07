@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with theme Loobek.
 * Added: Compatibility with plugin Debloat by asadkn.
+* Added: Compatibility with plugin OTP Login/Signup Woocommerce Premium.
 * Added: Option to set form fields font size to 16px and avoid automatic zoom in issue on some mobile browsers.
 * Added: Option to only show allowed countries for shipping or billing for the International Phone Number feature (PRO).
 * Improved: Use template file from checkout page to display available payment methods on the account add payment method page.
