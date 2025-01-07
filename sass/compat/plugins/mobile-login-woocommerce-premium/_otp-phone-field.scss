@@ -1,0 +1,27 @@
+// ------------------------------------
+// OTP PHONE FIELD
+// ------------------------------------
+
+// Select2 styles
+div.woocommerce form .form-row select.xoo-ml-phone-cc + .select2.select2-container {
+	width: auto !important; // Needed to override the default `Select2` width
+}
+
+div.woocommerce form .form-row .xoo-ml-phone-cc + .select2 .select2-selection.select2-selection--single .select2-selection__rendered {
+	padding: 0;
+}
+
+div.woocommerce form .form-row .xoo-ml-phone-cc + .select2 .select2-selection:after {
+	content: none !important; // Needed to override FC styles
+}
+
+// Select2 dropdown inside the log in modal
+.select2-container.select2-container--open {
+	z-index: z( 'modal' );
+}
+
+// TomSelect styles
+div.woocommerce form .form-row select.xoo-ml-phone-cc + .ts-wrapper {
+	width: 120px; // Use `px` as units to match plugin styles
+	margin-#{ $alignment-right }: 15px; // Use `px` as units to match plugin styles
+}
