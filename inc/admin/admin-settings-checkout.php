@@ -669,7 +669,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_code' ),
 						'checkboxgroup'     => 'end',
-						'checkboxgroup'     => '',
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 						'disabled'          => true,
