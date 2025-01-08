@@ -9,3 +9,16 @@ body.theme-motta .ts-wrapper .ts-control {
 body.theme-motta .ts-wrapper .ts-control:after {
   right: 20px;
 }
+
+body.theme-motta div.woocommerce form .form-row input[type=checkbox] {
+  margin-right: 14px;
+}
+
+body.theme-motta div.woocommerce form .form-row input[type=checkbox]:focus {
+  outline: none !important;
+}
+
+body.theme-motta div.woocommerce form .form-row input[type=checkbox]:focus:before {
+  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
+  outline-offset: 2px;
+}

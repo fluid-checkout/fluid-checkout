@@ -71,7 +71,6 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 				'--fluidcheckout--field--height' => '60px',
 				'--fluidcheckout--field--padding-left' => '22px',
 				'--fluidcheckout--field--font-size' => 'var(--mt-input__font-size)',
-				'--fluidcheckout--field--font-weight' => '500',
 				'--fluidcheckout--field--border-color' => '#dadfe3',
 				'--fluidcheckout--field--border-width' => 'var(--mt-input__border-width)',
 				'--fluidcheckout--field--border-radius' => 'var(--mt-border__radius)',
