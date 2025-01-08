@@ -6,6 +6,10 @@ body.theme-motta .fc-content form.woocommerce-checkout {
   padding-top: 0;
 }
 
+body.theme-motta div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
+  min-width: 0;
+}
+
 body.theme-motta form.checkout .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
   margin-top: 0;
 }
