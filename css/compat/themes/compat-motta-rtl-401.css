@@ -7,5 +7,5 @@ body.theme-motta .ts-wrapper .ts-control {
 }
 
 body.theme-motta .ts-wrapper .ts-control:after {
-  right: 20px;
+  left: 20px;
 }

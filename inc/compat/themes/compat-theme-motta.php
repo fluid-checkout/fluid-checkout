@@ -38,6 +38,9 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Product thumbnails
 		remove_filter( 'woocommerce_cart_item_name', array( $class_object, 'review_product_name_html' ), 10, 3);
 
@@ -50,6 +53,38 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'login_form' ), 10 );
 		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'coupon_form' ), 10 );
 		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'after_login_form' ), 10 );
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '60px',
+				'--fluidcheckout--field--padding-left' => '22px',
+				'--fluidcheckout--field--font-size' => 'var(--mt-input__font-size)',
+				'--fluidcheckout--field--font-weight' => '500',
+				'--fluidcheckout--field--border-color' => '#dadfe3',
+				'--fluidcheckout--field--border-width' => 'var(--mt-input__border-width)',
+				'--fluidcheckout--field--border-radius' => 'var(--mt-border__radius)',
+				'--fluidcheckout--field--background-color--accent' => '#1d2128',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing' => '20px',
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '45px',
+				'--fluidcheckout--validation-check--horizontal-spacing--password' => '20px',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
