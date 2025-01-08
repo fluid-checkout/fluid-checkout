@@ -12,6 +12,8 @@ $_body-theme-selector:                 '.theme-motta' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-billing",
 	"checkout-content-area",
+	"checkout-payment-methods",
 	"tom-select-control",
 	"woocommerce-form-fields";

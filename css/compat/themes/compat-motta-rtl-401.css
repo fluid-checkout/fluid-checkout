@@ -1,5 +1,13 @@
+body.theme-motta div.woocommerce form .woocommerce-billing-fields__field-wrapper {
+  padding: 0;
+}
+
 body.theme-motta .fc-content form.woocommerce-checkout {
   padding-top: 0;
+}
+
+body.theme-motta form.checkout .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
+  margin-top: 0;
 }
 
 body.theme-motta .ts-wrapper .ts-control {
