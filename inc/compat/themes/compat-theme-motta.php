@@ -7,13 +7,6 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 
 	/**
-	 * Class name for the theme which this compatibility class is related to.
-	 */
-	public const CLASS_NAME = '\Motta\WooCommerce\Checkout';
-
-
-
-	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -26,13 +19,18 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Set class names
+		$checkout_class_name = '\Motta\WooCommerce\Checkout';
 		$general_class_name = 'Motta\WooCommerce\General';
 
 		// Bail if class methods are not available
-		if ( ! method_exists( self::CLASS_NAME, 'instance' ) || ! method_exists( $general_class_name, 'instance' ) ) { return; }
+		if ( ! method_exists( $checkout_class_name, 'instance' ) || ! method_exists( $general_class_name, 'instance' ) ) { return; }
+
+		// Late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// Get class objects
-		$class_object = call_user_func( array( self::CLASS_NAME, 'instance' ) );
+		$class_object = call_user_func( array( $checkout_class_name, 'instance' ) );
 		$general_class_object = call_user_func( array( $general_class_name, 'instance' ) );
 
 		// Container class
@@ -57,6 +55,14 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'login_form' ), 10 );
 		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'coupon_form' ), 10 );
 		remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'after_login_form' ), 10 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// CSS variables on edit address page
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables_edit_address' ), 20 );
 	}
 
 
@@ -106,6 +112,28 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing' => '20px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '45px',
 				'--fluidcheckout--validation-check--horizontal-spacing--password' => '20px',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Add CSS variables to the edit address page.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables_edit_address( $css_variables ) {
+		// Bail if not on account address edit page
+		if ( ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '44px', 
 			),
 		);
 
