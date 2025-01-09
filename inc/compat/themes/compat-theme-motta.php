@@ -29,7 +29,7 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 		$general_class_name = 'Motta\WooCommerce\General';
 
 		// Bail if class methods are not available
-		if ( ! method_exists( self::CLASS_NAME, 'instance' ) || ! method_exists( $general_class_name, 'instance' ) ) { return $is_verified; }
+		if ( ! method_exists( self::CLASS_NAME, 'instance' ) || ! method_exists( $general_class_name, 'instance' ) ) { return; }
 
 		// Get class objects
 		$class_object = call_user_func( array( self::CLASS_NAME, 'instance' ) );

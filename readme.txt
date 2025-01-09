@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with theme Motta.
+
 = 4.0.1 - 2025-01-07 =
 
 * Bump tested up to WooCommerce 9.5.1
