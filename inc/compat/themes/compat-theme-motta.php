@@ -19,7 +19,7 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Set class names
+		// Set class names from the theme
 		$checkout_class_name = '\Motta\WooCommerce\Checkout';
 		$general_class_name = 'Motta\WooCommerce\General';
 
@@ -76,11 +76,14 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
+		// Set class name from the theme
+		$class_name = '\Motta\Helper';
+
 		// Bail if required class method is not available
-		if ( ! method_exists( '\Motta\Helper', 'get_option' ) ) { return $attributes; }
+		if ( ! method_exists( $class_name, 'get_option' ) ) { return $attributes; }
 
 		// Bail if sticky header is not enabled
-		$sticky_header = \Motta\Helper::get_option( 'header_sticky' );
+		$sticky_header = call_user_func( array( $class_name, 'get_option' ), 'header_sticky' );
 		if ( ! $sticky_header || 'none' === $sticky ) { return $attributes; }
 
 		$attributes[ 'data-sticky-relative-to' ] = '.header-sticky';
@@ -117,8 +120,6 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
-
-
 
 	/**
 	 * Add CSS variables to the edit address page.
