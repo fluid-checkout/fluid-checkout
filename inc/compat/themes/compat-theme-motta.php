@@ -84,7 +84,7 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 
 		// Bail if sticky header is not enabled
 		$sticky_header = call_user_func( array( $class_name, 'get_option' ), 'header_sticky' );
-		if ( ! $sticky_header || 'none' === $sticky ) { return $attributes; }
+		if ( ! $sticky_header || 'none' === $sticky_header ) { return $attributes; }
 
 		$attributes[ 'data-sticky-relative-to' ] = '.header-sticky';
 
