@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
+	margin-top: 0;
+}

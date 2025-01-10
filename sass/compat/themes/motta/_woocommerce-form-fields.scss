@@ -1,0 +1,16 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
+	margin-#{ $alignment-right }: 14px; // Use `px` as units to match theme styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"]:focus {
+	outline: none !important; // Needed to override FC styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"]:focus:before {
+	outline: $focus-outline-field;
+	outline-offset: $focus-outline-offset-field;
+}
