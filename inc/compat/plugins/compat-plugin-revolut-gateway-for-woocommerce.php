@@ -39,7 +39,11 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 		if ( ! in_array( $id, $revolut_payment_method_ids ) ) { return $title; }
 
 		// Add container used by the plugin to add "Learn more" link via JS
-		$title .= '<span class="revolut-label-informational-icon" id="revolut-pay-label-informational-icon"></span>';
+		if (  'revolut_pay' === $id ) {
+			$title .= '<span class="revolut-label-informational-icon" id="revolut-pay-label-informational-icon"></span>';
+		} else {
+			$title .= '<span class="revolut-label-informational-icon"></span>';
+		}
 
 		return $title;
 	}
@@ -59,7 +63,11 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 		if ( ! in_array( $id, $revolut_payment_method_ids ) ) { return $icon_html; }
 
 		// Remove "Learn more" link container
-		$icon_html = str_replace( '<span class="revolut-label-informational-icon" id="revolut-pay-label-informational-icon"></span>', '', $icon_html );
+		if ( 'revolut_pay' === $id ) {
+			$icon_html = str_replace( '<span class="revolut-label-informational-icon" id="revolut-pay-label-informational-icon"></span>', '', $icon_html );
+		} else {
+			$icon_html = str_replace( '<span class="revolut-label-informational-icon"></span>', '', $icon_html );
+		}
 		
 		return $icon_html;
 	}
