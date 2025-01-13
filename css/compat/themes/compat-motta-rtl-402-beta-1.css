@@ -2,6 +2,10 @@ body.theme-motta div.woocommerce form .woocommerce-billing-fields__field-wrapper
   padding: 0;
 }
 
+body.theme-motta div.woocommerce .woocommerce-billing-fields__field-wrapper {
+  border: 0;
+}
+
 body.theme-motta .fc-content form.woocommerce-checkout {
   padding-top: 0;
 }
