@@ -6,3 +6,8 @@
 .fc-wrapper #payment ul.payment_methods p.revolut-payment-method-save:after {
   content: none;
 }
+
+body.has-payment-method-selected--payment_method_revolut_pay .fc-wrapper .fc-place-order-button,
+body.has-payment-method-selected--payment_method_revolut_payment_request .fc-wrapper .fc-place-order-button {
+  display: none !important;
+}
