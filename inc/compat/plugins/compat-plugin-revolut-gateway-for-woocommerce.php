@@ -33,13 +33,14 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 	 * @param  string  $id     Payment method ID.
 	 */
 	public function maybe_change_payment_gateway_title( $title, $id = null ) {
-		$revolut_payment_method_ids = array( 'revolut_pay', 'revolut_cc' );
+		// Set payment methods that required the change
+		$payment_method_ids = array( 'revolut_pay', 'revolut_cc' );
 
 		// Bail if not Revolut payment method
-		if ( ! in_array( $id, $revolut_payment_method_ids ) ) { return $title; }
+		if ( ! in_array( $id, $payment_method_ids ) ) { return $title; }
 
 		// Add container used by the plugin to add "Learn more" link via JS
-		if (  'revolut_pay' === $id ) {
+		if ( 'revolut_pay' === $id ) {
 			$title .= '<span class="revolut-label-informational-icon" id="revolut-pay-label-informational-icon"></span>';
 		} else {
 			$title .= '<span class="revolut-label-informational-icon"></span>';
@@ -57,10 +58,11 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 	 * @param  string  $id         Payment method ID.
 	 */
 	public function maybe_change_payment_gateway_icon_html( $icon_html, $id = null ) {
-		$revolut_payment_method_ids = array( 'revolut_pay', 'revolut_cc' );
+		// Set payment methods that required the change
+		$payment_method_ids = array( 'revolut_pay', 'revolut_cc' );
 
 		// Bail if not Revolut payment method
-		if ( ! in_array( $id, $revolut_payment_method_ids ) ) { return $icon_html; }
+		if ( ! in_array( $id, $payment_method_ids ) ) { return $icon_html; }
 
 		// Remove "Learn more" link container
 		if ( 'revolut_pay' === $id ) {
