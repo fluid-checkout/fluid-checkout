@@ -155,7 +155,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 	border-bottom: $order-summary-cell-border--totals-bottom;
 }
 body.has-highlighted-order-totals div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total {
-	background-color: $lighter-grey;
+	background-color: $order-summary-highlighted-total-background-color;
 }
 
 

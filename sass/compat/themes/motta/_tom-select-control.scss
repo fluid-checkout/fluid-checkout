@@ -1,0 +1,11 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-wrapper .ts-control {
+	font-weight: 500;
+}
+
+body#{ $_body-theme-selector } .ts-wrapper .ts-control:after {
+	#{ $alignment-right }: 20px; // Use `px` as units to match theme styles
+}

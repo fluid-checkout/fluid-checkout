@@ -120,8 +120,8 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 				array(
 					'title'            => __( 'Fix automatic zoom-in on form fields', 'fluid-checkout' ),
-					'desc'             => __( 'Set form fields <code>font-size</code> to 16px', 'fluid-checkout' ),
-					'desc_tip'         => __( 'When the font size on form fields is smaller than 16px, Safari and other browsers might automatically zoom in on mobile devices to make the text easier to read. When this option is enabled, it will set the font size for form fields to 16px on pages optimized by Fluid Checkout to avoid it zooming in.', 'fluid-checkout' ),
+					'desc'             => __( 'Set <code>font-size</code> inside form fields to 16px', 'fluid-checkout' ),
+					'desc_tip'         => __( 'When the font size inside form fields is smaller than 16px, Safari and other browsers might automatically zoom in on mobile devices to make the text easier to read. When this option is enabled, it will set the font size for inside the form fields to 16px on pages optimized by Fluid Checkout to avoid it zooming in.', 'fluid-checkout' ),
 					'id'               => 'fc_fix_zoom_in_form_fields_mobile_devices',
 					'type'             => 'checkbox',
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_fix_zoom_in_form_fields_mobile_devices' ),

@@ -492,6 +492,9 @@ $checkout-expansible-section-icon-spacing-left:  remsize( -.3rem ) !default;
 $checkout-expansible-section-icon-spacing-right: $global-spacing-tiny !default;
 $checkout-expansible-section-text-decoration:    none !default;
 
+$checkout-highlighted-section-background-color:                 var( --fluidcheckout--section--highlighted-background-color, $lighter-grey ) !default;
+$checkout-highlighted-section-fields-background-color:          var( --fluidcheckout--section--highlighted-field-background-color, $white ) !default;
+
 // END - CHECKOUT STEPS
 // ----------------------------------------
 
@@ -570,6 +573,8 @@ $order-summary-edit-cart-button-font-weight:     $checkout-substep-action-button
 $order-summary-edit-cart-button-text-decoration: $checkout-substep-action-button-text-decoration !default;
 $order-summary-edit-cart-button-color:           $checkout-substep-action-button-color !default;
 $order-summary-edit-cart-button-background-color:  $checkout-substep-action-button-background-color !default;
+
+$order-summary-highlighted-total-background-color: var( --fluidcheckout--order-summary--highlighted-total-background-color, $lighter-grey ) !default;
 
 // END - ORDER SUMMARY
 // ----------------------------------------

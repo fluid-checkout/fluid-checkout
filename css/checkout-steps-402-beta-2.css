@@ -168,16 +168,16 @@
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-step:first-child,
   .fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
-    border-top-right-radius: var(--fluidcheckout--section--border-radius, 8px);
     border-top-left-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-top-right-radius: var(--fluidcheckout--section--border-radius, 8px);
   }
 }
 
 @media (min-width: 750px) {
   .fc-wrapper .fc-checkout-step:last-child,
   .fc-wrapper .fc-checkout-step:last-child > div:last-of-type {
-    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px);
     border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px);
   }
 }
 
@@ -199,15 +199,15 @@
 
 @media (min-width: 750px) {
   .fc-wrapper .fc-step__substep:first-of-type {
-    border-top-right-radius: var(--fluidcheckout--section--border-radius, 8px);
     border-top-left-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-top-right-radius: var(--fluidcheckout--section--border-radius, 8px);
   }
 }
 
 @media (min-width: 750px) {
   .fc-wrapper .fc-step__substep:last-of-type {
-    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px);
     border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px);
+    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px);
   }
 }
 
@@ -231,7 +231,7 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-step__substep .fc-step
   font-weight: bold;
   font-size: 15px;
   text-transform: uppercase;
-  text-align: right;
+  text-align: left;
   line-height: 1.2;
   overflow: unset;
 }
@@ -262,7 +262,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
   float: none;
   width: 100%;
-  text-align: right;
+  text-align: left;
 }
 
 .has-checkout-layout--multi-step .fc-checkout-step[data-step-complete] {
@@ -332,15 +332,15 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   display: block;
   margin: 0 0 3px;
   padding: 0 80px 0;
-  padding-right: 28px;
+  padding-left: 28px;
   color: var(--fluidcheckout--color--dark-grey, #535156);
 }
 @media (min-width: 1000px) {
   .has-checkout-layout--multi-step.woocommerce-checkout form .fc-wrapper .fc-checkout-step[data-step-complete] .fc-step__substep .fc-step__substep-title {
-    float: right;
+    float: left;
     margin: 0;
     padding: 0 5px 0;
-    padding-right: 28px;
+    padding-left: 28px;
     width: 200px;
   }
 }
@@ -366,7 +366,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   height: 18px;
   font-size: 18px;
   position: absolute;
-  right: 0;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
   border-radius: 100%;
@@ -393,9 +393,9 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 }
 @media (min-width: 1000px) {
   .fc-wrapper .fc-step__substep-text {
-    float: left;
-    padding-right: 0;
-    padding-left: 80px;
+    float: right;
+    padding-left: 0;
+    padding-right: 80px;
     margin: 0;
     width: calc(100% - 200px);
     font-size: 13px;
@@ -422,7 +422,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 .fc-wrapper .fc-step__substep-text-line {
   display: block;
   width: 100%;
-  text-align: right;
+  text-align: left;
 }
 
 .fc-wrapper .fc-step__substep-text-line .fc-step__substep-text-line--small-text {
@@ -456,8 +456,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   display: none;
   position: absolute;
   top: 12px;
-  right: auto;
-  left: 10px;
+  left: auto;
+  right: 10px;
   margin: 0;
   padding: 5px 10px;
   font-size: 15px;
@@ -693,7 +693,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 }
 
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] {
-  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  background-color: var(--fluidcheckout--section--highlighted-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea,
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select,
@@ -708,16 +708,16 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection,
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection .select2-selection__rendered,
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .ts-control {
-  background-color: var(--fluidcheckout--color--white, #fff) !important;
+  background-color: var(--fluidcheckout--section--highlighted-field-background-color, var(--fluidcheckout--color--white, #fff)) !important;
   color: inherit !important;
 }
 
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
-  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
   margin: 20px -20px;
   margin-top: 0;
   margin-bottom: -20px;
   padding: 20px 20px;
+  background-color: var(--fluidcheckout--section--highlighted-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 @media (min-width: 750px) {
   body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
@@ -774,7 +774,7 @@ div.woocommerce form .form-row.fc-same-address-checkbox label {
 }
 
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] {
-  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  background-color: var(--fluidcheckout--section--highlighted-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea,
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select,
@@ -789,7 +789,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection,
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered,
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .ts-control {
-  background-color: var(--fluidcheckout--color--white, #fff) !important;
+  background-color: var(--fluidcheckout--section--highlighted-field-background-color, var(--fluidcheckout--color--white, #fff)) !important;
   color: inherit !important;
 }
 
@@ -798,7 +798,7 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc
   margin-top: 0;
   margin-bottom: -20px;
   padding: 20px 20px;
-  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  background-color: var(--fluidcheckout--section--highlighted-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 @media (min-width: 750px) {
   body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--shipping {
@@ -872,7 +872,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
 }
 
 .woocommerce .fc-shipping-method__packages {
-  text-align: right;
+  text-align: left;
 }
 
 .woocommerce .fc-shipping-method__packages ul#shipping_method {
@@ -916,14 +916,14 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   margin: 0 !important;
   padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
   padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
-  padding-right: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
-  padding-left: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
+  padding-left: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
+  padding-right: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
   width: 100% !important;
   background-color: var(--fluidcheckout--option-box--background-color, var(--fluidcheckout--color--white, #fff));
   border-bottom: var(--fluidcheckout--option-box--label-border-style, solid) var(--fluidcheckout--option-box--label-border-width, 1px) var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   font-weight: normal !important;
   cursor: pointer;
-  text-align: right !important;
+  text-align: left !important;
   text-indent: 0 !important;
   line-height: 24px !important;
   transition: all 0.15s linear;
@@ -943,8 +943,8 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   content: "" !important;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  right: 10px;
-  left: auto;
+  left: 10px;
+  right: auto;
   display: block;
   width: 24px;
   height: 24px;
@@ -999,8 +999,8 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   font-size: 24px;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  right: 10px;
-  left: auto;
+  left: 10px;
+  right: auto;
   color: transparent;
 }
 
@@ -1027,7 +1027,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   height: 24px !important;
   width: auto !important;
   vertical-align: middle !important;
-  margin-right: 5px !important;
+  margin-left: 5px !important;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price {
@@ -1039,7 +1039,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   height: 100%;
   line-height: inherit;
   font-weight: bold;
-  text-align: left;
+  text-align: right;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .has-price.has-tax-notes .shipping-method__option-price {
@@ -1151,17 +1151,17 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   margin: 0;
   padding-top: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
   padding-bottom: var(--fluidcheckout--option-box--spacing--vertical, 10px) !important;
-  padding-right: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
-  padding-left: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
+  padding-left: calc(var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 24px + 10px) !important;
+  padding-right: var(--fluidcheckout--option-box--spacing--horizontal, 10px) !important;
   width: 100%;
   max-width: 100%;
   border: var(--fluidcheckout--option-box--label-border-style, solid) var(--fluidcheckout--option-box--label-border-width, 1px) var(--fluidcheckout--option-box--label-border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   border-top: 0;
-  border-right: 0;
   border-left: 0;
+  border-right: 0;
   background-color: var(--fluidcheckout--option-box--background-color, var(--fluidcheckout--color--white, #fff));
   font-weight: normal;
-  text-align: right !important;
+  text-align: left !important;
   text-indent: 0 !important;
   line-height: 24px !important;
   cursor: pointer;
@@ -1169,14 +1169,14 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 }
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:active, .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:hover, .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label:focus {
   border-top: 0;
-  border-right: 0;
   border-left: 0;
+  border-right: 0;
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type > label,
 #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:first-of-type > label {
-  border-top-right-radius: var(--fluidcheckout--option-box--border-radius, 13px);
   border-top-left-radius: var(--fluidcheckout--option-box--border-radius, 13px);
+  border-top-right-radius: var(--fluidcheckout--option-box--border-radius, 13px);
 }
 
 .fc-wrapper #payment .payment_methods > .wc_payment_method.has-payment-box:last-of-type input[name=payment_method]:not(:checked) ~ label,
@@ -1186,8 +1186,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:checked ~ .payment_box,
 #add_payment_method .fc-wrapper #payment .payment_methods > .wc_payment_method:last-of-type input[name=payment_method]:checked ~ .payment_box {
   border-bottom: 0;
-  border-bottom-right-radius: var(--fluidcheckout--option-box--border-radius, 13px);
   border-bottom-left-radius: var(--fluidcheckout--option-box--border-radius, 13px);
+  border-bottom-right-radius: var(--fluidcheckout--option-box--border-radius, 13px);
 }
 
 .fc-wrapper #payment .payment_methods > li.wc_payment_method:not(.woocommerce-notice) {
@@ -1196,8 +1196,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 
 .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > input[name=payment_method]:checked + label {
   border-top: 0;
-  border-right: 0;
   border-left: 0;
+  border-right: 0;
   border-color: var(--fluidcheckout--option-box--label-border-color--checked, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
   background-color: var(--fluidcheckout--option-box--background-color--checked, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
   color: var(--fluidcheckout--option-box--label-color--checked, var(--fluidcheckout--color--darker-grey, #1E212B));
@@ -1209,8 +1209,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   content: "" !important;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  right: 10px;
-  left: auto;
+  left: 10px;
+  right: auto;
   display: block;
   margin: 0;
   padding: 0;
@@ -1274,8 +1274,8 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
   z-index: 3;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
-  right: 10px;
-  left: auto;
+  left: 10px;
+  right: auto;
   margin: 0;
   padding: 0;
   border: 0;
@@ -1291,17 +1291,17 @@ body.woocommerce-checkout div.woocommerce #add_payment_method .fc-wrapper #payme
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-text {
   display: inline-block;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-icon {
-  text-align: left;
+  text-align: right;
 }
 
 .fc-wrapper #payment ul.payment_methods > li.wc_payment_method > label .payment-method__label-icon img {
   float: none;
   display: inline-block;
-  margin-right: 5px;
+  margin-left: 5px;
   width: auto;
   height: 24px;
   vertical-align: middle;
@@ -1421,7 +1421,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
   margin: 0;
   padding: 0;
   border: 0;
-  text-align: right;
+  text-align: left;
 }
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .form-row {
@@ -1432,7 +1432,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
   margin-bottom: 0;
   padding: 0;
-  text-align: right;
+  text-align: left;
 }
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox {
@@ -1441,8 +1441,8 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 
 .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label-for-checkbox input[type=checkbox] {
   top: 0;
-  margin-right: 0;
-  margin-left: 5px;
+  margin-left: 0;
+  margin-right: 5px;
 }
 
 .woocommerce-privacy-policy-text:not(:last-child):not(:empty) {
@@ -1544,7 +1544,7 @@ div.woocommerce form .form-row .select2-container .select2-selection {
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
-  clear: right;
+  clear: left;
   float: none;
   flex-grow: unset !important;
   width: 100% !important;
@@ -1555,19 +1555,19 @@ div.woocommerce form .form-row.form-row-last {
   div.woocommerce form .form-row.form-row-middle,
   div.woocommerce form .form-row.form-row-last {
     clear: none;
-    float: right;
+    float: left;
     width: 48% !important;
   }
 }
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
-  clear: right;
+  clear: left;
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
   div.woocommerce form .form-row.form-row-wide {
-    clear: right;
+    clear: left;
   }
 }
 
@@ -1594,13 +1594,13 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-middle,
   div.woocommerce form #payment .form-row.form-row-first,
   div.woocommerce form #payment .form-row.form-row-middle {
-    margin-right: 0;
-    margin-left: 4%;
+    margin-left: 0;
+    margin-right: 4%;
   }
 }
 
 div.woocommerce form .form-row.form-row-last {
-  margin-right: 0;
+  margin-left: 0;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
@@ -1621,8 +1621,8 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
 }
 
 div.woocommerce form .form-row.fc-checkbox-field .woocommerce-input-wrapper span.description {
-  padding-right: 0;
   padding-left: 0;
+  padding-right: 0;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
@@ -1640,7 +1640,7 @@ div.woocommerce form #shipping_address_2_field > label {
   overflow: unset;
   white-space: normal;
   line-height: 1.2;
-  text-align: right;
+  text-align: left;
 }
 
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
@@ -1782,7 +1782,7 @@ div.woocommerce form .form-row .select2-selection--single {
 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  padding-right: var(--fluidcheckout--field--padding-left, 8px);
+  padding-left: var(--fluidcheckout--field--padding-left, 8px);
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
 }
 
@@ -1873,7 +1873,7 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review_
   justify-content: space-between;
   flex-wrap: wrap;
   padding-bottom: 12px;
-  text-align: right;
+  text-align: left;
 }
 
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
@@ -1885,7 +1885,7 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review-
   font-weight: bold;
   font-size: 15px;
   text-transform: uppercase;
-  text-align: right;
+  text-align: left;
   line-height: 1.2;
   overflow: unset;
 }
@@ -1929,8 +1929,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 @media (min-width: 1000px) {
   div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child th:first-child,
   div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child td:first-child {
-    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
-    border-bottom-left-radius: 0 !important;
+    border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
+    border-bottom-right-radius: 0 !important;
   }
 }
 
@@ -1939,8 +1939,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 @media (min-width: 1000px) {
   div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total:last-child td:last-child {
-    border-bottom-right-radius: 0 !important;
-    border-bottom-left-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: var(--fluidcheckout--section--border-radius, 8px) !important;
   }
 }
 
@@ -1992,7 +1992,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 body.has-highlighted-order-totals div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr.order-total {
-  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
+  background-color: var(--fluidcheckout--order-summary--highlighted-total-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table th,
@@ -2004,7 +2004,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
   vertical-align: middle;
   width: 50%;
-  text-align: right !important;
+  text-align: left !important;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total,
@@ -2016,7 +2016,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr > td {
-  text-align: left !important;
+  text-align: right !important;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total .tax_label,
@@ -2039,12 +2039,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr:first-child .product-name {
   position: relative;
-  float: right;
+  float: left;
   padding: 5px;
   width: 75%;
   background-color: transparent;
   border: 0;
-  text-align: right;
+  text-align: left;
   line-height: 1.2;
 }
 
@@ -2060,8 +2060,8 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   display: block;
   padding: 5px 0;
   width: 25%;
-  float: left;
-  text-align: left;
+  float: right;
+  text-align: right;
   background-color: transparent;
 }
 
@@ -2069,9 +2069,9 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > a img,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture img,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > div.product-thumbnail img {
-  float: right;
-  margin-right: calc(-1 * (var(--fluidcheckout--order-summary--image-padding, 3px) + 5px));
-  margin-left: 0 !important;
+  float: left;
+  margin-left: calc(-1 * (var(--fluidcheckout--order-summary--image-padding, 3px) + 5px));
+  margin-right: 0 !important;
   padding: var(--fluidcheckout--order-summary--image-padding, 3px);
   width: var(--fluidcheckout--order-summary--image-width, 50px) !important;
   height: auto !important;
@@ -2092,9 +2092,9 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > div.product-thumbnail {
-  float: right;
+  float: left;
   margin: 0 !important;
-  margin-right: calc(-1 * (var(--fluidcheckout--order-summary--image-padding, 3px) + 5px)) !important;
+  margin-left: calc(-1 * (var(--fluidcheckout--order-summary--image-padding, 3px) + 5px)) !important;
   padding: 0 !important;
   width: var(--fluidcheckout--order-summary--image-width, 50px) !important;
 }
@@ -2107,13 +2107,13 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > picture img,
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-name > div.product-thumbnail img {
-  margin-right: 0 !important;
+  margin-left: 0 !important;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
-  float: right;
+  float: left;
   position: static;
-  padding-right: 20px;
+  padding-left: 20px;
   width: calc(100% - var(--fluidcheckout--order-summary--image-width, 50px));
 }
 @media (min-width: 1000px) {
@@ -2141,10 +2141,10 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   z-index: 10;
   position: absolute;
   top: 0;
-  right: calc(var(--fluidcheckout--order-summary--image-width, 50px) + 5px);
-  left: auto;
+  left: calc(var(--fluidcheckout--order-summary--image-width, 50px) + 5px);
+  right: auto;
   width: auto;
-  transform: translateX(100%) translateY(-25%);
+  transform: translateX(-100%) translateY(-25%);
   display: block !important;
   padding: 1px 6px 2px 5px;
   border-radius: 8.5px;
@@ -2157,7 +2157,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 @media (min-width: 1000px) {
   div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-quantity {
-    right: calc(var(--fluidcheckout--order-summary--image-width--large-screen, 60px) + 5px);
+    left: calc(var(--fluidcheckout--order-summary--image-width--large-screen, 60px) + 5px);
   }
 }
 
@@ -2195,7 +2195,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr.coupon-code-form > td {
-  text-align: right !important;
+  text-align: left !important;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr.shipping > td::before {
@@ -2340,8 +2340,8 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 
 .fc-checkout-order-review__head .fc-checkout-order-review__header-link {
   position: relative;
-  left: -10px;
-  float: left;
+  right: -10px;
+  float: right;
   display: block;
   margin: 0;
   padding: 0 10px;
