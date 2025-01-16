@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+.fc-wrapper #payment ul.payment_methods > li.wc_payment_method.payment_method_revolut_pay > label .payment-method__label-text {
+	display: flex;
+}
+
+.fc-wrapper #payment ul.payment_methods p.revolut-payment-method-save:before,
+.fc-wrapper #payment ul.payment_methods p.revolut-payment-method-save:after {
+	content: none;
+}

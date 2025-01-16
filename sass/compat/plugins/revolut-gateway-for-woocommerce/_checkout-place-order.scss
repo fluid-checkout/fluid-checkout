@@ -1,0 +1,9 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+// Hide place order button if Revolut Pay, Google Pay or Apple pay method is selected similarly to how it's done in the plugin
+body.has-payment-method-selected--payment_method_revolut_pay .fc-wrapper .fc-place-order-button,
+body.has-payment-method-selected--payment_method_revolut_payment_request .fc-wrapper .fc-place-order-button {
+	display: none !important; // Needed to override FC styles
+}
