@@ -2,15 +2,19 @@
 // Z-INDEX FIXES
 // ------------------------------------
 
-body#{ $_body-theme-selector } .site.overlay .site-content:after,
-body#{ $_body-theme-selector } .mobile-overlay {
-	z-index: z( 'header-element' ) - 1;
+body#{ $_body-theme-selector } .site-header {
+	z-index: z( 'header-element' )
 }
 
 
 
-body#{ $_body-theme-selector } .site-header {
-	z-index: z( 'header-element' )
+body#{ $_body-theme-selector } .site.overlay .site-content:after,
+body#{ $_body-theme-selector } .mobile-overlay {
+	z-index: z( 'header-element' ) + 1;
+}
+
+body#{ $_body-theme-selector } .site-header + .col-full-nav {
+	z-index: z( 'header-element' ) + 2;
 }
 
 
