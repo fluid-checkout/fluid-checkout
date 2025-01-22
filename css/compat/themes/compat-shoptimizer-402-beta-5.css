@@ -1,10 +1,14 @@
-body.theme-shoptimizer .site.overlay .site-content:after,
-body.theme-shoptimizer .mobile-overlay {
-  z-index: 1999;
-}
-
 body.theme-shoptimizer .site-header {
   z-index: 2000;
+}
+
+body.theme-shoptimizer .site.overlay .site-content:after,
+body.theme-shoptimizer .mobile-overlay {
+  z-index: 2001;
+}
+
+body.theme-shoptimizer .site-header + .col-full-nav {
+  z-index: 2002;
 }
 
 body.theme-shoptimizer .main-navigation ul.menu > li.menu-item-has-children > .sub-menu-wrapper {
