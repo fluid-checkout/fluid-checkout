@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with theme Motta.
 * Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
+* Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
 * Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay.
 
 = 4.0.1 - 2025-01-07 =
