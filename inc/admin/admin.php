@@ -149,9 +149,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 	/**
 	 * Get HTML for "upgrade to PRO" to be used on settings descriptions.
 	 * 
-	 * @param  bool  $new_line  Whether to add a new line before.
+	 * @param  bool  $newline  Whether to add a new line before.
 	 */
-	public function get_upgrade_pro_html( $new_line = true ) {
+	public function get_upgrade_pro_html( $newline = true ) {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
 
@@ -159,7 +159,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
 		
 		// Maybe add line break
-		if ( $new_line ) {
+		if ( $newline ) {
 			$html = ' <br>' . $html;
 		}
 	
@@ -193,9 +193,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 	/**
 	 * Get HTML for Experimental features label.
 	 * 
-	 * @param  bool  $new_line  Whether to add a new line before.
+	 * @param  bool  $newline  Whether to add a new line before.
 	 */
-	public function get_experimental_feature_html( $new_line = false ) {
+	public function get_experimental_feature_html( $newline = false ) {
 		return ' ' . ( $newline ? '<br>' : '' ) . __( '(experimental)', 'fluid-checkout' );
 	}
 

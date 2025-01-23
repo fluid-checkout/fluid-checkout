@@ -367,6 +367,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Motta.
 * Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
 * Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay.
+* Fixed: PHP warnings for undefined variable `$new_line`.
 
 = 4.0.1 - 2025-01-07 =
 
