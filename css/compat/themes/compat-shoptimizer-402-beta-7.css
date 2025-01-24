@@ -1,6 +1,11 @@
 body.theme-shoptimizer .site-header {
   z-index: 2000;
 }
+@media (min-width: 1199px) {
+  body.theme-shoptimizer .site-header {
+    z-index: 2003;
+  }
+}
 
 body.theme-shoptimizer .site.overlay .site-content:after,
 body.theme-shoptimizer .mobile-overlay {
