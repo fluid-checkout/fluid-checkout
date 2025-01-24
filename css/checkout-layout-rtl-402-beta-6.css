@@ -156,6 +156,7 @@ div.woocommerce form .fc-expansible-form-section.form-row + .form-row {
 html,
 body.woocommerce-checkout {
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.woocommerce-checkout .fc-content,
