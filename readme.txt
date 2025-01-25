@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Motta.
+* Added: Compatibility with plugin WooCommerce Quantity Discounts, Rules & Swatches.
 * Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
 * Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
 * Fixed: Layout styles causing sticky header for some themes to not get sticky.
