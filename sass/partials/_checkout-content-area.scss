@@ -3,7 +3,8 @@
 // ------------------------------------
 html,
 body#{ $_body-page-selector } {
-	overflow-x: hidden; // Prevents horizontal scroll on IE, EDGE and Safari
+	overflow-x: hidden; // Fallback value to prevent horizontal scroll on IE, EDGE and Safari
+	overflow-x: clip; // Prevent horizontal scroll on all modern browsers
 }
 
 
