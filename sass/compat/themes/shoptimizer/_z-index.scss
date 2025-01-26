@@ -3,7 +3,11 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .site-header {
-	z-index: z( 'header-element' )
+	z-index: z( 'header-element' );
+
+	@media (min-width: 1199px) { // Needs to match the breakpoint from the theme
+		z-index: z( 'header-element' ) + 3;
+	}
 }
 
 

@@ -87,8 +87,18 @@ class FluidCheckout_ThemeCompat_Shoptimizer extends FluidCheckout {
 	public function change_sticky_elements_relative_header( $attributes ) {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+		
+		// Get header layout from theme settings
+		$header_layout = shoptimizer_get_option( 'shoptimizer_header_layout' );
+		$desktop_header_relative_selector = '.col-full-nav';
+
+		// Maybe change relative selector based on header layout
+		if ( 'header-4' === $header_layout ) {
+			$desktop_header_relative_selector = '.header-4-container';
+		}
 	
-		$attributes['data-sticky-relative-to'] = '{ "xs": { "breakpointInitial": 0, "breakpointFinal": 992, "selector": ".site-header" }, "sm": { "breakpointInitial": 993, "breakpointFinal": 100000, "selector": ".col-full-nav" } }';
+		// Define the relative selector
+		$attributes['data-sticky-relative-to'] = '{ "xs": { "breakpointInitial": 0, "breakpointFinal": 992, "selector": ".site-header" }, "sm": { "breakpointInitial": 993, "breakpointFinal": 100000, "selector": "' . $desktop_header_relative_selector . '" } }';
 	
 		return $attributes;
 	}
