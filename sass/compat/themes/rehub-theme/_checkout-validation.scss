@@ -5,3 +5,7 @@
 body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error:before {
 	background-color: transparent;
 }
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-validated input.input-text {
+	background-image: none;
+}
