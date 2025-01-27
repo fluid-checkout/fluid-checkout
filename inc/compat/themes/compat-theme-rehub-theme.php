@@ -116,7 +116,6 @@ class FluidCheckout_ThemeCompat_RehubTheme extends FluidCheckout {
 				'--fluidcheckout--field--border-width' => '1px',
 				'--fluidcheckout--field--border-radius' => '4px',
 
-				
 				// Primary button colors
 				'--fluidcheckout--button--primary--border-color' => $button_bg_color,
 				'--fluidcheckout--button--primary--background-color' => $button_bg_color,
