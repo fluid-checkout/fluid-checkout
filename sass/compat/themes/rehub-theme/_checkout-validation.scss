@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error:before {
+	background-color: transparent;
+}
