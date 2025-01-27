@@ -12,5 +12,7 @@ $_body-theme-selector:                 '.theme-rehub-theme' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"buttons--checkout",
 	"checkout-content-area",
-	"checkout-validation";
+	"checkout-validation",
+	"woocommerce-form-fields-select2";

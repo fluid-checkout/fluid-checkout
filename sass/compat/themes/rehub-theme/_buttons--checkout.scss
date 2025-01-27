@@ -1,0 +1,10 @@
+// ------------------------------------
+// BUTTONS -- CHECKOUT
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-save,
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__next-step,
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-save:hover,
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__next-step:hover {
+	box-shadow: none !important; // Needed to override theme styles
+}

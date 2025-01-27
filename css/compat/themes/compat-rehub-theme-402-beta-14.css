@@ -1,7 +1,18 @@
+body.theme-rehub-theme .fc-wrapper .fc-step__substep-save,
+body.theme-rehub-theme .fc-wrapper .fc-step__next-step,
+body.theme-rehub-theme .fc-wrapper .fc-step__substep-save:hover,
+body.theme-rehub-theme .fc-wrapper .fc-step__next-step:hover {
+  box-shadow: none !important;
+}
+
 body.theme-rehub-theme.theme-rehub-theme .fc-content {
   padding-bottom: 0;
 }
 
 body.theme-rehub-theme div.woocommerce .form-row .woocommerce-error:before {
   background-color: transparent;
+}
+
+body.theme-rehub-theme .select2-container--default .select2-selection--single {
+  border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
