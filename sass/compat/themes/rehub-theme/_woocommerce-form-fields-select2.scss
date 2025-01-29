@@ -1,0 +1,7 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .select2-container--default .select2-selection--single {
+	border-color: $form-field-border-color;
+}
