@@ -9,6 +9,10 @@ body.theme-rehub-theme.theme-rehub-theme .fc-content {
   padding-bottom: 0;
 }
 
+body.theme-rehub-theme .processing.woocommerce-checkout .place-order:before {
+  content: none !important;
+}
+
 body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-message,
 body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-error,
 body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-info {

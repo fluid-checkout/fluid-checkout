@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .processing.woocommerce-checkout .place-order:before {
+	content: none !important; // Needed to override theme styles
+}
