@@ -12,7 +12,9 @@
 
 body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
 body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
-body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar {
+body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar {
   display: none;
 }
 
@@ -27,7 +29,9 @@ body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wr
 
 body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order,
 body.has-payment-method-selected--payment_method_ppcp-card-button-gateway .fc-wrapper .fc-place-order,
-body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-place-order {
+body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-place-order,
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-place-order,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-place-order {
   padding: 0;
 }
 
