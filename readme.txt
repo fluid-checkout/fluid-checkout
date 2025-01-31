@@ -370,6 +370,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
 * Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
 * Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
+* Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
 * Fixed: Layout styles causing sticky header for some themes to not get sticky.
 * Fixed: PHP warnings for undefined variable `$new_line`.
 

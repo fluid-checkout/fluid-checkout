@@ -3409,12 +3409,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_shipping_address_fields() {
 		ob_start();
-
-		wc_get_template( 'checkout/form-shipping.php', array(
-			'checkout'                        => WC()->checkout(),
-			'is_shipping_same_as_billing'     => $this->is_shipping_same_as_billing(),
-		) );
-
+		WC()->checkout()->checkout_form_shipping();
 		return ob_get_clean();
 	}
 
