@@ -30,6 +30,18 @@ body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-p
 	padding: 0;
 }
 
+body:not( .has-payment-method-selected--payment_method_ppcp-gateway ):not( .has-payment-method-selected--payment_method_ppcp-card-button-gateway ):not( .has-payment-method-selected--payment_method_ppcp-credit-card-gateway ):not( .has-payment-method-selected--payment_method_ppcp-googlepay ):not( .has-payment-method-selected--payment_method_ppcp-applepay ) .fc-wrapper .fc-place-order__custom-buttons,
+body:not( .has-payment-method-selected--payment_method_ppcp-gateway ):not( .has-payment-method-selected--payment_method_ppcp-card-button-gateway ):not( .has-payment-method-selected--payment_method_ppcp-credit-card-gateway ):not( .has-payment-method-selected--payment_method_ppcp-googlepay ):not( .has-payment-method-selected--payment_method_ppcp-applepay ) .fc-wrapper .ppc-button-wrapper {
+	margin: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-place-order__custom-buttons:not( :empty ),
+body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-place-order__custom-buttons:not( :empty ),
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-place-order__custom-buttons:not( :empty ),
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-place-order__custom-buttons:not( :empty ) {
+	margin-top: $global-spacing;
+}
+
 
 
 .fc-wrapper .fc-place-order__custom-buttons .ppc-button-wrapper,
