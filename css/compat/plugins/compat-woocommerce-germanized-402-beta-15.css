@@ -27,3 +27,9 @@
 .fc-wrapper .wc-gzd-checkbox-placeholder:not(:empty) {
   margin-bottom: 10px;
 }
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .wc-gzd-place-order .fc-place-order-button,
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .wc-gzd-place-order .fc-place-order-button,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .wc-gzd-place-order .fc-place-order-button {
+  display: none !important;
+}
