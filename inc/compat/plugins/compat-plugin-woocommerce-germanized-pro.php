@@ -24,6 +24,9 @@ class FluidCheckout_WooCommerceGermanizedPRO extends FluidCheckout {
 
 		// VAT validation
 		$this->vat_validation_hooks();
+
+		// Maybe force disable multistep checkout option
+		$this->maybe_disable_multistep_checkout();
 	}
 
 	/**
@@ -42,7 +45,22 @@ class FluidCheckout_WooCommerceGermanizedPRO extends FluidCheckout {
 	}
 
 
-	
+
+	/**
+	 * Maybe force disable multistep checkout option from Germanized Pro.
+	 */
+	public function maybe_disable_multistep_checkout() {
+		$option_key = 'woocommerce_gzdp_checkout_enable';
+
+		// Bail if option is already disabled
+		if ( 'no' === FluidCheckout_Settings::instance()->get_option( $option_key ) ) { return; }
+
+		// Disable multistep checkout option
+		update_option( $option_key, 'no' );
+	}
+
+
+
 	/**
 	 * Add address save checkbox fields to the substep review text skip list.
 	 *
