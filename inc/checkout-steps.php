@@ -699,6 +699,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$add_classes[] = 'has-form-field-font-size-fix';
 		}
 
+		// Add extra class to enable form fields font-size styles
+		if ( true === apply_filters( 'fc_use_verbose_loading_indicator', false ) ) {
+			$add_classes[] = 'has-loading-indicator-verbose';
+		}
+
 		return array_merge( $classes, $add_classes );
 	}
 
