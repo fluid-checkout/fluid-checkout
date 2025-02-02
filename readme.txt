@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
 * Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
 * Improved: Styles for loading indicator for the place order button to only show loading icon while processing, hiding its text.
+* Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
 * Fixed: Layout styles causing sticky header for some themes to not get sticky.
 * Fixed: PHP warnings for undefined variable `$new_line`.
 
