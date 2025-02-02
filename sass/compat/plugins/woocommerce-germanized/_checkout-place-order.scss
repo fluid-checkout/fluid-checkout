@@ -16,9 +16,19 @@
 
 
 
-.fc-checkout-order-review .fc-place-order {
-	padding: $global-spacing-small 0;
+.fc-sidebar .wc-gzd-place-order .fc-place-order {
+	padding: 0 0 $global-spacing-extra-small;
 }
+
+// Compatibility with WooCommerce PayPal Payments
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .wc-gzd-place-order .fc-place-order {
+	padding-bottom: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-place-order {
+	padding-bottom: $global-spacing-extra-small;
+}
+
 
 
 

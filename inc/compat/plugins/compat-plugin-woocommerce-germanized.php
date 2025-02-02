@@ -47,6 +47,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Bail if Germanized functions are not available
 		if ( ! function_exists( 'wc_gzd_get_hook_priority' ) ) { return; }
 
+		// Checkout page hooks
+		$this->checkout_hooks();
+
 		// Payment
 		remove_action( 'woocommerce_review_order_before_payment', 'woocommerce_gzd_template_checkout_payment_title', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 10 );
@@ -62,11 +65,6 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_render_checkout_checkboxes', 10 );
 		add_action( 'woocommerce_checkout_before_order_review', 'woocommerce_gzd_template_checkout_set_terms_manually', 20 );
 
-		// Place order
-		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_gzd_template_order_submit', wc_gzd_get_hook_priority( 'checkout_order_submit' ) );
-		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_gzd_template_order_submit_fallback', 50 );
-		add_action( 'fc_place_order', 'woocommerce_gzd_template_order_submit', wc_gzd_get_hook_priority( 'checkout_order_submit' ) );
-
 		// Display back to cart button
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_gzd_display_checkout_back_to_cart_button' ) ) {
 			remove_action( 'woocommerce_review_order_after_cart_contents', 'woocommerce_gzd_template_checkout_back_to_cart', 10 );
@@ -79,6 +77,19 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Substep review text
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 10 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 10 );
+	}
+
+	/*
+	* Add or remove checkout page hooks.
+	*/
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Place order
+		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_gzd_template_order_submit', wc_gzd_get_hook_priority( 'checkout_order_submit' ) );
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_gzd_template_order_submit_fallback', 50 );
+		add_action( 'fc_place_order', 'woocommerce_gzd_template_order_submit', wc_gzd_get_hook_priority( 'checkout_order_submit' ) );
 	}
 
 

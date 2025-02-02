@@ -12,8 +12,16 @@
   padding-right: 0;
 }
 
-.fc-checkout-order-review .fc-place-order {
-  padding: 20px 0;
+.fc-sidebar .wc-gzd-place-order .fc-place-order {
+  padding: 0 0 10px;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .wc-gzd-place-order .fc-place-order {
+  padding-bottom: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-place-order {
+  padding-bottom: 10px;
 }
 
 .fc-wrapper .fc-sidebar .fc-sidebar__inner .wc-gzd-order-submit div.place-order {
