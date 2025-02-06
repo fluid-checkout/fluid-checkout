@@ -55,7 +55,6 @@ class FluidCheckout_ClickToAddressAutoComplete extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-clicktoaddress-auto-complete', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/clicktoaddress-auto-complete/checkout-clicktoaddress-auto-complete' ), array( 'jquery' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-clicktoaddress-auto-complete', 'window.addEventListener("load",function(){CheckoutClickToAddressAutoComplete.init(fcSettings.checkoutClickToAddressAutoComplete);})' );
 	}
 
 	/**
