@@ -25,8 +25,6 @@
 		searchAddressButtonSelector: '.cc_c2a_hide',
 		searchAddressInputSelector: '.cc_c2a_search_input',
 		addressFormSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields',
-		hiddenFieldBillingSelector: '#cc_c2a_fields_visible-billing',
-		hiddenFieldShippingSelector: '#cc_c2a_fields_visible-shipping',
 		initIndicatorSelector: '#cc_c2a',
 	};
 
@@ -201,9 +199,6 @@
 	 */
 	_publicMethods.init = function( options ) {
 		if ( _hasInitialized ) { return; }
-
-		// Merge settings
-		_settings = FCUtils.extendObject( _settings, options );
 
 		// Add event listeners
 		document.addEventListener( 'click', handleClick, true );
