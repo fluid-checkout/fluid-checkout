@@ -19,6 +19,9 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if Mailchimp is not configured
+		if ( ! function_exists( 'mailchimp_is_configured' ) || ! mailchimp_is_configured() ) { return; }
+
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
