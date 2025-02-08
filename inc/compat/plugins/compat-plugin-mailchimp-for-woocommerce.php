@@ -28,6 +28,9 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
+		// Review text lines
+		add_filter( 'fc_substep_text_contact_field_keys_skip_list', array( $this, 'remove_subscribe_checkbox_value_from_review_lines' ), 10 );
+
 		// Subscribe box
 		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_add_newsletter_as_checkout_field' ), 100 );
 		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'maybe_add_newsletter_to_contact_fields' ), 100 );
@@ -97,6 +100,18 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 		$settings = array_merge( $settings, $settings_new );
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Remove the subscribe checkbox value from the review text lines.
+	 *
+	 * @param  array  $field_keys_skip_list  The list of field keys to skip in the substep review text.
+	 */
+	public function remove_subscribe_checkbox_value_from_review_lines( $field_keys_skip_list ) {
+		$field_keys_skip_list[] = 'mailchimp_woocommerce_newsletter';
+		return $field_keys_skip_list;
 	}
 
 
