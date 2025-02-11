@@ -366,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with theme Motta.
 * Added: Compatibility with plugin Revolut Gateway for WooCommerce.
+* Added: Compatibility with plugin WooCommerce PDF Invoices & Packing Slips.
 * Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
 * Added: New filter `fc_use_verbose_loading_indicator` to enable use of verbose loading indicator icon on blocked parts of the page, and on the entire page when submitting the checkout form.
 * Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
