@@ -371,6 +371,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
 * Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
 * Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
+* Improved: Compatibility with plugin WooPayments. Fixed layout breaking when WooPayments payment method is selected on checkout page.
 * Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
 * Improved: Styles for loading indicator for the place order button to only show loading icon while processing, hiding its text.
 * Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
