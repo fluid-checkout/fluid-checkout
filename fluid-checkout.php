@@ -258,9 +258,9 @@ class FluidCheckout {
 		if ( ! $locale ) { return $file; }
 
 		// Get whether current file is saved to the system directory
-		$is_system_file = -1 !== strpos( $file, trailingslashit( WP_LANG_DIR ) . 'plugins/' );
+		$is_system_file = false !== strpos( $file, trailingslashit( WP_LANG_DIR ) . 'plugins/' );
 
-		// Bail if custom translation file location, and file exists
+		// Bail if custom translation file location, and the custom file exists
 		if ( ! $is_system_file && file_exists( $file ) ) { return $file; }
 
 		// Return the correct translation file path
