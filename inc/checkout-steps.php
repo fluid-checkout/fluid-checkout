@@ -101,6 +101,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 
+		// Checkout form hooks
+		// Needs to be called in multiple places for compatibility with 3rd-party plugins
+		// that move these hooks to other positions or call them early.
+		$this->checkout_form_hooks();
+
 		// Notices
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_end_tag' ), 100 );
@@ -217,6 +222,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		// Checkout form hooks
+		// Needs to be called in multiple places for compatibility with 3rd-party plugins
+		// that move these hooks to other positions or call them early.
+		$this->checkout_form_hooks();
+
 		// Place order position
 		$this->place_order_position_hooks();
 
@@ -229,6 +239,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
+		// Checkout form hooks
+		// Needs to be called in multiple places for compatibility with 3rd-party plugins
+		// that move these hooks to other positions or call them early.
+		$this->checkout_form_hooks();
+
+		// Order notes
+		$this->order_notes_hooks();
+
+		// Persisted data
+		$this->customer_address_data_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for the checkout form.
+	 */
+	public function checkout_form_hooks() {
 		// Unhook WooCommerce functions
 		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
 		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
@@ -236,12 +262,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
-
-		// Order notes
-		$this->order_notes_hooks();
-
-		// Persisted data
-		$this->customer_address_data_hooks();
 	}
 
 	/**
@@ -697,6 +717,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Add extra class to enable form fields font-size styles
 		if ( true === apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_fix_zoom_in_form_fields_mobile_devices' ) ) ) ) {
 			$add_classes[] = 'has-form-field-font-size-fix';
+		}
+
+		// Add extra class to enable form fields font-size styles
+		if ( true === apply_filters( 'fc_use_verbose_loading_indicator', false ) ) {
+			$add_classes[] = 'has-loading-indicator-verbose';
 		}
 
 		return array_merge( $classes, $add_classes );
@@ -3409,12 +3434,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_substep_shipping_address_fields() {
 		ob_start();
-
-		wc_get_template( 'checkout/form-shipping.php', array(
-			'checkout'                        => WC()->checkout(),
-			'is_shipping_same_as_billing'     => $this->is_shipping_same_as_billing(),
-		) );
-
+		WC()->checkout()->checkout_form_shipping();
 		return ob_get_clean();
 	}
 

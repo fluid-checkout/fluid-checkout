@@ -44,13 +44,15 @@ body#{ $_body-theme-selector } div.woocommerce .form-row.fc-loading .woocommerce
 
 // BUTTONS
 body#{ $_body-theme-selector } div.woocommerce button.fc-loading,
-body#{ $_body-theme-selector } div.woocommerce .button.fc-loading {
+body#{ $_body-theme-selector } div.woocommerce .button.fc-loading,
+body#{ $_body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-button.fc-loading {
 	position: relative;
 	color: transparent !important; // Needed to override theme styles
 }
 
 body#{ $_body-theme-selector } div.woocommerce button.fc-loading:after,
-body#{ $_body-theme-selector } div.woocommerce .button.fc-loading:after {
+body#{ $_body-theme-selector } div.woocommerce .button.fc-loading:after,
+body#{ $_body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-button.fc-loading:after {
 	@include icon( $loader-icon-name );
 	@include icon-size( $icon-size );
 
@@ -69,4 +71,36 @@ body#{ $_body-theme-selector } div.woocommerce .button.fc-loading:after {
 	animation: $loader-animation-name--button $loader-animation-speed linear infinite;
 	color: $white !important; // Needed to override theme styles
 	pointer-events: none;
+}
+
+
+
+// BLOCKUI OVERLAY (verbose indicator)
+body#{ $_body-theme-selector }.has-loading-indicator-verbose div.woocommerce .blockUI.blockOverlay:after {
+	@include icon( $loader-icon-name );
+	@include icon-size( $icon-size );
+
+	z-index: z( 'above' );
+	content: icon-glyph( $loader-icon-name ) !important; // Needed to override validation icon styles as both target the same element
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX( -50% ) translateY( -50% );
+	width: $icon-size !important; // Needed to override validation icon styles as both target the same element
+	height: $icon-size !important; // Needed to override validation icon styles as both target the same element
+	font-size: $icon-size !important; // Needed to override validation icon styles as both target the same element
+	line-height: $icon-size !important; // Needed to override validation icon styles as both target the same element
+	border-radius: 100%;
+	background-color: transparent !important; // Needed to override validation icon styles as both target the same element
+	animation: $loader-animation-name $loader-animation-speed linear infinite;
+	color: $grey !important; // Needed to override validation icon styles as both target the same element
+	pointer-events: none;
+}
+
+body#{ $_body-theme-selector }.has-loading-indicator-verbose div.woocommerce form.checkout > .blockUI.blockOverlay:after {
+	@include icon-size( $icon-size-large );
+	width: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
+	height: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
+	font-size: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
+	line-height: $icon-size-large !important; // Needed to override validation icon styles as both target the same element
 }
