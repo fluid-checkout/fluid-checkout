@@ -19,11 +19,17 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Bail if Mailchimp is not configured
+		if ( ! function_exists( 'mailchimp_is_configured' ) || ! mailchimp_is_configured() ) { return; }
+
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+		// Review text lines
+		add_filter( 'fc_substep_text_contact_field_keys_skip_list', array( $this, 'remove_subscribe_checkbox_value_from_review_lines' ), 10 );
 
 		// Subscribe box
 		add_filter( 'woocommerce_billing_fields', array( $this, 'maybe_add_newsletter_as_checkout_field' ), 100 );
@@ -99,13 +105,25 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 
 
 	/**
+	 * Remove the subscribe checkbox value from the review text lines.
+	 *
+	 * @param  array  $field_keys_skip_list  The list of field keys to skip in the substep review text.
+	 */
+	public function remove_subscribe_checkbox_value_from_review_lines( $field_keys_skip_list ) {
+		$field_keys_skip_list[] = 'mailchimp_woocommerce_newsletter';
+		return $field_keys_skip_list;
+	}
+
+
+
+	/**
 	 * Maybe add the newsletter checkbox as a checkout field to allow sorting by priority.
 	 *
 	 * @param   array  $fields   The billing fields.
 	 */
 	public function maybe_add_newsletter_as_checkout_field( $fields ) {
 		// Bail if option to move subscribe box is not enabled
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return $fields; }
 
 		// Bail if field is already added
 		if ( array_key_exists( 'mailchimp_woocommerce_newsletter', $fields ) ) { return $fields; }
@@ -135,7 +153,7 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 	 */
 	public function maybe_add_newsletter_to_contact_fields( $display_fields ) {
 		// Bail if option to move subscribe box is not enabled
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return; }
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_mailchimp_force_subscribe_checkbox_position' ) ) { return $display_fields; }
 
 		$display_fields[] = 'mailchimp_woocommerce_newsletter';
 		return $display_fields;

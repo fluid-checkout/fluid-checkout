@@ -90,6 +90,7 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 		// Signup
 		if ( array_key_exists( 'billing', $fields ) && array_key_exists( 'kl_newsletter_checkbox', $fields[ 'billing' ] ) ) {
 			$fields[ 'billing' ][ 'kl_newsletter_checkbox' ][ 'priority' ] = 200;
+			$fields[ 'billing' ][ 'kl_newsletter_checkbox' ][ 'class' ] = array( 'kl_newsletter_checkbox_field', 'form-row-wide' );
 		}
 
 		return $fields;
