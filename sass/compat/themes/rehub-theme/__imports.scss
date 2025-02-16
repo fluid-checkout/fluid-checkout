@@ -1,0 +1,19 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-rehub-theme' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"buttons--checkout",
+	"checkout-content-area",
+	"checkout-place-order",
+	"checkout-validation",
+	"woocommerce-form-fields-select2";

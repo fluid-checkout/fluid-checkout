@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Motta.
+* Added: Compatibility with theme Rehub.
 * Added: Compatibility with plugin WooComerce Quantity Discounts, Rules & Swatches.
 * Added: Compatibility with plugin Revolut Gateway for WooCommerce.
 * Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
