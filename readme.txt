@@ -377,6 +377,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
 * Fixed: Layout styles causing sticky header for some themes to not get sticky.
 * Fixed: PHP warnings for undefined variable `$new_line`.
+* Fixed: Custom translation files from Loco Translate not loading correctly.
 
 = 4.0.1 - 2025-01-07 =
 
