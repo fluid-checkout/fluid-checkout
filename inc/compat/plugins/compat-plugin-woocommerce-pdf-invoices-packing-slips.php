@@ -28,7 +28,7 @@ class FluidCheckout_WooCommercePDFInvoicesPackingSlips extends FluidCheckout {
 	 */
 	public function before_wpo_wcpdf_billing_address_hooks() {
 		// Formatted address
-		add_action( 'fc_add_phone_localisation_formats', array( $this, 'skip_add_phone_localisation_formats' ), 10 );
+		add_filter( 'fc_add_phone_localisation_formats', array( $this, 'skip_add_phone_localisation_formats' ), 10 );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class FluidCheckout_WooCommercePDFInvoicesPackingSlips extends FluidCheckout {
 	 */
 	public function after_wpo_wcpdf_billing_address_hooks() {
 		// Formatted address
-		remove_action( 'fc_add_phone_localisation_formats', array( $this, 'skip_add_phone_localisation_formats' ), 10 );
+		remove_filter( 'fc_add_phone_localisation_formats', array( $this, 'skip_add_phone_localisation_formats' ), 10 );
 	}
 
 
