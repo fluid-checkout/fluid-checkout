@@ -56,6 +56,7 @@ class FluidCheckout_WooCommerceGermanizedPRO extends FluidCheckout {
 		if ( 'no' === FluidCheckout_Settings::instance()->get_option( $option_key ) ) { return; }
 
 		// Disable multistep checkout option
+		// Need to update the option value because it is not possible to change it via hooks
 		update_option( $option_key, 'no' );
 	}
 
