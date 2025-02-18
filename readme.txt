@@ -377,6 +377,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin Mailchimp for WooCommerce. Remove subscription checkbox value from the step review text lines.
 * Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
 * Improved: Styles for loading indicator for the place order button to only show loading icon while processing, hiding its text.
+* Improved: Styles code for the order summary section, to allow changing the main element's selector.
 * Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
 * Fixed: Layout styles causing sticky header for some themes to not get sticky.
 * Fixed: PHP warnings for undefined variable `$new_line`.
