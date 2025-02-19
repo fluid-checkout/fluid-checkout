@@ -44,7 +44,7 @@ class FluidCheckout_ClickToAddressAutoComplete extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 	}
 
 
@@ -61,7 +61,7 @@ class FluidCheckout_ClickToAddressAutoComplete extends FluidCheckout {
 	/**
 	 * Enqueue scripts.
 	 */
-	public function maybe_enqueue_assets() {
+	public function enqueue_assets() {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-clicktoaddress-auto-complete' );
 	}
