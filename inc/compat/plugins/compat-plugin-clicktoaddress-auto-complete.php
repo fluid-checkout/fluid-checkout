@@ -40,11 +40,36 @@ class FluidCheckout_ClickToAddressAutoComplete extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
+		// Plugin's field validation
+		$this->maybe_force_disable_field_validation();
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+	}
+
+
+
+	/**
+	 * Maybe force disable phone and email fields validation from the plugin.
+	 */
+	public function maybe_force_disable_field_validation() {
+		$integration_id = 'clicktoaddress_autocomplete';
+
+		// Bail if WC Intergrations are not available
+		if ( ! function_exists( 'WC' ) || null === WC()->integrations || ! is_array( WC()->integrations->integrations ) || ! isset( WC()->integrations->integrations[ $integration_id ] ) ) { return; }
+
+		// Get Fetchify integration
+		$integration = WC()->integrations->integrations[ $integration_id ];
+
+		// Bail if below required properties are not set
+		if ( ! isset( $integration->config->phone ) || ! isset( $integration->config->email ) ) { return; }
+
+		// Force disable phone and email fields validation
+		$integration->config->phone->enabled = false;
+		$integration->config->email->enabled = false;
 	}
 
 
