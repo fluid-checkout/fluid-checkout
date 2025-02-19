@@ -1,0 +1,3 @@
+.fc-wrapper li.wc_payment_method:has(label .stripe-pmme-container) {
+  display: list-item;
+}
