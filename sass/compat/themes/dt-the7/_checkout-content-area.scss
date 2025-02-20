@@ -10,3 +10,19 @@ body#{ $_body-theme-selector }.phantom-sticky:not( .has-checkout-header ) {
 body#{ $_body-theme-selector }.phantom-sticky:not( .has-checkout-header ).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
 	padding-top: $global-spacing-tiny;
 }
+
+body#{ $_body-theme-selector }.has-checkout-header .checkout-page-title + #main.fc-main {
+	margin-top: 60px; // Needed to use `px` as units to match theme styles
+}
+
+// Spacing when additional sections from the theme are present
+@media (#{$bp-smaller-than-desktop}) {
+	body#{ $_body-theme-selector }.has-checkout-header .page-title + #main.fc-main,
+	body#{ $_body-theme-selector }.has-checkout-header .checkout-page-title + #main.fc-main {
+		padding-top: 0;
+	}
+	body#{ $_body-theme-selector }.has-checkout-header .fc-checkout-header + .page-title,
+	body#{ $_body-theme-selector }.has-checkout-header .fc-checkout-header + .checkout-page-title {
+		margin-top: $checkout-header-height;
+	}
+}

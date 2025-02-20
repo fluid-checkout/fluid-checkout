@@ -6,6 +6,20 @@ body.theme-dt-the7.phantom-sticky:not(.has-checkout-header).admin-bar .fc-sideba
   padding-top: 5px;
 }
 
+body.theme-dt-the7.has-checkout-header .checkout-page-title + #main.fc-main {
+  margin-top: 60px;
+}
+
+@media (max-width: 999px) {
+  body.theme-dt-the7.has-checkout-header .page-title + #main.fc-main,
+  body.theme-dt-the7.has-checkout-header .checkout-page-title + #main.fc-main {
+    padding-top: 0;
+  }
+  body.theme-dt-the7.has-checkout-header .fc-checkout-header + .page-title,
+  body.theme-dt-the7.has-checkout-header .fc-checkout-header + .checkout-page-title {
+    margin-top: 60px;
+  }
+}
 body.theme-dt-the7.phantom-sticky header.fc-checkout-header {
   position: fixed !important;
   top: 0 !important;

@@ -19,12 +19,23 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+		
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Theme's page title section
+		add_action( 'fc_checkout_header', array( $this, 'maybe_display_additional_header_sections' ), 10 );
 	}
 
 
@@ -62,6 +73,31 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 		}
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Maybe output additional sections from the theme when using distraction free header and footer.
+	 */
+	public function maybe_display_additional_header_sections() {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Bail if theme functions are not available
+		if ( ! function_exists( 'presscore_template_config_init' ) || ! function_exists( 'presscore_fancy_header_controller' ) || ! function_exists( 'presscore_slideshow_controller' ) || ! function_exists( 'presscore_page_title_controller' ) || ! function_exists( 'dt_woocommerce_cart_progress' ) ) { return; }
+
+		// Initialize plugin's config object
+		presscore_template_config_init();
+
+		// Output "fancy header" section if enabled
+		presscore_fancy_header_controller();
+		// Output slideshow section if enabled
+		presscore_slideshow_controller();
+		// Output page title section if enabled
+		presscore_page_title_controller();
+		// Output checkout steps section if enabled
+		dt_woocommerce_cart_progress();
 	}
 
 }
