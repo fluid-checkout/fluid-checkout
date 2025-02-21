@@ -28,6 +28,9 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
+		// Settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 	}
 
 	/**
@@ -78,22 +81,63 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 
 
 	/**
+	 * Add new settings to the Fluid Checkout admin settings sections.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_settings( $settings ) {
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme The7', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_dt_the7_options',
+			),
+
+			array(
+				'title'           => __( 'Additional header sections', 'fluid-checkout' ),
+				'desc'            => __( 'Output additional header sections from the The7 theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
+				'id'              => 'fc_compat_theme_dt_the7_output_additional_header_sections',
+				'type'            => 'checkbox',
+				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_dt_the7_output_additional_header_sections' ),
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_dt_the7_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
+	}
+
+
+
+	/**
 	 * Maybe output additional sections from the theme when using distraction free header and footer.
 	 */
 	public function maybe_display_additional_header_sections() {
 		// Bail if not using distraction free header and footer
 		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
+		// Bail if theme sections output is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_dt_the7_output_additional_header_sections' ) ) { return; }
+
 		// Bail if theme functions are not available
-		if ( ! function_exists( 'presscore_template_config_init' ) || ! function_exists( 'presscore_fancy_header_controller' ) || ! function_exists( 'presscore_slideshow_controller' ) || ! function_exists( 'presscore_page_title_controller' ) || ! function_exists( 'dt_woocommerce_cart_progress' ) ) { return; }
+		if ( ! function_exists( 'presscore_template_config_init' ) || ! function_exists( 'the7_print_post_inlne_css' ) || ! function_exists( 'presscore_fancy_header_controller' ) || ! function_exists( 'presscore_slideshow_controller' ) || ! function_exists( 'presscore_page_title_controller' ) || ! function_exists( 'dt_woocommerce_cart_progress' ) ) { return; }
 
 		// Initialize plugin's config object
 		presscore_template_config_init();
 
+		// Output required inline CSS from the theme
+		the7_print_post_inlne_css();
+
 		// Output "fancy header" section if enabled
 		presscore_fancy_header_controller();
-		// Output slideshow section if enabled
-		presscore_slideshow_controller();
 		// Output page title section if enabled
 		presscore_page_title_controller();
 		// Output checkout steps section if enabled
