@@ -70,3 +70,7 @@ body.theme-dt-the7:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sti
     transform: translateY(5px);
   }
 }
+
+body.theme-dt-the7 div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+  right: calc(8px + var(--the7-right-input-padding, 7px));
+}

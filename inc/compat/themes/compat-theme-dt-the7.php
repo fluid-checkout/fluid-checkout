@@ -31,6 +31,9 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 	/**
@@ -142,6 +145,35 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 		presscore_page_title_controller();
 		// Output checkout steps section if enabled
 		dt_woocommerce_cart_progress();
+	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => 'var(--the7-input-height)',
+				'--fluidcheckout--field--padding-left' => 'var(--the7-left-input-padding)',
+				'--fluidcheckout--field--border-color' => 'var(--the7-input-border-color)',
+				'--fluidcheckout--field--border-width' => 'var(--the7-top-input-border-width)',
+				'--fluidcheckout--field--border-radius' => 'var(--the7-input-border-radius)',
+				'--fluidcheckout--field--font-size' => 'var(--the7-form-md-font)',
+				'--fluidcheckout--field--background-color' => 'var(--the7-input-bg-color)',
+				'--fluidcheckout--field--background-color--accent' => '#222',
+
+				// Checkout validation styles
+				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '32px',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
