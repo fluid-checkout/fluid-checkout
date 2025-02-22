@@ -27,7 +27,7 @@ body.theme-dt-the7 div.woocommerce .form-row .fc-mailcheck-suggestion {
   background: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
   box-shadow: none;
   top: 0;
-  left: 0;
+  right: 0;
 }
 
 body.theme-dt-the7 div.woocommerce .form-row .woocommerce-error:before,
@@ -83,9 +83,9 @@ body.theme-dt-the7:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sti
 }
 
 body.theme-dt-the7 div.woocommerce form .form-row input[type=checkbox] {
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
 body.theme-dt-the7 div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-  right: calc(8px + var(--the7-right-input-padding, 7px));
+  left: calc(8px + var(--the7-right-input-padding, 7px));
 }
