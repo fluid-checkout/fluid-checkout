@@ -372,6 +372,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
 * Added: New filter `fc_use_verbose_loading_indicator` to enable use of verbose loading indicator icon on blocked parts of the page, and on the entire page when submitting the checkout form.
 * Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
+* Improved: Compatibility with plugin Germanized for WooCommerce. Remove duplicate place order button when using WooCommerce PayPal Payments plugin.
 * Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
 * Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
 * Improved: Compatibility with plugin WooPayments. Fixed layout breaking when WooPayments payment method is selected on checkout page.
