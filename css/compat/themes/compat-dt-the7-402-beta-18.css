@@ -37,6 +37,17 @@ body.theme-dt-the7 div.woocommerce .shipping-method__package .woocommerce-error:
   mask-image: none;
 }
 
+body.theme-dt-the7 .woocommerce-checkout-review-order .product-quantity,
+body.theme-dt-the7 .woocommerce-checkout-review-order .product-total,
+body.theme-dt-the7 .woocommerce-checkout-review-order .cart-subtotal th,
+body.theme-dt-the7 .woocommerce-checkout-review-order .order-total th,
+body.theme-dt-the7 .woocommerce-checkout-review-order .shipping th,
+body.theme-dt-the7 .woocommerce-checkout-review-order .about_paypal,
+body.theme-dt-the7 .woocommerce-checkout-review-order .product-total .woocommerce-Price-amount,
+body.theme-dt-the7 .woocommerce-checkout-review-order tfoot th {
+  color: var(--the7-h1-color);
+}
+
 body.theme-dt-the7.phantom-sticky header.fc-checkout-header {
   position: fixed !important;
   top: 0 !important;
