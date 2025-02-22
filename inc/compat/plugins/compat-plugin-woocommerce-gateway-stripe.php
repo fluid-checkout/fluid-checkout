@@ -78,8 +78,7 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 		];
 
 		return $stripe_params;
-	 }
-
+	}
 
 }
 
