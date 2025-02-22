@@ -92,7 +92,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 
 		// Replace the function that adds the checkbox as a checkout field
 		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early
-		remove_filter( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_optin_field_v3' ), 10 );
 
 		// Order fields position
@@ -142,7 +142,8 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		if ( empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
 
 		// Remove fields from display location determined by Sendinblue
-		remove_action( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
+		$this->remove_filter_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
+		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_optin_field_v3' ), 10 );
 
 		// Always add field to billing, then move it to the contact step
