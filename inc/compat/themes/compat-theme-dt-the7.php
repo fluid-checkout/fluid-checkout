@@ -21,6 +21,9 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// Template file loader
+		add_filter( 'woocommerce_locate_template', array( $this, 'maybe_locate_template_checkout_page_template' ), 100, 3 );
 		
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
@@ -145,6 +148,50 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 		presscore_page_title_controller();
 		// Output checkout steps section if enabled
 		dt_woocommerce_cart_progress();
+	}
+
+
+
+	/**
+	 * Locate template files from this plugin.
+	 */
+	public function maybe_locate_template_checkout_page_template( $template, $template_name, $template_path ) {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		$_template = null;
+
+		// Set template path to default value when not provided
+		if ( ! $template_path ) { $template_path = 'woocommerce/'; };
+
+		// Get plugin path
+		$plugin_path = self::$directory_path . 'templates/compat/themes/dt-the7/checkout-page-template/';
+
+		// Get the template from this plugin, if it exists
+		if ( file_exists( $plugin_path . $template_name ) ) {
+			$_template = $plugin_path . $template_name;
+
+			// Look for template file in the theme
+			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+				$_template_override = locate_template( array(
+					trailingslashit( $template_path ) . $template_name,
+					$template_name,
+				) );
+	
+				// Check if files exist before changing template
+				if ( file_exists( $_template_override ) ) {
+					$_template = $_template_override;
+				}
+			}
+		}
+
+		// Use default template
+		if ( ! $_template ) {
+			$_template = $template;
+		}
+
+		// Return what we found
+		return $_template;
 	}
 
 
