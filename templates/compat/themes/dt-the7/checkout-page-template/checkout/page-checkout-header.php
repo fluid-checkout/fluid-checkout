@@ -49,7 +49,7 @@ if ( is_array( $body_custom_attributes ) ) {
 <?php wp_head(); ?>
 </head>
 
-<?php // CHANGE: Add theme body ID for CSS variables to applied correctly by the theme ?>
+<?php // CHANGE: Add theme body ID for CSS variables to be applied correctly by the theme ?>
 <body id="the7-body" <?php body_class(); ?> <?php echo $body_custom_attributes_esc; // WPCS: XSS ok. ?>>
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
