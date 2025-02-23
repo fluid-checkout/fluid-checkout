@@ -153,7 +153,7 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 
 
 	/**
-	 * Locate template files from this plugin.
+	 * Maybe locate template files from this plugin.
 	 */
 	public function maybe_locate_template_checkout_page_template( $template, $template_name, $template_path ) {
 		// Bail if not using distraction free header and footer
