@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme The7.
 * Added: Compatibility with theme Motta.
 * Added: Compatibility with theme Rehub.
 * Added: Compatibility with plugin Fetchify.
