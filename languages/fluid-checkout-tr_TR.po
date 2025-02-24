@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Fluid Checkout for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-03 18:58+0000\n"
-"PO-Revision-Date: 2024-12-11 13:50+0000\n"
+"PO-Revision-Date: 2025-02-24 20:50+0000\n"
 "Last-Translator: Diego Versiani\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.11; wp-6.6.2"
+"X-Loco-Version: 2.7.1; wp-6.7.2"
 
 #: inc/admin/admin-settings-checkout.php:407
 msgid "\"Add\" link button"
@@ -126,7 +126,7 @@ msgstr ""
 "(ücretsiz ve PRO) eklentilerini kullandığınızı tespit ettik. Bu eklentilerle "
 "entegrasyon Fluid Checkout PRO'ya taşınmıştır.</p>"
 
-#: fluid-checkout.php:580
+#: fluid-checkout.php:593
 #, php-format
 #| msgid ""
 #| "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
@@ -138,8 +138,8 @@ msgstr ""
 "<strong> %1$s</strong>, <strong>%2$s</strong>'nin yüklenmesini ve "
 "etkinleştirilmesini gerektirir. <a href=\"%4$s\">%3$s</a>"
 
-#: inc/admin/admin-settings-checkout.php:735
-#: inc/admin/admin-settings-checkout.php:742
+#: inc/admin/admin-settings-checkout.php:746
+#: inc/admin/admin-settings-checkout.php:753
 msgid "Account matching"
 msgstr "Hesap eşleştirme"
 
@@ -151,7 +151,7 @@ msgstr "Hesap eşleştirme / kullanıcı eşleştirme"
 msgid "Action link on the order summary at checkout."
 msgstr "Ödeme sırasında sipariş özetindeki Eylem bağlantısı."
 
-#: fluid-checkout.php:576
+#: fluid-checkout.php:589
 #, php-format
 msgid "Activate %s"
 msgstr "Etkinleştir %s"
@@ -164,7 +164,7 @@ msgid "Activated"
 msgstr "Etkinleştirilmiş"
 
 #. %s: Form field label
-#: inc/checkout-coupon-codes.php:312 inc/checkout-hide-optional-fields.php:138
+#: inc/checkout-coupon-codes.php:311 inc/checkout-hide-optional-fields.php:138
 #, php-format
 msgid "Add %s"
 msgstr "%s ekle"
@@ -201,7 +201,7 @@ msgstr "Teşekkür sayfasına widget alanları ekleyin"
 msgid "Add-ons"
 msgstr "Eklentiler"
 
-#: inc/checkout-steps.php:2267
+#: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Ek notlar"
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "All PRO features + All add-ons for a special price."
 msgstr "Tüm PRO özellikleri + Tüm eklentiler özel bir fiyata."
 
-#: inc/admin/admin-settings-checkout.php:696
+#: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
@@ -325,11 +325,11 @@ msgstr ""
 msgid "Already have an account?"
 msgstr "Zaten bir hesabınız var mı?"
 
-#: inc/admin/admin-settings-checkout.php:673
+#: inc/admin/admin-settings-checkout.php:684
 msgid "Always show"
 msgstr "Her zaman göster"
 
-#: inc/checkout-steps.php:3165
+#: inc/checkout-steps.php:3184
 msgid "An account will be created with the information provided."
 msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
 
@@ -365,7 +365,7 @@ msgstr "Ödeme yöntemlerinden sonra bir alt adım olarak"
 msgid "As a substep before payment methods"
 msgstr "Ödeme yöntemlerinden önce bir alt adım olarak"
 
-#: inc/admin/admin-settings-checkout.php:744
+#: inc/admin/admin-settings-checkout.php:755
 msgid ""
 "Associate the guest customer's orders with their existing account when an "
 "account already exists with the customer's contact details."
@@ -440,7 +440,7 @@ msgstr "Fatura Adresi"
 msgid "Billing phone"
 msgstr "Fatura telefonu"
 
-#: inc/checkout-steps.php:2281
+#: inc/checkout-steps.php:2300
 msgid "Billing to"
 msgstr "Fatura Bilgileri"
 
@@ -478,7 +478,7 @@ msgstr "Kutulu"
 msgid "Breadcrumbs"
 msgstr "Ekmek Kırıntıları"
 
-#: inc/checkout-coupon-codes.php:276
+#: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr "Uygula"
@@ -525,7 +525,7 @@ msgstr "Sepet düzeni"
 msgid "Cart optimizations"
 msgstr "Sepet optimizasyonları"
 
-#: inc/checkout-steps.php:946
+#: inc/checkout-steps.php:965
 msgid "Cart total:"
 msgstr "Sepet toplamı:"
 
@@ -541,7 +541,7 @@ msgstr ""
 "Ödeme formundaki sevkiyat adresi bölümü için şirket adı alanının "
 "görünürlüğünü değiştirin."
 
-#: inc/checkout-steps.php:2806
+#: inc/checkout-steps.php:2825
 #, php-format
 msgid "Change: %s"
 msgstr "Değiştir: %s"
@@ -631,32 +631,32 @@ msgstr "Ödeme ilerlemesi"
 msgid "Checkout Sidebar"
 msgstr "Ödeme Sayfası Kenar Çubuğu"
 
-#: inc/checkout-steps.php:2216
+#: inc/checkout-steps.php:2235
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr "Faturalandırma"
 
-#: inc/checkout-steps.php:2195
+#: inc/checkout-steps.php:2214
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr "İletişim"
 
-#: inc/checkout-steps.php:2225
+#: inc/checkout-steps.php:2244
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr "Ödeme"
 
-#: inc/checkout-steps.php:2204
+#: inc/checkout-steps.php:2223
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr "Gönderim"
 
-#: inc/checkout-steps.php:2806
+#: inc/checkout-steps.php:2825
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Değiştir"
 
-#: inc/checkout-steps.php:2807
+#: inc/checkout-steps.php:2826
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr "Değişiklikleri kaydet"
@@ -737,7 +737,7 @@ msgstr ""
 msgid "Classic"
 msgstr "Klasik"
 
-#: inc/checkout-steps.php:946
+#: inc/checkout-steps.php:965
 msgid "Click to go to the order summary"
 msgstr "Sipariş özetine gitmek için tıklayın"
 
@@ -841,7 +841,7 @@ msgstr ""
 "Captcha bölümünün görüntüleneceği konumu tanımlayın. Seçilen captcha türüne "
 "bağlı olarak bazı pozisyonlar çalışmayabilir."
 
-#: inc/admin/admin-settings-checkout.php:682
+#: inc/admin/admin-settings-checkout.php:693
 msgid "Define the visibility of the additional order notes field."
 msgstr "Ek sipariş notları alanının görünürlüğünü tanımlayın."
 
@@ -889,12 +889,12 @@ msgid "Display express checkout buttons in one line for larger screens"
 msgstr ""
 "Daha büyük ekranlar için hızlı ödeme düğmelerini tek satırda görüntüleme"
 
-#: inc/admin/admin-settings-checkout.php:695
+#: inc/admin/admin-settings-checkout.php:706
 msgid "Display gift message and other gift options at the checkout page"
 msgstr ""
 "Ödeme sayfasında hediye mesajını ve diğer hediye seçeneklerini görüntüleme"
 
-#: inc/admin/admin-settings-checkout.php:754
+#: inc/admin/admin-settings-checkout.php:765
 msgid "Display message when an account exists with the email address provided"
 msgstr "Sağlanan e-posta adresiyle bir hesap mevcut olduğunda mesajı görüntüle"
 
@@ -933,7 +933,7 @@ msgstr "Kupon kodları bölüm başlığını görüntüle"
 msgid "Display the form field labels visible on the page"
 msgstr "Sayfada görünür form alanı etiketlerini görüntüleme"
 
-#: inc/admin/admin-settings-checkout.php:716
+#: inc/admin/admin-settings-checkout.php:727
 msgid ""
 "Display the gift message as part of the order details table instead of a "
 "separate section"
@@ -941,7 +941,7 @@ msgstr ""
 "Hediye mesajını ayrı bir bölüm yerine sipariş ayrıntıları tablosunun bir "
 "parçası olarak görüntüleyin"
 
-#: inc/admin/admin-settings-checkout.php:706
+#: inc/admin/admin-settings-checkout.php:717
 msgid "Display the gift message fields always expanded"
 msgstr "Hediye mesajı alanlarını her zaman genişletilmiş olarak görüntüleme"
 
@@ -1004,7 +1004,7 @@ msgstr ""
 msgid "Distraction free header and footer"
 msgstr "Dikkat dağıtmayan üstbilgi ve altbilgi"
 
-#: inc/admin/admin-settings-checkout.php:671
+#: inc/admin/admin-settings-checkout.php:682
 msgid "Do not change placeholders"
 msgstr "Yer tutucuları değiştirmeyin"
 
@@ -1030,7 +1030,7 @@ msgstr "Herhangi bir gönderi adresi kaydetmeyin"
 msgid "Don't show this again"
 msgstr "Bunu bir daha gösterme"
 
-#: inc/checkout-steps.php:5983
+#: inc/checkout-steps.php:6008
 #: templates/fc/checkout-steps/checkout/review-order-section.php:58
 #| msgid "Edit Cart"
 msgid "Edit cart"
@@ -1097,7 +1097,7 @@ msgid "Enable thank you page and order details optimizations"
 msgstr ""
 "Teşekkür sayfası ve sipariş ayrıntıları optimizasyonlarını etkinleştirin"
 
-#: inc/admin/admin-settings-checkout.php:743
+#: inc/admin/admin-settings-checkout.php:754
 msgid "Enable the account matching feature"
 msgstr "Hesap eşleştirme özelliğini etkinleştirin"
 
@@ -1117,7 +1117,7 @@ msgstr "Bu eklentilerle ödeme deneyiminizi geliştirin."
 msgid "Enhanced select fields"
 msgstr "Geliştirilmiş seçim alanları"
 
-#: inc/checkout-coupon-codes.php:275
+#: inc/checkout-coupon-codes.php:274
 msgid "Enter your code here"
 msgstr "Kodunuzu buraya girin"
 
@@ -1152,6 +1152,10 @@ msgid ""
 msgstr ""
 "Fluid Checkout'un tüm avantajlarını sepet sayfanıza ve teşekkür "
 "sayfalarınıza genişletin."
+
+#: inc/admin/admin-settings-tools.php:122
+msgid "Fix automatic zoom-in on form fields"
+msgstr "Form alanlarında otomatik yakınlaştırmayı düzeltme"
 
 #. Author of the plugin
 #: inc/admin/admin-tab-fluid-checkout.php:25
@@ -1192,14 +1196,12 @@ msgstr "Fluid Checkout Lite 4.0+ - Önemli değişiklikler!"
 msgid "Fluid Checkout PRO"
 msgstr "Fluid Checkout PRO"
 
-#: inc/admin/admin-setting-type-fc-addons.php:80
-#: inc/admin/admin-setting-type-fc-addons.php:127
-msgid "Fluid Checkout PRO &mdash; Bundle"
-msgstr "Fluid Checkout PRO &mdash; Bundle"
-
 #: inc/admin/admin-setting-type-fc-addons.php:78
+#: inc/admin/admin-setting-type-fc-addons.php:80
 #: inc/admin/admin-setting-type-fc-addons.php:125
-msgid "Fluid Checkout PRO - Bundle"
+#: inc/admin/admin-setting-type-fc-addons.php:127
+#| msgid "Fluid Checkout PRO - Bundle"
+msgid "Fluid Checkout PRO – Bundle"
 msgstr "Fluid Checkout PRO - Bundle"
 
 #: inc/admin/admin-settings-checkout.php:170
@@ -1234,7 +1236,8 @@ msgstr ""
 
 #: inc/admin/admin-setting-type-fc-addons.php:97
 #: inc/admin/admin-setting-type-fc-addons.php:136
-msgid "Get the bundle &mdash; Only 129 EUR"
+#| msgid "Get the bundle &mdash; Only 129 EUR"
+msgid "Get the Bundle – Only 129 EUR"
 msgstr "Paketi alın &mdash; Sadece 129 EUR"
 
 #: inc/admin/admin-setting-type-fc-addons.php:180
@@ -1257,7 +1260,7 @@ msgstr "Hediye mesajı"
 msgid "Gift messages and packing slips"
 msgstr "Hediye mesajları ve paketleme fişleri"
 
-#: inc/admin/admin-settings-checkout.php:694
+#: inc/admin/admin-settings-checkout.php:705
 msgid "Gift options"
 msgstr "Hediye seçenekleri"
 
@@ -1265,7 +1268,7 @@ msgstr "Hediye seçenekleri"
 msgid "Go to Germanized settings"
 msgstr "Almanlaştırılmış ayarlara git"
 
-#: fluid-checkout.php:572
+#: fluid-checkout.php:585
 msgid "Go to Plugin Search"
 msgstr "Eklenti Aramaya Git"
 
@@ -1312,7 +1315,7 @@ msgstr "İşte size başlamanız için birkaç kaynak:"
 #: inc/admin/admin-settings-cart.php:146 inc/admin/admin-settings-cart.php:169
 #: inc/admin/admin-settings-cart.php:184
 #: inc/admin/admin-settings-checkout.php:389
-#: inc/admin/admin-settings-checkout.php:686
+#: inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
 msgstr "Gizli"
 
@@ -1355,7 +1358,8 @@ msgid "https://fluidcheckout.com/"
 msgstr "https://fluidcheckout.com/"
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
-msgid "I already have it &mdash; Hide this offer"
+#| msgid "I already have it &mdash; Hide this offer"
+msgid "I already have it – Hide this offer"
 msgstr "Zaten sahibim &mdash; Bu teklifi gizle"
 
 #: inc/admin/admin-notice-review-request.php:51
@@ -1540,7 +1544,7 @@ msgstr "%1$s olarak oturum açıldı. <a href=\"%2$s\">Çıkış</a>"
 msgid "Logo image"
 msgstr "Logo resmi"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:74
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
 msgid "Mailchimp for WooCommerce"
 msgstr "WooCommerce için Mailchimp"
 
@@ -1592,11 +1596,11 @@ msgstr ""
 "kullanışlıdır. Fluid Checkout PRO kullanılırken Sepet, Alınan Sipariş ve "
 "Siparişi Görüntüle sayfaları için de geçerli olabilir."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Kaydol onay kutusunu iletişim adımına taşıyın"
 
-#: inc/checkout-steps.php:774
+#: inc/checkout-steps.php:793
 msgid "Multi-step"
 msgstr "Çok adımlı"
 
@@ -1608,7 +1612,7 @@ msgstr "Gönderim ve faturalandırma için birden fazla kayıtlı adres."
 msgid "My account layout"
 msgstr "Hesap düzenim"
 
-#: inc/checkout-steps.php:2237
+#: inc/checkout-steps.php:2256
 msgid "My contact"
 msgstr "İletişim"
 
@@ -1637,8 +1641,8 @@ msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
 
-#: inc/checkout-steps.php:3904
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:563
+#: inc/checkout-steps.php:3918
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Henüz seçilmedi."
 
@@ -1676,6 +1680,10 @@ msgid ""
 msgstr ""
 "Yalnızca ödeme sayfasında Impreza tema başlığını kullanırken geçerlidir."
 
+#: inc/admin/admin-settings-checkout.php:656
+msgid "Only show allowed countries for shipping or billing"
+msgstr "Yalnızca gönderim veya faturalama için izin verilen ülkeleri göster"
+
 #: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
 msgstr " Sadece gönderim ile ilgili sorular içindir."
@@ -1695,7 +1703,7 @@ msgstr "Optimize edilmiş sipariş alındı / teşekkür sayfası"
 #: inc/admin/admin-settings-checkout.php:571
 #: inc/admin/admin-settings-checkout.php:586
 #: inc/admin/admin-settings-checkout.php:613
-#: inc/admin/admin-settings-checkout.php:687
+#: inc/admin/admin-settings-checkout.php:698
 msgid "Optional"
 msgstr "Opsiyonel"
 
@@ -1721,7 +1729,7 @@ msgid "Order downloads"
 msgstr "İndirmeleri sipariş edin"
 
 #: inc/admin/admin-settings-order-received.php:222
-#: inc/admin/admin-settings-checkout.php:681
+#: inc/admin/admin-settings-checkout.php:692
 msgid "Order notes"
 msgstr "Sipariş notları"
 
@@ -1745,7 +1753,7 @@ msgstr "Sipariş ilerleme durumu"
 msgid "Order status"
 msgstr "Sipariş durumu"
 
-#: inc/checkout-steps.php:5918 inc/admin/admin-settings-cart.php:131
+#: inc/checkout-steps.php:5943 inc/admin/admin-settings-cart.php:131
 #: inc/admin/admin-settings-order-received.php:175
 #: inc/admin/admin-settings-checkout.php:248
 msgid "Order summary"
@@ -1810,7 +1818,7 @@ msgstr ""
 "Fluid Checkout üstbilgisi ve altbilgisi kullanılırken Woodmart temasından "
 "ödeme adımları bölümünün çıktısını alın."
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:81
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:87
 msgid ""
 "Override the position for the subscribe checkbox on the checkout page and "
 "always display it on the contact step"
@@ -1826,7 +1834,7 @@ msgstr "Sayfa arka plan rengi"
 msgid "Parcel terminal"
 msgstr "Koli terminali"
 
-#: inc/checkout-steps.php:2291
+#: inc/checkout-steps.php:2310
 msgid "Payment method"
 msgstr "Ödeme yöntemi"
 
@@ -1854,6 +1862,7 @@ msgid "Place order"
 msgstr "Sipariş verin"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:375
+#: inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
 msgstr "Lütfen telefon numaranızı doğrulayın."
 
@@ -1862,24 +1871,24 @@ msgid "Prevent automatic selection of the first shipping method"
 msgstr "İlk gönderi yönteminin otomatik olarak seçilmesini önleyin"
 
 #. Next checkout step title
-#: inc/checkout-steps.php:1669
+#: inc/checkout-steps.php:1688
 #, php-format
 msgid "Proceed to %s"
 msgstr "%s'ye ilerleyin"
 
-#: inc/checkout-steps.php:2217
+#: inc/checkout-steps.php:2236
 msgid "Proceed to billing"
 msgstr "Faturalandırmaya devam edin"
 
-#: inc/checkout-steps.php:2196
+#: inc/checkout-steps.php:2215
 msgid "Proceed to contact"
 msgstr "İletişim için devam edin"
 
-#: inc/checkout-steps.php:2226
+#: inc/checkout-steps.php:2245
 msgid "Proceed to payment"
 msgstr "Ödemeye devam edin"
 
-#: inc/checkout-steps.php:2205
+#: inc/checkout-steps.php:2224
 msgid "Proceed to shipping"
 msgstr "Gönderime devam edin"
 
@@ -1939,7 +1948,7 @@ msgstr ""
 "veya doğru sevkiyat adresini almanın çok önemli olduğu durumlarda (ör. gıda "
 "ve diğer bozulabilir ürünlerin teslimi)"
 
-#: inc/checkout-coupon-codes.php:383
+#: inc/checkout-coupon-codes.php:382
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -1958,7 +1967,7 @@ msgstr ""
 "<code>select2</code> açılır bileşenlerini <code>TomSelect</code> ile "
 "değiştirin"
 
-#: inc/admin/admin-settings-checkout.php:755
+#: inc/admin/admin-settings-checkout.php:766
 msgid ""
 "Replaces the account creation fields with a notification and option to log "
 "in. In some contexts, it might be recommended to leave this option disabled "
@@ -1982,11 +1991,11 @@ msgstr ""
 msgid "Required"
 msgstr "Gerekli"
 
-#: inc/checkout-steps.php:4706
+#: inc/checkout-steps.php:4720
 msgid "Same as billing address"
 msgstr "Fatura adresi ile aynı"
 
-#: inc/checkout-steps.php:4661
+#: inc/checkout-steps.php:4675
 msgid "Same as shipping address"
 msgstr "Sevkiyat adresiyle aynı"
 
@@ -2065,9 +2074,14 @@ msgstr ""
 msgid "Selecting a pickup point is required before proceeding."
 msgstr "Devam etmeden önce bir toplama noktası seçilmesi gerekmektedir."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:166
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:167
 msgid "Sendinblue - WooCommerce Email Marketing"
 msgstr "Sendinblue - WooCommerce Email Marketing"
+
+#: inc/admin/admin-settings-tools.php:123
+msgid "Set <code>font-size</code> inside form fields to 16px"
+msgstr ""
+"Form alanlarının içindeki <code>font-size</code>'ı 16px olarak ayarlayın"
 
 #: inc/admin/admin.php:133
 msgid "Settings"
@@ -2117,7 +2131,7 @@ msgstr "Nakliye"
 msgid "Shipping address"
 msgstr "Nakliye adresi"
 
-#: inc/checkout-steps.php:2257
+#: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Kargo"
 
@@ -2130,7 +2144,7 @@ msgstr "Gönderi yöntemleri"
 msgid "Shipping phone"
 msgstr "Telefon numarası"
 
-#: inc/checkout-steps.php:2247
+#: inc/checkout-steps.php:2266
 msgid "Shipping to"
 msgstr "Alıcı Bilgileri"
 
@@ -2145,15 +2159,15 @@ msgstr ""
 "seçilmişse sevkiyat adresi bölümünün tekrar gösterilmesine izin vermek için "
 "kullanılabilir."
 
-#: inc/admin/admin-settings-checkout.php:667
+#: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr "Telefon alanları içinde geçerli bir telefon numarası örneği gösterin"
 
-#: inc/admin/admin-settings-checkout.php:656
+#: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
 msgstr "Bayrağın yanında ülke kodunu göster"
 
-#: inc/admin/admin-settings-checkout.php:672
+#: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Tanımlanmamışsa göster"
 
@@ -2163,7 +2177,7 @@ msgstr ""
 "Teslim alma konumu alt adımında nakliye yöntemlerini temizleme seçeneğini "
 "göster"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:172
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
 msgstr "Kaydol onay kutusu konumu"
 
@@ -2171,7 +2185,7 @@ msgstr "Kaydol onay kutusu konumu"
 msgid "Simplified EU-VAT validation for your store."
 msgstr "Mağazanız için basitleştirilmiş EU-VAT doğrulaması."
 
-#: inc/checkout-steps.php:775
+#: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Tek adım"
 
@@ -2217,30 +2231,30 @@ msgid "Split"
 msgstr "Bölünmüş"
 
 #. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:2511
+#: inc/checkout-steps.php:2530
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Adım %1$s / %2$s"
 
-#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
 msgid "Subscribe checkbox"
 msgstr "Abone ol onay kutusu"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3476
+#: inc/checkout-steps.php:3490
 #, php-format
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
 #. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3481
+#: inc/checkout-steps.php:3495
 #, php-format
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
 
-#: inc/checkout-steps.php:2939
+#: inc/checkout-steps.php:2958
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
@@ -2481,7 +2495,7 @@ msgstr ""
 msgid "This is not a valid email address."
 msgstr "Bu geçerli bir e-posta adresi değil."
 
-#: inc/admin/admin-settings-checkout.php:717
+#: inc/admin/admin-settings-checkout.php:728
 msgid ""
 "This option affects the order confirmation page (thank you page) and order "
 "details on account pages, emails and packing slips."
@@ -2597,7 +2611,17 @@ msgstr ""
 "Devre dışı bırakıldığında, telefon alanı doğrulaması ülke veya alan "
 "kodlarının ülke için geçerli olup olmadığını kontrol etmez."
 
-#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
+#: inc/admin/admin-settings-checkout.php:657
+msgid ""
+"When enabled, only the countries allowed for shipping will be available in "
+"the shipping phone field, and only countries allowed for billing will be "
+"available for the billing phone field."
+msgstr ""
+"Etkinleştirildiğinde, gönderim telefonu alanında yalnızca gönderim için izin "
+"verilen ülkeler ve faturalandırma telefonu alanında yalnızca faturalandırma "
+"için izin verilen ülkeler kullanılabilir olacaktır."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
 msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
@@ -2626,6 +2650,21 @@ msgid ""
 msgstr ""
 "Etkinleştirildiğinde, Bluehost eklentisindeki kargo e-posta alanı ödeme "
 "formuna eklenecektir."
+
+#: inc/admin/admin-settings-tools.php:124
+msgid ""
+"When the font size inside form fields is smaller than 16px, Safari and other "
+"browsers might automatically zoom in on mobile devices to make the text "
+"easier to read. When this option is enabled, it will set the font size for "
+"inside the form fields to 16px on pages optimized by Fluid Checkout to avoid "
+"it zooming in."
+msgstr ""
+"Form alanlarının içindeki yazı tipi boyutu 16px'ten küçük olduğunda, Safari "
+"ve diğer tarayıcılar metnin okunmasını kolaylaştırmak için mobil cihazlarda "
+"otomatik olarak yakınlaştırma yapabilir. Bu seçenek etkinleştirildiğinde, "
+"yakınlaştırmayı önlemek için Fluid Checkout tarafından optimize edilen "
+"sayfalarda form alanlarının içindeki yazı tipi boyutunu 16 piksel olarak "
+"ayarlayacaktır."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
 msgid ""
@@ -2661,7 +2700,7 @@ msgstr ""
 "customization-migration/\">Özelleştirmeleri Fluid Checkout Lite 4.0+</a>'a "
 "taşıma"
 
-#: fluid-checkout.php:569
+#: fluid-checkout.php:582
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
