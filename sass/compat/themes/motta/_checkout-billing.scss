@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT BILLING ADDRESS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .woocommerce-billing-fields__field-wrapper {
+	padding: 0;
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-billing-fields__field-wrapper {
+	border: 0;
+}

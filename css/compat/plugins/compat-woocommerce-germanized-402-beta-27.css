@@ -1,0 +1,43 @@
+.fc-wrapper .wc-gzd-edit-data-notice {
+  margin-bottom: 20px;
+}
+
+.fc-wrapper .wc-gzd-order-submit {
+  padding: 0;
+}
+
+.fc-wrapper .fc-inside .form-row.place-order.wc-gzd-place-order {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fc-sidebar .wc-gzd-place-order .fc-place-order {
+  padding: 0 0 10px;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .wc-gzd-place-order .fc-place-order {
+  padding-bottom: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-place-order {
+  padding-bottom: 10px;
+}
+
+.fc-wrapper .fc-sidebar .fc-sidebar__inner .wc-gzd-order-submit div.place-order {
+  margin-top: 0;
+}
+
+.fc-wrapper .fc-sidebar .fc-checkout-order-review .fc-place-order .fc-place-order-button {
+  margin: 0;
+}
+
+.fc-wrapper .wc-gzd-checkbox-placeholder:not(:empty) {
+  margin-bottom: 10px;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .wc-gzd-place-order .fc-place-order-button,
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .wc-gzd-place-order .fc-place-order-button,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .wc-gzd-place-order .fc-place-order-button {
+  display: none !important;
+}

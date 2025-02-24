@@ -26,6 +26,42 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 		// Styles
 		// Applies only to the New Stripe Checkout experience, since version 
 		add_filter( 'wc_stripe_upe_params', array( $this, 'change_stripe_appearance_parameters' ), 10 );
+
+		// Persisted data
+		add_filter( 'fc_skip_checkout_field_value_from_session_or_posted_data', array( $this, 'maybe_skip_checkout_field_value_persisted_data' ), 10, 3 );
+	}
+
+
+
+	/**
+	 * Maybe skip persisted data for the Stripe checkout fields.
+	 *
+	 * @param   [type]  $should_skip  [$should_skip description]
+	 * @param   [type]  $input        [$input description]
+	 *
+	 * @return  [type]                [return description]
+	 */
+	public function maybe_skip_checkout_field_value_persisted_data( $should_skip, $input ) {
+		// Bail if not WC AJAX request
+		if ( ! array_key_exists( 'wc-ajax', $_GET ) ) { return $should_skip; }
+
+		// Define AJAX requests that should skip persisted data
+		$target_ajax_requests = array(
+			'update_order_review',
+			'wc_stripe_get_shipping_options',
+			'wc_stripe_update_shipping_method',
+			'wc_stripe_create_order',
+		);
+
+		// Get AJAX request type
+		$wc_ajax = sanitize_text_field( wp_unslash( $_GET[ 'wc-ajax' ] ) );
+
+		// Maybe skip persisted data
+		if ( in_array( $wc_ajax, $target_ajax_requests ) ) {
+			$should_skip = true;
+		}
+
+		return $should_skip;
 	}
 
 
@@ -78,8 +114,7 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 		];
 
 		return $stripe_params;
-	 }
-
+	}
 
 }
 

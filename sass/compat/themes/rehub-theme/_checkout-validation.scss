@@ -1,0 +1,22 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .woocommerce-message, 
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .woocommerce-error, 
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .woocommerce-info {
+	box-shadow: none;
+}
+
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .woocommerce-error:before {
+	background-color: transparent;
+}
+
+body#{ $_body-theme-selector } div.woocommerce .shipping-method__package .woocommerce-error {
+	padding-#{ $alignment-left }: calc( #{ $global-spacing-extra-small } + #{ $option-box-radio-size } + #{ $option-box-padding-horizontal } + remsize( .1rem ) ) !important; // Needed to override theme styles
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-validated input.input-text,
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-invalid input.input-text {
+	background-image: none;
+}

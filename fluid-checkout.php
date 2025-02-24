@@ -5,15 +5,15 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 4.0.1
+Version: 4.0.2-beta-27
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 9.5.1
+WC tested up to: 9.6.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2024 Fluid Checkout OÜ
+Copyright (C) 2021-2025 Fluid Checkout OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -258,9 +258,9 @@ class FluidCheckout {
 		if ( ! $locale ) { return $file; }
 
 		// Get whether current file is saved to the system directory
-		$is_system_file = -1 !== strpos( $file, trailingslashit( WP_LANG_DIR ) . 'plugins/' );
+		$is_system_file = false !== strpos( $file, trailingslashit( WP_LANG_DIR ) . 'plugins/' );
 
-		// Bail if custom translation file location, and file exists
+		// Bail if custom translation file location, and the custom file exists
 		if ( ! $is_system_file && file_exists( $file ) ) { return $file; }
 
 		// Return the correct translation file path

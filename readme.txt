@@ -3,7 +3,7 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Stable tag: 4.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -361,6 +361,33 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 
 == Changelog ==
+
+= Unreleased =
+
+* Bump tested up to WordPress 6.7.2 and WooCommerce 9.6.2
+* Added: Compatibility with theme Motta.
+* Added: Compatibility with theme Rehub.
+* Added: Compatibility with plugin Fetchify.
+* Added: Compatibility with plugin WooComerce Quantity Discounts, Rules & Swatches.
+* Added: Compatibility with plugin Revolut Gateway for WooCommerce.
+* Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
+* Added: New filter `fc_use_verbose_loading_indicator` to enable use of verbose loading indicator icon on blocked parts of the page, and on the entire page when submitting the checkout form.
+* Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
+* Improved: Compatibility with plugin Germanized for WooCommerce. Remove duplicate place order button when using WooCommerce PayPal Payments plugin.
+* Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
+* Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
+* Improved: Compatibility with plugin WooPayments. Fixed layout breaking when WooPayments payment method is selected on checkout page.
+* Improved: Compatibility with plugin WooCommerce PDF Invoices & Packing Slips.
+* Improved: Compatibility with plugin Mailchimp for WooCommerce. Remove subscription checkbox value from the step review text lines.
+* Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
+* Improved: Styles for loading indicator for the place order button to only show loading icon while processing, hiding its text.
+* Improved: Styles code for the order summary section, to allow changing the main element's selector.
+* Fixed: Compatibility with plugin WooCommerce Stripe Gateway. Ensure use of data from express checkout methods when updating checkout and processing orders.
+* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
+* Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
+* Fixed: Layout styles causing sticky header for some themes to not get sticky.
+* Fixed: PHP warnings for undefined variable `$new_line`.
+* Fixed: Custom translation files from Loco Translate not loading correctly.
 
 = 4.0.1 - 2025-01-07 =
 

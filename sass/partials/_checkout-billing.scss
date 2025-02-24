@@ -2,7 +2,7 @@
 // CHECKOUT BILLING ADDRESS
 // ------------------------------------
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id="billing_address"] {
-	background-color: $lighter-grey;
+	background-color: $checkout-highlighted-section-background-color;
 
 	// Make fields background white
 	textarea,
@@ -18,17 +18,17 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 	.select2-selection,
 	.select2-selection .select2-selection__rendered,
 	.ts-control {
-		background-color: $white !important; // Needed to override theme styles
+		background-color: $checkout-highlighted-section-fields-background-color !important; // Needed to override theme styles
 		color: inherit !important; // Needed to override theme styles
 	}
 }
 
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep .fc-highlighted-field-wrapper--billing {
-	background-color: $lighter-grey;
 	margin: $checkout-substep-margin-expand;
 	margin-top: 0;
 	margin-bottom: #{ - $global-spacing-small };
 	padding: $checkout-substep-padding;
+	background-color: $checkout-highlighted-section-background-color;
 
 	// Padding
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
