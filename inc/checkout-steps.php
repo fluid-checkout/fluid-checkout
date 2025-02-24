@@ -6702,6 +6702,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function get_checkout_field_value_from_session_or_posted_data( $input ) {
+		// Bail if forced to skip
+		if ( true === apply_filters( 'fc_skip_checkout_field_value_from_session_or_posted_data', false, $input ) ) { return null; }
+
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
