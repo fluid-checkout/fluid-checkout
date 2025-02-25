@@ -159,6 +159,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_kapee_output_checkout_steps_section'           => 'no',
 			'fc_compat_theme_go_enable_account_wide_layout'                 => 'yes',
 			'fc_compat_theme_fennik_output_breadcrumbs_section'             => 'no',
+			'fc_compat_theme_dt_the7_output_additional_header_sections'     => 'no',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
