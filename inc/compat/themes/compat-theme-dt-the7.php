@@ -144,8 +144,10 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 
 		// Output "fancy header" section if enabled
 		presscore_fancy_header_controller();
+
 		// Output page title section if enabled
 		presscore_page_title_controller();
+
 		// Output checkout steps section if enabled
 		dt_woocommerce_cart_progress();
 	}
