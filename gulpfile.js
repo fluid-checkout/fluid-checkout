@@ -391,22 +391,43 @@ function translateWithGoogle( text, targetLang, callback ) {
 }
 
 // Function to translate PO file
-function translatePoFile( poFilePath, targetLang, callback ) {
-	// Maybe create the PO file from POT
-	if ( ! fs.existsSync( poFilePath ) ) {
-		var potFilePath = _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '.pot';
-		fs.copyFileSync( potFilePath, poFilePath );
-	}
-
+function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 	// Get PO file contents
 	var poContent = fs.readFileSync( poFilePath );
 
 	// Get language settings
 	var langSettings = _gulpSettings.languages[ targetLang ];
 
-	import( 'gettext-parser' ).then(function (gettextParser) {
+	// Load gettext-parser
+	import( 'gettext-parser' ).then( function( gettextParser ) {
 		// Get parsed PO content
 		var po = gettextParser.po.parse( poContent );
+
+		// Parse POT file
+		var potContent = fs.readFileSync( potFilePath );
+		var pot = gettextParser.po.parse( potContent );
+
+		// Update PO file with POT content
+		Object.keys( pot.translations ).forEach( function( context ) {
+			if ( ! po.translations[ context ] ) {
+				po.translations[ context ] = {};
+			}
+
+			Object.keys( pot.translations[ context ] ).forEach( function( msgid ) {
+				if ( ! po.translations[ context ][ msgid ] ) {
+					po.translations[ context ][ msgid ] = pot.translations[ context ][ msgid ];
+				}
+			} );
+		} );
+
+		// Delete obsolete translations
+		Object.keys( po.translations ).forEach( function( context ) {
+			Object.keys( po.translations[ context ] ).forEach( function( msgid ) {
+				if ( ! pot.translations[ context ] || ! pot.translations[ context ][ msgid ] ) {
+					delete po.translations[ context ][ msgid ];
+				}
+			} );
+		} );
 
 		// Initialize translations
 		var translations = po.translations;
@@ -417,12 +438,6 @@ function translatePoFile( poFilePath, targetLang, callback ) {
 		function translateNextContext() {
 			// Check whether all translations are done
 			if ( contextIndex >= contextKeys.length ) {
-				// Compile new PO content
-				var newPoContent = gettextParser.po.compile( po );
-
-				// Save new PO content
-				fs.writeFileSync( poFilePath, newPoContent );
-
 				// Run callback
 				return callback();
 			}
@@ -468,10 +483,10 @@ function translatePoFile( poFilePath, targetLang, callback ) {
 							contextTranslations[msgid].msgstr[0] = translatedText;
 
 							// Log translated text
-							console.log('Translated: ' + targetLang + ' ' + msgid + ' -> ' + translatedText);
+							console.log( 'Translated: ' + targetLang + ' ' + msgid + ' -> ' + translatedText );
 
 							// Update PO file
-							fs.writeFileSync(poFilePath, gettextParser.po.compile(po));
+							fs.writeFileSync( poFilePath, gettextParser.po.compile( po ) );
 
 							// Move to next translation
 							msgidIndex++;
@@ -484,9 +499,6 @@ function translatePoFile( poFilePath, targetLang, callback ) {
 					msgidIndex++;
 					translateNextString();
 				}
-
-				msgidIndex++;
-				translateNextString();
 			}
 
 			translateNextString();
@@ -517,10 +529,11 @@ gulp.task( 'translate-po', function ( done ) {
 
 		// Get language code and PO file path
 		var languageCode = languagesList[ index ];
+		var potFilePath = _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '.pot';
 		var poFilePath = _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + languageCode + '.po';
 
 		// Translate PO file for the language
-		translatePoFile( poFilePath, languageCode, function() {
+		translatePoFile( poFilePath, potFilePath, languageCode, function() {
 			index++;
 			translateNext();
 		} );
@@ -549,28 +562,29 @@ gulp.task( 'update-translations', gulp.series( 'translate-po', function ( done )
 // Generate the POT translation file
 gulp.task( 'generate-pot', function ( done ) {
 	try {
-	// Load package.json
-	_package = loadJsonFile.sync( 'package.json' );
+		// Load package.json
+		_package = loadJsonFile.sync( 'package.json' );
 
-	return gulp.src( _gulpSettings.translationSources )
-		.pipe( wpPot( {
-			domain: _gulpSettings.textDomain,
-			package: _package.name,
-			bugReport: _package.bugs.url,
-			lastTranslator: _package.author,
-			team: _package.author
-		} ) )
-		.pipe( gulp.dest(_gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '.pot') )
-		.on('end', done)
-		.on('error', function (err) {
-			console.error('Error in generate-pot task', err);
-			done(err);
-		});
-	} catch (err) {
-	console.error('Error in generate-pot task', err);
-	done(err);
+		return gulp.src( _gulpSettings.translationSources )
+			.pipe( wpPot( {
+				domain: _gulpSettings.textDomain,
+				package: _package.name,
+				bugReport: _package.bugs.url,
+				lastTranslator: _package.author,
+				team: _package.author
+			} ) )
+			.pipe( gulp.dest( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '.pot' ) )
+			.on( 'end', done )
+			.on( 'error', function( err ) {
+				console.error( 'Error in generate-pot task', err );
+				done( err );
+			} );
 	}
-});
+	catch ( err ) {
+		console.error( 'Error in generate-pot task', err );
+		done( err );
+	}
+} );
 
 
 
