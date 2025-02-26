@@ -401,27 +401,24 @@ function translatePoFile( poFilePath, targetLang, callback ) {
 	// Get PO file contents
 	var poContent = fs.readFileSync( poFilePath );
 
-	import( 'gettext-parser' ).then( function ( gettextParser ) {
+	// Get language settings
+	var langSettings = _gulpSettings.languages[ targetLang ];
+
+	import( 'gettext-parser' ).then(function (gettextParser) {
 		// Get parsed PO content
 		var po = gettextParser.po.parse( poContent );
 
 		// Initialize translations
-		var translations = po.translations[ '' ];
-		var keys = Object.keys( translations );
-		var index = 0;
-
-		// Get language settings
-		var langSettings = _gulpSettings.languages[ targetLang ];
+		var translations = po.translations;
+		var contextKeys = Object.keys( translations );
+		var contextIndex = 0;
 
 		// Translate next string
-		function translateNext() {
+		function translateNextContext() {
 			// Check whether all translations are done
-			if ( index >= keys.length ) {
+			if ( contextIndex >= contextKeys.length ) {
 				// Compile new PO content
 				var newPoContent = gettextParser.po.compile( po );
-
-				// // Remove empty translations
-				// newPoContent = newPoContent.replace( /msgstr ""\n/g, '' );
 
 				// Save new PO content
 				fs.writeFileSync( poFilePath, newPoContent );
@@ -431,53 +428,72 @@ function translatePoFile( poFilePath, targetLang, callback ) {
 			}
 
 			// Reset variables
-			var msgid = keys[ index ];
-			var msgstr = translations[ msgid ].msgstr[ 0 ];
+			var context = contextKeys[ contextIndex ];
+			var contextTranslations = translations[ context ];
+			var msgidKeys = Object.keys( contextTranslations );
+			var msgidIndex = 0;
 
-			// Maybe translate string
-			if ( ! msgstr ) {
-				// Translate with Deepl if supported, otherwise use Google Translate
-				var useDeepl = langSettings.deepl !== null;
-				var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
-				var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'google-translate' ];
+			function translateNextString() {
+				// Check whether all strings are translated in the context
+				if ( msgidIndex >= msgidKeys.length ) {
+					contextIndex++;
+					translateNextContext();
+					return;
+				}
 
-				translateFunction( msgid, apiTargetLang, function ( err, translatedText ) {
-					// Handle error
-					if ( err ) {
-						console.error( `Error translating "${msgid}" to ${apiTargetLang} with ${useDeepl ? 'Deepl' : 'Google Translate'}:`, err );
+				var msgid = msgidKeys[ msgidIndex ];
+				var msgstr = contextTranslations[ msgid ].msgstr[ 0 ];
 
-						// Mark language with error
-						_translationErrors.push( { lang: apiTargetLang, error: err.message } );
+				// Maybe translate string
+				if ( ! msgstr ) {
+					// Translate with Deepl if supported, otherwise use Google Translate
+					var useDeepl = langSettings.deepl !== null;
+					var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
+					var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'google-translate' ];
 
-						// Move to next translation
-						index++;
-						translateNext();
-					}
-					else {
-						// Update translation
-						translations[ msgid ].msgstr[ 0 ] = translatedText;
+					translateFunction( msgid, apiTargetLang, function( err, translatedText ) {
+						// Handle error
+						if ( err ) {
+							console.error( `Error translating "${msgid}" to ${apiTargetLang} with ${useDeepl ? 'Deepl' : 'Google Translate'}:`, err );
 
-						// Log translated text
-						console.log( 'Translated: ' + msgid + ' -> ' + translatedText );
+							// Mark language with error
+							_translationErrors.push({ lang: apiTargetLang, error: err.message });
 
-						// Update PO file
-						fs.writeFileSync( poFilePath, gettextParser.po.compile( po ) );
+							// Move to next translation
+							msgidIndex++;
+							translateNextString();
+						}
+						else {
+							// Update translation
+							contextTranslations[msgid].msgstr[0] = translatedText;
 
-						// Move to next translation
-						index++;
-						translateNext();
-					}
-				} );
+							// Log translated text
+							console.log('Translated: ' + targetLang + ' ' + msgid + ' -> ' + translatedText);
+
+							// Update PO file
+							fs.writeFileSync(poFilePath, gettextParser.po.compile(po));
+
+							// Move to next translation
+							msgidIndex++;
+							translateNextString();
+						}
+					} );
+				}
+				else {
+					// Skip if string is already translated
+					msgidIndex++;
+					translateNextString();
+				}
+
+				msgidIndex++;
+				translateNextString();
 			}
-			// Skip if string is already translated
-			else {
-				index++;
-				translateNext();
-			}
+
+			translateNextString();
 		}
 
-		translateNext();
-	} );
+		translateNextContext();
+	});
 }
 
 // Run:
