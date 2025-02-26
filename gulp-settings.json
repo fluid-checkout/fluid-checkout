@@ -58,5 +58,19 @@
 		"pluginCompat": [
 			"./js-src/compat/plugins/**/*.js"
 		]
+	},
+
+	"translationSources": [
+		"./**/*.php",
+		"!./vendor/**",
+		"!./languages/**"
+	],
+	"translationDest": "./languages",
+	"textDomain": "fluid-checkout",
+	"languages": {
+		"pt_BR": { "deepl": "PT-BR", "google-translate": "pt-BR" },
+		"pt_PT": { "deepl": "PT-PT", "google-translate": "pt" },
+		"ru_RU": { "deepl": "RU", "google-translate": "ru" },
+		"sw": { "deepl": null, "google-translate": "sw" }
 	}
 }
