@@ -362,6 +362,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Enforce some styles for the place order button to improve compatibility with some themes.
+
 = 4.0.2 - 2025-02-24 =
 
 * Bump tested up to WordPress 6.7.2 and WooCommerce 9.6.2

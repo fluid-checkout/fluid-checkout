@@ -1475,7 +1475,7 @@ body.has-place-order--both_payment_and_order_summary .fc-wrapper .fc-sidebar .fc
 }
 
 .fc-wrapper .fc-place-order .fc-place-order-button {
-  float: none;
+  float: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
