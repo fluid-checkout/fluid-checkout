@@ -490,9 +490,6 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 					var msgstr = contextTranslations[ msgid ].msgstr[ msgstrIndex ];
 					var strToTranslate = msgstrIndex > 0 ? msgidPlural : msgid;
 
-					// TODO TRANSLATE PLURALS
-					// TODO GENERATE PHP TRANSLATION FILES
-
 					// Maybe translate string
 					if ( ! msgstr ) {
 						// Translate with Deepl if supported, otherwise use Google Translate
