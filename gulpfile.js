@@ -392,6 +392,11 @@ function translateWithGoogle( text, targetLang, callback ) {
 
 // Function to translate PO file
 function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
+	// Maybe copy POT file to PO file if it does not exist
+	if ( ! fs.existsSync( poFilePath ) ) {
+		fs.copyFileSync( potFilePath, poFilePath );
+	}
+
 	// Get PO file contents
 	var poContent = fs.readFileSync( poFilePath );
 
@@ -406,6 +411,15 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 		// Parse POT file
 		var potContent = fs.readFileSync( potFilePath );
 		var pot = gettextParser.po.parse( potContent );
+
+		// Update plural format, if available
+		if ( langSettings.pluralForms ) {
+			// Update plural-forms header from language settings
+			po.headers[ 'Plural-Forms' ] = langSettings.pluralForms;
+
+			// Update PO file
+			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
+		}
 
 		// Update PO file with POT content
 		Object.keys( pot.translations ).forEach( function( context ) {
@@ -448,7 +462,7 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 			var msgidKeys = Object.keys( contextTranslations );
 			var msgidIndex = 0;
 
-			function translateNextString() {
+			function translateNextMsgid() {
 				// Check whether all strings are translated in the context
 				if ( msgidIndex >= msgidKeys.length ) {
 					contextIndex++;
@@ -456,52 +470,76 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 					return;
 				}
 
+				// Get string id
 				var msgid = msgidKeys[ msgidIndex ];
-				var msgstr = contextTranslations[ msgid ].msgstr[ 0 ];
 
-				// Maybe translate string
-				if ( ! msgstr ) {
-					// Translate with Deepl if supported, otherwise use Google Translate
-					var useDeepl = langSettings.deepl !== null;
-					var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
-					var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'google-translate' ];
+				// Get plural forms
+				var msgidPlural = Object.hasOwnProperty.call( contextTranslations[ msgid ], 'msgid_plural' ) ? contextTranslations[ msgid ].msgid_plural : null;
+				var nPluralForms = msgidPlural ? po.headers[ 'Plural-Forms' ].match( /nplurals\s*=\s*(\d+)/ )[ 1 ] : 1;
+				var msgstrIndex = 0;
 
-					translateFunction( msgid, apiTargetLang, function( err, translatedText ) {
-						// Handle error
-						if ( err ) {
-							console.error( `Error translating "${msgid}" to ${apiTargetLang} with ${useDeepl ? 'Deepl' : 'Google Translate'}:`, err );
+				function translateNextMsgstr() {
+					// Check whether all strings are translated in the context
+					if ( msgstrIndex >= nPluralForms ) {
+						msgidIndex++;
+						translateNextMsgid();
+						return;
+					}
 
-							// Mark language with error
-							_translationErrors.push({ lang: apiTargetLang, error: err.message });
+					// Get string
+					var msgstr = contextTranslations[ msgid ].msgstr[ msgstrIndex ];
+					var strToTranslate = msgstrIndex > 0 ? msgidPlural : msgid;
 
-							// Move to next translation
-							msgidIndex++;
-							translateNextString();
-						}
-						else {
-							// Update translation
-							contextTranslations[msgid].msgstr[0] = translatedText;
+					// TODO TRANSLATE PLURALS
+					// TODO GENERATE PHP TRANSLATION FILES
 
-							// Log translated text
-							console.log( 'Translated: ' + targetLang + ' ' + msgid + ' -> ' + translatedText );
+					// Maybe translate string
+					if ( ! msgstr ) {
+						// Translate with Deepl if supported, otherwise use Google Translate
+						var useDeepl = langSettings.deepl !== null;
+						var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
+						var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'google-translate' ];
 
-							// Update PO file
-							fs.writeFileSync( poFilePath, gettextParser.po.compile( po ) );
+						translateFunction( strToTranslate, apiTargetLang, function( err, translatedText ) {
+							// Handle error
+							if ( err ) {
+								console.error( `Error translating "${strToTranslate}" to ${apiTargetLang} with ${useDeepl ? 'Deepl' : 'Google Translate'}:`, err );
 
-							// Move to next translation
-							msgidIndex++;
-							translateNextString();
-						}
-					} );
+								// Mark language with error
+								_translationErrors.push( { lang: apiTargetLang, error: err.message } );
+
+								// Move to next translation
+								msgstrIndex++;
+								translateNextMsgstr();
+							}
+							else {
+								// Update translation
+								contextTranslations[ msgid ].msgstr[ msgstrIndex ] = translatedText;
+
+								// Log translated text
+								var indexString = msgstrIndex > 0 ? '(' + msgstrIndex + ')' : '';
+								console.log( 'Translated: ' + targetLang + ' ' + indexString + ' ' + strToTranslate + ' -> ' + translatedText );
+
+								// Update PO file
+								fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
+
+								// // Move to next translation
+								msgstrIndex++;
+								translateNextMsgstr();
+							}
+						} );
+					}
+					else {
+						// Skip if string is already translated
+						msgstrIndex++;
+						translateNextMsgstr();
+					}
 				}
-				else {
-					// Skip if string is already translated
-					msgidIndex++;
-					translateNextString();
-				}
+
+				translateNextMsgstr();
 			}
 
-			translateNextString();
+			translateNextMsgid();
 		}
 
 		translateNextContext();
