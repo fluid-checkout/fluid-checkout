@@ -559,7 +559,7 @@ function poToPHP ( jsonFile, enc, cb ) {
 	} );
 
 	// Add PO string contents
-	phpContents += `'messages' => [\n`;
+	phpContents += `'messages' => [`;
 	Object.keys( json ).forEach( function ( key ) {
 		if ( '' !== key ) {
 			var outputKey = key.replace( /\'/g, '\\\'' );
