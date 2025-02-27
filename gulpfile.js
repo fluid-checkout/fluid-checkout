@@ -17,6 +17,8 @@ var del = require('del');
 var exec = require('child_process').exec;
 var wpPot = require('gulp-wp-pot');
 var po2mo = require('gulp-po2mo');
+var po2json = require('gulp-po2json');
+var through2 = require('through2');
 
 
 
@@ -364,8 +366,8 @@ function translateWithDeepl( text, targetLang, callback ) {
  
 // Function to translate text using Google Translate
 function translateWithGoogle( text, targetLang, callback ) {
-	var googleApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'google-translate'; } ).url;
-	var googleApiKey = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'google-translate'; } ).key;
+	var googleApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).url;
+	var googleApiKey = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).key;
 
 	import( 'node-fetch' ).then( function ( fetch ) {
 		fetch.default( googleApiUrl + '?key=' + googleApiKey + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang )
@@ -495,7 +497,7 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 						// Translate with Deepl if supported, otherwise use Google Translate
 						var useDeepl = langSettings.deepl !== null;
 						var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
-						var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'google-translate' ];
+						var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ];
 
 						translateFunction( strToTranslate, apiTargetLang, function( err, translatedText ) {
 							// Handle error
@@ -543,6 +545,51 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 	});
 }
 
+// Function to convert PO file to PHP
+function poToPHP ( jsonFile, enc, cb ) {
+	// Initialize variables
+	var json = JSON.parse( jsonFile.contents.toString() );
+	var phpContents = '';
+
+	// Add PO header contents
+	Object.keys( json[''] ).forEach( function ( key ) {
+		var outputKey = key.replace( /\'/g, '\\\'' );
+		var outputValue = json[ '' ][ key ].replace( /'/g, '\\\'' );
+		phpContents += `'${outputKey}' => '${outputValue}',`;
+	} );
+
+	// Add PO string contents
+	phpContents += `'messages' => [\n`;
+	Object.keys( json ).forEach( function ( key ) {
+		if ( '' !== key ) {
+			var outputKey = key.replace( /\'/g, '\\\'' );
+
+			// Add string values, including plural forms
+			phpContents += `'${outputKey}' => '`;
+			json[ key ].forEach( function( messageValue, index ) {
+				// Skip first item, which is the original plural string
+				if ( 0 === index ) { return; }
+
+				// Add string value
+				var outputValue = messageValue.replace( /'/g, '\\\'' );
+				phpContents += outputValue;
+
+				// Add separator
+				if ( index < json[ key ].length - 1 ) {
+					phpContents += `' . "\\0" . '`;
+				}
+			} );
+			phpContents += `',`;
+		}
+	} );
+	phpContents += `]`;
+
+	var fileContents = `<?php\nreturn [ ${phpContents} ];`;
+	jsonFile.contents = Buffer.from( fileContents );
+	this.push( jsonFile );
+	cb();
+}
+
 // Run:
 // gulp translate-po
 // Translate PO files using Deepl and Google Translate
@@ -584,12 +631,19 @@ gulp.task( 'update-translations', gulp.series( 'translate-po', function ( done )
 			gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
 				.pipe( po2mo() )
 				.pipe( gulp.dest( _gulpSettings.translationDest ) );
+
+			gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
+				.pipe( po2json() )
+				.pipe( through2.obj( poToPHP ) )
+				.pipe( rename( { extname: '.l10n.php' } ) )
+				.pipe( gulp.dest( _gulpSettings.translationDest ) );
+
 			done2();
 		};
 	} );
 
 	return gulp.series( tasks )( done );
- } ) );
+} ) );
 	
 
 // Run:
