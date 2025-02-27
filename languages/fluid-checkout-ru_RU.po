@@ -17,7 +17,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "PO-Revision-Date: 2025-02-26 18:54+0000\n"
 "Language: ru_RU\n"
 "X-Generator: Loco https://localise.biz/\n"
@@ -2516,114 +2517,119 @@ msgstr ""
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 #: inc/checkout-steps.php:2214
 msgctxt "Checkout step title"
 msgid "Contact"
-msgstr ""
+msgstr "Связаться с"
 
 #: inc/checkout-steps.php:2223
 msgctxt "Checkout step title"
 msgid "Shipping"
-msgstr ""
+msgstr "Доставка"
 
 #: inc/checkout-steps.php:2235
 msgctxt "Checkout step title"
 msgid "Billing"
-msgstr ""
+msgstr "Выставление счетов"
 
 #: inc/checkout-steps.php:2244
 msgctxt "Checkout step title"
 msgid "Payment"
-msgstr ""
+msgstr "Оплата"
 
 #: inc/checkout-steps.php:2826
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
 #: inc/checkout-steps.php:2958
 msgctxt "Substep review text"
 msgid "None."
-msgstr ""
+msgstr "Нет."
 
 #: inc/checkout-steps.php:3490
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format"
 msgid "%1$s"
-msgstr ""
+msgstr "%1$s"
 
 #: inc/checkout-steps.php:3495
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
-msgstr ""
+msgstr "%2$s: %1$s"
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:85
 msgctxt "Image uploader."
 msgid "No image selected."
-msgstr ""
+msgstr "Изображение не выбрано."
 
 #: inc/admin/admin-settings-cart.php:49
 msgctxt "Settings section"
 msgid "Cart"
-msgstr ""
+msgstr "Корзина"
 
 #: inc/admin/admin-settings-order-pay.php:49
 msgctxt "Settings section"
 msgid "Order pay"
-msgstr ""
+msgstr "Заказать оплату"
 
 #: inc/admin/admin-settings-order-received.php:47
 msgctxt "Settings section"
 msgid "Thank you"
-msgstr ""
+msgstr "Спасибо."
 
 #: inc/admin/admin-settings-integrations.php:83
 msgctxt "Settings section title"
 msgid "Integrations"
-msgstr ""
+msgstr "Интеграции"
 
 #: inc/admin/admin-settings-license-keys.php:73
 msgctxt "Settings section title"
 msgid "License keys"
-msgstr ""
+msgstr "Лицензионные ключи"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:100
 msgctxt "Captcha position"
 msgid "Before place order section"
-msgstr ""
+msgstr "Перед оформлением заказа раздел"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:101
 msgctxt "Captcha position"
 msgid "Before place order button"
-msgstr ""
+msgstr "Перед тем как оформить заказ"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431,
 #: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
 #. translators: %s shipping destination.
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
-msgstr ""
+msgstr "--"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
 msgctxt "Close button aria-label"
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:42,
 #: templates/fc/checkout-steps/global/form-login.php:66
 msgctxt "Log in link label at checkout contact step"
 msgid "Log in"
-msgstr ""
+msgstr "Войти"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:56
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue below"
-msgstr ""
+msgstr "Или продолжите ниже"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:54
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
-msgstr ""
+msgstr "Или продолжайте в качестве гостя"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "Изменить"
