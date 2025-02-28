@@ -103,7 +103,7 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 
 			array(
 				'title'           => __( 'Additional header sections', 'fluid-checkout' ),
-				'desc'            => __( 'Output additional header sections from the The7 theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
+				'desc'            => __( 'Output additional header sections from the theme.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_dt_the7_output_additional_header_sections',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_dt_the7_output_additional_header_sections' ),
