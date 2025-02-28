@@ -56,6 +56,9 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 	 * Maybe remove additional header sections from the theme.
 	 */
 	public function maybe_remove_additional_header_sections() {
+		// Bail if theme sections output is enabled in the plugin settings
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_dt_the7_output_additional_header_sections' ) ) { return; }
+
 		// Bail if not on checkout page.
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $template; }
 
@@ -122,7 +125,7 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 
 			array(
 				'title'           => __( 'Additional header sections', 'fluid-checkout' ),
-				'desc'            => __( 'Output additional header sections from the theme.', 'fluid-checkout' ),
+				'desc'            => __( 'Output additional header sections if enabled in the theme settings.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_dt_the7_output_additional_header_sections',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_dt_the7_output_additional_header_sections' ),

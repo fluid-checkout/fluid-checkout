@@ -10,6 +10,11 @@ body.theme-dt-the7.has-checkout-header .checkout-page-title + #main.fc-main {
   margin-top: 60px;
 }
 
+body.theme-dt-the7 .masthead + #main,
+body.theme-dt-the7 .dt-mobile-header + #main {
+  padding-top: 0;
+}
+
 @media (max-width: 999px) {
   body.theme-dt-the7.has-checkout-header .page-title + #main.fc-main,
   body.theme-dt-the7.has-checkout-header .checkout-page-title + #main.fc-main {
