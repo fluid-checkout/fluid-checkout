@@ -21,6 +21,11 @@ body#{ $_body-theme-selector } .dt-mobile-header + #main {
 	padding-top: 0;
 }
 
+// Spacing when additional sections from the theme are disabled but cart is empty
+body#{ $_body-theme-selector } .dt-mobile-header + #main .wc-empty-cart-message {
+	margin-top: 70px; // Needed to use `px` as units to match theme styles
+}
+
 // Spacing when additional sections from the theme are present
 @media (#{$bp-smaller-than-desktop}) {
 	body#{ $_body-theme-selector }.has-checkout-header .page-title + #main.fc-main,
