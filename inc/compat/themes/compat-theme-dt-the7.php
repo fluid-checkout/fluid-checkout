@@ -60,7 +60,7 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_dt_the7_output_additional_header_sections' ) ) { return; }
 
 		// Bail if not on checkout page.
-		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $template; }
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Remove sections
 		remove_action( 'presscore_before_main_container', 'presscore_fancy_header_controller', 15 );
