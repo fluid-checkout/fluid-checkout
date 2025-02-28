@@ -43,8 +43,27 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
+		// Additional header sections from the theme
+		$this->maybe_remove_additional_header_sections();
+
 		// Theme's page title section
 		add_action( 'fc_checkout_header', array( $this, 'maybe_display_additional_header_sections' ), 10 );
+	}
+
+
+
+	/**
+	 * Maybe remove additional header sections from the theme.
+	 */
+	public function maybe_remove_additional_header_sections() {
+		// Bail if not on checkout page.
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $template; }
+
+		// Remove sections
+		remove_action( 'presscore_before_main_container', 'presscore_fancy_header_controller', 15 );
+		remove_action( 'presscore_before_main_container', 'presscore_slideshow_controller', 15 );
+		remove_action( 'presscore_before_main_container', 'presscore_page_title_controller', 16 );
+		remove_action( 'presscore_before_main_container', 'dt_woocommerce_cart_progress', 17 );
 	}
 
 
