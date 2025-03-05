@@ -375,10 +375,11 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 
 .fc-sidebar {
   position: static;
+  margin-top: 0 !important;
 }
 @media (min-width: 750px) and (max-width: 999px) {
   .fc-sidebar {
-    margin-top: 20px;
+    margin-top: 20px !important;
   }
 }
 @media (min-width: 1000px) {
@@ -386,6 +387,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
     z-index: 2;
     float: right;
     width: 37.5%;
+    margin-top: 0 !important;
   }
 }
 
