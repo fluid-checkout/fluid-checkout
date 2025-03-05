@@ -680,7 +680,7 @@ gulp.task( 'generate-pot', function ( done ) {
 // Run:
 // gulp translations
 // Generate POT file and update translations
-gulp.task( 'translations', gulp.series( 'generate-pot', 'update-translations' ) );
+gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations' ) );
 
 
 
