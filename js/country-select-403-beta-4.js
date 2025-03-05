@@ -105,7 +105,11 @@ jQuery( function( $ ) {
 						.selectWoo( select2_args );
 
 					// CHANGE: Maybe reset focus to element
-					FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement, window.fcCurrentFocusedElementValue );
+					// Should not set the focused field value back to previous value as it interferes
+					// with other scripts setting the field value dynamically.
+					// Not setting the field value here fixes an issue with the Google Address Autocomplete add-on
+					// leaving the field empty after selecting an address, if using `select2` for the enhanced dropdown fields.
+					FCUtils.maybeRefocusElement( window.fcCurrentFocusedElement );
 
 					// CHANGE: Maybe reopen `select2` field
 					setTimeout( function() {
@@ -120,7 +124,7 @@ jQuery( function( $ ) {
 							// Reopen options for this `select2` field
 							$this.selectWoo( 'open' );
 						}
-					}, 50 );
+					}, 50 ); // Arbitrary delay to allow `select2` to be completely rendered
 					// CHANGE: END - Maybe reopen `select2` field
 				});
 			});
