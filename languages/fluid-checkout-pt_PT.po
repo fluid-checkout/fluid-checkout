@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-02-26 10:57+0000\n"
+"POT-Creation-Date: 2025-03-05 22:47+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: "
@@ -341,7 +341,7 @@ msgstr "Ok"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
-msgstr "Rejeitar"
+msgstr "Recusar"
 
 #: inc/admin/admin-notice-db-migrations.php:51
 msgid "Fluid Checkout database update"
@@ -729,9 +729,9 @@ msgid ""
 "your account</a> to renew your license key and continue to receive updates "
 "and support."
 msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Entre na "
-"sua conta</a> para renovar a sua chave de licença e continuar a receber "
-"actualizações e suporte."
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Inicie "
+"sessão na sua conta</a> para renovar a sua chave de licença e continuar a "
+"receber actualizações e suporte."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:163
 msgid "License key cancelled."
@@ -814,7 +814,7 @@ msgstr "Ativar as optimizações da página do carrinho"
 #: inc/admin/admin-settings-cart.php:80
 msgid "Display the cart page with a layout similar to the checkout page."
 msgstr ""
-"Apresentar a página do carrinho com um esquema semelhante ao da página de "
+"Apresenta a página do carrinho com um esquema semelhante ao da página de "
 "checkout."
 
 #: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
@@ -861,7 +861,7 @@ msgid ""
 "Only applicable when AJAX cart and the integrated coupon codes in the "
 "checkout page are enabled."
 msgstr ""
-"Selecionar a posição onde a secção de códigos de cupão deve ser apresentada "
+"Selecione a posição onde pretende apresentar a secção de códigos de cupão "
 "na página do carrinho. Apenas aplicável quando o carrinho AJAX e os códigos "
 "de cupão integrados na página de checkout estão activados."
 
@@ -1153,7 +1153,7 @@ msgstr "Ligação de ação no resumo da encomenda no momento do pagamento."
 
 #: inc/admin/admin-settings-checkout.php:280
 msgid "Edit cart link"
-msgstr "Editar a ligação do carrinho de compras"
+msgstr "Editar a hiperligação do carrinho"
 
 #: inc/admin/admin-settings-checkout.php:281
 msgid "Cart items count"
@@ -1238,9 +1238,9 @@ msgid ""
 "Display checkout sidebar widgets only when viewing the last checkout step "
 "on mobile devices when using multi-step checkout layout"
 msgstr ""
-"Mostrar widgets da barra lateral de checkout apenas quando se visualiza o "
-"último passo de checkout em dispositivos móveis quando se utiliza o layout "
-"de checkout em vários passos"
+"Exibir widgets da barra lateral de checkout apenas quando visualizar a "
+"última etapa de checkout em dispositivos móveis ao usar o layout de "
+"checkout em várias etapas"
 
 #: inc/admin/admin-settings-checkout.php:364
 msgid "Enable integrated coupon code section"
@@ -2422,117 +2422,117 @@ msgstr ""
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: inc/checkout-steps.php:2214
 msgctxt "Checkout step title"
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #: inc/checkout-steps.php:2223
 msgctxt "Checkout step title"
 msgid "Shipping"
-msgstr ""
+msgstr "Expedição"
 
 #: inc/checkout-steps.php:2235
 msgctxt "Checkout step title"
 msgid "Billing"
-msgstr ""
+msgstr "Faturação"
 
 #: inc/checkout-steps.php:2244
 msgctxt "Checkout step title"
 msgid "Payment"
-msgstr ""
+msgstr "Pagamento"
 
 #: inc/checkout-steps.php:2825
 msgctxt "Checkout substep change link label"
 msgid "Change"
-msgstr ""
+msgstr "Alterar"
 
 #: inc/checkout-steps.php:2826
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
-msgstr ""
+msgstr "Guardar alterações"
 
 #: inc/checkout-steps.php:2958
 msgctxt "Substep review text"
 msgid "None."
-msgstr ""
+msgstr "Nenhum."
 
 #: inc/checkout-steps.php:3490
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format"
 msgid "%1$s"
-msgstr ""
+msgstr "%1$s"
 
 #: inc/checkout-steps.php:3495
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
-msgstr ""
+msgstr "%2$s: %1$s"
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:85
 msgctxt "Image uploader."
 msgid "No image selected."
-msgstr ""
+msgstr "Nenhuma imagem selecionada."
 
 #: inc/admin/admin-settings-cart.php:49
 msgctxt "Settings section"
 msgid "Cart"
-msgstr ""
+msgstr "Carrinho"
 
 #: inc/admin/admin-settings-order-pay.php:49
 msgctxt "Settings section"
 msgid "Order pay"
-msgstr ""
+msgstr "Ordem de pagamento"
 
 #: inc/admin/admin-settings-order-received.php:47
 msgctxt "Settings section"
 msgid "Thank you"
-msgstr ""
+msgstr "Obrigado"
 
 #: inc/admin/admin-settings-integrations.php:83
 msgctxt "Settings section title"
 msgid "Integrations"
-msgstr ""
+msgstr "Integrações"
 
 #: inc/admin/admin-settings-license-keys.php:73
 msgctxt "Settings section title"
 msgid "License keys"
-msgstr ""
+msgstr "Chaves de licença"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:100
 msgctxt "Captcha position"
 msgid "Before place order section"
-msgstr ""
+msgstr "Secção antes da encomenda"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:101
 msgctxt "Captcha position"
 msgid "Before place order button"
-msgstr ""
+msgstr "Antes de colocar o botão de encomenda"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
 #. translators: %s shipping destination.
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
-msgstr ""
+msgstr "--"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
 msgctxt "Close button aria-label"
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
 msgctxt "Log in link label at checkout contact step"
 msgid "Log in"
-msgstr ""
+msgstr "Iniciar sessão"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:56
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue below"
-msgstr ""
+msgstr "Ou continue abaixo"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:54
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
-msgstr ""
+msgstr "Ou continuar como convidado"
