@@ -359,6 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
 * Improved: Enforce some styles for the place order button to improve compatibility with some themes.
 * Fixed: Field values reverting back to previous value (usually empty) when using `select2` for enhanced dropdown fields.
+* Fixed: Use treated display value for replacements on formatted addresses.
 
 = 4.0.2 - 2025-02-24 =
 
