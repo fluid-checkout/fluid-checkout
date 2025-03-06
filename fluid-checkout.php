@@ -157,13 +157,16 @@ class FluidCheckout {
 			'es_PR'          => 'es_ES',
 			'es_UY'          => 'es_ES',
 			'es_VE'          => 'es_ES',
+			'fa_AF'          => 'fa_IR',
 			'fr_CA'          => 'fr_FR',
 			'fr_BE'          => 'fr_FR',
 			'nl_BE'          => 'nl_NL',
-			'nl_NL_formal'   => 'nl_NL',			
-			'pt_PT'          => 'pt_BR',
-			'pt_AO'          => 'pt_BR',
-			'pt_PT_ao90'     => 'pt_BR',
+			'nl_NL_formal'   => 'nl_NL',
+			'nn_NO'          => 'nb_NO',
+			'pt_AO'          => 'pt_PT',
+			'pt_PT_ao90'     => 'pt_PT',
+			'ta_LK'          => 'ta_IN',
+			'zh_HK'          => 'zh_TW',
 		) );
 	}
 
