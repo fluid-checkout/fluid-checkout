@@ -265,23 +265,17 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 == Translations ==
 
-Fluid Checkout is fully localized and translatable using the built-in WordPress functions. We understand this is very important to all users worldwide. Currently translated into:
+We understand this is very important to all users worldwide.
 
-* English (Default)
-* Dutch
-* French
-* German
-* Greek
-* Italian
-* Polish
-* Portuguese
-* Spanish
-* Swedish
-* Turkish
+Fluid Checkout is fully localized and translatable using the built-in WordPress functions, and currently translated into 83 languages supported by WordPress, and by DeepL and Google Translate.
+
+All translations are done automatically through DeepL or Google Translate as available on those services.
+
+Some translations errors are expected to happen. Please [contact our support](https://wordpress.org/support/plugin/fluid-checkout/) and we will evaluate and fix these issues.
 
 **RTL Support**
 
-* Although currently there are no official transations to RTL languages, the plugin will adjust its layout to RTL languages as expected.
+* RTL languages are supported. The plugin will adjust its layout to RTL languages as expected.
 
 IMPORTANT NOTES:
 - Languages with variations will use the same language file. For example, when the website is in German the translation used will be German (Formal). For all Spanish speaking countries, the translation used will be Spanish (Spain).
