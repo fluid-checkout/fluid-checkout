@@ -1105,10 +1105,6 @@ msgstr "Actualización de la base de datos de Fluid Checkout"
 msgid "Fluid Checkout database updated successfully"
 msgstr "La base de datos de Fluid Checkout se ha actualizado correctamente"
 
-#. Name of the plugin
-msgid "Fluid Checkout for WooCommerce - Lite"
-msgstr "Fluid Checkout para WooCommerce - Lite"
-
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
 msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
 msgstr "Fluid Checkout no es compatible con el diseño de pago de Divi Builder"
@@ -1283,11 +1279,6 @@ msgstr "Resaltar la sección de dirección de envío en el formulario de pago"
 #: inc/admin/admin-settings-checkout.php:258
 msgid "HTML color value. ie: #f3f3f3"
 msgstr "Valor de color HTML. Es decir: #f3f3f3"
-
-#. URI of the plugin
-#. Author URI of the plugin
-msgid "https://fluidcheckout.com/"
-msgstr "https://fluidcheckout.com/"
 
 #: inc/admin/admin-setting-type-fc-addons.php:137
 #| msgid "I already have it &mdash; Hide this offer"
@@ -1797,18 +1788,6 @@ msgstr "Proceder al envío"
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
 msgstr "Barra de progreso"
-
-#. Description of the plugin
-msgid ""
-"Provides a distraction free checkout experience for any WooCommerce store. "
-"Ask for shipping information before billing in a truly linear multi-step or "
-"one-step checkout and display a coupon code field at the checkout page that "
-"does not distract your customers."
-msgstr ""
-"Proporciona una experiencia de pago sin distracciones para cualquier tienda "
-"WooCommerce. Solicite la información de envío antes de facturar en un pago "
-"verdaderamente lineal de varios o un solo paso y muestre un campo de código "
-"de cupón en la página de pago que no distraiga a sus clientes."
 
 #: inc/admin/admin-notice-review-request.php:50
 msgid "Rate the plugin"
@@ -2594,27 +2573,13 @@ msgstr ""
 "Su pedido tiene una cantidad total adeudada de %s. No es necesario ningún "
 "otro pago."
 
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block description"
-msgid ""
-"Display a checkout form so your customers can submit orders. (Replaced for "
-"compatibility with Fluid Checkout)"
-msgstr ""
-"Muestra un formulario de pago para que tus clientes puedan enviar pedidos. "
-"(Sustituido por compatibilidad con Fluid Checkout)"
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "No hay imagen seleccionada."
 
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block keyword"
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block title"
-msgid "Checkout"
-msgstr "Pedido"
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "Eliminar imagen"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -561,26 +561,42 @@ function poToPHP ( jsonFile, enc, cb ) {
 	// Add PO string contents
 	phpContents += `'messages' => [`;
 	Object.keys( json ).forEach( function ( key ) {
-		if ( '' !== key ) {
-			var outputKey = key.replace( /\'/g, '\\\'' );
+		// Skip if key is empty, which contains the headers
+		if ( '' == key ) { return; }
 
-			// Add string values, including plural forms
-			phpContents += `'${outputKey}' => '`;
-			json[ key ].forEach( function( messageValue, index ) {
-				// Skip first item, which is the original plural string
-				if ( 0 === index ) { return; }
+		var outputKey = key.replace( /\'/g, '\\\'' );
 
-				// Add string value
-				var outputValue = messageValue.replace( /'/g, '\\\'' );
-				phpContents += outputValue;
+		// Add string values, including plural forms
+		phpContents += `'${outputKey}' => '`;
+		json[ key ].forEach( function( messageValue, index ) {
+			// Skip first item, which is the original plural string
+			if ( 0 === index ) { return; }
 
-				// Add separator
-				if ( index < json[ key ].length - 1 ) {
-					phpContents += `' . "\\0" . '`;
-				}
-			} );
-			phpContents += `',`;
-		}
+			// Initialize variable
+			var outputValue = messageValue;
+
+			// Use only first value if messageValue is an array
+			// 
+			// This happens when the language has plural forms = `nplurals=1; plural=0`,
+			// which means that there is no distinction between singular and plural forms.
+			// 
+			// For unknown reasons at this point, the Json object in these cases returns an array
+			// as the value of the key, with the first item being translation of the singular form,
+			// and with the second item usually empty.
+			if ( Array.isArray( messageValue ) ) {
+				messageValue = messageValue[ 0 ];
+			}
+
+			// Add string value
+			var outputValue = messageValue.replace( /'/g, '\\\'' );
+			phpContents += outputValue;
+
+			// Add separator
+			if ( index < json[ key ].length - 1 ) {
+				phpContents += `' . "\\0" . '`;
+			}
+		} );
+		phpContents += `',`;
 	} );
 	phpContents += `]`;
 

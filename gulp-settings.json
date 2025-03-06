@@ -126,6 +126,7 @@
 		"nl_NL": { "deepl": "NL", "googleTranslate": "nl" },
 		"pa_IN": { "deepl": null, "googleTranslate": "pa" },
 		"ps": { "deepl": null, "googleTranslate": "ps" },
+		"pl_PL": { "deepl": "PL", "googleTranslate": "pl", "pluralForms": "nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);" },
 		"pt_BR": { "deepl": "PT-BR", "googleTranslate": "pt-BR" },
 		"pt_PT": { "deepl": "PT-PT", "googleTranslate": "pt" },
 		"ro_RO": { "deepl": "RO", "googleTranslate": "ro", "pluralForms": "nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);" },
