@@ -267,11 +267,9 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 We understand this is very important to all users worldwide.
 
-Fluid Checkout is fully localized and translatable using the built-in WordPress functions, and currently translated into 83 languages supported by WordPress, and by DeepL and Google Translate.
+Fluid Checkout is fully localized and translatable using the built-in WordPress functions, and **currently translated into 83 languages** out of the 132 languages supported by WordPress, which should include all the most used languages. All translations are done automatically through DeepL or Google Translate as available on those services.
 
-All translations are done automatically through DeepL or Google Translate as available on those services.
-
-Some translations errors are expected to happen. Please [contact our support](https://wordpress.org/support/plugin/fluid-checkout/) and we will evaluate and fix these issues.
+Some translations errors are expected to happen. Please [contact our support](https://wordpress.org/support/plugin/fluid-checkout/) and we will evaluate and fix these errors.
 
 **RTL Support**
 
