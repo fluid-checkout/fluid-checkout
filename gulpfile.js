@@ -15,15 +15,22 @@ var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 var exec = require('child_process').exec;
+var wpPot = require('gulp-wp-pot');
+var po2mo = require('gulp-po2mo');
+var po2json = require('gulp-po2json');
+var through2 = require('through2');
 
 
+
+// Load package.json
+var _package = loadJsonFile.sync( 'package.json' );
 
 // Defining settings
 var _gulpSettings = loadJsonFile.sync( 'gulp-settings.json' );
 var _gulpSettingsLocal = {};
-var _package = {},
-	_assetsVersion = '';
+var _assetsVersion = '';
 var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAction || 'watch';
+var _translationErrors = [];
 
 
 
@@ -37,8 +44,7 @@ catch ( err ) {}
 // gulp update-ver
 // Update the project version
 gulp.task( 'update-ver', gulp.series( function( done ) {
-	// Load package.json
-	_package = loadJsonFile.sync( 'package.json' );
+	// Define assets version
 	_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
 
 	gulp.src( _package.main )
@@ -53,9 +59,6 @@ gulp.task( 'update-ver', gulp.series( function( done ) {
 // gulp update-ver
 // Update the project version for full releases, including the version and date in the changelog
 gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
-	// Load package.json
-	_package = loadJsonFile.sync( 'package.json' );
-
 	// Define assets version
 	_assetsVersion = '-' + _package.version.replace( /\./gi, '' );
 
@@ -326,6 +329,374 @@ gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 
 	done();
 } ) );
+
+
+
+// Function to translate text using Deepl
+function translateWithDeepl( text, targetLang, callback ) {
+	var deeplApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'deepl'; } ).url;
+	var deeplApiKey = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'deepl'; } ).key;
+
+	import( 'node-fetch' ).then( function ( fetch ) {
+		fetch.default( deeplApiUrl, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: 'auth_key=' + deeplApiKey + '&text=' + encodeURIComponent( text ) + '&source_lang=EN' + '&target_lang=' + targetLang
+		} )
+		.then( function( response ) {
+			// Handle API error
+			if ( 200 !== response.status ) {
+				throw new Error( response.status + ' ' + response.statusText );
+			}
+
+			return response.json();
+		} )
+		.then( function( data ) {
+			// Handle API error
+			if ( ! data.translations ) {
+				throw new Error( data.message );
+			}
+
+			// Otherwise, pass translated text into callback
+			callback( null, data.translations[ 0 ].text );
+		} )
+		.catch( function( error ) { callback( error ); } );
+	} );
+}
+ 
+// Function to translate text using Google Translate
+function translateWithGoogle( text, targetLang, callback ) {
+	var googleApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).url;
+	var googleApiKey = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).key;
+
+	import( 'node-fetch' ).then( function ( fetch ) {
+		fetch.default( googleApiUrl + '?key=' + googleApiKey + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang )
+		.then( function( response ) {
+			// Handle API error
+			if ( 200 !== response.status ) {
+				throw new Error( response.status + ' ' + response.statusText );
+			}
+
+			return response.json();
+		} )
+		.then( function( data ) {
+			// Handle API error
+			if ( ! data.data || ! data.data.translations ) {
+				throw new Error( data.message );
+			}
+
+			// Otherwise, pass translated text into callback
+			callback( null, data.data.translations[ 0 ].translatedText );
+		} )
+		.catch( function( error ) { callback( error ); } );
+	} );
+}
+
+// Function to translate PO file
+function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
+	// Maybe copy POT file to PO file if it does not exist
+	if ( ! fs.existsSync( poFilePath ) ) {
+		fs.copyFileSync( potFilePath, poFilePath );
+	}
+
+	// Get PO file contents
+	var poContent = fs.readFileSync( poFilePath );
+
+	// Get language settings
+	var langSettings = _gulpSettings.languages[ targetLang ];
+
+	// Load gettext-parser
+	import( 'gettext-parser' ).then( function( gettextParser ) {
+		// Get parsed PO content
+		var po = gettextParser.po.parse( poContent );
+
+		// Parse POT file
+		var potContent = fs.readFileSync( potFilePath );
+		var pot = gettextParser.po.parse( potContent );
+
+		// Update plural format, if available
+		if ( langSettings.pluralForms ) {
+			// Update plural-forms header from language settings
+			po.headers[ 'Plural-Forms' ] = langSettings.pluralForms;
+
+			// Update PO file
+			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
+		}
+
+		// Update PO file with POT content
+		Object.keys( pot.translations ).forEach( function( context ) {
+			if ( ! po.translations[ context ] ) {
+				po.translations[ context ] = {};
+			}
+
+			Object.keys( pot.translations[ context ] ).forEach( function( msgid ) {
+				if ( ! po.translations[ context ][ msgid ] ) {
+					po.translations[ context ][ msgid ] = pot.translations[ context ][ msgid ];
+				}
+			} );
+		} );
+
+		// Delete obsolete translations
+		Object.keys( po.translations ).forEach( function( context ) {
+			Object.keys( po.translations[ context ] ).forEach( function( msgid ) {
+				if ( ! pot.translations[ context ] || ! pot.translations[ context ][ msgid ] ) {
+					delete po.translations[ context ][ msgid ];
+				}
+			} );
+		} );
+
+		// Initialize translations
+		var translations = po.translations;
+		var contextKeys = Object.keys( translations );
+		var contextIndex = 0;
+
+		// Translate next string
+		function translateNextContext() {
+			// Check whether all translations are done
+			if ( contextIndex >= contextKeys.length ) {
+				// Run callback
+				return callback();
+			}
+
+			// Reset variables
+			var context = contextKeys[ contextIndex ];
+			var contextTranslations = translations[ context ];
+			var msgidKeys = Object.keys( contextTranslations );
+			var msgidIndex = 0;
+
+			function translateNextMsgid() {
+				// Check whether all strings are translated in the context
+				if ( msgidIndex >= msgidKeys.length ) {
+					contextIndex++;
+					translateNextContext();
+					return;
+				}
+
+				// Get string id
+				var msgid = msgidKeys[ msgidIndex ];
+
+				// Get plural forms
+				var msgidPlural = Object.hasOwnProperty.call( contextTranslations[ msgid ], 'msgid_plural' ) ? contextTranslations[ msgid ].msgid_plural : null;
+				var nPluralForms = msgidPlural ? po.headers[ 'Plural-Forms' ].match( /nplurals\s*=\s*(\d+)/ )[ 1 ] : 1;
+				var msgstrIndex = 0;
+
+				function translateNextMsgstr() {
+					// Check whether all strings are translated in the context
+					if ( msgstrIndex >= nPluralForms ) {
+						msgidIndex++;
+						translateNextMsgid();
+						return;
+					}
+
+					// Get string
+					var msgstr = contextTranslations[ msgid ].msgstr[ msgstrIndex ];
+					var strToTranslate = msgstrIndex > 0 ? msgidPlural : msgid;
+
+					// Maybe translate string
+					if ( ! msgstr ) {
+						// Translate with Deepl if supported, otherwise use Google Translate
+						var useDeepl = langSettings.deepl !== null;
+						var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
+						var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ];
+
+						translateFunction( strToTranslate, apiTargetLang, function( err, translatedText ) {
+							// Handle error
+							if ( err ) {
+								console.error( `Error translating "${strToTranslate}" to ${apiTargetLang} with ${useDeepl ? 'Deepl' : 'Google Translate'}:`, err );
+
+								// Mark language with error
+								_translationErrors.push( { lang: apiTargetLang, error: err.message } );
+
+								// Move to next translation
+								msgstrIndex++;
+								translateNextMsgstr();
+							}
+							else {
+								// Update translation
+								contextTranslations[ msgid ].msgstr[ msgstrIndex ] = translatedText;
+
+								// Log translated text
+								var indexString = msgstrIndex > 0 ? '(' + msgstrIndex + ')' : '';
+								console.log( 'Translated: ' + targetLang + ' ' + indexString + ' ' + strToTranslate + ' -> ' + translatedText );
+
+								// Update PO file
+								fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
+
+								// // Move to next translation
+								msgstrIndex++;
+								translateNextMsgstr();
+							}
+						} );
+					}
+					else {
+						// Skip if string is already translated
+						msgstrIndex++;
+						translateNextMsgstr();
+					}
+				}
+
+				translateNextMsgstr();
+			}
+
+			translateNextMsgid();
+		}
+
+		translateNextContext();
+	});
+}
+
+// Function to convert PO file to PHP
+function poToPHP ( jsonFile, enc, cb ) {
+	// Initialize variables
+	var json = JSON.parse( jsonFile.contents.toString() );
+	var phpContents = '';
+
+	// Add PO header contents
+	Object.keys( json[''] ).forEach( function ( key ) {
+		var outputKey = key.replace( /\'/g, '\\\'' );
+		var outputValue = json[ '' ][ key ].replace( /'/g, '\\\'' );
+		phpContents += `'${outputKey}' => '${outputValue}',`;
+	} );
+
+	// Add PO string contents
+	phpContents += `'messages' => [`;
+	Object.keys( json ).forEach( function ( key ) {
+		// Skip if key is empty, which contains the headers
+		if ( '' == key ) { return; }
+
+		var outputKey = key.replace( /\'/g, '\\\'' );
+
+		// Add string values, including plural forms
+		phpContents += `'${outputKey}' => '`;
+		json[ key ].forEach( function( messageValue, index ) {
+			// Skip first item, which is the original plural string
+			if ( 0 === index ) { return; }
+
+			// Initialize variable
+			var outputValue = messageValue;
+
+			// Use only first value if messageValue is an array
+			// 
+			// This happens when the language has plural forms = `nplurals=1; plural=0`,
+			// which means that there is no distinction between singular and plural forms.
+			// 
+			// For unknown reasons at this point, the Json object in these cases returns an array
+			// as the value of the key, with the first item being translation of the singular form,
+			// and with the second item usually empty.
+			if ( Array.isArray( messageValue ) ) {
+				messageValue = messageValue[ 0 ];
+			}
+
+			// Add string value
+			var outputValue = messageValue.replace( /'/g, '\\\'' );
+			phpContents += outputValue;
+
+			// Add separator
+			if ( index < json[ key ].length - 1 ) {
+				phpContents += `' . "\\0" . '`;
+			}
+		} );
+		phpContents += `',`;
+	} );
+	phpContents += `]`;
+
+	var fileContents = `<?php\nreturn [ ${phpContents} ];`;
+	jsonFile.contents = Buffer.from( fileContents );
+	this.push( jsonFile );
+	cb();
+}
+
+// Run:
+// gulp translate-po
+// Translate PO files using Deepl and Google Translate
+gulp.task( 'translate-po', function ( done ) {
+	// Get languages
+	var languagesList = Object.keys( _gulpSettings.languages );
+	var index = 0;
+
+	// Translate next language
+	function translateNext() {
+		if ( index >= languagesList.length ) {
+			// Log errors
+			_translationErrors.forEach( function ( error ) {
+				console.error( `Error translating ${error.lang}:`, error.error );
+			} );
+
+			return done();
+		}
+
+		// Get language code and PO file path
+		var languageCode = languagesList[ index ];
+		var potFilePath = _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '.pot';
+		var poFilePath = _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + languageCode + '.po';
+
+		// Translate PO file for the language
+		translatePoFile( poFilePath, potFilePath, languageCode, function() {
+			index++;
+			translateNext();
+		} );
+	}
+
+	translateNext();
+} );
+
+// Update the 'update-translations' task to include 'translate-po'
+gulp.task( 'update-translations', gulp.series( 'translate-po', function ( done ) {
+	var tasks = Object.keys( _gulpSettings.languages ).map( function( lang ) {
+		return function ( done2 ) {
+			gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
+				.pipe( po2mo() )
+				.pipe( gulp.dest( _gulpSettings.translationDest ) );
+
+			gulp.src( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '-' + lang + '.po' )
+				.pipe( po2json() )
+				.pipe( through2.obj( poToPHP ) )
+				.pipe( rename( { extname: '.l10n.php' } ) )
+				.pipe( gulp.dest( _gulpSettings.translationDest ) );
+
+			done2();
+		};
+	} );
+
+	return gulp.series( tasks )( done );
+} ) );
+	
+
+// Run:
+// gulp generate-pot
+// Generate the POT translation file
+gulp.task( 'generate-pot', function ( done ) {
+	try {
+		// Load package.json
+		_package = loadJsonFile.sync( 'package.json' );
+
+		return gulp.src( _gulpSettings.translationSources )
+			.pipe( wpPot( {
+				domain: _gulpSettings.textDomain,
+				package: _package.name,
+				bugReport: _package.bugs.url,
+				lastTranslator: _package.author,
+				team: _package.author
+			} ) )
+			.pipe( gulp.dest( _gulpSettings.translationDest + '/' + _gulpSettings.textDomain + '.pot' ) )
+			.on( 'end', done )
+			.on( 'error', function( err ) {
+				console.error( 'Error in generate-pot task', err );
+				done( err );
+			} );
+	}
+	catch ( err ) {
+		console.error( 'Error in generate-pot task', err );
+		done( err );
+	}
+} );
+
+
+
+// Run:
+// gulp translations
+// Generate POT file and update translations
+gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations' ) );
 
 
 

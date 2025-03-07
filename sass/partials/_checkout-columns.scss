@@ -47,15 +47,17 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 
 .fc-sidebar {
 	position: static;
+	margin-top: 0 !important; // Needed to override theme styles
 
 	@media (#{$bp-larger-than-tablet}) and (#{$bp-smaller-than-desktop}) {
-		margin-top: $global-spacing-small;
+		margin-top: $global-spacing-small !important; // Needed to override theme styles
 	}
 
 	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' ) + 1;
 		float: $alignment-right;
 		width: $checkout-overview-width--large-screen;
+		margin-top: 0 !important; // Needed to override theme styles
 	}
 }
 

@@ -1,0 +1,2491 @@
+# Copyright (C) 2025 fluid-checkout
+# This file is distributed under the same license as the fluid-checkout package.
+msgid ""
+msgstr ""
+"Project-Id-Version: fluid-checkout\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Fluid Checkout\n"
+"Last-Translator: Fluid Checkout\n"
+"POT-Creation-Date: 2025-03-05 23:46+0000\n"
+"Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: fluid-checkout.php:585
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: fluid-checkout.php:588
+msgid "Go to Plugin Search"
+msgstr "Idite na Plugin Search"
+
+#: fluid-checkout.php:592
+msgid "Activate %s"
+msgstr "Aktiviraj %s"
+
+#: fluid-checkout.php:596
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"<strong>%1$s</strong> zahtijeva instaliranje i aktivaciju "
+"<strong>%2$s</strong> . <a href=\"%4$s\">%3$s</a>"
+
+#: inc/checkout-coupon-codes.php:274
+msgid "Enter your code here"
+msgstr "Unesite svoj kod ovdje"
+
+#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
+msgid "Add %s"
+msgstr "Dodaj %s"
+
+#: inc/checkout-coupon-codes.php:382
+msgid "Remove"
+msgstr "Ukloniti"
+
+#: inc/checkout-fields.php:126
+msgid "Order number and receipt will be sent to this email address."
+msgstr "Broj narudžbe i račun bit će poslani na ovu adresu e-pošte."
+
+#: inc/checkout-fields.php:181
+msgid "Apartment, unit, building, floor, etc."
+msgstr "Stan, jedinica, zgrada, kat itd."
+
+#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+msgid "Shipping phone"
+msgstr "Telefon za dostavu"
+
+#: inc/checkout-shipping-phone-field.php:105
+msgid "Only used for shipping-related questions."
+msgstr "Koristi se samo za pitanja u vezi s otpremom."
+
+#: inc/checkout-steps.php:793
+msgid "Multi-step"
+msgstr "Višestruki korak"
+
+#: inc/checkout-steps.php:794
+msgid "Single step"
+msgstr "Jedan korak"
+
+#: inc/checkout-steps.php:965
+msgid "Click to go to the order summary"
+msgstr "Kliknite za odlazak na sažetak narudžbe"
+
+#: inc/checkout-steps.php:965
+msgid "Cart total:"
+msgstr "Ukupna kolica:"
+
+#: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
+msgid "Proceed to %s"
+msgstr "Nastavite do %s"
+
+#: inc/checkout-steps.php:2215
+msgid "Proceed to contact"
+msgstr "Nastavite s kontaktom"
+
+#: inc/checkout-steps.php:2224
+msgid "Proceed to shipping"
+msgstr "Nastavite s otpremom"
+
+#: inc/checkout-steps.php:2236
+msgid "Proceed to billing"
+msgstr "Nastavite s naplatom"
+
+#: inc/checkout-steps.php:2245
+msgid "Proceed to payment"
+msgstr "Prijeđite na plaćanje"
+
+#: inc/checkout-steps.php:2256
+msgid "My contact"
+msgstr "Moj kontakt"
+
+#: inc/checkout-steps.php:2266
+msgid "Shipping to"
+msgstr "Dostava do"
+
+#: inc/checkout-steps.php:2276
+msgid "Shipping method"
+msgstr "Način dostave"
+
+#: inc/checkout-steps.php:2286
+msgid "Additional notes"
+msgstr "Dodatne napomene"
+
+#: inc/checkout-steps.php:2300
+msgid "Billing to"
+msgstr "Naplata za"
+
+#: inc/checkout-steps.php:2310
+msgid "Payment method"
+msgstr "Način plaćanja"
+
+#: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+msgid "Step %1$s of %2$s"
+msgstr "Korak %1$s od %2$s"
+
+#: inc/checkout-steps.php:2825
+msgid "Change: %s"
+msgstr "Promjena: %s"
+
+#: inc/checkout-steps.php:3184
+msgid "An account will be created with the information provided."
+msgstr "Račun će biti kreiran s navedenim podacima."
+
+#: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+msgid "Not selected yet."
+msgstr "Još nije odabrano."
+
+#: inc/checkout-steps.php:4675
+msgid "Same as shipping address"
+msgstr "Isto kao adresa za dostavu"
+
+#: inc/checkout-steps.php:4720
+msgid "Same as billing address"
+msgstr "Isto kao adresa za naplatu"
+
+#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+msgid "Order summary"
+msgstr "Sažetak narudžbe"
+
+#: inc/checkout-steps.php:6008, templates/fc/checkout-steps/checkout/review-order-section.php:58
+msgid "Edit cart"
+msgstr "Uredi košaricu"
+
+#: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
+msgid "Did you mean %s?"
+msgstr "Jeste li mislili %s?"
+
+#: inc/checkout-validation.php:197
+msgid "Change email address to: {suggestion-value}"
+msgstr "Promijeni adresu e-pošte u: {suggestion-value}"
+
+#: inc/checkout-validation.php:200
+msgid "This is a required field."
+msgstr "Ovo je obavezno polje."
+
+#: inc/checkout-validation.php:201
+msgid "This is not a valid email address."
+msgstr "Ovo nije važeća adresa e-pošte."
+
+#: inc/checkout-validation.php:202
+msgid "This field does not match the related field value."
+msgstr "Ovo polje ne odgovara vrijednosti povezanog polja."
+
+#: inc/checkout-validation.php:211
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "CPF broj &quot;{cpf_number}&quot; nije valjan."
+
+#: inc/checkout-validation.php:212
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "CNPJ broj &quot;{cnpj_number}&quot; je nevažeći."
+
+#: inc/checkout-validation.php:369, templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
+msgid "(Required)"
+msgstr "(Potreban)"
+
+#: inc/checkout-widget-areas.php:98
+msgid "Checkout Header - Desktop"
+msgstr "Checkout Header - Desktop"
+
+#: inc/checkout-widget-areas.php:100
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr ""
+"Prikaži widgete u zaglavlju naplate za velike zaslone. Prikazuje se samo "
+"ako se koristi zaglavlje za naplatu dodatka."
+
+#: inc/checkout-widget-areas.php:108
+msgid "Checkout Header - Mobile"
+msgstr "Checkout Header - Mobile"
+
+#: inc/checkout-widget-areas.php:110
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
+msgstr ""
+"Prikaz widgeta ispod zaglavlja za naplatu za mobilne uređaje. Prikazuje se "
+"samo ako se koristi zaglavlje za naplatu dodatka."
+
+#: inc/checkout-widget-areas.php:122
+msgid "Checkout Sidebar"
+msgstr "Bočna traka za plaćanje"
+
+#: inc/checkout-widget-areas.php:124
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr "Prikaži widgete na bočnoj traci naplate nakon sažetka narudžbe."
+
+#: inc/checkout-widget-areas.php:134
+msgid "Checkout Order Summary"
+msgstr "Checkout Sažetak narudžbe"
+
+#: inc/checkout-widget-areas.php:136
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "Prikaz widgeta unutar sažetka narudžbe na stranici za naplatu."
+
+#: inc/checkout-widget-areas.php:144
+msgid "Checkout Below Place Order"
+msgstr "Plaćanje Ispod Naruči"
+
+#: inc/checkout-widget-areas.php:146
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "Prikaži widgete ispod gumba za naručivanje na stranici za naplatu."
+
+#: inc/checkout-widget-areas.php:158
+msgid "Checkout Footer"
+msgstr "Podnožje naplate"
+
+#: inc/checkout-widget-areas.php:160
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
+msgstr ""
+"Prikaži widgete u podnožju naplate. Prikazuje se samo ako se koristi "
+"podnožje za naplatu dodatka."
+
+#: inc/design-templates.php:115
+msgid "Classic"
+msgstr "klasična"
+
+#: inc/design-templates.php:116
+msgid "Boxed"
+msgstr "U kutiji"
+
+#: inc/design-templates.php:117
+msgid "Split"
+msgstr "Split"
+
+#: inc/design-templates.php:118
+msgid "Minimalist"
+msgstr "Minimalistički"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:47
+msgid "Fluid Checkout Lite 4.0+ – Important changes!"
+msgstr "Fluid Checkout Lite 4.0+ – Važne promjene!"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:48
+msgid ""
+"With this version of Fluid Checkout we have introduced <strong>important "
+"changes that might impact your website</strong> if you have made "
+"customizations to our plugins previously to the release of this version. If "
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
+msgstr ""
+"S ovom verzijom Fluid Checkouta uveli smo <strong>važne promjene koje bi "
+"mogle utjecati na vašu web stranicu</strong> ako ste prilagodili naše "
+"dodatke prije izdanja ove verzije. Ako vaša web stranica nema nikakve "
+"prilagodbe za dodatke Fluid Checkout, trebala bi raditi na isti način kao i "
+"prije.<br><br> Ako imate bilo kakve prilagodbe za Fluid Checkout na svojoj "
+"web stranici, a još ih niste migrirali na ovu verziju, pročitajte naš vodič "
+"<a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Premještanje prilagodbi na Fluid Checkout Lite 4.0+</a>"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:51
+msgid "Read the migration guide"
+msgstr "Pročitajte vodič za migraciju"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
+msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
+msgstr "Dodaci Fluid Checkout i Delivery Date by CodeRockz"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
+msgid ""
+"<p>We detected that you are using the plugins Delivery & Pickup Date Time "
+"for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins "
+"have been moved to Fluid Checkout PRO.</p>"
+msgstr ""
+"<p>Otkrili smo da koristite dodatke Delivery &amp; Pickup Date Time za "
+"WooCommerce (besplatan i PRO) tvrtke CodeRockz. Integracija s ovim dodacima "
+"premještena je u Fluid Checkout PRO.</p>"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+msgid "Upgrade to PRO"
+msgstr "Nadogradite na PRO"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "What should I do?"
+msgstr "Što da radim?"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:55
+msgid "Fluid Checkout database updated successfully"
+msgstr "Baza podataka Fluid Checkout uspješno je ažurirana"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:56
+msgid "The database changes where applied successfully."
+msgstr "Baza podataka se mijenja tamo gdje je uspješno primijenjena."
+
+#: inc/admin/admin-notice-db-migrations-applied.php:59
+msgid "Ok"
+msgstr "U redu"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
+msgstr "Odbaciti"
+
+#: inc/admin/admin-notice-db-migrations.php:51
+msgid "Fluid Checkout database update"
+msgstr "Ažuriranje baze podataka Fluid Checkout"
+
+#: inc/admin/admin-notice-db-migrations.php:52
+msgid ""
+"Some changes to the database are required. As with any update, we recommend "
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
+msgstr ""
+"Potrebne su neke izmjene u bazi podataka. Kao i kod svakog ažuriranja, "
+"preporučujemo vam da <strong>napravite potpunu sigurnosnu kopiju svoje web "
+"stranice prije nastavka</strong> ."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "Update database"
+msgstr "Ažurirajte bazu podataka"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
+msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
+msgstr "Fluid Checkout nije kompatibilan s izgledom plaćanja Divi Builder"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
+msgid ""
+"<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
+"form to work. When using the Divi Builder to customize the look and feel of "
+"the checkout page, the classic shortcodes are replaced with custom widgets "
+"from the Divi Builder for each part of the checkout page. These custom "
+"widgets are not compatible with Fluid Checkout.</p><p>Please edit your "
+"checkout page replacing the Divi Builder widgets with the a text widget "
+"containing the shortcode <code>[woocommerce_checkout]</code>.</p>"
+msgstr ""
+"<p>Fluid Checkout treba klasičnu WooCommerce formu za naplatu temeljenu na "
+"kratkom kodu kako bi funkcionirao. Kada koristite Divi Builder za "
+"prilagodbu izgleda i dojma stranice za naplatu, klasični kratki kodovi "
+"zamjenjuju se prilagođenim widgetima iz Divi Buildera za svaki dio stranice "
+"za naplatu. Ovi prilagođeni widgeti nisu kompatibilni s Fluid "
+"Checkout-om.</p><p> Uredite svoju stranicu za naplatu i zamijenite widgete "
+"Divi Builder s tekstualnim widgetom koji sadrži kratki kod "
+"<code>[woocommerce_checkout]</code> .</p>"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
+msgid "Edit the checkout page"
+msgstr "Uredite stranicu za naplatu"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+msgid "Read the documentation."
+msgstr "Pročitajte dokumentaciju."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr ""
+"Germanizirana PRO značajka plaćanja u više koraka mora biti onemogućena "
+"kada se koristi Fluid Checkout"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+"Kada koristite Fluid Checkout, značajka u više koraka iz germaniziranog PRO "
+"dodatka postaje nepotrebna i može uzrokovati <strong>kritične pogreške "
+"tijekom obrade novih narudžbi</strong> . Onemogućite značajku germanizirane "
+"PRO višestruke naplate u postavkama dodatka."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr "Idite na germanizirane postavke"
+
+#: inc/admin/admin-notice-review-request.php:47
+msgid "Thanks for choosing Fluid Checkout!"
+msgstr "Hvala što ste odabrali Fluid Checkout!"
+
+#: inc/admin/admin-notice-review-request.php:48
+msgid ""
+"You have been using the plugin for a while now. How do you like it so far? "
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
+msgstr ""
+"Već neko vrijeme koristite dodatak. Kako vam se do sada sviđa?<br> Dajte "
+"nam brzu ocjenu, cijenimo svaku povratnu informaciju i to nas potiče da "
+"nastavimo poboljšavati dodatak :)"
+
+#: inc/admin/admin-notice-review-request.php:50
+msgid "Rate the plugin"
+msgstr "Ocijenite dodatak"
+
+#: inc/admin/admin-notice-review-request.php:51
+msgid "I need help!"
+msgstr "Trebam pomoć!"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr ""
+"Dodatak WooCommerce Checkout Manager tvrtke Quadlayers nije kompatibilan s "
+"Fluid Checkoutom"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"Neke značajke WooCommerce Checkout Managera tvrtke Quadlayers možda neće "
+"raditi kako se očekuje kada ga koristite s Fluid Checkoutom. Pročitajte <a "
+"href=\"%s\">našu dokumentaciju</a> za više informacija i alternativna "
+"rješenja."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "Pročitajte dokumentaciju"
+
+#: inc/admin/admin-notices.php:55
+msgid "Don't show this again"
+msgstr "Ne prikazuj ovo više"
+
+#: inc/admin/admin-setting-type-fc-addons.php:41
+msgid "Special offers"
+msgstr "Posebne ponude"
+
+#: inc/admin/admin-setting-type-fc-addons.php:43
+msgid ""
+"Extend all the goodness of Fluid Checkout to your cart page and thank you "
+"pages."
+msgstr ""
+"Proširite sve dobrote Fluid Checkouta na svoju stranicu košarice i stranice "
+"zahvale."
+
+#: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
+msgid "Fluid Checkout PRO"
+msgstr "Fluid Checkout PRO"
+
+#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
+msgid ""
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
+msgstr ""
+"Predlošci dizajna, optimizirane stranice za košaricu i primljene narudžbe, "
+"podudaranje računa i još mnogo toga."
+
+#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
+msgid ""
+"The best tools to further <strong>improve your WooCommerce checkout "
+"conversion rate</strong> and make the purchase experience consistent on the "
+"entire journey."
+msgstr ""
+"Najbolji alati za daljnje <strong>poboljšanje vaše stope konverzije naplate "
+"na WooCommerceu</strong> i stvaranje dosljednog iskustva kupnje tijekom "
+"cijelog putovanja."
+
+#: inc/admin/admin-setting-type-fc-addons.php:57
+msgid "More design templates"
+msgstr "Više predložaka dizajna"
+
+#: inc/admin/admin-setting-type-fc-addons.php:58
+msgid "Optimized cart page"
+msgstr "Optimizirana stranica košarice"
+
+#: inc/admin/admin-setting-type-fc-addons.php:59
+msgid "Optimized order received / thank you page"
+msgstr "Primljena optimizirana narudžba / stranica zahvale"
+
+#: inc/admin/admin-setting-type-fc-addons.php:60
+msgid "Edit cart contents at checkout page"
+msgstr "Uredite sadržaj košarice na stranici za naplatu"
+
+#: inc/admin/admin-setting-type-fc-addons.php:61
+msgid "Account matching / user matching"
+msgstr "Uparivanje računa/uparivanje korisnika"
+
+#: inc/admin/admin-setting-type-fc-addons.php:62
+msgid "Express Checkout buttons from supported payment methods"
+msgstr "Gumbi za brzu naplatu iz podržanih načina plaćanja"
+
+#: inc/admin/admin-setting-type-fc-addons.php:63
+msgid "Trust symbols on the cart and thank you pages"
+msgstr "Simboli povjerenja na stranicama košarice i zahvale"
+
+#: inc/admin/admin-setting-type-fc-addons.php:64
+msgid "More positions for the coupon code on the checkout page"
+msgstr "Više pozicija za kod kupona na stranici za naplatu"
+
+#: inc/admin/admin-setting-type-fc-addons.php:65
+msgid "Integrated coupon code field on the cart page"
+msgstr "Integrirano polje koda kupona na stranici košarice"
+
+#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+msgid "International phone numbers"
+msgstr "Međunarodni telefonski brojevi"
+
+#: inc/admin/admin-setting-type-fc-addons.php:67
+msgid "Gift messages and packing slips"
+msgstr "Poruke s poklonima i otpremnice"
+
+#: inc/admin/admin-setting-type-fc-addons.php:68
+msgid "Local pickup and in-store collection"
+msgstr "Lokalno preuzimanje i preuzimanje u trgovini"
+
+#: inc/admin/admin-setting-type-fc-addons.php:72
+msgid "Upgrade to PRO &mdash; 99 EUR"
+msgstr "Nadogradnja na PRO — 99 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
+msgid "Fluid Checkout PRO – Bundle"
+msgstr "Fluid Checkout PRO – Paket"
+
+#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
+msgid "All PRO features + All add-ons for a special price."
+msgstr "Sve PRO značajke + Svi dodaci po posebnoj cijeni."
+
+#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
+msgid ""
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
+msgstr ""
+"Paket uključuje sve dodatke koje trenutno nudimo i dodatke Fluid Checkout "
+"koje ćemo pokrenuti u budućnosti."
+
+#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "Vrijednost 226 EUR (uštedite 42%)"
+
+#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
+msgid "Google Address Autocomplete"
+msgstr "Automatsko dovršavanje Google adrese"
+
+#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
+msgid "Address Book"
+msgstr "Adresar"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "EU-PDV asistent"
+
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons *"
+msgstr "Svi budući dodaci *"
+
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* Sve dok imate aktivnu pretplatu."
+
+#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
+msgid "Get the Bundle – Only 129 EUR"
+msgstr "Dobijte paket – samo 129 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
+msgid ""
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
+msgstr ""
+"Sve cijene prikazane su u EUR. Ako postoje bilo kakva odstupanja s cijenama "
+"na našoj web stranici, ponude prikazane na web stranici zamjenjuju te i bit "
+"će primijenjene."
+
+#: inc/admin/admin-setting-type-fc-addons.php:116
+msgid "Add-ons"
+msgstr "Dodaci"
+
+#: inc/admin/admin-setting-type-fc-addons.php:117
+msgid "Enhance your checkout experience with these add-ons."
+msgstr "Poboljšajte svoje iskustvo naplate s ovim dodacima."
+
+#: inc/admin/admin-setting-type-fc-addons.php:137
+msgid "I already have it – Hide this offer"
+msgstr "Već ga imam – Sakrij ovu ponudu"
+
+#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
+msgid "Installed &mdash; Activate"
+msgstr "Instalirano — Aktiviraj"
+
+#: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
+msgid "Activated"
+msgstr "Aktiviran"
+
+#: inc/admin/admin-setting-type-fc-addons.php:168
+msgid "Up to 40% less checkout fields to fill in."
+msgstr "Do 40% manje polja za popunjavanje."
+
+#: inc/admin/admin-setting-type-fc-addons.php:172
+msgid ""
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
+msgstr ""
+"Izbjegnite kašnjenja u isporuci i nezadovoljne kupce. Prikupite "
+"<strong>točne informacije o adresi</strong> od prve kupovine kod vas."
+
+#: inc/admin/admin-setting-type-fc-addons.php:180
+msgid "Get this add-on &mdash; 29 EUR"
+msgstr "Nabavite ovaj dodatak — 29 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:189
+msgid "Address book"
+msgstr "Adresar"
+
+#: inc/admin/admin-setting-type-fc-addons.php:190
+msgid "Multiple saved addresses for shipping and billing."
+msgstr "Više spremljenih adresa za dostavu i naplatu."
+
+#: inc/admin/admin-setting-type-fc-addons.php:194
+msgid ""
+"Let customers <strong>save multiple shipping and billing addresses</strong> "
+"on their account and choose which ones to use at checkout and cart pages."
+msgstr ""
+"Omogućite kupcima <strong>da spreme više adresa za dostavu i "
+"naplatu</strong> na svoj račun i odaberu koje će koristiti na stranicama za "
+"naplatu i košaricu."
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
+msgid "Get this add-on &mdash; 59 EUR"
+msgstr "Nabavite ovaj dodatak — 59 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "Pojednostavljena potvrda EU-PDV-a za vašu trgovinu."
+
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr ""
+"Prikupite i <strong>potvrdite EU PDV brojeve na stranici za "
+"naplatu</strong> , uklonite porezne naknade na temelju obrnute obveze i "
+"potvrdite lokaciju kupca kada je to potrebno."
+
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "Nabavite ovaj dodatak — 39 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:233
+msgid ""
+"All add-ons are sold separately and require the <strong>Fluid Checkout "
+"Lite</strong> plugin to be installed and activated, except when noted."
+msgstr ""
+"Svi dodaci prodaju se zasebno i zahtijevaju instaliranje i aktiviranje "
+"dodatka <strong>Fluid Checkout Lite</strong> , osim ako nije drugačije "
+"navedeno."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "Odaberite sliku"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "Nema odabrane slike."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "Ukloni sliku"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:142
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to get your license key, or <a href=\"%s\" "
+"target=\"_blank\">purchase a new license key</a>."
+msgstr ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Prijavite "
+"se na svoj račun</a> kako biste dobili licencni ključ ili <a href=\"%s\" "
+"target=\"_blank\">kupite novi licencni ključ</a> ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
+msgid "Valid until %s."
+msgstr "Vrijedi do %s."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
+msgid "Expired on %s."
+msgstr "Isteklo %s."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:160
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to renew your license key and continue to receive updates "
+"and support."
+msgstr ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Prijavite "
+"se na svoj račun</a> kako biste obnovili svoj licencni ključ i nastavili "
+"primati ažuriranja i podršku."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:163
+msgid "License key cancelled."
+msgstr "Ključ licence otkazan."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:165
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">Kupite novi licencni ključ</a> i nastavite "
+"primati ažuriranja i podršku."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:168
+msgid "Error: "
+msgstr "Greška: "
+
+#: inc/admin/admin-setting-type-fc-setup.php:41
+msgid "Setup & Documentation"
+msgstr "Postavljanje i dokumentacija"
+
+#: inc/admin/admin-setting-type-fc-setup.php:42
+msgid "Great! Your checkout page is now running on Fluid Checkout."
+msgstr "odlično! Vaša stranica za naplatu sada radi na Fluid Checkout-u."
+
+#: inc/admin/admin-setting-type-fc-setup.php:44
+msgid "Here are a few resources for you to get started:"
+msgstr "Evo nekoliko izvora za početak:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:48
+msgid ""
+"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
+"with Fluid Checkout</a>."
+msgstr ""
+"Pročitajte vodič za instalaciju <a href=\"%s\" target=\"_blank\">Getting "
+"state with Fluid Checkout</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:49
+msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Postavite izgled i dizajn na <a href=\"%s\">opcijama naplate</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:50
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"other plugins you have installed."
+msgstr ""
+"Provjerite postoje li <a href=\"%s\">opcije integracije</a> dostupne za "
+"druge dodatke koje ste instalirali."
+
+#: inc/admin/admin-setting-type-fc-setup.php:51
+msgid ""
+"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
+"information about Fluid Checkout features."
+msgstr ""
+"Posjetite <a href=\"%s\" target=\"_blank\">našu dokumentaciju</a> za više "
+"informacija o značajkama Fluid Checkout."
+
+#: inc/admin/admin-setting-type-fc-setup.php:52
+msgid ""
+"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
+"ticket</a> on our official support channel."
+msgstr ""
+"Ako vam ikada zatreba pomoć, <a href=\"%s\" target=\"_blank\">otvorite upit "
+"za podršku</a> na našem službenom kanalu za podršku."
+
+#: inc/admin/admin-settings-cart.php:71
+msgid "Cart layout"
+msgstr "Izgled kolica"
+
+#: inc/admin/admin-settings-cart.php:78
+msgid "Cart optimizations"
+msgstr "Optimizacije košarica"
+
+#: inc/admin/admin-settings-cart.php:79
+msgid "Enable cart page optimizations"
+msgstr "Omogući optimizaciju stranice košarice"
+
+#: inc/admin/admin-settings-cart.php:80
+msgid "Display the cart page with a layout similar to the checkout page."
+msgstr "Prikažite stranicu košarice s izgledom sličnim stranici za naplatu."
+
+#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
+msgid "Header and footer"
+msgstr "Zaglavlje i podnožje"
+
+#: inc/admin/admin-settings-cart.php:103
+msgid "Header and footer template"
+msgstr "Predložak zaglavlja i podnožja"
+
+#: inc/admin/admin-settings-cart.php:104, inc/admin/admin-settings-checkout.php:126
+msgid ""
+"Controls whether to use the distraction free page header and footer or keep "
+"the currently active theme's header and footer."
+msgstr ""
+"Kontrolira hoće li se koristiti zaglavlje i podnožje stranice bez ometanja "
+"ili zadržati zaglavlje i podnožje trenutno aktivne teme."
+
+#: inc/admin/admin-settings-cart.php:108, inc/admin/admin-settings-checkout.php:130
+msgid "Distraction free header and footer"
+msgstr "Zaglavlje i podnožje bez ometanja"
+
+#: inc/admin/admin-settings-cart.php:109, inc/admin/admin-settings-checkout.php:131
+msgid "Theme's header and footer"
+msgstr "Zaglavlje i podnožje teme"
+
+#: inc/admin/admin-settings-cart.php:124
+msgid "Cart elements"
+msgstr "Elementi kolica"
+
+#: inc/admin/admin-settings-cart.php:132
+msgid "Make the order summary stay visible on the cart page while scrolling"
+msgstr "Neka sažetak narudžbe ostane vidljiv na stranici košarice tijekom pomicanja"
+
+#: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
+msgid "Coupon codes"
+msgstr "Kodovi kupona"
+
+#: inc/admin/admin-settings-cart.php:142
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart and the integrated coupon codes in the "
+"checkout page are enabled."
+msgstr ""
+"Odaberite mjesto gdje želite prikazati odjeljak s kodovima kupona na "
+"stranici košarice. Primjenjivo samo kada su omogućeni AJAX košarica i "
+"integrirani kodovi kupona na stranici za naplatu."
+
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+msgid "Hidden"
+msgstr "Skriven"
+
+#: inc/admin/admin-settings-cart.php:147
+msgid "Before the cart items section"
+msgstr "Prije odjeljka stavki u košarici"
+
+#: inc/admin/admin-settings-cart.php:148
+msgid "Inside the cart items section"
+msgstr "Unutar odjeljka stavki u košarici"
+
+#: inc/admin/admin-settings-cart.php:149, inc/admin/admin-settings-cart.php:185
+msgid "After the cart items section"
+msgstr "Nakon odjeljka stavki u košarici"
+
+#: inc/admin/admin-settings-cart.php:150
+msgid "Before the shipping section"
+msgstr "Prije odjeljka za otpremu"
+
+#: inc/admin/admin-settings-cart.php:151
+msgid "After the shipping section"
+msgstr "Nakon odjeljka za otpremu"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid "Before the order summary"
+msgstr "Prije sažetka narudžbe"
+
+#: inc/admin/admin-settings-cart.php:153, inc/admin/admin-settings-cart.php:171, inc/admin/admin-settings-checkout.php:393
+msgid "Inside the order summary"
+msgstr "Unutar sažetka narudžbe"
+
+#: inc/admin/admin-settings-cart.php:154, inc/admin/admin-settings-checkout.php:394
+msgid "Before the order totals"
+msgstr "Prije ukupnog iznosa narudžbe"
+
+#: inc/admin/admin-settings-cart.php:155, inc/admin/admin-settings-checkout.php:395
+msgid "After the order totals"
+msgstr "Nakon što narudžba zbroji"
+
+#: inc/admin/admin-settings-cart.php:156, inc/admin/admin-settings-cart.php:188
+msgid "After the order summary"
+msgstr "Nakon sažetka narudžbe"
+
+#: inc/admin/admin-settings-cart.php:164
+msgid "Shipping"
+msgstr "Dostava"
+
+#: inc/admin/admin-settings-cart.php:165
+msgid ""
+"Select position where to display the shipping costs and calculator on the "
+"cart page."
+msgstr ""
+"Odaberite mjesto gdje želite prikazati troškove dostave i kalkulator na "
+"stranici košarice."
+
+#: inc/admin/admin-settings-cart.php:170
+msgid "Display as a cart section"
+msgstr "Prikaz kao dio košarice"
+
+#: inc/admin/admin-settings-cart.php:179
+msgid "Cross-sells"
+msgstr "Unakrsna prodaja"
+
+#: inc/admin/admin-settings-cart.php:180
+msgid "Select position where to display the cross-sells section on the cart page."
+msgstr ""
+"Odaberite poziciju na kojoj želite prikazati odjeljak dodatne prodaje na "
+"stranici košarice."
+
+#: inc/admin/admin-settings-cart.php:186
+msgid "Before the cart actions"
+msgstr "Prije akcija kolica"
+
+#: inc/admin/admin-settings-cart.php:187
+msgid "After the cart actions"
+msgstr "Nakon akcija kolica"
+
+#: inc/admin/admin-settings-cart.php:198
+msgid "Layout of cross-sell items on the cart page."
+msgstr "Izgled artikala dodatne prodaje na stranici košarice."
+
+#: inc/admin/admin-settings-cart.php:201
+msgid "Optimized horizontal cross-sells layout"
+msgstr "Optimiziran horizontalni izgled za unakrsnu prodaju"
+
+#: inc/admin/admin-settings-cart.php:202
+msgid "Theme's cross-sells layout"
+msgstr "Izgled teme za unakrsnu prodaju"
+
+#: inc/admin/admin-settings-cart.php:210
+msgid "Number of cross-sell items to display on the cart page"
+msgstr "Broj artikala dodatne prodaje za prikaz na stranici košarice"
+
+#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+msgid "Trust symbols &amp; badges"
+msgstr "Simboli i značke povjerenja"
+
+#: inc/admin/admin-settings-cart.php:220
+msgid "Add widget areas to the cart page"
+msgstr "Dodajte područja widgeta na stranicu košarice"
+
+#: inc/admin/admin-settings-cart.php:221
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"cart page."
+msgstr ""
+"Ova područja widgeta koriste se za dodavanje simbola povjerenja i znački "
+"povjerenja na stranicu košarice."
+
+#: inc/admin/admin-settings-checkout.php:50
+msgid "Checkout"
+msgstr "Odjava"
+
+#: inc/admin/admin-settings-checkout.php:71
+msgid "Layout &amp; design"
+msgstr "Izgled i dizajn"
+
+#: inc/admin/admin-settings-checkout.php:78
+msgid "Checkout layout"
+msgstr "Izgled blagajne"
+
+#: inc/admin/admin-settings-checkout.php:89
+msgid "Design template"
+msgstr "Predložak dizajna"
+
+#: inc/admin/admin-settings-checkout.php:90
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Might also apply to other pages such as the Cart, Order Received and View "
+"Order pages."
+msgstr ""
+"Opći stilovi za korake naplate, sažetak narudžbe i druge odjeljke. Može se "
+"primjenjivati i na druge stranice kao što su stranice Košarica, Primljena "
+"narudžba i Prikaz narudžbe."
+
+#: inc/admin/admin-settings-checkout.php:101
+msgid "Dark mode"
+msgstr "Tamni način rada"
+
+#: inc/admin/admin-settings-checkout.php:102
+msgid "Enable dark mode"
+msgstr "Omogući tamni način rada"
+
+#: inc/admin/admin-settings-checkout.php:124
+msgid "Header and footer templates"
+msgstr "Predlošci zaglavlja i podnožja"
+
+#: inc/admin/admin-settings-checkout.php:125
+msgid ""
+"We recommend using the distraction free header and footer to avoid "
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Preporučujemo korištenje zaglavlja i podnožja bez smetnji kako biste "
+"izbjegli smetnje na stranici za naplatu. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Pročitajte istraživanje o napuštanju košarice</a> ."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Logo image"
+msgstr "Slika logotipa"
+
+#: inc/admin/admin-settings-checkout.php:139
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the distraction free header and footer."
+msgstr ""
+"Odaberite sliku koja će se prikazati u zaglavlju stranice za naplatu. "
+"Primjenjuje se samo kada koristite zaglavlje i podnožje bez ometanja."
+
+#: inc/admin/admin-settings-checkout.php:148
+msgid "Header background color"
+msgstr "Boja pozadine zaglavlja"
+
+#: inc/admin/admin-settings-checkout.php:149
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"Odaberite boju pozadine za zaglavlje stranice za naplatu. Primjenjuje se "
+"samo kada koristite zaglavlje i podnožje bez ometanja."
+
+#: inc/admin/admin-settings-checkout.php:150, inc/admin/admin-settings-checkout.php:161, inc/admin/admin-settings-checkout.php:172, inc/admin/admin-settings-checkout.php:258
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "HTML vrijednost boje. tj.: #f3f3f3"
+
+#: inc/admin/admin-settings-checkout.php:159
+msgid "Page background color"
+msgstr "Boja pozadine stranice"
+
+#: inc/admin/admin-settings-checkout.php:160
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
+msgstr ""
+"Odaberite boju pozadine za stranicu za naplatu. Boja se nanosi na element "
+"<em>tijela</em> ."
+
+#: inc/admin/admin-settings-checkout.php:170
+msgid "Footer background color"
+msgstr "Boja pozadine podnožja"
+
+#: inc/admin/admin-settings-checkout.php:171
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"Odaberite boju pozadine za podnožje stranice za naplatu. Primjenjuje se "
+"samo kada koristite zaglavlje i podnožje bez ometanja."
+
+#: inc/admin/admin-settings-checkout.php:188
+msgid "Checkout elements"
+msgstr "Elementi naplate"
+
+#: inc/admin/admin-settings-checkout.php:195
+msgid "Progress bar"
+msgstr "Traka napretka"
+
+#: inc/admin/admin-settings-checkout.php:196
+msgid "Display the checkout progress bar when using multi-step checkout layout"
+msgstr ""
+"Prikažite traku napretka naplate kada koristite raspored naplate u više "
+"koraka"
+
+#: inc/admin/admin-settings-checkout.php:205
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr "Neka traka napretka naplate ostane vidljiva tijekom pomicanja"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Express checkout"
+msgstr "Ekspresna naplata"
+
+#: inc/admin/admin-settings-checkout.php:216
+msgid "Enable the express checkout section"
+msgstr "Omogućite odjeljak brze naplate"
+
+#: inc/admin/admin-settings-checkout.php:217
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr ""
+"Prikazuje odjeljak za brzu naplatu pri naplati kada podržani pristupnici "
+"plaćanja imaju ovu značajku omogućenu."
+
+#: inc/admin/admin-settings-checkout.php:227
+msgid "Display express checkout buttons in one line for larger screens"
+msgstr "Prikažite gumbe za brzu naplatu u jednom retku za veće zaslone"
+
+#: inc/admin/admin-settings-checkout.php:237
+msgid ""
+"Ignore additional checkout required fields when paying with a compatible "
+"express checkout payment gateway"
+msgstr ""
+"Zanemarite dodatna obavezna polja za naplatu kada plaćate putem "
+"kompatibilnog pristupnika za brzu naplatu"
+
+#: inc/admin/admin-settings-checkout.php:249
+msgid "Make the order summary stay visible while scrolling"
+msgstr "Neka sažetak narudžbe ostane vidljiv tijekom pomicanja"
+
+#: inc/admin/admin-settings-checkout.php:257
+msgid "Choose a background color for the order summary section."
+msgstr "Odaberite boju pozadine za odjeljak sažetka narudžbe."
+
+#: inc/admin/admin-settings-checkout.php:267
+msgid "Highlight the order totals row in the order summary table"
+msgstr "Označite redak s ukupnim iznosom narudžbe u tablici sažetka narudžbe"
+
+#: inc/admin/admin-settings-checkout.php:268
+msgid ""
+"Most useful when the order summary section does not have a highlighted "
+"background color. Might also apply to the Cart, Order Received and View "
+"Order pages when using Fluid Checkout PRO."
+msgstr ""
+"Najkorisnije kada odjeljak sažetka narudžbe nema istaknutu boju pozadine. "
+"Također se može primijeniti na stranice Košarica, Primljena narudžba i "
+"Prikaz narudžbe kada koristite Fluid Checkout PRO."
+
+#: inc/admin/admin-settings-checkout.php:276
+msgid "Action link on the order summary at checkout."
+msgstr "Poveznica za akciju na sažetku narudžbe na blagajni."
+
+#: inc/admin/admin-settings-checkout.php:280
+msgid "Edit cart link"
+msgstr "Uredi vezu za košaricu"
+
+#: inc/admin/admin-settings-checkout.php:281
+msgid "Cart items count"
+msgstr "Broj stavki u košarici"
+
+#: inc/admin/admin-settings-checkout.php:282
+msgid "Link to shop page"
+msgstr "Link na stranicu trgovine"
+
+#: inc/admin/admin-settings-checkout.php:289
+msgid "Cart items"
+msgstr "Stavke u košarici"
+
+#: inc/admin/admin-settings-checkout.php:290
+msgid "Enable options to edit cart items on the checkout page"
+msgstr "Omogućite opcije za uređivanje stavki košarice na stranici za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:291
+msgid ""
+"Allow customers to change product quantities or removing items directly at "
+"the checkout page."
+msgstr ""
+"Omogućite kupcima promjenu količine proizvoda ili uklanjanje stavki izravno "
+"na stranici za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:301
+msgid "Hide cart items errors at the checkout page"
+msgstr "Sakrij pogreške stavki košarice na stranici za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:302
+msgid ""
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
+msgstr ""
+"Nemojte prikazivati poruku o pogrešci stavki košarice na vrhu stranice za "
+"naplatu. Prilikom podnošenja obrasca za naplatu radi dovršetka kupnje, ove "
+"će se poruke o pogrešci uvijek prikazivati."
+
+#: inc/admin/admin-settings-checkout.php:313
+msgid "Place order"
+msgstr "Pošaljite narudžbu"
+
+#: inc/admin/admin-settings-checkout.php:314
+msgid "Define the position to display \"Place order\" and terms checkbox section."
+msgstr ""
+"Definirajte položaj za prikaz odjeljka potvrdnog okvira &quot;Postavi "
+"narudžbu&quot; i uvjete."
+
+#: inc/admin/admin-settings-checkout.php:315
+msgid "Some options might not be compatible with some plugins and themes."
+msgstr "Neke opcije možda neće biti kompatibilne s nekim dodacima i temama."
+
+#: inc/admin/admin-settings-checkout.php:319
+msgid "Below the payment section"
+msgstr "Ispod odjeljka za plaćanje"
+
+#: inc/admin/admin-settings-checkout.php:320
+msgid "Below the order summary"
+msgstr "Ispod sažetka narudžbe"
+
+#: inc/admin/admin-settings-checkout.php:321
+msgid "Both below the payment section and the order summary"
+msgstr "I ispod odjeljka plaćanja i sažetka narudžbe"
+
+#: inc/admin/admin-settings-checkout.php:329
+msgid "Add widget areas to the checkout page"
+msgstr "Dodajte područja widgeta na stranicu za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"checkout page."
+msgstr ""
+"Ova područja widgeta koriste se za dodavanje simbola povjerenja i znački "
+"povjerenja na stranicu za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:339
+msgid ""
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
+msgstr ""
+"Prikaži widgete bočne trake za naplatu samo kada gledate zadnji korak "
+"naplate na mobilnim uređajima kada koristite raspored naplate u više koraka"
+
+#: inc/admin/admin-settings-checkout.php:364
+msgid "Enable integrated coupon code section"
+msgstr "Omogući odjeljak s integriranim kodom kupona"
+
+#: inc/admin/admin-settings-checkout.php:365
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr ""
+"Primjenjivo samo ako je korištenje kodova kupona omogućeno u postavkama "
+"WooCommercea."
+
+#: inc/admin/admin-settings-checkout.php:374
+msgid "Display the coupon codes section title"
+msgstr "Prikaži naslov odjeljka s kodovima kupona"
+
+#: inc/admin/admin-settings-checkout.php:375
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"Primjenjivo samo kada je kod kupona prikazan kao zaseban odjeljak na "
+"stranicama naplate ili košarice."
+
+#: inc/admin/admin-settings-checkout.php:385
+msgid ""
+"Select position where to display the coupon codes section on the checkout "
+"page."
+msgstr ""
+"Odaberite mjesto gdje će se prikazati odjeljak s kodovima kupona na "
+"stranici za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:390
+msgid "Before the checkout steps"
+msgstr "Prije koraka naplate"
+
+#: inc/admin/admin-settings-checkout.php:391
+msgid "As a substep before payment methods"
+msgstr "Kao podkorak prije načina plaćanja"
+
+#: inc/admin/admin-settings-checkout.php:392
+msgid "As a substep after payment methods"
+msgstr "Kao podkorak nakon načina plaćanja"
+
+#: inc/admin/admin-settings-checkout.php:402
+msgid ""
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
+msgstr ""
+"Odaberite stil gumba &quot;Primijeni kupon&quot;. Primjenjivo samo kada je "
+"odjeljak s kodom kupona prikazan &quot;Prije koraka naplate&quot; na "
+"stranici za naplatu ili &quot;Prije odjeljka stavki u košarici&quot; na "
+"stranici s košaricom."
+
+#: inc/admin/admin-settings-checkout.php:406
+msgid "Default button style"
+msgstr "Zadani stil gumba"
+
+#: inc/admin/admin-settings-checkout.php:407
+msgid "\"Add\" link button"
+msgstr "Gumb za vezu &quot;Dodaj&quot;."
+
+#: inc/admin/admin-settings-checkout.php:422, inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102, inc/compat/themes/compat-theme-zk-nito.php:87
+msgid "Checkout fields"
+msgstr "Polja za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:429
+msgid "Optional fields"
+msgstr "Neobavezna polja"
+
+#: inc/admin/admin-settings-checkout.php:430
+msgid "Hide optional fields behind a link button"
+msgstr "Sakrij izborna polja iza gumba veze"
+
+#: inc/admin/admin-settings-checkout.php:431
+msgid ""
+"It is recommended to keep this option checked to reduce the number of open "
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"Preporuča se držati ovu opciju označenom kako biste smanjili broj otvorenih "
+"polja za unos, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">pročitajte istraživanje</a> ."
+
+#: inc/admin/admin-settings-checkout.php:440
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr "Nemojte skrivati polja &quot;Adresa redak 2&quot; iza gumba veze"
+
+#: inc/admin/admin-settings-checkout.php:441
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr ""
+"Preporučuje se samo kada većina kupaca zaista treba polje &quot;Adresa red "
+"2&quot; ili kada je dobivanje točne adrese za dostavu presudno (tj. ako se "
+"dostavlja hrana i drugi kvarljivi proizvodi)."
+
+#: inc/admin/admin-settings-checkout.php:451
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "Prikažite gumbe veze &quot;Dodaj&quot; malim slovima"
+
+#: inc/admin/admin-settings-checkout.php:452
+msgid ""
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
+msgstr ""
+"Napravite oznake gumba poveznice izbornog polja &quot;Dodaj&quot; "
+"<code>lowercase</code> (tj. &quot;Dodaj broj telefona&quot; umjesto "
+"&quot;Dodaj broj telefona&quot;). Ova opcija također utječe na gumbe "
+"poveznica za polja koda kupona."
+
+#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+msgid "Billing address"
+msgstr "Adresa za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:461
+msgid ""
+"Select position where to display the billing address section on the "
+"checkout page."
+msgstr ""
+"Odaberite mjesto gdje želite prikazati odjeljak s adresom za naplatu na "
+"stranici za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:465
+msgid "As a step before shipping"
+msgstr "Kao korak prije otpreme"
+
+#: inc/admin/admin-settings-checkout.php:466
+msgid "As a sub-step before the shipping address section"
+msgstr "Kao pod-korak prije odjeljka s adresom za dostavu"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "As a sub-step after the shipping address section"
+msgstr "Kao podkorak nakon odjeljka s adresom za dostavu"
+
+#: inc/admin/admin-settings-checkout.php:468
+msgid "As a step after shipping"
+msgstr "Kao korak nakon otpreme"
+
+#: inc/admin/admin-settings-checkout.php:469
+msgid "As a sub-step before the payment section"
+msgstr "Kao podkorak prije odjeljka plaćanja"
+
+#: inc/admin/admin-settings-checkout.php:470
+msgid "Force billing and shipping addresses to the same (single section)"
+msgstr "Prisilno na iste adrese za naplatu i dostavu (jedan odjeljak)"
+
+#: inc/admin/admin-settings-checkout.php:477
+msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
+msgstr ""
+"Potvrdni okvir za &quot;Isto kao adresa za dostavu/naplatu&quot; označen "
+"prema zadanim postavkama"
+
+#: inc/admin/admin-settings-checkout.php:478
+msgid ""
+"The checkbox \"Same as shiping address\" will start as checked by default "
+"when the shipping address section is displayed first. <br>The checkbox "
+"\"Same as billing address\" will start as checked by default when the "
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
+msgstr ""
+"Potvrdni okvir &quot;Isto kao adresa za dostavu&quot; počet će označen "
+"prema zadanim postavkama kada se prvo prikaže odjeljak s adresom za "
+"dostavu.<br> Potvrdni okvir &quot;Isto kao adresa za naplatu&quot; počet će "
+"označen prema zadanim postavkama kada se prvo prikaže odjeljak s adresom za "
+"naplatu.<br> Preporučljivo je ostaviti ovu opciju označenom kako bi se "
+"značajno smanjio broj otvorenih polja za unos prilikom naplate, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">pročitajte istraživanje</a> ."
+
+#: inc/admin/admin-settings-checkout.php:486
+msgid "Highlight the billing address section in the checkout form"
+msgstr "Istaknite odjeljak adrese za naplatu u obrascu za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+msgid "Shipping address"
+msgstr "Adresa za dostavu"
+
+#: inc/admin/admin-settings-checkout.php:495
+msgid "Highlight the shipping address section in the checkout form"
+msgstr "Označite odjeljak adrese za dostavu u obrascu za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:503
+msgid "Shipping methods"
+msgstr "Načini dostave"
+
+#: inc/admin/admin-settings-checkout.php:504
+msgid "Choose in which position to display the shipping methods section."
+msgstr "Odaberite na kojoj poziciji želite prikazati odjeljak s načinima dostave."
+
+#: inc/admin/admin-settings-checkout.php:508
+msgid "Before shipping address"
+msgstr "Adresa prije dostave"
+
+#: inc/admin/admin-settings-checkout.php:509
+msgid "After shipping address"
+msgstr "Nakon adrese za dostavu"
+
+#: inc/admin/admin-settings-checkout.php:516
+msgid "Prevent automatic selection of the first shipping method"
+msgstr "Spriječite automatski odabir prvog načina dostave"
+
+#: inc/admin/admin-settings-checkout.php:517
+msgid ""
+"When enabled, the first shipping method available will not be automatically "
+"selected when no other shipping method was previously selected for each "
+"shipping package. <br>This option will be automatically enabled if the "
+"option for clearing the selected shipping method is enabled for the Local "
+"Pickup feature."
+msgstr ""
+"Kada je omogućeno, prvi dostupan način dostave neće biti automatski odabran "
+"ako prethodno nije odabran nijedan drugi način dostave za svaki paket "
+"dostave.<br> Ova će opcija biti automatski omogućena ako je opcija za "
+"brisanje odabranog načina dostave omogućena za značajku lokalnog "
+"preuzimanja."
+
+#: inc/admin/admin-settings-checkout.php:526
+msgid "Local pickup"
+msgstr "Lokalno preuzimanje"
+
+#: inc/admin/admin-settings-checkout.php:527
+msgid ""
+"Removes shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "Uklanja odjeljak s adresom za dostavu kada je odabran lokalni način dostave."
+
+#: inc/admin/admin-settings-checkout.php:528
+msgid ""
+"Replaces the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Zamjenjuje adresu dostave lokacijom mjesta preuzimanja kada je odabran "
+"lokalni način dostave preuzimanja."
+
+#: inc/admin/admin-settings-checkout.php:538
+msgid "Show option to clear shipping methods in the pickup location substep"
+msgstr "Prikaži opciju za brisanje načina dostave u podkoraku mjesta preuzimanja"
+
+#: inc/admin/admin-settings-checkout.php:539
+msgid ""
+"Show a link button on the pickup location substep to clear the chosen "
+"shipping methods. This can be used to allow showing the shipping address "
+"section again if a local pickup method was previously selected."
+msgstr ""
+"Pokažite gumb za vezu na podkoraku lokacije preuzimanja da biste izbrisali "
+"odabrane načine dostave. Ovo se može koristiti za ponovno prikazivanje "
+"odjeljka s adresom za dostavu ako je prethodno odabran lokalni način "
+"preuzimanja."
+
+#: inc/admin/admin-settings-checkout.php:550
+msgid ""
+"Choose which address to save as the shipping address for local pickup "
+"orders."
+msgstr ""
+"Odaberite koju adresu želite spremiti kao adresu za dostavu za lokalne "
+"narudžbe za preuzimanje."
+
+#: inc/admin/admin-settings-checkout.php:554
+msgid "Save the selected pickup location"
+msgstr "Spremite odabrano mjesto preuzimanja"
+
+#: inc/admin/admin-settings-checkout.php:555
+msgid "Save same as the billing address"
+msgstr "Spremi isto kao adresu za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:556
+msgid "Do not save any shipping address"
+msgstr "Ne spremajte nijednu adresu za dostavu"
+
+#: inc/admin/admin-settings-checkout.php:564
+msgid "Company name field for shipping address"
+msgstr "Polje za naziv tvrtke za adresu za dostavu"
+
+#: inc/admin/admin-settings-checkout.php:565
+msgid ""
+"Change visibility for the company name field for the shipping address "
+"section on the checkout form."
+msgstr ""
+"Promijenite vidljivost polja s nazivom tvrtke za odjeljak adrese za dostavu "
+"na obrascu za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:566
+msgid ""
+"If field is set as \"optional\", which is the default visibility state, no "
+"changes will be applied to let other plugins apply any changes they need."
+msgstr ""
+"Ako je polje postavljeno kao &quot;izborno&quot;, što je zadano stanje "
+"vidljivosti, neće se primijeniti nikakve promjene kako bi drugi dodaci "
+"mogli primijeniti promjene koje su im potrebne."
+
+#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+msgid "Hidden (remove field)"
+msgstr "Skriveno (ukloni polje)"
+
+#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+msgid "Optional"
+msgstr "Neobavezno"
+
+#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+msgid "Required"
+msgstr "Potreban"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid "Add shipping phone field to the checkout form."
+msgstr "Dodajte polje telefona za dostavu u obrazac za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:594
+msgid "Choose in which step to display the shipping phone field."
+msgstr "Odaberite u kojem koraku želite prikazati polje telefona za otpremu."
+
+#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+msgid "Contact step"
+msgstr "Kontaktni korak"
+
+#: inc/admin/admin-settings-checkout.php:606
+msgid "Billing phone"
+msgstr "Telefon za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:607
+msgid "Add billing phone field to the checkout form."
+msgstr "Dodajte polje telefona za naplatu u obrazac za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid "Choose in which step to display the billing phone field."
+msgstr "Odaberite u kojem koraku želite prikazati polje telefona za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:634
+msgid "Enable international phone number format and validation for phone fields"
+msgstr ""
+"Omogućite međunarodni format telefonskog broja i provjeru valjanosti za "
+"polja telefona"
+
+#: inc/admin/admin-settings-checkout.php:635
+msgid "Format and validate phone numbers according to each country."
+msgstr "Formatirajte i potvrdite telefonske brojeve prema svakoj zemlji."
+
+#: inc/admin/admin-settings-checkout.php:645
+msgid "Enable phone number validation based on country rules"
+msgstr "Omogućite provjeru telefonskog broja na temelju pravila zemlje"
+
+#: inc/admin/admin-settings-checkout.php:646
+msgid ""
+"When disabled, the phone field validation will not check if country or area "
+"codes are valid for the country."
+msgstr ""
+"Kada je onemogućeno, provjera telefonskog polja neće provjeravati jesu li "
+"pozivni brojevi zemlje ili područja važeći za zemlju."
+
+#: inc/admin/admin-settings-checkout.php:656
+msgid "Only show allowed countries for shipping or billing"
+msgstr "Prikaži samo dopuštene zemlje za dostavu ili naplatu"
+
+#: inc/admin/admin-settings-checkout.php:657
+msgid ""
+"When enabled, only the countries allowed for shipping will be available in "
+"the shipping phone field, and only countries allowed for billing will be "
+"available for the billing phone field."
+msgstr ""
+"Kada je omogućeno, samo zemlje dopuštene za dostavu bit će dostupne u polju "
+"telefona za dostavu, a samo zemlje dopuštene za naplatu bit će dostupne za "
+"polje telefona za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:667
+msgid "Show country code beside the flag"
+msgstr "Prikaži kod zemlje pored zastave"
+
+#: inc/admin/admin-settings-checkout.php:678
+msgid "Show an example of a valid phone number inside phone fields"
+msgstr "Pokažite primjer važećeg telefonskog broja u telefonskim poljima"
+
+#: inc/admin/admin-settings-checkout.php:682
+msgid "Do not change placeholders"
+msgstr "Nemojte mijenjati rezervirana mjesta"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Show if not defined"
+msgstr "Prikaži ako nije definirano"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid "Always show"
+msgstr "Uvijek pokaži"
+
+#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+msgid "Order notes"
+msgstr "Bilješke o narudžbi"
+
+#: inc/admin/admin-settings-checkout.php:693
+msgid "Define the visibility of the additional order notes field."
+msgstr "Definirajte vidljivost polja dodatnih napomena o narudžbi."
+
+#: inc/admin/admin-settings-checkout.php:705
+msgid "Gift options"
+msgstr "Mogućnosti darova"
+
+#: inc/admin/admin-settings-checkout.php:706
+msgid "Display gift message and other gift options at the checkout page"
+msgstr "Prikažite poruku o poklonu i druge mogućnosti dara na stranici za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:707
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr ""
+"Omogućite kupcima da narudžbi dodaju poruku o poklonu i druge opcije vezane "
+"uz dar."
+
+#: inc/admin/admin-settings-checkout.php:717
+msgid "Display the gift message fields always expanded"
+msgstr "Prikaži uvijek proširena polja poruke o daru"
+
+#: inc/admin/admin-settings-checkout.php:727
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr ""
+"Prikažite poruku o poklonu kao dio tablice s detaljima narudžbe umjesto "
+"zasebnog odjeljka"
+
+#: inc/admin/admin-settings-checkout.php:728
+msgid ""
+"This option affects the order confirmation page (thank you page) and order "
+"details on account pages, emails and packing slips."
+msgstr ""
+"Ova opcija utječe na stranicu s potvrdom narudžbe (stranica sa zahvalom) i "
+"pojedinosti narudžbe na stranicama računa, e-poštom i potvrdama o pakiranju."
+
+#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+msgid "Account matching"
+msgstr "Podudaranje računa"
+
+#: inc/admin/admin-settings-checkout.php:754
+msgid "Enable the account matching feature"
+msgstr "Omogućite značajku podudaranja računa"
+
+#: inc/admin/admin-settings-checkout.php:755
+msgid ""
+"Associate the guest customer's orders with their existing account when an "
+"account already exists with the customer's contact details."
+msgstr ""
+"Povežite narudžbe kupca gosta s njegovim postojećim računom kada već "
+"postoji račun s podacima za kontakt kupca."
+
+#: inc/admin/admin-settings-checkout.php:765
+msgid "Display message when an account exists with the email address provided"
+msgstr "Prikaži poruku kada postoji račun s navedenom adresom e-pošte"
+
+#: inc/admin/admin-settings-checkout.php:766
+msgid ""
+"Replaces the account creation fields with a notification and option to log "
+"in. In some contexts, it might be recommended to leave this option disabled "
+"to protect the privacy of customers."
+msgstr ""
+"Zamjenjuje polja za kreiranje računa s obavijesti i opcijom za prijavu. U "
+"nekim kontekstima može se preporučiti da ovu opciju ostavite onemogućenom "
+"kako biste zaštitili privatnost kupaca."
+
+#: inc/admin/admin-settings-dashboard.php:49
+msgid "Dashboard"
+msgstr "Nadzorna ploča"
+
+#: inc/admin/admin-settings-integrations.php:51
+msgid "Integrations"
+msgstr "Integracije"
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
+msgstr ""
+"U ovom odjeljku trenutačno nema dostupnih integracija. Opcije koje se "
+"odnose na svaki dodatak ovdje će se pojaviti samo ako je taj dodatak "
+"aktiviran."
+
+#: inc/admin/admin-settings-license-keys.php:54
+msgid "License keys"
+msgstr "Ključevi licence"
+
+#: inc/admin/admin-settings-license-keys.php:85
+msgid ""
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
+msgstr ""
+"U ovom odjeljku trenutačno nema dostupnih opcija licencnih ključeva. Opcije "
+"koje se odnose na svaki dodatak ili dodatak pojavit će se ovdje kada se taj "
+"dodatak aktivira."
+
+#: inc/admin/admin-settings-license-keys.php:90
+msgid "Visit our website for more information about our plugins and add-ons."
+msgstr "Posjetite našu web stranicu za više informacija o našim dodacima i dodacima."
+
+#: inc/admin/admin-settings-order-pay.php:71
+msgid "Order pay page"
+msgstr "Stranica za plaćanje narudžbe"
+
+#: inc/admin/admin-settings-order-pay.php:78
+msgid "Order pay"
+msgstr "Plaćanje naloga"
+
+#: inc/admin/admin-settings-order-pay.php:79
+msgid "Enable order pay page optimizations"
+msgstr "Omogući optimizaciju stranice za plaćanje narudžbi"
+
+#: inc/admin/admin-settings-order-pay.php:80
+msgid ""
+"Changes the layout of order pay page for existing orders pending payment "
+"from the customer."
+msgstr ""
+"Mijenja izgled stranice za plaćanje narudžbi za postojeće narudžbe koje "
+"čekaju plaćanje od strane kupca."
+
+#: inc/admin/admin-settings-order-pay.php:92
+msgid "Add widget areas to the order pay page"
+msgstr "Dodajte područja widgeta na stranicu za plaćanje narudžbe"
+
+#: inc/admin/admin-settings-order-pay.php:93
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"order pay page."
+msgstr ""
+"Ova područja widgeta koriste se za dodavanje simbola povjerenja i značaka "
+"povjerenja na stranicu za plaćanje narudžbe."
+
+#: inc/admin/admin-settings-order-received.php:69
+msgid "Thank you page & order details layout"
+msgstr "Izgled stranice sa zahvalom i pojedinosti o narudžbi"
+
+#: inc/admin/admin-settings-order-received.php:76
+msgid "Order details optimizations"
+msgstr "Optimizacija detalja narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:77
+msgid "Enable thank you page and order details optimizations"
+msgstr "Omogućite stranicu zahvale i optimizaciju pojedinosti narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:78
+msgid "Changes the layout of order details on the thank you page and account pages."
+msgstr "Mijenja izgled detalja narudžbe na stranici zahvale i stranicama računa."
+
+#: inc/admin/admin-settings-order-received.php:89
+msgid "Enable order details customizations on email notifications"
+msgstr "Omogućite prilagodbe pojedinosti narudžbe u obavijestima e-poštom"
+
+#: inc/admin/admin-settings-order-received.php:90
+msgid ""
+"Display new sections and change order of sections on email notifications. "
+"Styles of order details on email notifications remain unchanged."
+msgstr ""
+"Prikaz novih odjeljaka i promjena redoslijeda odjeljaka u obavijestima "
+"putem e-pošte. Stilovi detalja narudžbe u obavijestima e-poštom ostaju "
+"nepromijenjeni."
+
+#: inc/admin/admin-settings-order-received.php:108
+msgid "Thank you page"
+msgstr "Hvala stranica"
+
+#: inc/admin/admin-settings-order-received.php:110
+msgid ""
+"These options affect the thank you page, also known as order received or "
+"order confirmation pages."
+msgstr ""
+"Ove opcije utječu na stranicu zahvale, poznatu i kao stranice primljene "
+"narudžbe ili stranice potvrde narudžbe."
+
+#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
+msgid "Order details layout"
+msgstr "Izgled detalja narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Display the order details with wide layout on the thank you page"
+msgstr "Prikažite pojedinosti narudžbe širokim rasporedom na stranici zahvale"
+
+#: inc/admin/admin-settings-order-received.php:126
+msgid "Add widget areas to the thank you page"
+msgstr "Dodajte područja widgeta na stranicu zahvale"
+
+#: inc/admin/admin-settings-order-received.php:127
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"thank you page."
+msgstr ""
+"Ova područja widgeta koriste se za dodavanje simbola povjerenja i znački "
+"povjerenja na stranicu zahvale."
+
+#: inc/admin/admin-settings-order-received.php:145
+msgid ""
+"These options affect the thank you page , view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Ove opcije utječu na stranicu zahvale, pregled pojedinosti o narudžbi na "
+"stranicama računa i na obavijesti putem e-pošte."
+
+#: inc/admin/admin-settings-order-received.php:150
+msgid "Order actions"
+msgstr "Radnje naloga"
+
+#: inc/admin/admin-settings-order-received.php:151
+msgid "Choose in which position to display the order actions."
+msgstr "Odaberite na kojoj poziciji želite prikazati radnje naloga."
+
+#: inc/admin/admin-settings-order-received.php:155
+msgid "Inside the order overview"
+msgstr "Unutar pregleda narudžbi"
+
+#: inc/admin/admin-settings-order-received.php:156
+msgid "After the order overview"
+msgstr "Nakon pregleda narudžbi"
+
+#: inc/admin/admin-settings-order-received.php:157
+msgid "After order sections"
+msgstr "Nakon narudžbe odjeljaka"
+
+#: inc/admin/admin-settings-order-received.php:165
+msgid "Order status"
+msgstr "Status narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:166
+msgid "Display the order status progress bar"
+msgstr "Prikaz trake statusa narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+msgid "Choose in which position to display the section."
+msgstr "Odaberite na kojoj poziciji želite prikazati odjeljak."
+
+#: inc/admin/admin-settings-order-received.php:180
+msgid "After the order overview and payment instructions"
+msgstr "Nakon pregleda narudžbe i instrukcija za plaćanje"
+
+#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+msgid "Before the order items section"
+msgstr "Prije odjeljka stavki narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+msgid "Inside the order items section"
+msgstr "Unutar odjeljka stavki narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+msgid "After the order items section"
+msgstr "Nakon odjeljka stavke narudžbe"
+
+#: inc/admin/admin-settings-order-received.php:184
+msgid "On the sidebar"
+msgstr "Na bočnoj traci"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Order downloads"
+msgstr "Naručite preuzimanja"
+
+#: inc/admin/admin-settings-order-received.php:207
+msgid "Gift message"
+msgstr "Poklon poruka"
+
+#: inc/admin/admin-settings-tools.php:51
+msgid "Tools"
+msgstr "Alati"
+
+#: inc/admin/admin-settings-tools.php:84
+msgid "Troubleshooting"
+msgstr "Rješavanje problema"
+
+#: inc/admin/admin-settings-tools.php:91
+msgid "Debug options"
+msgstr "Opcije otklanjanja pogrešaka"
+
+#: inc/admin/admin-settings-tools.php:92
+msgid "Debug mode"
+msgstr "Način otklanjanja pogrešaka"
+
+#: inc/admin/admin-settings-tools.php:93
+msgid ""
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
+msgstr ""
+"Korištenje načina otklanjanja pogrešaka utječe na performanse web stranice. "
+"Koristite ovu opciju samo tijekom rješavanja problema."
+
+#: inc/admin/admin-settings-tools.php:102
+msgid "Load unminified assets"
+msgstr "Učitaj neminificirana sredstva"
+
+#: inc/admin/admin-settings-tools.php:112
+msgid "Enhanced select fields"
+msgstr "Poboljšana polja za odabir"
+
+#: inc/admin/admin-settings-tools.php:113
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgstr ""
+"Zamijenite komponente padajućeg izbornika <code>select2</code> s "
+"<code>TomSelect</code>"
+
+#: inc/admin/admin-settings-tools.php:114
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
+msgstr ""
+"TomSelect je jednostavnija padajuća komponenta odabira koja je manje sklona "
+"pogreškama od Select2, a istovremeno nudi iste značajke koje se zapravo "
+"koriste na WooCommerce stranicama za naplatu."
+
+#: inc/admin/admin-settings-tools.php:122
+msgid "Fix automatic zoom-in on form fields"
+msgstr "Popravite automatsko povećavanje polja obrasca"
+
+#: inc/admin/admin-settings-tools.php:123
+msgid "Set <code>font-size</code> inside form fields to 16px"
+msgstr "Postavite <code>font-size</code> unutar polja obrasca na 16 px"
+
+#: inc/admin/admin-settings-tools.php:124
+msgid ""
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
+msgstr ""
+"Kada je veličina fonta unutar polja obrasca manja od 16 piksela, Safari i "
+"drugi preglednici mogu automatski zumirati na mobilnim uređajima kako bi "
+"tekst bio lakši za čitanje. Kada je ova opcija omogućena, postavit će "
+"veličinu fonta unutar polja obrasca na 16 px na stranicama koje optimizira "
+"Fluid Checkout kako bi se izbjeglo njegovo zumiranje."
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"Odredište za dostavu uvijek je postavljeno na &quot;Zadano na adresu za "
+"dostavu kupca&quot; kada je Fluid Checkout aktiviran. Kupci i dalje mogu "
+"navesti različite adrese za dostavu i naplatu tijekom naplate, a opcija za "
+"postavljanje zadane adrese za naplatu da bude ista kao adresa za dostavu "
+"dostupna je na WooCommerce &gt; Postavke &gt; Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:25
+msgid "Fluid Checkout"
+msgstr "Naplata tekućine"
+
+#: inc/admin/admin.php:133
+msgid "Settings"
+msgstr "postavke"
+
+#: inc/admin/admin.php:134
+msgid "Support"
+msgstr "podrška"
+
+#: inc/admin/admin.php:159
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgstr ""
+"<a target=\"_blank\" href=\"%s\">Nadogradite na PRO</a> da otključate više "
+"opcija."
+
+#: inc/admin/admin.php:179
+msgid "(PRO)"
+msgstr "(PRO)"
+
+#: inc/admin/admin.php:199
+msgid "(experimental)"
+msgstr "(eksperimentalno)"
+
+#: inc/admin/admin.php:208
+msgid ""
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
+msgstr ""
+"Ovo je eksperimentalna značajka i možda neće raditi kako se očekuje sa svim "
+"temama i dodacima. Koristite ga s oprezom."
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
+msgid "Confirm"
+msgstr "Potvrdi"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
+msgid "Verify Phone Number"
+msgstr "Potvrdite telefonski broj"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
+msgid "Please verify your phone number."
+msgstr "Molimo potvrdite svoj telefonski broj."
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
+msgid "The Bluehost Plugin"
+msgstr "Bluehost dodatak"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:81
+msgid "Custom fields"
+msgstr "Prilagođena polja"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:82
+msgid "Enable custom shipping email field"
+msgstr "Omogući prilagođeno polje e-pošte za dostavu"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
+msgid ""
+"When enabled, the shipping email field from the Bluehost plugin will be "
+"added to the checkout form."
+msgstr ""
+"Kada je omogućeno, polje e-pošte za dostavu iz dodatka Bluehost bit će "
+"dodano u obrazac za naplatu."
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:89
+msgid "Captcha Pro by BestWebSoft"
+msgstr "Captcha Pro tvrtke BestWebSoft"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:95
+msgid "Captcha position"
+msgstr "Captcha pozicija"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:96
+msgid ""
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
+msgstr ""
+"Definirajte položaj za prikaz captcha odjeljka. Neke pozicije možda neće "
+"raditi ovisno o odabranoj vrsti captcha."
+
+#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+msgid "Selecting a pickup point is required before proceeding."
+msgstr "Prije nastavka potrebno je odabrati mjesto preuzimanja."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:234
+msgid "Pickup point"
+msgstr "Mjesto preuzimanja"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307, inc/compat/plugins/compat-plugin-seur.php:386, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
+msgid "Pickup point not selected yet."
+msgstr "Mjesto preuzimanja još nije odabrano."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312, inc/compat/plugins/compat-plugin-seur.php:391, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
+msgid "Pickup point:"
+msgstr "Mjesto preuzimanja:"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+msgid "Mailchimp for WooCommerce"
+msgstr "Mailchimp za WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
+msgid "Subscribe checkbox"
+msgstr "Potvrdni okvir za pretplatu"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:87
+msgid ""
+"Override the position for the subscribe checkbox on the checkout page and "
+"always display it on the contact step"
+msgstr ""
+"Nadjačajte poziciju za potvrdni okvir za pretplatu na stranici za naplatu i "
+"uvijek ga prikazujte na koraku kontakta"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+msgid "Before Shipping Address"
+msgstr "Prije adrese za dostavu"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87, inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "(originally \"%s\")"
+msgstr "(izvorno &quot;%s&quot;)"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "After Shipping Address"
+msgstr "Nakon adrese za dostavu"
+
+#: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
+msgid "Selecting a collection point is required when shipping with FermoPoint."
+msgstr "Prilikom slanja s FermoPointom potrebno je odabrati sabirno mjesto."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:189
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"Ako je označeno, obavještava korisnike o pogreškama pri upisu u e-pošti. "
+"(Ova značajka je onemogućena jer Fluid Checkout nudi značajku. Promjene ove "
+"opcije neće stupiti na snagu)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "Omogući provjeru pošte: (onemogućena značajka)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
+msgid "Carrier:"
+msgstr "Prijevoznik:"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:167
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "Sendinblue - WooCommerce marketing putem e-pošte"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
+msgid "Sign up checkbox position"
+msgstr "Pozicija potvrdnog okvira za prijavu"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
+msgid "Move the sign up checkbox to the contact step"
+msgstr "Pomaknite potvrdni okvir prijave na korak kontakta"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
+msgid ""
+"When enabled, the checkbox will be moved to the contact step independently "
+"of the display location defined in the Sendinblue plugin settings."
+msgstr ""
+"Kada je omogućeno, potvrdni okvir će se premjestiti na korak kontakta "
+"neovisno o lokaciji prikaza definiranoj u postavkama dodatka Sendinblue."
+
+#: inc/compat/themes/compat-theme-betheme.php:172
+msgid "Theme Betheme"
+msgstr "Tema Betheme"
+
+#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:202, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+msgid "Checkout progress"
+msgstr "Napredak naplate"
+
+#: inc/compat/themes/compat-theme-betheme.php:179
+msgid ""
+"Output the checkout steps section from Betheme on the checkout, cart and "
+"order received pages."
+msgstr ""
+"Označite odjeljak koraka naplate iz Bethemea na stranicama naplate, "
+"košarice i primljene narudžbe."
+
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "Tema Fennik"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "Krušne mrvice"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Ispišite odjeljak s mrvicama iz teme Fennik kada koristite zaglavlje i "
+"podnožje Fluid Checkout."
+
+#: inc/compat/themes/compat-theme-go.php:53
+msgid "Theme Go"
+msgstr "Tema Go"
+
+#: inc/compat/themes/compat-theme-go.php:59
+msgid "My account layout"
+msgstr "Izgled mog računa"
+
+#: inc/compat/themes/compat-theme-go.php:60
+msgid "Enable wide layout on \"My account\" page."
+msgstr "Omogućite široki izgled na stranici &quot;Moj račun&quot;."
+
+#: inc/compat/themes/compat-theme-Impreza.php:93
+msgid "Theme Impreza"
+msgstr "Tema Impreza"
+
+#: inc/compat/themes/compat-theme-Impreza.php:99
+msgid "Header"
+msgstr "Zaglavlje"
+
+#: inc/compat/themes/compat-theme-Impreza.php:100
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr "Razmak za zaglavlje stranice na stranici za naplatu (u pikselima)"
+
+#: inc/compat/themes/compat-theme-Impreza.php:101
+msgid "Only applicable when using the Impreza theme header at the checkout page."
+msgstr ""
+"Primjenjivo samo kada koristite zaglavlje teme Impreza na stranici za "
+"naplatu."
+
+#: inc/compat/themes/compat-theme-kapee.php:123
+msgid "Theme Kapee"
+msgstr "Tema Kapee"
+
+#: inc/compat/themes/compat-theme-kapee.php:130
+msgid ""
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"Ispišite odjeljak koraka naplate iz teme Kapee na stranicama naplate, "
+"košarice i primljene narudžbe."
+
+#: inc/compat/themes/compat-theme-porto.php:196
+msgid "Theme Porto"
+msgstr "Tema Porto"
+
+#: inc/compat/themes/compat-theme-porto.php:203
+msgid ""
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"Ispišite odjeljak koraka naplate iz teme Porto na stranicama naplate, "
+"košarice i primljene narudžbe."
+
+#: inc/compat/themes/compat-theme-pressmart.php:180
+msgid "Theme Pressmart"
+msgstr "Tema Pressmart"
+
+#: inc/compat/themes/compat-theme-pressmart.php:187
+msgid ""
+"Output the checkout steps section from the Pressmart theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"Ispišite odjeljak koraka naplate iz teme Pressmart na stranicama naplate, "
+"košarice i primljene narudžbe."
+
+#: inc/compat/themes/compat-theme-thegem.php:158
+msgid "Theme The Gem"
+msgstr "Tema Dragulj"
+
+#: inc/compat/themes/compat-theme-thegem.php:165
+msgid ""
+"Output the checkout steps section from The Gem theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Ispišite odjeljak koraka naplate iz teme The Gem kada koristite zaglavlje i "
+"podnožje Fluid Checkout."
+
+#: inc/compat/themes/compat-theme-woodmart.php:152
+msgid "Theme Woodmart"
+msgstr "Tema Woodmart"
+
+#: inc/compat/themes/compat-theme-woodmart.php:159
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Ispišite odjeljak koraka naplate iz teme Woodmart kada koristite zaglavlje "
+"i podnožje Fluid Checkout."
+
+#: inc/compat/themes/compat-theme-woodmart.php:167
+msgid "Checkout options"
+msgstr "Mogućnosti naplate"
+
+#: inc/compat/themes/compat-theme-woodmart.php:168
+msgid "Disable the theme checkout options"
+msgstr "Onemogućite opcije provjere teme"
+
+#: inc/compat/themes/compat-theme-woodmart.php:169
+msgid ""
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
+msgstr ""
+"Opcije prikaza slike proizvoda, polja količine, gumba za uklanjanje i "
+"poveznice na stranicu proizvoda dodane temom onemogućene su prema zadanim "
+"postavkama."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
+msgid "Theme Atomion"
+msgstr "Tema Atomion"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:93
+msgid "Order progress"
+msgstr "Napredak narudžbe"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
+msgid "Display order progress from the theme"
+msgstr "Prikaz napretka narudžbe iz teme"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103, inc/compat/themes/compat-theme-zk-nito.php:88
+msgid "Display the form field labels visible on the page"
+msgstr "Prikažite oznake polja obrasca vidljive na stranici"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
+msgid "It is recommended to keep this option enabled for a better user experience."
+msgstr ""
+"Preporučljivo je držati ovu opciju uključenom radi boljeg korisničkog "
+"iskustva."
+
+#: inc/compat/themes/compat-theme-zk-nito.php:81
+msgid "Theme ZK Nito"
+msgstr "Tema ZK Nito"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:96
+msgid "Add extra fields to the checkout form"
+msgstr "Dodajte dodatna polja u obrazac za naplatu"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:97
+msgid ""
+"Adds an extra shipping email and shipping phone field to the shipping "
+"address section."
+msgstr ""
+"Dodaje dodatnu e-poštu za dostavu i polje telefona za dostavu u odjeljak s "
+"adresom za dostavu."
+
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
+msgid "Go to the home page"
+msgstr "Idite na početnu stranicu"
+
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54, templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
+msgid "Skip to content"
+msgstr "Preskoči na sadržaj"
+
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:37
+msgid "Create an account"
+msgstr "Napravi račun"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
+msgid "Log in to your account"
+msgstr "Prijavite se na svoj račun"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+msgid "Already have an account?"
+msgstr "Već imate račun?"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
+msgstr "Prijavljeni ste kao %1$s. <a href=\"%2$s\">Odjavi se</a>"
+
+#: templates/fc/checkout-steps/checkout/payment.php:48
+msgid "Your order has a total amount due of %s. No further payment is needed."
+msgstr "Vaša narudžba ima ukupni iznos od %s. Daljnje plaćanje nije potrebno."
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Close and continue with checkout"
+msgstr "Zatvorite i nastavite s naplatom"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Continue"
+msgstr "Nastaviti"
+
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+msgid "Parcel terminal"
+msgstr "Paketni terminal"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>Ovaj widget je zamijenjen Fluid Checkout-om.</p><p> Kada koristite Fluid "
+"Checkout, stranica za naplatu mora koristiti izvorni WooCommerce kratki kod "
+"<code>[woocommerce_checkout]</code> kako bi ispravno radila.</p><p> Za više "
+"informacija posjetite dokumentaciju Fluid Checkout.</p>"
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "primijeniti"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "Dostava"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "Naplata"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "Plaćanje"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "Promijeniti"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "Spremite promjene"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "Nijedan."
+
+#: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "Nije odabrana slika."
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "Košarica"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "Plaćanje naloga"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "Hvala"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "Integracije"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "Ključevi licence"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "Prije naručivanja odjeljak"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "Gumb Prije naručivanja"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "Zatvoriti"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "Prijavite se"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "Ili nastavite u nastavku"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "Ili nastavite kao gost"

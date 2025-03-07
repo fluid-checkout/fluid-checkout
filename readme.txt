@@ -265,23 +265,15 @@ Try Fluid Checkout now and if you experience any issues please let us know throu
 
 == Translations ==
 
-Fluid Checkout is fully localized and translatable using the built-in WordPress functions. We understand this is very important to all users worldwide. Currently translated into:
+We understand this is very important to all users worldwide.
 
-* English (Default)
-* Dutch
-* French
-* German
-* Greek
-* Italian
-* Polish
-* Portuguese
-* Spanish
-* Swedish
-* Turkish
+Fluid Checkout is fully localized and translatable using the built-in WordPress functions, and **currently translated into 83 languages** out of the 132 languages supported by WordPress, which should include all the most used languages. All translations are done automatically through DeepL or Google Translate as available on those services.
+
+Some translations errors are expected to happen. Please [contact our support](https://wordpress.org/support/plugin/fluid-checkout/) and we will evaluate and fix these errors.
 
 **RTL Support**
 
-* Although currently there are no official transations to RTL languages, the plugin will adjust its layout to RTL languages as expected.
+* RTL languages are supported. The plugin will adjust its layout to RTL languages as expected.
 
 IMPORTANT NOTES:
 - Languages with variations will use the same language file. For example, when the website is in German the translation used will be German (Formal). For all Spanish speaking countries, the translation used will be Spanish (Spain).
@@ -364,7 +356,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
 * Improved: Enforce some styles for the place order button to improve compatibility with some themes.
+* Fixed: Field values reverting back to previous value (usually empty) when using `select2` for enhanced dropdown fields.
+* Fixed: Use treated display value for replacements on formatted addresses.
 
 = 4.0.2 - 2025-02-24 =
 

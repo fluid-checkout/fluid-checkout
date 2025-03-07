@@ -1,0 +1,2491 @@
+# Copyright (C) 2025 fluid-checkout
+# This file is distributed under the same license as the fluid-checkout package.
+msgid ""
+msgstr ""
+"Project-Id-Version: fluid-checkout\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Fluid Checkout\n"
+"Last-Translator: Fluid Checkout\n"
+"POT-Creation-Date: 2025-03-05 23:46+0000\n"
+"Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: fluid-checkout.php:585
+msgid "WooCommerce"
+msgstr "ವೂಕಾಮರ್ಸ್"
+
+#: fluid-checkout.php:588
+msgid "Go to Plugin Search"
+msgstr "ಪ್ಲಗಿನ್ ಹುಡುಕಾಟಕ್ಕೆ ಹೋಗಿ"
+
+#: fluid-checkout.php:592
+msgid "Activate %s"
+msgstr "%s ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: fluid-checkout.php:596
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"<strong>%1$s ಗೆ</strong> <strong>%2$s ಅನ್ನು</strong> ಸ್ಥಾಪಿಸಿ ಸಕ್ರಿಯಗೊಳಿಸುವ "
+"ಅಗತ್ಯವಿದೆ. <a href=\"%4$s\">%3$s</a>"
+
+#: inc/checkout-coupon-codes.php:274
+msgid "Enter your code here"
+msgstr "ನಿಮ್ಮ ಕೋಡ್ ಅನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ"
+
+#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
+msgid "Add %s"
+msgstr "%s ಸೇರಿಸಿ"
+
+#: inc/checkout-coupon-codes.php:382
+msgid "Remove"
+msgstr "ತೆಗೆದುಹಾಕಿ"
+
+#: inc/checkout-fields.php:126
+msgid "Order number and receipt will be sent to this email address."
+msgstr "ಆರ್ಡರ್ ಸಂಖ್ಯೆ ಮತ್ತು ರಶೀದಿಯನ್ನು ಈ ಇಮೇಲ್ ವಿಳಾಸಕ್ಕೆ ಕಳುಹಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/checkout-fields.php:181
+msgid "Apartment, unit, building, floor, etc."
+msgstr "ಅಪಾರ್ಟ್‌ಮೆಂಟ್, ಯೂನಿಟ್, ಕಟ್ಟಡ, ಮಹಡಿ, ಇತ್ಯಾದಿ."
+
+#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+msgid "Shipping phone"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ಫೋನ್"
+
+#: inc/checkout-shipping-phone-field.php:105
+msgid "Only used for shipping-related questions."
+msgstr "ಶಿಪ್ಪಿಂಗ್ ಸಂಬಂಧಿತ ಪ್ರಶ್ನೆಗಳಿಗೆ ಮಾತ್ರ ಬಳಸಲಾಗುತ್ತದೆ."
+
+#: inc/checkout-steps.php:793
+msgid "Multi-step"
+msgstr "ಬಹು-ಹಂತ"
+
+#: inc/checkout-steps.php:794
+msgid "Single step"
+msgstr "ಒಂದೇ ಹೆಜ್ಜೆ"
+
+#: inc/checkout-steps.php:965
+msgid "Click to go to the order summary"
+msgstr "ಆರ್ಡರ್ ಸಾರಾಂಶಕ್ಕೆ ಹೋಗಲು ಕ್ಲಿಕ್ ಮಾಡಿ"
+
+#: inc/checkout-steps.php:965
+msgid "Cart total:"
+msgstr "ಕಾರ್ಟ್ ಒಟ್ಟು:"
+
+#: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
+msgid "Proceed to %s"
+msgstr "%s ಗೆ ಮುಂದುವರಿಯಿರಿ"
+
+#: inc/checkout-steps.php:2215
+msgid "Proceed to contact"
+msgstr "ಸಂಪರ್ಕಕ್ಕೆ ಮುಂದುವರಿಯಿರಿ"
+
+#: inc/checkout-steps.php:2224
+msgid "Proceed to shipping"
+msgstr "ಸಾಗಣೆಗೆ ಮುಂದುವರಿಯಿರಿ"
+
+#: inc/checkout-steps.php:2236
+msgid "Proceed to billing"
+msgstr "ಬಿಲ್ಲಿಂಗ್‌ಗೆ ಮುಂದುವರಿಯಿರಿ"
+
+#: inc/checkout-steps.php:2245
+msgid "Proceed to payment"
+msgstr "ಪಾವತಿಗೆ ಮುಂದುವರಿಯಿರಿ"
+
+#: inc/checkout-steps.php:2256
+msgid "My contact"
+msgstr "ನನ್ನ ಸಂಪರ್ಕ"
+
+#: inc/checkout-steps.php:2266
+msgid "Shipping to"
+msgstr "ಇಲ್ಲಿಗೆ ಸಾಗಿಸಲಾಗುತ್ತಿದೆ"
+
+#: inc/checkout-steps.php:2276
+msgid "Shipping method"
+msgstr "ಸಾಗಣೆ ವಿಧಾನ"
+
+#: inc/checkout-steps.php:2286
+msgid "Additional notes"
+msgstr "ಹೆಚ್ಚುವರಿ ಟಿಪ್ಪಣಿಗಳು"
+
+#: inc/checkout-steps.php:2300
+msgid "Billing to"
+msgstr "ಬಿಲ್ಲಿಂಗ್"
+
+#: inc/checkout-steps.php:2310
+msgid "Payment method"
+msgstr "ಪಾವತಿ ವಿಧಾನ"
+
+#: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+msgid "Step %1$s of %2$s"
+msgstr "%2$s ರಲ್ಲಿ %1$s ಹಂತ"
+
+#: inc/checkout-steps.php:2825
+msgid "Change: %s"
+msgstr "ಬದಲಾವಣೆ: %s"
+
+#: inc/checkout-steps.php:3184
+msgid "An account will be created with the information provided."
+msgstr "ಒದಗಿಸಿದ ಮಾಹಿತಿಯೊಂದಿಗೆ ಖಾತೆಯನ್ನು ರಚಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+msgid "Not selected yet."
+msgstr "ಇನ್ನೂ ಆಯ್ಕೆಯಾಗಿಲ್ಲ."
+
+#: inc/checkout-steps.php:4675
+msgid "Same as shipping address"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸದಂತೆಯೇ"
+
+#: inc/checkout-steps.php:4720
+msgid "Same as billing address"
+msgstr "ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸದಂತೆಯೇ"
+
+#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+msgid "Order summary"
+msgstr "ಆರ್ಡರ್ ಸಾರಾಂಶ"
+
+#: inc/checkout-steps.php:6008, templates/fc/checkout-steps/checkout/review-order-section.php:58
+msgid "Edit cart"
+msgstr "ಕಾರ್ಟ್ ಸಂಪಾದಿಸಿ"
+
+#: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
+msgid "Did you mean %s?"
+msgstr "ನೀವು %s ಎಂದು ಹೇಳುತ್ತಿದ್ದೀರಾ?"
+
+#: inc/checkout-validation.php:197
+msgid "Change email address to: {suggestion-value}"
+msgstr "ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಇದಕ್ಕೆ ಬದಲಾಯಿಸಿ: {suggestion-value}"
+
+#: inc/checkout-validation.php:200
+msgid "This is a required field."
+msgstr "ಇದು ಕಡ್ಡಾಯ ಕ್ಷೇತ್ರವಾಗಿದೆ."
+
+#: inc/checkout-validation.php:201
+msgid "This is not a valid email address."
+msgstr "ಇದು ಮಾನ್ಯವಾದ ಇಮೇಲ್ ವಿಳಾಸವಲ್ಲ."
+
+#: inc/checkout-validation.php:202
+msgid "This field does not match the related field value."
+msgstr "ಈ ಕ್ಷೇತ್ರವು ಸಂಬಂಧಿತ ಕ್ಷೇತ್ರ ಮೌಲ್ಯಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."
+
+#: inc/checkout-validation.php:211
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "&quot;{cpf_number}&quot; CPF ಸಂಖ್ಯೆ ಅಮಾನ್ಯವಾಗಿದೆ."
+
+#: inc/checkout-validation.php:212
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "CNPJ ಸಂಖ್ಯೆ &quot;{cnpj_number}&quot; ಅಮಾನ್ಯವಾಗಿದೆ."
+
+#: inc/checkout-validation.php:369, templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
+msgid "(Required)"
+msgstr "(ಅಗತ್ಯವಿದೆ)"
+
+#: inc/checkout-widget-areas.php:98
+msgid "Checkout Header - Desktop"
+msgstr "ಚೆಕ್ಔಟ್ ಹೆಡರ್ - ಡೆಸ್ಕ್‌ಟಾಪ್"
+
+#: inc/checkout-widget-areas.php:100
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr ""
+"ದೊಡ್ಡ ಪರದೆಗಳಿಗೆ ಚೆಕ್ಔಟ್ ಹೆಡರ್‌ನಲ್ಲಿ ವಿಜೆಟ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ. ಪ್ಲಗಿನ್‌ನ "
+"ಚೆಕ್ಔಟ್ ಹೆಡರ್ ಬಳಸುತ್ತಿದ್ದರೆ ಮಾತ್ರ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/checkout-widget-areas.php:108
+msgid "Checkout Header - Mobile"
+msgstr "ಚೆಕ್ಔಟ್ ಹೆಡರ್ - ಮೊಬೈಲ್"
+
+#: inc/checkout-widget-areas.php:110
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
+msgstr ""
+"ಮೊಬೈಲ್ ಸಾಧನಗಳಿಗೆ ಚೆಕ್ಔಟ್ ಹೆಡರ್ ಕೆಳಗೆ ವಿಜೆಟ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ. ಪ್ಲಗಿನ್‌ನ "
+"ಚೆಕ್ಔಟ್ ಹೆಡರ್ ಬಳಸುತ್ತಿದ್ದರೆ ಮಾತ್ರ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/checkout-widget-areas.php:122
+msgid "Checkout Sidebar"
+msgstr "ಚೆಕ್ಔಟ್ ಸೈಡ್‌ಬಾರ್"
+
+#: inc/checkout-widget-areas.php:124
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr "ಆರ್ಡರ್ ಸಾರಾಂಶದ ನಂತರ ಚೆಕ್ಔಟ್ ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ ವಿಜೆಟ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/checkout-widget-areas.php:134
+msgid "Checkout Order Summary"
+msgstr "ಚೆಕ್ಔಟ್ ಆರ್ಡರ್ ಸಾರಾಂಶ"
+
+#: inc/checkout-widget-areas.php:136
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಆರ್ಡರ್ ಸಾರಾಂಶದ ಒಳಗೆ ವಿಜೆಟ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/checkout-widget-areas.php:144
+msgid "Checkout Below Place Order"
+msgstr "ಪ್ಲೇಸ್ ಆರ್ಡರ್ ಕೆಳಗೆ ಚೆಕ್ಔಟ್ ಮಾಡಿ"
+
+#: inc/checkout-widget-areas.php:146
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಪ್ಲೇಸ್ ಆರ್ಡರ್ ಬಟನ್ ಕೆಳಗೆ ವಿಜೆಟ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/checkout-widget-areas.php:158
+msgid "Checkout Footer"
+msgstr "ಚೆಕ್ಔಟ್ ಅಡಿಟಿಪ್ಪಣಿ"
+
+#: inc/checkout-widget-areas.php:160
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಅಡಿಟಿಪ್ಪಣಿಯಲ್ಲಿ ವಿಜೆಟ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ. ಪ್ಲಗಿನ್‌ನ ಚೆಕ್ಔಟ್ "
+"ಅಡಿಟಿಪ್ಪಣಿ ಬಳಸುತ್ತಿದ್ದರೆ ಮಾತ್ರ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/design-templates.php:115
+msgid "Classic"
+msgstr "ಕ್ಲಾಸಿಕ್"
+
+#: inc/design-templates.php:116
+msgid "Boxed"
+msgstr "ಪೆಟ್ಟಿಗೆ"
+
+#: inc/design-templates.php:117
+msgid "Split"
+msgstr "ವಿಭಜನೆ"
+
+#: inc/design-templates.php:118
+msgid "Minimalist"
+msgstr "ಕನಿಷ್ಠೀಯತಾವಾದಿ"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:47
+msgid "Fluid Checkout Lite 4.0+ – Important changes!"
+msgstr "ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಲೈಟ್ 4.0+ – ಪ್ರಮುಖ ಬದಲಾವಣೆಗಳು!"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:48
+msgid ""
+"With this version of Fluid Checkout we have introduced <strong>important "
+"changes that might impact your website</strong> if you have made "
+"customizations to our plugins previously to the release of this version. If "
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
+msgstr ""
+"ಈ ಆವೃತ್ತಿಯ ಬಿಡುಗಡೆಗೂ ಮುನ್ನ ನಮ್ಮ ಪ್ಲಗಿನ್‌ಗಳಿಗೆ ನೀವು ಕಸ್ಟಮೈಸೇಶನ್‌ಗಳನ್ನು "
+"ಮಾಡಿದ್ದರೆ <strong>, ನಿಮ್ಮ ವೆಬ್‌ಸೈಟ್ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರಬಹುದಾದ ಪ್ರಮುಖ "
+"ಬದಲಾವಣೆಗಳನ್ನು</strong> ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ನ ಈ ಆವೃತ್ತಿಯೊಂದಿಗೆ ನಾವು "
+"ಪರಿಚಯಿಸಿದ್ದೇವೆ. ನಿಮ್ಮ ವೆಬ್‌ಸೈಟ್ ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್ ಪ್ಲಗಿನ್‌ಗಳಿಗಾಗಿ ಯಾವುದೇ "
+"ಕಸ್ಟಮೈಸೇಶನ್‌ಗಳನ್ನು ಹೊಂದಿಲ್ಲದಿದ್ದರೆ, ಅದು ಮೊದಲಿನಂತೆಯೇ "
+"ಕಾರ್ಯನಿರ್ವಹಿಸಬೇಕು.<br><br> ನಿಮ್ಮ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ಗಾಗಿ "
+"ನೀವು ಯಾವುದೇ ಗ್ರಾಹಕೀಕರಣಗಳನ್ನು ಹೊಂದಿದ್ದರೆ ಮತ್ತು ಅವುಗಳನ್ನು ಇನ್ನೂ ಈ ಆವೃತ್ತಿಗೆ "
+"ಸ್ಥಳಾಂತರಿಸದಿದ್ದರೆ, ದಯವಿಟ್ಟು ನಮ್ಮ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಓದಿ <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್ ಲೈಟ್ 4.0+ ಗೆ ಕಸ್ಟಮೈಸೇಶನ್‌ಗಳನ್ನು ಸ್ಥಳಾಂತರಿಸುವುದು.</a>"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:51
+msgid "Read the migration guide"
+msgstr "ವಲಸೆ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಓದಿ"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
+msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
+msgstr "ಕೋಡ್‌ರಾಕ್ಜ್‌ನಿಂದ ದ್ರವ ಚೆಕ್‌ಔಟ್ ಮತ್ತು ವಿತರಣಾ ದಿನಾಂಕ ಪ್ಲಗಿನ್‌ಗಳು"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
+msgid ""
+"<p>We detected that you are using the plugins Delivery & Pickup Date Time "
+"for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins "
+"have been moved to Fluid Checkout PRO.</p>"
+msgstr ""
+"<p>ನೀವು CodeRockz ನಿಂದ WooCommerce ಗಾಗಿ ಡೆಲಿವರಿ &amp; ಪಿಕಪ್ ದಿನಾಂಕ ಸಮಯ "
+"(ಉಚಿತ ಮತ್ತು PRO) ಪ್ಲಗಿನ್‌ಗಳನ್ನು ಬಳಸುತ್ತಿರುವುದನ್ನು ನಾವು ಪತ್ತೆಹಚ್ಚಿದ್ದೇವೆ. ಈ "
+"ಪ್ಲಗಿನ್‌ಗಳೊಂದಿಗಿನ ಏಕೀಕರಣವನ್ನು Fluid Checkout PRO ಗೆ ಸರಿಸಲಾಗಿದೆ.</p>"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+msgid "Upgrade to PRO"
+msgstr "PRO ಗೆ ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "What should I do?"
+msgstr "ನಾನು ಏನು ಮಾಡಲಿ?"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:55
+msgid "Fluid Checkout database updated successfully"
+msgstr "ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಡೇಟಾಬೇಸ್ ಅನ್ನು ಯಶಸ್ವಿಯಾಗಿ ನವೀಕರಿಸಲಾಗಿದೆ."
+
+#: inc/admin/admin-notice-db-migrations-applied.php:56
+msgid "The database changes where applied successfully."
+msgstr "ಯಶಸ್ವಿಯಾಗಿ ಅನ್ವಯಿಸಿದ ಸ್ಥಳದಲ್ಲಿ ಡೇಟಾಬೇಸ್ ಬದಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-notice-db-migrations-applied.php:59
+msgid "Ok"
+msgstr "ಸರಿ"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
+msgstr "ವಜಾಗೊಳಿಸಿ"
+
+#: inc/admin/admin-notice-db-migrations.php:51
+msgid "Fluid Checkout database update"
+msgstr "ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಡೇಟಾಬೇಸ್ ನವೀಕರಣ"
+
+#: inc/admin/admin-notice-db-migrations.php:52
+msgid ""
+"Some changes to the database are required. As with any update, we recommend "
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
+msgstr ""
+"ಡೇಟಾಬೇಸ್‌ನಲ್ಲಿ ಕೆಲವು ಬದಲಾವಣೆಗಳು ಅಗತ್ಯವಿದೆ. ಯಾವುದೇ ನವೀಕರಣದಂತೆ, "
+"<strong>ಮುಂದುವರಿಯುವ ಮೊದಲು ನಿಮ್ಮ ವೆಬ್‌ಸೈಟ್‌ನ ಪೂರ್ಣ ಬ್ಯಾಕಪ್ "
+"ತೆಗೆದುಕೊಳ್ಳಲು</strong> ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "Update database"
+msgstr "ಡೇಟಾಬೇಸ್ ನವೀಕರಿಸಿ"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
+msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
+msgstr "ದ್ರವ ಚೆಕ್ಔಟ್ ಡಿವಿ ಬಿಲ್ಡರ್ ಚೆಕ್ಔಟ್ ವಿನ್ಯಾಸದೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
+msgid ""
+"<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
+"form to work. When using the Divi Builder to customize the look and feel of "
+"the checkout page, the classic shortcodes are replaced with custom widgets "
+"from the Divi Builder for each part of the checkout page. These custom "
+"widgets are not compatible with Fluid Checkout.</p><p>Please edit your "
+"checkout page replacing the Divi Builder widgets with the a text widget "
+"containing the shortcode <code>[woocommerce_checkout]</code>.</p>"
+msgstr ""
+"<p>ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ಗೆ ಕೆಲಸ ಮಾಡಲು ಕ್ಲಾಸಿಕ್ WooCommerce ಶಾರ್ಟ್‌ಕೋಡ್ ಆಧಾರಿತ "
+"ಚೆಕ್‌ಔಟ್ ಫಾರ್ಮ್ ಅಗತ್ಯವಿದೆ. ಚೆಕ್‌ಔಟ್ ಪುಟದ ನೋಟ ಮತ್ತು ಭಾವನೆಯನ್ನು ಕಸ್ಟಮೈಸ್ "
+"ಮಾಡಲು ಡಿವಿ ಬಿಲ್ಡರ್ ಬಳಸುವಾಗ, ಕ್ಲಾಸಿಕ್ ಶಾರ್ಟ್‌ಕೋಡ್‌ಗಳನ್ನು ಚೆಕ್‌ಔಟ್ ಪುಟದ "
+"ಪ್ರತಿಯೊಂದು ಭಾಗಕ್ಕೂ ಡಿವಿ ಬಿಲ್ಡರ್‌ನಿಂದ ಕಸ್ಟಮ್ ವಿಜೆಟ್‌ಗಳೊಂದಿಗೆ "
+"ಬದಲಾಯಿಸಲಾಗುತ್ತದೆ. ಈ ಕಸ್ಟಮ್ ವಿಜೆಟ್‌ಗಳು ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ಗೆ "
+"ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ.</p><p> ದಯವಿಟ್ಟು ನಿಮ್ಮ ಚೆಕ್ಔಟ್ ಪುಟವನ್ನು ಡಿವಿ ಬಿಲ್ಡರ್ "
+"ವಿಜೆಟ್‌ಗಳ ಬದಲಿಗೆ <code>[woocommerce_checkout]</code> ಎಂಬ ಶಾರ್ಟ್‌ಕೋಡ್ "
+"ಹೊಂದಿರುವ ಪಠ್ಯ ವಿಜೆಟ್‌ನೊಂದಿಗೆ ಸಂಪಾದಿಸಿ.</p>"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
+msgid "Edit the checkout page"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟವನ್ನು ಸಂಪಾದಿಸಿ"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+msgid "Read the documentation."
+msgstr "ದಸ್ತಾವೇಜನ್ನು ಓದಿ."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಬಳಸುವಾಗ ಜರ್ಮನೀಕರಿಸಿದ PRO ಮಲ್ಟಿಸ್ಟೆಪ್ ಚೆಕ್ಔಟ್ "
+"ವೈಶಿಷ್ಟ್ಯವನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಬೇಕಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್ ಬಳಸುವಾಗ, ಜರ್ಮನೀಕರಿಸಿದ PRO ಪ್ಲಗಿನ್‌ನಿಂದ ಬಹುಹಂತದ "
+"ವೈಶಿಷ್ಟ್ಯವು ಅನಗತ್ಯವಾಗುತ್ತದೆ ಮತ್ತು <strong>ಹೊಸ ಆರ್ಡರ್‌ಗಳನ್ನು "
+"ಪ್ರಕ್ರಿಯೆಗೊಳಿಸುವಾಗ ನಿರ್ಣಾಯಕ ದೋಷಗಳನ್ನು</strong> ಉಂಟುಮಾಡಬಹುದು. ದಯವಿಟ್ಟು "
+"ಪ್ಲಗಿನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಜರ್ಮನೀಕರಿಸಿದ PRO ಬಹುಹಂತದ ಚೆಕ್‌ಔಟ್ ವೈಶಿಷ್ಟ್ಯವನ್ನು "
+"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr "ಜರ್ಮನೀಕರಿಸಿದ ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ಹೋಗಿ"
+
+#: inc/admin/admin-notice-review-request.php:47
+msgid "Thanks for choosing Fluid Checkout!"
+msgstr "ದ್ರವ ಚೆಕ್ಔಟ್ ಆಯ್ಕೆ ಮಾಡಿದ್ದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು!"
+
+#: inc/admin/admin-notice-review-request.php:48
+msgid ""
+"You have been using the plugin for a while now. How do you like it so far? "
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
+msgstr ""
+"ನೀವು ಸ್ವಲ್ಪ ಸಮಯದಿಂದ ಪ್ಲಗಿನ್ ಬಳಸುತ್ತಿದ್ದೀರಿ. ಇಲ್ಲಿಯವರೆಗೆ ನಿಮಗೆ ಅದು ಹೇಗೆ "
+"ಇಷ್ಟವಾಯಿತು?<br> ದಯವಿಟ್ಟು ನಮಗೆ ತ್ವರಿತ ರೇಟಿಂಗ್ ನೀಡಿ, ನಾವು ಪ್ರತಿ ಪ್ರತಿಕ್ರಿಯೆಗೂ "
+"ಕೃತಜ್ಞರಾಗಿರುತ್ತೇವೆ ಮತ್ತು ಅದು ಪ್ಲಗಿನ್ ಅನ್ನು ಸುಧಾರಿಸುವುದನ್ನು ಮುಂದುವರಿಸಲು "
+"ನಮ್ಮನ್ನು ಪ್ರೋತ್ಸಾಹಿಸುತ್ತದೆ :)"
+
+#: inc/admin/admin-notice-review-request.php:50
+msgid "Rate the plugin"
+msgstr "ಪ್ಲಗಿನ್ ಅನ್ನು ರೇಟ್ ಮಾಡಿ"
+
+#: inc/admin/admin-notice-review-request.php:51
+msgid "I need help!"
+msgstr "ನನಗೆ ಸಹಾಯ ಬೇಕು!"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr ""
+"ಕ್ವಾಡ್‌ಲೇಯರ್ಸ್‌ನ WooCommerce ಚೆಕ್‌ಔಟ್ ಮ್ಯಾನೇಜರ್ ಪ್ಲಗಿನ್ ಫ್ಲೂಯಿಡ್ "
+"ಚೆಕ್‌ಔಟ್‌ಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"ಕ್ವಾಡ್‌ಲೇಯರ್‌ಗಳ WooCommerce Checkout ಮ್ಯಾನೇಜರ್‌ನ ಕೆಲವು ವೈಶಿಷ್ಟ್ಯಗಳು "
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ನೊಂದಿಗೆ ಬಳಸುವಾಗ ನಿರೀಕ್ಷೆಯಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು. "
+"ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಮತ್ತು ಪರ್ಯಾಯ ಪರಿಹಾರಗಳಿಗಾಗಿ <a href=\"%s\">ನಮ್ಮ "
+"ದಸ್ತಾವೇಜನ್ನು</a> ಓದಿ."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "ದಸ್ತಾವೇಜನ್ನು ಓದಿ"
+
+#: inc/admin/admin-notices.php:55
+msgid "Don't show this again"
+msgstr "ಇದನ್ನು ಮತ್ತೆ ತೋರಿಸಬೇಡಿ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:41
+msgid "Special offers"
+msgstr "ವಿಶೇಷ ಕೊಡುಗೆಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:43
+msgid ""
+"Extend all the goodness of Fluid Checkout to your cart page and thank you "
+"pages."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ನ ಎಲ್ಲಾ ಒಳಿತನ್ನು ನಿಮ್ಮ ಕಾರ್ಟ್ ಪುಟ ಮತ್ತು ಧನ್ಯವಾದ ಪುಟಗಳಿಗೆ "
+"ವಿಸ್ತರಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
+msgid "Fluid Checkout PRO"
+msgstr "ದ್ರವ ಚೆಕ್ಔಟ್ ಪ್ರೊ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
+msgid ""
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
+msgstr ""
+"ವಿನ್ಯಾಸ ಟೆಂಪ್ಲೇಟ್‌ಗಳು, ಆಪ್ಟಿಮೈಸ್ ಮಾಡಿದ ಕಾರ್ಟ್ ಮತ್ತು ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಿದ "
+"ಪುಟಗಳು, ಖಾತೆ ಹೊಂದಾಣಿಕೆ ಮತ್ತು ಇನ್ನೂ ಹೆಚ್ಚಿನವು."
+
+#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
+msgid ""
+"The best tools to further <strong>improve your WooCommerce checkout "
+"conversion rate</strong> and make the purchase experience consistent on the "
+"entire journey."
+msgstr ""
+"<strong>ನಿಮ್ಮ WooCommerce ಚೆಕ್ಔಟ್ ಪರಿವರ್ತನೆ ದರವನ್ನು ಮತ್ತಷ್ಟು "
+"ಸುಧಾರಿಸಲು</strong> ಮತ್ತು ಸಂಪೂರ್ಣ ಪ್ರಯಾಣದಲ್ಲಿ ಖರೀದಿ ಅನುಭವವನ್ನು ಸ್ಥಿರವಾಗಿಸಲು "
+"ಉತ್ತಮ ಸಾಧನಗಳು."
+
+#: inc/admin/admin-setting-type-fc-addons.php:57
+msgid "More design templates"
+msgstr "ಇನ್ನಷ್ಟು ವಿನ್ಯಾಸ ಟೆಂಪ್ಲೇಟ್‌ಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:58
+msgid "Optimized cart page"
+msgstr "ಅತ್ಯುತ್ತಮಗೊಳಿಸಿದ ಕಾರ್ಟ್ ಪುಟ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:59
+msgid "Optimized order received / thank you page"
+msgstr "ಅತ್ಯುತ್ತಮಗೊಳಿಸಿದ ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಲಾಗಿದೆ / ಧನ್ಯವಾದ ಪುಟ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:60
+msgid "Edit cart contents at checkout page"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಕಾರ್ಟ್ ವಿಷಯಗಳನ್ನು ಸಂಪಾದಿಸಿ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:61
+msgid "Account matching / user matching"
+msgstr "ಖಾತೆ ಹೊಂದಾಣಿಕೆ / ಬಳಕೆದಾರ ಹೊಂದಾಣಿಕೆ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:62
+msgid "Express Checkout buttons from supported payment methods"
+msgstr "ಬೆಂಬಲಿತ ಪಾವತಿ ವಿಧಾನಗಳಿಂದ ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಚೆಕ್‌ಔಟ್ ಬಟನ್‌ಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:63
+msgid "Trust symbols on the cart and thank you pages"
+msgstr "ಕಾರ್ಟ್ ಮತ್ತು ಧನ್ಯವಾದ ಪುಟಗಳಲ್ಲಿರುವ ಚಿಹ್ನೆಗಳನ್ನು ನಂಬಿರಿ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:64
+msgid "More positions for the coupon code on the checkout page"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಕೂಪನ್ ಕೋಡ್‌ಗಾಗಿ ಹೆಚ್ಚಿನ ಸ್ಥಾನಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:65
+msgid "Integrated coupon code field on the cart page"
+msgstr "ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಸಂಯೋಜಿತ ಕೂಪನ್ ಕೋಡ್ ಕ್ಷೇತ್ರ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+msgid "International phone numbers"
+msgstr "ಅಂತರರಾಷ್ಟ್ರೀಯ ಫೋನ್ ಸಂಖ್ಯೆಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:67
+msgid "Gift messages and packing slips"
+msgstr "ಉಡುಗೊರೆ ಸಂದೇಶಗಳು ಮತ್ತು ಪ್ಯಾಕಿಂಗ್ ಸ್ಲಿಪ್‌ಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:68
+msgid "Local pickup and in-store collection"
+msgstr "ಸ್ಥಳೀಯ ಪಿಕಪ್ ಮತ್ತು ಅಂಗಡಿಯಲ್ಲಿನ ಸಂಗ್ರಹಣೆ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:72
+msgid "Upgrade to PRO &mdash; 99 EUR"
+msgstr "PRO ಗೆ ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ — 99 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
+msgid "Fluid Checkout PRO – Bundle"
+msgstr "ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಪ್ರೊ - ಬಂಡಲ್"
+
+#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
+msgid "All PRO features + All add-ons for a special price."
+msgstr "ಎಲ್ಲಾ PRO ವೈಶಿಷ್ಟ್ಯಗಳು + ವಿಶೇಷ ಬೆಲೆಗೆ ಎಲ್ಲಾ ಆಡ್-ಆನ್‌ಗಳು."
+
+#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
+msgid ""
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
+msgstr ""
+"ಈ ಬಂಡಲ್ ನಾವು ಪ್ರಸ್ತುತ ನೀಡುವ ಎಲ್ಲಾ ಆಡ್-ಆನ್‌ಗಳನ್ನು ಮತ್ತು ಭವಿಷ್ಯದಲ್ಲಿ ನಾವು "
+"ಪ್ರಾರಂಭಿಸುವ ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್ ಆಡ್-ಆನ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿದೆ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "226 ಯುರೋ ಮೌಲ್ಯ (42% ಉಳಿಸಿ)"
+
+#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
+msgid "Google Address Autocomplete"
+msgstr "Google ವಿಳಾಸ ಸ್ವಯಂಪೂರ್ಣತೆ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
+msgid "Address Book"
+msgstr "ವಿಳಾಸ ಪುಸ್ತಕ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "EU-VAT ಸಹಾಯಕ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons *"
+msgstr "ಎಲ್ಲಾ ಭವಿಷ್ಯದ ಆಡ್-ಆನ್‌ಗಳು *"
+
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* ನೀವು ಸಕ್ರಿಯ ಚಂದಾದಾರಿಕೆಯನ್ನು ಹೊಂದಿರುವವರೆಗೆ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
+msgid "Get the Bundle – Only 129 EUR"
+msgstr "ಬಂಡಲ್ ಪಡೆಯಿರಿ - ಕೇವಲ 129 ಯುರೋಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
+msgid ""
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
+msgstr ""
+"ಎಲ್ಲಾ ಬೆಲೆಗಳನ್ನು EUR ನಲ್ಲಿ ತೋರಿಸಲಾಗಿದೆ. ನಮ್ಮ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿನ ಬೆಲೆಗಳಲ್ಲಿ "
+"ಯಾವುದೇ ವ್ಯತ್ಯಾಸಗಳಿದ್ದರೆ, ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ ತೋರಿಸಿರುವ ಕೊಡುಗೆಗಳು ಇವುಗಳನ್ನು "
+"ಮೀರಿಸುತ್ತದೆ ಮತ್ತು ಅವುಗಳನ್ನು ಅನ್ವಯಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:116
+msgid "Add-ons"
+msgstr "ಆಡ್-ಆನ್‌ಗಳು"
+
+#: inc/admin/admin-setting-type-fc-addons.php:117
+msgid "Enhance your checkout experience with these add-ons."
+msgstr "ಈ ಆಡ್-ಆನ್‌ಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಚೆಕ್ಔಟ್ ಅನುಭವವನ್ನು ಹೆಚ್ಚಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:137
+msgid "I already have it – Hide this offer"
+msgstr "ನನ್ನ ಬಳಿ ಈಗಾಗಲೇ ಇದೆ - ಈ ಆಫರ್ ಅನ್ನು ಮರೆಮಾಡಿ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
+msgid "Installed &mdash; Activate"
+msgstr "ಸ್ಥಾಪಿಸಲಾಗಿದೆ — ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
+msgid "Activated"
+msgstr "ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:168
+msgid "Up to 40% less checkout fields to fill in."
+msgstr "ಭರ್ತಿ ಮಾಡಲು 40% ರಷ್ಟು ಕಡಿಮೆ ಚೆಕ್ಔಟ್ ಕ್ಷೇತ್ರಗಳು."
+
+#: inc/admin/admin-setting-type-fc-addons.php:172
+msgid ""
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
+msgstr ""
+"ವಿತರಣಾ ವಿಳಂಬ ಮತ್ತು ಅತೃಪ್ತ ಗ್ರಾಹಕರನ್ನು ತಪ್ಪಿಸಿ. ಅವರು ನಿಮ್ಮಿಂದ ಮೊದಲ ಬಾರಿಗೆ "
+"ಖರೀದಿಸಿದಾಗ <strong>ಸರಿಯಾದ ವಿಳಾಸ ಮಾಹಿತಿಯನ್ನು</strong> ಸಂಗ್ರಹಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:180
+msgid "Get this add-on &mdash; 29 EUR"
+msgstr "ಈ ಆಡ್-ಆನ್ ಪಡೆಯಿರಿ — 29 ಯುರೋ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:189
+msgid "Address book"
+msgstr "ವಿಳಾಸ ಪುಸ್ತಕ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:190
+msgid "Multiple saved addresses for shipping and billing."
+msgstr "ಶಿಪ್ಪಿಂಗ್ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್‌ಗಾಗಿ ಬಹು ಉಳಿಸಿದ ವಿಳಾಸಗಳು."
+
+#: inc/admin/admin-setting-type-fc-addons.php:194
+msgid ""
+"Let customers <strong>save multiple shipping and billing addresses</strong> "
+"on their account and choose which ones to use at checkout and cart pages."
+msgstr ""
+"ಗ್ರಾಹಕರು ತಮ್ಮ ಖಾತೆಯಲ್ಲಿ <strong>ಬಹು ಶಿಪ್ಪಿಂಗ್ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸಗಳನ್ನು "
+"ಉಳಿಸಲು</strong> ಮತ್ತು ಚೆಕ್ಔಟ್ ಮತ್ತು ಕಾರ್ಟ್ ಪುಟಗಳಲ್ಲಿ ಯಾವುದನ್ನು ಬಳಸಬೇಕೆಂದು "
+"ಆಯ್ಕೆ ಮಾಡಲು ಅನುಮತಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
+msgid "Get this add-on &mdash; 59 EUR"
+msgstr "ಈ ಆಡ್-ಆನ್ ಪಡೆಯಿರಿ — 59 ಯುರೋ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "ನಿಮ್ಮ ಅಂಗಡಿಗೆ ಸರಳೀಕೃತ EU-VAT ಮೌಲ್ಯೀಕರಣ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr ""
+"<strong>ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ EU VAT ಸಂಖ್ಯೆಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ ಮತ್ತು "
+"ಮೌಲ್ಯೀಕರಿಸಿ</strong> , ರಿವರ್ಸ್ ಚಾರ್ಜ್ ಆಧಾರದ ಮೇಲೆ ತೆರಿಗೆ ಶುಲ್ಕಗಳನ್ನು "
+"ತೆಗೆದುಹಾಕುತ್ತದೆ ಮತ್ತು ಅಗತ್ಯವಿದ್ದಾಗ ಗ್ರಾಹಕರ ಸ್ಥಳವನ್ನು ಖಚಿತಪಡಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "ಈ ಆಡ್-ಆನ್ ಪಡೆಯಿರಿ — 39 ಯುರೋ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:233
+msgid ""
+"All add-ons are sold separately and require the <strong>Fluid Checkout "
+"Lite</strong> plugin to be installed and activated, except when noted."
+msgstr ""
+"ಎಲ್ಲಾ ಆಡ್-ಆನ್‌ಗಳನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ ಮಾರಾಟ ಮಾಡಲಾಗುತ್ತದೆ ಮತ್ತು ಗಮನಿಸಿದಾಗ "
+"ಹೊರತುಪಡಿಸಿ, <strong>ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್ ಲೈಟ್</strong> ಪ್ಲಗಿನ್ ಅನ್ನು ಸ್ಥಾಪಿಸಿ "
+"ಸಕ್ರಿಯಗೊಳಿಸಬೇಕಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "ಯಾವುದೇ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "ಚಿತ್ರವನ್ನು ತೆಗೆದುಹಾಕಿ"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:142
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to get your license key, or <a href=\"%s\" "
+"target=\"_blank\">purchase a new license key</a>."
+msgstr ""
+"ನಿಮ್ಮ ಪರವಾನಗಿ ಕೀಲಿಯನ್ನು ಪಡೆಯಲು <a "
+"href=\"https://fluidcheckout.com/account/\" target=\"_blank\">ನಿಮ್ಮ ಖಾತೆಗೆ "
+"ಲಾಗಿನ್ ಮಾಡಿ</a> , ಅಥವಾ <a href=\"%s\" target=\"_blank\">ಹೊಸ ಪರವಾನಗಿ "
+"ಕೀಲಿಯನ್ನು ಖರೀದಿಸಿ</a> ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
+msgid "Valid until %s."
+msgstr "%s ವರೆಗೆ ಮಾನ್ಯವಾಗಿರುತ್ತದೆ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
+msgid "Expired on %s."
+msgstr "%s ರಂದು ಅವಧಿ ಮುಗಿದಿದೆ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:160
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to renew your license key and continue to receive updates "
+"and support."
+msgstr ""
+"ನಿಮ್ಮ ಪರವಾನಗಿ ಕೀಲಿಯನ್ನು ನವೀಕರಿಸಲು <a "
+"href=\"https://fluidcheckout.com/account/\" target=\"_blank\">ನಿಮ್ಮ ಖಾತೆಗೆ "
+"ಲಾಗಿನ್ ಮಾಡಿ</a> ಮತ್ತು ನವೀಕರಣಗಳು ಮತ್ತು ಬೆಂಬಲವನ್ನು ಪಡೆಯುವುದನ್ನು ಮುಂದುವರಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:163
+msgid "License key cancelled."
+msgstr "ಪರವಾನಗಿ ಕೀಲಿಯನ್ನು ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:165
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">ಹೊಸ ಪರವಾನಗಿ ಕೀಲಿಯನ್ನು ಖರೀದಿಸಿ</a> ಮತ್ತು "
+"ನವೀಕರಣಗಳು ಮತ್ತು ಬೆಂಬಲವನ್ನು ಪಡೆಯುವುದನ್ನು ಮುಂದುವರಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:168
+msgid "Error: "
+msgstr "ದೋಷ: "
+
+#: inc/admin/admin-setting-type-fc-setup.php:41
+msgid "Setup & Documentation"
+msgstr "ಸೆಟಪ್ ಮತ್ತು ದಸ್ತಾವೇಜೀಕರಣ"
+
+#: inc/admin/admin-setting-type-fc-setup.php:42
+msgid "Great! Your checkout page is now running on Fluid Checkout."
+msgstr "ಅದ್ಭುತ! ನಿಮ್ಮ ಚೆಕ್ಔಟ್ ಪುಟವು ಈಗ ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್‌ನಲ್ಲಿ ಚಾಲನೆಯಲ್ಲಿದೆ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:44
+msgid "Here are a few resources for you to get started:"
+msgstr "ನೀವು ಪ್ರಾರಂಭಿಸಲು ಕೆಲವು ಸಂಪನ್ಮೂಲಗಳು ಇಲ್ಲಿವೆ:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:48
+msgid ""
+"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
+"with Fluid Checkout</a>."
+msgstr ""
+"ಅನುಸ್ಥಾಪನಾ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಓದಿ <a href=\"%s\" target=\"_blank\">ಫ್ಲೂಯಿಡ್ "
+"ಚೆಕ್‌ಔಟ್‌ನೊಂದಿಗೆ ಹೇಳಲಾಗಿದೆ</a> ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:49
+msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "<a href=\"%s\">ಚೆಕ್ಔಟ್ ಆಯ್ಕೆಗಳಲ್ಲಿ</a> ವಿನ್ಯಾಸ ಮತ್ತು ವಿನ್ಯಾಸವನ್ನು ಹೊಂದಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:50
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"other plugins you have installed."
+msgstr ""
+"ನೀವು ಸ್ಥಾಪಿಸಿರುವ ಇತರ ಪ್ಲಗಿನ್‌ಗಳಿಗೆ ಯಾವುದೇ <a href=\"%s\">ಏಕೀಕರಣ "
+"ಆಯ್ಕೆಗಳು</a> ಲಭ್ಯವಿದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:51
+msgid ""
+"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
+"information about Fluid Checkout features."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ವೈಶಿಷ್ಟ್ಯಗಳ ಕುರಿತು ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ <a href=\"%s\" "
+"target=\"_blank\">ನಮ್ಮ ದಸ್ತಾವೇಜನ್ನು</a> ಭೇಟಿ ಮಾಡಿ."
+
+#: inc/admin/admin-setting-type-fc-setup.php:52
+msgid ""
+"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
+"ticket</a> on our official support channel."
+msgstr ""
+"ನಿಮಗೆ ಎಂದಾದರೂ ಸಹಾಯ ಬೇಕಾದರೆ, ನಮ್ಮ ಅಧಿಕೃತ ಬೆಂಬಲ ಚಾನಲ್‌ನಲ್ಲಿ <a href=\"%s\" "
+"target=\"_blank\">ಬೆಂಬಲ ಟಿಕೆಟ್ ತೆರೆಯಿರಿ</a> ."
+
+#: inc/admin/admin-settings-cart.php:71
+msgid "Cart layout"
+msgstr "ಕಾರ್ಟ್ ವಿನ್ಯಾಸ"
+
+#: inc/admin/admin-settings-cart.php:78
+msgid "Cart optimizations"
+msgstr "ಕಾರ್ಟ್ ಆಪ್ಟಿಮೈಸೇಶನ್‌ಗಳು"
+
+#: inc/admin/admin-settings-cart.php:79
+msgid "Enable cart page optimizations"
+msgstr "ಕಾರ್ಟ್ ಪುಟ ಆಪ್ಟಿಮೈಸೇಶನ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-cart.php:80
+msgid "Display the cart page with a layout similar to the checkout page."
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಂತೆಯೇ ವಿನ್ಯಾಸದೊಂದಿಗೆ ಕಾರ್ಟ್ ಪುಟವನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
+msgid "Header and footer"
+msgstr "ಹೆಡರ್ ಮತ್ತು ಫೂಟರ್"
+
+#: inc/admin/admin-settings-cart.php:103
+msgid "Header and footer template"
+msgstr "ಹೆಡರ್ ಮತ್ತು ಫೂಟರ್ ಟೆಂಪ್ಲೇಟ್"
+
+#: inc/admin/admin-settings-cart.php:104, inc/admin/admin-settings-checkout.php:126
+msgid ""
+"Controls whether to use the distraction free page header and footer or keep "
+"the currently active theme's header and footer."
+msgstr ""
+"ಅಡ್ಡಿಪಡಿಸುವಿಕೆ ಮುಕ್ತ ಪುಟದ ಶಿರೋಲೇಖ ಮತ್ತು ಅಡಿಟಿಪ್ಪಣಿಯನ್ನು ಬಳಸಬೇಕೆ ಅಥವಾ "
+"ಪ್ರಸ್ತುತ ಸಕ್ರಿಯವಾಗಿರುವ ಥೀಮ್‌ನ ಶಿರೋಲೇಖ ಮತ್ತು ಅಡಿಟಿಪ್ಪಣಿಯನ್ನು ಇಟ್ಟುಕೊಳ್ಳಬೇಕೆ "
+"ಎಂಬುದನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-cart.php:108, inc/admin/admin-settings-checkout.php:130
+msgid "Distraction free header and footer"
+msgstr "ಗೊಂದಲ ಮುಕ್ತ ಹೆಡರ್ ಮತ್ತು ಫೂಟರ್"
+
+#: inc/admin/admin-settings-cart.php:109, inc/admin/admin-settings-checkout.php:131
+msgid "Theme's header and footer"
+msgstr "ಥೀಮ್‌ನ ಹೆಡರ್ ಮತ್ತು ಅಡಿಟಿಪ್ಪಣಿ"
+
+#: inc/admin/admin-settings-cart.php:124
+msgid "Cart elements"
+msgstr "ಕಾರ್ಟ್ ಅಂಶಗಳು"
+
+#: inc/admin/admin-settings-cart.php:132
+msgid "Make the order summary stay visible on the cart page while scrolling"
+msgstr "ಸ್ಕ್ರೋಲ್ ಮಾಡುವಾಗ ಆರ್ಡರ್ ಸಾರಾಂಶವು ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಗೋಚರಿಸುವಂತೆ ಮಾಡಿ."
+
+#: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
+msgid "Coupon codes"
+msgstr "ಕೂಪನ್ ಕೋಡ್‌ಗಳು"
+
+#: inc/admin/admin-settings-cart.php:142
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart and the integrated coupon codes in the "
+"checkout page are enabled."
+msgstr ""
+"ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಕೂಪನ್ ಕೋಡ್‌ಗಳ ವಿಭಾಗವನ್ನು ಎಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕು ಎಂಬುದನ್ನು "
+"ಆಯ್ಕೆಮಾಡಿ. AJAX ಕಾರ್ಟ್ ಮತ್ತು ಚೆಕ್‌ಔಟ್ ಪುಟದಲ್ಲಿ ಸಂಯೋಜಿತ ಕೂಪನ್ ಕೋಡ್‌ಗಳನ್ನು "
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+msgid "Hidden"
+msgstr "ಮರೆಮಾಡಲಾಗಿದೆ"
+
+#: inc/admin/admin-settings-cart.php:147
+msgid "Before the cart items section"
+msgstr "ಕಾರ್ಟ್ ಐಟಂಗಳ ವಿಭಾಗದ ಮೊದಲು"
+
+#: inc/admin/admin-settings-cart.php:148
+msgid "Inside the cart items section"
+msgstr "ಕಾರ್ಟ್ ಐಟಂಗಳ ವಿಭಾಗದ ಒಳಗೆ"
+
+#: inc/admin/admin-settings-cart.php:149, inc/admin/admin-settings-cart.php:185
+msgid "After the cart items section"
+msgstr "ಕಾರ್ಟ್ ಐಟಂಗಳ ವಿಭಾಗದ ನಂತರ"
+
+#: inc/admin/admin-settings-cart.php:150
+msgid "Before the shipping section"
+msgstr "ಸಾಗಣೆ ವಿಭಾಗದ ಮೊದಲು"
+
+#: inc/admin/admin-settings-cart.php:151
+msgid "After the shipping section"
+msgstr "ಸಾಗಣೆ ವಿಭಾಗದ ನಂತರ"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid "Before the order summary"
+msgstr "ಆದೇಶದ ಮೊದಲು ಸಾರಾಂಶ"
+
+#: inc/admin/admin-settings-cart.php:153, inc/admin/admin-settings-cart.php:171, inc/admin/admin-settings-checkout.php:393
+msgid "Inside the order summary"
+msgstr "ಆರ್ಡರ್ ಸಾರಾಂಶದ ಒಳಗೆ"
+
+#: inc/admin/admin-settings-cart.php:154, inc/admin/admin-settings-checkout.php:394
+msgid "Before the order totals"
+msgstr "ಆದೇಶದ ಮೊತ್ತ ಮುಗಿಯುವ ಮೊದಲು"
+
+#: inc/admin/admin-settings-cart.php:155, inc/admin/admin-settings-checkout.php:395
+msgid "After the order totals"
+msgstr "ಆರ್ಡರ್ ಮೊತ್ತದ ನಂತರ"
+
+#: inc/admin/admin-settings-cart.php:156, inc/admin/admin-settings-cart.php:188
+msgid "After the order summary"
+msgstr "ಆದೇಶದ ಸಾರಾಂಶದ ನಂತರ"
+
+#: inc/admin/admin-settings-cart.php:164
+msgid "Shipping"
+msgstr "ಶಿಪ್ಪಿಂಗ್"
+
+#: inc/admin/admin-settings-cart.php:165
+msgid ""
+"Select position where to display the shipping costs and calculator on the "
+"cart page."
+msgstr ""
+"ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಶಿಪ್ಪಿಂಗ್ ವೆಚ್ಚಗಳು ಮತ್ತು ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಅನ್ನು ಪ್ರದರ್ಶಿಸಬೇಕಾದ "
+"ಸ್ಥಾನವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+
+#: inc/admin/admin-settings-cart.php:170
+msgid "Display as a cart section"
+msgstr "ಕಾರ್ಟ್ ವಿಭಾಗವಾಗಿ ಪ್ರದರ್ಶಿಸಿ"
+
+#: inc/admin/admin-settings-cart.php:179
+msgid "Cross-sells"
+msgstr "ಕ್ರಾಸ್-ಸೆಲ್ಸ್"
+
+#: inc/admin/admin-settings-cart.php:180
+msgid "Select position where to display the cross-sells section on the cart page."
+msgstr ""
+"ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಕ್ರಾಸ್-ಸೆಲ್ಸ್ ವಿಭಾಗವನ್ನು ಪ್ರದರ್ಶಿಸಬೇಕಾದ ಸ್ಥಾನವನ್ನು "
+"ಆಯ್ಕೆಮಾಡಿ."
+
+#: inc/admin/admin-settings-cart.php:186
+msgid "Before the cart actions"
+msgstr "ಕಾರ್ಟ್ ಕ್ರಮಗಳ ಮೊದಲು"
+
+#: inc/admin/admin-settings-cart.php:187
+msgid "After the cart actions"
+msgstr "ಕಾರ್ಟ್ ಕ್ರಿಯೆಗಳ ನಂತರ"
+
+#: inc/admin/admin-settings-cart.php:198
+msgid "Layout of cross-sell items on the cart page."
+msgstr "ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಅಡ್ಡ-ಮಾರಾಟದ ವಸ್ತುಗಳ ವಿನ್ಯಾಸ."
+
+#: inc/admin/admin-settings-cart.php:201
+msgid "Optimized horizontal cross-sells layout"
+msgstr "ಆಪ್ಟಿಮೈಸ್ಡ್ ಸಮತಲ ಕ್ರಾಸ್-ಸೆಲ್ಸ್ ವಿನ್ಯಾಸ"
+
+#: inc/admin/admin-settings-cart.php:202
+msgid "Theme's cross-sells layout"
+msgstr "ಥೀಮ್‌ನ ಕ್ರಾಸ್-ಸೆಲ್ಲ್ಸ್ ವಿನ್ಯಾಸ"
+
+#: inc/admin/admin-settings-cart.php:210
+msgid "Number of cross-sell items to display on the cart page"
+msgstr "ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲು ಅಡ್ಡ-ಮಾರಾಟದ ಐಟಂಗಳ ಸಂಖ್ಯೆ"
+
+#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+msgid "Trust symbols &amp; badges"
+msgstr "ನಂಬಿಕೆಯ ಚಿಹ್ನೆಗಳು ಮತ್ತು ಬ್ಯಾಡ್ಜ್‌ಗಳು"
+
+#: inc/admin/admin-settings-cart.php:220
+msgid "Add widget areas to the cart page"
+msgstr "ಕಾರ್ಟ್ ಪುಟಕ್ಕೆ ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಸೇರಿಸಿ"
+
+#: inc/admin/admin-settings-cart.php:221
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"cart page."
+msgstr ""
+"ಈ ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ ಟ್ರಸ್ಟ್ ಚಿಹ್ನೆಗಳು ಮತ್ತು ಟ್ರಸ್ಟ್ "
+"ಬ್ಯಾಡ್ಜ್‌ಗಳನ್ನು ಸೇರಿಸಲು ಬಳಸಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:50
+msgid "Checkout"
+msgstr "ಚೆಕ್ಔಟ್"
+
+#: inc/admin/admin-settings-checkout.php:71
+msgid "Layout &amp; design"
+msgstr "ವಿನ್ಯಾಸ ಮತ್ತು ವಿನ್ಯಾಸ"
+
+#: inc/admin/admin-settings-checkout.php:78
+msgid "Checkout layout"
+msgstr "ಚೆಕ್ಔಟ್ ವಿನ್ಯಾಸ"
+
+#: inc/admin/admin-settings-checkout.php:89
+msgid "Design template"
+msgstr "ವಿನ್ಯಾಸ ಟೆಂಪ್ಲೇಟ್"
+
+#: inc/admin/admin-settings-checkout.php:90
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Might also apply to other pages such as the Cart, Order Received and View "
+"Order pages."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಹಂತಗಳು, ಆರ್ಡರ್ ಸಾರಾಂಶ ಮತ್ತು ಇತರ ವಿಭಾಗಗಳಿಗೆ ಸಾಮಾನ್ಯ ಶೈಲಿಗಳು. ಕಾರ್ಟ್, "
+"ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಿದ ಮತ್ತು ವೀಕ್ಷಣೆ ಆರ್ಡರ್ ಪುಟಗಳಂತಹ ಇತರ ಪುಟಗಳಿಗೂ ಅನ್ವಯಿಸಬಹುದು."
+
+#: inc/admin/admin-settings-checkout.php:101
+msgid "Dark mode"
+msgstr "ಕತ್ತಲೆ ಮೋಡ್"
+
+#: inc/admin/admin-settings-checkout.php:102
+msgid "Enable dark mode"
+msgstr "ಡಾರ್ಕ್ ಮೋಡ್ ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:124
+msgid "Header and footer templates"
+msgstr "ಹೆಡರ್ ಮತ್ತು ಫೂಟರ್ ಟೆಂಪ್ಲೇಟ್‌ಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:125
+msgid ""
+"We recommend using the distraction free header and footer to avoid "
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಗೊಂದಲವನ್ನು ತಪ್ಪಿಸಲು ನಾವು ಅಡ್ಡಿಪಡಿಸುವಿಕೆ ಮುಕ್ತ ಹೆಡರ್ ಮತ್ತು "
+"ಅಡಿಟಿಪ್ಪಣಿಯನ್ನು ಬಳಸಲು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">ಕಾರ್ಟ್ "
+"ತ್ಯಜಿಸುವಿಕೆಯ ಕುರಿತು ಸಂಶೋಧನೆಯನ್ನು ಓದಿ</a> ."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Logo image"
+msgstr "ಲೋಗೋ ಚಿತ್ರ"
+
+#: inc/admin/admin-settings-checkout.php:139
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the distraction free header and footer."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟದ ಹೆಡರ್‌ನಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲು ಚಿತ್ರವನ್ನು ಆರಿಸಿ. ಅಡ್ಡಿಪಡಿಸುವಿಕೆ ಮುಕ್ತ "
+"ಹೆಡರ್ ಮತ್ತು ಅಡಿಟಿಪ್ಪಣಿ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:148
+msgid "Header background color"
+msgstr "ಶಿರೋಲೇಖ ಹಿನ್ನೆಲೆ ಬಣ್ಣ"
+
+#: inc/admin/admin-settings-checkout.php:149
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟದ ಹೆಡರ್‌ಗೆ ಹಿನ್ನೆಲೆ ಬಣ್ಣವನ್ನು ಆರಿಸಿ. ಅಡ್ಡಿಪಡಿಸುವಿಕೆ ಮುಕ್ತ ಹೆಡರ್ "
+"ಮತ್ತು ಅಡಿಟಿಪ್ಪಣಿ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:150, inc/admin/admin-settings-checkout.php:161, inc/admin/admin-settings-checkout.php:172, inc/admin/admin-settings-checkout.php:258
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "HTML ಬಣ್ಣದ ಮೌಲ್ಯ. ಅಂದರೆ: #f3f3f3"
+
+#: inc/admin/admin-settings-checkout.php:159
+msgid "Page background color"
+msgstr "ಪುಟದ ಹಿನ್ನೆಲೆ ಬಣ್ಣ"
+
+#: inc/admin/admin-settings-checkout.php:160
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟಕ್ಕೆ ಹಿನ್ನೆಲೆ ಬಣ್ಣವನ್ನು ಆರಿಸಿ. <em>ಮುಖ್ಯ</em> ಭಾಗಕ್ಕೆ ಬಣ್ಣವನ್ನು "
+"ಅನ್ವಯಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:170
+msgid "Footer background color"
+msgstr "ಅಡಿಟಿಪ್ಪಣಿ ಹಿನ್ನೆಲೆ ಬಣ್ಣ"
+
+#: inc/admin/admin-settings-checkout.php:171
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟದ ಅಡಿಟಿಪ್ಪಣಿಗೆ ಹಿನ್ನೆಲೆ ಬಣ್ಣವನ್ನು ಆರಿಸಿ. ಅಡ್ಡಿಪಡಿಸುವಿಕೆ ಮುಕ್ತ "
+"ಹೆಡರ್ ಮತ್ತು ಅಡಿಟಿಪ್ಪಣಿ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:188
+msgid "Checkout elements"
+msgstr "ಚೆಕ್ಔಟ್ ಅಂಶಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:195
+msgid "Progress bar"
+msgstr "ಪ್ರಗತಿ ಪಟ್ಟಿ"
+
+#: inc/admin/admin-settings-checkout.php:196
+msgid "Display the checkout progress bar when using multi-step checkout layout"
+msgstr "ಬಹು-ಹಂತದ ಚೆಕ್‌ಔಟ್ ವಿನ್ಯಾಸವನ್ನು ಬಳಸುವಾಗ ಚೆಕ್‌ಔಟ್ ಪ್ರಗತಿ ಪಟ್ಟಿಯನ್ನು ಪ್ರದರ್ಶಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:205
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr "ಸ್ಕ್ರೋಲ್ ಮಾಡುವಾಗ ಚೆಕ್ಔಟ್ ಪ್ರಗತಿ ಪಟ್ಟಿ ಗೋಚರಿಸುವಂತೆ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Express checkout"
+msgstr "ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಚೆಕ್ಔಟ್"
+
+#: inc/admin/admin-settings-checkout.php:216
+msgid "Enable the express checkout section"
+msgstr "ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಚೆಕ್‌ಔಟ್ ವಿಭಾಗವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:217
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr ""
+"ಬೆಂಬಲಿತ ಪಾವತಿ ಗೇಟ್‌ವೇಗಳು ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ ಚೆಕ್‌ಔಟ್‌ನಲ್ಲಿ "
+"ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಚೆಕ್‌ಔಟ್ ವಿಭಾಗವನ್ನು ಪ್ರದರ್ಶಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:227
+msgid "Display express checkout buttons in one line for larger screens"
+msgstr "ದೊಡ್ಡ ಪರದೆಗಳಿಗೆ ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಚೆಕ್‌ಔಟ್ ಬಟನ್‌ಗಳನ್ನು ಒಂದೇ ಸಾಲಿನಲ್ಲಿ ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:237
+msgid ""
+"Ignore additional checkout required fields when paying with a compatible "
+"express checkout payment gateway"
+msgstr ""
+"ಹೊಂದಾಣಿಕೆಯ ಎಕ್ಸ್‌ಪ್ರೆಸ್ ಚೆಕ್‌ಔಟ್ ಪಾವತಿ ಗೇಟ್‌ವೇ ಮೂಲಕ ಪಾವತಿಸುವಾಗ ಹೆಚ್ಚುವರಿ "
+"ಚೆಕ್‌ಔಟ್ ಅಗತ್ಯವಿರುವ ಕ್ಷೇತ್ರಗಳನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:249
+msgid "Make the order summary stay visible while scrolling"
+msgstr "ಸ್ಕ್ರೋಲ್ ಮಾಡುವಾಗ ಆರ್ಡರ್ ಸಾರಾಂಶವು ಗೋಚರಿಸುವಂತೆ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:257
+msgid "Choose a background color for the order summary section."
+msgstr "ಆರ್ಡರ್ ಸಾರಾಂಶ ವಿಭಾಗಕ್ಕೆ ಹಿನ್ನೆಲೆ ಬಣ್ಣವನ್ನು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:267
+msgid "Highlight the order totals row in the order summary table"
+msgstr "ಆರ್ಡರ್ ಸಾರಾಂಶ ಕೋಷ್ಟಕದಲ್ಲಿ ಆರ್ಡರ್ ಮೊತ್ತಗಳ ಸಾಲನ್ನು ಹೈಲೈಟ್ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:268
+msgid ""
+"Most useful when the order summary section does not have a highlighted "
+"background color. Might also apply to the Cart, Order Received and View "
+"Order pages when using Fluid Checkout PRO."
+msgstr ""
+"ಆರ್ಡರ್ ಸಾರಾಂಶ ವಿಭಾಗವು ಹೈಲೈಟ್ ಮಾಡಿದ ಹಿನ್ನೆಲೆ ಬಣ್ಣವನ್ನು ಹೊಂದಿಲ್ಲದಿದ್ದಾಗ "
+"ಹೆಚ್ಚು ಉಪಯುಕ್ತವಾಗಿದೆ. ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ PRO ಬಳಸುವಾಗ ಕಾರ್ಟ್, ಆರ್ಡರ್ "
+"ಸ್ವೀಕರಿಸಿದ ಮತ್ತು ವೀಕ್ಷಣೆ ಆರ್ಡರ್ ಪುಟಗಳಿಗೂ ಅನ್ವಯಿಸಬಹುದು."
+
+#: inc/admin/admin-settings-checkout.php:276
+msgid "Action link on the order summary at checkout."
+msgstr "ಚೆಕ್ಔಟ್‌ನಲ್ಲಿ ಆರ್ಡರ್ ಸಾರಾಂಶದ ಮೇಲಿನ ಕ್ರಿಯೆಯ ಲಿಂಕ್."
+
+#: inc/admin/admin-settings-checkout.php:280
+msgid "Edit cart link"
+msgstr "ಕಾರ್ಟ್ ಲಿಂಕ್ ಸಂಪಾದಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:281
+msgid "Cart items count"
+msgstr "ಕಾರ್ಟ್ ಐಟಂಗಳ ಎಣಿಕೆ"
+
+#: inc/admin/admin-settings-checkout.php:282
+msgid "Link to shop page"
+msgstr "ಅಂಗಡಿ ಪುಟಕ್ಕೆ ಲಿಂಕ್ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:289
+msgid "Cart items"
+msgstr "ಕಾರ್ಟ್ ಐಟಂಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:290
+msgid "Enable options to edit cart items on the checkout page"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಕಾರ್ಟ್ ಐಟಂಗಳನ್ನು ಸಂಪಾದಿಸಲು ಆಯ್ಕೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:291
+msgid ""
+"Allow customers to change product quantities or removing items directly at "
+"the checkout page."
+msgstr ""
+"ಗ್ರಾಹಕರು ಉತ್ಪನ್ನದ ಪ್ರಮಾಣವನ್ನು ಬದಲಾಯಿಸಲು ಅಥವಾ ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ನೇರವಾಗಿ "
+"ವಸ್ತುಗಳನ್ನು ತೆಗೆದುಹಾಕಲು ಅನುಮತಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:301
+msgid "Hide cart items errors at the checkout page"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಕಾರ್ಟ್ ಐಟಂಗಳ ದೋಷಗಳನ್ನು ಮರೆಮಾಡಿ."
+
+#: inc/admin/admin-settings-checkout.php:302
+msgid ""
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟದ ಮೇಲ್ಭಾಗದಲ್ಲಿ ಕಾರ್ಟ್ ಐಟಂಗಳ ದೋಷ ಸಂದೇಶವನ್ನು ಪ್ರದರ್ಶಿಸಬೇಡಿ. "
+"ಖರೀದಿಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್ ಅನ್ನು ಸಲ್ಲಿಸುವಾಗ, ಈ ದೋಷ ಸಂದೇಶಗಳನ್ನು "
+"ಯಾವಾಗಲೂ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:313
+msgid "Place order"
+msgstr "ಆರ್ಡರ್ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:314
+msgid "Define the position to display \"Place order\" and terms checkbox section."
+msgstr ""
+"&quot;ಆದೇಶವನ್ನು ಇರಿಸಿ&quot; ಮತ್ತು ಪದಗಳ ಚೆಕ್‌ಬಾಕ್ಸ್ ವಿಭಾಗವನ್ನು "
+"ಪ್ರದರ್ಶಿಸಬೇಕಾದ ಸ್ಥಾನವನ್ನು ವಿವರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:315
+msgid "Some options might not be compatible with some plugins and themes."
+msgstr "ಕೆಲವು ಆಯ್ಕೆಗಳು ಕೆಲವು ಪ್ಲಗಿನ್‌ಗಳು ಮತ್ತು ಥೀಮ್‌ಗಳೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗದಿರಬಹುದು."
+
+#: inc/admin/admin-settings-checkout.php:319
+msgid "Below the payment section"
+msgstr "ಪಾವತಿ ವಿಭಾಗದ ಕೆಳಗೆ"
+
+#: inc/admin/admin-settings-checkout.php:320
+msgid "Below the order summary"
+msgstr "ಆದೇಶದ ಸಾರಾಂಶದ ಕೆಳಗೆ"
+
+#: inc/admin/admin-settings-checkout.php:321
+msgid "Both below the payment section and the order summary"
+msgstr "ಪಾವತಿ ವಿಭಾಗ ಮತ್ತು ಆರ್ಡರ್ ಸಾರಾಂಶದ ಕೆಳಗೆ ಎರಡೂ"
+
+#: inc/admin/admin-settings-checkout.php:329
+msgid "Add widget areas to the checkout page"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟಕ್ಕೆ ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಸೇರಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"checkout page."
+msgstr ""
+"ಈ ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಟ್ರಸ್ಟ್ ಚಿಹ್ನೆಗಳು ಮತ್ತು ಟ್ರಸ್ಟ್ "
+"ಬ್ಯಾಡ್ಜ್‌ಗಳನ್ನು ಸೇರಿಸಲು ಬಳಸಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:339
+msgid ""
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
+msgstr ""
+"ಬಹು-ಹಂತದ ಚೆಕ್‌ಔಟ್ ವಿನ್ಯಾಸವನ್ನು ಬಳಸುವಾಗ ಮೊಬೈಲ್ ಸಾಧನಗಳಲ್ಲಿ ಕೊನೆಯ ಚೆಕ್‌ಔಟ್ "
+"ಹಂತವನ್ನು ವೀಕ್ಷಿಸುವಾಗ ಮಾತ್ರ ಚೆಕ್‌ಔಟ್ ಸೈಡ್‌ಬಾರ್ ವಿಜೆಟ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:364
+msgid "Enable integrated coupon code section"
+msgstr "ಸಂಯೋಜಿತ ಕೂಪನ್ ಕೋಡ್ ವಿಭಾಗವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:365
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr ""
+"WooCommerce ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಕೂಪನ್ ಕೋಡ್‌ಗಳ ಬಳಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದ್ದರೆ "
+"ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:374
+msgid "Display the coupon codes section title"
+msgstr "ಕೂಪನ್ ಕೋಡ್‌ಗಳ ವಿಭಾಗದ ಶೀರ್ಷಿಕೆಯನ್ನು ಪ್ರದರ್ಶಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:375
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಅಥವಾ ಕಾರ್ಟ್ ಪುಟಗಳಲ್ಲಿ ಕೂಪನ್ ಕೋಡ್ ಅನ್ನು ಪ್ರತ್ಯೇಕ ವಿಭಾಗವಾಗಿ "
+"ಪ್ರದರ್ಶಿಸಿದಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:385
+msgid ""
+"Select position where to display the coupon codes section on the checkout "
+"page."
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಕೂಪನ್ ಕೋಡ್‌ಗಳ ವಿಭಾಗವನ್ನು ಎಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕೆಂದು ಆಯ್ಕೆಮಾಡಿ."
+
+#: inc/admin/admin-settings-checkout.php:390
+msgid "Before the checkout steps"
+msgstr "ಚೆಕ್ಔಟ್ ಹಂತಗಳ ಮೊದಲು"
+
+#: inc/admin/admin-settings-checkout.php:391
+msgid "As a substep before payment methods"
+msgstr "ಪಾವತಿ ವಿಧಾನಗಳ ಮೊದಲು ಉಪಹಂತವಾಗಿ"
+
+#: inc/admin/admin-settings-checkout.php:392
+msgid "As a substep after payment methods"
+msgstr "ಪಾವತಿ ವಿಧಾನಗಳ ನಂತರದ ಉಪ ಹಂತವಾಗಿ"
+
+#: inc/admin/admin-settings-checkout.php:402
+msgid ""
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
+msgstr ""
+"&quot;ಕೂಪನ್ ಅನ್ವಯಿಸು&quot; ಬಟನ್‌ನ ಶೈಲಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ. ಚೆಕ್‌ಔಟ್ ಪುಟದಲ್ಲಿ "
+"&quot;ಚೆಕ್‌ಔಟ್ ಹಂತಗಳ ಮೊದಲು&quot; ಕೂಪನ್ ಕೋಡ್ ವಿಭಾಗವನ್ನು ಅಥವಾ ಕಾರ್ಟ್ ಪುಟದಲ್ಲಿ "
+"&quot;ಕಾರ್ಟ್ ಐಟಂಗಳ ವಿಭಾಗಕ್ಕೂ ಮೊದಲು&quot; ಪ್ರದರ್ಶಿಸಿದಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:406
+msgid "Default button style"
+msgstr "ಡೀಫಾಲ್ಟ್ ಬಟನ್ ಶೈಲಿ"
+
+#: inc/admin/admin-settings-checkout.php:407
+msgid "\"Add\" link button"
+msgstr "&quot;ಲಿಂಕ್ ಸೇರಿಸು&quot; ಬಟನ್"
+
+#: inc/admin/admin-settings-checkout.php:422, inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102, inc/compat/themes/compat-theme-zk-nito.php:87
+msgid "Checkout fields"
+msgstr "ಚೆಕ್ಔಟ್ ಕ್ಷೇತ್ರಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:429
+msgid "Optional fields"
+msgstr "ಐಚ್ಛಿಕ ಕ್ಷೇತ್ರಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:430
+msgid "Hide optional fields behind a link button"
+msgstr "ಲಿಂಕ್ ಬಟನ್‌ನ ಹಿಂದೆ ಐಚ್ಛಿಕ ಕ್ಷೇತ್ರಗಳನ್ನು ಮರೆಮಾಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:431
+msgid ""
+"It is recommended to keep this option checked to reduce the number of open "
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"ತೆರೆದ ಇನ್‌ಪುಟ್ ಕ್ಷೇತ್ರಗಳ ಸಂಖ್ಯೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಈ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಲು "
+"ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">ಸಂಶೋಧನೆಯನ್ನು ಓದಿ</a> ."
+
+#: inc/admin/admin-settings-checkout.php:440
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr "ಲಿಂಕ್ ಬಟನ್ ಹಿಂದೆ &quot;ವಿಳಾಸ ಸಾಲು 2&quot; ಕ್ಷೇತ್ರಗಳನ್ನು ಮರೆಮಾಡಬೇಡಿ."
+
+#: inc/admin/admin-settings-checkout.php:441
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr ""
+"ಹೆಚ್ಚಿನ ಗ್ರಾಹಕರಿಗೆ &quot;ವಿಳಾಸ ಸಾಲು 2&quot; ಕ್ಷೇತ್ರವು ನಿಜವಾಗಿಯೂ "
+"ಅಗತ್ಯವಿದ್ದಾಗ ಅಥವಾ ಸರಿಯಾದ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸವನ್ನು ಪಡೆಯುವುದು ನಿರ್ಣಾಯಕವಾಗಿದ್ದಾಗ "
+"(ಅಂದರೆ ಆಹಾರ ಮತ್ತು ಇತರ ಹಾಳಾಗುವ ಉತ್ಪನ್ನಗಳನ್ನು ತಲುಪಿಸುತ್ತಿದ್ದರೆ) ಮಾತ್ರ ಶಿಫಾರಸು "
+"ಮಾಡಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:451
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "&quot;ಸೇರಿಸು&quot; ಲಿಂಕ್ ಬಟನ್‌ಗಳನ್ನು ಸಣ್ಣಕ್ಷರದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:452
+msgid ""
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
+msgstr ""
+"ಐಚ್ಛಿಕ ಕ್ಷೇತ್ರದ &quot;ಸೇರಿಸು&quot; ಲಿಂಕ್ ಬಟನ್‌ನ ಲೇಬಲ್‌ಗಳನ್ನು "
+"<code>lowercase</code> ಮಾಡಿ (ಅಂದರೆ &quot;ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ಸೇರಿಸಿ&quot; "
+"ಬದಲಿಗೆ &quot;ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ಸೇರಿಸಿ&quot;). ಈ ಆಯ್ಕೆಯು ಕೂಪನ್ ಕೋಡ್ "
+"ಕ್ಷೇತ್ರಗಳಿಗಾಗಿ ಲಿಂಕ್ ಬಟನ್‌ಗಳ ಮೇಲೂ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+msgid "Billing address"
+msgstr "ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ"
+
+#: inc/admin/admin-settings-checkout.php:461
+msgid ""
+"Select position where to display the billing address section on the "
+"checkout page."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು ಎಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕು ಎಂಬುದನ್ನು "
+"ಆಯ್ಕೆಮಾಡಿ."
+
+#: inc/admin/admin-settings-checkout.php:465
+msgid "As a step before shipping"
+msgstr "ಸಾಗಣೆಗೆ ಒಂದು ಹೆಜ್ಜೆ ಮೊದಲು"
+
+#: inc/admin/admin-settings-checkout.php:466
+msgid "As a sub-step before the shipping address section"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗದ ಮೊದಲು ಉಪ-ಹಂತವಾಗಿ"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "As a sub-step after the shipping address section"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗದ ನಂತರ ಉಪ-ಹಂತವಾಗಿ"
+
+#: inc/admin/admin-settings-checkout.php:468
+msgid "As a step after shipping"
+msgstr "ಸಾಗಣೆಯ ನಂತರದ ಒಂದು ಹಂತವಾಗಿ"
+
+#: inc/admin/admin-settings-checkout.php:469
+msgid "As a sub-step before the payment section"
+msgstr "ಪಾವತಿ ವಿಭಾಗದ ಮೊದಲು ಉಪ-ಹಂತವಾಗಿ"
+
+#: inc/admin/admin-settings-checkout.php:470
+msgid "Force billing and shipping addresses to the same (single section)"
+msgstr "ಬಿಲ್ಲಿಂಗ್ ಮತ್ತು ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸಗಳನ್ನು ಒಂದೇ (ಒಂದೇ ವಿಭಾಗ) ಗೆ ಒತ್ತಾಯಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:477
+msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
+msgstr ""
+"&quot;ಶಿಪ್ಪಿಂಗ್/ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸದಂತೆಯೇ&quot; ಎಂಬ ಚೆಕ್‌ಬಾಕ್ಸ್ ಅನ್ನು ಡೀಫಾಲ್ಟ್ "
+"ಆಗಿ ಪರಿಶೀಲಿಸಲಾಗಿದೆ."
+
+#: inc/admin/admin-settings-checkout.php:478
+msgid ""
+"The checkbox \"Same as shiping address\" will start as checked by default "
+"when the shipping address section is displayed first. <br>The checkbox "
+"\"Same as billing address\" will start as checked by default when the "
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
+msgstr ""
+"ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು ಮೊದಲು ಪ್ರದರ್ಶಿಸಿದಾಗ &quot;ಶಿಪ್ಪಿಂಗ್ "
+"ವಿಳಾಸದಂತೆಯೇ&quot; ಎಂಬ ಚೆಕ್‌ಬಾಕ್ಸ್ ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಪರಿಶೀಲಿಸಿದಂತೆ "
+"ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.<br> ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು ಮೊದಲು ಪ್ರದರ್ಶಿಸಿದಾಗ "
+"&quot;ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸದಂತೆಯೇ&quot; ಚೆಕ್‌ಬಾಕ್ಸ್ ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಗುರುತಿಸಿದಂತೆ "
+"ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.<br> ಚೆಕ್ಔಟ್‌ನಲ್ಲಿ ತೆರೆದ ಇನ್‌ಪುಟ್ ಕ್ಷೇತ್ರಗಳ ಸಂಖ್ಯೆಯನ್ನು "
+"ಗಣನೀಯವಾಗಿ ಕಡಿಮೆ ಮಾಡಲು ಈ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">ಸಂಶೋಧನೆಯನ್ನು ಓದಿ</a> ."
+
+#: inc/admin/admin-settings-checkout.php:486
+msgid "Highlight the billing address section in the checkout form"
+msgstr "ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ನಲ್ಲಿ ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು ಹೈಲೈಟ್ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+msgid "Shipping address"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ"
+
+#: inc/admin/admin-settings-checkout.php:495
+msgid "Highlight the shipping address section in the checkout form"
+msgstr "ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ನಲ್ಲಿ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು ಹೈಲೈಟ್ ಮಾಡಿ."
+
+#: inc/admin/admin-settings-checkout.php:503
+msgid "Shipping methods"
+msgstr "ಸಾಗಣೆ ವಿಧಾನಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:504
+msgid "Choose in which position to display the shipping methods section."
+msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನಗಳ ವಿಭಾಗವನ್ನು ಯಾವ ಸ್ಥಾನದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕೆಂದು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:508
+msgid "Before shipping address"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸಕ್ಕೂ ಮುನ್ನ"
+
+#: inc/admin/admin-settings-checkout.php:509
+msgid "After shipping address"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ನಂತರದ ವಿಳಾಸ"
+
+#: inc/admin/admin-settings-checkout.php:516
+msgid "Prevent automatic selection of the first shipping method"
+msgstr "ಮೊದಲ ಸಾಗಣೆ ವಿಧಾನದ ಸ್ವಯಂಚಾಲಿತ ಆಯ್ಕೆಯನ್ನು ತಡೆಯಿರಿ"
+
+#: inc/admin/admin-settings-checkout.php:517
+msgid ""
+"When enabled, the first shipping method available will not be automatically "
+"selected when no other shipping method was previously selected for each "
+"shipping package. <br>This option will be automatically enabled if the "
+"option for clearing the selected shipping method is enabled for the Local "
+"Pickup feature."
+msgstr ""
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಪ್ರತಿ ಶಿಪ್ಪಿಂಗ್ ಪ್ಯಾಕೇಜ್‌ಗೆ ಈ ಹಿಂದೆ ಬೇರೆ ಯಾವುದೇ ಶಿಪ್ಪಿಂಗ್ "
+"ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡದಿದ್ದಾಗ ಲಭ್ಯವಿರುವ ಮೊದಲ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು "
+"ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆಯ್ಕೆ ಮಾಡಲಾಗುವುದಿಲ್ಲ.<br> ಸ್ಥಳೀಯ ಪಿಕಪ್ ವೈಶಿಷ್ಟ್ಯಕ್ಕಾಗಿ "
+"ಆಯ್ಕೆಮಾಡಿದ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ತೆರವುಗೊಳಿಸುವ ಆಯ್ಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದರೆ ಈ "
+"ಆಯ್ಕೆಯು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಕ್ರಿಯಗೊಳ್ಳುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:526
+msgid "Local pickup"
+msgstr "ಸ್ಥಳೀಯ ಪಿಕಪ್"
+
+#: inc/admin/admin-settings-checkout.php:527
+msgid ""
+"Removes shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು "
+"ತೆಗೆದುಹಾಕುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:528
+msgid ""
+"Replaces the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸವನ್ನು ಪಿಕಪ್ "
+"ಪಾಯಿಂಟ್ ಸ್ಥಳದೊಂದಿಗೆ ಬದಲಾಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:538
+msgid "Show option to clear shipping methods in the pickup location substep"
+msgstr "ಪಿಕಪ್ ಸ್ಥಳದ ಉಪಹಂತದಲ್ಲಿ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನಗಳನ್ನು ತೆರವುಗೊಳಿಸುವ ಆಯ್ಕೆಯನ್ನು ತೋರಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:539
+msgid ""
+"Show a link button on the pickup location substep to clear the chosen "
+"shipping methods. This can be used to allow showing the shipping address "
+"section again if a local pickup method was previously selected."
+msgstr ""
+"ಆಯ್ಕೆಮಾಡಿದ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನಗಳನ್ನು ತೆರವುಗೊಳಿಸಲು ಪಿಕಪ್ ಸ್ಥಳದ ಉಪಹಂತದಲ್ಲಿ ಲಿಂಕ್ "
+"ಬಟನ್ ಅನ್ನು ತೋರಿಸಿ. ಸ್ಥಳೀಯ ಪಿಕಪ್ ವಿಧಾನವನ್ನು ಈ ಹಿಂದೆ ಆಯ್ಕೆ ಮಾಡಿದ್ದರೆ, "
+"ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು ಮತ್ತೆ ತೋರಿಸಲು ಇದನ್ನು ಬಳಸಬಹುದು."
+
+#: inc/admin/admin-settings-checkout.php:550
+msgid ""
+"Choose which address to save as the shipping address for local pickup "
+"orders."
+msgstr ""
+"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಆರ್ಡರ್‌ಗಳಿಗಾಗಿ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸವಾಗಿ ಯಾವ ವಿಳಾಸವನ್ನು ಉಳಿಸಬೇಕೆಂದು "
+"ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:554
+msgid "Save the selected pickup location"
+msgstr "ಆಯ್ಕೆಮಾಡಿದ ಪಿಕಪ್ ಸ್ಥಳವನ್ನು ಉಳಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:555
+msgid "Save same as the billing address"
+msgstr "ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸದಂತೆಯೇ ಉಳಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:556
+msgid "Do not save any shipping address"
+msgstr "ಯಾವುದೇ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸವನ್ನು ಉಳಿಸಬೇಡಿ."
+
+#: inc/admin/admin-settings-checkout.php:564
+msgid "Company name field for shipping address"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸಕ್ಕಾಗಿ ಕಂಪನಿ ಹೆಸರಿನ ಕ್ಷೇತ್ರ"
+
+#: inc/admin/admin-settings-checkout.php:565
+msgid ""
+"Change visibility for the company name field for the shipping address "
+"section on the checkout form."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ನಲ್ಲಿ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗಕ್ಕಾಗಿ ಕಂಪನಿಯ ಹೆಸರಿನ ಕ್ಷೇತ್ರಕ್ಕೆ "
+"ಗೋಚರತೆಯನ್ನು ಬದಲಾಯಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:566
+msgid ""
+"If field is set as \"optional\", which is the default visibility state, no "
+"changes will be applied to let other plugins apply any changes they need."
+msgstr ""
+"ಕ್ಷೇತ್ರವನ್ನು &quot;ಐಚ್ಛಿಕ&quot; ಎಂದು ಹೊಂದಿಸಿದ್ದರೆ, ಅದು ಪೂರ್ವನಿಯೋಜಿತ ಗೋಚರತೆಯ "
+"ಸ್ಥಿತಿಯಾಗಿದ್ದರೆ, ಇತರ ಪ್ಲಗಿನ್‌ಗಳು ತಮಗೆ ಅಗತ್ಯವಿರುವ ಯಾವುದೇ ಬದಲಾವಣೆಗಳನ್ನು "
+"ಅನ್ವಯಿಸಲು ಯಾವುದೇ ಬದಲಾವಣೆಗಳನ್ನು ಅನ್ವಯಿಸಲಾಗುವುದಿಲ್ಲ."
+
+#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+msgid "Hidden (remove field)"
+msgstr "ಮರೆಮಾಡಲಾಗಿದೆ (ಕ್ಷೇತ್ರವನ್ನು ತೆಗೆದುಹಾಕಿ)"
+
+#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+msgid "Optional"
+msgstr "ಐಚ್ಛಿಕ"
+
+#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+msgid "Required"
+msgstr "ಅಗತ್ಯವಿದೆ"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid "Add shipping phone field to the checkout form."
+msgstr "ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ಗೆ ಶಿಪ್ಪಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು ಸೇರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:594
+msgid "Choose in which step to display the shipping phone field."
+msgstr "ಶಿಪ್ಪಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು ಯಾವ ಹಂತದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕೆಂದು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+msgid "Contact step"
+msgstr "ಸಂಪರ್ಕ ಹಂತ"
+
+#: inc/admin/admin-settings-checkout.php:606
+msgid "Billing phone"
+msgstr "ಬಿಲ್ಲಿಂಗ್ ಫೋನ್"
+
+#: inc/admin/admin-settings-checkout.php:607
+msgid "Add billing phone field to the checkout form."
+msgstr "ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ಗೆ ಬಿಲ್ಲಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು ಸೇರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid "Choose in which step to display the billing phone field."
+msgstr "ಬಿಲ್ಲಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು ಯಾವ ಹಂತದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕೆಂದು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:634
+msgid "Enable international phone number format and validation for phone fields"
+msgstr ""
+"ಫೋನ್ ಕ್ಷೇತ್ರಗಳಿಗೆ ಅಂತರರಾಷ್ಟ್ರೀಯ ಫೋನ್ ಸಂಖ್ಯೆ ಸ್ವರೂಪ ಮತ್ತು ಮೌಲ್ಯೀಕರಣವನ್ನು "
+"ಸಕ್ರಿಯಗೊಳಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:635
+msgid "Format and validate phone numbers according to each country."
+msgstr ""
+"ಪ್ರತಿಯೊಂದು ದೇಶಕ್ಕೆ ಅನುಗುಣವಾಗಿ ಫೋನ್ ಸಂಖ್ಯೆಗಳನ್ನು ಫಾರ್ಮ್ಯಾಟ್ ಮಾಡಿ ಮತ್ತು "
+"ಮೌಲ್ಯೀಕರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:645
+msgid "Enable phone number validation based on country rules"
+msgstr "ದೇಶದ ನಿಯಮಗಳ ಆಧಾರದ ಮೇಲೆ ಫೋನ್ ಸಂಖ್ಯೆಯ ಮೌಲ್ಯೀಕರಣವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:646
+msgid ""
+"When disabled, the phone field validation will not check if country or area "
+"codes are valid for the country."
+msgstr ""
+"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಫೋನ್ ಕ್ಷೇತ್ರ ಮೌಲ್ಯೀಕರಣವು ದೇಶ ಅಥವಾ ಪ್ರದೇಶ ಸಂಕೇತಗಳು "
+"ದೇಶಕ್ಕೆ ಮಾನ್ಯವಾಗಿದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸುವುದಿಲ್ಲ."
+
+#: inc/admin/admin-settings-checkout.php:656
+msgid "Only show allowed countries for shipping or billing"
+msgstr "ಸಾಗಣೆ ಅಥವಾ ಬಿಲ್ಲಿಂಗ್‌ಗೆ ಅನುಮತಿಸಲಾದ ದೇಶಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:657
+msgid ""
+"When enabled, only the countries allowed for shipping will be available in "
+"the shipping phone field, and only countries allowed for billing will be "
+"available for the billing phone field."
+msgstr ""
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಸಾಗಣೆಗೆ ಅನುಮತಿಸಲಾದ ದೇಶಗಳು ಮಾತ್ರ ಸಾಗಣೆ ಫೋನ್ ಕ್ಷೇತ್ರದಲ್ಲಿ "
+"ಲಭ್ಯವಿರುತ್ತವೆ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್‌ಗೆ ಅನುಮತಿಸಲಾದ ದೇಶಗಳು ಮಾತ್ರ ಬಿಲ್ಲಿಂಗ್ ಫೋನ್ "
+"ಕ್ಷೇತ್ರದಲ್ಲಿ ಲಭ್ಯವಿರುತ್ತವೆ."
+
+#: inc/admin/admin-settings-checkout.php:667
+msgid "Show country code beside the flag"
+msgstr "ಧ್ವಜದ ಪಕ್ಕದಲ್ಲಿ ದೇಶದ ಕೋಡ್ ತೋರಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:678
+msgid "Show an example of a valid phone number inside phone fields"
+msgstr "ಫೋನ್ ಫೀಲ್ಡ್‌ಗಳ ಒಳಗೆ ಮಾನ್ಯವಾದ ಫೋನ್ ಸಂಖ್ಯೆಯ ಉದಾಹರಣೆಯನ್ನು ತೋರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:682
+msgid "Do not change placeholders"
+msgstr "ಪ್ಲೇಸ್‌ಹೋಲ್ಡರ್‌ಗಳನ್ನು ಬದಲಾಯಿಸಬೇಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Show if not defined"
+msgstr "ವ್ಯಾಖ್ಯಾನಿಸದಿದ್ದರೆ ತೋರಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid "Always show"
+msgstr "ಯಾವಾಗಲೂ ತೋರಿಸು"
+
+#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+msgid "Order notes"
+msgstr "ಆರ್ಡರ್ ಟಿಪ್ಪಣಿಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:693
+msgid "Define the visibility of the additional order notes field."
+msgstr "ಹೆಚ್ಚುವರಿ ಆರ್ಡರ್ ಟಿಪ್ಪಣಿಗಳ ಕ್ಷೇತ್ರದ ಗೋಚರತೆಯನ್ನು ವಿವರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:705
+msgid "Gift options"
+msgstr "ಉಡುಗೊರೆ ಆಯ್ಕೆಗಳು"
+
+#: inc/admin/admin-settings-checkout.php:706
+msgid "Display gift message and other gift options at the checkout page"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಉಡುಗೊರೆ ಸಂದೇಶ ಮತ್ತು ಇತರ ಉಡುಗೊರೆ ಆಯ್ಕೆಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:707
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr ""
+"ಗ್ರಾಹಕರು ಆರ್ಡರ್‌ಗೆ ಉಡುಗೊರೆ ಸಂದೇಶ ಮತ್ತು ಇತರ ಉಡುಗೊರೆ ಸಂಬಂಧಿತ ಆಯ್ಕೆಗಳನ್ನು "
+"ಸೇರಿಸಲು ಅನುಮತಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:717
+msgid "Display the gift message fields always expanded"
+msgstr "ಉಡುಗೊರೆ ಸಂದೇಶ ಕ್ಷೇತ್ರಗಳನ್ನು ಯಾವಾಗಲೂ ವಿಸ್ತರಿಸಿ ಪ್ರದರ್ಶಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:727
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr ""
+"ಉಡುಗೊರೆ ಸಂದೇಶವನ್ನು ಪ್ರತ್ಯೇಕ ವಿಭಾಗದ ಬದಲಿಗೆ ಆರ್ಡರ್ ವಿವರಗಳ ಕೋಷ್ಟಕದ ಭಾಗವಾಗಿ "
+"ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:728
+msgid ""
+"This option affects the order confirmation page (thank you page) and order "
+"details on account pages, emails and packing slips."
+msgstr ""
+"ಈ ಆಯ್ಕೆಯು ಆರ್ಡರ್ ದೃಢೀಕರಣ ಪುಟ (ಧನ್ಯವಾದ ಪುಟ) ಮತ್ತು ಖಾತೆ ಪುಟಗಳು, ಇಮೇಲ್‌ಗಳು "
+"ಮತ್ತು ಪ್ಯಾಕಿಂಗ್ ಸ್ಲಿಪ್‌ಗಳಲ್ಲಿನ ಆರ್ಡರ್ ವಿವರಗಳ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+msgid "Account matching"
+msgstr "ಖಾತೆ ಹೊಂದಾಣಿಕೆ"
+
+#: inc/admin/admin-settings-checkout.php:754
+msgid "Enable the account matching feature"
+msgstr "ಖಾತೆ ಹೊಂದಾಣಿಕೆ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-checkout.php:755
+msgid ""
+"Associate the guest customer's orders with their existing account when an "
+"account already exists with the customer's contact details."
+msgstr ""
+"ಗ್ರಾಹಕರ ಸಂಪರ್ಕ ವಿವರಗಳೊಂದಿಗೆ ಖಾತೆ ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿರುವಾಗ ಅತಿಥಿ ಗ್ರಾಹಕರ "
+"ಆದೇಶಗಳನ್ನು ಅವರ ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಖಾತೆಯೊಂದಿಗೆ ಸಂಯೋಜಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:765
+msgid "Display message when an account exists with the email address provided"
+msgstr "ಒದಗಿಸಲಾದ ಇಮೇಲ್ ವಿಳಾಸದೊಂದಿಗೆ ಖಾತೆ ಅಸ್ತಿತ್ವದಲ್ಲಿದ್ದರೆ ಸಂದೇಶವನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:766
+msgid ""
+"Replaces the account creation fields with a notification and option to log "
+"in. In some contexts, it might be recommended to leave this option disabled "
+"to protect the privacy of customers."
+msgstr ""
+"ಖಾತೆ ರಚನೆ ಕ್ಷೇತ್ರಗಳನ್ನು ಅಧಿಸೂಚನೆ ಮತ್ತು ಲಾಗಿನ್ ಆಯ್ಕೆಯೊಂದಿಗೆ ಬದಲಾಯಿಸುತ್ತದೆ. "
+"ಕೆಲವು ಸಂದರ್ಭಗಳಲ್ಲಿ, ಗ್ರಾಹಕರ ಗೌಪ್ಯತೆಯನ್ನು ರಕ್ಷಿಸಲು ಈ ಆಯ್ಕೆಯನ್ನು "
+"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲು ಶಿಫಾರಸು ಮಾಡಬಹುದು."
+
+#: inc/admin/admin-settings-dashboard.php:49
+msgid "Dashboard"
+msgstr "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್"
+
+#: inc/admin/admin-settings-integrations.php:51
+msgid "Integrations"
+msgstr "ಸಂಯೋಜನೆಗಳು"
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
+msgstr ""
+"ಈ ವಿಭಾಗದಲ್ಲಿ ಪ್ರಸ್ತುತ ಯಾವುದೇ ಏಕೀಕರಣಗಳು ಲಭ್ಯವಿಲ್ಲ. ಪ್ರತಿಯೊಂದು ಪ್ಲಗಿನ್ ಅನ್ನು "
+"ಸಕ್ರಿಯಗೊಳಿಸಿದರೆ ಮಾತ್ರ ಆ ಪ್ಲಗಿನ್‌ಗೆ ಸಂಬಂಧಿಸಿದ ಆಯ್ಕೆಗಳು ಇಲ್ಲಿ "
+"ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."
+
+#: inc/admin/admin-settings-license-keys.php:54
+msgid "License keys"
+msgstr "ಪರವಾನಗಿ ಕೀಲಿಗಳು"
+
+#: inc/admin/admin-settings-license-keys.php:85
+msgid ""
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
+msgstr ""
+"ಈ ವಿಭಾಗದಲ್ಲಿ ಪ್ರಸ್ತುತ ಯಾವುದೇ ಪರವಾನಗಿ ಕೀಲಿಗಳ ಆಯ್ಕೆಗಳು ಲಭ್ಯವಿಲ್ಲ. ಪ್ರತಿಯೊಂದು "
+"ಪ್ಲಗಿನ್ ಅಥವಾ ಆಡ್-ಆನ್‌ಗೆ ಸಂಬಂಧಿಸಿದ ಆಯ್ಕೆಗಳು ಆ ಪ್ಲಗಿನ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ "
+"ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."
+
+#: inc/admin/admin-settings-license-keys.php:90
+msgid "Visit our website for more information about our plugins and add-ons."
+msgstr ""
+"ನಮ್ಮ ಪ್ಲಗಿನ್‌ಗಳು ಮತ್ತು ಆಡ್-ಆನ್‌ಗಳ ಕುರಿತು ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ ನಮ್ಮ "
+"ವೆಬ್‌ಸೈಟ್‌ಗೆ ಭೇಟಿ ನೀಡಿ."
+
+#: inc/admin/admin-settings-order-pay.php:71
+msgid "Order pay page"
+msgstr "ಆರ್ಡರ್ ಪಾವತಿ ಪುಟ"
+
+#: inc/admin/admin-settings-order-pay.php:78
+msgid "Order pay"
+msgstr "ಆರ್ಡರ್ ಪೇ"
+
+#: inc/admin/admin-settings-order-pay.php:79
+msgid "Enable order pay page optimizations"
+msgstr "ಆರ್ಡರ್ ಪೇ ಪುಟ ಆಪ್ಟಿಮೈಸೇಶನ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-order-pay.php:80
+msgid ""
+"Changes the layout of order pay page for existing orders pending payment "
+"from the customer."
+msgstr ""
+"ಗ್ರಾಹಕರಿಂದ ಪಾವತಿ ಬಾಕಿ ಇರುವ ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಆರ್ಡರ್‌ಗಳಿಗೆ ಆರ್ಡರ್ ಪೇ ಪುಟದ "
+"ವಿನ್ಯಾಸವನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-order-pay.php:92
+msgid "Add widget areas to the order pay page"
+msgstr "ಆರ್ಡರ್ ಪಾವತಿ ಪುಟಕ್ಕೆ ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಸೇರಿಸಿ"
+
+#: inc/admin/admin-settings-order-pay.php:93
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"order pay page."
+msgstr ""
+"ಈ ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಆರ್ಡರ್ ಪೇ ಪುಟದಲ್ಲಿ ಟ್ರಸ್ಟ್ ಚಿಹ್ನೆಗಳು ಮತ್ತು ಟ್ರಸ್ಟ್ "
+"ಬ್ಯಾಡ್ಜ್‌ಗಳನ್ನು ಸೇರಿಸಲು ಬಳಸಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-settings-order-received.php:69
+msgid "Thank you page & order details layout"
+msgstr "ಧನ್ಯವಾದಗಳು ಪುಟ &amp; ಆರ್ಡರ್ ವಿವರಗಳ ವಿನ್ಯಾಸ"
+
+#: inc/admin/admin-settings-order-received.php:76
+msgid "Order details optimizations"
+msgstr "ಆರ್ಡರ್ ವಿವರಗಳ ಆಪ್ಟಿಮೈಸೇಶನ್‌ಗಳು"
+
+#: inc/admin/admin-settings-order-received.php:77
+msgid "Enable thank you page and order details optimizations"
+msgstr "ಧನ್ಯವಾದ ಪುಟ ಮತ್ತು ಆರ್ಡರ್ ವಿವರಗಳ ಆಪ್ಟಿಮೈಸೇಶನ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-order-received.php:78
+msgid "Changes the layout of order details on the thank you page and account pages."
+msgstr "ಧನ್ಯವಾದ ಪುಟ ಮತ್ತು ಖಾತೆ ಪುಟಗಳಲ್ಲಿ ಆರ್ಡರ್ ವಿವರಗಳ ವಿನ್ಯಾಸವನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-order-received.php:89
+msgid "Enable order details customizations on email notifications"
+msgstr "ಇಮೇಲ್ ಅಧಿಸೂಚನೆಗಳಲ್ಲಿ ಆರ್ಡರ್ ವಿವರಗಳ ಕಸ್ಟಮೈಸೇಶನ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/admin/admin-settings-order-received.php:90
+msgid ""
+"Display new sections and change order of sections on email notifications. "
+"Styles of order details on email notifications remain unchanged."
+msgstr ""
+"ಇಮೇಲ್ ಅಧಿಸೂಚನೆಗಳಲ್ಲಿ ಹೊಸ ವಿಭಾಗಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ ಮತ್ತು ವಿಭಾಗಗಳ ಕ್ರಮವನ್ನು "
+"ಬದಲಾಯಿಸಿ. ಇಮೇಲ್ ಅಧಿಸೂಚನೆಗಳಲ್ಲಿನ ಆದೇಶ ವಿವರಗಳ ಶೈಲಿಗಳು ಬದಲಾಗದೆ ಉಳಿದಿವೆ."
+
+#: inc/admin/admin-settings-order-received.php:108
+msgid "Thank you page"
+msgstr "ಧನ್ಯವಾದಗಳು ಪುಟ"
+
+#: inc/admin/admin-settings-order-received.php:110
+msgid ""
+"These options affect the thank you page, also known as order received or "
+"order confirmation pages."
+msgstr ""
+"ಈ ಆಯ್ಕೆಗಳು ಧನ್ಯವಾದ ಪುಟದ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ, ಇದನ್ನು ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಿದ "
+"ಅಥವಾ ಆರ್ಡರ್ ದೃಢೀಕರಣ ಪುಟಗಳು ಎಂದೂ ಕರೆಯುತ್ತಾರೆ."
+
+#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
+msgid "Order details layout"
+msgstr "ಆರ್ಡರ್ ವಿವರಗಳ ವಿನ್ಯಾಸ"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Display the order details with wide layout on the thank you page"
+msgstr "ಧನ್ಯವಾದ ಪುಟದಲ್ಲಿ ವಿಶಾಲ ವಿನ್ಯಾಸದೊಂದಿಗೆ ಆರ್ಡರ್ ವಿವರಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/admin/admin-settings-order-received.php:126
+msgid "Add widget areas to the thank you page"
+msgstr "ಧನ್ಯವಾದ ಪುಟಕ್ಕೆ ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಸೇರಿಸಿ"
+
+#: inc/admin/admin-settings-order-received.php:127
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"thank you page."
+msgstr ""
+"ಧನ್ಯವಾದ ಪುಟದಲ್ಲಿ ಟ್ರಸ್ಟ್ ಚಿಹ್ನೆಗಳು ಮತ್ತು ಟ್ರಸ್ಟ್ ಬ್ಯಾಡ್ಜ್‌ಗಳನ್ನು ಸೇರಿಸಲು ಈ "
+"ವಿಜೆಟ್ ಪ್ರದೇಶಗಳನ್ನು ಬಳಸಲಾಗುತ್ತದೆ."
+
+#: inc/admin/admin-settings-order-received.php:145
+msgid ""
+"These options affect the thank you page , view order details on account "
+"pages and on email notifications."
+msgstr ""
+"ಈ ಆಯ್ಕೆಗಳು ಧನ್ಯವಾದ ಪುಟದ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ, ಖಾತೆ ಪುಟಗಳಲ್ಲಿ ಮತ್ತು ಇಮೇಲ್ "
+"ಅಧಿಸೂಚನೆಗಳಲ್ಲಿ ಆರ್ಡರ್ ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ."
+
+#: inc/admin/admin-settings-order-received.php:150
+msgid "Order actions"
+msgstr "ಕ್ರಮಗಳ ಆದೇಶ"
+
+#: inc/admin/admin-settings-order-received.php:151
+msgid "Choose in which position to display the order actions."
+msgstr "ಕ್ರಮ ಕ್ರಮಗಳು ಯಾವ ಸ್ಥಾನದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕೆಂದು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-order-received.php:155
+msgid "Inside the order overview"
+msgstr "ಆದೇಶದ ಒಳಗಿನ ಅವಲೋಕನ"
+
+#: inc/admin/admin-settings-order-received.php:156
+msgid "After the order overview"
+msgstr "ಆದೇಶದ ಅವಲೋಕನದ ನಂತರ"
+
+#: inc/admin/admin-settings-order-received.php:157
+msgid "After order sections"
+msgstr "ಆದೇಶದ ನಂತರದ ವಿಭಾಗಗಳು"
+
+#: inc/admin/admin-settings-order-received.php:165
+msgid "Order status"
+msgstr "ಆದೇಶ ಸ್ಥಿತಿ"
+
+#: inc/admin/admin-settings-order-received.php:166
+msgid "Display the order status progress bar"
+msgstr "ಆದೇಶ ಸ್ಥಿತಿ ಪ್ರಗತಿ ಪಟ್ಟಿಯನ್ನು ಪ್ರದರ್ಶಿಸಿ"
+
+#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+msgid "Choose in which position to display the section."
+msgstr "ವಿಭಾಗವನ್ನು ಯಾವ ಸ್ಥಾನದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬೇಕೆಂದು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-order-received.php:180
+msgid "After the order overview and payment instructions"
+msgstr "ಆರ್ಡರ್ ಅವಲೋಕನ ಮತ್ತು ಪಾವತಿ ಸೂಚನೆಗಳ ನಂತರ"
+
+#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+msgid "Before the order items section"
+msgstr "ಆರ್ಡರ್ ಐಟಂಗಳ ವಿಭಾಗದ ಮೊದಲು"
+
+#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+msgid "Inside the order items section"
+msgstr "ಆರ್ಡರ್ ಐಟಂಗಳ ವಿಭಾಗದ ಒಳಗೆ"
+
+#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+msgid "After the order items section"
+msgstr "ಆರ್ಡರ್ ಐಟಂಗಳ ವಿಭಾಗದ ನಂತರ"
+
+#: inc/admin/admin-settings-order-received.php:184
+msgid "On the sidebar"
+msgstr "ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Order downloads"
+msgstr "ಡೌನ್‌ಲೋಡ್‌ಗಳನ್ನು ಆರ್ಡರ್ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-order-received.php:207
+msgid "Gift message"
+msgstr "ಉಡುಗೊರೆ ಸಂದೇಶ"
+
+#: inc/admin/admin-settings-tools.php:51
+msgid "Tools"
+msgstr "ಪರಿಕರಗಳು"
+
+#: inc/admin/admin-settings-tools.php:84
+msgid "Troubleshooting"
+msgstr "ದೋಷನಿವಾರಣೆ"
+
+#: inc/admin/admin-settings-tools.php:91
+msgid "Debug options"
+msgstr "ಡೀಬಗ್ ಆಯ್ಕೆಗಳು"
+
+#: inc/admin/admin-settings-tools.php:92
+msgid "Debug mode"
+msgstr "ಡೀಬಗ್ ಮೋಡ್"
+
+#: inc/admin/admin-settings-tools.php:93
+msgid ""
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
+msgstr ""
+"ಡೀಬಗ್ ಮೋಡ್ ಬಳಸುವುದರಿಂದ ವೆಬ್‌ಸೈಟ್ ಕಾರ್ಯಕ್ಷಮತೆಯ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ. "
+"ದೋಷನಿವಾರಣೆ ಮಾಡುವಾಗ ಮಾತ್ರ ಈ ಆಯ್ಕೆಯನ್ನು ಬಳಸಿ."
+
+#: inc/admin/admin-settings-tools.php:102
+msgid "Load unminified assets"
+msgstr "ಮಿನಿಫೈ ಮಾಡದ ಸ್ವತ್ತುಗಳನ್ನು ಲೋಡ್ ಮಾಡಿ"
+
+#: inc/admin/admin-settings-tools.php:112
+msgid "Enhanced select fields"
+msgstr "ವರ್ಧಿತ ಆಯ್ದ ಕ್ಷೇತ್ರಗಳು"
+
+#: inc/admin/admin-settings-tools.php:113
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgstr ""
+"<code>select2</code> ಡ್ರಾಪ್‌ಡೌನ್ ಘಟಕಗಳನ್ನು <code>TomSelect</code> ನೊಂದಿಗೆ "
+"ಬದಲಾಯಿಸಿ"
+
+#: inc/admin/admin-settings-tools.php:114
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
+msgstr ""
+"TomSelect ಸರಳವಾದ ಡ್ರಾಪ್‌ಡೌನ್ ಆಯ್ಕೆ ಘಟಕವಾಗಿದ್ದು, Select2 ಗಿಂತ ದೋಷಗಳಿಗೆ ಕಡಿಮೆ "
+"ಒಳಗಾಗುತ್ತದೆ, ಆದರೆ WooCommerce ಚೆಕ್‌ಔಟ್ ಪುಟಗಳಲ್ಲಿ ವಾಸ್ತವವಾಗಿ ಬಳಸಲಾಗುವ ಅದೇ "
+"ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ನೀಡುತ್ತದೆ."
+
+#: inc/admin/admin-settings-tools.php:122
+msgid "Fix automatic zoom-in on form fields"
+msgstr "ಫಾರ್ಮ್ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಸ್ವಯಂಚಾಲಿತ ಜೂಮ್-ಇನ್ ಅನ್ನು ಸರಿಪಡಿಸಿ."
+
+#: inc/admin/admin-settings-tools.php:123
+msgid "Set <code>font-size</code> inside form fields to 16px"
+msgstr "ಫಾರ್ಮ್ ಕ್ಷೇತ್ರಗಳ ಒಳಗೆ <code>font-size</code> 16px ಗೆ ಹೊಂದಿಸಿ."
+
+#: inc/admin/admin-settings-tools.php:124
+msgid ""
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
+msgstr ""
+"ಫಾರ್ಮ್ ಕ್ಷೇತ್ರಗಳೊಳಗಿನ ಫಾಂಟ್ ಗಾತ್ರವು 16px ಗಿಂತ ಚಿಕ್ಕದಾಗಿದ್ದಾಗ, ಪಠ್ಯವನ್ನು "
+"ಸುಲಭವಾಗಿ ಓದಲು ಸಫಾರಿ ಮತ್ತು ಇತರ ಬ್ರೌಸರ್‌ಗಳು ಮೊಬೈಲ್ ಸಾಧನಗಳಲ್ಲಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ "
+"ಜೂಮ್ ಇನ್ ಮಾಡಬಹುದು. ಈ ಆಯ್ಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಫಾರ್ಮ್ ಕ್ಷೇತ್ರಗಳ ಒಳಗಿನ "
+"ಫಾಂಟ್ ಗಾತ್ರವನ್ನು ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್ ಮೂಲಕ ಆಪ್ಟಿಮೈಸ್ ಮಾಡಿದ ಪುಟಗಳಲ್ಲಿ 16px ಗೆ "
+"ಹೊಂದಿಸುತ್ತದೆ, ಇದರಿಂದಾಗಿ ಅದು ಜೂಮ್ ಇನ್ ಆಗುವುದನ್ನು ತಪ್ಪಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್ ಸಕ್ರಿಯಗೊಂಡಾಗ ಶಿಪ್ಪಿಂಗ್ ಗಮ್ಯಸ್ಥಾನವನ್ನು ಯಾವಾಗಲೂ "
+"&quot;ಗ್ರಾಹಕ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸಕ್ಕೆ ಡೀಫಾಲ್ಟ್&quot; ಎಂದು ಹೊಂದಿಸಲಾಗುತ್ತದೆ. "
+"ಚೆಕ್‌ಔಟ್ ಸಮಯದಲ್ಲಿ ಗ್ರಾಹಕರು ಇನ್ನೂ ವಿಭಿನ್ನ ಶಿಪ್ಪಿಂಗ್ ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ "
+"ವಿಳಾಸಗಳನ್ನು ಒದಗಿಸಬಹುದು, ಡೀಫಾಲ್ಟ್ ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸವನ್ನು ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸದಂತೆಯೇ "
+"ಹೊಂದಿಸುವ ಆಯ್ಕೆಯು WooCommerce &gt; ಸೆಟ್ಟಿಂಗ್‌ಗಳು &gt; ಫ್ಲೂಯಿಡ್ "
+"ಚೆಕ್‌ಔಟ್‌ನಲ್ಲಿ ಲಭ್ಯವಿದೆ."
+
+#: inc/admin/admin-tab-fluid-checkout.php:25
+msgid "Fluid Checkout"
+msgstr "ದ್ರವ ಚೆಕ್ಔಟ್"
+
+#: inc/admin/admin.php:133
+msgid "Settings"
+msgstr "ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
+
+#: inc/admin/admin.php:134
+msgid "Support"
+msgstr "ಬೆಂಬಲ"
+
+#: inc/admin/admin.php:159
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgstr ""
+"ಹೆಚ್ಚಿನ ಆಯ್ಕೆಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲು <a target=\"_blank\" href=\"%s\">PRO ಗೆ "
+"ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</a> ."
+
+#: inc/admin/admin.php:179
+msgid "(PRO)"
+msgstr "(ಪ್ರೋ)"
+
+#: inc/admin/admin.php:199
+msgid "(experimental)"
+msgstr "(ಪ್ರಾಯೋಗಿಕ)"
+
+#: inc/admin/admin.php:208
+msgid ""
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
+msgstr ""
+"ಇದು ಪ್ರಾಯೋಗಿಕ ವೈಶಿಷ್ಟ್ಯವಾಗಿದ್ದು, ಎಲ್ಲಾ ಥೀಮ್‌ಗಳು ಮತ್ತು ಪ್ಲಗಿನ್‌ಗಳೊಂದಿಗೆ "
+"ನಿರೀಕ್ಷೆಯಂತೆ ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು. ಇದನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಬಳಸಿ."
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
+msgid "Confirm"
+msgstr "ದೃಢೀಕರಿಸಿ"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
+msgid "Verify Phone Number"
+msgstr "ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ಪರಿಶೀಲಿಸಿ"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
+msgid "Please verify your phone number."
+msgstr "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ಪರಿಶೀಲಿಸಿ."
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
+msgid "The Bluehost Plugin"
+msgstr "ಬ್ಲೂಹೋಸ್ಟ್ ಪ್ಲಗಿನ್"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:81
+msgid "Custom fields"
+msgstr "ಕಸ್ಟಮ್ ಕ್ಷೇತ್ರಗಳು"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:82
+msgid "Enable custom shipping email field"
+msgstr "ಕಸ್ಟಮ್ ಶಿಪ್ಪಿಂಗ್ ಇಮೇಲ್ ಕ್ಷೇತ್ರವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
+msgid ""
+"When enabled, the shipping email field from the Bluehost plugin will be "
+"added to the checkout form."
+msgstr ""
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, Bluehost ಪ್ಲಗಿನ್‌ನಿಂದ ಶಿಪ್ಪಿಂಗ್ ಇಮೇಲ್ ಕ್ಷೇತ್ರವನ್ನು "
+"ಚೆಕ್‌ಔಟ್ ಫಾರ್ಮ್‌ಗೆ ಸೇರಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:89
+msgid "Captcha Pro by BestWebSoft"
+msgstr "ಬೆಸ್ಟ್‌ವೆಬ್‌ಸಾಫ್ಟ್‌ನಿಂದ ಕ್ಯಾಪ್ಚಾ ಪ್ರೊ"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:95
+msgid "Captcha position"
+msgstr "ಕ್ಯಾಪ್ಚಾ ಸ್ಥಾನ"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:96
+msgid ""
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
+msgstr ""
+"ಕ್ಯಾಪ್ಚಾ ವಿಭಾಗವನ್ನು ಪ್ರದರ್ಶಿಸಲು ಸ್ಥಾನವನ್ನು ವಿವರಿಸಿ. ಆಯ್ಕೆ ಮಾಡಿದ ಕ್ಯಾಪ್ಚಾ "
+"ಪ್ರಕಾರವನ್ನು ಅವಲಂಬಿಸಿ ಕೆಲವು ಸ್ಥಾನಗಳು ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು."
+
+#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+msgid "Selecting a pickup point is required before proceeding."
+msgstr "ಮುಂದುವರಿಯುವ ಮೊದಲು ಪಿಕಪ್ ಪಾಯಿಂಟ್ ಆಯ್ಕೆ ಮಾಡುವ ಅಗತ್ಯವಿದೆ."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:234
+msgid "Pickup point"
+msgstr "ಪಿಕಪ್ ಪಾಯಿಂಟ್"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307, inc/compat/plugins/compat-plugin-seur.php:386, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
+msgid "Pickup point not selected yet."
+msgstr "ಪಿಕಪ್ ಪಾಯಿಂಟ್ ಇನ್ನೂ ಆಯ್ಕೆಯಾಗಿಲ್ಲ."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312, inc/compat/plugins/compat-plugin-seur.php:391, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
+msgid "Pickup point:"
+msgstr "ಪಿಕಪ್ ಪಾಯಿಂಟ್:"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+msgid "Mailchimp for WooCommerce"
+msgstr "WooCommerce ಗಾಗಿ ಮೇಲ್‌ಚಿಂಪ್"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
+msgid "Subscribe checkbox"
+msgstr "ಚಂದಾದಾರರಾಗಿ ಚೆಕ್‌ಬಾಕ್ಸ್"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:87
+msgid ""
+"Override the position for the subscribe checkbox on the checkout page and "
+"always display it on the contact step"
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಚಂದಾದಾರಿಕೆ ಚೆಕ್‌ಬಾಕ್ಸ್‌ಗಾಗಿ ಸ್ಥಾನವನ್ನು ಓವರ್‌ರೈಡ್ ಮಾಡಿ "
+"ಮತ್ತು ಅದನ್ನು ಯಾವಾಗಲೂ ಸಂಪರ್ಕ ಹಂತದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+msgid "Before Shipping Address"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ಮೊದಲು ವಿಳಾಸ"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87, inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "(originally \"%s\")"
+msgstr "(ಮೂಲತಃ &quot;%s&quot;)"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "After Shipping Address"
+msgstr "ಶಿಪ್ಪಿಂಗ್ ನಂತರದ ವಿಳಾಸ"
+
+#: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
+msgid "Selecting a collection point is required when shipping with FermoPoint."
+msgstr "ಫೆರ್ಮೊಪಾಯಿಂಟ್‌ನೊಂದಿಗೆ ಸಾಗಿಸುವಾಗ ಸಂಗ್ರಹಣಾ ಸ್ಥಳವನ್ನು ಆಯ್ಕೆ ಮಾಡುವ ಅಗತ್ಯವಿದೆ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:189
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"ಪರಿಶೀಲಿಸಿದರೆ ಬಳಕೆದಾರರಿಗೆ ಇಮೇಲ್‌ನಲ್ಲಿ ಟೈಪೊಗಳನ್ನು ತಿಳಿಸುತ್ತದೆ. (ಫ್ಲೂಯಿಡ್ "
+"ಚೆಕ್ಔಟ್ ವೈಶಿಷ್ಟ್ಯವನ್ನು ನೀಡುತ್ತಿರುವುದರಿಂದ ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು "
+"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ. ಈ ಆಯ್ಕೆಗೆ ಬದಲಾವಣೆಗಳು ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "ಮೇಲ್ ಪರಿಶೀಲನೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ: (ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾದ ವೈಶಿಷ್ಟ್ಯ)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
+msgid "Carrier:"
+msgstr "ವಾಹಕ:"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:167
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "ಸೆಂಡಿನ್‌ಬ್ಲೂ - WooCommerce ಇಮೇಲ್ ಮಾರ್ಕೆಟಿಂಗ್"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
+msgid "Sign up checkbox position"
+msgstr "ಸೈನ್ ಅಪ್ ಚೆಕ್‌ಬಾಕ್ಸ್ ಸ್ಥಾನ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
+msgid "Move the sign up checkbox to the contact step"
+msgstr "ಸೈನ್ ಅಪ್ ಚೆಕ್‌ಬಾಕ್ಸ್ ಅನ್ನು ಸಂಪರ್ಕ ಹಂತಕ್ಕೆ ಸರಿಸಿ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
+msgid ""
+"When enabled, the checkbox will be moved to the contact step independently "
+"of the display location defined in the Sendinblue plugin settings."
+msgstr ""
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಸೆಂಡಿನ್‌ಬ್ಲೂ ಪ್ಲಗಿನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ವ್ಯಾಖ್ಯಾನಿಸಲಾದ "
+"ಪ್ರದರ್ಶನ ಸ್ಥಳವನ್ನು ಲೆಕ್ಕಿಸದೆ ಚೆಕ್‌ಬಾಕ್ಸ್ ಅನ್ನು ಸಂಪರ್ಕ ಹಂತಕ್ಕೆ ಸರಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/compat/themes/compat-theme-betheme.php:172
+msgid "Theme Betheme"
+msgstr "ಥೀಮ್ ಬೆಥೆಮ್"
+
+#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:202, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+msgid "Checkout progress"
+msgstr "ಚೆಕ್ಔಟ್ ಪ್ರಗತಿ"
+
+#: inc/compat/themes/compat-theme-betheme.php:179
+msgid ""
+"Output the checkout steps section from Betheme on the checkout, cart and "
+"order received pages."
+msgstr ""
+"ಚೆಕ್ಔಟ್, ಕಾರ್ಟ್ ಮತ್ತು ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಿದ ಪುಟಗಳಲ್ಲಿ ಬೆಥೆಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ "
+"ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "ಥೀಮ್ ಫೆನಿಕ್"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "ಬ್ರೆಡ್ ತುಂಡುಗಳು"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಹೆಡರ್ ಮತ್ತು ಫೂಟರ್ ಬಳಸುವಾಗ ಫೆನ್ನಿಕ್ ಥೀಮ್‌ನಿಂದ "
+"ಬ್ರೆಡ್‌ಕ್ರಂಬ್ಸ್ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/compat/themes/compat-theme-go.php:53
+msgid "Theme Go"
+msgstr "ಥೀಮ್ ಗೋ"
+
+#: inc/compat/themes/compat-theme-go.php:59
+msgid "My account layout"
+msgstr "ನನ್ನ ಖಾತೆ ವಿನ್ಯಾಸ"
+
+#: inc/compat/themes/compat-theme-go.php:60
+msgid "Enable wide layout on \"My account\" page."
+msgstr "&quot;ನನ್ನ ಖಾತೆ&quot; ಪುಟದಲ್ಲಿ ವಿಶಾಲ ವಿನ್ಯಾಸವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ."
+
+#: inc/compat/themes/compat-theme-Impreza.php:93
+msgid "Theme Impreza"
+msgstr "ಥೀಮ್ ಇಂಪ್ರೆಜಾ"
+
+#: inc/compat/themes/compat-theme-Impreza.php:99
+msgid "Header"
+msgstr "ಶಿರೋಲೇಖ"
+
+#: inc/compat/themes/compat-theme-Impreza.php:100
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಸೈಟ್ ಹೆಡರ್‌ಗಾಗಿ ಅಂತರ (ಪಿಕ್ಸೆಲ್‌ಗಳಲ್ಲಿ)"
+
+#: inc/compat/themes/compat-theme-Impreza.php:101
+msgid "Only applicable when using the Impreza theme header at the checkout page."
+msgstr "ಚೆಕ್ಔಟ್ ಪುಟದಲ್ಲಿ ಇಂಪ್ರೆಜಾ ಥೀಮ್ ಹೆಡರ್ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/compat/themes/compat-theme-kapee.php:123
+msgid "Theme Kapee"
+msgstr "ಥೀಮ್ ಕಪೀ"
+
+#: inc/compat/themes/compat-theme-kapee.php:130
+msgid ""
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"ಚೆಕ್ಔಟ್, ಕಾರ್ಟ್ ಮತ್ತು ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಿದ ಪುಟಗಳಲ್ಲಿ ಕಪೀ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ "
+"ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/compat/themes/compat-theme-porto.php:196
+msgid "Theme Porto"
+msgstr "ಥೀಮ್ ಪೋರ್ಟೊ"
+
+#: inc/compat/themes/compat-theme-porto.php:203
+msgid ""
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"ಚೆಕ್ಔಟ್, ಕಾರ್ಟ್ ಮತ್ತು ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಿದ ಪುಟಗಳಲ್ಲಿ ಪೋರ್ಟೊ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ "
+"ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/compat/themes/compat-theme-pressmart.php:180
+msgid "Theme Pressmart"
+msgstr "ಥೀಮ್ ಪ್ರೆಸ್‌ಮಾರ್ಟ್"
+
+#: inc/compat/themes/compat-theme-pressmart.php:187
+msgid ""
+"Output the checkout steps section from the Pressmart theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"ಚೆಕ್ಔಟ್, ಕಾರ್ಟ್ ಮತ್ತು ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಿದ ಪುಟಗಳಲ್ಲಿ ಪ್ರೆಸ್‌ಮಾರ್ಟ್ ಥೀಮ್‌ನಿಂದ "
+"ಚೆಕ್ಔಟ್ ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/compat/themes/compat-theme-thegem.php:158
+msgid "Theme The Gem"
+msgstr "ಥೀಮ್ ದಿ ಜೆಮ್"
+
+#: inc/compat/themes/compat-theme-thegem.php:165
+msgid ""
+"Output the checkout steps section from The Gem theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಹೆಡರ್ ಮತ್ತು ಫೂಟರ್ ಬಳಸುವಾಗ ದಿ ಜೆಮ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ "
+"ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/compat/themes/compat-theme-woodmart.php:152
+msgid "Theme Woodmart"
+msgstr "ಥೀಮ್ ವುಡ್‌ಮಾರ್ಟ್"
+
+#: inc/compat/themes/compat-theme-woodmart.php:159
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಹೆಡರ್ ಮತ್ತು ಫೂಟರ್ ಬಳಸುವಾಗ ವುಡ್‌ಮಾರ್ಟ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ "
+"ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/compat/themes/compat-theme-woodmart.php:167
+msgid "Checkout options"
+msgstr "ಚೆಕ್ಔಟ್ ಆಯ್ಕೆಗಳು"
+
+#: inc/compat/themes/compat-theme-woodmart.php:168
+msgid "Disable the theme checkout options"
+msgstr "ಥೀಮ್ ಚೆಕ್ಔಟ್ ಆಯ್ಕೆಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"
+
+#: inc/compat/themes/compat-theme-woodmart.php:169
+msgid ""
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
+msgstr ""
+"ಥೀಮ್‌ನಿಂದ ಸೇರಿಸಲಾದ ಉತ್ಪನ್ನ ಚಿತ್ರ, ಪ್ರಮಾಣ ಕ್ಷೇತ್ರ, ತೆಗೆದುಹಾಕು ಬಟನ್ ಮತ್ತು "
+"ಉತ್ಪನ್ನ ಪುಟಕ್ಕೆ ಲಿಂಕ್ ಆಯ್ಕೆಗಳನ್ನು ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗುತ್ತದೆ."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
+msgid "Theme Atomion"
+msgstr "ಥೀಮ್ ಆಟಮಿಯಾನ್"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:93
+msgid "Order progress"
+msgstr "ಆದೇಶ ಪ್ರಗತಿ"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
+msgid "Display order progress from the theme"
+msgstr "ಥೀಮ್‌ನಿಂದ ಆದೇಶದ ಪ್ರಗತಿಯನ್ನು ಪ್ರದರ್ಶಿಸಿ"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103, inc/compat/themes/compat-theme-zk-nito.php:88
+msgid "Display the form field labels visible on the page"
+msgstr "ಪುಟದಲ್ಲಿ ಗೋಚರಿಸುವ ಫಾರ್ಮ್ ಫೀಲ್ಡ್ ಲೇಬಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
+msgid "It is recommended to keep this option enabled for a better user experience."
+msgstr "ಉತ್ತಮ ಬಳಕೆದಾರ ಅನುಭವಕ್ಕಾಗಿ ಈ ಆಯ್ಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ."
+
+#: inc/compat/themes/compat-theme-zk-nito.php:81
+msgid "Theme ZK Nito"
+msgstr "ಥೀಮ್ ZK ನಿಟೊ"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:96
+msgid "Add extra fields to the checkout form"
+msgstr "ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ಗೆ ಹೆಚ್ಚುವರಿ ಕ್ಷೇತ್ರಗಳನ್ನು ಸೇರಿಸಿ."
+
+#: inc/compat/themes/compat-theme-zk-nito.php:97
+msgid ""
+"Adds an extra shipping email and shipping phone field to the shipping "
+"address section."
+msgstr ""
+"ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗಕ್ಕೆ ಹೆಚ್ಚುವರಿ ಶಿಪ್ಪಿಂಗ್ ಇಮೇಲ್ ಮತ್ತು ಶಿಪ್ಪಿಂಗ್ ಫೋನ್ "
+"ಕ್ಷೇತ್ರವನ್ನು ಸೇರಿಸುತ್ತದೆ."
+
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
+msgid "Go to the home page"
+msgstr "ಮುಖಪುಟಕ್ಕೆ ಹೋಗಿ"
+
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54, templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
+msgid "Skip to content"
+msgstr "ವಿಷಯಕ್ಕೆ ಹೋಗಿ"
+
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:37
+msgid "Create an account"
+msgstr "ಖಾತೆಯನ್ನು ತೆರೆಯಿರಿ"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
+msgid "Log in to your account"
+msgstr "ನಿಮ್ಮ ಖಾತೆಗೆ ಲಾಗಿನ್ ಆಗಿ"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+msgid "Already have an account?"
+msgstr "ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ?"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
+msgstr "%1$s ಆಗಿ ಲಾಗಿನ್ ಆಗಿದ್ದೀರಿ. <a href=\"%2$s\">ಲಾಗ್ ಔಟ್ ಮಾಡಿ</a>"
+
+#: templates/fc/checkout-steps/checkout/payment.php:48
+msgid "Your order has a total amount due of %s. No further payment is needed."
+msgstr "ನಿಮ್ಮ ಆದೇಶದ ಒಟ್ಟು ಮೊತ್ತ %s ಬಾಕಿ ಇದೆ. ಯಾವುದೇ ಹೆಚ್ಚಿನ ಪಾವತಿ ಅಗತ್ಯವಿಲ್ಲ."
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Close and continue with checkout"
+msgstr "ಮುಚ್ಚಿ ಮತ್ತು ಚೆಕ್ಔಟ್ ಮುಂದುವರಿಸಿ"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Continue"
+msgstr "ಮುಂದುವರಿಸಿ"
+
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+msgid "Parcel terminal"
+msgstr "ಪಾರ್ಸೆಲ್ ಟರ್ಮಿನಲ್"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>ಈ ವಿಜೆಟ್ ಅನ್ನು ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ನಿಂದ ಬದಲಾಯಿಸಲಾಗಿದೆ.</p><p> ಫ್ಲೂಯಿಡ್ "
+"ಚೆಕ್‌ಔಟ್ ಬಳಸುವಾಗ, ಚೆಕ್‌ಔಟ್ ಪುಟವು ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡಲು ಮೂಲ WooCommerce "
+"ಶಾರ್ಟ್‌ಕೋಡ್ <code>[woocommerce_checkout]</code> ಅನ್ನು "
+"ಬಳಸಬೇಕಾಗುತ್ತದೆ.</p><p> ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ, ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ದಸ್ತಾವೇಜನ್ನು "
+"ಭೇಟಿ ಮಾಡಿ.</p>"
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "ಅನ್ವಯಿಸು"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "ಸಂಪರ್ಕಿಸಿ"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "ಶಿಪ್ಪಿಂಗ್"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "ಬಿಲ್ಲಿಂಗ್"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "ಪಾವತಿ"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "ಬದಲಾವಣೆ"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "ಯಾವುದೂ ಇಲ್ಲ."
+
+#: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "ಯಾವುದೇ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ."
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "ಕಾರ್ಟ್"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "ಆರ್ಡರ್ ಪೇ"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "ಧನ್ಯವಾದಗಳು"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "ಸಂಯೋಜನೆಗಳು"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "ಪರವಾನಗಿ ಕೀಲಿಗಳು"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "ಆರ್ಡರ್ ಮಾಡುವ ಮೊದಲು ವಿಭಾಗ"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "ಆರ್ಡರ್ ಮಾಡುವ ಮೊದಲು ಬಟನ್"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "ಮುಚ್ಚಿ"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "ಲಾಗ್ ಇನ್"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "ಅಥವಾ ಕೆಳಗೆ ಮುಂದುವರಿಸಿ"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "ಅಥವಾ ಅತಿಥಿಯಾಗಿ ಮುಂದುವರಿಯಿರಿ"
