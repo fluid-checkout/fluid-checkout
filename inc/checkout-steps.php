@@ -179,8 +179,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Formatted address
 		add_filter( 'woocommerce_localisation_address_formats', array( $this, 'maybe_add_phone_localisation_address_formats' ), 10 );
-		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
+		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
 		add_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100, 1 );
 
 		// Place order
@@ -513,8 +513,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Formatted Address
 		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'maybe_add_phone_localisation_address_formats' ), 10 );
 		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
-		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10);
 		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10 );
+		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10);
 		remove_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100);
 
 		// Place order
@@ -3608,7 +3608,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$custom_field_keys = $this->get_formatted_address_replacements_custom_field_keys();
 
 		// Iterate custom field keys
-		foreach( $custom_field_keys as $field_key ) {
+		foreach ( $custom_field_keys as $field_key ) {
 			// Get field key removing the field group prefixes
 			$key = str_replace( 'shipping_', '', $field_key );
 			$key = str_replace( 'billing_', '', $key );
@@ -3657,7 +3657,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Set field value to the address data
 			$field_value = WC()->checkout->get_value( $field_key );
-			$address_data[ $address_field_key ] = null !== $field_value ? WC()->checkout->get_value( $field_key ) : '';
+			$field_display_value = $this->get_field_display_value( $field_value, $field_key, $fields[ $field_key ] );
+			$address_data[ $address_field_key ] = null !== $field_display_value ? $field_display_value : '';
 		}
 
 		// Filter address data

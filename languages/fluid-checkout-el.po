@@ -9,10 +9,10 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.7.1; wp-6.7.2"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
 
 #: inc/admin/admin-settings-checkout.php:407
 msgid "\"Add\" link button"
@@ -51,8 +51,8 @@ msgstr "αξία 226 EUR (Εξοικονομήστε 42%)"
 #: inc/admin/admin-setting-type-fc-license-key.php:165
 #, php-format
 msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and continue "
-"to receive updates and support."
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
 msgstr ""
 "<a href=\"%s\" target=\"_blank\">Αγοράστε ένα νέο κλειδί άδειας χρήσης</a> "
 "και συνεχίστε να λαμβάνετε ενημερώσεις και υποστήριξη."
@@ -64,9 +64,9 @@ msgid ""
 "your account</a> to get your license key, or <a href=\"%s\" "
 "target=\"_blank\">purchase a new license key</a>."
 msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Είσοδος στο "
-"λογαριασμό σας</a> για να λάβετε το κλειδί άδειας χρήσης ή <a href=\"%s\" "
-"target=\"_blank\">αγοράστε ένα νέο κλειδί άδειας χρήσης</a>."
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Είσοδος "
+"στο λογαριασμό σας</a> για να λάβετε το κλειδί άδειας χρήσης ή <a "
+"href=\"%s\" target=\"_blank\">αγοράστε ένα νέο κλειδί άδειας χρήσης</a>."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:160
 msgid ""
@@ -80,8 +80,7 @@ msgstr ""
 
 #: inc/admin/admin.php:159
 #, php-format
-msgid ""
-"<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 "<a target=\"_blank\" href=\"%s\">Αναβαθμίστε σε PRO</a> για να ξεκλειδώσετε "
 "περισσότερες επιλογές."
@@ -101,10 +100,10 @@ msgstr ""
 "Divi Builder για να προσαρμόσετε την εμφάνιση και την αίσθηση της σελίδας "
 "πληρωμής, οι κλασικοί σύντομοι κωδικοί αντικαθίστανται με προσαρμοσμένα "
 "widgets από το Divi Builder για κάθε μέρος της σελίδας πληρωμής. Αυτά τα "
-"προσαρμοσμένα widgets δεν είναι συμβατά με το Fluid Checkout.</p><p>"
-"Παρακαλούμε επεξεργαστείτε τη σελίδα πληρωμής σας αντικαθιστώντας τα widgets "
-"του Divi Builder με ένα widget κειμένου που περιέχει τον σύντομο κώδικα "
-"<code>[woocommerce_checkout]</code>.</p>"
+"προσαρμοσμένα widgets δεν είναι συμβατά με το Fluid "
+"Checkout.</p><p>Παρακαλούμε επεξεργαστείτε τη σελίδα πληρωμής σας "
+"αντικαθιστώντας τα widgets του Divi Builder με ένα widget κειμένου που "
+"περιέχει τον σύντομο κώδικα <code>[woocommerce_checkout]</code>.</p>"
 
 #: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
 msgid ""
@@ -115,9 +114,10 @@ msgid ""
 msgstr ""
 "<p>Αυτό το widget έχει αντικατασταθεί από το Fluid Checkout. </p><p>Όταν "
 "χρησιμοποιείτε το Fluid Checkout, η σελίδα πληρωμής πρέπει να χρησιμοποιεί "
-"τον αρχικό σύντομο κώδικα του WooCommerce <code>[woocommerce_checkout]</code>"
-" για να λειτουργεί σωστά.</p><p>Για περισσότερες πληροφορίες, επισκεφθείτε "
-"την τεκμηρίωση του Fluid Checkout.</p>"
+"τον αρχικό σύντομο κώδικα του WooCommerce "
+"<code>[woocommerce_checkout]</code> για να λειτουργεί σωστά.</p><p>Για "
+"περισσότερες πληροφορίες, επισκεφθείτε την τεκμηρίωση του Fluid "
+"Checkout.</p>"
 
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
 msgid ""
@@ -163,8 +163,8 @@ msgstr "Ενεργοποίηση %s"
 msgid "Activated"
 msgstr "Ενεργοποιημένο"
 
-#. %s: Form field label
 #: inc/checkout-coupon-codes.php:311 inc/checkout-hide-optional-fields.php:138
+#. %s: Form field label
 #, php-format
 msgid "Add %s"
 msgstr "Προσθήκη %s"
@@ -295,9 +295,9 @@ msgid ""
 "our website, the offers shown on the website superseed these and will be "
 "applied."
 msgstr ""
-"Όλες οι τιμές εμφανίζονται σε EUR. Εάν υπάρχουν αποκλίσεις με τις τιμές στην "
-"ιστοσελίδα μας, οι προσφορές που εμφανίζονται στην ιστοσελίδα υπερισχύουν "
-"αυτών και θα εφαρμοστούν."
+"Όλες οι τιμές εμφανίζονται σε EUR. Εάν υπάρχουν αποκλίσεις με τις τιμές "
+"στην ιστοσελίδα μας, οι προσφορές που εμφανίζονται στην ιστοσελίδα "
+"υπερισχύουν αυτών και θα εφαρμοστούν."
 
 #: inc/admin/admin-setting-type-fc-addons.php:81
 #: inc/admin/admin-setting-type-fc-addons.php:128
@@ -375,8 +375,9 @@ msgstr ""
 
 #: inc/admin/admin-setting-type-fc-addons.php:172
 msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the <strong>correct "
-"address information</strong> from the first time they buy with you."
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
 msgstr ""
 "Αποφύγετε καθυστερήσεις παράδοσης και δυσαρεστημένους πελάτες. Συλλέξτε τις "
 "<strong>σωστές πληροφορίες διεύθυνσης</strong> από την πρώτη φορά που "
@@ -443,32 +444,9 @@ msgstr "Τηλέφωνο χρέωσης"
 msgid "Billing to"
 msgstr "Χρέωση σε"
 
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block description"
-msgid ""
-"Display a checkout form so your customers can submit orders. (Replaced for "
-"compatibility with Fluid Checkout)"
-msgstr ""
-"Εμφανίστε μια φόρμα πληρωμής ώστε οι πελάτες σας να μπορούν να υποβάλλουν "
-"παραγγελίες. (Αντικαταστάθηκε για λόγους συμβατότητας με το Fluid Checkout)"
-
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block keyword"
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block title"
-msgid "Checkout"
-msgstr "Ταμείο"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
-msgstr ""
-"Τόσο κάτω από το τμήμα πληρωμής όσο και κάτω από τη σύνοψη της παραγγελίας"
+msgstr "Τόσο κάτω από το τμήμα πληρωμής όσο και κάτω από τη σύνοψη της παραγγελίας"
 
 #: inc/design-templates.php:116
 msgid "Boxed"
@@ -478,24 +456,9 @@ msgstr "Κουτί"
 msgid "Breadcrumbs"
 msgstr "Ψίχουλα ψωμιού"
 
-#: inc/checkout-coupon-codes.php:275
-msgctxt "Button label for applying coupon codes"
-msgid "Apply"
-msgstr "Εφαρμογή"
-
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:95
 msgid "Captcha position"
 msgstr "Θέση Captcha"
-
-#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
-msgctxt "Captcha position"
-msgid "Before place order button"
-msgstr "Πριν από το κουμπί παραγγελίας"
-
-#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
-msgctxt "Captcha position"
-msgid "Before place order section"
-msgstr "Πριν από το τμήμα παραγγελίας"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:89
 msgid "Captcha Pro by BestWebSoft"
@@ -547,8 +510,7 @@ msgid "Change: %s"
 msgstr "Αλλαγή: %s"
 
 #: inc/admin/admin-settings-order-received.php:78
-msgid ""
-"Changes the layout of order details on the thank you page and account pages."
+msgid "Changes the layout of order details on the thank you page and account pages."
 msgstr ""
 "Αλλάζει τη διάταξη των στοιχείων της παραγγελίας στη σελίδα ευχαριστιών και "
 "στις σελίδες λογαριασμού."
@@ -632,36 +594,6 @@ msgstr "Πρόοδος πληρωμής"
 msgid "Checkout Sidebar"
 msgstr "Πλαϊνή μπάρα πληρωμής"
 
-#: inc/checkout-steps.php:2235
-msgctxt "Checkout step title"
-msgid "Billing"
-msgstr "Τιμολόγηση"
-
-#: inc/checkout-steps.php:2214
-msgctxt "Checkout step title"
-msgid "Contact"
-msgstr "Επικοινωνία"
-
-#: inc/checkout-steps.php:2244
-msgctxt "Checkout step title"
-msgid "Payment"
-msgstr "Πληρωμή"
-
-#: inc/checkout-steps.php:2223
-msgctxt "Checkout step title"
-msgid "Shipping"
-msgstr "Αποστολή"
-
-#: inc/checkout-steps.php:2825
-msgctxt "Checkout substep change link label"
-msgid "Change"
-msgstr "Αλλαγή"
-
-#: inc/checkout-steps.php:2826
-msgctxt "Checkout substep save link label"
-msgid "Save changes"
-msgstr "Αποθήκευση αλλαγών"
-
 #: inc/admin/admin-settings-checkout.php:171
 #| msgid ""
 #| "Choose a background color for the checkout page footer. Only applies when "
@@ -670,9 +602,9 @@ msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
 "using the distraction free header and footer."
 msgstr ""
-"Επιλέξτε ένα χρώμα φόντου για το υποσέλιδο της σελίδας πληρωμής. Ισχύει μόνο "
-"όταν χρησιμοποιείτε την επικεφαλίδα και το υποσέλιδο που δεν αποσπούν την "
-"προσοχή."
+"Επιλέξτε ένα χρώμα φόντου για το υποσέλιδο της σελίδας πληρωμής. Ισχύει "
+"μόνο όταν χρησιμοποιείτε την επικεφαλίδα και το υποσέλιδο που δεν αποσπούν "
+"την προσοχή."
 
 #: inc/admin/admin-settings-checkout.php:149
 msgid ""
@@ -685,8 +617,8 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:160
 msgid ""
-"Choose a background color for the checkout page. Color is applied to the <em>"
-"body</em> element."
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
 msgstr ""
 "Επιλέξτε ένα χρώμα φόντου για τη σελίδα πληρωμής. Το χρώμα εφαρμόζεται στο "
 "στοιχείο <em>body</em>."
@@ -732,7 +664,8 @@ msgstr "Επιλέξτε σε ποιο βήμα θα εμφανιστεί το �
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
-"Choose which address to save as the shipping address for local pickup orders."
+"Choose which address to save as the shipping address for local pickup "
+"orders."
 msgstr ""
 "Επιλέξτε ποια διεύθυνση θα αποθηκεύσετε ως διεύθυνση αποστολής για τις "
 "παραγγελίες τοπικής παραλαβής."
@@ -748,11 +681,6 @@ msgstr "Κάντε κλικ για να μεταβείτε στη σύνοψη �
 #: templates/fc/checkout-steps/checkout/review-order-section.php:59
 msgid "Close and continue with checkout"
 msgstr "Κλείστε και συνεχίστε με το checkout"
-
-#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
-msgctxt "Close button aria-label"
-msgid "Close"
-msgstr "Κλείστε το"
 
 #: inc/admin/admin-setting-type-fc-addons.php:216
 msgid ""
@@ -830,19 +758,18 @@ msgid "Default button style"
 msgstr "Προεπιλεγμένο στυλ κουμπιού"
 
 #: inc/admin/admin-settings-checkout.php:314
-msgid ""
-"Define the position to display \"Place order\" and terms checkbox section."
+msgid "Define the position to display \"Place order\" and terms checkbox section."
 msgstr ""
 "Καθορίστε τη θέση εμφάνισης του τμήματος \"Τοποθετήστε παραγγελία\" και των "
 "όρων checkbox."
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:96
 msgid ""
-"Define the position to display the captcha section. Some positions might not "
-"work depending on the captcha type chosen."
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
 msgstr ""
-"Καθορίστε τη θέση εμφάνισης του τμήματος captcha. Ορισμένες θέσεις ενδέχεται "
-"να μην λειτουργούν ανάλογα με τον επιλεγμένο τύπο captcha."
+"Καθορίστε τη θέση εμφάνισης του τμήματος captcha. Ορισμένες θέσεις "
+"ενδέχεται να μην λειτουργούν ανάλογα με τον επιλεγμένο τύπο captcha."
 
 #: inc/admin/admin-settings-checkout.php:693
 msgid "Define the visibility of the additional order notes field."
@@ -855,14 +782,14 @@ msgstr "Πρότυπο σχεδιασμού"
 #: inc/admin/admin-setting-type-fc-addons.php:51
 #: inc/admin/admin-setting-type-fc-addons.php:147
 msgid ""
-"Design templates, optimized cart and order received pages, account matching, "
-"and much more."
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
 msgstr ""
 "Πρότυπα σχεδιασμού, βελτιστοποιημένο καλάθι και σελίδες λήψης παραγγελιών, "
 "αντιστοίχιση λογαριασμών και πολλά άλλα."
 
-#. %s: html for the email address typo correction suggestion link
 #: inc/checkout-validation.php:197
+#. %s: html for the email address typo correction suggestion link
 #, php-format
 msgid "Did you mean %s?"
 msgstr "Εννοούσατε %s"
@@ -881,17 +808,16 @@ msgstr "Εμφάνιση ως τμήμα καλαθιού"
 
 #: inc/admin/admin-settings-checkout.php:339
 msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step on "
-"mobile devices when using multi-step checkout layout"
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
 msgstr ""
 "Εμφάνιση widgets πλευρικής μπάρας πληρωμής μόνο κατά την προβολή του "
-"τελευταίου βήματος πληρωμής σε κινητές συσκευές όταν χρησιμοποιείται διάταξη "
-"πληρωμής πολλαπλών βημάτων"
+"τελευταίου βήματος πληρωμής σε κινητές συσκευές όταν χρησιμοποιείται "
+"διάταξη πληρωμής πολλαπλών βημάτων"
 
 #: inc/admin/admin-settings-checkout.php:227
 msgid "Display express checkout buttons in one line for larger screens"
-msgstr ""
-"Εμφάνιση των κουμπιών ταμείου express σε μία γραμμή για μεγαλύτερες οθόνες"
+msgstr "Εμφάνιση των κουμπιών ταμείου express σε μία γραμμή για μεγαλύτερες οθόνες"
 
 #: inc/admin/admin-settings-checkout.php:706
 msgid "Display gift message and other gift options at the checkout page"
@@ -900,7 +826,8 @@ msgstr "Εμφάνιση μηνύματος δώρου και άλλων επι�
 #: inc/admin/admin-settings-checkout.php:765
 msgid "Display message when an account exists with the email address provided"
 msgstr ""
-"Εμφάνιση μηνύματος όταν υπάρχει λογαριασμός με την παρεχόμενη διεύθυνση email"
+"Εμφάνιση μηνύματος όταν υπάρχει λογαριασμός με την παρεχόμενη διεύθυνση "
+"email"
 
 #: inc/admin/admin-settings-order-received.php:90
 msgid ""
@@ -921,8 +848,7 @@ msgstr "Εμφάνιση των κουμπιών συνδέσμου \"Προσθ
 
 #: inc/admin/admin-settings-cart.php:80
 msgid "Display the cart page with a layout similar to the checkout page."
-msgstr ""
-"Εμφάνιση της σελίδας καλαθιού με διάταξη παρόμοια με τη σελίδα πληρωμής."
+msgstr "Εμφάνιση της σελίδας καλαθιού με διάταξη παρόμοια με τη σελίδα πληρωμής."
 
 #: inc/admin/admin-settings-checkout.php:196
 msgid "Display the checkout progress bar when using multi-step checkout layout"
@@ -937,8 +863,7 @@ msgstr "Εμφάνιση του τίτλου της ενότητας κωδικ�
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103
 #: inc/compat/themes/compat-theme-zk-nito.php:88
 msgid "Display the form field labels visible on the page"
-msgstr ""
-"Εμφάνιση των ετικετών των πεδίων της φόρμας που είναι ορατές στη σελίδα"
+msgstr "Εμφάνιση των ετικετών των πεδίων της φόρμας που είναι ορατές στη σελίδα"
 
 #: inc/admin/admin-settings-checkout.php:727
 msgid ""
@@ -964,8 +889,8 @@ msgstr "Εμφάνιση της γραμμής προόδου της κατάσ�
 
 #: inc/checkout-widget-areas.php:110
 msgid ""
-"Display widgets below the checkout header for mobile devices. Only displayed "
-"if using the plugin's checkout header."
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
 msgstr ""
 "Εμφάνιση widgets κάτω από την επικεφαλίδα πληρωμής για κινητές συσκευές. "
 "Εμφανίζεται μόνο αν χρησιμοποιείτε την κεφαλίδα πληρωμής του πρόσθετου."
@@ -980,8 +905,8 @@ msgstr "Εμφάνιση widgets μέσα στη σύνοψη της παραγ�
 
 #: inc/checkout-widget-areas.php:160
 msgid ""
-"Display widgets on the checkout footer. Only displayed if using the plugin's "
-"checkout footer."
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
 msgstr ""
 "Εμφάνιση widgets στο υποσέλιδο του checkout. Εμφανίζεται μόνο αν "
 "χρησιμοποιείτε το υποσέλιδο του plugin."
@@ -1019,9 +944,9 @@ msgstr "Μην αλλάζετε τα placeholders"
 
 #: inc/admin/admin-settings-checkout.php:302
 msgid ""
-"Do not display the cart items errors message at the top of the checkout page."
-" When submitting the checkout form to complete the purchase, these error "
-"messages will always be displayed."
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
 msgstr ""
 "Μην εμφανίζετε το μήνυμα σφάλματος στοιχείων καλαθιού στην κορυφή της "
 "σελίδας πληρωμής. Κατά την υποβολή της φόρμας πληρωμής για την ολοκλήρωση "
@@ -1029,8 +954,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:440
 msgid "Do not hide \"Address line 2\" fields behind a link button"
-msgstr ""
-"Μην κρύβετε τα πεδία \"Γραμμή διεύθυνσης 2\" πίσω από ένα κουμπί συνδέσμου"
+msgstr "Μην κρύβετε τα πεδία \"Γραμμή διεύθυνσης 2\" πίσω από ένα κουμπί συνδέσμου"
 
 #: inc/admin/admin-settings-checkout.php:556
 msgid "Do not save any shipping address"
@@ -1074,8 +998,7 @@ msgid "Enable integrated coupon code section"
 msgstr "Ενεργοποιήστε την ενότητα με τον ενσωματωμένο κωδικό κουπονιού"
 
 #: inc/admin/admin-settings-checkout.php:634
-msgid ""
-"Enable international phone number format and validation for phone fields"
+msgid "Enable international phone number format and validation for phone fields"
 msgstr ""
 "Ενεργοποίηση της μορφής και της επικύρωσης διεθνών τηλεφωνικών αριθμών για "
 "τα πεδία τηλεφώνου"
@@ -1092,8 +1015,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-order-received.php:89
 msgid "Enable order details customizations on email notifications"
-msgstr ""
-"Ενεργοποίηση προσαρμογών λεπτομερειών παραγγελίας στις ειδοποιήσεις email"
+msgstr "Ενεργοποίηση προσαρμογών λεπτομερειών παραγγελίας στις ειδοποιήσεις email"
 
 #: inc/admin/admin-settings-order-pay.php:79
 msgid "Enable order pay page optimizations"
@@ -1143,8 +1065,8 @@ msgstr "Σφάλμα:"
 msgid "EU-VAT Assistant"
 msgstr "EU-VAT Assistant"
 
-#. %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:158
+#. %s: License key expiration date.
 #, php-format
 msgid "Expired on %s."
 msgstr "Έληξε στις %s."
@@ -1162,15 +1084,15 @@ msgid ""
 "Extend all the goodness of Fluid Checkout to your cart page and thank you "
 "pages."
 msgstr ""
-"Επεκτείνετε όλη την καλοσύνη του Fluid Checkout στη σελίδα καλαθιού και στις "
-"σελίδες ευχαριστιών."
+"Επεκτείνετε όλη την καλοσύνη του Fluid Checkout στη σελίδα καλαθιού και "
+"στις σελίδες ευχαριστιών."
 
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Διόρθωση αυτόματης μεγέθυνσης σε πεδία φόρμας"
 
-#. Author of the plugin
 #: inc/admin/admin-tab-fluid-checkout.php:25
+#. Author of the plugin
 msgid "Fluid Checkout"
 msgstr "Έλεγχος υγρών"
 
@@ -1186,14 +1108,9 @@ msgstr "Ενημέρωση της βάσης δεδομένων Fluid Checkout"
 msgid "Fluid Checkout database updated successfully"
 msgstr "Η βάση δεδομένων Fluid Checkout ενημερώθηκε με επιτυχία"
 
-#. Name of the plugin
-msgid "Fluid Checkout for WooCommerce - Lite"
-msgstr "Fluid Checkout για το WooCommerce - Lite"
-
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
 msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
-msgstr ""
-"Το Fluid Checkout δεν είναι συμβατό με τη διάταξη checkout του Divi Builder"
+msgstr "Το Fluid Checkout δεν είναι συμβατό με τη διάταξη checkout του Divi Builder"
 
 #: inc/admin/admin-notice-breaking-changes-version-400.php:47
 msgid "Fluid Checkout Lite 4.0+ – Important changes!"
@@ -1223,7 +1140,8 @@ msgstr "Χρώμα φόντου υποσέλιδου"
 #: inc/admin/admin-settings-checkout.php:470
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr ""
-"Αναγκάστε τις διευθύνσεις χρέωσης και αποστολής να είναι ίδιες (ενιαίο τμήμα)"
+"Αναγκάστε τις διευθύνσεις χρέωσης και αποστολής να είναι ίδιες (ενιαίο "
+"τμήμα)"
 
 #: inc/admin/admin-settings-checkout.php:635
 msgid "Format and validate phone numbers according to each country."
@@ -1367,11 +1285,6 @@ msgstr "Επισημάνετε την ενότητα της διεύθυνσης
 msgid "HTML color value. ie: #f3f3f3"
 msgstr "Τιμή χρώματος HTML. δηλ: #f3f3f3"
 
-#. URI of the plugin
-#. Author URI of the plugin
-msgid "https://fluidcheckout.com/"
-msgstr "https://fluidcheckout.com/"
-
 #: inc/admin/admin-setting-type-fc-addons.php:137
 #| msgid "I already have it &mdash; Hide this offer"
 msgid "I already have it – Hide this offer"
@@ -1418,11 +1331,6 @@ msgstr ""
 "Αγνοήστε τα πρόσθετα απαιτούμενα πεδία του checkout όταν πληρώνετε με μια "
 "συμβατή πύλη πληρωμής express checkout"
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:85
-msgctxt "Image uploader."
-msgid "No image selected."
-msgstr "Δεν έχει επιλεγεί εικόνα."
-
 #: inc/admin/admin-settings-cart.php:148
 msgid "Inside the cart items section"
 msgstr "Μέσα στην ενότητα των αντικειμένων του καλαθιού"
@@ -1466,19 +1374,19 @@ msgstr "Διεθνείς τηλεφωνικοί αριθμοί"
 #: inc/admin/admin-settings-checkout.php:431
 msgid ""
 "It is recommended to keep this option checked to reduce the number of open "
-"input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
-"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
-"link\" target=\"_blank\">read the research</a>."
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
 msgstr ""
 "Συνιστάται να διατηρείτε αυτήν την επιλογή ενεργοποιημένη για να μειώσετε "
-"τον αριθμό των ανοικτών πεδίων εισαγωγής, <a href=\"https://baymard."
-"com/blog/checkout-flow-average-form-fields#1-address-line-2--company-name-"
-"can-safely-be-collapsed-behind-a-link\" target=\"_blank\">διαβάστε την "
-"έρευνα</a>."
+"τον αριθμό των ανοικτών πεδίων εισαγωγής, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">διαβάστε την έρευνα</a>."
 
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
-msgid ""
-"It is recommended to keep this option enabled for a better user experience."
+msgid "It is recommended to keep this option enabled for a better user experience."
 msgstr ""
 "Συνιστάται να διατηρείτε αυτή την επιλογή ενεργοποιημένη για καλύτερη "
 "εμπειρία χρήσης."
@@ -1524,28 +1432,12 @@ msgstr "Τοπική παραλαβή"
 msgid "Local pickup and in-store collection"
 msgstr "Τοπική παραλαβή και συλλογή στο κατάστημα"
 
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
-#: templates/fc/checkout-steps/global/form-login.php:66
-msgctxt "Log in link label at checkout contact step"
-msgid "Log in"
-msgstr "Συνδεθείτε"
-
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
-msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue as a guest"
-msgstr "Ή συνεχίστε ως επισκέπτης"
-
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
-msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue below"
-msgstr "Ή συνεχίστε παρακάτω"
-
 #: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
 msgid "Log in to your account"
 msgstr "Συνδεθείτε στο λογαριασμό σας"
 
-#. 1: user display name 2: logout url
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+#. 1: user display name 2: logout url
 #, php-format
 msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
 msgstr "Συνδεθήκατε ως %1$s. <a href=\"%2$s\">Έξοδος</a>"
@@ -1564,9 +1456,9 @@ msgstr "Κάντε τη γραμμή προόδου του ταμείου να �
 
 #: inc/admin/admin-settings-checkout.php:452
 msgid ""
-"Make the labels of optional field \"Add\" link button as <code>"
-"lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone Number\"). "
-"This option also affects the link buttons for coupon code fields."
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
 msgstr ""
 "Κάντε τις ετικέτες του προαιρετικού πεδίου \"Προσθήκη\" του κουμπιού "
 "συνδέσμου ως <κωδικός> με πεζά γράμματα</κωδικός> (π.χ. \"Προσθήκη αριθμού "
@@ -1601,9 +1493,9 @@ msgid ""
 "background color. Might also apply to the Cart, Order Received and View "
 "Order pages when using Fluid Checkout PRO."
 msgstr ""
-"Πιο χρήσιμο όταν η ενότητα σύνοψης παραγγελίας δεν έχει χρώμα φόντου. Μπορεί "
-"επίσης να εφαρμοστεί στις σελίδες Καλάθι, Παραγγελία παραλήφθηκε και Προβολή "
-"παραγγελίας όταν χρησιμοποιείτε το Fluid Checkout PRO."
+"Πιο χρήσιμο όταν η ενότητα σύνοψης παραγγελίας δεν έχει χρώμα φόντου. "
+"Μπορεί επίσης να εφαρμοστεί στις σελίδες Καλάθι, Παραγγελία παραλήφθηκε και "
+"Προβολή παραγγελίας όταν χρησιμοποιείτε το Fluid Checkout PRO."
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
 msgid "Move the sign up checkbox to the contact step"
@@ -1627,8 +1519,8 @@ msgstr "Η επαφή μου"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
-"No integrations available at the moment on this section. The options related "
-"to each plugin will only appear here if that plugin is activated."
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
 msgstr ""
 "Δεν υπάρχουν διαθέσιμες ενσωματώσεις προς το παρόν σε αυτό το τμήμα. Οι "
 "επιλογές που σχετίζονται με κάθε πρόσθετο θα εμφανίζονται εδώ μόνο αν το "
@@ -1636,20 +1528,13 @@ msgstr ""
 
 #: inc/admin/admin-settings-license-keys.php:85
 msgid ""
-"No license keys options available at the moment on this section. The options "
-"related to each plugin or add-on will appear here when that plugin is "
-"activated."
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
 msgstr ""
 "Δεν υπάρχουν διαθέσιμες επιλογές κλειδιών άδειας χρήσης προς το παρόν σε "
 "αυτό το τμήμα. Οι επιλογές που σχετίζονται με κάθε πρόσθετο ή προσθήκη θα "
 "εμφανιστούν εδώ όταν ενεργοποιηθεί το συγκεκριμένο πρόσθετο."
-
-#. %s shipping destination.
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431
-#: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
-msgctxt "No shipping method chosen label for the order summary"
-msgid "--"
-msgstr "--"
 
 #: inc/checkout-steps.php:3918
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
@@ -1658,8 +1543,7 @@ msgstr "Δεν έχει επιλεγεί ακόμη."
 
 #: inc/admin/admin-settings-cart.php:210
 msgid "Number of cross-sell items to display on the cart page"
-msgstr ""
-"Αριθμός στοιχείων cross-sell που θα εμφανίζονται στη σελίδα του καλαθιού"
+msgstr "Αριθμός στοιχείων cross-sell που θα εμφανίζονται στη σελίδα του καλαθιού"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:59
 msgid "Ok"
@@ -1686,8 +1570,7 @@ msgstr ""
 "σελίδες του ταμείου ή του καλαθιού."
 
 #: inc/compat/themes/compat-theme-Impreza.php:101
-msgid ""
-"Only applicable when using the Impreza theme header at the checkout page."
+msgid "Only applicable when using the Impreza theme header at the checkout page."
 msgstr ""
 "Ισχύει μόνο όταν χρησιμοποιείτε την επικεφαλίδα του θέματος Impreza στη "
 "σελίδα πληρωμής."
@@ -1799,16 +1682,16 @@ msgstr ""
 
 #: inc/compat/themes/compat-theme-kapee.php:130
 msgid ""
-"Output the checkout steps section from the Kapee theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
 msgstr ""
 "Εξάγετε το τμήμα βημάτων πληρωμής από το θέμα Kapee στις σελίδες πληρωμής, "
 "καλαθιού και παραγγελίας που παραλήφθηκαν."
 
 #: inc/compat/themes/compat-theme-porto.php:203
 msgid ""
-"Output the checkout steps section from the Porto theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
 msgstr ""
 "Εξάγετε το τμήμα βημάτων πληρωμής από το θέμα Porto στις σελίδες πληρωμής, "
 "καλαθιού και παραγγελίας που παραλήφθηκαν."
@@ -1884,8 +1767,8 @@ msgstr "Παρακαλούμε επαληθεύστε τον αριθμό τηλ
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Αποτροπή της αυτόματης επιλογής της πρώτης μεθόδου αποστολής"
 
-#. Next checkout step title
 #: inc/checkout-steps.php:1688
+#. Next checkout step title
 #, php-format
 msgid "Proceed to %s"
 msgstr "Προχωρήστε στην %s"
@@ -1909,19 +1792,6 @@ msgstr "Προχωρήστε στη ναυτιλία"
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
 msgstr "Γραμμή προόδου"
-
-#. Description of the plugin
-msgid ""
-"Provides a distraction free checkout experience for any WooCommerce store. "
-"Ask for shipping information before billing in a truly linear multi-step or "
-"one-step checkout and display a coupon code field at the checkout page that "
-"does not distract your customers."
-msgstr ""
-"Παρέχει μια εμπειρία πληρωμής χωρίς περισπασμούς για οποιοδήποτε κατάστημα "
-"WooCommerce. Ζητήστε πληροφορίες αποστολής πριν από την τιμολόγηση σε ένα "
-"πραγματικά γραμμικό checkout πολλαπλών βημάτων ή ενός βήματος και εμφανίστε "
-"ένα πεδίο κωδικού κουπονιού στη σελίδα checkout που δεν αποσπά την προσοχή "
-"των πελατών σας."
 
 #: inc/admin/admin-notice-review-request.php:50
 msgid "Rate the plugin"
@@ -1955,9 +1825,9 @@ msgid ""
 "field, or when getting the right shipping address is crucial (ie. if "
 "delivering food and other perishable products)."
 msgstr ""
-"Συνιστάται μόνο όταν οι περισσότεροι πελάτες χρειάζονται πραγματικά το πεδίο "
-"\"Γραμμή διεύθυνσης 2\", ή όταν η σωστή διεύθυνση αποστολής είναι ζωτικής "
-"σημασίας (π.χ. αν παραδίδετε τρόφιμα και άλλα ευπαθή προϊόντα)."
+"Συνιστάται μόνο όταν οι περισσότεροι πελάτες χρειάζονται πραγματικά το "
+"πεδίο \"Γραμμή διεύθυνσης 2\", ή όταν η σωστή διεύθυνση αποστολής είναι "
+"ζωτικής σημασίας (π.χ. αν παραδίδετε τρόφιμα και άλλα ευπαθή προϊόντα)."
 
 #: inc/checkout-coupon-codes.php:382
 msgid "Remove"
@@ -1972,11 +1842,10 @@ msgstr ""
 "με τοπική παραλαβή."
 
 #: inc/admin/admin-settings-tools.php:113
-msgid ""
-"Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
-"Αντικαταστήστε τα αναπτυσσόμενα στοιχεία <code>select2</code> με <code>"
-"TomSelect</code>"
+"Αντικαταστήστε τα αναπτυσσόμενα στοιχεία <code>select2</code> με "
+"<code>TomSelect</code>"
 
 #: inc/admin/admin-settings-checkout.php:766
 msgid ""
@@ -2026,8 +1895,8 @@ msgstr "Επιλέξτε μια εικόνα"
 
 #: inc/admin/admin-settings-checkout.php:461
 msgid ""
-"Select position where to display the billing address section on the checkout "
-"page."
+"Select position where to display the billing address section on the "
+"checkout page."
 msgstr ""
 "Επιλέξτε τη θέση στην οποία θα εμφανίζεται το τμήμα της διεύθυνσης χρέωσης "
 "στη σελίδα πληρωμής."
@@ -2051,8 +1920,7 @@ msgstr ""
 "κουπονιών στη σελίδα πληρωμής."
 
 #: inc/admin/admin-settings-cart.php:180
-msgid ""
-"Select position where to display the cross-sells section on the cart page."
+msgid "Select position where to display the cross-sells section on the cart page."
 msgstr ""
 "Επιλέξτε τη θέση στην οποία θα εμφανιστεί το τμήμα των διασταυρούμενων "
 "πωλήσεων στη σελίδα του καλαθιού."
@@ -2067,9 +1935,9 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:402
 msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the coupon "
-"code section is displayed \"Before the checkout steps\" on the checkout page,"
-" or \"Before the cart items section\" on the cart page."
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
 msgstr ""
 "Επιλέξτε το στυλ του κουμπιού \"εφαρμογή κουπονιού\". Ισχύει μόνο όταν η "
 "ενότητα του κωδικού κουπονιού εμφανίζεται \"Πριν από τα βήματα πληρωμής\" "
@@ -2104,31 +1972,6 @@ msgstr "Ορίστε το <code>font-size</code> μέσα στα πεδία τη
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: inc/admin/admin-settings-cart.php:49
-msgctxt "Settings section"
-msgid "Cart"
-msgstr "Καλάθι"
-
-#: inc/admin/admin-settings-order-pay.php:49
-msgctxt "Settings section"
-msgid "Order pay"
-msgstr "Πληρωμή παραγγελίας"
-
-#: inc/admin/admin-settings-order-received.php:47
-msgctxt "Settings section"
-msgid "Thank you"
-msgstr "Σας ευχαριστώ"
-
-#: inc/admin/admin-settings-integrations.php:83
-msgctxt "Settings section title"
-msgid "Integrations"
-msgstr "Ενσωματώσεις"
-
-#: inc/admin/admin-settings-license-keys.php:73
-msgctxt "Settings section title"
-msgid "License keys"
-msgstr "Κλειδιά άδειας χρήσης"
-
 #: inc/admin/admin-setting-type-fc-setup.php:41
 msgid "Setup & Documentation"
 msgstr "Εγκατάσταση & τεκμηρίωση"
@@ -2137,8 +1980,8 @@ msgstr "Εγκατάσταση & τεκμηρίωση"
 #, php-format
 msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
 msgstr ""
-"Ρύθμιση της διάταξης και του σχεδιασμού στις επιλογές <a href=\"%s\">"
-"επιλογές πληρωμής</a>."
+"Ρύθμιση της διάταξης και του σχεδιασμού στις επιλογές <a "
+"href=\"%s\">επιλογές πληρωμής</a>."
 
 #: inc/admin/admin-settings-cart.php:164
 msgid "Shipping"
@@ -2180,7 +2023,8 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr ""
-"Εμφάνιση ενός παραδείγματος έγκυρου αριθμού τηλεφώνου μέσα σε πεδία τηλεφώνου"
+"Εμφάνιση ενός παραδείγματος έγκυρου αριθμού τηλεφώνου μέσα σε πεδία "
+"τηλεφώνου"
 
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
@@ -2216,11 +2060,12 @@ msgstr "Μετάβαση στο περιεχόμενο"
 #: inc/admin/admin-notice-db-migrations.php:52
 msgid ""
 "Some changes to the database are required. As with any update, we recommend "
-"you to <strong>take a full backup of your website before proceeding</strong>."
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
 msgstr ""
-"Απαιτούνται ορισμένες αλλαγές στη βάση δεδομένων. Όπως και με κάθε ενημέρωση,"
-" σας συνιστούμε να <strong>να λάβετε ένα πλήρες αντίγραφο ασφαλείας του "
-"ιστοτόπου σας πριν προχωρήσετε</strong>."
+"Απαιτούνται ορισμένες αλλαγές στη βάση δεδομένων. Όπως και με κάθε "
+"ενημέρωση, σας συνιστούμε να <strong>να λάβετε ένα πλήρες αντίγραφο "
+"ασφαλείας του ιστοτόπου σας πριν προχωρήσετε</strong>."
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 #, php-format
@@ -2242,8 +2087,7 @@ msgstr ""
 
 #: inc/compat/themes/compat-theme-Impreza.php:100
 msgid "Spacing for site header at the checkout page (in pixels)"
-msgstr ""
-"Απόσταση για την επικεφαλίδα του ιστότοπου στη σελίδα πληρωμής (σε pixels)"
+msgstr "Απόσταση για την επικεφαλίδα του ιστότοπου στη σελίδα πληρωμής (σε pixels)"
 
 #: inc/admin/admin-setting-type-fc-addons.php:41
 msgid "Special offers"
@@ -2253,8 +2097,8 @@ msgstr "Ειδικές προσφορές"
 msgid "Split"
 msgstr "Split"
 
-#. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 #: inc/checkout-steps.php:2530
+#. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Βήμα %1$s από %2$s"
@@ -2262,25 +2106,6 @@ msgstr "Βήμα %1$s από %2$s"
 #: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
 msgid "Subscribe checkbox"
 msgstr "Πλαίσιο ελέγχου εγγραφής"
-
-#. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3490
-#, php-format
-msgctxt "Substep review field format"
-msgid "%1$s"
-msgstr "%1$s"
-
-#. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3495
-#, php-format
-msgctxt "Substep review field format: with label"
-msgid "%2$s: %1$s"
-msgstr "%2$s: %1$s"
-
-#: inc/checkout-steps.php:2958
-msgctxt "Substep review text"
-msgid "None."
-msgstr "Καμία."
 
 #: inc/admin/admin.php:134
 msgid "Support"
@@ -2316,8 +2141,8 @@ msgstr "Το plugin της Bluehost"
 #: inc/admin/admin-setting-type-fc-addons.php:85
 #: inc/admin/admin-setting-type-fc-addons.php:132
 msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout add-"
-"ons we launch in the future."
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
 msgstr ""
 "Το πακέτο περιλαμβάνει όλα τα πρόσθετα που προσφέρουμε σήμερα και τα "
 "πρόσθετα Fluid Checkout που θα κυκλοφορήσουμε στο μέλλον."
@@ -2338,19 +2163,21 @@ msgid ""
 "\"Same as billing address\" will start as checked by default when the "
 "billing address section is displayed first. <br> It is recommended to leave "
 "this option checked as to significantly reduce the number of open input "
-"fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-"
-"form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
-"target=\"_blank\">read the research</a>."
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
 msgstr ""
 "Το πλαίσιο ελέγχου \"Ίδια με τη διεύθυνση αποστολής\" θα αρχίσει να είναι "
 "επιλεγμένο από προεπιλογή όταν εμφανίζεται πρώτα το τμήμα της διεύθυνσης "
 "αποστολής. <br>Το πλαίσιο ελέγχου \"Same as billing address\" (Ίδια με "
 "διεύθυνση χρέωσης) θα αρχίσει να είναι επιλεγμένο από προεπιλογή όταν το "
-"τμήμα διεύθυνσης χρέωσης εμφανίζεται πρώτο. <br> Συνιστάται να αφήσετε αυτήν "
-"την επιλογή επιλεγμένη, καθώς θα μειωθεί σημαντικά ο αριθμός των ανοικτών "
-"πεδίων εισαγωγής κατά την ολοκλήρωση της πληρωμής, <a href=\"https://baymard."
-"com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
-"hide-the-fields-entirely\" target=\"_blank\">διαβάστε την έρευνα</a>."
+"τμήμα διεύθυνσης χρέωσης εμφανίζεται πρώτο. <br> Συνιστάται να αφήσετε "
+"αυτήν την επιλογή επιλεγμένη, καθώς θα μειωθεί σημαντικά ο αριθμός των "
+"ανοικτών πεδίων εισαγωγής κατά την ολοκλήρωση της πληρωμής, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">διαβάστε "
+"την έρευνα</a>."
 
 #: inc/checkout-validation.php:212
 msgid "The CNPJ number \"{cnpj_number}\" is invalid."
@@ -2366,11 +2193,11 @@ msgstr "Οι αλλαγές στη βάση δεδομένων εφαρμόστ�
 
 #: inc/compat/themes/compat-theme-woodmart.php:169
 msgid ""
-"The options display product image, quantity field, remove button and link to "
-"product page added by the theme are disabled by default."
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
 msgstr ""
-"Οι επιλογές προβολή εικόνας προϊόντος, πεδίο ποσότητας, κουμπί αφαίρεσης και "
-"σύνδεσμος στη σελίδα προϊόντος που προστίθενται από το θέμα είναι "
+"Οι επιλογές προβολή εικόνας προϊόντος, πεδίο ποσότητας, κουμπί αφαίρεσης "
+"και σύνδεσμος στη σελίδα προϊόντος που προστίθενται από το θέμα είναι "
 "απενεργοποιημένες από προεπιλογή."
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
@@ -2378,8 +2205,8 @@ msgid ""
 "The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
 "with Fluid Checkout"
 msgstr ""
-"Το plugin WooCommerce Checkout Manager by Quadlayers δεν είναι συμβατό με το "
-"Fluid Checkout"
+"Το plugin WooCommerce Checkout Manager by Quadlayers δεν είναι συμβατό με "
+"το Fluid Checkout"
 
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
@@ -2455,8 +2282,8 @@ msgid ""
 "pages and on email notifications."
 msgstr ""
 "Αυτές οι επιλογές επηρεάζουν τη σελίδα ευχαριστιών , την προβολή "
-"λεπτομερειών παραγγελίας στις σελίδες λογαριασμού και στις ειδοποιήσεις μέσω "
-"email."
+"λεπτομερειών παραγγελίας στις σελίδες λογαριασμού και στις ειδοποιήσεις "
+"μέσω email."
 
 #: inc/admin/admin-settings-order-received.php:110
 msgid ""
@@ -2510,8 +2337,8 @@ msgstr "Αυτό το πεδίο είναι υποχρεωτικό."
 
 #: inc/admin/admin.php:208
 msgid ""
-"This is an experimental feature and may not work as expected with all themes "
-"and plugins. Use it with caution."
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
 msgstr ""
 "Πρόκειται για μια πειραματική λειτουργία και ενδέχεται να μην λειτουργεί "
 "όπως αναμένεται με όλα τα θέματα και τα πρόσθετα. Χρησιμοποιήστε το με "
@@ -2533,11 +2360,11 @@ msgstr ""
 #: inc/admin/admin-settings-tools.php:114
 msgid ""
 "TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually used "
-"on WooCommerce checkout pages."
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
 msgstr ""
-"Το TomSelect είναι ένα απλούστερο στοιχείο επιλογής dropdown, το οποίο είναι "
-"λιγότερο επιρρεπές σε σφάλματα από το Select2, ενώ προσφέρει τα ίδια "
+"Το TomSelect είναι ένα απλούστερο στοιχείο επιλογής dropdown, το οποίο "
+"είναι λιγότερο επιρρεπές σε σφάλματα από το Select2, ενώ προσφέρει τα ίδια "
 "χαρακτηριστικά που χρησιμοποιούνται πραγματικά στις σελίδες πληρωμής του "
 "WooCommerce."
 
@@ -2579,15 +2406,15 @@ msgstr "Αναβάθμιση σε PRO &mdash; 99 EUR"
 
 #: inc/admin/admin-settings-tools.php:93
 msgid ""
-"Using debug mode affects the website performance. Only use this option while "
-"troubleshooting."
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
 msgstr ""
 "Η χρήση της λειτουργίας εντοπισμού σφαλμάτων επηρεάζει την απόδοση του "
 "ιστότοπου. Χρησιμοποιήστε αυτή την επιλογή μόνο κατά την αντιμετώπιση "
 "προβλημάτων."
 
-#. %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:152
+#. %s: License key expiration date.
 #, php-format
 msgid "Valid until %s."
 msgstr "Ισχύει μέχρι %s."
@@ -2620,13 +2447,15 @@ msgstr ""
 #| "cart abandonment</a>."
 msgid ""
 "We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"
-"abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
 msgstr ""
 "Συνιστούμε να χρησιμοποιείτε την κεφαλίδα και το υποσέλιδο χωρίς "
 "περισπασμούς για να αποφύγετε τους περισπασμούς στη σελίδα πληρωμής. <a "
-"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">"
-"Διαβάστε την έρευνα σχετικά με την εγκατάλειψη του καλαθιού</a>."
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Διαβάστε την έρευνα σχετικά με την εγκατάλειψη του "
+"καλαθιού</a>."
 
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
 msgid "What should I do?"
@@ -2637,8 +2466,8 @@ msgid ""
 "When disabled, the phone field validation will not check if country or area "
 "codes are valid for the country."
 msgstr ""
-"Όταν είναι απενεργοποιημένη, η επικύρωση του πεδίου τηλεφώνου δεν θα ελέγχει "
-"αν οι κωδικοί χώρας ή περιοχής είναι έγκυροι για τη χώρα."
+"Όταν είναι απενεργοποιημένη, η επικύρωση του πεδίου τηλεφώνου δεν θα "
+"ελέγχει αν οι κωδικοί χώρας ή περιοχής είναι έγκυροι για τη χώρα."
 
 #: inc/admin/admin-settings-checkout.php:657
 msgid ""
@@ -2655,9 +2484,9 @@ msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
 msgstr ""
-"Όταν είναι ενεργοποιημένο, το πλαίσιο ελέγχου θα μετακινηθεί στο βήμα επαφής "
-"ανεξάρτητα από τη θέση εμφάνισης που ορίζεται στις ρυθμίσεις του πρόσθετου "
-"Sendinblue."
+"Όταν είναι ενεργοποιημένο, το πλαίσιο ελέγχου θα μετακινηθεί στο βήμα "
+"επαφής ανεξάρτητα από τη θέση εμφάνισης που ορίζεται στις ρυθμίσεις του "
+"πρόσθετου Sendinblue."
 
 #: inc/admin/admin-settings-checkout.php:517
 msgid ""
@@ -2678,21 +2507,21 @@ msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
 "added to the checkout form."
 msgstr ""
-"Όταν είναι ενεργοποιημένο, το πεδίο email αποστολής από το πρόσθετο Bluehost "
-"θα προστεθεί στη φόρμα πληρωμής."
+"Όταν είναι ενεργοποιημένο, το πεδίο email αποστολής από το πρόσθετο "
+"Bluehost θα προστεθεί στη φόρμα πληρωμής."
 
 #: inc/admin/admin-settings-tools.php:124
 msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and other "
-"browsers might automatically zoom in on mobile devices to make the text "
-"easier to read. When this option is enabled, it will set the font size for "
-"inside the form fields to 16px on pages optimized by Fluid Checkout to avoid "
-"it zooming in."
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
 msgstr ""
-"Όταν το μέγεθος της γραμματοσειράς μέσα στα πεδία της φόρμας είναι μικρότερο "
-"από 16px, το Safari και άλλα προγράμματα περιήγησης ενδέχεται να μεγεθύνουν "
-"αυτόματα στις κινητές συσκευές για να κάνουν το κείμενο πιο ευανάγνωστο. "
-"Όταν αυτή η επιλογή είναι ενεργοποιημένη, θα ορίσει το μέγεθος "
+"Όταν το μέγεθος της γραμματοσειράς μέσα στα πεδία της φόρμας είναι "
+"μικρότερο από 16px, το Safari και άλλα προγράμματα περιήγησης ενδέχεται να "
+"μεγεθύνουν αυτόματα στις κινητές συσκευές για να κάνουν το κείμενο πιο "
+"ευανάγνωστο. Όταν αυτή η επιλογή είναι ενεργοποιημένη, θα ορίσει το μέγεθος "
 "γραμματοσειράς για το εσωτερικό των πεδίων φόρμας στα 16px στις σελίδες που "
 "βελτιστοποιούνται από το Fluid Checkout για να αποφευχθεί το ζουμάρισμα."
 
@@ -2703,33 +2532,34 @@ msgid ""
 "processing new orders</strong>. Please disable the Germanized PRO multistep "
 "checkout feature in the plugin settings."
 msgstr ""
-"Όταν χρησιμοποιείτε το Fluid Checkout, η λειτουργία πολλαπλών βημάτων από το "
-"plugin Germanized PRO καθίσταται περιττή και μπορεί να προκαλέσει <strong>"
-"κρίσιμα σφάλματα κατά την επεξεργασία νέων παραγγελιών</strong>. Παρακαλούμε "
-"απενεργοποιήστε τη λειτουργία πληρωμής πολλαπλών βημάτων του Germanized PRO "
-"στις ρυθμίσεις του πρόσθετου."
+"Όταν χρησιμοποιείτε το Fluid Checkout, η λειτουργία πολλαπλών βημάτων από "
+"το plugin Germanized PRO καθίσταται περιττή και μπορεί να προκαλέσει "
+"<strong>κρίσιμα σφάλματα κατά την επεξεργασία νέων παραγγελιών</strong>. "
+"Παρακαλούμε απενεργοποιήστε τη λειτουργία πληρωμής πολλαπλών βημάτων του "
+"Germanized PRO στις ρυθμίσεις του πρόσθετου."
 
 #: inc/admin/admin-notice-breaking-changes-version-400.php:48
 msgid ""
 "With this version of Fluid Checkout we have introduced <strong>important "
 "changes that might impact your website</strong> if you have made "
 "customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, it "
-"should work in the same way as before.<br><br>If you have any customizations "
-"for Fluid Checkout on your website and have not yet migrated them to this "
-"version, please read our guide <a href=\"https://fluidcheckout.com/version-4-"
-"customization-migration/\">Migrating customizations to Fluid Checkout Lite 4."
-"0+</a>"
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
 msgstr ""
 "Με αυτή την έκδοση του Fluid Checkout έχουμε εισαγάγει <strong>σημαντικές "
 "αλλαγές που ενδέχεται να επηρεάσουν τον ιστότοπό σας</strong>, εάν έχετε "
-"κάνει προσαρμογές στα πρόσθετά μας πριν από την κυκλοφορία αυτής της έκδοσης."
-" Εάν ο ιστότοπός σας δεν έχει προσαρμογές για τα πρόσθετα Fluid Checkout, θα "
-"πρέπει να λειτουργεί με τον ίδιο τρόπο όπως και πριν.<br><br>Εάν έχετε "
-"προσαρμογές για το Fluid Checkout στον ιστότοπό σας και δεν τις έχετε "
-"μεταφέρει ακόμα σε αυτή την έκδοση, διαβάστε τον οδηγό μας <a href=\"https:"
-"//fluidcheckout.com/version-4-customization-migration/\">Μεταφορά "
-"προσαρμογών στο Fluid Checkout Lite 4.0+</a>"
+"κάνει προσαρμογές στα πρόσθετά μας πριν από την κυκλοφορία αυτής της "
+"έκδοσης. Εάν ο ιστότοπός σας δεν έχει προσαρμογές για τα πρόσθετα Fluid "
+"Checkout, θα πρέπει να λειτουργεί με τον ίδιο τρόπο όπως και "
+"πριν.<br><br>Εάν έχετε προσαρμογές για το Fluid Checkout στον ιστότοπό σας "
+"και δεν τις έχετε μεταφέρει ακόμα σε αυτή την έκδοση, διαβάστε τον οδηγό "
+"μας <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Μεταφορά προσαρμογών στο Fluid Checkout Lite 4.0+</a>"
 
 #: fluid-checkout.php:582
 msgid "WooCommerce"
@@ -2751,3 +2581,133 @@ msgid "Your order has a total amount due of %s. No further payment is needed."
 msgstr ""
 "Η παραγγελία σας έχει συνολικό οφειλόμενο ποσό %s. Δεν απαιτείται περαιτέρω "
 "πληρωμή."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "Δεν έχει επιλεγεί εικόνα."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "Αφαίρεση εικόνας"
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "Πριν από το κουμπί παραγγελίας"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "Πριν από το τμήμα παραγγελίας"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "Τιμολόγηση"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "Επικοινωνία"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "Πληρωμή"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "Αποστολή"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "Αποθήκευση αλλαγών"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "Κλείστε το"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "Δεν έχει επιλεγεί εικόνα."
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+#: templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "Συνδεθείτε"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "Ή συνεχίστε ως επισκέπτης"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "Ή συνεχίστε παρακάτω"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431
+#: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "Καλάθι"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "Πληρωμή παραγγελίας"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "Σας ευχαριστώ"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "Ενσωματώσεις"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "Κλειδιά άδειας χρήσης"
+
+#: inc/checkout-steps.php:3490
+#. %1$s the selected option text, %2$s the field label.
+#, php-format
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: inc/checkout-steps.php:3495
+#. %1$s the selected option text, %2$s the field label.
+#, php-format
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "Καμία."

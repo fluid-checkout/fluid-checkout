@@ -1,0 +1,2257 @@
+# Copyright (C) 2025 fluid-checkout
+# This file is distributed under the same license as the fluid-checkout package.
+msgid ""
+msgstr ""
+"Project-Id-Version: fluid-checkout\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Fluid Checkout\n"
+"Last-Translator: Fluid Checkout\n"
+"POT-Creation-Date: 2025-03-06 01:48+0000\n"
+"Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: fluid-checkout.php:585
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: fluid-checkout.php:588
+msgid "Go to Plugin Search"
+msgstr "转到插件搜索"
+
+#: fluid-checkout.php:592
+msgid "Activate %s"
+msgstr "激活 %s"
+
+#: fluid-checkout.php:596
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"<strong>%1$s</strong> 需要安装和激活 <strong>%2$s</strong>。<a "
+"href=\"%4$s\">%3$s</a>"
+
+#: inc/checkout-coupon-codes.php:274
+msgid "Enter your code here"
+msgstr "在此输入验证码"
+
+#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
+msgid "Add %s"
+msgstr "添加 %s"
+
+#: inc/checkout-coupon-codes.php:382
+msgid "Remove"
+msgstr "移除"
+
+#: inc/checkout-fields.php:126
+msgid "Order number and receipt will be sent to this email address."
+msgstr "订单号和收据将发送到此电子邮件地址。"
+
+#: inc/checkout-fields.php:181
+msgid "Apartment, unit, building, floor, etc."
+msgstr "公寓、单元、楼宇、楼层等。"
+
+#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+msgid "Shipping phone"
+msgstr "运送电话"
+
+#: inc/checkout-shipping-phone-field.php:105
+msgid "Only used for shipping-related questions."
+msgstr "仅用于与装运相关的问题。"
+
+#: inc/checkout-steps.php:793
+msgid "Multi-step"
+msgstr "多步骤"
+
+#: inc/checkout-steps.php:794
+msgid "Single step"
+msgstr "单步"
+
+#: inc/checkout-steps.php:965
+msgid "Click to go to the order summary"
+msgstr "点击进入订单摘要"
+
+#: inc/checkout-steps.php:965
+msgid "Cart total:"
+msgstr "购物车总计"
+
+#: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
+msgid "Proceed to %s"
+msgstr "进入 %s"
+
+#: inc/checkout-steps.php:2215
+msgid "Proceed to contact"
+msgstr "继续联系"
+
+#: inc/checkout-steps.php:2224
+msgid "Proceed to shipping"
+msgstr "开始装运"
+
+#: inc/checkout-steps.php:2236
+msgid "Proceed to billing"
+msgstr "继续计费"
+
+#: inc/checkout-steps.php:2245
+msgid "Proceed to payment"
+msgstr "继续付款"
+
+#: inc/checkout-steps.php:2256
+msgid "My contact"
+msgstr "我的联系人"
+
+#: inc/checkout-steps.php:2266
+msgid "Shipping to"
+msgstr "寄往"
+
+#: inc/checkout-steps.php:2276
+msgid "Shipping method"
+msgstr "运输方式"
+
+#: inc/checkout-steps.php:2286
+msgid "Additional notes"
+msgstr "补充说明"
+
+#: inc/checkout-steps.php:2300
+msgid "Billing to"
+msgstr "账单"
+
+#: inc/checkout-steps.php:2310
+msgid "Payment method"
+msgstr "付款方式"
+
+#: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+msgid "Step %1$s of %2$s"
+msgstr "步骤 %1$s of %2$s"
+
+#: inc/checkout-steps.php:2825
+msgid "Change: %s"
+msgstr "变化：%s"
+
+#: inc/checkout-steps.php:3184
+msgid "An account will be created with the information provided."
+msgstr "将根据所提供的信息创建一个账户。"
+
+#: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+msgid "Not selected yet."
+msgstr "尚未选定。"
+
+#: inc/checkout-steps.php:4675
+msgid "Same as shipping address"
+msgstr "与送货地址相同"
+
+#: inc/checkout-steps.php:4720
+msgid "Same as billing address"
+msgstr "与账单地址相同"
+
+#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+msgid "Order summary"
+msgstr "订单摘要"
+
+#: inc/checkout-steps.php:6008, templates/fc/checkout-steps/checkout/review-order-section.php:58
+msgid "Edit cart"
+msgstr "编辑购物车"
+
+#: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
+msgid "Did you mean %s?"
+msgstr "你是说 %s 吗？"
+
+#: inc/checkout-validation.php:197
+msgid "Change email address to: {suggestion-value}"
+msgstr "将电子邮件地址更改为{建议值｝"
+
+#: inc/checkout-validation.php:200
+msgid "This is a required field."
+msgstr "这是必填字段。"
+
+#: inc/checkout-validation.php:201
+msgid "This is not a valid email address."
+msgstr "这不是一个有效的电子邮件地址。"
+
+#: inc/checkout-validation.php:202
+msgid "This field does not match the related field value."
+msgstr "该字段与相关字段值不匹配。"
+
+#: inc/checkout-validation.php:211
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "CPF 号码\"{cpf_number}\"无效。"
+
+#: inc/checkout-validation.php:212
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "CNPJ 编号\"{cnpj_number}\"无效。"
+
+#: inc/checkout-validation.php:369, templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
+msgid "(Required)"
+msgstr "(必须填写）"
+
+#: inc/checkout-widget-areas.php:98
+msgid "Checkout Header - Desktop"
+msgstr "结账标题 - 桌面"
+
+#: inc/checkout-widget-areas.php:100
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr "在结账标题上显示小部件，以适应大屏幕。仅在使用插件的结账标题时显示。"
+
+#: inc/checkout-widget-areas.php:108
+msgid "Checkout Header - Mobile"
+msgstr "结账标题 - 移动版"
+
+#: inc/checkout-widget-areas.php:110
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
+msgstr "在结账标题下方为移动设备显示小部件。仅在使用插件的结账标题时显示。"
+
+#: inc/checkout-widget-areas.php:122
+msgid "Checkout Sidebar"
+msgstr "结账侧边栏"
+
+#: inc/checkout-widget-areas.php:124
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr "在订单摘要后的结账侧边栏上显示小工具。"
+
+#: inc/checkout-widget-areas.php:134
+msgid "Checkout Order Summary"
+msgstr "结账订单摘要"
+
+#: inc/checkout-widget-areas.php:136
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "在结账页面的订单摘要中显示小部件。"
+
+#: inc/checkout-widget-areas.php:144
+msgid "Checkout Below Place Order"
+msgstr "在下方结账 下订单"
+
+#: inc/checkout-widget-areas.php:146
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "在结账页面的下单按钮下方显示小部件。"
+
+#: inc/checkout-widget-areas.php:158
+msgid "Checkout Footer"
+msgstr "结账页脚"
+
+#: inc/checkout-widget-areas.php:160
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
+msgstr "在结账页脚显示小工具。仅在使用插件的结账页脚时显示。"
+
+#: inc/design-templates.php:115
+msgid "Classic"
+msgstr "经典"
+
+#: inc/design-templates.php:116
+msgid "Boxed"
+msgstr "盒装"
+
+#: inc/design-templates.php:117
+msgid "Split"
+msgstr "分割"
+
+#: inc/design-templates.php:118
+msgid "Minimalist"
+msgstr "极简主义"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:47
+msgid "Fluid Checkout Lite 4.0+ – Important changes!"
+msgstr "Fluid Checkout Lite 4.0+ - 重要更改！"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:48
+msgid ""
+"With this version of Fluid Checkout we have introduced <strong>important "
+"changes that might impact your website</strong> if you have made "
+"customizations to our plugins previously to the release of this version. If "
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
+msgstr ""
+"在此版本的 Fluid Checkout "
+"中，我们引入了<strong>重要更改，如果您在此版本发布之前对我们的插件进行了自定义，这些更改可能会对您的网站造成影响</"
+"strong>。<br><br>如果您的网站没有对 Fluid Checkout "
+"插件进行任何定制，则其工作方式应与以前相同。<br><br>如果您的网站对 Fluid Checkout "
+"进行了任何定制，但尚未将其迁移到此版本，请阅读我们的指南 <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">将定制迁移到 Fluid Checkout Lite 4.0+</a> 。"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:51
+msgid "Read the migration guide"
+msgstr "阅读迁移指南"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
+msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
+msgstr "CodeRockz 的流畅结账和交货日期插件"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
+msgid ""
+"<p>We detected that you are using the plugins Delivery & Pickup Date Time "
+"for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins "
+"have been moved to Fluid Checkout PRO.</p>"
+msgstr ""
+"<p>我们检测到您正在使用 CodeRockz 的 WooCommerce Delivery & Pickup Date Time "
+"插件（免费和专业版）。与这些插件的集成已移至 Fluid Checkout PRO。"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+msgid "Upgrade to PRO"
+msgstr "升级至专业版"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "What should I do?"
+msgstr "我该怎么办？"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:55
+msgid "Fluid Checkout database updated successfully"
+msgstr "流体结账数据库更新成功"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:56
+msgid "The database changes where applied successfully."
+msgstr "数据库更改已成功应用。"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:59
+msgid "Ok"
+msgstr "好的"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
+msgstr "解散"
+
+#: inc/admin/admin-notice-db-migrations.php:51
+msgid "Fluid Checkout database update"
+msgstr "流体结账数据库更新"
+
+#: inc/admin/admin-notice-db-migrations.php:52
+msgid ""
+"Some changes to the database are required. As with any update, we recommend "
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
+msgstr "需要对数据库进行一些更改。与任何更新一样，我们建议您在进行更新之前<strong>对网站进行完整备份</strong>。"
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "Update database"
+msgstr "更新数据库"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
+msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
+msgstr "Fluid Checkout 与 Divi Builder 结账布局不兼容"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
+msgid ""
+"<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
+"form to work. When using the Divi Builder to customize the look and feel of "
+"the checkout page, the classic shortcodes are replaced with custom widgets "
+"from the Divi Builder for each part of the checkout page. These custom "
+"widgets are not compatible with Fluid Checkout.</p><p>Please edit your "
+"checkout page replacing the Divi Builder widgets with the a text widget "
+"containing the shortcode <code>[woocommerce_checkout]</code>.</p>"
+msgstr ""
+"<p>Fluid Checkout 需要使用基于 WooCommerce 简码的经典结账表单。当使用 Divi "
+"创建工具自定义结账页面的外观和感觉时，经典的快捷代码会被 Divi 创建工具中用于结账页面各部分的自定义部件所取代。这些自定义部件与 Fluid "
+"Checkout 不兼容。</p><p>请编辑您的结账页面，将 Divi 创建工具部件替换为包含简码 "
+"<code>[woocommerce_checkout]</code> 的文本部件。"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
+msgid "Edit the checkout page"
+msgstr "编辑结账页面"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+msgid "Read the documentation."
+msgstr "阅读文件。"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr "使用 Fluid Checkout 时，需要禁用德语化的 PRO 多步骤结账功能"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+"使用 Fluid Checkout 时，Germanized PRO 插件的多步骤功能变得不必要，并可能在处理新订单时导致 "
+"<strong>关键错误</strong>。请在插件设置中禁用 Germanized PRO 多步骤结账功能。"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr "转到德语设置"
+
+#: inc/admin/admin-notice-review-request.php:47
+msgid "Thanks for choosing Fluid Checkout!"
+msgstr "感谢您选择 Fluid Checkout！"
+
+#: inc/admin/admin-notice-review-request.php:48
+msgid ""
+"You have been using the plugin for a while now. How do you like it so far? "
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
+msgstr "您使用该插件已有一段时间了。到目前为止，您觉得它怎么样？<br>请给我们一个快速评价，我们感谢每一点反馈，它鼓励我们不断改进插件:)"
+
+#: inc/admin/admin-notice-review-request.php:50
+msgid "Rate the plugin"
+msgstr "为插件评分"
+
+#: inc/admin/admin-notice-review-request.php:51
+msgid "I need help!"
+msgstr "我需要帮助！"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr "Quadlayers 的 WooCommerce Checkout Manager 插件与 Fluid Checkout 不兼容。"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"与 Fluid Checkout 一起使用时，Quadlayers 的 WooCommerce Checkout Manager "
+"的某些功能可能无法正常工作。请阅读<a href=\"%s\">我们的文档</a>，了解更多信息和替代解决方案。"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "阅读文件"
+
+#: inc/admin/admin-notices.php:55
+msgid "Don't show this again"
+msgstr "不要再放这个了"
+
+#: inc/admin/admin-setting-type-fc-addons.php:41
+msgid "Special offers"
+msgstr "特别优惠"
+
+#: inc/admin/admin-setting-type-fc-addons.php:43
+msgid ""
+"Extend all the goodness of Fluid Checkout to your cart page and thank you "
+"pages."
+msgstr "将 Fluid Checkout 的所有优点扩展到购物车页面和感谢页面。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
+msgid "Fluid Checkout PRO"
+msgstr "流体检查仪 PRO"
+
+#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
+msgid ""
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
+msgstr "设计模板、优化购物车和订单接收页面、账户匹配等等。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
+msgid ""
+"The best tools to further <strong>improve your WooCommerce checkout "
+"conversion rate</strong> and make the purchase experience consistent on the "
+"entire journey."
+msgstr "用于进一步<strong>提高 WooCommerce 结账转化率</strong>并使整个旅程的购买体验保持一致的最佳工具。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:57
+msgid "More design templates"
+msgstr "更多设计模板"
+
+#: inc/admin/admin-setting-type-fc-addons.php:58
+msgid "Optimized cart page"
+msgstr "优化购物车页面"
+
+#: inc/admin/admin-setting-type-fc-addons.php:59
+msgid "Optimized order received / thank you page"
+msgstr "优化订单接收/感谢页面"
+
+#: inc/admin/admin-setting-type-fc-addons.php:60
+msgid "Edit cart contents at checkout page"
+msgstr "在结账页面编辑购物车内容"
+
+#: inc/admin/admin-setting-type-fc-addons.php:61
+msgid "Account matching / user matching"
+msgstr "账户匹配/用户匹配"
+
+#: inc/admin/admin-setting-type-fc-addons.php:62
+msgid "Express Checkout buttons from supported payment methods"
+msgstr "支持的付款方式中的快速结账按钮"
+
+#: inc/admin/admin-setting-type-fc-addons.php:63
+msgid "Trust symbols on the cart and thank you pages"
+msgstr "购物车和感谢页面上的信任符号"
+
+#: inc/admin/admin-setting-type-fc-addons.php:64
+msgid "More positions for the coupon code on the checkout page"
+msgstr "优惠券代码在结账页面的更多位置"
+
+#: inc/admin/admin-setting-type-fc-addons.php:65
+msgid "Integrated coupon code field on the cart page"
+msgstr "在购物车页面集成优惠券代码字段"
+
+#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+msgid "International phone numbers"
+msgstr "国际电话号码"
+
+#: inc/admin/admin-setting-type-fc-addons.php:67
+msgid "Gift messages and packing slips"
+msgstr "礼品信息和包装单"
+
+#: inc/admin/admin-setting-type-fc-addons.php:68
+msgid "Local pickup and in-store collection"
+msgstr "当地取货和店内取货"
+
+#: inc/admin/admin-setting-type-fc-addons.php:72
+msgid "Upgrade to PRO &mdash; 99 EUR"
+msgstr "升级至专业版 &mdash; 99 欧元"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
+msgid "Fluid Checkout PRO – Bundle"
+msgstr "流体结账专业版 - 捆包"
+
+#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
+msgid "All PRO features + All add-ons for a special price."
+msgstr "所有专业功能 + 所有附加组件，价格优惠。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
+msgid ""
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
+msgstr "该捆绑包包括我们目前提供的所有附加组件和我们将来推出的 Fluid Checkout 附加组件。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "价值 226 欧元（节省 42）"
+
+#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
+msgid "Google Address Autocomplete"
+msgstr "谷歌地址自动完成"
+
+#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
+msgid "Address Book"
+msgstr "地址簿"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "欧盟增值税助理"
+
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons *"
+msgstr "所有未来附加组件 *"
+
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* 只要您还在使用订阅服务。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
+msgid "Get the Bundle – Only 129 EUR"
+msgstr "获取套餐 - 仅 129 欧元"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
+msgid ""
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
+msgstr "所有价格均以欧元显示。如果与我们网站上的价格有任何差异，则以网站上的报价为准。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:116
+msgid "Add-ons"
+msgstr "附加组件"
+
+#: inc/admin/admin-setting-type-fc-addons.php:117
+msgid "Enhance your checkout experience with these add-ons."
+msgstr "使用这些附加组件增强您的结账体验。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:137
+msgid "I already have it – Hide this offer"
+msgstr "我已经有了 - 隐藏此优惠"
+
+#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
+msgid "Installed &mdash; Activate"
+msgstr "安装 &mdash; 激活"
+
+#: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
+msgid "Activated"
+msgstr "激活"
+
+#: inc/admin/admin-setting-type-fc-addons.php:168
+msgid "Up to 40% less checkout fields to fill in."
+msgstr "最多可减少 40% 的结账填写字段。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:172
+msgid ""
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
+msgstr "避免送货延误和客户不满意。在客户第一次向您购买时，就收集<strong>正确的地址信息</strong>。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:180
+msgid "Get this add-on &mdash; 29 EUR"
+msgstr "获取此附加组件 &mdash; 29 欧元"
+
+#: inc/admin/admin-setting-type-fc-addons.php:189
+msgid "Address book"
+msgstr "地址簿"
+
+#: inc/admin/admin-setting-type-fc-addons.php:190
+msgid "Multiple saved addresses for shipping and billing."
+msgstr "为发货和账单保存多个地址。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:194
+msgid ""
+"Let customers <strong>save multiple shipping and billing addresses</strong> "
+"on their account and choose which ones to use at checkout and cart pages."
+msgstr "让客户<strong>在其账户中保存多个送货地址和账单地址</strong>，并在结账和购物车页面中选择使用哪个地址。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
+msgid "Get this add-on &mdash; 59 EUR"
+msgstr "获取此附加组件 &mdash; 59 欧元"
+
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "为您的商店简化欧盟增值税验证。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr "在结账页面收集和<strong>验证欧盟增值税号</strong>，根据反向收费原则移除税费，并在需要时确认客户所在地。"
+
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "获取此附加组件 &mdash; 39 欧元"
+
+#: inc/admin/admin-setting-type-fc-addons.php:233
+msgid ""
+"All add-ons are sold separately and require the <strong>Fluid Checkout "
+"Lite</strong> plugin to be installed and activated, except when noted."
+msgstr "所有附加组件均单独销售，并且需要安装和激活 <strong>Fluid Checkout Lite</strong> 插件，除非另有说明。"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "选择图像"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "未选择图像。"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "移除图像"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:142
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to get your license key, or <a href=\"%s\" "
+"target=\"_blank\">purchase a new license key</a>."
+msgstr ""
+"<a href=\"https://fluidcheckout.com/account/\" "
+"target=\"_blank\">登录您的帐户</a>获取许可证密钥，或 <a href=\"%s\" "
+"target=\"_blank\">购买新的许可证密钥</a>。"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
+msgid "Valid until %s."
+msgstr "有效期至 %s。"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
+msgid "Expired on %s."
+msgstr "已于 %s 到期。"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:160
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to renew your license key and continue to receive updates "
+"and support."
+msgstr ""
+"<a href=\"https://fluidcheckout.com/account/\" "
+"target=\"_blank\">登录到您的账户</a>，更新许可证密钥并继续接收更新和支持。"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:163
+msgid "License key cancelled."
+msgstr "许可证密钥已取消。"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:165
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
+msgstr "<a href=\"%s\" target=\"_blank\">购买新的许可证密钥</a>并继续接收更新和支持。"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:168
+msgid "Error: "
+msgstr "错误："
+
+#: inc/admin/admin-setting-type-fc-setup.php:41
+msgid "Setup & Documentation"
+msgstr "设置和文档"
+
+#: inc/admin/admin-setting-type-fc-setup.php:42
+msgid "Great! Your checkout page is now running on Fluid Checkout."
+msgstr "太好了！您的结账页面现在已在 Fluid Checkout 上运行。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:44
+msgid "Here are a few resources for you to get started:"
+msgstr "这里有一些资源供您开始使用："
+
+#: inc/admin/admin-setting-type-fc-setup.php:48
+msgid ""
+"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
+"with Fluid Checkout</a>."
+msgstr "请阅读安装指南<a href=\"%s\" target=\"_blank\">使用流体检出</a>。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:49
+msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "在<a href=\"%s\">结账选项</a>上设置布局和设计。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:50
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"other plugins you have installed."
+msgstr "检查您安装的其他插件是否有<a href=\"%s\">集成选项</a>可用。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:51
+msgid ""
+"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
+"information about Fluid Checkout features."
+msgstr "请访问 <a href=\"%s\" target=\"_blank\">我们的文档</a>，了解有关 Fluid Checkout 功能的更多信息。"
+
+#: inc/admin/admin-setting-type-fc-setup.php:52
+msgid ""
+"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
+"ticket</a> on our official support channel."
+msgstr "如果您需要帮助，<a href=\"%s\" target=\"_blank\">请在我们的官方支持频道上打开支持票据</a>。"
+
+#: inc/admin/admin-settings-cart.php:71
+msgid "Cart layout"
+msgstr "购物车布局"
+
+#: inc/admin/admin-settings-cart.php:78
+msgid "Cart optimizations"
+msgstr "购物车优化"
+
+#: inc/admin/admin-settings-cart.php:79
+msgid "Enable cart page optimizations"
+msgstr "启用购物车页面优化"
+
+#: inc/admin/admin-settings-cart.php:80
+msgid "Display the cart page with a layout similar to the checkout page."
+msgstr "显示购物车页面，其布局与结账页面类似。"
+
+#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
+msgid "Header and footer"
+msgstr "页眉和页脚"
+
+#: inc/admin/admin-settings-cart.php:103
+msgid "Header and footer template"
+msgstr "页眉和页脚模板"
+
+#: inc/admin/admin-settings-cart.php:104, inc/admin/admin-settings-checkout.php:126
+msgid ""
+"Controls whether to use the distraction free page header and footer or keep "
+"the currently active theme's header and footer."
+msgstr "控制是使用无干扰页眉和页脚，还是保留当前活动主题的页眉和页脚。"
+
+#: inc/admin/admin-settings-cart.php:108, inc/admin/admin-settings-checkout.php:130
+msgid "Distraction free header and footer"
+msgstr "无干扰的页眉和页脚"
+
+#: inc/admin/admin-settings-cart.php:109, inc/admin/admin-settings-checkout.php:131
+msgid "Theme's header and footer"
+msgstr "主题的页眉和页脚"
+
+#: inc/admin/admin-settings-cart.php:124
+msgid "Cart elements"
+msgstr "购物车元素"
+
+#: inc/admin/admin-settings-cart.php:132
+msgid "Make the order summary stay visible on the cart page while scrolling"
+msgstr "在滚动购物车页面时，使订单摘要保持可见"
+
+#: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
+msgid "Coupon codes"
+msgstr "优惠券代码"
+
+#: inc/admin/admin-settings-cart.php:142
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart and the integrated coupon codes in the "
+"checkout page are enabled."
+msgstr "选择在购物车页面上显示优惠券代码部分的位置。仅适用于启用 AJAX 购物车和结账页面集成优惠券代码的情况。"
+
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+msgid "Hidden"
+msgstr "隐藏"
+
+#: inc/admin/admin-settings-cart.php:147
+msgid "Before the cart items section"
+msgstr "购物车项目部分之前"
+
+#: inc/admin/admin-settings-cart.php:148
+msgid "Inside the cart items section"
+msgstr "购物车项目部分"
+
+#: inc/admin/admin-settings-cart.php:149, inc/admin/admin-settings-cart.php:185
+msgid "After the cart items section"
+msgstr "购物车项目部分之后"
+
+#: inc/admin/admin-settings-cart.php:150
+msgid "Before the shipping section"
+msgstr "在运输部分之前"
+
+#: inc/admin/admin-settings-cart.php:151
+msgid "After the shipping section"
+msgstr "在运输部分之后"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid "Before the order summary"
+msgstr "订单摘要之前"
+
+#: inc/admin/admin-settings-cart.php:153, inc/admin/admin-settings-cart.php:171, inc/admin/admin-settings-checkout.php:393
+msgid "Inside the order summary"
+msgstr "订单摘要内页"
+
+#: inc/admin/admin-settings-cart.php:154, inc/admin/admin-settings-checkout.php:394
+msgid "Before the order totals"
+msgstr "订单总数之前"
+
+#: inc/admin/admin-settings-cart.php:155, inc/admin/admin-settings-checkout.php:395
+msgid "After the order totals"
+msgstr "订单总数之后"
+
+#: inc/admin/admin-settings-cart.php:156, inc/admin/admin-settings-cart.php:188
+msgid "After the order summary"
+msgstr "订单摘要之后"
+
+#: inc/admin/admin-settings-cart.php:164
+msgid "Shipping"
+msgstr "运输"
+
+#: inc/admin/admin-settings-cart.php:165
+msgid ""
+"Select position where to display the shipping costs and calculator on the "
+"cart page."
+msgstr "选择在购物车页面显示运费和计算器的位置。"
+
+#: inc/admin/admin-settings-cart.php:170
+msgid "Display as a cart section"
+msgstr "显示为购物车部分"
+
+#: inc/admin/admin-settings-cart.php:179
+msgid "Cross-sells"
+msgstr "交叉销售"
+
+#: inc/admin/admin-settings-cart.php:180
+msgid "Select position where to display the cross-sells section on the cart page."
+msgstr "选择在购物车页面上显示交叉销售部分的位置。"
+
+#: inc/admin/admin-settings-cart.php:186
+msgid "Before the cart actions"
+msgstr "购物车操作前"
+
+#: inc/admin/admin-settings-cart.php:187
+msgid "After the cart actions"
+msgstr "购物车操作后"
+
+#: inc/admin/admin-settings-cart.php:198
+msgid "Layout of cross-sell items on the cart page."
+msgstr "购物车页面上交叉销售项目的布局。"
+
+#: inc/admin/admin-settings-cart.php:201
+msgid "Optimized horizontal cross-sells layout"
+msgstr "优化横向交叉销售布局"
+
+#: inc/admin/admin-settings-cart.php:202
+msgid "Theme's cross-sells layout"
+msgstr "主题的交叉销售布局"
+
+#: inc/admin/admin-settings-cart.php:210
+msgid "Number of cross-sell items to display on the cart page"
+msgstr "购物车页面上要显示的交叉销售项目数量"
+
+#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+msgid "Trust symbols &amp; badges"
+msgstr "信任符号和徽章"
+
+#: inc/admin/admin-settings-cart.php:220
+msgid "Add widget areas to the cart page"
+msgstr "在购物车页面添加小部件区域"
+
+#: inc/admin/admin-settings-cart.php:221
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"cart page."
+msgstr "这些部件区域用于在购物车页面上添加信任符号和信任徽章。"
+
+#: inc/admin/admin-settings-checkout.php:50
+msgid "Checkout"
+msgstr "结账"
+
+#: inc/admin/admin-settings-checkout.php:71
+msgid "Layout &amp; design"
+msgstr "布局和设计"
+
+#: inc/admin/admin-settings-checkout.php:78
+msgid "Checkout layout"
+msgstr "结账布局"
+
+#: inc/admin/admin-settings-checkout.php:89
+msgid "Design template"
+msgstr "设计模板"
+
+#: inc/admin/admin-settings-checkout.php:90
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Might also apply to other pages such as the Cart, Order Received and View "
+"Order pages."
+msgstr "结账步骤、订单摘要和其他部分的一般样式。也可能适用于其他页面，如购物车、已收到订单和查看订单页面。"
+
+#: inc/admin/admin-settings-checkout.php:101
+msgid "Dark mode"
+msgstr "黑暗模式"
+
+#: inc/admin/admin-settings-checkout.php:102
+msgid "Enable dark mode"
+msgstr "启用黑暗模式"
+
+#: inc/admin/admin-settings-checkout.php:124
+msgid "Header and footer templates"
+msgstr "页眉和页脚模板"
+
+#: inc/admin/admin-settings-checkout.php:125
+msgid ""
+"We recommend using the distraction free header and footer to avoid "
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"我们建议使用无干扰页眉和页脚，以避免结账页面出现干扰。<a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">阅读有关购物车放弃的研究</a>。"
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Logo image"
+msgstr "徽标图像"
+
+#: inc/admin/admin-settings-checkout.php:139
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the distraction free header and footer."
+msgstr "选择要显示在结账页面页眉上的图片。仅适用于使用无干扰页眉和页脚。"
+
+#: inc/admin/admin-settings-checkout.php:148
+msgid "Header background color"
+msgstr "标题背景颜色"
+
+#: inc/admin/admin-settings-checkout.php:149
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the distraction free header and footer."
+msgstr "为结账页面页眉选择背景颜色。仅适用于使用无干扰页眉和页脚。"
+
+#: inc/admin/admin-settings-checkout.php:150, inc/admin/admin-settings-checkout.php:161, inc/admin/admin-settings-checkout.php:172, inc/admin/admin-settings-checkout.php:258
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "HTML 颜色值，即#f3f3f3"
+
+#: inc/admin/admin-settings-checkout.php:159
+msgid "Page background color"
+msgstr "页面背景颜色"
+
+#: inc/admin/admin-settings-checkout.php:160
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
+msgstr "为结账页面选择背景颜色。颜色应用于 <em>body</em> 元素。"
+
+#: inc/admin/admin-settings-checkout.php:170
+msgid "Footer background color"
+msgstr "页脚背景颜色"
+
+#: inc/admin/admin-settings-checkout.php:171
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the distraction free header and footer."
+msgstr "为结账页面页脚选择背景颜色。仅适用于使用无干扰页眉和页脚。"
+
+#: inc/admin/admin-settings-checkout.php:188
+msgid "Checkout elements"
+msgstr "结账要素"
+
+#: inc/admin/admin-settings-checkout.php:195
+msgid "Progress bar"
+msgstr "进度条"
+
+#: inc/admin/admin-settings-checkout.php:196
+msgid "Display the checkout progress bar when using multi-step checkout layout"
+msgstr "使用多步骤结账布局时显示结账进度条"
+
+#: inc/admin/admin-settings-checkout.php:205
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr "使结账进度条在滚动时保持可见"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Express checkout"
+msgstr "快速结账"
+
+#: inc/admin/admin-settings-checkout.php:216
+msgid "Enable the express checkout section"
+msgstr "启用快速结账部分"
+
+#: inc/admin/admin-settings-checkout.php:217
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr "如果支持的支付网关启用了快速结账功能，则在结账时显示快速结账部分。"
+
+#: inc/admin/admin-settings-checkout.php:227
+msgid "Display express checkout buttons in one line for larger screens"
+msgstr "在大屏幕上单行显示快递结账按钮"
+
+#: inc/admin/admin-settings-checkout.php:237
+msgid ""
+"Ignore additional checkout required fields when paying with a compatible "
+"express checkout payment gateway"
+msgstr "使用兼容的快速结账支付网关支付时，忽略额外的结账必填字段"
+
+#: inc/admin/admin-settings-checkout.php:249
+msgid "Make the order summary stay visible while scrolling"
+msgstr "使订单摘要在滚动时保持可见"
+
+#: inc/admin/admin-settings-checkout.php:257
+msgid "Choose a background color for the order summary section."
+msgstr "为订单摘要部分选择背景颜色。"
+
+#: inc/admin/admin-settings-checkout.php:267
+msgid "Highlight the order totals row in the order summary table"
+msgstr "突出显示订单汇总表中的订单总数行"
+
+#: inc/admin/admin-settings-checkout.php:268
+msgid ""
+"Most useful when the order summary section does not have a highlighted "
+"background color. Might also apply to the Cart, Order Received and View "
+"Order pages when using Fluid Checkout PRO."
+msgstr "在订单摘要部分没有高亮背景色时最有用。当使用流畅结账专业版时，也可能适用于购物车、已收到订单和查看订单页面。"
+
+#: inc/admin/admin-settings-checkout.php:276
+msgid "Action link on the order summary at checkout."
+msgstr "结账时订单摘要上的行动链接。"
+
+#: inc/admin/admin-settings-checkout.php:280
+msgid "Edit cart link"
+msgstr "编辑购物车链接"
+
+#: inc/admin/admin-settings-checkout.php:281
+msgid "Cart items count"
+msgstr "购物车项目计数"
+
+#: inc/admin/admin-settings-checkout.php:282
+msgid "Link to shop page"
+msgstr "链接至商店页面"
+
+#: inc/admin/admin-settings-checkout.php:289
+msgid "Cart items"
+msgstr "购物车项目"
+
+#: inc/admin/admin-settings-checkout.php:290
+msgid "Enable options to edit cart items on the checkout page"
+msgstr "启用在结账页面编辑购物车项目的选项"
+
+#: inc/admin/admin-settings-checkout.php:291
+msgid ""
+"Allow customers to change product quantities or removing items directly at "
+"the checkout page."
+msgstr "允许客户在结账页面直接更改产品数量或删除产品。"
+
+#: inc/admin/admin-settings-checkout.php:301
+msgid "Hide cart items errors at the checkout page"
+msgstr "在结账页面隐藏购物车项目错误"
+
+#: inc/admin/admin-settings-checkout.php:302
+msgid ""
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
+msgstr "不要在结账页面顶部显示购物车项目错误信息。在提交结账表单完成购买时，将始终显示这些错误信息。"
+
+#: inc/admin/admin-settings-checkout.php:313
+msgid "Place order"
+msgstr "下订单"
+
+#: inc/admin/admin-settings-checkout.php:314
+msgid "Define the position to display \"Place order\" and terms checkbox section."
+msgstr "定义显示 \"下订单 \"和条款复选框部分的位置。"
+
+#: inc/admin/admin-settings-checkout.php:315
+msgid "Some options might not be compatible with some plugins and themes."
+msgstr "某些选项可能与某些插件和主题不兼容。"
+
+#: inc/admin/admin-settings-checkout.php:319
+msgid "Below the payment section"
+msgstr "付款部分下方"
+
+#: inc/admin/admin-settings-checkout.php:320
+msgid "Below the order summary"
+msgstr "订单摘要下方"
+
+#: inc/admin/admin-settings-checkout.php:321
+msgid "Both below the payment section and the order summary"
+msgstr "付款部分和订单摘要下方均有"
+
+#: inc/admin/admin-settings-checkout.php:329
+msgid "Add widget areas to the checkout page"
+msgstr "在结账页面添加小部件区域"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"checkout page."
+msgstr "这些小部件区域用于在结账页面上添加信任符号和信任徽章。"
+
+#: inc/admin/admin-settings-checkout.php:339
+msgid ""
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
+msgstr "使用多步骤结账布局时，仅在移动设备上查看最后一个结账步骤时显示结账侧边栏小部件"
+
+#: inc/admin/admin-settings-checkout.php:364
+msgid "Enable integrated coupon code section"
+msgstr "启用集成优惠券代码部分"
+
+#: inc/admin/admin-settings-checkout.php:365
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr "仅适用于在 WooCommerce 设置中启用了优惠券代码的情况。"
+
+#: inc/admin/admin-settings-checkout.php:374
+msgid "Display the coupon codes section title"
+msgstr "显示优惠券代码部分标题"
+
+#: inc/admin/admin-settings-checkout.php:375
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr "仅适用于优惠券代码作为单独部分显示在结账或购物车页面时。"
+
+#: inc/admin/admin-settings-checkout.php:385
+msgid ""
+"Select position where to display the coupon codes section on the checkout "
+"page."
+msgstr "选择在结账页面上显示优惠券代码部分的位置。"
+
+#: inc/admin/admin-settings-checkout.php:390
+msgid "Before the checkout steps"
+msgstr "结账步骤前"
+
+#: inc/admin/admin-settings-checkout.php:391
+msgid "As a substep before payment methods"
+msgstr "作为付款方式之前的一个子步骤"
+
+#: inc/admin/admin-settings-checkout.php:392
+msgid "As a substep after payment methods"
+msgstr "作为付款方式之后的一个子步骤"
+
+#: inc/admin/admin-settings-checkout.php:402
+msgid ""
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
+msgstr "选择 \"应用优惠券 \"按钮的样式。仅适用于在结账页面的 \"结账步骤之前 \"或购物车页面的 \"购物车项目之前 \"显示优惠券代码部分。"
+
+#: inc/admin/admin-settings-checkout.php:406
+msgid "Default button style"
+msgstr "默认按钮样式"
+
+#: inc/admin/admin-settings-checkout.php:407
+msgid "\"Add\" link button"
+msgstr "\"添加 \"链接按钮"
+
+#: inc/admin/admin-settings-checkout.php:422, inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102, inc/compat/themes/compat-theme-zk-nito.php:87
+msgid "Checkout fields"
+msgstr "结账字段"
+
+#: inc/admin/admin-settings-checkout.php:429
+msgid "Optional fields"
+msgstr "可选字段"
+
+#: inc/admin/admin-settings-checkout.php:430
+msgid "Hide optional fields behind a link button"
+msgstr "在链接按钮后面隐藏可选字段"
+
+#: inc/admin/admin-settings-checkout.php:431
+msgid ""
+"It is recommended to keep this option checked to reduce the number of open "
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"建议选中此选项，以减少开放输入字段的数量，<a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">阅读研究</a>。"
+
+#: inc/admin/admin-settings-checkout.php:440
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr "不要在链接按钮后面隐藏 \"地址行 2 \"字段"
+
+#: inc/admin/admin-settings-checkout.php:441
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr "只有当大多数客户确实需要 \"地址行 2 \"字段，或者获得正确的送货地址至关重要时（如运送食品和其他易腐产品），才建议使用。"
+
+#: inc/admin/admin-settings-checkout.php:451
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "以小写显示 \"添加 \"链接按钮"
+
+#: inc/admin/admin-settings-checkout.php:452
+msgid ""
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
+msgstr ""
+"将可选字段 \"添加 \"链接按钮的标签设置为 <code> 小写</code>（即 \"添加电话号码 \"而不是 "
+"\"添加电话号码\"）。此选项也会影响优惠券代码字段的链接按钮。"
+
+#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+msgid "Billing address"
+msgstr "账单地址"
+
+#: inc/admin/admin-settings-checkout.php:461
+msgid ""
+"Select position where to display the billing address section on the "
+"checkout page."
+msgstr "选择在结账页面上显示账单地址部分的位置。"
+
+#: inc/admin/admin-settings-checkout.php:465
+msgid "As a step before shipping"
+msgstr "作为运输前的一个步骤"
+
+#: inc/admin/admin-settings-checkout.php:466
+msgid "As a sub-step before the shipping address section"
+msgstr "作为送货地址部分之前的一个子步骤"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "As a sub-step after the shipping address section"
+msgstr "作为送货地址部分之后的一个子步骤"
+
+#: inc/admin/admin-settings-checkout.php:468
+msgid "As a step after shipping"
+msgstr "作为运输后的一个步骤"
+
+#: inc/admin/admin-settings-checkout.php:469
+msgid "As a sub-step before the payment section"
+msgstr "作为付款部分之前的一个子步骤"
+
+#: inc/admin/admin-settings-checkout.php:470
+msgid "Force billing and shipping addresses to the same (single section)"
+msgstr "强制账单地址和送货地址相同（单一部分）"
+
+#: inc/admin/admin-settings-checkout.php:477
+msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
+msgstr "默认选中 \"与发货/账单地址相同 \"复选框"
+
+#: inc/admin/admin-settings-checkout.php:478
+msgid ""
+"The checkbox \"Same as shiping address\" will start as checked by default "
+"when the shipping address section is displayed first. <br>The checkbox "
+"\"Same as billing address\" will start as checked by default when the "
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
+msgstr ""
+"当先显示送货地址部分时，\"与送货地址相同 \"复选框将默认选中。<br>当先显示账单地址部分时，\"与账单地址相同 \"复选框将默认选中。<br> "
+"建议选中此选项，以大幅减少结账时打开的输入字段数量，<a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">阅读研究</a>。"
+
+#: inc/admin/admin-settings-checkout.php:486
+msgid "Highlight the billing address section in the checkout form"
+msgstr "突出显示结账表单中的账单地址部分"
+
+#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+msgid "Shipping address"
+msgstr "送货地址"
+
+#: inc/admin/admin-settings-checkout.php:495
+msgid "Highlight the shipping address section in the checkout form"
+msgstr "突出显示结账表单中的送货地址部分"
+
+#: inc/admin/admin-settings-checkout.php:503
+msgid "Shipping methods"
+msgstr "运输方式"
+
+#: inc/admin/admin-settings-checkout.php:504
+msgid "Choose in which position to display the shipping methods section."
+msgstr "选择在哪个位置显示运送方式部分。"
+
+#: inc/admin/admin-settings-checkout.php:508
+msgid "Before shipping address"
+msgstr "送货地址前"
+
+#: inc/admin/admin-settings-checkout.php:509
+msgid "After shipping address"
+msgstr "送货地址后"
+
+#: inc/admin/admin-settings-checkout.php:516
+msgid "Prevent automatic selection of the first shipping method"
+msgstr "防止自动选择第一种运送方式"
+
+#: inc/admin/admin-settings-checkout.php:517
+msgid ""
+"When enabled, the first shipping method available will not be automatically "
+"selected when no other shipping method was previously selected for each "
+"shipping package. <br>This option will be automatically enabled if the "
+"option for clearing the selected shipping method is enabled for the Local "
+"Pickup feature."
+msgstr ""
+"启用后，如果之前没有为每个送货包选择其他送货方法，则不会自动选择第一个可用的送货方法。<br>如果本地取货功能启用了清除所选运送方法的选项，则此选项将自"
+"动启用。"
+
+#: inc/admin/admin-settings-checkout.php:526
+msgid "Local pickup"
+msgstr "本地取件"
+
+#: inc/admin/admin-settings-checkout.php:527
+msgid ""
+"Removes shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "选择本地取货送货方式时，删除送货地址部分。"
+
+#: inc/admin/admin-settings-checkout.php:528
+msgid ""
+"Replaces the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr "选择本地取货发货方式时，用取货点位置替换发货地址。"
+
+#: inc/admin/admin-settings-checkout.php:538
+msgid "Show option to clear shipping methods in the pickup location substep"
+msgstr "在取货地点子步骤中显示清除运送方法的选项"
+
+#: inc/admin/admin-settings-checkout.php:539
+msgid ""
+"Show a link button on the pickup location substep to clear the chosen "
+"shipping methods. This can be used to allow showing the shipping address "
+"section again if a local pickup method was previously selected."
+msgstr "在取货地点子步骤中显示一个链接按钮，以清除所选的送货方式。如果之前选择了本地取货方式，则可使用此按钮再次显示送货地址部分。"
+
+#: inc/admin/admin-settings-checkout.php:550
+msgid ""
+"Choose which address to save as the shipping address for local pickup "
+"orders."
+msgstr "选择哪个地址作为本地取货订单的送货地址。"
+
+#: inc/admin/admin-settings-checkout.php:554
+msgid "Save the selected pickup location"
+msgstr "保存选定的取件位置"
+
+#: inc/admin/admin-settings-checkout.php:555
+msgid "Save same as the billing address"
+msgstr "保存与账单地址相同"
+
+#: inc/admin/admin-settings-checkout.php:556
+msgid "Do not save any shipping address"
+msgstr "请勿保存任何送货地址"
+
+#: inc/admin/admin-settings-checkout.php:564
+msgid "Company name field for shipping address"
+msgstr "送货地址的公司名称字段"
+
+#: inc/admin/admin-settings-checkout.php:565
+msgid ""
+"Change visibility for the company name field for the shipping address "
+"section on the checkout form."
+msgstr "更改结账表单送货地址部分公司名称字段的可见性。"
+
+#: inc/admin/admin-settings-checkout.php:566
+msgid ""
+"If field is set as \"optional\", which is the default visibility state, no "
+"changes will be applied to let other plugins apply any changes they need."
+msgstr "如果字段设置为 \"可选\"（默认可见状态），则不会应用任何更改，以便其他插件应用它们需要的任何更改。"
+
+#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+msgid "Hidden (remove field)"
+msgstr "隐藏（删除字段）"
+
+#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+msgid "Optional"
+msgstr "可选"
+
+#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+msgid "Required"
+msgstr "需要"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid "Add shipping phone field to the checkout form."
+msgstr "在结账表单中添加送货电话字段。"
+
+#: inc/admin/admin-settings-checkout.php:594
+msgid "Choose in which step to display the shipping phone field."
+msgstr "选择在哪个步骤中显示发货电话字段。"
+
+#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+msgid "Contact step"
+msgstr "联系步骤"
+
+#: inc/admin/admin-settings-checkout.php:606
+msgid "Billing phone"
+msgstr "账单电话"
+
+#: inc/admin/admin-settings-checkout.php:607
+msgid "Add billing phone field to the checkout form."
+msgstr "在结账表单中添加账单电话字段。"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid "Choose in which step to display the billing phone field."
+msgstr "选择在哪个步骤中显示计费电话字段。"
+
+#: inc/admin/admin-settings-checkout.php:634
+msgid "Enable international phone number format and validation for phone fields"
+msgstr "启用国际电话号码格式并验证电话字段"
+
+#: inc/admin/admin-settings-checkout.php:635
+msgid "Format and validate phone numbers according to each country."
+msgstr "根据每个国家的情况对电话号码进行格式化和验证。"
+
+#: inc/admin/admin-settings-checkout.php:645
+msgid "Enable phone number validation based on country rules"
+msgstr "根据国家规则启用电话号码验证功能"
+
+#: inc/admin/admin-settings-checkout.php:646
+msgid ""
+"When disabled, the phone field validation will not check if country or area "
+"codes are valid for the country."
+msgstr "禁用后，电话字段验证将不会检查国家或地区代码是否有效。"
+
+#: inc/admin/admin-settings-checkout.php:656
+msgid "Only show allowed countries for shipping or billing"
+msgstr "只显示允许发货或计费的国家"
+
+#: inc/admin/admin-settings-checkout.php:657
+msgid ""
+"When enabled, only the countries allowed for shipping will be available in "
+"the shipping phone field, and only countries allowed for billing will be "
+"available for the billing phone field."
+msgstr "启用后，只有允许发货的国家才会出现在发货电话字段中，只有允许计费的国家才会出现在计费电话字段中。"
+
+#: inc/admin/admin-settings-checkout.php:667
+msgid "Show country code beside the flag"
+msgstr "在国旗旁显示国家代码"
+
+#: inc/admin/admin-settings-checkout.php:678
+msgid "Show an example of a valid phone number inside phone fields"
+msgstr "在电话字段内显示有效电话号码的示例"
+
+#: inc/admin/admin-settings-checkout.php:682
+msgid "Do not change placeholders"
+msgstr "请勿更改占位符"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Show if not defined"
+msgstr "未定义时显示"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid "Always show"
+msgstr "始终显示"
+
+#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+msgid "Order notes"
+msgstr "订购说明"
+
+#: inc/admin/admin-settings-checkout.php:693
+msgid "Define the visibility of the additional order notes field."
+msgstr "定义附加订单备注字段的可见性。"
+
+#: inc/admin/admin-settings-checkout.php:705
+msgid "Gift options"
+msgstr "礼品选择"
+
+#: inc/admin/admin-settings-checkout.php:706
+msgid "Display gift message and other gift options at the checkout page"
+msgstr "在结账页面显示礼品信息和其他礼品选项"
+
+#: inc/admin/admin-settings-checkout.php:707
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr "允许客户在订单中添加礼品信息和其他礼品相关选项。"
+
+#: inc/admin/admin-settings-checkout.php:717
+msgid "Display the gift message fields always expanded"
+msgstr "始终展开显示礼物信息字段"
+
+#: inc/admin/admin-settings-checkout.php:727
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr "将礼品信息作为订单详情表的一部分显示，而不是单独显示"
+
+#: inc/admin/admin-settings-checkout.php:728
+msgid ""
+"This option affects the order confirmation page (thank you page) and order "
+"details on account pages, emails and packing slips."
+msgstr "该选项会影响订单确认页面（感谢页面）以及账户页面、电子邮件和装箱单上的订单详情。"
+
+#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+msgid "Account matching"
+msgstr "账户匹配"
+
+#: inc/admin/admin-settings-checkout.php:754
+msgid "Enable the account matching feature"
+msgstr "启用账户匹配功能"
+
+#: inc/admin/admin-settings-checkout.php:755
+msgid ""
+"Associate the guest customer's orders with their existing account when an "
+"account already exists with the customer's contact details."
+msgstr "如果客户的联系信息已存在账户，则将客户的订单与其现有账户关联。"
+
+#: inc/admin/admin-settings-checkout.php:765
+msgid "Display message when an account exists with the email address provided"
+msgstr "当所提供的电子邮件地址存在账户时显示消息"
+
+#: inc/admin/admin-settings-checkout.php:766
+msgid ""
+"Replaces the account creation fields with a notification and option to log "
+"in. In some contexts, it might be recommended to leave this option disabled "
+"to protect the privacy of customers."
+msgstr "用通知和登录选项取代账户创建字段。在某些情况下，建议禁用此选项，以保护客户隐私。"
+
+#: inc/admin/admin-settings-dashboard.php:49
+msgid "Dashboard"
+msgstr "仪表板"
+
+#: inc/admin/admin-settings-integrations.php:51
+msgid "Integrations"
+msgstr "集成"
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
+msgstr "本部分暂时没有可用的集成。与每个插件相关的选项只有在该插件已激活的情况下才会出现在这里。"
+
+#: inc/admin/admin-settings-license-keys.php:54
+msgid "License keys"
+msgstr "许可证密钥"
+
+#: inc/admin/admin-settings-license-keys.php:85
+msgid ""
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
+msgstr "本部分暂时没有许可证密钥选项。与每个插件或附加组件相关的选项将在激活该插件后出现在这里。"
+
+#: inc/admin/admin-settings-license-keys.php:90
+msgid "Visit our website for more information about our plugins and add-ons."
+msgstr "请访问我们的网站，了解有关插件和附加组件的更多信息。"
+
+#: inc/admin/admin-settings-order-pay.php:71
+msgid "Order pay page"
+msgstr "订单支付页面"
+
+#: inc/admin/admin-settings-order-pay.php:78
+msgid "Order pay"
+msgstr "订购付款"
+
+#: inc/admin/admin-settings-order-pay.php:79
+msgid "Enable order pay page optimizations"
+msgstr "启用订单支付页面优化"
+
+#: inc/admin/admin-settings-order-pay.php:80
+msgid ""
+"Changes the layout of order pay page for existing orders pending payment "
+"from the customer."
+msgstr "更改待客户付款的现有订单的订单付款页面布局。"
+
+#: inc/admin/admin-settings-order-pay.php:92
+msgid "Add widget areas to the order pay page"
+msgstr "在订单支付页面添加小部件区域"
+
+#: inc/admin/admin-settings-order-pay.php:93
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"order pay page."
+msgstr "这些小部件区域用于在订单支付页面上添加信任符号和信任徽章。"
+
+#: inc/admin/admin-settings-order-received.php:69
+msgid "Thank you page & order details layout"
+msgstr "感谢页面和订单详情布局"
+
+#: inc/admin/admin-settings-order-received.php:76
+msgid "Order details optimizations"
+msgstr "订单详情优化"
+
+#: inc/admin/admin-settings-order-received.php:77
+msgid "Enable thank you page and order details optimizations"
+msgstr "优化感谢页面和订单详情"
+
+#: inc/admin/admin-settings-order-received.php:78
+msgid "Changes the layout of order details on the thank you page and account pages."
+msgstr "更改感谢页面和账户页面上订单详细信息的布局。"
+
+#: inc/admin/admin-settings-order-received.php:89
+msgid "Enable order details customizations on email notifications"
+msgstr "在电子邮件通知中启用订单详情定制功能"
+
+#: inc/admin/admin-settings-order-received.php:90
+msgid ""
+"Display new sections and change order of sections on email notifications. "
+"Styles of order details on email notifications remain unchanged."
+msgstr "在电子邮件通知中显示新部分并更改部分顺序。电子邮件通知上的订单详情样式保持不变。"
+
+#: inc/admin/admin-settings-order-received.php:108
+msgid "Thank you page"
+msgstr "感谢页面"
+
+#: inc/admin/admin-settings-order-received.php:110
+msgid ""
+"These options affect the thank you page, also known as order received or "
+"order confirmation pages."
+msgstr "这些选项会影响 \"感谢 \"页面，也称为 \"已收到订单 \"或 \"订单确认 \"页面。"
+
+#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
+msgid "Order details layout"
+msgstr "订单详细信息布局"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Display the order details with wide layout on the thank you page"
+msgstr "在 \"感谢 \"页面以宽布局显示订单详情"
+
+#: inc/admin/admin-settings-order-received.php:126
+msgid "Add widget areas to the thank you page"
+msgstr "在感谢页面添加小部件区域"
+
+#: inc/admin/admin-settings-order-received.php:127
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"thank you page."
+msgstr "这些小部件区域用于在感谢页面上添加信任符号和信任徽章。"
+
+#: inc/admin/admin-settings-order-received.php:145
+msgid ""
+"These options affect the thank you page , view order details on account "
+"pages and on email notifications."
+msgstr "这些选项会影响感谢页面、账户页面上的订单详情查看以及电子邮件通知。"
+
+#: inc/admin/admin-settings-order-received.php:150
+msgid "Order actions"
+msgstr "命令行动"
+
+#: inc/admin/admin-settings-order-received.php:151
+msgid "Choose in which position to display the order actions."
+msgstr "选择在哪个位置显示订单操作。"
+
+#: inc/admin/admin-settings-order-received.php:155
+msgid "Inside the order overview"
+msgstr "订单概览"
+
+#: inc/admin/admin-settings-order-received.php:156
+msgid "After the order overview"
+msgstr "订单概览之后"
+
+#: inc/admin/admin-settings-order-received.php:157
+msgid "After order sections"
+msgstr "订购后部分"
+
+#: inc/admin/admin-settings-order-received.php:165
+msgid "Order status"
+msgstr "订单状态"
+
+#: inc/admin/admin-settings-order-received.php:166
+msgid "Display the order status progress bar"
+msgstr "显示订单状态进度条"
+
+#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+msgid "Choose in which position to display the section."
+msgstr "选择在哪个位置显示该部分。"
+
+#: inc/admin/admin-settings-order-received.php:180
+msgid "After the order overview and payment instructions"
+msgstr "订单概述和付款说明之后"
+
+#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+msgid "Before the order items section"
+msgstr "在订单项目部分之前"
+
+#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+msgid "Inside the order items section"
+msgstr "在订单项目部分"
+
+#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+msgid "After the order items section"
+msgstr "在订单项目部分之后"
+
+#: inc/admin/admin-settings-order-received.php:184
+msgid "On the sidebar"
+msgstr "侧边栏"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Order downloads"
+msgstr "订购下载"
+
+#: inc/admin/admin-settings-order-received.php:207
+msgid "Gift message"
+msgstr "礼品信息"
+
+#: inc/admin/admin-settings-tools.php:51
+msgid "Tools"
+msgstr "工具"
+
+#: inc/admin/admin-settings-tools.php:84
+msgid "Troubleshooting"
+msgstr "故障排除"
+
+#: inc/admin/admin-settings-tools.php:91
+msgid "Debug options"
+msgstr "调试选项"
+
+#: inc/admin/admin-settings-tools.php:92
+msgid "Debug mode"
+msgstr "调试模式"
+
+#: inc/admin/admin-settings-tools.php:93
+msgid ""
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
+msgstr "使用调试模式会影响网站性能。仅在排除故障时使用该选项。"
+
+#: inc/admin/admin-settings-tools.php:102
+msgid "Load unminified assets"
+msgstr "加载未销毁的资产"
+
+#: inc/admin/admin-settings-tools.php:112
+msgid "Enhanced select fields"
+msgstr "增强的选择字段"
+
+#: inc/admin/admin-settings-tools.php:113
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgstr "用 <code>TomSelect</code> 替换 <code>select2</code> 下拉组件"
+
+#: inc/admin/admin-settings-tools.php:114
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
+msgstr "TomSelect 是一个更简单的下拉选择组件，它比 Select2 更不容易出错，同时提供与 WooCommerce 结账页面实际使用的相同功能。"
+
+#: inc/admin/admin-settings-tools.php:122
+msgid "Fix automatic zoom-in on form fields"
+msgstr "修复表单字段的自动放大"
+
+#: inc/admin/admin-settings-tools.php:123
+msgid "Set <code>font-size</code> inside form fields to 16px"
+msgstr "将表单字段内的 <code> 字体大小</code> 设置为 16px"
+
+#: inc/admin/admin-settings-tools.php:124
+msgid ""
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
+msgstr ""
+"如果表单字段内的字体大小小于 16px，Safari 和其他浏览器可能会在移动设备上自动放大，以方便阅读文本。启用此选项后，在经 Fluid "
+"Checkout 优化的页面上，表单字段内的字体大小将设置为 16px，以避免放大。"
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"激活流畅结账时，送货目的地始终设置为 \"默认为客户送货地址\"。客户仍可在结账时提供不同的送货地址和账单地址，可在 WooCommerce > "
+"Settings > Fluid Checkout（WooCommerce > Settings > Fluid "
+"Checkout）中选择将默认账单地址设置为与送货地址相同。"
+
+#: inc/admin/admin-tab-fluid-checkout.php:25
+msgid "Fluid Checkout"
+msgstr "流体检查"
+
+#: inc/admin/admin.php:133
+msgid "Settings"
+msgstr "设置"
+
+#: inc/admin/admin.php:134
+msgid "Support"
+msgstr "支持"
+
+#: inc/admin/admin.php:159
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgstr "<a target=\"_blank\" href=\"%s\">升级到专业版</a>可解锁更多选项。"
+
+#: inc/admin/admin.php:179
+msgid "(PRO)"
+msgstr "（专业人员）"
+
+#: inc/admin/admin.php:199
+msgid "(experimental)"
+msgstr "（实验）"
+
+#: inc/admin/admin.php:208
+msgid ""
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
+msgstr "这是一项试验性功能，可能无法与所有主题和插件配合使用。请谨慎使用。"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
+msgid "Confirm"
+msgstr "确认"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
+msgid "Verify Phone Number"
+msgstr "验证电话号码"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
+msgid "Please verify your phone number."
+msgstr "请核实您的电话号码。"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
+msgid "The Bluehost Plugin"
+msgstr "Bluehost 插件"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:81
+msgid "Custom fields"
+msgstr "自定义字段"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:82
+msgid "Enable custom shipping email field"
+msgstr "启用自定义发货电子邮件字段"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
+msgid ""
+"When enabled, the shipping email field from the Bluehost plugin will be "
+"added to the checkout form."
+msgstr "启用后，Bluehost 插件中的发货电子邮件字段将添加到结账表单中。"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:89
+msgid "Captcha Pro by BestWebSoft"
+msgstr "Captcha Pro by BestWebSoft"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:95
+msgid "Captcha position"
+msgstr "验证码位置"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:96
+msgid ""
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
+msgstr "定义显示验证码部分的位置。根据所选的验证码类型，某些位置可能不起作用。"
+
+#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+msgid "Selecting a pickup point is required before proceeding."
+msgstr "在继续之前，需要选择一个取件点。"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:234
+msgid "Pickup point"
+msgstr "上车点"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307, inc/compat/plugins/compat-plugin-seur.php:386, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
+msgid "Pickup point not selected yet."
+msgstr "尚未选择拾取点。"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312, inc/compat/plugins/compat-plugin-seur.php:391, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
+msgid "Pickup point:"
+msgstr "上车地点"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+msgid "Mailchimp for WooCommerce"
+msgstr "适用于 WooCommerce 的 Mailchimp"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
+msgid "Subscribe checkbox"
+msgstr "订阅复选框"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:87
+msgid ""
+"Override the position for the subscribe checkbox on the checkout page and "
+"always display it on the contact step"
+msgstr "覆盖结账页面上订阅复选框的位置，并始终将其显示在联系步骤中"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+msgid "Before Shipping Address"
+msgstr "送货地址"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87, inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "(originally \"%s\")"
+msgstr "(原为\"%s\"）"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "After Shipping Address"
+msgstr "寄件地址后"
+
+#: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
+msgid "Selecting a collection point is required when shipping with FermoPoint."
+msgstr "使用 FermoPoint 发货时需要选择一个收集点。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:189
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr "如果选中，则会在发送给用户的电子邮件中告知错字。(该功能已被禁用，因为 Fluid Checkout 提供了该功能。对该选项的更改不会生效）"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "启用邮件检查：（禁用功能）"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
+msgid "Carrier:"
+msgstr "运营商："
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:167
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "Sendinblue - WooCommerce 电子邮件营销"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
+msgid "Sign up checkbox position"
+msgstr "注册复选框位置"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
+msgid "Move the sign up checkbox to the contact step"
+msgstr "将注册复选框移至联系人步骤"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
+msgid ""
+"When enabled, the checkbox will be moved to the contact step independently "
+"of the display location defined in the Sendinblue plugin settings."
+msgstr "启用后，复选框将被移动到联系人步骤，与 Sendinblue 插件设置中定义的显示位置无关。"
+
+#: inc/compat/themes/compat-theme-betheme.php:172
+msgid "Theme Betheme"
+msgstr "主题 Betheme"
+
+#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:202, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+msgid "Checkout progress"
+msgstr "结账进度"
+
+#: inc/compat/themes/compat-theme-betheme.php:179
+msgid ""
+"Output the checkout steps section from Betheme on the checkout, cart and "
+"order received pages."
+msgstr "在结账、购物车和收到订单页面上输出 Betheme 的结账步骤部分。"
+
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "芬尼克主题"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "面包屑"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr "使用流体结账页眉和页脚时，输出 Fennik 主题中的面包屑部分。"
+
+#: inc/compat/themes/compat-theme-go.php:53
+msgid "Theme Go"
+msgstr "主题围棋"
+
+#: inc/compat/themes/compat-theme-go.php:59
+msgid "My account layout"
+msgstr "我的账户布局"
+
+#: inc/compat/themes/compat-theme-go.php:60
+msgid "Enable wide layout on \"My account\" page."
+msgstr "在 \"我的账户 \"页面启用宽布局。"
+
+#: inc/compat/themes/compat-theme-Impreza.php:93
+msgid "Theme Impreza"
+msgstr "主题翼豹"
+
+#: inc/compat/themes/compat-theme-Impreza.php:99
+msgid "Header"
+msgstr "页眉"
+
+#: inc/compat/themes/compat-theme-Impreza.php:100
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr "结账页面的网站页眉间距（单位：像素）"
+
+#: inc/compat/themes/compat-theme-Impreza.php:101
+msgid "Only applicable when using the Impreza theme header at the checkout page."
+msgstr "仅适用于在结账页面使用 Impreza 主题标题时。"
+
+#: inc/compat/themes/compat-theme-kapee.php:123
+msgid "Theme Kapee"
+msgstr "主题 Kapee"
+
+#: inc/compat/themes/compat-theme-kapee.php:130
+msgid ""
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
+msgstr "在结账、购物车和收到订单页面上输出 Kapee 主题中的结账步骤部分。"
+
+#: inc/compat/themes/compat-theme-porto.php:196
+msgid "Theme Porto"
+msgstr "主题波尔图"
+
+#: inc/compat/themes/compat-theme-porto.php:203
+msgid ""
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
+msgstr "在结账、购物车和收到订单页面上输出 Porto 主题中的结账步骤部分。"
+
+#: inc/compat/themes/compat-theme-pressmart.php:180
+msgid "Theme Pressmart"
+msgstr "主题印刷机"
+
+#: inc/compat/themes/compat-theme-pressmart.php:187
+msgid ""
+"Output the checkout steps section from the Pressmart theme on the checkout, "
+"cart and order received pages."
+msgstr "在结账、购物车和收到订单页面上输出 Pressmart 主题中的结账步骤部分。"
+
+#: inc/compat/themes/compat-theme-thegem.php:158
+msgid "Theme The Gem"
+msgstr "宝石主题"
+
+#: inc/compat/themes/compat-theme-thegem.php:165
+msgid ""
+"Output the checkout steps section from The Gem theme when using Fluid "
+"Checkout header and footer."
+msgstr "使用流体结账页眉和页脚时，输出 The Gem 主题中的结账步骤部分。"
+
+#: inc/compat/themes/compat-theme-woodmart.php:152
+msgid "Theme Woodmart"
+msgstr "主题 Woodmart"
+
+#: inc/compat/themes/compat-theme-woodmart.php:159
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer."
+msgstr "使用流体结账页眉和页脚时，输出 Woodmart 主题中的结账步骤部分。"
+
+#: inc/compat/themes/compat-theme-woodmart.php:167
+msgid "Checkout options"
+msgstr "结账选项"
+
+#: inc/compat/themes/compat-theme-woodmart.php:168
+msgid "Disable the theme checkout options"
+msgstr "禁用主题结账选项"
+
+#: inc/compat/themes/compat-theme-woodmart.php:169
+msgid ""
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
+msgstr "默认情况下，主题添加的显示产品图片、数量字段、移除按钮和产品页面链接选项是禁用的。"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
+msgid "Theme Atomion"
+msgstr "主题 Atomion"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:93
+msgid "Order progress"
+msgstr "订单进度"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
+msgid "Display order progress from the theme"
+msgstr "从主题中显示订单进度"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103, inc/compat/themes/compat-theme-zk-nito.php:88
+msgid "Display the form field labels visible on the page"
+msgstr "显示页面上可见的表单字段标签"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
+msgid "It is recommended to keep this option enabled for a better user experience."
+msgstr "建议启用该选项，以获得更好的用户体验。"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:81
+msgid "Theme ZK Nito"
+msgstr "主题 ZK Nito"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:96
+msgid "Add extra fields to the checkout form"
+msgstr "在结账表单中添加额外字段"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:97
+msgid ""
+"Adds an extra shipping email and shipping phone field to the shipping "
+"address section."
+msgstr "在送货地址部分添加额外的送货电子邮件和送货电话字段。"
+
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
+msgid "Go to the home page"
+msgstr "转到主页"
+
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54, templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
+msgid "Skip to content"
+msgstr "跳至内容"
+
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:37
+msgid "Create an account"
+msgstr "创建账户"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
+msgid "Log in to your account"
+msgstr "登录您的账户"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+msgid "Already have an account?"
+msgstr "已有账户？"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
+msgstr "以 %1$s 登录。<a href=\"%2$s\">退出</a>。"
+
+#: templates/fc/checkout-steps/checkout/payment.php:48
+msgid "Your order has a total amount due of %s. No further payment is needed."
+msgstr "您的订单总金额为 %s。无需再付款。"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Close and continue with checkout"
+msgstr "关闭并继续结账"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Continue"
+msgstr "继续"
+
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+msgid "Parcel terminal"
+msgstr "包裹终端"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>此部件已被 Fluid Checkout 取代。</p><p>使用 Fluid Checkout 时，结账页面需要使用原始 "
+"WooCommerce shortcode <code>[woocommerce_checkout]</code> "
+"才能正常工作。</p><p>有关详细信息，请访问 Fluid Checkout 文档。"
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "申请"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "联系方式"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "运输"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "账单"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "付款方式"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "改变"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "保存更改"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "无。"
+
+#: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "未选择图像。"
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "购物车"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "订购付款"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "谢谢"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "集成"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "许可证密钥"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "下订单前"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "下订单按钮前"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "关闭"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "登录"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "或继续阅读下文"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "或作为访客继续"
