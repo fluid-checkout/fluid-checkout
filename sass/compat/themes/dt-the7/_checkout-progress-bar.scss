@@ -1,0 +1,19 @@
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
+// "Slide", "Fade", and "Sticky" header style progress bar, page with admin bar
+body#{ $_body-theme-selector }:not( .has-checkout-header ).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+	transform: translateY( 0 );
+
+	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
+		transform: translateY( 32px );
+	}
+}
+
+// "Sticky" header style progress bar, page with admin bar
+body#{ $_body-theme-selector }.phantom-sticky:not( .has-checkout-header ).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+	@media screen and (min-width: 783px) { // Uses absolute values for breakpoint to match WordPress admin bar
+		transform: translateY( $global-spacing-tiny );
+	}
+}

@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
+* Added: Compatibility with theme The7.
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce Pro by ThemeHigh. Fix spacing for custom sections positioned after account creation form fields.
 * Improved: Compatibility with plugin WooCommerce Stripe Gateway. Fixed express checkout changes affecting correct preloading of some checkout field values.
 * Improved: Enforce some styles for the place order button to improve compatibility with some themes.
