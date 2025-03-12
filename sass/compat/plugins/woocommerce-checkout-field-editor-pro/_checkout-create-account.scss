@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT CREATE ACCOUNT
+// ------------------------------------
+
+.fc-content div.woocommerce form .fc-wrapper .woocommerce-account-fields .fc-field-group:not( :last-child ){
+	margin-bottom: $global-spacing-small;
+}
