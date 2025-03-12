@@ -2361,6 +2361,18 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> để hoạt động bình thường.</p><p> Để "
 "biết thêm thông tin, hãy truy cập tài liệu Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Chủ đề The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Các phần tiêu đề bổ sung"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Xuất ra các phần tiêu đề bổ sung nếu được bật trong cài đặt chủ đề."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

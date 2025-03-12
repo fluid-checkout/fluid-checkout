@@ -2365,6 +2365,20 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> ՝ ճիշտ աշխատելու համար:</p><p> "
 "Լրացուցիչ տեղեկությունների համար այցելեք Fluid Checkout-ի փաստաթղթերը:</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Թեմա The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Վերնագրի լրացուցիչ բաժիններ"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Արտադրեք վերնագրի լրացուցիչ բաժիններ, եթե միացված է թեմայի "
+"կարգավորումներում:"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

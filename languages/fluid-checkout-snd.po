@@ -2347,6 +2347,18 @@ msgstr ""
 "ضرورت آهي.</p><p style=\";text-align:right;direction:rtl\"> وڌيڪ معلومات "
 "لاءِ، فلوئڊ چيڪ آئوٽ دستاويزن جو دورو ڪريو.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "ٿيم The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "اضافي هيڊر سيڪشن"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "جيڪڏهن ٿيم سيٽنگز ۾ فعال هجي ته اضافي هيڊر سيڪشن آئوٽ پٽ ڪريو."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

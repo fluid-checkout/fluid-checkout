@@ -2173,6 +2173,18 @@ msgstr ""
 "페이지에서 원래 WooCommerce 쇼트코드 <code>[woocommerce_checkout]</code>를 사용해야 "
 "합니다.</p><p>자세한 내용은 유동 결제 문서를 참조하세요.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "테마 The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "추가 헤더 섹션"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "테마 설정에서 활성화한 경우 추가 헤더 섹션을 출력합니다."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

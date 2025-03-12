@@ -2345,6 +2345,18 @@ msgstr ""
 "WooCommerce <code>[woocommerce_checkout]</code> por taŭge funkcii.</p><p> "
 "Por pliaj informoj, vizitu la dokumentaron de Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Temo La7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Pliaj kapliniaj sekcioj"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Eligu pliajn titolajn sekciojn se ebligita en la temo-agordoj."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2346,6 +2346,20 @@ msgstr ""
 "सर्टकोड <code>[woocommerce_checkout]</code> प्रयोग गर्न आवश्यक छ।</p><p> थप "
 "जानकारीको लागि, फ्लुइड चेकआउट कागजातमा जानुहोस्।</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "थिम द७"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "अतिरिक्त हेडर खण्डहरू"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"यदि थिम सेटिङहरूमा सक्षम पारिएको छ भने अतिरिक्त हेडर खण्डहरू आउटपुट "
+"गर्नुहोस्।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

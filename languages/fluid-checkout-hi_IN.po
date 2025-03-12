@@ -2347,6 +2347,20 @@ msgstr ""
 "आवश्यकता होती है।</p><p> अधिक जानकारी के लिए, फ्लूइड चेकआउट दस्तावेज़ "
 "देखें।</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "थीम The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "अतिरिक्त हेडर अनुभाग"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"यदि थीम सेटिंग्स में सक्षम किया गया हो तो अतिरिक्त हेडर अनुभागों को आउटपुट "
+"करें।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

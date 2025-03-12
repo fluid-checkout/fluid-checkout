@@ -2186,6 +2186,18 @@ msgstr ""
 "woocommerce_checkout]</code>を使用する必要があります。</"
 "p><p>詳細については、Fluidチェックアウトのドキュメントをご覧ください。"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "テーマThe7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "ヘッダーセクションの追加"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "テーマ設定で有効になっていれば、追加のヘッダーセクションを出力する。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

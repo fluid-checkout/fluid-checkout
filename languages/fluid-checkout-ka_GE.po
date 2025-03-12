@@ -2385,6 +2385,18 @@ msgstr ""
 "მუშაობისთვის.</p><p> დამატებითი ინფორმაციისთვის ეწვიეთ Fluid Checkout "
 "დოკუმენტაციას.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "თემა The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "სათაურის დამატებითი სექციები"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "გამოიტანეთ დამატებითი სათაურის სექციები, თუ ჩართულია თემის პარამეტრებში."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

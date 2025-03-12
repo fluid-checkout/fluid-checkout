@@ -2354,6 +2354,18 @@ msgstr ""
 "WooCommerce শর্টকোড <code>[woocommerce_checkout]</code> ব্যবহার করতে "
 "হবে।</p><p> আরও তথ্যের জন্য, ফ্লুইড চেকআউট ডকুমেন্টেশন দেখুন।</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "থিম The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "অতিরিক্ত হেডার বিভাগ"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "থিম সেটিংসে সক্রিয় থাকলে অতিরিক্ত হেডার বিভাগ আউটপুট করুন।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

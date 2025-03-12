@@ -2398,6 +2398,18 @@ msgstr ""
 "dengan betul.</p><p> Untuk maklumat lanjut, lawati dokumentasi Fluid "
 "Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Bahagian pengepala tambahan"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Keluarkan bahagian pengepala tambahan jika didayakan dalam tetapan tema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

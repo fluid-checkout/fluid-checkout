@@ -2393,6 +2393,18 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> brûke om goed te wurkjen.</p><p> Foar "
 "mear ynformaasje, besykje de Fluid Checkout dokumintaasje.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema 7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Oanfoljende kopteksten"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Utfiere ekstra koptekstseksjes as ynskeakele is yn &#39;e tema-ynstellingen."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

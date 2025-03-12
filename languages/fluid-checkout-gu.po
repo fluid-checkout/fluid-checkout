@@ -2341,6 +2341,18 @@ msgstr ""
 "જરૂર છે.</p><p> વધુ માહિતી માટે, ફ્લુઇડ ચેકઆઉટ દસ્તાવેજીકરણની મુલાકાત "
 "લો.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "થીમ The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "વધારાના હેડર વિભાગો"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "જો થીમ સેટિંગ્સમાં સક્ષમ હોય તો વધારાના હેડર વિભાગો આઉટપુટ કરો."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

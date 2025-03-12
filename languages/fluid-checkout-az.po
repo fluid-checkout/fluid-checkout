@@ -2379,6 +2379,18 @@ msgstr ""
 "etməlidir.</p><p> Əlavə məlumat üçün Fluid Checkout sənədlərinə baş "
 "çəkin.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Mövzu 7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Əlavə başlıq bölmələri"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Mövzu parametrlərində aktivləşdirilibsə, əlavə başlıq bölmələrini çıxarın."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2358,6 +2358,18 @@ msgstr ""
 "চৰ্টকোড <code>[woocommerce_checkout]</code> ব্যৱহাৰ কৰিব লাগিব।</p><p> অধিক "
 "তথ্যৰ বাবে, তৰল চেকআউট আলেখ্যন চাওক।</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "থিম The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "অতিৰিক্ত হেডাৰ অংশসমূহ"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "থিম সংহতিসমূহত সামৰ্থবান হ&#39;লে অতিৰিক্ত হেডাৰ অংশসমূহ আউটপুট কৰক।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2386,6 +2386,18 @@ msgstr ""
 "WooCommerce <code>[woocommerce_checkout]</code> bikar bîne da ku bi rêkûpêk "
 "bixebite.</p><p> Ji bo bêtir agahdarî, biçin belgeya Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Mijara The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "beşên sernivîsê yên din"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Ger di mîhengên mijarê de were çalak kirin beşên sernavê yên din derxînin."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

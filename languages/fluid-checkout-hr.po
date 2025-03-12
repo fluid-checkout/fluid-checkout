@@ -2372,6 +2372,18 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> kako bi ispravno radila.</p><p> Za više "
 "informacija posjetite dokumentaciju Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Dodatni odjeljci zaglavlja"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Ispis dodatnih odjeljaka zaglavlja ako je omogućeno u postavkama teme."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

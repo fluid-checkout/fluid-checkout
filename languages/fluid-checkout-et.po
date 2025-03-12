@@ -2349,6 +2349,18 @@ msgstr ""
 "korralikult.</p><p>Lisainformatsiooni saamiseks külastage Fluid Checkout'i "
 "dokumentatsiooni.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Teema The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Täiendavad pealkirjaosad"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Täiendavate päislõikude väljastamine, kui see on teema seadetes lubatud."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2390,6 +2390,18 @@ msgstr ""
 "funtzionatzeko.</p><p> Informazio gehiago lortzeko, bisitatu Fluid Checkout "
 "dokumentazioa.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Gaia The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Goiburuko atal gehigarriak"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Iretzi goiburuko atal gehigarriak gaiaren ezarpenetan gaituta badago."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

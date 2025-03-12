@@ -2349,6 +2349,18 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> toimiakseen oikein.</p><p>Lisätietoa "
 "saat Fluid Checkoutin dokumentaatiosta.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Teema The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Lisää otsikon osia"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Tuottaa lisää otsikkoalueita, jos se on otettu käyttöön teeman asetuksissa."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

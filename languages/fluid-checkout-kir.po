@@ -2379,6 +2379,18 @@ msgstr ""
 "кодун <code>[woocommerce_checkout]</code> колдонушу керек.</p><p> Көбүрөөк "
 "маалымат алуу үчүн, Fluid Checkout документтерине баш багыңыз.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Тема 7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Кошумча баш бөлүмдөр"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Тема жөндөөлөрүндө иштетилген болсо, кошумча баш бөлүмдөрдү чыгарыңыз."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

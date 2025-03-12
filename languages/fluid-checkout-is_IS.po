@@ -2363,6 +2363,18 @@ msgstr ""
 "WooCommerce stuttkóðann <code>[woocommerce_checkout]</code> til að virka "
 "rétt.</p><p> Fyrir frekari upplýsingar, skoðaðu Fluid Checkout skjölin.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Þema The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Viðbótarhauskaflar"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Gefðu út fleiri haushluta ef virkt í þemastillingunum."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

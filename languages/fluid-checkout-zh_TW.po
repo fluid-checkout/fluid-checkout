@@ -2141,6 +2141,18 @@ msgstr ""
 "WooCommerce 短代碼<code>[woocommerce_checkout]</code>才能正常運作。</p><p>欲了解更多信息，請訪問 "
 "Fluid Checkout 文件。</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "主題 The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "附加標題部分"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "如果在主題設定中啟用，則輸出附加標題部分。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2423,6 +2423,20 @@ msgstr ""
 "foydalanishi kerak.</p><p> Qo&#39;shimcha ma&#39;lumot olish uchun Fluid "
 "Checkout hujjatlariga tashrif buyuring.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Mavzu 7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Qo&#39;shimcha sarlavha bo&#39;limlari"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Mavzu sozlamalarida yoqilgan bo&#39;lsa, qo&#39;shimcha sarlavha "
+"bo&#39;limlarini chiqaring."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

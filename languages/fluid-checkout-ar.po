@@ -2305,6 +2305,18 @@ msgstr ""
 "style=\";text-align:right;direction:rtl\"> لمزيد من المعلومات، تفضل بزيارة "
 "وثائق Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "الموضوع السابع"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "أقسام رأسية إضافية"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "إخراج أقسام رأسية إضافية إذا تم تمكين ذلك في إعدادات السمة."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

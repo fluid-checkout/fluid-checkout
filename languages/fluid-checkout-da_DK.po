@@ -2375,6 +2375,20 @@ msgstr ""
 "korrekt.</p><p>For mere information, besøg Fluid "
 "Checkout-dokumentationen.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Temaet The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Yderligere overskriftssektioner"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Udlæs ekstra overskriftssektioner, hvis de er aktiveret i "
+"temaindstillingerne."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

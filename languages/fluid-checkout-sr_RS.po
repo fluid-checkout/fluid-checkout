@@ -2359,6 +2359,18 @@ msgstr ""
 "функционисала.</p><p> За више информација посетите документацију Флуид "
 "Цхецкоут.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Тхеме Тхе7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Додатни одељци заглавља"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Изнесите додатне одељке заглавља ако је омогућено у подешавањима теме."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

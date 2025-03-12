@@ -2432,6 +2432,20 @@ msgstr ""
 "chleachdadh gus obrachadh gu ceart.</p><p> Airson tuilleadh fiosrachaidh, "
 "tadhal air an Fluid Checkout sgrìobhainnean.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Cuspair The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Earrannan cinn a bharrachd"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Cuir a-mach earrannan cinn a bharrachd ma tha sin air a chomasachadh ann an "
+"roghainnean a’ chuspair."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

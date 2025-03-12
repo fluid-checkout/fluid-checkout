@@ -2422,6 +2422,20 @@ msgstr ""
 "правилно.</p><p>За повече информация посетете документацията на Fluid "
 "Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Темата The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Допълнителни раздели на заглавието"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Извеждане на допълнителни секции в заглавието, ако това е разрешено в "
+"настройките на темата."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
