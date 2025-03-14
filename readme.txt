@@ -361,6 +361,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce Pro by ThemeHigh. Fix spacing for custom sections positioned after account creation form fields.
 * Improved: Compatibility with plugin WooCommerce Stripe Gateway. Fixed express checkout changes affecting correct preloading of some checkout field values.
 * Improved: Enforce some styles for the place order button to improve compatibility with some themes.
+* Fixed: Billing and shipping address values not being preserved after toggling "Same as..." checkbox.
 * Fixed: Field values reverting back to previous value (usually empty) when using `select2` for enhanced dropdown fields.
 * Fixed: Use treated display value for replacements on formatted addresses.
 
