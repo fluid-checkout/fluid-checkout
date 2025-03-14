@@ -5320,6 +5320,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
 
+		// Maybe update saved address data
+		if ( '0' === $is_billing_same_as_shipping_previous && true !== $is_billing_same_as_shipping_checked && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
+
+			// Iterate posted data
+			foreach( $billing_copy_shipping_field_keys as $field_key ) {
+				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
+				$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
+			}
+
+		}
+
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
 
@@ -5328,18 +5339,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Get related field keys
 				$shipping_field_key = str_replace( 'billing_', 'shipping_', $field_key );
-				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 
 				// Initialize new field value
 				$new_field_value = null;
 
 				// Get field value from shipping fields
 				if ( in_array( $shipping_field_key, $posted_data_field_keys ) ) {
-					// Maybe update new address data
-					if ( '0' === $is_billing_same_as_shipping_previous && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
-						$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
-					}
-
 					// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
 					$new_field_value = isset( $posted_data[ $shipping_field_key ] ) ? $posted_data[ $shipping_field_key ] : '';
 				}
@@ -5460,6 +5465,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
 
+		// Maybe update saved address data
+		if ( '0' === $is_shipping_same_as_billing_previous && true !== $is_shipping_same_as_billing_checked && ! apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) {
+
+			// Iterate posted data
+			foreach( $shipping_copy_billing_field_keys as $field_key ) {
+				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+				$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
+			}
+
+		}
+
 		// Maybe set post data for shipping same as billing
 		if ( $is_shipping_same_as_billing ) {
 
@@ -5467,7 +5483,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			foreach( $shipping_copy_billing_field_keys as $field_key ) {
 				// Get related field keys
 				$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
-				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
 				$post_field_key = str_replace( 'shipping_', 's_', $field_key );
 
 				// Initialize new field value
@@ -5475,11 +5490,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Get field value from billing fields
 				if ( in_array( $billing_field_key, $posted_data_field_keys ) ) {
-					// Maybe update new address data
-					if ( '0' === $is_shipping_same_as_billing_previous && ! apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) {
-						$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
-					}
-
 					// Copy field value from billing fields, maybe set field as empty if not found in shipping fields
 					$new_field_value = isset( $posted_data[ $billing_field_key ] ) ? $posted_data[ $billing_field_key ] : '';
 				}
