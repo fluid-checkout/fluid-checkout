@@ -141,12 +141,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 5 );
 
 		// Billing address
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_billing_address' ), 5 );
 
 		// Billing same as shipping
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
@@ -471,6 +473,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 5 );
 
 		// Order notes
 		remove_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
@@ -480,6 +483,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
+		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_billing_address' ), 5 );
 
 		// Billing same as shipping
 		remove_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
@@ -5294,6 +5298,36 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Maybe update saved billing address.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_update_saved_billing_address( $posted_data ) {
+		// Get value for billing same as shipping
+		$is_billing_same_as_shipping_previous = isset( $posted_data[ 'billing_same_as_shipping_previous' ] ) ? $posted_data[ 'billing_same_as_shipping_previous' ] : null;
+		$is_billing_same_as_shipping_checked = $this->is_billing_same_as_shipping_checked( $posted_data );
+
+		// Bail when toggling "same as shipping" checkbox to avoid wrong data being saved
+		if ( '1' === $is_billing_same_as_shipping_previous || true === $is_billing_same_as_shipping_checked ) { return $posted_data; }
+
+		// Bail if forced to skip
+		if ( apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) { return $posted_data; }
+
+		// Get list of billing fields to copy from shipping fields
+		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
+		
+		// Iterate posted data
+		foreach( $billing_copy_shipping_field_keys as $field_key ) {
+			$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
+			$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
+		}
+
+		return $posted_data;
+	}
+
+
+
+	/**
 	 * Maybe set billing address fields values to same as shipping address from the posted data.
 	 *
 	 * @param  array  $posted_data   Post data for all checkout fields.
@@ -5319,17 +5353,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
-
-		// Maybe update saved address data
-		if ( '0' === $is_billing_same_as_shipping_previous && true !== $is_billing_same_as_shipping_checked && ! apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) {
-
-			// Iterate posted data
-			foreach( $billing_copy_shipping_field_keys as $field_key ) {
-				$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
-				$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
-			}
-
-		}
 
 		// Maybe set post data for billing same as shipping
 		if ( $is_billing_same_as_shipping ) {
@@ -5439,6 +5462,36 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Maybe update saved shipping address.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_update_saved_shipping_address( $posted_data ) {
+		// Get value for shipping same as billing
+		$is_shipping_same_as_billing_previous = isset( $posted_data[ 'shipping_same_as_billing_previous' ] ) ? $posted_data[ 'shipping_same_as_billing_previous' ] : null;
+		$is_shipping_same_as_billing_checked = $this->is_shipping_same_as_billing_checked( $posted_data );
+
+		// Bail when toggling "same as billing" checkbox to avoid wrong data being saved
+		if ( '1' === $is_shipping_same_as_billing_previous || true === $is_shipping_same_as_billing_checked ) { return $posted_data; }
+
+		// Bail if forced to skip
+		if ( apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) { return $posted_data; }
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Iterate posted data
+		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+			$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+			$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
+		}
+
+		return $posted_data;
+	}
+
+
+
+	/**
 	 * Maybe set shipping address fields values to same as billing address from the posted data.
 	 *
 	 * @param  array  $posted_data   Post data for all checkout fields.
@@ -5464,17 +5517,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get list of posted data keys
 		$posted_data_field_keys = array_keys( $posted_data );
-
-		// Maybe update saved address data
-		if ( '0' === $is_shipping_same_as_billing_previous && true !== $is_shipping_same_as_billing_checked && ! apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) {
-
-			// Iterate posted data
-			foreach( $shipping_copy_billing_field_keys as $field_key ) {
-				$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
-				$posted_data[ $save_field_key ] = $posted_data[ $field_key ];
-			}
-
-		}
 
 		// Maybe set post data for shipping same as billing
 		if ( $is_shipping_same_as_billing ) {
