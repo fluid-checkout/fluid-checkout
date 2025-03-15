@@ -2169,7 +2169,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_new_substep_args = is_array( $additional_substep_args ) ? array_merge( $_new_substep_args, $additional_substep_args ) : $_new_substep_args;
 
 		// Add substep to the new step
-		$_new_substeps[] = $_new_substep_args;
+		if ( $previous_step_id !== $new_step_id ) {
+			$_new_substeps[] = $_new_substep_args;
+		}
+		else {
+			$_new_substeps[ $previous_substep_index ] = $_new_substep_args;
+		}
 
 		// Sort steps based on priority.
 		uasort( $_new_substeps, array( $this, 'checkout_step_priority_uasort_comparison' ) );
