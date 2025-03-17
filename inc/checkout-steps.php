@@ -5317,7 +5317,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 		
 		// Iterate posted data
-		foreach( $billing_copy_shipping_field_keys as $field_key ) {
+		foreach ( $billing_copy_shipping_field_keys as $field_key ) {
 			$save_field_key = str_replace( 'billing_', 'save_billing_', $field_key );
 			$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
 		}
@@ -5481,7 +5481,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
 
 		// Iterate posted data
-		foreach( $shipping_copy_billing_field_keys as $field_key ) {
+		foreach ( $shipping_copy_billing_field_keys as $field_key ) {
 			$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
 			$posted_data[ $save_field_key ] = isset( $posted_data[ $field_key ] ) ? $posted_data[ $field_key ] : '';
 		}
