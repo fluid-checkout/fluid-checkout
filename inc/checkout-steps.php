@@ -2172,10 +2172,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$_new_substep_args = $_previous_substeps[ $previous_substep_index ];
 		$_new_substep_args = is_array( $additional_substep_args ) ? array_merge( $_new_substep_args, $additional_substep_args ) : $_new_substep_args;
 
-		// Add substep to the new step
+		// Maybe add substep to the new step
 		if ( $previous_step_id !== $new_step_id ) {
 			$_new_substeps[] = $_new_substep_args;
 		}
+		// Update existing substep
 		else {
 			$_new_substeps[ $previous_substep_index ] = $_new_substep_args;
 		}
