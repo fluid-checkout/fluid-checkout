@@ -1,0 +1,2495 @@
+# Copyright (C) 2025 fluid-checkout
+# This file is distributed under the same license as the fluid-checkout package.
+msgid ""
+msgstr ""
+"Project-Id-Version: fluid-checkout\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Fluid Checkout\n"
+"Last-Translator: Fluid Checkout\n"
+"POT-Creation-Date: 2025-03-06 01:48+0000\n"
+"Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: fluid-checkout.php:585
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: fluid-checkout.php:588
+msgid "Go to Plugin Search"
+msgstr "Gå til Plugin-søk"
+
+#: fluid-checkout.php:592
+msgid "Activate %s"
+msgstr "Aktiver %s"
+
+#: fluid-checkout.php:596
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"<strong>%1$s</strong> krever at <strong>%2$s</strong> er installert og "
+"aktivert. <a href=\"%4$s\">%3$s</a>"
+
+#: inc/checkout-coupon-codes.php:274
+msgid "Enter your code here"
+msgstr "Skriv inn koden din her"
+
+#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
+msgid "Add %s"
+msgstr "Legg til %s"
+
+#: inc/checkout-coupon-codes.php:382
+msgid "Remove"
+msgstr "Fjern"
+
+#: inc/checkout-fields.php:126
+msgid "Order number and receipt will be sent to this email address."
+msgstr "Ordrenummer og kvittering vil bli sendt til denne e-postadressen."
+
+#: inc/checkout-fields.php:181
+msgid "Apartment, unit, building, floor, etc."
+msgstr "Leilighet, enhet, bygning, etasje osv."
+
+#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+msgid "Shipping phone"
+msgstr "Telefon for frakt"
+
+#: inc/checkout-shipping-phone-field.php:105
+msgid "Only used for shipping-related questions."
+msgstr "Brukes kun for fraktrelaterte spørsmål."
+
+#: inc/checkout-steps.php:793
+msgid "Multi-step"
+msgstr "Flere trinn"
+
+#: inc/checkout-steps.php:794
+msgid "Single step"
+msgstr "Ett trinn"
+
+#: inc/checkout-steps.php:965
+msgid "Click to go to the order summary"
+msgstr "Klikk for å gå til ordreoversikten"
+
+#: inc/checkout-steps.php:965
+msgid "Cart total:"
+msgstr "Totalt antall vogner:"
+
+#: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
+msgid "Proceed to %s"
+msgstr "Fortsett til %s"
+
+#: inc/checkout-steps.php:2215
+msgid "Proceed to contact"
+msgstr "Gå videre til kontakt"
+
+#: inc/checkout-steps.php:2224
+msgid "Proceed to shipping"
+msgstr "Gå videre til forsendelse"
+
+#: inc/checkout-steps.php:2236
+msgid "Proceed to billing"
+msgstr "Gå videre til fakturering"
+
+#: inc/checkout-steps.php:2245
+msgid "Proceed to payment"
+msgstr "Gå videre til betaling"
+
+#: inc/checkout-steps.php:2256
+msgid "My contact"
+msgstr "Min kontaktperson"
+
+#: inc/checkout-steps.php:2266
+msgid "Shipping to"
+msgstr "Frakt til"
+
+#: inc/checkout-steps.php:2276
+msgid "Shipping method"
+msgstr "Fraktmetode"
+
+#: inc/checkout-steps.php:2286
+msgid "Additional notes"
+msgstr "Ytterligere merknader"
+
+#: inc/checkout-steps.php:2300
+msgid "Billing to"
+msgstr "Fakturering til"
+
+#: inc/checkout-steps.php:2310
+msgid "Payment method"
+msgstr "Betalingsmåte"
+
+#: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+msgid "Step %1$s of %2$s"
+msgstr "Trinn %1$s av %2$s"
+
+#: inc/checkout-steps.php:2825
+msgid "Change: %s"
+msgstr "Endring: %s"
+
+#: inc/checkout-steps.php:3184
+msgid "An account will be created with the information provided."
+msgstr "En konto vil bli opprettet med den oppgitte informasjonen."
+
+#: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+msgid "Not selected yet."
+msgstr "Ikke valgt ennå."
+
+#: inc/checkout-steps.php:4675
+msgid "Same as shipping address"
+msgstr "Samme som leveringsadresse"
+
+#: inc/checkout-steps.php:4720
+msgid "Same as billing address"
+msgstr "Samme som faktureringsadresse"
+
+#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+msgid "Order summary"
+msgstr "Bestillingsoversikt"
+
+#: inc/checkout-steps.php:6008, templates/fc/checkout-steps/checkout/review-order-section.php:58
+msgid "Edit cart"
+msgstr "Rediger handlekurv"
+
+#: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
+msgid "Did you mean %s?"
+msgstr "Mente du %s?"
+
+#: inc/checkout-validation.php:197
+msgid "Change email address to: {suggestion-value}"
+msgstr "Endre e-postadressen til: {suggestion-value} (forslagsverdi)"
+
+#: inc/checkout-validation.php:200
+msgid "This is a required field."
+msgstr "Dette er et obligatorisk felt."
+
+#: inc/checkout-validation.php:201
+msgid "This is not a valid email address."
+msgstr "Dette er ikke en gyldig e-postadresse."
+
+#: inc/checkout-validation.php:202
+msgid "This field does not match the related field value."
+msgstr "Dette feltet samsvarer ikke med verdien i det relaterte feltet."
+
+#: inc/checkout-validation.php:211
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "CPF-nummeret \"{cpf_nummer}\" er ugyldig."
+
+#: inc/checkout-validation.php:212
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "CNPJ-nummeret \"{cnpj_number}\" er ugyldig."
+
+#: inc/checkout-validation.php:369, templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
+msgid "(Required)"
+msgstr "(Påkrevd)"
+
+#: inc/checkout-widget-areas.php:98
+msgid "Checkout Header - Desktop"
+msgstr "Checkout Header - Desktop"
+
+#: inc/checkout-widget-areas.php:100
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr ""
+"Vis widgeter i kassetoppteksten for store skjermer. Vises bare hvis du "
+"bruker plugin-modulens kassetopptekst."
+
+#: inc/checkout-widget-areas.php:108
+msgid "Checkout Header - Mobile"
+msgstr "Checkout Header - Mobil"
+
+#: inc/checkout-widget-areas.php:110
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
+msgstr ""
+"Vis widgeter under kassetoppteksten for mobile enheter. Vises bare hvis du "
+"bruker plugin-modulens kassetopptekst."
+
+#: inc/checkout-widget-areas.php:122
+msgid "Checkout Sidebar"
+msgstr "Sidefelt i kassen"
+
+#: inc/checkout-widget-areas.php:124
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr "Vis widgeter i kassens sidefelt etter bestillingssammendraget."
+
+#: inc/checkout-widget-areas.php:134
+msgid "Checkout Order Summary"
+msgstr "Sammendrag av bestilling i kassen"
+
+#: inc/checkout-widget-areas.php:136
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "Vis widgeter i bestillingssammendraget på betalingssiden."
+
+#: inc/checkout-widget-areas.php:144
+msgid "Checkout Below Place Order"
+msgstr "Sjekk ut nedenfor Legg inn bestilling"
+
+#: inc/checkout-widget-areas.php:146
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "Vis widgeter under bestillingsknappen på betalingssiden."
+
+#: inc/checkout-widget-areas.php:158
+msgid "Checkout Footer"
+msgstr "Bunntekst i kassen"
+
+#: inc/checkout-widget-areas.php:160
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
+msgstr ""
+"Vis widgeter på bunnteksten i kassen. Vises bare hvis du bruker bunnteksten "
+"i tillegget."
+
+#: inc/design-templates.php:115
+msgid "Classic"
+msgstr "Klassisk"
+
+#: inc/design-templates.php:116
+msgid "Boxed"
+msgstr "I eske"
+
+#: inc/design-templates.php:117
+msgid "Split"
+msgstr "Deling"
+
+#: inc/design-templates.php:118
+msgid "Minimalist"
+msgstr "Minimalistisk"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:47
+msgid "Fluid Checkout Lite 4.0+ – Important changes!"
+msgstr "Fluid Checkout Lite 4.0+ - Viktige endringer!"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:48
+msgid ""
+"With this version of Fluid Checkout we have introduced <strong>important "
+"changes that might impact your website</strong> if you have made "
+"customizations to our plugins previously to the release of this version. If "
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
+msgstr ""
+"Med denne versjonen av Fluid Checkout har vi introdusert <strong>viktige "
+"endringer som kan påvirke nettstedet ditt</strong> hvis du har gjort "
+"tilpasninger til våre plugins før utgivelsen av denne versjonen. Hvis "
+"nettstedet ditt ikke har noen tilpasninger for Fluid Checkout-plugins, skal "
+"det fungere på samme måte som før.<br><br>Hvis du har noen tilpasninger for "
+"Fluid Checkout på nettstedet ditt og ennå ikke har migrert dem til denne "
+"versjonen, kan du lese vår guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrering av tilpasninger til Fluid Checkout Lite 4.0+</a>"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:51
+msgid "Read the migration guide"
+msgstr "Les migreringsveiledningen"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
+msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
+msgstr "Plugins for flytende kasse og leveringsdato fra CodeRockz"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
+msgid ""
+"<p>We detected that you are using the plugins Delivery & Pickup Date Time "
+"for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins "
+"have been moved to Fluid Checkout PRO.</p>"
+msgstr ""
+"<p>Vi oppdaget at du bruker plugin-modulene Delivery & Pickup Date Time for "
+"WooCommerce (gratis og PRO) av CodeRockz. Integrasjon med disse "
+"plugin-modulene har blitt flyttet til Fluid Checkout PRO.</p> <p>"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+msgid "Upgrade to PRO"
+msgstr "Oppgrader til PRO"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "What should I do?"
+msgstr "Hva skal jeg gjøre?"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:55
+msgid "Fluid Checkout database updated successfully"
+msgstr "Fluid Checkout-databasen er vellykket oppdatert"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:56
+msgid "The database changes where applied successfully."
+msgstr "Databaseendringene ble brukt på en vellykket måte."
+
+#: inc/admin/admin-notice-db-migrations-applied.php:59
+msgid "Ok"
+msgstr "Ok"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
+msgstr "Avskjed"
+
+#: inc/admin/admin-notice-db-migrations.php:51
+msgid "Fluid Checkout database update"
+msgstr "Oppdatering av Fluid Checkout-databasen"
+
+#: inc/admin/admin-notice-db-migrations.php:52
+msgid ""
+"Some changes to the database are required. As with any update, we recommend "
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
+msgstr ""
+"Noen endringer i databasen er påkrevd. Som med alle oppdateringer anbefaler "
+"vi at du <strong>tar en fullstendig sikkerhetskopi av nettstedet ditt før "
+"du fortsetter</strong>."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "Update database"
+msgstr "Oppdater databasen"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
+msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
+msgstr "Fluid Checkout er ikke kompatibel med Divi Builder-kasseoppsettet"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
+msgid ""
+"<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
+"form to work. When using the Divi Builder to customize the look and feel of "
+"the checkout page, the classic shortcodes are replaced with custom widgets "
+"from the Divi Builder for each part of the checkout page. These custom "
+"widgets are not compatible with Fluid Checkout.</p><p>Please edit your "
+"checkout page replacing the Divi Builder widgets with the a text widget "
+"containing the shortcode <code>[woocommerce_checkout]</code>.</p>"
+msgstr ""
+"<p>Fluid Checkout trenger det klassiske WooCommerce-kortkodebaserte "
+"kasseskjemaet for å fungere. Når du bruker Divi Builder til å tilpasse "
+"utseendet på kassesiden, erstattes de klassiske kortkodene med "
+"egendefinerte widgeter fra Divi Builder for hver del av kassesiden. Disse "
+"egendefinerte widgetene er ikke kompatible med Fluid Checkout.</p> "
+"<p>Rediger betalingssiden ved å erstatte Divi Builder-widgetene med en "
+"tekstwidget som inneholder kortkoden "
+"<code>[woocommerce_checkout]</code>.</p> </p> <p>Rediger betalingssiden ved "
+"å erstatte Divi Builder-widgetene med en tekstwidget som inneholder "
+"kortkoden <code>[woocommerce_checkout"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
+msgid "Edit the checkout page"
+msgstr "Rediger kassesiden"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+msgid "Read the documentation."
+msgstr "Les dokumentasjonen."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr ""
+"Den tyskspråklige PRO-flertrinnsbetalingsfunksjonen må deaktiveres når du "
+"bruker Fluid Checkout"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+"Når du bruker Fluid Checkout, blir flerstegsfunksjonen fra Germanized "
+"PRO-plugin unødvendig og kan forårsake <strong>kritiske feil under "
+"behandling av nye bestillinger</strong>. Deaktiver Germanized "
+"PRO-funksjonen for flertrinnsutsjekking i plugin-innstillingene."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr "Gå til tyskspråklige innstillinger"
+
+#: inc/admin/admin-notice-review-request.php:47
+msgid "Thanks for choosing Fluid Checkout!"
+msgstr "Takk for at du valgte Fluid Checkout!"
+
+#: inc/admin/admin-notice-review-request.php:48
+msgid ""
+"You have been using the plugin for a while now. How do you like it so far? "
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
+msgstr ""
+"Du har brukt programtillegget en stund nå. Hvordan liker du det så langt? "
+"<br>Vær så snill å gi oss en rask vurdering, vi setter pris på hver eneste "
+"tilbakemelding, og det oppmuntrer oss til å fortsette å forbedre "
+"plugin-modulen :)"
+
+#: inc/admin/admin-notice-review-request.php:50
+msgid "Rate the plugin"
+msgstr "Vurder programtillegget"
+
+#: inc/admin/admin-notice-review-request.php:51
+msgid "I need help!"
+msgstr "Jeg trenger hjelp!"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr ""
+"Plugin WooCommerce Checkout Manager av Quadlayers er ikke kompatibel med "
+"Fluid Checkout"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"Noen funksjoner i WooCommerce Checkout Manager by Quadlayers fungerer "
+"kanskje ikke som forventet når du bruker den med Fluid Checkout. Les <a "
+"href=\"%s\">dokumentasjonen vår</a> for mer informasjon og alternative "
+"løsninger."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "Les dokumentasjon"
+
+#: inc/admin/admin-notices.php:55
+msgid "Don't show this again"
+msgstr "Ikke vis dette igjen"
+
+#: inc/admin/admin-setting-type-fc-addons.php:41
+msgid "Special offers"
+msgstr "Spesialtilbud"
+
+#: inc/admin/admin-setting-type-fc-addons.php:43
+msgid ""
+"Extend all the goodness of Fluid Checkout to your cart page and thank you "
+"pages."
+msgstr "Utvid alle fordelene med Fluid Checkout til handlekurven og takkesidene."
+
+#: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
+msgid "Fluid Checkout PRO"
+msgstr "Fluid Checkout PRO"
+
+#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
+msgid ""
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
+msgstr ""
+"Designmaler, optimaliserte sider for handlekurv og ordremottak, "
+"kontomatching og mye mer."
+
+#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
+msgid ""
+"The best tools to further <strong>improve your WooCommerce checkout "
+"conversion rate</strong> and make the purchase experience consistent on the "
+"entire journey."
+msgstr ""
+"De beste verktøyene for å forbedre konverteringsraten i WooCommerce-kassen "
+"og gjøre kjøpsopplevelsen konsekvent gjennom hele reisen."
+
+#: inc/admin/admin-setting-type-fc-addons.php:57
+msgid "More design templates"
+msgstr "Flere designmaler"
+
+#: inc/admin/admin-setting-type-fc-addons.php:58
+msgid "Optimized cart page"
+msgstr "Optimalisert handlekurvside"
+
+#: inc/admin/admin-setting-type-fc-addons.php:59
+msgid "Optimized order received / thank you page"
+msgstr "Optimalisert side for mottatt bestilling/takkeside"
+
+#: inc/admin/admin-setting-type-fc-addons.php:60
+msgid "Edit cart contents at checkout page"
+msgstr "Rediger innholdet i handlekurven på kassesiden"
+
+#: inc/admin/admin-setting-type-fc-addons.php:61
+msgid "Account matching / user matching"
+msgstr "Kontomatching / brukermatching"
+
+#: inc/admin/admin-setting-type-fc-addons.php:62
+msgid "Express Checkout buttons from supported payment methods"
+msgstr "Express Checkout-knapper fra betalingsmetoder som støttes"
+
+#: inc/admin/admin-setting-type-fc-addons.php:63
+msgid "Trust symbols on the cart and thank you pages"
+msgstr "Tillitssymboler på handlekurv- og takkesidene"
+
+#: inc/admin/admin-setting-type-fc-addons.php:64
+msgid "More positions for the coupon code on the checkout page"
+msgstr "Flere posisjoner for kupongkoden på kassen siden"
+
+#: inc/admin/admin-setting-type-fc-addons.php:65
+msgid "Integrated coupon code field on the cart page"
+msgstr "Integrert kupongkodefelt på handlekurv-siden"
+
+#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+msgid "International phone numbers"
+msgstr "Internasjonale telefonnumre"
+
+#: inc/admin/admin-setting-type-fc-addons.php:67
+msgid "Gift messages and packing slips"
+msgstr "Gavemeldinger og pakksedler"
+
+#: inc/admin/admin-setting-type-fc-addons.php:68
+msgid "Local pickup and in-store collection"
+msgstr "Lokal henting og henting i butikk"
+
+#: inc/admin/admin-setting-type-fc-addons.php:72
+msgid "Upgrade to PRO &mdash; 99 EUR"
+msgstr "Oppgrader til PRO &mdash; 99 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
+msgid "Fluid Checkout PRO – Bundle"
+msgstr "Fluid Checkout PRO - Pakke"
+
+#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
+msgid "All PRO features + All add-ons for a special price."
+msgstr "Alle PRO-funksjoner + alle tilleggsprogrammer til en spesialpris."
+
+#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
+msgid ""
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
+msgstr ""
+"Pakken inkluderer alle tilleggene vi tilbyr i dag, samt Fluid "
+"Checkout-tilleggene vi lanserer i fremtiden."
+
+#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "Verdi 226 EUR (spar 42 %)"
+
+#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
+msgid "Google Address Autocomplete"
+msgstr "Google Address Autocomplete"
+
+#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
+msgid "Address Book"
+msgstr "Adressebok"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "EU-VAT-assistent"
+
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons *"
+msgstr "Alle fremtidige tillegg *."
+
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* Så lenge du har et aktivt abonnement."
+
+#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
+msgid "Get the Bundle – Only 129 EUR"
+msgstr "Kjøp pakken - kun 129 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
+msgid ""
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
+msgstr ""
+"Alle priser vises i EUR. Hvis det er noen avvik fra prisene på nettstedet "
+"vårt, vil tilbudene som vises på nettstedet overstyre disse og vil bli "
+"brukt."
+
+#: inc/admin/admin-setting-type-fc-addons.php:116
+msgid "Add-ons"
+msgstr "Tilleggsprogrammer"
+
+#: inc/admin/admin-setting-type-fc-addons.php:117
+msgid "Enhance your checkout experience with these add-ons."
+msgstr "Forbedre kasseopplevelsen med disse tilleggene."
+
+#: inc/admin/admin-setting-type-fc-addons.php:137
+msgid "I already have it – Hide this offer"
+msgstr "Jeg har det allerede - Skjul dette tilbudet"
+
+#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
+msgid "Installed &mdash; Activate"
+msgstr "Installert &mdash; Aktiver"
+
+#: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
+msgid "Activated"
+msgstr "Aktivert"
+
+#: inc/admin/admin-setting-type-fc-addons.php:168
+msgid "Up to 40% less checkout fields to fill in."
+msgstr "Opptil 40 % færre felt å fylle ut i kassen."
+
+#: inc/admin/admin-setting-type-fc-addons.php:172
+msgid ""
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
+msgstr ""
+"Unngå leveringsforsinkelser og misfornøyde kunder. Samle inn "
+"<strong>korrekt adresseinformasjon</strong> fra første gang de handler hos "
+"deg."
+
+#: inc/admin/admin-setting-type-fc-addons.php:180
+msgid "Get this add-on &mdash; 29 EUR"
+msgstr "Få dette tillegget &mdash; 29 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:189
+msgid "Address book"
+msgstr "Adressebok"
+
+#: inc/admin/admin-setting-type-fc-addons.php:190
+msgid "Multiple saved addresses for shipping and billing."
+msgstr "Flere lagrede adresser for frakt og fakturering."
+
+#: inc/admin/admin-setting-type-fc-addons.php:194
+msgid ""
+"Let customers <strong>save multiple shipping and billing addresses</strong> "
+"on their account and choose which ones to use at checkout and cart pages."
+msgstr ""
+"La kundene <strong>lagre flere leverings- og faktureringsadresser</strong> "
+"på kontoen sin og velge hvilke som skal brukes i kassen og i handlekurven."
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
+msgid "Get this add-on &mdash; 59 EUR"
+msgstr "Få dette tillegget &mdash; 59 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "Forenklet EU-MVA-validering for butikken din."
+
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr ""
+"Samler inn og <strong>validerer MVA-nummer i EU i kassen</strong>, fjerner "
+"skattekostnader ved omvendt avgiftsplikt og bekrefter kundens lokasjon når "
+"det er nødvendig."
+
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "Få dette tillegget &mdash; 39 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:233
+msgid ""
+"All add-ons are sold separately and require the <strong>Fluid Checkout "
+"Lite</strong> plugin to be installed and activated, except when noted."
+msgstr ""
+"Alle tillegg selges separat og krever at <strong>Fluid Checkout "
+"Lite</strong>-plugin er installert og aktivert, unntatt når det er angitt."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "Velg et bilde"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "Ingen bilde valgt."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "Fjern bilde"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:142
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to get your license key, or <a href=\"%s\" "
+"target=\"_blank\">purchase a new license key</a>."
+msgstr ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logg inn "
+"på kontoen din</a> for å hente lisensnøkkelen din, eller <a href=\"%s\" "
+"target=\"_blank\">kjøpe en ny lisensnøkkel</a>."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
+msgid "Valid until %s."
+msgstr "Gyldig til %s."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
+msgid "Expired on %s."
+msgstr "Utløpt på %s."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:160
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to renew your license key and continue to receive updates "
+"and support."
+msgstr ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Logg inn "
+"på kontoen din</a> for å fornye lisensnøkkelen din og fortsette å motta "
+"oppdateringer og support."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:163
+msgid "License key cancelled."
+msgstr "Lisensnøkkel kansellert."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:165
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">Kjøp en ny lisensnøkkel</a> og fortsett å "
+"motta oppdateringer og kundestøtte."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:168
+msgid "Error: "
+msgstr "Feil:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:41
+msgid "Setup & Documentation"
+msgstr "Oppsett og dokumentasjon"
+
+#: inc/admin/admin-setting-type-fc-setup.php:42
+msgid "Great! Your checkout page is now running on Fluid Checkout."
+msgstr "Flott! Kassesiden din kjører nå på Fluid Checkout."
+
+#: inc/admin/admin-setting-type-fc-setup.php:44
+msgid "Here are a few resources for you to get started:"
+msgstr "Her er noen ressurser du kan bruke for å komme i gang:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:48
+msgid ""
+"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
+"with Fluid Checkout</a>."
+msgstr ""
+"Les installasjonsveiledningen <a href=\"%s\" target=\"_blank\">Installasjon "
+"med Fluid Checkout</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:49
+msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "Oppsett av layout og design på <a href=\"%s\">kassealternativene</a>."
+
+#: inc/admin/admin-setting-type-fc-setup.php:50
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"other plugins you have installed."
+msgstr ""
+"Sjekk om det finnes noen <a href=\"%s\">integreringsalternativer</a> "
+"tilgjengelig for andre programtillegg du har installert."
+
+#: inc/admin/admin-setting-type-fc-setup.php:51
+msgid ""
+"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
+"information about Fluid Checkout features."
+msgstr ""
+"Besøk <a href=\"%s\" target=\"_blank\">dokumentasjonen vår</a> for mer "
+"informasjon om funksjonene i Fluid Checkout."
+
+#: inc/admin/admin-setting-type-fc-setup.php:52
+msgid ""
+"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
+"ticket</a> on our official support channel."
+msgstr ""
+"Hvis du trenger hjelp, kan du <a href=\"%s\" target=\"_blank\">åpne en "
+"supportanmodning</a> på vår offisielle supportkanal."
+
+#: inc/admin/admin-settings-cart.php:71
+msgid "Cart layout"
+msgstr "Oppsett for handlevogn"
+
+#: inc/admin/admin-settings-cart.php:78
+msgid "Cart optimizations"
+msgstr "Optimaliseringer av handlekurven"
+
+#: inc/admin/admin-settings-cart.php:79
+msgid "Enable cart page optimizations"
+msgstr "Aktiver optimalisering av handlekurv-siden"
+
+#: inc/admin/admin-settings-cart.php:80
+msgid "Display the cart page with a layout similar to the checkout page."
+msgstr "Vis handlekurv-siden med et oppsett som ligner på kassesiden."
+
+#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
+msgid "Header and footer"
+msgstr "Topptekst og bunntekst"
+
+#: inc/admin/admin-settings-cart.php:103
+msgid "Header and footer template"
+msgstr "Mal for topp- og bunntekst"
+
+#: inc/admin/admin-settings-cart.php:104, inc/admin/admin-settings-checkout.php:126
+msgid ""
+"Controls whether to use the distraction free page header and footer or keep "
+"the currently active theme's header and footer."
+msgstr ""
+"Kontrollerer om du vil bruke den distraksjonsfrie sidetoppteksten og "
+"bunnteksten eller beholde det aktive temaets topptekst og bunntekst."
+
+#: inc/admin/admin-settings-cart.php:108, inc/admin/admin-settings-checkout.php:130
+msgid "Distraction free header and footer"
+msgstr "Topp- og bunntekst uten distraksjoner"
+
+#: inc/admin/admin-settings-cart.php:109, inc/admin/admin-settings-checkout.php:131
+msgid "Theme's header and footer"
+msgstr "Temaets topp- og bunntekst"
+
+#: inc/admin/admin-settings-cart.php:124
+msgid "Cart elements"
+msgstr "Elementer i handlekurven"
+
+#: inc/admin/admin-settings-cart.php:132
+msgid "Make the order summary stay visible on the cart page while scrolling"
+msgstr ""
+"Sørg for at bestillingssammendraget forblir synlig på handlekurv-siden mens "
+"du blar"
+
+#: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
+msgid "Coupon codes"
+msgstr "Kupongkoder"
+
+#: inc/admin/admin-settings-cart.php:142
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart and the integrated coupon codes in the "
+"checkout page are enabled."
+msgstr ""
+"Velg hvor kupongkodeseksjonen skal vises på handlekurv-siden. Gjelder bare "
+"når AJAX-kurven og de integrerte kupongkodene i kassen er aktivert."
+
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+msgid "Hidden"
+msgstr "Skjult"
+
+#: inc/admin/admin-settings-cart.php:147
+msgid "Before the cart items section"
+msgstr "Før delen med varer i handlekurven"
+
+#: inc/admin/admin-settings-cart.php:148
+msgid "Inside the cart items section"
+msgstr "Inne i seksjonen for varer i handlekurven"
+
+#: inc/admin/admin-settings-cart.php:149, inc/admin/admin-settings-cart.php:185
+msgid "After the cart items section"
+msgstr "Etter seksjonen for varer i handlekurven"
+
+#: inc/admin/admin-settings-cart.php:150
+msgid "Before the shipping section"
+msgstr "Før forsendelsesdelen"
+
+#: inc/admin/admin-settings-cart.php:151
+msgid "After the shipping section"
+msgstr "Etter fraktseksjonen"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid "Before the order summary"
+msgstr "Før ordresammendraget"
+
+#: inc/admin/admin-settings-cart.php:153, inc/admin/admin-settings-cart.php:171, inc/admin/admin-settings-checkout.php:393
+msgid "Inside the order summary"
+msgstr "Inne i ordreoversikten"
+
+#: inc/admin/admin-settings-cart.php:154, inc/admin/admin-settings-checkout.php:394
+msgid "Before the order totals"
+msgstr "Før ordren summeres"
+
+#: inc/admin/admin-settings-cart.php:155, inc/admin/admin-settings-checkout.php:395
+msgid "After the order totals"
+msgstr "Etter at ordren er summert"
+
+#: inc/admin/admin-settings-cart.php:156, inc/admin/admin-settings-cart.php:188
+msgid "After the order summary"
+msgstr "Etter ordresammendraget"
+
+#: inc/admin/admin-settings-cart.php:164
+msgid "Shipping"
+msgstr "Frakt"
+
+#: inc/admin/admin-settings-cart.php:165
+msgid ""
+"Select position where to display the shipping costs and calculator on the "
+"cart page."
+msgstr "Velg hvor fraktkostnadene og kalkulatoren skal vises på handlekurv-siden."
+
+#: inc/admin/admin-settings-cart.php:170
+msgid "Display as a cart section"
+msgstr "Vises som en del av handlekurven"
+
+#: inc/admin/admin-settings-cart.php:179
+msgid "Cross-sells"
+msgstr "Kryssalg"
+
+#: inc/admin/admin-settings-cart.php:180
+msgid "Select position where to display the cross-sells section on the cart page."
+msgstr "Velg hvor kryssalg-delen skal vises på handlekurv-siden."
+
+#: inc/admin/admin-settings-cart.php:186
+msgid "Before the cart actions"
+msgstr "Før handlingene i handlekurven"
+
+#: inc/admin/admin-settings-cart.php:187
+msgid "After the cart actions"
+msgstr "Etter handlingene i handlekurven"
+
+#: inc/admin/admin-settings-cart.php:198
+msgid "Layout of cross-sell items on the cart page."
+msgstr "Layout av kryssalgsvarer på handlekurv-siden."
+
+#: inc/admin/admin-settings-cart.php:201
+msgid "Optimized horizontal cross-sells layout"
+msgstr "Optimalisert layout for horisontalt kryssalg"
+
+#: inc/admin/admin-settings-cart.php:202
+msgid "Theme's cross-sells layout"
+msgstr "Temaets layout for kryssalg"
+
+#: inc/admin/admin-settings-cart.php:210
+msgid "Number of cross-sell items to display on the cart page"
+msgstr "Antall kryssalgsvarer som skal vises på handlekurv-siden"
+
+#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+msgid "Trust symbols &amp; badges"
+msgstr "Tillitssymboler og -merker"
+
+#: inc/admin/admin-settings-cart.php:220
+msgid "Add widget areas to the cart page"
+msgstr "Legg til widgetområder på handlekurv-siden"
+
+#: inc/admin/admin-settings-cart.php:221
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"cart page."
+msgstr ""
+"Disse widgetområdene brukes til å legge til tillitssymboler og "
+"tillitsmerker på handlekurv-siden."
+
+#: inc/admin/admin-settings-checkout.php:50
+msgid "Checkout"
+msgstr "Kasse"
+
+#: inc/admin/admin-settings-checkout.php:71
+msgid "Layout &amp; design"
+msgstr "Layout og design"
+
+#: inc/admin/admin-settings-checkout.php:78
+msgid "Checkout layout"
+msgstr "Layout for kassen"
+
+#: inc/admin/admin-settings-checkout.php:89
+msgid "Design template"
+msgstr "Designmal"
+
+#: inc/admin/admin-settings-checkout.php:90
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Might also apply to other pages such as the Cart, Order Received and View "
+"Order pages."
+msgstr ""
+"Generelle stiler for kassetrinnene, bestillingssammendraget og andre "
+"seksjoner. Kan også gjelde for andre sider, for eksempel sidene Handlekurv, "
+"Mottatt bestilling og Vis bestilling."
+
+#: inc/admin/admin-settings-checkout.php:101
+msgid "Dark mode"
+msgstr "Mørk modus"
+
+#: inc/admin/admin-settings-checkout.php:102
+msgid "Enable dark mode"
+msgstr "Aktiver mørk modus"
+
+#: inc/admin/admin-settings-checkout.php:124
+msgid "Header and footer templates"
+msgstr "Maler for topp- og bunntekst"
+
+#: inc/admin/admin-settings-checkout.php:125
+msgid ""
+"We recommend using the distraction free header and footer to avoid "
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"Vi anbefaler at du bruker topp- og bunntekst uten distraksjoner for å unngå "
+"distraksjoner på kassen. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Les "
+"forskningen om å forlate handlekurven</a>."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Logo image"
+msgstr "Logobilde"
+
+#: inc/admin/admin-settings-checkout.php:139
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the distraction free header and footer."
+msgstr ""
+"Velg et bilde som skal vises i toppteksten på betalingssiden. Gjelder bare "
+"når du bruker topp- og bunntekst uten distraksjoner."
+
+#: inc/admin/admin-settings-checkout.php:148
+msgid "Header background color"
+msgstr "Bakgrunnsfarge for overskriften"
+
+#: inc/admin/admin-settings-checkout.php:149
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"Velg en bakgrunnsfarge for toppteksten på kassen. Gjelder bare når du "
+"bruker den distraksjonsfrie topp- og bunnteksten."
+
+#: inc/admin/admin-settings-checkout.php:150, inc/admin/admin-settings-checkout.php:161, inc/admin/admin-settings-checkout.php:172, inc/admin/admin-settings-checkout.php:258
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "HTML-fargeverdi. f.eks: #f3f3f3"
+
+#: inc/admin/admin-settings-checkout.php:159
+msgid "Page background color"
+msgstr "Sidens bakgrunnsfarge"
+
+#: inc/admin/admin-settings-checkout.php:160
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
+msgstr ""
+"Velg en bakgrunnsfarge for betalingssiden. Fargen brukes på "
+"<em>body</em>-elementet."
+
+#: inc/admin/admin-settings-checkout.php:170
+msgid "Footer background color"
+msgstr "Bakgrunnsfarge for bunntekst"
+
+#: inc/admin/admin-settings-checkout.php:171
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"Velg en bakgrunnsfarge for bunnteksten på betalingssiden. Gjelder bare når "
+"du bruker den distraksjonsfrie topp- og bunnteksten."
+
+#: inc/admin/admin-settings-checkout.php:188
+msgid "Checkout elements"
+msgstr "Elementer i kassen"
+
+#: inc/admin/admin-settings-checkout.php:195
+msgid "Progress bar"
+msgstr "Fremdriftslinje"
+
+#: inc/admin/admin-settings-checkout.php:196
+msgid "Display the checkout progress bar when using multi-step checkout layout"
+msgstr "Vis fremdriftslinjen for kassen når du bruker kasselayout i flere trinn"
+
+#: inc/admin/admin-settings-checkout.php:205
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr "Få fremdriftslinjen for kassen til å forbli synlig mens du blar"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Express checkout"
+msgstr "Ekspressutsjekking"
+
+#: inc/admin/admin-settings-checkout.php:216
+msgid "Enable the express checkout section"
+msgstr "Aktiver ekspressutsjekkingsseksjonen"
+
+#: inc/admin/admin-settings-checkout.php:217
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr ""
+"Viser ekspresskassen i kassen når støttede betalingsportaler har denne "
+"funksjonen aktivert."
+
+#: inc/admin/admin-settings-checkout.php:227
+msgid "Display express checkout buttons in one line for larger screens"
+msgstr "Vis ekspresskassen på én linje for større skjermer"
+
+#: inc/admin/admin-settings-checkout.php:237
+msgid ""
+"Ignore additional checkout required fields when paying with a compatible "
+"express checkout payment gateway"
+msgstr ""
+"Ignorer obligatoriske tilleggsfelt i kassen når du betaler med en "
+"kompatibel Express Checkout-betalingsgateway"
+
+#: inc/admin/admin-settings-checkout.php:249
+msgid "Make the order summary stay visible while scrolling"
+msgstr "Gjør at ordreoversikten forblir synlig mens du blar"
+
+#: inc/admin/admin-settings-checkout.php:257
+msgid "Choose a background color for the order summary section."
+msgstr "Velg en bakgrunnsfarge for bestillingsoversikten."
+
+#: inc/admin/admin-settings-checkout.php:267
+msgid "Highlight the order totals row in the order summary table"
+msgstr "Marker raden for ordretotaler i ordreoversiktstabellen"
+
+#: inc/admin/admin-settings-checkout.php:268
+msgid ""
+"Most useful when the order summary section does not have a highlighted "
+"background color. Might also apply to the Cart, Order Received and View "
+"Order pages when using Fluid Checkout PRO."
+msgstr ""
+"Mest nyttig når bestillingsoversikten ikke har en uthevet bakgrunnsfarge. "
+"Kan også gjelde for sidene Handlekurv, Mottatt bestilling og Vis bestilling "
+"når du bruker Fluid Checkout PRO."
+
+#: inc/admin/admin-settings-checkout.php:276
+msgid "Action link on the order summary at checkout."
+msgstr "Handlingslenke i bestillingssammendraget i kassen."
+
+#: inc/admin/admin-settings-checkout.php:280
+msgid "Edit cart link"
+msgstr "Rediger lenke til handlekurven"
+
+#: inc/admin/admin-settings-checkout.php:281
+msgid "Cart items count"
+msgstr "Antall varer i handlekurven"
+
+#: inc/admin/admin-settings-checkout.php:282
+msgid "Link to shop page"
+msgstr "Lenke til butikkside"
+
+#: inc/admin/admin-settings-checkout.php:289
+msgid "Cart items"
+msgstr "Varer i handlekurven"
+
+#: inc/admin/admin-settings-checkout.php:290
+msgid "Enable options to edit cart items on the checkout page"
+msgstr "Aktiver alternativer for å redigere varer i handlekurven på betalingssiden"
+
+#: inc/admin/admin-settings-checkout.php:291
+msgid ""
+"Allow customers to change product quantities or removing items directly at "
+"the checkout page."
+msgstr "Tillat kundene å endre produktmengder eller fjerne varer direkte i kassen."
+
+#: inc/admin/admin-settings-checkout.php:301
+msgid "Hide cart items errors at the checkout page"
+msgstr "Skjul feil i handlekurven på betalingssiden"
+
+#: inc/admin/admin-settings-checkout.php:302
+msgid ""
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
+msgstr ""
+"Ikke vis feilmeldingen for varer i handlekurven øverst på betalingssiden. "
+"Når du sender inn kasseskjemaet for å fullføre kjøpet, vil disse "
+"feilmeldingene alltid vises."
+
+#: inc/admin/admin-settings-checkout.php:313
+msgid "Place order"
+msgstr "Legg inn bestilling"
+
+#: inc/admin/admin-settings-checkout.php:314
+msgid "Define the position to display \"Place order\" and terms checkbox section."
+msgstr ""
+"Definer posisjonen for visning av avmerkingsboksen \"Legg inn bestilling\" "
+"og vilkår."
+
+#: inc/admin/admin-settings-checkout.php:315
+msgid "Some options might not be compatible with some plugins and themes."
+msgstr ""
+"Noen alternativer er kanskje ikke kompatible med enkelte programtillegg og "
+"temaer."
+
+#: inc/admin/admin-settings-checkout.php:319
+msgid "Below the payment section"
+msgstr "Under betalingsseksjonen"
+
+#: inc/admin/admin-settings-checkout.php:320
+msgid "Below the order summary"
+msgstr "Under bestillingsoversikten"
+
+#: inc/admin/admin-settings-checkout.php:321
+msgid "Both below the payment section and the order summary"
+msgstr "Både under betalingsseksjonen og ordreoversikten"
+
+#: inc/admin/admin-settings-checkout.php:329
+msgid "Add widget areas to the checkout page"
+msgstr "Legg til widgetområder på kassesiden"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"checkout page."
+msgstr ""
+"Disse widgetområdene brukes til å legge til tillitssymboler og "
+"tillitsmerker på kassesiden."
+
+#: inc/admin/admin-settings-checkout.php:339
+msgid ""
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
+msgstr ""
+"Vis sidefeltwidgets for kassen bare når du viser det siste kassetrinnet på "
+"mobile enheter når du bruker kasselayout med flere trinn"
+
+#: inc/admin/admin-settings-checkout.php:364
+msgid "Enable integrated coupon code section"
+msgstr "Aktiver integrert kupongkodeseksjon"
+
+#: inc/admin/admin-settings-checkout.php:365
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr ""
+"Gjelder bare hvis bruk av kupongkoder er aktivert i "
+"WooCommerce-innstillingene."
+
+#: inc/admin/admin-settings-checkout.php:374
+msgid "Display the coupon codes section title"
+msgstr "Vis tittelen på kupongkoder-seksjonen"
+
+#: inc/admin/admin-settings-checkout.php:375
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"Gjelder kun når kupongkoden vises som en egen seksjon i kassen eller i "
+"handlekurven."
+
+#: inc/admin/admin-settings-checkout.php:385
+msgid ""
+"Select position where to display the coupon codes section on the checkout "
+"page."
+msgstr "Velg hvor kupongkodedelen skal vises på kassen."
+
+#: inc/admin/admin-settings-checkout.php:390
+msgid "Before the checkout steps"
+msgstr "Før utsjekkingstrinnene"
+
+#: inc/admin/admin-settings-checkout.php:391
+msgid "As a substep before payment methods"
+msgstr "Som et undertrinn før betalingsmetoder"
+
+#: inc/admin/admin-settings-checkout.php:392
+msgid "As a substep after payment methods"
+msgstr "Som et undertrinn etter betalingsmetoder"
+
+#: inc/admin/admin-settings-checkout.php:402
+msgid ""
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
+msgstr ""
+"Velg stil for \"bruk kupong\"-knappen. Gjelder bare når kupongkodeseksjonen "
+"vises \"Før kassetrinnene\" på kassesiden, eller \"Før delen med varer i "
+"handlekurven\" på handlekurv-siden."
+
+#: inc/admin/admin-settings-checkout.php:406
+msgid "Default button style"
+msgstr "Standard knappestil"
+
+#: inc/admin/admin-settings-checkout.php:407
+msgid "\"Add\" link button"
+msgstr "Knappen \"Legg til\""
+
+#: inc/admin/admin-settings-checkout.php:422, inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102, inc/compat/themes/compat-theme-zk-nito.php:87
+msgid "Checkout fields"
+msgstr "Kassafelt"
+
+#: inc/admin/admin-settings-checkout.php:429
+msgid "Optional fields"
+msgstr "Valgfrie felt"
+
+#: inc/admin/admin-settings-checkout.php:430
+msgid "Hide optional fields behind a link button"
+msgstr "Skjul valgfrie felt bak en lenkeknapp"
+
+#: inc/admin/admin-settings-checkout.php:431
+msgid ""
+"It is recommended to keep this option checked to reduce the number of open "
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"Det anbefales å holde dette alternativet avkrysset for å redusere antall "
+"åpne inndatafelt, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">les forskningen</a>."
+
+#: inc/admin/admin-settings-checkout.php:440
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr "Ikke skjul \"Adresselinje 2\"-feltene bak en lenkeknapp"
+
+#: inc/admin/admin-settings-checkout.php:441
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr ""
+"Anbefales kun når de fleste kunder faktisk trenger feltet \"Adresselinje "
+"2\", eller når det er avgjørende å få riktig leveringsadresse (f.eks. ved "
+"levering av matvarer og andre lett bedervelige produkter)."
+
+#: inc/admin/admin-settings-checkout.php:451
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "Vis \"Legg til\"-lenkeknappene med små bokstaver"
+
+#: inc/admin/admin-settings-checkout.php:452
+msgid ""
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
+msgstr ""
+"Gjør etikettene til lenkeknappen for valgfrie felt \"Legg til\" til <code> "
+"små bokstaver</code> (f.eks. \"Legg til telefonnummer\" i stedet for \"Legg "
+"til telefonnummer\"). Dette alternativet påvirker også koblingsknappene for "
+"kupongkodefelt."
+
+#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+msgid "Billing address"
+msgstr "Faktureringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:461
+msgid ""
+"Select position where to display the billing address section on the "
+"checkout page."
+msgstr "Velg hvor faktureringsadressedelen skal vises på betalingssiden."
+
+#: inc/admin/admin-settings-checkout.php:465
+msgid "As a step before shipping"
+msgstr "Som et steg før forsendelse"
+
+#: inc/admin/admin-settings-checkout.php:466
+msgid "As a sub-step before the shipping address section"
+msgstr "Som et undertrinn før seksjonen for leveringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "As a sub-step after the shipping address section"
+msgstr "Som et undertrinn etter seksjonen for leveringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:468
+msgid "As a step after shipping"
+msgstr "Som et trinn etter frakt"
+
+#: inc/admin/admin-settings-checkout.php:469
+msgid "As a sub-step before the payment section"
+msgstr "Som et undertrinn før betalingsdelen"
+
+#: inc/admin/admin-settings-checkout.php:470
+msgid "Force billing and shipping addresses to the same (single section)"
+msgstr ""
+"Tvinge fakturerings- og leveringsadresser til å være de samme (enkelt "
+"seksjon)"
+
+#: inc/admin/admin-settings-checkout.php:477
+msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
+msgstr ""
+"Avkrysningsruten for \"Samme som leverings-/faktureringsadresse\" er merket "
+"av som standard"
+
+#: inc/admin/admin-settings-checkout.php:478
+msgid ""
+"The checkbox \"Same as shiping address\" will start as checked by default "
+"when the shipping address section is displayed first. <br>The checkbox "
+"\"Same as billing address\" will start as checked by default when the "
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
+msgstr ""
+"Avmerkingsboksen \"Samme som leveringsadresse\" vil starte som avkrysset "
+"som standard når leveringsadressedelen vises først. <Avkrysningsboksen "
+"\"Samme som faktureringsadresse\" vil starte som avkrysset som standard når "
+"faktureringsadresseseksjonen vises først. <br> Det anbefales å la dette "
+"alternativet være avkrysset for å redusere antallet åpne inndatafelt i "
+"kassen betydelig, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">les "
+"forskningen</a>."
+
+#: inc/admin/admin-settings-checkout.php:486
+msgid "Highlight the billing address section in the checkout form"
+msgstr "Marker faktureringsadresse-seksjonen i kasseskjemaet"
+
+#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+msgid "Shipping address"
+msgstr "Leveringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:495
+msgid "Highlight the shipping address section in the checkout form"
+msgstr "Marker seksjonen for leveringsadresse i kasseskjemaet"
+
+#: inc/admin/admin-settings-checkout.php:503
+msgid "Shipping methods"
+msgstr "Fraktmetoder"
+
+#: inc/admin/admin-settings-checkout.php:504
+msgid "Choose in which position to display the shipping methods section."
+msgstr "Velg hvilken posisjon du vil vise seksjonen for fraktmetoder."
+
+#: inc/admin/admin-settings-checkout.php:508
+msgid "Before shipping address"
+msgstr "Før leveringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:509
+msgid "After shipping address"
+msgstr "Etter leveringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:516
+msgid "Prevent automatic selection of the first shipping method"
+msgstr "Forhindre automatisk valg av den første fraktmetoden"
+
+#: inc/admin/admin-settings-checkout.php:517
+msgid ""
+"When enabled, the first shipping method available will not be automatically "
+"selected when no other shipping method was previously selected for each "
+"shipping package. <br>This option will be automatically enabled if the "
+"option for clearing the selected shipping method is enabled for the Local "
+"Pickup feature."
+msgstr ""
+"Når dette alternativet er aktivert, velges ikke den første tilgjengelige "
+"fraktmetoden automatisk når ingen annen fraktmetode tidligere er valgt for "
+"hver fraktpakke. <Dette alternativet aktiveres automatisk hvis alternativet "
+"for å fjerne den valgte fraktmetoden er aktivert for funksjonen Lokal "
+"henting."
+
+#: inc/admin/admin-settings-checkout.php:526
+msgid "Local pickup"
+msgstr "Lokal henting"
+
+#: inc/admin/admin-settings-checkout.php:527
+msgid ""
+"Removes shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Fjerner delen for leveringsadresse når lokal henting er valgt som "
+"leveringsmetode."
+
+#: inc/admin/admin-settings-checkout.php:528
+msgid ""
+"Replaces the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Erstatter leveringsadressen med hentestedets plassering når lokal henting "
+"er valgt som forsendelsesmetode."
+
+#: inc/admin/admin-settings-checkout.php:538
+msgid "Show option to clear shipping methods in the pickup location substep"
+msgstr "Vis alternativet for å fjerne fraktmetoder i undertrinnet for hentested"
+
+#: inc/admin/admin-settings-checkout.php:539
+msgid ""
+"Show a link button on the pickup location substep to clear the chosen "
+"shipping methods. This can be used to allow showing the shipping address "
+"section again if a local pickup method was previously selected."
+msgstr ""
+"Vis en koblingsknapp i undertrinnet for hentested for å fjerne de valgte "
+"fraktmetodene. Dette kan brukes til å vise leveringsadressedelen igjen hvis "
+"det tidligere er valgt en lokal hentingsmetode."
+
+#: inc/admin/admin-settings-checkout.php:550
+msgid ""
+"Choose which address to save as the shipping address for local pickup "
+"orders."
+msgstr ""
+"Velg hvilken adresse som skal lagres som leveringsadresse for lokale "
+"hentebestillinger."
+
+#: inc/admin/admin-settings-checkout.php:554
+msgid "Save the selected pickup location"
+msgstr "Lagre det valgte hentestedet"
+
+#: inc/admin/admin-settings-checkout.php:555
+msgid "Save same as the billing address"
+msgstr "Lagre samme som faktureringsadressen"
+
+#: inc/admin/admin-settings-checkout.php:556
+msgid "Do not save any shipping address"
+msgstr "Ikke lagre noen leveringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:564
+msgid "Company name field for shipping address"
+msgstr "Felt for firmanavn for leveringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:565
+msgid ""
+"Change visibility for the company name field for the shipping address "
+"section on the checkout form."
+msgstr ""
+"Endre synligheten for firmanavnsfeltet for leveringsadressedelen i "
+"kasseskjemaet."
+
+#: inc/admin/admin-settings-checkout.php:566
+msgid ""
+"If field is set as \"optional\", which is the default visibility state, no "
+"changes will be applied to let other plugins apply any changes they need."
+msgstr ""
+"Hvis feltet er angitt som \"valgfritt\", som er standard synlighetsstatus, "
+"vil ingen endringer bli brukt, slik at andre plugins kan bruke eventuelle "
+"endringer de trenger."
+
+#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+msgid "Hidden (remove field)"
+msgstr "Skjult (fjern feltet)"
+
+#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+msgid "Optional"
+msgstr "Valgfritt"
+
+#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+msgid "Required"
+msgstr "Nødvendig"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid "Add shipping phone field to the checkout form."
+msgstr "Legg til et felt for frakttelefon i kasseskjemaet."
+
+#: inc/admin/admin-settings-checkout.php:594
+msgid "Choose in which step to display the shipping phone field."
+msgstr "Velg i hvilket trinn du vil vise feltet for frakttelefon."
+
+#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+msgid "Contact step"
+msgstr "Kontakt trinn"
+
+#: inc/admin/admin-settings-checkout.php:606
+msgid "Billing phone"
+msgstr "Faktureringstelefon"
+
+#: inc/admin/admin-settings-checkout.php:607
+msgid "Add billing phone field to the checkout form."
+msgstr "Legg til et felt for faktureringstelefon i kasseskjemaet."
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid "Choose in which step to display the billing phone field."
+msgstr "Velg i hvilket trinn du vil vise feltet for faktureringstelefon."
+
+#: inc/admin/admin-settings-checkout.php:634
+msgid "Enable international phone number format and validation for phone fields"
+msgstr "Aktiver internasjonalt telefonnummerformat og validering for telefonfelt"
+
+#: inc/admin/admin-settings-checkout.php:635
+msgid "Format and validate phone numbers according to each country."
+msgstr "Formater og valider telefonnumre i henhold til hvert land."
+
+#: inc/admin/admin-settings-checkout.php:645
+msgid "Enable phone number validation based on country rules"
+msgstr "Aktiver validering av telefonnummer basert på landregler"
+
+#: inc/admin/admin-settings-checkout.php:646
+msgid ""
+"When disabled, the phone field validation will not check if country or area "
+"codes are valid for the country."
+msgstr ""
+"Når den er deaktivert, sjekker ikke telefonfeltvalideringen om land- eller "
+"retningsnumre er gyldige for landet."
+
+#: inc/admin/admin-settings-checkout.php:656
+msgid "Only show allowed countries for shipping or billing"
+msgstr "Vis bare tillatte land for frakt eller fakturering"
+
+#: inc/admin/admin-settings-checkout.php:657
+msgid ""
+"When enabled, only the countries allowed for shipping will be available in "
+"the shipping phone field, and only countries allowed for billing will be "
+"available for the billing phone field."
+msgstr ""
+"Når denne funksjonen er aktivert, vil bare de landene som er tillatt for "
+"frakt, være tilgjengelige i feltet for frakttelefon, og bare de landene som "
+"er tillatt for fakturering, vil være tilgjengelige i feltet for "
+"faktureringstelefon."
+
+#: inc/admin/admin-settings-checkout.php:667
+msgid "Show country code beside the flag"
+msgstr "Vis landskode ved siden av flagget"
+
+#: inc/admin/admin-settings-checkout.php:678
+msgid "Show an example of a valid phone number inside phone fields"
+msgstr "Vis et eksempel på et gyldig telefonnummer i telefonfeltene"
+
+#: inc/admin/admin-settings-checkout.php:682
+msgid "Do not change placeholders"
+msgstr "Ikke endre plassholdere"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Show if not defined"
+msgstr "Vis hvis ikke definert"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid "Always show"
+msgstr "Vis alltid"
+
+#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+msgid "Order notes"
+msgstr "Bestillingsmerknader"
+
+#: inc/admin/admin-settings-checkout.php:693
+msgid "Define the visibility of the additional order notes field."
+msgstr "Definer synligheten til feltet for ekstra ordrenotater."
+
+#: inc/admin/admin-settings-checkout.php:705
+msgid "Gift options"
+msgstr "Gavealternativer"
+
+#: inc/admin/admin-settings-checkout.php:706
+msgid "Display gift message and other gift options at the checkout page"
+msgstr "Vis gavebudskap og andre gavealternativer på betalingssiden"
+
+#: inc/admin/admin-settings-checkout.php:707
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr ""
+"Gi kundene mulighet til å legge til en gavemelding og andre gaverelaterte "
+"alternativer i bestillingen."
+
+#: inc/admin/admin-settings-checkout.php:717
+msgid "Display the gift message fields always expanded"
+msgstr "Vis gavemeldingsfeltene alltid utvidet"
+
+#: inc/admin/admin-settings-checkout.php:727
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr ""
+"Vis gavemeldingen som en del av tabellen med bestillingsdetaljer i stedet "
+"for i en egen seksjon"
+
+#: inc/admin/admin-settings-checkout.php:728
+msgid ""
+"This option affects the order confirmation page (thank you page) and order "
+"details on account pages, emails and packing slips."
+msgstr ""
+"Dette alternativet påvirker ordrebekreftelsessiden (takkesiden) og "
+"bestillingsdetaljer på kontosider, e-postmeldinger og pakksedler."
+
+#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+msgid "Account matching"
+msgstr "Kontomatching"
+
+#: inc/admin/admin-settings-checkout.php:754
+msgid "Enable the account matching feature"
+msgstr "Aktiver funksjonen for kontomatching"
+
+#: inc/admin/admin-settings-checkout.php:755
+msgid ""
+"Associate the guest customer's orders with their existing account when an "
+"account already exists with the customer's contact details."
+msgstr ""
+"Knytt gjestekundens bestillinger til den eksisterende kontoen når det "
+"allerede finnes en konto med kundens kontaktinformasjon."
+
+#: inc/admin/admin-settings-checkout.php:765
+msgid "Display message when an account exists with the email address provided"
+msgstr "Vis melding når det finnes en konto med den oppgitte e-postadressen"
+
+#: inc/admin/admin-settings-checkout.php:766
+msgid ""
+"Replaces the account creation fields with a notification and option to log "
+"in. In some contexts, it might be recommended to leave this option disabled "
+"to protect the privacy of customers."
+msgstr ""
+"Erstatter feltene for kontooppretting med et varsel og mulighet til å logge "
+"inn. I noen sammenhenger kan det anbefales å la dette alternativet være "
+"deaktivert for å beskytte kundenes personvern."
+
+#: inc/admin/admin-settings-dashboard.php:49
+msgid "Dashboard"
+msgstr "Dashbord"
+
+#: inc/admin/admin-settings-integrations.php:51
+msgid "Integrations"
+msgstr "Integrasjoner"
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
+msgstr ""
+"Ingen integrasjoner er tilgjengelige for øyeblikket i denne delen. "
+"Alternativene knyttet til hver plugin vises bare her hvis den aktuelle "
+"plugin-modulen er aktivert."
+
+#: inc/admin/admin-settings-license-keys.php:54
+msgid "License keys"
+msgstr "Lisensnøkler"
+
+#: inc/admin/admin-settings-license-keys.php:85
+msgid ""
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
+msgstr ""
+"Ingen lisensnøkkelalternativer er tilgjengelige for øyeblikket i denne "
+"delen. Alternativene knyttet til hver plugin eller tillegg vil vises her "
+"når den aktuelle plugin-modulen er aktivert."
+
+#: inc/admin/admin-settings-license-keys.php:90
+msgid "Visit our website for more information about our plugins and add-ons."
+msgstr ""
+"Besøk nettstedet vårt for mer informasjon om våre plugins og "
+"tilleggsprogrammer."
+
+#: inc/admin/admin-settings-order-pay.php:71
+msgid "Order pay page"
+msgstr "Bestill betalingsside"
+
+#: inc/admin/admin-settings-order-pay.php:78
+msgid "Order pay"
+msgstr "Bestill lønn"
+
+#: inc/admin/admin-settings-order-pay.php:79
+msgid "Enable order pay page optimizations"
+msgstr "Aktiver optimalisering av betalingssiden for bestillinger"
+
+#: inc/admin/admin-settings-order-pay.php:80
+msgid ""
+"Changes the layout of order pay page for existing orders pending payment "
+"from the customer."
+msgstr ""
+"Endrer oppsettet på betalingssiden for eksisterende bestillinger som venter "
+"på betaling fra kunden."
+
+#: inc/admin/admin-settings-order-pay.php:92
+msgid "Add widget areas to the order pay page"
+msgstr "Legg til widgetområder på betalingssiden for bestillinger"
+
+#: inc/admin/admin-settings-order-pay.php:93
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"order pay page."
+msgstr ""
+"Disse widgetområdene brukes til å legge til tillitssymboler og "
+"tillitsmerker på betalingssiden for bestillingen."
+
+#: inc/admin/admin-settings-order-received.php:69
+msgid "Thank you page & order details layout"
+msgstr "Layout for takkeside og bestillingsdetaljer"
+
+#: inc/admin/admin-settings-order-received.php:76
+msgid "Order details optimizations"
+msgstr "Optimalisering av bestillingsdetaljer"
+
+#: inc/admin/admin-settings-order-received.php:77
+msgid "Enable thank you page and order details optimizations"
+msgstr "Aktivere optimalisering av takkesiden og bestillingsdetaljer"
+
+#: inc/admin/admin-settings-order-received.php:78
+msgid "Changes the layout of order details on the thank you page and account pages."
+msgstr "Endrer oppsettet for bestillingsdetaljer på takkesiden og kontosidene."
+
+#: inc/admin/admin-settings-order-received.php:89
+msgid "Enable order details customizations on email notifications"
+msgstr "Aktiver tilpasninger av bestillingsdetaljer på e-postvarsler"
+
+#: inc/admin/admin-settings-order-received.php:90
+msgid ""
+"Display new sections and change order of sections on email notifications. "
+"Styles of order details on email notifications remain unchanged."
+msgstr ""
+"Vis nye seksjoner og endre rekkefølgen på seksjoner i e-postvarsler. Stilen "
+"for bestillingsdetaljer på e-postvarsler forblir uendret."
+
+#: inc/admin/admin-settings-order-received.php:108
+msgid "Thank you page"
+msgstr "Takk-siden"
+
+#: inc/admin/admin-settings-order-received.php:110
+msgid ""
+"These options affect the thank you page, also known as order received or "
+"order confirmation pages."
+msgstr ""
+"Disse alternativene påvirker takkesiden, også kjent som sider for mottatt "
+"bestilling eller ordrebekreftelse."
+
+#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
+msgid "Order details layout"
+msgstr "Layout for bestillingsdetaljer"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Display the order details with wide layout on the thank you page"
+msgstr "Vis bestillingsinformasjonen med bred layout på takkesiden"
+
+#: inc/admin/admin-settings-order-received.php:126
+msgid "Add widget areas to the thank you page"
+msgstr "Legg til widgetområder på takkesiden"
+
+#: inc/admin/admin-settings-order-received.php:127
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"thank you page."
+msgstr ""
+"Disse widgetområdene brukes til å legge til tillitssymboler og "
+"tillitsmerker på takkesiden."
+
+#: inc/admin/admin-settings-order-received.php:145
+msgid ""
+"These options affect the thank you page , view order details on account "
+"pages and on email notifications."
+msgstr ""
+"Disse alternativene påvirker takkesiden, vis bestillingsdetaljer på "
+"kontosider og på e-postvarsler."
+
+#: inc/admin/admin-settings-order-received.php:150
+msgid "Order actions"
+msgstr "Bestill handlinger"
+
+#: inc/admin/admin-settings-order-received.php:151
+msgid "Choose in which position to display the order actions."
+msgstr "Velg hvilken posisjon bestillingshandlingene skal vises i."
+
+#: inc/admin/admin-settings-order-received.php:155
+msgid "Inside the order overview"
+msgstr "Inne i ordreoversikten"
+
+#: inc/admin/admin-settings-order-received.php:156
+msgid "After the order overview"
+msgstr "Etter ordreoversikten"
+
+#: inc/admin/admin-settings-order-received.php:157
+msgid "After order sections"
+msgstr "Etter bestillingsseksjoner"
+
+#: inc/admin/admin-settings-order-received.php:165
+msgid "Order status"
+msgstr "Bestillingsstatus"
+
+#: inc/admin/admin-settings-order-received.php:166
+msgid "Display the order status progress bar"
+msgstr "Vis fremdriftslinjen for ordrestatus"
+
+#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+msgid "Choose in which position to display the section."
+msgstr "Velg hvilken posisjon seksjonen skal vises i."
+
+#: inc/admin/admin-settings-order-received.php:180
+msgid "After the order overview and payment instructions"
+msgstr "Etter ordreoversikten og betalingsinstruksjonene"
+
+#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+msgid "Before the order items section"
+msgstr "Før seksjonen for bestillingsartikler"
+
+#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+msgid "Inside the order items section"
+msgstr "Inne i seksjonen for bestillingsvarer"
+
+#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+msgid "After the order items section"
+msgstr "Etter seksjonen for bestillingsvarer"
+
+#: inc/admin/admin-settings-order-received.php:184
+msgid "On the sidebar"
+msgstr "På sidefeltet"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Order downloads"
+msgstr "Bestill nedlastinger"
+
+#: inc/admin/admin-settings-order-received.php:207
+msgid "Gift message"
+msgstr "Gavebeskjed"
+
+#: inc/admin/admin-settings-tools.php:51
+msgid "Tools"
+msgstr "Verktøy"
+
+#: inc/admin/admin-settings-tools.php:84
+msgid "Troubleshooting"
+msgstr "Feilsøking"
+
+#: inc/admin/admin-settings-tools.php:91
+msgid "Debug options"
+msgstr "Alternativer for feilsøking"
+
+#: inc/admin/admin-settings-tools.php:92
+msgid "Debug mode"
+msgstr "Feilsøkingsmodus"
+
+#: inc/admin/admin-settings-tools.php:93
+msgid ""
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
+msgstr ""
+"Bruk av feilsøkingsmodus påvirker nettstedets ytelse. Bruk dette "
+"alternativet kun under feilsøking."
+
+#: inc/admin/admin-settings-tools.php:102
+msgid "Load unminified assets"
+msgstr "Last inn uminifiserte eiendeler"
+
+#: inc/admin/admin-settings-tools.php:112
+msgid "Enhanced select fields"
+msgstr "Forbedrede valgfelt"
+
+#: inc/admin/admin-settings-tools.php:113
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgstr "Erstatt <code>select2</code> rullegardinmenyen med <code>TomSelect</code>"
+
+#: inc/admin/admin-settings-tools.php:114
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
+msgstr ""
+"TomSelect er en enklere rullegardinvalgkomponent som er mindre utsatt for "
+"feil enn Select2, samtidig som den tilbyr de samme funksjonene som faktisk "
+"brukes på WooCommerce-kassesider."
+
+#: inc/admin/admin-settings-tools.php:122
+msgid "Fix automatic zoom-in on form fields"
+msgstr "Fikser automatisk innzooming i skjemafelt"
+
+#: inc/admin/admin-settings-tools.php:123
+msgid "Set <code>font-size</code> inside form fields to 16px"
+msgstr "Sett <code>fontstørrelse</code> i skjemafelt til 16 piksler"
+
+#: inc/admin/admin-settings-tools.php:124
+msgid ""
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
+msgstr ""
+"Når skriftstørrelsen i skjemafeltene er mindre enn 16 piksler, kan Safari "
+"og andre nettlesere automatisk zoome inn på mobile enheter for å gjøre "
+"teksten lettere å lese. Når dette alternativet er aktivert, settes "
+"skriftstørrelsen i skjemafeltene til 16 piksler på sider som er "
+"optimalisert av Fluid Checkout, for å unngå at den zoomer inn."
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"Fraktdestinasjonen er alltid satt til \"Standard til kundens "
+"leveringsadresse\" når Fluid Checkout er aktivert. Kunder kan fortsatt "
+"oppgi forskjellige leverings- og faktureringsadresser i kassen, og et "
+"alternativ for å angi at standard faktureringsadresse skal være den samme "
+"som leveringsadressen er tilgjengelig under WooCommerce > Innstillinger > "
+"Fluid Checkout."
+
+#: inc/admin/admin-tab-fluid-checkout.php:25
+msgid "Fluid Checkout"
+msgstr "Væskesjekk"
+
+#: inc/admin/admin.php:133
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: inc/admin/admin.php:134
+msgid "Support"
+msgstr "Støtte"
+
+#: inc/admin/admin.php:159
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgstr ""
+"<a target=\"_blank\" href=\"%s\">Oppgrader til PRO</a> for å låse opp flere "
+"alternativer."
+
+#: inc/admin/admin.php:179
+msgid "(PRO)"
+msgstr "(PRO)"
+
+#: inc/admin/admin.php:199
+msgid "(experimental)"
+msgstr "(eksperimentell)"
+
+#: inc/admin/admin.php:208
+msgid ""
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
+msgstr ""
+"Dette er en eksperimentell funksjon, og det er ikke sikkert at den fungerer "
+"som forventet med alle temaer og programtillegg. Bruk den med forsiktighet."
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
+msgid "Confirm"
+msgstr "Bekreft"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
+msgid "Verify Phone Number"
+msgstr "Bekreft telefonnummer"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
+msgid "Please verify your phone number."
+msgstr "Vennligst bekreft telefonnummeret ditt."
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
+msgid "The Bluehost Plugin"
+msgstr "Bluehost-plugin-modulen"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:81
+msgid "Custom fields"
+msgstr "Egendefinerte felt"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:82
+msgid "Enable custom shipping email field"
+msgstr "Aktiver egendefinert e-postfelt for frakt"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
+msgid ""
+"When enabled, the shipping email field from the Bluehost plugin will be "
+"added to the checkout form."
+msgstr ""
+"Når dette er aktivert, vil e-postfeltet for frakt fra "
+"Bluehost-plugin-modulen bli lagt til i kasseskjemaet."
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:89
+msgid "Captcha Pro by BestWebSoft"
+msgstr "Captcha Pro av BestWebSoft"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:95
+msgid "Captcha position"
+msgstr "Captcha-posisjon"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:96
+msgid ""
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
+msgstr ""
+"Definer posisjonen der captcha-delen skal vises. Noen posisjoner fungerer "
+"kanskje ikke, avhengig av hvilken captcha-type som er valgt."
+
+#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+msgid "Selecting a pickup point is required before proceeding."
+msgstr "Du må velge et hentepunkt før du kan fortsette."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:234
+msgid "Pickup point"
+msgstr "Opphentingssted"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307, inc/compat/plugins/compat-plugin-seur.php:386, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
+msgid "Pickup point not selected yet."
+msgstr "Opphentingssted ikke valgt ennå."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312, inc/compat/plugins/compat-plugin-seur.php:391, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
+msgid "Pickup point:"
+msgstr "Oppsamlingssted:"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+msgid "Mailchimp for WooCommerce"
+msgstr "Mailchimp for WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
+msgid "Subscribe checkbox"
+msgstr "Avkrysningsrute for abonnement"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:87
+msgid ""
+"Override the position for the subscribe checkbox on the checkout page and "
+"always display it on the contact step"
+msgstr ""
+"Overstyr plasseringen av avkrysningsboksen for abonnement på "
+"betalingssiden, og vis den alltid på kontakttrinnet"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+msgid "Before Shipping Address"
+msgstr "Før leveringsadresse"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87, inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "(originally \"%s\")"
+msgstr "(opprinnelig \"%s\")"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "After Shipping Address"
+msgstr "Etter leveringsadresse"
+
+#: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
+msgid "Selecting a collection point is required when shipping with FermoPoint."
+msgstr "Når du sender med FermoPoint, må du velge et oppsamlingssted."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:189
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"Hvis avkrysset, informerer det om skrivefeil i e-post til brukerne. (Denne "
+"funksjonen er deaktivert fordi Fluid Checkout tilbyr funksjonen. Endringer "
+"i dette alternativet vil ikke tre i kraft)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "Aktiver postkontroll: (deaktivert funksjon)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
+msgid "Carrier:"
+msgstr "Transportør:"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:167
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "Sendinblue - WooCommerce e-postmarkedsføring"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
+msgid "Sign up checkbox position"
+msgstr "Posisjon i avmerkingsboksen for registrering"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
+msgid "Move the sign up checkbox to the contact step"
+msgstr "Flytt avkrysningsboksen for registrering til kontakttrinnet"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
+msgid ""
+"When enabled, the checkbox will be moved to the contact step independently "
+"of the display location defined in the Sendinblue plugin settings."
+msgstr ""
+"Når den er aktivert, flyttes avmerkingsboksen til kontakttrinnet uavhengig "
+"av visningsplasseringen som er definert i Sendinblue-plugin-innstillingene."
+
+#: inc/compat/themes/compat-theme-betheme.php:172
+msgid "Theme Betheme"
+msgstr "Tema Betheme"
+
+#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:202, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+msgid "Checkout progress"
+msgstr "Fremgang i kassen"
+
+#: inc/compat/themes/compat-theme-betheme.php:179
+msgid ""
+"Output the checkout steps section from Betheme on the checkout, cart and "
+"order received pages."
+msgstr ""
+"Skriv ut kassetrinnene fra Betheme på sidene for kassen, handlekurven og "
+"mottatt bestilling."
+
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "Tema Fennik"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "Brødsmuler"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Skriv ut brødsmuleseksjonen fra Fennik-temaet når du bruker Fluid "
+"Checkout-topptekst og -fot."
+
+#: inc/compat/themes/compat-theme-go.php:53
+msgid "Theme Go"
+msgstr "Tema Gå"
+
+#: inc/compat/themes/compat-theme-go.php:59
+msgid "My account layout"
+msgstr "Oppsettet for kontoen min"
+
+#: inc/compat/themes/compat-theme-go.php:60
+msgid "Enable wide layout on \"My account\" page."
+msgstr "Aktiver bred layout på \"Min konto\"-siden."
+
+#: inc/compat/themes/compat-theme-Impreza.php:93
+msgid "Theme Impreza"
+msgstr "Tema Impreza"
+
+#: inc/compat/themes/compat-theme-Impreza.php:99
+msgid "Header"
+msgstr "Overskrift"
+
+#: inc/compat/themes/compat-theme-Impreza.php:100
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr "Avstand for nettstedets topptekst på kassesiden (i piksler)"
+
+#: inc/compat/themes/compat-theme-Impreza.php:101
+msgid "Only applicable when using the Impreza theme header at the checkout page."
+msgstr "Gjelder bare når du bruker Impreza-tematoppteksten på kassen."
+
+#: inc/compat/themes/compat-theme-kapee.php:123
+msgid "Theme Kapee"
+msgstr "Tema Kapee"
+
+#: inc/compat/themes/compat-theme-kapee.php:130
+msgid ""
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"Skriv ut kassetrinnene fra Kapee-temaet på sidene for kassen, handlekurven "
+"og mottatt bestilling."
+
+#: inc/compat/themes/compat-theme-porto.php:196
+msgid "Theme Porto"
+msgstr "Tema Porto"
+
+#: inc/compat/themes/compat-theme-porto.php:203
+msgid ""
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"Skriv ut kassetrinnene fra Porto-temaet på sidene for kassen, handlekurven "
+"og mottatt bestilling."
+
+#: inc/compat/themes/compat-theme-pressmart.php:180
+msgid "Theme Pressmart"
+msgstr "Tema Pressmart"
+
+#: inc/compat/themes/compat-theme-pressmart.php:187
+msgid ""
+"Output the checkout steps section from the Pressmart theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"Skriv ut kassetrinnene fra Pressmart-temaet på sidene for kassen, "
+"handlekurven og mottatt bestilling."
+
+#: inc/compat/themes/compat-theme-thegem.php:158
+msgid "Theme The Gem"
+msgstr "Tema Edelstenen"
+
+#: inc/compat/themes/compat-theme-thegem.php:165
+msgid ""
+"Output the checkout steps section from The Gem theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Skriv ut kassetrinnene fra Gem-temaet når du bruker Fluid Checkout header "
+"og footer."
+
+#: inc/compat/themes/compat-theme-woodmart.php:152
+msgid "Theme Woodmart"
+msgstr "Tema Woodmart"
+
+#: inc/compat/themes/compat-theme-woodmart.php:159
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Skriv ut kassetrinnseksjonen fra Woodmart-temaet når du bruker Fluid "
+"Checkout topp- og bunntekst."
+
+#: inc/compat/themes/compat-theme-woodmart.php:167
+msgid "Checkout options"
+msgstr "Alternativer for utsjekking"
+
+#: inc/compat/themes/compat-theme-woodmart.php:168
+msgid "Disable the theme checkout options"
+msgstr "Deaktiver temaets kassealternativer"
+
+#: inc/compat/themes/compat-theme-woodmart.php:169
+msgid ""
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
+msgstr ""
+"Alternativene vis produktbilde, antallsfelt, fjern-knapp og lenke til "
+"produktside som er lagt til av temaet, er deaktivert som standard."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
+msgid "Theme Atomion"
+msgstr "Tema Atomion"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:93
+msgid "Order progress"
+msgstr "Fremdrift i bestillingen"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
+msgid "Display order progress from the theme"
+msgstr "Vis fremdriften i bestillingen fra temaet"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103, inc/compat/themes/compat-theme-zk-nito.php:88
+msgid "Display the form field labels visible on the page"
+msgstr "Vis etikettene til skjemafeltene synlig på siden"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
+msgid "It is recommended to keep this option enabled for a better user experience."
+msgstr ""
+"Det anbefales å beholde dette alternativet aktivert for å få en bedre "
+"brukeropplevelse."
+
+#: inc/compat/themes/compat-theme-zk-nito.php:81
+msgid "Theme ZK Nito"
+msgstr "Tema ZK Nito"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:96
+msgid "Add extra fields to the checkout form"
+msgstr "Legg til ekstra felt i kasseskjemaet"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:97
+msgid ""
+"Adds an extra shipping email and shipping phone field to the shipping "
+"address section."
+msgstr ""
+"Legger til et ekstra felt for e-post og telefon i seksjonen for "
+"leveringsadresse."
+
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
+msgid "Go to the home page"
+msgstr "Gå til startsiden"
+
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54, templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
+msgid "Skip to content"
+msgstr "Hopp til innhold"
+
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:37
+msgid "Create an account"
+msgstr "Opprett en konto"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
+msgid "Log in to your account"
+msgstr "Logg inn på kontoen din"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+msgid "Already have an account?"
+msgstr "Har du allerede en konto?"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
+msgstr "Innlogget som %1$s. <a href=\"%2$s\">Logg ut</a>"
+
+#: templates/fc/checkout-steps/checkout/payment.php:48
+msgid "Your order has a total amount due of %s. No further payment is needed."
+msgstr ""
+"Bestillingen din har et forfalt totalbeløp på %s. Ingen ytterligere "
+"betaling er nødvendig."
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Close and continue with checkout"
+msgstr "Lukk og fortsett med kassen"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Continue"
+msgstr "Fortsett"
+
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+msgid "Parcel terminal"
+msgstr "Pakketerminal"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>Denne widgeten har blitt erstattet av Fluid Checkout. </p> <p>Når du "
+"bruker Fluid Checkout, må kassesiden bruke den opprinnelige "
+"WooCommerce-kortkoden <code>[woocommerce_checkout]</code> for å fungere "
+"skikkelig.</p> <p>For mer informasjon, besøk Fluid "
+"Checkout-dokumentasjonen.</p> <p>"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Ytterligere topptekstseksjoner"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Skriv ut flere topptekstseksjoner hvis dette er aktivert i "
+"temainnstillingene."
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "Søk"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "Frakt"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "Fakturering"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "Betaling"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "Forandring"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "Lagre endringer"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "Ingen."
+
+#: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "Ingen bilde valgt."
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "Vogn"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "Bestill lønn"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "Takk skal du ha"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "Integrasjoner"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "Lisensnøkler"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "Før du legger inn bestilling"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "Før bestillingsknappen"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "Lukk"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "Logg inn"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "Eller fortsett nedenfor"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "Eller fortsett som gjest"

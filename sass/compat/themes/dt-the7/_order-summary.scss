@@ -1,0 +1,14 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order .product-quantity,
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order .product-total,
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order .cart-subtotal th,
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order .order-total th,
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order .shipping th, 
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order .about_paypal, 
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order .product-total .woocommerce-Price-amount,
+body#{ $_body-theme-selector } .woocommerce-checkout-review-order tfoot th {
+	color: var(--the7-h1-color); // Needed to use theme variable to match its styles
+}

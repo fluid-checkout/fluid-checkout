@@ -1,0 +1,2577 @@
+# Copyright (C) 2025 fluid-checkout
+# This file is distributed under the same license as the fluid-checkout package.
+msgid ""
+msgstr ""
+"Project-Id-Version: fluid-checkout\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Fluid Checkout\n"
+"Last-Translator: Fluid Checkout\n"
+"POT-Creation-Date: 2025-03-05 23:46+0000\n"
+"Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: fluid-checkout.php:585
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: fluid-checkout.php:588
+msgid "Go to Plugin Search"
+msgstr "Plugin Search သို့သွားပါ။"
+
+#: fluid-checkout.php:592
+msgid "Activate %s"
+msgstr "%s ကို အသက်သွင်းပါ။"
+
+#: fluid-checkout.php:596
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"<strong>%1$s သည်</strong> <strong>%2$s ကို</strong> ထည့်သွင်းပြီး "
+"စတင်အသုံးပြုရန် လိုအပ်သည်။ <a href=\"%4$s\">%3$s</a>"
+
+#: inc/checkout-coupon-codes.php:274
+msgid "Enter your code here"
+msgstr "သင့်ကုဒ်ကို ဤနေရာတွင် ထည့်ပါ။"
+
+#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
+msgid "Add %s"
+msgstr "%s ကိုထည့်ပါ။"
+
+#: inc/checkout-coupon-codes.php:382
+msgid "Remove"
+msgstr "ဖယ်ရှားပါ။"
+
+#: inc/checkout-fields.php:126
+msgid "Order number and receipt will be sent to this email address."
+msgstr "မှာယူမှုနံပါတ်နှင့် ပြေစာကို ဤအီးမေးလ်လိပ်စာသို့ ပေးပို့ပါမည်။"
+
+#: inc/checkout-fields.php:181
+msgid "Apartment, unit, building, floor, etc."
+msgstr "တိုက်ခန်း၊ ယူနစ်၊ အဆောက်အအုံ၊ ကြမ်းခင်း စသဖြင့်"
+
+#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+msgid "Shipping phone"
+msgstr "ပို့ဆောင်ခ ဖုန်း"
+
+#: inc/checkout-shipping-phone-field.php:105
+msgid "Only used for shipping-related questions."
+msgstr "ပို့ဆောင်ရေးဆိုင်ရာ မေးခွန်းများအတွက်သာ အသုံးပြုသည်။"
+
+#: inc/checkout-steps.php:793
+msgid "Multi-step"
+msgstr "အဆင့်ပေါင်းများစွာ"
+
+#: inc/checkout-steps.php:794
+msgid "Single step"
+msgstr "တစ်လှမ်းချင်း"
+
+#: inc/checkout-steps.php:965
+msgid "Click to go to the order summary"
+msgstr "မှာယူမှုအနှစ်ချုပ်သို့သွားရန် နှိပ်ပါ။"
+
+#: inc/checkout-steps.php:965
+msgid "Cart total:"
+msgstr "လှည်းစုစုပေါင်း-"
+
+#: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
+msgid "Proceed to %s"
+msgstr "%s သို့ ဆက်သွားပါ။"
+
+#: inc/checkout-steps.php:2215
+msgid "Proceed to contact"
+msgstr "ဆက်​သွယ်​ရန်​"
+
+#: inc/checkout-steps.php:2224
+msgid "Proceed to shipping"
+msgstr "ပို့ဆောင်ရန် ဆက်လက်လုပ်ဆောင်ပါ။"
+
+#: inc/checkout-steps.php:2236
+msgid "Proceed to billing"
+msgstr "ငွေတောင်းခံခြင်းသို့ ဆက်သွားပါ။"
+
+#: inc/checkout-steps.php:2245
+msgid "Proceed to payment"
+msgstr "ငွေပေးချေမှုကို ဆက်လက်လုပ်ဆောင်ပါ။"
+
+#: inc/checkout-steps.php:2256
+msgid "My contact"
+msgstr "ငါ့အဆက်အသွယ်"
+
+#: inc/checkout-steps.php:2266
+msgid "Shipping to"
+msgstr "သို့ ပို့ဆောင်ပေးပါသည်။"
+
+#: inc/checkout-steps.php:2276
+msgid "Shipping method"
+msgstr "ပို့ဆောင်ရေးနည်းလမ်း"
+
+#: inc/checkout-steps.php:2286
+msgid "Additional notes"
+msgstr "ထပ်လောင်းမှတ်စုများ"
+
+#: inc/checkout-steps.php:2300
+msgid "Billing to"
+msgstr "ငွေတောင်းခံရန်"
+
+#: inc/checkout-steps.php:2310
+msgid "Payment method"
+msgstr "ငွေပေးချေစနစ်"
+
+#: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+msgid "Step %1$s of %2$s"
+msgstr "%2$s ၏ အဆင့် %1$s"
+
+#: inc/checkout-steps.php:2825
+msgid "Change: %s"
+msgstr "ပြောင်းလဲခြင်း- %s"
+
+#: inc/checkout-steps.php:3184
+msgid "An account will be created with the information provided."
+msgstr "ပေးထားသော အချက်အလက်များဖြင့် အကောင့်တစ်ခု ဖန်တီးပါမည်။"
+
+#: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+msgid "Not selected yet."
+msgstr "မရွေးချယ်ရသေးပါ။"
+
+#: inc/checkout-steps.php:4675
+msgid "Same as shipping address"
+msgstr "ပို့ဆောင်ရေးလိပ်စာအတိုင်းပါပဲ။"
+
+#: inc/checkout-steps.php:4720
+msgid "Same as billing address"
+msgstr "ငွေပေးချေရမည့်လိပ်စာနှင့် အတူတူပင်"
+
+#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+msgid "Order summary"
+msgstr "အမိန့်အကျဉ်းချုပ်"
+
+#: inc/checkout-steps.php:6008, templates/fc/checkout-steps/checkout/review-order-section.php:58
+msgid "Edit cart"
+msgstr "လှည်းကို တည်းဖြတ်ပါ။"
+
+#: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
+msgid "Did you mean %s?"
+msgstr "%s ကိုဆိုလိုတာလား။"
+
+#: inc/checkout-validation.php:197
+msgid "Change email address to: {suggestion-value}"
+msgstr "အီးမေးလ်လိပ်စာကို- {suggestion-value} သို့ ပြောင်းပါ"
+
+#: inc/checkout-validation.php:200
+msgid "This is a required field."
+msgstr "ဤသည်မှာ လိုအပ်သောအကွက်တစ်ခုဖြစ်သည်။"
+
+#: inc/checkout-validation.php:201
+msgid "This is not a valid email address."
+msgstr "၎င်းသည် မှန်ကန်သော အီးမေးလ်လိပ်စာမဟုတ်ပါ။"
+
+#: inc/checkout-validation.php:202
+msgid "This field does not match the related field value."
+msgstr "ဤအကွက်သည် သက်ဆိုင်ရာနယ်ပယ်တန်ဖိုးနှင့် မကိုက်ညီပါ။"
+
+#: inc/checkout-validation.php:211
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "CPF နံပါတ် &quot;{cpf_number}&quot; သည် မမှန်ကန်ပါ။"
+
+#: inc/checkout-validation.php:212
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "CNPJ နံပါတ် &quot;{cnpj_number}&quot; သည် မမှန်ကန်ပါ။"
+
+#: inc/checkout-validation.php:369, templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
+msgid "(Required)"
+msgstr "(လိုအပ်သည်)"
+
+#: inc/checkout-widget-areas.php:98
+msgid "Checkout Header - Desktop"
+msgstr "Checkout Header - Desktop"
+
+#: inc/checkout-widget-areas.php:100
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr ""
+"ကြီးမားသောစခရင်များအတွက် ငွေပေးချေမှုခေါင်းစီးတွင် ဝစ်ဂျက်များကို ပြသပါ။ "
+"ပလပ်အင်၏ ငွေပေးချေမှု ခေါင်းစီးကို အသုံးပြုလျှင်သာ ပြသသည်။"
+
+#: inc/checkout-widget-areas.php:108
+msgid "Checkout Header - Mobile"
+msgstr "ငွေချေမှု ခေါင်းစီး - မိုဘိုင်း"
+
+#: inc/checkout-widget-areas.php:110
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
+msgstr ""
+"မိုဘိုင်းစက်ပစ္စည်းများအတွက် ငွေရှင်းခေါင်းစီးအောက်ရှိ ဝစ်ဂျက်များကို "
+"ပြသပါ။ ပလပ်အင်၏ ငွေပေးချေမှု ခေါင်းစီးကို အသုံးပြုလျှင်သာ ပြသသည်။"
+
+#: inc/checkout-widget-areas.php:122
+msgid "Checkout Sidebar"
+msgstr "ငွေထုတ်ရန် ဘေးဘား"
+
+#: inc/checkout-widget-areas.php:124
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr "အမှာစာအနှစ်ချုပ်ပြီးနောက် ငွေရှင်းသည့်ဘေးဘားတွင် ဝစ်ဂျက်များကို ပြသပါ။"
+
+#: inc/checkout-widget-areas.php:134
+msgid "Checkout Order Summary"
+msgstr "ငွေရှင်းရန်အမှာစာအကျဉ်းချုပ်"
+
+#: inc/checkout-widget-areas.php:136
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "ငွေရှင်းသည့်စာမျက်နှာရှိ အမှာစာအနှစ်ချုပ်အတွင်း ဝစ်ဂျက်များကို ပြသပါ။"
+
+#: inc/checkout-widget-areas.php:144
+msgid "Checkout Below Place Order"
+msgstr "မှာယူမှုအောက်တွင် ငွေရှင်းပါ။"
+
+#: inc/checkout-widget-areas.php:146
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "ငွေရှင်းသည့်စာမျက်နှာရှိ နေရာမှာယူမှုခလုတ်အောက်တွင် ဝစ်ဂျက်များကို ပြသပါ။"
+
+#: inc/checkout-widget-areas.php:158
+msgid "Checkout Footer"
+msgstr "ငွေရှင်းခြင်း အောက်ခြေမှတ်"
+
+#: inc/checkout-widget-areas.php:160
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
+msgstr ""
+"ငွေရှင်းသည့်အောက်ခြေတွင် ဝစ်ဂျက်များကို ပြသပါ။ ပလပ်အင်၏ ငွေပေးချေမှု "
+"အောက်ခြေမှတ်စုကို အသုံးပြုလျှင်သာ ပြသသည်။"
+
+#: inc/design-templates.php:115
+msgid "Classic"
+msgstr "ဂန္ထဝင်"
+
+#: inc/design-templates.php:116
+msgid "Boxed"
+msgstr "ထုပ်ပိုးထားသည်။"
+
+#: inc/design-templates.php:117
+msgid "Split"
+msgstr "ကွဲ"
+
+#: inc/design-templates.php:118
+msgid "Minimalist"
+msgstr "ရိုးရှင်းသော"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:47
+msgid "Fluid Checkout Lite 4.0+ – Important changes!"
+msgstr "Fluid Checkout Lite 4.0+ - အရေးကြီးသောပြောင်းလဲမှုများ။"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:48
+msgid ""
+"With this version of Fluid Checkout we have introduced <strong>important "
+"changes that might impact your website</strong> if you have made "
+"customizations to our plugins previously to the release of this version. If "
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
+msgstr ""
+"Fluid Checkout ၏ ဤဗားရှင်းဖြင့် ကျွန်ုပ်တို့သည် ဤဗားရှင်းတွင် ယခင်က "
+"ကျွန်ုပ်တို့၏ plugins များကို စိတ်ကြိုက်ပြင်ဆင်မှုများ ပြုလုပ်ထားလျှင် "
+"<strong>သင့်ဝဘ်ဆိုဒ်အပေါ် သက်ရောက်မှုရှိနိုင်သည့် "
+"အရေးကြီးသောပြောင်းလဲမှုများကို</strong> မိတ်ဆက်ပေးထားပါသည်။ "
+"သင့်ဝဘ်ဆိုက်တွင် Fluid Checkout ပလပ်အင်များအတွက် "
+"စိတ်ကြိုက်ပြင်ဆင်မှုများမရှိပါက၊ ၎င်းသည် ယခင်ကကဲ့သို့ "
+"လုပ်ဆောင်သင့်သည်။<br><br> သင့်ဝဘ်ဆိုက်တွင် Fluid Checkout အတွက် "
+"စိတ်ကြိုက်ပြင်ဆင်မှုများ ရှိပါက ၎င်းတို့ကို ဤဗားရှင်းသို့ "
+"မရွှေ့ပြောင်းရသေးပါက၊ ကျေးဇူးပြု၍ ကျွန်ုပ်တို့၏ လမ်းညွှန်ချက်ကို <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">ရွှေ့ပြောင်းခြင်းများကို Fluid Checkout Lite 4.0+ သို့</a> ဖတ်ရှုပါ။"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:51
+msgid "Read the migration guide"
+msgstr "ရွှေ့ပြောင်းခြင်းလမ်းညွှန်ကို ဖတ်ပါ။"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
+msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
+msgstr "CodeRockz မှ Fluid Checkout နှင့် Delivery Date ပလပ်အင်များ"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
+msgid ""
+"<p>We detected that you are using the plugins Delivery & Pickup Date Time "
+"for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins "
+"have been moved to Fluid Checkout PRO.</p>"
+msgstr ""
+"<p>CodeRockz မှ WooCommerce (အခမဲ့နှင့် PRO) အတွက် WooCommerce (အခမဲ့နှင့် "
+"PRO) အတွက် ပလပ်အင်များ ပေးပို့ခြင်းနှင့် လာယူသည့်နေ့စွဲအချိန်ကို "
+"သင်အသုံးပြုနေကြောင်း ကျွန်ုပ်တို့ တွေ့ရှိခဲ့သည်။ ဤပလပ်အင်များနှင့် "
+"ပေါင်းစပ်ခြင်းကို Fluid Checkout PRO သို့ ရွှေ့လိုက်ပါပြီ။</p>"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+msgid "Upgrade to PRO"
+msgstr "PRO သို့ အဆင့်မြှင့်ပါ။"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "What should I do?"
+msgstr "ကျွန်တော်ဘာလုပ်သင့်သလဲ?"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:55
+msgid "Fluid Checkout database updated successfully"
+msgstr "Fluid Checkout ဒေတာဘေ့စ်ကို အောင်မြင်စွာ မွမ်းမံပြီးပါပြီ။"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:56
+msgid "The database changes where applied successfully."
+msgstr "ဒေတာဘေ့စ်သည် အောင်မြင်စွာ အသုံးချသည့်နေရာကို ပြောင်းလဲသည်။"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:59
+msgid "Ok"
+msgstr "အိုကေ"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
+msgstr "ပယ်ရန်"
+
+#: inc/admin/admin-notice-db-migrations.php:51
+msgid "Fluid Checkout database update"
+msgstr "Fluid Checkout ဒေတာဘေ့စ်အပ်ဒိတ်"
+
+#: inc/admin/admin-notice-db-migrations.php:52
+msgid ""
+"Some changes to the database are required. As with any update, we recommend "
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
+msgstr ""
+"ဒေတာဘေ့စ်အတွက် အပြောင်းအလဲအချို့ လိုအပ်ပါသည်။ မည်သည့်အပ်ဒိတ်များကဲ့သို့ပင်၊ "
+"<strong>ရှေ့ဆက်မလုပ်ဆောင်မီ သင့်ဝဘ်ဆိုဒ်၏ အရန်အပြည့်အစုံကို ယူရန်</strong> "
+"ကျွန်ုပ်တို့ အကြံပြုအပ်ပါသည်။"
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "Update database"
+msgstr "ဒေတာဘေ့စ်ကို အပ်ဒိတ်လုပ်ပါ။"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
+msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
+msgstr "Fluid Checkout သည် Divi Builder ငွေပေးချေမှု အပြင်အဆင်နှင့် မကိုက်ညီပါ။"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
+msgid ""
+"<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
+"form to work. When using the Divi Builder to customize the look and feel of "
+"the checkout page, the classic shortcodes are replaced with custom widgets "
+"from the Divi Builder for each part of the checkout page. These custom "
+"widgets are not compatible with Fluid Checkout.</p><p>Please edit your "
+"checkout page replacing the Divi Builder widgets with the a text widget "
+"containing the shortcode <code>[woocommerce_checkout]</code>.</p>"
+msgstr ""
+"<p>Fluid Checkout အလုပ်လုပ်ရန် ဂန္ထဝင် WooCommerce တိုတောင်းသောကုဒ်အခြေခံ "
+"ငွေပေးချေမှုပုံစံ လိုအပ်သည်။ ငွေရှင်းသည့်စာမျက်နှာ၏အသွင်အပြင်နှင့် "
+"ခံစားချက်ကို စိတ်ကြိုက်ပြင်ဆင်ရန် Divi Builder ကိုအသုံးပြုသည့်အခါ၊ "
+"ငွေရှင်းသည့်စာမျက်နှာ၏အစိတ်အပိုင်းတစ်ခုစီအတွက် Divi Builder မှ "
+"ဂန္တဝင်ကုဒ်များကို စိတ်ကြိုက်ဝစ်ဂျက်များဖြင့် အစားထိုးပါသည်။ "
+"ဤစိတ်ကြိုက်ဝစ်ဂျက်များသည် Fluid Checkout နှင့် သဟဇာတမဖြစ်ပါ။</p><p> Divi "
+"Builder ဝစ်ဂျက်များကို တိုတိုကုဒ် <code>[woocommerce_checkout]</code> "
+"ပါရှိသော စာသားဝစ်ဂျက်ဖြင့် အစားထိုးသည့် သင်၏ ငွေရှင်းစာမျက်နှာကို "
+"တည်းဖြတ်ပါ။</p>"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
+msgid "Edit the checkout page"
+msgstr "ငွေရှင်းစာမျက်နှာကို တည်းဖြတ်ပါ။"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+msgid "Read the documentation."
+msgstr "စာရွက်စာတမ်းကိုဖတ်ပါ။"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr ""
+"Fluid Checkout ကိုအသုံးပြုသောအခါ Germanized PRO multistep "
+"ငွေပေးချေမှုအင်္ဂါရပ်ကိုပိတ်ထားရန်လိုအပ်သည်။"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+"Fluid Checkout ကိုအသုံးပြုသောအခါ၊ Germanized PRO ပလပ်အင်မှ multistep "
+"အင်္ဂါရပ်သည် မလိုအပ်ဘဲဖြစ်လာပြီး "
+"<strong>အမှာစာအသစ်များကိုလုပ်ဆောင်နေစဉ်တွင် "
+"အရေးကြီးသောအမှားအယွင်းများကို</strong> ဖြစ်စေနိုင်သည်။ ကျေးဇူးပြု၍ "
+"ပလပ်အင်ဆက်တင်များတွင် Germanized PRO multistep ငွေရှင်းခြင်းအင်္ဂါရပ်ကို "
+"ပိတ်ပါ။"
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr "Germanized ဆက်တင်များသို့ သွားပါ။"
+
+#: inc/admin/admin-notice-review-request.php:47
+msgid "Thanks for choosing Fluid Checkout!"
+msgstr "Fluid Checkout ကိုရွေးချယ်သည့်အတွက် ကျေးဇူးတင်ပါသည်။"
+
+#: inc/admin/admin-notice-review-request.php:48
+msgid ""
+"You have been using the plugin for a while now. How do you like it so far? "
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
+msgstr ""
+"သင်သည် ယခု plugin ကို အသုံးပြုနေသည်မှာ ကြာပါပြီ။ အခုထိ ဘယ်လိုကြိုက်လဲ။<br> "
+"ကျေးဇူးပြု၍ ကျွန်ုပ်တို့အား အမြန်အဆင့်သတ်မှတ်ပေးပါ၊ တုံ့ပြန်ချက်တိုင်းကို "
+"ကျွန်ုပ်တို့ ကျေးဇူးတင်ပါသည်၊ ၎င်းသည် ကျွန်ုပ်တို့အား ပလပ်အင်ကို "
+"ဆက်လက်တိုးတက်စေရန် အားပေးပါသည်။ :)"
+
+#: inc/admin/admin-notice-review-request.php:50
+msgid "Rate the plugin"
+msgstr "ပလပ်အင်ကို အဆင့်သတ်မှတ်ပါ။"
+
+#: inc/admin/admin-notice-review-request.php:51
+msgid "I need help!"
+msgstr "ကျွန်တော်အကူအညီလိုအပ်တယ်!"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers မှ WooCommerce Checkout Manager ပလပ်အင်သည် Fluid Checkout နှင့် "
+"တွဲဖက်၍မရပါ။"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"Quadlayers မှ WooCommerce Checkout Manager ၏ အချို့သောအင်္ဂါရပ်များသည် "
+"Fluid Checkout ဖြင့် ၎င်းကိုအသုံးပြုသည့်အခါ မျှော်လင့်ထားသည့်အတိုင်း "
+"အလုပ်မဖြစ်နိုင်ပါ။ နောက်ထပ်အချက်အလက်များနှင့် "
+"အခြားရွေးချယ်စရာဖြေရှင်းချက်များအတွက် <a "
+"href=\"%s\">ကျွန်ုပ်တို့၏စာရွက်စာတမ်းကို</a> ဖတ်ရှုပါ။"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "စာတမ်းဖတ်ပါ။"
+
+#: inc/admin/admin-notices.php:55
+msgid "Don't show this again"
+msgstr "ဒါကို ထပ်မပြပါနဲ့။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:41
+msgid "Special offers"
+msgstr "အထူးကမ်းလှမ်းချက်များ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:43
+msgid ""
+"Extend all the goodness of Fluid Checkout to your cart page and thank you "
+"pages."
+msgstr ""
+"Fluid Checkout ၏ ကောင်းကျိုးအားလုံးကို သင့်စျေးဝယ်စာမျက်နှာနှင့် "
+"ကျေးဇူးတင်သောစာမျက်နှာများသို့ တိုးချဲ့ပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
+msgid "Fluid Checkout PRO"
+msgstr "Fluid Checkout PRO"
+
+#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
+msgid ""
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
+msgstr ""
+"ပုံစံဒီဇိုင်းပုံစံများ၊ အကောင်းဆုံးပြင်ဆင်ထားသော စျေးဝယ်လှည်းနှင့် "
+"အမှာစာလက်ခံရရှိသည့်စာမျက်နှာများ၊ အကောင့်ကိုက်ညီမှုနှင့် "
+"အခြားအရာများစွာရှိသည်။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
+msgid ""
+"The best tools to further <strong>improve your WooCommerce checkout "
+"conversion rate</strong> and make the purchase experience consistent on the "
+"entire journey."
+msgstr ""
+"<strong>သင်၏ WooCommerce ငွေပေးချေမှုပြောင်းလဲခြင်းနှုန်းကို "
+"ပိုမိုတိုးတက်ကောင်းမွန်လာစေရန်</strong> နှင့် ခရီးစဉ်တစ်ခုလုံးတွင် "
+"ဝယ်ယူမှုအတွေ့အကြုံကို တသမတ်တည်းဖြစ်စေရန် အကောင်းဆုံးကိရိယာများ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:57
+msgid "More design templates"
+msgstr "နောက်ထပ် ဒီဇိုင်းပုံစံများ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:58
+msgid "Optimized cart page"
+msgstr "အကောင်းဆုံးပြင်ဆင်ထားသော လှည်းစာမျက်နှာ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:59
+msgid "Optimized order received / thank you page"
+msgstr ""
+"ပိုမိုကောင်းမွန်အောင်ပြုလုပ်ထားသော အော်ဒါလက်ခံရရှိသည်/ကျေးဇူးတင်ပါတယ် "
+"စာမျက်နှာ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:60
+msgid "Edit cart contents at checkout page"
+msgstr "ငွေရှင်းခြင်းစာမျက်နှာတွင် စျေးဝယ်ခြင်းအကြောင်းအရာများကို တည်းဖြတ်ပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:61
+msgid "Account matching / user matching"
+msgstr "အကောင့်ကိုက်ညီမှု / အသုံးပြုသူကိုက်ညီမှု"
+
+#: inc/admin/admin-setting-type-fc-addons.php:62
+msgid "Express Checkout buttons from supported payment methods"
+msgstr "ပံ့ပိုးပေးထားသော ငွေပေးချေမှုနည်းလမ်းများမှ Express Checkout ခလုတ်များ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:63
+msgid "Trust symbols on the cart and thank you pages"
+msgstr ""
+"လှည်းပေါ်ရှိ သင်္ကေတများနှင့် ကျေးဇူးတင်ကြောင်း စာမျက်နှာများပေါ်တွင် "
+"ယုံကြည်ပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:64
+msgid "More positions for the coupon code on the checkout page"
+msgstr "ငွေရှင်းစာမျက်နှာရှိ ကူပွန်ကုဒ်အတွက် နောက်ထပ်ရာထူးများ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:65
+msgid "Integrated coupon code field on the cart page"
+msgstr "လှည်းစာမျက်နှာရှိ ကူပွန်ကုဒ်အကွက်ကို ပေါင်းစပ်ထားသည်။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+msgid "International phone numbers"
+msgstr "နိုင်ငံတကာဖုန်းနံပါတ်များ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:67
+msgid "Gift messages and packing slips"
+msgstr "လက်ဆောင်စာတိုများနှင့် ထုပ်ပိုးထားသောစာရွက်များ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:68
+msgid "Local pickup and in-store collection"
+msgstr "ဒေသတွင်း လာယူခြင်းနှင့် စတိုးဆိုင်အတွင်း စုဆောင်းခြင်း။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:72
+msgid "Upgrade to PRO &mdash; 99 EUR"
+msgstr "PRO သို့ အဆင့်မြှင့်ပါ — 99 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
+msgid "Fluid Checkout PRO – Bundle"
+msgstr "Fluid Checkout PRO - အစုအဝေး"
+
+#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
+msgid "All PRO features + All add-ons for a special price."
+msgstr "အထူးစျေးနှုန်းဖြင့် PRO အင်္ဂါရပ်များအားလုံး + အပိုပရိုဂရမ်များ အားလုံး။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
+msgid ""
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
+msgstr ""
+"အစုအဝေးတွင် ကျွန်ုပ်တို့ လက်ရှိကမ်းလှမ်းနေသော အပိုပရိုဂရမ်များ နှင့် "
+"အနာဂတ်တွင် ကျွန်ုပ်တို့ထုတ်လွှတ်သည့် Fluid Checkout အပိုပရိုဂရမ်များ "
+"ပါဝင်သည်။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "226 EUR တန်ဖိုး (42%) ကို သိမ်းဆည်းပါ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
+msgid "Google Address Autocomplete"
+msgstr "Google လိပ်စာ အော်တိုဖြည့်ပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
+msgid "Address Book"
+msgstr "လိပ်စာစာအုပ်"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "EU-VAT လက်ထောက်"
+
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons *"
+msgstr "အနာဂတ် add-ons အားလုံး *"
+
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* သင့်တွင်အသက်ဝင်သောစာရင်းသွင်းမှုတစ်ခုရှိနေသ၍။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
+msgid "Get the Bundle – Only 129 EUR"
+msgstr "Bundle ကိုရယူပါ - 129 EUR သာ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
+msgid ""
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
+msgstr ""
+"စျေးနှုန်းအားလုံးကို EUR ဖြင့်ပြသထားသည်။ ကျွန်ုပ်တို့၏ဝဘ်ဆိုက်တွင် "
+"စျေးနှုန်းများနှင့် ကွဲလွဲမှုများရှိပါက၊ "
+"ဝဘ်ဆိုက်တွင်ပြသထားသည့်ကမ်းလှမ်းချက်များသည် ယင်းတို့ကို အစားထိုးပြီး "
+"အသုံးပြုမည်ဖြစ်သည်။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:116
+msgid "Add-ons"
+msgstr "အပိုပရိုဂရမ်များ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:117
+msgid "Enhance your checkout experience with these add-ons."
+msgstr "ဤအပိုပရိုဂရမ်များဖြင့် သင်၏ငွေပေးချေမှုအတွေ့အကြုံကို မြှင့်တင်ပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:137
+msgid "I already have it – Hide this offer"
+msgstr "ကျွန်ုပ်မှာ ရှိပြီးသားဖြစ်သည် - ဤကမ်းလှမ်းချက်ကို ဝှက်ထားပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
+msgid "Installed &mdash; Activate"
+msgstr "ထည့်သွင်းပြီး - အသက်သွင်းပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
+msgid "Activated"
+msgstr "ရပါပြီ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:168
+msgid "Up to 40% less checkout fields to fill in."
+msgstr "ဖြည့်ရန် 40% လျှော့စျေးအကွက်များ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:172
+msgid ""
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
+msgstr ""
+"ပို့ဆောင်မှုနှောင့်နှေးခြင်းနှင့် မကျေနပ်သောဖောက်သည်များကို ရှောင်ကြဉ်ပါ။ "
+"သင်နှင့် သူတို့ဝယ်သည့်အချိန်မှစ၍ "
+"<strong>မှန်ကန်သောလိပ်စာအချက်အလက်ကို</strong> စုဆောင်းပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:180
+msgid "Get this add-on &mdash; 29 EUR"
+msgstr "ဤအပိုပရိုဂရမ်ကိုရယူပါ — 29 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:189
+msgid "Address book"
+msgstr "လိပ်စာစာအုပ်"
+
+#: inc/admin/admin-setting-type-fc-addons.php:190
+msgid "Multiple saved addresses for shipping and billing."
+msgstr "ပို့ဆောင်ခြင်းနှင့် ငွေတောင်းခံခြင်းအတွက် သိမ်းဆည်းထားသော လိပ်စာများစွာ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:194
+msgid ""
+"Let customers <strong>save multiple shipping and billing addresses</strong> "
+"on their account and choose which ones to use at checkout and cart pages."
+msgstr ""
+"ဝယ်ယူသူများအား ၎င်းတို့၏ အကောင့်တွင် <strong>ပို့ဆောင်ခနှင့် ငွေပေးချေမှု "
+"လိပ်စာများစွာကို သိမ်းဆည်းပြီး</strong> ငွေရှင်းခြင်းနှင့် "
+"စျေးဝယ်ခြင်းစာမျက်နှာများတွင် အသုံးပြုရမည့်အရာများကို ရွေးချယ်ခွင့်ပြုပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
+msgid "Get this add-on &mdash; 59 EUR"
+msgstr "ဤအပိုပရိုဂရမ်ကိုရယူပါ — 59 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "သင့်စတိုးအတွက် ရိုးရှင်းသော EU-VAT တရားဝင်မှု။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr ""
+"<strong>ငွေရှင်းခြင်းစာမျက်နှာရှိ EU VAT နံပါတ်များကို စုဆောင်းပြီး "
+"တရားဝင်အောင်</strong> ၊ ပြောင်းပြန်ကောက်ခံမှုအခြေခံဖြင့် "
+"အခွန်ကောက်ခံမှုများကို ဖယ်ရှားပြီး လိုအပ်သည့်အခါတွင် ဝယ်ယူသူတည်နေရာကို "
+"အတည်ပြုပါ။"
+
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "ဤအပိုပရိုဂရမ်ကိုရယူပါ — 39 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:233
+msgid ""
+"All add-ons are sold separately and require the <strong>Fluid Checkout "
+"Lite</strong> plugin to be installed and activated, except when noted."
+msgstr ""
+"အပိုပရိုဂရမ်များအားလုံးကို သီးခြားရောင်းချပြီး မှတ်သားထားသည့်အခါမှလွဲ၍ "
+"<strong>Fluid Checkout Lite</strong> ပလပ်အင်ကို ထည့်သွင်းပြီး "
+"စတင်အသုံးပြုနိုင်ရန် လိုအပ်ပါသည်။"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "ပုံတစ်ပုံကို ရွေးပါ။"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "ပုံမရွေးပါ။"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "ပုံကို ဖယ်ရှားပါ။"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:142
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to get your license key, or <a href=\"%s\" "
+"target=\"_blank\">purchase a new license key</a>."
+msgstr ""
+"သင်၏လိုင်စင်သော့ကိုရယူရန်၊ သို့မဟုတ် <a href=\"%s\" "
+"target=\"_blank\">လိုင်စင်ကီးအသစ်တစ်ခုဝယ်ယူရန်</a> <a "
+"href=\"https://fluidcheckout.com/account/\" "
+"target=\"_blank\">သင့်အကောင့်သို့ဝင်ရောက်ပါ</a> ။"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
+msgid "Valid until %s."
+msgstr "%s အထိ အကျုံးဝင်သည်။"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
+msgid "Expired on %s."
+msgstr "%s တွင် သက်တမ်းကုန်သည်။"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:160
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to renew your license key and continue to receive updates "
+"and support."
+msgstr ""
+"သင့်လိုင်စင်သော့ကို သက်တမ်းတိုးရန်နှင့် အပ်ဒိတ်များနှင့် ပံ့ပိုးမှုများကို "
+"ဆက်လက်ရယူရန် <a href=\"https://fluidcheckout.com/account/\" "
+"target=\"_blank\">သင့်အကောင့်သို့ ဝင်ရောက်ပါ</a> ။"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:163
+msgid "License key cancelled."
+msgstr "လိုင်စင်ကီးကို ပယ်ဖျက်လိုက်ပါပြီ။"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:165
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">လိုင်စင်ကီးအသစ်ကို ဝယ်ယူပြီး</a> "
+"အပ်ဒိတ်များနှင့် ပံ့ပိုးမှုများကို ဆက်လက်ရယူပါ။"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:168
+msgid "Error: "
+msgstr "အမှား- "
+
+#: inc/admin/admin-setting-type-fc-setup.php:41
+msgid "Setup & Documentation"
+msgstr "စနစ်ထည့်သွင်းခြင်းနှင့် မှတ်တမ်းပြုစုခြင်း။"
+
+#: inc/admin/admin-setting-type-fc-setup.php:42
+msgid "Great! Your checkout page is now running on Fluid Checkout."
+msgstr "မိုက်တယ်! သင့်ငွေပေးချေမှုစာမျက်နှာသည် Fluid Checkout တွင် ယခုလည်ပတ်နေပါသည်။"
+
+#: inc/admin/admin-setting-type-fc-setup.php:44
+msgid "Here are a few resources for you to get started:"
+msgstr "ဤသည်မှာ စတင်ရန် သင့်အတွက် အရင်းအမြစ်အချို့ဖြစ်သည်။"
+
+#: inc/admin/admin-setting-type-fc-setup.php:48
+msgid ""
+"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
+"with Fluid Checkout</a>."
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">Fluid Checkout ဖြင့်</a> "
+"တပ်ဆင်ခြင်းလမ်းညွှန်ကို ဖတ်ပါ။"
+
+#: inc/admin/admin-setting-type-fc-setup.php:49
+msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr ""
+"<a href=\"%s\">ငွေရှင်းခြင်းရွေးချယ်မှု</a> များတွင် အပြင်အဆင်နှင့် "
+"ဒီဇိုင်းကို စနစ်ထည့်သွင်းပါ။"
+
+#: inc/admin/admin-setting-type-fc-setup.php:50
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"other plugins you have installed."
+msgstr ""
+"သင်ထည့်သွင်းထားသော အခြားပလပ်အင်များအတွက် <a "
+"href=\"%s\">ပေါင်းစပ်ရွေးချယ်စရာများ</a> ရှိမရှိ စစ်ဆေးပါ။"
+
+#: inc/admin/admin-setting-type-fc-setup.php:51
+msgid ""
+"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
+"information about Fluid Checkout features."
+msgstr ""
+"Fluid Checkout ဝန်ဆောင်မှုများအကြောင်း နောက်ထပ်အချက်အလက်များအတွက် <a "
+"href=\"%s\" target=\"_blank\">ကျွန်ုပ်တို့၏စာရွက်စာတမ်းအား</a> "
+"သွားရောက်ကြည့်ရှုပါ။"
+
+#: inc/admin/admin-setting-type-fc-setup.php:52
+msgid ""
+"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
+"ticket</a> on our official support channel."
+msgstr ""
+"သင်အကူအညီလိုအပ်ပါက ကျွန်ုပ်တို့၏တရားဝင်ပံ့ပိုးကူညီမှုချန်နယ်တွင် <a "
+"href=\"%s\" target=\"_blank\">ပံ့ပိုးမှုလက်မှတ်ကိုဖွင့်ပါ</a> ။"
+
+#: inc/admin/admin-settings-cart.php:71
+msgid "Cart layout"
+msgstr "လှည်းအပြင်အဆင်"
+
+#: inc/admin/admin-settings-cart.php:78
+msgid "Cart optimizations"
+msgstr "တွန်းလှည်းကို ဆီလျော်အောင် လုပ်ပါ။"
+
+#: inc/admin/admin-settings-cart.php:79
+msgid "Enable cart page optimizations"
+msgstr "စျေးဝယ်စာမျက်နှာ ပိုမိုကောင်းမွန်အောင်ပြုလုပ်ခြင်းကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-cart.php:80
+msgid "Display the cart page with a layout similar to the checkout page."
+msgstr ""
+"စျေးဝယ်စာမျက်နှာကို ငွေရှင်းသည့်စာမျက်နှာနှင့် ဆင်တူသော အပြင်အဆင်ဖြင့် "
+"ပြသပါ။"
+
+#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
+msgid "Header and footer"
+msgstr "ခေါင်းစီးနှင့်အောက်ခြေ"
+
+#: inc/admin/admin-settings-cart.php:103
+msgid "Header and footer template"
+msgstr "ခေါင်းစီးနှင့် အောက်ခြေ နမူနာပုံစံ"
+
+#: inc/admin/admin-settings-cart.php:104, inc/admin/admin-settings-checkout.php:126
+msgid ""
+"Controls whether to use the distraction free page header and footer or keep "
+"the currently active theme's header and footer."
+msgstr ""
+"အနှောင့်အယှက်ကင်းသော စာမျက်နှာ ခေါင်းစီးနှင့် အောက်ခံကို အသုံးပြုခြင်း "
+"ရှိ၊မရှိ သို့မဟုတ် လက်ရှိ အသုံးပြုနေသော အပြင်အဆင်၏ ခေါင်းစီးနှင့် "
+"အောက်ခြေကို ထားရှိရန် ထိန်းချုပ်သည်။"
+
+#: inc/admin/admin-settings-cart.php:108, inc/admin/admin-settings-checkout.php:130
+msgid "Distraction free header and footer"
+msgstr "အာရုံထွေပြားမှု ကင်းသော ခေါင်းစီးနှင့် အောက်ခြေ"
+
+#: inc/admin/admin-settings-cart.php:109, inc/admin/admin-settings-checkout.php:131
+msgid "Theme's header and footer"
+msgstr "Theme ၏ ခေါင်းစီးနှင့် အောက်ခြေနား"
+
+#: inc/admin/admin-settings-cart.php:124
+msgid "Cart elements"
+msgstr "လှည်းဒြပ်စင်"
+
+#: inc/admin/admin-settings-cart.php:132
+msgid "Make the order summary stay visible on the cart page while scrolling"
+msgstr "ရွှေ့နေစဉ် အမှာစာအနှစ်ချုပ်ကို လှည်းစာမျက်နှာပေါ်တွင် မြင်နိုင်ပါစေ။"
+
+#: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
+msgid "Coupon codes"
+msgstr "ကူပွန်ကုဒ်များ"
+
+#: inc/admin/admin-settings-cart.php:142
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart and the integrated coupon codes in the "
+"checkout page are enabled."
+msgstr ""
+"လှည်းစာမျက်နှာရှိ ကူပွန်ကုဒ်များ ကဏ္ဍကို ပြသမည့် နေရာကို ရွေးပါ။ AJAX "
+"စျေးဝယ်လှည်းနှင့် ငွေရှင်းသည့်စာမျက်နှာရှိ ကူပွန်ကုဒ်များ ပေါင်းစပ်ထားသော "
+"ကုဒ်များကို ဖွင့်ထားမှသာ အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+msgid "Hidden"
+msgstr "ဝှက်ထားသည်။"
+
+#: inc/admin/admin-settings-cart.php:147
+msgid "Before the cart items section"
+msgstr "စံနစ်တကျ ပစ္စည်းများကို မှီသည့်အပိုင်း"
+
+#: inc/admin/admin-settings-cart.php:148
+msgid "Inside the cart items section"
+msgstr "လှည်းပစ္စည်းများ အပိုင်းအတွင်းပိုင်း"
+
+#: inc/admin/admin-settings-cart.php:149, inc/admin/admin-settings-cart.php:185
+msgid "After the cart items section"
+msgstr "လှည်းနောက်မှာ ပစ္စည်းအပိုင်း"
+
+#: inc/admin/admin-settings-cart.php:150
+msgid "Before the shipping section"
+msgstr "ပို့ဆောင်မှုအပိုင်းကို မမီပါဘူး။"
+
+#: inc/admin/admin-settings-cart.php:151
+msgid "After the shipping section"
+msgstr "ပို့ဆောင်မှုအပိုင်းပြီးရင်"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid "Before the order summary"
+msgstr "အကျဉ်းချုပ် အမိန့်မချမီ"
+
+#: inc/admin/admin-settings-cart.php:153, inc/admin/admin-settings-cart.php:171, inc/admin/admin-settings-checkout.php:393
+msgid "Inside the order summary"
+msgstr "အော်ဒါအနှစ်ချုပ်အတွင်းပိုင်း"
+
+#: inc/admin/admin-settings-cart.php:154, inc/admin/admin-settings-checkout.php:394
+msgid "Before the order totals"
+msgstr "အော်ဒါမတင်မီ"
+
+#: inc/admin/admin-settings-cart.php:155, inc/admin/admin-settings-checkout.php:395
+msgid "After the order totals"
+msgstr "အော်ဒါအပြီးမှာ စုစုပေါင်း"
+
+#: inc/admin/admin-settings-cart.php:156, inc/admin/admin-settings-cart.php:188
+msgid "After the order summary"
+msgstr "အမိန့်အကျဉ်းချုပ်ပြီးရင်"
+
+#: inc/admin/admin-settings-cart.php:164
+msgid "Shipping"
+msgstr "သင်္ဘောဖြင့်ကုန်ပစ္စည်းပို့ခြင်း"
+
+#: inc/admin/admin-settings-cart.php:165
+msgid ""
+"Select position where to display the shipping costs and calculator on the "
+"cart page."
+msgstr "လှည်းစာမျက်နှာရှိ ပို့ဆောင်ခနှင့် ဂဏန်းတွက်စက်ကို ပြသမည့် နေရာကို ရွေးပါ။"
+
+#: inc/admin/admin-settings-cart.php:170
+msgid "Display as a cart section"
+msgstr "လှည်းကဏ္ဍအဖြစ် ပြသပါ။"
+
+#: inc/admin/admin-settings-cart.php:179
+msgid "Cross-sells"
+msgstr "ဖြတ်ကျော်ရောင်းချသည်။"
+
+#: inc/admin/admin-settings-cart.php:180
+msgid "Select position where to display the cross-sells section on the cart page."
+msgstr "စျေးဝယ်ခြင်းစာမျက်နှာရှိ အရောင်းအ၀ယ်ကဏ္ဍကို ပြသမည့်နေရာကို ရွေးပါ။"
+
+#: inc/admin/admin-settings-cart.php:186
+msgid "Before the cart actions"
+msgstr "လှည်းကိုမှီ၍ ၊"
+
+#: inc/admin/admin-settings-cart.php:187
+msgid "After the cart actions"
+msgstr "လှည်းနောက်မှာ ပါက်"
+
+#: inc/admin/admin-settings-cart.php:198
+msgid "Layout of cross-sell items on the cart page."
+msgstr "စျေးဝယ်ခြင်းစာမျက်နှာရှိ ဖြတ်ကျော်ရောင်းချသည့်ပစ္စည်းများ၏ အပြင်အဆင်။"
+
+#: inc/admin/admin-settings-cart.php:201
+msgid "Optimized horizontal cross-sells layout"
+msgstr "အလျားလိုက် အပြန်အလှန်ရောင်းချသည့် အပြင်အဆင်ကို အကောင်းဆုံးပြင်ဆင်ထားသည်။"
+
+#: inc/admin/admin-settings-cart.php:202
+msgid "Theme's cross-sells layout"
+msgstr "အပြင်အဆင်၏ အပြန်အလှန်ရောင်းချမှု အပြင်အဆင်"
+
+#: inc/admin/admin-settings-cart.php:210
+msgid "Number of cross-sell items to display on the cart page"
+msgstr "စျေးဝယ်ခြင်းစာမျက်နှာတွင် ပြသရန် ဖြတ်ကျော်ရောင်းချသည့် ပစ္စည်းအရေအတွက်"
+
+#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+msgid "Trust symbols &amp; badges"
+msgstr "ယုံကြည်စိတ်ချရသော သင်္ကေတများနှင့် တံဆိပ်များ"
+
+#: inc/admin/admin-settings-cart.php:220
+msgid "Add widget areas to the cart page"
+msgstr "လှည်းစာမျက်နှာသို့ ဝစ်ဂျက်ဧရိယာများ ထည့်ပါ။"
+
+#: inc/admin/admin-settings-cart.php:221
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"cart page."
+msgstr ""
+"ဤဝစ်ဂျက်ဧရိယာများကို လှည်းစာမျက်နှာပေါ်ရှိ "
+"ယုံကြည်စိတ်ချရသောသင်္ကေတများနှင့် ယုံကြည်မှုတံဆိပ်များထည့်ရန် အသုံးပြုပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:50
+msgid "Checkout"
+msgstr "ထွက်ခွာသည်"
+
+#: inc/admin/admin-settings-checkout.php:71
+msgid "Layout &amp; design"
+msgstr "အပြင်အဆင်နှင့် ဒီဇိုင်း"
+
+#: inc/admin/admin-settings-checkout.php:78
+msgid "Checkout layout"
+msgstr "ငွေရှင်းခြင်း အပြင်အဆင်"
+
+#: inc/admin/admin-settings-checkout.php:89
+msgid "Design template"
+msgstr "ဒီဇိုင်းပုံစံ"
+
+#: inc/admin/admin-settings-checkout.php:90
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Might also apply to other pages such as the Cart, Order Received and View "
+"Order pages."
+msgstr ""
+"ငွေရှင်းသည့်အဆင့်များ၊ အမှာစာအကျဉ်းချုပ်နှင့် အခြားကဏ္ဍများအတွက် "
+"အထွေထွေစတိုင်များ။ လှည်း၊ အမှာစာလက်ခံရရှိပြီး "
+"အမှာစာစာမျက်နှာများကြည့်ရှုခြင်းကဲ့သို့သော အခြားစာမျက်နှာများတွင်လည်း "
+"သက်ရောက်နိုင်သည်။"
+
+#: inc/admin/admin-settings-checkout.php:101
+msgid "Dark mode"
+msgstr "အမှောင်မုဒ်"
+
+#: inc/admin/admin-settings-checkout.php:102
+msgid "Enable dark mode"
+msgstr "အမှောင်မုဒ်ကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:124
+msgid "Header and footer templates"
+msgstr "ခေါင်းစီးနှင့် အောက်ခြေပုံစံများ"
+
+#: inc/admin/admin-settings-checkout.php:125
+msgid ""
+"We recommend using the distraction free header and footer to avoid "
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"ငွေရှင်းသည့်စာမျက်နှာရှိ စိတ်အနှောင့်အယှက်မဖြစ်စေရန် အနှောင့်အယှက်ကင်းသော "
+"ခေါင်းစီးနှင့် အောက်ခြေနားကို အသုံးပြုရန် ကျွန်ုပ်တို့ အကြံပြုအပ်ပါသည်။ <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">လှည်းများ စွန့်ပစ်ခြင်းဆိုင်ရာ သုတေသနကို ဖတ်ပါ</a> ။"
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Logo image"
+msgstr "လိုဂိုပုံ"
+
+#: inc/admin/admin-settings-checkout.php:139
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the distraction free header and footer."
+msgstr ""
+"ငွေရှင်းခြင်း စာမျက်နှာ ခေါင်းစီးတွင် ပြသမည့် ပုံတစ်ပုံကို ရွေးချယ်ပါ။ "
+"အာရုံထွေပြားမှုကင်းသော ခေါင်းစီးနှင့် အောက်ခြေနားကို အသုံးပြုသည့်အခါမှသာ "
+"အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:148
+msgid "Header background color"
+msgstr "ခေါင်းစီးနောက်ခံအရောင်"
+
+#: inc/admin/admin-settings-checkout.php:149
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"ငွေရှင်းခြင်းစာမျက်နှာ ခေါင်းစီးအတွက် နောက်ခံအရောင်ကို ရွေးပါ။ "
+"အာရုံထွေပြားမှုကင်းသော ခေါင်းစီးနှင့် အောက်ခြေနားကို အသုံးပြုသည့်အခါမှသာ "
+"အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:150, inc/admin/admin-settings-checkout.php:161, inc/admin/admin-settings-checkout.php:172, inc/admin/admin-settings-checkout.php:258
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "HTML အရောင်တန်ဖိုး။ ဥပမာ- #f3f3f3"
+
+#: inc/admin/admin-settings-checkout.php:159
+msgid "Page background color"
+msgstr "စာမျက်နှာနောက်ခံအရောင်"
+
+#: inc/admin/admin-settings-checkout.php:160
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
+msgstr ""
+"ငွေရှင်းခြင်းစာမျက်နှာအတွက် နောက်ခံအရောင်ကို ရွေးပါ။ အရောင်သည် "
+"<em>ကိုယ်ထည်</em> ဒြပ်စင်သို့ သက်ရောက်သည်။"
+
+#: inc/admin/admin-settings-checkout.php:170
+msgid "Footer background color"
+msgstr "အောက်ခြေနောက်ခံအရောင်"
+
+#: inc/admin/admin-settings-checkout.php:171
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"ငွေရှင်းခြင်းစာမျက်နှာအောက်ခြေမှတ်စုအတွက် နောက်ခံအရောင်ကို ရွေးပါ။ "
+"အာရုံထွေပြားမှုကင်းသော ခေါင်းစီးနှင့် အောက်ခြေနားကို အသုံးပြုသည့်အခါမှသာ "
+"အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:188
+msgid "Checkout elements"
+msgstr "ငွေထုတ်တာတော့ မဟုတ်ပါဘူး။"
+
+#: inc/admin/admin-settings-checkout.php:195
+msgid "Progress bar"
+msgstr "တိုးတက်မှုဘား"
+
+#: inc/admin/admin-settings-checkout.php:196
+msgid "Display the checkout progress bar when using multi-step checkout layout"
+msgstr ""
+"အဆင့်ပေါင်းများစွာ ငွေရှင်းခြင်းအပြင်အဆင်ကို အသုံးပြုသည့်အခါ "
+"ငွေရှင်းခြင်းဆိုင်ရာ တိုးတက်မှုဘားကို ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:205
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr "လှိမ့်နေစဉ် ငွေပေးချေမှု တိုးတက်မှုဘားကို မြင်နိုင်ပါစေ။"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Express checkout"
+msgstr "အမြန်ငွေရှင်းပါ။"
+
+#: inc/admin/admin-settings-checkout.php:216
+msgid "Enable the express checkout section"
+msgstr "အမြန်ငွေရှင်းမှုအပိုင်းကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:217
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr ""
+"ပံ့ပိုးပေးထားသော ငွေပေးချေမှုဂိတ်ဝေးများတွင် ဤအင်္ဂါရပ်ကို ဖွင့်ထားသောအခါ "
+"ငွေရှင်းသည့်နေရာတွင် အမြန်ငွေရှင်းသည့်အပိုင်းကို ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:227
+msgid "Display express checkout buttons in one line for larger screens"
+msgstr "ပိုကြီးသောစခရင်များအတွက် အမြန်ငွေရှင်းရန်ခလုတ်များကို တစ်ကြောင်းတည်းပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:237
+msgid ""
+"Ignore additional checkout required fields when paying with a compatible "
+"express checkout payment gateway"
+msgstr ""
+"လိုက်ဖက်ညီသော အမြန်ငွေပေးချေမှုတံခါးပေါက်တစ်ခုဖြင့် ငွေပေးချေသည့်အခါ "
+"နောက်ထပ်ငွေရှင်းရန် လိုအပ်သောအကွက်များကို လျစ်လျူရှုပါ။"
+
+#: inc/admin/admin-settings-checkout.php:249
+msgid "Make the order summary stay visible while scrolling"
+msgstr "ရွှေ့နေစဉ် အမှာစာအနှစ်ချုပ်ကို မြင်အောင်နေပါ။"
+
+#: inc/admin/admin-settings-checkout.php:257
+msgid "Choose a background color for the order summary section."
+msgstr "မှာယူမှုအနှစ်ချုပ်ကဏ္ဍအတွက် နောက်ခံအရောင်ကို ရွေးပါ။"
+
+#: inc/admin/admin-settings-checkout.php:267
+msgid "Highlight the order totals row in the order summary table"
+msgstr "အမှာစာအနှစ်ချုပ်ဇယားရှိ အမှာစာစုစုပေါင်းအတန်းကို မီးမောင်းထိုးပြပါ။"
+
+#: inc/admin/admin-settings-checkout.php:268
+msgid ""
+"Most useful when the order summary section does not have a highlighted "
+"background color. Might also apply to the Cart, Order Received and View "
+"Order pages when using Fluid Checkout PRO."
+msgstr ""
+"မှာယူမှုအနှစ်ချုပ်ကဏ္ဍတွင် မီးမောင်းထိုးထားသည့် နောက်ခံအရောင်မရှိပါက "
+"အသုံးဝင်ဆုံးဖြစ်သည်။ Fluid Checkout PRO ကိုအသုံးပြုသည့်အခါ လှည်း၊ "
+"အမှာစာလက်ခံရရှိပြီး အမှာစာစာမျက်နှာများကို ကြည့်ပါနှင့်လည်း "
+"သက်ဆိုင်နိုင်သည်။"
+
+#: inc/admin/admin-settings-checkout.php:276
+msgid "Action link on the order summary at checkout."
+msgstr "ငွေရှင်းချိန်တွင် အမှာစာအနှစ်ချုပ်ရှိ လုပ်ဆောင်ချက်လင့်ခ်။"
+
+#: inc/admin/admin-settings-checkout.php:280
+msgid "Edit cart link"
+msgstr "လှည်းလင့်ခ်ကို တည်းဖြတ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:281
+msgid "Cart items count"
+msgstr "လှည်းပစ္စည်းများကို ရေတွက်သည်။"
+
+#: inc/admin/admin-settings-checkout.php:282
+msgid "Link to shop page"
+msgstr "ဆိုင်စာမျက်နှာသို့လင့်ခ်"
+
+#: inc/admin/admin-settings-checkout.php:289
+msgid "Cart items"
+msgstr "လှည်းပစ္စည်းများ"
+
+#: inc/admin/admin-settings-checkout.php:290
+msgid "Enable options to edit cart items on the checkout page"
+msgstr ""
+"ငွေရှင်းခြင်းစာမျက်နှာရှိ စျေးဝယ်ခြင်းအရာများကို တည်းဖြတ်ရန် "
+"ရွေးချယ်မှုများကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:291
+msgid ""
+"Allow customers to change product quantities or removing items directly at "
+"the checkout page."
+msgstr ""
+"ထုတ်ကုန်ပမာဏကို ပြောင်းလဲရန် သို့မဟုတ် ငွေရှင်းသည့်စာမျက်နှာတွင် "
+"တိုက်ရိုက်ပစ္စည်းများကို ဖယ်ရှားရန် သုံးစွဲသူများကို ခွင့်ပြုပါ။"
+
+#: inc/admin/admin-settings-checkout.php:301
+msgid "Hide cart items errors at the checkout page"
+msgstr "ငွေရှင်းခြင်းစာမျက်နှာရှိ စျေးဝယ်ပစ္စည်းများ အမှားများကို ဖျောက်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:302
+msgid ""
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
+msgstr ""
+"ငွေရှင်းခြင်းစာမျက်နှာ၏ထိပ်တွင် စျေးဝယ်ပစ္စည်းများ အမှားအယွင်းများ "
+"မက်ဆေ့ချ်ကို မပြပါနှင့်။ ဝယ်ယူမှုပြီးမြောက်ရန် ငွေပေးချေမှုပုံစံကို "
+"တင်သွင်းသည့်အခါ၊ ဤအမှားမက်ဆေ့ချ်များကို အမြဲတမ်းပြသပါမည်။"
+
+#: inc/admin/admin-settings-checkout.php:313
+msgid "Place order"
+msgstr "အော်ဒါတင်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:314
+msgid "Define the position to display \"Place order\" and terms checkbox section."
+msgstr ""
+"&quot;Place order&quot; နှင့် သတ်မှတ်ချက်များကို checkbox အပိုင်းကို ပြသရန် "
+"အနေအထားကို သတ်မှတ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:315
+msgid "Some options might not be compatible with some plugins and themes."
+msgstr ""
+"အချို့သောရွေးချယ်မှုများသည် အချို့သော ပလပ်အင်များနှင့် အပြင်အဆင်များနှင့် "
+"တွဲဖက်၍မရပါ။"
+
+#: inc/admin/admin-settings-checkout.php:319
+msgid "Below the payment section"
+msgstr "ငွေပေးချေမှုအပိုင်းအောက်တွင်"
+
+#: inc/admin/admin-settings-checkout.php:320
+msgid "Below the order summary"
+msgstr "အမှာစာအကျဉ်းချုပ်အောက်တွင်"
+
+#: inc/admin/admin-settings-checkout.php:321
+msgid "Both below the payment section and the order summary"
+msgstr "ငွေပေးချေမှုအပိုင်းနှင့် မှာယူမှုအနှစ်ချုပ်အောက်တွင် နှစ်ခုစလုံး"
+
+#: inc/admin/admin-settings-checkout.php:329
+msgid "Add widget areas to the checkout page"
+msgstr "ငွေရှင်းသည့်စာမျက်နှာသို့ ဝစ်ဂျက်ဧရိယာများထည့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"checkout page."
+msgstr ""
+"ဤဝစ်ဂျက်ဧရိယာများကို ငွေရှင်းသည့်စာမျက်နှာတွင် "
+"ယုံကြည်စိတ်ချရသောသင်္ကေတများနှင့် ယုံကြည်မှုတံဆိပ်များထည့်ရန် အသုံးပြုပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:339
+msgid ""
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
+msgstr ""
+"အဆင့်ပေါင်းများစွာ ငွေရှင်းခြင်းအပြင်အဆင်ကို အသုံးပြုသည့်အခါ "
+"မိုဘိုင်းစက်ပစ္စည်းများတွင် နောက်ဆုံးငွေရှင်းသည့်အဆင့်ကို "
+"ကြည့်ရှုသည့်အခါမှသာ ငွေရှင်းသည့်ဘေးဘားဝစ်ဂျက်များကို ပြသပါ"
+
+#: inc/admin/admin-settings-checkout.php:364
+msgid "Enable integrated coupon code section"
+msgstr "ပေါင်းစပ်ကူပွန်ကုဒ်ကဏ္ဍကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:365
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr ""
+"WooCommerce ဆက်တင်များတွင် ကူပွန်ကုဒ်များအသုံးပြုမှုကို ဖွင့်ထားမှသာ "
+"သက်ဆိုင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:374
+msgid "Display the coupon codes section title"
+msgstr "ကူပွန်ကုဒ်များကဏ္ဍ ခေါင်းစဉ်ကို ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:375
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"ငွေရှင်းခြင်း သို့မဟုတ် စျေးဝယ်ခြင်းစာမျက်နှာများရှိ ကူပွန်ကုဒ်ကို "
+"သီးခြားကဏ္ဍတစ်ခုအဖြစ် ပြသသည့်အခါမှသာ သက်ဆိုင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:385
+msgid ""
+"Select position where to display the coupon codes section on the checkout "
+"page."
+msgstr ""
+"ငွေရှင်းခြင်းစာမျက်နှာရှိ ကူပွန်ကုဒ်များကဏ္ဍကို ပြသမည့် အနေအထားကို "
+"ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:390
+msgid "Before the checkout steps"
+msgstr "ငွေရှင်းရန် ခြေလှမ်းများ မစမီ"
+
+#: inc/admin/admin-settings-checkout.php:391
+msgid "As a substep before payment methods"
+msgstr "ငွေပေးချေမှုနည်းလမ်းများရှေ့တွင် အဆင့်ခွဲတစ်ခုအနေဖြင့်"
+
+#: inc/admin/admin-settings-checkout.php:392
+msgid "As a substep after payment methods"
+msgstr "ငွေပေးချေမှုနည်းလမ်းများပြီးနောက် အဆင့်ခွဲတစ်ခုအနေဖြင့်"
+
+#: inc/admin/admin-settings-checkout.php:402
+msgid ""
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
+msgstr ""
+"&quot;apply coupon&quot; ခလုတ်၏ပုံစံကိုရွေးချယ်ပါ။ ကူပွန်ကုဒ်ကဏ္ဍကို "
+"ငွေရှင်းသည့်စာမျက်နှာရှိ &quot;ငွေရှင်းသည့်အဆင့်များမမီမီ&quot; သို့မဟုတ် "
+"လှည်းစာမျက်နှာရှိ &quot;စျေးဝယ်ပစ္စည်းအပိုင်းမမီမီ&quot; ကိုပြသသည့်အခါမှသာ "
+"အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:406
+msgid "Default button style"
+msgstr "ပုံသေခလုတ်ပုံစံ"
+
+#: inc/admin/admin-settings-checkout.php:407
+msgid "\"Add\" link button"
+msgstr "&quot;Add&quot; link ကိုနှိပ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:422, inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102, inc/compat/themes/compat-theme-zk-nito.php:87
+msgid "Checkout fields"
+msgstr "ငွေပေးချေမှုနယ်ပယ်များ"
+
+#: inc/admin/admin-settings-checkout.php:429
+msgid "Optional fields"
+msgstr "ရွေးချယ်နိုင်သော နယ်ပယ်များ"
+
+#: inc/admin/admin-settings-checkout.php:430
+msgid "Hide optional fields behind a link button"
+msgstr "လင့်ခ်ခလုတ်တစ်ခု၏နောက်တွင် ရွေးချယ်နိုင်သောအကွက်များကို ဝှက်ထားပါ။"
+
+#: inc/admin/admin-settings-checkout.php:431
+msgid ""
+"It is recommended to keep this option checked to reduce the number of open "
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"အဖွင့်ထည့်သွင်းမှုနယ်ပယ်အရေအတွက်ကို လျှော့ချရန် ဤရွေးချယ်မှုကို "
+"ဆက်လက်စစ်ဆေးရန် အကြံပြုလိုသည်၊ <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">သုတေသနကိုဖတ်ပါ</a> ။"
+
+#: inc/admin/admin-settings-checkout.php:440
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr ""
+"လင့်ခ်ခလုတ်နောက်ကွယ်တွင် &quot;လိပ်စာလိုင်း 2&quot; အကွက်များကို "
+"မဝှက်ပါနှင့်"
+
+#: inc/admin/admin-settings-checkout.php:441
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr ""
+"ဝယ်ယူသူအများစုသည် &quot;လိပ်စာလိုင်း 2&quot; အကွက်ကို အမှန်တကယ် "
+"လိုအပ်သည့်အခါ သို့မဟုတ် မှန်ကန်သော ပို့ဆောင်ရေးလိပ်စာကို ရရှိသည့်အခါတွင်သာ "
+"အရေးကြီးသည် (ဆိုလိုသည်မှာ အစားအသောက်နှင့် အခြားပျက်စီးလွယ်သော "
+"ထုတ်ကုန်များကို ပို့ဆောင်ခြင်းဖြစ်ပါက) အကြံပြုထားသည်။"
+
+#: inc/admin/admin-settings-checkout.php:451
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "&quot;Add&quot; လင့်ခ်ခလုတ်များကို စာလုံးအသေးဖြင့် ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:452
+msgid ""
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
+msgstr ""
+"ရွေးချယ်နိုင်သောအကွက်များ၏ အညွှန်းများကို &quot;Add&quot; link ခလုတ်ကို "
+"စာလုံး <code>lowercase</code> အဖြစ် ပြုလုပ်ပါ (ဆိုလိုသည်မှာ "
+"&quot;ဖုန်းနံပါတ်ထည့်ရန်&quot; အစား &quot;ဖုန်းနံပါတ်ထည့်ပါ&quot;)။ "
+"ဤရွေးချယ်မှုသည် ကူပွန်ကုဒ်အကွက်များအတွက် လင့်ခ်ခလုတ်များကိုလည်း "
+"သက်ရောက်မှုရှိသည်။"
+
+#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+msgid "Billing address"
+msgstr "ကျသင့်ငွေတောင်းခံလွှာပေးပို့မည့်လိပ်စာ"
+
+#: inc/admin/admin-settings-checkout.php:461
+msgid ""
+"Select position where to display the billing address section on the "
+"checkout page."
+msgstr ""
+"ငွေပေးချေမှုစာမျက်နှာရှိ ငွေပေးချေရမည့်လိပ်စာကဏ္ဍကို ပြသမည့် အနေအထားကို "
+"ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:465
+msgid "As a step before shipping"
+msgstr "ပို့ဆောင်ခြင်းမပြုမီ အဆင့်တစ်ခုအနေဖြင့်"
+
+#: inc/admin/admin-settings-checkout.php:466
+msgid "As a sub-step before the shipping address section"
+msgstr "အဆင့်ခွဲအနေဖြင့် ပို့ဆောင်ရေးလိပ်စာ အပိုင်းကို မှီပါ။"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "As a sub-step after the shipping address section"
+msgstr "အဆင့်ခွဲတစ်ခုအနေဖြင့် သင်္ဘောလိပ်စာကို အပိုင်းလိုက်ပြီးနောက်"
+
+#: inc/admin/admin-settings-checkout.php:468
+msgid "As a step after shipping"
+msgstr "ပြီးတာနဲ့ အဆင့်တစ်ခုအနေနဲ့ တင်ပါတယ်။"
+
+#: inc/admin/admin-settings-checkout.php:469
+msgid "As a sub-step before the payment section"
+msgstr "အဆင့်ခွဲအဖြစ် ငွေပေးချေမှုအပိုင်းကို အရင်လုပ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:470
+msgid "Force billing and shipping addresses to the same (single section)"
+msgstr ""
+"ငွေတောင်းခံခြင်းနှင့် ပို့ဆောင်ခြင်းလိပ်စာများကို တူညီသော (ကဏ္ဍတစ်ခုတည်း) "
+"သို့ အတင်းအကျပ်"
+
+#: inc/admin/admin-settings-checkout.php:477
+msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
+msgstr ""
+"ပုံမှန်အားဖြင့် &quot;ပို့ဆောင်ခြင်း/ငွေပေးချေသည့်လိပ်စာကဲ့သို့ တူသည်&quot; "
+"အတွက် အမှန်ခြစ်ကွက်ကို အမှတ်ခြစ်ထားသည်။"
+
+#: inc/admin/admin-settings-checkout.php:478
+msgid ""
+"The checkbox \"Same as shiping address\" will start as checked by default "
+"when the shipping address section is displayed first. <br>The checkbox "
+"\"Same as billing address\" will start as checked by default when the "
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
+msgstr ""
+"ပို့ဆောင်ရေးလိပ်စာအပိုင်းကို ဦးစွာပြသသောအခါ "
+"&quot;ပို့ဆောင်ရေးလိပ်စာကဲ့သို့တူညီသည်&quot; အမှတ်ခြစ်ပုံးသည် ပုံသေဖြင့် "
+"အမှတ်ခြစ်ထားသည့်အတိုင်း စတင်မည်ဖြစ်သည်။<br> ငွေပေးချေသည့်လိပ်စာအပိုင်းကို "
+"ဦးစွာပြသသောအခါ &quot;ငွေပေးချေသည့်လိပ်စာကဲ့သို့တူညီသည်&quot; "
+"အမှတ်ခြစ်ကွက်တွင် ပုံသေဖြင့် အမှန်ခြစ်ထားသည့်အတိုင်း စတင်ပါမည်။<br> "
+"ငွေရှင်းချိန်တွင် ဖွင့်ထားသောထည့်သွင်းမှုနယ်ပယ်အရေအတွက်ကို "
+"သိသိသာသာလျှော့ချရန်အတွက် ဤရွေးချယ်မှုကို အမှန်ခြစ်ထားခဲ့ရန် အကြံပြုလိုသည်၊ "
+"<a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">သုတေသနကိုဖတ်ပါ</a> ။"
+
+#: inc/admin/admin-settings-checkout.php:486
+msgid "Highlight the billing address section in the checkout form"
+msgstr "ငွေပေးချေမှုပုံစံတွင် ငွေပေးချေရမည့်လိပ်စာအပိုင်းကို မီးမောင်းထိုးပြပါ။"
+
+#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+msgid "Shipping address"
+msgstr "ကုန်ပစ္စည်းပို့ဆောင်ရမည့်လိပ်စာ"
+
+#: inc/admin/admin-settings-checkout.php:495
+msgid "Highlight the shipping address section in the checkout form"
+msgstr "ငွေပေးချေမှုပုံစံတွင် သင်္ဘောလိပ်စာအပိုင်းကို မီးမောင်းထိုးပြပါ။"
+
+#: inc/admin/admin-settings-checkout.php:503
+msgid "Shipping methods"
+msgstr "ပို့ဆောင်ရေးနည်းလမ်းများ"
+
+#: inc/admin/admin-settings-checkout.php:504
+msgid "Choose in which position to display the shipping methods section."
+msgstr "ပို့ဆောင်ရေးနည်းလမ်းများကဏ္ဍကိုပြသရန် မည်သည့်အနေအထားတွင် ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:508
+msgid "Before shipping address"
+msgstr "လိပ်စာမပို့ခင်"
+
+#: inc/admin/admin-settings-checkout.php:509
+msgid "After shipping address"
+msgstr "ပို့ဆောင်ပြီးနောက်လိပ်စာ"
+
+#: inc/admin/admin-settings-checkout.php:516
+msgid "Prevent automatic selection of the first shipping method"
+msgstr "ပထမဆုံး ပို့ဆောင်ရေးနည်းလမ်းကို အလိုအလျောက်ရွေးချယ်ခြင်းကို တားဆီးပါ။"
+
+#: inc/admin/admin-settings-checkout.php:517
+msgid ""
+"When enabled, the first shipping method available will not be automatically "
+"selected when no other shipping method was previously selected for each "
+"shipping package. <br>This option will be automatically enabled if the "
+"option for clearing the selected shipping method is enabled for the Local "
+"Pickup feature."
+msgstr ""
+"ဖွင့်ထားသောအခါ၊ ရရှိနိုင်သော ပထမဆုံး ပို့ဆောင်ရေးနည်းလမ်းကို "
+"ပို့ဆောင်ရေးပက်ကေ့ချ်တစ်ခုစီအတွက် အခြား ပို့ဆောင်ရေးနည်းလမ်းကို ယခင်က "
+"မရွေးချယ်ထားသောအခါတွင် ရရှိနိုင်သော ပထမဆုံး ပို့ဆောင်ရေးနည်းလမ်းကို "
+"အလိုအလျောက် ရွေးချယ်မည်မဟုတ်ပါ။<br> Local Pickup အင်္ဂါရပ်အတွက် "
+"ရွေးချယ်ထားသော ပို့ဆောင်ရေးနည်းလမ်းကို ရှင်းလင်းရန် ရွေးချယ်မှုကို "
+"ဖွင့်ထားပါက ဤရွေးချယ်မှုကို အလိုအလျောက် ဖွင့်ပေးပါမည်။"
+
+#: inc/admin/admin-settings-checkout.php:526
+msgid "Local pickup"
+msgstr "ပြည်တွင်း လာယူပါ။"
+
+#: inc/admin/admin-settings-checkout.php:527
+msgid ""
+"Removes shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"ဒေသအလိုက် လာယူသည့် ပို့ဆောင်ရေးနည်းလမ်းကို ရွေးချယ်သောအခါ "
+"ပို့ဆောင်ရေးလိပ်စာအပိုင်းကို ဖယ်ရှားပါ။"
+
+#: inc/admin/admin-settings-checkout.php:528
+msgid ""
+"Replaces the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"ဒေသဆိုင်ရာ လာယူသည့် ပို့ဆောင်ရေးနည်းလမ်းကို ရွေးချယ်သောအခါ "
+"ပို့ဆောင်မှုလိပ်စာကို မှာယူသည့်နေရာနှင့် အစားထိုးပါ။"
+
+#: inc/admin/admin-settings-checkout.php:538
+msgid "Show option to clear shipping methods in the pickup location substep"
+msgstr ""
+"လာယူမည့်နေရာ၏ အဆင့်ခွဲတွင် ပို့ဆောင်ရေးနည်းလမ်းများကို ရှင်းလင်းရန် "
+"ရွေးချယ်မှုကို ပြပါ။"
+
+#: inc/admin/admin-settings-checkout.php:539
+msgid ""
+"Show a link button on the pickup location substep to clear the chosen "
+"shipping methods. This can be used to allow showing the shipping address "
+"section again if a local pickup method was previously selected."
+msgstr ""
+"ရွေးချယ်ထားသော ပို့ဆောင်ရေးနည်းလမ်းများကို ရှင်းလင်းရန် "
+"ထုတ်ယူသည့်နေရာအဆင့်ခွဲတွင် လင့်ခ်ခလုတ်ကို ပြသပါ။ ဒေသတွင်း "
+"လာယူသည့်နည်းလမ်းကို ယခင်က ရွေးချယ်ထားလျှင် ပို့ဆောင်ရေးလိပ်စာကဏ္ဍကို "
+"ထပ်မံပြသခွင့်ပြုရန် ၎င်းကို အသုံးပြုနိုင်သည်။"
+
+#: inc/admin/admin-settings-checkout.php:550
+msgid ""
+"Choose which address to save as the shipping address for local pickup "
+"orders."
+msgstr ""
+"ဒေသတွင်း မှာယူမှုများအတွက် ပို့ဆောင်ရေးလိပ်စာအဖြစ် သိမ်းဆည်းရန် "
+"မည်သည့်လိပ်စာကို ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:554
+msgid "Save the selected pickup location"
+msgstr "ရွေးချယ်ထားသော လာယူမည့်နေရာကို သိမ်းဆည်းပါ။"
+
+#: inc/admin/admin-settings-checkout.php:555
+msgid "Save same as the billing address"
+msgstr "ငွေတောင်းခံလွှာလိပ်စာအတိုင်း သိမ်းဆည်းပါ။"
+
+#: inc/admin/admin-settings-checkout.php:556
+msgid "Do not save any shipping address"
+msgstr "မည်သည့်ပို့ဆောင်ရေးလိပ်စာကိုမျှ မသိမ်းဆည်းပါနှင့်"
+
+#: inc/admin/admin-settings-checkout.php:564
+msgid "Company name field for shipping address"
+msgstr "သင်္ဘောလိပ်စာအတွက် ကုမ္ပဏီအမည်အကွက်"
+
+#: inc/admin/admin-settings-checkout.php:565
+msgid ""
+"Change visibility for the company name field for the shipping address "
+"section on the checkout form."
+msgstr ""
+"ငွေရှင်းသည့်ဖောင်ပေါ်ရှိ သင်္ဘောလိပ်စာအပိုင်းအတွက် ကုမ္ပဏီအမည်အကွက်အတွက် "
+"မြင်နိုင်စွမ်းကို ပြောင်းပါ။"
+
+#: inc/admin/admin-settings-checkout.php:566
+msgid ""
+"If field is set as \"optional\", which is the default visibility state, no "
+"changes will be applied to let other plugins apply any changes they need."
+msgstr ""
+"အကွက်ကို ပုံသေမြင်နိုင်မှုအခြေအနေဖြစ်သည့် &quot;ချန်လှပ်ထားနိုင်သည်&quot; "
+"ဟု သတ်မှတ်ပါက၊ အခြားပလပ်အင်များသည် ၎င်းတို့လိုအပ်သည့် အပြောင်းအလဲများကို "
+"အသုံးချနိုင်စေရန် အပြောင်းအလဲများကို အသုံးချမည်မဟုတ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+msgid "Hidden (remove field)"
+msgstr "ဝှက်ထားသည် (အကွက်ကို ဖယ်ရှားရန်)"
+
+#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+msgid "Optional"
+msgstr "ရွေးချယ်ခွင့်"
+
+#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+msgid "Required"
+msgstr "လိုအပ်သည်။"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid "Add shipping phone field to the checkout form."
+msgstr "ငွေပေးချေမှုဖောင်တွင် ပို့ဆောင်ရေးဖုန်းအကွက်ကို ထည့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:594
+msgid "Choose in which step to display the shipping phone field."
+msgstr "ပို့ဆောင်ရေးဖုန်းအကွက်ကို ပြသရန် မည်သည့်အဆင့်တွင် ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+msgid "Contact step"
+msgstr "ဆက်သွယ်ရန်အဆင့်"
+
+#: inc/admin/admin-settings-checkout.php:606
+msgid "Billing phone"
+msgstr "ဘီလ်ဖုန်း"
+
+#: inc/admin/admin-settings-checkout.php:607
+msgid "Add billing phone field to the checkout form."
+msgstr "ငွေပေးချေမှုပုံစံတွင် ဖုန်းငွေပေးချေမှုအကွက်ကို ထည့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid "Choose in which step to display the billing phone field."
+msgstr "ငွေပေးချေသည့် ဖုန်းအကွက်ကို ပြသရန် မည်သည့်အဆင့်တွင် ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:634
+msgid "Enable international phone number format and validation for phone fields"
+msgstr ""
+"ဖုန်းအကွက်များအတွက် နိုင်ငံတကာဖုန်းနံပါတ်ဖော်မတ်နှင့် "
+"တရားဝင်အတည်ပြုခြင်းကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:635
+msgid "Format and validate phone numbers according to each country."
+msgstr "နိုင်ငံတစ်ခုစီအလိုက် ဖုန်းနံပါတ်များကို ဖော်မတ်လုပ်ပြီး အတည်ပြုပါ။"
+
+#: inc/admin/admin-settings-checkout.php:645
+msgid "Enable phone number validation based on country rules"
+msgstr "နိုင်ငံစည်းမျဉ်းများအပေါ်အခြေခံ၍ ဖုန်းနံပါတ်အတည်ပြုခြင်းကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:646
+msgid ""
+"When disabled, the phone field validation will not check if country or area "
+"codes are valid for the country."
+msgstr ""
+"ပိတ်ထားသည့်အခါ၊ ဖုန်းအကွက်စစ်ဆေးခြင်းသည် နိုင်ငံအတွက် နိုင်ငံ သို့မဟုတ် "
+"ဧရိယာကုဒ်များ မှန်ကန်မှုရှိမရှိ စစ်ဆေးမည်မဟုတ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:656
+msgid "Only show allowed countries for shipping or billing"
+msgstr ""
+"ပို့ဆောင်ခြင်း သို့မဟုတ် ငွေတောင်းခံခြင်းအတွက် ခွင့်ပြုထားသော "
+"နိုင်ငံများကိုသာ ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:657
+msgid ""
+"When enabled, only the countries allowed for shipping will be available in "
+"the shipping phone field, and only countries allowed for billing will be "
+"available for the billing phone field."
+msgstr ""
+"ဖွင့်ထားသောအခါ၊ ပို့ဆောင်ရန်ခွင့်ပြုထားသည့်နိုင်ငံများကိုသာ "
+"သင်္ဘောဖုန်းအကွက်တွင် ရရှိနိုင်ပြီး ဘီလ်တောင်းခံခြင်းအတွက် "
+"ခွင့်ပြုထားသောနိုင်ငံများသာ ငွေတောင်းခံလွှာဖုန်းအကွက်အတွက် ရနိုင်မည်ဖြစ်သည်။"
+
+#: inc/admin/admin-settings-checkout.php:667
+msgid "Show country code beside the flag"
+msgstr "အလံဘေးတွင် နိုင်ငံကုဒ်ကို ပြပါ။"
+
+#: inc/admin/admin-settings-checkout.php:678
+msgid "Show an example of a valid phone number inside phone fields"
+msgstr "ဖုန်းအကွက်များအတွင်း တရားဝင်ဖုန်းနံပါတ်တစ်ခု၏ နမူနာကို ပြပါ။"
+
+#: inc/admin/admin-settings-checkout.php:682
+msgid "Do not change placeholders"
+msgstr "နေရာယူထားသူများကို မပြောင်းပါနှင့်"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Show if not defined"
+msgstr "မသတ်မှတ်ရင် ပြပါ။"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid "Always show"
+msgstr "အမြဲပြတယ်။"
+
+#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+msgid "Order notes"
+msgstr "အော်ဒါမှတ်စုများ"
+
+#: inc/admin/admin-settings-checkout.php:693
+msgid "Define the visibility of the additional order notes field."
+msgstr "ထပ်ဆင့်မှာယူမှုမှတ်စုအကွက်၏ မြင်နိုင်စွမ်းကို သတ်မှတ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:705
+msgid "Gift options"
+msgstr "လက်ဆောင်ရွေးချယ်မှုများ"
+
+#: inc/admin/admin-settings-checkout.php:706
+msgid "Display gift message and other gift options at the checkout page"
+msgstr ""
+"ငွေရှင်းသည့်စာမျက်နှာတွင် လက်ဆောင်မက်ဆေ့ဂျ်နှင့် "
+"အခြားလက်ဆောင်ရွေးချယ်စရာများကို ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:707
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr ""
+"ဝယ်ယူသူများအား လက်ဆောင်မက်ဆေ့ဂျ်နှင့် အခြားလက်ဆောင်နှင့်ပတ်သက်သည့် "
+"ရွေးချယ်မှုများကို မှာယူမှုတွင် ထည့်သွင်းခွင့်ပြုပါ။"
+
+#: inc/admin/admin-settings-checkout.php:717
+msgid "Display the gift message fields always expanded"
+msgstr "လက်ဆောင်မက်ဆေ့ဂျ် အကွက်များကို အမြဲချဲ့ထားသည်။"
+
+#: inc/admin/admin-settings-checkout.php:727
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr ""
+"သီးခြားကဏ္ဍအစား အမှာစာအသေးစိတ်ဇယား၏ တစ်စိတ်တစ်ပိုင်းအဖြစ် "
+"လက်ဆောင်မက်ဆေ့ဂျ်ကို ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:728
+msgid ""
+"This option affects the order confirmation page (thank you page) and order "
+"details on account pages, emails and packing slips."
+msgstr ""
+"ဤရွေးချယ်မှုသည် မှာယူမှုအတည်ပြုခြင်းစာမျက်နှာ (ကျေးဇူးတင်ပါတယ် စာမျက်နှာ) "
+"နှင့် အကောင့်စာမျက်နှာများ၊ အီးမေးလ်များနှင့် ထုပ်ပိုးမှုစာရွက်များရှိ "
+"မှာယူမှုအသေးစိတ်အချက်အလက်များကို သက်ရောက်မှုရှိပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+msgid "Account matching"
+msgstr "အကောင့်ကိုက်ညီမှု"
+
+#: inc/admin/admin-settings-checkout.php:754
+msgid "Enable the account matching feature"
+msgstr "အကောင့်ကိုက်ညီသော အင်္ဂါရပ်ကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:755
+msgid ""
+"Associate the guest customer's orders with their existing account when an "
+"account already exists with the customer's contact details."
+msgstr ""
+"ဖောက်သည်၏ အဆက်အသွယ်အသေးစိတ်များနှင့် "
+"အကောင့်တစ်ခုရှိနှင့်ပြီးဖြစ်သည့်အချိန်တွင် ဧည့်သည်ဖောက်သည်၏အမှာစာများကို "
+"၎င်းတို့၏လက်ရှိအကောင့်နှင့် ချိတ်ဆက်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:765
+msgid "Display message when an account exists with the email address provided"
+msgstr "ပေးထားသော အီးမေးလ်လိပ်စာနှင့်အတူ အကောင့်တစ်ခုရှိသည့်အခါ မက်ဆေ့ချ်ကို ပြသပါ။"
+
+#: inc/admin/admin-settings-checkout.php:766
+msgid ""
+"Replaces the account creation fields with a notification and option to log "
+"in. In some contexts, it might be recommended to leave this option disabled "
+"to protect the privacy of customers."
+msgstr ""
+"အကောင့်ဖန်တီးမှုအကွက်များကို အကြောင်းကြားချက်နှင့် လော့ဂ်အင်ဝင်ရန် "
+"ရွေးချယ်စရာများဖြင့် အစားထိုးသည်။ အချို့အခြေအနေများတွင်၊ သုံးစွဲသူများ၏ "
+"လျှို့ဝှက်ရေးလုံခြုံမှုကို ကာကွယ်ရန် ဤရွေးချယ်မှုကို ပိတ်ထားရန် "
+"အကြံပြုနိုင်ပါသည်။"
+
+#: inc/admin/admin-settings-dashboard.php:49
+msgid "Dashboard"
+msgstr "ဒိုင်ခွက်"
+
+#: inc/admin/admin-settings-integrations.php:51
+msgid "Integrations"
+msgstr "ပေါင်းစည်းမှု"
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
+msgstr ""
+"ဤကဏ္ဍတွင် လောလောဆယ် ပေါင်းစပ်မှုများ မရရှိနိုင်ပါ။ "
+"ပလပ်အင်တစ်ခုစီနှင့်သက်ဆိုင်သည့် ရွေးချယ်စရာများသည် ထိုပလပ်အင်ကို "
+"အသက်သွင်းထားလျှင် ဤနေရာတွင်သာ ပေါ်လာပါမည်။"
+
+#: inc/admin/admin-settings-license-keys.php:54
+msgid "License keys"
+msgstr "လိုင်စင်သော့များ"
+
+#: inc/admin/admin-settings-license-keys.php:85
+msgid ""
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
+msgstr ""
+"ဤကဏ္ဍတွင် လောလောဆယ် လိုင်စင်သော့ရွေးချယ်စရာများ မရှိပါ။ ပလပ်အင်တစ်ခုစီ "
+"သို့မဟုတ် အပိုပရိုဂရမ်တစ်ခုစီနှင့်သက်ဆိုင်သည့် ရွေးချယ်စရာများသည် "
+"အဆိုပါပလပ်အင်ကို အသက်သွင်းသည့်အခါ ဤနေရာတွင် ပေါ်လာမည်ဖြစ်သည်။"
+
+#: inc/admin/admin-settings-license-keys.php:90
+msgid "Visit our website for more information about our plugins and add-ons."
+msgstr ""
+"ကျွန်ုပ်တို့၏ ပလပ်အင်များနှင့် အပိုပရိုဂရမ်များအကြောင်း "
+"နောက်ထပ်အချက်အလက်များအတွက် ကျွန်ုပ်တို့၏ဝဘ်ဆိုဒ်သို့ ဝင်ရောက်ကြည့်ရှုပါ။"
+
+#: inc/admin/admin-settings-order-pay.php:71
+msgid "Order pay page"
+msgstr "ငွေပေးချေမှုစာမျက်နှာ"
+
+#: inc/admin/admin-settings-order-pay.php:78
+msgid "Order pay"
+msgstr "အော်ဒါပေးရမယ်။"
+
+#: inc/admin/admin-settings-order-pay.php:79
+msgid "Enable order pay page optimizations"
+msgstr ""
+"မှာယူမှု ငွေပေးချေမှု စာမျက်နှာ ပိုမိုကောင်းမွန်အောင် လုပ်ဆောင်မှုများကို "
+"ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-order-pay.php:80
+msgid ""
+"Changes the layout of order pay page for existing orders pending payment "
+"from the customer."
+msgstr ""
+"ဝယ်ယူသူထံမှ ငွေပေးချေမှုကို ဆိုင်းငံ့ထားသည့် လက်ရှိမှာယူမှုများအတွက် "
+"မှာယူမှုပေးချေသည့်စာမျက်နှာ၏ အပြင်အဆင်ကို ပြောင်းလဲပါ။"
+
+#: inc/admin/admin-settings-order-pay.php:92
+msgid "Add widget areas to the order pay page"
+msgstr "မှာယူမှုငွေပေးချေမှုစာမျက်နှာသို့ ဝစ်ဂျက်ဧရိယာများထည့်ပါ။"
+
+#: inc/admin/admin-settings-order-pay.php:93
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"order pay page."
+msgstr ""
+"ဤဝစ်ဂျက်ဧရိယာများကို မှာယူမှုငွေပေးချေမှုစာမျက်နှာတွင် "
+"ယုံကြည်စိတ်ချရသောသင်္ကေတများနှင့် ယုံကြည်မှုတံဆိပ်များထည့်ရန် အသုံးပြုပါသည်။"
+
+#: inc/admin/admin-settings-order-received.php:69
+msgid "Thank you page & order details layout"
+msgstr "Page &amp; Order အသေးစိတ် အဆင်အပြင်ကို ကျေးဇူးတင်ပါတယ်။"
+
+#: inc/admin/admin-settings-order-received.php:76
+msgid "Order details optimizations"
+msgstr "မှာယူမှုအသေးစိတ်အား ပိုမိုကောင်းမွန်အောင်ပြုလုပ်ခြင်း။"
+
+#: inc/admin/admin-settings-order-received.php:77
+msgid "Enable thank you page and order details optimizations"
+msgstr ""
+"ကျေးဇူးတင်သော စာမျက်နှာကိုဖွင့်ပြီး မှာယူမှုအသေးစိတ်များကို "
+"ပိုမိုကောင်းမွန်အောင်ပြုလုပ်ခြင်း။"
+
+#: inc/admin/admin-settings-order-received.php:78
+msgid "Changes the layout of order details on the thank you page and account pages."
+msgstr ""
+"ကျေးဇူးတင်သောစာမျက်နှာနှင့် အကောင့်စာမျက်နှာများရှိ မှာယူမှုအသေးစိတ်၏ "
+"အပြင်အဆင်ကို ပြောင်းလဲပါ။"
+
+#: inc/admin/admin-settings-order-received.php:89
+msgid "Enable order details customizations on email notifications"
+msgstr ""
+"အီးမေးလ်အကြောင်းကြားချက်များတွင် မှာယူမှုအသေးစိတ် "
+"စိတ်ကြိုက်ပြင်ဆင်မှုများကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-order-received.php:90
+msgid ""
+"Display new sections and change order of sections on email notifications. "
+"Styles of order details on email notifications remain unchanged."
+msgstr ""
+"ကဏ္ဍအသစ်များကို ပြသပြီး အီးမေးလ်အကြောင်းကြားချက်များတွင် ကဏ္ဍများကို "
+"အစီစဥ်ပြောင်းလဲပါ။ အီးမေးလ်အကြောင်းကြားချက်များရှိ "
+"မှာယူမှုအသေးစိတ်ပုံစံများ မပြောင်းလဲပါ။"
+
+#: inc/admin/admin-settings-order-received.php:108
+msgid "Thank you page"
+msgstr "ကျေးဇူးတင်ပါတယ် စာမျက်နှာ"
+
+#: inc/admin/admin-settings-order-received.php:110
+msgid ""
+"These options affect the thank you page, also known as order received or "
+"order confirmation pages."
+msgstr ""
+"ဤရွေးချယ်မှုများသည် မှာယူမှုလက်ခံရရှိခြင်း သို့မဟုတ် "
+"မှာယူမှုအတည်ပြုခြင်းစာမျက်နှာများဟုလည်းလူသိများသော "
+"ကျေးဇူးတင်သည့်စာမျက်နှာအပေါ် သက်ရောက်မှုရှိသည်။"
+
+#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
+msgid "Order details layout"
+msgstr "အော်ဒါအသေးစိတ် အပြင်အဆင်"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Display the order details with wide layout on the thank you page"
+msgstr ""
+"ကျေးဇူးတင်သောစာမျက်နှာတွင် ကျယ်ပြန့်သော အပြင်အဆင်ဖြင့် မှာယူမှုအသေးစိတ်ကို "
+"ပြသပါ။"
+
+#: inc/admin/admin-settings-order-received.php:126
+msgid "Add widget areas to the thank you page"
+msgstr "ကျေးဇူးတင်သောစာမျက်နှာသို့ ဝစ်ဂျက်ဧရိယာများထည့်ပါ။"
+
+#: inc/admin/admin-settings-order-received.php:127
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"thank you page."
+msgstr ""
+"ဤဝစ်ဂျက်ဧရိယာများကို ကျေးဇူးတင်ကြောင်းစာမျက်နှာတွင် "
+"ယုံကြည်စိတ်ချရသောသင်္ကေတများနှင့် ယုံကြည်စိတ်ချရသောတံဆိပ်များထည့်ရန် "
+"အသုံးပြုပါသည်။"
+
+#: inc/admin/admin-settings-order-received.php:145
+msgid ""
+"These options affect the thank you page , view order details on account "
+"pages and on email notifications."
+msgstr ""
+"ဤရွေးချယ်မှုများသည် ကျေးဇူးတင်သည့်စာမျက်နှာ၊ အကောင့်စာမျက်နှာများရှိ "
+"မှာယူမှုအသေးစိတ်အချက်အလက်များကို ကြည့်ရှုခြင်းနှင့် "
+"အီးမေးလ်အကြောင်းကြားချက်များအပေါ် သက်ရောက်မှုရှိသည်။"
+
+#: inc/admin/admin-settings-order-received.php:150
+msgid "Order actions"
+msgstr "အမိန့်ပေးတာတွေ လုပ်တယ်။"
+
+#: inc/admin/admin-settings-order-received.php:151
+msgid "Choose in which position to display the order actions."
+msgstr "အမှာစာလုပ်ဆောင်ချက်များကို ပြသရန် မည်သည့်အနေအထားတွင် ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-order-received.php:155
+msgid "Inside the order overview"
+msgstr "မှာယူမှု ခြုံငုံသုံးသပ်ချက်အတွင်းပိုင်း"
+
+#: inc/admin/admin-settings-order-received.php:156
+msgid "After the order overview"
+msgstr "အမိန့်ချပြီးနောက်"
+
+#: inc/admin/admin-settings-order-received.php:157
+msgid "After order sections"
+msgstr "အော်ဒါအပိုင်းတွေပြီးရင်"
+
+#: inc/admin/admin-settings-order-received.php:165
+msgid "Order status"
+msgstr "အော်ဒါအနေအထား"
+
+#: inc/admin/admin-settings-order-received.php:166
+msgid "Display the order status progress bar"
+msgstr "မှာယူမှုအခြေအနေ တိုးတက်မှုဘားကို ပြသပါ။"
+
+#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+msgid "Choose in which position to display the section."
+msgstr "ကဏ္ဍကိုပြသရန် မည်သည့်အနေအထားကို ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-order-received.php:180
+msgid "After the order overview and payment instructions"
+msgstr "မှာယူမှု ခြုံငုံသုံးသပ်ချက်ပြီးနောက် ငွေပေးချေမှု ညွှန်ကြားချက်များ"
+
+#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+msgid "Before the order items section"
+msgstr "ပစ္စည်းမှာယူမှုအပိုင်းကို မှီပါ။"
+
+#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+msgid "Inside the order items section"
+msgstr "မှာယူမှု ပစ္စည်းများ ကဏ္ဍအတွင်း"
+
+#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+msgid "After the order items section"
+msgstr "အော်ဒါမှာထားတဲ့ ပစ္စည်းတွေ အပိုင်းပြီးသွားပါပြီ။"
+
+#: inc/admin/admin-settings-order-received.php:184
+msgid "On the sidebar"
+msgstr "ဘေးဘားပေါ်တွင်"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Order downloads"
+msgstr "ဒေါင်းလုဒ်များ မှာယူပါ။"
+
+#: inc/admin/admin-settings-order-received.php:207
+msgid "Gift message"
+msgstr "လက်ဆောင်သတင်းစကား"
+
+#: inc/admin/admin-settings-tools.php:51
+msgid "Tools"
+msgstr "ကိရိယာများ"
+
+#: inc/admin/admin-settings-tools.php:84
+msgid "Troubleshooting"
+msgstr "ပြသာနာရှာဖွေရှင်းပေးခြင်း"
+
+#: inc/admin/admin-settings-tools.php:91
+msgid "Debug options"
+msgstr "အမှားရှာပြင်ခြင်း ရွေးစရာများ"
+
+#: inc/admin/admin-settings-tools.php:92
+msgid "Debug mode"
+msgstr "အမှားရှာမုဒ်"
+
+#: inc/admin/admin-settings-tools.php:93
+msgid ""
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
+msgstr ""
+"အမှားရှာပြင်မုဒ်ကို အသုံးပြုခြင်းသည် ဝဘ်ဆိုက်စွမ်းဆောင်ရည်ကို "
+"ထိခိုက်စေပါသည်။ ပြဿနာဖြေရှင်းနေစဉ်တွင်သာ ဤရွေးချယ်မှုကို အသုံးပြုပါ။"
+
+#: inc/admin/admin-settings-tools.php:102
+msgid "Load unminified assets"
+msgstr "မသေးငယ်သောပိုင်ဆိုင်မှုများကို တင်ပါ။"
+
+#: inc/admin/admin-settings-tools.php:112
+msgid "Enhanced select fields"
+msgstr "ရွေးချယ်ထားသော အကွက်များကို အဆင့်မြှင့်ထားသည်။"
+
+#: inc/admin/admin-settings-tools.php:113
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgstr ""
+"<code>select2</code> dropdown အစိတ်အပိုင်းများကို <code>TomSelect</code> "
+"ဖြင့် အစားထိုးပါ။"
+
+#: inc/admin/admin-settings-tools.php:114
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
+msgstr ""
+"TomSelect သည် WooCommerce ငွေပေးချေမှုစာမျက်နှာများတွင် "
+"အမှန်တကယ်အသုံးပြုသည့် တူညီသောအင်္ဂါရပ်များကို ပေးဆောင်နေချိန်တွင် Select2 "
+"ထက် အမှားအယွင်းများ ဖြစ်နိုင်ခြေနည်းသည့် ရိုးရှင်းသော dropdown "
+"ရွေးချယ်မှုအစိတ်အပိုင်းတစ်ခုဖြစ်သည်။"
+
+#: inc/admin/admin-settings-tools.php:122
+msgid "Fix automatic zoom-in on form fields"
+msgstr "ဖောင်အကွက်များပေါ်တွင် အလိုအလျောက် ချုံ့ချဲ့ခြင်းအား ပြင်ဆင်ပါ။"
+
+#: inc/admin/admin-settings-tools.php:123
+msgid "Set <code>font-size</code> inside form fields to 16px"
+msgstr "ဖောင်အကွက်များအတွင်း <code>font-size</code> ကို 16px သတ်မှတ်ပါ။"
+
+#: inc/admin/admin-settings-tools.php:124
+msgid ""
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
+msgstr ""
+"ဖောင်အကွက်များအတွင်းရှိ ဖောင့်အရွယ်အစားသည် 16px ထက်သေးငယ်သောအခါ၊ Safari "
+"နှင့် အခြားဘရောက်ဆာများသည် စာသားကိုပိုမိုလွယ်ကူစွာဖတ်နိုင်စေရန် "
+"မိုဘိုင်းစက်ပစ္စည်းများတွင် အလိုအလျောက် Zoom ဝင်ရောက်နိုင်သည်။ "
+"ဤရွေးချယ်မှုကို ဖွင့်ထားသောအခါ၊ ၎င်းသည် ချဲ့ထွင်ခြင်းကို ရှောင်ရှားရန် "
+"Fluid Checkout မှ အကောင်းဆုံးပြုလုပ်ထားသော စာမျက်နှာများပေါ်တွင် "
+"ဖောင်အကွက်များအတွင်းအတွက် ဖောင့်အရွယ်အစားကို 16px သတ်မှတ်ပေးမည်ဖြစ်သည်။"
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"Fluid Checkout ကို စဖွင့်လိုက်သောအခါ ပို့ဆောင်ရမည့်နေရာအား "
+"&quot;ဖောက်သည်ပို့ဆောင်ရေးလိပ်စာသို့ မူရင်းအတိုင်း&quot; ဟု "
+"အမြဲတမ်းသတ်မှတ်ထားသည်။ ဝယ်ယူသူများသည် ငွေရှင်းစဉ်အတွင်း မတူညီသော "
+"ပို့ဆောင်မှုနှင့် ငွေပေးချေမှုလိပ်စာများကို ပေးဆောင်နိုင်ပါသေးသည်၊၊ "
+"ပုံမှန်ငွေပေးချေသည့်လိပ်စာနှင့် တူညီသော ပို့ဆောင်မှုလိပ်စာကို "
+"သတ်မှတ်ခြင်းအတွက် ရွေးချယ်စရာတစ်ခုကို WooCommerce &gt; ဆက်တင်များ &gt; "
+"Fluid Checkout တွင် ရရှိနိုင်ပါသည်။"
+
+#: inc/admin/admin-tab-fluid-checkout.php:25
+msgid "Fluid Checkout"
+msgstr "Fluid Checkout"
+
+#: inc/admin/admin.php:133
+msgid "Settings"
+msgstr "ဆက်တင်များ"
+
+#: inc/admin/admin.php:134
+msgid "Support"
+msgstr "အထောက်အပံ့"
+
+#: inc/admin/admin.php:159
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgstr ""
+"နောက်ထပ်ရွေးချယ်စရာများကို လော့ခ်ဖွင့်ရန် <a target=\"_blank\" "
+"href=\"%s\">PRO သို့ အဆင့်မြှင့်ပါ</a> ။"
+
+#: inc/admin/admin.php:179
+msgid "(PRO)"
+msgstr "(PRO)"
+
+#: inc/admin/admin.php:199
+msgid "(experimental)"
+msgstr "(စမ်းသပ်မှု)"
+
+#: inc/admin/admin.php:208
+msgid ""
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
+msgstr ""
+"၎င်းသည် စမ်းသပ်မှုအင်္ဂါရပ်တစ်ခုဖြစ်ပြီး အပြင်အဆင်များနှင့် "
+"ပလပ်အင်အားလုံးတွင် မျှော်လင့်ထားသည့်အတိုင်း အလုပ်မဖြစ်နိုင်ပါ။ သတိနဲ့သုံးပါ။"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
+msgid "Confirm"
+msgstr "အတည်ပြုပါ။"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
+msgid "Verify Phone Number"
+msgstr "ဖုန်းနံပါတ်ကို အတည်ပြုပါ။"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
+msgid "Please verify your phone number."
+msgstr "သင့်ဖုန်းနံပါတ်ကို အတည်ပြုပါ။"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
+msgid "The Bluehost Plugin"
+msgstr "Bluehost Plugin"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:81
+msgid "Custom fields"
+msgstr "စိတ်ကြိုက်နယ်ပယ်"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:82
+msgid "Enable custom shipping email field"
+msgstr "စိတ်ကြိုက်ပို့ဆောင်ရေးအီးမေးလ်အကွက်ကို ဖွင့်ပါ။"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
+msgid ""
+"When enabled, the shipping email field from the Bluehost plugin will be "
+"added to the checkout form."
+msgstr ""
+"ဖွင့်ထားသောအခါ၊ Bluehost ပလပ်အင်မှ ပို့ဆောင်ရေးအီးမေးလ်အကွက်ကို "
+"ငွေရှင်းသည့်ပုံစံသို့ ပေါင်းထည့်မည်ဖြစ်သည်။"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:89
+msgid "Captcha Pro by BestWebSoft"
+msgstr "BestWebSoft မှ Captcha Pro"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:95
+msgid "Captcha position"
+msgstr "Captcha အနေအထား"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:96
+msgid ""
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
+msgstr ""
+"captcha အပိုင်းကိုပြသရန် အနေအထားကို သတ်မှတ်ပါ။ ရွေးချယ်ထားသော captcha "
+"အမျိုးအစားပေါ်မူတည်၍ အချို့ရာထူးများသည် အလုပ်မဖြစ်နိုင်ပါ။"
+
+#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+msgid "Selecting a pickup point is required before proceeding."
+msgstr "ဆက်လက်မလုပ်ဆောင်မီ ပစ်မှတ်တစ်ခုကို ရွေးချယ်ရန် လိုအပ်သည်။"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:234
+msgid "Pickup point"
+msgstr "ထုတ်ယူရန်အချက်"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307, inc/compat/plugins/compat-plugin-seur.php:386, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
+msgid "Pickup point not selected yet."
+msgstr "လာယူမည့်နေရာ မရွေးရသေးပါ။"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312, inc/compat/plugins/compat-plugin-seur.php:391, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
+msgid "Pickup point:"
+msgstr "လာယူမည့်နေရာ-"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+msgid "Mailchimp for WooCommerce"
+msgstr "WooCommerce အတွက် Mailchimp"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
+msgid "Subscribe checkbox"
+msgstr "စာရင်းသွင်းရန် အမှန်ခြစ်ပေးပါ။"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:87
+msgid ""
+"Override the position for the subscribe checkbox on the checkout page and "
+"always display it on the contact step"
+msgstr ""
+"ငွေရှင်းသည့်စာမျက်နှာရှိ စာရင်းသွင်းစစ်ဆေးသည့်အကွက်အတွက် အနေအထားကို "
+"အစားထိုးပြီး အဆက်အသွယ်အဆင့်တွင် ၎င်းကို အမြဲတမ်းပြသပါ။"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+msgid "Before Shipping Address"
+msgstr "သင်္ဘောလိပ်စာ မရောက်မီ"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87, inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "(originally \"%s\")"
+msgstr "(မူလက &quot;%s&quot;)"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "After Shipping Address"
+msgstr "ပြီးရင် သင်္ဘောလိပ်စာ"
+
+#: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
+msgid "Selecting a collection point is required when shipping with FermoPoint."
+msgstr "FermoPoint ဖြင့် ပို့ဆောင်သည့်အခါ စုစည်းမှုအမှတ်ကို ရွေးချယ်ရန် လိုအပ်ပါသည်။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:189
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"အမှန်ခြစ်ထားလျှင် အီးမေးလ်တွင် အမှားအယွင်းများကို သုံးစွဲသူများအား "
+"အသိပေးသည်။ (Fluid Checkout လုပ်ဆောင်ချက်ကို ပံ့ပိုးပေးသောကြောင့် "
+"ဤအင်္ဂါရပ်ကို ပိတ်ထားသည်။ ဤရွေးချယ်မှုသို့ အပြောင်းအလဲများသည် "
+"အကျိုးသက်ရောက်မှု ရှိမည်မဟုတ်ပါ)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "မေးလ်စစ်ဆေးခြင်းကိုဖွင့်ပါ- (ပိတ်ထားသောအင်္ဂါရပ်)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
+msgid "Carrier:"
+msgstr "ဝန်ဆောင်မှုပေးသူ-"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:167
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "Sendinblue - WooCommerce အီးမေးလ်စျေးကွက်ရှာဖွေရေး"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
+msgid "Sign up checkbox position"
+msgstr "အမှန်ခြစ်အကွက် အနေအထားကို စာရင်းသွင်းပါ။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
+msgid "Move the sign up checkbox to the contact step"
+msgstr "အကောင့်ဖွင့်ရန် အမှန်ခြစ်ကို အဆက်အသွယ်အဆင့်သို့ ရွှေ့ပါ။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
+msgid ""
+"When enabled, the checkbox will be moved to the contact step independently "
+"of the display location defined in the Sendinblue plugin settings."
+msgstr ""
+"ဖွင့်ထားသောအခါ၊ အမှန်ခြစ်ဘောက်စ်ကို Sendinblue ပလပ်အင်ဆက်တင်များတွင် "
+"သတ်မှတ်ထားသော ပြသတည်နေရာနှင့် သီးခြားအဆက်အသွယ်အဆင့်သို့ ရွှေ့သွားပါမည်။"
+
+#: inc/compat/themes/compat-theme-betheme.php:172
+msgid "Theme Betheme"
+msgstr "Betheme အပြင်အဆင်"
+
+#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:202, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+msgid "Checkout progress"
+msgstr "ငွေထုတ်ခြင်းတိုးတက်မှု"
+
+#: inc/compat/themes/compat-theme-betheme.php:179
+msgid ""
+"Output the checkout steps section from Betheme on the checkout, cart and "
+"order received pages."
+msgstr ""
+"ငွေရှင်းရန် အဆင့်များ အပိုင်းကို ငွေရှင်းရန်၊ စျေးဝယ်ခြင်းနှင့် အမှာစာ "
+"လက်ခံထားသော စာမျက်နှာများတွင် Betheme မှ ထုတ်နှုတ်ပါ။"
+
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "Theme Fennik"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Fluid Checkout header နှင့် footer ကိုအသုံးပြုသောအခါ Fennik အပြင်အဆင်မှ "
+"breadcrumbs အပိုင်းကို ထုတ်ပါ။"
+
+#: inc/compat/themes/compat-theme-go.php:53
+msgid "Theme Go"
+msgstr "အပြင်အဆင်သွားပါ။"
+
+#: inc/compat/themes/compat-theme-go.php:59
+msgid "My account layout"
+msgstr "ကျွန်ုပ်၏အကောင့်အပြင်အဆင်"
+
+#: inc/compat/themes/compat-theme-go.php:60
+msgid "Enable wide layout on \"My account\" page."
+msgstr ""
+"&quot;ကျွန်ုပ်၏အကောင့်&quot; စာမျက်နှာတွင် ကျယ်ပြန့်သော အပြင်အဆင်ကို "
+"ဖွင့်ပါ။"
+
+#: inc/compat/themes/compat-theme-Impreza.php:93
+msgid "Theme Impreza"
+msgstr "အပြင်အဆင် Impreza"
+
+#: inc/compat/themes/compat-theme-Impreza.php:99
+msgid "Header"
+msgstr "ခေါင်းစီး"
+
+#: inc/compat/themes/compat-theme-Impreza.php:100
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr "ငွေရှင်းစာမျက်နှာရှိ ဆိုက်ခေါင်းစီးအတွက် အကွာအဝေး (ပစ်ဇယ်များ)"
+
+#: inc/compat/themes/compat-theme-Impreza.php:101
+msgid "Only applicable when using the Impreza theme header at the checkout page."
+msgstr ""
+"ငွေရှင်းသည့်စာမျက်နှာရှိ Impreza အပြင်အဆင် ခေါင်းစီးကို အသုံးပြုသည့်အခါသာ "
+"သက်ဆိုင်ပါသည်။"
+
+#: inc/compat/themes/compat-theme-kapee.php:123
+msgid "Theme Kapee"
+msgstr "ကာပီ"
+
+#: inc/compat/themes/compat-theme-kapee.php:130
+msgid ""
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"ငွေပေးချေမှုအဆင့်များအပိုင်းကို ငွေရှင်းရန်၊ စျေးဝယ်ခြင်းနှင့် "
+"အမှာစာလက်ခံသည့်စာမျက်နှာများရှိ Kapee အပြင်အဆင်မှ ထုတ်ပေးပါ။"
+
+#: inc/compat/themes/compat-theme-porto.php:196
+msgid "Theme Porto"
+msgstr "ဆောင်ပုဒ်ပေါ်တို"
+
+#: inc/compat/themes/compat-theme-porto.php:203
+msgid ""
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"ငွေပေးချေမှုအဆင့်များကဏ္ဍကို ငွေရှင်းရန်၊ စျေးဝယ်ခြင်းနှင့် "
+"မှာယူမှုလက်ခံသည့်စာမျက်နှာများရှိ Porto အပြင်အဆင်မှ ထုတ်ပေးပါ။"
+
+#: inc/compat/themes/compat-theme-pressmart.php:180
+msgid "Theme Pressmart"
+msgstr "Theme Pressmart"
+
+#: inc/compat/themes/compat-theme-pressmart.php:187
+msgid ""
+"Output the checkout steps section from the Pressmart theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"ငွေရှင်းခြင်းအဆင့်များအပိုင်းကို ငွေရှင်းရန်၊ စျေးဝယ်ခြင်းနှင့် "
+"မှာယူမှုလက်ခံရရှိသည့်စာမျက်နှာများရှိ Pressmart အပြင်အဆင်မှ ထုတ်ပေးပါ။"
+
+#: inc/compat/themes/compat-theme-thegem.php:158
+msgid "Theme The Gem"
+msgstr "Theme ရတနာ"
+
+#: inc/compat/themes/compat-theme-thegem.php:165
+msgid ""
+"Output the checkout steps section from The Gem theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Fluid Checkout header နှင့် footer ကိုအသုံးပြုသောအခါ "
+"ငွေပေးချေမှုအဆင့်များအပိုင်းကို The Gem အပြင်အဆင်မှ ထုတ်ပါ။"
+
+#: inc/compat/themes/compat-theme-woodmart.php:152
+msgid "Theme Woodmart"
+msgstr "အပြင်အဆင် Woodmart"
+
+#: inc/compat/themes/compat-theme-woodmart.php:159
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"Fluid Checkout header နှင့် footer ကိုအသုံးပြုသောအခါ Woodmart အပြင်အဆင်မှ "
+"ငွေရှင်းသည့်အဆင့်များကို ထုတ်ပါ။"
+
+#: inc/compat/themes/compat-theme-woodmart.php:167
+msgid "Checkout options"
+msgstr "ငွေရှင်းရန် ရွေးချယ်မှုများ"
+
+#: inc/compat/themes/compat-theme-woodmart.php:168
+msgid "Disable the theme checkout options"
+msgstr "အပြင်အဆင် ငွေပေးချေမှု ရွေးစရာများကို ပိတ်ပါ။"
+
+#: inc/compat/themes/compat-theme-woodmart.php:169
+msgid ""
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
+msgstr ""
+"ထုတ်ကုန်ရုပ်ပုံ၊ အရေအတွက်အကွက်ကို ပြသသည့် ရွေးချယ်စရာများ၊ ဖယ်ရှားရန် "
+"ခလုတ်နှင့် ထုတ်ကုန်စာမျက်နှာသို့ လင့်ခ်ကို ဆောင်ပုဒ်ဖြင့် ထည့်သွင်းထားသော "
+"ရွေးချယ်မှုများကို မူရင်းအားဖြင့် ပိတ်ထားသည်။"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
+msgid "Theme Atomion"
+msgstr "Theme Atomion"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:93
+msgid "Order progress"
+msgstr "အော်ဒါတိုးတက်မှု"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
+msgid "Display order progress from the theme"
+msgstr "အပြင်အဆင်မှ မှာယူမှုတိုးတက်မှုကို ပြသပါ။"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103, inc/compat/themes/compat-theme-zk-nito.php:88
+msgid "Display the form field labels visible on the page"
+msgstr "စာမျက်နှာပေါ်တွင် မြင်နိုင်သော ဖောင်အကွက်အညွှန်းများကို ပြသပါ။"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
+msgid "It is recommended to keep this option enabled for a better user experience."
+msgstr ""
+"ပိုမိုကောင်းမွန်သော အသုံးပြုသူအတွေ့အကြုံအတွက် ဤရွေးချယ်မှုကို "
+"ဆက်လက်ဖွင့်ထားရန် အကြံပြုအပ်ပါသည်။"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:81
+msgid "Theme ZK Nito"
+msgstr "အပြင်အဆင် ZK Nito"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:96
+msgid "Add extra fields to the checkout form"
+msgstr "ငွေရှင်းသည့်ဖောင်တွင် အပိုအကွက်များထည့်ပါ။"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:97
+msgid ""
+"Adds an extra shipping email and shipping phone field to the shipping "
+"address section."
+msgstr ""
+"ပို့ဆောင်ရေးလိပ်စာအပိုင်းသို့ အပိုပို့ဆောင်ရေးအီးမေးလ်နှင့် "
+"ပို့ဆောင်ရေးဖုန်းအကွက်ကို ပေါင်းထည့်ပါ။"
+
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
+msgid "Go to the home page"
+msgstr "ပင်မစာမျက်နှာကိုသွားပါ။"
+
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54, templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
+msgid "Skip to content"
+msgstr "အကြောင်းအရာသို့ ကျော်သွားပါ။"
+
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:37
+msgid "Create an account"
+msgstr "အကောင့်တစ်ခုဖန်တီးသည်"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
+msgid "Log in to your account"
+msgstr "သင့်အကောင့်သို့ဝင်ရောက်ပါ။"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+msgid "Already have an account?"
+msgstr "အကောင့်ရှိပြီးသားလား။"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
+msgstr "%1$s အဖြစ် အကောင့်ဝင်ထားသည်။ <a href=\"%2$s\">ထွက်လိုက်ပါ။</a>"
+
+#: templates/fc/checkout-steps/checkout/payment.php:48
+msgid "Your order has a total amount due of %s. No further payment is needed."
+msgstr ""
+"သင့်မှာယူမှုတွင် %s ကြောင့် စုစုပေါင်းပမာဏရှိသည်။ "
+"နောက်ထပ်ငွေပေးချေရန်မလိုအပ်ပါ။"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Close and continue with checkout"
+msgstr "ပိတ်ပြီး ငွေရှင်းခြင်း ဆက်လုပ်ပါ။"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Continue"
+msgstr "ဆက်ရန်"
+
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+msgid "Parcel terminal"
+msgstr "ပါဆယ်ထုပ်ဂိတ်"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>ဤဝစ်ဂျက်ကို Fluid Checkout ဖြင့် အစားထိုးထားသည်။</p><p> Fluid Checkout "
+"ကိုအသုံးပြုသည့်အခါ၊ ငွေရှင်းသည့်စာမျက်နှာသည် ကောင်းမွန်စွာအလုပ်လုပ်ရန် "
+"မူရင်း WooCommerce တိုတောင်းသောကုဒ် <code>[woocommerce_checkout]</code> ကို "
+"အသုံးပြုရန်လိုအပ်သည်။</p><p> ပိုမိုသိရှိလိုပါက၊ Fluid Checkout "
+"စာရွက်စာတမ်းအား သွားရောက်ကြည့်ရှုပါ။</p>"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Theme ၇"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "နောက်ထပ် ခေါင်းစီးကဏ္ဍများ"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "အပြင်အဆင်ဆက်တင်များတွင် ဖွင့်ထားပါက အပိုဆောင်းခေါင်းစီးကဏ္ဍများကို ထုတ်ပါ။"
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "လျှောက်ထားပါ။"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "ဆက်သွယ်ရန်"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "သင်္ဘောဖြင့်ကုန်ပစ္စည်းပို့ခြင်း"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "ငွေတောင်းခံခြင်း။"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "ငွေပေးချေမှု"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "ပြောင်းလဲပါ။"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "အပြောင်းအလဲများကို သိမ်းဆည်းပါ။"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "တစ်ခုမှ"
+
+#: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s- %1$s"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "ပုံမရွေးပါ။"
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "လှည်း"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "အော်ဒါပေးရမယ်။"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "ကျေးဇူးတင်ပါသည်"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "ပေါင်းစည်းမှု"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "လိုင်စင်သော့များ"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "နေရာအမှာစာ ကဏ္ဍမစမီ"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "အော်ဒါမတင်မီ ခလုတ်နှိပ်ပါ။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "ပိတ်လိုက်"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "လော့ဂ်အင်"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "ဒါမှမဟုတ် အောက်မှာ ဆက်သွားပါ။"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "ဒါမှမဟုတ် ဧည့်သည်အဖြစ် ဆက်သွားပါ။"

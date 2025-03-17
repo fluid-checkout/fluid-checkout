@@ -1,0 +1,2516 @@
+# Copyright (C) 2025 fluid-checkout
+# This file is distributed under the same license as the fluid-checkout package.
+msgid ""
+msgstr ""
+"Project-Id-Version: fluid-checkout\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: Fluid Checkout\n"
+"Last-Translator: Fluid Checkout\n"
+"POT-Creation-Date: 2025-03-06 01:48+0000\n"
+"Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: fluid-checkout.php:585
+msgid "WooCommerce"
+msgstr "వూకామర్స్"
+
+#: fluid-checkout.php:588
+msgid "Go to Plugin Search"
+msgstr "ప్లగిన్ శోధనకు వెళ్ళండి"
+
+#: fluid-checkout.php:592
+msgid "Activate %s"
+msgstr "%s ని యాక్టివేట్ చేయండి"
+
+#: fluid-checkout.php:596
+msgid ""
+"<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
+"activated. <a href=\"%4$s\">%3$s</a>"
+msgstr ""
+"<strong>%1$s కి</strong> <strong>%2$s</strong> ఇన్‌స్టాల్ చేయబడి, "
+"యాక్టివేట్ చేయబడాలి. <a href=\"%4$s\">%3$s</a>"
+
+#: inc/checkout-coupon-codes.php:274
+msgid "Enter your code here"
+msgstr "మీ కోడ్‌ను ఇక్కడ నమోదు చేయండి"
+
+#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
+msgid "Add %s"
+msgstr "%s ని జోడించండి"
+
+#: inc/checkout-coupon-codes.php:382
+msgid "Remove"
+msgstr "తొలగించు"
+
+#: inc/checkout-fields.php:126
+msgid "Order number and receipt will be sent to this email address."
+msgstr "ఆర్డర్ నంబర్ మరియు రసీదు ఈ ఇమెయిల్ చిరునామాకు పంపబడతాయి."
+
+#: inc/checkout-fields.php:181
+msgid "Apartment, unit, building, floor, etc."
+msgstr "అపార్ట్‌మెంట్, యూనిట్, భవనం, అంతస్తు మొదలైనవి."
+
+#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+msgid "Shipping phone"
+msgstr "షిప్పింగ్ ఫోన్"
+
+#: inc/checkout-shipping-phone-field.php:105
+msgid "Only used for shipping-related questions."
+msgstr "షిప్పింగ్ సంబంధిత ప్రశ్నలకు మాత్రమే ఉపయోగించబడుతుంది."
+
+#: inc/checkout-steps.php:793
+msgid "Multi-step"
+msgstr "బహుళ-దశ"
+
+#: inc/checkout-steps.php:794
+msgid "Single step"
+msgstr "సింగిల్ స్టెప్"
+
+#: inc/checkout-steps.php:965
+msgid "Click to go to the order summary"
+msgstr "ఆర్డర్ సారాంశానికి వెళ్లడానికి క్లిక్ చేయండి."
+
+#: inc/checkout-steps.php:965
+msgid "Cart total:"
+msgstr "కార్ట్ మొత్తం:"
+
+#: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
+msgid "Proceed to %s"
+msgstr "%s కి కొనసాగండి"
+
+#: inc/checkout-steps.php:2215
+msgid "Proceed to contact"
+msgstr "సంప్రదింపుకు కొనసాగండి"
+
+#: inc/checkout-steps.php:2224
+msgid "Proceed to shipping"
+msgstr "షిప్పింగ్‌కు కొనసాగండి"
+
+#: inc/checkout-steps.php:2236
+msgid "Proceed to billing"
+msgstr "బిల్లింగ్‌కు వెళ్లండి"
+
+#: inc/checkout-steps.php:2245
+msgid "Proceed to payment"
+msgstr "చెల్లింపుకు కొనసాగండి"
+
+#: inc/checkout-steps.php:2256
+msgid "My contact"
+msgstr "నా పరిచయం"
+
+#: inc/checkout-steps.php:2266
+msgid "Shipping to"
+msgstr "షిప్పింగ్"
+
+#: inc/checkout-steps.php:2276
+msgid "Shipping method"
+msgstr "షిప్పింగ్ పద్ధతి"
+
+#: inc/checkout-steps.php:2286
+msgid "Additional notes"
+msgstr "అదనపు గమనికలు"
+
+#: inc/checkout-steps.php:2300
+msgid "Billing to"
+msgstr "బిల్లింగ్"
+
+#: inc/checkout-steps.php:2310
+msgid "Payment method"
+msgstr "చెల్లింపు పద్ధతి"
+
+#: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
+msgid "Step %1$s of %2$s"
+msgstr "%2$s లో %1$s దశ"
+
+#: inc/checkout-steps.php:2825
+msgid "Change: %s"
+msgstr "మార్పు: %s"
+
+#: inc/checkout-steps.php:3184
+msgid "An account will be created with the information provided."
+msgstr "అందించిన సమాచారంతో ఒక ఖాతా సృష్టించబడుతుంది."
+
+#: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+msgid "Not selected yet."
+msgstr "ఇంకా ఎంపిక కాలేదు."
+
+#: inc/checkout-steps.php:4675
+msgid "Same as shipping address"
+msgstr "షిప్పింగ్ చిరునామా లాంటిదే"
+
+#: inc/checkout-steps.php:4720
+msgid "Same as billing address"
+msgstr "బిల్లింగ్ చిరునామా లాంటిది"
+
+#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+msgid "Order summary"
+msgstr "ఆర్డర్ సారాంశం"
+
+#: inc/checkout-steps.php:6008, templates/fc/checkout-steps/checkout/review-order-section.php:58
+msgid "Edit cart"
+msgstr "కార్ట్‌ను సవరించు"
+
+#: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
+msgid "Did you mean %s?"
+msgstr "మీరు %s అని అడిగారా?"
+
+#: inc/checkout-validation.php:197
+msgid "Change email address to: {suggestion-value}"
+msgstr "ఇమెయిల్ చిరునామాను ఇలా మార్చండి: {suggestion-value}"
+
+#: inc/checkout-validation.php:200
+msgid "This is a required field."
+msgstr "ఇది తప్పనిసరి ఫీల్డ్."
+
+#: inc/checkout-validation.php:201
+msgid "This is not a valid email address."
+msgstr "ఇది చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామా కాదు."
+
+#: inc/checkout-validation.php:202
+msgid "This field does not match the related field value."
+msgstr "ఈ ఫీల్డ్ సంబంధిత ఫీల్డ్ విలువతో సరిపోలడం లేదు."
+
+#: inc/checkout-validation.php:211
+msgid "The CPF number \"{cpf_number}\" is invalid."
+msgstr "CPF సంఖ్య &quot;{cpf_number}&quot; చెల్లదు."
+
+#: inc/checkout-validation.php:212
+msgid "The CNPJ number \"{cnpj_number}\" is invalid."
+msgstr "CNPJ సంఖ్య &quot;{cnpj_number}&quot; చెల్లదు."
+
+#: inc/checkout-validation.php:369, templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
+msgid "(Required)"
+msgstr "(అవసరం)"
+
+#: inc/checkout-widget-areas.php:98
+msgid "Checkout Header - Desktop"
+msgstr "చెక్అవుట్ హెడర్ - డెస్క్‌టాప్"
+
+#: inc/checkout-widget-areas.php:100
+msgid ""
+"Display widgets on the checkout header for large screens. Only displayed if "
+"using the plugin's checkout header."
+msgstr ""
+"పెద్ద స్క్రీన్‌ల కోసం చెక్అవుట్ హెడర్‌లో విడ్జెట్‌లను ప్రదర్శించండి. "
+"ప్లగిన్ చెక్అవుట్ హెడర్‌ను ఉపయోగిస్తుంటే మాత్రమే ప్రదర్శించబడుతుంది."
+
+#: inc/checkout-widget-areas.php:108
+msgid "Checkout Header - Mobile"
+msgstr "చెక్అవుట్ హెడర్ - మొబైల్"
+
+#: inc/checkout-widget-areas.php:110
+msgid ""
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
+msgstr ""
+"మొబైల్ పరికరాల కోసం చెక్అవుట్ హెడర్ కింద విడ్జెట్‌లను ప్రదర్శించు. ప్లగిన్ "
+"చెక్అవుట్ హెడర్‌ను ఉపయోగిస్తుంటే మాత్రమే ప్రదర్శించబడుతుంది."
+
+#: inc/checkout-widget-areas.php:122
+msgid "Checkout Sidebar"
+msgstr "చెక్అవుట్ సైడ్‌బార్"
+
+#: inc/checkout-widget-areas.php:124
+msgid "Display widgets on the checkout sidebar after the order summary."
+msgstr "ఆర్డర్ సారాంశం తర్వాత చెక్అవుట్ సైడ్‌బార్‌లో విడ్జెట్‌లను ప్రదర్శించండి."
+
+#: inc/checkout-widget-areas.php:134
+msgid "Checkout Order Summary"
+msgstr "చెక్అవుట్ ఆర్డర్ సారాంశం"
+
+#: inc/checkout-widget-areas.php:136
+msgid "Display widgets inside the order summary at the checkout page."
+msgstr "చెక్అవుట్ పేజీలో ఆర్డర్ సారాంశం లోపల విడ్జెట్‌లను ప్రదర్శించండి."
+
+#: inc/checkout-widget-areas.php:144
+msgid "Checkout Below Place Order"
+msgstr "ప్లేస్ ఆర్డర్ క్రింద చెక్అవుట్ చేయండి"
+
+#: inc/checkout-widget-areas.php:146
+msgid "Display widgets below the place order button at the checkout page."
+msgstr "చెక్అవుట్ పేజీలో ప్లేస్ ఆర్డర్ బటన్ కింద విడ్జెట్‌లను ప్రదర్శించండి."
+
+#: inc/checkout-widget-areas.php:158
+msgid "Checkout Footer"
+msgstr "చెక్అవుట్ ఫుటర్"
+
+#: inc/checkout-widget-areas.php:160
+msgid ""
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
+msgstr ""
+"చెక్అవుట్ ఫుటర్‌లో విడ్జెట్‌లను ప్రదర్శించు. ప్లగిన్ చెక్అవుట్ ఫుటర్‌ను "
+"ఉపయోగిస్తుంటే మాత్రమే ప్రదర్శించబడుతుంది."
+
+#: inc/design-templates.php:115
+msgid "Classic"
+msgstr "క్లాసిక్"
+
+#: inc/design-templates.php:116
+msgid "Boxed"
+msgstr "బాక్స్డ్"
+
+#: inc/design-templates.php:117
+msgid "Split"
+msgstr "విభజించు"
+
+#: inc/design-templates.php:118
+msgid "Minimalist"
+msgstr "మినిమలిస్ట్"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:47
+msgid "Fluid Checkout Lite 4.0+ – Important changes!"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్ లైట్ 4.0+ – ముఖ్యమైన మార్పులు!"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:48
+msgid ""
+"With this version of Fluid Checkout we have introduced <strong>important "
+"changes that might impact your website</strong> if you have made "
+"customizations to our plugins previously to the release of this version. If "
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
+msgstr ""
+"ఈ ఫ్లూయిడ్ చెక్అవుట్ వెర్షన్ తో, ఈ వెర్షన్ విడుదలకు ముందే మీరు మా "
+"ప్లగిన్లకు అనుకూలీకరణలు చేసి ఉంటే <strong>, మీ వెబ్‌సైట్‌ను ప్రభావితం చేసే "
+"ముఖ్యమైన మార్పులను</strong> మేము ప్రవేశపెట్టాము. మీ వెబ్‌సైట్‌లో ఫ్లూయిడ్ "
+"చెక్అవుట్ ప్లగిన్‌ల కోసం ఎటువంటి అనుకూలీకరణలు లేకపోతే, అది మునుపటి విధంగానే "
+"పని చేయాలి.<br><br> మీ వెబ్‌సైట్‌లో ఫ్లూయిడ్ చెక్అవుట్ కోసం మీకు ఏవైనా "
+"అనుకూలీకరణలు ఉంటే మరియు వాటిని ఇంకా ఈ వెర్షన్‌కు తరలించకపోతే, దయచేసి మా "
+"గైడ్‌ను చదవండి <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">ఫ్లూయిడ్ చెక్అవుట్ లైట్ 4.0+ కు అనుకూలీకరణలను తరలించడం</a>"
+
+#: inc/admin/admin-notice-breaking-changes-version-400.php:51
+msgid "Read the migration guide"
+msgstr "మైగ్రేషన్ గైడ్ చదవండి"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
+msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
+msgstr "కోడ్‌రాక్జ్ ద్వారా ఫ్లూయిడ్ చెక్అవుట్ మరియు డెలివరీ తేదీ ప్లగిన్‌లు"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
+msgid ""
+"<p>We detected that you are using the plugins Delivery & Pickup Date Time "
+"for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins "
+"have been moved to Fluid Checkout PRO.</p>"
+msgstr ""
+"<p>మీరు CodeRockz ద్వారా WooCommerce (ఉచిత మరియు PRO) కోసం డెలివరీ &amp; "
+"పికప్ తేదీ సమయం ప్లగిన్‌లను ఉపయోగిస్తున్నట్లు మేము గుర్తించాము. ఈ "
+"ప్లగిన్‌లతో ఇంటిగ్రేషన్ ఫ్లూయిడ్ చెక్అవుట్ PROకి తరలించబడింది.</p>"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+msgid "Upgrade to PRO"
+msgstr "PRO కి అప్‌గ్రేడ్ చేయండి"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "What should I do?"
+msgstr "నేనేం చేయాలి?"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:55
+msgid "Fluid Checkout database updated successfully"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్ డేటాబేస్ విజయవంతంగా నవీకరించబడింది"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:56
+msgid "The database changes where applied successfully."
+msgstr "విజయవంతంగా వర్తింపజేసిన చోట డేటాబేస్ మారుతుంది."
+
+#: inc/admin/admin-notice-db-migrations-applied.php:59
+msgid "Ok"
+msgstr "సరే"
+
+#: inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
+msgstr "తీసివేయి"
+
+#: inc/admin/admin-notice-db-migrations.php:51
+msgid "Fluid Checkout database update"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్ డేటాబేస్ నవీకరణ"
+
+#: inc/admin/admin-notice-db-migrations.php:52
+msgid ""
+"Some changes to the database are required. As with any update, we recommend "
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
+msgstr ""
+"డేటాబేస్‌లో కొన్ని మార్పులు అవసరం. ఏదైనా నవీకరణ మాదిరిగానే, <strong>కొనసాగే "
+"ముందు మీ వెబ్‌సైట్ యొక్క పూర్తి బ్యాకప్ తీసుకోవాలని</strong> మేము మీకు "
+"సిఫార్సు చేస్తున్నాము."
+
+#: inc/admin/admin-notice-db-migrations.php:55
+msgid "Update database"
+msgstr "డేటాబేస్‌ను నవీకరించండి"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
+msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్ దివి బిల్డర్ చెక్అవుట్ లేఅవుట్‌తో అనుకూలంగా లేదు."
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
+msgid ""
+"<p>Fluid Checkout needs the classic WooCommerce shortcode-based checkout "
+"form to work. When using the Divi Builder to customize the look and feel of "
+"the checkout page, the classic shortcodes are replaced with custom widgets "
+"from the Divi Builder for each part of the checkout page. These custom "
+"widgets are not compatible with Fluid Checkout.</p><p>Please edit your "
+"checkout page replacing the Divi Builder widgets with the a text widget "
+"containing the shortcode <code>[woocommerce_checkout]</code>.</p>"
+msgstr ""
+"<p>ఫ్లూయిడ్ చెక్అవుట్ పనిచేయడానికి క్లాసిక్ WooCommerce షార్ట్‌కోడ్ ఆధారిత "
+"చెక్అవుట్ ఫారమ్ అవసరం. చెక్అవుట్ పేజీ యొక్క రూపాన్ని మరియు అనుభూతిని "
+"అనుకూలీకరించడానికి డివి బిల్డర్‌ను ఉపయోగిస్తున్నప్పుడు, క్లాసిక్ "
+"షార్ట్‌కోడ్‌లు చెక్అవుట్ పేజీలోని ప్రతి భాగానికి డివి బిల్డర్ నుండి కస్టమ్ "
+"విడ్జెట్‌లతో భర్తీ చేయబడతాయి. ఈ కస్టమ్ విడ్జెట్‌లు ఫ్లూయిడ్ చెక్అవుట్‌తో "
+"అనుకూలంగా లేవు.</p><p> దయచేసి మీ చెక్అవుట్ పేజీని దివి బిల్డర్ విడ్జెట్‌ల "
+"స్థానంలో షార్ట్‌కోడ్ <code>[woocommerce_checkout]</code> ఉన్న టెక్స్ట్ "
+"విడ్జెట్‌తో సవరించండి.</p>"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
+msgid "Edit the checkout page"
+msgstr "చెక్అవుట్ పేజీని సవరించండి"
+
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+msgid "Read the documentation."
+msgstr "డాక్యుమెంటేషన్ చదవండి."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
+msgid ""
+"Germanized PRO multistep checkout feature needs to be disabled when using "
+"Fluid Checkout"
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు జర్మనీీకరించబడిన PRO మల్టీస్టెప్ "
+"చెక్అవుట్ ఫీచర్‌ను నిలిపివేయాలి."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
+msgid ""
+"When using Fluid Checkout, the multistep feature from the Germanized PRO "
+"plugin becomes unnecessary and can cause <strong>critical errors while "
+"processing new orders</strong>. Please disable the Germanized PRO multistep "
+"checkout feature in the plugin settings."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు, జర్మనీజ్డ్ PRO ప్లగిన్ నుండి "
+"మల్టీస్టెప్ ఫీచర్ అనవసరంగా మారుతుంది మరియు <strong>కొత్త ఆర్డర్‌లను "
+"ప్రాసెస్ చేస్తున్నప్పుడు క్లిష్టమైన లోపాలకు</strong> కారణమవుతుంది. దయచేసి "
+"ప్లగిన్ సెట్టింగ్‌లలో జర్మనీజ్డ్ PRO మల్టీస్టెప్ చెక్అవుట్ ఫీచర్‌ను "
+"నిలిపివేయండి."
+
+#: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:67
+msgid "Go to Germanized settings"
+msgstr "జర్మనీీకరించిన సెట్టింగ్‌లకు వెళ్లండి"
+
+#: inc/admin/admin-notice-review-request.php:47
+msgid "Thanks for choosing Fluid Checkout!"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్ ఎంచుకున్నందుకు ధన్యవాదాలు!"
+
+#: inc/admin/admin-notice-review-request.php:48
+msgid ""
+"You have been using the plugin for a while now. How do you like it so far? "
+"<br>Please give us a quick rating, we appreciate every bit of feedback and "
+"it encourages us to keep improving the plugin :)"
+msgstr ""
+"మీరు కొంతకాలంగా ప్లగిన్‌ను ఉపయోగిస్తున్నారు. ఇప్పటివరకు మీకు ఇది ఎలా "
+"నచ్చింది?<br> దయచేసి మాకు త్వరిత రేటింగ్ ఇవ్వండి, ప్రతి అభిప్రాయాన్ని మేము "
+"అభినందిస్తున్నాము మరియు ఇది ప్లగిన్‌ను మెరుగుపరచడం కొనసాగించడానికి మమ్మల్ని "
+"ప్రోత్సహిస్తుంది :)"
+
+#: inc/admin/admin-notice-review-request.php:50
+msgid "Rate the plugin"
+msgstr "ప్లగిన్‌ను రేట్ చేయండి"
+
+#: inc/admin/admin-notice-review-request.php:51
+msgid "I need help!"
+msgstr "నాకు సహాయం కావాలి!"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
+"with Fluid Checkout"
+msgstr ""
+"క్వాడ్‌లేయర్స్ ద్వారా ప్లగిన్ WooCommerce చెక్అవుట్ మేనేజర్ ఫ్లూయిడ్ "
+"చెక్అవుట్‌తో అనుకూలంగా లేదు."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+msgid ""
+"Some features of WooCommerce Checkout Manager by Quadlayers might not work "
+"as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
+"documentation</a> for more information and alternative solutions."
+msgstr ""
+"క్వాడ్‌లేయర్స్ ద్వారా WooCommerce Checkout మేనేజర్ యొక్క కొన్ని లక్షణాలు "
+"ఫ్లూయిడ్ చెక్‌అవుట్‌తో ఉపయోగించినప్పుడు ఆశించిన విధంగా పనిచేయకపోవచ్చు. "
+"మరింత సమాచారం మరియు ప్రత్యామ్నాయ పరిష్కారాల కోసం <a href=\"%s\">మా "
+"డాక్యుమెంటేషన్</a> చదవండి."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+msgid "Read documentation"
+msgstr "డాక్యుమెంటేషన్ చదవండి"
+
+#: inc/admin/admin-notices.php:55
+msgid "Don't show this again"
+msgstr "దీన్ని మళ్ళీ చూపించవద్దు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:41
+msgid "Special offers"
+msgstr "ప్రత్యేక ఆఫర్లు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:43
+msgid ""
+"Extend all the goodness of Fluid Checkout to your cart page and thank you "
+"pages."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ యొక్క అన్ని మంచితనాలను మీ కార్ట్ పేజీ మరియు ధన్యవాదాలు "
+"పేజీలకు విస్తరించండి."
+
+#: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
+msgid "Fluid Checkout PRO"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్ PRO"
+
+#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
+msgid ""
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
+msgstr ""
+"డిజైన్ టెంప్లేట్‌లు, ఆప్టిమైజ్ చేసిన కార్ట్ మరియు ఆర్డర్ అందుకున్న పేజీలు, "
+"ఖాతా సరిపోలిక మరియు మరిన్ని."
+
+#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
+msgid ""
+"The best tools to further <strong>improve your WooCommerce checkout "
+"conversion rate</strong> and make the purchase experience consistent on the "
+"entire journey."
+msgstr ""
+"<strong>మీ WooCommerce చెక్అవుట్ మార్పిడి రేటును మరింత "
+"మెరుగుపరచడానికి</strong> మరియు మొత్తం ప్రయాణంలో కొనుగోలు అనుభవాన్ని "
+"స్థిరంగా ఉంచడానికి ఉత్తమ సాధనాలు."
+
+#: inc/admin/admin-setting-type-fc-addons.php:57
+msgid "More design templates"
+msgstr "మరిన్ని డిజైన్ టెంప్లేట్‌లు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:58
+msgid "Optimized cart page"
+msgstr "ఆప్టిమైజ్ చేసిన కార్ట్ పేజీ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:59
+msgid "Optimized order received / thank you page"
+msgstr "ఆప్టిమైజ్ చేసిన ఆర్డర్ అందింది / ధన్యవాదాలు పేజీ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:60
+msgid "Edit cart contents at checkout page"
+msgstr "చెక్అవుట్ పేజీలో కార్ట్ కంటెంట్‌లను సవరించండి"
+
+#: inc/admin/admin-setting-type-fc-addons.php:61
+msgid "Account matching / user matching"
+msgstr "ఖాతా సరిపోలిక / వినియోగదారు సరిపోలిక"
+
+#: inc/admin/admin-setting-type-fc-addons.php:62
+msgid "Express Checkout buttons from supported payment methods"
+msgstr "మద్దతు ఉన్న చెల్లింపు పద్ధతుల నుండి ఎక్స్‌ప్రెస్ చెక్అవుట్ బటన్లు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:63
+msgid "Trust symbols on the cart and thank you pages"
+msgstr "కార్ట్ మరియు థాంక్యూ పేజీలపై చిహ్నాలను నమ్మండి"
+
+#: inc/admin/admin-setting-type-fc-addons.php:64
+msgid "More positions for the coupon code on the checkout page"
+msgstr "చెక్అవుట్ పేజీలో కూపన్ కోడ్ కోసం మరిన్ని స్థానాలు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:65
+msgid "Integrated coupon code field on the cart page"
+msgstr "కార్ట్ పేజీలో ఇంటిగ్రేటెడ్ కూపన్ కోడ్ ఫీల్డ్"
+
+#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+msgid "International phone numbers"
+msgstr "అంతర్జాతీయ ఫోన్ నంబర్లు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:67
+msgid "Gift messages and packing slips"
+msgstr "బహుమతి సందేశాలు మరియు ప్యాకింగ్ స్లిప్‌లు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:68
+msgid "Local pickup and in-store collection"
+msgstr "స్థానిక పికప్ మరియు స్టోర్‌లో సేకరణ"
+
+#: inc/admin/admin-setting-type-fc-addons.php:72
+msgid "Upgrade to PRO &mdash; 99 EUR"
+msgstr "PRO కి అప్‌గ్రేడ్ చేయండి — 99 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
+msgid "Fluid Checkout PRO – Bundle"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్ PRO – బండిల్"
+
+#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
+msgid "All PRO features + All add-ons for a special price."
+msgstr "అన్ని PRO ఫీచర్లు + ప్రత్యేక ధరకే అన్ని యాడ్-ఆన్‌లు."
+
+#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
+msgid ""
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
+msgstr ""
+"ఈ బండిల్‌లో మేము ప్రస్తుతం అందిస్తున్న అన్ని యాడ్-ఆన్‌లు మరియు భవిష్యత్తులో "
+"మేము ప్రారంభించే ఫ్లూయిడ్ చెక్అవుట్ యాడ్-ఆన్‌లు ఉంటాయి."
+
+#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
+msgid "226 EUR value (Save 42%)"
+msgstr "226 EUR విలువ (42% ఆదా చేయండి)"
+
+#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
+msgid "Google Address Autocomplete"
+msgstr "Google చిరునామా స్వీయపూర్తి"
+
+#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
+msgid "Address Book"
+msgstr "చిరునామా పుస్తకం"
+
+#: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
+msgid "EU-VAT Assistant"
+msgstr "EU-VAT అసిస్టెంట్"
+
+#: inc/admin/admin-setting-type-fc-addons.php:92
+msgid "All future add-ons *"
+msgstr "అన్ని భవిష్యత్ యాడ్-ఆన్‌లు *"
+
+#: inc/admin/admin-setting-type-fc-addons.php:94
+msgid "* For as long as you have an active subscription."
+msgstr "* మీకు యాక్టివ్ సబ్‌స్క్రిప్షన్ ఉన్నంత వరకు."
+
+#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
+msgid "Get the Bundle – Only 129 EUR"
+msgstr "బండిల్ పొందండి – కేవలం 129 యూరోలు మాత్రమే"
+
+#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
+msgid ""
+"All prices shown in EUR. If there are any divergencies with the prices on "
+"our website, the offers shown on the website superseed these and will be "
+"applied."
+msgstr ""
+"అన్ని ధరలు EURలో చూపబడ్డాయి. మా వెబ్‌సైట్‌లోని ధరలతో ఏవైనా వ్యత్యాసాలు "
+"ఉంటే, వెబ్‌సైట్‌లో చూపబడిన ఆఫర్‌లు వీటిని అధిగమిస్తాయి మరియు అవి "
+"వర్తింపజేయబడతాయి."
+
+#: inc/admin/admin-setting-type-fc-addons.php:116
+msgid "Add-ons"
+msgstr "యాడ్-ఆన్‌లు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:117
+msgid "Enhance your checkout experience with these add-ons."
+msgstr "ఈ యాడ్-ఆన్‌లతో మీ చెక్అవుట్ అనుభవాన్ని మెరుగుపరచుకోండి."
+
+#: inc/admin/admin-setting-type-fc-addons.php:137
+msgid "I already have it – Hide this offer"
+msgstr "నా దగ్గర ఇప్పటికే ఉంది – ఈ ఆఫర్‌ను దాచు"
+
+#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
+msgid "Installed &mdash; Activate"
+msgstr "ఇన్‌స్టాల్ చేయబడింది — యాక్టివేట్ చేయండి"
+
+#: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
+msgid "Activated"
+msgstr "యాక్టివేట్ చేయబడింది"
+
+#: inc/admin/admin-setting-type-fc-addons.php:168
+msgid "Up to 40% less checkout fields to fill in."
+msgstr "పూరించడానికి 40% వరకు తక్కువ చెక్అవుట్ ఫీల్డ్‌లు."
+
+#: inc/admin/admin-setting-type-fc-addons.php:172
+msgid ""
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
+msgstr ""
+"డెలివరీ జాప్యాలు మరియు అసంతృప్తి చెందిన కస్టమర్లను నివారించండి. వారు మీ "
+"నుండి మొదటిసారి కొనుగోలు చేసినప్పుడు <strong>సరైన చిరునామా "
+"సమాచారాన్ని</strong> సేకరించండి."
+
+#: inc/admin/admin-setting-type-fc-addons.php:180
+msgid "Get this add-on &mdash; 29 EUR"
+msgstr "ఈ యాడ్-ఆన్ పొందండి — 29 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:189
+msgid "Address book"
+msgstr "చిరునామా పుస్తకం"
+
+#: inc/admin/admin-setting-type-fc-addons.php:190
+msgid "Multiple saved addresses for shipping and billing."
+msgstr "షిప్పింగ్ మరియు బిల్లింగ్ కోసం బహుళ సేవ్ చేసిన చిరునామాలు."
+
+#: inc/admin/admin-setting-type-fc-addons.php:194
+msgid ""
+"Let customers <strong>save multiple shipping and billing addresses</strong> "
+"on their account and choose which ones to use at checkout and cart pages."
+msgstr ""
+"కస్టమర్‌లు తమ ఖాతాలో <strong>బహుళ షిప్పింగ్ మరియు బిల్లింగ్ చిరునామాలను "
+"సేవ్</strong> చేసుకోనివ్వండి మరియు చెక్అవుట్ మరియు కార్ట్ పేజీలలో ఏవి "
+"ఉపయోగించాలో ఎంచుకోండి."
+
+#: inc/admin/admin-setting-type-fc-addons.php:202
+msgid "Get this add-on &mdash; 59 EUR"
+msgstr "ఈ యాడ్-ఆన్ పొందండి — 59 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:212
+msgid "Simplified EU-VAT validation for your store."
+msgstr "మీ స్టోర్ కోసం సరళీకృత EU-VAT ధ్రువీకరణ."
+
+#: inc/admin/admin-setting-type-fc-addons.php:216
+msgid ""
+"Collect and <strong>validate EU VAT numbers at the checkout page</strong>, "
+"removes tax charges on reverse charge basis and confirms customer location "
+"when needed."
+msgstr ""
+"<strong>చెక్అవుట్ పేజీలో EU VAT నంబర్‌లను సేకరించి ధృవీకరించండి</strong> , "
+"రివర్స్ ఛార్జ్ ప్రాతిపదికన పన్ను ఛార్జీలను తొలగిస్తుంది మరియు అవసరమైనప్పుడు "
+"కస్టమర్ స్థానాన్ని నిర్ధారిస్తుంది."
+
+#: inc/admin/admin-setting-type-fc-addons.php:224
+msgid "Get this add-on &mdash; 39 EUR"
+msgstr "ఈ యాడ్-ఆన్ పొందండి — 39 EUR"
+
+#: inc/admin/admin-setting-type-fc-addons.php:233
+msgid ""
+"All add-ons are sold separately and require the <strong>Fluid Checkout "
+"Lite</strong> plugin to be installed and activated, except when noted."
+msgstr ""
+"అన్ని యాడ్-ఆన్‌లు విడివిడిగా అమ్ముడవుతాయి మరియు గుర్తించినప్పుడు తప్ప, "
+"<strong>ఫ్లూయిడ్ చెక్అవుట్ లైట్</strong> ప్లగిన్‌ను ఇన్‌స్టాల్ చేసి "
+"యాక్టివేట్ చేయాలి."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
+msgid "Select an image"
+msgstr "చిత్రాన్ని ఎంచుకోండి"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "ఏ చిత్రం ఎంచుకోబడలేదు."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "చిత్రాన్ని తీసివేయండి"
+
+#: inc/admin/admin-setting-type-fc-license-key.php:142
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to get your license key, or <a href=\"%s\" "
+"target=\"_blank\">purchase a new license key</a>."
+msgstr ""
+"మీ లైసెన్స్ కీని పొందడానికి <a href=\"https://fluidcheckout.com/account/\" "
+"target=\"_blank\">మీ ఖాతాలోకి లాగిన్ అవ్వండి</a> లేదా <a href=\"%s\" "
+"target=\"_blank\">కొత్త లైసెన్స్ కీని కొనండి</a> ."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
+msgid "Valid until %s."
+msgstr "%s వరకు చెల్లుతుంది."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
+msgid "Expired on %s."
+msgstr "%sన గడువు ముగిసింది."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:160
+msgid ""
+"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to "
+"your account</a> to renew your license key and continue to receive updates "
+"and support."
+msgstr ""
+"మీ లైసెన్స్ కీని పునరుద్ధరించడానికి <a "
+"href=\"https://fluidcheckout.com/account/\" target=\"_blank\">మీ ఖాతాలోకి "
+"లాగిన్ అవ్వండి</a> మరియు నవీకరణలు మరియు మద్దతును స్వీకరించడం కొనసాగించండి."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:163
+msgid "License key cancelled."
+msgstr "లైసెన్స్ కీ రద్దు చేయబడింది."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:165
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">కొత్త లైసెన్స్ కీని కొనుగోలు చేయండి</a> "
+"మరియు నవీకరణలు మరియు మద్దతును స్వీకరించడం కొనసాగించండి."
+
+#: inc/admin/admin-setting-type-fc-license-key.php:168
+msgid "Error: "
+msgstr "లోపం: "
+
+#: inc/admin/admin-setting-type-fc-setup.php:41
+msgid "Setup & Documentation"
+msgstr "సెటప్ &amp; డాక్యుమెంటేషన్"
+
+#: inc/admin/admin-setting-type-fc-setup.php:42
+msgid "Great! Your checkout page is now running on Fluid Checkout."
+msgstr "బాగుంది! మీ చెక్అవుట్ పేజీ ఇప్పుడు ఫ్లూయిడ్ చెక్అవుట్‌లో నడుస్తోంది."
+
+#: inc/admin/admin-setting-type-fc-setup.php:44
+msgid "Here are a few resources for you to get started:"
+msgstr "మీరు ప్రారంభించడానికి ఇక్కడ కొన్ని వనరులు ఉన్నాయి:"
+
+#: inc/admin/admin-setting-type-fc-setup.php:48
+msgid ""
+"Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated "
+"with Fluid Checkout</a>."
+msgstr ""
+"<a href=\"%s\" target=\"_blank\">ఫ్లూయిడ్ చెక్అవుట్ తో చెప్పడం గురించి</a> "
+"ఇన్‌స్టాలేషన్ గైడ్ చదవండి."
+
+#: inc/admin/admin-setting-type-fc-setup.php:49
+msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
+msgstr "<a href=\"%s\">చెక్అవుట్ ఎంపికలపై</a> లేఅవుట్ మరియు డిజైన్‌ను సెటప్ చేయండి."
+
+#: inc/admin/admin-setting-type-fc-setup.php:50
+msgid ""
+"Check if there are any <a href=\"%s\">integration options</a> available for "
+"other plugins you have installed."
+msgstr ""
+"మీరు ఇన్‌స్టాల్ చేసిన ఇతర ప్లగిన్‌లకు ఏవైనా <a href=\"%s\">ఇంటిగ్రేషన్ "
+"ఎంపికలు</a> అందుబాటులో ఉన్నాయో లేదో తనిఖీ చేయండి."
+
+#: inc/admin/admin-setting-type-fc-setup.php:51
+msgid ""
+"Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more "
+"information about Fluid Checkout features."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ లక్షణాల గురించి మరింత సమాచారం కోసం <a href=\"%s\" "
+"target=\"_blank\">మా డాక్యుమెంటేషన్‌ను</a> సందర్శించండి."
+
+#: inc/admin/admin-setting-type-fc-setup.php:52
+msgid ""
+"If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
+"ticket</a> on our official support channel."
+msgstr ""
+"మీకు ఎప్పుడైనా సహాయం అవసరమైతే, మా అధికారిక మద్దతు ఛానెల్‌లో <a href=\"%s\" "
+"target=\"_blank\">మద్దతు టికెట్ తెరవండి</a> ."
+
+#: inc/admin/admin-settings-cart.php:71
+msgid "Cart layout"
+msgstr "కార్ట్ లేఅవుట్"
+
+#: inc/admin/admin-settings-cart.php:78
+msgid "Cart optimizations"
+msgstr "కార్ట్ ఆప్టిమైజేషన్‌లు"
+
+#: inc/admin/admin-settings-cart.php:79
+msgid "Enable cart page optimizations"
+msgstr "కార్ట్ పేజీ ఆప్టిమైజేషన్‌లను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-cart.php:80
+msgid "Display the cart page with a layout similar to the checkout page."
+msgstr "చెక్అవుట్ పేజీకి సమానమైన లేఅవుట్‌తో కార్ట్ పేజీని ప్రదర్శించండి."
+
+#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
+msgid "Header and footer"
+msgstr "హెడర్ మరియు ఫుటర్"
+
+#: inc/admin/admin-settings-cart.php:103
+msgid "Header and footer template"
+msgstr "హెడర్ మరియు ఫుటర్ టెంప్లేట్"
+
+#: inc/admin/admin-settings-cart.php:104, inc/admin/admin-settings-checkout.php:126
+msgid ""
+"Controls whether to use the distraction free page header and footer or keep "
+"the currently active theme's header and footer."
+msgstr ""
+"పరధ్యానం లేని పేజీ హెడర్ మరియు ఫుటర్‌ను ఉపయోగించాలా లేదా ప్రస్తుతం "
+"యాక్టివ్‌గా ఉన్న థీమ్ యొక్క హెడర్ మరియు ఫుటర్‌ను ఉంచాలా వద్దా అనేదాన్ని "
+"నియంత్రిస్తుంది."
+
+#: inc/admin/admin-settings-cart.php:108, inc/admin/admin-settings-checkout.php:130
+msgid "Distraction free header and footer"
+msgstr "పరధ్యానం లేని హెడర్ మరియు ఫుటర్"
+
+#: inc/admin/admin-settings-cart.php:109, inc/admin/admin-settings-checkout.php:131
+msgid "Theme's header and footer"
+msgstr "థీమ్ యొక్క హెడర్ మరియు ఫుటర్"
+
+#: inc/admin/admin-settings-cart.php:124
+msgid "Cart elements"
+msgstr "కార్ట్ ఎలిమెంట్స్"
+
+#: inc/admin/admin-settings-cart.php:132
+msgid "Make the order summary stay visible on the cart page while scrolling"
+msgstr "స్క్రోల్ చేస్తున్నప్పుడు ఆర్డర్ సారాంశం కార్ట్ పేజీలో కనిపించేలా చేయండి."
+
+#: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
+msgid "Coupon codes"
+msgstr "కూపన్ కోడ్‌లు"
+
+#: inc/admin/admin-settings-cart.php:142
+msgid ""
+"Select position where to display the coupon codes section on the cart page. "
+"Only applicable when AJAX cart and the integrated coupon codes in the "
+"checkout page are enabled."
+msgstr ""
+"కార్ట్ పేజీలో కూపన్ కోడ్‌ల విభాగాన్ని ఎక్కడ ప్రదర్శించాలో స్థానాన్ని "
+"ఎంచుకోండి. AJAX కార్ట్ మరియు చెక్అవుట్ పేజీలోని ఇంటిగ్రేటెడ్ కూపన్ కోడ్‌లు "
+"ప్రారంభించబడినప్పుడు మాత్రమే వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+msgid "Hidden"
+msgstr "దాచబడింది"
+
+#: inc/admin/admin-settings-cart.php:147
+msgid "Before the cart items section"
+msgstr "కార్ట్ వస్తువుల విభాగానికి ముందు"
+
+#: inc/admin/admin-settings-cart.php:148
+msgid "Inside the cart items section"
+msgstr "కార్ట్ ఐటెమ్స్ విభాగం లోపల"
+
+#: inc/admin/admin-settings-cart.php:149, inc/admin/admin-settings-cart.php:185
+msgid "After the cart items section"
+msgstr "కార్ట్ వస్తువుల విభాగం తర్వాత"
+
+#: inc/admin/admin-settings-cart.php:150
+msgid "Before the shipping section"
+msgstr "షిప్పింగ్ విభాగానికి ముందు"
+
+#: inc/admin/admin-settings-cart.php:151
+msgid "After the shipping section"
+msgstr "షిప్పింగ్ విభాగం తర్వాత"
+
+#: inc/admin/admin-settings-cart.php:152
+msgid "Before the order summary"
+msgstr "ఆర్డర్ సారాంశం ముందు"
+
+#: inc/admin/admin-settings-cart.php:153, inc/admin/admin-settings-cart.php:171, inc/admin/admin-settings-checkout.php:393
+msgid "Inside the order summary"
+msgstr "ఆర్డర్ సారాంశం లోపల"
+
+#: inc/admin/admin-settings-cart.php:154, inc/admin/admin-settings-checkout.php:394
+msgid "Before the order totals"
+msgstr "ఆర్డర్ మొత్తాలు రాకముందే"
+
+#: inc/admin/admin-settings-cart.php:155, inc/admin/admin-settings-checkout.php:395
+msgid "After the order totals"
+msgstr "ఆర్డర్ మొత్తాలు తర్వాత"
+
+#: inc/admin/admin-settings-cart.php:156, inc/admin/admin-settings-cart.php:188
+msgid "After the order summary"
+msgstr "ఆర్డర్ సారాంశం తర్వాత"
+
+#: inc/admin/admin-settings-cart.php:164
+msgid "Shipping"
+msgstr "షిప్పింగ్"
+
+#: inc/admin/admin-settings-cart.php:165
+msgid ""
+"Select position where to display the shipping costs and calculator on the "
+"cart page."
+msgstr ""
+"కార్ట్ పేజీలో షిప్పింగ్ ఖర్చులు మరియు కాలిక్యులేటర్‌ను ఎక్కడ ప్రదర్శించాలో "
+"స్థానాన్ని ఎంచుకోండి."
+
+#: inc/admin/admin-settings-cart.php:170
+msgid "Display as a cart section"
+msgstr "కార్ట్ విభాగంగా ప్రదర్శించు"
+
+#: inc/admin/admin-settings-cart.php:179
+msgid "Cross-sells"
+msgstr "క్రాస్-సేల్స్"
+
+#: inc/admin/admin-settings-cart.php:180
+msgid "Select position where to display the cross-sells section on the cart page."
+msgstr ""
+"కార్ట్ పేజీలో క్రాస్-సెల్ల్స్ విభాగాన్ని ఎక్కడ ప్రదర్శించాలో స్థానాన్ని "
+"ఎంచుకోండి."
+
+#: inc/admin/admin-settings-cart.php:186
+msgid "Before the cart actions"
+msgstr "కార్ట్ చర్యలకు ముందు"
+
+#: inc/admin/admin-settings-cart.php:187
+msgid "After the cart actions"
+msgstr "కార్ట్ చర్యల తర్వాత"
+
+#: inc/admin/admin-settings-cart.php:198
+msgid "Layout of cross-sell items on the cart page."
+msgstr "కార్ట్ పేజీలో క్రాస్-సెల్ వస్తువుల లేఅవుట్."
+
+#: inc/admin/admin-settings-cart.php:201
+msgid "Optimized horizontal cross-sells layout"
+msgstr "ఆప్టిమైజ్ చేయబడిన క్షితిజ సమాంతర క్రాస్-సెల్స్ లేఅవుట్"
+
+#: inc/admin/admin-settings-cart.php:202
+msgid "Theme's cross-sells layout"
+msgstr "థీమ్ యొక్క క్రాస్-సెల్ల్స్ లేఅవుట్"
+
+#: inc/admin/admin-settings-cart.php:210
+msgid "Number of cross-sell items to display on the cart page"
+msgstr "కార్ట్ పేజీలో ప్రదర్శించాల్సిన క్రాస్-సెల్ ఐటెమ్‌ల సంఖ్య"
+
+#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+msgid "Trust symbols &amp; badges"
+msgstr "ట్రస్ట్ చిహ్నాలు &amp; బ్యాడ్జ్‌లు"
+
+#: inc/admin/admin-settings-cart.php:220
+msgid "Add widget areas to the cart page"
+msgstr "కార్ట్ పేజీకి విడ్జెట్ ప్రాంతాలను జోడించండి"
+
+#: inc/admin/admin-settings-cart.php:221
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"cart page."
+msgstr ""
+"ఈ విడ్జెట్ ప్రాంతాలు కార్ట్ పేజీలో ట్రస్ట్ చిహ్నాలు మరియు ట్రస్ట్ "
+"బ్యాడ్జ్‌లను జోడించడానికి ఉపయోగించబడతాయి."
+
+#: inc/admin/admin-settings-checkout.php:50
+msgid "Checkout"
+msgstr "చెక్అవుట్"
+
+#: inc/admin/admin-settings-checkout.php:71
+msgid "Layout &amp; design"
+msgstr "లేఅవుట్ &amp; డిజైన్"
+
+#: inc/admin/admin-settings-checkout.php:78
+msgid "Checkout layout"
+msgstr "చెక్అవుట్ లేఅవుట్"
+
+#: inc/admin/admin-settings-checkout.php:89
+msgid "Design template"
+msgstr "డిజైన్ టెంప్లేట్"
+
+#: inc/admin/admin-settings-checkout.php:90
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"Might also apply to other pages such as the Cart, Order Received and View "
+"Order pages."
+msgstr ""
+"చెక్అవుట్ దశలు, ఆర్డర్ సారాంశం మరియు ఇతర విభాగాల కోసం సాధారణ శైలులు. "
+"కార్ట్, ఆర్డర్ రిసీవ్డ్ మరియు వ్యూ ఆర్డర్ పేజీలు వంటి ఇతర పేజీలకు కూడా "
+"వర్తించవచ్చు."
+
+#: inc/admin/admin-settings-checkout.php:101
+msgid "Dark mode"
+msgstr "డార్క్ మోడ్"
+
+#: inc/admin/admin-settings-checkout.php:102
+msgid "Enable dark mode"
+msgstr "డార్క్ మోడ్‌ను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:124
+msgid "Header and footer templates"
+msgstr "హెడర్ మరియు ఫుటర్ టెంప్లేట్‌లు"
+
+#: inc/admin/admin-settings-checkout.php:125
+msgid ""
+"We recommend using the distraction free header and footer to avoid "
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
+msgstr ""
+"చెక్అవుట్ పేజీలో పరధ్యానాన్ని నివారించడానికి పరధ్యాన రహిత హెడర్ మరియు "
+"ఫుటర్‌ను ఉపయోగించమని మేము సిఫార్సు చేస్తున్నాము. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">కార్ట్ "
+"అబాండమెంట్ గురించి పరిశోధన చదవండి</a> ."
+
+#: inc/admin/admin-settings-checkout.php:138
+msgid "Logo image"
+msgstr "లోగో చిత్రం"
+
+#: inc/admin/admin-settings-checkout.php:139
+msgid ""
+"Choose an image to be displayed on the checkout page header. Only applies "
+"when using the distraction free header and footer."
+msgstr ""
+"చెక్అవుట్ పేజీ హెడర్‌లో ప్రదర్శించాల్సిన చిత్రాన్ని ఎంచుకోండి. "
+"డిస్ట్రాక్షన్ లేని హెడర్ మరియు ఫుటర్‌ని ఉపయోగిస్తున్నప్పుడు మాత్రమే "
+"వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:148
+msgid "Header background color"
+msgstr "హెడర్ నేపథ్య రంగు"
+
+#: inc/admin/admin-settings-checkout.php:149
+msgid ""
+"Choose a background color for the checkout page header. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"చెక్అవుట్ పేజీ హెడర్ కోసం నేపథ్య రంగును ఎంచుకోండి. పరధ్యానం లేని హెడర్ "
+"మరియు ఫుటర్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:150, inc/admin/admin-settings-checkout.php:161, inc/admin/admin-settings-checkout.php:172, inc/admin/admin-settings-checkout.php:258
+msgid "HTML color value. ie: #f3f3f3"
+msgstr "HTML రంగు విలువ. అంటే: #f3f3f3"
+
+#: inc/admin/admin-settings-checkout.php:159
+msgid "Page background color"
+msgstr "పేజీ నేపథ్య రంగు"
+
+#: inc/admin/admin-settings-checkout.php:160
+msgid ""
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
+msgstr ""
+"చెక్అవుట్ పేజీ కోసం నేపథ్య రంగును ఎంచుకోండి. రంగు <em>ప్రధాన</em> మూలకానికి "
+"వర్తించబడుతుంది."
+
+#: inc/admin/admin-settings-checkout.php:170
+msgid "Footer background color"
+msgstr "ఫుటర్ నేపథ్య రంగు"
+
+#: inc/admin/admin-settings-checkout.php:171
+msgid ""
+"Choose a background color for the checkout page footer. Only applies when "
+"using the distraction free header and footer."
+msgstr ""
+"చెక్అవుట్ పేజీ ఫుటర్ కోసం నేపథ్య రంగును ఎంచుకోండి. పరధ్యానం లేని హెడర్ "
+"మరియు ఫుటర్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:188
+msgid "Checkout elements"
+msgstr "చెక్అవుట్ అంశాలు"
+
+#: inc/admin/admin-settings-checkout.php:195
+msgid "Progress bar"
+msgstr "ప్రోగ్రెస్ బార్"
+
+#: inc/admin/admin-settings-checkout.php:196
+msgid "Display the checkout progress bar when using multi-step checkout layout"
+msgstr ""
+"బహుళ-దశల చెక్అవుట్ లేఅవుట్‌ను ఉపయోగిస్తున్నప్పుడు చెక్అవుట్ ప్రోగ్రెస్ "
+"బార్‌ను ప్రదర్శించండి"
+
+#: inc/admin/admin-settings-checkout.php:205
+msgid "Make the checkout progress bar stay visible while scrolling"
+msgstr "స్క్రోల్ చేస్తున్నప్పుడు చెక్అవుట్ ప్రోగ్రెస్ బార్ కనిపించేలా చేయండి"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Express checkout"
+msgstr "ఎక్స్‌ప్రెస్ చెక్అవుట్"
+
+#: inc/admin/admin-settings-checkout.php:216
+msgid "Enable the express checkout section"
+msgstr "ఎక్స్‌ప్రెస్ చెక్అవుట్ విభాగాన్ని ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:217
+msgid ""
+"Displays the express checkout section at checkout when supported payment "
+"gateways have this feature enabled."
+msgstr ""
+"మద్దతు ఉన్న చెల్లింపు గేట్‌వేలు ఈ లక్షణాన్ని ప్రారంభించినప్పుడు చెక్అవుట్ "
+"వద్ద ఎక్స్‌ప్రెస్ చెక్అవుట్ విభాగాన్ని ప్రదర్శిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:227
+msgid "Display express checkout buttons in one line for larger screens"
+msgstr ""
+"పెద్ద స్క్రీన్‌ల కోసం ఎక్స్‌ప్రెస్ చెక్అవుట్ బటన్‌లను ఒకే లైన్‌లో "
+"ప్రదర్శించండి"
+
+#: inc/admin/admin-settings-checkout.php:237
+msgid ""
+"Ignore additional checkout required fields when paying with a compatible "
+"express checkout payment gateway"
+msgstr ""
+"అనుకూలమైన ఎక్స్‌ప్రెస్ చెక్అవుట్ చెల్లింపు గేట్‌వేతో చెల్లించేటప్పుడు అదనపు "
+"చెక్అవుట్ అవసరమైన ఫీల్డ్‌లను విస్మరించండి."
+
+#: inc/admin/admin-settings-checkout.php:249
+msgid "Make the order summary stay visible while scrolling"
+msgstr "స్క్రోల్ చేస్తున్నప్పుడు ఆర్డర్ సారాంశం కనిపించేలా చేయండి"
+
+#: inc/admin/admin-settings-checkout.php:257
+msgid "Choose a background color for the order summary section."
+msgstr "ఆర్డర్ సారాంశం విభాగానికి నేపథ్య రంగును ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:267
+msgid "Highlight the order totals row in the order summary table"
+msgstr "ఆర్డర్ సారాంశ పట్టికలో ఆర్డర్ మొత్తాల వరుసను హైలైట్ చేయండి."
+
+#: inc/admin/admin-settings-checkout.php:268
+msgid ""
+"Most useful when the order summary section does not have a highlighted "
+"background color. Might also apply to the Cart, Order Received and View "
+"Order pages when using Fluid Checkout PRO."
+msgstr ""
+"ఆర్డర్ సారాంశం విభాగంలో హైలైట్ చేయబడిన నేపథ్య రంగు లేనప్పుడు చాలా "
+"ఉపయోగకరంగా ఉంటుంది. ఫ్లూయిడ్ చెక్అవుట్ PROని ఉపయోగిస్తున్నప్పుడు కార్ట్, "
+"ఆర్డర్ రిసీవ్డ్ మరియు వ్యూ ఆర్డర్ పేజీలకు కూడా వర్తించవచ్చు."
+
+#: inc/admin/admin-settings-checkout.php:276
+msgid "Action link on the order summary at checkout."
+msgstr "చెక్అవుట్ వద్ద ఆర్డర్ సారాంశంపై చర్య లింక్."
+
+#: inc/admin/admin-settings-checkout.php:280
+msgid "Edit cart link"
+msgstr "కార్ట్ లింక్‌ను సవరించు"
+
+#: inc/admin/admin-settings-checkout.php:281
+msgid "Cart items count"
+msgstr "కార్ట్ వస్తువుల సంఖ్య"
+
+#: inc/admin/admin-settings-checkout.php:282
+msgid "Link to shop page"
+msgstr "షాప్ పేజీకి లింక్ చేయండి"
+
+#: inc/admin/admin-settings-checkout.php:289
+msgid "Cart items"
+msgstr "కార్ట్ అంశాలు"
+
+#: inc/admin/admin-settings-checkout.php:290
+msgid "Enable options to edit cart items on the checkout page"
+msgstr "చెక్అవుట్ పేజీలో కార్ట్ అంశాలను సవరించడానికి ఎంపికలను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:291
+msgid ""
+"Allow customers to change product quantities or removing items directly at "
+"the checkout page."
+msgstr ""
+"కస్టమర్‌లు ఉత్పత్తి పరిమాణాలను మార్చడానికి లేదా చెక్అవుట్ పేజీలో నేరుగా "
+"వస్తువులను తీసివేయడానికి అనుమతించండి."
+
+#: inc/admin/admin-settings-checkout.php:301
+msgid "Hide cart items errors at the checkout page"
+msgstr "చెక్అవుట్ పేజీలో కార్ట్ ఐటెమ్‌ల లోపాలను దాచండి"
+
+#: inc/admin/admin-settings-checkout.php:302
+msgid ""
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
+msgstr ""
+"చెక్అవుట్ పేజీ ఎగువన కార్ట్ ఐటెమ్‌ల ఎర్రర్ సందేశాన్ని ప్రదర్శించవద్దు. "
+"కొనుగోలును పూర్తి చేయడానికి చెక్అవుట్ ఫారమ్‌ను సమర్పించేటప్పుడు, ఈ ఎర్రర్ "
+"సందేశాలు ఎల్లప్పుడూ ప్రదర్శించబడతాయి."
+
+#: inc/admin/admin-settings-checkout.php:313
+msgid "Place order"
+msgstr "ఆర్డర్ చేయండి"
+
+#: inc/admin/admin-settings-checkout.php:314
+msgid "Define the position to display \"Place order\" and terms checkbox section."
+msgstr ""
+"&quot;క్రమాన్ని ఉంచండి&quot; మరియు నిబంధనల చెక్‌బాక్స్ విభాగాన్ని "
+"ప్రదర్శించాల్సిన స్థానాన్ని నిర్వచించండి."
+
+#: inc/admin/admin-settings-checkout.php:315
+msgid "Some options might not be compatible with some plugins and themes."
+msgstr "కొన్ని ఎంపికలు కొన్ని ప్లగిన్‌లు మరియు థీమ్‌లతో అనుకూలంగా ఉండకపోవచ్చు."
+
+#: inc/admin/admin-settings-checkout.php:319
+msgid "Below the payment section"
+msgstr "చెల్లింపు విభాగం కింద"
+
+#: inc/admin/admin-settings-checkout.php:320
+msgid "Below the order summary"
+msgstr "ఆర్డర్ సారాంశం క్రింద"
+
+#: inc/admin/admin-settings-checkout.php:321
+msgid "Both below the payment section and the order summary"
+msgstr "చెల్లింపు విభాగం మరియు ఆర్డర్ సారాంశం కింద రెండూ"
+
+#: inc/admin/admin-settings-checkout.php:329
+msgid "Add widget areas to the checkout page"
+msgstr "చెక్అవుట్ పేజీకి విడ్జెట్ ప్రాంతాలను జోడించండి"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"checkout page."
+msgstr ""
+"ఈ విడ్జెట్ ప్రాంతాలు చెక్అవుట్ పేజీలో ట్రస్ట్ చిహ్నాలు మరియు ట్రస్ట్ "
+"బ్యాడ్జ్‌లను జోడించడానికి ఉపయోగించబడతాయి."
+
+#: inc/admin/admin-settings-checkout.php:339
+msgid ""
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
+msgstr ""
+"బహుళ-దశల చెక్అవుట్ లేఅవుట్‌ను ఉపయోగిస్తున్నప్పుడు మొబైల్ పరికరాల్లో చివరి "
+"చెక్అవుట్ దశను వీక్షిస్తున్నప్పుడు మాత్రమే చెక్అవుట్ సైడ్‌బార్ విడ్జెట్‌లను "
+"ప్రదర్శించండి"
+
+#: inc/admin/admin-settings-checkout.php:364
+msgid "Enable integrated coupon code section"
+msgstr "ఇంటిగ్రేటెడ్ కూపన్ కోడ్ విభాగాన్ని ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:365
+msgid ""
+"Only applicable if use of coupon codes are enabled in the WooCommerce "
+"settings."
+msgstr ""
+"WooCommerce సెట్టింగ్‌లలో కూపన్ కోడ్‌ల వినియోగాన్ని ప్రారంభించినట్లయితే "
+"మాత్రమే వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:374
+msgid "Display the coupon codes section title"
+msgstr "కూపన్ కోడ్‌ల విభాగం శీర్షికను ప్రదర్శించండి"
+
+#: inc/admin/admin-settings-checkout.php:375
+msgid ""
+"Only applicable when coupon code is displayed as a separate section on the "
+"checkout or cart pages."
+msgstr ""
+"చెక్అవుట్ లేదా కార్ట్ పేజీలలో కూపన్ కోడ్ ప్రత్యేక విభాగంగా "
+"ప్రదర్శించబడినప్పుడు మాత్రమే వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:385
+msgid ""
+"Select position where to display the coupon codes section on the checkout "
+"page."
+msgstr ""
+"చెక్అవుట్ పేజీలో కూపన్ కోడ్‌ల విభాగాన్ని ఎక్కడ ప్రదర్శించాలో స్థానాన్ని "
+"ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:390
+msgid "Before the checkout steps"
+msgstr "చెక్అవుట్ దశలకు ముందు"
+
+#: inc/admin/admin-settings-checkout.php:391
+msgid "As a substep before payment methods"
+msgstr "చెల్లింపు పద్ధతులకు ముందు ఉపదశగా"
+
+#: inc/admin/admin-settings-checkout.php:392
+msgid "As a substep after payment methods"
+msgstr "చెల్లింపు పద్ధతుల తర్వాత ఉప దశగా"
+
+#: inc/admin/admin-settings-checkout.php:402
+msgid ""
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
+msgstr ""
+"&quot;కూపన్ వర్తింపజేయి&quot; బటన్ యొక్క శైలిని ఎంచుకోండి. చెక్అవుట్ పేజీలో "
+"&quot;చెక్అవుట్ దశలకు ముందు&quot; కూపన్ కోడ్ విభాగం లేదా కార్ట్ పేజీలో "
+"&quot;కార్ట్ వస్తువుల విభాగానికి ముందు&quot; ప్రదర్శించబడినప్పుడు మాత్రమే "
+"వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:406
+msgid "Default button style"
+msgstr "డిఫాల్ట్ బటన్ శైలి"
+
+#: inc/admin/admin-settings-checkout.php:407
+msgid "\"Add\" link button"
+msgstr "&quot;జోడించు&quot; లింక్ బటన్"
+
+#: inc/admin/admin-settings-checkout.php:422, inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102, inc/compat/themes/compat-theme-zk-nito.php:87
+msgid "Checkout fields"
+msgstr "చెక్అవుట్ ఫీల్డ్‌లు"
+
+#: inc/admin/admin-settings-checkout.php:429
+msgid "Optional fields"
+msgstr "ఐచ్ఛిక ఫీల్డ్‌లు"
+
+#: inc/admin/admin-settings-checkout.php:430
+msgid "Hide optional fields behind a link button"
+msgstr "లింక్ బటన్ వెనుక ఉన్న ఐచ్ఛిక ఫీల్డ్‌లను దాచు"
+
+#: inc/admin/admin-settings-checkout.php:431
+msgid ""
+"It is recommended to keep this option checked to reduce the number of open "
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
+msgstr ""
+"ఓపెన్ ఇన్‌పుట్ ఫీల్డ్‌ల సంఖ్యను తగ్గించడానికి ఈ ఎంపికను తనిఖీ చేయాలని "
+"సిఫార్సు చేయబడింది, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">పరిశోధన చదవండి</a> ."
+
+#: inc/admin/admin-settings-checkout.php:440
+msgid "Do not hide \"Address line 2\" fields behind a link button"
+msgstr "లింక్ బటన్ వెనుక &quot;చిరునామా పంక్తి 2&quot; ఫీల్డ్‌లను దాచవద్దు."
+
+#: inc/admin/admin-settings-checkout.php:441
+msgid ""
+"Recommended only when most customers actually need the \"Address line 2\" "
+"field, or when getting the right shipping address is crucial (ie. if "
+"delivering food and other perishable products)."
+msgstr ""
+"చాలా మంది కస్టమర్లకు &quot;చిరునామా పంక్తి 2&quot; ఫీల్డ్ నిజంగా "
+"అవసరమైనప్పుడు లేదా సరైన షిప్పింగ్ చిరునామాను పొందడం చాలా ముఖ్యమైనప్పుడు "
+"(అంటే ఆహారం మరియు ఇతర పాడైపోయే ఉత్పత్తులను డెలివరీ చేస్తుంటే) మాత్రమే "
+"సిఫార్సు చేయబడింది."
+
+#: inc/admin/admin-settings-checkout.php:451
+msgid "Display the \"Add\" link buttons in lowercase"
+msgstr "&quot;జోడించు&quot; లింక్ బటన్లను చిన్న అక్షరాలలో ప్రదర్శించండి."
+
+#: inc/admin/admin-settings-checkout.php:452
+msgid ""
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
+msgstr ""
+"ఐచ్ఛిక ఫీల్డ్ &quot;జోడించు&quot; లింక్ బటన్ యొక్క లేబుల్‌లను "
+"<code>lowercase</code> చేయండి (అంటే &quot;ఫోన్ నంబర్‌ను జోడించు&quot; "
+"బదులుగా &quot;ఫోన్ నంబర్‌ను జోడించు&quot;). ఈ ఎంపిక కూపన్ కోడ్ ఫీల్డ్‌ల "
+"కోసం లింక్ బటన్‌లను కూడా ప్రభావితం చేస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+msgid "Billing address"
+msgstr "బిల్లింగ్ చిరునామా"
+
+#: inc/admin/admin-settings-checkout.php:461
+msgid ""
+"Select position where to display the billing address section on the "
+"checkout page."
+msgstr ""
+"చెక్అవుట్ పేజీలో బిల్లింగ్ చిరునామా విభాగాన్ని ఎక్కడ ప్రదర్శించాలో "
+"స్థానాన్ని ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:465
+msgid "As a step before shipping"
+msgstr "షిప్పింగ్ కు ముందు ఒక అడుగుగా"
+
+#: inc/admin/admin-settings-checkout.php:466
+msgid "As a sub-step before the shipping address section"
+msgstr "షిప్పింగ్ చిరునామా విభాగానికి ముందు ఉప దశగా"
+
+#: inc/admin/admin-settings-checkout.php:467
+msgid "As a sub-step after the shipping address section"
+msgstr "షిప్పింగ్ చిరునామా విభాగం తర్వాత ఉప-దశగా"
+
+#: inc/admin/admin-settings-checkout.php:468
+msgid "As a step after shipping"
+msgstr "షిప్పింగ్ తర్వాత ఒక అడుగుగా"
+
+#: inc/admin/admin-settings-checkout.php:469
+msgid "As a sub-step before the payment section"
+msgstr "చెల్లింపు విభాగానికి ముందు ఉప దశగా"
+
+#: inc/admin/admin-settings-checkout.php:470
+msgid "Force billing and shipping addresses to the same (single section)"
+msgstr "బిల్లింగ్ మరియు షిప్పింగ్ చిరునామాలను ఒకే (ఒకే విభాగం)కి బలవంతం చేయండి"
+
+#: inc/admin/admin-settings-checkout.php:477
+msgid "Checkbox for \"Same as shipping/billing address\" checked by default"
+msgstr ""
+"&quot;షిప్పింగ్/బిల్లింగ్ చిరునామా లాంటిది&quot; కోసం చెక్‌బాక్స్ "
+"డిఫాల్ట్‌గా ఎంచుకోబడింది."
+
+#: inc/admin/admin-settings-checkout.php:478
+msgid ""
+"The checkbox \"Same as shiping address\" will start as checked by default "
+"when the shipping address section is displayed first. <br>The checkbox "
+"\"Same as billing address\" will start as checked by default when the "
+"billing address section is displayed first. <br> It is recommended to leave "
+"this option checked as to significantly reduce the number of open input "
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
+msgstr ""
+"షిప్పింగ్ చిరునామా విభాగం మొదట ప్రదర్శించబడినప్పుడు &quot;షిప్పింగ్ "
+"చిరునామా లాంటిదే&quot; అనే చెక్‌బాక్స్ డిఫాల్ట్‌గా ఎంచుకున్నట్లుగా "
+"ప్రారంభమవుతుంది.<br> బిల్లింగ్ చిరునామా విభాగం మొదట ప్రదర్శించబడినప్పుడు "
+"&quot;బిల్లింగ్ చిరునామా వలె&quot; అనే చెక్‌బాక్స్ డిఫాల్ట్‌గా "
+"ఎంచుకున్నట్లుగా ప్రారంభమవుతుంది.<br> చెక్అవుట్ వద్ద ఓపెన్ ఇన్‌పుట్ ఫీల్డ్‌ల "
+"సంఖ్యను గణనీయంగా తగ్గించడానికి ఈ ఎంపికను తనిఖీ చేయమని సిఫార్సు చేయబడింది, "
+"<a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">పరిశోధన "
+"చదవండి</a> ."
+
+#: inc/admin/admin-settings-checkout.php:486
+msgid "Highlight the billing address section in the checkout form"
+msgstr "చెక్అవుట్ ఫారమ్‌లో బిల్లింగ్ చిరునామా విభాగాన్ని హైలైట్ చేయండి."
+
+#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+msgid "Shipping address"
+msgstr "షిప్పింగ్ చిరునామా"
+
+#: inc/admin/admin-settings-checkout.php:495
+msgid "Highlight the shipping address section in the checkout form"
+msgstr "చెక్అవుట్ ఫారమ్‌లో షిప్పింగ్ చిరునామా విభాగాన్ని హైలైట్ చేయండి."
+
+#: inc/admin/admin-settings-checkout.php:503
+msgid "Shipping methods"
+msgstr "షిప్పింగ్ పద్ధతులు"
+
+#: inc/admin/admin-settings-checkout.php:504
+msgid "Choose in which position to display the shipping methods section."
+msgstr "షిప్పింగ్ పద్ధతుల విభాగాన్ని ఏ స్థానంలో ప్రదర్శించాలో ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:508
+msgid "Before shipping address"
+msgstr "షిప్పింగ్ ముందు చిరునామా"
+
+#: inc/admin/admin-settings-checkout.php:509
+msgid "After shipping address"
+msgstr "షిప్పింగ్ తర్వాత చిరునామా"
+
+#: inc/admin/admin-settings-checkout.php:516
+msgid "Prevent automatic selection of the first shipping method"
+msgstr "మొదటి షిప్పింగ్ పద్ధతి యొక్క ఆటోమేటిక్ ఎంపికను నిరోధించండి"
+
+#: inc/admin/admin-settings-checkout.php:517
+msgid ""
+"When enabled, the first shipping method available will not be automatically "
+"selected when no other shipping method was previously selected for each "
+"shipping package. <br>This option will be automatically enabled if the "
+"option for clearing the selected shipping method is enabled for the Local "
+"Pickup feature."
+msgstr ""
+"ప్రారంభించబడినప్పుడు, ప్రతి షిప్పింగ్ ప్యాకేజీకి గతంలో వేరే షిప్పింగ్ "
+"పద్ధతిని ఎంచుకోనప్పుడు అందుబాటులో ఉన్న మొదటి షిప్పింగ్ పద్ధతి స్వయంచాలకంగా "
+"ఎంపిక చేయబడదు.<br> లోకల్ పికప్ ఫీచర్ కోసం ఎంచుకున్న షిప్పింగ్ పద్ధతిని "
+"క్లియర్ చేసే ఎంపికను ప్రారంభించినట్లయితే ఈ ఎంపిక స్వయంచాలకంగా "
+"ప్రారంభించబడుతుంది."
+
+#: inc/admin/admin-settings-checkout.php:526
+msgid "Local pickup"
+msgstr "స్థానిక పికప్"
+
+#: inc/admin/admin-settings-checkout.php:527
+msgid ""
+"Removes shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"స్థానిక పికప్ షిప్పింగ్ పద్ధతిని ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామా "
+"విభాగాన్ని తొలగిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:528
+msgid ""
+"Replaces the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"స్థానిక పికప్ షిప్పింగ్ పద్ధతిని ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామాను పికప్ "
+"పాయింట్ స్థానంతో భర్తీ చేస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:538
+msgid "Show option to clear shipping methods in the pickup location substep"
+msgstr ""
+"పికప్ లొకేషన్ సబ్‌స్టెప్‌లో షిప్పింగ్ పద్ధతులను క్లియర్ చేయడానికి ఆప్షన్‌ను "
+"చూపించు"
+
+#: inc/admin/admin-settings-checkout.php:539
+msgid ""
+"Show a link button on the pickup location substep to clear the chosen "
+"shipping methods. This can be used to allow showing the shipping address "
+"section again if a local pickup method was previously selected."
+msgstr ""
+"ఎంచుకున్న షిప్పింగ్ పద్ధతులను క్లియర్ చేయడానికి పికప్ లొకేషన్ సబ్‌స్టెప్‌లో "
+"లింక్ బటన్‌ను చూపించు. స్థానిక పికప్ పద్ధతిని గతంలో ఎంచుకున్నట్లయితే, "
+"షిప్పింగ్ చిరునామా విభాగాన్ని మళ్ళీ చూపించడానికి దీనిని ఉపయోగించవచ్చు."
+
+#: inc/admin/admin-settings-checkout.php:550
+msgid ""
+"Choose which address to save as the shipping address for local pickup "
+"orders."
+msgstr ""
+"స్థానిక పికప్ ఆర్డర్‌ల కోసం షిప్పింగ్ చిరునామాగా ఏ చిరునామాను సేవ్ చేయాలో "
+"ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:554
+msgid "Save the selected pickup location"
+msgstr "ఎంచుకున్న పికప్ స్థానాన్ని సేవ్ చేయండి"
+
+#: inc/admin/admin-settings-checkout.php:555
+msgid "Save same as the billing address"
+msgstr "బిల్లింగ్ చిరునామా లాగానే సేవ్ చేయండి"
+
+#: inc/admin/admin-settings-checkout.php:556
+msgid "Do not save any shipping address"
+msgstr "ఏ షిప్పింగ్ చిరునామాను సేవ్ చేయవద్దు."
+
+#: inc/admin/admin-settings-checkout.php:564
+msgid "Company name field for shipping address"
+msgstr "షిప్పింగ్ చిరునామా కోసం కంపెనీ పేరు ఫీల్డ్"
+
+#: inc/admin/admin-settings-checkout.php:565
+msgid ""
+"Change visibility for the company name field for the shipping address "
+"section on the checkout form."
+msgstr ""
+"చెక్అవుట్ ఫారమ్‌లోని షిప్పింగ్ చిరునామా విభాగం కోసం కంపెనీ పేరు ఫీల్డ్ కోసం "
+"దృశ్యమానతను మార్చండి."
+
+#: inc/admin/admin-settings-checkout.php:566
+msgid ""
+"If field is set as \"optional\", which is the default visibility state, no "
+"changes will be applied to let other plugins apply any changes they need."
+msgstr ""
+"ఫీల్డ్ &quot;ఐచ్ఛికం&quot;గా సెట్ చేయబడితే, అది డిఫాల్ట్ దృశ్యమానత స్థితి, "
+"ఇతర ప్లగిన్‌లు వారికి అవసరమైన ఏవైనా మార్పులను వర్తింపజేయడానికి ఎటువంటి "
+"మార్పులు వర్తించవు."
+
+#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+msgid "Hidden (remove field)"
+msgstr "దాచబడింది (ఫీల్డ్‌ను తీసివేయండి)"
+
+#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+msgid "Optional"
+msgstr "ఐచ్ఛికం"
+
+#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+msgid "Required"
+msgstr "అవసరం"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid "Add shipping phone field to the checkout form."
+msgstr "చెక్అవుట్ ఫారమ్‌కు షిప్పింగ్ ఫోన్ ఫీల్డ్‌ను జోడించండి."
+
+#: inc/admin/admin-settings-checkout.php:594
+msgid "Choose in which step to display the shipping phone field."
+msgstr "షిప్పింగ్ ఫోన్ ఫీల్డ్‌ను ఏ దశలో ప్రదర్శించాలో ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+msgid "Contact step"
+msgstr "సంప్రదింపు దశ"
+
+#: inc/admin/admin-settings-checkout.php:606
+msgid "Billing phone"
+msgstr "బిల్లింగ్ ఫోన్"
+
+#: inc/admin/admin-settings-checkout.php:607
+msgid "Add billing phone field to the checkout form."
+msgstr "చెక్అవుట్ ఫారమ్‌కు బిల్లింగ్ ఫోన్ ఫీల్డ్‌ను జోడించండి."
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid "Choose in which step to display the billing phone field."
+msgstr "బిల్లింగ్ ఫోన్ ఫీల్డ్‌ను ఏ దశలో ప్రదర్శించాలో ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:634
+msgid "Enable international phone number format and validation for phone fields"
+msgstr ""
+"ఫోన్ ఫీల్డ్‌ల కోసం అంతర్జాతీయ ఫోన్ నంబర్ ఫార్మాట్ మరియు ధ్రువీకరణను "
+"ప్రారంభించండి."
+
+#: inc/admin/admin-settings-checkout.php:635
+msgid "Format and validate phone numbers according to each country."
+msgstr "ప్రతి దేశం ప్రకారం ఫోన్ నంబర్‌లను ఫార్మాట్ చేయండి మరియు ధృవీకరించండి."
+
+#: inc/admin/admin-settings-checkout.php:645
+msgid "Enable phone number validation based on country rules"
+msgstr "దేశ నియమాల ఆధారంగా ఫోన్ నంబర్ ధ్రువీకరణను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:646
+msgid ""
+"When disabled, the phone field validation will not check if country or area "
+"codes are valid for the country."
+msgstr ""
+"నిలిపివేయబడినప్పుడు, ఫోన్ ఫీల్డ్ వాలిడేషన్ దేశం లేదా ప్రాంత కోడ్‌లు "
+"దేశానికి చెల్లుబాటు అవుతాయో లేదో తనిఖీ చేయదు."
+
+#: inc/admin/admin-settings-checkout.php:656
+msgid "Only show allowed countries for shipping or billing"
+msgstr "షిప్పింగ్ లేదా బిల్లింగ్ కోసం అనుమతించబడిన దేశాలను మాత్రమే చూపించు."
+
+#: inc/admin/admin-settings-checkout.php:657
+msgid ""
+"When enabled, only the countries allowed for shipping will be available in "
+"the shipping phone field, and only countries allowed for billing will be "
+"available for the billing phone field."
+msgstr ""
+"ప్రారంభించబడినప్పుడు, షిప్పింగ్ ఫోన్ ఫీల్డ్‌లో షిప్పింగ్‌కు అనుమతించబడిన "
+"దేశాలు మాత్రమే అందుబాటులో ఉంటాయి మరియు బిల్లింగ్ ఫోన్ ఫీల్డ్‌లో "
+"బిల్లింగ్‌కు అనుమతించబడిన దేశాలు మాత్రమే అందుబాటులో ఉంటాయి."
+
+#: inc/admin/admin-settings-checkout.php:667
+msgid "Show country code beside the flag"
+msgstr "జెండా పక్కన దేశం కోడ్‌ను చూపించు"
+
+#: inc/admin/admin-settings-checkout.php:678
+msgid "Show an example of a valid phone number inside phone fields"
+msgstr "ఫోన్ ఫీల్డ్‌ల లోపల చెల్లుబాటు అయ్యే ఫోన్ నంబర్ యొక్క ఉదాహరణను చూపించు."
+
+#: inc/admin/admin-settings-checkout.php:682
+msgid "Do not change placeholders"
+msgstr "ప్లేస్‌హోల్డర్‌లను మార్చవద్దు"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Show if not defined"
+msgstr "నిర్వచించకపోతే చూపించు"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid "Always show"
+msgstr "ఎల్లప్పుడూ చూపించు"
+
+#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+msgid "Order notes"
+msgstr "ఆర్డర్ నోట్స్"
+
+#: inc/admin/admin-settings-checkout.php:693
+msgid "Define the visibility of the additional order notes field."
+msgstr "అదనపు ఆర్డర్ నోట్స్ ఫీల్డ్ యొక్క దృశ్యమానతను నిర్వచించండి."
+
+#: inc/admin/admin-settings-checkout.php:705
+msgid "Gift options"
+msgstr "బహుమతి ఎంపికలు"
+
+#: inc/admin/admin-settings-checkout.php:706
+msgid "Display gift message and other gift options at the checkout page"
+msgstr "చెక్అవుట్ పేజీలో బహుమతి సందేశం మరియు ఇతర బహుమతి ఎంపికలను ప్రదర్శించండి."
+
+#: inc/admin/admin-settings-checkout.php:707
+msgid ""
+"Allow customers to add a gift message and other gift related options to the "
+"order."
+msgstr ""
+"కస్టమర్‌లు ఆర్డర్‌కు బహుమతి సందేశం మరియు ఇతర బహుమతి సంబంధిత ఎంపికలను "
+"జోడించడానికి అనుమతించండి."
+
+#: inc/admin/admin-settings-checkout.php:717
+msgid "Display the gift message fields always expanded"
+msgstr "ఎల్లప్పుడూ విస్తరించబడిన బహుమతి సందేశ ఫీల్డ్‌లను ప్రదర్శించు"
+
+#: inc/admin/admin-settings-checkout.php:727
+msgid ""
+"Display the gift message as part of the order details table instead of a "
+"separate section"
+msgstr ""
+"బహుమతి సందేశాన్ని ప్రత్యేక విభాగానికి బదులుగా ఆర్డర్ వివరాల పట్టికలో భాగంగా "
+"ప్రదర్శించండి."
+
+#: inc/admin/admin-settings-checkout.php:728
+msgid ""
+"This option affects the order confirmation page (thank you page) and order "
+"details on account pages, emails and packing slips."
+msgstr ""
+"ఈ ఎంపిక ఆర్డర్ నిర్ధారణ పేజీ (ధన్యవాదాలు పేజీ) మరియు ఖాతా పేజీలు, "
+"ఇమెయిల్‌లు మరియు ప్యాకింగ్ స్లిప్‌లలోని ఆర్డర్ వివరాలను ప్రభావితం చేస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+msgid "Account matching"
+msgstr "ఖాతా మ్యాచింగ్"
+
+#: inc/admin/admin-settings-checkout.php:754
+msgid "Enable the account matching feature"
+msgstr "ఖాతా సరిపోలిక ఫీచర్‌ను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:755
+msgid ""
+"Associate the guest customer's orders with their existing account when an "
+"account already exists with the customer's contact details."
+msgstr ""
+"కస్టమర్ యొక్క సంప్రదింపు వివరాలతో ఖాతా ఇప్పటికే ఉన్నప్పుడు అతిథి కస్టమర్ "
+"ఆర్డర్‌లను వారి ప్రస్తుత ఖాతాతో అనుబంధించండి."
+
+#: inc/admin/admin-settings-checkout.php:765
+msgid "Display message when an account exists with the email address provided"
+msgstr "అందించిన ఇమెయిల్ చిరునామాతో ఖాతా ఉన్నప్పుడు సందేశాన్ని ప్రదర్శించు"
+
+#: inc/admin/admin-settings-checkout.php:766
+msgid ""
+"Replaces the account creation fields with a notification and option to log "
+"in. In some contexts, it might be recommended to leave this option disabled "
+"to protect the privacy of customers."
+msgstr ""
+"ఖాతా సృష్టి ఫీల్డ్‌లను నోటిఫికేషన్ మరియు లాగిన్ ఎంపికతో భర్తీ చేస్తుంది. "
+"కొన్ని సందర్భాలలో, కస్టమర్ల గోప్యతను కాపాడటానికి ఈ ఎంపికను నిలిపివేయమని "
+"సిఫార్సు చేయవచ్చు."
+
+#: inc/admin/admin-settings-dashboard.php:49
+msgid "Dashboard"
+msgstr "డాష్‌బోర్డ్"
+
+#: inc/admin/admin-settings-integrations.php:51
+msgid "Integrations"
+msgstr "ఇంటిగ్రేషన్లు"
+
+#: inc/admin/admin-settings-integrations.php:95
+msgid ""
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
+msgstr ""
+"ఈ విభాగంలో ప్రస్తుతం ఇంటిగ్రేషన్‌లు అందుబాటులో లేవు. ప్రతి ప్లగిన్ "
+"యాక్టివేట్ చేయబడితేనే దానికి సంబంధించిన ఎంపికలు ఇక్కడ కనిపిస్తాయి."
+
+#: inc/admin/admin-settings-license-keys.php:54
+msgid "License keys"
+msgstr "లైసెన్స్ కీలు"
+
+#: inc/admin/admin-settings-license-keys.php:85
+msgid ""
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
+msgstr ""
+"ఈ విభాగంలో ప్రస్తుతం లైసెన్స్ కీల ఎంపికలు అందుబాటులో లేవు. ఆ ప్లగిన్ "
+"సక్రియం చేయబడినప్పుడు ప్రతి ప్లగిన్ లేదా యాడ్-ఆన్‌కు సంబంధించిన ఎంపికలు "
+"ఇక్కడ కనిపిస్తాయి."
+
+#: inc/admin/admin-settings-license-keys.php:90
+msgid "Visit our website for more information about our plugins and add-ons."
+msgstr ""
+"మా ప్లగిన్లు మరియు యాడ్-ఆన్‌ల గురించి మరింత సమాచారం కోసం మా వెబ్‌సైట్‌ను "
+"సందర్శించండి."
+
+#: inc/admin/admin-settings-order-pay.php:71
+msgid "Order pay page"
+msgstr "ఆర్డర్ చెల్లింపు పేజీ"
+
+#: inc/admin/admin-settings-order-pay.php:78
+msgid "Order pay"
+msgstr "ఆర్డర్ పే"
+
+#: inc/admin/admin-settings-order-pay.php:79
+msgid "Enable order pay page optimizations"
+msgstr "ఆర్డర్ పే పేజీ ఆప్టిమైజేషన్‌లను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-order-pay.php:80
+msgid ""
+"Changes the layout of order pay page for existing orders pending payment "
+"from the customer."
+msgstr ""
+"కస్టమర్ నుండి చెల్లింపు పెండింగ్‌లో ఉన్న ఆర్డర్‌ల కోసం ఆర్డర్ చెల్లింపు "
+"పేజీ యొక్క లేఅవుట్‌ను మారుస్తుంది."
+
+#: inc/admin/admin-settings-order-pay.php:92
+msgid "Add widget areas to the order pay page"
+msgstr "ఆర్డర్ చెల్లింపు పేజీకి విడ్జెట్ ప్రాంతాలను జోడించండి"
+
+#: inc/admin/admin-settings-order-pay.php:93
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"order pay page."
+msgstr ""
+"ఆర్డర్ పే పేజీలో ట్రస్ట్ చిహ్నాలు మరియు ట్రస్ట్ బ్యాడ్జ్‌లను జోడించడానికి ఈ "
+"విడ్జెట్ ప్రాంతాలు ఉపయోగించబడతాయి."
+
+#: inc/admin/admin-settings-order-received.php:69
+msgid "Thank you page & order details layout"
+msgstr "ధన్యవాదాలు పేజీ &amp; ఆర్డర్ వివరాల లేఅవుట్"
+
+#: inc/admin/admin-settings-order-received.php:76
+msgid "Order details optimizations"
+msgstr "ఆర్డర్ వివరాల ఆప్టిమైజేషన్‌లు"
+
+#: inc/admin/admin-settings-order-received.php:77
+msgid "Enable thank you page and order details optimizations"
+msgstr "ధన్యవాదాలు పేజీ మరియు ఆర్డర్ వివరాల ఆప్టిమైజేషన్‌లను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-order-received.php:78
+msgid "Changes the layout of order details on the thank you page and account pages."
+msgstr "ధన్యవాదాలు పేజీ మరియు ఖాతా పేజీలలో ఆర్డర్ వివరాల లేఅవుట్‌ను మారుస్తుంది."
+
+#: inc/admin/admin-settings-order-received.php:89
+msgid "Enable order details customizations on email notifications"
+msgstr "ఇమెయిల్ నోటిఫికేషన్‌లలో ఆర్డర్ వివరాల అనుకూలీకరణలను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-order-received.php:90
+msgid ""
+"Display new sections and change order of sections on email notifications. "
+"Styles of order details on email notifications remain unchanged."
+msgstr ""
+"ఇమెయిల్ నోటిఫికేషన్‌లలో కొత్త విభాగాలను ప్రదర్శించండి మరియు విభాగాల "
+"క్రమాన్ని మార్చండి. ఇమెయిల్ నోటిఫికేషన్‌లలో ఆర్డర్ వివరాల శైలులు మారవు."
+
+#: inc/admin/admin-settings-order-received.php:108
+msgid "Thank you page"
+msgstr "ధన్యవాదాలు పేజీ"
+
+#: inc/admin/admin-settings-order-received.php:110
+msgid ""
+"These options affect the thank you page, also known as order received or "
+"order confirmation pages."
+msgstr ""
+"ఈ ఎంపికలు ధన్యవాదాలు పేజీని ప్రభావితం చేస్తాయి, వీటిని ఆర్డర్ అందుకున్న "
+"లేదా ఆర్డర్ నిర్ధారణ పేజీలు అని కూడా పిలుస్తారు."
+
+#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
+msgid "Order details layout"
+msgstr "ఆర్డర్ వివరాల లేఅవుట్"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Display the order details with wide layout on the thank you page"
+msgstr "థాంక్యూ పేజీలో ఆర్డర్ వివరాలను విస్తృత లేఅవుట్‌తో ప్రదర్శించండి."
+
+#: inc/admin/admin-settings-order-received.php:126
+msgid "Add widget areas to the thank you page"
+msgstr "ధన్యవాదాల పేజీకి విడ్జెట్ ప్రాంతాలను జోడించండి"
+
+#: inc/admin/admin-settings-order-received.php:127
+msgid ""
+"These widget areas are used to add trust symbols and trust badges on the "
+"thank you page."
+msgstr ""
+"ఈ విడ్జెట్ ప్రాంతాలు ధన్యవాదాలు పేజీలో ట్రస్ట్ చిహ్నాలు మరియు ట్రస్ట్ "
+"బ్యాడ్జ్‌లను జోడించడానికి ఉపయోగించబడతాయి."
+
+#: inc/admin/admin-settings-order-received.php:145
+msgid ""
+"These options affect the thank you page , view order details on account "
+"pages and on email notifications."
+msgstr ""
+"ఈ ఎంపికలు ధన్యవాదాలు పేజీని ప్రభావితం చేస్తాయి, ఖాతా పేజీలలో మరియు ఇమెయిల్ "
+"నోటిఫికేషన్‌లలో ఆర్డర్ వివరాలను వీక్షించండి."
+
+#: inc/admin/admin-settings-order-received.php:150
+msgid "Order actions"
+msgstr "ఆర్డర్ చర్యలు"
+
+#: inc/admin/admin-settings-order-received.php:151
+msgid "Choose in which position to display the order actions."
+msgstr "ఆర్డర్ చర్యలను ఏ స్థానంలో ప్రదర్శించాలో ఎంచుకోండి."
+
+#: inc/admin/admin-settings-order-received.php:155
+msgid "Inside the order overview"
+msgstr "ఆర్డర్ లోపల అవలోకనం"
+
+#: inc/admin/admin-settings-order-received.php:156
+msgid "After the order overview"
+msgstr "ఆర్డర్ అవలోకనం తర్వాత"
+
+#: inc/admin/admin-settings-order-received.php:157
+msgid "After order sections"
+msgstr "ఆర్డర్ తర్వాత విభాగాలు"
+
+#: inc/admin/admin-settings-order-received.php:165
+msgid "Order status"
+msgstr "ఆర్డర్ స్థితి"
+
+#: inc/admin/admin-settings-order-received.php:166
+msgid "Display the order status progress bar"
+msgstr "ఆర్డర్ స్థితి పురోగతి పట్టీని ప్రదర్శించు"
+
+#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+msgid "Choose in which position to display the section."
+msgstr "విభాగాన్ని ఏ స్థానంలో ప్రదర్శించాలో ఎంచుకోండి."
+
+#: inc/admin/admin-settings-order-received.php:180
+msgid "After the order overview and payment instructions"
+msgstr "ఆర్డర్ అవలోకనం మరియు చెల్లింపు సూచనల తర్వాత"
+
+#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+msgid "Before the order items section"
+msgstr "ఆర్డర్ ఐటెమ్‌ల విభాగానికి ముందు"
+
+#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+msgid "Inside the order items section"
+msgstr "ఆర్డర్ ఐటెమ్స్ విభాగం లోపల"
+
+#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+msgid "After the order items section"
+msgstr "ఆర్డర్ ఐటెమ్‌ల విభాగం తర్వాత"
+
+#: inc/admin/admin-settings-order-received.php:184
+msgid "On the sidebar"
+msgstr "సైడ్‌బార్‌లో"
+
+#: inc/admin/admin-settings-order-received.php:192
+msgid "Order downloads"
+msgstr "డౌన్‌లోడ్‌లను ఆర్డర్ చేయండి"
+
+#: inc/admin/admin-settings-order-received.php:207
+msgid "Gift message"
+msgstr "బహుమతి సందేశం"
+
+#: inc/admin/admin-settings-tools.php:51
+msgid "Tools"
+msgstr "ఉపకరణాలు"
+
+#: inc/admin/admin-settings-tools.php:84
+msgid "Troubleshooting"
+msgstr "సమస్య పరిష్కరించు"
+
+#: inc/admin/admin-settings-tools.php:91
+msgid "Debug options"
+msgstr "డీబగ్ ఎంపికలు"
+
+#: inc/admin/admin-settings-tools.php:92
+msgid "Debug mode"
+msgstr "డీబగ్ మోడ్"
+
+#: inc/admin/admin-settings-tools.php:93
+msgid ""
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
+msgstr ""
+"డీబగ్ మోడ్‌ని ఉపయోగించడం వల్ల వెబ్‌సైట్ పనితీరు ప్రభావితమవుతుంది. "
+"ట్రబుల్షూటింగ్ చేస్తున్నప్పుడు మాత్రమే ఈ ఎంపికను ఉపయోగించండి."
+
+#: inc/admin/admin-settings-tools.php:102
+msgid "Load unminified assets"
+msgstr "కనిష్టీకరించబడని ఆస్తులను లోడ్ చేయండి"
+
+#: inc/admin/admin-settings-tools.php:112
+msgid "Enhanced select fields"
+msgstr "మెరుగైన ఎంపిక ఫీల్డ్‌లు"
+
+#: inc/admin/admin-settings-tools.php:113
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgstr ""
+"<code>select2</code> డ్రాప్‌డౌన్ భాగాలను <code>TomSelect</code> తో భర్తీ "
+"చేయండి"
+
+#: inc/admin/admin-settings-tools.php:114
+msgid ""
+"TomSelect is a simpler dropdown selection component which is less prone to "
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
+msgstr ""
+"TomSelect అనేది సరళమైన డ్రాప్‌డౌన్ ఎంపిక భాగం, ఇది Select2 కంటే తక్కువ "
+"ఎర్రర్‌లకు గురవుతుంది, అదే సమయంలో WooCommerce చెక్అవుట్ పేజీలలో వాస్తవానికి "
+"ఉపయోగించే అదే లక్షణాలను అందిస్తుంది."
+
+#: inc/admin/admin-settings-tools.php:122
+msgid "Fix automatic zoom-in on form fields"
+msgstr "ఫారమ్ ఫీల్డ్‌లలో ఆటోమేటిక్ జూమ్-ఇన్‌ను పరిష్కరించండి"
+
+#: inc/admin/admin-settings-tools.php:123
+msgid "Set <code>font-size</code> inside form fields to 16px"
+msgstr "ఫారమ్ ఫీల్డ్‌ల లోపల <code>font-size</code> 16pxకి సెట్ చేయండి."
+
+#: inc/admin/admin-settings-tools.php:124
+msgid ""
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
+msgstr ""
+"ఫారమ్ ఫీల్డ్‌ల లోపల ఫాంట్ పరిమాణం 16px కంటే తక్కువగా ఉన్నప్పుడు, "
+"టెక్స్ట్‌ను సులభంగా చదవడానికి Safari మరియు ఇతర బ్రౌజర్‌లు మొబైల్ పరికరాల్లో "
+"స్వయంచాలకంగా జూమ్ చేయవచ్చు. ఈ ఎంపికను ప్రారంభించినప్పుడు, జూమ్ ఇన్ "
+"అవ్వకుండా ఉండటానికి ఫ్లూయిడ్ చెక్అవుట్ ద్వారా ఆప్టిమైజ్ చేయబడిన పేజీలలో "
+"ఫారమ్ ఫీల్డ్‌ల లోపల ఫాంట్ పరిమాణాన్ని 16pxకి సెట్ చేస్తుంది."
+
+#: inc/admin/admin-settings-wc-shipping.php:50
+msgid ""
+"The shipping destination is always set to \"Default to customer shipping "
+"address\" when Fluid Checkout is activated. Customers can still provide "
+"different shipping and billing addresses during checkout, an option for "
+"setting the default billing address to be the same as the shipping address "
+"is available at WooCommerce > Settings > Fluid Checkout."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ యాక్టివేట్ చేయబడినప్పుడు షిప్పింగ్ గమ్యస్థానం ఎల్లప్పుడూ "
+"&quot;డిఫాల్ట్ టు కస్టమర్ షిప్పింగ్ అడ్రస్&quot; గా సెట్ చేయబడుతుంది. "
+"చెక్అవుట్ సమయంలో కస్టమర్లు ఇప్పటికీ వేర్వేరు షిప్పింగ్ మరియు బిల్లింగ్ "
+"అడ్రస్‌లను అందించగలరు, డిఫాల్ట్ బిల్లింగ్ అడ్రస్‌ను షిప్పింగ్ అడ్రస్ లాగానే "
+"సెట్ చేయడానికి WooCommerce &gt; సెట్టింగ్‌లు &gt; ఫ్లూయిడ్ చెక్అవుట్‌లో "
+"అందుబాటులో ఉంది."
+
+#: inc/admin/admin-tab-fluid-checkout.php:25
+msgid "Fluid Checkout"
+msgstr "ఫ్లూయిడ్ చెక్అవుట్"
+
+#: inc/admin/admin.php:133
+msgid "Settings"
+msgstr "సెట్టింగులు"
+
+#: inc/admin/admin.php:134
+msgid "Support"
+msgstr "మద్దతు"
+
+#: inc/admin/admin.php:159
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgstr ""
+"మరిన్ని ఎంపికలను అన్‌లాక్ చేయడానికి <a target=\"_blank\" href=\"%s\">PRO కి "
+"అప్‌గ్రేడ్ చేయండి</a> ."
+
+#: inc/admin/admin.php:179
+msgid "(PRO)"
+msgstr "(ప్రో)"
+
+#: inc/admin/admin.php:199
+msgid "(experimental)"
+msgstr "(ప్రయోగాత్మక)"
+
+#: inc/admin/admin.php:208
+msgid ""
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
+msgstr ""
+"ఇది ఒక ప్రయోగాత్మక ఫీచర్ మరియు అన్ని థీమ్‌లు మరియు ప్లగిన్‌లతో ఆశించిన "
+"విధంగా పని చేయకపోవచ్చు. దీన్ని జాగ్రత్తగా ఉపయోగించండి."
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
+msgid "Confirm"
+msgstr "నిర్ధారించండి"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:274
+msgid "Verify Phone Number"
+msgstr "ఫోన్ నంబర్‌ను ధృవీకరించండి"
+
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
+msgid "Please verify your phone number."
+msgstr "దయచేసి మీ ఫోన్ నంబర్‌ను ధృవీకరించండి."
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:75
+msgid "The Bluehost Plugin"
+msgstr "బ్లూహోస్ట్ ప్లగిన్"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:81
+msgid "Custom fields"
+msgstr "కస్టమ్ ఫీల్డ్‌లు"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:82
+msgid "Enable custom shipping email field"
+msgstr "కస్టమ్ షిప్పింగ్ ఇమెయిల్ ఫీల్డ్‌ను ప్రారంభించండి"
+
+#: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
+msgid ""
+"When enabled, the shipping email field from the Bluehost plugin will be "
+"added to the checkout form."
+msgstr ""
+"ప్రారంభించినప్పుడు, బ్లూహోస్ట్ ప్లగిన్ నుండి షిప్పింగ్ ఇమెయిల్ ఫీల్డ్ "
+"చెక్అవుట్ ఫారమ్‌కు జోడించబడుతుంది."
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:89
+msgid "Captcha Pro by BestWebSoft"
+msgstr "BestWebSoft ద్వారా కాప్చా ప్రో"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:95
+msgid "Captcha position"
+msgstr "కాప్చా స్థానం"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:96
+msgid ""
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
+msgstr ""
+"కాప్చా విభాగాన్ని ప్రదర్శించాల్సిన స్థానాన్ని నిర్వచించండి. ఎంచుకున్న "
+"కాప్చా రకాన్ని బట్టి కొన్ని స్థానాలు పనిచేయకపోవచ్చు."
+
+#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+msgid "Selecting a pickup point is required before proceeding."
+msgstr "కొనసాగే ముందు పికప్ పాయింట్‌ను ఎంచుకోవడం అవసరం."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:234
+msgid "Pickup point"
+msgstr "పికప్ పాయింట్"
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307, inc/compat/plugins/compat-plugin-seur.php:386, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
+msgid "Pickup point not selected yet."
+msgstr "పికప్ పాయింట్ ఇంకా ఎంచుకోబడలేదు."
+
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312, inc/compat/plugins/compat-plugin-seur.php:391, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
+msgid "Pickup point:"
+msgstr "పికప్ పాయింట్:"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:80
+msgid "Mailchimp for WooCommerce"
+msgstr "WooCommerce కోసం Mailchimp"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
+msgid "Subscribe checkbox"
+msgstr "సబ్‌స్క్రైబ్ చెక్‌బాక్స్"
+
+#: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:87
+msgid ""
+"Override the position for the subscribe checkbox on the checkout page and "
+"always display it on the contact step"
+msgstr ""
+"చెక్అవుట్ పేజీలో సబ్‌స్క్రైబ్ చెక్‌బాక్స్ కోసం స్థానాన్ని ఓవర్‌రైడ్ చేయండి "
+"మరియు దానిని ఎల్లప్పుడూ కాంటాక్ట్ దశలో ప్రదర్శించండి."
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
+msgid "Before Shipping Address"
+msgstr "షిప్పింగ్ ముందు చిరునామా"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87, inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "(originally \"%s\")"
+msgstr "(వాస్తవానికి &quot;%s&quot;)"
+
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+msgid "After Shipping Address"
+msgstr "షిప్పింగ్ తర్వాత చిరునామా"
+
+#: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
+msgid "Selecting a collection point is required when shipping with FermoPoint."
+msgstr "ఫెర్మోపాయింట్‌తో షిప్పింగ్ చేసేటప్పుడు కలెక్షన్ పాయింట్‌ను ఎంచుకోవడం అవసరం."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:189
+msgid ""
+"If checked informs typos in email to users. (This feature has been disabled "
+"because Fluid Checkout offers the feature. Changes to this option will not "
+"take effect)"
+msgstr ""
+"తనిఖీ చేయబడితే వినియోగదారులకు ఇమెయిల్‌లో టైపోగ్రాఫికల్ తప్పులు వస్తాయని "
+"తెలియజేస్తుంది. (ఫ్లూయిడ్ చెక్అవుట్ ఈ ఫీచర్‌ను అందిస్తున్నందున ఈ ఫీచర్ "
+"నిలిపివేయబడింది. ఈ ఆప్షన్‌కు మార్పులు అమలులోకి రావు)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
+msgid "Enable Mail Check: (disabled feature)"
+msgstr "మెయిల్ చెక్‌ను ప్రారంభించండి: (నిలిపివేయబడిన లక్షణం)"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
+msgid "Carrier:"
+msgstr "క్యారియర్:"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:167
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "సెండిన్ బ్లూ - WooCommerce ఇమెయిల్ మార్కెటింగ్"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
+msgid "Sign up checkbox position"
+msgstr "సైన్ అప్ చెక్‌బాక్స్ స్థానం"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:174
+msgid "Move the sign up checkbox to the contact step"
+msgstr "సైన్ అప్ చెక్‌బాక్స్‌ను కాంటాక్ట్ దశకు తరలించండి"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
+msgid ""
+"When enabled, the checkbox will be moved to the contact step independently "
+"of the display location defined in the Sendinblue plugin settings."
+msgstr ""
+"ప్రారంభించబడినప్పుడు, సెండిన్ బ్లూ ప్లగిన్ సెట్టింగ్‌లలో నిర్వచించిన "
+"డిస్ప్లే స్థానంతో సంబంధం లేకుండా చెక్‌బాక్స్ కాంటాక్ట్ దశకు తరలించబడుతుంది."
+
+#: inc/compat/themes/compat-theme-betheme.php:172
+msgid "Theme Betheme"
+msgstr "థీమ్ బెథెమ్"
+
+#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:202, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+msgid "Checkout progress"
+msgstr "చెక్అవుట్ పురోగతి"
+
+#: inc/compat/themes/compat-theme-betheme.php:179
+msgid ""
+"Output the checkout steps section from Betheme on the checkout, cart and "
+"order received pages."
+msgstr ""
+"చెక్అవుట్, కార్ట్ మరియు ఆర్డర్ అందుకున్న పేజీలలో బెథెమ్ నుండి చెక్అవుట్ దశల "
+"విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/compat/themes/compat-theme-fennik.php:216
+msgid "Theme Fennik"
+msgstr "థీమ్ ఫెన్నిక్"
+
+#: inc/compat/themes/compat-theme-fennik.php:222
+msgid "Breadcrumbs"
+msgstr "బ్రెడ్‌క్రంబ్స్"
+
+#: inc/compat/themes/compat-theme-fennik.php:223
+msgid ""
+"Output the breadcrumbs section from the Fennik theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ హెడర్ మరియు ఫుటర్ ఉపయోగిస్తున్నప్పుడు ఫెన్నిక్ థీమ్ "
+"నుండి బ్రెడ్‌క్రంబ్స్ విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/compat/themes/compat-theme-go.php:53
+msgid "Theme Go"
+msgstr "థీమ్ గో"
+
+#: inc/compat/themes/compat-theme-go.php:59
+msgid "My account layout"
+msgstr "నా ఖాతా లేఅవుట్"
+
+#: inc/compat/themes/compat-theme-go.php:60
+msgid "Enable wide layout on \"My account\" page."
+msgstr "&quot;నా ఖాతా&quot; పేజీలో విస్తృత లేఅవుట్‌ను ప్రారంభించండి."
+
+#: inc/compat/themes/compat-theme-Impreza.php:93
+msgid "Theme Impreza"
+msgstr "థీమ్ ఇంప్రెజా"
+
+#: inc/compat/themes/compat-theme-Impreza.php:99
+msgid "Header"
+msgstr "హెడర్"
+
+#: inc/compat/themes/compat-theme-Impreza.php:100
+msgid "Spacing for site header at the checkout page (in pixels)"
+msgstr "చెక్అవుట్ పేజీలో సైట్ హెడర్ కోసం అంతరం (పిక్సెల్‌లలో)"
+
+#: inc/compat/themes/compat-theme-Impreza.php:101
+msgid "Only applicable when using the Impreza theme header at the checkout page."
+msgstr ""
+"చెక్అవుట్ పేజీలో ఇంప్రెజా థీమ్ హెడర్‌ని ఉపయోగిస్తున్నప్పుడు మాత్రమే "
+"వర్తిస్తుంది."
+
+#: inc/compat/themes/compat-theme-kapee.php:123
+msgid "Theme Kapee"
+msgstr "థీమ్ కాపీ"
+
+#: inc/compat/themes/compat-theme-kapee.php:130
+msgid ""
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"చెక్అవుట్, కార్ట్ మరియు ఆర్డర్ అందుకున్న పేజీలలో కపీ థీమ్ నుండి చెక్అవుట్ "
+"దశల విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/compat/themes/compat-theme-porto.php:196
+msgid "Theme Porto"
+msgstr "థీమ్ పోర్టో"
+
+#: inc/compat/themes/compat-theme-porto.php:203
+msgid ""
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"చెక్అవుట్, కార్ట్ మరియు ఆర్డర్ అందుకున్న పేజీలలో పోర్టో థీమ్ నుండి "
+"చెక్అవుట్ దశల విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/compat/themes/compat-theme-pressmart.php:180
+msgid "Theme Pressmart"
+msgstr "థీమ్ ప్రెస్‌మార్ట్"
+
+#: inc/compat/themes/compat-theme-pressmart.php:187
+msgid ""
+"Output the checkout steps section from the Pressmart theme on the checkout, "
+"cart and order received pages."
+msgstr ""
+"చెక్అవుట్, కార్ట్ మరియు ఆర్డర్ అందుకున్న పేజీలలో ప్రెస్‌మార్ట్ థీమ్ నుండి "
+"చెక్అవుట్ దశల విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/compat/themes/compat-theme-thegem.php:158
+msgid "Theme The Gem"
+msgstr "థీమ్ ది జెమ్"
+
+#: inc/compat/themes/compat-theme-thegem.php:165
+msgid ""
+"Output the checkout steps section from The Gem theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ హెడర్ మరియు ఫుటర్ ఉపయోగిస్తున్నప్పుడు ది జెమ్ థీమ్ నుండి "
+"చెక్అవుట్ స్టెప్స్ విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/compat/themes/compat-theme-woodmart.php:152
+msgid "Theme Woodmart"
+msgstr "థీమ్ వుడ్‌మార్ట్"
+
+#: inc/compat/themes/compat-theme-woodmart.php:159
+msgid ""
+"Output the checkout steps section from the Woodmart theme when using Fluid "
+"Checkout header and footer."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ హెడర్ మరియు ఫుటర్ ఉపయోగిస్తున్నప్పుడు వుడ్‌మార్ట్ థీమ్ "
+"నుండి చెక్అవుట్ స్టెప్స్ విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/compat/themes/compat-theme-woodmart.php:167
+msgid "Checkout options"
+msgstr "చెక్అవుట్ ఎంపికలు"
+
+#: inc/compat/themes/compat-theme-woodmart.php:168
+msgid "Disable the theme checkout options"
+msgstr "థీమ్ చెక్అవుట్ ఎంపికలను నిలిపివేయండి"
+
+#: inc/compat/themes/compat-theme-woodmart.php:169
+msgid ""
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
+msgstr ""
+"థీమ్ జోడించిన ఎంపికలు ఉత్పత్తి చిత్రాన్ని ప్రదర్శించడం, పరిమాణం ఫీల్డ్, "
+"తీసివేయి బటన్ మరియు ఉత్పత్తి పేజీకి లింక్ డిఫాల్ట్‌గా నిలిపివేయబడతాయి."
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
+msgid "Theme Atomion"
+msgstr "థీమ్ ఆటమియన్"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:93
+msgid "Order progress"
+msgstr "ఆర్డర్ పురోగతి"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:94
+msgid "Display order progress from the theme"
+msgstr "థీమ్ నుండి ఆర్డర్ పురోగతిని ప్రదర్శించు"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103, inc/compat/themes/compat-theme-zk-nito.php:88
+msgid "Display the form field labels visible on the page"
+msgstr "పేజీలో కనిపించే ఫారమ్ ఫీల్డ్ లేబుళ్ళను ప్రదర్శించు"
+
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
+msgid "It is recommended to keep this option enabled for a better user experience."
+msgstr ""
+"మెరుగైన వినియోగదారు అనుభవం కోసం ఈ ఎంపికను ప్రారంభించి ఉంచాలని సిఫార్సు "
+"చేయబడింది."
+
+#: inc/compat/themes/compat-theme-zk-nito.php:81
+msgid "Theme ZK Nito"
+msgstr "థీమ్ ZK నిటో"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:96
+msgid "Add extra fields to the checkout form"
+msgstr "చెక్అవుట్ ఫారమ్‌కు అదనపు ఫీల్డ్‌లను జోడించండి"
+
+#: inc/compat/themes/compat-theme-zk-nito.php:97
+msgid ""
+"Adds an extra shipping email and shipping phone field to the shipping "
+"address section."
+msgstr ""
+"షిప్పింగ్ చిరునామా విభాగానికి అదనపు షిప్పింగ్ ఇమెయిల్ మరియు షిప్పింగ్ ఫోన్ "
+"ఫీల్డ్‌ను జోడిస్తుంది."
+
+#: templates/fc/checkout-page-template/checkout/checkout-header.php:27
+msgid "Go to the home page"
+msgstr "హోమ్ పేజీకి వెళ్ళండి"
+
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54, templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
+msgid "Skip to content"
+msgstr "కంటెంట్‌కు దాటవేయి"
+
+#: templates/fc/checkout-steps/checkout/form-account-creation.php:37
+msgid "Create an account"
+msgstr "ఒక ఖాతాను సృష్టించండి"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
+msgid "Log in to your account"
+msgstr "మీ ఖాతాకు లాగిన్ అవ్వండి"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+msgid "Already have an account?"
+msgstr "ఖాతా ఉందా?"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
+msgstr "%1$s గా లాగిన్ అయ్యారు. <a href=\"%2$s\">లాగ్ అవుట్ అవ్వండి</a>"
+
+#: templates/fc/checkout-steps/checkout/payment.php:48
+msgid "Your order has a total amount due of %s. No further payment is needed."
+msgstr "మీ ఆర్డర్ మొత్తం %s బకాయి ఉంది. తదుపరి చెల్లింపు అవసరం లేదు."
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Close and continue with checkout"
+msgstr "మూసివేసి చెక్అవుట్ కొనసాగించండి"
+
+#: templates/fc/checkout-steps/checkout/review-order-section.php:59
+msgid "Continue"
+msgstr "కొనసాగించు"
+
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5
+msgid "Parcel terminal"
+msgstr "పార్శిల్ టెర్మినల్"
+
+#: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
+msgid ""
+"<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid "
+"Checkout, the checkout page needs to use the original WooCommerce shortcode "
+"<code>[woocommerce_checkout]</code> to work properly.</p><p>For more "
+"information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+"<p>ఈ విడ్జెట్ ఫ్లూయిడ్ చెక్అవుట్ ద్వారా భర్తీ చేయబడింది.</p><p> ఫ్లూయిడ్ "
+"చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు, చెక్అవుట్ పేజీ సరిగ్గా పనిచేయడానికి అసలు "
+"WooCommerce షార్ట్ కోడ్ <code>[woocommerce_checkout]</code> ను "
+"ఉపయోగించాలి.</p><p> మరిన్ని వివరాలకు, ఫ్లూయిడ్ చెక్అవుట్ డాక్యుమెంటేషన్‌ను "
+"సందర్శించండి.</p>"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "థీమ్ The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "అదనపు హెడర్ విభాగాలు"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "థీమ్ సెట్టింగ్‌లలో ఎనేబుల్ చేయబడితే అదనపు హెడర్ విభాగాలను అవుట్‌పుట్ చేయండి."
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "వర్తించు"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "సంప్రదించండి"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "షిప్పింగ్"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "బిల్లింగ్"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "చెల్లింపు"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "మార్చు"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "మార్పులను సేవ్ చేయి"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "ఏదీ లేదు."
+
+#: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$లు"
+
+#: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$లు: %1$లు"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "ఏ చిత్రం ఎంచుకోబడలేదు."
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "కార్ట్"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "ఆర్డర్ పే"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "ధన్యవాదాలు"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "ఇంటిగ్రేషన్లు"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "లైసెన్స్ కీలు"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "ఆర్డర్ ఇచ్చే ముందు విభాగం"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "ఆర్డర్ చేసే ముందు బటన్"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "ముగింపు / ముగింపు"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "లాగిన్ చేయండి"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "లేదా క్రింద కొనసాగించండి"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "లేదా అతిథిగా కొనసాగండి"

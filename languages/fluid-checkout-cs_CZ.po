@@ -4,10 +4,10 @@ msgid ""
 msgstr ""
 "PO-Revision-Date: 2025-02-24 20:52+0000\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n >= 2 && n <= 4) ? 1 : 2);"
-"\n"
+"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : (n==0) ? "
+"2 : 3;\n"
 "X-Generator: Loco https://localise.biz/\n"
 "Language: cs_CZ\n"
 "Project-Id-Version: Plugins - Fluid Checkout for WooCommerce &#8211; Lite - "
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-22 12:39+0000\n"
 "Last-Translator: Diego Versiani\n"
-"X-Loco-Version: 2.7.1; wp-6.7.2"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
 
 #: inc/admin/admin-settings-checkout.php:407
 msgid "\"Add\" link button"
@@ -55,8 +55,8 @@ msgstr "hodnota 226 EUR (Ušetřete 42 %)"
 #: inc/admin/admin-setting-type-fc-license-key.php:165
 #, php-format
 msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and continue "
-"to receive updates and support."
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
 msgstr ""
 "<a href=\"%s\" target=\"_blank\">Zakupte si nový licenční klíč</a> a "
 "pokračujte v získávání aktualizací a podpory."
@@ -84,8 +84,7 @@ msgstr ""
 
 #: inc/admin/admin.php:159
 #, php-format
-msgid ""
-"<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 "<a target=\"_blank\" href=\"%s\">Přejděte na PRO</a> a odemkněte další "
 "možnosti."
@@ -117,9 +116,9 @@ msgid ""
 msgstr ""
 "<p>Tento widget byl nahrazen widgetem Fluid Checkout. </p><p>Při použití "
 "aplikace Fluid Checkout musí stránka s pokladnou pro správnou funkci "
-"používat původní zkrácený kód WooCommerce <code>[woocommerce_checkout]</code>"
-".</p><p>Další informace naleznete v dokumentaci k aplikaci Fluid Checkout."
-"</p>"
+"používat původní zkrácený kód WooCommerce "
+"<code>[woocommerce_checkout]</code>.</p><p>Další informace naleznete v "
+"dokumentaci k aplikaci Fluid Checkout.</p>"
 
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:94
 msgid ""
@@ -165,8 +164,8 @@ msgstr "Aktivovat %s"
 msgid "Activated"
 msgstr "Aktivovaný"
 
-#. %s: Form field label
 #: inc/checkout-coupon-codes.php:311 inc/checkout-hide-optional-fields.php:138
+#. %s: Form field label
 #, php-format
 msgid "Add %s"
 msgstr "Přidat %s"
@@ -220,8 +219,7 @@ msgstr "Adresář"
 msgid ""
 "Adds an extra shipping email and shipping phone field to the shipping "
 "address section."
-msgstr ""
-"Přidá do sekce dodací adresy další pole pro dodací e-mail a dodací telefon."
+msgstr "Přidá do sekce dodací adresy další pole pro dodací e-mail a dodací telefon."
 
 #: inc/admin/admin-settings-order-received.php:157
 msgid "After order sections"
@@ -363,16 +361,17 @@ msgid ""
 "Associate the guest customer's orders with their existing account when an "
 "account already exists with the customer's contact details."
 msgstr ""
-"Přiřadit objednávky hostujícího zákazníka k jeho stávajícímu účtu, pokud již "
-"existuje účet s kontaktními údaji zákazníka."
+"Přiřadit objednávky hostujícího zákazníka k jeho stávajícímu účtu, pokud "
+"již existuje účet s kontaktními údaji zákazníka."
 
 #: inc/admin/admin-setting-type-fc-addons.php:172
 msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the <strong>correct "
-"address information</strong> from the first time they buy with you."
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
 msgstr ""
-"Vyhněte se zpoždění dodávky a nespokojeným zákazníkům. Shromažďujte <strong>"
-"správné adresní údaje</strong> od prvního nákupu u vás."
+"Vyhněte se zpoždění dodávky a nespokojeným zákazníkům. Shromažďujte "
+"<strong>správné adresní údaje</strong> od prvního nákupu u vás."
 
 #: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
 msgid "Before Shipping Address"
@@ -435,28 +434,6 @@ msgstr "Fakturační telefon"
 msgid "Billing to"
 msgstr "Fakturace na"
 
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block description"
-msgid ""
-"Display a checkout form so your customers can submit orders. (Replaced for "
-"compatibility with Fluid Checkout)"
-msgstr ""
-"Zobrazte pokladní formulář, aby vaši zákazníci mohli odesílat objednávky. "
-"(Nahrazeno kvůli kompatibilitě s Fluid Checkout)"
-
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block keyword"
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-#: blocks/woocommerce/checkout/block.json:1
-#: build/woocommerce/checkout/block.json:1
-msgctxt "block title"
-msgid "Checkout"
-msgstr "Pokladna"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Jak pod sekcí platby, tak pod shrnutím objednávky"
@@ -469,24 +446,9 @@ msgstr "Krabice"
 msgid "Breadcrumbs"
 msgstr "Drobky"
 
-#: inc/checkout-coupon-codes.php:275
-msgctxt "Button label for applying coupon codes"
-msgid "Apply"
-msgstr "Použít"
-
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:95
 msgid "Captcha position"
 msgstr "Pozice Captcha"
-
-#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
-msgctxt "Captcha position"
-msgid "Before place order button"
-msgstr "Před tlačítkem objednat"
-
-#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
-msgctxt "Captcha position"
-msgid "Before place order section"
-msgstr "Před umístěním objednávky"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:89
 msgid "Captcha Pro by BestWebSoft"
@@ -522,8 +484,7 @@ msgstr "Celkový počet košíků:"
 
 #: inc/checkout-validation.php:197
 msgid "Change email address to: {suggestion-value}"
-msgstr ""
-"Změnit e-mailovou adresu na: změňte e-mailovou adresu: {hodnota návrhu}"
+msgstr "Změnit e-mailovou adresu na: změňte e-mailovou adresu: {hodnota návrhu}"
 
 #: inc/admin/admin-settings-checkout.php:565
 msgid ""
@@ -539,8 +500,7 @@ msgid "Change: %s"
 msgstr "Změna: %s"
 
 #: inc/admin/admin-settings-order-received.php:78
-msgid ""
-"Changes the layout of order details on the thank you page and account pages."
+msgid "Changes the layout of order details on the thank you page and account pages."
 msgstr ""
 "Změní rozložení údajů o objednávce na stránce s poděkováním a na stránkách "
 "účtu."
@@ -623,43 +583,13 @@ msgstr "Průběh kontroly"
 msgid "Checkout Sidebar"
 msgstr "Pokladna Postranní panel"
 
-#: inc/checkout-steps.php:2235
-msgctxt "Checkout step title"
-msgid "Billing"
-msgstr "Fakturace"
-
-#: inc/checkout-steps.php:2214
-msgctxt "Checkout step title"
-msgid "Contact"
-msgstr "Kontakt"
-
-#: inc/checkout-steps.php:2244
-msgctxt "Checkout step title"
-msgid "Payment"
-msgstr "Platba"
-
-#: inc/checkout-steps.php:2223
-msgctxt "Checkout step title"
-msgid "Shipping"
-msgstr "Přeprava"
-
-#: inc/checkout-steps.php:2825
-msgctxt "Checkout substep change link label"
-msgid "Change"
-msgstr "Změna"
-
-#: inc/checkout-steps.php:2826
-msgctxt "Checkout substep save link label"
-msgid "Save changes"
-msgstr "Uložení změn"
-
 #: inc/admin/admin-settings-checkout.php:171
 msgid ""
 "Choose a background color for the checkout page footer. Only applies when "
 "using the distraction free header and footer."
 msgstr ""
-"Zvolte barvu pozadí zápatí pokladní stránky. Platí pouze při použití záhlaví "
-"a zápatí bez rozptylování."
+"Zvolte barvu pozadí zápatí pokladní stránky. Platí pouze při použití "
+"záhlaví a zápatí bez rozptylování."
 
 #: inc/admin/admin-settings-checkout.php:149
 msgid ""
@@ -671,11 +601,11 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:160
 msgid ""
-"Choose a background color for the checkout page. Color is applied to the <em>"
-"body</em> element."
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
 msgstr ""
-"Zvolte barvu pozadí pro stránku pokladny. Barva se použije na prvek <em>"
-"body</em>."
+"Zvolte barvu pozadí pro stránku pokladny. Barva se použije na prvek "
+"<em>body</em>."
 
 #: inc/admin/admin-settings-checkout.php:257
 msgid "Choose a background color for the order summary section."
@@ -714,7 +644,8 @@ msgstr "Zvolte, ve kterém kroku se má zobrazit pole přepravního telefonu."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
-"Choose which address to save as the shipping address for local pickup orders."
+"Choose which address to save as the shipping address for local pickup "
+"orders."
 msgstr ""
 "Zvolte, která adresa se má uložit jako adresa pro doručení objednávek "
 "místního vyzvednutí."
@@ -730,11 +661,6 @@ msgstr "Kliknutím přejdete na shrnutí objednávky"
 #: templates/fc/checkout-steps/checkout/review-order-section.php:59
 msgid "Close and continue with checkout"
 msgstr "Zavřít a pokračovat v pokladně"
-
-#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
-msgctxt "Close button aria-label"
-msgid "Close"
-msgstr "Zavřít"
 
 #: inc/admin/admin-setting-type-fc-addons.php:216
 msgid ""
@@ -811,19 +737,18 @@ msgid "Default button style"
 msgstr "Výchozí styl tlačítek"
 
 #: inc/admin/admin-settings-checkout.php:314
-msgid ""
-"Define the position to display \"Place order\" and terms checkbox section."
+msgid "Define the position to display \"Place order\" and terms checkbox section."
 msgstr ""
 "Definujte pozici pro zobrazení sekce \"Umístit objednávku\" a zaškrtávacího "
 "políčka s podmínkami."
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:96
 msgid ""
-"Define the position to display the captcha section. Some positions might not "
-"work depending on the captcha type chosen."
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
 msgstr ""
-"Definujte pozici pro zobrazení části captcha. Některé pozice nemusí fungovat "
-"v závislosti na zvoleném typu captcha."
+"Definujte pozici pro zobrazení části captcha. Některé pozice nemusí "
+"fungovat v závislosti na zvoleném typu captcha."
 
 #: inc/admin/admin-settings-checkout.php:693
 msgid "Define the visibility of the additional order notes field."
@@ -836,14 +761,14 @@ msgstr "Šablona návrhu"
 #: inc/admin/admin-setting-type-fc-addons.php:51
 #: inc/admin/admin-setting-type-fc-addons.php:147
 msgid ""
-"Design templates, optimized cart and order received pages, account matching, "
-"and much more."
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
 msgstr ""
 "Designové šablony, optimalizovaný košík a stránky přijatých objednávek, "
 "párování účtů a mnoho dalšího."
 
-#. %s: html for the email address typo correction suggestion link
 #: inc/checkout-validation.php:197
+#. %s: html for the email address typo correction suggestion link
 #, php-format
 msgid "Did you mean %s?"
 msgstr "Myslel jste %s?"
@@ -862,17 +787,16 @@ msgstr "Zobrazení jako sekce košíku"
 
 #: inc/admin/admin-settings-checkout.php:339
 msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step on "
-"mobile devices when using multi-step checkout layout"
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
 msgstr ""
-"Zobrazení widgetů postranního panelu pokladny pouze při zobrazení posledního "
-"kroku pokladny na mobilních zařízeních při použití vícekrokového rozvržení "
-"pokladny"
+"Zobrazení widgetů postranního panelu pokladny pouze při zobrazení "
+"posledního kroku pokladny na mobilních zařízeních při použití vícekrokového "
+"rozvržení pokladny"
 
 #: inc/admin/admin-settings-checkout.php:227
 msgid "Display express checkout buttons in one line for larger screens"
-msgstr ""
-"Zobrazení expresních pokladních tlačítek v jednom řádku pro větší obrazovky"
+msgstr "Zobrazení expresních pokladních tlačítek v jednom řádku pro větší obrazovky"
 
 #: inc/admin/admin-settings-checkout.php:706
 msgid "Display gift message and other gift options at the checkout page"
@@ -941,8 +865,8 @@ msgstr "Zobrazení stavového řádku objednávky"
 
 #: inc/checkout-widget-areas.php:110
 msgid ""
-"Display widgets below the checkout header for mobile devices. Only displayed "
-"if using the plugin's checkout header."
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
 msgstr ""
 "Zobrazení widgetů pod záhlavím pokladny pro mobilní zařízení. Zobrazuje se "
 "pouze v případě použití záhlaví pokladny zásuvného modulu."
@@ -957,8 +881,8 @@ msgstr "Zobrazení widgetů uvnitř shrnutí objednávky na stránce pokladny."
 
 #: inc/checkout-widget-areas.php:160
 msgid ""
-"Display widgets on the checkout footer. Only displayed if using the plugin's "
-"checkout footer."
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
 msgstr ""
 "Zobrazení widgetů v zápatí pokladny. Zobrazí se pouze v případě použití "
 "zásuvného modulu zápatí pokladny."
@@ -968,21 +892,20 @@ msgid ""
 "Display widgets on the checkout header for large screens. Only displayed if "
 "using the plugin's checkout header."
 msgstr ""
-"Zobrazení widgetů v záhlaví pokladny pro velké obrazovky. Zobrazuje se pouze "
-"v případě použití záhlaví pokladny zásuvného modulu."
+"Zobrazení widgetů v záhlaví pokladny pro velké obrazovky. Zobrazuje se "
+"pouze v případě použití záhlaví pokladny zásuvného modulu."
 
 #: inc/checkout-widget-areas.php:124
 msgid "Display widgets on the checkout sidebar after the order summary."
-msgstr ""
-"Zobrazení widgetů na postranním panelu pokladny za shrnutím objednávky."
+msgstr "Zobrazení widgetů na postranním panelu pokladny za shrnutím objednávky."
 
 #: inc/admin/admin-settings-checkout.php:217
 msgid ""
 "Displays the express checkout section at checkout when supported payment "
 "gateways have this feature enabled."
 msgstr ""
-"Zobrazí sekci expresní pokladny při placení, pokud je tato funkce povolena u "
-"podporovaných platebních bran."
+"Zobrazí sekci expresní pokladny při placení, pokud je tato funkce povolena "
+"u podporovaných platebních bran."
 
 #: inc/admin/admin-settings-cart.php:108
 #: inc/admin/admin-settings-checkout.php:130
@@ -995,13 +918,13 @@ msgstr "Neměňte zástupné symboly"
 
 #: inc/admin/admin-settings-checkout.php:302
 msgid ""
-"Do not display the cart items errors message at the top of the checkout page."
-" When submitting the checkout form to complete the purchase, these error "
-"messages will always be displayed."
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
 msgstr ""
 "Nezobrazujte v horní části pokladní stránky zprávu o chybách v položkách "
-"košíku. Při odeslání pokladního formuláře k dokončení nákupu se tato chybová "
-"hlášení zobrazí vždy."
+"košíku. Při odeslání pokladního formuláře k dokončení nákupu se tato "
+"chybová hlášení zobrazí vždy."
 
 #: inc/admin/admin-settings-checkout.php:440
 msgid "Do not hide \"Address line 2\" fields behind a link button"
@@ -1049,10 +972,8 @@ msgid "Enable integrated coupon code section"
 msgstr "Povolení sekce s integrovaným kuponovým kódem"
 
 #: inc/admin/admin-settings-checkout.php:634
-msgid ""
-"Enable international phone number format and validation for phone fields"
-msgstr ""
-"Povolení mezinárodního formátu telefonního čísla a ověřování polí telefonu"
+msgid "Enable international phone number format and validation for phone fields"
+msgstr "Povolení mezinárodního formátu telefonního čísla a ověřování polí telefonu"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
@@ -1076,8 +997,7 @@ msgstr "Povolení ověřování telefonních čísel na základě pravidel země
 
 #: inc/admin/admin-settings-order-received.php:77
 msgid "Enable thank you page and order details optimizations"
-msgstr ""
-"Povolení optimalizace stránky s poděkováním a podrobnostmi o objednávce"
+msgstr "Povolení optimalizace stránky s poděkováním a podrobnostmi o objednávce"
 
 #: inc/admin/admin-settings-checkout.php:754
 msgid "Enable the account matching feature"
@@ -1113,8 +1033,8 @@ msgstr "Chyba:"
 msgid "EU-VAT Assistant"
 msgstr "Asistent pro DPH v EU"
 
-#. %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:158
+#. %s: License key expiration date.
 #, php-format
 msgid "Expired on %s."
 msgstr "Platnost vypršela dne %s."
@@ -1139,8 +1059,8 @@ msgstr ""
 msgid "Fix automatic zoom-in on form fields"
 msgstr "Oprava automatického zvětšení polí formuláře"
 
-#. Author of the plugin
 #: inc/admin/admin-tab-fluid-checkout.php:25
+#. Author of the plugin
 msgid "Fluid Checkout"
 msgstr "Fluid Checkout"
 
@@ -1155,10 +1075,6 @@ msgstr "Aktualizace databáze služby Fluid Checkout"
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
 msgstr "Databáze služby Fluid Checkout byla úspěšně aktualizována"
-
-#. Name of the plugin
-msgid "Fluid Checkout for WooCommerce - Lite"
-msgstr "Fluid Checkout for WooCommerce - Lite"
 
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
 msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
@@ -1204,8 +1120,8 @@ msgid ""
 "Order pages."
 msgstr ""
 "Obecné styly pro kroky pokladny, shrnutí objednávky a další sekce. Mohou se "
-"také vztahovat na další stránky, jako jsou stránky Košík, Přijatá objednávka "
-"a Zobrazit objednávku."
+"také vztahovat na další stránky, jako jsou stránky Košík, Přijatá "
+"objednávka a Zobrazit objednávku."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
@@ -1265,8 +1181,7 @@ msgstr "Automatické dokončování adres Google"
 
 #: inc/admin/admin-setting-type-fc-setup.php:42
 msgid "Great! Your checkout page is now running on Fluid Checkout."
-msgstr ""
-"Skvělé! Vaše pokladní stránka je nyní spuštěna v systému Fluid Checkout."
+msgstr "Skvělé! Vaše pokladní stránka je nyní spuštěna v systému Fluid Checkout."
 
 #: inc/compat/themes/compat-theme-Impreza.php:99
 msgid "Header"
@@ -1333,11 +1248,6 @@ msgstr "Zvýrazněte oddíl s dodací adresou ve formuláři pokladny"
 msgid "HTML color value. ie: #f3f3f3"
 msgstr "Hodnota barvy HTML. tj: #f3f3f3"
 
-#. URI of the plugin
-#. Author URI of the plugin
-msgid "https://fluidcheckout.com/"
-msgstr "https://fluidcheckout.com/"
-
 #: inc/admin/admin-setting-type-fc-addons.php:137
 #| msgid "I already have it &mdash; Hide this offer"
 msgid "I already have it – Hide this offer"
@@ -1362,9 +1272,9 @@ msgid ""
 "If field is set as \"optional\", which is the default visibility state, no "
 "changes will be applied to let other plugins apply any changes they need."
 msgstr ""
-"Pokud je pole nastaveno jako \"volitelné\", což je výchozí stav viditelnosti,"
-" nebudou použity žádné změny, aby ostatní zásuvné moduly mohly použít "
-"všechny potřebné změny."
+"Pokud je pole nastaveno jako \"volitelné\", což je výchozí stav "
+"viditelnosti, nebudou použity žádné změny, aby ostatní zásuvné moduly mohly "
+"použít všechny potřebné změny."
 
 #: inc/admin/admin-setting-type-fc-setup.php:52
 #, php-format
@@ -1382,11 +1292,6 @@ msgid ""
 msgstr ""
 "Ignorování dalších povinných polí při platbě pomocí kompatibilní platební "
 "brány pro expresní platby"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:85
-msgctxt "Image uploader."
-msgid "No image selected."
-msgstr "Není vybrán žádný obrázek."
 
 #: inc/admin/admin-settings-cart.php:148
 msgid "Inside the cart items section"
@@ -1431,18 +1336,19 @@ msgstr "Mezinárodní telefonní čísla"
 #: inc/admin/admin-settings-checkout.php:431
 msgid ""
 "It is recommended to keep this option checked to reduce the number of open "
-"input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
-"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
-"link\" target=\"_blank\">read the research</a>."
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
 msgstr ""
 "Doporučujeme ponechat tuto možnost zaškrtnutou, aby se snížil počet "
-"otevřených vstupních polí, <a href=\"https://baymard.com/blog/checkout-flow-"
-"average-form-fields#1-address-line-2--company-name-can-safely-be-collapsed-"
-"behind-a-link\" target=\"_blank\">přečtěte si výzkum</a>."
+"otevřených vstupních polí, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">přečtěte si výzkum</a>."
 
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
-msgid ""
-"It is recommended to keep this option enabled for a better user experience."
+msgid "It is recommended to keep this option enabled for a better user experience."
 msgstr ""
 "Doporučujeme tuto možnost ponechat povolenou, aby se uživatelům lépe "
 "pracovalo."
@@ -1488,28 +1394,12 @@ msgstr "Místní vyzvednutí"
 msgid "Local pickup and in-store collection"
 msgstr "Místní vyzvednutí a vyzvednutí v prodejně"
 
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
-#: templates/fc/checkout-steps/global/form-login.php:66
-msgctxt "Log in link label at checkout contact step"
-msgid "Log in"
-msgstr "Přihlášení"
-
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
-msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue as a guest"
-msgstr "Nebo pokračujte jako host"
-
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
-msgctxt "Log in separator label at for when guest checkout is disabled"
-msgid "Or continue below"
-msgstr "Nebo pokračujte níže"
-
 #: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:30
 msgid "Log in to your account"
 msgstr "Přihlaste se ke svému účtu"
 
-#. 1: user display name 2: logout url
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:32
+#. 1: user display name 2: logout url
 #, php-format
 msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
 msgstr "Přihlášen jako %1$s. <a href=\"%2$s\">Odhlásit se</a>"
@@ -1528,13 +1418,14 @@ msgstr "Zajistěte, aby byl ukazatel průběhu pokladny viditelný i při rolov�
 
 #: inc/admin/admin-settings-checkout.php:452
 msgid ""
-"Make the labels of optional field \"Add\" link button as <code>"
-"lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone Number\"). "
-"This option also affects the link buttons for coupon code fields."
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
 msgstr ""
-"Udělejte popisky tlačítka odkazu volitelného pole \"Přidat\" jako <code>malé "
-"písmeno</code> (tj. \"Přidat telefonní číslo\" místo \"Přidat telefonní "
-"číslo\"). Tato volba ovlivňuje také tlačítka odkazů pro pole s kódem kupónu."
+"Udělejte popisky tlačítka odkazu volitelného pole \"Přidat\" jako "
+"<code>malé písmeno</code> (tj. \"Přidat telefonní číslo\" místo \"Přidat "
+"telefonní číslo\"). Tato volba ovlivňuje také tlačítka odkazů pro pole s "
+"kódem kupónu."
 
 #: inc/admin/admin-settings-cart.php:132
 msgid "Make the order summary stay visible on the cart page while scrolling"
@@ -1590,8 +1481,8 @@ msgstr "Můj kontakt"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
-"No integrations available at the moment on this section. The options related "
-"to each plugin will only appear here if that plugin is activated."
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
 msgstr ""
 "V této sekci nejsou v současné době k dispozici žádné integrace. Možnosti "
 "související s jednotlivými zásuvnými moduly se zde zobrazí pouze v případě, "
@@ -1599,20 +1490,13 @@ msgstr ""
 
 #: inc/admin/admin-settings-license-keys.php:85
 msgid ""
-"No license keys options available at the moment on this section. The options "
-"related to each plugin or add-on will appear here when that plugin is "
-"activated."
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
 msgstr ""
 "V této sekci nejsou v současné době k dispozici žádné možnosti licenčních "
 "klíčů. Možnosti související s jednotlivými zásuvnými moduly nebo doplňky se "
 "zde zobrazí po aktivaci daného zásuvného modulu."
-
-#. %s shipping destination.
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431
-#: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
-msgctxt "No shipping method chosen label for the order summary"
-msgid "--"
-msgstr "--"
 
 #: inc/checkout-steps.php:3918
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
@@ -1648,8 +1532,7 @@ msgstr ""
 "stránce pokladny nebo košíku."
 
 #: inc/compat/themes/compat-theme-Impreza.php:101
-msgid ""
-"Only applicable when using the Impreza theme header at the checkout page."
+msgid "Only applicable when using the Impreza theme header at the checkout page."
 msgstr "Platí pouze při použití záhlaví motivu Impreza na stránce pokladny."
 
 #: inc/admin/admin-settings-checkout.php:656
@@ -1759,19 +1642,19 @@ msgstr ""
 
 #: inc/compat/themes/compat-theme-kapee.php:130
 msgid ""
-"Output the checkout steps section from the Kapee theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
 msgstr ""
-"Výstupní sekce kroků pokladny z tématu Kapee na stránkách pokladny, košíku a "
-"přijaté objednávky."
+"Výstupní sekce kroků pokladny z tématu Kapee na stránkách pokladny, košíku "
+"a přijaté objednávky."
 
 #: inc/compat/themes/compat-theme-porto.php:203
 msgid ""
-"Output the checkout steps section from the Porto theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
 msgstr ""
-"Výstupní sekce kroků pokladny z tématu Porto na stránkách pokladny, košíku a "
-"přijaté objednávky."
+"Výstupní sekce kroků pokladny z tématu Porto na stránkách pokladny, košíku "
+"a přijaté objednávky."
 
 #: inc/compat/themes/compat-theme-pressmart.php:187
 msgid ""
@@ -1841,8 +1724,8 @@ msgstr "Ověřte prosím své telefonní číslo."
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Zabránit automatickému výběru prvního způsobu přepravy"
 
-#. Next checkout step title
 #: inc/checkout-steps.php:1688
+#. Next checkout step title
 #, php-format
 msgid "Proceed to %s"
 msgstr "Přejděte na %s"
@@ -1866,18 +1749,6 @@ msgstr "Přejděte k přepravě"
 #: inc/admin/admin-settings-checkout.php:195
 msgid "Progress bar"
 msgstr "Lišta průběhu"
-
-#. Description of the plugin
-msgid ""
-"Provides a distraction free checkout experience for any WooCommerce store. "
-"Ask for shipping information before billing in a truly linear multi-step or "
-"one-step checkout and display a coupon code field at the checkout page that "
-"does not distract your customers."
-msgstr ""
-"Poskytuje pohodlí při placení v jakémkoli obchodě WooCommerce bez "
-"rozptylování. Požádejte o informace o dopravě před vyúčtováním ve skutečně "
-"lineárním vícekrokovém nebo jednokrokovém pokladním systému a zobrazte na "
-"pokladní stránce pole s kódem kupónu, které nerozptyluje pozornost zákazníků."
 
 #: inc/admin/admin-notice-review-request.php:50
 msgid "Rate the plugin"
@@ -1913,7 +1784,8 @@ msgid ""
 msgstr ""
 "Doporučuje se pouze v případech, kdy většina zákazníků skutečně potřebuje "
 "pole \"Řádek adresy 2\", nebo pokud je správné zadání dodací adresy zásadní "
-"(např. při doručování potravin a jiných produktů podléhajících rychlé zkáze)."
+"(např. při doručování potravin a jiných produktů podléhajících rychlé "
+"zkáze)."
 
 #: inc/checkout-coupon-codes.php:382
 msgid "Remove"
@@ -1928,11 +1800,10 @@ msgstr ""
 "vyzvednutím."
 
 #: inc/admin/admin-settings-tools.php:113
-msgid ""
-"Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
-"Nahrazení rozbalovacích komponent <code>select2</code> komponentou <code>"
-"TomSelect</code>"
+"Nahrazení rozbalovacích komponent <code>select2</code> komponentou "
+"<code>TomSelect</code>"
 
 #: inc/admin/admin-settings-checkout.php:766
 msgid ""
@@ -1982,8 +1853,8 @@ msgstr "Výběr obrázku"
 
 #: inc/admin/admin-settings-checkout.php:461
 msgid ""
-"Select position where to display the billing address section on the checkout "
-"page."
+"Select position where to display the billing address section on the "
+"checkout page."
 msgstr ""
 "Vyberte pozici, kde se má na stránce pokladny zobrazit část s fakturační "
 "adresou."
@@ -1995,21 +1866,20 @@ msgid ""
 "checkout page are enabled."
 msgstr ""
 "Vyberte pozici, kde se má zobrazit sekce s kódy kupónů na stránce košíku. "
-"Platí pouze v případě, že je povolen košík AJAX a integrované kódy kupónů na "
-"stránce pokladny."
+"Platí pouze v případě, že je povolen košík AJAX a integrované kódy kupónů "
+"na stránce pokladny."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
 "Select position where to display the coupon codes section on the checkout "
 "page."
-msgstr ""
-"Vyberte pozici, kde se má zobrazit sekce s kódy kupónů na stránce pokladny."
+msgstr "Vyberte pozici, kde se má zobrazit sekce s kódy kupónů na stránce pokladny."
 
 #: inc/admin/admin-settings-cart.php:180
-msgid ""
-"Select position where to display the cross-sells section on the cart page."
+msgid "Select position where to display the cross-sells section on the cart page."
 msgstr ""
-"Vyberte pozici, kde se má na stránce košíku zobrazit sekce křížových prodejů."
+"Vyberte pozici, kde se má na stránce košíku zobrazit sekce křížových "
+"prodejů."
 
 #: inc/admin/admin-settings-cart.php:165
 msgid ""
@@ -2021,12 +1891,12 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:402
 msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the coupon "
-"code section is displayed \"Before the checkout steps\" on the checkout page,"
-" or \"Before the cart items section\" on the cart page."
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
 msgstr ""
-"Vyberte styl tlačítka \"použít kupón\". Platí pouze v případě, že se sekce s "
-"kódem kupónu zobrazuje \"Před kroky pokladny\" na stránce pokladny nebo "
+"Vyberte styl tlačítka \"použít kupón\". Platí pouze v případě, že se sekce "
+"s kódem kupónu zobrazuje \"Před kroky pokladny\" na stránce pokladny nebo "
 "\"Před sekcí položek košíku\" na stránce košíku."
 
 #: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:96
@@ -2054,31 +1924,6 @@ msgstr "Nastavení <code>font-size</code> uvnitř formulářových polí na 16px
 #: inc/admin/admin.php:133
 msgid "Settings"
 msgstr "Nastavení"
-
-#: inc/admin/admin-settings-cart.php:49
-msgctxt "Settings section"
-msgid "Cart"
-msgstr "Košík"
-
-#: inc/admin/admin-settings-order-pay.php:49
-msgctxt "Settings section"
-msgid "Order pay"
-msgstr "Objednat platbu"
-
-#: inc/admin/admin-settings-order-received.php:47
-msgctxt "Settings section"
-msgid "Thank you"
-msgstr "Děkuji"
-
-#: inc/admin/admin-settings-integrations.php:83
-msgctxt "Settings section title"
-msgid "Integrations"
-msgstr "Integrace"
-
-#: inc/admin/admin-settings-license-keys.php:73
-msgctxt "Settings section title"
-msgid "License keys"
-msgstr "Licenční klíče"
 
 #: inc/admin/admin-setting-type-fc-setup.php:41
 msgid "Setup & Documentation"
@@ -2140,8 +1985,7 @@ msgstr "Zobrazit, pokud není definováno"
 
 #: inc/admin/admin-settings-checkout.php:538
 msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Zobrazit možnost vymazat způsoby přepravy v dílčím kroku místa vyzvednutí"
+msgstr "Zobrazit možnost vymazat způsoby přepravy v dílčím kroku místa vyzvednutí"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2163,7 +2007,8 @@ msgstr "Přeskočit na obsah"
 #: inc/admin/admin-notice-db-migrations.php:52
 msgid ""
 "Some changes to the database are required. As with any update, we recommend "
-"you to <strong>take a full backup of your website before proceeding</strong>."
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
 msgstr ""
 "V databázi je třeba provést některé změny. Stejně jako u každé aktualizace "
 "doporučujeme před jejím provedením <strong>provádět úplnou zálohu "
@@ -2196,8 +2041,8 @@ msgstr "Speciální nabídky"
 msgid "Split"
 msgstr "Split"
 
-#. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 #: inc/checkout-steps.php:2530
+#. %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 #, php-format
 msgid "Step %1$s of %2$s"
 msgstr "Krok %1$s z %2$s"
@@ -2205,25 +2050,6 @@ msgstr "Krok %1$s z %2$s"
 #: inc/compat/plugins/compat-plugin-mailchimp-for-woocommerce.php:86
 msgid "Subscribe checkbox"
 msgstr "Zaškrtávací políčko Přihlásit se k odběru"
-
-#. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3490
-#, php-format
-msgctxt "Substep review field format"
-msgid "%1$s"
-msgstr "%1$s"
-
-#. %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3495
-#, php-format
-msgctxt "Substep review field format: with label"
-msgid "%2$s: %1$s"
-msgstr "%2$s: %1$s"
-
-#: inc/checkout-steps.php:2958
-msgctxt "Substep review text"
-msgid "None."
-msgstr "Žádné."
 
 #: inc/admin/admin.php:134
 msgid "Support"
@@ -2258,8 +2084,8 @@ msgstr "Plugin Bluehost"
 #: inc/admin/admin-setting-type-fc-addons.php:85
 #: inc/admin/admin-setting-type-fc-addons.php:132
 msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout add-"
-"ons we launch in the future."
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
 msgstr ""
 "Balíček obsahuje všechny doplňky, které v současné době nabízíme, a doplňky "
 "Fluid Checkout, které spustíme v budoucnu."
@@ -2271,18 +2097,20 @@ msgid ""
 "\"Same as billing address\" will start as checked by default when the "
 "billing address section is displayed first. <br> It is recommended to leave "
 "this option checked as to significantly reduce the number of open input "
-"fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-"
-"form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
-"target=\"_blank\">read the research</a>."
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
 msgstr ""
-"Zaškrtávací políčko \"Stejná jako odesílací adresa\" se při prvním zobrazení "
-"sekce s odesílací adresou spustí jako zaškrtnuté. <br>Zaškrtávací políčko "
-"\"Stejná jako fakturační adresa\" začne být ve výchozím nastavení zaškrtnuto,"
-" když se sekce fakturační adresy zobrazí jako první. <br> Doporučujeme "
-"ponechat tuto volbu zaškrtnutou, protože tím výrazně snížíte počet "
-"otevřených vstupních polí u pokladny, <a href=\"https://baymard."
-"com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
-"hide-the-fields-entirely\" target=\"_blank\">přečtěte si výzkum</a>."
+"Zaškrtávací políčko \"Stejná jako odesílací adresa\" se při prvním "
+"zobrazení sekce s odesílací adresou spustí jako zaškrtnuté. <br>Zaškrtávací "
+"políčko \"Stejná jako fakturační adresa\" začne být ve výchozím nastavení "
+"zaškrtnuto, když se sekce fakturační adresy zobrazí jako první. <br> "
+"Doporučujeme ponechat tuto volbu zaškrtnutou, protože tím výrazně snížíte "
+"počet otevřených vstupních polí u pokladny, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">přečtěte "
+"si výzkum</a>."
 
 #: inc/checkout-validation.php:212
 msgid "The CNPJ number \"{cnpj_number}\" is invalid."
@@ -2298,8 +2126,8 @@ msgstr "Změny v databázi byly úspěšně provedeny."
 
 #: inc/compat/themes/compat-theme-woodmart.php:169
 msgid ""
-"The options display product image, quantity field, remove button and link to "
-"product page added by the theme are disabled by default."
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
 msgstr ""
 "Možnosti zobrazit obrázek produktu, pole množství, tlačítko odebrat a odkaz "
 "na stránku produktu přidané motivem jsou ve výchozím nastavení vypnuté."
@@ -2437,8 +2265,8 @@ msgstr "Toto pole je povinné."
 
 #: inc/admin/admin.php:208
 msgid ""
-"This is an experimental feature and may not work as expected with all themes "
-"and plugins. Use it with caution."
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
 msgstr ""
 "Jedná se o experimentální funkci, která nemusí fungovat podle očekávání se "
 "všemi motivy a pluginy. Používejte ji s opatrností."
@@ -2458,8 +2286,8 @@ msgstr ""
 #: inc/admin/admin-settings-tools.php:114
 msgid ""
 "TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually used "
-"on WooCommerce checkout pages."
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
 msgstr ""
 "TomSelect je jednodušší rozbalovací komponenta pro výběr, která je méně "
 "náchylná k chybám než Select2 a zároveň nabízí stejné funkce, které se "
@@ -2503,14 +2331,14 @@ msgstr "Upgrade na PRO &mdash; 99 EUR"
 
 #: inc/admin/admin-settings-tools.php:93
 msgid ""
-"Using debug mode affects the website performance. Only use this option while "
-"troubleshooting."
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
 msgstr ""
 "Použití režimu ladění ovlivňuje výkon webových stránek. Tuto možnost "
 "používejte pouze při řešení problémů."
 
-#. %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:152
+#. %s: License key expiration date.
 #, php-format
 msgid "Valid until %s."
 msgstr "Platí do %s."
@@ -2537,13 +2365,14 @@ msgstr ""
 #: inc/admin/admin-settings-checkout.php:125
 msgid ""
 "We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"
-"abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
 msgstr ""
 "Doporučujeme používat záhlaví a zápatí bez rozptylujících prvků, abyste se "
-"vyhnuli rozptylování na stránce pokladny. <a href=\"https://baymard."
-"com/blog/cart-abandonment\" target=\"_blank\">Přečtěte si výzkum o opuštění "
-"košíku</a>."
+"vyhnuli rozptylování na stránce pokladny. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Přečtěte si výzkum o opuštění košíku</a>."
 
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
 msgid "What should I do?"
@@ -2587,7 +2416,8 @@ msgstr ""
 "Pokud je tato možnost povolena, nebude automaticky vybrán první dostupný "
 "způsob přepravy, pokud pro každý přepravní balíček nebyl dříve vybrán jiný "
 "způsob přepravy. <br>Tato možnost bude automaticky povolena, pokud je u "
-"funkce Místní vyzvednutí povolena možnost vymazání vybraného způsobu dopravy."
+"funkce Místní vyzvednutí povolena možnost vymazání vybraného způsobu "
+"dopravy."
 
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
@@ -2599,17 +2429,17 @@ msgstr ""
 
 #: inc/admin/admin-settings-tools.php:124
 msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and other "
-"browsers might automatically zoom in on mobile devices to make the text "
-"easier to read. When this option is enabled, it will set the font size for "
-"inside the form fields to 16px on pages optimized by Fluid Checkout to avoid "
-"it zooming in."
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
 msgstr ""
 "Pokud je velikost písma v polích formuláře menší než 16px, Safari a další "
 "prohlížeče mohou na mobilních zařízeních automaticky zvětšit text, aby byl "
 "lépe čitelný. Pokud je tato možnost povolena, nastaví se na stránkách "
-"optimalizovaných aplikací Fluid Checkout velikost písma uvnitř formulářových "
-"polí na 16px, aby se zabránilo jeho zvětšování."
+"optimalizovaných aplikací Fluid Checkout velikost písma uvnitř "
+"formulářových polí na 16px, aby se zabránilo jeho zvětšování."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:63
 msgid ""
@@ -2619,30 +2449,31 @@ msgid ""
 "checkout feature in the plugin settings."
 msgstr ""
 "Při použití Fluid Checkout se vícekroková funkce z pluginu Germanized PRO "
-"stává zbytečnou a může způsobit <strong>kritické chyby při zpracování nových "
-"objednávek</strong>. Vypněte prosím funkci vícekrokové pokladny z pluginu "
-"Germanized PRO v nastavení."
+"stává zbytečnou a může způsobit <strong>kritické chyby při zpracování "
+"nových objednávek</strong>. Vypněte prosím funkci vícekrokové pokladny z "
+"pluginu Germanized PRO v nastavení."
 
 #: inc/admin/admin-notice-breaking-changes-version-400.php:48
 msgid ""
 "With this version of Fluid Checkout we have introduced <strong>important "
 "changes that might impact your website</strong> if you have made "
 "customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, it "
-"should work in the same way as before.<br><br>If you have any customizations "
-"for Fluid Checkout on your website and have not yet migrated them to this "
-"version, please read our guide <a href=\"https://fluidcheckout.com/version-4-"
-"customization-migration/\">Migrating customizations to Fluid Checkout Lite 4."
-"0+</a>"
+"your website does not have any customizations for Fluid Checkout plugins, "
+"it should work in the same way as before.<br><br>If you have any "
+"customizations for Fluid Checkout on your website and have not yet migrated "
+"them to this version, please read our guide <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
 msgstr ""
-"V této verzi Fluid Checkout jsme zavedli <strong>důležité změny, které mohou "
-"mít dopad na vaše webové stránky</strong>, pokud jste před vydáním této "
-"verze provedli úpravy našich pluginů. Pokud vaše webové stránky nemají žádné "
-"úpravy pluginů Fluid Checkout, měly by fungovat stejně jako dříve.<br><br>"
-"Pokud máte na svých webových stránkách nějaké úpravy pluginů Fluid Checkout "
-"a ještě jste je nemigrovali na tuto verzi, přečtěte si prosím našeho "
-"průvodce <a href=\"https://fluidcheckout.com/version-4-customization-"
-"migration/\">Migrace úprav na Fluid Checkout Lite 4.0+</a>"
+"V této verzi Fluid Checkout jsme zavedli <strong>důležité změny, které "
+"mohou mít dopad na vaše webové stránky</strong>, pokud jste před vydáním "
+"této verze provedli úpravy našich pluginů. Pokud vaše webové stránky nemají "
+"žádné úpravy pluginů Fluid Checkout, měly by fungovat stejně jako "
+"dříve.<br><br>Pokud máte na svých webových stránkách nějaké úpravy pluginů "
+"Fluid Checkout a ještě jste je nemigrovali na tuto verzi, přečtěte si "
+"prosím našeho průvodce <a "
+"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
+">Migrace úprav na Fluid Checkout Lite 4.0+</a>"
 
 #: fluid-checkout.php:582
 msgid "WooCommerce"
@@ -2654,9 +2485,9 @@ msgid ""
 "<br>Please give us a quick rating, we appreciate every bit of feedback and "
 "it encourages us to keep improving the plugin :)"
 msgstr ""
-"Zásuvný modul již nějakou dobu používáte. Jak se vám zatím líbí? <br>Prosíme,"
-" dejte nám rychlé hodnocení, vážíme si každé zpětné vazby a povzbuzuje nás "
-"to k dalšímu zlepšování pluginu :)"
+"Zásuvný modul již nějakou dobu používáte. Jak se vám zatím líbí? "
+"<br>Prosíme, dejte nám rychlé hodnocení, vážíme si každé zpětné vazby a "
+"povzbuzuje nás to k dalšímu zlepšování pluginu :)"
 
 #: templates/fc/checkout-steps/checkout/payment.php:48
 #, php-format
@@ -2664,3 +2495,145 @@ msgid "Your order has a total amount due of %s. No further payment is needed."
 msgstr ""
 "Vaše objednávka má celkovou dlužnou částku ve výši %s. Další platba není "
 "nutná."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "No image selected."
+msgstr "Není vybrán žádný obrázek."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgid "Remove image"
+msgstr "Odstranění obrázku"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Téma The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Další sekce záhlaví"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Výpis dalších sekcí záhlaví, pokud je to povoleno v nastavení tématu."
+
+#: inc/checkout-coupon-codes.php:275
+msgctxt "Button label for applying coupon codes"
+msgid "Apply"
+msgstr "Použít"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:101
+msgctxt "Captcha position"
+msgid "Before place order button"
+msgstr "Před tlačítkem objednat"
+
+#: inc/compat/plugins/compat-plugin-captcha-pro.php:100
+msgctxt "Captcha position"
+msgid "Before place order section"
+msgstr "Před umístěním objednávky"
+
+#: inc/checkout-steps.php:2235
+msgctxt "Checkout step title"
+msgid "Billing"
+msgstr "Fakturace"
+
+#: inc/checkout-steps.php:2214
+msgctxt "Checkout step title"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/checkout-steps.php:2244
+msgctxt "Checkout step title"
+msgid "Payment"
+msgstr "Platba"
+
+#: inc/checkout-steps.php:2223
+msgctxt "Checkout step title"
+msgid "Shipping"
+msgstr "Přeprava"
+
+#: inc/checkout-steps.php:2825
+msgctxt "Checkout substep change link label"
+msgid "Change"
+msgstr "Změna"
+
+#: inc/checkout-steps.php:2826
+msgctxt "Checkout substep save link label"
+msgid "Save changes"
+msgstr "Uložení změn"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login-modal.php:27
+msgctxt "Close button aria-label"
+msgid "Close"
+msgstr "Zavřít"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+msgctxt "Image uploader."
+msgid "No image selected."
+msgstr "Není vybrán žádný obrázek."
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42
+#: templates/fc/checkout-steps/global/form-login.php:66
+msgctxt "Log in link label at checkout contact step"
+msgid "Log in"
+msgstr "Přihlášení"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue as a guest"
+msgstr "Nebo pokračujte jako host"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+msgctxt "Log in separator label at for when guest checkout is disabled"
+msgid "Or continue below"
+msgstr "Nebo pokračujte níže"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431
+#: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. %s shipping destination.
+msgctxt "No shipping method chosen label for the order summary"
+msgid "--"
+msgstr "--"
+
+#: inc/admin/admin-settings-cart.php:49
+msgctxt "Settings section"
+msgid "Cart"
+msgstr "Košík"
+
+#: inc/admin/admin-settings-order-pay.php:49
+msgctxt "Settings section"
+msgid "Order pay"
+msgstr "Objednat platbu"
+
+#: inc/admin/admin-settings-order-received.php:47
+msgctxt "Settings section"
+msgid "Thank you"
+msgstr "Děkuji"
+
+#: inc/admin/admin-settings-integrations.php:83
+msgctxt "Settings section title"
+msgid "Integrations"
+msgstr "Integrace"
+
+#: inc/admin/admin-settings-license-keys.php:73
+msgctxt "Settings section title"
+msgid "License keys"
+msgstr "Licenční klíče"
+
+#: inc/checkout-steps.php:3490
+#. %1$s the selected option text, %2$s the field label.
+#, php-format
+msgctxt "Substep review field format"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: inc/checkout-steps.php:3495
+#. %1$s the selected option text, %2$s the field label.
+#, php-format
+msgctxt "Substep review field format: with label"
+msgid "%2$s: %1$s"
+msgstr "%2$s: %1$s"
+
+#: inc/checkout-steps.php:2958
+msgctxt "Substep review text"
+msgid "None."
+msgstr "Žádné."

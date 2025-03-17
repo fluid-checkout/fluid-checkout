@@ -35,11 +35,10 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 
 	/**
 	 * Maybe skip persisted data for the Stripe checkout fields.
+	 * Fix the problem with the wrong address data being used when purchasing with Apple Pay or Google Pay from the WooCommerce Stripe Gateway plugin.
 	 *
-	 * @param   [type]  $should_skip  [$should_skip description]
-	 * @param   [type]  $input        [$input description]
-	 *
-	 * @return  [type]                [return description]
+	 * @param   boolean  $should_skip  Whether to skip retrieving the field value from persisted data.
+	 * @param   string   $input        Checkout field key (e.g. order_comments).
 	 */
 	public function maybe_skip_checkout_field_value_persisted_data( $should_skip, $input ) {
 		// Bail if not WC AJAX request
@@ -47,7 +46,6 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 
 		// Define AJAX requests that should skip persisted data
 		$target_ajax_requests = array(
-			'update_order_review',
 			'wc_stripe_get_shipping_options',
 			'wc_stripe_update_shipping_method',
 			'wc_stripe_create_order',
