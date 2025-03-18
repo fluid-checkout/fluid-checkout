@@ -15,7 +15,7 @@ body.theme-mrtailor form.woocommerce-checkout .fc-wrapper #order_review table.wo
   font-size: inherit;
 }
 
-body.theme-mrtailor div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--multiple:after {
+body.theme-mrtailor div.woocommerce form .form-row.fc-inline-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--multiple:after {
   right: 5px;
 }
 

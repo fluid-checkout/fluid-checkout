@@ -301,13 +301,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Validate email fields
 		if ( $field_valid && in_array( 'email', $format, true ) && '' !== $value && ! is_email( $value ) ) {
 			$field_valid = false;
-			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-email' ) );
+			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-email', 'fc-inline-invalid', 'fc-inline-invalid-email' ) );
 		}
 
 		// Validate phone fields
 		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! $this->is_valid_phone_number( $value ) ) {
 			$field_valid = false;
-			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-phone' ) );
+			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-phone', 'fc-inline-invalid', 'fc-inline-invalid-phone' ) );
 		}
 
 		// Validate postcode fields
@@ -318,7 +318,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 			if ( ! WC_Validation::is_postcode( $formatted_postcode, $country ) ) {
 				$field_valid = false;
-				$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-postcode' ) );
+				$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-postcode', 'fc-inline-invalid', 'fc-inline-invalid-postcode' ) );
 			}
 		}
 

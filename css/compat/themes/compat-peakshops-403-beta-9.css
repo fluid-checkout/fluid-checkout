@@ -3,7 +3,7 @@ body.theme-peakshops .fc-content.row.align-middle div.woocommerce {
   padding-right: 0.9375rem;
 }
 
-body.theme-peakshops div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon).fc-select2-field .woocommerce-input-wrapper:after {
+body.theme-peakshops div.woocommerce form .form-row.fc-inline-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon).fc-select2-field .woocommerce-input-wrapper:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
   font-style: normal !important;

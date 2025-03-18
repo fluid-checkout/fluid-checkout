@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased 2 =
+
+* Improved: Rename inline validation message classes to avoid conflicts with other plugins.
+
 = Unreleased =
 
 * Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.

@@ -11,7 +11,3 @@ body.theme-ettore.has-fc-button-styles.has-checkout-layout--multi-step .fc-wrapp
     padding-right: 20px !important;
   }
 }
-
-body.theme-ettore div.woocommerce .form-row .woocommerce-error {
-  margin-bottom: 0 !important;
-}

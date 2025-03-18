@@ -1,7 +1,0 @@
-// ------------------------------------
-// CHECKOUT VALIDATION MESSAGES
-// ------------------------------------
-
-body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error {
-	margin-bottom: 0 !important; // Needed to use `!important` to override theme styles
-}

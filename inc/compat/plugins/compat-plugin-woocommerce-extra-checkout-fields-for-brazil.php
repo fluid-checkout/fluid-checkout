@@ -580,7 +580,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		if ( 'billing_cpf' === $key && isset( $settings[ 'validate_cpf' ] ) ) {
 			$billing_cpf = WC()->checkout()->get_value( 'billing_cpf' );
 			if ( ! empty( $billing_cpf ) && ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cpf( $billing_cpf ) ) {
-				$args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cpf' ) );
+				$args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cpf', 'fc-inline-invalid', 'fc-inline-invalid-cpf' ) );
 			}
 		}
 
@@ -588,7 +588,7 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 		if ( 'billing_cnpj' === $key && isset( $settings[ 'validate_cnpj' ] ) ) {
 			$billing_cnpj = WC()->checkout()->get_value( 'billing_cnpj' );
 			if ( ! empty( $billing_cnpj ) && ! Extra_Checkout_Fields_For_Brazil_Formatting::is_cnpj( $billing_cnpj ) ) {
-				$args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cnpj' ) );
+				$args[ 'class' ] = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $args[ 'class' ], array( 'woocommerce-invalid', 'woocommerce-invalid-cnpj', 'fc-inline-invalid', 'fc-inline-invalid-cnpj' ) );
 			}
 		}
 

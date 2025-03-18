@@ -29,23 +29,6 @@ body.theme-dt-the7 .dt-mobile-header + #main .wc-empty-cart-message {
     margin-top: 60px;
   }
 }
-body.theme-dt-the7 div.woocommerce .form-row .woocommerce-error,
-body.theme-dt-the7 div.woocommerce .shipping-method__package .woocommerce-error,
-body.theme-dt-the7 div.woocommerce .form-row .fc-mailcheck-suggestion {
-  width: auto;
-  background: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
-  box-shadow: none;
-  top: 0;
-  left: 0;
-}
-
-body.theme-dt-the7 div.woocommerce .form-row .woocommerce-error:before,
-body.theme-dt-the7 div.woocommerce .shipping-method__package .woocommerce-error:before {
-  background: transparent;
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-
 body.theme-dt-the7 .woocommerce-checkout-review-order .product-quantity,
 body.theme-dt-the7 .woocommerce-checkout-review-order .product-total,
 body.theme-dt-the7 .woocommerce-checkout-review-order .cart-subtotal th,

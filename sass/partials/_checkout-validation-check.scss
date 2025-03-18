@@ -2,7 +2,7 @@
 // CHECKOUT FIELD VALIDATION
 // ------------------------------------
 
-div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+div.woocommerce form .form-row.fc-inline-validated:not( [class*='fc-inline-invalid'] ) {
 
 	// "valid" field check icon
 	// skip fields with `fc-no-validation-icon` and `fc-select2-field` classes

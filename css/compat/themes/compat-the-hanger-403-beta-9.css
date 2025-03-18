@@ -65,7 +65,7 @@ body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-r
   }
 }
 
-body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.woocommerce-validated:before {
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.fc-inline-validated:before {
   display: none;
 }
 
