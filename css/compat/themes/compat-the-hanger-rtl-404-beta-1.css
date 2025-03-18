@@ -1,0 +1,75 @@
+body.theme-the-hanger .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
+  top: 9px;
+}
+
+body.theme-the-hanger .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label:after {
+  top: 9px;
+}
+
+body.theme-the-hanger .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  display: flex !important;
+  margin: 0 !important;
+}
+
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
+  clear: right;
+  float: none;
+  width: 100%;
+  padding: 0;
+}
+@media (min-width: 750px) {
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle,
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-last {
+    clear: none;
+    float: right;
+    width: 48%;
+  }
+}
+
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-wide {
+  clear: right;
+}
+@media (min-width: 750px) {
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-wide {
+    clear: right;
+  }
+}
+
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-one-third {
+  width: 100%;
+}
+@media (min-width: 750px) {
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-one-third {
+    width: 30.666%;
+  }
+}
+
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-two-thirds {
+  width: 100%;
+}
+@media (min-width: 750px) {
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-two-thirds {
+    width: 65.33%;
+  }
+}
+
+@media (min-width: 750px) {
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-first,
+  body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.form-row-middle {
+    margin-left: 4%;
+  }
+}
+
+body.theme-the-hanger.woocommerce-checkout div.woocommerce form .form-row.woocommerce-validated:before {
+  display: none;
+}
+
+body.theme-the-hanger .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+  padding-right: 12px;
+  padding-left: 12px;
+}
