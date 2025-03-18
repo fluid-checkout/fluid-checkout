@@ -2,6 +2,6 @@
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce .form-row.fc-inline-invalid > .validation-message {
+body#{ $_body-theme-selector } div.woocommerce .form-row.woocommerce-invalid > .validation-message {
 	display: none;
 }

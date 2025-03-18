@@ -51,7 +51,7 @@ body.theme-diza .woocommerce table.shop_table > tfoot > tr > th .woocommerce-Pri
   color: inherit;
 }
 
-body.theme-diza div.woocommerce form .form-row.fc-inline-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--multiple:after {
+body.theme-diza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--multiple:after {
   right: 5px;
 }
 

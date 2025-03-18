@@ -6,7 +6,7 @@ div.woocommerce .form-row .fc-inline-error:not( .invalid-country-not-allowed ) {
 	display: none;
 }
 
-div.woocommerce .form-row.fc-inline-invalid .fc-inline-error {
+div.woocommerce .form-row.woocommerce-invalid .fc-inline-error {
 	display: block;
 }
 
@@ -85,7 +85,7 @@ div.woocommerce .shipping-method__package .fc-inline-error:after {
 // ------------------------------------
 
 // VALID FIELDS
-div.woocommerce form .form-row.fc-inline-validated:not( [class*='fc-inline-invalid'] ) {
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 	textarea,
 	select,
 	input[type="email"],
@@ -102,7 +102,7 @@ div.woocommerce form .form-row.fc-inline-validated:not( [class*='fc-inline-inval
 }
 
 // INVALID FIELDS
-div.woocommerce form .form-row[class*='fc-inline-invalid'] {
+div.woocommerce form .form-row[class*='woocommerce-invalid'] {
 	textarea,
 	select,
 	input[type="email"],
@@ -117,7 +117,7 @@ div.woocommerce form .form-row[class*='fc-inline-invalid'] {
 		border-color: $error-color;
 	}
 }
-div.woocommerce form .shipping-method__package[class*='fc-inline-invalid'] {
+div.woocommerce form .shipping-method__package[class*='woocommerce-invalid'] {
 	#shipping_method.shipping-method__options {
 		border-color: $error-color;
 	}

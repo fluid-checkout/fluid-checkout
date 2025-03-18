@@ -2,7 +2,7 @@ div.woocommerce .form-row .fc-inline-error:not(.invalid-country-not-allowed) {
   display: none;
 }
 
-div.woocommerce .form-row.fc-inline-invalid .fc-inline-error {
+div.woocommerce .form-row.woocommerce-invalid .fc-inline-error {
   display: block;
 }
 
@@ -76,39 +76,39 @@ div.woocommerce .shipping-method__package .fc-inline-error:after {
   display: none;
 }
 
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) textarea,
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) select,
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=email],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=number],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=search],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=text],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=date],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=tel],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=url],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) input[type=password],
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]) .select2-selection {
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) textarea,
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) select,
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=email],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=number],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=search],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=text],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=date],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=tel],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=url],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) input[type=password],
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]) .select2-selection {
   border-color: var(--fluidcheckout--color--success, #007a3d);
 }
 
-div.woocommerce form .form-row[class*=fc-inline-invalid] textarea,
-div.woocommerce form .form-row[class*=fc-inline-invalid] select,
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=email],
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=number],
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=search],
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=text],
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=date],
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=tel],
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=url],
-div.woocommerce form .form-row[class*=fc-inline-invalid] input[type=password],
-div.woocommerce form .form-row[class*=fc-inline-invalid] .select2-selection {
+div.woocommerce form .form-row[class*=woocommerce-invalid] textarea,
+div.woocommerce form .form-row[class*=woocommerce-invalid] select,
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=email],
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=number],
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=search],
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=text],
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=date],
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=tel],
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=url],
+div.woocommerce form .form-row[class*=woocommerce-invalid] input[type=password],
+div.woocommerce form .form-row[class*=woocommerce-invalid] .select2-selection {
   border-color: var(--fluidcheckout--color--error, #cc1818);
 }
 
-div.woocommerce form .shipping-method__package[class*=fc-inline-invalid] #shipping_method.shipping-method__options {
+div.woocommerce form .shipping-method__package[class*=woocommerce-invalid] #shipping_method.shipping-method__options {
   border-color: var(--fluidcheckout--color--error, #cc1818);
 }
 
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]):not(.fc-no-validation-icon) .select2-selection:after, div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
   font-style: normal !important;
@@ -132,16 +132,16 @@ div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid
   color: var(--fluidcheckout--color--success, #007a3d);
   pointer-events: none;
 }
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
   right: var(--fluidcheckout--validation-check--horizontal-spacing--password, 25px);
 }
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
   right: var(--fluidcheckout--validation-check--horizontal-spacing--select, 15px);
 }
-div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
+div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
   right: var(--fluidcheckout--validation-check--horizontal-spacing--select-alt, 25px);
 }
-.woocommerce-terms-and-conditions-wrapper div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]):after, div.woocommerce form .form-row.fc-inline-validated:not([class*=fc-inline-invalid]).create-account:after {
+.woocommerce-terms-and-conditions-wrapper div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
   content: "";
   display: none;
 }

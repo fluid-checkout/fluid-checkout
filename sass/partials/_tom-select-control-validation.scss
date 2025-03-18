@@ -2,17 +2,17 @@
 // TOM SELECT CONTROL VALIDATION
 // ------------------------------------
 
-div.woocommerce form .form-row.fc-inline-validated:not( [class*='fc-inline-invalid'] ) .ts-control {
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .ts-control {
 	border-color: $success-color;
 }
 
-div.woocommerce form .form-row[class*='fc-inline-invalid'] .ts-control {
+div.woocommerce form .form-row[class*='woocommerce-invalid'] .ts-control {
 	border-color: $error-color;
 }
 
 
 
-div.woocommerce form .form-row.fc-inline-validated:not( [class*='fc-inline-invalid'] ) {
+div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 	// "valid" field check icon
 	// Single select and multi select fields
 	&:not( .fc-no-validation-icon ).fc-select2-field .woocommerce-input-wrapper:after {
