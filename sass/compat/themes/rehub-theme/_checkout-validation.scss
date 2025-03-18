@@ -11,3 +11,10 @@ body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .woocommerce-info {
 body#{ $_body-theme-selector } div.woocommerce .fc-wrapper .woocommerce-error:before {
 	background-color: transparent;
 }
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-validated input.input-text,
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-invalid input.input-text {
+	background-image: none;
+}
