@@ -2437,6 +2437,20 @@ msgstr ""
 "maayos.</p><p> Para sa higit pang impormasyon, bisitahin ang dokumentasyon "
 "ng Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema Ang7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Mga karagdagang seksyon ng header"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Mag-output ng mga karagdagang seksyon ng header kung pinagana sa mga "
+"setting ng tema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

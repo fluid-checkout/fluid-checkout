@@ -2581,6 +2581,20 @@ msgstr "No hay imagen seleccionada."
 msgid "Remove image"
 msgstr "Eliminar imagen"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema El7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Secciones de cabecera adicionales"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Muestra secciones de cabecera adicionales si están habilitadas en la "
+"configuración del tema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

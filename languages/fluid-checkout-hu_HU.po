@@ -2393,6 +2393,18 @@ msgstr ""
 "működjön.</p><p>Bővebb információért látogasson el a Fluid Checkout "
 "dokumentációba.</p>A Fluid Checkout dokumentációba.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Téma The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "További fejléc szakaszok"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "További fejlécrészek kiadása, ha a téma beállításaiban engedélyezve van."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2387,6 +2387,20 @@ msgstr ""
 "behoorlik te werk.</p><p> Vir meer inligting, besoek die Fluid "
 "Checkout-dokumentasie.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema Die 7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Bykomende kop-afdelings"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Voer bykomende opskrifafdelings uit as dit in die tema-instellings "
+"geaktiveer is."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

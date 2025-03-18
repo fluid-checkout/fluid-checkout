@@ -1,0 +1,19 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error,
+body#{ $_body-theme-selector } div.woocommerce .shipping-method__package .woocommerce-error,
+body#{ $_body-theme-selector } div.woocommerce .form-row .fc-mailcheck-suggestion {
+	width: auto;
+	background: $checkout-message-error-background-color;
+	box-shadow: none;
+	top: 0;
+	#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error:before,
+body#{ $_body-theme-selector } div.woocommerce .shipping-method__package .woocommerce-error:before {
+	background: transparent;
+	mask-image: none;
+}

@@ -2590,6 +2590,20 @@ msgstr "Δεν έχει επιλεγεί εικόνα."
 msgid "Remove image"
 msgstr "Αφαίρεση εικόνας"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Θέμα The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Πρόσθετα τμήματα κεφαλίδας"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Εξαγωγή πρόσθετων τμημάτων κεφαλίδας, εάν είναι ενεργοποιημένο στις "
+"ρυθμίσεις του θέματος."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

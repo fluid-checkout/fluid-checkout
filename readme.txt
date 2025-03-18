@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,10 +354,15 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 4.0.3 - 2025-03-17 =
 
+* Bump tested up to WooCommerce 9.7.1
 * Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
+* Added: Compatibility with theme The7.
+* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce Pro by ThemeHigh. Fix spacing for custom sections positioned after account creation form fields.
+* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Fixed express checkout changes affecting correct preloading of some checkout field values.
 * Improved: Enforce some styles for the place order button to improve compatibility with some themes.
+* Fixed: Billing and shipping address values not being preserved after toggling "Same as <shipping/billing> address" checkbox.
 * Fixed: Field values reverting back to previous value (usually empty) when using `select2` for enhanced dropdown fields.
 * Fixed: Use treated display value for replacements on formatted addresses.
 

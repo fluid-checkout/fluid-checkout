@@ -2392,6 +2392,18 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> ili kufanya kazi ipasavyo.</p><p> Kwa "
 "habari zaidi, tembelea hati za Malipo ya Maji.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Mandhari The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Sehemu za ziada za kichwa"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Toa sehemu za kichwa cha ziada ikiwashwa katika mipangilio ya mandhari."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

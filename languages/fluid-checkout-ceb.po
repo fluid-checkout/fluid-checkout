@@ -2426,6 +2426,20 @@ msgstr ""
 "molihok sa husto.</p><p> Para sa dugang nga impormasyon, bisitaha ang Fluid "
 "Checkout nga dokumentasyon.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Tema Ang7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Dugang nga mga seksyon sa ulohan"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Pag-output og dugang nga mga seksyon sa header kung mahimo sa mga setting "
+"sa tema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

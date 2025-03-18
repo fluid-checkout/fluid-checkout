@@ -2339,6 +2339,18 @@ msgstr ""
 "style=\";text-align:right;direction:rtl\"> برای اطلاعات بیشتر، از مستندات "
 "Fluid Checkout دیدن کنید.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "تم The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "بخش های هدر اضافی"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "اگر در تنظیمات طرح زمینه فعال باشد، بخش‌های هدر اضافی را خروجی بگیرید."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

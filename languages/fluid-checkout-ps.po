@@ -2341,6 +2341,18 @@ msgstr ""
 "وکړي.</p><p style=\";text-align:right;direction:rtl\"> د نورو معلوماتو "
 "لپاره، د فلوډ چیک آوټ اسنادو ته مراجعه وکړئ.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "موضوع The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "د سرلیک اضافي برخې"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "که چیرې د موضوع په ترتیباتو کې فعال شوي وي، نو اضافي سرلیک برخې وښایاست."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

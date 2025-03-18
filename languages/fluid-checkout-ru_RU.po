@@ -2514,6 +2514,20 @@ msgstr ""
 "корректной работы.</p><p>Для получения дополнительной информации посетите "
 "документацию Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Тема The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Дополнительные разделы заголовков"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Вывод дополнительных разделов заголовков, если они включены в настройках "
+"темы."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

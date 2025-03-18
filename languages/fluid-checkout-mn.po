@@ -2385,6 +2385,18 @@ msgstr ""
 "кодыг <code>[woocommerce_checkout]</code> ашиглах шаардлагатай.</p><p> "
 "Дэлгэрэнгүй мэдээллийг Fluid Checkout баримтаас авна уу.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Сэдэв 7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Нэмэлт толгойн хэсгүүд"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Загварын тохиргоонд идэвхжүүлсэн бол нэмэлт толгой хэсгийг гаргана уу."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

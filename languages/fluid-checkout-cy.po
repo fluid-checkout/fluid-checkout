@@ -2385,6 +2385,20 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> i weithio&#39;n iawn.</p><p> I gael "
 "rhagor o wybodaeth, ewch i&#39;r ddogfennaeth Desg Fluid.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Thema The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Adrannau pennawd ychwanegol"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Allbwn adrannau pennyn ychwanegol os yw wedi&#39;i alluogi yn y gosodiadau "
+"thema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

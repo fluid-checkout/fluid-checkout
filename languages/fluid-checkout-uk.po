@@ -2412,6 +2412,18 @@ msgstr ""
 "працювати належним чином.</p><p>Для отримання додаткової інформації "
 "відвідайте документацію Fluid Checkout.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Тема The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Додаткові розділи заголовка"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Виводити додаткові секції заголовка, якщо це ввімкнено у налаштуваннях теми."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

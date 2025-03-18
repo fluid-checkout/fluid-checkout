@@ -2370,6 +2370,18 @@ msgstr ""
 "<code>[woocommerce_checkout]</code> ដើម្បីដំណើរការបានត្រឹមត្រូវ។</p><p> "
 "សម្រាប់ព័ត៌មានបន្ថែម សូមចូលទៅកាន់ឯកសារ Fluid Checkout។</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "ប្រធានបទ ៧"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "ផ្នែកបឋមកថាបន្ថែម"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "បញ្ចេញផ្នែកបឋមកថាបន្ថែម ប្រសិនបើបានបើកនៅក្នុងការកំណត់ស្បែក។"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2504,6 +2504,18 @@ msgstr "Není vybrán žádný obrázek."
 msgid "Remove image"
 msgstr "Odstranění obrázku"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Téma The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Další sekce záhlaví"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "Výpis dalších sekcí záhlaví, pokud je to povoleno v nastavení tématu."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

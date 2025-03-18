@@ -2424,6 +2424,20 @@ msgstr ""
 "பயன்படுத்த வேண்டும்.</p><p> மேலும் தகவலுக்கு, திரவ செக்அவுட் ஆவணங்களைப் "
 "பார்வையிடவும்.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "தீம் The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "கூடுதல் தலைப்புப் பிரிவுகள்"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"தீம் அமைப்புகளில் இயக்கப்பட்டிருந்தால் கூடுதல் தலைப்புப் பிரிவுகளை "
+"வெளியிடுங்கள்."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2468,7 +2482,7 @@ msgstr "இல்லை."
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format"
 msgid "%1$s"
-msgstr "%1$கள்"
+msgstr "%1$s"
 
 #: inc/checkout-steps.php:3495
 #. translators: %1$s the selected option text, %2$s the field label.

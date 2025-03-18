@@ -2446,6 +2446,18 @@ msgstr ""
 "အသုံးပြုရန်လိုအပ်သည်။</p><p> ပိုမိုသိရှိလိုပါက၊ Fluid Checkout "
 "စာရွက်စာတမ်းအား သွားရောက်ကြည့်ရှုပါ။</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Theme ၇"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "နောက်ထပ် ခေါင်းစီးကဏ္ဍများ"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr "အပြင်အဆင်ဆက်တင်များတွင် ဖွင့်ထားပါက အပိုဆောင်းခေါင်းစီးကဏ္ဍများကို ထုတ်ပါ။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2496,7 +2508,7 @@ msgstr "%1$s"
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
-msgstr "%2$s- %1$s"
+msgstr "%2$s: %1$s"
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:85
 msgctxt "Image uploader."

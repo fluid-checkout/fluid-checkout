@@ -2379,6 +2379,20 @@ msgstr ""
 "қысқа кодын <code>[woocommerce_checkout]</code> пайдалануы керек.</p><p> "
 "Қосымша ақпарат алу үшін Fluid Checkout құжаттамасына кіріңіз.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "Тақырып 7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "Қосымша тақырып бөлімдері"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"Тақырып параметрлерінде қосылған болса, қосымша тақырып бөлімдерін "
+"шығарыңыз."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

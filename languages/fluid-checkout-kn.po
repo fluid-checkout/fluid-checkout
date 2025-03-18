@@ -2372,6 +2372,20 @@ msgstr ""
 "ಬಳಸಬೇಕಾಗುತ್ತದೆ.</p><p> ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ, ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ದಸ್ತಾವೇಜನ್ನು "
 "ಭೇಟಿ ಮಾಡಿ.</p>"
 
+#: inc/compat/themes/compat-theme-dt-the7.php:121
+msgid "Theme The7"
+msgstr "ಥೀಮ್ The7"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:127
+msgid "Additional header sections"
+msgstr "ಹೆಚ್ಚುವರಿ ಹೆಡರ್ ವಿಭಾಗಗಳು"
+
+#: inc/compat/themes/compat-theme-dt-the7.php:128
+msgid "Output additional header sections if enabled in the theme settings."
+msgstr ""
+"ಥೀಮ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಸಕ್ರಿಯಗೊಳಿಸಿದ್ದರೆ ಹೆಚ್ಚುವರಿ ಹೆಡರ್ ವಿಭಾಗಗಳನ್ನು "
+"ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
