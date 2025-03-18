@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Support for description and delivery time attributes for shipping methods.
+
 = 4.0.3 - 2025-03-17 =
 
 * Bump tested up to WooCommerce 9.7.1
