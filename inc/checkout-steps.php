@@ -4229,7 +4229,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$delivery_time = $method->get_delivery_time();
 		$description = $method->get_description();
 
-		// Maybe separate with a line break if both values present
+		// Maybe separate with a line break if both values are present
 		$output = trim( $delivery_time . "\n" . $description );
 		$shipping_method_description .= nl2br( $output );
 
