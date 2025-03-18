@@ -11,6 +11,7 @@ div.woocommerce .shipping-method__package .fc-inline-error,
 div.woocommerce .form-row .fc-mailcheck-suggestion {
   z-index: 2;
   position: relative;
+  display: block;
   margin: 0;
   padding-inline: 0 !important;
   padding: 5px 10px 5px !important;
@@ -68,10 +69,6 @@ div.woocommerce .shipping-method__package .fc-inline-error:before {
   transform: translateY(-50%);
   color: inherit !important;
   speak: never;
-}
-
-div.woocommerce .shipping-method__package .fc-inline-error:before {
-  right: 15px;
 }
 
 div.woocommerce .form-row .fc-inline-error:after,

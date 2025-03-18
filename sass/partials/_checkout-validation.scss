@@ -17,6 +17,7 @@ div.woocommerce .shipping-method__package .fc-inline-error,
 div.woocommerce .form-row .fc-mailcheck-suggestion {
 	z-index: z( 'default' ) + 1;
 	position: relative;
+	display: block;
 	margin: 0;
 	padding-inline: 0 !important; // Needed to override theme styles
 	padding: $checkout-message-error-padding !important; // Needed to override theme styles
@@ -66,10 +67,6 @@ div.woocommerce .shipping-method__package .fc-inline-error:before {
 	transform: translateY( -50% );
 	color: inherit !important; // Needed to override theme styles
 	speak: never;
-}
-
-div.woocommerce .shipping-method__package .fc-inline-error:before {
-	#{ $alignment-left }: $global-spacing-extra-small + $global-spacing-tiny;
 }
 
 
