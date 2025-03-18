@@ -71,7 +71,7 @@
 		substepVisibleStateAttribute: 'data-substep-visible',
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
-		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
+		invalidFieldRowSelector: '.fc-inline-invalid .input-text, .fc-inline-invalid select',
 
 		placeOrderButtonSelector: '.fc-place-order-button',
 		placeOrderSkipMoveSelector: '.has-place-order--below_order_summary',
