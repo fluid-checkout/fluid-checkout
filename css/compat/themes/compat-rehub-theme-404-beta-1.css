@@ -23,10 +23,6 @@ body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-error:before {
   background-color: transparent;
 }
 
-body.theme-rehub-theme div.woocommerce .shipping-method__package .woocommerce-error {
-  padding-left: calc(10px + 24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 1px) !important;
-}
-
 body.theme-rehub-theme div.woocommerce form .form-row.validate-required.woocommerce-validated input.input-text,
 body.theme-rehub-theme div.woocommerce form .form-row.validate-required.woocommerce-invalid input.input-text {
   background-image: none;

@@ -22,11 +22,6 @@ body.theme-Divi .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:
   line-height: 22px;
 }
 
-body.theme-Divi div.woocommerce .form-row .woocommerce-error {
-  font-size: 13px !important;
-  color: var(--fluidcheckout--color--error, #cc1818) !important;
-}
-
 body.theme-Divi div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-details {
   will-change: none;
 }

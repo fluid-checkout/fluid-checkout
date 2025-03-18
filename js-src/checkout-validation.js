@@ -45,6 +45,7 @@
 
 		validClass:                              'woocommerce-validated',
 		invalidClass:                            'woocommerce-invalid',
+		errorMessageClass:                       'fc-inline-error',
 
 		validationMessages: {
 			required:                            'This is a required field.',
@@ -141,7 +142,7 @@
 		var parent = referenceNode.parentNode;
 		var elementId = field.id + '-invalid-' + invalidClass;
 		var element = document.createElement( 'span' );
-		element.className = 'woocommerce-error invalid-' + invalidClass;
+		element.className = _settings.errorMessageClass + ' invalid-' + invalidClass;
 		element.id = elementId;
 		element.innerText = message;
 		parent.insertBefore( element, referenceNode.nextSibling );
@@ -160,7 +161,7 @@
 	 * @param  {String}   invalidClass  Type of error used to identify which message is related to which error.
 	 */
 	var removeInlineMessage = function( field, formRow, invalidClass ) {
-		var messageElements = formRow.querySelectorAll( 'span.woocommerce-error.invalid-' + invalidClass );
+		var messageElements = formRow.querySelectorAll( 'span.' + _settings.errorMessageClass + '.invalid-' + invalidClass );
 		for ( var i = 0; i < messageElements.length; i++ ) {
 			// Get variables
 			var messageElement = messageElements[ i ];
