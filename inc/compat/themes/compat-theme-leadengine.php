@@ -15,6 +15,7 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 
 
 
+
 	/**
 	 * Initialize hooks.
 	 */
@@ -25,6 +26,13 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
+
+		// Buttons
+		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_place_order_button_classes', array( $this, 'add_button_class' ), 10 );
+
 	}
 
 
@@ -60,6 +68,24 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 		return $attributes;
 	}
 
+
+
+	/**
+	 * Add button class from the theme.
+	 * 
+	 * @param  array  $classes  The button classes.
+	 */
+	public function add_button_class( $classes ) {
+		// Add 'tt_button' class to apply theme styles.
+		if ( is_array( $classes ) ) {
+			array_push( $classes, 'tt_button' );
+		} 
+		else {
+			$classes .= ' tt_button';
+		}
+
+		return $classes;
+	}
 }
 
 FluidCheckout_ThemeCompat_LeadEngine::instance();
