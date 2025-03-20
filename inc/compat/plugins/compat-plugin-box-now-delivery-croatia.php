@@ -37,6 +37,9 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+
 		// Output hidden fields
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 	}
@@ -130,6 +133,7 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 			'company' => isset( $terminal_data[ 'boxnowLockerName' ] ) ? esc_html( $terminal_data[ 'boxnowLockerName' ] ) : '',
 			'address_1' => isset( $terminal_data[ 'boxnowLockerAddressLine1' ] ) ? $terminal_data[ 'boxnowLockerAddressLine1' ] : '',
 			'postcode' => isset( $terminal_data[ 'boxnowLockerPostalCode' ] ) ? esc_html( $terminal_data[ 'boxnowLockerPostalCode' ] ) : '',
+			// The plugin sets the city as the second address line so we use it as the city
 			'city' => isset( $terminal_data[ 'boxnowLockerAddressLine2' ] ) ? esc_html( $terminal_data[ 'boxnowLockerAddressLine2' ] ) : '',
 			// Set the country explicitly since the plugin only supports Croatia
 			'country' => 'HR',
@@ -154,6 +158,32 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 
 		// Return unchanged posted data
 		return $posted_data;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
+
+		// Bail if there is no selected terminal
+		if ( empty( $terminal_data ) ) { return $review_text_lines; }
+
+		// Format data
+		$formatted_address = WC()->countries->get_formatted_address( $terminal_data );
+
+		// Add formatted address to the review text lines
+		$review_text_lines[] = $formatted_address;
+
+		return $review_text_lines;
 	}
 
 
