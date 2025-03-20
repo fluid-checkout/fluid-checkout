@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Omnisend for WooCommerce.
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
 
 = 4.0.3 - 2025-03-17 =
