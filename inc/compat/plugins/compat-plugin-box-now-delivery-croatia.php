@@ -42,6 +42,9 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 
 		// Output hidden fields
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
+
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 	}
 
 
@@ -204,6 +207,28 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		echo '<input type="hidden" id="box_now-terminal" name="box_now-terminal" value="'. esc_attr( $selected_terminal ) .'" class="validate-box-now">';
 		echo '</div>';
 		echo '</div>';
+	}
+
+
+
+	/**
+	 * Set the shipping substep as incomplete when no pickup point is selected for the target shipping method.
+	 *
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
+	 */
+	public function maybe_set_substep_incomplete_shipping( $is_substep_complete ) {
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return; }
+
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
+
+		// Maybe set step as incomplete if terminal data is not set
+		if ( empty( $terminal_data ) ) {
+			$is_substep_complete = false;
+		}
+
+		return $is_substep_complete;
 	}
 
 }
