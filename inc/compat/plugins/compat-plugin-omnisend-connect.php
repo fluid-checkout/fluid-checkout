@@ -47,10 +47,12 @@ class FluidCheckout_OmnisendForWooCommerce extends FluidCheckout {
 		$connected = Omnisend_Helper::is_omnisend_connected();
 		if ( ! $connected ) { return; }
 
-		// CHANGE: Get current field value
-		$current_field_value = WC()->checkout->get_value( $field_key );
-		if ( ! $current_field_value ) {
-			$current_field_value = 0;
+		// CHANGE: Save field value to variable
+		$field_value = WC()->checkout->get_value( $field_key );
+		if ( Omnisend_Settings::get_checkout_opt_in_preselected_status() === Omnisend_Settings::STATUS_ENABLED ) {
+			$field_value = 1;
+		} elseif ( null === $field_value ) {
+			$field_value = 0;
 		}
 
 		// Output the newsletter checkbox
@@ -61,12 +63,12 @@ class FluidCheckout_OmnisendForWooCommerce extends FluidCheckout {
 				'class'    => array( 'omnisend_newsletter_checkbox_field' ),
 				'label'    => Omnisend_Settings::get_checkout_opt_in_text(),
 				'value'    => true,
-				// CHANGE: Replace 0 with $current_field_value
-				'default'  => Omnisend_Settings::get_checkout_opt_in_preselected_status() === Omnisend_Settings::STATUS_ENABLED ? 1 : $current_field_value,
+				// CHANGE: Replace ternary operator with variable
+				'default'  => $field_value,
 				'required' => false,
 			),
 			// CHANGE: Replace unavailable method call with variable
-			$current_field_value
+			$field_value
 		);
 	}
 
