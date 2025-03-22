@@ -49,6 +49,21 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 
 		// Save terminal data to order meta
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_terminal_data_to_order_meta' ), 10 );
+
+		// Checkout validation
+		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_validate_pickup_point_selection' ), 10 );
+
+		// Checkout validation settings
+		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 	}
 
 
@@ -69,6 +84,9 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 	 */
 	public function is_shipping_method_selected() {
 		$is_selected = false;
+
+		// Make sure chosen shipping method is set
+		WC()->cart->calculate_shipping();
 
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
@@ -216,6 +234,27 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 
 
 	/**
+	 * Add settings to the plugin settings JS object for the checkout validation.
+	 *
+	 * @param  array  $settings  JS settings object of the plugin.
+	 */
+	public function change_js_settings_checkout_validation( $settings ) {
+		// Get current values
+		$current_validate_field_selector = array_key_exists( 'validateFieldsSelector', $settings ) ? $settings[ 'validateFieldsSelector' ] : '';
+		$current_reference_node_selector = array_key_exists( 'referenceNodeSelector', $settings ) ? $settings[ 'referenceNodeSelector' ] : '';
+		$current_always_validate_selector = array_key_exists( 'alwaysValidateFieldsSelector', $settings ) ? $settings[ 'alwaysValidateFieldsSelector' ] : '';
+
+		// Prepend new values to existing settings
+		$settings[ 'validateFieldsSelector' ] = 'input[name="box_now-terminal"]' . ( ! empty( $current_validate_field_selector ) ? ', ' : '' ) . $current_validate_field_selector;
+		$settings[ 'referenceNodeSelector' ] = 'input[name="box_now-terminal"]' . ( ! empty( $current_reference_node_selector ) ? ', ' : '' ) . $current_reference_node_selector;
+		$settings[ 'alwaysValidateFieldsSelector' ] = 'input[name="box_now-terminal"]' . ( ! empty( $current_always_validate_selector ) ? ', ' : '' ) . $current_always_validate_selector;
+
+		return $settings;
+	}
+
+
+
+	/**
 	 * Make the locker ID field hidden.
 	 * The field is supposed to be hidden by the plugin but it's done via JS which doesn't work correctly with FC.
 	 * 
@@ -293,6 +332,67 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 				$order->save();
 				break;
 			}
+		}
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-box-now-delivery-croatia', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/box-now-delivery-croatia/checkout-validation-box-now-delivery-croatia' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-validation-box-now-delivery-croatia', 'window.addEventListener("load",function(){CheckoutValidationBoxNowDeliveryCroatia.init(fcSettings.checkoutValidationBoxNowDeliveryCroatia);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-box-now-delivery-croatia' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationBoxNowDeliveryCroatia' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe balidate the pickup point selection when target shipping method is selected.
+	 */
+	public function maybe_validate_pickup_point_selection() {
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return; }
+
+		// Initialize variables
+		$field_key = 'box_now-terminal';
+
+		// Get terminal data
+		$terminal_data = '';
+		if ( isset( $_POST[ $field_key ] ) ) {
+			$terminal_data = sanitize_text_field( $_POST[ $field_key ] );
+		}
+
+		// Trigger error if terminal data is empty
+		if ( empty( $terminal_data ) ) {
+			wc_add_notice( __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ), 'error' );
 		}
 	}
 
