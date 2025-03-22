@@ -40,8 +40,9 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 
-		// Output hidden fields
+		// Hidden fields
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'make_locker_id_field_hidden' ), 100 );
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
@@ -210,6 +211,22 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		echo '<input type="hidden" id="box_now-terminal" name="box_now-terminal" value="'. esc_attr( $selected_terminal ) .'" class="validate-box-now">';
 		echo '</div>';
 		echo '</div>';
+	}
+
+
+
+	/**
+	 * Make the locker ID field hidden.
+	 * The field is supposed to be hidden by the plugin but it's done via JS which doesn't work correctly with FC.
+	 * 
+	 * @param  array  $fields  The checkout fields.
+	 */
+	public function make_locker_id_field_hidden( $fields ) {
+		// Hide the locker ID field
+		$fields[ 'billing' ][ '_boxnow_locker_id' ][ 'type' ] = 'hidden';
+		$fields[ 'billing' ][ '_boxnow_locker_id' ][ 'label' ] = '';
+
+		return $fields;
 	}
 
 
