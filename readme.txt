@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin BOX NOW Delivery Croatia.
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
 * Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
 
