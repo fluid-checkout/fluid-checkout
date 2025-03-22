@@ -341,7 +341,10 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Add validation script
+		// BOX NOW script
+		wp_register_script( 'box-now-delivery-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/box-now-delivery-croatia/box-now-delivery' ), array( 'jquery' ), NULL );
+
+		// Validation script
 		wp_register_script( 'fc-checkout-validation-box-now-delivery-croatia', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/box-now-delivery-croatia/checkout-validation-box-now-delivery-croatia' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-box-now-delivery-croatia', 'window.addEventListener("load",function(){CheckoutValidationBoxNowDeliveryCroatia.init(fcSettings.checkoutValidationBoxNowDeliveryCroatia);})' );
 	}
