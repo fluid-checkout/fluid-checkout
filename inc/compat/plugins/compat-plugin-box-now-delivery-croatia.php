@@ -45,6 +45,9 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+
+		// Save terminal data to order meta
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_terminal_data_to_order_meta' ), 10 );
 	}
 
 
@@ -229,6 +232,51 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		}
 
 		return $is_substep_complete;
+	}
+
+
+
+	/**
+	 * Save the terminal data to the order meta.
+	 * This needs to be done since the plugin only saves the terminal ID.
+	 *
+	 * @param  int  $order_id  The order ID.
+	 */
+	public function save_terminal_data_to_order_meta( $order_id ) {
+		// Initialize variables
+		$field_key = 'box_now-terminal';
+
+		// Get terminal data
+		$terminal_data = '';
+		if ( isset( $_POST[ $field_key ] ) ) {
+			$terminal_data = sanitize_text_field( $_POST[ $field_key ] );
+		}
+
+		// Bail if terminal data is empty
+		if ( empty( $terminal_data ) ) { return; }
+
+		// Get the order object
+		$order = wc_get_order( $order_id );
+
+		// Bail if order was not found
+		if ( ! $order ) { return; }
+
+		// Get shipping methods from order
+		$shipping_methods = $order->get_shipping_methods();
+
+		// Iterate shipping methods used for the order
+		foreach ( $shipping_methods as $method ) {
+			// Check whether target shipping method 
+			if ( $this->is_shipping_method_box_now( $method->get_method_id() ) ) {
+				// Save terminal data to order meta
+				// Use session field name as meta key
+				$order->update_meta_data( $field_key, $terminal_data );
+
+				// Save order
+				$order->save();
+				break;
+			}
+		}
 	}
 
 }
