@@ -196,6 +196,9 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return $review_text_lines; }
+
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
 
