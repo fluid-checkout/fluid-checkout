@@ -108,6 +108,9 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 	 * Output the pickup point selection UI from the plugin.
 	 */
 	public function output_pickup_point_selection_ui() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
 		// Bail if target shipping method is not selected
 		if ( ! $this->is_shipping_method_selected() ) { return; }
 
