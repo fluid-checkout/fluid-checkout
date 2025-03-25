@@ -19,8 +19,8 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Checkout template hooks
-		$this->checkout_template_hooks();
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
@@ -40,9 +40,18 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+		// Checkout template hooks
+		$this->checkout_template_hooks();
 	}
 
-
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Checkout hooks
+		$this->checkout_hooks();
+	}
 
 	/**
 	 * Add checkout template hooks.
@@ -54,6 +63,19 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 		// Theme's inner containers
 		add_action( 'fc_checkout_before_main_section', array( $this, 'add_inner_container_opening_tags' ), 10 );
 		add_action( 'fc_checkout_after_main_section', array( $this, 'add_inner_container_closing_tags' ), 10 );
+	}
+
+	/**
+	 * Add or remove checkout hooks.
+	 *
+	 * @return  [type]  [return description]
+	 */
+	public function checkout_hooks() {
+		// Bail if not on the checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Remove hooks
+		remove_action( 'woocommerce_review_order_before_payment', 'porto_woocommerce_review_order_before_payment', 10 );
 	}
 
 
@@ -247,6 +269,17 @@ class FluidCheckout_ThemeCompat_Porto extends FluidCheckout {
 		$content = wp_kses_post( $checkout_steps ) . $content;
 
 		return $content;
+	}
+
+	public function maybe_remove_port_checkout_steps_section() {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $content; }
+
+		// Bail if not on the checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $content; }
+
+		// Bail if Porto section output is disabled in the plugin settings
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_porto_output_checkout_steps_section' ) ) { return $content; }
 	}
 
 }
