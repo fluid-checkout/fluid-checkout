@@ -95,7 +95,7 @@
 		var field = document.querySelector( _settings.typeFieldSelector );
 
 		// Bail if field has no value
-		if ( ! field || ! field.value ) { return; }
+		if ( ! field.value ) { return; }
 
 		// Maybe trigger field valiation
 		if ( window.CheckoutValidation ) {
