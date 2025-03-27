@@ -17,12 +17,14 @@
 
 	'use strict';
 
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
 	var _hasInitialized = false;
 	var _publicMethods = { };
 	var _settings = {
 		typeFieldSelector: '#gus_nip_value',
 		validationStatusFieldSelector: '.validate-woocommerce-gus',
-		sectionSelector: '.woocommerce-billing-fields',
 
 		validationErrorAttribute: 'data-error',
 	};
@@ -86,6 +88,21 @@
 
 
 	/**
+	 * Maybe validate VAT number field.
+	 */
+	var maybeValidateVATField = function() {
+		// Get phone field to re-validate
+		var field = document.querySelector( _settings.typeFieldSelector );
+
+		// Maybe trigger field valiation
+		if ( window.CheckoutValidation ) {
+			CheckoutValidation.validateField( field, 'change' );
+		}
+	}
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
@@ -99,6 +116,11 @@
 
 		// Register validation types
 		registerValidationTypes();
+
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			$( document ).on( 'updated_checkout', maybeValidateVATField );
+		}
 
 		_hasInitialized = true;
 	};

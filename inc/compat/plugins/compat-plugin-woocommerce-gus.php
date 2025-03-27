@@ -97,7 +97,7 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 					if ( ! array_key_exists( $section_name, $field_groups ) || ! array_key_exists( $field_name, $field_groups[ $section_name ] ) ) { continue; }
 
 					// Ensure 'custom_attributes' is initialized as array
-					if ( ! is_array( $field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ] ) ) {
+					if ( ! isset( $field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ] ) || ! is_array( $field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ] ) ) {
 						$field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ] = array();
 					}
 
@@ -214,7 +214,7 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 	public function output_custom_hidden_fields() {
 		// Get field values
 		$billing_country = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_country' );
-		$vat_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( self::VAT_FIELD_KEY );
+		$vat_number = WC()->checkout->get_value( self::VAT_FIELD_KEY );
 
 		// Bail if Poland is not selected as billing country
 		if ( empty( $billing_country ) || 'PL' !== $billing_country ) { return; }
@@ -262,6 +262,9 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Plugin's script
+		wp_register_script( 'frontend-ajax-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-woocommerce-gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutWooCommerceGUS.init(fcSettings.checkoutWooCommerceGUS);})' );
