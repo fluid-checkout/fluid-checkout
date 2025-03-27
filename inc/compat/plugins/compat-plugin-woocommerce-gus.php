@@ -214,17 +214,14 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 	public function output_custom_hidden_fields() {
 		// Get field values
 		$billing_country = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_country' );
-		$vat_number = WC()->checkout->get_value( self::VAT_FIELD_KEY );
-
-		// Bail if Poland is not selected as billing country
-		if ( empty( $billing_country ) || 'PL' !== $billing_country ) { return; }
+		$vat_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( self::VAT_FIELD_KEY );
 
 		// Set default values
 		$is_valid = true;
 		$error_code = '';
 		
 		// Maybe validate VAT number
-		if ( ! empty( $vat_number ) ) {
+		if ( ! empty( $vat_number ) && 'PL' === $billing_country ) {
 			$validation = $this->validate_vat_number( $vat_number );
 			$is_valid = $validation[ 'is_valid' ];
 			$error_code = $validation[ 'error_code' ];
