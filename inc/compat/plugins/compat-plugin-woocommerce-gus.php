@@ -41,6 +41,10 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		// Add hidden fields fragment
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_hidden_fields_fragment' ), 10 );
 
+		// Review text lines
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'remove_phone_number_from_text_lines' ), 10 );
+		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines' ), 10 );
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -251,6 +255,42 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		// Add fragment
 		$fragments[ '#woocommerce_gus-custom_checkout_fields' ] = $html;
 		return $fragments;
+	}
+
+
+
+	/**
+	 * Remove VAT field from the substep review text lines.
+	 * 
+	 * @param  array  $field_keys_skip_list  The list of field keys to skip in the substep review text.
+	 */
+	public function remove_phone_number_from_text_lines( $field_keys_skip_list ) {
+		$field_keys_skip_list[] = self::VAT_FIELD_KEY;
+		return $field_keys_skip_list;
+	}
+
+	/**
+	 * Add the VAT field value to the substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines( $review_text_lines = array() ) {
+		// Bail if default billing field is not disabled in the plugin setttings to avoid phone number duplication
+		if ( isset( $this->plugin_settings[ 'wc-chk-bphone' ] ) && 'nothing' === $this->plugin_settings[ 'wc-chk-bphone' ] ) { return $review_text_lines; }
+
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get prefix from the plugin
+		$prefix = __( 'NIP: ', 'woogus' );
+
+		// Get entered VAT number
+		$vat_number = WC()->checkout->get_value( self::VAT_FIELD_KEY );
+
+		// Add phone number with country code to the review text
+		$review_text_lines[] = $prefix . $vat_number;
+
+		return $review_text_lines;
 	}
 
 
