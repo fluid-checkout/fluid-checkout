@@ -94,6 +94,9 @@
 		// Get phone field to re-validate
 		var field = document.querySelector( _settings.typeFieldSelector );
 
+		// Bail if field has no value
+		if ( ! field || ! field.value ) { return; }
+
 		// Maybe trigger field valiation
 		if ( window.CheckoutValidation ) {
 			CheckoutValidation.validateField( field, 'change' );
