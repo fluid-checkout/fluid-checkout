@@ -27,7 +27,10 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 	 */
 	public function hooks() {
 		// VAT field args
-		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_vat_field_priority' ), 10, 3 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_vat_field_priority' ), 10 );
+
+		// Checkout field args
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_gus_attribute' ), 100 );
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing_address' ), 10 );
@@ -64,6 +67,45 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 
 		// Set new priority
 		$field_groups[ 'billing' ][ self::VAT_FIELD_KEY ][ 'priority' ] = 230;
+
+		return $field_groups;
+	}
+
+
+
+	/**
+	 * Maybe add custom attribute from the plugin to the checkout fields.
+	 * This is done through inline JS in the plugin on `DOMContentLoaded` event.
+	 * PARTLY ADAPTED FROM: add_custom_js_after_checkout_form().
+	 *
+	 * @param  array  $field_groups   The checkout fields.
+	 */
+	public function maybe_add_gus_attribute( $field_groups ) {
+		// Get checkout settings from plugin
+		$settings = FluidCheckout_Settings::instance()->get_option( 'inspire_checkout_fields_settings', array() );
+
+		// Use different option if required data is missing
+		if ( empty( $settings ) || ! isset( $settings[ 'billing' ][ 'billing_address_1' ][ 'gus' ] ) ) {
+			$settings = FluidCheckout_Settings::instance()->get_option( 'gus_inputs', array() );
+		}
+
+		// Iterate through settings to get field IDs to add attribute
+		foreach ( $settings as $section_name => $section ) {
+			foreach ( $section as $field_name => $field_data ) {
+				if ( isset( $field_data[ 'gus' ] ) ) {
+					// Skip if section or field is not available
+					if ( ! array_key_exists( $section_name, $field_groups ) || ! array_key_exists( $field_name, $field_groups[ $section_name ] ) ) { continue; }
+
+					// Ensure 'custom_attributes' is initialized as array
+					if ( ! is_array( $field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ] ) ) {
+						$field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ] = array();
+					}
+
+					// Add 'data-gus' attribute
+					$field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ] = array_merge( $field_groups[ $section_name ][ $field_name ][ 'custom_attributes' ], array( 'data-gus' => $field_data[ 'gus' ] ) );
+				}
+			}
+		}
 
 		return $field_groups;
 	}
