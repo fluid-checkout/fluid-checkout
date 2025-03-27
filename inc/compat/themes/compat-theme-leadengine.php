@@ -15,7 +15,6 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 
 
 
-
 	/**
 	 * Initialize hooks.
 	 */
@@ -32,7 +31,6 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_place_order_button_classes', array( $this, 'add_button_class' ), 10 );
-
 	}
 
 
@@ -63,7 +61,7 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.navbar-default';
+		$attributes[ 'data-sticky-relative-to' ] = '.navbar-default';
 
 		return $attributes;
 	}
