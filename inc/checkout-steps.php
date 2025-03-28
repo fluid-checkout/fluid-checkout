@@ -213,6 +213,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
 		add_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
+		add_action( 'woocommerce_customer_reset_password', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
 		add_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Order attribution
@@ -6868,7 +6869,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Clear session values for all checkout fields.
 	 **/
-	public function unset_all_session_customer_persisted_data() {
+	public function unset_all_session_customer_persisted_data( $__unused_user_object ) {
 		// Bail if session not available
 		if ( ! function_exists( 'WC' ) || ! isset( WC()->session ) ) { return; }
 
