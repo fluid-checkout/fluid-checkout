@@ -4224,14 +4224,39 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_add_shipping_method_option_description( $shipping_method_description, $method ) {
 		// Bail if class methods are not available
 		if ( ! method_exists( $method, 'get_delivery_time' ) || ! method_exists( $method, 'get_description' ) ) { return; }
-		
+
 		// Get optional shipping method data
 		$delivery_time = $method->get_delivery_time();
 		$description = $method->get_description();
 
-		// Maybe separate with a line break if both values are present
-		$output = trim( $delivery_time . "\n" . $description );
-		$shipping_method_description .= nl2br( $output );
+		// Maybe add delivery time
+		if ( ! empty( $delivery_time ) ) {
+			// Initialize breakline as empty
+			$breakline_after_delivery_time = '';
+
+			// Get delivery time text
+			$delivery_time = '<span class="fc-shipping-method__delivery-time">' . wp_kses_post( trim( $delivery_time ) ) . '</span>';
+
+			// Maybe add line break to delivery time if existing description is not empty
+			if ( ! empty( $shipping_method_description ) ) {
+				$delivery_time .= ' <br>'; // Intentionally add a space before `<br>`
+			}
+
+			// Add delivery time before descriptions
+			$shipping_method_description = $delivery_time . $shipping_method_description;
+		}
+
+		// Maybe add description after existing description
+		if ( ! empty( $description ) ) {
+			// Maybe add line break if description is not empty
+			if ( ! empty( $shipping_method_description ) ) {
+				$shipping_method_description .= ' <br>'; // Intentionally add a space before `<br>`
+			}
+
+			// Add description
+			$description = wp_kses_post( trim( $description ) ); // Does not need wrapper
+			$shipping_method_description .= $description;
+		}
 
 		return $shipping_method_description;
 	}
