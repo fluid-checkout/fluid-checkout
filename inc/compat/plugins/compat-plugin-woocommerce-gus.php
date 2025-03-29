@@ -26,6 +26,15 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// VAT field args
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_vat_field_priority' ), 10 );
 
@@ -45,17 +54,69 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'remove_phone_number_from_text_lines' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines' ), 10 );
 
-		// Register assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
-
-		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-
-		// JS settings object
-		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
-
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Plugin's script
+		wp_register_script( 'frontend-ajax-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-woocommerce-gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutWooCommerceGUS.init(fcSettings.checkoutWooCommerceGUS);})' );
+
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-validation-woocommerce-gus' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-validation-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGUS.init(fcSettings.checkoutValidationWooCommerceGUS);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-woocommerce-gus' );
+		wp_enqueue_script( 'fc-checkout-validation-woocommerce-gus' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Bail if plugin function is not available
+		if ( ! method_exists( 'wooGus\Gus\Connect', 'getOptions' ) ) { return $settings; }
+
+		// Add validation settings
+		$settings[ 'checkoutValidationWooCommerceGUS' ] = array(
+			'validationMessages'  => array(
+				'error_1' => __( 'Wtyczka nie została aktywowana', 'woogus'),
+				'error_2' => wooGus\Gus\Connect::getOptions( 'wprowadz_poprawny_nip' ),
+				'error_3' => __( 'Serwer GUS nie odpowiada, prosimy spróbować ponownie później', 'woogus'),
+				'to_short_nip' => __( 'Podany numer nip jest zbyt krótki', 'woogus'),
+			),
+		);
+
+		return $settings;
 	}
 
 
@@ -291,67 +352,6 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		$review_text_lines[] = $prefix . $vat_number;
 
 		return $review_text_lines;
-	}
-
-
-
-	/**
-	 * Register assets.
-	 */
-	public function register_assets() {
-		// Plugin's script
-		wp_register_script( 'frontend-ajax-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-
-		// Checkout scripts
-		wp_register_script( 'fc-checkout-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-woocommerce-gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutWooCommerceGUS.init(fcSettings.checkoutWooCommerceGUS);})' );
-
-		// Add validation script
-		wp_register_script( 'fc-checkout-validation-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-validation-woocommerce-gus' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGUS.init(fcSettings.checkoutValidationWooCommerceGUS);})' );
-	}
-
-	/**
-	 * Enqueue scripts.
-	 */
-	public function enqueue_assets() {
-		// Scripts
-		wp_enqueue_script( 'fc-checkout-woocommerce-gus' );
-		wp_enqueue_script( 'fc-checkout-validation-woocommerce-gus' );
-	}
-
-	/**
-	 * Maybe enqueue assets.
-	 */
-	public function maybe_enqueue_assets() {
-		// Bail if not at checkout
-		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
-
-		$this->enqueue_assets();
-	}
-
-
-
-	/**
-	 * Add settings to the plugin settings JS object.
-	 *
-	 * @param   array  $settings  JS settings object of the plugin.
-	 */
-	public function add_js_settings( $settings ) {
-		// Bail if plugin function is not available
-		if ( ! method_exists( 'wooGus\Gus\Connect', 'getOptions' ) ) { return $settings; }
-
-		// Add validation settings
-		$settings[ 'checkoutValidationWooCommerceGUS' ] = array(
-			'validationMessages'  => array(
-				'error_1' => __( 'Wtyczka nie została aktywowana', 'woogus'),
-				'error_2' => wooGus\Gus\Connect::getOptions( 'wprowadz_poprawny_nip' ),
-				'error_3' => __( 'Serwer GUS nie odpowiada, prosimy spróbować ponownie później', 'woogus'),
-				'to_short_nip' => __( 'Podany numer nip jest zbyt krótki', 'woogus'),
-			),
-		);
-
-		return $settings;
 	}
 
 
