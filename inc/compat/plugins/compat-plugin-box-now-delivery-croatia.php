@@ -31,18 +31,27 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Move shipping method hooks
-		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
-		// Add substep review text lines
-		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+		// Move shipping method hooks
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
 
 		// Hidden fields
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'make_locker_id_field_hidden' ), 100 );
+
+		// Add substep review text lines
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
@@ -55,15 +64,64 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
+	}
 
-		// Register assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
-		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
-		// JS settings object
-		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// BOX NOW script
+		wp_register_script( 'box-now-delivery-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/box-now-delivery-croatia/box-now-delivery' ), array( 'jquery' ), NULL );
+
+		// Validation script
+		wp_register_script( 'fc-checkout-validation-box-now-delivery-croatia', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/box-now-delivery-croatia/checkout-validation-box-now-delivery-croatia' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-validation-box-now-delivery-croatia', 'window.addEventListener("load",function(){CheckoutValidationBoxNowDeliveryCroatia.init(fcSettings.checkoutValidationBoxNowDeliveryCroatia);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-box-now-delivery-croatia' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationBoxNowDeliveryCroatia' ] = array(
+			'validationMessages'  => array(
+				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
+			),
+		);
+
+		return $settings;
+	}
+
+
+
+	/**
+	 * Maybe set session data for the terminals field.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_terminals_field_session_values( $posted_data ) {
+		// Bail if field value was not posted
+		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) ) { return $posted_data; }
+
+		// Save field value to session, as it is needed for the plugin to recover its value
+		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+
+		// Return unchanged posted data
+		return $posted_data;
 	}
 
 
@@ -173,53 +231,6 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 
 
 	/**
-	 * Maybe set session data for the terminals field.
-	 *
-	 * @param  array  $posted_data   Post data for all checkout fields.
-	 */
-	public function maybe_set_terminals_field_session_values( $posted_data ) {
-		// Bail if field value was not posted
-		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) ) { return $posted_data; }
-
-		// Save field value to session, as it is needed for the plugin to recover its value
-		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
-
-		// Return unchanged posted data
-		return $posted_data;
-	}
-
-
-
-	/**
-	 * Add the shipping methods substep review text lines.
-	 * 
-	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
-	 */
-	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
-		// Bail if not an array
-		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
-
-		// Bail if target shipping method is not selected
-		if ( ! $this->is_shipping_method_selected() ) { return $review_text_lines; }
-
-		// Get selected terminal data
-		$terminal_data = $this->get_selected_terminal_data();
-
-		// Bail if there is no selected terminal
-		if ( empty( $terminal_data ) ) { return $review_text_lines; }
-
-		// Format data
-		$formatted_address = WC()->countries->get_formatted_address( $terminal_data );
-
-		// Add formatted address to the review text lines
-		$review_text_lines[] = $formatted_address;
-
-		return $review_text_lines;
-	}
-
-
-
-	/**
 	 * Output the custom hidden fields.
 	 */
 	public function output_custom_hidden_fields( $checkout ) {
@@ -272,6 +283,35 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		$fields[ 'billing' ][ '_boxnow_locker_id' ][ 'label' ] = '';
 
 		return $fields;
+	}
+
+
+
+	/**
+	 * Add the shipping methods substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return $review_text_lines; }
+
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
+
+		// Bail if there is no selected terminal
+		if ( empty( $terminal_data ) ) { return $review_text_lines; }
+
+		// Format data
+		$formatted_address = WC()->countries->get_formatted_address( $terminal_data );
+
+		// Add formatted address to the review text lines
+		$review_text_lines[] = $formatted_address;
+
+		return $review_text_lines;
 	}
 
 
@@ -339,46 +379,6 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 				break;
 			}
 		}
-	}
-
-
-
-	/**
-	 * Register assets.
-	 */
-	public function register_assets() {
-		// BOX NOW script
-		wp_register_script( 'box-now-delivery-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/box-now-delivery-croatia/box-now-delivery' ), array( 'jquery' ), NULL );
-
-		// Validation script
-		wp_register_script( 'fc-checkout-validation-box-now-delivery-croatia', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/box-now-delivery-croatia/checkout-validation-box-now-delivery-croatia' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-box-now-delivery-croatia', 'window.addEventListener("load",function(){CheckoutValidationBoxNowDeliveryCroatia.init(fcSettings.checkoutValidationBoxNowDeliveryCroatia);})' );
-	}
-
-	/**
-	 * Enqueue scripts.
-	 */
-	public function enqueue_assets() {
-		// Scripts
-		wp_enqueue_script( 'fc-checkout-validation-box-now-delivery-croatia' );
-	}
-
-
-
-	/**
-	 * Add settings to the plugin settings JS object.
-	 *
-	 * @param   array  $settings  JS settings object of the plugin.
-	 */
-	public function add_js_settings( $settings ) {
-		// Add validation settings
-		$settings[ 'checkoutValidationBoxNowDeliveryCroatia' ] = array(
-			'validationMessages'  => array(
-				'pickup_point_not_selected' => __( 'Selecting a pickup point is required before proceeding.', 'fluid-checkout' ),
-			),
-		);
-
-		return $settings;
 	}
 
 
