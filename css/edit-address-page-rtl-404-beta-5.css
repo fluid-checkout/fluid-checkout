@@ -260,6 +260,7 @@ div.woocommerce form .form-row input[type=checkbox],
 div.woocommerce form .form-row input[type=radio],
 div.woocommerce form .form-row .select2-selection {
   z-index: 1;
+  float: none;
   position: relative;
 }
 div.woocommerce form .form-row textarea:focus,
@@ -279,6 +280,7 @@ div.woocommerce form .form-row .select2-selection:focus {
   outline-offset: 2px !important;
 }
 div.woocommerce form .form-row .woocommerce-input-wrapper {
+  float: none;
   position: relative;
   display: block;
   width: 100%;
