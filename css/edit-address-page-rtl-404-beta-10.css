@@ -114,7 +114,7 @@ div.woocommerce form .form-row .select2-container .select2-selection {
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
-  clear: left;
+  clear: right;
   float: none;
   flex-grow: unset !important;
   width: 100% !important;
@@ -125,19 +125,19 @@ div.woocommerce form .form-row.form-row-last {
   div.woocommerce form .form-row.form-row-middle,
   div.woocommerce form .form-row.form-row-last {
     clear: none;
-    float: left;
+    float: right;
     width: 48% !important;
   }
 }
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
-  clear: left;
+  clear: right;
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
   div.woocommerce form .form-row.form-row-wide {
-    clear: left;
+    clear: right;
   }
 }
 
@@ -164,13 +164,13 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-middle,
   div.woocommerce form #payment .form-row.form-row-first,
   div.woocommerce form #payment .form-row.form-row-middle {
-    margin-left: 0;
-    margin-right: 4%;
+    margin-right: 0;
+    margin-left: 4%;
   }
 }
 
 div.woocommerce form .form-row.form-row-last {
-  margin-left: 0;
+  margin-right: 0;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
@@ -191,8 +191,8 @@ div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
 }
 
 div.woocommerce form .form-row.fc-checkbox-field .woocommerce-input-wrapper span.description {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description:before {
@@ -210,7 +210,7 @@ div.woocommerce form #shipping_address_2_field > label {
   overflow: unset;
   white-space: normal;
   line-height: 1.2;
-  text-align: left;
+  text-align: right;
 }
 
 .fc-content div.woocommerce form .fc-wrapper .fc-field-group {
@@ -260,6 +260,7 @@ div.woocommerce form .form-row input[type=checkbox],
 div.woocommerce form .form-row input[type=radio],
 div.woocommerce form .form-row .select2-selection {
   z-index: 1;
+  float: none;
   position: relative;
 }
 div.woocommerce form .form-row textarea:focus,
@@ -279,6 +280,7 @@ div.woocommerce form .form-row .select2-selection:focus {
   outline-offset: 2px !important;
 }
 div.woocommerce form .form-row .woocommerce-input-wrapper {
+  float: none;
   position: relative;
   display: block;
   width: 100%;
@@ -352,7 +354,7 @@ div.woocommerce form .form-row .select2-selection--single {
 div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   padding-top: 0;
   padding-bottom: 0;
-  padding-left: var(--fluidcheckout--field--padding-left, 8px);
+  padding-right: var(--fluidcheckout--field--padding-left, 8px);
   line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
 }
 
@@ -415,12 +417,12 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
   display: inline-block;
   width: auto;
   padding: 0;
-  padding-left: 26px;
+  padding-right: 26px;
   cursor: pointer;
   text-decoration: none;
   line-height: 1.2;
   font-size: 15px;
-  text-align: left;
+  text-align: right;
 }
 @media (min-width: 750px) {
   div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
@@ -445,7 +447,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:bef
   font-size: 24px;
   position: absolute;
   top: 50%;
-  left: -3px;
+  right: -3px;
   transform: translateY(-50%);
 }
 div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:focus {
