@@ -36,7 +36,7 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// VAT field args
-		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_vat_field_priority' ), 10 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_vat_nip_field_properties' ), 10 );
 
 		// Checkout field args
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_gus_attribute' ), 100 );
@@ -67,10 +67,6 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		// Plugin's script
 		wp_register_script( 'frontend-ajax-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
-		// Checkout scripts
-		wp_register_script( 'fc-checkout-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-woocommerce-gus' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutWooCommerceGUS.init(fcSettings.checkoutWooCommerceGUS);})' );
-
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-validation-woocommerce-gus' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGUS.init(fcSettings.checkoutValidationWooCommerceGUS);})' );
@@ -81,7 +77,6 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 	 */
 	public function enqueue_assets() {
 		// Scripts
-		wp_enqueue_script( 'fc-checkout-woocommerce-gus' );
 		wp_enqueue_script( 'fc-checkout-validation-woocommerce-gus' );
 	}
 
@@ -122,16 +117,29 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 
 
 	/**
-	 * Maybe change priority for the VAT field from the plugin.
+	 * Maybe change the VAT/NIP field arguments.
 	 *
 	 * @param  array  $field_groups   The checkout fields.
 	 */
-	public function maybe_change_vat_field_priority( $field_groups ) {
+	public function maybe_change_vat_nip_field_properties( $field_groups ) {
 		// Bail if VAT field from the plugin is not available
 		if ( ! array_key_exists( 'billing', $field_groups ) || ! array_key_exists( self::VAT_FIELD_KEY, $field_groups[ 'billing' ] ) ) { return $field_groups; }
 
+		// Initalize variables
+		$field_args = $field_groups[ 'billing' ][ self::VAT_FIELD_KEY ];
+
 		// Set new priority
-		$field_groups[ 'billing' ][ self::VAT_FIELD_KEY ][ 'priority' ] = 230;
+		$field_args[ 'priority' ] = 230; // TODO: Remove this after fixing the fields display order caveat
+
+		// Set loading indicator on change
+		$class_args = array_merge( $field_args[ 'class' ], array( 'update_totals_on_change', 'loading_indicator_on_change' ) );
+		if ( class_exists( 'FluidCheckout_CheckoutFields' ) ) {
+			$class_args = FluidCheckout_CheckoutFields::instance()->merge_form_field_class_args( $field_args[ 'class' ], $class_args );
+		}
+		$field_args[ 'class' ] = $class_args;
+
+		// Update field args
+		$field_groups[ 'billing' ][ self::VAT_FIELD_KEY ] = $field_args;
 
 		return $field_groups;
 	}
