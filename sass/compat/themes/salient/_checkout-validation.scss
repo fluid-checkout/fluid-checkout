@@ -1,9 +1,0 @@
-// ------------------------------------
-// CHECKOUT VALIDATION MESSAGES
-// ------------------------------------
-
-body#{ $_body-theme-selector } div.woocommerce .form-row .woocommerce-error,
-body#{ $_body-theme-selector } div.woocommerce .shipping-method__package .woocommerce-error,
-body#{ $_body-theme-selector } div.woocommerce .form-row .fc-mailcheck-suggestion {
-	background-color: $checkout-message-error-background-color !important; // Needed to override theme styles
-}

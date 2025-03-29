@@ -2441,7 +2441,7 @@ msgstr "ఏదీ లేదు."
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format"
 msgid "%1$s"
-msgstr "%1$లు"
+msgstr "%1$s"
 
 #: inc/checkout-steps.php:3495
 #. translators: %1$s the selected option text, %2$s the field label.

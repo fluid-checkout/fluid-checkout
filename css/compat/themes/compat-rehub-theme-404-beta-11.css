@@ -1,0 +1,33 @@
+body.theme-rehub-theme .fc-wrapper .fc-step__substep-save,
+body.theme-rehub-theme .fc-wrapper .fc-step__next-step,
+body.theme-rehub-theme .fc-wrapper .fc-step__substep-save:hover,
+body.theme-rehub-theme .fc-wrapper .fc-step__next-step:hover {
+  box-shadow: none !important;
+}
+
+body.theme-rehub-theme.theme-rehub-theme .fc-content {
+  padding-bottom: 0;
+}
+
+body.theme-rehub-theme .processing.woocommerce-checkout .place-order:before {
+  content: none !important;
+}
+
+body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-message,
+body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-error,
+body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-info {
+  box-shadow: none;
+}
+
+body.theme-rehub-theme div.woocommerce .fc-wrapper .woocommerce-error:before {
+  background-color: transparent;
+}
+
+body.theme-rehub-theme div.woocommerce form .form-row.validate-required.woocommerce-validated input.input-text,
+body.theme-rehub-theme div.woocommerce form .form-row.validate-required.woocommerce-invalid input.input-text {
+  background-image: none;
+}
+
+body.theme-rehub-theme .select2-container--default .select2-selection--single {
+  border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+}
