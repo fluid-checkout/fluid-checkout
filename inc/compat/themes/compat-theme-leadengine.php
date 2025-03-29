@@ -71,15 +71,19 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 	/**
 	 * Add button class from the theme.
 	 * 
-	 * @param  array  $classes  The button classes.
+	 * @param  array|string  $classes  The button classes.
 	 */
 	public function add_button_class( $classes ) {
-		// Add 'tt_button' class to apply theme styles.
+		// Define button class
+		$button_class = 'tt_button';
+
+		// Add button class to the classes array
 		if ( is_array( $classes ) ) {
-			array_push( $classes, 'tt_button' );
-		} 
+			array_push( $classes, $button_class );
+		}
+		// Otherwise append button class as a string
 		else {
-			$classes .= ' tt_button';
+			$classes .= ' ' . $button_class;
 		}
 
 		return $classes;
