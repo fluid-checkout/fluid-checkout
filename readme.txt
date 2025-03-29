@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Woocommerce GUS/Regon.
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
 * Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
 * Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
@@ -365,7 +366,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Bump tested up to WooCommerce 9.7.1
 * Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
 * Added: Compatibility with theme The7.
-* Added: Compatibility with plugin Woocommerce GUS/Regon.
 * Improved: Compatibility with plugin Checkout Field Editor for WooCommerce Pro by ThemeHigh. Fix spacing for custom sections positioned after account creation form fields.
 * Improved: Compatibility with plugin WooCommerce Stripe Gateway. Fixed express checkout changes affecting correct preloading of some checkout field values.
 * Improved: Enforce some styles for the place order button to improve compatibility with some themes.
