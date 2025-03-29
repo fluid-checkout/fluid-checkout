@@ -4226,40 +4226,48 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if class methods are not available
 		if ( ! method_exists( $method, 'get_delivery_time' ) || ! method_exists( $method, 'get_description' ) ) { return; }
 
+		// Initialize variables
+		$new_description = '';
+
 		// Get optional shipping method data
 		$delivery_time = $method->get_delivery_time();
 		$description = $method->get_description();
 
 		// Maybe add delivery time
 		if ( ! empty( $delivery_time ) ) {
-			// Initialize breakline as empty
-			$breakline_after_delivery_time = '';
-
 			// Get delivery time text
 			$delivery_time = '<span class="fc-shipping-method__delivery-time">' . wp_kses_post( trim( $delivery_time ) ) . '</span>';
 
-			// Maybe add line break to delivery time if existing description is not empty
-			if ( ! empty( $shipping_method_description ) ) {
-				$delivery_time .= ' <br>'; // Intentionally add a space before `<br>`
-			}
-
-			// Add delivery time before descriptions
-			$shipping_method_description = $delivery_time . $shipping_method_description;
+			// Add delivery time
+			$new_description .= $delivery_time;
 		}
 
 		// Maybe add description after existing description
 		if ( ! empty( $description ) ) {
-			// Maybe add line break if description is not empty
-			if ( ! empty( $shipping_method_description ) ) {
-				$shipping_method_description .= ' <br>'; // Intentionally add a space before `<br>`
+			// Get description text
+			$description = wp_kses_post( trim( $description ) ); // Does not need wrapper
+
+			// Maybe add line break to description if existing description is not empty
+			if ( ! empty( $new_description ) ) {
+				$new_description .= ' <br>'; // Intentionally add a space before `<br>`
 			}
 
-			// Add description
-			$description = wp_kses_post( trim( $description ) ); // Does not need wrapper
-			$shipping_method_description .= $description;
+			// Add description after existing description
+			$new_description .= $description;
 		}
 
-		return $shipping_method_description;
+		// Maybe add new description to shipping method description
+		if ( ! empty( $shipping_method_description ) ) {
+			// Maybe add line break to description if existing description is not empty
+			if ( ! empty( $new_description ) ) {
+				$new_description .= ' <br>'; // Intentionally add a space before `<br>`
+			}
+
+			// Add existing description
+			$new_description .= $shipping_method_description;
+		}
+
+		return $new_description;
 	}
 
 
