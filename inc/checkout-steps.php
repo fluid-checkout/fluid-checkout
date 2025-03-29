@@ -140,6 +140,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
+		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
@@ -473,6 +474,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
+		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
@@ -4210,6 +4212,54 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Prevent autoselect
 		return false;
+	}
+
+
+
+	/**
+	 * Maybe add shipping method option description from WooCommerce.
+	 * 
+	 * @param  string            $shipping_method_description  Shipping method description.
+	 * @param  WC_Shipping_Rate  $method                       Shipping method rate data.
+	 */
+	public function maybe_add_shipping_method_option_description( $shipping_method_description, $method ) {
+		// Bail if class methods are not available
+		if ( ! method_exists( $method, 'get_delivery_time' ) || ! method_exists( $method, 'get_description' ) ) { return; }
+
+		// Get optional shipping method data
+		$delivery_time = $method->get_delivery_time();
+		$description = $method->get_description();
+
+		// Maybe add delivery time
+		if ( ! empty( $delivery_time ) ) {
+			// Initialize breakline as empty
+			$breakline_after_delivery_time = '';
+
+			// Get delivery time text
+			$delivery_time = '<span class="fc-shipping-method__delivery-time">' . wp_kses_post( trim( $delivery_time ) ) . '</span>';
+
+			// Maybe add line break to delivery time if existing description is not empty
+			if ( ! empty( $shipping_method_description ) ) {
+				$delivery_time .= ' <br>'; // Intentionally add a space before `<br>`
+			}
+
+			// Add delivery time before descriptions
+			$shipping_method_description = $delivery_time . $shipping_method_description;
+		}
+
+		// Maybe add description after existing description
+		if ( ! empty( $description ) ) {
+			// Maybe add line break if description is not empty
+			if ( ! empty( $shipping_method_description ) ) {
+				$shipping_method_description .= ' <br>'; // Intentionally add a space before `<br>`
+			}
+
+			// Add description
+			$description = wp_kses_post( trim( $description ) ); // Does not need wrapper
+			$shipping_method_description .= $description;
+		}
+
+		return $shipping_method_description;
 	}
 
 
