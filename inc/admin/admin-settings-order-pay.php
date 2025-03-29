@@ -68,15 +68,15 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 				array(
 
 					array(
-						'title' => __( 'Order pay page', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
+						'title' => __( 'Order pay page', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'Allows customers to make payments for orders that are either created manually by the store admin or not completed during checkout.' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-order-pay/' ) . FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html( true ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'  => __( 'Allows customers to make payments for orders that are either created manually by the store admin or not completed during checkout.' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-order-pay/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'    => 'fc_pro_order_pay_layout_options',
 					),
 
 					array(
 						'title'             => __( 'Order pay', 'fluid-checkout' ),
-						'desc'              => __( 'Enable order pay page optimizations', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
+						'desc'              => __( 'Enable order pay page optimizations', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Changes the layout of order pay page for existing orders pending payment from the customer.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_order_pay',
 						'type'              => 'checkbox',
