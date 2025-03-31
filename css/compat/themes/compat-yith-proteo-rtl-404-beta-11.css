@@ -3,6 +3,10 @@ body.theme-yith-proteo .fc-wrapper .woocommerce-additional-fields .woocommerce-a
   margin-left: 0;
 }
 
+body.theme-yith-proteo .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
+  margin-top: 0;
+}
+
 body.theme-yith-proteo div.woocommerce form .form-row .select2-container .select2-selection__arrow {
   top: 5px;
 }
