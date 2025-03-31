@@ -39,7 +39,7 @@
     "gulp-wp-pot": "^2.5.0",
     "load-json-file": "^6.2.0",
     "node-fetch": "^3.3.2",
-    "sass": "^1.51.0",
+    "sass": "^1.77.8",
     "uglify-js": "^3.15.5"
   },
   "dependencies": {
