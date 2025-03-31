@@ -19,11 +19,42 @@ class FluidCheckout_ThemeCompat_YithProteo extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Checkout page hooks
+		$this->checkout_hooks();
+	}
+
+	/*
+	* Add or remove checkout page hooks.
+	*/
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Theme options
+		add_filter( 'theme_mod_yith_proteo_use_enhanced_checkbox_and_radio', array( $this, 'force_disable_echnanced_checkbox_and_radio' ), 100 );
+	}
+
+
+
+	/**
+	 * Force disable enhanced checkbox and radio setting from the theme since it's not compatible with Fluid Checkout.
+	 */
+	public function force_disable_echnanced_checkbox_and_radio() {
+		return 'no';
 	}
 
 
