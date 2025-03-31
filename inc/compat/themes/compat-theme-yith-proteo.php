@@ -50,6 +50,9 @@ class FluidCheckout_ThemeCompat_YithProteo extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
+		// Quantity controls
+		remove_action( 'woocommerce_after_quantity_input_field', 'yith_proteo_customize_quantity_inputs', 10 );
 	}
 
 
