@@ -1,13 +1,13 @@
 .fc-wrapper .woocommerce-myparcel__delivery-options {
-  margin-top: 20px;
+  margin-top: remsize(2rem);
 }
 
 .fc-wrapper .woocommerce-myparcel__delivery-options h3 {
-  margin: 0 0 10px 0;
+  margin: 0 0 remsize(1rem) 0;
   padding: 0;
   color: var(--fluidcheckout--color--dark-grey, #535156);
   font-weight: bold;
-  font-size: 15px;
+  font-size: remsize(1.5rem);
   text-transform: uppercase;
   text-align: left;
   line-height: 1.2;
@@ -15,9 +15,9 @@
 }
 @media (min-width: 1000px) {
   .fc-wrapper .woocommerce-myparcel__delivery-options h3 {
-    margin: 0 0 10px 0;
-    padding: 0 5px 0 0;
-    font-size: 15px;
+    margin: 0 0 remsize(1rem) 0;
+    padding: 0 remsize(0.5rem) 0 0;
+    font-size: remsize(1.5rem);
   }
 }
 

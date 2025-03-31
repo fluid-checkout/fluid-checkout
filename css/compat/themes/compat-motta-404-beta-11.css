@@ -35,6 +35,6 @@ body.theme-motta div.woocommerce form .form-row input[type=checkbox]:focus {
 }
 
 body.theme-motta div.woocommerce form .form-row input[type=checkbox]:focus:before {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid remsize(0.2rem) var(--fluidcheckout--color--dark-grey, #535156);
+  outline-offset: remsize(0.2rem);
 }

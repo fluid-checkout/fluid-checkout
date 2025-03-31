@@ -1,15 +1,15 @@
 body.has-fc-button-styles .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
   display: inline-block;
-  min-height: var(--fluidcheckout--button--height, 44px) !important;
-  height: var(--fluidcheckout--button--height, 44px) !important;
-  line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
-  padding: 0 20px !important;
-  border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
+  min-height: var(--fluidcheckout--button--height, remsize(4.4rem)) !important;
+  height: var(--fluidcheckout--button--height, remsize(4.4rem)) !important;
+  line-height: calc(var(--fluidcheckout--button--height, remsize(4.4rem)) - var(--fluidcheckout--button--border-width, remsize(0.1rem)) * 2) !important;
+  padding: 0 remsize(2rem) !important;
+  border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, remsize(0.1rem)) transparent !important;
   border-radius: var(--fluidcheckout--button--border-radius, 0) !important;
   font-weight: var(--fluidcheckout--button--font-weight, normal) !important;
   font-size: var(--fluidcheckout--button--font-size, inherit) !important;
   text-decoration: none !important;
-  box-shadow: 0 3px var(--fluidcheckout--button--box-shadow-blur-radius, 8px) var(--fluidcheckout--button--box-shadow-color, transparent) !important;
+  box-shadow: 0 remsize(0.3rem) var(--fluidcheckout--button--box-shadow-blur-radius, remsize(0.8rem)) var(--fluidcheckout--button--box-shadow-color, transparent) !important;
   cursor: pointer !important;
   transition: all 0.3s !important;
 }
@@ -44,7 +44,7 @@ body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-co
 
 @media (max-width: 749px) {
   .fc-wrapper .fc-coupon-code-section__message-text {
-    margin-bottom: 10px;
+    margin-bottom: remsize(1rem);
   }
 }
 
@@ -60,7 +60,7 @@ body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-co
 }
 
 .fc-wrapper .fc-coupon-code-section__inner .fc-coupon-code-section {
-  margin-top: 10px;
+  margin-top: remsize(1rem);
 }
 
 .fc-wrapper .fc-coupon_code__collapsible .collapsible-content__inner {
@@ -80,48 +80,48 @@ body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-co
 .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
   margin: 0;
   width: 100% !important;
-  height: 55px;
+  height: remsize(5.5rem);
 }
 .fc-wrapper .fc-coupon_code__collapsible input#coupon_code:focus {
   z-index: 10;
   position: relative;
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
-  outline-offset: 2px !important;
+  outline: solid remsize(0.2rem) var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: remsize(0.2rem) !important;
 }
 
 body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
   z-index: 11;
   position: absolute !important;
-  top: 5px !important;
+  top: remsize(0.5rem) !important;
   margin: 0;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: remsize(2rem);
+  padding-right: remsize(2rem);
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   left: auto;
-  right: 5px;
-  height: 45px !important;
-  min-height: 45px !important;
+  right: remsize(0.5rem);
+  height: remsize(4.5rem) !important;
+  min-height: remsize(4.5rem) !important;
   line-height: 1 !important;
   width: auto;
 }
 body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
-  outline-offset: 2px !important;
+  outline: solid remsize(0.2rem) var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: remsize(0.2rem) !important;
 }
 
 .fc-wrapper .fc-step__substep-text-content--coupon-codes:not(:empty) {
-  margin-bottom: 20px;
+  margin-bottom: remsize(2rem);
 }
 
 .fc-wrapper .fc-coupon-codes__coupon {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 -10px 5px;
-  padding: 5px 10px;
-  border: var(--fluidcheckout--coupon-code--border-style, dashed) 1px var(--fluidcheckout--coupon-code--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
-  border-radius: var(--fluidcheckout--coupon-code--border-radius, 5px);
+  margin: 0 -remsize(1rem) remsize(0.5rem);
+  padding: remsize(0.5rem) remsize(1rem);
+  border: var(--fluidcheckout--coupon-code--border-style, dashed) remsize(0.1rem) var(--fluidcheckout--coupon-code--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
+  border-radius: var(--fluidcheckout--coupon-code--border-radius, remsize(0.5rem));
   background-color: var(--fluidcheckout--coupon-code--background-color, transparent);
 }
 
@@ -131,8 +131,8 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 }
 
 .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
-  margin-left: 10px;
-  font-size: 15px;
+  margin-left: remsize(1rem);
+  font-size: remsize(1.5rem);
   font-weight: normal;
   line-height: inherit;
   text-decoration: underline;
@@ -143,8 +143,8 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
   color: var(--fluidcheckout--color--error, #cc1818);
 }
 .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
-  outline-offset: 1px !important;
+  outline: dotted remsize(0.1rem) var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: remsize(0.1rem) !important;
 }
 
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error,

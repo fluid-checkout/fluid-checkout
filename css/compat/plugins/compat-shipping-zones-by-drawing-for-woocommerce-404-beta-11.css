@@ -4,10 +4,10 @@ div.woocommerce form .form-row.szbd-hidden {
 
 body .fc-checkout-order-review #szbd_checkout_field,
 body .fc-step__substep[data-substep-id=payment] #szbd_checkout_field {
-  margin-bottom: 20px;
+  margin-bottom: remsize(2rem);
 }
 
 body .fc-step__substep[data-substep-id=shipping_address] #szbd_checkout_field + .woocommerce-shipping-fields,
 body .fc-step__substep[data-substep-id=shipping_address] .woocommerce-shipping-fields + #szbd_checkout_field {
-  margin-top: 20px;
+  margin-top: remsize(2rem);
 }

@@ -23,8 +23,8 @@ body.theme-betheme.has-highlighted-billing-section div.woocommerce form .fc-step
 
 @media (max-width: 768px) {
   body.theme-betheme .fc-content.content_wrapper .section_wrapper {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: remsize(2rem) !important;
+    padding-right: remsize(2rem) !important;
   }
 }
 
@@ -61,7 +61,7 @@ body.theme-betheme .fc-wrapper #payment .mfn-payment-check {
 }
 
 body.theme-betheme #order_review .woocommerce-checkout-review-order-table .order-total .amount {
-  font-size: 15px;
+  font-size: remsize(1.5rem);
 }
 
 body.theme-betheme .mfn-cart-step-2 .woocommerce #order_review {
@@ -69,8 +69,8 @@ body.theme-betheme .mfn-cart-step-2 .woocommerce #order_review {
 }
 
 body.theme-betheme .select2-container .select2-selection--single .select2-selection__rendered {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: remsize(1rem);
+  padding-right: remsize(1rem);
 }
 
 body.theme-betheme .select2-container .select2-selection:focus, body.theme-betheme .select2-container .select2-selection:focus .select2-selection__rendered {

@@ -4,7 +4,7 @@ body.theme-hestia div.woocommerce form .form-row .input-checkbox {
 }
 
 body.theme-hestia div.woocommerce .form-row .input-text.form-control {
-  padding-left: var(--fluidcheckout--field--padding-left, 8px);
+  padding-left: var(--fluidcheckout--field--padding-left, remsize(0.8rem));
 }
 
 body.theme-hestia div.woocommerce form .form-row .woocommerce-input-wrapper.form-group,

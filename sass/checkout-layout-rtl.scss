@@ -1,10 +1,9 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_variables-rtl",
-	"abstract/_all";
+@use "abstract/_all-early";
+@use "abstract/_variables-rtl";
+@use "abstract/_all";
 
 
 

@@ -1,7 +1,7 @@
 @media (max-width: 749px) {
   body.theme-salient.woocommerce-checkout .fc-content.container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: remsize(2rem);
+    padding-right: remsize(2rem);
     max-width: 100%;
   }
 }
@@ -34,5 +34,5 @@ body.theme-salient.woocommerce-checkout .select2-container .select2-selection--s
 }
 
 body.theme-salient.woocommerce-checkout .select2-container .select2-selection--single .select2-selection__rendered {
-  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
+  line-height: calc(var(--fluidcheckout--field--height, remsize(4.5625rem)) - var(--fluidcheckout--field--border-width, remsize(0.1rem)) * 2);
 }

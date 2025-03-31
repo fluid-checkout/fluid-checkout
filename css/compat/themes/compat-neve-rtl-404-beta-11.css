@@ -3,7 +3,7 @@ body.theme-neve .fc-wrapper .fc-expansible-form-section__content--coupon_code .f
 }
 
 body.theme-neve.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
-  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, remsize(0.1rem)) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {
@@ -11,18 +11,18 @@ body.theme-neve div.woocommerce form .form-row .select2-selection.select2-select
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  margin-top: 8px;
+  margin-top: remsize(0.8rem);
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__clear {
-  margin-left: 20px;
+  margin-left: remsize(2rem);
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
-  padding-right: 10px !important;
+  padding-right: remsize(1rem) !important;
 }
 
 body.theme-neve div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
-  padding-right: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
-  padding-bottom: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
+  padding-right: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem)) !important;
+  padding-bottom: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem)) !important;
 }

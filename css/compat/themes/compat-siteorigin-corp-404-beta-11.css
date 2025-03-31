@@ -11,5 +11,5 @@ body.theme-siteorigin-corp div.woocommerce form .form-row .select2-container--de
 }
 
 body.theme-siteorigin-corp div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
-  font-size: var(--fluidcheckout--field--font-size, 16px);
+  font-size: var(--fluidcheckout--field--font-size, remsize(1.6rem));
 }

@@ -17,9 +17,9 @@ body.theme-orchid-store .fc-wrapper .woocommerce-billing-fields.woocommerce-bill
 }
 
 body.theme-orchid-store .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-  padding-right: 16px;
+  padding-right: remsize(1.6rem);
 }
 
 body.theme-orchid-store div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  left: 5px;
+  left: remsize(0.5rem);
 }

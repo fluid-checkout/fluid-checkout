@@ -11,6 +11,5 @@
 //
 // ------------------------------------
 
-@import
-    "strip-unit",
-    "remsize";
+@use "strip-unit";
+@use "remsize";

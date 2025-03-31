@@ -1,9 +1,9 @@
 body.theme-dt-the7.phantom-sticky:not(.has-checkout-header) {
-  padding-top: 120px;
+  padding-top: remsize(12rem);
 }
 
 body.theme-dt-the7.phantom-sticky:not(.has-checkout-header).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
-  padding-top: 5px;
+  padding-top: remsize(0.5rem);
 }
 
 body.theme-dt-the7.has-checkout-header .checkout-page-title + #main.fc-main {
@@ -26,7 +26,7 @@ body.theme-dt-the7 .dt-mobile-header + #main .wc-empty-cart-message {
   }
   body.theme-dt-the7.has-checkout-header .fc-checkout-header + .page-title,
   body.theme-dt-the7.has-checkout-header .fc-checkout-header + .checkout-page-title {
-    margin-top: 60px;
+    margin-top: remsize(6rem);
   }
 }
 body.theme-dt-the7 .woocommerce-checkout-review-order .product-quantity,
@@ -70,7 +70,7 @@ body.theme-dt-the7:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sti
 
 @media screen and (min-width: 783px) {
   body.theme-dt-the7.phantom-sticky:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
-    transform: translateY(5px);
+    transform: translateY(remsize(0.5rem));
   }
 }
 

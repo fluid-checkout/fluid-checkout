@@ -1,5 +1,5 @@
 .fc-wrapper .wc-gzd-edit-data-notice {
-  margin-bottom: 20px;
+  margin-bottom: remsize(2rem);
 }
 
 .fc-wrapper .wc-gzd-order-submit {
@@ -13,7 +13,7 @@
 }
 
 .fc-sidebar .wc-gzd-place-order .fc-place-order {
-  padding: 0 0 10px;
+  padding: 0 0 remsize(1rem);
 }
 
 body.has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .wc-gzd-place-order .fc-place-order {
@@ -21,7 +21,7 @@ body.has-payment-method-selected--payment_method_ppcp-gateway .fc-sidebar .wc-gz
 }
 
 body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-place-order {
-  padding-bottom: 10px;
+  padding-bottom: remsize(1rem);
 }
 
 .fc-wrapper .fc-sidebar .fc-sidebar__inner .wc-gzd-order-submit div.place-order {
@@ -33,7 +33,7 @@ body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wr
 }
 
 .fc-wrapper .wc-gzd-checkbox-placeholder:not(:empty) {
-  margin-bottom: 10px;
+  margin-bottom: remsize(1rem);
 }
 
 body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .wc-gzd-place-order .fc-place-order-button,

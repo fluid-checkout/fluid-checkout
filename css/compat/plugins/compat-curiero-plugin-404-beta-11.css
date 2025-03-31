@@ -1,16 +1,16 @@
 .woocommerce .wc_shipping_dpd_boxes_header,
 .woocommerce .wc_shipping_fan_collectpoint_header,
 .woocommerce .wc_shipping_sameday_lockers_header {
-  padding-top: 20px;
+  padding-top: remsize(2rem);
 }
 
 .woocommerce .wc_shipping_dpd_boxes,
 .woocommerce .wc_shipping_sameday_lockers,
 .woocommerce .wc_shipping_fan_collectpoint {
-  padding-top: 5px;
+  padding-top: remsize(0.5rem);
 }
 
 .woocommerce .wc_shipping_sameday_lockers + .shipping-pickup-store > div {
-  padding-top: 5px;
+  padding-top: remsize(0.5rem);
   text-align: right;
 }

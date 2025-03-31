@@ -1,6 +1,6 @@
 @media (min-width: 1000px) {
   body.theme-colibri-wp .fc-sidebar__inner {
-    padding-top: 5px;
+    padding-top: remsize(0.5rem);
   }
 }
 
@@ -20,8 +20,8 @@ body.theme-colibri-wp.woocommerce-checkout .fc-content label {
 @media (max-width: 749px) {
   body.theme-colibri-wp.woocommerce-checkout .fc-content .h-section-boxed-container {
     width: 100%;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: remsize(2rem) !important;
+    padding-right: remsize(2rem) !important;
   }
 }
 
@@ -31,40 +31,40 @@ body.theme-colibri-wp .fc-wrapper .fc-coupon-codes__coupon:after {
 }
 
 body.theme-colibri-wp .fc-checkout-header__inner {
-  padding: 0 20px;
+  padding: 0 remsize(2rem);
 }
 @media (min-width: 750px) {
   body.theme-colibri-wp .fc-checkout-header__inner {
-    padding: 0 30px;
+    padding: 0 remsize(3rem);
   }
 }
 @media (min-width: 1000px) {
   body.theme-colibri-wp .fc-checkout-header__inner {
-    padding: 0 50px;
+    padding: 0 remsize(5rem);
   }
 }
 @media (min-width: 1280px) {
   body.theme-colibri-wp .fc-checkout-header__inner {
-    padding: 0 50px;
+    padding: 0 remsize(5rem);
   }
 }
 @media (min-width: 1500px) {
   body.theme-colibri-wp .fc-checkout-header__inner {
-    padding: 0 50px;
+    padding: 0 remsize(5rem);
   }
 }
 @media (min-width: 2000px) {
   body.theme-colibri-wp .fc-checkout-header__inner {
-    padding: 0 50px;
+    padding: 0 remsize(5rem);
   }
 }
 
 body.theme-colibri-wp .fc-place-order {
-  padding: 30px 0 10px;
+  padding: remsize(3rem) 0 remsize(1rem);
 }
 
 body.theme-colibri-wp .fc-progress-bar {
-  margin: 0 -20px;
+  margin: 0 -remsize(2rem);
 }
 @media (min-width: 750px) {
   body.theme-colibri-wp .fc-progress-bar {
@@ -73,11 +73,11 @@ body.theme-colibri-wp .fc-progress-bar {
 }
 
 body.theme-colibri-wp .fc-progress-bar__count {
-  margin: 0 0 5px;
+  margin: 0 0 remsize(0.5rem);
 }
 @media (min-width: 1000px) {
   body.theme-colibri-wp .fc-progress-bar__count {
-    margin: 0 0 5px;
+    margin: 0 0 remsize(0.5rem);
   }
 }
 
@@ -87,8 +87,8 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-checkout-order-review_
 }
 
 body.theme-colibri-wp .ts-control {
-  padding-right: 30px;
-  padding-left: var(--fluidcheckout--field--padding-left, 8px);
+  padding-right: remsize(3rem);
+  padding-left: var(--fluidcheckout--field--padding-left, remsize(0.8rem));
 }
 
 body.theme-colibri-wp div.woocommerce .woocommerce-NoticeGroup .woocommerce-error,
@@ -154,11 +154,11 @@ body.theme-colibri-wp div.woocommerce form input[type=text],
 body.theme-colibri-wp div.woocommerce form input[type=tel],
 body.theme-colibri-wp div.woocommerce form input[type=url],
 body.theme-colibri-wp div.woocommerce form input[type=password] {
-  padding: 0 var(--fluidcheckout--field--padding-left, 8px);
-  height: var(--fluidcheckout--field--height, 45.625px);
+  padding: 0 var(--fluidcheckout--field--padding-left, remsize(0.8rem));
+  height: var(--fluidcheckout--field--height, remsize(4.5625rem));
   font-family: inherit;
-  font-size: var(--fluidcheckout--field--font-size, 16px);
-  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  font-size: var(--fluidcheckout--field--font-size, remsize(1.6rem));
+  border: var(--fluidcheckout--field--border-width, remsize(0.1rem)) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
   border-radius: var(--fluidcheckout--field--border-radius, 0);
 }
 body.theme-colibri-wp div.woocommerce form textarea:focus,

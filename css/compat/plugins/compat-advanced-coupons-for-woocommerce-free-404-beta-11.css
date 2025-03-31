@@ -1,6 +1,6 @@
 div.woocommerce .fc-wrapper .woocommerce-checkout-review-order-table ~ .acfw-checkout-ui-block {
-  margin: 0 -20px;
-  margin-top: 10px;
+  margin: 0 -remsize(2rem);
+  margin-top: remsize(1rem);
   margin-bottom: 0;
 }
 

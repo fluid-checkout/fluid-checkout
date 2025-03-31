@@ -1,1 +1,1 @@
-body.woocommerce-checkout #gls-pickup-info{margin-top:10px;margin-bottom:0;padding:20px;border:1px solid #ddd}
+body.woocommerce-checkout #gls-pickup-info{margin-top:remsize(1rem);margin-bottom:0;padding:remsize(2rem);border:1px solid #ddd}

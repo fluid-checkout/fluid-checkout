@@ -4,9 +4,9 @@ body.theme-razzi .fc-wrapper .widget {
 }
 
 body.theme-razzi .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
-  padding-right: 30px;
+  padding-right: remsize(3rem);
 }
 
 body.theme-razzi div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  left: 8px;
+  left: remsize(0.8rem);
 }

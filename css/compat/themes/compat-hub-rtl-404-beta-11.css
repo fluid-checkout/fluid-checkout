@@ -1,10 +1,10 @@
 body.theme-hub #order_review .woocommerce-checkout-review-order-table .amount {
-  font-size: 15px;
+  font-size: remsize(1.5rem);
 }
 
 body.theme-hub .ts-wrapper.single .ts-control:after {
   z-index: 10;
-  left: 20px;
+  left: remsize(2rem);
 }
 
 body.theme-hub div.woocommerce form.woocommerce-checkout .form-row {
@@ -35,13 +35,13 @@ body.theme-hub div.woocommerce form input[type=tel],
 body.theme-hub div.woocommerce form input[type=url],
 body.theme-hub div.woocommerce form input[type=password],
 body.theme-hub div.woocommerce form .select2-selection--single {
-  padding: 0 var(--fluidcheckout--field--padding-left, 8px);
-  height: var(--fluidcheckout--field--height, 45.625px);
-  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  padding: 0 var(--fluidcheckout--field--padding-left, remsize(0.8rem));
+  height: var(--fluidcheckout--field--height, remsize(4.5625rem));
+  border: var(--fluidcheckout--field--border-width, remsize(0.1rem)) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
 
 body.theme-hub div.woocommerce form .form-row .select2-selection--single {
-  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  border: var(--fluidcheckout--field--border-width, remsize(0.1rem)) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
 
 body.theme-hub div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {

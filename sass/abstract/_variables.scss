@@ -403,7 +403,7 @@ $checkout-progress-background-color:                  var( --fluidcheckout--chec
 
 $checkout-progress-bar-height:                        remsize( .5rem ) !default;
 $checkout-progress-bar-border:                        none !default;
-$checkout-progress-bar-border-radius:                 math.div( $checkout-progress-bar-height, 2 ) !default;
+$checkout-progress-bar-border-radius:                 $checkout-progress-bar-height / 2 !default;
 $checkout-progress-bar-color:                         var( --fluidcheckout--checkout-progress--bar-color, $light-grey ) !default;
 $checkout-progress-bar-complete-color:                var( --fluidcheckout--checkout-progress--bar-color--complete, $success-color ) !default;
 $checkout-progress-bar-current-color:                 var( --fluidcheckout--checkout-progress--bar-color--current, $success-color ) !default;
@@ -521,8 +521,8 @@ $order-summary-container-padding--large-screen:  0 !default;
 
 $order-summary-table-margin:                     0 #{ - $global-spacing-small } !default;
 $order-summary-table-margin--large-screen:       0 #{ - $global-spacing-small } remsize( -.1rem ) !default;
-$order-summary-table-width:                      calc( 100% + #{ $global-spacing-small * 2 } ) !default;
-$order-summary-table-width--large-screen:        calc( 100% + #{ $global-spacing-small * 2 } ) !default;
+$order-summary-table-width:                      calc( 100% + #{ $global-spacing-small } * 2 ) !default;
+$order-summary-table-width--large-screen:        calc( 100% + #{ $global-spacing-small } * 2 ) !default;
 
 $order-summary-cell-padding-horizontal:          $global-spacing-small !default;
 $order-summary-cell-padding-vertical:            $global-spacing-extra-small !default;

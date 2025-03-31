@@ -3,19 +3,19 @@ body.theme-phlox-pro .woocommerce ul#shipping_method .shipping-method__option .s
 }
 
 body.theme-phlox-pro .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
-  top: 12px;
+  top: remsize(1.2rem);
 }
 
 body.theme-phlox-pro .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label:after {
-  top: 12px;
+  top: remsize(1.2rem);
 }
 
 body.theme-phlox-pro .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label:before {
-  top: 12px;
+  top: remsize(1.2rem);
 }
 
 body.theme-phlox-pro .fc-wrapper #payment ul.payment_methods > .wc_payment_method > input[type=radio]:first-child + label:after {
-  top: 12px;
+  top: remsize(1.2rem);
 }
 
 body.theme-phlox-pro div.woocommerce .form-row.woocommerce-invalid > .validation-message {
@@ -43,8 +43,8 @@ body.theme-phlox-pro div.woocommerce form .form-row .select2-selection {
 }
 
 body.theme-phlox-pro .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-  left: 20px;
-  right: 20px;
+  left: remsize(2rem);
+  right: remsize(2rem);
 }
 
 body.theme-phlox-pro div.woocommerce form .form-row .select2-selection .select2-selection__arrow {

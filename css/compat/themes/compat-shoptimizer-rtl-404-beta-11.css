@@ -73,5 +73,5 @@ body.theme-shoptimizer div.woocommerce form .form-row .select2-selection .select
 }
 
 body.theme-shoptimizer div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  left: 5px;
+  left: remsize(0.5rem);
 }

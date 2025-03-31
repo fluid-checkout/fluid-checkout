@@ -80,7 +80,7 @@ body.has-flyout--open {
 [data-flyout-content] {
   display: none;
   max-width: 100%;
-  padding: 20px 20px;
+  padding: remsize(2rem) remsize(2rem);
 }
 @media (min-width: 750px) {
   [data-flyout-content] {
@@ -94,42 +94,42 @@ body.has-flyout--open {
 }
 @media (min-width: 1280px) {
   [data-flyout-content] {
-    max-width: 1200px;
+    max-width: remsize(120rem);
   }
 }
 @media (min-width: 1500px) {
   [data-flyout-content] {
-    max-width: 1400px;
+    max-width: remsize(140rem);
   }
 }
 @media (min-width: 2000px) {
   [data-flyout-content] {
-    max-width: 1400px;
+    max-width: remsize(140rem);
   }
 }
 @media (min-width: 750px) {
   [data-flyout-content] {
-    padding: 20px 30px;
+    padding: remsize(2rem) remsize(3rem);
   }
 }
 @media (min-width: 1000px) {
   [data-flyout-content] {
-    padding: 20px 50px;
+    padding: remsize(2rem) remsize(5rem);
   }
 }
 @media (min-width: 1280px) {
   [data-flyout-content] {
-    padding: 20px 50px;
+    padding: remsize(2rem) remsize(5rem);
   }
 }
 @media (min-width: 1500px) {
   [data-flyout-content] {
-    padding: 20px 50px;
+    padding: remsize(2rem) remsize(5rem);
   }
 }
 @media (min-width: 2000px) {
   [data-flyout-content] {
-    padding: 20px 50px;
+    padding: remsize(2rem) remsize(5rem);
   }
 }
 
@@ -139,8 +139,8 @@ body.has-flyout--open {
 
 .button--flyout-close {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: remsize(2rem);
+  left: remsize(2rem);
   color: inherit;
 }
 
@@ -157,9 +157,9 @@ body.has-flyout--open {
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   content: "\e827";
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
+  width: remsize(2.4rem);
+  height: remsize(2.4rem);
+  font-size: remsize(2.4rem);
 }
 
 .has-flyout--open .flyout-overlay {

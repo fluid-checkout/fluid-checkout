@@ -1,5 +1,5 @@
 .fc-content .shipping-method__package {
-  margin-bottom: 10px;
+  margin-bottom: remsize(1rem);
 }
 
 .fc-content .ups-pickups {

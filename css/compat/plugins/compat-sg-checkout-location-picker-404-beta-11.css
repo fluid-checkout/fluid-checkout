@@ -7,7 +7,7 @@
 }
 
 .sg-checkout-location-picker-wrapper .sg-container {
-  margin-top: 20px;
+  margin-top: remsize(2rem);
 }
 
 .sg-checkout-location-picker-wrapper .sg-container p:last-child {

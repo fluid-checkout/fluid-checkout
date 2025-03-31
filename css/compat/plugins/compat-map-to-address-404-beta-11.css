@@ -7,15 +7,15 @@
 }
 
 .addresses-section .sg-del-address-list-inner > .address-inline {
-  margin-top: 20px;
+  margin-top: remsize(2rem);
   margin-bottom: 0;
   width: 100%;
-  min-height: 100px;
+  min-height: remsize(10rem);
   background-color: var(--fluidcheckout--color--white, #fff);
 }
 
 .sg-del-add-selected-address {
-  margin-top: 20px;
+  margin-top: remsize(2rem);
   margin-bottom: 0;
   background-color: var(--fluidcheckout--color--white, #fff);
 }

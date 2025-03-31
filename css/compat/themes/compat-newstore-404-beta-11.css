@@ -7,7 +7,7 @@ body.theme-newstore div.woocommerce form .form-row input[type=text],
 body.theme-newstore div.woocommerce form .form-row input[type=tel],
 body.theme-newstore div.woocommerce form .form-row input[type=url],
 body.theme-newstore div.woocommerce form .form-row input[type=password] {
-  height: var(--fluidcheckout--field--height, 45.625px) !important;
+  height: var(--fluidcheckout--field--height, remsize(4.5625rem)) !important;
 }
 body.theme-newstore div.woocommerce form .form-row input[type=checkbox] {
   top: 0;

@@ -1,15 +1,15 @@
 body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
   display: inline-block;
-  min-height: var(--fluidcheckout--button--height, 44px) !important;
-  height: var(--fluidcheckout--button--height, 44px) !important;
-  line-height: calc(var(--fluidcheckout--button--height, 44px) - var(--fluidcheckout--button--border-width, 1px) * 2) !important;
-  padding: 0 20px !important;
-  border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, 1px) transparent !important;
+  min-height: var(--fluidcheckout--button--height, remsize(4.4rem)) !important;
+  height: var(--fluidcheckout--button--height, remsize(4.4rem)) !important;
+  line-height: calc(var(--fluidcheckout--button--height, remsize(4.4rem)) - var(--fluidcheckout--button--border-width, remsize(0.1rem)) * 2) !important;
+  padding: 0 remsize(2rem) !important;
+  border: var(--fluidcheckout--button--border-style, solid) var(--fluidcheckout--button--border-width, remsize(0.1rem)) transparent !important;
   border-radius: var(--fluidcheckout--button--border-radius, 0) !important;
   font-weight: var(--fluidcheckout--button--font-weight, normal) !important;
   font-size: var(--fluidcheckout--button--font-size, inherit) !important;
   text-decoration: none !important;
-  box-shadow: 0 3px var(--fluidcheckout--button--box-shadow-blur-radius, 8px) var(--fluidcheckout--button--box-shadow-color, transparent) !important;
+  box-shadow: 0 remsize(0.3rem) var(--fluidcheckout--button--box-shadow-blur-radius, remsize(0.8rem)) var(--fluidcheckout--button--box-shadow-color, transparent) !important;
   cursor: pointer !important;
   transition: all 0.3s !important;
 }
@@ -35,15 +35,15 @@ body.theme-umea .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .
 body.theme-umea #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=checkbox],
 body.theme-umea #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box input[type=radio] {
   margin-left: 0 !important;
-  margin-right: 5px !important;
-  width: 16px !important;
-  height: 16px !important;
+  margin-right: remsize(0.5rem) !important;
+  width: remsize(1.6rem) !important;
+  height: remsize(1.6rem) !important;
   vertical-align: middle;
 }
 
 body.theme-umea .fc-wrapper .fc-coupon_code__collapsible input#coupon_code {
-  padding: 11px 18px !important;
-  border: solid 1px #959595 !important;
+  padding: remsize(1.1rem) remsize(1.8rem) !important;
+  border: solid remsize(0.1rem) #959595 !important;
 }
 
 body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
@@ -51,7 +51,7 @@ body.theme-umea .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply 
 }
 
 body.theme-umea div.woocommerce form .form-row {
-  margin-bottom: 20px !important;
+  margin-bottom: remsize(2rem) !important;
 }
 
 body.theme-umea div.woocommerce form .form-row:last-child {
@@ -74,9 +74,9 @@ body.theme-umea div.woocommerce form .form-row input[type=checkbox],
 body.theme-umea div.woocommerce form .form-row input[type=checkbox]:after,
 body.theme-umea div.woocommerce form .form-row input[type=radio]:after {
   margin-left: 0 !important;
-  margin-right: 5px !important;
-  width: 16px !important;
-  height: 16px !important;
+  margin-right: remsize(0.5rem) !important;
+  width: remsize(1.6rem) !important;
+  height: remsize(1.6rem) !important;
   vertical-align: middle;
 }
 body.theme-umea div.woocommerce form .form-row input[type=checkbox]:after,
@@ -91,5 +91,5 @@ body.theme-umea .select2-container--default .select2-selection--single {
 }
 
 body.theme-umea div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
-  padding-left: var(--fluidcheckout--field--padding-left, 8px);
+  padding-left: var(--fluidcheckout--field--padding-left, remsize(0.8rem));
 }

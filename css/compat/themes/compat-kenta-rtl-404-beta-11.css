@@ -13,13 +13,13 @@ body.theme-kenta {
 
 @media (max-width: 749px) {
   body.theme-kenta.woocommerce-checkout .fc-content.kenta-container.px-gutter {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: remsize(2rem);
+    padding-left: remsize(2rem);
   }
 }
 
 body.theme-kenta .fc-wrapper .fc-place-order .fc-place-order-button {
-  min-height: 50px;
+  min-height: remsize(5rem);
   font-size: 1.15rem;
 }
 

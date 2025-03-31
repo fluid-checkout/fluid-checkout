@@ -15,10 +15,10 @@ body.theme-loobek .fc-wrapper .woocommerce-billing-fields {
 }
 
 body.theme-loobek div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
-  margin: 0 -20px !important;
+  margin: 0 -remsize(2rem) !important;
 }
 @media (min-width: 1000px) {
   body.theme-loobek div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table {
-    margin: 0 -20px -1px;
+    margin: 0 -remsize(2rem) remsize(-0.1rem);
   }
 }

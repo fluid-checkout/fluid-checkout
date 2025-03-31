@@ -4,7 +4,7 @@ body.theme-pressmart .fc-wrapper .woocommerce-billing-fields {
 
 @media (max-width: 999px) {
   body.theme-pressmart.woocommerce-checkout header.fc-checkout-header + #page-title {
-    padding-top: 110px;
+    padding-top: calc(50px + remsize(6rem));
   }
 }
 

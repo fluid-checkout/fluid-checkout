@@ -1,7 +1,7 @@
 body.theme-striz .fc-wrapper #payment .payment_methods > li.wc_payment_method > input[type=radio]:first-child:checked + label:before {
   margin: 0;
-  width: 24px;
-  height: 24px;
+  width: remsize(2.4rem);
+  height: remsize(2.4rem);
 }
 
 body.theme-striz .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a {

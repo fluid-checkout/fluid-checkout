@@ -1,8 +1,8 @@
 @media (max-width: 749px) {
   body.theme-aperitif.woocommerce-checkout #qodef-page-inner.qodef-content-grid {
     width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: remsize(2rem);
+    padding-left: remsize(2rem);
   }
 }
 

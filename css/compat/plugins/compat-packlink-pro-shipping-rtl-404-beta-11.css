@@ -1,4 +1,4 @@
 .fc-wrapper .shipping-method__options #packlink-drop-off-picker {
-  margin-top: 5px;
+  margin-top: remsize(0.5rem);
   margin-right: 0;
 }

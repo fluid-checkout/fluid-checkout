@@ -1,5 +1,5 @@
 body.theme-konte div.woocommerce .woocommerce-NoticeGroup .woocommerce-error {
-  margin-bottom: 15px;
+  margin-bottom: remsize(1.5rem);
 }
 
 body.theme-konte .ts-control {
@@ -44,7 +44,7 @@ body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__
 body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
 body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection__rendered,
 body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .ts-control {
-  padding-right: 10px;
+  padding-right: remsize(1rem);
 }
 
 body.theme-konte div.woocommerce form .form-row .input-checkbox {
@@ -100,5 +100,5 @@ body.theme-konte.has-highlighted-billing-section div.woocommerce form .fc-step__
 }
 
 body.theme-konte div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  left: 10px;
+  left: remsize(1rem);
 }

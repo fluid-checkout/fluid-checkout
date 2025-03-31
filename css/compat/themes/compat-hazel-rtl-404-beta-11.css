@@ -1,16 +1,16 @@
 body.theme-hazel:not(.has-checkout-header) {
-  padding-top: 120px;
+  padding-top: remsize(12rem);
 }
 
 body.theme-hazel:not(.has-checkout-header).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
-  padding-top: 5px;
+  padding-top: remsize(0.5rem);
 }
 
 @media (max-width: 749px) {
   body.theme-hazel.woocommerce-checkout .fc-content.container .container_inner {
     width: 100%;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: remsize(2rem);
+    padding-left: remsize(2rem);
   }
 }
 
@@ -38,7 +38,7 @@ body.theme-hazel:not(.has-checkout-header).admin-bar .fc-progress-bar[data-stick
 }
 @media screen and (min-width: 783px) {
   body.theme-hazel:not(.has-checkout-header).admin-bar .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
-    transform: translateY(5px);
+    transform: translateY(remsize(0.5rem));
   }
 }
 
@@ -51,15 +51,15 @@ body.theme-hazel div.woocommerce form .form-row .select2-container .select2-sele
 
 body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__rendered,
 body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-  line-height: 45px;
+  line-height: remsize(4.5rem);
 }
 
 body.theme-hazel div.woocommerce form .form-row .select2-container .select2-selection__arrow {
-  left: 10px;
+  left: remsize(1rem);
 }
 
 body.theme-hazel div.woocommerce form .form-row input[type=email] {
-  padding-right: var(--fluidcheckout--field--padding-left, 8px);
+  padding-right: var(--fluidcheckout--field--padding-left, remsize(0.8rem));
 }
 
 body.theme-hazel .select2-search--dropdown .select2-search__field {

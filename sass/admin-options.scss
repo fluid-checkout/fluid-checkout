@@ -1,9 +1,8 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all";
+@use "abstract/_all-early";
+@use "abstract/_all";
 
 
 
@@ -12,8 +11,7 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"admin/admin-image-uploader",
-	"admin/admin-checkout-layout",
-	"admin/admin-design-template",
-	"admin/admin-license-keys";
+@use "admin/admin-image-uploader";
+@use "admin/admin-checkout-layout";
+@use "admin/admin-design-template";
+@use "admin/admin-license-keys";

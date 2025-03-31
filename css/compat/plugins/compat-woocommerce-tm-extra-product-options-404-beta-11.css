@@ -1,6 +1,6 @@
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .product-details,
 .fc-wrapper table.cart .tc-associated-table-product .product-details {
-  padding-left: 40px;
+  padding-left: remsize(2rem)remsize(2rem);
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .product-details .tc-associated-table-product-name:before,
@@ -14,7 +14,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   opacity: 0.3;
   position: absolute;
   transform: translateX(-100%);
-  padding-right: 5px;
+  padding-right: remsize(0.5rem);
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .tc-associated-table-product .tc-associated-table-product-indent,
@@ -32,5 +32,5 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .fc-tc-associated-product-quantity,
 .fc-wrapper table.cart .fc-tc-associated-product-quantity {
   display: inline-block;
-  padding-top: 5px;
+  padding-top: remsize(0.5rem);
 }

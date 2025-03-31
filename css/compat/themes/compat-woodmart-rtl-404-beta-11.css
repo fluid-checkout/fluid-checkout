@@ -19,17 +19,17 @@ body.theme-woodmart .woocommerce-shipping-fields {
 
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
   position: relative;
-  margin-right: 5px;
-  margin-left: -5px;
-  width: 30px;
-  height: 30px;
+  margin-right: remsize(0.5rem);
+  margin-left: -remsize(0.5rem);
+  width: remsize(3rem);
+  height: remsize(3rem);
   line-height: inherit;
   text-decoration: none;
-  text-indent: -10000px;
+  text-indent: remsize(-1000rem);
 }
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 1px;
+  outline: dotted remsize(0.1rem) var(--fluidcheckout--color--dark-grey, #535156);
+  outline-offset: remsize(0.1rem);
 }
 
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon::before {
@@ -37,9 +37,9 @@ body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-rem
   display: block;
   top: 0;
   right: 0;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: remsize(3rem);
+  height: remsize(3rem);
+  line-height: remsize(3rem);
   text-align: center;
   text-indent: 0;
 }
@@ -60,44 +60,44 @@ body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
 }
 
 body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
-  margin-left: -10px;
+  margin-left: -remsize(1rem);
 }
 
 div.woocommerce form .form-row .select2-selection {
-  height: var(--fluidcheckout--field--height, 45.625px) !important;
+  height: var(--fluidcheckout--field--height, remsize(4.5625rem)) !important;
 }
 
 body.theme-woodmart div.woocommerce .select2-container .select2-selection--single .select2-selection__rendered {
-  padding: 0 16px !important;
+  padding: 0 remsize(1.6rem) !important;
 }
 
 body.theme-woodmart div.woocommerce .select2-container .select2-selection--multiple .select2-selection__rendered {
   display: block;
   margin-bottom: 0;
-  padding-right: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
-  padding-left: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
+  padding-right: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem)) !important;
+  padding-left: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem)) !important;
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  left: 5px !important;
+  left: remsize(0.5rem) !important;
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  left: 24px;
+  left: remsize(2.4rem);
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-selection__clear {
-  left: 5px;
+  left: remsize(0.5rem);
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
-  margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
+  margin-top: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem));
 }
 
 body.theme-woodmart .fc-wrapper .wd-shipping-progress-bar {
-  margin-bottom: 20px;
+  margin-bottom: remsize(2rem);
 }
 
 body.theme-woodmart .fc-wrapper .wd-shipping-progress-bar .wd-progress-bar {
-  border-radius: var(--fluidcheckout--section--border-radius, 8px);
+  border-radius: var(--fluidcheckout--section--border-radius, remsize(0.8rem));
 }

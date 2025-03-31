@@ -22,5 +22,5 @@ body.theme-zk-nito div.woocommerce .fc-wrapper #order_review table.woocommerce-c
 body.theme-zk-nito div.woocommerce input[type=checkbox] {
   position: static;
   margin-left: 0;
-  margin-right: 5px;
+  margin-right: remsize(0.5rem);
 }

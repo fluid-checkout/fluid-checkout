@@ -1,4 +1,4 @@
 .iti__country-container {
-  height: var(--fluidcheckout--field--height, 45.625px);
+  height: var(--fluidcheckout--field--height, remsize(4.5625rem));
   z-index: 200;
 }

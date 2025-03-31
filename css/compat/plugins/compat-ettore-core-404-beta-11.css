@@ -9,12 +9,12 @@ body.qodef-header-appearance--sticky .fc-wrapper .fc-sidebar .fc-sidebar__inner 
 }
 
 body.qodef-header-appearance--sticky:not(.qodef-header--sticky-display) .fc-wrapper .fc-sidebar .fc-sidebar__inner {
-  top: 5px !important;
+  top: remsize(0.5rem) !important;
 }
 
 @media (max-width: 1200px) {
   body.qodef-mobile-header-appearance--sticky:not(.qodef-mobile-header--sticky-display) .fc-wrapper .fc-sidebar .fc-sidebar__inner {
-    top: 5px !important;
+    top: remsize(0.5rem) !important;
   }
 }
 
@@ -29,11 +29,11 @@ body.qodef-header-appearance--sticky .fc-progress-bar[data-sticky-states].is-act
 }
 
 body.qodef-header-appearance--sticky:not(.qodef-header--sticky-display) .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
-  top: 5px !important;
+  top: remsize(0.5rem) !important;
 }
 
 @media (max-width: 1200px) {
   body.qodef-mobile-header-appearance--sticky:not(.qodef-mobile-header--sticky-display) .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
-    top: 5px !important;
+    top: remsize(0.5rem) !important;
   }
 }

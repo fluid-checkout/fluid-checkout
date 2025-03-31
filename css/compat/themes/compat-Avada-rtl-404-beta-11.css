@@ -4,16 +4,16 @@ body.theme-Avada .fusion-header-wrapper {
 
 @media (max-width: 749px) {
   html:not(.avada-has-site-width-percent) body.theme-Avada #main {
-    padding: 60px 20px 0;
+    padding: remsize(6rem) remsize(2rem) 0;
   }
 }
 
 body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
-  font-size: 15px;
+  font-size: remsize(1.5rem);
 }
 @media (min-width: 1000px) {
   body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
-    font-size: 15px;
+    font-size: remsize(1.5rem);
   }
 }
 
@@ -30,8 +30,8 @@ body.theme-Avada .fc-wrapper .payment_box > p:first-child {
 }
 
 body.theme-Avada.woocommerce-checkout #wrapper div.woocommerce .fc-wrapper .fc-checkout-order-review-title {
-  padding-top: 5px;
-  font-size: 15px;
+  padding-top: remsize(0.5rem);
+  font-size: remsize(1.5rem);
 }
 
 body.theme-Avada div.woocommerce form.woocommerce-checkout .fc-wrapper #order_review {

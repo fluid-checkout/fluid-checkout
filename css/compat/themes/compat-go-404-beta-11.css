@@ -1,8 +1,8 @@
 @media (max-width: 749px) {
   body.theme-go.woocommerce-checkout .fc-content.content-area__wrapper {
     width: 100%;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: remsize(2rem) !important;
+    padding-right: remsize(2rem) !important;
   }
 }
 
@@ -26,5 +26,5 @@ body.theme-go div.woocommerce form .form-row .select2-selection--multiple {
 }
 
 body.theme-go div.woocommerce form .form-row .select2-selection--multiple {
-  border-width: 2px;
+  border-width: remsize(0.2rem);
 }

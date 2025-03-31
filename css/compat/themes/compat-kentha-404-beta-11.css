@@ -26,12 +26,12 @@ body.theme-kentha .fc-content {
 }
 
 body.theme-kentha#qtBody div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__apply {
-  min-height: 45px !important;
+  min-height: remsize(4.5rem) !important;
 }
 
 body.theme-kentha#qtBody .fc-wrapper .fc-place-order .fc-place-order-button {
-  min-width: 240px !important;
-  min-height: 50px !important;
+  min-width: remsize(24rem) !important;
+  min-height: remsize(5rem) !important;
 }
 
 body.theme-kentha .qt-mobilemenu + .fc-content .fc-progress-bar__inner {
@@ -74,11 +74,11 @@ body.theme-kentha div.woocommerce form .form-row [type=radio] + label:after {
 body.theme-kentha div.woocommerce form .form-row [type=radio]:checked + label:after,
 body.theme-kentha div.woocommerce form .form-row .with-gap[type=radio]:checked + label:before,
 body.theme-kentha div.woocommerce form .form-row .with-gap[type=radio]:checked + label:after {
-  border: 2px solid transparent;
+  border: remsize(0.2rem) solid transparent;
 }
 
 body.theme-kentha#qtBody div.woocommerce form .form-row textarea {
-  min-height: 100px;
+  min-height: remsize(10rem);
   font-size: 1rem;
 }
 
@@ -102,7 +102,7 @@ body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step_
 body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel],
 body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
 body.theme-kentha.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password] {
-  padding: 0 var(--fluidcheckout--field--padding-left, 8px);
+  padding: 0 var(--fluidcheckout--field--padding-left, remsize(0.8rem));
 }
 
 body.theme-kentha .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
@@ -114,13 +114,13 @@ body.theme-kentha .woocommerce ul#shipping_method .shipping-method__option .ship
 }
 
 body.theme-kentha .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-label:before {
-  top: 6px;
-  left: 6px;
+  top: remsize(0.6rem);
+  left: remsize(0.6rem);
 }
 
 body.theme-kentha .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label:after {
-  top: 5px;
-  left: 4px;
+  top: remsize(0.5rem);
+  left: remsize(0.4rem);
   border-color: transparent;
   background-color: transparent;
 }
@@ -134,7 +134,7 @@ body.theme-kentha#qtBody .select2-container--default .select2-search--dropdown .
 }
 
 body.theme-kentha#qtBody .select2-dropdown {
-  box-shadow: 0 3px 8px var(--fluidcheckout--shadow-color--darker, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  box-shadow: 0 remsize(0.3rem) remsize(0.8rem) var(--fluidcheckout--shadow-color--darker, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
 
 body.theme-kentha#qtBody .select2-results__options .select2-results__option {
@@ -159,6 +159,6 @@ body.theme-kentha#qtBody div.woocommerce form .form-row .select2-selection--sing
 
 body.theme-kentha#qtBody div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   color: var(--fluidcheckout--color--dark-grey, #535156);
-  font-size: var(--fluidcheckout--field--font-size, 16px);
-  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
+  font-size: var(--fluidcheckout--field--font-size, remsize(1.6rem));
+  line-height: calc(var(--fluidcheckout--field--height, remsize(4.5625rem)) - var(--fluidcheckout--field--border-width, remsize(0.1rem)) * 2);
 }

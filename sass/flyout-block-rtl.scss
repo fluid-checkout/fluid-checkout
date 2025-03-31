@@ -1,11 +1,10 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_variables-rtl",
-	"abstract/_all",
-	"../node_modules/flyout-block/sass/abstract/variables";
+@use "abstract/_all-early";
+@use "abstract/_variables-rtl";
+@use "abstract/_all";
+@use "../node_modules/flyout-block/sass/abstract/variables";
 
 
 

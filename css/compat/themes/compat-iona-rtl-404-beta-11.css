@@ -3,19 +3,19 @@ body.theme-iona .page_content_wrap .content_wrap {
 }
 @media (max-width: 749px) {
   body.theme-iona .page_content_wrap .content_wrap {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: remsize(2rem);
+    padding-left: remsize(2rem);
     width: 100% !important;
   }
 }
 
 body.theme-iona.hide_fixed_rows .fc-wrapper .fc-sidebar .fc-sidebar__inner {
-  top: 5px !important;
+  top: remsize(0.5rem) !important;
   transition: top var(--trx-addons-fixed-rows-duration) ease-in;
 }
 
 body.theme-iona.hide_fixed_rows .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
-  top: 5px !important;
+  top: remsize(0.5rem) !important;
   transition: top var(--trx-addons-fixed-rows-duration) ease-in;
 }
 
@@ -25,7 +25,7 @@ body.theme-iona div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-cou
 }
 
 body.theme-iona .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-form__label {
-  padding-right: 20px;
+  padding-right: remsize(2rem);
 }
 
 body.theme-iona div.woocommerce form .form-row .woocommerce-terms-and-conditions-wrapper input[type=checkbox]:focus {
@@ -33,8 +33,8 @@ body.theme-iona div.woocommerce form .form-row .woocommerce-terms-and-conditions
 }
 
 body.theme-iona div.woocommerce form .form-row .woocommerce-terms-and-conditions-wrapper input[type=checkbox]:focus:before {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156);
-  outline-offset: 2px;
+  outline: solid remsize(0.2rem) var(--fluidcheckout--color--dark-grey, #535156);
+  outline-offset: remsize(0.2rem);
 }
 
 body.theme-iona div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.order-total th {
@@ -56,8 +56,8 @@ body.theme-iona div.woocommerce input[type=checkbox] {
 }
 
 body.theme-iona div.woocommerce form .form-row input[type=checkbox]:focus {
-  outline: solid 2px var(--fluidcheckout--color--dark-grey, #535156) !important;
-  outline-offset: 2px !important;
+  outline: solid remsize(0.2rem) var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: remsize(0.2rem) !important;
 }
 
 body.theme-iona div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {

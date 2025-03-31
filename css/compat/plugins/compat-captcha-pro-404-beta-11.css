@@ -1,12 +1,12 @@
 .fc-wrapper .fc-checkout-step[data-step-id=payment] > .cptch_block {
   margin: 0;
-  padding: 20px 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: remsize(2rem) remsize(2rem);
+  padding-top: remsize(2rem);
+  padding-bottom: remsize(2rem);
 }
 
 .fc-wrapper .fc-checkout-step[data-step-id=payment] > #cptch_slide_captcha_container {
-  padding: 20px 20px;
+  padding: remsize(2rem) remsize(2rem);
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -16,5 +16,5 @@
 }
 
 .fc-wrapper .place-order > .cptch_block {
-  margin-top: 20px;
+  margin-top: remsize(2rem);
 }

@@ -3,7 +3,7 @@ body.theme-aora .shipping-method__option input[type=radio] {
 }
 
 body.theme-aora.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
-  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, remsize(0.1rem)) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
 }
 
 body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
@@ -23,6 +23,6 @@ body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .sel
 }
 
 body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-  margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
-  margin-left: var(--fluidcheckout--select2--inner-spacing, 5px);
+  margin-top: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem));
+  margin-left: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem));
 }

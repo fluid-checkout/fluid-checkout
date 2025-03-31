@@ -7,7 +7,7 @@ body.theme-ettore.has-fc-button-styles.has-checkout-layout--multi-step .fc-wrapp
 @media (max-width: 749px) {
   body.theme-ettore.woocommerce-checkout .qodef-content-grid {
     width: 100%;
-    padding-right: 20px !important;
-    padding-left: 20px !important;
+    padding-right: remsize(2rem) !important;
+    padding-left: remsize(2rem) !important;
   }
 }

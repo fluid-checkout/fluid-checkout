@@ -18,5 +18,5 @@ div.woocommerce form .form-row input[type=text],
 div.woocommerce form .form-row input[type=tel],
 div.woocommerce form .form-row input[type=url],
 div.woocommerce form .form-row input[type=password] {
-  height: var(--fluidcheckout--field--height, 45.625px);
+  height: var(--fluidcheckout--field--height, remsize(4.5625rem));
 }

@@ -38,14 +38,14 @@ body.theme-flatsome div.woocommerce form .form-row .select2-selection__arrow {
 
 body.theme-flatsome div.woocommerce form .form-row .select2-selection--multiple {
   padding: 0;
-  padding-left: 10px;
-  padding-right: var(--fluidcheckout--select2--inner-spacing, 5px);
+  padding-left: remsize(1rem);
+  padding-right: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem));
 }
 
 body.theme-flatsome div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-  padding: 0 var(--fluidcheckout--select2--inner-spacing, 5px);
+  padding: 0 var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem));
 }
 
 body.theme-flatsome.admin-bar .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open {
-  padding: 60px 0 0;
+  padding: remsize(6rem) 0 0;
 }

@@ -7,7 +7,7 @@ body.theme-qi .fc-content.fc-container .fc-checkout-notices {
 }
 
 body.theme-qi div.woocommerce form .form-row {
-  margin-bottom: 20px;
+  margin-bottom: remsize(2rem);
 }
 
 @media (min-width: 1025px) {
@@ -22,13 +22,13 @@ body.theme-qi #qodef-woo-page.qodef--checkout #order_review table {
 
 body.theme-qi #qodef-woo-page.qodef--checkout #order_review table tr td,
 body.theme-qi #qodef-woo-page.qodef--checkout #order_review table tr th {
-  padding: 10px 20px;
+  padding: remsize(1rem) remsize(2rem);
   border-left: 0;
   border-right: 0;
 }
 
 body.theme-qi.woocommerce-page div.woocommerce .shop_table th {
-  font-size: 15px;
+  font-size: remsize(1.5rem);
 }
 
 body.theme-qi #qodef-woo-page .fc-checkout-order-review__actions-mobile .fc-checkout-order-review__close-order-summary {
@@ -36,5 +36,5 @@ body.theme-qi #qodef-woo-page .fc-checkout-order-review__actions-mobile .fc-chec
 }
 
 body.theme-qi .select2-container--default .select2-selection--single .select2-selection__rendered {
-  padding-left: 20px;
+  padding-left: remsize(2rem);
 }

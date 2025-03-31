@@ -8,8 +8,8 @@ body.theme-uncode .fc-content .row-parent {
 }
 @media (max-width: 749px) {
   body.theme-uncode .fc-content .row-parent {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: remsize(2rem) !important;
+    padding-right: remsize(2rem) !important;
   }
 }
 
@@ -48,5 +48,5 @@ body.theme-uncode div.woocommerce form .form-row input[type=checkbox],
 body.theme-uncode div.woocommerce form .form-row input[type=radio],
 body.theme-uncode div.woocommerce form .form-row .select2-selection {
   margin-top: 0;
-  border: var(--fluidcheckout--field--border-width, 1px) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  border: var(--fluidcheckout--field--border-width, remsize(0.1rem)) solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }

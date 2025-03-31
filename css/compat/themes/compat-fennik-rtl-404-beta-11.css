@@ -1,7 +1,7 @@
 body.theme-fennik.woocommerce-checkout:not(.body-boxed) .fc-content.container {
   max-width: 100%;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: remsize(2rem);
+  padding-left: remsize(2rem);
 }
 @media (min-width: 750px) {
   body.theme-fennik.woocommerce-checkout:not(.body-boxed) .fc-content.container {
@@ -34,7 +34,7 @@ body.theme-fennik .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocomm
 }
 
 body.theme-fennik #order_review .woocommerce-checkout-review-order-table .amount {
-  font-size: 15px;
+  font-size: remsize(1.5rem);
 }
 
 body.theme-fennik .select2-container--default .select2-selection--single .select2-selection__rendered {

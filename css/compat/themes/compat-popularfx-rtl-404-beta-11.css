@@ -1,5 +1,5 @@
 body.theme-popularfx .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
-  padding-right: 10px;
+  padding-right: remsize(1rem);
 }
 
 body.theme-popularfx div.woocommerce form .form-row .select2-selection--single {
@@ -7,5 +7,5 @@ body.theme-popularfx div.woocommerce form .form-row .select2-selection--single {
 }
 
 body.theme-popularfx div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  left: 5px;
+  left: remsize(0.5rem);
 }

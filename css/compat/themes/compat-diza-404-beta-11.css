@@ -8,7 +8,7 @@ body.theme-diza div.woocommerce form .form-row .select2-container .select2-selec
 
 body.theme-diza div.woocommerce form .form-row textarea,
 body.theme-diza div.woocommerce form.checkout #order_comments {
-  padding: var(--fluidcheckout--field--padding-left, 8px) !important;
+  padding: var(--fluidcheckout--field--padding-left, remsize(0.8rem)) !important;
 }
 @media (max-width: 480px) {
   body.theme-diza div.woocommerce form .form-row textarea,
@@ -19,7 +19,7 @@ body.theme-diza div.woocommerce form.checkout #order_comments {
 
 body.theme-diza div.woocommerce form.checkout #order_comments {
   line-height: normal !important;
-  min-height: 100px;
+  min-height: remsize(10rem);
 }
 
 body.theme-diza div.woocommerce form .form-row .input-checkbox {
@@ -52,7 +52,7 @@ body.theme-diza .woocommerce table.shop_table > tfoot > tr > th .woocommerce-Pri
 }
 
 body.theme-diza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--multiple:after {
-  right: 5px;
+  right: remsize(0.5rem);
 }
 
 body.theme-diza div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th,
@@ -77,6 +77,6 @@ body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .sel
 }
 
 body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
-  margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
-  margin-right: var(--fluidcheckout--select2--inner-spacing, 5px);
+  margin-top: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem));
+  margin-right: var(--fluidcheckout--select2--inner-spacing, remsize(0.5rem));
 }

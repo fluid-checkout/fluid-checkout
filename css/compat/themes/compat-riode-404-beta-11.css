@@ -24,5 +24,5 @@ body.theme-riode div.woocommerce form .form-row .select2-selection .select2-sele
 }
 
 body.theme-riode div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  right: 5px;
+  right: remsize(0.5rem);
 }

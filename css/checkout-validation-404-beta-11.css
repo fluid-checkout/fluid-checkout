@@ -14,12 +14,12 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
   display: block;
   margin: 0;
   padding-inline: 0 !important;
-  padding: 5px 10px 5px !important;
-  padding-left: 28px !important;
+  padding: remsize(0.5rem) remsize(1rem) remsize(0.5rem) !important;
+  padding-left: remsize(0.5rem)remsize(1.8rem)remsize(0.5rem) !important;
   min-height: auto;
   border: 0;
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
-  font-size: 13px;
+  font-size: remsize(1.3rem);
   text-align: left;
   line-height: 1.6;
   animation: none;
@@ -27,12 +27,12 @@ div.woocommerce .form-row .fc-mailcheck-suggestion {
 }
 
 div.woocommerce .form-row .fc-mailcheck-suggestion {
-  padding: 5px 10px;
+  padding: remsize(0.5rem) remsize(1rem);
 }
 
 div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion:focus {
-  outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;
-  outline-offset: 1px !important;
+  outline: dotted remsize(0.1rem) var(--fluidcheckout--color--dark-grey, #535156) !important;
+  outline-offset: remsize(0.1rem) !important;
 }
 
 div.woocommerce .form-row .fc-inline-error,
@@ -41,7 +41,7 @@ div.woocommerce .shipping-method__package .fc-inline-error {
 }
 
 div.woocommerce .shipping-method__package .fc-inline-error {
-  padding-left: calc(10px + 24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 1px);
+  padding-left: calc(remsize(1rem) + remsize(2.4rem) + var(--fluidcheckout--option-box--spacing--horizontal, remsize(1rem)) + remsize(0.1rem));
   background-color: transparent;
 }
 
@@ -59,13 +59,13 @@ div.woocommerce .shipping-method__package .fc-inline-error:before {
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   content: "\e800";
-  width: 18px;
-  height: 18px;
-  font-size: 18px;
+  width: remsize(1.8rem);
+  height: remsize(1.8rem);
+  font-size: remsize(1.8rem);
   position: absolute;
   display: block !important;
-  top: 16px;
-  left: 5px;
+  top: remsize(1.6rem);
+  left: remsize(0.5rem);
   transform: translateY(-50%);
   color: inherit !important;
   speak: never;
@@ -121,25 +121,25 @@ div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-inv
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   content: "\e805";
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
+  width: remsize(2.4rem);
+  height: remsize(2.4rem);
+  font-size: remsize(2.4rem);
   z-index: 10;
   position: absolute;
-  top: calc(var(--fluidcheckout--field--height, 45.625px) / 2 - 24px / 2);
-  right: var(--fluidcheckout--validation-check--horizontal-spacing, 5px);
+  top: calc(var(--fluidcheckout--field--height, remsize(4.5625rem)) / 2 - remsize(2.4rem) / 2);
+  right: var(--fluidcheckout--validation-check--horizontal-spacing, remsize(0.5rem));
   border-radius: 100%;
   color: var(--fluidcheckout--color--success, #007a3d);
   pointer-events: none;
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper.password-input:after {
-  right: var(--fluidcheckout--validation-check--horizontal-spacing--password, 25px);
+  right: var(--fluidcheckout--validation-check--horizontal-spacing--password, remsize(2.5rem));
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after {
-  right: var(--fluidcheckout--validation-check--horizontal-spacing--select, 15px);
+  right: var(--fluidcheckout--validation-check--horizontal-spacing--select, remsize(1.5rem));
 }
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection:after {
-  right: var(--fluidcheckout--validation-check--horizontal-spacing--select-alt, 25px);
+  right: var(--fluidcheckout--validation-check--horizontal-spacing--select-alt, remsize(2.5rem));
 }
 .woocommerce-terms-and-conditions-wrapper div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):after, div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).create-account:after {
   content: "";

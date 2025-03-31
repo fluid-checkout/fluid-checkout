@@ -3,12 +3,12 @@ div.woocommerce .form-row .woocommerce-success {
   z-index: 2;
   position: relative;
   margin: 0;
-  padding: 5px 10px 5px;
-  padding-left: 28px;
+  padding: remsize(0.5rem) remsize(1rem) remsize(0.5rem);
+  padding-left: remsize(0.5rem)remsize(1.8rem)remsize(0.5rem);
   min-height: auto;
   border: 0;
   background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3);
-  font-size: 13px;
+  font-size: remsize(1.3rem);
   text-align: left;
   line-height: 1.6;
   animation: none;
@@ -16,7 +16,7 @@ div.woocommerce .form-row .woocommerce-success {
 }
 
 div.woocommerce .shipping-method__package .woocommerce-success {
-  padding-left: calc(10px + 24px + var(--fluidcheckout--option-box--spacing--horizontal, 10px) + 1px);
+  padding-left: calc(remsize(1rem) + remsize(2.4rem) + var(--fluidcheckout--option-box--spacing--horizontal, remsize(1rem)) + remsize(0.1rem));
   background-color: transparent;
 }
 
@@ -33,24 +33,24 @@ div.woocommerce .form-row .woocommerce-success:before {
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   content: "\e82b";
-  width: 18px;
-  height: 18px;
-  font-size: 18px;
+  width: remsize(1.8rem);
+  height: remsize(1.8rem);
+  font-size: remsize(1.8rem);
   position: absolute;
-  top: 14px;
-  left: 5px;
+  top: remsize(1.4rem);
+  left: remsize(0.5rem);
   transform: translateY(-50%);
   color: inherit;
   speak: never;
 }
 
 .iti__country-container {
-  height: var(--fluidcheckout--field--height, 45.625px);
+  height: var(--fluidcheckout--field--height, remsize(4.5625rem));
   z-index: 200;
 }
 
 #fc-wawp-verify-button {
-  margin-top: 10px;
+  margin-top: remsize(1rem);
 }
 
 #awp_otp_popup {

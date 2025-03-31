@@ -1,6 +1,6 @@
 body.theme-martfury .fc-content.container {
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: remsize(2rem);
+  padding-left: remsize(2rem);
 }
 @media (min-width: 992px) {
   body.theme-martfury .fc-content.container {
