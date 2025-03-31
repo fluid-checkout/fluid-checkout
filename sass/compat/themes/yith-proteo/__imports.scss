@@ -13,5 +13,6 @@ $_body-theme-selector:                 '.theme-yith-proteo' !default;
 // ------------------------------------
 @import
 	"checkout-additional-notes",
+	"checkout-content-area",
 	"checkout-payment-methods",
 	"woocommerce-form-fields-select2";

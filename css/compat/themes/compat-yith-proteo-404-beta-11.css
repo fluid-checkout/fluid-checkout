@@ -3,6 +3,13 @@ body.theme-yith-proteo .fc-wrapper .woocommerce-additional-fields .woocommerce-a
   margin-right: 0;
 }
 
+@media (max-width: 749px) {
+  body.theme-yith-proteo.woocommerce-checkout .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 body.theme-yith-proteo .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
   margin-top: 0;
 }
