@@ -46,6 +46,10 @@ class FluidCheckout_ThemeCompat_YithProteo extends FluidCheckout {
 
 		// Theme options
 		add_filter( 'theme_mod_yith_proteo_use_enhanced_checkbox_and_radio', array( $this, 'force_disable_echnanced_checkbox_and_radio' ), 100 );
+
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 	}
 
 
@@ -55,6 +59,28 @@ class FluidCheckout_ThemeCompat_YithProteo extends FluidCheckout {
 	 */
 	public function force_disable_echnanced_checkbox_and_radio() {
 		return 'no';
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 * 
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Get sticky header setting from the theme
+		$is_sticky = apply_filters( 'yith_proteo_enable_sticky_header', get_theme_mod( 'yith_proteo_header_sticky', 'no' ) );
+
+		// Bail if sticky header is not enabled
+		if ( 'yes' !== $is_sticky ) { return $attributes; }
+
+		$attributes[ 'data-sticky-relative-to' ] = '{ "sm": { "breakpointInitial": 992, "breakpointFinal": 100000, "selector": ".site-header" } }';
+
+		return $attributes;
 	}
 
 
