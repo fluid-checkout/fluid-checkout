@@ -25,6 +25,9 @@ class FluidCheckout_ThemeCompat_YithProteo extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
+		// Theme options
+		add_filter( 'theme_mod_yith_proteo_use_enhanced_checkbox_and_radio', array( $this, 'force_disable_echnanced_checkbox_and_radio' ), 100 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -43,9 +46,6 @@ class FluidCheckout_ThemeCompat_YithProteo extends FluidCheckout {
 	public function checkout_hooks() {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
-
-		// Theme options
-		add_filter( 'theme_mod_yith_proteo_use_enhanced_checkbox_and_radio', array( $this, 'force_disable_echnanced_checkbox_and_radio' ), 100 );
 
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
