@@ -361,6 +361,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Omnisend for WooCommerce.
 * Added: Compatibility with plugin Woocommerce GUS/Regon.
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
+* Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
 * Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
 * Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
