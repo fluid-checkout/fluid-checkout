@@ -221,8 +221,6 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 			'postcode' => isset( $terminal_data[ 'boxnowLockerPostalCode' ] ) ? esc_html( $terminal_data[ 'boxnowLockerPostalCode' ] ) : '',
 			// The plugin sets the city as the second address line so we use it as the city
 			'city' => isset( $terminal_data[ 'boxnowLockerAddressLine2' ] ) ? esc_html( $terminal_data[ 'boxnowLockerAddressLine2' ] ) : '',
-			// Set the country explicitly since the plugin only supports Croatia
-			'country' => 'HR',
 		);
 
 		return $selected_terminal_data;
