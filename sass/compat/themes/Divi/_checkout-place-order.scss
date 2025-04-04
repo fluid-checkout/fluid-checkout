@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-place-order .fc-place-order-button {
+	display: block !important; // Needed to override FC styles
+}

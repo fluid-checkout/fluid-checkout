@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
 * Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
 * Improved: Compatibility with plugin Klarna Payments. Update modified script from the Klarna plugin to its latest version.
+* Fixed: Compatibility with theme Divi. Fix position for the place order button icons.
 * Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
 * Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
