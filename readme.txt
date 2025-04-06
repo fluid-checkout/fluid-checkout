@@ -361,6 +361,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme YITH Proteo.
 * Added: Compatibility with plugin Omnisend for WooCommerce.
 * Added: Compatibility with plugin Woocommerce GUS/Regon.
+* Improved: User experience when using login popup on the checkout page.
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
 * Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
 * Improved: Compatibility with plugin Klarna Payments. Update modified script from the Klarna plugin to its latest version.
