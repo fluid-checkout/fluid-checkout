@@ -47,12 +47,15 @@
 	 * @param   HTML  content  HTML content to be displayed.
 	 */
 	var showNotices = function( content ) {
+		// Bail if content is empty
+		if ( ! content ) { return; }
+
 		// Get messages wrapper from the login form
 		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );;
 
-		// Add message
+		// Add error notice
 		if ( messagesWrapper ) {
-			messagesWrapper.innerHTML = content;
+			messagesWrapper.innerHTML = '<div class="woocommerce-error">' + content + '</div>';
 		}
 	}
 

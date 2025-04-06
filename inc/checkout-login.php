@@ -54,6 +54,13 @@ class FluidCheckout_Login extends FluidCheckout {
 
 		// JS settings object
 		remove_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
+		// Actions
+		remove_action( 'wc_ajax_fc_checkout_login', array( $this, 'maybe_process_login' ), 10 );
+		remove_action( 'wc_ajax_nopriv_fc_checkout_login', array( $this, 'maybe_process_login' ), 10 );
+
+		// Messages
+		remove_action( 'woocommerce_login_form_start', array( $this, 'output_login_messages_container' ), 10 );
 	}
 
 
@@ -95,7 +102,7 @@ class FluidCheckout_Login extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 		// Add settings
 		$settings[ 'checkoutLogin' ] = apply_filters( 'fc_checkout_login_script_settings', array(
-			'checkoutLoginNonce'       => wp_create_nonce( 'fc-checkout-login' ),
+			'checkoutLoginNonce' => wp_create_nonce( 'fc-checkout-login' ),
 		) );
 
 		return $settings;
@@ -108,15 +115,15 @@ class FluidCheckout_Login extends FluidCheckout {
 	 * COPIED AND ADAPTED FROM: WC_Form_Handler::process_login().
 	 */
 	public function maybe_process_login() {
-		// CHANGE: Modify the nonce check
+		// CHANGE: Modify the nonce check.
 		check_ajax_referer( 'fc-checkout-login', 'security' );
 
 		try {
-			// CHANGE: Replace with data received from request
+			// CHANGE: Replace with data received from request.
 			$creds = array(
-				'user_login'    => isset( $_REQUEST[ 'username' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'username' ] ) ) : '',
-				'user_password' => isset( $_REQUEST[ 'password' ] ) ? wp_unslash( $_REQUEST[ 'password' ] ) : '',
-				'remember'      => isset( $_REQUEST[ 'rememberme' ] ) ? filter_var( $_REQUEST[ 'rememberme' ], FILTER_VALIDATE_BOOLEAN ) : false,
+				'user_login'     => isset( $_REQUEST[ 'username' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'username' ] ) ) : '',
+				'user_password'  => isset( $_REQUEST[ 'password' ] ) ? $_REQUEST[ 'password' ] : '',
+				'remember'       => isset( $_REQUEST[ 'rememberme' ] ) ? filter_var( $_REQUEST[ 'rememberme' ], FILTER_VALIDATE_BOOLEAN ) : false,
 			);
 
 			$validation_error = new WP_Error();
@@ -154,7 +161,7 @@ class FluidCheckout_Login extends FluidCheckout {
 					$redirect = wc_get_page_permalink( 'myaccount' );
 				}
 
-				// Replace redirect with JSON response
+				// CHANGE: Replace redirect with JSON response.
 				wp_send_json(
 					array(
 						'result' => 'success',
@@ -162,7 +169,7 @@ class FluidCheckout_Login extends FluidCheckout {
 				);
 			}
 		} catch ( Exception $e ) {
-			// CHANGE: Replace `wc_add_notice` with JSON response
+			// CHANGE: Replace `wc_add_notice` with JSON response.
 			do_action( 'woocommerce_login_failed' );
 			wp_send_json(
 				array(
