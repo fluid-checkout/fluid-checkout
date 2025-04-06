@@ -51,12 +51,13 @@
 		if ( ! content ) { return; }
 
 		// Get messages wrapper from the login form
-		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );;
+		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
+
+		// Bail if messages wrapper is not available
+		if ( ! messagesWrapper ) { return; }
 
 		// Add error notice
-		if ( messagesWrapper ) {
-			messagesWrapper.innerHTML = '<div class="woocommerce-error">' + content + '</div>';
-		}
+		messagesWrapper.innerHTML = '<div class="woocommerce-error">' + content + '</div>';
 	}
 
 	/**
