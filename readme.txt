@@ -356,8 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with theme LeadEngine.
 * Added: Support for description and delivery time attributes for shipping methods.
+* Added: Compatibility with theme LeadEngine.
 * Added: Compatibility with theme NewStore.
 * Added: Compatibility with theme YITH Proteo.
 * Added: Compatibility with plugin Omnisend for WooCommerce.
