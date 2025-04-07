@@ -1058,6 +1058,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price .tax_label {
+  position: static;
   display: block;
   font-size: 0.7em;
   font-weight: normal;

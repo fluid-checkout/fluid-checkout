@@ -2,7 +2,7 @@
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
 $_body-page-selector:                  '.woocommerce-checkout' !default;
-$_body-theme-selector:                 '.theme-Divi' !default;
+$_body-theme-selector:                 '.theme-yith-proteo' !default;
 
 
 
@@ -12,9 +12,7 @@ $_body-theme-selector:                 '.theme-Divi' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-additional-notes",
 	"checkout-content-area",
-	"checkout-coupon-code",
-	"order-summary",
-	"checkout-place-order",
-	"woocommerce-form-fields",
+	"checkout-payment-methods",
 	"woocommerce-form-fields-select2";
