@@ -31,6 +31,8 @@
 		passwordFieldSelector: '.woocommerce-form-login input[name="password"]',
 		rememberMeFieldSelector: '.woocommerce-form-login input[name="rememberme"]',
 		loginButtonSelector: '.fc-login-button .woocommerce-form-login__submit',
+
+		messagesWrapperTemplate: '<ul class="woocommerce-error"><li>###MESSAGE###</li></ul>',
 	}
 
 
@@ -57,7 +59,7 @@
 		if ( ! messagesWrapper ) { return; }
 
 		// Add error notice
-		messagesWrapper.innerHTML = '<div class="woocommerce-error">' + content + '</div>';
+		messagesWrapper.innerHTML = _settings.messagesWrapperTemplate.replace( '###MESSAGE###', content );
 	}
 
 	/**

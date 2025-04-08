@@ -16,6 +16,18 @@ class FluidCheckout_Login extends FluidCheckout {
 
 
 	/**
+	 * Check whether the feature is enabled or not.
+	 */
+	public function is_feature_enabled() {
+		// Bail if feature is disabled
+		if ( true !== apply_filters( 'fc_enable_checkout_ajax_login', true ) ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
@@ -27,6 +39,9 @@ class FluidCheckout_Login extends FluidCheckout {
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		// Bail if feature is not enabled
+		if( ! $this->is_feature_enabled() ) { return; }
+
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
