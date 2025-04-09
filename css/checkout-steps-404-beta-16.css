@@ -2261,8 +2261,10 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   }
 }
 
-div.woocommerce .fc-wrapper .fc-checkout-order-review:not(:first-child) .fc-checkout-order-review__inner {
-  margin: 20px 0 0;
+@media (min-width: 750px) {
+  div.woocommerce .fc-wrapper .fc-checkout-order-review:not(:first-child) .fc-checkout-order-review__inner {
+    margin: 20px 0 0;
+  }
 }
 
 @media (max-width: 999px) {
