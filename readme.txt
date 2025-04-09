@@ -369,7 +369,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
 * Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
-* Fixed: Fix spacing for elements above the order summary section.
+* Fixed: Spacing for elements above the order summary section.
 
 = 4.0.3 - 2025-03-17 =
 
