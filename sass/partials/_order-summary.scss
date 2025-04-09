@@ -425,6 +425,9 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
 		box-shadow: $order-summary-box-shadow--large-screen;
 	}
 }
+div.woocommerce .fc-wrapper .fc-checkout-order-review:not( :first-child ) .fc-checkout-order-review__inner {
+	margin: $global-spacing-small 0 0;
+}
 
 .fc-wrapper .fc-checkout-order-review[data-flyout].is-open {
 	@media (#{$bp-smaller-than-desktop}) {
