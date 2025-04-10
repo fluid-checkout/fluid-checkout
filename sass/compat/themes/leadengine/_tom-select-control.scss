@@ -1,0 +1,16 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
+	z-index: z( 'above' );
+	height: remsize( 5rem );
+	padding-#{ $alignment-left }: remsize( 2rem );
+	border: remsize( .1rem ) solid #e5e7f2; // Needed to match theme styles
+	border-radius: remsize( .4rem );
+}
+
+body#{ $_body-theme-selector } .ts-wrapper.single .ts-control .item {
+	font-size: remsize( 1.4rem );
+	line-height: remsize( 5rem );
+}
