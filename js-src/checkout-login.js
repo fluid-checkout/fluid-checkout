@@ -77,58 +77,6 @@
 
 
 	/**
-	 * Handle document clicks and route to the appropriate function.
-	 */
-	var handleClick = function( e ) {
-		// LOGIN BUTTTON
-		if ( e.target.closest( _settings.loginButtonSelector ) ) {
-			e.preventDefault();
-			checkoutLogin();
-		}
-	};
-
-
-
-	/**
-	 * Use the same method that WooCommerce uses to block other parts of the checkout form while updating.
-	 * The UI is unblocked by the WooCommerce `checkout.js` script (which is replaced with a modified version but keeps the same behavior)
-	 * using the checkout fragment selector, then unblocking after the checkout update is completed.
-	 *
-	 * @param   HTMLElement  element  Element to block the UI and show the loading indicator.
-	 */
-	_publicMethods.blockUI = function( element ) {
-		// Bail if jQuery is not available
-		if ( ! _hasJQuery ) { return; }
-
-		// Bail if element is invalid
-		if ( ! element ) { return; }
-
-		$( element ).addClass( _settings.uiProcessingClass ).block( {
-			message: null,
-			overlayCSS: {
-				background: '#fff',
-				opacity: 0.6
-			}
-		} );
-	}
-
-	/**
-	 * Unblock UI element to be used again.
-	 *
-	 * @param   HTMLElement  element  Element to get the UI unblocked.
-	 *
-	 * @see  blockUI
-	 */
-	_publicMethods.unblockUI = function( element ) {
-		// Bail if jQuery is not available
-		if ( ! _hasJQuery ) { return; }
-
-		$( element ).removeClass( _settings.uiProcessingClass ).unblock();
-	}
-
-
-
-	/**
 	 * Log user in.
 	 */
 	var checkoutLogin = function() {
@@ -182,6 +130,58 @@
 
 		});
 	};
+
+
+
+	/**
+	 * Handle document clicks and route to the appropriate function.
+	 */
+	var handleClick = function( e ) {
+		// LOGIN BUTTTON
+		if ( e.target.closest( _settings.loginButtonSelector ) ) {
+			e.preventDefault();
+			checkoutLogin();
+		}
+	};
+
+
+
+	/**
+	 * Use the same method that WooCommerce uses to block other parts of the checkout form while updating.
+	 * The UI is unblocked by the WooCommerce `checkout.js` script (which is replaced with a modified version but keeps the same behavior)
+	 * using the checkout fragment selector, then unblocking after the checkout update is completed.
+	 *
+	 * @param   HTMLElement  element  Element to block the UI and show the loading indicator.
+	 */
+	_publicMethods.blockUI = function( element ) {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+
+		// Bail if element is invalid
+		if ( ! element ) { return; }
+
+		$( element ).addClass( _settings.uiProcessingClass ).block( {
+			message: null,
+			overlayCSS: {
+				background: '#fff',
+				opacity: 0.6
+			}
+		} );
+	}
+
+	/**
+	 * Unblock UI element to be used again.
+	 *
+	 * @param   HTMLElement  element  Element to get the UI unblocked.
+	 *
+	 * @see  blockUI
+	 */
+	_publicMethods.unblockUI = function( element ) {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+
+		$( element ).removeClass( _settings.uiProcessingClass ).unblock();
+	}
 
 
 
