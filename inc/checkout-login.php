@@ -40,7 +40,7 @@ class FluidCheckout_Login extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Bail if feature is not enabled
-		if( ! $this->is_feature_enabled() ) { return; }
+		if ( ! $this->is_feature_enabled() ) { return; }
 
 		// Enqueue
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
@@ -166,13 +166,16 @@ class FluidCheckout_Login extends FluidCheckout {
 
 			if ( is_wp_error( $user ) ) {
 				throw new Exception( $user->get_error_message() );
-			} else {
+			}
+			else {
 
 				if ( ! empty( $_POST['redirect'] ) ) {
 					$redirect = wp_unslash( $_POST['redirect'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-				} elseif ( wc_get_raw_referer() ) {
+				}
+				elseif ( wc_get_raw_referer() ) {
 					$redirect = wc_get_raw_referer();
-				} else {
+				}
+				else {
 					$redirect = wc_get_page_permalink( 'myaccount' );
 				}
 
@@ -183,7 +186,8 @@ class FluidCheckout_Login extends FluidCheckout {
 					)
 				);
 			}
-		} catch ( Exception $e ) {
+		}
+		catch ( Exception $e ) {
 			// CHANGE: Replace `wc_add_notice` with JSON response.
 			do_action( 'woocommerce_login_failed' );
 			wp_send_json(
