@@ -2261,6 +2261,12 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   }
 }
 
+@media (min-width: 750px) {
+  div.woocommerce .fc-wrapper .fc-checkout-order-review:not(:first-child) .fc-checkout-order-review__inner {
+    margin: 20px 0 0;
+  }
+}
+
 @media (max-width: 999px) {
   .fc-wrapper .fc-checkout-order-review[data-flyout].is-open {
     background-color: var(--fluidcheckout--order-summary--background-color--popup, var(--fluidcheckout--color--white, #fff));
