@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-04-10 13:24+0000\n"
+"POT-Creation-Date: 2025-04-10 13:51+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -17,19 +17,19 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: fluid-checkout.php:585
+#: fluid-checkout.php:586
 msgid "WooCommerce"
 msgstr ""
 
-#: fluid-checkout.php:588
+#: fluid-checkout.php:589
 msgid "Go to Plugin Search"
 msgstr ""
 
-#: fluid-checkout.php:592
+#: fluid-checkout.php:593
 msgid "Activate %s"
 msgstr ""
 
-#: fluid-checkout.php:596
+#: fluid-checkout.php:597
 msgid "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
 
