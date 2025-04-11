@@ -19,17 +19,6 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 	public $prefix = 'cartbounty_';
 
 
-	/**
-	 * Script name.
-	 */
-	public $script_name = 'cartbounty';
-
-	/**
-	 * Script file path.
-	 */
-	public $script_file_path = 'js/compat/plugins/woo-save-abandoned-carts/cartbounty-public';
-
-
 
 	/**
 	 * __construct function.
@@ -50,8 +39,6 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		$this->public_class_name = 'CartBounty_Pro_Public';
 		$this->admin_class_name  = 'CartBounty_Pro_Admin';
 		$this->prefix            = 'cartbounty_pro_';
-		$this->script_name       = 'cartbounty-pro';
-		$this->script_file_path  = 'js/compat/plugins/woo-save-abandoned-carts-pro/cartbounty-pro-public';
 	}
 
 
@@ -72,9 +59,6 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 		// Change the way input data is recovered from CartBounty to avoid conflicts with a similar feature from Fluid Checkout 
 		remove_filter( 'wp', array( $class_object, 'restore_input_data' ), 10 );
 		add_filter( 'wp', array( $this, 'maybe_restore_abandoned_cart_values_to_session' ), 10 );
-
-		// Replace assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'replace_assets' ), 5 );
 	}
 
 
@@ -135,16 +119,6 @@ class FluidCheckout_WooSaveAbandonedCarts extends FluidCheckout {
 				FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $key, esc_html( $value ) );
 			}
 		}
-	}
-
-
-
-	/**
-	 * Replace plugin assets.
-	 */
-	public function replace_assets() {
-		// Enqueue the script with the same handle but different file path
-		wp_enqueue_script( $this->script_name, FluidCheckout_Enqueue::instance()->get_script_url( $this->script_file_path ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 }

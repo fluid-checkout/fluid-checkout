@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: User experience when using login popup on the checkout page.
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
 * Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
+* Improved: Compatibility with plugin CartBounty. Remove overrides for plugin assets as they are no longer required.
 * Improved: Compatibility with plugin Klarna Payments. Update modified script from the Klarna plugin to its latest version.
 * Fixed: Compatibility with theme Divi. Fix position for the place order button icons.
 * Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
