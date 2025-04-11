@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .tt_button {
+	z-index: z( 'default' );
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .tt_button:hover {
+	background: transparent;
+}

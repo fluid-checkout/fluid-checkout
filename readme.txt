@@ -357,18 +357,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Support for description and delivery time attributes for shipping methods.
+* Added: Compatibility with theme LeadEngine.
 * Added: Compatibility with theme NewStore.
 * Added: Compatibility with theme YITH Proteo.
 * Added: Compatibility with plugin Omnisend for WooCommerce.
 * Added: Compatibility with plugin Woocommerce GUS/Regon.
+* Improved: User experience when using login popup on the checkout page.
 * Improved: Rename inline validation message classes to avoid conflicts with other plugins.
 * Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
 * Improved: Compatibility with plugin CartBounty. Remove overrides for plugin assets as they are no longer required.
 * Improved: Compatibility with plugin Klarna Payments. Update modified script from the Klarna plugin to its latest version.
+* Fixed: Compatibility with theme Divi. Fix position for the place order button icons.
 * Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
 * Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
 * Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
+* Fixed: Spacing for elements above the order summary section.
 
 = 4.0.3 - 2025-03-17 =
 

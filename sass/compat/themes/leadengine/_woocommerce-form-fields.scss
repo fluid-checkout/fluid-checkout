@@ -1,0 +1,16 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .form-row .woocommerce-error {
+	margin: 0 !important; // Needed to override theme styles
+}
+
+body#{ $_body-theme-selector } .woocommerce form .form-row input.input-text {
+	font-weight: normal;
+}
+
+body#{ $_body-theme-selector } .woocommerce .login,
+body#{ $_body-theme-selector } .woocommerce .register {
+	background-color: transparent;
+}
