@@ -95,7 +95,7 @@ class FluidCheckout_AdminNotices_CodeRockzDeliveryPlugins extends FluidCheckout 
 			'error'          => true,
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary">%s</a>', 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=coderockz-integrations&mtm_source=lite-plugin', __( 'Upgrade to PRO', 'fluid-checkout' ) ),
-				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/version-4-customization-migration/#compat-delivery-date-coderockz', __( 'What should I do?', 'fluid-checkout' ) ),
+				sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', 'https://fluidcheckout.com/version-4-customization-migration/#compat-delivery-date-coderockz', __( 'More information', 'fluid-checkout' ) ),
 			),
 		);
 
