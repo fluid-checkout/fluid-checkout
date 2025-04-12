@@ -26,7 +26,7 @@
 
 		uiProcessingClass: 'processing',
 
-		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form',
+		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form',
 		generalNoticesSelector: '.woocommerce-notices-wrapper',
 		messagesWrapperSelector: '.fc-coupon-code-messages',
 

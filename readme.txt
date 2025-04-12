@@ -373,7 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
 * Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
 * Fixed: Spacing for elements above the order summary section.
-* Fixed: Coupon code messages location when coupons are applied within the order summary section.
+* Fixed: Coupon code messages location when being applied from certain sections.
 
 = 4.0.3 - 2025-03-17 =
 
