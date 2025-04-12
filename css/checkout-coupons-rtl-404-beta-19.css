@@ -69,7 +69,7 @@ body.has-fc-button-colors .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-co
 
 .fc-wrapper .fc-coupon_code__collapsible #coupon_code_field.form-row {
   float: none;
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
 }
 
