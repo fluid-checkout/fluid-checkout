@@ -273,36 +273,6 @@ msgstr "Split"
 msgid "Minimalist"
 msgstr "Minimalist"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "سۇيۇقلۇق تەكشۈرۈش Lite 4.0+ - مۇھىم ئۆزگىرىشلەر!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"بۇ نەشىردىكى سۇيۇقلۇق تەكشۈرۈش ئارقىلىق بىز ئىلگىرى بۇ نەشرى ئېلان "
-"قىلىنىشتىن بۇرۇن قىستۇرمىلىرىمىزغا خاسلاشتۇرغان بولسىڭىز <strong>تور "
-"بېتىڭىزگە تەسىر كۆرسىتىدىغان مۇھىم ئۆزگەرتىشلەرنى</strong> تونۇشتۇردۇق. "
-"ئەگەر تور بېتىڭىزدە سۇيۇقلۇق تەكشۈرۈش قىستۇرمىلىرىغا قارىتا ھېچقانداق "
-"خاسلاشتۇرۇش بولمىسا ، ئۇ ئىلگىرىكىگە ئوخشاش ئىشلىشى كېرەك.<br><br> ئەگەر "
-"تور بېتىڭىزدە سۇيۇقلۇق تەكشۈرۈش ئۈچۈن خاسلاشتۇرغان بولسىڭىز ھەمدە ئۇلارنى "
-"بۇ نەشرىگە يۆتكىمىگەن بولسىڭىز ، يېتەكچىمىزنى <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">Fluid "
-"Checkout Lite 4.0+ غا يۆتكەش قوللانمىسىنى</a> ئوقۇڭ."
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "كۆچۈش قوللانمىسىنى ئوقۇڭ"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz نىڭ سۇيۇقلۇق تەكشۈرۈش ۋە يەتكۈزۈش ۋاقتى قىستۇرمىلىرى"
@@ -321,10 +291,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO غا يېڭىلاش"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "مەن نېمە قىلىشىم كېرەك؟"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2375,6 +2341,10 @@ msgstr "قوشۇمچە ماۋزۇ بۆلەكلىرى"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "باشتېما تەڭشىكىدە قوزغىتىلسا قوشۇمچە ماۋزۇ بۆلەكلىرىنى چىقىرىڭ."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "تېخىمۇ كۆپ ئۇچۇرلار"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

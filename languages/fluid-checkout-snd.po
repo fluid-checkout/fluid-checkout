@@ -271,36 +271,6 @@ msgstr "ورهايو"
 msgid "Minimalist"
 msgstr "گھٽ ۾ گھٽ"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "فلوئڊ چيڪ آئوٽ لائيٽ 4.0+ – اهم تبديليون!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"فلوئڊ چيڪ آئوٽ جي هن ورزن سان اسان <strong>اهم تبديليون متعارف ڪرايون آهن "
-"جيڪي توهان جي ويب سائيٽ تي اثر انداز ٿي سگهن ٿيون</strong> جيڪڏهن توهان هن "
-"ورزن جي رليز کان اڳ اسان جي پلگ ان ۾ ڪسٽمائيزيشن ڪئي آهي. جيڪڏهن توهان جي "
-"ويب سائيٽ ۾ فلوئڊ چيڪ آئوٽ پلگ ان لاءِ ڪا به ڪسٽمائيزيشن ناهي، ته ان کي اڳ "
-"وانگر ئي ڪم ڪرڻ گهرجي.<br><br> جيڪڏهن توهان جي ويب سائيٽ تي فلوئڊ چيڪ آئوٽ "
-"لاءِ ڪا به ڪسٽمائيزيشن آهي ۽ توهان اڃا تائين انهن کي هن ورزن ڏانهن منتقل نه "
-"ڪيو آهي، مهرباني ڪري اسان جي گائيڊ پڙهو <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">ته "
-"ڪسٽمائيزيشن کي فلوئڊ چيڪ آئوٽ لائيٽ 4.0+ ڏانهن منتقل ڪريو.</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "لڏپلاڻ جي گائيڊ پڙهو"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "ڪوڊ راڪز پاران فلوئڊ چيڪ آئوٽ ۽ ڊليوري جي تاريخ پلگ ان"
@@ -319,10 +289,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "پرو ۾ اپ گريڊ ڪريو"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "مونکي ڇا ڪرڻ گهرجي؟"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2358,6 +2324,10 @@ msgstr "اضافي هيڊر سيڪشن"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "جيڪڏهن ٿيم سيٽنگز ۾ فعال هجي ته اضافي هيڊر سيڪشن آئوٽ پٽ ڪريو."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "وڌيڪ ڄاڻ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

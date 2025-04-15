@@ -265,34 +265,6 @@ msgstr "分割"
 msgid "Minimalist"
 msgstr "极简主义"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - 重要更改！"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"在此版本的 Fluid Checkout "
-"中，我们引入了<strong>重要更改，如果您在此版本发布之前对我们的插件进行了自定义，这些更改可能会对您的网站造成影响</"
-"strong>。<br><br>如果您的网站没有对 Fluid Checkout "
-"插件进行任何定制，则其工作方式应与以前相同。<br><br>如果您的网站对 Fluid Checkout "
-"进行了任何定制，但尚未将其迁移到此版本，请阅读我们的指南 <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">将定制迁移到 Fluid Checkout Lite 4.0+</a> 。"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "阅读迁移指南"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz 的流畅结账和交货日期插件"
@@ -309,10 +281,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "升级至专业版"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "我该怎么办？"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2149,6 +2117,10 @@ msgstr "附加页眉部分"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "如果在主题设置中启用，则输出额外的标题部分。"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "更多信息"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
