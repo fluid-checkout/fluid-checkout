@@ -189,6 +189,7 @@ div.woocommerce form .form-row {
 	input[type="radio"],
 	.select2-selection {
 		z-index: z( 'default' );
+		float: none;
 		position: relative;
 
 		&:focus {
@@ -198,6 +199,7 @@ div.woocommerce form .form-row {
 	}
 
 	.woocommerce-input-wrapper {
+		float: none;
 		position: relative;
 		display: block;
 		width: 100%;

@@ -2,21 +2,22 @@
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
 
-div.woocommerce .form-row .woocommerce-error:not( .invalid-country-not-allowed ) {
+div.woocommerce .form-row .fc-inline-error:not( .invalid-country-not-allowed ) {
 	display: none;
 }
 
-div.woocommerce .form-row.woocommerce-invalid .woocommerce-error {
+div.woocommerce .form-row.woocommerce-invalid .fc-inline-error {
 	display: block;
 }
 
 
 
-div.woocommerce .form-row .woocommerce-error,
-div.woocommerce .shipping-method__package .woocommerce-error,
+div.woocommerce .form-row .fc-inline-error,
+div.woocommerce .shipping-method__package .fc-inline-error,
 div.woocommerce .form-row .fc-mailcheck-suggestion {
 	z-index: z( 'default' ) + 1;
 	position: relative;
+	display: block;
 	margin: 0;
 	padding-inline: 0 !important; // Needed to override theme styles
 	padding: $checkout-message-error-padding !important; // Needed to override theme styles
@@ -42,20 +43,20 @@ div.woocommerce .form-row .fc-mailcheck-suggestion .mailcheck-suggestion {
 	}
 }
 
-div.woocommerce .form-row .woocommerce-error,
-div.woocommerce .shipping-method__package .woocommerce-error {
+div.woocommerce .form-row .fc-inline-error,
+div.woocommerce .shipping-method__package .fc-inline-error {
 	color: $checkout-message-error-color;
 }
 
-div.woocommerce .shipping-method__package .woocommerce-error {
+div.woocommerce .shipping-method__package .fc-inline-error {
 	padding-#{ $alignment-left }: calc( #{ $global-spacing-extra-small } + #{ $option-box-radio-size } + #{ $option-box-padding-horizontal } + remsize( .1rem ) );
 	background-color: transparent;
 }
 
 
 
-div.woocommerce .form-row .woocommerce-error:before,
-div.woocommerce .shipping-method__package .woocommerce-error:before {
+div.woocommerce .form-row .fc-inline-error:before,
+div.woocommerce .shipping-method__package .fc-inline-error:before {
 	@include icon( $checkout-message-error-icon );
 	@include icon-size( $checkout-message-error-icon-size );
 
@@ -68,14 +69,10 @@ div.woocommerce .shipping-method__package .woocommerce-error:before {
 	speak: never;
 }
 
-div.woocommerce .shipping-method__package .woocommerce-error:before {
-	#{ $alignment-left }: $global-spacing-extra-small + $global-spacing-tiny;
-}
 
 
-
-div.woocommerce .form-row .woocommerce-error:after,
-div.woocommerce .shipping-method__package .woocommerce-error:after {
+div.woocommerce .form-row .fc-inline-error:after,
+div.woocommerce .shipping-method__package .fc-inline-error:after {
 	display: none;
 }
 

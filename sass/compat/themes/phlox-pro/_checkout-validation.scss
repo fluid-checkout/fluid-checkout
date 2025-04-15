@@ -2,18 +2,6 @@
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce .form-row.woocommerce-invalid:after {
-	content: "\0021";
-	display: block;
-	z-index: z( 'above' );
-	width: 1.375em;
-	height: 1.375em;
-	right: -.6em;
-	top: 6.2em;
-}
-
-
-
 body#{ $_body-theme-selector } div.woocommerce .form-row.woocommerce-invalid > .validation-message {
 	display: none;
 }

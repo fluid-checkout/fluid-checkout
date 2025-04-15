@@ -1,0 +1,7 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection__arrow {
+	top: 5px; // Needed to use `px` as value to match theme styles
+}

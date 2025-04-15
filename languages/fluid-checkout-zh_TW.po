@@ -2203,7 +2203,7 @@ msgstr "%1$s"
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
-msgstr "%2$s：%1$s"
+msgstr "%2$s: %1$s"
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:85
 msgctxt "Image uploader."
