@@ -49,7 +49,7 @@
 
 .fc-wrapper .fc-coupon_code__collapsible #coupon_code_field.form-row {
 	float: none;
-	margin: 0;
+	margin: 0 !important; // Needed to override theme styles set with `!important`
 	padding: 0;
 }
 
