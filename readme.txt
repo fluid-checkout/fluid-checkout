@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with plugin Tamara Checkout.
+
 = 4.0.4 - 2025-04-15 =
 
 * Bump tested up to WooCommerce 9.8.1
