@@ -90,6 +90,15 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Load custom setting field types.
 	 */
 	public function load_setting_types() {
+		// Maybe add license key field type, if not already added
+		if ( ! apply_filters( 'fc_admin_field_type_license_exists', false ) ) {
+			include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-license-key.php';
+
+			// Set field type as existent so it won't be loaded again
+			add_filter( 'fc_admin_field_type_license_exists', '__return_true', 10 );
+		}
+
+		// Load settings field types
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
@@ -97,7 +106,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
-		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-license-key.php';
 	}
 
 	/**
@@ -107,8 +115,16 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// `$settings` need to be an array
 		if ( ! is_array( $settings ) ) { $settings = array( $settings ); }
 
+		// Maybe add settings tab if not already added
+		if ( ! apply_filters( 'fc_admin_tab_fluidcheckout_exists', false ) ) {
+			$settings[] = include self::$directory_path . 'inc/admin/admin-tab-fluid-checkout.php';
+
+			// Set admin tab as existent so it won't be loaded again
+			add_filter( 'fc_admin_tab_fluidcheckout_exists', '__return_true', 10 );
+		}
+
+		// Load settings pages
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-tab-fluid-checkout.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-dashboard.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
