@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
+
 = 4.0.4 - 2025-04-15 =
 
 * Bump tested up to WooCommerce 9.8.1
