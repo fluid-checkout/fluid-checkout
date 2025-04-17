@@ -329,6 +329,8 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			'shipping_pickup_location_notice',
 			'pickup_location_customer_number',
 			'current_pickup_location',
+			'pickup_location_address',
+			'pickup_location'
 		) );
 		return $skip_list;
 	}
