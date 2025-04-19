@@ -40,6 +40,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_pickup_location' ), 10 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'remove_pickup_selection_field_from_billing_address' ), 100 );
 		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'move_pickup_location_selection_field' ), 10 );
+		add_filter( 'woocommerce_shiptastic_render_current_pickup_location_in_billing', '__return_true', 10 ); // Move `current_pickup_location` field to billing address
 	}
 
 	/**
