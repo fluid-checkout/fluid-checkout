@@ -38,6 +38,8 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Pickup location
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_pickup_location' ), 10 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'remove_pickup_selection_field_from_billing_address' ), 100 );
+		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'move_pickup_location_selection_field' ), 10 );
 	}
 
 	/**
@@ -333,6 +335,40 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			'pickup_location'
 		) );
 		return $skip_list;
+	}
+
+
+
+	/**
+	 * Remove the pickup selection field from the billing address fields.
+	 *
+	 * @param   array  $fields  The billing fields.
+	 */
+	public function remove_pickup_selection_field_from_billing_address( $fields ) {
+		// Initialize variables
+		$field_group_key = 'billing';
+		$field_key = 'billing_pickup_location_notice';
+
+		// Bail field is not set
+		if ( ! isset( $fields[ $field_group_key ][ $field_key ] ) ) { return $fields; }
+
+		// Remove the field associated with the pickup location selection field
+		unset( $fields[ $field_group_key ][ $field_key ] );
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Move pickup location selection field to the section with "shipping same as billing" fields.
+	 * This is to ensure the field appears in the same position as in the original plugin.
+	 *
+	 * @param   array  $field_keys  The shipping address field keys.
+	 */
+	public function move_pickup_location_selection_field( $field_keys ) {
+		$field_keys[] = 'shipping_pickup_location_notice';
+		return $field_keys;
 	}
 
 }
