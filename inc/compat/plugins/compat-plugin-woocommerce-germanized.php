@@ -39,8 +39,12 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Pickup location
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_pickup_location' ), 10 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'remove_pickup_selection_field_from_billing_address' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'reset_current_location_field_value' ), 100 );
 		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'move_pickup_location_selection_field' ), 10 );
 		add_filter( 'woocommerce_shiptastic_render_current_pickup_location_in_billing', '__return_true', 10 ); // Move `current_pickup_location` field to billing address
+
+		// Persisted data
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
 	}
 
 	/**
@@ -83,6 +87,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Substep review text
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_shipping' ), 10 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'change_substep_text_extra_fields_skip_list_billing' ), 10 );
+
+		// Pickup location
+		add_filter( 'woocommerce_shiptastic_shipment_customer_pickup_location_code', array( $this, 'maybe_replace_current_pickup_location_code' ), 100 );
 	}
 
 
@@ -362,6 +369,36 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
+	 * Reset the current location field value to empty.
+	 * By default, the plugin gets the field value from the customer data, which overrides the session value restored by Fluid Checkout.
+	 *
+	 * @param   array  $fields  The checkout fields.
+	 */
+	public function reset_current_location_field_value( $fields ) {
+		// Initialize variables
+		$field_group_key = 'billing';
+		$field_key = 'current_pickup_location';
+
+		// Bail if field is not set
+		if ( ! isset( $fields[ $field_group_key ][ $field_key ] ) ) { return $fields; }
+
+		// Get current pickup location code from session
+		$pickup_location_code = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( $field_key );
+
+		// Reset field value
+		$fields[ $field_group_key ][ $field_key ][ 'value' ] = $pickup_location_code;
+
+		// Maybe reset the the custom attribute to prevent JS errors
+		if ( ! $pickup_location_code ) {
+			$fields[ $field_group_key ][ $field_key ][ 'current_location' ] = '';
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
 	 * Move pickup location selection field to the section with "shipping same as billing" fields.
 	 * This is to ensure the field appears in the same position as in the original plugin.
 	 *
@@ -370,6 +407,45 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	public function move_pickup_location_selection_field( $field_keys ) {
 		$field_keys[] = 'shipping_pickup_location_notice';
 		return $field_keys;
+	}
+
+
+
+	/**
+	 * Set the pickup location data session value.
+	 *
+	 * @param   array  $posted_data  The posted data.
+	 */
+	public function maybe_set_pickup_location_data_session_value( $posted_data ) {
+		$field_key = 'current_pickup_location';
+
+		// Bail if the field value isn't available
+		if ( ! isset( $posted_data[ $field_key ] ) ) { return $posted_data; }
+
+		// Set the field value to session
+		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
+
+		return $posted_data;
+	}
+
+
+
+	/**
+	 * Maybe replace the current pickup location code with the one from session.
+	 *
+	 * @param   string  $pickup_location_code  The pickup location code.
+	 */
+	public function maybe_replace_current_pickup_location_code( $pickup_location_code ) {
+		// Initialize variables
+		$field_key = 'current_pickup_location';
+
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $pickup_location_code; }
+
+		// Get the current location code from the session
+		$pickup_location_code = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( $field_key );
+
+		return $pickup_location_code;
 	}
 
 }
