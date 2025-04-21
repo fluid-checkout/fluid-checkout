@@ -22,6 +22,12 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 1600, 3 ); // Priority needs to be higher than that used by Germanized (1500)
 
@@ -40,6 +46,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_pickup_location' ), 10 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'remove_pickup_selection_field_from_billing_address' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'reset_current_location_field_value' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_set_address_fields_as_readonly' ), 100 );
 		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'move_pickup_location_selection_field' ), 10 );
 		add_filter( 'woocommerce_shiptastic_render_current_pickup_location_in_billing', '__return_true', 10 ); // Move `current_pickup_location` field to billing address
 
@@ -90,6 +97,35 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Pickup location
 		add_filter( 'woocommerce_shiptastic_shipment_customer_pickup_location_code', array( $this, 'maybe_replace_current_pickup_location_code' ), 100 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Checkout scripts
+		wp_register_script( 'fc-checkout-woocommerce-germanized', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-germanized/checkout-woocommerce-germanized' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-woocommerce-germanized', 'window.addEventListener("load",function(){CheckoutWooCommerceGermanized.init(fcSettings.checkoutWooCommerceGermanized);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-woocommerce-germanized' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
@@ -348,6 +384,52 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
+	 * Get the current shipping address on checkout page.
+	 *
+	 * @return  array  The current shipping address.
+	 */
+	public function get_current_checkout_shipping_address() {
+		$address = array(
+			'country'   => WC()->checkout->get_value( 'shipping_country' ),
+			'state'     => WC()->checkout->get_value( 'shipping_state' ),
+			'city'      => WC()->checkout->get_value( 'shipping_city' ),
+			'postcode'  => WC()->checkout->get_value( 'shipping_postcode' ),
+			'address_1' => WC()->checkout->get_value( 'shipping_address_1' ),
+		);
+		return $address;
+	}
+
+	/**
+	 * Get the current shipping method provider.
+	 *
+	 * @return  object  The shipping provider instance.
+	 */
+	public function get_current_shipping_method_provider() {
+		// Get current shipping address
+		$shipping_address = $this->get_current_checkout_shipping_address();
+
+		// Bail if required functions are not available
+		if ( ! function_exists( 'wc_stc_get_current_shipping_provider_method' ) || ! method_exists( 'Vendidero\Shiptastic\PickupDelivery', 'get_pickup_delivery_cart_args' ) ) { return; }
+
+		// Get shipping method
+		$shipping_method = wc_stc_get_current_shipping_provider_method();
+
+		// Bail if shipping method is not set or its method is not available
+		if ( ! $shipping_method || ! method_exists( $shipping_method, 'get_shipping_provider_instance' ) ) { return; }
+		
+		// Get shipping provider instance
+		$provider = $shipping_method->get_shipping_provider_instance();
+
+		// Bail if provider is not set or doesn't support pickup location delivery
+		$query_args = Vendidero\Shiptastic\PickupDelivery::get_pickup_delivery_cart_args();
+		if ( ! is_a( $provider, 'Vendidero\Shiptastic\Interfaces\ShippingProviderAuto' ) || ! $provider->supports_pickup_location_delivery( $shipping_address, $query_args ) ) { return; }
+
+		return $provider;
+	}
+
+
+
+	/**
 	 * Remove the pickup selection field from the billing address fields.
 	 *
 	 * @param   array  $fields  The billing fields.
@@ -391,6 +473,53 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Maybe reset the the custom attribute to prevent JS errors
 		if ( ! $pickup_location_code ) {
 			$fields[ $field_group_key ][ $field_key ][ 'current_location' ] = '';
+		}
+
+		return $fields;
+	}
+
+
+
+	/**
+	 * Maybe set address fields as readonly.
+	 * By default, the plugin sets the field as readonly through JS.
+	 *
+	 * @param   array  $fields  The checkout fields.
+	 */
+	public function maybe_set_address_fields_as_readonly( $fields ) {
+		// Initialize variables
+		$field_group_key = 'shipping';
+		$current_location_field_key = 'current_pickup_location';
+		
+		// Get shipping method provider
+		$provider = $this->get_current_shipping_method_provider();
+
+		// Bail if provider is not set or doesn't support pickup location delivery
+		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $fields; }
+
+		// Get current pickup location
+		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
+
+		// Bail if current location is not available
+		if ( ! is_object( $current_location ) || ! method_exists( $current_location, 'get_address_replacement_map' ) ) { return $fields; }
+
+		// Set fields mapped to the current pickup location as readonly
+		$fields_to_disable = $current_location->get_address_replacement_map();
+		foreach ( $fields_to_disable as $field_key => $field ) {
+			// Add missing prefix to the field key
+			$field_key = $field_group_key . '_' . $field_key;
+
+			// Skip if field is not available
+			if ( ! isset( $fields[ $field_group_key ][ $field_key ] ) ) { continue; }
+
+			// Maybe create array of custom attributes for the field
+			if ( ! array_key_exists( 'custom_attributes', $fields[ $field_group_key ][ $field_key ] ) ) {
+				$fields[ $field_group_key ][ $field_key ][ 'custom_attributes' ] = array();
+			}
+
+			// Set the field as readonly
+			$fields[ $field_group_key ][ $field_key ][ 'custom_attributes' ][ 'readonly' ] = 'readonly';
 		}
 
 		return $fields;
