@@ -45,14 +45,16 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Pickup location
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_pickup_location' ), 10 );
 		add_filter( 'fc_customer_persisted_data_skip_fields', array( $this, 'add_persisted_data_skip_fields' ), 10, 2 );
-		add_filter( 'woocommerce_checkout_fields', array( $this, 'remove_pickup_selection_field_from_billing_address' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_move_pickup_selection_fields_to_shipping_address' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'reset_current_location_field_value' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_set_address_fields_as_readonly' ), 100 );
 		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'move_pickup_location_selection_field' ), 10 );
-		add_filter( 'woocommerce_shiptastic_render_current_pickup_location_in_billing', '__return_true', 10 ); // Move `current_pickup_location` field to billing address
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
+
+		// Shipping address
+		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'add_pickup_location_field_step_review_text_skip_list' ), 10 );
 	}
 
 	/**
@@ -449,20 +451,29 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
-	 * Remove the pickup selection field from the billing address fields.
+	 * Maybe move the pickup location selection fields to the shipping address section.
 	 *
 	 * @param   array  $fields  The billing fields.
 	 */
-	public function remove_pickup_selection_field_from_billing_address( $fields ) {
+	public function maybe_move_pickup_selection_fields_to_shipping_address( $fields ) {
 		// Initialize variables
-		$field_group_key = 'billing';
-		$field_key = 'billing_pickup_location_notice';
+		$notice_field_key = 'billing_pickup_location_notice';
+		$pickup_location_field_key = 'current_pickup_location';
+		$pickup_location_field_sections = array( 'order', 'billing' );
 
-		// Bail field is not set
-		if ( ! isset( $fields[ $field_group_key ][ $field_key ] ) ) { return $fields; }
+		// Maybe remove the notice field
+		if ( isset( $fields[ 'billing' ][ $notice_field_key ] ) ) {
+			unset( $fields[ 'billing' ][ $notice_field_key ] );
+		}
 
-		// Remove the field associated with the pickup location selection field
-		unset( $fields[ $field_group_key ][ $field_key ] );
+		// Move the pickup location field to the shipping address if exists in the order comments or billing address sections
+		foreach ( $pickup_location_field_sections as $field_group ) {
+			if ( isset( $fields[ $field_group ][ $pickup_location_field_key ] ) ) {
+				$fields[ 'shipping' ][ $pickup_location_field_key ] = $fields[ $field_group ][ $pickup_location_field_key ];
+				unset( $fields[ $field_group ][ $pickup_location_field_key ] );
+				break;
+			}
+		}
 
 		return $fields;
 	}
@@ -477,7 +488,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function reset_current_location_field_value( $fields ) {
 		// Initialize variables
-		$field_group_key = 'billing';
+		$field_group_key = 'shipping';
 		$field_key = 'current_pickup_location';
 
 		// Bail if field is not set
@@ -594,6 +605,23 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		$pickup_location_code = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( $field_key );
 
 		return $pickup_location_code;
+	}
+
+
+
+	/**
+	 * Add current pickup location field to the substep review text skip list.
+	 *
+	 * @param   array  $field_keys_skip_list  Array with all fields to skip.
+	 */
+	public function add_pickup_location_field_step_review_text_skip_list( $field_keys_skip_list ) {
+		// Bail if not an array
+		if ( ! is_array( $field_keys_skip_list ) ) { return $field_keys_skip_list; }
+
+		// Add field to skip list
+		$field_keys_skip_list[] = 'current_pickup_location';
+		
+		return $field_keys_skip_list;
 	}
 
 }
