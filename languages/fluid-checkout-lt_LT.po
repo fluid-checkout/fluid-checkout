@@ -272,36 +272,6 @@ msgstr "Splitas"
 msgid "Minimalist"
 msgstr "Minimalistinis"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "\"Fluid Checkout Lite\" 4.0+ - Svarbūs pakeitimai!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Šioje \"Fluid Checkout\" versijoje įdiegėme <strong>svarbių pakeitimų, "
-"kurie gali turėti įtakos jūsų svetainei</strong>, jei iki šios versijos "
-"išleidimo atlikote mūsų įskiepių pritaikymus. Jei jūsų svetainėje nėra "
-"jokių \"Fluid Checkout\" įskiepių pritaikymų, ji turėtų veikti taip pat, "
-"kaip ir anksčiau.<br><br>Jeigu savo svetainėje turite \"Fluid Checkout\" "
-"pritaikymų ir dar neperkėlėte jų į šią versiją, perskaitykite mūsų vadovą "
-"<a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Pritaikų perkėlimas į \"Fluid Checkout Lite 4.0+\"</a>."
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Skaitykite migracijos vadovą"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "\"CodeRockz\" įskiepiai \"Fluid Checkout\" ir \"Delivery Date"
@@ -319,10 +289,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Atnaujinti į PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Ką turėčiau daryti?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2390,6 +2356,10 @@ msgstr "Papildomi antraštės skyriai"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "Išveskite papildomus antraštės skyrius, jei tai įjungta temos nustatymuose."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Daugiau informacijos"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

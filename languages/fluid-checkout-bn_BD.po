@@ -271,37 +271,6 @@ msgstr "বিভক্ত"
 msgid "Minimalist"
 msgstr "মিনিমালিস্ট"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "ফ্লুইড চেকআউট লাইট ৪.০+ – গুরুত্বপূর্ণ পরিবর্তন!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"ফ্লুইড চেকআউটের এই সংস্করণের মাধ্যমে আমরা <strong>গুরুত্বপূর্ণ পরিবর্তনগুলি "
-"চালু করেছি যা আপনার ওয়েবসাইটকে প্রভাবিত করতে পারে</strong> যদি আপনি এই "
-"সংস্করণটি প্রকাশের আগে আমাদের প্লাগইনগুলিতে কাস্টমাইজেশন করে থাকেন। যদি "
-"আপনার ওয়েবসাইটে ফ্লুইড চেকআউট প্লাগইনগুলির জন্য কোনও কাস্টমাইজেশন না থাকে, "
-"তবে এটি আগের মতোই কাজ করবে।<br><br> যদি আপনার ওয়েবসাইটে ফ্লুইড চেকআউটের "
-"জন্য কোনও কাস্টমাইজেশন থাকে এবং এখনও সেগুলি এই সংস্করণে স্থানান্তরিত না করে "
-"থাকেন, তাহলে অনুগ্রহ করে আমাদের <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">ফ্লুইড চেকআউট লাইট 4.0+ এ কাস্টমাইজেশন স্থানান্তর করার</a> নির্দেশিকাটি "
-"পড়ুন।"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "মাইগ্রেশন নির্দেশিকাটি পড়ুন"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz এর ফ্লুইড চেকআউট এবং ডেলিভারি ডেট প্লাগইন"
@@ -320,10 +289,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO তে আপগ্রেড করুন"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "আমার কি করা উচিত?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2365,6 +2330,10 @@ msgstr "অতিরিক্ত হেডার বিভাগ"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "থিম সেটিংসে সক্রিয় থাকলে অতিরিক্ত হেডার বিভাগ আউটপুট করুন।"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "অধিক তথ্য"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

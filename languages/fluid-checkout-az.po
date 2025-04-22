@@ -271,37 +271,6 @@ msgstr "bölün"
 msgid "Minimalist"
 msgstr "Minimalist"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ – Vacib dəyişikliklər!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Fluid Checkout-un bu versiyası ilə biz bu versiyanın buraxılışından əvvəl "
-"plaginlərimizdə fərdiləşdirmələr etmisinizsə <strong>, vebsaytınıza təsir "
-"edə biləcək mühüm dəyişikliklər</strong> təqdim etdik. Veb saytınızda Fluid "
-"Checkout plaginləri üçün heç bir fərdiləşdirmə yoxdursa, o, əvvəlki kimi "
-"işləməlidir.<br><br> Veb saytınızda Fluid Checkout üçün hər hansı "
-"fərdiləşdirmələriniz varsa və onları hələ bu versiyaya köçürməmisinizsə, "
-"lütfən <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">, "
-"Fluid Checkout Lite 4.0+-a fərdiləşdirmələrin köçürülməsi</a> bələdçisimizi "
-"oxuyun."
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Miqrasiya təlimatını oxuyun"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz tərəfindən Fluid Checkout və Çatdırılma Tarixi plaginləri"
@@ -319,10 +288,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO-ya təkmilləşdirin"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Mən nə etməliyəm?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2390,6 +2355,10 @@ msgstr "Əlavə başlıq bölmələri"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "Mövzu parametrlərində aktivləşdirilibsə, əlavə başlıq bölmələrini çıxarın."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Ətraflı məlumat"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -273,37 +273,6 @@ msgstr "பிரி"
 msgid "Minimalist"
 msgstr "மினிமலிஸ்ட்"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ – முக்கியமான மாற்றங்கள்!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Fluid Checkout இன் இந்தப் பதிப்பில், இந்தப் பதிப்பின் வெளியீட்டிற்கு முன்பு "
-"எங்கள் செருகுநிரல்களில் நீங்கள் தனிப்பயனாக்கங்களைச் செய்திருந்தால் "
-"<strong>, உங்கள் வலைத்தளத்தைப் பாதிக்கக்கூடிய முக்கியமான "
-"மாற்றங்களை</strong> நாங்கள் அறிமுகப்படுத்தியுள்ளோம். உங்கள் வலைத்தளத்தில் "
-"Fluid Checkout செருகுநிரல்களுக்கான எந்த தனிப்பயனாக்கங்களும் இல்லையென்றால், "
-"அது முன்பு போலவே செயல்படும்.<br><br> உங்கள் வலைத்தளத்தில் Fluid "
-"Checkout-க்கான ஏதேனும் தனிப்பயனாக்கங்கள் இருந்து, அவற்றை இன்னும் இந்தப் "
-"பதிப்பிற்கு மாற்றவில்லை என்றால், தயவுசெய்து எங்கள் வழிகாட்டியான <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">Fluid "
-"Checkout Lite 4.0+-க்கு தனிப்பயனாக்கங்களை மாற்றுதல் என்பதைப்</a> படிக்கவும்."
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "இடம்பெயர்வு வழிகாட்டியைப் படியுங்கள்."
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz வழங்கும் திரவ செக்அவுட் மற்றும் டெலிவரி தேதி செருகுநிரல்கள்"
@@ -322,10 +291,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO க்கு மேம்படுத்து"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "நான் என்ன செய்ய வேண்டும்?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2437,6 +2402,10 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "தீம் அமைப்புகளில் இயக்கப்பட்டிருந்தால் கூடுதல் தலைப்புப் பிரிவுகளை "
 "வெளியிடுங்கள்."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "மேலும் தகவல்"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

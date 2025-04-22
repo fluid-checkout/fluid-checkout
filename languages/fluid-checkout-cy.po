@@ -275,36 +275,6 @@ msgstr "Hollti"
 msgid "Minimalist"
 msgstr "Minimalaidd"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Newidiadau pwysig!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Gyda&#39;r fersiwn hwn o Fluid Checkout rydym wedi cyflwyno "
-"<strong>newidiadau pwysig a allai effeithio ar eich gwefan</strong> os "
-"ydych wedi gwneud addasiadau i&#39;n ategion yn flaenorol i ryddhau&#39;r "
-"fersiwn hon. Os nad oes gan eich gwefan unrhyw addasiadau ar gyfer ategion "
-"Hylif Checkout, dylai weithio yn yr un ffordd ag o&#39;r blaen.<br><br> Os "
-"oes gennych unrhyw addasiadau ar gyfer Hylif Checkout ar eich gwefan ac nad "
-"ydych wedi eu symud i&#39;r fersiwn hon eto, darllenwch ein canllaw <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">Mudo "
-"addasiadau i Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Darllenwch y canllaw mudo"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Ategion Talu Hylif a Dyddiad Cyflenwi gan CodeRockz"
@@ -323,10 +293,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Uwchraddio i PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Beth ddylwn i ei wneud?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2398,6 +2364,10 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "Allbwn adrannau pennyn ychwanegol os yw wedi&#39;i alluogi yn y gosodiadau "
 "thema."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Mwy o wybodaeth"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

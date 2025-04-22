@@ -271,36 +271,6 @@ msgstr "विभाजन"
 msgid "Minimalist"
 msgstr "न्यूनतम"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "फ्लुइड चेकआउट लाइट ४.०+ – महत्त्वपूर्ण परिवर्तनहरू!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"फ्लुइड चेकआउटको यस संस्करणको साथ हामीले <strong>महत्त्वपूर्ण परिवर्तनहरू "
-"ल्याएका छौं जसले तपाईंको वेबसाइटलाई असर गर्न सक्छ</strong> यदि तपाईंले यो "
-"संस्करणको रिलीज हुनुभन्दा पहिले हाम्रा प्लगइनहरूमा अनुकूलन गर्नुभएको छ भने। "
-"यदि तपाईंको वेबसाइटमा फ्लुइड चेकआउट प्लगइनहरूको लागि कुनै अनुकूलन छैन भने, "
-"यो पहिले जस्तै काम गर्नुपर्छ।<br><br> यदि तपाईंको वेबसाइटमा फ्लुइड चेकआउटको "
-"लागि कुनै अनुकूलनहरू छन् र तिनीहरूलाई अझै यो संस्करणमा स्थानान्तरण "
-"गर्नुभएको छैन भने, कृपया हाम्रो गाइड <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">फ्लुइड चेकआउट लाइट ४.०+ मा अनुकूलनहरू माइग्रेट गर्ने</a> पढ्नुहोस्।"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "माइग्रेसन गाइड पढ्नुहोस्"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz द्वारा फ्लुइड चेकआउट र डेलिभरी मिति प्लगइनहरू"
@@ -318,10 +288,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO मा स्तरवृद्धि गर्नुहोस्"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "मैले के गर्नुपर्छ?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2359,6 +2325,10 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "यदि थिम सेटिङहरूमा सक्षम पारिएको छ भने अतिरिक्त हेडर खण्डहरू आउटपुट "
 "गर्नुहोस्।"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "थप जानकारी"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

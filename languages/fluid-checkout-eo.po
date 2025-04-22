@@ -271,36 +271,6 @@ msgstr "Split"
 msgid "Minimalist"
 msgstr "Minimalisto"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Gravaj ŝanĝoj!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Kun ĉi tiu versio de Fluid Checkout ni enkondukis <strong>gravajn ŝanĝojn, "
-"kiuj povus influi vian retejon,</strong> se vi faris personigojn al niaj "
-"kromprogramoj antaŭ la eldono de ĉi tiu versio. Se via retejo ne havas "
-"personigojn por Fluid Checkout kromaĵojn, ĝi devus funkcii same kiel "
-"antaŭe.<br><br> Se vi havas iujn personigojn por Fluid Checkout en via "
-"retejo kaj ankoraŭ ne migris ilin al ĉi tiu versio, bonvolu legi nian "
-"gvidilon <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrado de personigoj al Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Legu la gvidilon pri migrado"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Fluid Checkout kaj Livera Dato kromaĵojn de CodeRockz"
@@ -318,10 +288,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Ĝisdatigu al PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Kion mi faru?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2356,6 +2322,10 @@ msgstr "Pliaj kapliniaj sekcioj"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "Eligu pliajn titolajn sekciojn se ebligita en la temo-agordoj."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Pliaj informoj"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -25,6 +25,12 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 30 );
+
+		// Buttons
+		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_place_order_button_classes', array( $this, 'add_button_class' ), 10 );
 	}
 
 
@@ -55,11 +61,33 @@ class FluidCheckout_ThemeCompat_LeadEngine extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.navbar-default';
+		$attributes[ 'data-sticky-relative-to' ] = '.navbar-default';
 
 		return $attributes;
 	}
 
+
+
+	/**
+	 * Add button class from the theme.
+	 * 
+	 * @param  array|string  $classes  The button classes.
+	 */
+	public function add_button_class( $classes ) {
+		// Define button class
+		$button_class = 'tt_button';
+
+		// Add button class to the classes array
+		if ( is_array( $classes ) ) {
+			array_push( $classes, $button_class );
+		}
+		// Otherwise append button class as a string
+		else {
+			$classes .= ' ' . $button_class;
+		}
+
+		return $classes;
+	}
 }
 
 FluidCheckout_ThemeCompat_LeadEngine::instance();

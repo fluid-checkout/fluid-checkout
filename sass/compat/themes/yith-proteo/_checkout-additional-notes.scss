@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT ADDITIONAL NOTES
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .woocommerce-additional-fields .woocommerce-additional-fields__field-wrapper {
+	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-right }: 0;
+}

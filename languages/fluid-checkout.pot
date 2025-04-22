@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-03-29 11:51+0000\n"
+"POT-Creation-Date: 2025-04-21 15:50+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -305,18 +305,6 @@ msgstr ""
 msgid "Minimalist"
 msgstr ""
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr ""
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid "With this version of Fluid Checkout we have introduced <strong>important changes that might impact your website</strong> if you have made customizations to our plugins previously to the release of this version. If your website does not have any customizations for Fluid Checkout plugins, it should work in the same way as before.<br><br>If you have any customizations for Fluid Checkout on your website and have not yet migrated them to this version, please read our guide <a href=\"https://fluidcheckout.com/version-4-customization-migration/\">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr ""
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr ""
@@ -325,12 +313,12 @@ msgstr ""
 msgid "<p>We detected that you are using the plugins Delivery & Pickup Date Time for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins have been moved to Fluid Checkout PRO.</p>"
 msgstr ""
 
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:157
 msgid "Upgrade to PRO"
 msgstr ""
 
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
+msgid "More information"
 msgstr ""
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
@@ -373,7 +361,7 @@ msgstr ""
 msgid "Edit the checkout page"
 msgstr ""
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:231
 msgid "Read the documentation."
 msgstr ""
 
@@ -1386,16 +1374,16 @@ msgstr ""
 msgid "License keys"
 msgstr ""
 
-#: inc/admin/admin-settings-license-keys.php:73
+#: inc/admin/admin-settings-license-keys.php:80
 msgctxt "Settings section title"
 msgid "License keys"
 msgstr ""
 
-#: inc/admin/admin-settings-license-keys.php:85
+#: inc/admin/admin-settings-license-keys.php:92
 msgid "No license keys options available at the moment on this section. The options related to each plugin or add-on will appear here when that plugin is activated."
 msgstr ""
 
-#: inc/admin/admin-settings-license-keys.php:90
+#: inc/admin/admin-settings-license-keys.php:97
 msgid "Visit our website for more information about our plugins and add-ons."
 msgstr ""
 
@@ -1601,27 +1589,27 @@ msgstr ""
 msgid "Fluid Checkout"
 msgstr ""
 
-#: inc/admin/admin.php:133
+#: inc/admin/admin.php:149
 msgid "Settings"
 msgstr ""
 
-#: inc/admin/admin.php:134
+#: inc/admin/admin.php:150
 msgid "Support"
 msgstr ""
 
-#: inc/admin/admin.php:159
+#: inc/admin/admin.php:175
 msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 
-#: inc/admin/admin.php:179
+#: inc/admin/admin.php:195
 msgid "(PRO)"
 msgstr ""
 
-#: inc/admin/admin.php:199
+#: inc/admin/admin.php:215
 msgid "(experimental)"
 msgstr ""
 
-#: inc/admin/admin.php:208
+#: inc/admin/admin.php:224
 msgid "This is an experimental feature and may not work as expected with all themes and plugins. Use it with caution."
 msgstr ""
 

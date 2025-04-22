@@ -273,38 +273,6 @@ msgstr "បំបែក"
 msgid "Minimalist"
 msgstr "តិចតួចបំផុត។"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - ការផ្លាស់ប្តូរសំខាន់ៗ!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"ជាមួយនឹងកំណែនៃ Fluid Checkout នេះ យើងបានណែនាំ "
-"<strong>ការផ្លាស់ប្ដូរសំខាន់ៗដែលអាចប៉ះពាល់ដល់គេហទំព័ររបស់អ្នក</strong> "
-"ប្រសិនបើអ្នកបានធ្វើការកែប្រែតាមបំណងចំពោះកម្មវិធីជំនួយរបស់យើងពីមុនចំពោះការចេញ"
-"ផ្សាយកំណែនេះ។ "
-"ប្រសិនបើគេហទំព័ររបស់អ្នកមិនមានការប្ដូរតាមបំណងសម្រាប់កម្មវិធីជំនួយ Fluid "
-"Checkout ទេ វាគួរតែដំណើរការតាមរបៀបដូចពីមុន។<br><br> "
-"ប្រសិនបើអ្នកមានការប្ដូរតាមបំណងណាមួយសម្រាប់ Fluid Checkout "
-"នៅលើគេហទំព័ររបស់អ្នក ហើយមិនទាន់បានផ្ទេរពួកវាទៅកំណែនេះទេ "
-"សូមអានការណែនាំរបស់យើង <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">ការផ្ទេរការប្ដូរតាមបំណងទៅ Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "អានការណែនាំអំពីការធ្វើចំណាកស្រុក"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "កម្មវិធីជំនួយពិនិត្យចេញ និងកាលបរិច្ឆេទដឹកជញ្ជូនដោយ CodeRockz"
@@ -323,10 +291,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "ដំឡើងកំណែទៅ PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "តើខ្ញុំគួរធ្វើអ្វី?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2381,6 +2345,10 @@ msgstr "ផ្នែកបឋមកថាបន្ថែម"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "បញ្ចេញផ្នែកបឋមកថាបន្ថែម ប្រសិនបើបានបើកនៅក្នុងការកំណត់ស្បែក។"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "ព័ត៌មានបន្ថែម"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

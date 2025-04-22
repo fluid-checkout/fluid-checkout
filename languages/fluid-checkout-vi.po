@@ -271,36 +271,6 @@ msgstr "Tách ra"
 msgid "Minimalist"
 msgstr "Tối giản"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ – Những thay đổi quan trọng!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Với phiên bản Fluid Checkout này, chúng tôi đã giới thiệu <strong>những "
-"thay đổi quan trọng có thể ảnh hưởng đến trang web của bạn</strong> nếu bạn "
-"đã tùy chỉnh plugin của chúng tôi trước khi phát hành phiên bản này. Nếu "
-"trang web của bạn không có bất kỳ tùy chỉnh nào cho plugin Fluid Checkout, "
-"nó sẽ hoạt động theo cùng một cách như trước.<br><br> Nếu bạn có bất kỳ tùy "
-"chỉnh nào cho Fluid Checkout trên trang web của mình và vẫn chưa di chuyển "
-"chúng sang phiên bản này, vui lòng đọc hướng dẫn <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">Di "
-"chuyển tùy chỉnh sang Fluid Checkout Lite 4.0+</a> của chúng tôi"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Đọc hướng dẫn di chuyển"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Các plugin Fluid Checkout và Delivery Date của CodeRockz"
@@ -318,10 +288,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Nâng cấp lên PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Tôi nên làm gì?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2372,6 +2338,10 @@ msgstr "Các phần tiêu đề bổ sung"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "Xuất ra các phần tiêu đề bổ sung nếu được bật trong cài đặt chủ đề."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Thông tin thêm"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
