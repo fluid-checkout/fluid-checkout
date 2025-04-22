@@ -2361,6 +2361,10 @@ msgstr "Išveskite papildomus antraštės skyrius, jei tai įjungta temos nustat
 msgid "More information"
 msgstr "Daugiau informacijos"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Pasirinkite spintelę"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2174,6 +2174,10 @@ msgstr "テーマ設定で有効になっていれば、追加のヘッダーセ
 msgid "More information"
 msgstr "詳細情報"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ロッカーを選ぶ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

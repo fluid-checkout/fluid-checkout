@@ -2375,6 +2375,10 @@ msgstr "További fejlécrészek kiadása, ha a téma beállításaiban engedély
 msgid "More information"
 msgstr "További információ"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Válassz egy szekrényt"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

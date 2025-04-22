@@ -2368,6 +2368,10 @@ msgstr "Ger di mîhengên mijarê de were çalak kirin beşên sernavê yên din
 msgid "More information"
 msgstr "Agahiyên bêtir"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Lokerek hilbijêre"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

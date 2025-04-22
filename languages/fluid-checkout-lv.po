@@ -2344,6 +2344,10 @@ msgstr "Izvadiet papildu galvenes sadaļas, ja tas ir iespējots tēmas iestatī
 msgid "More information"
 msgstr "Vairāk informācijas"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Izvēlieties skapīti"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2327,6 +2327,10 @@ msgstr "Eligu pliajn titolajn sekciojn se ebligita en la temo-agordoj."
 msgid "More information"
 msgstr "Pliaj informoj"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Elektu Ŝlosfakon"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

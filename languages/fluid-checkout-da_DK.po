@@ -2359,6 +2359,10 @@ msgstr ""
 msgid "More information"
 msgstr "Mere information"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Vælg et skab"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

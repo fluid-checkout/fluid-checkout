@@ -2345,6 +2345,10 @@ msgstr "Gefðu út fleiri haushluta ef virkt í þemastillingunum."
 msgid "More information"
 msgstr "Frekari upplýsingar"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Veldu skáp"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

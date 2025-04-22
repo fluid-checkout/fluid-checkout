@@ -2330,6 +2330,10 @@ msgstr "ਜੇਕਰ ਥੀਮ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਸਮਰ�
 msgid "More information"
 msgstr "ਹੋਰ ਜਾਣਕਾਰੀ"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ਇੱਕ ਲਾਕਰ ਚੁਣੋ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

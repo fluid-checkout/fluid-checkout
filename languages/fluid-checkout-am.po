@@ -2209,6 +2209,10 @@ msgstr "በገጽታ ቅንጅቶች ውስጥ ከነቃ ተጨማሪ የራስ�
 msgid "More information"
 msgstr "ተጨማሪ መረጃ"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "መቆለፊያ ይምረጡ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

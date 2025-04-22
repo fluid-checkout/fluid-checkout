@@ -2426,6 +2426,10 @@ msgstr "အပြင်အဆင်ဆက်တင်များတွင် �
 msgid "More information"
 msgstr "အချက်အလက်ပို"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Locker တစ်ခုကို ရွေးပါ။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

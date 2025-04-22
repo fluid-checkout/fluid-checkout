@@ -2331,6 +2331,10 @@ msgstr "Tuottaa lisää otsikkoalueita, jos se on otettu käyttöön teeman aset
 msgid "More information"
 msgstr "Lisätietoja"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Valitse kaappi"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

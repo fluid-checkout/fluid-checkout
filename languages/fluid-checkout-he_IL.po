@@ -2252,6 +2252,10 @@ msgstr "פלט קטעי כותרת נוספים אם מופעל בהגדרות �
 msgid "More information"
 msgstr "מידע נוסף"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "בחר לוקר"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

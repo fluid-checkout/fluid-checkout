@@ -2486,6 +2486,10 @@ msgstr "Výpis dalších sekcí záhlaví, pokud je to povoleno v nastavení té
 msgid "More information"
 msgstr "Více informací"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Výběr skříňky"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

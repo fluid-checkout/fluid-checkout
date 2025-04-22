@@ -2288,6 +2288,10 @@ msgstr "إخراج أقسام رأسية إضافية إذا تم تمكين ذ�
 msgid "More information"
 msgstr "مزيد من المعلومات"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "اختر خزانة"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

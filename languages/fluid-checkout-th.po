@@ -2326,6 +2326,10 @@ msgstr "ส่งออกส่วนหัวเพิ่มเติมหา
 msgid "More information"
 msgstr "ข้อมูลเพิ่มเติม"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "เลือกตู้ล็อกเกอร์"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
