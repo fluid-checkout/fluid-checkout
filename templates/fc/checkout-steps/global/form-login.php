@@ -41,7 +41,7 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		<label for="username<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
 		<input type="text" class="input-text" name="username" id="username<?php echo esc_attr( $unique_id ); ?>" autocomplete="username" />
 	</p>
-    <?php // CHANGE: Form row class to `form-row-wide` ?>
+	<?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<?php // CHANGE: Add unique id to the fields label and input element ?>
 		<label for="password<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
@@ -58,13 +58,13 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		</label>
 	</p>
 
-    <?php // CHANGE: Move login button to its own section ?>
-    <p class="fc-login-button">
-        <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
+	<?php // CHANGE: Move login button to its own section ?>
+	<p class="fc-login-button">
+	<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
 		<?php // CHANGE: Change login button label to be consistent across checkout ?>
-		<button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></button>
-    </p>
+		<button type="submit" class="<?php echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button woocommerce-form-login__submit' ) ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></button>
+	</p>
 
 	<p class="lost_password">
 		<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php esc_html_e( 'Lost your password?', 'woocommerce' ); ?></a>
