@@ -48,7 +48,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_move_pickup_selection_fields_to_shipping_address' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'reset_current_location_field_value' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_set_address_fields_as_readonly' ), 100 );
-		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'move_pickup_location_selection_field' ), 10 );
+		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'remove_pickup_location_from_copy_billing_field_keys' ), 10 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
@@ -558,13 +558,17 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
-	 * Move pickup location selection field to the section with "shipping same as billing" fields.
-	 * This is to ensure the field appears in the same position as in the original plugin.
+	 * Remove pickup location fields from "shipping same as billing" field list.
+	 * This ensures that the fields appear in the same position as they do in the original plugin.
 	 *
 	 * @param   array  $field_keys  The shipping address field keys.
 	 */
-	public function move_pickup_location_selection_field( $field_keys ) {
-		$field_keys[] = 'shipping_pickup_location_notice';
+	public function remove_pickup_location_from_copy_billing_field_keys( $field_keys ) {
+		$field_keys = array_merge( $field_keys, array(
+			'shipping_pickup_location_notice',
+			'pickup_location_customer_number',
+		) );
+
 		return $field_keys;
 	}
 
