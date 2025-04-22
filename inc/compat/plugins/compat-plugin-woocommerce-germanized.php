@@ -44,6 +44,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Pickup location
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_pickup_location' ), 10 );
+		add_filter( 'fc_customer_persisted_data_skip_fields', array( $this, 'add_persisted_data_skip_fields' ), 10, 2 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'remove_pickup_selection_field_from_billing_address' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'reset_current_location_field_value' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_set_address_fields_as_readonly' ), 100 );
@@ -379,6 +380,24 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			'pickup_location'
 		) );
 		return $skip_list;
+	}
+
+
+
+	/**
+	 * Add pickup location fields from the popup to the persisted data skip list.
+	 *
+	 * @param  array  $skip_field_keys     Checkout field keys to skip from saving to the session.
+	 * @param  array  $parsed_posted_data  All parsed post data.
+	 */
+	public function add_persisted_data_skip_fields( $skip_field_keys, $parsed_posted_data ) {
+		$rede_fields_keys = array(
+			'pickup_location',
+			'pickup_location_address',
+			'pickup_location_postcode',
+		);
+
+		return array_merge( $skip_field_keys, $rede_fields_keys );
 	}
 
 
