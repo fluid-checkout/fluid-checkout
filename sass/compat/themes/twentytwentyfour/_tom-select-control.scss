@@ -7,7 +7,7 @@ body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 	border: var(--wc-form-border-width) solid var(--wc-form-border-color);
 	border-radius: var(--wc-form-border-radius);
 	color: var(--wc-form-color-text, #000);
-	padding-left: remsize( 1.76rem ); // Needed to match theme styles
+	padding-#{ $alignment-left }: remsize( 1.76rem ); // Needed to match theme styles
 	height: auto;
 }
 
