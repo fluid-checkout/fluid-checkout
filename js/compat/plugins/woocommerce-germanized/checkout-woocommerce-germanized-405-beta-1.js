@@ -26,6 +26,7 @@
 
 		removePickupLocationButtonSelector: '.pickup-location-remove',
 		currentPickupLocationInputSelector: '#current_pickup_location',
+		customerNumberFieldSelector: '#pickup_location_customer_number',
 		fieldContainerSelector: '.woocommerce-input-wrapper',
 		fieldRowSelector: '.form-row',
 
@@ -56,7 +57,7 @@
 		var currentLocation = window.shiptastic.shipments_pickup_locations.getPickupLocation( currentPickupLocationInput.value );
 		var replacemnts = Object.keys( currentLocation.address_replacements );
 
-		// Add "#shipping_" prefix to each field (replace the current field name)
+		// Add shipping address prefix to each field (replace the current field name)
 		var replacmentFields = [];
 		for ( var i = 0; i < replacemnts.length; i++ ) {
 			replacmentFields.push( '#shipping_' + replacemnts[ i ] );
@@ -173,6 +174,16 @@
 		}
 	};
 
+	/**
+	 * Handle keypress event event and route to the appropriate functions.
+	 */
+	var handleKeyDown = function( e ) {
+		// CUSTOMER NUMBER FIELD
+		if ( e.target.matches( _settings.customerNumberFieldSelector ) ) {
+			triggerCheckoutUpdate();
+		}
+	}
+
 
 
 	/**
@@ -210,7 +221,8 @@
 		_settings = FCUtils.extendObject( _settings, options );
 
 		// Add event listeners
-		window.addEventListener( 'click', handleClick, true );
+		document.addEventListener( 'click', handleClick, true );
+		document.addEventListener( 'keydown', handleKeyDown );
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {

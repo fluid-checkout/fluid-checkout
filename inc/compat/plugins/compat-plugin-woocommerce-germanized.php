@@ -28,6 +28,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 1600, 3 ); // Priority needs to be higher than that used by Germanized (1500)
 
@@ -55,6 +58,15 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Shipping address
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'add_pickup_location_field_step_review_text_skip_list' ), 10 );
+
+		// Add hidden fields
+		add_action( 'woocommerce_checkout_shipping', array( $this, 'output_custom_hidden_fields' ), 10 );
+
+		// Maybe set substep as incomplete
+		add_filter( 'fc_is_substep_complete_shipping_address', array( $this, 'maybe_set_substep_incomplete_shipping_address' ), 10 );
+
+		// Add substep fragments
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_hidden_fields_fragment' ), 10 );
 	}
 
 	/**
@@ -111,6 +123,10 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-woocommerce-germanized', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-germanized/checkout-woocommerce-germanized' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-woocommerce-germanized', 'window.addEventListener("load",function(){CheckoutWooCommerceGermanized.init(fcSettings.checkoutWooCommerceGermanized);})' );
+
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-woocommerce-germanized', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-germanized/checkout-validation-woocommerce-germanized' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-validation-woocommerce-germanized', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGermanized.init(fcSettings.checkoutValidationWooCommerceGermanized);})' );
 	}
 
 	/**
@@ -119,6 +135,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	public function enqueue_assets() {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-woocommerce-germanized' );
+		wp_enqueue_script( 'fc-checkout-validation-woocommerce-germanized' );
 	}
 
 	/**
@@ -129,6 +146,24 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationWooCommerceGermanized' ] = array(
+			'validationMessages'  => array(
+				'invalid_customer_number' => __( 'Sorry, your pickup location customer number is invalid.', 'shipments', 'woocommerce-germanized' ),
+			),
+		);
+
+		return $settings;
 	}
 
 
@@ -626,6 +661,102 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		$field_keys_skip_list[] = 'current_pickup_location';
 		
 		return $field_keys_skip_list;
+	}
+
+
+
+	/**
+	 * Check if customer number is valid.
+	 *
+	 * @param   string  $customer_number  Customer number to validate.
+	 */
+	public function is_customer_number_valid( $customer_number ) {
+		// Initialize variables
+		$is_valid = true;
+		$current_location_field_key = 'current_pickup_location';
+
+		// Get shipping method provider
+		$provider = $this->get_current_shipping_method_provider();
+
+		// Bail if provider is not set or doesn't support pickup location delivery
+		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $is_valid; }
+
+		// Get current pickup location
+		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
+
+		// Bail if current location object or its methods are not available
+		if ( ! is_object( $current_location ) || ! method_exists( $current_location, 'customer_number_is_valid' ) || ! method_exists( $current_location, 'customer_number_is_mandatory' ) ) { return $is_valid; }
+
+		// Bail if customer number is not mandatory and empty
+		if ( ! $current_location->customer_number_is_mandatory() && empty( $customer_number ) ) { return $is_valid; }
+
+		$is_valid = $current_location->customer_number_is_valid( $customer_number );
+		
+		return $is_valid;
+	}
+
+
+
+	/**
+	 * Output the custom hidden fields.
+	 */
+	public function output_custom_hidden_fields() {
+		// Get entered customer number
+		$customer_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'pickup_location_customer_number' );
+
+		// Check if customer number is valid
+		$is_valid = $this->is_customer_number_valid( $customer_number );
+
+		// Output custom hidden fields
+		echo '<div id="germanized-custom_checkout_fields" class="form-row fc-no-validation-icon germanized-custom_checkout_fields">';
+		echo '<div class="woocommerce-input-wrapper">';
+		echo '<input type="hidden" id="germanized-customer-number-is_valid" name="germanized-customer-number-is_valid" value="'. esc_attr( $is_valid ) .'" class="validate-germanized-customer-number">';
+		echo '</div>';
+		echo '</div>';
+	}
+
+
+
+	/**
+	 * Add hidden fields as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_shipping_hidden_fields_fragment( $fragments ) {
+		// Get custom hidden fields HTML
+		ob_start();
+		$this->output_custom_hidden_fields();
+		$html = ob_get_clean();
+
+		// Add fragment
+		$fragments[ '.germanized-custom_checkout_fields' ] = $html;
+		return $fragments;
+	}
+
+
+
+	/**
+	 * Set the contact substep as incomplete.
+	 *
+	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
+	 */
+	public function maybe_set_substep_incomplete_shipping_address( $is_substep_complete ) {
+		// Bail if step is already incomplete
+		if ( ! $is_substep_complete ) { return $is_substep_complete; }
+
+		// Get entered customer number
+		$customer_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'pickup_location_customer_number' );
+
+		// Check if customer number is valid
+		$is_valid = $this->is_customer_number_valid( $customer_number );
+
+		// Maybe set step as incomplete
+		if ( ! $is_valid ) {
+			$is_substep_complete = false;
+		}
+
+		return $is_substep_complete;
 	}
 
 }
