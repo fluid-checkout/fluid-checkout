@@ -2379,6 +2379,10 @@ msgstr "Keluarkan bahagian pengepala tambahan jika didayakan dalam tetapan tema.
 msgid "More information"
 msgstr "Maklumat lanjut"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Pilih loker"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

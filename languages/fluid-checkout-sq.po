@@ -2385,6 +2385,10 @@ msgstr "Nxirrni seksione shtesë të kokës nëse aktivizohen në cilësimet e t
 msgid "More information"
 msgstr "Më shumë informacion"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Zgjidh një dollap me kyç"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

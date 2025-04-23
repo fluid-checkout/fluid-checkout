@@ -2330,6 +2330,10 @@ msgstr "තේමා සැකසුම් තුළ සක්‍රීය ක�
 msgid "More information"
 msgstr "වැඩි විස්තර"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ලොකරයක් තෝරන්න"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

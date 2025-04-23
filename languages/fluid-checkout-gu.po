@@ -2322,6 +2322,10 @@ msgstr "જો થીમ સેટિંગ્સમાં સક્ષમ હ�
 msgid "More information"
 msgstr "વધુ માહિતી"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "લોકર પસંદ કરો"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

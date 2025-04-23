@@ -2366,6 +2366,10 @@ msgstr "Menghasilkan bagian header tambahan jika diaktifkan dalam pengaturan tem
 msgid "More information"
 msgstr "Informasi lebih lanjut"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Pilih Loker"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

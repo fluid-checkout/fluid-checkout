@@ -2331,6 +2331,10 @@ msgstr "Täiendavate päislõikude väljastamine, kui see on teema seadetes luba
 msgid "More information"
 msgstr "Lisateave"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Vali kapis"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

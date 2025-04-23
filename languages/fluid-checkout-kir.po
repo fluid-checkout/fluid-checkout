@@ -2361,6 +2361,10 @@ msgstr "Тема жөндөөлөрүндө иштетилген болсо, к�
 msgid "More information"
 msgstr "Көбүрөөк маалымат"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Кулпу тандаңыз"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

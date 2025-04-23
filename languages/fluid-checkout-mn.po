@@ -2367,6 +2367,10 @@ msgstr "Загварын тохиргоонд идэвхжүүлсэн бол н
 msgid "More information"
 msgstr "Дэлгэрэнгүй мэдээлэл"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Шүүгээ сонгох"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

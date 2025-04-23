@@ -2394,6 +2394,10 @@ msgstr "Виводити додаткові секції заголовка, я�
 msgid "More information"
 msgstr "Більше інформації"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Вибери шафку"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

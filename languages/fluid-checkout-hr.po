@@ -2354,6 +2354,10 @@ msgstr "Ispis dodatnih odjeljaka zaglavlja ako je omogućeno u postavkama teme."
 msgid "More information"
 msgstr "Više informacija"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Odaberite ormarić"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

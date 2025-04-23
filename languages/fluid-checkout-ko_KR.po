@@ -2158,6 +2158,10 @@ msgstr "테마 설정에서 활성화한 경우 추가 헤더 섹션을 출력�
 msgid "More information"
 msgstr "자세한 정보"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "사물함 선택"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

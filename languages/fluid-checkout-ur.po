@@ -2336,6 +2336,10 @@ msgstr "تھیم کی ترتیبات میں فعال ہونے پر اضافی ہ
 msgid "More information"
 msgstr "مزید معلومات"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ایک لاکر چنیں۔"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

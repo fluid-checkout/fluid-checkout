@@ -2122,6 +2122,10 @@ msgstr "如果在主题设置中启用，则输出额外的标题部分。"
 msgid "More information"
 msgstr "更多信息"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "挑选储物柜"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

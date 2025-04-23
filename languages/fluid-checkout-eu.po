@@ -2372,6 +2372,10 @@ msgstr "Iretzi goiburuko atal gehigarriak gaiaren ezarpenetan gaituta badago."
 msgid "More information"
 msgstr "Informazio gehiago"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Aukeratu armairu bat"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

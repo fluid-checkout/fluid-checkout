@@ -2329,6 +2329,10 @@ msgstr "جيڪڏهن ٿيم سيٽنگز ۾ فعال هجي ته اضافي هي
 msgid "More information"
 msgstr "وڌيڪ ڄاڻ"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "هڪ لاڪر چونڊيو"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

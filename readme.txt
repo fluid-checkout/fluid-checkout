@@ -356,6 +356,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin BOX NOW Delivery Croatia.
+* Added: Compatibility with plugin Tamara Checkout.
+* Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
 * Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
 
 = 4.0.4 - 2025-04-15 =

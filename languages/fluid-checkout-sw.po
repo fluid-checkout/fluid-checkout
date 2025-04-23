@@ -2374,6 +2374,10 @@ msgstr "Toa sehemu za kichwa cha ziada ikiwashwa katika mipangilio ya mandhari."
 msgid "More information"
 msgstr "Taarifa zaidi"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Chagua Locker"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

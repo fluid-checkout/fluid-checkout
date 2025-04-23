@@ -2542,6 +2542,10 @@ msgstr "Tema ayarlarında etkinleştirildiyse ek başlık bölümlerinin çıkt�
 msgid "More information"
 msgstr "Daha fazla bilgi"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Bir Dolap Seçin"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

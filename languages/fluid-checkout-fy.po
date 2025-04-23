@@ -2375,6 +2375,10 @@ msgstr "Utfiere ekstra koptekstseksjes as ynskeakele is yn &#39;e tema-ynstellin
 msgid "More information"
 msgstr "Mear ynformaasje"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Kies in locker"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
