@@ -56,8 +56,9 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
 
-		// Shipping address
+		// Shipping address review text
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'add_pickup_location_field_step_review_text_skip_list' ), 10 );
+		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 
 		// Add hidden fields
 		add_action( 'woocommerce_checkout_shipping', array( $this, 'output_custom_hidden_fields' ), 10 );
@@ -649,7 +650,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
-	 * Add current pickup location field to the substep review text skip list.
+	 * Add pickup location fields to the substep review text skip list.
 	 *
 	 * @param   array  $field_keys_skip_list  Array with all fields to skip.
 	 */
@@ -657,10 +658,33 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $field_keys_skip_list ) ) { return $field_keys_skip_list; }
 
-		// Add field to skip list
-		$field_keys_skip_list[] = 'current_pickup_location';
+		$field_keys_skip_list = array_merge( $field_keys_skip_list, array(
+			'current_pickup_location',
+			'pickup_location_customer_number',
+		) );
 		
 		return $field_keys_skip_list;
+	}
+
+	/**
+	 * Add the shipping adddress substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get customer number field value
+		$customer_number = WC()->checkout->get_value( 'pickup_location_customer_number' );
+
+		// Maybe add review text lines
+		if ( ! empty( $customer_number ) ) {
+			$review_text_lines[] = '<strong>' . __( 'Customer Number', 'shipments', 'woocommerce-germanized' ) . '</strong>';
+			$review_text_lines[] = esc_html( $customer_number );
+		}
+
+		return $review_text_lines;
 	}
 
 
