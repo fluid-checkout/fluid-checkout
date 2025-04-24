@@ -496,7 +496,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Initialize variables
 		$notice_field_key = 'billing_pickup_location_notice';
 		$pickup_location_field_key = 'current_pickup_location';
-		$pickup_location_field_sections = array( 'order', 'billing' );
+		$pickup_location_field_sections = array( 'order', 'billing' ); // The field can be located in both billing and order comments sections depending on the plugin settings
 
 		// Maybe remove the notice field
 		if ( isset( $fields[ 'billing' ][ $notice_field_key ] ) ) {
@@ -519,7 +519,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 	/**
 	 * Reset the current location field value to empty.
-	 * By default, the plugin gets the field value from the customer data, which overrides the session value restored by Fluid Checkout.
+	 * By default, the plugin gets the field value from the customer meta data, which overrides the session value restored by Fluid Checkout.
 	 *
 	 * @param   array  $fields  The checkout fields.
 	 */
@@ -632,6 +632,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 	/**
 	 * Maybe replace the current pickup location code with the one from session.
+	 * This is needed to avoid the field value being set to the customer meta value saved by the plugin.
 	 *
 	 * @param   string  $pickup_location_code  The pickup location code.
 	 */
@@ -709,7 +710,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
-	 * Check if customer number is valid.
+	 * Check if the customer number is valid.
 	 *
 	 * @param   string  $customer_number  Customer number to validate.
 	 */
@@ -780,7 +781,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 
 	/**
-	 * Set the contact substep as incomplete.
+	 * Maybe set the shipping address substep as incomplete.
 	 *
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */

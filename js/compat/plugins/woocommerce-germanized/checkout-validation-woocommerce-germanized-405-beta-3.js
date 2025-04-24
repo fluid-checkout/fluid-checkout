@@ -21,7 +21,6 @@
 	var _publicMethods = { };
 	var _settings = {
 		typeFieldSelector: '#pickup_location_customer_number',
-		typeRequiredSelector: '.validate-required',
 		validationStatusFieldSelector: '.validate-germanized-customer-number',
 		validationMessages: {
 			invalid_customer_number: 'Sorry, your pickup location customer number is invalid.',

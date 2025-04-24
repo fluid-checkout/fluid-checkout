@@ -30,7 +30,7 @@
 		fieldContainerSelector: '.woocommerce-input-wrapper',
 		fieldRowSelector: '.form-row',
 
-		currentLocationAttribute: 'data-current-location',
+		shippingAddressPrefix: '#shipping_',
 	};
 
 
@@ -53,14 +53,14 @@
 		// Bail if current pickup location is not set
 		if ( ! currentPickupLocationInput.value ) { return; }
 
-		// Get replacements
+		// Get value replacements
 		var currentLocation = window.shiptastic.shipments_pickup_locations.getPickupLocation( currentPickupLocationInput.value );
 		var replacemnts = Object.keys( currentLocation.address_replacements );
 
 		// Add shipping address prefix to each field (replace the current field name)
 		var replacmentFields = [];
 		for ( var i = 0; i < replacemnts.length; i++ ) {
-			replacmentFields.push( '#shipping_' + replacemnts[ i ] );
+			replacmentFields.push( _settings.shippingAddressPrefix + replacemnts[ i ] );
 		}
 
 		return replacmentFields;
@@ -91,7 +91,7 @@
 		for ( var i = 0; i < replacmentFields.length; i++ ) {
 			var field = document.querySelector( replacmentFields[ i ] );
 
-			// Skip if field is not found
+			// Skip if field is not available
 			if ( ! field ) { continue; }
 
 			// Find parent form row
@@ -107,7 +107,7 @@
 				// Find field label
 				var fieldLabel = fieldRow.querySelector( 'label' );
 
-				// Skip if label is not found
+				// Skip if label is not available
 				if ( ! fieldLabel ) { continue; }
 
 				// Add notice element after the field label
@@ -139,13 +139,13 @@
 		for ( var i = 0; i < replacmentFields.length; i++ ) {
 			var field = document.querySelector( replacmentFields[ i ] );
 
-			// Skip if field is not found
+			// Skip if field is not available
 			if ( ! field ) { continue; }
 			
 			// Find field container
 			var fieldContainer = field.closest( _settings.fieldContainerSelector );
 			if ( fieldContainer ) {
-				// Block the field
+				// Block the field container
 				_publicMethods.blockUI( fieldContainer );
 			}
 		}
