@@ -57,6 +57,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
 
 		// Shipping address review text
+		add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_customer_number_from_text_address_data' ), 10 );
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'add_pickup_location_field_step_review_text_skip_list' ), 10 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'add_substep_text_lines_shipping_address' ), 10 );
 
@@ -648,6 +649,24 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Remove the customer number field from the address data in substep review text.
+	 *
+	 * @param   array  $address_data  The address data.
+	 */
+	public function remove_customer_number_from_text_address_data( $address_data ) {
+		// Bail if not an array
+		if ( ! is_array( $address_data ) ) { return $address_data; }
+
+		// Bail if field is not set
+		if ( ! isset( $address_data[ 'pickup_location_customer_number' ] ) ) { return $address_data; }
+
+		// Remove customer number field from the address data
+		unset( $address_data[ 'pickup_location_customer_number' ] );
+
+		return $address_data;
+	}
 
 	/**
 	 * Add pickup location fields to the substep review text skip list.
