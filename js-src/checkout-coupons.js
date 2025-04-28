@@ -29,9 +29,11 @@
 		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form',
 		generalNoticesSelector: '.woocommerce-notices-wrapper',
 		messagesWrapperSelector: '.fc-coupon-code-messages',
+		errorMessagesWrapperSelector: '.fc-coupon-code-messages .woocommerce-error',
+		errorMessageDismissButtonSelector: '.fc-coupon-code-message-dismiss',
 
 		useGeneralNoticesSection: 'no',
-		suppressSuccessMessages: 'no',
+		suppressSuccessMessages: 'yes',
 
 		couponAddedSectionSelector: '.fc-step__substep-text-content--coupon-codes',
 		couponSectionSelector: '.fc-coupon-code-section',
@@ -49,6 +51,7 @@
 
 		section_key_placeholder:  '###SECTION_KEY###',
 	}
+	var _restoreMessagesMatrix = [];
 
 
 
@@ -86,19 +89,12 @@
 	}
 
 	/**
-	 * Remove all notices from the coupon code section.
-	 *
-	 * @param   HTML  content  HTML content to be displayed.
+	 * Remove all notices from general notices section.
 	 */
-	var clearNotices = function() {
+	var clearGeneralNotices = function() {
 		var generalNotices = document.querySelector( _settings.generalNoticesSelector );
 		if ( generalNotices ) {
 			generalNotices.innerHTML = '';
-		}
-
-		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
-		if ( messagesWrapper ) {
-			messagesWrapper.innerHTML = '';
 		}
 	}
 
@@ -166,6 +162,91 @@
 
 
 	/**
+	 * Remove the error message from the coupon code message list.
+	 *
+	 * @param   string  couponCode  The coupon code associated with the message element.
+	 */
+	var dismissErrorMessage = function( couponCode ) {
+		// Bail if coupon code was not provided
+		if ( ! couponCode ) { return; }
+
+		// Get coupon code message element
+		var errorMessageSelector = _settings.errorMessagesWrapperSelector + ' > li[' + _settings.couponCodeAttribute + '="' + couponCode + '"]';
+		var errorMessageElement = document.querySelector( errorMessageSelector );
+
+		// Maybe remove the error message element
+		if ( errorMessageElement ) {
+			errorMessageElement.parentElement.removeChild( errorMessageElement );
+		}
+
+		// Remove the error messages container if it's empty
+		var errorMessagesWrapper = document.querySelector( _settings.errorMessagesWrapperSelector );
+		if ( errorMessagesWrapper && 0 === errorMessagesWrapper.children.length ) {
+			errorMessagesWrapper.parentElement.removeChild( errorMessagesWrapper );
+		}
+	}
+
+
+
+	/**
+	 * Run processes before sending request to update cart fragments.
+	 */
+	var processBeforeFragmentsUpdate = function() {
+		// Bail if using general notices section
+		if ( 'yes' === _settings.useGeneralNoticesSection ) { return; }
+
+		// Build matrix of coupon code error messages and their positions
+		var _errorMessages = document.querySelectorAll( _settings.errorMessagesWrapperSelector );
+		_restoreMessagesMatrix = [];
+		for ( var i = 0; i < _errorMessages.length; i++ ) {
+			var errorMessage = _errorMessages[ i ];
+			var position = Array.prototype.indexOf.call( errorMessage.parentElement.children, errorMessage );
+			_restoreMessagesMatrix.push( [ position, errorMessage ] );
+		}
+	}
+
+	/**
+	 * Run processes after cart fragments are replaced on the page.
+	 */
+	var processAfterFragmentsReplaced = function() {
+		// Bail if using general notices section
+		if ( 'yes' === _settings.useGeneralNoticesSection ) { return; }
+
+		// Get coupon code messages wrapper element
+		var messagesWrapper = document.querySelector( _settings.messagesWrapperSelector );
+
+		// Bail if messages wrapper is not available
+		if ( ! messagesWrapper ) { return; }
+
+		// Maybe restore error messages
+		for ( var j = 0; j < _restoreMessagesMatrix.length; j++ ) {
+			var restoreMessage = _restoreMessagesMatrix[ j ];
+			var position = restoreMessage[ 0 ];
+			var errorMessage = restoreMessage[ 1 ];
+			var refereceMessage = messagesWrapper.children[ position ];
+			var couponCode = errorMessage.getAttribute( _settings.couponCodeAttribute );
+
+			// Skip "restore" message if it's already exists for the same coupon code
+			var errorMessageCouponCodeSelector = _settings.errorMessagesWrapperSelector + '[' + _settings.couponCodeAttribute + '="' + couponCode + '"]';
+			if ( document.querySelector( errorMessageCouponCodeSelector ) ) { continue; }
+
+			messagesWrapper.insertBefore( errorMessage, refereceMessage );
+		}
+	}
+
+	/**
+	 * Process dismissing message for the coupon code associated with the dismiss button.
+	 *
+	 * @param   HTMLElement  dismissButton  The dismiss cart item button element.
+	 */
+	var processErrorMessageDismiss = function( dismissButton ) {
+		var couponCode = dismissButton.getAttribute( _settings.couponCodeAttribute);
+		dismissErrorMessage( couponCode );
+	}
+
+
+
+	/**
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
@@ -181,6 +262,11 @@
 			e.preventDefault();
 			var removeCouponButton = e.target.closest( _settings.removeCouponButtonSelector );
 			processRemoveCoupon( removeCouponButton );
+		}
+		// ERROR MESSAGE DISMISS
+		else if ( e.target.closest( _settings.errorMessageDismissButtonSelector ) ) {
+			e.preventDefault();
+			processErrorMessageDismiss( e.target.closest( _settings.errorMessageDismissButtonSelector ) );
 		}
 
 	};
@@ -249,7 +335,10 @@
 		// Bail if coupon code was not provided
 		if ( ! couponCode || '' == couponCode ) { return; }
 
-		clearNotices();
+		// Maybe clear general notices
+		if ( 'yes' === _settings.useGeneralNoticesSection ) {
+			clearGeneralNotices();
+		}
 
 		// Get reference id and save to reference element
 		var reference_id = Math.floor( Math.random() * 1000 );
@@ -357,7 +446,10 @@
 		// Bail if coupon code was not provided
 		if ( ! couponCode || '' == couponCode ) { return; }
 
-		clearNotices();
+		// Maybe clear general notices
+		if ( 'yes' === _settings.useGeneralNoticesSection ) {
+			clearGeneralNotices();
+		}
 
 		// Get reference id and save to reference element
 		var reference_id = Math.floor( Math.random() * 1000 );
@@ -430,6 +522,13 @@
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
+
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			// Coupon code messages restore
+			$( document.body ).on( 'wc_fragment_refresh update_checkout', processBeforeFragmentsUpdate );
+			$( document.body ).on( 'wc_fragments_refreshed updated_checkout', processAfterFragmentsReplaced );
+		}
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );

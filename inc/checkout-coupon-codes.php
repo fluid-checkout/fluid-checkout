@@ -425,6 +425,39 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 
 	/**
+	 * Maybe add dismiss buttons to coupon code error messages.
+	 *
+	 * @param   string  $message      The message HTML to be displayed.
+	 * @param   string  $coupon_code  The coupon code to be used.
+	 */
+	public function maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ) {
+		// Bail if no error messages found
+		if ( false === strpos( $message, 'woocommerce-error' ) ) { return $message; }
+	
+		// Create dismiss button HTML
+		$dismiss_button = apply_filters( 'fc_coupon_code_error_message_dismiss_button', '<a href="#dismiss_coupon_message" data-coupon="' . esc_attr( $coupon_code ) . '" class="fc-coupon-code-message-dismiss">' . __( 'Dismiss', 'fluid-checkout' ) . '</a>' );
+	
+		// Insert dismiss button into each error message and add data-coupon attribute
+		$pattern = '/<ul[^>]*class="[^"]*\bwoocommerce-error\b[^"]*"[^>]*>(.*?)<\/ul>/si';
+		$message = preg_replace_callback( $pattern,
+			// Add dismiss button and data-coupon attribute to each `<li>` element inside the `woocommerce-error` list
+			function( $matches ) use ( $dismiss_button, $coupon_code ) {
+				$list_item_pattern = '/<li>(.*?)<\/li>/s';
+
+				// Modify the error message list items
+				$ul_content = $matches[ 1 ];
+				$ul_content = preg_replace( $list_item_pattern, '<li data-coupon="' . esc_attr( $coupon_code ) . '">$1 ' . $dismiss_button . '</li>', $ul_content );
+	
+				// Return the modified list
+				return str_replace( $matches[ 1 ], $ul_content, $matches[ 0 ] );
+			},
+			$message
+		);
+	
+		return $message;
+	}
+
+	/**
 	 * AJAX Add a coupon code to the cart.
 	 * @see WC_AJAX::apply_coupon
 	 */
@@ -437,12 +470,15 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( ! empty( $coupon_code ) ) {
 			// Add the coupon code to the cart,
 			// which triggers calculating the cart totals to ensure pricing is correct.
-			WC()->cart->add_discount( wc_format_coupon_code( $coupon_code ) );
+			WC()->cart->apply_coupon( wc_format_coupon_code( $coupon_code ) );
 
 			// Intercept notices to avoid them being displayed on other pages
 			ob_start();
 			wc_print_notices();
 			$message = ob_get_clean();
+
+			// Maybe add dismiss buttons to error messages
+			$message = $this->maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code );
 			
 			wp_send_json(
 				array(
@@ -460,7 +496,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 					'coupon_code'      => $coupon_code,
 					'reference_id'     => $reference_id,
 					'error_slug'       => 'coupon_code_does_not_exist',
-					'message'          => WC_Coupon::get_generic_coupon_error( WC_Coupon::E_WC_COUPON_PLEASE_ENTER ),
+					'message'          => $this->maybe_add_coupon_code_error_message_dismiss_buttons( WC_Coupon::get_generic_coupon_error( WC_Coupon::E_WC_COUPON_PLEASE_ENTER ), $coupon_code ),
 				)
 			);
 		}
@@ -484,6 +520,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			ob_start();
 			wc_print_notices();
 			$message = ob_get_clean();
+
+			// Maybe add dismiss buttons to error messages
+			$message = $this->maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code );
 			
 			wp_send_json(
 				array(
@@ -508,7 +547,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 					'coupon_code'      => $coupon_code,
 					'reference_id'     => $reference_id,
 					'error_slug'       => 'coupon_code_not_provided',
-					'message'          => $message,
+					'message'          => $this->maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ),
 				)
 			);
 		}
