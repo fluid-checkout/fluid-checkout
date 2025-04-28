@@ -4,16 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluid-checkout\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Lithuanian\n"
 "Last-Translator: Diego Versiani\n"
 "POT-Creation-Date: 2025-03-05 23:46+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:"
-"1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
-"esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "PO-Revision-Date: 2025-04-28 12:19+0000\n"
 "Language: lt_LT\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.7.2; wp-6.8"
+"X-Loco-Version: 2.7.2; wp-6.8\n"
 
 #: fluid-checkout.php:585
 msgid "WooCommerce"
@@ -41,15 +41,15 @@ msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
 "activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
-"<strong>%1$s</strong> reikalauja, kad būtų įdiegta ir aktyvuota <strong>"
-"%2$s</strong>. <a href=\"%4$s\">%3$s</a>"
+"<strong>%1$s</strong> reikalauja, kad būtų įdiegta ir aktyvuota "
+"<strong>%2$s</strong>. <a href=\"%4$s\">%3$s</a>"
 
 #: inc/checkout-coupon-codes.php:274
 msgid "Enter your code here"
 msgstr "Įveskite savo kodą čia"
 
-#. translators: %s: Form field label
 #: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
 msgid "Add %s"
 msgstr "Pridėti %s"
 
@@ -90,8 +90,8 @@ msgstr "Spustelėkite, jei norite pereiti į užsakymo santrauką"
 msgid "Cart total:"
 msgstr "Iš viso krepšelio:"
 
-#. translators: Next checkout step title
 #: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
 msgid "Proceed to %s"
 msgstr "Pereiti prie %s"
 
@@ -135,8 +135,8 @@ msgstr "Atsiskaitymas pagal sąskaitą"
 msgid "Payment method"
 msgstr "Mokėjimo būdas"
 
-#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 #: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 msgid "Step %1$s of %2$s"
 msgstr "Žingsnis %1$s iš %2$s"
 
@@ -172,8 +172,8 @@ msgstr "Užsakymo santrauka"
 msgid "Edit cart"
 msgstr "Redaguoti krepšelį"
 
-#. translators: %s: html for the email address typo correction suggestion link
 #: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
 msgid "Did you mean %s?"
 msgstr "Ar turėjote omenyje %s?"
 
@@ -226,8 +226,8 @@ msgstr "Kasos antraštė - Mobilioji"
 
 #: inc/checkout-widget-areas.php:110
 msgid ""
-"Display widgets below the checkout header for mobile devices. Only displayed "
-"if using the plugin's checkout header."
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
 msgstr ""
 "Rodyti valdiklius po kasos antraštės mobiliesiems įrenginiams. Rodoma tik "
 "jei naudojama įskiepio kasos antraštė."
@@ -262,8 +262,8 @@ msgstr "Kasos poraštė"
 
 #: inc/checkout-widget-areas.php:160
 msgid ""
-"Display widgets on the checkout footer. Only displayed if using the plugin's "
-"checkout footer."
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
 msgstr ""
 "Rodyti valdiklius kasos apačioje. Rodoma tik jei naudojamas įskiepio kasos "
 "poraštė."
@@ -294,9 +294,9 @@ msgid ""
 "for WooCommerce (free and PRO) by CodeRockz. Integration with these plugins "
 "have been moved to Fluid Checkout PRO.</p>"
 msgstr ""
-"<p>Nustatėme, kad naudojate \"CodeRockz\" įskiepius \"Delivery & Pickup Date "
-"Time for WooCommerce\" (nemokamus ir PRO). Integracija su šiais įskiepiais "
-"buvo perkelta į \"Fluid Checkout PRO\".</p>"
+"<p>Nustatėme, kad naudojate \"CodeRockz\" įskiepius \"Delivery & Pickup "
+"Date Time for WooCommerce\" (nemokamus ir PRO). Integracija su šiais "
+"įskiepiais buvo perkelta į \"Fluid Checkout PRO\".</p>"
 
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97,
 #: inc/admin/admin.php:141
@@ -326,11 +326,12 @@ msgstr "\"Fluid Checkout\" duomenų bazės atnaujinimas"
 #: inc/admin/admin-notice-db-migrations.php:52
 msgid ""
 "Some changes to the database are required. As with any update, we recommend "
-"you to <strong>take a full backup of your website before proceeding</strong>."
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
 msgstr ""
 "Reikia atlikti tam tikrus duomenų bazės pakeitimus. Kaip ir bet kokio "
-"atnaujinimo atveju, rekomenduojame prieš atliekant atnaujinimą <strong>"
-"padaryti atsarginę svetainės kopiją</strong>."
+"atnaujinimo atveju, rekomenduojame prieš atliekant atnaujinimą "
+"<strong>padaryti atsarginę svetainės kopiją</strong>."
 
 #: inc/admin/admin-notice-db-migrations.php:55
 msgid "Update database"
@@ -338,8 +339,7 @@ msgstr "Duomenų bazės atnaujinimas"
 
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:98
 msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
-msgstr ""
-"\"Fluid Checkout\" nėra suderinamas su \"Divi Builder\" kasos išdėstymu"
+msgstr "\"Fluid Checkout\" nėra suderinamas su \"Divi Builder\" kasos išdėstymu"
 
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:99
 msgid ""
@@ -354,11 +354,11 @@ msgstr ""
 "<p> Kad veiktų \"Fluid Checkout\", reikia, kad veiktų klasikinė "
 "\"WooCommerce\" trumpaisiais kodais pagrįsta kasos forma. Naudojant \"Divi "
 "Builder\" kasos puslapio išvaizdai pritaikyti, klasikiniai trumpieji kodai "
-"pakeičiami pasirinktiniais \"Divi Builder\" valdikliais, skirtais kiekvienai "
-"kasos puslapio daliai. Šie pasirinktiniai valdikliai nesuderinami su \"Fluid "
-"Checkout\".</p><p>Prašome redaguoti kasos puslapį, pakeičiant \"Divi "
-"Builder\" valdiklius tekstiniu valdikliu, kuriame yra trumpasis kodas <code>"
-"[woocommerce_checkout]</code>.</p>"
+"pakeičiami pasirinktiniais \"Divi Builder\" valdikliais, skirtais "
+"kiekvienai kasos puslapio daliai. Šie pasirinktiniai valdikliai "
+"nesuderinami su \"Fluid Checkout\".</p><p>Prašome redaguoti kasos puslapį, "
+"pakeičiant \"Divi Builder\" valdiklius tekstiniu valdikliu, kuriame yra "
+"trumpasis kodas <code>[woocommerce_checkout]</code>.</p>"
 
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
 msgid "Edit the checkout page"
@@ -403,9 +403,9 @@ msgid ""
 "<br>Please give us a quick rating, we appreciate every bit of feedback and "
 "it encourages us to keep improving the plugin :)"
 msgstr ""
-"Jau kurį laiką naudojate įskiepį. Kaip jums kol kas jis patinka? <br>Prašome "
-"trumpai įvertinti, vertiname kiekvieną atsiliepimą ir tai mus skatina toliau "
-"tobulinti įskiepį :)"
+"Jau kurį laiką naudojate įskiepį. Kaip jums kol kas jis patinka? "
+"<br>Prašome trumpai įvertinti, vertiname kiekvieną atsiliepimą ir tai mus "
+"skatina toliau tobulinti įskiepį :)"
 
 #: inc/admin/admin-notice-review-request.php:50
 msgid "Rate the plugin"
@@ -465,8 +465,8 @@ msgstr "Fluid Checkout PRO"
 #: inc/admin/admin-setting-type-fc-addons.php:51,
 #: inc/admin/admin-setting-type-fc-addons.php:147
 msgid ""
-"Design templates, optimized cart and order received pages, account matching, "
-"and much more."
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
 msgstr ""
 "Dizaino šablonai, optimizuoti krepšelio ir gautų užsakymų puslapiai, "
 "sąskaitų atitikimas ir dar daugiau."
@@ -550,8 +550,8 @@ msgstr "Visos PRO funkcijos + visi priedai už specialią kainą."
 #: inc/admin/admin-setting-type-fc-addons.php:85,
 #: inc/admin/admin-setting-type-fc-addons.php:132
 msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout add-"
-"ons we launch in the future."
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
 msgstr ""
 "Į paketą įtraukti visi šiuo metu siūlomi priedai ir \"Fluid Checkout\" "
 "priedai, kuriuos paleisime ateityje."
@@ -633,11 +633,13 @@ msgstr "Iki 40 % mažiau kasos laukų, kuriuos reikia užpildyti."
 
 #: inc/admin/admin-setting-type-fc-addons.php:172
 msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the <strong>correct "
-"address information</strong> from the first time they buy with you."
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
 msgstr ""
-"Išvenkite pristatymo vėlavimo ir nepatenkintų klientų. Surinkite <strong>"
-"teisingą adreso informaciją</strong> nuo pat pirmojo pirkimo pas jus momento."
+"Išvenkite pristatymo vėlavimo ir nepatenkintų klientų. Surinkite "
+"<strong>teisingą adreso informaciją</strong> nuo pat pirmojo pirkimo pas "
+"jus momento."
 
 #: inc/admin/admin-setting-type-fc-addons.php:180
 msgid "Get this add-on &mdash; 29 EUR"
@@ -674,9 +676,9 @@ msgid ""
 "removes tax charges on reverse charge basis and confirms customer location "
 "when needed."
 msgstr ""
-"Surenka ir <strong>patvirtina ES PVM mokėtojo kodą kasos puslapyje</strong>, "
-"pašalina mokesčius atvirkštinio apmokestinimo pagrindu ir prireikus "
-"patvirtina kliento buvimo vietą."
+"Surenka ir <strong>patvirtina ES PVM mokėtojo kodą kasos "
+"puslapyje</strong>, pašalina mokesčius atvirkštinio apmokestinimo pagrindu "
+"ir prireikus patvirtina kliento buvimo vietą."
 
 #: inc/admin/admin-setting-type-fc-addons.php:224
 msgid "Get this add-on &mdash; 39 EUR"
@@ -687,8 +689,9 @@ msgid ""
 "All add-ons are sold separately and require the <strong>Fluid Checkout "
 "Lite</strong> plugin to be installed and activated, except when noted."
 msgstr ""
-"Visi priedai parduodami atskirai ir jiems įdiegti bei įjungti reikia <strong>"
-"\"Fluid Checkout Lite\" įskiepio</strong>, išskyrus nurodytus atvejus."
+"Visi priedai parduodami atskirai ir jiems įdiegti bei įjungti reikia "
+"<strong>\"Fluid Checkout Lite\" įskiepio</strong>, išskyrus nurodytus "
+"atvejus."
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97,
 #: inc/admin/admin-setting-type-fc-image-uploader.php:98,
@@ -710,17 +713,18 @@ msgid ""
 "your account</a> to get your license key, or <a href=\"%s\" "
 "target=\"_blank\">purchase a new license key</a>."
 msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">"
-"Prisijunkite prie savo paskyros</a>, kad gautumėte licencijos raktą, arba <a "
-"href=\"%s\" target=\"_blank\">įsigykite naują licencijos raktą</a>."
+"<a href=\"https://fluidcheckout.com/account/\" "
+"target=\"_blank\">Prisijunkite prie savo paskyros</a>, kad gautumėte "
+"licencijos raktą, arba <a href=\"%s\" target=\"_blank\">įsigykite naują "
+"licencijos raktą</a>."
 
-#. translators: %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
 msgid "Valid until %s."
 msgstr "Galioja iki %s."
 
-#. translators: %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
 msgid "Expired on %s."
 msgstr "Galiojimas baigėsi %s."
 
@@ -730,9 +734,9 @@ msgid ""
 "your account</a> to renew your license key and continue to receive updates "
 "and support."
 msgstr ""
-"<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">"
-"Prisijunkite prie savo paskyros</a>, kad atnaujintumėte savo licencijos "
-"raktą ir toliau gautumėte atnaujinimus bei palaikymą."
+"<a href=\"https://fluidcheckout.com/account/\" "
+"target=\"_blank\">Prisijunkite prie savo paskyros</a>, kad atnaujintumėte "
+"savo licencijos raktą ir toliau gautumėte atnaujinimus bei palaikymą."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:163
 msgid "License key cancelled."
@@ -740,8 +744,8 @@ msgstr "Licencijos raktas atšauktas."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:165
 msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and continue "
-"to receive updates and support."
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
 msgstr ""
 "<a href=\"%s\" target=\"_blank\">Pirkite naują licencijos raktą</a> ir "
 "toliau gaukite atnaujinimus bei palaikymą."
@@ -772,8 +776,7 @@ msgstr ""
 
 #: inc/admin/admin-setting-type-fc-setup.php:49
 msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
-msgstr ""
-"Nustatykite išdėstymą ir dizainą <a href=\"%s\">apmokėjimo parinktyse</a>."
+msgstr "Nustatykite išdėstymą ir dizainą <a href=\"%s\">apmokėjimo parinktyse</a>."
 
 #: inc/admin/admin-setting-type-fc-setup.php:50
 msgid ""
@@ -865,9 +868,9 @@ msgid ""
 "Only applicable when AJAX cart and the integrated coupon codes in the "
 "checkout page are enabled."
 msgstr ""
-"Pasirinkite poziciją, kurioje rodyti kuponų kodų skyrių krepšelio puslapyje. "
-"Taikoma tik tada, kai įjungtas AJAX krepšelis ir kasos puslapyje integruoti "
-"kuponų kodai."
+"Pasirinkite poziciją, kurioje rodyti kuponų kodų skyrių krepšelio "
+"puslapyje. Taikoma tik tada, kai įjungtas AJAX krepšelis ir kasos puslapyje "
+"integruoti kuponų kodai."
 
 #: inc/admin/admin-settings-cart.php:146,
 #: inc/admin/admin-settings-cart.php:169,
@@ -930,8 +933,8 @@ msgid ""
 "Select position where to display the shipping costs and calculator on the "
 "cart page."
 msgstr ""
-"Pasirinkite poziciją, kurioje bus rodomos pristatymo išlaidos ir skaičiuoklė "
-"krepšelio puslapyje."
+"Pasirinkite poziciją, kurioje bus rodomos pristatymo išlaidos ir "
+"skaičiuoklė krepšelio puslapyje."
 
 #: inc/admin/admin-settings-cart.php:170
 msgid "Display as a cart section"
@@ -942,11 +945,10 @@ msgid "Cross-sells"
 msgstr "Kryžminiai pardavimai"
 
 #: inc/admin/admin-settings-cart.php:180
-msgid ""
-"Select position where to display the cross-sells section on the cart page."
+msgid "Select position where to display the cross-sells section on the cart page."
 msgstr ""
-"Pasirinkite vietą, kurioje bus rodomas kryžminių pardavimų skyrius krepšelio "
-"puslapyje."
+"Pasirinkite vietą, kurioje bus rodomas kryžminių pardavimų skyrius "
+"krepšelio puslapyje."
 
 #: inc/admin/admin-settings-cart.php:186
 msgid "Before the cart actions"
@@ -1032,13 +1034,14 @@ msgstr "Antraštės ir poraštės šablonai"
 #: inc/admin/admin-settings-checkout.php:125
 msgid ""
 "We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"
-"abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
 msgstr ""
-"Rekomenduojame naudoti neblaškančią antraštę ir poraštę, kad kasos puslapyje "
-"nebūtų blaškomas dėmesys. <a href=\"https://baymard.com/blog/cart-"
-"abandonment\" target=\"_blank\">Skaitykite tyrimus apie krepšelio "
-"atsisakymą</a>."
+"Rekomenduojame naudoti neblaškančią antraštę ir poraštę, kad kasos "
+"puslapyje nebūtų blaškomas dėmesys. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Skaitykite tyrimus apie krepšelio atsisakymą</a>."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -1049,8 +1052,8 @@ msgid ""
 "Choose an image to be displayed on the checkout page header. Only applies "
 "when using the distraction free header and footer."
 msgstr ""
-"Pasirinkite vaizdą, kuris bus rodomas kasos puslapio antraštėje. Taikoma tik "
-"tada, kai naudojate antraštę ir poraštę, neblaškančią dėmesio."
+"Pasirinkite vaizdą, kuris bus rodomas kasos puslapio antraštėje. Taikoma "
+"tik tada, kai naudojate antraštę ir poraštę, neblaškančią dėmesio."
 
 #: inc/admin/admin-settings-checkout.php:148
 msgid "Header background color"
@@ -1077,11 +1080,11 @@ msgstr "Puslapio fono spalva"
 
 #: inc/admin/admin-settings-checkout.php:160
 msgid ""
-"Choose a background color for the checkout page. Color is applied to the <em>"
-"body</em> element."
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
 msgstr ""
-"Pasirinkite kasos puslapio fono spalvą. Spalva taikoma elementui <em>"
-"body</em>."
+"Pasirinkite kasos puslapio fono spalvą. Spalva taikoma elementui "
+"<em>body</em>."
 
 #: inc/admin/admin-settings-checkout.php:170
 msgid "Footer background color"
@@ -1105,8 +1108,7 @@ msgstr "Pažangos juosta"
 
 #: inc/admin/admin-settings-checkout.php:196
 msgid "Display the checkout progress bar when using multi-step checkout layout"
-msgstr ""
-"Kasos eigos juostos rodymas, kai naudojamas kelių etapų kasos išdėstymas"
+msgstr "Kasos eigos juostos rodymas, kai naudojamas kelių etapų kasos išdėstymas"
 
 #: inc/admin/admin-settings-checkout.php:205
 msgid "Make the checkout progress bar stay visible while scrolling"
@@ -1130,8 +1132,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:227
 msgid "Display express checkout buttons in one line for larger screens"
-msgstr ""
-"Didesniuose ekranuose rodykite greitojo užsakymo mygtukus vienoje eilutėje"
+msgstr "Didesniuose ekranuose rodykite greitojo užsakymo mygtukus vienoje eilutėje"
 
 #: inc/admin/admin-settings-checkout.php:237
 msgid ""
@@ -1201,21 +1202,20 @@ msgstr "Paslėpti krepšelio elementų klaidas kasos puslapyje"
 
 #: inc/admin/admin-settings-checkout.php:302
 msgid ""
-"Do not display the cart items errors message at the top of the checkout page."
-" When submitting the checkout form to complete the purchase, these error "
-"messages will always be displayed."
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
 msgstr ""
-"Kasos puslapio viršuje nerodykite pranešimo apie krepšelio elementų klaidas. "
-"Kai pateiksite kasos formą pirkiniui užbaigti, šie klaidų pranešimai bus "
-"rodomi visada."
+"Kasos puslapio viršuje nerodykite pranešimo apie krepšelio elementų "
+"klaidas. Kai pateiksite kasos formą pirkiniui užbaigti, šie klaidų "
+"pranešimai bus rodomi visada."
 
 #: inc/admin/admin-settings-checkout.php:313
 msgid "Place order"
 msgstr "Pateikite užsakymą"
 
 #: inc/admin/admin-settings-checkout.php:314
-msgid ""
-"Define the position to display \"Place order\" and terms checkbox section."
+msgid "Define the position to display \"Place order\" and terms checkbox section."
 msgstr ""
 "Nustatykite vietą, kurioje bus rodomas \"Place order\" ir sąlygų žymimojo "
 "langelio skyrius."
@@ -1252,8 +1252,8 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:339
 msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step on "
-"mobile devices when using multi-step checkout layout"
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
 msgstr ""
 "Naudojant kelių etapų kasos išdėstymą, kasos šoninės juostos valdikliai "
 "rodomi tik tada, kai mobiliuosiuose įrenginiuose peržiūrimas paskutinis "
@@ -1287,8 +1287,7 @@ msgstr ""
 msgid ""
 "Select position where to display the coupon codes section on the checkout "
 "page."
-msgstr ""
-"Pasirinkite poziciją, kurioje rodyti kuponų kodų skyrių kasos puslapyje."
+msgstr "Pasirinkite poziciją, kurioje rodyti kuponų kodų skyrių kasos puslapyje."
 
 #: inc/admin/admin-settings-checkout.php:390
 msgid "Before the checkout steps"
@@ -1304,9 +1303,9 @@ msgstr "Po mokėjimo metodų atliekamas papildomas etapas"
 
 #: inc/admin/admin-settings-checkout.php:402
 msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the coupon "
-"code section is displayed \"Before the checkout steps\" on the checkout page,"
-" or \"Before the cart items section\" on the cart page."
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
 msgstr ""
 "Pasirinkite \"Taikyti kuponą\" mygtuko stilių. Taikoma tik tada, kai kupono "
 "kodo skiltis rodoma \"Prieš kasos veiksmus\" kasos puslapyje arba \"Prieš "
@@ -1337,14 +1336,16 @@ msgstr "Neprivalomų laukų slėpimas už nuorodos mygtuko"
 #: inc/admin/admin-settings-checkout.php:431
 msgid ""
 "It is recommended to keep this option checked to reduce the number of open "
-"input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
-"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
-"link\" target=\"_blank\">read the research</a>."
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
 msgstr ""
 "Rekomenduojama palikti šią parinktį pažymėtą, kad sumažėtų atvirų įvesties "
-"laukų skaičius, <a href=\"https://baymard.com/blog/checkout-flow-average-"
-"form-fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
-"link\" target=\"_blank\">skaitykite tyrimą</a>."
+"laukų skaičius, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">skaitykite tyrimą</a>."
 
 #: inc/admin/admin-settings-checkout.php:440
 msgid "Do not hide \"Address line 2\" fields behind a link button"
@@ -1366,12 +1367,12 @@ msgstr "Rodyti nuorodos \"Pridėti\" mygtukus mažosiomis raidėmis"
 
 #: inc/admin/admin-settings-checkout.php:452
 msgid ""
-"Make the labels of optional field \"Add\" link button as <code>"
-"lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone Number\"). "
-"This option also affects the link buttons for coupon code fields."
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
 msgstr ""
-"Pasirenkamojo lauko \"Pridėti\" nuorodos mygtuko etiketes rašykite <code>"
-"mažosiomis raidėmis</code> (t. y. \"Pridėti telefono numerį\" vietoj "
+"Pasirenkamojo lauko \"Pridėti\" nuorodos mygtuko etiketes rašykite "
+"<code>mažosiomis raidėmis</code> (t. y. \"Pridėti telefono numerį\" vietoj "
 "\"Pridėti telefono numerį\"). Ši parinktis taip pat turi įtakos kupono kodo "
 "laukų nuorodos mygtukams."
 
@@ -1382,8 +1383,8 @@ msgstr "Atsiskaitymo adresas"
 
 #: inc/admin/admin-settings-checkout.php:461
 msgid ""
-"Select position where to display the billing address section on the checkout "
-"page."
+"Select position where to display the billing address section on the "
+"checkout page."
 msgstr ""
 "Pasirinkite vietą, kurioje kasos puslapyje bus rodomas atsiskaitymo adreso "
 "skyrius."
@@ -1427,19 +1428,21 @@ msgid ""
 "\"Same as billing address\" will start as checked by default when the "
 "billing address section is displayed first. <br> It is recommended to leave "
 "this option checked as to significantly reduce the number of open input "
-"fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-"
-"form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
-"target=\"_blank\">read the research</a>."
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
 msgstr ""
 "Žymimasis langelis \"Same as shiping address\" bus pradedamas žymėti pagal "
-"numatytuosius nustatymus, kai siuntimo adreso skiltis bus rodoma pirmą kartą."
-" <br>Žymimasis langelis \"Same as billing address\" (toks pat kaip sąskaitos "
-"išrašymo adresas) bus pradedamas žymėti pagal numatytuosius nustatymus, kai "
-"pirmiausia bus rodomas sąskaitos išrašymo adreso skyrius. <br> "
-"Rekomenduojama palikti šią parinktį pažymėtą, nes taip gerokai sumažinsite "
-"atvirų įvesties laukų skaičių kasoje, <a href=\"https://baymard."
-"com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
-"hide-the-fields-entirely\" target=\"_blank\">perskaitykite tyrimą</a>."
+"numatytuosius nustatymus, kai siuntimo adreso skiltis bus rodoma pirmą "
+"kartą. <br>Žymimasis langelis \"Same as billing address\" (toks pat kaip "
+"sąskaitos išrašymo adresas) bus pradedamas žymėti pagal numatytuosius "
+"nustatymus, kai pirmiausia bus rodomas sąskaitos išrašymo adreso skyrius. "
+"<br> Rekomenduojama palikti šią parinktį pažymėtą, nes taip gerokai "
+"sumažinsite atvirų įvesties laukų skaičių kasoje, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">perskaitykite tyrimą</a>."
 
 #: inc/admin/admin-settings-checkout.php:486
 msgid "Highlight the billing address section in the checkout form"
@@ -1484,9 +1487,9 @@ msgid ""
 msgstr ""
 "Kai ši funkcija įjungta, pirmasis galimas siuntimo būdas nebus automatiškai "
 "pasirenkamas, jei prieš tai nebuvo pasirinktas joks kitas siuntimo būdas "
-"kiekvienai siuntimo pakuotei. <br>Ši parinktis bus automatiškai įjungta, jei "
-"pasirinkto pristatymo būdo ištrynimo parinktis įjungta vietinio atsiėmimo "
-"funkcijai."
+"kiekvienai siuntimo pakuotei. <br>Ši parinktis bus automatiškai įjungta, "
+"jei pasirinkto pristatymo būdo ištrynimo parinktis įjungta vietinio "
+"atsiėmimo funkcijai."
 
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
@@ -1525,10 +1528,11 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
-"Choose which address to save as the shipping address for local pickup orders."
+"Choose which address to save as the shipping address for local pickup "
+"orders."
 msgstr ""
-"Pasirinkite, kurį adresą išsaugoti kaip pristatymo adresą vietinio atsiėmimo "
-"užsakymams."
+"Pasirinkite, kurį adresą išsaugoti kaip pristatymo adresą vietinio "
+"atsiėmimo užsakymams."
 
 #: inc/admin/admin-settings-checkout.php:554
 msgid "Save the selected pickup location"
@@ -1605,19 +1609,17 @@ msgstr "Į kasos formą įtraukite atsiskaitymo telefono lauką."
 
 #: inc/admin/admin-settings-checkout.php:621
 msgid "Choose in which step to display the billing phone field."
-msgstr ""
-"Pasirinkite, kuriame žingsnyje rodyti sąskaitų išrašymo telefono lauką."
+msgstr "Pasirinkite, kuriame žingsnyje rodyti sąskaitų išrašymo telefono lauką."
 
 #: inc/admin/admin-settings-checkout.php:634
-msgid ""
-"Enable international phone number format and validation for phone fields"
+msgid "Enable international phone number format and validation for phone fields"
 msgstr ""
-"Įgalinti tarptautinio telefono numerio formatą ir telefono laukų patvirtinimą"
+"Įgalinti tarptautinio telefono numerio formatą ir telefono laukų "
+"patvirtinimą"
 
 #: inc/admin/admin-settings-checkout.php:635
 msgid "Format and validate phone numbers according to each country."
-msgstr ""
-"suformatuokite ir patvirtinkite telefono numerius pagal kiekvieną šalį."
+msgstr "suformatuokite ir patvirtinkite telefono numerius pagal kiekvieną šalį."
 
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
@@ -1633,8 +1635,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:656
 msgid "Only show allowed countries for shipping or billing"
-msgstr ""
-"Rodyti tik leidžiamas šalis, į kurias galima siųsti arba išrašyti sąskaitas"
+msgstr "Rodyti tik leidžiamas šalis, į kurias galima siųsti arba išrašyti sąskaitas"
 
 #: inc/admin/admin-settings-checkout.php:657
 msgid ""
@@ -1643,8 +1644,8 @@ msgid ""
 "available for the billing phone field."
 msgstr ""
 "Kai ši funkcija įjungta, siuntimo telefono lauke bus galima matyti tik tas "
-"šalis, kurias leidžiama siųsti, o sąskaitų išrašymo telefono lauke - tik tas "
-"šalis, kurias leidžiama išrašyti sąskaitas."
+"šalis, kurias leidžiama siųsti, o sąskaitų išrašymo telefono lauke - tik "
+"tas šalis, kurias leidžiama išrašyti sąskaitas."
 
 #: inc/admin/admin-settings-checkout.php:667
 msgid "Show country code beside the flag"
@@ -1700,17 +1701,17 @@ msgid ""
 "Display the gift message as part of the order details table instead of a "
 "separate section"
 msgstr ""
-"Dovanos pranešimą rodyti kaip užsakymo informacijos lentelės dalį, o ne kaip "
-"atskirą skyrių"
+"Dovanos pranešimą rodyti kaip užsakymo informacijos lentelės dalį, o ne "
+"kaip atskirą skyrių"
 
 #: inc/admin/admin-settings-checkout.php:728
 msgid ""
 "This option affects the order confirmation page (thank you page) and order "
 "details on account pages, emails and packing slips."
 msgstr ""
-"Ši parinktis turi įtakos užsakymo patvirtinimo puslapiui (padėkos puslapiui) "
-"ir užsakymo informacijai paskyros puslapiuose, el. laiškuose ir pakavimo "
-"lapuose."
+"Ši parinktis turi įtakos užsakymo patvirtinimo puslapiui (padėkos "
+"puslapiui) ir užsakymo informacijai paskyros puslapiuose, el. laiškuose ir "
+"pakavimo lapuose."
 
 #: inc/admin/admin-settings-checkout.php:746,
 #: inc/admin/admin-settings-checkout.php:753
@@ -1726,8 +1727,8 @@ msgid ""
 "Associate the guest customer's orders with their existing account when an "
 "account already exists with the customer's contact details."
 msgstr ""
-"susieti svečio kliento užsakymus su jo esama paskyra, jei jau yra paskyra su "
-"kliento kontaktiniais duomenimis."
+"susieti svečio kliento užsakymus su jo esama paskyra, jei jau yra paskyra "
+"su kliento kontaktiniais duomenimis."
 
 #: inc/admin/admin-settings-checkout.php:765
 msgid "Display message when an account exists with the email address provided"
@@ -1740,8 +1741,8 @@ msgid ""
 "to protect the privacy of customers."
 msgstr ""
 "Pakeičia paskyros kūrimo laukus pranešimu ir galimybe prisijungti. Kai "
-"kuriais atvejais gali būti rekomenduojama palikti šią parinktį išjungtą, kad "
-"būtų apsaugotas klientų privatumas."
+"kuriais atvejais gali būti rekomenduojama palikti šią parinktį išjungtą, "
+"kad būtų apsaugotas klientų privatumas."
 
 #: inc/admin/admin-settings-dashboard.php:49
 msgid "Dashboard"
@@ -1753,8 +1754,8 @@ msgstr "Integracijos"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
-"No integrations available at the moment on this section. The options related "
-"to each plugin will only appear here if that plugin is activated."
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
 msgstr ""
 "Šiuo metu šiame skyriuje nėra jokių integracijų. Su kiekvienu įskiepiu "
 "susijusios parinktys čia bus rodomos tik tuo atveju, jei tas įskiepis yra "
@@ -1766,9 +1767,9 @@ msgstr "Licencijų raktai"
 
 #: inc/admin/admin-settings-license-keys.php:85
 msgid ""
-"No license keys options available at the moment on this section. The options "
-"related to each plugin or add-on will appear here when that plugin is "
-"activated."
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
 msgstr ""
 "Šiuo metu šiame skyriuje nėra licencijos raktų parinkčių. Su kiekvienu "
 "įskiepiu ar papildiniu susijusios parinktys čia bus rodomos, kai tas "
@@ -1776,8 +1777,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
-msgstr ""
-"Daugiau informacijos apie mūsų įskiepius ir priedus rasite mūsų svetainėje."
+msgstr "Daugiau informacijos apie mūsų įskiepius ir priedus rasite mūsų svetainėje."
 
 #: inc/admin/admin-settings-order-pay.php:71
 msgid "Order pay page"
@@ -1824,8 +1824,7 @@ msgid "Enable thank you page and order details optimizations"
 msgstr "Įgalinkite padėkos puslapio ir užsakymo informacijos optimizavimą"
 
 #: inc/admin/admin-settings-order-received.php:78
-msgid ""
-"Changes the layout of order details on the thank you page and account pages."
+msgid "Changes the layout of order details on the thank you page and account pages."
 msgstr ""
 "Pakeistas užsakymo informacijos išdėstymas padėkos puslapyje ir paskyros "
 "puslapiuose."
@@ -1973,8 +1972,8 @@ msgstr "Derinimo režimas"
 
 #: inc/admin/admin-settings-tools.php:93
 msgid ""
-"Using debug mode affects the website performance. Only use this option while "
-"troubleshooting."
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
 msgstr ""
 "Derinimo režimo naudojimas turi įtakos svetainės našumui. Šią parinktį "
 "naudokite tik trikčių šalinimo metu."
@@ -1988,17 +1987,16 @@ msgid "Enhanced select fields"
 msgstr "Patobulinti pasirinkimo laukai"
 
 #: inc/admin/admin-settings-tools.php:113
-msgid ""
-"Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
-"Pakeiskite <code>select2</code> išskleidžiamus komponentus į <code>"
-"TomSelect</code>"
+"Pakeiskite <code>select2</code> išskleidžiamus komponentus į "
+"<code>TomSelect</code>"
 
 #: inc/admin/admin-settings-tools.php:114
 msgid ""
 "TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually used "
-"on WooCommerce checkout pages."
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
 msgstr ""
 "\"TomSelect\" yra paprastesnis išskleidžiamojo pasirinkimo komponentas, "
 "kuris yra mažiau linkęs į klaidas nei \"Select2\", tačiau turi tas pačias "
@@ -2014,17 +2012,17 @@ msgstr "Nustatykite <code>šrifto dydį</code> formos laukuose į 16px"
 
 #: inc/admin/admin-settings-tools.php:124
 msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and other "
-"browsers might automatically zoom in on mobile devices to make the text "
-"easier to read. When this option is enabled, it will set the font size for "
-"inside the form fields to 16px on pages optimized by Fluid Checkout to avoid "
-"it zooming in."
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
 msgstr ""
-"Kai šrifto dydis formos laukuose yra mažesnis nei 16 px, \"Safari\" ir kitos "
-"naršyklės mobiliuosiuose įrenginiuose gali automatiškai priartinti tekstą, "
-"kad jį būtų lengviau perskaityti. Įjungus šią parinktį, puslapiuose, "
-"optimizuotuose naudojant \"Fluid Checkout\", bus nustatytas 16 px šrifto "
-"dydis formos laukeliuose, kad būtų išvengta šrifto priartinimo."
+"Kai šrifto dydis formos laukuose yra mažesnis nei 16 px, \"Safari\" ir "
+"kitos naršyklės mobiliuosiuose įrenginiuose gali automatiškai priartinti "
+"tekstą, kad jį būtų lengviau perskaityti. Įjungus šią parinktį, "
+"puslapiuose, optimizuotuose naudojant \"Fluid Checkout\", bus nustatytas 16 "
+"px šrifto dydis formos laukeliuose, kad būtų išvengta šrifto priartinimo."
 
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
@@ -2053,8 +2051,7 @@ msgid "Support"
 msgstr "Parama"
 
 #: inc/admin/admin.php:159
-msgid ""
-"<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 "<a target=\"_blank\" href=\"%s\">Atnaujinkite į PRO</a>, kad atrakintumėte "
 "daugiau parinkčių."
@@ -2069,8 +2066,8 @@ msgstr "(eksperimentinis)"
 
 #: inc/admin/admin.php:208
 msgid ""
-"This is an experimental feature and may not work as expected with all themes "
-"and plugins. Use it with caution."
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
 msgstr ""
 "Tai eksperimentinė funkcija, todėl ji gali veikti ne su visomis temomis ir "
 "įskiepiais. Naudokite ją atsargiai."
@@ -2118,11 +2115,11 @@ msgstr "Captcha pozicija"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:96
 msgid ""
-"Define the position to display the captcha section. Some positions might not "
-"work depending on the captcha type chosen."
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
 msgstr ""
-"Nustatykite vietą, kurioje bus rodomas captcha skyrius. Kai kurios pozicijos "
-"gali neveikti, priklausomai nuo pasirinkto captcha tipo."
+"Nustatykite vietą, kurioje bus rodomas captcha skyrius. Kai kurios "
+"pozicijos gali neveikti, priklausomai nuo pasirinkto captcha tipo."
 
 #: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148,
 #: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126,
@@ -2221,8 +2218,9 @@ msgid ""
 "When enabled, the checkbox will be moved to the contact step independently "
 "of the display location defined in the Sendinblue plugin settings."
 msgstr ""
-"Kai ši funkcija įjungta, žymimasis langelis bus perkeltas į kontaktų žingsnį "
-"nepriklausomai nuo Sendinblue įskiepio nustatymuose apibrėžtos rodymo vietos."
+"Kai ši funkcija įjungta, žymimasis langelis bus perkeltas į kontaktų "
+"žingsnį nepriklausomai nuo Sendinblue įskiepio nustatymuose apibrėžtos "
+"rodymo vietos."
 
 #: inc/compat/themes/compat-theme-betheme.php:172
 msgid "Theme Betheme"
@@ -2286,8 +2284,7 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Atstumas tarp svetainės antraštės kasos puslapyje (pikseliais)"
 
 #: inc/compat/themes/compat-theme-Impreza.php:101
-msgid ""
-"Only applicable when using the Impreza theme header at the checkout page."
+msgid "Only applicable when using the Impreza theme header at the checkout page."
 msgstr "Taikoma tik naudojant \"Impreza\" temos antraštę kasos puslapyje."
 
 #: inc/compat/themes/compat-theme-kapee.php:123
@@ -2296,11 +2293,11 @@ msgstr "Tema Kapee"
 
 #: inc/compat/themes/compat-theme-kapee.php:130
 msgid ""
-"Output the checkout steps section from the Kapee theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
 msgstr ""
-"Išveskite kasos žingsnių skyrių iš \"Kapee\" temos kasos, krepšelio ir gauto "
-"užsakymo puslapiuose."
+"Išveskite kasos žingsnių skyrių iš \"Kapee\" temos kasos, krepšelio ir "
+"gauto užsakymo puslapiuose."
 
 #: inc/compat/themes/compat-theme-porto.php:196
 msgid "Theme Porto"
@@ -2308,11 +2305,11 @@ msgstr "Tema Porto"
 
 #: inc/compat/themes/compat-theme-porto.php:203
 msgid ""
-"Output the checkout steps section from the Porto theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
 msgstr ""
-"Išveskite kasos žingsnių skyrių iš \"Porto\" temos kasos, krepšelio ir gauto "
-"užsakymo puslapiuose."
+"Išveskite kasos žingsnių skyrių iš \"Porto\" temos kasos, krepšelio ir "
+"gauto užsakymo puslapiuose."
 
 #: inc/compat/themes/compat-theme-pressmart.php:180
 msgid "Theme Pressmart"
@@ -2360,8 +2357,8 @@ msgstr "Išjungti temos kasos parinktis"
 
 #: inc/compat/themes/compat-theme-woodmart.php:169
 msgid ""
-"The options display product image, quantity field, remove button and link to "
-"product page added by the theme are disabled by default."
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
 msgstr ""
 "Temos pridėtos parinktys rodyti produkto vaizdą, kiekio laukas, pašalinimo "
 "mygtukas ir nuoroda į produkto puslapį pagal numatytuosius nustatymus yra "
@@ -2385,8 +2382,7 @@ msgid "Display the form field labels visible on the page"
 msgstr "Rodyti puslapyje matomas formos laukų etiketes"
 
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
-msgid ""
-"It is recommended to keep this option enabled for a better user experience."
+msgid "It is recommended to keep this option enabled for a better user experience."
 msgstr ""
 "Rekomenduojama palikti šią parinktį įjungtą, kad naudotojo patirtis būtų "
 "geresnė."
@@ -2457,8 +2453,9 @@ msgid ""
 msgstr ""
 "<p>Šį valdiklį pakeitė \"Fluid Checkout\". </p><p>Kai naudojate \"Fluid "
 "Checkout\", kad kasos puslapis veiktų tinkamai, reikia naudoti originalųjį "
-"\"WooCommerce\" trumpąjį kodą <code>[woocommerce_checkout]</code>.</p><p>"
-"Daugiau informacijos rasite \"Fluid Checkout\" dokumentacijoje.</p>"
+"\"WooCommerce\" trumpąjį kodą "
+"<code>[woocommerce_checkout]</code>.</p><p>Daugiau informacijos rasite "
+"\"Fluid Checkout\" dokumentacijoje.</p>"
 
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
@@ -2470,8 +2467,7 @@ msgstr "Papildomi antraštės skyriai"
 
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
-msgstr ""
-"Išveskite papildomus antraštės skyrius, jei tai įjungta temos nustatymuose."
+msgstr "Išveskite papildomus antraštės skyrius, jei tai įjungta temos nustatymuose."
 
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
 msgid "More information"
@@ -2521,14 +2517,14 @@ msgctxt "Substep review text"
 msgid "None."
 msgstr "Nėra."
 
-#. translators: %1$s the selected option text, %2$s the field label.
 #: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
-#. translators: %1$s the selected option text, %2$s the field label.
 #: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
@@ -2573,9 +2569,9 @@ msgctxt "Captcha position"
 msgid "Before place order button"
 msgstr "Prieš užsakymo mygtuką"
 
-#. translators: %s shipping destination.
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431,
 #: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
