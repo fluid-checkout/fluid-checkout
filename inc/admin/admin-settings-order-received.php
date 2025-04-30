@@ -112,6 +112,17 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 					),
 
 					array(
+						'title'             => __( 'Page template', 'fluid-checkout' ),
+						'desc'              => __( 'Use `Order confirmation` page template for block-based themes', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Only applies when using a block-based theme.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_enable_order_page_block_based_template',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_page_block_based_template' ),
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
 						'title'             => __( 'Order details layout', 'fluid-checkout' ),
 						'desc'              => __( 'Display the order details with wide layout on the thank you page', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_order_details_wide_layout',
