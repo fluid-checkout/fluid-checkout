@@ -2256,6 +2256,18 @@ msgstr "מידע נוסף"
 msgid "Pick a Locker"
 msgstr "בחר לוקר"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "תבנית עמוד"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "השתמש בתבנית דף `אישור הזמנה` עבור תבניות מבוססות בלוקים"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "חל רק בעת שימוש בערכת נושא מבוססת בלוקים."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2374,6 +2374,18 @@ msgstr "Viac informácií"
 msgid "Pick a Locker"
 msgstr "Vyberte si skrinku"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Šablóna stránky"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Použitie šablóny stránky `Potvrdenie objednávky` pre blokové témy"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Platí len pri použití témy založenej na blokoch."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

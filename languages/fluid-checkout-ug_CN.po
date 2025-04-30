@@ -2350,6 +2350,20 @@ msgstr "تېخىمۇ كۆپ ئۇچۇرلار"
 msgid "Pick a Locker"
 msgstr "قۇلۇپنى تاللاڭ"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "بەت قېلىپى"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"بۆلەكنى ئاساس قىلغان باشتېمىلار ئۈچۈن «زاكاز جەزملەشتۈرۈش» بەت قېلىپىنى "
+"ئىشلىتىڭ"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "پەقەت چەكلەشنى ئاساس قىلغان باشتېمىنى ئىشلەتكەندە قوللىنىلىدۇ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

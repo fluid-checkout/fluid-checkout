@@ -2333,6 +2333,20 @@ msgstr "وڌيڪ ڄاڻ"
 msgid "Pick a Locker"
 msgstr "هڪ لاڪر چونڊيو"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "صفحي جو ٽيمپليٽ"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"بلاڪ تي ٻڌل موضوعن لاءِ &#39;آرڊر جي تصديق&#39; صفحي جي ٽيمپليٽ استعمال "
+"ڪريو."
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "صرف بلاڪ تي ٻڌل موضوع استعمال ڪرڻ وقت لاڳو ٿئي ٿو."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

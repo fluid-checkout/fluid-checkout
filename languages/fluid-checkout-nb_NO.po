@@ -2350,6 +2350,18 @@ msgstr "Mer informasjon"
 msgid "Pick a Locker"
 msgstr "Velg et skap"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Mal for side"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Bruk sidemalen `Bestillingsbekreftelse` for blokkbaserte temaer"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Gjelder bare når du bruker et blokkbasert tema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

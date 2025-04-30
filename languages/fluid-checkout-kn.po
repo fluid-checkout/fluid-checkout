@@ -2359,6 +2359,18 @@ msgstr "ಹೆಚ್ಚಿನ ಮಾಹಿತಿ"
 msgid "Pick a Locker"
 msgstr "ಲಾಕರ್ ಆಯ್ಕೆಮಾಡಿ"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "ಪುಟ ಟೆಂಪ್ಲೇಟ್"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "ಬ್ಲಾಕ್-ಆಧಾರಿತ ಥೀಮ್‌ಗಳಿಗಾಗಿ `ಆರ್ಡರ್ ದೃಢೀಕರಣ` ಪುಟ ಟೆಂಪ್ಲೇಟ್ ಬಳಸಿ"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "ಬ್ಲಾಕ್-ಆಧಾರಿತ ಥೀಮ್ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

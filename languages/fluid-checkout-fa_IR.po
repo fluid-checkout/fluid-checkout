@@ -2326,6 +2326,18 @@ msgstr "اطلاعات بیشتر"
 msgid "Pick a Locker"
 msgstr "یک قفسه انتخاب کنید"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "الگوی صفحه"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "از الگوی صفحه «تایید سفارش» برای قالب‌های مبتنی بر بلوک استفاده کنید"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "فقط هنگام استفاده از یک قالب مبتنی بر بلوک اعمال می‌شود."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

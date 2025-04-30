@@ -2371,6 +2371,20 @@ msgstr "Дэлгэрэнгүй мэдээлэл"
 msgid "Pick a Locker"
 msgstr "Шүүгээ сонгох"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Хуудасны загвар"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"&quot;Захиалга баталгаажуулах&quot; хуудасны загварыг блок дээр суурилсан "
+"загварт ашиглана уу"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Зөвхөн блокт суурилсан загвар ашиглах үед л хамаарна."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

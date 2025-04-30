@@ -2402,6 +2402,20 @@ msgstr "Mai multe informații"
 msgid "Pick a Locker"
 msgstr "Alege un dulap"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Șablon de pagină"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Utilizați șablonul de pagină `Confirmare comandă` pentru temele bazate pe "
+"blocuri"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Se aplică numai atunci când se utilizează o temă bazată pe blocuri."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

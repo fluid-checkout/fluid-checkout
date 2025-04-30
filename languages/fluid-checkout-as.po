@@ -2344,6 +2344,18 @@ msgstr "অধিক তথ্য"
 msgid "Pick a Locker"
 msgstr "এটা লকাৰ বাছি লওক"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "পৃষ্ঠা টেমপ্লেট"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "ব্লক-ভিত্তিক থিমসমূহৰ বাবে `অৰ্ডাৰ নিশ্চিতকৰণ` পৃষ্ঠা সাঁচ ব্যৱহাৰ কৰক"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "কেৱল এটা ব্লক-ভিত্তিক থিম ব্যৱহাৰ কৰাৰ সময়ত প্ৰযোজ্য।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

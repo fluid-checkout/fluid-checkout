@@ -2178,6 +2178,18 @@ msgstr "詳細情報"
 msgid "Pick a Locker"
 msgstr "ロッカーを選ぶ"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "ページテンプレート"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "ブロックベースのテーマで「注文確認」ページテンプレートを使用する"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "ブロックベースのテーマを使用している場合のみ適用されます。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2370,6 +2370,20 @@ msgstr "მეტი ინფორმაცია"
 msgid "Pick a Locker"
 msgstr "აირჩიეთ Locker"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "გვერდის შაბლონი"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"ბლოკზე დაფუძნებული თემებისთვის გამოიყენეთ `შეკვეთის დადასტურების` გვერდის "
+"შაბლონი"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "გამოიყენება მხოლოდ ბლოკზე დაფუძნებული თემის გამოყენებისას."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
