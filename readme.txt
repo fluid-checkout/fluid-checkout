@@ -362,6 +362,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
 * Improved: Compatibility with plugin Germanized for WooCommerce. Add compatibility with pickup location selection for shipping service providers.
 * Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
+* Fixed: Phone number showing duplicated on admin pages.
 
 = 4.0.4 - 2025-04-15 =
 
