@@ -1,0 +1,23 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"] {
+	textarea:read-only,
+	select[readonly="readonly"],
+	input[type="email"]:read-only,
+	input[type="number"]:read-only,
+	input[type="date"]:read-only,
+	input[type="search"]:read-only,
+	input[type="text"]:read-only,
+	input[type="tel"]:read-only,
+	input[type="url"]:read-only,
+	input[type="password"]:read-only,
+	select[readonly="readonly"] + .select2 .select2-selection .select2-selection__rendered,
+	select[readonly="readonly"] + .ts-wrapper,
+	select[readonly="readonly"] + .ts-wrapper .ts-control {
+		background-color: #eee !important; // Needed to override FC styles
+		pointer-events: none;
+		touch-action: none;
+	}
+}
