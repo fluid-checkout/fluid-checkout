@@ -25,6 +25,8 @@
 		bodyClass: 'has-fc-checkout-coupons',
 
 		uiProcessingClass: 'processing',
+		couponAddAnimationStartClass: 'coupon-highlight',
+		couponAddAnimationEndClass: 'coupon-fade-out',
 
 		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form',
 		generalNoticesSelector: '.woocommerce-notices-wrapper',
@@ -50,8 +52,13 @@
 		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus--###SECTION_KEY###',
 
 		section_key_placeholder:  '###SECTION_KEY###',
+
+		couponAnimationEndEvent: 'transitionend',
+
+		couponAnimationProperty: 'background-color',
 	}
 	var _restoreMessagesMatrix = [];
+	var _recentlyAddedCouponCodes = [];
 
 
 
@@ -97,6 +104,93 @@
 			generalNotices.innerHTML = '';
 		}
 	}
+
+
+
+	/**
+	 * Remove the error message from the coupon code message list.
+	 *
+	 * @param   string  couponCode  The coupon code associated with the message element.
+	 */
+	var dismissErrorMessage = function( couponCode ) {
+		// Bail if coupon code was not provided
+		if ( ! couponCode ) { return; }
+
+		// Get coupon code message element
+		var errorMessageSelector = _settings.errorMessagesWrapperSelector + ' > li[' + _settings.couponCodeAttribute + '="' + couponCode + '"]';
+		var errorMessageElement = document.querySelector( errorMessageSelector );
+
+		// Maybe remove the error message element
+		if ( errorMessageElement ) {
+			errorMessageElement.parentElement.removeChild( errorMessageElement );
+		}
+
+		// Remove the error messages container if it's empty
+		var errorMessagesWrapper = document.querySelector( _settings.errorMessagesWrapperSelector );
+		if ( errorMessagesWrapper && 0 === errorMessagesWrapper.children.length ) {
+			errorMessagesWrapper.parentElement.removeChild( errorMessagesWrapper );
+		}
+	}
+
+
+
+	/**
+	 * Play the animation for adding the coupon code.
+	 * 
+	 * @param   HTMLElement  couponCodeElement  The coupon code element.
+	 * @param   string       couponCode         The coupon code.
+	 */
+	var PlayAddingCouponCodeAnimation = function( couponCodeElement, couponCode ) {
+		// Add initial animation class to add background color to the coupon code element with no transition
+		couponCodeElement.classList.add( _settings.couponAddAnimationStartClass );
+
+		requestAnimationFrame( function() {
+			// Add second animation class
+			couponCodeElement.classList.add( _settings.couponAddAnimationEndClass );
+
+			// Add event listener to remove the animation classes after the transition ends
+			var onTransitionEnd = function( event ) {
+				// Bail if transition does not correspond to the specified CSS property
+				if ( _settings.couponAnimationProperty !== event.propertyName ) { return; }
+
+				// Remove animation classes
+				couponCodeElement.classList.remove( _settings.couponAddAnimationStartClass );
+				couponCodeElement.classList.remove( _settings.couponAddAnimationEndClass );
+
+				// Remove coupon code from the recently added list
+				var index = _recentlyAddedCouponCodes.indexOf( couponCode );
+				if ( -1 < index ) {
+					_recentlyAddedCouponCodes.splice( index, 1 );
+				}
+
+				// Remove event listener
+				couponCodeElement.removeEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
+			}
+			couponCodeElement.addEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
+		} );
+	}
+
+	/**
+	 * Maybe add animation to the newly added coupon codes.
+	 */
+	var maybeAddNewCouponCodeAnimation = function() {
+		// Bail if no new coupon codes have been added
+		if ( !_recentlyAddedCouponCodes || 0 === _recentlyAddedCouponCodes.length ) { return; }
+
+		// Iterate through the recently added coupon codes
+		for ( var i = 0; i < _recentlyAddedCouponCodes.length; i++ ) {
+			var couponCode = _recentlyAddedCouponCodes[ i ];
+			var selector = '.fc-coupon-codes__coupon.coupon-' + couponCode;
+			var couponCodeElement = document.querySelector( selector );
+
+			// Highlight the coupon code element
+			if ( couponCodeElement ) {
+				PlayAddingCouponCodeAnimation( couponCodeElement, couponCode );
+			}
+		}
+	}
+
+
 
 
 
@@ -158,35 +252,6 @@
 
 		_publicMethods.removeCouponCode( couponCode, referenceElement );
 	}
-
-
-
-	/**
-	 * Remove the error message from the coupon code message list.
-	 *
-	 * @param   string  couponCode  The coupon code associated with the message element.
-	 */
-	var dismissErrorMessage = function( couponCode ) {
-		// Bail if coupon code was not provided
-		if ( ! couponCode ) { return; }
-
-		// Get coupon code message element
-		var errorMessageSelector = _settings.errorMessagesWrapperSelector + ' > li[' + _settings.couponCodeAttribute + '="' + couponCode + '"]';
-		var errorMessageElement = document.querySelector( errorMessageSelector );
-
-		// Maybe remove the error message element
-		if ( errorMessageElement ) {
-			errorMessageElement.parentElement.removeChild( errorMessageElement );
-		}
-
-		// Remove the error messages container if it's empty
-		var errorMessagesWrapper = document.querySelector( _settings.errorMessagesWrapperSelector );
-		if ( errorMessagesWrapper && 0 === errorMessagesWrapper.children.length ) {
-			errorMessagesWrapper.parentElement.removeChild( errorMessagesWrapper );
-		}
-	}
-
-
 
 	/**
 	 * Run processes before sending request to update cart fragments.
@@ -383,6 +448,11 @@
 						couponField.value = '';
 					}
 
+					// // Maybe add coupon code to the list of recently added coupon codes
+					if ( -1 === _recentlyAddedCouponCodes.indexOf( couponCode ) ) {
+						_recentlyAddedCouponCodes.push( couponCode );
+					}
+
 					// Maybe close the coupon code field section
 					if ( window.CollapsibleBlock ) {
 
@@ -528,6 +598,9 @@
 			// Coupon code messages restore
 			$( document.body ).on( 'wc_fragment_refresh update_checkout', processBeforeFragmentsUpdate );
 			$( document.body ).on( 'wc_fragments_refreshed updated_checkout', processAfterFragmentsReplaced );
+
+			// New coupon code animation
+			$( document.body ).on( 'wc_fragments_refreshed updated_checkout', maybeAddNewCouponCodeAnimation );
 		}
 
 		// Add init class
