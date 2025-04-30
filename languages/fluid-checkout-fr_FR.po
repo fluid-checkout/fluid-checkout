@@ -1125,10 +1125,6 @@ msgstr "La base de données de Fluid Checkout a été mise à jour avec succès"
 msgid "Fluid Checkout is not compatible with the Divi Builder checkout layout"
 msgstr "Fluid Checkout n'est pas compatible avec le modèle de caisse de Divi Builder"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Changements importants !"
-
 #: inc/admin/admin-setting-type-fc-addons.php:48
 #: inc/admin/admin-setting-type-fc-addons.php:50
 #: inc/admin/admin-setting-type-fc-addons.php:88
@@ -1836,10 +1832,6 @@ msgstr ""
 "Lisez le guide d'installation <a href=\"%s\" target=\"_blank\">Prise en "
 "main de Fluid Checkout</a>."
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Lire le guide de migration"
-
 #: inc/admin/admin-settings-checkout.php:441
 msgid ""
 "Recommended only when most customers actually need the \"Address line 2\" "
@@ -2474,10 +2466,6 @@ msgstr ""
 "href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Lisez "
 "les recherches sur l'abandon du panier</a>."
 
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Que dois-je faire ?"
-
 #: inc/admin/admin-settings-checkout.php:646
 msgid ""
 "When disabled, the phone field validation will not check if country or area "
@@ -2556,29 +2544,6 @@ msgstr ""
 "désactiver la fonctionnalité de paiement en plusieurs étapes Germanized PRO "
 "dans les paramètres du plugin."
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Avec cette version de Fluid Checkout, nous avons introduit des "
-"<strong>modifications importantes qui pourraient avoir un impact sur votre "
-"site Web</strong> si vous avez effectué des personnalisations de nos "
-"plugins avant la sortie de cette version. Si votre site Web n'a pas de "
-"personnalisation pour les plugins Fluid Checkout, il devrait fonctionner de "
-"la même manière qu'auparavant.<br><br>Si vous avez des personnalisations "
-"pour Fluid Checkout sur votre site Web et que vous ne les avez pas encore "
-"migrées vers cette version, veuillez lire notre guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrer les personnalisations vers Fluid Checkout Lite 4.0+</a>"
-
 #: fluid-checkout.php:582
 msgid "WooCommerce"
 msgstr "WooCommerce"
@@ -2629,6 +2594,14 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "Affiche des sections d'en-tête supplémentaires si elles sont activées dans "
 "les paramètres du thème."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Plus d'informations"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Choisir un casier"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

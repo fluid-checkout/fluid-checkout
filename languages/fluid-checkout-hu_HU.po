@@ -272,36 +272,6 @@ msgstr "Split"
 msgid "Minimalist"
 msgstr "Minimalista"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Fontos változások!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"A Fluid Checkout ezen verziójával <strong>fontos változásokat vezettünk be, "
-"amelyek hatással lehetnek a weboldalára</strong>, ha a verzió megjelenése "
-"előtt testreszabásokat végzett a pluginjainkon. Ha a webhelyén nincsenek "
-"testreszabások a Fluid Checkout pluginekhez, akkor ugyanúgy kell működnie, "
-"mint korábban.<br><br>Ha a webhelyén vannak testreszabások a Fluid "
-"Checkouthoz, és még nem vitte át azokat erre a verzióra, kérjük, olvassa el "
-"<a href=\"https://fluidcheckout.com/version-4-customization-migration/\">A "
-"testreszabások áttelepítése a Fluid Checkout Lite 4.0+-ra</a> című "
-"útmutatónkat."
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Olvassa el a migrációs útmutatót"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Folyékony pénztár és szállítási dátum pluginok a CodeRockz által"
@@ -319,10 +289,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Frissítés PRO-ra"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Mit tegyek?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2404,6 +2370,14 @@ msgstr "További fejléc szakaszok"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "További fejlécrészek kiadása, ha a téma beállításaiban engedélyezve van."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "További információ"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Válassz egy szekrényt"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -274,38 +274,6 @@ msgstr "Sgoilt"
 msgid "Minimalist"
 msgstr "Minimalist"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Atharrachaidhean cudromach!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Leis an dreach seo de Fluid Checkout tha sinn air <strong>atharrachaidhean "
-"cudromach a thoirt a-steach a dh’ fhaodadh buaidh a thoirt air an "
-"làrach-lìn agad</strong> ma tha thu air gnàthachadh a dhèanamh air na "
-"plugins againn roimhe seo mus deach an dreach seo a leigeil ma sgaoil. Mura "
-"h-eil gnàthachadh sam bith aig an làrach-lìn agad airson plugins Fluid "
-"Checkout, bu chòir dha obrachadh san aon dòigh ri roimhe.<br><br> Ma tha "
-"gnàthachadh sam bith agad airson Fluid Checkout air an làrach-lìn agad agus "
-"nach eil thu air an imrich chun dreach seo fhathast, feuch an leugh thu an "
-"stiùireadh againn <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">Ag "
-"imrich gnàthachadh gu Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Leugh an stiùireadh imrich"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Plugins Checkout Fluid agus Ceann-latha Lìbhrigeadh le CodeRockz"
@@ -324,10 +292,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Àrdachadh gu PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Dè bu chòir dhomh a dhèanamh?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2445,6 +2409,14 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "Cuir a-mach earrannan cinn a bharrachd ma tha sin air a chomasachadh ann an "
 "roghainnean a’ chuspair."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Tuilleadh fiosrachaidh"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Tagh Locker"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

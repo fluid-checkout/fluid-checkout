@@ -273,38 +273,6 @@ msgstr "Nabahin"
 msgid "Minimalist"
 msgstr "Minimalist"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Importante nga mga pagbag-o!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Uban niini nga bersyon sa Fluid Checkout among gipaila <strong>ang "
-"importante nga mga pagbag-o nga mahimong makaapekto sa imong "
-"website</strong> kung nakahimo ka og mga pag-customize sa among mga plugins "
-"kaniadto sa pagpagawas niini nga bersyon. Kung ang imong website wala’y "
-"bisan unsang mga pag-customize para sa Fluid Checkout nga mga plugins, "
-"kinahanglan kini molihok sa parehas nga paagi sama kaniadto.<br><br> Kung "
-"adunay ka bisan unsang mga pag-customize para sa Fluid Checkout sa imong "
-"website ug wala pa nimo kini ibalhin sa kini nga bersyon, palihug basaha "
-"ang among giya <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Pagbalhin sa mga pag-customize sa Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Basaha ang giya sa paglalin"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Fluid Checkout ug Delivery Date plugins ni CodeRockz"
@@ -322,10 +290,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Pag-upgrade sa PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Unsa ang akong buhaton?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2439,6 +2403,14 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "Pag-output og dugang nga mga seksyon sa header kung mahimo sa mga setting "
 "sa tema."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Dugang impormasyon"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Pagpili ug Locker"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

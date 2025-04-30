@@ -273,36 +273,6 @@ msgstr "Zatitu"
 msgid "Minimalist"
 msgstr "Minimalista"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Aldaketa garrantzitsuak!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Fluid Checkout-en bertsio honekin <strong>zure webgunean eragina izan "
-"dezaketen aldaketa garrantzitsuak</strong> sartu ditugu bertsio hau "
-"kaleratu baino lehen gure pluginetan pertsonalizazioak egin badituzu. Zure "
-"webguneak Fluid Checkout pluginetarako pertsonalizaziorik ez badu, lehen "
-"bezala funtzionatu beharko luke.<br><br> Zure webgunean Fluid "
-"Checkout-erako pertsonalizaziorik baduzu eta oraindik bertsio honetara "
-"migratu ez badituzu, irakurri gure gida <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">Fluid "
-"Checkout Lite 4.0+-ra pertsonalizatzeko migrazioa</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Irakurri migrazio-gida"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Fluid Checkout eta Delivery Date pluginak CodeRockz-ek"
@@ -320,10 +290,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Berritu PRO-ra"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Zer egin behar dut?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2401,6 +2367,14 @@ msgstr "Goiburuko atal gehigarriak"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "Iretzi goiburuko atal gehigarriak gaiaren ezarpenetan gaituta badago."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Informazio gehiago"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Aukeratu armairu bat"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

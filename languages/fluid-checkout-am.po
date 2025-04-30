@@ -267,33 +267,6 @@ msgstr "ተከፈለ"
 msgid "Minimalist"
 msgstr "ዝቅተኛነት"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "ፈሳሽ Checkout Lite 4.0+ - አስፈላጊ ለውጦች!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"በዚህ የፈሳሽ ቼክአውት እትም ከዚህ ቀደም ይህን እትም ለመልቀቅ ወደ ፕለጊኖቻችን ብጁ ካደረግክ <strong>በድር "
-"ጣቢያህ ላይ ተጽእኖ ሊያሳድሩ የሚችሉ አስፈላጊ ለውጦችን</strong> አስተዋውቀናል። የእርስዎ ድር ጣቢያ ለ Fluid "
-"Checkout ፕለጊኖች ምንም ማበጀት ከሌለው ልክ እንደበፊቱ መስራት አለበት።<br><br> በድር ጣቢያዎ ላይ ለፈሳሽ "
-"ቼክአውት ማሻሻያዎች ካሉዎት እና ወደዚህ ስሪት ገና ካልፈለሱ፣ እባክዎን የእኛን መመሪያ ያንብቡ <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">ወደ "
-"Fluid Checkout Lite 4.0+ ማሻሻያ ማበጀት</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "የስደት መመሪያውን ያንብቡ"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "ፈሳሽ ፍተሻ እና የመላኪያ ቀን ተሰኪዎች በ CodeRockz"
@@ -310,10 +283,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "ወደ PRO አሻሽል።"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "ምን ማድረግ ነው የሚገባኝ፧"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2235,6 +2204,14 @@ msgstr "ተጨማሪ የራስጌ ክፍሎች"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "በገጽታ ቅንጅቶች ውስጥ ከነቃ ተጨማሪ የራስጌ ክፍሎችን ያውጡ።"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "ተጨማሪ መረጃ"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "መቆለፊያ ይምረጡ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

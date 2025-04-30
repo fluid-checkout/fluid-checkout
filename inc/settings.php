@@ -106,6 +106,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// Settings order received.
 			'fc_pro_enable_order_received'                                  => 'no',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
+			'fc_pro_enable_order_page_block_based_template'                 => 'no',
 			'fc_pro_enable_order_details_wide_layout'                       => 'no',
 			'fc_pro_order_details_order_actions_position'                   => 'inside_order_overview',
 			'fc_pro_enable_order_details_order_status_progress_bar'         => 'no',

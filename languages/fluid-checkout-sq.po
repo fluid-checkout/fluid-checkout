@@ -277,37 +277,6 @@ msgstr "Ndarë"
 msgid "Minimalist"
 msgstr "Minimaliste"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ – Ndryshime të rëndësishme!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Me këtë version të Fluid Checkout ne kemi prezantuar <strong>ndryshime të "
-"rëndësishme që mund të ndikojnë në faqen tuaj të internetit</strong> nëse "
-"keni bërë personalizime në shtojcat tona më parë në lëshimin e këtij "
-"versioni. Nëse faqja juaj e internetit nuk ka ndonjë personalizim për "
-"shtojcat e Fluid Checkout, ajo duhet të funksionojë në të njëjtën mënyrë si "
-"më parë.<br><br> Nëse keni ndonjë personalizim për Fluid Checkout në faqen "
-"tuaj të internetit dhe nuk i keni migruar ende në këtë version, ju lutemi "
-"lexoni udhëzuesin tonë <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">Për "
-"të migruar personalizimet në Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Lexoni udhëzuesin e migrimit"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Shtojcat e Fluid Checkout dhe Data e Dorëzimit nga CodeRockz"
@@ -325,10 +294,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Përmirësojeni në PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Çfarë duhet të bëj?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2415,6 +2380,14 @@ msgstr "Seksione shtesë të kokës"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "Nxirrni seksione shtesë të kokës nëse aktivizohen në cilësimet e temës."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Më shumë informacion"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Zgjidh një dollap me kyç"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

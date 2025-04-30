@@ -271,36 +271,6 @@ msgstr "Gawanya"
 msgid "Minimalist"
 msgstr "Minimalist"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Mabadiliko muhimu!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Kwa toleo hili la Malipo ya Maji tumeanzisha <strong>mabadiliko muhimu "
-"ambayo yanaweza kuathiri tovuti yako</strong> ikiwa umefanya mapendeleo kwa "
-"programu-jalizi zetu hapo awali ili kutoa toleo hili. Ikiwa tovuti yako "
-"haina ubinafsishaji wowote wa programu jalizi za Malipo ya Maji, inapaswa "
-"kufanya kazi kwa njia sawa na hapo awali.<br><br> Ikiwa una ubinafsishaji "
-"wowote wa Malipo ya Maji kwenye tovuti yako na bado hujayahamishia kwenye "
-"toleo hili, tafadhali soma mwongozo wetu <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Kuhamisha ubinafsishaji hadi Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Soma mwongozo wa uhamiaji"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Malipo ya Majimaji na Programu jalizi za Tarehe ya Kutuma na CodeRockz"
@@ -318,10 +288,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Pata toleo jipya la PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Nifanye nini?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2403,6 +2369,14 @@ msgstr "Sehemu za ziada za kichwa"
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "Toa sehemu za kichwa cha ziada ikiwashwa katika mipangilio ya mandhari."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Taarifa zaidi"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Chagua Locker"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

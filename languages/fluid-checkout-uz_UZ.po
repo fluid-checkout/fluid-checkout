@@ -273,38 +273,6 @@ msgstr "Split"
 msgid "Minimalist"
 msgstr "Minimalist"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Muhim o&#39;zgarishlar!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Fluid Checkout-ning ushbu versiyasi bilan biz ushbu versiya chiqarilishidan "
-"oldin plaginlarimizni moslashtirgan bo&#39;lsangiz <strong>, "
-"veb-saytingizga ta&#39;sir qilishi mumkin bo&#39;lgan muhim "
-"o&#39;zgarishlarni</strong> kiritdik. Agar veb-saytingizda Fluid Checkout "
-"plaginlari uchun hech qanday sozlash bo&#39;lmasa, u avvalgidek ishlashi "
-"kerak.<br><br> Agar veb-saytingizda Fluid Checkout uchun biron-bir sozlash "
-"mavjud bo&#39;lsa va ularni hali ushbu versiyaga o&#39;tkazmagan "
-"bo&#39;lsangiz, iltimos <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\">, "
-"Fluid Checkout Lite 4.0+ ga moslashtirishlarni ko&#39;chirish "
-"bo&#39;yicha</a> qo&#39;llanmamizni o&#39;qing."
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Migratsiya qo&#39;llanmasini o&#39;qing"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz tomonidan Fluid Checkout va Delivery Date plaginlari"
@@ -322,10 +290,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO ga yangilang"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Nima qilishim kerak?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2436,6 +2400,14 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "Mavzu sozlamalarida yoqilgan bo&#39;lsa, qo&#39;shimcha sarlavha "
 "bo&#39;limlarini chiqaring."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Batafsil ma&#39;lumot"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Shkafni tanlang"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

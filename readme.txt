@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 4.0.3
+Stable tag: 4.0.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -356,6 +356,15 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Twenty Twenty-Four.
+* Added: Compatibility with plugin BOX NOW Delivery Croatia.
+* Added: Compatibility with plugin Tamara Checkout.
+* Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
+* Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
+
+= 4.0.4 - 2025-04-15 =
+
+* Bump tested up to WooCommerce 9.8.1
 * Added: Support for description and delivery time attributes for shipping methods.
 * Added: Compatibility with theme LeadEngine.
 * Added: Compatibility with theme NewStore.

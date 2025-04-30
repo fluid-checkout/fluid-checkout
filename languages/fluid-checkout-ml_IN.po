@@ -272,39 +272,6 @@ msgstr "രണ്ടായി പിരിയുക"
 msgid "Minimalist"
 msgstr "മിനിമലിസ്റ്റ്"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ലൈറ്റ് 4.0+ – പ്രധാന മാറ്റങ്ങൾ!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"ഫ്ലൂയിഡ് ചെക്ക്ഔട്ടിന്റെ ഈ പതിപ്പിൽ, ഈ പതിപ്പിന്റെ റിലീസിന് മുമ്പ് ഞങ്ങളുടെ "
-"പ്ലഗിനുകളിൽ നിങ്ങൾ ഇഷ്ടാനുസൃതമാക്കലുകൾ നടത്തിയിട്ടുണ്ടെങ്കിൽ, "
-"<strong>നിങ്ങളുടെ വെബ്‌സൈറ്റിനെ ബാധിച്ചേക്കാവുന്ന പ്രധാന മാറ്റങ്ങൾ</strong> "
-"ഞങ്ങൾ അവതരിപ്പിച്ചിട്ടുണ്ട്. ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് പ്ലഗിനുകൾക്കായി നിങ്ങളുടെ "
-"വെബ്‌സൈറ്റിൽ എന്തെങ്കിലും ഇഷ്ടാനുസൃതമാക്കലുകൾ ഇല്ലെങ്കിൽ, അത് "
-"മുമ്പത്തെപ്പോലെ തന്നെ പ്രവർത്തിക്കും.<br><br> നിങ്ങളുടെ വെബ്‌സൈറ്റിൽ "
-"ഫ്ലൂയിഡ് ചെക്ക്ഔട്ടിനായി എന്തെങ്കിലും ഇച്ഛാനുസൃതമാക്കലുകൾ ഉണ്ടെങ്കിൽ, അവ "
-"ഇതുവരെ ഈ പതിപ്പിലേക്ക് മൈഗ്രേറ്റ് ചെയ്തിട്ടില്ലെങ്കിൽ, ദയവായി ഞങ്ങളുടെ ഗൈഡ് "
-"വായിക്കുക <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ലൈറ്റ് 4.0+ ലേക്ക് ഇച്ഛാനുസൃതമാക്കലുകൾ മൈഗ്രേറ്റ് "
-"ചെയ്യുന്നു.</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "മൈഗ്രേഷൻ ഗൈഡ് വായിക്കുക"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz-ന്റെ ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട്, ഡെലിവറി തീയതി പ്ലഗിനുകൾ"
@@ -323,10 +290,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO-യിലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "ഞാൻ എന്ത് ചെയ്യണം?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2434,6 +2397,14 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "തീം ക്രമീകരണങ്ങളിൽ പ്രവർത്തനക്ഷമമാക്കിയിട്ടുണ്ടെങ്കിൽ അധിക ഹെഡർ വിഭാഗങ്ങൾ "
 "ഔട്ട്‌പുട്ട് ചെയ്യുക."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "കൂടുതൽ വിവരങ്ങൾ"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ഒരു ലോക്കർ തിരഞ്ഞെടുക്കുക"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

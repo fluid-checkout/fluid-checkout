@@ -271,36 +271,6 @@ msgstr "Deling"
 msgid "Minimalist"
 msgstr "Minimalistisk"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - Viktige endringer!"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Med denne versjonen av Fluid Checkout har vi introdusert <strong>viktige "
-"endringer som kan påvirke nettstedet ditt</strong> hvis du har gjort "
-"tilpasninger til våre plugins før utgivelsen av denne versjonen. Hvis "
-"nettstedet ditt ikke har noen tilpasninger for Fluid Checkout-plugins, skal "
-"det fungere på samme måte som før.<br><br>Hvis du har noen tilpasninger for "
-"Fluid Checkout på nettstedet ditt og ennå ikke har migrert dem til denne "
-"versjonen, kan du lese vår guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrering av tilpasninger til Fluid Checkout Lite 4.0+</a>"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "Les migreringsveiledningen"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "Plugins for flytende kasse og leveringsdato fra CodeRockz"
@@ -318,10 +288,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Oppgrader til PRO"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "Hva skal jeg gjøre?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2375,6 +2341,14 @@ msgid "Output additional header sections if enabled in the theme settings."
 msgstr ""
 "Skriv ut flere topptekstseksjoner hvis dette er aktivert i "
 "temainnstillingene."
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "Mer informasjon"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Velg et skap"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -271,38 +271,6 @@ msgstr "ကွဲ"
 msgid "Minimalist"
 msgstr "ရိုးရှင်းသော"
 
-#: inc/admin/admin-notice-breaking-changes-version-400.php:47
-msgid "Fluid Checkout Lite 4.0+ – Important changes!"
-msgstr "Fluid Checkout Lite 4.0+ - အရေးကြီးသောပြောင်းလဲမှုများ။"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:48
-msgid ""
-"With this version of Fluid Checkout we have introduced <strong>important "
-"changes that might impact your website</strong> if you have made "
-"customizations to our plugins previously to the release of this version. If "
-"your website does not have any customizations for Fluid Checkout plugins, "
-"it should work in the same way as before.<br><br>If you have any "
-"customizations for Fluid Checkout on your website and have not yet migrated "
-"them to this version, please read our guide <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">Migrating customizations to Fluid Checkout Lite 4.0+</a>"
-msgstr ""
-"Fluid Checkout ၏ ဤဗားရှင်းဖြင့် ကျွန်ုပ်တို့သည် ဤဗားရှင်းတွင် ယခင်က "
-"ကျွန်ုပ်တို့၏ plugins များကို စိတ်ကြိုက်ပြင်ဆင်မှုများ ပြုလုပ်ထားလျှင် "
-"<strong>သင့်ဝဘ်ဆိုဒ်အပေါ် သက်ရောက်မှုရှိနိုင်သည့် "
-"အရေးကြီးသောပြောင်းလဲမှုများကို</strong> မိတ်ဆက်ပေးထားပါသည်။ "
-"သင့်ဝဘ်ဆိုက်တွင် Fluid Checkout ပလပ်အင်များအတွက် "
-"စိတ်ကြိုက်ပြင်ဆင်မှုများမရှိပါက၊ ၎င်းသည် ယခင်ကကဲ့သို့ "
-"လုပ်ဆောင်သင့်သည်။<br><br> သင့်ဝဘ်ဆိုက်တွင် Fluid Checkout အတွက် "
-"စိတ်ကြိုက်ပြင်ဆင်မှုများ ရှိပါက ၎င်းတို့ကို ဤဗားရှင်းသို့ "
-"မရွှေ့ပြောင်းရသေးပါက၊ ကျေးဇူးပြု၍ ကျွန်ုပ်တို့၏ လမ်းညွှန်ချက်ကို <a "
-"href=\"https://fluidcheckout.com/version-4-customization-migration/\""
-">ရွှေ့ပြောင်းခြင်းများကို Fluid Checkout Lite 4.0+ သို့</a> ဖတ်ရှုပါ။"
-
-#: inc/admin/admin-notice-breaking-changes-version-400.php:51
-msgid "Read the migration guide"
-msgstr "ရွှေ့ပြောင်းခြင်းလမ်းညွှန်ကို ဖတ်ပါ။"
-
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:93
 msgid "Fluid Checkout and Delivery Date plugins by CodeRockz"
 msgstr "CodeRockz မှ Fluid Checkout နှင့် Delivery Date ပလပ်အင်များ"
@@ -321,10 +289,6 @@ msgstr ""
 #: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "PRO သို့ အဆင့်မြှင့်ပါ။"
-
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
-msgid "What should I do?"
-msgstr "ကျွန်တော်ဘာလုပ်သင့်သလဲ?"
 
 #: inc/admin/admin-notice-db-migrations-applied.php:55
 msgid "Fluid Checkout database updated successfully"
@@ -2457,6 +2421,14 @@ msgstr "နောက်ထပ် ခေါင်းစီးကဏ္ဍမျ�
 #: inc/compat/themes/compat-theme-dt-the7.php:128
 msgid "Output additional header sections if enabled in the theme settings."
 msgstr "အပြင်အဆင်ဆက်တင်များတွင် ဖွင့်ထားပါက အပိုဆောင်းခေါင်းစီးကဏ္ဍများကို ထုတ်ပါ။"
+
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:98
+msgid "More information"
+msgstr "အချက်အလက်ပို"
+
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Locker တစ်ခုကို ရွေးပါ။"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
