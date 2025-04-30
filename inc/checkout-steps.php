@@ -185,6 +185,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
 		add_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100, 1 );
+		
 
 		// Place order
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
@@ -2486,6 +2487,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   bool  $should_add   Whether to add phone to formatted addresses.
 	 */
 	public function maybe_skip_adding_phone_to_formatted( $should_add ) {
+		// Maybe set to skip for admin pages
+		// But still add it to emails
+		if ( is_admin() && ! did_action( 'woocommerce_email' ) ) {
+			$should_add = 'no';
+		}
+
 		// Maybe set to skip if viewing order confirmation or order pay page
 		if ( function_exists( 'is_order_received_page' ) && ( is_order_received_page() || is_view_order_page() || is_checkout_pay_page() ) ) {
 			$should_add = 'no';
