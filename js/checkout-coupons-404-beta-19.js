@@ -32,7 +32,6 @@
 		generalNoticesSelector: '.woocommerce-notices-wrapper',
 		messagesWrapperSelector: '.fc-coupon-code-messages',
 		errorMessagesWrapperSelector: '.fc-coupon-code-messages .woocommerce-error',
-		errorMessageDismissButtonSelector: '.fc-coupon-code-message-dismiss',
 
 		useGeneralNoticesSection: 'no',
 		suppressSuccessMessages: 'yes',
@@ -42,6 +41,9 @@
 		couponFieldSelector: 'input[name="coupon_code"]',
 		addCouponButtonSelector: '.fc-coupon-code__apply',
 		removeCouponButtonSelector: '.woocommerce-remove-coupon',
+		errorMessageDismissButtonSelector: '.fc-coupon-code-message-dismiss',
+
+		appliedCouponCodeSelectorTemplate: '.fc-coupon-codes__coupon.coupon-###COUPON_CODE###, tr.cart-discount.coupon-###COUPON_CODE###',
 		
 		couponCodeAttribute: 'data-coupon',
 		referenceIdAttribute: 'data-reference-id',
@@ -137,16 +139,16 @@
 	/**
 	 * Play the animation for adding the coupon code.
 	 * 
-	 * @param   HTMLElement  couponCodeElement  The coupon code element.
+	 * @param   HTMLElement  appliedCouponCodeElement  The applied coupon code element.
 	 * @param   string       couponCode         The coupon code.
 	 */
-	var PlayAddingCouponCodeAnimation = function( couponCodeElement, couponCode ) {
+	var PlayAddingCouponCodeAnimation = function( appliedCouponCodeElement, couponCode ) {
 		// Add initial animation class to add background color to the coupon code element with no transition
-		couponCodeElement.classList.add( _settings.couponAddAnimationStartClass );
+		appliedCouponCodeElement.classList.add( _settings.couponAddAnimationStartClass );
 
 		requestAnimationFrame( function() {
 			// Add second animation class
-			couponCodeElement.classList.add( _settings.couponAddAnimationEndClass );
+			appliedCouponCodeElement.classList.add( _settings.couponAddAnimationEndClass );
 
 			// Add event listener to remove the animation classes after the transition ends
 			var onTransitionEnd = function( event ) {
@@ -154,8 +156,8 @@
 				if ( _settings.couponAnimationProperty !== event.propertyName ) { return; }
 
 				// Remove animation classes
-				couponCodeElement.classList.remove( _settings.couponAddAnimationStartClass );
-				couponCodeElement.classList.remove( _settings.couponAddAnimationEndClass );
+				appliedCouponCodeElement.classList.remove( _settings.couponAddAnimationStartClass );
+				appliedCouponCodeElement.classList.remove( _settings.couponAddAnimationEndClass );
 
 				// Remove coupon code from the recently added list
 				var index = _recentlyAddedCouponCodes.indexOf( couponCode );
@@ -164,9 +166,9 @@
 				}
 
 				// Remove event listener
-				couponCodeElement.removeEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
+				appliedCouponCodeElement.removeEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
 			}
-			couponCodeElement.addEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
+			appliedCouponCodeElement.addEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
 		} );
 	}
 
@@ -180,12 +182,11 @@
 		// Iterate through the recently added coupon codes
 		for ( var i = 0; i < _recentlyAddedCouponCodes.length; i++ ) {
 			var couponCode = _recentlyAddedCouponCodes[ i ];
-			var selector = '.fc-coupon-codes__coupon.coupon-' + couponCode;
-			var couponCodeElement = document.querySelector( selector );
+			var appliedCouponCodeElement = document.querySelector( _settings.appliedCouponCodeSelectorTemplate.replace( /###COUPON_CODE###/g, couponCode ) );
 
-			// Highlight the coupon code element
-			if ( couponCodeElement ) {
-				PlayAddingCouponCodeAnimation( couponCodeElement, couponCode );
+			// Highlight the applied coupon code element
+			if ( appliedCouponCodeElement ) {
+				PlayAddingCouponCodeAnimation( appliedCouponCodeElement, couponCode );
 			}
 		}
 	}

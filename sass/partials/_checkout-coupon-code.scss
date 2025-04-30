@@ -114,8 +114,8 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 	background-color: $success-color;
 }
 .fc-wrapper .fc-coupon-codes__coupon.coupon-highlight.coupon-fade-out {
-	transition: background-color 1s 1s ease-in;
 	background-color: $coupon-code-coupon-background-color;
+	transition: background-color $global-animation-duration-slow $global-animation-duration-slow ease-in;
 }
 
 .fc-wrapper .fc-coupon-codes__coupon-amount {
