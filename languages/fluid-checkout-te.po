@@ -2367,6 +2367,22 @@ msgstr "థీమ్ సెట్టింగ్‌లలో ఎనేబుల�
 msgid "More information"
 msgstr "మరింత సమాచారం"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "లాకర్‌ను ఎంచుకోండి"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "పేజీ టెంప్లేట్"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "బ్లాక్ ఆధారిత థీమ్‌ల కోసం `ఆర్డర్ నిర్ధారణ` పేజీ టెంప్లేట్‌ను ఉపయోగించండి"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "బ్లాక్-ఆధారిత థీమ్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే వర్తిస్తుంది."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

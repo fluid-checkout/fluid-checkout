@@ -2426,6 +2426,22 @@ msgstr "အပြင်အဆင်ဆက်တင်များတွင် �
 msgid "More information"
 msgstr "အချက်အလက်ပို"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Locker တစ်ခုကို ရွေးပါ။"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "စာမျက်နှာပုံစံ"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "block-based themes အတွက် `အော်ဒါအတည်ပြုခြင်း` စာမျက်နှာ နမူနာကို သုံးပါ။"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "ပိတ်ဆို့ခြင်းအခြေခံ အပြင်အဆင်ကို အသုံးပြုသည့်အခါတွင်သာ အကျုံးဝင်ပါသည်။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

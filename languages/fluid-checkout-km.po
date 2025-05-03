@@ -2350,6 +2350,22 @@ msgstr "បញ្ចេញផ្នែកបឋមកថាបន្ថែម �
 msgid "More information"
 msgstr "ព័ត៌មានបន្ថែម"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ជ្រើសរើស Locker"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "គំរូទំព័រ"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "ប្រើគំរូទំព័រ &#39;ការបញ្ជាក់ការបញ្ជាទិញ&#39; សម្រាប់ស្បែកផ្អែកលើប្លុក"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "អនុវត្តតែនៅពេលប្រើស្បែកផ្អែកលើប្លុកប៉ុណ្ណោះ។"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2345,6 +2345,22 @@ msgstr "Gefðu út fleiri haushluta ef virkt í þemastillingunum."
 msgid "More information"
 msgstr "Frekari upplýsingar"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Veldu skáp"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Síðusniðmát"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Notið sniðmát fyrir „staðfestingu pöntunar“ fyrir blokkatengd þemu"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Á aðeins við þegar notað er blokkbundið þema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

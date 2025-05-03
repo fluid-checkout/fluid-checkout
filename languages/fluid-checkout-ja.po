@@ -2174,6 +2174,22 @@ msgstr "テーマ設定で有効になっていれば、追加のヘッダーセ
 msgid "More information"
 msgstr "詳細情報"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ロッカーを選ぶ"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "ページテンプレート"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "ブロックベースのテーマで「注文確認」ページテンプレートを使用する"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "ブロックベースのテーマを使用している場合のみ適用されます。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2375,6 +2375,22 @@ msgstr "Utfiere ekstra koptekstseksjes as ynskeakele is yn &#39;e tema-ynstellin
 msgid "More information"
 msgstr "Mear ynformaasje"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Kies in locker"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Sidesjabloan"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Brûk de sidesjabloan `Bestellingbefêstiging` foar blokbasearre tema&#39;s"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Allinnich jildt by it brûken fan in blok-basearre tema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

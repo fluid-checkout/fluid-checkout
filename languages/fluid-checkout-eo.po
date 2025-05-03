@@ -2327,6 +2327,22 @@ msgstr "Eligu pliajn titolajn sekciojn se ebligita en la temo-agordoj."
 msgid "More information"
 msgstr "Pliaj informoj"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Elektu Ŝlosfakon"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Paĝa ŝablono"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Uzu la paĝoŝablonon `Mendkonfirmo` por blokbazitaj temoj"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Nur validas kiam oni uzas blok-bazitan temon."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

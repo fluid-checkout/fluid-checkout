@@ -2288,6 +2288,22 @@ msgstr "إخراج أقسام رأسية إضافية إذا تم تمكين ذ�
 msgid "More information"
 msgstr "مزيد من المعلومات"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "اختر خزانة"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "قالب الصفحة"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "استخدم قالب صفحة &quot;تأكيد الطلب&quot; للموضوعات القائمة على الكتل"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "ينطبق فقط عند استخدام سمة تعتمد على الكتلة."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

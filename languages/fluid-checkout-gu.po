@@ -2322,6 +2322,22 @@ msgstr "જો થીમ સેટિંગ્સમાં સક્ષમ હ�
 msgid "More information"
 msgstr "વધુ માહિતી"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "લોકર પસંદ કરો"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "પૃષ્ઠ નમૂનો"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "બ્લોક-આધારિત થીમ્સ માટે `ઓર્ડર પુષ્ટિકરણ` પૃષ્ઠ નમૂનાનો ઉપયોગ કરો."
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "બ્લોક-આધારિત થીમનો ઉપયોગ કરતી વખતે જ લાગુ પડે છે."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

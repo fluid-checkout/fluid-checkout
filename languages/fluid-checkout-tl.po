@@ -2420,6 +2420,24 @@ msgstr ""
 msgid "More information"
 msgstr "Higit pang impormasyon"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Pumili ng Locker"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Template ng pahina"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Gumamit ng template ng pahina ng `Pagkumpirma ng order` para sa mga tema na "
+"nakabatay sa block"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Nalalapat lamang kapag gumagamit ng isang block-based na tema."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

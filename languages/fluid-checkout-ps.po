@@ -2324,6 +2324,22 @@ msgstr "که چیرې د موضوع په ترتیباتو کې فعال شوي �
 msgid "More information"
 msgstr "نور معلومات"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "یو لاکر غوره کړئ"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "د پاڼې کينډۍ"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "د بلاک پر بنسټ موضوعاتو لپاره د &#39;آرډر تایید&#39; پاڼې ټیمپلیټ وکاروئ"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "یوازې هغه وخت پلي کیږي کله چې د بلاک پر بنسټ موضوع وکاروئ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

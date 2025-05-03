@@ -2574,6 +2574,22 @@ msgstr ""
 msgid "More information"
 msgstr "Weitere Informationen"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Wählen Sie ein Schließfach"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Seitenvorlage"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Seitenvorlage \"Bestellbestätigung\" für blockbasierte Themen verwenden"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Gilt nur bei Verwendung eines blockbasierten Themas."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

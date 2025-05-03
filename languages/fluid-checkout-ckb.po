@@ -2368,6 +2368,24 @@ msgstr "Ger di mîhengên mijarê de were çalak kirin beşên sernavê yên din
 msgid "More information"
 msgstr "Agahiyên bêtir"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Lokerek hilbijêre"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Şablona rûpelê"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Ji bo mijarên li ser bingeha blokê, şablona rûpela `Piştrastkirina fermanê` "
+"bikar bînin"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Tenê dema ku mijarek li ser bingeha blokê tê bikar anîn derbas dibe."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

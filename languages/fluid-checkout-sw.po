@@ -2374,6 +2374,24 @@ msgstr "Toa sehemu za kichwa cha ziada ikiwashwa katika mipangilio ya mandhari."
 msgid "More information"
 msgstr "Taarifa zaidi"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Chagua Locker"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Kiolezo cha ukurasa"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Tumia kiolezo cha ukurasa wa `Uthibitishaji wa Agizo` kwa mandhari yenye "
+"msingi wa kuzuia"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Inatumika tu wakati wa kutumia mandhari yenye msingi wa kizuizi."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

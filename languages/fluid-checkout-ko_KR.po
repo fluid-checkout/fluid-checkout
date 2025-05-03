@@ -2158,6 +2158,22 @@ msgstr "테마 설정에서 활성화한 경우 추가 헤더 섹션을 출력�
 msgid "More information"
 msgstr "자세한 정보"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "사물함 선택"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "페이지 템플릿"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "블록 기반 테마에 '주문 확인' 페이지 템플릿 사용"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "블록 기반 테마를 사용할 때만 적용됩니다."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

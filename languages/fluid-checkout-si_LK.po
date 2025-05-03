@@ -2330,6 +2330,22 @@ msgstr "තේමා සැකසුම් තුළ සක්‍රීය ක�
 msgid "More information"
 msgstr "වැඩි විස්තර"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "ලොකරයක් තෝරන්න"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "පිටු සැකිල්ල"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "බ්ලොක්-පාදක තේමා සඳහා `ඇණවුම් තහවුරු කිරීම` පිටු අච්චුව භාවිතා කරන්න"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "බ්ලොක්-පාදක තේමාවක් භාවිතා කරන විට පමණක් අදාළ වේ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

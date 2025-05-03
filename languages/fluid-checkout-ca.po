@@ -2410,6 +2410,24 @@ msgstr ""
 msgid "More information"
 msgstr "Més informació"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Tria un armari"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Plantilla de pàgina"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Utilitzeu la plantilla de pàgina `Confirmació de comanda` per a temes "
+"basats en blocs"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Només s&#39;aplica quan s&#39;utilitza un tema basat en blocs."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2405,6 +2405,24 @@ msgstr ""
 msgid "More information"
 msgstr "Batafsil ma&#39;lumot"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Shkafni tanlang"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Sahifa shabloni"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Blokka asoslangan mavzular uchun “Buyurtmani tasdiqlash” sahifasi "
+"shablonidan foydalaning"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Faqat blokga asoslangan mavzudan foydalanilganda amal qiladi."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

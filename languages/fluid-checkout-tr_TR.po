@@ -2542,6 +2542,22 @@ msgstr "Tema ayarlarında etkinleştirildiyse ek başlık bölümlerinin çıkt�
 msgid "More information"
 msgstr "Daha fazla bilgi"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Bir Dolap Seçin"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Sayfa şablonu"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Blok tabanlı temalar için `Sipariş onayı` sayfa şablonunu kullanın"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Yalnızca blok tabanlı bir tema kullanıldığında geçerlidir."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

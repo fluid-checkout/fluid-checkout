@@ -2360,6 +2360,24 @@ msgstr "Izpis dodatnih delov glave, če je to omogočeno v nastavitvah teme."
 msgid "More information"
 msgstr "Več informacij"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Izberite omarico"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Predloga strani"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Uporabite predlogo strani `Potrditev naročila` za teme, ki temeljijo na "
+"blokih"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Uporablja se samo pri uporabi teme, ki temelji na blokih."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

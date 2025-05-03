@@ -2378,6 +2378,22 @@ msgstr "Выводзіць дадатковыя раздзелы загалоў�
 msgid "More information"
 msgstr "Дадатковая інфармацыя"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "Выберыце шафку"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Шаблон старонкі"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Выкарыстоўвайце шаблон старонкі «Пацверджанне замовы» для блокавых тэм"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Дзейнічае толькі пры выкарыстанні блокавай тэмы."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

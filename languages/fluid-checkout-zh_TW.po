@@ -2126,6 +2126,22 @@ msgstr "如果在主題設定中啟用，則輸出附加標題部分。"
 msgid "More information"
 msgstr "更多資訊"
 
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:177
+msgid "Pick a Locker"
+msgstr "選擇一個儲物櫃"
+
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "頁面模板"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "使用基於區塊的主題的“訂單確認”頁面模板"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "僅適用於使用基於區塊的主題時。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

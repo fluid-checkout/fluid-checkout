@@ -40,7 +40,11 @@ class FluidCheckout_OmnisendForWooCommerce extends FluidCheckout {
 		// Bail if plugin functions are not available
 		if ( ! method_exists( 'Omnisend_Logger', 'hook' ) || ! method_exists( 'Omnisend_Helper', 'is_omnisend_connected' ) ) { return; }
 		if ( ! method_exists( 'Omnisend_Settings', 'get_checkout_opt_in_text' ) || ! method_exists( 'Omnisend_Settings', 'get_checkout_opt_in_preselected_status' ) ) { return; }
+		
+		// Bail if checkbox option is disabled
+		if ( Omnisend_Settings::STATUS_ENABLED !== Omnisend_Settings::get_checkout_opt_in_status() ) { return; }
 
+		// Initialize Omnisend hooks
 		Omnisend_Logger::hook();
 
 		// Bail if not connected to Omnisend
@@ -49,9 +53,10 @@ class FluidCheckout_OmnisendForWooCommerce extends FluidCheckout {
 
 		// CHANGE: Save field value to variable
 		$field_value = WC()->checkout->get_value( $field_key );
-		if ( Omnisend_Settings::get_checkout_opt_in_preselected_status() === Omnisend_Settings::STATUS_ENABLED ) {
+		if ( null === $field_value && Omnisend_Settings::STATUS_ENABLED === Omnisend_Settings::get_checkout_opt_in_preselected_status() ) {
 			$field_value = 1;
-		} elseif ( null === $field_value ) {
+		}
+		elseif ( null === $field_value ) {
 			$field_value = 0;
 		}
 
