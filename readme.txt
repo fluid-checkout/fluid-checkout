@@ -3,7 +3,7 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.7.2
+Tested up to: 6.8.1
 Stable tag: 4.0.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WordPress 6.8.1 and WooCommerce 9.8.3
 * Added: Compatibility with theme Twenty Twenty-Four.
 * Added: Compatibility with plugin BOX NOW Delivery Croatia.
 * Added: Compatibility with plugin Tamara Checkout.
