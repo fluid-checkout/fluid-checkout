@@ -185,7 +185,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10, 2 );
 		add_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10, 2 );
 		add_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100, 1 );
-		
 
 		// Place order
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
