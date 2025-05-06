@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility plugin Dintero. Support for new popout and embed Dintero checkout flow options.
+
 = 4.0.5 - 2025-05-03 =
 
 * Bump tested up to WordPress 6.8.1 and WooCommerce 9.8.3
