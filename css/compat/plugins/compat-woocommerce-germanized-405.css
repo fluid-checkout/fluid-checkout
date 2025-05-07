@@ -42,6 +42,14 @@ body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .wc-g
   display: none !important;
 }
 
+.fc-wrapper .dhl-preferred-service-content {
+  margin-top: 0;
+}
+
+.fc-wrapper .dhl-preferred-service-item:last-child {
+  margin-bottom: 0;
+}
+
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password]:-moz-read-only {
   background-color: #eee !important;
   pointer-events: none;
