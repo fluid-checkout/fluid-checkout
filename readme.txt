@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with theme twentytwentyfive.
+* Added: Compatibility with theme Twenty Twenty-Five.
 * Fixed: Compatibility plugin Dintero. Support for new popout and embed Dintero checkout flow options.
 
 = 4.0.5 - 2025-05-03 =
