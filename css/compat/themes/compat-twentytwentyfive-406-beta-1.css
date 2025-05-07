@@ -11,3 +11,7 @@ body.theme-twentytwentyfive .ts-wrapper.single .ts-control .item {
   line-height: 48px;
   height: 47px;
 }
+
+body.theme-twentytwentyfive .has-child .wp-block-navigation__submenu-container {
+  z-index: 2000;
+}
