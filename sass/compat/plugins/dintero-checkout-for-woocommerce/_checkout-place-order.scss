@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PLACE ORDER
+// ------------------------------------
+
+body.has-payment-method-selected--payment_method_dintero_checkout.has-dintero-place-order .fc-place-order__section .place-order {
+	display: none !important; // Needed to override theme styles
+}
