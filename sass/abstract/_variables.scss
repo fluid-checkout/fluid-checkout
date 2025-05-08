@@ -634,6 +634,7 @@ $coupon-code-coupon-border-style:           var( --fluidcheckout--coupon-code--b
 $coupon-code-coupon-border:                 $coupon-code-coupon-border-style remsize( .1rem ) var( --fluidcheckout--coupon-code--border-color, $border-color ) !default;
 $coupon-code-coupon-border-radius:          var( --fluidcheckout--coupon-code--border-radius, $global-radius-small ) !default;
 $coupon-code-coupon-background-color:       var( --fluidcheckout--coupon-code--background-color, transparent ) !default;
+$coupon-code-coupon-highlight-background-color: var( --fluidcheckout--coupon-code--highlight-background-color, #e0f5eb ) !default;
 
 $coupon-code-remove-spacing:                $global-spacing-extra-small !default;
 $coupon-code-remove-font-size:              $font-size-small !default;

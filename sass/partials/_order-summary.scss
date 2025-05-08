@@ -140,11 +140,11 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 }
 
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight {
-	background-color: $success-color;
+	background-color: $coupon-code-coupon-highlight-background-color;
 }
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight.coupon-fade-out {
 	background-color: transparent;
-	transition: background-color $global-animation-duration-slow $global-animation-duration-slow ease-in;
+	transition: background-color $global-animation-duration-slow $global-animation-duration-slow linear;
 }
 
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table tbody tr.cart-item {

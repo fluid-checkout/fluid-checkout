@@ -1978,12 +1978,12 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight {
-  background-color: var(--fluidcheckout--color--success, #007a3d);
+  background-color: var(--fluidcheckout--coupon-code--highlight-background-color, #e0f5eb);
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight.coupon-fade-out {
   background-color: transparent;
-  transition: background-color 0.75s 0.75s ease-in;
+  transition: background-color 0.75s 0.75s linear;
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody tr.cart-item {
