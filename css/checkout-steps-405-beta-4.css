@@ -2209,6 +2209,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr.coupon-code-form > td {
+  padding-bottom: 10px !important;
   text-align: left !important;
 }
 

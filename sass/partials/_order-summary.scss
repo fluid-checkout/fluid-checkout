@@ -364,6 +364,7 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 }
 
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table > tfoot > tr.coupon-code-form > td {
+	padding-bottom: $global-spacing-extra-small !important; // Needed to override theme styles
 	text-align: $alignment-left !important; // Needed to override theme styles
 }
 
