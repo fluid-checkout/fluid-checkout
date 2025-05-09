@@ -202,7 +202,24 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Bail if not at checkout
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
-		return array_merge( $classes, array( 'has-fc-coupon-code-fields' ) );
+		// Bail if feature is not enabled
+		if ( ! $this->is_feature_enabled() ) { return $classes; }
+
+		// Initialize variables
+		$add_classes = array();
+
+		// Add classes
+		$add_classes[] = 'has-fc-coupon-code-fields';
+
+		// Get coupon code field position
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_coupon_codes_position' );
+		$position_class_part = str_replace( '_', '-', $position );
+
+		// Add classes based on position
+		$add_classes[] = 'has-fc-coupon-code--' . $position_class_part;
+
+		// Merge classes and return
+		return array_merge( $classes, $add_classes );
 	}
 
 
