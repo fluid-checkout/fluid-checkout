@@ -448,38 +448,6 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   string  $coupon_code  The coupon code to be used.
 	 */
 	public function maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ) {
-		// // Bail if no error messages found
-		// $is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
-		// if ( ! $is_error ) { return $message; }
-	
-		// // Create dismiss button HTML
-		// $dismiss_button = apply_filters( 'fc_coupon_code_error_message_dismiss_button', '<a href="#dismiss_coupon_message" data-coupon="' . esc_attr( $coupon_code ) . '" class="fc-coupon-code-message-dismiss">' . __( 'Dismiss', 'fluid-checkout' ) . '</a>' );
-
-		// // Error class name
-		// $is_error_block = false !== strpos( $message, 'is-error' );
-		// $error_class = $is_error_block ? 'is-error' : 'woocommerce-error';
-		// $list_item_pattern = $is_error_block ? '/<div class="wc-block-components-notice-banner (.*?)<\/div>/s' : '/<li>(.*?)<\/li>/s';
-	
-		// // Insert dismiss button into each error message and add data-coupon attribute
-		// $pattern = '/<ul[^>]*class="[^"]*\b' . $error_class . '\b[^"]*"[^>]*>(.*?)<\/ul>/si';
-		// $message = preg_replace_callback( $pattern,
-		// 	// Add dismiss button and data-coupon attribute to each `<li>` element inside the `woocommerce-error` list
-		// 	function( $matches ) use ( $dismiss_button, $coupon_code, $list_item_pattern ) {
-		// 		// Modify the error message list items
-		// 		$ul_content = $matches[ 1 ];
-		// 		$ul_content = preg_replace( $list_item_pattern, '<li data-coupon="' . esc_attr( $coupon_code ) . '">$1 ' . $dismiss_button . '</li>', $ul_content );
-
-		// 		// Return the modified list
-		// 		return str_replace( $matches[ 1 ], $ul_content, $matches[ 0 ] );
-		// 	},
-		// 	$message
-		// );
-	
-		// return $message;
-
-
-
-
 		// Bail if no error messages found
 		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 		if ( ! $is_error ) { return $message; }
