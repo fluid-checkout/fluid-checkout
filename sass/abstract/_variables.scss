@@ -25,6 +25,7 @@ $success-color:                 var( --fluidcheckout--color--success, #007a3d ) 
 $error-color:                   var( --fluidcheckout--color--error, #cc1818 ) !default;
 $alert-color:                   var( --fluidcheckout--color--alert, #c95000 ) !default;
 $info-color:                    var( --fluidcheckout--color--info, #1f01b9 ) !default;
+$success-color-highlight:       var( --fluidcheckout--color--success-highlight, #e0f5eb ) !default;
 
 $border-color:                  var( --fluidcheckout--border-color, $light-grey ) !default;
 $border-dark-color:             var( --fluidcheckout--border-color--dark, $grey ) !default;

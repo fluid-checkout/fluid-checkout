@@ -25,13 +25,12 @@
 		bodyClass: 'has-fc-checkout-coupons',
 
 		uiProcessingClass: 'processing',
-		couponAddAnimationStartClass: 'coupon-highlight',
-		couponAddAnimationEndClass: 'coupon-fade-out',
 
 		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form',
 		generalNoticesSelector: '.woocommerce-notices-wrapper',
 		messagesWrapperSelector: '.fc-coupon-code-messages',
 		errorMessagesWrapperSelector: '.fc-coupon-code-messages .woocommerce-error',
+		errorMessagesWrapperSingleSelector: '.fc-coupon-code-messages .woocommerce-error li[data-coupon="###COUPON_CODE###"], .fc-coupon-code-messages .is-error[data-coupon="###COUPON_CODE###"]',
 
 		useGeneralNoticesSection: 'no',
 		suppressSuccessMessages: 'yes',
@@ -44,7 +43,7 @@
 		errorMessageDismissButtonSelector: '.fc-coupon-code-message-dismiss',
 
 		appliedCouponCodeSelectorTemplate: '.fc-coupon-codes__coupon.coupon-###COUPON_CODE###, tr.cart-discount.coupon-###COUPON_CODE###',
-		
+
 		couponCodeAttribute: 'data-coupon',
 		referenceIdAttribute: 'data-reference-id',
 		expansibleCouponSectionKeyAttribute: 'data-section-key',
@@ -56,8 +55,9 @@
 		section_key_placeholder:  '###SECTION_KEY###',
 
 		couponAnimationEndEvent: 'transitionend',
-
 		couponAnimationProperty: 'background-color',
+		couponAnimationClass: 'background-highlight-success',
+		couponAnimationName: 'background-highlight-success',
 	}
 	var _restoreMessagesMatrix = [];
 	var _recentlyAddedCouponCodes = [];
@@ -119,7 +119,7 @@
 		if ( ! couponCode ) { return; }
 
 		// Get coupon code message element
-		var errorMessageSelector = _settings.errorMessagesWrapperSelector + ' > li[' + _settings.couponCodeAttribute + '="' + couponCode + '"]';
+		var errorMessageSelector = _settings.errorMessagesWrapperSingleSelector.replace( /###COUPON_CODE###/g, couponCode );
 		var errorMessageElement = document.querySelector( errorMessageSelector );
 
 		// Maybe remove the error message element
@@ -142,34 +142,26 @@
 	 * @param   HTMLElement  appliedCouponCodeElement  The applied coupon code element.
 	 * @param   string       couponCode         The coupon code.
 	 */
-	var PlayAddingCouponCodeAnimation = function( appliedCouponCodeElement, couponCode ) {
-		// Add initial animation class to add background color to the coupon code element with no transition
-		appliedCouponCodeElement.classList.add( _settings.couponAddAnimationStartClass );
+	var playAddingCouponCodeAnimation = function( appliedCouponCodeElement, couponCode ) {
+		// Prepare to remove animating class when transition ends
+		appliedCouponCodeElement.addEventListener( FCUtils.animationEndEvent, function endRemovingItemAnimation( e ) {
+			// Bail if not target animation ending
+			if ( e.animationName !== _settings.couponAnimationName ) { return; }
 
-		requestAnimationFrame( function() {
-			// Add second animation class
-			appliedCouponCodeElement.classList.add( _settings.couponAddAnimationEndClass );
-
-			// Add event listener to remove the animation classes after the transition ends
-			var onTransitionEnd = function( event ) {
-				// Bail if transition does not correspond to the specified CSS property
-				if ( _settings.couponAnimationProperty !== event.propertyName ) { return; }
-
-				// Remove animation classes
-				appliedCouponCodeElement.classList.remove( _settings.couponAddAnimationStartClass );
-				appliedCouponCodeElement.classList.remove( _settings.couponAddAnimationEndClass );
-
-				// Remove coupon code from the recently added list
-				var index = _recentlyAddedCouponCodes.indexOf( couponCode );
-				if ( -1 < index ) {
-					_recentlyAddedCouponCodes.splice( index, 1 );
-				}
-
-				// Remove event listener
-				appliedCouponCodeElement.removeEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
+			// Remove coupon code from the recently added list
+			var index = _recentlyAddedCouponCodes.indexOf( couponCode );
+			if ( -1 < index ) {
+				_recentlyAddedCouponCodes.splice( index, 1 );
 			}
-			appliedCouponCodeElement.addEventListener( _settings.couponAnimationEndEvent, onTransitionEnd );
+
+			// Remove animation class
+			appliedCouponCodeElement.classList.remove( _settings.couponAnimationClass );
+
+			// Remove event listener
+			appliedCouponCodeElement.removeEventListener( FCUtils.animationEndEvent, endRemovingItemAnimation );
 		} );
+
+		appliedCouponCodeElement.classList.add( _settings.couponAnimationClass );
 	}
 
 	/**
@@ -184,14 +176,13 @@
 			var couponCode = _recentlyAddedCouponCodes[ i ];
 			var appliedCouponCodeElement = document.querySelector( _settings.appliedCouponCodeSelectorTemplate.replace( /###COUPON_CODE###/g, couponCode ) );
 
+			// Skip if coupon code element was not found
+			if ( ! appliedCouponCodeElement ) { continue; }
+
 			// Highlight the applied coupon code element
-			if ( appliedCouponCodeElement ) {
-				PlayAddingCouponCodeAnimation( appliedCouponCodeElement, couponCode );
-			}
+			playAddingCouponCodeAnimation( appliedCouponCodeElement, couponCode );
 		}
 	}
-
-
 
 
 
@@ -262,10 +253,10 @@
 		if ( 'yes' === _settings.useGeneralNoticesSection ) { return; }
 
 		// Build matrix of coupon code error messages and their positions
-		var _errorMessages = document.querySelectorAll( _settings.errorMessagesWrapperSelector );
+		var errorMessages = document.querySelectorAll( _settings.errorMessagesWrapperSelector );
 		_restoreMessagesMatrix = [];
-		for ( var i = 0; i < _errorMessages.length; i++ ) {
-			var errorMessage = _errorMessages[ i ];
+		for ( var i = 0; i < errorMessages.length; i++ ) {
+			var errorMessage = errorMessages[ i ];
 			var position = Array.prototype.indexOf.call( errorMessage.parentElement.children, errorMessage );
 			_restoreMessagesMatrix.push( [ position, errorMessage ] );
 		}
@@ -292,10 +283,11 @@
 			var refereceMessage = messagesWrapper.children[ position ];
 			var couponCode = errorMessage.getAttribute( _settings.couponCodeAttribute );
 
-			// Skip "restore" message if it's already exists for the same coupon code
+			// Skip "restore" message if it already exists for the same coupon code
 			var errorMessageCouponCodeSelector = _settings.errorMessagesWrapperSelector + '[' + _settings.couponCodeAttribute + '="' + couponCode + '"]';
 			if ( document.querySelector( errorMessageCouponCodeSelector ) ) { continue; }
 
+			// Restore error message
 			messagesWrapper.insertBefore( errorMessage, refereceMessage );
 		}
 	}
@@ -306,7 +298,7 @@
 	 * @param   HTMLElement  dismissButton  The dismiss cart item button element.
 	 */
 	var processErrorMessageDismiss = function( dismissButton ) {
-		var couponCode = dismissButton.getAttribute( _settings.couponCodeAttribute);
+		var couponCode = dismissButton.getAttribute( _settings.couponCodeAttribute );
 		dismissErrorMessage( couponCode );
 	}
 
@@ -316,7 +308,6 @@
 	 * Handle document clicks and route to the appropriate function.
 	 */
 	var handleClick = function( e ) {
-
 		// ADD COUPON
 		if ( e.target.closest( _settings.addCouponButtonSelector ) ) {
 			e.preventDefault();
@@ -334,7 +325,6 @@
 			e.preventDefault();
 			processErrorMessageDismiss( e.target.closest( _settings.errorMessageDismissButtonSelector ) );
 		}
-
 	};
 
 	/**
@@ -424,12 +414,11 @@
 		}
 
 		$.ajax({
-			type:		'POST',
-			url:		fcSettings.wcAjaxUrl.replace( '%%endpoint%%', 'fc_add_coupon_code' ),
-			data:		data,
-			dataType:   'json',
-			success:	function( response ) {
-
+			type:         'POST',
+			url:          fcSettings.wcAjaxUrl.replace( '%%endpoint%%', 'fc_add_coupon_code' ),
+			data:         data,
+			dataType:     'json',
+			success:      function( response ) {
 				// Get back the reference id
 				var referenceElement;
 				if ( response.reference_id ) {
@@ -438,6 +427,8 @@
 
 				// Maybe process success
 				if ( response.result && 'success' === response.result ) {
+					console.log( _settings.suppressSuccessMessages );
+					
 					// Maybe add messages
 					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message, referenceElement );
@@ -449,14 +440,13 @@
 						couponField.value = '';
 					}
 
-					// // Maybe add coupon code to the list of recently added coupon codes
+					// Maybe add coupon code to the list of recently added coupon codes
 					if ( -1 === _recentlyAddedCouponCodes.indexOf( couponCode ) ) {
 						_recentlyAddedCouponCodes.push( couponCode );
 					}
 
 					// Maybe close the coupon code field section
 					if ( window.CollapsibleBlock ) {
-
 						// Get expansible content section
 						var expansibleCouponContent = referenceElement.closest( _settings.expansibleCouponContentSelector );
 
@@ -500,9 +490,7 @@
 						_publicMethods.unblockUI( couponAddedSection );
 					}
 				}
-
 			}
-
 		});
 	};
 
@@ -540,11 +528,11 @@
 		}
 
 		$.ajax({
-			type:		'POST',
-			url:		fcSettings.wcAjaxUrl.replace( '%%endpoint%%', 'fc_remove_coupon_code' ),
-			data:		data,
-			dataType:   'json',
-			success:	function( response ) {
+			type:         'POST',
+			url:          fcSettings.wcAjaxUrl.replace( '%%endpoint%%', 'fc_remove_coupon_code' ),
+			data:         data,
+			dataType:     'json',
+			success:      function( response ) {
 				// Get back the reference id
 				var referenceElement;
 				if ( response.reference_id ) {
@@ -573,9 +561,7 @@
 						_publicMethods.unblockUI( couponAddedSection );
 					}
 				}
-
 			}
-
 		});
 	};
 
