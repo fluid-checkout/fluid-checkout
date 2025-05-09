@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Compatibility with plugin Germanized for WooCommerce. Fix "DHL Preferred delivery" field values not being preserved.
 * Fixed: Compatibility plugin Dintero. Support for new popout and embed Dintero checkout flow options.
 
 = 4.0.5 - 2025-05-03 =
