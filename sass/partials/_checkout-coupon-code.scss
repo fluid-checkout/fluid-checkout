@@ -160,8 +160,9 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 	position: absolute;
 	top: 0;
 	#{ $alignment-right }: 0;
-}
-.fc-wrapper .fc-coupon-code-messages .woocommerce-error li .fc-coupon-code-message-dismiss:focus {
-	outline: $focus-outline-link !important; // Needed to override theme styles
-	outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
+
+	&:focus {
+		outline: $focus-outline-link !important; // Needed to override theme styles
+		outline-offset: $focus-outline-offset-link !important; // Needed to override theme styles
+	}
 }
