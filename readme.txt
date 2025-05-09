@@ -357,6 +357,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Compatibility plugin Dintero. Support for new popout and embed Dintero checkout flow options.
+* Improved: Coupon codes are now highlighted when added.
+* Fixed: Coupon code messages location when being applied from certain sections.
 
 = 4.0.5 - 2025-05-03 =
 

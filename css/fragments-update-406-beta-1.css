@@ -152,3 +152,12 @@ body.has-loading-indicator-verbose div.woocommerce form.checkout > .blockUI.bloc
     transform: translate3d(5px, 0, 0);
   }
 }
+.background-highlight-success {
+  animation: background-highlight-success 2.5s;
+}
+
+@keyframes background-highlight-success {
+  from {
+    background-color: var(--fluidcheckout--color--success-highlight, #e0f5eb);
+  }
+}
