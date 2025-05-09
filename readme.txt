@@ -360,7 +360,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin BOX NOW Delivery Croatia.
 * Added: Compatibility with plugin Tamara Checkout.
 * Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
+* Improved: Coupon codes are now highlighted when added.
 * Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
+* Fixed: Coupon code messages location when being applied from certain sections.
 
 = 4.0.4 - 2025-04-15 =
 
@@ -382,7 +384,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
 * Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
 * Fixed: Spacing for elements above the order summary section.
-* Fixed: Coupon code messages location when being applied from certain sections.
 
 = 4.0.3 - 2025-03-17 =
 
