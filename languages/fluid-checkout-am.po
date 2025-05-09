@@ -2213,6 +2213,18 @@ msgstr "ተጨማሪ መረጃ"
 msgid "Pick a Locker"
 msgstr "መቆለፊያ ይምረጡ"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "የገጽ አብነት"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "በብሎክ ላይ ለተመሰረቱ ገጽታዎች የ‹ትዕዛዝ ማረጋገጫ› ገጽ አብነት ይጠቀሙ"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "በብሎክ ላይ የተመሰረተ ጭብጥ ሲጠቀሙ ብቻ ነው የሚመለከተው።"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

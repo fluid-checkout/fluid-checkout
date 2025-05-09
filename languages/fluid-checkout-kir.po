@@ -2365,6 +2365,20 @@ msgstr "Көбүрөөк маалымат"
 msgid "Pick a Locker"
 msgstr "Кулпу тандаңыз"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Барактын шаблону"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Блокко негизделген темалар үчүн &quot;Буйрутманы ырастоо&quot; барагынын "
+"үлгүсүн колдонуңуз"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Блокко негизделген теманы колдонууда гана колдонулат."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

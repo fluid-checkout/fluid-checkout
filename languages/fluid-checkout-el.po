@@ -2577,6 +2577,20 @@ msgstr "Περισσότερες πληροφορίες"
 msgid "Pick a Locker"
 msgstr "Διαλέξτε ένα ντουλάπι"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Πρότυπο σελίδας"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Χρήση προτύπου σελίδας \"Επιβεβαίωση παραγγελίας\" για θέματα που "
+"βασίζονται σε μπλοκ"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Ισχύει μόνο όταν χρησιμοποιείτε θέμα βασισμένο σε μπλοκ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

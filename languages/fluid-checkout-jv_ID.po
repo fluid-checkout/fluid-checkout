@@ -2340,6 +2340,18 @@ msgstr "informasi liyane"
 msgid "Pick a Locker"
 msgstr "Pilih Locker"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Cithakan kaca"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Gunakake template kaca `Konfirmasi pesenan` kanggo tema adhedhasar blok"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Mung ditrapake nalika nggunakake tema adhedhasar blok."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

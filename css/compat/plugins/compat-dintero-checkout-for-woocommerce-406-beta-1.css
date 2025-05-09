@@ -11,3 +11,7 @@
     margin-left: 0;
   }
 }
+
+body.has-payment-method-selected--payment_method_dintero_checkout.has-dintero-place-order .fc-place-order__section .place-order {
+  display: none !important;
+}

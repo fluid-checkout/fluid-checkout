@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-04-28 12:23+0000\n"
+"POT-Creation-Date: 2025-05-06 08:23+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -149,62 +149,62 @@ msgid "Payment method"
 msgstr ""
 
 #. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:2543
+#: inc/checkout-steps.php:2549
 msgid "Step %1$s of %2$s"
 msgstr ""
 
-#: inc/checkout-steps.php:2838
+#: inc/checkout-steps.php:2844
 msgid "Change: %s"
 msgstr ""
 
-#: inc/checkout-steps.php:2838
+#: inc/checkout-steps.php:2844
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:2839
+#: inc/checkout-steps.php:2845
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
 
-#: inc/checkout-steps.php:2971
+#: inc/checkout-steps.php:2977
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:3197
+#: inc/checkout-steps.php:3203
 msgid "An account will be created with the information provided."
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3503
+#: inc/checkout-steps.php:3509
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3508
+#: inc/checkout-steps.php:3514
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:3932, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+#: inc/checkout-steps.php:3938, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr ""
 
-#: inc/checkout-steps.php:4745
+#: inc/checkout-steps.php:4751
 msgid "Same as shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:4790
+#: inc/checkout-steps.php:4796
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:6061, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+#: inc/checkout-steps.php:6067, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:186
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:6126, templates/fc/checkout-steps/checkout/review-order-section.php:58
+#: inc/checkout-steps.php:6132, templates/fc/checkout-steps/checkout/review-order-section.php:58
 msgid "Edit cart"
 msgstr ""
 
@@ -813,7 +813,7 @@ msgstr ""
 msgid "Number of cross-sell items to display on the cart page"
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:136
 msgid "Trust symbols &amp; badges"
 msgstr ""
 
@@ -1301,7 +1301,7 @@ msgstr ""
 msgid "Always show"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:233
 msgid "Order notes"
 msgstr ""
 
@@ -1453,83 +1453,95 @@ msgstr ""
 msgid "These options affect the thank you page, also known as order received or order confirmation pages."
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
-msgid "Order details layout"
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
 msgstr ""
 
 #: inc/admin/admin-settings-order-received.php:116
-msgid "Display the order details with wide layout on the thank you page"
+msgid "Use `Order confirmation` page template for block-based themes"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:126
-msgid "Add widget areas to the thank you page"
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr ""
+
+#: inc/admin/admin-settings-order-received.php:126, inc/admin/admin-settings-order-received.php:154
+msgid "Order details layout"
 msgstr ""
 
 #: inc/admin/admin-settings-order-received.php:127
+msgid "Display the order details with wide layout on the thank you page"
+msgstr ""
+
+#: inc/admin/admin-settings-order-received.php:137
+msgid "Add widget areas to the thank you page"
+msgstr ""
+
+#: inc/admin/admin-settings-order-received.php:138
 msgid "These widget areas are used to add trust symbols and trust badges on the thank you page."
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:145
+#: inc/admin/admin-settings-order-received.php:156
 msgid "These options affect the thank you page , view order details on account pages and on email notifications."
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:150
+#: inc/admin/admin-settings-order-received.php:161
 msgid "Order actions"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:151
+#: inc/admin/admin-settings-order-received.php:162
 msgid "Choose in which position to display the order actions."
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:155
+#: inc/admin/admin-settings-order-received.php:166
 msgid "Inside the order overview"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:156
+#: inc/admin/admin-settings-order-received.php:167
 msgid "After the order overview"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:157
+#: inc/admin/admin-settings-order-received.php:168
 msgid "After order sections"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:165
+#: inc/admin/admin-settings-order-received.php:176
 msgid "Order status"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:166
+#: inc/admin/admin-settings-order-received.php:177
 msgid "Display the order status progress bar"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+#: inc/admin/admin-settings-order-received.php:187, inc/admin/admin-settings-order-received.php:204, inc/admin/admin-settings-order-received.php:219, inc/admin/admin-settings-order-received.php:234
 msgid "Choose in which position to display the section."
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:180
+#: inc/admin/admin-settings-order-received.php:191
 msgid "After the order overview and payment instructions"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+#: inc/admin/admin-settings-order-received.php:192, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223, inc/admin/admin-settings-order-received.php:238
 msgid "Before the order items section"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+#: inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:209, inc/admin/admin-settings-order-received.php:224, inc/admin/admin-settings-order-received.php:239
 msgid "Inside the order items section"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+#: inc/admin/admin-settings-order-received.php:194, inc/admin/admin-settings-order-received.php:210, inc/admin/admin-settings-order-received.php:225, inc/admin/admin-settings-order-received.php:240
 msgid "After the order items section"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:184
+#: inc/admin/admin-settings-order-received.php:195
 msgid "On the sidebar"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:192
+#: inc/admin/admin-settings-order-received.php:203
 msgid "Order downloads"
 msgstr ""
 
-#: inc/admin/admin-settings-order-received.php:207
+#: inc/admin/admin-settings-order-received.php:218
 msgid "Gift message"
 msgstr ""
 

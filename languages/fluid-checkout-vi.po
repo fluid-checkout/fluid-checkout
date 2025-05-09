@@ -2347,6 +2347,18 @@ msgstr "Thông tin thêm"
 msgid "Pick a Locker"
 msgstr "Chọn một tủ đồ"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Mẫu trang"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Sử dụng mẫu trang `Xác nhận đơn hàng` cho các chủ đề dựa trên khối"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Chỉ áp dụng khi sử dụng chủ đề dạng khối."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

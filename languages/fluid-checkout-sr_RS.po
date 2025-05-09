@@ -2345,6 +2345,18 @@ msgstr "Више информација"
 msgid "Pick a Locker"
 msgstr "Изаберите ормарић"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Шаблон странице"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Користите шаблон странице „Потврда поруџбине“ за теме засноване на блоковима"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Примењује се само када се користи тема заснована на блоковима."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

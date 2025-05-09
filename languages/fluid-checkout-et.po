@@ -2335,6 +2335,18 @@ msgstr "Lisateave"
 msgid "Pick a Locker"
 msgstr "Vali kapis"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Lehekülje mall"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "Kasutage \"Tellimuse kinnituse\" lehekülje malli plokipõhiste teemade jaoks"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Kehtib ainult siis, kui kasutatakse plokipõhist teemat."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

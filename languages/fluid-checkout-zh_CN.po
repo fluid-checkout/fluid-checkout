@@ -2126,6 +2126,18 @@ msgstr "更多信息"
 msgid "Pick a Locker"
 msgstr "挑选储物柜"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "页面模板"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr "为基于区块的主题使用 \"订单确认 \"页面模板"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "仅适用于使用基于区块的主题。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

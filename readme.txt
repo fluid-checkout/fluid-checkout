@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.7.2
-Stable tag: 4.0.4
+Tested up to: 6.8.1
+Stable tag: 4.0.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -356,13 +356,20 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Compatibility plugin Dintero. Support for new popout and embed Dintero checkout flow options.
+* Improved: Coupon codes are now highlighted when added.
+* Fixed: Coupon code messages location when being applied from certain sections.
+
+= 4.0.5 - 2025-05-03 =
+
+* Bump tested up to WordPress 6.8.1 and WooCommerce 9.8.3
 * Added: Compatibility with theme Twenty Twenty-Four.
 * Added: Compatibility with plugin BOX NOW Delivery Croatia.
 * Added: Compatibility with plugin Tamara Checkout.
 * Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
-* Improved: Coupon codes are now highlighted when added.
+* Improved: Compatibility with plugin Germanized for WooCommerce. Add compatibility with pickup location selection for shipping service providers.
 * Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
-* Fixed: Coupon code messages location when being applied from certain sections.
+* Fixed: Phone number showing duplicated on admin pages.
 
 = 4.0.4 - 2025-04-15 =
 

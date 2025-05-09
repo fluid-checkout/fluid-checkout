@@ -2410,6 +2410,20 @@ msgstr "Повече информация"
 msgid "Pick a Locker"
 msgstr "Изберете шкафче"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Шаблон на страницата"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Използване на шаблона на страницата `Потвърждаване на поръчката` за "
+"блок-базирани теми"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Прилага се само при използване на тема, базирана на блокове."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

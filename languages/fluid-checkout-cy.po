@@ -2373,6 +2373,20 @@ msgstr "Mwy o wybodaeth"
 msgid "Pick a Locker"
 msgstr "Dewiswch Locer"
 
+#: inc/admin/admin-settings-order-received.php:115
+msgid "Page template"
+msgstr "Templed tudalen"
+
+#: inc/admin/admin-settings-order-received.php:116
+msgid "Use `Order confirmation` page template for block-based themes"
+msgstr ""
+"Defnyddiwch dempled tudalen `Cadarnhau archeb` ar gyfer themâu sy&#39;n "
+"seiliedig ar flociau"
+
+#: inc/admin/admin-settings-order-received.php:117
+msgid "Only applies when using a block-based theme."
+msgstr "Dim ond yn berthnasol wrth ddefnyddio thema sy&#39;n seiliedig ar flociau."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
