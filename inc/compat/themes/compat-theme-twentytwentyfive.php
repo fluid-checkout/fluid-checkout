@@ -2,9 +2,9 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with theme: Twenty Twenty-Four (by The WordPress Team).
+ * Compatibility with theme: Twenty Twenty-Five (by The WordPress Team).
  */
-class FluidCheckout_ThemeCompat_TwentyTwentyFour extends FluidCheckout {
+class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -41,7 +41,7 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFour extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '50.3px',
+				'--fluidcheckout--field--height' => '52.8px',
 				'--fluidcheckout--field--padding-left' => '1.1rem',
 			),
 		);
@@ -70,4 +70,4 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFour extends FluidCheckout {
 
 }
 
-FluidCheckout_ThemeCompat_TwentyTwentyFour::instance();
+FluidCheckout_ThemeCompat_TwentyTwentyFive::instance();
