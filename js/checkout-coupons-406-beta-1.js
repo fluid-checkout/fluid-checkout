@@ -427,8 +427,6 @@
 
 				// Maybe process success
 				if ( response.result && 'success' === response.result ) {
-					console.log( _settings.suppressSuccessMessages );
-					
 					// Maybe add messages
 					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message, referenceElement );
