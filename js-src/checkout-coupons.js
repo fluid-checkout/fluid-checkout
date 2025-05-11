@@ -154,6 +154,7 @@
 				_recentlyAddedCouponCodes.splice( index, 1 );
 			}
 
+			console.log('animation happends', appliedCouponCodeElement)
 			// Remove animation class
 			appliedCouponCodeElement.classList.remove( _settings.couponAnimationClass );
 
@@ -174,13 +175,16 @@
 		// Iterate through the recently added coupon codes
 		for ( var i = 0; i < _recentlyAddedCouponCodes.length; i++ ) {
 			var couponCode = _recentlyAddedCouponCodes[ i ];
-			var appliedCouponCodeElement = document.querySelector( _settings.appliedCouponCodeSelectorTemplate.replace( /###COUPON_CODE###/g, couponCode ) );
+			var appliedCouponCodeElements = document.querySelectorAll( _settings.appliedCouponCodeSelectorTemplate.replace( /###COUPON_CODE###/g, couponCode ) );
 
-			// Skip if coupon code element was not found
-			if ( ! appliedCouponCodeElement ) { continue; }
+			// Skip if no coupon code elements were found
+			if ( ! appliedCouponCodeElements ) { continue; }
 
-			// Highlight the applied coupon code element
-			playAddingCouponCodeAnimation( appliedCouponCodeElement, couponCode );
+			// Highlight each applied coupon code element
+			for ( var j = 0; j < appliedCouponCodeElements.length; j++ ) {
+				var appliedCouponCodeElement = appliedCouponCodeElements[ j ];
+				playAddingCouponCodeAnimation( appliedCouponCodeElement, couponCode );
+			}
 		}
 	}
 
