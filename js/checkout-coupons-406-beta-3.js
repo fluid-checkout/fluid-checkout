@@ -26,7 +26,7 @@
 
 		uiProcessingClass: 'processing',
 
-		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form',
+		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form, .fc-discount-section',
 		generalNoticesSelector: '.woocommerce-notices-wrapper',
 		messagesWrapperSelector: '.fc-coupon-code-messages',
 		errorMessagesWrapperSelector: '.fc-coupon-code-messages .woocommerce-error',
@@ -154,7 +154,6 @@
 				_recentlyAddedCouponCodes.splice( index, 1 );
 			}
 
-			console.log('animation happends', appliedCouponCodeElement)
 			// Remove animation class
 			appliedCouponCodeElement.classList.remove( _settings.couponAnimationClass );
 
