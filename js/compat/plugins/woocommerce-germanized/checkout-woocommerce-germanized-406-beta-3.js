@@ -30,6 +30,9 @@
 		fieldContainerSelector: '.woocommerce-input-wrapper',
 		fieldRowSelector: '.form-row',
 
+		prefferedDeliveryTypeFieldSelector: '.dhl-preferred-service-content .dhl-preferred-location-types input',
+		prefferedDeliveryLocationFieldSelector : '.dhl-preferred-service-data > input',
+
 		shippingAddressPrefix: '#shipping_',
 	};
 
@@ -184,6 +187,20 @@
 		}
 	}
 
+	/**
+	 * Handle captured `change` event and route to the appropriate functions.
+	 */
+	var handleChange = function( e ) {
+		// PREFERRED DELIVERY SECTION RADIO FIELDS
+		if ( e.target.matches( _settings.prefferedDeliveryTypeFieldSelector ) ) {
+			triggerCheckoutUpdate();
+		}
+		// PREFERRED DELIVERY LOCATION FIELDS
+		else if ( e.target.matches( _settings.prefferedDeliveryLocationFieldSelector ) ) {
+			triggerCheckoutUpdate();
+		}
+	}
+
 
 
 	/**
@@ -223,6 +240,7 @@
 		// Add event listeners
 		document.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown );
+		document.addEventListener( 'change', handleChange );
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {

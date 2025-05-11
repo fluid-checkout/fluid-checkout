@@ -23,6 +23,9 @@ class FluidCheckout_FlexibleShipping extends FluidCheckout {
 		$this->remove_action_for_class( 'woocommerce_after_shipping_rate', array( 'WPDesk\FS\TableRate\ShippingMethod\MethodDescription', 'display_description_if_present' ), 10 );
 		add_action( 'woocommerce_after_shipping_rate', array( $this, 'display_description_if_present' ), 10, 2 );
 
+		// Remove shipping method description added by Fluid Checkout
+		remove_filter( 'fc_shipping_method_option_description' , array( FluidCheckout_Steps::instance(), 'maybe_add_shipping_method_option_description' ), 10, 2 );
+
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 	}
