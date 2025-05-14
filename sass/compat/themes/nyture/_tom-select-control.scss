@@ -1,0 +1,16 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
+	//!rtl
+	padding-left: remsize( 1.2rem );
+}
+
+body#{ $_body-theme-selector } .ts-wrapper.single .ts-control .item {
+	font-size: remsize( 1.4rem );
+
+	@media (max-width: 999px) {
+		font-size: remsize( 1.6rem );
+	}
+}
