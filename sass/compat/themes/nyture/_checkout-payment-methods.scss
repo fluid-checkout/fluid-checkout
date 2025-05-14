@@ -3,6 +3,6 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method > label {
-	display: block!important;
+	display: flex!important;
 	text-transform: none;
 }

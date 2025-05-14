@@ -12,7 +12,7 @@ body.woocommerce-checkout .fc-login-form__wrapper.woocommerce .woocommerce-form_
 }
 
 body.theme-nyture .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method > label {
-  display: block !important;
+  display: flex !important;
   text-transform: none;
 }
 
