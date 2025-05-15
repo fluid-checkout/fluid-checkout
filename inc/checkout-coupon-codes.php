@@ -202,7 +202,24 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Bail if not at checkout
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
-		return array_merge( $classes, array( 'has-fc-coupon-code-fields' ) );
+		// Bail if feature is not enabled
+		if ( ! $this->is_feature_enabled() ) { return $classes; }
+
+		// Initialize variables
+		$add_classes = array();
+
+		// Add classes
+		$add_classes[] = 'has-fc-coupon-code-fields';
+
+		// Get coupon code field position
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_coupon_codes_position' );
+		$position_class_part = str_replace( '_', '-', $position );
+
+		// Add classes based on position
+		$add_classes[] = 'has-fc-coupon-code--' . $position_class_part;
+
+		// Merge classes and return
+		return array_merge( $classes, $add_classes );
 	}
 
 
@@ -425,6 +442,69 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 
 	/**
+	 * Maybe add dismiss buttons to coupon code error messages.
+	 *
+	 * @param   string  $message      The message HTML to be displayed.
+	 * @param   string  $coupon_code  The coupon code to be used.
+	 */
+	public function maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ) {
+		// Bail if no error messages found
+		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
+		if ( ! $is_error ) { return $message; }
+	
+		// Create dismiss button HTML
+		$dismiss_button = apply_filters( 'fc_coupon_code_error_message_dismiss_button', '<a href="#dismiss_coupon_message" data-coupon="' . esc_attr( $coupon_code ) . '" class="fc-coupon-code-message-dismiss">' . __( 'Dismiss', 'fluid-checkout' ) . '</a>' );
+
+		// Error class name
+		$is_error_block = false !== strpos( $message, 'is-error' );
+		$error_class = $is_error_block ? 'is-error' : 'woocommerce-error';
+		$pattern = $is_error_block ? '/<div[^>](class="[^"]*\bwc-block-components-notice-banner\b[^"]*"[^>]*>)(.*?)<\/div>/si' : '/<ul[^>]*class="[^"]*\b' . $error_class . '\b[^"]*"[^>]*>(.*?)<\/ul>/si';
+		
+		// Insert dismiss button into each error message and add data-coupon attribute
+		$message = preg_replace_callback( $pattern,
+			// Add dismiss button and data-coupon attribute to each `<li>` element or `<div>` element
+			function( $matches ) use ( $dismiss_button, $coupon_code, $is_error_block ) {
+				// Classic checkout
+				if ( ! $is_error_block ) {
+					// Get message content
+					$content = $matches[ 1 ];
+
+					// Modify the content based on the pattern type
+					$list_item_pattern = '/<li>(.*?)<\/li>/s';
+					$content = preg_replace( $list_item_pattern, 
+						'<li data-coupon="' . esc_attr( $coupon_code ) . '">$1 ' . $dismiss_button . '</li>',
+						$content 
+					);
+
+					// Return the modified content
+					return str_replace( $matches[ 1 ], $content, $matches[ 0 ] );
+				}
+				// Block-based checkout themes
+				else {
+					// Get message content
+					$attributes = $matches[ 1 ];
+					$content = $matches[ 2 ];
+
+					// Modify the message based on the pattern type
+					$message = sprintf(
+						'<div data-coupon="%1$s" %2$s %3$s</div>%4$s</div>',
+						esc_attr( $coupon_code ),
+						$attributes,
+						$content,
+						$dismiss_button
+					);
+
+					// Return the modified content
+					return $message;
+				}
+			},
+			$message
+		);
+	
+		return $message;
+	}
+
+	/**
 	 * AJAX Add a coupon code to the cart.
 	 * @see WC_AJAX::apply_coupon
 	 */
@@ -437,16 +517,20 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( ! empty( $coupon_code ) ) {
 			// Add the coupon code to the cart,
 			// which triggers calculating the cart totals to ensure pricing is correct.
-			WC()->cart->add_discount( wc_format_coupon_code( $coupon_code ) );
+			WC()->cart->apply_coupon( wc_format_coupon_code( $coupon_code ) );
 
 			// Intercept notices to avoid them being displayed on other pages
 			ob_start();
 			wc_print_notices();
 			$message = ob_get_clean();
+
+			// Maybe add dismiss buttons to error messages
+			$message = $this->maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code );
+			$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 			
 			wp_send_json(
 				array(
-					'result'           => false === strpos( $message, 'woocommerce-error' ) ? 'success' : 'error',
+					'result'           => $is_error ? 'error' : 'success',
 					'coupon_code'      => $coupon_code,
 					'reference_id'     => $reference_id,
 					'message'          => $message,
@@ -460,7 +544,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 					'coupon_code'      => $coupon_code,
 					'reference_id'     => $reference_id,
 					'error_slug'       => 'coupon_code_does_not_exist',
-					'message'          => WC_Coupon::get_generic_coupon_error( WC_Coupon::E_WC_COUPON_PLEASE_ENTER ),
+					'message'          => $this->maybe_add_coupon_code_error_message_dismiss_buttons( WC_Coupon::get_generic_coupon_error( WC_Coupon::E_WC_COUPON_PLEASE_ENTER ), $coupon_code ),
 				)
 			);
 		}
@@ -484,10 +568,14 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			ob_start();
 			wc_print_notices();
 			$message = ob_get_clean();
+
+			// Maybe add dismiss buttons to error messages
+			$message = $this->maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code );
+			$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 			
 			wp_send_json(
 				array(
-					'result'           => false === strpos( $message, 'woocommerce-error' ) ? 'success' : 'error',
+					'result'           => $is_error ? 'error' : 'success',
 					'coupon_code'      => $coupon_code,
 					'reference_id'     => $reference_id,
 					'message'          => $message,
@@ -508,7 +596,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 					'coupon_code'      => $coupon_code,
 					'reference_id'     => $reference_id,
 					'error_slug'       => 'coupon_code_not_provided',
-					'message'          => $message,
+					'message'          => $this->maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ),
 				)
 			);
 		}

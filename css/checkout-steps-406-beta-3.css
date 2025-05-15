@@ -1977,6 +1977,15 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
   background-color: transparent;
 }
 
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight {
+  background-color: var(--fluidcheckout--coupon-code--highlight-background-color, #e0f5eb);
+}
+
+div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight.coupon-fade-out {
+  background-color: transparent;
+  transition: background-color 0.75s 0.75s linear;
+}
+
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody tr.cart-item {
   border-top: dashed var(--fluidcheckout--order-summary--cell-border-width--products, 1px) var(--fluidcheckout--order-summary--cell-border-color--products, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8)));
 }
@@ -2200,6 +2209,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table > tfoot > tr.coupon-code-form > td {
+  padding-bottom: 10px !important;
   text-align: left !important;
 }
 
