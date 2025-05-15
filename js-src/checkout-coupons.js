@@ -405,9 +405,13 @@
 			referenceElement.setAttribute( _settings.referenceIdAttribute, reference_id );
 		}
 
-		// Block coupon section
+		// Get coupon added section
 		var couponAddedSection = document.querySelector( _settings.couponAddedSectionSelector );
-		_publicMethods.blockUI( couponAddedSection );
+
+		// Maybe block coupon added section
+		if ( couponAddedSection && couponAddedSection.children.length > 0 ) {
+			_publicMethods.blockUI( couponAddedSection );
+		}
 
 		// Add security nonce
 		var data = {
