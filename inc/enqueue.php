@@ -160,8 +160,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 					'.address-field input.input-text',
 					'.update_totals_on_change input.input-text',
 				) ) ),
-				// This is required to prevent the default WC coupon code methods execution when the FC feature is enabled
 				'checkoutCoupons'                           => apply_filters( 'fc_checkout_coupons_script_settings', array(
+					// This is required to prevent the default WC coupon code methods execution when the FC feature is enabled
 					'isEnabled' => FluidCheckout_CouponCodes::instance()->is_feature_enabled() ? 'yes' : 'no',
 				) ),
 				'sameAsCheckboxSelector'                    => '#billing_same_as_shipping, #shipping_same_as_billing',
