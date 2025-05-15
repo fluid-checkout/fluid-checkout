@@ -37,12 +37,3 @@ body.theme-nyture .select2 .select2-selection .select2-selection__rendered {
     font-size: 16px;
   }
 }
-
-body.theme-nyture .woocommerce-MyAccount-content .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .form-row.form-row-last {
-  margin-left: 0;
-}
-
-body.theme-nyture .woocommerce .woocommerce-shipping-fields .form-row-last,
-body.theme-nyture .woocommerce .woocommerce-billing-fields .form-row-last {
-  padding-left: 0;
-}
