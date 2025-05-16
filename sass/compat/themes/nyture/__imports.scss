@@ -14,5 +14,6 @@ $_body-theme-selector:                 '.theme-nyture' !default;
 @import
 	"checkout-login",
 	"checkout-payment-methods",
+	"order-summary",
 	"tom-select-control",
 	"woocommerce-form-fields-select2";
