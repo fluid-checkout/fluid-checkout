@@ -16,6 +16,7 @@ jQuery( function( $ ) {
 	window.can_update_checkout = true;
 
 	// CHANGE: Add flag to up prevent users from leaving the page when there is unsaved data
+	window.can_prevent_unload = true;
 	var _updateBeforeUnload = false;
 
 	// CHANGE: Add default settings object
@@ -340,31 +341,39 @@ jQuery( function( $ ) {
 				$( document.body ).trigger( 'update_checkout', { refresh_payment_methods: false } );
 			}
 		},
-		// CHANGE: Prompt user that they might lose data when closing tab or leaving the current page after they change some values in the checkout form
+		// CHANGE: Add event listener to prompt user that they might lose data when closing tab or leaving the current page after they change some values in the checkout form.
 		maybe_prevent_unload: function( e ) {
 			// Ignore some fields
 			if ( e && e.target.closest( '.payment_box, input#createaccount' ) ) { return; }
 
-			if ( ! _updateBeforeUnload ) {
+			// Bail if already set to update before unload, that is the event listener has been already added.
+			if ( _updateBeforeUnload ) { return; }
 
-				var preventUnload = function( e ) {
-					// Prompt user if there is unsaved data
-					if ( _updateBeforeUnload ) {
-						e.preventDefault();
-						e.returnValue = '';
+			// Create local named function to prevent user from leaving the page.
+			// This is needed to be able to remove the event listener when it is no longer needed.
+			// E.g when the user has updated the checkout totals and the flag is set to `false`.
+			var preventUnload = function( e ) {
+				// Bail if cannot prevent user from leaving the page
+				if ( ! window.can_prevent_unload ) { return; }
 
-						// Proceed to update the checkout totals if the user cancel the event
-						$( document.body ).trigger( 'update_checkout' );
+				// Bail if cannot update before unload
+				if ( ! _updateBeforeUnload ) { return; }
+				
+				// Prompt user if there is unsaved data
+				e.preventDefault();
+				e.returnValue = '';
 
-						// Reset flag to update on `beforeunload`
-						_updateBeforeUnload = false;
-						window.removeEventListener( 'beforeunload', preventUnload );
-					}
-				};
+				// Proceed to update the checkout totals if the user cancel the event
+				$( document.body ).trigger( 'update_checkout' );
 
-				window.addEventListener( 'beforeunload', preventUnload );
-				_updateBeforeUnload = true;
-			}
+				// Reset flag to update on `beforeunload`
+				_updateBeforeUnload = false;
+				window.removeEventListener( 'beforeunload', preventUnload );
+			};
+
+			// Add event listener to prevent user from leaving the page, and set the flag to update on `beforeunload`
+			window.addEventListener( 'beforeunload', preventUnload );
+			_updateBeforeUnload = true;
 		},
 		init_payment_methods: function() {
 			var $payment_methods = $( '.woocommerce-checkout' ).find( 'input[name="payment_method"]' );
