@@ -139,6 +139,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_method_title_fragment' ), 10 );
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
@@ -473,6 +474,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_method_title_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
 		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
@@ -4024,6 +4026,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_text_shipping_method( $step_id, $substep_id ) {
 		echo $this->get_substep_text_shipping_method();
+	}
+
+	/**
+	 * Get shipping method substep title.
+	 */
+	public function get_substep_title_shipping_method() {
+		return $this->get_substep_title_html( 'shipping_method' );
+	}
+
+	/**
+	 * Add shipping method substep title as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_shipping_method_title_fragment( $fragments ) {
+		$html = $this->get_substep_title_shipping_method();
+		$fragments[ '.fc-step__substep-title--shipping_method' ] = $html;
+		return $fragments;
 	}
 
 
