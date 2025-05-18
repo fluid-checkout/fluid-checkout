@@ -4250,7 +4250,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_add_shipping_method_option_description( $shipping_method_description, $method ) {
 		// Bail if class methods are not available
-		if ( ! method_exists( $method, 'get_delivery_time' ) || ! method_exists( $method, 'get_description' ) ) { return; }
+		if ( ! method_exists( $method, 'get_delivery_time' ) || ! method_exists( $method, 'get_description' ) ) { return $shipping_method_description; }
 
 		// Initialize variables
 		$new_description = '';
