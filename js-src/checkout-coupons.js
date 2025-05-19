@@ -22,42 +22,43 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		bodyClass: 'has-fc-checkout-coupons',
+		bodyClass:                             'has-fc-checkout-coupons',
 
-		uiProcessingClass: 'processing',
+		uiProcessingClass:                     'processing',
+		loadingClass:                          'fc-loading',
 
-		sectionWrapperSelector: '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form, .fc-discount-section',
-		generalNoticesSelector: '.woocommerce-notices-wrapper',
-		messagesWrapperSelector: '.fc-coupon-code-messages',
-		errorMessagesWrapperSelector: '.fc-coupon-code-messages .woocommerce-error',
-		errorMessagesWrapperSingleSelector: '.fc-coupon-code-messages .woocommerce-error li[data-coupon="###COUPON_CODE###"], .fc-coupon-code-messages .is-error[data-coupon="###COUPON_CODE###"]',
+		sectionWrapperSelector:                '.fc-step__substep, .fc-sidebar .coupon-code-form, .fc-cart-coupon-code-form, .fc-discount-section',
+		generalNoticesSelector:                '.woocommerce-notices-wrapper',
+		messagesWrapperSelector:               '.fc-coupon-code-messages',
+		errorMessagesWrapperSelector:          '.fc-coupon-code-messages .woocommerce-error',
+		errorMessagesWrapperSingleSelector:    '.fc-coupon-code-messages .woocommerce-error li[data-coupon="###COUPON_CODE###"], .fc-coupon-code-messages .is-error[data-coupon="###COUPON_CODE###"]',
 
-		useGeneralNoticesSection: 'no',
-		suppressSuccessMessages: 'yes',
+		useGeneralNoticesSection:              'no',
+		suppressSuccessMessages:               'yes',
 
-		couponAddedSectionSelector: '.fc-step__substep-text-content--coupon-codes',
-		couponSectionSelector: '.fc-coupon-code-section',
-		couponFieldSelector: 'input[name="coupon_code"]',
-		addCouponButtonSelector: '.fc-coupon-code__apply',
-		removeCouponButtonSelector: '.woocommerce-remove-coupon',
-		errorMessageDismissButtonSelector: '.fc-coupon-code-message-dismiss',
+		couponAddedSectionSelector:            '.fc-step__substep-text-content--coupon-codes',
+		couponSectionSelector:                 '.fc-coupon-code-section',
+		couponFieldSelector:                   'input[name="coupon_code"]',
+		addCouponButtonSelector:               '.fc-coupon-code__apply',
+		removeCouponButtonSelector:            '.woocommerce-remove-coupon',
+		errorMessageDismissButtonSelector:     '.fc-coupon-code-message-dismiss',
 
-		appliedCouponCodeSelectorTemplate: '.fc-coupon-codes__coupon.coupon-###COUPON_CODE###, tr.cart-discount.coupon-###COUPON_CODE###',
+		appliedCouponCodeSelectorTemplate:     '.fc-coupon-codes__coupon.coupon-###COUPON_CODE###, tr.cart-discount.coupon-###COUPON_CODE###',
 
-		couponCodeAttribute: 'data-coupon',
-		referenceIdAttribute: 'data-reference-id',
-		expansibleCouponSectionKeyAttribute: 'data-section-key',
+		couponCodeAttribute:                   'data-coupon',
+		referenceIdAttribute:                  'data-reference-id',
+		expansibleCouponSectionKeyAttribute:   'data-section-key',
 
-		expansibleCouponContentSelector: '.fc-expansible-form-section__content',
-		expansibleCouponToggleSelector: '.fc-expansible-form-section__toggle--###SECTION_KEY###',
-		expansibleCouponToggleButtonSelector: '.expansible-section__toggle-plus--###SECTION_KEY###',
+		expansibleCouponContentSelector:       '.fc-expansible-form-section__content',
+		expansibleCouponToggleSelector:        '.fc-expansible-form-section__toggle--###SECTION_KEY###',
+		expansibleCouponToggleButtonSelector:  '.expansible-section__toggle-plus--###SECTION_KEY###',
 
-		section_key_placeholder:  '###SECTION_KEY###',
+		section_key_placeholder:               '###SECTION_KEY###',
 
-		couponAnimationEndEvent: 'transitionend',
-		couponAnimationProperty: 'background-color',
-		couponAnimationClass: 'background-highlight-success',
-		couponAnimationName: 'background-highlight-success',
+		couponAnimationEndEvent:               'transitionend',
+		couponAnimationProperty:               'background-color',
+		couponAnimationClass:                  'background-highlight-success',
+		couponAnimationName:                   'background-highlight-success',
 	}
 	var _restoreMessagesMatrix = [];
 	var _recentlyAddedCouponCodes = [];
@@ -187,6 +188,49 @@
 		}
 	}
 
+
+
+	/**
+	 * Block the coupon code buttons.
+	 */
+	var blockCouponCodeButtons = function() {
+		// Get coupon code buttons
+		var couponCodeButtons = document.querySelectorAll( _settings.addCouponButtonSelector );
+
+		// Bail if no coupon code buttons were found
+		if ( ! couponCodeButtons ) { return; }
+
+		// Iterate through the coupon code buttons
+		for ( var i = 0; i < couponCodeButtons.length; i++ ) {
+			// Get coupon code button
+			var couponCodeButton = couponCodeButtons[ i ];
+			
+			// Set button loading state
+			couponCodeButton.classList.add( _settings.loadingClass );
+			couponCodeButton.setAttribute( 'disabled', 'disabled' );
+		}
+	}
+
+	/**
+	 * Unblock coupon code buttons.
+	 */
+	var unblockCouponCodeButtons = function() {
+		// Get coupon code buttons
+		var couponCodeButtons = document.querySelectorAll( _settings.addCouponButtonSelector );
+
+		// Bail if no coupon code buttons were found
+		if ( ! couponCodeButtons ) { return; }
+
+		// Iterate through the coupon code buttons
+		for ( var i = 0; i < couponCodeButtons.length; i++ ) {
+			// Get coupon code button
+			var couponCodeButton = couponCodeButtons[ i ];
+
+			// Remove loading state
+			couponCodeButton.classList.remove( _settings.loadingClass );
+			couponCodeButton.removeAttribute( 'disabled' );
+		}
+	}
 
 
 	/**
@@ -413,6 +457,9 @@
 			_publicMethods.blockUI( couponAddedSection );
 		}
 
+		// Maybe block coupon code buttons
+		blockCouponCodeButtons();
+
 		// Add security nonce
 		var data = {
 			security: _settings.addCouponCodeNonce,
@@ -420,7 +467,7 @@
 			reference_id: reference_id,
 		}
 
-		$.ajax({
+		$.ajax( {
 			type:         'POST',
 			url:          fcSettings.wcAjaxUrl.replace( '%%endpoint%%', 'fc_add_coupon_code' ),
 			data:         data,
@@ -495,8 +542,12 @@
 						_publicMethods.unblockUI( couponAddedSection );
 					}
 				}
+			},
+			complete: function() {
+				// Unblock coupon code buttons
+				unblockCouponCodeButtons();
 			}
-		});
+		} );
 	};
 
 
