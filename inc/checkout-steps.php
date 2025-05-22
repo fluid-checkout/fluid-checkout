@@ -4439,7 +4439,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			wc_get_template( 'cart/shipping-methods-available.php', array(
 				'package'                   => $package,
-				'available_methods'         => $package['rates'],
+				'available_methods'         => apply_filters( 'fc_available_shipping_methods', $package['rates'], $package ),
 				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
