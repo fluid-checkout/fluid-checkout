@@ -6,3 +6,7 @@ body#{ $_body-theme-selector } .woocommerce .woocommerce-checkout-payment .payme
 	display: flex!important;
 	text-transform: none;
 }
+
+body#{ $_body-theme-selector } .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method input {
+	position: absolute!important; // needed to override theme styles
+}

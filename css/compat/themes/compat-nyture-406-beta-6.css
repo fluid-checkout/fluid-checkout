@@ -16,6 +16,10 @@ body.theme-nyture .woocommerce .woocommerce-checkout-payment .payment_methods .w
   text-transform: none;
 }
 
+body.theme-nyture .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method input {
+  position: absolute !important;
+}
+
 body.theme-nyture .woocommerce table.woocommerce-checkout-review-order-table tr.cart-subtotal .amount {
   font-weight: bold;
 }
