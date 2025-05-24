@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-05-10 14:39+0000\n"
+"POT-Creation-Date: 2025-05-22 13:25+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -33,22 +33,26 @@ msgstr ""
 msgid "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:274
+#: inc/checkout-coupon-codes.php:291
 msgid "Enter your code here"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:275
+#: inc/checkout-coupon-codes.php:292
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr ""
 
 #. translators: %s: Form field label
-#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#: inc/checkout-coupon-codes.php:328, inc/checkout-hide-optional-fields.php:138
 msgid "Add %s"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:382
+#: inc/checkout-coupon-codes.php:399
 msgid "Remove"
+msgstr ""
+
+#: inc/checkout-coupon-codes.php:456, inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
 msgstr ""
 
 #: inc/checkout-fields.php:126
@@ -331,10 +335,6 @@ msgstr ""
 
 #: inc/admin/admin-notice-db-migrations-applied.php:59
 msgid "Ok"
-msgstr ""
-
-#: inc/admin/admin-notice-db-migrations-applied.php:60
-msgid "Dismiss"
 msgstr ""
 
 #: inc/admin/admin-notice-db-migrations.php:51

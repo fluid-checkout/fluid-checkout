@@ -25,6 +25,7 @@ $success-color:                 var( --fluidcheckout--color--success, #007a3d ) 
 $error-color:                   var( --fluidcheckout--color--error, #cc1818 ) !default;
 $alert-color:                   var( --fluidcheckout--color--alert, #c95000 ) !default;
 $info-color:                    var( --fluidcheckout--color--info, #1f01b9 ) !default;
+$success-color-highlight:       var( --fluidcheckout--color--success-highlight, #e0f5eb ) !default;
 
 $border-color:                  var( --fluidcheckout--border-color, $light-grey ) !default;
 $border-dark-color:             var( --fluidcheckout--border-color--dark, $grey ) !default;
@@ -632,6 +633,7 @@ $coupon-code-coupon-border-style:           var( --fluidcheckout--coupon-code--b
 $coupon-code-coupon-border:                 $coupon-code-coupon-border-style remsize( .1rem ) var( --fluidcheckout--coupon-code--border-color, $border-color ) !default;
 $coupon-code-coupon-border-radius:          var( --fluidcheckout--coupon-code--border-radius, $global-radius-small ) !default;
 $coupon-code-coupon-background-color:       var( --fluidcheckout--coupon-code--background-color, transparent ) !default;
+$coupon-code-coupon-highlight-background-color: var( --fluidcheckout--coupon-code--highlight-background-color, #e0f5eb ) !default;
 
 $coupon-code-remove-spacing:                $global-spacing-extra-small !default;
 $coupon-code-remove-font-size:              $font-size-small !default;
