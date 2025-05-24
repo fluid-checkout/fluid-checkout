@@ -10,17 +10,18 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
- * @version 5.6.0
- * @fc-version 4.0.0
+ * @version 9.8.0
+ * @fc-version 4.0.7
  */
+
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$text_align = is_rtl() ? 'right' : 'left';
 // CHANGE: Replace variables for formatted addresses with filters to allow plugins to change the displayed addresses
 $billing_address_formatted = apply_filters( 'fc_pro_order_details_customer_billing_address_formatted', $order->get_formatted_billing_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
 $shipping_address_formatted = apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $order->get_formatted_shipping_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
@@ -34,28 +35,37 @@ $show_shipping = apply_filters( 'fc_pro_order_details_customer_information_show_
 $billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'billing_address' ), $order );
 $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'shipping_address' ), $order );
 
-?><table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top; margin-bottom: 40px; padding:0;" border="0">
+$email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improvements' );
+
+?><table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top; margin-bottom: <?php echo $email_improvements_enabled ? '0' : '40px'; ?>; padding:0;" border="0">
 	<?php // CHANGE: Move addresses titles to a separate row ?>
 	<tr>
-		<th style="text-align:<?php echo esc_attr( $text_align ); ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; border:0; padding:0;" valign="top" width="50%">
-			<h2><?php echo esc_html( $billing_address_label ); ?></h2>
+		<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
+			<?php if ( $email_improvements_enabled ) { ?>
+				<b class="address-title"><?php esc_html_e( $billing_address_label ); ?></b>
+			<?php } else { ?>
+				<h2><?php esc_html_e( $billing_address_label ); ?></h2>
+			<?php } ?>
 		</th>
 
 		<?php // CHANGE: Change criteria for showing the shipping address section ?>
 		<?php if ( $show_shipping ) : ?>
-			<th style="text-align:<?php echo esc_attr( $text_align ); ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; padding:0;" valign="top" width="50%">
-				<h2><?php echo esc_html( $shipping_address_label ); ?></h2>
+			<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
+				<?php if ( $email_improvements_enabled ) { ?>
+					<b class="address-title"><?php esc_html_e( $shipping_address_label ); ?></b>
+				<?php } else { ?>
+					<h2><?php esc_html_e( $shipping_address_label ); ?></h2>
+				<?php } ?>
 			</th>
 		<?php endif; ?>
 	</tr>
 	<?php // CHANGE: END - Move addresses titles to a separate row ?>
 
 	<tr>
-		<td class="billing-address" style="text-align:<?php echo esc_attr( $text_align ); ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; border:0; padding:0;" valign="top" width="50%">
+		<td class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php // CHANGE: Move addresses titles to a separate row ?>
 
-			<?php // CHANGE: Add address type class ?>
-			<address class="address billing-address">
+			<address class="address">
 				<?php // CHANGE: Use filtered billing address to display ?>
 				<?php echo wp_kses_post( $billing_address_formatted ); ?>
 
@@ -84,12 +94,10 @@ $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping
 
 		<?php // CHANGE: Change criteria for showing the shipping address section ?>
 		<?php if ( $show_shipping ) : ?>
-			<?php // CHANGE: Add address type class ?>
-			<td class="shipping-address" style="text-align:<?php echo esc_attr( $text_align ); ?>; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; padding:0;" valign="top" width="50%">
+			<td class="font-family text-align-left" style="padding:0;" valign="top" width="50%">
 				<?php // CHANGE: Move addresses titles to a separate row ?>
 
-				<?php // CHANGE: Add address type class ?>
-				<address class="address shipping-address">
+				<address class="address">
 					<?php // CHANGE: Use filtered shipping address to display ?>
 					<?php echo wp_kses_post( $shipping_address_formatted ); ?>
 
@@ -115,3 +123,4 @@ $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping
 		<?php endif; ?>
 	</tr>
 </table>
+<?php echo $email_improvements_enabled ? '<br>' : ''; ?>
