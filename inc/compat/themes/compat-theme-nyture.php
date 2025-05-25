@@ -25,6 +25,16 @@ class FluidCheckout_ThemeCompat_Nyture extends FluidCheckout {
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+	}
+
+
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
 		// Maybe output the Nyture checkout steps section
 		add_action( 'template_redirect', array( $this, 'maybe_remove_nyture_checkout_steps_section' ), 20 );
 	}
