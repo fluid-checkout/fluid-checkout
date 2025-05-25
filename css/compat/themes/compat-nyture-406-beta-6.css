@@ -45,10 +45,6 @@ body.theme-nyture .ts-wrapper.single .ts-control .item {
   }
 }
 
-body.theme-nyture div.woocommerce form .form-row .select2-selection {
-  height: 48px;
-}
-
 body.theme-nyture .select2 .select2-selection .select2-selection__rendered {
   font-size: 14px;
 }
@@ -67,4 +63,16 @@ body.theme-nyture .woocommerce .fc-wrapper .woocommerce-shipping-fields .form-ro
   body.theme-nyture .woocommerce .fc-wrapper .woocommerce-billing-fields .form-row:not(.fc-expansible-form-section) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus {
     margin-top: 0;
   }
+}
+body.theme-nyture .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .form-row.form-row-last {
+  margin-left: 0;
+}
+
+@media (min-width: 750px) {
+  body.theme-nyture .woocommerce .form-row:not(.fc-expansible-form-section) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus {
+    margin-top: 0;
+  }
+}
+body.theme-nyture .woocommerce-address-fields__field-wrapper .form-row.form-row-last {
+  margin-left: 0;
 }
