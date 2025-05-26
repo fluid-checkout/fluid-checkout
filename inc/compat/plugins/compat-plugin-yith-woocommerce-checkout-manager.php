@@ -39,7 +39,7 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 	 */
 	public function maybe_skip_hiding_condition_required_fields( $skip, $key, $args, $value ) {
 		// Check if the field is conditionally required
-		if ( isset( $args[ 'condition_required' ] ) && $args[ 'condition_required' ] ) {
+		if ( isset( $args[ 'condition_required' ] ) && $args[ 'condition_required' ] && '0|' !== $args[ 'condition_required' ] ) {
 			$skip = true;
 		}
 
