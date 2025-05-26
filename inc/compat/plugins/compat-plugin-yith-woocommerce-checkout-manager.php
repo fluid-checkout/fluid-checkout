@@ -19,11 +19,24 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
 		// Checkout field args
 		add_filter( 'fc_checkout_address_i18n_override_locale_required_attribute', '__return_true', 10 );
 
 		// Skip optional fields
 		add_filter( 'fc_hide_optional_fields_skip_field', array( $this, 'maybe_skip_hiding_condition_required_fields' ), 10, 4 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Plugin's script
+		wp_register_script( 'ywccp-front-script', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/yith-woocommerce-checkout-manager/frontend' ), array( 'jquery', 'ywccp-external-script' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
