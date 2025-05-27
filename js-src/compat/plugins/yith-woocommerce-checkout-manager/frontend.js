@@ -86,73 +86,79 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    var select = $('.ywccp-multiselect-type, select.select'),
-        datepicker = $('.ywccp-datepicker-type'),
-        timepicker = $('.ywccp-timepicker-type');
+    // CHANGE: Tranform datepicker initialization into a function to and execute it on `updated_checkout` event
+    var initDatepickerFields = function() {
+        var select = $('.ywccp-multiselect-type, select.select'),
+            datepicker = $('.ywccp-datepicker-type'),
+            timepicker = $('.ywccp-timepicker-type');
 
-    if ( select && typeof $.fn.select2 != 'undefined' ) {
-        $.each( select, function () {
-            var s = $(this),
-                sid = s.attr('id');
+        if ( select && typeof $.fn.select2 != 'undefined' ) {
+            $.each( select, function () {
+                var s = $(this),
+                    sid = s.attr('id');
 
-            if( $('#s2id_' + sid ).length ) {
-                return;
-            }
-
-            s.select2({
-                placeholder: s.data('placeholder')
-            });
-        });
-    }
-
-    if ( typeof $.fn.datepicker != 'undefined' && datepicker ) {
-        $.each( datepicker, function () {
-            $(this).datepicker({
-                dateFormat: $(this).data('format') || "dd-mm-yy",
-                changeYear: ywccp_front.datepicker_change_year,
-                changeMonth: ywccp_front.datepicker_change_month,
-                yearRange: ywccp_front.datepicker_year_range,
-                minDate: ywccp_front.datepicker_min_date,
-                maxDate: ywccp_front.datepicker_max_date,
-                beforeShow: function(){
-                    setTimeout(function( date ){
-                        $('#ui-datepicker-div').wrap('<div class="yith_datepicker"></div>').css('z-index', 99999999999999);
-                        $('#ui-datepicker-div').show();
-                    }, 0);
-                },
-                beforeShowDay: function(date){                    
-                    if( ywccp_front.datepicker_allowed_days.includes( date.getDay() ) ){          
-                      return [true];
-                    }else{              
-                      return [false];
-                    }
-                },
-                onClose:function(){
-                    $('#ui-datepicker-div').hide();
-                    $('#ui-datepicker-div').unwrap();
+                if( $('#s2id_' + sid ).length ) {
+                    return;
                 }
+
+                s.select2({
+                    placeholder: s.data('placeholder')
+                });
             });
-        });
-    }
+        }
 
-    if ( typeof $.fn.timepicki != 'undefined' && timepicker ) {
-        $.each( timepicker, function () {
-            $(this).timepicki({
-                reset: true,
-                disable_keyboard_mobile: true,
-                show_meridian: ywccp_front.time_format,
-                max_hour_value: ywccp_front.time_format ? '12' : '23',
-                min_hour_value: ywccp_front.time_format ? '1' : '0',
-                overflow_minutes:true,
-                increase_direction:'up'
+        if ( typeof $.fn.datepicker != 'undefined' && datepicker ) {
+            $.each( datepicker, function () {
+                $(this).datepicker({
+                    dateFormat: $(this).data('format') || "dd-mm-yy",
+                    changeYear: ywccp_front.datepicker_change_year,
+                    changeMonth: ywccp_front.datepicker_change_month,
+                    yearRange: ywccp_front.datepicker_year_range,
+                    minDate: ywccp_front.datepicker_min_date,
+                    maxDate: ywccp_front.datepicker_max_date,
+                    beforeShow: function(){
+                        setTimeout(function( date ){
+                            $('#ui-datepicker-div').wrap('<div class="yith_datepicker"></div>').css('z-index', 99999999999999);
+                            $('#ui-datepicker-div').show();
+                        }, 0);
+                    },
+                    beforeShowDay: function(date){                    
+                        if( ywccp_front.datepicker_allowed_days.includes( date.getDay() ) ){          
+                          return [true];
+                        }else{              
+                          return [false];
+                        }
+                    },
+                    onClose:function(){
+                        $('#ui-datepicker-div').hide();
+                        $('#ui-datepicker-div').unwrap();
+                    }
+                });
             });
-        });
+        }
 
-        $(document).on('click', '.reset_time', function (ev) {
-            ev.preventDefault();
-        });
-    }
+        if ( typeof $.fn.timepicki != 'undefined' && timepicker ) {
+            $.each( timepicker, function () {
+                $(this).timepicki({
+                    reset: true,
+                    disable_keyboard_mobile: true,
+                    show_meridian: ywccp_front.time_format,
+                    max_hour_value: ywccp_front.time_format ? '12' : '23',
+                    min_hour_value: ywccp_front.time_format ? '1' : '0',
+                    overflow_minutes:true,
+                    increase_direction:'up'
+                });
+            });
+        }
+    };
+    initDatepickerFields();
 
+	$( document.body ).on( 'updated_checkout', initDatepickerFields );
+    // CHANGE: END - Tranform datepicker initialization into a function to and execute it on `updated_checkout` event
+
+    $(document).on('click', '.reset_time', function (ev) {
+        ev.preventDefault();
+    });
 
     /****  Checkout conditions  **************/
     var get_all_conditions = function(){
@@ -260,11 +266,11 @@ jQuery(document).ready(function ($) {
         for( var i=0; i<n_conditions; i++ ){
 
             var condition   =   conditions[i],
-            	condition_is_valid = validate_condition( condition ),
-            	condition_action = condition.action,
-            	condition_required = condition.required,
-				wc_condition_required = condition.wc_required,
-            	input_name = condition.input_name;
+                condition_is_valid = validate_condition( condition ),
+                condition_action = condition.action,
+                condition_required = condition.required,
+                wc_condition_required = condition.wc_required,
+                input_name = condition.input_name;
 
             if( input_name != 'products' ){
                 if( condition_action === 'show' && status.show != 'no' ){
@@ -273,7 +279,7 @@ jQuery(document).ready(function ($) {
                         status.set_required = 'no';
                         status.hide = 'yes';
                     }else{
-						// CHANGE: Add `wc_condition_required` check to fix conditional fields appearing optional while being set as required
+                        // CHANGE: Add `wc_condition_required` check to fix conditional fields appearing optional while being set as required
                         if( condition_required == 1 || wc_condition_required ){
                             status.set_required = 'yes';
                         }
@@ -318,10 +324,10 @@ jQuery(document).ready(function ($) {
         check_all_checkout_field(event);
     } );
 
-	// CHANGE: Add event listener for `updated_checkout`
-	$( document.body ).on( 'updated_checkout', function(event){
-		check_all_checkout_field(event);
-	} );
+    // CHANGE: Add event listener for `updated_checkout`
+    $( document.body ).on( 'updated_checkout', function(event){
+        check_all_checkout_field(event);
+    } );
 
     // Check on all checkout fields: show, hide or required?
     var check_all_checkout_field = function(event){
@@ -357,11 +363,11 @@ jQuery(document).ready(function ($) {
             form_row.addClass( 'validate-required' );
             if( form_row.find('label').find('abbr.required').length == 0 ){
                 form_row.find('label').find('.optional').remove();
-				
-				// CHANGE: Check for existing "required" indication element to prevent adding duplicate HTML
-				if ( 0 === form_row.find('label').find('abbr.required, span.required').length ) {
-					form_row.find('label').append(required_html);
-				}
+
+                // CHANGE: Check for existing "required" indication element to prevent adding duplicate HTML
+                if ( 0 === form_row.find('label').find('abbr.required, span.required').length ) {
+                    form_row.find('label').append(required_html);
+                }
             }
         }else{
             form_row.removeClass( 'validate-required woocommerce-validated woocommerce-invalid woocommerce-invalid-required-field' );
