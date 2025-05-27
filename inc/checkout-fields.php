@@ -294,20 +294,26 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function add_field_has_description_class_checkout_fields_args( $fields ) {
-		// Bail if fields are not available
+		// Bail if fields are not valid
 		if ( ! is_array( $fields ) ) { return $fields; }
 
+		// Iterate over fields
 		foreach( $fields as $field_key => $field_args ) {
-			// Bail if field does not have description
-			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
+			// Skip if field does not have description
+			if ( ! array_key_exists( 'description', $field_args ) ) { continue; }
+
+			// Skip if field args are not valid
+			if ( ! is_array( $field_args ) ) { continue; }
 
 			// Maybe initialize `class` array
-			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ][ 'class' ] ) ) {
+			if ( ! array_key_exists( 'class', $field_args ) || ! is_array( $field_args[ 'class' ] ) ) {
+				// Create a new class array directly in the fields array
 				$fields[ $field_key ][ 'class' ] = array();
 			}
 
 			// Maybe add class for field with description
-			if ( ! in_array( 'has-description', $fields[ $field_key ]['class'] ) ) {
+			if ( ! in_array( 'has-description', $field_args[ 'class' ] ) ) {
+				// Add class directly to the fields array
 				array_push( $fields[ $field_key ][ 'class' ], 'has-description' );
 			}
 		}
