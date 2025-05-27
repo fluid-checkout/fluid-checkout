@@ -1,90 +1,40 @@
 jQuery(document).ready(function ($) {
     "use strict";
 
-    var input_elem = $( 'form[name="checkout"]').find( 'p.form-row input, p.form-row textarea' ),
-        abbr        = ' <abbr class="required" title="required">*</abbr>',
-        error       = '<span class="ywccp_error"></span>', // init error
+	// CHANGE Remove field validation process since it's already handled by Fluid Checkout
 
-        ywccp_ismail = function( val ){
-            var re = /^([\w-]+(?:\.[\w-]+)*)(\+?)([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	// CHANGE: Transform tooltip initialization into a function and execute it immediately and on `updated_checkout` event
+	var initTooltipFields = function() {
+		var input_elem = $( 'form[name="checkout"]').find( 'p.form-row input, p.form-row textarea' );
 
-            return re.test( val );
-        },
-        ywccp_validatevat = function( vat ) {
+		if( input_elem.length ) {
+			$.each( input_elem, function(){
 
-            var country = $('#billing_country');
+				var elem    = $(this),
+					tooltip = elem.data('tooltip'),
+					parent  = elem.closest( 'p.form-row' );
 
-            if( typeof checkVATNumber == 'undefined' || ! country.length || ! ywccp_front.vat_validation_enabled ){
-                return true;
-            }
+				// CHANGE: Skip adding validation HTML since Fluid Checkout already handles it
 
-            // check if vat number has country code
-            var prefix       = vat.substr( 0, 2 ).toUpperCase(),
-                country_val  = country.val();
-
-            if( prefix !== country_val ) {
-                //prepend country to vat
-                vat = country_val + vat;
-            }
-
-            return checkVATNumber ( country_val, vat );
-        },
-
-        ywccp_error = function( elem, msg ){
-
-            if( ! elem.next( '.ywccp_error' ).length ) {
-                elem.after( error );
-            }
-            // add error
-            elem.next( '.ywccp_error' ).html( msg );
-        };
-
-    if( input_elem.length ) {
-        $.each( input_elem, function(){
-
-            var elem    = $(this),
-                tooltip = elem.data('tooltip'),
-                parent  = elem.closest( 'p.form-row' );
-
-            elem.on( 'blur', function(){
-
-                var t     = $(this),
-                    value = t.val(),
-                    msg   = '';
-
-                if( ! ywccp_front.validation_enabled ) {
-                    return;
-                }
-
-                if( ! value && parent.hasClass( 'validate-required' ) ) {
-                    msg = ywccp_front.err_msg;
-                    ywccp_error( t, msg );
-                }
-                else if ( value && parent.hasClass( 'validate-vat' ) && ! ywccp_validatevat( value ) ) {
-                    ywccp_error( t, ywccp_front.err_msg_vat );
-                }
-                else if( value && parent.hasClass( 'validate-email' ) && ! ywccp_ismail( value ) ){
-                    ywccp_error( t, ywccp_front.err_msg_mail );
-                }
-                else {
-                    elem.next( '.ywccp_error' ).remove();
-                }
-            });
-
-            if( typeof tooltip != 'undefined' && tooltip != '' && typeof $.fn.qtip != 'undefined'  ) {
-                elem.qtip({
-                    content: { text: tooltip },
-                    show: { event: 'focus' },
-                    style: { classes: 'ywccp_tooltip' },
-                    position: {
-                        my: 'bottom center',
-                        at: 'top center',
-                        viewport: $(window)
-                    }
-                });
-            }
-        });
-    }
+				if( typeof tooltip != 'undefined' && tooltip != '' && typeof $.fn.qtip != 'undefined'  ) {
+					elem.qtip({
+						content: { text: tooltip },
+						show: { event: 'focus' },
+						style: { classes: 'ywccp_tooltip' },
+						position: {
+							my: 'bottom center',
+							at: 'top center',
+							viewport: $(window)
+						}
+					});
+				}
+			});
+		}
+	};
+	initTooltipFields();
+	
+	$( document.body ).on( 'updated_checkout', initTooltipFields );
+	// CHANGE: END - Transform tooltip initialization into a function and execute it immediately and on `updated_checkout` event
 
     // CHANGE: Tranform datepicker initialization into a function to and execute it on `updated_checkout` event
     var initDatepickerFields = function() {
