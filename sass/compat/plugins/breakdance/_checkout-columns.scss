@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT COLUMNS LAYOUT
+// ------------------------------------
+
+body.woocommerce-page.woocommerce-checkout .breakdance-woocommerce .woocommerce {
+	display: block !important; // Need to override theme styles
+	gap: 0 !important; // Need to override theme styles
+}
