@@ -233,8 +233,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $fields  Default address fields args.
 	 */
 	public function remove_screen_reader_class_default_locale_field_args( $fields ) {
+		// Bail if fields are not valid
+		if ( ! is_array( $fields ) ) { return $fields; }
+
+		// Define target field ids
 		$target_field_ids = array( 'address_2' );
 
+		// Iterate over fields
 		foreach( $fields as $field_key => $field_args ) {
 			// Bail if field is not in the target list
 			if ( ! in_array( $field_key, $target_field_ids ) ) { continue; }
