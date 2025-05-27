@@ -28,6 +28,10 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 		// Skip optional fields
 		add_filter( 'fc_hide_optional_fields_skip_types', array( $this, 'add_optional_fields_skip_types' ), 10 );
 		add_filter( 'fc_hide_optional_fields_skip_field', array( $this, 'maybe_skip_hiding_condition_required_fields' ), 10, 4 );
+
+		// Substep review text
+		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'maybe_change_substep_text_extra_fields_skip_list_shipping' ), 100 );
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'maybe_change_substep_text_extra_fields_skip_list_billing' ), 100 );
 	}
 
 
@@ -66,6 +70,50 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 		}
 
 		return $skip;
+	}
+
+
+
+	/**
+	* Change billing extra fields to skip for the substep review text.
+	*
+	* @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	*/
+	function maybe_change_substep_text_extra_fields_skip_list_billing( $skip_list ) {
+		// Bail if function is not available
+		if ( ! function_exists( 'ywccp_get_custom_fields' ) ) { return $skip_list; }
+
+		// Get custom fields from the plugin
+		$custom_fields = ywccp_get_custom_fields( 'billing' );
+		
+		// Maybe add fields to skip list
+		if ( is_array( $custom_fields ) && ! empty( $custom_fields ) ) {
+			$custom_fields_keys = array_keys( $custom_fields );
+			$skip_list = array_merge( $skip_list, $custom_fields_keys );
+		}
+
+		return $skip_list;
+	}
+
+	/**
+	* Change shipping extra fields to skip for the substep review text.
+	*
+	* @param   array  $skip_list  List of fields to skip adding to the substep review text.
+	*/
+	function maybe_change_substep_text_extra_fields_skip_list_shipping( $skip_list ) {
+		// Bail if function is not available
+		if ( ! function_exists( 'ywccp_get_custom_fields' ) ) { return $skip_list; }
+
+		// Get custom fields from the plugin
+		$custom_fields = ywccp_get_custom_fields( 'shipping' );
+		
+		// Maybe add fields to skip list
+		if ( is_array( $custom_fields ) && ! empty( $custom_fields ) ) {
+			$custom_fields_keys = array_keys( $custom_fields );
+			$skip_list = array_merge( $skip_list, $custom_fields_keys );
+		}
+
+		return $skip_list;
 	}
 
 }
