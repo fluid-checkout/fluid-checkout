@@ -329,6 +329,7 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 }
 
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table dl.variation {
+	display: block !important; // Need to override theme styles
 	margin: 0 !important; // Need to override theme styles
 	padding: 0 !important; // Need to override theme styles
 	color: $grey;
