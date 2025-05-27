@@ -3,7 +3,7 @@ body.breakdance .bde-section.bde-header--sticky {
   z-index: 300;
 }
 
-body.woocommerce-page.woocommerce-checkout .breakdance-woocommerce .woocommerce {
+body.woocommerce-page .breakdance-woocommerce .woocommerce {
   display: block !important;
   gap: 0 !important;
 }
@@ -16,12 +16,9 @@ body.breakdance .fc-wrapper .fc-place-order__section .woocommerce-form__input-ch
   align-self: flex-start;
 }
 
-body.woocommerce-page .breakdance-woocommerce .woocommerce-shipping-fields__field-wrapper {
-  display: block !important;
-  gap: 0 !important;
-}
-
-body.woocommerce-page .breakdance-woocommerce .woocommerce-billing-fields__field-wrapper {
+body.woocommerce-page .woocommerce-shipping-fields__field-wrapper,
+body.woocommerce-page .woocommerce-billing-fields__field-wrapper,
+body.woocommerce-page .woocommerce-address-fields__field-wrapper {
   display: block !important;
   gap: 0 !important;
 }

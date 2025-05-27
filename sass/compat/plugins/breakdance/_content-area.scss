@@ -1,8 +1,8 @@
 // ------------------------------------
-// CHECKOUT COLUMNS LAYOUT
+// CONTENT AREA
 // ------------------------------------
 
-body.woocommerce-page.woocommerce-checkout .breakdance-woocommerce .woocommerce {
+body.woocommerce-page .breakdance-woocommerce .woocommerce {
 	display: block !important; // Need to override theme styles
 	gap: 0 !important; // Need to override theme styles
 }

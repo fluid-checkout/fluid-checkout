@@ -2,6 +2,13 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
+body.woocommerce-page .woocommerce-shipping-fields__field-wrapper,
+body.woocommerce-page .woocommerce-billing-fields__field-wrapper,
+body.woocommerce-page .woocommerce-address-fields__field-wrapper {
+	display: block !important; // Needed to override theme styles
+	gap: 0 !important; // Needed to override theme styles
+}
+
 body.woocommerce-page div.woocommerce form .form-row.form-row-first,
 body.woocommerce-page div.woocommerce form .form-row.form-row-middle,
 body.woocommerce-page div.woocommerce form .form-row.form-row-last {
