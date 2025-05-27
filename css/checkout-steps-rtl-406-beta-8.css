@@ -2176,6 +2176,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table dl.variation {
+  display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   color: var(--fluidcheckout--color--grey, #7b7575);
