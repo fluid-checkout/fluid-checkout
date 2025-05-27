@@ -26,6 +26,7 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 		add_filter( 'fc_checkout_address_i18n_override_locale_required_attribute', '__return_true', 10 );
 
 		// Skip optional fields
+		add_filter( 'fc_hide_optional_fields_skip_types', array( $this, 'add_optional_fields_skip_types' ), 10 );
 		add_filter( 'fc_hide_optional_fields_skip_field', array( $this, 'maybe_skip_hiding_condition_required_fields' ), 10, 4 );
 	}
 
@@ -40,6 +41,14 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Add fields to the optional fields add link skip list.
+	 */
+	public function add_optional_fields_skip_types( $skip_types ) {
+		$skip_types[] = 'heading';
+		return $skip_types;
+	}
 
 	/**
 	 * Maybe skip hiding fields that are "conditionally required".
