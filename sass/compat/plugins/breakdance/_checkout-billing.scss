@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT BILLING ADDRESS
+// ------------------------------------
+
+body.woocommerce-page .breakdance-woocommerce .woocommerce-billing-fields__field-wrapper {
+	display: block !important; // Needed to override theme styles
+	gap: 0 !important; // Needed to override theme styles
+}

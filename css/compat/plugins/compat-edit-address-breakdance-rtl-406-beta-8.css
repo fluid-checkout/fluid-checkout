@@ -1,11 +1,13 @@
 @media (min-width: 550px) {
-  body.breakdance div.woocommerce form .form-row.form-row-first,
-  body.breakdance div.woocommerce form .form-row.form-row-middle,
-  body.breakdance div.woocommerce form #payment .form-row.form-row-first,
-  body.breakdance div.woocommerce form #payment .form-row.form-row-middle {
-    margin-right: 0;
-    margin-left: 0;
+  body.woocommerce-page div.woocommerce form .form-row.form-row-first,
+  body.woocommerce-page div.woocommerce form .form-row.form-row-middle,
+  body.woocommerce-page div.woocommerce form .form-row.form-row-last {
+    width: 48% !important;
   }
+}
+
+body.woocommerce-page div.woocommerce form .form-row.form-row-wide {
+  width: 100% !important;
 }
 
 body.breakdance .breakdance-woocommerce .woocommerce-MyAccount-content form .woocommerce-address-fields__field-wrapper {
