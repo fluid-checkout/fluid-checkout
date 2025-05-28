@@ -22,6 +22,12 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Checkout field args
 		add_filter( 'fc_checkout_address_i18n_override_locale_required_attribute', '__return_true', 10 );
 
@@ -42,6 +48,40 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 	public function register_assets() {
 		// Plugin's script
 		wp_register_script( 'ywccp-front-script', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/yith-woocommerce-checkout-manager/frontend' ), array( 'jquery', 'ywccp-external-script' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
+		// Add validation script
+		wp_register_script( 'fc-checkout-validation-yith-woocommerce-checkout-manager', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/yith-woocommerce-checkout-manager/checkout-validation-yith-woocommerce-checkout-manager' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation', 'ywccp-external-script' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-validation-yith-woocommerce-checkout-manager', 'window.addEventListener("load",function(){CheckoutValidationYithWooCommerceCheckoutManager.init(fcSettings.checkoutValidationYithWooCommerceCheckoutManager);})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-validation-yith-woocommerce-checkout-manager' );
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+		// Add validation settings
+		$settings[ 'checkoutValidationYithWooCommerceCheckoutManager' ] = array(
+			'is_vat_validation_enabled' => 'yes' === FluidCheckout_Settings::instance()->get_option( 'ywccp-enable-js-vat-check', 'no' ),
+			'validationMessages'  => array(
+				'invalid_vat' => __( 'The VAT number you have entered seems to be wrong.', 'yith-woocommerce-checkout-manager' ),
+			),
+		);
+
+		return $settings;
 	}
 
 
