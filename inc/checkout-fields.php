@@ -245,12 +245,17 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			if ( ! in_array( $field_key, $target_field_ids ) ) { continue; }
 
 			// Skip if field args are not valid
-			if ( ! is_array( $field_args ) ) { continue; }
+			if ( ! is_array( $fields[ $field_key ] ) ) { continue; }
+
+			// Maybe initialize `label_class` array
+			if ( ! array_key_exists( 'label_class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ][ 'label_class' ] ) ) {
+				$fields[ $field_key ][ 'label_class' ] = array();
+			}
 
 			// Remove `screen-reader-text` class from the field label
-			if ( array_key_exists( 'label_class', $field_args ) && in_array( 'screen-reader-text', $field_args[ 'label_class' ] ) ) {
+			if ( array_key_exists( 'label_class', $fields[ $field_key ] ) && in_array( 'screen-reader-text', $fields[ $field_key ][ 'label_class' ] ) ) {
 				// Get class key
-				$class_key = array_search( 'screen-reader-text', $field_args[ 'label_class' ] );
+				$class_key = array_search( 'screen-reader-text', $fields[ $field_key ][ 'label_class' ] );
 
 				// Unset the class directly to the field args
 				unset( $fields[ $field_key ][ 'label_class' ][ $class_key ] );
@@ -273,13 +278,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			if ( ! array_key_exists( 'description', $fields[ $field_key ] ) ) { continue; }
 
 			// Maybe initialize `class` array
-			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ]['class'] ) ) {
-				$fields[ $field_key ]['class'] = array();
+			if ( ! array_key_exists( 'class', $fields[ $field_key ] ) || ! is_array( $fields[ $field_key ][ 'class' ] ) ) {
+				$fields[ $field_key ][ 'class' ] = array();
 			}
 
 			// Maybe add class for field with description
-			if ( ! in_array( 'has-description', $fields[ $field_key ]['class'] ) ) {
-				array_push( $fields[ $field_key ]['class'], 'has-description' );
+			if ( ! in_array( 'has-description', $fields[ $field_key ][ 'class' ] ) ) {
+				array_push( $fields[ $field_key ][ 'class' ], 'has-description' );
 			}
 		}
 
