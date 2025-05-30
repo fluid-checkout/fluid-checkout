@@ -53,6 +53,7 @@ class FluidCheckout_ThemeCompat_Nyture extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--padding-left' => '12px',
 				'--fluidcheckout--field--height' => '48px',
+				'--fluidcheckout--field--border-radius' => '3px',
 			),
 		);
 
@@ -113,7 +114,6 @@ class FluidCheckout_ThemeCompat_Nyture extends FluidCheckout {
 		remove_action( 'woocommerce_before_cart', 'nova_add_shopping_cart_status_menu', 1 );
 		remove_action( 'woocommerce_before_checkout_form', 'nova_add_checkout_status_menu', 1 );
 		remove_action( 'woocommerce_before_thankyou', 'nova_add_thankyou_status_menu', 1 );
-
 	}
 
 }
