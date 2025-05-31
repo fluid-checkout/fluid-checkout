@@ -360,9 +360,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Twenty Twenty-Five.
 * Improved: Coupon codes are now highlighted when added, and "Apply/Add coupon" button is now blocked while processing.
 * Improved: Translations of "Add <field>" link buttons and checkout step count in Hungarian.
+* Fixed: Compatibility with plugin Breakdance. Fix style issues with recent versions of Breakdance.
 * Fixed: Compatibility with plugin Germanized for WooCommerce. Fix "DHL Preferred delivery" field values not being preserved.
 * Fixed: Compatibility with plugin Dintero. Support for new popout and embed Dintero checkout flow options.
 * Fixed: Compatibility with plugin Flexible Shipping. Shipping method descriptions showing duplicated.
+* Fixed: Compatibility with plugin Nets/Nexi Checkout (formerly Dibs). Fix integration with Redirect and Overlay checkout flow options.
 * Fixed: Coupon code messages location when being applied from certain sections.
 * Fixed: RTL styles for compatibility with various themes and plugins.
 

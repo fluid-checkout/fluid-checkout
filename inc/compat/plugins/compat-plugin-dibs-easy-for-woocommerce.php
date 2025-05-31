@@ -57,6 +57,12 @@ class FluidCheckout_DibsEasyForWooCommerce extends FluidCheckout {
 		// Bail if this payment method is not currently selected
 		if ( 'dibs_easy' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
 
+		// Get DIBS Easy settings
+		$dibs_easy_settings = FluidCheckout_Settings::instance()->get_option( 'woocommerce_dibs_easy_settings' );
+
+		// Bail if checkout flow is not embedded
+		if ( ! isset( $dibs_easy_settings[ 'checkout_flow' ] ) || 'embedded' !== $dibs_easy_settings[ 'checkout_flow' ] ) { return; }
+
 		// Undo hooks from feature classes
 		$features_list = FluidCheckout::instance()->get_features_list();
 		$skip_undo_hooks_classes = $this->get_skip_classes_undo_hooks_early_list();
@@ -81,6 +87,12 @@ class FluidCheckout_DibsEasyForWooCommerce extends FluidCheckout {
 
 		// Bail if this payment method is not currently selected
 		if ( 'dibs_easy' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return; }
+
+		// Get DIBS Easy settings
+		$dibs_easy_settings = FluidCheckout_Settings::instance()->get_option( 'woocommerce_dibs_easy_settings' );
+
+		// Bail if checkout flow is not embedded
+		if ( ! isset( $dibs_easy_settings[ 'checkout_flow' ] ) || 'embedded' !== $dibs_easy_settings[ 'checkout_flow' ] ) { return; }
 
 		// Undo enqueue hooks
 		if ( class_exists( 'FluidCheckout_Enqueue' ) ) {
