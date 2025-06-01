@@ -19,6 +19,9 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Very late hooks
+		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -38,6 +41,17 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 		// Substep review text
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'maybe_change_substep_text_extra_fields_skip_list_shipping' ), 100 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'maybe_change_substep_text_extra_fields_skip_list_billing' ), 100 );
+
+	}
+
+	/**
+	 * Add or remove very late hooks.
+	 */
+	public function very_late_hooks() {
+		// Override substep review text lines function for order notes
+		// This is required to avoid empty state text ("None.") being displayed even when custom fields are not empty
+		remove_filter( 'fc_substep_order_notes_text_lines', array( FluidCheckout_Steps::instance(), 'add_substep_text_lines_order_notes' ), 10 );
+		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 	}
 
 
@@ -154,6 +168,53 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 		}
 
 		return $skip_list;
+	}
+
+
+
+	/**
+	 * Add the order notes substep review text lines.
+	 * 
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_order_notes( $review_text_lines = array() ) {
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Get order notes
+		$order_notes = WC()->checkout()->get_value( 'order_comments' );
+
+		// Add order notes field value
+		if ( ! empty( $order_notes ) ) {
+			$review_text_lines[] = $order_notes;
+		}
+
+		// Get custom fields from the plugin
+		$custom_fields = array();
+		if ( function_exists( 'ywccp_get_custom_fields' ) ) {
+			$custom_fields = ywccp_get_custom_fields( 'additional' );
+		}
+
+		// Iterate custom fields
+		if ( is_array( $custom_fields ) && ! empty( $custom_fields ) ) {
+			foreach ( $custom_fields as $field_key => $field_args ) {
+				// Get the field value
+				$field_value = WC()->checkout()->get_value( $field_key );
+
+				// Skip if the field value is empty
+				if ( empty( $field_value ) ) { continue; }
+
+				// Add custom field value to the review text lines
+				$review_text_lines[] = FluidCheckout_Steps::instance()->get_field_display_value( $field_value, $field_key, $field_args );
+			}
+		}
+
+		// Maybe show "No order notes" notice
+		if ( empty( $review_text_lines ) ) {
+			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', FluidCheckout_Steps::instance()->get_no_substep_review_text_notice( 'order_notes' ) );
+		}
+
+		return $review_text_lines;
 	}
 
 }
