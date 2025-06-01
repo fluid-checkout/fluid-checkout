@@ -22,6 +22,8 @@
 	var _settings = {
 		typeFieldFormRowSelector: '.validate-vat',
 		billingCountryFieldSelector: '#billing_country',
+
+		validationRequiredClass: 'validate-required',
 	};
 
 
@@ -65,6 +67,9 @@
 
 		// Bail if function is not available
 		if ( 'undefined' === typeof checkVATNumber ) { return { valid: true }; }
+
+		// Bail if validation is not required or field value is empty
+		if ( ! formRow.classList.contains( _settings.validationRequiredClass ) || '' === VATNumber ) { return { valid: true }; }
 
 		// Bail if billing country is not set
 		if ( ! billingCountryField || '' === billingCountryField.value ) { return { valid: true }; }
