@@ -3,8 +3,6 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .ts-wrapper.single .ts-control .item {
-	font-size: remsize( 1.4rem ); // Theme overwrites font-size variable so must be set here
-	@media (max-width: 999px) {
-		font-size: remsize( 1.6rem );
-	}
+	font-size: remsize( 1.4rem );
+	@media (max-width: 999px) { font-size: remsize( 1.6rem ); } // Media query from the theme
 }
