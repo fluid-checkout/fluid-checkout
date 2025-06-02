@@ -3,5 +3,5 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .woocommerce table.woocommerce-checkout-review-order-table tr.cart-subtotal .amount {
-	font-weight: bold; // Needed to override theme style on the subtotal
+	font-weight: bold;
 }
