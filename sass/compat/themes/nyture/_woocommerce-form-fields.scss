@@ -23,6 +23,10 @@ body#{ $_body-theme-selector } .woocommerce-address-fields .woocommerce-address-
 	}
 }
 
-body#{ $_body-theme-selector } .woocommerce-address-fields__field-wrapper .form-row.form-row-last {
+body#{ $_body-theme-selector } .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .form-row.form-row-last {
 	margin-#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector } .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .form-row.form-row-first {
+	margin-#{ $alignment-right }: 4%;
 }
