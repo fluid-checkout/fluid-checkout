@@ -3,10 +3,10 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method > label {
-	display: flex!important; // Needed to override theme using important
+	display: flex !important; // Theme display was using important
 	text-transform: none;
 }
 
 body#{ $_body-theme-selector } .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method input {
-	position: absolute!important; // Needed to override theme using important
+	position: absolute !important; // Theme position was using important
 }
