@@ -2488,7 +2488,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_skip_adding_phone_to_formatted( $should_add ) {
 		// Maybe set to skip for admin pages
 		// But still add it to emails
-		if ( is_admin() && ! did_action( 'woocommerce_email' ) ) {
+		if ( is_admin() && ! did_action( 'woocommerce_email_header' ) ) {
 			$should_add = 'no';
 		}
 
