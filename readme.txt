@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Support for modern email design for transactional emails.
 * Added: Compatibility with theme Twenty Twenty-Five.
+* Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
 * Improved: Coupon codes are now highlighted when added, and "Apply/Add coupon" button is now blocked while processing.
 * Improved: Translations of "Add <field>" link buttons and checkout step count in Hungarian.
 * Fixed: Compatibility with plugin Breakdance. Fix style issues with recent versions of Breakdance.
