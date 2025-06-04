@@ -2608,6 +2608,29 @@ msgstr "Utilizzare il modello di pagina `Conferma ordine` per i temi a blocchi"
 msgid "Only applies when using a block-based theme."
 msgstr "Si applica solo quando si utilizza un tema a blocchi."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Gateway WooCommerce Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Modulo di pagamento"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Applicare gli stili ai campi del modulo di pagamento Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Se abilitato, Fluid Checkout applicherà stili ottimizzati per la "
+"compatibilità con il plugin. Si consiglia di disabilitare questa opzione se "
+"si utilizzano stili personalizzati per i campi del modulo di pagamento di "
+"Stripe."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

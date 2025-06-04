@@ -2372,6 +2372,28 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Primjenjuje se samo pri korištenju teme temeljene na blokovima."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Obrazac za plaćanje"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Primjena stilova na polja Stripe obrasca za plaćanje"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Kada je omogućeno, Fluid Checkout će primijeniti stilove optimizirane za "
+"kompatibilnost s dodatkom. Možda biste trebali onemogućiti ovu opciju ako "
+"koristite prilagođene stilove za polja Stripe obrasca za plaćanje."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

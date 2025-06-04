@@ -2390,6 +2390,29 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Blokeetan oinarritutako gai bat erabiltzean bakarrik aplikatzen da."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe atebidea"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Ordainketa-formularioa"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Aplikatu estiloak Stripe ordainketa-formularioaren eremuetan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Gaituta dagoenean, Fluid Checkout-ek pluginarekin bateragarritasunerako "
+"optimizatutako estiloak aplikatuko ditu. Baliteke hau desgaitu nahi izatea "
+"Stripe ordainketa-formularioaren eremuetarako estilo pertsonalizatuak "
+"erabiltzen ari bazara."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

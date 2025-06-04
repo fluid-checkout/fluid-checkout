@@ -2142,6 +2142,25 @@ msgstr "使用基於區塊的主題的“訂單確認”頁面模板"
 msgid "Only applies when using a block-based theme."
 msgstr "僅適用於使用基於區塊的主題時。"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe 網關"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "付款表格"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "將樣式套用至 Stripe 付款表單字段"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr "啟用後，Fluid Checkout 將套用已最佳化的樣式，以相容於外掛程式。如果您在 Stripe 付款表單欄位中使用自訂樣式，則可能需要停用此功能。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

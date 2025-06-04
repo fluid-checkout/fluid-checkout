@@ -2358,6 +2358,29 @@ msgstr "Använd sidmallen \"Orderbekräftelse\" för blockbaserade teman"
 msgid "Only applies when using a block-based theme."
 msgstr "Gäller endast när du använder ett blockbaserat tema."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Betalningsblankett"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Tillämpa stilar på fälten i Stripe-betalningsformuläret"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"När den är aktiverad kommer Fluid Checkout att tillämpa stilar som är "
+"optimerade för kompatibilitet med plugin-programmet. Du kanske vill "
+"inaktivera detta om du använder anpassade stilar för "
+"Stripe-betalningsformulärets fält."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
