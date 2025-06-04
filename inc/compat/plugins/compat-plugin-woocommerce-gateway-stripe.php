@@ -54,7 +54,7 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 			array(
 				'title'           => __( 'Payment form', 'fluid-checkout' ),
 				'desc'            => __( 'Apply styles to the Stripe payment form fields', 'fluid-checkout' ),
-				'desc_tip'        => __( 'When enabled, Fluid Checkout will apply styles optimized for compatibility with the plugin.', 'fluid-checkout' ),
+				'desc_tip'        => __( 'When enabled, Fluid Checkout will apply styles optimized for compatibility with the plugin. You may want to disable this if you are using custom styles for the Stripe payment form fields.', 'fluid-checkout' ),
 				'id'              => 'fc_integration_woocommerce_gateway_stripe_apply_styles',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_woocommerce_gateway_stripe_apply_styles' ),
