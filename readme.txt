@@ -359,8 +359,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Support for modern email design for transactional emails.
 * Added: Compatibility with theme Twenty Twenty-Five.
 * Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
+* Added: Compatibility with plugin YITH WooCommerce Checkout Manager.
 * Improved: Coupon codes are now highlighted when added, and "Apply/Add coupon" button is now blocked while processing.
 * Improved: Translations of "Add <field>" link buttons and checkout step count in Hungarian.
+* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Add option to disable payment form style modifications from Fluid Checkout. Remove extra spacing and border from the payment fields.
 * Fixed: Compatibility with plugin Breakdance. Fix style issues with recent versions of Breakdance.
 * Fixed: Compatibility with plugin Germanized for WooCommerce. Fix "DHL Preferred delivery" field values not being preserved.
 * Fixed: Compatibility with plugin Dintero. Support for new popout and embed Dintero checkout flow options.

@@ -2347,6 +2347,28 @@ msgstr "Kasutage \"Tellimuse kinnituse\" lehekülje malli plokipõhiste teemade 
 msgid "Only applies when using a block-based theme."
 msgstr "Kehtib ainult siis, kui kasutatakse plokipõhist teemat."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Maksevorm"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Stiilide rakendamine Stripe'i maksevormi väljadele"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Kui see on lubatud, rakendab Fluid Checkout pluginaga ühildumiseks "
+"optimeeritud stiile. Kui kasutate Stripe'i maksevormi väljade jaoks "
+"kohandatud stiile, võite selle välja lülitada."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2343,6 +2343,28 @@ msgstr "Uzu la paĝoŝablonon `Mendkonfirmo` por blokbazitaj temoj"
 msgid "Only applies when using a block-based theme."
 msgstr "Nur validas kiam oni uzas blok-bazitan temon."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Pagformularo"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Apliku stilojn al la kampoj de la pagformularo de Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Kiam ebligita, Fluid Checkout aplikos stilojn optimumigitajn por kongruo "
+"kun la kromprogramo. Eble vi volas malebligi ĉi tion se vi uzas kutimajn "
+"stilojn por la kampoj de la pagformularo de Stripe."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
