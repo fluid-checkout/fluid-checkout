@@ -23,12 +23,12 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10, 2 );
 
 		// Styles
-		// Applies only to Legacy Stripe Checkout experience.
-		add_filter( 'wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles' ), 10 );
+		// Applies only to NEW Stripe Checkout experience, based on the hook used.
+		add_filter( 'wc_stripe_upe_params', array( $this, 'change_stripe_appearance_parameters' ), 10 );
 
 		// Styles
-		// Applies only to the New Stripe Checkout experience, since version 
-		add_filter( 'wc_stripe_upe_params', array( $this, 'change_stripe_appearance_parameters' ), 10 );
+		// Applies only to LEGACY Stripe Checkout experience, based on the hook used.
+		add_filter( 'wc_stripe_elements_styling', array( $this, 'change_stripe_fields_styles_legacy' ), 10 );
 
 		// Persisted data
 		add_filter( 'fc_skip_checkout_field_value_from_session_or_posted_data', array( $this, 'maybe_skip_checkout_field_value_persisted_data' ), 10, 3 );
@@ -106,34 +106,6 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 
 
 	/**
-	 * Change styles for the Stripe checkout fields for the Legacy Stripe Checkout experience.
-	 *
-	 * @param   array  $styles  The Stripe elements style properties.
-	 */
-	public function change_stripe_fields_styles( $styles ) {
-		// Bail if styles should not be applied
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_woocommerce_gateway_stripe_apply_styles' ) ) { return $styles; }
-
-		$styles = array(
-			// Notice: Need to pass the default styles values again for `color`, `iconColor` and `::placeholder` because once
-			// the styles object is changed Stripe will ignore its defaults and use only what is provided.
-			// @see https://docs.woocommerce.com/document/stripe-styling-fields/
-			'base' => array(
-				'iconColor'     => '#666EE8',
-				'color'         => '#31325F',
-				'lineHeight'    => '2', // Makes fields taller and easier to see
-				'fontSize'      => '16px', // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
-				'::placeholder' => array(
-					'color' => '#CFD7E0',
-				),
-			),
-		);
-		return $styles;
-	}
-
-
-
-	/**
 	 * Change styles for the Stripe checkout fields for the New Stripe Checkout experience.
 	 *
 	 * @param   array  $stripe_params   The Stripe Javascript parameters.
@@ -153,12 +125,43 @@ class FluidCheckout_WooCommerceGatewayStripe extends FluidCheckout {
 			$stripe_theme = 'night';
 		}
 
-		// Set the theme for the Stripe Checkout
-		$stripe_params[ 'appearance' ] = (object) [
+		// Define appearance parameters for the Stripe Checkout
+		$appearance_params = (object) [
 			'theme' => $stripe_theme,
 		];
 
+		// Set the appearance parameters
+		$stripe_params[ 'appearance' ] = $appearance_params;
+		$stripe_params[ 'blocksAppearance' ] = $appearance_params;
+
 		return $stripe_params;
+	}
+
+	/**
+	 * Change styles for the Stripe checkout fields for the Legacy Stripe Checkout experience.
+	 *
+	 * @param   array  $styles  The Stripe elements style properties.
+	 */
+	public function change_stripe_fields_styles_legacy( $styles ) {
+		// Bail if styles should not be applied
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_integration_woocommerce_gateway_stripe_apply_styles' ) ) { return $styles; }
+
+		$styles = array(
+			// Notice: Need to pass the default styles values again for `color`, `iconColor` and `::placeholder` because once
+			// the styles object is changed Stripe will ignore its defaults and use only what is provided.
+			// @see https://docs.woocommerce.com/document/stripe-styling-fields/
+			'base' => array(
+				'iconColor'     => '#666EE8',
+				'color'         => '#31325F',
+				'lineHeight'    => '2', // Makes fields taller and easier to see
+				'fontSize'      => '16px', // Should be at least 16px to prevent auto-zoom issues on Safari Mobile
+				'::placeholder' => array(
+					'color' => '#CFD7E0',
+				),
+			),
+		);
+
+		return $styles;
 	}
 
 }
