@@ -19,9 +19,6 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Very late hooks
-		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
-
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -41,16 +38,6 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 		// Substep review text
 		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'maybe_change_substep_text_extra_fields_skip_list_shipping' ), 100 );
 		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'maybe_change_substep_text_extra_fields_skip_list_billing' ), 100 );
-
-	}
-
-	/**
-	 * Add or remove very late hooks.
-	 */
-	public function very_late_hooks() {
-		// Override substep review text lines function for order notes
-		// This is required to avoid empty state text ("None.") being displayed even when custom fields are not empty
-		remove_filter( 'fc_substep_order_notes_text_lines', array( FluidCheckout_Steps::instance(), 'add_substep_text_lines_order_notes' ), 10 );
 		add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 	}
 

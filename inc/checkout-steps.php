@@ -4067,10 +4067,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! empty( $order_notes ) ) {
 			$review_text_lines[] = $order_notes;
 		}
-		// "No order notes" notice.
-		else {
-			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', $this->get_no_substep_review_text_notice( 'order_notes' ) );
-		}
 
 		return $review_text_lines;
 	}
