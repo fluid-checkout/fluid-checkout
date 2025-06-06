@@ -6608,8 +6608,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
 
+			// Update selected shipping method session value.
+			// Will be updated again after the filter is applied.
+			if ( array_key_exists( 'shipping_method', $new_posted_data ) ) {
+				WC()->session->set( 'chosen_shipping_methods', $new_posted_data[ 'shipping_method' ] );
+			}
+
 			// Filter to allow customizations
 			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
+
+			// Update selected shipping method session value.
+			// Update one more time, to make sure the session value is updated after the filter is applied
+			if ( array_key_exists( 'shipping_method', $new_posted_data ) ) {
+				WC()->session->set( 'chosen_shipping_methods', $new_posted_data[ 'shipping_method' ] );
+			}
 		}
 
 		// Updated cached posted data

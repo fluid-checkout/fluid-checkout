@@ -370,6 +370,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Nets/Nexi Checkout (formerly Dibs). Fix integration with Redirect and Overlay checkout flow options.
 * Fixed: Coupon code messages location when being applied from certain sections.
 * Fixed: RTL styles for compatibility with various themes and plugins.
+* Fixed: Set selected shipping method value to session early so it can be used by filters when setting posted data.
 
 = 4.0.5 - 2025-05-03 =
 
