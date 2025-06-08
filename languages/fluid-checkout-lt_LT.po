@@ -2491,6 +2491,28 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Taikoma tik tada, kai naudojama blokais pagrįsta tema."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "\"WooCommerce Stripe\" vartai"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Mokėjimo forma"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Stilių taikymas \"Stripe\" mokėjimo formos laukams"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Kai ši funkcija įjungta, \"Fluid Checkout\" taikys stilius, optimizuotus "
+"suderinamumui su įskiepiu. Jei naudojate pasirinktinius stilius \"Stripe\" "
+"mokėjimo formos laukams, galite norėti tai išjungti."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

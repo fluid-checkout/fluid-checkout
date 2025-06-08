@@ -2339,6 +2339,28 @@ msgstr "ब्लॉक-आधारित थीमसाठी `ऑर्ड�
 msgid "Only applies when using a block-based theme."
 msgstr "ब्लॉक-आधारित थीम वापरतानाच लागू होते."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "वू कॉमर्स स्ट्राइप गेटवे"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "पेमेंट फॉर्म"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "स्ट्राइप पेमेंट फॉर्म फील्डमध्ये शैली लागू करा."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"सक्षम केल्यावर, फ्लुइड चेकआउट प्लगइनसह सुसंगततेसाठी ऑप्टिमाइझ केलेल्या शैली "
+"लागू करेल. जर तुम्ही स्ट्राइप पेमेंट फॉर्म फील्डसाठी कस्टम शैली वापरत असाल "
+"तर तुम्ही हे अक्षम करू शकता."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

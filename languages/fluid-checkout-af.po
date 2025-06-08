@@ -2387,6 +2387,28 @@ msgstr "Gebruik die `Bestellingsbevestiging`-bladsysjabloon vir blokgebaseerde t
 msgid "Only applies when using a block-based theme."
 msgstr "Geld slegs wanneer &#39;n blokgebaseerde tema gebruik word."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Betalingsvorm"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Pas style toe op die Stripe-betalingsvormvelde"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Wanneer dit geaktiveer is, sal Fluid Checkout style toepas wat "
+"geoptimaliseer is vir versoenbaarheid met die inprop. Jy kan dit deaktiveer "
+"as jy persoonlike style vir die Stripe-betalingsvormvelde gebruik."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

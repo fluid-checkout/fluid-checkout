@@ -2,12 +2,21 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body.breakdance div.woocommerce form .form-row.form-row-first,
-body.breakdance div.woocommerce form .form-row.form-row-middle,
-body.breakdance div.woocommerce form #payment .form-row.form-row-first,
-body.breakdance div.woocommerce form #payment .form-row.form-row-middle {
+body.woocommerce-page .woocommerce-shipping-fields__field-wrapper,
+body.woocommerce-page .woocommerce-billing-fields__field-wrapper,
+body.woocommerce-page .woocommerce-address-fields__field-wrapper {
+	display: block !important; // Needed to override theme styles
+	gap: 0 !important; // Needed to override theme styles
+}
+
+body.woocommerce-page div.woocommerce form .form-row.form-row-first,
+body.woocommerce-page div.woocommerce form .form-row.form-row-middle,
+body.woocommerce-page div.woocommerce form .form-row.form-row-last {
 	@media (#{$bp-larger-than-phablet}) {
-		margin-#{ $alignment-left }: 0;
-		margin-#{ $alignment-right }: 0;
+		width: 48% !important; // Needed to override theme styles
 	}
+}
+
+body.woocommerce-page div.woocommerce form .form-row.form-row-wide {
+	width: 100% !important; // Needed to override theme styles
 }

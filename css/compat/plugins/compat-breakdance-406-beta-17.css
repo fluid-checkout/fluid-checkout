@@ -1,0 +1,40 @@
+body.breakdance .bde-section.bde-header,
+body.breakdance .bde-section.bde-header--sticky {
+  z-index: 300;
+}
+
+body.woocommerce-page .breakdance-woocommerce .woocommerce {
+  display: block !important;
+  gap: 0 !important;
+}
+
+body.breakdance .fc-wrapper .form-row.place-order {
+  gap: 0;
+}
+
+body.breakdance .fc-wrapper .fc-place-order__section .woocommerce-form__input-checkbox {
+  align-self: flex-start;
+}
+
+body.woocommerce-page .woocommerce-shipping-fields__field-wrapper,
+body.woocommerce-page .woocommerce-billing-fields__field-wrapper,
+body.woocommerce-page .woocommerce-address-fields__field-wrapper {
+  display: block !important;
+  gap: 0 !important;
+}
+
+@media (min-width: 550px) {
+  body.woocommerce-page div.woocommerce form .form-row.form-row-first,
+  body.woocommerce-page div.woocommerce form .form-row.form-row-middle,
+  body.woocommerce-page div.woocommerce form .form-row.form-row-last {
+    width: 48% !important;
+  }
+}
+
+body.woocommerce-page div.woocommerce form .form-row.form-row-wide {
+  width: 100% !important;
+}
+
+body.breakdance div.woocommerce .form-row .select2-selection--single {
+  padding-left: var(--bde-form-input-padding-left);
+}
