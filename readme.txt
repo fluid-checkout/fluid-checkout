@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Support for modern email design for transactional emails.
+* Added: Compatibility with theme Nyture.
 * Added: Compatibility with theme Twenty Twenty-Five.
 * Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
 * Added: Compatibility with plugin YITH WooCommerce Checkout Manager.

@@ -1,0 +1,16 @@
+// ------------------------------------
+// CHECKOUT LOGIN
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login {
+	opacity: inherit;
+}
+
+body#{ $_body-page-selector } .fc-login-form__wrapper.woocommerce .lost_password {
+	margin-top: inherit;
+	border-bottom: none; 
+}
+
+body.woocommerce-checkout .fc-login-form__wrapper.woocommerce .woocommerce-form__label-for-checkbox span {
+	margin-#{ $alignment-left }: inherit;
+}

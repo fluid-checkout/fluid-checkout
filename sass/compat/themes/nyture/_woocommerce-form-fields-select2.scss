@@ -1,0 +1,8 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .select2 .select2-selection .select2-selection__rendered {
+	font-size: remsize( 1.4rem );
+	@media (max-width: 999px) { font-size: remsize( 1.6rem ); } // Media query from the theme
+}
