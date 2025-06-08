@@ -2190,6 +2190,28 @@ msgstr "ブロックベースのテーマで「注文確認」ページテンプ
 msgid "Only applies when using a block-based theme."
 msgstr "ブロックベースのテーマを使用している場合のみ適用されます。"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripeゲートウェイ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "支払フォーム"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Stripeの支払いフォームフィールドにスタイルを適用する"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"有効にすると、Fluid "
+"Checkoutはプラグインとの互換性のために最適化されたスタイルを適用します。Stripeの支払いフォームフィールドにカスタムスタイルを使用している場"
+"合は、これを無効にするとよいでしょう。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

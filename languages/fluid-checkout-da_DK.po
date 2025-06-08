@@ -2375,6 +2375,29 @@ msgstr "Brug sideskabelonen `Bestillingsbekræftelse` til blokbaserede temaer"
 msgid "Only applies when using a block-based theme."
 msgstr "Gælder kun, når man bruger et blokbaseret tema."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Betalingsformular"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Anvend stilarter på Stripe-betalingsformularens felter"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Når det er aktiveret, vil Fluid Checkout anvende stilarter, der er "
+"optimeret til kompatibilitet med plugin'et. Det kan være en god idé at "
+"deaktivere dette, hvis du bruger brugerdefinerede stilarter til felterne i "
+"Stripe-betalingsformularen."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2410,6 +2410,28 @@ msgstr "Використовуйте шаблон сторінки `Підтве
 msgid "Only applies when using a block-based theme."
 msgstr "Застосовується лише у разі використання блокової теми."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Шлюз смуги WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Форма оплати"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Застосування стилів до полів платіжної форми Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Якщо увімкнено, Fluid Checkout застосовуватиме стилі, оптимізовані для "
+"сумісності з плагіном. Ви можете вимкнути цю опцію, якщо ви використовуєте "
+"кастомні стилі для полів платіжної форми Stripe."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2382,6 +2382,28 @@ msgstr "Gunakan templat halaman `Konfirmasi pesanan` untuk tema berbasis blok"
 msgid "Only applies when using a block-based theme."
 msgstr "Hanya berlaku saat menggunakan tema berbasis blok."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Gerbang Stripe WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Formulir pembayaran"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Menerapkan gaya ke bidang formulir pembayaran Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Ketika diaktifkan, Fluid Checkout akan menerapkan gaya yang dioptimalkan "
+"untuk kompatibilitas dengan plugin. Anda mungkin ingin menonaktifkannya "
+"jika Anda menggunakan gaya khusus untuk bidang formulir pembayaran Stripe."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

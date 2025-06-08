@@ -2338,6 +2338,29 @@ msgstr "از الگوی صفحه «تایید سفارش» برای قالب‌�
 msgid "Only applies when using a block-based theme."
 msgstr "فقط هنگام استفاده از یک قالب مبتنی بر بلوک اعمال می‌شود."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "درگاه نوار ووکامرس"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "فرم پرداخت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "اعمال سبک‌ها به فیلدهای فرم پرداخت Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"وقتی فعال باشد، پرداخت سیال (Fluid Checkout) استایل‌هایی را که برای سازگاری "
+"با افزونه بهینه شده‌اند، اعمال می‌کند. اگر از استایل‌های سفارشی برای "
+"فیلدهای فرم پرداخت Stripe استفاده می‌کنید، می‌توانید این گزینه را غیرفعال "
+"کنید."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
