@@ -2361,6 +2361,16 @@ msgstr ""
 "लागू करेल. जर तुम्ही स्ट्राइप पेमेंट फॉर्म फील्डसाठी कस्टम शैली वापरत असाल "
 "तर तुम्ही हे अक्षम करू शकता."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "थीम न्युचर"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "फ्लुइड चेकआउट वापरताना Nyture थीममधून चेकआउट स्टेप्स सेक्शन आउटपुट करा."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

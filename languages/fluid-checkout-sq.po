@@ -2425,6 +2425,18 @@ msgstr ""
 "pajtueshmëri me plugin-in. Mund të dëshironi ta çaktivizoni këtë nëse po "
 "përdorni stile të personalizuara për fushat e formularit të pagesës Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Theme Nature"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Nxirr seksionin e hapave të arkëtimit nga tema Nyture kur përdor Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

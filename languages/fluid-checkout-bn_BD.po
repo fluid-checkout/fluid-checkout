@@ -2373,6 +2373,18 @@ msgstr ""
 "স্টাইলগুলি প্রয়োগ করবে। আপনি যদি স্ট্রাইপ পেমেন্ট ফর্ম ফিল্ডগুলির জন্য "
 "কাস্টম স্টাইল ব্যবহার করেন তবে আপনি এটি অক্ষম করতে চাইতে পারেন।"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "থিম নিউচার"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ফ্লুইড চেকআউট ব্যবহার করার সময় Nyture থিম থেকে চেকআউট ধাপ বিভাগটি আউটপুট "
+"করুন।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

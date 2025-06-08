@@ -2381,6 +2381,18 @@ msgstr ""
 "inaktivera detta om du använder anpassade stilar för "
 "Stripe-betalningsformulärets fält."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyktur"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Skriv ut avsnittet om kassans steg från Nyture-temat när du använder Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

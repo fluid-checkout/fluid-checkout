@@ -2368,6 +2368,18 @@ msgstr ""
 "යොදනු ඇත. ඔබ Stripe ගෙවීම් පෝරම ක්ෂේත්‍ර සඳහා අභිරුචි විලාස භාවිතා කරන්නේ "
 "නම් ඔබට මෙය අබල කිරීමට අවශ්‍ය විය හැකිය."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "තේමා නයිචර්"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout භාවිතා කරන විට Nyture තේමාවෙන් පිටවීමේ පියවර කොටස ප්‍රතිදානය "
+"කරන්න."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

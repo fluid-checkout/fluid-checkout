@@ -2614,6 +2614,18 @@ msgstr ""
 "απενεργοποιήσετε αν χρησιμοποιείτε προσαρμοσμένα στυλ για τα πεδία της "
 "φόρμας πληρωμής του Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Θέμα Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Εξαγωγή της ενότητας των βημάτων πληρωμής από το θέμα Nyture όταν "
+"χρησιμοποιείτε το Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

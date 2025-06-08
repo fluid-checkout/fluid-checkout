@@ -2400,6 +2400,18 @@ msgstr ""
 "üslubları tətbiq edəcək. Zolaqlı ödəniş forması sahələri üçün fərdi "
 "üslublardan istifadə edirsinizsə, bunu deaktiv etmək istəyə bilərsiniz."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Nyture mövzusu"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout istifadə edərkən Nyture mövzusundan yoxlama addımları "
+"bölməsini çıxarın."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

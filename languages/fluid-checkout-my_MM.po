@@ -2465,6 +2465,18 @@ msgstr ""
 "ငွေပေးချေမှုပုံစံအကွက်များအတွက် စိတ်ကြိုက်စတိုင်များကို သင်အသုံးပြုနေပါက "
 "၎င်းကို ပိတ်လိုနိုင်ပါသည်။"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Theme Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ကိုအသုံးပြုသောအခါ Nyture အပြင်အဆင်မှ "
+"ငွေရှင်းသည့်အဆင့်များအပိုင်းကို ထုတ်ပါ။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

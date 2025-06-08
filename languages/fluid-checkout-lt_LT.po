@@ -2513,6 +2513,18 @@ msgstr ""
 "suderinamumui su įskiepiu. Jei naudojate pasirinktinius stilius \"Stripe\" "
 "mokėjimo formos laukams, galite norėti tai išjungti."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Išveskite kasos žingsnių skyrių iš \"Nyture\" temos, kai naudojate \"Fluid "
+"Checkout\"."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

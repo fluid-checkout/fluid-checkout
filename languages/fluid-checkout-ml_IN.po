@@ -2443,6 +2443,18 @@ msgstr ""
 "ഫീൽഡുകൾക്കായി നിങ്ങൾ ഇഷ്ടാനുസൃത ശൈലികൾ ഉപയോഗിക്കുകയാണെങ്കിൽ ഇത് "
 "പ്രവർത്തനരഹിതമാക്കേണ്ടി വന്നേക്കാം."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "തീം ന്യൂച്ചർ"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ഉപയോഗിക്കുമ്പോൾ Nyture തീമിൽ നിന്ന് ചെക്ക്ഔട്ട് "
+"ഘട്ടങ്ങൾ വിഭാഗം ഔട്ട്പുട്ട് ചെയ്യുക."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

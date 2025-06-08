@@ -2461,6 +2461,18 @@ msgstr ""
 "gumagamit ka ng mga custom na istilo para sa mga field ng form ng "
 "pagbabayad ng Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"I-output ang seksyon ng mga hakbang sa pag-checkout mula sa tema ng Nyture "
+"kapag gumagamit ng Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

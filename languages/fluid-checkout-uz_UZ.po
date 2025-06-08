@@ -2446,6 +2446,18 @@ msgstr ""
 "maxsus uslublardan foydalanayotgan boʻlsangiz, buni oʻchirib qoʻyishingiz "
 "mumkin."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Nyture mavzusi"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout dan foydalanayotganda Nyture mavzusidagi to&#39;lov "
+"bosqichlari bo&#39;limini chiqaring."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

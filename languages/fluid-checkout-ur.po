@@ -2374,6 +2374,18 @@ msgstr ""
 "اطلاق کرے گا۔ اگر آپ پٹی کی ادائیگی کے فارم کے شعبوں کے لیے حسب ضرورت طرز "
 "استعمال کر رہے ہیں تو آپ اسے غیر فعال کر سکتے ہیں۔"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "تھیم Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout استعمال کرتے وقت Nyture تھیم سے چیک آؤٹ اسٹیپس سیکشن کو آؤٹ "
+"پٹ کریں۔"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

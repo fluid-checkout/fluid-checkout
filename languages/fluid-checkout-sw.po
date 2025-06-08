@@ -2414,6 +2414,18 @@ msgstr ""
 "na programu-jalizi. Unaweza kutaka kuzima hii ikiwa unatumia mitindo maalum "
 "kwa uga za fomu ya malipo ya Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Mandhari Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Toa sehemu ya hatua za kulipa kutoka kwa mandhari ya Nyture unapotumia "
+"Malipo ya Maji."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

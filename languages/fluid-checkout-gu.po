@@ -2360,6 +2360,18 @@ msgstr ""
 "કરેલી શૈલીઓ લાગુ કરશે. જો તમે સ્ટ્રાઇપ ચુકવણી ફોર્મ ફીલ્ડ્સ માટે કસ્ટમ "
 "શૈલીઓનો ઉપયોગ કરી રહ્યા છો, તો તમે આને અક્ષમ કરી શકો છો."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "થીમ ન્યુચર"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ફ્લુઇડ ચેકઆઉટનો ઉપયોગ કરતી વખતે Nyture થીમમાંથી ચેકઆઉટ સ્ટેપ્સ વિભાગ આઉટપુટ "
+"કરો."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

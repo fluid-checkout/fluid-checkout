@@ -2539,6 +2539,18 @@ msgstr ""
 "опцию, если используете пользовательские стили для полей формы оплаты "
 "Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Тема Нютур"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Выведите раздел \"Шаги оформления заказа\" из темы Nyture при использовании "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

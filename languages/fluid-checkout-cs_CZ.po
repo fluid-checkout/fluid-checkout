@@ -2524,6 +2524,16 @@ msgstr ""
 "pro kompatibilitu se zásuvným modulem. Pokud používáte vlastní styly pro "
 "pole platebního formuláře Stripe, můžete tuto funkci zakázat."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Téma Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Výstup sekce kroků pokladny z tématu Nyture při použití Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2643,6 +2643,16 @@ msgstr ""
 "estiver usando estilos personalizados para os campos do formulário de "
 "pagamento do Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Cultura do tema"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Envie a seção de etapas de checkout do tema Nyture ao usar o Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

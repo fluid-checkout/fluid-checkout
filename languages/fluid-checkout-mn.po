@@ -2407,6 +2407,18 @@ msgstr ""
 "загваруудыг ашиглах болно. Хэрэв та Stripe төлбөрийн маягтын талбарт тусгай "
 "загвар ашиглаж байгаа бол үүнийг идэвхгүй болгож болно."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Nyture сэдэв"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout-г ашиглах үед Nyture-ийн загвараас төлбөрийн алхамуудыг "
+"гарга."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

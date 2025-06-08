@@ -2361,6 +2361,18 @@ msgstr ""
 "فیلدهای فرم پرداخت Stripe استفاده می‌کنید، می‌توانید این گزینه را غیرفعال "
 "کنید."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "تم نیچر"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"هنگام استفاده از پرداخت سیال، بخش مراحل پرداخت را از قالب Nyture خروجی "
+"بگیرید."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2631,6 +2631,18 @@ msgstr ""
 "si utilizzano stili personalizzati per i campi del modulo di pagamento di "
 "Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Natività"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Emettere la sezione delle fasi di checkout dal tema Nyture quando si "
+"utilizza Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2368,6 +2368,18 @@ msgstr ""
 "ਅਨੁਕੂਲਿਤ ਸਟਾਈਲ ਲਾਗੂ ਕਰੇਗਾ। ਜੇਕਰ ਤੁਸੀਂ ਸਟ੍ਰਾਈਪ ਭੁਗਤਾਨ ਫਾਰਮ ਖੇਤਰਾਂ ਲਈ ਕਸਟਮ "
 "ਸਟਾਈਲ ਵਰਤ ਰਹੇ ਹੋ ਤਾਂ ਤੁਸੀਂ ਇਸਨੂੰ ਅਯੋਗ ਕਰ ਸਕਦੇ ਹੋ।"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ਥੀਮ ਨਿਊਚਰ"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਸਮੇਂ Nyture ਥੀਮ ਤੋਂ ਚੈੱਕਆਉਟ ਸਟੈਪਸ ਸੈਕਸ਼ਨ ਨੂੰ "
+"ਆਉਟਪੁੱਟ ਦਿਓ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

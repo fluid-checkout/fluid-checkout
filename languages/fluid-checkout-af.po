@@ -2409,6 +2409,18 @@ msgstr ""
 "geoptimaliseer is vir versoenbaarheid met die inprop. Jy kan dit deaktiveer "
 "as jy persoonlike style vir die Stripe-betalingsvormvelde gebruik."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Voer die afhandelingstappe-afdeling vanaf die Nyture-tema uit wanneer Fluid "
+"Checkout gebruik word."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

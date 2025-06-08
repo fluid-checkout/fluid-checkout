@@ -2369,6 +2369,16 @@ msgstr ""
 "optimeeritud stiile. Kui kasutate Stripe'i maksevormi väljade jaoks "
 "kohandatud stiile, võite selle välja lülitada."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Teema Nüüdure"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Väljastage nüüdure teema kassasammude osa, kui kasutate Fluid Checkouti."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

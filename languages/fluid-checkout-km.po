@@ -2390,6 +2390,16 @@ msgstr ""
 "ប្រសិនបើអ្នកកំពុងប្រើរចនាប័ទ្មផ្ទាល់ខ្លួនសម្រាប់វាលទម្រង់បែបបទបង់ប្រាក់ "
 "Stripe។"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ប្រធានបទ Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "បង្ហាញផ្នែកជំហាននៃការដកប្រាក់ចេញពីស្បែក Nyture នៅពេលប្រើ Fluid Checkout ។"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

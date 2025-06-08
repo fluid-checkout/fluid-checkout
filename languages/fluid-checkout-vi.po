@@ -2381,6 +2381,16 @@ msgstr ""
 "thích với plugin. Bạn có thể muốn tắt tính năng này nếu bạn đang sử dụng "
 "các kiểu tùy chỉnh cho các trường biểu mẫu thanh toán Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Chủ đề Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Xuất phần các bước thanh toán từ chủ đề Nyture khi sử dụng Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

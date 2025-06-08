@@ -2161,6 +2161,16 @@ msgid ""
 "styles for the Stripe payment form fields."
 msgstr "啟用後，Fluid Checkout 將套用已最佳化的樣式，以相容於外掛程式。如果您在 Stripe 付款表單欄位中使用自訂樣式，則可能需要停用此功能。"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "主題之夜"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "使用 Fluid Checkout 時從 Nyture 主題輸出結帳步驟部分。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2449,6 +2449,18 @@ msgstr ""
 "ka mga kostumbre nga istilo alang sa mga natad sa porma sa pagbayad sa "
 "Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema nga Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"I-output ang seksyon sa mga lakang sa pag-checkout gikan sa tema nga Nyture "
+"kung gamiton ang Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

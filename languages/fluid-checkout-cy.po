@@ -2410,6 +2410,18 @@ msgstr ""
 "hoffech analluogi hyn os ydych chi&#39;n defnyddio arddulliau personol ar "
 "gyfer meysydd ffurflen dalu Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Thema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Allbynnu&#39;r adran camau talu o&#39;r thema Nyture wrth ddefnyddio Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

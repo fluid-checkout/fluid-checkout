@@ -2391,6 +2391,18 @@ msgstr ""
 "kompatibilnost s dodatkom. Možda biste željeli onemogućiti ovo ako "
 "koristite prilagođene stilove za polja Stripe obrasca za plaćanje."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Ispišite odjeljak s koracima naplate iz Nyture teme kada koristite Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

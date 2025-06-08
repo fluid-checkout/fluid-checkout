@@ -2246,6 +2246,16 @@ msgstr ""
 "ሲነቃ Fluid Checkout ከተሰኪው ጋር ተኳሃኝነት የተመቻቹ ቅጦችን ይተገበራል። ለ Stripe የክፍያ ቅጽ መስኮች "
 "ብጁ ቅጦችን እየተጠቀሙ ከሆነ ይህንን ማሰናከል ይፈልጉ ይሆናል።"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ጭብጥ Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkout በሚጠቀሙበት ጊዜ የፍተሻ ደረጃዎች ክፍሉን ከናይture ጭብጥ ያውጡ።"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

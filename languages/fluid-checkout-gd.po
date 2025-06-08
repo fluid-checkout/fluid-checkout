@@ -2457,6 +2457,18 @@ msgstr ""
 "gum bi thu airson seo a dhì-chomasachadh ma tha thu a’ cleachdadh "
 "stoidhlichean gnàthaichte airson raointean foirm pàighidh Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Cuspair Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Cuir a-mach an earrann ceumannan pàighidh bhon chuspair Nyture nuair a "
+"bhios tu a’ cleachdadh Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

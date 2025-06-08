@@ -2383,6 +2383,16 @@ msgstr ""
 "samhæfni við viðbótina. Þú gætir viljað slökkva á þessu ef þú notar "
 "sérsniðna stíl fyrir reitina í Stripe greiðsluforminu."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Þema Nýtur"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Birta greiðsluskrefahlutann úr Nyture-þemanu þegar Fluid Checkout er notað."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2406,6 +2406,18 @@ msgstr ""
 "ოპტიმიზირებულია დანამატთან თავსებადობისთვის. თუ Stripe-ის გადახდის ფორმის "
 "ველებისთვის მორგებულ სტილებს იყენებთ, შეიძლება დაგჭირდეთ ამის გამორთვა."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "თემატური სიახლე"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout-ის გამოყენებისას Nyture თემიდან გამოიყვანეთ შეკვეთის "
+"გაფორმების ნაბიჯების განყოფილება."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

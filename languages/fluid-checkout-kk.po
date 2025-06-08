@@ -2402,6 +2402,18 @@ msgstr ""
 "мәнерлерді қолданады. Жолақ төлем пішіні өрістері үшін реттелетін "
 "мәнерлерді пайдалансаңыз, мұны өшіргіңіз келуі мүмкін."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Тақырып Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout қолданбасын пайдаланған кезде Nyture тақырыбынан тексеру "
+"қадамдары бөлімін шығарыңыз."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2388,6 +2388,16 @@ msgstr ""
 "համատեղելիության համար օպտիմիզացված ոճեր: Դուք կարող եք անջատել սա, եթե "
 "օգտագործում եք Stripe վճարման ձևի դաշտերի համար հատուկ ոճեր:"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Թեմատիկ Նյութուր"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkout-ն օգտագործելիս արտածեք Nyture թեմայից վճարման քայլերի բաժինը։"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2369,6 +2369,16 @@ msgstr ""
 "yhteensopiviksi laajennuksen kanssa. Tämä kannattaa ehkä poistaa käytöstä, "
 "jos käytät mukautettuja tyylejä Stripen maksulomakekentille."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Teema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Tulosta Nyture-teeman kassavaiheet-osio, kun käytät Fluid Checkoutia."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

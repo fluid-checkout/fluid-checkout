@@ -2417,6 +2417,18 @@ msgstr ""
 "untuk keserasian dengan pemalam. Anda mungkin mahu melumpuhkan ini jika "
 "anda menggunakan gaya tersuai untuk medan borang pembayaran Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Keluarkan bahagian langkah daftar keluar daripada tema Nyture apabila "
+"menggunakan Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

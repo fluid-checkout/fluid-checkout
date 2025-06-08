@@ -2362,6 +2362,18 @@ msgstr ""
 "مطابقت لپاره غوره شوي دي. تاسو ممکن وغواړئ دا غیر فعال کړئ که تاسو د سټریپ "
 "تادیې فورمو ساحو لپاره دودیز سټایلونه کاروئ."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "د نیټور موضوع"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"د فلوډ چیک آوټ کارولو پر مهال د Nyture موضوع څخه د چیک آوټ مرحلو برخه بهر "
+"کړئ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

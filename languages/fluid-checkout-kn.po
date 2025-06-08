@@ -2393,6 +2393,18 @@ msgstr ""
 "ಮಾಡಲಾದ ಶೈಲಿಗಳನ್ನು ಅನ್ವಯಿಸುತ್ತದೆ. ನೀವು ಸ್ಟ್ರೈಪ್ ಪಾವತಿ ಫಾರ್ಮ್ ಕ್ಷೇತ್ರಗಳಿಗೆ "
 "ಕಸ್ಟಮ್ ಶೈಲಿಗಳನ್ನು ಬಳಸುತ್ತಿದ್ದರೆ ನೀವು ಇದನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಬೇಕಾಗಬಹುದು."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ಥೀಮ್ ನೈಚರ್"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಬಳಸುವಾಗ ನೈಚರ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ "
+"ಮಾಡಿ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

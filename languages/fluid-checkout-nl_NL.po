@@ -2577,6 +2577,18 @@ msgstr ""
 "uitschakelen als je aangepaste stijlen gebruikt voor de velden van het "
 "Stripe-betalingsformulier."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Thema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Voer het gedeelte met de afrekenstappen van het Nyture-thema uit bij "
+"gebruik van Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

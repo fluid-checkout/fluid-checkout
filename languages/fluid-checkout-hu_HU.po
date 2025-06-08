@@ -2525,6 +2525,18 @@ msgstr ""
 "optimalizált stílusokat alkalmazza. Ezt érdemes letiltani, ha egyéni "
 "stílusokat használ a Stripe fizetési űrlap mezőihez."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Téma Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"A pénztárlépések szakaszának kimenete a Nyture témából a Fluid Checkout "
+"használatakor."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

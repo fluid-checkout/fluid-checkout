@@ -2400,6 +2400,18 @@ msgstr ""
 "združljivost z vtičnikom. Če za polja plačilnega obrazca Stripe uporabljate "
 "sloge po meri, boste to morda želeli onemogočiti."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Izpis poglavja korakov blagajne iz teme Nyture, ko uporabljate Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

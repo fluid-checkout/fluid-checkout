@@ -2369,6 +2369,18 @@ msgstr ""
 "اسٽائل لاڳو ڪندو. جيڪڏهن توهان اسٽرائپ ادائيگي فارم فيلڊز لاءِ ڪسٽم اسٽائل "
 "استعمال ڪري رهيا آهيو ته توهان شايد هن کي غير فعال ڪرڻ چاهيندا."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ٿيم نِچر"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"فلوئڊ چيڪ آئوٽ استعمال ڪندي Nyture ٿيم مان چيڪ آئوٽ اسٽيپس سيڪشن آئوٽ پُٽ "
+"ڪريو."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

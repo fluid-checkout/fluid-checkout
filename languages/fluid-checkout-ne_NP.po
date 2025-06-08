@@ -2370,6 +2370,16 @@ msgstr ""
 "लागू गर्नेछ। यदि तपाईं स्ट्राइप भुक्तानी फारम क्षेत्रहरूको लागि अनुकूलन "
 "शैलीहरू प्रयोग गर्दै हुनुहुन्छ भने तपाईं यसलाई असक्षम गर्न सक्नुहुन्छ।"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "थिम न्युचर"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "फ्लुइड चेकआउट प्रयोग गर्दा Nyture थिमबाट चेकआउट चरण खण्ड आउटपुट गर्नुहोस्।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

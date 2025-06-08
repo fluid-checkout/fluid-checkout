@@ -2369,6 +2369,18 @@ msgstr ""
 "को लागू करेगा। यदि आप स्ट्राइप भुगतान फ़ॉर्म फ़ील्ड के लिए कस्टम शैलियों का "
 "उपयोग कर रहे हैं, तो आप इसे अक्षम करना चाह सकते हैं।"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "थीम न्यूचर"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"फ्लूइड चेकआउट का उपयोग करते समय Nyture थीम से चेकआउट चरण अनुभाग को आउटपुट "
+"करें।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

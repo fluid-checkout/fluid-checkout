@@ -2365,6 +2365,16 @@ msgstr ""
 "kun la kromprogramo. Eble vi volas malebligi ĉi tion se vi uzas kutimajn "
 "stilojn por la kampoj de la pagformularo de Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Temo Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Eligu la sekcion pri kaspaŝoj el la temo Nyture kiam vi uzas Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

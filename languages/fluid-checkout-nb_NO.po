@@ -2384,6 +2384,16 @@ msgstr ""
 "for kompatibilitet med programtillegget. Det kan være lurt å deaktivere "
 "dette hvis du bruker egendefinerte stiler for Stripe-betalingsskjemafeltene."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyktur"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Skriv ut kassetrinnene fra Nyture-temaet når du bruker Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

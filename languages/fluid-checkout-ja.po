@@ -2212,6 +2212,16 @@ msgstr ""
 "Checkoutはプラグインとの互換性のために最適化されたスタイルを適用します。Stripeの支払いフォームフィールドにカスタムスタイルを使用している場"
 "合は、これを無効にするとよいでしょう。"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "テーマ"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkoutを使用する場合、Nytureテーマからチェックアウトのステップセクションを出力します。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

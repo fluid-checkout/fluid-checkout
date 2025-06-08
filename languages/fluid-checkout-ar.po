@@ -2326,6 +2326,16 @@ msgstr ""
 "ترغب في تعطيل هذه الميزة إذا كنت تستخدم أنماطًا مُخصّصة لحقول نموذج دفع "
 "Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "موضوع الطبيعة"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "قم بإخراج قسم خطوات الخروج من سمة Nyture عند استخدام Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

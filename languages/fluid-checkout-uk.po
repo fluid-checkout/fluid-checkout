@@ -2432,6 +2432,18 @@ msgstr ""
 "сумісності з плагіном. Ви можете вимкнути цю опцію, якщо ви використовуєте "
 "кастомні стилі для полів платіжної форми Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Тема Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Виведіть розділ кроків оформлення замовлення з теми Nyture при використанні "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

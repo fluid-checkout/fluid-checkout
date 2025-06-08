@@ -2405,6 +2405,18 @@ msgstr ""
 "చేయబడిన శైలులను వర్తింపజేస్తుంది. మీరు స్ట్రైప్ చెల్లింపు ఫారమ్ ఫీల్డ్‌ల "
 "కోసం అనుకూల శైలులను ఉపయోగిస్తుంటే మీరు దీన్ని నిలిపివేయాలనుకోవచ్చు."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "థీమ్ నైచర్"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు Nyture థీమ్ నుండి చెక్అవుట్ స్టెప్స్ "
+"విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

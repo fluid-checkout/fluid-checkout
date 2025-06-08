@@ -2580,6 +2580,18 @@ msgstr ""
 "kompatybilności z wtyczką. Możesz wyłączyć tę opcję, jeśli używasz "
 "niestandardowych stylów dla pól formularza płatności Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Temat Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Wyprowadź sekcję kroków realizacji zakupu z motywu Nyture podczas "
+"korzystania z usługi Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

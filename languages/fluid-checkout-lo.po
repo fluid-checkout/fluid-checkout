@@ -2372,6 +2372,16 @@ msgstr ""
 "ທ່ານອາດຈະຕ້ອງການປິດການທໍາງານນີ້ຖ້າຫາກວ່າທ່ານກໍາລັງໃຊ້ຮູບແບບການກໍານົດເອງສໍາລັ"
 "ບຊ່ອງໃສ່ແບບຟອມການຈ່າຍເງິນ Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ຫົວຂໍ້ Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "ສົ່ງອອກພາກສ່ວນຂັ້ນຕອນການຈ່າຍເງິນຈາກຫົວຂໍ້ Nyture ເມື່ອໃຊ້ Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

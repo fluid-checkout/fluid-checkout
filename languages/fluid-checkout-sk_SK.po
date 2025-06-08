@@ -2408,6 +2408,16 @@ msgstr ""
 "kompatibilitu s týmto doplnkom. Ak používate vlastné štýly pre polia "
 "platobného formulára Stripe, možno to budete chcieť vypnúť."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Téma Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Výstup sekcie krokov pokladnice z témy Nyture pri použití Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

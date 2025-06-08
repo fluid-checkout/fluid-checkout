@@ -2413,6 +2413,18 @@ msgstr ""
 "Stripe ordainketa-formularioaren eremuetarako estilo pertsonalizatuak "
 "erabiltzen ari bazara."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Gai Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout erabiltzean, Nyture gaiaren ordainketa-urratsen atala "
+"erakutsi."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

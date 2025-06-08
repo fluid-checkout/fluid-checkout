@@ -2448,6 +2448,18 @@ msgstr ""
 "படிவ புலங்களுக்கு தனிப்பயன் பாணிகளைப் பயன்படுத்துகிறீர்கள் என்றால் இதை "
 "முடக்க விரும்பலாம்."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "தீம் நைச்சர்"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ஐப் பயன்படுத்தும் போது Nyture கருப்பொருளிலிருந்து checkout "
+"படிகள் பகுதியை வெளியிடுங்கள்."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2384,6 +2384,16 @@ msgstr ""
 "optimizēti saderībai ar spraudni. Ja izmantojat pielāgotus stilus Stripe "
 "maksājumu veidlapas laukiem, iespējams, vēlēsieties to atspējot."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tēma Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Izvadiet kases soļu sadaļu no Nyture tēmas, kad izmantojat Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2290,6 +2290,16 @@ msgstr ""
 "התוסף. ייתכן שתרצה להשבית אפשרות זו אם אתה משתמש בסגנונות מותאמים אישית "
 "עבור שדות טופס התשלום של Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "נושא נייטורה"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "הפקת מקטע שלבי התשלום לערכת נושא Nyture בעת שימוש ב-Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

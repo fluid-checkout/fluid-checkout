@@ -2379,6 +2379,18 @@ msgstr ""
 "যদি আপুনি ষ্ট্ৰাইপ পেমেণ্ট প্ৰপত্ৰ ক্ষেত্ৰসমূহৰ বাবে স্বনিৰ্বাচিত শৈলীসমূহ "
 "ব্যৱহাৰ কৰিছে।"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "থিম নাইচাৰ"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"তৰল চেকআউট ব্যৱহাৰ কৰাৰ সময়ত Nyture থিমৰ পৰা চেকআউট পদক্ষেপসমূহ অংশ আউটপুট "
+"কৰক।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
