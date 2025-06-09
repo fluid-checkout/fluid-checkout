@@ -547,6 +547,19 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'              => __( 'Choose which delivery option will be selected by default.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_default_delivery_option',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'shipping'      => __( 'Ship', 'fluid-checkout' ),
+							'local_pickup'  => __( 'Pickup', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_default_delivery_option' ),
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
 						'desc'              => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
 						'id'                => 'fc_local_pickup_save_shipping_address',
 						'type'              => 'fc_select',
