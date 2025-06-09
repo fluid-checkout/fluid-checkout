@@ -2490,7 +2490,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function maybe_skip_adding_phone_to_formatted( $should_add ) {
 		// Maybe set to skip for admin pages
 		// But still add it to emails
-		if ( is_admin() && ! did_action( 'woocommerce_email' ) ) {
+		if ( is_admin() && ! did_action( 'woocommerce_email_header' ) ) {
 			$should_add = 'no';
 		}
 
@@ -4086,10 +4086,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// The order notes value
 		if ( ! empty( $order_notes ) ) {
 			$review_text_lines[] = $order_notes;
-		}
-		// "No order notes" notice.
-		else {
-			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', $this->get_no_substep_review_text_notice( 'order_notes' ) );
 		}
 
 		return $review_text_lines;
@@ -6632,8 +6628,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
 
+			// Update selected shipping method session value.
+			// Will be updated again after the filter is applied.
+			if ( array_key_exists( 'shipping_method', $new_posted_data ) ) {
+				WC()->session->set( 'chosen_shipping_methods', $new_posted_data[ 'shipping_method' ] );
+			}
+
 			// Filter to allow customizations
 			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
+
+			// Update selected shipping method session value.
+			// Update one more time, to make sure the session value is updated after the filter is applied
+			if ( array_key_exists( 'shipping_method', $new_posted_data ) ) {
+				WC()->session->set( 'chosen_shipping_methods', $new_posted_data[ 'shipping_method' ] );
+			}
 		}
 
 		// Updated cached posted data

@@ -2346,6 +2346,28 @@ msgstr "බ්ලොක්-පාදක තේමා සඳහා `ඇණවු�
 msgid "Only applies when using a block-based theme."
 msgstr "බ්ලොක්-පාදක තේමාවක් භාවිතා කරන විට පමණක් අදාළ වේ."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "ගෙවීම් පෝරමය"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Stripe ගෙවීම් පෝරම ක්ෂේත්‍රවලට විලාස යොදන්න."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"සබල කළ විට, Fluid Checkout ප්ලගිනය සමඟ ගැළපුම සඳහා ප්‍රශස්තිකරණය කළ විලාස "
+"යොදනු ඇත. ඔබ Stripe ගෙවීම් පෝරම ක්ෂේත්‍ර සඳහා අභිරුචි විලාස භාවිතා කරන්නේ "
+"නම් ඔබට මෙය අබල කිරීමට අවශ්‍ය විය හැකිය."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

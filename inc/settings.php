@@ -138,6 +138,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
 			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
 			'fc_integration_mailchimp_force_subscribe_checkbox_position'    => 'yes',
+			'fc_integration_woocommerce_gateway_stripe_apply_styles'        => 'yes',
 			'gm_order_review_checkboxes_before_order_review'                => 'off',
 			'hezarfen_checkout_fields_auto_sort'                            => 'no',
 			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
