@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 9.9.3
 * Added: Support for modern email design for transactional emails.
 * Added: Compatibility with theme Nyture.
 * Added: Compatibility with theme Twenty Twenty-Five.
