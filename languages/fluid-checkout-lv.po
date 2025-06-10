@@ -2362,6 +2362,38 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Piemēro tikai tad, ja tiek izmantota uz blokiem balstīta tēma."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe vārtejas"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Maksājuma veidlapa"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Stilu piemērošana Stripe maksājumu veidlapas laukiem"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Ja šī opcija ir iespējota, Fluid Checkout tiks piemēroti stili, kas "
+"optimizēti saderībai ar spraudni. Ja izmantojat pielāgotus stilus Stripe "
+"maksājumu veidlapas laukiem, iespējams, vēlēsieties to atspējot."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tēma Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Izvadiet kases soļu sadaļu no Nyture tēmas, kad izmantojat Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

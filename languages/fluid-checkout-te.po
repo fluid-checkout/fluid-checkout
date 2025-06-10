@@ -2383,6 +2383,40 @@ msgstr "బ్లాక్ ఆధారిత థీమ్‌ల కోసం `�
 msgid "Only applies when using a block-based theme."
 msgstr "బ్లాక్-ఆధారిత థీమ్‌ను ఉపయోగిస్తున్నప్పుడు మాత్రమే వర్తిస్తుంది."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce స్ట్రైప్ గేట్‌వే"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "చెల్లింపు ఫారమ్"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "స్ట్రైప్ చెల్లింపు ఫారమ్ ఫీల్డ్‌లకు శైలులను వర్తింపజేయండి"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"ప్రారంభించబడినప్పుడు, ఫ్లూయిడ్ చెక్అవుట్ ప్లగిన్‌తో అనుకూలత కోసం ఆప్టిమైజ్ "
+"చేయబడిన శైలులను వర్తింపజేస్తుంది. మీరు స్ట్రైప్ చెల్లింపు ఫారమ్ ఫీల్డ్‌ల "
+"కోసం అనుకూల శైలులను ఉపయోగిస్తుంటే మీరు దీన్ని నిలిపివేయాలనుకోవచ్చు."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "థీమ్ నైచర్"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు Nyture థీమ్ నుండి చెక్అవుట్ స్టెప్స్ "
+"విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

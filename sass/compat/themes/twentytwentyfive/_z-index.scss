@@ -1,0 +1,7 @@
+// ------------------------------------
+// Z-INDEX FIXES
+// ------------------------------------
+
+body#{ $_body-theme-selector } .has-child .wp-block-navigation__submenu-container {
+	z-index: z( 'header-element' ); // Needed to fix the z-index of the submenu in the header
+}

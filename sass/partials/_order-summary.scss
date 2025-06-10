@@ -139,6 +139,14 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 	background-color: transparent;
 }
 
+div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight {
+	background-color: $coupon-code-coupon-highlight-background-color;
+}
+div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table tr.cart-discount.coupon-highlight.coupon-fade-out {
+	background-color: transparent;
+	transition: background-color $global-animation-duration-slow $global-animation-duration-slow linear;
+}
+
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table tbody tr.cart-item {
 	border-top: $order-summary-cell-border--products;
 }
@@ -321,6 +329,7 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 }
 
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table dl.variation {
+	display: block !important; // Need to override theme styles
 	margin: 0 !important; // Need to override theme styles
 	padding: 0 !important; // Need to override theme styles
 	color: $grey;
@@ -356,6 +365,7 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 }
 
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table > tfoot > tr.coupon-code-form > td {
+	padding-bottom: $global-spacing-extra-small !important; // Needed to override theme styles
 	text-align: $alignment-left !important; // Needed to override theme styles
 }
 

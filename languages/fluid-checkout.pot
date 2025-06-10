@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-05-03 06:29+0000\n"
+"POT-Creation-Date: 2025-06-08 21:42+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -33,22 +33,26 @@ msgstr ""
 msgid "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:274
+#: inc/checkout-coupon-codes.php:291
 msgid "Enter your code here"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:275
+#: inc/checkout-coupon-codes.php:292
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr ""
 
 #. translators: %s: Form field label
-#: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#: inc/checkout-coupon-codes.php:328, inc/checkout-hide-optional-fields.php:141
 msgid "Add %s"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:382
+#: inc/checkout-coupon-codes.php:399
 msgid "Remove"
+msgstr ""
+
+#: inc/checkout-coupon-codes.php:456, inc/admin/admin-notice-db-migrations-applied.php:60
+msgid "Dismiss"
 msgstr ""
 
 #: inc/checkout-fields.php:126
@@ -192,19 +196,19 @@ msgstr ""
 msgid "Not selected yet."
 msgstr ""
 
-#: inc/checkout-steps.php:4751
+#: inc/checkout-steps.php:4747
 msgid "Same as shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:4796
+#: inc/checkout-steps.php:4792
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:6067, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:186
+#: inc/checkout-steps.php:6063, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:186
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:6132, templates/fc/checkout-steps/checkout/review-order-section.php:58
+#: inc/checkout-steps.php:6128, templates/fc/checkout-steps/checkout/review-order-section.php:58
 msgid "Edit cart"
 msgstr ""
 
@@ -331,10 +335,6 @@ msgstr ""
 
 #: inc/admin/admin-notice-db-migrations-applied.php:59
 msgid "Ok"
-msgstr ""
-
-#: inc/admin/admin-notice-db-migrations-applied.php:60
-msgid "Dismiss"
 msgstr ""
 
 #: inc/admin/admin-notice-db-migrations.php:51
@@ -1731,6 +1731,22 @@ msgstr ""
 msgid "Enable Mail Check: (disabled feature)"
 msgstr ""
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid "When enabled, Fluid Checkout will apply styles optimized for compatibility with the plugin. You may want to disable this if you are using custom styles for the Stripe payment form fields."
+msgstr ""
+
 #: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:431
 msgid "Carrier:"
 msgstr ""
@@ -1761,7 +1777,7 @@ msgstr ""
 msgid "Theme Betheme"
 msgstr ""
 
-#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:224, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-nyture.php:82, inc/compat/themes/compat-theme-porto.php:224, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
 msgid "Checkout progress"
 msgstr ""
 
@@ -1827,6 +1843,14 @@ msgstr ""
 
 #: inc/compat/themes/compat-theme-kapee.php:130
 msgid "Output the checkout steps section from the Kapee theme on the checkout, cart and order received pages."
+msgstr ""
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr ""
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid "Output the checkout steps section from the Nyture theme when using Fluid Checkout."
 msgstr ""
 
 #: inc/compat/themes/compat-theme-porto.php:218

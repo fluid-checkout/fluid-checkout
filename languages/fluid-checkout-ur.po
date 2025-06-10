@@ -2352,6 +2352,40 @@ msgstr "بلاک پر مبنی تھیمز کے لیے &#39;آرڈر کی تصد�
 msgid "Only applies when using a block-based theme."
 msgstr "صرف بلاک پر مبنی تھیم استعمال کرنے پر لاگو ہوتا ہے۔"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce پٹی گیٹ وے"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "ادائیگی کا فارم"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "اسٹرائپ پیمنٹ فارم کے فیلڈز پر اسٹائل لگائیں۔"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"فعال ہونے پر، Fluid Checkout پلگ ان کے ساتھ مطابقت کے لیے موزوں طرزوں کا "
+"اطلاق کرے گا۔ اگر آپ پٹی کی ادائیگی کے فارم کے شعبوں کے لیے حسب ضرورت طرز "
+"استعمال کر رہے ہیں تو آپ اسے غیر فعال کر سکتے ہیں۔"
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "تھیم Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout استعمال کرتے وقت Nyture تھیم سے چیک آؤٹ اسٹیپس سیکشن کو آؤٹ "
+"پٹ کریں۔"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

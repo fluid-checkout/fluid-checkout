@@ -2386,6 +2386,41 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Tenê dema ku mijarek li ser bingeha blokê tê bikar anîn derbas dibe."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Deriyê Xêza WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Forma dravdanê"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Şêwazan li ser qadên forma dravdanê ya Stripe bicîh bînin"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Dema ku were çalakkirin, Fluid Checkout dê şêwazên ku ji bo lihevhatina bi "
+"pêveka re hatine çêtirkirin bicîh bîne. Heke hûn şêwazên xwerû ji bo qadên "
+"forma dravdanê ya Stripe bikar tînin, dibe ku hûn bixwazin vê yekê neçalak "
+"bikin."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Mijara Nûjen"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Dema ku Fluid Checkout tê bikaranîn, beşa gavên kontrolê ji mijara Nyture "
+"derxe."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

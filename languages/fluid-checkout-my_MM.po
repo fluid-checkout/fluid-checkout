@@ -2442,6 +2442,41 @@ msgstr "block-based themes အတွက် `အော်ဒါအတည်ပြ
 msgid "Only applies when using a block-based theme."
 msgstr "ပိတ်ဆို့ခြင်းအခြေခံ အပြင်အဆင်ကို အသုံးပြုသည့်အခါတွင်သာ အကျုံးဝင်ပါသည်။"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "ငွေပေးချေမှုပုံစံ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Stripe ငွေပေးချေမှုပုံစံအကွက်များတွင် ပုံစံများကို အသုံးပြုပါ။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"ဖွင့်ထားသည့်အခါ၊ Fluid Checkout သည် ပလပ်အင်နှင့် လိုက်ဖက်ညီမှုအတွက် "
+"အကောင်းဆုံးပြုလုပ်ထားသော ပုံစံများကို အသုံးပြုပါမည်။ Stripe "
+"ငွေပေးချေမှုပုံစံအကွက်များအတွက် စိတ်ကြိုက်စတိုင်များကို သင်အသုံးပြုနေပါက "
+"၎င်းကို ပိတ်လိုနိုင်ပါသည်။"
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Theme Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ကိုအသုံးပြုသောအခါ Nyture အပြင်အဆင်မှ "
+"ငွေရှင်းသည့်အဆင့်များအပိုင်းကို ထုတ်ပါ။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

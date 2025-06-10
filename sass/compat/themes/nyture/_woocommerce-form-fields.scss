@@ -1,0 +1,28 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-billing-fields .form-row-last, 
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-shipping-fields .form-row-last {
+	padding-#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-billing-fields .form-row:not(.fc-expansible-form-section) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus { 
+	@media (min-width: 750px) { margin-top: 0; } 
+}
+
+body#{ $_body-theme-selector } .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .form-row.form-row-last {
+	margin-#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector } .woocommerce .form-row:not(.fc-expansible-form-section) + .fc-expansible-form-section.form-row.form-row-last .expansible-section__toggle-plus { 
+	@media (min-width: 750px) { margin-top: 0; } 
+}
+
+body#{ $_body-theme-selector } .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .form-row.form-row-last {
+	margin-#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector } .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .form-row.form-row-first {
+	margin-#{ $alignment-right }: 4%;
+}

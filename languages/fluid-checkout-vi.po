@@ -2359,6 +2359,38 @@ msgstr "Sử dụng mẫu trang `Xác nhận đơn hàng` cho các chủ đề d
 msgid "Only applies when using a block-based theme."
 msgstr "Chỉ áp dụng khi sử dụng chủ đề dạng khối."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Cổng thông tin WooCommerce Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Biểu mẫu thanh toán"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Áp dụng kiểu cho các trường biểu mẫu thanh toán Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Khi được bật, Fluid Checkout sẽ áp dụng các kiểu được tối ưu hóa để tương "
+"thích với plugin. Bạn có thể muốn tắt tính năng này nếu bạn đang sử dụng "
+"các kiểu tùy chỉnh cho các trường biểu mẫu thanh toán Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Chủ đề Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Xuất phần các bước thanh toán từ chủ đề Nyture khi sử dụng Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

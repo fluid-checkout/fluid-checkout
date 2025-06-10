@@ -2371,6 +2371,40 @@ msgstr "ಬ್ಲಾಕ್-ಆಧಾರಿತ ಥೀಮ್‌ಗಳಿಗಾಗ�
 msgid "Only applies when using a block-based theme."
 msgstr "ಬ್ಲಾಕ್-ಆಧಾರಿತ ಥೀಮ್ ಬಳಸುವಾಗ ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce ಸ್ಟ್ರೈಪ್ ಗೇಟ್‌ವೇ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "ಪಾವತಿ ಫಾರ್ಮ್"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "ಸ್ಟ್ರೈಪ್ ಪಾವತಿ ಫಾರ್ಮ್ ಕ್ಷೇತ್ರಗಳಿಗೆ ಶೈಲಿಗಳನ್ನು ಅನ್ವಯಿಸಿ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಪ್ಲಗಿನ್‌ನೊಂದಿಗೆ ಹೊಂದಾಣಿಕೆಗಾಗಿ ಆಪ್ಟಿಮೈಸ್ "
+"ಮಾಡಲಾದ ಶೈಲಿಗಳನ್ನು ಅನ್ವಯಿಸುತ್ತದೆ. ನೀವು ಸ್ಟ್ರೈಪ್ ಪಾವತಿ ಫಾರ್ಮ್ ಕ್ಷೇತ್ರಗಳಿಗೆ "
+"ಕಸ್ಟಮ್ ಶೈಲಿಗಳನ್ನು ಬಳಸುತ್ತಿದ್ದರೆ ನೀವು ಇದನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಬೇಕಾಗಬಹುದು."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ಥೀಮ್ ನೈಚರ್"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಬಳಸುವಾಗ ನೈಚರ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ "
+"ಮಾಡಿ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

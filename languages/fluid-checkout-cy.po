@@ -2387,6 +2387,41 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Dim ond yn berthnasol wrth ddefnyddio thema sy&#39;n seiliedig ar flociau."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Porth Stripe WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Ffurflen dalu"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Cymhwyso arddulliau i feysydd ffurflen dalu Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Pan fydd wedi&#39;i alluogi, bydd Fluid Checkout yn defnyddio arddulliau "
+"sydd wedi&#39;u optimeiddio ar gyfer cydnawsedd â&#39;r ategyn. Efallai yr "
+"hoffech analluogi hyn os ydych chi&#39;n defnyddio arddulliau personol ar "
+"gyfer meysydd ffurflen dalu Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Thema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Allbynnu&#39;r adran camau talu o&#39;r thema Nyture wrth ddefnyddio Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
