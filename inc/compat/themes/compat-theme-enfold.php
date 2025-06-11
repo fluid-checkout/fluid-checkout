@@ -119,6 +119,8 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		// Default color values
 		$accent_color = '#83a83d';
 		$border_color = '#e1e1e1';
+		$background_color = '#fcfcfc';
+		$text_color = '#919191';
 
 		// Get theme options
 		$options = avia_get_option();
@@ -141,7 +143,10 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 				'--fluidcheckout--field--padding-left' => '6px',
 				'--fluidcheckout--field--border-radius' => '0',
 				'--fluidcheckout--field--border-color' => $border_color,
+				'--fluidcheckout--field--font-family' => 'inherit',
 				'--fluidcheckout--field--font-size' => '12px',
+				'--fluidcheckout--field--text-color' => 'inherit',
+				'--fluidcheckout--field--background-color' => $background_color,
 				'--fluidcheckout--field--background-color--accent' => $accent_color,
 			),
 		);
