@@ -134,6 +134,8 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		$accent_color = '#83a83d';
 		$border_color = '#e1e1e1';
 		$background_color = '#fcfcfc';
+		$font_family = 'Open Sans:400,600';
+		$font_color = '#919191';
 
 		// Get theme options
 		$options = avia_get_option();
@@ -147,8 +149,21 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		if ( ! empty( $options['colorset-main_color-border'] ) ) {
 			$border_color = $options['colorset-main_color-border'];
 		}
+
+		// Fetch background color from theme settings if exist
+		if ( ! empty( $options['colorset-main_color-bg2'] ) ) {
+			$background_color = $options['colorset-main_color-bg2'];
+		}
 		
-		// Todo: Investigate if we have a field background color from theme settings
+		// Fetch font family from theme settings if exist
+		if ( ! empty( $options['default_font'] ) ) {
+			$font_family = $options['default_font'];
+		}
+
+		// Fetch font color from theme settings if exist
+		if ( ! empty( $options['colorset-main_color-meta'] ) ) {
+			$font_color = $options['colorset-main_color-meta'];
+		}
 
 		// Add CSS variables
 		$new_css_variables = array(
@@ -158,9 +173,9 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 				'--fluidcheckout--field--padding-left' => '6px',
 				'--fluidcheckout--field--border-radius' => '0',
 				'--fluidcheckout--field--border-color' => $border_color,
-				'--fluidcheckout--field--font-family' => 'inherit',
+				'--fluidcheckout--field--font-family' => $font_family,
 				'--fluidcheckout--field--font-size' => '12px',
-				'--fluidcheckout--field--text-color' => 'inherit',
+				'--fluidcheckout--field--text-color' => $font_color,
 				'--fluidcheckout--field--background-color' => $background_color,
 				'--fluidcheckout--field--background-color--accent' => $accent_color,
 			),
