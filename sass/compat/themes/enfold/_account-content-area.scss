@@ -1,0 +1,12 @@
+// ------------------------------------
+// MY ACCOUNT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce .woocommerce-MyAccount-content {
+	display: flex;
+	overflow: visible;
+}
+
+body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce form .form-row.form-row-first {
+	margin-right: 4%;
+}
