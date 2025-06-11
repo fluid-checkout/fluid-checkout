@@ -1,3 +1,12 @@
+body.theme-enfold#top.woocommerce-page .fc-wrapper #payment label {
+  display: block;
+}
+
+body.theme-enfold#top.woocommerce-page .fc-wrapper #payment div.payment_box {
+  width: 100%;
+  left: inherit;
+}
+
 @media (max-width: 749px) {
   body.theme-enfold.woocommerce-checkout .fc-content.container {
     width: 100% !important;
