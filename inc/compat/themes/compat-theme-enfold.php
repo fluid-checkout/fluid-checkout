@@ -174,7 +174,7 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 				'--fluidcheckout--field--border-radius' => '0',
 				'--fluidcheckout--field--border-color' => $border_color,
 				'--fluidcheckout--field--font-family' => $font_family,
-				'--fluidcheckout--field--font-size' => '12px',
+				'--fluidcheckout--field--font-size' => '16px',
 				'--fluidcheckout--field--text-color' => $font_color,
 				'--fluidcheckout--field--background-color' => $background_color,
 				'--fluidcheckout--field--background-color--accent' => $accent_color,

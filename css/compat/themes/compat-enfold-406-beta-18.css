@@ -30,6 +30,12 @@ body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment ul.payment_metho
   width: 100%;
 }
 
+body.theme-enfold .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text,
+body.theme-enfold .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price,
+body.theme-enfold .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price span {
+  color: inherit;
+}
+
 body.theme-enfold#top.woocommerce-page .fc-wrapper #payment label {
   display: block;
 }
