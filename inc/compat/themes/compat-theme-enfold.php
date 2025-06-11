@@ -120,7 +120,6 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		$accent_color = '#83a83d';
 		$border_color = '#e1e1e1';
 		$background_color = '#fcfcfc';
-		$text_color = '#919191';
 
 		// Get theme options
 		$options = avia_get_option();
