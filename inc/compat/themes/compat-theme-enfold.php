@@ -26,6 +26,9 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
+		// Login form inner class
+		add_filter( 'fc_login_form_inner_class', array( $this, 'change_fc_login_form_inner_class' ), 10 );
+
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
@@ -92,6 +95,17 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 
 
 	/**
+	 * Change the login form inner class.
+	 *
+	 * @param string $class Login form inner class.
+	 */
+	public function change_fc_login_form_inner_class( $class ) {
+		return $class . ' main_color';
+	}
+
+
+
+	/**
 	 * Change the sticky element relative ID.
 	 *
 	 * @param   array   $attributes    HTML element attributes.
@@ -133,6 +147,8 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		if ( ! empty( $options['colorset-main_color-border'] ) ) {
 			$border_color = $options['colorset-main_color-border'];
 		}
+		
+		// Todo: Investigate if we have a field background color from theme settings
 
 		// Add CSS variables
 		$new_css_variables = array(
