@@ -1,12 +1,3 @@
-body.theme-enfold#top.woocommerce-page .fc-wrapper #payment label {
-  display: block;
-}
-
-body.theme-enfold#top.woocommerce-page .fc-wrapper #payment div.payment_box {
-  width: 100%;
-  right: inherit;
-}
-
 @media (max-width: 749px) {
   body.theme-enfold.woocommerce-checkout .fc-content.container {
     width: 100% !important;
@@ -39,9 +30,17 @@ body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment ul.payment_metho
   width: 100%;
 }
 
+body.theme-enfold#top.woocommerce-page .fc-wrapper #payment label {
+  display: block;
+}
+
+body.theme-enfold#top.woocommerce-page .fc-wrapper #payment div.payment_box {
+  width: 100%;
+  right: inherit;
+}
+
 body.theme-enfold#top.woocommerce-page div.woocommerce .woocommerce-MyAccount-content {
-  display: flex;
-  overflow: visible;
+  padding: 5px;
 }
 
 body.theme-enfold#top.woocommerce-page div.woocommerce form .form-row.form-row-first {

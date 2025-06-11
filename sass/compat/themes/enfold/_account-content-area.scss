@@ -3,8 +3,7 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce .woocommerce-MyAccount-content {
-	display: flex;
-	overflow: visible;
+	padding: $global-spacing-tiny;
 }
 
 body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce form .form-row.form-row-first {
