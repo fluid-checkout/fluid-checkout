@@ -7,5 +7,5 @@ body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce .woocommerce
 }
 
 body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce form .form-row.form-row-first {
-	margin-right: 4%;
+	margin-#{ $alignment-right }: 4%;
 }
