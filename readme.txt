@@ -370,6 +370,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Dintero. Support for new popout and embed Dintero checkout flow options.
 * Fixed: Compatibility with plugin Flexible Shipping. Shipping method descriptions showing duplicated.
 * Fixed: Compatibility with plugin Nets/Nexi Checkout (formerly Dibs). Fix integration with Redirect and Overlay checkout flow options.
+* Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix shipping address fields triggering validation errors when the plugin's shipping method is selected.
 * Fixed: Coupon code messages location when being applied from certain sections.
 * Fixed: RTL styles for compatibility with various themes and plugins.
 * Fixed: Set selected shipping method value to session early so it can be used by filters when setting posted data.
