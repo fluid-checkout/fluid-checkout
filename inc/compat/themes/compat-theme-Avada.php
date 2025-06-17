@@ -142,6 +142,12 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 				'--fluidcheckout--validation-check--horizontal-spacing--select' => '40px',
 				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '50px',
 				'--fluidcheckout--field--background-color--accent' => 'var(--awb-color4)',
+
+				// Button styles
+				'--fluidcheckout--button--secondary--background-color' => 'var(--button_gradient_top_color)',
+				'--fluidcheckout--button--secondary--text-color' => 'var(--button_accent_color)',
+				'--fluidcheckout--button--secondary--background-color--hover' => 'var(--button_gradient_top_color_hover)',
+				'--fluidcheckout--button--secondary--text-color--hover' => 'var(--button_accent_hover_color)',
 			),
 		);
 
