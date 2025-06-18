@@ -2352,6 +2352,41 @@ msgstr "Gunakake template kaca `Konfirmasi pesenan` kanggo tema adhedhasar blok"
 msgid "Only applies when using a block-based theme."
 msgstr "Mung ditrapake nalika nggunakake tema adhedhasar blok."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Wangun pembayaran"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Terapake gaya menyang kolom formulir pembayaran Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Yen diaktifake, Fluid Checkout bakal ngetrapake gaya sing dioptimalake "
+"kanggo kompatibilitas karo plugin kasebut. Sampeyan bisa uga pengin mateni "
+"iki yen sampeyan nggunakake gaya khusus kanggo kolom formulir pembayaran "
+"Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyatur"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Output bagean langkah checkout saka tema Nyture nalika nggunakake Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

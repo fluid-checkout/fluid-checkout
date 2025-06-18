@@ -2582,6 +2582,41 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Sólo se aplica cuando se utiliza un tema basado en bloques."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Pasarela WooCommerce Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Formulario de pago"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Aplicar estilos a los campos del formulario de pago de Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Cuando está activado, Fluid Checkout aplicará estilos optimizados para la "
+"compatibilidad con el plugin. Es posible que desee desactivar esta opción "
+"si está utilizando estilos personalizados para los campos del formulario de "
+"pago de Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Salida de la sección de pasos de pago del tema Nyture cuando se utiliza "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

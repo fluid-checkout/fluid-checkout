@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method > label {
+	display: flex !important; // Theme display was using important
+	text-transform: none;
+}
+
+body#{ $_body-theme-selector } .woocommerce .woocommerce-checkout-payment .payment_methods .wc_payment_method input {
+	position: absolute !important; // Theme position was using important
+}

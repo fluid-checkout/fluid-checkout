@@ -2434,6 +2434,41 @@ msgstr ""
 "Chan eil seo a’ buntainn ach nuair a thathar a’ cleachdadh cuspair "
 "stèidhichte air blocaichean."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Geata Stripe WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Foirm pàighidh"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Cuir stoidhlichean an sàs ann an raointean foirm pàighidh Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Nuair a bhios e air a chomasachadh, cuiridh Fluid Checkout stoidhlichean an "
+"sàs a tha air an leasachadh airson co-chòrdalachd leis a’ plugan. Is dòcha "
+"gum bi thu airson seo a dhì-chomasachadh ma tha thu a’ cleachdadh "
+"stoidhlichean gnàthaichte airson raointean foirm pàighidh Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Cuspair Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Cuir a-mach an earrann ceumannan pàighidh bhon chuspair Nyture nuair a "
+"bhios tu a’ cleachdadh Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

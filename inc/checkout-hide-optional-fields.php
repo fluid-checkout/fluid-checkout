@@ -94,6 +94,9 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Needed for compatibility with plugins that call `woocommerce_form_field` multiple times for the same field
 		if ( false !== strpos( $field, 'id="fc-expansible-form-section__toggle--' . $key ) ) { return $field; }
 
+		// Maybe skip optional field
+		if ( apply_filters( 'fc_hide_optional_fields_skip_field', false, $key, $args, $value ) ) { return $field; }
+
 		// Maybe skip optional field by type
 		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'state', 'country', 'select', 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
 

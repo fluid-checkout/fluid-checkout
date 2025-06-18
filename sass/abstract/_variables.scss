@@ -25,6 +25,7 @@ $success-color:                 var( --fluidcheckout--color--success, #007a3d ) 
 $error-color:                   var( --fluidcheckout--color--error, #cc1818 ) !default;
 $alert-color:                   var( --fluidcheckout--color--alert, #c95000 ) !default;
 $info-color:                    var( --fluidcheckout--color--info, #1f01b9 ) !default;
+$success-color-highlight:       var( --fluidcheckout--color--success-highlight, #e0f5eb ) !default;
 
 $border-color:                  var( --fluidcheckout--border-color, $light-grey ) !default;
 $border-dark-color:             var( --fluidcheckout--border-color--dark, $grey ) !default;
@@ -228,18 +229,16 @@ $icons: (
 	'i-check-small': '\e805',
 	'i-check': '\e806',
 	'i-check-circle': '\e82b',
-	'i-chevron-down-medium': '\e807',
 	'i-chevron-down': '\e808',
-	'i-chevron-left-medium': '\e809',
 	'i-chevron-left': '\e80a',
-	'i-chevron-right-medium': '\e80b',
 	'i-chevron-right': '\e80c',
-	'i-chevron-up-medium': '\e80d',
 	'i-chevron-up': '\e80e',
 	'i-loader-circle': '\e816',
+	'i-truck': '\e817',
 	'i-minus': '\e818',
 	'i-plus': '\e81b',
 	'i-plus-circle': '\e82a',
+	'i-store': '\e804',
 	'i-trash': '\e822',
 	'i-x': '\e827',
 	'i-x-circle': '\e815',
@@ -634,6 +633,7 @@ $coupon-code-coupon-border-style:           var( --fluidcheckout--coupon-code--b
 $coupon-code-coupon-border:                 $coupon-code-coupon-border-style remsize( .1rem ) var( --fluidcheckout--coupon-code--border-color, $border-color ) !default;
 $coupon-code-coupon-border-radius:          var( --fluidcheckout--coupon-code--border-radius, $global-radius-small ) !default;
 $coupon-code-coupon-background-color:       var( --fluidcheckout--coupon-code--background-color, transparent ) !default;
+$coupon-code-coupon-highlight-background-color: var( --fluidcheckout--coupon-code--highlight-background-color, #e0f5eb ) !default;
 
 $coupon-code-remove-spacing:                $global-spacing-extra-small !default;
 $coupon-code-remove-font-size:              $font-size-small !default;

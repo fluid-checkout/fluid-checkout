@@ -2340,6 +2340,40 @@ msgstr "د بلاک پر بنسټ موضوعاتو لپاره د &#39;آرډر �
 msgid "Only applies when using a block-based theme."
 msgstr "یوازې هغه وخت پلي کیږي کله چې د بلاک پر بنسټ موضوع وکاروئ."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "د وو کامرس سټرایپ ګیټ وے"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "د تادیې فورمه"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "د سټرایپ تادیې فورمو ساحو کې سټایلونه پلي کړئ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"کله چې فعال شي، فلوډ چیک آوټ به هغه سټایلونه پلي کړي چې د پلگ ان سره د "
+"مطابقت لپاره غوره شوي دي. تاسو ممکن وغواړئ دا غیر فعال کړئ که تاسو د سټریپ "
+"تادیې فورمو ساحو لپاره دودیز سټایلونه کاروئ."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "د نیټور موضوع"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"د فلوډ چیک آوټ کارولو پر مهال د Nyture موضوع څخه د چیک آوټ مرحلو برخه بهر "
+"کړئ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

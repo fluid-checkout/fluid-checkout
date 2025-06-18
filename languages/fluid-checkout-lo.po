@@ -2349,6 +2349,39 @@ msgstr "ໃຊ້ແມ່ແບບຫນ້າ &#39;ການຢືນຢັນ
 msgid "Only applies when using a block-based theme."
 msgstr "ນຳໃຊ້ພຽງແຕ່ເມື່ອນຳໃຊ້ຮູບແບບສີສັນບຼັອກ."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "ແບບຟອມການຈ່າຍເງິນ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "ນຳໃຊ້ຮູບແບບຕ່າງໆໃສ່ຊ່ອງຂໍ້ມູນແບບຟອມການຈ່າຍເງິນ Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"ເມື່ອເປີດໃຊ້ງານ, Fluid Checkout "
+"ຈະນຳໃຊ້ຄໍເຕົ້າໄຂ່ທີ່ປັບແຕ່ງໃຫ້ເຂົ້າກັນໄດ້ກັບປລັກອິນ. "
+"ທ່ານອາດຈະຕ້ອງການປິດການທໍາງານນີ້ຖ້າຫາກວ່າທ່ານກໍາລັງໃຊ້ຮູບແບບການກໍານົດເອງສໍາລັ"
+"ບຊ່ອງໃສ່ແບບຟອມການຈ່າຍເງິນ Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ຫົວຂໍ້ Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "ສົ່ງອອກພາກສ່ວນຂັ້ນຕອນການຈ່າຍເງິນຈາກຫົວຂໍ້ Nyture ເມື່ອໃຊ້ Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

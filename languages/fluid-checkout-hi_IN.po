@@ -2347,6 +2347,40 @@ msgstr "ब्लॉक-आधारित थीम के लिए `ऑर्
 msgid "Only applies when using a block-based theme."
 msgstr "यह केवल ब्लॉक-आधारित थीम का उपयोग करते समय ही लागू होता है।"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "वूकॉमर्स स्ट्राइप गेटवे"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "भुगतान फार्म"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "स्ट्राइप भुगतान फ़ॉर्म फ़ील्ड पर शैलियाँ लागू करें"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"सक्षम होने पर, फ़्लूइड चेकआउट प्लगइन के साथ संगतता के लिए अनुकूलित शैलियों "
+"को लागू करेगा। यदि आप स्ट्राइप भुगतान फ़ॉर्म फ़ील्ड के लिए कस्टम शैलियों का "
+"उपयोग कर रहे हैं, तो आप इसे अक्षम करना चाह सकते हैं।"
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "थीम न्यूचर"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"फ्लूइड चेकआउट का उपयोग करते समय Nyture थीम से चेकआउट चरण अनुभाग को आउटपुट "
+"करें।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

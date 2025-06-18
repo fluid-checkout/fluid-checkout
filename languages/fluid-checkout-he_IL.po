@@ -2268,6 +2268,38 @@ msgstr "השתמש בתבנית דף `אישור הזמנה` עבור תבניו
 msgid "Only applies when using a block-based theme."
 msgstr "חל רק בעת שימוש בערכת נושא מבוססת בלוקים."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "שער ווקומרס סטריפ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "טופס תשלום"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "החלת סגנונות על שדות טופס התשלום של Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"כאשר הוא מופעל, Fluid Checkout יחיל סגנונות המותאמים אישית לתאימות עם "
+"התוסף. ייתכן שתרצה להשבית אפשרות זו אם אתה משתמש בסגנונות מותאמים אישית "
+"עבור שדות טופס התשלום של Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "נושא נייטורה"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "הפקת מקטע שלבי התשלום לערכת נושא Nyture בעת שימוש ב-Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2502,6 +2502,38 @@ msgstr "Použití šablony stránky `Potvrzení objednávky` pro bloková témat
 msgid "Only applies when using a block-based theme."
 msgstr "Platí pouze při použití blokového motivu."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "Brána WooCommerce Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Platební formulář"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Použití stylů na pole platebního formuláře Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Pokud je tato funkce povolena, Fluid Checkout použije styly optimalizované "
+"pro kompatibilitu se zásuvným modulem. Pokud používáte vlastní styly pro "
+"pole platebního formuláře Stripe, můžete tuto funkci zakázat."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Téma Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Výstup sekce kroků pokladny z tématu Nyture při použití Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

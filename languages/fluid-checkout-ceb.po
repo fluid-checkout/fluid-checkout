@@ -2426,6 +2426,41 @@ msgstr ""
 msgid "Only applies when using a block-based theme."
 msgstr "Magamit ra kung mogamit usa ka tema nga nakabase sa block."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "Porma sa pagbayad"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "Ibutang ang mga istilo sa mga field sa porma sa pagbayad sa Stripe"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"Kung mahimo, ang Fluid Checkout mag-aplay sa mga istilo nga na-optimize "
+"alang sa pagkaangay sa plugin. Mahimo nimong i-disable kini kung naggamit "
+"ka mga kostumbre nga istilo alang sa mga natad sa porma sa pagbayad sa "
+"Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema nga Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"I-output ang seksyon sa mga lakang sa pag-checkout gikan sa tema nga Nyture "
+"kung gamiton ang Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

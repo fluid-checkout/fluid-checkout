@@ -2225,6 +2225,37 @@ msgstr "በብሎክ ላይ ለተመሰረቱ ገጽታዎች የ‹ትዕዛ�
 msgid "Only applies when using a block-based theme."
 msgstr "በብሎክ ላይ የተመሰረተ ጭብጥ ሲጠቀሙ ብቻ ነው የሚመለከተው።"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:49
+msgid "WooCommerce Stripe Gateway"
+msgstr "WooCommerce Stripe Gateway"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:55
+msgid "Payment form"
+msgstr "የክፍያ ቅጽ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:56
+msgid "Apply styles to the Stripe payment form fields"
+msgstr "ቅጦችን ወደ Stripe የክፍያ ቅጽ መስኮች ተግብር"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
+msgid ""
+"When enabled, Fluid Checkout will apply styles optimized for compatibility "
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
+msgstr ""
+"ሲነቃ Fluid Checkout ከተሰኪው ጋር ተኳሃኝነት የተመቻቹ ቅጦችን ይተገበራል። ለ Stripe የክፍያ ቅጽ መስኮች "
+"ብጁ ቅጦችን እየተጠቀሙ ከሆነ ይህንን ማሰናከል ይፈልጉ ይሆናል።"
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "ጭብጥ Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkout በሚጠቀሙበት ጊዜ የፍተሻ ደረጃዎች ክፍሉን ከናይture ጭብጥ ያውጡ።"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
