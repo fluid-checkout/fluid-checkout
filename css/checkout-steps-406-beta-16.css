@@ -1017,6 +1017,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   display: block;
   width: 100%;
   font-size: 13px;
+  line-height: 1.2;
 }
 
 .woocommerce .woocommerce-shipping-contents {
