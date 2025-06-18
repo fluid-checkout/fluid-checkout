@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <?php // CHANGE: Add section with class `woocommerce` as many themes require the login form to be inside the WooCommerce section element to properly style the form ?>
-<section class="fc-login-form__wrapper woocommerce">
+<section class="fc-login-form__wrapper woocommerce <?php echo esc_attr( apply_filters( 'fc_login_form_wrapper_class', '' ) ); ?>">
 	<div class="fc-login-form <?php echo esc_attr( apply_filters( 'fc_login_form_class', '' ) ); ?>" data-flyout data-flyout-modal data-autofocus data-flyout-checkout-login>
 		<div class="fc-login-form__inner <?php echo esc_attr( apply_filters( 'fc_login_form_inner_class', '' ) ); ?>" data-flyout-content>
 
