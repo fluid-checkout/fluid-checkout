@@ -1,0 +1,11 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper dl.variation dd {
+	font-weight: normal;
+}
+
+body#{ $_body-theme-selector } .fc-wrapper dl.variation {
+	color: inherit;
+}

@@ -9,3 +9,12 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.container {
 		padding: 0 $container-spacing-mobile $global-spacing-large !important; // Needed to override styles added by the theme
 	}
 }
+
+body#{ $_body-theme-selector }#top .fc-wrapper .fc-coupon-code-messages ul.woocommerce-error {
+	padding: $global-spacing-tiny;
+}
+
+body#{ $_body-theme-selector }#top .fc-wrapper .fc-coupon-code-messages ul.woocommerce-error li {
+	border: none;
+	background-color: inherit;
+ }
