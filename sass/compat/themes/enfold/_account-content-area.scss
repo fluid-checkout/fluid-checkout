@@ -1,0 +1,11 @@
+// ------------------------------------
+// MY ACCOUNT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce .woocommerce-MyAccount-content {
+	padding: $global-spacing-tiny;
+}
+
+body#{ $_body-theme-selector }#top.woocommerce-page div.woocommerce form .form-row.form-row-first {
+	margin-#{ $alignment-right }: 4%;
+}
