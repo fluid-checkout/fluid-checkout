@@ -238,6 +238,9 @@ $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
 
+<!-- CHANGE: Added opening div tag for #wrap_all -->
+<div id='wrap_all'>
+
 <?php do_action( 'fc_checkout_header' ); ?>
 
 <?php // CHANGE: Added class and attributes from theme ?>
