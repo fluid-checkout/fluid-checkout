@@ -164,13 +164,13 @@ div.woocommerce form .form-row.form-row-two-thirds {
   div.woocommerce form .form-row.form-row-middle,
   div.woocommerce form #payment .form-row.form-row-first,
   div.woocommerce form #payment .form-row.form-row-middle {
-    margin-right: 0;
-    margin-left: 4%;
+    margin-right: 0 !important;
+    margin-left: 4% !important;
   }
 }
 
 div.woocommerce form .form-row.form-row-last {
-  margin-right: 0;
+  margin-right: 0 !important;
 }
 
 div.woocommerce form .form-row .woocommerce-input-wrapper span.description {
