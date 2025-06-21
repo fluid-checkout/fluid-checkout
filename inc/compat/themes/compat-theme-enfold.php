@@ -25,6 +25,7 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
+		add_filter( 'fc_wrapper_classes', array( $this, 'change_wrapper_class' ), 10 );
 
 		// Login form inner class
 		add_filter( 'fc_login_form_inner_class', array( $this, 'change_fc_login_form_inner_class' ), 10 );
@@ -95,7 +96,16 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 
 
 	/**
-	 * Change the login form inner class.
+	 * Change the wrapper class, to apply theme styles on various sub-elements.
+	 *
+	 * @param string $class Wrapper class.
+	 */
+	public function change_wrapper_class( $class ) {
+		return $class . ' main_color';
+	}
+
+	/**
+	 * Change the login form inner class, to apply theme styles on various sub-elements.
 	 *
 	 * @param string $class Login form inner class.
 	 */
