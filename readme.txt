@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Enfold.
+* Added: Compatibility with plugin WooCommerce Bambora Gateway.
 
 = 4.0.6 - 2025-06-10 =
 
@@ -364,7 +365,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Support for modern email design for transactional emails.
 * Added: Compatibility with theme Nyture.
 * Added: Compatibility with theme Twenty Twenty-Five.
-* Added: Compatibility with plugin WooCommerce Bambora Gateway.
 * Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
 * Added: Compatibility with plugin YITH WooCommerce Checkout Manager.
 * Improved: Coupon codes are now highlighted when added, and "Apply/Add coupon" button is now blocked while processing.
