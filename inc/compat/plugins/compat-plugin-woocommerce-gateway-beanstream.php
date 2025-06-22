@@ -31,9 +31,9 @@ class FluidCheckout_WooCommerceGatewayBeanstream extends FluidCheckout {
 		$this->checkout_hooks();
 	}
 
-	/*
-	* Add or remove checkout page hooks.
-	*/
+	/**
+	 * Add or remove checkout page hooks.
+	 */
 	public function checkout_hooks() {
 		// Bail if not on checkout page
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
@@ -46,6 +46,7 @@ class FluidCheckout_WooCommerceGatewayBeanstream extends FluidCheckout {
 
 	/**
 	 * Enqueue the gateway-specific assets if present, including JS, CSS, and localized script params.
+	 * 
 	 * COPIED AND ADAPTED FROM: SV_WC_Payment_Gateway::enqueue_gateway_assets().
 	 */
 	public function maybe_enqueue_gateway_assets() {
