@@ -123,9 +123,18 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_field_args() {
+		// Initialize variables
+		$address_types = array( 'billing', 'shipping' );
+		$country_locale = array();
+
+		// Get country locale settings
+		$locale = WC()->countries->get_country_locale();
+
+		// Get dynamic field args
 		$billing_email_description = apply_filters( 'fc_checkout_email_field_description', __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' ) );
 		$billing_company_class = 'required' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) ? 'form-row-last' : 'form-row-wide';
 
+		// Initialize fields args
 		$fields_args = array(
 			'billing_email'         => array( 'priority' => 5, 'description' => $billing_email_description, 'type' => 'email', 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'contact email', 'data-leadin-email' => true ) ),
 
@@ -150,6 +159,32 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'shipping_country'      => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping country' ) ),
 			'shipping_postcode'     => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping postal-code' ) ),
 		);
+
+		// Maybe change the field args based on the locale settings for the selected country
+		foreach ( $address_types as $address_type ) {
+			// Get selected country for the address type
+			if ( 'billing' === $address_type ) {
+				$country = WC()->customer->get_billing_country();
+			} else {
+				$country = WC()->customer->get_shipping_country();
+			}
+
+			// Maybe get the locale fields for the selected country
+			if ( is_array( $locale ) && array_key_exists( $country, $locale ) ) {
+				$country_locale_fields = $locale[ $country ];
+			}
+
+			// Iterate the locale fields
+			foreach ( $country_locale_fields as $field_key => $field_args_locale ) {
+				// Prepend address type to field key
+				$field_key = $address_type . '_' . $field_key;
+
+				// Maybe update the field args with locale values
+				if ( isset( $fields_args[ $field_key ] ) && is_array( $field_args_locale ) ) {
+					$fields_args[ $field_key ] = array_merge( $fields_args[ $field_key ], $field_args_locale );
+				}
+			}
+		}
 
 		// Only apply class changes on checkout and account pages
 		if ( function_exists( 'is_checkout' ) && ( is_checkout() || is_account_page() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) {
