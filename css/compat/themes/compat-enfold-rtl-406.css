@@ -6,6 +6,15 @@
   }
 }
 
+body.theme-enfold#top .fc-wrapper .fc-coupon-code-messages ul.woocommerce-error {
+  padding: 5px;
+}
+
+body.theme-enfold#top .fc-wrapper .fc-coupon-code-messages ul.woocommerce-error li {
+  border: none;
+  background-color: inherit;
+}
+
 body.theme-enfold.woocommerce-checkout#top.woocommerce-page .fc-wrapper #payment {
   border: 0;
 }
@@ -28,6 +37,37 @@ body.theme-enfold.woocommerce-checkout#top .fc-wrapper #payment ul.payment_metho
   position: static;
   display: block;
   width: 100%;
+}
+
+body.theme-enfold .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text,
+body.theme-enfold .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price,
+body.theme-enfold .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price span {
+  color: inherit;
+}
+
+body.theme-enfold#top.woocommerce-page .fc-wrapper #payment label {
+  display: block;
+}
+
+body.theme-enfold#top.woocommerce-page .fc-wrapper #payment div.payment_box {
+  width: 100%;
+  right: inherit;
+}
+
+body.theme-enfold#top.woocommerce-page div.woocommerce .woocommerce-MyAccount-content {
+  padding: 5px;
+}
+
+body.theme-enfold#top.woocommerce-page div.woocommerce form .form-row.form-row-first {
+  margin-left: 4%;
+}
+
+body.theme-enfold .fc-wrapper dl.variation dd {
+  font-weight: normal;
+}
+
+body.theme-enfold .fc-wrapper dl.variation {
+  color: inherit;
 }
 
 body.theme-enfold .fc-wrapper .widget {

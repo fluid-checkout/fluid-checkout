@@ -73,13 +73,13 @@ div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form #payment .form-row.form-row-first,
 div.woocommerce form #payment .form-row.form-row-middle {
 	@media (#{$bp-larger-than-phablet}) {
-		margin-#{ $alignment-left }: 0;
-		margin-#{ $alignment-right }: 4%;
+		margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
+		margin-#{ $alignment-right }: 4% !important; // Needed to override theme styles
 	}
 }
 
 div.woocommerce form .form-row.form-row-last {
-	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
 }
 
 
