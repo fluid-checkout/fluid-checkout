@@ -13,7 +13,7 @@
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
  * @version 9.8.0
- * @fc-version 4.0.6
+ * @fc-version 4.0.7
  */
 
 use Automattic\WooCommerce\Utilities\FeaturesUtil;
@@ -42,9 +42,9 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 	<tr>
 		<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php if ( $email_improvements_enabled ) { ?>
-				<b class="address-title"><?php esc_html_e( $billing_address_label ); ?></b>
+				<b class="address-title"><?php echo esc_html( $billing_address_label ); ?></b>
 			<?php } else { ?>
-				<h2><?php esc_html_e( $billing_address_label ); ?></h2>
+				<h2><?php echo esc_html( $billing_address_label ); ?></h2>
 			<?php } ?>
 		</th>
 
@@ -52,9 +52,9 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 		<?php if ( $show_shipping ) : ?>
 			<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 				<?php if ( $email_improvements_enabled ) { ?>
-					<b class="address-title"><?php esc_html_e( $shipping_address_label ); ?></b>
+					<b class="address-title"><?php echo esc_html( $shipping_address_label ); ?></b>
 				<?php } else { ?>
-					<h2><?php esc_html_e( $shipping_address_label ); ?></h2>
+					<h2><?php echo esc_html( $shipping_address_label ); ?></h2>
 				<?php } ?>
 			</th>
 		<?php endif; ?>
