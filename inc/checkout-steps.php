@@ -6543,6 +6543,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Remove fields that should be skipped
 		$session_field_keys = array_diff( $session_field_keys, $skip_field_keys );
 
+		// Filter session field keys
+		$session_field_keys = apply_filters( 'fc_customer_persisted_data_session_field_keys', $session_field_keys, $parsed_posted_data );
+
 		return $session_field_keys;
 	}
 
