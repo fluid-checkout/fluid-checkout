@@ -2477,6 +2477,40 @@ msgstr ""
 "Fluid Checkout ကိုအသုံးပြုသောအခါ Nyture အပြင်အဆင်မှ "
 "ငွေရှင်းသည့်အဆင့်များအပိုင်းကို ထုတ်ပါ။"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ပေးပို့သည့်လိပ်စာအပိုင်းပြီးနောက် ငွေပေးချေရမည့်လိပ်စာအပိုင်းကို ပြသပါက "
+"&quot;လိုအပ်သည်&quot; အဖြစ် ခိုင်းစေနိုင်ပြီး ငွေပေးချေသည့်ဖုန်းအကွက်ကို "
+"&quot;လိုအပ်သည်&quot; အဖြစ် သတ်မှတ်ထားပါသည်။ ၎င်းရွေးချယ်မှုအား "
+"စစ်ဆေးသည့်အခါ ငွေပေးချေသည့်လိပ်စာသို့ ကူးယူနိုင်ကြောင်း သေချာစေရန် ၎င်းကို "
+"လိုအပ်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ငွေပေးချေရမည့်လိပ်စာအပိုင်းကို ဘီလ်ပို့လိပ်စာကဏ္ဍပြီးနောက်တွင် ပြသပါက "
+"ဘီလ်ပို့လိပ်စာအပိုင်းကို &quot;လိုအပ်သည်&quot; အဖြစ် ခိုင်းစေကာ "
+"ငွေပေးချေသည့်ဖုန်းအကွက်ကို &quot;လိုအပ်သည်&quot; အဖြစ် သတ်မှတ်ထားပါသည်။ "
+"၎င်းရွေးချယ်မှုအား စစ်ဆေးသည့်အခါ ငွေပေးချေသည့်လိပ်စာကို ဘီလ်ပို့လိပ်စာသို့ "
+"ကူးယူနိုင်ကြောင်း သေချာစေရန် ၎င်းကို လိုအပ်ပါသည်။"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"စတိုးစီမံခန့်ခွဲသူမှ ကိုယ်တိုင်ဖန်တီးထားသည့် သို့မဟုတ် ငွေရှင်းစဉ်အတွင်း "
+"မပြီးပြတ်သည့် အမှာစာများအတွက် သုံးစွဲသူများကို ငွေပေးချေခွင့်ပြုပါ။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

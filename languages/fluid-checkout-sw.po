@@ -2426,6 +2426,40 @@ msgstr ""
 "Toa sehemu ya hatua za kulipa kutoka kwa mandhari ya Nyture unapotumia "
 "Malipo ya Maji."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Labda italazimishwa kama &quot;inahitajika&quot; ikiwa sehemu ya anwani ya "
+"kutuma bili itaonyeshwa baada ya sehemu ya anwani ya usafirishaji, na "
+"sehemu ya simu ya kutuma bili imewekwa kama &quot;inahitajika. Hii "
+"inahitajika ili kuhakikisha anwani ya usafirishaji inaweza kunakiliwa kwa "
+"anwani ya bili wakati chaguo hilo limechaguliwa."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Labda italazimishwa kama &quot;inahitajika&quot; ikiwa sehemu ya anwani ya "
+"bili itaonyeshwa baada ya sehemu ya anwani ya kutuma bili, na sehemu ya "
+"simu ya bili imewekwa kama &quot;inahitajika. Hii inahitajika ili "
+"kuhakikisha anwani ya bili inaweza kunakiliwa kwa anwani ya bili wakati "
+"chaguo hilo limechaguliwa."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Huruhusu wateja kufanya malipo ya maagizo ambayo yameundwa na msimamizi wa "
+"duka au ambayo hayajakamilika wakati wa kulipa."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2425,6 +2425,43 @@ msgstr ""
 "Fluid Checkout erabiltzean, Nyture gaiaren ordainketa-urratsen atala "
 "erakutsi."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Baliteke &quot;beharrezkoa&quot; gisa behartu ahal izatea "
+"fakturazio-helbidearen atala bidalketa-helbidearen atalaren ondoren "
+"bistaratzen bada, eta fakturazio-telefonoaren eremua "
+"&quot;beharrezkoa&quot; gisa ezarrita badago. Hau beharrezkoa da "
+"bidalketa-helbidea fakturazio-helbidean kopiatu ahal izateko aukera hori "
+"markatuta dagoenean."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Baliteke &quot;beharrezkoa&quot; gisa behartu ahal izatea "
+"fakturazio-helbidearen atala fakturazio-helbidearen atalaren ondoren "
+"bistaratzen bada, eta fakturazio-telefonoaren eremua "
+"&quot;beharrezkoa&quot; gisa ezarrita badago. Hau beharrezkoa da aukera "
+"hori markatuta dagoenean fakturazio-helbidea fakturazio-helbidera kopiatu "
+"ahal izateko."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Bezeroei dendako administratzaileak eskuz sortutako edo "
+"ordainketa-prozesuan osatu ez diren eskaeren ordainketak egiteko aukera "
+"ematen die."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

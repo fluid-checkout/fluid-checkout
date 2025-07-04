@@ -2386,6 +2386,40 @@ msgstr ""
 "Fluid Checkout استعمال کرتے وقت Nyture تھیم سے چیک آؤٹ اسٹیپس سیکشن کو آؤٹ "
 "پٹ کریں۔"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"اگر بلنگ ایڈریس سیکشن شپنگ ایڈریس سیکشن کے بعد ظاہر ہوتا ہے، اور بلنگ فون "
+"فیلڈ کو &quot;ضرورت&quot; کے طور پر سیٹ کیا جاتا ہے تو &quot;ضرورت&quot; کے "
+"طور پر مجبور کیا جا سکتا ہے۔ یہ یقینی بنانے کے لیے ضروری ہے کہ جب اس اختیار "
+"کو چیک کیا جائے تو شپنگ ایڈریس کو بلنگ ایڈریس پر کاپی کیا جا سکے۔"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"اگر بلنگ ایڈریس سیکشن کے بعد بلنگ ایڈریس کا سیکشن ظاہر ہوتا ہے، اور بلنگ "
+"فون فیلڈ کو &quot;ضروری&quot; کے طور پر سیٹ کیا جاتا ہے تو "
+"&quot;ضرورت&quot; کے طور پر مجبور کیا جا سکتا ہے۔ یہ یقینی بنانے کے لیے "
+"ضروری ہے کہ بلنگ ایڈریس کو بلنگ ایڈریس پر کاپی کیا جا سکے جب اس آپشن کو چیک "
+"کیا جائے۔"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"صارفین کو ان آرڈرز کے لیے ادائیگی کرنے کی اجازت دیتا ہے جو یا تو اسٹور کے "
+"منتظم کے ذریعے دستی طور پر بنائے جاتے ہیں یا چیک آؤٹ کے دوران مکمل نہیں "
+"ہوتے ہیں۔"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

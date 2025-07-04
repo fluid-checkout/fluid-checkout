@@ -2403,6 +2403,40 @@ msgstr ""
 "Ispišite odjeljak s koracima naplate iz Nyture teme kada koristite Fluid "
 "Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Možda će biti prisilno postavljeno kao &quot;obavezno&quot; ako se odjeljak "
+"za adresu za naplatu prikazuje nakon odjeljka za adresu za dostavu, a polje "
+"za telefon za naplatu je postavljeno kao &quot;obavezno&quot;. Ovo je "
+"potrebno kako bi se osiguralo da se adresa za dostavu može kopirati na "
+"adresu za naplatu kada je ta opcija označena."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Možda će biti prisilno postavljeno kao &quot;obavezno&quot; ako se odjeljak "
+"za adresu za naplatu prikazuje nakon odjeljka za adresu za naplatu, a polje "
+"za telefon za naplatu je postavljeno kao &quot;obavezno&quot;. Ovo je "
+"potrebno kako bi se osiguralo da se adresa za naplatu može kopirati na "
+"adresu za naplatu kada je ta opcija označena."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Omogućava kupcima plaćanje za narudžbe koje je ručno kreirao administrator "
+"trgovine ili koje nisu dovršene tokom plaćanja."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

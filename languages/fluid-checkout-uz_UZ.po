@@ -2458,6 +2458,39 @@ msgstr ""
 "Fluid Checkout dan foydalanayotganda Nyture mavzusidagi to&#39;lov "
 "bosqichlari bo&#39;limini chiqaring."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Toʻlov manzili boʻlimi yetkazib berish manzili boʻlimidan keyin koʻrsatilsa "
+"va hisob-kitob telefoni maydoni “majburiy” sifatida oʻrnatilsa, “talab "
+"qilinadi” deb majburlash mumkin. Bu variant belgilansa, joʻnatish manzilini "
+"toʻlov manziliga koʻchirish mumkinligini taʼminlash uchun kerak."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Hisob-kitob manzili boʻlimidan keyin toʻlov manzili boʻlimi koʻrsatilsa va "
+"billing telefon maydoni “majburiy” sifatida oʻrnatilgan boʻlsa, “zarur” deb "
+"majburlash mumkin. Bu variant belgilansa, hisob-kitob manzilini toʻlov "
+"manziliga koʻchirish mumkinligini taʼminlash uchun kerak."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Mijozlarga do&#39;kon administratori tomonidan qo&#39;lda yaratilgan yoki "
+"to&#39;lov vaqtida tugallanmagan buyurtmalar uchun to&#39;lovlarni amalga "
+"oshirish imkonini beradi."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2455,6 +2455,40 @@ msgstr ""
 "ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ഉപയോഗിക്കുമ്പോൾ Nyture തീമിൽ നിന്ന് ചെക്ക്ഔട്ട് "
 "ഘട്ടങ്ങൾ വിഭാഗം ഔട്ട്പുട്ട് ചെയ്യുക."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ഷിപ്പിംഗ് വിലാസ വിഭാഗത്തിന് ശേഷം ബില്ലിംഗ് വിലാസ വിഭാഗം പ്രദർശിപ്പിക്കുകയും "
+"ബില്ലിംഗ് ഫോൺ ഫീൽഡ് &quot;ആവശ്യമാണ്&quot; എന്ന് സജ്ജമാക്കുകയും ചെയ്താൽ "
+"&quot;ആവശ്യമാണ്&quot; എന്ന് നിർബന്ധിച്ചേക്കാം. ആ ഓപ്ഷൻ പരിശോധിക്കുമ്പോൾ "
+"ഷിപ്പിംഗ് വിലാസം ബില്ലിംഗ് വിലാസത്തിലേക്ക് പകർത്താൻ കഴിയുമെന്ന് ഉറപ്പാക്കാൻ "
+"ഇത് ആവശ്യമാണ്."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ബില്ലിംഗ് വിലാസ വിഭാഗത്തിന് ശേഷം ബില്ലിംഗ് വിലാസ വിഭാഗം പ്രദർശിപ്പിക്കുകയും "
+"ബില്ലിംഗ് ഫോൺ ഫീൽഡ് &quot;ആവശ്യമാണ്&quot; എന്ന് സജ്ജമാക്കുകയും ചെയ്താൽ "
+"&quot;ആവശ്യമാണ്&quot; എന്ന് നിർബന്ധിച്ചേക്കാം. ആ ഓപ്ഷൻ പരിശോധിക്കുമ്പോൾ "
+"ബില്ലിംഗ് വിലാസം ബില്ലിംഗ് വിലാസത്തിലേക്ക് പകർത്താൻ കഴിയുമെന്ന് ഉറപ്പാക്കാൻ "
+"ഇത് ആവശ്യമാണ്."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"സ്റ്റോർ അഡ്മിൻ സ്വമേധയാ സൃഷ്ടിച്ചതോ ചെക്ക്ഔട്ട് സമയത്ത് പൂർത്തിയാകാത്തതോ ആയ "
+"ഓർഡറുകൾക്ക് പേയ്‌മെന്റുകൾ നടത്താൻ ഉപഭോക്താക്കളെ അനുവദിക്കുന്നു."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

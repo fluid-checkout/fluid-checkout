@@ -2421,6 +2421,41 @@ msgstr ""
 "Dema ku Fluid Checkout tê bikaranîn, beşa gavên kontrolê ji mijara Nyture "
 "derxe."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dibe ku wekî &quot;pêdivî&quot; were ferzkirin ger beşa navnîşana fatûreyê "
+"piştî beşa navnîşana şandinê were xuyang kirin, û qada telefona fatûreyê "
+"wekî &quot;pêdivî&quot; were danîn. Ev ji bo piştrastkirina ku navnîşana "
+"şandinê dikare li navnîşana fatûreyê were kopî kirin dema ku ew vebijark "
+"were kontrol kirin pêdivî ye."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dibe ku wekî &quot;pêdivî&quot; were ferzkirin ger beşa navnîşana fatûreyê "
+"piştî beşa navnîşana fatûreyê were xuyang kirin, û qada telefona fatûreyê "
+"wekî &quot;pêdivî&quot; were danîn. Ev ji bo piştrastkirina ku navnîşana "
+"fatûreyê dikare li navnîşana fatûreyê were kopî kirin dema ku ew vebijark "
+"were kontrol kirin pêdivî ye."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Destûrê dide xerîdaran ku ji bo fermanên ku ji hêla rêveberê firotgehê ve "
+"bi destan hatine çêkirin an jî di dema kirînê de nehatine temam kirin, drav "
+"bidin."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

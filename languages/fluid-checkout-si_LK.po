@@ -2380,6 +2380,38 @@ msgstr ""
 "Fluid Checkout භාවිතා කරන විට Nyture තේමාවෙන් පිටවීමේ පියවර කොටස ප්‍රතිදානය "
 "කරන්න."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"නැව්ගත කිරීමේ ලිපින කොටසට පසුව බිල්පත් ලිපින කොටස දර්ශනය වී ඇති අතර, "
+"බිල්පත් දුරකථන ක්ෂේත්‍රය &quot;අවශ්‍ය&quot; ලෙස සකසා ඇත්නම්, "
+"&quot;අවශ්‍ය&quot; ලෙස බල කළ හැකිය. එම විකල්පය සලකුණු කළ විට නැව්ගත කිරීමේ "
+"ලිපිනය බිල්පත් ලිපිනයට පිටපත් කළ හැකි බව සහතික කිරීමට මෙය අවශ්‍ය වේ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"බිල්පත් ලිපින කොටසට පසුව බිල්පත් ලිපින කොටස දර්ශනය වී ඇති අතර, බිල්පත් "
+"දුරකථන ක්ෂේත්‍රය &quot;අවශ්‍ය&quot; ලෙස සකසා ඇත්නම්, එය &quot;අවශ්‍ය&quot; "
+"ලෙස බල කළ හැකිය. එම විකල්පය සලකුණු කළ විට බිල්පත් ලිපිනය බිල්පත් ලිපිනයට "
+"පිටපත් කළ හැකි බව සහතික කිරීමට මෙය අවශ්‍ය වේ."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ගබඩා පරිපාලක විසින් අතින් සාදන ලද හෝ පිටවීමේදී සම්පූර්ණ නොකළ ඇණවුම් සඳහා "
+"ගෙවීම් කිරීමට ගනුදෙනුකරුවන්ට ඉඩ සලසයි."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

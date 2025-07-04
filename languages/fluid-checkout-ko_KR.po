@@ -2205,6 +2205,32 @@ msgid ""
 "Checkout."
 msgstr "유동적 결제를 사용하는 경우 Nyture 테마에서 결제 단계 섹션을 출력합니다."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"청구 주소 섹션이 배송 주소 섹션 뒤에 표시되고 청구 전화 필드가 '필수'로 설정되어 있는 경우 '필수'로 강제 설정될 수 있습니다. "
+"이 옵션을 선택하면 배송 주소가 청구 주소로 복사될 수 있도록 하기 위해 필요합니다."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"청구 주소 섹션 뒤에 청구 주소 섹션이 표시되고 청구 전화 필드가 '필수'로 설정되어 있는 경우 '필수'로 강제 설정될 수 있습니다. "
+"이는 해당 옵션이 선택되어 있을 때 청구 주소가 청구 주소로 복사될 수 있도록 하기 위해 필요합니다."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr "스토어 관리자가 수동으로 생성했거나 결제 중에 완료되지 않은 주문에 대해 고객이 결제할 수 있습니다."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

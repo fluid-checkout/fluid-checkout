@@ -2434,6 +2434,41 @@ msgstr ""
 "Mostra a sección dos pasos de finalización da compra desde o tema Nyture ao "
 "usar Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Podería ser forzado como &quot;obrigatorio&quot; se a sección do enderezo "
+"de facturación se mostra despois da sección do enderezo de envío e o campo "
+"do teléfono de facturación está configurado como &quot;obrigatorio&quot;. "
+"Isto é necesario para garantir que o enderezo de envío se poida copiar no "
+"enderezo de facturación cando esa opción estea marcada."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Podería ser forzado como &quot;obrigatorio&quot; se a sección do enderezo "
+"de facturación se mostra despois da sección do enderezo de facturación e o "
+"campo do teléfono de facturación está configurado como "
+"&quot;obrigatorio&quot;. Isto é necesario para garantir que o enderezo de "
+"facturación se poida copiar no enderezo de facturación cando esa opción "
+"estea marcada."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Permite aos clientes realizar pagamentos por pedidos creados manualmente "
+"polo administrador da tenda ou non completados durante o proceso de compra."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2426,6 +2426,40 @@ msgstr ""
 "Jou de seksje oer de kassa út fan it Nyture-tema út by it brûken fan Fluid "
 "Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Miskien twongen wurde as &quot;ferplicht&quot; as it fakturearadresdiel "
+"werjûn wurdt nei it ferstjoeradresdiel, en it fjild foar faktureartelefoan "
+"is ynsteld as &quot;ferplicht&quot;. Dit is nedich om te soargjen dat it "
+"ferstjoeradres nei it fakturearadres kopiearre wurde kin as dy opsje "
+"oankrúst is."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Miskien twongen wurde as &quot;ferplicht&quot; as it fakturearadresdiel nei "
+"it fakturearadresdiel werjûn wurdt, en it fjild foar faktureartelefoan is "
+"ynsteld as &quot;ferplicht&quot;. Dit is nedich om te soargjen dat it "
+"fakturearadres nei it fakturearadres kopiearre wurde kin as dy opsje "
+"oankrúst is."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Lit klanten betellingen dwaan foar oarders dy&#39;t of mei de hân oanmakke "
+"binne troch de winkelbehearder of net foltôge binne by it beteljen."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2460,6 +2460,40 @@ msgstr ""
 "Fluid Checkout ஐப் பயன்படுத்தும் போது Nyture கருப்பொருளிலிருந்து checkout "
 "படிகள் பகுதியை வெளியிடுங்கள்."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ஷிப்பிங் முகவரிப் பிரிவுக்குப் பிறகு பில்லிங் முகவரிப் பிரிவு காட்டப்பட்டு, "
+"பில்லிங் தொலைபேசி புலம் &quot;தேவை&quot; என அமைக்கப்பட்டால், "
+"&quot;தேவை&quot; என்று கட்டாயப்படுத்தப்படலாம். அந்த விருப்பம் "
+"தேர்ந்தெடுக்கப்படும்போது ஷிப்பிங் முகவரியை பில்லிங் முகவரிக்கு நகலெடுக்க "
+"முடியும் என்பதை உறுதிப்படுத்த இது தேவைப்படுகிறது."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"பில்லிங் முகவரிப் பிரிவுக்குப் பிறகு பில்லிங் முகவரிப் பிரிவு காட்டப்பட்டு, "
+"பில்லிங் தொலைபேசி புலம் &quot;தேவை&quot; என அமைக்கப்பட்டால், "
+"&quot;தேவை&quot; என்று கட்டாயப்படுத்தப்படலாம். அந்த விருப்பம் "
+"தேர்ந்தெடுக்கப்படும்போது பில்லிங் முகவரியை பில்லிங் முகவரிக்கு நகலெடுக்க "
+"முடியும் என்பதை உறுதிப்படுத்த இது தேவைப்படுகிறது."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"கடை நிர்வாகியால் கைமுறையாக உருவாக்கப்பட்ட அல்லது செக் அவுட்டின் போது "
+"முடிக்கப்படாத ஆர்டர்களுக்கு வாடிக்கையாளர்கள் பணம் செலுத்த அனுமதிக்கிறது."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

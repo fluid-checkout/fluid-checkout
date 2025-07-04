@@ -2372,6 +2372,39 @@ msgstr ""
 "ફ્લુઇડ ચેકઆઉટનો ઉપયોગ કરતી વખતે Nyture થીમમાંથી ચેકઆઉટ સ્ટેપ્સ વિભાગ આઉટપુટ "
 "કરો."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"જો બિલિંગ સરનામું વિભાગ શિપિંગ સરનામાં વિભાગ પછી પ્રદર્શિત થાય અને બિલિંગ "
+"ફોન ક્ષેત્ર &quot;જરૂરી&quot; તરીકે સેટ કરેલું હોય તો &quot;જરૂરી&quot; "
+"તરીકે ફરજ પાડવામાં આવી શકે છે. જ્યારે તે વિકલ્પ ચેક કરવામાં આવે ત્યારે "
+"શિપિંગ સરનામું બિલિંગ સરનામાં પર કોપી કરી શકાય તેની ખાતરી કરવા માટે આ જરૂરી "
+"છે."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"જો બિલિંગ સરનામું વિભાગ પછી બિલિંગ સરનામું વિભાગ પ્રદર્શિત થાય અને બિલિંગ "
+"ફોન ક્ષેત્ર &quot;જરૂરી&quot; તરીકે સેટ હોય તો &quot;જરૂરી&quot; તરીકે ફરજ "
+"પાડવામાં આવી શકે છે. જ્યારે તે વિકલ્પ ચેક કરવામાં આવે ત્યારે બિલિંગ "
+"સરનામાંને બિલિંગ સરનામાં પર કૉપિ કરી શકાય તેની ખાતરી કરવા માટે આ જરૂરી છે."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ગ્રાહકોને એવા ઓર્ડર માટે ચુકવણી કરવાની મંજૂરી આપે છે જે સ્ટોર એડમિન દ્વારા "
+"મેન્યુઅલી બનાવવામાં આવે છે અથવા ચેકઆઉટ દરમિયાન પૂર્ણ ન થાય."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

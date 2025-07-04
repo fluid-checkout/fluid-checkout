@@ -2375,6 +2375,38 @@ msgid ""
 "Checkout."
 msgstr "Eligu la sekcion pri kaspaŝoj el la temo Nyture kiam vi uzas Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Eble ĝi estu devigita kiel &quot;deviga&quot; se la faktura adreso estas "
+"montrata post la senda adreso, kaj la faktura telefona kampo estas agordita "
+"kiel &quot;deviga&quot;. Ĉi tio necesas por certigi, ke la senda adreso "
+"povas esti kopiita al la faktura adreso kiam tiu opcio estas markita."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Eble ĝi estu devigita kiel &quot;deviga&quot; se la faktura adreso estas "
+"montrata post la faktura adreso, kaj la faktura telefono estas agordita "
+"kiel &quot;deviga&quot;. Ĉi tio necesas por certigi, ke la faktura adreso "
+"povas esti kopiita al la faktura adreso kiam tiu opcio estas markita."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Permesas al klientoj pagi por mendoj, kiujn aŭ la administranto de la "
+"vendejo kreis permane aŭ ne kompletigis dum la kaso."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

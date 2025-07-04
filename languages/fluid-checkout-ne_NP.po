@@ -2380,6 +2380,38 @@ msgid ""
 "Checkout."
 msgstr "फ्लुइड चेकआउट प्रयोग गर्दा Nyture थिमबाट चेकआउट चरण खण्ड आउटपुट गर्नुहोस्।"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ढुवानी ठेगाना खण्ड पछि बिलिङ ठेगाना खण्ड प्रदर्शित भएमा र बिलिङ फोन क्षेत्र "
+"&quot;आवश्यक&quot; को रूपमा सेट गरिएको भएमा &quot;आवश्यक&quot; को रूपमा "
+"जबरजस्ती गर्न सकिन्छ। त्यो विकल्प जाँच गर्दा ढुवानी ठेगाना बिलिङ ठेगानामा "
+"प्रतिलिपि गर्न सकिन्छ भनेर सुनिश्चित गर्न यो आवश्यक छ।"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"यदि बिलिङ ठेगाना खण्ड पछि बिलिङ ठेगाना खण्ड प्रदर्शित हुन्छ र बिलिङ फोन "
+"क्षेत्र &quot;आवश्यक&quot; को रूपमा सेट गरिएको छ भने &quot;आवश्यक&quot; को "
+"रूपमा जबरजस्ती गर्न सकिन्छ। त्यो विकल्प जाँच गर्दा बिलिङ ठेगाना बिलिङ "
+"ठेगानामा प्रतिलिपि गर्न सकिन्छ भनेर सुनिश्चित गर्न यो आवश्यक छ।"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ग्राहकहरूलाई स्टोर व्यवस्थापकद्वारा म्यानुअल रूपमा सिर्जना गरिएका वा "
+"चेकआउटको समयमा पूरा नभएका अर्डरहरूको लागि भुक्तानी गर्न अनुमति दिन्छ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2405,6 +2405,40 @@ msgstr ""
 "ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಬಳಸುವಾಗ ನೈಚರ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ "
 "ಮಾಡಿ."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವು ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗದ ನಂತರ ಪ್ರದರ್ಶಿಸಲ್ಪಟ್ಟಿದ್ದರೆ "
+"ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು &quot;ಅಗತ್ಯ&quot; ಎಂದು ಹೊಂದಿಸಿದ್ದರೆ, "
+"&quot;ಅಗತ್ಯ&quot; ಎಂದು ಒತ್ತಾಯಿಸಬಹುದು. ಆ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿದಾಗ ಶಿಪ್ಪಿಂಗ್ "
+"ವಿಳಾಸವನ್ನು ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸಕ್ಕೆ ನಕಲಿಸಬಹುದೆಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಇದು "
+"ಅಗತ್ಯವಾಗಿರುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗದ ನಂತರ ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವು ಪ್ರದರ್ಶಿತವಾಗಿದ್ದರೆ "
+"ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು &quot;ಅಗತ್ಯ&quot; ಎಂದು ಹೊಂದಿಸಿದ್ದರೆ, "
+"&quot;ಅಗತ್ಯ&quot; ಎಂದು ಒತ್ತಾಯಿಸಬಹುದು. ಆ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿದಾಗ ಬಿಲ್ಲಿಂಗ್ "
+"ವಿಳಾಸವನ್ನು ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸಕ್ಕೆ ನಕಲಿಸಬಹುದೆಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಇದು "
+"ಅಗತ್ಯವಾಗಿರುತ್ತದೆ."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ಅಂಗಡಿ ನಿರ್ವಾಹಕರು ಹಸ್ತಚಾಲಿತವಾಗಿ ರಚಿಸಿದ ಅಥವಾ ಚೆಕ್‌ಔಟ್ ಸಮಯದಲ್ಲಿ ಪೂರ್ಣಗೊಳ್ಳದ "
+"ಆರ್ಡರ್‌ಗಳಿಗೆ ಪಾವತಿಗಳನ್ನು ಮಾಡಲು ಗ್ರಾಹಕರಿಗೆ ಅನುಮತಿಸುತ್ತದೆ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

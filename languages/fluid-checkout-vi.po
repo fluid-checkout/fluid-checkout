@@ -2391,6 +2391,39 @@ msgid ""
 "Checkout."
 msgstr "Xuất phần các bước thanh toán từ chủ đề Nyture khi sử dụng Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Có thể buộc phải là &quot;bắt buộc&quot; nếu phần địa chỉ thanh toán được "
+"hiển thị sau phần địa chỉ giao hàng và trường số điện thoại thanh toán được "
+"đặt là &quot;bắt buộc&quot;. Điều này là cần thiết để đảm bảo địa chỉ giao "
+"hàng có thể được sao chép vào địa chỉ thanh toán khi tùy chọn đó được chọn."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Có thể buộc phải là &quot;bắt buộc&quot; nếu phần địa chỉ thanh toán được "
+"hiển thị sau phần địa chỉ thanh toán và trường số điện thoại thanh toán "
+"được đặt là &quot;bắt buộc&quot;. Điều này là cần thiết để đảm bảo địa chỉ "
+"thanh toán có thể được sao chép vào địa chỉ thanh toán khi tùy chọn đó được "
+"chọn."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Cho phép khách hàng thanh toán cho các đơn hàng được quản trị viên cửa hàng "
+"tạo thủ công hoặc chưa hoàn tất trong quá trình thanh toán."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

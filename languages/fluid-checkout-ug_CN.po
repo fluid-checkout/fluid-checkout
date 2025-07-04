@@ -2398,6 +2398,38 @@ msgstr ""
 "سۇيۇقلۇق چىقىمداننى ئىشلەتكەندە Nyture باشتېمىسىدىن چىقىم قىلىش "
 "باسقۇچلىرىنى چىقىرىڭ."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ئەگەر مال ئەۋەتىش ئادرېسى بۆلىكىدىن كېيىن تالون ئادرېسى بۆلىكى كۆرسىتىلسە ، "
+"تالون تېلېفون مەيدانى «تەلەپ» قىلىپ بېكىتىلسە ، «تەلەپ» بويىچە "
+"مەجبۇرلىنىشىڭىز مۇمكىن ، بۇ تاللاش تەكشۈرۈلگەندە توشۇش ئادرېسىنىڭ ھېسابات "
+"ئادرېسىغا كۆچۈرۈلۈشىگە كاپالەتلىك قىلىش كېرەك."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ئەگەر تالون ئادرېسى بۆلىكى تالون ئادرېسى بۆلىكىدىن كېيىن كۆرسىتىلسە ، تالون "
+"تېلېفون مەيدانى «تەلەپ» قىلىپ بېكىتىلسە ، «تەلەپ قىلىنغاندەك» مەجبۇرلىنىشى "
+"مۇمكىن ، بۇ تاللانما تەكشۈرۈلگەندە ھېسابات ئادرېسىنىڭ ھېسابات ئادرېسىغا "
+"كۆچۈرۈلۈشىگە كاپالەتلىك قىلىش كېرەك."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"خېرىدارلارنىڭ دۇكان باشقۇرغۇچى تەرىپىدىن قولدا ياسالغان ياكى چىقىمداندا "
+"تاماملانمىغان زاكاز ئۈچۈن پۇل تۆلىشىگە يول قويىدۇ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

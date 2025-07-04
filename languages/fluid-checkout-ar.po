@@ -2336,6 +2336,36 @@ msgid ""
 "Checkout."
 msgstr "قم بإخراج قسم خطوات الخروج من سمة Nyture عند استخدام Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"قد يُفرض هذا الخيار على &quot;مطلوب&quot; إذا تم عرض قسم عنوان الفاتورة بعد "
+"قسم عنوان الشحن، وتم ضبط حقل هاتف الفاتورة على &quot;مطلوب&quot;. هذا ضروري "
+"لضمان إمكانية نسخ عنوان الشحن إلى عنوان الفاتورة عند تحديد هذا الخيار."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"قد يُفرض هذا الخيار على &quot;مطلوب&quot; إذا عُرض قسم عنوان الفاتورة بعده، "
+"وكان حقل هاتف الفاتورة مُعيّنًا على &quot;مطلوب&quot;. هذا ضروري لضمان "
+"إمكانية نسخ عنوان الفاتورة إلى عنوان الفاتورة عند تحديد هذا الخيار."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"يتيح للعملاء إجراء الدفعات الخاصة بالطلبات التي تم إنشاؤها يدويًا بواسطة "
+"مسؤول المتجر أو التي لم تكتمل أثناء الخروج."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

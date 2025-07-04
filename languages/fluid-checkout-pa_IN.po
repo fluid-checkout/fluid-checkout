@@ -2380,6 +2380,40 @@ msgstr ""
 "ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਸਮੇਂ Nyture ਥੀਮ ਤੋਂ ਚੈੱਕਆਉਟ ਸਟੈਪਸ ਸੈਕਸ਼ਨ ਨੂੰ "
 "ਆਉਟਪੁੱਟ ਦਿਓ।"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ਜੇਕਰ ਬਿਲਿੰਗ ਪਤਾ ਭਾਗ ਸ਼ਿਪਿੰਗ ਪਤਾ ਭਾਗ ਤੋਂ ਬਾਅਦ ਪ੍ਰਦਰਸ਼ਿਤ ਹੁੰਦਾ ਹੈ, ਅਤੇ ਬਿਲਿੰਗ "
+"ਫ਼ੋਨ ਖੇਤਰ &quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਸੈੱਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਸ਼ਾਇਦ "
+"&quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਮਜਬੂਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਜ਼ਰੂਰੀ ਹੈ "
+"ਕਿ ਜਦੋਂ ਉਸ ਵਿਕਲਪ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਸ਼ਿਪਿੰਗ ਪਤਾ ਬਿਲਿੰਗ ਪਤੇ &#39;ਤੇ "
+"ਕਾਪੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ਜੇਕਰ ਬਿਲਿੰਗ ਐਡਰੈੱਸ ਸੈਕਸ਼ਨ ਬਿਲਿੰਗ ਐਡਰੈੱਸ ਸੈਕਸ਼ਨ ਤੋਂ ਬਾਅਦ ਪ੍ਰਦਰਸ਼ਿਤ ਹੁੰਦਾ ਹੈ, "
+"ਅਤੇ ਬਿਲਿੰਗ ਫ਼ੋਨ ਫੀਲਡ &quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਸੈੱਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਸ਼ਾਇਦ "
+"ਇਸਨੂੰ &quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਮਜਬੂਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ "
+"ਜ਼ਰੂਰੀ ਹੈ ਕਿ ਜਦੋਂ ਉਸ ਵਿਕਲਪ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਬਿਲਿੰਗ ਐਡਰੈੱਸ ਨੂੰ "
+"ਬਿਲਿੰਗ ਐਡਰੈੱਸ &#39;ਤੇ ਕਾਪੀ ਕੀਤਾ ਜਾ ਸਕੇ।"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ਗਾਹਕਾਂ ਨੂੰ ਉਨ੍ਹਾਂ ਆਰਡਰਾਂ ਲਈ ਭੁਗਤਾਨ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ ਜੋ ਜਾਂ ਤਾਂ ਸਟੋਰ "
+"ਐਡਮਿਨ ਦੁਆਰਾ ਹੱਥੀਂ ਬਣਾਏ ਜਾਂਦੇ ਹਨ ਜਾਂ ਚੈੱਕਆਉਟ ਦੌਰਾਨ ਪੂਰੇ ਨਹੀਂ ਹੁੰਦੇ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

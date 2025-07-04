@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-06-22 11:10+0000\n"
+"POT-Creation-Date: 2025-07-04 15:44+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -1237,6 +1237,10 @@ msgstr ""
 msgid "Add shipping phone field to the checkout form."
 msgstr ""
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid "Maybe be forced as \"required\" if the billing address section is displayed after the shipping address section, and the billing phone field is set as \"required. This is needed to ensure the shipping address can be copied to the billing address when that option is checked."
+msgstr ""
+
 #: inc/admin/admin-settings-checkout.php:594
 msgid "Choose in which step to display the shipping phone field."
 msgstr ""
@@ -1251,6 +1255,10 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:607
 msgid "Add billing phone field to the checkout form."
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Maybe be forced as \"required\" if the billing address section is displayed after the billing address section, and the billing phone field is set as \"required. This is needed to ensure the billing address can be copied to the billing address when that option is checked."
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:621
@@ -1394,6 +1402,10 @@ msgstr ""
 
 #: inc/admin/admin-settings-order-pay.php:71
 msgid "Order pay page"
+msgstr ""
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid "Allows customers to make payments for orders that are either created manually by the store admin or not completed during checkout."
 msgstr ""
 
 #: inc/admin/admin-settings-order-pay.php:78

@@ -2222,6 +2222,32 @@ msgid ""
 "Checkout."
 msgstr "Fluid Checkoutを使用する場合、Nytureテーマからチェックアウトのステップセクションを出力します。"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"請求先住所セクションが配送先住所セクションの後に表示され、請求先電話フィールドが「必須」に設定されている場合、「必須」が強制されることがあります。このオ"
+"プションがチェックされている場合、配送先住所を請求先住所に確実にコピーするために必要です。"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"請求先住所セクションが請求先住所セクションの後に表示され、請求先電話フィールドが \"必須 \"に設定されている場合、強制的に \"必須 "
+"\"に設定される可能性があります。これは、このオプションがチェックされているときに、請求先住所を請求先住所にコピーできるようにするために必要です。"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr "店舗管理者が手動で作成した注文、またはチェックアウト中に完了しなかった注文に対して、顧客が支払いを行うことができます。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

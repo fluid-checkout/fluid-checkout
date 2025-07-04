@@ -2617,6 +2617,40 @@ msgstr ""
 "Salida de la sección de pasos de pago del tema Nyture cuando se utiliza "
 "Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Puede ser forzado como \"requerido\" si la sección de dirección de "
+"facturación se muestra después de la sección de dirección de envío, y el "
+"campo de teléfono de facturación se establece como \"requerido\". Esto es "
+"necesario para garantizar que la dirección de envío se pueda copiar en la "
+"dirección de facturación cuando se marca esa opción."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Puede forzarse como \"obligatorio\" si la sección de dirección de "
+"facturación se muestra después de la sección de dirección de facturación, y "
+"el campo de teléfono de facturación se establece como \"obligatorio\". Esto "
+"es necesario para garantizar que la dirección de facturación se pueda "
+"copiar en la dirección de facturación cuando se marca esa opción."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Permite a los clientes realizar pagos de pedidos creados manualmente por el "
+"administrador de la tienda o no completados durante el proceso de pago."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
