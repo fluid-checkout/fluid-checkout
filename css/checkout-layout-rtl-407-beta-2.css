@@ -831,7 +831,7 @@ body div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
 body div.woocommerce button.fc-loading,
 body div.woocommerce .button.fc-loading,
 body div.woocommerce .fc-place-order .fc-place-order-button.fc-loading {
-  position: relative;
+  position: relative !important;
   color: transparent !important;
 }
 
@@ -853,21 +853,24 @@ body div.woocommerce .fc-place-order .fc-place-order-button.fc-loading:after {
   width: 24px;
   height: 24px;
   font-size: 24px;
-  z-index: 10;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  z-index: 10 !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
   transform: translateX(-50%) translateY(-50%);
-  left: 10px;
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  line-height: 1;
-  border-radius: 100%;
-  background-color: transparent;
-  animation: loader-spin-centered 0.75s linear infinite;
+  margin: 0 !important;
+  left: 10px !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  border-radius: 100% !important;
+  border: 0 !important;
+  background-color: transparent !important;
+  animation: loader-spin-centered 0.75s linear infinite !important;
   color: var(--fluidcheckout--color--white, #fff) !important;
-  pointer-events: none;
+  opacity: 1 !important;
+  pointer-events: none !important;
 }
 
 body.has-loading-indicator-verbose div.woocommerce .blockUI.blockOverlay:after {
