@@ -65,7 +65,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_shipping_methods_disable_auto_select'                       => 'no',
 			'fc_enable_checkout_local_pickup'                               => 'no',
-			'fc_local_pickup_default_delivery_option'                       => 'shipping',
+			'fc_local_pickup_default_delivery_type'                         => 'ship',
 			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',

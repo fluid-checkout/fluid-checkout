@@ -1366,7 +1366,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		// Update cache with complete steps consiering the current step
+		// Update cache with complete steps considering the current step
 		$this->cached_values[ $cache_handle ] = $complete_steps;
 
 		return $complete_steps;
