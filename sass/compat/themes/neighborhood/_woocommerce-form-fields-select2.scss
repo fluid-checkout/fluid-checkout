@@ -1,0 +1,30 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {
+	margin-top: 0;
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+	margin-top: remsize( .8rem );
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__clear {
+	margin-#{ $alignment-right }: remsize( 2rem );
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {	
+	padding-#{ $alignment-left }: remsize( 1rem ) !important; // Needed to override theme styles set with `!important`
+}
+
+
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+	padding-#{ $alignment-left }: $form-field-select2-inner-spacing !important; // Needed to override theme styles set with `!important`
+	padding-bottom: $form-field-select2-inner-spacing !important; // Needed to override theme styles set with `!important`
+}
