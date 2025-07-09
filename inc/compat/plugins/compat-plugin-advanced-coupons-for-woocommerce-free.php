@@ -21,6 +21,9 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 	public function hooks() {
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_store_credits' ), 10 );
+
+		// Checkout page
+		add_filter( 'acfw_filter_is_current_page_using_cart_checkout_block', '__return_false', 10 );
 	}
 
 

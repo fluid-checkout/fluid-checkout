@@ -359,6 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Enfold.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix issue on checkout page when checkout form was added as a block.
 * Fixed: Force styles of `fc-loading` class to override styles from theme.
 
 = 4.0.6 - 2025-06-10 =
