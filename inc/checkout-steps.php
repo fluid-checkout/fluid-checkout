@@ -98,7 +98,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Checkout steps
 		add_action( 'wp', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for frontend requests
-		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 10 ); // Register checkout steps for AJAX requests
+		add_action( 'admin_init', array( $this, 'register_default_checkout_steps' ), 5 ); // Register checkout steps for AJAX requests and admin requests, set priority to 5 to ensure it runs before other hooks that might need the steps
+		add_action( 'parse_request', array( $this, 'register_default_checkout_steps' ), 5 ); // Register checkout steps for REST API requests, set priority to 5 to ensure it runs before other hooks that might need the steps
 		add_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 
 		// Checkout form hooks
@@ -437,7 +438,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout form and notices
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
 
-		// Checkout steps (do not undo checkout step registration hooks)
+		// Checkout steps
+		// Do not undo checkout step registration hooks, because steps meta data might be needed by other plugins
 		remove_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
 
 		// Notices
