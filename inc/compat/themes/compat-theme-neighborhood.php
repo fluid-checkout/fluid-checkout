@@ -34,15 +34,19 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+		// Get theme color options
+		$alt_bg_color = get_option('alt_bg_color', '#f7f7f7');
+		$section_divide_color = get_option('section_divide_color', '#e4e4e4');
+		$secondary_accent_color = get_option('secondary_accent_color', '#2e2e36');
+		
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
-				// ! Probably not following the theme styles, but it's a start
-				// Form field styles
-				'--fluidcheckout--field--background-color' => '#f7f7f7',
-				'--fluidcheckout--field--border-color' => '#e4e4e4',
+				// Form field styles using theme colors
+				'--fluidcheckout--field--background-color' => $alt_bg_color,
+				'--fluidcheckout--field--border-color' => $section_divide_color,
 				'--fluidcheckout--field--height' => '38px',
-				'--fluidcheckout--field--font-color' => '#222',
+				'--fluidcheckout--field--text-color' => $secondary_accent_color,
 				'--fluidcheckout--field--font-size' => '16px',
 				'--fluidcheckout--field--padding-left' => '10px',
 			),
