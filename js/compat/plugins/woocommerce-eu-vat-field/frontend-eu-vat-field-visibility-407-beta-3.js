@@ -24,14 +24,20 @@ jQuery(document).ready(function()
 	
 	wcev_current_business_type = wcev.consumer_selector_active == 'true' ? 'consumer' : 'business';
 	
-	//init 
+	// CHANGE: Perform initialization on `updated_checkout` event.
+	wcev_init();
+	jQuery( 'body' ).on( 'updated_checkout', wcev_init );
+});
+// CHANGE: Move field initialization to a separate function.
+function wcev_init() 
+{
 	if(jQuery('#billing_business_consumer_selector').length != 0)
-		jQuery('#billing_business_consumer_selector').trigger('change');
+		// CHANGE: Call the function directly instead of triggering change.
+		wcev_on_business_type_selection({ currentTarget: jQuery('#billing_business_consumer_selector') });
 	else 
 		wcev_on_new_billing_country_selection(true);
 	jQuery('.wcev_disable_field').attr('tabindex', -1);
-	
-});
+}
 function wcev_wcmca_show_fields_according_to_the_loaded_business_type(event)
 {
 	if(jQuery('#'+wcev_wcmca_field_prefix+'billing_business_consumer_selector').length == 0)
@@ -184,8 +190,7 @@ function wcev_show_eu_vat_fields(show, css_selectors, wcma_field_prefix)
 	//UI
 	wcev_assign_required(wcma_field_prefix);
 	
-	//Update checkout product table
-	jQuery( 'body' ).trigger( 'update_checkout' );
+	// CHANGE: Remove 'update_checkout' event trigger to avoid endless loop.
 }
 function wcev_manage_additional_country_fields(selectors, vat_field_can_be_rendered, wcma_field_prefix)
 {
