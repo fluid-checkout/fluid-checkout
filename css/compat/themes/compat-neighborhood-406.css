@@ -9,6 +9,7 @@ body.theme-neighborhood.woocommerce-checkout.woocommerce-page .fc-wrapper #payme
 body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
   display: inline;
   border: none;
+  padding: 5px;
 }
 
 body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper .radio,

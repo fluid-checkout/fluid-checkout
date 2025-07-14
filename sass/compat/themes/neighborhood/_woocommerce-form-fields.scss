@@ -5,6 +5,7 @@
 body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
 	display: inline;
 	border: none;
+	padding: $global-spacing-tiny;
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input-wrapper .radio,
