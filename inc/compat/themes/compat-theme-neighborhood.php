@@ -37,12 +37,13 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// ! Probably not following the theme styles, but it's a start
 				// Form field styles
 				'--fluidcheckout--field--background-color' => '#f7f7f7',
 				'--fluidcheckout--field--border-color' => '#e4e4e4',
 				'--fluidcheckout--field--height' => '38px',
 				'--fluidcheckout--field--font-color' => '#222',
-				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--font-size' => '16px',
 				'--fluidcheckout--field--padding-left' => '10px',
 			),
 		);
