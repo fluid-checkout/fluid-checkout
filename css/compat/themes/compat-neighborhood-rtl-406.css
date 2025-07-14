@@ -6,6 +6,16 @@ body.theme-neighborhood.woocommerce-checkout.woocommerce-page .fc-wrapper #payme
   border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
 }
 
+body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
+  display: inline;
+  border: none;
+}
+
+body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper .radio,
+body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper .checkbox {
+  padding: inherit;
+}
+
 body.theme-neighborhood div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {
   margin-top: 0;
 }
