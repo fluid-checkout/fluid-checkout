@@ -32,9 +32,9 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 	 */
 	public function add_css_variables( $css_variables ) {
 		// Get theme color options
-		$alt_bg_color = get_option('alt_bg_color', '#f7f7f7');
-		$section_divide_color = get_option('section_divide_color', '#e4e4e4');
-		$secondary_accent_color = get_option('secondary_accent_color', '#2e2e36');
+		$alt_bg_color = get_option( 'alt_bg_color', '#f7f7f7' );
+		$section_divide_color = get_option( 'section_divide_color', '#e4e4e4' );
+		$secondary_accent_color = get_option( 'secondary_accent_color', '#2e2e36' );
 		
 		// Add CSS variables
 		$new_css_variables = array(
