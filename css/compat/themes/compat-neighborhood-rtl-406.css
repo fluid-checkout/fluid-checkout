@@ -13,12 +13,6 @@ body.theme-neighborhood .fc-wrapper table.shop_table tr.total td {
   border-top: none !important;
 }
 
-body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
-  display: inline;
-  border: none;
-  padding: 5px;
-}
-
 body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper .radio,
 body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper .checkbox {
   padding: inherit;
