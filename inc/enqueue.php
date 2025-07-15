@@ -137,8 +137,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$settings = array(
 			'ver'                            => self::$version,
 			'assetsVersion'                  => self::$asset_version,
-			'cookiePath'                     => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
-			'cookieDomain'                   => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_HOST ),
+			'cookiePath'                     => wp_parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
+			'cookieDomain'                   => wp_parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_HOST ),
 			'jsPath'                         => self::$directory_url . 'js/',
 			'jsLibPath'                      => self::$directory_url . 'js/lib/',
 			'cssPath'                        => self::$directory_url . 'css/',
@@ -229,7 +229,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Register library scripts
-		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL ); // Should be loaded at the `<head>`
+		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL, array( 'in_footer' => false ) ); // Should be loaded at the `<head>`
 		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
