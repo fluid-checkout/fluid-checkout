@@ -6,6 +6,13 @@ body.theme-neighborhood.woocommerce-checkout.woocommerce-page .fc-wrapper #payme
   border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
 }
 
+body.theme-neighborhood .fc-wrapper table.shop_table tr.cart-subtotal th,
+body.theme-neighborhood .fc-wrapper table.shop_table tr.cart-subtotal td,
+body.theme-neighborhood .fc-wrapper table.shop_table tr.total th,
+body.theme-neighborhood .fc-wrapper table.shop_table tr.total td {
+  border-top: none !important;
+}
+
 body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
   display: inline;
   border: none;

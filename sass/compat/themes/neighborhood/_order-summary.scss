@@ -1,0 +1,10 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper table.shop_table tr.cart-subtotal th, 
+body#{ $_body-theme-selector } .fc-wrapper table.shop_table tr.cart-subtotal td,
+body#{ $_body-theme-selector } .fc-wrapper table.shop_table tr.total th, 
+body#{ $_body-theme-selector } .fc-wrapper table.shop_table tr.total td {
+	border-top: none !important; // Needed to override theme styles set with !important
+}
