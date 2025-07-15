@@ -33,10 +33,16 @@ function wcev_init()
 {
 	if(jQuery('#billing_business_consumer_selector').length != 0)
 		// CHANGE: Call the function directly instead of triggering change.
-		wcev_on_business_type_selection({ currentTarget: jQuery('#billing_business_consumer_selector') });
+		wcev_on_business_type_selection({ currentTarget: jQuery('#billing_business_consumer_selector') }, false);
 	else 
 		wcev_on_new_billing_country_selection(true);
 	jQuery('.wcev_disable_field').attr('tabindex', -1);
+
+	// CHANGE: If `billing_request_eu_vat` checkbox exists, show the EU VAT field based on its state.
+	var billing_request_eu_vat = jQuery('#billing_request_eu_vat');
+	if (billing_request_eu_vat.length > 0) {
+		wcev_show_ev_vat_field_on_request_checkobox_click(true);
+	}
 }
 function wcev_wcmca_show_fields_according_to_the_loaded_business_type(event)
 {
@@ -47,7 +53,8 @@ function wcev_wcmca_show_fields_according_to_the_loaded_business_type(event)
 	wcev_current_country_code = country_code;
 	wcev_show_eu_vat_fields(wcev_is_eu(country_code), null, wcev_wcmca_field_prefix);
 }
-function wcev_on_business_type_selection(event)
+// CHANGE: Add `reset_request_invoice_checkbox` parameter to the function.
+function wcev_on_business_type_selection(event, reset_request_invoice_checkbox = true)
 {
 	if(wcev_current_business_type == jQuery(event.currentTarget).val() && !wcev_is_init)
 	{
@@ -59,7 +66,11 @@ function wcev_on_business_type_selection(event)
 	var country_code = wcev_get_current_selected_billing_country("");
 	wcev_current_country_code = country_code;
 	
-	wcev_reset_request_invoice_checkbox("");
+	// CHANGE: Add condition to reset the request invoice checkbox.
+	if (reset_request_invoice_checkbox) {
+		wcev_reset_request_invoice_checkbox("");
+	}
+
 	if(wcev.show_eu_vat_field_only_when_the_user_requests_an_invoice == 'true')
 		wcev_show_eu_vat_fields(wcev_is_eu(country_code), '#billing_request_eu_vat_field', "");
 	else	
