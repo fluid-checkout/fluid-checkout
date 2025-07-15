@@ -18,6 +18,10 @@ body.theme-neighborhood div.woocommerce form .form-row .woocommerce-input-wrappe
   padding: inherit;
 }
 
+body.theme-neighborhood div.woocommerce form .form-row input[type=text] {
+  height: auto;
+}
+
 body.theme-neighborhood div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__arrow {
   margin-top: 0;
 }

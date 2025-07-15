@@ -6,3 +6,7 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input
 body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input-wrapper .checkbox {
 	padding: inherit;
 }
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="text"] {
+	height: auto;
+}
