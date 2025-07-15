@@ -355,6 +355,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 == Changelog ==
 
 = Unreleased =
+
 * Added: Compatibility with theme Neighborhood.
 
 = 4.0.6 - 2025-06-10 =
