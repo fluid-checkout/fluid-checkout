@@ -19,9 +19,6 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Sticky elements
-
-
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
