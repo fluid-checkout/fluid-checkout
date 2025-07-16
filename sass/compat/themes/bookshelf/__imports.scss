@@ -1,0 +1,16 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-theme-selector:                 '.theme-bookshelf' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2";
