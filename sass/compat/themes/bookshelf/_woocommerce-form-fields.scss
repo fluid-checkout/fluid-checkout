@@ -3,5 +3,5 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row input[type=checkbox]:focus {
-	outline: none !important; // Needed to override FC styles
+	outline: none !important; // Needed to override FC styles to fix double checkmark.
  }
