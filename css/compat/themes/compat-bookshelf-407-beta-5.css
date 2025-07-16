@@ -23,6 +23,10 @@ body.theme-bookshelf button.fc-step__next-step.button {
   display: inline-block;
 }
 
+body.theme-bookshelf .woocommerce-checkout #payment ul.payment_methods li input[type=checkbox] {
+  position: absolute !important;
+}
+
 body.theme-bookshelf .select_container:after {
   display: none;
 }
