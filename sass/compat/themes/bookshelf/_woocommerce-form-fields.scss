@@ -19,10 +19,6 @@ body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method_
 	z-index: 1;
 }
 
-body#{ $_body-theme-selector } button.fc-step__next-step.button {
-	display: inline-block;
-}
-
 body#{ $_body-theme-selector } .woocommerce-checkout #payment ul.payment_methods li input[type="checkbox"] {
 	position: absolute !important; // Needed to override theme styles using !important.
 }
