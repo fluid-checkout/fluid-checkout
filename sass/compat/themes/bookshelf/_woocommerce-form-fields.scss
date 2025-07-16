@@ -18,3 +18,7 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row label.woocommerce-
 body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option input[type=radio] + :after {
 	z-index: 1;
 }
+
+body#{ $_body-theme-selector } button.fc-step__next-step.button {
+	display: inline-block;
+}
