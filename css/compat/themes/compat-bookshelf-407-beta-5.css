@@ -15,6 +15,10 @@ body.theme-bookshelf div.woocommerce-page form .form-row label.checkbox {
   padding-left: 0;
 }
 
+body.theme-bookshelf form button:not(.components-button) {
+  height: 100%;
+}
+
 body.theme-bookshelf div.woocommerce form .form-row label.woocommerce-form__label-for-checkbox {
   padding-left: 20px;
 }

@@ -11,6 +11,10 @@ body#{ $_body-theme-selector } div.woocommerce-page form .form-row label.checkbo
 	padding-#{ $alignment-left }: 0;
 }
 
+body#{ $_body-theme-selector } form button:not(.components-button) { 
+	height: 100%; 
+}
+
 body#{ $_body-theme-selector } div.woocommerce form .form-row label.woocommerce-form__label-for-checkbox {
 	padding-#{ $alignment-left }: $global-spacing-small;
 }
