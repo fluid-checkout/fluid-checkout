@@ -14,3 +14,7 @@ body#{ $_body-theme-selector } div.woocommerce-page form .form-row label.checkbo
 body#{ $_body-theme-selector } div.woocommerce form .form-row label.woocommerce-form__label-for-checkbox {
 	padding-#{ $alignment-left }: $global-spacing-small;
 }
+
+body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option input[type=radio] + :after {
+	z-index: 1;
+}
