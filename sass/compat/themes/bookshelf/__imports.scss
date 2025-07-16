@@ -12,5 +12,6 @@ $_body-theme-selector:                 '.theme-bookshelf' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-login",
 	"woocommerce-form-fields",
 	"woocommerce-form-fields-select2";
