@@ -23,7 +23,7 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		if ( ! $this->is_vat_field_enabled() ) { return; }
 
 		// Register assets
-		add_filter( 'init', array( $this, 'register_assets' ), 10 ); // Use 'init' hook to override the plugin's assets registration within the 'woocommerce_billing_fields' hook
+		add_filter( 'wp', array( $this, 'maybe_replace_plugin_scripts' ), 10 ); // Use 'wp' hook to override the plugin's assets registration within the 'woocommerce_billing_fields' hook
 
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'add_optional_fields_skip_fields' ), 10 );
@@ -58,10 +58,14 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 
 
 	/**
-	 * Register assets.
+	 * Replace plugin scripts with modified version.
 	 */
-	public function register_assets() {
-		// Scripts
+	public function maybe_replace_plugin_scripts() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Plugin's scripts
+		wp_register_script( 'wcev-field-checkout-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-eu-vat-field/frontend-checkout-page' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wcev-field-visibility-managment', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-eu-vat-field/frontend-eu-vat-field-visibility' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
