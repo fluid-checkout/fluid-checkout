@@ -2,8 +2,13 @@ body.theme-bookshelf div.woocommerce form .form-row input[type=checkbox]:focus {
   outline: none !important;
 }
 
-body.theme-bookshelf div.woocommerce form .form-row.fc-same-address-checkbox label {
+body.theme-bookshelf div.woocommerce form .form-row label.checkbox,
+body.theme-bookshelf div.woocommerce-page form .form-row label.checkbox {
   padding-right: 0;
+}
+
+body.theme-bookshelf div.woocommerce form .form-row label.woocommerce-form__label-for-checkbox {
+  padding-right: 20px;
 }
 
 body.theme-bookshelf .select_container:after {

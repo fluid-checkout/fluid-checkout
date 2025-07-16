@@ -6,6 +6,11 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row input[type=checkbo
 	outline: none !important; // Needed to override FC styles to fix double checkmark.
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row.fc-same-address-checkbox label {
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox,
+body#{ $_body-theme-selector } div.woocommerce-page form .form-row label.checkbox {
 	padding-#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.woocommerce-form__label-for-checkbox {
+	padding-#{ $alignment-left }: $global-spacing-small;
 }
