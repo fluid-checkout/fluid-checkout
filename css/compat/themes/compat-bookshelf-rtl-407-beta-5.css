@@ -23,7 +23,9 @@ body.theme-bookshelf div.woocommerce form .form-row label.woocommerce-form__labe
   padding-right: 20px;
 }
 
-body.theme-bookshelf .woocommerce .fc-checkout-step .fc-step__substep input[type=radio] + :after {
+body.theme-bookshelf .woocommerce .fc-checkout-step .fc-step__substep input[type=radio] + :after,
+body.theme-bookshelf .woocommerce .fc-wrapper .fc-inside input[type=radio] + :after,
+body.theme-bookshelf .woocommerce .fc-wrapper input[type=radio] + label:after {
   z-index: 1;
 }
 
