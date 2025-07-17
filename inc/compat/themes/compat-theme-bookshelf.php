@@ -47,19 +47,15 @@ class FluidCheckout_ThemeCompat_Bookshelf extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
-
-		// border-radius: var(--wc-form-border-radius);
-		// border: var(--wc-form-border-width) solid var(--wc-form-border-color);
-
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
-				//! TODO: Check theme variables to replace
 				// Form field styles
-				// '--fluidcheckout--field--padding-left' => '8px',
-				// '--fluidcheckout--field--height' => '40.88px',
-				// '--fluidcheckout--field--border-radius' => '4px',
-				// '--fluidcheckout--field--border-color' => 'rgba(32, 7, 7, 0.8)',
+				'--fluidcheckout--field--padding-left' => '8px',
+				'--fluidcheckout--field--height' => '40.88px',
+				'--fluidcheckout--field--border-radius' => '4px',
+				'--fluidcheckout--field--border-color' => 'rgba(32, 7, 7, 0.8)',
+				// Does not seem that the theme is using the customize font and color options he provides so I am using a fixed value here.
 			),
 		);
 
