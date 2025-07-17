@@ -23,11 +23,11 @@ body.theme-bookshelf div.woocommerce form .form-row label.woocommerce-form__labe
   padding-left: 20px;
 }
 
-body.theme-bookshelf .woocommerce ul#shipping_method .shipping-method__option input[type=radio] + :after {
+body.theme-bookshelf .woocommerce .fc-checkout-step .fc-step__substep input[type=radio] + :after {
   z-index: 1;
 }
 
-body.theme-bookshelf .woocommerce-checkout #payment ul.payment_methods li input[type=checkbox] {
+body.theme-bookshelf div.woocommerce #payment ul.payment_methods li input[type=checkbox] {
   position: absolute !important;
 }
 

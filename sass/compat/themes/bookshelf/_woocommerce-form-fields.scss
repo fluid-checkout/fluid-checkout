@@ -19,10 +19,10 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row label.woocommerce-
 	padding-#{ $alignment-left }: $global-spacing-small;
 }
 
-body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option input[type=radio] + :after {
+body#{ $_body-theme-selector } .woocommerce .fc-checkout-step .fc-step__substep input[type=radio] + :after {
 	z-index: 1;
 }
 
-body#{ $_body-theme-selector } .woocommerce-checkout #payment ul.payment_methods li input[type="checkbox"] {
+body#{ $_body-theme-selector } div.woocommerce #payment ul.payment_methods li input[type="checkbox"] {
 	position: absolute !important; // Needed to override theme styles using !important.
 }
