@@ -24,6 +24,30 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
+
+		// Buttons
+		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
+	}
+
+
+
+	/**
+	 * Add button class from the theme.
+	 * 
+	 * @param  array  $classes  The button classes.
+	 */
+	public function add_button_class( $classes ) {
+		// Add 'qodef-theme-button' class to apply theme styles and 'qodef-m-checkout-link' to add hover animation
+		if ( is_array( $classes ) ) {
+			array_push( $classes, 'qodef-theme-button', 'qodef-m-checkout-link' );
+		} 
+		else {
+			$classes .= ' button alt';
+		}
+
+		return $classes;
 	}
 
 
@@ -35,6 +59,7 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 	 */
 	public function add_css_variables( $css_variables ) {
 		// Get theme color options
+		// ! this is probably not working, because the theme is not using the customize color options he provides?
 		$alt_bg_color = get_option( 'alt_bg_color', '#f7f7f7' );
 		$section_divide_color = get_option( 'section_divide_color', '#e4e4e4' );
 		$secondary_accent_color = get_option( 'secondary_accent_color', '#2e2e36' );
