@@ -147,6 +147,7 @@ function wcev_show_ev_vat_field_on_request_checkobox_click(event)
 }
 function wcev_show_eu_vat_fields(show, css_selectors, wcma_field_prefix)
 {
+	console.log('fields shoudl be shown: ' + show);
 	let show_only_invoice_checkbox = css_selectors === '#'+wcma_field_prefix+'billing_request_eu_vat_field' ? true : false;
 	let selectors = typeof css_selectors === 'undefined' || css_selectors == null ? '#'+wcma_field_prefix+'billing_request_eu_vat_field, #'+wcma_field_prefix+'billing_eu_vat_field' : css_selectors;
 	let sub_selectors = selectors.replace(/_field/g, ''); //??
