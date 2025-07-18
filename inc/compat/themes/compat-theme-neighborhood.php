@@ -68,6 +68,7 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 		$secondary_accent_color = get_option( 'secondary_accent_color', '#2e2e36' );
 		$secondary_accent_alt_color = get_option( 'secondary_accent_alt_color', '#ffffff' );
 		$body_text_color = get_option( 'body_color', '#222222' );
+		$accent_color = get_option( 'accent_color', '#07c1b6' );
 		
 		// Add CSS variables
 		$new_css_variables = array(
@@ -85,9 +86,9 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 				'--fluidcheckout--button--primary--background-color' => $secondary_accent_color,
 				'--fluidcheckout--button--primary--text-color' => $secondary_accent_alt_color,
 				'--fluidcheckout--button--primary--border-color' => $secondary_accent_color,
-				'--fluidcheckout--button--primary--background-color--hover' => $secondary_accent_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $accent_color,
 				'--fluidcheckout--button--primary--text-color--hover' => $secondary_accent_alt_color,
-				'--fluidcheckout--button--primary--border-color--hover' => $secondary_accent_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $accent_color,
 			),
 		);
 
