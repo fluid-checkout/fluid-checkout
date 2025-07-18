@@ -13,4 +13,6 @@ $_body-theme-selector:                 '.theme-avanam' !default;
 // ------------------------------------
 @import
 	"order-summary",
+	"checkout-billing",
+	"checkout-shipping",
 	"checkout-progress-bar";
