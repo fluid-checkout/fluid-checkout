@@ -79,7 +79,7 @@ class FluidCheckout_ThemeCompat_Bookshelf extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
 		$attributes['data-sticky-relative-to'] = '.sc_layouts_row_fixed_on';
-		// ! works partially, tried a few classes but since the header pops up when scrolling down only, then it does not work correctly.
+		// ! works partially, tried a few classes but since the header pops up when scrolling down only, then it does not work correctly..
 
 		return $attributes;
 	}
