@@ -4232,8 +4232,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if option is not enabled
 		if ( apply_filters( 'fc_shipping_methods_disable_auto_select', 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' ), $default, $rates, $chosen_method ) ) { return $default; }
 
-		// Prevent autoselect
-		return false;
+		// Maybe prevent autoselect if chosen method is not in available methods
+		if ( ! array_key_exists( $chosen_method, $rates ) ) {
+			return false;
+		}
+
+		// Otherwise, return unchanged value
+		return $default;
 	}
 
 
