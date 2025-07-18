@@ -24,11 +24,23 @@
 	var _publicMethods = { };
 	var _settings = {
 		vatFieldSelector: '#billing_eu_vat',
+		sdiFieldSelector: '#billing_it_sid_pec',
+		codiceFiscaleFieldSelector: '#billing_it_codice_fiscale',
+		nifNieFieldSelector: '#billing_es_nif_nie',
+
 		vatValidationFieldSelector: '.woocommerce-eu-vat-field-is-valid',
 		vatUniquenessFieldSelector: '.woocommerce-eu-vat-field-is-unique',
+		sdiValidationFieldSelector: '.woocommerce-eu-vat-field-is-cdi-field-valid',
+		codiceFiscaleValidationFieldSelector: '.woocommerce-eu-vat-field-is-codice-fiscale-field-valid',
+		nifNieValidationFieldSelector: '.woocommerce-eu-vat-field-is-nif-nie-field-valid',
+
 		validationMessages: {
 			vat_not_valid:     'Vat number is invalid',
 			vat_not_unique:    'Vat number has been already associated to another user.',
+			sdi_not_valid:     'SDI/Pec has an invalid format. Please check!',
+			vat_empty:         'Vat field cannot be empty. Enter a valid vat or remove the SDI/Pec field content.',
+			codice_fiscale_not_valid: 'Codice Fiscale has an invalid format.',
+			nif_nie_not_valid: 'NIF / NIE code has an invalid format. Please check!',
 		},
 	};
 
@@ -53,6 +65,47 @@
 		return true;
 	};
 
+	/**
+	 * Check if form row is a SDI field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is a SDI field.
+	 * */
+	var isSdiField = function( field, formRow, validationEvent ) {
+		if ( ! field.matches( _settings.sdiFieldSelector ) ) { return false; }
+
+		return true;
+	}
+
+	/**
+	 * Check if form row is a Codice Fiscale field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is a Codice Fiscale field.
+	 */
+	var isCodiceFiscaleField = function( field, formRow, validationEvent ) {
+		if ( ! field.matches( _settings.codiceFiscaleFieldSelector ) ) { return false; }
+
+		return true;
+	}
+
+	/**
+	 * Check if form row is a NIF/NIE field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the field is a NIF/NIE field.
+	 */
+	var isNifNieField = function( field, formRow, validationEvent ) {
+		if ( ! field.matches( _settings.nifNieFieldSelector ) ) { return false; }
+
+		return true;
+	}
+
+
+
 
 
 	/**
@@ -60,14 +113,14 @@
 	 * @param  {Field}    field            Field for validation.
 	 * @param  {Element}  formRow          Form row element.
 	 * @param  {String}   validationEvent  Event that triggered the validation.
-	 * @return {Boolean}                   Whether the date is inside the allowed delivery dates range. Returns `true` if the date is accepted for delivery, `false` otherwise.
+	 * @return {Boolean}                   Whether the VAT number is valid. Returns `true` if the VAT number is valid, `false` otherwise.
 	 */
 	 var validateVatNumber = function( field, formRow, validationEvent ) {
 		// Get hidden field with validation status
 		var validationStatusField = document.querySelector( _settings.vatValidationFieldSelector );
 
 		// Return data-error as message if field is invalid
-		if ( validationStatusField && '' === validationStatusField.value ) {
+		if ( field.value && validationStatusField && '' === validationStatusField.value ) {
 			// Return as invalid
 			return { valid: false, message: _settings.validationMessages.vat_not_valid };
 		}
@@ -81,16 +134,74 @@
 	 * @param  {Field}    field            Field for validation.
 	 * @param  {Element}  formRow          Form row element.
 	 * @param  {String}   validationEvent  Event that triggered the validation.
-	 * @return {Boolean}                   Whether the date is enabled for delivery. Returns `true` if the date is enabled, `false` otherwise.
+	 * @return {Boolean}                   Whether the VAT number is unique. Returns `true` if the VAT number is unique, `false` otherwise.
 	 */
 	var validateVatUniqueness = function( field, formRow, validationEvent ) {
 		// Get hidden field with validation status
 		var validationStatusField = document.querySelector( _settings.vatUniquenessFieldSelector );
 
 		// Return data-error as message if field is invalid
-		if ( validationStatusField && '' === validationStatusField.value ) {
+		if ( field.value && validationStatusField && '' === validationStatusField.value ) {
 			// Return as invalid
 			return { valid: false, message: _settings.validationMessages.vat_not_unique };
+		}
+
+		// Field is valid
+		return { valid: true };
+	};
+
+	/**
+	 * Validate Codice Fiscale field.
+	 * @param  {Field}    field            Field for validation.
+	 * @param  {Element}  formRow          Form row element.
+	 * @param  {String}   validationEvent  Event that triggered the validation.
+	 * @return {Boolean}                   Whether the Codice Fiscale is valid. Returns `true` if the Codice Fiscale is valid, `false` otherwise.
+	 */
+	var validateSdiField = function( field, formRow, validationEvent ) {
+		// Get hidden field with validation status
+		var validationStatusField = document.querySelector( _settings.sdiValidationFieldSelector );
+
+		// Get VAT field
+		var vatField = document.querySelector( _settings.vatFieldSelector );
+
+		// Return data-error as message if VAT field is empty
+		if ( vatField && '' === vatField.value ) {
+			// Return as invalid
+			return { valid: false, message: _settings.validationMessages.vat_empty };
+		}
+
+		// Return data-error as message if field is invalid
+		if ( field.value && validationStatusField && '' === validationStatusField.value ) {
+			// Return as invalid
+			return { valid: false, message: _settings.validationMessages.sdi_not_valid };
+		}
+
+		// Field is valid
+		return { valid: true };
+	};
+
+	var validateCodiceFiscaleField = function( field, formRow, validationEvent ) {
+		// Get hidden field with validation status
+		var validationStatusField = document.querySelector( _settings.codiceFiscaleValidationFieldSelector );
+
+		// Return data-error as message if field is invalid
+		if ( field.value && validationStatusField && '' === validationStatusField.value ) {
+			// Return as invalid
+			return { valid: false, message: _settings.validationMessages.codice_fiscale_not_valid };
+		}
+
+		// Field is valid
+		return { valid: true };
+	};
+
+	var validateNifNieField = function( field, formRow, validationEvent ) {
+		// Get hidden field with validation status
+		var validationStatusField = document.querySelector( _settings.nifNieValidationFieldSelector );
+
+		// Return data-error as message if field is invalid
+		if ( field.value && validationStatusField && '' === validationStatusField.value ) {
+			// Return as invalid
+			return { valid: false, message: _settings.validationMessages.nif_nie_not_valid };
 		}
 
 		// Field is valid
@@ -105,20 +216,32 @@
 	var registerValidationTypes = function() {
 		CheckoutValidation.registerValidationType( 'vat_invalid', 'vat-invalid', isVatField, validateVatNumber );
 		CheckoutValidation.registerValidationType( 'vat_not_unique', 'vat-not-unique', isVatField, validateVatUniqueness );
+		CheckoutValidation.registerValidationType( 'sdi_invalid', 'sdi-invalid', isSdiField, validateSdiField );
+		CheckoutValidation.registerValidationType( 'codice_fiscale_invalid', 'codice-fiscale-invalid', isCodiceFiscaleField, validateCodiceFiscaleField );
+		CheckoutValidation.registerValidationType( 'nif_nie_invalid', 'nif-nie-invalid', isNifNieField, validateNifNieField );
 	}
 
 
 
 	/**
-	 * Validate VAT number field.
+	 * Maybe validate plugin fields.
 	 */
-	var maybeValidateVatField = function() {
-		// Get phone field to re-validate
-		var field = document.querySelector( _settings.vatFieldSelector );
-
-		// Maybe trigger field valiation
+	var maybeValidateFields = function() {
+		var fields = [
+			document.querySelector( _settings.vatFieldSelector ),
+			document.querySelector( _settings.sdiFieldSelector ),
+			document.querySelector( _settings.codiceFiscaleFieldSelector),
+			document.querySelector( _settings.nifNieFieldSelector )
+		];
+		
+		// Maybe validate fields
 		if ( window.CheckoutValidation ) {
-			CheckoutValidation.validateField( field, 'change' );
+			for ( var i = 0; i < fields.length; i++ ) {
+				var field = fields[i];
+				if ( ! field ) { continue; }
+
+				CheckoutValidation.validateField( field, 'change' );
+			}
 		}
 	}
 
@@ -139,10 +262,11 @@
 		// Register validation types
 		registerValidationTypes();
 
-		// Add jQuery event listeners
-		if ( _hasJQuery ) {
-			$( document ).on( 'updated_checkout', maybeValidateVatField );
-		}
+
+	   // Add jQuery event listeners
+	   if ( _hasJQuery ) {
+		   $( document ).on( 'updated_checkout', maybeValidateFields );
+	   }
 
 		_hasInitialized = true;
 	};

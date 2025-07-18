@@ -50,7 +50,7 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_hidden_fields_fragment' ), 10 );
 
 		// Maybe set substep as incomplete
-		// add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing_address' ), 10 );
+		add_filter( 'fc_is_substep_complete_billing_address', array( $this, 'maybe_set_substep_incomplete_billing_address' ), 10 );
 	}
 
 	/**
@@ -159,6 +159,10 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 			'validationMessages'  => array(
 				'vat_not_valid' => ! empty( $messages[ 'error_text' ] ) ? $messages[ 'error_text' ] : __( 'Vat number is invalid', 'woocommerce-eu-vat-field' ),
 				'vat_not_unique' => ! empty( $messages[ 'unique_vat_number_check_fail_text' ] ) ? $messages[ 'unique_vat_number_check_fail_text' ] : __( 'Vat number has been already associated to another user.', 'woocommerce-eu-vat-field' ),
+				'sdi_not_valid' => ! empty( $messages[ 'it_sid_pec_validation_message' ] ) ? $messages[ 'it_sid_pec_validation_message' ] : __( 'SDI/Pec has an invalid format. Please check!', 'woocommerce-eu-vat-field' ),
+				'vat_empty' => ! empty( $messages[ 'it_vat_field_empty_error_text' ] ) ? $messages[ 'it_vat_field_empty_error_text' ] : __( 'Vat field cannot be empty. Enter a valid vat or remove the SDI/Pec field content.', 'woocommerce-eu-vat-field' ),
+				'codice_fiscale_not_valid' => ! empty( $messages[ 'it_cod_fiscale_label' ] ) ? sprintf( wp_kses( __( '%s has an invalid format.', 'woocommerce-eu-vat-field' ), 'strong') , $messages[ 'it_cod_fiscale_label' ] ) : __( 'Codice Fiscale has an invalid format.', 'woocommerce-eu-vat-field' ),
+				'nif_nie_not_valid' => ! empty( $messages[ 'es_nif_nie_validation_error_text' ] ) ? $messages[ 'es_nif_nie_validation_error_text' ] : __( 'NIF / NIE code has an invalid format. Please check!', 'woocommerce-eu-vat-field' ),
 			),
 		);
 
@@ -279,30 +283,142 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		return $is_unique;
 	}
 
+	/**
+	 * Check if the Italy CDI/PEC field is valid.
+	 * ADOPTED FROM: WCEV_VatField::validate_extra_country_specific_fields.
+	 *
+	 * @param  string  $sdi  The CDI value to validate.
+	 */
+	public function is_sdi_field_valid( $sdi ) {
+		global $wcev_vat_field_model;
+		$is_valid = true;
+		$sdi_field_key = 'billing_it_sid_pec';
+
+		// Bail if WC Validation class is not available
+		if ( ! class_exists( 'WC_Validation' ) ) { return $is_valid; }
+
+		// Get billing country
+		$billing_country = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_country' );
+
+		// Bail if billing country is not Italy
+		if ( 'IT' !== $billing_country ) { return $is_valid; }
+
+		// Get field values
+		$business_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_business_consumer_selector' );
+
+		// Check if field is mandatory
+		if ( ! $wcev_vat_field_model || ! method_exists( $wcev_vat_field_model, 'is_it_sid_pec_field_mandatory' ) ) {
+
+		// Maybe validate field
+		if ( 'consumer' !== $business_type ) {
+			// SDI/PEC must be a valid email or 7 alphanumeric characters
+			$is_valid = WC_Validation::is_email( $sdi ) || ( ctype_alnum( $sdi ) && 7 === strlen( $sdi ) );
+		}
+
+		return $is_valid;
+	}
+
+	/**
+	 * Check if the Italy Codice Fiscale field is valid.
+	 * ADOPTED FROM: WCEV_VatField::validate_extra_country_specific_fields.
+	 *
+	 * @param  string  $codice_fiscale  The Codice Fiscale value to validate.
+	 */
+	public function is_codice_fiscale_field_valid( $codice_fiscale ) {
+		$is_valid = true;
+		$codice_fiscale_field_key = 'billing_it_codice_fiscale';
+
+		// Get billing country
+		$billing_country = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_country' );
+
+		// Bail if billing country is not Italy
+		if ( 'IT' !== $billing_country ) { return $is_valid; }
+
+		// Bail if class is not available
+		$class_name = 'WCEV_VatField';
+		if ( ! class_exists( $class_name ) ) { return; }
+
+		// Get class object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+
+		// Bail if class object or its method is not available
+		if ( ! $class_object || ! method_exists( $class_object, 'codice_fiscale_has_valid_format' ) ) { return $is_valid; }
+
+		// Validate field
+		$is_valid = $class_object->codice_fiscale_has_valid_format( $codice_fiscale );
+
+		return $is_valid;
+	}
+
+	/**
+	 * Check if the Spain NIF/NIE field is valid.
+	 * ADOPTED FROM: WCEV_VatField::validate_extra_country_specific_fields.
+	 *
+	 * @param  string  $nif_nie  The NIF/NIE value to validate.
+	 */
+	public function is_nif_nie_field_valid( $nif_nie ) {
+		$is_valid = true;
+		$nif_nie_field_key = 'billing_es_nif_nie';
+
+		// Get billing country
+		$billing_country = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_country' );
+
+		// Bail if billing country is not Spain
+		if ( 'ES' !== $billing_country ) { return $is_valid; }
+
+		// Bail if class is not available
+		$class_name = 'WCEV_VatField';
+		if ( ! class_exists( $class_name ) ) { return; }
+
+		// Get class object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+
+		// Bail if class object or its method is not available
+		if ( ! $class_object || ! method_exists( $class_object, 'is_valid_es_id_number' ) ) { return $is_valid; }
+
+		// Get selected business type
+		$business_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_business_consumer_selector' );
+
+		// Maybe validate field
+		if ( 'consumer' !== $business_type ) {
+			$is_valid = $class_object->is_valid_es_id_number( $nif_nie );
+		}
+
+		return $is_valid;
+	}
+
 
 
 	/**
 	 * Output the custom hidden fields.
 	 */
 	public function output_custom_hidden_fields() {
-		// Get entered VAT number
-		$field_key = 'billing_eu_vat';
-		$vat_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( $field_key );
-
-		error_log(print_r('vat numb: '. $vat_number, true));
+		// Get billing country
+		$billing_country = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_country' );
 
 		// Validate VAT number
-		$is_valid = $this->is_vat_number_valid( $vat_number );
-		$is_unique = $this->is_vat_number_unique( $vat_number );
+		$vat_number = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_eu_vat' );
+		$is_vat_valid = $this->is_vat_number_valid( $vat_number );
+		$is_vat_unique = $this->is_vat_number_unique( $vat_number );
 
+		// Validate Italy secondary fields
+		$sdi = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_it_sid_pec' );
+		$codice_fiscale = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_it_codice_fiscale' );
+		$is_sdi_field_valid = $this->is_sdi_field_valid( $sdi );
+		$is_codice_fiscale_valid = $this->is_codice_fiscale_field_valid( $codice_fiscale );
 
-		error_log(print_r('$is_valid: ' . $is_valid, true));
+		// Validate Spain secondary field
+		$nif_nie = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_es_nif_nie' );
+		$is_nif_nie_valid = $this->is_nif_nie_field_valid( $nif_nie );
 
 		// Output custom hidden fields
 		echo '<div id="woocommerce-eu-vat-field-custom_checkout_fields" class="form-row fc-no-validation-icon">';
 		echo '<div class="woocommerce-input-wrapper">';
-		echo '<input type="hidden" name="woocommerce-eu-vat-field-is-valid" value="'. esc_attr( $is_valid ) .'" class="woocommerce-eu-vat-field-is-valid">';
-		echo '<input type="hidden" name="woocommerce-eu-vat-field-is-unique" value="'. esc_attr( $is_unique ) .'" class="woocommerce-eu-vat-field-is-unique">';
+		echo '<input type="hidden" name="woocommerce-eu-vat-field-is-valid" value="'. esc_attr( $is_vat_valid ) .'" class="woocommerce-eu-vat-field-is-valid">';
+		echo '<input type="hidden" name="woocommerce-eu-vat-field-is-unique" value="'. esc_attr( $is_vat_unique ) .'" class="woocommerce-eu-vat-field-is-unique">';
+		echo '<input type="hidden" name="woocommerce-eu-vat-field-is-cdi-field-valid" value="'. esc_attr( $is_sdi_field_valid ) .'" class="woocommerce-eu-vat-field-is-cdi-field-valid">';
+		echo '<input type="hidden" name="woocommerce-eu-vat-field-is-codice-fiscale-field-valid" value="'. esc_attr( $is_codice_fiscale_valid ) .'" class="woocommerce-eu-vat-field-is-codice-fiscale-field-valid">';
+		echo '<input type="hidden" name="woocommerce-eu-vat-field-is-nif-nie-field-valid" value="'. esc_attr( $is_nif_nie_valid ) .'" class="woocommerce-eu-vat-field-is-nif-nie-field-valid">';
 		echo '</div>';
 		echo '</div>';
 	}
@@ -338,12 +454,18 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 
 		// Get field values
 		$vat_number = WC()->checkout->get_value( 'billing_eu_vat' );
+		$sdi = WC()->checkout->get_value( 'billing_it_sid_pec' );
+		$codice_fiscale = WC()->checkout->get_value( 'billing_it_codice_fiscale' );
+		$nif_nie = WC()->checkout->get_value( 'billing_es_nif_nie' );
 
-		// Validate VAT number
-		$is_valid = $this->is_vat_number_valid( $vat_number );
+		// Validate field values
+		$is_vat_valid = $this->is_vat_number_valid( $vat_number );
+		$is_sdi_valid = $this->is_sdi_field_valid( $sdi );
+		$is_codice_fiscale_valid = $this->is_codice_fiscale_field_valid( $codice_fiscale );
+		$is_nif_nie_valid = $this->is_nif_nie_field_valid( $nif_nie );
 
-		// Maybe set step as incomplete
-		if ( ! $is_valid ) {
+		// Maybe set substep as incomplete
+		if ( ! $is_vat_valid || ! $is_sdi_valid || ! $is_codice_fiscale_valid || ! $is_nif_nie_valid ) {
 			$is_substep_complete = false;
 		}
 
