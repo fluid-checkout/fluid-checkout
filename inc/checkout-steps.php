@@ -4993,7 +4993,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $value_from_filter;
 		}
 
-		// Get parsed posted data
+		// Maybe get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
 		}
@@ -5141,7 +5141,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $value_from_filter;
 		}
 
-		// Get parsed posted data
+		// Maybe get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
 		}
