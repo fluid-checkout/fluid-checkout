@@ -541,7 +541,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'              => 'fc_select',
 						'options'           => array(
 							'ship'          => __( 'Ship', 'fluid-checkout' ),
-							'local_pickup'  => __( 'Pickup', 'fluid-checkout' ),
+							'pickup'        => __( 'Pickup', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_default_delivery_type' ),
 						'autoload'          => false,
