@@ -1,0 +1,15 @@
+body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+  width: 100%;
+}
+
+body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .checkout-order-review .checkout-review-product-image {
+  display: none;
+}
+
+body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review_title {
+  border-bottom: none;
+}
+
+body.theme-avanam .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+  margin-top: 5px;
+}

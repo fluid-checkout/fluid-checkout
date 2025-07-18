@@ -1,0 +1,15 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+	width: 100%;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review .checkout-review-product-image {
+	display: none; // Hide product images, already showing thumbnails
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper #order_review_title {
+	border-bottom: none;
+}
