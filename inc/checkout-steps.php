@@ -4228,10 +4228,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_prevent_shipping_method_autoselect_enabled() {
 		// Define default value
-		$should_disable = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
+		$should_prevent_autoselect = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
 
 		// Return value
-		return apply_filters( 'fc_shipping_methods_disable_auto_select', $should_disable );
+		return apply_filters( 'fc_shipping_methods_disable_auto_select', $should_prevent_autoselect );
 	}
 
 	/**
@@ -4246,7 +4246,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! $this->is_prevent_shipping_method_autoselect_enabled() ) { return $default; }
 
 		// Maybe prevent autoselect if chosen method is not in available methods
-		if ( empty( $chosen_method ) || ! array_key_exists( $chosen_method, $rates ) ) {
+		if ( ! empty( $chosen_method ) && ! array_key_exists( $chosen_method, $rates ) ) {
 			return false;
 		}
 
