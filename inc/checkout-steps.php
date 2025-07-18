@@ -4221,6 +4221,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return 1;
 	}
 
+
+
+	/**
+	 * Check whether the option to prevent shipping method autoselect is enabled.
+	 */
+	public function is_prevent_shipping_method_autoselect_enabled() {
+		// Define default value
+		$should_disable = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
+
+		// Return value
+		return apply_filters( 'fc_shipping_methods_disable_auto_select', $should_disable );
+	}
+
 	/**
 	 * Maybe prevent autoselect shipping method.
 	 * 
@@ -4230,10 +4243,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_prevent_autoselect_shipping_method( $default, $rates, $chosen_method ) {
 		// Bail if option is not enabled
-		if ( apply_filters( 'fc_shipping_methods_disable_auto_select', 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' ), $default, $rates, $chosen_method ) ) { return $default; }
+		if ( ! $this->is_prevent_shipping_method_autoselect_enabled() ) { return $default; }
 
 		// Maybe prevent autoselect if chosen method is not in available methods
-		if ( ! array_key_exists( $chosen_method, $rates ) ) {
+		if ( empty( $chosen_method ) || ! array_key_exists( $chosen_method, $rates ) ) {
 			return false;
 		}
 
