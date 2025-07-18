@@ -29,6 +29,10 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
+
+		// Apply button colors and design styles
+		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
+		add_filter( 'fc_apply_button_design_styles', '__return_true', 10 );
 	}
 
 
@@ -39,12 +43,12 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 	 * @param  array  $classes  The button classes.
 	 */
 	public function add_button_class( $classes ) {
-		// Add 'qodef-theme-button' class to apply theme styles and 'qodef-m-checkout-link' to add hover animation
+		// Add 'alt' class to apply theme styles
 		if ( is_array( $classes ) ) {
-			array_push( $classes, 'qodef-theme-button', 'qodef-m-checkout-link' );
+			array_push( $classes, 'alt');
 		} 
 		else {
-			$classes .= ' button alt';
+			$classes .= ' alt';
 		}
 
 		return $classes;
@@ -59,10 +63,11 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 	 */
 	public function add_css_variables( $css_variables ) {
 		// Get theme color options
-		// ! this is probably not working, because the theme is not using the customize color options he provides?
 		$alt_bg_color = get_option( 'alt_bg_color', '#f7f7f7' );
 		$section_divide_color = get_option( 'section_divide_color', '#e4e4e4' );
 		$secondary_accent_color = get_option( 'secondary_accent_color', '#2e2e36' );
+		$secondary_accent_alt_color = get_option( 'secondary_accent_alt_color', '#ffffff' );
+		$body_text_color = get_option( 'body_color', '#222222' );
 		
 		// Add CSS variables
 		$new_css_variables = array(
@@ -71,9 +76,18 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 				'--fluidcheckout--field--background-color' => $alt_bg_color,
 				'--fluidcheckout--field--border-color' => $section_divide_color,
 				'--fluidcheckout--field--height' => '38px',
-				'--fluidcheckout--field--text-color' => $secondary_accent_color,
-				'--fluidcheckout--field--font-size' => '16px',
+				'--fluidcheckout--field--text-color' => $body_text_color,
+				'--fluidcheckout--field--font-size' => '15px',
 				'--fluidcheckout--field--padding-left' => '10px',
+
+				// Button styles
+				'--fluidcheckout--button--border-radius' => '4px',
+				'--fluidcheckout--button--primary--background-color' => $secondary_accent_color,
+				'--fluidcheckout--button--primary--text-color' => $secondary_accent_alt_color,
+				'--fluidcheckout--button--primary--border-color' => $secondary_accent_color,
+				'--fluidcheckout--button--primary--background-color--hover' => $secondary_accent_color,
+				'--fluidcheckout--button--primary--text-color--hover' => $secondary_accent_alt_color,
+				'--fluidcheckout--button--primary--border-color--hover' => $secondary_accent_color,
 			),
 		);
 
