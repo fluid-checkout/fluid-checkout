@@ -32,8 +32,12 @@ jQuery(document).ready(function()
 function wcev_init() 
 {
 	if(jQuery('#billing_business_consumer_selector').length != 0)
+	{
+		// CHANGE: Update current business type from the selector value to ensure it's current
+		wcev_current_business_type = jQuery('#billing_business_consumer_selector').val();
 		// CHANGE: Call the function directly instead of triggering change.
 		wcev_on_business_type_selection({ currentTarget: jQuery('#billing_business_consumer_selector') }, false);
+	}
 	else 
 		wcev_on_new_billing_country_selection(true);
 	jQuery('.wcev_disable_field').attr('tabindex', -1);
@@ -56,7 +60,8 @@ function wcev_wcmca_show_fields_according_to_the_loaded_business_type(event)
 // CHANGE: Add `reset_request_invoice_checkbox` parameter to the function.
 function wcev_on_business_type_selection(event, reset_request_invoice_checkbox = true)
 {
-	if(wcev_current_business_type == jQuery(event.currentTarget).val() && !wcev_is_init)
+	// CHANGE: Only skip execution if business type hasn't changed AND it's not during initialization AND we're not resetting checkbox
+	if(wcev_current_business_type == jQuery(event.currentTarget).val() && ! wcev_is_init && reset_request_invoice_checkbox)
 	{
 		wcev_is_init = false;
 		return ;
