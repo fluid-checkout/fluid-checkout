@@ -139,6 +139,7 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 		$license_key_status = 'empty';
 		$license_key_status_class = 'fc-license-key__status-label--empty';
 		$license_key_status_text = '';
+		// translators: %s: Product URL.
 		$license_action_html = sprintf( __( '<a href="https://fluidcheckout.com/account/" target="_blank">Log in to your account</a> to get your license key, or <a href="%s" target="_blank">purchase a new license key</a>.', 'fluid-checkout' ), esc_url( $value[ 'product_url' ] ) );
 
 		if ( is_array( $license_status ) ) {
@@ -162,6 +163,7 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 				case 'cancelled':
 					$license_key_status_text = __( 'License key cancelled.', 'fluid-checkout' );
 					$license_key_status_class = 'fc-license-key__status-label--cancelled';
+					// translators: %s: Product URL.
 					$license_action_html = sprintf( __( '<a href="%s" target="_blank">Purchase a new license key</a> and continue to receive updates and support.', 'fluid-checkout' ), esc_url( $value[ 'product_url' ] ) );
 					break;
 				case 'error':

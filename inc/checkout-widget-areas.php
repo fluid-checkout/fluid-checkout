@@ -212,7 +212,7 @@ class FluidCheckout_CheckoutWidgetAreas extends FluidCheckout {
 		if ( ! is_active_sidebar( 'fc_checkout_sidebar_after' ) ) { return; }
 
 		$additional_classes = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_widget_area_sidebar_last_step' ) ? 'last-step-only' : '';
-		echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside fc-clearfix ' . $additional_classes . '">';
+		echo '<div class="fc-widget-area fc-checkout-order-review__widgets-outside fc-clearfix ' . esc_attr( $additional_classes ) . '">';
 		dynamic_sidebar( 'fc_checkout_sidebar_after' );
 		echo '</div>';
 	}
