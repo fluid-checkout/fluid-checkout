@@ -72,6 +72,7 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 
 		// VAT validation
 		remove_action( 'woocommerce_checkout_update_order_review', array( $class_object, 'validate_vat_field_and_remove_tax' ), 10 );
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_tax_exemption' ), 10 );
 	}
 
 
@@ -306,9 +307,6 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		// Get field values
 		$business_type = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session_or_posted_data( 'billing_business_consumer_selector' );
 
-		// Check if field is mandatory
-		if ( ! $wcev_vat_field_model || ! method_exists( $wcev_vat_field_model, 'is_it_sid_pec_field_mandatory' ) ) {
-
 		// Maybe validate field
 		if ( 'consumer' !== $business_type ) {
 			// SDI/PEC must be a valid email or 7 alphanumeric characters
@@ -470,6 +468,36 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		}
 
 		return $is_substep_complete;
+	}
+
+
+	/**
+	 * Maybe set the tax exemption based on the VAT field value.
+	 * ADOPTED FROM: WCEV_VatField::validate_extra_country_specific_fields.
+	 * 
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_tax_exemption( $posted_data ) {
+		global $wcev_customer_model;
+		$apply_vat_exemption = false;
+
+		// Bail if required object or its method is not available
+		if ( ! $wcev_customer_model || ! method_exists( $wcev_customer_model, 'is_elegible_for_vat_exemption' ) ) { return $posted_data; }
+
+		// Get field values from posted data
+		$vat_number = isset( $posted_data[ 'billing_eu_vat' ] ) ? $posted_data[ 'billing_eu_vat' ] : '';
+		$billing_country = isset( $posted_data[ 'billing_country' ] ) ? $posted_data[ 'billing_country' ] : '';
+
+		// Check if the user is eligible for VAT exemption
+		if ( $this->is_vat_number_valid( $vat_number ) && $wcev_customer_model->is_elegible_for_vat_exemption( $billing_country ) ) {
+			$apply_vat_exemption = true;
+		}
+
+		// Set VAT exemption
+		$wcev_customer_model->set_vat_exemption( $apply_vat_exemption );
+
+		// Return unchanged posted data
+		return $posted_data;
 	}
 
 }
