@@ -42,7 +42,7 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 
 		// Field attributes
 		add_action( 'woocommerce_billing_fields', array( $this, 'hide_plugin_fields' ), 10 );
-		add_action( 'woocommerce_billing_fields', array( $this, 'maybe_add_loading_indicator' ), 10 );
+		add_action( 'woocommerce_billing_fields', array( $this, 'maybe_change_field_args' ), 10 );
 
 		// Hidden fields
 		add_action( 'woocommerce_checkout_billing', array( $this, 'output_custom_hidden_fields' ), 10 );
@@ -244,28 +244,28 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 	 *
 	 * @param  array  $fields  The checkout fields.
 	 */
-	public function maybe_add_loading_indicator( $fields ) {
-		// Fields to add loading indicator class
-		$field_keys = array(
-			'billing_eu_vat',
-			'billing_it_sid_pec',
-			'billing_it_codice_fiscale',
-			'billing_es_nif_nie',
+	public function maybe_change_field_args( $fields ) {
+		// Fields configuration
+		$field_configs = array(
+			'billing_eu_vat' => array( 'update_totals_on_change', 'loading_indicator_on_change' ),
+			'billing_it_sid_pec' => array( 'update_totals_on_change', 'loading_indicator_on_change' ),
+			'billing_it_codice_fiscale' => array( 'update_totals_on_change', 'loading_indicator_on_change' ),
+			'billing_es_nif_nie' => array( 'update_totals_on_change', 'loading_indicator_on_change' ),
+			'billing_business_consumer_selector' => array( 'update_totals_on_change' ),
 		);
 
-		// Add loading indicator class to the fields
-		foreach ( $field_keys as $field_key ) {
+		// Add classes to fields
+		foreach ( $field_configs as $field_key => $classes ) {
 			// Skip if field is not set
 			if ( ! isset( $fields[ $field_key ] ) ) { continue; }
 
-			// Maybe create the class array
+			// Initialize class array if needed
 			if ( ! isset( $fields[ $field_key ][ 'class' ] ) || ! is_array( $fields[ $field_key ][ 'class' ] ) ) {
 				$fields[ $field_key ][ 'class' ] = array();
 			}
 
-			// Add classes to show loading indicator on change
-			$class_args = array( 'update_totals_on_change', 'loading_indicator_on_change' );
-			$fields[ $field_key ][ 'class' ] = array_merge( $fields[ $field_key ][ 'class' ], $class_args );
+			// Add classes
+			$fields[ $field_key ][ 'class' ] = array_merge( $fields[ $field_key ][ 'class' ], $classes );
 		}
 
 		return $fields;
