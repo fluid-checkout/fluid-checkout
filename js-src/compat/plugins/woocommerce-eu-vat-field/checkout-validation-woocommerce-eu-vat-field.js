@@ -165,7 +165,7 @@
 		var vatField = document.querySelector( _settings.vatFieldSelector );
 
 		// Return data-error as message if VAT field is empty
-		if ( vatField && '' === vatField.value ) {
+		if ( field.value && vatField && '' === vatField.value ) {
 			// Return as invalid
 			return { valid: false, message: _settings.validationMessages.vat_empty };
 		}
