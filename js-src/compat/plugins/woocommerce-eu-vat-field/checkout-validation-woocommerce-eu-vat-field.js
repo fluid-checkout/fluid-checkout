@@ -106,8 +106,6 @@
 
 
 
-
-
 	/**
 	 * Validate VAT number.
 	 * @param  {Field}    field            Field for validation.
@@ -248,6 +246,36 @@
 
 
 	/**
+	 * Maybe clear validation errors for the element.
+	 * 
+	 * @param  {Element}  element  The element to clear validation errors for.
+	 */
+	var maybeClearValidationErrors = function( element ) {
+		// Bail if CheckoutValidation is not available
+		if ( ! window.CheckoutValidation ) { return; }
+
+		// Bail if element is not available
+		if ( ! element ) { return; }
+		
+		// Clear validation results for the element
+		CheckoutValidation.clearValidationResults( element, element.closest( '.form-row' ) );
+	}
+
+
+
+	/**
+	 * Handle captured `input` event and route to the appropriate functions.
+	 */
+	var handleInput = function( e ) {
+		// PLUGIN FIELDS WITH VALIDATION
+		if ( e.target.matches( _settings.vatFieldSelector ) || e.target.matches( _settings.sdiFieldSelector ) || e.target.matches( _settings.codiceFiscaleFieldSelector ) || e.target.matches( _settings.nifNieFieldSelector ) ) {
+			maybeClearValidationErrors( e.target );
+		}
+	}
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
@@ -262,11 +290,13 @@
 		// Register validation types
 		registerValidationTypes();
 
+		// Add event listeners
+		window.addEventListener( 'input', handleInput );
 
-	   // Add jQuery event listeners
-	   if ( _hasJQuery ) {
-		   $( document ).on( 'updated_checkout', maybeValidateFields );
-	   }
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			$( document ).on( 'updated_checkout', maybeValidateFields );
+		}
 
 		_hasInitialized = true;
 	};

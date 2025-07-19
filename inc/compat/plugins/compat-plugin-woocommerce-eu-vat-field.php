@@ -40,8 +40,9 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'add_optional_fields_skip_fields' ), 10 );
 
-		// Plugin fields visibility
+		// Field attributes
 		add_action( 'woocommerce_billing_fields', array( $this, 'hide_plugin_fields' ), 10 );
+		add_action( 'woocommerce_billing_fields', array( $this, 'maybe_add_loading_indicator' ), 10 );
 
 		// Hidden fields
 		add_action( 'woocommerce_checkout_billing', array( $this, 'output_custom_hidden_fields' ), 10 );
@@ -203,11 +204,11 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 	 * Required to stop the fields from appearing on the initial page load
 	 * before the first `update_checkout` event is triggered.
 	 *
-	 * @param  array  $skip_list  Checkout field keys to skip from hiding behind a link button.
+	 * @param  array  $fields  The checkout fields.
 	 */
 	public function hide_plugin_fields( $fields ) {
 		// Hide the plugin fields (not remove them)
-		$fields_to_hide = array(
+		$field_keys = array(
 			'billing_eu_vat',
 			'billing_request_eu_vat',
 			'billing_company',
@@ -222,10 +223,49 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		);
 
 		// Add CSS class to hide the fields
-		foreach ( $fields_to_hide as $field_key ) {
-			if ( isset( $fields[ $field_key ] ) ) {
-				$fields[ $field_key ][ 'class' ][] = 'fc-woocommerce-eu-vat-field-hidden';
+		foreach ( $field_keys as $field_key ) {
+			// Skip if field is not set
+			if ( ! isset( $fields[ $field_key ] ) ) { continue; }
+
+			// Maybe create the class array
+			if ( ! isset( $fields[ $field_key ][ 'class' ] ) || ! is_array( $fields[ $field_key ][ 'class' ] ) ) {
+				$fields[ $field_key ][ 'class' ] = array();
 			}
+
+			// Add class to hide the field
+			$fields[ $field_key ][ 'class' ][] = 'fc-woocommerce-eu-vat-field-hidden';
+		}
+
+		return $fields;
+	}
+
+	/**
+	 * Change checkout fields args.
+	 *
+	 * @param  array  $fields  The checkout fields.
+	 */
+	public function maybe_add_loading_indicator( $fields ) {
+		// Fields to add loading indicator class
+		$field_keys = array(
+			'billing_eu_vat',
+			'billing_it_sid_pec',
+			'billing_it_codice_fiscale',
+			'billing_es_nif_nie',
+		);
+
+		// Add loading indicator class to the fields
+		foreach ( $field_keys as $field_key ) {
+			// Skip if field is not set
+			if ( ! isset( $fields[ $field_key ] ) ) { continue; }
+
+			// Maybe create the class array
+			if ( ! isset( $fields[ $field_key ][ 'class' ] ) || ! is_array( $fields[ $field_key ][ 'class' ] ) ) {
+				$fields[ $field_key ][ 'class' ] = array();
+			}
+
+			// Add classes to show loading indicator on change
+			$class_args = array( 'update_totals_on_change', 'loading_indicator_on_change' );
+			$fields[ $field_key ][ 'class' ] = array_merge( $fields[ $field_key ][ 'class' ], $class_args );
 		}
 
 		return $fields;

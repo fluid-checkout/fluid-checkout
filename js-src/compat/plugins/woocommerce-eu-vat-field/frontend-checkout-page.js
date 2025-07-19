@@ -2,9 +2,7 @@ let wcev_default_border_color = "";
 let wcev_default_label_color = "";
 jQuery(document).ready(function()
 {
-	// Replace "change" event with "keydown" for quicker validation.
-	jQuery(document).on('keydown','#billing_eu_vat',wcev_validate_field_and_remove_tax);
-	jQuery(document).on('keydown','#billing_it_sid_pec, #billing_it_codice_fiscale, #billing_es_nif_nie', wcev_force_validation);
+	// CHANGE: Remove redundant "change" event handlers for VAT and secondary fields that require validation.
 	
 	//For now it has been disabled because it is not possible to recognize the cause validation "failure" (invalit vat, invalid sid, any other field validation fail...)
 	//jQuery(document).on('updated_checkout', wcev_vat_field_visual_validation_feedback); //triggered after "update_order_review" event has been handled by the "woocommerce\assets\frontend\js\checkout.js .> update_checkout_action:" script
