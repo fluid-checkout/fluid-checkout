@@ -549,6 +549,18 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'              => __( 'Choose which fields will be displayed for the local pickup shipping zone filter fields.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'The fields will be displayed as a filter on the checkout page, and will be used to filter the local pickup shipping methods. The filter fields will still be displayed when not checked here but compatible plugins require them to work properly.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_shipping_zone_fields',
+						'type'              => 'fc_multiselect',
+						'options'           => apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() ),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_shipping_zone_fields' ),
+						'autoload'          => false,
+						'disabled'          => true,
+						'class'             => 'wc-enhanced-select',
+					),
+
+					array(
 						'desc'              => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
 						'id'                => 'fc_local_pickup_save_shipping_address',
 						'type'              => 'fc_select',
