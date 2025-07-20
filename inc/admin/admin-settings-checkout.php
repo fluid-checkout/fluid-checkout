@@ -36,6 +36,9 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 		// Settings
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+
+		// Sanitize settings
+		add_filter( 'woocommerce_admin_settings_sanitize_option_fc_local_pickup_shipping_zone_fields', array( $this, 'sanitize_local_pickup_shipping_zone_fields' ), 10, 3 );
 	}
 
 
@@ -549,8 +552,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Choose which fields will be displayed for the local pickup shipping zone filter fields.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'The fields will be displayed as a filter on the checkout page, and will be used to filter the local pickup shipping methods. The filter fields will still be displayed when not checked here but compatible plugins require them to work properly.', 'fluid-checkout' ),
+						'desc'              => __( 'Choose which fields will be displayed for the local pickup shipping zone filter fields. Leave empty to show all available options.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ),
+						'desc_tip'          => __( 'These fields will be displayed as a filter for the local pickup shipping methods. Some fields might still appear at checkout when not selected here, if compatible plugins require them to work properly.', 'fluid-checkout' ),
 						'id'                => 'fc_local_pickup_shipping_zone_fields',
 						'type'              => 'fc_multiselect',
 						'options'           => apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() ),
@@ -797,6 +800,24 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 		}
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Sanitize the local pickup shipping zone fields option to ensure it's saved as an array.
+	 * 
+	 * @param  mixed   $value      The option value.
+	 * @param  mixed   $option     The option arguments.
+	 * @param  mixed   $raw_value  The raw value of the option.
+	 */
+	public function sanitize_local_pickup_shipping_zone_fields( $value, $option, $raw_value ) {
+		// Ensure the value is an array
+		if ( ! is_array( $value ) ) {
+			$value = array();
+		}
+
+		return $value;
 	}
 
 }
