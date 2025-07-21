@@ -35,6 +35,9 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_add_payment_method_button_classes', array( $this, 'add_button_class' ), 10 );
 
+		// Inputs
+		add_filter( 'fc_checkout_login_input_classes', array( $this, 'add_input_class' ), 10 );
+
 		// Remove duplicate coupon code from checkout page
 		remove_action( 'woocommerce_after_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 	}
@@ -71,8 +74,8 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 				'--fluidcheckout--field--height' => '44px',
 				'--fluidcheckout--field--padding-left' => '16px',
 				'--fluidcheckout--field--border-radius' => '5px',
-				// '--fluidcheckout--field--border-color' => 'inherit',
-				// '--fluidcheckout--field--background-color--accent' => 'inherit',
+				'--fluidcheckout--field--border-color' => 'var(--border-color)',
+				'--fluidcheckout--field--background-color--accent' => 'var(--background-color--accent)',
 			),
 		);
 
@@ -99,6 +102,24 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 		return $classes;
 	}
 
+
+
+	/**
+	 * Add input class from the theme.
+	 * 
+	 * @param  array  $classes  The input classes.
+	 */
+	public function add_input_class( $classes ) {
+		// Add 'form-control' class to apply theme styles
+		if ( is_array( $classes ) ) {
+			array_push( $classes, 'form-control' );
+		} 
+		else {
+			$classes .= ' form-control';
+		}
+
+		return $classes;
+	}
 }
 
 FluidCheckout_ThemeCompat_Cartzilla::instance();
