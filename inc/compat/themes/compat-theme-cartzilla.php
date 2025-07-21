@@ -34,6 +34,9 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 		add_filter( 'fc_place_order_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_add_payment_method_button_classes', array( $this, 'add_button_class' ), 10 );
+
+		// Remove duplicate coupon code from checkout page
+		remove_action( 'woocommerce_after_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 	}
 
 
@@ -47,7 +50,7 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.todo'; // TODO: Add the correct element.
+		$attributes['data-sticky-relative-to'] = '.site-header';
 
 		return $attributes;
 	}
