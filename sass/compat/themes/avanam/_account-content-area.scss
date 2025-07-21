@@ -1,0 +1,7 @@
+// ------------------------------------
+// MY ACCOUNT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row .woocommerce-input-wrapper span.description{
+	display: none; // Theme hides description by default
+}
