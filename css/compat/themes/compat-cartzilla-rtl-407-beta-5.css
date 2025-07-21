@@ -5,3 +5,13 @@ body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-step__substep-fields-i
 body.woocommerce-checkout div.woocommerce .fc-wrapper .fc-step__substep-fields-inner a:not([href]) {
   color: var(--primary);
 }
+
+body.theme-cartzilla div.woocommerce .ts-wrapper.form-control {
+  padding: 0;
+  border: none;
+}
+
+body.theme-cartzilla .fc-login-form__wrapper .fc-login-form form.login .form-row.form-row input.input-text {
+  display: block;
+  width: 100%;
+}

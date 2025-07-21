@@ -1,0 +1,13 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .ts-wrapper.form-control {
+	padding: 0;
+	border: none;
+}
+
+body#{ $_body-theme-selector } .fc-login-form__wrapper .fc-login-form form.login .form-row.form-row input.input-text{
+	display: block;
+    	width: 100%;
+}
