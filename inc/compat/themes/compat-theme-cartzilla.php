@@ -63,12 +63,13 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
+				// ! Check theme variables to replace if exists
 				// Form field styles
 				'--fluidcheckout--field--height' => '44px',
-				'--fluidcheckout--field--padding-left' => '20px',
-				'--fluidcheckout--field--border-radius' => '6px',
-				'--fluidcheckout--field--border-color' => 'var(--colorTextMain, #212121)',
-				'--fluidcheckout--field--background-color--accent' => 'var(--colorPrimary, #212121)',
+				'--fluidcheckout--field--padding-left' => '16px',
+				'--fluidcheckout--field--border-radius' => '5px',
+				// '--fluidcheckout--field--border-color' => 'inherit',
+				// '--fluidcheckout--field--background-color--accent' => 'inherit',
 			),
 		);
 
