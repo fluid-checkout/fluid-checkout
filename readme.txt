@@ -359,6 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Enfold.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
+* Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix issue on checkout page when checkout form was added as a block.
 * Fixed: Force styles of `fc-loading` class to override styles from theme.
 * Fixed: Run checkout steps registration earlier for Ajax requests, and run it also for REST API requests. This fixes missing address section titles on email messages and previews.
