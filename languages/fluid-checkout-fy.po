@@ -403,14 +403,6 @@ msgstr "Beoardielje de plugin"
 msgid "I need help!"
 msgstr "Ik haw help nedich!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"De plugin WooCommerce Checkout Manager fan Quadlayers is net kompatibel mei "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +650,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Selektearje in ôfbylding"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Gjin ôfbylding selektearre."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Ofbyld fuortsmite"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2460,6 +2444,26 @@ msgstr ""
 "Lit klanten betellingen dwaan foar oarders dy&#39;t of mei de hân oanmakke "
 "binne troch de winkelbehearder of net foltôge binne by it beteljen."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"De plugin WooCommerce Checkout Manager fan Quadlayers is net kompatibel mei "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Bedriuwsnammefjild foar fakturearadres"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Wizigje de sichtberens foar it fjild foar bedriuwsnamme foar it "
+"fakturearadresdiel op it kassaformulier."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2577,3 +2581,8 @@ msgstr "Of trochgean hjirûnder"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Of trochgean as gast"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Ofbylding fuortsmite"

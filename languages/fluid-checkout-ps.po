@@ -401,14 +401,6 @@ msgstr "د پلگ ان درجه بندي کړئ"
 msgid "I need help!"
 msgstr "زه مرستې ته اړتیالرم!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"د کواډلیرز لخوا د WooCommerce Checkout Manager پلگ ان د Fluid Checkout سره "
-"مطابقت نلري."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -652,14 +644,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "یو انځور غوره کړئ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "هیڅ انځور نه دی غوره شوی."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "انځور لرې کړئ"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2407,6 +2391,24 @@ msgstr ""
 "پلورنځي مدیر لخوا په لاسي ډول رامینځته شوي وي یا د چیک آوټ پرمهال بشپړ شوي "
 "نه وي."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"د کواډلایرز لخوا د WooCommerce Checkout Manager پلگ ان د Fluid Checkout سره "
+"مطابقت نلري."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "د بلینګ پتې لپاره د شرکت نوم ساحه"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "د چیک آوټ فورمه کې د بلینګ پتې برخې لپاره د شرکت نوم ساحې لپاره لید بدل کړئ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2524,3 +2526,8 @@ msgstr "یا لاندې دوام ورکړئ"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "یا د میلمه په توګه دوام ورکړئ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "انځور لرې کړئ"

@@ -407,14 +407,6 @@ msgstr "പ്ലഗിൻ റേറ്റ് ചെയ്യുക"
 msgid "I need help!"
 msgstr "എനിക്ക് സഹായം ആവശ്യമാണ്!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"ക്വാഡ്‌ലെയേഴ്‌സിന്റെ WooCommerce ചെക്ക്ഔട്ട് മാനേജർ പ്ലഗിൻ ഫ്ലൂയിഡ് "
-"ചെക്ക്ഔട്ടുമായി പൊരുത്തപ്പെടുന്നില്ല."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -665,14 +657,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ഒരു ചിത്രം തിരഞ്ഞെടുക്കുക"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ഒരു ചിത്രവും തിരഞ്ഞെടുത്തിട്ടില്ല."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ചിത്രം നീക്കം ചെയ്യുക"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2489,6 +2473,26 @@ msgstr ""
 "സ്റ്റോർ അഡ്മിൻ സ്വമേധയാ സൃഷ്ടിച്ചതോ ചെക്ക്ഔട്ട് സമയത്ത് പൂർത്തിയാകാത്തതോ ആയ "
 "ഓർഡറുകൾക്ക് പേയ്‌മെന്റുകൾ നടത്താൻ ഉപഭോക്താക്കളെ അനുവദിക്കുന്നു."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"ക്വാഡ്‌ലെയേഴ്‌സിന്റെ പ്ലഗിൻ WooCommerce ചെക്ക്ഔട്ട് മാനേജർ ഫ്ലൂയിഡ് "
+"ചെക്ക്ഔട്ടുമായി പൊരുത്തപ്പെടുന്നില്ല."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ബില്ലിംഗ് വിലാസത്തിനുള്ള കമ്പനി നാമ ഫീൽഡ്"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"ചെക്ക്ഔട്ട് ഫോമിലെ ബില്ലിംഗ് വിലാസ വിഭാഗത്തിനായുള്ള കമ്പനി നാമ ഫീൽഡിന്റെ "
+"ദൃശ്യപരത മാറ്റുക."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2606,3 +2610,8 @@ msgstr "അല്ലെങ്കിൽ താഴെ തുടരുക"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "അല്ലെങ്കിൽ അതിഥിയായി തുടരുക"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ചിത്രം നീക്കം ചെയ്യുക"

@@ -400,14 +400,6 @@ msgstr "Bedøm plugin'et"
 msgid "I need help!"
 msgstr "Jeg har brug for hjælp!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plugin'et WooCommerce Checkout Manager fra Quadlayers er ikke kompatibelt "
-"med Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -655,14 +647,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Vælg et billede"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Intet billede valgt."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Fjern billede"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2444,6 +2428,26 @@ msgstr ""
 "Giver kunderne mulighed for at betale for ordrer, der enten er oprettet "
 "manuelt af butiksadministratoren eller ikke er gennemført ved kassen."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plugin'et WooCommerce Checkout Manager fra Quadlayers er ikke kompatibelt "
+"med Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Firmanavnsfelt til faktureringsadresse"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ændre synligheden for firmanavnsfeltet i sektionen for faktureringsadresse "
+"på checkout-formularen."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2561,3 +2565,8 @@ msgstr "Eller fortsæt nedenfor"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Eller fortsæt som gæst"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Fjern billede"

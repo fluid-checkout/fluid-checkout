@@ -401,14 +401,6 @@ msgstr "Evaluați pluginul"
 msgid "I need help!"
 msgstr "Am nevoie de ajutor!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Pluginul WooCommerce Checkout Manager de la Quadlayers nu este compatibil "
-"cu Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -657,14 +649,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Selectați o imagine"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nu este selectată nicio imagine."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Eliminați imaginea"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2486,6 +2470,26 @@ msgstr ""
 "manual de administratorul magazinului sau care nu sunt finalizate în timpul "
 "procesului de checkout."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Pluginul WooCommerce Checkout Manager by Quadlayers nu este compatibil cu "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Câmpul Nume companie pentru adresa de facturare"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Schimbați vizibilitatea câmpului Nume companie pentru secțiunea Adresa de "
+"facturare din formularul de plată."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2603,3 +2607,8 @@ msgstr "Sau continuați mai jos"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Sau continuați ca invitat"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Eliminați imaginea"
