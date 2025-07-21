@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep-fields-inner .wc-stripe-banner-checkout.active {
+	display: inline;
+}
