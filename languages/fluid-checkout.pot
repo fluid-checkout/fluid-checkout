@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-07-11 20:37+0000\n"
+"POT-Creation-Date: 2025-07-21 21:37+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -25,11 +25,13 @@ msgstr ""
 msgid "Go to Plugin Search"
 msgstr ""
 
-#: fluid-checkout.php:592
+#. translators: %s: Required plugin name.
+#: fluid-checkout.php:593
 msgid "Activate %s"
 msgstr ""
 
-#: fluid-checkout.php:596
+#. translators: %1$s: Plugin name, %2$s: Required plugin name, %3$s: Action label, %4$s: Action URL.
+#: fluid-checkout.php:598
 msgid "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
 
@@ -63,7 +65,7 @@ msgstr ""
 msgid "Apartment, unit, building, floor, etc."
 msgstr ""
 
-#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:594
 msgid "Shipping phone"
 msgstr ""
 
@@ -87,7 +89,7 @@ msgstr ""
 msgid "Cart total:"
 msgstr ""
 
-#. translators: Next checkout step title
+#. translators: %s: Next checkout step title.
 #: inc/checkout-steps.php:1697
 msgid "Proceed to %s"
 msgstr ""
@@ -157,58 +159,59 @@ msgstr ""
 msgid "Step %1$s of %2$s"
 msgstr ""
 
-#: inc/checkout-steps.php:2846
+#. translators: %s: Substep title.
+#: inc/checkout-steps.php:2847
 msgid "Change: %s"
 msgstr ""
 
-#: inc/checkout-steps.php:2846
+#: inc/checkout-steps.php:2847
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:2847
+#: inc/checkout-steps.php:2848
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
 
-#: inc/checkout-steps.php:2979
+#: inc/checkout-steps.php:2980
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:3205
+#: inc/checkout-steps.php:3206
 msgid "An account will be created with the information provided."
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3511
+#: inc/checkout-steps.php:3512
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3516
+#: inc/checkout-steps.php:3517
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:3940, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+#: inc/checkout-steps.php:3941, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr ""
 
-#: inc/checkout-steps.php:4749
+#: inc/checkout-steps.php:4750
 msgid "Same as shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:4794
+#: inc/checkout-steps.php:4795
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:6065, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:186
+#: inc/checkout-steps.php:6066, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:186
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:6130, templates/fc/checkout-steps/checkout/review-order-section.php:58
+#: inc/checkout-steps.php:6131, templates/fc/checkout-steps/checkout/review-order-section.php:58
 msgid "Edit cart"
 msgstr ""
 
@@ -361,7 +364,7 @@ msgstr ""
 msgid "Edit the checkout page"
 msgstr ""
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:231
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:232
 msgid "Read the documentation."
 msgstr ""
 
@@ -394,14 +397,15 @@ msgid "I need help!"
 msgstr ""
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid "The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile with Fluid Checkout"
+msgid "The plugin WooCommerce Checkout Manager by Quadlayers is not compatible with Fluid Checkout"
 msgstr ""
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
+#. translators: %s: Documentation link.
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:63
 msgid "Some features of WooCommerce Checkout Manager by Quadlayers might not work as expected when using it with Fluid Checkout. Read <a href=\"%s\">our documentation</a> for more information and alternative solutions."
 msgstr ""
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:67
 msgid "Read documentation"
 msgstr ""
 
@@ -465,7 +469,7 @@ msgstr ""
 msgid "Integrated coupon code field on the cart page"
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:648
 msgid "International phone numbers"
 msgstr ""
 
@@ -589,7 +593,7 @@ msgstr ""
 msgid "All add-ons are sold separately and require the <strong>Fluid Checkout Lite</strong> plugin to be installed and activated, except when noted."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:85
+#: inc/admin/admin-setting-type-fc-image-uploader.php:85, inc/admin/admin-setting-type-fc-image-uploader.php:108
 msgctxt "Image uploader."
 msgid "No image selected."
 msgstr ""
@@ -599,40 +603,39 @@ msgid "Select an image"
 msgstr ""
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr ""
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-license-key.php:142
+#. translators: %s: Product URL.
+#: inc/admin/admin-setting-type-fc-license-key.php:143
 msgid "<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to your account</a> to get your license key, or <a href=\"%s\" target=\"_blank\">purchase a new license key</a>."
 msgstr ""
 
 #. translators: %s: License key expiration date.
-#: inc/admin/admin-setting-type-fc-license-key.php:152
+#: inc/admin/admin-setting-type-fc-license-key.php:153
 msgid "Valid until %s."
 msgstr ""
 
 #. translators: %s: License key expiration date.
-#: inc/admin/admin-setting-type-fc-license-key.php:158
+#: inc/admin/admin-setting-type-fc-license-key.php:159
 msgid "Expired on %s."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-license-key.php:160
+#: inc/admin/admin-setting-type-fc-license-key.php:161
 msgid "<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Log in to your account</a> to renew your license key and continue to receive updates and support."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-license-key.php:163
+#: inc/admin/admin-setting-type-fc-license-key.php:164
 msgid "License key cancelled."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-license-key.php:165
+#. translators: %s: Product URL.
+#: inc/admin/admin-setting-type-fc-license-key.php:167
 msgid "<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and continue to receive updates and support."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-license-key.php:168
+#: inc/admin/admin-setting-type-fc-license-key.php:170
 msgid "Error: "
 msgstr ""
 
@@ -648,23 +651,28 @@ msgstr ""
 msgid "Here are a few resources for you to get started:"
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-setup.php:48
+#. translators: %s: Documentation link.
+#: inc/admin/admin-setting-type-fc-setup.php:49
 msgid "Read the installation guide <a href=\"%s\" target=\"_blank\">Getting stated with Fluid Checkout</a>."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-setup.php:49
+#. translators: %s: Checkout options link.
+#: inc/admin/admin-setting-type-fc-setup.php:51
 msgid "Setup layout and design on the <a href=\"%s\">checkout options</a>."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-setup.php:50
+#. translators: %s: Integrations link.
+#: inc/admin/admin-setting-type-fc-setup.php:53
 msgid "Check if there are any <a href=\"%s\">integration options</a> available for other plugins you have installed."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-setup.php:51
+#. translators: %s: Documentation link.
+#: inc/admin/admin-setting-type-fc-setup.php:55
 msgid "Visit <a href=\"%s\" target=\"_blank\">our documentation</a> for more information about Fluid Checkout features."
 msgstr ""
 
-#: inc/admin/admin-setting-type-fc-setup.php:52
+#. translators: %s: Support link.
+#: inc/admin/admin-setting-type-fc-setup.php:57
 msgid "If you ever need help, <a href=\"%s\" target=\"_blank\">open a support ticket</a> on our official support channel."
 msgstr ""
 
@@ -725,7 +733,7 @@ msgstr ""
 msgid "Select position where to display the coupon codes section on the cart page. Only applicable when AJAX cart and the integrated coupon codes in the checkout page are enabled."
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:712
 msgid "Hidden"
 msgstr ""
 
@@ -1097,7 +1105,7 @@ msgstr ""
 msgid "Make the labels of optional field \"Add\" link button as <code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone Number\"). This option also affects the link buttons for coupon code fields."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:640
 msgid "Billing address"
 msgstr ""
 
@@ -1141,7 +1149,7 @@ msgstr ""
 msgid "Highlight the billing address section in the checkout form"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:613
 msgid "Shipping address"
 msgstr ""
 
@@ -1217,147 +1225,155 @@ msgstr ""
 msgid "Change visibility for the company name field for the shipping address section on the checkout form."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:566
+#: inc/admin/admin-settings-checkout.php:566, inc/admin/admin-settings-checkout.php:581
 msgid "If field is set as \"optional\", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:600, inc/admin/admin-settings-checkout.php:627
 msgid "Hidden (remove field)"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:601, inc/admin/admin-settings-checkout.php:628, inc/admin/admin-settings-checkout.php:713
 msgid "Optional"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:602, inc/admin/admin-settings-checkout.php:629
 msgid "Required"
 msgstr ""
 
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr ""
+
 #: inc/admin/admin-settings-checkout.php:580
+msgid "Change visibility for the company name field for the billing address section on the checkout form."
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:595
 msgid "Add shipping phone field to the checkout form."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:581
+#: inc/admin/admin-settings-checkout.php:596
 msgid "Maybe be forced as \"required\" if the billing address section is displayed after the shipping address section, and the billing phone field is set as \"required. This is needed to ensure the shipping address can be copied to the billing address when that option is checked."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:594
+#: inc/admin/admin-settings-checkout.php:609
 msgid "Choose in which step to display the shipping phone field."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+#: inc/admin/admin-settings-checkout.php:614, inc/admin/admin-settings-checkout.php:641
 msgid "Contact step"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:606
+#: inc/admin/admin-settings-checkout.php:621
 msgid "Billing phone"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:607
+#: inc/admin/admin-settings-checkout.php:622
 msgid "Add billing phone field to the checkout form."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:608
+#: inc/admin/admin-settings-checkout.php:623
 msgid "Maybe be forced as \"required\" if the billing address section is displayed after the billing address section, and the billing phone field is set as \"required. This is needed to ensure the billing address can be copied to the billing address when that option is checked."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:621
+#: inc/admin/admin-settings-checkout.php:636
 msgid "Choose in which step to display the billing phone field."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:634
+#: inc/admin/admin-settings-checkout.php:649
 msgid "Enable international phone number format and validation for phone fields"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:635
+#: inc/admin/admin-settings-checkout.php:650
 msgid "Format and validate phone numbers according to each country."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:645
+#: inc/admin/admin-settings-checkout.php:660
 msgid "Enable phone number validation based on country rules"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:646
+#: inc/admin/admin-settings-checkout.php:661
 msgid "When disabled, the phone field validation will not check if country or area codes are valid for the country."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:656
+#: inc/admin/admin-settings-checkout.php:671
 msgid "Only show allowed countries for shipping or billing"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:657
+#: inc/admin/admin-settings-checkout.php:672
 msgid "When enabled, only the countries allowed for shipping will be available in the shipping phone field, and only countries allowed for billing will be available for the billing phone field."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:667
+#: inc/admin/admin-settings-checkout.php:682
 msgid "Show country code beside the flag"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:678
+#: inc/admin/admin-settings-checkout.php:693
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:682
+#: inc/admin/admin-settings-checkout.php:697
 msgid "Do not change placeholders"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:683
+#: inc/admin/admin-settings-checkout.php:698
 msgid "Show if not defined"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:684
+#: inc/admin/admin-settings-checkout.php:699
 msgid "Always show"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:233
+#: inc/admin/admin-settings-checkout.php:707, inc/admin/admin-settings-order-received.php:233
 msgid "Order notes"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:693
+#: inc/admin/admin-settings-checkout.php:708
 msgid "Define the visibility of the additional order notes field."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:705
+#: inc/admin/admin-settings-checkout.php:720
 msgid "Gift options"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:706
+#: inc/admin/admin-settings-checkout.php:721
 msgid "Display gift message and other gift options at the checkout page"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:707
+#: inc/admin/admin-settings-checkout.php:722
 msgid "Allow customers to add a gift message and other gift related options to the order."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:717
+#: inc/admin/admin-settings-checkout.php:732
 msgid "Display the gift message fields always expanded"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:727
+#: inc/admin/admin-settings-checkout.php:742
 msgid "Display the gift message as part of the order details table instead of a separate section"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:728
+#: inc/admin/admin-settings-checkout.php:743
 msgid "This option affects the order confirmation page (thank you page) and order details on account pages, emails and packing slips."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+#: inc/admin/admin-settings-checkout.php:761, inc/admin/admin-settings-checkout.php:768
 msgid "Account matching"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:754
+#: inc/admin/admin-settings-checkout.php:769
 msgid "Enable the account matching feature"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:755
+#: inc/admin/admin-settings-checkout.php:770
 msgid "Associate the guest customer's orders with their existing account when an account already exists with the customer's contact details."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:765
+#: inc/admin/admin-settings-checkout.php:780
 msgid "Display message when an account exists with the email address provided"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:766
+#: inc/admin/admin-settings-checkout.php:781
 msgid "Replaces the account creation fields with a notification and option to log in. In some contexts, it might be recommended to leave this option disabled to protect the privacy of customers."
 msgstr ""
 
@@ -1621,19 +1637,20 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: inc/admin/admin.php:175
+#. translators: %s: Upgrade link.
+#: inc/admin/admin.php:176
 msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 
-#: inc/admin/admin.php:195
+#: inc/admin/admin.php:196
 msgid "(PRO)"
 msgstr ""
 
-#: inc/admin/admin.php:215
+#: inc/admin/admin.php:216
 msgid "(experimental)"
 msgstr ""
 
-#: inc/admin/admin.php:224
+#: inc/admin/admin.php:225
 msgid "This is an experimental feature and may not work as expected with all themes and plugins. Use it with caution."
 msgstr ""
 
@@ -1985,7 +2002,8 @@ msgstr ""
 msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
 msgstr ""
 
-#: templates/fc/checkout-steps/checkout/payment.php:48
+#. translators: %s: Order total amount.
+#: templates/fc/checkout-steps/checkout/payment.php:49
 msgid "Your order has a total amount due of %s. No further payment is needed."
 msgstr ""
 

@@ -2164,14 +2164,6 @@ msgstr ""
 "Tema tarafından eklenen ürün resmini göster, miktar alanı, kaldır düğmesi "
 "ve ürün sayfasına bağlantı seçenekleri varsayılan olarak devre dışıdır."
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers tarafından sunulan WooCommerce Checkout Manager eklentisi Fluid "
-"Checkout ile uyumlu değildir"
-
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -2518,14 +2510,6 @@ msgstr ""
 "Siparişinizin ödenmesi gereken toplam tutarı %s. Başka&nbsp;ödeme yapmanız "
 "gerekmiyor."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Seçili görüntü yok."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Resmi kaldır"
-
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
 msgstr "Tema The7"
@@ -2623,6 +2607,26 @@ msgid ""
 msgstr ""
 "Müşterilerin, mağaza yöneticisi tarafından manuel olarak oluşturulan veya "
 "ödeme sırasında tamamlanmayan siparişler için ödeme yapmasına olanak tanır."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers tarafından sunulan WooCommerce Checkout Manager eklentisi Fluid "
+"Checkout ile uyumlu değildir"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Fatura adresi için şirket adı alanı"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ödeme formundaki fatura adresi bölümü için şirket adı alanının "
+"görünürlüğünü değiştirin."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2746,3 +2750,8 @@ msgstr "%2$s: %1$s"
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Resmi kaldır"

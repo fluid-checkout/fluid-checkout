@@ -410,14 +410,6 @@ msgstr "Оцініть плагін"
 msgid "I need help!"
 msgstr "Мені потрібна допомога!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Плагін WooCommerce Checkout Manager від Quadlayers не сумісний з Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -664,14 +656,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Виберіть зображення"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Зображення не вибрано."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Видалити зображення"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2478,6 +2462,26 @@ msgstr ""
 "Дозволяє покупцям оплачувати замовлення, які були створені вручну "
 "адміністратором магазину або не завершені під час оформлення замовлення."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Плагін WooCommerce Checkout Manager від Quadlayers не сумісний з Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Поле назви компанії для адреси виставлення рахунку"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Змініть видимість поля назви компанії для розділу адреси виставлення "
+"рахунку на формі оформлення замовлення."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2595,3 +2599,8 @@ msgstr "Або продовжуйте нижче"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Або продовжуйте як гість"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Видалити зображення"
