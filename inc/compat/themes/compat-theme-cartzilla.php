@@ -73,6 +73,7 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '44px',
 				'--fluidcheckout--field--padding-left' => '16px',
+				'--fluidcheckout--field--font-size' => '16px',
 				'--fluidcheckout--field--border-radius' => '5px',
 				'--fluidcheckout--field--border-color' => 'var(--border-color)',
 				'--fluidcheckout--field--background-color--accent' => 'var(--background-color--accent)',

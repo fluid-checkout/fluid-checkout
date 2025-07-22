@@ -15,3 +15,13 @@ body.theme-cartzilla .fc-login-form__wrapper .fc-login-form form.login .form-row
   display: block;
   width: 100%;
 }
+
+body.theme-cartzilla div.woocommerce form .form-row input[type=text] {
+  height: var(--fluidcheckout--field--height);
+  padding-left: var(--fluidcheckout--field--padding-left);
+  border: 1px solid var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  border-radius: var(--fluidcheckout--field--border-radius);
+  background-color: var(--fluidcheckout--field--background-color--accent);
+  font-size: var(--fluidcheckout--field--font-size);
+  color: var(--fluidcheckout--field--color);
+}
