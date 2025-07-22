@@ -69,7 +69,6 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
-				// ! Check theme variables to replace if exists
 				// Form field styles
 				'--fluidcheckout--field--height' => '44px',
 				'--fluidcheckout--field--padding-left' => '16px',
@@ -82,7 +81,6 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
-
 
 
 
