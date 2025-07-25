@@ -74,9 +74,9 @@ class FluidCheckout_ThemeCompat_Suki extends FluidCheckout {
 			$page_settings = get_post_meta( $post_id, '_suki_page_settings', true );
 
 			// Set content_layout to 'wide' if it's not already set or is not 'wide'
-			if ( is_array( $page_settings ) && (!isset($page_settings['content_layout']) || $page_settings['content_layout'] !== 'wide') ) {
+			if ( is_array( $page_settings ) && ( ! isset( $page_settings[ 'content_layout' ] ) || $page_settings[ 'content_layout' ] !== 'wide') ) {
 				// Set content_layout to 'wide'
-				$page_settings['content_layout'] = 'wide';
+				$page_settings[ 'content_layout' ] = 'wide';
 
 				// Update page settings
 				update_post_meta( $post_id, '_suki_page_settings', $page_settings );
@@ -92,9 +92,9 @@ class FluidCheckout_ThemeCompat_Suki extends FluidCheckout {
 			$term_settings = get_term_meta( $queried_object->term_id, 'suki_page_settings', true );
 
 			// Set content_layout to 'wide' if it's not already set or is not 'wide'
-			if ( is_array( $term_settings ) && ( ! isset( $term_settings[ 'content_layout' ]) || $term_settings['content_layout'] !== 'wide') ) {
+			if ( is_array( $term_settings ) && ( ! isset( $term_settings[ 'content_layout' ] ) || $term_settings[ 'content_layout' ] !== 'wide') ) {
 				// Set content_layout to 'wide'
-				$term_settings['content_layout'] = 'wide';
+				$term_settings[ 'content_layout' ] = 'wide';
 
 				// Update term settings
 				update_term_meta( $queried_object->term_id, 'suki_page_settings', $term_settings );
