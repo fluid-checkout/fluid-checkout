@@ -27,6 +27,9 @@ class FluidCheckout_ThemeCompat_Suki extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 	}
 
 
