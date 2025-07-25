@@ -49,13 +49,11 @@ class FluidCheckout_ThemeCompat_Suki extends FluidCheckout {
 	 * Add or remove very late hooks.
 	 */
 	public function very_late_hooks() {
-		// Force content_layout to 'wide' on page load for per-page and per-term settings.
+		// Force functions - Also changes saved values; mainly so that the UI is consistent with the saved value and users see the change in the Customizer or edit page.
 		$this->force_content_layout_wide_on_page_load();
-
-		// Force cart and checkout layouts to 'default' on page load
 		$this->force_cart_and_checkout_layouts_default_on_page_load();
 
-		// Filters for global settings (content_layout, woocommerce_cart_layout, woocommerce_checkout_layout)
+		// Filters for global settings - The saved value in the Customizer is untouched; for maintaining an always-on override.
 		add_filter( 'theme_mod_content_layout', function( $value ) { return 'wide'; }, 99 );
 		add_filter( 'theme_mod_woocommerce_cart_layout', function( $value ) { return 'default'; }, 99 );
 		add_filter( 'theme_mod_woocommerce_checkout_layout', function( $value ) { return 'default'; }, 99 );
