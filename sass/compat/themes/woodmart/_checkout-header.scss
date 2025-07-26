@@ -10,6 +10,6 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } header.fc-checkout-heade
 }
 body#{ $_body-theme-selector }#{ $_body-page-selector } .wd-page-title ~ #main.fc-main {
 	@media (#{$bp-smaller-than-desktop}) {
-		padding-top: 0; 
+		padding-top: 0;
 	}
 }
