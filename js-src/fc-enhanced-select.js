@@ -320,7 +320,6 @@
 		for ( var i = 0; i < fields.length; i++ ) {
 			// Get field reference and value
 			var field = fields[ i ];
-			console.log( 'inside 1', document.querySelector( '#jckwds-delivery-time' ).options );
 			var values = getSelectValues( field );
 			var isMultiple = field.hasAttribute( 'multiple' );
 
