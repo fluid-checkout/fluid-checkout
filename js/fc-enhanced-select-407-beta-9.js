@@ -115,12 +115,13 @@
 	}
 
 	/**
-	 * Update the selected value of an enhanced select field.
-	 *
+	 * Sync the selected value of an enhanced select field, based on the field's current selected value.
+	 * 
+	 * @param  {Element}  field  The select field.
 	 */
-	var updateSelectedValue = function( field ) {
+	_publicMethods.syncSelectedValue = function( field ) {
 		// Bail if field is not valid
-		if ( ! field ) { return; }
+		if ( ! field || ! field.tomselect ) { return; }
 
 		// Get updated field value
 		var values = getSelectValues( field );
@@ -128,6 +129,47 @@
 		// Set value, without triggering `change` event
 		// to avoid infinite loop.
 		field.tomselect.setValue( values, true );
+	}
+
+	/**
+	 * Sync the disabled state of an enhanced select field, based on the field's current disabled state.
+	 * 
+	 * @param  {Element}  field  The select field.
+	 */
+	_publicMethods.syncDisabledState = function( field ) {
+		// Bail if field is not valid	
+		if ( ! field || ! field.tomselect ) { return; }
+
+		// Sync disabled state
+		field.tomselect.setDisabled( field.disabled );
+	}
+
+	/**
+	 * Sync the disabled state of an enhanced select field, based on the field's current disabled state.
+	 * 
+	 * @param  {Element}  field  The select field.
+	 */
+	_publicMethods.syncOptions = function( field ) {
+		// Bail if field is not valid
+		if ( ! field || ! field.tomselect ) { return; }
+
+		// Sync options
+		field.tomselect.sync();
+	}
+
+	/**
+	 * Sync the field properties with the underlying select field. Set the field's value, disabled state, and options.
+	 * 
+	 * @param  {Element}  field  The select field.
+	 */
+	_publicMethods.syncField = function( field ) {
+		// Bail if field is not valid
+		if ( ! field || ! field.tomselect ) { return; }
+
+		// Sync field
+		_publicMethods.syncSelectedValue( field );
+		_publicMethods.syncDisabledState( field );
+		_publicMethods.syncOptions( field );
 	}
 
 
@@ -237,7 +279,7 @@
 
 
 	/** 
-	 * Enhance selecct fields with TomSelect.
+	 * Enhance select fields with TomSelect.
 	 * 
 	 * @param  {Element|string}  fieldOrSelector   (optional) Field or CSS selector for the fields to enhance, will use default settings if not defined.
 	 * @param  {object}          settings          (optional) Settings for the enhanced select fields, will use default settings if not defined.
@@ -281,9 +323,12 @@
 			var values = getSelectValues( field );
 			var isMultiple = field.hasAttribute( 'multiple' );
 
-			// Maybe destroy TomSelect instance
-			if ( field.tomselect ) {
-				field.tomselect.destroy();
+			var instance = field.tomselect;
+
+			// Skip if field already enhanced
+			if ( instance ) {
+				_publicMethods.syncField( field );
+				continue;
 			}
 
 			// Handle differences between single and multiple select fields
@@ -297,7 +342,7 @@
 			}
 
 			// Enhance field with TomSelect
-			var instance = new TomSelect( field, settings );
+			instance = new TomSelect( field, settings );
 
 			// Set value, without triggering `change` event
 			// to avoid infinite loop.
@@ -308,6 +353,16 @@
 			instance.on( 'blur', disableFieldAutocomplete );
 			instance.on( 'dropdown_open', maybeScrollToField );
 		}
+	}
+
+	/** 
+	 * Enhance a single select field with TomSelect.
+	 * 
+	 * @param  {Element|string}  fieldOrSelector   Field to enhance, will use default settings if not defined.
+	 * @param  {object}          settings          (optional) Settings for the enhanced select fields, will use default settings if not defined.
+	 */
+	_publicMethods.enhanceField = function( field, settings ) {
+		_publicMethods.enhanceFields( field, settings );
 	}
 
 
@@ -347,8 +402,8 @@
 
 			// Only process if field is a TomSelect instance
 			if ( field.tomselect ) {
-				// Update selected value
-				updateSelectedValue( field );
+				// Sync field
+				_publicMethods.syncField( field );
 			}
 		}
 	}
