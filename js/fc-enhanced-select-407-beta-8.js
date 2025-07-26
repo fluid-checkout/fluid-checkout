@@ -244,7 +244,7 @@
 	 */
 	_publicMethods.enhanceFields = function( fieldOrSelector, settings ) {
 		// Bail if TomSelect is not defined
-		if ( 'undefined' === typeof TomSelect ) { return; }
+		if ( 'undefined' === typeof window.TomSelect ) { return; }
 
 		// Get selector from settings if not defined
 		if ( undefined === fieldOrSelector || null === fieldOrSelector ) {
