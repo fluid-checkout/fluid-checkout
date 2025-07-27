@@ -1,0 +1,27 @@
+body.theme-sahel .fc-wrapper .fc-step__substep-save,
+body.theme-sahel .fc-wrapper .fc-step__next-step,
+body.theme-sahel .fc-coupon-code__apply,
+body.theme-sahel .woocommerce-form-login__submit {
+  padding: 17px 42px;
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  line-height: 2.7em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  color: #fff;
+  background-color: #1c1c1c;
+}
+
+body.theme-sahel .fc-wrapper .fc-step__substep-save:hover,
+body.theme-sahel .fc-wrapper .fc-step__next-step:hover,
+body.theme-sahel .fc-coupon-code__apply:hover,
+body.theme-sahel .woocommerce-form-login__submit:hover {
+  background-color: #000;
+}
+
+body.theme-sahel .select2-container--default .select2-selection--single {
+  border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+}
