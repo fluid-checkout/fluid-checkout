@@ -60,11 +60,7 @@ class FluidCheckout_ThemeCompat_Sahel extends FluidCheckout {
 				'--fluidcheckout--field--border-radius' => '0',
 				'--fluidcheckout--field--border' => '0px',
 				'--fluidcheckout--field--border-color' => 'transparent',
-
-				// '--fluidcheckout--field--font-size' => '11px',
-				// '--fluidcheckout--field--text-transform' => 'uppercase',
-				// '--fluidcheckout--field--letter-spacing' => '.3em',
-				// '--fluidcheckout--field--border-bottom' => '1px solid #000',
+				'--fluidcheckout--field--font-size' => '11px',
 			),
 		);
 

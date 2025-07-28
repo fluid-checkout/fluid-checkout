@@ -22,6 +22,10 @@ body.theme-sahel .woocommerce-form-login__submit:hover {
   background-color: #000;
 }
 
-body.theme-sahel .select2-container--default .select2-selection--single {
-  border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+body.theme-sahel .ts-wrapper.single .ts-control,
+body.theme-sahel .select2-container--default .select2-selection--single .select2-selection__rendered {
+  font-size: 11px;
+  letter-spacing: 3px;
+  border-bottom: 1px solid #000;
+  text-transform: uppercase;
 }
