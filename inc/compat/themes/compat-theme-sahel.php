@@ -51,6 +51,12 @@ class FluidCheckout_ThemeCompat_Sahel extends FluidCheckout {
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
+		// Get the theme's main color
+		$first_main_color = '';
+		if ( function_exists( 'sahel_elated_options' ) ) {
+			$first_main_color = sahel_elated_options()->getOptionValue( 'first_color' );
+		}
+
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
@@ -61,6 +67,10 @@ class FluidCheckout_ThemeCompat_Sahel extends FluidCheckout {
 				'--fluidcheckout--field--border' => '0px',
 				'--fluidcheckout--field--border-color' => 'transparent',
 				'--fluidcheckout--field--font-size' => '11px',
+				
+				
+				// Theme main color
+				'--theme--first-color' => $first_main_color ? $first_main_color : '#000', // For border bottom color of select2 fields
 			),
 		);
 
