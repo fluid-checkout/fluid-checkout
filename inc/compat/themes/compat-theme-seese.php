@@ -24,7 +24,7 @@ class FluidCheckout_ThemeCompat_Seese extends FluidCheckout {
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
 		// CSS variables
-		// add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -55,12 +55,11 @@ class FluidCheckout_ThemeCompat_Seese extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '40px',
-				'--fluidcheckout--field--padding-left' => '10px',
-				'--fluidcheckout--field--border-radius' => '3px',
-
-				// Checkout validation styles
-				'--fluidcheckout--validation-check--horizontal-spacing--password' => '32px',
+				'--fluidcheckout--field--height' => '55px',
+				'--fluidcheckout--field--border-color' => '#ececec',
+				'--fluidcheckout--field--padding-left' => '18px',
+				'--fluidcheckout--field--font-size' => '13px',
+				
 			),
 		);
 
