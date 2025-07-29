@@ -15,6 +15,16 @@ body.theme-seese .fc-login-form__wrapper.woocommerce form .woocommerce-form__lab
   bottom: 0;
 }
 
+body.theme-seese .fc-wrapper .fc-step__substep.wc-stripe-banner-checkout.active {
+  max-width: 100%;
+}
+
+body.theme-seese .fc-wrapper .fc-step__substep input[type=radio]:checked + label::after {
+  background-color: transparent;
+  transform: none;
+  top: 10px !important;
+}
+
 body.theme-seese div.woocommerce form .form-row input[type=checkbox],
 body.theme-seese div.woocommerce form .form-row input[type=radio] {
   left: auto;
