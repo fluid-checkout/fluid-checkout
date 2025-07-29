@@ -1,0 +1,32 @@
+body.theme-seese .fc-login-form__wrapper.woocommerce form .form-row input[type=checkbox],
+body.theme-seese .fc-login-form__wrapper.woocommerce form .form-row input[type=radio] {
+  position: relative;
+  left: auto;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+body.theme-seese .fc-login-form__wrapper.woocommerce form .woocommerce-form__label-for-checkbox {
+  position: relative;
+}
+
+body.theme-seese .fc-login-form__wrapper.woocommerce form .woocommerce-form__label-for-checkbox span {
+  position: relative;
+  bottom: 0;
+}
+
+body.theme-seese div.woocommerce form .form-row input[type=checkbox],
+body.theme-seese div.woocommerce form .form-row input[type=radio] {
+  left: auto;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+body.theme-seese div.woocommerce form .form-row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+body.theme-seese .ts-wrapper .ts-control {
+  font-weight: 300;
+}
