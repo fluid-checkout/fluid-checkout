@@ -19,7 +19,7 @@ jQuery( function( $ ) {
 		// CHANGE: Use TomSelect for select2 fields
 		var wc_country_select_tomselect = function() {
 			var selector = 'select.state_select';
-			FCEnhancedSelect.enhanceFields( selector );
+			FCEnhancedSelect.enhanceField( selector );
 		}
 
 		// Rebuild enhanced fields when changing the selected country
@@ -172,12 +172,10 @@ jQuery( function( $ ) {
 		// CHANGE: Define class names to be removed from state field when changing its type
 		var state_field_type_classes = [ 'fc-select-field--hidden', 'fc-select-field--text', 'fc-select-field--select' ];
 
-		// CHANGE: Maybe destroy TomSelect component before replacing the field
-		if ( usingTomSelect ) {
+		// CHANGE: Maybe update enhanced select field
+		if ( usingTomSelect && $statebox.length > 0 ) {
 			var stateField = $statebox.get( 0 );
-			if ( $statebox.length > 0 && stateField.tomselect ) {
-				stateField.tomselect.destroy();
-			}
+			FCEnhancedSelect.enhanceField( stateField );
 		}
 
 		if ( states[ country ] ) {
