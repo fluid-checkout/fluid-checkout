@@ -55,7 +55,7 @@ class FluidCheckout_ThemeCompat_Avanam extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '35px',
+				'--fluidcheckout--field--height' => '42.79px',
 				'--fluidcheckout--field--padding-left' => '14px',
 				'--fluidcheckout--field--font-size' => '15px',
 				'--fluidcheckout--field--border-radius' => '3px',
