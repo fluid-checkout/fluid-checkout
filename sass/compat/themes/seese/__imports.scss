@@ -12,6 +12,7 @@ $_body-theme-selector:                 '.theme-seese' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"account-content-area",
 	"checkout-login",
 	"checkout-steps",
 	"woocommerce-form-fields",
