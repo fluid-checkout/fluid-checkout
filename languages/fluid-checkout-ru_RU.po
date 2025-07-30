@@ -419,14 +419,6 @@ msgstr "Оцените плагин"
 msgid "I need help!"
 msgstr "Мне нужна помощь!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Плагин WooCommerce Checkout Manager от Quadlayers не совместим с Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -703,14 +695,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Выберите изображение"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Изображение не выбрано."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Удалить изображение"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2585,6 +2569,26 @@ msgstr ""
 "Позволяет покупателям оплачивать заказы, которые были созданы вручную "
 "администратором магазина или не были оформлены во время оформления."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Плагин WooCommerce Checkout Manager от Quadlayers не совместим с Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Поле названия компании для адреса выставления счета"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Измените видимость поля \"Название компании\" для раздела \"Адрес для "
+"выставления счета\" в форме оформления заказа."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2704,3 +2708,8 @@ msgstr "Или продолжайте в качестве гостя"
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Изменить"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Удалить изображение"

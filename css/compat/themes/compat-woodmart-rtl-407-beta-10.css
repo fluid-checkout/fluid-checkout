@@ -3,8 +3,8 @@ body.theme-woodmart.has-checkout-header .page-title {
 }
 
 body.theme-woodmart.woocommerce-checkout .content-layout-wrapper {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 body.theme-woodmart.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
@@ -19,8 +19,8 @@ body.theme-woodmart .woocommerce-shipping-fields {
 
 body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
   position: relative;
-  margin-left: 5px;
-  margin-right: -5px;
+  margin-right: 5px;
+  margin-left: -5px;
   width: 30px;
   height: 30px;
   line-height: inherit;
@@ -36,7 +36,7 @@ body.theme-woodmart .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-rem
   position: absolute;
   display: block;
   top: 0;
-  left: 0;
+  right: 0;
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -50,6 +50,18 @@ body.theme-woodmart .fc-wrapper .fc-place-order .fc-place-order-button {
   background-color: var(--btn-accented-bgcolor, #83b735);
 }
 
+@media (max-width: 999px) {
+  body.theme-woodmart.woocommerce-checkout header.fc-checkout-header + .wd-page-title {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 999px) {
+  body.theme-woodmart.woocommerce-checkout .wd-page-title ~ #main.fc-main {
+    padding-top: 0;
+  }
+}
+
 body.theme-woodmart .fc-checkout-order-review .woodmart-table-wrapper,
 body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
   margin: 0;
@@ -60,7 +72,7 @@ body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
 }
 
 body.theme-woodmart form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-discount .woocommerce-remove-coupon {
-  margin-right: -10px;
+  margin-left: -10px;
 }
 
 div.woocommerce form .form-row .select2-selection {
@@ -74,20 +86,20 @@ body.theme-woodmart div.woocommerce .select2-container .select2-selection--singl
 body.theme-woodmart div.woocommerce .select2-container .select2-selection--multiple .select2-selection__rendered {
   display: block;
   margin-bottom: 0;
-  padding-left: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
   padding-right: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
+  padding-left: var(--fluidcheckout--select2--inner-spacing, 5px) !important;
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
-  right: 5px !important;
+  left: 5px !important;
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection .select2-selection__clear {
-  right: 24px;
+  left: 24px;
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-selection__clear {
-  right: 5px;
+  left: 5px;
 }
 
 body.theme-woodmart div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {

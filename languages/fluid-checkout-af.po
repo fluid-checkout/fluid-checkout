@@ -402,14 +402,6 @@ msgstr "Beoordeel die inprop"
 msgid "I need help!"
 msgstr "Ek het hulp nodig!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Die inprop WooCommerce Checkout Manager deur Quadlayers is nie versoenbaar "
-"met Fluid Checkout nie"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +650,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Kies &#39;n prent"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Geen prent gekies nie."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Verwyder prent"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2456,6 +2440,26 @@ msgstr ""
 "die winkeladministrateur geskep word óf nie tydens die afhandeling voltooi "
 "is nie."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Die inprop WooCommerce Checkout Manager deur Quadlayers is nie versoenbaar "
+"met Fluid Checkout nie."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Maatskappynaamveld vir faktuuradres"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Verander die sigbaarheid vir die maatskappynaamveld vir die "
+"faktuuradres-afdeling op die afhandelingsvorm."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2573,3 +2577,8 @@ msgstr "Of gaan verder hieronder"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Of gaan voort as &#39;n gas"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Verwyder prent"

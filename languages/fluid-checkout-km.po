@@ -405,14 +405,6 @@ msgstr "វាយតម្លៃកម្មវិធីជំនួយ"
 msgid "I need help!"
 msgstr "ខ្ញុំត្រូវការជំនួយ!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"កម្មវិធីជំនួយ WooCommerce Checkout Manager ដោយ Quadlayers មិនឆបគ្នាជាមួយ "
-"Fluid Checkout ទេ។"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -656,14 +648,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ជ្រើសរើសរូបភាព"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "មិនបានជ្រើសរើសរូបភាពទេ។"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "លុបរូបភាព"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2434,6 +2418,26 @@ msgstr ""
 "អនុញ្ញាតឱ្យអតិថិជនធ្វើការទូទាត់សម្រាប់ការបញ្ជាទិញដែលត្រូវបានបង្កើតដោយដៃដោយអ្"
 "នកគ្រប់គ្រងហាង ឬមិនបានបញ្ចប់អំឡុងពេលបង់ប្រាក់ចេញ។"
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"កម្មវិធីជំនួយ WooCommerce Checkout Manager ដោយ Quadlayers មិនត្រូវគ្នាជាមួយ "
+"Fluid Checkout ទេ។"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "វាលឈ្មោះក្រុមហ៊ុនសម្រាប់អាសយដ្ឋានវិក្កយបត្រ"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"ផ្លាស់ប្តូរភាពមើលឃើញសម្រាប់វាលឈ្មោះក្រុមហ៊ុនសម្រាប់ផ្នែកអាសយដ្ឋានវិក្កយបត្រន"
+"ៅលើទម្រង់បង់ប្រាក់ចេញ។"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2551,3 +2555,8 @@ msgstr "ឬបន្តខាងក្រោម"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "ឬបន្តជាភ្ញៀវ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "លុបរូបភាព"
