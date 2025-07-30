@@ -11,11 +11,3 @@ body#{ $_body-theme-selector } .fc-wrapper input[type="radio"]:checked + label::
 	transform: none;
 	top: 10px !important; // Needed to override theme styles with !important
 }
-
-woocommerce-checkout-payment .wc_payment_methods, .woocommerce .shop_table.woocommerce-checkout-review-order-table td, .woocommerce .shop_table.woocommerce-checkout-review-order-table th, .woocommerce .shop_table.woocommerce-checkout-review-order-table td.product-name, .woocommerce .shop_table.woocommerce-checkout-review-order-table th.product-name
-Specificity: (0,4,1)
- {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-    }
-}
