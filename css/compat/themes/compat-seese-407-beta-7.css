@@ -34,7 +34,7 @@ body.theme-seese .fc-wrapper .fc-step__substep.wc-stripe-banner-checkout.active 
   max-width: 100%;
 }
 
-body.theme-seese .fc-wrapper .fc-step__substep input[type=radio]:checked + label::after {
+body.theme-seese .fc-wrapper input[type=radio]:checked + label::after {
   background-color: transparent;
   transform: none;
   top: 10px !important;
@@ -54,4 +54,10 @@ body.theme-seese div.woocommerce form .form-row {
 
 body.theme-seese .ts-wrapper .ts-control {
   font-weight: 300;
+  color: inherit;
+}
+
+body.theme-seese .fc-wrapper .select2-container .select2-selection--single .select2-selection__rendered {
+  font-weight: 300;
+  color: inherit;
 }
