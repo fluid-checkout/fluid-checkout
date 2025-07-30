@@ -30,6 +30,11 @@ body.theme-seese .fc-login-form__wrapper.woocommerce form .woocommerce-form__lab
   bottom: 0;
 }
 
+body.theme-seese .woocommerce-checkout-payment .wc_payment_methods {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
 body.theme-seese .fc-wrapper .fc-step__substep.wc-stripe-banner-checkout.active {
   max-width: 100%;
 }
