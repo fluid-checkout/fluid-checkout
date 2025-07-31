@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: templatemela-plugin-autorapid.
+ * Compatibility with plugin: Templatemela Plugin - Autorapid.
  */
 class FluidCheckout_TemplatemelaPluginAutorapid extends FluidCheckout {
 
