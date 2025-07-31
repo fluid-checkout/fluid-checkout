@@ -28,9 +28,6 @@ class FluidCheckout_ThemeCompat_Avanam extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
-
-		// Container
-		add_filter( 'fc_checkout_container_attributes', array( $this, 'change_container_attributes' ), 20 );
 	}
 
 
@@ -67,6 +64,9 @@ class FluidCheckout_ThemeCompat_Avanam extends FluidCheckout {
 				'--fluidcheckout--field--border-radius' => '3px',
 				'--fluidcheckout--field--border-color' => 'var(--global-gray-400)',
 			),
+			
+			// Dark mode
+			':root body.color-switch-dark' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
