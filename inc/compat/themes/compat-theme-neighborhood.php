@@ -25,6 +25,10 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// Buttons
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
@@ -93,6 +97,31 @@ class FluidCheckout_ThemeCompat_Neighborhood extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 * 
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Get theme options
+		$options = get_option('sf_neighborhood_options');
+
+		// Bail if theme options are not available
+		if ( ! $options || ! array_key_exists( 'enable_mini_header', $options ) ) { return $attributes; }
+
+		// Bail if mini header option is disabled in the theme
+		if ( ! $options[ 'enable_mini_header' ] ) { return $attributes; }
+
+		$attributes[ 'data-sticky-relative-to' ] = '#mini-header';
+
+		return $attributes;
 	}
 
 }
