@@ -99,10 +99,11 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 * @param  array  $parsed_posted_data  All parsed post data.
 	 */
 	public function maybe_add_shipping_and_billing_fields_to_persisted_data_skip_fields( $skip_field_keys, $parsed_posted_data ) {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $skip_field_keys; }
+
 		// Bail if custom field value hasn't been changed
-		if ( empty( $parsed_posted_data[ 'pymntpl-paypal-woocommerce-fields_altered' ] ) ) {
-			return $skip_field_keys;
-		}
+		if ( empty( $parsed_posted_data[ 'pymntpl-paypal-woocommerce-fields_altered' ] ) ) { return $skip_field_keys; }
 
 		// Shipping and billing fields keys
 		$fields_keys = array(
