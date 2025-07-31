@@ -356,10 +356,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with theme Enfold.
+* Added: Compatibility with theme Neighborhood.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
 * Added: Compatibility with plugin WooCommerce EU Vat & B2B.
+* Improved: Compatibility with theme Enfold.
 * Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.
 * Improved: Expose more methods to interact with the enhanced select fields component `TomSelect`.
 * Fixed: Compatibility with theme Woodmart. Fix checkout steps section style when using distraction free header and footer.
