@@ -403,14 +403,6 @@ msgstr "ໃຫ້ຄະແນນ plugin"
 msgid "I need help!"
 msgstr "ຂ້ອຍຕ້ອງການຄວາມຊ່ວຍເຫຼືອ!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"plugin WooCommerce Checkout Manager ໂດຍ Quadlayers ບໍ່ເຂົ້າກັນໄດ້ກັບ Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -652,14 +644,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ເລືອກຮູບ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ບໍ່ໄດ້ເລືອກຮູບ."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ລຶບຮູບອອກ"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2382,6 +2366,58 @@ msgid ""
 "Checkout."
 msgstr "ສົ່ງອອກພາກສ່ວນຂັ້ນຕອນການຈ່າຍເງິນຈາກຫົວຂໍ້ Nyture ເມື່ອໃຊ້ Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ບາງທີອາດຈະຖືກບັງຄັບເປັນ &quot;ຕ້ອງການ&quot; "
+"ຖ້າພາກສ່ວນທີ່ຢູ່ໃບບິນຖືກສະແດງຫຼັງຈາກພາກສ່ວນທີ່ຢູ່ຈັດສົ່ງ, "
+"ແລະຊ່ອງຂໍ້ມູນການເອີ້ນເກັບເງິນຖືກຕັ້ງເປັນ &quot;ຕ້ອງການ. "
+"ນີ້ແມ່ນຈໍາເປັນເພື່ອຮັບປະກັນວ່າທີ່ຢູ່ຈັດສົ່ງສາມາດຖືກຄັດລອກໄປທີ່ທີ່ຢູ່ໃບບິນເມື"
+"່ອທາງເລືອກນັ້ນຖືກກວດສອບ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ບາງທີອາດຈະຖືກບັງຄັບເປັນ &quot;ຕ້ອງການ&quot; "
+"ຖ້າພາກສ່ວນທີ່ຢູ່ໃບບິນຖືກສະແດງຫຼັງຈາກພາກສ່ວນທີ່ຢູ່ໃບບິນ, "
+"ແລະຊ່ອງຂໍ້ມູນໂທລະສັບໃບບິນຖືກຕັ້ງເປັນ &quot;ຕ້ອງການ. "
+"ນີ້ແມ່ນຈໍາເປັນເພື່ອຮັບປະກັນວ່າທີ່ຢູ່ໃບບິນສາມາດຖືກຄັດລອກໄປທີ່ທີ່ຢູ່ໃບບິນເມື່ອ"
+"ທາງເລືອກນັ້ນຖືກກວດສອບ."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ອະນຸຍາດໃຫ້ລູກຄ້າເຮັດການຊໍາລະເງິນສໍາລັບຄໍາສັ່ງທີ່ສ້າງຂຶ້ນດ້ວຍຕົນເອງໂດຍຜູ້ເບິ່"
+"ງແຍງຮ້ານຫຼືບໍ່ໄດ້ສໍາເລັດໃນລະຫວ່າງການຈ່າຍເງິນ."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"plugin WooCommerce Checkout Manager ໂດຍ Quadlayers ບໍ່ເຂົ້າກັນໄດ້ກັບ Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ຊ່ອງຂໍ້ມູນຊື່ບໍລິສັດສໍາລັບທີ່ຢູ່ໃບບິນ"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "ປ່ຽນການເບິ່ງເຫັນຊ່ອງຂໍ້ມູນຊື່ບໍລິສັດສຳລັບພາກສ່ວນທີ່ຢູ່ໃບບິນໃນແບບຟອມຈ່າຍເງິນ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2499,3 +2535,8 @@ msgstr "ຫຼືສືບຕໍ່ຂ້າງລຸ່ມນີ້"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "ຫຼືສືບຕໍ່ເປັນແຂກ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ລຶບຮູບອອກ"

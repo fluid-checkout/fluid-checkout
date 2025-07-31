@@ -203,7 +203,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function update_order_meta_with_shipping_phone( $order_id ) {
 		// Get shipping phone
-		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( $_POST['shipping_phone'] ) : '';
+		$shipping_phone = isset( $_POST['shipping_phone'] ) ? sanitize_text_field( wp_unslash( $_POST['shipping_phone'] ?? '' ) ) : '';
 
 		// Bail if shipping phone was not provided
 		if ( empty( $shipping_phone ) ) { return; }

@@ -383,12 +383,6 @@ msgstr "플러그인 평가하기"
 msgid "I need help!"
 msgstr "도움이 필요해요!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "쿼드레이어의 플러그인 WooCommerce Checkout Manager는 플루이드 체크아웃과 호환되지 않습니다."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -615,14 +609,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "이미지 선택"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "선택한 이미지가 없습니다."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "이미지 제거"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2205,6 +2191,48 @@ msgid ""
 "Checkout."
 msgstr "유동적 결제를 사용하는 경우 Nyture 테마에서 결제 단계 섹션을 출력합니다."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"청구 주소 섹션이 배송 주소 섹션 뒤에 표시되고 청구 전화 필드가 '필수'로 설정되어 있는 경우 '필수'로 강제 설정될 수 있습니다. "
+"이 옵션을 선택하면 배송 주소가 청구 주소로 복사될 수 있도록 하기 위해 필요합니다."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"청구 주소 섹션 뒤에 청구 주소 섹션이 표시되고 청구 전화 필드가 '필수'로 설정되어 있는 경우 '필수'로 강제 설정될 수 있습니다. "
+"이는 해당 옵션이 선택되어 있을 때 청구 주소가 청구 주소로 복사될 수 있도록 하기 위해 필요합니다."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr "스토어 관리자가 수동으로 생성했거나 결제 중에 완료되지 않은 주문에 대해 고객이 결제할 수 있습니다."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "쿼드레이어의 플러그인 WooCommerce 체크아웃 매니저는 플루이드 체크아웃과 호환되지 않습니다."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "청구 주소의 회사명 필드"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "결제 양식의 청구 주소 섹션에서 회사 이름 필드에 대한 표시 여부를 변경합니다."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2322,3 +2350,8 @@ msgstr "또는 아래에서 계속하세요."
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "또는 게스트로 계속 참여하기"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "이미지 제거"

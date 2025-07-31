@@ -401,14 +401,6 @@ msgstr "Kadiria programu-jalizi"
 msgid "I need help!"
 msgstr "Nahitaji msaada!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Kidhibiti cha Malipo cha WooCommerce na Quadlayers hakiendani na Malipo ya "
-"Maji"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -657,14 +649,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Chagua picha"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Hakuna picha iliyochaguliwa."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Ondoa picha"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2426,6 +2410,60 @@ msgstr ""
 "Toa sehemu ya hatua za kulipa kutoka kwa mandhari ya Nyture unapotumia "
 "Malipo ya Maji."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Labda italazimishwa kama &quot;inahitajika&quot; ikiwa sehemu ya anwani ya "
+"kutuma bili itaonyeshwa baada ya sehemu ya anwani ya usafirishaji, na "
+"sehemu ya simu ya kutuma bili imewekwa kama &quot;inahitajika. Hii "
+"inahitajika ili kuhakikisha anwani ya usafirishaji inaweza kunakiliwa kwa "
+"anwani ya bili wakati chaguo hilo limechaguliwa."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Labda italazimishwa kama &quot;inahitajika&quot; ikiwa sehemu ya anwani ya "
+"bili itaonyeshwa baada ya sehemu ya anwani ya kutuma bili, na sehemu ya "
+"simu ya bili imewekwa kama &quot;inahitajika. Hii inahitajika ili "
+"kuhakikisha anwani ya bili inaweza kunakiliwa kwa anwani ya bili wakati "
+"chaguo hilo limechaguliwa."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Huruhusu wateja kufanya malipo ya maagizo ambayo yameundwa na msimamizi wa "
+"duka au ambayo hayajakamilika wakati wa kulipa."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Kidhibiti cha Malipo cha WooCommerce na Quadlayers hakiendani na Malipo ya "
+"Maji"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Sehemu ya jina la kampuni kwa anwani ya bili"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Badilisha mwonekano wa sehemu ya jina la kampuni kwa sehemu ya anwani ya "
+"kutuma bili kwenye fomu ya kulipa."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2543,3 +2581,8 @@ msgstr "Au endelea hapa chini"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Au endelea kama mgeni"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Ondoa picha"

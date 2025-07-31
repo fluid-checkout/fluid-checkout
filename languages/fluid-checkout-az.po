@@ -399,14 +399,6 @@ msgstr "Plugini qiymətləndirin"
 msgid "I need help!"
 msgstr "Mənə kömək lazımdır!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers tərəfindən plagin WooCommerce Checkout Manager Fluid Checkout "
-"ilə uyğun gəlmir"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -655,14 +647,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Şəkil seçin"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Heç bir şəkil seçilmədi."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Şəkli silin"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2412,6 +2396,59 @@ msgstr ""
 "Fluid Checkout istifadə edərkən Nyture mövzusundan yoxlama addımları "
 "bölməsini çıxarın."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Faktura ünvanı bölməsi göndərmə ünvanı bölməsindən sonra göstərilibsə və "
+"faktura telefonu sahəsi &quot;tələb olunursa&quot; &quot;tələb olunur&quot; "
+"kimi məcbur edilə bilər. Bu seçim yoxlanılan zaman göndərmə ünvanının "
+"faktura ünvanına kopyalanmasını təmin etmək üçün lazımdır."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Faktura ünvanı bölməsi faktura ünvanı bölməsindən sonra göstərilibsə və "
+"faktura telefonu sahəsi &quot;tələb olunur&quot; kimi təyin edilərsə, "
+"&quot;tələb olunur&quot; kimi məcbur edilə bilər. Bu, həmin seçim "
+"yoxlanılan zaman faktura ünvanının faktura ünvanına kopyalanmasını təmin "
+"etmək üçün lazımdır."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Müştərilərə mağaza admini tərəfindən əl ilə yaradılan və ya ödəniş zamanı "
+"tamamlanmayan sifarişlər üçün ödənişlər etməyə imkan verir."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers tərəfindən plagin WooCommerce Checkout Manager Fluid Checkout "
+"ilə uyğun gəlmir"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Billinq ünvanı üçün şirkət adı sahəsi"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ödəniş formasındakı faktura ünvanı bölməsi üçün şirkət adı sahəsinin "
+"görünməsini dəyişdirin."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2529,3 +2566,8 @@ msgstr "Və ya aşağıda davam edin"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Və ya qonaq olaraq davam edin"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Şəkli silin"

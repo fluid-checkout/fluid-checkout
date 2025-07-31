@@ -404,14 +404,6 @@ msgstr "Плагинді бағалаңыз"
 msgid "I need help!"
 msgstr "Маған көмек қажет!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers ұсынған WooCommerce Checkout Manager плагині Fluid Checkout "
-"бағдарламасымен үйлесімді емес."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -660,14 +652,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Суретті таңдаңыз"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Ешбір сурет таңдалмаған."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Кескінді жою"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2414,6 +2398,59 @@ msgstr ""
 "Fluid Checkout қолданбасын пайдаланған кезде Nyture тақырыбынан тексеру "
 "қадамдары бөлімін шығарыңыз."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Жеткізу мекенжайы бөлімінен кейін төлем мекенжайы бөлімі көрсетілсе және "
+"төлем телефоны өрісі &quot;міндетті&quot; ретінде орнатылса, "
+"&quot;міндетті&quot; деп мәжбүрлеуге болады. Бұл опция таңдалғанда, жеткізу "
+"мекенжайын төлем мекенжайына көшіру мүмкіндігін қамтамасыз ету үшін қажет."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Төлем мекенжайы бөлімі есепшот мекенжайы бөлімінен кейін көрсетілсе және "
+"төлем телефоны өрісі &quot;міндетті&quot; ретінде орнатылса, "
+"&quot;міндетті&quot; деп мәжбүрлеуге болады. Бұл опция таңдалған кезде "
+"төлем мекенжайын төлем мекенжайына көшіруге болатынын қамтамасыз ету үшін "
+"қажет."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Клиенттерге дүкен әкімшісі қолмен жасаған немесе төлем кезінде аяқталмаған "
+"тапсырыстар үшін төлемдер жасауға мүмкіндік береді."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers ұсынған WooCommerce Checkout Manager плагині Fluid Checkout "
+"бағдарламасымен үйлесімді емес"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Төлем мекенжайы үшін компания атауы өрісі"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Төлем пішініндегі есепшот мекенжайы бөлімі үшін компания атауы өрісінің "
+"көрінуін өзгертіңіз."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2531,3 +2568,8 @@ msgstr "Немесе төменде жалғастырыңыз"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Немесе қонақ ретінде жалғастырыңыз"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Кескінді жою"

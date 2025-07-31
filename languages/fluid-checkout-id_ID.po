@@ -401,14 +401,6 @@ msgstr "Beri nilai plugin"
 msgid "I need help!"
 msgstr "Aku butuh bantuan!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plugin WooCommerce Checkout Manager oleh Quadlayers tidak kompatibel dengan "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -656,14 +648,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Memilih gambar"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Tidak ada gambar yang dipilih."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Menghapus gambar"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2416,6 +2400,58 @@ msgstr ""
 "Keluarkan bagian langkah-langkah checkout dari tema Nyture saat menggunakan "
 "Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Mungkin dipaksa sebagai \"wajib\" jika bagian alamat penagihan ditampilkan "
+"setelah bagian alamat pengiriman, dan bidang telepon penagihan diatur "
+"sebagai \"wajib\". Hal ini diperlukan untuk memastikan alamat pengiriman "
+"dapat disalin ke alamat penagihan ketika opsi tersebut dicentang."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Mungkin dipaksa sebagai \"wajib\" jika bagian alamat penagihan ditampilkan "
+"setelah bagian alamat penagihan, dan bidang telepon penagihan diatur "
+"sebagai \"wajib\". Hal ini diperlukan untuk memastikan alamat penagihan "
+"dapat disalin ke alamat penagihan ketika opsi tersebut dicentang."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Memungkinkan pelanggan untuk melakukan pembayaran untuk pesanan yang dibuat "
+"secara manual oleh admin toko atau tidak diselesaikan saat checkout."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plugin WooCommerce Checkout Manager oleh Quadlayers tidak kompatibel dengan "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Kolom nama perusahaan untuk alamat penagihan"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ubah visibilitas untuk bidang nama perusahaan untuk bagian alamat penagihan "
+"pada formulir pembayaran."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2533,3 +2569,8 @@ msgstr "Atau lanjutkan di bawah ini"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Atau lanjutkan sebagai tamu"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Menghapus gambar"

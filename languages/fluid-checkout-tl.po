@@ -405,14 +405,6 @@ msgstr "I-rate ang plugin"
 msgid "I need help!"
 msgstr "Kailangan ko ng tulong!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Ang plugin na WooCommerce Checkout Manager ng Quadlayers ay hindi tugma sa "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -663,14 +655,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Pumili ng larawan"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Walang napiling larawan."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Alisin ang larawan"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2473,6 +2457,59 @@ msgstr ""
 "I-output ang seksyon ng mga hakbang sa pag-checkout mula sa tema ng Nyture "
 "kapag gumagamit ng Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Maaaring pilitin bilang &quot;kinakailangan&quot; kung ang seksyon ng "
+"billing address ay ipinapakita pagkatapos ng seksyon ng address sa "
+"pagpapadala, at ang field ng telepono sa pagsingil ay nakatakda bilang "
+"&quot;kinakailangan."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Maaaring pilitin bilang &quot;kinakailangan&quot; kung ang seksyon ng "
+"billing address ay ipinapakita pagkatapos ng seksyon ng billing address, at "
+"ang billing phone field ay itinakda bilang &quot;kinakailangan. Ito ay "
+"kinakailangan upang matiyak na ang billing address ay makokopya sa billing "
+"address kapag ang pagpipiliang iyon ay nasuri."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Nagbibigay-daan sa mga customer na magbayad para sa mga order na maaaring "
+"manual na ginawa ng admin ng tindahan o hindi nakumpleto sa pag-checkout."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Ang plugin na WooCommerce Checkout Manager ng Quadlayers ay hindi tugma sa "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Field ng pangalan ng kumpanya para sa billing address"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Baguhin ang visibility para sa field ng pangalan ng kumpanya para sa "
+"seksyon ng billing address sa form ng pag-checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2590,3 +2627,8 @@ msgstr "O magpatuloy sa ibaba"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "O magpatuloy bilang isang panauhin"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Alisin ang larawan"

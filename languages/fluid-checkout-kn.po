@@ -402,14 +402,6 @@ msgstr "ಪ್ಲಗಿನ್ ಅನ್ನು ರೇಟ್ ಮಾಡಿ"
 msgid "I need help!"
 msgstr "ನನಗೆ ಸಹಾಯ ಬೇಕು!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"ಕ್ವಾಡ್‌ಲೇಯರ್ಸ್‌ನ WooCommerce ಚೆಕ್‌ಔಟ್ ಮ್ಯಾನೇಜರ್ ಪ್ಲಗಿನ್ ಫ್ಲೂಯಿಡ್ "
-"ಚೆಕ್‌ಔಟ್‌ಗೆ ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -657,14 +649,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ಯಾವುದೇ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ಚಿತ್ರವನ್ನು ತೆಗೆದುಹಾಕಿ"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2405,6 +2389,60 @@ msgstr ""
 "ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಬಳಸುವಾಗ ನೈಚರ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ ವಿಭಾಗವನ್ನು ಔಟ್‌ಪುಟ್ "
 "ಮಾಡಿ."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವು ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗದ ನಂತರ ಪ್ರದರ್ಶಿಸಲ್ಪಟ್ಟಿದ್ದರೆ "
+"ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು &quot;ಅಗತ್ಯ&quot; ಎಂದು ಹೊಂದಿಸಿದ್ದರೆ, "
+"&quot;ಅಗತ್ಯ&quot; ಎಂದು ಒತ್ತಾಯಿಸಬಹುದು. ಆ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿದಾಗ ಶಿಪ್ಪಿಂಗ್ "
+"ವಿಳಾಸವನ್ನು ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸಕ್ಕೆ ನಕಲಿಸಬಹುದೆಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಇದು "
+"ಅಗತ್ಯವಾಗಿರುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗದ ನಂತರ ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವು ಪ್ರದರ್ಶಿತವಾಗಿದ್ದರೆ "
+"ಮತ್ತು ಬಿಲ್ಲಿಂಗ್ ಫೋನ್ ಕ್ಷೇತ್ರವನ್ನು &quot;ಅಗತ್ಯ&quot; ಎಂದು ಹೊಂದಿಸಿದ್ದರೆ, "
+"&quot;ಅಗತ್ಯ&quot; ಎಂದು ಒತ್ತಾಯಿಸಬಹುದು. ಆ ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿದಾಗ ಬಿಲ್ಲಿಂಗ್ "
+"ವಿಳಾಸವನ್ನು ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸಕ್ಕೆ ನಕಲಿಸಬಹುದೆಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಇದು "
+"ಅಗತ್ಯವಾಗಿರುತ್ತದೆ."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ಅಂಗಡಿ ನಿರ್ವಾಹಕರು ಹಸ್ತಚಾಲಿತವಾಗಿ ರಚಿಸಿದ ಅಥವಾ ಚೆಕ್‌ಔಟ್ ಸಮಯದಲ್ಲಿ ಪೂರ್ಣಗೊಳ್ಳದ "
+"ಆರ್ಡರ್‌ಗಳಿಗೆ ಪಾವತಿಗಳನ್ನು ಮಾಡಲು ಗ್ರಾಹಕರಿಗೆ ಅನುಮತಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"ಕ್ವಾಡ್‌ಲೇಯರ್‌ಗಳ WooCommerce ಚೆಕ್‌ಔಟ್ ಮ್ಯಾನೇಜರ್ ಪ್ಲಗಿನ್ ಫ್ಲೂಯಿಡ್ ಚೆಕ್‌ಔಟ್‌ಗೆ "
+"ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸಕ್ಕಾಗಿ ಕಂಪನಿ ಹೆಸರಿನ ಕ್ಷೇತ್ರ"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ನಲ್ಲಿ ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗಕ್ಕೆ ಕಂಪನಿಯ ಹೆಸರಿನ ಕ್ಷೇತ್ರದ "
+"ಗೋಚರತೆಯನ್ನು ಬದಲಾಯಿಸಿ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2522,3 +2560,8 @@ msgstr "ಅಥವಾ ಕೆಳಗೆ ಮುಂದುವರಿಸಿ"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "ಅಥವಾ ಅತಿಥಿಯಾಗಿ ಮುಂದುವರಿಯಿರಿ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ಚಿತ್ರವನ್ನು ತೆಗೆದುಹಾಕಿ"

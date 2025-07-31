@@ -405,14 +405,6 @@ msgstr "செருகுநிரலை மதிப்பிடவும்."
 msgid "I need help!"
 msgstr "எனக்கு உதவி தேவை!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers இன் WooCommerce Checkout Manager செருகுநிரல், Fluid Checkout "
-"உடன் இணக்கமாக இல்லை."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -662,14 +654,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ஒரு படத்தைத் தேர்ந்தெடுக்கவும்"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "எந்தப் படமும் தேர்ந்தெடுக்கப்படவில்லை."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "படத்தை அகற்று"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2460,6 +2444,60 @@ msgstr ""
 "Fluid Checkout ஐப் பயன்படுத்தும் போது Nyture கருப்பொருளிலிருந்து checkout "
 "படிகள் பகுதியை வெளியிடுங்கள்."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ஷிப்பிங் முகவரிப் பிரிவுக்குப் பிறகு பில்லிங் முகவரிப் பிரிவு காட்டப்பட்டு, "
+"பில்லிங் தொலைபேசி புலம் &quot;தேவை&quot; என அமைக்கப்பட்டால், "
+"&quot;தேவை&quot; என்று கட்டாயப்படுத்தப்படலாம். அந்த விருப்பம் "
+"தேர்ந்தெடுக்கப்படும்போது ஷிப்பிங் முகவரியை பில்லிங் முகவரிக்கு நகலெடுக்க "
+"முடியும் என்பதை உறுதிப்படுத்த இது தேவைப்படுகிறது."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"பில்லிங் முகவரிப் பிரிவுக்குப் பிறகு பில்லிங் முகவரிப் பிரிவு காட்டப்பட்டு, "
+"பில்லிங் தொலைபேசி புலம் &quot;தேவை&quot; என அமைக்கப்பட்டால், "
+"&quot;தேவை&quot; என்று கட்டாயப்படுத்தப்படலாம். அந்த விருப்பம் "
+"தேர்ந்தெடுக்கப்படும்போது பில்லிங் முகவரியை பில்லிங் முகவரிக்கு நகலெடுக்க "
+"முடியும் என்பதை உறுதிப்படுத்த இது தேவைப்படுகிறது."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"கடை நிர்வாகியால் கைமுறையாக உருவாக்கப்பட்ட அல்லது செக் அவுட்டின் போது "
+"முடிக்கப்படாத ஆர்டர்களுக்கு வாடிக்கையாளர்கள் பணம் செலுத்த அனுமதிக்கிறது."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers இன் WooCommerce Checkout Manager செருகுநிரல், Fluid Checkout "
+"உடன் இணக்கமாக இல்லை."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "பில்லிங் முகவரிக்கான நிறுவனப் பெயர் புலம்"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"செக்அவுட் படிவத்தில் பில்லிங் முகவரிப் பகுதிக்கான நிறுவனத்தின் பெயர் "
+"புலத்திற்கான தெரிவுநிலையை மாற்றவும்."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2577,3 +2615,8 @@ msgstr "அல்லது கீழே தொடரவும்"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "அல்லது விருந்தினராகத் தொடரவும்"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "படத்தை அகற்று"

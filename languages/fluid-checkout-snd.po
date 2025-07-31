@@ -402,14 +402,6 @@ msgstr "پلگ ان جي درجه بندي ڪريو"
 msgid "I need help!"
 msgstr "مونکي مدد گهرجي!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"ڪواڊليئرز جو پلگ ان WooCommerce Checkout Manager Fluid Checkout سان مطابقت "
-"نٿو رکي."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -654,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "هڪ تصوير چونڊيو"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ڪا به تصوير منتخب نه ڪئي وئي آهي."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "تصوير هٽايو"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2381,6 +2365,58 @@ msgstr ""
 "فلوئڊ چيڪ آئوٽ استعمال ڪندي Nyture ٿيم مان چيڪ آئوٽ اسٽيپس سيڪشن آئوٽ پُٽ "
 "ڪريو."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"جيڪڏهن بلنگ ايڊريس سيڪشن شپنگ ايڊريس سيڪشن کان پوءِ ڏيکاريل هجي ۽ بلنگ فون "
+"فيلڊ &quot;لازمي&quot; طور سيٽ ڪيو وڃي ته شايد &quot;لازمي&quot; طور تي "
+"مجبور ڪيو وڃي. اهو يقيني بڻائڻ لاءِ ضروري آهي ته شپنگ ايڊريس کي بلنگ ايڊريس "
+"تي ڪاپي ڪري سگهجي ٿو جڏهن اهو آپشن چيڪ ڪيو وڃي."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"جيڪڏهن بلنگ ايڊريس سيڪشن بلنگ ايڊريس سيڪشن کان پوءِ ڏيکاريو وڃي ۽ بلنگ فون "
+"فيلڊ &quot;لازمي&quot; طور سيٽ ڪيو وڃي ته شايد &quot;لازمي&quot; طور تي "
+"مجبور ڪيو وڃي. اهو يقيني بڻائڻ لاءِ ضروري آهي ته بلنگ ايڊريس کي بلنگ ايڊريس "
+"تي ڪاپي ڪري سگهجي ٿو جڏهن اهو آپشن چيڪ ڪيو وڃي."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"گراهڪن کي انهن آرڊرن لاءِ ادائيگي ڪرڻ جي اجازت ڏئي ٿو جيڪي يا ته اسٽور "
+"ايڊمن پاران دستي طور تي ٺاهيا ويا آهن يا چيڪ آئوٽ دوران مڪمل نه ٿيا آهن."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"ڪواڊليئرز جو پلگ ان WooCommerce Checkout Manager Fluid Checkout سان مطابقت "
+"نٿو رکي."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "بلنگ ايڊريس لاءِ ڪمپني جي نالي جي فيلڊ"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"چيڪ آئوٽ فارم تي بلنگ ايڊريس سيڪشن لاءِ ڪمپني جي نالي جي فيلڊ جي نمائش "
+"تبديل ڪريو."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2498,3 +2534,8 @@ msgstr "يا هيٺ جاري رکو"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "يا مهمان طور جاري رکو"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "تصوير هٽايو"

@@ -416,14 +416,6 @@ msgstr "Értékelje a plugint"
 msgid "I need help!"
 msgstr "Segítségre van szükségem!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"A Quadlayers által készített WooCommerce Checkout Manager plugin nem "
-"kompatibilis a Fluid Checkouttal"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -701,14 +693,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Kép kiválasztása"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nincs kiválasztott kép."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Kép eltávolítása"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2537,6 +2521,59 @@ msgstr ""
 "A pénztárlépések szakaszának kimenete a Nyture témából a Fluid Checkout "
 "használatakor."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Lehet, hogy \"kötelező\", ha a számlázási cím rész a szállítási cím rész "
+"után jelenik meg, és a számlázási telefon mező \"kötelező\". Erre azért van "
+"szükség, hogy a szállítási cím átmásolható legyen a számlázási címre, ha ez "
+"az opció be van jelölve."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Lehet, hogy \"kötelező\", ha a számlázási cím szakasz a számlázási cím "
+"szakasz után jelenik meg, és a számlázási telefon mező \"kötelező\". Erre "
+"azért van szükség, hogy a számlázási cím másolható legyen a számlázási "
+"címre, ha ez az opció be van jelölve."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Lehetővé teszi a vásárlók számára, hogy olyan megrendelésekre fizessenek, "
+"amelyeket vagy az áruház adminisztrátora hozott létre kézzel, vagy nem "
+"fejezte be a pénztár során."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"A Quadlayers által készített WooCommerce Checkout Manager plugin nem "
+"kompatibilis a Fluid Checkouttal"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Cégnév mező a számlázási címhez"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"A cégnév mező láthatóságának módosítása a számlázási cím szakaszban a "
+"pénztár űrlapon."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2656,3 +2693,8 @@ msgstr "Vagy folytassa alább"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Vagy folytassa vendégként"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Kép eltávolítása"

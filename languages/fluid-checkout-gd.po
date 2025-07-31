@@ -409,14 +409,6 @@ msgstr "Dèan measadh air a’ plugan"
 msgid "I need help!"
 msgstr "Tha feum agam air cuideachadh!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Chan eil am plugan WooCommerce Checkout Manager le Quadlayers co-chòrdail "
-"ri Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -667,14 +659,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Tagh dealbh"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Cha deach dealbh a thaghadh."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Thoir air falbh dealbh"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2469,6 +2453,63 @@ msgstr ""
 "Cuir a-mach an earrann ceumannan pàighidh bhon chuspair Nyture nuair a "
 "bhios tu a’ cleachdadh Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dh’fhaodadh gum bi e air a sparradh mar “riatanach” ma thèid an earrann "
+"seòlaidh bileachaidh a thaisbeanadh às dèidh earrann seòlaidh luingeis, "
+"agus ma tha an raon fòn bileachaidh air a shuidheachadh mar “riatanach”. "
+"Tha feum air seo gus dèanamh cinnteach gun gabh an seòladh luingeis a "
+"chopaigeadh chun t-seòlaidh bileachaidh nuair a thèid an roghainn sin a "
+"chomharrachadh."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dh’fhaodadh gum bi e air a sparradh mar “riatanach” ma thèid an earrann "
+"seòlaidh bileachaidh a thaisbeanadh às dèidh earrann seòlaidh bileachaidh, "
+"agus ma tha an raon fòn bileachaidh air a shuidheachadh mar “riatanach”. "
+"Tha feum air seo gus dèanamh cinnteach gun gabh an seòladh bileachaidh a "
+"chopaigeadh chun t-seòlaidh bileachaidh nuair a thèid an roghainn sin a "
+"chomharrachadh."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Leigidh seo le luchd-ceannach pàighidhean a dhèanamh airson òrdughan a "
+"chaidh a chruthachadh le làimh le rianaire a’ bhùtha no nach deach a "
+"chrìochnachadh aig àm an pàighidh."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Chan eil am plugan WooCommerce Checkout Manager le Quadlayers co-chòrdail "
+"ri Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Raon ainm companaidh airson seòladh bileachaidh"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Atharraich faicsinneachd airson raon ainm a’ chompanaidh airson earrann "
+"seòlaidh bileachaidh air foirm an àite-pàighidh."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2586,3 +2627,8 @@ msgstr "No lean ort gu h-ìosal"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "No lean ort mar aoigh"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Thoir air falbh an dealbh"

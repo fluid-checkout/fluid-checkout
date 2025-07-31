@@ -401,14 +401,6 @@ msgstr "Ocenite vtičnik"
 msgid "I need help!"
 msgstr "Potrebujem pomoč!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Vtičnik WooCommerce Checkout Manager, ki ga Quadlayers ni združljiv s Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -654,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Izberite sliko"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Slika ni izbrana."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Odstranitev slike"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2412,6 +2396,60 @@ msgstr ""
 "Izpis poglavja korakov blagajne iz teme Nyture, ko uporabljate Fluid "
 "Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Morda je treba prikazati kot \"obvezno\", če je razdelek z naslovom za "
+"izdajo računa prikazan za razdelkom z naslovom za pošiljanje in je polje za "
+"telefon za izdajo računa nastavljeno kot \"obvezno\". To je potrebno za "
+"zagotovitev, da se lahko naslov odpreme kopira v naslov za izdajo računa, "
+"ko je ta možnost označena."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Morda je treba prikazati kot \"obvezno\", če je razdelek z naslovom računa "
+"prikazan za razdelkom z naslovom računa in je polje telefona za izdajo "
+"računa nastavljeno kot \"obvezno\". To je potrebno za zagotovitev, da se "
+"lahko naslov za obračun kopira v naslov za izstavitev računa, ko je ta "
+"možnost označena."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Strankam omogoča, da izvedejo plačila za naročila, ki jih upravitelj "
+"trgovine ustvari ročno ali niso zaključena med blagajno."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Vtičnik WooCommerce Checkout Manager, ki ga Quadlayers ni združljiv s Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Polje z imenom podjetja za naslov za izdajo računa"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Spremenite vidnost polja z imenom podjetja v razdelku z naslovom za obračun "
+"v obrazcu za prijavo na blagajno."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2529,3 +2567,8 @@ msgstr "Ali nadaljujte spodaj"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Ali nadaljujte kot gost"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Odstranitev slike"

@@ -45,6 +45,7 @@ if ( ! wp_doing_ajax() ) {
 		<?php // CHANGE: END - Added wrapper for the payment methods list ?>
 	<?php // CHANGE: Display info message when payment is not needed ?>
 	<?php else: ?>
+		<?php // translators: %s: Order total amount. ?>
 		<div class="woocommerce-info"><?php echo apply_filters( 'fc_payment_not_needed_message', sprintf( esc_html( __( 'Your order has a total amount due of %s. No further payment is needed.', 'fluid-checkout' ) ), wc_price( 0 ) ) ); ?></div>
 	<?php endif; ?>
 

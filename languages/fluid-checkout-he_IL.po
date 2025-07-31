@@ -397,12 +397,6 @@ msgstr "דרג את התוסף"
 msgid "I need help!"
 msgstr "אני צריך עזרה!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "התוסף WooCommerce Checkout Manager של Quadlayers אינו תואם ל- Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -642,14 +636,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "בחר תמונה"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "לא נבחרה תמונה."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "הסר תמונה"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2300,6 +2286,52 @@ msgid ""
 "Checkout."
 msgstr "הפקת מקטע שלבי התשלום לערכת נושא Nyture בעת שימוש ב-Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ייתכן שיוגדר כ&quot;נדרש&quot; אם מקטע כתובת החיוב מוצג לאחר מקטע כתובת "
+"המשלוח, ושדה טלפון החיוב מוגדר כ&quot;נדרש&quot;. זה נחוץ כדי להבטיח שניתן "
+"יהיה להעתיק את כתובת המשלוח לכתובת החיוב כאשר אפשרות זו מסומנת."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ייתכן שייבחר כ&quot;נדרש&quot; אם מקטע כתובת החיוב מוצג לאחר מקטע כתובת "
+"החיוב, ושדה טלפון החיוב מוגדר כ&quot;נדרש&quot;. זה נחוץ כדי להבטיח שניתן "
+"יהיה להעתיק את כתובת החיוב לכתובת החיוב כאשר אפשרות זו מסומנת."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"מאפשר ללקוחות לבצע תשלומים עבור הזמנות שנוצרו באופן ידני על ידי מנהל החנות "
+"או שלא הושלמו במהלך התשלום."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "התוסף WooCommerce Checkout Manager של Quadlayers אינו תואם ל-Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "שדה שם חברה עבור כתובת לחיוב"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "שנה את הנראות של שדה שם החברה עבור מקטע כתובת החיוב בטופס התשלום."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2417,3 +2449,8 @@ msgstr "או המשך למטה"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "או להמשיך כאורח"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "הסר תמונה"

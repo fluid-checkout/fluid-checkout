@@ -2187,14 +2187,6 @@ msgstr ""
 "enlace a la página del producto añadidas por el tema están desactivadas por "
 "defecto."
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"El plugin WooCommerce Checkout Manager de Quadlayers no es compatible con "
-"Fluid Checkout"
-
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -2538,14 +2530,6 @@ msgstr ""
 "Su pedido tiene una cantidad total adeudada de %s. No es necesario ningún "
 "otro pago."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "No hay imagen seleccionada."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Eliminar imagen"
-
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
 msgstr "Tema El7"
@@ -2616,6 +2600,60 @@ msgid ""
 msgstr ""
 "Salida de la sección de pasos de pago del tema Nyture cuando se utiliza "
 "Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Puede ser forzado como \"requerido\" si la sección de dirección de "
+"facturación se muestra después de la sección de dirección de envío, y el "
+"campo de teléfono de facturación se establece como \"requerido\". Esto es "
+"necesario para garantizar que la dirección de envío se pueda copiar en la "
+"dirección de facturación cuando se marca esa opción."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Puede forzarse como \"obligatorio\" si la sección de dirección de "
+"facturación se muestra después de la sección de dirección de facturación, y "
+"el campo de teléfono de facturación se establece como \"obligatorio\". Esto "
+"es necesario para garantizar que la dirección de facturación se pueda "
+"copiar en la dirección de facturación cuando se marca esa opción."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Permite a los clientes realizar pagos de pedidos creados manualmente por el "
+"administrador de la tienda o no completados durante el proceso de pago."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"El plugin WooCommerce Checkout Manager de Quadlayers no es compatible con "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Campo del nombre de la empresa para la dirección de facturación"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Cambiar la visibilidad del campo nombre de la empresa para la sección "
+"dirección de facturación en el formulario de pago."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2738,3 +2776,8 @@ msgstr "%2$s: %1$s"
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Ninguno."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Eliminar imagen"
