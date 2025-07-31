@@ -41,7 +41,13 @@ class FluidCheckout_ThemeCompat_Avanam extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.item-is-stuck';
+		// Get sticky header setting
+		$sticky_header = get_theme_mod( 'header_sticky', 'no' );
+		
+		// Bail if sticky header is not enabled
+		if ( 'no' === $sticky_header ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '.base-sticky-header';
 
 		return $attributes;
 	}

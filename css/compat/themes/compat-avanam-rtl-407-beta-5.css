@@ -10,6 +10,13 @@ body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #or
   border-bottom: none;
 }
 
+@media (min-width: 1025px) {
+  body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+    position: relative;
+    top: unset;
+  }
+}
+
 body.theme-avanam .woocommerce form.checkout .woocommerce-billing-fields .woocommerce-billing-fields__field-wrapper {
   padding: 0;
   margin-bottom: 0;

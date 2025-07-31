@@ -13,3 +13,11 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkou
 body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper #order_review_title {
 	border-bottom: none;
 }
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+	@media (min-width: 1025px) {
+		position: relative; 
+		top: unset;
+	}
+}
