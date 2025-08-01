@@ -356,15 +356,18 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Cartzilla.
 * Added: Compatibility with theme Neighborhood.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
 * Added: Compatibility with plugin WooCommerce EU Vat & B2B.
 * Improved: Compatibility with theme Enfold.
+* Improved: Update checkout fragments when an item is removed from the cart using the mini cart widget from the site header.
 * Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.
 * Improved: Expose more methods to interact with the enhanced select fields component `TomSelect`.
 * Fixed: Compatibility with theme Woodmart. Fix checkout steps section style when using distraction free header and footer.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix issue on checkout page when checkout form was added as a block.
+* Fixed: Remove previous error messages when adding or removing coupon codes successfully.
 * Fixed: Force styles of `fc-loading` class to override styles from theme.
 * Fixed: Run checkout steps registration earlier for Ajax requests, and run it also for REST API requests. This fixes missing address section titles on email messages and previews.
 * Fixed: State field losing selected value when update checkout is triggered while still processing State fields options update from selected country.
