@@ -6795,9 +6795,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *            might change during the lifecycle of the request process.
 	 */
 	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
-		// Bail if this is a REST API request
-		if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) { return $value; }
-
 		// Get name of the current filter hook running this function
 		$hook_name = current_filter();
 
