@@ -102,6 +102,9 @@ jQuery( function( $ ) {
 			// Manual trigger
 			this.$checkout_form.on( 'update', this.trigger_update_checkout );
 
+			// CHANGE: Add event listener for `removed_from_cart` event
+			$( document.body ).on( 'removed_from_cart', this.trigger_update_checkout );
+
 			// Inputs/selects which update totals
 			// CHANGE: Removed selector `#ship-to-different-address input`
 			this.$checkout_form.on( 'change', 'select.shipping_method, input[name^="shipping_method"], .update_totals_on_change select, .update_totals_on_change input[type="radio"], .update_totals_on_change input[type="checkbox"], .update_totals_on_change input:not([type="hidden"])', this.trigger_update_checkout ); // eslint-disable-line max-len
