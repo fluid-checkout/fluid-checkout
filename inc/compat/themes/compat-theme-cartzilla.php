@@ -43,6 +43,9 @@ class FluidCheckout_ThemeCompat_Cartzilla extends FluidCheckout {
 
 		// Remove duplicate coupon code from checkout page
 		remove_action( 'woocommerce_after_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
+		// Coupon code error message dismiss button
+		add_filter( 'fc_coupon_code_error_message_dismiss_button_enabled', '__return_false' );
 	}
 
 

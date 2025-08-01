@@ -448,6 +448,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   string  $coupon_code  The coupon code to be used.
 	 */
 	public function maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ) {
+		// Bail if dismiss button is not enabled
+		if ( ! apply_filters( 'fc_coupon_code_error_message_dismiss_button_enabled', true ) ) { return $message; }
+		
 		// Bail if no error messages found
 		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 		if ( ! $is_error ) { return $message; }
