@@ -136,9 +136,9 @@ class FluidCheckout_Login extends FluidCheckout {
 		try {
 			// CHANGE: Replace with data received from request.
 			$creds = array(
-				'user_login'     => isset( $_REQUEST[ 'username' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'username' ] ) ) : '',
-				'user_password'  => isset( $_REQUEST[ 'password' ] ) ? $_REQUEST[ 'password' ] : '',
-				'remember'       => isset( $_REQUEST[ 'rememberme' ] ) ? filter_var( $_REQUEST[ 'rememberme' ], FILTER_VALIDATE_BOOLEAN ) : false,
+				'user_login'     => isset( $_REQUEST[ 'username' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'username' ] ?? '' ) ) : '',
+				'user_password'  => isset( $_REQUEST[ 'password' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'password' ] ?? '' ) ) : '',
+				'remember'       => isset( $_REQUEST[ 'rememberme' ] ) ? filter_var( wp_unslash( $_REQUEST[ 'rememberme' ] ?? '' ), FILTER_VALIDATE_BOOLEAN ) : false,
 			);
 
 			$validation_error = new WP_Error();

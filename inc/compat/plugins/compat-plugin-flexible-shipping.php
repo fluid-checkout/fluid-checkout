@@ -1,4 +1,8 @@
 <?php
+
+use WPDesk\FS\TableRate\ShippingMethod\RateCalculator;
+use WPDesk\FS\TableRate\ShippingMethodSingle;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -40,16 +44,16 @@ class FluidCheckout_FlexibleShipping extends FluidCheckout {
 	public function get_method_description( $method ) {
 		$meta_data = $method->get_meta_data();
 
-		if ( isset( $meta_data[ WPDesk\FS\TableRate\ShippingMethod\RateCalculator::DESCRIPTION_BASE64ENCODED ] ) && ! empty( $meta_data[ WPDesk\FS\TableRate\ShippingMethod\RateCalculator::DESCRIPTION_BASE64ENCODED ] ) ) {
-			$description = base64_decode( $meta_data[ WPDesk\FS\TableRate\ShippingMethod\RateCalculator::DESCRIPTION_BASE64ENCODED ] );
+		if ( isset( $meta_data[ RateCalculator::DESCRIPTION_BASE64ENCODED ] ) && ! empty( $meta_data[ RateCalculator::DESCRIPTION_BASE64ENCODED ] ) ) {
+			$description = base64_decode( $meta_data[ RateCalculator::DESCRIPTION_BASE64ENCODED ] );
 
 			if ( $description ) {
 				return $description;
 			}
 		}
 
-		if ( isset( $meta_data[ WPDesk\FS\TableRate\ShippingMethod\RateCalculator::DESCRIPTION ] ) ) {
-			return $meta_data[ WPDesk\FS\TableRate\ShippingMethod\RateCalculator::DESCRIPTION ];
+		if ( isset( $meta_data[ RateCalculator::DESCRIPTION ] ) ) {
+			return $meta_data[ RateCalculator::DESCRIPTION ];
 		}
 
 		return '';
@@ -67,7 +71,7 @@ class FluidCheckout_FlexibleShipping extends FluidCheckout {
 			$method->get_method_id(),
 			array(
 				WPDesk_Flexible_Shipping::METHOD_ID,
-				WPDesk\FS\TableRate\ShippingMethodSingle::SHIPPING_METHOD_ID,
+				ShippingMethodSingle::SHIPPING_METHOD_ID,
 			),
 			true
 		);

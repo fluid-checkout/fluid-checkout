@@ -401,14 +401,6 @@ msgstr "প্লাগইনটি রেট করুন"
 msgid "I need help!"
 msgstr "আমার সাহায্য দরকার!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers এর WooCommerce Checkout Manager প্লাগইনটি Fluid Checkout এর সাথে "
-"সামঞ্জস্যপূর্ণ নয়।"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -653,14 +645,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "একটি ছবি নির্বাচন করুন"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "কোনও ছবি নির্বাচিত হয়নি।"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ছবি সরান"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2420,6 +2404,26 @@ msgstr ""
 "অ্যাডমিন দ্বারা ম্যানুয়ালি তৈরি করা হয় অথবা চেকআউটের সময় সম্পূর্ণ না করা "
 "হয়।"
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers এর WooCommerce Checkout Manager প্লাগইনটি Fluid Checkout এর সাথে "
+"সামঞ্জস্যপূর্ণ নয়।"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "বিলিং ঠিকানার জন্য কোম্পানির নামের ক্ষেত্র"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"চেকআউট ফর্মের বিলিং ঠিকানা বিভাগের জন্য কোম্পানির নাম ক্ষেত্রের দৃশ্যমানতা "
+"পরিবর্তন করুন।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2537,3 +2541,8 @@ msgstr "অথবা নিচে চালিয়ে যান"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "অথবা অতিথি হিসেবে চালিয়ে যান"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ছবি সরান"
