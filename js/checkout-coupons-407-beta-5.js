@@ -623,6 +623,9 @@
 
 				// Maybe process success
 				if ( response.result && 'success' === response.result ) {
+					// Clear notices
+					clearNotices( referenceElement );
+
 					// Maybe add messages
 					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message, referenceElement );
