@@ -395,6 +395,7 @@
 	 * Handle captured `change` event and route to the appropriate functions.
 	 */
 	var handleChange = function( e ) {
+		console.log( 'handleChange', e.target.value );
 		// SELECT FIELD
 		if ( e.target.closest( _settings.wrapperElementSelector ) ) {
 			var wrapper = e.target.closest( _settings.wrapperElementSelector );
@@ -436,6 +437,11 @@
 		document.addEventListener( 'change', handleChange, true );
 		document.addEventListener( 'focus', handleFocus, true );
 		document.addEventListener( 'blur', handleBlur, true );
+
+		// Set jQuery event listeners
+		if ( _hasJQuery ) {
+			$( document ).on( 'change', handleChange );
+		}
 
 		// Initialize fields
 		_publicMethods.enhanceFields();
