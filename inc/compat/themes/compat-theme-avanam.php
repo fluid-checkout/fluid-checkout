@@ -41,17 +41,21 @@ class FluidCheckout_ThemeCompat_Avanam extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		// Get sticky header setting
+		// Get sticky header settings
 		$sticky_header = get_theme_mod( 'header_sticky', 'no' );
-		
-		// Bail if sticky header is not enabled
-		if ( 'no' === $sticky_header ) { return $attributes; }
+		$sticky_header_mobile = get_theme_mod( 'mobile_header_sticky', 'no' );
 
-		$attributes['data-sticky-relative-to'] = '.base-sticky-header';
+		// Set selectors based on sticky header settings
+		$desktop_selector = ( 'no' !== $sticky_header ) ? '.base-sticky-header' : '';
+		$mobile_selector = ( 'no' !== $sticky_header_mobile ) ? '.site-mobile-header-wrap .base-sticky-header' : '';
+
+		// Use responsive format - if both are empty, no attribute will be set
+		if ( $desktop_selector || $mobile_selector ) {
+			$attributes['data-sticky-relative-to'] = '{ "xs": { "breakpointInitial": 0, "breakpointFinal": 1124, "selector": "' . $mobile_selector . '" }, "sm": { "breakpointInitial": 1125, "breakpointFinal": 100000, "selector": "' . $desktop_selector . '" } }';
+		}
 
 		return $attributes;
 	}
-
 
 
 	/**
