@@ -50,8 +50,6 @@ class FluidCheckout_TemplatemelaCore extends FluidCheckout {
 
 		// Removes your order review title
 		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'add_before_order_review' ), 1 );
-
-		
 	}
 
 }
