@@ -47,6 +47,10 @@ class FluidCheckout_TemplatemelaCore extends FluidCheckout {
 		
 		// Remove the filter that adds duplicate product images to cart item names
 		remove_filter( 'woocommerce_cart_item_name', array( $class_object, 'review_product_name_html' ), 10 );
+
+		// Removes your order review title
+		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'add_before_order_review' ), 1 );
+
 		
 	}
 

@@ -2,10 +2,6 @@ body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .ch
   width: 100%;
 }
 
-body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper #order_review_title {
-  border-bottom: none;
-}
-
 @media (min-width: 1025px) {
   body.theme-avanam.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .checkout-order-review {
     position: relative;
