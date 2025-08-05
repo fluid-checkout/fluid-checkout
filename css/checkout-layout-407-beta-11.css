@@ -159,6 +159,11 @@ body.woocommerce-checkout {
   overflow-x: clip;
 }
 
+body.woocommerce-checkout div[data-block-name="woocommerce/classic-shortcode"].alignwide {
+  left: 0 !important;
+  width: 100% !important;
+}
+
 body.woocommerce-checkout .fc-content,
 form.woocommerce-checkout {
   display: block !important;

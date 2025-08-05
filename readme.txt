@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Bookshelf.
 * Added: Compatibility with theme Cartzilla.
 * Added: Compatibility with theme Neighborhood.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
