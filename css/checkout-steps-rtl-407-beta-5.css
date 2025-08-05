@@ -505,7 +505,7 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   transition: padding-top 0.15s linear;
 }
 
-.fc-wrapper .fc-step__substep.is-editing .fc-step__substep-fields-inner {
+.fc-wrapper .fc-checkout-step.data-step-complete .fc-step__substep.is-editing .fc-step__substep-fields-inner {
   padding: 20px 0 0;
 }
 
