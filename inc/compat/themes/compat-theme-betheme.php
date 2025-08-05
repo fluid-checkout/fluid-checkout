@@ -47,6 +47,12 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 
 		// Remove redundant theme elements
 		remove_action( 'woocommerce_review_order_after_submit', 'mfn_return_cart_link', 10 );
+
+		// Buttons
+		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
 	}
 
 	/**
@@ -257,6 +263,29 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Add button class from the theme.
+	 * 
+	 * @param  array  $classes  The button classes.
+	 */
+	public function add_button_class( $classes ) {
+		// Define button class
+		$button_class = 'alt';
+
+		// Add button class to the classes array
+		if ( is_array( $classes ) ) {
+			array_push( $classes, $button_class );
+		}
+		// Otherwise append button class as a string
+		else {
+			$classes .= ' ' . $button_class;
+		}
+
+		return $classes;
 	}
 
 }
