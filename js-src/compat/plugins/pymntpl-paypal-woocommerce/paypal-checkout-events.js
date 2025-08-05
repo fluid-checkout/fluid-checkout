@@ -35,16 +35,17 @@
 
 
 	/**
-	 * Maybe set the checkout page as updatable or not based on the PayPal Checkout events.
+	 * Maybe change the altered state field value.
 	 *
 	 * @param   object  e       The event object.
 	 * @param   object  source  The source data object from the PayPal plugin.
 	 */
-	var maybeSetCheckoutUpdatableState = function( e, source ) {
+	var maybeChangeAlteredStateFieldValue = function( e, source ) {
 		// Get altered state field
 		var alteredStateField = document.querySelector( _settings.alteredStateFieldSelector );
+
+		// Set the altered state field value
 		if ( alteredStateField ) {
-			// Set the altered state field to false
 			alteredStateField.value = 'true';
 		}
 	};
@@ -63,7 +64,7 @@
 		var alteredStateField = document.querySelector( _settings.alteredStateFieldSelector );
 
 		// Bail if the altered state field is not set to true
-		if ( ! alteredStateField ||'true' !== alteredStateField.value ) { return; }
+		if ( ! alteredStateField || 'true' !== alteredStateField.value ) { return; }
 
 		// Reload the checkout page
 		window.location.reload();
@@ -79,7 +80,7 @@
 
 		if ( _hasJQuery ) {
 			// PayPal Checkout events
-			$( document.body ).on( 'wc_ppcp_on_click', maybeSetCheckoutUpdatableState );
+			$( document.body ).on( 'wc_ppcp_on_click', maybeChangeAlteredStateFieldValue );
 			$( document.body ).on( 'wc_ppcp_on_cancel', maybeReloadCheckoutPage );
 		}
 
