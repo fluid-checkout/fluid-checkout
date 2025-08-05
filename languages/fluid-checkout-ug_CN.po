@@ -2434,6 +2434,18 @@ msgstr ""
 "چىقىم جەدۋىلىدىكى ھېسابات ئادرېسى بۆلىكىنىڭ شىركەت نامىنىڭ كۆرۈنۈشچانلىقىنى "
 "ئۆزگەرتىڭ."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "تېما كىتابخانىسى"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"سۇيۇقلۇق چىقىمداننى ئىشلەتكەندە كىتاب بېسىش تېمىسىدىكى چىقىم باسقۇچلىرى "
+"بۆلىكىنى چىقىرىڭ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

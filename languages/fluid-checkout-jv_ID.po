@@ -2424,6 +2424,18 @@ msgstr ""
 "Ganti visibilitas kanggo kolom jeneng perusahaan kanggo bagean alamat "
 "tagihan ing formulir checkout."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Rak Buku"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Output bagean langkah-langkah checkout saka tema Rak Buku nalika nggunakake "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

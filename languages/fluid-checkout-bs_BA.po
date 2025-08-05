@@ -2441,6 +2441,18 @@ msgstr ""
 "Promijenite vidljivost polja za naziv kompanije za odjeljak adrese za "
 "naplatu na obrascu za plaćanje."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematska polica za knjige"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Ispišite odjeljak s koracima naplate iz teme Bookshelf kada koristite Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

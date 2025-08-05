@@ -2457,6 +2457,18 @@ msgstr ""
 "Тооцооны маягт дээрх төлбөрийн хаягийн хэсгийн компанийн нэрийн талбарын "
 "харагдах байдлыг өөрчлөх."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Сэдвийн номын тавиур"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout-г ашиглахдаа Bookshelf-ийн сэдвээс төлбөр тооцоо хийх "
+"алхамуудыг гарга."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

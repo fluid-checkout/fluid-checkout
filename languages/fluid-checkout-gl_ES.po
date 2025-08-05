@@ -2473,6 +2473,18 @@ msgstr ""
 "Cambia a visibilidade do campo do nome da empresa para a sección de "
 "enderezo de facturación no formulario de finalización da compra."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Estante de libros temático"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Mostra a sección dos pasos de finalización da compra do tema Bookshelf ao "
+"usar Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

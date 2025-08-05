@@ -2631,6 +2631,18 @@ msgstr ""
 "Zmiana widoczności pola nazwy firmy w sekcji adresu rozliczeniowego w "
 "formularzu realizacji zakupu."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Półka tematyczna"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Wyprowadź sekcję kroków realizacji zakupu z motywu Bookshelf podczas "
+"korzystania z usługi Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

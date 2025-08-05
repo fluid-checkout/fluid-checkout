@@ -2460,6 +2460,18 @@ msgstr ""
 "Verander die sigbaarheid vir die maatskappynaamveld vir die "
 "faktuuradres-afdeling op die afhandelingsvorm."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Boekrak"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Voer die afhandelingstappe-afdeling vanaf die Boekrak-tema uit wanneer "
+"Fluid Checkout gebruik word."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

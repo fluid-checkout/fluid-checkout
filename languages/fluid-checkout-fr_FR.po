@@ -2691,6 +2691,18 @@ msgstr ""
 "Modifier la visibilité du champ \"nom de l'entreprise\" dans la section "
 "\"adresse de facturation\" du formulaire de commande."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Bibliothèque à thème"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"La section sur les étapes de paiement du thème Bookshelf est supprimée "
+"lorsque vous utilisez Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

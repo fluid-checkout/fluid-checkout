@@ -2368,6 +2368,16 @@ msgid ""
 "section on the checkout form."
 msgstr "تغيير رؤية حقل اسم الشركة لقسم عنوان الفاتورة في نموذج الخروج."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "رف كتب موضوعي"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "قم بإخراج قسم خطوات الخروج من سمة Bookshelf عند استخدام Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

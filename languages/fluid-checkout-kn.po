@@ -2443,6 +2443,18 @@ msgstr ""
 "ಚೆಕ್ಔಟ್ ಫಾರ್ಮ್‌ನಲ್ಲಿ ಬಿಲ್ಲಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗಕ್ಕೆ ಕಂಪನಿಯ ಹೆಸರಿನ ಕ್ಷೇತ್ರದ "
 "ಗೋಚರತೆಯನ್ನು ಬದಲಾಯಿಸಿ."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "ಥೀಮ್ ಪುಸ್ತಕದ ಕಪಾಟು"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಬಳಸುವಾಗ ಬುಕ್‌ಶೆಲ್ಫ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ ವಿಭಾಗವನ್ನು "
+"ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

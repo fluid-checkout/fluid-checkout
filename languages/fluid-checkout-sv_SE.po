@@ -2429,6 +2429,18 @@ msgstr ""
 "Ändra synligheten för fältet med företagsnamn i avsnittet med "
 "faktureringsadress i kassablanketten."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Bokhylla"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Skriv ut avsnittet om kassans steg från Bookshelf-temat när du använder "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

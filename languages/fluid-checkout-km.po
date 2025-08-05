@@ -2438,6 +2438,18 @@ msgstr ""
 "ផ្លាស់ប្តូរភាពមើលឃើញសម្រាប់វាលឈ្មោះក្រុមហ៊ុនសម្រាប់ផ្នែកអាសយដ្ឋានវិក្កយបត្រន"
 "ៅលើទម្រង់បង់ប្រាក់ចេញ។"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "ធ្នើសៀវភៅប្រធានបទ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"បង្ហាញផ្នែកជំហាននៃការបង់ប្រាក់ចេញពីប្រធានបទ Bookshelf នៅពេលប្រើ Fluid "
+"Checkout ។"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

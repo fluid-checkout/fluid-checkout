@@ -2413,6 +2413,18 @@ msgstr ""
 "เปลี่ยนการมองเห็นสำหรับช่องชื่อบริษัทสำหรับส่วนที่อยู่เรียกเก็บเงินบนแบบฟอร์"
 "มชำระเงิน"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "ชั้นวางหนังสือธีม"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ส่งออกส่วนขั้นตอนการชำระเงินจากธีมชั้นวางหนังสือเมื่อใช้การชำระเงินแบบ "
+"Fluid Checkout"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

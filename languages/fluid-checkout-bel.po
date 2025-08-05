@@ -2467,6 +2467,18 @@ msgstr ""
 "Змяніць бачнасць поля назвы кампаніі ў раздзеле плацежнага адраса ў форме "
 "афармлення замовы."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тэматычная кніжная паліца"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Вывесці раздзел крокаў афармлення замовы з тэмы Bookshelf пры выкарыстанні "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

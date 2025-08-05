@@ -2424,6 +2424,18 @@ msgstr ""
 "چیک آؤٹ فارم پر بلنگ ایڈریس سیکشن کے لیے کمپنی کے نام کی فیلڈ کے لیے مرئیت "
 "کو تبدیل کریں۔"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "تھیم بک شیلف"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"فلوئڈ چیک آؤٹ استعمال کرتے وقت بک شیلف تھیم سے چیک آؤٹ اسٹیپس سیکشن کو آؤٹ "
+"پٹ کریں۔"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

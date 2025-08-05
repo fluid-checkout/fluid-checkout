@@ -2497,6 +2497,18 @@ msgstr ""
 "Usba ang visibility para sa ngalan sa kompanya nga field para sa billing "
 "address section sa checkout form."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema nga Estante sa Libro"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"I-output ang seksyon sa mga lakang sa pag-checkout gikan sa tema sa "
+"Bookshelf kung gamiton ang Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

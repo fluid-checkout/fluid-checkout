@@ -2416,6 +2416,18 @@ msgid ""
 "section on the checkout form."
 msgstr "ਚੈੱਕਆਉਟ ਫਾਰਮ &#39;ਤੇ ਬਿਲਿੰਗ ਪਤਾ ਭਾਗ ਲਈ ਕੰਪਨੀ ਦੇ ਨਾਮ ਖੇਤਰ ਦੀ ਦਿੱਖ ਬਦਲੋ।"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "ਥੀਮ ਬੁੱਕ ਸ਼ੈਲਫ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਸਮੇਂ ਬੁੱਕਸ਼ੈਲਫ ਥੀਮ ਤੋਂ ਚੈੱਕਆਉਟ ਸਟੈਪਸ ਸੈਕਸ਼ਨ ਨੂੰ "
+"ਆਉਟਪੁੱਟ ਦਿਓ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2655,6 +2655,18 @@ msgstr ""
 "Cambiar la visibilidad del campo nombre de la empresa para la sección "
 "dirección de facturación en el formulario de pago."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Estantería temática"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Salida de la sección de pasos de pago del tema Bookshelf cuando se utiliza "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

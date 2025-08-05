@@ -2664,6 +2664,18 @@ msgstr ""
 "Ändern Sie die Sichtbarkeit des Feldes für den Firmennamen im Abschnitt für "
 "die Rechnungsadresse auf dem Kassenformular."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Thema Bücherregal"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Geben Sie den Abschnitt \"Checkout-Schritte\" aus dem Bookshelf-Theme aus, "
+"wenn Sie Fluid Checkout verwenden."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

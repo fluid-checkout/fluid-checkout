@@ -2510,6 +2510,18 @@ msgstr ""
 "Atharraich faicsinneachd airson raon ainm a’ chompanaidh airson earrann "
 "seòlaidh bileachaidh air foirm an àite-pàighidh."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Sgeilp Leabhraichean Cuspair"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Cuir a-mach an earrann ceumannan pàighidh bhon chuspair Leabhraichean nuair "
+"a bhios tu a’ cleachdadh Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

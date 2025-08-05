@@ -2464,6 +2464,18 @@ msgstr ""
 "Badilisha mwonekano wa sehemu ya jina la kampuni kwa sehemu ya anwani ya "
 "kutuma bili kwenye fomu ya kulipa."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Rafu ya Vitabu ya Mandhari"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Toa sehemu ya hatua za kulipa kutoka kwa mandhari ya Rafu ya Vitabu "
+"unapotumia Malipo ya Maji."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

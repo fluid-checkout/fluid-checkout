@@ -2417,6 +2417,18 @@ msgstr ""
 "چيڪ آئوٽ فارم تي بلنگ ايڊريس سيڪشن لاءِ ڪمپني جي نالي جي فيلڊ جي نمائش "
 "تبديل ڪريو."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "ٿيم بڪ شيلف"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"فلوئڊ چيڪ آئوٽ استعمال ڪندي بُڪ شيلف ٿيم مان چيڪ آئوٽ اسٽيپس سيڪشن آئوٽ پُٽ "
+"ڪريو."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

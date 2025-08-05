@@ -2515,6 +2515,18 @@ msgstr ""
 "ငွေရှင်းသည့်ဖောင်ရှိ ငွေပေးချေမှုကဏ္ဍအတွက် ကုမ္ပဏီအမည်အကွက်အတွက် "
 "မြင်နိုင်စွမ်းကို ပြောင်းပါ။"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "စာအုပ်စင်"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ကိုအသုံးပြုသည့်အခါ Bookshelf အပြင်အဆင်မှ "
+"ငွေရှင်းသည့်အဆင့်များကို ထုတ်ပါ။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

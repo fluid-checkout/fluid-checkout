@@ -2199,6 +2199,16 @@ msgid ""
 "section on the checkout form."
 msgstr "變更結帳表單上帳單地址部分的公司名稱欄位的可見性。"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "主題書架"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "使用 Fluid Checkout 時，從 Bookshelf 主題輸出結帳步驟部分。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

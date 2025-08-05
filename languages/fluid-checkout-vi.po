@@ -2428,6 +2428,18 @@ msgstr ""
 "Thay đổi khả năng hiển thị của trường tên công ty trong phần địa chỉ thanh "
 "toán trên biểu mẫu thanh toán."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Kệ sách chủ đề"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Xuất phần các bước thanh toán từ chủ đề Bookshelf khi sử dụng Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

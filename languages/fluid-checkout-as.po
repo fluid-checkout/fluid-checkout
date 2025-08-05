@@ -2425,6 +2425,18 @@ msgstr ""
 "চেকআউট প্ৰপত্ৰত বিলিং ঠিকনা অংশৰ বাবে কোম্পানী নামৰ ক্ষেত্ৰৰ বাবে "
 "দৃশ্যমানতা সলনি কৰক।"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "থিম বুকশ্বেল্ফ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"তৰল চেকআউট ব্যৱহাৰ কৰাৰ সময়ত বুকশ্বেল্ফ থিমৰ পৰা চেকআউট পদক্ষেপসমূহ অংশ "
+"আউটপুট কৰক।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

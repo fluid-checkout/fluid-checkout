@@ -2332,6 +2332,16 @@ msgid ""
 "section on the checkout form."
 msgstr "שנה את הנראות של שדה שם החברה עבור מקטע כתובת החיוב בטופס התשלום."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "מדף ספרים נושאי"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "פלט את מקטע שלבי התשלום לערכת הנושא Bookshelf בעת שימוש ב-Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

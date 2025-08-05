@@ -2417,6 +2417,18 @@ msgid ""
 "section on the checkout form."
 msgstr "चेकआउट फ़ॉर्म पर बिलिंग पता अनुभाग के लिए कंपनी नाम फ़ील्ड की दृश्यता बदलें."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "थीम बुकशेल्फ़"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"फ्लुइड चेकआउट का उपयोग करते समय बुकशेल्फ़ थीम से चेकआउट चरण अनुभाग को "
+"आउटपुट करें।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
