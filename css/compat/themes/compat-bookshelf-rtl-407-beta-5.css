@@ -6,6 +6,10 @@ body.theme-bookshelf button.fc-step__next-step.button {
   display: inline-block;
 }
 
+body.theme-bookshelf #order_review .woocommerce-checkout-review-order-table th {
+  background-color: transparent !important;
+}
+
 body.theme-bookshelf div.woocommerce form .form-row input[type=checkbox]:focus {
   outline: none !important;
 }

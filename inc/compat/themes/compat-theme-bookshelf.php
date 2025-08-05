@@ -60,7 +60,7 @@ class FluidCheckout_ThemeCompat_Bookshelf extends FluidCheckout {
 				'--fluidcheckout--field--height' => '40.88px',
 				'--fluidcheckout--field--border-radius' => '4px',
 				'--fluidcheckout--field--border-color' => 'rgba(32, 7, 7, 0.8)',
-				// Does not seem that the theme is using the customize font and color options he provides so I am using a fixed value here.
+				// Does not seem that the theme is using the customize font and color options it provides so I am using a fixed value here.
 			),
 		);
 
