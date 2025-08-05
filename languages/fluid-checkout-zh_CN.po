@@ -379,12 +379,6 @@ msgstr "为插件评分"
 msgid "I need help!"
 msgstr "我需要帮助！"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "Quadlayers 的 WooCommerce Checkout Manager 插件与 Fluid Checkout 不兼容。"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -607,14 +601,6 @@ msgstr "所有附加组件均单独销售，并且需要安装和激活 <strong>
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "选择图像"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "未选择图像。"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "移除图像"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2193,6 +2179,22 @@ msgid ""
 "manually by the store admin or not completed during checkout."
 msgstr "允许客户为商店管理员手动创建或结账时未完成的订单付款。"
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "Quadlayers 的 WooCommerce Checkout Manager 插件与 Fluid Checkout 不兼容。"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "账单地址的公司名称字段"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "更改结账表单账单地址部分公司名称字段的可见性。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2310,3 +2312,8 @@ msgstr "或继续阅读下文"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "或作为访客继续"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "移除图像"

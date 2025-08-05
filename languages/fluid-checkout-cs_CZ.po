@@ -2124,14 +2124,6 @@ msgstr ""
 "Možnosti zobrazit obrázek produktu, pole množství, tlačítko odebrat a odkaz "
 "na stránku produktu přidané motivem jsou ve výchozím nastavení vypnuté."
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plugin WooCommerce Checkout Manager od Quadlayers není kompatibilní s Fluid "
-"Checkout"
-
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -2462,14 +2454,6 @@ msgstr ""
 "Vaše objednávka má celkovou dlužnou částku ve výši %s. Další platba není "
 "nutná."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Není vybrán žádný obrázek."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Odstranění obrázku"
-
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
 msgstr "Téma The7"
@@ -2565,6 +2549,26 @@ msgid ""
 msgstr ""
 "Umožňuje zákazníkům provádět platby za objednávky, které byly vytvořeny "
 "ručně správcem obchodu nebo nebyly dokončeny během pokladny."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plugin WooCommerce Checkout Manager od Quadlayers není kompatibilní s Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Pole Název společnosti pro fakturační adresu"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Změna viditelnosti pole s názvem společnosti v části fakturační adresy na "
+"pokladním formuláři."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2687,3 +2691,8 @@ msgstr "%2$s: %1$s"
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Žádné."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Odstranění obrázku"

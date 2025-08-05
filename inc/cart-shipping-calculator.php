@@ -68,7 +68,7 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 			$new_field_value = '';
 			if ( array_key_exists( $calc_field_key, $_POST ) ) {
 				// Get new field value
-				$new_field_value = wc_clean( wp_unslash( $_POST[ $calc_field_key ] ) );
+				$new_field_value = wc_clean( wp_unslash( $_POST[ $calc_field_key ] ?? '' ) );
 
 				// Add to changed values
 				$changed_values[ $field_key ] = $new_field_value;

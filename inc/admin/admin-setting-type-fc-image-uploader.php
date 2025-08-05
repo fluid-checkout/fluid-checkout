@@ -105,7 +105,7 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 										class="button image-upload-clear-button"
 										data-preview-id="<?php echo esc_attr( $value['id'] ); ?>_preview"
 										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"
-										data-message="<?php echo esc_attr( __( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ) ); ?></button>
+										data-message="<?php echo esc_attr( _x( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) ); ?>"><?php echo esc_html( _x( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ) ); ?></button>
 								</div>
 							</div>
 						</div>

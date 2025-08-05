@@ -294,7 +294,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Maybe define section key
 		$section_id = 'coupon_code';
 		if ( empty( $section_key ) ) {
-			$section_key = $section_id . '--' . rand();
+			$section_key = $section_id . '--' . wp_rand( 1, 1000000 );
 		}
 
 		// Coupon code field args
@@ -448,6 +448,9 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * @param   string  $coupon_code  The coupon code to be used.
 	 */
 	public function maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ) {
+		// Bail if dismiss button is not enabled
+		if ( ! apply_filters( 'fc_coupon_code_error_message_dismiss_button_enabled', true ) ) { return $message; }
+		
 		// Bail if no error messages found
 		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 		if ( ! $is_error ) { return $message; }
@@ -511,8 +514,8 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function add_coupon_code() {
 		check_ajax_referer( 'fc-add-coupon-code', 'security' );
 
-		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ) );
-		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ) );
+		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ?? '' ) );
+		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ?? '' ) );
 
 		if ( ! empty( $coupon_code ) ) {
 			// Add the coupon code to the cart,

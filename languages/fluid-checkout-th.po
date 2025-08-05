@@ -401,14 +401,6 @@ msgstr "ให้คะแนนปลั๊กอิน"
 msgid "I need help!"
 msgstr "ฉันต้องการความช่วยเหลือ!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"ปลั๊กอิน WooCommerce Checkout Manager โดย Quadlayers ไม่สามารถใช้งานร่วมกับ "
-"Fluid Checkout ได้"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -652,14 +644,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "เลือกภาพ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ไม่มีภาพที่ถูกเลือก"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ลบรูปภาพออก"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2409,6 +2393,26 @@ msgstr ""
 "อนุญาตให้ลูกค้าชำระเงินสำหรับคำสั่งซื้อที่สร้างโดยผู้ดูแลร้านค้าด้วยตนเองหรื"
 "อที่ไม่ได้ดำเนินการเสร็จสิ้นระหว่างชำระเงิน"
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"ปลั๊กอิน WooCommerce Checkout Manager โดย Quadlayers ไม่เข้ากันได้กับ Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ช่องชื่อบริษัทสำหรับที่อยู่เรียกเก็บเงิน"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"เปลี่ยนการมองเห็นสำหรับช่องชื่อบริษัทสำหรับส่วนที่อยู่เรียกเก็บเงินบนแบบฟอร์"
+"มชำระเงิน"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2526,3 +2530,8 @@ msgstr "หรือดำเนินการต่อด้านล่าง
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "หรือดำเนินการต่อในฐานะแขก"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ลบรูปภาพ"

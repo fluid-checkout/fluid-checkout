@@ -576,6 +576,21 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Company name field for billing address', 'fluid-checkout' ),
+						'desc'              => __( 'Change visibility for the company name field for the billing address section on the checkout form.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'id'                => 'woocommerce_checkout_company_field',
+						'type'              => 'select',
+						'options'           => array(
+							'hidden'        => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'optional'      => __( 'Optional', 'fluid-checkout' ),
+							'required'      => __( 'Required', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_checkout_company_field' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Maybe be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required. This is needed to ensure the shipping address can be copied to the billing address when that option is checked.', 'fluid-checkout' ),

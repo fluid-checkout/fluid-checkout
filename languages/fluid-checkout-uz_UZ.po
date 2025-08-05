@@ -404,14 +404,6 @@ msgstr "Plaginni baholang"
 msgid "I need help!"
 msgstr "Menga yordam kerak!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plagin WooCommerce Checkout Manager by Quadlayers Fluid Checkout bilan mos "
-"kelmaydi"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -663,14 +655,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Rasm tanlang"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Hech qanday rasm tanlanmagan."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Rasmni o&#39;chirish"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2491,6 +2475,26 @@ msgstr ""
 "to&#39;lov vaqtida tugallanmagan buyurtmalar uchun to&#39;lovlarni amalga "
 "oshirish imkonini beradi."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plagin WooCommerce Checkout Manager by Quadlayers Fluid Checkout bilan mos "
+"kelmaydi"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Hisob-kitob manzili uchun kompaniya nomi maydoni"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"To‘lov shaklidagi hisob-kitob manzili bo‘limi uchun kompaniya nomi "
+"maydonining ko‘rinishini o‘zgartiring."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2608,3 +2612,8 @@ msgstr "Yoki quyida davom eting"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Yoki mehmon sifatida davom eting"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Rasmni o&#39;chirish"

@@ -66,8 +66,8 @@ class FluidCheckout_Admin extends FluidCheckout {
 		if ( $current_screen->id !== 'woocommerce_page_wc-settings' ) { return; }
 		
 		// Get current tab and section
-		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
-		$current_section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : '';
+		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ?? '' ) ) : 'general';
+		$current_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ?? '' ) ) : '';
 
 		// Bail if not on dashboard settings page
 		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
@@ -172,6 +172,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
 
 		// Get HTML for the upgrade link
+		// translators: %s: Upgrade link.
 		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
 		
 		// Maybe add line break
