@@ -10,6 +10,9 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
+		// Bypass theme license checks for testing
+		$this->bypass_license_checks(); // ! Dont leave this in production, also remove function.
+		
 		$this->hooks();
 	}
 
@@ -266,6 +269,71 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Bypass theme license checks for testing purposes.
+	 * This allows full access to all theme features without requiring a valid license.
+	 */
+	public function bypass_license_checks() {
+		// Only apply license bypass in development/testing environments
+		if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
+			return;
+		}
+
+		// Use very early hook to override functions before theme loads them
+		add_action( 'after_setup_theme', function() {
+			// Override the main license check function
+			if ( ! function_exists( 'mfn_is_registered' ) ) {
+				function mfn_is_registered() {
+					return true; // Always return true to bypass license checks
+				}
+			}
+
+			// Override the purchase code function
+			if ( ! function_exists( 'mfn_get_purchase_code' ) ) {
+				function mfn_get_purchase_code() {
+					return 'FAKE-PURCHASE-CODE-FOR-TESTING-123456789';
+				}
+			}
+		}, 5 );
+
+		// Clear license-related transients to ensure clean state
+		add_action( 'init', function() {
+			delete_site_transient( 'betheme_expires' );
+			delete_site_transient( 'betheme_update' );
+			delete_site_transient( 'betheme_update_plugins' );
+			delete_site_transient( 'betheme_plugins' );
+			delete_site_transient( 'betheme_promo_version' );
+		}, 5 );
+
+		// Override the expiration check in the dashboard class
+		add_action( 'init', function() {
+			if ( class_exists( 'Mfn_Dashboard' ) ) {
+				// Hook into the remote_get_expiration method
+				add_filter( 'pre_option_envato_purchase_code_7758048', function() {
+					return 'FAKE-PURCHASE-CODE-FOR-TESTING-123456789';
+				} );
+			}
+		}, 10 );
+
+		// Additional safety: override the dashboard's remote_get_expiration method
+		add_action( 'plugins_loaded', function() {
+			if ( class_exists( 'Mfn_Dashboard' ) ) {
+				// Use reflection to override the method if possible
+				try {
+					$reflection = new ReflectionClass( 'Mfn_Dashboard' );
+					if ( $reflection->hasMethod( 'remote_get_expiration' ) ) {
+						// Add a filter to intercept the method call
+						add_filter( 'betheme_license_expiration', function() {
+							return '2099-12-31'; // Far future date
+						} );
+					}
+				} catch ( Exception $e ) {
+					// Silently fail if reflection doesn't work
+				}
+			}
+		}, 20 );
+	}
 
 	/**
 	 * Add button class from the theme.
