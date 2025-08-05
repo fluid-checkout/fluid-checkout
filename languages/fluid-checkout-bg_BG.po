@@ -2498,6 +2498,18 @@ msgstr ""
 "Промяна на видимостта на полето за име на компанията в раздела за адрес за "
 "фактуриране във формуляра за плащане."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Рафт за книги по темата"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Извеждане на секцията със стъпките за плащане от темата Bookshelf при "
+"използване на Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

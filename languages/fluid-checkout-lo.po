@@ -2418,6 +2418,16 @@ msgid ""
 "section on the checkout form."
 msgstr "ປ່ຽນການເບິ່ງເຫັນຊ່ອງຂໍ້ມູນຊື່ບໍລິສັດສຳລັບພາກສ່ວນທີ່ຢູ່ໃບບິນໃນແບບຟອມຈ່າຍເງິນ."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Theme Bookshelf"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "ສົ່ງອອກພາກສ່ວນຂັ້ນຕອນການຈ່າຍເງິນຈາກຫົວຂໍ້ Bookshelf ເມື່ອໃຊ້ Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

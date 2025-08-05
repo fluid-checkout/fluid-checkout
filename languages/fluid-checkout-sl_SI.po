@@ -2450,6 +2450,18 @@ msgstr ""
 "Spremenite vidnost polja z imenom podjetja v razdelku z naslovom za obračun "
 "v obrazcu za prijavo na blagajno."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematska knjižna polica"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Pri uporabi tekočega blagajniškega sistema izberite razdelek korakov "
+"blagajne iz teme Knjižna polica."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2464,6 +2464,18 @@ msgstr ""
 "Wizigje de sichtberens foar it fjild foar bedriuwsnamme foar it "
 "fakturearadresdiel op it kassaformulier."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Boekplank"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Jou de seksje mei stappen foar it beteljen út fan it Bookshelf-tema út by "
+"it brûken fan Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

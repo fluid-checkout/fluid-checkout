@@ -2665,6 +2665,18 @@ msgstr ""
 "Αλλαγή της ορατότητας του πεδίου ονόματος εταιρείας για την ενότητα "
 "διεύθυνσης χρέωσης στη φόρμα πληρωμής."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Βιβλιοθήκη με θέμα"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Εξαγωγή της ενότητας των βημάτων πληρωμής από το θέμα Bookshelf όταν "
+"χρησιμοποιείτε το Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

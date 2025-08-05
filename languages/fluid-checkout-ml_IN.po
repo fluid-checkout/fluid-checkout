@@ -2493,6 +2493,18 @@ msgstr ""
 "ചെക്ക്ഔട്ട് ഫോമിലെ ബില്ലിംഗ് വിലാസ വിഭാഗത്തിനായുള്ള കമ്പനി നാമ ഫീൽഡിന്റെ "
 "ദൃശ്യപരത മാറ്റുക."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "തീം ബുക്ക്‌ഷെൽഫ്"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ഉപയോഗിക്കുമ്പോൾ ബുക്ക്ഷെൽഫ് തീമിൽ നിന്ന് ചെക്ക്ഔട്ട് "
+"ഘട്ടങ്ങൾ വിഭാഗം ഔട്ട്പുട്ട് ചെയ്യുക."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

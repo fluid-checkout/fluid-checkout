@@ -2466,6 +2466,16 @@ msgstr ""
 "Aldatu ordainketa-formularioko fakturazio-helbidearen ataleko enpresaren "
 "izenaren eremuaren ikusgarritasuna."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Gaiaren liburutegia"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkout erabiltzean, Bookshelf gaiko ordainketa-urratsen atala atera."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

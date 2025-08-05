@@ -2498,6 +2498,18 @@ msgstr ""
 "செக்அவுட் படிவத்தில் பில்லிங் முகவரிப் பகுதிக்கான நிறுவனத்தின் பெயர் "
 "புலத்திற்கான தெரிவுநிலையை மாற்றவும்."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "தீம் புத்தக அலமாரி"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ஐப் பயன்படுத்தும் போது Bookshelf கருப்பொருளிலிருந்து "
+"Checkout படிகள் பகுதியை வெளியிடவும்."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

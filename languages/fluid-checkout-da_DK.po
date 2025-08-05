@@ -2448,6 +2448,18 @@ msgstr ""
 "Ændre synligheden for firmanavnsfeltet i sektionen for faktureringsadresse "
 "på checkout-formularen."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema-boghylde"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Udfør afsnittet om betalingstrin fra Bookshelf-temaet, når du bruger Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

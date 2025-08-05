@@ -2431,6 +2431,18 @@ msgstr ""
 "Mainīt uzņēmuma nosaukuma lauka redzamību norēķinu adreses sadaļā "
 "izrakstīšanas veidlapā."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematiskais grāmatu plaukts"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Izvadiet izrakstīšanas soļu sadaļu no Grāmatu plaukta tēmas, kad izmantojat "
+"Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

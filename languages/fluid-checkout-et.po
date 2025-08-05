@@ -2413,6 +2413,18 @@ msgstr ""
 "Muuda ettevõtte nime välja nähtavust arveldusaadressi sektsioonis "
 "kassavormil."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Teema raamaturiiul"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Väljastada kassasammude sektsioon Bookshelfi teemast, kui kasutate Fluid "
+"Checkouti."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

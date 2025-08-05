@@ -2416,6 +2416,18 @@ msgstr ""
 "चेकआउट फारममा रहेको बिलिङ ठेगाना खण्डको लागि कम्पनीको नाम फिल्डको दृश्यता "
 "परिवर्तन गर्नुहोस्।"
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "थिम बुकशेल्फ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"फ्लुइड चेकआउट प्रयोग गर्दा बुकशेल्फ थिमबाट चेकआउट चरणहरू खण्ड आउटपुट "
+"गर्नुहोस्।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

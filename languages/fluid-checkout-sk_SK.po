@@ -2456,6 +2456,18 @@ msgstr ""
 "Zmena viditeľnosti poľa s názvom spoločnosti v časti s fakturačnou adresou "
 "vo formulári pokladnice."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Téma Police na knihy"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Výstup sekcie krokov pri pokladni z témy Bookshelf pri použití Fluid "
+"Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

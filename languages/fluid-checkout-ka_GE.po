@@ -2457,6 +2457,18 @@ msgstr ""
 "შეცვალეთ კომპანიის სახელის ველის ხილვადობა გადახდის ფორმაში გადახდის "
 "მისამართის განყოფილებისთვის."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "თემატური წიგნების თარო"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout-ის გამოყენებისას, Bookshelf თემიდან გამოიტანეთ შეკვეთის "
+"გაფორმების ნაბიჯების განყოფილება."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

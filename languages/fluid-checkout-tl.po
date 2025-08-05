@@ -2510,6 +2510,18 @@ msgstr ""
 "Baguhin ang visibility para sa field ng pangalan ng kumpanya para sa "
 "seksyon ng billing address sa form ng pag-checkout."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Temang Bookshelf"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"I-output ang seksyon ng mga hakbang sa pag-checkout mula sa tema ng "
+"Bookshelf kapag gumagamit ng Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

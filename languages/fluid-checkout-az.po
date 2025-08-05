@@ -2449,6 +2449,18 @@ msgstr ""
 "Ödəniş formasındakı faktura ünvanı bölməsi üçün şirkət adı sahəsinin "
 "görünməsini dəyişdirin."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Mövzu kitab rəfi"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout istifadə edərkən Bookshelf mövzusundan yoxlama addımları "
+"bölməsini çıxarın."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

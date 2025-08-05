@@ -2628,6 +2628,18 @@ msgstr ""
 "Wijzig de zichtbaarheid van het veld bedrijfsnaam voor het gedeelte "
 "factuuradres op het afrekenformulier."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Thema Boekenplank"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Voer de sectie met afrekenstappen van het Bookshelf-thema uit bij gebruik "
+"van Fluid Checkout."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

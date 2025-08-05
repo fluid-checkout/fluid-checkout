@@ -2407,6 +2407,18 @@ msgid ""
 "section on the checkout form."
 msgstr "تغییر میزان نمایش فیلد نام شرکت برای بخش آدرس صورتحساب در فرم پرداخت."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "قفسه کتاب تم"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"هنگام استفاده از پرداخت سیال، بخش مراحل پرداخت را از قالب Bookshelf خروجی "
+"بگیرید."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

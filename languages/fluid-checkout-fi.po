@@ -2416,6 +2416,18 @@ msgid ""
 "section on the checkout form."
 msgstr "Vaihda yrityksen nimikentän näkyvyyttä kassalomakkeen laskutusosoiteosiossa."
 
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Teema Kirjahylly"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Kirjahylly-teeman kassavaiheet-osion tulostaminen, kun käytetään Fluid "
+"Checkoutia."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
