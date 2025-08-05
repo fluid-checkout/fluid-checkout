@@ -997,6 +997,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
   width: 24px;
   height: 24px;
   font-size: 24px;
+  z-index: 3;
   position: absolute;
   top: var(--fluidcheckout--option-box--spacing--vertical, 10px);
   right: 10px;
@@ -1005,7 +1006,7 @@ body.woocommerce-checkout.has-billing-address-position--force_single_address div
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type=radio]:checked + .shipping-method__option-label:after {
-  color: var(--fluidcheckout--option-box--radio-icon-color--checked, var(--fluidcheckout--color--white, #fff));
+  color: var(--fluidcheckout--option-box--radio-icon-color--checked, var(--fluidcheckout--color--white, #fff)) !important;
 }
 
 .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text {
