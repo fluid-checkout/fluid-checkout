@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Payment Plugins for Stripe WooCommerce (by Payment Plugins).
+ * Compatibility with plugin: Payment Plugins for PayPal WooCommerce (by Payment Plugins).
  */
 class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 

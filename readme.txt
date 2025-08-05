@@ -368,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Expose more methods to interact with the enhanced select fields component `TomSelect`.
 * Fixed: Compatibility with theme Woodmart. Fix checkout steps section style when using distraction free header and footer.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix issue on checkout page when checkout form was added as a block.
+* Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix endless loading and data loss issues when using PayPal express button on the checkout page.
 * Fixed: Change selected value on enhanced dropdown fields (TomSelect) when the `change` event is triggered with jQuery events.
 * Fixed: Remove previous error messages when adding or removing coupon codes successfully.
 * Fixed: Force styles of `fc-loading` class to override styles from theme.
