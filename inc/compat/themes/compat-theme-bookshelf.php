@@ -19,13 +19,15 @@ class FluidCheckout_ThemeCompat_Bookshelf extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Sticky elements
-		// ! not working correctly.
-		// add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
-		// add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
@@ -78,8 +80,7 @@ class FluidCheckout_ThemeCompat_Bookshelf extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.sc_layouts_row_fixed_on';
-		// ! works partially, tried a few classes but since the header pops up when scrolling down only, then it does not work correctly..
+		$attributes['data-sticky-relative-to'] = '.top_panel_navi';
 
 		return $attributes;
 	}
