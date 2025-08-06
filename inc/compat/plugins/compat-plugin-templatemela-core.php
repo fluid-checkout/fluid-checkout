@@ -21,6 +21,9 @@ class FluidCheckout_TemplatemelaCore extends FluidCheckout {
 	public function hooks() {
 		// Early hooks to remove Templatemela Core checkout hooks
 		add_action( 'init', array( $this, 'remove_templatemela_checkout_hooks' ), 5 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 30 ); // Priority set to 30 to run after Avanam theme
 	}
 
 
@@ -50,6 +53,22 @@ class FluidCheckout_TemplatemelaCore extends FluidCheckout {
 
 		// Removes your order review title
 		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'add_before_order_review' ), 1 );
+	}
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			// Dark mode
+			':root body.color-switch-dark' => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
 }
