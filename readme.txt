@@ -361,6 +361,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Cartzilla.
 * Added: Compatibility with theme Neighborhood.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
+* Added: Compatibility with plugin TemplateMela Core.
+* Added: Compatibility with plugin TemplateMela Autorapid.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
 * Added: Compatibility with plugin WooCommerce EU Vat & B2B.
 * Improved: Compatibility with theme Enfold.
