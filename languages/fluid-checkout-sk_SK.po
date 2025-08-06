@@ -140,10 +140,6 @@ msgstr "Krok %1$s z %2$s"
 msgid "Change: %s"
 msgstr "Zmena: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Na základe zadaných informácií sa vytvorí konto."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Zatiaľ nevybrané."
@@ -403,14 +399,6 @@ msgstr "Hodnotenie zásuvného modulu"
 msgid "I need help!"
 msgstr "Potrebujem pomoc!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plugin WooCommerce Checkout Manager od Quadlayers nie je kompatibilný s "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Vyberte obrázok"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nie je vybratý žiadny obrázok."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Odstrániť obrázok"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2452,6 +2432,50 @@ msgstr ""
 "Umožňuje zákazníkom uskutočniť platby za objednávky, ktoré boli vytvorené "
 "ručne správcom obchodu alebo neboli dokončené počas pokladnice."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plugin WooCommerce Checkout Manager od Quadlayers nie je kompatibilný s "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Pole s názvom spoločnosti pre fakturačnú adresu"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Zmena viditeľnosti poľa s názvom spoločnosti v časti s fakturačnou adresou "
+"vo formulári pokladnice."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Téma Police na knihy"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Výstup sekcie krokov pri pokladni z témy Bookshelf pri použití Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Heslo účtu"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Účet bude vytvorený na základe informácií zadaných pri pokladni pri "
+"dokončovaní objednávky."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2569,3 +2593,8 @@ msgstr "Alebo pokračujte nižšie"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Alebo pokračujte ako hosť"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Odstrániť obrázok"

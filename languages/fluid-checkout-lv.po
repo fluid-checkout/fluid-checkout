@@ -138,10 +138,6 @@ msgstr "%1$s solis no %2$s"
 msgid "Change: %s"
 msgstr "Izmaiņas: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Izmantojot sniegto informāciju, tiks izveidots konts."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Vēl nav izvēlēts."
@@ -399,14 +395,6 @@ msgstr "Novērtējiet spraudni"
 msgid "I need help!"
 msgstr "Man vajadzīga palīdzība!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers WooCommerce Checkout Manager spraudnis nav saderīgs ar Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -654,14 +642,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Atlasiet attēlu"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nav atlasīts neviens attēls."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Noņemt attēlu"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2427,6 +2407,50 @@ msgstr ""
 "administrators ir izveidojis manuāli vai kuri nav pabeigti izrakstīšanās "
 "laikā."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers spraudnis WooCommerce Checkout Manager nav saderīgs ar Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Uzņēmuma nosaukuma lauks norēķinu adresei"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Mainīt uzņēmuma nosaukuma lauka redzamību norēķinu adreses sadaļā "
+"izrakstīšanas veidlapā."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematiskais grāmatu plaukts"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Izvadiet izrakstīšanas soļu sadaļu no Grāmatu plaukta tēmas, kad izmantojat "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Konta parole"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Konts tiks izveidots, izmantojot informāciju, kas norādīta pie kases, "
+"pabeidzot pasūtījumu."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2544,3 +2568,8 @@ msgstr "Vai turpiniet tālāk"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Vai turpināt kā viesis"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Noņemt attēlu"

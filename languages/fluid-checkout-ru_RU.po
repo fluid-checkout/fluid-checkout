@@ -144,10 +144,6 @@ msgstr "Шаг %1$s из %2$s"
 msgid "Change: %s"
 msgstr "Изменение: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "На основе предоставленной информации будет создана учетная запись."
-
 #: inc/checkout-steps.php:3918,
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -418,14 +414,6 @@ msgstr "Оцените плагин"
 #: inc/admin/admin-notice-review-request.php:51
 msgid "I need help!"
 msgstr "Мне нужна помощь!"
-
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Плагин WooCommerce Checkout Manager от Quadlayers не совместим с Fluid "
-"Checkout"
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
@@ -703,14 +691,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Выберите изображение"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Изображение не выбрано."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Удалить изображение"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2585,6 +2565,50 @@ msgstr ""
 "Позволяет покупателям оплачивать заказы, которые были созданы вручную "
 "администратором магазина или не были оформлены во время оформления."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Плагин WooCommerce Checkout Manager от Quadlayers не совместим с Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Поле названия компании для адреса выставления счета"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Измените видимость поля \"Название компании\" для раздела \"Адрес для "
+"выставления счета\" в форме оформления заказа."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тематическая книжная полка"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Выведите раздел \"Шаги оформления заказа\" из темы \"Книжная полка\" при "
+"использовании Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Пароль учетной записи"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Учетная запись будет создана на основе информации, указанной при оформлении "
+"заказа."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2704,3 +2728,8 @@ msgstr "Или продолжайте в качестве гостя"
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr "Изменить"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Удалить изображение"

@@ -138,10 +138,6 @@ msgstr "2$s의 %1$s 단계"
 msgid "Change: %s"
 msgstr "변경: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "제공한 정보로 계정이 생성됩니다."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "아직 선택하지 않았습니다."
@@ -383,12 +379,6 @@ msgstr "플러그인 평가하기"
 msgid "I need help!"
 msgstr "도움이 필요해요!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "쿼드레이어의 플러그인 WooCommerce Checkout Manager는 플루이드 체크아웃과 호환되지 않습니다."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -615,14 +605,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "이미지 선택"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "선택한 이미지가 없습니다."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "이미지 제거"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2231,6 +2213,42 @@ msgid ""
 "manually by the store admin or not completed during checkout."
 msgstr "스토어 관리자가 수동으로 생성했거나 결제 중에 완료되지 않은 주문에 대해 고객이 결제할 수 있습니다."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "쿼드레이어의 플러그인 WooCommerce 체크아웃 매니저는 플루이드 체크아웃과 호환되지 않습니다."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "청구 주소의 회사명 필드"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "결제 양식의 청구 주소 섹션에서 회사 이름 필드에 대한 표시 여부를 변경합니다."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "테마 책장"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "유동 결제를 사용하는 경우 책장 테마에서 결제 단계 섹션을 출력합니다."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "계정 비밀번호"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "주문 완료 시 결제 시 제공한 정보로 계정이 생성됩니다."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2348,3 +2366,8 @@ msgstr "또는 아래에서 계속하세요."
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "또는 게스트로 계속 참여하기"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "이미지 제거"

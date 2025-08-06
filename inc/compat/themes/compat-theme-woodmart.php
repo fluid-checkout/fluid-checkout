@@ -225,7 +225,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		// Bail if title disabled
 		if ( 'disabled' === $title_design ) { return; }
 		?>
-		<div class="page-title <?php echo esc_attr( $title_class ); ?>">
+		<div class="wd-page-title page-title <?php echo esc_attr( $title_class ); ?>">
 			<div class="container"><?php woodmart_checkout_steps(); ?></div>
 		</div>
 		<?php

@@ -138,10 +138,6 @@ msgstr "Paŝo %1$s de %2$s"
 msgid "Change: %s"
 msgstr "Ŝanĝo: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Konto estos kreita kun la informoj provizitaj."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ankoraŭ ne elektita."
@@ -400,14 +396,6 @@ msgstr "Taksi la kromprogramon"
 msgid "I need help!"
 msgstr "Mi bezonas helpon!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"La kromaĵo WooCommerce Checkout Manager de Quadlayers ne kongruas kun Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -651,14 +639,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Elektu bildon"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Neniu bildo elektita."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Forigi bildon"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2407,6 +2387,50 @@ msgstr ""
 "Permesas al klientoj pagi por mendoj, kiujn aŭ la administranto de la "
 "vendejo kreis permane aŭ ne kompletigis dum la kaso."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"La kromprogramo WooCommerce Checkout Manager de Quadlayers ne kongruas kun "
+"Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Kampo por la nomo de la firmao por faktura adreso"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ŝanĝu videblecon por la kampo &quot;firmaa nomo&quot; por la sekcio pri "
+"faktura adreso en la kasformularo."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Librobreto"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Eligu la sekcion pri kaspaŝoj el la temo Librobreto kiam vi uzas Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Konto-pasvorto"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Konto estos kreita kun la informoj donitaj ĉe la kaso kiam vi kompletigas "
+"la mendon."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2524,3 +2548,8 @@ msgstr "Aŭ daŭrigu sube"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Aŭ daŭrigu kiel gasto"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Forigi bildon"

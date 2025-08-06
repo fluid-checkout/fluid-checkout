@@ -700,7 +700,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Maybe add review text lines
 		if ( ! empty( $customer_number ) ) {
-			$review_text_lines[] = '<strong>' . __( 'Customer Number', 'shipments', 'woocommerce-germanized' ) . '</strong>';
+			$review_text_lines[] = '<strong>' . _x( 'Customer Number', 'shipments', 'woocommerce-germanized' ) . '</strong>';
 			$review_text_lines[] = esc_html( $customer_number );
 		}
 

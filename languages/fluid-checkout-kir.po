@@ -138,10 +138,6 @@ msgstr "%2$s ичинен %1$s кадам"
 msgid "Change: %s"
 msgstr "Өзгөртүү: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Берилген маалымат менен аккаунт түзүлөт."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Азырынча тандалган жок."
@@ -402,14 +398,6 @@ msgstr "Плагинди баалаңыз"
 msgid "I need help!"
 msgstr "Мага жардам керек!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers тарабынан WooCommerce Checkout Manager плагини Fluid Checkout "
-"менен шайкеш келбейт"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Сүрөт тандаңыз"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Сүрөт тандалган жок."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Сүрөттү алып салуу"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2447,6 +2427,50 @@ msgstr ""
 "текшерүү учурунда аткарылбаган буйрутмалар үчүн төлөмдөрдү жүргүзүүгө "
 "мүмкүндүк берет."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers тарабынан WooCommerce Checkout Manager плагини Fluid Checkout "
+"менен шайкеш келбейт"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Эсептөө дареги үчүн компаниянын аталышы талаасы"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Төлөө формасындагы эсеп-кысап дареги бөлүгүндөгү компаниянын аталышы "
+"талаасынын көрүнүшүн өзгөртүү."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тема боюнча китеп текчеси"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout колдонууда Bookshelf темасынан текшерүү кадамдары бөлүмүн "
+"чыгарыңыз."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Каттоо эсебинин сырсөзү"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Буйрутманы толтурууда эсепке алуу учурунда берилген маалымат менен эсеп "
+"түзүлөт."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2564,3 +2588,8 @@ msgstr "Же төмөндө улантыңыз"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Же конок катары улантыңыз"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Сүрөттү алып салуу"

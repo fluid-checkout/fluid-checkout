@@ -72,6 +72,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_show_billing_section_highlighted'                           => 'yes',
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
 			'fc_shipping_company_field_visibility'                          => 'optional',
+			'woocommerce_checkout_company_field'                            => 'optional',
 			'fc_shipping_phone_field_visibility'                            => 'no',
 			'fc_shipping_phone_field_position'                              => 'shipping_address',
 			'woocommerce_checkout_phone_field'                              => 'required',
@@ -130,7 +131,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
-			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'true',
+			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
 
 			// Compatibility settings for plugins.
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',

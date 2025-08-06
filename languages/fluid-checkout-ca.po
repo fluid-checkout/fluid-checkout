@@ -140,10 +140,6 @@ msgstr "Pas %1$s de %2$s"
 msgid "Change: %s"
 msgstr "Canvi: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Es crearà un compte amb la informació proporcionada."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Encara no seleccionat."
@@ -408,14 +404,6 @@ msgstr "Valoreu el connector"
 msgid "I need help!"
 msgstr "Necessito ajuda!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"El connector WooCommerce Checkout Manager de Quadlayers no és compatible "
-"amb Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -664,14 +652,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Seleccioneu una imatge"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "No s&#39;ha seleccionat cap imatge."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Elimina la imatge"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2497,6 +2477,50 @@ msgstr ""
 "botiga ha creat manualment o que no s&#39;han completat durant el procés de "
 "compra."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"El plugin WooCommerce Checkout Manager de Quadlayers no és compatible amb "
+"Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Camp de nom de l&#39;empresa per a l&#39;adreça de facturació"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Canvia la visibilitat del camp del nom de l&#39;empresa per a la secció "
+"d&#39;adreça de facturació del formulari de pagament."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Prestatgeria temàtica"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Mostra la secció dels passos de compra del tema Bookshelf quan utilitzeu "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Contrasenya del compte"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Es crearà un compte amb la informació proporcionada al moment de la compra "
+"en completar la comanda."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2614,3 +2638,8 @@ msgstr "O continuar a continuació"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "O continuar com a convidat"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Elimina la imatge"

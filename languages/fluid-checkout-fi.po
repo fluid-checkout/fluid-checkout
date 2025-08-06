@@ -138,10 +138,6 @@ msgstr "Vaihe %1$s vaiheesta %2$s"
 msgid "Change: %s"
 msgstr "Muutos: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Tili luodaan annetuilla tiedoilla."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ei vielä valittu."
@@ -399,14 +395,6 @@ msgstr "Arvioi plugin"
 msgid "I need help!"
 msgstr "Tarvitsen apua!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayersin WooCommerce Checkout Manager -lisäosa ei ole yhteensopiva "
-"Fluid Checkoutin kanssa"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -653,14 +641,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Valitse kuva"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Ei valittua kuvaa."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Poista kuva"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2414,6 +2394,46 @@ msgstr ""
 "luotu manuaalisesti myymälän ylläpitäjän toimesta tai joita ei ole "
 "suoritettu loppuun kassalla."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayersin WooCommerce Checkout Manager -lisäosa ei ole yhteensopiva "
+"Fluid Checkoutin kanssa."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Yrityksen nimikenttä laskutusosoitetta varten"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "Vaihda yrityksen nimikentän näkyvyyttä kassalomakkeen laskutusosoiteosiossa."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Teema Kirjahylly"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Kirjahylly-teeman kassavaiheet-osion tulostaminen, kun käytetään Fluid "
+"Checkoutia."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Tilin salasana"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "Tili luodaan kassalla annetuilla tiedoilla, kun tilaus on valmis."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2531,3 +2551,8 @@ msgstr "Tai jatka alla"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Tai jatka vieraana"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Poista kuva"

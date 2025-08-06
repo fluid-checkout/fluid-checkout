@@ -139,10 +139,6 @@ msgstr "Korak %1$s od %2$s"
 msgid "Change: %s"
 msgstr "Promjena: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Račun će biti kreiran s navedenim podacima."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Još nije odabrano."
@@ -401,14 +397,6 @@ msgstr "Ocijenite dodatak"
 msgid "I need help!"
 msgstr "Trebam pomoć!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Dodatak WooCommerce Checkout Manager tvrtke Quadlayers nije kompatibilan s "
-"Fluid Checkoutom"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -656,14 +644,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Odaberite sliku"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nema odabrane slike."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Ukloni sliku"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2440,6 +2420,50 @@ msgstr ""
 "Omogućuje kupcima plaćanje za narudžbe koje je ručno kreirao administrator "
 "trgovine ili nisu dovršene tijekom plaćanja."
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Dodatak WooCommerce Checkout Manager tvrtke Quadlayers nije kompatibilan s "
+"Fluid Checkoutom."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Polje za naziv tvrtke za adresu za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Promijenite vidljivost polja naziva tvrtke za odjeljak adrese za naplatu na "
+"obrascu za naplatu."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematska polica za knjige"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Ispišite odjeljak s koracima naplate iz teme Bookshelf kada koristite Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Lozinka računa"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Prilikom narudžbe, s podacima navedenima prilikom plaćanja, bit će kreiran "
+"račun."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2557,3 +2581,8 @@ msgstr "Ili nastavite u nastavku"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Ili nastavite kao gost"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Ukloni sliku"

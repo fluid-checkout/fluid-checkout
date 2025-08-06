@@ -138,10 +138,6 @@ msgstr "第 %1$s 步，共 %2$s 步"
 msgid "Change: %s"
 msgstr "更改：%s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "將使用提供的資訊建立一個帳戶。"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "尚未選定。"
@@ -381,12 +377,6 @@ msgstr "對插件進行評分"
 msgid "I need help!"
 msgstr "我需要幫助！"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "Quadlayers 的外掛程式 WooCommerce Checkout Manager 與 Fluid Checkout 不相容"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -609,14 +599,6 @@ msgstr "所有附加元件均單獨出售，且需安裝並啟用<strong>Fluid C
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "選擇影像"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "未選擇圖片。"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "移除圖片"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2197,6 +2179,42 @@ msgid ""
 "manually by the store admin or not completed during checkout."
 msgstr "允許客戶支付由商店管理員手動建立或在結帳時未完成的訂單。"
 
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "Quadlayers 的 WooCommerce Checkout Manager 外掛程式與 Fluid Checkout 不相容"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "帳單地址的公司名稱字段"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "變更結帳表單上帳單地址部分的公司名稱欄位的可見性。"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "主題書架"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "使用 Fluid Checkout 時，從 Bookshelf 主題輸出結帳步驟部分。"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "帳號密碼"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "完成訂單後，將使用結帳時提供的資訊建立帳戶。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2314,3 +2332,8 @@ msgstr "或繼續下面"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "或以訪客身分繼續"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "刪除圖片"
