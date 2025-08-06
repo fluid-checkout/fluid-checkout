@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-08-05 11:27+0000\n"
+"POT-Creation-Date: 2025-08-06 11:22+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -57,11 +57,15 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: inc/checkout-fields.php:126
+#: inc/checkout-fields.php:127
 msgid "Order number and receipt will be sent to this email address."
 msgstr ""
 
-#: inc/checkout-fields.php:181
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr ""
+
+#: inc/checkout-fields.php:184
 msgid "Apartment, unit, building, floor, etc."
 msgstr ""
 
@@ -73,145 +77,145 @@ msgstr ""
 msgid "Only used for shipping-related questions."
 msgstr ""
 
-#: inc/checkout-steps.php:802
+#: inc/checkout-steps.php:804
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:803
+#: inc/checkout-steps.php:805
 msgid "Single step"
 msgstr ""
 
-#: inc/checkout-steps.php:974
+#: inc/checkout-steps.php:976
 msgid "Click to go to the order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:974
+#: inc/checkout-steps.php:976
 msgid "Cart total:"
 msgstr ""
 
 #. translators: %s: Next checkout step title.
-#: inc/checkout-steps.php:1697
+#: inc/checkout-steps.php:1708
 msgid "Proceed to %s"
 msgstr ""
 
-#: inc/checkout-steps.php:2229
+#: inc/checkout-steps.php:2240
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2230
+#: inc/checkout-steps.php:2241
 msgid "Proceed to contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2238
+#: inc/checkout-steps.php:2249
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:2239
+#: inc/checkout-steps.php:2250
 msgid "Proceed to shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:2250
+#: inc/checkout-steps.php:2261
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:2251
+#: inc/checkout-steps.php:2262
 msgid "Proceed to billing"
 msgstr ""
 
-#: inc/checkout-steps.php:2259
+#: inc/checkout-steps.php:2270
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:2260
+#: inc/checkout-steps.php:2271
 msgid "Proceed to payment"
 msgstr ""
 
-#: inc/checkout-steps.php:2271
+#: inc/checkout-steps.php:2282
 msgid "My contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2281
+#: inc/checkout-steps.php:2292
 msgid "Shipping to"
 msgstr ""
 
-#: inc/checkout-steps.php:2291
+#: inc/checkout-steps.php:2302
 msgid "Shipping method"
 msgstr ""
 
-#: inc/checkout-steps.php:2301
+#: inc/checkout-steps.php:2312
 msgid "Additional notes"
 msgstr ""
 
-#: inc/checkout-steps.php:2315
+#: inc/checkout-steps.php:2326
 msgid "Billing to"
 msgstr ""
 
-#: inc/checkout-steps.php:2325
+#: inc/checkout-steps.php:2336
 msgid "Payment method"
 msgstr ""
 
 #. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:2551
+#: inc/checkout-steps.php:2562
 msgid "Step %1$s of %2$s"
 msgstr ""
 
 #. translators: %s: Substep title.
-#: inc/checkout-steps.php:2847
+#: inc/checkout-steps.php:2858
 msgid "Change: %s"
 msgstr ""
 
-#: inc/checkout-steps.php:2847
+#: inc/checkout-steps.php:2858
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:2848
+#: inc/checkout-steps.php:2859
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
 
-#: inc/checkout-steps.php:2980
+#: inc/checkout-steps.php:2991
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:3206
-msgid "An account will be created with the information provided."
+#: inc/checkout-steps.php:3260
+msgid "An account will be created with the information provided at checkout when completing the order."
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3512
+#: inc/checkout-steps.php:3548
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3517
+#: inc/checkout-steps.php:3553
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:3941, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+#: inc/checkout-steps.php:3977, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr ""
 
-#: inc/checkout-steps.php:4750
+#: inc/checkout-steps.php:4786
 msgid "Same as shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:4795
+#: inc/checkout-steps.php:4831
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:6066, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:186
+#: inc/checkout-steps.php:6102, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:186
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:6131, templates/fc/checkout-steps/checkout/review-order-section.php:58
+#: inc/checkout-steps.php:6167, templates/fc/checkout-steps/checkout/review-order-section.php:58
 msgid "Edit cart"
 msgstr ""
 

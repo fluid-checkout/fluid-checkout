@@ -138,10 +138,6 @@ msgstr "قەدەم% 1 $ s نىڭ% 2 $ s"
 msgid "Change: %s"
 msgstr "ئۆزگەرتىش:% s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "تەمىنلەنگەن ئۇچۇرلار بىلەن ھېسابات قۇرۇلىدۇ."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "تېخى تاللانمىدى."
@@ -2445,6 +2441,16 @@ msgid ""
 msgstr ""
 "سۇيۇقلۇق چىقىمداننى ئىشلەتكەندە كىتاب بېسىش تېمىسىدىكى چىقىم باسقۇچلىرى "
 "بۆلىكىنى چىقىرىڭ."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ھېسابات پارولى"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "زاكازنى تاماملىغاندا چىقىمداندا تەمىنلەنگەن ئۇچۇرلار بىلەن ھېسابات قۇرۇلىدۇ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

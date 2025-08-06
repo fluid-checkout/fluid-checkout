@@ -138,10 +138,6 @@ msgstr "Стъпка %1$s от %2$s"
 msgid "Change: %s"
 msgstr "Промяна: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "С предоставената информация ще бъде създаден акаунт."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Все още не е избран."
@@ -2509,6 +2505,18 @@ msgid ""
 msgstr ""
 "Извеждане на секцията със стъпките за плащане от темата Bookshelf при "
 "използване на Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Парола на акаунта"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Ще бъде създаден акаунт с информацията, предоставена на касата при "
+"завършване на поръчката."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

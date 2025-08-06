@@ -138,10 +138,6 @@ msgstr "ګام %1$s د %2$s څخه"
 msgid "Change: %s"
 msgstr "بدلون: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "د ورکړل شویو معلوماتو سره به یو حساب جوړ شي."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "لا نه دی غوره شوی."
@@ -2420,6 +2416,18 @@ msgid ""
 msgstr ""
 "د فلوډ چیک آوټ کارولو پر مهال د کتاب الماریو موضوع څخه د چیک آوټ مرحلو برخه "
 "بهر کړئ."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "د حساب پټنوم"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"د امر بشپړولو پر مهال به د چیک آوټ په وخت کې چمتو شوي معلوماتو سره یو حساب "
+"جوړ شي."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

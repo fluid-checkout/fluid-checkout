@@ -329,10 +329,6 @@ msgstr "Hai già un account?"
 msgid "Always show"
 msgstr "Mostra sempre"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Verrà creato un account con le informazioni fornite."
-
 #: inc/checkout-fields.php:181
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartamento, unità, edificio, piano, ecc."
@@ -2695,6 +2691,18 @@ msgid ""
 msgstr ""
 "Uscire dalla sezione delle fasi di checkout del tema Bookshelf quando si "
 "usa Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Password dell'account"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Verrà creato un account con le informazioni fornite al momento del "
+"checkout, al momento del completamento dell'ordine."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

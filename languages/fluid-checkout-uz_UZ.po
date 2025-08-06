@@ -138,10 +138,6 @@ msgstr "%1$s qadam / %2$s"
 msgid "Change: %s"
 msgstr "Oʻzgartirish: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Taqdim etilgan ma&#39;lumotlar bilan hisob yaratiladi."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Hali tanlanmagan."
@@ -2506,6 +2502,18 @@ msgid ""
 msgstr ""
 "Fluid Checkout-dan foydalanganda Bookshelf mavzusidan to&#39;lov "
 "bosqichlari bo&#39;limini chiqaring."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Hisob paroli"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Buyurtmani to&#39;ldirishda to&#39;lov vaqtida taqdim etilgan "
+"ma&#39;lumotlar bilan hisob yaratiladi."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

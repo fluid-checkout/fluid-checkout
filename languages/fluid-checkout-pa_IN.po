@@ -138,10 +138,6 @@ msgstr "%2$s ਵਿੱਚੋਂ %1$s ਕਦਮ"
 msgid "Change: %s"
 msgstr "ਬਦਲਾਅ: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "ਦਿੱਤੀ ਗਈ ਜਾਣਕਾਰੀ ਨਾਲ ਇੱਕ ਖਾਤਾ ਬਣਾਇਆ ਜਾਵੇਗਾ।"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ਅਜੇ ਚੁਣਿਆ ਨਹੀਂ ਗਿਆ।"
@@ -2427,6 +2423,18 @@ msgid ""
 msgstr ""
 "ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਸਮੇਂ ਬੁੱਕਸ਼ੈਲਫ ਥੀਮ ਤੋਂ ਚੈੱਕਆਉਟ ਸਟੈਪਸ ਸੈਕਸ਼ਨ ਨੂੰ "
 "ਆਉਟਪੁੱਟ ਦਿਓ।"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ਖਾਤੇ ਦਾ ਪਾਸਵਰਡ"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ਆਰਡਰ ਪੂਰਾ ਕਰਦੇ ਸਮੇਂ ਚੈੱਕਆਉਟ &#39;ਤੇ ਦਿੱਤੀ ਗਈ ਜਾਣਕਾਰੀ ਨਾਲ ਇੱਕ ਖਾਤਾ ਬਣਾਇਆ "
+"ਜਾਵੇਗਾ।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

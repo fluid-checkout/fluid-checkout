@@ -138,10 +138,6 @@ msgstr "चरण %1$s का %2$s"
 msgid "Change: %s"
 msgstr "परिवर्तन: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "उपलब्ध कराई गई जानकारी के आधार पर एक खाता बनाया जाएगा।"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "अभी तक चयनित नहीं."
@@ -2428,6 +2424,16 @@ msgid ""
 msgstr ""
 "फ्लुइड चेकआउट का उपयोग करते समय बुकशेल्फ़ थीम से चेकआउट चरण अनुभाग को "
 "आउटपुट करें।"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "खाते का पासवर्ड"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "ऑर्डर पूरा करते समय चेकआउट के समय दी गई जानकारी से एक खाता बनाया जाएगा।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

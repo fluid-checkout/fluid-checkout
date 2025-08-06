@@ -139,10 +139,6 @@ msgstr "Korak %1$s od %2$s"
 msgid "Change: %s"
 msgstr "Promjena: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Nalog će biti kreiran sa datim informacijama."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Još nije odabrano."
@@ -2452,6 +2448,18 @@ msgid ""
 msgstr ""
 "Ispišite odjeljak s koracima naplate iz teme Bookshelf kada koristite Fluid "
 "Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Lozinka računa"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Prilikom narudžbe, bit će kreiran račun s podacima koje ste unijeli "
+"prilikom plaćanja."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

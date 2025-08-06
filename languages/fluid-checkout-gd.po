@@ -139,10 +139,6 @@ msgstr "Ceum %1$s à %2$s"
 msgid "Change: %s"
 msgstr "Atharrachadh: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Thèid cunntas a chruthachadh leis an fhiosrachadh a chaidh a thoirt seachad."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Gun taghadh fhathast."
@@ -2521,6 +2517,18 @@ msgid ""
 msgstr ""
 "Cuir a-mach an earrann ceumannan pàighidh bhon chuspair Leabhraichean nuair "
 "a bhios tu a’ cleachdadh Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Facal-faire a’ chunntais"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Thèid cunntas a chruthachadh leis an fhiosrachadh a chaidh a thoirt seachad "
+"aig an àite-pàighidh nuair a bhios an t-òrdugh deiseil."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

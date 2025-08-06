@@ -138,10 +138,6 @@ msgstr "%2$s ರಲ್ಲಿ %1$s ಹಂತ"
 msgid "Change: %s"
 msgstr "ಬದಲಾವಣೆ: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "ಒದಗಿಸಿದ ಮಾಹಿತಿಯೊಂದಿಗೆ ಖಾತೆಯನ್ನು ರಚಿಸಲಾಗುತ್ತದೆ."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ಇನ್ನೂ ಆಯ್ಕೆಯಾಗಿಲ್ಲ."
@@ -2454,6 +2450,18 @@ msgid ""
 msgstr ""
 "ಫ್ಲೂಯಿಡ್ ಚೆಕ್ಔಟ್ ಬಳಸುವಾಗ ಬುಕ್‌ಶೆಲ್ಫ್ ಥೀಮ್‌ನಿಂದ ಚೆಕ್ಔಟ್ ಹಂತಗಳ ವಿಭಾಗವನ್ನು "
 "ಔಟ್‌ಪುಟ್ ಮಾಡಿ."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ಖಾತೆಯ ಪಾಸ್‌ವರ್ಡ್"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ಆರ್ಡರ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸುವಾಗ ಚೆಕ್ಔಟ್‌ನಲ್ಲಿ ಒದಗಿಸಲಾದ ಮಾಹಿತಿಯೊಂದಿಗೆ ಖಾತೆಯನ್ನು "
+"ರಚಿಸಲಾಗುತ್ತದೆ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
