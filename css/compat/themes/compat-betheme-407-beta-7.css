@@ -68,6 +68,20 @@ body.theme-betheme .mfn-cart-step-2 .woocommerce #order_review {
   max-width: 100%;
 }
 
+body.theme-betheme div.woocommerce form .form-row textarea,
+body.theme-betheme div.woocommerce form .form-row input[type=email],
+body.theme-betheme div.woocommerce form .form-row input[type=number],
+body.theme-betheme div.woocommerce form .form-row input[type=text],
+body.theme-betheme div.woocommerce form .form-row input[type=tel],
+body.theme-betheme div.woocommerce form .form-row input[type=url],
+body.theme-betheme div.woocommerce form .form-row input[type=password] {
+  color: var(--fluidcheckout--betheme--form-field--text-color);
+  background-color: var(--fluidcheckout--betheme--form-field--background-color);
+  border-color: var(--fluidcheckout--betheme--form-field--border-color);
+  border-width: var(--fluidcheckout--betheme--form-field--border-width);
+  border-radius: var(--fluidcheckout--betheme--form-field--border-radius);
+}
+
 body.theme-betheme .select2-container .select2-selection--single .select2-selection__rendered {
   padding-left: 10px;
   padding-right: 10px;
