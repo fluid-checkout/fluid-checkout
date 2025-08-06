@@ -23,7 +23,7 @@ class FluidCheckout_TemplatemelaCore extends FluidCheckout {
 		add_action( 'init', array( $this, 'remove_templatemela_checkout_hooks' ), 5 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 30 ); // Priority set to 30 to run after Avanam theme
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
