@@ -86,7 +86,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function output_custom_hidden_fields() {
 		// Output custom hidden fields
-		echo '<div id="pymntpl-paypal-woocommerce-custom_checkout_fields" class="form-row fc-no-validation-icon pymntpl-paypal-woocommerce-custom_checkout_fields">';
+		echo '<div id="pymntpl-paypal-woocommerce__custom-checkout-fields" class="form-row fc-no-validation-icon pymntpl-paypal-woocommerce__custom-checkout-fields">';
 		echo '<div class="woocommerce-input-wrapper">';
 		// The field value indicates if the shipping and billing fields could be potentially altered by the plugin's `frontend-commons.js` script.
 		echo '<input type="hidden" id="pymntpl-paypal-woocommerce-fields__altered" name="pymntpl-paypal-woocommerce-fields__altered" value="">';
