@@ -270,9 +270,6 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 		// Bail if not on front end
 		if ( is_admin() ) { return $skip; }
 
-		// Bail if PayPal is not selected as a payment method
-		if ( 'ppcp' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return $skip; }
-
 		// Skip if this is a REST request or if the checkout process has started
 		if ( ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || did_action( 'woocommerce_before_checkout_process' ) && 'ppcp' === FluidCheckout_Steps::instance()->get_selected_payment_method() ) {
 			$skip = true;
