@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT BILLING ADDRESS
+// ------------------------------------
+
+// Remove padding and border from billing fields wrapper
+body#{ $_body-theme-selector } .woocommerce form.checkout .woocommerce-billing-fields .woocommerce-billing-fields__field-wrapper{
+	padding: 0;
+	margin-bottom: 0;
+	border: none;
+	border-radius: 0;
+}

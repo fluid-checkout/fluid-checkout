@@ -138,10 +138,6 @@ msgstr "%2$s ичинен %1$s кадам"
 msgid "Change: %s"
 msgstr "Өзгөртүү: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Берилген маалымат менен аккаунт түзүлөт."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Азырынча тандалган жок."
@@ -2450,6 +2446,30 @@ msgid ""
 msgstr ""
 "Төлөө формасындагы эсеп-кысап дареги бөлүгүндөгү компаниянын аталышы "
 "талаасынын көрүнүшүн өзгөртүү."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тема боюнча китеп текчеси"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout колдонууда Bookshelf темасынан текшерүү кадамдары бөлүмүн "
+"чыгарыңыз."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Каттоо эсебинин сырсөзү"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Буйрутманы толтурууда эсепке алуу учурунда берилген маалымат менен эсеп "
+"түзүлөт."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

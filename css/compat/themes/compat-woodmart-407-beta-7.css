@@ -50,6 +50,18 @@ body.theme-woodmart .fc-wrapper .fc-place-order .fc-place-order-button {
   background-color: var(--btn-accented-bgcolor, #83b735);
 }
 
+@media (max-width: 999px) {
+  body.theme-woodmart.woocommerce-checkout header.fc-checkout-header + .wd-page-title {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 999px) {
+  body.theme-woodmart.woocommerce-checkout .wd-page-title ~ #main.fc-main {
+    padding-top: 0;
+  }
+}
+
 body.theme-woodmart .fc-checkout-order-review .woodmart-table-wrapper,
 body.theme-woodmart .fc-checkout-order-review .wd-table-wrapper {
   margin: 0;

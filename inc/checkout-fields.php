@@ -42,6 +42,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_change_shipping_company_field_args' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_account_field_args' ), 100 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
 
 		// Remove `screen-reader-text` from some fields
@@ -149,6 +150,8 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			'shipping_state'        => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping address-level1' ) ),
 			'shipping_country'      => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping country' ) ),
 			'shipping_postcode'     => array( 'autocomplete' => 'off', 'custom_attributes' => array( 'data-autocomplete' => 'shipping postal-code' ) ),
+
+			'account_password'      => array( 'label' => __( 'Account password', 'fluid-checkout' ) ),
 		);
 
 		// Only apply class changes on checkout and account pages
@@ -415,6 +418,19 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function change_order_field_args( $fields ) {
 		$field_group = 'order';
+		$fields[ $field_group ] = $this->change_checkout_field_args( $fields[ $field_group ] );
+		return $fields;
+	}
+
+	
+
+	/**
+	 * Change account fields args.
+	 *
+	 * @param   array  $fields  Fields used in checkout.
+	 */
+	public function change_account_field_args( $fields ) {
+		$field_group = 'account';
 		$fields[ $field_group ] = $this->change_checkout_field_args( $fields[ $field_group ] );
 		return $fields;
 	}

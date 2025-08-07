@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 3.2.2
+ * @version 4.0.6
  * @wc-version 3.6.0
  * @wc-original checkout/form-billing.php
  */
@@ -47,16 +47,31 @@ $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_la
 			<?php // CHANGE: Add class `fc-field-group` and collapsible block attributes ?>
 			<div class="create-account fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" <?php echo 'collapsed' === $collapsible_initial_state ? 'data-autofocus' : ''; ?> data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
 				<div class="collapsible-content__inner">
+					<?php // CHANGE: Add hook to allow adding content before the account fields ?>
+					<?php do_action( 'fc_checkout_account_before_fields', $checkout ); ?>
+				
 					<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
 						<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 					<?php endforeach; ?>
+
+					<?php // CHANGE: Add hook to allow adding content after the account fields ?>
+					<?php do_action( 'fc_checkout_account_after_fields', $checkout ); ?>
 
 					<?php // CHANGE: Removed the `clear` div element as clearing is applied via CSS ?>
 				<?php // CHANGE: Close collapsible block inner content element ?>
 				</div>
 			</div>
 
+		<?php // CHANGE: Always output the account fields section ?>
+		<?php else : ?>
+			<div class="create-account create-account--empty fc-field-group <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" <?php echo 'collapsed' === $collapsible_initial_state ? 'data-autofocus' : ''; ?> data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
+				<div class="collapsible-content__inner">
+					<?php // CHANGE: Add hook to allow adding content before the account fields ?>
+					<?php do_action( 'fc_checkout_account_fields_empty_section', $checkout ); ?>
+				</div>
+			</div>
 		<?php endif; ?>
+
 
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 	</div>
