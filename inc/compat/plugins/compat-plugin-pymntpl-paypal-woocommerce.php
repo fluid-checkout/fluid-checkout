@@ -89,7 +89,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 		echo '<div id="pymntpl-paypal-woocommerce-custom_checkout_fields" class="form-row fc-no-validation-icon pymntpl-paypal-woocommerce-custom_checkout_fields">';
 		echo '<div class="woocommerce-input-wrapper">';
 		// The field value indicates if the shipping and billing fields could be potentially altered by the plugin's `frontend-commons.js` script.
-		echo '<input type="hidden" id="pymntpl-paypal-woocommerce-fields_altered" name="pymntpl-paypal-woocommerce-fields_altered" value="">';
+		echo '<input type="hidden" id="pymntpl-paypal-woocommerce-fields__altered" name="pymntpl-paypal-woocommerce-fields__altered" value="">';
 		echo '</div>';
 		echo '</div>';
 	}
@@ -104,7 +104,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function add_custom_field_to_persisted_data_skip_fields( $skip_field_keys, $parsed_posted_data ) {
 		$fields_keys = array(
-			'pymntpl-paypal-woocommerce-fields_altered',
+			'pymntpl-paypal-woocommerce-fields__altered',
 		);
 
 		return array_merge( $skip_field_keys, $fields_keys );
@@ -122,7 +122,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return $skip_field_keys; }
 
 		// Bail if custom field value hasn't been changed
-		if ( empty( $parsed_posted_data[ 'pymntpl-paypal-woocommerce-fields_altered' ] ) ) { return $skip_field_keys; }
+		if ( empty( $parsed_posted_data[ 'pymntpl-paypal-woocommerce-fields__altered' ] ) ) { return $skip_field_keys; }
 
 		// Shipping and billing fields keys
 		$fields_keys = array(
@@ -164,7 +164,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function maybe_reset_customer_address_props_on_process_checkout( $customer, $posted_data ) {
 		// Bail if custom field value hasn't been changed
-		if ( empty( $_POST[ 'pymntpl-paypal-woocommerce-fields_altered' ] ) ) { return; }
+		if ( empty( $_POST[ 'pymntpl-paypal-woocommerce-fields__altered' ] ) ) { return; }
 
 		// Reset properties to the saved values
 		$this->reset_customer_address_props( $customer );
@@ -186,7 +186,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return; }
 
 		// Bail if custom field value hasn't been changed
-		if ( empty( $_POST[ 'pymntpl-paypal-woocommerce-fields_altered' ] ) ) { return; }
+		if ( empty( $_POST[ 'pymntpl-paypal-woocommerce-fields__altered' ] ) ) { return; }
 
 		// Reset properties to the saved values
 		$this->reset_customer_address_props( WC()->customer );
@@ -234,7 +234,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function maybe_prevent_update_saved_address( $skip_update, $posted_data ) {
 		// Bail if custom field value hasn't been changed
-		if ( empty( $posted_data[ 'pymntpl-paypal-woocommerce-fields_altered' ] ) ) { return $skip_update; }
+		if ( empty( $posted_data[ 'pymntpl-paypal-woocommerce-fields__altered' ] ) ) { return $skip_update; }
 
 		// Skip updating address data
 		$skip_update = true;
