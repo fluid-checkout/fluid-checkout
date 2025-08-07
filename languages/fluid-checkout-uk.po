@@ -139,10 +139,6 @@ msgstr "Крок %1$s від %2$s"
 msgid "Change: %s"
 msgstr "Зміна: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "На основі наданої інформації буде створено обліковий запис."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ще не вибрали."
@@ -2481,6 +2477,30 @@ msgid ""
 msgstr ""
 "Змініть видимість поля назви компанії для розділу адреси виставлення "
 "рахунку на формі оформлення замовлення."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тематична книжкова полиця"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Виведіть розділ \"Етапи оформлення замовлення\" з теми \"Книжкова полиця\" "
+"при використанні Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Пароль облікового запису"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"При оформленні замовлення буде створено обліковий запис з інформацією, "
+"наданою при оформленні замовлення."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

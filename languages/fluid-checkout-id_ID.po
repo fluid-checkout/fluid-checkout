@@ -138,10 +138,6 @@ msgstr "Langkah %1 dari %2"
 msgid "Change: %s"
 msgstr "Perubahan: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Akun akan dibuat dengan informasi yang diberikan."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Belum dipilih."
@@ -2451,6 +2447,30 @@ msgid ""
 msgstr ""
 "Ubah visibilitas untuk bidang nama perusahaan untuk bagian alamat penagihan "
 "pada formulir pembayaran."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Rak Buku Tema"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Keluarkan bagian langkah-langkah checkout dari tema Rak Buku saat "
+"menggunakan Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Kata sandi akun"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Sebuah akun akan dibuat dengan informasi yang diberikan pada saat checkout "
+"ketika menyelesaikan pesanan."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

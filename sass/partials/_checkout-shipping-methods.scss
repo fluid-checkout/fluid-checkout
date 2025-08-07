@@ -120,8 +120,8 @@
 }
 
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:before {
-	border-color: $option-box-radio-color--checked;
-	background-color: $option-box-radio-color--checked;
+	border-color: $option-box-radio-color--checked !important; // Needed to override theme styles
+	background-color: $option-box-radio-color--checked !important; // Needed to override theme styles
 }
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:focus + .shipping-method__option-label:before {
 	outline: $focus-outline-field !important; // Needed to override theme styles
@@ -152,6 +152,7 @@
 	@include icon( 'i-check-small' );
 	@include icon-size( $option-box-radio-size );
 
+	z-index: z( 'default' ) + 2;
 	position: absolute;
 	top: $option-box-padding-vertical;
 	#{ $alignment-left }: $global-spacing-extra-small;
@@ -160,7 +161,7 @@
 	color: transparent;
 }
 .woocommerce ul#shipping_method .shipping-method__option input[type="radio"]:checked + .shipping-method__option-label:after {
-	color: $option-box-radio-icon-color--checked;
+	color: $option-box-radio-icon-color--checked !important; // Needed to override theme styles
 }
 
 

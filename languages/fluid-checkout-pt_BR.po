@@ -335,10 +335,6 @@ msgstr "Já tem uma conta?"
 msgid "Always show"
 msgstr "Sempre mostrar"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Sua conta será criada com as informações fornecidas."
-
 #: inc/checkout-fields.php:181
 #| msgid "Appartment, unit, building, floor, etc."
 msgid "Apartment, unit, building, floor, etc."
@@ -2690,6 +2686,30 @@ msgid ""
 msgstr ""
 "Altere a visibilidade do campo de nome da empresa para a seção de endereço "
 "de cobrança no formulário de checkout."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Estante temática"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Envie a seção de etapas de checkout do tema Bookshelf ao usar o Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Senha da conta"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Uma conta será criada com as informações fornecidas no checkout ao concluir "
+"o pedido."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

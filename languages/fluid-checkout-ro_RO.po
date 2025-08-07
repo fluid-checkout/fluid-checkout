@@ -139,10 +139,6 @@ msgstr "Pasul %1$s din %2$s"
 msgid "Change: %s"
 msgstr "Modificare: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Un cont va fi creat cu informațiile furnizate."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Nu a fost selectat încă."
@@ -2489,6 +2485,28 @@ msgid ""
 msgstr ""
 "Schimbați vizibilitatea câmpului Nume companie pentru secțiunea Adresa de "
 "facturare din formularul de plată."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Raft tematic"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Scoateți secțiunea pași de plată din tema Bookshelf atunci când utilizați "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Parola contului"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "Un cont va fi creat cu informațiile furnizate la finalizarea comenzii."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

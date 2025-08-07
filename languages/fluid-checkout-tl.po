@@ -138,10 +138,6 @@ msgstr "Hakbang %1$s ng %2$s"
 msgid "Change: %s"
 msgstr "Baguhin: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Gagawa ang isang account kasama ang impormasyong ibinigay."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Hindi pa napili."
@@ -2509,6 +2505,30 @@ msgid ""
 msgstr ""
 "Baguhin ang visibility para sa field ng pangalan ng kumpanya para sa "
 "seksyon ng billing address sa form ng pag-checkout."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Temang Bookshelf"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"I-output ang seksyon ng mga hakbang sa pag-checkout mula sa tema ng "
+"Bookshelf kapag gumagamit ng Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Password ng account"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Gagawa ang isang account kasama ang impormasyong ibinigay sa pag-checkout "
+"kapag kinukumpleto ang order."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

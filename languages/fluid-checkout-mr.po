@@ -138,10 +138,6 @@ msgstr "%2$s पैकी %1$s पायरी"
 msgid "Change: %s"
 msgstr "बदल: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "दिलेल्या माहितीवरून एक खाते तयार केले जाईल."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "अजून निवड झालेली नाही."
@@ -2408,6 +2404,26 @@ msgid ""
 msgstr ""
 "चेकआउट फॉर्मवरील बिलिंग पत्ता विभागासाठी कंपनीच्या नावाच्या फील्डची "
 "दृश्यमानता बदला."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "थीम बुकशेल्फ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "फ्लुइड चेकआउट वापरताना बुकशेल्फ थीममधून चेकआउट स्टेप्स सेक्शन आउटपुट करा."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "खात्याचा पासवर्ड"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "ऑर्डर पूर्ण करताना चेकआउट करताना दिलेल्या माहितीसह एक खाते तयार केले जाईल."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
