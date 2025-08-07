@@ -357,7 +357,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Suki.
-* Added: Compatibility with theme Enfold.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
 * Added: Compatibility with plugin WooCommerce EU Vat & B2B.
