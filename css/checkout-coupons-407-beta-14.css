@@ -150,7 +150,9 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error,
 .fc-wrapper .fc-coupon-code-messages .woocommerce-message {
   display: block;
-  margin-bottom: 10px;
+  margin: 0 !important;
+  margin-bottom: 10px !important;
+  padding: 0 !important;
 }
 
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error li {
