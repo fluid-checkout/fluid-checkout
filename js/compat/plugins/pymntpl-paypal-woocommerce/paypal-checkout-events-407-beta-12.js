@@ -23,7 +23,7 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		alteredStateFieldSelector: '#pymntpl-paypal-woocommerce-fields_altered',
+		alteredStateFieldSelector: '#pymntpl-paypal-woocommerce-fields__altered',
 	};
 
 
