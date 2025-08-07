@@ -38,7 +38,7 @@ class FluidCheckout_ThemeCompat_Sahel extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
-		$attributes['data-sticky-relative-to'] = '.eltdf-fixed-wrapper.fixed';
+		$attributes['data-sticky-relative-to'] = '.eltdf-fixed-wrapper';
 
 		return $attributes;
 	}
