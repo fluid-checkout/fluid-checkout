@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with theme: Sahel (by Elated-Themes ).
+ * Compatibility with theme: Sahel (by Elated-Themes).
  */
 class FluidCheckout_ThemeCompat_Sahel extends FluidCheckout {
 
@@ -67,7 +67,7 @@ class FluidCheckout_ThemeCompat_Sahel extends FluidCheckout {
 				'--fluidcheckout--field--border' => '0px',
 				'--fluidcheckout--field--border-color' => 'transparent',
 				'--fluidcheckout--field--font-size' => '11px',
-				
+
 				// Theme main color
 				'--theme--first-color' => $first_main_color ? $first_main_color : '#000', // For border bottom color of select2 fields
 			),

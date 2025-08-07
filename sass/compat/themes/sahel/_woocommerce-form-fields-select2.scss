@@ -3,8 +3,7 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } .ts-wrapper.single .ts-control,
-body#{ $_body-theme-selector } .select2-container--default .select2-selection--single .select2-selection__rendered{
-	font-size: var(--fluidcheckout--field--font-size);
+body#{ $_body-theme-selector } .select2-container--default .select2-selection--single .select2-selection__rendered {
 	letter-spacing: remsize( .3em );
 	border-bottom: remsize( .1rem ) solid var(--theme--first-color);
 	text-transform: uppercase;
