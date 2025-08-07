@@ -151,15 +151,17 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 
 	/**
 	 * Check if REST request from the plugin is being made.
+	 * 
+	 * @param  string  $request_uri  The request URI to check against.
 	 */
-	public function is_rest_request_from_plugin() {
+	public function is_rest_request_from_plugin( $request_uri = 'ppcp' ) {
 		$is_rest_request = false;
 
 		// Bail if not a REST request
 		if ( ! defined( 'REST_REQUEST' ) || ! REST_REQUEST ) { return $is_rest_request; }
 
 		// Bail if not a request from the plugin
-		if ( ! isset( $_SERVER[ 'REQUEST_URI' ] ) || false === strpos( $_SERVER[ 'REQUEST_URI' ], 'ppcp' ) ) { return $is_rest_request; }
+		if ( ! isset( $_SERVER[ 'REQUEST_URI' ] ) || false === strpos( $_SERVER[ 'REQUEST_URI' ], $request_uri ) ) { return $is_rest_request; }
 
 		// Set the flag to true
 		$is_rest_request = true;
@@ -194,7 +196,7 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 	 */
 	public function maybe_reset_customer_address_props_on_paypal_rest_request( $cart ) {
 		// Bail if not a REST request from the plugin
-		if ( ! $this->is_rest_request_from_plugin() ) { return; }
+		if ( ! $this->is_rest_request_from_plugin( 'cart/shipping' ) ) { return; }
 
 		// Bail if customer object not available
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return; }
@@ -268,8 +270,11 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 		// Bail if not on front end
 		if ( is_admin() ) { return $skip; }
 
-		// Skip if this is a REST request from the plugin or if the checkout process has started
-		if ( $this->is_rest_request_from_plugin() || did_action( 'woocommerce_before_checkout_process' ) && 'ppcp' === FluidCheckout_Steps::instance()->get_selected_payment_method() ) {
+		// Bail if PayPal is not selected as a payment method
+		if ( 'ppcp' !== FluidCheckout_Steps::instance()->get_selected_payment_method() ) { return $skip; }
+
+		// Skip if this is a REST request or if the checkout process has started
+		if ( ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || did_action( 'woocommerce_before_checkout_process' ) && 'ppcp' === FluidCheckout_Steps::instance()->get_selected_payment_method() ) {
 			$skip = true;
 		}
 
