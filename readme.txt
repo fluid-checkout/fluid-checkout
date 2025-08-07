@@ -360,6 +360,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Bookshelf.
 * Added: Compatibility with theme Cartzilla.
 * Added: Compatibility with theme Neighborhood.
+* Added: Compatibility with theme Sahel.
 * Added: Compatibility with theme Suki.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
 * Added: Compatibility with plugin TemplateMela Core.
