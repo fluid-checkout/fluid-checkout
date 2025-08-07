@@ -74,7 +74,8 @@
 	/**
 	 * Add notices in the coupon code section.
 	 *
-	 * @param   HTML  content  HTML content to be displayed.
+	 * @param   HTML         content           HTML content to be displayed.
+	 * @param   HTMLElement  referenceElement  The element which was used to trigger adding the coupon.
 	 */
 	var showNotices = function( content, referenceElement ) {
 		// Try to get messages wrapper from the coupon code section
@@ -95,6 +96,28 @@
 		// Add message
 		if ( messagesWrapper ) {
 			messagesWrapper.innerHTML = content;
+		}
+	}
+
+	/**
+	 * Clear notices from the coupon code section.
+	 *
+	 * @param   HTMLElement  referenceElement  The element which was used to trigger adding the coupon.
+	 */
+	var clearNotices = function( referenceElement ) {
+		// Try to get messages wrapper from the coupon code section
+		var messagesWrapper;
+		var sectionWrapper = referenceElement ? referenceElement.closest( _settings.sectionWrapperSelector ) : null;
+		if ( sectionWrapper ) {
+			messagesWrapper = sectionWrapper.querySelector( _settings.messagesWrapperSelector );
+		}
+		else {
+			messagesWrapper = document.querySelector( _settings.generalNoticesSelector );
+		}
+		
+		// Clear messages wrapper
+		if ( messagesWrapper ) {
+			messagesWrapper.innerHTML = '';
 		}
 	}
 
@@ -481,6 +504,9 @@
 
 				// Maybe process success
 				if ( response.result && 'success' === response.result ) {
+					// Clear notices
+					clearNotices( referenceElement );
+
 					// Maybe add messages
 					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message, referenceElement );
@@ -597,6 +623,9 @@
 
 				// Maybe process success
 				if ( response.result && 'success' === response.result ) {
+					// Clear notices
+					clearNotices( referenceElement );
+
 					// Maybe add messages
 					if ( response.message && 'yes' !== _settings.suppressSuccessMessages ) {
 						showNotices( response.message, referenceElement );

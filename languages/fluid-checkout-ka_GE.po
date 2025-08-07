@@ -138,10 +138,6 @@ msgstr "ნაბიჯი %1$s %2$s-დან"
 msgid "Change: %s"
 msgstr "შეცვლა: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "შეიქმნება ანგარიში მოწოდებული ინფორმაციით."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ჯერ არ არის შერჩეული."
@@ -2456,6 +2452,30 @@ msgid ""
 msgstr ""
 "შეცვალეთ კომპანიის სახელის ველის ხილვადობა გადახდის ფორმაში გადახდის "
 "მისამართის განყოფილებისთვის."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "თემატური წიგნების თარო"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout-ის გამოყენებისას, Bookshelf თემიდან გამოიტანეთ შეკვეთის "
+"გაფორმების ნაბიჯების განყოფილება."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ანგარიშის პაროლი"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"შეკვეთის დასრულებისას შეკვეთის გაფორმებისას მოწოდებული ინფორმაციით "
+"შეიქმნება ანგარიში."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

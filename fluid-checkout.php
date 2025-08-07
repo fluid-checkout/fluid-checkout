@@ -541,7 +541,7 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Check if Fluid Checkout PRO is active on a single install or network wide.
+	 * Check if a plugin is active on a single install or network wide.
 	 * 
 	 * @param  string  $plugin_file   The plugin file name.
 	 * @since 3.0.0

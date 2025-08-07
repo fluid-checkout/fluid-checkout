@@ -159,6 +159,11 @@ body.woocommerce-checkout {
   overflow-x: clip;
 }
 
+body.woocommerce-checkout div[data-block-name="woocommerce/classic-shortcode"].alignwide {
+  left: 0 !important;
+  width: 100% !important;
+}
+
 body.woocommerce-checkout .fc-content,
 form.woocommerce-checkout {
   display: block !important;
@@ -355,8 +360,8 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar).woocommerce-checkout .woocommerce-NoticeGroup,
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-progress-bar,
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
-    width: 62.5%;
-    margin-right: 18.75%;
+    width: 62.5% !important;
+    margin-right: 18.75% !important;
   }
 }
 
@@ -386,7 +391,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   .fc-sidebar {
     z-index: 2;
     float: left;
-    width: 37.5%;
+    width: 37.5% !important;
     margin-top: 0 !important;
   }
 }

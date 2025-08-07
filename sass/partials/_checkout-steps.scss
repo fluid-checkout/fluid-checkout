@@ -368,7 +368,7 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	transition: padding-top $global-animation-duration-fast linear;
 }
 
-.fc-wrapper .fc-step__substep.is-editing .fc-step__substep-fields-inner {
+.fc-wrapper [data-step-complete] .fc-step__substep.is-editing .fc-step__substep-fields-inner {
 	padding: $global-spacing-small 0 0;
 }
 
