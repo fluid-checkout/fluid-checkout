@@ -77,7 +77,6 @@ class FluidCheckout_ThemeCompat_Seese extends FluidCheckout {
 				'--fluidcheckout--field--border-color' => '#ececec',
 				'--fluidcheckout--field--padding-left' => '18px',
 				'--fluidcheckout--field--font-size' => '13px',
-				
 			),
 		);
 
