@@ -94,12 +94,12 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
   position: absolute !important;
   top: 5px !important;
   margin: 0;
-  padding-right: 20px;
   padding-left: 20px;
+  padding-right: 20px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-  right: auto;
-  left: 5px;
+  left: auto;
+  right: 5px;
   height: 45px !important;
   min-height: 45px !important;
   line-height: 1 !important;
@@ -131,7 +131,7 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 }
 
 .fc-wrapper .fc-coupon-codes__coupon-amount .woocommerce-remove-coupon {
-  margin-right: 10px;
+  margin-left: 10px;
   font-size: 15px;
   font-weight: normal;
   line-height: inherit;
@@ -150,18 +150,20 @@ body div.woocommerce .fc-wrapper .fc-coupon_code__collapsible .fc-coupon-code__a
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error,
 .fc-wrapper .fc-coupon-code-messages .woocommerce-message {
   display: block;
-  margin-bottom: 10px;
+  margin: 0 !important;
+  margin-bottom: 10px !important;
+  padding: 0 !important;
 }
 
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error li {
   position: relative;
-  padding-left: 80px !important;
+  padding-right: 80px !important;
 }
 
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error li .fc-coupon-code-message-dismiss {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
 }
 .fc-wrapper .fc-coupon-code-messages .woocommerce-error li .fc-coupon-code-message-dismiss:focus {
   outline: dotted 1px var(--fluidcheckout--color--dark-grey, #535156) !important;

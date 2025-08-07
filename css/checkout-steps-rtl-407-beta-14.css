@@ -1565,30 +1565,31 @@ div.woocommerce form .form-row .select2-container .select2-selection {
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
-  clear: right;
-  float: none;
+  clear: right !important;
+  float: none !important;
   flex-grow: unset !important;
   width: 100% !important;
+  max-width: 100% !important;
   min-width: auto !important;
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
   div.woocommerce form .form-row.form-row-middle,
   div.woocommerce form .form-row.form-row-last {
-    clear: none;
-    float: right;
+    clear: none !important;
+    float: right !important;
     width: 48% !important;
   }
 }
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
-  clear: right;
+  clear: right !important;
 }
 @media (min-width: 550px) {
   div.woocommerce form .form-row.form-row-first,
   div.woocommerce form .form-row.form-row-wide {
-    clear: right;
+    clear: right !important;
   }
 }
 
