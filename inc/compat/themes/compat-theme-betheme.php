@@ -68,7 +68,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 
 
 
-	/*
+	/**
 	* Add or remove checkout page hooks.
 	*/
 	public function checkout_hooks() {
