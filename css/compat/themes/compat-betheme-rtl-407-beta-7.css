@@ -68,6 +68,10 @@ body.theme-betheme .mfn-cart-step-2 .woocommerce #order_review {
   max-width: 100%;
 }
 
+body.theme-betheme .fc-wrapper .widget::after {
+  width: 100%;
+}
+
 body.theme-betheme div.woocommerce form .form-row textarea,
 body.theme-betheme div.woocommerce form .form-row input[type=email],
 body.theme-betheme div.woocommerce form .form-row input[type=number],
