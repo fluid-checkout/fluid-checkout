@@ -28,7 +28,7 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 		
 		// CSS variables
-		// add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -77,14 +77,14 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '50px',
-				'--fluidcheckout--field--padding-left' => '15px',
-				'--fluidcheckout--field--border-radius' => '5px',
+				// TODO: Review for theme variables only constants now
+				'--fluidcheckout--field--height' => '37px',
+				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--padding-left' => '7px',
+				'--fluidcheckout--field--border-radius' => '4px',
+				'--fluidcheckout--field--border-color' => '#200707cc',
+				'--fluidcheckout--field--border-width' => '1px',
 				'--fluidcheckout--field--background-color--accent' => $main_color,
-
-				// Checkout validation styles
-				'--fluidcheckout--validation-check--horizontal-spacing--select' => '20px',
-				'--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '32px',
 			),
 		);
 
