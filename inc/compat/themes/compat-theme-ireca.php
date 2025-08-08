@@ -29,6 +29,9 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_place_order_button_classes', array( $this, 'remove_button_classes' ), 10 );
 	}
 
 
@@ -60,6 +63,20 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		return $class . ' container';
+	}
+
+
+
+	/**
+	 * Remove classes from place order button for Ireca theme.
+	 *
+	 * @param string $classes Button classes.
+	 */
+	public function remove_button_classes( $classes ) {
+		// Add Ireca theme specific button classes
+		$classes = str_replace( 'alt', '', $classes );
+		
+		return $classes;
 	}
 
 
