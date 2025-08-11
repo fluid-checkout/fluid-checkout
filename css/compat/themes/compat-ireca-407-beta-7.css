@@ -13,6 +13,12 @@ body.theme-ireca .fc-login-form__wrapper.woocommerce .woocommerce-form-login a:h
   text-decoration: none;
 }
 
+body.theme-ireca div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th,
+body.theme-ireca div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
+  font-family: inherit;
+  font-weight: normal;
+}
+
 body.theme-ireca .woocommerce input[type=checkbox] {
   height: auto;
 }
