@@ -97,7 +97,6 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				// TODO: Review for theme variables only constants now
 				'--fluidcheckout--field--height' => '37px',
 				'--fluidcheckout--field--font-size' => '14px',
 				'--fluidcheckout--field--padding-left' => '7px',
