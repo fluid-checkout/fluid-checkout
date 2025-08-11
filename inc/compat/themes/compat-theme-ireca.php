@@ -99,6 +99,7 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '37px',
 				'--fluidcheckout--field--font-size' => '14px',
+				'--fluidcheckout--field--color' => '#200707cc',
 				'--fluidcheckout--field--padding-left' => '7px',
 				'--fluidcheckout--field--border-radius' => '4px',
 				'--fluidcheckout--field--border-color' => '#200707cc',
