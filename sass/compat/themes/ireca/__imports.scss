@@ -12,5 +12,6 @@ $_body-theme-selector:                 '.theme-ireca' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-"checkout-login",
-"woocommerce-form-fields";
+	"z-index",
+	"checkout-login",
+	"woocommerce-form-fields";
