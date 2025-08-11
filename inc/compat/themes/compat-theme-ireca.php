@@ -32,6 +32,9 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 
 		// Buttons
 		add_filter( 'fc_place_order_button_classes', array( $this, 'remove_button_classes' ), 10 );
+
+		// Dequeue Select2 files
+		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_select2_files' ), 100 );
 	}
 
 
@@ -106,6 +109,19 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+	/**
+	 * Dequeue Select2 files.
+	 */
+	public function dequeue_select2_files() {
+		// Dequeue Select2 files if they are enqueued by the theme
+		if ( wp_style_is( 'select2_ireca', 'enqueued' ) ) {
+			wp_dequeue_style( 'select2_ireca' );
+		}
+		if ( wp_script_is( 'select2_ireca', 'enqueued' ) ) {
+			wp_dequeue_script( 'select2_ireca' );
+		}
 	}
 
 }
