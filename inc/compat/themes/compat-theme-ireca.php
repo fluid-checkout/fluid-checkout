@@ -19,6 +19,10 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Force no sidebar layout on FluidCheckout pages
+		add_filter( 'theme_mod_main_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
+		add_filter( 'theme_mod_woo_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
+
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
@@ -109,6 +113,42 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+	/**
+	 * Change any layout theme option to no sidebar only on FluidCheckout pages.
+	 * 
+	 * @param string $value The current theme mod value.
+	 * @return string The forced layout value or original value.
+	 */
+	public function change_theme_option_to_no_sidebar( $value ) {
+		// Only force no sidebar on FluidCheckout-governed pages
+		if ( $this->is_fluidcheckout_page() ) {
+			return 'no_sidebar';
+		}
+		
+		// Return original value on other pages
+		return $value;
+	}
+
+	/**
+	 * Check if current page is governed by FluidCheckout.
+	 * 
+	 * @return bool True if on a FluidCheckout page.
+	 */
+	private function is_fluidcheckout_page() {
+		return (
+			// Checkout page
+			( function_exists( 'is_checkout' ) && is_checkout() ) ||
+			// Order received page
+			( function_exists( 'is_order_received_page' ) && is_order_received_page() ) ||
+			// View order page (account)
+			( function_exists( 'is_view_order_page' ) && is_view_order_page() ) ||
+			// Account pages (when FluidCheckout features are active)
+			( function_exists( 'is_account_page' ) && is_account_page() ) ||
+			// Cart page
+			( function_exists( 'is_cart' ) && is_cart() )
+		);
 	}
 
 	/**
