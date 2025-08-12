@@ -19,10 +19,6 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Force no sidebar layout on FluidCheckout pages
-		add_filter( 'theme_mod_main_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
-		add_filter( 'theme_mod_woo_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
-
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
@@ -39,6 +35,13 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 
 		// Dequeue Select2 files
 		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_select2_files' ), 100 );
+
+		// Add integration settings
+		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
+
+		// Force no sidebar layout on FluidCheckout pages (only if option is enabled)
+		add_filter( 'theme_mod_main_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
+		add_filter( 'theme_mod_woo_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
 	}
 
 
@@ -122,6 +125,11 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 	 * @return string The forced layout value or original value.
 	 */
 	public function change_theme_option_to_no_sidebar( $value ) {
+		// Only force no sidebar if the integration option is enabled
+		if ( ! $this->is_force_no_sidebar_enabled() ) {
+			return $value;
+		}
+
 		// Only force no sidebar on FluidCheckout-governed pages
 		if ( $this->is_fluidcheckout_page() ) {
 			return 'no_sidebar';
@@ -136,19 +144,58 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 	 * 
 	 * @return bool True if on a FluidCheckout page.
 	 */
-	private function is_fluidcheckout_page() {
+	public function is_fluidcheckout_page() {
+		// For Lite: Check checkout and account pages
 		return (
 			// Checkout page
 			( function_exists( 'is_checkout' ) && is_checkout() ) ||
-			// Order received page
-			( function_exists( 'is_order_received_page' ) && is_order_received_page() ) ||
-			// View order page (account)
-			( function_exists( 'is_view_order_page' ) && is_view_order_page() ) ||
-			// Account pages (when FluidCheckout features are active)
-			( function_exists( 'is_account_page' ) && is_account_page() ) ||
-			// Cart page
-			( function_exists( 'is_cart' ) && is_cart() )
+			// Account pages (includes edit address, orders, etc.)
+			( function_exists( 'is_account_page' ) && is_account_page() )
 		);
+	}
+
+	/**
+	 * Check if the force no sidebar option is enabled.
+	 * 
+	 * @return bool True if the option is enabled.
+	 */
+	public function is_force_no_sidebar_enabled() {
+		return FluidCheckout_Settings::instance()->get_option( 'fc_integrations_ireca_force_no_sidebar' ) === 'yes';
+	}
+
+	/**
+	 * Add integration settings for Ireca theme.
+	 * 
+	 * @param array $settings The existing integration settings.
+	 * @return array The updated integration settings.
+	 */
+	public function add_settings( $settings ) {
+		// Add new settings
+		$settings_new = array(
+			array(
+				'title' => __( 'Theme Ireca', 'fluid-checkout' ),
+				'type'  => 'title',
+				'id'    => 'fc_integrations_theme_ireca_options',
+			),
+
+			array(
+				'title'           => __( 'Force No Sidebar', 'fluid-checkout' ),
+				'desc'            => __( 'Force no sidebar layout on optimized FluidCheckout pages to ensure full-width content.', 'fluid-checkout' ),
+				'id'              => 'fc_integrations_ireca_force_no_sidebar',
+				'type'            => 'checkbox',
+				'default'         => 'yes',
+				'autoload'        => false,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'    => 'fc_integrations_theme_ireca_options',
+			),
+		);
+
+		$settings = array_merge( $settings, $settings_new );
+
+		return $settings;
 	}
 
 	/**
