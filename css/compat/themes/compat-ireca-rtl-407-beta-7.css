@@ -18,6 +18,10 @@ body.theme-ireca div.woocommerce .fc-wrapper #order_review table.woocommerce-che
   font-weight: normal;
 }
 
+body.theme-ireca div.woocommerce form .form-row {
+  display: block;
+}
+
 body.theme-ireca .woocommerce input[type=checkbox] {
   height: auto;
 }

@@ -2,6 +2,10 @@
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	display: block;
+}
+
 body#{ $_body-theme-selector } .woocommerce input[type="checkbox"] {
 	height: auto;
 }
