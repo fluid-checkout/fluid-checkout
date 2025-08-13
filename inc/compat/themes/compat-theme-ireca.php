@@ -118,6 +118,8 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
 	}
 
+
+
 	/**
 	 * Change any layout theme option to no sidebar only on FluidCheckout pages.
 	 * 
@@ -139,6 +141,8 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		return $value;
 	}
 
+
+
 	/**
 	 * Check if current page is governed by FluidCheckout.
 	 * 
@@ -154,6 +158,8 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		);
 	}
 
+
+
 	/**
 	 * Check if the force no sidebar option is enabled.
 	 * 
@@ -162,6 +168,8 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 	public function is_force_no_sidebar_enabled() {
 		return FluidCheckout_Settings::instance()->get_option( 'fc_integrations_ireca_force_no_sidebar' ) === 'yes';
 	}
+
+
 
 	/**
 	 * Add integration settings for Ireca theme.
@@ -198,11 +206,13 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		return $settings;
 	}
 
+
+
 	/**
-	 * Dequeue Select2 files.
+	 * Dequeue Theme Select2 files.
 	 */
 	public function dequeue_select2_files() {
-		// Dequeue Select2 files if they are enqueued by the theme
+		// Dequeue Theme Select2 files if they are enqueued by the theme
 		if ( wp_style_is( 'select2_ireca', 'enqueued' ) ) {
 			wp_dequeue_style( 'select2_ireca' );
 		}
