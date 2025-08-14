@@ -138,10 +138,6 @@ msgstr "Trinn %1$s av %2$s"
 msgid "Change: %s"
 msgstr "Endring: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "En konto vil bli opprettet med den oppgitte informasjonen."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ikke valgt ennå."
@@ -2429,6 +2425,28 @@ msgid ""
 msgstr ""
 "Endre synligheten for firmanavnsfeltet for faktureringsadressedelen i "
 "kasseskjemaet."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema bokhylle"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Skriv ut kassetrinnene fra Bookshelf-temaet når du bruker Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Passord for konto"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"En konto vil bli opprettet med informasjonen du oppgir i kassen når du "
+"fullfører bestillingen."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

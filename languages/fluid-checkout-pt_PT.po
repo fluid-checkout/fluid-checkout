@@ -140,10 +140,6 @@ msgstr "Passo %1$s de %2$s"
 msgid "Change: %s"
 msgstr "Alteração: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Será criada uma conta com as informações fornecidas."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ainda não selecionado."
@@ -2493,6 +2489,30 @@ msgid ""
 msgstr ""
 "Alterar a visibilidade do campo de nome da empresa para a secção de "
 "endereço de faturação no formulário de checkout."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Estante temática"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Saída da secção de passos de checkout do tema Bookshelf quando se utiliza o "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Palavra-passe da conta"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Será criada uma conta com as informações fornecidas no momento da "
+"finalização da encomenda."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -140,10 +140,6 @@ msgstr "Pas %1$s de %2$s"
 msgid "Change: %s"
 msgstr "Canvi: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Es crearà un compte amb la informació proporcionada."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Encara no seleccionat."
@@ -2500,6 +2496,30 @@ msgid ""
 msgstr ""
 "Canvia la visibilitat del camp del nom de l&#39;empresa per a la secció "
 "d&#39;adreça de facturació del formulari de pagament."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Prestatgeria temàtica"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Mostra la secció dels passos de compra del tema Bookshelf quan utilitzeu "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Contrasenya del compte"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Es crearà un compte amb la informació proporcionada al moment de la compra "
+"en completar la comanda."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

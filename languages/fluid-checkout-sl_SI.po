@@ -139,10 +139,6 @@ msgstr "Korak %1$s od %2$s"
 msgid "Change: %s"
 msgstr "Sprememba: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Z navedenimi podatki bo ustvarjen račun."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Še ni bil izbran."
@@ -2449,6 +2445,30 @@ msgid ""
 msgstr ""
 "Spremenite vidnost polja z imenom podjetja v razdelku z naslovom za obračun "
 "v obrazcu za prijavo na blagajno."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematska knjižna polica"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Pri uporabi tekočega blagajniškega sistema izberite razdelek korakov "
+"blagajne iz teme Knjižna polica."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Geslo računa"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Račun bo ustvarjen z informacijami, ki jih boste navedli pri blagajni, ko "
+"boste zaključili naročilo."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

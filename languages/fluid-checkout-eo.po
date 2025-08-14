@@ -138,10 +138,6 @@ msgstr "Paŝo %1$s de %2$s"
 msgid "Change: %s"
 msgstr "Ŝanĝo: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Konto estos kreita kun la informoj provizitaj."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ankoraŭ ne elektita."
@@ -2410,6 +2406,30 @@ msgid ""
 msgstr ""
 "Ŝanĝu videblecon por la kampo &quot;firmaa nomo&quot; por la sekcio pri "
 "faktura adreso en la kasformularo."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Librobreto"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Eligu la sekcion pri kaspaŝoj el la temo Librobreto kiam vi uzas Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Konto-pasvorto"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Konto estos kreita kun la informoj donitaj ĉe la kaso kiam vi kompletigas "
+"la mendon."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -138,10 +138,6 @@ msgstr "Bước %1$s của %2$s"
 msgid "Change: %s"
 msgstr "Thay đổi: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Một tài khoản sẽ được tạo dựa trên thông tin đã cung cấp."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Chưa được chọn."
@@ -2427,6 +2423,30 @@ msgid ""
 msgstr ""
 "Thay đổi khả năng hiển thị của trường tên công ty trong phần địa chỉ thanh "
 "toán trên biểu mẫu thanh toán."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Kệ sách chủ đề"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Xuất phần các bước thanh toán từ chủ đề Bookshelf khi sử dụng Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Mật khẩu tài khoản"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Một tài khoản sẽ được tạo dựa trên thông tin được cung cấp khi thanh toán "
+"khi hoàn tất đơn hàng."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
