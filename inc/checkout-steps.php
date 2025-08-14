@@ -193,6 +193,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		add_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
@@ -532,6 +533,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10 );
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		remove_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
 		remove_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
@@ -6166,6 +6168,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__header-link fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
 		<?php
+	}
+
+
+
+	/**
+	 * Output checkout place order terms.
+	 */
+	public function output_checkout_place_order_terms() {
+		wc_get_template( 'checkout/terms.php' );
 	}
 
 
