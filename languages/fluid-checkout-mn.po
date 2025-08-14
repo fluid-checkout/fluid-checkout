@@ -138,10 +138,6 @@ msgstr "%2$s-н %1$s алхам"
 msgid "Change: %s"
 msgstr "Өөрчлөлт: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Өгөгдсөн мэдээллээр данс үүсгэнэ."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Одоогоор сонгоогүй байна."
@@ -2468,6 +2464,16 @@ msgid ""
 msgstr ""
 "Fluid Checkout-г ашиглахдаа Bookshelf-ийн сэдвээс төлбөр тооцоо хийх "
 "алхамуудыг гарга."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Дансны нууц үг"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "Захиалгыг бөглөхдөө тооцоо хийх үед өгсөн мэдээллээр данс үүсгэнэ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

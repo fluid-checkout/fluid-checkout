@@ -138,10 +138,6 @@ msgstr "ขั้นตอน %1$s จาก %2$s"
 msgid "Change: %s"
 msgstr "การเปลี่ยนแปลง: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "จะสร้างบัญชีโดยใช้ข้อมูลที่ได้รับมา"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ยังไม่ได้เลือก"
@@ -2424,6 +2420,18 @@ msgid ""
 msgstr ""
 "ส่งออกส่วนขั้นตอนการชำระเงินจากธีมชั้นวางหนังสือเมื่อใช้การชำระเงินแบบ "
 "Fluid Checkout"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "รหัสผ่านบัญชี"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"บัญชีจะถูกสร้างขึ้นโดยใช้ข้อมูลที่ให้ไว้ตอนชำระเงินเมื่อทำการสั่งซื้อเสร็จสิ"
+"้น"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -138,10 +138,6 @@ msgstr "%2$s-ൽ %1$s-ാം ഘട്ടം"
 msgid "Change: %s"
 msgstr "മാറ്റം: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "നൽകുന്ന വിവരങ്ങൾ ഉപയോഗിച്ച് ഒരു അക്കൗണ്ട് സൃഷ്ടിക്കപ്പെടും."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ഇതുവരെ തിരഞ്ഞെടുത്തിട്ടില്ല."
@@ -2504,6 +2500,18 @@ msgid ""
 msgstr ""
 "ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ഉപയോഗിക്കുമ്പോൾ ബുക്ക്ഷെൽഫ് തീമിൽ നിന്ന് ചെക്ക്ഔട്ട് "
 "ഘട്ടങ്ങൾ വിഭാഗം ഔട്ട്പുട്ട് ചെയ്യുക."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "അക്കൗണ്ട് പാസ്‌വേഡ്"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ഓർഡർ പൂർത്തിയാക്കുമ്പോൾ ചെക്ക്ഔട്ടിൽ നൽകുന്ന വിവരങ്ങൾ ഉപയോഗിച്ച് ഒരു "
+"അക്കൗണ്ട് സൃഷ്ടിക്കപ്പെടും."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

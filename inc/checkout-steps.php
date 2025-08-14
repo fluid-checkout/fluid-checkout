@@ -117,6 +117,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Contact
 		add_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
+		add_action( 'fc_checkout_account_after_fields', array( $this, 'output_account_creation_notice' ), 100 );
+		add_action( 'fc_checkout_account_fields_empty_section', array( $this, 'output_account_creation_notice' ), 100 );
 
 		// Log in
 		add_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
@@ -1075,6 +1077,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_billing_phone_enabled() {
 		return 'hidden' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' );
+	}
+
+
+
+	/**
+	 * Check whether the account creation notice is enabled.
+	 */
+	public function is_account_creation_notice_enabled() {
+		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_account_creation_notice_checkout_contact_step_text' ) && 'yes' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'yes' );
 	}
 
 
@@ -3165,6 +3176,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 	}
 
+
+
 	/**
 	 * Add the contact substep review text lines.
 	 * 
@@ -3200,10 +3213,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Maybe add notice for account creation
-		if ( ! is_user_logged_in() && 'true' === FluidCheckout_Settings::instance()->get_option( 'fc_show_account_creation_notice_checkout_contact_step_text' ) && 'true' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'true' ) ) {
+		if ( ! is_user_logged_in() && $this->is_account_creation_notice_enabled() ) {
 			$parsed_posted_data = $this->get_parsed_posted_data();
 			if ( $this->is_create_account_checked() ) {
-				$review_text_lines[] = '<em>' . __( 'An account will be created with the information provided.', 'fluid-checkout' ) . '</em>';
+				$review_text_lines[] = '<em>' . $this->get_account_creation_notice_message() . '</em>';
 			}
 		}
 
@@ -3236,6 +3249,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_text_contact( $step_id, $substep_id ) {
 		echo $this->get_substep_text_contact();
+	}
+
+
+
+	/**
+	 * Get account creation notice message.
+	 */
+	public function get_account_creation_notice_message() {
+		return apply_filters( 'fc_checkout_account_creation_notice_message', __( 'An account will be created with the information provided at checkout when completing the order.', 'fluid-checkout' ) );
+	}
+
+	/**
+	 * Output account creation notice.
+	 */
+	public function output_account_creation_notice() {
+		// Bail if account creation notice is not enabled
+		if ( ! $this->is_account_creation_notice_enabled() ) { return; }
+
+		?>
+		<p class="fc-account-creation-notice">
+			<?php echo esc_html( $this->get_account_creation_notice_message() ); ?>
+		</p>
+		<?php
 	}
 
 

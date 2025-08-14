@@ -138,10 +138,6 @@ msgstr "Skref %1$s af %2$s"
 msgid "Change: %s"
 msgstr "Breyting: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Reikningur verður stofnaður með þeim upplýsingum sem gefnar eru upp."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ekki valið ennþá."
@@ -2438,6 +2434,18 @@ msgid ""
 "Output the checkout steps section from the Bookshelf theme when using Fluid "
 "Checkout."
 msgstr "Birta greiðsluskrefhlutann úr bókahilluþemanu þegar Fluid Checkout er notað."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Lykilorð reiknings"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Aðgangur verður stofnaður með upplýsingunum sem gefnar voru upp við "
+"afgreiðslu pöntunar."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

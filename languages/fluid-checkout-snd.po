@@ -138,10 +138,6 @@ msgstr "قدم %2$s مان %1$s"
 msgid "Change: %s"
 msgstr "تبديلي: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "ڏنل معلومات سان هڪ اڪائونٽ ٺاهيو ويندو."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "اڃا تائين چونڊيل نه آهي."
@@ -2428,6 +2424,16 @@ msgid ""
 msgstr ""
 "فلوئڊ چيڪ آئوٽ استعمال ڪندي بُڪ شيلف ٿيم مان چيڪ آئوٽ اسٽيپس سيڪشن آئوٽ پُٽ "
 "ڪريو."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "اڪائونٽ پاسورڊ"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "آرڊر مڪمل ڪرڻ وقت چيڪ آئوٽ تي ڏنل معلومات سان هڪ اڪائونٽ ٺاهيو ويندو."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

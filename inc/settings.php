@@ -131,7 +131,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
-			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'true',
+			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
 
 			// Compatibility settings for plugins.
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',

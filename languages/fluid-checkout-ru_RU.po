@@ -144,10 +144,6 @@ msgstr "Шаг %1$s из %2$s"
 msgid "Change: %s"
 msgstr "Изменение: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "На основе предоставленной информации будет создана учетная запись."
-
 #: inc/checkout-steps.php:3918,
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -2600,6 +2596,18 @@ msgid ""
 msgstr ""
 "Выведите раздел \"Шаги оформления заказа\" из темы \"Книжная полка\" при "
 "использовании Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Пароль учетной записи"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Учетная запись будет создана на основе информации, указанной при оформлении "
+"заказа."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

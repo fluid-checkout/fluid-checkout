@@ -1,0 +1,14 @@
+// ------------------------------------
+// ORDER SUMMARY
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+	width: 100%;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .checkout-order-review {
+	@media (min-width: 1025px) {
+		position: relative; 
+		top: unset;
+	}
+}

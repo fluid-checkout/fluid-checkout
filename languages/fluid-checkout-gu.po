@@ -138,10 +138,6 @@ msgstr "%2$s માંથી %1$s પગલું"
 msgid "Change: %s"
 msgstr "ફેરફાર: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "આપેલી માહિતીથી એક ખાતું બનાવવામાં આવશે."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "હજુ સુધી પસંદ થયેલ નથી."
@@ -2418,6 +2414,18 @@ msgid ""
 msgstr ""
 "ફ્લુઇડ ચેકઆઉટનો ઉપયોગ કરતી વખતે બુકશેલ્ફ થીમમાંથી ચેકઆઉટ સ્ટેપ્સ વિભાગ "
 "આઉટપુટ કરો."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "એકાઉન્ટ પાસવર્ડ"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ઓર્ડર પૂર્ણ કરતી વખતે ચેકઆઉટ વખતે આપેલી માહિતીનો ઉપયોગ કરીને એક એકાઉન્ટ "
+"બનાવવામાં આવશે."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
