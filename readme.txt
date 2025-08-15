@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Support for new progress bar style options.
 * Added: Compatibility with theme Avanam.
 * Added: Compatibility with theme Bookshelf.
 * Added: Compatibility with theme Cartzilla.
