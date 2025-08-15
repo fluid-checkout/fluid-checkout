@@ -2464,6 +2464,14 @@ msgstr ""
 "Prilikom narudžbe, s podacima navedenima prilikom plaćanja, bit će kreiran "
 "račun."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Odaberite stil trake napretka."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barovi"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

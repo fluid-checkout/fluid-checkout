@@ -2476,6 +2476,14 @@ msgstr ""
 "Účet bude vytvorený na základe informácií zadaných pri pokladni pri "
 "dokončovaní objednávky."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Vyberte štýl panela priebehu."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bary"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

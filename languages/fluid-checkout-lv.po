@@ -2451,6 +2451,14 @@ msgstr ""
 "Konts tiks izveidots, izmantojot informāciju, kas norādīta pie kases, "
 "pabeidzot pasūtījumu."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Izvēlieties progresa joslas stilu."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bāri"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

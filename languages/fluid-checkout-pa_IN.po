@@ -2436,6 +2436,14 @@ msgstr ""
 "ਆਰਡਰ ਪੂਰਾ ਕਰਦੇ ਸਮੇਂ ਚੈੱਕਆਉਟ &#39;ਤੇ ਦਿੱਤੀ ਗਈ ਜਾਣਕਾਰੀ ਨਾਲ ਇੱਕ ਖਾਤਾ ਬਣਾਇਆ "
 "ਜਾਵੇਗਾ।"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ਤਰੱਕੀ ਪੱਟੀ ਦੀ ਸ਼ੈਲੀ ਚੁਣੋ।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ਬਾਰ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

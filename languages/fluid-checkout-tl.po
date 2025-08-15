@@ -2530,6 +2530,14 @@ msgstr ""
 "Gagawa ang isang account kasama ang impormasyong ibinigay sa pag-checkout "
 "kapag kinukumpleto ang order."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Piliin ang istilo ng progress bar."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Mga bar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2427,6 +2427,14 @@ msgstr ""
 "ઓર્ડર પૂર્ણ કરતી વખતે ચેકઆઉટ વખતે આપેલી માહિતીનો ઉપયોગ કરીને એક એકાઉન્ટ "
 "બનાવવામાં આવશે."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "પ્રોગ્રેસ બારની શૈલી પસંદ કરો."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "બાર"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

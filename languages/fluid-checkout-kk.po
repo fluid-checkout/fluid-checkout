@@ -2469,6 +2469,14 @@ msgid ""
 "completing the order."
 msgstr "Тапсырысты толтыру кезінде төлем кезінде берілген ақпаратпен шот жасалады."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Орындалу жолағы стилін таңдаңыз."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барлар"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

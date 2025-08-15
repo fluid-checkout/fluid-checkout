@@ -2685,6 +2685,14 @@ msgstr ""
 "Ένας λογαριασμός θα δημιουργηθεί με τις πληροφορίες που παρέχονται στο "
 "ταμείο κατά την ολοκλήρωση της παραγγελίας."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Επιλέξτε το στυλ της γραμμής προόδου."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Μπαρ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

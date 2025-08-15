@@ -2429,6 +2429,14 @@ msgstr ""
 "د امر بشپړولو پر مهال به د چیک آوټ په وخت کې چمتو شوي معلوماتو سره یو حساب "
 "جوړ شي."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "د پرمختګ بار سټایل غوره کړئ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "بارونه"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2468,6 +2468,14 @@ msgstr ""
 "Der oprettes en konto med de oplysninger, der angives ved kassen, når du "
 "gennemfører bestillingen."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Vælg stilen på statuslinjen."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Stænger"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

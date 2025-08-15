@@ -2249,6 +2249,14 @@ msgid ""
 "completing the order."
 msgstr "주문 완료 시 결제 시 제공한 정보로 계정이 생성됩니다."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "진행률 표시줄의 스타일을 선택합니다."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "바"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2348,6 +2348,14 @@ msgid ""
 "completing the order."
 msgstr "ייווצר חשבון עם המידע שיסופק בעת ביצוע ההזמנה."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "בחר את סגנון סרגל ההתקדמות."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ברים"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

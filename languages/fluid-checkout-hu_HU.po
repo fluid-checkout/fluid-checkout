@@ -2594,6 +2594,14 @@ msgstr ""
 "A fiókot a pénztárnál megadott adatokkal hozzuk létre a megrendelés "
 "befejezésekor."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Válassza ki az előrehaladási sáv stílusát."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bárok"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2684,6 +2684,14 @@ msgstr ""
 "Mit den beim Abschluss der Bestellung an der Kasse angegebenen Daten wird "
 "ein Konto erstellt."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Wählen Sie den Stil des Fortschrittsbalkens."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

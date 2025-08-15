@@ -2455,6 +2455,14 @@ msgstr ""
 "Պատվերը կատարելիս կստեղծվի հաշիվ՝ պատվերի ձևակերպման ժամանակ տրամադրված "
 "տեղեկություններով։"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Ընտրեք առաջընթացի գծի ոճը։"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Բարեր"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

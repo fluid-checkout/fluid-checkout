@@ -2433,6 +2433,14 @@ msgstr ""
 "บัญชีจะถูกสร้างขึ้นโดยใช้ข้อมูลที่ให้ไว้ตอนชำระเงินเมื่อทำการสั่งซื้อเสร็จสิ"
 "้น"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "เลือกสไตล์ของแถบความคืบหน้า"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "บาร์"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

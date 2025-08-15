@@ -2515,6 +2515,14 @@ msgstr ""
 "Buyurtmani to&#39;ldirishda to&#39;lov vaqtida taqdim etilgan "
 "ma&#39;lumotlar bilan hisob yaratiladi."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Harakat paneli uslubini tanlang."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barlar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

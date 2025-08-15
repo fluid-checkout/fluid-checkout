@@ -2495,6 +2495,14 @@ msgstr ""
 "Një llogari do të krijohet me informacionin e dhënë në arkë gjatë "
 "përfundimit të porosisë."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Zgjidhni stilin e shiritit të progresit."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bare"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

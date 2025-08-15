@@ -2513,6 +2513,14 @@ msgstr ""
 "ഓർഡർ പൂർത്തിയാക്കുമ്പോൾ ചെക്ക്ഔട്ടിൽ നൽകുന്ന വിവരങ്ങൾ ഉപയോഗിച്ച് ഒരു "
 "അക്കൗണ്ട് സൃഷ്ടിക്കപ്പെടും."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "പ്രോഗ്രസ് ബാറിന്റെ ശൈലി തിരഞ്ഞെടുക്കുക."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ബാറുകൾ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

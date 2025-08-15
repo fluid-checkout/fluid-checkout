@@ -2471,6 +2471,14 @@ msgstr ""
 "Буйрутманы толтурууда эсепке алуу учурунда берилген маалымат менен эсеп "
 "түзүлөт."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Прогресс тилкесинин стилин тандаңыз."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барлар"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

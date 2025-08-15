@@ -2488,6 +2488,14 @@ msgstr ""
 "Akaun akan dibuat dengan maklumat yang diberikan semasa pembayaran semasa "
 "menyelesaikan pesanan."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pilih gaya bar kemajuan."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

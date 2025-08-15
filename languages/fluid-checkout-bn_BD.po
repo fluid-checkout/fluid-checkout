@@ -2444,6 +2444,14 @@ msgstr ""
 "অর্ডার পূরণ করার সময় চেকআউটের সময় প্রদত্ত তথ্য দিয়ে একটি অ্যাকাউন্ট তৈরি "
 "করা হবে।"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "অগ্রগতি বারের স্টাইলটি বেছে নিন।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "বার"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

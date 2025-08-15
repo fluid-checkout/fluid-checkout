@@ -2502,6 +2502,14 @@ msgstr ""
 "При оформленні замовлення буде створено обліковий запис з інформацією, "
 "наданою при оформленні замовлення."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Виберіть стиль індикатора виконання."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Бари"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

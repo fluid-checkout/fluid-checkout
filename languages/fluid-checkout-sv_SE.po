@@ -2449,6 +2449,14 @@ msgstr ""
 "Ett konto kommer att skapas med de uppgifter som anges i kassan när "
 "beställningen slutförs."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Välj stil för förloppsindikatorn."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barer"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

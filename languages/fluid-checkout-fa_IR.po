@@ -2427,6 +2427,14 @@ msgstr ""
 "با اطلاعاتی که هنگام تکمیل سفارش در هنگام پرداخت ارائه شده است، یک حساب "
 "کاربری ایجاد می‌شود."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "سبک نوار پیشرفت را انتخاب کنید."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "بارها"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

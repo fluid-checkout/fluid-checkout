@@ -2302,6 +2302,14 @@ msgid ""
 "completing the order."
 msgstr "ትዕዛዙን ሲያጠናቅቁ ተመዝግበው ሲወጡ ከተሰጠው መረጃ ጋር መለያ ይፈጠራል።"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "የሂደት አሞሌውን ዘይቤ ይምረጡ።"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ቡና ቤቶች"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
