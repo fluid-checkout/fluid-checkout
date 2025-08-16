@@ -2487,6 +2487,14 @@ msgstr ""
 "Уліковы запіс будзе створаны з выкарыстаннем інфармацыі, указанай пры "
 "афармленні замовы."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Выберыце стыль індыкатара прагрэсу."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Бары"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2491,6 +2491,14 @@ msgid ""
 "completing the order."
 msgstr "Crearase unha conta coa información proporcionada ao finalizar a compra."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Escolle o estilo da barra de progreso."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bares"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

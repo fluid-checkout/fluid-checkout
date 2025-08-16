@@ -2518,6 +2518,14 @@ msgstr ""
 "ஆர்டரை முடிக்கும்போது செக் அவுட்டில் வழங்கப்படும் தகவலுடன் ஒரு கணக்கு "
 "உருவாக்கப்படும்."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "முன்னேற்றப் பட்டியின் பாணியைத் தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "பார்கள்"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

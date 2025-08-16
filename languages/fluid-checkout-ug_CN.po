@@ -2452,6 +2452,14 @@ msgid ""
 "completing the order."
 msgstr "زاكازنى تاماملىغاندا چىقىمداندا تەمىنلەنگەن ئۇچۇرلار بىلەن ھېسابات قۇرۇلىدۇ."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ئىلگىرىلەش بالدىقىنىڭ ئۇسلۇبىنى تاللاڭ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

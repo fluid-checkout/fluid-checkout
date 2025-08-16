@@ -2484,6 +2484,14 @@ msgstr ""
 "Eskaera osatzean ordainketa-prozesuan emandako informazioarekin kontu bat "
 "sortuko da."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Aukeratu aurrerapen-barraren estiloa."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Tabernak"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

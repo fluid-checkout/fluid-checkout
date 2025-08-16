@@ -2481,6 +2481,14 @@ msgstr ""
 "Bydd cyfrif yn cael ei greu gyda&#39;r wybodaeth a ddarperir wrth y ddesg "
 "dalu wrth gwblhau&#39;r archeb."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Dewiswch arddull y bar cynnydd."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bariau"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

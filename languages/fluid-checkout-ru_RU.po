@@ -2609,6 +2609,14 @@ msgstr ""
 "Учетная запись будет создана на основе информации, указанной при оформлении "
 "заказа."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Выберите стиль индикатора выполнения."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Бары"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

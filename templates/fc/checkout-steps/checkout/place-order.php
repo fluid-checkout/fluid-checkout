@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.2.2
+ * @version 4.0.7
  * @wc-version 7.0.1
  * @wc-original checkout/payment.php
  */
@@ -31,7 +31,8 @@ defined( 'ABSPATH' ) || exit;
         <br/><button type="submit" class="button alt<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
     </noscript>
 
-    <?php wc_get_template( 'checkout/terms.php' ); ?>
+    <?php // CHANGE: Replace the output of the terms and conditions checkbox with a custom hook ?>
+    <?php do_action( 'fc_checkout_place_order_terms' ); ?>
 
     <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 

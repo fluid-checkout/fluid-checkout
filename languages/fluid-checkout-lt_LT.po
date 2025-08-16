@@ -2583,6 +2583,14 @@ msgstr ""
 "Paskyra bus sukurta naudojant informaciją, pateiktą kasoje užbaigiant "
 "užsakymą."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pasirinkite progreso juostos stilių."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barai"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

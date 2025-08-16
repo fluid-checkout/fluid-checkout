@@ -2530,6 +2530,14 @@ msgstr ""
 "Thèid cunntas a chruthachadh leis an fhiosrachadh a chaidh a thoirt seachad "
 "aig an àite-pàighidh nuair a bhios an t-òrdugh deiseil."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Tagh stoidhle a’ bhàr adhartais."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bàraichean"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

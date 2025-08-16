@@ -2711,6 +2711,14 @@ msgstr ""
 "Un compte sera créé avec les informations fournies à la caisse lors de la "
 "finalisation de la commande."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Choisissez le style de la barre de progression."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barres"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

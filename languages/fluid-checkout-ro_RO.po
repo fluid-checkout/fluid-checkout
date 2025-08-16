@@ -2508,6 +2508,14 @@ msgid ""
 "completing the order."
 msgstr "Un cont va fi creat cu informațiile furnizate la finalizarea comenzii."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Alegeți stilul barei de progres."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bare"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

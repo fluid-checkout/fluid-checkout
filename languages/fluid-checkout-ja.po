@@ -2266,6 +2266,14 @@ msgid ""
 "completing the order."
 msgstr "アカウントは、注文完了時にチェックアウトで提供された情報で作成されます。"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "プログレスバーのスタイルを選択します。"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "バー"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

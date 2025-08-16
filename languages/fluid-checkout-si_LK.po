@@ -2434,6 +2434,14 @@ msgid ""
 "completing the order."
 msgstr "ඇණවුම සම්පූර්ණ කිරීමේදී පිටවීමේදී ලබා දෙන තොරතුරු සමඟ ගිණුමක් සාදනු ලැබේ."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ප්‍රගති තීරුවේ විලාසය තෝරන්න."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "බාර්"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

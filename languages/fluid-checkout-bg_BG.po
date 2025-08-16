@@ -2518,6 +2518,14 @@ msgstr ""
 "Ще бъде създаден акаунт с информацията, предоставена на касата при "
 "завършване на поръчката."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Изберете стила на лентата за напредък."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барове"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

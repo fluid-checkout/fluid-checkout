@@ -2480,6 +2480,14 @@ msgstr ""
 "Hesab dê bi agahdariya ku di dema qedandina fermanê de di kasayê de hatî "
 "dayîn were çêkirin."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Şêwaza xêza pêşketinê hilbijêre."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

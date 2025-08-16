@@ -212,6 +212,18 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'              => __( 'Choose the style of the progress bar.', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_progress_bar_style',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'bars'         => array( 'label' => __( 'Bars', 'fluid-checkout' ) ),
+							'breadcrumbs'  => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Breadcrumbs', 'fluid-checkout' ), 'disabled' => true ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Express checkout', 'fluid-checkout' ),
 						'desc'              => __( 'Enable the express checkout section', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-express-checkout/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),

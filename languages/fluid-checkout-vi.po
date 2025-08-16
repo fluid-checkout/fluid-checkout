@@ -2448,6 +2448,14 @@ msgstr ""
 "Một tài khoản sẽ được tạo dựa trên thông tin được cung cấp khi thanh toán "
 "khi hoàn tất đơn hàng."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Chọn kiểu thanh tiến trình."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Thanh"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

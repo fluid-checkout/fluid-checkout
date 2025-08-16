@@ -2425,6 +2425,14 @@ msgid ""
 "completing the order."
 msgstr "ऑर्डर पूर्ण करताना चेकआउट करताना दिलेल्या माहितीसह एक खाते तयार केले जाईल."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "प्रोग्रेस बारची शैली निवडा."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "बार"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
