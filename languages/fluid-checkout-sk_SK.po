@@ -140,10 +140,6 @@ msgstr "Krok %1$s z %2$s"
 msgid "Change: %s"
 msgstr "Zmena: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Na základe zadaných informácií sa vytvorí konto."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Zatiaľ nevybrané."
@@ -2455,6 +2451,38 @@ msgid ""
 msgstr ""
 "Zmena viditeľnosti poľa s názvom spoločnosti v časti s fakturačnou adresou "
 "vo formulári pokladnice."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Téma Police na knihy"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Výstup sekcie krokov pri pokladni z témy Bookshelf pri použití Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Heslo účtu"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Účet bude vytvorený na základe informácií zadaných pri pokladni pri "
+"dokončovaní objednávky."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Vyberte štýl panela priebehu."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bary"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

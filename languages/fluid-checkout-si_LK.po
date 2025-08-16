@@ -138,10 +138,6 @@ msgstr "%2$s න් %1$s පියවර"
 msgid "Change: %s"
 msgstr "වෙනස් කිරීම: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "සපයන ලද තොරතුරු සමඟ ගිණුමක් සාදනු ලැබේ."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "තවම තෝරාගෙන නැහැ."
@@ -2415,6 +2411,36 @@ msgid ""
 msgstr ""
 "පිටවීමේ පෝරමයේ බිල්පත් ලිපින කොටස සඳහා සමාගම් නාම ක්ෂේත්‍රය සඳහා දෘශ්‍යතාව "
 "වෙනස් කරන්න."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "තේමා පොත් රාක්කය"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout භාවිතා කරන විට Bookshelf තේමාවෙන් පිටවීමේ පියවර කොටස "
+"ප්‍රතිදානය කරන්න."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ගිණුම් මුරපදය"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "ඇණවුම සම්පූර්ණ කිරීමේදී පිටවීමේදී ලබා දෙන තොරතුරු සමඟ ගිණුමක් සාදනු ලැබේ."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ප්‍රගති තීරුවේ විලාසය තෝරන්න."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "බාර්"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

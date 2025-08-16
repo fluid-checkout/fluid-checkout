@@ -329,10 +329,6 @@ msgstr "Zaten bir hesabınız var mı?"
 msgid "Always show"
 msgstr "Her zaman göster"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
-
 #: inc/checkout-fields.php:181
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Daire, birim, bina, kat, vb."
@@ -2627,6 +2623,38 @@ msgid ""
 msgstr ""
 "Ödeme formundaki fatura adresi bölümü için şirket adı alanının "
 "görünürlüğünü değiştirin."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Temalı Kitaplık"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout kullanırken Bookshelf temasından ödeme adımları bölümünün "
+"çıktısını alın."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Hesap şifresi"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Siparişi tamamlarken ödeme sırasında verilen bilgilerle bir hesap "
+"oluşturulacaktır."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "İlerleme çubuğunun stilini seçin."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barlar"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

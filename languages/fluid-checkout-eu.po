@@ -140,10 +140,6 @@ msgstr "%1$s/%2$s urratsa"
 msgid "Change: %s"
 msgstr "Aldaketa: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Emandako informazioarekin kontu bat sortuko da."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Oraindik hautatu gabe."
@@ -2465,6 +2461,36 @@ msgid ""
 msgstr ""
 "Aldatu ordainketa-formularioko fakturazio-helbidearen ataleko enpresaren "
 "izenaren eremuaren ikusgarritasuna."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Gaiaren liburutegia"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkout erabiltzean, Bookshelf gaiko ordainketa-urratsen atala atera."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Kontuaren pasahitza"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Eskaera osatzean ordainketa-prozesuan emandako informazioarekin kontu bat "
+"sortuko da."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Aukeratu aurrerapen-barraren estiloa."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Tabernak"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

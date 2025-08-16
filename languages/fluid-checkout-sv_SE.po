@@ -138,10 +138,6 @@ msgstr "Steg %1$s av %2$s"
 msgid "Change: %s"
 msgstr "Ändring: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Ett konto kommer att skapas med den information som anges."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Inte vald ännu."
@@ -2428,6 +2424,38 @@ msgid ""
 msgstr ""
 "Ändra synligheten för fältet med företagsnamn i avsnittet med "
 "faktureringsadress i kassablanketten."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Bokhylla"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Skriv ut avsnittet om kassans steg från Bookshelf-temat när du använder "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Lösenord för konto"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Ett konto kommer att skapas med de uppgifter som anges i kassan när "
+"beställningen slutförs."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Välj stil för förloppsindikatorn."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barer"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

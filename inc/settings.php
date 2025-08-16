@@ -21,6 +21,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	public function hooks() {
 		// Settings values
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
+		add_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
@@ -47,6 +48,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_checkout_footer_background_color'                           => null,
 			'fc_enable_checkout_progress_bar'                               => 'yes',
 			'fc_enable_checkout_sticky_progress_bar'                        => 'yes',
+			'fc_checkout_progress_bar_style'                                => 'bars',
 			'fc_enable_checkout_express_checkout'                           => 'no',
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_enable_checkout_express_checkout_ignore_required_fields'    => 'yes',
@@ -131,7 +133,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
-			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'true',
+			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
 
 			// Compatibility settings for plugins.
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
@@ -210,6 +212,17 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function set_option_lite_design_template( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_design_template' );
+	}
+
+	/**
+	 * Force the option value for progress bar style when only Lite plugin is activated.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_progress_bar_style( $pre_option, $option, $default ) {
+		return $this->get_option_default( 'fc_checkout_progress_bar_style' );
 	}
 
 	/**

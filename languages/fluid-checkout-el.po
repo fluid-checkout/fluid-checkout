@@ -329,10 +329,6 @@ msgstr "Έχετε ήδη λογαριασμό"
 msgid "Always show"
 msgstr "Πάντα να δείχνετε"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Θα δημιουργηθεί ένας λογαριασμός με τις πληροφορίες που παρέχονται."
-
 #: inc/checkout-fields.php:181
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Διαμέρισμα, μονάδα, κτίριο, όροφος κ.λπ."
@@ -2664,6 +2660,38 @@ msgid ""
 msgstr ""
 "Αλλαγή της ορατότητας του πεδίου ονόματος εταιρείας για την ενότητα "
 "διεύθυνσης χρέωσης στη φόρμα πληρωμής."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Βιβλιοθήκη με θέμα"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Εξαγωγή της ενότητας των βημάτων πληρωμής από το θέμα Bookshelf όταν "
+"χρησιμοποιείτε το Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Κωδικός πρόσβασης λογαριασμού"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Ένας λογαριασμός θα δημιουργηθεί με τις πληροφορίες που παρέχονται στο "
+"ταμείο κατά την ολοκλήρωση της παραγγελίας."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Επιλέξτε το στυλ της γραμμής προόδου."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Μπαρ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

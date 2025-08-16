@@ -138,10 +138,6 @@ msgstr "2$s のステップ %1$s"
 msgid "Change: %s"
 msgstr "変更: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "提供された情報でアカウントが作成されます。"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "まだ選ばれていない。"
@@ -2249,6 +2245,34 @@ msgid ""
 "Change visibility for the company name field for the billing address "
 "section on the checkout form."
 msgstr "チェックアウトフォームの請求先住所セクションの会社名フィールドの可視性を変更しました。"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "テーマのある本棚"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkoutを使用する場合、Bookshelfテーマからチェックアウトのステップセクションを出力します。"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "アカウントパスワード"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "アカウントは、注文完了時にチェックアウトで提供された情報で作成されます。"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "プログレスバーのスタイルを選択します。"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "バー"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

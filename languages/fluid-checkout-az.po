@@ -138,10 +138,6 @@ msgstr "%2$s addımdan %1$s"
 msgid "Change: %s"
 msgstr "Dəyişiklik: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Təqdim olunan məlumatlarla hesab yaradılacaq."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Hələ seçilməyib."
@@ -2448,6 +2444,38 @@ msgid ""
 msgstr ""
 "Ödəniş formasındakı faktura ünvanı bölməsi üçün şirkət adı sahəsinin "
 "görünməsini dəyişdirin."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Mövzu kitab rəfi"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout istifadə edərkən Bookshelf mövzusundan yoxlama addımları "
+"bölməsini çıxarın."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Hesab parolu"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Sifarişi yerinə yetirərkən ödəniş zamanı verilən məlumatlarla hesab "
+"yaradılacaq."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Tərəqqi çubuğunun üslubunu seçin."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barlar"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

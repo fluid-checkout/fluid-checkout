@@ -144,10 +144,6 @@ msgstr "%1$s. lépés a %2$s-ből."
 msgid "Change: %s"
 msgstr "Változás: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "A megadott adatokkal létrejön egy fiók."
-
 #: inc/checkout-steps.php:3918,
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -2573,6 +2569,38 @@ msgid ""
 msgstr ""
 "A cégnév mező láthatóságának módosítása a számlázási cím szakaszban a "
 "pénztár űrlapon."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Téma könyvespolc"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"A Bookshelf téma pénztárlépések szakaszának kimenete a Fluid Checkout "
+"használatakor."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Fiók jelszó"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"A fiókot a pénztárnál megadott adatokkal hozzuk létre a megrendelés "
+"befejezésekor."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Válassza ki az előrehaladási sáv stílusát."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bárok"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

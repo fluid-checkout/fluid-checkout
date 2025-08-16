@@ -138,10 +138,6 @@ msgstr "%2$s లో %1$s దశ"
 msgid "Change: %s"
 msgstr "మార్పు: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "అందించిన సమాచారంతో ఒక ఖాతా సృష్టించబడుతుంది."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ఇంకా ఎంపిక కాలేదు."
@@ -2454,6 +2450,38 @@ msgid ""
 msgstr ""
 "చెక్అవుట్ ఫారమ్‌లోని బిల్లింగ్ చిరునామా విభాగం కోసం కంపెనీ పేరు ఫీల్డ్ కోసం "
 "దృశ్యమానతను మార్చండి."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "థీమ్ బుక్షెల్ఫ్"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు బుక్షెల్ఫ్ థీమ్ నుండి చెక్అవుట్ "
+"స్టెప్స్ విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ఖాతా పాస్‌వర్డ్"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ఆర్డర్ పూర్తి చేసేటప్పుడు చెక్అవుట్ వద్ద అందించిన సమాచారంతో ఒక ఖాతా "
+"సృష్టించబడుతుంది."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ప్రోగ్రెస్ బార్ యొక్క శైలిని ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "బార్లు"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -139,10 +139,6 @@ msgstr "Korak %1$s od %2$s"
 msgid "Change: %s"
 msgstr "Promjena: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Račun će biti kreiran s navedenim podacima."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Još nije odabrano."
@@ -2443,6 +2439,38 @@ msgid ""
 msgstr ""
 "Promijenite vidljivost polja naziva tvrtke za odjeljak adrese za naplatu na "
 "obrascu za naplatu."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematska polica za knjige"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Ispišite odjeljak s koracima naplate iz teme Bookshelf kada koristite Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Lozinka računa"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Prilikom narudžbe, s podacima navedenima prilikom plaćanja, bit će kreiran "
+"račun."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Odaberite stil trake napretka."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barovi"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

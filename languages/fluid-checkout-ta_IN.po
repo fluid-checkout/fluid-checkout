@@ -138,10 +138,6 @@ msgstr "%2$s இல் %1$s படி"
 msgid "Change: %s"
 msgstr "மாற்றம்: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "வழங்கப்பட்ட தகவலுடன் ஒரு கணக்கு உருவாக்கப்படும்."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "இன்னும் தேர்ந்தெடுக்கப்படவில்லை."
@@ -2497,6 +2493,38 @@ msgid ""
 msgstr ""
 "செக்அவுட் படிவத்தில் பில்லிங் முகவரிப் பகுதிக்கான நிறுவனத்தின் பெயர் "
 "புலத்திற்கான தெரிவுநிலையை மாற்றவும்."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "தீம் புத்தக அலமாரி"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ஐப் பயன்படுத்தும் போது Bookshelf கருப்பொருளிலிருந்து "
+"Checkout படிகள் பகுதியை வெளியிடவும்."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "கணக்கு கடவுச்சொல்"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ஆர்டரை முடிக்கும்போது செக் அவுட்டில் வழங்கப்படும் தகவலுடன் ஒரு கணக்கு "
+"உருவாக்கப்படும்."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "முன்னேற்றப் பட்டியின் பாணியைத் தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "பார்கள்"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

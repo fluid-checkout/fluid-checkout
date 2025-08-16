@@ -138,10 +138,6 @@ msgstr "2$s의 %1$s 단계"
 msgid "Change: %s"
 msgstr "변경: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "제공한 정보로 계정이 생성됩니다."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "아직 선택하지 않았습니다."
@@ -2232,6 +2228,34 @@ msgid ""
 "Change visibility for the company name field for the billing address "
 "section on the checkout form."
 msgstr "결제 양식의 청구 주소 섹션에서 회사 이름 필드에 대한 표시 여부를 변경합니다."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "테마 책장"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "유동 결제를 사용하는 경우 책장 테마에서 결제 단계 섹션을 출력합니다."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "계정 비밀번호"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "주문 완료 시 결제 시 제공한 정보로 계정이 생성됩니다."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "진행률 표시줄의 스타일을 선택합니다."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "바"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
