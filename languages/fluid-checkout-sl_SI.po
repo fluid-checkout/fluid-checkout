@@ -2470,6 +2470,14 @@ msgstr ""
 "Račun bo ustvarjen z informacijami, ki jih boste navedli pri blagajni, ko "
 "boste zaključili naročilo."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Izberite slog vrstice napredka."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bari"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2469,6 +2469,14 @@ msgstr ""
 "Sifarişi yerinə yetirərkən ödəniş zamanı verilən məlumatlarla hesab "
 "yaradılacaq."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Tərəqqi çubuğunun üslubunu seçin."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barlar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

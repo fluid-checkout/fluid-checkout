@@ -2447,6 +2447,14 @@ msgstr ""
 "Aðgangur verður stofnaður með upplýsingunum sem gefnar voru upp við "
 "afgreiðslu pöntunar."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Veldu stíl framvindustikunnar."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barir"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

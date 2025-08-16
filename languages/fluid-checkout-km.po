@@ -2458,6 +2458,14 @@ msgstr ""
 "គណនីមួយនឹងត្រូវបានបង្កើតជាមួយនឹងព័ត៌មានដែលបានផ្តល់ឱ្យនៅពេលចេញលុយនៅពេលបំពេញកា"
 "របញ្ជាទិញ។"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ជ្រើសរើសរចនាប័ទ្មនៃរបារវឌ្ឍនភាព។"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "បារ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

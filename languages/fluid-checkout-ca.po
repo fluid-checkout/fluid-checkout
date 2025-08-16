@@ -2521,6 +2521,14 @@ msgstr ""
 "Es crearà un compte amb la informació proporcionada al moment de la compra "
 "en completar la comanda."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Trieu l&#39;estil de la barra de progrés."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

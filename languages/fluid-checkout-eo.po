@@ -2431,6 +2431,14 @@ msgstr ""
 "Konto estos kreita kun la informoj donitaj ĉe la kaso kiam vi kompletigas "
 "la mendon."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Elektu la stilon de la progresbreto."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Trinkejoj"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2475,6 +2475,14 @@ msgstr ""
 "ఆర్డర్ పూర్తి చేసేటప్పుడు చెక్అవుట్ వద్ద అందించిన సమాచారంతో ఒక ఖాతా "
 "సృష్టించబడుతుంది."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ప్రోగ్రెస్ బార్ యొక్క శైలిని ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "బార్లు"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

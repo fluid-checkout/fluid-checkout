@@ -2445,6 +2445,14 @@ msgstr ""
 "অৰ্ডাৰ সম্পূৰ্ণ কৰাৰ সময়ত চেকআউটত দিয়া তথ্যৰ সৈতে এটা একাউণ্ট সৃষ্টি কৰা "
 "হ’ব।"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "অগ্ৰগতি বাৰৰ শৈলী বাছক।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "বাৰ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

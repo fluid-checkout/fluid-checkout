@@ -2484,6 +2484,14 @@ msgstr ""
 "Akaunti itaundwa ikiwa na maelezo yaliyotolewa wakati wa kulipa wakati wa "
 "kukamilisha agizo."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Chagua mtindo wa upau wa maendeleo."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Baa"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

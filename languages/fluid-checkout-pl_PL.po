@@ -2651,6 +2651,14 @@ msgstr ""
 "Konto zostanie utworzone na podstawie informacji podanych przy realizacji "
 "zamówienia."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Wybierz styl paska postępu."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bary"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

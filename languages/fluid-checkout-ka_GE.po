@@ -2477,6 +2477,14 @@ msgstr ""
 "შეკვეთის დასრულებისას შეკვეთის გაფორმებისას მოწოდებული ინფორმაციით "
 "შეიქმნება ანგარიში."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "აირჩიეთ პროგრესის ზოლის სტილი."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ბარები"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

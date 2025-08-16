@@ -2449,6 +2449,14 @@ msgstr ""
 "Налог ће бити креиран са подацима који су наведени приликом плаћања, након "
 "завршетка поруџбине."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Изаберите стил траке напретка."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барови"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

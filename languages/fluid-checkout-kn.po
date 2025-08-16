@@ -2463,6 +2463,14 @@ msgstr ""
 "ಆರ್ಡರ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸುವಾಗ ಚೆಕ್ಔಟ್‌ನಲ್ಲಿ ಒದಗಿಸಲಾದ ಮಾಹಿತಿಯೊಂದಿಗೆ ಖಾತೆಯನ್ನು "
 "ರಚಿಸಲಾಗುತ್ತದೆ."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ಪ್ರಗತಿ ಪಟ್ಟಿಯ ಶೈಲಿಯನ್ನು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ಬಾರ್‌ಗಳು"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

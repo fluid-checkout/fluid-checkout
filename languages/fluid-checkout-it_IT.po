@@ -2704,6 +2704,14 @@ msgstr ""
 "Verrà creato un account con le informazioni fornite al momento del "
 "checkout, al momento del completamento dell'ordine."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Scegliere lo stile della barra di avanzamento."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

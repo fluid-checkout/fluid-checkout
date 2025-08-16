@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Support for new progress bar style options.
 * Added: Compatibility with theme Avanam.
 * Added: Compatibility with theme Bookshelf.
 * Added: Compatibility with theme Cartzilla.
@@ -374,6 +375,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.
 * Improved: Expose more methods to interact with the enhanced select fields component `TomSelect`.
 * Improved: Account creation field labels and notice wording, and also show notice in the account creation fields section.
+* Improved: Add hook `fc_checkout_place_order_terms` to allow developers to move the terms checkbox and related terms content section.
 * Fixed: Compatibility with theme Woodmart. Fix checkout steps section style when using distraction free header and footer.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix issue on checkout page when checkout form was added as a block.
 * Fixed: Change selected value on enhanced dropdown fields (TomSelect) when the `change` event is triggered with jQuery events.

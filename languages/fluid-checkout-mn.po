@@ -2475,6 +2475,14 @@ msgid ""
 "completing the order."
 msgstr "Захиалгыг бөглөхдөө тооцоо хийх үед өгсөн мэдээллээр данс үүсгэнэ."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Явцын талбарын хэв маягийг сонгоно уу."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Баар"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

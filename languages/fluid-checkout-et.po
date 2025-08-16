@@ -2431,6 +2431,14 @@ msgid ""
 "completing the order."
 msgstr "Konto luuakse tellimuse täitmisel kassas esitatud andmete alusel."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Valige eduriba stiil."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Baarid"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

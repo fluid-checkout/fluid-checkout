@@ -2648,6 +2648,14 @@ msgstr ""
 "Er wordt een account aangemaakt met de informatie die bij het afrekenen van "
 "de bestelling wordt verstrekt."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Kies de stijl van de voortgangsbalk."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

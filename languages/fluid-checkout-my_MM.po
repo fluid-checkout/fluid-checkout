@@ -2535,6 +2535,14 @@ msgstr ""
 "မှာယူမှုကို ပြီးမြောက်သည့်အခါ ငွေရှင်းချိန်တွင် ပေးထားသည့် အချက်အလက်ဖြင့် "
 "အကောင့်တစ်ခု ဖန်တီးပါမည်။"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "တိုးတက်မှုဘား၏စတိုင်ကိုရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "အရက်ဆိုင်"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

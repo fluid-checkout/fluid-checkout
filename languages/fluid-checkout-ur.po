@@ -2444,6 +2444,14 @@ msgstr ""
 "آرڈر مکمل کرتے وقت چیک آؤٹ پر فراہم کردہ معلومات کے ساتھ ایک اکاؤنٹ بنایا "
 "جائے گا۔"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "پروگریس بار کا انداز منتخب کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "بارز"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

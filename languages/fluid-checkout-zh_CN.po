@@ -2211,6 +2211,14 @@ msgid ""
 "completing the order."
 msgstr "在完成订单时，将使用结账时提供的信息创建一个账户。"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "选择进度条的样式。"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "酒吧"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
