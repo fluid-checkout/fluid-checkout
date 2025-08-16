@@ -142,8 +142,8 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		// Bail if option to force wide layout is not enabled
 		if ( ! $this->is_force_wide_layout_enabled() ) { return $value; }
 
-		// Bail if not on checkout page or account page
-		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() && ! is_account_page() ) { return $value; }
+		// Bail if not on checkout page, order received page, or account page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() && ! is_order_received_page() && ! is_view_order_page() && ! is_account_page() ) { return $value; }
 
 		// Otherwise, force "no sidebar" layout from theme
 		return 'no_sidebar';
