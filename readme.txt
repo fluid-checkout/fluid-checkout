@@ -360,6 +360,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Avanam.
 * Added: Compatibility with theme Bookshelf.
 * Added: Compatibility with theme Cartzilla.
+* Added: Compatibility with theme Ireca.
 * Added: Compatibility with theme Neighborhood.
 * Added: Compatibility with theme Sahel.
 * Added: Compatibility with theme Seese.
