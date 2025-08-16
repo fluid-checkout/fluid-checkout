@@ -242,6 +242,11 @@ jQuery( function( $ ) {
 				$parent.show().find( '.select2-container' ).remove();
 				$statebox.replaceWith( $newstate );
 
+				// CHANGE: Maybe destroy TomSelect field
+				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
+					$statebox[ 0 ].tomselect.destroy();
+				}
+
 				// CHANGE: Add class for current type of of the state field
 				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--text' );
 
