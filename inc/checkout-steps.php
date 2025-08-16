@@ -5434,7 +5434,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( '1' === $is_billing_same_as_shipping_previous || true === $is_billing_same_as_shipping_checked ) { return $posted_data; }
 
 		// Bail if forced to skip
-		if ( apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) { return $posted_data; }
+		if ( apply_filters( 'fc_save_new_address_data_billing_skip_update', false, $posted_data ) ) { return $posted_data; }
 
 		// Get list of billing fields to copy from shipping fields
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
@@ -5598,7 +5598,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( '1' === $is_shipping_same_as_billing_previous || true === $is_shipping_same_as_billing_checked ) { return $posted_data; }
 
 		// Bail if forced to skip
-		if ( apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) { return $posted_data; }
+		if ( apply_filters( 'fc_save_new_address_data_shipping_skip_update', false, $posted_data ) ) { return $posted_data; }
 
 		// Get list of shipping fields to copy from billing fields
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
@@ -6857,6 +6857,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *            might change during the lifecycle of the request process.
 	 */
 	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
+		// Bail if forced to skip
+		if ( apply_filters( 'fc_skip_change_customer_address_field_value_from_checkout_data', false, $value, $customer ) ) { return $value; }
+
 		// Get name of the current filter hook running this function
 		$hook_name = current_filter();
 
