@@ -8,6 +8,7 @@ body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-
 
 body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login a {
 	text-decoration: underline;
+
 	&:hover {
 		text-decoration: none;
 	}
