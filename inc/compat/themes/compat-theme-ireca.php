@@ -39,9 +39,9 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 		// Add integration settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
-		// Force no sidebar layout on FluidCheckout pages (only if option is enabled)
-		add_filter( 'theme_mod_main_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
-		add_filter( 'theme_mod_woo_layout', array( $this, 'change_theme_option_to_no_sidebar' ), 100 );
+		// Page layout
+		add_filter( 'theme_mod_main_layout', array( $this, 'maybe_force_no_sidebar_page_layout' ), 100 );
+		add_filter( 'theme_mod_woo_layout', array( $this, 'maybe_force_no_sidebar_page_layout' ), 100 );
 	}
 
 
@@ -121,61 +121,42 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 
 
 	/**
-	 * Change any layout theme option to no sidebar only on FluidCheckout pages.
-	 * 
-	 * @param string $value The current theme mod value.
-	 * @return string The forced layout value or original value.
-	 */
-	public function change_theme_option_to_no_sidebar( $value ) {
-		// Only force no sidebar if the integration option is enabled
-		if ( ! $this->is_force_no_sidebar_enabled() ) {
-			return $value;
-		}
-
-		// Only force no sidebar on FluidCheckout-governed pages
-		if ( $this->is_fluidcheckout_page() ) {
-			return 'no_sidebar';
-		}
-		
-		// Return original value on other pages
-		return $value;
-	}
-
-
-
-	/**
-	 * Check if current page is governed by FluidCheckout.
-	 * 
-	 * @return bool True if on a FluidCheckout page.
-	 */
-	public function is_fluidcheckout_page() {
-		// For Lite: Check checkout and account pages
-		return (
-			// Checkout page
-			( function_exists( 'is_checkout' ) && is_checkout() ) ||
-			// Account pages (includes edit address, orders, etc.)
-			( function_exists( 'is_account_page' ) && is_account_page() )
-		);
-	}
-
-
-
-	/**
 	 * Check if the force no sidebar option is enabled.
 	 * 
 	 * @return bool True if the option is enabled.
 	 */
-	public function is_force_no_sidebar_enabled() {
-		return FluidCheckout_Settings::instance()->get_option( 'fc_integrations_ireca_force_no_sidebar' ) === 'yes';
+	public function is_force_wide_layout_enabled() {
+		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_integrations_ireca_force_no_sidebar' );
 	}
 
 
 
 	/**
-	 * Add integration settings for Ireca theme.
+	 * Maybe force "no sidebar" layout on WooCommerce pages.
 	 * 
-	 * @param array $settings The existing integration settings.
-	 * @return array The updated integration settings.
+	 * @param   string  $value  The current theme mod value.
+	 *
+	 * @return  string          The forced layout value or original value.
+	 */
+	public function maybe_force_no_sidebar_page_layout( $value ) {
+		// Bail if option to force wide layout is not enabled
+		if ( ! $this->is_force_wide_layout_enabled() ) { return $value; }
+
+		// Bail if not on checkout page or account page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() && ! is_account_page() ) { return $value; }
+
+		// Otherwise, force "no sidebar" layout from theme
+		return 'no_sidebar';
+	}
+
+
+
+	/**
+	 * Add integration settings for the theme.
+	 * 
+	 * @param   array  $settings  The existing integration settings.
+	 *
+	 * @return  array             The updated integration settings.
 	 */
 	public function add_settings( $settings ) {
 		// Add new settings
@@ -187,8 +168,9 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 			),
 
 			array(
-				'title'           => __( 'Force No Sidebar', 'fluid-checkout' ),
-				'desc'            => __( 'Force no sidebar layout on optimized FluidCheckout pages to ensure full-width content.', 'fluid-checkout' ),
+				'title'           => __( 'WooCommerce page layout', 'fluid-checkout' ),
+				'desc'            => __( 'Force wide layout on WooCommerce pages', 'fluid-checkout' ),
+				'desc_tip'        => __( 'This ensures the content section is not too narrow on WooCommerce pages including checkout, cart, order received, order pay and account pages.', 'fluid-checkout' ),
 				'id'              => 'fc_integrations_ireca_force_no_sidebar',
 				'type'            => 'checkbox',
 				'default'         => 'yes',
@@ -209,16 +191,12 @@ class FluidCheckout_ThemeCompat_Ireca extends FluidCheckout {
 
 
 	/**
-	 * Dequeue Theme Select2 files.
+	 * Dequeue theme's Select2 files.
 	 */
 	public function dequeue_select2_files() {
-		// Dequeue Theme Select2 files if they are enqueued by the theme
-		if ( wp_style_is( 'select2_ireca', 'enqueued' ) ) {
-			wp_dequeue_style( 'select2_ireca' );
-		}
-		if ( wp_script_is( 'select2_ireca', 'enqueued' ) ) {
-			wp_dequeue_script( 'select2_ireca' );
-		}
+		// Dequeue theme's Select2 files
+		wp_dequeue_style( 'select2_ireca' );
+		wp_dequeue_script( 'select2_ireca' );
 	}
 
 }
