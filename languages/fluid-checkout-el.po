@@ -2693,6 +2693,27 @@ msgstr "Επιλέξτε το στυλ της γραμμής προόδου."
 msgid "Bars"
 msgstr "Μπαρ"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Θέμα Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Διάταξη σελίδας WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Επιβολή ευρείας διάταξης στις σελίδες του WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Αυτό διασφαλίζει ότι η ενότητα περιεχομένου δεν είναι πολύ στενή στις "
+"σελίδες του WooCommerce, συμπεριλαμβανομένων των σελίδων checkout, καλάθι, "
+"παραγγελία που παραλήφθηκε, πληρωμή παραγγελίας και λογαριασμός."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

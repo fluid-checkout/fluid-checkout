@@ -2521,6 +2521,27 @@ msgstr "പ്രോഗ്രസ് ബാറിന്റെ ശൈലി തി
 msgid "Bars"
 msgstr "ബാറുകൾ"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "തീം ഇറേക്ക"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce പേജ് ലേഔട്ട്"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce പേജുകളിൽ നിർബന്ധിത വൈഡ് ലേഔട്ട്"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ചെക്ക്ഔട്ട്, കാർട്ട്, ഓർഡർ സ്വീകരിച്ചത്, ഓർഡർ പേ, അക്കൗണ്ട് പേജുകൾ "
+"എന്നിവയുൾപ്പെടെ WooCommerce പേജുകളിൽ ഉള്ളടക്ക വിഭാഗം വളരെ ഇടുങ്ങിയതല്ലെന്ന് "
+"ഇത് ഉറപ്പാക്കുന്നു."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

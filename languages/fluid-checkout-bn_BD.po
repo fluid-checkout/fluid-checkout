@@ -2452,6 +2452,26 @@ msgstr "অগ্রগতি বারের স্টাইলটি বেছ
 msgid "Bars"
 msgstr "বার"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "থিম ইরেকা"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce পৃষ্ঠার বিন্যাস"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce পৃষ্ঠাগুলিতে জোর করে প্রশস্ত লেআউট তৈরি করুন"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"এটি নিশ্চিত করে যে WooCommerce পৃষ্ঠাগুলিতে চেকআউট, কার্ট, অর্ডার প্রাপ্তি, "
+"অর্ডার পে এবং অ্যাকাউন্ট পৃষ্ঠা সহ সামগ্রী বিভাগটি খুব সংকীর্ণ নয়।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

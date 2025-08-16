@@ -2457,6 +2457,27 @@ msgstr "Изаберите стил траке напретка."
 msgid "Bars"
 msgstr "Барови"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тема Ирека"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Распоред странице WooCommerce-а"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Наметнути широки распоред на WooCommerce страницама"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ово осигурава да одељак са садржајем није преузак на WooCommerce "
+"страницама, укључујући странице за плаћање, корпу, пријем поруџбине, "
+"плаћање поруџбине и налог."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2442,6 +2442,26 @@ msgstr "ප්‍රගති තීරුවේ විලාසය තෝරන
 msgid "Bars"
 msgstr "බාර්"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "තේමාව ඉරේකා"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce පිටු පිරිසැලසුම"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce පිටුවල පුළුල් පිරිසැලසුම බලහත්කාරයෙන් සකසන්න"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"මෙමගින් WooCommerce පිටුවල අන්තර්ගත කොටස ඉතා පටු නොවන බව සහතික කරයි, එනම් "
+"පිටවීම, කරත්තය, ලැබුණු ඇණවුම, ඇණවුම් ගෙවීම සහ ගිණුම් පිටු ය."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

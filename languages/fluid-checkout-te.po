@@ -2483,6 +2483,26 @@ msgstr "ప్రోగ్రెస్ బార్ యొక్క శైలి
 msgid "Bars"
 msgstr "బార్లు"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "థీమ్ ఇరేకా"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce పేజీ లేఅవుట్"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce పేజీలలో ఫోర్స్ వైడ్ లేఅవుట్"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ఇది WooCommerce పేజీలలో చెక్అవుట్, కార్ట్, ఆర్డర్ రిసీవ్డ్, ఆర్డర్ పే మరియు "
+"అకౌంట్ పేజీలతో సహా కంటెంట్ విభాగం చాలా ఇరుకైనది కాదని నిర్ధారిస్తుంది."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

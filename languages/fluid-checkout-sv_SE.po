@@ -2457,6 +2457,27 @@ msgstr "Välj stil för förloppsindikatorn."
 msgid "Bars"
 msgstr "Barer"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce sidlayout"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Tvinga bred layout på WooCommerce-sidor"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Detta säkerställer att innehållssektionen inte är för smal på "
+"WooCommerce-sidor, inklusive kassa, kundvagn, mottagen order, "
+"orderbetalning och kontosidor."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

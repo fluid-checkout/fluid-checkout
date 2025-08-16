@@ -2692,6 +2692,27 @@ msgstr "Wählen Sie den Stil des Fortschrittsbalkens."
 msgid "Bars"
 msgstr "Bars"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Thema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce Seitenlayout"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Breites Layout auf WooCommerce-Seiten erzwingen"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Dadurch wird sichergestellt, dass der Inhaltsbereich auf WooCommerce-Seiten "
+"wie Kasse, Einkaufswagen, Bestellungseingang, Bestellungsbezahlung und "
+"Kontoseiten nicht zu eng ist."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

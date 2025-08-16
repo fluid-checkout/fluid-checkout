@@ -2495,6 +2495,27 @@ msgstr "Выберыце стыль індыкатара прагрэсу."
 msgid "Bars"
 msgstr "Бары"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тэма Ірэка"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Макет старонкі WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Прымусовае шырокае размяшчэнне на старонках WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Гэта гарантуе, што раздзел зместу на старонках WooCommerce, уключаючы "
+"афармленне замовы, кошык, атрыманне замовы, аплату замовы і старонкі "
+"ўліковага запісу, не будзе занадта вузкім."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

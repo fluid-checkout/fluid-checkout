@@ -2477,6 +2477,27 @@ msgstr "Орындалу жолағы стилін таңдаңыз."
 msgid "Bars"
 msgstr "Барлар"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Ireca тақырыбы"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce бетінің орналасуы"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce беттерінде кең орналасуды мәжбүрлеу"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Бұл WooCommerce беттерінде мазмұн бөлімінің тым тар болмауын қамтамасыз "
+"етеді, соның ішінде төлем, арба, алынған тапсырыс, тапсырыс төлеу және "
+"есептік жазба беттері."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

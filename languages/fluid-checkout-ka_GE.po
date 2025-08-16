@@ -2485,6 +2485,27 @@ msgstr "აირჩიეთ პროგრესის ზოლის სტ
 msgid "Bars"
 msgstr "ბარები"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "თემა ირეკა"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce გვერდის განლაგება"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce გვერდებზე ფართო განლაგების იძულებით გამოყენება"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ეს უზრუნველყოფს, რომ კონტენტის განყოფილება არ იყოს ძალიან ვიწრო WooCommerce "
+"გვერდებზე, მათ შორის გადახდის, კალათის, მიღებული შეკვეთის, შეკვეთის "
+"გადახდის და ანგარიშის გვერდებზე."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

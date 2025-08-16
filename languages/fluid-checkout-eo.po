@@ -2439,6 +2439,27 @@ msgstr "Elektu la stilon de la progresbreto."
 msgid "Bars"
 msgstr "Trinkejoj"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Temo Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Paĝaranĝo de WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Devigi larĝan aranĝon sur WooCommerce-paĝoj"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ĉi tio certigas, ke la enhavsekcio ne estas tro mallarĝa sur "
+"WooCommerce-paĝoj, inkluzive de kaso, ĉaro, mendo ricevita, mendopago kaj "
+"kontopaĝoj."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

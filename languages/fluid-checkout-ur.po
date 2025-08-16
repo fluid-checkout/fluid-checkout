@@ -2452,6 +2452,27 @@ msgstr "پروگریس بار کا انداز منتخب کریں۔"
 msgid "Bars"
 msgstr "بارز"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "تھیم Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce صفحہ لے آؤٹ"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce صفحات پر وسیع لے آؤٹ کو زبردستی کریں۔"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"یہ یقینی بناتا ہے کہ WooCommerce کے صفحات پر مواد کا سیکشن زیادہ تنگ نہیں "
+"ہے جس میں چیک آؤٹ، کارٹ، آرڈر موصول، آرڈر کی ادائیگی اور اکاؤنٹ کے صفحات "
+"شامل ہیں۔"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2516,6 +2516,27 @@ msgstr "Alegeți stilul barei de progres."
 msgid "Bars"
 msgstr "Bare"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Aspectul paginii WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Forțați aspectul larg pe paginile WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Acest lucru asigură că secțiunea de conținut nu este prea îngustă pe "
+"paginile WooCommerce, inclusiv paginile de checkout, coș, comandă primită, "
+"plată comandă și cont."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

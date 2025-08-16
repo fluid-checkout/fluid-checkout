@@ -2443,6 +2443,26 @@ msgstr "ترقي واري بار جو انداز چونڊيو."
 msgid "Bars"
 msgstr "بار"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ٿيم آئيريڪا"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce صفحي جو لي آئوٽ"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce صفحن تي وسيع لي آئوٽ کي زور ڏيو"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"هي يقيني بڻائي ٿو ته مواد جو سيڪشن WooCommerce صفحن تي تمام تنگ نه آهي جنهن "
+"۾ چيڪ آئوٽ، ڪارٽ، آرڊر وصول ٿيل، آرڊر جي ادائيگي ۽ اڪائونٽ صفحا شامل آهن."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2456,6 +2456,27 @@ msgstr "Chọn kiểu thanh tiến trình."
 msgid "Bars"
 msgstr "Thanh"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Chủ đề Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Bố cục trang WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Buộc bố cục rộng trên các trang WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Điều này đảm bảo phần nội dung không quá hẹp trên các trang WooCommerce bao "
+"gồm trang thanh toán, giỏ hàng, đơn hàng đã nhận, thanh toán đơn hàng và "
+"trang tài khoản."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

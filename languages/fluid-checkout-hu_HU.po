@@ -2602,6 +2602,27 @@ msgstr "Válassza ki az előrehaladási sáv stílusát."
 msgid "Bars"
 msgstr "Bárok"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Téma Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce oldal elrendezése"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Széles elrendezés kikényszerítése a WooCommerce oldalakon"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ez biztosítja, hogy a tartalmi rész ne legyen túl szűk a WooCommerce "
+"oldalakon, beleértve a pénztár, a kosár, a kapott megrendelés, a "
+"megrendelés kifizetése és a fiók oldalakat."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

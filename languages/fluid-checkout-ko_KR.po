@@ -2257,6 +2257,26 @@ msgstr "진행률 표시줄의 스타일을 선택합니다."
 msgid "Bars"
 msgstr "바"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "테마 이레카"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce 페이지 레이아웃"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce 페이지에서 와이드 레이아웃 강제 적용"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"이렇게 하면 결제, 카트, 주문 접수, 주문 결제 및 계정 페이지를 포함한 WooCommerce 페이지의 콘텐츠 섹션이 너무 좁아지지 "
+"않습니다."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

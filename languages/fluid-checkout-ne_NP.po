@@ -2442,6 +2442,26 @@ msgstr "प्रगति पट्टीको शैली छनौट ग�
 msgid "Bars"
 msgstr "बारहरू"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "थिम इरेका"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce पृष्ठ लेआउट"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce पृष्ठहरूमा फराकिलो लेआउट बल गर्नुहोस्"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"यसले चेकआउट, कार्ट, अर्डर प्राप्त, अर्डर भुक्तानी र खाता पृष्ठहरू सहित "
+"WooCommerce पृष्ठहरूमा सामग्री खण्ड धेरै साँघुरो नभएको सुनिश्चित गर्दछ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

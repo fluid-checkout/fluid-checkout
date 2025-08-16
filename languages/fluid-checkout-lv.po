@@ -2459,6 +2459,27 @@ msgstr "Izvēlieties progresa joslas stilu."
 msgid "Bars"
 msgstr "Bāri"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tēma Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce lapas izkārtojums"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Izspiest plašu izkārtojumu WooCommerce lapās"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Tas nodrošina, ka satura sadaļa nav pārāk šaura WooCommerce lapās, tostarp "
+"izrakstīšanās, grozā, saņemtā pasūtījuma, pasūtījuma apmaksas un konta "
+"lapās."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

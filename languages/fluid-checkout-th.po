@@ -2441,6 +2441,26 @@ msgstr "เลือกสไตล์ของแถบความคืบห
 msgid "Bars"
 msgstr "บาร์"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ธีมไอเรก้า"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "เค้าโครงหน้า WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "บังคับใช้เลย์เอาต์กว้างบนหน้า WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"วิธีนี้จะช่วยให้แน่ใจว่าเนื้อหาในหน้า WooCommerce ไม่แคบเกินไป "
+"ซึ่งรวมถึงหน้าชำระเงิน ตะกร้าสินค้า คำสั่งซื้อที่ได้รับ การชำระเงิน และบัญชี"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

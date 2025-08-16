@@ -2466,6 +2466,26 @@ msgstr "ជ្រើសរើសរចនាប័ទ្មនៃរបារវ
 msgid "Bars"
 msgstr "បារ"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ប្រធានបទ Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "ប្លង់ទំព័រ WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "បង្ខំប្លង់ធំទូលាយនៅលើទំព័រ WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"នេះធានាថាផ្នែកមាតិកាមិនតូចចង្អៀតពេកនៅលើទំព័រ WooCommerce រួមទាំងការចេញ រទេះ "
+"ការបញ្ជាទិញដែលបានទទួល ការបញ្ជាទិញបង់ប្រាក់ និងទំព័រគណនី។"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

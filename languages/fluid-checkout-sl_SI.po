@@ -2478,6 +2478,27 @@ msgstr "Izberite slog vrstice napredka."
 msgid "Bars"
 msgstr "Bari"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireka"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Postavitev strani WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Prisilite široko postavitev na straneh WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"To zagotavlja, da vsebinski razdelek ni preozek na straneh WooCommerce, "
+"vključno s stranmi za blagajno, košarico, prejetim naročilom, plačilom "
+"naročila in računom."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

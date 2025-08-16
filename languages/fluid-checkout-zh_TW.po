@@ -2223,6 +2223,24 @@ msgstr "選擇進度條的樣式。"
 msgid "Bars"
 msgstr "酒吧"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "主題 Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce 頁面佈局"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "強制 WooCommerce 頁面上的寬佈局"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr "這可確保 WooCommerce 頁面上的內容部分不會太窄，包括結帳、購物車、收到訂單、訂單付款和帳戶頁面。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

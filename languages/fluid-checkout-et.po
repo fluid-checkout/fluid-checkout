@@ -2439,6 +2439,27 @@ msgstr "Valige eduriba stiil."
 msgid "Bars"
 msgstr "Baarid"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Teema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce lehe kujundus"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Force lai paigutus WooCommerce lehekülgedel"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"See tagab, et WooCommerce'i lehekülgedel, sealhulgas kassas, ostukorvis, "
+"saadud tellimuse, tellimuse tasumise ja konto lehekülgedel ei ole sisuosa "
+"liiga kitsas."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

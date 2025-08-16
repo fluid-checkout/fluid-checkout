@@ -2453,6 +2453,27 @@ msgstr "অগ্ৰগতি বাৰৰ শৈলী বাছক।"
 msgid "Bars"
 msgstr "বাৰ"
 
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "থিম ইৰেকা"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce পৃষ্ঠা বিন্যাস"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce পৃষ্ঠাসমূহত বহল বিন্যাস বলবৎ কৰক"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ইয়াৰ দ্বাৰা নিশ্চিত কৰা হয় যে চেকআউট, কাৰ্ট, লাভ কৰা অৰ্ডাৰ, অৰ্ডাৰ পে "
+"আৰু একাউণ্ট পৃষ্ঠাসমূহকে ধৰি WooCommerce পৃষ্ঠাসমূহত বিষয়বস্তুৰ অংশটো অতি "
+"সংকীৰ্ণ নহয়।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
