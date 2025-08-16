@@ -365,6 +365,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with theme Seese.
 * Added: Compatibility with theme Suki.
 * Added: Compatibility with plugin ELEX EasyPost Shipping.
+* Added: Compatibility with plugin FooEvents for WooCommerce.
 * Added: Compatibility with plugin TemplateMela Core.
 * Added: Compatibility with plugin TemplateMela Autorapid.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
