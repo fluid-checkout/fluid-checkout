@@ -2,9 +2,9 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Advanced Flat Rate Shipping For WooCommerce Premium (by Dotstore).
+ * Compatibility with plugin: Flat Rate Shipping Method for WooCommerce (by Dotstore).
  */
-class FluidCheckout_AdvancedFlatRateShippingForWooCommercePremium extends FluidCheckout {
+class FluidCheckout_WooExtraFlatRate extends FluidCheckout {
 
 	/**
 	 * Class name for the plugin which this compatibility class is related to.
@@ -115,7 +115,7 @@ class FluidCheckout_AdvancedFlatRateShippingForWooCommercePremium extends FluidC
 
 
 	/**
-	 * Maybe add tooltip icon to shipping method label.
+	 * Maybe Add tooltip icon to shipping method label.
 	 *
 	 * @param  string  $label   The shipping method label.
 	 * @param  object  $method  The shipping method object.
@@ -133,24 +133,10 @@ class FluidCheckout_AdvancedFlatRateShippingForWooCommercePremium extends FluidC
 		// Initialize variable
 		$tooltip = '';
 
-		// The plugin's standard tooltip function, `afrsm_add_tooltip_and_subtitle_callback`, does not work for "forceall" method
-		// because the plugin adds the tooltip via the `cart-shipping.php` template override.
-		// Therefore, we need to reconstruct the tooltip here.
-		if ( false !== strpos( $method->id, 'forceall' ) ) {
-			// Get method label
-			$forceall_label = FluidCheckout_Settings::instance()->get_option( 'forceall_label' , __( 'Combine Shipping', 'advanced-flat-rate-shipping-for-woocommerce' ) );
-
-			// Get tooltip HTML from the plugin
-			$method_data = $this->public_class_object->afrsm_pro_forceall_label_for_cart__premium_only( '', '', $method, $forceall_label );
-			$tooltip = $method_data[ 'tool_tip_html' ];
-		}
-		// Otherwise, use general tooltip method from the plugin
-		else {
-			// Get tooltip HTML from the plugin
-			ob_start();
-			$this->public_class_object->afrsm_add_tooltip_and_subtitle_callback( $method );
-			$tooltip = ob_get_clean();
-		}
+		// Get tooltip HTML from the plugin
+		ob_start();
+		$this->public_class_object->afrsm_add_tooltip_and_subtitle_callback( $method );
+		$tooltip = ob_get_clean();
 
 		// Insert tooltip before closing `span` tag
 		if ( ! empty( $tooltip ) ) {
@@ -162,4 +148,4 @@ class FluidCheckout_AdvancedFlatRateShippingForWooCommercePremium extends FluidC
 
 }
 
-FluidCheckout_AdvancedFlatRateShippingForWooCommercePremium::instance();
+FluidCheckout_WooExtraFlatRate::instance();
