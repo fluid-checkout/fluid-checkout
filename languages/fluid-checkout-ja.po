@@ -2266,6 +2266,34 @@ msgid ""
 "completing the order."
 msgstr "アカウントは、注文完了時にチェックアウトで提供された情報で作成されます。"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "プログレスバーのスタイルを選択します。"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "バー"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "テーマ イレカ"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerceページレイアウト"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerceページでワイドレイアウトを強制する"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"これにより、チェックアウト、カート、注文受付、注文支払い、アカウントページなどのWooCommerceページでコンテンツセクションが狭くなりすぎないよう"
+"にします。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

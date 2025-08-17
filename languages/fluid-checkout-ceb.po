@@ -2517,6 +2517,35 @@ msgstr ""
 "Ang usa ka account pagabuhaton uban sa impormasyon nga gihatag sa checkout "
 "sa diha nga ang pagkompleto sa order."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pilia ang estilo sa progress bar."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Mga bar"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema nga Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Layout sa panid sa WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Puwersa ang lapad nga layout sa mga panid sa WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Gisiguro niini nga ang seksyon sa sulud dili kaayo pig-ot sa mga panid sa "
+"WooCommerce lakip ang pag-checkout, cart, nadawat nga order, bayad sa order "
+"ug mga panid sa account."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

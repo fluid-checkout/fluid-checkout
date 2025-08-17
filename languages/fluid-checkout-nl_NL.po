@@ -2648,6 +2648,35 @@ msgstr ""
 "Er wordt een account aangemaakt met de informatie die bij het afrekenen van "
 "de bestelling wordt verstrekt."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Kies de stijl van de voortgangsbalk."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Thema Irak"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce pagina-indeling"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Brede lay-out afdwingen op WooCommerce-pagina's"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Dit zorgt ervoor dat het inhoudsgedeelte niet te smal is op "
+"WooCommerce-pagina's, waaronder pagina's voor afrekenen, winkelwagentje, "
+"ontvangen bestelling, betalen en account."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

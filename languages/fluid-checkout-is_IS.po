@@ -2447,6 +2447,35 @@ msgstr ""
 "Aðgangur verður stofnaður með upplýsingunum sem gefnar voru upp við "
 "afgreiðslu pöntunar."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Veldu stíl framvindustikunnar."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barir"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Þema Íraks"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce síðuuppsetning"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Þvinga fram breitt útlit á WooCommerce síðum"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Þetta tryggir að efnishlutinn á WooCommerce síðum sé ekki of þröngur, þar á "
+"meðal síður fyrir greiðslu, körfu, mótteknar pantanir, greiðslur pantana og "
+"reikning."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

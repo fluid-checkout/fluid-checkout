@@ -32,7 +32,7 @@
 
 		progressBarSelector: '.fc-progress-bar',
 		progressBarCurrentSelector: '.fc-progress-bar__current-step',
-		progressBarItemSelector: '.fc-progress-bar__bar',
+		progressBarItemSelector: '.fc-progress-bar__step',
 
 		stepsWrapperSelector: '.fc-checkout-steps',
 		stepSelector: '.fc-checkout-step',

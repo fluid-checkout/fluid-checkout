@@ -2348,6 +2348,34 @@ msgid ""
 "completing the order."
 msgstr "ייווצר חשבון עם המידע שיסופק בעת ביצוע ההזמנה."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "בחר את סגנון סרגל ההתקדמות."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ברים"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "נושא איריקה"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "פריסת עמוד WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "כפיית פריסה רחבה בדפי WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"זה מבטיח שמדור התוכן לא יהיה צר מדי בדפי WooCommerce, כולל דפי תשלום, עגלת "
+"קניות, הזמנה שהתקבלה, תשלום עבור הזמנה ודפי חשבון."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

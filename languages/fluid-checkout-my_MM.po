@@ -2535,6 +2535,36 @@ msgstr ""
 "မှာယူမှုကို ပြီးမြောက်သည့်အခါ ငွေရှင်းချိန်တွင် ပေးထားသည့် အချက်အလက်ဖြင့် "
 "အကောင့်တစ်ခု ဖန်တီးပါမည်။"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "တိုးတက်မှုဘား၏စတိုင်ကိုရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "အရက်ဆိုင်"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Theme Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce စာမျက်နှာ အပြင်အဆင်"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce စာမျက်နှာများပေါ်တွင် ကျယ်ပြန့်သော အပြင်အဆင်ကို တွန်းအားပေးပါ။"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"၎င်းသည် ငွေရှင်းခြင်း၊ စျေးဝယ်ခြင်း၊ အမှာစာလက်ခံရရှိခြင်း၊ "
+"အော်ဒါပေးချေခြင်းနှင့် အကောင့်စာမျက်နှာများအပါအဝင် WooCommerce "
+"စာမျက်နှာများတွင် အကြောင်းအရာအပိုင်းသည် အလွန်ကျဉ်းမြောင်းခြင်းမရှိကြောင်း "
+"သေချာစေပါသည်။"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

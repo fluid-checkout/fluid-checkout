@@ -2436,6 +2436,35 @@ msgstr ""
 "ਆਰਡਰ ਪੂਰਾ ਕਰਦੇ ਸਮੇਂ ਚੈੱਕਆਉਟ &#39;ਤੇ ਦਿੱਤੀ ਗਈ ਜਾਣਕਾਰੀ ਨਾਲ ਇੱਕ ਖਾਤਾ ਬਣਾਇਆ "
 "ਜਾਵੇਗਾ।"
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ਤਰੱਕੀ ਪੱਟੀ ਦੀ ਸ਼ੈਲੀ ਚੁਣੋ।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ਬਾਰ"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ਥੀਮ ਇਰੇਕਾ"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce ਪੰਨਾ ਲੇਆਉਟ"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce ਪੰਨਿਆਂ &#39;ਤੇ ਚੌੜਾ ਲੇਆਉਟ ਮਜਬੂਰ ਕਰੋ"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ਇਹ ਯਕੀਨੀ ਬਣਾਉਂਦਾ ਹੈ ਕਿ WooCommerce ਪੰਨਿਆਂ &#39;ਤੇ ਸਮੱਗਰੀ ਭਾਗ ਬਹੁਤ ਤੰਗ ਨਾ "
+"ਹੋਵੇ ਜਿਸ ਵਿੱਚ ਚੈੱਕਆਉਟ, ਕਾਰਟ, ਆਰਡਰ ਪ੍ਰਾਪਤ, ਆਰਡਰ ਭੁਗਤਾਨ ਅਤੇ ਖਾਤਾ ਪੰਨੇ ਸ਼ਾਮਲ "
+"ਹਨ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

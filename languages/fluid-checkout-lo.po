@@ -2434,6 +2434,34 @@ msgid ""
 "completing the order."
 msgstr "ບັນຊີຈະຖືກສ້າງຂື້ນດ້ວຍຂໍ້ມູນທີ່ສະໜອງໃຫ້ໃນເວລາຈ່າຍເງິນໃນເວລາເຮັດການສັ່ງຊື້."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ເລືອກຮູບແບບຂອງແຖບຄວາມຄືບຫນ້າ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ບາ"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ຫົວຂໍ້ Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "ຮູບແບບຫນ້າ WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "ບັງຄັບຮູບແບບກວ້າງໃນຫນ້າ WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ນີ້ຮັບປະກັນວ່າພາກສ່ວນເນື້ອຫາບໍ່ແຄບເກີນໄປໃນຫນ້າ WooCommerce ລວມທັງການຊໍາລະ, "
+"ໂຄງຮ່າງການ, ຄໍາສັ່ງທີ່ໄດ້ຮັບ, ຄໍາສັ່ງຈ່າຍແລະຫນ້າບັນຊີ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

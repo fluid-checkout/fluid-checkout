@@ -2518,6 +2518,35 @@ msgstr ""
 "ஆர்டரை முடிக்கும்போது செக் அவுட்டில் வழங்கப்படும் தகவலுடன் ஒரு கணக்கு "
 "உருவாக்கப்படும்."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "முன்னேற்றப் பட்டியின் பாணியைத் தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "பார்கள்"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "தீம் ஐரேகா"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce பக்க அமைப்பு"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce பக்கங்களில் பரந்த தளவமைப்பை கட்டாயப்படுத்துங்கள்."
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"இது WooCommerce பக்கங்களில் உள்ளடக்கப் பிரிவு மிகவும் குறுகலாக இல்லை என்பதை "
+"உறுதி செய்கிறது, இதில் செக்அவுட், வண்டி, ஆர்டர் பெறப்பட்டது, ஆர்டர் கட்டணம் "
+"மற்றும் கணக்குப் பக்கங்கள் ஆகியவை அடங்கும்."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

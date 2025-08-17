@@ -2427,6 +2427,34 @@ msgstr ""
 "ઓર્ડર પૂર્ણ કરતી વખતે ચેકઆઉટ વખતે આપેલી માહિતીનો ઉપયોગ કરીને એક એકાઉન્ટ "
 "બનાવવામાં આવશે."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "પ્રોગ્રેસ બારની શૈલી પસંદ કરો."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "બાર"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "થીમ ઇરેકા"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce પેજ લેઆઉટ"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce પૃષ્ઠો પર પહોળા લેઆઉટને ફરજિયાત બનાવો"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"આ ખાતરી કરે છે કે WooCommerce પૃષ્ઠો પર સામગ્રી વિભાગ ખૂબ સાંકડો નથી જેમાં "
+"ચેકઆઉટ, કાર્ટ, ઓર્ડર પ્રાપ્ત, ઓર્ડર પે અને એકાઉન્ટ પૃષ્ઠો શામેલ છે."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2480,6 +2480,35 @@ msgstr ""
 "&#39;n Rekening sal geskep word met die inligting wat by die afhandeling "
 "van die bestelling verskaf word."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Kies die styl van die vorderingsbalk."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Kroeë"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce-bladsyuitleg"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Forseer wye uitleg op WooCommerce-bladsye"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Dit verseker dat die inhoudsafdeling nie te nou is op WooCommerce-bladsye "
+"nie, insluitend die afhandeling, mandjie, bestelling ontvang, bestelling "
+"betaal en rekeningbladsye."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

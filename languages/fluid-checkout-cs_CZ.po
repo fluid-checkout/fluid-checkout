@@ -2586,6 +2586,35 @@ msgid ""
 "completing the order."
 msgstr "Účet bude vytvořen na základě údajů zadaných při dokončování objednávky."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Zvolte styl panelu průběhu."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bary"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Téma Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Rozložení stránky WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Vynucení širokého rozvržení na stránkách WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Tím se zajistí, že část obsahu na stránkách WooCommerce včetně stránek "
+"pokladny, košíku, přijaté objednávky, zaplacení objednávky a účtu nebude "
+"příliš úzká."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

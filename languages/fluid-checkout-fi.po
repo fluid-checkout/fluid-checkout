@@ -2434,6 +2434,35 @@ msgid ""
 "completing the order."
 msgstr "Tili luodaan kassalla annetuilla tiedoilla, kun tilaus on valmis."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Valitse edistymispalkin tyyli."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Baarit"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Teema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce-sivun ulkoasu"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Pakota laaja asettelu WooCommerce-sivuilla"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Näin varmistetaan, että sisältöosio ei ole liian kapea "
+"WooCommerce-sivuilla, kuten kassalla, ostoskorissa, vastaanotetussa "
+"tilauksessa, maksetussa tilauksessa ja tilisivuilla."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
