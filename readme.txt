@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.8.2
-Stable tag: 4.0.6
+Stable tag: 4.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,7 +354,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 4.1.0 - 2025-08-17 =
 
 * Bump tested up to WordPress 6.8.2 and WooCommerce 10.1.0
 * Added: Support for new progress bar style options.
