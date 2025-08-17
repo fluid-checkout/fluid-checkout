@@ -371,6 +371,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin TemplateMela Autorapid.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
 * Added: Compatibility with plugin WooCommerce EU Vat & B2B.
+* Improved: Compatibility with theme Betheme.
 * Improved: Compatibility with theme Enfold.
 * Improved: Update checkout fragments when an item is removed from the cart using the mini cart widget from the site header.
 * Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.
