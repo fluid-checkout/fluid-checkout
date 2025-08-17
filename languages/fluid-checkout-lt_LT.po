@@ -2583,6 +2583,35 @@ msgstr ""
 "Paskyra bus sukurta naudojant informaciją, pateiktą kasoje užbaigiant "
 "užsakymą."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pasirinkite progreso juostos stilių."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barai"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "\"WooCommerce\" puslapio išdėstymas"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Priverstinis platus išdėstymas \"WooCommerce\" puslapiuose"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Taip užtikrinama, kad \"WooCommerce\" puslapiuose, įskaitant kasos, "
+"krepšelio, gauto užsakymo, užsakymo apmokėjimo ir paskyros puslapius, "
+"turinio skiltis nebūtų per siaura."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

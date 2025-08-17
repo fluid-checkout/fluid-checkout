@@ -1,0 +1,18 @@
+// ------------------------------------
+// WOOCOMMERCE FORM-ROW
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	display: block;
+}
+
+body#{ $_body-theme-selector } .woocommerce input[type="checkbox"] {
+	height: auto;
+}
+
+body#{ $_body-theme-selector } .woocommerce form .form-row .input-text.input-text {
+	height: var( --fluidcheckout--field--height );
+	padding-left: var( --fluidcheckout--field--padding-left );
+	font-size: var( --fluidcheckout--field--font-size );
+	color: var( --fluidcheckout--field--color );
+}

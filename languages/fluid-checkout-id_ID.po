@@ -2472,6 +2472,35 @@ msgstr ""
 "Sebuah akun akan dibuat dengan informasi yang diberikan pada saat checkout "
 "ketika menyelesaikan pesanan."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pilih gaya bilah kemajuan."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bar"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Tata letak halaman WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Memaksakan tata letak lebar pada halaman WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Hal ini memastikan bagian konten tidak terlalu sempit pada halaman "
+"WooCommerce termasuk halaman checkout, keranjang, pesanan diterima, pesanan "
+"dibayar, dan akun."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

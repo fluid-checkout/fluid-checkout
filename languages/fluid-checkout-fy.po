@@ -2484,6 +2484,35 @@ msgstr ""
 "Der wurdt in akkount oanmakke mei de ynformaasje dy&#39;t by it beteljen "
 "fan &#39;e bestelling opjûn is."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Kies de styl fan &#39;e foarútgongsbalke."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce-side-yndieling"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Forsearje brede yndieling op WooCommerce-pagina&#39;s"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Dit soarget derfoar dat de ynhâldsseksje net te smel is op "
+"WooCommerce-siden, ynklusyf de siden foar kassa, winkelwein, ûntfongen "
+"bestelling, beteljen fan bestelling en akkount."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

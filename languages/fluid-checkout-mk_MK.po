@@ -2498,6 +2498,35 @@ msgstr ""
 "Ќе биде креирана сметка со информациите дадени при плаќањето при "
 "комплетирање на нарачката."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Изберете го стилот на лентата за напредок."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барови"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тема Ирека"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Распоред на страницата WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Присилно широк распоред на страниците на WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ова осигурува дека делот со содржина не е премногу тесен на страниците на "
+"WooCommerce, вклучувајќи ги страниците за наплата, кошничка, примена "
+"нарачка, плаќање на нарачка и сметка."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

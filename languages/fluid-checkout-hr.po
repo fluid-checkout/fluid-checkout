@@ -2464,6 +2464,35 @@ msgstr ""
 "Prilikom narudžbe, s podacima navedenima prilikom plaćanja, bit će kreiran "
 "račun."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Odaberite stil trake napretka."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barovi"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Izgled WooCommerce stranice"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Nametnite široki raspored na WooCommerce stranicama"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"To osigurava da odjeljak sadržaja nije preuzak na WooCommerce stranicama, "
+"uključujući stranice za naplatu, košaricu, primljenu narudžbu, plaćanje "
+"narudžbe i račun."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

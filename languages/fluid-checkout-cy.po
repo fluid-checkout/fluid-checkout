@@ -2481,6 +2481,35 @@ msgstr ""
 "Bydd cyfrif yn cael ei greu gyda&#39;r wybodaeth a ddarperir wrth y ddesg "
 "dalu wrth gwblhau&#39;r archeb."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Dewiswch arddull y bar cynnydd."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bariau"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Thema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Cynllun tudalen WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Gorfodi cynllun eang ar dudalennau WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Mae hyn yn sicrhau nad yw&#39;r adran gynnwys yn rhy gul ar dudalennau "
+"WooCommerce gan gynnwys tudalennau talu, basged, archeb a dderbyniwyd, talu "
+"archeb a chyfrif."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

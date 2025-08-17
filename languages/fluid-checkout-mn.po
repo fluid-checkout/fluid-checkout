@@ -2475,6 +2475,35 @@ msgid ""
 "completing the order."
 msgstr "Захиалгыг бөглөхдөө тооцоо хийх үед өгсөн мэдээллээр данс үүсгэнэ."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Явцын талбарын хэв маягийг сонгоно уу."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Баар"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Ireca сэдэв"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce хуудасны зохион байгуулалт"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce хуудсууд дээр өргөн байршлыг албадах"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Энэ нь WooCommerce хуудасны төлбөр, тэрэг, хүлээн авсан захиалга, захиалгын "
+"төлбөр, дансны хуудсуудыг багтаасан агуулгын хэсгийг хэт нарийсгахгүй "
+"байхыг баталгаажуулдаг."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

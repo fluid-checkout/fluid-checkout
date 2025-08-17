@@ -193,6 +193,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10, 2 );
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		add_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
 		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
@@ -532,6 +533,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order' ), 10 );
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
+		remove_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
 		remove_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
@@ -2523,6 +2525,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the progress bar style.
+	 *
+	 * @return  string  The progress bar style.
+	 */
+	public function get_progress_bar_style() {
+		return apply_filters( 'fc_checkout_progress_bar_style', FluidCheckout_Settings::instance()->get_option( 'fc_checkout_progress_bar_style' ) );
+	}
+
+	/**
 	 * Output the checkout progress bar.
 	 * 
 	 * @param  string  $context   Context in which the function is running. Defaults to `checkout`.
@@ -2569,7 +2580,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Attributes
 		$progress_bar_attributes = array(
-			'class' => 'fc-progress-bar',
+			'class' => 'fc-progress-bar fc-progress-bar--' . $this->get_progress_bar_style(),
 			'data-progress-bar' => true,
 
 		);
@@ -2601,13 +2612,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<div <?php echo $progress_bar_attributes_str; // WPCS: XSS ok. ?>>
 			<div <?php echo $progress_bar_attributes_inner_str; // WPCS: XSS ok. ?>>
 
-				<div class="fc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html; // WPCS: XSS ok. ?></div>
-				<div class="fc-progress-bar__bars" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
+				<?php if ( true === apply_filters( 'fc_checkout_progress_bar_display_count', true ) ) : ?>
+					<div class="fc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html; // WPCS: XSS ok. ?></div>
+				<?php endif; ?>
+
+				<div class="fc-progress-bar__steps" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
 					<?php
 					foreach ( $_checkout_steps as $step_index => $step_args ) :
 						$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
+						$step_id = $step_args[ 'step_id' ];
+						$step_title = $step_args[ 'step_title' ];
+						$step_title = apply_filters( "fc_progress_bar_step_title_{$step_id}", $step_title, $step_id, $step_args, $step_index, $context );
 						?>
-						<span class="fc-progress-bar__bar <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>"></span>
+						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_index + 1 ); ?>"><?php echo esc_html( $step_title ); ?></span>
 					<?php
 					endforeach;
 					?>
@@ -5417,7 +5434,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( '1' === $is_billing_same_as_shipping_previous || true === $is_billing_same_as_shipping_checked ) { return $posted_data; }
 
 		// Bail if forced to skip
-		if ( apply_filters( 'fc_save_new_address_data_billing_skip_update', false ) ) { return $posted_data; }
+		if ( apply_filters( 'fc_save_new_address_data_billing_skip_update', false, $posted_data ) ) { return $posted_data; }
 
 		// Get list of billing fields to copy from shipping fields
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
@@ -5581,7 +5598,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( '1' === $is_shipping_same_as_billing_previous || true === $is_shipping_same_as_billing_checked ) { return $posted_data; }
 
 		// Bail if forced to skip
-		if ( apply_filters( 'fc_save_new_address_data_shipping_skip_update', false ) ) { return $posted_data; }
+		if ( apply_filters( 'fc_save_new_address_data_shipping_skip_update', false, $posted_data ) ) { return $posted_data; }
 
 		// Get list of shipping fields to copy from billing fields
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
@@ -6166,6 +6183,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__header-link fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
 		<?php
+	}
+
+
+
+	/**
+	 * Output checkout place order terms.
+	 */
+	public function output_checkout_place_order_terms() {
+		wc_get_template( 'checkout/terms.php' );
 	}
 
 
@@ -6831,6 +6857,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *            might change during the lifecycle of the request process.
 	 */
 	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
+		// Bail if forced to skip
+		if ( apply_filters( 'fc_skip_change_customer_address_field_value_from_checkout_data', false, $value, $customer ) ) { return $value; }
+
 		// Get name of the current filter hook running this function
 		$hook_name = current_filter();
 

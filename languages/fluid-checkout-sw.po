@@ -2484,6 +2484,35 @@ msgstr ""
 "Akaunti itaundwa ikiwa na maelezo yaliyotolewa wakati wa kulipa wakati wa "
 "kukamilisha agizo."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Chagua mtindo wa upau wa maendeleo."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Baa"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Mandhari Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Mpangilio wa ukurasa wa WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Lazimisha mpangilio mpana kwenye kurasa za WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Hii inahakikisha kuwa sehemu ya maudhui si finyu sana kwenye kurasa za "
+"WooCommerce ikijumuisha malipo, rukwama, agizo lililopokelewa, malipo ya "
+"agizo na kurasa za akaunti."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

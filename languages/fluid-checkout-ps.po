@@ -2429,6 +2429,34 @@ msgstr ""
 "د امر بشپړولو پر مهال به د چیک آوټ په وخت کې چمتو شوي معلوماتو سره یو حساب "
 "جوړ شي."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "د پرمختګ بار سټایل غوره کړئ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "بارونه"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "موضوع ایریکا"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "د WooCommerce پاڼې ترتیب"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "د WooCommerce پاڼو کې پراخه ترتیب جبري کړئ"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"دا ډاډ ورکوي چې د WooCommerce پاڼو کې د منځپانګې برخه ډیره تنګه نه ده، "
+"پشمول د چیک آوټ، کارټ، ترلاسه شوي امر، د امر تادیه او حساب پاڼې."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

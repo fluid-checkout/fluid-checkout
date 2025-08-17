@@ -2463,6 +2463,35 @@ msgstr ""
 "ಆರ್ಡರ್ ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸುವಾಗ ಚೆಕ್ಔಟ್‌ನಲ್ಲಿ ಒದಗಿಸಲಾದ ಮಾಹಿತಿಯೊಂದಿಗೆ ಖಾತೆಯನ್ನು "
 "ರಚಿಸಲಾಗುತ್ತದೆ."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ಪ್ರಗತಿ ಪಟ್ಟಿಯ ಶೈಲಿಯನ್ನು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ಬಾರ್‌ಗಳು"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ಥೀಮ್ ಐರೆಕಾ"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce ಪುಟ ವಿನ್ಯಾಸ"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce ಪುಟಗಳಲ್ಲಿ ಬಲವಂತದ ವಿಶಾಲ ವಿನ್ಯಾಸ"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ಇದು WooCommerce ಪುಟಗಳಲ್ಲಿ ವಿಷಯ ವಿಭಾಗವು ತುಂಬಾ ಕಿರಿದಾಗಿಲ್ಲ ಎಂದು "
+"ಖಚಿತಪಡಿಸುತ್ತದೆ, ಇದರಲ್ಲಿ ಚೆಕ್ಔಟ್, ಕಾರ್ಟ್, ಆರ್ಡರ್ ಸ್ವೀಕರಿಸಲಾಗಿದೆ, ಆರ್ಡರ್ ಪೇ "
+"ಮತ್ತು ಖಾತೆ ಪುಟಗಳು ಸೇರಿವೆ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

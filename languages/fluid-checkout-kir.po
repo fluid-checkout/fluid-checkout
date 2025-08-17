@@ -2471,6 +2471,35 @@ msgstr ""
 "Буйрутманы толтурууда эсепке алуу учурунда берилген маалымат менен эсеп "
 "түзүлөт."
 
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Прогресс тилкесинин стилин тандаңыз."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барлар"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тема Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce баракчасынын макети"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce баракчаларында кеңири макетти мажбурлоо"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Бул WooCommerce баракчаларында мазмун бөлүмү өтө тар эмес экенине кепилдик "
+"берет, анын ичинде текшерүү, арабага, алынган буйрутма, буйрутма төлөмү "
+"жана эсеп баракчалары."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
