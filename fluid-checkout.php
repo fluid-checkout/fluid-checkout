@@ -589,12 +589,12 @@ class FluidCheckout {
 		$action_url = admin_url( 'plugin-install.php?s=' . $required_plugin_search_term . '&tab=search&type=term' );
 
 		if ( ! is_wp_error( validate_plugin( $required_plugin_path_name ) ) ) {
-			// translators: %s: Required plugin name.
+			/** translators: %s: Required plugin name. */
 			$action_label = wp_kses_post( sprintf( __( 'Activate %s', 'fluid-checkout' ), $required_plugin_name ) );
 			$action_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_plugin_path_name ), 'activate-plugin_' . $required_plugin_path_name );
 		}
 		
-		// translators: %1$s: Plugin name, %2$s: Required plugin name, %3$s: Action label, %4$s: Action URL.
+		/** translators: %1$s: Plugin name, %2$s: Required plugin name, %3$s: Action label, %4$s: Action URL. */
 		$description = wp_kses_post( sprintf( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%4$s">%3$s</a>', 'fluid-checkout' ),
 			self::$plugin,
 			$required_plugin_name,
