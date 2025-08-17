@@ -8,6 +8,7 @@ body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-i
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-notices,
 body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-notices-wrapper,
 body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
@@ -24,6 +25,7 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-notices,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $_body-page-selector } .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $_body-page-selector } .woocommerce-notices-wrapper,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {

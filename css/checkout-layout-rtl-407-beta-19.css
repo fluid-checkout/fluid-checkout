@@ -342,6 +342,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   body:not(.has-checkout-must-login-notice) .fc-checkout-header ~ .woocommerce-error,
   body:not(.has-checkout-must-login-notice) .fc-checkout-notices,
   body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-NoticeGroup,
+  body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-notices-wrapper,
   body:not(.has-checkout-must-login-notice) .fc-progress-bar,
   body:not(.has-checkout-must-login-notice) .fc-inside {
     float: right;
@@ -358,6 +359,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-header ~ .woocommerce-error,
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-checkout-notices,
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar).woocommerce-checkout .woocommerce-NoticeGroup,
+  body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar).woocommerce-checkout .woocommerce-notices-wrapper,
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-progress-bar,
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
     width: 62.5% !important;
