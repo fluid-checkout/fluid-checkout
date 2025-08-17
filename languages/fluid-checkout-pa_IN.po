@@ -138,10 +138,6 @@ msgstr "%2$s ਵਿੱਚੋਂ %1$s ਕਦਮ"
 msgid "Change: %s"
 msgstr "ਬਦਲਾਅ: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "ਦਿੱਤੀ ਗਈ ਜਾਣਕਾਰੀ ਨਾਲ ਇੱਕ ਖਾਤਾ ਬਣਾਇਆ ਜਾਵੇਗਾ।"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ਅਜੇ ਚੁਣਿਆ ਨਹੀਂ ਗਿਆ।"
@@ -401,14 +397,6 @@ msgstr "ਪਲੱਗਇਨ ਨੂੰ ਦਰਜਾ ਦਿਓ"
 msgid "I need help!"
 msgstr "ਮੈਨੂੰ ਮਦਦ ਚਾਹੀਦੀ ਹੈ!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"ਕਵਾਡਲੇਅਰਜ਼ ਦੁਆਰਾ ਪਲੱਗਇਨ WooCommerce ਚੈੱਕਆਉਟ ਮੈਨੇਜਰ ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਦੇ ਅਨੁਕੂਲ "
-"ਨਹੀਂ ਹੈ।"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -655,14 +643,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ਇੱਕ ਚਿੱਤਰ ਚੁਣੋ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ਕੋਈ ਚਿੱਤਰ ਨਹੀਂ ਚੁਣਿਆ ਗਿਆ।"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ਚਿੱਤਰ ਹਟਾਓ"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2380,6 +2360,111 @@ msgstr ""
 "ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਸਮੇਂ Nyture ਥੀਮ ਤੋਂ ਚੈੱਕਆਉਟ ਸਟੈਪਸ ਸੈਕਸ਼ਨ ਨੂੰ "
 "ਆਉਟਪੁੱਟ ਦਿਓ।"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ਜੇਕਰ ਬਿਲਿੰਗ ਪਤਾ ਭਾਗ ਸ਼ਿਪਿੰਗ ਪਤਾ ਭਾਗ ਤੋਂ ਬਾਅਦ ਪ੍ਰਦਰਸ਼ਿਤ ਹੁੰਦਾ ਹੈ, ਅਤੇ ਬਿਲਿੰਗ "
+"ਫ਼ੋਨ ਖੇਤਰ &quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਸੈੱਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਸ਼ਾਇਦ "
+"&quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਮਜਬੂਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਜ਼ਰੂਰੀ ਹੈ "
+"ਕਿ ਜਦੋਂ ਉਸ ਵਿਕਲਪ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਸ਼ਿਪਿੰਗ ਪਤਾ ਬਿਲਿੰਗ ਪਤੇ &#39;ਤੇ "
+"ਕਾਪੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ਜੇਕਰ ਬਿਲਿੰਗ ਐਡਰੈੱਸ ਸੈਕਸ਼ਨ ਬਿਲਿੰਗ ਐਡਰੈੱਸ ਸੈਕਸ਼ਨ ਤੋਂ ਬਾਅਦ ਪ੍ਰਦਰਸ਼ਿਤ ਹੁੰਦਾ ਹੈ, "
+"ਅਤੇ ਬਿਲਿੰਗ ਫ਼ੋਨ ਫੀਲਡ &quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਸੈੱਟ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਸ਼ਾਇਦ "
+"ਇਸਨੂੰ &quot;ਲੋੜੀਂਦਾ&quot; ਵਜੋਂ ਮਜਬੂਰ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ "
+"ਜ਼ਰੂਰੀ ਹੈ ਕਿ ਜਦੋਂ ਉਸ ਵਿਕਲਪ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਬਿਲਿੰਗ ਐਡਰੈੱਸ ਨੂੰ "
+"ਬਿਲਿੰਗ ਐਡਰੈੱਸ &#39;ਤੇ ਕਾਪੀ ਕੀਤਾ ਜਾ ਸਕੇ।"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ਗਾਹਕਾਂ ਨੂੰ ਉਨ੍ਹਾਂ ਆਰਡਰਾਂ ਲਈ ਭੁਗਤਾਨ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ ਜੋ ਜਾਂ ਤਾਂ ਸਟੋਰ "
+"ਐਡਮਿਨ ਦੁਆਰਾ ਹੱਥੀਂ ਬਣਾਏ ਜਾਂਦੇ ਹਨ ਜਾਂ ਚੈੱਕਆਉਟ ਦੌਰਾਨ ਪੂਰੇ ਨਹੀਂ ਹੁੰਦੇ।"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers ਦੁਆਰਾ WooCommerce Checkout Manager ਪਲੱਗਇਨ Fluid Checkout ਦੇ "
+"ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ।"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ਬਿਲਿੰਗ ਪਤੇ ਲਈ ਕੰਪਨੀ ਦਾ ਨਾਮ ਖੇਤਰ"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "ਚੈੱਕਆਉਟ ਫਾਰਮ &#39;ਤੇ ਬਿਲਿੰਗ ਪਤਾ ਭਾਗ ਲਈ ਕੰਪਨੀ ਦੇ ਨਾਮ ਖੇਤਰ ਦੀ ਦਿੱਖ ਬਦਲੋ।"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "ਥੀਮ ਬੁੱਕ ਸ਼ੈਲਫ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ਫਲੂਇਡ ਚੈੱਕਆਉਟ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਸਮੇਂ ਬੁੱਕਸ਼ੈਲਫ ਥੀਮ ਤੋਂ ਚੈੱਕਆਉਟ ਸਟੈਪਸ ਸੈਕਸ਼ਨ ਨੂੰ "
+"ਆਉਟਪੁੱਟ ਦਿਓ।"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ਖਾਤੇ ਦਾ ਪਾਸਵਰਡ"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ਆਰਡਰ ਪੂਰਾ ਕਰਦੇ ਸਮੇਂ ਚੈੱਕਆਉਟ &#39;ਤੇ ਦਿੱਤੀ ਗਈ ਜਾਣਕਾਰੀ ਨਾਲ ਇੱਕ ਖਾਤਾ ਬਣਾਇਆ "
+"ਜਾਵੇਗਾ।"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ਤਰੱਕੀ ਪੱਟੀ ਦੀ ਸ਼ੈਲੀ ਚੁਣੋ।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ਬਾਰ"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ਥੀਮ ਇਰੇਕਾ"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce ਪੰਨਾ ਲੇਆਉਟ"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce ਪੰਨਿਆਂ &#39;ਤੇ ਚੌੜਾ ਲੇਆਉਟ ਮਜਬੂਰ ਕਰੋ"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ਇਹ ਯਕੀਨੀ ਬਣਾਉਂਦਾ ਹੈ ਕਿ WooCommerce ਪੰਨਿਆਂ &#39;ਤੇ ਸਮੱਗਰੀ ਭਾਗ ਬਹੁਤ ਤੰਗ ਨਾ "
+"ਹੋਵੇ ਜਿਸ ਵਿੱਚ ਚੈੱਕਆਉਟ, ਕਾਰਟ, ਆਰਡਰ ਪ੍ਰਾਪਤ, ਆਰਡਰ ਭੁਗਤਾਨ ਅਤੇ ਖਾਤਾ ਪੰਨੇ ਸ਼ਾਮਲ "
+"ਹਨ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2497,3 +2582,8 @@ msgstr "ਜਾਂ ਹੇਠਾਂ ਜਾਰੀ ਰੱਖੋ"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "ਜਾਂ ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ਚਿੱਤਰ ਹਟਾਓ"

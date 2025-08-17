@@ -138,10 +138,6 @@ msgstr "Gav %1$s ji %2$s"
 msgid "Change: %s"
 msgstr "Guhertin: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Hesabek bi agahdariya hatî peyda kirin dê were afirandin."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Hîn nehatiye hilbijartin."
@@ -402,14 +398,6 @@ msgstr "Pêvekê binirxînin"
 msgid "I need help!"
 msgstr "Ez alîkarî divê!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Pêveka WooCommerce Checkout Manager by Quadlayers bi Fluid Checkout re "
-"hevaheng nîne"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Wêneyek hilbijêre"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Wêne nehat hilbijartin."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Wêne jêbirin"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2421,6 +2401,114 @@ msgstr ""
 "Dema ku Fluid Checkout tê bikaranîn, beşa gavên kontrolê ji mijara Nyture "
 "derxe."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dibe ku wekî &quot;pêdivî&quot; were ferzkirin ger beşa navnîşana fatûreyê "
+"piştî beşa navnîşana şandinê were xuyang kirin, û qada telefona fatûreyê "
+"wekî &quot;pêdivî&quot; were danîn. Ev ji bo piştrastkirina ku navnîşana "
+"şandinê dikare li navnîşana fatûreyê were kopî kirin dema ku ew vebijark "
+"were kontrol kirin pêdivî ye."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dibe ku wekî &quot;pêdivî&quot; were ferzkirin ger beşa navnîşana fatûreyê "
+"piştî beşa navnîşana fatûreyê were xuyang kirin, û qada telefona fatûreyê "
+"wekî &quot;pêdivî&quot; were danîn. Ev ji bo piştrastkirina ku navnîşana "
+"fatûreyê dikare li navnîşana fatûreyê were kopî kirin dema ku ew vebijark "
+"were kontrol kirin pêdivî ye."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Destûrê dide xerîdaran ku ji bo fermanên ku ji hêla rêveberê firotgehê ve "
+"bi destan hatine çêkirin an jî di dema kirînê de nehatine temam kirin, drav "
+"bidin."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Pêveka WooCommerce Checkout Manager ya Quadlayers bi Fluid Checkout re ne "
+"lihevhatî ye."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Qada navê şîrketê ji bo navnîşana fatûreyê"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ji bo qada navê şîrketê ya beşa navnîşana fatûreyê li ser forma dravdanê, "
+"xuyabûna wê biguherîne."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Refê Pirtûkan a Mijarê"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Dema ku Fluid Checkout tê bikar anîn, beşa gavên derxistinê ji mijara "
+"Bookshelf derxe."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Şîfreya hesabê"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Hesab dê bi agahdariya ku di dema qedandina fermanê de di kasayê de hatî "
+"dayîn were çêkirin."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Şêwaza xêza pêşketinê hilbijêre."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bar"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Theme Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Şêweya rûpela WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Nexşeya fireh li ser rûpelên WooCommerce ferz bike"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ev yek piştrast dike ku beşa naverokê li ser rûpelên WooCommerce-ê, tevî "
+"rûpelên dravdanê, selikê, siparîşa wergirtî, dayîna siparîşê û hesabê, pir "
+"teng nebe."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2538,3 +2626,8 @@ msgstr "An jî li jêr berdewam bikin"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "An jî wek mêvan berdewam bike"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Wêneyê jê bibe"

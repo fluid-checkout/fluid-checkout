@@ -12,16 +12,16 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.3.0
+ * @version 4.1.0
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
 <?php // CHANGE: Add section with class `woocommerce` as many themes require the login form to be inside the WooCommerce section element to properly style the form ?>
-<section class="fc-login-form__wrapper woocommerce">
-	<div class="fc-login-form" data-flyout data-flyout-modal data-autofocus data-flyout-checkout-login>
-		<div class="fc-login-form__inner" data-flyout-content>
+<section class="fc-login-form__wrapper woocommerce <?php echo esc_attr( apply_filters( 'fc_login_form_wrapper_class', '' ) ); ?>">
+	<div class="fc-login-form <?php echo esc_attr( apply_filters( 'fc_login_form_class', '' ) ); ?>" data-flyout data-flyout-modal data-autofocus data-flyout-checkout-login>
+		<div class="fc-login-form__inner <?php echo esc_attr( apply_filters( 'fc_login_form_inner_class', '' ) ); ?>" data-flyout-content>
 
 			<div class="fc-login-form__close-wrapper">
 				<a href="#close" class="button--flyout-close" data-flyout-close aria-label="<?php echo esc_html( _x( 'Close', 'Close button aria-label', 'fluid-checkout' ) ); ?>"></a>

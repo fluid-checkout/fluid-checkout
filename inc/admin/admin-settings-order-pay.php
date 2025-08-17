@@ -70,7 +70,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 					array(
 						'title' => __( 'Order pay page', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'Allows customers to make payments for orders that are either created manually by the store admin or not completed during checkout.' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-order-pay/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'  => __( 'Allows customers to make payments for orders that are either created manually by the store admin or not completed during checkout.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-order-pay/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'    => 'fc_pro_order_pay_layout_options',
 					),
 

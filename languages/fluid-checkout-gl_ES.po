@@ -140,10 +140,6 @@ msgstr "Paso %1$s de %2$s"
 msgid "Change: %s"
 msgstr "Cambio: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Crearase unha conta coa información proporcionada."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Aínda non seleccionado."
@@ -402,14 +398,6 @@ msgstr "Valora o complemento"
 msgid "I need help!"
 msgstr "Necesito axuda!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"O complemento WooCommerce Checkout Manager de Quadlayers non é compatible "
-"con Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Seleccione unha imaxe"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Non se seleccionou ningunha imaxe."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Eliminar imaxe"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2434,6 +2414,112 @@ msgstr ""
 "Mostra a sección dos pasos de finalización da compra desde o tema Nyture ao "
 "usar Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Podería ser forzado como &quot;obrigatorio&quot; se a sección do enderezo "
+"de facturación se mostra despois da sección do enderezo de envío e o campo "
+"do teléfono de facturación está configurado como &quot;obrigatorio&quot;. "
+"Isto é necesario para garantir que o enderezo de envío se poida copiar no "
+"enderezo de facturación cando esa opción estea marcada."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Podería ser forzado como &quot;obrigatorio&quot; se a sección do enderezo "
+"de facturación se mostra despois da sección do enderezo de facturación e o "
+"campo do teléfono de facturación está configurado como "
+"&quot;obrigatorio&quot;. Isto é necesario para garantir que o enderezo de "
+"facturación se poida copiar no enderezo de facturación cando esa opción "
+"estea marcada."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Permite aos clientes realizar pagamentos por pedidos creados manualmente "
+"polo administrador da tenda ou non completados durante o proceso de compra."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"O plugin WooCommerce Checkout Manager de Quadlayers non é compatible con "
+"Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Campo do nome da empresa para o enderezo de facturación"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Cambia a visibilidade do campo do nome da empresa para a sección de "
+"enderezo de facturación no formulario de finalización da compra."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Estante de libros temático"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Mostra a sección dos pasos de finalización da compra do tema Bookshelf ao "
+"usar Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Contrasinal da conta"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "Crearase unha conta coa información proporcionada ao finalizar a compra."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Escolle o estilo da barra de progreso."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bares"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Maquetación de páxina de WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Forzar un deseño amplo nas páxinas de WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Isto garante que a sección de contido non sexa demasiado estreita nas "
+"páxinas de WooCommerce, incluíndo as páxinas de finalización da compra, "
+"cesta, pedido recibido, pago de pedidos e conta."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2551,3 +2637,8 @@ msgstr "Ou continúa a continuación"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Ou continúa como convidado"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Eliminar imaxe"

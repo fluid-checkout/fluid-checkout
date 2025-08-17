@@ -138,10 +138,6 @@ msgstr "%2$s-ൽ %1$s-ാം ഘട്ടം"
 msgid "Change: %s"
 msgstr "മാറ്റം: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "നൽകുന്ന വിവരങ്ങൾ ഉപയോഗിച്ച് ഒരു അക്കൗണ്ട് സൃഷ്ടിക്കപ്പെടും."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ഇതുവരെ തിരഞ്ഞെടുത്തിട്ടില്ല."
@@ -407,14 +403,6 @@ msgstr "പ്ലഗിൻ റേറ്റ് ചെയ്യുക"
 msgid "I need help!"
 msgstr "എനിക്ക് സഹായം ആവശ്യമാണ്!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"ക്വാഡ്‌ലെയേഴ്‌സിന്റെ WooCommerce ചെക്ക്ഔട്ട് മാനേജർ പ്ലഗിൻ ഫ്ലൂയിഡ് "
-"ചെക്ക്ഔട്ടുമായി പൊരുത്തപ്പെടുന്നില്ല."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -665,14 +653,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ഒരു ചിത്രം തിരഞ്ഞെടുക്കുക"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ഒരു ചിത്രവും തിരഞ്ഞെടുത്തിട്ടില്ല."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ചിത്രം നീക്കം ചെയ്യുക"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2455,6 +2435,113 @@ msgstr ""
 "ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ഉപയോഗിക്കുമ്പോൾ Nyture തീമിൽ നിന്ന് ചെക്ക്ഔട്ട് "
 "ഘട്ടങ്ങൾ വിഭാഗം ഔട്ട്പുട്ട് ചെയ്യുക."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ഷിപ്പിംഗ് വിലാസ വിഭാഗത്തിന് ശേഷം ബില്ലിംഗ് വിലാസ വിഭാഗം പ്രദർശിപ്പിക്കുകയും "
+"ബില്ലിംഗ് ഫോൺ ഫീൽഡ് &quot;ആവശ്യമാണ്&quot; എന്ന് സജ്ജമാക്കുകയും ചെയ്താൽ "
+"&quot;ആവശ്യമാണ്&quot; എന്ന് നിർബന്ധിച്ചേക്കാം. ആ ഓപ്ഷൻ പരിശോധിക്കുമ്പോൾ "
+"ഷിപ്പിംഗ് വിലാസം ബില്ലിംഗ് വിലാസത്തിലേക്ക് പകർത്താൻ കഴിയുമെന്ന് ഉറപ്പാക്കാൻ "
+"ഇത് ആവശ്യമാണ്."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ബില്ലിംഗ് വിലാസ വിഭാഗത്തിന് ശേഷം ബില്ലിംഗ് വിലാസ വിഭാഗം പ്രദർശിപ്പിക്കുകയും "
+"ബില്ലിംഗ് ഫോൺ ഫീൽഡ് &quot;ആവശ്യമാണ്&quot; എന്ന് സജ്ജമാക്കുകയും ചെയ്താൽ "
+"&quot;ആവശ്യമാണ്&quot; എന്ന് നിർബന്ധിച്ചേക്കാം. ആ ഓപ്ഷൻ പരിശോധിക്കുമ്പോൾ "
+"ബില്ലിംഗ് വിലാസം ബില്ലിംഗ് വിലാസത്തിലേക്ക് പകർത്താൻ കഴിയുമെന്ന് ഉറപ്പാക്കാൻ "
+"ഇത് ആവശ്യമാണ്."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"സ്റ്റോർ അഡ്മിൻ സ്വമേധയാ സൃഷ്ടിച്ചതോ ചെക്ക്ഔട്ട് സമയത്ത് പൂർത്തിയാകാത്തതോ ആയ "
+"ഓർഡറുകൾക്ക് പേയ്‌മെന്റുകൾ നടത്താൻ ഉപഭോക്താക്കളെ അനുവദിക്കുന്നു."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"ക്വാഡ്‌ലെയേഴ്‌സിന്റെ പ്ലഗിൻ WooCommerce ചെക്ക്ഔട്ട് മാനേജർ ഫ്ലൂയിഡ് "
+"ചെക്ക്ഔട്ടുമായി പൊരുത്തപ്പെടുന്നില്ല."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ബില്ലിംഗ് വിലാസത്തിനുള്ള കമ്പനി നാമ ഫീൽഡ്"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"ചെക്ക്ഔട്ട് ഫോമിലെ ബില്ലിംഗ് വിലാസ വിഭാഗത്തിനായുള്ള കമ്പനി നാമ ഫീൽഡിന്റെ "
+"ദൃശ്യപരത മാറ്റുക."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "തീം ബുക്ക്‌ഷെൽഫ്"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ഫ്ലൂയിഡ് ചെക്ക്ഔട്ട് ഉപയോഗിക്കുമ്പോൾ ബുക്ക്ഷെൽഫ് തീമിൽ നിന്ന് ചെക്ക്ഔട്ട് "
+"ഘട്ടങ്ങൾ വിഭാഗം ഔട്ട്പുട്ട് ചെയ്യുക."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "അക്കൗണ്ട് പാസ്‌വേഡ്"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ഓർഡർ പൂർത്തിയാക്കുമ്പോൾ ചെക്ക്ഔട്ടിൽ നൽകുന്ന വിവരങ്ങൾ ഉപയോഗിച്ച് ഒരു "
+"അക്കൗണ്ട് സൃഷ്ടിക്കപ്പെടും."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "പ്രോഗ്രസ് ബാറിന്റെ ശൈലി തിരഞ്ഞെടുക്കുക."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ബാറുകൾ"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "തീം ഇറേക്ക"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce പേജ് ലേഔട്ട്"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce പേജുകളിൽ നിർബന്ധിത വൈഡ് ലേഔട്ട്"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ചെക്ക്ഔട്ട്, കാർട്ട്, ഓർഡർ സ്വീകരിച്ചത്, ഓർഡർ പേ, അക്കൗണ്ട് പേജുകൾ "
+"എന്നിവയുൾപ്പെടെ WooCommerce പേജുകളിൽ ഉള്ളടക്ക വിഭാഗം വളരെ ഇടുങ്ങിയതല്ലെന്ന് "
+"ഇത് ഉറപ്പാക്കുന്നു."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2572,3 +2659,8 @@ msgstr "അല്ലെങ്കിൽ താഴെ തുടരുക"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "അല്ലെങ്കിൽ അതിഥിയായി തുടരുക"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ചിത്രം നീക്കം ചെയ്യുക"

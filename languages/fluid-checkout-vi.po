@@ -138,10 +138,6 @@ msgstr "Bước %1$s của %2$s"
 msgid "Change: %s"
 msgstr "Thay đổi: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Một tài khoản sẽ được tạo dựa trên thông tin đã cung cấp."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Chưa được chọn."
@@ -399,14 +395,6 @@ msgstr "Đánh giá plugin"
 msgid "I need help!"
 msgstr "Tôi cần giúp đỡ!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plugin WooCommerce Checkout Manager của Quadlayers không tương thích với "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -656,14 +644,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Chọn một hình ảnh"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Không có hình ảnh nào được chọn."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Xóa hình ảnh"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2391,6 +2371,112 @@ msgid ""
 "Checkout."
 msgstr "Xuất phần các bước thanh toán từ chủ đề Nyture khi sử dụng Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Có thể buộc phải là &quot;bắt buộc&quot; nếu phần địa chỉ thanh toán được "
+"hiển thị sau phần địa chỉ giao hàng và trường số điện thoại thanh toán được "
+"đặt là &quot;bắt buộc&quot;. Điều này là cần thiết để đảm bảo địa chỉ giao "
+"hàng có thể được sao chép vào địa chỉ thanh toán khi tùy chọn đó được chọn."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Có thể buộc phải là &quot;bắt buộc&quot; nếu phần địa chỉ thanh toán được "
+"hiển thị sau phần địa chỉ thanh toán và trường số điện thoại thanh toán "
+"được đặt là &quot;bắt buộc&quot;. Điều này là cần thiết để đảm bảo địa chỉ "
+"thanh toán có thể được sao chép vào địa chỉ thanh toán khi tùy chọn đó được "
+"chọn."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Cho phép khách hàng thanh toán cho các đơn hàng được quản trị viên cửa hàng "
+"tạo thủ công hoặc chưa hoàn tất trong quá trình thanh toán."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plugin WooCommerce Checkout Manager của Quadlayers không tương thích với "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Trường tên công ty cho địa chỉ thanh toán"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Thay đổi khả năng hiển thị của trường tên công ty trong phần địa chỉ thanh "
+"toán trên biểu mẫu thanh toán."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Kệ sách chủ đề"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Xuất phần các bước thanh toán từ chủ đề Bookshelf khi sử dụng Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Mật khẩu tài khoản"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Một tài khoản sẽ được tạo dựa trên thông tin được cung cấp khi thanh toán "
+"khi hoàn tất đơn hàng."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Chọn kiểu thanh tiến trình."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Thanh"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Chủ đề Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Bố cục trang WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Buộc bố cục rộng trên các trang WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Điều này đảm bảo phần nội dung không quá hẹp trên các trang WooCommerce bao "
+"gồm trang thanh toán, giỏ hàng, đơn hàng đã nhận, thanh toán đơn hàng và "
+"trang tài khoản."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2508,3 +2594,8 @@ msgstr "Hoặc tiếp tục bên dưới"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Hoặc tiếp tục với tư cách là khách"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Xóa hình ảnh"

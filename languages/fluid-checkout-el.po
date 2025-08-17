@@ -329,10 +329,6 @@ msgstr "Έχετε ήδη λογαριασμό"
 msgid "Always show"
 msgstr "Πάντα να δείχνετε"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Θα δημιουργηθεί ένας λογαριασμός με τις πληροφορίες που παρέχονται."
-
 #: inc/checkout-fields.php:181
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Διαμέρισμα, μονάδα, κτίριο, όροφος κ.λπ."
@@ -2192,14 +2188,6 @@ msgstr ""
 "και σύνδεσμος στη σελίδα προϊόντος που προστίθενται από το θέμα είναι "
 "απενεργοποιημένες από προεπιλογή."
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Το plugin WooCommerce Checkout Manager by Quadlayers δεν είναι συμβατό με "
-"το Fluid Checkout"
-
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -2547,14 +2535,6 @@ msgstr ""
 "Η παραγγελία σας έχει συνολικό οφειλόμενο ποσό %s. Δεν απαιτείται περαιτέρω "
 "πληρωμή."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Δεν έχει επιλεγεί εικόνα."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Αφαίρεση εικόνας"
-
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
 msgstr "Θέμα The7"
@@ -2625,6 +2605,114 @@ msgid ""
 msgstr ""
 "Εξαγωγή της ενότητας των βημάτων πληρωμής από το θέμα Nyture όταν "
 "χρησιμοποιείτε το Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Μπορεί να επιβληθεί ως \"υποχρεωτικό\" εάν το τμήμα της διεύθυνσης χρέωσης "
+"εμφανίζεται μετά το τμήμα της διεύθυνσης αποστολής και το πεδίο του "
+"τηλεφώνου χρέωσης έχει οριστεί ως \"υποχρεωτικό\". Αυτό είναι απαραίτητο "
+"για να διασφαλιστεί ότι η διεύθυνση αποστολής μπορεί να αντιγραφεί στη "
+"διεύθυνση χρέωσης όταν είναι επιλεγμένη αυτή η επιλογή."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Μπορεί να επιβληθεί ως \"υποχρεωτικό\" εάν το τμήμα διεύθυνσης χρέωσης "
+"εμφανίζεται μετά το τμήμα διεύθυνσης χρέωσης και το πεδίο τηλεφώνου χρέωσης "
+"έχει οριστεί ως \"υποχρεωτικό\". Αυτό είναι απαραίτητο για να διασφαλιστεί "
+"ότι η διεύθυνση χρέωσης μπορεί να αντιγραφεί στη διεύθυνση χρέωσης όταν "
+"είναι επιλεγμένη αυτή η επιλογή."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Επιτρέπει στους πελάτες να πραγματοποιούν πληρωμές για παραγγελίες που είτε "
+"έχουν δημιουργηθεί χειροκίνητα από τον διαχειριστή του καταστήματος είτε "
+"δεν έχουν ολοκληρωθεί κατά την ολοκλήρωση του checkout."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Το plugin WooCommerce Checkout Manager by Quadlayers δεν είναι συμβατό με "
+"το Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Πεδίο ονόματος εταιρείας για τη διεύθυνση χρέωσης"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Αλλαγή της ορατότητας του πεδίου ονόματος εταιρείας για την ενότητα "
+"διεύθυνσης χρέωσης στη φόρμα πληρωμής."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Βιβλιοθήκη με θέμα"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Εξαγωγή της ενότητας των βημάτων πληρωμής από το θέμα Bookshelf όταν "
+"χρησιμοποιείτε το Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Κωδικός πρόσβασης λογαριασμού"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Ένας λογαριασμός θα δημιουργηθεί με τις πληροφορίες που παρέχονται στο "
+"ταμείο κατά την ολοκλήρωση της παραγγελίας."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Επιλέξτε το στυλ της γραμμής προόδου."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Μπαρ"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Θέμα Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Διάταξη σελίδας WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Επιβολή ευρείας διάταξης στις σελίδες του WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Αυτό διασφαλίζει ότι η ενότητα περιεχομένου δεν είναι πολύ στενή στις "
+"σελίδες του WooCommerce, συμπεριλαμβανομένων των σελίδων checkout, καλάθι, "
+"παραγγελία που παραλήφθηκε, πληρωμή παραγγελίας και λογαριασμός."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2747,3 +2835,8 @@ msgstr "%2$s: %1$s"
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Καμία."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Αφαίρεση εικόνας"

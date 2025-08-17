@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.0
+ * @version 4.1.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -237,6 +237,9 @@ $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
 <?php // CHANGE: END - Copied code from theme template file header.php ?>
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
+
+<!-- CHANGE: Added opening div tag for #wrap_all -->
+<div id='wrap_all'>
 
 <?php do_action( 'fc_checkout_header' ); ?>
 

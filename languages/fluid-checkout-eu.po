@@ -140,10 +140,6 @@ msgstr "%1$s/%2$s urratsa"
 msgid "Change: %s"
 msgstr "Aldaketa: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Emandako informazioarekin kontu bat sortuko da."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Oraindik hautatu gabe."
@@ -402,14 +398,6 @@ msgstr "Baloratu plugina"
 msgid "I need help!"
 msgstr "Laguntza behar dut!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers-en WooCommerce Checkout Manager plugina ez da Fluid "
-"Checkout-ekin bateragarria"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Hautatu irudi bat"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Ez da irudirik hautatu."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Kendu irudia"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2425,6 +2405,114 @@ msgstr ""
 "Fluid Checkout erabiltzean, Nyture gaiaren ordainketa-urratsen atala "
 "erakutsi."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Baliteke &quot;beharrezkoa&quot; gisa behartu ahal izatea "
+"fakturazio-helbidearen atala bidalketa-helbidearen atalaren ondoren "
+"bistaratzen bada, eta fakturazio-telefonoaren eremua "
+"&quot;beharrezkoa&quot; gisa ezarrita badago. Hau beharrezkoa da "
+"bidalketa-helbidea fakturazio-helbidean kopiatu ahal izateko aukera hori "
+"markatuta dagoenean."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Baliteke &quot;beharrezkoa&quot; gisa behartu ahal izatea "
+"fakturazio-helbidearen atala fakturazio-helbidearen atalaren ondoren "
+"bistaratzen bada, eta fakturazio-telefonoaren eremua "
+"&quot;beharrezkoa&quot; gisa ezarrita badago. Hau beharrezkoa da aukera "
+"hori markatuta dagoenean fakturazio-helbidea fakturazio-helbidera kopiatu "
+"ahal izateko."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Bezeroei dendako administratzaileak eskuz sortutako edo "
+"ordainketa-prozesuan osatu ez diren eskaeren ordainketak egiteko aukera "
+"ematen die."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers-en WooCommerce Checkout Manager plugina ez da Fluid "
+"Checkout-ekin bateragarria."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Fakturazio-helbiderako enpresaren izenaren eremua"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Aldatu ordainketa-formularioko fakturazio-helbidearen ataleko enpresaren "
+"izenaren eremuaren ikusgarritasuna."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Gaiaren liburutegia"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkout erabiltzean, Bookshelf gaiko ordainketa-urratsen atala atera."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Kontuaren pasahitza"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Eskaera osatzean ordainketa-prozesuan emandako informazioarekin kontu bat "
+"sortuko da."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Aukeratu aurrerapen-barraren estiloa."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Tabernak"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Gaia Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce orrialdearen diseinua"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Behartu diseinu zabala WooCommerce orrialdeetan"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Horrek bermatzen du edukiaren atala ez dela estuegia WooCommerce "
+"orrialdeetan, besteak beste, ordainketa, saskia, jasotako eskaera, "
+"ordainketa eskaera eta kontu orrialdeak."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2542,3 +2630,8 @@ msgstr "Edo jarraitu behean"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Edo gonbidatu gisa jarraitu"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Kendu irudia"

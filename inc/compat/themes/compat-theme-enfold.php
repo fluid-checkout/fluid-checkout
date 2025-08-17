@@ -24,7 +24,10 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
-		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
+		add_filter( 'fc_wrapper_classes', array( $this, 'change_wrapper_class' ), 10 );
+
+		// Login form inner class
+		add_filter( 'fc_login_form_inner_class', array( $this, 'change_fc_login_form_inner_class' ), 10 );
 
 		// Sticky elements
 		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
@@ -78,15 +81,21 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 
 
 	/**
-	 * Add container class to the main content element.
+	 * Change the wrapper class, to apply theme styles on various sub-elements.
 	 *
-	 * @param string $class Main content element classes.
+	 * @param string $class Wrapper class.
 	 */
-	public function change_fc_content_section_class( $class ) {
-		// Bail if using distraction free header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
+	public function change_wrapper_class( $class ) {
+		return $class . ' main_color';
+	}
 
-		return $class . ' container';
+	/**
+	 * Change the login form inner class, to apply theme styles on various sub-elements.
+	 *
+	 * @param string $class Login form inner class.
+	 */
+	public function change_fc_login_form_inner_class( $class ) {
+		return $class . ' main_color';
 	}
 
 
@@ -119,6 +128,9 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 		// Default color values
 		$accent_color = '#83a83d';
 		$border_color = '#e1e1e1';
+		$background_color = '#fcfcfc';
+		$font_family = 'Open Sans:400,600';
+		$font_color = '#919191';
 
 		// Get theme options
 		$options = avia_get_option();
@@ -133,6 +145,21 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 			$border_color = $options['colorset-main_color-border'];
 		}
 
+		// Fetch background color from theme settings if exist
+		if ( ! empty( $options['colorset-main_color-bg2'] ) ) {
+			$background_color = $options['colorset-main_color-bg2'];
+		}
+		
+		// Fetch font family from theme settings if exist
+		if ( ! empty( $options['default_font'] ) ) {
+			$font_family = $options['default_font'];
+		}
+
+		// Fetch font color from theme settings if exist
+		if ( ! empty( $options['colorset-main_color-meta'] ) ) {
+			$font_color = $options['colorset-main_color-meta'];
+		}
+
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
@@ -141,7 +168,10 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 				'--fluidcheckout--field--padding-left' => '6px',
 				'--fluidcheckout--field--border-radius' => '0',
 				'--fluidcheckout--field--border-color' => $border_color,
-				'--fluidcheckout--field--font-size' => '12px',
+				'--fluidcheckout--field--font-family' => $font_family,
+				'--fluidcheckout--field--font-size' => '16px',
+				'--fluidcheckout--field--text-color' => $font_color,
+				'--fluidcheckout--field--background-color' => $background_color,
 				'--fluidcheckout--field--background-color--accent' => $accent_color,
 			),
 		);

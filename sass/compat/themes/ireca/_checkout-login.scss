@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT LOGIN
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login {
+	max-width: 100%;
+}
+
+body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login a {
+	text-decoration: underline;
+
+	&:hover {
+		text-decoration: none;
+	}
+}

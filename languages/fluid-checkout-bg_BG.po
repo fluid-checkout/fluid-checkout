@@ -138,10 +138,6 @@ msgstr "Стъпка %1$s от %2$s"
 msgid "Change: %s"
 msgstr "Промяна: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "С предоставената информация ще бъде създаден акаунт."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Все още не е избран."
@@ -402,14 +398,6 @@ msgstr "Оценете плъгина"
 msgid "I need help!"
 msgstr "Имам нужда от помощ!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Плъгинът WooCommerce Checkout Manager от Quadlayers не е съвместим с Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Изберете изображение"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Не е избрано изображение."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Премахване на изображението"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2459,6 +2439,114 @@ msgstr ""
 "Извеждане на секцията със стъпките на касата от темата Nyture при "
 "използване на Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Може да се наложи да бъде \"задължително\", ако разделът с адреса за "
+"фактуриране се показва след раздела с адреса за доставка и полето за "
+"телефон за фактуриране е зададено като \"задължително\". Това е необходимо, "
+"за да се гарантира, че адресът за доставка може да се копира в адреса за "
+"фактуриране, когато тази опция е маркирана."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Може да се наложи да бъде \"задължително\", ако разделът за адрес за "
+"фактуриране се показва след раздела за адрес за фактуриране и полето за "
+"телефон за фактуриране е зададено като \"задължително\". Това е необходимо, "
+"за да се гарантира, че адресът за фактуриране може да се копира в адреса за "
+"фактуриране, когато тази опция е маркирана."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Позволява на клиентите да извършват плащания за поръчки, които са създадени "
+"ръчно от администратора на магазина или не са завършени по време на "
+"поръчката."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Плъгинът WooCommerce Checkout Manager от Quadlayers не е съвместим с Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Поле за име на фирма за адреса за фактуриране"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Промяна на видимостта на полето за име на компанията в раздела за адрес за "
+"фактуриране във формуляра за плащане."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Рафт за книги по темата"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Извеждане на секцията със стъпките за плащане от темата Bookshelf при "
+"използване на Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Парола на акаунта"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Ще бъде създаден акаунт с информацията, предоставена на касата при "
+"завършване на поръчката."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Изберете стила на лентата за напредък."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барове"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тема Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Оформление на страницата на WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Принудително широко оформление на страниците на WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Това гарантира, че секцията със съдържание не е твърде тясна на страниците "
+"на WooCommerce, включително страниците за поръчка, количка, получена "
+"поръчка, плащане на поръчка и акаунт."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2576,3 +2664,8 @@ msgstr "Или продължете по-долу"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Или продължете като гост"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Премахване на изображението"

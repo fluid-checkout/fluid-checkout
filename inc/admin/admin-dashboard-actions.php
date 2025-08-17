@@ -45,11 +45,11 @@ class FluidCheckout_AdminDashboardActions extends FluidCheckout {
 		if ( ! array_key_exists( self::$plugin_prefix . '_action', $_GET ) || 'activate_plugin' !== sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_action' ] ) ) || empty( sanitize_text_field( wp_unslash( $_GET[ 'plugin' ] ) ) ) ) { return; }
 
 		// Activate plugin
-		$plugin = sanitize_text_field( wp_unslash( $_GET[ 'plugin' ] ) );
+		$plugin = sanitize_text_field( wp_unslash( $_GET[ 'plugin' ] ?? '' ) );
 		activate_plugin( $plugin );
 
 		// Redirect
-		$redirect_url = sanitize_text_field( wp_unslash( $_GET[ 'redirect_url' ] ) );
+		$redirect_url = sanitize_text_field( wp_unslash( $_GET[ 'redirect_url' ] ?? '' ) );
 		$redirect_url = ! empty( $redirect_url ) ? esc_url( $redirect_url ) : admin_url( 'admin.php?page=wc-settings&tab=fc_checkout' );
 		wp_safe_redirect( $redirect_url );
 	}

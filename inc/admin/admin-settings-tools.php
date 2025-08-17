@@ -110,8 +110,8 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 				array(
 					'title'            => __( 'Enhanced select fields', 'fluid-checkout' ),
-					'desc'             => __( 'Replace <code>select2</code> dropdown components with <code>TomSelect</code>', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
-					'desc_tip'         => __( 'TomSelect is a simpler dropdown selection component which is less prone to errors than Select2, while offering the same features that are actually used on WooCommerce checkout pages.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html( true ),
+					'desc'             => __( 'Replace <code>select2</code> dropdown components with <code>TomSelect</code>', 'fluid-checkout' ),
+					'desc_tip'         => __( 'TomSelect is a simpler dropdown selection component which is less prone to errors than Select2, while offering the same features that are actually used on WooCommerce checkout pages.', 'fluid-checkout' ),
 					'id'               => 'fc_use_enhanced_select_components',
 					'type'             => 'checkbox',
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_use_enhanced_select_components' ),

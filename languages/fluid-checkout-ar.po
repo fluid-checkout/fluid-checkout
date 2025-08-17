@@ -139,10 +139,6 @@ msgstr "الخطوة %1$s من %2$s"
 msgid "Change: %s"
 msgstr "التغيير: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "سيتم إنشاء حساب بالمعلومات المقدمة."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "لم يتم التحديد بعد"
@@ -401,14 +397,6 @@ msgstr "قم بتقييم البرنامج الإضافي"
 msgid "I need help!"
 msgstr "انا بحاجة الى مساعدة!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"المكون الإضافي WooCommerce Checkout Manager من Quadlayers غير متوافق مع "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -652,14 +640,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "حدد صورة"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "لم يتم اختيار أي صورة."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "إزالة الصورة"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2336,6 +2316,102 @@ msgid ""
 "Checkout."
 msgstr "قم بإخراج قسم خطوات الخروج من سمة Nyture عند استخدام Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"قد يُفرض هذا الخيار على &quot;مطلوب&quot; إذا تم عرض قسم عنوان الفاتورة بعد "
+"قسم عنوان الشحن، وتم ضبط حقل هاتف الفاتورة على &quot;مطلوب&quot;. هذا ضروري "
+"لضمان إمكانية نسخ عنوان الشحن إلى عنوان الفاتورة عند تحديد هذا الخيار."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"قد يُفرض هذا الخيار على &quot;مطلوب&quot; إذا عُرض قسم عنوان الفاتورة بعده، "
+"وكان حقل هاتف الفاتورة مُعيّنًا على &quot;مطلوب&quot;. هذا ضروري لضمان "
+"إمكانية نسخ عنوان الفاتورة إلى عنوان الفاتورة عند تحديد هذا الخيار."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"يتيح للعملاء إجراء الدفعات الخاصة بالطلبات التي تم إنشاؤها يدويًا بواسطة "
+"مسؤول المتجر أو التي لم تكتمل أثناء الخروج."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"المكون الإضافي WooCommerce Checkout Manager من Quadlayers غير متوافق مع "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "حقل اسم الشركة لعنوان الفاتورة"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "تغيير رؤية حقل اسم الشركة لقسم عنوان الفاتورة في نموذج الخروج."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "رف كتب موضوعي"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "قم بإخراج قسم خطوات الخروج من سمة Bookshelf عند استخدام Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "كلمة مرور الحساب"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "سيتم إنشاء حساب بالمعلومات المقدمة عند إتمام الطلب."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "اختر نمط شريط التقدم."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "الحانات"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "ثيم إيريكا"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "تخطيط صفحة WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "فرض تخطيط واسع على صفحات WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"يضمن هذا عدم تضييق قسم المحتوى بشكل كبير على صفحات WooCommerce بما في ذلك "
+"صفحات الخروج، وسلة التسوق، والطلب المستلم، ودفع الطلب، والحساب."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2453,3 +2529,8 @@ msgstr "أو تابع أدناه"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "أو استمر كضيف"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "إزالة الصورة"

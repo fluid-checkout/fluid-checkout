@@ -138,10 +138,6 @@ msgstr "Քայլ %1$s %2$s-ից"
 msgid "Change: %s"
 msgstr "Փոփոխություն՝ %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Տրամադրված տեղեկություններով հաշիվ կստեղծվի:"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Դեռ ընտրված չէ:"
@@ -401,14 +397,6 @@ msgstr "Գնահատեք plugin-ը"
 msgid "I need help!"
 msgstr "Ես օգնության կարիք ունեմ։"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers-ի WooCommerce Checkout Manager հավելվածը համատեղելի չէ Fluid "
-"Checkout-ի հետ"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -656,14 +644,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Ընտրեք պատկեր"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Պատկեր ընտրված չէ:"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Հեռացնել պատկերը"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2398,6 +2378,112 @@ msgid ""
 "Checkout."
 msgstr "Fluid Checkout-ն օգտագործելիս արտածեք Nyture թեմայից վճարման քայլերի բաժինը։"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Հնարավոր է՝ հարկադրված լինի նշել «պարտադիր», եթե հաշվի հասցեի բաժինը "
+"ցուցադրվում է առաքման հասցեի բաժնից հետո, իսկ հաշվի հեռախոսահամարի դաշտը "
+"սահմանված է որպես «պարտադիր»։ Սա անհրաժեշտ է՝ ապահովելու համար, որ առաքման "
+"հասցեն կարողանա պատճենվել հաշվի հասցեին, երբ այդ տարբերակը նշված է։"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Հնարավոր է՝ հարկադրված լինի նշել որպես «պարտադիր», եթե հաշվի հասցեի բաժինը "
+"ցուցադրվում է հաշվի հասցեի բաժնից հետո, իսկ հաշվի հեռախոսահամարի դաշտը "
+"սահմանված է որպես «պարտադիր»։ Սա անհրաժեշտ է՝ ապահովելու համար, որ հաշվի "
+"հասցեն կարողանա պատճենվել հաշվի հասցեին, երբ այդ տարբերակը նշված է։"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Թույլ է տալիս հաճախորդներին կատարել վճարումներ այն պատվերների համար, որոնք "
+"կամ ձեռքով են ստեղծվել խանութի ադմինիստրատորի կողմից, կամ չեն ավարտվել "
+"վճարման ընթացքում։"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers-ի WooCommerce Checkout Manager հավելվածը համատեղելի չէ Fluid "
+"Checkout-ի հետ։"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Ընկերության անվան դաշտ՝ հաշիվ-ապրանքագրի հասցեի համար"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Փոխեք ընկերության անվան դաշտի տեսանելիությունը վճարման ձևաթղթի վճարային "
+"հասցեի բաժնի համար։"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Թեմատիկ գրապահարան"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout-ն օգտագործելիս արտածեք Bookshelf թեմայից վճարման քայլերի "
+"բաժինը։"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Հաշվի գաղտնաբառ"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Պատվերը կատարելիս կստեղծվի հաշիվ՝ պատվերի ձևակերպման ժամանակ տրամադրված "
+"տեղեկություններով։"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Ընտրեք առաջընթացի գծի ոճը։"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Բարեր"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Թեմա՝ Իրեկա"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce էջի դասավորություն"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce էջերի վրա լայն դասավորություն պարտադրելը"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Սա ապահովում է, որ բովանդակության բաժինը չափազանց նեղ չլինի WooCommerce "
+"էջերում, ներառյալ վճարման, զամբյուղի, ստացված պատվերի, պատվերի վճարման և "
+"հաշվի էջերը։"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2515,3 +2601,8 @@ msgstr "Կամ շարունակեք ստորև"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Կամ շարունակեք որպես հյուր"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Հեռացնել պատկերը"

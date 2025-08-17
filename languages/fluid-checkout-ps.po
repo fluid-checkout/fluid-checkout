@@ -138,10 +138,6 @@ msgstr "ګام %1$s د %2$s څخه"
 msgid "Change: %s"
 msgstr "بدلون: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "د ورکړل شویو معلوماتو سره به یو حساب جوړ شي."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "لا نه دی غوره شوی."
@@ -401,14 +397,6 @@ msgstr "د پلگ ان درجه بندي کړئ"
 msgid "I need help!"
 msgstr "زه مرستې ته اړتیالرم!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"د کواډلیرز لخوا د WooCommerce Checkout Manager پلگ ان د Fluid Checkout سره "
-"مطابقت نلري."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -652,14 +640,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "یو انځور غوره کړئ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "هیڅ انځور نه دی غوره شوی."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "انځور لرې کړئ"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2374,6 +2354,109 @@ msgstr ""
 "د فلوډ چیک آوټ کارولو پر مهال د Nyture موضوع څخه د چیک آوټ مرحلو برخه بهر "
 "کړئ."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"که چیرې د بلینګ پته برخه د بار وړلو پتې برخې وروسته ښکاره شي، او د بلینګ "
+"تلیفون ساحه د &quot;اړین&quot; په توګه تنظیم شوې وي، نو شاید دا د "
+"&quot;لازمي&quot; په توګه جبري شي. دا اړینه ده چې ډاډ ترلاسه شي چې د بار "
+"وړلو پته د بلینګ پتې ته کاپي کیدی شي کله چې دا اختیار چک شي."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"که چیرې د بلینګ پته برخه د بلینګ پته برخې وروسته ښکاره شي، او د بلینګ "
+"تلیفون ساحه د &quot;لازمي&quot; په توګه تنظیم شوې وي، نو شاید دا د "
+"&quot;لازمي&quot; په توګه جبري شي. دا اړینه ده چې ډاډ ترلاسه شي چې د بلینګ "
+"پته د بلینګ پتې ته کاپي کیدی شي کله چې دا اختیار چک شي."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"پیرودونکو ته اجازه ورکوي چې د هغو فرمایشونو لپاره پیسې ورکړي چې یا د "
+"پلورنځي مدیر لخوا په لاسي ډول رامینځته شوي وي یا د چیک آوټ پرمهال بشپړ شوي "
+"نه وي."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"د کواډلایرز لخوا د WooCommerce Checkout Manager پلگ ان د Fluid Checkout سره "
+"مطابقت نلري."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "د بلینګ پتې لپاره د شرکت نوم ساحه"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "د چیک آوټ فورمه کې د بلینګ پتې برخې لپاره د شرکت نوم ساحې لپاره لید بدل کړئ."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "د موضوع کتابخانې"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"د فلوډ چیک آوټ کارولو پر مهال د کتاب الماریو موضوع څخه د چیک آوټ مرحلو برخه "
+"بهر کړئ."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "د حساب پټنوم"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"د امر بشپړولو پر مهال به د چیک آوټ په وخت کې چمتو شوي معلوماتو سره یو حساب "
+"جوړ شي."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "د پرمختګ بار سټایل غوره کړئ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "بارونه"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "موضوع ایریکا"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "د WooCommerce پاڼې ترتیب"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "د WooCommerce پاڼو کې پراخه ترتیب جبري کړئ"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"دا ډاډ ورکوي چې د WooCommerce پاڼو کې د منځپانګې برخه ډیره تنګه نه ده، "
+"پشمول د چیک آوټ، کارټ، ترلاسه شوي امر، د امر تادیه او حساب پاڼې."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2491,3 +2574,8 @@ msgstr "یا لاندې دوام ورکړئ"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "یا د میلمه په توګه دوام ورکړئ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "انځور لرې کړئ"

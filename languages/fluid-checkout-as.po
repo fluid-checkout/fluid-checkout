@@ -138,10 +138,6 @@ msgstr "%2$s ৰ %1$s স্তৰ"
 msgid "Change: %s"
 msgstr "পৰিবৰ্তন: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "দিয়া তথ্যৰ সৈতে এটা একাউণ্ট সৃষ্টি কৰা হ’ব।"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "এতিয়াও নিৰ্বাচিত হোৱা নাই।"
@@ -400,14 +396,6 @@ msgstr "প্লাগইনটোক ৰেটিং কৰক"
 msgid "I need help!"
 msgstr "মোক সহায়ৰ প্ৰয়োজন!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers দ্বাৰা প্লাগইন WooCommerce চেকআউট ব্যৱস্থাপক ফ্লুইড চেকআউটৰ সৈতে "
-"সামঞ্জস্যপূৰ্ণ নহয়"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -653,14 +641,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "এটা ছবি নিৰ্বাচন কৰক"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "কোনো ছবি নিৰ্বাচিত কৰা হোৱা নাই।"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "ছবি আঁতৰাওক"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2391,6 +2371,109 @@ msgstr ""
 "তৰল চেকআউট ব্যৱহাৰ কৰাৰ সময়ত Nyture থিমৰ পৰা চেকআউট পদক্ষেপসমূহ অংশ আউটপুট "
 "কৰক।"
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"হয়তো &quot;প্ৰয়োজনীয়&quot; হিচাপে বাধ্য কৰাব যদিহে বিলিং ঠিকনা অংশটো "
+"শিপিং ঠিকনা অংশৰ পিছত প্ৰদৰ্শিত হয়, আৰু বিলিং ফোন ক্ষেত্ৰখন "
+"&quot;প্ৰয়োজনীয়&quot; হিচাপে সংহতি কৰা হয়।"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"হয়তো &quot;প্ৰয়োজনীয়&quot; হিচাপে বাধ্য কৰাব যদি বিলিং ঠিকনা অংশটো বিলিং "
+"ঠিকনা অংশৰ পিছত প্ৰদৰ্শিত হয়, আৰু বিলিং ফোন ক্ষেত্ৰখন "
+"&quot;প্ৰয়োজনীয়&quot; হিচাপে সংহতি কৰা হয়।"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"গ্ৰাহকসকলক ষ্ট&#39;ৰ প্ৰশাসকে নিজেই সৃষ্টি কৰা বা চেকআউটৰ সময়ত সম্পূৰ্ণ "
+"নকৰা অৰ্ডাৰৰ বাবে পেমেণ্ট কৰিবলৈ অনুমতি দিয়ে।"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers দ্বাৰা প্লাগইন WooCommerce চেকআউট ব্যৱস্থাপক Fluid চেকআউটৰ সৈতে "
+"সুসংগত নহয়"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "বিলিং ঠিকনাৰ বাবে কোম্পানী নামৰ ক্ষেত্ৰ"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"চেকআউট প্ৰপত্ৰত বিলিং ঠিকনা অংশৰ বাবে কোম্পানী নামৰ ক্ষেত্ৰৰ বাবে "
+"দৃশ্যমানতা সলনি কৰক।"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "থিম বুকশ্বেল্ফ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"তৰল চেকআউট ব্যৱহাৰ কৰাৰ সময়ত বুকশ্বেল্ফ থিমৰ পৰা চেকআউট পদক্ষেপসমূহ অংশ "
+"আউটপুট কৰক।"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "একাউণ্টৰ পাছৱৰ্ড"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"অৰ্ডাৰ সম্পূৰ্ণ কৰাৰ সময়ত চেকআউটত দিয়া তথ্যৰ সৈতে এটা একাউণ্ট সৃষ্টি কৰা "
+"হ’ব।"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "অগ্ৰগতি বাৰৰ শৈলী বাছক।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "বাৰ"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "থিম ইৰেকা"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce পৃষ্ঠা বিন্যাস"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce পৃষ্ঠাসমূহত বহল বিন্যাস বলবৎ কৰক"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ইয়াৰ দ্বাৰা নিশ্চিত কৰা হয় যে চেকআউট, কাৰ্ট, লাভ কৰা অৰ্ডাৰ, অৰ্ডাৰ পে "
+"আৰু একাউণ্ট পৃষ্ঠাসমূহকে ধৰি WooCommerce পৃষ্ঠাসমূহত বিষয়বস্তুৰ অংশটো অতি "
+"সংকীৰ্ণ নহয়।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2508,3 +2591,8 @@ msgstr "বা তলত আগবাঢ়ক"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "বা অতিথি হিচাপে আগবাঢ়ি যাব"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "ছবি আঁতৰাওক"

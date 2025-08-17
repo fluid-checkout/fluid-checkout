@@ -138,10 +138,6 @@ msgstr "ნაბიჯი %1$s %2$s-დან"
 msgid "Change: %s"
 msgstr "შეცვლა: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "შეიქმნება ანგარიში მოწოდებული ინფორმაციით."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ჯერ არ არის შერჩეული."
@@ -400,14 +396,6 @@ msgstr "შეაფასეთ დანამატი"
 msgid "I need help!"
 msgstr "დახმარება მჭირდება!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"მოდული WooCommerce Checkout Manager by Quadlayers არ არის თავსებადი Fluid "
-"Checkout-თან"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -654,14 +642,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "აირჩიეთ სურათი"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "სურათი არ არის არჩეული."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "სურათის ამოღება"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2418,6 +2398,114 @@ msgstr ""
 "Fluid Checkout-ის გამოყენებისას Nyture თემიდან გამოიყვანეთ შეკვეთის "
 "გაფორმების ნაბიჯების განყოფილება."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"შესაძლოა, იძულებით იყოს მითითებული, როგორც „სავალდებულო“, თუ გადახდის "
+"მისამართის განყოფილება გამოჩნდება მიწოდების მისამართის განყოფილების შემდეგ "
+"და გადახდის ტელეფონის ველი დაყენებულია, როგორც „სავალდებულო“. ეს საჭიროა "
+"იმისათვის, რომ მიწოდების მისამართის კოპირება მოხდეს გადახდის მისამართზე, "
+"როდესაც ეს ოფცია მონიშნულია."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"შესაძლოა, იძულებით იყოს მითითებული, როგორც „სავალდებულო“, თუ გადახდის "
+"მისამართის განყოფილება გამოჩნდება გადახდის მისამართის სექციის შემდეგ და "
+"გადახდის ტელეფონის ველი დაყენებულია, როგორც „სავალდებულო“. ეს საჭიროა "
+"იმისათვის, რომ უზრუნველყოფილი იყოს გადახდის მისამართის კოპირება გადახდის "
+"მისამართზე, როდესაც ეს ოფცია მონიშნულია."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"მომხმარებლებს საშუალებას აძლევს, გადაიხადონ შეკვეთები, რომლებიც ან ხელით "
+"არის შექმნილი მაღაზიის ადმინისტრატორის მიერ, ან არ არის დასრულებული "
+"შეკვეთის გაფორმებისას."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers-ის WooCommerce Checkout Manager მოდული არ არის თავსებადი Fluid "
+"Checkout-თან."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "კომპანიის სახელის ველი გადახდის მისამართისთვის"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"შეცვალეთ კომპანიის სახელის ველის ხილვადობა გადახდის ფორმაში გადახდის "
+"მისამართის განყოფილებისთვის."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "თემატური წიგნების თარო"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout-ის გამოყენებისას, Bookshelf თემიდან გამოიტანეთ შეკვეთის "
+"გაფორმების ნაბიჯების განყოფილება."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ანგარიშის პაროლი"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"შეკვეთის დასრულებისას შეკვეთის გაფორმებისას მოწოდებული ინფორმაციით "
+"შეიქმნება ანგარიში."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "აირჩიეთ პროგრესის ზოლის სტილი."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ბარები"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "თემა ირეკა"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce გვერდის განლაგება"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce გვერდებზე ფართო განლაგების იძულებით გამოყენება"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ეს უზრუნველყოფს, რომ კონტენტის განყოფილება არ იყოს ძალიან ვიწრო WooCommerce "
+"გვერდებზე, მათ შორის გადახდის, კალათის, მიღებული შეკვეთის, შეკვეთის "
+"გადახდის და ანგარიშის გვერდებზე."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2535,3 +2623,8 @@ msgstr "ან გააგრძელეთ ქვემოთ"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "ან გააგრძელეთ სტუმრად"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "სურათის წაშლა"

@@ -62,8 +62,6 @@ class FluidCheckout_ThemeCompat_ThriveTheme extends FluidCheckout {
 		echo $header;
 	}
 
-
-
 	/**
 	 * Add footer elements from the theme.
 	 */

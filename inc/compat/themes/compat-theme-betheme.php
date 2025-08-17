@@ -47,6 +47,12 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 
 		// Remove redundant theme elements
 		remove_action( 'woocommerce_review_order_after_submit', 'mfn_return_cart_link', 10 );
+
+		// Buttons
+		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
+		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
 	}
 
 	/**
@@ -59,7 +65,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 
 
 
-	/*
+	/**
 	* Add or remove checkout page hooks.
 	*/
 	public function checkout_hooks() {
@@ -129,7 +135,7 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Bail if using distraction free header and footer
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
-		return $class . ' content_wrapper';
+		return $class . ' container';
 	}
 
 
@@ -228,35 +234,74 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Bail if theme function isn't available
 		if ( ! function_exists( 'mfn_opts_get' ) ) { return; }
 
-		// Get alpha value for theme's field backround color
-		$background_alpha = mfn_opts_get( 'form-transparent', 100 );
-		$background_alpha = str_replace( ',', '.', ( $background_alpha / 100 ) );
-
-		// Get theme's colors
-		$field_background_color_focus = esc_attr( mfn_opts_get( 'background-form-focus', '#E9F5FC' ), $background_alpha );
-		$field_text_color_focus = esc_attr( mfn_opts_get( 'color-form-focus', '#0089F7' ) );
+		// Get theme's form field colors and styles
+		$field_text_color = esc_attr( mfn_opts_get( 'color-form', '#626262' ) );
+		$field_background_color = esc_attr( mfn_opts_get( 'background-form', '#FFFFFF' ) );
 		$field_border_color = esc_attr( mfn_opts_get( 'border-form', '#EBEBEB' ) );
+		$field_border_width = trim( mfn_opts_get( 'form-border-width', '1px' ) );
+
+		// Get theme's form field border radius and convert to px if numeric
+		$field_border_radius = trim( mfn_opts_get( 'form-border-radius', '0' ) );
+		if ( is_numeric( $field_border_radius ) ) {
+			$field_border_radius .= 'px';
+		}
+
+		// Focus state
+		$field_text_color_focus = esc_attr( mfn_opts_get( 'color-form-focus', '#0089F7' ) );
+		$field_background_color_focus = esc_attr( mfn_opts_get( 'background-form-focus', '#E9F5FC' ) );
 		$field_border_color_focus = esc_attr( mfn_opts_get( 'border-form-focus', '#D5E5EE' ) );
 
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
-				// Form field styles
-				'--fluidcheckout--field--height'                                     => '45px',
-				'--fluidcheckout--field--padding-left'                               => '10px',
+				// Form field styles for Select2
+				'--fluidcheckout--field--height'                                     => '40px',
+				'--fluidcheckout--field--padding-left'                               => '7.5px',
+				'--fluidcheckout--field--font-size'                                  => '15px',
 				'--fluidcheckout--field--box-shadow'                                 => 'inset 0 0 2px 2px rgba( 0, 0, 0, .02 )',
 				'--fluidcheckout--field--border-color'                               => $field_border_color,
 				'--fluidcheckout--field--background-color--focus'                    => $field_background_color_focus,
 				'--fluidcheckout--field--background-color--accent'                   => $field_text_color_focus,
+				'--fluidcheckout--field--border-radius'                              => $field_border_radius,
 
-				// Custom theme variables
-				'--fluidcheckout--betheme--form-field--background-color--focus'      => $field_background_color_focus,
+				// Form field styles 
+				'--fluidcheckout--betheme--form-field--text-color'                   => $field_text_color,
+				'--fluidcheckout--betheme--form-field--background-color'             => $field_background_color,
+				'--fluidcheckout--betheme--form-field--border-color'                 => $field_border_color,
+				'--fluidcheckout--betheme--form-field--border-width'                 => $field_border_width,
+				'--fluidcheckout--betheme--form-field--border-radius'                => $field_border_radius,
+
+				// Focus state variables
 				'--fluidcheckout--betheme--form-field--text-color--focus'            => $field_text_color_focus,
+				'--fluidcheckout--betheme--form-field--background-color--focus'      => $field_background_color_focus,
 				'--fluidcheckout--betheme--form-field--border-color--focus'          => $field_border_color_focus,
 			),
 		);
 
 		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
+	/**
+	 * Add button class from the theme.
+	 * 
+	 * @param  array  $classes  The button classes.
+	 */
+	public function add_button_class( $classes ) {
+		// Define button class
+		$button_class = 'alt';
+
+		// Add button class to the classes array
+		if ( is_array( $classes ) ) {
+			array_push( $classes, $button_class );
+		}
+		// Otherwise append button class as a string
+		else {
+			$classes .= ' ' . $button_class;
+		}
+
+		return $classes;
 	}
 
 }

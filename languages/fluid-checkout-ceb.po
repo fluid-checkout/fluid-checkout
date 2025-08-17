@@ -138,10 +138,6 @@ msgstr "Lakang %1$s sa %2$s"
 msgid "Change: %s"
 msgstr "Kausaban: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Ang usa ka account pagahimoon uban sa impormasyon nga gihatag."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Wala pa gipili."
@@ -405,14 +401,6 @@ msgstr "I-rate ang plugin"
 msgid "I need help!"
 msgstr "Nagkinahanglan ko ug tabang!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Ang plugin nga WooCommerce Checkout Manager ni Quadlayers dili compatible "
-"sa Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -665,14 +653,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Pagpili og hulagway"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Walay hulagway nga gipili."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Kuhaa ang hulagway"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2461,6 +2441,111 @@ msgstr ""
 "I-output ang seksyon sa mga lakang sa pag-checkout gikan sa tema nga Nyture "
 "kung gamiton ang Fluid Checkout."
 
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Tingali mapugos ingon nga &quot;gikinahanglan&quot; kung ang seksyon sa "
+"address sa pagsingil gipakita pagkahuman sa seksyon sa adres sa pagpadala, "
+"ug ang uma sa telepono sa pagsingil gitakda nga &quot;gikinahanglan."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Tingali mapugos ingon nga &quot;gikinahanglan&quot; kung ang seksyon sa "
+"adres sa pagsingil gipakita pagkahuman sa seksyon sa adres sa pagsingil, ug "
+"ang uma sa telepono sa pagsingil gitakda nga &quot;gikinahanglan. "
+"Kinahanglan kini aron masiguro nga ang adres sa pagsingil mahimong makopya "
+"sa adres sa pagsingil kung gisusi kana nga kapilian."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Gitugotan ang mga kostumer nga magbayad alang sa mga order nga gihimo nga "
+"mano-mano sa admin sa tindahan o wala makompleto sa panahon sa pag-checkout."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Ang plugin nga WooCommerce Checkout Manager ni Quadlayers dili compatible "
+"sa Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Natad sa ngalan sa kompanya alang sa adres sa pagsingil"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Usba ang visibility para sa ngalan sa kompanya nga field para sa billing "
+"address section sa checkout form."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema nga Estante sa Libro"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"I-output ang seksyon sa mga lakang sa pag-checkout gikan sa tema sa "
+"Bookshelf kung gamiton ang Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Password sa account"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Ang usa ka account pagabuhaton uban sa impormasyon nga gihatag sa checkout "
+"sa diha nga ang pagkompleto sa order."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pilia ang estilo sa progress bar."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Mga bar"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema nga Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Layout sa panid sa WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Puwersa ang lapad nga layout sa mga panid sa WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Gisiguro niini nga ang seksyon sa sulud dili kaayo pig-ot sa mga panid sa "
+"WooCommerce lakip ang pag-checkout, cart, nadawat nga order, bayad sa order "
+"ug mga panid sa account."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2578,3 +2663,8 @@ msgstr "O magpadayon sa ubos"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "O magpadayon isip bisita"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Kuhaa ang hulagway"
