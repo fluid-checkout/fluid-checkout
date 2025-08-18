@@ -73,6 +73,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'change_checkout_field_args' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_change_shipping_company_field_args' ), 100 );
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
+		remove_filter( 'woocommerce_checkout_fields', array( $this, 'change_account_field_args' ), 100 );
 		remove_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
 
 		// Remove `screen-reader-text` from some fields

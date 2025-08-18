@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.8.1
-Stable tag: 4.0.6
+Tested up to: 6.8.2
+Stable tag: 4.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,8 +354,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 4.1.0 - 2025-08-17 =
 
+* Bump tested up to WordPress 6.8.2 and WooCommerce 10.1.0
 * Added: Support for new progress bar style options.
 * Added: Compatibility with theme Avanam.
 * Added: Compatibility with theme Bookshelf.
@@ -371,6 +372,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin TemplateMela Autorapid.
 * Added: Compatibility with plugin WooCommerce Bambora Gateway.
 * Added: Compatibility with plugin WooCommerce EU Vat & B2B.
+* Improved: Compatibility with theme Betheme.
 * Improved: Compatibility with theme Enfold.
 * Improved: Update checkout fragments when an item is removed from the cart using the mini cart widget from the site header.
 * Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.

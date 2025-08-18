@@ -1706,7 +1706,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$next_step_args = $this->get_next_step( $step_id, $context );
 
 		// Get default label for next step button
-		// translators: %s: Next checkout step title.
+		/** translators: Next checkout step title */
 		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
 
 		// Check whether a specific button label is available for the next step
@@ -3561,12 +3561,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_field_display_value_with_pattern( $field_value, $field_key, $field_options, $field_label, $show_field_label = false ) {
 		$field_display_value = $field_value;
 
-		// translators: %1$s the selected option text, %2$s the field label.
+		/** translators: Substep review field format */
 		$field_display_value_pattern = _x( '%1$s', 'Substep review field format', 'fluid-checkout' );
 
 		// Get field display value pattern
 		if ( $show_field_label ) {
-			// translators: %1$s the selected option text, %2$s the field label.
+			/* translators: %1$s the selected option text, %2$s the field label. */
 			$field_display_value_pattern = _x( '%2$s: %1$s', 'Substep review field format: with label', 'fluid-checkout' );
 		}
 
@@ -6385,7 +6385,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package[ 'rates' ];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			// translators: %d: Package index.
+			/** translators: %d: Package number */
 			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $package_index, $package );
 			$product_names = array();
 
