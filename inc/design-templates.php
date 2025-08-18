@@ -226,7 +226,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// Bail if styles are empty
 		if ( empty( $custom_styles ) ) { return; }
 
-		echo '<style id="fc-custom-styles">' . sanitize_text_field( esc_js( esc_html( $custom_styles ) ) ) . '</style>';
+		echo '<style id="fc-custom-styles">' . $custom_styles . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

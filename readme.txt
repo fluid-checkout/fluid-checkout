@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Header, Footer and Page background colors set in plugin settings not applying.
+
 = 4.1.0 - 2025-08-17 =
 
 * Bump tested up to WordPress 6.8.2 and WooCommerce 10.1.0
