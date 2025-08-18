@@ -47,6 +47,9 @@ class FluidCheckout_AdvancedFlatRateShippingForWooCommercePremium extends FluidC
 		// Shipping method subtitle
 		add_action( 'woocommerce_after_shipping_rate', array( $this, 'maybe_add_shipping_method_subtitle' ), 10 );
 
+		// Shipping method description
+		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_estimated_delivery_to_shipping_method_description' ), 15, 2 ); // Set 15 as priority to add after WooCommerce description
+
 		// Order summary
 		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( $this->public_class_object, 'afrsm_pro_wc_cart_shipping_method_label_callback' ), 10, 2 );
 	}
@@ -158,6 +161,41 @@ class FluidCheckout_AdvancedFlatRateShippingForWooCommercePremium extends FluidC
 		}
 
 		return $label;
+	}
+
+
+
+	/**
+	 * Maybe add estimated delivery to shipping method description.
+	 * 
+	 * @param  string            $shipping_method_description  Shipping method description.
+	 * @param  WC_Shipping_Rate  $method                       Shipping method rate data.
+	 */
+	public function maybe_add_estimated_delivery_to_shipping_method_description( $shipping_method_description, $method ) {
+		// Bail if not a target shipping method
+		if ( false === strpos( $method->id, 'advanced_flat_rate_shipping' ) ) { return $shipping_method_description; }
+
+		// Get shipping method ID parts
+		$method_id_parts = explode( ':', $method->id );
+
+		// Maybe get estimated delivery from post meta
+		$estimated_delivery = '';
+		if ( isset( $method_id_parts[ 1 ] ) ) {
+			$estimated_delivery = get_post_meta( $method_id_parts[ 1 ], 'sm_estimation_delivery', true );
+		}
+
+		// Maybe add estimated delivery to shipping method description
+		if ( ! empty( $estimated_delivery ) ) {
+			// Maybe add line break to existing description
+			if ( ! empty( $shipping_method_description ) ) {
+				$shipping_method_description .= ' <br>'; // Intentionally add a space before `<br>`
+			}
+
+			// Add estimated delivery
+			$shipping_method_description .= $estimated_delivery;
+		}
+
+		return $shipping_method_description;
 	}
 
 }
