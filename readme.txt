@@ -359,6 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Header, Footer and Page background colors set in plugin settings not applying.
 * Fixed: Progress bar steps marked as complete when they are actually the current step.
 * Fixed: Order summary and side bar section not interactive because of transparent pseudo element on top of it.
+* Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix payment processing error when using the plugin along with some other payment gateways.
 
 = 4.1.0 - 2025-08-17 =
 
