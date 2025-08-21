@@ -271,14 +271,14 @@ class FluidCheckout_PymntplPayPalWooCommerce extends FluidCheckout {
 		if ( is_admin() ) { return $skip; }
 
 		// Get posted chosen payment method
-		// Avoid using `FluidCheckout_Steps::instance()->get_selected_payment_method()` to prevent recursion
+		// Avoid using `FluidCheckout_Steps::instance()->get_selected_payment_method()` to prevent recursion and infinite loop.
 		$chosen_payment_method = '';
 		if ( isset( $_POST[ 'payment_method' ] ) ) {
 			$chosen_payment_method = $_POST[ 'payment_method' ];
 		}
 
 		// Skip if this is a REST request or if the checkout process has started
-		if ( ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || did_action( 'woocommerce_before_checkout_process' ) && 'ppcp' === $chosen_payment_method ) {
+		if ( ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || doing_action( 'woocommerce_before_checkout_process' ) || did_action( 'woocommerce_before_checkout_process' ) && 'ppcp' === $chosen_payment_method ) {
 			$skip = true;
 		}
 
