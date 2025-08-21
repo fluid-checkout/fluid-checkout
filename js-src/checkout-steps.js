@@ -348,7 +348,7 @@
 			}
 
 			// Update the `complete` status for each progress bar item
-			if ( stepIndex <= currentStepIndex ) {
+			if ( stepIndex < currentStepIndex ) {
 				bar.classList.add( _settings.isCompleteClass );
 			}
 			else {
