@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Header, Footer and Page background colors set in plugin settings not applying.
+* Fixed: Order summary and side bar section not interactive because of transparent pseudo element on top of it.
 
 = 4.1.0 - 2025-08-17 =
 
