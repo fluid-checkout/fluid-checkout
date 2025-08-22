@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Progress bar showing only steps title when invalid values are defined for the option. Should revert to default "Bars" style.
+
 = 4.1.1 - 2025-08-22 =
 
 * Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix payment processing error when using the plugin along with some other payment gateways.
