@@ -2530,7 +2530,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string  The progress bar style.
 	 */
 	public function get_progress_bar_style() {
-		return apply_filters( 'fc_checkout_progress_bar_style', FluidCheckout_Settings::instance()->get_option( 'fc_checkout_progress_bar_style' ) );
+		// Get progress bar style
+		$progress_bar_style = apply_filters( 'fc_checkout_progress_bar_style', FluidCheckout_Settings::instance()->get_option( 'fc_checkout_progress_bar_style' ) );
+		
+		// Validate, and revert to default if not valid
+		if ( ! in_array( $progress_bar_style, array( 'bars', 'breadcrumbs' ) ) ) {
+			$progress_bar_style = FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_progress_bar_style' );
+		}
+
+		return $progress_bar_style;
 	}
 
 	/**
