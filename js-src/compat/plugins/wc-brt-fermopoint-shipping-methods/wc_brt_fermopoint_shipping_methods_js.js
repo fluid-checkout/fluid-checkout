@@ -165,7 +165,7 @@ function isSelectedBrtFermopointShippingMethod(){
 
 function isShippingDifferentAddressChecked(){
 	var checkShipToDifferentAddress = jQuery('input[name=ship_to_different_address]').prop('checked');
-	console.log("checkShipToDifferentAddress", checkShipToDifferentAddress);
+	
 	if( checkShipToDifferentAddress ){
 		return true;
 	}
@@ -219,13 +219,18 @@ function getPudoFromCoords(coords) {
 
 		loading(true);
 
+		var coordsObj = {
+			latitude: coords.latitude ? coords.latitude : "",
+			longitude: coords.longitude ? coords.longitude : "",
+		};
+
 		jQuery.ajax({
 			type: "POST",
 			url : ajax_object.ajaxurl,
 			data: {
 				action: 'get_pudo_by_lat_lng',
 				security: ajax_object.security,
-				coords: coords,
+				coords: coordsObj,
 				show_locker: pudableLocker ? 'yes' : 'no'
 			},
 			success: function( data, textStatus, jqXHR ) {
