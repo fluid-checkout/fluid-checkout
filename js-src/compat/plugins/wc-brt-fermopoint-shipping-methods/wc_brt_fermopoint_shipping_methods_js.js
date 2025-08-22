@@ -559,7 +559,7 @@ jQuery( 'body' ).on( 'updated_checkout', checkPudableCartNew );
 function disablePudoShippingMethodNew(idError) {
 	jQuery(document).ajaxComplete(function(){
 		jQuery(document).ready(function(){
-			if( jQuery('.woocommerce-shipping-methods input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
+			if( jQuery('input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
 				if(jQuery('#wc_brt_fermopoint_shipping_methods_custom-tr_alert-' + idError ).length > 0){
 					jQuery('.wc_brt_tr_alert').hide();
 					jQuery('#wc_brt_fermopoint_shipping_methods_custom-tr_alert-' + idError ).show();
@@ -576,7 +576,7 @@ function disablePudoShippingMethodNew(idError) {
 function enablePudoShippingMethodNew() {
 	jQuery(document).ajaxComplete(function(){
 		jQuery(document).ready(function(){
-			if( jQuery('.woocommerce-shipping-methods input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
+			if( jQuery('input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
 				if(jQuery('.wc_brt_tr_alert').length > 0){
 					jQuery('.wc_brt_tr_alert').hide();
 				}
