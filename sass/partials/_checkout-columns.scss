@@ -48,7 +48,6 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 
 
 .fc-sidebar {
-	// z-index: z( 'default' ) + 2; // Needs to be higher than the split layout right column
 	position: static;
 	margin-top: 0 !important; // Needed to override theme styles
 
