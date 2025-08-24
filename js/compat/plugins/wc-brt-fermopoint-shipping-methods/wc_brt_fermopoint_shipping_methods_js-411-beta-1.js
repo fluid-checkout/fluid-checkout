@@ -559,6 +559,9 @@ jQuery( 'body' ).on( 'updated_checkout', checkPudableCartNew );
 function disablePudoShippingMethodNew(idError) {
 	jQuery(document).ajaxComplete(function(){
 		jQuery(document).ready(function(){
+			// CHANGE: Add bail statement to prevent alerts being loaded for other shipping methods
+			if ( ! isSelectedBrtFermopointShippingMethod() ) { return; }
+
 			if( jQuery('input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
 				if(jQuery('#wc_brt_fermopoint_shipping_methods_custom-tr_alert-' + idError ).length > 0){
 					jQuery('.wc_brt_tr_alert').hide();
