@@ -7,6 +7,18 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 	/**
+	 * Session field name for the selected pickup location.
+	 */
+	public const SESSION_FIELD_NAME = 'wc_brt_fermopoint-pudo_id';
+
+	/**
+	 * Session field name for the data associated with the selected pickup location.
+	 */
+	public const SESSION_FIELD_NAME_DATA = 'wc_brt_fermopoint-selected_pudo';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -34,6 +46,9 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Move fermopoint details section
 		remove_action( 'woocommerce_review_order_after_shipping', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'add_maps_or_list' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'add_maps_or_list' ), 10 );
+
+		// Persisted data
+		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Output hidden fields
 		remove_action( 'woocommerce_review_order_before_submit', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'my_custom_checkout_field' ), 10 );
@@ -127,12 +142,34 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 
 	/**
+	 * Maybe set session data for the terminals field.
+	 *
+	 * @param  array  $posted_data   Post data for all checkout fields.
+	 */
+	public function maybe_set_terminals_field_session_values( $posted_data ) {
+		// Bail if field values were not posted
+		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || ! array_key_exists( self::SESSION_FIELD_NAME_DATA, $posted_data ) ) { return $posted_data; }
+
+		// Bail if field values are empty
+		if ( empty( $posted_data[ self::SESSION_FIELD_NAME ] ) || empty( $posted_data[ self::SESSION_FIELD_NAME_DATA ] ) ) { return $posted_data; }
+
+		// Save field value to session, as it is needed for the plugin to recover its value
+		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+		WC()->session->set( self::SESSION_FIELD_NAME_DATA, $posted_data[ self::SESSION_FIELD_NAME_DATA ] );
+
+		// Return unchanged posted data
+		return $posted_data;
+	}
+
+
+
+	/**
 	 * Output the custom hidden fields.
 	 */
 	public function output_custom_hidden_fields( $checkout ) {
 		// Get fields values from session
-		$pudo_data = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-selected_pudo' );
-		$pudo_id = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-pudo_id' );
+		$pudo_data = WC()->session->get( self::SESSION_FIELD_NAME_DATA );
+		$pudo_id = WC()->session->get( self::SESSION_FIELD_NAME );
 
 		// Output custom hidden fields
 		echo '<div id="wc_brt_fermopoint-custom_checkout_fields" class="form-row fc-no-validation-icon">';
@@ -184,7 +221,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 			// Check whether the chosen method is fermpoint
 			if ( $method && 'wc_brt_fermopoint_shipping_methods_custom' === $method->method_id ) {
 				// Get the selected fermopoint data
-				$pudo_data = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-selected_pudo' );
+				$pudo_data = WC()->session->get( self::SESSION_FIELD_NAME_DATA );
 
 				// Check whether the selected fermopoint data is available
 				if ( ! empty( $pudo_data ) ) {
@@ -225,7 +262,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 			if ( ! $method || 'wc_brt_fermopoint_shipping_methods_custom' !== $method->method_id ) { continue; }
 
 			// Get the selected pudo ID
-			$pudo_id = FluidCheckout_Steps::instance()->get_checkout_field_value_from_session( 'wc_brt_fermopoint-pudo_id' );
+			$pudo_id = WC()->session->get( self::SESSION_FIELD_NAME );
 
 			// Maybe mark substep as incomplete if pickup location code is empty
 			if ( empty( $pudo_id ) ) {
