@@ -25,7 +25,7 @@
 	cursor: pointer;
 }
 .shop_table.shop_table_responsive {
-	overflow: visible !important;
+	overflow: visible !important; // Copied from plugin's `advanced-flat-rate-shipping-for-woocommerce-public.css`
 }
 /* Hide the tooltip content by default */
 .shipping-method__options [data-tooltip]:before,
@@ -79,7 +79,7 @@
 	opacity: 1;
 }
 .shipping-method__options .extra-flate-tool-tip ,.shipping-method__options .forceall-tooltip {
-	display: inline-block !important;
+	display: inline-block !important; // Copied from plugin's `advanced-flat-rate-shipping-for-woocommerce-public.css`
 	float: #{ $alignment-left };
 	margin-#{ $alignment-left }: 5px;
 	margin-#{ $alignment-right }: 5px;
@@ -120,6 +120,6 @@
 	visibility: visible;
 }
 .shipping-method__options .extra-flate-tool-tip, .shipping-method__options .forceall-tooltip {
-	float: none !important;
+	float: none !important; // Copied from plugin's `advanced-flat-rate-shipping-for-woocommerce-public.css`
 }
 // CHANGE: END - Copied from plugin's `advanced-flat-rate-shipping-for-woocommerce-public.css`
