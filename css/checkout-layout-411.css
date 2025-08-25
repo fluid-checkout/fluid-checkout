@@ -391,7 +391,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 }
 @media (min-width: 1000px) {
   .fc-sidebar {
-    z-index: 2;
+    z-index: 3;
     float: right;
     width: 37.5% !important;
     margin-top: 0 !important;
