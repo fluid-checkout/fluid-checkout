@@ -395,7 +395,6 @@
 	 * Handle captured `change` event and route to the appropriate functions.
 	 */
 	var handleChange = function( e ) {
-		console.log( 'handleChange', e.target.value );
 		// SELECT FIELD
 		if ( e.target.closest( _settings.wrapperElementSelector ) ) {
 			var wrapper = e.target.closest( _settings.wrapperElementSelector );
