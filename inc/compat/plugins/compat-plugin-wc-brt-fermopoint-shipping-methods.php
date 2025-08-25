@@ -7,6 +7,11 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 	/**
+	 * The shipping method id.
+	 */
+	public const SHIPPING_METHOD_ID = 'wc_brt_fermopoint_shipping_methods_custom';
+
+	/**
 	 * Session field name for the selected pickup location.
 	 */
 	public const SESSION_FIELD_NAME = 'wc_brt_fermopoint-pudo_id';
@@ -118,6 +123,39 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 
 	/**
+	 * Check whether the shipping method ID is BRT FermoPoint.
+	 * 
+	 * @param  string  $shipping_method_id  The shipping method ID.
+	 */
+	public function is_shipping_method_brt_fermopoint( $shipping_method_id ) {
+		return 0 === strpos( $shipping_method_id, self::SHIPPING_METHOD_ID );
+	}
+
+
+
+	/**
+	 * Check whether target shipping method is selected.
+	 */
+	public function is_shipping_method_selected() {
+		$is_selected = false;
+
+		// Check chosen shipping method
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			// Check if the target shipping method is selected
+			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			if ( $chosen_method && $this->is_shipping_method_brt_fermopoint( $chosen_method ) ) {
+				$is_selected = true;
+				break;
+			}
+		}
+
+		return $is_selected;
+	}
+
+
+
+	/**
 	 * Add maps or list output from the plugin, replacing `tr` elements with `div`.
 	 */
 	public function add_maps_or_list() {
@@ -159,6 +197,47 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 		// Return unchanged posted data
 		return $posted_data;
+	}
+
+
+
+	/**
+	 * Get the selected terminal data.
+	 */
+	public function get_selected_terminal_data() {
+		// Get session field value
+		$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME_DATA );
+
+		// Bail if terminal data is empty
+		if ( empty( $terminal_data ) ) { return; }
+
+		// Decode terminal data
+		$terminal_data = json_decode( $terminal_data, true );
+
+		// Get terminal address
+		$address = '';
+		if ( isset( $terminal_data[ 'street' ] ) && isset( $terminal_data[ 'streetNumber' ] ) ) {
+			$address = $terminal_data[ 'street' ] . ' ' . $terminal_data[ 'streetNumber' ];
+		}
+
+		// Get country
+		$country = '';
+		if ( isset( $terminal_data[ 'country' ] ) && WC_BRT_FermoPoint_Shipping_Methods::instance()->core && method_exists( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'translateIso3ToIso2CountryCode' ) ) {
+			// Maybe transform country code
+			$country = WC_BRT_FermoPoint_Shipping_Methods::instance()->core->translateIso3ToIso2CountryCode( $terminal_data[ 'country' ] );
+		}
+
+		// Assign terminal object property values to the corresponding array keys
+		$selected_terminal_data = array(
+			'company' => isset( $terminal_data[ 'pointName' ] ) ? esc_html( $terminal_data[ 'pointName' ] ) : '',
+			'address_1' => esc_html( $address ),
+			'postcode' => isset( $terminal_data[ 'zipCode' ] ) ? esc_html( $terminal_data[ 'zipCode' ] ) : '',
+			'city' => isset( $terminal_data[ 'town' ] ) ? esc_html( $terminal_data[ 'town' ] ) : '',
+			'state' => isset( $terminal_data[ 'state' ] ) ? esc_html( $terminal_data[ 'state' ] ) : '',
+			'country' => esc_html( $country )
+		);
+
+		return $selected_terminal_data;
 	}
 
 
@@ -210,31 +289,20 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
-		$packages = WC()->shipping()->get_packages();
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return $review_text_lines; }
 
-		foreach ( $packages as $i => $package ) {
-			// Get shipping method
-			$available_methods = $package['rates'];
-			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
-			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
 
-			// Check whether the chosen method is fermpoint
-			if ( $method && 'wc_brt_fermopoint_shipping_methods_custom' === $method->method_id ) {
-				// Get the selected fermopoint data
-				$pudo_data = WC()->session->get( self::SESSION_FIELD_NAME_DATA );
+		// Bail if terminal data is empty
+		if ( empty( $terminal_data ) ) { return $review_text_lines; }
 
-				// Check whether the selected fermopoint data is available
-				if ( ! empty( $pudo_data ) ) {
-					// Try to convert pudo data from JSON
-					$pudo_data = json_decode( $pudo_data, true );
+		// Format data
+		$formatted_address = WC()->countries->get_formatted_address( $terminal_data );
 
-					if ( is_array( $pudo_data ) && array_key_exists( 'pointName', $pudo_data ) ) {
-						// Add the chosen fermopoint PUDO
-						$review_text_lines[] = $pudo_data[ 'pointName' ];
-					}
-				}
-			}
-		}
+		// Add formatted address to the review text lines
+		$review_text_lines[] = $formatted_address;
 
 		return $review_text_lines;
 	}
@@ -250,25 +318,15 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Bail if substep is already incomplete
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
-		// Get shipping packages
-		$packages = WC()->shipping->get_packages();
-		foreach ( $packages as $i => $package ) {
-			// Get shipping method
-			$available_methods = $package['rates'];
-			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
-			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+		// Bail if target shipping method is not selected
+		if ( ! $this->is_shipping_method_selected() ) { return $is_substep_complete; }
 
-			// Skip package if shipping method selected is not UPS pickup location
-			if ( ! $method || 'wc_brt_fermopoint_shipping_methods_custom' !== $method->method_id ) { continue; }
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
 
-			// Get the selected pudo ID
-			$pudo_id = WC()->session->get( self::SESSION_FIELD_NAME );
-
-			// Maybe mark substep as incomplete if pickup location code is empty
-			if ( empty( $pudo_id ) ) {
-				$is_substep_complete = false;
-				break;
-			}
+		// Maybe set substep as incomplete if terminal is not selected
+		if ( empty( $terminal_data ) || empty( $terminal_data[ 'company' ] ) ) {
+			$is_substep_complete = false;
 		}
 
 		return $is_substep_complete;
