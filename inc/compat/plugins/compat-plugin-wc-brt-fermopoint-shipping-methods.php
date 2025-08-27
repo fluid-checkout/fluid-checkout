@@ -57,7 +57,6 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Output hidden fields
-		remove_action( 'woocommerce_review_order_before_submit', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'my_custom_checkout_field' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 
 		// Checkout validation settings
@@ -166,24 +165,57 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 	/**
 	 * Add maps or list output from the plugin, replacing `tr` elements with `div`.
+	 * COPIED AND ADAPTED FROM: WC_BRT_FermoPoint_Shipping_Methods::instance()->core->add_maps_or_list().
 	 */
 	public function add_maps_or_list() {
-		// Get the maps or list output from the plugin
-		ob_start();
-		WC_BRT_FermoPoint_Shipping_Methods::instance()->core->add_maps_or_list();
-		$html = ob_get_clean();
+		// Bail if required class or object is not available
+		if ( ! class_exists( 'WC_BRT_FermoPoint_Shipping_Methods' ) || null === WC_BRT_FermoPoint_Shipping_Methods::instance()->core ) { return; }
 
-		// Replace `tr` elements with `div`
-		$replace = array(
-			'<tr' => '<div',
-			'</tr' => '</div',
-			'<td' => '<div',
-			'</td' => '</div',
-		);
-		$html = str_replace( array_keys( $replace ), array_values( $replace ), $html );
+		// CHANGE: Replace `tr` and `td` elements with `div`.
+		echo '<div id="wc_brt_fermopoint_shipping_methods_custom-tr_container"><div><div id="wc_brt_fermopoint_shipping_methods_custom-div_container">';
 
-		// Output
-		echo $html;
+		if ( WC_BRT_FermoPoint_Shipping_Methods::instance()->core->use_google_map == 'yes' ){
+			echo "<h3 class='pudo-label'>Per procedere, selezionare sulla mappa il punto di ritiro BRT-Fermpoint</h3>";
+		} 
+		else {
+			echo "<h3 class='pudo-label'>Per procedere, selezionare dalla lista il punto di ritiro BRT-Fermpoint</h3>";
+		}
+
+		if ( WC_BRT_FermoPoint_Shipping_Methods::instance()->core->use_geolocation == 'yes' ) {
+			echo "<i class='geoloc-pudo-label'>La geolocalizzazione può avvenire attraverso l'indirizzo scelto per la spedizione, oppure abilitando il rilevamento della posizione del browser</i>";
+		}
+		else {
+			echo "<i class='geoloc-pudo-label'>La geolocalizzazione avviene attraverso l'indirizzo scelto per la spedizione</i>";
+		}
+		
+		if ( WC_BRT_FermoPoint_Shipping_Methods::instance()->core->use_google_map == 'yes' ){
+			WC_BRT_FermoPoint_Shipping_Methods::instance()->core->initGoogleMap();
+		} 
+		else {
+			WC_BRT_FermoPoint_Shipping_Methods::instance()->core->initListaPudo();
+		}
+
+		echo "<i class='payment-pudo-label'>Per questa modalità di spedizione, l'eventuale pagamento in contrassegno è disabilitato</i>";
+
+		// CHANGE: Remove the `#wc_brt_fermopoint-custom_checkout_fields` section to avoid duplication of hidden fields.
+
+		echo "</div></div></div>";
+
+		echo '<div id="wc_brt_fermopoint_shipping_methods_custom-tr_alert-no_pudable_products" class="wc_brt_tr_alert"><div><div id="wc_brt_fermopoint_shipping_methods_custom-div_alert-no_pudable_products" class="wc_brt_div_alert">';
+			echo '<div class="alert" role="alert">Alcuni dei prodotti all\'interno del carrello superano il peso e la dimensione massima consentita per la spedizione presso un punto di ritiro BRT-Fermopoint</div>';
+		echo "</div></div></div>";
+
+		echo '<div id="wc_brt_fermopoint_shipping_methods_custom-tr_alert-no_pudable_fields" class="wc_brt_tr_alert"><div><div id="wc_brt_fermopoint_shipping_methods_custom-div_alert-no_pudable_fields" class="wc_brt_div_alert">';
+			echo '<div class="alert" role="alert">Per utilizzare il metodo di spedizione BRT-Fermopoint, compilare il campo "Paese", "email" e "telefono".</div>';
+		echo "</div></div></div>";
+
+		echo '<div id="wc_brt_fermopoint_shipping_methods_custom-tr_alert-no_pudo_found" class="wc_brt_tr_alert"><div><div id="wc_brt_fermopoint_shipping_methods_custom-div_alert-no_pudo_found" class="wc_brt_div_alert">';
+			echo '<div class="alert" role="alert">Nessun BRT-Fermopoint trovato. Verificare di aver compilato correttamente i campi "CAP", "Città" e "Paese".</div>';
+		echo "</div></div></div>";
+
+		echo '<div id="wc_brt_fermopoint_shipping_methods_custom-tr_alert-generic_error" class="wc_brt_tr_alert"><div><div id="wc_brt_fermopoint_shipping_methods_custom-div_alert-generic_error" class="wc_brt_div_alert">';
+			echo '<div class="alert" role="alert">Si è verificato un errore. Si prega di riprovare più tardi.</div>';
+		echo "</div></div></div>";
 	}
 
 
