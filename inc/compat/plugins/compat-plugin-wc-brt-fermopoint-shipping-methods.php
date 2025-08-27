@@ -44,6 +44,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -75,9 +76,6 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Scripts
-		wp_register_script( 'wc_brt_fermopoint_shipping_methods_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/wc_brt_fermopoint_shipping_methods_js' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-fermopoint', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/checkout-validation-fermopoint' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-fermopoint', 'window.addEventListener("load",function(){CheckoutValidationFermopoint.init(fcSettings.checkoutValidationFermopoint);})' );
@@ -99,6 +97,17 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+	/**
+	 * Maybe replace plugin scripts with modified version.
+	 */
+	public function maybe_replace_plugin_scripts() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Scripts
+		wp_register_script( 'wc_brt_fermopoint_shipping_methods_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-brt-fermopoint-shipping-methods/wc_brt_fermopoint_shipping_methods_js' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
