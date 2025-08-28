@@ -165,7 +165,6 @@ function isSelectedBrtFermopointShippingMethod(){
 
 function isShippingDifferentAddressChecked(){
 	var checkShipToDifferentAddress = jQuery('input[name=ship_to_different_address]').prop('checked');
-	
 	if( checkShipToDifferentAddress ){
 		return true;
 	}
