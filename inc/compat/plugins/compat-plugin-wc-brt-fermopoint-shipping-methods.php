@@ -284,17 +284,23 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Decode terminal data
 		$terminal_data = json_decode( $terminal_data, true );
 
+		// Get pickup point country
+		$terminal_country = '';
+		if ( isset( $terminal_data[ 'country' ] ) && WC_BRT_FermoPoint_Shipping_Methods::instance()->core && method_exists( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'translateIso3ToIso2CountryCode' ) ) {
+			// Maybe transform country code
+			$terminal_country = WC_BRT_FermoPoint_Shipping_Methods::instance()->core->translateIso3ToIso2CountryCode( $terminal_data[ 'country' ] );
+		}
+
+		// Get selected shipping country
+		$shipping_country = WC()->customer->get_shipping_country();
+
+		// Bail if country from the selected pickup point doesn't match the shipping country
+		if ( ! empty( $terminal_country ) && $terminal_country !== $shipping_country ) { return; }
+
 		// Get terminal address
 		$address = '';
 		if ( isset( $terminal_data[ 'street' ] ) && isset( $terminal_data[ 'streetNumber' ] ) ) {
 			$address = $terminal_data[ 'street' ] . ' ' . $terminal_data[ 'streetNumber' ];
-		}
-
-		// Get country
-		$country = '';
-		if ( isset( $terminal_data[ 'country' ] ) && WC_BRT_FermoPoint_Shipping_Methods::instance()->core && method_exists( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'translateIso3ToIso2CountryCode' ) ) {
-			// Maybe transform country code
-			$country = WC_BRT_FermoPoint_Shipping_Methods::instance()->core->translateIso3ToIso2CountryCode( $terminal_data[ 'country' ] );
 		}
 
 		// Assign terminal object property values to the corresponding array keys
@@ -304,7 +310,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 			'postcode' => isset( $terminal_data[ 'zipCode' ] ) ? esc_html( $terminal_data[ 'zipCode' ] ) : '',
 			'city' => isset( $terminal_data[ 'town' ] ) ? esc_html( $terminal_data[ 'town' ] ) : '',
 			'state' => isset( $terminal_data[ 'state' ] ) ? esc_html( $terminal_data[ 'state' ] ) : '',
-			'country' => esc_html( $country )
+			'country' => esc_html( $terminal_country )
 		);
 
 		return $selected_terminal_data;
@@ -319,6 +325,14 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		// Get fields values from session
 		$pudo_data = WC()->session->get( self::SESSION_FIELD_NAME_DATA );
 		$pudo_id = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Get selected terminal data
+		$terminal_data = $this->get_selected_terminal_data();
+
+		// Maybe reset the PUDO ID value
+		if ( empty( $terminal_data ) ) {
+			$pudo_id = '';
+		}
 
 		// Output custom hidden fields
 		echo '<div id="wc_brt_fermopoint-custom_checkout_fields" class="form-row fc-no-validation-icon">';
