@@ -12,4 +12,5 @@ $_body-theme-selector:                 '.theme-twentytwentytwo' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"order-summary",
 	"checkout-shipping-methods";
