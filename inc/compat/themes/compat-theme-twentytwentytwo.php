@@ -21,6 +21,10 @@ class FluidCheckout_ThemeCompat_TwentyTwentyTwo extends FluidCheckout {
 	public function hooks() {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
 		// Buttons
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
@@ -49,6 +53,32 @@ class FluidCheckout_ThemeCompat_TwentyTwentyTwo extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_before_order_review_heading', array( 'WC_Twenty_Twenty_Two', 'before_order_review' ) );
 		remove_action( 'woocommerce_checkout_after_order_review', array( 'WC_Twenty_Twenty_Two', 'after_order_review' ) );
 	}
+
+
+
+	/**
+	 * Add CSS variables.
+	 * 
+	 * @param  array  $css_variables  The CSS variables key/value pairs.
+	 */
+	public function add_css_variables( $css_variables ) {
+		// Add CSS variables
+		$new_css_variables = array(
+			':root' => array(
+				// Form field styles
+				'--fluidcheckout--field--height' => '49.7969px',
+				'--fluidcheckout--field--padding-left' => '17.6px',
+				'--fluidcheckout--field--border-radius' => '4px',
+				'--fluidcheckout--field--border-color' => 'var(--wc-form-border-color, #212121)',
+				'--fluidcheckout--field-text-color' => 'inherit',
+			),
+		);
+
+		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+
+
 	/**
 	 * Add button class from the theme.
 	 * 
