@@ -1,0 +1,9 @@
+body.theme-twentytwentytwo input[type=radio].shipping_method:checked + label::before,
+body.theme-twentytwentytwo input[type=radio][name=payment_method]:checked + label::before {
+  background: inherit;
+}
+
+body.theme-twentytwentytwo .woocommerce ul#shipping_method .shipping-method__option input[type=radio] + .shipping-method__option-label:after {
+  top: 13px;
+  left: 14px;
+}
