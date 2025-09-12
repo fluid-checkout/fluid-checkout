@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin Advanced Flat Rate Shipping For WooCommerce Premium.
 * Added: Compatibility with plugin Flat Rate Shipping Method for WooCommerce.
+* Added: Compatibility with plugin Min Max Step Quantity Limits Manager for WooCommerce.
 * Fixed: Progress bar showing only steps title when invalid values are defined for the option. Should revert to default "Bars" style.
 
 = 4.1.1 - 2025-08-22 =
