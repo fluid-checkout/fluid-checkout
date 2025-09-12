@@ -340,8 +340,11 @@ function translateWithDeepl( text, targetLang, callback ) {
 	import( 'node-fetch' ).then( function ( fetch ) {
 		fetch.default( deeplApiUrl, {
 			method: 'POST',
-			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			body: 'auth_key=' + deeplApiKey + '&text=' + encodeURIComponent( text ) + '&source_lang=EN' + '&target_lang=' + targetLang
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Authorization': 'DeepL-Auth-Key ' + deeplApiKey
+			},
+			body: 'text=' + encodeURIComponent( text ) + '&source_lang=EN' + '&target_lang=' + targetLang
 		} )
 		.then( function( response ) {
 			// Handle API error
@@ -497,6 +500,7 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 						// Translate with Deepl if supported, otherwise use Google Translate
 						var useDeepl = langSettings.deepl !== null;
 						var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
+						var translationSource = useDeepl ? 'deepl' : 'google';
 						var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ];
 
 						translateFunction( strToTranslate, apiTargetLang, function( err, translatedText ) {
@@ -517,12 +521,12 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 
 								// Log translated text
 								var indexString = msgstrIndex > 0 ? '(' + msgstrIndex + ')' : '';
-								console.log( 'Translated: ' + targetLang + ' ' + indexString + ' ' + strToTranslate + ' -> ' + translatedText );
+								console.log( 'Translated: ' + targetLang + ' ' + translationSource + ' ' + indexString + ' ' + strToTranslate + ' -> ' + translatedText );
 
 								// Update PO file
 								fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
 
-								// // Move to next translation
+								// Move to next translation
 								msgstrIndex++;
 								translateNextMsgstr();
 							}
@@ -640,7 +644,9 @@ gulp.task( 'translate-po', function ( done ) {
 	translateNext();
 } );
 
-// Update the 'update-translations' task to include 'translate-po'
+// Run:
+// gulp update-translations
+// Update translations
 gulp.task( 'update-translations', gulp.series( 'translate-po', function ( done ) {
 	var tasks = Object.keys( _gulpSettings.languages ).map( function( lang ) {
 		return function ( done2 ) {
