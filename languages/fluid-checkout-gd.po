@@ -139,10 +139,6 @@ msgstr "Ceum %1$s à %2$s"
 msgid "Change: %s"
 msgstr "Atharrachadh: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Thèid cunntas a chruthachadh leis an fhiosrachadh a chaidh a thoirt seachad."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Gun taghadh fhathast."
@@ -409,14 +405,6 @@ msgstr "Dèan measadh air a’ plugan"
 msgid "I need help!"
 msgstr "Tha feum agam air cuideachadh!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Chan eil am plugan WooCommerce Checkout Manager le Quadlayers co-chòrdail "
-"ri Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -667,14 +655,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Tagh dealbh"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Cha deach dealbh a thaghadh."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Thoir air falbh dealbh"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2457,6 +2437,128 @@ msgstr ""
 "gum bi thu airson seo a dhì-chomasachadh ma tha thu a’ cleachdadh "
 "stoidhlichean gnàthaichte airson raointean foirm pàighidh Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Cuspair Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Cuir a-mach an earrann ceumannan pàighidh bhon chuspair Nyture nuair a "
+"bhios tu a’ cleachdadh Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dh’fhaodadh gum bi e air a sparradh mar “riatanach” ma thèid an earrann "
+"seòlaidh bileachaidh a thaisbeanadh às dèidh earrann seòlaidh luingeis, "
+"agus ma tha an raon fòn bileachaidh air a shuidheachadh mar “riatanach”. "
+"Tha feum air seo gus dèanamh cinnteach gun gabh an seòladh luingeis a "
+"chopaigeadh chun t-seòlaidh bileachaidh nuair a thèid an roghainn sin a "
+"chomharrachadh."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Dh’fhaodadh gum bi e air a sparradh mar “riatanach” ma thèid an earrann "
+"seòlaidh bileachaidh a thaisbeanadh às dèidh earrann seòlaidh bileachaidh, "
+"agus ma tha an raon fòn bileachaidh air a shuidheachadh mar “riatanach”. "
+"Tha feum air seo gus dèanamh cinnteach gun gabh an seòladh bileachaidh a "
+"chopaigeadh chun t-seòlaidh bileachaidh nuair a thèid an roghainn sin a "
+"chomharrachadh."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Leigidh seo le luchd-ceannach pàighidhean a dhèanamh airson òrdughan a "
+"chaidh a chruthachadh le làimh le rianaire a’ bhùtha no nach deach a "
+"chrìochnachadh aig àm an pàighidh."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Chan eil am plugan WooCommerce Checkout Manager le Quadlayers co-chòrdail "
+"ri Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Raon ainm companaidh airson seòladh bileachaidh"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Atharraich faicsinneachd airson raon ainm a’ chompanaidh airson earrann "
+"seòlaidh bileachaidh air foirm an àite-pàighidh."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Sgeilp Leabhraichean Cuspair"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Cuir a-mach an earrann ceumannan pàighidh bhon chuspair Leabhraichean nuair "
+"a bhios tu a’ cleachdadh Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Facal-faire a’ chunntais"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Thèid cunntas a chruthachadh leis an fhiosrachadh a chaidh a thoirt seachad "
+"aig an àite-pàighidh nuair a bhios an t-òrdugh deiseil."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Tagh stoidhle a’ bhàr adhartais."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bàraichean"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Cuspair Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Cruth duilleag WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Feachd cruth farsaing air duilleagan WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Nì seo cinnteach nach bi an earrann susbaint ro chumhang air duilleagan "
+"WooCommerce a’ gabhail a-steach duilleagan pàighidh, cairt, òrdugh a "
+"fhuaireadh, òrdugh a phàigheadh agus cunntas."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2574,3 +2676,8 @@ msgstr "No lean ort gu h-ìosal"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "No lean ort mar aoigh"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Thoir air falbh an dealbh"

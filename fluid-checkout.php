@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 4.0.6-beta-16
+Version: 4.1.2-beta-2
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 9.8.3
+WC tested up to: 10.1.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -541,7 +541,7 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Check if Fluid Checkout PRO is active on a single install or network wide.
+	 * Check if a plugin is active on a single install or network wide.
 	 * 
 	 * @param  string  $plugin_file   The plugin file name.
 	 * @since 3.0.0
@@ -589,10 +589,12 @@ class FluidCheckout {
 		$action_url = admin_url( 'plugin-install.php?s=' . $required_plugin_search_term . '&tab=search&type=term' );
 
 		if ( ! is_wp_error( validate_plugin( $required_plugin_path_name ) ) ) {
+			/** translators: %s: Required plugin name. */
 			$action_label = wp_kses_post( sprintf( __( 'Activate %s', 'fluid-checkout' ), $required_plugin_name ) );
 			$action_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_plugin_path_name ), 'activate-plugin_' . $required_plugin_path_name );
 		}
 		
+		/** translators: %1$s: Plugin name, %2$s: Required plugin name, %3$s: Action label, %4$s: Action URL. */
 		$description = wp_kses_post( sprintf( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%4$s">%3$s</a>', 'fluid-checkout' ),
 			self::$plugin,
 			$required_plugin_name,

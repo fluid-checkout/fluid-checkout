@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce-checkout-payment .wc_payment_methods {
+	padding-#{ $alignment-left }: 0 !important; // Needed to override theme styles with !important
+	padding-#{ $alignment-right }: 0 !important; // Needed to override theme styles with !important
+}

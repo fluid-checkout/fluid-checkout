@@ -331,10 +331,6 @@ msgstr "Vous avez déjà un compte?"
 msgid "Always show"
 msgstr "Toujours montrer"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Un compte sera créé avec les informations fournies."
-
 #: inc/checkout-fields.php:181
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Appartement, unité, immeuble, étage, etc."
@@ -2216,14 +2212,6 @@ msgstr ""
 "bouton de suppression et du lien vers la page du produit ajoutées par le "
 "thème sont désactivées par défaut."
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Le plugin WooCommerce Checkout Manager de Quadlayers n'est pas compatible "
-"avec Fluid Checkout"
-
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -2573,14 +2561,6 @@ msgstr ""
 "Votre commande a un montant total dû de %s. Aucun autre paiement n’est "
 "nécessaire."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Aucune image n'est sélectionnée."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Supprimer l'image"
-
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
 msgstr "Thème The7"
@@ -2639,6 +2619,126 @@ msgstr ""
 "optimisés pour la compatibilité avec le plugin. Vous pouvez désactiver "
 "cette option si vous utilisez des styles personnalisés pour les champs du "
 "formulaire de paiement Stripe."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Thème Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"La section des étapes de paiement du thème Nyture est supprimée lors de "
+"l'utilisation de Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Peut être forcé comme \"obligatoire\" si la section de l'adresse de "
+"facturation est affichée après la section de l'adresse d'expédition et que "
+"le champ du téléphone de facturation est défini comme \"obligatoire\". Ceci "
+"est nécessaire pour s'assurer que l'adresse d'expédition peut être copiée "
+"dans l'adresse de facturation lorsque cette option est cochée."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Peut être forcé comme \"obligatoire\" si la section de l'adresse de "
+"facturation est affichée après la section de l'adresse de facturation et "
+"que le champ du téléphone de facturation est défini comme \"obligatoire\". "
+"Ceci est nécessaire pour s'assurer que l'adresse de facturation peut être "
+"copiée dans l'adresse de facturation lorsque cette option est cochée."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Permet aux clients d'effectuer des paiements pour des commandes qui ont été "
+"créées manuellement par l'administrateur du magasin ou qui n'ont pas été "
+"complétées lors du passage à la caisse."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Le plugin WooCommerce Checkout Manager de Quadlayers n'est pas compatible "
+"avec Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Champ du nom de l'entreprise pour l'adresse de facturation"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Modifier la visibilité du champ \"nom de l'entreprise\" dans la section "
+"\"adresse de facturation\" du formulaire de commande."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Bibliothèque à thème"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"La section sur les étapes de paiement du thème Bookshelf est supprimée "
+"lorsque vous utilisez Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Mot de passe du compte"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Un compte sera créé avec les informations fournies à la caisse lors de la "
+"finalisation de la commande."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Choisissez le style de la barre de progression."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barres"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Thème Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Mise en page WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Forcer la mise en page large sur les pages WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Cela permet de s'assurer que la section de contenu n'est pas trop étroite "
+"sur les pages de WooCommerce, y compris les pages de paiement, de panier, "
+"de commande reçue, de paiement de la commande et de compte."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2761,3 +2861,8 @@ msgstr "%2$s: %1$s"
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Aucun."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Supprimer l'image"

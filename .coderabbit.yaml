@@ -1,0 +1,25 @@
+# Minimal configuration for getting started
+language: "en-US"
+
+reviews:
+  path_filters:
+    # Explicitly include these folders
+    - "*.*"             # Include all files in the root folder
+    - "blocks/**"
+    - "inc/**"
+    - "js-src/**"
+    - "sass/**"
+    - "templates/**"
+    # Exclude these
+    - "!**/build/**"
+    - "!**/css/**"
+    - "!**/js/**"
+    - "!**/languages/**"
+    - "!**/node_modules/**"
+    - "!**/vendor/**"
+  profile: "chill"
+  high_level_summary: true
+  auto_review:
+    enabled: true
+    drafts: false
+  poem: false

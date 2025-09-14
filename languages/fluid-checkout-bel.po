@@ -139,10 +139,6 @@ msgstr "Крок %1$s з %2$s"
 msgid "Change: %s"
 msgstr "Змена: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "З прадстаўленай інфармацыяй будзе створаны ўліковы запіс."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Яшчэ не выбраны."
@@ -406,14 +402,6 @@ msgstr "Ацаніце плагін"
 msgid "I need help!"
 msgstr "Мне патрэбна дапамога!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Убудова WooCommerce Checkout Manager ад Quadlayers несумяшчальны з Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -659,14 +647,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Выберыце малюнак"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Відарыс не выбраны."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Выдаліць выяву"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2416,6 +2396,126 @@ msgstr ""
 "сумяшчальнасці з плагінам. Вы можаце адключыць гэту функцыю, калі "
 "выкарыстоўваеце ўласныя стылі для палёў плацежнай формы Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Тэма Найтура"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Вывесці раздзел крокаў афармлення замовы з тэмы Nyture пры выкарыстанні "
+"Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Магчыма, будзе прымусова ўсталявана як «абавязковая», калі раздзел адраса "
+"для выстаўлення рахункаў адлюстроўваецца пасля раздзела адраса дастаўкі, а "
+"поле тэлефона для выстаўлення рахункаў усталявана як «абавязковая». Гэта "
+"неабходна для таго, каб адрас дастаўкі можна было скапіяваць у адрас для "
+"выстаўлення рахункаў, калі гэтая опцыя ўключана."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Магчыма, будзе прымусова ўсталявана як «абавязковая», калі раздзел адраса "
+"для выстаўлення рахункаў адлюстроўваецца пасля раздзела адраса для "
+"выстаўлення рахункаў, а поле тэлефона для выстаўлення рахункаў усталявана "
+"як «абавязковая». Гэта неабходна для таго, каб адрас для выстаўлення "
+"рахункаў можна было скапіяваць у адрас для выстаўлення рахункаў, калі гэтая "
+"опцыя ўключана."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Дазваляе кліентам ажыццяўляць аплату за заказы, якія былі створаны ўручную "
+"адміністратарам крамы або не былі завершаны падчас афармлення замовы."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Убудова WooCommerce Checkout Manager ад Quadlayers не сумяшчальная з Fluid "
+"Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Поле назвы кампаніі для адраса для выстаўлення рахункаў"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Змяніць бачнасць поля назвы кампаніі ў раздзеле плацежнага адраса ў форме "
+"афармлення замовы."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тэматычная кніжная паліца"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Вывесці раздзел крокаў афармлення замовы з тэмы Bookshelf пры выкарыстанні "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Пароль уліковага запісу"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Уліковы запіс будзе створаны з выкарыстаннем інфармацыі, указанай пры "
+"афармленні замовы."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Выберыце стыль індыкатара прагрэсу."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Бары"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тэма Ірэка"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Макет старонкі WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Прымусовае шырокае размяшчэнне на старонках WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Гэта гарантуе, што раздзел зместу на старонках WooCommerce, уключаючы "
+"афармленне замовы, кошык, атрыманне замовы, аплату замовы і старонкі "
+"ўліковага запісу, не будзе занадта вузкім."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2533,3 +2633,8 @@ msgstr "Або працягнуць ніжэй"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Або працягнуць як госць"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Выдаліць выяву"

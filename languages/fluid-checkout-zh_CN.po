@@ -138,10 +138,6 @@ msgstr "步骤 %1$s of %2$s"
 msgid "Change: %s"
 msgstr "变化：%s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "将根据所提供的信息创建一个账户。"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "尚未选定。"
@@ -379,12 +375,6 @@ msgstr "为插件评分"
 msgid "I need help!"
 msgstr "我需要帮助！"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "Quadlayers 的 WooCommerce Checkout Manager 插件与 Fluid Checkout 不兼容。"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -607,14 +597,6 @@ msgstr "所有附加组件均单独销售，并且需要安装和激活 <strong>
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "选择图像"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "未选择图像。"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "移除图像"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2157,6 +2139,104 @@ msgid ""
 "styles for the Stripe payment form fields."
 msgstr "启用后，Fluid Checkout 将应用为与插件兼容而优化的样式。如果您对 Stripe 支付表单字段使用自定义样式，则可能需要禁用此功能。"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "主题 Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "使用 Fluid Checkout 时，输出 Nyture 主题中的结账步骤部分。"
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"如果账单地址部分显示在送货地址部分之后，且账单电话字段设置为 \"必填\"，则可强制设置为 "
+"\"必填\"。这样可以确保在选中该选项时，送货地址可以复制到账单地址。"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"如果账单地址部分显示在账单地址部分之后，且账单电话字段设置为 \"必填\"，则可强制设置为 "
+"\"必填\"。这样可以确保在选中该选项时，账单地址可以复制到账单地址。"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr "允许客户为商店管理员手动创建或结账时未完成的订单付款。"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "Quadlayers 的 WooCommerce Checkout Manager 插件与 Fluid Checkout 不兼容。"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "账单地址的公司名称字段"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "更改结账表单账单地址部分公司名称字段的可见性。"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "主题书架"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "使用 Fluid Checkout 时，输出 Bookshelf 主题中的结账步骤部分。"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "账户密码"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "在完成订单时，将使用结账时提供的信息创建一个账户。"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "选择进度条的样式。"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "酒吧"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "主题 Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce 页面布局"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "在 WooCommerce 页面上强制使用宽布局"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr "这可确保 WooCommerce 页面（包括结账、购物车、收到订单、订单支付和账户页面）上的内容部分不会过于狭窄。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2274,3 +2354,8 @@ msgstr "或继续阅读下文"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "或作为访客继续"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "移除图像"

@@ -39,13 +39,13 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 	<p class="form-row form-row-wide">
 		<?php // CHANGE: Add unique id to the fields label and input element ?>
 		<label for="username<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="input-text" name="username" id="username<?php echo esc_attr( $unique_id ); ?>" autocomplete="username" />
+		<input type="text" class="input-text <?php echo esc_attr( apply_filters( 'fc_checkout_login_input_classes', '' ) ); ?>" name="username" id="username<?php echo esc_attr( $unique_id ); ?>" autocomplete="username" />
 	</p>
 	<?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<?php // CHANGE: Add unique id to the fields label and input element ?>
 		<label for="password<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required">*</span></label>
-		<input class="input-text woocommerce-Input" type="password" name="password" id="password<?php echo esc_attr( $unique_id ); ?>" autocomplete="current-password" />
+		<input class="input-text woocommerce-Input <?php echo esc_attr( apply_filters( 'fc_checkout_login_input_classes', '' ) ); ?>" type="password" name="password" id="password<?php echo esc_attr( $unique_id ); ?>" autocomplete="current-password" />
 	</p>
 	<div class="clear"></div>
 

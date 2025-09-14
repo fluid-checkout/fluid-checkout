@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.8.1
-Stable tag: 4.0.5
+Tested up to: 6.8.2
+Stable tag: 4.1.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -356,7 +356,56 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Advanced Flat Rate Shipping For WooCommerce Premium.
+* Added: Compatibility with plugin Flat Rate Shipping Method for WooCommerce.
+* Fixed: Progress bar showing only steps title when invalid values are defined for the option. Should revert to default "Bars" style.
+
+= 4.1.1 - 2025-08-22 =
+
+* Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix payment processing error when using the plugin along with some other payment gateways.
+* Fixed: Header, Footer and Page background colors set in plugin settings not applying.
+* Fixed: Progress bar steps marked as complete when they are actually the current step.
+* Fixed: Order summary and side bar section not interactive because of transparent pseudo element on top of it.
+
+= 4.1.0 - 2025-08-17 =
+
+* Bump tested up to WordPress 6.8.2 and WooCommerce 10.1.0
+* Added: Support for new progress bar style options.
+* Added: Compatibility with theme Avanam.
+* Added: Compatibility with theme Bookshelf.
+* Added: Compatibility with theme Cartzilla.
+* Added: Compatibility with theme Ireca.
+* Added: Compatibility with theme Neighborhood.
+* Added: Compatibility with theme Sahel.
+* Added: Compatibility with theme Seese.
+* Added: Compatibility with theme Suki.
+* Added: Compatibility with plugin ELEX EasyPost Shipping.
+* Added: Compatibility with plugin FooEvents for WooCommerce.
+* Added: Compatibility with plugin TemplateMela Core.
+* Added: Compatibility with plugin TemplateMela Autorapid.
+* Added: Compatibility with plugin WooCommerce Bambora Gateway.
+* Added: Compatibility with plugin WooCommerce EU Vat & B2B.
+* Improved: Compatibility with theme Betheme.
+* Improved: Compatibility with theme Enfold.
+* Improved: Update checkout fragments when an item is removed from the cart using the mini cart widget from the site header.
+* Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.
+* Improved: Expose more methods to interact with the enhanced select fields component `TomSelect`.
+* Improved: Account creation field labels and notice wording, and also show notice in the account creation fields section.
+* Improved: Add hook `fc_checkout_place_order_terms` to allow developers to move the terms checkbox and related terms content section.
+* Fixed: Compatibility with theme Woodmart. Fix checkout steps section style when using distraction free header and footer.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix issue on checkout page when checkout form was added as a block.
+* Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix endless loading and data loss issues when using PayPal express button on the checkout page.
+* Fixed: Change selected value on enhanced dropdown fields (TomSelect) when the `change` event is triggered with jQuery events.
+* Fixed: Remove previous error messages when adding or removing coupon codes successfully.
+* Fixed: Force styles of `fc-loading` class to override styles from theme.
+* Fixed: Run checkout steps registration earlier for Ajax requests, and run it also for REST API requests. This fixes missing address section titles on email messages and previews.
+* Fixed: State field losing selected value when update checkout is triggered while still processing State fields options update from selected country.
+
+= 4.0.6 - 2025-06-10 =
+
+* Bump tested up to WooCommerce 9.9.3
 * Added: Support for modern email design for transactional emails.
+* Added: Compatibility with theme Nyture.
 * Added: Compatibility with theme Twenty Twenty-Five.
 * Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
 * Added: Compatibility with plugin YITH WooCommerce Checkout Manager.
@@ -403,45 +452,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
 * Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
 * Fixed: Spacing for elements above the order summary section.
-
-= 4.0.3 - 2025-03-17 =
-
-* Bump tested up to WooCommerce 9.7.1
-* Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
-* Added: Compatibility with theme The7.
-* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce Pro by ThemeHigh. Fix spacing for custom sections positioned after account creation form fields.
-* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Fixed express checkout changes affecting correct preloading of some checkout field values.
-* Improved: Enforce some styles for the place order button to improve compatibility with some themes.
-* Fixed: Billing and shipping address values not being preserved after toggling "Same as <shipping/billing> address" checkbox.
-* Fixed: Field values reverting back to previous value (usually empty) when using `select2` for enhanced dropdown fields.
-* Fixed: Use treated display value for replacements on formatted addresses.
-
-= 4.0.2 - 2025-02-24 =
-
-* Bump tested up to WordPress 6.7.2 and WooCommerce 9.6.2
-* Added: Compatibility with theme Motta.
-* Added: Compatibility with theme Rehub.
-* Added: Compatibility with plugin Fetchify.
-* Added: Compatibility with plugin WooComerce Quantity Discounts, Rules & Swatches.
-* Added: Compatibility with plugin Revolut Gateway for WooCommerce.
-* Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
-* Added: New filter `fc_use_verbose_loading_indicator` to enable use of verbose loading indicator icon on blocked parts of the page, and on the entire page when submitting the checkout form.
-* Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
-* Improved: Compatibility with plugin Germanized for WooCommerce. Remove duplicate place order button when using WooCommerce PayPal Payments plugin.
-* Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
-* Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
-* Improved: Compatibility with plugin WooPayments. Fixed layout breaking when WooPayments payment method is selected on checkout page.
-* Improved: Compatibility with plugin WooCommerce PDF Invoices & Packing Slips.
-* Improved: Compatibility with plugin Mailchimp for WooCommerce. Remove subscription checkbox value from the step review text lines.
-* Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
-* Improved: Styles for loading indicator for the place order button to only show loading icon while processing, hiding its text.
-* Improved: Styles code for the order summary section, to allow changing the main element's selector.
-* Fixed: Compatibility with plugin WooCommerce Stripe Gateway. Ensure use of data from express checkout methods when updating checkout and processing orders.
-* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
-* Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
-* Fixed: Layout styles causing sticky header for some themes to not get sticky.
-* Fixed: PHP warnings for undefined variable `$new_line`.
-* Fixed: Custom translation files from Loco Translate not loading correctly.
 
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 

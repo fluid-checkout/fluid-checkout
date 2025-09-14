@@ -138,10 +138,6 @@ msgstr "Skref %1$s af %2$s"
 msgid "Change: %s"
 msgstr "Breyting: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Reikningur verður stofnaður með þeim upplýsingum sem gefnar eru upp."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ekki valið ennþá."
@@ -401,14 +397,6 @@ msgstr "Gefðu viðbótinni einkunn"
 msgid "I need help!"
 msgstr "Ég þarf hjálp!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Viðbótin WooCommerce Checkout Manager frá Quadlayers er ekki samhæfð við "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -654,14 +642,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Veldu mynd"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Engin mynd valin."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Fjarlægðu mynd"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2383,6 +2363,119 @@ msgstr ""
 "samhæfni við viðbótina. Þú gætir viljað slökkva á þessu ef þú notar "
 "sérsniðna stíl fyrir reitina í Stripe greiðsluforminu."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Þema Nýtur"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Birta greiðsluskrefahlutann úr Nyture-þemanu þegar Fluid Checkout er notað."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Hugsanlega stillt sem „skylda“ ef reikningsfangshlutinn birtist á eftir "
+"sendingarfangshlutanum og reiturinn fyrir reikningssímanúmer er stilltur "
+"sem „skylda“. Þetta er nauðsynlegt til að tryggja að hægt sé að afrita "
+"sendingarfangið á reikningsfangið þegar sá valkostur er valinn."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Hugsanlega stillt sem „skylda“ ef reiturinn fyrir reikningsfang birtist á "
+"eftir reitnum fyrir reikningsfang og reiturinn fyrir símanúmer reiknings er "
+"stilltur sem „skylda“. Þetta er nauðsynlegt til að tryggja að hægt sé að "
+"afrita reikningsfangið á reikningsfangið þegar sá valkostur er valinn."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Leyfir viðskiptavinum að greiða fyrir pantanir sem eru annað hvort búnar "
+"til handvirkt af verslunarstjóra eða ekki kláraðar við greiðslu."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Viðbótin WooCommerce Checkout Manager frá Quadlayers er ekki samhæf við "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Nafn fyrirtækis fyrir reikningsfang"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Breyta sýnileika fyrirtækjanafnsreitsins fyrir reikningsfangshlutann á "
+"greiðsluforminu."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Þema bókahilla"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Birta greiðsluskrefhlutann úr bókahilluþemanu þegar Fluid Checkout er notað."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Lykilorð reiknings"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Aðgangur verður stofnaður með upplýsingunum sem gefnar voru upp við "
+"afgreiðslu pöntunar."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Veldu stíl framvindustikunnar."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barir"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Þema Íraks"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce síðuuppsetning"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Þvinga fram breitt útlit á WooCommerce síðum"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Þetta tryggir að efnishlutinn á WooCommerce síðum sé ekki of þröngur, þar á "
+"meðal síður fyrir greiðslu, körfu, mótteknar pantanir, greiðslur pantana og "
+"reikning."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2500,3 +2593,8 @@ msgstr "Eða haltu áfram hér að neðan"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Eða haltu áfram sem gestur"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Fjarlægja mynd"

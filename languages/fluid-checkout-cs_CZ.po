@@ -320,10 +320,6 @@ msgstr "Už máte účet?"
 msgid "Always show"
 msgstr "Vždy ukazujte"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Na základě zadaných údajů bude vytvořen účet."
-
 #: inc/checkout-fields.php:181
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Byt, jednotka, budova, patro atd."
@@ -2124,14 +2120,6 @@ msgstr ""
 "Možnosti zobrazit obrázek produktu, pole množství, tlačítko odebrat a odkaz "
 "na stránku produktu přidané motivem jsou ve výchozím nastavení vypnuté."
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plugin WooCommerce Checkout Manager od Quadlayers není kompatibilní s Fluid "
-"Checkout"
-
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -2462,14 +2450,6 @@ msgstr ""
 "Vaše objednávka má celkovou dlužnou částku ve výši %s. Další platba není "
 "nutná."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Není vybrán žádný obrázek."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Odstranění obrázku"
-
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
 msgstr "Téma The7"
@@ -2523,6 +2503,117 @@ msgstr ""
 "Pokud je tato funkce povolena, Fluid Checkout použije styly optimalizované "
 "pro kompatibilitu se zásuvným modulem. Pokud používáte vlastní styly pro "
 "pole platebního formuláře Stripe, můžete tuto funkci zakázat."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Téma Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Výstup sekce kroků pokladny z tématu Nyture při použití Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Může být vynuceno jako \"povinné\", pokud je sekce fakturační adresy "
+"zobrazena za sekcí dodací adresy a pole fakturačního telefonu je nastaveno "
+"jako \"povinné\". Je to potřeba, aby bylo možné zkopírovat dodací adresu do "
+"fakturační adresy, pokud je tato možnost zaškrtnuta."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Může být vynuceno jako \"povinné\", pokud je sekce fakturační adresy "
+"zobrazena za sekcí fakturační adresy a pole fakturačního telefonu je "
+"nastaveno jako \"povinné\". Je to potřeba, aby bylo možné zkopírovat "
+"fakturační adresu do fakturační adresy, pokud je tato možnost zaškrtnuta."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Umožňuje zákazníkům provádět platby za objednávky, které byly vytvořeny "
+"ručně správcem obchodu nebo nebyly dokončeny během pokladny."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plugin WooCommerce Checkout Manager od Quadlayers není kompatibilní s Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Pole Název společnosti pro fakturační adresu"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Změna viditelnosti pole s názvem společnosti v části fakturační adresy na "
+"pokladním formuláři."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tématická police na knihy"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Výstup sekce kroků pokladny z tématu Bookshelf při použití Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Heslo účtu"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "Účet bude vytvořen na základě údajů zadaných při dokončování objednávky."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Zvolte styl panelu průběhu."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bary"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Téma Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Rozložení stránky WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Vynucení širokého rozvržení na stránkách WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Tím se zajistí, že část obsahu na stránkách WooCommerce včetně stránek "
+"pokladny, košíku, přijaté objednávky, zaplacení objednávky a účtu nebude "
+"příliš úzká."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2645,3 +2736,8 @@ msgstr "%2$s: %1$s"
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Žádné."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Odstranění obrázku"

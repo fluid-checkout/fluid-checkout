@@ -138,10 +138,6 @@ msgstr "مرحله %1$s از %2$s"
 msgid "Change: %s"
 msgstr "تغییر: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "یک حساب کاربری با اطلاعات ارائه شده ایجاد خواهد شد."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "هنوز انتخاب نشده است."
@@ -400,14 +396,6 @@ msgstr "به افزونه امتیاز دهید"
 msgid "I need help!"
 msgstr "من به کمک نیاز دارم!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"افزونه WooCommerce Checkout Manager by Quadlayers با Fluid Checkout سازگار "
-"نیست"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -653,14 +641,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "یک تصویر را انتخاب کنید"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "هیچ تصویری انتخاب نشده است."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "حذف تصویر"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2361,6 +2341,120 @@ msgstr ""
 "فیلدهای فرم پرداخت Stripe استفاده می‌کنید، می‌توانید این گزینه را غیرفعال "
 "کنید."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "تم نیچر"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"هنگام استفاده از پرداخت سیال، بخش مراحل پرداخت را از قالب Nyture خروجی "
+"بگیرید."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"شاید اگر بخش آدرس صورتحساب بعد از بخش آدرس ارسال نمایش داده شود و فیلد تلفن "
+"صورتحساب به صورت «الزامی» تنظیم شده باشد، به صورت اجباری به عنوان «الزامی» "
+"تنظیم شود. این کار برای اطمینان از کپی شدن آدرس ارسال در آدرس صورتحساب "
+"هنگام علامت زدن آن گزینه لازم است."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"شاید اگر بخش آدرس صورتحساب بعد از بخش آدرس صورتحساب نمایش داده شود و فیلد "
+"تلفن صورتحساب به صورت «الزامی» تنظیم شده باشد، به صورت اجباری به عنوان "
+"«الزامی» تنظیم شود. این کار برای اطمینان از امکان کپی آدرس صورتحساب در آدرس "
+"صورتحساب هنگام علامت زدن آن گزینه لازم است."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"به مشتریان اجازه می‌دهد تا برای سفارش‌هایی که یا به صورت دستی توسط مدیر "
+"فروشگاه ایجاد شده‌اند یا در هنگام پرداخت تکمیل نشده‌اند، پرداخت انجام دهند."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"افزونه WooCommerce Checkout Manager از Quadlayers با Fluid Checkout سازگار "
+"نیست."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "فیلد نام شرکت برای آدرس صورتحساب"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "تغییر میزان نمایش فیلد نام شرکت برای بخش آدرس صورتحساب در فرم پرداخت."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "قفسه کتاب تم"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"هنگام استفاده از پرداخت سیال، بخش مراحل پرداخت را از قالب Bookshelf خروجی "
+"بگیرید."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "رمز عبور حساب"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"با اطلاعاتی که هنگام تکمیل سفارش در هنگام پرداخت ارائه شده است، یک حساب "
+"کاربری ایجاد می‌شود."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "سبک نوار پیشرفت را انتخاب کنید."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "بارها"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "تم ایرکا"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "طرح بندی صفحه ووکامرس"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "طرح‌بندی عریض را در صفحات ووکامرس اجباری کنید"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"این تضمین می‌کند که بخش محتوا در صفحات ووکامرس، از جمله صفحات پرداخت، سبد "
+"خرید، سفارش دریافتی، پرداخت سفارش و حساب کاربری، خیلی محدود نباشد."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2478,3 +2572,8 @@ msgstr "یا در ادامه مطلب ادامه دهید"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "یا به عنوان مهمان ادامه دهید"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "حذف تصویر"

@@ -138,10 +138,6 @@ msgstr "Paŝo %1$s de %2$s"
 msgid "Change: %s"
 msgstr "Ŝanĝo: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Konto estos kreita kun la informoj provizitaj."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Ankoraŭ ne elektita."
@@ -400,14 +396,6 @@ msgstr "Taksi la kromprogramon"
 msgid "I need help!"
 msgstr "Mi bezonas helpon!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"La kromaĵo WooCommerce Checkout Manager de Quadlayers ne kongruas kun Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -651,14 +639,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Elektu bildon"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Neniu bildo elektita."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Forigi bildon"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2365,6 +2345,121 @@ msgstr ""
 "kun la kromprogramo. Eble vi volas malebligi ĉi tion se vi uzas kutimajn "
 "stilojn por la kampoj de la pagformularo de Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Temo Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Eligu la sekcion pri kaspaŝoj el la temo Nyture kiam vi uzas Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Eble ĝi estu devigita kiel &quot;deviga&quot; se la faktura adreso estas "
+"montrata post la senda adreso, kaj la faktura telefona kampo estas agordita "
+"kiel &quot;deviga&quot;. Ĉi tio necesas por certigi, ke la senda adreso "
+"povas esti kopiita al la faktura adreso kiam tiu opcio estas markita."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Eble ĝi estu devigita kiel &quot;deviga&quot; se la faktura adreso estas "
+"montrata post la faktura adreso, kaj la faktura telefono estas agordita "
+"kiel &quot;deviga&quot;. Ĉi tio necesas por certigi, ke la faktura adreso "
+"povas esti kopiita al la faktura adreso kiam tiu opcio estas markita."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Permesas al klientoj pagi por mendoj, kiujn aŭ la administranto de la "
+"vendejo kreis permane aŭ ne kompletigis dum la kaso."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"La kromprogramo WooCommerce Checkout Manager de Quadlayers ne kongruas kun "
+"Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Kampo por la nomo de la firmao por faktura adreso"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ŝanĝu videblecon por la kampo &quot;firmaa nomo&quot; por la sekcio pri "
+"faktura adreso en la kasformularo."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Librobreto"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Eligu la sekcion pri kaspaŝoj el la temo Librobreto kiam vi uzas Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Konto-pasvorto"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Konto estos kreita kun la informoj donitaj ĉe la kaso kiam vi kompletigas "
+"la mendon."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Elektu la stilon de la progresbreto."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Trinkejoj"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Temo Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Paĝaranĝo de WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Devigi larĝan aranĝon sur WooCommerce-paĝoj"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ĉi tio certigas, ke la enhavsekcio ne estas tro mallarĝa sur "
+"WooCommerce-paĝoj, inkluzive de kaso, ĉaro, mendo ricevita, mendopago kaj "
+"kontopaĝoj."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2482,3 +2577,8 @@ msgstr "Aŭ daŭrigu sube"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Aŭ daŭrigu kiel gasto"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Forigi bildon"

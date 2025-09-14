@@ -138,10 +138,6 @@ msgstr "Чекор %1$s од %2$s"
 msgid "Change: %s"
 msgstr "Промена: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Ќе се создаде сметка со дадените информации."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Сè уште не е избрано."
@@ -402,14 +398,6 @@ msgstr "Оцени го приклучокот"
 msgid "I need help!"
 msgstr "Ми треба помош!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Приклучокот WooCommerce Checkout Manager by Quadlayers не е компатибилен со "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -657,14 +645,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Изберете слика"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Нема избрана слика."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Отстранете ја сликата"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2427,6 +2407,126 @@ msgstr ""
 "користите прилагодени стилови за полињата на формуларот за плаќање на "
 "Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Тематски вести"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Прикажи го делот за чекори за наплата од темата Nyture кога користиш Fluid "
+"Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Можеби ќе биде наметнато како „задолжително“ ако делот за адреса за наплата "
+"се прикажува по делот за адреса за испорака, а полето за телефон за наплата "
+"е поставено како „задолжително“. Ова е потребно за да се осигури дека "
+"адресата за испорака може да се копира на адресата за наплата кога таа "
+"опција е означена."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Можеби ќе биде наметнато како „задолжително“ ако делот за адреса за наплата "
+"се прикажува по делот за адреса за наплата, а полето за телефон за наплата "
+"е поставено како „задолжително“. Ова е потребно за да се осигури дека "
+"адресата за наплата може да се копира на адресата за наплата кога таа "
+"опција е означена."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Им овозможува на клиентите да вршат плаќања за нарачки кои се или рачно "
+"креирани од администраторот на продавницата или не се завршени за време на "
+"плаќањето."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Додатокот WooCommerce Checkout Manager од Quadlayers не е компатибилен со "
+"Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Поле за име на компанија за адреса за наплата"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Променете ја видливоста на полето за име на компанијата за делот за адреса "
+"за наплата на формуларот за наплата."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тематска полица за книги"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Прикачете го делот за чекори за плаќање од темата Bookshelf кога користите "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Лозинка за сметка"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Ќе биде креирана сметка со информациите дадени при плаќањето при "
+"комплетирање на нарачката."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Изберете го стилот на лентата за напредок."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Барови"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тема Ирека"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Распоред на страницата WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Присилно широк распоред на страниците на WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ова осигурува дека делот со содржина не е премногу тесен на страниците на "
+"WooCommerce, вклучувајќи ги страниците за наплата, кошничка, примена "
+"нарачка, плаќање на нарачка и сметка."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2544,3 +2644,8 @@ msgstr "Или продолжете подолу"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Или продолжи како гостин"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Отстрани слика"

@@ -144,10 +144,6 @@ msgstr "Žingsnis %1$s iš %2$s"
 msgid "Change: %s"
 msgstr "Pakeitimai: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Naudojant pateiktą informaciją bus sukurta paskyra."
-
 #: inc/checkout-steps.php:3918,
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -414,14 +410,6 @@ msgstr "Įvertinkite įskiepį"
 #: inc/admin/admin-notice-review-request.php:51
 msgid "I need help!"
 msgstr "Man reikia pagalbos!"
-
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers įskiepis WooCommerce Checkout Manager nėra suderinamas su Fluid "
-"Checkout"
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
@@ -698,14 +686,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Pasirinkite vaizdą"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nepasirinktas joks vaizdas."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Pašalinti vaizdą"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2513,6 +2493,125 @@ msgstr ""
 "suderinamumui su įskiepiu. Jei naudojate pasirinktinius stilius \"Stripe\" "
 "mokėjimo formos laukams, galite norėti tai išjungti."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Išveskite kasos žingsnių skyrių iš \"Nyture\" temos, kai naudojate \"Fluid "
+"Checkout\"."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Gali būti priverstinai įvestas kaip \"privalomas\", jei atsiskaitymo adreso "
+"skiltis rodoma po pristatymo adreso skilties, o atsiskaitymo telefono "
+"laukas nustatytas kaip \"privalomas\". To reikia tam, kad būtų užtikrinta, "
+"jog siuntimo adresą būtų galima nukopijuoti į sąskaitos išrašymo adresą, "
+"kai ši parinktis pažymėta."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Gali būti priverstinai nustatytas kaip \"privalomas\", jei sąskaitos adreso "
+"skiltis rodoma po sąskaitos adreso skilties, o sąskaitos telefono laukas "
+"nustatytas kaip \"privalomas\". To reikia tam, kad būtų galima nukopijuoti "
+"sąskaitų išrašymo adresą į sąskaitų išrašymo adresą, kai ši parinktis "
+"pažymėta."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Leidžia klientams atlikti mokėjimus už užsakymus, kuriuos parduotuvės "
+"administratorius sukūrė rankiniu būdu arba kurie nebuvo užbaigti kasos metu."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers įskiepis WooCommerce Checkout Manager nėra suderinamas su Fluid "
+"Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Įmonės pavadinimo laukas, skirtas atsiskaitymo adresui"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Pakeiskite įmonės pavadinimo lauko matomumą kasos formos atsiskaitymo "
+"adreso skiltyje."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Teminė knygų lentyna"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Išveskite kasos žingsnių skyrių iš \"Bookshelf\" temos, kai naudojate "
+"\"Fluid Checkout\"."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Paskyros slaptažodis"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Paskyra bus sukurta naudojant informaciją, pateiktą kasoje užbaigiant "
+"užsakymą."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pasirinkite progreso juostos stilių."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barai"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "\"WooCommerce\" puslapio išdėstymas"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Priverstinis platus išdėstymas \"WooCommerce\" puslapiuose"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Taip užtikrinama, kad \"WooCommerce\" puslapiuose, įskaitant kasos, "
+"krepšelio, gauto užsakymo, užsakymo apmokėjimo ir paskyros puslapius, "
+"turinio skiltis nebūtų per siaura."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2632,3 +2731,8 @@ msgstr "Arba tęskite toliau"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Arba tęskite kaip svečias"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Pašalinti vaizdą"

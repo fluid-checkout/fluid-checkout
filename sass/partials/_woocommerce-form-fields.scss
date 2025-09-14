@@ -39,23 +39,24 @@ div.woocommerce form .form-row .select2-container .select2-selection {
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {
-	clear: $alignment-left;
-	float: none;
+	clear: $alignment-left !important; // Needed to override theme styles
+	float: none !important; // Needed to override theme styles
 	flex-grow: unset !important; // Needed to override theme styles
 	width: 100% !important; // Needed to override theme styles
+	max-width: 100% !important; // Needed to override theme styles
 	min-width: auto !important; // Needed to override theme styles
 
 	@media (#{$bp-larger-than-phablet}) {
-		clear: none;
-		float: $alignment-left;
+		clear: none !important; // Needed to override theme styles
+		float: $alignment-left !important; // Needed to override theme styles
 		width: 48% !important; // Needed to override theme styles
 	}
 }
 
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-wide {
-	clear: $alignment-left;
-	@media (#{$bp-larger-than-phablet}) { clear: $alignment-left; }
+	clear: $alignment-left !important; // Needed to override theme styles
+	@media (#{$bp-larger-than-phablet}) { clear: $alignment-left !important; } // Needed to override theme styles
 }
 
 div.woocommerce form .form-row.form-row-one-third {
@@ -73,13 +74,13 @@ div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form #payment .form-row.form-row-first,
 div.woocommerce form #payment .form-row.form-row-middle {
 	@media (#{$bp-larger-than-phablet}) {
-		margin-#{ $alignment-left }: 0;
-		margin-#{ $alignment-right }: 4%;
+		margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
+		margin-#{ $alignment-right }: 4% !important; // Needed to override theme styles
 	}
 }
 
 div.woocommerce form .form-row.form-row-last {
-	margin-#{ $alignment-left }: 0;
+	margin-#{ $alignment-left }: 0 !important; // Needed to override theme styles
 }
 
 

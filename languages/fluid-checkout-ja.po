@@ -138,10 +138,6 @@ msgstr "2$s のステップ %1$s"
 msgid "Change: %s"
 msgstr "変更: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "提供された情報でアカウントが作成されます。"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "まだ選ばれていない。"
@@ -387,12 +383,6 @@ msgstr "プラグインを評価する"
 msgid "I need help!"
 msgstr "助けが必要なんだ！"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "QuadlayersのプラグインWooCommerce Checkout ManagerはFluid Checkoutと互換性がありません。"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -622,14 +612,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "画像を選択する"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "画像が選択されていません。"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "画像を削除する"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2212,6 +2194,106 @@ msgstr ""
 "Checkoutはプラグインとの互換性のために最適化されたスタイルを適用します。Stripeの支払いフォームフィールドにカスタムスタイルを使用している場"
 "合は、これを無効にするとよいでしょう。"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "テーマ"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkoutを使用する場合、Nytureテーマからチェックアウトのステップセクションを出力します。"
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"請求先住所セクションが配送先住所セクションの後に表示され、請求先電話フィールドが「必須」に設定されている場合、「必須」が強制されることがあります。このオ"
+"プションがチェックされている場合、配送先住所を請求先住所に確実にコピーするために必要です。"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"請求先住所セクションが請求先住所セクションの後に表示され、請求先電話フィールドが \"必須 \"に設定されている場合、強制的に \"必須 "
+"\"に設定される可能性があります。これは、このオプションがチェックされているときに、請求先住所を請求先住所にコピーできるようにするために必要です。"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr "店舗管理者が手動で作成した注文、またはチェックアウト中に完了しなかった注文に対して、顧客が支払いを行うことができます。"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "QuadlayersのプラグインWooCommerce Checkout ManagerはFluid Checkoutと互換性がありません。"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "請求先住所の会社名フィールド"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "チェックアウトフォームの請求先住所セクションの会社名フィールドの可視性を変更しました。"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "テーマのある本棚"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "Fluid Checkoutを使用する場合、Bookshelfテーマからチェックアウトのステップセクションを出力します。"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "アカウントパスワード"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "アカウントは、注文完了時にチェックアウトで提供された情報で作成されます。"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "プログレスバーのスタイルを選択します。"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "バー"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "テーマ イレカ"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerceページレイアウト"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerceページでワイドレイアウトを強制する"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"これにより、チェックアウト、カート、注文受付、注文支払い、アカウントページなどのWooCommerceページでコンテンツセクションが狭くなりすぎないよう"
+"にします。"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2329,3 +2411,8 @@ msgstr "または以下に続く"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "またはゲストとして続ける"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "画像を削除する"

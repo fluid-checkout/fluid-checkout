@@ -138,10 +138,6 @@ msgstr "שלב %1$s מתוך %2$s"
 msgid "Change: %s"
 msgstr "שינוי: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "ייווצר חשבון עם המידע שסופק."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "עדיין לא נבחר."
@@ -397,12 +393,6 @@ msgstr "דרג את התוסף"
 msgid "I need help!"
 msgstr "אני צריך עזרה!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr "התוסף WooCommerce Checkout Manager של Quadlayers אינו תואם ל- Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -642,14 +632,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "בחר תמונה"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "לא נבחרה תמונה."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "הסר תמונה"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2290,6 +2272,110 @@ msgstr ""
 "התוסף. ייתכן שתרצה להשבית אפשרות זו אם אתה משתמש בסגנונות מותאמים אישית "
 "עבור שדות טופס התשלום של Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "נושא נייטורה"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "הפקת מקטע שלבי התשלום לערכת נושא Nyture בעת שימוש ב-Fluid Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ייתכן שיוגדר כ&quot;נדרש&quot; אם מקטע כתובת החיוב מוצג לאחר מקטע כתובת "
+"המשלוח, ושדה טלפון החיוב מוגדר כ&quot;נדרש&quot;. זה נחוץ כדי להבטיח שניתן "
+"יהיה להעתיק את כתובת המשלוח לכתובת החיוב כאשר אפשרות זו מסומנת."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ייתכן שייבחר כ&quot;נדרש&quot; אם מקטע כתובת החיוב מוצג לאחר מקטע כתובת "
+"החיוב, ושדה טלפון החיוב מוגדר כ&quot;נדרש&quot;. זה נחוץ כדי להבטיח שניתן "
+"יהיה להעתיק את כתובת החיוב לכתובת החיוב כאשר אפשרות זו מסומנת."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"מאפשר ללקוחות לבצע תשלומים עבור הזמנות שנוצרו באופן ידני על ידי מנהל החנות "
+"או שלא הושלמו במהלך התשלום."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr "התוסף WooCommerce Checkout Manager של Quadlayers אינו תואם ל-Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "שדה שם חברה עבור כתובת לחיוב"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr "שנה את הנראות של שדה שם החברה עבור מקטע כתובת החיוב בטופס התשלום."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "מדף ספרים נושאי"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr "פלט את מקטע שלבי התשלום לערכת הנושא Bookshelf בעת שימוש ב-Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "סיסמת חשבון"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "ייווצר חשבון עם המידע שיסופק בעת ביצוע ההזמנה."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "בחר את סגנון סרגל ההתקדמות."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "ברים"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "נושא איריקה"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "פריסת עמוד WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "כפיית פריסה רחבה בדפי WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"זה מבטיח שמדור התוכן לא יהיה צר מדי בדפי WooCommerce, כולל דפי תשלום, עגלת "
+"קניות, הזמנה שהתקבלה, תשלום עבור הזמנה ודפי חשבון."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2407,3 +2493,8 @@ msgstr "או המשך למטה"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "או להמשיך כאורח"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "הסר תמונה"

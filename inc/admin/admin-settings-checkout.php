@@ -215,6 +215,18 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'              => __( 'Choose the style of the progress bar.', 'fluid-checkout' ),
+						'id'                => 'fc_checkout_progress_bar_style',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'bars'         => array( 'label' => __( 'Bars', 'fluid-checkout' ) ),
+							'breadcrumbs'  => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Breadcrumbs', 'fluid-checkout' ), 'disabled' => true ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Express checkout', 'fluid-checkout' ),
 						'desc'              => __( 'Enable the express checkout section', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Displays the express checkout section at checkout when supported payment gateways have this feature enabled.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-express-checkout/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
@@ -593,9 +605,24 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Company name field for billing address', 'fluid-checkout' ),
+						'desc'              => __( 'Change visibility for the company name field for the billing address section on the checkout form.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'id'                => 'woocommerce_checkout_company_field',
+						'type'              => 'select',
+						'options'           => array(
+							'hidden'        => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'optional'      => __( 'Optional', 'fluid-checkout' ),
+							'required'      => __( 'Required', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_checkout_company_field' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Shipping phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Maybe be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required. This is needed to ensure the shipping address can be copied to the billing address when that option is checked.' ),
+						'desc_tip'          => __( 'Maybe be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required. This is needed to ensure the shipping address can be copied to the billing address when that option is checked.', 'fluid-checkout' ),
 						'id'                => 'fc_shipping_phone_field_visibility',
 						'type'              => 'select',
 						'options'           => array(
@@ -622,7 +649,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Billing phone', 'fluid-checkout' ),
 						'desc'              => __( 'Add billing phone field to the checkout form.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Maybe be forced as "required" if the billing address section is displayed after the billing address section, and the billing phone field is set as "required. This is needed to ensure the billing address can be copied to the billing address when that option is checked.' ),
+						'desc_tip'          => __( 'Maybe be forced as "required" if the billing address section is displayed after the billing address section, and the billing phone field is set as "required. This is needed to ensure the billing address can be copied to the billing address when that option is checked.', 'fluid-checkout' ),
 						'id'                => 'woocommerce_checkout_phone_field',
 						'type'              => 'select',
 						'options'           => array(

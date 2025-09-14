@@ -58,7 +58,8 @@ class FluidCheckout_AdminNotices_WooCommmerceCheckoutManager_Enabled extends Flu
 
 		$notices[] = array(
 			'name'           => 'woocommerce_checkout_manager_enabled',
-			'title'          => __( 'The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile with Fluid Checkout', 'fluid-checkout' ),
+			'title'          => __( 'The plugin WooCommerce Checkout Manager by Quadlayers is not compatible with Fluid Checkout', 'fluid-checkout' ),
+			// translators: %s: Documentation link.
 			'description'    => sprintf( __( 'Some features of WooCommerce Checkout Manager by Quadlayers might not work as expected when using it with Fluid Checkout. Read <a href="%s">our documentation</a> for more information and alternative solutions.', 'fluid-checkout' ), $docs_link ),
 			'dismissable'    => true,
 			'error'          => true,

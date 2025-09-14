@@ -8,6 +8,7 @@ body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-i
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-notices,
 body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-notices-wrapper,
 body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
@@ -24,11 +25,12 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-notices,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $_body-page-selector } .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $_body-page-selector } .woocommerce-notices-wrapper,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
-		width: $checkout-steps-width--large-screen;
-		margin-#{ $alignment-left }: math.div( 100 - $checkout-steps-width--large-screen, 2 );
+		width: $checkout-steps-width--large-screen !important; // Needed to override theme styles
+		margin-#{ $alignment-left }: math.div( 100 - $checkout-steps-width--large-screen, 2 ) !important; // Needed to override theme styles
 	}
 }
 
@@ -54,9 +56,9 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 	}
 
 	@media (#{$bp-larger-than-desktop}) {
-		z-index: z( 'default' ) + 1;
+		z-index: z( 'default' ) + 2; // Needs to be higher than the split layout right column
 		float: $alignment-right;
-		width: $checkout-overview-width--large-screen;
+		width: $checkout-overview-width--large-screen !important; // Needed to override theme styles
 		margin-top: 0 !important; // Needed to override theme styles
 	}
 }

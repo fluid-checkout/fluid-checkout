@@ -138,10 +138,6 @@ msgstr "قەدەم% 1 $ s نىڭ% 2 $ s"
 msgid "Change: %s"
 msgstr "ئۆزگەرتىش:% s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "تەمىنلەنگەن ئۇچۇرلار بىلەن ھېسابات قۇرۇلىدۇ."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "تېخى تاللانمىدى."
@@ -404,14 +400,6 @@ msgstr "قىستۇرمىغا باھا بېرىڭ"
 msgid "I need help!"
 msgstr "ماڭا ياردەم كېرەك!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers نىڭ قىستۇرما WooCommerce تەكشۈرۈش باشقۇرغۇچىسى سۇيۇقلۇق تەكشۈرۈش "
-"بىلەن ماسلاشمايدۇ"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "رەسىمنى تاللاڭ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "رەسىم تاللانمىدى."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "رەسىمنى ئۆچۈرۈڭ"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2386,6 +2366,121 @@ msgstr ""
 "ئەلالاشتۇرۇلغان ئۇسلۇبلارنى قوللىنىدۇ. ئەگەر سىز Stripe پۇل تۆلەش جەدۋىلىگە "
 "ئىختىيارى ئۇسلۇب ئىشلىتىۋاتقان بولسىڭىز ، ئۇنى چەكلىسىڭىز بولىدۇ."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Theme Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"سۇيۇقلۇق چىقىمداننى ئىشلەتكەندە Nyture باشتېمىسىدىن چىقىم قىلىش "
+"باسقۇچلىرىنى چىقىرىڭ."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ئەگەر مال ئەۋەتىش ئادرېسى بۆلىكىدىن كېيىن تالون ئادرېسى بۆلىكى كۆرسىتىلسە ، "
+"تالون تېلېفون مەيدانى «تەلەپ» قىلىپ بېكىتىلسە ، «تەلەپ» بويىچە "
+"مەجبۇرلىنىشىڭىز مۇمكىن ، بۇ تاللاش تەكشۈرۈلگەندە توشۇش ئادرېسىنىڭ ھېسابات "
+"ئادرېسىغا كۆچۈرۈلۈشىگە كاپالەتلىك قىلىش كېرەك."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ئەگەر تالون ئادرېسى بۆلىكى تالون ئادرېسى بۆلىكىدىن كېيىن كۆرسىتىلسە ، تالون "
+"تېلېفون مەيدانى «تەلەپ» قىلىپ بېكىتىلسە ، «تەلەپ قىلىنغاندەك» مەجبۇرلىنىشى "
+"مۇمكىن ، بۇ تاللانما تەكشۈرۈلگەندە ھېسابات ئادرېسىنىڭ ھېسابات ئادرېسىغا "
+"كۆچۈرۈلۈشىگە كاپالەتلىك قىلىش كېرەك."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"خېرىدارلارنىڭ دۇكان باشقۇرغۇچى تەرىپىدىن قولدا ياسالغان ياكى چىقىمداندا "
+"تاماملانمىغان زاكاز ئۈچۈن پۇل تۆلىشىگە يول قويىدۇ."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers نىڭ قىستۇرما WooCommerce تەكشۈرۈش باشقۇرغۇچىسى سۇيۇقلۇق "
+"تەكشۈرۈشكە ماس كەلمەيدۇ"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ھېسابات ئادرېسى ئۈچۈن شىركەت ئىسمى"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"چىقىم جەدۋىلىدىكى ھېسابات ئادرېسى بۆلىكىنىڭ شىركەت نامىنىڭ كۆرۈنۈشچانلىقىنى "
+"ئۆزگەرتىڭ."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "تېما كىتابخانىسى"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"سۇيۇقلۇق چىقىمداننى ئىشلەتكەندە كىتاب بېسىش تېمىسىدىكى چىقىم باسقۇچلىرى "
+"بۆلىكىنى چىقىرىڭ."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ھېسابات پارولى"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "زاكازنى تاماملىغاندا چىقىمداندا تەمىنلەنگەن ئۇچۇرلار بىلەن ھېسابات قۇرۇلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ئىلگىرىلەش بالدىقىنىڭ ئۇسلۇبىنى تاللاڭ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Theme Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce بەت ئورۇنلاشتۇرۇشى"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce بېتىدە كەڭ ئورۇنلاشتۇرۇشنى زورلاڭ"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"بۇ WooCommerce بېتىدە چىقىمدان ، ھارۋا ، تاپشۇرۇۋالغان زاكاز ، زاكاز ھەققى "
+"ۋە ھېسابات بېتىنى ئۆز ئىچىگە ئالغان مەزمۇن بۆلىكىنىڭ بەك تار بولماسلىقىغا "
+"كاپالەتلىك قىلىدۇ."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2503,3 +2598,8 @@ msgstr "ياكى تۆۋەندە داۋاملاشتۇرۇڭ"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "ياكى مېھمان سۈپىتىدە داۋاملاشتۇرۇڭ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "رەسىمنى ئۆچۈرۈڭ"

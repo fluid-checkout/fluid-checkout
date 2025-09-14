@@ -138,10 +138,6 @@ msgstr "%2$s లో %1$s దశ"
 msgid "Change: %s"
 msgstr "మార్పు: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "అందించిన సమాచారంతో ఒక ఖాతా సృష్టించబడుతుంది."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "ఇంకా ఎంపిక కాలేదు."
@@ -402,14 +398,6 @@ msgstr "ప్లగిన్‌ను రేట్ చేయండి"
 msgid "I need help!"
 msgstr "నాకు సహాయం కావాలి!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"క్వాడ్‌లేయర్స్ ద్వారా ప్లగిన్ WooCommerce చెక్అవుట్ మేనేజర్ ఫ్లూయిడ్ "
-"చెక్అవుట్‌తో అనుకూలంగా లేదు."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +646,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "చిత్రాన్ని ఎంచుకోండి"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "ఏ చిత్రం ఎంచుకోబడలేదు."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "చిత్రాన్ని తీసివేయండి"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2405,6 +2385,124 @@ msgstr ""
 "చేయబడిన శైలులను వర్తింపజేస్తుంది. మీరు స్ట్రైప్ చెల్లింపు ఫారమ్ ఫీల్డ్‌ల "
 "కోసం అనుకూల శైలులను ఉపయోగిస్తుంటే మీరు దీన్ని నిలిపివేయాలనుకోవచ్చు."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "థీమ్ నైచర్"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు Nyture థీమ్ నుండి చెక్అవుట్ స్టెప్స్ "
+"విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"షిప్పింగ్ అడ్రస్ విభాగం తర్వాత బిల్లింగ్ అడ్రస్ విభాగం ప్రదర్శించబడి, "
+"బిల్లింగ్ ఫోన్ ఫీల్డ్ &quot;అవసరం&quot; అని సెట్ చేయబడితే "
+"&quot;తప్పనిసరి&quot; అని బలవంతంగా నమోదు చేయబడవచ్చు. ఆ ఎంపికను "
+"ఎంచుకున్నప్పుడు షిప్పింగ్ అడ్రస్‌ను బిల్లింగ్ అడ్రస్‌కు కాపీ చేయవచ్చని "
+"నిర్ధారించుకోవడానికి ఇది అవసరం."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"బిల్లింగ్ చిరునామా విభాగం తర్వాత బిల్లింగ్ చిరునామా విభాగం ప్రదర్శించబడితే "
+"మరియు బిల్లింగ్ ఫోన్ ఫీల్డ్ &quot;అవసరం&quot; అని సెట్ చేయబడితే "
+"&quot;అవసరం&quot; అని బలవంతంగా నమోదు చేయబడవచ్చు. ఆ ఎంపికను ఎంచుకున్నప్పుడు "
+"బిల్లింగ్ చిరునామాను బిల్లింగ్ చిరునామాకు కాపీ చేయవచ్చని "
+"నిర్ధారించుకోవడానికి ఇది అవసరం."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"స్టోర్ అడ్మిన్ ద్వారా మాన్యువల్‌గా సృష్టించబడిన లేదా చెక్అవుట్ సమయంలో "
+"పూర్తి కాని ఆర్డర్‌లకు చెల్లింపులు చేయడానికి కస్టమర్‌లను అనుమతిస్తుంది."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"క్వాడ్‌లేయర్స్ ద్వారా ప్లగిన్ WooCommerce చెక్అవుట్ మేనేజర్ ఫ్లూయిడ్ "
+"చెక్అవుట్‌కు అనుకూలంగా లేదు."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "బిల్లింగ్ చిరునామా కోసం కంపెనీ పేరు ఫీల్డ్"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"చెక్అవుట్ ఫారమ్‌లోని బిల్లింగ్ చిరునామా విభాగం కోసం కంపెనీ పేరు ఫీల్డ్ కోసం "
+"దృశ్యమానతను మార్చండి."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "థీమ్ బుక్షెల్ఫ్"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు బుక్షెల్ఫ్ థీమ్ నుండి చెక్అవుట్ "
+"స్టెప్స్ విభాగాన్ని అవుట్‌పుట్ చేయండి."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ఖాతా పాస్‌వర్డ్"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ఆర్డర్ పూర్తి చేసేటప్పుడు చెక్అవుట్ వద్ద అందించిన సమాచారంతో ఒక ఖాతా "
+"సృష్టించబడుతుంది."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ప్రోగ్రెస్ బార్ యొక్క శైలిని ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "బార్లు"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "థీమ్ ఇరేకా"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce పేజీ లేఅవుట్"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce పేజీలలో ఫోర్స్ వైడ్ లేఅవుట్"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"ఇది WooCommerce పేజీలలో చెక్అవుట్, కార్ట్, ఆర్డర్ రిసీవ్డ్, ఆర్డర్ పే మరియు "
+"అకౌంట్ పేజీలతో సహా కంటెంట్ విభాగం చాలా ఇరుకైనది కాదని నిర్ధారిస్తుంది."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2522,3 +2620,8 @@ msgstr "లేదా క్రింద కొనసాగించండి"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "లేదా అతిథిగా కొనసాగండి"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "చిత్రాన్ని తీసివేయండి"

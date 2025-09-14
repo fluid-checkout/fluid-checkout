@@ -138,10 +138,6 @@ msgstr "Langkah %1$s saka %2$s"
 msgid "Change: %s"
 msgstr "Ganti: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Akun bakal digawe kanthi informasi sing diwenehake."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Durung dipilih."
@@ -400,14 +396,6 @@ msgstr "Rate plugin"
 msgid "I need help!"
 msgstr "Aku butuh bantuan!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Plugin WooCommerce Checkout Manager dening Quadlayers ora kompatibel karo "
-"Fluid Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -655,14 +643,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Pilih gambar"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Ora ana gambar sing dipilih."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Mbusak gambar"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2375,6 +2355,123 @@ msgstr ""
 "iki yen sampeyan nggunakake gaya khusus kanggo kolom formulir pembayaran "
 "Stripe."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyatur"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Output bagean langkah checkout saka tema Nyture nalika nggunakake Fluid "
+"Checkout."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Mungkin dipeksa minangka &quot;dibutuhake&quot; yen bagean alamat tagihan "
+"ditampilake sawise bagean alamat pengiriman, lan kolom telpon tagihan "
+"disetel minangka &quot;dibutuhake. Iki perlu kanggo mesthekake alamat "
+"pengiriman bisa disalin menyang alamat tagihan nalika pilihan sing "
+"dicenthang."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Mungkin dipeksa minangka &quot;dibutuhake&quot; yen bagean alamat tagihan "
+"ditampilake sawise bagean alamat tagihan, lan lapangan telpon tagihan "
+"disetel minangka &quot;dibutuhake. Iki perlu kanggo mesthekake alamat "
+"tagihan bisa disalin menyang alamat tagihan nalika pilihan sing dicenthang."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Ngidini pelanggan nggawe pembayaran kanggo pesenan sing digawe kanthi "
+"manual dening admin toko utawa ora rampung nalika checkout."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Plugin WooCommerce Checkout Manager dening Quadlayers ora kompatibel karo "
+"Fluid Checkout"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Kolom jeneng perusahaan kanggo alamat tagihan"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ganti visibilitas kanggo kolom jeneng perusahaan kanggo bagean alamat "
+"tagihan ing formulir checkout."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Rak Buku"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Output bagean langkah-langkah checkout saka tema Rak Buku nalika nggunakake "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Sandi akun"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Akun bakal digawe kanthi informasi sing diwenehake ing checkout nalika "
+"ngrampungake pesenan."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Pilih gaya garis kemajuan."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bar"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Tata letak kaca WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Meksa tata letak sudhut ing kaca WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Iki njamin bagean konten ora sempit banget ing kaca WooCommerce kalebu "
+"checkout, cart, pesenan sing ditampa, pesenan mbayar lan kaca akun."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2492,3 +2589,8 @@ msgstr "Utawa terus ing ngisor iki"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Utawa terus dadi tamu"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Mbusak gambar"

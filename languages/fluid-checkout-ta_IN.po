@@ -138,10 +138,6 @@ msgstr "%2$s இல் %1$s படி"
 msgid "Change: %s"
 msgstr "மாற்றம்: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "வழங்கப்பட்ட தகவலுடன் ஒரு கணக்கு உருவாக்கப்படும்."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "இன்னும் தேர்ந்தெடுக்கப்படவில்லை."
@@ -405,14 +401,6 @@ msgstr "செருகுநிரலை மதிப்பிடவும்."
 msgid "I need help!"
 msgstr "எனக்கு உதவி தேவை!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers இன் WooCommerce Checkout Manager செருகுநிரல், Fluid Checkout "
-"உடன் இணக்கமாக இல்லை."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -662,14 +650,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "ஒரு படத்தைத் தேர்ந்தெடுக்கவும்"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "எந்தப் படமும் தேர்ந்தெடுக்கப்படவில்லை."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "படத்தை அகற்று"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2448,6 +2428,125 @@ msgstr ""
 "படிவ புலங்களுக்கு தனிப்பயன் பாணிகளைப் பயன்படுத்துகிறீர்கள் என்றால் இதை "
 "முடக்க விரும்பலாம்."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "தீம் நைச்சர்"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ஐப் பயன்படுத்தும் போது Nyture கருப்பொருளிலிருந்து checkout "
+"படிகள் பகுதியை வெளியிடுங்கள்."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ஷிப்பிங் முகவரிப் பிரிவுக்குப் பிறகு பில்லிங் முகவரிப் பிரிவு காட்டப்பட்டு, "
+"பில்லிங் தொலைபேசி புலம் &quot;தேவை&quot; என அமைக்கப்பட்டால், "
+"&quot;தேவை&quot; என்று கட்டாயப்படுத்தப்படலாம். அந்த விருப்பம் "
+"தேர்ந்தெடுக்கப்படும்போது ஷிப்பிங் முகவரியை பில்லிங் முகவரிக்கு நகலெடுக்க "
+"முடியும் என்பதை உறுதிப்படுத்த இது தேவைப்படுகிறது."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"பில்லிங் முகவரிப் பிரிவுக்குப் பிறகு பில்லிங் முகவரிப் பிரிவு காட்டப்பட்டு, "
+"பில்லிங் தொலைபேசி புலம் &quot;தேவை&quot; என அமைக்கப்பட்டால், "
+"&quot;தேவை&quot; என்று கட்டாயப்படுத்தப்படலாம். அந்த விருப்பம் "
+"தேர்ந்தெடுக்கப்படும்போது பில்லிங் முகவரியை பில்லிங் முகவரிக்கு நகலெடுக்க "
+"முடியும் என்பதை உறுதிப்படுத்த இது தேவைப்படுகிறது."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"கடை நிர்வாகியால் கைமுறையாக உருவாக்கப்பட்ட அல்லது செக் அவுட்டின் போது "
+"முடிக்கப்படாத ஆர்டர்களுக்கு வாடிக்கையாளர்கள் பணம் செலுத்த அனுமதிக்கிறது."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers இன் WooCommerce Checkout Manager செருகுநிரல், Fluid Checkout "
+"உடன் இணக்கமாக இல்லை."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "பில்லிங் முகவரிக்கான நிறுவனப் பெயர் புலம்"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"செக்அவுட் படிவத்தில் பில்லிங் முகவரிப் பகுதிக்கான நிறுவனத்தின் பெயர் "
+"புலத்திற்கான தெரிவுநிலையை மாற்றவும்."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "தீம் புத்தக அலமாரி"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout ஐப் பயன்படுத்தும் போது Bookshelf கருப்பொருளிலிருந்து "
+"Checkout படிகள் பகுதியை வெளியிடவும்."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "கணக்கு கடவுச்சொல்"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"ஆர்டரை முடிக்கும்போது செக் அவுட்டில் வழங்கப்படும் தகவலுடன் ஒரு கணக்கு "
+"உருவாக்கப்படும்."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "முன்னேற்றப் பட்டியின் பாணியைத் தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "பார்கள்"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "தீம் ஐரேகா"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce பக்க அமைப்பு"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce பக்கங்களில் பரந்த தளவமைப்பை கட்டாயப்படுத்துங்கள்."
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"இது WooCommerce பக்கங்களில் உள்ளடக்கப் பிரிவு மிகவும் குறுகலாக இல்லை என்பதை "
+"உறுதி செய்கிறது, இதில் செக்அவுட், வண்டி, ஆர்டர் பெறப்பட்டது, ஆர்டர் கட்டணம் "
+"மற்றும் கணக்குப் பக்கங்கள் ஆகியவை அடங்கும்."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2565,3 +2664,8 @@ msgstr "அல்லது கீழே தொடரவும்"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "அல்லது விருந்தினராகத் தொடரவும்"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "படத்தை அகற்று"

@@ -329,10 +329,6 @@ msgstr "Zaten bir hesabınız var mı?"
 msgid "Always show"
 msgstr "Her zaman göster"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Verdiğiniz bilgilerle yeni bir hesap oluşturulacaktır."
-
 #: inc/checkout-fields.php:181
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Daire, birim, bina, kat, vb."
@@ -2164,14 +2160,6 @@ msgstr ""
 "Tema tarafından eklenen ürün resmini göster, miktar alanı, kaldır düğmesi "
 "ve ürün sayfasına bağlantı seçenekleri varsayılan olarak devre dışıdır."
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers tarafından sunulan WooCommerce Checkout Manager eklentisi Fluid "
-"Checkout ile uyumlu değildir"
-
 #: inc/admin/admin-settings-wc-shipping.php:50
 msgid ""
 "The shipping destination is always set to \"Default to customer shipping "
@@ -2518,14 +2506,6 @@ msgstr ""
 "Siparişinizin ödenmesi gereken toplam tutarı %s. Başka&nbsp;ödeme yapmanız "
 "gerekmiyor."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Seçili görüntü yok."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Resmi kaldır"
-
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
 msgstr "Tema The7"
@@ -2579,6 +2559,123 @@ msgstr ""
 "Etkinleştirildiğinde, Fluid Checkout eklenti ile uyumluluk için optimize "
 "edilmiş stilleri uygulayacaktır. Stripe ödeme formu alanları için özel "
 "stiller kullanıyorsanız bunu devre dışı bırakmak isteyebilirsiniz."
+
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "Tema Nyture"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout kullanırken Nyture temasından ödeme adımları bölümünün "
+"çıktısını alın."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Fatura adresi bölümü sevkiyat adresi bölümünden sonra görüntüleniyorsa ve "
+"fatura telefonu alanı \"gerekli\" olarak ayarlanmışsa \"gerekli\" olarak "
+"zorlanabilir. Bu, bu seçenek işaretlendiğinde sevkiyat adresinin fatura "
+"adresine kopyalanabilmesini sağlamak için gereklidir."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"Fatura adresi bölümü fatura adresi bölümünden sonra görüntüleniyorsa ve "
+"fatura telefonu alanı \"gerekli\" olarak ayarlanmışsa \"gerekli\" olarak "
+"zorlanabilir. Bu seçenek işaretlendiğinde fatura adresinin fatura adresine "
+"kopyalanabilmesini sağlamak için bu gereklidir."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Müşterilerin, mağaza yöneticisi tarafından manuel olarak oluşturulan veya "
+"ödeme sırasında tamamlanmayan siparişler için ödeme yapmasına olanak tanır."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers tarafından sunulan WooCommerce Checkout Manager eklentisi Fluid "
+"Checkout ile uyumlu değildir"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Fatura adresi için şirket adı alanı"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Ödeme formundaki fatura adresi bölümü için şirket adı alanının "
+"görünürlüğünü değiştirin."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Temalı Kitaplık"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout kullanırken Bookshelf temasından ödeme adımları bölümünün "
+"çıktısını alın."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Hesap şifresi"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Siparişi tamamlarken ödeme sırasında verilen bilgilerle bir hesap "
+"oluşturulacaktır."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "İlerleme çubuğunun stilini seçin."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barlar"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce sayfa düzeni"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce sayfalarında geniş düzeni zorla"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Bu, ödeme, sepet, alınan sipariş, sipariş ödeme ve hesap sayfaları dahil "
+"olmak üzere WooCommerce sayfalarında içerik bölümünün çok dar olmamasını "
+"sağlar."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2702,3 +2799,8 @@ msgstr "%2$s: %1$s"
 msgctxt "Substep review text"
 msgid "None."
 msgstr "Yok."
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Resmi kaldır"

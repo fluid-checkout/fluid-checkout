@@ -1,0 +1,7 @@
+// ------------------------------------
+// Z-INDEX FIXES
+// ------------------------------------
+
+body#{ $_body-theme-selector } .header_m {
+	z-index: z( 'header-element' );
+}

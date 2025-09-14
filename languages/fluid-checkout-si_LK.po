@@ -138,10 +138,6 @@ msgstr "%2$s න් %1$s පියවර"
 msgid "Change: %s"
 msgstr "වෙනස් කිරීම: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "සපයන ලද තොරතුරු සමඟ ගිණුමක් සාදනු ලැබේ."
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "තවම තෝරාගෙන නැහැ."
@@ -399,14 +395,6 @@ msgstr "ප්ලගිනය ශ්‍රේණිගත කරන්න"
 msgid "I need help!"
 msgstr "මට උපකාර අවශ්යයි!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers හි WooCommerce Checkout Manager ප්ලගිනය Fluid Checkout සමඟ "
-"අනුකූල නොවේ."
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -654,14 +642,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "රූපයක් තෝරන්න"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "රූපයක් තෝරාගෙන නැත."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "රූපය ඉවත් කරන්න"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2368,6 +2348,120 @@ msgstr ""
 "යොදනු ඇත. ඔබ Stripe ගෙවීම් පෝරම ක්ෂේත්‍ර සඳහා අභිරුචි විලාස භාවිතා කරන්නේ "
 "නම් ඔබට මෙය අබල කිරීමට අවශ්‍ය විය හැකිය."
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "තේමා නයිචර්"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout භාවිතා කරන විට Nyture තේමාවෙන් පිටවීමේ පියවර කොටස ප්‍රතිදානය "
+"කරන්න."
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"නැව්ගත කිරීමේ ලිපින කොටසට පසුව බිල්පත් ලිපින කොටස දර්ශනය වී ඇති අතර, "
+"බිල්පත් දුරකථන ක්ෂේත්‍රය &quot;අවශ්‍ය&quot; ලෙස සකසා ඇත්නම්, "
+"&quot;අවශ්‍ය&quot; ලෙස බල කළ හැකිය. එම විකල්පය සලකුණු කළ විට නැව්ගත කිරීමේ "
+"ලිපිනය බිල්පත් ලිපිනයට පිටපත් කළ හැකි බව සහතික කිරීමට මෙය අවශ්‍ය වේ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"බිල්පත් ලිපින කොටසට පසුව බිල්පත් ලිපින කොටස දර්ශනය වී ඇති අතර, බිල්පත් "
+"දුරකථන ක්ෂේත්‍රය &quot;අවශ්‍ය&quot; ලෙස සකසා ඇත්නම්, එය &quot;අවශ්‍ය&quot; "
+"ලෙස බල කළ හැකිය. එම විකල්පය සලකුණු කළ විට බිල්පත් ලිපිනය බිල්පත් ලිපිනයට "
+"පිටපත් කළ හැකි බව සහතික කිරීමට මෙය අවශ්‍ය වේ."
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ගබඩා පරිපාලක විසින් අතින් සාදන ලද හෝ පිටවීමේදී සම්පූර්ණ නොකළ ඇණවුම් සඳහා "
+"ගෙවීම් කිරීමට ගනුදෙනුකරුවන්ට ඉඩ සලසයි."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers විසින් නිර්මාණය කරන ලද WooCommerce Checkout Manager ප්ලගිනය "
+"Fluid Checkout සමඟ අනුකූල නොවේ."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "බිල්පත් ලිපිනය සඳහා සමාගම් නාම ක්ෂේත්‍රය"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"පිටවීමේ පෝරමයේ බිල්පත් ලිපින කොටස සඳහා සමාගම් නාම ක්ෂේත්‍රය සඳහා දෘශ්‍යතාව "
+"වෙනස් කරන්න."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "තේමා පොත් රාක්කය"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Fluid Checkout භාවිතා කරන විට Bookshelf තේමාවෙන් පිටවීමේ පියවර කොටස "
+"ප්‍රතිදානය කරන්න."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ගිණුම් මුරපදය"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "ඇණවුම සම්පූර්ණ කිරීමේදී පිටවීමේදී ලබා දෙන තොරතුරු සමඟ ගිණුමක් සාදනු ලැබේ."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ප්‍රගති තීරුවේ විලාසය තෝරන්න."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "බාර්"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "තේමාව ඉරේකා"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce පිටු පිරිසැලසුම"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce පිටුවල පුළුල් පිරිසැලසුම බලහත්කාරයෙන් සකසන්න"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"මෙමගින් WooCommerce පිටුවල අන්තර්ගත කොටස ඉතා පටු නොවන බව සහතික කරයි, එනම් "
+"පිටවීම, කරත්තය, ලැබුණු ඇණවුම, ඇණවුම් ගෙවීම සහ ගිණුම් පිටු ය."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2485,3 +2579,8 @@ msgstr "නැතහොත් පහතින් ඉදිරියට යන්
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "නැතහොත් අමුත්තෙකු ලෙස ඉදිරියට යන්න"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "රූපය ඉවත් කරන්න"

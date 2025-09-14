@@ -1,0 +1,19 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	textarea,
+	input[type="email"],
+	input[type="number"],
+	input[type="text"],
+	input[type="tel"],
+	input[type="url"],
+	input[type="password"] {
+		color: var(--fluidcheckout--betheme--form-field--text-color);
+		background-color: var(--fluidcheckout--betheme--form-field--background-color);
+		border-color: var(--fluidcheckout--betheme--form-field--border-color);
+		border-width: var(--fluidcheckout--betheme--form-field--border-width);
+		border-radius: var(--fluidcheckout--betheme--form-field--border-radius);
+	}
+}

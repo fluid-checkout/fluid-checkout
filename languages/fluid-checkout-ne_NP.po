@@ -138,10 +138,6 @@ msgstr "%2$s मध्ये %1$s चरण"
 msgid "Change: %s"
 msgstr "परिवर्तन: %s"
 
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "प्रदान गरिएको जानकारीको आधारमा खाता सिर्जना गरिनेछ।"
-
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "अझै छनोट भएको छैन।"
@@ -400,14 +396,6 @@ msgstr "प्लगइनको मूल्याङ्कन गर्नु�
 msgid "I need help!"
 msgstr "मलाई सहयोग चाहियो!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"क्वाडलेयर्सको WooCommerce चेकआउट प्रबन्धक प्लगइन फ्लुइड चेकआउटसँग उपयुक्त "
-"छैन।"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -652,14 +640,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "एउटा छवि चयन गर्नुहोस्"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "कुनै छवि चयन गरिएको छैन।"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "छवि हटाउनुहोस्"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -2370,6 +2350,118 @@ msgstr ""
 "लागू गर्नेछ। यदि तपाईं स्ट्राइप भुक्तानी फारम क्षेत्रहरूको लागि अनुकूलन "
 "शैलीहरू प्रयोग गर्दै हुनुहुन्छ भने तपाईं यसलाई असक्षम गर्न सक्नुहुन्छ।"
 
+#: inc/compat/themes/compat-theme-nyture.php:76
+msgid "Theme Nyture"
+msgstr "थिम न्युचर"
+
+#: inc/compat/themes/compat-theme-nyture.php:83
+msgid ""
+"Output the checkout steps section from the Nyture theme when using Fluid "
+"Checkout."
+msgstr "फ्लुइड चेकआउट प्रयोग गर्दा Nyture थिमबाट चेकआउट चरण खण्ड आउटपुट गर्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:581
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the shipping address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the shipping address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"ढुवानी ठेगाना खण्ड पछि बिलिङ ठेगाना खण्ड प्रदर्शित भएमा र बिलिङ फोन क्षेत्र "
+"&quot;आवश्यक&quot; को रूपमा सेट गरिएको भएमा &quot;आवश्यक&quot; को रूपमा "
+"जबरजस्ती गर्न सकिन्छ। त्यो विकल्प जाँच गर्दा ढुवानी ठेगाना बिलिङ ठेगानामा "
+"प्रतिलिपि गर्न सकिन्छ भनेर सुनिश्चित गर्न यो आवश्यक छ।"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid ""
+"Maybe be forced as \"required\" if the billing address section is displayed "
+"after the billing address section, and the billing phone field is set as "
+"\"required. This is needed to ensure the billing address can be copied to "
+"the billing address when that option is checked."
+msgstr ""
+"यदि बिलिङ ठेगाना खण्ड पछि बिलिङ ठेगाना खण्ड प्रदर्शित हुन्छ र बिलिङ फोन "
+"क्षेत्र &quot;आवश्यक&quot; को रूपमा सेट गरिएको छ भने &quot;आवश्यक&quot; को "
+"रूपमा जबरजस्ती गर्न सकिन्छ। त्यो विकल्प जाँच गर्दा बिलिङ ठेगाना बिलिङ "
+"ठेगानामा प्रतिलिपि गर्न सकिन्छ भनेर सुनिश्चित गर्न यो आवश्यक छ।"
+
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ग्राहकहरूलाई स्टोर व्यवस्थापकद्वारा म्यानुअल रूपमा सिर्जना गरिएका वा "
+"चेकआउटको समयमा पूरा नभएका अर्डरहरूको लागि भुक्तानी गर्न अनुमति दिन्छ।"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"क्वाडलेयर्सको WooCommerce चेकआउट प्रबन्धक प्लगइन फ्लुइड चेकआउटसँग उपयुक्त "
+"छैन।"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "बिलिङ ठेगानाको लागि कम्पनीको नाम क्षेत्र"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"चेकआउट फारममा रहेको बिलिङ ठेगाना खण्डको लागि कम्पनीको नाम फिल्डको दृश्यता "
+"परिवर्तन गर्नुहोस्।"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "थिम बुकशेल्फ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"फ्लुइड चेकआउट प्रयोग गर्दा बुकशेल्फ थिमबाट चेकआउट चरणहरू खण्ड आउटपुट "
+"गर्नुहोस्।"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "खाता पासवर्ड"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "अर्डर पूरा गर्दा चेकआउटमा प्रदान गरिएको जानकारीको साथ खाता सिर्जना गरिनेछ।"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "प्रगति पट्टीको शैली छनौट गर्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "बारहरू"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "थिम इरेका"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce पृष्ठ लेआउट"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce पृष्ठहरूमा फराकिलो लेआउट बल गर्नुहोस्"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"यसले चेकआउट, कार्ट, अर्डर प्राप्त, अर्डर भुक्तानी र खाता पृष्ठहरू सहित "
+"WooCommerce पृष्ठहरूमा सामग्री खण्ड धेरै साँघुरो नभएको सुनिश्चित गर्दछ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2487,3 +2579,8 @@ msgstr "अथवा तल जारी राख्नुहोस्"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "अथवा अतिथिको रूपमा जारी राख्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "छवि हटाउनुहोस्"
