@@ -36,6 +36,9 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 		// Settings
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+
+		// Sanitize settings
+		add_filter( 'woocommerce_admin_settings_sanitize_option_fc_local_pickup_shipping_zone_fields', array( $this, 'sanitize_local_pickup_shipping_zone_fields' ), 10, 3 );
 	}
 
 
@@ -526,7 +529,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'desc'              => __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
-						'desc_tip'          => __( 'When enabled, the first shipping method available will not be automatically selected when no other shipping method was previously selected for each shipping package. <br>This option will be automatically enabled if the option for clearing the selected shipping method is enabled for the Local Pickup feature.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'When enabled, the first shipping method available <strong>will not</strong> be automatically selected when no other shipping method was previously selected for each shipping package.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_shipping_methods_disable_auto_select',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
@@ -536,8 +539,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'Local pickup', 'fluid-checkout' ),
-						'desc'              => __( 'Removes shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Replaces the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'Remove shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Replace the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_enable_checkout_local_pickup',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
@@ -546,16 +549,30 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 						'disabled'          => true,
 					),
+
 					array(
-						'desc'              => __( 'Show option to clear shipping methods in the pickup location substep', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Show a link button on the pickup location substep to clear the chosen shipping methods. This can be used to allow showing the shipping address section again if a local pickup method was previously selected.', 'fluid-checkout' ),
-						'id'                => 'fc_local_pickup_display_clear_shipping_methods_button',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_display_clear_shipping_methods_button' ),
-						'checkboxgroup'     => 'end',
-						'show_if_checked'   => 'yes',
+						'desc'              => __( 'Choose which delivery type will be selected by default.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_default_delivery_type',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'ship'          => __( 'Ship', 'fluid-checkout' ),
+							'pickup'        => __( 'Pickup', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_default_delivery_type' ),
 						'autoload'          => false,
 						'disabled'          => true,
+					),
+
+					array(
+						'desc'              => __( 'Choose which fields will be displayed for the local pickup shipping zone filter fields. Leave empty to show all available options.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ),
+						'desc_tip'          => __( 'These fields will be displayed as a filter for the local pickup shipping methods. Some fields might still appear at checkout when not selected here, if compatible plugins require them to work properly.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_shipping_zone_fields',
+						'type'              => 'fc_multiselect',
+						'options'           => apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() ),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_shipping_zone_fields' ),
+						'autoload'          => false,
+						'disabled'          => true,
+						'class'             => 'wc-enhanced-select',
 					),
 
 					array(
@@ -810,6 +827,24 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 		}
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Sanitize the local pickup shipping zone fields option to ensure it's saved as an array.
+	 * 
+	 * @param  mixed   $value      The option value.
+	 * @param  mixed   $option     The option arguments.
+	 * @param  mixed   $raw_value  The raw value of the option.
+	 */
+	public function sanitize_local_pickup_shipping_zone_fields( $value, $option, $raw_value ) {
+		// Ensure the value is an array
+		if ( ! is_array( $value ) ) {
+			$value = array();
+		}
+
+		return $value;
 	}
 
 }
