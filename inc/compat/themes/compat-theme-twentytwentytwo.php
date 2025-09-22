@@ -73,7 +73,7 @@ class FluidCheckout_ThemeCompat_TwentyTwentyTwo extends FluidCheckout {
 				'--fluidcheckout--field--padding-left' => '17.6px',
 				'--fluidcheckout--field--border-radius' => '4px',
 				'--fluidcheckout--field--border-color' => 'var(--wc-form-border-color, #212121)',
-				'--fluidcheckout--field-text-color' => 'inherit',
+				'--fluidcheckout--field--text-color' => 'inherit',
 			),
 		);
 
