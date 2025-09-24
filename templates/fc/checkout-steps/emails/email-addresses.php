@@ -70,7 +70,7 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 				<?php echo wp_kses_post( $billing_address_formatted ); ?>
 
 				<?php // CHANGE: Only output the phone number if it is not already included in the formatted address ?>
-				<?php if ( $order->get_billing_phone() && -1 === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) : ?>
+				<?php if ( $order->get_billing_phone() && false === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) : ?>
 					<br/><?php echo wc_make_phone_clickable( $order->get_billing_phone() ); ?>
 				<?php endif; ?>
 				<?php if ( $order->get_billing_email() ) : ?>
@@ -102,7 +102,7 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 					<?php echo wp_kses_post( $shipping_address_formatted ); ?>
 
 					<?php // CHANGE: Only output the phone number if it is not already included in the formatted address ?>
-					<?php if ( $order->get_shipping_phone() && -1 === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) : ?>
+					<?php if ( $order->get_shipping_phone() && false === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) : ?>
 						<br /><?php echo wc_make_phone_clickable( $order->get_shipping_phone() ); ?>
 					<?php endif; ?>
 					<?php
