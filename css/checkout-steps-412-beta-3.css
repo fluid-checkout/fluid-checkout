@@ -765,7 +765,7 @@ div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:after {
 
 div.woocommerce form .woocommerce-billing-fields__field-wrapper {
   display: block;
-  margin: 0;
+  margin: 0 !important;
 }
 
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not(:last-child),
