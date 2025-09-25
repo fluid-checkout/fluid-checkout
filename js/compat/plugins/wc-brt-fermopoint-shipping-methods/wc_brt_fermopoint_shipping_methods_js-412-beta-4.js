@@ -165,7 +165,7 @@ function isSelectedBrtFermopointShippingMethod(){
 
 function isShippingDifferentAddressChecked(){
 	var checkShipToDifferentAddress = jQuery('input[name=ship_to_different_address]').prop('checked');
-	console.log("checkShipToDifferentAddress", checkShipToDifferentAddress);
+	
 	if( checkShipToDifferentAddress ){
 		return true;
 	}
@@ -203,13 +203,13 @@ function getShippingAddress(){
 	var returnObj = {};	
 	
 	if(isShippingDifferentAddressChecked()) {
-		returnObj.city = jQuery('form .woocommerce-shipping-fields #shipping_city').val();
-		returnObj.country = jQuery('form .woocommerce-shipping-fields #shipping_country').val();
-		returnObj.cap = jQuery('form .woocommerce-shipping-fields #shipping_postcode').val();
+		returnObj.city = jQuery('#shipping_city').val();
+		returnObj.country = jQuery('#shipping_country').val();
+		returnObj.cap = jQuery('#shipping_postcode').val();
 	} else {
-		returnObj.city = jQuery('form .woocommerce-billing-fields #billing_city').val();
-		returnObj.country = jQuery('form .woocommerce-billing-fields #billing_country').val();
-		returnObj.cap = jQuery('form .woocommerce-billing-fields #billing_postcode').val();		
+		returnObj.city = jQuery('#billing_city').val();
+		returnObj.country = jQuery('#billing_country').val();
+		returnObj.cap = jQuery('#billing_postcode').val();		
 	}
 	return returnObj;
 }
@@ -219,13 +219,19 @@ function getPudoFromCoords(coords) {
 
 		loading(true);
 
+		var coordsObj = {
+			latitude: coords.latitude ? coords.latitude : "",
+			longitude: coords.longitude ? coords.longitude : "",
+		};
+
 		jQuery.ajax({
 			type: "POST",
 			url : ajax_object.ajaxurl,
 			data: {
 				action: 'get_pudo_by_lat_lng',
 				security: ajax_object.security,
-				coords: coords,
+				coords: coordsObj,
+				show_locker: pudableLocker ? 'yes' : 'no'
 			},
 			success: function( data, textStatus, jqXHR ) {
 				if(data.pudo && data.pudo.length > 0){
@@ -286,7 +292,8 @@ function getPudoFromAddress() {
 			data: {
 				action: 'get_pudo_by_address',
 				security: ajax_object.security,
-				shipping_address: shipping_address
+				shipping_address: shipping_address,
+				show_locker: pudableLocker ? 'yes' : 'no'
 			},
 			success: function( data, textStatus, jqXHR ) {
 				if(data.pudo && data.pudo.length > 0){
@@ -413,6 +420,7 @@ function updateShippingAddressWithPudo(pudo) {
 
 function addPudoToList(pudoArray) {
 	jQuery(document).ajaxComplete(function(){
+		var idOfPudoSelected = jQuery('form #wc_brt_fermopoint-custom_checkout_fields #wc_brt_fermopoint-pudo_id').val();
 		var listContainer = jQuery('#wc_brt_fermopoint_shipping_methods_custom-list_container .pudo-list-scrollable');
 		var appendHtml = "";
 		const days = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato", "Domenica"];
@@ -429,6 +437,7 @@ function addPudoToList(pudoArray) {
 				const title = pudo.pointName ? "<h3>"+ pudo.pointName +"</h3>" : "";
 				const address = pudo.fullAddress ? "<h5>"+ pudo.fullAddress +"</h5>" : "";
 				const distance = pudo.distanceFromPoint ? "<h5>"+ (pudo.distanceFromPoint/1000) +" Km</h5>" : "";
+				const selectedClass = pudo.pudoId == idOfPudoSelected ? "selected" : "";
 
 				var orariHtml = "";
 				orariHtml = "<ul>";
@@ -440,16 +449,13 @@ function addPudoToList(pudoArray) {
 				}
 				orariHtml += "</ul>";
 
-				// CHANGE: Maybe set additional classes
-				var additionalClasses = selectedPudoId == id ? 'selected' : '';
-
-				appendHtml += '<li class="pudo '+additionalClasses+'" onclick="selectPudo(this, '+i+')">';
+				appendHtml += '<li class="pudo ' + selectedClass + '" onclick="selectPudo(this, '+i+')">';
 					appendHtml += '<div class="row m-0">';
 					// appendHtml += "<div class='accordion-container'>";
 						// appendHtml += "<div class='accordion-title'>";
-							appendHtml += "<div class='d-none d-lg-block col-lg-1 p-0 icona'><img src='"+ajax_object.plugin_url+"/includes/images/icon-gmap.png' /></div>";
+							appendHtml += "<div class='d-none d-lg-block col-md-1 p-0 icona'><img src='"+ajax_object.plugin_url+"/includes/images/icon-gmap.png' /></div>";
 							appendHtml += "<div class='col-9 col-sm-10 col-md-7 titolo'>"+ title + address +"</div>";
-							appendHtml += "<div class='col-3 col-sm-2 col-lg-1 p-0 info'>";
+							appendHtml += "<div class='col-3 col-sm-2 col-md-1 p-0 info'>";
 								appendHtml += "<img width='25' height='25' src='"+ajax_object.plugin_url+"/includes/images/icon-info.png' />";
 								appendHtml += "<div class='popup orari'>"+ orariHtml +"</div>";
 							appendHtml += "</div>";
@@ -484,12 +490,13 @@ function selectPudo(el, index) {
 
 function getShippingData(){
 	var returnObj = {};	
-	returnObj.country = jQuery('form .woocommerce-billing-fields #billing_country').val();
-	returnObj.email = jQuery('form .woocommerce-billing-fields #billing_email').val();
-	returnObj.phone = jQuery('form .woocommerce-billing-fields #billing_phone').val();
+	returnObj.country = jQuery('#billing_country').val();
+	returnObj.email = jQuery('#billing_email').val();
+	returnObj.phone = jQuery('#billing_phone').val();
 	return returnObj;
 }
 
+var pudableLocker;
 function checkPudableCartNew() {
 
 	if( isSelectedBrtFermopointShippingMethod() ){
@@ -506,6 +513,7 @@ function checkPudableCartNew() {
 			success: function( data, textStatus, jqXHR ) {
 				if(data.pudable){
 					enablePudoShippingMethodNew();
+					pudableLocker = data.pudableLocker.pudable;
 
 					disableCodPayment();
 					// disableCheckShippingAddress();
@@ -517,6 +525,8 @@ function checkPudableCartNew() {
 					var why_not_pudable = "generic_error";
 					if( data.why_not_pudable )
 						why_not_pudable = data.why_not_pudable;
+					
+					pudableLocker = false;
 						
 					disablePudoShippingMethodNew(why_not_pudable);
 					hideMap();
@@ -549,7 +559,10 @@ jQuery( 'body' ).on( 'updated_checkout', checkPudableCartNew );
 function disablePudoShippingMethodNew(idError) {
 	jQuery(document).ajaxComplete(function(){
 		jQuery(document).ready(function(){
-			if( jQuery('.woocommerce-shipping-methods input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
+			// CHANGE: Add bail statement to prevent alerts being loaded for other shipping methods
+			if ( ! isSelectedBrtFermopointShippingMethod() ) { return; }
+
+			if( jQuery('input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
 				if(jQuery('#wc_brt_fermopoint_shipping_methods_custom-tr_alert-' + idError ).length > 0){
 					jQuery('.wc_brt_tr_alert').hide();
 					jQuery('#wc_brt_fermopoint_shipping_methods_custom-tr_alert-' + idError ).show();
@@ -566,7 +579,7 @@ function disablePudoShippingMethodNew(idError) {
 function enablePudoShippingMethodNew() {
 	jQuery(document).ajaxComplete(function(){
 		jQuery(document).ready(function(){
-			if( jQuery('.woocommerce-shipping-methods input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
+			if( jQuery('input[id*="wc_brt_fermopoint_shipping_methods_custom"]').length > 0 ) {
 				if(jQuery('.wc_brt_tr_alert').length > 0){
 					jQuery('.wc_brt_tr_alert').hide();
 				}

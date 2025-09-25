@@ -354,7 +354,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		if ( ! class_exists( self::CLASS_NAME ) ) { return $review_text_lines; }
 
 		// Bail if target shipping method is not selected
-		if ( ! $this->is_shipping_method_selected() ) { return; }
+		if ( ! $this->is_shipping_method_selected() ) { return $review_text_lines; }
 
 		// Get selected terminal info
 		$selected_terminal_info = $this->get_selected_terminal_info();
