@@ -111,6 +111,19 @@ div.woocommerce form .form-row .select2-container .select2-selection {
   margin-bottom: 0;
 }
 
+div.woocommerce form .form-row input:-moz-read-only, div.woocommerce form .form-row textarea:-moz-read-only, div.woocommerce form .form-row select:-moz-read-only, div.woocommerce form .form-row select:-moz-read-only + .select2-container .select2-selection {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3) !important;
+  cursor: not-allowed !important;
+}
+
+div.woocommerce form .form-row input:read-only,
+div.woocommerce form .form-row textarea:read-only,
+div.woocommerce form .form-row select:read-only,
+div.woocommerce form .form-row select:read-only + .select2-container .select2-selection {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3) !important;
+  cursor: not-allowed !important;
+}
+
 div.woocommerce form .form-row.form-row-first,
 div.woocommerce form .form-row.form-row-middle,
 div.woocommerce form .form-row.form-row-last {

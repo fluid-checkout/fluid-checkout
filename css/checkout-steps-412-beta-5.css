@@ -714,19 +714,23 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
 body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] {
   background-color: var(--fluidcheckout--section--highlighted-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea,
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select,
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=email],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=number],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=date],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=search],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=text],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password],
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection,
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .select2-selection .select2-selection__rendered,
-body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] .ts-control {
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=email]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=number]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=date]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=search]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=text]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password]:not(:-moz-read-only), body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:-moz-read-only) + .select2-container .select2-selection, body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:-moz-read-only) + .select2-container .select2-selection .select2-selection__rendered, body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:-moz-read-only) + .ts-wrapper .ts-control {
+  background-color: var(--fluidcheckout--section--highlighted-field-background-color, var(--fluidcheckout--color--white, #fff)) !important;
+  color: inherit !important;
+}
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] textarea:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=email]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=number]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=date]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=search]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=text]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=tel]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=url]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] input[type=password]:not(:read-only),
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:read-only) + .select2-container .select2-selection,
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:read-only) + .select2-container .select2-selection .select2-selection__rendered,
+body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data-substep-id=billing_address] select:not(:read-only) + .ts-wrapper .ts-control {
   background-color: var(--fluidcheckout--section--highlighted-field-background-color, var(--fluidcheckout--color--white, #fff)) !important;
   color: inherit !important;
 }
@@ -795,19 +799,23 @@ div.woocommerce form .form-row.fc-same-address-checkbox label {
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] {
   background-color: var(--fluidcheckout--section--highlighted-background-color, var(--fluidcheckout--color--lighter-grey, #f3f3f3));
 }
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea,
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select,
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password],
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection,
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .select2-selection .select2-selection__rendered,
-body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] .ts-control {
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password]:not(:-moz-read-only), body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:-moz-read-only) + .select2-container .select2-selection, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:-moz-read-only) + .select2-container .select2-selection .select2-selection__rendered, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:-moz-read-only) + .ts-wrapper .ts-control {
+  background-color: var(--fluidcheckout--section--highlighted-field-background-color, var(--fluidcheckout--color--white, #fff)) !important;
+  color: inherit !important;
+}
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password]:not(:read-only),
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:read-only) + .select2-container .select2-selection,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:read-only) + .select2-container .select2-selection .select2-selection__rendered,
+body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] select:not(:read-only) + .ts-wrapper .ts-control {
   background-color: var(--fluidcheckout--section--highlighted-field-background-color, var(--fluidcheckout--color--white, #fff)) !important;
   color: inherit !important;
 }
@@ -1560,6 +1568,19 @@ div.woocommerce form .form-row select,
 div.woocommerce form .form-row .select2-container,
 div.woocommerce form .form-row .select2-container .select2-selection {
   margin-bottom: 0;
+}
+
+div.woocommerce form .form-row input:-moz-read-only, div.woocommerce form .form-row textarea:-moz-read-only, div.woocommerce form .form-row select:-moz-read-only, div.woocommerce form .form-row select:-moz-read-only + .select2-container .select2-selection {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3) !important;
+  cursor: not-allowed !important;
+}
+
+div.woocommerce form .form-row input:read-only,
+div.woocommerce form .form-row textarea:read-only,
+div.woocommerce form .form-row select:read-only,
+div.woocommerce form .form-row select:read-only + .select2-container .select2-selection {
+  background-color: var(--fluidcheckout--color--lighter-grey, #f3f3f3) !important;
+  cursor: not-allowed !important;
 }
 
 div.woocommerce form .form-row.form-row-first,
