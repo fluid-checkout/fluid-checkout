@@ -266,12 +266,12 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Get the selected terminal data.
 	 */
-	public function get_selected_terminal_data( $unformatted = false ) {
+	public function get_selected_terminal_data( $method = null, $unformatted = false ) {
 		// Get session field name
-		$session_field_name = $this->get_session_field_name();
+		$session_field_name = $this->get_session_field_name( $method );
 
 		// Bail if session field name is not available
-		if ( empty( $session_field_name ) ) { return $posted_data; }
+		if ( empty( $session_field_name ) ) { return; }
 
 		// Get session field value
 		$terminal_data = WC()->session->get( $session_field_name );
@@ -305,15 +305,17 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Get the session field name based on the selected shipping method.
 	 */
-	public function get_session_field_name() {
-		// Get selected shipping method
-		$shipping_method = $this->maybe_get_selected_shipping_method();
+	public function get_session_field_name( $method = null ) {
+		// Maybe get selected shipping method
+		if ( ! $method ) {
+			$method = $this->maybe_get_selected_shipping_method();
+		}
 
 		// Bail if selected shipping method is not available
-		if ( ! is_object( $shipping_method ) ) { return; }
+		if ( ! is_object( $method ) ) { return; }
 
 		// Get the session field name based on the selected shipping method
-		$session_field_name = self::SESSION_FIELD_NAME . '_' . $shipping_method->id;
+		$session_field_name = self::SESSION_FIELD_NAME . '_' . $method->get_method_id();
 
 		return $session_field_name;
 	}
@@ -415,7 +417,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return; }
 
 		// Check if terminal data is set
-		$terminal_data = $this->get_selected_terminal_data( true );
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method, true );
 
 		// Output custom hidden fields
 		echo '<div id="gls_shipping-custom_checkout_fields" class="form-row fc-no-validation-icon">';
