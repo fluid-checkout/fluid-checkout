@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 
 	/**
+	 * Session field name for the selected pickup location.
+	 */
+	public const SESSION_FIELD_NAME = 'selected_vp_pont';
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -38,7 +45,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_pickup_point', array( $this, 'maybe_set_substep_incomplete_pickup_point' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Shipping address
 		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
@@ -187,7 +194,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 */
 	public function is_vp_pont_location_selected() {
 		// Get selected pont
-		$selected_vp_pont = WC()->session->get( 'selected_vp_pont' );
+		$selected_vp_pont = WC()->session->get( self::SESSION_FIELD_NAME );
 
 		// Get shipping cost
 		$shipping_costs = VP_Woo_Pont_Helpers::calculate_shipping_costs();
@@ -202,6 +209,30 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 
 
 	/**
+	 * Get the selected terminal data.
+	 */
+	public function get_selected_terminal_data() {
+		// Get session field value
+		$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Bail if terminal data is not available
+		if ( empty( $terminal_data ) ) { return; }
+
+		// Assign terminal object property values to the corresponding array keys
+		$selected_terminal_data = array(
+			'company' => isset( $terminal_data[ 'name' ] ) ? esc_html( $terminal_data[ 'name' ] ) : '',
+			'address_1' => isset( $terminal_data[ 'addr' ] ) ? $terminal_data[ 'addr' ] : '',
+			'postcode' => isset( $terminal_data[ 'zip' ] ) ? esc_html( $terminal_data[ 'zip' ] ) : '',
+			'city' => isset( $terminal_data[ 'city' ] ) ? esc_html( $terminal_data[ 'city' ] ) : '',
+			'country' => isset( $terminal_data[ 'country' ] ) ? esc_html( $terminal_data[ 'country' ] ) : 'HU',
+		);
+
+		return $selected_terminal_data;
+	}
+
+
+
+	/**
 	 * Maybe change the pickup point substep text to display the selected Hungarian Pickup Points information.
 	 */
 	public function output_pickup_point_selection_ui( $show_title = true ) {
@@ -209,7 +240,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return; }
 
 		// Get selected pont
-		$selected_vp_pont = WC()->session->get( 'selected_vp_pont' );
+		$selected_vp_pont = WC()->session->get( self::SESSION_FIELD_NAME );
 
 		// Get selected pont ID
 		$selected_vp_pont_id = $selected_vp_pont ? $selected_vp_pont[ 'id' ] : '';
@@ -327,7 +358,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 *
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_substep_incomplete_pickup_point( $is_substep_complete ) {
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
 		// Bail if substep is already incomplete
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 		
