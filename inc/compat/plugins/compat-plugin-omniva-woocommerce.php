@@ -50,6 +50,10 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 	public function very_late_hooks() {
 		// Shipping methods
 		$this->checkout_shipping_methods_hooks();
+
+		// Override terminal selection UI function
+		remove_action( 'woocommerce_after_shipping_rate', array( 'OmnivaLt_Order', 'after_rate_terminals' ), 10 );
+		add_action( 'woocommerce_after_shipping_rate', array( $this, 'after_rate_terminals' ), 10 );
 	}
 
 	/**
@@ -207,8 +211,8 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 	public function get_customer_country() {
 		// Get country code
 		// Try to get shipping country, then billing country, then base shop country
-		$country = WC()->checkout->get_value( 'shipping_country' );
-		if ( empty( $country ) ) { $country = WC()->checkout->get_billing_country(); }
+		$country = WC()->customer->get_shipping_country();
+		if ( empty( $country ) ) { $country = WC()->customer->get_billing_country(); }
 		if ( empty( $country ) ) { $country = WC()->countries->get_base_country(); }
 
 		return $country;
@@ -356,6 +360,45 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		$html = '<img class="omnivalt-logo" src="' . OMNIVALT_URL . 'assets/img/logos/' . $image_file . '" alt="Omniva"/>';
 
 		return $html;
+	}
+
+
+
+	/**
+	 * Output the terminal selection UI.
+	 * COPIED AND ADAPTED FROM: OmnivaLt_Order::after_rate_terminals().
+	 * 
+	 * @param  WC_Shipping_Rate  $method   The shipping method rate object.
+	 */
+	public function after_rate_terminals( $method ) {
+		// Bail if required classes or methods are not available
+		if ( ! class_exists( 'OmnivaLt_Omniva_Order' ) || ! method_exists( 'OmnivaLt_Omniva_Order', 'get_method_key_from_id' ) ) { return; }
+		if ( ! class_exists( 'OmnivaLt_Method' ) || ! method_exists( 'OmnivaLt_Method', 'get_terminal_type' ) ) { return; }
+		if ( ! class_exists( 'OmnivaLt_Terminals' ) || ! method_exists( 'OmnivaLt_Terminals', 'get_terminals_options' ) ) { return; }
+
+		// CHANGE: Replace the country value with a compatible function to prevent bypassing the filter 'woocommerce_customer_get_shipping_country'.
+		$country = $this->get_customer_country();
+
+		// Get terminal ID from session
+		$terminal_id = WC()->session->get( 'omnivalt_terminal_id' );
+
+		// Get selected shipping method
+		$selected_shipping_method = WC()->session->get( 'chosen_shipping_methods' );
+
+		// Maybe transform to array
+		if ( empty( $selected_shipping_method ) ) {
+			$selected_shipping_method = array();
+		}
+		if ( ! is_array( $selected_shipping_method ) ) {
+			$selected_shipping_method = array( $selected_shipping_method );
+		}
+
+		// Output HTML for terminal selection UI 
+		$method_key = OmnivaLt_Omniva_Order::get_method_key_from_id( $method->id );
+		$terminals_type = OmnivaLt_Method::get_terminal_type( $method_key );
+		if ( $terminals_type && in_array( $method->id, $selected_shipping_method ) ) {
+			echo OmnivaLt_Terminals::get_terminals_options( $terminal_id, $country, $terminals_type );
+		}
 	}
 
 }
