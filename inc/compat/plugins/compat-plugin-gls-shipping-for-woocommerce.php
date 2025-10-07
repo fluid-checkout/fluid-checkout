@@ -245,7 +245,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		$html = preg_replace( '/<br[^>]*>/', '', $html );
 
 		// Get selected terminal data
-		$terminal_data = $this->get_selected_terminal_data();
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id );
 
 		// If local pickup feature is disabled, output selected terminal data
 		if ( ! empty( $terminal_data ) && ! empty( $terminal_data['address_1'] ) ) {
@@ -266,9 +266,9 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Get the selected terminal data.
 	 */
-	public function get_selected_terminal_data( $method = null, $unformatted = false ) {
+	public function get_selected_terminal_data( $method_id, $unformatted = false ) {
 		// Get session field name
-		$session_field_name = $this->get_session_field_name( $method );
+		$session_field_name = $this->get_session_field_name( $method_id );
 
 		// Bail if session field name is not available
 		if ( empty( $session_field_name ) ) { return; }
@@ -305,17 +305,9 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Get the session field name based on the selected shipping method.
 	 */
-	public function get_session_field_name( $method = null ) {
-		// Maybe get selected shipping method
-		if ( ! $method ) {
-			$method = $this->maybe_get_selected_shipping_method();
-		}
-
-		// Bail if selected shipping method is not available
-		if ( ! is_object( $method ) ) { return; }
-
+	public function get_session_field_name( $method_id ) {
 		// Get the session field name based on the selected shipping method
-		$session_field_name = self::SESSION_FIELD_NAME . '_' . $method->get_method_id();
+		$session_field_name = self::SESSION_FIELD_NAME . '_' . $method_id;
 
 		return $session_field_name;
 	}
@@ -331,8 +323,11 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Bail if field value was not posted or is empty
 		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) { return $posted_data; }
 
+		// Maybe get selected shipping method
+		$method = $this->maybe_get_selected_shipping_method();
+
 		// Get session field name
-		$session_field_name = $this->get_session_field_name();
+		$session_field_name = is_object( $method ) ? $this->get_session_field_name( $method->get_method_id() ) : '';
 
 		// Bail if session field name is not available
 		if ( empty( $session_field_name ) ) { return $posted_data; }
@@ -361,8 +356,11 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Maybe get selected shipping method
+		$method = $this->maybe_get_selected_shipping_method();
+
 		// Get selected terminal data
-		$terminal_data = $this->get_selected_terminal_data();
+		$terminal_data = is_object( $method ) ? $this->get_selected_terminal_data( $method->get_method_id() ) : array();
 
 		// Bail if there is no selected terminal
 		if ( empty( $terminal_data ) ) { return $review_text_lines; }
@@ -394,7 +392,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return $is_substep_complete; }
 
 		// Get selected terminal data
-		$terminal_data = $this->get_selected_terminal_data();
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id );
 
 		// Maybe set step as incomplete if terminal data is not set
 		if ( empty( $terminal_data ) ) {
@@ -420,7 +418,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return; }
 
 		// Check if terminal data is set
-		$terminal_data = $this->get_selected_terminal_data( $shipping_method, true );
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id, $shipping_method, true );
 
 		// Output custom hidden fields
 		echo '<div id="gls_shipping-custom_checkout_fields" class="form-row fc-no-validation-icon">';
