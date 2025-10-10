@@ -3,5 +3,5 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector } form .form-row .woocommerce-input-wrapper span.description {
-	text-align: left;
+	text-align: $alignment-left;
 }
