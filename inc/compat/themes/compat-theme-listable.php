@@ -25,6 +25,10 @@ class FluidCheckout_ThemeCompat_Listable extends FluidCheckout {
 		// Remove Listable's custom place order button from shipping section and after customer details
 		remove_action( 'woocommerce_checkout_shipping', 'listable_checkout_place_order_button', 20 );
 		remove_action( 'woocommerce_checkout_after_customer_details', 'woocommerce_checkout_payment', 20 );
+
+		// Remove Listable's login and coupon forms from checkout
+		remove_action( 'woocommerce_checkout_before_customer_details', 'woocommerce_checkout_login_form', 10 );
+		remove_action( 'woocommerce_checkout_before_customer_details', 'woocommerce_checkout_coupon_form', 10 );
 	}
 
 
