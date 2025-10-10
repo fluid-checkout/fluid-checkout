@@ -6,6 +6,10 @@ body.theme-listable .woocommerce-checkout-payment .wc-stripe-save-source label.c
   width: auto;
 }
 
+body.theme-listable span.select2.select2-container.select2-container--default.select2-container--below {
+  text-align: right;
+}
+
 body.theme-listable form .form-row .woocommerce-input-wrapper span.description {
   text-align: right;
 }
