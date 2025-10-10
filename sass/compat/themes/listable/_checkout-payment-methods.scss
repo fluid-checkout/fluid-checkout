@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce-checkout-payment .wc-stripe-save-source label.checkbox {
+	width: auto;
+}

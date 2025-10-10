@@ -2,6 +2,10 @@ body.theme-listable form.woocommerce-checkout > * {
   padding-right: 0;
 }
 
+body.theme-listable .woocommerce-checkout-payment .wc-stripe-save-source label.checkbox {
+  width: auto;
+}
+
 body.theme-listable form .form-row .woocommerce-input-wrapper span.description {
   text-align: right;
 }
