@@ -49,7 +49,6 @@ class FluidCheckout_ThemeCompat_Listable extends FluidCheckout {
 				'--fluidcheckout--field--color' => 'inherit',
 				'--fluidcheckout--field--font-size' => '15px',
 				'--fluidcheckout--field--border-color' => 'rgba(0, 0, 0, 0.075)',
-				
 			),
 		);
 
