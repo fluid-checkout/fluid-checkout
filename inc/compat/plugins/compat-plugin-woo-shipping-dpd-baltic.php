@@ -23,6 +23,12 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 	public const CLASS_NAME = 'DPD_Parcels';
 
 
+	/**
+	 * Hold cached terminal data to improve performance.
+	 */
+	private $terminal_cache = array();
+
+
 
 	/**
 	 * __construct function.
@@ -66,9 +72,86 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		// Get object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
 
-		// Move shipping method hooks
+		// Remove DPD's inefficient method and replace with the optimized version
 		remove_action( 'woocommerce_review_order_after_shipping', array( $class_object, 'review_order_after_shipping' ), 10 );
-		add_action( 'fc_shipping_methods_after_packages_inside', array( $class_object, 'review_order_after_shipping' ), 10 );
+		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'review_order_after_shipping' ), 10 );
+	}
+
+
+
+	/**
+	 * Review order after shipping.
+	 * Optimized to avoid loading all 98k+ terminals by using direct SQL queries.
+	 * COPIED AND ADAPTED FROM: DPD_Parcels::review_order_after_shipping().
+	 * 
+	 */
+	public function review_order_after_shipping() {
+		global $is_hook_executed;
+
+		// Bail if class is not available
+		if ( ! class_exists( self::CLASS_NAME ) ) { return; }
+
+		// Get the DPD object to access its properties
+		$dpd_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
+		if ( empty( $dpd_object ) ) { return; }
+
+		// Get currently selected shipping methods
+		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+		if ( ! empty( $chosen_shipping_methods ) && substr( $chosen_shipping_methods[0], 0, strlen( self::SHIPPING_METHOD_ID ) ) === self::SHIPPING_METHOD_ID ) {
+			$limit = 500;
+			$page = 1;
+			$offset = $limit * ( $page - 1 );
+			$selected_terminal = WC()->session->get( self::SESSION_FIELD_NAME ) ?: '';
+			$selected_terminal_name = '';
+
+			// CHANGE: Use optimized method to get terminal name instead of `get_terminal_name()`.
+			// This avoids loading all 98 897 terminals into memory by querying only the specific terminal needed.
+			if ( ! empty( $selected_terminal ) ) {
+				$selected_terminal_name = $this->get_terminal_name( $selected_terminal );
+			}
+
+			$has_more = $limit + 1;
+
+			// Use DPD's pagination method (this is already optimized)
+			$terminals_pagination = $dpd_object->get_terminals_pagination( WC()->customer->get_shipping_country(), $has_more, $offset );
+
+			if ( count( $terminals_pagination ) > $limit ) {
+				array_pop( $terminals_pagination );
+			} else {
+				$page = -1;
+			}
+
+			// CHANGE: Removed the call to `get_terminals()`
+			// That call loaded all 98 897 terminals but the result was never used (it was commented out in the template_data below)
+
+			$template_data = array(
+				'terminals'  => $dpd_object->get_grouped_terminals( $terminals_pagination ),
+				'field_name' => self::SESSION_FIELD_NAME,
+				'field_id'   => self::SESSION_FIELD_NAME,
+				'selected'   => $selected_terminal ? $selected_terminal : '',
+				'selected_terminal_name' => $selected_terminal_name,
+				'load_more_page' => $page,
+			);
+
+			do_action( self::SHIPPING_METHOD_ID . '_before_terminals' );
+
+			$google_map_api = get_option( 'dpd_google_map_key' );
+
+			if ( ! method_exists( $dpd_object, 'checkDoesNotFitInTerminal' ) || ! $dpd_object->checkDoesNotFitInTerminal( WC()->cart->get_cart() ) && ! $is_hook_executed ) {
+				if ( '' != $google_map_api ) {
+					// CHANGE: Use the already-retrieved $selected_terminal_name instead of calling get_terminal_name() again
+					$template_data[ 'selected_name' ] = $selected_terminal_name;
+					wc_get_template( 'checkout/form-shipping-dpd-terminals-with-map.php', $template_data );
+				} else {
+					wc_get_template( 'checkout/form-shipping-dpd-terminals.php', $template_data );
+				}
+
+				$is_hook_executed = true;
+			}
+
+			do_action( self::SHIPPING_METHOD_ID . '_after_terminals' );
+		}
 	}
 
 
@@ -200,6 +283,55 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 
 
 	/**
+	 * Get terminal data by ID directly from database.
+	 * 
+	 * @param  string  $terminal_id  The terminal ID.
+	 */
+	public function get_terminal_by_id( $terminal_id ) {
+		// Try to return value from cache
+		if ( isset( $this->terminal_cache[ $terminal_id ] ) ) {
+			return $this->terminal_cache[ $terminal_id ];
+		}
+
+		global $wpdb;
+
+		// Query only the specific terminal needed
+		$terminal = $wpdb->get_row( $wpdb->prepare(
+			"SELECT * FROM {$wpdb->prefix}dpd_terminals WHERE parcelshop_id = %s LIMIT 1",
+			$terminal_id
+		) );
+
+		// Maybe set cache value
+		if ( $terminal ) {
+			$this->terminal_cache[ $terminal_id ] = $terminal;
+		}
+
+		return $terminal;
+	}
+
+
+
+	/**
+	 * Get formatted terminal name by ID (optimized version).
+	 * 
+	 * @param  string  $terminal_id  The terminal ID.
+	 */
+	public function get_terminal_name( $terminal_id ) {
+		// Get terminal
+		$terminal = $this->get_terminal_by_id( $terminal_id );
+
+		// Bail if terminal data is not available
+		if ( ! is_object( $terminal ) || ! isset( $terminal->company, $terminal->street ) ) { return; }
+
+		// Generate terminal name
+		$terminal_name = $terminal->company . ', ' . $terminal->street;
+
+		return $terminal_name;
+	}
+
+
+
+	/**
 	 * Add the shipping methods substep review text lines.
 	 * 
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
@@ -241,8 +373,18 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		// Bail if there is no selected terminal
 		if ( empty( $selected_terminal ) ) { return $review_text_lines; }
 
+		// Use optimized method to get terminal name
+		$terminal_name = $this->get_terminal_name( $selected_terminal );
+
+		// Maybe fallback to original method if optimized version fails
+		if ( ! $terminal_name ) {
+			$terminal_name = $class_object->get_terminal_name( $selected_terminal );
+		}
+
 		// Add terminal name as review text line
-		$review_text_lines[] = $class_object->get_terminal_name( $selected_terminal );
+		if ( $terminal_name ) {
+			$review_text_lines[] = $terminal_name;
+		}
 
 		return $review_text_lines;
 	}
