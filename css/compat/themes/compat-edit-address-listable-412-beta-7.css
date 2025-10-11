@@ -1,15 +1,3 @@
-body.theme-listable form.woocommerce-checkout > * {
-  padding-left: 0;
-}
-
-body.theme-listable .woocommerce-checkout-payment .wc-stripe-save-source label.checkbox {
-  width: auto;
-}
-
-body.theme-listable span.select2.select2-container.select2-container--default.select2-container--below {
-  text-align: left;
-}
-
 body.theme-listable form .form-row .woocommerce-input-wrapper input[type=checkbox] {
   width: 22px;
   min-width: 22px;
