@@ -41,14 +41,12 @@ class FluidCheckout_ThemeCompat_Kiosko extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '50.3px',
-				'--fluidcheckout--field--padding-left' => '1.1rem',
-
 				'--fluidcheckout--field--height' => '47.7969px',
 				'--fluidcheckout--field--padding-left' => '17.6px',
 				'--fluidcheckout--field--border-radius' => '4px',
 				'--fluidcheckout--field--border-color' => 'var(--wc-form-border-color, #212121)',
 				'--fluidcheckout--field--text-color' => 'inherit',
+				'--fluidcheckout--field--font-size' => '15px',
 			),
 		);
 
