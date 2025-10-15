@@ -4,16 +4,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fluid-checkout\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Serbian\n"
 "Last-Translator: Diego Versiani\n"
 "POT-Creation-Date: 2025-03-06 01:48+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:"
-"1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
-"esc_html_x:1,2c\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_"
+"attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 "PO-Revision-Date: 2025-10-15 15:34+0000\n"
 "Language: sr_RS\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.8.0; wp-6.8.3; php-7.4.30"
+"X-Loco-Version: 2.8.0; wp-6.8.3; php-7.4.30\n"
 
 #: fluid-checkout.php:585
 msgid "WooCommerce"
@@ -48,8 +48,8 @@ msgstr ""
 msgid "Enter your code here"
 msgstr "Унесите свој код овде"
 
-#. translators: %s: Form field label
 #: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
+#. translators: %s: Form field label
 msgid "Add %s"
 msgstr "Додај %s"
 
@@ -90,8 +90,8 @@ msgstr "Кликните да бисте отишли на резиме пору
 msgid "Cart total:"
 msgstr "Укупно у корпи:"
 
-#. translators: Next checkout step title
 #: inc/checkout-steps.php:1688
+#. translators: Next checkout step title
 msgid "Proceed to %s"
 msgstr "Наставите до %s"
 
@@ -135,8 +135,8 @@ msgstr "Биллинг то"
 msgid "Payment method"
 msgstr "Начин плаћања"
 
-#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 #: inc/checkout-steps.php:2530
+#. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 msgid "Step %1$s of %2$s"
 msgstr "Корак %1$s од %2$s"
 
@@ -168,8 +168,8 @@ msgstr "Резиме налога"
 msgid "Edit cart"
 msgstr "Уреди корпу"
 
-#. translators: %s: html for the email address typo correction suggestion link
 #: inc/checkout-validation.php:197
+#. translators: %s: html for the email address typo correction suggestion link
 msgid "Did you mean %s?"
 msgstr "Да ли сте мислили %s?"
 
@@ -222,8 +222,8 @@ msgstr "Цхецкоут Хеадер - Мобиле"
 
 #: inc/checkout-widget-areas.php:110
 msgid ""
-"Display widgets below the checkout header for mobile devices. Only displayed "
-"if using the plugin's checkout header."
+"Display widgets below the checkout header for mobile devices. Only "
+"displayed if using the plugin's checkout header."
 msgstr ""
 "Прикажите виџете испод заглавља плаћања за мобилне уређаје. Приказује се "
 "само ако користите заглавље плаћања додатка."
@@ -258,8 +258,8 @@ msgstr "Цхецкоут Фоотер"
 
 #: inc/checkout-widget-areas.php:160
 msgid ""
-"Display widgets on the checkout footer. Only displayed if using the plugin's "
-"checkout footer."
+"Display widgets on the checkout footer. Only displayed if using the "
+"plugin's checkout footer."
 msgstr ""
 "Прикажите виџете на подножју наплате. Приказује се само ако користите "
 "подножје за наплату додатка."
@@ -322,7 +322,8 @@ msgstr "Ажурирање базе података Флуид Цхецкоут
 #: inc/admin/admin-notice-db-migrations.php:52
 msgid ""
 "Some changes to the database are required. As with any update, we recommend "
-"you to <strong>take a full backup of your website before proceeding</strong>."
+"you to <strong>take a full backup of your website before "
+"proceeding</strong>."
 msgstr ""
 "Потребне су неке промене у бази података. Као и код сваког ажурирања, "
 "препоручујемо вам да <strong>направите потпуну резервну копију своје веб "
@@ -349,11 +350,11 @@ msgstr ""
 "<p>Флуид Цхецкоут-у је потребан класични образац за плаћање заснован на "
 "ВооЦоммерце-у да би функционисао. Када користите Диви Буилдер за "
 "прилагођавање изгледа и осећаја странице за плаћање, класични кратки кодови "
-"се замењују прилагођеним виџетима из Диви Буилдер-а за сваки део странице за "
-"плаћање. Ови прилагођени виџети нису компатибилни са Флуид Цхецкоут.</p><p> "
-"Уредите своју страницу за плаћање замењујући Диви Буилдер виџете са "
-"текстуалним виџетом који садржи кратки код <code>[woocommerce_checkout]"
-"</code> .</p>"
+"се замењују прилагођеним виџетима из Диви Буилдер-а за сваки део странице "
+"за плаћање. Ови прилагођени виџети нису компатибилни са Флуид "
+"Цхецкоут.</p><p> Уредите своју страницу за плаћање замењујући Диви Буилдер "
+"виџете са текстуалним виџетом који садржи кратки код "
+"<code>[woocommerce_checkout]</code> .</p>"
 
 #: inc/admin/admin-notice-divi-checkout-layout-being-used.php:103
 msgid "Edit the checkout page"
@@ -399,8 +400,8 @@ msgid ""
 "it encourages us to keep improving the plugin :)"
 msgstr ""
 "Већ неко време користите додатак. Како вам се допада до сада?<br> Молимо да "
-"нам дате брзу оцену, ценимо сваку повратну информацију и то нас охрабрује да "
-"наставимо да побољшавамо додатак :)"
+"нам дате брзу оцену, ценимо сваку повратну информацију и то нас охрабрује "
+"да наставимо да побољшавамо додатак :)"
 
 #: inc/admin/admin-notice-review-request.php:50
 msgid "Rate the plugin"
@@ -416,9 +417,10 @@ msgid ""
 "as expected when using it with Fluid Checkout. Read <a href=\"%s\">our "
 "documentation</a> for more information and alternative solutions."
 msgstr ""
-"Неке функције ВооЦоммерце Цхецкоут Манагер-а компаније Куадлаиерс можда неће "
-"радити како се очекује када га користите са Флуид Цхецкоут-ом. Прочитајте <a "
-"href=\"%s\">нашу документацију</a> за више информација и алтернативна решења."
+"Неке функције ВооЦоммерце Цхецкоут Манагер-а компаније Куадлаиерс можда "
+"неће радити како се очекује када га користите са Флуид Цхецкоут-ом. "
+"Прочитајте <a href=\"%s\">нашу документацију</a> за више информација и "
+"алтернативна решења."
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:66
 msgid "Read documentation"
@@ -452,8 +454,8 @@ msgstr "Флуид Цхецкоут ПРО"
 #: inc/admin/admin-setting-type-fc-addons.php:51,
 #: inc/admin/admin-setting-type-fc-addons.php:147
 msgid ""
-"Design templates, optimized cart and order received pages, account matching, "
-"and much more."
+"Design templates, optimized cart and order received pages, account "
+"matching, and much more."
 msgstr ""
 "Шаблони дизајна, оптимизоване странице у колицима и примљене поруџбине, "
 "подударање налога и још много тога."
@@ -536,8 +538,8 @@ msgstr "Све ПРО функције + Сви додаци по посебно
 #: inc/admin/admin-setting-type-fc-addons.php:85,
 #: inc/admin/admin-setting-type-fc-addons.php:132
 msgid ""
-"The bundle includes all add-ons we currently offer and Fluid Checkout add-"
-"ons we launch in the future."
+"The bundle includes all add-ons we currently offer and Fluid Checkout "
+"add-ons we launch in the future."
 msgstr ""
 "Пакет укључује све додатке које тренутно нудимо и додатке Флуид Цхецкоут "
 "које ћемо покренути у будућности."
@@ -619,8 +621,9 @@ msgstr "До 40% мање поља за плаћање за попуњавање
 
 #: inc/admin/admin-setting-type-fc-addons.php:172
 msgid ""
-"Avoid delivery delays and unsatisfied customers. Collect the <strong>correct "
-"address information</strong> from the first time they buy with you."
+"Avoid delivery delays and unsatisfied customers. Collect the "
+"<strong>correct address information</strong> from the first time they buy "
+"with you."
 msgstr ""
 "Избегавајте кашњења испоруке и незадовољне купце. Прикупите <strong>тачне "
 "информације о адреси</strong> од прве куповине код вас."
@@ -660,9 +663,9 @@ msgid ""
 "removes tax charges on reverse charge basis and confirms customer location "
 "when needed."
 msgstr ""
-"Прикупите и <strong>потврдите ЕУ ПДВ бројеве на страници за наплату</strong> "
-", уклањате порезе на основу обрнуте наплате и потврђујете локацију клијента "
-"када је то потребно."
+"Прикупите и <strong>потврдите ЕУ ПДВ бројеве на страници за "
+"наплату</strong> , уклањате порезе на основу обрнуте наплате и потврђујете "
+"локацију клијента када је то потребно."
 
 #: inc/admin/admin-setting-type-fc-addons.php:224
 msgid "Get this add-on &mdash; 39 EUR"
@@ -692,13 +695,13 @@ msgstr ""
 "се на свој налог</a> да бисте добили кључ лиценце или <a href=\"%s\" "
 "target=\"_blank\">купите нови лиценцни кључ</a> ."
 
-#. translators: %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:152
+#. translators: %s: License key expiration date.
 msgid "Valid until %s."
 msgstr "Важи до %s."
 
-#. translators: %s: License key expiration date.
 #: inc/admin/admin-setting-type-fc-license-key.php:158
+#. translators: %s: License key expiration date.
 msgid "Expired on %s."
 msgstr "Истекло %s."
 
@@ -709,8 +712,8 @@ msgid ""
 "and support."
 msgstr ""
 "<a href=\"https://fluidcheckout.com/account/\" target=\"_blank\">Пријавите "
-"се на свој налог</a> да бисте обновили лиценцни кључ и наставили да добијате "
-"ажурирања и подршку."
+"се на свој налог</a> да бисте обновили лиценцни кључ и наставили да "
+"добијате ажурирања и подршку."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:163
 msgid "License key cancelled."
@@ -718,8 +721,8 @@ msgstr "Кључ лиценце је поништен."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:165
 msgid ""
-"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and continue "
-"to receive updates and support."
+"<a href=\"%s\" target=\"_blank\">Purchase a new license key</a> and "
+"continue to receive updates and support."
 msgstr ""
 "<a href=\"%s\" target=\"_blank\">Купите нови лиценцни кључ</a> и наставите "
 "да добијате ажурирања и подршку."
@@ -773,8 +776,8 @@ msgid ""
 "If you ever need help, <a href=\"%s\" target=\"_blank\">open a support "
 "ticket</a> on our official support channel."
 msgstr ""
-"Ако вам икада затреба помоћ, <a href=\"%s\" target=\"_blank\">отворите тикет "
-"за подршку</a> на нашем званичном каналу за подршку."
+"Ако вам икада затреба помоћ, <a href=\"%s\" target=\"_blank\">отворите "
+"тикет за подршку</a> на нашем званичном каналу за подршку."
 
 #: inc/admin/admin-settings-cart.php:71
 msgid "Cart layout"
@@ -807,8 +810,8 @@ msgid ""
 "Controls whether to use the distraction free page header and footer or keep "
 "the currently active theme's header and footer."
 msgstr ""
-"Контролише да ли ћете користити заглавље и подножје странице без ометања или "
-"задржати заглавље и подножје тренутно активне теме."
+"Контролише да ли ћете користити заглавље и подножје странице без ометања "
+"или задржати заглавље и подножје тренутно активне теме."
 
 #: inc/admin/admin-settings-cart.php:108,
 #: inc/admin/admin-settings-checkout.php:130
@@ -840,9 +843,9 @@ msgid ""
 "Only applicable when AJAX cart and the integrated coupon codes in the "
 "checkout page are enabled."
 msgstr ""
-"Изаберите позицију на којој ће се приказати одељак кодова купона на страници "
-"корпе. Применљиво само када су АЈАКС корпа и интегрисани кодови купона на "
-"страници за плаћање омогућени."
+"Изаберите позицију на којој ће се приказати одељак кодова купона на "
+"страници корпе. Применљиво само када су АЈАКС корпа и интегрисани кодови "
+"купона на страници за плаћање омогућени."
 
 #: inc/admin/admin-settings-cart.php:146,
 #: inc/admin/admin-settings-cart.php:169,
@@ -905,8 +908,8 @@ msgid ""
 "Select position where to display the shipping costs and calculator on the "
 "cart page."
 msgstr ""
-"Изаберите позицију на којој ће се приказати трошкови доставе и калкулатор на "
-"страници корпе."
+"Изаберите позицију на којој ће се приказати трошкови доставе и калкулатор "
+"на страници корпе."
 
 #: inc/admin/admin-settings-cart.php:170
 msgid "Display as a cart section"
@@ -917,8 +920,7 @@ msgid "Cross-sells"
 msgstr "Унакрсне продаје"
 
 #: inc/admin/admin-settings-cart.php:180
-msgid ""
-"Select position where to display the cross-sells section on the cart page."
+msgid "Select position where to display the cross-sells section on the cart page."
 msgstr ""
 "Изаберите позицију на којој ће се приказати одељак унакрсних продаја на "
 "страници корпе."
@@ -989,8 +991,8 @@ msgid ""
 "Order pages."
 msgstr ""
 "Општи стилови за кораке плаћања, резиме поруџбине и друге одељке. Може се "
-"односити и на друге странице као што су странице Корпа, Поруџбина примљена и "
-"Прегледај поруџбине."
+"односити и на друге странице као што су странице Корпа, Поруџбина примљена "
+"и Прегледај поруџбине."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -1007,13 +1009,14 @@ msgstr "Шаблони заглавља и подножја"
 #: inc/admin/admin-settings-checkout.php:125
 msgid ""
 "We recommend using the distraction free header and footer to avoid "
-"distractions at the checkout page. <a href=\"https://baymard.com/blog/cart-"
-"abandonment\" target=\"_blank\">Read the research about cart abandonment</a>."
+"distractions at the checkout page. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" target=\"_blank\">Read "
+"the research about cart abandonment</a>."
 msgstr ""
 "Препоручујемо да користите заглавље и подножје без ометања да бисте избегли "
-"ометања на страници за плаћање. <a href=\"https://baymard.com/blog/cart-"
-"abandonment\" target=\"_blank\">Прочитајте истраживање о напуштању колица</a>"
-" ."
+"ометања на страници за плаћање. <a "
+"href=\"https://baymard.com/blog/cart-abandonment\" "
+"target=\"_blank\">Прочитајте истраживање о напуштању колица</a> ."
 
 #: inc/admin/admin-settings-checkout.php:138
 msgid "Logo image"
@@ -1052,11 +1055,11 @@ msgstr "Боја позадине странице"
 
 #: inc/admin/admin-settings-checkout.php:160
 msgid ""
-"Choose a background color for the checkout page. Color is applied to the <em>"
-"body</em> element."
+"Choose a background color for the checkout page. Color is applied to the "
+"<em>body</em> element."
 msgstr ""
-"Изаберите боју позадине за страницу за плаћање. Боја се примењује на елемент "
-"<em>тела</em> ."
+"Изаберите боју позадине за страницу за плаћање. Боја се примењује на "
+"елемент <em>тела</em> ."
 
 #: inc/admin/admin-settings-checkout.php:170
 msgid "Footer background color"
@@ -1080,8 +1083,7 @@ msgstr "Трака напретка"
 
 #: inc/admin/admin-settings-checkout.php:196
 msgid "Display the checkout progress bar when using multi-step checkout layout"
-msgstr ""
-"Прикажите траку тока плаћања када користите распоред плаћања у више корака"
+msgstr "Прикажите траку тока плаћања када користите распоред плаћања у више корака"
 
 #: inc/admin/admin-settings-checkout.php:205
 msgid "Make the checkout progress bar stay visible while scrolling"
@@ -1175,9 +1177,9 @@ msgstr "Сакриј грешке ставки у корпи на страниц
 
 #: inc/admin/admin-settings-checkout.php:302
 msgid ""
-"Do not display the cart items errors message at the top of the checkout page."
-" When submitting the checkout form to complete the purchase, these error "
-"messages will always be displayed."
+"Do not display the cart items errors message at the top of the checkout "
+"page. When submitting the checkout form to complete the purchase, these "
+"error messages will always be displayed."
 msgstr ""
 "Не приказујте поруку о грешкама у ставкама у корпи на врху странице за "
 "плаћање. Када пошаљете образац за плаћање да бисте довршили куповину, ове "
@@ -1188,8 +1190,7 @@ msgid "Place order"
 msgstr "Наручите"
 
 #: inc/admin/admin-settings-checkout.php:314
-msgid ""
-"Define the position to display \"Place order\" and terms checkbox section."
+msgid "Define the position to display \"Place order\" and terms checkbox section."
 msgstr ""
 "Дефинишите позицију за приказ „Поставите налог“ и одељак поља за потврду "
 "термина."
@@ -1219,13 +1220,13 @@ msgid ""
 "These widget areas are used to add trust symbols and trust badges on the "
 "checkout page."
 msgstr ""
-"Ове области виџета се користе за додавање симбола поверења и значки поверења "
-"на страници за плаћање."
+"Ове области виџета се користе за додавање симбола поверења и значки "
+"поверења на страници за плаћање."
 
 #: inc/admin/admin-settings-checkout.php:339
 msgid ""
-"Display checkout sidebar widgets only when viewing the last checkout step on "
-"mobile devices when using multi-step checkout layout"
+"Display checkout sidebar widgets only when viewing the last checkout step "
+"on mobile devices when using multi-step checkout layout"
 msgstr ""
 "Прикажите виџете бочне траке за плаћање само када гледате последњи корак "
 "плаћања на мобилним уређајима када користите распоред плаћања у више корака"
@@ -1251,16 +1252,16 @@ msgid ""
 "Only applicable when coupon code is displayed as a separate section on the "
 "checkout or cart pages."
 msgstr ""
-"Применљиво само када је код купона приказан као посебан одељак на страницама "
-"за плаћање или корпи."
+"Применљиво само када је код купона приказан као посебан одељак на "
+"страницама за плаћање или корпи."
 
 #: inc/admin/admin-settings-checkout.php:385
 msgid ""
 "Select position where to display the coupon codes section on the checkout "
 "page."
 msgstr ""
-"Изаберите позицију на којој ће се приказати одељак кодова купона на страници "
-"за плаћање."
+"Изаберите позицију на којој ће се приказати одељак кодова купона на "
+"страници за плаћање."
 
 #: inc/admin/admin-settings-checkout.php:390
 msgid "Before the checkout steps"
@@ -1276,9 +1277,9 @@ msgstr "Као подкорак након начина плаћања"
 
 #: inc/admin/admin-settings-checkout.php:402
 msgid ""
-"Select style of the \"apply coupon\" button. Only applicable when the coupon "
-"code section is displayed \"Before the checkout steps\" on the checkout page,"
-" or \"Before the cart items section\" on the cart page."
+"Select style of the \"apply coupon\" button. Only applicable when the "
+"coupon code section is displayed \"Before the checkout steps\" on the "
+"checkout page, or \"Before the cart items section\" on the cart page."
 msgstr ""
 "Изаберите стил дугмета „примени купон“. Применљиво само када је одељак код "
 "купона приказан „Пре корака плаћања“ на страници за плаћање или „Пре одељка "
@@ -1309,14 +1310,16 @@ msgstr "Сакријте опциона поља иза дугмета везе"
 #: inc/admin/admin-settings-checkout.php:431
 msgid ""
 "It is recommended to keep this option checked to reduce the number of open "
-"input fields, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
-"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
-"link\" target=\"_blank\">read the research</a>."
+"input fields, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">read the research</a>."
 msgstr ""
-"Препоручује се да ова опција остане означена да бисте смањили број отворених "
-"поља за унос, <a href=\"https://baymard.com/blog/checkout-flow-average-form-"
-"fields#1-address-line-2--company-name-can-safely-be-collapsed-behind-a-"
-"link\" target=\"_blank\">прочитајте истраживање</a> ."
+"Препоручује се да ова опција остане означена да бисте смањили број "
+"отворених поља за унос, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#1-address-"
+"line-2--company-name-can-safely-be-collapsed-behind-a-link\" "
+"target=\"_blank\">прочитајте истраживање</a> ."
 
 #: inc/admin/admin-settings-checkout.php:440
 msgid "Do not hide \"Address line 2\" fields behind a link button"
@@ -1338,9 +1341,9 @@ msgstr "Прикажите дугмад за везу „Додај“ мали�
 
 #: inc/admin/admin-settings-checkout.php:452
 msgid ""
-"Make the labels of optional field \"Add\" link button as <code>"
-"lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone Number\"). "
-"This option also affects the link buttons for coupon code fields."
+"Make the labels of optional field \"Add\" link button as "
+"<code>lowercase</code> (ie. \"Add phone number\" instead of \"Add Phone "
+"Number\"). This option also affects the link buttons for coupon code fields."
 msgstr ""
 "Ознаке опционог поља „Додај“ дугмета везе направите <code>lowercase</code> "
 "(тј. „Додај број телефона“ уместо „Додај број телефона“). Ова опција такође "
@@ -1353,8 +1356,8 @@ msgstr "Адреса за обрачун"
 
 #: inc/admin/admin-settings-checkout.php:461
 msgid ""
-"Select position where to display the billing address section on the checkout "
-"page."
+"Select position where to display the billing address section on the "
+"checkout page."
 msgstr ""
 "Изаберите позицију на којој ће се приказати одељак адресе за обрачун на "
 "страници за плаћање."
@@ -1396,18 +1399,20 @@ msgid ""
 "\"Same as billing address\" will start as checked by default when the "
 "billing address section is displayed first. <br> It is recommended to leave "
 "this option checked as to significantly reduce the number of open input "
-"fields at checkout, <a href=\"https://baymard.com/blog/checkout-flow-average-"
-"form-fields#3-default-billing--shipping-and-hide-the-fields-entirely\" "
-"target=\"_blank\">read the research</a>."
+"fields at checkout, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" target=\"_blank\">read the "
+"research</a>."
 msgstr ""
 "Поље за потврду „Исто као адреса за испоруку“ ће почети као што је "
 "подразумевано означено када се прво прикаже одељак адресе за испоруку.<br> "
 "Поље за потврду „Исто као адреса за обрачун“ ће почети као што је "
 "подразумевано означено када се прво прикаже одељак адресе за обрачун.<br> "
 "Препоручује се да ову опцију оставите означену како бисте значајно смањили "
-"број отворених поља за унос приликом плаћања, <a href=\"https://baymard."
-"com/blog/checkout-flow-average-form-fields#3-default-billing--shipping-and-"
-"hide-the-fields-entirely\" target=\"_blank\">прочитајте истраживање</a> ."
+"број отворених поља за унос приликом плаћања, <a "
+"href=\"https://baymard.com/blog/checkout-flow-average-form-fields#3-default-"
+"billing--shipping-and-hide-the-fields-entirely\" "
+"target=\"_blank\">прочитајте истраживање</a> ."
 
 #: inc/admin/admin-settings-checkout.php:486
 msgid "Highlight the billing address section in the checkout form"
@@ -1450,10 +1455,11 @@ msgid ""
 "option for clearing the selected shipping method is enabled for the Local "
 "Pickup feature."
 msgstr ""
-"Када је омогућено, први доступни начин испоруке неће бити аутоматски изабран "
-"када ниједан други начин испоруке није претходно изабран за сваки пакет "
-"испоруке.<br> Ова опција ће бити аутоматски омогућена ако је опција за "
-"брисање изабраног начина испоруке омогућена за функцију локалног преузимања."
+"Када је омогућено, први доступни начин испоруке неће бити аутоматски "
+"изабран када ниједан други начин испоруке није претходно изабран за сваки "
+"пакет испоруке.<br> Ова опција ће бити аутоматски омогућена ако је опција "
+"за брисање изабраног начина испоруке омогућена за функцију локалног "
+"преузимања."
 
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
@@ -1477,8 +1483,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:538
 msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Прикажи опцију за брисање метода испоруке у подкорак локације за преузимање"
+msgstr "Прикажи опцију за брисање метода испоруке у подкорак локације за преузимање"
 
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
@@ -1493,7 +1498,8 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
-"Choose which address to save as the shipping address for local pickup orders."
+"Choose which address to save as the shipping address for local pickup "
+"orders."
 msgstr ""
 "Изаберите коју адресу желите да сачувате као адресу за испоруку за локалне "
 "поруџбине за преузимање."
@@ -1527,9 +1533,9 @@ msgid ""
 "If field is set as \"optional\", which is the default visibility state, no "
 "changes will be applied to let other plugins apply any changes they need."
 msgstr ""
-"Ако је поље постављено као „опционо“, што је подразумевано стање видљивости, "
-"неће бити примењене никакве промене како би други додаци могли да примењују "
-"све промене које су им потребне."
+"Ако је поље постављено као „опционо“, што је подразумевано стање "
+"видљивости, неће бити примењене никакве промене како би други додаци могли "
+"да примењују све промене које су им потребне."
 
 #: inc/admin/admin-settings-checkout.php:570,
 #: inc/admin/admin-settings-checkout.php:585,
@@ -1556,8 +1562,7 @@ msgstr "Додајте поље за телефон за испоруку у о�
 
 #: inc/admin/admin-settings-checkout.php:594
 msgid "Choose in which step to display the shipping phone field."
-msgstr ""
-"Изаберите у ком кораку желите да прикажете поље за телефон за испоруку."
+msgstr "Изаберите у ком кораку желите да прикажете поље за телефон за испоруку."
 
 #: inc/admin/admin-settings-checkout.php:599,
 #: inc/admin/admin-settings-checkout.php:626
@@ -1577,10 +1582,8 @@ msgid "Choose in which step to display the billing phone field."
 msgstr "Изаберите у ком кораку желите да прикажете поље телефона за наплату."
 
 #: inc/admin/admin-settings-checkout.php:634
-msgid ""
-"Enable international phone number format and validation for phone fields"
-msgstr ""
-"Омогућите формат међународног телефонског броја и потврду за поља за телефон"
+msgid "Enable international phone number format and validation for phone fields"
+msgstr "Омогућите формат међународног телефонског броја и потврду за поља за телефон"
 
 #: inc/admin/admin-settings-checkout.php:635
 msgid "Format and validate phone numbers according to each country."
@@ -1647,16 +1650,15 @@ msgstr "Опције поклона"
 
 #: inc/admin/admin-settings-checkout.php:706
 msgid "Display gift message and other gift options at the checkout page"
-msgstr ""
-"Прикажите поруку о поклону и друге опције поклона на страници за плаћање"
+msgstr "Прикажите поруку о поклону и друге опције поклона на страници за плаћање"
 
 #: inc/admin/admin-settings-checkout.php:707
 msgid ""
 "Allow customers to add a gift message and other gift related options to the "
 "order."
 msgstr ""
-"Дозволите купцима да додају поруку о поклону и друге опције везане за поклон "
-"у поруџбину."
+"Дозволите купцима да додају поруку о поклону и друге опције везане за "
+"поклон у поруџбину."
 
 #: inc/admin/admin-settings-checkout.php:717
 msgid "Display the gift message fields always expanded"
@@ -1706,8 +1708,8 @@ msgid ""
 "to protect the privacy of customers."
 msgstr ""
 "Замењује поља за креирање налога обавештењем и опцијом за пријављивање. У "
-"неким контекстима, може се препоручити да ову опцију оставите онемогућену да "
-"бисте заштитили приватност клијената."
+"неким контекстима, може се препоручити да ову опцију оставите онемогућену "
+"да бисте заштитили приватност клијената."
 
 #: inc/admin/admin-settings-dashboard.php:49
 msgid "Dashboard"
@@ -1719,8 +1721,8 @@ msgstr "Интегратионс"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
-"No integrations available at the moment on this section. The options related "
-"to each plugin will only appear here if that plugin is activated."
+"No integrations available at the moment on this section. The options "
+"related to each plugin will only appear here if that plugin is activated."
 msgstr ""
 "Тренутно нема доступних интеграција у овом одељку. Опције које се односе на "
 "сваки додатак ће се појавити овде само ако је тај додатак активиран."
@@ -1731,9 +1733,9 @@ msgstr "Лиценцни кључеви"
 
 #: inc/admin/admin-settings-license-keys.php:85
 msgid ""
-"No license keys options available at the moment on this section. The options "
-"related to each plugin or add-on will appear here when that plugin is "
-"activated."
+"No license keys options available at the moment on this section. The "
+"options related to each plugin or add-on will appear here when that plugin "
+"is activated."
 msgstr ""
 "Тренутно нема доступних опција лиценцних кључева у овом одељку. Опције које "
 "се односе на сваки додатак или додатак ће се појавити овде када се тај "
@@ -1741,8 +1743,7 @@ msgstr ""
 
 #: inc/admin/admin-settings-license-keys.php:90
 msgid "Visit our website for more information about our plugins and add-ons."
-msgstr ""
-"Посетите нашу веб страницу за више информација о нашим додацима и додацима."
+msgstr "Посетите нашу веб страницу за више информација о нашим додацима и додацима."
 
 #: inc/admin/admin-settings-order-pay.php:71
 msgid "Order pay page"
@@ -1761,8 +1762,8 @@ msgid ""
 "Changes the layout of order pay page for existing orders pending payment "
 "from the customer."
 msgstr ""
-"Мења изглед странице за плаћање наруџбине за постојеће поруџбине које чекају "
-"на плаћање од купца."
+"Мења изглед странице за плаћање наруџбине за постојеће поруџбине које "
+"чекају на плаћање од купца."
 
 #: inc/admin/admin-settings-order-pay.php:92
 msgid "Add widget areas to the order pay page"
@@ -1789,10 +1790,8 @@ msgid "Enable thank you page and order details optimizations"
 msgstr "Омогућите оптимизацију странице захвалности и детаља о поруџбини"
 
 #: inc/admin/admin-settings-order-received.php:78
-msgid ""
-"Changes the layout of order details on the thank you page and account pages."
-msgstr ""
-"Мења изглед детаља поруџбине на страници захвалности и страницама налога."
+msgid "Changes the layout of order details on the thank you page and account pages."
+msgstr "Мења изглед детаља поруџбине на страници захвалности и страницама налога."
 
 #: inc/admin/admin-settings-order-received.php:89
 msgid "Enable order details customizations on email notifications"
@@ -1937,8 +1936,8 @@ msgstr "Режим за отклањање грешака"
 
 #: inc/admin/admin-settings-tools.php:93
 msgid ""
-"Using debug mode affects the website performance. Only use this option while "
-"troubleshooting."
+"Using debug mode affects the website performance. Only use this option "
+"while troubleshooting."
 msgstr ""
 "Коришћење режима за отклањање грешака утиче на перформансе веб локације. "
 "Користите ову опцију само током решавања проблема."
@@ -1952,20 +1951,18 @@ msgid "Enhanced select fields"
 msgstr "Побољшана поља за избор"
 
 #: inc/admin/admin-settings-tools.php:113
-msgid ""
-"Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
-msgstr ""
-"Замените падајуће компоненте <code>select2</code> са <code>TomSelect</code>"
+msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
+msgstr "Замените падајуће компоненте <code>select2</code> са <code>TomSelect</code>"
 
 #: inc/admin/admin-settings-tools.php:114
 msgid ""
 "TomSelect is a simpler dropdown selection component which is less prone to "
-"errors than Select2, while offering the same features that are actually used "
-"on WooCommerce checkout pages."
+"errors than Select2, while offering the same features that are actually "
+"used on WooCommerce checkout pages."
 msgstr ""
-"ТомСелецт је једноставнија компонента за избор падајућег менија која је мање "
-"склона грешкама од Селецт2, док нуди исте функције које се заправо користе "
-"на страницама за плаћање ВооЦоммерце-а."
+"ТомСелецт је једноставнија компонента за избор падајућег менија која је "
+"мање склона грешкама од Селецт2, док нуди исте функције које се заправо "
+"користе на страницама за плаћање ВооЦоммерце-а."
 
 #: inc/admin/admin-settings-tools.php:122
 msgid "Fix automatic zoom-in on form fields"
@@ -1977,11 +1974,11 @@ msgstr "Подесите <code>font-size</code> унутар поља обрас
 
 #: inc/admin/admin-settings-tools.php:124
 msgid ""
-"When the font size inside form fields is smaller than 16px, Safari and other "
-"browsers might automatically zoom in on mobile devices to make the text "
-"easier to read. When this option is enabled, it will set the font size for "
-"inside the form fields to 16px on pages optimized by Fluid Checkout to avoid "
-"it zooming in."
+"When the font size inside form fields is smaller than 16px, Safari and "
+"other browsers might automatically zoom in on mobile devices to make the "
+"text easier to read. When this option is enabled, it will set the font size "
+"for inside the form fields to 16px on pages optimized by Fluid Checkout to "
+"avoid it zooming in."
 msgstr ""
 "Када је величина фонта у пољима обрасца мања од 16 пиксела, Сафари и други "
 "претраживачи могу аутоматски да зумирају на мобилним уређајима да би текст "
@@ -2016,8 +2013,7 @@ msgid "Support"
 msgstr "Подршка"
 
 #: inc/admin/admin.php:159
-msgid ""
-"<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
+msgid "<a target=\"_blank\" href=\"%s\">Upgrade to PRO</a> to unlock more options."
 msgstr ""
 "<a target=\"_blank\" href=\"%s\">Надоградите на ПРО</a> да бисте откључали "
 "више опција."
@@ -2032,8 +2028,8 @@ msgstr "(експериментално)"
 
 #: inc/admin/admin.php:208
 msgid ""
-"This is an experimental feature and may not work as expected with all themes "
-"and plugins. Use it with caution."
+"This is an experimental feature and may not work as expected with all "
+"themes and plugins. Use it with caution."
 msgstr ""
 "Ово је експериментална функција и можда неће радити како се очекује са свим "
 "темама и додацима. Користите га са опрезом."
@@ -2081,8 +2077,8 @@ msgstr "Цаптцха позиција"
 
 #: inc/compat/plugins/compat-plugin-captcha-pro.php:96
 msgid ""
-"Define the position to display the captcha section. Some positions might not "
-"work depending on the captcha type chosen."
+"Define the position to display the captcha section. Some positions might "
+"not work depending on the captcha type chosen."
 msgstr ""
 "Дефинишите позицију за приказ одељка цаптцха. Неке позиције можда неће "
 "радити у зависности од изабраног типа цаптцха."
@@ -2129,8 +2125,8 @@ msgid ""
 "Override the position for the subscribe checkbox on the checkout page and "
 "always display it on the contact step"
 msgstr ""
-"Замените позицију поља за потврду за претплату на страници за наплату и увек "
-"је прикажите на кораку за контакт"
+"Замените позицију поља за потврду за претплату на страници за наплату и "
+"увек је прикажите на кораку за контакт"
 
 #: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87
 msgid "Before Shipping Address"
@@ -2205,8 +2201,8 @@ msgid ""
 "Output the checkout steps section from Betheme on the checkout, cart and "
 "order received pages."
 msgstr ""
-"Испишите одељак са корацима за наплату из Бетхеме-а на страницама за плаћање,"
-" корпу и наруџбу."
+"Испишите одељак са корацима за наплату из Бетхеме-а на страницама за "
+"плаћање, корпу и наруџбу."
 
 #: inc/compat/themes/compat-theme-fennik.php:216
 msgid "Theme Fennik"
@@ -2249,10 +2245,8 @@ msgid "Spacing for site header at the checkout page (in pixels)"
 msgstr "Размак за заглавље сајта на страници за плаћање (у пикселима)"
 
 #: inc/compat/themes/compat-theme-Impreza.php:101
-msgid ""
-"Only applicable when using the Impreza theme header at the checkout page."
-msgstr ""
-"Применљиво само када користите заглавље теме Импреза на страници за плаћање."
+msgid "Only applicable when using the Impreza theme header at the checkout page."
+msgstr "Применљиво само када користите заглавље теме Импреза на страници за плаћање."
 
 #: inc/compat/themes/compat-theme-kapee.php:123
 msgid "Theme Kapee"
@@ -2260,8 +2254,8 @@ msgstr "Тхеме Капее"
 
 #: inc/compat/themes/compat-theme-kapee.php:130
 msgid ""
-"Output the checkout steps section from the Kapee theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Kapee theme on the checkout, "
+"cart and order received pages."
 msgstr ""
 "Изнесите одељак са корацима за наплату из теме Капее на страницама за "
 "наплату, корпу и наруџбу."
@@ -2272,8 +2266,8 @@ msgstr "Тхеме Порто"
 
 #: inc/compat/themes/compat-theme-porto.php:203
 msgid ""
-"Output the checkout steps section from the Porto theme on the checkout, cart "
-"and order received pages."
+"Output the checkout steps section from the Porto theme on the checkout, "
+"cart and order received pages."
 msgstr ""
 "Изнесите одељак са корацима за наплату из Порто теме на страницама за "
 "наплату, корпу и примљене наруџбе."
@@ -2324,11 +2318,11 @@ msgstr "Онемогућите опције плаћања теме"
 
 #: inc/compat/themes/compat-theme-woodmart.php:169
 msgid ""
-"The options display product image, quantity field, remove button and link to "
-"product page added by the theme are disabled by default."
+"The options display product image, quantity field, remove button and link "
+"to product page added by the theme are disabled by default."
 msgstr ""
-"Опције приказа слике производа, поља за количину, дугмета за уклањање и везе "
-"до странице производа коју је додала тема су подразумевано онемогућене."
+"Опције приказа слике производа, поља за количину, дугмета за уклањање и "
+"везе до странице производа коју је додала тема су подразумевано онемогућене."
 
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:87
 msgid "Theme Atomion"
@@ -2348,10 +2342,10 @@ msgid "Display the form field labels visible on the page"
 msgstr "Прикажите ознаке поља обрасца које су видљиве на страници"
 
 #: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:104
-msgid ""
-"It is recommended to keep this option enabled for a better user experience."
+msgid "It is recommended to keep this option enabled for a better user experience."
 msgstr ""
-"Препоручује се да ова опција остане укључена ради бољег корисничког искуства."
+"Препоручује се да ова опција остане укључена ради бољег корисничког "
+"искуства."
 
 #: inc/compat/themes/compat-theme-zk-nito.php:81
 msgid "Theme ZK Nito"
@@ -2418,9 +2412,10 @@ msgid ""
 "information, visit the Fluid Checkout documentation.</p>"
 msgstr ""
 "<p>Овај виџет је замењен Флуид Цхецкоут-ом.</p><p> Када користите Флуид "
-"Цхецкоут, страница за плаћање треба да користи оригинални ВооЦоммерце кратки "
-"код <code>[woocommerce_checkout]</code> да би исправно функционисала.</p><p> "
-"За више информација посетите документацију Флуид Цхецкоут.</p>"
+"Цхецкоут, страница за плаћање треба да користи оригинални ВооЦоммерце "
+"кратки код <code>[woocommerce_checkout]</code> да би исправно "
+"функционисала.</p><p> За више информација посетите документацију Флуид "
+"Цхецкоут.</p>"
 
 #: inc/compat/themes/compat-theme-dt-the7.php:121
 msgid "Theme The7"
@@ -2448,8 +2443,7 @@ msgstr "Шаблон странице"
 
 #: inc/admin/admin-settings-order-received.php:116
 msgid "Use `Order confirmation` page template for block-based themes"
-msgstr ""
-"Користите шаблон странице „Потврда поруџбине“ за теме засноване на блоковима"
+msgstr "Користите шаблон странице „Потврда поруџбине“ за теме засноване на блоковима"
 
 #: inc/admin/admin-settings-order-received.php:117
 msgid "Only applies when using a block-based theme."
@@ -2470,8 +2464,8 @@ msgstr "Примените стилове на поља Stripe обрасца з
 #: inc/compat/plugins/compat-plugin-woocommerce-gateway-stripe.php:57
 msgid ""
 "When enabled, Fluid Checkout will apply styles optimized for compatibility "
-"with the plugin. You may want to disable this if you are using custom styles "
-"for the Stripe payment form fields."
+"with the plugin. You may want to disable this if you are using custom "
+"styles for the Stripe payment form fields."
 msgstr ""
 "Када је омогућено, Fluid Checkout ће применити стилове оптимизоване за "
 "компатибилност са додатком. Можда ћете желети да ово онемогућите ако "
@@ -2525,8 +2519,8 @@ msgstr ""
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
 msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible with "
-"Fluid Checkout"
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
 msgstr ""
 "Додатак WooCommerce Checkout Manager од Quadlayers-а није компатибилан са "
 "Fluid Checkout-ом."
@@ -2537,8 +2531,8 @@ msgstr "Поље за назив компаније за адресу за на�
 
 #: inc/admin/admin-settings-checkout.php:580
 msgid ""
-"Change visibility for the company name field for the billing address section "
-"on the checkout form."
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
 msgstr ""
 "Промените видљивост поља за назив компаније за одељак адресе за наплату на "
 "обрасцу за плаћање."
@@ -2592,9 +2586,9 @@ msgid ""
 "This ensures the content section is not too narrow on WooCommerce pages "
 "including checkout, cart, order received, order pay and account pages."
 msgstr ""
-"Ово осигурава да одељак са садржајем није преузак на WooCommerce страницама, "
-"укључујући странице за плаћање, корпу, пријем поруџбине, плаћање поруџбине и "
-"налог."
+"Ово осигурава да одељак са садржајем није преузак на WooCommerce "
+"страницама, укључујући странице за плаћање, корпу, пријем поруџбине, "
+"плаћање поруџбине и налог."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2636,14 +2630,14 @@ msgctxt "Substep review text"
 msgid "None."
 msgstr "Ниједан."
 
-#. translators: %1$s the selected option text, %2$s the field label.
 #: inc/checkout-steps.php:3490
+#. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr "%1$s"
 
-#. translators: %1$s the selected option text, %2$s the field label.
 #: inc/checkout-steps.php:3495
+#. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr "%2$s: %1$s"
@@ -2688,9 +2682,9 @@ msgctxt "Captcha position"
 msgid "Before place order button"
 msgstr "Дугме пре наручивања"
 
-#. translators: %s shipping destination.
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431,
 #: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#. translators: %s shipping destination.
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr "--"
