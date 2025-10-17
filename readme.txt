@@ -361,7 +361,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin Advanced Flat Rate Shipping For WooCommerce Premium.
 * Added: Compatibility with plugin Flat Rate Shipping Method for WooCommerce.
 * Fixed: String position marks in Serbian translations.
-* Fixed: Wrong logic for displaing phone number in email templates.
 * Fixed: Compatibility with theme Woodmart. Fix fatal error caused by changes on the theme code on theme version 8.3+.
 * Fixed: Compatibility with plugin BRT Fermopoint. Fix pickup point selection UI not appearing. Add selected pickup point address to the substep review text.
 * Fixed: Wrong logic for displaing phone number in email templates.
