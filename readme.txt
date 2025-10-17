@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Kiosko.
 * Added: Compatibility with theme Listable.
 * Added: Compatibility with theme Twenty Twenty-Two.
 * Added: Compatibility with plugin Advanced Flat Rate Shipping For WooCommerce Premium.
