@@ -3969,9 +3969,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Determine if shipping package destination should be displayed on substep review text.
+	 * 
+	 * @param  WC_Shipping_Rate|null  $method         The shipping method object.
+	 * @param  int                    $package_index  The shipping package index.
 	 */
-	public function is_shipping_package_contents_destination_text_lines_enabled() {
-		return apply_filters( 'fc_shipping_method_display_package_destination_substep_text_lines', true );
+	public function is_shipping_package_contents_destination_text_lines_enabled( $method = null, $package_index = 0 ) {
+		return apply_filters( 'fc_shipping_method_display_package_destination_substep_text_lines', true, $method, $package_index );
 	}
 
 	/**
@@ -4015,7 +4018,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$package_review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
 
 			// Handle package destination
-			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled() ) {
+			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled( $method, $package_index ) ) {
 				// Get package destination
 				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
 				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $package_index, $package, $chosen_method, $method );
