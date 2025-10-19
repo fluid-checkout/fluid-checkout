@@ -342,7 +342,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 						'cart/cart-recurring-shipping.php',
 						array(
 							'package'              => $package,
-							'available_methods'    => $package['rates'],
+							'available_methods'    => apply_filters( 'fc_available_shipping_methods', $package[ 'rates' ], $package ),
 							'show_package_details' => $show_package_details,
 							'package_details'      => $package_details,
 							'package_name'         => $package_name,
