@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 10.2.2
 * Added: Compatibility with theme Kiosko.
 * Added: Compatibility with theme Listable.
 * Added: Compatibility with theme Twenty Twenty-Two.
