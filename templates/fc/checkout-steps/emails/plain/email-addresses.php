@@ -68,7 +68,6 @@ if ( $show_shipping ) {
 
 	// CHANGE: Only output the phone number if it is not already included in the formatted address
 	if ( $order->get_shipping_phone() && false === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) {
-		echo strpos( $shipping_address_formatted, $order->get_shipping_phone() );
 		echo $order->get_shipping_phone() . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
