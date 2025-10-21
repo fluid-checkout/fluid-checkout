@@ -354,6 +354,20 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Bump tested up to WooCommerce 10.2.2
+* Added: Compatibility with theme Kiosko.
+* Added: Compatibility with theme Listable.
+* Added: Compatibility with theme Twenty Twenty-Two.
+* Added: Compatibility with plugin Advanced Flat Rate Shipping For WooCommerce Premium.
+* Added: Compatibility with plugin Flat Rate Shipping Method for WooCommerce.
+* Fixed: String position marks in Serbian translations.
+* Fixed: Compatibility with theme Woodmart. Fix fatal error caused by changes on the theme code on theme version 8.3+.
+* Fixed: Compatibility with plugin BRT Fermopoint. Fix pickup point selection UI not appearing. Add selected pickup point address to the substep review text.
+* Fixed: Wrong logic for displaing phone number in email templates.
+* Fixed: Progress bar showing only steps title when invalid values are defined for the option. Should revert to default "Bars" style.
+
 = 4.1.1 - 2025-08-22 =
 
 * Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix payment processing error when using the plugin along with some other payment gateways.

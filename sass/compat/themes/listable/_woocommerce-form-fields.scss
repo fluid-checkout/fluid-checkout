@@ -1,0 +1,21 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } form .form-row .woocommerce-input-wrapper input[type=checkbox] {
+	width: remsize( 2.2rem );
+	min-width: remsize( 2.2rem );
+	margin-#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector }.woocommerce-edit-address .entry-content form input {
+	min-width: auto;
+}
+
+body#{ $_body-theme-selector }.woocommerce-account.logged-in .woocommerce a.button {
+	padding: remsize( 1.2rem ) remsize( 2.4rem );
+}
+
+body#{ $_body-theme-selector } form .form-row .woocommerce-input-wrapper span.description {
+	text-align: $alignment-left;
+}

@@ -5,19 +5,19 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 	background-color: $checkout-highlighted-section-background-color;
 
 	// Make fields background white
-	textarea,
-	select,
-	input[type="email"],
-	input[type="number"],
-	input[type="date"],
-	input[type="search"],
-	input[type="text"],
-	input[type="tel"],
-	input[type="url"],
-	input[type="password"],
-	.select2-selection,
-	.select2-selection .select2-selection__rendered,
-	.ts-control {
+	textarea:not( :read-only ),
+	select:not( :read-only ),
+	input[type="email"]:not( :read-only ),
+	input[type="number"]:not( :read-only ),
+	input[type="date"]:not( :read-only ),
+	input[type="search"]:not( :read-only ),
+	input[type="text"]:not( :read-only ),
+	input[type="tel"]:not( :read-only ),
+	input[type="url"]:not( :read-only ),
+	input[type="password"]:not( :read-only ),
+	select:not( :read-only ) + .select2-container .select2-selection,
+	select:not( :read-only ) + .select2-container .select2-selection .select2-selection__rendered,
+	select:not( :read-only ) + .ts-wrapper .ts-control {
 		background-color: $checkout-highlighted-section-fields-background-color !important; // Needed to override theme styles
 		color: inherit !important; // Needed to override theme styles
 	}
@@ -55,7 +55,7 @@ div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:after {
 
 div.woocommerce form .woocommerce-billing-fields__field-wrapper {
 	display: block;
-	margin: 0;
+	margin: 0 !important; // Needed to override theme styles
 }
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not( :last-child ),
 div.woocommerce form .woocommerce-billing-fields__field-wrapper:not( :last-child ) {

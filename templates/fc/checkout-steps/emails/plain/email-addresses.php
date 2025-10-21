@@ -36,7 +36,7 @@ echo "\n" . esc_html( wc_strtoupper( esc_html( $billing_address_label ) ) ) . "\
 echo preg_replace( '#<br\s*/?>#i', "\n", $billing_address_formatted ) . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 // CHANGE: Only output the phone number if it is not already included in the formatted address
-if ( $order->get_billing_phone() && -1 === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) {
+if ( $order->get_billing_phone() && false === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) {
 	echo $order->get_billing_phone() . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
@@ -67,8 +67,7 @@ if ( $show_shipping ) {
 	echo preg_replace( '#<br\s*/?>#i', "\n", $shipping_address_formatted ) . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	// CHANGE: Only output the phone number if it is not already included in the formatted address
-	if ( $order->get_shipping_phone() && -1 === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) {
-		echo strpos( $shipping_address_formatted, $order->get_shipping_phone() );
+	if ( $order->get_shipping_phone() && false === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) {
 		echo $order->get_shipping_phone() . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
