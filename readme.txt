@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Use of deprecated asset handles in WooCommerce 10.3.0+
+
 = 4.1.2 - 2025-10-21 =
 
 * Bump tested up to WooCommerce 10.2.2

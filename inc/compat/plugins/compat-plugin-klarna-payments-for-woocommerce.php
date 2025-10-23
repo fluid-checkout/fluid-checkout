@@ -31,7 +31,9 @@ class FluidCheckout_KlarnaPaymentsForWooCommerce extends FluidCheckout {
 	 * which is the priority used by WooCommerce to register its scripts.
 	 */
 	public function pre_register_scripts() {
-		wp_register_script( 'klarna_payments', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/klarna-payments-for-woocommerce/klarna-payments' ), array( 'jquery', 'wc-checkout', 'jquery-blockui' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		$woocommerce_version = defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
+		$klarna_payments_deps = version_compare( $woocommerce_version, '10.3.0', '>=' ) ? array( 'jquery', 'wc-checkout', 'wc-jquery-blockui' ) : array( 'jquery', 'wc-checkout', 'jquery-blockui' );
+		wp_register_script( 'klarna_payments', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/klarna-payments-for-woocommerce/klarna-payments' ), $klarna_payments_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 	/**

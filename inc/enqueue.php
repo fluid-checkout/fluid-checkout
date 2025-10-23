@@ -102,8 +102,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Register WooCommerce scripts with modified version
 		$woocommerce_version = defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
-		$woocommerce_dependencies = version_compare( $woocommerce_version, '10.3.0', '>=' ) ? array( 'jquery', 'wc-jquery-blockui', 'wc-js-cookie' ) : array( 'jquery', 'jquery-blockui', 'js-cookie' );
-		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), $woocommerce_dependencies, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		$woocommerce_deps = version_compare( $woocommerce_version, '10.3.0', '>=' ) ? array( 'jquery', 'wc-jquery-blockui', 'wc-js-cookie' ) : array( 'jquery', 'jquery-blockui', 'js-cookie' );
+		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), $woocommerce_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
