@@ -19,6 +19,25 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		// Checkout page hooks
+		$this->checkout_hooks();
+	}
+
+	/**
+	 * Add or remove checkout page hooks.
+	 */
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
 		// Payment methods
 		add_filter( 'woocommerce_gateway_title', array( $this, 'maybe_change_payment_gateway_title' ), 10, 2 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'maybe_change_payment_gateway_icon_html' ), 10, 2 );
