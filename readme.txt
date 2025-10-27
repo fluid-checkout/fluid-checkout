@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Use of deprecated asset handles in WooCommerce 10.3.0+
+* Fixed: Compatibility with plugin Elementor PRO. Missing frontend script config object when using distraction-free header and footer.
 
 = 4.1.2 - 2025-10-21 =
 
