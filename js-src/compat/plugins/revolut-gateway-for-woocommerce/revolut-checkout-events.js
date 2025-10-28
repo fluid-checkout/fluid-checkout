@@ -17,6 +17,9 @@
 
 	'use strict';
 
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
 	var _hasInitialized = false;
 	var _publicMethods = {};
 
@@ -40,6 +43,25 @@
 	 */
 	var setCheckoutUpdatable = function() {
 		window.can_update_checkout = true;
+	};
+
+
+
+	/**
+	 * Disable the `beforeunload` warning.
+	 * 
+	 * This is needed because Revolut uses `window.location.href` to redirect after payment,
+	 * which triggers the `beforeunload` event after successful payment.
+	 */
+	var disableBeforeUnloadWarning = function() {
+		window.can_prevent_unload = false;
+	};
+
+	/**
+	 * Enable the `beforeunload` warning.
+	 */
+	var enableBeforeUnloadWarning = function() {
+		window.can_prevent_unload = true;
 	};
 
 
@@ -83,6 +105,7 @@
 		// Set checkout as not updatable if the added node is a payment iframe
 		if ( 'IFRAME' === node.tagName && isPaymentIframe( node.src ) ) {
 			setCheckoutNotUpdatable();
+			disableBeforeUnloadWarning();
 		}
 		// Otherwise, maybe check if the added node contains payment iframes (nested)
 		else if ( node.querySelectorAll ) {
@@ -94,6 +117,7 @@
 				// Maybe set checkout as not updatable if a nested iframe is a payment iframe
 				if ( isPaymentIframe( nestedIframes[i].src ) ) {
 					setCheckoutNotUpdatable();
+					disableBeforeUnloadWarning();
 					return;
 				}
 			}
@@ -149,6 +173,18 @@
 
 
 	/**
+	 * Handle payment method change and route to the appropriate function.
+	 */
+	var handlePaymentMethodChange = function() {
+		// Re-enable beforeunload warning when user changes payment method
+		// Required for cases where the user cancels Revolut payment without completing it,
+		// and switches to another gateway.
+		enableBeforeUnloadWarning();
+	};
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function() {
@@ -156,6 +192,11 @@
 
 		// Start MutationObserver to watch for Revolut payment iframes
 		startMutationObserver();
+
+		// Add jQuery event listeners
+		if ( _hasJQuery ) {
+			jQuery( document.body ).on( 'payment_method_selected', handlePaymentMethodChange );
+		}
 
 		_hasInitialized = true;
 	};
