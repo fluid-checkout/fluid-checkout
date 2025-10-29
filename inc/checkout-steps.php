@@ -105,7 +105,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout form hooks
 		// Needs to be called in multiple places for compatibility with 3rd-party plugins
 		// that move these hooks to other positions or call them early.
-		$this->checkout_form_hooks();
+		add_action( 'template_redirect', array( $this, 'checkout_form_hooks' ), 5 );
 
 		// Notices
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
