@@ -1,0 +1,9 @@
+body.theme-blocksy .fc-wrapper #payment .payment_methods > li > label img {
+  max-height: none;
+  max-width: none;
+}
+
+body.theme-blocksy div.woocommerce form .form-row .select2-selection.select2-selection--single .select2-selection__clear {
+  margin-top: 0;
+  margin-right: 20px;
+}

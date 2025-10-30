@@ -19,9 +19,61 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		// Checkout page hooks
+		$this->checkout_hooks();
+
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+	}
+
+	/**
+	 * Add or remove checkout page hooks.
+	 */
+	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
 		// Payment methods
 		add_filter( 'woocommerce_gateway_title', array( $this, 'maybe_change_payment_gateway_title' ), 10, 2 );
 		add_filter( 'woocommerce_gateway_icon', array( $this, 'maybe_change_payment_gateway_icon_html' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Checkout events
+		wp_register_script( 'fc-compat-revolut-gateway-for-woocommerce-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/revolut-gateway-for-woocommerce/revolut-checkout-events' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-compat-revolut-gateway-for-woocommerce-checkout', 'window.addEventListener("load",function(){PaymentPluginsRevolutCheckoutEvents.init();})' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-compat-revolut-gateway-for-woocommerce-checkout' );
+	}
+
+	/**
+	 * Enqueue scripts.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 

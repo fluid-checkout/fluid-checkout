@@ -1,0 +1,9 @@
+div.woocommerce .fc-wrapper .woocommerce-checkout-review-order-table ~ .acfw-checkout-ui-block {
+  margin: 0 -20px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+div.woocommerce .fc-wrapper .acfw-accordions .acfw-form-control-wrapper > label:empty {
+  display: none;
+}
