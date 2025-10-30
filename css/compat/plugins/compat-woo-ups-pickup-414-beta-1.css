@@ -1,0 +1,13 @@
+.fc-content .shipping-method__package {
+  margin-bottom: 10px;
+}
+
+.fc-content .ups-pickups {
+  float: left !important;
+}
+
+.fc-content .ups-pickups-info {
+  float: left !important;
+  margin-left: 0;
+  margin-right: 0;
+}
