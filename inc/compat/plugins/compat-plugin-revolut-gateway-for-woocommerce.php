@@ -85,6 +85,9 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 	 * @param  string  $id     Payment method ID.
 	 */
 	public function maybe_change_payment_gateway_title( $title, $id = null ) {
+		// Bail if processing the checkout form
+		if ( did_action( 'woocommerce_before_checkout_process' ) ) { return $title; }
+
 		// Set payment methods that required the change
 		$payment_method_ids = array( 'revolut_pay', 'revolut_cc' );
 
@@ -94,7 +97,8 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 		// Add container used by the plugin to add "Learn more" link via JS
 		if ( 'revolut_pay' === $id ) {
 			$title .= '<span class="revolut-label-informational-icon" id="revolut-pay-label-informational-icon"></span>';
-		} else {
+		}
+		else {
 			$title .= '<span class="revolut-label-informational-icon"></span>';
 		}
 
