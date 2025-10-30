@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with plugin WooCommerce Delivery Slots by Iconic. Fix delivery slots field styles.
+
 = 4.1.3 - 2025-10-28 =
 
 * Fixed: Use of deprecated asset handles in WooCommerce 10.3.0+
