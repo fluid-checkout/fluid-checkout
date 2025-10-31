@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Fixed: Compatibility with plugin Revolut Gateway for WooCommerce. Fix title edits being applied globally for the Revolut payment method. Fix Revolut payments getting aborted when switching browser tabs during checkout.
 * Fixed: Compatibility with plugin WooCommerce Delivery Slots by Iconic. Fix delivery slots field styles.
+* Fixed: Compatibility with plugin WooCommerce Order Delivery. Fix fatal error occurring when using newer versions of the plugin alongside Fluid Checkout.
 
 = 4.1.3 - 2025-10-28 =
 
