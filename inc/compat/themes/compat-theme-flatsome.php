@@ -174,7 +174,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 		if ( ! array_key_exists( 'refresh_payment_methods', $_POST ) ) { return $fragments; }
 
 		// Maybe suppress place order section fragment
-		if ( 'false' === wc_clean( wp_unslash( $_POST['refresh_payment_methods'] ?? '' ) ) ) {
+		if ( 'false' === wc_clean( wp_unslash( $_POST[ 'refresh_payment_methods' ] ?? '' ) ) ) {
 			unset( $fragments[ '.place-order--main' ] );
 		}
 
