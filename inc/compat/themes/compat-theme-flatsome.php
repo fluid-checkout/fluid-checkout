@@ -39,6 +39,9 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 
 		// Use theme's logo
 		add_action( 'fc_checkout_header_logo', array( $this, 'output_checkout_header_logo' ), 10 );
+
+		// Place order section
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_suppress_place_order_fragment' ), 1000 );
 	}
 
 	/**
@@ -160,6 +163,37 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	 */
 	public function output_checkout_header_logo() {
 		get_template_part( 'template-parts/header/partials/element', 'logo' );
+	}
+
+
+
+	/**
+	 * Maybe suppress place order section fragment.
+	 * Required to prevent the fragment from always being refreshed
+	 * when "UX shortcodes" (e.g. [row]) are used in the terms page content
+	 * which can cause payment methods iframes to reload during checkout processing.
+	 * 
+	 * @param  array  $fragments  The fragments to refresh.
+	 */
+	public function maybe_suppress_place_order_fragment( $fragments ) {
+		// Get place order terms layout setting ('default', 'new tab', or 'lightbox')
+		$place_order_terms_layout = get_theme_mod( 'checkout_terms_and_conditions' );
+
+		// Bail if the terms page is set to open in a new tab
+		if ( 'tab' === $place_order_terms_layout ) { return $fragments; }
+
+		// Bail if payment is not required
+		if ( ! WC()->cart->needs_payment() ) { return $fragments; }
+
+		// Bail if payment method refresh flag is not set
+		if ( ! array_key_exists( 'refresh_payment_methods', $_POST ) ) { return $fragments; }
+
+		// Maybe suppress place order section fragment
+		if ( 'false' === wc_clean( wp_unslash( $_POST['refresh_payment_methods'] ?? '' ) ) ) {
+			unset( $fragments[ '.place-order--main' ] );
+		}
+
+		return $fragments;
 	}
 
 }
