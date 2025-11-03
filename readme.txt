@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
 * Fixed: Hidden position option for the coupon code section on the checkout page not working as expected.
 * Fixed: Compatibility with plugin Revolut Gateway for WooCommerce. Fix title edits being applied globally for the Revolut payment method. Fix Revolut payments getting aborted when switching browser tabs during checkout.
 * Fixed: Compatibility with plugin WooCommerce Delivery Slots by Iconic. Fix delivery slots field styles.
