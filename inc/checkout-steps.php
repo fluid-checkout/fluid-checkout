@@ -105,7 +105,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout form hooks
 		// Needs to be called in multiple places for compatibility with 3rd-party plugins
 		// that move these hooks to other positions or call them early.
-		add_action( 'template_redirect', array( $this, 'checkout_form_hooks' ), 5 );
+		$this->checkout_form_hooks();
+		add_action( 'woocommerce_checkout_init', array( $this, 'checkout_form_hooks' ), 1 );
 
 		// Notices
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -264,8 +265,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function checkout_form_hooks() {
 		// Unhook WooCommerce functions
-		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		if ( doing_action( 'woocommerce_checkout_init' ) || did_action( 'woocommerce_checkout_init' ) ) {
+			remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
+			remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		}
+
+		// Unhook other hooks
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
@@ -444,6 +449,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout steps
 		// Do not undo checkout step registration hooks, because steps meta data might be needed by other plugins
 		remove_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
+
+		// Checkout form hooks
+		remove_action( 'woocommerce_checkout_init', array( $this, 'checkout_form_hooks' ), 1 );
 
 		// Notices
 		remove_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
