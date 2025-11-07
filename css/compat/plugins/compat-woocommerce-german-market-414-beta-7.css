@@ -8,8 +8,13 @@ body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-
   padding-bottom: 0;
 }
 
-@media (min-width: 1000px) {
-  body.has-fc-compat-german-market-button-placement .fc-sidebar .fc-place-order .fc-place-order-button {
-    margin-bottom: 10px;
-  }
+body.has-fc-compat-german-market-button-placement .fc-sidebar .fc-place-order .fc-place-order-button {
+  margin-bottom: 10px;
+}
+
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-googlepay,
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-applepay {
+  margin-top: 0;
 }
