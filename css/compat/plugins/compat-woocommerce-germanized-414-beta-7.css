@@ -36,7 +36,8 @@ body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wr
   padding-bottom: 10px;
 }
 
-body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-sidebar div.place-order.wc-gzd-place-order {
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-sidebar div.place-order.wc-gzd-place-order,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-sidebar div.place-order.wc-gzd-place-order {
   padding-bottom: 10px !important;
 }
 
@@ -47,8 +48,14 @@ body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .wc-g
 }
 
 body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
 body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons {
   margin-bottom: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-googlepay,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-applepay {
+  margin: 0;
 }
 
 body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] textarea:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=email]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=number]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=date]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=search]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=text]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=tel]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=url]:-moz-read-only, body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id=shipping_address] input[type=password]:-moz-read-only {

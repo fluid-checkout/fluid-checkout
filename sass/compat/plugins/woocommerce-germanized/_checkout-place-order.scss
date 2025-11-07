@@ -41,7 +41,8 @@ body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wr
 	padding-bottom: $global-spacing-extra-small;
 }
 
-body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-sidebar div.place-order.wc-gzd-place-order {
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-sidebar div.place-order.wc-gzd-place-order,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-sidebar div.place-order.wc-gzd-place-order {
 	padding-bottom: $global-spacing-extra-small !important; // Needed to override FC styles
 }
 
@@ -52,6 +53,12 @@ body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .wc-g
 }
 
 body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
 body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons {
 	margin-bottom: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-googlepay,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-applepay {
+	margin: 0;
 }
