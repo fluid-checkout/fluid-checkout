@@ -6486,8 +6486,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Product  $product        The product object.
 	 */
 	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
-		// CHANGE: Remove no-break-space from the end of the product name
-		echo apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// CHANGE: Remove no-break-space from the end of the product name, add wrapper for the product name
+		echo '<div class="cart-item__element cart-item__name">' . apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
