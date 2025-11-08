@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin SUMO Subscriptions.
 * Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
 * Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
 * Fixed: Hidden position option for the coupon code section on the checkout page not working as expected.
