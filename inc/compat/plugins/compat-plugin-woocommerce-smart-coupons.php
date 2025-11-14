@@ -29,7 +29,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		// Available coupons section
 		remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
-		add_action( 'fc_checkout_before_steps', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 10 );
+		add_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 3 ); // Before FC progress bar
 	}
 
 }

@@ -1,3 +1,7 @@
+body.has-fluid-checkout #coupons_list .sc-accordion-header {
+  width: 100%;
+}
+
 div.woocommerce .fc-checkout-notices + .woocommerce-message,
 div.woocommerce .fc-checkout-notices + .woocommerce-error,
 div.woocommerce .fc-checkout-notices + .woocommerce-info {
