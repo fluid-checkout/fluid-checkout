@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: Shop as Client for WooCommerce (by Naked Cat Plugins).
  */
-class FluidCheckout_ShopAsClien extends FluidCheckout {
+class FluidCheckout_ShopAsClient extends FluidCheckout {
 
 	/**
 	 * Stored Shop as Client checkout fields.
@@ -51,6 +51,8 @@ class FluidCheckout_ShopAsClien extends FluidCheckout {
 		// Bail if the Shop as Client plugin is not active.
 		if ( ! function_exists( 'shop_as_client_init_woocommerce_checkout_fields' ) ) { return; }
 
+		// NOTE: Runs on `init` with a late priority to ensure the plugin's hooks are already added.
+
 		// Remove the default checkout fields hook from the Shop as Client plugin.
 		remove_filter( 'woocommerce_checkout_fields', 'shop_as_client_init_woocommerce_checkout_fields', PHP_INT_MAX );
 
@@ -92,6 +94,9 @@ class FluidCheckout_ShopAsClien extends FluidCheckout {
 		// Bail if the Shop as Client plugin is not active or the user cannot checkout as a client.
 		if ( ! function_exists( 'shop_as_client_init_woocommerce_checkout_fields' ) || ! function_exists( 'shop_as_client_can_checkout' ) ) { return; }
 
+		// Bail if there are no stored fields.
+		if ( empty( $this->shop_as_client_fields ) ) { return; }
+
 		// Get checkout object.
 		$checkout = WC()->checkout();
 
@@ -103,4 +108,4 @@ class FluidCheckout_ShopAsClien extends FluidCheckout {
 
 }
 
-FluidCheckout_ShopAsClien::instance();
+FluidCheckout_ShopAsClient::instance();
