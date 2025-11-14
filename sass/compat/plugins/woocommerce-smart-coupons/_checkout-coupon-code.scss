@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+
+// Notices inserted by the plugin's JS
+div.woocommerce .fc-checkout-notices + .woocommerce-message,
+div.woocommerce .fc-checkout-notices + .woocommerce-error,
+div.woocommerce .fc-checkout-notices + .woocommerce-info {
+	display: inline-block;
+	width: 100%;
+
+	@media (#{$bp-larger-than-desktop}) {
+		width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
+	}
+}
