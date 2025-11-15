@@ -234,16 +234,16 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL, array( 'in_footer' => false ) ); // Should be loaded at the `<head>`
 		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
+		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);});' );
 		wp_register_script( 'fc-flyout-block', $this->get_script_url( 'js/lib/flyout-block' ), array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
+		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);});' );
 		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
+		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);});' );
 
 		// Enhanced select
 		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-enhanced-select', $this->get_script_url( 'js/fc-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();})' );
+		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();});' );
 
 		// Register script utilities
 		wp_register_script( 'fc-utils', $this->get_script_url( 'js/fc-utils' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
