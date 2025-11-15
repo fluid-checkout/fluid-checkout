@@ -55,7 +55,7 @@ class FluidCheckout_RevolutGatewayForWoocommerce extends FluidCheckout {
 	public function register_assets() {
 		// Checkout events
 		wp_register_script( 'fc-compat-revolut-gateway-for-woocommerce-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/revolut-gateway-for-woocommerce/revolut-checkout-events' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-compat-revolut-gateway-for-woocommerce-checkout', 'window.addEventListener("load",function(){PaymentPluginsRevolutCheckoutEvents.init();})' );
+		wp_add_inline_script( 'fc-compat-revolut-gateway-for-woocommerce-checkout', 'window.addEventListener("load",function(){PaymentPluginsRevolutCheckoutEvents.init();});' );
 	}
 
 	/**

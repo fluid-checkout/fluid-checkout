@@ -87,7 +87,7 @@ class FluidCheckout_ThemeCompat_Flatsome extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-compat-flatsome-floating-labels', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/themes/flatsome/float-labels' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-compat-flatsome-floating-labels', 'window.addEventListener("load",function(){FlatsomeFloatLabels.init();})' );
+		wp_add_inline_script( 'fc-compat-flatsome-floating-labels', 'window.addEventListener("load",function(){FlatsomeFloatLabels.init();});' );
 	}
 
 	/**

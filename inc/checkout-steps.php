@@ -756,7 +756,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-checkout-steps', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-steps' ), array( 'jquery', 'wc-checkout', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);});' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-layout', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-layout' ), NULL, NULL );

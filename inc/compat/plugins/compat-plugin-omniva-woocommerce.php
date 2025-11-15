@@ -74,7 +74,7 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 	public function register_assets() {
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-omniva', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/omniva-woocommerce/checkout-validation-omniva' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-omniva', 'window.addEventListener("load",function(){CheckoutValidationOmniva.init(fcSettings.checkoutValidationOmniva);})' );
+		wp_add_inline_script( 'fc-checkout-validation-omniva', 'window.addEventListener("load",function(){CheckoutValidationOmniva.init(fcSettings.checkoutValidationOmniva);});' );
 	}
 
 	/**

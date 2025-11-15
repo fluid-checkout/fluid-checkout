@@ -107,7 +107,7 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 	public function register_assets() {
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-woocommerce-eu-vat-field', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-eu-vat-field/checkout-validation-woocommerce-eu-vat-field' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-woocommerce-eu-vat-field', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceEUVatField.init(fcSettings.checkoutValidationWooCommerceEUVatField);})' );
+		wp_add_inline_script( 'fc-checkout-validation-woocommerce-eu-vat-field', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceEUVatField.init(fcSettings.checkoutValidationWooCommerceEUVatField);});' );
 	}
 
 	/**

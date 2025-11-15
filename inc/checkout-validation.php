@@ -115,14 +115,14 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-checkout-validation', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation' ), array( 'jquery', 'wc-checkout', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);});' );
 		wp_register_script( 'fc-mailcheck', FluidCheckout_Enqueue::instance()->get_script_url( 'js/lib/mailcheck' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-mailcheck-init', FluidCheckout_Enqueue::instance()->get_script_url( 'js/mailcheck-init' ), array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
+		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);});' );
 
 		// Brazilian documents validation script
 		wp_register_script( 'fc-checkout-validation-brazilian-documents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation-brazilian-documents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);})' );
+		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);});' );
 	}
 
 	/**

@@ -86,7 +86,7 @@ class FluidCheckout_Login extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-checkout-login', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-login' ), array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-login', 'window.addEventListener("load",function(){CheckoutLogin.init(fcSettings.checkoutLogin);})' );
+		wp_add_inline_script( 'fc-checkout-login', 'window.addEventListener("load",function(){CheckoutLogin.init(fcSettings.checkoutLogin);});' );
 	}
 
 	/**

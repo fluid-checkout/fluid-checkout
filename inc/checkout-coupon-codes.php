@@ -236,7 +236,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-coupons' ), array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
+		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);});' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-coupons' ), NULL, NULL );

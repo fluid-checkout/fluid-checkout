@@ -84,11 +84,11 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-woo-carrier-agents' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutWooCarrierAgents.init(fcSettings.checkoutWooCarrierAgents);})' );
+		wp_add_inline_script( 'fc-checkout-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutWooCarrierAgents.init(fcSettings.checkoutWooCarrierAgents);});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-validation-woo-carrier-agents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.checkoutValidationWooCarrierAgents);})' );
+		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.checkoutValidationWooCarrierAgents);});' );
 	}
 
 	/**

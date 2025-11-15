@@ -90,7 +90,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	public function register_assets() {
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-hungarian-shipping-methods', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/hungarian-pickup-points-for-woocommerce/checkout-validation-hungarian-shipping-methods' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-hungarian-shipping-methods', 'window.addEventListener("load",function(){CheckoutValidationHungarianShippingMethods.init(fcSettings.checkoutValidationHungarianShippingMethods);})' );
+		wp_add_inline_script( 'fc-checkout-validation-hungarian-shipping-methods', 'window.addEventListener("load",function(){CheckoutValidationHungarianShippingMethods.init(fcSettings.checkoutValidationHungarianShippingMethods);});' );
 	}
 
 	/**

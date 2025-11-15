@@ -52,7 +52,7 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-yith-woocommerce-checkout-manager', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/yith-woocommerce-checkout-manager/checkout-validation-yith-woocommerce-checkout-manager' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation', 'ywccp-external-script' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-yith-woocommerce-checkout-manager', 'window.addEventListener("load",function(){CheckoutValidationYithWooCommerceCheckoutManager.init(fcSettings.checkoutValidationYithWooCommerceCheckoutManager);})' );
+		wp_add_inline_script( 'fc-checkout-validation-yith-woocommerce-checkout-manager', 'window.addEventListener("load",function(){CheckoutValidationYithWooCommerceCheckoutManager.init(fcSettings.checkoutValidationYithWooCommerceCheckoutManager);});' );
 	}
 
 	/**
