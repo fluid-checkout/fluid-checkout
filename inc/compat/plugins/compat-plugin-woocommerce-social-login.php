@@ -21,9 +21,6 @@ class FluidCheckout_WooCommerceSocialLogin extends FluidCheckout {
 	public function hooks() {
 		// Add social login buttons below the login CTA at the checkout contact step.
 		add_action( 'fc_checkout_below_contact_login_cta', array( $this, 'add_checkout_social_login_buttons' ), 20 );
-		
-		// ! this is probably not needed its already present is just hidden with a display: none; style, probably shows it in the plugin options?
-		// add_action( 'woocommerce_login_form_end', array( $this, 'add_checkout_social_login_buttons' ), 20 );
 	}
 
 
@@ -35,18 +32,22 @@ class FluidCheckout_WooCommerceSocialLogin extends FluidCheckout {
 		// Bail if WooCommerce Social Login is not available.
 		if ( ! function_exists( 'wc_social_login' ) ) { return; }
 
+		// Get the WooCommerce Social Login plugin instance.
 		$plugin = wc_social_login();
 		$frontend = $plugin ? $plugin->get_frontend_instance() : null;
 
 		// Bail if frontend instance not available or checkout display disabled.
 		if ( ! $frontend || ! $frontend->is_displayed_on( 'checkout' ) ) { return; }
 
+		// Output the WooCommerce Social Login buttons.
 		ob_start();
 		woocommerce_social_login_buttons( wc_get_checkout_url() );
 		$buttons_html = trim( ob_get_clean() );
 
+		// Bail if no buttons are available.
 		if ( '' === $buttons_html ) { return; }
 
+		// Output the WooCommerce Social Login buttons.
 		echo '<div class="fc-social-login fc-social-login--woocommerce-social-login">';
 		echo $buttons_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</div>';
