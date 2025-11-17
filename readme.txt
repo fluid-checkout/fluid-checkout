@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin SUMO Subscriptions.
 * Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
+* Improved: Show and allow checking "Same as shipping/billing address" checkbox when the first address is not yet complete.
 * Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
 * Fixed: Hidden position option for the coupon code section on the checkout page not working as expected.
 * Fixed: Compatibility with plugin Revolut Gateway for WooCommerce. Fix title edits being applied globally for the Revolut payment method. Fix Revolut payments getting aborted when switching browser tabs during checkout.

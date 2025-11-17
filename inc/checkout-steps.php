@@ -4951,7 +4951,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
 
-		return null;
+		// Return true when shipping country is not set
+		return true;
 	}
 
 	/**
@@ -4990,7 +4991,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_shipping( $billing_country );
 		}
 
-		return null;
+		// Return true when billing country is not set
+		return true;
 	}
 
 	/**
