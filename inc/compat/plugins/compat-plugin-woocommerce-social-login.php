@@ -56,4 +56,3 @@ class FluidCheckout_WooCommerceSocialLogin extends FluidCheckout {
 }
 
 FluidCheckout_WooCommerceSocialLogin::instance();
-
