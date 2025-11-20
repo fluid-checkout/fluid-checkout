@@ -680,6 +680,17 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'disabled'          => true,
 					),
 					array(
+						'desc'              => __( 'Show validation errors without preventing step completion', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Phone numbers that fail country rules still display the warning, but the shipping/billing substep can remain open so the checkout can continue.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_international_phone_validation_non_obtrusive',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_international_phone_validation_non_obtrusive' ),
+						'checkboxgroup'     => '',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+					array(
 						'desc'              => __( 'Only show allowed countries for shipping or billing', 'fluid-checkout' ),
 						'desc_tip'          => __( 'When enabled, only the countries allowed for shipping will be available in the shipping phone field, and only countries allowed for billing will be available for the billing phone field.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_international_phone_country_list_filter',

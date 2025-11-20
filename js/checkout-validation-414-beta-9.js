@@ -52,7 +52,11 @@
 			email:                               'This is not a valid email address.',
 			confirmation:                        'This field does not match the related field value.',
 		},
+		nonObtrusivePhoneValidation:          false,
 	};
+
+var _lastValidationHadOnlyNonObtrusivePhoneErrors = false;
+var _lastFieldValidationOnlyNonObtrusive = false;
 
 
 
@@ -404,6 +408,16 @@
 
 
 	/**
+	 * Check if the validation type should remain non-obtrusive.
+	 *
+	 * @param   string  validationTypeName  Validation type identifier.
+	 * @return  Boolean                     True when the validation should not prevent step completion.
+	 */
+	var isNonObtrusiveValidationType = function( validationTypeName ) {
+		return _settings.nonObtrusivePhoneValidation && 'phone' === validationTypeName;
+	};
+
+	/**
 	 * Process validation results of a field.
 	 * @param  {Field}    field              Field to validation.
 	 * @param  {Element}  formRow            Form row element.
@@ -412,6 +426,8 @@
 	 */
 	var processValidationResults = function( field, formRow, validationResults ) {
 		var valid = true;
+		var hasNonObtrusiveInvalidations = false;
+		var hasOtherInvalidations = false;
 
 		// Iterate validation results
 		var validationResultsNames = Object.getOwnPropertyNames( validationResults );
@@ -428,6 +444,13 @@
 
 			// Maybe set field as invalid
 			if ( true !== result ) {
+				var isNonObtrusive = isNonObtrusiveValidationType( validationTypeName );
+				if ( isNonObtrusive ) {
+					hasNonObtrusiveInvalidations = true;
+				} else {
+					hasOtherInvalidations = true;
+				}
+
 				valid = false;
 
 				// Maybe display inline message and set field as invalid
@@ -439,6 +462,10 @@
 				}
 			}
 		}
+
+		var onlyNonObtrusiveInvalidations = _settings.nonObtrusivePhoneValidation && hasNonObtrusiveInvalidations && ! hasOtherInvalidations;
+
+		_lastFieldValidationOnlyNonObtrusive = onlyNonObtrusiveInvalidations;
 
 		// Toggle general field valid/invalid classes
 		formRow.classList.toggle( _settings.validClass, valid );
@@ -592,6 +619,9 @@
 		// Process results
 		return processValidationResults( field, formRow, validationResults );
 	};
+
+
+
 	/**
 	 * Test multiple validations on the passed field, debounced to allow time for the user to interact with the field.
 	 * 
@@ -614,16 +644,46 @@
 		if ( ! container ) { container = document.querySelector( _settings.formSelector ) }
 
 		var all_valid = true;
+		var hasErrors = false;
+		var onlyNonObtrusiveErrors = true;
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for ( var i = 0; i < fields.length; i++ ) {
-			if ( ! _publicMethods.validateField( fields[i], 'validate-all', validateHidden ) ) {
+			var fieldValid = _publicMethods.validateField( fields[i], 'validate-all', validateHidden );
+			if ( ! fieldValid ) {
 				all_valid = false;
+				hasErrors = true;
+				if ( ! _publicMethods.wasLastFieldValidationOnlyNonObtrusive() ) {
+					onlyNonObtrusiveErrors = false;
+				}
 			}
 		}
 
-		return all_valid;
+	_lastValidationHadOnlyNonObtrusivePhoneErrors = hasErrors && onlyNonObtrusiveErrors;
+
+	return all_valid;
+};
+
+
+
+	/**
+	 * Check if the latest validation errors were limited to the non-obtrusive phone type.
+	 *
+	 * @return {Boolean}  True when the last validation failure involved only the non-obtrusive phone rule.
+	 */
+	_publicMethods.hasOnlyNonObtrusivePhoneValidationErrors = function() {
+		return _lastValidationHadOnlyNonObtrusivePhoneErrors;
 	};
+
+
+/**
+ * Tell whether the last field validation result was limited to the non-obtrusive phone type.
+ *
+ * @return {Boolean}
+ */
+_publicMethods.wasLastFieldValidationOnlyNonObtrusive = function() {
+	return _lastFieldValidationOnlyNonObtrusive;
+};
 
 
 

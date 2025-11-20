@@ -280,7 +280,9 @@
 		if ( ! substepElement ) { return; }
 
 		// Maybe validate fields
-		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
+		if ( window.CheckoutValidation ) {
+			var substepValid = CheckoutValidation.validateAllFields( substepElement );
+			if ( ! substepValid && ! CheckoutValidation.hasOnlyNonObtrusivePhoneValidationErrors() ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
 			if ( firstInvalidField ) {
@@ -290,6 +292,7 @@
 			// Bail when substep has invalid fields
 			return;
 		}
+	}
 
 		// Collapse substep fields and display step in text format
 		collapseSubstepEdit( substepElement );
@@ -379,7 +382,9 @@
 		if ( ! stepElement ) { return; }
 
 		// Maybe validate fields
-		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
+		if ( window.CheckoutValidation ) {
+			var stepValid = CheckoutValidation.validateAllFields( stepElement );
+			if ( ! stepValid && ! CheckoutValidation.hasOnlyNonObtrusivePhoneValidationErrors() ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
 			if ( firstInvalidField ) {
@@ -388,6 +393,7 @@
 
 			// Bail when any substep has invalid fields
 			return;
+		}
 		}
 
 		// Set current step as complete

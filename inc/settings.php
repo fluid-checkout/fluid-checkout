@@ -81,6 +81,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_billing_phone_field_position'                               => 'billing_address',
 			'fc_pro_enable_international_phone_fields'                      => 'no',
 			'fc_pro_enable_international_phone_validation'                  => 'no',
+			'fc_pro_international_phone_validation_non_obtrusive'           => 'no',
 			'fc_pro_enable_international_phone_country_code'                => 'yes',
 			'fc_pro_enable_international_phone_country_list_filter'         => 'yes',
 			'fc_pro_international_phone_fields_placeholder'                 => 'off',
