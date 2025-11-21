@@ -427,8 +427,8 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 	 */
 	var processValidationResults = function( field, formRow, validationResults ) {
 		var valid = true;
-		var hasNonObtrusiveInvalidations = false;
-		var hasOtherInvalidations = false;
+		var hasNonObtrusiveInvalidations = false; // Whether the field has a non-obtrusive validation error.
+		var hasOtherInvalidations = false; // Whether the field has other validation errors.
 
 		// Iterate validation results
 		var validationResultsNames = Object.getOwnPropertyNames( validationResults );
