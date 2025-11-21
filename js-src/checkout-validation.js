@@ -464,8 +464,10 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 			}
 		}
 
+		// Check if the field has only non-obtrusive validation errors.
 		var onlyNonObtrusiveInvalidations = _settings.nonObtrusivePhoneValidation && hasNonObtrusiveInvalidations && ! hasOtherInvalidations;
 
+		// Persist the most recent validation state so helpers can read it after any call.
 		_lastFieldValidationOnlyNonObtrusive = onlyNonObtrusiveInvalidations;
 
 		// Toggle general field valid/invalid classes
