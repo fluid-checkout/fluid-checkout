@@ -55,6 +55,7 @@
 		nonObtrusivePhoneValidation:          false,
 	};
 
+// Persist the most recent validation state so helpers can read it after any call.
 var _lastValidationHadOnlyNonObtrusivePhoneErrors = false;
 var _lastFieldValidationOnlyNonObtrusive = false;
 
