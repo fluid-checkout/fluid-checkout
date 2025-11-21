@@ -652,8 +652,7 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for ( var i = 0; i < fields.length; i++ ) {
-			var fieldValid = _publicMethods.validateField( fields[i], 'validate-all', validateHidden );
-			if ( ! fieldValid ) {
+			if ( ! _publicMethods.validateField( fields[i], 'validate-all', validateHidden ) ) {
 				all_valid = false;
 				hasErrors = true;
 				if ( ! _publicMethods.wasLastFieldValidationOnlyNonObtrusive() ) {
@@ -662,10 +661,11 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 			}
 		}
 
-	_lastValidationHadOnlyNonObtrusivePhoneErrors = hasErrors && onlyNonObtrusiveErrors;
+		// Persist the most recent validation state so helpers can read it after any call.
+		_lastValidationHadOnlyNonObtrusivePhoneErrors = hasErrors && onlyNonObtrusiveErrors;
 
-	return all_valid;
-};
+		return all_valid;
+	};
 
 
 
@@ -679,14 +679,15 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 	};
 
 
-/**
- * Tell whether the last field validation result was limited to the non-obtrusive phone type.
- *
- * @return {Boolean}
- */
-_publicMethods.wasLastFieldValidationOnlyNonObtrusive = function() {
-	return _lastFieldValidationOnlyNonObtrusive;
-};
+
+	/**
+	 * Tell whether the last field validation result was limited to the non-obtrusive phone type.
+	 *
+	 * @return {Boolean}
+	 */
+	_publicMethods.wasLastFieldValidationOnlyNonObtrusive = function() {
+		return _lastFieldValidationOnlyNonObtrusive;
+	};
 
 
 
