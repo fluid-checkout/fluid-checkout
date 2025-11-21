@@ -55,6 +55,7 @@
 		nonObtrusivePhoneValidation:          false,
 	};
 
+// Persist the most recent validation state so helpers can read it after any call.
 var _lastValidationHadOnlyNonObtrusivePhoneErrors = false;
 var _lastFieldValidationOnlyNonObtrusive = false;
 
@@ -426,8 +427,8 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 	 */
 	var processValidationResults = function( field, formRow, validationResults ) {
 		var valid = true;
-		var hasNonObtrusiveInvalidations = false;
-		var hasOtherInvalidations = false;
+		var hasNonObtrusiveInvalidations = false; // Whether the field has a non-obtrusive validation error.
+		var hasOtherInvalidations = false; // Whether the field has other validation errors.
 
 		// Iterate validation results
 		var validationResultsNames = Object.getOwnPropertyNames( validationResults );
@@ -463,8 +464,10 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 			}
 		}
 
+		// Check if the field has only non-obtrusive validation errors.
 		var onlyNonObtrusiveInvalidations = _settings.nonObtrusivePhoneValidation && hasNonObtrusiveInvalidations && ! hasOtherInvalidations;
 
+		// Persist the most recent validation state so helpers can read it after any call.
 		_lastFieldValidationOnlyNonObtrusive = onlyNonObtrusiveInvalidations;
 
 		// Toggle general field valid/invalid classes
@@ -649,8 +652,7 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for ( var i = 0; i < fields.length; i++ ) {
-			var fieldValid = _publicMethods.validateField( fields[i], 'validate-all', validateHidden );
-			if ( ! fieldValid ) {
+			if ( ! _publicMethods.validateField( fields[i], 'validate-all', validateHidden ) ) {
 				all_valid = false;
 				hasErrors = true;
 				if ( ! _publicMethods.wasLastFieldValidationOnlyNonObtrusive() ) {
@@ -659,10 +661,11 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 			}
 		}
 
-	_lastValidationHadOnlyNonObtrusivePhoneErrors = hasErrors && onlyNonObtrusiveErrors;
+		// Persist the most recent validation state so helpers can read it after any call.
+		_lastValidationHadOnlyNonObtrusivePhoneErrors = hasErrors && onlyNonObtrusiveErrors;
 
-	return all_valid;
-};
+		return all_valid;
+	};
 
 
 
@@ -676,14 +679,15 @@ var _lastFieldValidationOnlyNonObtrusive = false;
 	};
 
 
-/**
- * Tell whether the last field validation result was limited to the non-obtrusive phone type.
- *
- * @return {Boolean}
- */
-_publicMethods.wasLastFieldValidationOnlyNonObtrusive = function() {
-	return _lastFieldValidationOnlyNonObtrusive;
-};
+
+	/**
+	 * Tell whether the last field validation result was limited to the non-obtrusive phone type.
+	 *
+	 * @return {Boolean}
+	 */
+	_publicMethods.wasLastFieldValidationOnlyNonObtrusive = function() {
+		return _lastFieldValidationOnlyNonObtrusive;
+	};
 
 
 

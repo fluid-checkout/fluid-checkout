@@ -289,7 +289,7 @@
 
 			// Bail when substep has invalid fields
 			return;
-		} else {
+		}
 
 		// Collapse substep fields and display step in text format
 		collapseSubstepEdit( substepElement );
