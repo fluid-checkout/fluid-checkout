@@ -1,0 +1,22 @@
+// ------------------------------------
+// UPSELL ORDER BUMP
+// ------------------------------------
+
+.fc-wrapper .wps_upsell_offer_main_wrapper {
+	padding-top: 0 !important; // Needed to override plugin styles
+	padding-bottom: 0 !important; // Needed to override plugin styles
+}
+.fc-wrapper .woocommerce-checkout-payment + .wrapup_order_bump,
+.fc-wrapper #fc-checkout-order-review .wrapup_order_bump {
+	margin-top: $global-spacing-small !important; // Needed to override plugin styles
+}
+.fc-wrapper .fc-sidebar__inner > .wrapup_order_bump {
+	@media (#{$bp-smaller-than-tablet}) {
+		margin: $global-spacing-small 0 !important; // Needed to override plugin styles
+	}
+}
+// "Before payment gateways" position
+.fc-wrapper .fc-checkout-step > .wrapup_order_bump {
+	padding: $checkout-substep-padding;
+	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
+}
