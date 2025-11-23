@@ -359,6 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin SUMO Subscriptions.
 * Added: Compatibility with plugin Shop as Client for WooCommerce (by Naked Cat Plugins).
 * Added: Compatibility with plugin WooCommerce Buy One Get One Free by Oscar Gare.
+* Added: Compatibility with plugin WooCommerce Smart Coupons.
 * Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
 * Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
 * Fixed: Compatibility with plugin Klarna Payments for WooCommerce. Fix Klarna payment button not working when using newer versions of Klarna Payments. Update modified script from the plugin to its latest version and add missing dependancy.
