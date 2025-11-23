@@ -69,7 +69,7 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-woocommerce-gus', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-gus/checkout-validation-woocommerce-gus' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGUS.init(fcSettings.checkoutValidationWooCommerceGUS);})' );
+		wp_add_inline_script( 'fc-checkout-validation-woocommerce-gus', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGUS.init(fcSettings.checkoutValidationWooCommerceGUS);});' );
 	}
 
 	/**

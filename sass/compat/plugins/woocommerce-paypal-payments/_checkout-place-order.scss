@@ -31,10 +31,21 @@ body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-p
 }
 
 body.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-checkout-steps .fc-place-order__custom-buttons:not( :empty ),
-body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-checkout-steps .fc-place-order__custom-buttons:not( :empty ),
-body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-checkout-steps .fc-place-order__custom-buttons:not( :empty ),
-body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-checkout-steps .fc-place-order__custom-buttons:not( :empty ) {
+body.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-checkout-steps .fc-place-order__custom-buttons:not( :empty ) {
 	margin-top: $global-spacing;
+}
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-place-order__custom-buttons,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-place-order__custom-buttons {
+	margin: 0;
+}
+
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-checkout-steps .ppcp-button-apm.google-pay,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-checkout-steps .ppcp-button-applepay {
+	margin: $global-spacing 0 $global-spacing-extra-small;
+}
+body.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner .ppcp-button-apm.google-pay,
+body.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner .ppcp-button-applepay {
+	margin: $global-spacing-small 0 $global-spacing-extra-small;
 }
 
 body:not( .has-payment-method-selected--payment_method_ppcp-gateway ):not( .has-payment-method-selected--payment_method_ppcp-card-button-gateway ):not( .has-payment-method-selected--payment_method_ppcp-credit-card-gateway ):not( .has-payment-method-selected--payment_method_ppcp-googlepay ):not( .has-payment-method-selected--payment_method_ppcp-applepay ) .fc-wrapper .fc-place-order__custom-buttons,
@@ -48,6 +59,18 @@ body:not( .has-payment-method-selected--payment_method_ppcp-pay-upon-invoice-gat
 
 
 
+.fc-wrapper .fc-place-order__custom-buttons #ppc-button-ppcp-gateway .paypal-buttons {
+	min-height: 0;
+}
+
+.fc-wrapper .ppcp-button-apm:not( .google-pay ) {
+	height: auto !important; // Needed to override plugin styles
+	min-height: 0;
+}
+.fc-wrapper .ppcp-button-apm:not( .google-pay ):not( .ppcp-button-applepay ) {
+	margin: 0 !important; // Needed to override plugin styles
+}
+
 .fc-wrapper #ppc-button {
 	margin-top: $global-spacing-small;
 	display: flex;
@@ -55,15 +78,27 @@ body:not( .has-payment-method-selected--payment_method_ppcp-pay-upon-invoice-gat
 	align-items: center;
 }
 
-
-
+// Fully inherit place order button styles from Fluid Checkout
 .fc-wrapper .ppcp-dcc-order-button {
 	float: none !important; // Needed to override theme styles
+	display: flex !important; // Needed to override theme styles
+	align-items: center !important; // Needed to override theme styles
+	justify-content: center !important; // Needed to override theme styles
+	margin: 0;
 	width: 100% !important; // Needed to override theme styles
-	line-height: unset !important; // Needed to override theme styles
+	min-width: remsize( 24rem );
+	min-height: remsize( 5rem );
+	text-align: center;
 
 	&:focus {
 		outline: $focus-outline-button !important; // Needed to override theme styles
 		outline-offset: $focus-outline-offset-button !important; // Needed to override theme styles
 	}
+}
+
+
+
+.fc-wrapper .fc-place-order__section #ppc-button-applepay-container,
+.fc-wrapper .fc-place-order__section #ppcp-recaptcha-v2-container:empty {
+	margin: 0 !important; // Needed to override plugin styles
 }
