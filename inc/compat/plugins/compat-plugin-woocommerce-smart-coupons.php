@@ -74,9 +74,10 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_woocommerce_smart_coupons_position_checkout' ),
 					'autoload'        => false,
 					'options'         => array(
-						'before'           => __( 'Before the progress bar', 'fluid-checkout' ),
-						'after'            => __( 'After the progress bar', 'fluid-checkout' ),
-						'before_steps'     => __( 'Before the checkout steps', 'fluid-checkout' ),
+						'before_progress_bar'   => __( 'Before the progress bar', 'fluid-checkout' ),
+						'after_progress_bar'    => __( 'After the progress bar', 'fluid-checkout' ),
+						'before_steps'          => __( 'Before the checkout steps', 'fluid-checkout' ),
+						'before_coupon_code'    => __( 'Before coupon codes section', 'fluid-checkout' ),
 					),
 				),
 			),
@@ -105,9 +106,10 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		// Define position hook mapping
 		$position_hook_map = array(
-			'before_form'      => array( 'hook' => 'woocommerce_before_checkout_form', 'priority' => 3 ),
-			'after'            => array( 'hook' => 'fc_checkout_before', 'priority' => 3 ),
-			'before_steps'     => array( 'hook' => 'fc_checkout_before_steps', 'priority' => 5 ),
+			'before_progress_bar'   => array( 'hook' => 'woocommerce_before_checkout_form', 'priority' => 3 ),
+			'after_progress_bar'    => array( 'hook' => 'fc_checkout_before', 'priority' => 3 ),
+			'before_steps'          => array( 'hook' => 'fc_checkout_before_steps', 'priority' => 5 ),
+			'before_coupon_code'    => array( 'hook' => 'fc_before_substep_coupon_codes', 'priority' => 5 ),
 		);
 
 		// Maybe set default position
