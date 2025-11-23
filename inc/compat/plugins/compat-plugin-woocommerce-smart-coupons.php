@@ -26,6 +26,9 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		$this->checkout_hooks();
 	}
 
+	/**
+	 * Add or remove checkout hooks.
+	 */
 	public function checkout_hooks() {
 		// Bail if class is not available
 		$class_name = 'WC_SC_Display_Coupons';
@@ -59,25 +62,29 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 				'type'  => 'title',
 				'id'    => 'fc_integrations_woocommerce_smart_coupons_options',
 			),
+		);
 
+		$settings_new = array_merge( $settings_new, apply_filters( 'fc_integrations_woocommerce_smart_coupons_settings',
 			array(
-				'title'           => __( 'Position to display available coupons', 'fluid-checkout' ),
-				'desc'            => __( 'Choose where to display the available coupons section on the checkout page.', 'fluid-checkout' ),
-				'id'              => 'fc_integration_woocommerce_smart_coupons_position_checkout',
-				'type'            => 'select',
-				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_woocommerce_smart_coupons_position_checkout' ),
-				'autoload'        => false,
-				'options'         => array(
-					'before'           => __( 'Before the progress bar', 'fluid-checkout' ),
-					'after'            => __( 'After the progress bar', 'fluid-checkout' ),
-					'before_steps'     => __( 'Before the checkout steps', 'fluid-checkout' ),
+				array(	
+					'title'           => __( 'Position on checkout page', 'fluid-checkout' ),
+					'desc'            => __( 'Choose where to display the available coupons section on the checkout page.', 'fluid-checkout' ),
+					'id'              => 'fc_integration_woocommerce_smart_coupons_position_checkout',
+					'type'            => 'select',
+					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_woocommerce_smart_coupons_position_checkout' ),
+					'autoload'        => false,
+					'options'         => array(
+						'before'           => __( 'Before the progress bar', 'fluid-checkout' ),
+						'after'            => __( 'After the progress bar', 'fluid-checkout' ),
+						'before_steps'     => __( 'Before the checkout steps', 'fluid-checkout' ),
+					),
 				),
 			),
-
-			array(
-				'type' => 'sectionend',
-				'id'    => 'fc_integrations_bluehost_plugin_options',
-			),
+		) );
+			
+		$settings_new[] = array(
+			'type' => 'sectionend',
+			'id'    => 'fc_integrations_woocommerce_smart_coupons_options',
 		);
 
 		$settings = array_merge( $settings, $settings_new );
