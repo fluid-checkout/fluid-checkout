@@ -537,6 +537,15 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   line-height: 1;
 }
 
+.fc-checkout-header .fc-checkout__branding:only-child {
+  margin: 0 auto;
+}
+@media (min-width: 1000px) {
+  .fc-checkout-header .fc-checkout__branding:only-child {
+    margin: 0;
+  }
+}
+
 .fc-checkout-header .fc-checkout__branding img {
   max-height: 46px;
   max-width: 130px;

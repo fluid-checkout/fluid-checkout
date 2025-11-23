@@ -85,6 +85,10 @@
 .fc-checkout-header .fc-checkout__branding {
 	line-height: 1;
 }
+.fc-checkout-header .fc-checkout__branding:only-child {
+	margin: 0 auto;
+	@media (#{$bp-larger-than-desktop}) { margin: 0; }
+}
 
 .fc-checkout-header .fc-checkout__branding img {
 	max-height: remsize( 4.6rem );
