@@ -367,6 +367,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin WooCommerce Order Delivery. Fix fatal error occurring when using newer versions of the plugin alongside Fluid Checkout.
 * Fixed: Compatibility with plugin WooCommerce PayPal Payments. Fix place order section styles on the checkout page. Fix place order button being active before reaching the last checkout step when using the German Market plugin.
 * Fixed: Hidden position option for the coupon code section on the checkout page not working as expected.
+* Fixed: JavaScript errors triggered by inline scripts when minified.
 
 = 4.1.3 - 2025-10-28 =
 
