@@ -306,7 +306,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 							'before_checkout_steps'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ), 'disabled' => true ),
 							'hidden'                   => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Hidden', 'fluid-checkout' ), 'disabled' => true ),
 						),
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' ),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' ),
 						'autoload'          => false,
 					),
 
