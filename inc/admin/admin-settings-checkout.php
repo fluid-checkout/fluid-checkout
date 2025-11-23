@@ -298,6 +298,19 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'              => __( 'Order summary position on mobile.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                => 'fc_pro_checkout_order_summary_position_mobile',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'site_header'              => array( 'label' => __( 'On site header', 'fluid-checkout' ) ),
+							'before_checkout_steps'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ), 'disabled' => true ),
+							'hidden'                   => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Hidden', 'fluid-checkout' ), 'disabled' => true ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' ),
+						'autoload'          => false,
+					),
+
+					array(
 						'title'             => __( 'Cart items', 'fluid-checkout' ),
 						'desc'              => __( 'Enable options to edit cart items on the checkout page', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Allow customers to change product quantities or removing items directly at the checkout page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-checkout-edit-cart/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
