@@ -2486,6 +2486,30 @@ msgstr ""
 "នេះធានាថាផ្នែកមាតិកាមិនតូចចង្អៀតពេកនៅលើទំព័រ WooCommerce រួមទាំងការចេញ រទេះ "
 "ការបញ្ជាទិញដែលបានទទួល ការបញ្ជាទិញបង់ប្រាក់ និងទំព័រគណនី។"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "គូប៉ុងឆ្លាតវៃ WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "ទីតាំងនៅលើទំព័រទូទាត់"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "ជ្រើសរើសកន្លែងដែលត្រូវបង្ហាញផ្នែកប័ណ្ណដែលមាននៅលើទំព័រទូទាត់។"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "មុនពេលរបារវឌ្ឍនភាព"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "បន្ទាប់ពីរបារវឌ្ឍនភាព"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ផ្នែកមុនលេខកូដគូប៉ុង"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

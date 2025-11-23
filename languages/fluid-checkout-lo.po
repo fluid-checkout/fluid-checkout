@@ -2462,6 +2462,30 @@ msgstr ""
 "ນີ້ຮັບປະກັນວ່າພາກສ່ວນເນື້ອຫາບໍ່ແຄບເກີນໄປໃນຫນ້າ WooCommerce ລວມທັງການຊໍາລະ, "
 "ໂຄງຮ່າງການ, ຄໍາສັ່ງທີ່ໄດ້ຮັບ, ຄໍາສັ່ງຈ່າຍແລະຫນ້າບັນຊີ."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "ຄູປອງອັດສະລິຍະ WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "ຕຳແໜ່ງໃນໜ້າຈ່າຍເງິນ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "ເລືອກບ່ອນທີ່ຈະສະແດງສ່ວນຄູປອງທີ່ມີຢູ່ໃນໜ້າຈ່າຍເງິນ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ກ່ອນແຖບຄວາມຄືບຫນ້າ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ຫຼັງຈາກແຖບຄວາມຄືບຫນ້າ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ກ່ອນທີ່ຈະພາກສ່ວນລະຫັດຄູປອງ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

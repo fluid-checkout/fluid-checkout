@@ -2465,6 +2465,30 @@ msgstr ""
 "ਹੋਵੇ ਜਿਸ ਵਿੱਚ ਚੈੱਕਆਉਟ, ਕਾਰਟ, ਆਰਡਰ ਪ੍ਰਾਪਤ, ਆਰਡਰ ਭੁਗਤਾਨ ਅਤੇ ਖਾਤਾ ਪੰਨੇ ਸ਼ਾਮਲ "
 "ਹਨ।"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce ਸਮਾਰਟ ਕੂਪਨ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "ਚੈੱਕਆਉਟ ਪੰਨੇ &#39;ਤੇ ਸਥਿਤੀ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "ਚੈੱਕਆਉਟ ਪੰਨੇ &#39;ਤੇ ਉਪਲਬਧ ਕੂਪਨ ਭਾਗ ਨੂੰ ਕਿੱਥੇ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰਨਾ ਹੈ, ਚੁਣੋ।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ਤਰੱਕੀ ਪੱਟੀ ਤੋਂ ਪਹਿਲਾਂ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ਤਰੱਕੀ ਪੱਟੀ ਤੋਂ ਬਾਅਦ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ਕੂਪਨ ਕੋਡ ਸੈਕਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
