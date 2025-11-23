@@ -357,12 +357,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with plugin SUMO Subscriptions.
+* Added: Compatibility with plugin Shop as Client for WooCommerce (by Naked Cat Plugins).
+* Added: Compatibility with plugin WooCommerce Buy One Get One Free by Oscar Gare.
 * Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
 * Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
-* Fixed: Hidden position option for the coupon code section on the checkout page not working as expected.
+* Fixed: Compatibility with plugin Klarna Payments for WooCommerce. Fix Klarna payment button not working when using newer versions of Klarna Payments. Update modified script from the plugin to its latest version and add missing dependancy.
 * Fixed: Compatibility with plugin Revolut Gateway for WooCommerce. Fix title edits being applied globally for the Revolut payment method. Fix Revolut payments getting aborted when switching browser tabs during checkout.
 * Fixed: Compatibility with plugin WooCommerce Delivery Slots by Iconic. Fix delivery slots field styles.
 * Fixed: Compatibility with plugin WooCommerce Order Delivery. Fix fatal error occurring when using newer versions of the plugin alongside Fluid Checkout.
+* Fixed: Compatibility with plugin WooCommerce PayPal Payments. Fix place order section styles on the checkout page. Fix place order button being active before reaching the last checkout step when using the German Market plugin.
+* Fixed: Hidden position option for the coupon code section on the checkout page not working as expected.
 * Fixed: JavaScript errors triggered by inline scripts when minified.
 
 = 4.1.3 - 2025-10-28 =
