@@ -273,10 +273,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 		global $current_tab, $current_section;
 
 		// Bail if not the plugin settings.
-		if ( 'fc_checkout' !== $current_tab ) { return $value; }
+		if ( ! 'fc_checkout' === $current_tab ) { return $value; }
 
 		// Maybe set the value to the saved value if the option is disabled.
-		if( is_array( $option ) && array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
+		if( array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
 			$saved_value = get_option( $option[ 'id' ] );
 			$value = $saved_value;
 		}
