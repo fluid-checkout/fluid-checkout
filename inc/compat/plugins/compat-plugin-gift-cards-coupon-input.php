@@ -30,9 +30,6 @@ class FluidCheckout_GiftCardsCouponInput extends FluidCheckout {
 		// Bail if WooCommerce Gift Cards plugin is not active
 		if ( ! function_exists( 'WC_GC' ) ) { return; }
 
-		// Bail if gift-cards-coupon-input plugin is not active
-		if ( ! class_exists( 'WC_GC_Coupon_Input' ) ) { return; }
-
 		// Extend Fluid Checkout's coupon input AJAX endpoint to handle gift cards
 		add_action( 'wc_ajax_fc_add_coupon_code', array( $this, 'maybe_apply_gift_card' ), 9 );
 	}
