@@ -2517,6 +2517,32 @@ msgstr ""
 "WooCommerce termasuk daftar keluar, troli, pesanan diterima, bayaran "
 "pesanan dan halaman akaun."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Kupon Pintar WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Kedudukan pada halaman pembayaran"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Pilih tempat untuk memaparkan bahagian kupon yang tersedia pada halaman "
+"pembayaran."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Sebelum bar kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Selepas bar kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Sebelum bahagian kod kupon"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

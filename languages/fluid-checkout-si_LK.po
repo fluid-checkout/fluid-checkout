@@ -2462,6 +2462,30 @@ msgstr ""
 "මෙමගින් WooCommerce පිටුවල අන්තර්ගත කොටස ඉතා පටු නොවන බව සහතික කරයි, එනම් "
 "පිටවීම, කරත්තය, ලැබුණු ඇණවුම, ඇණවුම් ගෙවීම සහ ගිණුම් පිටු ය."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce ස්මාර්ට් කූපන් පත්"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "පිටවීමේ පිටුවේ පිහිටීම"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "පිටවීමේ පිටුවේ ඇති කූපන් පත් කොටස පෙන්විය යුතු ස්ථානය තෝරන්න."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ප්‍රගති තීරුවට පෙර"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ප්‍රගති තීරුවෙන් පසුව"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "කූපන් කේත කොටසට පෙර"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

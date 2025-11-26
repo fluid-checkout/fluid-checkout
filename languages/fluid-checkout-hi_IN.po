@@ -2463,6 +2463,30 @@ msgstr ""
 "यह सुनिश्चित करता है कि चेकआउट, कार्ट, ऑर्डर प्राप्ति, ऑर्डर भुगतान और खाता "
 "पृष्ठों सहित WooCommerce पृष्ठों पर सामग्री अनुभाग बहुत संकीर्ण नहीं है।"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce स्मार्ट कूपन"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "चेकआउट पृष्ठ पर स्थिति"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "चेकआउट पृष्ठ पर उपलब्ध कूपन अनुभाग को प्रदर्शित करने का स्थान चुनें।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "प्रगति पट्टी से पहले"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "प्रगति पट्टी के बाद"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "कूपन कोड अनुभाग से पहले"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

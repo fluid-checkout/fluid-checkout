@@ -2559,6 +2559,32 @@ msgstr ""
 "WooCommerce a’ gabhail a-steach duilleagan pàighidh, cairt, òrdugh a "
 "fhuaireadh, òrdugh a phàigheadh agus cunntas."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Cùpain WooCommerce Smart"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Suidheachadh air duilleag an pàighidh"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Tagh càite an nochd thu an earrann cùpain a tha rim faighinn air duilleag "
+"an pàighidh."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Roimh am bàr adhartais"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Às dèidh a’ bhàr adhartais"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Roimhe earrann nan còdan cùpain"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

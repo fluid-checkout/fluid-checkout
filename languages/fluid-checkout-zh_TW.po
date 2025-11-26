@@ -2241,6 +2241,30 @@ msgid ""
 "including checkout, cart, order received, order pay and account pages."
 msgstr "這可確保 WooCommerce 頁面上的內容部分不會太窄，包括結帳、購物車、收到訂單、訂單付款和帳戶頁面。"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce智能優惠券"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "結帳頁面上的位置"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "選擇在結帳頁面上顯示可用優惠券部分的位置。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "進度條之前"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "進度條之後"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "優惠券代碼部分之前"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2461,6 +2461,30 @@ msgstr ""
 "วิธีนี้จะช่วยให้แน่ใจว่าเนื้อหาในหน้า WooCommerce ไม่แคบเกินไป "
 "ซึ่งรวมถึงหน้าชำระเงิน ตะกร้าสินค้า คำสั่งซื้อที่ได้รับ การชำระเงิน และบัญชี"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "คูปองอัจฉริยะ WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "ตำแหน่งบนหน้าชำระเงิน"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "เลือกตำแหน่งที่จะแสดงคูปองที่มีอยู่บนหน้าชำระเงิน"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ก่อนแถบความคืบหน้า"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "หลังจากแถบความคืบหน้า"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ก่อนส่วนรหัสคูปอง"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

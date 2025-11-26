@@ -2509,6 +2509,32 @@ msgstr ""
 "rûpelên dravdanê, selikê, siparîşa wergirtî, dayîna siparîşê û hesabê, pir "
 "teng nebe."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Kuponên Jîr ên WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Cihê li ser rûpela dravdanê"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Li ser rûpela dravdanê hilbijêrin ka beşa kuponên berdest li ku derê were "
+"nîşandan."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Berî barika pêşketinê"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Piştî barika pêşketinê"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Berî beşa kodên kuponê"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

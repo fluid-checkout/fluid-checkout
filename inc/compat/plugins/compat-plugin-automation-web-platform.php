@@ -345,11 +345,11 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-automation-web-platform', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout-automation-web-platform' ), array( 'jquery', 'fc-utils' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-automation-web-platform', 'window.addEventListener("load",function(){CheckoutWAWP.init(fcSettings.checkoutWAWP);})' );
+		wp_add_inline_script( 'fc-checkout-automation-web-platform', 'window.addEventListener("load",function(){CheckoutWAWP.init(fcSettings.checkoutWAWP);});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-automation-web-platform', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout-validation-automation-web-platform' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation-automation-web-platform', 'window.addEventListener("load",function(){CheckoutValidationWAWP.init(fcSettings.checkoutValidationWAWP);})' );
+		wp_add_inline_script( 'fc-checkout-validation-automation-web-platform', 'window.addEventListener("load",function(){CheckoutValidationWAWP.init(fcSettings.checkoutValidationWAWP);});' );
 	}
 
 	/**

@@ -76,7 +76,7 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 		$woocommerce_version = defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
 		$fc_fragments_deps = version_compare( $woocommerce_version, '10.3.0', '>=' ) ? array( 'jquery', 'wc-jquery-blockui', 'fc-utils' ) : array( 'jquery', 'jquery-blockui', 'fc-utils' );
 		wp_register_script( 'fc-fragments-update', FluidCheckout_Enqueue::instance()->get_script_url( 'js/fc-fragments-refresh' ), $fc_fragments_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-fragments-update', 'window.addEventListener("load",function(){FCFragmentsRefresh.init(fcSettings.fragmentsRefresh);})' );
+		wp_add_inline_script( 'fc-fragments-update', 'window.addEventListener("load",function(){FCFragmentsRefresh.init(fcSettings.fragmentsRefresh);});' );
 
 		// Register styles
 		wp_register_style( 'fc-fragments-update', FluidCheckout_Enqueue::instance()->get_style_url( 'css/fragments-update' ), array(), null );

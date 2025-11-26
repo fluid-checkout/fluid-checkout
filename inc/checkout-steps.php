@@ -756,7 +756,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-checkout-steps', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-steps' ), array( 'jquery', 'wc-checkout', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);});' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-layout', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-layout' ), NULL, NULL );
@@ -4951,7 +4951,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
 
-		return null;
+		// Return `true` when shipping country is not set
+		// This allows the checkbox "same as billing address" to be displayed,
+		// and other validation rules will ensure the shipping address is correctly set.
+		return true;
 	}
 
 	/**
@@ -4990,7 +4993,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_shipping( $billing_country );
 		}
 
-		return null;
+		// Return `true` when billing country is not set
+		// This allows the checkbox "same as billing address" to be displayed,
+		// and other validation rules will ensure the billing address is correctly set.
+		return true;
 	}
 
 	/**

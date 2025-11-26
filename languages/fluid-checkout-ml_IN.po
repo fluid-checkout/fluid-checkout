@@ -2542,6 +2542,32 @@ msgstr ""
 "എന്നിവയുൾപ്പെടെ WooCommerce പേജുകളിൽ ഉള്ളടക്ക വിഭാഗം വളരെ ഇടുങ്ങിയതല്ലെന്ന് "
 "ഇത് ഉറപ്പാക്കുന്നു."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce സ്മാർട്ട് കൂപ്പണുകൾ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "ചെക്ക്ഔട്ട് പേജിലെ സ്ഥാനം"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"ചെക്ക്ഔട്ട് പേജിൽ ലഭ്യമായ കൂപ്പണുകൾ വിഭാഗം എവിടെ പ്രദർശിപ്പിക്കണമെന്ന് "
+"തിരഞ്ഞെടുക്കുക."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "പ്രോഗ്രസ് ബാറിന് മുമ്പ്"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "പ്രോഗ്രസ് ബാറിന് ശേഷം"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "കൂപ്പൺ കോഡുകൾക്ക് മുമ്പുള്ള വിഭാഗം"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

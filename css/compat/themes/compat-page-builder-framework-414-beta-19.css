@@ -1,0 +1,12 @@
+body.theme-page-builder-framework .fc-wrapper .select2-container .select2-selection--single {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.theme-page-builder-framework div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  line-height: calc(var(--fluidcheckout--field--height, 45.625px) - var(--fluidcheckout--field--border-width, 1px) * 2);
+}
+
+body.theme-page-builder-framework div.woocommerce form .form-row .select2-selection .select2-selection__clear {
+  right: 5px;
+}

@@ -2463,6 +2463,30 @@ msgstr ""
 "هي يقيني بڻائي ٿو ته مواد جو سيڪشن WooCommerce صفحن تي تمام تنگ نه آهي جنهن "
 "۾ چيڪ آئوٽ، ڪارٽ، آرڊر وصول ٿيل، آرڊر جي ادائيگي ۽ اڪائونٽ صفحا شامل آهن."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "وو ڪامرس سمارٽ ڪوپن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "چيڪ آئوٽ صفحي تي پوزيشن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "چيڪ آئوٽ صفحي تي موجود ڪوپن سيڪشن کي ڪٿي ڏيکارڻو آهي چونڊيو."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ترقي واري بار کان اڳ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ترقي واري بار کان پوءِ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ڪوپن ڪوڊ سيڪشن کان اڳ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
