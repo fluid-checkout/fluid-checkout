@@ -361,6 +361,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin WooCommerce Buy One Get One Free by Oscar Gare.
 * Added: Compatibility with plugin WooCommerce Smart Coupons.
 * Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
+* Improved: Show and allow checking "Same as shipping/billing address" checkbox when the first address is not yet complete.
 * Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
 * Fixed: Compatibility with plugin Klarna Payments for WooCommerce. Fix Klarna payment button not working when using newer versions of Klarna Payments. Update modified script from the plugin to its latest version and add missing dependancy.
 * Fixed: Compatibility with plugin Revolut Gateway for WooCommerce. Fix title edits being applied globally for the Revolut payment method. Fix Revolut payments getting aborted when switching browser tabs during checkout.

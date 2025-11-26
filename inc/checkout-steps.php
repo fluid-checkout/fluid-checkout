@@ -4951,7 +4951,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
 
-		return null;
+		// Return `true` when shipping country is not set
+		// This allows the checkbox "same as billing address" to be displayed,
+		// and other validation rules will ensure the shipping address is correctly set.
+		return true;
 	}
 
 	/**
@@ -4990,7 +4993,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_shipping( $billing_country );
 		}
 
-		return null;
+		// Return `true` when billing country is not set
+		// This allows the checkbox "same as billing address" to be displayed,
+		// and other validation rules will ensure the billing address is correctly set.
+		return true;
 	}
 
 	/**
