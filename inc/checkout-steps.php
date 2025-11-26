@@ -4996,6 +4996,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Return `true` when billing country is not set
 		// This allows the checkbox "same as billing address" to be displayed,
 		// and other validation rules will ensure the billing address is correctly set.
+		return true;
 	}
 
 	/**
