@@ -34,6 +34,8 @@ class FluidCheckout_GiftCardsCouponInput extends FluidCheckout {
 		add_action( 'wc_ajax_fc_add_coupon_code', array( $this, 'maybe_apply_gift_card' ), 9 );
 	}
 
+
+
 	/**
 	 * Extend the coupon input AJAX endpoint to handle gift cards.
 	 * Checks if code matches gift card pattern and processes it before Fluid Checkout handles it.
