@@ -2472,6 +2472,30 @@ msgstr ""
 "এটি নিশ্চিত করে যে WooCommerce পৃষ্ঠাগুলিতে চেকআউট, কার্ট, অর্ডার প্রাপ্তি, "
 "অর্ডার পে এবং অ্যাকাউন্ট পৃষ্ঠা সহ সামগ্রী বিভাগটি খুব সংকীর্ণ নয়।"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce স্মার্ট কুপন"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "চেকআউট পৃষ্ঠায় অবস্থান"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "চেকআউট পৃষ্ঠায় উপলব্ধ কুপন বিভাগটি কোথায় প্রদর্শন করবেন তা চয়ন করুন।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "অগ্রগতি বারের আগে"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "অগ্রগতি বারের পরে"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "কুপন কোড বিভাগ আগে"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
