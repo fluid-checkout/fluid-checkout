@@ -34,7 +34,6 @@ jQuery( function( $ ) {
 		loginButtonSelector:                          '.fc-contact-login__action',
 		emailFieldSelector:                           'form.woocommerce-checkout input[name="billing_email"]',
 		usernameFieldSelector:                        '.fc-login-form__inner input[name="username"]',
-		createAccountCheckboxSelector:                '#createaccount',
 
 		sameAsCheckboxSelector:                       '#billing_same_as_shipping, #shipping_same_as_billing',
 		sameAsCheckboxAvailableSelector:              '#billing_same_as_shipping_available, #shipping_same_as_billing_available',
@@ -128,9 +127,6 @@ jQuery( function( $ ) {
 
 			// CHANGE: Update checkout when "same as address" checkboxes state changes
 			this.$checkout_form.on( 'change', _settings.sameAsCheckboxSelector, this.same_as_address_checkbox_changed );
-
-			// CHANGE: Update checkout when account creation checkbox state changes
-			this.$checkout_form.on( 'change', _settings.createAccountCheckboxSelector, this.trigger_update_checkout );
 
 			// CHANGE: Trigger reinitialization functions after checkout is updated
 			$( document.body ).on( 'updated_checkout', this.maybe_reinitialize_collapsible_blocks );
