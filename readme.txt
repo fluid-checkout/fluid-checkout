@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Compatibility with plugin SUMO Subscriptions.
 * Added: Compatibility with plugin Shop as Client for WooCommerce (by Naked Cat Plugins).
+* Added: Compatibility with plugin Upsell Funnel Builder for WooCommerce.
 * Added: Compatibility with plugin WooCommerce Buy One Get One Free by Oscar Gare.
 * Added: Compatibility with plugin WooCommerce Smart Coupons.
 * Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
