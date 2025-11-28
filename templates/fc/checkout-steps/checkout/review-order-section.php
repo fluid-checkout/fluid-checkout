@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 4.0.0
+ * @version 4.1.5
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
  */
@@ -34,15 +34,19 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-		<div class="fc-checkout-order-review__head">
+		<?php if ( true === apply_filters( 'fc_display_order_review_title', true ) ) : ?>
 
-			<?php do_action( 'fc_checkout_after_order_review_title_before' ); ?>
+			<div class="fc-checkout-order-review__head">
 
-			<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
+				<?php do_action( 'fc_checkout_after_order_review_title_before' ); ?>
 
-			<?php do_action( 'fc_checkout_after_order_review_title_after' ); ?>
+				<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
 
-		</div>
+				<?php do_action( 'fc_checkout_after_order_review_title_after' ); ?>
+
+			</div>
+
+		<?php endif; ?>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

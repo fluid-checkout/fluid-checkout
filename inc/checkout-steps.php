@@ -6251,6 +6251,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout place order section.
 	 */
 	public function output_checkout_place_order_placeholder() {
+		// Bail if section is disabled
+		if ( true !== apply_filters( 'fc_display_place_order_button', true ) ) { return; }
+
 		// Output place order section placeholder
 		echo '<div class="fc-place-order__section-placeholder"></div>';
 	}
@@ -6301,6 +6304,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout place order section for the sidebar.
 	 */
 	public function output_checkout_place_order_section_for_sidebar() {
+		// Bail if section is disabled
+		if ( true !== apply_filters( 'fc_display_place_order_button', true ) ) { return; }
+
 		$this->output_checkout_place_order_section( '__sidebar', true );
 	}
 
