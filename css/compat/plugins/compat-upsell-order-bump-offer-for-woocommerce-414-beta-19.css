@@ -3,7 +3,6 @@
   padding-bottom: 0 !important;
 }
 
-.fc-wrapper .woocommerce-checkout-payment + .wrapup_order_bump,
 .fc-wrapper #fc-checkout-order-review .wrapup_order_bump {
   margin-top: 20px !important;
 }
@@ -14,11 +13,15 @@
   }
 }
 
-.fc-wrapper .fc-checkout-step > .wrapup_order_bump {
-  padding: 20px 20px;
+.fc-wrapper .fc-substep__fields--payment .wrapup_order_bump {
+  margin-bottom: 20px !important;
 }
-@media (min-width: 750px) {
-  .fc-wrapper .fc-checkout-step > .wrapup_order_bump {
-    padding: 20px 20px;
-  }
+
+.fc-wrapper .fc-substep__fields--payment .woocommerce-checkout-payment ~ .wrapup_order_bump {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+}
+
+.fc-wrapper .fc-place-order__section .wrapup_order_bump {
+  margin-bottom: 20px !important;
 }

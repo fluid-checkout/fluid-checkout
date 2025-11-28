@@ -6,7 +6,9 @@
 	padding-top: 0 !important; // Needed to override plugin styles
 	padding-bottom: 0 !important; // Needed to override plugin styles
 }
-.fc-wrapper .woocommerce-checkout-payment + .wrapup_order_bump,
+
+
+
 .fc-wrapper #fc-checkout-order-review .wrapup_order_bump {
 	margin-top: $global-spacing-small !important; // Needed to override plugin styles
 }
@@ -15,8 +17,20 @@
 		margin: $global-spacing-small 0 !important; // Needed to override plugin styles
 	}
 }
-// "Before payment gateways" position
-.fc-wrapper .fc-checkout-step > .wrapup_order_bump {
-	padding: $checkout-substep-padding;
-	@media (#{$bp-larger-than-tablet}) { padding: $checkout-substep-padding--large-screen; }
+
+
+
+.fc-wrapper .fc-substep__fields--payment .wrapup_order_bump {
+	margin-bottom: $global-spacing-small !important; // Needed to override plugin styles
+}
+
+.fc-wrapper .fc-substep__fields--payment .woocommerce-checkout-payment ~ .wrapup_order_bump {
+	margin-top: $global-spacing-small !important; // Needed to override plugin styles
+	margin-bottom: 0 !important; // Needed to override plugin styles
+}
+
+
+
+.fc-wrapper .fc-place-order__section .wrapup_order_bump {
+	margin-bottom: $global-spacing-small !important; // Needed to override plugin styles
 }

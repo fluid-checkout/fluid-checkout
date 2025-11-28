@@ -66,13 +66,8 @@ class FluidCheckout_UpsellOrderBumpOfferForWooCommerce extends FluidCheckout {
 			remove_action( $location_details[ 'hook' ], array( $class_object, 'show_offer_bump' ), $location_details[ 'priority' ] );
 		}
 
-		// For "Before payment gateways" position, add order bump to the top of payment step
-		if ( '_before_payment_gateways' === $order_bump_location ) {
-			add_action( 'fc_checkout_start_step', array( $this, 'maybe_output_order_bump_in_step_payment' ), $position_args[ 'priority' ], 3 );
-		// Otherwise, add to specified hook
-		} else {
-			add_action( $position_args[ 'hook' ], array( $class_object, 'show_offer_bump' ), $position_args[ 'priority' ] );
-		}
+		// Add order bump to the new position
+		add_action( $position_args[ 'hook' ], array( $class_object, 'show_offer_bump' ), $position_args[ 'priority' ] );
 	}
 
 	/**
@@ -106,9 +101,9 @@ class FluidCheckout_UpsellOrderBumpOfferForWooCommerce extends FluidCheckout {
 		// Define custom positions
 		$position_args = array(
 			'_before_order_summary'      => array( 'hook' => 'fc_checkout_before_order_review', 'priority' => 5 ),
-			'_before_payment_gateways'   => array( 'hook' => 'fc_checkout_start_step_payment', 'priority' => 10 ),
+			'_before_payment_gateways'   => array( 'hook' => 'fc_checkout_payment', 'priority' => 5 ),
 			'_after_payment_gateways'    => array( 'hook' => 'fc_checkout_payment', 'priority' => 85 ),
-			'_before_place_order_button' => array( 'hook' => 'fc_checkout_after_order_review_inside', 'priority' => 0 ),
+			'_before_place_order_button' => array( 'hook' => 'fc_place_order', 'priority' => 5 ),
 		);
 
 		// Maybe set the default position
