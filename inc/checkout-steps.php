@@ -6157,7 +6157,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
 		}
 
-		return $attributes;
+		return apply_filters( 'fc_checkout_order_review_html_attributes', $attributes );
 	}
 
 	/**
@@ -6171,7 +6171,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-flyout-content' => true,
 		);
 
-		return $attributes;
+		return apply_filters( 'fc_checkout_order_review_html_attributes_inner', $attributes );
 	}
 
 	/**
