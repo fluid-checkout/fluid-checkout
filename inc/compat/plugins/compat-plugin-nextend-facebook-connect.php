@@ -36,13 +36,6 @@ class FluidCheckout_NextendSocialLogin extends FluidCheckout {
 		// ! we should get all settings from the plugin and pass them to the renderButtonsWithContainer function
 		$buttons = NextendSocialLogin::renderButtonsWithContainer( 'default', false, false, false, $align, 'login' );
 
-		// Output separator with text "Or"
-		echo '<div class="fc-contact-login__social-login-separator">';
-			echo '<span class="fc-contact-login__social-login-separator-text">';
-				echo esc_html( __( 'Or', 'fluid-checkout' ) );
-			echo '</span>';
-		echo '</div>';
-
 		// Output the Nextend Social Login buttons.
 		echo $buttons;
 	}

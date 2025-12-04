@@ -69,9 +69,24 @@
 	opacity: .5;
 }
 
+// ! only for testing remove it later this must be added to nextend social login compat styles
+div.nsl-container .nsl-container-buttons {
+	padding: 0!important;
+}
 
-
+// ! this needs to be conditional to the nsl classes should not be outputted if the nsl classes are not present
 .fc-contact-login__separator {
+	margin-top: $global-spacing-small;
+}
+
+
+.fc-contact-login__social-login-separator.fc-contact-login__social-login-separator{
+	margin-bottom: $global-spacing-small;
+}
+
+// ! end of testing
+
+.fc-contact-login__separator, .fc-contact-login__social-login-separator {
 	position: relative;
 	margin-bottom: $global-spacing;
 	text-align: center;
