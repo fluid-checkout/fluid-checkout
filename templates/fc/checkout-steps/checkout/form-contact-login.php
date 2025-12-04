@@ -52,7 +52,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php if ( has_action( 'fc_checkout_social_login' ) ) : ?>
 			<div class="fc-contact-login__social-login-separator">
 				<span class="fc-contact-login__social-login-separator-text">
-					<?php echo esc_html( __( 'Or', 'fluid-checkout' ) ); ?>
+					<?php echo esc_html( apply_filters( 'fc_checkout_social_login_separator_text', __( 'Or', 'fluid-checkout' ) ) ); ?>
 				</span>
 			</div>
 			<?php do_action( 'fc_checkout_social_login' ); ?>
