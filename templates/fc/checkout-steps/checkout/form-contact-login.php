@@ -49,6 +49,10 @@ defined( 'ABSPATH' ) || exit;
 			<?php endif; ?>
 		</div>
 
+		<div class="fc-contact-login__extra-content">
+			<?php do_action( 'fc_checkout_social_login' ); ?>
+		</div>
+
 		<div class="fc-contact-login__separator">
 			<?php if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_guest_checkout' ) ) : ?>
 				<span class="fc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue as a guest', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) ); ?></span>
