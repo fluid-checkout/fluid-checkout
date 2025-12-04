@@ -598,7 +598,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   opacity: 0.5;
 }
 
-.fc-contact-login__separator, .fc-contact-login__social-login-separator {
+.fc-contact-login__separator,
+.fc-contact-login__social-login-separator {
   position: relative;
   margin-bottom: 30px;
   text-align: center;
