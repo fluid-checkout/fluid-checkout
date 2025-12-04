@@ -49,9 +49,14 @@ defined( 'ABSPATH' ) || exit;
 			<?php endif; ?>
 		</div>
 
-		<div class="fc-contact-login__extra-content">
+		<?php if ( has_action( 'fc_checkout_social_login' ) ) : ?>
+			<div class="fc-contact-login__social-login-separator">
+				<span class="fc-contact-login__social-login-separator-text">
+					<?php echo esc_html( __( 'Or', 'fluid-checkout' ) ); ?>
+				</span>
+			</div>
 			<?php do_action( 'fc_checkout_social_login' ); ?>
-		</div>
+		<?php endif; ?>
 
 		<div class="fc-contact-login__separator">
 			<?php if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_guest_checkout' ) ) : ?>
