@@ -1394,14 +1394,6 @@ msgstr "결제 양식에 청구 전화번호 필드를 추가합니다."
 msgid "Choose in which step to display the billing phone field."
 msgstr "청구 전화 필드를 표시할 단계를 선택합니다."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "전화 필드에 국제 전화 번호 형식 및 유효성 검사 활성화"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "각 국가에 따라 전화 번호의 형식을 지정하고 유효성을 검사합니다."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "국가별 규칙에 따라 전화번호 유효성 검사 활성화하기"
@@ -1787,12 +1779,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(실험적)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "이 기능은 실험적인 기능이며 모든 테마 및 플러그인에서 예상대로 작동하지 않을 수 있습니다. 주의해서 사용하세요."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2300,6 +2286,34 @@ msgstr "진행률 표시줄 이후"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "쿠폰 코드 이전 섹션"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "국제 전화 번호 필드 사용"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "각 국가의 규칙에 따라 전화번호 서식을 지정합니다."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "정확한 전화번호 유효성 검사 사용"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"전화번호가 선택한 국가 코드에 대한 규칙에 따라 유효한 휴대폰 또는 유선전화 번호인지 확인하세요. 이 옵션은 <코드>국제전화 "
+"입력</코드> 정밀 유효성 검사 기능을 사용하므로 일부 전화번호에 대해 오탐지가 발생할 수 있습니다."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "이 기능은 실험적인 기능이며 모든 설정에서 예상대로 작동하지 않을 수 있습니다. 주의해서 사용하세요."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

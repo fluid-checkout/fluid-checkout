@@ -1491,14 +1491,6 @@ msgstr "د چیک آوټ فورمې ته د بلینګ تلیفون ساحه ا�
 msgid "Choose in which step to display the billing phone field."
 msgstr "غوره کړئ چې په کوم ګام کې د بلینګ تلیفون ساحه ښکاره کړئ."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "د تلیفون ساحو لپاره د نړیوال تلیفون شمیرې بڼه او اعتبار فعال کړئ"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "د هر هیواد سره سم د تلیفون شمیرې فارمیټ او تایید کړئ."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "د هیواد د قوانینو پراساس د تلیفون شمیرې تایید فعال کړئ"
@@ -1917,14 +1909,6 @@ msgstr "(پرو)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجرباتي)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"دا یوه تجربوي ځانګړتیا ده او ممکن د ټولو موضوعاتو او پلگ انونو سره د تمې "
-"سره سم کار ونکړي. په احتیاط سره یې وکاروئ."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2480,6 +2464,38 @@ msgstr "د پرمختګ بار وروسته"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "د کوپن کوډونو برخه مخکې"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "د نړیوالو تلیفون شمېرو ساحې فعال کړئ"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "د هر هیواد د قوانینو سره سم د تلیفون شمیرې فارمیټ کړئ."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "د تلیفون شمېرې دقیق تایید وکاروئ"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"هڅه وکړئ چې ډاډ ترلاسه کړئ چې د تلیفون شمیره د ټاکل شوي هیواد کوډ لپاره د "
+"قواعدو پراساس یو باوري ګرځنده یا ځمکني شمیره ده. دا اختیار د "
+"<code>intl-tel-input</code> دقیق تایید ځانګړتیا کاروي، کوم چې ممکن د ځینو "
+"تلیفون شمیرو لپاره غلط مثبت ورکړي."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"دا یوه تجربوي ځانګړتیا ده او ممکن په ټولو ترتیباتو کې د تمې سره سم کار "
+"ونکړي. په احتیاط سره یې وکاروئ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

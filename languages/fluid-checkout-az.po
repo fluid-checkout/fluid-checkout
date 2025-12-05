@@ -1510,16 +1510,6 @@ msgstr "Ödəniş formasına faktura telefonu sahəsi əlavə edin."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Faturalandırma telefonu sahəsinin hansı addımda göstəriləcəyini seçin."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Beynəlxalq telefon nömrəsi formatını və telefon sahələri üçün təsdiqi "
-"aktivləşdirin"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Hər bir ölkəyə uyğun olaraq telefon nömrələrini formatlayın və doğrulayın."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Ölkə qaydaları əsasında telefon nömrəsinin doğrulanmasını aktivləşdirin"
@@ -1952,14 +1942,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimental)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Bu eksperimental xüsusiyyətdir və bütün mövzular və plaginlərlə "
-"gözlənildiyi kimi işləməyə bilər. Ehtiyatla istifadə edin."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2521,6 +2503,38 @@ msgstr "Tərəqqi çubuğundan sonra"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Kupon kodları bölməsindən əvvəl"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Beynəlxalq telefon nömrəsi sahələrini aktivləşdirin"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Telefon nömrələrini hər bir ölkə üçün qaydalara uyğun formatlaşdırın."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Dəqiq telefon nömrəsi təsdiqindən istifadə edin"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Seçilmiş ölkə kodu üçün qaydalara əsasən telefon nömrəsinin etibarlı mobil "
+"və ya stasionar nömrə olduğundan əmin olmağa çalışın. Bu seçim bəzi telefon "
+"nömrələri üçün yanlış pozitivlər verə bilən <code>intl-tel-input</code> "
+"dəqiq təsdiqləmə funksiyasından istifadə edir."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Bu eksperimental xüsusiyyətdir və bütün quraşdırmalarda gözlənildiyi kimi "
+"işləməyə bilər. Ehtiyatla istifadə edin."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1470,14 +1470,6 @@ msgstr "أضف حقل رقم الهاتف الخاص بالفواتير إلى �
 msgid "Choose in which step to display the billing phone field."
 msgstr "اختر الخطوة التي تريد فيها عرض حقل هاتف الفاتورة."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "تمكين تنسيق رقم الهاتف الدولي والتحقق من صحة حقول الهاتف"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "تنسيق أرقام الهاتف والتحقق منها وفقًا لكل بلد."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "تمكين التحقق من رقم الهاتف بناءً على قواعد البلد"
@@ -1891,14 +1883,6 @@ msgstr "(محترف)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجريبي)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"هذه ميزة تجريبية وقد لا تعمل بالشكل المتوقع مع كافة السمات والمكونات "
-"الإضافية. لذا استخدمها بحذر."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2435,6 +2419,36 @@ msgstr "بعد شريط التقدم"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "قبل قسم أكواد الكوبون"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "تمكين حقول رقم الهاتف الدولي"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "تنسيق أرقام الهاتف وفقًا للقواعد الخاصة بكل بلد."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "استخدم التحقق الدقيق من رقم الهاتف"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"تأكد من أن رقم الهاتف صحيح، سواءً كان جوالاً أو خطاً أرضياً، وفقاً لقواعد "
+"رمز البلد المُختار. يستخدم هذا الخيار ميزة التحقق الدقيق "
+"<code>intl-tel-input</code> ، والتي قد تُعطي نتائج إيجابية خاطئة لبعض أرقام "
+"الهواتف."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "هذه ميزة تجريبية وقد لا تعمل كما هو متوقع في جميع الإعدادات. استخدمها بحذر."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

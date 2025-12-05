@@ -1492,16 +1492,6 @@ msgstr "Lisage arveldustelefoni väli kassavormi."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Valige, millises etapis kuvatakse arveldustelefoni väli."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Võimaldab rahvusvahelise telefoninumbri vormingu ja valideerimise "
-"telefoniväljade jaoks"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Vormindage ja valideerige telefoninumbrid vastavalt igale riigile."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Võimaldab telefoninumbri valideerimise riigireeglite alusel"
@@ -1927,14 +1917,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentaalne)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"See on eksperimentaalne funktsioon ja ei pruugi kõigi teemade ja "
-"pistikprogrammidega toimida ootuspäraselt. Kasutage seda ettevaatlikult."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2483,6 +2465,38 @@ msgstr "Pärast eduriba"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Enne kupongikoodide sektsiooni"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Võimaldab rahvusvahelise telefoninumbri väljad"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Vormindage telefoninumbrid vastavalt iga riigi eeskirjadele."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Kasutage täpset telefoninumbri valideerimist"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Proovige veenduda, et telefoninumber on kehtiv mobiil- või "
+"lauatelefoninumber, mis põhineb valitud riigikoodi reeglitel. See valik "
+"kasutab <code>intl-tel-input</code> täpset valideerimisfunktsiooni, mis "
+"võib mõne telefoninumbri puhul anda valepositiivseid tulemusi."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"See on eksperimentaalne funktsioon ja ei pruugi kõigis seadistustes toimida "
+"ootuspäraselt. Kasutage seda ettevaatlikult."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

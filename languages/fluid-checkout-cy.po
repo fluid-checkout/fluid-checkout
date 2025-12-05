@@ -1523,14 +1523,6 @@ msgstr "Ychwanegu maes ffôn bilio at y ffurflen ddesg dalu."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Dewiswch ym mha gam i arddangos y maes ffôn bilio."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Galluogi fformat rhif ffôn rhyngwladol a dilysiad ar gyfer meysydd ffôn"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Fformatio a dilysu rhifau ffôn yn ôl pob gwlad."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Galluogi dilysu rhif ffôn yn seiliedig ar reolau gwlad"
@@ -1957,14 +1949,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(arbrofol)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Mae hon yn nodwedd arbrofol ac efallai na fydd yn gweithio yn ôl y disgwyl "
-"gyda&#39;r holl themâu ac ategion. Defnyddiwch ef yn ofalus."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2533,6 +2517,39 @@ msgstr "Ar ôl y bar cynnydd"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Cyn yr adran codau cwpon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Galluogi meysydd rhif ffôn rhyngwladol"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Fformatiwch rifau ffôn yn ôl y rheolau ar gyfer pob gwlad."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Defnyddiwch ddilysu rhif ffôn manwl gywir"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Ceisiwch sicrhau bod y rhif ffôn yn rhif ffôn symudol neu linell dir dilys "
+"yn seiliedig ar y rheolau ar gyfer y cod gwlad a ddewiswyd. Mae&#39;r "
+"opsiwn hwn yn defnyddio&#39;r nodwedd dilysu manwl gywir "
+"<code>intl-tel-input</code> , a all roi canlyniadau positif ffug ar gyfer "
+"rhai rhifau ffôn."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Nodwedd arbrofol yw hon ac efallai na fydd yn gweithio fel y disgwylir ym "
+"mhob gosodiad. Defnyddiwch hi&#39;n ofalus."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

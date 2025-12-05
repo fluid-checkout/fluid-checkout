@@ -1497,14 +1497,6 @@ msgstr "ਚੈੱਕਆਉਟ ਫਾਰਮ ਵਿੱਚ ਬਿਲਿੰਗ ਫ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "ਚੁਣੋ ਕਿ ਕਿਸ ਪੜਾਅ ਵਿੱਚ ਬਿਲਿੰਗ ਫ਼ੋਨ ਖੇਤਰ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰਨਾ ਹੈ।"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "ਫ਼ੋਨ ਖੇਤਰਾਂ ਲਈ ਅੰਤਰਰਾਸ਼ਟਰੀ ਫ਼ੋਨ ਨੰਬਰ ਫਾਰਮੈਟ ਅਤੇ ਪ੍ਰਮਾਣਿਕਤਾ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ਹਰੇਕ ਦੇਸ਼ ਦੇ ਅਨੁਸਾਰ ਫ਼ੋਨ ਨੰਬਰਾਂ ਨੂੰ ਫਾਰਮੈਟ ਅਤੇ ਪ੍ਰਮਾਣਿਤ ਕਰੋ।"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "ਦੇਸ਼ ਦੇ ਨਿਯਮਾਂ ਦੇ ਆਧਾਰ &#39;ਤੇ ਫ਼ੋਨ ਨੰਬਰ ਪ੍ਰਮਾਣਿਕਤਾ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ"
@@ -1926,14 +1918,6 @@ msgstr "(ਪ੍ਰੋ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(ਪ੍ਰਯੋਗਾਤਮਕ)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"ਇਹ ਇੱਕ ਪ੍ਰਯੋਗਾਤਮਕ ਵਿਸ਼ੇਸ਼ਤਾ ਹੈ ਅਤੇ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਇਹ ਸਾਰੇ ਥੀਮਾਂ ਅਤੇ ਪਲੱਗਇਨਾਂ "
-"ਨਾਲ ਉਮੀਦ ਅਨੁਸਾਰ ਕੰਮ ਨਾ ਕਰੇ। ਇਸਨੂੰ ਸਾਵਧਾਨੀ ਨਾਲ ਵਰਤੋ।"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2488,6 +2472,38 @@ msgstr "ਤਰੱਕੀ ਪੱਟੀ ਤੋਂ ਬਾਅਦ"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "ਕੂਪਨ ਕੋਡ ਸੈਕਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "ਅੰਤਰਰਾਸ਼ਟਰੀ ਫ਼ੋਨ ਨੰਬਰ ਖੇਤਰਾਂ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ਹਰੇਕ ਦੇਸ਼ ਦੇ ਨਿਯਮਾਂ ਅਨੁਸਾਰ ਫ਼ੋਨ ਨੰਬਰਾਂ ਨੂੰ ਫਾਰਮੈਟ ਕਰੋ।"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "ਸਟੀਕ ਫ਼ੋਨ ਨੰਬਰ ਪ੍ਰਮਾਣਿਕਤਾ ਦੀ ਵਰਤੋਂ ਕਰੋ"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"ਚੁਣੇ ਗਏ ਦੇਸ਼ ਕੋਡ ਦੇ ਨਿਯਮਾਂ ਦੇ ਆਧਾਰ &#39;ਤੇ ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਕਿ "
+"ਫ਼ੋਨ ਨੰਬਰ ਇੱਕ ਵੈਧ ਮੋਬਾਈਲ ਜਾਂ ਲੈਂਡਲਾਈਨ ਨੰਬਰ ਹੈ। ਇਹ ਵਿਕਲਪ "
+"<code>intl-tel-input</code> ਸਟੀਕ ਵੈਲੀਡੇਸ਼ਨ ਵਿਸ਼ੇਸ਼ਤਾ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ, ਜੋ "
+"ਕੁਝ ਫ਼ੋਨ ਨੰਬਰਾਂ ਲਈ ਗਲਤ ਸਕਾਰਾਤਮਕ ਨਤੀਜੇ ਦੇ ਸਕਦਾ ਹੈ।"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"ਇਹ ਇੱਕ ਪ੍ਰਯੋਗਾਤਮਕ ਵਿਸ਼ੇਸ਼ਤਾ ਹੈ ਅਤੇ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਸਾਰੇ ਸੈੱਟਅੱਪਾਂ ਵਿੱਚ ਉਮੀਦ "
+"ਅਨੁਸਾਰ ਕੰਮ ਨਾ ਕਰੇ। ਇਸਨੂੰ ਸਾਵਧਾਨੀ ਨਾਲ ਵਰਤੋ।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
