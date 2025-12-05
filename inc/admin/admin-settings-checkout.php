@@ -681,7 +681,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 					array(
 						'desc'              => __( 'Use precise phone number validation', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
-						'desc_tip'          => __( 'Ensure the phone number is a valid mobile or landline number for the selected country code.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html( true ),
+						'desc_tip'          => __( 'Try to ensure the phone number is a valid mobile or landline number based on the rules for the selected country code. This option uses the <code>intl-tel-input</code> precise validation feature, which may give false positives for some phone numbers.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://intl-tel-input.com/examples/validation.html' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html( true ),
 						'id'                => 'fc_pro_enable_international_phone_validation_precise',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
