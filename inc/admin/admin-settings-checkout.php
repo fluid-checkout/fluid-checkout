@@ -658,8 +658,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'             => __( 'International phone numbers', 'fluid-checkout' ),
-						'desc'              => __( 'Enable international phone number format and validation for phone fields', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Format and validate phone numbers according to each country.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-international-phone-numbers/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'Enable international phone number fields', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Format phone numbers according to the rules for each country.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-international-phone-numbers/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_international_phone_fields',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_fields' ),
@@ -680,8 +680,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'disabled'          => true,
 					),
 					array(
-						'desc'              => __( 'Enable precise phone number validation', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Use intl-tel-input\'s precise validation. Keep validation based on country rules enabled. For more details see the documentation.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-international-phone-numbers/' ),
+						'desc'              => __( 'Use precise phone number validation', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
+						'desc_tip'          => __( 'Ensure the phone number is a valid mobile or landline number for the selected country code.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html( true ),
 						'id'                => 'fc_pro_enable_international_phone_validation_precise',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
