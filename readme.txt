@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with plugin Nextend Social Login.
 * Added: Compatibility with plugin SUMO Subscriptions.
 * Added: Compatibility with plugin Shop as Client for WooCommerce (by Naked Cat Plugins).
 * Added: Compatibility with plugin WooCommerce Buy One Get One Free by Oscar Gare.
