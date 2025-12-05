@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-10-28 15:28+0000\n"
+"POT-Creation-Date: 2025-11-28 15:29+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -35,25 +35,25 @@ msgstr ""
 msgid "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:291
+#: inc/checkout-coupon-codes.php:297
 msgid "Enter your code here"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:292
+#: inc/checkout-coupon-codes.php:298
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
 msgstr ""
 
 #. translators: %s: Form field label
-#: inc/checkout-coupon-codes.php:328, inc/checkout-hide-optional-fields.php:141
+#: inc/checkout-coupon-codes.php:334, inc/checkout-hide-optional-fields.php:141
 msgid "Add %s"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:399
+#: inc/checkout-coupon-codes.php:405
 msgid "Remove"
 msgstr ""
 
-#: inc/checkout-coupon-codes.php:459, inc/admin/admin-notice-db-migrations-applied.php:60
+#: inc/checkout-coupon-codes.php:465, inc/admin/admin-notice-db-migrations-applied.php:60
 msgid "Dismiss"
 msgstr ""
 
@@ -77,145 +77,145 @@ msgstr ""
 msgid "Only used for shipping-related questions."
 msgstr ""
 
-#: inc/checkout-steps.php:806
+#: inc/checkout-steps.php:814
 msgid "Multi-step"
 msgstr ""
 
-#: inc/checkout-steps.php:807
+#: inc/checkout-steps.php:815
 msgid "Single step"
 msgstr ""
 
-#: inc/checkout-steps.php:978
+#: inc/checkout-steps.php:986
 msgid "Click to go to the order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:978
+#: inc/checkout-steps.php:986
 msgid "Cart total:"
 msgstr ""
 
 #. translators: Next checkout step title
-#: inc/checkout-steps.php:1710
+#: inc/checkout-steps.php:1718
 msgid "Proceed to %s"
 msgstr ""
 
-#: inc/checkout-steps.php:2242
+#: inc/checkout-steps.php:2250
 msgctxt "Checkout step title"
 msgid "Contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2243
+#: inc/checkout-steps.php:2251
 msgid "Proceed to contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2251
+#: inc/checkout-steps.php:2259
 msgctxt "Checkout step title"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:2252
+#: inc/checkout-steps.php:2260
 msgid "Proceed to shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:2263
+#: inc/checkout-steps.php:2271
 msgctxt "Checkout step title"
 msgid "Billing"
 msgstr ""
 
-#: inc/checkout-steps.php:2264
+#: inc/checkout-steps.php:2272
 msgid "Proceed to billing"
 msgstr ""
 
-#: inc/checkout-steps.php:2272
+#: inc/checkout-steps.php:2280
 msgctxt "Checkout step title"
 msgid "Payment"
 msgstr ""
 
-#: inc/checkout-steps.php:2273
+#: inc/checkout-steps.php:2281
 msgid "Proceed to payment"
 msgstr ""
 
-#: inc/checkout-steps.php:2284
+#: inc/checkout-steps.php:2292
 msgid "My contact"
 msgstr ""
 
-#: inc/checkout-steps.php:2294
+#: inc/checkout-steps.php:2302
 msgid "Shipping to"
 msgstr ""
 
-#: inc/checkout-steps.php:2304
+#: inc/checkout-steps.php:2312
 msgid "Shipping method"
 msgstr ""
 
-#: inc/checkout-steps.php:2314
+#: inc/checkout-steps.php:2322
 msgid "Additional notes"
 msgstr ""
 
-#: inc/checkout-steps.php:2328
+#: inc/checkout-steps.php:2336
 msgid "Billing to"
 msgstr ""
 
-#: inc/checkout-steps.php:2338
+#: inc/checkout-steps.php:2346
 msgid "Payment method"
 msgstr ""
 
 #. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
-#: inc/checkout-steps.php:2581
+#: inc/checkout-steps.php:2589
 msgid "Step %1$s of %2$s"
 msgstr ""
 
 #. translators: %s: Substep title.
-#: inc/checkout-steps.php:2883
+#: inc/checkout-steps.php:2891
 msgid "Change: %s"
 msgstr ""
 
-#: inc/checkout-steps.php:2883
+#: inc/checkout-steps.php:2891
 msgctxt "Checkout substep change link label"
 msgid "Change"
 msgstr ""
 
-#: inc/checkout-steps.php:2884
+#: inc/checkout-steps.php:2892
 msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
 
-#: inc/checkout-steps.php:3016
+#: inc/checkout-steps.php:3024
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:3285
+#: inc/checkout-steps.php:3293
 msgid "An account will be created with the information provided at checkout when completing the order."
 msgstr ""
 
 #. translators: Substep review field format
-#: inc/checkout-steps.php:3573
+#: inc/checkout-steps.php:3581
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3578
+#: inc/checkout-steps.php:3586
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:4002, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+#: inc/checkout-steps.php:4010, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr ""
 
-#: inc/checkout-steps.php:4811
+#: inc/checkout-steps.php:4819
 msgid "Same as shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:4856
+#: inc/checkout-steps.php:4864
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:6127, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:260, inc/admin/admin-settings-order-received.php:186
+#: inc/checkout-steps.php:6141, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:260, inc/admin/admin-settings-order-received.php:186
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:6192, templates/fc/checkout-steps/checkout/review-order-section.php:58
+#: inc/checkout-steps.php:6206, templates/fc/checkout-steps/checkout/review-order-section.php:58
 msgid "Edit cart"
 msgstr ""
 
@@ -1065,7 +1065,7 @@ msgstr ""
 msgid "Select position where to display the coupon codes section on the checkout page."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:402
+#: inc/admin/admin-settings-checkout.php:402, inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:79
 msgid "Before the checkout steps"
 msgstr ""
 
@@ -1810,6 +1810,30 @@ msgstr ""
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:175
 msgid "When enabled, the checkbox will be moved to the contact step independently of the display location defined in the Sendinblue plugin settings."
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
 msgstr ""
 
 #. translators: %s shipping destination.

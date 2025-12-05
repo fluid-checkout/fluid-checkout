@@ -2457,6 +2457,30 @@ msgstr ""
 "دا ډاډ ورکوي چې د WooCommerce پاڼو کې د منځپانګې برخه ډیره تنګه نه ده، "
 "پشمول د چیک آوټ، کارټ، ترلاسه شوي امر، د امر تادیه او حساب پاڼې."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "د وو کامرس سمارټ کوپنونه"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "د چیک آوټ پاڼې موقعیت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "د چیک آوټ پاڼې کې د شته کوپنونو برخه چیرته ښکاره کړئ غوره کړئ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "د پرمختګ بار څخه مخکې"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "د پرمختګ بار وروسته"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "د کوپن کوډونو برخه مخکې"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

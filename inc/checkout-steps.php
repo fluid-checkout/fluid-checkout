@@ -106,6 +106,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Needs to be called in multiple places for compatibility with 3rd-party plugins
 		// that move these hooks to other positions or call them early.
 		$this->checkout_form_hooks();
+		add_action( 'woocommerce_checkout_init', array( $this, 'checkout_form_hooks' ), 1 );
 
 		// Notices
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -264,8 +265,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function checkout_form_hooks() {
 		// Unhook WooCommerce functions
-		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		if ( doing_action( 'woocommerce_checkout_init' ) || did_action( 'woocommerce_checkout_init' ) ) {
+			remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
+			remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		}
+
+		// Unhook other hooks
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
@@ -444,6 +449,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Checkout steps
 		// Do not undo checkout step registration hooks, because steps meta data might be needed by other plugins
 		remove_action( 'fc_checkout_steps', array( $this, 'output_checkout_steps' ), 10 );
+
+		// Checkout form hooks
+		remove_action( 'woocommerce_checkout_init', array( $this, 'checkout_form_hooks' ), 1 );
 
 		// Notices
 		remove_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_notices_wrapper_start_tag' ), 5 );
@@ -748,7 +756,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-checkout-steps', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-steps' ), array( 'jquery', 'wc-checkout', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);})' );
+		wp_add_inline_script( 'fc-checkout-steps', 'window.addEventListener("load",function(){CheckoutSteps.init(fcSettings.checkoutSteps);});' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-layout', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-layout' ), NULL, NULL );
@@ -4943,7 +4951,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_billing( $shipping_country );
 		}
 
-		return null;
+		// Return `true` when shipping country is not set
+		// This allows the checkbox "same as billing address" to be displayed,
+		// and other validation rules will ensure the shipping address is correctly set.
+		return true;
 	}
 
 	/**
@@ -4982,7 +4993,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->is_country_allowed_for_shipping( $billing_country );
 		}
 
-		return null;
+		// Return `true` when billing country is not set
+		// This allows the checkbox "same as billing address" to be displayed,
+		// and other validation rules will ensure the billing address is correctly set.
+		return true;
 	}
 
 	/**
@@ -6478,8 +6492,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Product  $product        The product object.
 	 */
 	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
-		// CHANGE: Remove no-break-space from the end of the product name
-		echo apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// CHANGE: Remove no-break-space from the end of the product name, add wrapper for the product name
+		echo '<div class="cart-item__element cart-item__name">' . apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**

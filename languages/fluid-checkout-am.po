@@ -2330,6 +2330,30 @@ msgstr ""
 "ይህ በ WooCommerce ገፆች ላይ የይዘት ክፍሉ በጣም ጠባብ እንዳልሆነ ያረጋግጣል፣ ቼክ መውጫ፣ ጋሪ፣ የተቀበሉት "
 "ትዕዛዝ፣ ክፍያ ማዘዣ እና የመለያ ገጾች።"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce ስማርት ኩፖኖች"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "በቼክ መውጫ ገጽ ላይ አቀማመጥ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "በቼክ መውጫ ገጹ ላይ ያለውን የኩፖኖች ክፍል የት እንደሚታይ ይምረጡ።"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ከሂደቱ አሞሌ በፊት"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ከሂደት አሞሌ በኋላ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ከኩፖን ኮዶች ክፍል በፊት"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
