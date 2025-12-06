@@ -1523,16 +1523,6 @@ msgstr "చెక్అవుట్ ఫారమ్‌కు బిల్లి�
 msgid "Choose in which step to display the billing phone field."
 msgstr "బిల్లింగ్ ఫోన్ ఫీల్డ్‌ను ఏ దశలో ప్రదర్శించాలో ఎంచుకోండి."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ఫోన్ ఫీల్డ్‌ల కోసం అంతర్జాతీయ ఫోన్ నంబర్ ఫార్మాట్ మరియు ధ్రువీకరణను "
-"ప్రారంభించండి."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ప్రతి దేశం ప్రకారం ఫోన్ నంబర్‌లను ఫార్మాట్ చేయండి మరియు ధృవీకరించండి."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "దేశ నియమాల ఆధారంగా ఫోన్ నంబర్ ధ్రువీకరణను ప్రారంభించండి"
@@ -1959,14 +1949,6 @@ msgstr "(ప్రో)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(ప్రయోగాత్మక)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"ఇది ఒక ప్రయోగాత్మక ఫీచర్ మరియు అన్ని థీమ్‌లు మరియు ప్లగిన్‌లతో ఆశించిన "
-"విధంగా పని చేయకపోవచ్చు. దీన్ని జాగ్రత్తగా ఉపయోగించండి."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2528,6 +2510,38 @@ msgstr "ప్రోగ్రెస్ బార్ తర్వాత"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "కూపన్ కోడ్‌ల విభాగానికి ముందు"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "అంతర్జాతీయ ఫోన్ నంబర్ ఫీల్డ్‌లను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ప్రతి దేశ నియమాల ప్రకారం ఫోన్ నంబర్‌లను ఫార్మాట్ చేయండి."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "ఖచ్చితమైన ఫోన్ నంబర్ వాలిడేషన్‌ను ఉపయోగించండి"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"ఎంచుకున్న దేశ కోడ్ నియమాల ఆధారంగా ఫోన్ నంబర్ చెల్లుబాటు అయ్యే మొబైల్ లేదా "
+"ల్యాండ్‌లైన్ నంబర్ అని నిర్ధారించుకోవడానికి ప్రయత్నించండి. ఈ ఎంపిక "
+"<code>intl-tel-input</code> ఖచ్చితమైన ధ్రువీకరణ లక్షణాన్ని ఉపయోగిస్తుంది, "
+"ఇది కొన్ని ఫోన్ నంబర్‌లకు తప్పుడు పాజిటివ్‌లను ఇవ్వవచ్చు."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"ఇది ఒక ప్రయోగాత్మక ఫీచర్ మరియు అన్ని సెటప్‌లలో ఆశించిన విధంగా పని "
+"చేయకపోవచ్చు. దీన్ని జాగ్రత్తగా ఉపయోగించండి."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

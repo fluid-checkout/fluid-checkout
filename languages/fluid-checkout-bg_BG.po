@@ -1540,16 +1540,6 @@ msgstr "Добавяне на поле за телефон за фактурир
 msgid "Choose in which step to display the billing phone field."
 msgstr "Изберете в коя стъпка да се показва полето за телефон за фактуриране."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Активиране на формата за международен телефонен номер и валидиране на "
-"полетата за телефон"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Форматиране и валидиране на телефонни номера в зависимост от страната."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr ""
@@ -1992,14 +1982,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(експериментално)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Това е експериментална функция и е възможно да не работи според очакванията "
-"с всички теми и плъгини. Използвайте я с повишено внимание."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2572,6 +2554,39 @@ msgstr "След лентата за напредък"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Преди раздел кодове на купони"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Активиране на полета за международни телефонни номера"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Форматирайте телефонните номера в съответствие с правилата за всяка страна."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Използвайте точно валидиране на телефонния номер"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Опитайте се да се уверите, че телефонният номер е валиден мобилен или "
+"стационарен номер в съответствие с правилата за избрания код на страната. "
+"Тази опция използва функцията за прецизно валидиране "
+"<code>intl-tel-input</code>, която може да даде фалшиви положителни "
+"резултати за някои телефонни номера."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Това е експериментална функция и е възможно да не работи според очакванията "
+"при всички настройки. Използвайте я с повишено внимание."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1520,16 +1520,6 @@ msgstr "Pridanie poľa fakturačného telefónu do formulára pokladnice."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Vyberte, v ktorom kroku sa má zobraziť pole fakturačného telefónu."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Povolenie medzinárodného formátu telefónneho čísla a overovanie polí "
-"telefónu"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formátovať a overovať telefónne čísla podľa jednotlivých krajín."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Povolenie overovania telefónnych čísel na základe pravidiel krajiny"
@@ -1961,14 +1951,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(experimentálne)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ide o experimentálnu funkciu, ktorá nemusí fungovať podľa očakávaní so "
-"všetkými témami a doplnkami. Používajte ju opatrne."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2528,6 +2510,39 @@ msgstr "Po zobrazení ukazovateľa priebehu"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Pred sekciou kódov kupónov"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Povolenie polí s medzinárodnými telefónnymi číslami"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formátujte telefónne čísla podľa pravidiel jednotlivých krajín."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Používajte presné overovanie telefónnych čísel"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Pokúste sa uistiť, že telefónne číslo je platné číslo mobilného telefónu "
+"alebo pevnej linky na základe pravidiel pre vybraný kód krajiny. Táto "
+"možnosť využíva funkciu presného overovania <code>intl-tel-input</code>, "
+"ktorá môže v prípade niektorých telefónnych čísel poskytovať falošne "
+"pozitívne výsledky."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ide o experimentálnu funkciu, ktorá nemusí vo všetkých nastaveniach "
+"fungovať podľa očakávania. Používajte ju opatrne."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

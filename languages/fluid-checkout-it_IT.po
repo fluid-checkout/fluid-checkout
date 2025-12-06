@@ -1013,12 +1013,6 @@ msgstr "Abilita la modalità scura"
 msgid "Enable integrated coupon code section"
 msgstr "Abilita la sezione Codici coupon integrata"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Abilitare il formato del numero di telefono internazionale e la convalida "
-"per i campi del telefono"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Abilita il controllo dell'indirizzo e-mail: (funzione disabilitata)"
@@ -1156,10 +1150,6 @@ msgid "Force billing and shipping addresses to the same (single section)"
 msgstr ""
 "Forzare gli indirizzi di fatturazione e di spedizione allo stesso indirizzo "
 "(sezione singola)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formattare e convalidare i numeri di telefono in base a ciascun Paese."
 
 #: inc/admin/admin-settings-checkout.php:90
 msgid ""
@@ -2339,14 +2329,6 @@ msgstr "Questo campo non corrisponde al valore del campo correlato."
 msgid "This is a required field."
 msgstr "Questo campo è obbligatorio."
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Si tratta di una funzione sperimentale e potrebbe non funzionare come "
-"previsto con tutti i temi e i plugin. Utilizzatela con cautela."
-
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
 msgstr "Questo non è un indirizzo e-mail valido."
@@ -2758,6 +2740,39 @@ msgstr "Dopo la barra di avanzamento"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Prima della sezione codici coupon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Abilitare i campi dei numeri di telefono internazionali"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formattare i numeri di telefono secondo le regole di ciascun Paese."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Utilizzare una convalida precisa del numero di telefono"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Cerca di verificare che il numero di telefono sia un numero di cellulare o "
+"di rete fissa valido, in base alle regole del codice paese selezionato. "
+"Questa opzione utilizza la funzione di convalida precisa "
+"<code>intl-tel-input</code>, che può dare falsi positivi per alcuni numeri "
+"di telefono."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Si tratta di una funzione sperimentale che potrebbe non funzionare come "
+"previsto in tutte le configurazioni. Utilizzatela con cautela."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

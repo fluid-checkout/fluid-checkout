@@ -993,12 +993,6 @@ msgstr "Ενεργοποίηση σκοτεινής λειτουργίας"
 msgid "Enable integrated coupon code section"
 msgstr "Ενεργοποιήστε την ενότητα με τον ενσωματωμένο κωδικό κουπονιού"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Ενεργοποίηση της μορφής και της επικύρωσης διεθνών τηλεφωνικών αριθμών για "
-"τα πεδία τηλεφώνου"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Ενεργοποίηση ελέγχου αλληλογραφίας: (απενεργοποιημένη λειτουργία)"
@@ -1134,10 +1128,6 @@ msgid "Force billing and shipping addresses to the same (single section)"
 msgstr ""
 "Αναγκάστε τις διευθύνσεις χρέωσης και αποστολής να είναι ίδιες (ενιαίο "
 "τμήμα)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Μορφοποίηση και επικύρωση τηλεφωνικών αριθμών σύμφωνα με κάθε χώρα."
 
 #: inc/admin/admin-settings-checkout.php:90
 msgid ""
@@ -2315,15 +2305,6 @@ msgstr "Αυτό το πεδίο δεν ταιριάζει με την τιμή 
 msgid "This is a required field."
 msgstr "Αυτό το πεδίο είναι υποχρεωτικό."
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Πρόκειται για μια πειραματική λειτουργία και ενδέχεται να μην λειτουργεί "
-"όπως αναμένεται με όλα τα θέματα και τα πρόσθετα. Χρησιμοποιήστε το με "
-"προσοχή."
-
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
 msgstr "Αυτή δεν είναι έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
@@ -2739,6 +2720,39 @@ msgstr "Μετά τη γραμμή προόδου"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Πριν από το τμήμα κωδικών κουπονιών"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Ενεργοποίηση πεδίων διεθνών τηλεφωνικών αριθμών"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Μορφοποιήστε τους τηλεφωνικούς αριθμούς σύμφωνα με τους κανόνες κάθε χώρας."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Χρησιμοποιήστε ακριβή επικύρωση αριθμού τηλεφώνου"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Προσπαθήστε να βεβαιωθείτε ότι ο αριθμός τηλεφώνου είναι έγκυρος αριθμός "
+"κινητής ή σταθερής τηλεφωνίας με βάση τους κανόνες για τον επιλεγμένο "
+"κωδικό χώρας. Αυτή η επιλογή χρησιμοποιεί τη λειτουργία ακριβούς επικύρωσης "
+"<code>intl-tel-input</code>, η οποία ενδέχεται να δώσει ψευδώς θετικά "
+"αποτελέσματα για ορισμένους τηλεφωνικούς αριθμούς."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Αυτή είναι μια πειραματική λειτουργία και ενδέχεται να μην λειτουργεί όπως "
+"αναμένεται σε όλες τις ρυθμίσεις. Χρησιμοποιήστε το με προσοχή."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

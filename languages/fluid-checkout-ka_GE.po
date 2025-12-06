@@ -1517,16 +1517,6 @@ msgstr "დაამატეთ ბილინგის ტელეფონ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "აირჩიეთ, რომელ საფეხურზე გამოჩნდეს ბილინგის ტელეფონის ველი."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ჩართეთ საერთაშორისო ტელეფონის ნომრის ფორმატი და დადასტურება ტელეფონის "
-"ველებისთვის"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "დააფორმატეთ და დაადასტურეთ ტელეფონის ნომრები თითოეული ქვეყნის მიხედვით."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "ჩართეთ ტელეფონის ნომრის ვალიდაცია ქვეყნის წესების მიხედვით"
@@ -1958,14 +1948,6 @@ msgstr "(პროფ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(ექსპერიმენტული)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"ეს არის ექსპერიმენტული ფუნქცია და შეიძლება არ იმუშაოს ისე, როგორც "
-"მოსალოდნელია ყველა თემასთან და დანამატთან. გამოიყენეთ იგი სიფრთხილით."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2529,6 +2511,38 @@ msgstr "პროგრესის ზოლის შემდეგ"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "კუპონის კოდების განყოფილებამდე"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "ჩართეთ საერთაშორისო ტელეფონის ნომრის ველები"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ტელეფონის ნომრების ფორმატირება თითოეული ქვეყნის წესების შესაბამისად."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "გამოიყენეთ ტელეფონის ნომრის ზუსტი დადასტურება"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"დარწმუნდით, რომ ტელეფონის ნომერი სწორი მობილური ან სახმელეთო ნომერია "
+"არჩეული ქვეყნის კოდის წესების მიხედვით. ეს პარამეტრი იყენებს "
+"<code>intl-tel-input</code> ზუსტი დადასტურების ფუნქციას, რომელმაც შეიძლება "
+"ზოგიერთი ტელეფონის ნომრისთვის ცრუ დადებითი შედეგი გამოიღოს."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"ეს ექსპერიმენტული ფუნქციაა და შესაძლოა ყველა პარამეტრში მოსალოდნელზე კარგად "
+"არ იმუშაოს. გამოიყენეთ იგი სიფრთხილით."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

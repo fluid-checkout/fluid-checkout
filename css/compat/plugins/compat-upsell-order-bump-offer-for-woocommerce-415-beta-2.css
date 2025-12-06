@@ -1,0 +1,27 @@
+.fc-wrapper .wps_upsell_offer_main_wrapper {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.fc-wrapper #fc-checkout-order-review .wrapup_order_bump {
+  margin-top: 20px !important;
+}
+
+@media (max-width: 749px) {
+  .fc-wrapper .fc-sidebar__inner > .wrapup_order_bump {
+    margin: 20px 0 !important;
+  }
+}
+
+.fc-wrapper .fc-substep__fields--payment .wrapup_order_bump {
+  margin-bottom: 20px !important;
+}
+
+.fc-wrapper .fc-substep__fields--payment .woocommerce-checkout-payment ~ .wrapup_order_bump {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+}
+
+.fc-wrapper .fc-place-order__section .wrapup_order_bump {
+  margin-bottom: 20px !important;
+}
