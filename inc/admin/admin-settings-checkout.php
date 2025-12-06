@@ -686,7 +686,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'disabled'          => true,
 					),
 					array(
-						'desc'              => __( 'Phone number validation types used when precise validation is enabled', 'fluid-checkout' ),
+						'desc'              => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_international_phone_validation_precise_types',
 						'type'              => 'fc_multiselect',
 						'class'             => 'chosen_select wp-enhanced-select',
