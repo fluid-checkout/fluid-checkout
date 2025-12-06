@@ -232,9 +232,9 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 *
 	 * @param   string  $phone_number  The phone number to validate.
 	 */
-	public function is_valid_phone_number( $phone_number ) {
+	public function is_valid_phone_number( $phone_number, $key = null, $args = null ) {
 		$is_valid = WC_Validation::is_phone( $phone_number );
-		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number );
+		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number, $key, $args );
 	}
 
 
@@ -305,7 +305,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		}
 
 		// Validate phone fields
-		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! $this->is_valid_phone_number( $value ) ) {
+		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! $this->is_valid_phone_number( $value, $key, $args ) ) {
 			$field_valid = false;
 			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-phone' ) );
 		}
