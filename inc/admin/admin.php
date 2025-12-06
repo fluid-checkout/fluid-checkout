@@ -102,6 +102,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
