@@ -231,10 +231,14 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * Checks whether a phone number is valid.
 	 *
 	 * @param   string  $phone_number  The phone number to validate.
+	 * @param   string  $field_key     The field key.
+	 * @param   array   $field_args    The field args.
+	 *
+	 * @return  boolean                 Whether the phone number is valid.
 	 */
-	public function is_valid_phone_number( $phone_number, $key = null, $args = null ) {
+	public function is_valid_phone_number( $phone_number, $field_key = null, $field_args = null ) {
 		$is_valid = WC_Validation::is_phone( $phone_number );
-		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number, $key, $args );
+		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number, $field_key, $field_args );
 	}
 
 
