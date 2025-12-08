@@ -44,7 +44,8 @@
 
 	$( function() {
 		fcItalianAddOn.init();
-		$( 'body' ).on( 'updated_checkout', fcItalianAddOn.init );
+		$( 'body' ).on( 'updated_checkout' + fcItalianAddOn.namespace, fcItalianAddOn.init );
+		$( 'body' ).on( 'fc_fragments_refreshed' + fcItalianAddOn.namespace, fcItalianAddOn.init );
 	} );
 
 } )( jQuery );
