@@ -598,13 +598,15 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   opacity: 0.5;
 }
 
-.fc-contact-login__separator {
+.fc-contact-login__separator,
+.fc-contact-login__social-login-separator {
   position: relative;
   margin-bottom: 30px;
   text-align: center;
 }
 
-.fc-contact-login__separator:before {
+.fc-contact-login__separator:before,
+.fc-contact-login__social-login-separator:before {
   z-index: 1;
   content: "";
   position: absolute;
@@ -615,7 +617,8 @@ body.woocommerce-checkout form.woocommerce-checkout .fc-wrapper .fc-step__subste
   background-color: var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
 }
 
-.fc-contact-login__separator-text {
+.fc-contact-login__separator-text,
+.fc-contact-login__social-login-separator-text {
   z-index: 10;
   position: relative;
   display: inline-block;

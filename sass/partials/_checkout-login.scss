@@ -69,14 +69,15 @@
 	opacity: .5;
 }
 
-
-
-.fc-contact-login__separator {
+.fc-contact-login__separator, 
+.fc-contact-login__social-login-separator {
 	position: relative;
 	margin-bottom: $global-spacing;
 	text-align: center;
 }
-.fc-contact-login__separator:before {
+
+.fc-contact-login__separator:before, 
+.fc-contact-login__social-login-separator:before {
 	z-index: z( 'default' );
 	content: '';
 	position: absolute;
@@ -87,7 +88,8 @@
 	background-color: $border-color;
 }
 
-.fc-contact-login__separator-text {
+.fc-contact-login__separator-text, 
+.fc-contact-login__social-login-separator-text {
 	z-index: z( 'above' );
 	position: relative;
 	display: inline-block;
