@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certains 3rd-party plugins.
+
 = 4.1.4 - 2025-12-05 =
 
 * Bump tested up to WordPress 6.9 and WooCommerce 10.3.6
