@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: New filter `fc_mailcheck_suggestion_message` to allow changing the Mailcheck email typo suggestion message.
+
 = 4.1.4 - 2025-12-05 =
 
 * Bump tested up to WordPress 6.9 and WooCommerce 10.3.6
