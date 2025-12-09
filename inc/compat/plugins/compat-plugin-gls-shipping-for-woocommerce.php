@@ -118,11 +118,11 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-gls-shipping-for-woocommerce', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/gls-shipping-for-woocommerce/checkout-gls-shipping-for-woocommerce' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutGLSShippingForWooCommerce.init(fcSettings.checkoutGLSShippingForWooCommerce);})' );
+		wp_add_inline_script( 'fc-checkout-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutGLSShippingForWooCommerce.init(fcSettings.checkoutGLSShippingForWooCommerce);});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/gls-shipping-for-woocommerce/checkout-validation-gls-shipping-for-woocommerce' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutValidationGLSShippingForWooCommerce.init(fcSettings.checkoutValidationGLSShippingForWooCommerce);})' );
+		wp_add_inline_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutValidationGLSShippingForWooCommerce.init(fcSettings.checkoutValidationGLSShippingForWooCommerce);});' );
 	}
 
 	/**

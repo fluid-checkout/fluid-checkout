@@ -1542,16 +1542,6 @@ msgstr "Afegiu el camp del telèfon de facturació al formulari de pagament."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Trieu en quin pas voleu mostrar el camp del telèfon de facturació."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Activa el format de número de telèfon internacional i la validació dels "
-"camps de telèfon"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formateu i valideu els números de telèfon segons cada país."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Activa la validació del número de telèfon segons les regles del país"
@@ -1997,15 +1987,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(experimental)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Aquesta és una característica experimental i és possible que no funcioni "
-"com s&#39;esperava amb tots els temes i connectors. Utilitzeu-lo amb "
-"precaució."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2549,6 +2530,64 @@ msgstr ""
 "Això garanteix que la secció de contingut no sigui massa estreta a les "
 "pàgines de WooCommerce, incloses les pàgines de pagament, cistella de la "
 "compra, comanda rebuda, pagament de la comanda i compte."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Cupons intel·ligents de WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posició a la pàgina de pagament"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Trieu on voleu que es mostri la secció de cupons disponibles a la pàgina de "
+"pagament."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Abans de la barra de progrés"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Després de la barra de progrés"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Abans de la secció de codis de cupó"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Habilita els camps de números de telèfon internacionals"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formata els números de telèfon segons les normes de cada país."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Utilitza una validació precisa del número de telèfon"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Intenta assegurar-te que el número de telèfon sigui un número de mòbil o "
+"fix vàlid segons les regles del codi de país seleccionat. Aquesta opció "
+"utilitza la funció de validació precisa <code>intl-tel-input</code> , que "
+"pot donar falsos positius per a alguns números de telèfon."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Aquesta és una funció experimental i és possible que no funcioni com "
+"s&#39;espera en totes les configuracions. Feu-la servir amb precaució."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

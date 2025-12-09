@@ -1522,16 +1522,6 @@ msgstr "Ongeza sehemu ya simu ya bili kwenye fomu ya kulipa."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Chagua katika hatua gani ya kuonyesha sehemu ya simu ya bili."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Washa umbizo la nambari ya simu ya kimataifa na uthibitishaji kwa sehemu za "
-"simu"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Fomati na uthibitishe nambari za simu kulingana na kila nchi."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Washa uthibitishaji wa nambari ya simu kulingana na sheria za nchi"
@@ -1963,14 +1953,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(majaribio)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Hiki ni kipengele cha majaribio na huenda kisifanye kazi inavyotarajiwa na "
-"mandhari na programu-jalizi zote. Itumie kwa tahadhari."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2512,6 +2494,64 @@ msgstr ""
 "Hii inahakikisha kuwa sehemu ya maudhui si finyu sana kwenye kurasa za "
 "WooCommerce ikijumuisha malipo, rukwama, agizo lililopokelewa, malipo ya "
 "agizo na kurasa za akaunti."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Kuponi za WooCommerce Smart"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Nafasi kwenye ukurasa wa malipo"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Chagua mahali pa kuonyesha sehemu ya kuponi zinazopatikana kwenye ukurasa "
+"wa malipo."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Kabla ya bar ya maendeleo"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Baada ya bar ya maendeleo"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Kabla ya sehemu ya misimbo ya kuponi"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Washa sehemu za nambari za simu za kimataifa"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Fomati nambari za simu kulingana na sheria za kila nchi."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Tumia uthibitishaji sahihi wa nambari ya simu"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Jaribu kuhakikisha kuwa nambari ya simu ni nambari halali ya rununu au ya "
+"mezani kulingana na sheria za msimbo wa nchi uliochaguliwa. Chaguo hili "
+"hutumia kipengele cha uthibitishaji sahihi <code>intl-tel-input</code> , "
+"ambacho kinaweza kutoa chanya za uwongo kwa baadhi ya nambari za simu."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Hiki ni kipengele cha majaribio na huenda kisifanye kazi inavyotarajiwa "
+"katika usanidi wote. Itumie kwa tahadhari."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

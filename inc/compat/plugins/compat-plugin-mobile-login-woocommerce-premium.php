@@ -580,11 +580,11 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-mobile-login-woocommerce-premium', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/checkout-mobile-login-woocommerce-premium' ), array( 'jquery', 'fc-utils' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutMobileLoginWoocommercePremium.init(fcSettings.checkoutMobileLoginWoocommercePremium);})' );
+		wp_add_inline_script( 'fc-checkout-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutMobileLoginWoocommercePremium.init(fcSettings.checkoutMobileLoginWoocommercePremium);});' );
 
 		// Validation scripts
 		wp_register_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/checkout-validation-mobile-login-woocommerce-premium' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutValidationMobileLoginWoocommercePremium.init(fcSettings.checkoutValidationMobileLoginWoocommercePremium);})' );
+		wp_add_inline_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutValidationMobileLoginWoocommercePremium.init(fcSettings.checkoutValidationMobileLoginWoocommercePremium);});' );
 	}
 
 	/**

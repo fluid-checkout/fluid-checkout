@@ -1524,16 +1524,6 @@ msgstr "Foegje fakturearring tillefoanfjild ta oan it kassaformulier."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Kies yn hokker stap om it faktuertillefoanfjild wer te jaan."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Ynskeakelje ynternasjonaal telefoannûmer opmaak en falidaasje foar telefoan "
-"fjilden"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Opmaak en falidearje telefoannûmers neffens elk lân."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Ynskeakelje telefoannûmer falidaasje basearre op lân regels"
@@ -1963,14 +1953,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperiminteel)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dit is in eksperimintele funksje en wurket miskien net lykas ferwachte mei "
-"alle tema&#39;s en plugins. Brûk it mei foarsichtigens."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2512,6 +2494,64 @@ msgstr ""
 "Dit soarget derfoar dat de ynhâldsseksje net te smel is op "
 "WooCommerce-siden, ynklusyf de siden foar kassa, winkelwein, ûntfongen "
 "bestelling, beteljen fan bestelling en akkount."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Smart Coupons"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posysje op &#39;e kassaside"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Kies wêr&#39;t jo de beskikbere coupons-seksje op &#39;e kassa-side werjaan "
+"wolle."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Foar de foarútgongsbalke"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Nei de foarútgongsbalke"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Foarôfgeand oan de seksje koartingskoades"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Ynternasjonale tillefoannûmerfjilden ynskeakelje"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatearje tillefoannûmers neffens de regels foar elk lân."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Brûk krekte tillefoannûmerfalidaasje"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Besykje te soargjen dat it tillefoannûmer in jildich mobyl- of fêste "
+"linenûmer is basearre op &#39;e regels foar de selektearre lânkoade. Dizze "
+"opsje brûkt de krekte falidaasjefunksje <code>intl-tel-input</code> , "
+"dy&#39;t foar guon tillefoannûmers falske positive resultaten kin jaan."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Dit is in eksperimintele funksje en wurket miskien net sa as ferwachte yn "
+"alle opstellingen. Brûk it mei foarsichtigens."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

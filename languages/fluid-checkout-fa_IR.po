@@ -1489,14 +1489,6 @@ msgstr "فیلد تلفن صورت‌حساب را به فرم پرداخت اض
 msgid "Choose in which step to display the billing phone field."
 msgstr "انتخاب کنید که در کدام مرحله فیلد تلفن صورتحساب نمایش داده شود."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "قالب شماره تلفن بین‌المللی و اعتبارسنجی فیلدهای تلفن را فعال کنید"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "شماره تلفن ها را بر اساس هر کشور قالب بندی و اعتبار سنجی کنید."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "تأیید اعتبار شماره تلفن را بر اساس قوانین کشور فعال کنید"
@@ -1919,14 +1911,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجربی)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"این یک ویژگی آزمایشی است و ممکن است آنطور که انتظار می رود با همه تم ها و "
-"افزونه ها کار نکند. با احتیاط از آن استفاده کنید."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2454,6 +2438,62 @@ msgid ""
 msgstr ""
 "این تضمین می‌کند که بخش محتوا در صفحات ووکامرس، از جمله صفحات پرداخت، سبد "
 "خرید، سفارش دریافتی، پرداخت سفارش و حساب کاربری، خیلی محدود نباشد."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "کوپن‌های هوشمند ووکامرس"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "موقعیت در صفحه پرداخت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "انتخاب کنید که بخش کوپن‌های موجود در صفحه پرداخت کجا نمایش داده شود."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "قبل از نوار پیشرفت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "بعد از نوار پیشرفت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "قبل از بخش کدهای تخفیف"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "فعال کردن فیلدهای شماره تلفن بین‌المللی"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "شماره تلفن‌ها را طبق قوانین هر کشور قالب‌بندی کنید."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "از اعتبارسنجی دقیق شماره تلفن استفاده کنید"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"سعی کنید مطمئن شوید که شماره تلفن، بر اساس قوانین مربوط به کد کشور انتخاب "
+"شده، یک شماره تلفن همراه یا ثابت معتبر است. این گزینه از ویژگی اعتبارسنجی "
+"دقیق <code>intl-tel-input</code> استفاده می‌کند که ممکن است برای برخی از "
+"شماره تلفن‌ها، نتایج مثبت کاذب ارائه دهد."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"این یک ویژگی آزمایشی است و ممکن است در همه تنظیمات آنطور که انتظار می‌رود "
+"کار نکند. با احتیاط از آن استفاده کنید."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

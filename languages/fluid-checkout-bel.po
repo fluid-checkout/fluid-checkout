@@ -1530,14 +1530,6 @@ msgstr "Дадайце поле тэлефона для аплаты ў форм
 msgid "Choose in which step to display the billing phone field."
 msgstr "Выберыце, на якім этапе адлюстроўваць поле тэлефона для аплаты."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Уключыць міжнародны фармат тэлефоннага нумара і праверку для палёў тэлефона"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Фарматуйце і спраўджвайце нумары тэлефонаў у адпаведнасці з кожнай краінай."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Уключыце праверку нумара тэлефона ў адпаведнасці з правіламі краіны"
@@ -1972,14 +1964,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(эксперыментальны)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Гэта эксперыментальная функцыя, і яна можа не працаваць належным чынам з "
-"усімі тэмамі і ўбудовамі. Выкарыстоўвайце яго з асцярожнасцю."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2515,6 +2499,65 @@ msgstr ""
 "Гэта гарантуе, што раздзел зместу на старонках WooCommerce, уключаючы "
 "афармленне замовы, кошык, атрыманне замовы, аплату замовы і старонкі "
 "ўліковага запісу, не будзе занадта вузкім."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Разумныя купоны WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Пазіцыя на старонцы афармлення замовы"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Выберыце, дзе на старонцы афармлення замовы адлюстроўваць раздзел даступных "
+"купонаў."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Перад індыкатарам прагрэсу"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Пасля індыкатара прагрэсу"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Раздзел перад кодамі купонаў"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Уключыць палі міжнародных нумароў тэлефонаў"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Фарматуйце нумары тэлефонаў у адпаведнасці з правіламі кожнай краіны."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Выкарыстоўвайце праверку дакладнага нумара тэлефона"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Паспрабуйце пераканацца, што нумар тэлефона з&#39;яўляецца сапраўдным "
+"нумарам мабільнага або стацыянарнага тэлефона ў адпаведнасці з правіламі "
+"для выбранага кода краіны. Гэтая опцыя выкарыстоўвае функцыю дакладнай "
+"праверкі <code>intl-tel-input</code> , якая можа даваць ілжывыя "
+"спрацоўванні для некаторых нумароў тэлефонаў."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Гэта эксперыментальная функцыя, і яна можа працаваць неналежным чынам ва "
+"ўсіх наладах. Выкарыстоўвайце яе асцярожна."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
