@@ -82,11 +82,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_international_phone_fields'                      => 'no',
 			'fc_pro_enable_international_phone_validation'                  => 'no',
 			'fc_pro_enable_international_phone_validation_precise'          => 'no',
-<<<<<<< HEAD
 			'fc_pro_international_phone_validation_non_obtrusive'           => 'no',
-=======
 			'fc_pro_enable_international_phone_validation_precise_types'    => array( 'MOBILE', 'FIXED_LINE' ),
->>>>>>> release/next-FEATURE
 			'fc_pro_enable_international_phone_country_code'                => 'yes',
 			'fc_pro_enable_international_phone_country_list_filter'         => 'yes',
 			'fc_pro_international_phone_fields_placeholder'                 => 'off',

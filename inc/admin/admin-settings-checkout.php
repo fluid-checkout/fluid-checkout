@@ -673,30 +673,12 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'fc_pro_enable_international_phone_validation',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation' ),
+						'checkboxgroup'     => 'start',
+						'show_if_checked'   => 'option',
 						'autoload'          => false,
 						'disabled'          => true,
 					),
 					array(
-<<<<<<< HEAD
-						'desc'              => __( 'Enable precise phone number validation', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Use intl-tel-input\'s precise validation (only mobile numbers by default). Keep the utils script updated, as number rules change frequently. For more details see the documentation.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://intl-tel-input.com/examples/validation.html' ),
-						'id'                => 'fc_pro_enable_international_phone_validation_precise',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
-						'checkboxgroup'     => '',
-						'show_if_checked'   => 'yes',
-=======
-						'desc'              => __( 'Use precise phone number validation', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
-						'desc_tip'          => __( 'Try to ensure the phone number is a valid mobile or landline number based on the rules for the selected country code. This option uses the <code>intl-tel-input</code> precise validation feature, which may give false positives for some phone numbers.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://intl-tel-input.com/examples/validation.html' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html( true ),
-						'id'                => 'fc_pro_enable_international_phone_validation_precise',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
->>>>>>> release/next-FEATURE
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-					array(
-<<<<<<< HEAD
 						'desc'              => __( 'Show validation errors without preventing step completion', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Phone numbers that fail country rules still display the warning, but the shipping/billing substep can remain open so the checkout can continue.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_international_phone_validation_non_obtrusive',
@@ -707,7 +689,18 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 						'disabled'          => true,
 					),
-=======
+					array(
+						'desc'              => __( 'Use precise phone number validation', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
+						'desc_tip'          => __( 'Try to ensure the phone number is a valid mobile or landline number based on the rules for the selected country code. This option uses the <code>intl-tel-input</code> precise validation feature, which may give false positives for some phone numbers.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://intl-tel-input.com/examples/validation.html' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_explanation_html( true ),
+						'id'                => 'fc_pro_enable_international_phone_validation_precise',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
+						'checkboxgroup'     => 'end',
+						'show_if_checked'   => 'yes',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+					array(
 						'desc'              => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_international_phone_validation_precise_types',
 						'type'              => 'fc_multiselect',
@@ -722,7 +715,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'disabled'          => true,
 					),
 
->>>>>>> release/next-FEATURE
 					array(
 						'desc'              => __( 'Only show allowed countries for shipping or billing', 'fluid-checkout' ),
 						'desc_tip'          => __( 'When enabled, only the countries allowed for shipping will be available in the shipping phone field, and only countries allowed for billing will be available for the billing phone field.', 'fluid-checkout' ),
