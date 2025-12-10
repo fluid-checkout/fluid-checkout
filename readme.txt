@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.8.2
-Stable tag: 4.1.3
+Tested up to: 6.9
+Stable tag: 4.1.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,13 +354,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 4.1.4 - 2025-12-05 =
 
+* Bump tested up to WordPress 6.9 and WooCommerce 10.3.6
 * Added: Compatibility with plugin SUMO Subscriptions.
 * Added: Compatibility with plugin Shop as Client for WooCommerce (by Naked Cat Plugins).
+* Added: Compatibility with plugin Upsell Funnel Builder for WooCommerce.
 * Added: Compatibility with plugin WooCommerce Buy One Get One Free by Oscar Gare.
 * Added: Compatibility with plugin WooCommerce Smart Coupons.
 * Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
+* Improved: Show and allow checking "Same as shipping/billing address" checkbox when the first address is not yet complete.
 * Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
 * Fixed: Compatibility with plugin Klarna Payments for WooCommerce. Fix Klarna payment button not working when using newer versions of Klarna Payments. Update modified script from the plugin to its latest version and add missing dependancy.
 * Fixed: Compatibility with plugin Revolut Gateway for WooCommerce. Fix title edits being applied globally for the Revolut payment method. Fix Revolut payments getting aborted when switching browser tabs during checkout.
@@ -430,58 +433,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Force styles of `fc-loading` class to override styles from theme.
 * Fixed: Run checkout steps registration earlier for Ajax requests, and run it also for REST API requests. This fixes missing address section titles on email messages and previews.
 * Fixed: State field losing selected value when update checkout is triggered while still processing State fields options update from selected country.
-
-= 4.0.6 - 2025-06-10 =
-
-* Bump tested up to WooCommerce 9.9.3
-* Added: Support for modern email design for transactional emails.
-* Added: Compatibility with theme Nyture.
-* Added: Compatibility with theme Twenty Twenty-Five.
-* Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
-* Added: Compatibility with plugin YITH WooCommerce Checkout Manager.
-* Improved: Coupon codes are now highlighted when added, and "Apply/Add coupon" button is now blocked while processing.
-* Improved: Translations of "Add <field>" link buttons and checkout step count in Hungarian.
-* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Add option to disable payment form style modifications from Fluid Checkout. Remove extra spacing and border from the payment fields.
-* Fixed: Compatibility with plugin Breakdance. Fix style issues with recent versions of Breakdance.
-* Fixed: Compatibility with plugin Germanized for WooCommerce. Fix "DHL Preferred delivery" field values not being preserved.
-* Fixed: Compatibility with plugin Dintero. Support for new popout and embed Dintero checkout flow options.
-* Fixed: Compatibility with plugin Flexible Shipping. Shipping method descriptions showing duplicated.
-* Fixed: Compatibility with plugin Nets/Nexi Checkout (formerly Dibs). Fix integration with Redirect and Overlay checkout flow options.
-* Fixed: Coupon code messages location when being applied from certain sections.
-* Fixed: RTL styles for compatibility with various themes and plugins.
-* Fixed: Set selected shipping method value to session early so it can be used by filters when setting posted data.
-
-= 4.0.5 - 2025-05-03 =
-
-* Bump tested up to WordPress 6.8.1 and WooCommerce 9.8.3
-* Added: Compatibility with theme Twenty Twenty-Four.
-* Added: Compatibility with plugin BOX NOW Delivery Croatia.
-* Added: Compatibility with plugin Tamara Checkout.
-* Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
-* Improved: Compatibility with plugin Germanized for WooCommerce. Add compatibility with pickup location selection for shipping service providers.
-* Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
-* Fixed: Phone number showing duplicated on admin pages.
-
-= 4.0.4 - 2025-04-15 =
-
-* Bump tested up to WooCommerce 9.8.1
-* Added: Support for description and delivery time attributes for shipping methods.
-* Added: Compatibility with theme LeadEngine.
-* Added: Compatibility with theme NewStore.
-* Added: Compatibility with theme YITH Proteo.
-* Added: Compatibility with plugin Omnisend for WooCommerce.
-* Added: Compatibility with plugin Woocommerce GUS/Regon.
-* Improved: User experience when using login popup on the checkout page.
-* Improved: Rename inline validation message classes to avoid conflicts with other plugins.
-* Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
-* Improved: Compatibility with plugin CartBounty. Remove overrides for plugin assets as they are no longer required.
-* Improved: Compatibility with plugin Klarna Payments. Update modified script from the Klarna plugin to its latest version.
-* Fixed: Compatibility with theme Divi. Fix position for the place order button icons.
-* Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
-* Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
-* Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
-* Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
-* Fixed: Spacing for elements above the order summary section.
 
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 
