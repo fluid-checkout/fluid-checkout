@@ -17,36 +17,36 @@
 
 	var _$ = root.jQuery;
 	var _hasInitialized = false;
+	var _publicMethods = {};
 	var _eventsHooked = false;
 	var _settings = {
 		namespace: '.fcItalianAddOn',
 	};
 
+
 	/**
-	 * Attach a change handler for the selector if the field exists.
-	 * 
-	 * @param {string} selector - The selector to bind the change handler to.
-	 * @param {function} callback - The callback function to run when the field changes.
+	 * METHODS
 	 */
-	var bind = function (selector, callback) {
-		if (typeof _$ !== 'function') {
+
+
+
+	/**
+	 * Handle change events on the fields Fluid Checkout exposes to the Italian add-on.
+	 */
+	var handleChange = function (event) {
+		if (! event || ! event.target) {
 			return;
 		}
 
-		var $field = _$(selector);
-		if (! $field.length || typeof callback !== 'function') {
-			return;
+		// When the Italian customer type selector changes, run its helper if available.
+		if (event.target.matches('#billing_customer_type') && typeof wcpdf_IT_billing_customer_type_change === 'function') {
+			wcpdf_IT_billing_customer_type_change();
 		}
 
-		$field.off(_settings.namespace).on('change' + _settings.namespace, callback);
-	};
-
-	/**
-	 * Bind the Italian customer type / country fields to the add-on helpers.
-	 */
-	var bindFields = function () {
-		bind('#billing_customer_type', wcpdf_IT_billing_customer_type_change);
-		bind('#billing_country', wcpdf_IT_check_required);
+		// When the billing country selector changes, ask the add-on to revalidate required fields.
+		if (event.target.matches('#billing_country') && typeof wcpdf_IT_check_required === 'function') {
+			wcpdf_IT_check_required();
+		}
 	};
 
 	/**
@@ -74,30 +74,35 @@
 		});
 	};
 
-	var _publicMethods = {
-		refreshState: refreshState,
-	};
+	/**
+	 * Refresh the state of the Italian add-on helpers so they reapply their rules after updates.
+	 */
+	_publicMethods.refreshState = refreshState;
 
 	/**
-	 * Watch the main body events so we rerun helpers after AJAX updates.
+	 * Register body events so we rerun helpers after AJAX updates.
 	 */
 	var registerBodyEvents = function () {
-		if (_eventsHooked || typeof _$ !== 'function') {
+		if (_eventsHooked) {
 			return;
 		}
 
-		var $body = _$( 'body' );
-		if (! $body.length) {
-			return;
+		if (typeof _$ === 'function') {
+			var $body = _$( 'body' );
+
+			if ($body.length) {
+				$body.on('updated_checkout' + _settings.namespace, _publicMethods.refreshState);
+				$body.on('fc_fragments_refreshed' + _settings.namespace, _publicMethods.refreshState);
+			}
 		}
 
-		$body.on('updated_checkout' + _settings.namespace, _publicMethods.refreshState);
-		$body.on('fc_fragments_refreshed' + _settings.namespace, _publicMethods.refreshState);
+		// Mirror other compat scripts by listening for change events on the document.
+		document.addEventListener('change', handleChange, true);
 		_eventsHooked = true;
 	};
 
 	/**
-	 * Initialize the compatibility handler and set related handlers.
+	 * Initialize the compatibility handler.
 	 * 
 	 * @param {object} options - The options to pass to the compatibility handler.
 	 */
@@ -108,7 +113,6 @@
 
 		if (! _hasInitialized) {
 			_settings = FCUtils.extendObject(_settings, options || {});
-			bindFields();
 			registerBodyEvents();
 			_hasInitialized = true;
 		}
