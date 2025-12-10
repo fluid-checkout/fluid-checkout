@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
+
 = 4.1.4 - 2025-12-05 =
 
 * Bump tested up to WordPress 6.9 and WooCommerce 10.3.6
