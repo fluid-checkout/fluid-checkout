@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: gift-cards-coupon-input
+ * Compatibility with plugin: Gift Cards - Coupon Input (by SomewhereWarm).
  */
 class FluidCheckout_GiftCardsCouponInput extends FluidCheckout {
 
