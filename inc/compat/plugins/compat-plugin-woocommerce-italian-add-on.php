@@ -21,8 +21,8 @@ class FluidCheckout_WooCommerceItalianAddOn extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
-		// Skip optional fields - Fixes issue with optional fields being hidden behind a link button.
-		add_filter( 'fc_hide_optional_fields_skip_field', array( $this, 'skip_optional_fields' ), 10, 4 );
+		// Optional fields
+		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields' ), 10 );
 	}
 
 	/**
@@ -55,14 +55,15 @@ class FluidCheckout_WooCommerceItalianAddOn extends FluidCheckout {
 	}
 
 	/**
-	 * Prevent Fluid Checkout from hiding these fields.
+	 * Prevent hiding some optional fields behind a link button.
+	 *
+	 * @param   array  $skip_list  List of optional fields to skip hidding.
 	 */
-	public function skip_optional_fields( $skip, $key, $args, $value ) {
-		if ( in_array( $key, array( 'billing_cf', 'billing_cf2', 'billing_PEC' ), true ) ) {
-			return true;
-		}
-
-		return $skip;
+	public function prevent_hide_optional_fields( $skip_list ) {
+		$skip_list[] = 'billing_cf';
+		$skip_list[] = 'billing_cf2';
+		$skip_list[] = 'billing_PEC';
+		return $skip_list;
 	}
 
 }
