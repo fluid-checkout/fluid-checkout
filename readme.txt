@@ -354,7 +354,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased - New feature version =
+= Unreleased - New FEATURES =
 
 * Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
 * Improved: Make account creation checkbox field customizable via default WooCommerce hooks.
