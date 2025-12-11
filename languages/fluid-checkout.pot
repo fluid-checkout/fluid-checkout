@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-12-05 15:25+0000\n"
+"POT-Creation-Date: 2025-12-05 18:49+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -737,7 +737,7 @@ msgstr ""
 msgid "Select position where to display the coupon codes section on the cart page. Only applicable when AJAX cart and the integrated coupon codes in the checkout page are enabled."
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:401, inc/admin/admin-settings-checkout.php:724
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:401, inc/admin/admin-settings-checkout.php:735
 msgid "Hidden"
 msgstr ""
 
@@ -1249,7 +1249,7 @@ msgstr ""
 msgid "Hidden (remove field)"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:583, inc/admin/admin-settings-checkout.php:598, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:640, inc/admin/admin-settings-checkout.php:725
+#: inc/admin/admin-settings-checkout.php:583, inc/admin/admin-settings-checkout.php:598, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:640, inc/admin/admin-settings-checkout.php:736
 msgid "Optional"
 msgstr ""
 
@@ -1298,11 +1298,11 @@ msgid "Choose in which step to display the billing phone field."
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:661
-msgid "Enable international phone number format and validation for phone fields"
+msgid "Enable international phone number fields"
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:662
-msgid "Format and validate phone numbers according to each country."
+msgid "Format phone numbers according to the rules for each country."
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:672
@@ -1314,82 +1314,90 @@ msgid "When disabled, the phone field validation will not check if country or ar
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:683
-msgid "Only show allowed countries for shipping or billing"
+msgid "Use precise phone number validation"
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:684
-msgid "When enabled, only the countries allowed for shipping will be available in the shipping phone field, and only countries allowed for billing will be available for the billing phone field."
+msgid "Try to ensure the phone number is a valid mobile or landline number based on the rules for the selected country code. This option uses the <code>intl-tel-input</code> precise validation feature, which may give false positives for some phone numbers."
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:694
-msgid "Show country code beside the flag"
+msgid "Only show allowed countries for shipping or billing"
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "When enabled, only the countries allowed for shipping will be available in the shipping phone field, and only countries allowed for billing will be available for the billing phone field."
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:705
+msgid "Show country code beside the flag"
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:716
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:709
+#: inc/admin/admin-settings-checkout.php:720
 msgid "Do not change placeholders"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:710
+#: inc/admin/admin-settings-checkout.php:721
 msgid "Show if not defined"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:711
+#: inc/admin/admin-settings-checkout.php:722
 msgid "Always show"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:719, inc/admin/admin-settings-order-received.php:233
+#: inc/admin/admin-settings-checkout.php:730, inc/admin/admin-settings-order-received.php:233
 msgid "Order notes"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:720
+#: inc/admin/admin-settings-checkout.php:731
 msgid "Define the visibility of the additional order notes field."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:732
+#: inc/admin/admin-settings-checkout.php:743
 msgid "Gift options"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:733
+#: inc/admin/admin-settings-checkout.php:744
 msgid "Display gift message and other gift options at the checkout page"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:734
+#: inc/admin/admin-settings-checkout.php:745
 msgid "Allow customers to add a gift message and other gift related options to the order."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:744
+#: inc/admin/admin-settings-checkout.php:755
 msgid "Display the gift message fields always expanded"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:754
+#: inc/admin/admin-settings-checkout.php:765
 msgid "Display the gift message as part of the order details table instead of a separate section"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:755
+#: inc/admin/admin-settings-checkout.php:766
 msgid "This option affects the order confirmation page (thank you page) and order details on account pages, emails and packing slips."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:773, inc/admin/admin-settings-checkout.php:780
+#: inc/admin/admin-settings-checkout.php:784, inc/admin/admin-settings-checkout.php:791
 msgid "Account matching"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:781
+#: inc/admin/admin-settings-checkout.php:792
 msgid "Enable the account matching feature"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:782
+#: inc/admin/admin-settings-checkout.php:793
 msgid "Associate the guest customer's orders with their existing account when an account already exists with the customer's contact details."
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:792
+#: inc/admin/admin-settings-checkout.php:803
 msgid "Display message when an account exists with the email address provided"
 msgstr ""
 
-#: inc/admin/admin-settings-checkout.php:793
+#: inc/admin/admin-settings-checkout.php:804
 msgid "Replaces the account creation fields with a notification and option to log in. In some contexts, it might be recommended to leave this option disabled to protect the privacy of customers."
 msgstr ""
 
@@ -1667,7 +1675,7 @@ msgid "(experimental)"
 msgstr ""
 
 #: inc/admin/admin.php:225
-msgid "This is an experimental feature and may not work as expected with all themes and plugins. Use it with caution."
+msgid "This is an experimental feature and may not work as expected in all setups. Use it with caution."
 msgstr ""
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159

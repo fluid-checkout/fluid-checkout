@@ -81,6 +81,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_billing_phone_field_position'                               => 'billing_address',
 			'fc_pro_enable_international_phone_fields'                      => 'no',
 			'fc_pro_enable_international_phone_validation'                  => 'no',
+			'fc_pro_enable_international_phone_validation_precise'          => 'no',
+			'fc_pro_international_phone_validation_non_obtrusive'           => 'no',
+			'fc_pro_enable_international_phone_validation_precise_types'    => array( 'MOBILE', 'FIXED_LINE' ),
 			'fc_pro_enable_international_phone_country_code'                => 'yes',
 			'fc_pro_enable_international_phone_country_list_filter'         => 'yes',
 			'fc_pro_international_phone_fields_placeholder'                 => 'off',
@@ -272,10 +275,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 		global $current_tab, $current_section;
 
 		// Bail if not the plugin settings.
-		if ( ! 'fc_checkout' === $current_tab ) { return $value; }
+		if ( 'fc_checkout' !== $current_tab ) { return $value; }
 
 		// Maybe set the value to the saved value if the option is disabled.
-		if( array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
+		if( is_array( $option ) && array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
 			$saved_value = get_option( $option[ 'id' ] );
 			$value = $saved_value;
 		}

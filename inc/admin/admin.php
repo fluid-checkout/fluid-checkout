@@ -102,6 +102,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
@@ -222,7 +223,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * @param  bool  $newline  Whether to add a new line before.
 	 */
 	public function get_experimental_feature_explanation_html( $newline = false ) {		
-		return ' ' . ( $newline ? '<br>' : '' ) . __( 'This is an experimental feature and may not work as expected with all themes and plugins. Use it with caution.', 'fluid-checkout' );
+		return ' ' . ( $newline ? '<br>' : '' ) . __( 'This is an experimental feature and may not work as expected in all setups. Use it with caution.', 'fluid-checkout' );
 	}
 
 	/**

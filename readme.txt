@@ -354,6 +354,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased - New feature version =
+
+* Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
+
+= Unreleased =
+
+* Added: Compatibility with plugin WC Cities Select.
+
 = 4.1.4 - 2025-12-05 =
 
 * Bump tested up to WordPress 6.9 and WooCommerce 10.3.6

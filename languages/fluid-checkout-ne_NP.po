@@ -1493,16 +1493,6 @@ msgstr "चेकआउट फारममा बिलिङ फोन फि�
 msgid "Choose in which step to display the billing phone field."
 msgstr "कुन चरणमा बिलिङ फोन फिल्ड प्रदर्शन गर्ने छनौट गर्नुहोस्।"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"फोन क्षेत्रहरूको लागि अन्तर्राष्ट्रिय फोन नम्बर ढाँचा र प्रमाणीकरण सक्षम "
-"गर्नुहोस्।"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "प्रत्येक देश अनुसार फोन नम्बरहरू ढाँचाबद्ध र प्रमाणित गर्नुहोस्।"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "देशका नियमहरूको आधारमा फोन नम्बर प्रमाणीकरण सक्षम पार्नुहोस्"
@@ -1928,14 +1918,6 @@ msgstr "(प्रो)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(प्रयोगात्मक)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"यो एक प्रयोगात्मक सुविधा हो र सबै विषयवस्तु र प्लगइनहरूमा अपेक्षा गरेअनुसार "
-"काम नगर्न सक्छ। यसलाई सावधानीपूर्वक प्रयोग गर्नुहोस्।"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2485,6 +2467,38 @@ msgstr "प्रगति पट्टी पछि"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "कुपन कोड खण्ड अघि"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "अन्तर्राष्ट्रिय फोन नम्बर क्षेत्रहरू सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "प्रत्येक देशको नियम अनुसार फोन नम्बरहरू ढाँचा गर्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "सटीक फोन नम्बर प्रमाणीकरण प्रयोग गर्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"चयन गरिएको देश कोडको नियमहरूको आधारमा फोन नम्बर मान्य मोबाइल वा ल्यान्डलाइन "
+"नम्बर हो भनी सुनिश्चित गर्ने प्रयास गर्नुहोस्। यो विकल्पले "
+"<code>intl-tel-input</code> सटीक प्रमाणीकरण सुविधा प्रयोग गर्दछ, जसले केही "
+"फोन नम्बरहरूको लागि गलत सकारात्मक परिणाम दिन सक्छ।"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"यो एक प्रयोगात्मक सुविधा हो र सबै सेटअपहरूमा अपेक्षा गरेअनुसार काम नगर्न "
+"सक्छ। यसलाई सावधानीपूर्वक प्रयोग गर्नुहोस्।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

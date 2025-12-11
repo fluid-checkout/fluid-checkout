@@ -1551,16 +1551,6 @@ msgstr "Magdagdag ng field ng telepono sa pagsingil sa form ng pag-checkout."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Piliin kung saang hakbang ipapakita ang field ng telepono sa pagsingil."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Paganahin ang internasyonal na format ng numero ng telepono at pagpapatunay "
-"para sa mga field ng telepono"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "I-format at i-validate ang mga numero ng telepono ayon sa bawat bansa."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr ""
@@ -2004,14 +1994,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(pang-eksperimento)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Isa itong pang-eksperimentong feature at maaaring hindi gumana gaya ng "
-"inaasahan sa lahat ng tema at plugin. Gamitin ito nang may pag-iingat."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2584,6 +2566,40 @@ msgstr "Pagkatapos ng progress bar"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Bago ang seksyon ng mga code ng kupon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Paganahin ang mga field ng internasyonal na numero ng telepono"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr ""
+"I-format ang mga numero ng telepono ayon sa mga patakaran para sa bawat "
+"bansa."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gumamit ng tumpak na pagpapatunay ng numero ng telepono"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Subukang tiyakin na ang numero ng telepono ay wastong mobile o landline na "
+"numero batay sa mga panuntunan para sa napiling country code. Ginagamit ng "
+"opsyong ito ang <code>intl-tel-input</code> precise validation feature, na "
+"maaaring magbigay ng mga false positive para sa ilang numero ng telepono."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Isa itong pang-eksperimentong feature at maaaring hindi gumana gaya ng "
+"inaasahan sa lahat ng setup. Gamitin ito nang may pag-iingat."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

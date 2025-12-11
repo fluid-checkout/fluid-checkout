@@ -1591,16 +1591,6 @@ msgstr "Į kasos formą įtraukite atsiskaitymo telefono lauką."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pasirinkite, kuriame žingsnyje rodyti sąskaitų išrašymo telefono lauką."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Įgalinti tarptautinio telefono numerio formatą ir telefono laukų "
-"patvirtinimą"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "suformatuokite ir patvirtinkite telefono numerius pagal kiekvieną šalį."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Įgalinti telefono numerio patvirtinimą pagal šalies taisykles"
@@ -2043,14 +2033,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentinis)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Tai eksperimentinė funkcija, todėl ji gali veikti ne su visomis temomis ir "
-"įskiepiais. Naudokite ją atsargiai."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2635,6 +2617,39 @@ msgstr "Po pažangos juostos"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Prieš kuponų kodų skyrių"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Įgalinti tarptautinių telefono numerių laukus"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formuokite telefono numerius pagal kiekvienos šalies taisykles."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Naudokite tikslų telefono numerio patvirtinimą"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Pabandykite įsitikinti, kad telefono numeris yra galiojantis mobiliojo arba "
+"fiksuotojo ryšio numeris pagal pasirinktos šalies kodo taisykles. Šioje "
+"parinktyje naudojama <code>intl-tel-input</code> tikslaus patvirtinimo "
+"funkcija, kuri kai kuriems telefono numeriams gali duoti klaidingų teigiamų "
+"rezultatų."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Tai yra eksperimentinė funkcija, todėl gali būti, kad ji neveiks taip, kaip "
+"tikimasi, visose konfigūracijose. Naudokite ją atsargiai."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

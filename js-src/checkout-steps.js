@@ -280,7 +280,7 @@
 		if ( ! substepElement ) { return; }
 
 		// Maybe validate fields
-		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
+		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) && ! CheckoutValidation.hasOnlyNonObtrusivePhoneValidationErrors() ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
 			if ( firstInvalidField ) {
@@ -379,14 +379,14 @@
 		if ( ! stepElement ) { return; }
 
 		// Maybe validate fields
-		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
+		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) && ! CheckoutValidation.hasOnlyNonObtrusivePhoneValidationErrors() ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
 			if ( firstInvalidField ) {
 				firstInvalidField.focus();
 			}
 
-			// Bail when any substep has invalid fields
+			// Bail when step has invalid fields
 			return;
 		}
 
