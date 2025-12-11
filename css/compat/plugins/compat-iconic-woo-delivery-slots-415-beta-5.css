@@ -1,0 +1,10 @@
+div.woocommerce form .form-row input:-moz-read-only#jckwds-delivery-date, div.woocommerce form .form-row select:-moz-read-only#jckwds-delivery-time, div.woocommerce form .form-row select:-moz-read-only#jckwds-delivery-time + .select2-container .select2-selection {
+  background-color: var(--wc-form-color-background) !important;
+  cursor: auto !important;
+}
+div.woocommerce form .form-row input:read-only#jckwds-delivery-date,
+div.woocommerce form .form-row select:read-only#jckwds-delivery-time,
+div.woocommerce form .form-row select:read-only#jckwds-delivery-time + .select2-container .select2-selection {
+  background-color: var(--wc-form-color-background) !important;
+  cursor: auto !important;
+}

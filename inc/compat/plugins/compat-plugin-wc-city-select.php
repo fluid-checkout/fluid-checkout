@@ -28,10 +28,11 @@ class FluidCheckout_WC_City_Select extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
+		// Load the modified file from the compatibility with the plugin States, Cities, and Places for WooCommerce (by Kingsley Ochu),
+		// as this plugin is a copy of that one, with some modifications.
 		wp_register_script( 'wc-city-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/states-cities-and-places-for-woocommerce/place-select' ), array( 'jquery', 'woocommerce' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 }
 
 FluidCheckout_WC_City_Select::instance();
-

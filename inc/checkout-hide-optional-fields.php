@@ -94,9 +94,6 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Needed for compatibility with plugins that call `woocommerce_form_field` multiple times for the same field
 		if ( false !== strpos( $field, 'id="fc-expansible-form-section__toggle--' . $key ) ) { return $field; }
 
-		// Maybe skip optional field
-		if ( apply_filters( 'fc_hide_optional_fields_skip_field', false, $key, $args, $value ) ) { return $field; }
-
 		// Maybe skip optional field by type
 		if ( in_array( $args[ 'type' ], apply_filters( 'fc_hide_optional_fields_skip_types', array( 'state', 'country', 'select', 'checkbox', 'radio', 'hidden' ) ) ) ) { return $field; }
 
@@ -104,12 +101,16 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		$skip_field_container_classes = apply_filters( 'fc_hide_optional_fields_skip_by_class', array( 'fc-skip-hide-optional-field' ) );
 		foreach ( $skip_field_container_classes as $skip_class ) {
 			foreach ( $args[ 'class' ] as $field_class ) {
+				// Skip if field class contains the skip class
 				if ( -1 < strpos( $field_class, $skip_class ) ) { return $field; }
 			}
 		}
 
 		// Maybe skip optional field by id
 		if ( in_array( $key, $this->get_hide_optional_fields_skip_list() ) ) { return $field; }
+
+		// Maybe skip optional field by other criteria
+		if ( apply_filters( 'fc_hide_optional_fields_skip_field', false, $key, $args, $value ) ) { return $field; }
 
 		// Set attribute `data-autofocus` to focus on the optional field when expanding the section
 		$field = str_replace( 'name="'. esc_attr( $key ) .'"', 'name="'. esc_attr( $key ) .'" data-autofocus', $field );
