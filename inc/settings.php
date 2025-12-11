@@ -40,7 +40,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$defaults = array(
 			// Settings checkout.			
 			'fc_checkout_layout'                                            => 'multi-step',
-			'fc_checkout_column_layout'                                     => '2-column',
+			'fc_checkout_column_layout'                                     => 'two_column',
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
 			'fc_hide_site_header_footer_at_checkout'                        => 'yes',
