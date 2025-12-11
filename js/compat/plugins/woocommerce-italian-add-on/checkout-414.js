@@ -10,18 +10,18 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.CheckoutCompatibilityWooCommerceItalianAddOn = factory(root);
+		root.WooCommerceItalianAddOnCheckout = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 	'use strict';
 
-	var _$ = root.jQuery;
-	var _hasInitialized = false;
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
 	var _publicMethods = {};
-	var _eventsHooked = false;
-	var _settings = {
-		namespace: '.fcItalianAddOn',
-	};
+	var _hasInitialized = false;
+	var _namespace = '.fcItalianAddOn';
+
 
 
 	/**
@@ -31,31 +31,11 @@
 
 
 	/**
-	 * Handle change events on the fields Fluid Checkout exposes to the Italian add-on.
+	 * Refresh the state of the Italian add-on helpers so they reapply their rules after updates.
 	 */
-	var handleChange = function (event) {
-		if (! event || ! event.target) {
-			return;
-		}
-
-		// When the Italian customer type selector changes, run its helper if available.
-		if (event.target.matches('#billing_customer_type') && typeof wcpdf_IT_billing_customer_type_change === 'function') {
-			wcpdf_IT_billing_customer_type_change();
-		}
-
-		// When the billing country selector changes, ask the add-on to revalidate required fields.
-		if (event.target.matches('#billing_country') && typeof wcpdf_IT_check_required === 'function') {
-			wcpdf_IT_check_required();
-		}
-	};
-
-	/**
-	 * Run all available Italian Add-On helpers so they reapply their rules after updates.
-	 */
-	var refreshState = function () {
-		if (typeof _$ !== 'function') {
-			return;
-		}
+	_publicMethods.refreshState = function () {
+		// Bail if jQuery is not loaded
+		if ( ! _hasJQuery ) { return; }
 
 		var helpers = [
 			wcpdf_IT_billing_customer_type_change,
@@ -67,64 +47,56 @@
 			wcpdf_IT_billing_invoice_type_change,
 		];
 
-		helpers.forEach(function (helper) {
-			if (typeof helper === 'function') {
-				helper();
-			}
-		});
+		// Run all available Italian add-on helpers
+		helpers.forEach( function ( helper ) {
+			if ( typeof helper === 'function' ) { helper(); }
+		} );
 	};
 
-	/**
-	 * Refresh the state of the Italian add-on helpers so they reapply their rules after updates.
-	 */
-	_publicMethods.refreshState = refreshState;
+
 
 	/**
-	 * Register body events so we rerun helpers after AJAX updates.
+	 * Handle change events on the fields Fluid Checkout exposes to the Italian add-on.
 	 */
-	var registerBodyEvents = function () {
-		if (_eventsHooked) {
-			return;
+	var handleChange = function ( event ) {
+		// Bail if event or event target is not set
+		if ( ! event || ! event.target ) { return; }
+
+		// When the Italian customer type selector changes, run its helper if available.
+		if ( event.target.matches( '#billing_customer_type' ) && typeof wcpdf_IT_billing_customer_type_change === 'function' ) {
+			wcpdf_IT_billing_customer_type_change();
 		}
 
-		if (typeof _$ === 'function') {
-			var $body = _$( 'body' );
-
-			if ($body.length) {
-				$body.on('updated_checkout' + _settings.namespace, _publicMethods.refreshState);
-				$body.on('fc_fragments_refreshed' + _settings.namespace, _publicMethods.refreshState);
-			}
+		// When the billing country selector changes, ask the add-on to revalidate required fields.
+		if ( event.target.matches( '#billing_country' ) && typeof wcpdf_IT_check_required === 'function' ) {
+			wcpdf_IT_check_required();
 		}
-
-		// Mirror other compat scripts by listening for change events on the document.
-		document.addEventListener('change', handleChange, true);
-		_eventsHooked = true;
 	};
+
+
 
 	/**
 	 * Initialize the compatibility handler.
-	 * 
-	 * @param {object} options - The options to pass to the compatibility handler.
 	 */
-	_publicMethods.init = function (options) {
-		if (typeof _$ !== 'function') {
-			return;
+	_publicMethods.init = function () {
+		// Bail if already initialized
+		if ( _hasInitialized ) { return; }
+
+		// jQuery event listeners
+		if ( _hasJQuery ) {
+			$( 'body' ).on( 'updated_checkout' + _namespace, _publicMethods.refreshState );
+			$( 'body' ).on( 'fc_fragments_refreshed' + _namespace, _publicMethods.refreshState );
 		}
 
-		if (! _hasInitialized) {
-			_settings = FCUtils.extendObject(_settings, options || {});
-			registerBodyEvents();
-			_hasInitialized = true;
-		}
+		// Event listeners
+		document.addEventListener( 'change', handleChange, true );
 
+		// Refresh state of fields at initialization
 		_publicMethods.refreshState();
-	};
 
-	if (typeof _$ === 'function') {
-		_$(function () {
-			_publicMethods.init();
-		});
-	}
+		// Set initialized flag
+		_hasInitialized = true;
+	};
 
 	//
 	// Public APIs

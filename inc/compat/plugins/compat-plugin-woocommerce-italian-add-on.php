@@ -29,13 +29,8 @@ class FluidCheckout_WooCommerceItalianAddOn extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		wp_register_script(
-			'fc-woocommerce-italian-add-on',
-			FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-italian-add-on/checkout' ),
-			array( 'jquery', 'wc_italian_add_on' ),
-			null,
-			array( 'in_footer' => true, 'strategy' => 'defer' )
-		);
+		wp_register_script( 'fc-woocommerce-italian-add-on', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-italian-add-on/checkout' ), array( 'jquery', 'wc_italian_add_on' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-woocommerce-italian-add-on', 'window.addEventListener("load",function(){WooCommerceItalianAddOnCheckout.init();});' );
 	}
 
 	/**
