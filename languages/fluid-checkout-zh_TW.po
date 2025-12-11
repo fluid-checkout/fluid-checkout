@@ -1372,14 +1372,6 @@ msgstr "在結帳表單中新增帳單電話欄位。"
 msgid "Choose in which step to display the billing phone field."
 msgstr "選擇在哪一步顯示計費電話欄位。"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "啟用國際電話號碼格式並驗證電話字段"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "根據各國格式化並驗證電話號碼。"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "根據國家規則啟用電話號碼驗證"
@@ -1757,12 +1749,6 @@ msgstr "（專業版）"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "（實驗）"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "這是一個實驗性功能，可能無法按預期與所有主題和插件一起工作。請謹慎使用。"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2240,6 +2226,58 @@ msgid ""
 "This ensures the content section is not too narrow on WooCommerce pages "
 "including checkout, cart, order received, order pay and account pages."
 msgstr "這可確保 WooCommerce 頁面上的內容部分不會太窄，包括結帳、購物車、收到訂單、訂單付款和帳戶頁面。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce智能優惠券"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "結帳頁面上的位置"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "選擇在結帳頁面上顯示可用優惠券部分的位置。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "進度條之前"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "進度條之後"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "優惠券代碼部分之前"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "啟用國際電話號碼字段"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "請依各國規定格式化電話號碼。"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "使用精確的電話號碼驗證"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"請盡量確保輸入的電話號碼是符合所選國家/地區代碼規則的有效手機號碼或座機號碼。此選項使用<code>intl-tel-input</"
+"code>精確驗證功能，但可能會對某些電話號碼產生誤報。"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "這是一項實驗性功能，可能無法在所有環境下正常運作。請謹慎使用。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

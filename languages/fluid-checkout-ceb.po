@@ -1539,16 +1539,6 @@ msgstr "Idugang ang field sa telepono sa pagsingil sa porma sa pag-checkout."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pilia kung asa nga lakang ipakita ang uma sa telepono sa pagsingil."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"I-enable ang internasyonal nga format sa numero sa telepono ug pag-validate "
-"alang sa mga natad sa telepono"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Pag-format ug pag-validate sa mga numero sa telepono sumala sa matag nasud."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "I-enable ang validation sa numero sa telepono base sa mga lagda sa nasud"
@@ -1992,15 +1982,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimento)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Kini usa ka eksperimento nga bahin ug mahimong dili molihok sama sa "
-"gipaabut sa tanan nga mga tema ug mga plugin. Gamita kini uban ang "
-"pag-amping."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2545,6 +2526,67 @@ msgstr ""
 "Gisiguro niini nga ang seksyon sa sulud dili kaayo pig-ot sa mga panid sa "
 "WooCommerce lakip ang pag-checkout, cart, nadawat nga order, bayad sa order "
 "ug mga panid sa account."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Smart Kupon"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posisyon sa panid sa pag-checkout"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Pilia kung asa ipakita ang magamit nga seksyon sa mga kupon sa panid sa "
+"pag-checkout."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Sa wala pa ang progress bar"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Pagkahuman sa progress bar"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Sa wala pa ang seksyon sa mga code sa kupon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "I-enable ang internasyonal nga mga natad sa numero sa telepono"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr ""
+"I-format ang mga numero sa telepono sumala sa mga lagda alang sa matag "
+"nasud."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gamita ang tukma nga pag-validate sa numero sa telepono"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Sulayi pagsiguro nga ang numero sa telepono usa ka balido nga numero sa "
+"mobile o landline base sa mga lagda alang sa pinili nga code sa nasud. Kini "
+"nga opsyon naggamit sa <code>intl-tel-input</code> precise validation "
+"feature, nga mahimong maghatag ug sayop nga mga positibo sa pipila ka "
+"numero sa telepono."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Kini usa ka eksperimento nga bahin ug mahimong dili molihok sama sa "
+"gipaabut sa tanan nga mga setup. Gamita kini uban ang pag-amping."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

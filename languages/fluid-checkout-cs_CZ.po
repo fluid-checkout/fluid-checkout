@@ -967,10 +967,6 @@ msgstr "Povolení tmavého režimu"
 msgid "Enable integrated coupon code section"
 msgstr "Povolení sekce s integrovaným kuponovým kódem"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Povolení mezinárodního formátu telefonního čísla a ověřování polí telefonu"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Povolit kontrolu pošty: (zakázaná funkce)"
@@ -1100,10 +1096,6 @@ msgstr "Barva pozadí zápatí"
 #: inc/admin/admin-settings-checkout.php:470
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Vynucení stejné fakturační a dodací adresy (jedna sekce)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formátujte a ověřujte telefonní čísla podle jednotlivých zemí."
 
 #: inc/admin/admin-settings-checkout.php:90
 msgid ""
@@ -2243,14 +2235,6 @@ msgstr "Toto pole neodpovídá hodnotě souvisejícího pole."
 msgid "This is a required field."
 msgstr "Toto pole je povinné."
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Jedná se o experimentální funkci, která nemusí fungovat podle očekávání se "
-"všemi motivy a pluginy. Používejte ji s opatrností."
-
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
 msgstr "Toto není platná e-mailová adresa."
@@ -2614,6 +2598,62 @@ msgstr ""
 "Tím se zajistí, že část obsahu na stránkách WooCommerce včetně stránek "
 "pokladny, košíku, přijaté objednávky, zaplacení objednávky a účtu nebude "
 "příliš úzká."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Chytré kupóny WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Umístění na pokladní stránce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Zvolte, kde se má na stránce pokladny zobrazit oddíl s dostupnými kupóny."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Před ukazatelem průběhu"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Po zobrazení ukazatele průběhu"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Před sekcí s kódy kupónů"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Povolení polí pro mezinárodní telefonní čísla"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formátujte telefonní čísla podle pravidel jednotlivých zemí."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Používejte přesné ověřování telefonních čísel"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Zkuste se ujistit, že telefonní číslo je platné číslo mobilního telefonu "
+"nebo pevné linky podle pravidel pro vybranou předvolbu země. Tato možnost "
+"využívá funkci přesného ověření <code>intl-tel-input</code>, která může u "
+"některých telefonních čísel poskytovat falešně pozitivní výsledky."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Jedná se o experimentální funkci, která nemusí ve všech nastaveních "
+"fungovat podle očekávání. Používejte ji s opatrností."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1516,16 +1516,6 @@ msgstr "Tambahkan bidang telepon penagihan ke formulir pembayaran."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pilih pada langkah mana untuk menampilkan bidang telepon penagihan."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Mengaktifkan format dan validasi nomor telepon internasional untuk bidang "
-"telepon"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Memformat dan memvalidasi nomor telepon sesuai dengan masing-masing negara."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Mengaktifkan validasi nomor telepon berdasarkan aturan negara"
@@ -1955,14 +1945,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimental)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ini adalah fitur eksperimental dan mungkin tidak bekerja seperti yang "
-"diharapkan pada semua tema dan plugin. Gunakan dengan hati-hati."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2500,6 +2482,64 @@ msgstr ""
 "Hal ini memastikan bagian konten tidak terlalu sempit pada halaman "
 "WooCommerce termasuk halaman checkout, keranjang, pesanan diterima, pesanan "
 "dibayar, dan akun."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Kupon Cerdas WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posisi di halaman checkout"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Pilih tempat untuk menampilkan bagian kupon yang tersedia pada halaman "
+"checkout."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Sebelum bilah kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Setelah bilah kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Sebelum bagian kode kupon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Mengaktifkan bidang nomor telepon internasional"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Memformat nomor telepon sesuai dengan aturan di setiap negara."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gunakan validasi nomor telepon yang tepat"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Cobalah untuk memastikan nomor telepon adalah nomor ponsel atau telepon "
+"rumah yang valid berdasarkan aturan untuk kode negara yang dipilih. Opsi "
+"ini menggunakan fitur validasi yang tepat <kode>intl-tel-input</kode>, yang "
+"mungkin memberikan hasil positif palsu untuk beberapa nomor telepon."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ini adalah fitur eksperimental dan mungkin tidak berfungsi seperti yang "
+"diharapkan pada semua pengaturan. Gunakan dengan hati-hati."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

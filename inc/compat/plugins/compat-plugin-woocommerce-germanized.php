@@ -124,11 +124,11 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-woocommerce-germanized', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-germanized/checkout-woocommerce-germanized' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-woocommerce-germanized', 'window.addEventListener("load",function(){CheckoutWooCommerceGermanized.init(fcSettings.checkoutWooCommerceGermanized);})' );
+		wp_add_inline_script( 'fc-checkout-woocommerce-germanized', 'window.addEventListener("load",function(){CheckoutWooCommerceGermanized.init(fcSettings.checkoutWooCommerceGermanized);});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-woocommerce-germanized', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-germanized/checkout-validation-woocommerce-germanized' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-woocommerce-germanized', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGermanized.init(fcSettings.checkoutValidationWooCommerceGermanized);})' );
+		wp_add_inline_script( 'fc-checkout-validation-woocommerce-germanized', 'window.addEventListener("load",function(){CheckoutValidationWooCommerceGermanized.init(fcSettings.checkoutValidationWooCommerceGermanized);});' );
 	}
 
 	/**

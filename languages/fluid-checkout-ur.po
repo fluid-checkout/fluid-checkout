@@ -1498,14 +1498,6 @@ msgstr "چیک آؤٹ فارم میں بلنگ فون فیلڈ شامل کریں
 msgid "Choose in which step to display the billing phone field."
 msgstr "بلنگ فون فیلڈ کو کس مرحلے میں ظاہر کرنا ہے اس کا انتخاب کریں۔"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "فون فیلڈز کے لیے بین الاقوامی فون نمبر فارمیٹ اور توثیق کو فعال کریں۔"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ہر ملک کے مطابق فون نمبروں کو فارمیٹ اور توثیق کریں۔"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "ملکی قوانین کی بنیاد پر فون نمبر کی توثیق کو فعال کریں۔"
@@ -1933,14 +1925,6 @@ msgstr "(پی آر او)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجرباتی)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"یہ ایک تجرباتی خصوصیت ہے اور ہو سکتا ہے کہ تمام تھیمز اور پلگ انز کے ساتھ "
-"توقع کے مطابق کام نہ کرے۔ اسے احتیاط کے ساتھ استعمال کریں۔"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2472,6 +2456,62 @@ msgstr ""
 "یہ یقینی بناتا ہے کہ WooCommerce کے صفحات پر مواد کا سیکشن زیادہ تنگ نہیں "
 "ہے جس میں چیک آؤٹ، کارٹ، آرڈر موصول، آرڈر کی ادائیگی اور اکاؤنٹ کے صفحات "
 "شامل ہیں۔"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce اسمارٹ کوپن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "چیک آؤٹ پیج پر پوزیشن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "منتخب کریں کہ چیک آؤٹ صفحہ پر دستیاب کوپن سیکشن کو کہاں ڈسپلے کرنا ہے۔"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "پیش رفت بار سے پہلے"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ترقی بار کے بعد"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "کوپن کوڈز سیکشن سے پہلے"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "بین الاقوامی فون نمبر کی فیلڈز کو فعال کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "فون نمبرز کو ہر ملک کے قوانین کے مطابق فارمیٹ کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "درست فون نمبر کی توثیق کا استعمال کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"اس بات کو یقینی بنانے کی کوشش کریں کہ منتخب کردہ ملک کے کوڈ کے قواعد کی "
+"بنیاد پر فون نمبر ایک درست موبائل یا لینڈ لائن نمبر ہے۔ یہ اختیار "
+"<code>intl-tel-input</code> درست توثیق کی خصوصیت کا استعمال کرتا ہے، جو کچھ "
+"فون نمبرز کے لیے غلط مثبتات دے سکتا ہے۔"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"یہ ایک تجرباتی خصوصیت ہے اور ہو سکتا ہے کہ تمام سیٹ اپ میں توقع کے مطابق "
+"کام نہ کرے۔ اسے احتیاط کے ساتھ استعمال کریں۔"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

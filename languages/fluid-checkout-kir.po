@@ -1513,16 +1513,6 @@ msgstr "Төлөө формасына эсеп телефон талаасын �
 msgid "Choose in which step to display the billing phone field."
 msgstr "Эсеп коюу телефон талаасын көрсөтүү үчүн кайсы кадамды тандаңыз."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Эл аралык телефон номеринин форматын жана телефон талаалары үчүн текшерүүнү "
-"иштетүү"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Ар бир өлкөгө жараша телефон номерлерин форматтап, ырастаңыз."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Өлкө эрежелеринин негизинде телефон номерин текшерүүнү иштетүү"
@@ -1956,14 +1946,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(эксперименталдык)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Бул эксперименталдык функция жана бардык темалар жана плагиндер менен "
-"күтүлгөндөй иштебеши мүмкүн. Аны этияттык менен колдонуңуз."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2499,6 +2481,62 @@ msgstr ""
 "Бул WooCommerce баракчаларында мазмун бөлүмү өтө тар эмес экенине кепилдик "
 "берет, анын ичинде текшерүү, арабага, алынган буйрутма, буйрутма төлөмү "
 "жана эсеп баракчалары."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce акылдуу купондору"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Төлөө бетиндеги позиция"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Төлөө барагында жеткиликтүү купондор бөлүмүн кайда көрсөтүүнү тандаңыз."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Прогресс тилкесинин алдында"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Прогресс тилкесинде кийин"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "купон коддору бөлүм алдында"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Эл аралык телефон номери талааларын иштетүү"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Телефон номерлерин ар бир өлкөнүн эрежелерине ылайык форматтаңыз."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Так телефон номерин текшерүүнү колдонуңуз"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Тандалган өлкөнүн кодунун эрежелеринин негизинде телефон номери жарактуу "
+"мобилдик же стационардык телефон номери экенин текшерип көрүңүз. Бул "
+"параметр <code>intl-tel-input</code> так текшерүү өзгөчөлүгүн колдонот, ал "
+"кээ бир телефон номерлери үчүн жалган позитивдерди бериши мүмкүн."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Бул эксперименталдык функция жана бардык орнотууларда күтүлгөндөй иштебеши "
+"мүмкүн. Аны этияттык менен колдонуңуз."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1406,14 +1406,6 @@ msgstr "チェックアウトフォームに請求先電話番号フィールド
 msgid "Choose in which step to display the billing phone field."
 msgstr "どのステップで請求先電話フィールドを表示するかを選択します。"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "電話番号フィールドの国際電話番号フォーマットとバリデーションを有効にする"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "それぞれの国に合わせて電話番号をフォーマットし、検証します。"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "国別ルールに基づく電話番号検証を有効にする"
@@ -1801,12 +1793,6 @@ msgstr "(プロ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(実験的）"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "これは実験的な機能であり、すべてのテーマやプラグインで期待通りに動作するとは限りません。注意して使用してください。"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2293,6 +2279,58 @@ msgid ""
 msgstr ""
 "これにより、チェックアウト、カート、注文受付、注文支払い、アカウントページなどのWooCommerceページでコンテンツセクションが狭くなりすぎないよう"
 "にします。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce スマートクーポン"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "チェックアウトページでの位置"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "チェックアウトページの利用可能なクーポンセクションを表示する場所を選択します。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "プログレスバーの前"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "プログレスバーの後"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "クーポンコード欄の前に"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "国際電話番号フィールドを有効にする"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "各国のルールに従って電話番号をフォーマットする。"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "正確な電話番号の検証"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"選択した国コードのルールに基づいて、電話番号が有効な携帯電話番号または固定電話番号であることを確認しようとします。このオプションは<code>intl-"
+"tel-input</code>の正確な検証機能を使います。"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "これは実験的な機能であり、すべてのセットアップで期待通りに機能するとは限りません。注意して使用してください。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

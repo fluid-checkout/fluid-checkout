@@ -1523,16 +1523,6 @@ msgstr "Додајте поле за телефон за наплата во ф�
 msgid "Choose in which step to display the billing phone field."
 msgstr "Изберете во кој чекор да се прикаже полето за телефон за наплата."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Овозможете формат на меѓународен телефонски број и валидација за "
-"телефонските полиња"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Форматирајте и потврдете ги телефонските броеви според секоја земја."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Овозможете валидација на телефонски број врз основа на правилата на земјата"
@@ -1972,14 +1962,6 @@ msgstr "(УЈП)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(експериментално)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ова е експериментална карактеристика и може да не работи како што се "
-"очекува со сите теми и приклучоци. Користете го со претпазливост."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2526,6 +2508,65 @@ msgstr ""
 "Ова осигурува дека делот со содржина не е премногу тесен на страниците на "
 "WooCommerce, вклучувајќи ги страниците за наплата, кошничка, примена "
 "нарачка, плаќање на нарачка и сметка."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Паметни купони од WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Позиција на страницата за наплата"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Изберете каде да се прикаже делот со достапни купони на страницата за "
+"плаќање."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Пред лентата за напредок"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "По лентата за напредок"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Пред делот за кодови за купони"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Овозможи полиња за меѓународен телефонски број"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Форматирајте ги телефонските броеви според правилата за секоја земја."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Користете прецизна валидација на телефонскиот број"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Обидете се да се осигурате дека телефонскиот број е важечки мобилен или "
+"фиксен број врз основа на правилата за избраниот код на државата. Оваа "
+"опција ја користи функцијата за прецизна валидација "
+"<code>intl-tel-input</code> , која може да даде лажни позитиви за некои "
+"телефонски броеви."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ова е експериментална функција и може да не работи како што се очекува во "
+"сите поставувања. Користете ја со претпазливост."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
