@@ -2715,6 +2715,24 @@ msgstr ""
 "Bu deneysel bir özelliktir ve tüm kurulumlarda beklendiği gibi "
 "çalışmayabilir. Dikkatli kullanın."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Kesin doğrulama etkinleştirildiğinde kullanılan telefon numarası doğrulama "
+"türleri."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Sabit hat"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Ücretsiz"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

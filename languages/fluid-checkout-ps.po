@@ -2497,6 +2497,22 @@ msgstr ""
 "دا یوه تجربوي ځانګړتیا ده او ممکن په ټولو ترتیباتو کې د تمې سره سم کار "
 "ونکړي. په احتیاط سره یې وکاروئ."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "د تلیفون شمیرې د اعتبار ډولونه کارول کیږي کله چې دقیق اعتبار فعال وي."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "موبایل"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ثابته کرښه"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "وړیا"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

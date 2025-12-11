@@ -2275,6 +2275,22 @@ msgid ""
 "Use it with caution."
 msgstr "这是一项试验性功能，可能无法在所有设置中正常工作。请谨慎使用。"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "启用精确验证时使用的电话号码验证类型。"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "移动电话"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "固定线路"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "免费电话"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

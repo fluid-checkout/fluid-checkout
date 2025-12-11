@@ -2541,6 +2541,24 @@ msgstr ""
 "Ini adalah fitur eksperimental dan mungkin tidak berfungsi seperti yang "
 "diharapkan pada semua pengaturan. Gunakan dengan hati-hati."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Jenis validasi nomor telepon yang digunakan ketika validasi yang tepat "
+"diaktifkan."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Seluler"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Saluran tetap"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bebas pulsa"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

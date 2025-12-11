@@ -2495,6 +2495,22 @@ msgstr ""
 "આ એક પ્રાયોગિક સુવિધા છે અને બધા સેટઅપમાં અપેક્ષા મુજબ કામ ન પણ કરે. તેનો "
 "ઉપયોગ સાવધાનીપૂર્વક કરો."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ચોક્કસ માન્યતા સક્ષમ હોય ત્યારે ઉપયોગમાં લેવાતા ફોન નંબર માન્યતા પ્રકારો."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "મોબાઇલ"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "સ્થિર રેખા"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ટોલ ફ્રી"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

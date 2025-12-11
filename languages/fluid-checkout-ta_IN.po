@@ -2588,6 +2588,24 @@ msgstr ""
 "இது ஒரு சோதனை அம்சம், எல்லா அமைப்புகளிலும் எதிர்பார்த்தபடி வேலை செய்யாமல் "
 "போகலாம். இதை எச்சரிக்கையுடன் பயன்படுத்தவும்."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"துல்லியமான சரிபார்ப்பு இயக்கப்பட்டிருக்கும் போது பயன்படுத்தப்படும் தொலைபேசி "
+"எண் சரிபார்ப்பு வகைகள்."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "மொபைல்"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "நிலையான வரி"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "கட்டணமில்லா சேவை"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

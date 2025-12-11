@@ -2783,6 +2783,24 @@ msgstr ""
 "Il s'agit d'une fonctionnalité expérimentale qui peut ne pas fonctionner "
 "comme prévu dans toutes les configurations. Utilisez-la avec prudence."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Types de validation du numéro de téléphone utilisés lorsque la validation "
+"précise est activée."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobile"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Ligne fixe"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Numéro vert"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

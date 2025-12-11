@@ -2505,6 +2505,24 @@ msgstr ""
 "ਇਹ ਇੱਕ ਪ੍ਰਯੋਗਾਤਮਕ ਵਿਸ਼ੇਸ਼ਤਾ ਹੈ ਅਤੇ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਸਾਰੇ ਸੈੱਟਅੱਪਾਂ ਵਿੱਚ ਉਮੀਦ "
 "ਅਨੁਸਾਰ ਕੰਮ ਨਾ ਕਰੇ। ਇਸਨੂੰ ਸਾਵਧਾਨੀ ਨਾਲ ਵਰਤੋ।"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ਜਦੋਂ ਸਟੀਕ ਪ੍ਰਮਾਣਿਕਤਾ ਚਾਲੂ ਹੁੰਦੀ ਹੈ ਤਾਂ ਫ਼ੋਨ ਨੰਬਰ ਪ੍ਰਮਾਣਿਕਤਾ ਕਿਸਮਾਂ ਵਰਤੀਆਂ "
+"ਜਾਂਦੀਆਂ ਹਨ।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ਮੋਬਾਈਲ"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ਸਥਿਰ ਲਾਈਨ"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ਟੋਲ ਫ੍ਰੀ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

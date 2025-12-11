@@ -2414,6 +2414,22 @@ msgid ""
 "Use it with caution."
 msgstr "זוהי תכונה ניסיונית וייתכן שלא תפעל כצפוי בכל ההגדרות. יש להשתמש בה בזהירות."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "סוגי אימות מספרי טלפון המשמשים כאשר אימות מדויק מופעל."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "נייד"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "קו נייח"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "חינם"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

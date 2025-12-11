@@ -2544,6 +2544,24 @@ msgstr ""
 "ეს ექსპერიმენტული ფუნქციაა და შესაძლოა ყველა პარამეტრში მოსალოდნელზე კარგად "
 "არ იმუშაოს. გამოიყენეთ იგი სიფრთხილით."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ტელეფონის ნომრის დადასტურების ტიპები, რომლებიც გამოიყენება ზუსტი "
+"დადასტურების ჩართვისას."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "მობილური"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ფიქსირებული ხაზი"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "უფასო ზარი"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

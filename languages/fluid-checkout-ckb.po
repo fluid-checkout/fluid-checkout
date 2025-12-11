@@ -2549,6 +2549,24 @@ msgstr ""
 "Ev taybetmendiyek ceribandinî ye û dibe ku di hemî sazkirinan de wekî ku tê "
 "hêvîkirin nexebite. Bi baldarî bikar bînin."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Cureyên pejirandina hejmarên telefonê yên ku dema pejirandina rast çalak e "
+"têne bikar anîn."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Hejî"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Xeta sabît"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bêpere"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2518,6 +2518,24 @@ msgstr ""
 "Det här är en experimentell funktion som kanske inte fungerar som förväntat "
 "i alla konfigurationer. Använd den med försiktighet."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Valideringstyper för telefonnummer som används när exakt validering är "
+"aktiverad."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fast telefoni"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Kostnadsfritt"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

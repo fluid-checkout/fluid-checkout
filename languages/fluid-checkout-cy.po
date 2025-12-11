@@ -2551,6 +2551,24 @@ msgstr ""
 "Nodwedd arbrofol yw hon ac efallai na fydd yn gweithio fel y disgwylir ym "
 "mhob gosodiad. Defnyddiwch hi&#39;n ofalus."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Mathau dilysu rhifau ffôn a ddefnyddir pan fydd dilysu manwl gywir "
+"wedi&#39;i alluogi."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Symudol"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Llinell sefydlog"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Rhadffôn"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

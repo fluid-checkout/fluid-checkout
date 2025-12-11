@@ -2521,6 +2521,24 @@ msgstr ""
 "بۇ بىر تەجرىبە ئىقتىدارى بولۇپ ، بارلىق تەڭشەشلەردە مۆلچەردىكىدەك "
 "ئىشلىمەسلىكى مۇمكىن. ئېھتىيات بىلەن ئىشلىتىڭ."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ئېنىق دەلىللەش قوزغىتىلغاندا ئىشلىتىلىدىغان تېلېفون نومۇرىنى دەلىللەش "
+"تىپلىرى."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "كۆچمە"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "مۇقىم سىزىق"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ھەقسىز"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

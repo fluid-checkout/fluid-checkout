@@ -2741,6 +2741,24 @@ msgstr ""
 "Se trata de una función experimental y puede que no funcione como se espera "
 "en todas las configuraciones. Utilícela con precaución."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tipos de validación del número de teléfono utilizados cuando está activada "
+"la validación precisa."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Móvil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Línea fija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Llamada gratuita"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

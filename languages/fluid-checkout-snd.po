@@ -2503,6 +2503,22 @@ msgstr ""
 "هي هڪ تجرباتي خصوصيت آهي ۽ شايد سڀني سيٽ اپ ۾ توقع مطابق ڪم نه ڪري. ان کي "
 "احتياط سان استعمال ڪريو."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "جڏهن صحيح تصديق فعال هجي ته فون نمبر جي تصديق جا قسم استعمال ٿيندا آهن."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "موبائل"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "مقرر ٿيل لڪير"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ٽول فري"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

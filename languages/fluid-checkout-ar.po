@@ -2450,6 +2450,22 @@ msgid ""
 "Use it with caution."
 msgstr "هذه ميزة تجريبية وقد لا تعمل كما هو متوقع في جميع الإعدادات. استخدمها بحذر."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "أنواع التحقق من صحة رقم الهاتف المستخدمة عند تمكين التحقق الدقيق."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "متحرك"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "خط ثابت"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "رقم مجاني"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

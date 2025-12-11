@@ -2495,6 +2495,24 @@ msgstr ""
 "این یک ویژگی آزمایشی است و ممکن است در همه تنظیمات آنطور که انتظار می‌رود "
 "کار نکند. با احتیاط از آن استفاده کنید."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"انواع اعتبارسنجی شماره تلفن که هنگام فعال بودن اعتبارسنجی دقیق استفاده "
+"می‌شوند."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "موبایل"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "خط ثابت"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "رایگان"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

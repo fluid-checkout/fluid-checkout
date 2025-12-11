@@ -2520,6 +2520,24 @@ msgstr ""
 "Šī ir eksperimentāla funkcija, un tā var nedarboties atbilstoši gaidītajam "
 "visos iestatījumos. Izmantojiet to piesardzīgi."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tālruņa numura validēšanas veidi, ko izmanto, ja ir iespējota precīza "
+"validēšana."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobilais"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksētā līnija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bezmaksas"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

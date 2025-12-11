@@ -2503,6 +2503,24 @@ msgstr ""
 "Tämä on kokeellinen ominaisuus, eikä se välttämättä toimi odotetulla "
 "tavalla kaikissa asetuksissa. Käytä sitä varoen."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Puhelinnumeron vahvistustyypit, joita käytetään, kun tarkka vahvistus on "
+"käytössä."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiili"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Kiinteä linja"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Maksuton"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

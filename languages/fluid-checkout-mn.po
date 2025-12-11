@@ -2542,6 +2542,24 @@ msgstr ""
 "Энэ бол туршилтын онцлог бөгөөд бүх тохиргоонд санаснаар ажиллахгүй байж "
 "магадгүй. Үүнийг болгоомжтой хэрэглээрэй."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Нарийвчилсан баталгаажуулалтыг идэвхжүүлсэн үед ашигладаг утасны дугаар "
+"баталгаажуулалтын төрлүүд."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Гар утас"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Тогтмол шугам"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Үнэгүй"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

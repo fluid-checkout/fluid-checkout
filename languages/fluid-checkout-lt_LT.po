@@ -2651,6 +2651,24 @@ msgstr ""
 "Tai yra eksperimentinė funkcija, todėl gali būti, kad ji neveiks taip, kaip "
 "tikimasi, visose konfigūracijose. Naudokite ją atsargiai."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefono numerio patvirtinimo tipai, naudojami, kai įjungtas tikslus "
+"patvirtinimas."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobilusis"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksuotoji linija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Nemokama"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

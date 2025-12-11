@@ -2530,6 +2530,24 @@ msgstr ""
 "Ovo je eksperimentalna funkcija i možda neće raditi kako se očekuje u svim "
 "postavkama. Koristite je s oprezom."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Vrste validacije telefonskog broja koje se koriste kada je omogućena "
+"precizna validacija."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobilni"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksna linija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Besplatni poziv"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

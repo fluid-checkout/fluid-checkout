@@ -2663,6 +2663,24 @@ msgstr ""
 "Ez egy kísérleti funkció, és előfordulhat, hogy nem minden beállításban "
 "működik a várt módon. Óvatosan használja."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"A telefonszám érvényesítésének típusai, ha a pontos érvényesítés "
+"engedélyezve van."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Vezetékes vonal"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Díjmentes"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

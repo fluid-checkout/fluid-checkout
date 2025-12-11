@@ -2498,6 +2498,24 @@ msgstr ""
 "See on eksperimentaalne funktsioon ja ei pruugi kõigis seadistustes toimida "
 "ootuspäraselt. Kasutage seda ettevaatlikult."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefoninumbri valideerimise tüübid, mida kasutatakse, kui täpne "
+"valideerimine on lubatud."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiilne"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fikseeritud liin"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Tasuta"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

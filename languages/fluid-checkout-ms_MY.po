@@ -2557,6 +2557,24 @@ msgstr ""
 "Ini ialah ciri percubaan dan mungkin tidak berfungsi seperti yang "
 "diharapkan dalam semua persediaan. Gunakannya dengan berhati-hati."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Jenis pengesahan nombor telefon digunakan apabila pengesahan tepat "
+"didayakan."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mudah alih"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Talian tetap"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Percuma tol"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

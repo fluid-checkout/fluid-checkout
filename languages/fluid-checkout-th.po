@@ -2502,6 +2502,22 @@ msgstr ""
 "นี่เป็นฟีเจอร์ทดลองและอาจไม่ทำงานตามที่คาดหวังในทุกการตั้งค่า "
 "โปรดใช้ด้วยความระมัดระวัง"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ประเภทการตรวจสอบหมายเลขโทรศัพท์ที่ใช้เมื่อเปิดใช้งานการตรวจสอบที่แม่นยำ"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "มือถือ"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "โทรศัพท์บ้าน"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "โทรฟรี"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

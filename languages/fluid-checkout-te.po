@@ -2543,6 +2543,24 @@ msgstr ""
 "ఇది ఒక ప్రయోగాత్మక ఫీచర్ మరియు అన్ని సెటప్‌లలో ఆశించిన విధంగా పని "
 "చేయకపోవచ్చు. దీన్ని జాగ్రత్తగా ఉపయోగించండి."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ఖచ్చితమైన ధ్రువీకరణ ప్రారంభించబడినప్పుడు ఉపయోగించే ఫోన్ నంబర్ ధ్రువీకరణ "
+"రకాలు."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "మొబైల్"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "స్థిర లైన్"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "టోల్ ఫ్రీ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

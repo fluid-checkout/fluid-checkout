@@ -2528,6 +2528,24 @@ msgstr ""
 "ហើយប្រហែលជាមិនដំណើរការដូចការរំពឹងទុកក្នុងការរៀបចំទាំងអស់។ "
 "ប្រើវាដោយប្រុងប្រយ័ត្ន។"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ប្រភេទនៃការផ្ទៀងផ្ទាត់លេខទូរស័ព្ទដែលប្រើនៅពេលដែលការផ្ទៀងផ្ទាត់ជាក់លាក់ត្រូវប"
+"ានបើក។"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ទូរស័ព្ទចល័ត"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "បន្ទាត់ថេរ"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ឥតគិតថ្លៃ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

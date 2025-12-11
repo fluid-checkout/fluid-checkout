@@ -2549,6 +2549,24 @@ msgstr ""
 "Hierdie is &#39;n eksperimentele kenmerk en werk dalk nie soos verwag in "
 "alle opstellings nie. Gebruik dit met omsigtigheid."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefoonnommervalideringstipes wat gebruik word wanneer presiese validering "
+"geaktiveer is."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiel"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Vaste lyn"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Tolvry"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2601,6 +2601,24 @@ msgstr ""
 "Is e feart deuchainneach a tha seo agus is dòcha nach obraich e mar a "
 "bhiodh dùil anns a h-uile suidheachadh. Cleachd e gu faiceallach."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Seòrsaichean dearbhaidh àireamh fòn a thathar a’ cleachdadh nuair a bhios "
+"dearbhadh mionaideach air a chomasachadh."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Fòn-làimhe"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Loidhne stèidhichte"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Saor-chìs"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

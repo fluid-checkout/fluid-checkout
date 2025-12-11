@@ -2571,6 +2571,24 @@ msgstr ""
 "Це експериментальна функція, і вона може не працювати належним чином у всіх "
 "налаштуваннях. Використовуйте її з обережністю."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Типи валідації телефонного номера, які використовуються, коли ввімкнено "
+"точну валідацію."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Мобільний"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Фіксована лінія"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Безкоштовно"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

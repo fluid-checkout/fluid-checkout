@@ -2564,6 +2564,24 @@ msgstr ""
 "Kjo është një veçori eksperimentale dhe mund të mos funksionojë siç pritet "
 "në të gjitha konfigurimet. Përdoreni me kujdes."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Llojet e validimit të numrit të telefonit të përdorura kur aktivizohet "
+"validimi i saktë."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Celular"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Linjë fikse"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Pa pagesë"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

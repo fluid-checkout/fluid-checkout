@@ -2512,6 +2512,24 @@ msgstr ""
 "Iki minangka fitur eksperimen lan bisa uga ora bisa digunakake kaya sing "
 "dikarepake ing kabeh persiyapan. Gunakake kanthi ati-ati."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Jinis validasi nomer telpon sing digunakake nalika validasi sing tepat "
+"diaktifake."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Seluler"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Jalur tetep"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bebas pulsa"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

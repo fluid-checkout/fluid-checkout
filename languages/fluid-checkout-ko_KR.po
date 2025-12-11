@@ -2315,6 +2315,22 @@ msgid ""
 "Use it with caution."
 msgstr "이 기능은 실험적인 기능이며 모든 설정에서 예상대로 작동하지 않을 수 있습니다. 주의해서 사용하세요."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "정밀 유효성 검사가 활성화된 경우 사용되는 전화 번호 유효성 검사 유형입니다."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "모바일"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "고정 회선"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "무료 전화"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

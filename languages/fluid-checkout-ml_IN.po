@@ -2582,6 +2582,22 @@ msgstr ""
 "ഇതൊരു പരീക്ഷണാത്മക സവിശേഷതയാണ്, എല്ലാ സജ്ജീകരണങ്ങളിലും പ്രതീക്ഷിച്ചതുപോലെ "
 "പ്രവർത്തിച്ചേക്കില്ല. ഇത് ജാഗ്രതയോടെ ഉപയോഗിക്കുക."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "കൃത്യമായ സാധൂകരണം പ്രാപ്തമാക്കുമ്പോൾ ഉപയോഗിക്കുന്ന ഫോൺ നമ്പർ സാധൂകരണ തരങ്ങൾ."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "മൊബൈൽ"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "സ്ഥിര ലൈൻ"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ടോൾ ഫ്രീ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

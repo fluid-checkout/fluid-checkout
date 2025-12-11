@@ -2553,6 +2553,24 @@ msgstr ""
 "Hiki ni kipengele cha majaribio na huenda kisifanye kazi inavyotarajiwa "
 "katika usanidi wote. Itumie kwa tahadhari."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Aina za uthibitishaji wa nambari za simu zinazotumiwa wakati uthibitishaji "
+"kwa usahihi umewashwa."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Simu ya Mkononi"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Mstari usiohamishika"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bila malipo"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

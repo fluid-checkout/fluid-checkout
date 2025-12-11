@@ -2754,6 +2754,24 @@ msgstr ""
 "Αυτή είναι μια πειραματική λειτουργία και ενδέχεται να μην λειτουργεί όπως "
 "αναμένεται σε όλες τις ρυθμίσεις. Χρησιμοποιήστε το με προσοχή."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Τύποι επικύρωσης αριθμού τηλεφώνου που χρησιμοποιούνται όταν είναι "
+"ενεργοποιημένη η ακριβής επικύρωση."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Κινητό"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Σταθερή γραμμή"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Χωρίς χρέωση"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

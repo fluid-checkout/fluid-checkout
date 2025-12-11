@@ -2493,6 +2493,24 @@ msgstr ""
 "हे एक प्रायोगिक वैशिष्ट्य आहे आणि सर्व सेटअपमध्ये अपेक्षेप्रमाणे काम करू "
 "शकत नाही. ते सावधगिरीने वापरा."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"अचूक प्रमाणीकरण सक्षम केलेले असताना वापरले जाणारे फोन नंबर प्रमाणीकरण "
+"प्रकार."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "मोबाईल"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "स्थिर रेषा"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "टोल फ्री"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

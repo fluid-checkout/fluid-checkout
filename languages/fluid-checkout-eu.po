@@ -2553,6 +2553,24 @@ msgstr ""
 "Ezaugarri esperimentala da hau eta baliteke konfigurazio guztietan espero "
 "bezala ez funtzionatzea. Kontuz erabili."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Balidazio zehatza gaituta dagoenean erabiltzen diren telefono zenbakien "
+"balidazio motak."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mugikorra"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Linea finkoa"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Doako telefonoa"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2513,6 +2513,22 @@ msgstr ""
 "یہ ایک تجرباتی خصوصیت ہے اور ہو سکتا ہے کہ تمام سیٹ اپ میں توقع کے مطابق "
 "کام نہ کرے۔ اسے احتیاط کے ساتھ استعمال کریں۔"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "درست توثیق کے فعال ہونے پر فون نمبر کی توثیق کی اقسام استعمال کی جاتی ہیں۔"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "موبائل"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "فکسڈ لائن"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ٹول فری"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

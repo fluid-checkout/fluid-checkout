@@ -2515,6 +2515,22 @@ msgstr ""
 "Đây là tính năng thử nghiệm và có thể không hoạt động như mong đợi trong "
 "mọi thiết lập. Hãy thận trọng khi sử dụng."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Các loại xác thực số điện thoại được sử dụng khi bật xác thực chính xác."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Di động"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Đường dây cố định"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Miễn phí"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

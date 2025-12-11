@@ -2512,6 +2512,22 @@ msgstr ""
 "এইটো এটা পৰীক্ষামূলক বৈশিষ্ট্য আৰু সকলো ছেটআপত আশা কৰা ধৰণে কাম নকৰিবও "
 "পাৰে। সাৱধানে ব্যৱহাৰ কৰক।"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ফোন নম্বৰ বৈধকৰণ ধৰণসমূহ ব্যৱহৃত যেতিয়া নিখুঁত বৈধকৰণ সামৰ্থবান কৰা হয়।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ম’বাইল"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ফিক্সড লাইন"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "টোল ফ্ৰী"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2516,6 +2516,24 @@ msgstr ""
 "Þetta er tilraunaeiginleiki og virkar hugsanlega ekki eins og búist var við "
 "í öllum uppsetningum. Notið hann með varúð."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Staðfestingargerðir símanúmera sem notaðar eru þegar nákvæm staðfesting er "
+"virk."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Farsími"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fastlína"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Ókeypis gjald"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

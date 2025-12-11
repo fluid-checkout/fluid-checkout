@@ -2553,6 +2553,24 @@ msgstr ""
 "Dit is in eksperimintele funksje en wurket miskien net sa as ferwachte yn "
 "alle opstellingen. Brûk it mei foarsichtigens."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tillefoannûmerfalidaasjetypen dy&#39;t brûkt wurde as krekte falidaasje "
+"ynskeakele is."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobyl"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fêste line"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Tolfrij"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

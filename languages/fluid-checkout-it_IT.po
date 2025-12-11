@@ -2774,6 +2774,24 @@ msgstr ""
 "Si tratta di una funzione sperimentale che potrebbe non funzionare come "
 "previsto in tutte le configurazioni. Utilizzatela con cautela."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tipi di convalida del numero di telefono utilizzati quando è abilitata la "
+"convalida precisa."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobile"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Linea fissa"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Numero verde"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

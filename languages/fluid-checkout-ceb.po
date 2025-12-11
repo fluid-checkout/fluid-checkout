@@ -2588,6 +2588,24 @@ msgstr ""
 "Kini usa ka eksperimento nga bahin ug mahimong dili molihok sama sa "
 "gipaabut sa tanan nga mga setup. Gamita kini uban ang pag-amping."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Ang mga tipo sa pag-validate sa numero sa telepono nga gigamit kung ang "
+"tukma nga pag-validate gipagana."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobile"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Naayo nga linya"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Libre ang bayad"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

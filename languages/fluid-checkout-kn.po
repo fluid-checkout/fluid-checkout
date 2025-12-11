@@ -2528,6 +2528,24 @@ msgstr ""
 "ಇದು ಪ್ರಾಯೋಗಿಕ ವೈಶಿಷ್ಟ್ಯವಾಗಿದ್ದು, ಎಲ್ಲಾ ಸೆಟಪ್‌ಗಳಲ್ಲಿ ನಿರೀಕ್ಷೆಯಂತೆ "
 "ಕಾರ್ಯನಿರ್ವಹಿಸದಿರಬಹುದು. ಇದನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಬಳಸಿ."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ನಿಖರವಾದ ದೃಢೀಕರಣವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ ಬಳಸಲಾಗುವ ಫೋನ್ ಸಂಖ್ಯೆ ದೃಢೀಕರಣದ "
+"ಪ್ರಕಾರಗಳು."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ಮೊಬೈಲ್"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ಸ್ಥಿರ ಮಾರ್ಗ"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ಟೋಲ್ ಫ್ರೀ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

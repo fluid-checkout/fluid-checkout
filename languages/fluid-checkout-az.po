@@ -2536,6 +2536,24 @@ msgstr ""
 "Bu eksperimental xüsusiyyətdir və bütün quraşdırmalarda gözlənildiyi kimi "
 "işləməyə bilər. Ehtiyatla istifadə edin."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Dəqiq doğrulama aktiv olduqda istifadə edilən telefon nömrəsinin doğrulama "
+"növləri."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Sabit xətt"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Pulsuz"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

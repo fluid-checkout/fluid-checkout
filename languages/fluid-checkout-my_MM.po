@@ -2604,6 +2604,24 @@ msgstr ""
 "၎င်းသည် စမ်းသပ်မှုအင်္ဂါရပ်တစ်ခုဖြစ်ပြီး တပ်ဆင်မှုအားလုံးတွင် "
 "မျှော်လင့်ထားသည့်အတိုင်း အလုပ်မဖြစ်နိုင်ပါ။ သတိနဲ့သုံးပါ။"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"တိကျသောအတည်ပြုချက်ကို ဖွင့်ထားသောအခါတွင် အသုံးပြုသည့် ဖုန်းနံပါတ် "
+"မှန်ကန်မှုအမျိုးအစားများ။"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "မိုဘိုင်း"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ပုံသေလိုင်း"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "အခမဲ့"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

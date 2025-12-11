@@ -2538,6 +2538,22 @@ msgstr ""
 "Бұл эксперименттік мүмкіндік және барлық орнатуларда күткендей жұмыс "
 "істемеуі мүмкін. Оны абайлап пайдаланыңыз."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Нақты тексеру қосылған кезде пайдаланылатын телефон нөмірін тексеру түрлері."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Ұялы"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Тұрақты сызық"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Тегін"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

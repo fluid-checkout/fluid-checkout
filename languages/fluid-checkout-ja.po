@@ -2332,6 +2332,22 @@ msgid ""
 "Use it with caution."
 msgstr "これは実験的な機能であり、すべてのセットアップで期待通りに機能するとは限りません。注意して使用してください。"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "正確な検証が有効な場合に使用される電話番号検証タイプ。"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "モバイル"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "固定回線"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "フリーダイヤル"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

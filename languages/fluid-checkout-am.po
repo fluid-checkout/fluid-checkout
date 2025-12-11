@@ -2369,6 +2369,22 @@ msgid ""
 "Use it with caution."
 msgstr "ይህ የሙከራ ባህሪ ነው እና በሁሉም ውቅሮች ውስጥ እንደተጠበቀው ላይሰራ ይችላል። በጥንቃቄ ይጠቀሙበት."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ትክክለኛ ማረጋገጫ ሲነቃ ጥቅም ላይ የሚውሉ የስልክ ቁጥር ማረጋገጫ ዓይነቶች።"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ሞባይል"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ቋሚ መስመር"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ከክፍያ ነፃ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

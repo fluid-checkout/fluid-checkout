@@ -2503,6 +2503,24 @@ msgstr ""
 "यह एक प्रायोगिक सुविधा है और हो सकता है कि यह सभी सेटअप में अपेक्षानुसार "
 "काम न करे। इसका उपयोग सावधानी से करें।"
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"जब सटीक सत्यापन सक्षम होता है, तब फ़ोन नंबर सत्यापन प्रकारों का उपयोग किया "
+"जाता है।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "गतिमान"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "निश्चित रेखा"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "टोल फ्री"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

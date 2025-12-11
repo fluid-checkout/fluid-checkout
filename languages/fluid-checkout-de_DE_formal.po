@@ -2757,6 +2757,24 @@ msgstr ""
 "nicht in allen Konfigurationen wie erwartet funktioniert. Verwenden Sie sie "
 "mit Vorsicht."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefonnummernvalidierungstypen, die verwendet werden, wenn die präzise "
+"Validierung aktiviert ist."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Festnetz"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Gebührenfrei"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

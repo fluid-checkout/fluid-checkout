@@ -2500,6 +2500,22 @@ msgstr ""
 "Ĉi tio estas eksperimenta funkcio kaj eble ne funkcios kiel atendate en "
 "ĉiuj aranĝoj. Uzu ĝin singarde."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Validigo-tipoj de telefonnumero uzataj kiam preciza validigo estas ebligita."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Poŝtelefono"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksa linio"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Senpaga"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

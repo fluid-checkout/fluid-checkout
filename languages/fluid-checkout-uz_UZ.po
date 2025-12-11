@@ -2585,6 +2585,22 @@ msgstr ""
 "Bu eksperimental xususiyat va barcha sozlamalarda kutilganidek ishlamasligi "
 "mumkin. Ehtiyotkorlik bilan foydalaning."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Telefon raqamini tekshirish turlari aniq tekshirish yoqilganda ishlatiladi."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Ruxsat etilgan chiziq"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bepul"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

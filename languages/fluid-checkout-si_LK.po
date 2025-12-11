@@ -2500,6 +2500,22 @@ msgstr ""
 "මෙය අත්හදා බැලීමේ විශේෂාංගයක් වන අතර සියලුම සැකසුම් තුළ අපේක්ෂා කළ පරිදි "
 "ක්‍රියා නොකරනු ඇත. එය ප්‍රවේශමෙන් භාවිතා කරන්න."
 
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "නිරවද්‍ය වලංගුකරණය සක්‍රිය කර ඇති විට භාවිතා කරන දුරකථන අංක වලංගුකරණ වර්ග."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ජංගම"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ස්ථාවර රේඛාව"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ගාස්තු රහිත"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
