@@ -828,6 +828,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the allowed checkout column layout options.
+	 *
+	 * @return  array  Design templates arguments.
+	 */
+	public function get_checkout_column_layout_options() {
+		return array(
+			'1-column' => array( 'label' => __( '1 Column', 'fluid-checkout' ) ),
+			'2-column' => array( 'label' => __( '2 Columns', 'fluid-checkout' ) ),
+		);
+	}
+
+	/**
+	 * Return the list of values accepted for checkout column layout.
+	 *
+	 * @return  array  List of values accepted for checkout column layout.
+	 */
+	public function get_allowed_checkout_column_layouts() {
+		return array_keys( $this->get_checkout_column_layout_options() );
+	}
+
+
+
+	/**
 	 * Return the list of values accepted for checkout layout.
 	 *
 	 * @return  array  List of values accepted for checkout layout.
