@@ -354,6 +354,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
+* Added: Compatibility with plugin WC Cities Select.
+* Added: Compatibility with plugin WooCommerce Italian Add-on Plus.
+* Added: New filter `fc_mailcheck_suggestion_message` to allow changing the Mailcheck email typo suggestion message.
+* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certains 3rd-party plugins.
+
 = 4.1.4 - 2025-12-05 =
 
 * Bump tested up to WordPress 6.9 and WooCommerce 10.3.6

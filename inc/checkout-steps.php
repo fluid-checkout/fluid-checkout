@@ -264,17 +264,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add or remove hooks for the checkout form.
 	 */
 	public function checkout_form_hooks() {
-		// Unhook WooCommerce functions
-		if ( doing_action( 'woocommerce_checkout_init' ) || did_action( 'woocommerce_checkout_init' ) ) {
-			remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-			remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
-		}
-
-		// Unhook other hooks
+		// Unhook checkout form sections
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
+
+		// Add hook to remove checkout form sections right before it would be output
+		add_action( 'woocommerce_checkout_billing', array( $this, 'checkout_form_sections_hooks' ), 9 );
+		add_action( 'woocommerce_checkout_shipping', array( $this, 'checkout_form_sections_hooks' ), 9 );
+		add_action( 'woocommerce_checkout_billing', array( $this, 'checkout_form_sections_hooks' ), 11 );
+		add_action( 'woocommerce_checkout_shipping', array( $this, 'checkout_form_sections_hooks' ), 11 );
+	}
+
+	/**
+	 * Add or remove hooks for the checkout form sections.
+	 */
+	public function checkout_form_sections_hooks() {
+		// Bail if checkout initialization has not been performed yet
+		if ( ! did_action( 'woocommerce_checkout_init' ) ) { return; }
+
+		// Unhook checkout form sections
+		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
+		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
 	}
 
 	/**
