@@ -83,6 +83,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-layout',
 						'class'             => 'fc-checkout-layout__option',
+						'fc_layout_group'   => 'start',
 					),
 
 					array(
@@ -94,6 +95,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-layout',
 						'class'             => 'fc-checkout-layout__option',
+						'fc_layout_group'   => 'end',
 					),
 
 					array(

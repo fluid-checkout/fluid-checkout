@@ -701,7 +701,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$add_classes[] = 'has-billing-address-position--' . esc_attr( $position );
 
 		// Add extra class when sidebar is present
-		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) && 'two_column' === FluidCheckout_Settings::instance()->get_option( 'fc_checkout_column_layout' ) ) {
+		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
 			$add_classes[] = 'has-fc-sidebar';
 		}
 
@@ -834,8 +834,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_column_layout_options() {
 		return array(
-			'one_column' => array( 'label' => __( '1 Column', 'fluid-checkout' ) ),
 			'two_column' => array( 'label' => __( '2 Columns', 'fluid-checkout' ) ),
+			'one_column' => array( 'label' => __( '1 Column', 'fluid-checkout' ), 'disabled' => true ),
 		);
 	}
 
@@ -6113,9 +6113,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output sidebar section wrapper.
 	 */
 	public function output_checkout_sidebar_wrapper() {
-		// Bail if 1-column layout is selected in the settings
-		if ( 'one_column' === FluidCheckout_Settings::instance()->get_option( 'fc_checkout_column_layout' ) ) { return; }
-
 		// Initialize attributes
 		$sidebar_attributes = array(
 			'class' => 'fc-sidebar',

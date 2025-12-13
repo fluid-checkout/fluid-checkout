@@ -21,12 +21,29 @@
 
 .forminp-fc_layout_selector fieldset {
   padding: 20px;
+  display: flex;
   background-color: #fff;
 }
 
 .forminp-fc_layout_selector ul {
   margin: 0;
   display: flex;
+}
+
+.forminp-fc_layout_selector ul + ul {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.forminp-fc_layout_selector ul + ul:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #f0f0f1;
 }
 
 .forminp-fc_layout_selector li {
@@ -38,6 +55,11 @@
 
 .forminp-fc_layout_selector li + li {
   margin-left: 10px;
+}
+
+.forminp-fc_layout_selector label.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .forminp-fc_layout_selector .fc-checkout-layout__option:after {
@@ -56,6 +78,10 @@
 
 .forminp-fc_layout_selector .fc-checkout-layout__option:checked:after {
   border: solid 2px #3481C4;
+}
+
+.forminp-fc_layout_selector .fc-checkout-layout__option:disabled {
+  cursor: not-allowed;
 }
 
 .forminp-fc_template_selector fieldset {
