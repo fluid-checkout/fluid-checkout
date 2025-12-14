@@ -1,0 +1,14 @@
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection--single,
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection--multiple {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection--single {
+  padding-right: 0;
+}
+
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection .select2-selection__clear,
+body.theme-oceanwp div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+  height: auto;
+}

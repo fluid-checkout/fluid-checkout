@@ -1,0 +1,123 @@
+.fc-wrapper #shipping_method.shipping-method__options {
+  overflow: visible;
+}
+
+.fc-wrapper .shipping-method__option-label .shipping-method__option-text {
+  display: flex;
+}
+
+.shipping-method__options .extra-flate-tool-tip,
+.shipping-method__options .forceall-tooltip {
+  display: inline;
+  position: relative;
+}
+
+/* Add this attribute to the element that needs a tooltip */
+.shipping-method__options [data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.shop_table.shop_table_responsive {
+  overflow: visible !important;
+}
+
+/* Hide the tooltip content by default */
+.shipping-method__options [data-tooltip]:before,
+.shipping-method__options [data-tooltip]:after {
+  visibility: hidden;
+  filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+.shipping-method__options [data-tooltip]:before {
+  position: absolute;
+  bottom: 130%;
+  left: -100%;
+  margin-bottom: 5px;
+  margin-right: -80px;
+  padding: 7px;
+  width: 300px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+.shipping-method__options [data-tooltip]:after {
+  position: absolute;
+  bottom: 130%;
+  right: 50%;
+  margin-right: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+.shipping-method__options [data-tooltip]:hover:before,
+.shipping-method__options [data-tooltip]:hover:after {
+  visibility: visible;
+  filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  opacity: 1;
+}
+
+.shipping-method__options .extra-flate-tool-tip, .shipping-method__options .forceall-tooltip {
+  display: inline-block !important;
+  float: right;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.forceall_shipping_method {
+  display: none;
+}
+
+#shipping_method li label {
+  font-weight: 400;
+}
+
+.shipping-method__options .forceall-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.shipping-method__options .forceall-tooltip .tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  bottom: 150%;
+  right: 50%;
+  margin-bottom: 5px;
+  margin-right: -80px;
+  padding: 7px;
+  width: 300px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.shipping-method__options .forceall-tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.shipping-method__options .extra-flate-tool-tip, .shipping-method__options .forceall-tooltip {
+  float: none !important;
+}
