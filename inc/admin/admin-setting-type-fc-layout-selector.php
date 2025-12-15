@@ -68,7 +68,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
-	private function open_field_wrapper( $value ) {
+	public function output_field_wrapper_start_tag( $value ) {
 		// Description handling.
 		$field_description = WC_Admin_Settings::get_field_description( $value );
 		$tooltip_html      = $field_description[ 'tooltip_html' ];
@@ -87,7 +87,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
-	private function close_field_wrapper( $value ) {
+	public function output_field_wrapper_end_tag( $value ) {
 		// Description handling.
 		$field_description = WC_Admin_Settings::get_field_description( $value );
 		$description       = $field_description[ 'description' ];
@@ -134,7 +134,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 
 		// Maybe add opening tags for the field wrapper elements
 		if ( empty( $value[ 'fc_layout_group' ] ) || 'start' === $value[ 'fc_layout_group' ] ) {
-			$this->open_field_wrapper( $value );
+			$this->output_field_wrapper_start_tag( $value );
 		}
 		?>
 
@@ -159,7 +159,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 		<?php
 		// Maybe add closing tags for the field wrapper elements
 		if ( empty( $value[ 'fc_layout_group' ] ) || 'end' === $value[ 'fc_layout_group' ] ) {
-			$this->close_field_wrapper( $value );
+			$this->output_field_wrapper_end_tag( $value );
 		}
 	}
 
