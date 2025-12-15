@@ -66,6 +66,7 @@ class FluidCheckout_NextendSocialLogin extends FluidCheckout {
 			return;
 		}
 
+		// List of hooks to remove
 		$hooks = array(
 			'woocommerce_before_checkout_billing_form',
 			'woocommerce_after_checkout_billing_form',
@@ -75,11 +76,13 @@ class FluidCheckout_NextendSocialLogin extends FluidCheckout {
 			'woocommerce_after_checkout_shipping_form',
 		);
 
+		// List of callbacks to remove
 		$callbacks = array(
 			'NextendSocialLoginPRO::woocommerce_before_checkout_billing_form',
 			'NextendSocialLoginPRO::woocommerce_after_checkout_billing_form',
 		);
 
+		// Remove the hooks and callbacks
 		foreach ( $hooks as $hook ) {
 			foreach ( $callbacks as $callback ) {
 				remove_action( $hook, $callback );
