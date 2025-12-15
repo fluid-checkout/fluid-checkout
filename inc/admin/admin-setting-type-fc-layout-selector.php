@@ -64,7 +64,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 
 
 	/**
-	 * Add opening tags for the field wrapper elements.
+	 * Output opening tags for the field wrapper elements.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
@@ -83,7 +83,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	}
 
 	/**
-	 * Add closting tags for the field wrapper elements.
+	 * Output closing tags for the field wrapper elements.
 	 *
 	 * @param   array  $value  Admin settings args values.
 	 */
