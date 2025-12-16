@@ -1526,8 +1526,13 @@ div.place-order .woocommerce-privacy-policy-link:focus {
   outline-offset: 1px !important;
 }
 
-@media (min-width: 1000px) {
-  .fc-sidebar .fc-checkout-order-review__widgets-outside {
+.fc-sidebar .fc-checkout-order-review__widgets-outside,
+.fc-checkout-steps + .fc-checkout-order-review__widgets-outside {
+  margin-top: 20px;
+}
+@media (min-width: 750px) {
+  .fc-sidebar .fc-checkout-order-review__widgets-outside,
+  .fc-checkout-steps + .fc-checkout-order-review__widgets-outside {
     padding-left: 20px;
     padding-right: 20px;
   }
