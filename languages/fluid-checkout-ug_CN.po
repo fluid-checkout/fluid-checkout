@@ -2481,6 +2481,30 @@ msgstr ""
 "ۋە ھېسابات بېتىنى ئۆز ئىچىگە ئالغان مەزمۇن بۆلىكىنىڭ بەك تار بولماسلىقىغا "
 "كاپالەتلىك قىلىدۇ."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Smart Coupons"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "چىقىمدان بېتىدىكى ئورۇن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "چىقىمدان بېتىدە بار بولغان تالون بۆلەكلىرىنى قەيەردە كۆرسىتىشنى تاللاڭ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ئىلگىرىلەش بالدىقىدىن بۇرۇن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "تالون كود بۆلىكىدىن بۇرۇن"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

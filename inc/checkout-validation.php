@@ -115,14 +115,14 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-checkout-validation', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation' ), array( 'jquery', 'wc-checkout', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);});' );
 		wp_register_script( 'fc-mailcheck', FluidCheckout_Enqueue::instance()->get_script_url( 'js/lib/mailcheck' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-mailcheck-init', FluidCheckout_Enqueue::instance()->get_script_url( 'js/mailcheck-init' ), array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
+		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);});' );
 
 		// Brazilian documents validation script
 		wp_register_script( 'fc-checkout-validation-brazilian-documents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation-brazilian-documents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);})' );
+		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);});' );
 	}
 
 	/**
@@ -194,7 +194,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 			'alwaysValidateFieldsSelector'       => '',
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
-				'suggestedElementTemplate'       => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+				'suggestedElementTemplate'       => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( apply_filters( 'fc_mailcheck_suggestion_message', __( 'Did you mean %s?', 'fluid-checkout' ) ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
 			),
 			'validationMessages'                 => array(
 				'required'                       => __( 'This is a required field.', 'fluid-checkout' ),

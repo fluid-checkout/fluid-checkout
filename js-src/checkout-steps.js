@@ -663,6 +663,7 @@
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function( options ) {
+		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
 
 		// Merge settings

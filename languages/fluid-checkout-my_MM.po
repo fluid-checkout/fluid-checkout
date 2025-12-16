@@ -2565,6 +2565,30 @@ msgstr ""
 "စာမျက်နှာများတွင် အကြောင်းအရာအပိုင်းသည် အလွန်ကျဉ်းမြောင်းခြင်းမရှိကြောင်း "
 "သေချာစေပါသည်။"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce စမတ်ကူပွန်များ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "ငွေရှင်းစာမျက်နှာတွင် အနေအထား"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "ငွေရှင်းသည့်စာမျက်နှာရှိ ရနိုင်သောကူပွန်ကဏ္ဍကိုပြသရန်နေရာကိုရွေးချယ်ပါ။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "တိုးတက်မှုဘားရှေ့"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "တိုးတက်မှုဘားပြီးနောက်"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ကူပွန်ကုဒ်များ ကဏ္ဍမစမီ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

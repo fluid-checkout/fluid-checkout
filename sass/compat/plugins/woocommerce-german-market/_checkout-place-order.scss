@@ -9,8 +9,15 @@ body.has-fc-compat-german-market-button-placement form.woocommerce-checkout .fc-
 }
 
 body.has-fc-compat-german-market-button-placement .fc-sidebar .fc-place-order .fc-place-order-button {
-	@media (#{$bp-larger-than-desktop}) {
-		margin-bottom: $global-spacing-extra-small;
-	}
+	margin-bottom: $global-spacing-extra-small;
 }
 
+
+
+// Compatibility with WooCommerce PayPal Payments
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-credit-card-gateway .fc-wrapper .fc-sidebar .fc-sidebar__inner .fc-place-order__custom-buttons,
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-googlepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-googlepay,
+body.has-fc-compat-german-market-button-placement.has-payment-method-selected--payment_method_ppcp-applepay .fc-wrapper .fc-sidebar .fc-sidebar__inner #ppc-button-ppcp-applepay {
+	margin-top: 0;
+}
