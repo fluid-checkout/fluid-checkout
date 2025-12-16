@@ -199,6 +199,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
+		add_action( 'fc_checkout_order_review_actions', array( $this, 'run_action_sidebar_before_actions_for_backwards_compatibility' ), 1 );
+		add_action( 'fc_checkout_order_review_actions', array( $this, 'output_order_review_actions_mobile' ), 10 );
 
 		// Order summary cart items details
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_product_name' ), 10, 3 );
@@ -6469,6 +6471,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$package_index++;
 		}
 	}
+
+
+
+	/**
+	 * Output the order review actions for mobile devices.
+	 */
+	public function run_action_sidebar_before_actions_for_backwards_compatibility() {
+		do_action( 'fc_checkout_order_review_sidebar_before_actions' );
+	}
+
+	/**
+	 * Output the order review actions for mobile devices.
+	 */
+	public function output_order_review_actions_mobile() {
+		// Bail if order summary not set to display on site header
+		if ( 'site_header' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' ) ) { return; }
+
+		// Output the order review actions
+		?>
+		<div class="fc-checkout-order-review__actions-mobile">
+			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
+			<button type="button" class="fc-checkout-order-review__close-order-summary <?php echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) ); ?>" data-flyout-close aria-label="<?php echo esc_html( __( 'Close and continue with checkout', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Continue', 'fluid-checkout' ) ); ?></button>
+		</div>
+		<?php
+	}
+
 
 
 	/**
