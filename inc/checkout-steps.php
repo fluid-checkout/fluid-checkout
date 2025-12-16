@@ -79,13 +79,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Template file loader
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
-		// Checkout header and footer
-		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) {
-			// Cart link on header
-			add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
-			add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
-		}
-
 		// Container class
 		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
 
@@ -225,6 +218,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order attribution
 		// Run immediatelly for compatibility with WooCommerce versions prior to 9.2.0
 		$this->order_attribution_hooks();
+
+		// Checkout header and footer
+		$this->checkout_header_cart_link_hooks();
 	}
 
 	/**
@@ -258,6 +254,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		$this->customer_address_data_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for the checkout header cart link.
+	 */
+	public function checkout_header_cart_link_hooks() {
+		// Bail if not using distraction free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Bail if order summary not set to display on site header
+		if ( 'site_header' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' ) ) { return; }
+
+		// Cart link on header
+		add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_header_cart_link_fragment' ), 10 );
 	}
 
 	/**
