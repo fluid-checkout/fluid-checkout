@@ -298,11 +298,11 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Order summary position on mobile.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'Extra order summary section position on mobile.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_checkout_order_summary_position_mobile',
 						'type'              => 'fc_select',
 						'options'           => array(
-							'site_header'              => array( 'label' => __( 'On site header', 'fluid-checkout' ) ),
+							'site_header'              => array( 'label' => __( 'On the site header', 'fluid-checkout' ) ),
 							'before_checkout_steps'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ), 'disabled' => true ),
 							'hidden'                   => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Hidden', 'fluid-checkout' ), 'disabled' => true ),
 						),
