@@ -34,19 +34,15 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-		<?php if ( true === apply_filters( 'fc_display_order_summary_title', true ) ) : ?>
+		<div class="fc-checkout-order-review__head">
 
-			<div class="fc-checkout-order-review__head">
+			<?php do_action( 'fc_checkout_after_order_review_title_before' ); ?>
 
-				<?php do_action( 'fc_checkout_after_order_review_title_before' ); ?>
+			<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
 
-				<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
+			<?php do_action( 'fc_checkout_after_order_review_title_after' ); ?>
 
-				<?php do_action( 'fc_checkout_after_order_review_title_after' ); ?>
-
-			</div>
-
-		<?php endif; ?>
+		</div>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 

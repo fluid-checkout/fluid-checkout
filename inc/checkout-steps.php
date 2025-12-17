@@ -266,7 +266,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
 
 		// Bail if order summary not set to display on site header
-		if ( 'site_header' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' ) ) { return; }
+		if ( 'site_header' !== $this->get_extra_order_summary_position() ) { return; }
 
 		// Cart link on header
 		add_action( 'fc_checkout_header_cart_link', array( $this, 'output_checkout_header_cart_link' ), 10 );
@@ -818,7 +818,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
 	public function add_js_settings( $settings ) {
-
+		// Checkout steps settings
 		$settings[ 'checkoutSteps' ] = apply_filters( 'fc_checkout_steps_script_settings', array(
 			'isMultistepLayout'             => $this->is_checkout_layout_multistep() ? 'yes' : 'no',
 			'maybeDisablePlaceOrderButton'  => apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ),
@@ -871,6 +871,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $place_order_position;
+	}
+
+
+
+	/**
+	 * Get the order summary position.
+	 */
+	public function get_extra_order_summary_position() {
+		// Define accepted values
+		$accepted_values = array(
+			'site_header',
+			'before_checkout_steps',
+			'hidden',
+		);
+
+		// Get current value
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' );
+
+		// Set default value if value not set or not allowed
+		if ( ! in_array( $current_value, $accepted_values ) ) {
+			$current_value = 'site_header';
+		}
+
+		return $current_value;
 	}
 
 
@@ -6188,7 +6212,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$attributes[ 'class' ] = $attributes[ 'class' ] . ' has-additional-content';
 		}
 
-		return apply_filters( 'fc_checkout_order_review_html_attributes', $attributes );
+		return $attributes;
 	}
 
 	/**
@@ -6202,7 +6226,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-flyout-content' => true,
 		);
 
-		return apply_filters( 'fc_checkout_order_review_html_attributes_inner', $attributes );
+		return $attributes;
 	}
 
 	/**
@@ -6219,6 +6243,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			)
 		);
 	}
+
+
 
 	/**
 	 * Output the edit cart link to the order summary header section.
@@ -6282,9 +6308,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout place order section.
 	 */
 	public function output_checkout_place_order_placeholder() {
-		// Bail if section is disabled
-		if ( true !== apply_filters( 'fc_display_order_summary_place_order_button', true ) ) { return; }
-
 		// Output place order section placeholder
 		echo '<div class="fc-place-order__section-placeholder"></div>';
 	}
@@ -6335,9 +6358,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output checkout place order section for the sidebar.
 	 */
 	public function output_checkout_place_order_section_for_sidebar() {
-		// Bail if section is disabled
-		if ( true !== apply_filters( 'fc_display_place_order_button', true ) ) { return; }
-
 		$this->output_checkout_place_order_section( '__sidebar', true );
 	}
 
@@ -6486,7 +6506,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_review_actions_mobile() {
 		// Bail if order summary not set to display on site header
-		if ( 'site_header' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' ) ) { return; }
+		if ( 'site_header' !== $this->get_extra_order_summary_position() ) { return; }
 
 		// Output the order review actions
 		?>
