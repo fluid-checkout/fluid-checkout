@@ -4519,7 +4519,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		do_action( 'fc_shipping_methods_before_packages_inside' );
 
-		$first_item = true;
 		foreach ( $packages as $i => $package ) {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
 			$product_names = array();
@@ -4546,8 +4545,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
 				'has_calculated_shipping'   => WC()->customer->has_calculated_shipping(),
 			) );
-
-			$first_item = false;
 		}
 
 		do_action( 'fc_shipping_methods_after_packages_inside' );
