@@ -979,12 +979,6 @@ msgstr "Donkere modus inschakelen"
 msgid "Enable integrated coupon code section"
 msgstr "Geïntegreerde kortingscodesectie inschakelen"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Internationale telefoonnummernotatie en validatie voor telefoonvelden "
-"inschakelen"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "E-mailcontrole inschakelen: (uitgeschakelde functie)"
@@ -1116,10 +1110,6 @@ msgstr "Voettekst achtergrondkleur"
 #: inc/admin/admin-settings-checkout.php:470
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Forceer factuuradressen en verzendadressen tot hetzelfde (enkele sectie)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatteer en valideer telefoonnummers volgens elk land."
 
 #: inc/admin/admin-settings-checkout.php:90
 msgid ""
@@ -2288,14 +2278,6 @@ msgstr "Dit veld komt niet overeen met de gerelateerde veldwaarde."
 msgid "This is a required field."
 msgstr "Dit is een verplicht veld."
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dit is een experimentele functie en werkt mogelijk niet zoals verwacht met "
-"alle thema's en plugins. Gebruik het met voorzichtigheid."
-
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
 msgstr "Dit is geen geldig e-mailadres."
@@ -2676,6 +2658,82 @@ msgstr ""
 "Dit zorgt ervoor dat het inhoudsgedeelte niet te smal is op "
 "WooCommerce-pagina's, waaronder pagina's voor afrekenen, winkelwagentje, "
 "ontvangen bestelling, betalen en account."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Slimme Coupons"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Positie op afrekenpagina"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Kies waar het gedeelte met beschikbare coupons op de afrekenpagina moet "
+"worden weergegeven."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Voor de voortgangsbalk"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Na de voortgangsbalk"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Voor coupon codes sectie"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Velden voor internationale telefoonnummers inschakelen"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatteer telefoonnummers volgens de regels voor elk land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gebruik nauwkeurige telefoonnummervalidatie"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Probeer te controleren of het telefoonnummer een geldig mobiel of vast "
+"nummer is op basis van de regels voor de geselecteerde landcode. Deze optie "
+"gebruikt de <code>intl-tel-input</code> precieze validatiefunctie, die voor "
+"sommige telefoonnummers fout-positieve resultaten kan geven."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Dit is een experimentele functie en werkt mogelijk niet zoals verwacht in "
+"alle opstellingen. Gebruik het met voorzichtigheid."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Typen voor validatie van telefoonnummers die worden gebruikt wanneer "
+"precieze validatie is ingeschakeld."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiel"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Vaste lijn"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Gratis"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

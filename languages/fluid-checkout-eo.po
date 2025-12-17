@@ -1490,14 +1490,6 @@ msgstr "Aldonu fakturan telefonkampon al la pagformularo."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Elektu en kiu paŝo montri la fakturan telefonon kampon."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Ebligu internacian telefonnumerformaton kaj validigon por telefonkampoj"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatu kaj validigu telefonnumerojn laŭ ĉiu lando."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Ebligu telefonnumeron-validigon laŭ landaj reguloj"
@@ -1921,14 +1913,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimenta)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ĉi tio estas eksperimenta funkcio kaj eble ne funkcias kiel atendite kun "
-"ĉiuj temoj kaj kromprogramoj. Uzu ĝin kun singardemo."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2459,6 +2443,78 @@ msgstr ""
 "Ĉi tio certigas, ke la enhavsekcio ne estas tro mallarĝa sur "
 "WooCommerce-paĝoj, inkluzive de kaso, ĉaro, mendo ricevita, mendopago kaj "
 "kontopaĝoj."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Inteligentaj Kuponoj"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Pozicio sur la kaspaĝo"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Elektu kie montri la sekcion de disponeblaj kuponoj sur la kaspaĝo."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Antaŭ la progresbreto"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Post la progresbreto"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Antaŭ la sekcio de kuponkodoj"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Ebligi internaciajn telefonnumerajn kampojn"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatu telefonnumerojn laŭ la reguloj de ĉiu lando."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Uzu precizan validigon de telefonnumero"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Provu certigi, ke la telefonnumero estas valida poŝtelefona aŭ fiksa numero "
+"laŭ la reguloj por la elektita landokodo. Ĉi tiu opcio uzas la precizan "
+"validigan funkcion <code>intl-tel-input</code> , kiu povas doni falsajn "
+"pozitivojn por iuj telefonnumeroj."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ĉi tio estas eksperimenta funkcio kaj eble ne funkcios kiel atendate en "
+"ĉiuj aranĝoj. Uzu ĝin singarde."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Validigo-tipoj de telefonnumero uzataj kiam preciza validigo estas ebligita."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Poŝtelefono"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksa linio"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Senpaga"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

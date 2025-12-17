@@ -1546,16 +1546,6 @@ msgstr "Cuir raon fòn bileachaidh ris an fhoirm pàighidh."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Tagh dè an ceum gus an raon fòn bileachaidh a thaisbeanadh."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Dèan comas air cruth àireamh fòn eadar-nàiseanta agus dearbhadh airson "
-"raointean fòn"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Cruth agus dearbhaich àireamhan fòn a rèir gach dùthaich."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Dèan comas air dearbhadh àireamh fòn stèidhichte air riaghailtean dùthcha"
@@ -1997,14 +1987,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(deuchainneach)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Is e feart deuchainneach a tha seo agus is dòcha nach obraich e mar a "
-"bhiodh dùil leis a h-uile cuspair agus plugan. Cleachd e le cùram."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2558,6 +2540,84 @@ msgstr ""
 "Nì seo cinnteach nach bi an earrann susbaint ro chumhang air duilleagan "
 "WooCommerce a’ gabhail a-steach duilleagan pàighidh, cairt, òrdugh a "
 "fhuaireadh, òrdugh a phàigheadh agus cunntas."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Cùpain WooCommerce Smart"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Suidheachadh air duilleag an pàighidh"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Tagh càite an nochd thu an earrann cùpain a tha rim faighinn air duilleag "
+"an pàighidh."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Roimh am bàr adhartais"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Às dèidh a’ bhàr adhartais"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Roimhe earrann nan còdan cùpain"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Cuir raointean àireamh fòn eadar-nàiseanta an gnìomh"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Cuir cruth air àireamhan fòn a rèir nan riaghailtean airson gach dùthaich."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Cleachd dearbhadh àireamh fòn mionaideach"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Feuch ri dèanamh cinnteach gur e àireamh fòn-làimhe no loidhne-tìre "
+"dligheach a th’ anns an àireamh fòn a rèir nan riaghailtean airson a’ chòd "
+"dùthcha a chaidh a thaghadh. Bidh an roghainn seo a’ cleachdadh feart "
+"dearbhaidh mionaideach <code>intl-tel-input</code> , a dh’ fhaodadh "
+"toraidhean dearbhach meallta a thoirt seachad airson cuid de na h-àireamhan "
+"fòn."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Is e feart deuchainneach a tha seo agus is dòcha nach obraich e mar a "
+"bhiodh dùil anns a h-uile suidheachadh. Cleachd e gu faiceallach."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Seòrsaichean dearbhaidh àireamh fòn a thathar a’ cleachdadh nuair a bhios "
+"dearbhadh mionaideach air a chomasachadh."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Fòn-làimhe"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Loidhne stèidhichte"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Saor-chìs"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

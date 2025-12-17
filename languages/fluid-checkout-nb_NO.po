@@ -1502,14 +1502,6 @@ msgstr "Legg til et felt for faktureringstelefon i kasseskjemaet."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Velg i hvilket trinn du vil vise feltet for faktureringstelefon."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Aktiver internasjonalt telefonnummerformat og validering for telefonfelt"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formater og valider telefonnumre i henhold til hvert land."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Aktiver validering av telefonnummer basert på landregler"
@@ -1936,14 +1928,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentell)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dette er en eksperimentell funksjon, og det er ikke sikkert at den fungerer "
-"som forventet med alle temaer og programtillegg. Bruk den med forsiktighet."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2475,6 +2459,81 @@ msgid ""
 msgstr ""
 "Dette sikrer at innholdsseksjonen ikke er for smal på WooCommerce-sider, "
 "inkludert kassa, handlekurv, mottatt ordre, ordrebetaling og kontosider."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce smarte kuponger"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Plassering på kassesiden"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Velg hvor du vil vise tilgjengelige kuponger på betalingssiden."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Før fremdriftslinjen"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Etter fremdriftslinjen"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Før kupongkoder seksjonen"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Aktiver felt for internasjonale telefonnumre"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formater telefonnumre i henhold til reglene for hvert land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Bruk nøyaktig validering av telefonnummer"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Forsøk å sikre at telefonnummeret er et gyldig mobil- eller "
+"fasttelefonnummer basert på reglene for det valgte landskodenummeret. Dette "
+"alternativet bruker den nøyaktige valideringsfunksjonen "
+"<code>intl-tel-input</code>, som kan gi falske positive resultater for "
+"enkelte telefonnumre."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Dette er en eksperimentell funksjon, og det er ikke sikkert at den fungerer "
+"som forventet i alle oppsett. Bruk den med forsiktighet."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Valideringstyper for telefonnummer som brukes når presis validering er "
+"aktivert."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fast linje"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Gratis"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

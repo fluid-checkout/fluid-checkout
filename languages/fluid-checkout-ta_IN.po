@@ -1545,16 +1545,6 @@ msgstr ""
 "பில்லிங் தொலைபேசி புலத்தை எந்தப் படியில் காட்ட வேண்டும் என்பதைத் "
 "தேர்வுசெய்யவும்."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"தொலைபேசி புலங்களுக்கு சர்வதேச தொலைபேசி எண் வடிவமைப்பு மற்றும் சரிபார்ப்பை "
-"இயக்கு."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ஒவ்வொரு நாட்டிற்கும் ஏற்ப தொலைபேசி எண்களை வடிவமைத்து சரிபார்க்கவும்."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "நாட்டு விதிகளின் அடிப்படையில் தொலைபேசி எண் சரிபார்ப்பை இயக்கு."
@@ -1990,14 +1980,6 @@ msgstr "(புரோ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(சோதனை)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"இது ஒரு சோதனை அம்சம், மேலும் அனைத்து தீம்கள் மற்றும் செருகுநிரல்களிலும் "
-"எதிர்பார்த்தபடி வேலை செய்யாமல் போகலாம். இதை எச்சரிக்கையுடன் பயன்படுத்தவும்."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2546,6 +2528,83 @@ msgstr ""
 "இது WooCommerce பக்கங்களில் உள்ளடக்கப் பிரிவு மிகவும் குறுகலாக இல்லை என்பதை "
 "உறுதி செய்கிறது, இதில் செக்அவுட், வண்டி, ஆர்டர் பெறப்பட்டது, ஆர்டர் கட்டணம் "
 "மற்றும் கணக்குப் பக்கங்கள் ஆகியவை அடங்கும்."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce ஸ்மார்ட் கூப்பன்கள்"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "செக்அவுட் பக்கத்தில் நிலை"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"செக்அவுட் பக்கத்தில் கிடைக்கும் கூப்பன்கள் பகுதியை எங்கு காண்பிக்க வேண்டும் "
+"என்பதைத் தேர்வுசெய்யவும்."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "முன்னேற்றப் பட்டைக்கு முன்"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "முன்னேற்றப் பட்டிக்குப் பிறகு"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "கூப்பன் குறியீடுகளுக்கு முன் பிரிவு"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "சர்வதேச தொலைபேசி எண் புலங்களை இயக்கு."
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ஒவ்வொரு நாட்டிற்கான விதிகளின்படி தொலைபேசி எண்களை வடிவமைக்கவும்."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "துல்லியமான தொலைபேசி எண் சரிபார்ப்பைப் பயன்படுத்தவும்"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட நாட்டுக் குறியீட்டிற்கான விதிகளின் அடிப்படையில், "
+"தொலைபேசி எண் செல்லுபடியாகும் மொபைல் அல்லது லேண்ட்லைன் எண்ணாக இருப்பதை "
+"உறுதிசெய்ய முயற்சிக்கவும். இந்த விருப்பம் <code>intl-tel-input</code> "
+"துல்லியமான சரிபார்ப்பு அம்சத்தைப் பயன்படுத்துகிறது, இது சில தொலைபேசி "
+"எண்களுக்கு தவறான நேர்மறைகளை வழங்கக்கூடும்."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"இது ஒரு சோதனை அம்சம், எல்லா அமைப்புகளிலும் எதிர்பார்த்தபடி வேலை செய்யாமல் "
+"போகலாம். இதை எச்சரிக்கையுடன் பயன்படுத்தவும்."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"துல்லியமான சரிபார்ப்பு இயக்கப்பட்டிருக்கும் போது பயன்படுத்தப்படும் தொலைபேசி "
+"எண் சரிபார்ப்பு வகைகள்."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "மொபைல்"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "நிலையான வரி"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "கட்டணமில்லா சேவை"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -34,19 +34,15 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-		<?php if ( true === apply_filters( 'fc_display_order_review_title', true ) ) : ?>
+		<div class="fc-checkout-order-review__head">
 
-			<div class="fc-checkout-order-review__head">
+			<?php do_action( 'fc_checkout_after_order_review_title_before' ); ?>
 
-				<?php do_action( 'fc_checkout_after_order_review_title_before' ); ?>
+			<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
 
-				<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
+			<?php do_action( 'fc_checkout_after_order_review_title_after' ); ?>
 
-				<?php do_action( 'fc_checkout_after_order_review_title_after' ); ?>
-
-			</div>
-
-		<?php endif; ?>
+		</div>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
@@ -56,12 +52,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
-		<?php do_action( 'fc_checkout_order_review_sidebar_before_actions' ); ?>
-
-		<div class="fc-checkout-order-review__actions-mobile">
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
-			<button type="button" class="fc-checkout-order-review__close-order-summary <?php echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) ); ?>" data-flyout-close aria-label="<?php echo esc_html( __( 'Close and continue with checkout', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Continue', 'fluid-checkout' ) ); ?></button>
-		</div>
+		<?php do_action( 'fc_checkout_order_review_actions' ); ?>
 
 		<?php do_action( 'fc_checkout_after_order_review_inside' ); ?>
 

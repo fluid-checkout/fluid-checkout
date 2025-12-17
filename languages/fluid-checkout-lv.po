@@ -1506,14 +1506,6 @@ msgstr "Pievienojiet norēķinu tālruņa lauku izrakstīšanās veidlapai."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Izvēlieties, kurā solī parādīt norēķinu tālruņa lauku."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Iespējot starptautisko tālruņa numuru formātu un tālruņa lauku validāciju"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "formatējiet un validējiet tālruņa numurus atbilstoši katrai valstij."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Iespējot tālruņa numura validēšanu, pamatojoties uz valsts noteikumiem"
@@ -1940,14 +1932,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentāls)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Šī ir eksperimentāla funkcija, un tā var nedarboties, kā paredzēts, ar "
-"visām tēmām un spraudņiem. Izmantojiet to piesardzīgi."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2479,6 +2463,80 @@ msgstr ""
 "Tas nodrošina, ka satura sadaļa nav pārāk šaura WooCommerce lapās, tostarp "
 "izrakstīšanās, grozā, saņemtā pasūtījuma, pasūtījuma apmaksas un konta "
 "lapās."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce viedie kuponi"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Atrašanās vieta izrakstīšanās lapā"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Izvēlieties, kur izvietot pieejamo kuponu sadaļu izrakstīšanās lapā."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Pirms progresa joslas"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Pēc progresa joslas"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Pirms kuponu kodu sadaļas"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Iespējot starptautisko tālruņa numuru laukus"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "formatējiet tālruņa numurus atbilstoši katras valsts noteikumiem."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Precīzas tālruņa numura validācijas izmantošana"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Mēģiniet pārliecināties, vai tālruņa numurs ir derīgs mobilā vai fiksētā "
+"tālruņa numurs, pamatojoties uz izvēlētās valsts koda noteikumiem. Šī "
+"opcija izmanto <code>intl-tel-input</code> precīzas validēšanas funkciju, "
+"kas dažiem tālruņa numuriem var sniegt viltus pozitīvus rezultātus."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Šī ir eksperimentāla funkcija, un tā var nedarboties atbilstoši gaidītajam "
+"visos iestatījumos. Izmantojiet to piesardzīgi."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tālruņa numura validēšanas veidi, ko izmanto, ja ir iespējota precīza "
+"validēšana."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobilais"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksētā līnija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bezmaksas"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1501,16 +1501,6 @@ msgstr "Ավելացրեք վճարման հեռախոսահամարի դաշտ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "Ընտրեք, թե որ քայլով կցուցադրվի վճարային հեռախոսի դաշտը:"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Միացնել հեռախոսահամարի միջազգային ձևաչափը և վավերացումը հեռախոսի դաշտերի "
-"համար"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Ձևաչափեք և հաստատեք հեռախոսահամարներն ըստ յուրաքանչյուր երկրի:"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Միացնել հեռախոսահամարի վավերացումը երկրի կանոնների հիման վրա"
@@ -1943,14 +1933,6 @@ msgstr "(ՊՐՈ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(փորձարարական)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Սա փորձարարական հատկություն է և կարող է չաշխատել այնպես, ինչպես սպասվում էր "
-"բոլոր թեմաների և հավելվածների հետ: Օգտագործեք այն զգուշությամբ:"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2483,6 +2465,80 @@ msgstr ""
 "Սա ապահովում է, որ բովանդակության բաժինը չափազանց նեղ չլինի WooCommerce "
 "էջերում, ներառյալ վճարման, զամբյուղի, ստացված պատվերի, պատվերի վճարման և "
 "հաշվի էջերը։"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce խելացի կտրոններ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Դիրքը վճարման էջում"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Ընտրեք, թե որտեղ ցուցադրվի հասանելի կտրոնների բաժինը վճարման էջում։"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Առաջընթացի գոտուց առաջ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Առաջընթացի գոտուց հետո"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Մինչև կտրոնի կոդերի բաժինը"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Միացնել միջազգային հեռախոսահամարի դաշտերը"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Հեռախոսահամարները ձևաչափեք յուրաքանչյուր երկրի կանոններին համապատասխան։"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Օգտագործեք ճշգրիտ հեռախոսահամարի վավերացում"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Փորձեք համոզվել, որ հեռախոսահամարը վավեր բջջային կամ ստացիոնար համար է՝ "
+"ընտրված երկրի կոդի կանոններին համապատասխան: Այս տարբերակն օգտագործում է "
+"<code>intl-tel-input</code> ճշգրիտ վավերացման գործառույթը, որը կարող է որոշ "
+"հեռախոսահամարների համար կեղծ դրական արդյունքներ տալ:"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Սա փորձարարական գործառույթ է և կարող է չաշխատել բոլոր կարգավորումներում "
+"սպասվածի պես։ Օգտագործեք այն զգուշությամբ։"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Հեռախոսահամարի վավերացման տեսակները, որոնք օգտագործվում են ճշգրիտ "
+"վավերացման միացման դեպքում։"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Բջջային"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Ֆիքսված գիծ"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Անվճար զանգ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

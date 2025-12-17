@@ -1551,16 +1551,6 @@ msgstr "ငွေပေးချေမှုပုံစံတွင် ဖု�
 msgid "Choose in which step to display the billing phone field."
 msgstr "ငွေပေးချေသည့် ဖုန်းအကွက်ကို ပြသရန် မည်သည့်အဆင့်တွင် ရွေးချယ်ပါ။"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ဖုန်းအကွက်များအတွက် နိုင်ငံတကာဖုန်းနံပါတ်ဖော်မတ်နှင့် "
-"တရားဝင်အတည်ပြုခြင်းကို ဖွင့်ပါ။"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "နိုင်ငံတစ်ခုစီအလိုက် ဖုန်းနံပါတ်များကို ဖော်မတ်လုပ်ပြီး အတည်ပြုပါ။"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "နိုင်ငံစည်းမျဉ်းများအပေါ်အခြေခံ၍ ဖုန်းနံပါတ်အတည်ပြုခြင်းကို ဖွင့်ပါ။"
@@ -2012,14 +2002,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(စမ်းသပ်မှု)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"၎င်းသည် စမ်းသပ်မှုအင်္ဂါရပ်တစ်ခုဖြစ်ပြီး အပြင်အဆင်များနှင့် "
-"ပလပ်အင်အားလုံးတွင် မျှော်လင့်ထားသည့်အတိုင်း အလုပ်မဖြစ်နိုင်ပါ။ သတိနဲ့သုံးပါ။"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2564,6 +2546,81 @@ msgstr ""
 "အော်ဒါပေးချေခြင်းနှင့် အကောင့်စာမျက်နှာများအပါအဝင် WooCommerce "
 "စာမျက်နှာများတွင် အကြောင်းအရာအပိုင်းသည် အလွန်ကျဉ်းမြောင်းခြင်းမရှိကြောင်း "
 "သေချာစေပါသည်။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce စမတ်ကူပွန်များ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "ငွေရှင်းစာမျက်နှာတွင် အနေအထား"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "ငွေရှင်းသည့်စာမျက်နှာရှိ ရနိုင်သောကူပွန်ကဏ္ဍကိုပြသရန်နေရာကိုရွေးချယ်ပါ။"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "တိုးတက်မှုဘားရှေ့"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "တိုးတက်မှုဘားပြီးနောက်"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ကူပွန်ကုဒ်များ ကဏ္ဍမစမီ"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "နိုင်ငံတကာ ဖုန်းနံပါတ် အကွက်များကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "နိုင်ငံတစ်ခုစီအတွက် စည်းမျဉ်းများနှင့်အညီ ဖုန်းနံပါတ်များကို ဖော်မတ်လုပ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "တိကျသောဖုန်းနံပါတ်ကို အတည်ပြုခြင်းအား အသုံးပြုပါ။"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"ဖုန်းနံပါတ်သည် ရွေးချယ်ထားသော နိုင်ငံကုဒ်အတွက် စည်းမျဉ်းများအလိုက် "
+"မှန်ကန်သောမိုဘိုင်း သို့မဟုတ် ကြိုးဖုန်းနံပါတ်ဖြစ်ကြောင်း သေချာစေရန် "
+"ကြိုးစားပါ။ ဤရွေးချယ်မှုသည် ဖုန်းနံပါတ်အချို့အတွက် "
+"မှားယွင်းသောအပြုသဘောများကိုပေးစွမ်းနိုင်သည့် <code>intl-tel-input</code> "
+"တိကျသောအတည်ပြုခြင်းအင်္ဂါရပ်ကိုအသုံးပြုသည်။"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"၎င်းသည် စမ်းသပ်မှုအင်္ဂါရပ်တစ်ခုဖြစ်ပြီး တပ်ဆင်မှုအားလုံးတွင် "
+"မျှော်လင့်ထားသည့်အတိုင်း အလုပ်မဖြစ်နိုင်ပါ။ သတိနဲ့သုံးပါ။"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"တိကျသောအတည်ပြုချက်ကို ဖွင့်ထားသောအခါတွင် အသုံးပြုသည့် ဖုန်းနံပါတ် "
+"မှန်ကန်မှုအမျိုးအစားများ။"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "မိုဘိုင်း"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ပုံသေလိုင်း"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "အခမဲ့"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1523,16 +1523,6 @@ msgstr "Engade o campo de teléfono de facturación ao formulario de pago."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Escolla en que paso mostrar o campo do teléfono de facturación."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Activa o formato de número de teléfono internacional e a validación dos "
-"campos de teléfono"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatear e validar os números de teléfono segundo cada país."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Activa a validación do número de teléfono en función das regras do país"
@@ -1969,14 +1959,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(experimental)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Esta é unha función experimental e é posible que non funcione como se "
-"esperaba con todos os temas e complementos. Úsao con precaución."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2519,6 +2501,82 @@ msgstr ""
 "Isto garante que a sección de contido non sexa demasiado estreita nas "
 "páxinas de WooCommerce, incluíndo as páxinas de finalización da compra, "
 "cesta, pedido recibido, pago de pedidos e conta."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Cupóns intelixentes de WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posición na páxina de finalización da compra"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Escolle onde mostrar a sección de cupóns dispoñibles na páxina de "
+"finalización da compra."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Antes da barra de progreso"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Despois da barra de progreso"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Sección anterior aos códigos de cupón"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Activar campos de números de teléfono internacionais"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formata os números de teléfono segundo as regras de cada país."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Usar a validación precisa do número de teléfono"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Tenta asegurarte de que o número de teléfono sexa un número de móbil ou "
+"fixo válido segundo as regras do código de país seleccionado. Esta opción "
+"usa a función de validación precisa <code>intl-tel-input</code> , que pode "
+"dar falsos positivos para algúns números de teléfono."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Esta é unha funcionalidade experimental e pode que non funcione como se "
+"espera en todas as configuracións. Úsaa con precaución."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tipos de validación de números de teléfono empregados cando a validación "
+"precisa está activada."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Móbil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Liña fixa"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Número gratuíto"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

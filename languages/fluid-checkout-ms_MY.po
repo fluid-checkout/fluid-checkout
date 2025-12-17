@@ -1525,16 +1525,6 @@ msgstr "Tambahkan medan telefon pengebilan pada borang pembayaran."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pilih dalam langkah mana untuk memaparkan medan telefon pengebilan."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Dayakan format nombor telefon antarabangsa dan pengesahan untuk medan "
-"telefon"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Format dan sahkan nombor telefon mengikut setiap negara."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Dayakan pengesahan nombor telefon berdasarkan peraturan negara"
@@ -1967,14 +1957,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(percubaan)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ini ialah ciri percubaan dan mungkin tidak berfungsi seperti yang "
-"diharapkan dengan semua tema dan pemalam. Gunakannya dengan berhati-hati."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2516,6 +2498,82 @@ msgstr ""
 "Ini memastikan bahagian kandungan tidak terlalu sempit pada halaman "
 "WooCommerce termasuk daftar keluar, troli, pesanan diterima, bayaran "
 "pesanan dan halaman akaun."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Kupon Pintar WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Kedudukan pada halaman pembayaran"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Pilih tempat untuk memaparkan bahagian kupon yang tersedia pada halaman "
+"pembayaran."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Sebelum bar kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Selepas bar kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Sebelum bahagian kod kupon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Dayakan medan nombor telefon antarabangsa"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Format nombor telefon mengikut peraturan untuk setiap negara."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gunakan pengesahan nombor telefon yang tepat"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Cuba pastikan nombor telefon ialah nombor mudah alih atau talian tetap yang "
+"sah berdasarkan peraturan untuk kod negara yang dipilih. Pilihan ini "
+"menggunakan ciri pengesahan tepat <code>intl-tel-input</code> , yang "
+"mungkin memberikan positif palsu untuk beberapa nombor telefon."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ini ialah ciri percubaan dan mungkin tidak berfungsi seperti yang "
+"diharapkan dalam semua persediaan. Gunakannya dengan berhati-hati."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Jenis pengesahan nombor telefon digunakan apabila pengesahan tepat "
+"didayakan."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mudah alih"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Talian tetap"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Percuma tol"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -982,12 +982,6 @@ msgstr "Karanlık modu etkinleştir"
 msgid "Enable integrated coupon code section"
 msgstr "Entegre kupon kodu bölümünü etkinleştirin"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Telefon alanları için uluslararası telefon numarası biçimini ve "
-"doğrulamasını etkinleştirin"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Posta Kontrolünü Etkinleştir: (devre dışı bırakılmış özellik)"
@@ -1117,10 +1111,6 @@ msgstr "Altbilgi arka plan rengi"
 #: inc/admin/admin-settings-checkout.php:470
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Fatura ve sevkiyat adreslerini aynı olmaya zorlayın (tek bölüm)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Telefon numaralarını her ülkeye göre biçimlendirin ve doğrulayın."
 
 #: inc/admin/admin-settings-checkout.php:90
 msgid ""
@@ -2286,14 +2276,6 @@ msgstr "Bu, ilgili alan değeriyle eşleşmiyor."
 msgid "This is a required field."
 msgstr "Bu gerekli bir alandır."
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Bu deneysel bir özelliktir ve tüm tema ve eklentilerde beklendiği gibi "
-"çalışmayabilir. Dikkatli kullanın."
-
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
 msgstr "Bu geçerli bir e-posta adresi değil."
@@ -2676,6 +2658,80 @@ msgstr ""
 "Bu, ödeme, sepet, alınan sipariş, sipariş ödeme ve hesap sayfaları dahil "
 "olmak üzere WooCommerce sayfalarında içerik bölümünün çok dar olmamasını "
 "sağlar."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Akıllı Kuponlar"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Ödeme sayfasındaki konum"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Ödeme sayfasında mevcut kuponlar bölümünün nerede görüntüleneceğini seçin."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "İlerleme çubuğundan önce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "İlerleme çubuğundan sonra"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Kupon kodları bölümünden önce"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Uluslararası telefon numarası alanlarını etkinleştirin"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Telefon numaralarını her ülkenin kurallarına göre biçimlendirin."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Kesin telefon numarası doğrulaması kullanın"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Seçilen ülke kodunun kurallarına göre telefon numarasının geçerli bir mobil "
+"veya sabit hat numarası olduğundan emin olmaya çalışın. Bu seçenek, bazı "
+"telefon numaraları için yanlış pozitif sonuç verebilen "
+"<code>intl-tel-input</code> hassas doğrulama özelliğini kullanır."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Bu deneysel bir özelliktir ve tüm kurulumlarda beklendiği gibi "
+"çalışmayabilir. Dikkatli kullanın."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Kesin doğrulama etkinleştirildiğinde kullanılan telefon numarası doğrulama "
+"türleri."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Sabit hat"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Ücretsiz"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

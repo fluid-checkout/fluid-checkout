@@ -1449,14 +1449,6 @@ msgstr "הוסף שדה טלפון לחיוב לטופס התשלום."
 msgid "Choose in which step to display the billing phone field."
 msgstr "בחר באיזה שלב להציג את שדה הטלפון לחיוב."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "אפשר פורמט ואימות של מספרי טלפון בינלאומיים עבור שדות טלפון"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "עיצוב ואימות מספרי טלפון בהתאם לכל מדינה."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "אפשר אימות מספרי טלפון בהתבסס על חוקי המדינה"
@@ -1860,14 +1852,6 @@ msgstr "(מִקצוֹעָן)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(נִסיוֹנִי)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"זוהי תכונה ניסיונית וייתכן שלא תעבוד כצפוי עם כל ערכות הנושא והתוספים. "
-"השתמש בזה בזהירות."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2375,6 +2359,76 @@ msgid ""
 msgstr ""
 "זה מבטיח שמדור התוכן לא יהיה צר מדי בדפי WooCommerce, כולל דפי תשלום, עגלת "
 "קניות, הזמנה שהתקבלה, תשלום עבור הזמנה ודפי חשבון."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "קופונים חכמים של WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "מיקום בדף התשלום"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "בחר היכן להציג את מדור הקופונים הזמינים בדף התשלום."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "לפני סרגל ההתקדמות"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "לאחר סרגל ההתקדמות"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "לפני מדור קודי קופון"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "הפעל שדות מספר טלפון בינלאומיים"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "עצבו מספרי טלפון בהתאם לכללים של כל מדינה."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "השתמש באימות מספר טלפון מדויק"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"נסה לוודא שמספר הטלפון הוא מספר טלפון נייד או קווי תקף, בהתבסס על הכללים של "
+"קידומת המדינה שנבחרה. אפשרות זו משתמשת בתכונת האימות המדויקת "
+"<code>intl-tel-input</code> , שעשויה לתת תוצאות חיוביות שגויות עבור מספרי "
+"טלפון מסוימים."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "זוהי תכונה ניסיונית וייתכן שלא תפעל כצפוי בכל ההגדרות. יש להשתמש בה בזהירות."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "סוגי אימות מספרי טלפון המשמשים כאשר אימות מדויק מופעל."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "נייד"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "קו נייח"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "חינם"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

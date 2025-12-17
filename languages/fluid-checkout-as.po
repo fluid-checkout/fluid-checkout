@@ -1504,16 +1504,6 @@ msgstr "চেকআউট ফৰ্মত বিলিং ফোন ক্ষ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "কোনটো স্তৰত বিলিং ফোন ক্ষেত্ৰ প্ৰদৰ্শন কৰিব নিৰ্ব্বাচন কৰক।"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ফোন ক্ষেত্ৰসমূহৰ বাবে আন্তঃৰাষ্ট্ৰীয় ফোন নম্বৰ বিন্যাস আৰু বৈধকৰণ "
-"সামৰ্থবান কৰক"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "প্ৰতিখন দেশ অনুসৰি ফোন নম্বৰ ফৰ্মেট আৰু বৈধ কৰা।"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "দেশৰ নিয়মৰ ওপৰত ভিত্তি কৰি ফোন নম্বৰৰ বৈধকৰণ সক্ষম কৰক"
@@ -1936,14 +1926,6 @@ msgstr "(প্ৰ&#39;)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(পৰীক্ষামূলক)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"এইটো এটা পৰীক্ষামূলক বৈশিষ্ট্য আৰু সকলো থিম আৰু প্লাগইনৰ সৈতে আশা কৰা ধৰণে "
-"কাম নকৰিবও পাৰে। সাৱধানে ব্যৱহাৰ কৰক।"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2473,6 +2455,78 @@ msgstr ""
 "ইয়াৰ দ্বাৰা নিশ্চিত কৰা হয় যে চেকআউট, কাৰ্ট, লাভ কৰা অৰ্ডাৰ, অৰ্ডাৰ পে "
 "আৰু একাউণ্ট পৃষ্ঠাসমূহকে ধৰি WooCommerce পৃষ্ঠাসমূহত বিষয়বস্তুৰ অংশটো অতি "
 "সংকীৰ্ণ নহয়।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce স্মাৰ্ট কুপন"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "চেকআউট পৃষ্ঠাত অৱস্থান"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "চেকআউট পৃষ্ঠাত উপলব্ধ কুপনসমূহ অংশ ক&#39;ত প্ৰদৰ্শন কৰিব নিৰ্ব্বাচন কৰক।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "প্ৰগ্ৰেছ বাৰৰ আগত"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "প্ৰগ্ৰেছ বাৰৰ পিছত"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "কুপন ক&#39;ড অংশৰ আগত"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "আন্তঃৰাষ্ট্ৰীয় ফোন নম্বৰ ক্ষেত্ৰসমূহ সক্ষম কৰক"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "প্ৰতিখন দেশৰ নিয়ম অনুসৰি ফোন নম্বৰ ফৰ্মেট কৰক।"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "নিৰ্দিষ্ট ফোন নম্বৰৰ বৈধকৰণ ব্যৱহাৰ কৰক"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"নিৰ্বাচিত দেশৰ ক’ডৰ নিয়মৰ ভিত্তিত ফোন নম্বৰটো বৈধ মোবাইল বা লেণ্ডলাইন "
+"নম্বৰ হোৱাটো নিশ্চিত কৰিবলৈ চেষ্টা কৰক। এই বিকল্পই "
+"<code>intl-tel-input</code> নিখুঁত বৈধকৰণ বৈশিষ্ট্য ব্যৱহাৰ কৰে, যিয়ে "
+"কিছুমান ফোন নম্বৰৰ বাবে মিছা ধনাত্মক দিব পাৰে।"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"এইটো এটা পৰীক্ষামূলক বৈশিষ্ট্য আৰু সকলো ছেটআপত আশা কৰা ধৰণে কাম নকৰিবও "
+"পাৰে। সাৱধানে ব্যৱহাৰ কৰক।"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ফোন নম্বৰ বৈধকৰণ ধৰণসমূহ ব্যৱহৃত যেতিয়া নিখুঁত বৈধকৰণ সামৰ্থবান কৰা হয়।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ম’বাইল"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ফিক্সড লাইন"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "টোল ফ্ৰী"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
