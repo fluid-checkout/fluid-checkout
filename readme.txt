@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 4.1.5-alpha-2
+Stable tag: 4.1.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -359,7 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
 * Improved: Make account creation checkbox field customizable via default WooCommerce hooks.
 
-= Unreleased =
+= 4.1.5 - 2025-12-12 =
 
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
 * Added: Compatibility with plugin WC Cities Select.

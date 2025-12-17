@@ -79,8 +79,14 @@
 		placeOrderPlaceholderMainSelector: '.fc-inside .fc-place-order__section-placeholder',
 		placeOrderPlaceholderSidebarSelector: '.fc-sidebar .fc-place-order__section-placeholder',
 		placeOrderRefreshRate: 50,
+
+		orderSummaryTableSelector: '#order_review',
+		orderSummaryTableSkipMoveSelector: '.has-fc-order-summary-position--site_header',
+		orderSummaryTablePlaceholderMainSelector: '.fc-order-review-table__placeholder--main',
+		orderSummaryTablePlaceholderExtraSelector: '.fc-order-review-table__placeholder--extra',
+		orderSummaryTableRefreshRate: 50,
 	}
-	var _resizeObserver;
+	var _resizeObservers = [];
 
 
 
@@ -577,10 +583,10 @@
 
 
 	/**
-	 * Maybe move place order section to order summary for small screens.
+	 * Maybe move place order section based on screen size.
 	 */
 	var maybeMovePlaceOrderSection = function() {
-		// Bail if displaying the place order only on the sidebar. In this case there is no need to move the sections.
+		// Bail if should not move the place order section
 		if ( document.body.matches( _settings.placeOrderSkipMoveSelector ) ) { return; }
 
 		// Get viewport width
@@ -601,6 +607,36 @@
 		// Maybe move to steps section
 		else if ( viewportWidth >= 1000 && placeOrderPlaceholderMain.parentNode !== placeOrderMain.parentNode ) {
 			placeOrderPlaceholderMain.parentNode.insertBefore( placeOrderMain, placeOrderPlaceholderMain.nextSibling );
+		}
+	};
+
+
+
+	/**
+	 * Maybe move order summary table based on screen size.
+	 */
+	var maybeMoveOrderSummaryTable = function() {
+		// Bail if should not move the order summary table
+		if ( document.body.matches( _settings.orderSummaryTableSkipMoveSelector ) ) { return; }
+
+		// Get viewport width
+		var viewportWidth = window.innerWidth;
+
+		// Get place order sections
+		var orderSummaryTable = document.querySelector( _settings.orderSummaryTableSelector );
+		var orderSummaryTablePlaceholderMain = document.querySelector( _settings.orderSummaryTablePlaceholderMainSelector );
+		var orderSummaryTablePlaceholderExtra = document.querySelector( _settings.orderSummaryTablePlaceholderExtraSelector );
+
+		// Bail if elements are not found
+		if ( ! orderSummaryTable || ! orderSummaryTablePlaceholderMain || ! orderSummaryTablePlaceholderExtra ) { return; }
+
+		// Maybe move to sidebar section
+		if ( viewportWidth < 1000 && orderSummaryTablePlaceholderExtra.parentNode !== orderSummaryTable.parentNode ) {
+			orderSummaryTablePlaceholderExtra.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderExtra.nextSibling );
+		}
+		// Maybe move to steps section
+		else if ( viewportWidth >= 1000 && orderSummaryTablePlaceholderMain.parentNode !== orderSummaryTable.parentNode ) {
+			orderSummaryTablePlaceholderMain.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderMain.nextSibling );
 		}
 	};
 
@@ -669,11 +705,20 @@
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
 
-		// Maybe move place order section, and initialize resize observers
+		// Maybe move sections based on viewport
 		maybeMovePlaceOrderSection();
+		maybeMoveOrderSummaryTable();
+
+		// Initialize resize observers
 		if ( window.ResizeObserver ) {
-			_resizeObserver = new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) );
-			_resizeObserver.observe( document.body );
+			// Create resize observers
+			_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) ) );
+			_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMoveOrderSummaryTable, _settings.orderSummaryTableRefreshRate ) ) );
+
+			// Observe document body
+			for ( var i = 0; i < _resizeObservers.length; i++ ) {
+				_resizeObservers[i].observe( document.body );
+			}
 		}
 
 		// Add event listeners
