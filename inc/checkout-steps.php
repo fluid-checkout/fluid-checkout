@@ -876,7 +876,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the order summary position.
+	 * Get the position of the extra order summary section on mobile devices.
 	 */
 	public function get_extra_order_summary_position() {
 		// Define accepted values
