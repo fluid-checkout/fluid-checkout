@@ -1006,12 +1006,6 @@ msgstr "Activer le mode sombre"
 msgid "Enable integrated coupon code section"
 msgstr "Activer la section intégrée des codes de promo"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Activer le format des numéros de téléphone internationaux et la validation "
-"des champs téléphoniques"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Activer la vérification du mail : (fonctionnalité désactivée)"
@@ -1147,10 +1141,6 @@ msgid "Force billing and shipping addresses to the same (single section)"
 msgstr ""
 "Forcer les adresses de facturation et de livraison à être les mêmes "
 "(section unique)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formater et valider les numéros de téléphone en fonction de chaque pays."
 
 #: inc/admin/admin-settings-checkout.php:90
 msgid ""
@@ -2339,14 +2329,6 @@ msgstr "Ce champ ne correspond pas à la valeur de champ associée."
 msgid "This is a required field."
 msgstr "Ce champ est obligatoire."
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Il s'agit d'une fonctionnalité expérimentale qui peut ne pas fonctionner "
-"comme prévu avec tous les thèmes et plugins. Utilisez-la avec prudence."
-
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
 msgstr "Ceci n'est pas une adresse électronique valide."
@@ -2765,6 +2747,59 @@ msgstr "Après la barre de progression"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Avant la section des codes de réduction"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Activer les champs de numéros de téléphone internationaux"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr ""
+"Formatez les numéros de téléphone selon les règles en vigueur dans chaque "
+"pays."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Utiliser une validation précise du numéro de téléphone"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Essayer de s'assurer que le numéro de téléphone est un numéro de téléphone "
+"mobile ou fixe valide en fonction des règles applicables à l'indicatif de "
+"pays sélectionné. Cette option utilise la fonction de validation précise "
+"<code>intl-tel-input</code>, qui peut donner des résultats faussement "
+"positifs pour certains numéros de téléphone."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Il s'agit d'une fonctionnalité expérimentale qui peut ne pas fonctionner "
+"comme prévu dans toutes les configurations. Utilisez-la avec prudence."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Types de validation du numéro de téléphone utilisés lorsque la validation "
+"précise est activée."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobile"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Ligne fixe"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Numéro vert"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

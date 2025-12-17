@@ -1501,16 +1501,6 @@ msgstr "Thêm trường số điện thoại thanh toán vào biểu mẫu thanh
 msgid "Choose in which step to display the billing phone field."
 msgstr "Chọn bước để hiển thị trường số điện thoại thanh toán."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Cho phép định dạng và xác thực số điện thoại quốc tế cho các trường điện "
-"thoại"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Định dạng và xác thực số điện thoại theo từng quốc gia."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Cho phép xác thực số điện thoại dựa trên quy tắc quốc gia"
@@ -1938,14 +1928,6 @@ msgstr "(CHUYÊN NGHIỆP)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(thử nghiệm)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Đây là tính năng thử nghiệm và có thể không hoạt động như mong đợi với tất "
-"cả các chủ đề và plugin. Hãy sử dụng thận trọng."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2500,6 +2482,54 @@ msgstr "Sau thanh tiến trình"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Trước phần mã giảm giá"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Cho phép các trường số điện thoại quốc tế"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Định dạng số điện thoại theo quy định của từng quốc gia."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Sử dụng xác thực số điện thoại chính xác"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Hãy đảm bảo số điện thoại là số di động hoặc cố định hợp lệ dựa trên quy "
+"tắc mã quốc gia đã chọn. Tùy chọn này sử dụng tính năng xác thực chính xác "
+"<code>intl-tel-input</code> , có thể đưa ra kết quả dương tính giả cho một "
+"số số điện thoại."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Đây là tính năng thử nghiệm và có thể không hoạt động như mong đợi trong "
+"mọi thiết lập. Hãy thận trọng khi sử dụng."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Các loại xác thực số điện thoại được sử dụng khi bật xác thực chính xác."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Di động"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Đường dây cố định"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Miễn phí"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1424,14 +1424,6 @@ msgstr "የክፍያ መጠየቂያ የስልክ መስክ ወደ ተመዝግ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "የክፍያ መጠየቂያ ስልክ መስኩን በየትኛው ደረጃ እንደሚያሳዩ ይምረጡ።"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "ለስልክ መስኮች አለምአቀፍ የስልክ ቁጥር ቅርጸት እና ማረጋገጫን አንቃ"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "እንደየአገሩ ስልክ ቁጥሮች ይቅረጹ እና ያረጋግጡ።"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "በአገር ህግ መሰረት የስልክ ቁጥር ማረጋገጥን አንቃ"
@@ -1830,12 +1822,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(የሙከራ)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "ይህ የሙከራ ባህሪ ነው እና በሁሉም ገጽታዎች እና ተሰኪዎች እንደተጠበቀው ላይሰራ ይችላል። በጥንቃቄ ይጠቀሙበት."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2353,6 +2339,51 @@ msgstr "ከሂደት አሞሌ በኋላ"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "ከኩፖን ኮዶች ክፍል በፊት"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "አለምአቀፍ የስልክ ቁጥር መስኮችን አንቃ"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "በእያንዳንዱ ሀገር ደንቦች መሰረት የስልክ ቁጥሮችን ይቅረጹ."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "ትክክለኛ የስልክ ቁጥር ማረጋገጫ ተጠቀም"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"በተመረጠው የአገር ኮድ ደንቦች ላይ በመመስረት የስልክ ቁጥሩ ትክክለኛ የሞባይል ወይም መደበኛ ስልክ ቁጥር መሆኑን "
+"ለማረጋገጥ ይሞክሩ። ይህ አማራጭ የ <code>intl-tel-input</code> ትክክለኛ የማረጋገጫ ባህሪን ይጠቀማል፣ "
+"ይህም ለአንዳንድ የስልክ ቁጥሮች የውሸት አወንታዊ ውጤቶችን ሊሰጥ ይችላል።"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "ይህ የሙከራ ባህሪ ነው እና በሁሉም ውቅሮች ውስጥ እንደተጠበቀው ላይሰራ ይችላል። በጥንቃቄ ይጠቀሙበት."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ትክክለኛ ማረጋገጫ ሲነቃ ጥቅም ላይ የሚውሉ የስልክ ቁጥር ማረጋገጫ ዓይነቶች።"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ሞባይል"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ቋሚ መስመር"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ከክፍያ ነፃ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

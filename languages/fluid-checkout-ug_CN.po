@@ -1499,14 +1499,6 @@ msgstr "چىقىم قىلىش جەدۋىلىگە ھېسابات تېلېفون �
 msgid "Choose in which step to display the billing phone field."
 msgstr "ھەق تۆلەش تېلېفون مەيدانىنى قايسى باسقۇچتا كۆرسىتىشنى تاللاڭ."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "خەلقئارالىق تېلېفون نومۇرى فورماتى ۋە تېلېفون ساھەسىنى دەلىللەشنى قوزغىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ھەر بىر دۆلەتكە ئاساسەن تېلېفون نومۇرىنى فورماتلاڭ ۋە دەلىللەڭ."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "دۆلەت قائىدىسىگە ئاساسەن تېلېفون نومۇرىنى دەلىللەشنى قوزغىتىڭ"
@@ -1936,14 +1928,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تەجرىبە)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"بۇ بىر تەجرىبە ئىقتىدارى بولۇپ ، بارلىق باشتېمىلار ۋە قىستۇرمىلاردا "
-"مۆلچەردىكىدەك ئىشلىمەسلىكى مۇمكىن. ئېھتىيات بىلەن ئىشلىتىڭ."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2504,6 +2488,56 @@ msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "تالون كود بۆلىكىدىن بۇرۇن"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "خەلقئارالىق تېلېفون نومۇرى ساھەلىرىنى قوزغىتىڭ"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ھەر بىر دۆلەتنىڭ قائىدىسىگە ئاساسەن تېلېفون نومۇرىنى فورماتلاڭ."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "ئېنىق تېلېفون نومۇرىنى دەلىللەشنى ئىشلىتىڭ"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"تېلېفون نومۇرىنىڭ تاللانغان دۆلەت كودى قائىدىسىگە ئاساسەن ئىناۋەتلىك كۆچمە "
+"ياكى مۇقىم تېلېفون نومۇرى بولۇشىغا كاپالەتلىك قىلىڭ. بۇ تاللانما "
+"<code>intl-tel-input</code> ئېنىق دەلىللەش ئىقتىدارىنى ئىشلىتىدۇ ، بۇ "
+"بەلكىم بەزى تېلېفون نومۇرلىرىغا يالغان ئاكتىپلىق بېرىشى مۇمكىن."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"بۇ بىر تەجرىبە ئىقتىدارى بولۇپ ، بارلىق تەڭشەشلەردە مۆلچەردىكىدەك "
+"ئىشلىمەسلىكى مۇمكىن. ئېھتىيات بىلەن ئىشلىتىڭ."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ئېنىق دەلىللەش قوزغىتىلغاندا ئىشلىتىلىدىغان تېلېفون نومۇرىنى دەلىللەش "
+"تىپلىرى."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "كۆچمە"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "مۇقىم سىزىق"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ھەقسىز"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

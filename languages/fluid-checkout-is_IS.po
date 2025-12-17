@@ -1506,14 +1506,6 @@ msgstr "Bættu innheimtusími reitnum við útskráningareyðublaðið."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Veldu í hvaða skrefi á að birta reikningssímareitinn."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Virkjaðu alþjóðlegt símanúmerasnið og staðfestingu fyrir símareiti"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Forsníða og staðfesta símanúmer í samræmi við hvert land."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Virkjaðu staðfestingu símanúmera byggt á landsreglum"
@@ -1938,14 +1930,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(tilraunaverkefni)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Þetta er tilraunaeiginleiki og virkar kannski ekki eins og búist var við "
-"með öllum þemum og viðbótum. Notaðu það með varúð."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2499,6 +2483,56 @@ msgstr "Eftir framvindustikuna"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Fyrir afsláttarkóðahlutann"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Virkja alþjóðleg símanúmerareiti"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Sniðið símanúmer samkvæmt reglum fyrir hvert land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Notaðu nákvæma staðfestingu símanúmera"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Reyndu að ganga úr skugga um að símanúmerið sé gilt farsíma- eða "
+"heimasímanúmer samkvæmt reglunum fyrir valið landsnúmer. Þessi valkostur "
+"notar nákvæma staðfestingareiginleikann <code>intl-tel-input</code> , sem "
+"getur gefið falskar jákvæðar niðurstöður fyrir sum símanúmer."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Þetta er tilraunaeiginleiki og virkar hugsanlega ekki eins og búist var við "
+"í öllum uppsetningum. Notið hann með varúð."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Staðfestingargerðir símanúmera sem notaðar eru þegar nákvæm staðfesting er "
+"virk."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Farsími"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fastlína"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Ókeypis gjald"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

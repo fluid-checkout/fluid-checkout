@@ -1518,16 +1518,6 @@ msgstr "Тооцооны маягтанд төлбөрийн утасны тал
 msgid "Choose in which step to display the billing phone field."
 msgstr "Тооцооны утасны талбарыг аль алхамд харуулахаа сонгоно уу."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Олон улсын утасны дугаарын формат болон утасны талбарт баталгаажуулалтыг "
-"идэвхжүүлнэ"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Утасны дугаарыг улс болгоны дагуу форматлаж баталгаажуулна уу."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Улс орны дүрэмд үндэслэн утасны дугаар баталгаажуулалтыг идэвхжүүлнэ үү"
@@ -1959,14 +1949,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(туршилтын)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Энэ бол туршилтын шинж чанар бөгөөд бүх сэдэв болон залгаасуудад санаснаар "
-"ажиллахгүй байж магадгүй. Үүнийг болгоомжтой хэрэглээрэй."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2527,6 +2509,56 @@ msgstr "Явцын мөрний дараа"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Купон кодын өмнө"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Олон улсын утасны дугаарын талбаруудыг идэвхжүүлнэ үү"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Улс бүрийн дүрмийн дагуу утасны дугаараа форматлаарай."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Нарийвчилсан утасны дугаар баталгаажуулалтыг ашиглана уу"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Сонгосон улсын кодын дүрмийн дагуу утасны дугаар нь гар утасны эсвэл суурин "
+"утасны дугаар мөн эсэхийг шалгахыг хичээгээрэй. Энэ сонголт нь "
+"<code>intl-tel-input</code> нарийн баталгаажуулалтын функцийг ашигладаг "
+"бөгөөд энэ нь зарим утасны дугааруудад худал эерэг үр дүн өгч болзошгүй юм."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Энэ бол туршилтын онцлог бөгөөд бүх тохиргоонд санаснаар ажиллахгүй байж "
+"магадгүй. Үүнийг болгоомжтой хэрэглээрэй."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Нарийвчилсан баталгаажуулалтыг идэвхжүүлсэн үед ашигладаг утасны дугаар "
+"баталгаажуулалтын төрлүүд."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Гар утас"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Тогтмол шугам"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Үнэгүй"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

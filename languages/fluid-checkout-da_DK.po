@@ -1515,14 +1515,6 @@ msgstr "Tilføj et felt til faktureringstelefon til checkout-formularen."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Vælg, i hvilket trin du vil vise feltet for faktureringstelefon."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Aktivér internationalt telefonnummerformat og validering for telefonfelter"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formater og valider telefonnumre i henhold til hvert land."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Aktiver validering af telefonnumre baseret på landeregler"
@@ -1948,14 +1940,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentel)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dette er en eksperimentel funktion og fungerer muligvis ikke som forventet "
-"med alle temaer og plugins. Brug den med forsigtighed."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2519,6 +2503,56 @@ msgstr "Efter statuslinjen"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Før sektionen med kuponkoder"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Aktivér felter til internationale telefonnumre"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formater telefonnumre i henhold til reglerne for hvert land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Brug præcis validering af telefonnumre"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Prøv at sikre, at telefonnummeret er et gyldigt mobil- eller fastnetnummer "
+"baseret på reglerne for den valgte landekode. Denne indstilling bruger den "
+"præcise valideringsfunktion <code>intl-tel-input</code>, som kan give "
+"falske positiver for nogle telefonnumre."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Dette er en eksperimentel funktion og fungerer muligvis ikke som forventet "
+"i alle opsætninger. Brug den med forsigtighed."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Valideringstyper for telefonnumre, der bruges, når præcis validering er "
+"aktiveret."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fastnet"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Gratis opkald"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

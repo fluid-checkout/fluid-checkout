@@ -1543,16 +1543,6 @@ msgstr ""
 "ബില്ലിംഗ് ഫോൺ ഫീൽഡ് ഏത് ഘട്ടത്തിലാണ് പ്രദർശിപ്പിക്കേണ്ടതെന്ന് "
 "തിരഞ്ഞെടുക്കുക."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ഫോൺ ഫീൽഡുകൾക്കായി അന്താരാഷ്ട്ര ഫോൺ നമ്പർ ഫോർമാറ്റും സാധൂകരണവും "
-"പ്രാപ്തമാക്കുക."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ഓരോ രാജ്യത്തിനും അനുസരിച്ച് ഫോൺ നമ്പറുകൾ ഫോർമാറ്റ് ചെയ്ത് സാധൂകരിക്കുക."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "രാജ്യ നിയമങ്ങൾ അടിസ്ഥാനമാക്കി ഫോൺ നമ്പർ സാധൂകരണം പ്രാപ്തമാക്കുക"
@@ -1989,14 +1979,6 @@ msgstr "(പി.ആർ.ഒ.)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(പരീക്ഷണാത്മകം)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"ഇതൊരു പരീക്ഷണാത്മക സവിശേഷതയാണ്, എല്ലാ തീമുകളിലും പ്ലഗിനുകളിലും "
-"പ്രതീക്ഷിച്ചതുപോലെ പ്രവർത്തിച്ചേക്കില്ല. ഇത് ജാഗ്രതയോടെ ഉപയോഗിക്കുക."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2567,6 +2549,54 @@ msgstr "പ്രോഗ്രസ് ബാറിന് ശേഷം"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "കൂപ്പൺ കോഡുകൾക്ക് മുമ്പുള്ള വിഭാഗം"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "അന്താരാഷ്ട്ര ഫോൺ നമ്പർ ഫീൽഡുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ഓരോ രാജ്യത്തെയും നിയമങ്ങൾക്കനുസൃതമായി ഫോൺ നമ്പറുകൾ ഫോർമാറ്റ് ചെയ്യുക."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "കൃത്യമായ ഫോൺ നമ്പർ വാലിഡേഷൻ ഉപയോഗിക്കുക"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"തിരഞ്ഞെടുത്ത രാജ്യ കോഡിനായുള്ള നിയമങ്ങൾ അടിസ്ഥാനമാക്കി, ഫോൺ നമ്പർ സാധുവായ "
+"ഒരു മൊബൈൽ അല്ലെങ്കിൽ ലാൻഡ്‌ലൈൻ നമ്പറാണെന്ന് ഉറപ്പാക്കാൻ ശ്രമിക്കുക. ഈ ഓപ്ഷൻ "
+"<code>intl-tel-input</code> കൃത്യമായ മൂല്യനിർണ്ണയ സവിശേഷത ഉപയോഗിക്കുന്നു, "
+"ഇത് ചില ഫോൺ നമ്പറുകൾക്ക് തെറ്റായ പോസിറ്റീവുകൾ നൽകിയേക്കാം."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"ഇതൊരു പരീക്ഷണാത്മക സവിശേഷതയാണ്, എല്ലാ സജ്ജീകരണങ്ങളിലും പ്രതീക്ഷിച്ചതുപോലെ "
+"പ്രവർത്തിച്ചേക്കില്ല. ഇത് ജാഗ്രതയോടെ ഉപയോഗിക്കുക."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "കൃത്യമായ സാധൂകരണം പ്രാപ്തമാക്കുമ്പോൾ ഉപയോഗിക്കുന്ന ഫോൺ നമ്പർ സാധൂകരണ തരങ്ങൾ."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "മൊബൈൽ"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "സ്ഥിര ലൈൻ"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ടോൾ ഫ്രീ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

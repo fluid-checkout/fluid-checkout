@@ -1494,14 +1494,6 @@ msgstr "Lisää laskutuspuhelinkenttä kassalomakkeeseen."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Valitse, missä vaiheessa laskutuspuhelinkenttä näytetään."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Ota käyttöön kansainvälinen puhelinnumeromuoto ja puhelinkenttien vahvistus."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Muotoile ja vahvista puhelinnumerot kunkin maan mukaan."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Ota käyttöön puhelinnumeron validointi maakohtaisten sääntöjen perusteella."
@@ -1926,14 +1918,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(kokeellinen)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Tämä on kokeellinen ominaisuus, eikä se välttämättä toimi odotetulla "
-"tavalla kaikkien teemojen ja liitännäisten kanssa. Käytä sitä varoen."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2486,6 +2470,56 @@ msgstr "Edistymispalkin jälkeen"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "Ennen kuponkikoodit osio"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Ota käyttöön kansainväliset puhelinnumerokentät"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Muotoile puhelinnumerot kunkin maan sääntöjen mukaisesti."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Käytä tarkkaa puhelinnumeron validointia"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Yritä varmistaa, että puhelinnumero on kelvollinen matkapuhelin- tai "
+"lankapuhelinnumero valitun maakoodin sääntöjen mukaisesti. Tämä vaihtoehto "
+"käyttää <code>intl-tel-input</code>-tarkkaa validointiominaisuutta, joka "
+"voi antaa vääriä positiivisia tuloksia joidenkin puhelinnumeroiden osalta."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Tämä on kokeellinen ominaisuus, eikä se välttämättä toimi odotetulla "
+"tavalla kaikissa asetuksissa. Käytä sitä varoen."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Puhelinnumeron vahvistustyypit, joita käytetään, kun tarkka vahvistus on "
+"käytössä."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiili"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Kiinteä linja"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Maksuton"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1369,14 +1369,6 @@ msgstr "在结账表单中添加账单电话字段。"
 msgid "Choose in which step to display the billing phone field."
 msgstr "选择在哪个步骤中显示计费电话字段。"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "启用国际电话号码格式并验证电话字段"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "根据每个国家的情况对电话号码进行格式化和验证。"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "根据国家规则启用电话号码验证功能"
@@ -1753,12 +1745,6 @@ msgstr "（专业人员）"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "（实验）"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "这是一项试验性功能，可能无法与所有主题和插件配合使用。请谨慎使用。"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2260,6 +2246,50 @@ msgstr "进度条之后"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "优惠券代码部分之前"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "启用国际电话号码字段"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "根据各国的规定格式化电话号码。"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "使用精确的电话号码验证"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"根据所选国家代码的规则，尝试确保电话号码是有效的手机或座机号码。此选项使用 <code>intl-tel-input</code> "
+"精确验证功能，可能会对某些电话号码产生误报。"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "这是一项试验性功能，可能无法在所有设置中正常工作。请谨慎使用。"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "启用精确验证时使用的电话号码验证类型。"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "移动电话"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "固定线路"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "免费电话"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

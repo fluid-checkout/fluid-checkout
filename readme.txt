@@ -354,13 +354,18 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased - New FEATURES =
+
+* Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
+* Improved: Make account creation checkbox field customizable via default WooCommerce hooks.
+
 = 4.1.5 - 2025-12-12 =
 
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
 * Added: Compatibility with plugin WC Cities Select.
 * Added: Compatibility with plugin WooCommerce Italian Add-on Plus.
 * Added: New filter `fc_mailcheck_suggestion_message` to allow changing the Mailcheck email typo suggestion message.
-* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certains 3rd-party plugins.
+* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certain 3rd-party plugins.
 
 = 4.1.4 - 2025-12-05 =
 
