@@ -34,7 +34,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
-		<?php if ( true === apply_filters( 'fc_display_order_review_title', true ) ) : ?>
+		<?php if ( true === apply_filters( 'fc_display_order_summary_title', true ) ) : ?>
 
 			<div class="fc-checkout-order-review__head">
 

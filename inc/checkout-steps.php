@@ -6283,7 +6283,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_place_order_placeholder() {
 		// Bail if section is disabled
-		if ( true !== apply_filters( 'fc_display_place_order_button', true ) ) { return; }
+		if ( true !== apply_filters( 'fc_display_order_summary_place_order_button', true ) ) { return; }
 
 		// Output place order section placeholder
 		echo '<div class="fc-place-order__section-placeholder"></div>';
