@@ -56,30 +56,41 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 	}
 
 	@media (#{$bp-larger-than-desktop}) {
+		margin-top: 0 !important; // Needed to override theme styles
+	}	
+}
+body.has-checkout-column-layout--two-columns .fc-sidebar {
+	@media (#{$bp-larger-than-tablet}) and (#{$bp-smaller-than-desktop}) {
+		margin-top: $global-spacing-small !important; // Needed to override theme styles
+	}
+
+	@media (#{$bp-larger-than-desktop}) {
 		z-index: z( 'default' ) + 2; // Needs to be higher than the split layout right column
 		float: $alignment-right;
 		width: $checkout-overview-width--large-screen !important; // Needed to override theme styles
-		margin-top: 0 !important; // Needed to override theme styles
 	}
 }
+
+
 
 .fc-sidebar__inner {
 	z-index: z( 'above' );
 	width: 100%;
-
+}
+body.has-checkout-column-layout--two-columns .fc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		position: relative;
 		padding-top: $global-spacing-tiny;
 	}
 }
 // Sticky state on mobile
-.fc-wrapper .fc-sidebar .fc-sidebar__inner {
+body.has-checkout-column-layout--two-columns .fc-wrapper .fc-sidebar .fc-sidebar__inner {
 	@media (#{$bp-smaller-than-desktop}) {
 		position: static !important;
 	}
 }
 // With admin bar
-.admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+body.has-checkout-column-layout--two-columns .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		padding-top: calc( #{ $global-spacing-tiny } + 32px ); // Use pixels to match styles of the WordPress Admin bar
 	}

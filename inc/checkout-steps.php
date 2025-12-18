@@ -695,12 +695,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
 
+		// Classes
 		$add_classes = array(
 			'has-fluid-checkout',
 			'has-checkout-layout--' . esc_attr( $this->get_checkout_layout() ),
+			'has-checkout-column-layout--' . FluidCheckout_Steps::instance()->get_checkout_column_layout(),
 		);
+
+		// Add class for order summary position
+		$classes[] = 'has-order-summary-position--' . FluidCheckout_Steps::instance()->get_extra_order_summary_position();
 
 		// Add extra class for place order position
 		$place_order_position = $this->get_place_order_position();
@@ -820,8 +825,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 		// Checkout steps settings
 		$settings[ 'checkoutSteps' ] = apply_filters( 'fc_checkout_steps_script_settings', array(
-			'isMultistepLayout'             => $this->is_checkout_layout_multistep() ? 'yes' : 'no',
-			'maybeDisablePlaceOrderButton'  => apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ),
+			'isMultistepLayout'               => $this->is_checkout_layout_multistep() ? 'yes' : 'no',
+			'maybeDisablePlaceOrderButton'    => apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ),
+
+			'enablePlaceOrderMove'            => 'yes',
+			'enableOrderSummaryTableMove'     => 'yes',
 		) );
 
 		return $settings;
@@ -859,8 +867,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_column_layout_options() {
 		return array(
-			'two_column' => array( 'label' => __( '2 Columns', 'fluid-checkout' ) ),
-			'one_column' => array( 'label' => __( '1 Column', 'fluid-checkout' ), 'disabled' => true ),
+			'two_columns' => array( 'label' => __( '2 Columns', 'fluid-checkout' ) ),
+			'one_column'  => array( 'label' => __( '1 Column', 'fluid-checkout' ), 'disabled' => true ),
 		);
 	}
 
@@ -946,6 +954,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_checkout_layout_multistep() {
 		return apply_filters( 'fc_is_checkout_layout_multistep', 'multi-step' === $this->get_checkout_layout() );
+	}
+
+
+
+	/**
+	 * Get the current checkout column layout value.
+	 *
+	 * @return  string  The name of the currently selected checkout column layout option.
+	 */
+	public function get_checkout_column_layout() {
+		$allowed_values = $this->get_allowed_checkout_column_layouts();
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_column_layout' );
+
+		// Set layout to default value if value not set or not allowed
+		if ( ! in_array( $current_value, $allowed_values ) ) {
+			$current_value = FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_column_layout' );
+		}
+
+		return apply_filters( 'fc_get_checkout_column_layout', $current_value );
 	}
 
 

@@ -73,6 +73,7 @@
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
 
+		enablePlaceOrderMove: 'yes',
 		placeOrderButtonSelector: '.fc-place-order-button',
 		placeOrderSkipMoveSelector: '.has-place-order--below_order_summary',
 		placeOrderSectionMainSelector: '.fc-place-order__section--main',
@@ -80,8 +81,9 @@
 		placeOrderPlaceholderSidebarSelector: '.fc-sidebar .fc-place-order__section-placeholder',
 		placeOrderRefreshRate: 50,
 
+		enableOrderSummaryTableMove: 'yes',
 		orderSummaryTableSelector: '#order_review',
-		orderSummaryTableSkipMoveSelector: '.has-fc-order-summary-position--site_header',
+		orderSummaryTableSkipMoveSelector: '.has-order-summary-position--site_header',
 		orderSummaryTablePlaceholderMainSelector: '.fc-order-review-table__placeholder--main',
 		orderSummaryTablePlaceholderExtraSelector: '.fc-order-review-table__placeholder--extra',
 		orderSummaryTableRefreshRate: 50,
@@ -705,22 +707,6 @@
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
 
-		// Maybe move sections based on viewport
-		maybeMovePlaceOrderSection();
-		maybeMoveOrderSummaryTable();
-
-		// Initialize resize observers
-		if ( window.ResizeObserver ) {
-			// Create resize observers
-			_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) ) );
-			_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMoveOrderSummaryTable, _settings.orderSummaryTableRefreshRate ) ) );
-
-			// Observe document body
-			for ( var i = 0; i < _resizeObservers.length; i++ ) {
-				_resizeObservers[i].observe( document.body );
-			}
-		}
-
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
@@ -730,6 +716,33 @@
 			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
+		}
+
+		// Maybe enable place order move
+		if ( 'yes' === _settings.enablePlaceOrderMove ) {
+			// Move at initialization
+			maybeMovePlaceOrderSection();
+
+			// Initialize resize observer
+			if ( window.ResizeObserver ) {
+				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) ) );
+			}
+		}
+
+		// Maybe enable order summary table move
+		if ( 'yes' === _settings.enableOrderSummaryTableMove ) {
+			// Move at initialization
+			maybeMoveOrderSummaryTable();
+
+			// Initialize resize observer
+			if ( window.ResizeObserver ) {
+				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMoveOrderSummaryTable, _settings.orderSummaryTableRefreshRate ) ) );
+			}
+		}
+
+		// Add resize observers to document body
+		for ( var i = 0; i < _resizeObservers.length; i++ ) {
+			_resizeObservers[i].observe( document.body );
 		}
 
 		// Add init class
