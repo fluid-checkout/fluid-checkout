@@ -220,15 +220,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order attribution
 		// Run immediatelly for compatibility with WooCommerce versions prior to 9.2.0
 		$this->order_attribution_hooks();
-
-		// Checkout header and footer
-		$this->checkout_header_cart_link_hooks();
 	}
 
 	/**
 	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
+		// Checkout header and footer
+		$this->checkout_header_cart_link_hooks();
+
 		// Checkout form hooks
 		// Needs to be called in multiple places for compatibility with 3rd-party plugins
 		// that move these hooks to other positions or call them early.
@@ -918,7 +918,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Get current value
-		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' );
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_summary_position_mobile' );
 
 		// Set default value if value not set or not allowed
 		if ( ! in_array( $current_value, $accepted_values ) ) {
@@ -6244,14 +6244,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array   Array of key/value html attributes.
 	 */
 	public function get_order_review_html_attributes() {
+		// Default attributes
 		$attributes = array(
 			'id' => 'fc-checkout-order-review',
 			'class' => 'fc-checkout-order-review',
-			'data-flyout' => true,
-			'data-flyout-order-review' => true,
-			'data-flyout-open-animation-class' => 'fade-in-down',
-			'data-flyout-close-animation-class' => 'fade-out-up',
 		);
+
+		// Maybe add flyout attributes
+		if ( apply_filters( 'fc_enable_checkout_popup_order_summary', true ) ) {
+			$attributes[ 'data-flyout' ] = true;
+			$attributes[ 'data-flyout-order-review' ] = true;
+			$attributes[ 'data-flyout-open-animation-class' ] = 'fade-in-down';
+			$attributes[ 'data-flyout-close-animation-class' ] = 'fade-out-up';
+		}
 
 		// Maybe add class for additional content inside the order summary section
 		$additional_content_place_order_positions = array( 'below_order_summary', 'both_payment_and_order_summary' );
@@ -6269,10 +6274,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  Array of key/value html attributes.
 	 */
 	public function get_order_review_html_attributes_inner() {
+		// Default attributes
 		$attributes = array(
 			'class' => 'fc-checkout-order-review__inner',
-			'data-flyout-content' => true,
 		);
+
+		// Maybe add flyout content attributes
+		if ( apply_filters( 'fc_enable_checkout_popup_order_summary', true ) ) {
+			$attributes[ 'data-flyout-content' ] = true;
+		}
 
 		return $attributes;
 	}

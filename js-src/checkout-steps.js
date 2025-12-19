@@ -84,6 +84,7 @@
 		enableOrderSummaryTableMove: 'yes',
 		orderSummaryTableSelector: '#order_review',
 		orderSummaryTableSkipMoveSelector: '.has-order-summary-position--site_header',
+		orderSummaryForceMoveSelector: '.has-checkout-column-layout--one_column',
 		orderSummaryTablePlaceholderMainSelector: '.fc-order-review-table__placeholder--main',
 		orderSummaryTablePlaceholderExtraSelector: '.fc-order-review-table__placeholder--extra',
 		orderSummaryTableRefreshRate: 50,
@@ -632,11 +633,11 @@
 		// Bail if elements are not found
 		if ( ! orderSummaryTable || ! orderSummaryTablePlaceholderMain || ! orderSummaryTablePlaceholderExtra ) { return; }
 
-		// Maybe move to sidebar section
-		if ( viewportWidth < 1000 && orderSummaryTablePlaceholderExtra.parentNode !== orderSummaryTable.parentNode ) {
+		// Maybe move to extra section
+		if ( document.body.matches( _settings.orderSummaryForceMoveSelector ) || ( viewportWidth < 1000 && orderSummaryTablePlaceholderExtra.parentNode !== orderSummaryTable.parentNode ) ) {
 			orderSummaryTablePlaceholderExtra.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderExtra.nextSibling );
 		}
-		// Maybe move to steps section
+		// Maybe move to main section
 		else if ( viewportWidth >= 1000 && orderSummaryTablePlaceholderMain.parentNode !== orderSummaryTable.parentNode ) {
 			orderSummaryTablePlaceholderMain.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderMain.nextSibling );
 		}
