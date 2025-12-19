@@ -24,7 +24,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		add_filter( 'pre_option_fc_checkout_column_layout', array( $this, 'set_option_checkout_column_layout' ), 10, 3 );
 		add_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
-		add_filter( 'pre_option_fc_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ), 10, 3 );
+		add_filter( 'pre_option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
 
@@ -59,7 +59,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
-			'fc_checkout_order_summary_position_mobile'                 => 'site_header',
+			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
 			'fc_pro_enable_checkout_edit_cart'                              => 'no',
 			'fc_pro_cart_items_error_messages_hide_at_checkout'             => 'yes',
 			'fc_checkout_place_order_position'                              => 'below_payment_section',
@@ -262,7 +262,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function set_option_order_summary_position_mobile( $pre_option, $option, $default ) {
-		return $this->get_option_default( 'fc_checkout_order_summary_position_mobile' );
+		return $this->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' );
 	}
 
 	/**

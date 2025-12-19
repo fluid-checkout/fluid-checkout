@@ -918,7 +918,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Get current value
-		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_summary_position_mobile' );
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' );
 
 		// Set default value if value not set or not allowed
 		if ( ! in_array( $current_value, $accepted_values ) ) {
