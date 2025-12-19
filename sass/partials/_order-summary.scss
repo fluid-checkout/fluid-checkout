@@ -1,4 +1,5 @@
 @use "sass:math" as math;
+
 $_order-review-selector: '#order_review' !default;
 
 // ------------------------------------
@@ -7,16 +8,19 @@ $_order-review-selector: '#order_review' !default;
 .fc-wrapper .fc-checkout-order-review {
 	margin: $order-summary-container-margin;
 	padding: $order-summary-container-padding;
-
+}
+body.has-checkout-column-layout--two_columns .fc-wrapper .fc-checkout-order-review {
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
 		margin: $order-summary-container-margin--large-screen;
 		padding: $order-summary-container-padding--large-screen;
 	}
 }
-body:not( .has-checkout-layout--multi-step ) .fc-wrapper .fc-checkout-order-review,
-body.has-checkout-layout--multi-step.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review {
+body.has-checkout-column-layout--two_columns:not( .has-checkout-layout--multi-step ) .fc-wrapper .fc-checkout-order-review {
 	display: block;
+}
+body.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review {
+	display: block !important; // Needed to override styles so that the order summary is always visible when at the last step
 }
 
 
@@ -386,7 +390,7 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 		transform: none;
 	}
 }
-.fc-wrapper .fc-checkout-order-review[data-flyout].is-activated {
+body.has-checkout-column-layout--two_columns .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated {
 	@media (#{$bp-larger-than-desktop}) {
 		display: block;
 	}

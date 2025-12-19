@@ -1872,17 +1872,21 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
   margin: 0;
   padding: 0;
 }
+
 @media (min-width: 1000px) {
-  .fc-wrapper .fc-checkout-order-review {
+  body.has-checkout-column-layout--two_columns .fc-wrapper .fc-checkout-order-review {
     display: block;
     margin: 0;
     padding: 0;
   }
 }
 
-body:not(.has-checkout-layout--multi-step) .fc-wrapper .fc-checkout-order-review,
-body.has-checkout-layout--multi-step.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review {
+body.has-checkout-column-layout--two_columns:not(.has-checkout-layout--multi-step) .fc-wrapper .fc-checkout-order-review {
   display: block;
+}
+
+body.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review {
+  display: block !important;
 }
 
 body.woocommerce-checkout div.woocommerce .fc-wrapper #order_review {
@@ -2256,7 +2260,7 @@ div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-orde
 }
 
 @media (min-width: 1000px) {
-  .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated {
+  body.has-checkout-column-layout--two_columns .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated {
     display: block;
   }
 }

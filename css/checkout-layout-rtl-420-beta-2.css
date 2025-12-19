@@ -396,12 +396,12 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 }
 
 @media (min-width: 750px) and (max-width: 999px) {
-  body.has-checkout-column-layout--two-columns .fc-sidebar {
+  body.has-checkout-column-layout--two_columns .fc-sidebar {
     margin-top: 20px !important;
   }
 }
 @media (min-width: 1000px) {
-  body.has-checkout-column-layout--two-columns .fc-sidebar {
+  body.has-checkout-column-layout--two_columns .fc-sidebar {
     z-index: 3;
     float: left;
     width: 37.5% !important;
@@ -414,20 +414,20 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 }
 
 @media (min-width: 1000px) {
-  body.has-checkout-column-layout--two-columns .fc-sidebar__inner {
+  body.has-checkout-column-layout--two_columns .fc-sidebar__inner {
     position: relative;
     padding-top: 5px;
   }
 }
 
 @media (max-width: 999px) {
-  body.has-checkout-column-layout--two-columns .fc-wrapper .fc-sidebar .fc-sidebar__inner {
+  body.has-checkout-column-layout--two_columns .fc-wrapper .fc-sidebar .fc-sidebar__inner {
     position: static !important;
   }
 }
 
 @media (min-width: 1000px) {
-  body.has-checkout-column-layout--two-columns .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+  body.has-checkout-column-layout--two_columns .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
     padding-top: calc(5px + 32px);
   }
 }
