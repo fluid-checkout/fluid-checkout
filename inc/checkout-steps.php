@@ -197,6 +197,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order summary
 		add_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 		add_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
+		add_action( 'fc_checkout_order_review_content', array( $this, 'output_order_review_content' ), 10 );
 		add_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'fc_checkout_order_review_actions', array( $this, 'run_action_sidebar_before_actions_for_backwards_compatibility' ), 1 );
@@ -6343,6 +6344,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'attributes_inner'   => $this->get_order_review_html_attributes_inner(),
 			)
 		);
+	}
+
+
+
+	/**
+	 * Output the order review content.
+	 */
+	public function output_order_review_content() {
+		?>
+		<div id="order_review" class="woocommerce-checkout-review-order">
+			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+		</div>
+		<?php
 	}
 
 
