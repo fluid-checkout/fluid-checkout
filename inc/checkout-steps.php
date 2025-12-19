@@ -844,7 +844,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_layout_options() {
 		return array(
-			'multi-step'  => array( 'label' => __( 'Multi-step', 'fluid-checkout' ) ),
+			'multi-step'  => array( 'label' => __( 'Multi step', 'fluid-checkout' ) ),
 			'single-step' => array( 'label' => __( 'Single step', 'fluid-checkout' ) ),
 		);
 	}
@@ -867,8 +867,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_column_layout_options() {
 		return array(
-			'two_columns' => array( 'label' => __( '2 Columns', 'fluid-checkout' ) ),
-			'one_column'  => array( 'label' => __( '1 Column', 'fluid-checkout' ), 'disabled' => true ),
+			'two_columns' => array( 'label' => __( '2 columns', 'fluid-checkout' ) ),
+			'one_column'  => array( 'label' => __( '1 column', 'fluid-checkout' ), 'disabled' => true ),
 		);
 	}
 

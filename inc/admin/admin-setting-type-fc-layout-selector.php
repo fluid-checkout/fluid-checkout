@@ -40,7 +40,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	public function collect_option_styles( $value ) {
 		// Iterate over options and accumulate styles
 		foreach ( $value[ 'options' ] as $key => $val ) {
-			$option_image_url = apply_filters( 'fc_checkout_layout_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-layout-'. esc_attr( $key ) .'.png', $key, $val );
+			$option_image_url = apply_filters( 'fc_layout_selector_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-layout-'. esc_attr( $key ) .'.png', $key, $val );
 			$this->field_styles .= '.forminp-fc_layout_selector .fc-checkout-layout__option[value="' . esc_attr( $key ) . '"]:after { background-image: url( ' . esc_url( $option_image_url ) . ' ); }' . "\n";
 		}
 	}
@@ -125,10 +125,10 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 			}
 		}
 
-		// Description handling.
-		$field_description = WC_Admin_Settings::get_field_description( $value );
-		$description       = $field_description[ 'description' ];
-		$tooltip_html      = $field_description[ 'tooltip_html' ];
+		// // Description handling.
+		// $field_description = WC_Admin_Settings::get_field_description( $value );
+		// $description       = $field_description[ 'description' ];
+		// $tooltip_html      = $field_description[ 'tooltip_html' ];
 
 		$option_value = $value[ 'value' ];
 
