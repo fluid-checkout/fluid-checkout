@@ -426,7 +426,7 @@ class FluidCheckout {
 		}
 
 		// Load admin features
-		if( is_admin() ) {
+		if ( is_admin() ) {
 			require_once self::$directory_path . 'inc/admin/admin.php';
 		}
 	}
