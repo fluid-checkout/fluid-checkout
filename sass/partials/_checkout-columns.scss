@@ -90,7 +90,7 @@ body.has-checkout-column-layout--two_columns .fc-wrapper .fc-sidebar .fc-sidebar
 	}
 }
 // With admin bar
-body.has-checkout-column-layout--two_columns .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+body.has-checkout-column-layout--two_columns.admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
 	@media (#{$bp-larger-than-desktop}) {
 		padding-top: calc( #{ $global-spacing-tiny } + 32px ); // Use pixels to match styles of the WordPress Admin bar
 	}

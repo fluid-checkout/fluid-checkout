@@ -427,7 +427,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 }
 
 @media (min-width: 1000px) {
-  body.has-checkout-column-layout--two_columns .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+  body.has-checkout-column-layout--two_columns.admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
     padding-top: calc(5px + 32px);
   }
 }
