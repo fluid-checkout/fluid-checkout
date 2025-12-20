@@ -702,15 +702,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$add_classes = array(
 			'has-fluid-checkout',
 			'has-checkout-layout--' . esc_attr( $this->get_checkout_layout() ),
-			'has-checkout-column-layout--' . FluidCheckout_Steps::instance()->get_checkout_column_layout(),
+			'has-checkout-column-layout--' . esc_attr( $this->get_checkout_column_layout() ),
+			'has-order-summary-position--' . esc_attr( $this->get_extra_order_summary_position() ),
+			'has-place-order--' . esc_attr( $this->get_place_order_position() ),
+			'has-billing-address-position--' . esc_attr( FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' ) ),
 		);
-
-		// Add class for order summary position
-		$classes[] = 'has-order-summary-position--' . FluidCheckout_Steps::instance()->get_extra_order_summary_position();
-
-		// Add extra class for place order position
-		$place_order_position = $this->get_place_order_position();
-		$add_classes[] = 'has-place-order--' . esc_attr( $place_order_position );
 
 		// Add extra class for current step
 		$current_step = $this->get_current_step();
@@ -726,10 +722,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$add_classes[] = 'fc-checkout-step-current-last';
 			}
 		}
-
-		// Add class for billing address position
-		$position = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' );
-		$add_classes[] = 'has-billing-address-position--' . esc_attr( $position );
 
 		// Add extra class when sidebar is present
 		if ( has_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ) ) ) {
