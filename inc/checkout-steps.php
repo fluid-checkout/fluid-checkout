@@ -831,39 +831,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the allowed checkout layout options.
-	 *
-	 * @return  array  Design templates arguments.
-	 */
-	public function get_checkout_layout_options() {
-		return array(
-			'multi-step'  => array( 'label' => __( 'Multi step', 'fluid-checkout' ) ),
-			'single-step' => array( 'label' => __( 'Single step', 'fluid-checkout' ) ),
-		);
-	}
-
-	/**
 	 * Return the list of values accepted for checkout layout.
 	 *
 	 * @return  array  List of values accepted for checkout layout.
 	 */
 	public function get_allowed_checkout_layouts() {
-		return array_keys( $this->get_checkout_layout_options() );
+		return array( 'multi-step', 'single-step' );
 	}
 
 
-
-	/**
-	 * Get the allowed checkout column layout options.
-	 *
-	 * @return  array  Design templates arguments.
-	 */
-	public function get_checkout_column_layout_options() {
-		return array(
-			'two_columns' => array( 'label' => __( '2 columns', 'fluid-checkout' ) ),
-			'one_column'  => array( 'label' => __( '1 column', 'fluid-checkout' ), 'disabled' => true ),
-		);
-	}
 
 	/**
 	 * Return the list of values accepted for checkout column layout.
@@ -871,7 +847,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  array  List of values accepted for checkout column layout.
 	 */
 	public function get_allowed_checkout_column_layouts() {
-		return array_keys( $this->get_checkout_column_layout_options() );
+		return array( 'two_columns', 'one_column' );
 	}
 
 
@@ -2424,7 +2400,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// CONTACT SUBSTEP
 		$this->register_checkout_substep( $step_id_contact, array(
 			'substep_id' => 'contact',
-			'substep_title' => __( 'My contact', 'fluid-checkout' ),
+			'substep_title' => __( 'Contact', 'fluid-checkout' ),
 			'priority' => 20,
 			'render_fields_callback' => array( $this, 'output_substep_contact_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_contact' ),
@@ -2434,7 +2410,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// SHIPPING ADDRESS SUBSTEP
 		$this->register_checkout_substep( $step_id_shipping, array(
 			'substep_id' => 'shipping_address',
-			'substep_title' => __( 'Shipping to', 'fluid-checkout' ),
+			'substep_title' => __( 'Shipping address', 'fluid-checkout' ),
 			'priority' => $this->get_shipping_address_hook_priority(),
 			'render_fields_callback' => array( $this, 'output_substep_shipping_address_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_shipping_address' ),
@@ -2468,7 +2444,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$billing_substep_priority = $billing_substep_position_args[ 'priority' ];
 		$this->register_checkout_substep( $billing_substep_step_id, array(
 			'substep_id' => 'billing_address',
-			'substep_title' => __( 'Billing to', 'fluid-checkout' ),
+			'substep_title' => __( 'Billing address', 'fluid-checkout' ),
 			'priority' => $billing_substep_priority,
 			'render_fields_callback' => array( $this, 'output_substep_billing_address_fields' ),
 			'render_review_text_callback' => array( $this, 'output_substep_text_billing_address' ),

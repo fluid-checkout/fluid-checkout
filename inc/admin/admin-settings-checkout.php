@@ -78,7 +78,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'title'             => __( 'Checkout layout', 'fluid-checkout' ),
 						'id'                => 'fc_checkout_layout',
 						'type'              => 'fc_layout_selector',
-						'options'           => FluidCheckout_Steps::instance()->get_checkout_layout_options(),
+						'options'           => array(
+							'multi-step'  => array( 'label' => __( 'Multi step', 'fluid-checkout' ) ),
+							'single-step' => array( 'label' => __( 'Single step', 'fluid-checkout' ) ),
+						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' ),
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-layout',
@@ -90,7 +93,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'title'             => '',
 						'id'                => 'fc_checkout_column_layout',
 						'type'              => 'fc_layout_selector',
-						'options'           => FluidCheckout_Steps::instance()->get_checkout_column_layout_options(),
+						'options'           => array(
+							'two_columns' => array( 'label' => __( '2 columns', 'fluid-checkout' ) ),
+							'one_column'  => array( 'label' => __( '1 column', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(), 'disabled' => true ),
+						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_column_layout' ),
 						'autoload'          => false,
 						'wrapper_class'     => 'fc-checkout-layout',
@@ -311,12 +317,12 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Extra order summary section position on mobile.', 'fluid-checkout' ) . '<br>' . __( 'When using the one-column checkout layout this option is always set to <em>"Before checkout steps"</em> and also applies to desktop view.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'              => __( 'Extra order summary section position on mobile.', 'fluid-checkout' ) . '<br>' . __( 'When using the one-column checkout layout this option is always set to <em>"Before checkout steps"</em> and also applies to desktop view.', 'fluid-checkout' ) . '<br>' . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_checkout_order_summary_position_mobile',
 						'type'              => 'fc_select',
 						'options'           => array(
 							'site_header'              => array( 'label' => __( 'On the site header', 'fluid-checkout' ) ),
-							'before_checkout_steps'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ), 'disabled' => true ),
+							'before_checkout_steps'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(), 'disabled' => true ),
 							'hidden'                   => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Hidden', 'fluid-checkout' ), 'disabled' => true ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' ),
