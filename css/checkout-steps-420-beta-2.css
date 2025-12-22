@@ -2289,7 +2289,7 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   display: block;
   height: auto;
   margin: 0 -20px;
-  padding: 12px 20px 0;
+  padding: 12px 20px 20px;
   width: calc(100% + 40px);
   max-width: calc(100% + 40px);
   background-color: var(--fluidcheckout--order-summary--background-color, var(--fluidcheckout--color--white, #fff));
@@ -2311,6 +2311,13 @@ div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review_
   div.woocommerce .fc-wrapper .fc-checkout-order-review:not(:first-child) .fc-checkout-order-review__inner {
     margin: 20px 0 0;
   }
+}
+
+div.woocommerce .fc-wrapper .fc-checkout-order-review .fc-checkout-order-review__inner::after {
+  content: "";
+  display: table;
+  table-layout: fixed;
+  width: 100%;
 }
 
 @media (max-width: 999px) {
