@@ -68,10 +68,6 @@ msgstr "Առաքման հեռախոս"
 msgid "Only used for shipping-related questions."
 msgstr "Օգտագործվում է միայն առաքման հետ կապված հարցերի համար:"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Բազմաստիճան"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Մեկ քայլ"
@@ -105,14 +101,6 @@ msgstr "Անցեք վճարման"
 msgid "Proceed to payment"
 msgstr "Անցեք վճարմանը"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Իմ կոնտակտը"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Առաքում դեպի"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Առաքման եղանակը"
@@ -120,10 +108,6 @@ msgstr "Առաքման եղանակը"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Լրացուցիչ նշումներ"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Վճարում դեպի"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -926,16 +910,6 @@ msgstr "Ստուգման դասավորությունը"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Դիզայնի ձևանմուշ"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Ընդհանուր ոճեր վճարման քայլերի, պատվերի ամփոփման և այլ բաժինների համար: "
-"Կարող է տարածվել նաև այլ էջերի վրա, ինչպիսիք են Զամբյուղը, Ստացված պատվերը "
-"և Դիտել Պատվերի էջերը:"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2490,7 +2464,6 @@ msgstr "Առաջընթացի գոտուց հետո"
 msgid "Before coupon codes section"
 msgstr "Մինչև կտրոնի կոդերի բաժինը"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Միացնել միջազգային հեռախոսահամարի դաշտերը"
@@ -2540,11 +2513,67 @@ msgstr "Ֆիքսված գիծ"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Անվճար զանգ"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Կամ"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Կապ"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Բազմաստիճան"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 սյունակ"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 սյունակ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Վճարման քայլերի, պատվերի ամփոփման և այլ բաժինների ընդհանուր ոճերը։<br> "
+"Կարող է վերաբերել նաև այլ էջերի, ինչպիսիք են «Զամբյուղ», «Ստացված պատվեր» և "
+"«Դիտել պատվերը» էջերը։"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>«Բաժանել»</em> դիզայնի ձևանմուշը հասանելի չէ <em>«1 սյունակ»</em> "
+"դասավորությունն օգտագործելիս և, եթե այն ընտրվի, կվերադառնա "
+"<em>«Մինիմալիստական»-ի</em> ։"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Լրացուցիչ պատվերի ամփոփման բաժնի դիրք բջջային հեռախոսում։"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Միասյունակ վճարման դասավորությունն օգտագործելիս այս տարբերակը միշտ դրված է "
+"<em>«Վճարման քայլերից առաջ»</em> դիրքում և վերաբերում է նաև աշխատասեղանի "
+"տեսքին։"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Կայքի վերնագրի վրա"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Վճարումից առաջ քայլերը"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

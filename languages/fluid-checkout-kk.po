@@ -68,10 +68,6 @@ msgstr "Жеткізу телефоны"
 msgid "Only used for shipping-related questions."
 msgstr "Тек жөнелтуге қатысты сұрақтар үшін пайдаланылады."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Көп сатылы"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Бір қадам"
@@ -105,14 +101,6 @@ msgstr "Есепшотқа өтіңіз"
 msgid "Proceed to payment"
 msgstr "Төлемді жалғастырыңыз"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Менің байланысым"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Жеткізу"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Жеткізу әдісі"
@@ -120,10 +108,6 @@ msgstr "Жеткізу әдісі"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Қосымша ескертпелер"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Төлеу"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -927,16 +911,6 @@ msgstr "Төлемнің орналасуы"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Дизайн үлгісі"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Төлем қадамдары, тапсырыс қорытындысы және басқа бөлімдер үшін жалпы "
-"мәнерлер. Сондай-ақ, Себет, Алынған тапсырыс және Тапсырысты қарау беттері "
-"сияқты басқа беттерге де қолданылуы мүмкін."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2506,7 +2480,6 @@ msgstr "Орындалу жолағынан кейін"
 msgid "Before coupon codes section"
 msgstr "Купон кодтары бөлімінің алдында"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Халықаралық телефон нөмірі өрістерін қосыңыз"
@@ -2554,11 +2527,67 @@ msgstr "Тұрақты сызық"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Тегін"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Немесе"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Байланыс"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Көп сатылы"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 баған"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 баған"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Касса қадамдарына, тапсырыстың қысқаша мазмұнына және басқа бөлімдерге "
+"арналған жалпы стильдер.<br> Себет, Алынған тапсырыс және Тапсырысты қарау "
+"беттері сияқты басқа беттерге де қатысты болуы мүмкін."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;Бөлу&quot;</em> дизайн үлгісі <em>&quot;1 баған&quot;</em> "
+"орналасуын пайдаланған кезде қолжетімді емес және таңдалған жағдайда "
+"<em>&quot;Минималистік&quot;</em> күйіне оралады."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Мобильді құрылғыдағы қосымша тапсырыстың қысқаша мазмұны бөлімінің орны."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Бір бағандық төлем орналасуын пайдаланған кезде бұл опция әрқашан "
+"<em>&quot;Төлем алдындағы қадамдар&quot;</em> күйіне орнатылады және жұмыс "
+"үстелі көрінісіне де қолданылады."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Сайттың тақырыбында"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Кассаға дейінгі қадамдар"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

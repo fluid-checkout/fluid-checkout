@@ -69,10 +69,6 @@ msgstr "Cludo ffôn"
 msgid "Only used for shipping-related questions."
 msgstr "Defnyddir ar gyfer cwestiynau sy&#39;n ymwneud â llongau yn unig."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Aml-gam"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Cam sengl"
@@ -106,14 +102,6 @@ msgstr "Ymlaen i filio"
 msgid "Proceed to payment"
 msgstr "Ymlaen i&#39;r taliad"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Fy nghysylltiad"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Cludo i"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Dull cludo"
@@ -121,10 +109,6 @@ msgstr "Dull cludo"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Nodiadau ychwanegol"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Bilio i"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -934,16 +918,6 @@ msgstr "Cynllun desg dalu"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Templed dylunio"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Arddulliau cyffredinol ar gyfer y camau til, crynodeb archeb ac adrannau "
-"eraill. Gallai hefyd fod yn berthnasol i dudalennau eraill fel y tudalennau "
-"Cert, Archeb a Dderbynnir a Gweld Archeb."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2518,7 +2492,6 @@ msgstr "Ar ôl y bar cynnydd"
 msgid "Before coupon codes section"
 msgstr "Cyn yr adran codau cwpon"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Galluogi meysydd rhif ffôn rhyngwladol"
@@ -2569,11 +2542,67 @@ msgstr "Llinell sefydlog"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Rhadffôn"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Neu"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Cyswllt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Aml-gam"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 golofn"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 golofn"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Arddulliau cyffredinol ar gyfer y camau talu, crynodeb yr archeb ac "
+"adrannau eraill.<br> Gallai hefyd fod yn berthnasol i dudalennau eraill fel "
+"y tudalennau Basged, Gorchymyn a Dderbyniwyd a Gweld Gorchymyn."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Nid yw&#39;r templed dylunio <em>&quot;Rhannu&quot;</em> ar gael wrth "
+"ddefnyddio&#39;r cynllun <em>&quot;1 colofn&quot;</em> a bydd yn disgyn yn "
+"ôl i <em>&quot;Minimalist&quot;</em> os caiff ei ddewis."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Lleoliad adran crynodeb archeb ychwanegol ar ffôn symudol."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Wrth ddefnyddio&#39;r cynllun talu un golofn mae&#39;r opsiwn hwn bob amser "
+"wedi&#39;i osod i <em>&quot;Camau cyn talu&quot;</em> ac mae hefyd yn "
+"berthnasol i&#39;r olygfa bwrdd gwaith."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Ar bennawd y safle"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Camau cyn talu"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

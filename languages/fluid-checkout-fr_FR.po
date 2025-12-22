@@ -438,10 +438,6 @@ msgstr "Adresse de facturation"
 msgid "Billing phone"
 msgstr "Téléphone pour la facturation"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Facturation à"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Ci-dessous la section de paiement et le récapitulatif de la commande"
@@ -1142,16 +1138,6 @@ msgstr ""
 "Forcer les adresses de facturation et de livraison à être les mêmes "
 "(section unique)"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Styles généraux pour les étapes de paiement, le résumé de la commande et "
-"d'autres sections. Peut également s'appliquer à d'autres pages telles que "
-"les pages Panier, Commande reçue et Voir la commande."
-
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
@@ -1507,10 +1493,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Déplacer la case à cocher d'inscription à l'étape de contact"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "En plusieurs étapes"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Plusieurs adresses enregistrées pour l'expédition et la facturation."
@@ -1518,10 +1500,6 @@ msgstr "Plusieurs adresses enregistrées pour l'expédition et la facturation."
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "Présentation de mon compte"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mon contact"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -2006,10 +1984,6 @@ msgstr "Modes de livraison"
 #: inc/admin/admin-settings-checkout.php:579
 msgid "Shipping phone"
 msgstr "Téléphone d'expédition"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Livraison à"
 
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
@@ -2748,7 +2722,6 @@ msgstr "Après la barre de progression"
 msgid "Before coupon codes section"
 msgstr "Avant la section des codes de réduction"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Activer les champs de numéros de téléphone internationaux"
@@ -2801,11 +2774,69 @@ msgstr "Ligne fixe"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Numéro vert"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ou"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Contact"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Plusieurs étapes"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 colonnes"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 colonne"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Styles généraux pour les étapes de paiement, le résumé de la commande et "
+"d'autres sections. <Peut également s'appliquer à d'autres pages telles que "
+"les pages Panier, Commande reçue et Voir la commande."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Le modèle de conception <em>\"Split\"</em> n'est pas disponible lors de "
+"l'utilisation de la mise en page <em>\"1 colonne\"</em> et reviendra à "
+"<em>\"Minimaliste\"</em> s'il est choisi."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr ""
+"Position supplémentaire de la section récapitulative de la commande sur "
+"mobile."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Lors de l'utilisation de la présentation de la caisse en une colonne, cette "
+"option est toujours réglée sur <em>\"Avant les étapes de la caisse\"</em> "
+"et s'applique également à l'affichage sur le bureau."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Sur l'en-tête du site"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Avant de passer à la caisse"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

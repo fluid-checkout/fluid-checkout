@@ -87,8 +87,6 @@
 }
 .fc-checkout-header .fc-checkout__branding:only-child {
 	margin: 0 auto;
-
-	@media (#{$bp-larger-than-desktop}) { margin: 0; }
 }
 
 .fc-checkout-header .fc-checkout__branding img {

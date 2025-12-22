@@ -68,10 +68,6 @@ msgstr "ஷிப்பிங் தொலைபேசி எண்"
 msgid "Only used for shipping-related questions."
 msgstr "கப்பல் போக்குவரத்து தொடர்பான கேள்விகளுக்கு மட்டுமே பயன்படுத்தப்படுகிறது."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "பல-படி"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ஒற்றை படி"
@@ -105,14 +101,6 @@ msgstr "பில்லிங்கிற்குச் செல்லவு�
 msgid "Proceed to payment"
 msgstr "பணம் செலுத்தத் தொடங்குங்கள்"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "எனது தொடர்பு"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "அனுப்புதல்"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "அனுப்பும் முறை"
@@ -120,10 +108,6 @@ msgstr "அனுப்பும் முறை"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "கூடுதல் குறிப்புகள்"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "பில்லிங்"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -939,16 +923,6 @@ msgstr "செக்அவுட் தளவமைப்பு"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "வடிவமைப்பு டெம்ப்ளேட்"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"செக் அவுட் படிகள், ஆர்டர் சுருக்கம் மற்றும் பிற பிரிவுகளுக்கான பொதுவான "
-"பாணிகள். வண்டி, பெறப்பட்ட ஆர்டர் மற்றும் பார்வை ஆர்டர் பக்கங்கள் போன்ற பிற "
-"பக்கங்களுக்கும் பொருந்தக்கூடும்."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2555,7 +2529,6 @@ msgstr "முன்னேற்றப் பட்டிக்குப் ப�
 msgid "Before coupon codes section"
 msgstr "கூப்பன் குறியீடுகளுக்கு முன் பிரிவு"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "சர்வதேச தொலைபேசி எண் புலங்களை இயக்கு."
@@ -2606,11 +2579,67 @@ msgstr "நிலையான வரி"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "கட்டணமில்லா சேவை"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "அல்லது"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "தொடர்பு"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "பல படிகள்"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 நெடுவரிசைகள்"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 நெடுவரிசை"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"செக் அவுட் படிகள், ஆர்டர் சுருக்கம் மற்றும் பிற பிரிவுகளுக்கான பொதுவான "
+"பாணிகள்.<br> வண்டி, பெறப்பட்ட ஆர்டர் மற்றும் பார்வை ஆர்டர் பக்கங்கள் போன்ற "
+"பிற பக்கங்களுக்கும் பொருந்தக்கூடும்."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 நெடுவரிசை&quot;</em> தளவமைப்பைப் பயன்படுத்தும் போது "
+"<em>&quot;Split&quot;</em> என்ற வடிவமைப்பு டெம்ப்ளேட் கிடைக்காது, மேலும் "
+"தேர்ந்தெடுக்கப்பட்டால் <em>&quot;Minimalist&quot;</em> க்கு திரும்பும்."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "மொபைலில் கூடுதல் ஆர்டர் சுருக்கப் பிரிவு நிலை."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"ஒரு-நெடுவரிசை செக்அவுட் அமைப்பைப் பயன்படுத்தும் போது இந்த விருப்பம் "
+"எப்போதும் <em>&quot;செக்அவுட் படிகளுக்கு முன்&quot;</em> என்று "
+"அமைக்கப்படும், மேலும் இது டெஸ்க்டாப் பார்வைக்கும் பொருந்தும்."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "தளத் தலைப்பில்"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "செக்அவுட்டுக்கு முன் படிகள்"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

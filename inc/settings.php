@@ -21,6 +21,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	public function hooks() {
 		// Settings values
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
+		add_filter( 'pre_option_fc_checkout_column_layout', array( $this, 'set_option_checkout_column_layout' ), 10, 3 );
 		add_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ), 10, 3 );
@@ -40,6 +41,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$defaults = array(
 			// Settings checkout.			
 			'fc_checkout_layout'                                            => 'multi-step',
+			'fc_checkout_column_layout'                                     => 'two_columns',
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
 			'fc_hide_site_header_footer_at_checkout'                        => 'yes',
@@ -217,6 +219,17 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function set_option_lite_design_template( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_design_template' );
+	}
+
+	/**
+	 * Force the option value for checkout column layout when only Lite plugin is activated.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_checkout_column_layout( $pre_option, $option, $default ) {
+		return $this->get_option_default( 'fc_checkout_column_layout' );
 	}
 
 	/**

@@ -69,10 +69,6 @@ msgstr "Telefon za pošiljanje"
 msgid "Only used for shipping-related questions."
 msgstr "Uporablja se samo za vprašanja, povezana s pošiljanjem."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Večstopenjski"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Posamezen korak"
@@ -106,14 +102,6 @@ msgstr "Nadaljujte z obračunavanjem"
 msgid "Proceed to payment"
 msgstr "Nadaljujte s plačilom"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Moj stik"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Dostava v"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Način pošiljanja"
@@ -121,10 +109,6 @@ msgstr "Način pošiljanja"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Dodatne opombe"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Obračunavanje za"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -928,16 +912,6 @@ msgstr "Postavitev blagajne"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Predloga za oblikovanje"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Splošni slogi za korake na blagajni, povzetek naročila in druge razdelke. "
-"Uporablja se lahko tudi za druge strani, kot so košarica, prejeto naročilo "
-"in ogled naročila."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2507,7 +2481,6 @@ msgstr "Po vrstici napredka"
 msgid "Before coupon codes section"
 msgstr "Pred razdelkom kod kuponov"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Omogočanje polj z mednarodnimi telefonskimi številkami"
@@ -2557,11 +2530,66 @@ msgstr "Fiksna linija"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Brezplačna telefonska številka"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ali"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Pišite na"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Večstopenjski"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 stolpca"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 stolpec"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Splošni slogi za korake na blagajni, povzetek naročila in druge razdelke. "
+"<br>Mogoče se uporablja tudi za druge strani, kot so strani Košarica, "
+"Prejeto naročilo in Ogled naročila."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Oblikovna predloga <em>\"Split\"</em> ni na voljo pri uporabi postavitve "
+"<em>\"1 stolpec\"</em> in se bo vrnila na <em>\"Minimalistični\"</em>, če "
+"bo izbrana."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Dodaten položaj razdelka s povzetkom naročila na mobilnih napravah."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Pri uporabi enokolonske postavitve blagajne je ta možnost vedno nastavljena "
+"na <em>\"Pred koraki blagajne\"</em> in velja tudi za namizni prikaz."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "V glavi spletnega mesta"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Koraki pred prijavo na blagajno"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

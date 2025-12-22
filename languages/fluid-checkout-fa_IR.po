@@ -68,10 +68,6 @@ msgstr "تلفن حمل و نقل"
 msgid "Only used for shipping-related questions."
 msgstr "فقط برای سوالات مربوط به حمل و نقل استفاده می شود."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "چند مرحله ای"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "تک مرحله ای"
@@ -105,14 +101,6 @@ msgstr "به صورت حساب ادامه دهید"
 msgid "Proceed to payment"
 msgstr "به پرداخت اقدام کنید"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "مخاطب من"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "حمل و نقل به"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "روش ارسال"
@@ -120,10 +108,6 @@ msgstr "روش ارسال"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "یادداشت های اضافی"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "صورتحساب به"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -918,15 +902,6 @@ msgstr "طرح پرداخت"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "قالب طراحی"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"سبک های کلی برای مراحل پرداخت، خلاصه سفارش و بخش های دیگر. ممکن است برای "
-"صفحات دیگر مانند سبد خرید، سفارش دریافت شده و مشاهده سفارش نیز اعمال شود."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2463,7 +2438,6 @@ msgstr "بعد از نوار پیشرفت"
 msgid "Before coupon codes section"
 msgstr "قبل از بخش کدهای تخفیف"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "فعال کردن فیلدهای شماره تلفن بین‌المللی"
@@ -2513,11 +2487,65 @@ msgstr "خط ثابت"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "رایگان"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "یا"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "تماس"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "چند مرحله ای"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "۲ ستون"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "۱ ستون"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"استایل‌های عمومی برای مراحل پرداخت، خلاصه سفارش و سایر بخش‌ها.<br> همچنین "
+"ممکن است برای صفحات دیگری مانند سبد خرید، سفارش دریافت شده و مشاهده سفارش "
+"اعمال شود."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"قالب طراحی <em>«تقسیم‌شده»</em> هنگام استفاده از طرح <em>«۱ ستونه»</em> در "
+"دسترس نیست و در صورت انتخاب، به <em>«مینیمالیستی»</em> برمی‌گردد."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "موقعیت بخش خلاصه سفارش اضافی در موبایل."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"هنگام استفاده از طرح پرداخت تک ستونی، این گزینه همیشه روی <em>«مراحل قبل از "
+"پرداخت»</em> تنظیم می‌شود و در نمای دسکتاپ نیز اعمال می‌شود."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "در هدر سایت"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "مراحل قبل از پرداخت"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

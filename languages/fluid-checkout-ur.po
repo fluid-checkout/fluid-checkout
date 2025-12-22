@@ -68,10 +68,6 @@ msgstr "شپنگ فون"
 msgid "Only used for shipping-related questions."
 msgstr "صرف شپنگ سے متعلق سوالات کے لیے استعمال کیا جاتا ہے۔"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "ملٹی سٹیپ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "سنگل قدم"
@@ -105,14 +101,6 @@ msgstr "بلنگ کے لیے آگے بڑھیں۔"
 msgid "Proceed to payment"
 msgstr "ادائیگی کے لیے آگے بڑھیں۔"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "میرا رابطہ"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "کو شپنگ"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "ترسیل کا طریقہ"
@@ -120,10 +108,6 @@ msgstr "ترسیل کا طریقہ"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "اضافی نوٹ"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "کو بلنگ"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -925,16 +909,6 @@ msgstr "چیک آؤٹ لے آؤٹ"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "ڈیزائن ٹیمپلیٹ"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"چیک آؤٹ کے مراحل، آرڈر کا خلاصہ اور دیگر سیکشنز کے لیے عمومی انداز۔ دوسرے "
-"صفحات پر بھی لاگو ہو سکتا ہے جیسے کہ کارٹ، آرڈر موصول ہوا اور آرڈر کے صفحات "
-"دیکھیں۔"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2481,7 +2455,6 @@ msgstr "ترقی بار کے بعد"
 msgid "Before coupon codes section"
 msgstr "کوپن کوڈز سیکشن سے پہلے"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "بین الاقوامی فون نمبر کی فیلڈز کو فعال کریں۔"
@@ -2529,11 +2502,67 @@ msgstr "فکسڈ لائن"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ٹول فری"
-=======
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "رابطہ کریں۔"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "ملٹی قدم"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 کالم"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 کالم"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"چیک آؤٹ کے مراحل، آرڈر کا خلاصہ اور دیگر سیکشنز کے لیے عمومی انداز۔<br> "
+"دوسرے صفحات پر بھی لاگو ہو سکتا ہے جیسے کہ کارٹ، آرڈر موصول ہوا اور آرڈر کے "
+"صفحات دیکھیں۔"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 کالم&quot;</em> لے آؤٹ کا استعمال کرتے وقت ڈیزائن ٹیمپلیٹ "
+"<em>&quot;اسپلٹ&quot;</em> دستیاب نہیں ہوتا ہے اور اگر منتخب کیا جاتا ہے تو "
+"واپس <em>&quot;Minimalist&quot;</em> پر آجائے گا۔"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "موبائل پر ایکسٹرا آرڈر سمری سیکشن پوزیشن۔"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"ایک کالم چیک آؤٹ لے آؤٹ کا استعمال کرتے وقت یہ اختیار ہمیشہ <em>&quot;چیک "
+"آؤٹ اقدامات سے پہلے&quot;</em> پر سیٹ ہوتا ہے اور ڈیسک ٹاپ ویو پر بھی لاگو "
+"ہوتا ہے۔"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "سائٹ ہیڈر پر"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "چیک آؤٹ کے اقدامات سے پہلے"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "یا"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

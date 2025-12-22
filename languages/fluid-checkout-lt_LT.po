@@ -74,10 +74,6 @@ msgstr "Siuntimo telefonas"
 msgid "Only used for shipping-related questions."
 msgstr "Naudojama tik su siuntimu susijusiems klausimams."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Kelių etapų"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Vienas žingsnis"
@@ -111,14 +107,6 @@ msgstr "Pereiti prie sąskaitų išrašymo"
 msgid "Proceed to payment"
 msgstr "Pereiti prie mokėjimo"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mano kontaktai"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Pristatymas į"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Pristatymo būdas"
@@ -126,10 +114,6 @@ msgstr "Pristatymo būdas"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Papildomos pastabos"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Atsiskaitymas pagal sąskaitą"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -988,16 +972,6 @@ msgstr "Registracijos išdėstymas"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Dizaino šablonas"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Bendrieji kasos etapų, užsakymo santraukos ir kitų skyrių stiliai. Taip pat "
-"gali būti taikomi ir kitiems puslapiams, pavyzdžiui, Krepšelio, Gauto "
-"užsakymo ir Peržiūrėti užsakymą puslapiams."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2618,7 +2592,6 @@ msgstr "Po pažangos juostos"
 msgid "Before coupon codes section"
 msgstr "Prieš kuponų kodų skyrių"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Įgalinti tarptautinių telefono numerių laukus"
@@ -2669,11 +2642,66 @@ msgstr "Fiksuotoji linija"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Nemokama"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Arba"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Susisiekite su"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Keli žingsniai"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 stulpeliai"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 stulpelis"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Bendrieji kasos etapų, užsakymo santraukos ir kitų skyrių stiliai. <br>Taip "
+"pat gali būti taikomi kitiems puslapiams, pavyzdžiui, Krepšelio, Gauto "
+"užsakymo ir Užsakymo peržiūros puslapiams."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Dizaino šablonas <em>\"Splitas\"</em> nėra prieinamas, kai naudojamas "
+"<em>\"1 stulpelis\"</em> išdėstymas, o pasirinkus jį bus grįžtama prie "
+"<em>\"Minimalistinis\"</em>."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Papildoma užsakymo santraukos skilties pozicija mobiliajame telefone."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Naudojant vieno stulpelio kasos išdėstymą ši parinktis visada nustatoma į "
+"<em>\"Prieš kasos veiksmus\"</em> ir taip pat taikoma darbalaukio vaizdui."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Svetainės antraštėje"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Veiksmai prieš išsiregistruojant"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

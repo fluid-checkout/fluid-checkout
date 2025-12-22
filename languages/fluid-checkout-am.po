@@ -68,10 +68,6 @@ msgstr "የማጓጓዣ ስልክ"
 msgid "Only used for shipping-related questions."
 msgstr "ከመርከብ ጋር ለተያያዙ ጥያቄዎች ብቻ ጥቅም ላይ ይውላል።"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "ባለብዙ ደረጃ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ነጠላ ደረጃ"
@@ -105,14 +101,6 @@ msgstr "ወደ ክፍያ መጠየቂያ ይቀጥሉ"
 msgid "Proceed to payment"
 msgstr "ወደ ክፍያ ይቀጥሉ"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "የእኔ ግንኙነት"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "መላኪያ ወደ"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "የማጓጓዣ ዘዴ"
@@ -120,10 +108,6 @@ msgstr "የማጓጓዣ ዘዴ"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "ተጨማሪ ማስታወሻዎች"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "ማስከፈል ለ"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -888,15 +872,6 @@ msgstr "አቀማመጥን ይመልከቱ"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "ንድፍ አብነት"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"አጠቃላይ ቅጦች ለቼክ መውጫ ደረጃዎች ፣ የትዕዛዝ ማጠቃለያ እና ሌሎች ክፍሎች። እንዲሁም እንደ ጋሪ፣ ትእዛዝ የተቀበሉ "
-"እና የትዕዛዝ ገጾችን መመልከት ባሉ ሌሎች ገጾች ላይም ሊተገበር ይችላል።"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2340,7 +2315,6 @@ msgstr "ከሂደት አሞሌ በኋላ"
 msgid "Before coupon codes section"
 msgstr "ከኩፖን ኮዶች ክፍል በፊት"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "አለምአቀፍ የስልክ ቁጥር መስኮችን አንቃ"
@@ -2385,11 +2359,64 @@ msgstr "ቋሚ መስመር"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ከክፍያ ነፃ"
-=======
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "እውቂያ"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "ባለብዙ ደረጃ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 አምዶች"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 አምድ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"ለቼክ መውጫ ደረጃዎች፣ የትዕዛዝ ማጠቃለያ እና ሌሎች ክፍሎች አጠቃላይ ቅጦች።<br> እንዲሁም እንደ ጋሪ፣ የተቀበሉት "
+"ትዕዛዝ እና የትዕዛዝ ገጾች ባሉ ሌሎች ገጾች ላይ ሊተገበር ይችላል።"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"የ <em>&quot;Split&quot;</em> የዲዛይን አብነት <em>&quot;1 አምድ&quot;</em> አቀማመጥ "
+"ሲጠቀሙ አይገኝም እና ከተመረጠ ወደ <em>&quot;Minimalist&quot;</em> ይመለሳል።"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "በሞባይል ላይ ተጨማሪ የትዕዛዝ ማጠቃለያ ክፍል አቀማመጥ።"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"የአንድ አምድ የቼክ አቀማመጡን ሲጠቀሙ ይህ አማራጭ ሁልጊዜ <em>&quot;ከቼክ አወጣጥ ደረጃዎች "
+"በፊት&quot;</em> ተብሎ የሚቀናበር ሲሆን ለዴስክቶፕ እይታም ይሠራል።"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "በጣቢያው ራስጌ ላይ"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "ከክፍያ በፊት ደረጃዎች"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "ወይም"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

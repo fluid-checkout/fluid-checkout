@@ -68,10 +68,6 @@ msgstr "Fraktande telefon"
 msgid "Only used for shipping-related questions."
 msgstr "Används endast för fraktrelaterade frågor."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Flera steg"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Ett enda steg"
@@ -105,14 +101,6 @@ msgstr "Fortsätt till fakturering"
 msgid "Proceed to payment"
 msgstr "Fortsätt till betalning"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Min kontakt"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Frakt till"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Leveransmetod"
@@ -120,10 +108,6 @@ msgstr "Leveransmetod"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Ytterligare anmärkningar"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fakturering till"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -920,16 +904,6 @@ msgstr "Layout för kassan"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Designmall"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Allmänna stilar för kassastegen, ordersammanfattningen och andra avsnitt. "
-"Kan även gälla för andra sidor, t.ex. sidorna Kundvagn, Mottagen order och "
-"Visa order."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2486,7 +2460,6 @@ msgstr "Efter förloppsindikatorn"
 msgid "Before coupon codes section"
 msgstr "Före avsnittet om kupongkoder"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Aktivera fält för internationella telefonnummer"
@@ -2536,11 +2509,67 @@ msgstr "Fast telefoni"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Kostnadsfritt"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Eller"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Flera steg"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolumner"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolumn"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Allmänna stilar för kassans steg, ordersammanfattning och andra avsnitt. "
+"<br> Kan även gälla andra sidor, t.ex. sidorna Kundvagn, Mottagen order och "
+"Visa order."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Designmallen <em>\"Split\"</em> är inte tillgänglig när du använder <em>\"1 "
+"column\"</em> layout och kommer att falla tillbaka till "
+"<em>\"Minimalist\"</em> om den väljs."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Extra order sammanfattning avsnitt position på mobil."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"När du använder kassalayouten med en kolumn är det här alternativet alltid "
+"inställt på <em>\"Före kassans steg\"</em> och gäller även för "
+"skrivbordsvyn."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "På webbplatsens rubrik"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Steg före utcheckning"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -68,10 +68,6 @@ msgstr "مال ئەۋەتىش"
 msgid "Only used for shipping-related questions."
 msgstr "پەقەت توشۇشقا مۇناسىۋەتلىك سوئاللارغا ئىشلىتىلىدۇ."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "كۆپ باسقۇچ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "يەككە قەدەم"
@@ -105,14 +101,6 @@ msgstr "ھېسابات قىلىشنى داۋاملاشتۇرۇڭ"
 msgid "Proceed to payment"
 msgstr "پۇل تۆلەشنى داۋاملاشتۇرۇڭ"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "مېنىڭ ئالاقىلىشىم"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "توشۇش"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "توشۇش ئۇسۇلى"
@@ -120,10 +108,6 @@ msgstr "توشۇش ئۇسۇلى"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "قوشۇمچە ئىزاھات"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Billing to"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -925,16 +909,6 @@ msgstr "چىقىمدان ئورۇنلاشتۇرۇشى"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "لايىھىلەش قېلىپى"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"چىقىم قىلىش باسقۇچلىرى ، زاكاز خۇلاسىسى ۋە باشقا بۆلەكلەرنىڭ ئومۇمىي "
-"ئۇسلۇبى. ھارۋا ، زاكاز قوبۇل قىلىنغان ۋە زاكاز بېتىنى كۆرۈش قاتارلىق باشقا "
-"بەتلەرگىمۇ ماس كېلىشى مۇمكىن."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2489,7 +2463,6 @@ msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
 msgid "Before coupon codes section"
 msgstr "تالون كود بۆلىكىدىن بۇرۇن"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "خەلقئارالىق تېلېفون نومۇرى ساھەلىرىنى قوزغىتىڭ"
@@ -2539,11 +2512,66 @@ msgstr "مۇقىم سىزىق"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ھەقسىز"
-=======
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "ئالاقىلىشىش"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "كۆپ قەدەملىك"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 ئىستون"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 ئىستون"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"تەكشۈرۈش باسقۇچلىرى، زاكاز خۇلاسىسى ۋە باشقا بۆلەكلەرنىڭ ئادەتتىكى "
+"ئۇسلۇبلىرى.<br> سېۋەت، تاپشۇرۇۋېلىنغان زاكاز ۋە زاكازنى كۆرۈش بەتلىرى "
+"قاتارلىق باشقا بەتلەرگىمۇ ماس كېلىشى مۇمكىن."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>«بىر ئىستون»</em> لايىھەسىنى ئىشلەتكەندە <em>«بۆلۈش»</em> لايىھە قېلىپى "
+"ئىشلەتكىلى بولمايدۇ، ئەگەر تاللانسا <em>«مىنىمالىزم»</em> غا قايتىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "قوشۇمچە زاكاز خۇلاسىسى بۆلۈمىنىڭ يانفوندىكى ئورنى."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"بىر ئىستونلۇق تەكشۈرۈش لايىھەسىنى ئىشلەتكەندە، بۇ تاللاش ھەمىشە <em>«تەلەپ "
+"قىلىشتىن بۇرۇنقى قەدەملەر»</em> گە تەڭشىلىنىدۇ ھەمدە ئۈستەل يۈزى "
+"كۆرۈنۈشىگىمۇ ماس كېلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "تور بېكەت باشلىقىدا"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "تەكشۈرۈشتىن بۇرۇنقى قەدەملەر"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "ياكى"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

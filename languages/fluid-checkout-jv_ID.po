@@ -68,10 +68,6 @@ msgstr "Telpon pengiriman"
 msgid "Only used for shipping-related questions."
 msgstr "Mung digunakake kanggo pitakonan sing gegandhengan karo pengiriman."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Multi-langkah"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Langkah tunggal"
@@ -105,14 +101,6 @@ msgstr "Nerusake menyang tagihan"
 msgid "Proceed to payment"
 msgstr "Nerusake kanggo pembayaran"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Kontakku"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Pengiriman menyang"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Cara pengiriman"
@@ -120,10 +108,6 @@ msgstr "Cara pengiriman"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Cathetan tambahan"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Tagihan kanggo"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -921,16 +905,6 @@ msgstr "tata letak checkout"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Cithakan desain"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Gaya umum kanggo langkah checkout, ringkesan pesenan lan bagean liyane. "
-"Bisa uga ditrapake kanggo kaca liyane kayata Cart, Order Received lan View "
-"Order page."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2480,7 +2454,6 @@ msgstr "Sawise bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sadurunge bagean kode coupon"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Aktifake kolom nomer telpon internasional"
@@ -2530,11 +2503,67 @@ msgstr "Jalur tetep"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bebas pulsa"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Utawa"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontak"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Multi langkah"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolom"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Gaya umum kanggo langkah-langkah checkout, ringkesan pesenan, lan bagean "
+"liyane.<br> Uga bisa ditrapake kanggo kaca liyane kayata kaca Kranjang, "
+"Pesenan Diterima lan Deleng Pesenan."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Cithakan desain <em>&quot;Split&quot;</em> ora kasedhiya nalika nggunakake "
+"tata letak <em>&quot;1 kolom&quot;</em> lan bakal bali menyang "
+"<em>&quot;Minimalis&quot;</em> yen dipilih."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Posisi bagean ringkesan pesenan tambahan ing seluler."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Nalika nggunakake tata letak checkout siji kolom, opsi iki mesthi disetel "
+"dadi <em>&quot;Sadurunge langkah checkout&quot;</em> lan uga ditrapake "
+"kanggo tampilan desktop."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Ing judhul situs"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Langkah-langkah sadurunge checkout"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -68,10 +68,6 @@ msgstr "Telefoni i transportit"
 msgid "Only used for shipping-related questions."
 msgstr "Përdoret vetëm për pyetje të lidhura me transportin."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Me shumë hapa"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Një hap i vetëm"
@@ -105,14 +101,6 @@ msgstr "Vazhdoni te faturimi"
 msgid "Proceed to payment"
 msgstr "Vazhdoni te pagesa"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Kontakti im"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Transporti në"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Mënyra e transportit"
@@ -120,10 +108,6 @@ msgstr "Mënyra e transportit"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Shënime shtesë"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Faturimi për të"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -939,16 +923,6 @@ msgstr "Paraqitja e arkës"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Modeli i dizajnit"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Stilet e përgjithshme për hapat e arkëtimit, përmbledhjen e porosive dhe "
-"seksione të tjera. Mund të zbatohet edhe për faqe të tjera si faqet e "
-"Shportës, Porosit të Marrë dhe Shiko Porosit."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2532,7 +2506,6 @@ msgstr "Pas shiritit të progresit"
 msgid "Before coupon codes section"
 msgstr "Para seksionit të kodeve të kuponave"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Aktivizo fushat e numrit ndërkombëtar të telefonit"
@@ -2582,11 +2555,67 @@ msgstr "Linjë fikse"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Pa pagesë"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ose"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakti"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Shumë hapa"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolona"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolonë"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Stile të përgjithshme për hapat e arkëtimit, përmbledhjen e porosisë dhe "
+"seksione të tjera.<br> Mund të zbatohet edhe për faqe të tjera, të tilla si "
+"faqet Shporta, Porosia e Marrë dhe Shiko Porosinë."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Shablloni i dizajnit <em>&quot;Ndarje&quot;</em> nuk është i disponueshëm "
+"kur përdoret paraqitja <em>&quot;1 kolonë&quot;</em> dhe do të kthehet në "
+"<em>&quot;Minimalist&quot;</em> nëse zgjidhet."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Pozicion shtesë i seksionit të përmbledhjes së porosive në celular."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kur përdorni paraqitjen e arkëtimit me një kolonë, ky opsion është "
+"gjithmonë i vendosur në <em>&quot;Para hapave të arkëtimit&quot;</em> dhe "
+"vlen edhe për pamjen e desktopit."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Në kryefaqen e faqes"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Hapat para arkëtimit"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

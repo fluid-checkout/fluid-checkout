@@ -68,10 +68,6 @@ msgstr "නැව්ගත කිරීමේ දුරකථනය"
 msgid "Only used for shipping-related questions."
 msgstr "නැව්ගත කිරීම සම්බන්ධ ප්‍රශ්න සඳහා පමණක් භාවිතා වේ."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "බහු-පියවර"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "තනි පියවර"
@@ -105,14 +101,6 @@ msgstr "බිල්පත් කිරීමට ඉදිරියට යන්
 msgid "Proceed to payment"
 msgstr "ගෙවීමට ඉදිරියට යන්න"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "මගේ සම්බන්ධතාවය"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "නැව්ගත කිරීම"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "නැව්ගත කිරීමේ ක්‍රමය"
@@ -120,10 +108,6 @@ msgstr "නැව්ගත කිරීමේ ක්‍රමය"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "අමතර සටහන්"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "බිල්පත් කිරීම"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -921,16 +905,6 @@ msgstr "පිටවීමේ පිරිසැලසුම"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "නිර්මාණ සැකිල්ල"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"පිටවීමේ පියවර, ඇණවුම් සාරාංශය සහ අනෙකුත් කොටස් සඳහා සාමාන්‍ය විලාස. කරත්තය, "
-"ලැබුණු ඇණවුම් සහ නැරඹුම් ඇණවුම් පිටු වැනි අනෙකුත් පිටු සඳහා ද අදාළ විය "
-"හැකිය."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2468,7 +2442,6 @@ msgstr "ප්‍රගති තීරුවෙන් පසුව"
 msgid "Before coupon codes section"
 msgstr "කූපන් කේත කොටසට පෙර"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "ජාත්‍යන්තර දුරකථන අංක ක්ෂේත්‍ර සබල කරන්න"
@@ -2516,11 +2489,67 @@ msgstr "ස්ථාවර රේඛාව"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ගාස්තු රහිත"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "හෝ"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "අමතන්න"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "බහු පියවර"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "තීරු 2 යි"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "තීරුව 1"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"පිටවීමේ පියවර, ඇණවුම් සාරාංශය සහ අනෙකුත් කොටස් සඳහා සාමාන්‍ය මෝස්තර.<br> "
+"කරත්තය, ලැබුණු ඇණවුම් සහ නැරඹුම් ඇණවුම් පිටු වැනි අනෙකුත් පිටු සඳහාද අදාළ "
+"විය හැක."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 තීරු&quot;</em> පිරිසැලසුම භාවිතා කරන විට "
+"<em>&quot;Split&quot;</em> සැලසුම් අච්චුව ලබා ගත නොහැකි අතර තෝරා ගන්නේ නම් "
+"<em>&quot;Minimalist&quot;</em> වෙත ආපසු යනු ඇත."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "ජංගම දුරකථනයේ අමතර ඇණවුම් සාරාංශ අංශ ස්ථානය."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"එක්-තීරුවක පිටවීමේ පිරිසැලසුම භාවිතා කරන විට මෙම විකල්පය සැමවිටම "
+"<em>&quot;පිටවීමේ පියවරට පෙර&quot;</em> ලෙස සකසා ඇති අතර ඩෙස්ක්ටොප් "
+"දර්ශනයටද අදාළ වේ."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "අඩවි ශීර්ෂය මත"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "පිටවීමේ පියවරට පෙර"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

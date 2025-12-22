@@ -69,10 +69,6 @@ msgstr "Telefon de expediere"
 msgid "Only used for shipping-related questions."
 msgstr "Utilizat numai pentru întrebări legate de expediere."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "În mai multe etape"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Un singur pas"
@@ -106,14 +102,6 @@ msgstr "Treceți la facturare"
 msgid "Proceed to payment"
 msgstr "Procedați la plată"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Contactul meu"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Livrare către"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Metoda de expediere"
@@ -121,10 +109,6 @@ msgstr "Metoda de expediere"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Note suplimentare"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Facturare către"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -934,16 +918,6 @@ msgstr "Layout de checkout"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Șablon de design"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Stiluri generale pentru etapele de plată, rezumatul comenzii și alte "
-"secțiuni. S-ar putea aplica și altor pagini, cum ar fi paginile Coș, "
-"Comanda primită și Vizualizare comandă."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2542,7 +2516,6 @@ msgstr "După bara de progres"
 msgid "Before coupon codes section"
 msgstr "Înainte de secțiunea coduri promoționale"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Activați câmpurile pentru numerele de telefon internaționale"
@@ -2594,11 +2567,67 @@ msgstr "Linie fixă"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Apel gratuit"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Sau"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Persoană de contact"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Mai multe etape"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 coloane"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 coloană"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Stiluri generale pentru etapele de plată, rezumatul comenzii și alte "
+"secțiuni. <br>Se pot aplica și altor pagini, cum ar fi paginile Coș, "
+"Comanda primită și Vizualizare comandă."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Șablonul de design <em>\"Split\"</em> nu este disponibil atunci când se "
+"utilizează aspectul <em>\"1 coloană\"</em> și va reveni la "
+"<em>\"Minimalist\"</em> dacă este ales."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Poziție suplimentară a secțiunii rezumat comandă pe mobil."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Atunci când utilizați aspectul de checkout cu o coloană, această opțiune "
+"este întotdeauna setată la <em>\"Înainte de etapele de checkout\"</em> și "
+"se aplică, de asemenea, la vizualizarea desktop."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Pe antetul site-ului"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Pași înainte de checkout"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

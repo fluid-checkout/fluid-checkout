@@ -68,10 +68,6 @@ msgstr "ഷിപ്പിംഗ് ഫോൺ"
 msgid "Only used for shipping-related questions."
 msgstr "ഷിപ്പിംഗ് സംബന്ധമായ ചോദ്യങ്ങൾക്ക് മാത്രം ഉപയോഗിക്കുന്നു."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "മൾട്ടി-സ്റ്റെപ്പ്"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "സിംഗിൾ സ്റ്റെപ്പ്"
@@ -105,14 +101,6 @@ msgstr "ബില്ലിംഗിലേക്ക് പോകുക"
 msgid "Proceed to payment"
 msgstr "പേയ്‌മെന്റിലേക്ക് പോകുക"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "എന്റെ കോൺടാക്റ്റ്"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "ഷിപ്പ് ചെയ്യുന്നത്"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "ഷിപ്പിംഗ് രീതി"
@@ -120,10 +108,6 @@ msgstr "ഷിപ്പിംഗ് രീതി"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "അധിക കുറിപ്പുകൾ"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "ബില്ലിംഗ്"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -938,16 +922,6 @@ msgstr "ചെക്ക്ഔട്ട് ലേഔട്ട്"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "ഡിസൈൻ ടെംപ്ലേറ്റ്"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"ചെക്ക്ഔട്ട് ഘട്ടങ്ങൾ, ഓർഡർ സംഗ്രഹം, മറ്റ് വിഭാഗങ്ങൾ എന്നിവയ്ക്കുള്ള പൊതുവായ "
-"ശൈലികൾ. കാർട്ട്, ഓർഡർ സ്വീകരിച്ചത്, വ്യൂ ഓർഡർ പേജുകൾ പോലുള്ള മറ്റ് "
-"പേജുകൾക്കും ബാധകമായേക്കാം."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2550,7 +2524,6 @@ msgstr "പ്രോഗ്രസ് ബാറിന് ശേഷം"
 msgid "Before coupon codes section"
 msgstr "കൂപ്പൺ കോഡുകൾക്ക് മുമ്പുള്ള വിഭാഗം"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "അന്താരാഷ്ട്ര ഫോൺ നമ്പർ ഫീൽഡുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
@@ -2598,11 +2571,67 @@ msgstr "സ്ഥിര ലൈൻ"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ടോൾ ഫ്രീ"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "അഥവാ"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "ബന്ധപ്പെടുക"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "മൾട്ടി സ്റ്റെപ്പ്"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 കോളങ്ങൾ"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 കോളം"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"ചെക്ക്ഔട്ട് ഘട്ടങ്ങൾ, ഓർഡർ സംഗ്രഹം, മറ്റ് വിഭാഗങ്ങൾ എന്നിവയ്ക്കുള്ള പൊതുവായ "
+"ശൈലികൾ.<br> കാർട്ട്, ഓർഡർ സ്വീകരിച്ചു, വ്യൂ ഓർഡർ പേജുകൾ പോലുള്ള മറ്റ് "
+"പേജുകൾക്കും ബാധകമായേക്കാം."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 കോളം&quot;</em> ലേഔട്ട് ഉപയോഗിക്കുമ്പോൾ "
+"<em>&quot;സ്പ്ലിറ്റ്&quot;</em> എന്ന ഡിസൈൻ ടെംപ്ലേറ്റ് ലഭ്യമല്ല, "
+"തിരഞ്ഞെടുത്താൽ <em>&quot;മിനിമലിസ്റ്റ്&quot;</em> എന്നതിലേക്ക് തിരികെ പോകും."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "മൊബൈലിൽ അധിക ഓർഡർ സംഗ്രഹ വിഭാഗ സ്ഥാനം."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"ഒരു കോളം ചെക്ക്ഔട്ട് ലേഔട്ട് ഉപയോഗിക്കുമ്പോൾ ഈ ഓപ്ഷൻ എല്ലായ്പ്പോഴും "
+"<em>&quot;ചെക്ക്ഔട്ട് ഘട്ടങ്ങൾക്ക് മുമ്പുള്ള&quot;</em> ആയി "
+"സജ്ജീകരിച്ചിരിക്കുന്നു കൂടാതെ ഡെസ്ക്ടോപ്പ് കാഴ്ചയ്ക്കും ഇത് ബാധകമാണ്."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "സൈറ്റ് തലക്കെട്ടിൽ"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "ചെക്ക്ഔട്ട് ഘട്ടങ്ങൾക്ക് മുമ്പുള്ള ഘട്ടങ്ങൾ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

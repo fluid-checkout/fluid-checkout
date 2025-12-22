@@ -68,10 +68,6 @@ msgstr "მიწოდების ტელეფონი"
 msgid "Only used for shipping-related questions."
 msgstr "გამოიყენება მხოლოდ ტრანსპორტირებასთან დაკავშირებული კითხვებისთვის."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "მრავალსაფეხურიანი"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ერთი ნაბიჯი"
@@ -105,14 +101,6 @@ msgstr "გააგრძელეთ ბილინგი"
 msgid "Proceed to payment"
 msgstr "განაგრძეთ გადახდა"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "ჩემი კონტაქტი"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "მიწოდება"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "გადაზიდვის მეთოდი"
@@ -120,10 +108,6 @@ msgstr "გადაზიდვის მეთოდი"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "დამატებითი შენიშვნები"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "ბილინგი მდე"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -925,16 +909,6 @@ msgstr "შეკვეთის განლაგება"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "დიზაინის შაბლონი"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"ზოგადი სტილები შეკვეთის საფეხურებისთვის, შეკვეთის შეჯამება და სხვა "
-"სექციები. შეიძლება ასევე გავრცელდეს სხვა გვერდებზე, როგორიცაა კალათა, "
-"მიღებული შეკვეთა და შეკვეთის ნახვა."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2512,7 +2486,6 @@ msgstr "პროგრესის ზოლის შემდეგ"
 msgid "Before coupon codes section"
 msgstr "კუპონის კოდების განყოფილებამდე"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "ჩართეთ საერთაშორისო ტელეფონის ნომრის ველები"
@@ -2562,11 +2535,67 @@ msgstr "ფიქსირებული ხაზი"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "უფასო ზარი"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "ან"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "კონტაქტი"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "მრავალსაფეხურიანი"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 სვეტი"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 სვეტი"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"შეკვეთის გაფორმების ნაბიჯების, შეკვეთის შეჯამებისა და სხვა სექციების ზოგადი "
+"სტილები.<br> შესაძლოა, ეს ასევე ეხებოდეს სხვა გვერდებს, როგორიცაა „კალათა“, "
+"„შეკვეთა მიღებულია“ და „შეკვეთის ნახვა“."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"დიზაინის შაბლონი <em>„გაყოფა“</em> მიუწვდომელია <em>„1 სვეტის“</em> "
+"განლაგების გამოყენებისას და არჩევის შემთხვევაში ისევ "
+"<em>„მინიმალისტურზე“</em> გადავა."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "შეკვეთის შეჯამების დამატებითი განყოფილების პოზიცია მობილურზე."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"ერთსვეტიანი შეკვეთის განლაგების გამოყენებისას, ეს პარამეტრი ყოველთვის "
+"დაყენებულია <em>„შეკვეთის გაფორმების ეტაპებამდე“</em> -ზე და ასევე "
+"გამოიყენება სამუშაო მაგიდის ხედზე."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "საიტის სათაურზე"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "გადახდის ეტაპები"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

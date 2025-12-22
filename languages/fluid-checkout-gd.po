@@ -69,10 +69,6 @@ msgstr "Fòn luingeis"
 msgid "Only used for shipping-related questions."
 msgstr "Air a chleachdadh a-mhàin airson ceistean co-cheangailte ri luingearachd."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Ioma-cheum"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Ceum singilte"
@@ -106,14 +102,6 @@ msgstr "Lean air adhart gu cunntas"
 msgid "Proceed to payment"
 msgstr "Lean air adhart gu pàigheadh"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mo neach-conaltraidh"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "A &#39;dol gu"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Modh luingeis"
@@ -121,10 +109,6 @@ msgstr "Modh luingeis"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Notaichean a bharrachd"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Bilean gu"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -941,17 +925,6 @@ msgstr "Cruth an t-seic"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Teamplaid dealbhadh"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Stoidhlichean coitcheann airson na ceumannan pàighidh, geàrr-chunntas "
-"òrdugh agus earrannan eile. Dh’ fhaodadh e cuideachd a bhith a’ buntainn ri "
-"duilleagan eile leithid na duilleagan Cairt, Òrdugh a fhuaireadh agus Faic "
-"Òrdugh."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2567,7 +2540,6 @@ msgstr "Às dèidh a’ bhàr adhartais"
 msgid "Before coupon codes section"
 msgstr "Roimhe earrann nan còdan cùpain"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Cuir raointean àireamh fòn eadar-nàiseanta an gnìomh"
@@ -2619,11 +2591,69 @@ msgstr "Loidhne stèidhichte"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Saor-chìs"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "No"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Cuir fios"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Ioma-cheum"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 cholbh"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 colbh"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Stoidhlichean coitcheann airson ceumannan an pàighidh, geàrr-chunntas an "
+"òrduigh agus earrannan eile.<br> Dh’fhaodadh e bhith buntainneach ri "
+"duilleagan eile cuideachd leithid na duilleagan Cairt, Òrdugh a fhuaireadh "
+"agus Seall Òrdugh."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Chan eil an teamplaid dealbhaidh <em>&quot;Roinnt&quot;</em> ri fhaighinn "
+"nuair a thathar a’ cleachdadh cruth <em>&quot;1 colbh&quot;</em> agus thèid "
+"e air ais gu <em>&quot;Minimalist&quot;</em> ma thèid a thaghadh."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Suidheachadh earrann geàrr-chunntas òrdughan a bharrachd air fòn-làimhe."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Nuair a bhios tu a’ cleachdadh cruth an àite-pàighidh aon-cholbh, bidh an "
+"roghainn seo an-còmhnaidh air a shuidheachadh gu <em>“Ceumannan mus tèid "
+"thu chun àite-pàighidh”</em> agus tha e cuideachd a’ buntainn ris an "
+"t-sealladh deasg."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Air ceann-sgrìobhaidh na làraich"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Ceumannan mus tèid pàigheadh"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -68,10 +68,6 @@ msgstr "ទូរស័ព្ទដឹកជញ្ជូន"
 msgid "Only used for shipping-related questions."
 msgstr "ប្រើសម្រាប់តែសំណួរទាក់ទងនឹងការដឹកជញ្ជូនប៉ុណ្ណោះ។"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "ពហុជំហាន"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ជំហានតែមួយ"
@@ -105,14 +101,6 @@ msgstr "បន្តទៅវិក័យប័ត្រ"
 msgid "Proceed to payment"
 msgstr "បន្តទៅការទូទាត់"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "ទំនាក់ទំនងរបស់ខ្ញុំ"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "ការដឹកជញ្ជូនទៅ"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "វិធីសាស្រ្តដឹកជញ្ជូន"
@@ -120,10 +108,6 @@ msgstr "វិធីសាស្រ្តដឹកជញ្ជូន"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "កំណត់ចំណាំបន្ថែម"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "ការចេញវិក្កយបត្រទៅ"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -923,16 +907,6 @@ msgstr "ប្លង់ពិនិត្យចេញ"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "គំរូរចនា"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"រចនាប័ទ្មទូទៅសម្រាប់ជំហានបង់ប្រាក់ សេចក្តីសង្ខេបនៃការបញ្ជាទិញ "
-"និងផ្នែកផ្សេងទៀត។ ក៏អាចអនុវត្តចំពោះទំព័រផ្សេងទៀតដូចជា រទេះ "
-"ការបញ្ជាទិញបានទទួល និងមើលទំព័រការបញ្ជាទិញ។"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2494,7 +2468,6 @@ msgstr "បន្ទាប់ពីរបារវឌ្ឍនភាព"
 msgid "Before coupon codes section"
 msgstr "ផ្នែកមុនលេខកូដគូប៉ុង"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "បើកប្រអប់លេខទូរសព្ទអន្តរជាតិ"
@@ -2546,11 +2519,67 @@ msgstr "បន្ទាត់ថេរ"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ឥតគិតថ្លៃ"
-=======
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "ឬ"
->>>>>>> release/next-PATCH
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "ទំនាក់ទំនង"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "ជំហានច្រើន"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "ជួរឈរចំនួន ២"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "ជួរឈរ ១"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"រចនាប័ទ្មទូទៅសម្រាប់ជំហានទូទាត់ប្រាក់ សេចក្តីសង្ខេបនៃការបញ្ជាទិញ "
+"និងផ្នែកផ្សេងទៀត។<br> ក៏អាចអនុវត្តចំពោះទំព័រផ្សេងទៀតដូចជាទំព័ររទេះទិញទំនិញ "
+"ទំព័របញ្ជាទិញដែលបានទទួល និងទំព័រមើលការបញ្ជាទិញផងដែរ។"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"គំរូ​រចនា <em>&quot;បំបែក&quot;</em> មិនអាចប្រើបានទេនៅពេលប្រើប្លង់ "
+"<em>&quot;ជួរឈរ 1&quot;</em> ហើយនឹងប្តូរទៅជា <em>&quot;អប្បបរមា&quot;</em> "
+"វិញប្រសិនបើជ្រើសរើស។"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "ទីតាំងផ្នែកសង្ខេបការបញ្ជាទិញបន្ថែមនៅលើទូរសព្ទដៃ។"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"នៅពេលប្រើប្លង់ទូទាត់ប្រាក់មួយជួរឈរ ជម្រើសនេះតែងតែត្រូវបានកំណត់ទៅ "
+"<em>&quot;មុនជំហានទូទាត់ប្រាក់&quot;</em> "
+"ហើយក៏អនុវត្តចំពោះទិដ្ឋភាពផ្ទៃតុផងដែរ។"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "នៅលើក្បាលគេហទំព័រ"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "ជំហានមុនពេលទូទាត់ប្រាក់"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
