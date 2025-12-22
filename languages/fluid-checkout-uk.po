@@ -2539,6 +2539,7 @@ msgstr "Після індикатора виконання"
 msgid "Before coupon codes section"
 msgstr "Перед розділом кодів купонів"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Увімкнути поля міжнародних телефонних номерів"
@@ -2588,6 +2589,11 @@ msgstr "Фіксована лінія"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Безкоштовно"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Або"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

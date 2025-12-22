@@ -2480,6 +2480,7 @@ msgstr "Sawise bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sadurunge bagean kode coupon"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Aktifake kolom nomer telpon internasional"
@@ -2529,6 +2530,11 @@ msgstr "Jalur tetep"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bebas pulsa"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Utawa"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

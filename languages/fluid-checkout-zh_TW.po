@@ -2251,6 +2251,7 @@ msgstr "進度條之後"
 msgid "Before coupon codes section"
 msgstr "優惠券代碼部分之前"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "啟用國際電話號碼字段"
@@ -2294,6 +2295,11 @@ msgstr "固定線路"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "免費電話"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "或者"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

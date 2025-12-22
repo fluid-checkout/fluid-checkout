@@ -2470,6 +2470,7 @@ msgstr "ຫຼັງຈາກແຖບຄວາມຄືບຫນ້າ"
 msgid "Before coupon codes section"
 msgstr "ກ່ອນທີ່ຈະພາກສ່ວນລະຫັດຄູປອງ"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "ເປີດໃຊ້ຊ່ອງຂໍ້ມູນເບີໂທລະສັບລະຫວ່າງປະເທດ"
@@ -2518,6 +2519,11 @@ msgstr "ສາຍຄົງທີ່"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ໂທຟຣີ"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ຫຼື"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

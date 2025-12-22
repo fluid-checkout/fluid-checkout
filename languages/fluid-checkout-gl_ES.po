@@ -2528,6 +2528,7 @@ msgstr "Despois da barra de progreso"
 msgid "Before coupon codes section"
 msgstr "Sección anterior aos códigos de cupón"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Activar campos de números de teléfono internacionais"
@@ -2577,6 +2578,11 @@ msgstr "Liña fixa"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Número gratuíto"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Ou"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

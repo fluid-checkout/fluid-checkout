@@ -2553,6 +2553,7 @@ msgstr "Pagkahuman sa progress bar"
 msgid "Before coupon codes section"
 msgstr "Sa wala pa ang seksyon sa mga code sa kupon"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "I-enable ang internasyonal nga mga natad sa numero sa telepono"
@@ -2605,6 +2606,11 @@ msgstr "Naayo nga linya"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Libre ang bayad"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "O"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

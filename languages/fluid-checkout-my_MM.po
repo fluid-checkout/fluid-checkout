@@ -2571,6 +2571,7 @@ msgstr "တိုးတက်မှုဘားပြီးနောက်"
 msgid "Before coupon codes section"
 msgstr "ကူပွန်ကုဒ်များ ကဏ္ဍမစမီ"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "နိုင်ငံတကာ ဖုန်းနံပါတ် အကွက်များကို ဖွင့်ပါ။"
@@ -2621,6 +2622,11 @@ msgstr "ပုံသေလိုင်း"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "အခမဲ့"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "သို့မဟုတ်"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

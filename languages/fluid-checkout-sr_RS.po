@@ -2600,6 +2600,7 @@ msgstr "После траке напретка"
 msgid "Before coupon codes section"
 msgstr "Одељак пре кодова за купоне"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Омогући поља за међународне бројеве телефона"
@@ -2649,6 +2650,11 @@ msgstr "Фиксна линија"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Бесплатни позив"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Или"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

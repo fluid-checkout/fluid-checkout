@@ -2506,6 +2506,7 @@ msgstr "Прогресс тилкесинде кийин"
 msgid "Before coupon codes section"
 msgstr "купон коддору бөлүм алдында"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Эл аралык телефон номери талааларын иштетүү"
@@ -2553,6 +2554,11 @@ msgstr "Туруктуу линия"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Акысыз"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Же болбосо"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

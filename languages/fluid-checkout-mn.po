@@ -2510,6 +2510,7 @@ msgstr "Явцын мөрний дараа"
 msgid "Before coupon codes section"
 msgstr "Купон кодын өмнө"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Олон улсын утасны дугаарын талбаруудыг идэвхжүүлнэ үү"
@@ -2559,6 +2560,11 @@ msgstr "Тогтмол шугам"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Үнэгүй"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Эсвэл"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
