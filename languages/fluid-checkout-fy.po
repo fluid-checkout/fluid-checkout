@@ -2521,6 +2521,7 @@ msgstr "Nei de foarútgongsbalke"
 msgid "Before coupon codes section"
 msgstr "Foarôfgeand oan de seksje koartingskoades"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Ynternasjonale tillefoannûmerfjilden ynskeakelje"
@@ -2570,6 +2571,11 @@ msgstr "Fêste line"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Tolfrij"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Of"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

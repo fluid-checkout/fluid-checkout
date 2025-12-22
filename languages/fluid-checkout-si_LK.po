@@ -2468,6 +2468,7 @@ msgstr "ප්‍රගති තීරුවෙන් පසුව"
 msgid "Before coupon codes section"
 msgstr "කූපන් කේත කොටසට පෙර"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "ජාත්‍යන්තර දුරකථන අංක ක්ෂේත්‍ර සබල කරන්න"
@@ -2515,6 +2516,11 @@ msgstr "ස්ථාවර රේඛාව"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ගාස්තු රහිත"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "හෝ"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

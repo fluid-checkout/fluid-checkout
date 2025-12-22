@@ -2623,6 +2623,7 @@ msgstr "Po zobrazení ukazatele průběhu"
 msgid "Before coupon codes section"
 msgstr "Před sekcí s kódy kupónů"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Povolení polí pro mezinárodní telefonní čísla"
@@ -2672,6 +2673,11 @@ msgstr "Pevná linka"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bezplatné mýtné"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Nebo"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

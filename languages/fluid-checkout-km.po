@@ -2494,6 +2494,7 @@ msgstr "បន្ទាប់ពីរបារវឌ្ឍនភាព"
 msgid "Before coupon codes section"
 msgstr "ផ្នែកមុនលេខកូដគូប៉ុង"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "បើកប្រអប់លេខទូរសព្ទអន្តរជាតិ"
@@ -2545,6 +2546,11 @@ msgstr "បន្ទាត់ថេរ"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ឥតគិតថ្លៃ"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ឬ"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

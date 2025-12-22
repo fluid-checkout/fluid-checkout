@@ -2473,6 +2473,7 @@ msgstr "ਤਰੱਕੀ ਪੱਟੀ ਤੋਂ ਬਾਅਦ"
 msgid "Before coupon codes section"
 msgstr "ਕੂਪਨ ਕੋਡ ਸੈਕਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "ਅੰਤਰਰਾਸ਼ਟਰੀ ਫ਼ੋਨ ਨੰਬਰ ਖੇਤਰਾਂ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ"
@@ -2522,6 +2523,11 @@ msgstr "ਸਥਿਰ ਲਾਈਨ"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ਟੋਲ ਫ੍ਰੀ"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ਜਾਂ"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

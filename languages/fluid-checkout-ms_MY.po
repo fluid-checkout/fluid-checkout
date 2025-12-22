@@ -2525,6 +2525,7 @@ msgstr "Selepas bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sebelum bahagian kod kupon"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Dayakan medan nombor telefon antarabangsa"
@@ -2574,6 +2575,11 @@ msgstr "Talian tetap"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Percuma tol"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Atau"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

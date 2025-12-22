@@ -2550,6 +2550,7 @@ msgstr "പ്രോഗ്രസ് ബാറിന് ശേഷം"
 msgid "Before coupon codes section"
 msgstr "കൂപ്പൺ കോഡുകൾക്ക് മുമ്പുള്ള വിഭാഗം"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "അന്താരാഷ്ട്ര ഫോൺ നമ്പർ ഫീൽഡുകൾ പ്രവർത്തനക്ഷമമാക്കുക"
@@ -2597,6 +2598,11 @@ msgstr "സ്ഥിര ലൈൻ"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ടോൾ ഫ്രീ"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "അഥവാ"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

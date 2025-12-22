@@ -2463,6 +2463,7 @@ msgstr "પ્રગતિ પટ્ટી પછી"
 msgid "Before coupon codes section"
 msgstr "કૂપન કોડ્સ વિભાગ પહેલાં"
 
+<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "આંતરરાષ્ટ્રીય ફોન નંબર ફીલ્ડ્સ સક્ષમ કરો"
@@ -2510,6 +2511,11 @@ msgstr "સ્થિર રેખા"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ટોલ ફ્રી"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "અથવા"
+>>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
