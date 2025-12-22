@@ -432,10 +432,6 @@ msgstr "Factuuradres"
 msgid "Billing phone"
 msgstr "Facturering telefoon"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Facturering aan"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Zowel onder het betaalgedeelte als het besteloverzicht"
@@ -1111,16 +1107,6 @@ msgstr "Voettekst achtergrondkleur"
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Forceer factuuradressen en verzendadressen tot hetzelfde (enkele sectie)"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Algemene stijlen voor de afrekenstappen, het besteloverzicht en andere "
-"secties. Kan ook van toepassing zijn op andere pagina's, zoals de pagina's "
-"Winkelwagen, Ontvangen bestelling en Bestelling weergeven."
-
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
@@ -1465,10 +1451,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Het aanmeldingsvakje naar de contactstap verplaatsen"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Meerstappen"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
@@ -1476,10 +1458,6 @@ msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "De lay-out van mijn account"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mijn contact"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -1961,10 +1939,6 @@ msgstr "Verzendmethoden"
 #: inc/admin/admin-settings-checkout.php:579
 msgid "Shipping phone"
 msgstr "Telefoonnummer voor verzending"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Verzenden naar"
 
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
@@ -2734,9 +2708,66 @@ msgstr "Vaste lijn"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Gratis"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Of"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Neem contact op met"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Meervoudige stap"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolommen"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Algemene stijlen voor de afrekenstappen, besteloverzicht en andere secties. "
+"<br>Mogelijk ook van toepassing op andere pagina's, zoals de pagina's "
+"Winkelwagen, Ontvangen bestelling en Bestelling bekijken."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"De ontwerpsjabloon <em>\"Split\"</em> is niet beschikbaar bij gebruik van "
+"<em>\"1 kolom\"</em> lay-out en valt terug op <em>\"Minimalist\"</em> als "
+"deze wordt gekozen."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Extra positie besteloverzicht op mobiel."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Bij gebruik van de één-koloms afrekenlay-out is deze optie altijd ingesteld "
+"op <em>\"Voor afrekenstappen\"</em> en geldt ook voor de desktopweergave."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Op de header van de site"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Stappen voor het afrekenen"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

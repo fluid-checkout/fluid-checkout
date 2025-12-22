@@ -68,10 +68,6 @@ msgstr "Telefon penghantaran"
 msgid "Only used for shipping-related questions."
 msgstr "Hanya digunakan untuk soalan berkaitan penghantaran."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Berbilang langkah"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Langkah tunggal"
@@ -105,14 +101,6 @@ msgstr "Teruskan ke pengebilan"
 msgid "Proceed to payment"
 msgstr "Teruskan ke pembayaran"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "kenalan saya"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Penghantaran ke"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Kaedah penghantaran"
@@ -120,10 +108,6 @@ msgstr "Kaedah penghantaran"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Nota tambahan"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Pengebilan kepada"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -931,16 +915,6 @@ msgstr "Susun atur pembayaran"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Templat reka bentuk"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Gaya am untuk langkah pembayaran, ringkasan pesanan dan bahagian lain. "
-"Mungkin juga digunakan pada halaman lain seperti halaman Troli, Pesanan "
-"Diterima dan Lihat Pesanan."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2574,9 +2548,67 @@ msgstr "Talian tetap"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Percuma tol"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Atau"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Hubungi"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Pelbagai langkah"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 lajur"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 lajur"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Gaya umum untuk langkah pembayaran, ringkasan pesanan dan bahagian "
+"lain.<br> Mungkin juga terpakai pada halaman lain seperti halaman Troli, "
+"Pesanan Diterima dan Lihat Pesanan."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Templat reka bentuk <em>&quot;Split&quot;</em> tidak tersedia apabila "
+"menggunakan susun atur <em>&quot;1 lajur&quot;</em> dan akan kembali kepada "
+"<em>&quot;Minimalis&quot;</em> jika dipilih."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Kedudukan bahagian ringkasan pesanan tambahan pada mudah alih."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Apabila menggunakan susun atur pembayaran satu lajur, pilihan ini sentiasa "
+"ditetapkan kepada <em>&quot;Sebelum langkah pembayaran&quot;</em> dan juga "
+"terpakai pada paparan desktop."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Pada pengepala tapak"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Sebelum langkah pembayaran"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

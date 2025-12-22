@@ -68,10 +68,6 @@ msgstr "배송 전화"
 msgid "Only used for shipping-related questions."
 msgstr "배송 관련 문의에만 사용됩니다."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "다단계"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "한 단계"
@@ -105,14 +101,6 @@ msgstr "청구 진행"
 msgid "Proceed to payment"
 msgstr "결제 진행"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "내 연락처"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "배송지"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "배송 방법"
@@ -120,10 +108,6 @@ msgstr "배송 방법"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "추가 참고 사항"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "청구 대상"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -866,15 +850,6 @@ msgstr "결제 레이아웃"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "디자인 템플릿"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"결제 단계, 주문 요약 및 기타 섹션의 일반 스타일입니다. 장바구니, 주문 접수 및 주문 보기 페이지와 같은 다른 페이지에도 적용될 수 "
-"있습니다."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2330,9 +2305,62 @@ msgstr "고정 회선"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "무료 전화"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "또는"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "연락처"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "다단계"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "열 2개"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "열 1개"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"결제 단계, 주문 요약 및 기타 섹션의 일반 스타일입니다. <br>카트, 주문 접수 및 주문 보기 페이지와 같은 다른 페이지에도 적용될 "
+"수 있습니다."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>\"분할\"</em> 디자인 템플릿은 <em>\"1열\"</em> 레이아웃을 사용할 때 사용할 수 없으며, 선택하면 "
+"<em>\"미니멀리스트\"</em>로 돌아갑니다."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "모바일에서 추가 주문 요약 섹션 위치."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr "한 열 결제 레이아웃을 사용하는 경우 이 옵션은 항상 <em>\"결제 단계 전\"</em>으로 설정되며 데스크톱 보기에도 적용됩니다."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "사이트 헤더에서"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "결제 전 단계"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -68,10 +68,6 @@ msgstr "Sendotelefono"
 msgid "Only used for shipping-related questions."
 msgstr "Nur uzata por send-rilataj demandoj."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Plurpaŝa"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Ununura paŝo"
@@ -105,14 +101,6 @@ msgstr "Procedu al fakturado"
 msgid "Proceed to payment"
 msgstr "Procedu al pago"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mia kontakto"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Sendado al"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Sendado metodo"
@@ -120,10 +108,6 @@ msgstr "Sendado metodo"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Pliaj notoj"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fakturado al"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -917,16 +901,6 @@ msgstr "Checkout aranĝo"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Dezajna ŝablono"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Ĝeneralaj stiloj por la pagpaŝoj, mendo-resumo kaj aliaj sekcioj. Eble "
-"ankaŭ validi por aliaj paĝoj kiel la Paĝoj Ĉaro, Mendo Ricevita kaj Vidi "
-"Mendo."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2515,9 +2489,67 @@ msgstr "Fiksa linio"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Senpaga"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Aŭ"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakto"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Plurpaŝa"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolumnoj"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolumno"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Ĝeneralaj stiloj por la kaspaŝoj, mendresumo kaj aliaj sekcioj.<br> Povus "
+"ankaŭ aplikiĝi al aliaj paĝoj kiel ekzemple la paĝoj Ĉaro, Mendo Ricevita "
+"kaj Vidi Mendon."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"La ŝablono <em>&quot;Split&quot;</em> ne haveblas kiam oni uzas la aranĝon "
+"<em>&quot;1 kolumno&quot;</em> kaj ĝi revenos al "
+"<em>&quot;Minimalista&quot;</em> se elektita."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Plia sekcio pri resumo de mendoj en poŝtelefono."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kiam oni uzas la unu-kolumnan kaspaĝon, ĉi tiu opcio ĉiam estas agordita al "
+"<em>&quot;Paŝoj antaŭ kaso&quot;</em> kaj ankaŭ validas por la skribtabla "
+"vido."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "En la reteja kaplinio"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Paŝoj antaŭ la kaso"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

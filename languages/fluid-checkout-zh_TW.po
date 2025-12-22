@@ -68,10 +68,6 @@ msgstr "出貨電話"
 msgid "Only used for shipping-related questions."
 msgstr "僅用於與運輸相關的問題。"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "多步驟"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "單步"
@@ -105,14 +101,6 @@ msgstr "繼續結算"
 msgid "Proceed to payment"
 msgstr "繼續付款"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "我的聯絡方式"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "發送至"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "送貨方式"
@@ -120,10 +108,6 @@ msgstr "送貨方式"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "其他說明"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "帳單至"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -859,13 +843,6 @@ msgstr "結帳佈局"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "設計模板"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr "結帳步驟、訂單摘要和其他部分的通用樣式。也可能適用於其他頁面，例如購物車、訂單已收到和查看訂單頁面。"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2294,6 +2271,58 @@ msgstr "固定線路"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "免費電話"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "接觸"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "多步驟"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2列"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1列"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr "結帳步驟、訂單摘要和其他部分的通用樣式。<br>也可能適用於其他頁面，例如購物車、訂單已接收和查看訂單頁面。"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr "使用<em>「1 列」</em>佈局時， <em>「分割」</em>設計範本不可用，如果選擇該模板，則會回退到<em>「極簡」佈局</em>。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "行動端額外訂單摘要部分位置。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr "使用單列結帳佈局時，此選項始終設定為<em>「結帳步驟之前」</em> ，並且也適用於桌面視圖。"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "網站標題"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "結帳前的步驟"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "或者"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

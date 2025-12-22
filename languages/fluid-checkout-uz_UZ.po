@@ -68,10 +68,6 @@ msgstr "Yuk tashish telefoni"
 msgid "Only used for shipping-related questions."
 msgstr "Faqat yuk tashish bilan bog&#39;liq savollar uchun ishlatiladi."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Ko&#39;p bosqichli"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Yagona qadam"
@@ -105,14 +101,6 @@ msgstr "Hisob-kitobga o&#39;ting"
 msgid "Proceed to payment"
 msgstr "To&#39;lovga o&#39;ting"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mening kontaktim"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "ga yetkazib berish"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Yuk tashish usuli"
@@ -120,10 +108,6 @@ msgstr "Yuk tashish usuli"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Qo&#39;shimcha eslatmalar"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Kimga hisob-kitob qilish"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -939,16 +923,6 @@ msgstr "Chiqish tartibi"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Dizayn shablon"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"To&#39;lov bosqichlari, buyurtma xulosasi va boshqa bo&#39;limlar uchun "
-"umumiy uslublar. Savat, Qabul qilingan buyurtma va Buyurtmani ko&#39;rish "
-"sahifalari kabi boshqa sahifalarga ham tegishli bo&#39;lishi mumkin."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2600,6 +2574,70 @@ msgstr "Ruxsat etilgan chiziq"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bepul"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Aloqa"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Ko&#39;p bosqichli"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 ta ustun"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 ustun"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"To&#39;lov bosqichlari, buyurtma xulosasi va boshqa bo&#39;limlar uchun "
+"umumiy uslublar.<br> Savat, Qabul qilingan buyurtma va Buyurtmani "
+"ko&#39;rish sahifalari kabi boshqa sahifalarga ham tegishli bo&#39;lishi "
+"mumkin."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 ustunli&quot;</em> maketdan foydalanganda "
+"<em>&quot;Split&quot;</em> dizayn shabloni mavjud emas va agar tanlansa, "
+"<em>&quot;Minimalist&quot;</em> ga qaytadi."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr ""
+"Mobil qurilmada qo&#39;shimcha buyurtma xulosasi bo&#39;limining "
+"pozitsiyasi."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Bir ustunli to&#39;lov tartibidan foydalanganda, bu parametr har doim "
+"<em>&quot;To&#39;lovdan oldingi bosqichlar&quot;</em> ga o&#39;rnatiladi va "
+"ish stoli ko&#39;rinishiga ham tegishli."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Sayt sarlavhasida"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "To&#39;lovdan oldingi bosqichlar"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Yoki"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

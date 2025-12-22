@@ -70,10 +70,6 @@ msgstr "Bidalketa telefonoa"
 msgid "Only used for shipping-related questions."
 msgstr "Bidalketarekin lotutako galderetarako soilik erabiltzen da."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Urrats anitzekoa"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Urrats bakarra"
@@ -107,14 +103,6 @@ msgstr "Jarraitu fakturaziora"
 msgid "Proceed to payment"
 msgstr "Ordainketarekin jarraitu"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Nire kontaktua"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Bidalketa"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Bidalketa metodoa"
@@ -122,10 +110,6 @@ msgstr "Bidalketa metodoa"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Ohar osagarriak"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fakturazioa"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -928,16 +912,6 @@ msgstr "Ordainketa diseinua"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Diseinu txantiloia"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Ordainketa urratsetarako, eskaeraren laburpena eta beste ataletarako estilo "
-"orokorrak. Baliteke beste orri batzuei ere aplikatzea, hala nola Saskia, "
-"Jasotako eskaera eta Ikusi eskaera orrietan."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2570,9 +2544,67 @@ msgstr "Linea finkoa"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Doako telefonoa"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Edo"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontaktua"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Urrats anitzeko"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 zutabe"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "Zutabe 1"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Ordainketa-urratsen, eskaeraren laburpenaren eta beste atal batzuen estilo "
+"orokorrak.<br> Baliteke beste orrialde batzuei ere aplikatzea, hala nola "
+"Saskia, Jasotako Eskaera eta Ikusi Eskaera orrialdeei."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;Zatitu&quot;</em> diseinu txantiloia ez dago erabilgarri "
+"<em>&quot;1 zutabe&quot;</em> diseinua erabiltzean eta "
+"<em>&quot;Minimalista&quot;</em> aukerara itzuliko da hautatzen bada."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Eskaeren laburpen atal gehigarriaren kokapena mugikorrean."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Zutabe bakarreko ordainketa-diseinua erabiltzean, aukera hau beti "
+"<em>&quot;Ordainketa-urratsak baino lehen&quot;</em> gisa ezartzen da eta "
+"mahaigaineko ikuspegiari ere aplikatzen zaio."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Gunearen goiburuan"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Ordainketa egin aurretiko urratsak"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

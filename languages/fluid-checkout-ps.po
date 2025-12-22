@@ -68,10 +68,6 @@ msgstr "د لېږد تلیفون"
 msgid "Only used for shipping-related questions."
 msgstr "یوازې د بار وړلو پورې اړوند پوښتنو لپاره کارول کیږي."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "څو ګامه"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "یو ګام"
@@ -105,14 +101,6 @@ msgstr "بل کولو ته دوام ورکړئ"
 msgid "Proceed to payment"
 msgstr "د تادیې لپاره لاړ شئ"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "زما اړیکه"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "لیږدول"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "د بار وړلو طریقه"
@@ -120,10 +108,6 @@ msgstr "د بار وړلو طریقه"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "اضافي یادښتونه"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "بل ورکول"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -920,15 +904,6 @@ msgstr "د چیک آوټ ترتیب"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "د ډیزاین ټیمپلیټ"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"د چیک آوټ مرحلو، د امر لنډیز او نورو برخو لپاره عمومي سټایلونه. ممکن په "
-"نورو پاڼو لکه کارټ، د ترلاسه شوي امر او د امر لیدلو پاڼو کې هم پلي شي."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2512,9 +2487,65 @@ msgstr "ثابته کرښه"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "وړیا"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "یا"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "اړیکه"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "څو ګامه"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "۲ ستنې"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "۱ ستون"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"د چیک آوټ مرحلو، د امر لنډیز او نورو برخو لپاره عمومي سټایلونه.<br> ممکن په "
+"نورو پاڼو لکه کارټ، ترلاسه شوي امر او لیدل شوي امر پاڼو باندې هم پلي شي."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"د ډیزاین ټیمپلیټ <em>&quot;سپلایټ&quot;</em> د <em>&quot;۱ ستون&quot;</em> "
+"ترتیب کارولو پرمهال شتون نلري او که غوره شي نو بیرته به "
+"<em>&quot;مینیمالیست&quot;</em> ته راشي."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "په موبایل کې د اضافي امر لنډیز برخې موقعیت."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"کله چې د یو کالم چیک آوټ ترتیب کاروئ نو دا اختیار تل <em>&quot;د چیک آوټ "
+"مرحلو دمخه&quot;</em> ته ټاکل شوی وي او د ډیسټاپ لید لپاره هم پلي کیږي."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "د سایټ په سرلیک کې"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "د چیک آوټ څخه مخکې ګامونه"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

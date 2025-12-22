@@ -69,10 +69,6 @@ msgstr "هاتف الشحن"
 msgid "Only used for shipping-related questions."
 msgstr "يستخدم فقط للأسئلة المتعلقة بالشحن."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "متعدد الخطوات"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "خطوة واحدة"
@@ -106,14 +102,6 @@ msgstr "انتقل إلى الفاتورة"
 msgid "Proceed to payment"
 msgstr "انتقل إلى الدفع"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "اتصالي"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "الشحن إلى"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "طريقة الشحن"
@@ -121,10 +109,6 @@ msgstr "طريقة الشحن"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "ملاحظات إضافية"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "الفواتير إلى"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -917,15 +901,6 @@ msgstr "تخطيط الخروج"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "قالب التصميم"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"الأنماط العامة لخطوات الدفع وملخص الطلب والأقسام الأخرى. قد تنطبق أيضًا على "
-"صفحات أخرى مثل صفحة سلة التسوق وصفحات الطلب المستلم وعرض الطلب."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2465,6 +2440,66 @@ msgstr "خط ثابت"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "رقم مجاني"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "اتصال"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "خطوات متعددة"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "عمودان"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "عمود واحد"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"أنماط عامة لخطوات الدفع، وملخص الطلب، والأقسام الأخرى.<br> قد ينطبق ذلك "
+"أيضاً على صفحات أخرى مثل صفحة سلة التسوق، وصفحة استلام الطلب، وصفحة عرض "
+"الطلب."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"قالب التصميم <em>&quot;Split&quot;</em> غير متاح عند استخدام تخطيط "
+"<em>&quot;عمود واحد&quot;</em> وسيعود إلى <em>&quot;Minimalist&quot;</em> "
+"إذا تم اختياره."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "موضع قسم ملخص الطلب الإضافي على الهاتف المحمول."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"عند استخدام تخطيط الدفع ذي العمود الواحد، يتم دائمًا تعيين هذا الخيار على "
+"<em>&quot;قبل خطوات الدفع&quot;</em> وينطبق أيضًا على عرض سطح المكتب."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "في رأس الموقع"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "خطوات ما قبل إتمام عملية الشراء"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "أو"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

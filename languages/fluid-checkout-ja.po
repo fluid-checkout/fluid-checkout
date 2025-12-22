@@ -68,10 +68,6 @@ msgstr "発送電話"
 msgid "Only used for shipping-related questions."
 msgstr "発送に関する質問にのみ使用します。"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "マルチステップ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "シングルステップ"
@@ -105,14 +101,6 @@ msgstr "請求に進む"
 msgid "Proceed to payment"
 msgstr "支払いに進む"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "私の連絡先"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "発送先"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "配送方法"
@@ -120,10 +108,6 @@ msgstr "配送方法"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "追記"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "請求先"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -878,13 +862,6 @@ msgstr "レジのレイアウト"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "デザインテンプレート"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr "チェックアウトのステップ、注文の概要、その他のセクションの一般的なスタイルです。また、カート、注文受付、注文内容の確認などのページにも適用されます。"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2347,9 +2324,64 @@ msgstr "固定回線"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "フリーダイヤル"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "あるいは"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "連絡先"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "マルチステップ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2列"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1列"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"チェックアウトのステップ、注文の概要、その他のセクションのための一般的なスタイルです。<br>また、カートページ、注文受付ページ、注文を見るページなどの"
+"他のページにも適用される場合があります。"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"デザインテンプレート <em>\"Split\"</em> は、<em>\"1 column\"</em> "
+"レイアウトを使用している場合は使用できず、<em>\"Minimalist\"</em>を選択した場合にフォールバックします。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "モバイルでの注文概要セクションの位置を追加。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"ワンカラムのチェックアウトレイアウトを使用している場合、このオプションは常に<em>\"Before checkout "
+"steps\"</em>に設定され、デスクトップ表示にも適用されます。"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "サイトヘッダー"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "チェックアウト前の手順"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

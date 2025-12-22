@@ -68,10 +68,6 @@ msgstr "โทรศัพท์สำหรับการขนส่ง"
 msgid "Only used for shipping-related questions."
 msgstr "ใช้เฉพาะสำหรับการสอบถามเกี่ยวกับการจัดส่งเท่านั้น"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "หลายขั้นตอน"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ขั้นตอนเดียว"
@@ -105,14 +101,6 @@ msgstr "ดำเนินการเรียกเก็บเงิน"
 msgid "Proceed to payment"
 msgstr "ดำเนินการชำระเงิน"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "การติดต่อของฉัน"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "การจัดส่งไปยัง"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "วิธีการจัดส่ง"
@@ -120,10 +108,6 @@ msgstr "วิธีการจัดส่ง"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "หมายเหตุเพิ่มเติม"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "การเรียกเก็บเงินไปยัง"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -919,16 +903,6 @@ msgstr "เค้าโครงการชำระเงิน"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "เทมเพลตการออกแบบ"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"รูปแบบทั่วไปสำหรับขั้นตอนการชำระเงิน สรุปคำสั่งซื้อ และส่วนอื่นๆ "
-"อาจนำไปใช้กับหน้าอื่นๆ เช่น ตะกร้าสินค้า หน้าที่ได้รับคำสั่งซื้อ "
-"และหน้าดูคำสั่งซื้อก็ได้"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2517,6 +2491,67 @@ msgstr "โทรศัพท์บ้าน"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "โทรฟรี"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "ติดต่อ"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "หลายขั้นตอน"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 คอลัมน์"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 คอลัมน์"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"รูปแบบทั่วไปสำหรับขั้นตอนการชำระเงิน สรุปคำสั่งซื้อ และส่วนอื่นๆ<br> "
+"อาจนำไปใช้กับหน้าอื่นๆ เช่น หน้าตะกร้าสินค้า หน้าคำสั่งซื้อที่ได้รับ "
+"และหน้าดูรายละเอียดคำสั่งซื้อได้เช่นกัน"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"เทมเพลตการออกแบบ <em>&quot;Split&quot;</em> "
+"ไม่สามารถใช้งานได้เมื่อใช้เค้าโครง <em>&quot;1 คอลัมน์&quot;</em> "
+"และจะเปลี่ยนไปใช้ <em>&quot;Minimalist&quot;</em> แทนหากเลือกตัวเลือกนี้"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "ตำแหน่งส่วนสรุปคำสั่งซื้อเพิ่มเติมบนมือถือ"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"เมื่อใช้รูปแบบการชำระเงินแบบคอลัมน์เดียว ตัวเลือกนี้จะถูกตั้งค่าเป็น "
+"<em>&quot;ก่อนขั้นตอนการชำระเงิน&quot;</em> เสมอ "
+"และจะใช้ได้ในมุมมองเดสก์ท็อปด้วย"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "ในส่วนหัวของเว็บไซต์"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "ขั้นตอนก่อนชำระเงิน"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "หรือ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

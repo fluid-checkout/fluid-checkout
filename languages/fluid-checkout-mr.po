@@ -68,10 +68,6 @@ msgstr "पाठवण्याचा फोन"
 msgid "Only used for shipping-related questions."
 msgstr "फक्त शिपिंगशी संबंधित प्रश्नांसाठी वापरले जाते."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "बहु-चरण"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "एक पाऊल"
@@ -105,14 +101,6 @@ msgstr "बिलिंगसाठी पुढे जा"
 msgid "Proceed to payment"
 msgstr "पेमेंट करण्यासाठी पुढे जा"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "माझा संपर्क"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "येथे पाठवत आहे"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "शिपिंग पद्धत"
@@ -120,10 +108,6 @@ msgstr "शिपिंग पद्धत"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "अतिरिक्त नोट्स"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "यांना बिल करणे"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -920,15 +904,6 @@ msgstr "चेकआउट लेआउट"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "डिझाइन टेम्पलेट"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"चेकआउट पायऱ्या, ऑर्डर सारांश आणि इतर विभागांसाठी सामान्य शैली. कार्ट, ऑर्डर "
-"प्राप्त आणि ऑर्डर पहा पृष्ठे यासारख्या इतर पृष्ठांवर देखील लागू होऊ शकते."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2510,9 +2485,66 @@ msgstr "स्थिर रेषा"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "टोल फ्री"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "किंवा"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "संपर्क करा"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "मल्टी स्टेप"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "२ स्तंभ"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "१ स्तंभ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"चेकआउट चरण, ऑर्डर सारांश आणि इतर विभागांसाठी सामान्य शैली.<br> कार्ट, ऑर्डर "
+"मिळालेली आणि ऑर्डर पहा अशी इतर पृष्ठे देखील लागू होऊ शकतात."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;१ कॉलम&quot;</em> लेआउट वापरताना <em>&quot;स्प्लिट&quot;</em> "
+"डिझाइन टेम्पलेट उपलब्ध नाही आणि निवडल्यास ते "
+"<em>&quot;मिनिमलिस्ट&quot;</em> वर परत येईल."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "मोबाईलवर अतिरिक्त ऑर्डर सारांश विभागाची स्थिती."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"एक-स्तंभ चेकआउट लेआउट वापरताना हा पर्याय नेहमी <em>&quot;चेकआउट "
+"चरणांपूर्वी&quot;</em> वर सेट केला जातो आणि डेस्कटॉप दृश्यावर देखील लागू "
+"होतो."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "साइटच्या शीर्षलेखावर"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "चेकआउट करण्यापूर्वीच्या पायऱ्या"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

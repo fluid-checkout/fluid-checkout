@@ -68,10 +68,6 @@ msgstr "শিপিং ফোন"
 msgid "Only used for shipping-related questions."
 msgstr "শুধুমাত্র শিপিং-সম্পর্কিত প্রশ্নের জন্য ব্যবহৃত।"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "বহু-পদক্ষেপ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "একক পদক্ষেপ"
@@ -105,14 +101,6 @@ msgstr "বিলিংয়ে এগিয়ে যান"
 msgid "Proceed to payment"
 msgstr "পেমেন্টে এগিয়ে যান"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "আমার যোগাযোগ"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "পাঠানো হচ্ছে"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "শিপিং পদ্ধতি"
@@ -120,10 +108,6 @@ msgstr "শিপিং পদ্ধতি"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "অতিরিক্ত নোট"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "বিলিং করা হচ্ছে"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -921,16 +905,6 @@ msgstr "চেকআউট লেআউট"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "ডিজাইন টেমপ্লেট"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"চেকআউট ধাপ, অর্ডার সারাংশ এবং অন্যান্য বিভাগের জন্য সাধারণ স্টাইল। কার্ট, "
-"অর্ডার রিসিভড এবং ভিউ অর্ডার পৃষ্ঠার মতো অন্যান্য পৃষ্ঠাগুলিতেও প্রযোজ্য "
-"হতে পারে।"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2527,6 +2501,66 @@ msgstr "স্থির রেখা"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "টোল ফ্রি"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "যোগাযোগ"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "বহু ধাপ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "২টি কলাম"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "১টি কলাম"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"চেকআউট ধাপ, অর্ডার সারাংশ এবং অন্যান্য বিভাগের জন্য সাধারণ স্টাইল।<br> "
+"কার্ট, অর্ডার রিসিভড এবং ভিউ অর্ডার পৃষ্ঠার মতো অন্যান্য পৃষ্ঠাগুলিতেও "
+"প্রযোজ্য হতে পারে।"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;১ কলাম&quot;</em> লেআউট ব্যবহার করার সময় "
+"<em>&quot;স্প্লিট&quot;</em> ডিজাইন টেমপ্লেটটি পাওয়া যায় না এবং যদি এটি "
+"বেছে নেওয়া হয় তবে এটি <em>&quot;মিনিমালিস্ট&quot;</em> তে ফিরে আসবে।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "মোবাইলে অতিরিক্ত অর্ডার সারাংশ বিভাগের অবস্থান।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"এক-কলাম চেকআউট লেআউট ব্যবহার করার সময় এই বিকল্পটি সর্বদা <em>&quot;চেকআউট "
+"পদক্ষেপের আগে&quot;</em> তে সেট করা থাকে এবং ডেস্কটপ ভিউতেও প্রযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "সাইটের হেডারে"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "চেকআউটের আগে ধাপগুলি"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "অথবা"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

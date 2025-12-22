@@ -436,10 +436,6 @@ msgstr "Διεύθυνση χρέωσης"
 msgid "Billing phone"
 msgstr "Τηλέφωνο χρέωσης"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Χρέωση σε"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Τόσο κάτω από το τμήμα πληρωμής όσο και κάτω από τη σύνοψη της παραγγελίας"
@@ -1129,16 +1125,6 @@ msgstr ""
 "Αναγκάστε τις διευθύνσεις χρέωσης και αποστολής να είναι ίδιες (ενιαίο "
 "τμήμα)"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Γενικά στυλ για τα βήματα πληρωμής, τη σύνοψη της παραγγελίας και άλλες "
-"ενότητες. Μπορεί επίσης να εφαρμοστεί σε άλλες σελίδες, όπως οι σελίδες "
-"Καλάθι, Παραγγελία παραλήφθηκε και Προβολή παραγγελίας."
-
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
@@ -1483,10 +1469,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Μετακινήστε το πλαίσιο ελέγχου εγγραφής στο βήμα επαφής"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Πολλαπλών βημάτων"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις για αποστολή και τιμολόγηση."
@@ -1494,10 +1476,6 @@ msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις γ�
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "Η διάταξη του λογαριασμού μου"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Η επαφή μου"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -1982,10 +1960,6 @@ msgstr "Μέθοδοι αποστολής"
 #: inc/admin/admin-settings-checkout.php:579
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Αποστολή σε"
 
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
@@ -2771,9 +2745,67 @@ msgstr "Σταθερή γραμμή"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Χωρίς χρέωση"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ή"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Επικοινωνία"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Πολλαπλό βήμα"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 στήλες"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 στήλη"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Γενικά στυλ για τα βήματα πληρωμής, τη σύνοψη της παραγγελίας και άλλα "
+"τμήματα. <br>Μπορεί επίσης να ισχύει και για άλλες σελίδες, όπως οι σελίδες "
+"Καλάθι, Παραγγελία παραλήφθηκε και Προβολή παραγγελίας."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Το πρότυπο σχεδιασμού <em>\"Split\"</em> δεν είναι διαθέσιμο όταν "
+"χρησιμοποιείται η διάταξη <em>\"1 στήλη\"</em> και θα επανέλθει στο "
+"<em>\"Minimalist\"</em> αν επιλεγεί."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Πρόσθετη θέση της συνοπτικής ενότητας παραγγελίας στο κινητό."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Όταν χρησιμοποιείτε τη διάταξη πληρωμής με μία στήλη, αυτή η επιλογή είναι "
+"πάντα ρυθμισμένη σε <em>\"Πριν από τα βήματα πληρωμής\"</em> και ισχύει "
+"επίσης για την προβολή γραφείου."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Στην επικεφαλίδα του ιστότοπου"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Βήματα πριν από το checkout"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

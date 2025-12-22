@@ -68,10 +68,6 @@ msgstr "Shipping telefoan"
 msgid "Only used for shipping-related questions."
 msgstr "Allinnich brûkt foar ferstjoeringsrelatearre fragen."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Multi-stap"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Single stap"
@@ -105,14 +101,6 @@ msgstr "Trochgean nei fakturearring"
 msgid "Proceed to payment"
 msgstr "Trochgean nei betelling"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Myn kontakt"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Ferstjoeren nei"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Shipping metoade"
@@ -120,10 +108,6 @@ msgstr "Shipping metoade"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Oanfoljende notysjes"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Billing oan"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -931,16 +915,6 @@ msgstr "Checkout yndieling"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Design sjabloan"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Algemiene stilen foar de kassa stappen, oarder gearfetting en oare seksjes. "
-"Kin ek jilde foar oare siden lykas de Cart, Order Received en View Order "
-"siden."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2570,9 +2544,67 @@ msgstr "Fêste line"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Tolfrij"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Of"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Meardere stappen"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolommen"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Algemiene stilen foar de kassa-stappen, besteloversjoch en oare "
+"seksjes.<br> Kin ek jilde foar oare siden lykas de siden Winkelwein, "
+"Bestelling ûntfongen en Bestelling besjen."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"De ûntwerpsjabloan <em>&quot;Split&quot;</em> is net beskikber by it brûken "
+"fan de yndieling <em>&quot;1 kolom&quot;</em> en sil weromfalle op "
+"<em>&quot;Minimalistysk&quot;</em> as keazen."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Ekstra posysje fan &#39;e seksje foar oarderoersjoch op mobyl."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"By it brûken fan de kassa-opmaak mei ien kolom is dizze opsje altyd ynsteld "
+"op <em>&quot;Stappen foar it beteljen&quot;</em> en jildt ek foar de "
+"buroblêdwerjefte."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Op de koptekst fan &#39;e side"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Stappen foar it beteljen"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

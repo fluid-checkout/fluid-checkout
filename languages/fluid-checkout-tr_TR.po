@@ -437,10 +437,6 @@ msgstr "Fatura Adresi"
 msgid "Billing phone"
 msgstr "Fatura telefonu"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fatura Bilgileri"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Hem ödeme bölümünün hem de sipariş özetinin altında"
@@ -1112,16 +1108,6 @@ msgstr "Altbilgi arka plan rengi"
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Fatura ve sevkiyat adreslerini aynı olmaya zorlayın (tek bölüm)"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Ödeme adımları, sipariş özeti ve diğer bölümler için genel stiller. Sepet, "
-"Alınan Sipariş ve Siparişi Görüntüle sayfaları gibi diğer sayfalar için de "
-"geçerli olabilir."
-
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
 "Germanized PRO multistep checkout feature needs to be disabled when using "
@@ -1470,10 +1456,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Kaydol onay kutusunu iletişim adımına taşıyın"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Çok adımlı"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Gönderim ve faturalandırma için birden fazla kayıtlı adres."
@@ -1481,10 +1463,6 @@ msgstr "Gönderim ve faturalandırma için birden fazla kayıtlı adres."
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "Hesap düzenim"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "İletişim"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -1960,10 +1938,6 @@ msgstr "Gönderi yöntemleri"
 #: inc/admin/admin-settings-checkout.php:579
 msgid "Shipping phone"
 msgstr "Telefon numarası"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Alıcı Bilgileri"
 
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
@@ -2732,6 +2706,66 @@ msgstr "Sabit hat"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Ücretsiz"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "İletişim"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Çoklu adım"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 sütun"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 sütun"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Ödeme adımları, sipariş özeti ve diğer bölümler için genel stiller. "
+"<br>Ayrıca Sepet, Alınan Sipariş ve Siparişi Görüntüle sayfaları gibi diğer "
+"sayfalara da uygulanabilir."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>\"Böl\"</em> tasarım şablonu, <em>\"1 sütun\"</em> düzeni kullanılırken "
+"kullanılamaz ve seçilirse <em>\"Minimalist\"</em> düzenine geri döner."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Mobilde ekstra sipariş özeti bölümü konumu."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Tek sütunlu ödeme düzeni kullanılırken bu seçenek her zaman <em>\"Ödeme "
+"adımlarından önce\"</em> olarak ayarlanır ve masaüstü görünümü için de "
+"geçerlidir."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Site başlığında"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Ödeme adımlarından önce"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Ya da"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

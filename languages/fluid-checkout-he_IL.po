@@ -68,10 +68,6 @@ msgstr "טלפון למשלוח"
 msgid "Only used for shipping-related questions."
 msgstr "משמש רק לשאלות הקשורות למשלוח."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "רב שלבים"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "צעד בודד"
@@ -105,14 +101,6 @@ msgstr "המשך לחיוב"
 msgid "Proceed to payment"
 msgstr "המשך לתשלום"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "איש הקשר שלי"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "משלוח ל"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "שיטת משלוח"
@@ -120,10 +108,6 @@ msgstr "שיטת משלוח"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "הערות נוספות"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "חיוב ל"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -906,15 +890,6 @@ msgstr "פריסת קופה"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "תבנית עיצוב"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"סגנונות כלליים לשלבי התשלום, סיכום הזמנה וסעיפים נוספים. עשוי לחול גם על "
-"דפים אחרים כגון דפי העגלה, ההזמנה שהתקבלה והצגת ההזמנה."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2429,9 +2404,65 @@ msgstr "קו נייח"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "חינם"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "אוֹ"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "מַגָע"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "רב שלבים"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 עמודות"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "עמודה אחת"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"סגנונות כלליים לשלבי התשלום, סיכום ההזמנה וקטעים אחרים.<br> ייתכן שתקף גם "
+"לדפים אחרים כגון דפי עגלת קניות, הזמנה שהתקבלה והצגת הזמנה."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"תבנית העיצוב <em>&quot;פיצול&quot;</em> אינה זמינה בעת שימוש בפריסה של "
+"<em>&quot;עמודה אחת&quot;</em> ותחזור ל&quot;מינימליסטית <em>&quot;</em> אם "
+"תבחר."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "מיקום נוסף של מדור סיכום הזמנות בנייד."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"בעת שימוש בפריסת תשלום בעלת עמודה אחת, אפשרות זו תמיד מוגדרת ל&quot;שלבי "
+"<em>תשלום לפני&quot;</em> וחלה גם על תצוגת שולחן עבודה."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "בכותרת האתר"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "שלבי הקופה לפני הרכישה"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

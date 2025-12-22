@@ -69,10 +69,6 @@ msgstr "Telefon za dostavu"
 msgid "Only used for shipping-related questions."
 msgstr "Koristi se samo za pitanja vezana za otpremu."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Više koraka"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Jedan korak"
@@ -106,14 +102,6 @@ msgstr "Nastavite sa naplatom"
 msgid "Proceed to payment"
 msgstr "Nastavite sa plaćanjem"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Moj kontakt"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Dostava do"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Način dostave"
@@ -121,10 +109,6 @@ msgstr "Način dostave"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Dodatne napomene"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Billing to"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -924,16 +908,6 @@ msgstr "Izgled naplate"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Predložak dizajna"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Opći stilovi za korake naplate, sažetak narudžbe i druge odjeljke. Može se "
-"odnositi i na druge stranice kao što su stranice Korpa, Narudžba primljena "
-"i Prikaz narudžbe."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -2547,6 +2521,67 @@ msgstr "Fiksna linija"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Besplatni poziv"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Više koraka"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolone"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolona"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Opći stilovi za korake naplate, sažetak narudžbe i ostale odjeljke.<br> "
+"Može se odnositi i na druge stranice kao što su stranice Korpa, Primljena "
+"narudžba i Pregled narudžbe."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Predložak dizajna <em>&quot;Podijeli&quot;</em> nije dostupan kada se "
+"koristi raspored <em>&quot;1 kolona&quot;</em> i vratit će se na "
+"<em>&quot;Minimalistički&quot;</em> ako se odabere."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Extra order summary section position on mobile."
+msgstr "Dodatna pozicija odjeljka sažetka narudžbe na mobilnom uređaju."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the one-column checkout layout this option is always set to "
+"<em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Prilikom korištenja rasporeda naplate s jednom kolonom, ova opcija je "
+"uvijek postavljena na <em>&quot;Prije koraka naplate&quot;</em> i "
+"primjenjuje se i na prikaz za računar."
+
+#: inc/admin/admin-settings-checkout.php:330
+msgid "On the site header"
+msgstr "Na zaglavlju stranice"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Koraci prije plaćanja"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Ili"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
