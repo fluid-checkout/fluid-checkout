@@ -1869,6 +1869,7 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
 }
 
 .fc-wrapper .fc-checkout-order-review {
+  display: none;
   margin: 0;
   padding: 0;
 }

@@ -6,6 +6,7 @@ $_order-review-selector: '#order_review' !default;
 // ORDER SUMMARY
 // ------------------------------------
 .fc-wrapper .fc-checkout-order-review {
+	display: none;
 	margin: $order-summary-container-margin;
 	padding: $order-summary-container-padding;
 }
