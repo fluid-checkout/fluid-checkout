@@ -323,7 +323,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Extra order summary section position on mobile.', 'fluid-checkout' ) . '<br>' . __( 'When using the one-column checkout layout this option is always set to <em>"Before checkout steps"</em> and also applies to desktop view.', 'fluid-checkout' ) . '<br>' . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => __( 'Extra order summary section position on mobile.', 'fluid-checkout' ) . '<br>' . __( 'When using the <em>"1 column"</em> checkout layout this option is always set to <em>"Before checkout steps"</em> and also applies to desktop view.', 'fluid-checkout' ) . '<br>' . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_pro_checkout_order_summary_position_mobile',
 						'type'                  => 'fc_select',
 						'options'               => array(
