@@ -737,7 +737,7 @@
 
 			// Add resize observers to document body
 			for ( var i = 0; i < _resizeObservers.length; i++ ) {
-				_resizeObservers[i].observe( document.body );
+				_resizeObservers[ i ].observe( document.body );
 			}
 		}
 
