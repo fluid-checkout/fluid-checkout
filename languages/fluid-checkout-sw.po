@@ -2521,7 +2521,6 @@ msgstr "Baada ya bar ya maendeleo"
 msgid "Before coupon codes section"
 msgstr "Kabla ya sehemu ya misimbo ya kuponi"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Washa sehemu za nambari za simu za kimataifa"
@@ -2571,11 +2570,9 @@ msgstr "Mstari usiohamishika"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bila malipo"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Au"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

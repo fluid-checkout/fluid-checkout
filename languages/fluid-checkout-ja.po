@@ -2304,7 +2304,6 @@ msgstr "プログレスバーの後"
 msgid "Before coupon codes section"
 msgstr "クーポンコード欄の前に"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "国際電話番号フィールドを有効にする"
@@ -2348,11 +2347,9 @@ msgstr "固定回線"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "フリーダイヤル"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "あるいは"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

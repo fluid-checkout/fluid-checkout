@@ -2683,7 +2683,6 @@ msgstr "İlerleme çubuğundan sonra"
 msgid "Before coupon codes section"
 msgstr "Kupon kodları bölümünden önce"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Uluslararası telefon numarası alanlarını etkinleştirin"
@@ -2733,11 +2732,6 @@ msgstr "Sabit hat"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Ücretsiz"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "Ya da"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

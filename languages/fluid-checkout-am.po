@@ -2340,7 +2340,6 @@ msgstr "ከሂደት አሞሌ በኋላ"
 msgid "Before coupon codes section"
 msgstr "ከኩፖን ኮዶች ክፍል በፊት"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "አለምአቀፍ የስልክ ቁጥር መስኮችን አንቃ"
@@ -2385,11 +2384,6 @@ msgstr "ቋሚ መስመር"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ከክፍያ ነፃ"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "ወይም"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

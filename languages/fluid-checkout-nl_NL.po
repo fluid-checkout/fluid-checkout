@@ -2685,7 +2685,6 @@ msgstr "Na de voortgangsbalk"
 msgid "Before coupon codes section"
 msgstr "Voor coupon codes sectie"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Velden voor internationale telefoonnummers inschakelen"
@@ -2735,11 +2734,9 @@ msgstr "Vaste lijn"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Gratis"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Of"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

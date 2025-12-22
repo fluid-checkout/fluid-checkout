@@ -2480,7 +2480,6 @@ msgstr "প্ৰগ্ৰেছ বাৰৰ পিছত"
 msgid "Before coupon codes section"
 msgstr "কুপন ক&#39;ড অংশৰ আগত"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "আন্তঃৰাষ্ট্ৰীয় ফোন নম্বৰ ক্ষেত্ৰসমূহ সক্ষম কৰক"
@@ -2528,11 +2527,6 @@ msgstr "ফিক্সড লাইন"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "টোল ফ্ৰী"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "অথবা"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

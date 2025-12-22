@@ -2618,7 +2618,6 @@ msgstr "Po pažangos juostos"
 msgid "Before coupon codes section"
 msgstr "Prieš kuponų kodų skyrių"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Įgalinti tarptautinių telefono numerių laukus"
@@ -2669,11 +2668,9 @@ msgstr "Fiksuotoji linija"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Nemokama"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Arba"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

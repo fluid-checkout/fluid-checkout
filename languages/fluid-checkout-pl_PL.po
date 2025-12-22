@@ -2686,7 +2686,6 @@ msgstr "Po pasku postępu"
 msgid "Before coupon codes section"
 msgstr "Przed sekcją kodów kuponów"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Włącz pola międzynarodowych numerów telefonów"
@@ -2737,11 +2736,9 @@ msgstr "Linia stacjonarna"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bezpłatny"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Lub"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

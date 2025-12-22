@@ -2518,7 +2518,6 @@ msgstr "Ar ôl y bar cynnydd"
 msgid "Before coupon codes section"
 msgstr "Cyn yr adran codau cwpon"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Galluogi meysydd rhif ffôn rhyngwladol"
@@ -2569,11 +2568,9 @@ msgstr "Llinell sefydlog"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Rhadffôn"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Neu"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2488,7 +2488,6 @@ msgstr "Pēc progresa joslas"
 msgid "Before coupon codes section"
 msgstr "Pirms kuponu kodu sadaļas"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Iespējot starptautisko tālruņa numuru laukus"
@@ -2538,11 +2537,9 @@ msgstr "Fiksētā līnija"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bezmaksas"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Vai"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

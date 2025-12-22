@@ -2490,7 +2490,6 @@ msgstr "Առաջընթացի գոտուց հետո"
 msgid "Before coupon codes section"
 msgstr "Մինչև կտրոնի կոդերի բաժինը"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Միացնել միջազգային հեռախոսահամարի դաշտերը"
@@ -2540,11 +2539,9 @@ msgstr "Ֆիքսված գիծ"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Անվճար զանգ"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Կամ"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

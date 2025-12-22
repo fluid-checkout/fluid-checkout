@@ -2484,7 +2484,6 @@ msgstr "Etter fremdriftslinjen"
 msgid "Before coupon codes section"
 msgstr "Før kupongkoder seksjonen"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Aktiver felt for internasjonale telefonnumre"
@@ -2535,11 +2534,9 @@ msgstr "Fast linje"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Gratis"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Eller"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

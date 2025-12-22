@@ -2483,7 +2483,6 @@ msgstr "Sau thanh tiến trình"
 msgid "Before coupon codes section"
 msgstr "Trước phần mã giảm giá"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Cho phép các trường số điện thoại quốc tế"
@@ -2531,11 +2530,6 @@ msgstr "Đường dây cố định"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Miễn phí"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "Hoặc"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

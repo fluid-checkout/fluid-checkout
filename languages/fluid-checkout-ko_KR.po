@@ -2287,7 +2287,6 @@ msgstr "진행률 표시줄 이후"
 msgid "Before coupon codes section"
 msgstr "쿠폰 코드 이전 섹션"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "국제 전화 번호 필드 사용"
@@ -2331,11 +2330,9 @@ msgstr "고정 회선"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "무료 전화"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "또는"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

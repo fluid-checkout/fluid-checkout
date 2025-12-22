@@ -2481,7 +2481,6 @@ msgstr "ترقی بار کے بعد"
 msgid "Before coupon codes section"
 msgstr "کوپن کوڈز سیکشن سے پہلے"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "بین الاقوامی فون نمبر کی فیلڈز کو فعال کریں۔"
@@ -2529,11 +2528,6 @@ msgstr "فکسڈ لائن"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ٹول فری"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "یا"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2489,7 +2489,6 @@ msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
 msgid "Before coupon codes section"
 msgstr "تالون كود بۆلىكىدىن بۇرۇن"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "خەلقئارالىق تېلېفون نومۇرى ساھەلىرىنى قوزغىتىڭ"
@@ -2539,11 +2538,6 @@ msgstr "مۇقىم سىزىق"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "ھەقسىز"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "ياكى"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

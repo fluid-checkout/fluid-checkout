@@ -2484,7 +2484,6 @@ msgstr "Eftir framvindustikuna"
 msgid "Before coupon codes section"
 msgstr "Fyrir afsláttarkóðahlutann"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Virkja alþjóðleg símanúmerareiti"
@@ -2534,11 +2533,9 @@ msgstr "Fastlína"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Ókeypis gjald"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Eða"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2463,7 +2463,6 @@ msgstr "بعد از نوار پیشرفت"
 msgid "Before coupon codes section"
 msgstr "قبل از بخش کدهای تخفیف"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "فعال کردن فیلدهای شماره تلفن بین‌المللی"
@@ -2513,11 +2512,9 @@ msgstr "خط ثابت"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "رایگان"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "یا"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

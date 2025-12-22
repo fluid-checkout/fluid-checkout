@@ -2469,7 +2469,6 @@ msgstr "หลังจากแถบความคืบหน้า"
 msgid "Before coupon codes section"
 msgstr "ก่อนส่วนรหัสคูปอง"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "เปิดใช้งานช่องหมายเลขโทรศัพท์ระหว่างประเทศ"
@@ -2518,11 +2517,6 @@ msgstr "โทรศัพท์บ้าน"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "โทรฟรี"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "หรือ"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

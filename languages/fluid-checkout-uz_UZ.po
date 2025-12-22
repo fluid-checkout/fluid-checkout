@@ -2552,7 +2552,6 @@ msgstr "Taraqqiyot panelidan keyin"
 msgid "Before coupon codes section"
 msgstr "Kupon kodlari bo&#39;limidan oldin"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Xalqaro telefon raqamlari maydonlarini yoqing"
@@ -2601,11 +2600,6 @@ msgstr "Ruxsat etilgan chiziq"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bepul"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "Yoki"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

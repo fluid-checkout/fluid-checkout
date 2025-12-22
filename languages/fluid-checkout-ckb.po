@@ -2517,7 +2517,6 @@ msgstr "Piştî barika pêşketinê"
 msgid "Before coupon codes section"
 msgstr "Berî beşa kodên kuponê"
 
-<<<<<<< HEAD
 #: inc/admin/admin-settings-checkout.php:661
 msgid "Enable international phone number fields"
 msgstr "Qadên hejmarên têlefona navneteweyî çalak bike"
@@ -2567,11 +2566,6 @@ msgstr "Xeta sabît"
 #: inc/admin/admin-settings-checkout.php:696
 msgid "Toll free"
 msgstr "Bêpere"
-=======
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
-msgid "Or"
-msgstr "An"
->>>>>>> release/next-PATCH
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
