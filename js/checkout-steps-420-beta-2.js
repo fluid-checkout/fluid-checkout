@@ -719,31 +719,26 @@
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 		}
 
-		// Maybe enable place order move
-		if ( 'yes' === _settings.enablePlaceOrderMove ) {
-			// Move at initialization
-			maybeMovePlaceOrderSection();
-
-			// Initialize resize observer
-			if ( window.ResizeObserver ) {
+		// Maybe initialize resize observers
+		if ( window.ResizeObserver ) {
+			// Maybe enable place order move
+			if ( 'yes' === _settings.enablePlaceOrderMove ) {
+				// Run and initialize observer
+				maybeMovePlaceOrderSection();
 				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) ) );
 			}
-		}
 
-		// Maybe enable order summary table move
-		if ( 'yes' === _settings.enableOrderSummaryTableMove ) {
-			// Move at initialization
-			maybeMoveOrderSummaryTable();
-
-			// Initialize resize observer
-			if ( window.ResizeObserver ) {
+			// Maybe enable order summary table move
+			if ( 'yes' === _settings.enableOrderSummaryTableMove ) {
+				// Run and initialize observer
+				maybeMoveOrderSummaryTable();
 				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMoveOrderSummaryTable, _settings.orderSummaryTableRefreshRate ) ) );
 			}
-		}
 
-		// Add resize observers to document body
-		for ( var i = 0; i < _resizeObservers.length; i++ ) {
-			_resizeObservers[i].observe( document.body );
+			// Add resize observers to document body
+			for ( var i = 0; i < _resizeObservers.length; i++ ) {
+				_resizeObservers[i].observe( document.body );
+			}
 		}
 
 		// Add init class
