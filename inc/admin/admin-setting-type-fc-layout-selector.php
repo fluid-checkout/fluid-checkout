@@ -96,11 +96,11 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 		$option_styles = $this->get_collected_option_styles();
 		$this->clear_collected_option_styles();
 		?>
-					<?php echo $description; // WPCS: XSS ok. ?>
-					<style>
-						<?php echo $option_styles; ?>
-					</style>
 				</fieldset>
+				<?php echo $description; // WPCS: XSS ok. ?>
+				<style>
+					<?php echo $option_styles; // WPCS: XSS ok. ?>
+				</style>
 			</td>
 		</tr>
 		<?php
@@ -124,11 +124,6 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 				$custom_attributes_esc[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
 			}
 		}
-
-		// // Description handling.
-		// $field_description = WC_Admin_Settings::get_field_description( $value );
-		// $description       = $field_description[ 'description' ];
-		// $tooltip_html      = $field_description[ 'tooltip_html' ];
 
 		$option_value = $value[ 'value' ];
 

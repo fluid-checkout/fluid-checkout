@@ -19,10 +19,13 @@
   margin-top: 8px;
 }
 
-.forminp-fc_layout_selector fieldset {
-  padding: 20px;
-  display: flex;
+.forminp-fc_layout_selector {
+  padding: 20px !important;
   background-color: #fff;
+}
+
+.forminp-fc_layout_selector fieldset {
+  display: flex;
 }
 
 .forminp-fc_layout_selector ul {
@@ -84,8 +87,13 @@
   cursor: not-allowed;
 }
 
-.forminp-fc_template_selector fieldset {
-  padding: 20px;
+.forminp-fc_layout_selector .description {
+  width: 100%;
+  clear: both;
+}
+
+.forminp-fc_template_selector {
+  padding: 20px !important;
   background-color: #fff;
 }
 

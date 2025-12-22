@@ -1,10 +1,13 @@
 // ------------------------------------
 // CHECKOUT OPTIONS - LAYOUT
 // ------------------------------------
-.forminp-fc_layout_selector fieldset {
-	padding: 20px;
-	display: flex;
+.forminp-fc_layout_selector {
+	padding: 20px !important; // Needed to override default admin pages styles.
 	background-color: #fff;
+}
+
+.forminp-fc_layout_selector fieldset {
+	display: flex;
 }
 
 .forminp-fc_layout_selector ul {
@@ -65,4 +68,11 @@
 
 .forminp-fc_layout_selector .fc-checkout-layout__option:disabled {
 	cursor: not-allowed;
+}
+
+
+
+.forminp-fc_layout_selector .description {
+	width: 100%;
+	clear: both;
 }

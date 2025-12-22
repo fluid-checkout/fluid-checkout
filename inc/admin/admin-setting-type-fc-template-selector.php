@@ -72,20 +72,20 @@ class FluidCheckout_Admin_SettingType_TemplateSelector extends FluidCheckout {
 					}
 					?>
 					</ul>
-					<?php echo $description; // WPCS: XSS ok. ?>
-					<style>
-						<?php
-						foreach ( $value['options'] as $key => $val ) {
-							$option_image_url = apply_filters( 'fc_design_template_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-template-'. esc_attr( $key ) .'.png', $key, $val );
-							?>
-							.forminp-fc_template_selector .fc-design-template__option[value="<?php echo esc_attr( $key ); ?>"]:after {
-								background-image: url( <?php echo esc_url( $option_image_url ) ?> );
-							}
-							<?php
-						}
-						?>
-					</style>
 				</fieldset>
+				<?php echo $description; // WPCS: XSS ok. ?>
+				<style>
+					<?php
+					foreach ( $value['options'] as $key => $val ) {
+						$option_image_url = apply_filters( 'fc_design_template_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-template-'. esc_attr( $key ) .'.png', $key, $val );
+						?>
+						.forminp-fc_template_selector .fc-design-template__option[value="<?php echo esc_attr( $key ); ?>"]:after {
+							background-image: url( <?php echo esc_url( $option_image_url ) ?> );
+						}
+						<?php
+					}
+					?>
+				</style>
 			</td>
 		</tr>
 		<?php
