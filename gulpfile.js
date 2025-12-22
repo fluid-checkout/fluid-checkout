@@ -66,7 +66,7 @@ gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
 	var today = new Date();
 
 	// Set patterns to skip version updates
-	var skipVersionPatterns = [ 'beta', 'dev', 'alpha' ];
+	var skipVersionPatterns = [ 'beta', 'dev', 'alpha', 'rc' ];
 	var skip = false;
 	for ( var i = 0; i < skipVersionPatterns.length; i++ ) {
 		if ( 0 < _package.version.indexOf( skipVersionPatterns[ i ] ) ) {
