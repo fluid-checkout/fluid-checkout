@@ -327,7 +327,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                    => 'fc_pro_checkout_order_summary_position_mobile',
 						'type'                  => 'fc_select',
 						'options'               => array(
-							'hidden'                => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Hidden', 'fluid-checkout' ), 'disabled' => true ),
+							'hidden'                => array( 'label' => __( 'Hidden', 'fluid-checkout' ) ),
 							'site_header'           => array( 'label' => __( 'On the site header', 'fluid-checkout' ) ),
 							'before_checkout_steps' => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(), 'disabled' => true ),
 						),
