@@ -39,6 +39,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 		$checkout_markup = Cartflows_Checkout_Markup::get_instance();
 
+		// ! Double check if disabling these wont have any side effects
 		remove_action( 'wp', array( $checkout_markup, 'shortcode_load_data' ), 999 );
 		remove_shortcode( 'cartflows_checkout' );
 		remove_filter( 'woocommerce_cart_item_name', array( $checkout_markup, 'modify_order_review_item_summary' ), 10 );
