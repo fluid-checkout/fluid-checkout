@@ -2612,15 +2612,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Poziție suplimentară a secțiunii rezumat comandă pe mobil."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Atunci când utilizați aspectul de checkout cu o coloană, această opțiune "
-"este întotdeauna setată la <em>\"Înainte de etapele de checkout\"</em> și "
-"se aplică, de asemenea, la vizualizarea desktop."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Pe antetul site-ului"
@@ -2628,6 +2619,15 @@ msgstr "Pe antetul site-ului"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Pași înainte de checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Atunci când se utilizează aspectul de plată <em>\"1 coloană\"</em>, această "
+"opțiune este întotdeauna setată la <em>\"Înainte de etapele de plată\"</em> "
+"și se aplică, de asemenea, la vizualizarea desktop."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

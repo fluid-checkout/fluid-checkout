@@ -2593,15 +2593,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Kedudukan bahagian ringkasan pesanan tambahan pada mudah alih."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Apabila menggunakan susun atur pembayaran satu lajur, pilihan ini sentiasa "
-"ditetapkan kepada <em>&quot;Sebelum langkah pembayaran&quot;</em> dan juga "
-"terpakai pada paparan desktop."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Pada pengepala tapak"
@@ -2609,6 +2600,15 @@ msgstr "Pada pengepala tapak"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Sebelum langkah pembayaran"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Apabila menggunakan susun atur pembayaran <em>&quot;1 lajur&quot;,</em> "
+"pilihan ini sentiasa ditetapkan kepada <em>&quot;Sebelum langkah "
+"pembayaran&quot;</em> dan juga terpakai pada paparan desktop."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

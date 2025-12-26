@@ -2542,14 +2542,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "মোবাইলে অতিরিক্ত অর্ডার সারাংশ বিভাগের অবস্থান।"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"এক-কলাম চেকআউট লেআউট ব্যবহার করার সময় এই বিকল্পটি সর্বদা <em>&quot;চেকআউট "
-"পদক্ষেপের আগে&quot;</em> তে সেট করা থাকে এবং ডেস্কটপ ভিউতেও প্রযোজ্য।"
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "সাইটের হেডারে"
@@ -2561,6 +2553,15 @@ msgstr "চেকআউটের আগে ধাপগুলি"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "অথবা"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;১ কলাম&quot;</em> চেকআউট লেআউট ব্যবহার করার সময় এই বিকল্পটি "
+"সর্বদা <em>&quot;চেকআউট পদক্ষেপের আগে&quot;</em> তে সেট করা থাকে এবং "
+"ডেস্কটপ ভিউতেও প্রযোজ্য।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

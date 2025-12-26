@@ -2581,15 +2581,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Helwesta beşa kurteya fermanê ya zêde li ser mobîl."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Dema ku hûn nexşeya yek-stûnî ya dravdanê bikar tînin, ev vebijark her gav "
-"li ser <em>&quot;Berî gavên dravdanê&quot;</em> tê danîn û ji bo dîtina "
-"sermaseyê jî derbas dibe."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Li ser sernivîsa malperê"
@@ -2601,6 +2592,15 @@ msgstr "Gavên berî kontrolkirinê"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "An"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Dema ku hûn nexşeya dravdanê ya <em>&quot;1 stûn&quot;</em> bikar tînin, ev "
+"vebijark her gav li ser <em>&quot;Berî gavên dravdanê&quot;</em> tê danîn û "
+"ji bo dîtina sermaseyê jî derbas dibe."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

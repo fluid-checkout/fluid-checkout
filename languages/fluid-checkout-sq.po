@@ -2600,15 +2600,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Pozicion shtesë i seksionit të përmbledhjes së porosive në celular."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Kur përdorni paraqitjen e arkëtimit me një kolonë, ky opsion është "
-"gjithmonë i vendosur në <em>&quot;Para hapave të arkëtimit&quot;</em> dhe "
-"vlen edhe për pamjen e desktopit."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Në kryefaqen e faqes"
@@ -2616,6 +2607,15 @@ msgstr "Në kryefaqen e faqes"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Hapat para arkëtimit"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kur përdorni paraqitjen e arkëtimit <em>&quot;1 kolonë&quot;,</em> ky "
+"opsion është gjithmonë i vendosur në <em>&quot;Para hapave të "
+"arkëtimit&quot;</em> dhe vlen edhe për pamjen e desktopit."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

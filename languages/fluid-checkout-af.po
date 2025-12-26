@@ -2581,15 +2581,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Ekstra bestellingsopsommingsafdelingposisie op selfoon."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Wanneer die eenkolom-uitleg gebruik word, is hierdie opsie altyd gestel op "
-"<em>&quot;Stappe voor uitcheck&quot;</em> en geld ook vir die "
-"lessenaar-aansig."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Op die webwerf se koptekst"
@@ -2601,6 +2592,15 @@ msgstr "Stappe voor die afhandeling"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Of"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Wanneer die <em>&quot;1 kolom&quot;</em> -uitleg vir afhandeling gebruik "
+"word, is hierdie opsie altyd gestel op <em>&quot;Stappe voor "
+"afhandeling&quot;</em> en geld ook vir die lessenaar-aansig."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

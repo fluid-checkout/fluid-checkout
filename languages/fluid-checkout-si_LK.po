@@ -2534,15 +2534,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "ජංගම දුරකථනයේ අමතර ඇණවුම් සාරාංශ අංශ ස්ථානය."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"එක්-තීරුවක පිටවීමේ පිරිසැලසුම භාවිතා කරන විට මෙම විකල්පය සැමවිටම "
-"<em>&quot;පිටවීමේ පියවරට පෙර&quot;</em> ලෙස සකසා ඇති අතර ඩෙස්ක්ටොප් "
-"දර්ශනයටද අදාළ වේ."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "අඩවි ශීර්ෂය මත"
@@ -2550,6 +2541,15 @@ msgstr "අඩවි ශීර්ෂය මත"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "පිටවීමේ පියවරට පෙර"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 තීරුව&quot;</em> පිටවීමේ පිරිසැලසුම භාවිතා කරන විට මෙම විකල්පය "
+"සැමවිටම <em>&quot;පිටවීමේ පියවරට පෙර&quot;</em> ලෙස සකසා ඇති අතර ඩෙස්ක්ටොප් "
+"දර්ශනයටද අදාළ වේ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

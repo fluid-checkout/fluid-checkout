@@ -2580,15 +2580,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "შეკვეთის შეჯამების დამატებითი განყოფილების პოზიცია მობილურზე."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"ერთსვეტიანი შეკვეთის განლაგების გამოყენებისას, ეს პარამეტრი ყოველთვის "
-"დაყენებულია <em>„შეკვეთის გაფორმების ეტაპებამდე“</em> -ზე და ასევე "
-"გამოიყენება სამუშაო მაგიდის ხედზე."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "საიტის სათაურზე"
@@ -2596,6 +2587,15 @@ msgstr "საიტის სათაურზე"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "გადახდის ეტაპები"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>„1 სვეტის“</em> შეკვეთის განლაგების გამოყენებისას, ეს პარამეტრი "
+"ყოველთვის დაყენებულია <em>„შეკვეთის გაკეთების ეტაპებამდე“</em> -ზე და ასევე "
+"გამოიყენება სამუშაო მაგიდის ხედზე."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2025-12-22 16:17+0000\n"
+"POT-Creation-Date: 2025-12-26 12:15+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -721,7 +721,7 @@ msgstr ""
 msgid "Select position where to display the coupon codes section on the cart page. Only applicable when AJAX cart and the integrated coupon codes in the checkout page are enabled."
 msgstr ""
 
-#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:332, inc/admin/admin-settings-checkout.php:439, inc/admin/admin-settings-checkout.php:779
+#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:330, inc/admin/admin-settings-checkout.php:439, inc/admin/admin-settings-checkout.php:779
 msgid "Hidden"
 msgstr ""
 
@@ -1014,14 +1014,14 @@ msgid "Extra order summary section position on mobile."
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:326
-msgid "When using the one-column checkout layout this option is always set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
+msgid "When using the <em>\"1 column\"</em> checkout layout this option is always set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:331
+msgid "On the site header"
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:332
 msgid "Before checkout steps"
 msgstr ""
 

@@ -2531,14 +2531,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "موقعیت بخش خلاصه سفارش اضافی در موبایل."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"هنگام استفاده از طرح پرداخت تک ستونی، این گزینه همیشه روی <em>«مراحل قبل از "
-"پرداخت»</em> تنظیم می‌شود و در نمای دسکتاپ نیز اعمال می‌شود."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "در هدر سایت"
@@ -2546,6 +2538,15 @@ msgstr "در هدر سایت"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "مراحل قبل از پرداخت"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"هنگام استفاده از طرح پرداخت <em>&quot;۱ ستونه&quot;،</em> این گزینه همیشه "
+"روی <em>&quot;مراحل قبل از پرداخت&quot;</em> تنظیم می‌شود و در نمای دسکتاپ "
+"نیز اعمال می‌شود."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

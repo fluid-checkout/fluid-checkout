@@ -2543,15 +2543,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "موبائل پر ایکسٹرا آرڈر سمری سیکشن پوزیشن۔"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"ایک کالم چیک آؤٹ لے آؤٹ کا استعمال کرتے وقت یہ اختیار ہمیشہ <em>&quot;چیک "
-"آؤٹ اقدامات سے پہلے&quot;</em> پر سیٹ ہوتا ہے اور ڈیسک ٹاپ ویو پر بھی لاگو "
-"ہوتا ہے۔"
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "سائٹ ہیڈر پر"
@@ -2563,6 +2554,15 @@ msgstr "چیک آؤٹ کے اقدامات سے پہلے"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "یا"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 کالم&quot;</em> چیک آؤٹ لے آؤٹ کا استعمال کرتے وقت یہ اختیار "
+"ہمیشہ <em>&quot;چیک آؤٹ کے مراحل سے پہلے&quot;</em> پر سیٹ ہوتا ہے اور ڈیسک "
+"ٹاپ ویو پر بھی لاگو ہوتا ہے۔"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2348,12 +2348,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "모바일에서 추가 주문 요약 섹션 위치."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr "한 열 결제 레이아웃을 사용하는 경우 이 옵션은 항상 <em>\"결제 단계 전\"</em>으로 설정되며 데스크톱 보기에도 적용됩니다."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "사이트 헤더에서"
@@ -2361,6 +2355,14 @@ msgstr "사이트 헤더에서"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "결제 전 단계"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>\"1열\"</em> 결제 레이아웃을 사용하는 경우 이 옵션은 항상 <em>\"결제 단계 전\"</em>으로 설정되며 데스크톱 "
+"보기에도 적용됩니다."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

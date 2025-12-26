@@ -2564,15 +2564,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "ទីតាំងផ្នែកសង្ខេបការបញ្ជាទិញបន្ថែមនៅលើទូរសព្ទដៃ។"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"នៅពេលប្រើប្លង់ទូទាត់ប្រាក់មួយជួរឈរ ជម្រើសនេះតែងតែត្រូវបានកំណត់ទៅ "
-"<em>&quot;មុនជំហានទូទាត់ប្រាក់&quot;</em> "
-"ហើយក៏អនុវត្តចំពោះទិដ្ឋភាពផ្ទៃតុផងដែរ។"
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "នៅលើក្បាលគេហទំព័រ"
@@ -2580,6 +2571,15 @@ msgstr "នៅលើក្បាលគេហទំព័រ"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ជំហានមុនពេលទូទាត់ប្រាក់"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"នៅពេលប្រើប្លង់ទូទាត់ប្រាក់ <em>&quot;1 ជួរឈរ&quot;</em> "
+"ជម្រើសនេះតែងតែត្រូវបានកំណត់ទៅ <em>&quot;មុនជំហានទូទាត់ប្រាក់&quot;</em> "
+"ហើយក៏អនុវត្តចំពោះទិដ្ឋភាពផ្ទៃតុផងដែរ។"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

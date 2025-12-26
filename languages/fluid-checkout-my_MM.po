@@ -2639,15 +2639,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "မိုဘိုင်းပေါ်ရှိ အပိုအော်ဒါအကျဉ်းချုပ်ကဏ္ဍနေရာ။"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"တစ်ကော်လံပါ checkout layout ကိုအသုံးပြုသည့်အခါ ဤရွေးချယ်မှုကို "
-"<em>&quot;Before checkout steps&quot;</em> အဖြစ် အမြဲသတ်မှတ်ထားပြီး desktop "
-"view အတွက်လည်း အကျုံးဝင်ပါသည်။"
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "ဆိုက်ခေါင်းစဉ်မှာ"
@@ -2655,6 +2646,15 @@ msgstr "ဆိုက်ခေါင်းစဉ်မှာ"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ငွေရှင်းခြင်းမပြုမီ အဆင့်ဆင့်"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;၁ ကော်လံ&quot;</em> ငွေရှင်းကောင်တာ အပြင်အဆင်ကို အသုံးပြုသည့်အခါ "
+"ဤရွေးချယ်မှုကို <em>&quot;ငွေရှင်းကောင်တာအဆင့်များမတိုင်မီ&quot;</em> အဖြစ် "
+"အမြဲသတ်မှတ်ထားပြီး ဒက်စ်တော့မြင်ကွင်းအတွက်လည်း အကျုံးဝင်ပါသည်။"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

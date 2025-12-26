@@ -2578,15 +2578,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Гар утсан дээрх нэмэлт захиалгын хураангуй хэсгийн байрлал."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Нэг баганатай төлбөр тооцооны загварыг ашиглах үед энэ сонголтыг үргэлж "
-"<em>&quot;Төлбөр тооцооны өмнөх алхамууд&quot;</em> гэж тохируулсан байх "
-"бөгөөд мөн ширээний харагдацад хамаарна."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Сайтын толгой хэсэгт"
@@ -2594,6 +2585,15 @@ msgstr "Сайтын толгой хэсэгт"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Төлбөр тооцоо хийхээс өмнөх алхамууд"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 багана&quot;</em> төлбөр тооцооны загварыг ашиглах үед энэ "
+"сонголтыг үргэлж <em>&quot;Төлбөр тооцооны өмнөх алхамууд&quot;</em> гэж "
+"тохируулсан байх бөгөөд мөн ширээний харагдацад хамаарна."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2821,15 +2821,6 @@ msgstr ""
 "Position supplémentaire de la section récapitulative de la commande sur "
 "mobile."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Lors de l'utilisation de la présentation de la caisse en une colonne, cette "
-"option est toujours réglée sur <em>\"Avant les étapes de la caisse\"</em> "
-"et s'applique également à l'affichage sur le bureau."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Sur l'en-tête du site"
@@ -2837,6 +2828,15 @@ msgstr "Sur l'en-tête du site"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Avant de passer à la caisse"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Lors de l'utilisation du modèle de caisse <em>\"1 colonne\"</em>, cette "
+"option est toujours réglée sur <em>\"Avant les étapes de la caisse\"</em> "
+"et s'applique également à la vue de bureau."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

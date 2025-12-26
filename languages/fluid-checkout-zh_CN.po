@@ -2304,12 +2304,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "在移动设备上增加订单摘要部分的位置。"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr "使用单栏结账布局时，此选项始终设置为<em>\"结账步骤前\"</em>，也适用于桌面视图。"
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "在网站标题上"
@@ -2321,6 +2315,12 @@ msgstr "结账前步骤"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "或者"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr "使用<em>\"1 列\"</em>结账布局时，此选项始终设置为<em>\"结账步骤前\"</em>，也适用于桌面视图。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

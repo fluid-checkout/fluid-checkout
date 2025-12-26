@@ -2590,15 +2590,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Дадатковая пазіцыя раздзела зводкі замовы на мабільным тэлефоне."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Пры выкарыстанні аднакалонкавай макета афармлення замовы гэтая опцыя "
-"заўсёды мае значэнне <em>«Перад крокамі афармлення замовы»</em> і таксама "
-"распаўсюджваецца на прагляд для камп&#39;ютара."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "У загалоўку сайта"
@@ -2610,6 +2601,15 @@ msgstr "Этапы перад афармленнем замовы"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Або"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Пры выкарыстанні макета афармлення замовы <em>«1 слупок»</em> гэтая опцыя "
+"заўсёды мае значэнне <em>«Перад крокамі афармлення замовы»</em> і таксама "
+"распаўсюджваецца на выгляд для камп&#39;ютара."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

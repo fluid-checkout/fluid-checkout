@@ -2552,15 +2552,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "قوشۇمچە زاكاز خۇلاسىسى بۆلۈمىنىڭ يانفوندىكى ئورنى."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"بىر ئىستونلۇق تەكشۈرۈش لايىھەسىنى ئىشلەتكەندە، بۇ تاللاش ھەمىشە <em>«تەلەپ "
-"قىلىشتىن بۇرۇنقى قەدەملەر»</em> گە تەڭشىلىنىدۇ ھەمدە ئۈستەل يۈزى "
-"كۆرۈنۈشىگىمۇ ماس كېلىدۇ."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "تور بېكەت باشلىقىدا"
@@ -2572,6 +2563,15 @@ msgstr "تەكشۈرۈشتىن بۇرۇنقى قەدەملەر"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "ياكى"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>«1 ئىستون»</em> ئارقىلىق تۆلەش لايىھەسىنى ئىشلەتكەندە، بۇ تاللاش ھەمىشە "
+"<em>«تۆلەشتىن بۇرۇنقى قەدەملەر»</em> گە تەڭشىلىنىدۇ ھەمدە ئۈستەل يۈزى "
+"كۆرۈنۈشىگىمۇ ماس كېلىدۇ."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

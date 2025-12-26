@@ -2621,15 +2621,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Posició addicional de la secció de resum de comandes al mòbil."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Quan s&#39;utilitza el disseny de pagament d&#39;una columna, aquesta opció "
-"sempre està definida com a <em>&quot;Passos previs al pagament&quot;</em> i "
-"també s&#39;aplica a la vista d&#39;escriptori."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "A la capçalera del lloc web"
@@ -2641,6 +2632,15 @@ msgstr "Passos previs al pagament"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "O"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Quan s&#39;utilitza el disseny de pagament <em>&quot;1 columna&quot;,</em> "
+"aquesta opció sempre està definida com a <em>&quot;Passos previs al "
+"pagament&quot;</em> i també s&#39;aplica a la vista d&#39;escriptori."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

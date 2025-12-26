@@ -2557,14 +2557,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Papildu pasūtījuma kopsavilkuma sadaļas pozīcija mobilajā ierīcē."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Izmantojot vienas kolonnas izkārtojumu, šī opcija vienmēr ir iestatīta uz "
-"<em>\"Pirms izrakstīšanās soļiem\"</em>, un tā attiecas arī uz datora skatu."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Vietnes galvenē"
@@ -2572,6 +2564,15 @@ msgstr "Vietnes galvenē"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Pirms izrakstīšanās veicamie soļi"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Izmantojot <em>\"1 kolonnas\"</em> izkārtojumu, šī opcija vienmēr ir "
+"iestatīta uz <em>\"Pirms kases soļiem\"</em> un attiecas arī uz datora "
+"skatu."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2534,15 +2534,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Plia sekcio pri resumo de mendoj en poŝtelefono."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Kiam oni uzas la unu-kolumnan kaspaĝon, ĉi tiu opcio ĉiam estas agordita al "
-"<em>&quot;Paŝoj antaŭ kaso&quot;</em> kaj ankaŭ validas por la skribtabla "
-"vido."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "En la reteja kaplinio"
@@ -2550,6 +2541,15 @@ msgstr "En la reteja kaplinio"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Paŝoj antaŭ la kaso"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kiam oni uzas la kaspaĝon <em>&quot;1 kolumno&quot;,</em> ĉi tiu opcio ĉiam "
+"estas agordita al <em>&quot;Paŝoj antaŭ kaso&quot;</em> kaj ankaŭ validas "
+"por la skribtabla vido."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

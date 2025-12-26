@@ -2580,15 +2580,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Dodatočná pozícia sekcie súhrnu objednávky na mobilnom zariadení."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Pri použití jednoslúpcového rozloženia pokladnice je táto možnosť vždy "
-"nastavená na <em>\"Pred krokmi pokladnice\"</em> a platí aj pre zobrazenie "
-"na ploche."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "V záhlaví stránky"
@@ -2596,6 +2587,15 @@ msgstr "V záhlaví stránky"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Kroky pred pokladňou"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Pri použití rozloženia pokladnice <em>\"1 stĺpec\"</em> je táto možnosť "
+"vždy nastavená na <em>\"Pred krokmi pokladnice\"</em> a platí aj pre "
+"zobrazenie na ploche."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

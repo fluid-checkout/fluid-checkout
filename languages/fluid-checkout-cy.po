@@ -2587,15 +2587,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Lleoliad adran crynodeb archeb ychwanegol ar ffôn symudol."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Wrth ddefnyddio&#39;r cynllun talu un golofn mae&#39;r opsiwn hwn bob amser "
-"wedi&#39;i osod i <em>&quot;Camau cyn talu&quot;</em> ac mae hefyd yn "
-"berthnasol i&#39;r olygfa bwrdd gwaith."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Ar bennawd y safle"
@@ -2603,6 +2594,15 @@ msgstr "Ar bennawd y safle"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Camau cyn talu"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Wrth ddefnyddio&#39;r cynllun talu <em>&quot;1 colofn&quot;</em> mae&#39;r "
+"opsiwn hwn bob amser wedi&#39;i osod i <em>&quot;Camau cyn talu&quot;</em> "
+"ac mae hefyd yn berthnasol i&#39;r olygfa bwrdd gwaith."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2589,15 +2589,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Nafasi ya sehemu ya muhtasari wa agizo la ziada kwenye simu."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Unapotumia mpangilio wa malipo wa safu wima moja chaguo hili huwekwa kila "
-"wakati kuwa <em>&quot;Hatua za Kabla ya malipo&quot;</em> na pia hutumika "
-"kwa mwonekano wa eneo-kazi."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Kwenye kichwa cha tovuti"
@@ -2605,6 +2596,15 @@ msgstr "Kwenye kichwa cha tovuti"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Hatua za kabla ya kulipa"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Unapotumia mpangilio wa malipo wa <em>&quot;safu wima 1&quot;</em> chaguo "
+"hili huwekwa kila wakati kuwa <em>&quot;Hatua za Kabla ya malipo&quot;</em> "
+"na pia hutumika kwa mwonekano wa eneo-kazi."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

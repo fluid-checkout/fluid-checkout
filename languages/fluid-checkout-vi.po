@@ -2545,15 +2545,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Thêm vị trí hiển thị tóm tắt đơn hàng trên thiết bị di động."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Khi sử dụng bố cục thanh toán một cột, tùy chọn này luôn được đặt thành "
-"<em>&quot;Trước các bước thanh toán&quot;</em> và cũng áp dụng cho chế độ "
-"xem trên máy tính để bàn."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Trên tiêu đề trang web"
@@ -2565,6 +2556,15 @@ msgstr "Trước các bước thanh toán"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Hoặc"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Khi sử dụng bố cục thanh toán <em>&quot;1 cột&quot;,</em> tùy chọn này luôn "
+"được đặt thành <em>&quot;Trước các bước thanh toán&quot;</em> và cũng áp "
+"dụng cho chế độ xem trên máy tính để bàn."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

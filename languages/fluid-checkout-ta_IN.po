@@ -2624,15 +2624,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "மொபைலில் கூடுதல் ஆர்டர் சுருக்கப் பிரிவு நிலை."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"ஒரு-நெடுவரிசை செக்அவுட் அமைப்பைப் பயன்படுத்தும் போது இந்த விருப்பம் "
-"எப்போதும் <em>&quot;செக்அவுட் படிகளுக்கு முன்&quot;</em> என்று "
-"அமைக்கப்படும், மேலும் இது டெஸ்க்டாப் பார்வைக்கும் பொருந்தும்."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "தளத் தலைப்பில்"
@@ -2640,6 +2631,15 @@ msgstr "தளத் தலைப்பில்"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "செக்அவுட்டுக்கு முன் படிகள்"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 நெடுவரிசை&quot;</em> செக்அவுட் அமைப்பைப் பயன்படுத்தும் போது "
+"இந்த விருப்பம் எப்போதும் <em>&quot;செக்அவுட் படிகளுக்கு முன்&quot;</em> "
+"என்று அமைக்கப்படும், மேலும் இது டெஸ்க்டாப் பார்வைக்கும் பொருந்தும்."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

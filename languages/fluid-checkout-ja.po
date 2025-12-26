@@ -2367,14 +2367,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "モバイルでの注文概要セクションの位置を追加。"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"ワンカラムのチェックアウトレイアウトを使用している場合、このオプションは常に<em>\"Before checkout "
-"steps\"</em>に設定され、デスクトップ表示にも適用されます。"
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "サイトヘッダー"
@@ -2382,6 +2374,14 @@ msgstr "サイトヘッダー"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "チェックアウト前の手順"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>\"1カラム\"</em>チェックアウトレイアウトを使用している場合、このオプションは常に<em>\"チェックアウトのステップの前に\"</"
+"em>に設定され、デスクトップ表示にも適用されます。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

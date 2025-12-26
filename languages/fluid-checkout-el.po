@@ -2790,15 +2790,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Πρόσθετη θέση της συνοπτικής ενότητας παραγγελίας στο κινητό."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Όταν χρησιμοποιείτε τη διάταξη πληρωμής με μία στήλη, αυτή η επιλογή είναι "
-"πάντα ρυθμισμένη σε <em>\"Πριν από τα βήματα πληρωμής\"</em> και ισχύει "
-"επίσης για την προβολή γραφείου."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Στην επικεφαλίδα του ιστότοπου"
@@ -2806,6 +2797,15 @@ msgstr "Στην επικεφαλίδα του ιστότοπου"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Βήματα πριν από το checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Όταν χρησιμοποιείτε τη διάταξη πληρωμής <em>\"1 στήλη\"</em>, αυτή η "
+"επιλογή είναι πάντα ρυθμισμένη σε <em>\"Πριν από τα βήματα πληρωμής\"</em> "
+"και ισχύει επίσης για την προβολή γραφείου."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

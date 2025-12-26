@@ -2569,15 +2569,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Dodatna pozicija odjeljka sažetka narudžbe na mobilnom uređaju."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Prilikom korištenja jednostupnog rasporeda naplate ova je opcija uvijek "
-"postavljena na <em>&quot;Prije koraka naplate&quot;</em> i primjenjuje se i "
-"na prikaz za stolna računala."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Na zaglavlju stranice"
@@ -2585,6 +2576,15 @@ msgstr "Na zaglavlju stranice"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Koraci prije plaćanja"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Prilikom korištenja izgleda blagajne <em>&quot;1 stupac&quot;</em> ova je "
+"opcija uvijek postavljena na <em>&quot;Prije koraka blagajne&quot;</em> i "
+"primjenjuje se i na prikaz za stolna računala."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

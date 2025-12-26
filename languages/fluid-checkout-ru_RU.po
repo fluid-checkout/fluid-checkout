@@ -2717,15 +2717,6 @@ msgstr ""
 "Дополнительное положение раздела \"Сводка заказов\" на мобильных "
 "устройствах."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"При использовании одноколоночного макета оформления заказа этот параметр "
-"всегда устанавливается на <em>\"Перед шагами оформления заказа\"</em> и "
-"также применяется для просмотра на рабочем столе."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "В шапке сайта"
@@ -2733,6 +2724,15 @@ msgstr "В шапке сайта"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Шаги перед оформлением заказа"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"При использовании макета оформления заказа <em>\"1 колонка\"</em> этот "
+"параметр всегда устанавливается на <em>\"Перед шагами оформления "
+"заказа\"</em> и также применяется для просмотра на рабочем столе."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2548,15 +2548,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Posisi bagean ringkesan pesenan tambahan ing seluler."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Nalika nggunakake tata letak checkout siji kolom, opsi iki mesthi disetel "
-"dadi <em>&quot;Sadurunge langkah checkout&quot;</em> lan uga ditrapake "
-"kanggo tampilan desktop."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Ing judhul situs"
@@ -2564,6 +2555,15 @@ msgstr "Ing judhul situs"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Langkah-langkah sadurunge checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Nalika nggunakake tata letak checkout <em>&quot;1 kolom&quot;,</em> opsi "
+"iki mesthi disetel dadi <em>&quot;Sadurunge langkah checkout&quot;</em> lan "
+"uga ditrapake kanggo tampilan desktop."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

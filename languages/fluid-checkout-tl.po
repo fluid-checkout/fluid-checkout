@@ -2633,15 +2633,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Posisyon ng seksyon ng karagdagang buod ng order sa mobile."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Kapag ginagamit ang one-column checkout layout, ang opsyong ito ay palaging "
-"nakatakda sa <em>&quot;Bago ang mga hakbang sa checkout&quot;</em> at "
-"nalalapat din sa desktop view."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Sa header ng site"
@@ -2653,6 +2644,15 @@ msgstr "Mga hakbang bago ang pag-checkout"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "O kaya"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kapag ginagamit ang layout ng checkout <em>na &quot;1 column,&quot;</em> "
+"ang opsyong ito ay palaging nakatakda sa <em>&quot;Bago ang mga hakbang sa "
+"checkout&quot;</em> at nalalapat din sa desktop view."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

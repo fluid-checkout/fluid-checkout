@@ -2746,15 +2746,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Mobilde ekstra sipariş özeti bölümü konumu."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Tek sütunlu ödeme düzeni kullanılırken bu seçenek her zaman <em>\"Ödeme "
-"adımlarından önce\"</em> olarak ayarlanır ve masaüstü görünümü için de "
-"geçerlidir."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Site başlığında"
@@ -2766,6 +2757,15 @@ msgstr "Ödeme adımlarından önce"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ya da"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>\"1 sütun\"</em> ödeme düzeni kullanılırken bu seçenek her zaman "
+"<em>\"Ödeme adımlarından önce\"</em> olarak ayarlanır ve masaüstü görünümü "
+"için de geçerlidir."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

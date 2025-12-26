@@ -2558,15 +2558,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Լրացուցիչ պատվերի ամփոփման բաժնի դիրք բջջային հեռախոսում։"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Միասյունակ վճարման դասավորությունն օգտագործելիս այս տարբերակը միշտ դրված է "
-"<em>«Վճարման քայլերից առաջ»</em> դիրքում և վերաբերում է նաև աշխատասեղանի "
-"տեսքին։"
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Կայքի վերնագրի վրա"
@@ -2574,6 +2565,15 @@ msgstr "Կայքի վերնագրի վրա"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Վճարումից առաջ քայլերը"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>«1 սյունակ»</em> վճարման դասավորությունն օգտագործելիս այս տարբերակը "
+"միշտ դրված է <em>«Վճարման քայլերից առաջ»</em> դիրքում և վերաբերում է նաև "
+"աշխատասեղանի տեսքին։"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

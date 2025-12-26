@@ -2810,15 +2810,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Posizione extra della sezione di riepilogo dell'ordine su mobile."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Quando si utilizza il layout di checkout a una colonna, questa opzione è "
-"sempre impostata su <em>\"Prima delle fasi di checkout\"</em> e si applica "
-"anche alla visualizzazione desktop."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Nell'intestazione del sito"
@@ -2826,6 +2817,15 @@ msgstr "Nell'intestazione del sito"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Prima del checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Quando si utilizza il layout di checkout <em>\"1 colonna\"</em> questa "
+"opzione è sempre impostata su <em>\"Prima delle fasi di checkout\"</em> e "
+"si applica anche alla visualizzazione desktop."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

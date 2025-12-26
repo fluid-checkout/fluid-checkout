@@ -2618,15 +2618,6 @@ msgstr ""
 "Mobil qurilmada qo&#39;shimcha buyurtma xulosasi bo&#39;limining "
 "pozitsiyasi."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Bir ustunli to&#39;lov tartibidan foydalanganda, bu parametr har doim "
-"<em>&quot;To&#39;lovdan oldingi bosqichlar&quot;</em> ga o&#39;rnatiladi va "
-"ish stoli ko&#39;rinishiga ham tegishli."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Sayt sarlavhasida"
@@ -2638,6 +2629,15 @@ msgstr "To&#39;lovdan oldingi bosqichlar"
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Yoki"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 ustunli&quot;</em> to&#39;lov sxemasidan foydalanganda, bu "
+"parametr har doim <em>&quot;To&#39;lovdan oldingi bosqichlar&quot;</em> ga "
+"o&#39;rnatiladi va ish stoli ko&#39;rinishiga ham tegishli."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

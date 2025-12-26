@@ -2573,15 +2573,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Мобилдик түзмөктө кошумча буйрутманын кыскача баяндамасы бөлүмүнүн абалы."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Бир тилкелүү төлөө макетин колдонгондо, бул параметр ар дайым "
-"<em>&quot;Төлөмгө чейинки кадамдар&quot;</em> деп коюлат жана ошондой эле "
-"иш такта көрүнүшүнө да тиешелүү."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Сайттын башкы бетинде"
@@ -2589,6 +2580,15 @@ msgstr "Сайттын башкы бетинде"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Кассага чейинки кадамдар"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 тилке&quot;</em> төлөө макетин колдонгондо, бул параметр ар "
+"дайым <em>&quot;Төлөмгө чейинки кадамдар&quot;</em> деп коюлат жана иш "
+"такта көрүнүшүнө да тиешелүү."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

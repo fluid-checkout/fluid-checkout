@@ -2539,15 +2539,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Tilauksen yhteenveto-osion ylimääräinen sijainti mobiililaitteissa."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Käytettäessä yksisarakkeista kassan asettelua tämä vaihtoehto on aina "
-"asetettu arvoon <em>\"Ennen kassan vaiheita\"</em>, ja se koskee myös "
-"työpöytänäkymää."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Sivuston otsikossa"
@@ -2555,6 +2546,15 @@ msgstr "Sivuston otsikossa"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Ennen kassalle menoa"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Käytettäessä <em>\"1-pylväs\"</em> -kassan asettelua tämä vaihtoehto on "
+"aina asetettu kohtaan <em>\"Ennen kassan vaiheita\"</em>, ja se koskee myös "
+"työpöytänäkymää."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

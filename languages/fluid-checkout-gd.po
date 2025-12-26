@@ -2637,16 +2637,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Suidheachadh earrann geàrr-chunntas òrdughan a bharrachd air fòn-làimhe."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Nuair a bhios tu a’ cleachdadh cruth an àite-pàighidh aon-cholbh, bidh an "
-"roghainn seo an-còmhnaidh air a shuidheachadh gu <em>“Ceumannan mus tèid "
-"thu chun àite-pàighidh”</em> agus tha e cuideachd a’ buntainn ris an "
-"t-sealladh deasg."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Air ceann-sgrìobhaidh na làraich"
@@ -2654,6 +2644,16 @@ msgstr "Air ceann-sgrìobhaidh na làraich"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Ceumannan mus tèid pàigheadh"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Nuair a bhios tu a’ cleachdadh cruth an àite-pàighidh <em>“1 colbh”,</em> "
+"bidh an roghainn seo an-còmhnaidh air a shuidheachadh gu <em>“Ceumannan mus "
+"tèid an t-àite-pàighidh a dhèanamh”</em> agus tha e cuideachd a’ buntainn "
+"ris an t-sealladh deasg."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

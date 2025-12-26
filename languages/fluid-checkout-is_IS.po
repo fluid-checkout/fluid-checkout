@@ -2551,15 +2551,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "Aukaleg staðsetning pöntunaryfirlitshluta í farsíma."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"Þegar ein-dálks greiðsluuppsetning er notuð er þessi valkostur alltaf "
-"stilltur á <em>„Skref fyrir greiðslu“</em> og á einnig við um "
-"skjáborðsútlit."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "Í haus síðunnar"
@@ -2567,6 +2558,15 @@ msgstr "Í haus síðunnar"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Skref fyrir greiðslu"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Þegar greiðsluuppsetningin <em>„1 dálkur“</em> er notuð er þessi valkostur "
+"alltaf stilltur á <em>„Skref fyrir greiðslu“</em> og á einnig við um "
+"skjáborðsútlit."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

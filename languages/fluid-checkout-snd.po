@@ -2537,15 +2537,6 @@ msgstr ""
 msgid "Extra order summary section position on mobile."
 msgstr "موبائل تي اضافي آرڊر خلاصو سيڪشن پوزيشن."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid ""
-"When using the one-column checkout layout this option is always set to "
-"<em>\"Before checkout steps\"</em> and also applies to desktop view."
-msgstr ""
-"جڏهن هڪ ڪالم واري چيڪ آئوٽ لي آئوٽ استعمال ڪندي هي آپشن هميشه <em>&quot;چڪ "
-"آئوٽ مرحلن کان اڳ&quot;</em> تي سيٽ ڪيو ويندو آهي ۽ ڊيسڪ ٽاپ ڏيک تي پڻ لاڳو "
-"ٿئي ٿو."
-
 #: inc/admin/admin-settings-checkout.php:330
 msgid "On the site header"
 msgstr "سائيٽ جي هيڊر تي"
@@ -2553,6 +2544,15 @@ msgstr "سائيٽ جي هيڊر تي"
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "چيڪ آئوٽ کان اڳ جا مرحلا"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 ڪالم&quot;</em> چيڪ آئوٽ لي آئوٽ استعمال ڪرڻ وقت هي آپشن هميشه "
+"<em>&quot;چڪ آئوٽ مرحلن کان اڳ&quot;</em> تي سيٽ ڪيو ويندو آهي ۽ ڊيسڪ ٽاپ "
+"ڏيک تي پڻ لاڳو ٿئي ٿو."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
