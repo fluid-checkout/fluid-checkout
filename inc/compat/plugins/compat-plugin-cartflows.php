@@ -24,6 +24,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Register hooks.
 	 */
 	public function hooks() {
+		// Register hooks when CartFlows is loaded
 		if ( did_action( 'cartflows_loaded' ) ) {
 			$this->remove_checkout_field_hooks();
 		} else {
