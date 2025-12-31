@@ -20,6 +20,7 @@ body.has-checkout-column-layout--two_columns .fc-wrapper .fc-checkout-order-revi
 body.has-checkout-column-layout--two_columns:not( .has-checkout-layout--multi-step ) .fc-wrapper .fc-checkout-order-review {
 	display: block;
 }
+body.has-checkout-layout--single-step .fc-wrapper .fc-checkout-order-review,
 body.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review {
 	display: block !important; // Needed to override styles so that the order summary is always visible when at the last step
 }

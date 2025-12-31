@@ -1886,6 +1886,7 @@ body.has-checkout-column-layout--two_columns:not(.has-checkout-layout--multi-ste
   display: block;
 }
 
+body.has-checkout-layout--single-step .fc-wrapper .fc-checkout-order-review,
 body.fc-checkout-step-current-last .fc-wrapper .fc-checkout-order-review {
   display: block !important;
 }
