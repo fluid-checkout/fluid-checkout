@@ -853,17 +853,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Return the list of values accepted for order summary position mobile.
-	 *
-	 * @return  array  List of values accepted for order summary position mobile.
-	 */
-	public function get_allowed_order_summary_position_mobiles() {
-		return array( 'site_header','before_checkout_steps', 'hidden' );
-	}
-
-
-
-	/**
 	 * Return the list of values accepted for checkout layout.
 	 *
 	 * @return  array  List of values accepted for checkout layout.
@@ -959,29 +948,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Set layout to default value if value not set or not allowed
 		if ( ! in_array( $current_value, $allowed_values ) ) {
 			$current_value = FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_column_layout' );
-		}
-
-		return $current_value;
-	}
-
-
-
-	/**
-	 * Get the current order summary position mobile value.
-	 *
-	 * @return  string  The name of the currently selected order summary position mobile option.
-	 */
-	public function get_order_summary_position_mobile() {
-		// Get allowed values and current selected value
-		$allowed_values = $this->get_allowed_order_summary_position_mobiles();
-		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_order_summary_position_mobile' );
-
-		// Filter to allow other plugins to add their own conditions
-		$current_value = apply_filters( 'fc_order_summary_position_mobile', $current_value );
-
-		// Set layout to default value if value not set or not allowed
-		if ( ! in_array( $current_value, $allowed_values ) ) {
-			$current_value = FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' );
 		}
 
 		return $current_value;
@@ -6263,7 +6229,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Maybe add flyout attributes
-		if ( 'site_header' === $this->get_order_summary_position_mobile() ) {
+		if ( 'site_header' === $this->get_extra_order_summary_position() ) {
 			$attributes[ 'data-flyout' ] = true;
 			$attributes[ 'data-flyout-order-review' ] = true;
 			$attributes[ 'data-flyout-open-animation-class' ] = 'fade-in-down';
@@ -6292,7 +6258,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Maybe add flyout content attributes
-		if ( 'site_header' === $this->get_order_summary_position_mobile() ) {
+		if ( 'site_header' === $this->get_extra_order_summary_position() ) {
 			$attributes[ 'data-flyout-content' ] = true;
 		}
 
