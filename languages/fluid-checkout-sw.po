@@ -2585,14 +2585,6 @@ msgstr ""
 "mpangilio wa <em>&quot;safu wima 1&quot;</em> na kitarudi kwenye "
 "<em>&quot;Minimalist&quot;</em> ikiwa kitachaguliwa."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Nafasi ya sehemu ya muhtasari wa agizo la ziada kwenye simu."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Kwenye kichwa cha tovuti"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Hatua za kabla ya kulipa"
@@ -2605,6 +2597,50 @@ msgstr ""
 "Unapotumia mpangilio wa malipo wa <em>&quot;safu wima 1&quot;</em> chaguo "
 "hili huwekwa kila wakati kuwa <em>&quot;Hatua za Kabla ya malipo&quot;</em> "
 "na pia hutumika kwa mwonekano wa eneo-kazi."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Nafasi ya sehemu ya muhtasari wa agizo la ziada kwenye simu."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Chaguo <em>&quot;Kwenye kichwa cha habari cha tovuti&quot;</em> linatumika "
+"tu wakati wa kutumia kichwa cha habari kisicho na usumbufu."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Kwenye kichwa cha tovuti (inahitaji kichwa cha habari kisicho na usumbufu)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Hali ya awali ya sehemu ya muhtasari wa agizo linaloweza kupanuliwa kwenye "
+"simu ya mkononi."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Tunapendekeza kuiweka kama <em>iliyopanuliwa</em> kwa nchi zifuatazo "
+"kutokana na mahitaji ya udhibiti: <strong>Ujerumani</strong> , "
+"<strong>Austria</strong> , <strong>Uswisi</strong> , "
+"<strong>Uholanzi</strong> , <strong>Poland</strong> , "
+"<strong>Ubelgiji</strong> na <strong>Ufaransa</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Imekunjwa"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Imepanuliwa"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

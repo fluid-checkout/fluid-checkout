@@ -2394,14 +2394,6 @@ msgstr ""
 "የ <em>&quot;Split&quot;</em> የዲዛይን አብነት <em>&quot;1 አምድ&quot;</em> አቀማመጥ "
 "ሲጠቀሙ አይገኝም እና ከተመረጠ ወደ <em>&quot;Minimalist&quot;</em> ይመለሳል።"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "በሞባይል ላይ ተጨማሪ የትዕዛዝ ማጠቃለያ ክፍል አቀማመጥ።"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "በጣቢያው ራስጌ ላይ"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ከክፍያ በፊት ደረጃዎች"
@@ -2417,6 +2409,47 @@ msgid ""
 msgstr ""
 "የ <em>&quot;1 አምድ&quot;</em> የቼክ መውጫ አቀማመጥን ሲጠቀሙ ይህ አማራጭ ሁልጊዜ <em>&quot;ከቼክ "
 "መውጫ ደረጃዎች በፊት&quot;</em> ተብሎ የሚቀናበር ሲሆን ለዴስክቶፕ እይታም ይሠራል።"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "በሞባይል ላይ ለተጨማሪ ትዕዛዝ ማጠቃለያ ክፍል ቦታ።"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;በጣቢያው ላይ ያለው ራስጌ&quot;</em> የሚለው አማራጭ የሚተገበረው ትኩረትን የሚከፋፍል ራስጌን "
+"ሲጠቀሙ ብቻ ነው።"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "በጣቢያው ራስጌ ላይ (ትኩረትን የማያከፋፍል ራስጌ ያስፈልገዋል)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "በሞባይል ላይ ለሚሰፋው የትዕዛዝ ማጠቃለያ ክፍል የመጀመሪያ ሁኔታ።"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"በተቆጣጣሪ መስፈርቶች ምክንያት ለሚከተሉት አገሮች <em>እንደተስፋፋ</em> እንዲያዘጋጁት እንመክራለን <strong>፡ "
+"ጀርመን</strong> ፣ <strong>ኦስትሪያ</strong> ፣ <strong>ስዊዘርላንድ</strong> ፣ "
+"<strong>ኔዘርላንድስ</strong> ፣ <strong>ፖላንድ</strong> ፣ <strong>ቤልጂየም</strong> "
+"እና <strong>ፈረንሳይ</strong> ።"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ተሰብስቧል"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "ተዘርግቷል"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

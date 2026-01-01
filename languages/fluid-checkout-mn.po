@@ -2574,14 +2574,6 @@ msgstr ""
 "<em>&quot;Хуваах&quot;</em> загварыг ашиглах боломжгүй бөгөөд хэрэв "
 "сонговол <em>&quot;Минималист&quot;</em> болж хувирна."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Гар утсан дээрх нэмэлт захиалгын хураангуй хэсгийн байрлал."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Сайтын толгой хэсэгт"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Төлбөр тооцоо хийхээс өмнөх алхамууд"
@@ -2594,6 +2586,50 @@ msgstr ""
 "<em>&quot;1 багана&quot;</em> төлбөр тооцооны загварыг ашиглах үед энэ "
 "сонголтыг үргэлж <em>&quot;Төлбөр тооцооны өмнөх алхамууд&quot;</em> гэж "
 "тохируулсан байх бөгөөд мөн ширээний харагдацад хамаарна."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Гар утсан дээрх нэмэлт захиалгын хураангуй хэсгийн байрлал."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;Сайтын толгой хэсэг дээр&quot;</em> гэсэн сонголт нь зөвхөн "
+"анхаарал сарниулах зүйлгүй толгой хэсгийг ашиглах үед л хүчинтэй."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr ""
+"Сайтын толгой хэсэг дээр (анхаарал сарниулах зүйлгүй толгой хэсэг "
+"шаардлагатай)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Гар утсан дээрх өргөтгөх боломжтой захиалгын хураангуй хэсгийн анхны төлөв."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"<strong>Герман</strong> , <strong>Австри</strong> , "
+"<strong>Швейцарь</strong> , <strong>Нидерланд</strong> , "
+"<strong>Польш</strong> , <strong>Бельги</strong> , <strong>Франц</strong> "
+"зэрэг орнуудын зохицуулалтын шаардлагын дагуу үүнийг <em>өргөтгөсөн</em> "
+"гэж тохируулахыг бид зөвлөж байна."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Хураагдсан"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Өргөтгөсөн"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

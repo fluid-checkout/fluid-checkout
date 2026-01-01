@@ -2548,14 +2548,6 @@ msgstr ""
 "<em>«بىر ئىستون»</em> لايىھەسىنى ئىشلەتكەندە <em>«بۆلۈش»</em> لايىھە قېلىپى "
 "ئىشلەتكىلى بولمايدۇ، ئەگەر تاللانسا <em>«مىنىمالىزم»</em> غا قايتىدۇ."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "قوشۇمچە زاكاز خۇلاسىسى بۆلۈمىنىڭ يانفوندىكى ئورنى."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "تور بېكەت باشلىقىدا"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "تەكشۈرۈشتىن بۇرۇنقى قەدەملەر"
@@ -2572,6 +2564,49 @@ msgstr ""
 "<em>«1 ئىستون»</em> ئارقىلىق تۆلەش لايىھەسىنى ئىشلەتكەندە، بۇ تاللاش ھەمىشە "
 "<em>«تۆلەشتىن بۇرۇنقى قەدەملەر»</em> گە تەڭشىلىنىدۇ ھەمدە ئۈستەل يۈزى "
 "كۆرۈنۈشىگىمۇ ماس كېلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "يانفوندا قوشۇمچە زاكاز خۇلاسىسى بۆلۈمىنىڭ ئورنى."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>«تور بېتىدە باشلىق»</em> تاللانمىسى پەقەت دىققەتنى چېچىپ قويمايدىغان "
+"باشلىق ئىشلىتىلگەندىلا قوللىنىلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "تور بېكەت باشلىقى (دىققەتنى چېچىپ قويمايدىغان باشلىق تەلەپ قىلىنىدۇ)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "يانفوندا كېڭەيتكىلى بولىدىغان زاكاز خۇلاسىسى بۆلىكىنىڭ دەسلەپكى ھالىتى."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"بىز بۇنى تۆۋەندىكى دۆلەتلەر ئۈچۈن تەڭشەش تەلىپى سەۋەبىدىن "
+"<em>كېڭەيتىلگەن</em> قىلىپ بەلگىلەشنى تەۋسىيە قىلىمىز: "
+"<strong>گېرمانىيە</strong> ، <strong>ئاۋسترىيە</strong> ، "
+"<strong>شىۋىتسارىيە</strong> ، <strong>گوللاندىيە</strong> ، "
+"<strong>پولشا</strong> ، <strong>بېلگىيە</strong> ۋە "
+"<strong>فرانسىيە</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "يىقىلدى"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "كېڭەيتىلدى"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

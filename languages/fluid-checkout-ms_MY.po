@@ -2589,14 +2589,6 @@ msgstr ""
 "menggunakan susun atur <em>&quot;1 lajur&quot;</em> dan akan kembali kepada "
 "<em>&quot;Minimalis&quot;</em> jika dipilih."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Kedudukan bahagian ringkasan pesanan tambahan pada mudah alih."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Pada pengepala tapak"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Sebelum langkah pembayaran"
@@ -2609,6 +2601,51 @@ msgstr ""
 "Apabila menggunakan susun atur pembayaran <em>&quot;1 lajur&quot;,</em> "
 "pilihan ini sentiasa ditetapkan kepada <em>&quot;Sebelum langkah "
 "pembayaran&quot;</em> dan juga terpakai pada paparan desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Jawatan untuk bahagian ringkasan pesanan tambahan di telefon bimbit."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Pilihan <em>&quot;Pengepala di tapak&quot;</em> hanya terpakai apabila "
+"menggunakan pengepala bebas gangguan."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Pada pengepala tapak (memerlukan pengepala bebas gangguan)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Keadaan awal untuk bahagian ringkasan pesanan yang boleh dikembangkan pada "
+"mudah alih."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Kami mengesyorkan untuk menetapkannya sebagai <em>dikembangkan</em> untuk "
+"negara-negara berikut disebabkan oleh keperluan kawal selia: "
+"<strong>Jerman</strong> , <strong>Austria</strong> , "
+"<strong>Switzerland</strong> , <strong>Belanda</strong> , "
+"<strong>Poland</strong> , <strong>Belgium</strong> dan "
+"<strong>Perancis</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Runtuh"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Diperluas"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

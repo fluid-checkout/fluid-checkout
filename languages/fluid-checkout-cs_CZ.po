@@ -2687,14 +2687,6 @@ msgstr ""
 "<em>\"1 sloupec\"</em> a v případě výběru se vrátí zpět na "
 "<em>\"Minimalistický\"</em>."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Další pozice v sekci shrnutí objednávky na mobilním telefonu."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "V záhlaví webu"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Kroky před odhlášením"
@@ -2707,6 +2699,50 @@ msgstr ""
 "Při použití rozvržení pokladny <em>\"1 sloupec\"</em> je tato možnost vždy "
 "nastavena na <em>\"Před kroky pokladny\"</em> a platí i pro zobrazení na "
 "ploše."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozice pro dodatečnou sekci shrnutí objednávky v mobilním telefonu."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Možnost <em>\"V záhlaví webu\"</em> platí pouze při použití záhlaví bez "
+"rozptylování."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "V záhlaví webu (vyžaduje záhlaví bez rušivých prvků)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Počáteční stav pro rozšiřitelnou sekci shrnutí objednávky v mobilním "
+"telefonu."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Doporučujeme jej nastavit jako <em>rozšířený</em> pro následující země "
+"kvůli regulačním požadavkům: <strong>Německo</strong>, "
+"<strong>Rakousko</strong>, <strong>Švýcarsko</strong>, "
+"<strong>Nizozemsko</strong>, <strong>Polsko</strong>, "
+"<strong>Belgie</strong> a <strong>Francie</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Zhroucené"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Rozšířená stránka"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

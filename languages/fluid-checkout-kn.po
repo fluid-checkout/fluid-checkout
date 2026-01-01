@@ -2561,14 +2561,6 @@ msgstr ""
 "<em>&quot;ಸ್ಪ್ಲಿಟ್&quot;</em> ವಿನ್ಯಾಸ ಟೆಂಪ್ಲೇಟ್ ಲಭ್ಯವಿರುವುದಿಲ್ಲ ಮತ್ತು "
 "ಆಯ್ಕೆಮಾಡಿದರೆ <em>&quot;ಕನಿಷ್ಠ&quot;</em> ಕ್ಕೆ ಹಿಂತಿರುಗುತ್ತದೆ."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "ಮೊಬೈಲ್‌ನಲ್ಲಿ ಹೆಚ್ಚುವರಿ ಆರ್ಡರ್ ಸಾರಾಂಶ ವಿಭಾಗದ ಸ್ಥಾನ."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "ಸೈಟ್ ಹೆಡರ್‌ನಲ್ಲಿ"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ಚೆಕ್ಔಟ್ ಹಂತಗಳ ಮೊದಲು"
@@ -2581,6 +2573,48 @@ msgstr ""
 "<em>&quot;1 ಕಾಲಮ್&quot;</em> ಚೆಕ್ಔಟ್ ವಿನ್ಯಾಸವನ್ನು ಬಳಸುವಾಗ ಈ ಆಯ್ಕೆಯನ್ನು "
 "ಯಾವಾಗಲೂ <em>&quot;ಚೆಕ್ಔಟ್ ಹಂತಗಳ ಮೊದಲು&quot;</em> ಎಂದು ಹೊಂದಿಸಲಾಗುತ್ತದೆ ಮತ್ತು "
 "ಡೆಸ್ಕ್‌ಟಾಪ್ ವೀಕ್ಷಣೆಗೂ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "ಮೊಬೈಲ್‌ನಲ್ಲಿ ಹೆಚ್ಚುವರಿ ಆರ್ಡರ್ ಸಾರಾಂಶ ವಿಭಾಗದ ಸ್ಥಾನ."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;ಸೈಟ್ ಹೆಡರ್‌ನಲ್ಲಿ&quot;</em> ಆಯ್ಕೆಯು ಅಡ್ಡಿ-ಮುಕ್ತ ಹೆಡರ್ ಬಳಸುವಾಗ "
+"ಮಾತ್ರ ಅನ್ವಯಿಸುತ್ತದೆ."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "ಸೈಟ್ ಹೆಡರ್‌ನಲ್ಲಿ (ಗೊಂದಲ-ಮುಕ್ತ ಹೆಡರ್ ಅಗತ್ಯವಿದೆ)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "ಮೊಬೈಲ್‌ನಲ್ಲಿ ವಿಸ್ತರಿಸಬಹುದಾದ ಆರ್ಡರ್ ಸಾರಾಂಶ ವಿಭಾಗದ ಆರಂಭಿಕ ಸ್ಥಿತಿ."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"ನಿಯಂತ್ರಕ ಅವಶ್ಯಕತೆಗಳಿಂದಾಗಿ ಇದನ್ನು ಈ ಕೆಳಗಿನ ದೇಶಗಳಿಗೆ <em>ವಿಸ್ತರಿಸಿದಂತೆ</em> "
+"ಹೊಂದಿಸಲು ನಾವು ಶಿಫಾರಸು ಮಾಡುತ್ತೇವೆ: <strong>ಜರ್ಮನಿ</strong> , "
+"<strong>ಆಸ್ಟ್ರಿಯಾ</strong> , <strong>ಸ್ವಿಟ್ಜರ್‌ಲ್ಯಾಂಡ್</strong> , "
+"<strong>ನೆದರ್‌ಲ್ಯಾಂಡ್ಸ್</strong> , <strong>ಪೋಲೆಂಡ್</strong> , "
+"<strong>ಬೆಲ್ಜಿಯಂ</strong> ಮತ್ತು <strong>ಫ್ರಾನ್ಸ್</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ಕುಗ್ಗಿಸಲಾಗಿದೆ"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "ವಿಸ್ತರಿಸಲಾಗಿದೆ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

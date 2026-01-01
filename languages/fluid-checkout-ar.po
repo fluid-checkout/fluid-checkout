@@ -2477,14 +2477,6 @@ msgstr ""
 "<em>&quot;عمود واحد&quot;</em> وسيعود إلى <em>&quot;Minimalist&quot;</em> "
 "إذا تم اختياره."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "موضع قسم ملخص الطلب الإضافي على الهاتف المحمول."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "في رأس الموقع"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "خطوات ما قبل إتمام عملية الشراء"
@@ -2501,6 +2493,47 @@ msgstr ""
 "عند استخدام تخطيط الدفع <em>&quot;عمود واحد&quot;</em> ، يتم دائمًا تعيين "
 "هذا الخيار على <em>&quot;خطوات ما قبل الدفع&quot;</em> وينطبق أيضًا على عرض "
 "سطح المكتب."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "موضع قسم ملخص الطلب الإضافي على الهاتف المحمول."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"لا ينطبق خيار <em>&quot;في رأس الموقع&quot;</em> إلا عند استخدام رأس الموقع "
+"الخالي من عوامل التشتيت."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "في رأس الموقع (يتطلب رأسًا خاليًا من عوامل التشتيت)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "الحالة الأولية لقسم ملخص الطلب القابل للتوسيع على الهاتف المحمول."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"نوصي بتعيينه على أنه <em>موسع</em> للدول التالية بسبب المتطلبات التنظيمية: "
+"<strong>ألمانيا</strong> ، <strong>النمسا</strong> ، "
+"<strong>سويسرا</strong> ، <strong>هولندا</strong> ، <strong>بولندا</strong> "
+"، <strong>بلجيكا</strong> <strong>وفرنسا</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "مُنهار"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "موسع"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2538,14 +2538,6 @@ msgstr ""
 "পৰিকল্পনা ব্যৱহাৰ কৰাৰ সময়ত উপলব্ধ নহয় আৰু নিৰ্বাচিত হ&#39;লে "
 "<em>&quot;নূন্যতম&quot;</em> লৈ পুনৰ পৰিব।"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "মোবাইলত অতিৰিক্ত অৰ্ডাৰৰ সাৰাংশ অংশৰ অৱস্থান।"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "চাইট হেডাৰত"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "চেকআউট পদক্ষেপৰ আগতে"
@@ -2562,6 +2554,49 @@ msgstr ""
 "<em>&quot;1 স্তম্ভ&quot;</em> চেকআউট পৰিকল্পনা ব্যৱহাৰ কৰাৰ সময়ত এই বিকল্প "
 "সদায় <em>&quot;চেকআউট পদক্ষেপসমূহৰ আগতে&quot;</em> লে সংহতি কৰা হয় আৰু "
 "ডেস্কটপ দৰ্শনৰ বাবেও প্ৰযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "মোবাইলত অতিৰিক্ত অৰ্ডাৰৰ সাৰাংশ শিতানৰ বাবে পদ।"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;চাইট হেডাৰত&quot;</em> বিকল্প কেৱল বিক্ষিপ্ততা-মুক্ত হেডাৰ "
+"ব্যৱহাৰ কৰাৰ সময়ত প্ৰযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "চাইট হেডাৰত (বিক্ষিপ্ততা-মুক্ত হেডাৰৰ প্ৰয়োজন)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "মোবাইলত সম্প্ৰসাৰণযোগ্য অৰ্ডাৰৰ সাৰাংশ অংশৰ বাবে প্ৰাৰম্ভিক অৱস্থা।"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"নিয়ন্ত্ৰণৰ প্ৰয়োজনীয়তাৰ বাবে আমি ইয়াক তলত দিয়া দেশসমূহৰ বাবে "
+"<em>সম্প্ৰসাৰিত</em> হিচাপে নিৰ্ধাৰণ কৰাৰ পৰামৰ্শ দিওঁ: "
+"<strong>জাৰ্মানী</strong> , <strong>অষ্ট্ৰিয়া</strong> , "
+"<strong>চুইজাৰলেণ্ড</strong> , <strong>নেদাৰলেণ্ড</strong> , "
+"<strong>পোলেণ্ড</strong> , <strong>বেলজিয়াম</strong> আৰু "
+"<strong>ফ্ৰান্স</strong> ।"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ভাঙি পৰিল"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "সম্প্ৰসাৰিত"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

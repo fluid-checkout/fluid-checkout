@@ -2530,14 +2530,6 @@ msgstr ""
 "veerg\"</em> paigutust ja selle valimise korral langeb tagasi "
 "<em>\"Minimalistlik\"</em>."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Täiendav tellimuse kokkuvõtte osa positsioon mobiilis."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Saidi päises"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Enne kassasse minekut sammud"
@@ -2549,6 +2541,48 @@ msgid ""
 msgstr ""
 "Kui kasutate <em>\"1 veerg\"</em> kassaplaani, on see valik alati seatud "
 "<em>\"Enne kassasammu\"</em> ja kehtib ka töölaua vaates."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Asukoht täiendava tellimuse kokkuvõtte sektsiooni jaoks mobiilis."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Valik <em>\"Saidi päises\"</em> kehtib ainult siis, kui kasutate häireteta "
+"päise."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Saidi päises (nõuab häireteta päise)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Esialgne olek laiendatava tellimuse kokkuvõtte sektsiooni jaoks mobiilis."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Soovitame selle seadistada <em>laiendatud</em> järgmistele riikidele "
+"regulatiivsete nõuete tõttu: <strong>Saksamaa</strong>, "
+"<strong>Austria</strong>, <strong>Sveits</strong>, "
+"<strong>Holland</strong>, <strong>Poola</strong>, <strong>Belgia</strong> "
+"ja <strong>Frangimaa</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Kokkuvarisemine"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Laiendatud"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

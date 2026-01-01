@@ -2629,14 +2629,6 @@ msgstr ""
 "ginagamit ang layout na <em>&quot;1 column&quot;</em> at babalik ito sa "
 "<em>&quot;Minimalist&quot;</em> kung pipiliin."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Posisyon ng seksyon ng karagdagang buod ng order sa mobile."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Sa header ng site"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Mga hakbang bago ang pag-checkout"
@@ -2653,6 +2645,49 @@ msgstr ""
 "Kapag ginagamit ang layout ng checkout <em>na &quot;1 column,&quot;</em> "
 "ang opsyong ito ay palaging nakatakda sa <em>&quot;Bago ang mga hakbang sa "
 "checkout&quot;</em> at nalalapat din sa desktop view."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisyon para sa seksyon ng buod ng karagdagang order sa mobile."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Ang opsyong <em>&quot;On the site header&quot;</em> ay naaangkop lamang "
+"kapag ginagamit ang distraction-free header."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Sa header ng site (nangangailangan ng header na walang abala)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Paunang estado para sa seksyon ng napapalawak na buod ng order sa mobile."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Inirerekomenda namin na itakda ito bilang <em>pinalawak</em> para sa mga "
+"sumusunod na bansa dahil sa mga kinakailangan sa regulasyon: "
+"<strong>Germany</strong> , <strong>Austria</strong> , "
+"<strong>Switzerland</strong> , <strong>Netherlands</strong> , "
+"<strong>Poland</strong> , <strong>Belgium</strong> at "
+"<strong>France</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Nabuwag"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Pinalawak"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

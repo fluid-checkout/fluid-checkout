@@ -2525,14 +2525,6 @@ msgstr ""
 "<em>&quot;સ્પ્લિટ&quot;</em> ઉપલબ્ધ નથી અને જો પસંદ કરવામાં આવે તો તે "
 "<em>&quot;મિનિમલિસ્ટ&quot;</em> પર પાછું આવશે."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "મોબાઇલ પર વધારાના ઓર્ડર સારાંશ વિભાગની સ્થિતિ."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "સાઇટ હેડર પર"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ચેકઆઉટ પહેલાંના પગલાં"
@@ -2545,6 +2537,48 @@ msgstr ""
 "<em>&quot;1 કૉલમ&quot;</em> ચેકઆઉટ લેઆઉટનો ઉપયોગ કરતી વખતે આ વિકલ્પ હંમેશા "
 "<em>&quot;ચેકઆઉટ પગલાં પહેલાં&quot;</em> પર સેટ હોય છે અને ડેસ્કટોપ વ્યૂ પર "
 "પણ લાગુ પડે છે."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "મોબાઇલ પર વધારાના ઓર્ડર સારાંશ વિભાગ માટે સ્થાન."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;સાઇટ હેડર પર&quot;</em> વિકલ્પ ફક્ત વિક્ષેપ-મુક્ત હેડરનો ઉપયોગ "
+"કરતી વખતે જ લાગુ પડે છે."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "સાઇટ હેડર પર (વિક્ષેપ-મુક્ત હેડરની જરૂર છે)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "મોબાઇલ પર વિસ્તૃત ઓર્ડર સારાંશ વિભાગ માટે પ્રારંભિક સ્થિતિ."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"નિયમનકારી આવશ્યકતાઓને કારણે અમે નીચેના દેશો માટે તેને <em>વિસ્તૃત</em> "
+"તરીકે સેટ કરવાની ભલામણ કરીએ છીએ: <strong>જર્મની</strong> , "
+"<strong>ઑસ્ટ્રિયા</strong> , <strong>સ્વિટ્ઝર્લૅન્ડ</strong> , "
+"<strong>નેધરલેન્ડ</strong> , <strong>પોલેન્ડ</strong> , "
+"<strong>બેલ્જિયમ</strong> અને <strong>ફ્રાન્સ</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "સંકુચિત"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "વિસ્તૃત"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

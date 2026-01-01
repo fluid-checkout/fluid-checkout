@@ -2585,14 +2585,6 @@ msgstr ""
 "fan de yndieling <em>&quot;1 kolom&quot;</em> en sil weromfalle op "
 "<em>&quot;Minimalistysk&quot;</em> as keazen."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Ekstra posysje fan &#39;e seksje foar oarderoersjoch op mobyl."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Op de koptekst fan &#39;e side"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Stappen foar it beteljen"
@@ -2605,6 +2597,48 @@ msgstr ""
 "By it brûken fan de kassa-yndieling <em>&quot;1 kolom&quot;</em> is dizze "
 "opsje altyd ynsteld op <em>&quot;Stappen foar it beteljen&quot;</em> en "
 "jildt ek foar de buroblêdwerjefte."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posysje foar de ekstra seksje foar oarderoersjoch op mobyl."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"De opsje <em>&quot;Op &#39;e sidekoptekst&quot;</em> jildt allinich by it "
+"brûken fan &#39;e koptekst sûnder ôflieding."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Op &#39;e sidekoptekst (fereasket in koptekst sûnder ôflieding)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Begjinstatus foar de útwreidbere seksje foar oarderoersjoch op mobyl."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Wy riede oan om it yn te stellen as <em>útwreide</em> foar de folgjende "
+"lannen fanwegen regeljouwingseasken: <strong>Dútslân</strong> , "
+"<strong>Eastenryk</strong> , <strong>Switserlân</strong> , "
+"<strong>Nederlân</strong> , <strong>Poalen</strong> , "
+"<strong>België</strong> en <strong>Frankryk</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ynstoart"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Útwreide"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

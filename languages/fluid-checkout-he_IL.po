@@ -2444,14 +2444,6 @@ msgstr ""
 "<em>&quot;עמודה אחת&quot;</em> ותחזור ל&quot;מינימליסטית <em>&quot;</em> אם "
 "תבחר."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "מיקום נוסף של מדור סיכום הזמנות בנייד."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "בכותרת האתר"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "שלבי הקופה לפני הרכישה"
@@ -2463,6 +2455,47 @@ msgid ""
 msgstr ""
 "בעת שימוש בפריסת התשלום של <em>&quot;עמודה אחת&quot;,</em> אפשרות זו תמיד "
 "מוגדרת ל&quot;שלבי <em>התשלום לפני&quot;</em> וחלה גם על תצוגת שולחן העבודה."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "מיקום עבור מדור סיכום ההזמנות הנוסף בנייד."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"האפשרות <em>&quot;בכותרת האתר&quot;</em> חלה רק בעת שימוש בכותרת ללא הסחות "
+"דעת."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "כותרת באתר (דורשת כותרת ללא הסחות דעת)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "מצב התחלתי עבור מקטע סיכום ההזמנות הניתן להרחבה בנייד."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"אנו ממליצים להגדיר אותו <em>כמורחב</em> עבור המדינות הבאות עקב דרישות "
+"רגולטוריות: <strong>גרמניה</strong> , <strong>אוסטריה</strong> , "
+"<strong>שוויץ</strong> , <strong>הולנד</strong> , <strong>פולין</strong> , "
+"<strong>בלגיה</strong> <strong>וצרפת</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "מכווץ"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "מוּרחָב"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

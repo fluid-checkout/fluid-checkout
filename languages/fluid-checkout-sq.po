@@ -2596,14 +2596,6 @@ msgstr ""
 "kur përdoret paraqitja <em>&quot;1 kolonë&quot;</em> dhe do të kthehet në "
 "<em>&quot;Minimalist&quot;</em> nëse zgjidhet."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Pozicion shtesë i seksionit të përmbledhjes së porosive në celular."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Në kryefaqen e faqes"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Hapat para arkëtimit"
@@ -2616,6 +2608,50 @@ msgstr ""
 "Kur përdorni paraqitjen e arkëtimit <em>&quot;1 kolonë&quot;,</em> ky "
 "opsion është gjithmonë i vendosur në <em>&quot;Para hapave të "
 "arkëtimit&quot;</em> dhe vlen edhe për pamjen e desktopit."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozicioni për seksionin shtesë të përmbledhjes së porosisë në celular."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opsioni <em>&quot;Në kokën e faqes&quot;</em> zbatohet vetëm kur përdoret "
+"koka pa shpërqendrime."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Në kokën e faqes (kërkon kokë pa shpërqendrime)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Gjendja fillestare për seksionin e përmbledhjes së porosisë së zgjerueshme "
+"në celular."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Ne rekomandojmë ta vendosni si <em>të zgjeruar</em> për vendet e mëposhtme "
+"për shkak të kërkesave rregullatore: <strong>Gjermania</strong> , "
+"<strong>Austria</strong> , <strong>Zvicra</strong> , "
+"<strong>Holanda</strong> , <strong>Polonia</strong> , "
+"<strong>Belgjika</strong> dhe <strong>Franca</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Palosur"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Zgjeruar"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

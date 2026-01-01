@@ -2530,14 +2530,6 @@ msgstr ""
 "<em>&quot;Split&quot;</em> සැලසුම් අච්චුව ලබා ගත නොහැකි අතර තෝරා ගන්නේ නම් "
 "<em>&quot;Minimalist&quot;</em> වෙත ආපසු යනු ඇත."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "ජංගම දුරකථනයේ අමතර ඇණවුම් සාරාංශ අංශ ස්ථානය."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "අඩවි ශීර්ෂය මත"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "පිටවීමේ පියවරට පෙර"
@@ -2550,6 +2542,48 @@ msgstr ""
 "<em>&quot;1 තීරුව&quot;</em> පිටවීමේ පිරිසැලසුම භාවිතා කරන විට මෙම විකල්පය "
 "සැමවිටම <em>&quot;පිටවීමේ පියවරට පෙර&quot;</em> ලෙස සකසා ඇති අතර ඩෙස්ක්ටොප් "
 "දර්ශනයටද අදාළ වේ."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "ජංගම දුරකථනයේ අමතර ඇණවුම් සාරාංශ අංශය සඳහා ස්ථානය."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;අඩවි ශීර්ෂයේ&quot;</em> විකල්පය අදාළ වන්නේ අවධානය වෙනතකට යොමු "
+"නොවන ශීර්ෂය භාවිතා කරන විට පමණි."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "අඩවි ශීර්ෂය මත (බාධාවකින් තොර ශීර්ෂයක් අවශ්‍යයි)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "ජංගම දුරකථනයේ පුළුල් කළ හැකි ඇණවුම් සාරාංශ කොටස සඳහා ආරම්භක තත්ත්වය."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"නියාමන අවශ්‍යතා හේතුවෙන් පහත සඳහන් රටවල් සඳහා එය <em>පුළුල් කළ</em> ලෙස "
+"සැකසීමට අපි නිර්දේශ කරමු: <strong>ජර්මනිය</strong> , "
+"<strong>ඔස්ට්‍රියාව</strong> , <strong>ස්විට්සර්ලන්තය</strong> , "
+"<strong>නෙදර්ලන්තය</strong> , <strong>පෝලන්තය</strong> , "
+"<strong>බෙල්ජියම</strong> සහ <strong>ප්‍රංශය</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "හකුළන ලදී"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "පුළුල් කරන ලදී"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

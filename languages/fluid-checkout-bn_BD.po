@@ -2538,14 +2538,6 @@ msgstr ""
 "<em>&quot;স্প্লিট&quot;</em> ডিজাইন টেমপ্লেটটি পাওয়া যায় না এবং যদি এটি "
 "বেছে নেওয়া হয় তবে এটি <em>&quot;মিনিমালিস্ট&quot;</em> তে ফিরে আসবে।"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "মোবাইলে অতিরিক্ত অর্ডার সারাংশ বিভাগের অবস্থান।"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "সাইটের হেডারে"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "চেকআউটের আগে ধাপগুলি"
@@ -2562,6 +2554,49 @@ msgstr ""
 "<em>&quot;১ কলাম&quot;</em> চেকআউট লেআউট ব্যবহার করার সময় এই বিকল্পটি "
 "সর্বদা <em>&quot;চেকআউট পদক্ষেপের আগে&quot;</em> তে সেট করা থাকে এবং "
 "ডেস্কটপ ভিউতেও প্রযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "মোবাইলে অতিরিক্ত অর্ডার সারাংশ বিভাগের অবস্থান।"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;সাইট হেডারে&quot;</em> বিকল্পটি শুধুমাত্র বিক্ষেপ-মুক্ত হেডার "
+"ব্যবহার করার সময় প্রযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "সাইটের হেডারে (বিক্ষেপ-মুক্ত হেডার প্রয়োজন)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "মোবাইলে সম্প্রসারণযোগ্য অর্ডার সারাংশ বিভাগের প্রাথমিক অবস্থা।"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"নিয়ন্ত্রক প্রয়োজনীয়তার কারণে আমরা নিম্নলিখিত দেশগুলির জন্য এটিকে "
+"<em>সম্প্রসারিত</em> হিসাবে সেট করার পরামর্শ দিচ্ছি: "
+"<strong>জার্মানি</strong> , <strong>অস্ট্রিয়া</strong> , "
+"<strong>সুইজারল্যান্ড</strong> , <strong>নেদারল্যান্ডস</strong> , "
+"<strong>পোল্যান্ড</strong> , <strong>বেলজিয়াম</strong> এবং "
+"<strong>ফ্রান্স</strong> ।"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "সঙ্কুচিত"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "সম্প্রসারিত"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

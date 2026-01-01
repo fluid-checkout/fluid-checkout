@@ -2742,14 +2742,6 @@ msgstr ""
 "<em>\"Böl\"</em> tasarım şablonu, <em>\"1 sütun\"</em> düzeni kullanılırken "
 "kullanılamaz ve seçilirse <em>\"Minimalist\"</em> düzenine geri döner."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Mobilde ekstra sipariş özeti bölümü konumu."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Site başlığında"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Ödeme adımlarından önce"
@@ -2766,6 +2758,49 @@ msgstr ""
 "<em>\"1 sütun\"</em> ödeme düzeni kullanılırken bu seçenek her zaman "
 "<em>\"Ödeme adımlarından önce\"</em> olarak ayarlanır ve masaüstü görünümü "
 "için de geçerlidir."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Mobil cihazlarda ekstra sipariş özeti bölümü için konum."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>\"Site başlığında\"</em> seçeneği yalnızca dikkat dağıtmayan başlık "
+"kullanıldığında geçerlidir."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Site başlığında (dikkat dağıtmayan başlık gerektirir)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Mobil cihazlarda genişletilebilir sipariş özeti bölümü için ilk durum."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Düzenleyici gereklilikler nedeniyle aşağıdaki ülkeler için "
+"<em>genişletilmiş</em> olarak ayarlamanızı öneririz: "
+"<strong>Almanya</strong>, <strong>Avusturya</strong>, "
+"<strong>İsviçre</strong>, <strong>Hollanda</strong>, "
+"<strong>Polonya</strong>, <strong>Belçika</strong> ve "
+"<strong>Fransa</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Çökmüş"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Genişletilmiş"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

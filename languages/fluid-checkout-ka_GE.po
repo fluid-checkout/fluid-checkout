@@ -2576,14 +2576,6 @@ msgstr ""
 "განლაგების გამოყენებისას და არჩევის შემთხვევაში ისევ "
 "<em>„მინიმალისტურზე“</em> გადავა."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "შეკვეთის შეჯამების დამატებითი განყოფილების პოზიცია მობილურზე."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "საიტის სათაურზე"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "გადახდის ეტაპები"
@@ -2596,6 +2588,50 @@ msgstr ""
 "<em>„1 სვეტის“</em> შეკვეთის განლაგების გამოყენებისას, ეს პარამეტრი "
 "ყოველთვის დაყენებულია <em>„შეკვეთის გაკეთების ეტაპებამდე“</em> -ზე და ასევე "
 "გამოიყენება სამუშაო მაგიდის ხედზე."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "მობილურზე დამატებითი შეკვეთის შეჯამების განყოფილების პოზიცია."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"ოფცია <em>„საიტის სათაურზე“</em> გამოიყენება მხოლოდ ყურადღების გამფანტველი "
+"თავისუფალი სათაურის გამოყენებისას."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "საიტის სათაურზე (საჭიროა ყურადღების გამფანტველი, თავისუფალი სათაური)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"მობილურ მოწყობილობაზე გაფართოებადი შეკვეთის შეჯამების სექციის საწყისი "
+"მდგომარეობა."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"მარეგულირებელი მოთხოვნების გამო, გირჩევთ, რომ ის <em>გაფართოებულად</em> "
+"დააყენოთ შემდეგი ქვეყნებისთვის: <strong>გერმანია</strong> , "
+"<strong>ავსტრია</strong> , <strong>შვეიცარია</strong> , "
+"<strong>ნიდერლანდები</strong> , <strong>პოლონეთი</strong> , "
+"<strong>ბელგია</strong> და <strong>საფრანგეთი</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ჩაკეცილი"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "გაფართოებული"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

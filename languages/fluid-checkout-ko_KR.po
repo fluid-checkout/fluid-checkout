@@ -2344,14 +2344,6 @@ msgstr ""
 "<em>\"분할\"</em> 디자인 템플릿은 <em>\"1열\"</em> 레이아웃을 사용할 때 사용할 수 없으며, 선택하면 "
 "<em>\"미니멀리스트\"</em>로 돌아갑니다."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "모바일에서 추가 주문 요약 섹션 위치."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "사이트 헤더에서"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "결제 전 단계"
@@ -2363,6 +2355,44 @@ msgid ""
 msgstr ""
 "<em>\"1열\"</em> 결제 레이아웃을 사용하는 경우 이 옵션은 항상 <em>\"결제 단계 전\"</em>으로 설정되며 데스크톱 "
 "보기에도 적용됩니다."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "모바일에서 추가 주문 요약 섹션의 위치를 지정합니다."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr "<em>\"사이트 헤더에\"</em> 옵션은 방해 요소 없는 헤더를 사용할 때만 적용됩니다."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "사이트 헤더(방해 요소가 없는 헤더가 필요함)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "모바일에서 확장 가능한 주문 요약 섹션의 초기 상태입니다."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"다음 국가에서는 규제 요구 사항으로 인해 <em>확장됨</em>으로 설정하는 것이 좋습니다: <strong>독일</strong>, "
+"<strong>오스트리아</strong>, <strong>스위스</strong>, <strong>네덜란드</strong>, "
+"<strong>폴란드</strong>, <strong>벨기에</strong> 및 <strong>프랑스</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "접힌"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "확장"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

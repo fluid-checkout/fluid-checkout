@@ -2599,14 +2599,6 @@ msgstr ""
 "<em>\"1 колонка\"</em> і буде повернутий до <em>\"Мінімалістичний\"</em>, "
 "якщо його буде обрано."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Додаткова позиція розділу зведення замовлень на мобільному."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "На шапці сайту"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Етапи перед оформленням замовлення"
@@ -2623,6 +2615,48 @@ msgstr ""
 "При використанні <em>\"1 колонка\"</em> макета оформлення замовлення ця "
 "опція завжди встановлена на <em>\"Перед кроками оформлення "
 "замовлення\"</em> і також застосовується до десктоп-версії."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Позиція для додаткового розділу підсумків замовлень на мобільному."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Параметр <em>\"У шапці сайту\"</em> застосовується лише у разі використання "
+"заголовка, що не відволікає увагу."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "У шапці сайту (потрібен заголовок, що не відволікає увагу)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Початковий стан для розширюваного розділу підсумків замовлень на мобільному."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Ми рекомендуємо встановити його як <em>розширений</em> для наступних країн "
+"через регуляторні вимоги: <strong>Німеччина</strong>, "
+"<strong>Австрія</strong>, <strong>Швейцарія</strong>, "
+"<strong>Нідерланди</strong>, <strong>Польща</strong>, "
+"<strong>Бельгія</strong> та <strong>Франція</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Впав."
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Розширений"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2786,14 +2786,6 @@ msgstr ""
 "χρησιμοποιείται η διάταξη <em>\"1 στήλη\"</em> και θα επανέλθει στο "
 "<em>\"Minimalist\"</em> αν επιλεγεί."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Πρόσθετη θέση της συνοπτικής ενότητας παραγγελίας στο κινητό."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Στην επικεφαλίδα του ιστότοπου"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Βήματα πριν από το checkout"
@@ -2806,6 +2798,48 @@ msgstr ""
 "Όταν χρησιμοποιείτε τη διάταξη πληρωμής <em>\"1 στήλη\"</em>, αυτή η "
 "επιλογή είναι πάντα ρυθμισμένη σε <em>\"Πριν από τα βήματα πληρωμής\"</em> "
 "και ισχύει επίσης για την προβολή γραφείου."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Θέση για την πρόσθετη συνοπτική ενότητα παραγγελίας στο κινητό."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Η επιλογή <em>\"Στην επικεφαλίδα του ιστότοπου\"</em> ισχύει μόνο όταν "
+"χρησιμοποιείτε την επικεφαλίδα χωρίς περισπασμούς."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Στην επικεφαλίδα του ιστότοπου (απαιτεί επικεφαλίδα χωρίς περισπασμούς)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Αρχική κατάσταση για την επεκτάσιμη ενότητα σύνοψης παραγγελίας στο κινητό."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Συνιστούμε να το ορίσετε ως <em>επεκταμένο</em> για τις ακόλουθες χώρες "
+"λόγω κανονιστικών απαιτήσεων: <strong>Γερμανία</strong>, "
+"<strong>Αυστρία</strong>, <strong>Ελβετία</strong>, "
+"<strong>Ολλανδία</strong>, <strong>Πολωνία</strong>, "
+"<strong>Βέλγιο</strong> και <strong>Γαλλία</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Καταρρεύσει"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Διευρυμένο"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2553,14 +2553,6 @@ msgstr ""
 "<em>\"Minimalistisks\"</em>, tas atgriezīsies pie "
 "<em>\"Minimalistisks\"</em>."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Papildu pasūtījuma kopsavilkuma sadaļas pozīcija mobilajā ierīcē."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Vietnes galvenē"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Pirms izrakstīšanās veicamie soļi"
@@ -2573,6 +2565,50 @@ msgstr ""
 "Izmantojot <em>\"1 kolonnas\"</em> izkārtojumu, šī opcija vienmēr ir "
 "iestatīta uz <em>\"Pirms kases soļiem\"</em> un attiecas arī uz datora "
 "skatu."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Papildu pasūtījuma kopsavilkuma sadaļas pozīcija mobilajā ierīcē."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Iespēja <em>\"Vietnes galvenē\"</em> attiecas tikai uz gadījumiem, kad tiek "
+"izmantota galvene, kas novērš uzmanību."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Vietnes galvenē (nepieciešama galvene, kas novērš uzmanību)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Sākotnējais stāvoklis paplašināmā pasūtījuma kopsavilkuma sadaļā mobilajā "
+"ierīcē."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Mēs iesakām to iestatīt kā <em>izvērstu</em> šādās valstīs, ņemot vērā "
+"normatīvās prasības: <strong>Vācija</strong>, <strong>Austrija</strong>, "
+"<strong>Šveice</strong>, <strong>Nīderlande</strong>, "
+"<strong>Polija</strong>, <strong>Beļģija</strong> un "
+"<strong>Francija</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Salikts"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Paplašināts"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

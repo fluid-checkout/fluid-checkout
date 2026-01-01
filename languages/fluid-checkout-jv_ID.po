@@ -2544,14 +2544,6 @@ msgstr ""
 "tata letak <em>&quot;1 kolom&quot;</em> lan bakal bali menyang "
 "<em>&quot;Minimalis&quot;</em> yen dipilih."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Posisi bagean ringkesan pesenan tambahan ing seluler."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Ing judhul situs"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Langkah-langkah sadurunge checkout"
@@ -2564,6 +2556,50 @@ msgstr ""
 "Nalika nggunakake tata letak checkout <em>&quot;1 kolom&quot;,</em> opsi "
 "iki mesthi disetel dadi <em>&quot;Sadurunge langkah checkout&quot;</em> lan "
 "uga ditrapake kanggo tampilan desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisi kanggo bagean ringkesan pesenan tambahan ing seluler."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opsi <em>&quot;Ing header situs&quot;</em> mung ditrapake nalika nggunakake "
+"header sing ora ana gangguan."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Ing header situs (mbutuhake header sing ora ngganggu)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Kahanan awal kanggo bagean ringkesan pesenan sing bisa ditambahi ing "
+"seluler."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Disaranake nyetel minangka <em>sing wis dikembangake</em> kanggo "
+"negara-negara ing ngisor iki amarga syarat peraturan: "
+"<strong>Jerman</strong> , <strong>Austria</strong> , <strong>Swiss</strong> "
+", <strong>Walanda</strong> , <strong>Polandia</strong> , "
+"<strong>Belgia</strong> lan <strong>Prancis</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ambruk"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Diembangake"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

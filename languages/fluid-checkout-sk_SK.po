@@ -2576,14 +2576,6 @@ msgstr ""
 "rozvrhnutia <em>\"1 stĺpec\"</em> a v prípade výberu sa vráti na "
 "<em>\"Minimalistický\"</em>."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Dodatočná pozícia sekcie súhrnu objednávky na mobilnom zariadení."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "V záhlaví stránky"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Kroky pred pokladňou"
@@ -2596,6 +2588,50 @@ msgstr ""
 "Pri použití rozloženia pokladnice <em>\"1 stĺpec\"</em> je táto možnosť "
 "vždy nastavená na <em>\"Pred krokmi pokladnice\"</em> a platí aj pre "
 "zobrazenie na ploche."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozícia pre dodatočnú sekciu súhrnu objednávky v mobilnom telefóne."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Možnosť <em>\"V záhlaví stránky\"</em> platí len pri použití záhlavia bez "
+"rozptyľovania."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "V záhlaví stránky (vyžaduje záhlavie bez rozptyľujúcich prvkov)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Počiatočný stav pre rozširujúcu sa sekciu súhrnu objednávok v mobilnom "
+"telefóne."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Odporúčame ho nastaviť ako <em>rozšírený</em> pre nasledujúce krajiny kvôli "
+"regulačným požiadavkám: <strong>Nemecko</strong>, <strong>Rakúsko</strong>, "
+"<strong>Švajčiarsko</strong>, <strong>Holandsko</strong>, "
+"<strong>Poľsko</strong>, <strong>Belgicko</strong> a "
+"<strong>Francúzsko</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Zrútené stránky"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Rozšírené"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

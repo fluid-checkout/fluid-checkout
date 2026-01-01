@@ -2558,14 +2558,6 @@ msgstr ""
 "koristi raspored <em>&quot;1 kolona&quot;</em> i vratit će se na "
 "<em>&quot;Minimalistički&quot;</em> ako se odabere."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Dodatna pozicija odjeljka sažetka narudžbe na mobilnom uređaju."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Na zaglavlju stranice"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Koraci prije plaćanja"
@@ -2582,6 +2574,48 @@ msgstr ""
 "Prilikom korištenja rasporeda naplate <em>&quot;1 kolona&quot;,</em> ova "
 "opcija je uvijek postavljena na <em>&quot;Prije koraka naplate&quot;</em> i "
 "primjenjuje se i na prikaz za računar."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozicija za dodatni odjeljak sažetka narudžbe na mobilnom uređaju."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opcija <em>&quot;Na zaglavlju stranice&quot;</em> primjenjuje se samo kada "
+"se koristi zaglavlje bez ometanja."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "U zaglavlju stranice (zahtijeva zaglavlje bez ometanja)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Početno stanje za proširivi odjeljak sažetka narudžbe na mobilnom uređaju."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Preporučujemo da ga postavite kao <em>prošireno</em> za sljedeće zemlje "
+"zbog regulatornih zahtjeva: <strong>Njemačka</strong> , "
+"<strong>Austrija</strong> , <strong>Švicarska</strong> , "
+"<strong>Nizozemska</strong> , <strong>Poljska</strong> , "
+"<strong>Belgija</strong> i <strong>Francuska</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Suženo"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Prošireno"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

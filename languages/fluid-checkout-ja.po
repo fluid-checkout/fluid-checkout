@@ -2363,14 +2363,6 @@ msgstr ""
 "デザインテンプレート <em>\"Split\"</em> は、<em>\"1 column\"</em> "
 "レイアウトを使用している場合は使用できず、<em>\"Minimalist\"</em>を選択した場合にフォールバックします。"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "モバイルでの注文概要セクションの位置を追加。"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "サイトヘッダー"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "チェックアウト前の手順"
@@ -2382,6 +2374,44 @@ msgid ""
 msgstr ""
 "<em>\"1カラム\"</em>チェックアウトレイアウトを使用している場合、このオプションは常に<em>\"チェックアウトのステップの前に\"</"
 "em>に設定され、デスクトップ表示にも適用されます。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "モバイルの追加注文概要セクションの位置。"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr "オプション<em>\"On the site header\"</em>はdistraction-free headerを使用するときのみ適用されます。"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "サイトのヘッダーについて（邪魔にならないヘッダーが必要）"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "モバイルの拡張可能な注文概要セクションの初期状態。"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"規制上の要件のため、以下の国では<em>expanded</em>に設定することをお勧めします：<strong>ドイツ</"
+"strong>、<strong>オーストリア</strong>、<strong>スイス</strong>、<strong>オランダ</"
+"strong>、<strong>ポーランド</strong>、<strong>ベルギー</strong>、<strong>フランス</strong>。"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "崩壊"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "拡大"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

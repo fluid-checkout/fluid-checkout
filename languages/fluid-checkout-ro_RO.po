@@ -2608,14 +2608,6 @@ msgstr ""
 "utilizează aspectul <em>\"1 coloană\"</em> și va reveni la "
 "<em>\"Minimalist\"</em> dacă este ales."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Poziție suplimentară a secțiunii rezumat comandă pe mobil."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Pe antetul site-ului"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Pași înainte de checkout"
@@ -2628,6 +2620,50 @@ msgstr ""
 "Atunci când se utilizează aspectul de plată <em>\"1 coloană\"</em>, această "
 "opțiune este întotdeauna setată la <em>\"Înainte de etapele de plată\"</em> "
 "și se aplică, de asemenea, la vizualizarea desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Poziția pentru secțiunea suplimentară de rezumat al comenzii pe mobil."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opțiunea <em>\"Pe antetul site-ului\"</em> se aplică numai atunci când se "
+"utilizează antetul fără distragere a atenției."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Pe antetul site-ului (necesită un antet care să nu distragă atenția)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Starea inițială pentru secțiunea expansibilă de rezumat al comenzii pe "
+"mobil."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Vă recomandăm să o setați ca <em>expanded</em> pentru următoarele țări din "
+"cauza cerințelor de reglementare: <strong>Germania</strong>, "
+"<strong>Austria</strong>, <strong>Suedia</strong>, <strong>Țările de "
+"Jos</strong>, <strong>Polonia</strong>, <strong>Belgia</strong> și "
+"<strong>Franța</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Colapsat"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Extinse"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

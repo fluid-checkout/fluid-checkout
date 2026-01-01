@@ -2635,14 +2635,6 @@ msgstr ""
 "<em>&quot;Split&quot;</em> ဒီဇိုင်းပုံစံကို ရရှိနိုင်မည်မဟုတ်ပါ။ "
 "ရွေးချယ်ပါက <em>&quot;Minimalist&quot;</em> သို့ ပြန်သွားပါမည်။"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "မိုဘိုင်းပေါ်ရှိ အပိုအော်ဒါအကျဉ်းချုပ်ကဏ္ဍနေရာ။"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "ဆိုက်ခေါင်းစဉ်မှာ"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ငွေရှင်းခြင်းမပြုမီ အဆင့်ဆင့်"
@@ -2655,6 +2647,49 @@ msgstr ""
 "<em>&quot;၁ ကော်လံ&quot;</em> ငွေရှင်းကောင်တာ အပြင်အဆင်ကို အသုံးပြုသည့်အခါ "
 "ဤရွေးချယ်မှုကို <em>&quot;ငွေရှင်းကောင်တာအဆင့်များမတိုင်မီ&quot;</em> အဖြစ် "
 "အမြဲသတ်မှတ်ထားပြီး ဒက်စ်တော့မြင်ကွင်းအတွက်လည်း အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "မိုဘိုင်းပေါ်ရှိ အပိုမှာယူမှုအကျဉ်းချုပ်ကဏ္ဍအတွက် ရာထူး။"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;On the site header&quot;</em> ရွေးချယ်မှုသည် "
+"အာရုံပျံ့လွင့်မှုကင်းသော header ကိုသုံးသည့်အခါတွင်သာ အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "ဆိုက်ခေါင်းစဉ်တွင် (အာရုံပျံ့လွင့်မှုကင်းသော ခေါင်းစဉ် လိုအပ်သည်)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "မိုဘိုင်းတွင် ချဲ့ထွင်နိုင်သော အော်ဒါအကျဉ်းချုပ်ကဏ္ဍ၏ ကနဦးအခြေအနေ။"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"စည်းမျဉ်းစည်းကမ်း လိုအပ်ချက်များကြောင့် အောက်ပါနိုင်ငံများအတွက် ၎င်းကို "
+"<em>တိုးချဲ့ထားသည်</em> အဖြစ် သတ်မှတ်ရန် အကြံပြုပါသည်- "
+"<strong>ဂျာမနီ</strong> ၊ <strong>ဩစတြီးယား</strong> ၊ "
+"<strong>ဆွစ်ဇာလန်</strong> <strong>၊ နယ်သာလန်</strong> ၊ "
+"<strong>ပိုလန်</strong> ၊ <strong>ဘယ်လ်ဂျီယံ</strong> နှင့် "
+"<strong>ပြင်သစ်</strong> ။"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ခေါက်ထားသည်"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "ချဲ့ထွင်ထားသည်"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

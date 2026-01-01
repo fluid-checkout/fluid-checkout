@@ -2302,14 +2302,6 @@ msgid ""
 "chosen."
 msgstr "使用<em>「1 列」</em>佈局時， <em>「分割」</em>設計範本不可用，如果選擇該模板，則會回退到<em>「極簡」佈局</em>。"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "行動端額外訂單摘要部分位置。"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "網站標題"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "結帳前的步驟"
@@ -2323,6 +2315,44 @@ msgid ""
 "When using the <em>\"1 column\"</em> checkout layout this option is always "
 "set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
 msgstr "使用<em>「1 列」</em>結帳佈局時，此選項始終設定為<em>「結帳步驟之前」</em> ，並且也適用於桌面視圖。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "行動端額外訂單摘要部分的位置。"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr "<em>「在網站頁首」</em>選項僅在使用無幹擾頁首時適用。"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "網站頁首（需要無幹擾的頁首）"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "行動端可擴展訂單摘要部分的初始狀態。"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"由於監管要求，我們建議將以下國家的設置設為<em>擴展</em>：<strong>德國</strong>、<strong>奧地利</"
+"strong>、<strong>瑞士</strong>、<strong>荷蘭</strong>、<strong>波蘭</"
+"strong>、<strong>比利時</strong>和<strong>法國</strong>。"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "已折疊"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "擴充"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

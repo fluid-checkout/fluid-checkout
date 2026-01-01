@@ -2534,14 +2534,6 @@ msgstr ""
 "<em>&quot;1 ຖັນ&quot;</em> ແລະຈະກັບຄືນໄປໃຊ້ຮູບແບບ "
 "<em>&quot;Minimalist&quot;</em> ຖ້າເລືອກ."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "ຕຳແໜ່ງພາກສ່ວນສະຫຼຸບຄຳສັ່ງຊື້ເພີ່ມເຕີມໃນມືຖື."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "ໃນຫົວຂໍ້ເວັບໄຊ"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ຂັ້ນຕອນກ່ອນການຈ່າຍເງິນ"
@@ -2554,6 +2546,48 @@ msgstr ""
 "ເມື່ອໃຊ້ຮູບແບບການຈ່າຍເງິນ <em>&quot;1 ຖັນ&quot;</em> "
 "ຕົວເລືອກນີ້ຈະຖືກຕັ້ງເປັນ <em>&quot;ກ່ອນຂັ້ນຕອນການຈ່າຍເງິນ&quot;</em> ສະເໝີ "
 "ແລະ ຍັງໃຊ້ກັບມຸມມອງເດັສທັອບນຳອີກ."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "ຕຳແໜ່ງສຳລັບພາກສ່ວນສະຫຼຸບການສັ່ງຊື້ເພີ່ມເຕີມໃນມືຖື."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"ຕົວເລືອກ <em>&quot;ຫົວຂໍ້ໃນເວັບໄຊທ໌&quot;</em> "
+"ໃຊ້ໄດ້ສະເພາະເມື່ອໃຊ້ຫົວຂໍ້ທີ່ບໍ່ມີສິ່ງລົບກວນເທົ່ານັ້ນ."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "ໃນຫົວຂໍ້ຂອງເວັບໄຊທ໌ (ຕ້ອງການຫົວຂໍ້ທີ່ບໍ່ມີສິ່ງລົບກວນ)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "ສະຖານະເບື້ອງຕົ້ນສຳລັບພາກສ່ວນສະຫຼຸບຄຳສັ່ງຊື້ທີ່ສາມາດຂະຫຍາຍໄດ້ໃນມືຖື."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"ພວກເຮົາແນະນຳໃຫ້ຕັ້ງມັນເປັນ <em>ຂະຫຍາຍ</em> "
+"ສຳລັບປະເທດຕໍ່ໄປນີ້ເນື່ອງຈາກຂໍ້ກຳນົດດ້ານກົດລະບຽບ: <strong>ເຢຍລະມັນ</strong> "
+", <strong>ອອສເຕຣຍ</strong> , <strong>ສະວິດ</strong> ເຊີແລນ, "
+"<strong>ເນເທີແລນ</strong> , <strong>ໂປແລນ</strong> , "
+"<strong>ແບນຊິກ</strong> ແລະ <strong>ຝຣັ່ງ</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ຫຍໍ້ລົງ"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "ຂະຫຍາຍແລ້ວ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

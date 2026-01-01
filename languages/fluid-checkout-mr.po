@@ -2525,14 +2525,6 @@ msgstr ""
 "डिझाइन टेम्पलेट उपलब्ध नाही आणि निवडल्यास ते "
 "<em>&quot;मिनिमलिस्ट&quot;</em> वर परत येईल."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "मोबाईलवर अतिरिक्त ऑर्डर सारांश विभागाची स्थिती."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "साइटच्या शीर्षलेखावर"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "चेकआउट करण्यापूर्वीच्या पायऱ्या"
@@ -2545,6 +2537,48 @@ msgstr ""
 "<em>&quot;१ कॉलम&quot;</em> चेकआउट लेआउट वापरताना हा पर्याय नेहमी "
 "<em>&quot;चेकआउट चरणांपूर्वी&quot;</em> वर सेट केला जातो आणि डेस्कटॉप "
 "व्ह्यूला देखील लागू होतो."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "मोबाईलवरील अतिरिक्त ऑर्डर सारांश विभागासाठी स्थान."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;साइटवरील शीर्षलेख&quot;</em> हा पर्याय फक्त विचलित-मुक्त शीर्षलेख "
+"वापरताना लागू होतो."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "साइट हेडरवर (विचलित न करता येणारे हेडर आवश्यक आहे)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "मोबाईलवरील विस्तारित ऑर्डर सारांश विभागाची प्रारंभिक स्थिती."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"नियामक आवश्यकतांनुसार आम्ही खालील देशांसाठी ते <em>विस्तारित</em> म्हणून "
+"सेट करण्याची शिफारस करतो: <strong>जर्मनी</strong> , "
+"<strong>ऑस्ट्रिया</strong> , <strong>स्वित्झर्लंड</strong> , "
+"<strong>नेदरलँड्स</strong> , <strong>पोलंड</strong> , "
+"<strong>बेल्जियम</strong> आणि <strong>फ्रान्स</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "कोलॅप्स झाले"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "विस्तारित"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

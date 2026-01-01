@@ -2683,14 +2683,6 @@ msgstr ""
 "<em>\"1 stulpelis\"</em> išdėstymas, o pasirinkus jį bus grįžtama prie "
 "<em>\"Minimalistinis\"</em>."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Papildoma užsakymo santraukos skilties pozicija mobiliajame telefone."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Svetainės antraštėje"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Veiksmai prieš išsiregistruojant"
@@ -2703,6 +2695,48 @@ msgstr ""
 "Naudojant <em>\"1 stulpelio\"</em> kasos išdėstymą, ši parinktis visada "
 "nustatoma į <em>\"Prieš kasos veiksmus\"</em> ir taip pat taikoma "
 "darbalaukio vaizdui."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Papildomos užsakymo santraukos skilties pozicija mobiliajame telefone."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Parinktis <em>\"Svetainės antraštėje\"</em> taikoma tik tada, kai naudojate "
+"antraštę, neatkreipiančią dėmesio."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Svetainės antraštėje (reikia, kad antraštė neblaškytų dėmesio)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Pradinė išplečiamo užsakymo santraukos skyriaus būsena mobiliajame telefone."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Šiose šalyse dėl reguliavimo reikalavimų rekomenduojame jį nustatyti kaip "
+"<em>išplėstinį</em>: <strong>Vokietija</strong>, <strong>Austrija</strong>, "
+"<strong>Šveicarija</strong>, <strong>Nyderlandai</strong>, "
+"<strong>Lenkija</strong>, <strong>Belgija</strong> ir "
+"<strong>Prancūzija</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Sugriuvęs"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Išplėstas"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

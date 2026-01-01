@@ -2569,14 +2569,6 @@ msgstr ""
 "<em>&quot;Бөлүнүү&quot;</em> дизайн шаблону жеткиликтүү эмес жана тандалган "
 "учурда <em>&quot;Минималисттик&quot;</em> абалга кайтып келет."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Мобилдик түзмөктө кошумча буйрутманын кыскача баяндамасы бөлүмүнүн абалы."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Сайттын башкы бетинде"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Кассага чейинки кадамдар"
@@ -2589,6 +2581,50 @@ msgstr ""
 "<em>&quot;1 тилке&quot;</em> төлөө макетин колдонгондо, бул параметр ар "
 "дайым <em>&quot;Төлөмгө чейинки кадамдар&quot;</em> деп коюлат жана иш "
 "такта көрүнүшүнө да тиешелүү."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Мобилдик түзмөктө кошумча буйрутманын кыскача баяндамасы бөлүмүнүн абалы."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;Сайттагы баш сап&quot;</em> опциясы алаксытпаган баш сап "
+"колдонулганда гана колдонулат."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Сайттын аталышында (алаксытпаган аталышы талап кылынат)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Мобилдик түзмөктөгү кеңейтилүүчү буйрутмалардын кыскача баяндамасы "
+"бөлүмүнүн баштапкы абалы."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Биз аны төмөнкү өлкөлөр үчүн жөнгө салуучу талаптарга байланыштуу "
+"<em>кеңейтилген</em> катары коюуну сунуштайбыз: <strong>Германия</strong> , "
+"<strong>Австрия</strong> , <strong>Швейцария</strong> , "
+"<strong>Нидерланды</strong> , <strong>Польша</strong> , "
+"<strong>Бельгия</strong> жана <strong>Франция</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Жыйыштырылды"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Кеңейтилген"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

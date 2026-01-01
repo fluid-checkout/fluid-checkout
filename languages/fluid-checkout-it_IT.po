@@ -2806,14 +2806,6 @@ msgstr ""
 "utilizza il layout <em>\"1 colonna\"</em> e, se scelto, torna a "
 "<em>\"Minimalist\"</em>."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Posizione extra della sezione di riepilogo dell'ordine su mobile."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Nell'intestazione del sito"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Prima del checkout"
@@ -2826,6 +2818,48 @@ msgstr ""
 "Quando si utilizza il layout di checkout <em>\"1 colonna\"</em> questa "
 "opzione è sempre impostata su <em>\"Prima delle fasi di checkout\"</em> e "
 "si applica anche alla visualizzazione desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posizione per la sezione di riepilogo dell'ordine extra su mobile."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"L'opzione <em>\"Nell'intestazione del sito\"</em> si applica solo quando si "
+"utilizza l'intestazione senza distrazioni."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Nell'intestazione del sito (richiede un'intestazione priva di distrazioni)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Stato iniziale della sezione di riepilogo dell'ordine espandibile su mobile."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Si consiglia di impostarlo come <em>espanso</em> per i seguenti Paesi a "
+"causa dei requisiti normativi: <strong>Germania</strong>, "
+"<strong>Austria</strong>, <strong>Svizzera</strong>, <strong>Paesi "
+"Bassi</strong>, <strong>Polonia</strong>, <strong>Belgio</strong> e "
+"<strong>Francia</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Crollato"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Espanso"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

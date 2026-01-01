@@ -2577,14 +2577,6 @@ msgstr ""
 "<em>die &quot;1 kolom&quot;</em> -uitleg gebruik word nie en sal terugval "
 "op <em>&quot;Minimalisties&quot;</em> indien gekies."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Ekstra bestellingsopsommingsafdelingposisie op selfoon."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Op die webwerf se koptekst"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Stappe voor die afhandeling"
@@ -2601,6 +2593,51 @@ msgstr ""
 "Wanneer die <em>&quot;1 kolom&quot;</em> -uitleg vir afhandeling gebruik "
 "word, is hierdie opsie altyd gestel op <em>&quot;Stappe voor "
 "afhandeling&quot;</em> en geld ook vir die lessenaar-aansig."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisie vir die ekstra bestellingsopsommingsafdeling op selfoon."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Die opsie <em>&quot;Op die webwerf-koptekst&quot;</em> is slegs van "
+"toepassing wanneer die afleidingsvrye koptekst gebruik word."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Op die webwerf se koptekst (vereis afleidingsvrye koptekst)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Aanvanklike toestand vir die uitbreibare bestellingsopsommingsafdeling op "
+"mobiele toestelle."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Ons beveel aan dat dit as <em>uitgebreid</em> vir die volgende lande "
+"ingestel word as gevolg van regulatoriese vereistes: "
+"<strong>Duitsland</strong> , <strong>Oostenryk</strong> , "
+"<strong>Switserland</strong> , <strong>Nederland</strong> , "
+"<strong>Pole</strong> , <strong>België</strong> en "
+"<strong>Frankryk</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ineengestort"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Uitgebrei"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

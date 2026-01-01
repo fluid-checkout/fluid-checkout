@@ -2583,14 +2583,6 @@ msgstr ""
 "ddefnyddio&#39;r cynllun <em>&quot;1 colofn&quot;</em> a bydd yn disgyn yn "
 "ôl i <em>&quot;Minimalist&quot;</em> os caiff ei ddewis."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Lleoliad adran crynodeb archeb ychwanegol ar ffôn symudol."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Ar bennawd y safle"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Camau cyn talu"
@@ -2603,6 +2595,48 @@ msgstr ""
 "Wrth ddefnyddio&#39;r cynllun talu <em>&quot;1 colofn&quot;</em> mae&#39;r "
 "opsiwn hwn bob amser wedi&#39;i osod i <em>&quot;Camau cyn talu&quot;</em> "
 "ac mae hefyd yn berthnasol i&#39;r olygfa bwrdd gwaith."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Safle ar gyfer yr adran crynodeb archebion ychwanegol ar ffôn symudol."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Dim ond wrth ddefnyddio&#39;r pennawd di-wrthdynnu y mae&#39;r opsiwn "
+"<em>&quot;Ar y pennawd safle&quot;</em> yn berthnasol."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Pennawd ar y wefan (angen pennawd di-wrthdynnu)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Cyflwr cychwynnol yr adran crynodeb archeb ehanguadwy ar ffôn symudol."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Rydym yn argymell ei osod fel <em>wedi&#39;i ehangu</em> ar gyfer y "
+"gwledydd canlynol oherwydd gofynion rheoleiddio: <strong>yr Almaen</strong> "
+", <strong>Awstria</strong> , <strong>y Swistir</strong> , <strong>yr "
+"Iseldiroedd</strong> , <strong>Gwlad Pwyl</strong> , <strong>Gwlad "
+"Belg</strong> a <strong>Ffrainc</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Wedi cwympo"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Wedi&#39;i ehangu"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

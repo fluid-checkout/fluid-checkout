@@ -2560,14 +2560,6 @@ msgstr ""
 "<em>&quot;ជួរឈរ 1&quot;</em> ហើយនឹងប្តូរទៅជា <em>&quot;អប្បបរមា&quot;</em> "
 "វិញប្រសិនបើជ្រើសរើស។"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "ទីតាំងផ្នែកសង្ខេបការបញ្ជាទិញបន្ថែមនៅលើទូរសព្ទដៃ។"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "នៅលើក្បាលគេហទំព័រ"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "ជំហានមុនពេលទូទាត់ប្រាក់"
@@ -2580,6 +2572,48 @@ msgstr ""
 "នៅពេលប្រើប្លង់ទូទាត់ប្រាក់ <em>&quot;1 ជួរឈរ&quot;</em> "
 "ជម្រើសនេះតែងតែត្រូវបានកំណត់ទៅ <em>&quot;មុនជំហានទូទាត់ប្រាក់&quot;</em> "
 "ហើយក៏អនុវត្តចំពោះទិដ្ឋភាពផ្ទៃតុផងដែរ។"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "ទីតាំងសម្រាប់ផ្នែកសង្ខេបការបញ្ជាទិញបន្ថែមនៅលើទូរសព្ទដៃ។"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"ជម្រើស <em>&quot;បឋមកថានៅលើគេហទំព័រ&quot;</em> "
+"អនុវត្តតែនៅពេលប្រើបឋមកថាដែលគ្មានការរំខានប៉ុណ្ណោះ។"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "នៅលើបឋមកថាគេហទំព័រ (តម្រូវឱ្យមានបឋមកថាដែលគ្មានការរំខាន)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "ស្ថានភាពដំបូងសម្រាប់ផ្នែកសង្ខេបការបញ្ជាទិញដែលអាចពង្រីកបាននៅលើទូរសព្ទចល័ត។"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"យើងសូមណែនាំឱ្យកំណត់វាជា <em>&quot;បានពង្រីក&quot;</em> "
+"សម្រាប់ប្រទេសដូចខាងក្រោម៖ <strong>អាល្លឺម៉ង់</strong> "
+"<strong>អូទ្រីស</strong> <strong>ស្វីស</strong> <strong>ហូឡង់</strong> "
+"<strong>ប៉ូឡូញ</strong> <strong>បែលហ្ស៊ិក</strong> និង "
+"<strong>បារាំង</strong> ។"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "បានបង្រួម"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "បានពង្រីក"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

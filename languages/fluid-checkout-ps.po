@@ -2527,14 +2527,6 @@ msgstr ""
 "ترتیب کارولو پرمهال شتون نلري او که غوره شي نو بیرته به "
 "<em>&quot;مینیمالیست&quot;</em> ته راشي."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "په موبایل کې د اضافي امر لنډیز برخې موقعیت."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "د سایټ په سرلیک کې"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "د چیک آوټ څخه مخکې ګامونه"
@@ -2547,6 +2539,47 @@ msgstr ""
 "کله چې د <em>&quot;۱ ستون&quot;</em> چیک آوټ ترتیب کاروئ نو دا اختیار تل "
 "<em>&quot;د چیک آوټ مرحلو دمخه&quot;</em> ته ټاکل شوی وي او د ډیسټاپ لید "
 "لپاره هم پلي کیږي."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "په موبایل کې د اضافي امر لنډیز برخې لپاره موقعیت."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>د &quot;په سایټ کې سرلیک&quot;</em> اختیار یوازې هغه وخت پلي کیږي کله "
+"چې د ګډوډۍ څخه پاک سرلیک وکاروئ."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "د سایټ په سرلیک کې (له ګډوډۍ څخه پاک سرلیک ته اړتیا لري)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "په موبایل کې د پراخیدونکي امر لنډیز برخې لپاره لومړنی حالت."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"موږ سپارښتنه کوو چې دا د تنظیمي اړتیاو له امله د لاندې هیوادونو لپاره "
+"<em>پراخه شي</em> : <strong>جرمني</strong> ، <strong>اتریش</strong> ، "
+"<strong>سویس</strong> ، <strong>هالنډ</strong> ، <strong>پولنډ</strong> ، "
+"<strong>بلجیم</strong> او <strong>فرانسه</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "سقوط شوی"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "پراخ شوی"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

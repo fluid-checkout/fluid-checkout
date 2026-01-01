@@ -2617,14 +2617,6 @@ msgstr ""
 "quan s&#39;utilitza el disseny <em>&quot;1 columna&quot;</em> i tornarà a "
 "<em>&quot;Minimalista&quot;</em> si es tria."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Posició addicional de la secció de resum de comandes al mòbil."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "A la capçalera del lloc web"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Passos previs al pagament"
@@ -2641,6 +2633,48 @@ msgstr ""
 "Quan s&#39;utilitza el disseny de pagament <em>&quot;1 columna&quot;,</em> "
 "aquesta opció sempre està definida com a <em>&quot;Passos previs al "
 "pagament&quot;</em> i també s&#39;aplica a la vista d&#39;escriptori."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posició per a la secció addicional de resum de la comanda al mòbil."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"L&#39;opció <em>&quot;A la capçalera del lloc&quot;</em> només s&#39;aplica "
+"quan s&#39;utilitza la capçalera sense distraccions."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "A la capçalera del lloc web (requereix una capçalera sense distraccions)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Estat inicial de la secció de resum de comandes expandible al mòbil."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Recomanem configurar-ho com a <em>ampliat</em> per als següents països a "
+"causa dels requisits normatius: <strong>Alemanya</strong> , "
+"<strong>Àustria</strong> , <strong>Suïssa</strong> , <strong>Països "
+"Baixos</strong> , <strong>Polònia</strong> , <strong>Bèlgica</strong> i "
+"<strong>França</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Col·lapsat"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Expandit"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

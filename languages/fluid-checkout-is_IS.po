@@ -2547,14 +2547,6 @@ msgstr ""
 "Hönnunarsniðmátið <em>„Split“</em> er ekki tiltækt þegar <em>„1 "
 "dálkur“</em> er notað og mun nota <em>„Minimalist“</em> ef það er valið."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Aukaleg staðsetning pöntunaryfirlitshluta í farsíma."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Í haus síðunnar"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Skref fyrir greiðslu"
@@ -2567,6 +2559,48 @@ msgstr ""
 "Þegar greiðsluuppsetningin <em>„1 dálkur“</em> er notuð er þessi valkostur "
 "alltaf stilltur á <em>„Skref fyrir greiðslu“</em> og á einnig við um "
 "skjáborðsútlit."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Staða fyrir auka pöntunaryfirlitshlutann í farsíma."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Valkosturinn <em>„Á síðuhaus“</em> á aðeins við þegar truflunarlaus haus er "
+"notaður."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Fyrirsögn á síðunni (þarfnast fyrirsagnar án truflana)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Upphafsstaða fyrir stækkanlegt pöntunaryfirlitshluta í farsíma."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Við mælum með að stilla það sem <em>útvíkkað</em> fyrir eftirfarandi lönd "
+"vegna reglugerðarkrafna: <strong>Þýskaland</strong> , "
+"<strong>Austurríki</strong> , <strong>Sviss</strong> , "
+"<strong>Holland</strong> , <strong>Pólland</strong> , "
+"<strong>Belgíu</strong> og <strong>Frakkland</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Hrunið saman"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Stækkað"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

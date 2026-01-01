@@ -2577,14 +2577,6 @@ msgstr ""
 "stûn&quot;</em> tê bikar anîn peyda nabe û heke were hilbijartin dê vegere "
 "<em>&quot;Minimalist&quot;</em> ."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Helwesta beşa kurteya fermanê ya zêde li ser mobîl."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Li ser sernivîsa malperê"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Gavên berî kontrolkirinê"
@@ -2601,6 +2593,48 @@ msgstr ""
 "Dema ku hûn nexşeya dravdanê ya <em>&quot;1 stûn&quot;</em> bikar tînin, ev "
 "vebijark her gav li ser <em>&quot;Berî gavên dravdanê&quot;</em> tê danîn û "
 "ji bo dîtina sermaseyê jî derbas dibe."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozîsyona beşa kurteya fermana zêde li ser mobîl."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Vebijêrka <em>&quot;Li ser sernivîsa malperê&quot;</em> tenê dema ku "
+"sernivîsa bê-balkişandin tê bikar anîn derbas dibe."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Li ser sernivîsa malperê (sernivîsek bê balkişandin hewce dike)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Rewşa destpêkê ji bo beşa kurteya fermanê ya berfirehkirî li ser mobîl."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Em pêşniyar dikin ku ji ber hewcedariyên rêziknameyî, ji bo welatên jêrîn "
+"wekî <em>berfirehkirî</em> were danîn: <strong>Almanya</strong> , "
+"<strong>Avusturya</strong> , <strong>Swîsre</strong> , "
+"<strong>Hollanda</strong> , <strong>Polonya</strong> , "
+"<strong>Belçîka</strong> û <strong>Fransa</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Hilweşiya"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Berfirehkirî"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

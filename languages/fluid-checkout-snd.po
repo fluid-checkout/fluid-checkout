@@ -2533,14 +2533,6 @@ msgstr ""
 "<em>&quot;اسپلٽ&quot;</em> موجود نه آهي ۽ جيڪڏهن چونڊيو وڃي ته "
 "<em>&quot;مينيملسٽڪ&quot;</em> ڏانهن واپس اچي ويندو."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "موبائل تي اضافي آرڊر خلاصو سيڪشن پوزيشن."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "سائيٽ جي هيڊر تي"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "چيڪ آئوٽ کان اڳ جا مرحلا"
@@ -2553,6 +2545,47 @@ msgstr ""
 "<em>&quot;1 ڪالم&quot;</em> چيڪ آئوٽ لي آئوٽ استعمال ڪرڻ وقت هي آپشن هميشه "
 "<em>&quot;چڪ آئوٽ مرحلن کان اڳ&quot;</em> تي سيٽ ڪيو ويندو آهي ۽ ڊيسڪ ٽاپ "
 "ڏيک تي پڻ لاڳو ٿئي ٿو."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "موبائل تي اضافي آرڊر خلاصو سيڪشن لاءِ پوزيشن."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;سائيٽ هيڊر تي&quot;</em> آپشن صرف ان وقت لاڳو ٿئي ٿو جڏهن خلفشار "
+"کان پاڪ هيڊر استعمال ڪيو وڃي."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "سائيٽ هيڊر تي (بي ڌياني هيڊر جي ضرورت آهي)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "موبائل تي وسعت واري آرڊر خلاصي سيڪشن جي شروعاتي حالت."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"اسان سفارش ڪريون ٿا ته ان کي ريگيوليٽري گهرجن جي ڪري هيٺين ملڪن لاءِ "
+"<em>وڌايو وڃي</em> : <strong>جرمني</strong> ، <strong>آسٽريا</strong> ، "
+"<strong>سوئٽزرلينڊ</strong> ، <strong>هالينڊ</strong> ، "
+"<strong>پولينڊ</strong> ، <strong>بيلجيم</strong> ۽ <strong>فرانس</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ختم ٿي ويو"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "وڌايو ويو"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

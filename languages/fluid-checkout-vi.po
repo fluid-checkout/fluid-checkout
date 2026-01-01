@@ -2541,14 +2541,6 @@ msgstr ""
 "<em>&quot;1 cột&quot;</em> và sẽ tự động chuyển sang bố <em>cục "
 "&quot;Minimalist&quot;</em> nếu được chọn."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Thêm vị trí hiển thị tóm tắt đơn hàng trên thiết bị di động."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Trên tiêu đề trang web"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Trước các bước thanh toán"
@@ -2565,6 +2557,49 @@ msgstr ""
 "Khi sử dụng bố cục thanh toán <em>&quot;1 cột&quot;,</em> tùy chọn này luôn "
 "được đặt thành <em>&quot;Trước các bước thanh toán&quot;</em> và cũng áp "
 "dụng cho chế độ xem trên máy tính để bàn."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Vị trí hiển thị phần tóm tắt đơn hàng bổ sung trên thiết bị di động."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Tùy chọn <em>&quot;Trên tiêu đề trang web&quot;</em> chỉ áp dụng khi sử "
+"dụng tiêu đề không gây xao nhãng."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Trên phần tiêu đề trang web (yêu cầu tiêu đề không gây xao nhãng)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Trạng thái ban đầu của phần tóm tắt đơn hàng có thể mở rộng trên thiết bị "
+"di động."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Chúng tôi khuyến nghị thiết lập ở <em>chế độ mở rộng</em> cho các quốc gia "
+"sau do yêu cầu quy định: <strong>Đức</strong> , <strong>Áo</strong> , "
+"<strong>Thụy Sĩ</strong> , <strong>Hà Lan</strong> , <strong>Ba "
+"Lan</strong> , <strong>Bỉ</strong> và <strong>Pháp</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Sụp đổ"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Mở rộng"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

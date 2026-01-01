@@ -2620,14 +2620,6 @@ msgstr ""
 "<em>&quot;Split&quot;</em> என்ற வடிவமைப்பு டெம்ப்ளேட் கிடைக்காது, மேலும் "
 "தேர்ந்தெடுக்கப்பட்டால் <em>&quot;Minimalist&quot;</em> க்கு திரும்பும்."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "மொபைலில் கூடுதல் ஆர்டர் சுருக்கப் பிரிவு நிலை."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "தளத் தலைப்பில்"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "செக்அவுட்டுக்கு முன் படிகள்"
@@ -2640,6 +2632,49 @@ msgstr ""
 "<em>&quot;1 நெடுவரிசை&quot;</em> செக்அவுட் அமைப்பைப் பயன்படுத்தும் போது "
 "இந்த விருப்பம் எப்போதும் <em>&quot;செக்அவுட் படிகளுக்கு முன்&quot;</em> "
 "என்று அமைக்கப்படும், மேலும் இது டெஸ்க்டாப் பார்வைக்கும் பொருந்தும்."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "மொபைலில் கூடுதல் ஆர்டர் சுருக்கப் பிரிவுக்கான நிலை."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;தளத் தலைப்பில்&quot;</em> என்ற விருப்பம் கவனச்சிதறல் இல்லாத "
+"தலைப்பைப் பயன்படுத்தும்போது மட்டுமே பொருந்தும்."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "தளத் தலைப்பில் (கவனச்சிதறல் இல்லாத தலைப்பு தேவை)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "மொபைலில் விரிவாக்கக்கூடிய ஆர்டர் சுருக்கப் பிரிவின் தொடக்க நிலை."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"ஒழுங்குமுறை தேவைகள் காரணமாக பின்வரும் நாடுகளுக்கு இதை "
+"<em>விரிவாக்கப்பட்டதாக</em> அமைக்க பரிந்துரைக்கிறோம்: "
+"<strong>ஜெர்மனி</strong> , <strong>ஆஸ்திரியா</strong> , "
+"<strong>சுவிட்சர்லாந்து</strong> , <strong>நெதர்லாந்து</strong> , "
+"<strong>போலந்து</strong> , <strong>பெல்ஜியம்</strong> மற்றும் "
+"<strong>பிரான்ஸ்</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "சுருக்கப்பட்டது"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "விரிவாக்கப்பட்டது"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

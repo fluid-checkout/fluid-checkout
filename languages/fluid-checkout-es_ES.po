@@ -2773,14 +2773,6 @@ msgstr ""
 "utiliza el diseño <em>\"1 columna\"</em> y volverá a "
 "<em>\"Minimalista\"</em> si se elige."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Posición adicional de la sección de resumen de pedidos en móviles."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "En la cabecera del sitio"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Pasos previos al pago"
@@ -2793,6 +2785,48 @@ msgstr ""
 "Cuando se utiliza el diseño de pago <em>\"1 columna\"</em>, esta opción "
 "siempre se establece en <em>\"Antes de los pasos de pago\"</em> y también "
 "se aplica a la vista de escritorio."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posición para la sección extra de resumen de pedido en móvil."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"La opción <em>\"En la cabecera del sitio\"</em> sólo se aplica cuando se "
+"utiliza la cabecera sin distracciones."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "En la cabecera del sitio (requiere una cabecera sin distracciones)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Estado inicial de la sección de resumen de pedidos expansible en móviles."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Recomendamos configurarlo como <em>ampliado</em> para los siguientes países "
+"debido a requisitos normativos: <strong>Alemania</strong>, "
+"<strong>Austria</strong>, <strong>Suiza</strong>, <strong>Holanda</strong>, "
+"<strong>Polonia</strong>, <strong>Bélgica</strong> y "
+"<strong>Francia</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Colapsado"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Ampliado"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2554,14 +2554,6 @@ msgstr ""
 "դասավորությունն օգտագործելիս և, եթե այն ընտրվի, կվերադառնա "
 "<em>«Մինիմալիստական»-ի</em> ։"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Լրացուցիչ պատվերի ամփոփման բաժնի դիրք բջջային հեռախոսում։"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Կայքի վերնագրի վրա"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Վճարումից առաջ քայլերը"
@@ -2574,6 +2566,48 @@ msgstr ""
 "<em>«1 սյունակ»</em> վճարման դասավորությունն օգտագործելիս այս տարբերակը "
 "միշտ դրված է <em>«Վճարման քայլերից առաջ»</em> դիրքում և վերաբերում է նաև "
 "աշխատասեղանի տեսքին։"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Բջջային հեռախոսում պատվերի լրացուցիչ ամփոփման բաժնի դիրքը։"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>«Կայքի վերնագրում»</em> տարբերակը գործում է միայն շեղող վերնագիրն "
+"օգտագործելիս։"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Կայքի վերնագրի վրա (պահանջվում է շեղող գործոններից զերծ վերնագիր)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Բջջային հեռախոսում ընդարձակվող պատվերի ամփոփման բաժնի սկզբնական վիճակը։"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Կարգավորող պահանջների պատճառով խորհուրդ ենք տալիս այն սահմանել "
+"<em>ընդլայնված</em> հետևյալ երկրների համար՝ <strong>Գերմանիա</strong> , "
+"<strong>Ավստրիա</strong> , <strong>Շվեյցարիա</strong> , "
+"<strong>Նիդեռլանդներ</strong> , <strong>Լեհաստան</strong> , "
+"<strong>Բելգիա</strong> և <strong>Ֆրանսիա</strong> ։"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ծալված է"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Ընդլայնված"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

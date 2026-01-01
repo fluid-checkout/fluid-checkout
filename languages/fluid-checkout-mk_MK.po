@@ -2600,14 +2600,6 @@ msgstr ""
 "распоредот <em>„1 колона“</em> и ќе се врати на <em>„Минималистички“</em> "
 "ако е избран."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Дополнителна позиција за делот за резиме на нарачките на мобилен телефон."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "На заглавието на страницата"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Чекори пред наплата"
@@ -2620,6 +2612,52 @@ msgstr ""
 "Кога го користите распоредот за наплата <em>„1 колона“</em> , оваа опција е "
 "секогаш поставена на <em>„Пред чекори за наплата“</em> и важи и за приказот "
 "на работната површина."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Позиција за дополнителниот дел за резиме на нарачката на мобилен телефон."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Опцијата <em>„На заглавието на страницата“</em> се применува само кога се "
+"користи заглавието без одвлекување на вниманието."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr ""
+"На заглавието на страницата (потребен е заглавие без одвлекување на "
+"вниманието)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Почетна состојба за делот за проширување на резимето на нарачките на "
+"мобилен телефон."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Препорачуваме да го поставите како <em>проширено</em> за следните земји "
+"поради регулаторни барања: <strong>Германија</strong> , "
+"<strong>Австрија</strong> , <strong>Швајцарија</strong> , "
+"<strong>Холандија</strong> , <strong>Полска</strong> , "
+"<strong>Белгија</strong> и <strong>Франција</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Собрано"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Проширено"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

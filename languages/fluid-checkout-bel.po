@@ -2586,14 +2586,6 @@ msgstr ""
 "Шаблон дызайну <em>«Падзел»</em> недаступны пры выкарыстанні макета <em>«1 "
 "калона»</em> і пры выбары вернецца да <em>«Мінімалістычнага»</em> ."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Дадатковая пазіцыя раздзела зводкі замовы на мабільным тэлефоне."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "У загалоўку сайта"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Этапы перад афармленнем замовы"
@@ -2610,6 +2602,48 @@ msgstr ""
 "Пры выкарыстанні макета афармлення замовы <em>«1 слупок»</em> гэтая опцыя "
 "заўсёды мае значэнне <em>«Перад крокамі афармлення замовы»</em> і таксама "
 "распаўсюджваецца на выгляд для камп&#39;ютара."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Размясціць дадатковы раздзел зводкі замовы на мабільным тэлефоне."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Опцыя <em>«У загалоўку сайта»</em> дзейнічае толькі пры выкарыстанні "
+"загалоўка без адцягваючых элементаў."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "У загалоўку сайта (патрабуецца загаловак без адцягненняў)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Пачатковы стан пашыральнага раздзела зводкі замовы на мабільным тэлефоне."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Згодна з патрабаваннямі рэгулятара, мы рэкамендуем усталяваць "
+"<em>пашыраны</em> рэжым для наступных краін: <strong>Германія</strong> , "
+"<strong>Аўстрыя</strong> , <strong>Швейцарыя</strong> , "
+"<strong>Нідэрланды</strong> , <strong>Польшча</strong> , "
+"<strong>Бельгія</strong> і <strong>Францыя</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Згорнута"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Пашырана"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

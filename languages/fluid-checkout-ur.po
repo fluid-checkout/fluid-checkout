@@ -2539,14 +2539,6 @@ msgstr ""
 "<em>&quot;اسپلٹ&quot;</em> دستیاب نہیں ہوتا ہے اور اگر منتخب کیا جاتا ہے تو "
 "واپس <em>&quot;Minimalist&quot;</em> پر آجائے گا۔"
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "موبائل پر ایکسٹرا آرڈر سمری سیکشن پوزیشن۔"
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "سائٹ ہیڈر پر"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "چیک آؤٹ کے اقدامات سے پہلے"
@@ -2563,6 +2555,48 @@ msgstr ""
 "<em>&quot;1 کالم&quot;</em> چیک آؤٹ لے آؤٹ کا استعمال کرتے وقت یہ اختیار "
 "ہمیشہ <em>&quot;چیک آؤٹ کے مراحل سے پہلے&quot;</em> پر سیٹ ہوتا ہے اور ڈیسک "
 "ٹاپ ویو پر بھی لاگو ہوتا ہے۔"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "موبائل پر اضافی آرڈر سمری سیکشن کے لیے پوزیشن۔"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;سائٹ ہیڈر پر&quot;</em> اختیار صرف اس وقت لاگو ہوتا ہے جب خلفشار "
+"سے پاک ہیڈر استعمال کیا جائے۔"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "سائٹ ہیڈر پر (خرابی سے پاک ہیڈر کی ضرورت ہے)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "موبائل پر قابل توسیع آرڈر سمری سیکشن کی ابتدائی حالت۔"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"ہم ریگولیٹری تقاضوں کی وجہ سے اسے درج ذیل ممالک کے لیے <em>توسیع</em> کے "
+"طور پر سیٹ کرنے کی تجویز کرتے ہیں: <strong>جرمنی</strong> ، "
+"<strong>آسٹریا</strong> ، <strong>سوئٹزرلینڈ</strong> ، "
+"<strong>نیدرلینڈز</strong> ، <strong>پولینڈ</strong> ، "
+"<strong>بیلجیم</strong> اور <strong>فرانس</strong> ۔"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "سمٹ گیا۔"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "توسیع شدہ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

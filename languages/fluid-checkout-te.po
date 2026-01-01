@@ -2575,14 +2575,6 @@ msgstr ""
 "<em>&quot;స్ప్లిట్&quot;</em> డిజైన్ టెంప్లేట్ అందుబాటులో ఉండదు మరియు "
 "ఎంచుకుంటే <em>&quot;మినిమలిస్ట్&quot;</em> కి తిరిగి వస్తుంది."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "మొబైల్‌లో అదనపు ఆర్డర్ సారాంశం విభాగం స్థానం."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "సైట్ హెడర్‌లో"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "చెక్అవుట్ దశలకు ముందు"
@@ -2595,6 +2587,48 @@ msgstr ""
 "<em>&quot;1 నిలువు వరుస&quot;</em> చెక్అవుట్ లేఅవుట్‌ను ఉపయోగిస్తున్నప్పుడు "
 "ఈ ఎంపిక ఎల్లప్పుడూ <em>&quot;చెక్అవుట్ దశలకు ముందు&quot;</em> కి సెట్ "
 "చేయబడుతుంది మరియు డెస్క్‌టాప్ వీక్షణకు కూడా వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "మొబైల్‌లో అదనపు ఆర్డర్ సారాంశం విభాగం కోసం స్థానం."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;సైట్ హెడర్‌లో&quot;</em> అనే ఎంపిక డిస్ట్రాక్షన్-ఫ్రీ హెడర్‌ను "
+"ఉపయోగిస్తున్నప్పుడు మాత్రమే వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "సైట్ హెడర్‌లో (అంతరాయం లేని హెడర్ అవసరం)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "మొబైల్‌లో విస్తరించదగిన ఆర్డర్ సారాంశం విభాగం యొక్క ప్రారంభ స్థితి."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"నియంత్రణ అవసరాల కారణంగా కింది దేశాలకు దీనిని <em>విస్తరించినట్లు</em> సెట్ "
+"చేయాలని మేము సిఫార్సు చేస్తున్నాము: <strong>జర్మనీ</strong> , "
+"<strong>ఆస్ట్రియా</strong> , <strong>స్విట్జర్లాండ్</strong> , "
+"<strong>నెదర్లాండ్స్</strong> , <strong>పోలాండ్</strong> , "
+"<strong>బెల్జియం</strong> మరియు <strong>ఫ్రాన్స్</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "కుదించబడింది"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "విస్తరించబడింది"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

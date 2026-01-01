@@ -2568,14 +2568,6 @@ msgstr ""
 "орналасуын пайдаланған кезде қолжетімді емес және таңдалған жағдайда "
 "<em>&quot;Минималистік&quot;</em> күйіне оралады."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Мобильді құрылғыдағы қосымша тапсырыстың қысқаша мазмұны бөлімінің орны."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Сайттың тақырыбында"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Кассаға дейінгі қадамдар"
@@ -2588,6 +2580,50 @@ msgstr ""
 "<em>«1 баған»</em> төлем орналасуын пайдаланған кезде, бұл опция әрқашан "
 "<em>«Төлем алдындағы қадамдар»</em> күйіне орнатылады және жұмыс үстелі "
 "көрінісіне де қолданылады."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Мобильді құрылғыдағы қосымша тапсырыстың қысқаша мазмұны бөлімінің орны."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>«Сайттағы тақырып»</em> опциясы тек алаңдатпайтын тақырыпты пайдаланған "
+"кезде ғана қолданылады."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Сайт тақырыбында (алаңдатпайтын тақырып қажет)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Мобильді құрылғыдағы кеңейтілетін тапсырыс қорытындысы бөлімінің бастапқы "
+"күйі."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Біз оны келесі елдер үшін нормативтік талаптарға байланысты "
+"<em>кеңейтілген</em> деп орнатуды ұсынамыз: <strong>Германия</strong> , "
+"<strong>Австрия</strong> , <strong>Швейцария</strong> , "
+"<strong>Нидерланды</strong> , <strong>Польша</strong> , "
+"<strong>Бельгия</strong> және <strong>Франция</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Жиналған"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Кеңейтілген"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2573,14 +2573,6 @@ msgstr ""
 "letak <em>\"1 kolom\"</em> dan akan kembali ke <em>\"Minimalis\"</em> jika "
 "dipilih."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Posisi bagian ringkasan pesanan tambahan di ponsel."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Di tajuk situs"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Langkah-langkah sebelum pembayaran"
@@ -2593,6 +2585,48 @@ msgstr ""
 "Saat menggunakan tata letak <em>\"1 kolom\"</em> checkout, opsi ini selalu "
 "diatur ke <em>\"Sebelum langkah checkout\"</em> dan juga berlaku untuk "
 "tampilan desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisi untuk bagian ringkasan pesanan tambahan di ponsel."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opsi <em>\"Di header situs\"</em> hanya berlaku saat menggunakan header "
+"bebas gangguan."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Pada header situs (memerlukan header bebas gangguan)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Status awal untuk bagian ringkasan pesanan yang dapat diperluas pada ponsel."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Kami menyarankan untuk mengaturnya sebagai <em>diperluas</em> untuk "
+"negara-negara berikut ini karena persyaratan peraturan: "
+"<strong>Jerman</strong>, <strong>Austria</strong>, <strong>Swiss</strong>, "
+"<strong>Belanda</strong>, <strong>Polandia</strong>, "
+"<strong>Belgia</strong>, dan <strong>Perancis</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Runtuh"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Diperluas"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

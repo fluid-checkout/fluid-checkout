@@ -2535,14 +2535,6 @@ msgstr ""
 "<em>\"1 column\"</em>-asettelua, ja se palaa takaisin "
 "<em>\"Minimalistiseen\"</em>, jos se valitaan."
 
-#: inc/admin/admin-settings-checkout.php:326
-msgid "Extra order summary section position on mobile."
-msgstr "Tilauksen yhteenveto-osion ylimääräinen sijainti mobiililaitteissa."
-
-#: inc/admin/admin-settings-checkout.php:330
-msgid "On the site header"
-msgstr "Sivuston otsikossa"
-
 #: inc/admin/admin-settings-checkout.php:331
 msgid "Before checkout steps"
 msgstr "Ennen kassalle menoa"
@@ -2555,6 +2547,48 @@ msgstr ""
 "Käytettäessä <em>\"1-pylväs\"</em> -kassan asettelua tämä vaihtoehto on "
 "aina asetettu kohtaan <em>\"Ennen kassan vaiheita\"</em>, ja se koskee myös "
 "työpöytänäkymää."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Paikka ylimääräiselle tilauksen yhteenveto-osiolle mobiililaitteissa."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Vaihtoehto <em>\"Sivuston otsikossa\"</em> koskee vain silloin, kun "
+"käytetään häiriötöntä otsikkoa."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Sivuston otsikossa (vaatii häiriöttömän otsikon)."
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Mobiililaitteissa laajennettavan tilauksen yhteenveto-osion alkutila."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Suosittelemme, että asetat sen arvoksi <em>laajennettu</em> seuraavissa "
+"maissa sääntelyvaatimusten vuoksi: <strong>Saksa</strong>, "
+"<strong>Itävalta</strong>, <strong>Sveitsi</strong>, "
+"<strong>Alankomaat</strong>, <strong>Puola</strong>, "
+"<strong>Belgia</strong> ja <strong>Ranska</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Romahtanut"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Laajennettu"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
