@@ -323,16 +323,32 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Extra order summary section position on mobile.', 'fluid-checkout' ) . '<br>' . __( 'When using the <em>"1 column"</em> checkout layout this option is always set to <em>"Before checkout steps"</em> and also applies to desktop view.', 'fluid-checkout' ) . '<br>' . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => __( 'Position for the extra order summary section on mobile.', 'fluid-checkout' ) . 
+												'<br>' . __( 'The option <em>"On the site header"</em> only applies when using the distraction-free header.', 'fluid-checkout' ) .
+												'<br>' . __( 'When using the <em>"1 column"</em> checkout layout this option is always set to <em>"Before checkout steps"</em> and also applies to desktop view.', 'fluid-checkout' ) .
+												FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_pro_checkout_order_summary_position_mobile',
 						'type'                  => 'fc_select',
 						'options'               => array(
 							'hidden'                => array( 'label' => __( 'Hidden', 'fluid-checkout' ) ),
-							'site_header'           => array( 'label' => __( 'On the site header', 'fluid-checkout' ) ),
+							'site_header'           => array( 'label' => __( 'On the site header (requires distraction-free header)', 'fluid-checkout' ) ),
 							'before_checkout_steps' => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(), 'disabled' => true ),
 						),
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' ),
 						'autoload'              => false,
+					),
+					array(
+						'desc'                  => __( 'Initial state for the expansible order summary section on mobile.', 'fluid-checkout' ) .
+												'<br>' . __( 'We recommend setting it as <em>expanded</em> for the following countries due to regulatory requirements: <strong>Germany</strong>, <strong>Austria</strong>, <strong>Switzerland</strong>, <strong>Netherlands</strong>, <strong>Poland</strong>, <strong>Belgium</strong> and <strong>France</strong>.', 'fluid-checkout' ),
+						'id'                    => 'fc_pro_checkout_order_summary_collapsible_initial_state',
+						'type'                  => 'fc_select',
+						'options'               => array(
+							'collapsed'        => array( 'label' => __( 'Collapsed', 'fluid-checkout' ) ),
+							'expanded'         => array( 'label' => __( 'Expanded', 'fluid-checkout' ) ),
+						),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_order_summary_collapsible_initial_state' ),
+						'autoload'              => false,
+						'disabled'              => true,
 					),
 
 					array(

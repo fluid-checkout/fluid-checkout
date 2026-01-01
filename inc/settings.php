@@ -63,6 +63,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
 			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
+			'fc_pro_checkout_order_summary_collapsible_initial_state'       => 'collapsed',
 			'fc_pro_enable_checkout_edit_cart'                              => 'no',
 			'fc_pro_cart_items_error_messages_hide_at_checkout'             => 'yes',
 			'fc_checkout_place_order_position'                              => 'below_payment_section',
