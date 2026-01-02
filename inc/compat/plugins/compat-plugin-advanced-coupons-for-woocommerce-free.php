@@ -39,18 +39,18 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 		if ( ! $class_object ) { return; }
 
+		// Add section position hooks
+		$position_hook = $this->get_position_to_display_available_coupons_on_checkout();
+
+		// Remove and add position hook for Advanced Coupons
+		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'display_checkout_tabbed_box' ), 11 );
+		add_action( $position_hook['hook'], array( $class_object, 'display_checkout_tabbed_box' ), $position_hook['priority'] );
+
 		// Optional fields
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_store_credits' ), 10 );
 
 		// Checkout block
 		add_filter( 'acfw_filter_is_current_page_using_cart_checkout_block', '__return_false', 10 );
-
-		// Add section position hooks
-		$position_hook = $this->get_position_to_display_available_coupons_on_checkout();
-
-		// ACFWF checkout tabbed box
-		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'display_checkout_tabbed_box' ), 11 );
-		add_action( $position_hook['hook'], array( $class_object, 'display_checkout_tabbed_box' ), $position_hook['priority'] );
 	}
 
 	/**
@@ -75,10 +75,8 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 				'default' => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_advanced_coupons_for_woocommerce_free_position' ),
 				'autoload' => false,
 				'options' => array(
-					'before_checkout_steps'            => __( 'Before the checkout steps', 'fluid-checkout' ),
-					'before_coupon_code'                => __( 'Before the coupon code section', 'fluid-checkout' ),
-					'order_summary_before_coupon_code' => __( 'Inside the order summary before the coupon code row', 'fluid-checkout' ),
-					'order_summary_after_coupon_code'  => __( 'Inside the order summary – after the coupon code row', 'fluid-checkout' ),
+					'before_steps'          => __( 'Before the checkout steps', 'fluid-checkout' ),
+					'before_coupon_code'    => __( 'Before coupon codes section', 'fluid-checkout' ),
 				),
 			),
 			array(
@@ -98,28 +96,25 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 	 * @return  array|null  Hook details for the selected position.
 	 */
 	public function get_position_to_display_available_coupons_on_checkout() {
-		$hook_map = apply_filters( 'fc_integration_advanced_coupons_for_woocommerce_free_position_hook_map', array(
-			'before_checkout_steps'            => array( 'hook' => 'fc_checkout_before_steps', 'priority' => 10 ),
-			'before_coupon_code'                => array( 'hook' => 'fc_before_substep_coupon_codes', 'priority' => 5 ),
-			'after_coupon_code'                 => array( 'hook' => 'fc_after_substep_coupon_codes', 'priority' => 5 ),
-			'order_summary_before_coupon_code' => array( 'hook' => 'fc_pro_checkout_review_order_after_cart_contents', 'priority' => 5 ),
-			'order_summary_after_coupon_code'  => array( 'hook' => 'fc_pro_checkout_review_order_after_coupon_code', 'priority' => 5 ),
+		// Get option
+		$position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_advanced_coupons_for_woocommerce_free_position' );
+
+		// Define position hook mapping
+		$position_hook_map = apply_filters( 'fc_integration_advanced_coupons_for_woocommerce_free_position_hook_map', array(
+			'before_steps'          => array( 'hook' => 'fc_checkout_before_steps', 'priority' => 5 ),
+			'before_coupon_code'    => array( 'hook' => 'fc_before_substep_coupon_codes', 'priority' => 5 ),
 		) );
 
-		$position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_advanced_coupons_for_woocommerce_free_position' );
-		$legacy_position_map = array(
-			'substep_before_coupon_code' => 'before_coupon_code',
-			'substep_after_coupon_code'  => 'after_coupon_code',
-		);
-		if ( isset( $legacy_position_map[ $position ] ) ) {
-			$position = $legacy_position_map[ $position ];
+		// Maybe set default position
+		if ( ! in_array( $position, array_keys( $position_hook_map ) ) ) {
+			$position = FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_woocommerce_smart_coupons_position_checkout' );
 		}
 
-		if ( empty( $hook_map[ $position ] ) ) {
-			$position = FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_advanced_coupons_for_woocommerce_free_position' );
-		}
+		// Get hook
+		$position_hook = $position_hook_map[ $position ];
 
-		return $hook_map[ $position ] ?? null;
+		// Return position
+		return $position_hook;
 	}
 
 
