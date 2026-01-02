@@ -46,10 +46,10 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'display_checkout_tabbed_box' ), 11 );
 		add_action( $position_hook['hook'], array( $class_object, 'display_checkout_tabbed_box' ), $position_hook['priority'] );
 
-		// Optional fields
+		// Prevent hiding store credits behind a link button
 		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_store_credits' ), 10 );
 
-		// Checkout block
+		// Prevent Advanced Coupons from using the checkout block
 		add_filter( 'acfw_filter_is_current_page_using_cart_checkout_block', '__return_false', 10 );
 	}
 
