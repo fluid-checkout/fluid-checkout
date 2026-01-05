@@ -31,6 +31,9 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 	 * Add or remove checkout hooks.
 	 */
 	public function checkout_hooks() {
+		// Bail if not on checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+		
 		// Bail if class is not available
 		$class_name = 'ACFWF\Models\Checkout';
 		if ( ! class_exists( $class_name ) ) { return; }
