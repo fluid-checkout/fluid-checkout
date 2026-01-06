@@ -11,3 +11,7 @@ div.woocommerce .fc-wrapper .acfw-accordions .acfw-form-control-wrapper > label:
 div.woocommerce .fc-wrapper .acfw-checkout-ui-block {
   margin-bottom: 20px;
 }
+
+div.woocommerce .acfw-loyalprog-notice-checkout .woocommerce-info {
+  margin-bottom: 0;
+}

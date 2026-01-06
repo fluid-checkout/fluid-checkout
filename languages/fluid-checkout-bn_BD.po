@@ -2496,6 +2496,10 @@ msgstr "অগ্রগতি বারের পরে"
 msgid "Before coupon codes section"
 msgstr "কুপন কোড বিভাগ আগে"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "WooCommerce বিনামূল্যের জন্য উন্নত কুপন"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

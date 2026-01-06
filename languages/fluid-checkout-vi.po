@@ -2501,6 +2501,10 @@ msgstr "Sau thanh tiến trình"
 msgid "Before coupon codes section"
 msgstr "Trước phần mã giảm giá"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Mã giảm giá nâng cao cho WooCommerce miễn phí"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

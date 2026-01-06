@@ -2510,6 +2510,10 @@ msgstr "បន្ទាប់ពីរបារវឌ្ឍនភាព"
 msgid "Before coupon codes section"
 msgstr "ផ្នែកមុនលេខកូដគូប៉ុង"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "គូប៉ុងកម្រិតខ្ពស់សម្រាប់ WooCommerce ឥតគិតថ្លៃ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

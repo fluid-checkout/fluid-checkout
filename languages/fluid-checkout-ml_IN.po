@@ -2568,6 +2568,10 @@ msgstr "പ്രോഗ്രസ് ബാറിന് ശേഷം"
 msgid "Before coupon codes section"
 msgstr "കൂപ്പൺ കോഡുകൾക്ക് മുമ്പുള്ള വിഭാഗം"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "WooCommerce-നുള്ള അഡ്വാൻസ് കൂപ്പണുകൾ സൗജന്യം"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

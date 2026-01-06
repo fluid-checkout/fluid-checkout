@@ -2500,6 +2500,10 @@ msgstr "Eftir framvindustikuna"
 msgid "Before coupon codes section"
 msgstr "Fyrir afsláttarkóðahlutann"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Ítarleg afsláttarmiða fyrir WooCommerce Free"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

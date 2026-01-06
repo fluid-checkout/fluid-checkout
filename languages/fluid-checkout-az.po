@@ -2522,6 +2522,10 @@ msgstr "Tərəqqi çubuğundan sonra"
 msgid "Before coupon codes section"
 msgstr "Kupon kodları bölməsindən əvvəl"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "WooCommerce üçün Pulsuz Qabaqcıl Kuponlar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

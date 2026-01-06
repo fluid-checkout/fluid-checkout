@@ -2543,6 +2543,10 @@ msgstr "Selepas bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sebelum bahagian kod kupon"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Kupon Lanjutan untuk WooCommerce Percuma"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

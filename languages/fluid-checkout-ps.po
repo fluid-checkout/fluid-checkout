@@ -2481,6 +2481,10 @@ msgstr "د پرمختګ بار وروسته"
 msgid "Before coupon codes section"
 msgstr "د کوپن کوډونو برخه مخکې"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "د WooCommerce وړیا لپاره پرمختللي کوپنونه"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

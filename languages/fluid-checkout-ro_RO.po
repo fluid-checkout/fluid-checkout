@@ -2561,6 +2561,10 @@ msgstr "După bara de progres"
 msgid "Before coupon codes section"
 msgstr "Înainte de secțiunea coduri promoționale"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Cupoane avansate pentru WooCommerce Gratuit"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2486,6 +2486,10 @@ msgstr "ຫຼັງຈາກແຖບຄວາມຄືບຫນ້າ"
 msgid "Before coupon codes section"
 msgstr "ກ່ອນທີ່ຈະພາກສ່ວນລະຫັດຄູປອງ"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "ຄູປອງຂັ້ນສູງສຳລັບ WooCommerce ຟຣີ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
