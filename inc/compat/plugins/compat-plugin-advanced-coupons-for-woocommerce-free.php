@@ -24,6 +24,8 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 
 	}
 
+
+
 	/**
 	 * Add or remove checkout hooks.
 	 */
@@ -46,6 +48,8 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 		// Prevent Advanced Coupons from using the checkout block
 		add_filter( 'acfw_filter_is_current_page_using_cart_checkout_block', '__return_false', 10 );
 	}
+
+
 
 	/**
 	 * Prevent hiding optional field for the store credits behind a link button.
