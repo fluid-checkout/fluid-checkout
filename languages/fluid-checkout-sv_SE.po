@@ -2502,6 +2502,10 @@ msgstr "Efter förloppsindikatorn"
 msgid "Before coupon codes section"
 msgstr "Före avsnittet om kupongkoder"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Avancerade kuponger för WooCommerce Gratis"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2301,6 +2301,10 @@ msgstr "진행률 표시줄 이후"
 msgid "Before coupon codes section"
 msgstr "쿠폰 코드 이전 섹션"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "우커머스 무료 고급 쿠폰"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

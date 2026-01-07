@@ -2649,6 +2649,10 @@ msgstr "Az előrehaladási sáv után"
 msgid "Before coupon codes section"
 msgstr "Mielőtt kupon kódok szakasz"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Fejlett kuponok a WooCommerce számára Ingyenes"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

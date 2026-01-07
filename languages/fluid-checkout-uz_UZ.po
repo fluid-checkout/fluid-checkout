@@ -2570,6 +2570,10 @@ msgstr "Taraqqiyot panelidan keyin"
 msgid "Before coupon codes section"
 msgstr "Kupon kodlari bo&#39;limidan oldin"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "WooCommerce uchun bepul ilg&#39;or kuponlar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

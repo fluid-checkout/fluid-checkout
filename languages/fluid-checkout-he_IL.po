@@ -2400,6 +2400,10 @@ msgstr "לאחר סרגל ההתקדמות"
 msgid "Before coupon codes section"
 msgstr "לפני מדור קודי קופון"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "קופונים מתקדמים עבור WooCommerce Free"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

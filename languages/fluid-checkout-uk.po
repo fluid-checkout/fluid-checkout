@@ -2557,6 +2557,10 @@ msgstr "Після індикатора виконання"
 msgid "Before coupon codes section"
 msgstr "Перед розділом кодів купонів"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Розширені купони для WooCommerce безкоштовно"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

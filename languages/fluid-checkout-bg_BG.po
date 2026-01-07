@@ -2573,6 +2573,10 @@ msgstr "След лентата за напредък"
 msgid "Before coupon codes section"
 msgstr "Преди раздел кодове на купони"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Разширени купони за WooCommerce Free"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

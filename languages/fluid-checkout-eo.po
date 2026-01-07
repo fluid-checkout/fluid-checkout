@@ -2484,6 +2484,10 @@ msgstr "Post la progresbreto"
 msgid "Before coupon codes section"
 msgstr "Antaŭ la sekcio de kuponkodoj"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Altnivelaj Kuponoj por WooCommerce Senpagaj"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

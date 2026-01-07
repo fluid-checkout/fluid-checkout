@@ -2318,6 +2318,10 @@ msgstr "プログレスバーの後"
 msgid "Before coupon codes section"
 msgstr "クーポンコード欄の前に"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "WooCommerceのための高度なクーポン 無料"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

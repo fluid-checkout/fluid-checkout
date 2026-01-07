@@ -2436,6 +2436,10 @@ msgstr "بعد شريط التقدم"
 msgid "Before coupon codes section"
 msgstr "قبل قسم أكواد الكوبون"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "كوبونات متقدمة مجانية لـ WooCommerce"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

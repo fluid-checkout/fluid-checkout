@@ -2572,6 +2572,10 @@ msgstr "Pagkahuman sa progress bar"
 msgid "Before coupon codes section"
 msgstr "Sa wala pa ang seksyon sa mga code sa kupon"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "Abansado nga mga Kupon para sa Libre nga WooCommerce"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

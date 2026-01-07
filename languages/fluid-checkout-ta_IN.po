@@ -2573,6 +2573,10 @@ msgstr "முன்னேற்றப் பட்டிக்குப் ப�
 msgid "Before coupon codes section"
 msgstr "கூப்பன் குறியீடுகளுக்கு முன் பிரிவு"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "WooCommerce-க்கான மேம்பட்ட கூப்பன்கள் இலவசம்"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

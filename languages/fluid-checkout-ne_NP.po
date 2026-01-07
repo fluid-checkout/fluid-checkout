@@ -2486,6 +2486,10 @@ msgstr "प्रगति पट्टी पछि"
 msgid "Before coupon codes section"
 msgstr "कुपन कोड खण्ड अघि"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "WooCommerce नि:शुल्कका लागि उन्नत कुपनहरू"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

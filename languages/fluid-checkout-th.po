@@ -2485,6 +2485,10 @@ msgstr "หลังจากแถบความคืบหน้า"
 msgid "Before coupon codes section"
 msgstr "ก่อนส่วนรหัสคูปอง"
 
+#: inc/compat/plugins/compat-plugin-advanced-coupons-for-woocommerce-free.php:69
+msgid "Advanced Coupons for WooCommerce Free"
+msgstr "คูปองขั้นสูงสำหรับ WooCommerce ฟรี"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
