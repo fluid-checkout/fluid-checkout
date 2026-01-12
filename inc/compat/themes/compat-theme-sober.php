@@ -14,15 +14,7 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 	}
 
 
-	// TODO: Review the whole file for now its a copy of the Motta file.
-	
-	// TODO: A lot of the hook are here /themes/sober/inc/class-sober-wc.php
-	// TODO: add_filter( 'woocommerce_enqueue_styles', array( $this, 'wc_styles' ) );
-	// TODO: add_filter( 'loop_shop_columns', array( $this, 'shop_columns' ), 20 );
-	// TODO: add_filter( 'loop_shop_per_page', array( $this, 'products_per_page' ), 20 );
-	// TODO: ....
 
-	
 	/**
 	 * Initialize hooks.
 	 */
@@ -40,11 +32,12 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 
 		// Remove hooks
 		remove_filter( 'woocommerce_checkout_before_customer_details', array( $class_object, 'billing_title' ) );
+		remove_filter( 'woocommerce_loop_add_to_cart_link', array( $class_object, 'add_to_cart_catalog_button' ), 10, 3 );
 
-		// hooks
+		// Hooks
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
-
 	}
+
 
 
 	/**
@@ -69,26 +62,6 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 				// '--fluidcheckout--validation-check--horizontal-spacing' => '20px',
 				// '--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '45px',
 				// '--fluidcheckout--validation-check--horizontal-spacing--password' => '20px',
-			),
-		);
-
-		return FluidCheckout_DesignTemplates::instance()->merge_css_variables( $css_variables, $new_css_variables );
-	}
-
-	/**
-	 * Add CSS variables to the edit address page.
-	 * 
-	 * @param  array  $css_variables  The CSS variables key/value pairs.
-	 */
-	public function add_css_variables_edit_address( $css_variables ) {
-		// Bail if not on account address edit page
-		if ( ! function_exists( 'is_account_page' ) || ! is_account_page() || ! is_wc_endpoint_url( 'edit-address' ) ) { return $css_variables; }
-
-		// Add CSS variables
-		$new_css_variables = array(
-			':root' => array(
-				// Form field styles
-				'--fluidcheckout--field--height' => '44px', 
 			),
 		);
 
