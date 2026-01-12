@@ -30,9 +30,10 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 		// Get class object
 		$class_object = call_user_func( array( $class_name, 'instance' ) );
 
-		// Remove hooks
+		// Remove hooks from theme
 		remove_filter( 'woocommerce_checkout_before_customer_details', array( $class_object, 'billing_title' ) );
 		remove_filter( 'woocommerce_loop_add_to_cart_link', array( $class_object, 'add_to_cart_catalog_button' ), 10, 3 );
+		remove_filter( 'woocommerce_cart_item_quantity', array( $class_object, 'cart_item_quantity' ), 10, 3 );
 
 		// Hooks
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
@@ -49,19 +50,17 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root' => array(
-				// // Form field styles
-				// '--fluidcheckout--field--height' => '60px',
-				// '--fluidcheckout--field--padding-left' => '22px',
-				// '--fluidcheckout--field--font-size' => 'var(--mt-input__font-size)',
-				// '--fluidcheckout--field--border-color' => '#dadfe3',
-				// '--fluidcheckout--field--border-width' => 'var(--mt-input__border-width)',
-				// '--fluidcheckout--field--border-radius' => 'var(--mt-border__radius)',
-				// '--fluidcheckout--field--background-color--accent' => '#1d2128',
+				// Form field styles
+				'--fluidcheckout--field--height' => 'auto',
+				'--fluidcheckout--field--padding-left' => '0',
+				'--fluidcheckout--field--font-size' => '16px',
 
-				// // Checkout validation styles
-				// '--fluidcheckout--validation-check--horizontal-spacing' => '20px',
-				// '--fluidcheckout--validation-check--horizontal-spacing--select-alt' => '45px',
-				// '--fluidcheckout--validation-check--horizontal-spacing--password' => '20px',
+				// Border styles
+				// ! Can not set the border bottom only? I need to set the border top, left, right and bottom.
+				'--fluidcheckout--field--border-color' => '#e4e6eb',
+				'--fluidcheckout--field--border-width' => '2px',
+				'--fluidcheckout--field--border-style' => 'solid',
+				
 			),
 		);
 
