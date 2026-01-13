@@ -214,7 +214,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
 
 		// Product variations in order summary
-		add_filter( 'woocommerce_product_variation_title_include_attributes', array( $this, 'maybe_disable_product_variation_title_include_attributes' ), 10, 2 );
+		add_filter( 'woocommerce_product_variation_title_include_attributes', '__return_false', 10 );
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
@@ -576,7 +576,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90 );
 
 		// Product variations in order summary
-		remove_filter( 'woocommerce_product_variation_title_include_attributes', array( $this, 'maybe_disable_product_variation_title_include_attributes' ), 10 );
+		remove_filter( 'woocommerce_product_variation_title_include_attributes', '__return_false', 10 );
 
 		// Persisted data
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
@@ -6556,22 +6556,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_summary_cart_item_quantity( $cart_item, $cart_item_key, $product ) {
 		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-
-
-
-	/**
-	 * Maybe disable including attributes in the product variation title on the checkout page.
-	 *
-	 * @param   bool        $should_include_attributes  Whether to include attributes in the variation title.
-	 * @param   WC_Product  $product                    The product object.
-	 */
-	public function maybe_disable_product_variation_title_include_attributes( $should_include_attributes, $product ) {
-		// Bail if not on checkout page
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
-
-		// Otherwise, disable including attributes in the variation title
-		return false;
 	}
 
 
