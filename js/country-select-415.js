@@ -220,6 +220,15 @@ jQuery( function( $ ) {
 					$statebox = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' );
 				}
 
+				// CHANGE: Maybe clear cached TomSelect option renderings before updating DOM to prevent old options merging with new ones
+				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
+					// Clear selected options
+					$statebox[ 0 ].tomselect.clear();
+
+					// Clear unselected options
+					$statebox[ 0 ].tomselect.clearOptions();
+				}
+
 				$statebox.empty().append( $defaultOption );
 
 				$.each( state, function( index ) {
@@ -228,6 +237,12 @@ jQuery( function( $ ) {
 						.text( state[ index ] );
 					$statebox.append( $option );
 				} );
+
+				// CHANGE: Maybe sync TomSelect with updated DOM options before change event is triggered
+				// to ensure TomSelect has loaded the new options before the value is set
+				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
+					$statebox[ 0 ].tomselect.sync();
+				}
 
 				$statebox.val( value ).trigger( 'change' );
 
