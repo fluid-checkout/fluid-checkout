@@ -6,7 +6,15 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row {
 	padding: 0;
 }
 
-body#{ $_body-theme-selector } form.checkout .form-row-last label {
+body#{ $_body-theme-selector } div.woocommerce form .form-row-last label {
 	display: inline-block;
 }
-	
+
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox:after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio]+label:after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox]+label:after {
+	border-left: none;
+	border-bottom: none;
+	transform: none;
+	transition: none;
+}
