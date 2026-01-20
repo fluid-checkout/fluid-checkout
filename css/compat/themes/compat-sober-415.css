@@ -14,3 +14,22 @@ body.theme-sober .woocommerce .fc-wrapper input[type=checkbox] + label:after {
   transform: none;
   transition: none;
 }
+
+body.theme-sober .woocommerce .woocommerce-address-fields .form-row label {
+  margin-left: auto;
+  float: none;
+}
+
+body.theme-sober div.woocommerce form .form-row .select2-selection--single {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #23232c;
+}
+
+body.theme-sober .ts-wrapper.single .ts-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: #23232c;
+}

@@ -18,3 +18,8 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox]+lab
 	transform: none;
 	transition: none;
 }
+
+body#{ $_body-theme-selector } .woocommerce .woocommerce-address-fields .form-row label {
+	margin-left: auto;
+	float: none;
+}
