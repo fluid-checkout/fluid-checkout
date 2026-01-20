@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Klarna Payments for WooCommerce (by Krokedil).
+ * Compatibility with plugin: Klarna Payments for WooCommerce (by klarna).
  */
 class FluidCheckout_KlarnaPaymentsForWooCommerce extends FluidCheckout {
 
@@ -21,6 +21,9 @@ class FluidCheckout_KlarnaPaymentsForWooCommerce extends FluidCheckout {
 	public function hooks() {
 		// Replace Klarna Payments scripts, need to run before Klarna Payments registers and enqueues its scripts, priority has to be less than 10
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_woocommerce_scripts' ), 5 );
+
+		// Persisted data
+		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_updated_before_unload' ), 10 );
 	}
 
 
@@ -69,7 +72,20 @@ class FluidCheckout_KlarnaPaymentsForWooCommerce extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
 
+		// Bail if plugin version is 4.6.0 or greater
+		$plugin_version = $this->get_plugin_version( 'klarna-payments-for-woocommerce/klarna-payments-for-woocommerce.php' );
+		if ( version_compare( $plugin_version, '4.6.0', '>=' ) ) { return; }
+
 		$this->pre_register_scripts();
+	}
+
+
+
+	/**
+	 * Disable the update before unload the checkout page when there are unsaved changes.
+	 */
+	public function disable_updated_before_unload( $update_before_unload ) {
+		return 'no';
 	}
 
 }
