@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with plugin Klarna Payments for WooCommerce by Klarna. Disable checkout updates during the `beforeunload` event. Remove plugin's script modifications.
+
 = 4.1.5 - 2025-12-12 =
 
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).

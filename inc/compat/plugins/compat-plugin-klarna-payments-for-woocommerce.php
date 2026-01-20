@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Klarna Payments for WooCommerce (by Krokedil).
+ * Compatibility with plugin: Klarna Payments for WooCommerce (by klarna).
  */
 class FluidCheckout_KlarnaPaymentsForWooCommerce extends FluidCheckout {
 
