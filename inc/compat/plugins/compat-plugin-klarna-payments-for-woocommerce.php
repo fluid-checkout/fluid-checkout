@@ -69,6 +69,10 @@ class FluidCheckout_KlarnaPaymentsForWooCommerce extends FluidCheckout {
 		// Bail if not on checkout page
 		if ( is_admin() || ! function_exists( 'is_checkout' ) || ! is_checkout() ) { return; }
 
+		// Bail if plugin version is 4.6.0 or greater
+		$plugin_version = $this->get_plugin_version( 'klarna-payments-for-woocommerce/klarna-payments-for-woocommerce.php' );
+		if ( version_compare( $plugin_version, '4.6.0', '>=' ) ) { return; }
+
 		$this->pre_register_scripts();
 	}
 
