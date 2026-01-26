@@ -15,3 +15,7 @@ body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 	border-right: none;
 	color: #23232c; //! seems kirky there is a variable for this
 }
+
+body#{ $_body-theme-selector } .ts-control:focus-within {
+	outline: none !important;
+}

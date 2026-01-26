@@ -2,24 +2,66 @@
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row {
+body#{ $_body-theme-selector } .woocommerce form .form-row {
 	padding: 0;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row-last label {
-	display: inline-block;
-}
-
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox:after,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio]+label:after,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox]+label:after {
-	border-left: none;
-	border-bottom: none;
-	transform: none;
-	transition: none;
+body#{ $_body-theme-selector } div.woocommerce form .form-row input:focus {
+	outline: none !important;
 }
 
 body#{ $_body-theme-selector } .woocommerce .woocommerce-address-fields .form-row label {
 	margin-left: auto;
 	float: none;
 }
+
+body#{ $_body-theme-selector } .woocommerce form .form-row-last label {
+	display: inline-block;
+}
+
+// Shipping methods checkbox and radio button styles
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .fc-substep__fields--shipping_method label.checkbox:after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .fc-substep__fields--shipping_method input[type=radio]+label:after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .fc-substep__fields--shipping_method input[type=checkbox]+label:after {
+	border-left: none;
+	border-bottom: none;
+	transform: none;
+	transition: none;
+}
+
+// Checkbox styles for the Same as shipping address fields
+// .woocommerce label.checkbox>span:first-of-type:before {
+// 	content: "";
+// 	position: absolute;
+// 	width: 23px;
+// 	height: 23px;
+// 	left: 0;
+// 	top: 0;
+// 	border: 1px solid #e4e6eb;
+// 	background-color: #e4e6eb;
+// 	transition: all .5s;
+//  }
+
+//  .woocommerce label.checkbox>span:first-of-type:after {
+// 	content: "";
+// 	position: absolute;
+// 	border-left: 2px solid #e4e6eb;
+// 	border-bottom: 2px solid #e4e6eb;
+// 	width: 12px;
+// 	height: 6px;
+// 	left: 6px;
+// 	top: 7px;
+// 	transform: rotate(-45deg);
+// 	border-top-color: rgba(0, 0, 0, 0);
+// 	border-right-color: rgba(0, 0, 0, 0);
+// 	transition: all .5s;
+//  }
+
+ .woocommerce label.checkbox:checked+span:before {
+	border-color: #23232c;
+	background-color: #fff;
+ }
+
+ .woocommerce label.checkbox:checked+span:after {
+	border-color: #23232c;
+ }
