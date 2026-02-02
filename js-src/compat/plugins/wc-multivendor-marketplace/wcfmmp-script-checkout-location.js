@@ -3,6 +3,7 @@ jQuery(document).ready( function($) {
 	var initTimeout = null;
 
 	function markInitialized() {
+		// FC: prevent re-initialization across checkout refreshes.
 		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
 		if ( $mapContainer.length ) {
 			console.log( '[fc][wcfmmp] markInitialized' );
@@ -154,6 +155,7 @@ jQuery(document).ready( function($) {
 	}
 	
 	function bindDataToForm(address,lat,lng, find_field_refresh) {
+		// FC: keep checkout totals in sync when location changes.
 		console.log( '[fc][wcfmmp] bindDataToForm', {
 			address: address,
 			lat: lat,
@@ -230,6 +232,7 @@ jQuery(document).ready( function($) {
 	}
 	
 	function initializeCheckoutLocation() {
+		// FC: ensure location map setup runs once per checkout render.
 		console.log( '[fc][wcfmmp] initializeCheckoutLocation' );
 		initialize();
 		markInitialized();
@@ -249,6 +252,7 @@ jQuery(document).ready( function($) {
 	}
 
 	function maybeInitCheckoutLocation() {
+		// FC: guard against missing elements and repeated init.
 		console.log( '[fc][wcfmmp] maybeInitCheckoutLocation' );
 		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
 		if ( ! $mapContainer.length ) {
