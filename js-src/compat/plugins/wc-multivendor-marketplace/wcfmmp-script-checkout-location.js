@@ -1,5 +1,14 @@
 jQuery(document).ready( function($) {
 	var map = geocoder = marker = map_marker = infowindow = '';
+	var initTimeout = null;
+
+	function markInitialized() {
+		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
+		if ( $mapContainer.length ) {
+			console.log( '[fc][wcfmmp] markInitialized' );
+			$mapContainer.data( 'fcWcfmmpInitialized', true );
+		}
+	}
 	
 	$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
 	$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
@@ -145,6 +154,12 @@ jQuery(document).ready( function($) {
 	}
 	
 	function bindDataToForm(address,lat,lng, find_field_refresh) {
+		console.log( '[fc][wcfmmp] bindDataToForm', {
+			address: address,
+			lat: lat,
+			lng: lng,
+			find_field_refresh: find_field_refresh
+		} );
 		if( find_field_refresh ) {
 			if( wcfm_maps.lib == 'google' ) {
 			 document.getElementById("wcfmmp_user_location").value = address;
@@ -154,10 +169,26 @@ jQuery(document).ready( function($) {
 			}
 		}
 		//document.getElementById("store_location").value = address;
-		document.getElementById("wcfmmp_user_location_lat").value = lat;
-		document.getElementById("wcfmmp_user_location_lng").value = lng;
-		
-		$( document.body ).trigger( 'update_checkout' );
+		var latField = document.getElementById("wcfmmp_user_location_lat");
+		var lngField = document.getElementById("wcfmmp_user_location_lng");
+		var prevLat = latField.value;
+		var prevLng = lngField.value;
+
+		latField.value = lat;
+		lngField.value = lng;
+
+		if ( prevLat !== String( lat ) || prevLng !== String( lng ) ) {
+			console.log( '[fc][wcfmmp] update_checkout (location changed)', {
+				prevLat: prevLat,
+				prevLng: prevLng
+			} );
+			$( document.body ).trigger( 'update_checkout' );
+		} else {
+			console.log( '[fc][wcfmmp] skip update_checkout (location unchanged)', {
+				prevLat: prevLat,
+				prevLng: prevLng
+			} );
+		}
 	}
 	function showTooltip(infowindow,marker,address){
 	 google.maps.event.addListener(marker, "click", function() { 
@@ -198,17 +229,51 @@ jQuery(document).ready( function($) {
 		});
 	}
 	
-	if( jQuery("#wcfmmp_user_location_lat").length > 0 ) {
-		setTimeout( function() {
-			initialize();
-			
-			if ( navigator.geolocation ) {
-				$('.wcfmmmp_locate_icon').on( 'click', function () {
-					setUser_CurrentLocation();
-				});
-				
+	function initializeCheckoutLocation() {
+		console.log( '[fc][wcfmmp] initializeCheckoutLocation' );
+		initialize();
+		markInitialized();
+
+		if ( navigator.geolocation ) {
+			$('.wcfmmmp_locate_icon').on( 'click', function () {
 				setUser_CurrentLocation();
+			});
+
+			if ( ! $( "#wcfmmp_user_location_lat" ).val() || ! $( "#wcfmmp_user_location_lng" ).val() ) {
+				console.log( '[fc][wcfmmp] auto geolocation: empty coords' );
+				setUser_CurrentLocation();
+			} else {
+				console.log( '[fc][wcfmmp] skip auto geolocation: coords already set' );
 			}
-		}, 1000 );
+		}
 	}
+
+	function maybeInitCheckoutLocation() {
+		console.log( '[fc][wcfmmp] maybeInitCheckoutLocation' );
+		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
+		if ( ! $mapContainer.length ) {
+			console.log( '[fc][wcfmmp] skip init: map container missing' );
+			return;
+		}
+		if ( $mapContainer.data( 'fcWcfmmpInitialized' ) ) {
+			console.log( '[fc][wcfmmp] skip init: already initialized' );
+			return;
+		}
+		if ( $( "#wcfmmp_user_location_lat" ).length === 0 ) {
+			console.log( '[fc][wcfmmp] skip init: lat field missing' );
+			return;
+		}
+
+		if ( initTimeout ) {
+			clearTimeout( initTimeout );
+		}
+
+		initTimeout = setTimeout( function() {
+			console.log( '[fc][wcfmmp] init timeout fired' );
+			initializeCheckoutLocation();
+		}, 0 );
+	}
+
+	maybeInitCheckoutLocation();
+	$( document.body ).on( 'updated_checkout', maybeInitCheckoutLocation );
 });
