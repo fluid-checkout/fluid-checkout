@@ -17,9 +17,15 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Replace plugin scripts with modified version
+		// Maybe replace plugin scripts with modified version
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
+
+		// Maybe replace order summary shipping output
 		add_action( 'init', array( $this, 'maybe_replace_order_summary_shipping_output' ), 20 );
+
+		// Move checkout location map and field to shipping section
+		add_action( 'init', array( $this, 'maybe_reposition_checkout_location_map' ), 20 );
+		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
 	}
 
 	/**
@@ -48,6 +54,46 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		remove_action( 'fc_review_order_shipping', array( FluidCheckout_Steps::instance(), 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'fc_review_order_shipping', array( $this, 'output_order_review_shipping_method_chosen' ), 30 );
+	}
+
+	/**
+	 * Move checkout location map before shipping section.
+	 */
+	public function maybe_reposition_checkout_location_map() {
+		if ( ! class_exists( 'WCFMmp' ) ) { return; }
+
+		global $WCFMmp;
+		if ( ! isset( $WCFMmp->frontend ) ) { return; }
+
+		remove_action( 'woocommerce_after_checkout_billing_form', array( $WCFMmp->frontend, 'wcfmmp_checkout_user_location_map' ), 50 );
+		add_action( 'woocommerce_after_checkout_shipping_form', array( $WCFMmp->frontend, 'wcfmmp_checkout_user_location_map' ), 50 );
+	}
+
+	/**
+	 * Move checkout location fields to shipping section.
+	 */
+	public function maybe_reposition_checkout_location_fields( $fields ) {
+		if ( ! class_exists( 'WCFMmp' ) ) { return $fields; }
+
+		if ( ! isset( $fields['billing']['wcfmmp_user_location'] ) ) { return $fields; }
+
+		if ( ! isset( $fields['shipping'] ) ) {
+			$fields['shipping'] = array();
+		}
+
+		$fields['shipping']['wcfmmp_user_location'] = $fields['billing']['wcfmmp_user_location'];
+		$fields['shipping']['wcfmmp_user_location']['priority'] = 999;
+
+		if ( isset( $fields['billing']['wcfmmp_user_location_lat'] ) ) {
+			$fields['shipping']['wcfmmp_user_location_lat'] = $fields['billing']['wcfmmp_user_location_lat'];
+		}
+		if ( isset( $fields['billing']['wcfmmp_user_location_lng'] ) ) {
+			$fields['shipping']['wcfmmp_user_location_lng'] = $fields['billing']['wcfmmp_user_location_lng'];
+		}
+
+		unset( $fields['billing']['wcfmmp_user_location'], $fields['billing']['wcfmmp_user_location_lat'], $fields['billing']['wcfmmp_user_location_lng'] );
+
+		return $fields;
 	}
 
 	/**
