@@ -316,7 +316,7 @@ jQuery(document).ready( function($) {
 		initTimeout = setTimeout( function() {
 			console.log( '[fc][wcfmmp] init timeout fired' );
 			initializeCheckoutLocation();
-		}, 0 );
+		}, 500 );
 	}
 
 	maybeInitCheckoutLocation();

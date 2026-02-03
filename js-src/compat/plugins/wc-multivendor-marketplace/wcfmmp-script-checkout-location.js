@@ -25,15 +25,15 @@ jQuery(document).ready( function($) {
 					zoom: parseInt( wcfmmp_checkout_map_options.default_zoom )
 			});
 			var customIcon = {
-				url: wcfmmp_checkout_map_options.store_icon,
-				scaledSize: new google.maps.Size( wcfmmp_checkout_map_options.icon_width, wcfmmp_checkout_map_options.icon_height ), // scaled size
-			};
+												url: wcfmmp_checkout_map_options.store_icon,
+												scaledSize: new google.maps.Size( wcfmmp_checkout_map_options.icon_width, wcfmmp_checkout_map_options.icon_height ), // scaled size
+											};
 			marker = new google.maps.Marker({
-				map: map,
-				position: latlng,
-				animation: google.maps.Animation.DROP,
-				icon: customIcon,
-				draggable: true,
+					map: map,
+					position: latlng,
+					animation: google.maps.Animation.DROP,
+					icon: customIcon,
+					draggable: true,
 			});
 		
 			var wcfmmp_user_location_input = document.getElementById("wcfmmp_user_location");
@@ -127,22 +127,22 @@ jQuery(document).ready( function($) {
 			});
 		
 			var searchControl = new L.Control.Search({
-				container: 'leaflet_wcfmmp_user_location',
-				url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
-				jsonpParam: 'json_callback',
-				propertyName: 'display_name',
-				propertyLoc: ['lat','lon'],
-				marker: map_marker,
-				moveToLocation: function(latlng, title, map) {
-					bindDataToForm( title, latlng.lat, latlng.lng, true );
-					map.setView(latlng, parseInt( wcfmmp_checkout_map_options.default_zoom ) ); // access the zoom
-				},
-				//autoCollapse: true,
-				initial: false,
-				collapsed:false,
-				autoType: false,
-				minLength: 2
-			});
+														container: 'leaflet_wcfmmp_user_location',
+														url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+														jsonpParam: 'json_callback',
+														propertyName: 'display_name',
+														propertyLoc: ['lat','lon'],
+														marker: map_marker,
+														moveToLocation: function(latlng, title, map) {
+															bindDataToForm( title, latlng.lat, latlng.lng, true );
+															map.setView(latlng, parseInt( wcfmmp_checkout_map_options.default_zoom ) ); // access the zoom
+														},
+														//autoCollapse: true,
+														initial: false,
+														collapsed:false,
+														autoType: false,
+														minLength: 2
+													});
 			
 			map.addControl( searchControl );  //inizialize search control
 			
@@ -205,21 +205,21 @@ jQuery(document).ready( function($) {
 			console.log( position.coords.latitude, position.coords.longitude );
 			if( wcfm_maps.lib == 'google' ) {
 				geocoder.geocode( {
-					location: {
-							lat: position.coords.latitude,
-							lng: position.coords.longitude
-					}
+						location: {
+								lat: position.coords.latitude,
+								lng: position.coords.longitude
+						}
 				}, function ( results, status ) {
-					if ( 'OK' === status ) {
-						bindDataToForm( results[0].formatted_address, position.coords.latitude, position.coords.longitude, true );
-						var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-						marker.setPosition(latlng);
-						marker.setVisible(true);
-						
-						infowindow.setContent( results[0].formatted_address );
-						infowindow.open( map, marker );
-						showTooltip( infowindow, marker, results[0].formatted_address );
-					}
+						if ( 'OK' === status ) {
+							bindDataToForm( results[0].formatted_address, position.coords.latitude, position.coords.longitude, true );
+							var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+							marker.setPosition(latlng);
+							marker.setVisible(true);
+							
+							infowindow.setContent( results[0].formatted_address );
+							infowindow.open( map, marker );
+							showTooltip( infowindow, marker, results[0].formatted_address );
+						}
 				} )
 			} else {
 				$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+position.coords.latitude+'&lon='+position.coords.longitude, function(data) {
@@ -236,7 +236,7 @@ jQuery(document).ready( function($) {
 		console.log( '[fc][wcfmmp] initializeCheckoutLocation' );
 		initialize();
 		markInitialized();
-		syncSavedLocation(); // FC: sync saved location to the checkout form.
+		syncSavedLocation();
 
 		if ( navigator.geolocation ) {
 			$('.wcfmmmp_locate_icon').on( 'click', function () {
@@ -252,29 +252,20 @@ jQuery(document).ready( function($) {
 		}
 	}
 
-	// FC: sync saved location to the checkout form.
 	function syncSavedLocation() {
-		// FC: sync saved latitude/longitude location to the checkout form if not already done.
 		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
-
-		// Check if already synced during this session to avoid duplicate processing.
 		if ( $mapContainer.data( 'fcWcfmmpCheckoutSynced' ) ) {
 			return;
 		}
 
-		// Get current values for latitude and longitude fields
 		var latValue = $( "#wcfmmp_user_location_lat" ).val();
 		var lngValue = $( "#wcfmmp_user_location_lng" ).val();
-
-		// Abort if either field is empty
 		if ( ! latValue || ! lngValue ) {
 			return;
 		}
 
-		// Mark as synced to prevent re-execution
 		$mapContainer.data( 'fcWcfmmpCheckoutSynced', true );
 
-		// If Google Maps is being used and geocoder is available
 		if ( wcfm_maps.lib === 'google' && geocoder ) {
 			geocoder.geocode( {
 				location: {
@@ -282,31 +273,24 @@ jQuery(document).ready( function($) {
 					lng: parseFloat( lngValue )
 				}
 			}, function( results, status ) {
-				// On success, update the form with the formatted address and trigger checkout update
 				if ( 'OK' === status && results[0] ) {
 					bindDataToForm( results[0].formatted_address, latValue, lngValue, true );
 				}
-				// Always trigger checkout update after geocode completes
 				$( document.body ).trigger( 'update_checkout' );
 			} );
 			return;
 		}
 
-		// If using a non-Google provider, use OpenStreetMap reverse geocoding
 		if ( wcfm_maps.lib !== 'google' ) {
-			$.get( 
-				'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, 
-				function( data ) {
-					// Use the display_name from the response if available
-					var address = data && data.display_name ? data.display_name : '';
-					if ( address ) {
-						bindDataToForm( address, latValue, lngValue, true );
-					}
-					// Always trigger checkout update after reverse geocode completes
-					$( document.body ).trigger( 'update_checkout' );
-				} 
-			);
+			$.get( 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, function( data ) {
+				var address = data && data.display_name ? data.display_name : '';
+				if ( address ) {
+					bindDataToForm( address, latValue, lngValue, true );
+				}
+				$( document.body ).trigger( 'update_checkout' );
+			} );
 		}
+	}
 
 	function maybeInitCheckoutLocation() {
 		// FC: guard against missing elements and repeated init.
@@ -332,7 +316,7 @@ jQuery(document).ready( function($) {
 		initTimeout = setTimeout( function() {
 			console.log( '[fc][wcfmmp] init timeout fired' );
 			initializeCheckoutLocation();
-		}, 0 );
+		}, 500 );
 	}
 
 	maybeInitCheckoutLocation();
