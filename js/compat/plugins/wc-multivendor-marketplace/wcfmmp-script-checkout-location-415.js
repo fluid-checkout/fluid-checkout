@@ -236,6 +236,7 @@ jQuery(document).ready( function($) {
 		console.log( '[fc][wcfmmp] initializeCheckoutLocation' );
 		initialize();
 		markInitialized();
+		syncSavedLocation();
 
 		if ( navigator.geolocation ) {
 			$('.wcfmmmp_locate_icon').on( 'click', function () {
@@ -248,6 +249,46 @@ jQuery(document).ready( function($) {
 			} else {
 				console.log( '[fc][wcfmmp] skip auto geolocation: coords already set' );
 			}
+		}
+	}
+
+	function syncSavedLocation() {
+		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
+		if ( $mapContainer.data( 'fcWcfmmpCheckoutSynced' ) ) {
+			return;
+		}
+
+		var latValue = $( "#wcfmmp_user_location_lat" ).val();
+		var lngValue = $( "#wcfmmp_user_location_lng" ).val();
+		if ( ! latValue || ! lngValue ) {
+			return;
+		}
+
+		$mapContainer.data( 'fcWcfmmpCheckoutSynced', true );
+
+		if ( wcfm_maps.lib === 'google' && geocoder ) {
+			geocoder.geocode( {
+				location: {
+					lat: parseFloat( latValue ),
+					lng: parseFloat( lngValue )
+				}
+			}, function( results, status ) {
+				if ( 'OK' === status && results[0] ) {
+					bindDataToForm( results[0].formatted_address, latValue, lngValue, true );
+				}
+				$( document.body ).trigger( 'update_checkout' );
+			} );
+			return;
+		}
+
+		if ( wcfm_maps.lib !== 'google' ) {
+			$.get( 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, function( data ) {
+				var address = data && data.display_name ? data.display_name : '';
+				if ( address ) {
+					bindDataToForm( address, latValue, lngValue, true );
+				}
+				$( document.body ).trigger( 'update_checkout' );
+			} );
 		}
 	}
 
