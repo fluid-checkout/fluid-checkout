@@ -154,43 +154,20 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
-	function bindDataToForm(address, lat, lng, find_field_refresh) {
-		// FC: keep checkout totals in sync when location changes.
-		console.log('[fc][wcfmmp] bindDataToForm', {
-			address: address,
-			lat: lat,
-			lng: lng,
-			find_field_refresh: find_field_refresh
-		});
-		if (find_field_refresh) {
-			if (wcfm_maps.lib == 'google') {
-				document.getElementById("wcfmmp_user_location").value = address;
+	function bindDataToForm(address,lat,lng, find_field_refresh) {
+		if( find_field_refresh ) {
+			if( wcfm_maps.lib == 'google' ) {
+			 document.getElementById("wcfmmp_user_location").value = address;
 			} else {
-				$('#wcfmmp_user_location').val(address);
-				$("#leaflet_wcfmmp_user_location").find('.search-input').val(address);
+				$('#wcfmmp_user_location').val( address );
+				$("#leaflet_wcfmmp_user_location").find('.search-input').val( address );
 			}
 		}
 		//document.getElementById("store_location").value = address;
-		var latField = document.getElementById("wcfmmp_user_location_lat");
-		var lngField = document.getElementById("wcfmmp_user_location_lng");
-		var prevLat = latField.value;
-		var prevLng = lngField.value;
-
-		latField.value = lat;
-		lngField.value = lng;
-
-		if (prevLat !== String(lat) || prevLng !== String(lng)) {
-			console.log('[fc][wcfmmp] update_checkout (location changed)', {
-				prevLat: prevLat,
-				prevLng: prevLng
-			});
-			$(document.body).trigger('update_checkout');
-		} else {
-			console.log('[fc][wcfmmp] skip update_checkout (location unchanged)', {
-				prevLat: prevLat,
-				prevLng: prevLng
-			});
-		}
+		document.getElementById("wcfmmp_user_location_lat").value = lat;
+		document.getElementById("wcfmmp_user_location_lng").value = lng;
+		
+		$( document.body ).trigger( 'update_checkout' );
 	}
 	function showTooltip(infowindow, marker, address) {
 		google.maps.event.addListener(marker, "click", function () {
