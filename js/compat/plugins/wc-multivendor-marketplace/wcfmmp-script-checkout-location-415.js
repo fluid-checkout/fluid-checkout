@@ -6,7 +6,6 @@ jQuery(document).ready(function ($) {
 		// FC: prevent re-initialization across checkout refreshes.
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
 		if ($mapContainer.length) {
-			console.log('[fc][wcfmmp] markInitialized');
 			$mapContainer.data('fcWcfmmpInitialized', true);
 		}
 	}
@@ -179,7 +178,6 @@ jQuery(document).ready(function ($) {
 	function setUser_CurrentLocation() {
 		navigator.geolocation.getCurrentPosition(function (position) {
 			$current_location_fetched = true;
-			console.log(position.coords.latitude, position.coords.longitude);
 			if (wcfm_maps.lib == 'google') {
 				geocoder.geocode({
 					location: {
@@ -210,7 +208,6 @@ jQuery(document).ready(function ($) {
 
 	function initializeCheckoutLocation() {
 		// FC: ensure location map setup runs once per checkout render.
-		console.log('[fc][wcfmmp] initializeCheckoutLocation');
 		initialize();
 		markInitialized();
 		syncSavedLocation();
@@ -221,10 +218,7 @@ jQuery(document).ready(function ($) {
 			});
 
 			if (!$("#wcfmmp_user_location_lat").val() || !$("#wcfmmp_user_location_lng").val()) {
-				console.log('[fc][wcfmmp] auto geolocation: empty coords');
 				setUser_CurrentLocation();
-			} else {
-				console.log('[fc][wcfmmp] skip auto geolocation: coords already set');
 			}
 		}
 	}
@@ -271,18 +265,14 @@ jQuery(document).ready(function ($) {
 
 	function maybeInitCheckoutLocation() {
 		// FC: guard against missing elements and repeated init.
-		console.log('[fc][wcfmmp] maybeInitCheckoutLocation');
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
 		if (!$mapContainer.length) {
-			console.log('[fc][wcfmmp] skip init: map container missing');
 			return;
 		}
 		if ($mapContainer.data('fcWcfmmpInitialized')) {
-			console.log('[fc][wcfmmp] skip init: already initialized');
 			return;
 		}
 		if ($("#wcfmmp_user_location_lat").length === 0) {
-			console.log('[fc][wcfmmp] skip init: lat field missing');
 			return;
 		}
 
@@ -291,7 +281,6 @@ jQuery(document).ready(function ($) {
 		}
 
 		initTimeout = setTimeout(function () {
-			console.log('[fc][wcfmmp] init timeout fired');
 			initializeCheckoutLocation();
 		}, 500);
 	}
