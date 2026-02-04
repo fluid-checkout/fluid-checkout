@@ -4475,12 +4475,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		WC()->cart->calculate_totals();
 
 		$packages = WC()->shipping->get_packages();
+		$requires_address = 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' );
+		$is_shipping_address_complete = $this->is_substep_complete_shipping_address();
 
 		ob_start();
 
 		echo '<div class="fc-shipping-method__packages">';
 
 		do_action( 'fc_shipping_methods_before_packages_inside' );
+
+		// Show fallback message if shipping address is required but incomplete at checkout; otherwise show shipping methods using $packages loop.
+		if ( is_checkout() && $requires_address && ! $is_shipping_address_complete && empty( $packages ) ) {
+			echo '<div class="fc-shipping-method__incomplete-address shipping-method__package"><div class="shipping-method__options">';
+			echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Shipping options will be shown after you enter your full address.', 'woocommerce' ) ) );
+			echo '</div></div>';
+		}
 
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
