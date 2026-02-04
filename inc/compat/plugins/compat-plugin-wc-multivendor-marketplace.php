@@ -45,9 +45,6 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	/**
 	 * Replace order summary shipping output to handle vendor-keyed packages.
 	 *
-	 * WCFM stores chosen shipping methods keyed by vendor/package key (not
-	 * by numeric index). The default FC output assumes numeric indexes, so
-	 * we swap it with a key-aware version.
 	 */
 	public function maybe_replace_order_summary_shipping_output() {
 		// Bail if plugin is not active
