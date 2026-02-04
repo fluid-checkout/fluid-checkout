@@ -50,8 +50,10 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 * we swap it with a key-aware version.
 	 */
 	public function maybe_replace_order_summary_shipping_output() {
+		// Bail if plugin is not active
 		if ( ! class_exists( 'WCFMmp' ) ) { return; }
 
+		// Remove the default action and add our own
 		remove_action( 'fc_review_order_shipping', array( FluidCheckout_Steps::instance(), 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 		add_action( 'fc_review_order_shipping', array( $this, 'output_order_review_shipping_method_chosen' ), 30 );
 	}
@@ -60,9 +62,12 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 * Move checkout location map before shipping section.
 	 */
 	public function maybe_reposition_checkout_location_map() {
+		// Bail if plugin is not active
 		if ( ! class_exists( 'WCFMmp' ) ) { return; }
 
 		global $WCFMmp;
+
+		// Bail if frontend is not available
 		if ( ! isset( $WCFMmp->frontend ) ) { return; }
 
 		remove_action( 'woocommerce_after_checkout_billing_form', array( $WCFMmp->frontend, 'wcfmmp_checkout_user_location_map' ), 50 );
@@ -73,17 +78,22 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 * Move checkout location fields to shipping section.
 	 */
 	public function maybe_reposition_checkout_location_fields( $fields ) {
+		// Bail if plugin is not active
 		if ( ! class_exists( 'WCFMmp' ) ) { return $fields; }
 
+		// Bail if address field is not available
 		if ( ! isset( $fields['billing']['wcfmmp_user_location'] ) ) { return $fields; }
 
+		// Bail if shipping section is not available
 		if ( ! isset( $fields['shipping'] ) ) {
 			$fields['shipping'] = array();
 		}
 
+		// Move the address field to shipping section
 		$fields['shipping']['wcfmmp_user_location'] = $fields['billing']['wcfmmp_user_location'];
 		$fields['shipping']['wcfmmp_user_location']['priority'] = 999;
 
+		// Move latitude and longitude fields to shipping section
 		if ( isset( $fields['billing']['wcfmmp_user_location_lat'] ) ) {
 			$fields['shipping']['wcfmmp_user_location_lat'] = $fields['billing']['wcfmmp_user_location_lat'];
 		}
@@ -108,7 +118,11 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		// Retrieve shipping packages and chosen methods
 		$packages = WC()->shipping()->get_packages();
+
+		// Retrieve chosen methods from session
 		$chosen_methods = is_callable( array( WC()->session, 'get' ) ) ? WC()->session->get( 'chosen_shipping_methods', array() ) : array();
+
+		// Initialize variables
 		$numeric_chosen_methods = array();
 		$package_index = 0;
 
@@ -122,10 +136,12 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 			$package_index++;
 		}
 
+		// Set the chosen shipping methods to the session
 		if ( is_callable( array( WC()->session, 'set' ) ) ) {
 			WC()->session->set( 'chosen_shipping_methods', $numeric_chosen_methods );
 		}
 
+		// Output the chosen shipping methods
 		FluidCheckout_Steps::instance()->maybe_output_order_review_shipping_method_chosen();
 
 		// Restore original session chosen methods
