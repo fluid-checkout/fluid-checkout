@@ -15,6 +15,7 @@ jQuery(document).ready(function ($) {
 	$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
 	$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
 
+	// FC: store initial user location value for later use.
 	var $initialLocationField = $('#wcfmmp_user_location');
 	if ($initialLocationField.length) {
 		initialUserLocationValue = $initialLocationField.val() || '';
