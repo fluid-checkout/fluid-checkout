@@ -1,7 +1,9 @@
 jQuery(document).ready(function ($) {
 	var map = geocoder = marker = map_marker = infowindow = '';
 	var initTimeout = null;
+	var initialUserLocationValue = '';
 
+	// Flag map container to prevent repeated initialization.
 	function markInitialized() {
 		// FC: prevent re-initialization across checkout refreshes.
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
@@ -13,6 +15,12 @@ jQuery(document).ready(function ($) {
 	$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
 	$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
 
+	var $initialLocationField = $('#wcfmmp_user_location');
+	if ($initialLocationField.length) {
+		initialUserLocationValue = $initialLocationField.val() || '';
+	}
+
+	// Initialize map, marker, and autocomplete for checkout location.
 	function initialize() {
 
 		if (wcfm_maps.lib == 'google') {
@@ -82,6 +90,9 @@ jQuery(document).ready(function ($) {
 			});
 		} else {
 			$('#wcfmmp_user_location').replaceWith('<div id="leaflet_wcfmmp_user_location"></div><input type="hidden" class="wcfm_custom_hide" name="wcfmmp_user_location" id="wcfmmp_user_location" />');
+			if (initialUserLocationValue) {
+				$('#wcfmmp_user_location').val(initialUserLocationValue);
+			}
 
 			if ($wcfmmp_user_location_lat && $wcfmmp_user_location_lng) {
 				map = new L.Map('wcfmmp-user-locaton-map', { zoom: parseInt(wcfmmp_checkout_map_options.default_zoom), center: new L.latLng([$wcfmmp_user_location_lat, $wcfmmp_user_location_lng]) });
@@ -144,6 +155,9 @@ jQuery(document).ready(function ($) {
 			});
 
 			map.addControl(searchControl);  //inizialize search control
+			if (initialUserLocationValue) {
+				$("#leaflet_wcfmmp_user_location").find('.search-input').val(initialUserLocationValue);
+			}
 
 			//$('#leaflet_wcfmmp_user_location').find('.search-input').val($('#store_location').val());
 
@@ -153,6 +167,8 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+	
+	// Sync address and coordinates into hidden fields and refresh checkout.
 	function bindDataToForm(address,lat,lng, find_field_refresh) {
 		if( find_field_refresh ) {
 			if( wcfm_maps.lib == 'google' ) {
@@ -168,6 +184,8 @@ jQuery(document).ready(function ($) {
 		
 		$( document.body ).trigger( 'update_checkout' );
 	}
+
+	// Attach click handler to show the info window on marker.
 	function showTooltip(infowindow, marker, address) {
 		google.maps.event.addListener(marker, "click", function () {
 			infowindow.setContent(address);
@@ -175,6 +193,7 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
+	// Fetch current position and update map/fields.
 	function setUser_CurrentLocation() {
 		navigator.geolocation.getCurrentPosition(function (position) {
 			$current_location_fetched = true;
@@ -206,6 +225,7 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
+	// Initialize checkout location map and bind events once.
 	function initializeCheckoutLocation() {
 		// FC: ensure location map setup runs once per checkout render.
 		initialize();
@@ -223,6 +243,7 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+	// Resolve saved lat/lng into address once per render.
 	function syncSavedLocation() {
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
 		if ($mapContainer.data('fcWcfmmpCheckoutSynced')) {
@@ -263,6 +284,7 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
+	// Guarded initializer to run after checkout refreshes.
 	function maybeInitCheckoutLocation() {
 		// FC: guard against missing elements and repeated init.
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
