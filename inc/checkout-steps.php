@@ -4473,23 +4473,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Calculate shipping before totals. This will ensure any shipping methods that affect things like taxes are chosen prior to final totals being calculated. Ref: #22708.
 		WC()->cart->calculate_shipping();
 		WC()->cart->calculate_totals();
-
+		
 		$packages = WC()->shipping->get_packages();
-		$requires_address = 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' );
-		$is_shipping_address_complete = $this->is_substep_complete_shipping_address();
+		// If no packages are found, populate packages from cart
+		if ( empty( $packages ) ) {
+			WC()->shipping()->calculate_shipping(WC()->cart->get_shipping_packages());
+			// Populate packages from cart after calculating shipping
+			$packages = WC()->shipping->get_packages();
+		}
 
 		ob_start();
 
 		echo '<div class="fc-shipping-method__packages">';
 
 		do_action( 'fc_shipping_methods_before_packages_inside' );
-
-		// Show fallback message if shipping address is required but incomplete at checkout; otherwise show shipping methods using $packages loop.
-		if ( is_checkout() && $requires_address && ! $is_shipping_address_complete && empty( $packages ) ) {
-			echo '<div class="fc-shipping-method__incomplete-address shipping-method__package"><div class="shipping-method__options">';
-			echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Shipping options will be shown after you enter your full address.', 'woocommerce' ) ) );
-			echo '</div></div>';
-		}
 
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
