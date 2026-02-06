@@ -42,8 +42,15 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		$position_hook = $this->get_position_to_display_available_coupons_on_checkout();
 
 		// Available coupons section
-		remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
-		add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_on_classic_checkout' ), $position_hook['priority'] );
+		if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
+			// New method - Tested on WooCommerce Smart Coupons 8.17.0
+			remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
+			add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_before_checkout_form' ), $position_hook['priority'] );
+		} elseif ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
+			// Old method backward compatibility - Tested on WooCommerce Smart Coupons 4.7.0
+			remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
+			add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_on_classic_checkout' ), $position_hook['priority'] );
+		}
 	}
 
 
