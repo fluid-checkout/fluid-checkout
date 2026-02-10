@@ -1,10 +1,19 @@
-/* global fcSmartCoupons */
-// Source behavior in WooCommerce Smart Coupons:
-// - woocommerce-smart-coupons/includes/class-wc-sc-display-coupons.php
-//   injects checkout AJAX handlers that insert notices before the form.
-// Fluid Checkout wrapper:
-// - fluid-checkout/inc/checkout-steps.php renders .fc-checkout-notices.
-// This script intercepts apply/remove actions to insert notices in that wrapper.
+/**
+ * Enhances checkout for WooCommerce Smart Coupons (by StoreApps).
+ *
+ * Background:
+ * - WooCommerce Smart Coupons injects checkout AJAX handlers
+ *   (see: woocommerce-smart-coupons/includes/class-wc-sc-display-coupons.php)
+ *   which add notices before the checkout form.
+ * - Fluid Checkout instead renders notices in a dedicated wrapper:
+ *   .fc-checkout-notices (see: fluid-checkout/inc/checkout-steps.php).
+ *
+ * Purpose:
+ * This script intercepts coupon apply/remove actions,
+ * ensuring that all notices are properly displayed
+ * within the Fluid Checkout notices wrapper,
+ * maintaining compatibility and a seamless checkout UX.
+ */
 jQuery( function( $ ) {
 	if ( typeof fcSmartCoupons === 'undefined' ) { return; }
 
