@@ -14,7 +14,23 @@
  * within the Fluid Checkout notices wrapper,
  * maintaining compatibility and a seamless checkout UX.
  */
-console.log( '[FC SmartCoupons Debug] checkout-woocommerce-smart-coupons compat script file loaded.' );
+var fcSmartCouponsCompatDebug = false;
+
+// Allow enabling debug either by editing this file (set to true)
+// or via global flags in the browser console:
+//   window.fcSmartCouponsCompatDebug = true
+//   window.fcSmartCouponsDebug = true            (backwards compatible)
+if ( typeof window !== 'undefined' ) {
+	if ( typeof window.fcSmartCouponsCompatDebug !== 'undefined' ) {
+		fcSmartCouponsCompatDebug = !! window.fcSmartCouponsCompatDebug;
+	} else if ( typeof window.fcSmartCouponsDebug !== 'undefined' ) {
+		fcSmartCouponsCompatDebug = !! window.fcSmartCouponsDebug;
+	}
+}
+
+if ( fcSmartCouponsCompatDebug && typeof window !== 'undefined' && window.console && console.log ) {
+	console.log( '[FC SmartCoupons Debug] checkout-woocommerce-smart-coupons compat script file loaded.' );
+}
 
 jQuery( function( $ ) {
 	if ( typeof fcSmartCoupons === 'undefined' ) {
@@ -27,10 +43,12 @@ jQuery( function( $ ) {
 	/**
 	 * DEBUG LOGGER
 	 *
-	 * Logs are always enabled for now to help debugging
-	 * Smart Coupons compatibility issues.
+	 * Controlled by `fcSmartCouponsCompatDebug` (see top of this file)
+	 * or the global flags `window.fcSmartCouponsCompatDebug` /
+	 * `window.fcSmartCouponsDebug`.
 	 */
 	var logDebug = function() {
+		if ( ! fcSmartCouponsCompatDebug ) { return; }
 		if ( ! window || ! window.console || ! console.log ) { return; }
 
 		var args = Array.prototype.slice.call( arguments );
