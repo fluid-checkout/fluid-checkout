@@ -14,10 +14,22 @@
  * within the Fluid Checkout notices wrapper,
  * maintaining compatibility and a seamless checkout UX.
  */
-jQuery( function( $ ) {
-	if ( typeof fcSmartCoupons === 'undefined' ) { return; }
+	jQuery( function( $ ) {
+		if ( typeof fcSmartCoupons === 'undefined' ) { return; }
 
-	var getNoticesWrapper = function() {
+		/**
+		 * METHODS
+		 *
+		 * Helper functions for handling Smart Coupons notices and actions.
+		 */
+
+		/**
+		 * Get the wrapper where notices should be rendered.
+		 *
+		 * Falls back from Fluid Checkout wrapper to WooCommerce's
+		 * default notices wrapper and finally to the checkout form.
+		 */
+		var getNoticesWrapper = function() {
 		var $noticesWrapper = $( '.fc-checkout-notices' );
 		if ( ! $noticesWrapper.length ) {
 			$noticesWrapper = $( '.woocommerce-notices-wrapper:first' );
@@ -28,7 +40,12 @@ jQuery( function( $ ) {
 		return $noticesWrapper;
 	};
 
-	var insertNotices = function( message ) {
+		/**
+		 * Insert notices HTML into the determined wrapper.
+		 *
+		 * Accepts raw markup or full response payload from Smart Coupons.
+		 */
+		var insertNotices = function( message ) {
 		var $noticesWrapper = getNoticesWrapper();
 		if ( ! $noticesWrapper.length ) { return; }
 
@@ -43,7 +60,12 @@ jQuery( function( $ ) {
 		}
 	};
 
-	var applySmartCouponForButton = function( $button ) {
+		/**
+		 * Apply a Smart Coupon when the "apply coupon/credits" button is clicked.
+		 *
+		 * Sends an AJAX request using Smart Coupons endpoints and updates checkout.
+		 */
+		var applySmartCouponForButton = function( $button ) {
 		var couponCode = $button.data( 'coupon_code' );
 		if ( ! couponCode ) { return; }
 
@@ -70,7 +92,12 @@ jQuery( function( $ ) {
 		} );
 	};
 
-	var removeSmartCouponForLink = function( $link ) {
+		/**
+		 * Remove a Smart Coupon when its "remove" link is clicked.
+		 *
+		 * Sends an AJAX request using Smart Coupons endpoints and updates checkout.
+		 */
+		var removeSmartCouponForLink = function( $link ) {
 		var couponCode = $link.data( 'coupon' );
 		if ( ! couponCode ) { return; }
 
@@ -92,7 +119,12 @@ jQuery( function( $ ) {
 		} );
 	};
 
-	var captureHandler = function( e ) {
+		/**
+		 * Capture click events on Smart Coupons apply button.
+		 *
+		 * Uses capture phase so we can intercept before plugin handlers.
+		 */
+		var captureHandler = function( e ) {
 		var target = e.target;
 		if ( ! target || ! target.closest ) { return; }
 
@@ -105,8 +137,12 @@ jQuery( function( $ ) {
 		applySmartCouponForButton( $( button ) );
 	};
 
-	// Capture phase runs before plugin handlers and allows us to prevent
-	// Smart Coupons from injecting notices into the wrong place.
+		/**
+		 * EVENT LISTENERS
+		 *
+		 * Attach global click listeners in capture phase to override
+		 * Smart Coupons default behavior and keep notices in sync.
+		 */
 	document.addEventListener( 'click', captureHandler, true );
 
 	document.addEventListener( 'click', function( e ) {
