@@ -98,7 +98,6 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		$this->enqueue_assets();
 
-		$debug_enabled = apply_filters( 'fc_sc_debug_notices', defined( 'WP_DEBUG' ) && WP_DEBUG );
 		wp_localize_script(
 			'fc-compat-woocommerce-smart-coupons',
 			'fcSmartCoupons',
@@ -107,7 +106,6 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 				'applyNonce'  => wp_create_nonce( 'fc-sc-apply-coupon' ),
 				'removeUrl'   => WC_AJAX::get_endpoint( 'fc_sc_remove_coupon' ),
 				'removeNonce' => wp_create_nonce( 'fc-sc-remove-coupon' ),
-				'debug'       => $debug_enabled,
 			)
 		);
 	}
@@ -120,7 +118,6 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ?? '' ) );
 		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ?? '' ) );
-		$debug_enabled = apply_filters( 'fc_sc_debug_notices', defined( 'WP_DEBUG' ) && WP_DEBUG );
 
 		if ( ! empty( $coupon_code ) ) {
 			WC()->cart->apply_coupon( wc_format_coupon_code( $coupon_code ) );
@@ -134,19 +131,12 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 
-		if ( $debug_enabled ) {
-			error_log( sprintf( 'FC SC ajax_apply_coupon: code="%s", result=%s, message_len=%d', $coupon_code, $is_error ? 'error' : 'success', strlen( $message ) ) );
-		}
-
 		wp_send_json(
 			array(
 				'result'       => $is_error ? 'error' : 'success',
 				'coupon_code'  => $coupon_code,
 				'reference_id' => $reference_id,
 				'message'      => $message,
-				'debug'        => $debug_enabled ? array(
-					'message_len' => strlen( $message ),
-				) : null,
 			)
 		);
 	}
@@ -159,7 +149,6 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ?? '' ) );
 		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ?? '' ) );
-		$debug_enabled = apply_filters( 'fc_sc_debug_notices', defined( 'WP_DEBUG' ) && WP_DEBUG );
 
 		if ( ! empty( $coupon_code ) ) {
 			WC()->cart->remove_coupon( wc_format_coupon_code( $coupon_code ) );
@@ -174,19 +163,12 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 
-		if ( $debug_enabled ) {
-			error_log( sprintf( 'FC SC ajax_remove_coupon: code="%s", result=%s, message_len=%d', $coupon_code, $is_error ? 'error' : 'success', strlen( $message ) ) );
-		}
-
 		wp_send_json(
 			array(
 				'result'       => $is_error ? 'error' : 'success',
 				'coupon_code'  => $coupon_code,
 				'reference_id' => $reference_id,
 				'message'      => $message,
-				'debug'        => $debug_enabled ? array(
-					'message_len' => strlen( $message ),
-				) : null,
 			)
 		);
 	}

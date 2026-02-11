@@ -14,36 +14,12 @@
  * within the Fluid Checkout notices wrapper,
  * maintaining compatibility and a seamless checkout UX.
  */
-console.log( '[FC SmartCoupons Debug] checkout-woocommerce-smart-coupons compat script file loaded.' );
-
 jQuery( function( $ ) {
 	if ( typeof fcSmartCoupons === 'undefined' ) {
-		if ( window && window.console && console.warn ) {
-			console.warn( '[FC SmartCoupons Debug] fcSmartCoupons is undefined, aborting Smart Coupons compatibility script.' );
-		}
 		return;
 	}
 
 	/**
-	 * DEBUG LOGGER
-	 *
-	 * Logs are always enabled for now to help debugging
-	 * Smart Coupons compatibility issues.
-	 */
-	var logDebug = function() {
-		if ( ! window || ! window.console || ! console.log ) { return; }
-
-		var args = Array.prototype.slice.call( arguments );
-		args.unshift( '[FC SmartCoupons Debug]' );
-		console.log.apply( console, args );
-	};
-
-	logDebug( 'Script initialized.', {
-		fcSmartCoupons: fcSmartCoupons,
-		hasApplyButtons: !! $( '.apply_coupons_credits' ).length
-	} );
-
-		/**
 		 * METHODS
 		 *
 		 * Helper functions for handling Smart Coupons notices and actions.
@@ -63,13 +39,6 @@ jQuery( function( $ ) {
 		if ( ! $noticesWrapper.length ) {
 			$noticesWrapper = $( 'form.woocommerce-checkout' );
 		}
-
-		logDebug( 'getNoticesWrapper resolved.', {
-			isForm: $noticesWrapper.is( 'form' ),
-			selector: $noticesWrapper.selector,
-			length: $noticesWrapper.length
-		} );
-
 		return $noticesWrapper;
 	};
 
@@ -81,20 +50,12 @@ jQuery( function( $ ) {
 	var insertNotices = function( message ) {
 		var $noticesWrapper = getNoticesWrapper();
 		if ( ! $noticesWrapper.length ) {
-			logDebug( 'insertNotices: no wrapper found, message dropped.', message );
 			return;
 		}
-
-		logDebug( 'insertNotices: raw message.', message );
 
 		var $response = $( '<div>' ).html( message );
 		var $innerNotices = $response.find( '.woocommerce-notices-wrapper' );
 		var noticesHtml = $innerNotices.length ? $innerNotices.html() : message;
-
-		logDebug( 'insertNotices: parsed content.', {
-			hasInnerWrapper: !! $innerNotices.length,
-			targetIsForm: $noticesWrapper.is( 'form' )
-		} );
 
 		if ( $noticesWrapper.is( 'form' ) ) {
 			$noticesWrapper.prepend( noticesHtml );
@@ -116,15 +77,7 @@ jQuery( function( $ ) {
 			|| $button.attr( 'name' )
 			|| $button.find( '.code' ).text().trim();
 
-		logDebug( 'applySmartCouponForButton called.', {
-			button: $button.get( 0 ),
-			couponCode: couponCode,
-			referenceId: $button.data( 'reference_id' ),
-			ajaxUrl: fcSmartCoupons.applyUrl
-		} );
-
 		if ( ! couponCode ) {
-			logDebug( 'applySmartCouponForButton: no coupon code found on button (checked data-coupon_code, data-coupon, name, and .code text), aborting.' );
 			return;
 		}
 
@@ -140,26 +93,15 @@ jQuery( function( $ ) {
 			},
 			dataType: 'json',
 			success: function( response ) {
-				logDebug( 'applySmartCouponForButton: AJAX success.', response );
-
 				if ( ! response || ! response.message ) {
-					logDebug( 'applySmartCouponForButton: missing response.message, nothing to insert.' );
 					return;
 				}
 
 				insertNotices( response.message );
-				logDebug( 'applySmartCouponForButton: triggering update_checkout.' );
 				$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 			},
-			error: function( jqXHR, textStatus, errorThrown ) {
-				logDebug( 'applySmartCouponForButton: AJAX error.', {
-					textStatus: textStatus,
-					errorThrown: errorThrown,
-					responseText: jqXHR && jqXHR.responseText
-				} );
-			},
+			error: function() {},
 			complete: function() {
-				logDebug( 'applySmartCouponForButton: AJAX complete, restoring button opacity.' );
 				$button.css( 'opacity', '' );
 			}
 		} );
@@ -173,15 +115,7 @@ jQuery( function( $ ) {
 	var removeSmartCouponForLink = function( $link ) {
 		var couponCode = $link.data( 'coupon' );
 
-		logDebug( 'removeSmartCouponForLink called.', {
-			link: $link.get( 0 ),
-			couponCode: couponCode,
-			referenceId: $link.data( 'reference_id' ),
-			ajaxUrl: fcSmartCoupons.removeUrl
-		} );
-
 		if ( ! couponCode ) {
-			logDebug( 'removeSmartCouponForLink: no coupon data attribute on link, aborting.' );
 			return;
 		}
 
@@ -195,24 +129,14 @@ jQuery( function( $ ) {
 			},
 			dataType: 'json',
 			success: function( response ) {
-				logDebug( 'removeSmartCouponForLink: AJAX success.', response );
-
 				if ( ! response || ! response.message ) {
-					logDebug( 'removeSmartCouponForLink: missing response.message, nothing to insert.' );
 					return;
 				}
 
 				insertNotices( response.message );
-				logDebug( 'removeSmartCouponForLink: triggering update_checkout.' );
 				$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 			},
-			error: function( jqXHR, textStatus, errorThrown ) {
-				logDebug( 'removeSmartCouponForLink: AJAX error.', {
-					textStatus: textStatus,
-					errorThrown: errorThrown,
-					responseText: jqXHR && jqXHR.responseText
-				} );
-			}
+			error: function() {}
 		} );
 	};
 
@@ -224,21 +148,11 @@ jQuery( function( $ ) {
 	var captureHandler = function( e ) {
 		var target = e.target;
 
-		logDebug( 'captureHandler fired for click.', {
-			target: target,
-			targetClassName: target && target.className
-		} );
-
 		if ( ! target || ! target.closest ) {
-			logDebug( 'captureHandler: target has no closest method, aborting.' );
 			return;
 		}
 
 		var button = target.closest( '.apply_coupons_credits' );
-
-		logDebug( 'captureHandler: closest(".apply_coupons_credits") result.', {
-			button: button
-		} );
 
 		if ( ! button ) {
 			return;
@@ -247,7 +161,6 @@ jQuery( function( $ ) {
 		e.preventDefault();
 		e.stopImmediatePropagation();
 
-		logDebug( 'captureHandler: intercepted click on apply button, calling applySmartCouponForButton.' );
 		applySmartCouponForButton( $( button ) );
 	};
 
@@ -262,21 +175,11 @@ jQuery( function( $ ) {
 	document.addEventListener( 'click', function( e ) {
 		var target = e.target;
 
-		logDebug( 'remove coupon click handler fired.', {
-			target: target,
-			targetClassName: target && target.className
-		} );
-
 		if ( ! target || ! target.closest ) {
-			logDebug( 'remove coupon handler: target has no closest method, aborting.' );
 			return;
 		}
 
 		var link = target.closest( 'a.woocommerce-remove-coupon' );
-
-		logDebug( 'remove coupon handler: closest("a.woocommerce-remove-coupon") result.', {
-			link: link
-		} );
 
 		if ( ! link ) {
 			return;
@@ -285,7 +188,6 @@ jQuery( function( $ ) {
 		e.preventDefault();
 		e.stopImmediatePropagation();
 
-		logDebug( 'remove coupon handler: intercepted click on remove link, calling removeSmartCouponForLink.' );
 		removeSmartCouponForLink( $( link ) );
 	}, true );
 } );
