@@ -75,18 +75,13 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		add_action( 'wc_ajax_nopriv_fc_sc_remove_coupon', array( $this, 'ajax_remove_coupon' ) );
 	}
 
+
+
 	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
 		wp_register_script( 'fc-compat-woocommerce-smart-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-smart-coupons/checkout-woocommerce-smart-coupons' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-	}
-
-	/**
-	 * Enqueue assets.
-	 */
-	public function enqueue_assets() {
-		wp_enqueue_script( 'fc-compat-woocommerce-smart-coupons' );
 	}
 
 	/**
@@ -111,26 +106,41 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	}
 
 	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		wp_enqueue_script( 'fc-compat-woocommerce-smart-coupons' );
+	}
+
+
+
+	/**
 	 * AJAX apply a coupon code and return notices as JSON.
 	 */
 	public function ajax_apply_coupon() {
+		// Verify nonce
 		check_ajax_referer( 'fc-sc-apply-coupon', 'security' );
 
+		// Get data
 		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ?? '' ) );
 		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ?? '' ) );
 
+		// Apply coupon
 		if ( ! empty( $coupon_code ) ) {
 			WC()->cart->apply_coupon( wc_format_coupon_code( $coupon_code ) );
 		} else {
 			wc_add_notice( WC_Coupon::get_generic_coupon_error( WC_Coupon::E_WC_COUPON_PLEASE_ENTER ), 'error' );
 		}
 
+		// Get notices
 		ob_start();
 		wc_print_notices();
 		$message = ob_get_clean();
 
+		// Check if error
 		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 
+		// Return JSON
 		wp_send_json(
 			array(
 				'result'       => $is_error ? 'error' : 'success',
@@ -145,11 +155,15 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	 * AJAX remove a coupon code and return notices as JSON.
 	 */
 	public function ajax_remove_coupon() {
+		// Verify nonce
 		check_ajax_referer( 'fc-sc-remove-coupon', 'security' );
+
+		// Get data
 
 		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ?? '' ) );
 		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ?? '' ) );
 
+		// Remove coupon
 		if ( ! empty( $coupon_code ) ) {
 			WC()->cart->remove_coupon( wc_format_coupon_code( $coupon_code ) );
 			wc_add_notice( __( 'Coupon has been removed.', 'woocommerce' ) );
@@ -157,12 +171,15 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 			wc_add_notice( __( 'Sorry there was a problem removing this coupon.', 'woocommerce' ), 'error' );
 		}
 
+		// Get notices
 		ob_start();
 		wc_print_notices();
 		$message = ob_get_clean();
 
+		// Check if error
 		$is_error = false !== strpos( $message, 'woocommerce-error' ) || false !== strpos( $message, 'is-error' );
 
+		// Return JSON
 		wp_send_json(
 			array(
 				'result'       => $is_error ? 'error' : 'success',
