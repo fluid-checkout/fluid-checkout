@@ -81,8 +81,6 @@ jQuery( function( $ ) {
 			return;
 		}
 
-		$button.css( 'opacity', '0.5' );
-
 		$.ajax( {
 			type: 'POST',
 			url: fcSmartCoupons.applyUrl,
@@ -100,10 +98,7 @@ jQuery( function( $ ) {
 				insertNotices( response.message );
 				$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 			},
-			error: function() {},
-			complete: function() {
-				$button.css( 'opacity', '' );
-			}
+			error: function() {}
 		} );
 	};
 

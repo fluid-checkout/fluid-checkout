@@ -77,12 +77,12 @@ jQuery( function( $ ) {
 			|| $button.attr( 'name' )
 			|| $button.find( '.code' ).text().trim();
 
+		// Bail if no coupon code
 		if ( ! couponCode ) {
 			return;
 		}
 
-		$button.css( 'opacity', '0.5' );
-
+		// Send AJAX request
 		$.ajax( {
 			type: 'POST',
 			url: fcSmartCoupons.applyUrl,
@@ -100,10 +100,7 @@ jQuery( function( $ ) {
 				insertNotices( response.message );
 				$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 			},
-			error: function() {},
-			complete: function() {
-				$button.css( 'opacity', '' );
-			}
+			error: function() {}
 		} );
 	};
 
@@ -113,12 +110,15 @@ jQuery( function( $ ) {
 	 * Sends an AJAX request using Smart Coupons endpoints and updates checkout.
 	 */
 	var removeSmartCouponForLink = function( $link ) {
+		// Get coupon code
 		var couponCode = $link.data( 'coupon' );
 
+		// Bail if no coupon code
 		if ( ! couponCode ) {
 			return;
 		}
 
+		// Send AJAX request
 		$.ajax( {
 			type: 'POST',
 			url: fcSmartCoupons.removeUrl,
@@ -146,21 +146,27 @@ jQuery( function( $ ) {
 	 * Uses capture phase so we can intercept before plugin handlers.
 	 */
 	var captureHandler = function( e ) {
+		// Get target
 		var target = e.target;
 
+		// Bail if no target or closest
 		if ( ! target || ! target.closest ) {
 			return;
 		}
 
+		// Get button
 		var button = target.closest( '.apply_coupons_credits' );
 
+		// Bail if no button
 		if ( ! button ) {
 			return;
 		}
 
+		// Prevent default and stop immediate propagation
 		e.preventDefault();
 		e.stopImmediatePropagation();
 
+		// Apply smart coupon
 		applySmartCouponForButton( $( button ) );
 	};
 
@@ -173,21 +179,27 @@ jQuery( function( $ ) {
 	document.addEventListener( 'click', captureHandler, true );
 
 	document.addEventListener( 'click', function( e ) {
+		// Get target
 		var target = e.target;
 
+		// Bail if no target or closest
 		if ( ! target || ! target.closest ) {
 			return;
 		}
 
+		// Get link
 		var link = target.closest( 'a.woocommerce-remove-coupon' );
 
+		// Bail if no link
 		if ( ! link ) {
 			return;
 		}
 
+		// Prevent default and stop immediate propagation
 		e.preventDefault();
 		e.stopImmediatePropagation();
 
+		// Remove smart coupon
 		removeSmartCouponForLink( $( link ) );
 	}, true );
 } );
