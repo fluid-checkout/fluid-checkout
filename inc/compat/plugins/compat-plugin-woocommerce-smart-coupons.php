@@ -93,6 +93,9 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		$this->enqueue_assets();
 
+		// Pass AJAX URL and nonce to our intercept script. Smart Coupons normally uses full-page reload or
+		// WC's apply_coupon endpoint (HTML response). We use a custom fc_sc_* endpoint that returns JSON
+		// so we can insert notices into .fc-checkout-notices. The JS needs these values to make the request.
 		wp_localize_script(
 			'fc-compat-woocommerce-smart-coupons',
 			'fcSmartCoupons',
