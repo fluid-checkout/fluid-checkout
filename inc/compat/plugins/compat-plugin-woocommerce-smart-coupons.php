@@ -47,15 +47,25 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		// Get position
 		$position_hook = $this->get_position_to_display_available_coupons_on_checkout();
 
-		// Available coupons section
-		if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
-			// New method - Tested on WooCommerce Smart Coupons 8.17.0
-			remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
-			add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_before_checkout_form' ), $position_hook['priority'] );
-		} elseif ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
-			// Old method backward compatibility - Tested on WooCommerce Smart Coupons 4.7.0
-			remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
-			add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_on_classic_checkout' ), $position_hook['priority'] );
+		// Available coupons section (only add if a position is selected, not "do not show")
+		if ( null !== $position_hook ) {
+			if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
+				// New method - Tested on WooCommerce Smart Coupons 8.17.0
+				remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
+				add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_before_checkout_form' ), $position_hook['priority'] );
+			} elseif ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
+				// Old method backward compatibility - Tested on WooCommerce Smart Coupons 4.7.0
+				remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
+				add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_on_classic_checkout' ), $position_hook['priority'] );
+			}
+		} else {
+			// Do not show: remove from default positions
+			if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
+				remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
+			}
+			if ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
+				remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
+			}
 		}
 
 		// Custom AJAX endpoint to normalize notices on checkout
@@ -209,6 +219,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_integration_woocommerce_smart_coupons_position_checkout' ),
 					'autoload'        => false,
 					'options'         => array(
+						'do_not_show'           => __( 'Do not show', 'fluid-checkout' ),
 						'before_progress_bar'   => __( 'Before the progress bar', 'fluid-checkout' ),
 						'after_progress_bar'    => __( 'After the progress bar', 'fluid-checkout' ),
 						'before_steps'          => __( 'Before the checkout steps', 'fluid-checkout' ),
@@ -233,11 +244,16 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	/**
 	 * Get position to display available coupons on the checkout page.
 	 *
-	 * @return  string  Position to display available coupons on the checkout page.
+	 * @return  array|null  Position hook and priority, or null to not show the section.
 	 */
 	public function get_position_to_display_available_coupons_on_checkout() {
 		// Get option
 		$position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_woocommerce_smart_coupons_position_checkout' );
+
+		// Do not show
+		if ( 'do_not_show' === $position ) {
+			return null;
+		}
 
 		// Define position hook mapping
 		$position_hook_map = array(
