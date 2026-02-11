@@ -2542,6 +2542,10 @@ msgstr "Пасля індыкатара прагрэсу"
 msgid "Before coupon codes section"
 msgstr "Раздзел перад кодамі купонаў"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Не паказваць"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

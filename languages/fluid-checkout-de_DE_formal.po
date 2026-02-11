@@ -2739,6 +2739,10 @@ msgstr "Nach dem Fortschrittsbalken"
 msgid "Before coupon codes section"
 msgstr "Vor dem Abschnitt Gutscheincodes"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Nicht anzeigen"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

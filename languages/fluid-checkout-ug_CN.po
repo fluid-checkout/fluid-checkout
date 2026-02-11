@@ -2505,6 +2505,10 @@ msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
 msgid "Before coupon codes section"
 msgstr "تالون كود بۆلىكىدىن بۇرۇن"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "كۆرسەتمەڭ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

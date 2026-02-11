@@ -2649,6 +2649,10 @@ msgstr "Az előrehaladási sáv után"
 msgid "Before coupon codes section"
 msgstr "Mielőtt kupon kódok szakasz"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Ne mutassa"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

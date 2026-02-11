@@ -2508,6 +2508,10 @@ msgstr "Առաջընթացի գոտուց հետո"
 msgid "Before coupon codes section"
 msgstr "Մինչև կտրոնի կոդերի բաժինը"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Չցուցադրել"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2524,6 +2524,10 @@ msgstr "Прогресс тилкесинде кийин"
 msgid "Before coupon codes section"
 msgstr "купон коддору бөлүм алдында"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Көрсөтпө"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

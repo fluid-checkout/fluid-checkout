@@ -2500,6 +2500,10 @@ msgstr "Eftir framvindustikuna"
 msgid "Before coupon codes section"
 msgstr "Fyrir afsláttarkóðahlutann"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Ekki sýna"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

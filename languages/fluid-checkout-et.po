@@ -2484,6 +2484,10 @@ msgstr "Pärast eduriba"
 msgid "Before coupon codes section"
 msgstr "Enne kupongikoodide sektsiooni"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Mitte näidata"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

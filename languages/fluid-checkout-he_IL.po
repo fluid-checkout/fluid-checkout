@@ -2400,6 +2400,10 @@ msgstr "לאחר סרגל ההתקדמות"
 msgid "Before coupon codes section"
 msgstr "לפני מדור קודי קופון"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "אל תציג"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

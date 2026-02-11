@@ -2318,6 +2318,10 @@ msgstr "プログレスバーの後"
 msgid "Before coupon codes section"
 msgstr "クーポンコード欄の前に"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "表示しない"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2479,6 +2479,10 @@ msgstr "પ્રગતિ પટ્ટી પછી"
 msgid "Before coupon codes section"
 msgstr "કૂપન કોડ્સ વિભાગ પહેલાં"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "બતાવશો નહીં"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

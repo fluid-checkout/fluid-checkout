@@ -2354,6 +2354,10 @@ msgstr "ከሂደት አሞሌ በኋላ"
 msgid "Before coupon codes section"
 msgstr "ከኩፖን ኮዶች ክፍል በፊት"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "አታሳይ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

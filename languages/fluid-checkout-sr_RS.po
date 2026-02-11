@@ -2616,6 +2616,10 @@ msgstr "После траке напретка"
 msgid "Before coupon codes section"
 msgstr "Одељак пре кодова за купоне"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Не приказуј"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
