@@ -2301,6 +2301,10 @@ msgstr "진행률 표시줄 이후"
 msgid "Before coupon codes section"
 msgstr "쿠폰 코드 이전 섹션"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "표시하지 않음"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

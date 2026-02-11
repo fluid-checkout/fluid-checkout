@@ -2500,6 +2500,10 @@ msgstr "Etter fremdriftslinjen"
 msgid "Before coupon codes section"
 msgstr "Før kupongkoder seksjonen"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Ikke vis"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2570,6 +2570,10 @@ msgstr "Taraqqiyot panelidan keyin"
 msgid "Before coupon codes section"
 msgstr "Kupon kodlari bo&#39;limidan oldin"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Ko&#39;rsatilmasin"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2740,6 +2740,10 @@ msgstr "Μετά τη γραμμή προόδου"
 msgid "Before coupon codes section"
 msgstr "Πριν από το τμήμα κωδικών κουπονιών"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Μην εμφανίζετε"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

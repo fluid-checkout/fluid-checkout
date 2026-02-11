@@ -2534,6 +2534,10 @@ msgstr "Ar ôl y bar cynnydd"
 msgid "Before coupon codes section"
 msgstr "Cyn yr adran codau cwpon"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Peidiwch â dangos"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

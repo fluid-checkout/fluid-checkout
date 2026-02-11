@@ -2550,6 +2550,10 @@ msgstr "Pas shiritit të progresit"
 msgid "Before coupon codes section"
 msgstr "Para seksionit të kodeve të kuponave"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Mos e shfaq"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

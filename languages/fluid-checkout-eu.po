@@ -2539,6 +2539,10 @@ msgstr "Aurrerapen-barraren ondoren"
 msgid "Before coupon codes section"
 msgstr "Kupoi kodeen aurreko atala"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Ez erakutsi"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

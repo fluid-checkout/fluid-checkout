@@ -2535,6 +2535,10 @@ msgstr "Na die vorderingsbalk"
 msgid "Before coupon codes section"
 msgstr "Voor koeponkodes-afdeling"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Moenie wys nie"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

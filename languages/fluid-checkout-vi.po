@@ -2501,6 +2501,10 @@ msgstr "Sau thanh tiến trình"
 msgid "Before coupon codes section"
 msgstr "Trước phần mã giảm giá"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Không hiển thị"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2664,6 +2664,10 @@ msgstr "После появления индикатора выполнения"
 msgid "Before coupon codes section"
 msgstr "Перед разделом кодов купонов"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Не показывать"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

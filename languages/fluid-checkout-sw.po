@@ -2539,6 +2539,10 @@ msgstr "Baada ya bar ya maendeleo"
 msgid "Before coupon codes section"
 msgstr "Kabla ya sehemu ya misimbo ya kuponi"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Usionyeshe"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

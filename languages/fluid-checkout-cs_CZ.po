@@ -2639,6 +2639,10 @@ msgstr "Po zobrazení ukazatele průběhu"
 msgid "Before coupon codes section"
 msgstr "Před sekcí s kódy kupónů"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Nezobrazujte"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

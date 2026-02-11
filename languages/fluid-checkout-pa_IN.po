@@ -2489,6 +2489,10 @@ msgstr "ਤਰੱਕੀ ਪੱਟੀ ਤੋਂ ਬਾਅਦ"
 msgid "Before coupon codes section"
 msgstr "ਕੂਪਨ ਕੋਡ ਸੈਕਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "ਨਾ ਦਿਖਾਓ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

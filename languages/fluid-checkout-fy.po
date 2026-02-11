@@ -2539,6 +2539,10 @@ msgstr "Nei de foarútgongsbalke"
 msgid "Before coupon codes section"
 msgstr "Foarôfgeand oan de seksje koartingskoades"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Net sjen litte"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2553,6 +2553,10 @@ msgstr "По лентата за напредок"
 msgid "Before coupon codes section"
 msgstr "Пред делот за кодови за купони"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Не прикажувај"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

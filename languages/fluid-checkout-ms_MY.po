@@ -2543,6 +2543,10 @@ msgstr "Selepas bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sebelum bahagian kod kupon"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Jangan tunjukkan"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

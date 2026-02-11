@@ -2530,6 +2530,10 @@ msgstr "პროგრესის ზოლის შემდეგ"
 msgid "Before coupon codes section"
 msgstr "კუპონის კოდების განყოფილებამდე"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "არ აჩვენო"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
