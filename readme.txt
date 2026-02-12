@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 4.1.6-alpha-2 - 2026-02-12 =
 
-* Fixed: Use of class method deprecated in WooCommerce 10.3.0 causing order attribution feature to stop working.
+* Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
 
 = 4.1.5 - 2025-12-12 =
 
