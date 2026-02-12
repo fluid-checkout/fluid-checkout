@@ -394,8 +394,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 
-		// Bail if class object or function is not available
-		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+		// Bail if class object is not available
+		if ( ! $class_object ) { return; }
+
+		// Use `stamp_html_element` method for WooCommerce versions 10.5.0+
+		if ( method_exists( $class_object, 'stamp_html_element' ) ) {
+			$class_method = 'stamp_html_element';
+		}
+		// Otherwise, use deprecated `stamp_checkout_html_element_once` method
+		elseif ( method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) {
+			$class_method = 'stamp_checkout_html_element_once';
+		}
+		// Bail if neither method is available
+		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
@@ -411,12 +422,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Remove the order attribution stamp hooks
 		foreach ( $stamp_checkout_html_actions as $hook_name ) {
-			remove_action( $hook_name, array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+			remove_action( $hook_name, array( $class_object, $class_method ), 10 );
 		}
 
 		// Add the order attribution stamp hooks
-		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
-		add_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+		remove_action( 'fc_checkout_after', array( $class_object, $class_method ), 10 );
+		add_action( 'fc_checkout_after', array( $class_object, $class_method ), 10 );
 	}
 
 
@@ -638,8 +649,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 
-		// Bail if class object or function is not available
-		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+		// Bail if class object is not available
+		if ( ! $class_object ) { return; }
+
+		// Use `stamp_html_element` method for WooCommerce versions 10.5.0+
+		if ( method_exists( $class_object, 'stamp_html_element' ) ) {
+			$class_method = 'stamp_html_element';
+		}
+		// Otherwise, use deprecated `stamp_checkout_html_element_once` method
+		elseif ( method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) {
+			$class_method = 'stamp_checkout_html_element_once';
+		}
+		// Bail if neither method is available
+		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
@@ -654,11 +676,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Remove the order attribution stamp hooks from this plugin
-		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+		remove_action( 'fc_checkout_after', array( $class_object, $class_method ), 10 );
 
 		// Re-add the order attribution stamp hooks
 		foreach ( $stamp_checkout_html_actions as $hook_name ) {
-			add_action( $hook_name, array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+			add_action( $hook_name, array( $class_object, $class_method ), 10 );
 		}
 	}
 

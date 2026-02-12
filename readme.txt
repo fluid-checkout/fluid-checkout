@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Use of class method deprecated in WooCommerce 10.3.0 causing order attribution feature to stop working.
+
 = 4.1.5 - 2025-12-12 =
 
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
