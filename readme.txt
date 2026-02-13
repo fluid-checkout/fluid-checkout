@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Fixes layout issue with WC Subscriptions.
+* Fixed: Layout issue with shipping subtotals on WC Subscriptions.
 
 = 4.1.5 - 2025-12-12 =
 
