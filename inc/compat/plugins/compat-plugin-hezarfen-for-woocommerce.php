@@ -34,15 +34,13 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 		add_filter( 'woocommerce_get_country_locale', array( $this, 'change_locale_fields_args' ), 110 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
 
-		// Keep Hezarfen tax fields (Title/billing_company, Tax Number, Tax Office) in the always-visible billing only section
-		// When in the "billing same as shipping" collapsible block, these required fields can be hidden and cause validation errors. Hezarfen uses billing_company as "Invoice Title".
+		// Keep Hezarfen tax fields in billing section to avoid validation errors when hidden in "billing same as shipping" block.
 		add_filter( 'fc_billing_same_as_shipping_field_keys', array( $this, 'remove_billing_company_from_copy_shipping_field_keys' ), 10 );
 
-		// When invoice type is empty, the tax fields are hidden but still required - causing validation errors.
-		// Unset them from validation when not selected (same as Hezarfen does for "person" type).
+		// Unset tax fields from validation when invoice type is empty (same as Hezarfen for "person" type).
 		add_action( 'woocommerce_before_checkout_process', array( $this, 'maybe_unset_hezarfen_tax_fields_when_invoice_type_empty' ), 5 );
 
-		// Hide company tax fields (Invoice Title, Tax Number, Tax Office) from billing summary when "Personal" invoice type is selected
+		// Hide company tax fields from billing summary when "Personal" invoice type is selected.
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'remove_hezarfen_company_fields_from_billing_summary_when_personal' ), 999 );
 	}
 
@@ -254,10 +252,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 
 
 	/**
-	 * Remove billing company (Title) from fields to copy from shipping.
-	 * When Hezarfen checkout tax fields are active, billing_company is repurposed as "Title" (invoice title)
-	 * and must remain in the always-visible billing-only section to prevent "Billing Title is a required field" errors
-	 * when the "billing same as shipping" block is collapsed.
+	 * Remove billing_company from copy-from-shipping so it stays in billing section (Hezarfen uses it as "Title").
 	 *
 	 * @param   array  $billing_copy_shipping_field_keys  List of billing field keys to copy from shipping.
 	 * @return  array  Modified list of billing field keys.
@@ -268,7 +263,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 			return $billing_copy_shipping_field_keys;
 		}
 
-		// Remove billing company from fields to copy from shipping
+		// Remove billing company from fields to copy from shipping.
 		if ( is_array( $billing_copy_shipping_field_keys ) && in_array( 'billing_company', $billing_copy_shipping_field_keys ) ) {
 			$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, array( 'billing_company' ) );
 		}
@@ -279,9 +274,7 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 
 
 	/**
-	 * When Hezarfen invoice type is empty, the Title/Tax Number/Tax Office fields are hidden (hezarfen-hide-form-field)
-	 * but still required - causing "Billing Title is a required field" etc. errors.
-	 * Unset these fields from checkout validation when invoice type is not selected (same logic as Hezarfen's "person" type).
+	 * Unset tax fields from checkout validation when invoice type is empty (same as Hezarfen for "person" type).
 	 */
 	public function maybe_unset_hezarfen_tax_fields_when_invoice_type_empty() {
 		// Bail if Hezarfen checkout tax fields are not active
@@ -297,7 +290,6 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 			add_filter( 'woocommerce_checkout_fields', array( $this, 'unset_hezarfen_company_tax_fields_from_validation' ), 999998, 1 );
 
 			// Clear cached checkout fields so get_checkout_fields() re-initializes and applies our filter.
-			// Fields are cached on first use (e.g. during form render); without this our filter never runs.
 			if ( function_exists( 'WC' ) && WC()->checkout ) {
 				WC()->checkout->checkout_fields = null;
 			}
@@ -378,7 +370,6 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Get the current Hezarfen invoice type for display purposes.
-	 * Checks checkout value, POST data, and parsed post_data.
 	 *
 	 * @return  string  'person', 'company', or empty string.
 	 */
