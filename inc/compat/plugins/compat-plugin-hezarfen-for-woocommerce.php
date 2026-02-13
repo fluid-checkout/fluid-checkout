@@ -33,6 +33,17 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 		add_filter( 'fc_checkout_field_args', array( $this, 'change_checkout_field_args' ), 110 );
 		add_filter( 'woocommerce_get_country_locale', array( $this, 'change_locale_fields_args' ), 110 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 110 );
+
+		// Keep Hezarfen tax fields (Title/billing_company, Tax Number, Tax Office) in the always-visible billing only section
+		// When in the "billing same as shipping" collapsible block, these required fields can be hidden and cause validation errors. Hezarfen uses billing_company as "Invoice Title".
+		add_filter( 'fc_billing_same_as_shipping_field_keys', array( $this, 'remove_billing_company_from_copy_shipping_field_keys' ), 10 );
+
+		// When invoice type is empty, the tax fields are hidden but still required - causing validation errors.
+		// Unset them from validation when not selected (same as Hezarfen does for "person" type).
+		add_action( 'woocommerce_before_checkout_process', array( $this, 'maybe_unset_hezarfen_tax_fields_when_invoice_type_empty' ), 5 );
+
+		// Hide company tax fields (Invoice Title, Tax Number, Tax Office) from billing summary when "Personal" invoice type is selected
+		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'remove_hezarfen_company_fields_from_billing_summary_when_personal' ), 999 );
 	}
 
 
@@ -238,6 +249,157 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 		}
 
 		return $locales;
+	}
+
+
+
+	/**
+	 * Remove billing company (Title) from fields to copy from shipping.
+	 * When Hezarfen checkout tax fields are active, billing_company is repurposed as "Title" (invoice title)
+	 * and must remain in the always-visible billing-only section to prevent "Billing Title is a required field" errors
+	 * when the "billing same as shipping" block is collapsed.
+	 *
+	 * @param   array  $billing_copy_shipping_field_keys  List of billing field keys to copy from shipping.
+	 * @return  array  Modified list of billing field keys.
+	 */
+	public function remove_billing_company_from_copy_shipping_field_keys( $billing_copy_shipping_field_keys ) {
+		// Bail if Hezarfen checkout tax fields are not active
+		if ( 'yes' !== get_option( 'hezarfen_show_hezarfen_checkout_tax_fields', 'no' ) ) {
+			return $billing_copy_shipping_field_keys;
+		}
+
+		// Remove billing company from fields to copy from shipping
+		if ( is_array( $billing_copy_shipping_field_keys ) && in_array( 'billing_company', $billing_copy_shipping_field_keys ) ) {
+			$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, array( 'billing_company' ) );
+		}
+
+		return $billing_copy_shipping_field_keys;
+	}
+
+
+
+	/**
+	 * When Hezarfen invoice type is empty, the Title/Tax Number/Tax Office fields are hidden (hezarfen-hide-form-field)
+	 * but still required - causing "Billing Title is a required field" etc. errors.
+	 * Unset these fields from checkout validation when invoice type is not selected (same logic as Hezarfen's "person" type).
+	 */
+	public function maybe_unset_hezarfen_tax_fields_when_invoice_type_empty() {
+		// Bail if Hezarfen checkout tax fields are not active
+		if ( 'yes' !== get_option( 'hezarfen_show_hezarfen_checkout_tax_fields', 'no' ) ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$invoice_type = isset( $_POST['billing_hez_invoice_type'] ) ? sanitize_key( wp_unslash( $_POST['billing_hez_invoice_type'] ) ) : '';
+
+		// When empty or "person", the company tax fields (Title, Tax Number, Tax Office) are hidden - don't validate them.
+		if ( '' === $invoice_type || 'person' === $invoice_type ) {
+			add_filter( 'woocommerce_checkout_fields', array( $this, 'unset_hezarfen_company_tax_fields_from_validation' ), 999998, 1 );
+
+			// Clear cached checkout fields so get_checkout_fields() re-initializes and applies our filter.
+			// Fields are cached on first use (e.g. during form render); without this our filter never runs.
+			if ( function_exists( 'WC' ) && WC()->checkout ) {
+				WC()->checkout->checkout_fields = null;
+			}
+		}
+	}
+
+
+
+	/**
+	 * Unset Hezarfen company tax fields (Title, Tax Number, Tax Office) from checkout fields.
+	 * Used when invoice type is empty or "person" - these fields are hidden and should not be validated.
+	 *
+	 * @param   array  $fields  Checkout fields.
+	 * @return  array  Modified checkout fields.
+	 */
+	public function unset_hezarfen_company_tax_fields_from_validation( $fields ) {
+		if ( isset( $fields['billing'] ) ) {
+			unset( $fields['billing']['billing_company'], $fields['billing']['billing_hez_tax_number'], $fields['billing']['billing_hez_tax_office'] );
+		}
+		return $fields;
+	}
+
+
+
+	/**
+	 * Remove company tax fields (Invoice Title, Tax Number, Tax Office) from billing summary text lines
+	 * when "Personal" invoice type is selected.
+	 *
+	 * @param   array  $review_text_lines  The list of lines shown in the billing address substep review text.
+	 * @return  array  Modified list of lines.
+	 */
+	public function remove_hezarfen_company_fields_from_billing_summary_when_personal( $review_text_lines ) {
+		// Bail if Hezarfen checkout tax fields are not active
+		if ( 'yes' !== get_option( 'hezarfen_show_hezarfen_checkout_tax_fields', 'no' ) ) {
+			return $review_text_lines;
+		}
+
+		// Get the current Hezarfen invoice type for display purposes.
+		$invoice_type = $this->get_hezarfen_invoice_type_for_display();
+		if ( '' !== $invoice_type && 'person' !== $invoice_type ) {
+			return $review_text_lines;
+		}
+
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) {
+			return $review_text_lines;
+		}
+
+		// Get display values for company fields to remove from summary
+		$values_to_remove = array();
+		if ( function_exists( 'WC' ) && WC()->checkout && class_exists( 'FluidCheckout_Steps' ) ) {
+			$address_fields = WC()->checkout->get_checkout_fields( 'billing' );
+			$company_field_keys = array( 'billing_company', 'billing_hez_tax_number', 'billing_hez_tax_office' );
+			foreach ( $company_field_keys as $field_key ) {
+				if ( isset( $address_fields[ $field_key ] ) ) {
+					$field_value = WC()->checkout->get_value( $field_key );
+					$display_value = FluidCheckout_Steps::instance()->get_field_display_value( $field_value, $field_key, $address_fields[ $field_key ] );
+					if ( ! empty( $display_value ) ) {
+						$values_to_remove[] = wp_strip_all_tags( $display_value );
+					}
+				}
+			}
+		}
+
+		// Bail if no values to remove
+		if ( empty( $values_to_remove ) ) {
+			return $review_text_lines;
+		}
+
+		// Remove the values from the review text lines
+		return array_values( array_filter( $review_text_lines, function( $line ) use ( $values_to_remove ) {
+			$line_stripped = wp_strip_all_tags( $line );
+			return ! in_array( $line_stripped, $values_to_remove, true );
+		} ) );
+	}
+
+
+
+	/**
+	 * Get the current Hezarfen invoice type for display purposes.
+	 * Checks checkout value, POST data, and parsed post_data.
+	 *
+	 * @return  string  'person', 'company', or empty string.
+	 */
+	private function get_hezarfen_invoice_type_for_display() {
+		// Initialize invoice type
+		$invoice_type = '';
+		// Get invoice type from checkout value
+		if ( function_exists( 'WC' ) && WC()->checkout ) {
+			$invoice_type = WC()->checkout->get_value( 'billing_hez_invoice_type' );
+		}
+		// Get invoice type from POST data
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		if ( '' === $invoice_type && isset( $_POST['post_data'] ) ) {
+			parse_str( wp_unslash( $_POST['post_data'] ), $post_data );
+			$invoice_type = isset( $post_data['billing_hez_invoice_type'] ) ? sanitize_key( $post_data['billing_hez_invoice_type'] ) : '';
+		}
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		if ( '' === $invoice_type && isset( $_POST['billing_hez_invoice_type'] ) ) {
+			$invoice_type = sanitize_key( wp_unslash( $_POST['billing_hez_invoice_type'] ) );
+		}
+		return $invoice_type;
 	}
 
 }
