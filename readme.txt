@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 4.1.4
+Stable tag: 4.1.6-alpha-2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,7 +354,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 4.1.6-alpha-2 - 2026-02-12 =
+
+* Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
+
+= 4.1.5 - 2025-12-12 =
 
 * Added: Compatibility with plugin Nextend Social Login PRO.
 * Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
