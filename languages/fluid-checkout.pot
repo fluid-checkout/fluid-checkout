@@ -2048,12 +2048,16 @@ msgctxt "Log in link label at checkout contact step"
 msgid "Log in"
 msgstr ""
 
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:56
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr ""
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:65
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue below"
 msgstr ""
 
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:54
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:63
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr ""

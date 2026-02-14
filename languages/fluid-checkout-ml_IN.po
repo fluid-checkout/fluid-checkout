@@ -2568,6 +2568,10 @@ msgstr "പ്രോഗ്രസ് ബാറിന് ശേഷം"
 msgid "Before coupon codes section"
 msgstr "കൂപ്പൺ കോഡുകൾക്ക് മുമ്പുള്ള വിഭാഗം"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "അഥവാ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

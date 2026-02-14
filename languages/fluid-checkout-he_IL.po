@@ -2400,6 +2400,10 @@ msgstr "לאחר סרגל ההתקדמות"
 msgid "Before coupon codes section"
 msgstr "לפני מדור קודי קופון"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "אוֹ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

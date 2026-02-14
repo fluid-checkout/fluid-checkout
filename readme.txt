@@ -360,6 +360,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 4.1.5 - 2025-12-12 =
 
+* Added: Compatibility with plugin Nextend Social Login PRO.
+* Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
+
+= 4.1.5 - 2025-12-12 =
+
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
 * Added: Compatibility with plugin WC Cities Select.
 * Added: Compatibility with plugin WooCommerce Italian Add-on Plus.
