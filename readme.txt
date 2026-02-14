@@ -354,14 +354,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 4.1.6-alpha-2 - 2026-02-12 =
-
-* Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
-
-= 4.1.5 - 2025-12-12 =
+= Unreleased =
 
 * Added: Compatibility with plugin Nextend Social Login PRO.
 * Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
+* Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
 
 = 4.1.5 - 2025-12-12 =
 
