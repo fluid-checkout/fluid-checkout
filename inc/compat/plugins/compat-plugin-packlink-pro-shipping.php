@@ -6,6 +6,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
+
 	/**
 	 * The shipping method id.
 	 */
@@ -44,7 +45,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -79,6 +80,16 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-packlink-pro-shipping', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/packlink-pro-shipping/checkout-validation-packlink-pro-shipping' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-checkout-validation-packlink-pro-shipping', 'window.addEventListener("load",function(){CheckoutValidationPacklinkProShipping.init(fcSettings.checkoutValidationPacklinkProShipping);});' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 	/**
