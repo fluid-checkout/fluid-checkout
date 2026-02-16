@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Prevent Packlink errors by ensuring assets only load on checkout page.
+
 = 4.1.5 - 2025-12-12 =
 
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
