@@ -6,7 +6,6 @@ defined( 'ABSPATH' ) || exit;
  */
 class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
-
 	/**
 	 * The shipping method id.
 	 */
