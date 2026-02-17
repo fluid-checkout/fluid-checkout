@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 10.5.2
 * Added: Compatibility with plugin Nextend Social Login PRO.
 * Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
 * Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
