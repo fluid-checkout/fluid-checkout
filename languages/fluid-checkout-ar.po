@@ -2436,6 +2436,10 @@ msgstr "بعد شريط التقدم"
 msgid "Before coupon codes section"
 msgstr "قبل قسم أكواد الكوبون"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "أو"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
