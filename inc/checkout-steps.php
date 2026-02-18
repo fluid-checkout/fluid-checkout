@@ -4492,33 +4492,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function get_shipping_methods_available() {
+		// Ensure shipping packages are calculated
+		WC()->shipping()->calculate_shipping( WC()->cart->get_shipping_packages() );
+
 		// Calculate shipping before totals. This will ensure any shipping methods that affect things like taxes are chosen prior to final totals being calculated. Ref: #22708.
 		WC()->cart->calculate_shipping();
 		WC()->cart->calculate_totals();
 
+		// Get shipping packages
 		$packages = WC()->shipping->get_packages();
+		$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
 
+		// Start output buffering
 		ob_start();
 
+		// Output start tag for shipping methods packages
 		echo '<div class="fc-shipping-method__packages">';
 
+		// Do action before packages inside
 		do_action( 'fc_shipping_methods_before_packages_inside' );
 
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			
+			// Initialize array for product names
 			$product_names = array();
 
-			// Determine if has multiple packages
-			$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
-
+			// Maybe add product names to package details
 			if ( $has_multiple_packages ) {
+				// Iterate package contents
 				foreach ( $package['contents'] as $item_id => $values ) {
+					// Add product name and quantity to array
 					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
 				}
+
+				// Apply filters to product names
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
+			// Output shipping methods available template
 			wc_get_template( 'cart/shipping-methods-available.php', array(
 				'package'                   => $package,
 				'available_methods'         => $package['rates'],
@@ -4530,15 +4543,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'chosen_method'             => $chosen_method,
 				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
 				'has_calculated_shipping'   => WC()->customer->has_calculated_shipping(),
+				'first_item'                => $first_item,
 			) );
 
+			// Set first item flag to false
 			$first_item = false;
 		}
 
+		// Do action after packages inside
 		do_action( 'fc_shipping_methods_after_packages_inside' );
 
+		// Output end tag for shipping methods packages
 		echo '</div>';
 
+		// Return output buffer content
 		return ob_get_clean();
 	}
 
