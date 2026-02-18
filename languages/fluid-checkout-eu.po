@@ -2539,6 +2539,10 @@ msgstr "Aurrerapen-barraren ondoren"
 msgid "Before coupon codes section"
 msgstr "Kupoi kodeen aurreko atala"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Edo"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
