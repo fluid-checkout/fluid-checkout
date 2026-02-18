@@ -354,7 +354,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 4.1.6 - 2026-02-17 =
+= Unreleased =
 
 * Bump tested up to WooCommerce 10.5.2
 * Added: Compatibility with plugin Nextend Social Login PRO.
