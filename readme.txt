@@ -361,6 +361,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
 * Fixed: Compatibility with plugin Packlink PRO. Prevent Packlink errors by ensuring assets only load on checkout page.
 * Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
+* Fixed: Shipping methods section empty without message or options in some specific cases.
 
 = 4.1.5 - 2025-12-12 =
 
