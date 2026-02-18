@@ -1698,7 +1698,7 @@ msgstr ""
 msgid "When enabled, the shipping email field from the Bluehost plugin will be added to the checkout form."
 msgstr ""
 
-#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:102, inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:402, inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+#: inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:102, inc/compat/plugins/compat-plugin-box-now-delivery-croatia.php:402, inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:114, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
 msgid "Selecting a pickup point is required before proceeding."
 msgstr ""
 
