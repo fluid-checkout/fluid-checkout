@@ -16,11 +16,34 @@ class FluidCheckout_WooCommerceGermanizedPRO extends FluidCheckout {
 
 
 	/**
+	 * Check if the compatibility should be loaded.
+	 *
+	 * @return  bool  True if the compatibility should be loaded, false otherwise.
+	 */
+	public function is_compat_active() {
+		// Bail if Germanized Lite not active
+		if ( ! is_plugin_active( 'woocommerce-germanized/woocommerce-germanized.php' ) ) { return false; }
+
+		// Bail if class not available or Germanized PRO not active
+		if ( ! class_exists( 'WC_GZDP_Dependencies' ) || ! property_exists( 'WC_GZDP_Dependencies', 'instance' ) || ! WC_GZDP_Dependencies::instance()->loadable ) { return false; }
+
+		return true;
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Bail if Germanized Lite not active
-		if ( ! is_plugin_active( 'woocommerce-germanized/woocommerce-germanized.php' ) ) { return; }
+		// Enqueue hooks
+		// Should be loaded before checking whether plugin is completely active
+		// to prevent loading styles when the plugin is not active yet
+		add_action( 'fc_enable_compat_plugin_style_woocommerce-germanized-pro', array( $this, 'maybe_prevent_loading_styles' ), 10 );
+		add_action( 'fc_enable_compat_plugin_edit_address_style_woocommerce-germanized-pro', array( $this, 'maybe_prevent_loading_styles' ), 10 );
+
+		// Bail if compatibility is not active
+		if ( ! $this->is_compat_active() ) { return; }
 
 		// VAT validation
 		$this->vat_validation_hooks();
@@ -42,6 +65,19 @@ class FluidCheckout_WooCommerceGermanizedPRO extends FluidCheckout {
 			add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list' , array( $this, 'add_vat_id_field_step_review_text_skip_list' ), 10 );
 			add_filter( 'fc_substep_text_billing_address_field_keys_skip_list' , array( $this, 'add_vat_id_field_step_review_text_skip_list' ), 10 );
 		}
+	}
+
+
+
+	/**
+	 * Maybe prevent loading styles when the plugin is not active yet.
+	 */
+	public function maybe_prevent_loading_styles( $is_style_enabled ) {
+		// Bail if compatibility is active
+		if ( $this->is_compat_active() ) { return $is_style_enabled; }
+
+		// Prevent loading styles
+		return false;
 	}
 
 

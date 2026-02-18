@@ -2516,6 +2516,10 @@ msgstr "ಪ್ರಗತಿ ಪಟ್ಟಿಯ ನಂತರ"
 msgid "Before coupon codes section"
 msgstr "ಕೂಪನ್ ಕೋಡ್‌ಗಳ ವಿಭಾಗಕ್ಕಿಂತ ಮೊದಲು"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ಅಥವಾ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
