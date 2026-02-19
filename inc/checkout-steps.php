@@ -4024,7 +4024,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Handle package name
 			if ( $has_multiple_packages && $this->is_shipping_package_name_display_enabled() ) {
-				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $package_index, $package );
+				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 				$package_name = '<strong>' . $package_name . '</strong>';
 				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
 			}
@@ -4503,7 +4503,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
-				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
+				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $i, $package ),
 				'package_index'             => $i,
 				'chosen_method'             => $chosen_method,
 				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
@@ -6420,7 +6420,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			/** translators: %d: Package number */
-			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $package_index, $package );
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 			$product_names = array();
 
 			if ( count( $packages ) > 1 ) {
