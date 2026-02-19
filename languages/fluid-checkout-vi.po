@@ -2623,3 +2623,15 @@ msgstr "Hoặc tiếp tục với tư cách là khách"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Xóa hình ảnh"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Vận chuyển %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Vận chuyển"

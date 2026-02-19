@@ -2695,3 +2695,15 @@ msgstr "Или продължете като гост"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Премахване на изображението"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Доставка %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Доставка"

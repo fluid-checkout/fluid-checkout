@@ -2601,3 +2601,15 @@ msgstr "یا به عنوان مهمان ادامه دهید"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "حذف تصویر"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "ارسال %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "حمل و نقل"
