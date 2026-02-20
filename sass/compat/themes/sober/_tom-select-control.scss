@@ -1,0 +1,21 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+//! Add border fix 
+body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
+	// z-index: z( 'above' );
+	// height: remsize( 5rem );
+	// padding-#{ $alignment-left }: remsize( 2rem );
+	// border: remsize( .1rem ) solid #e5e7f2; // Needed to match theme styles
+	// border-radius: remsize( .4rem );
+
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	color: #23232c; //! seems kirky there is a variable for this
+}
+
+body#{ $_body-theme-selector } .ts-control:focus-within {
+	outline: none !important;
+}
