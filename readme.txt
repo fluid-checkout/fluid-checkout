@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Coupon positioning issues on some versions of Advanced Coupons for WooCommerce.
+
 = 4.1.5 - 2025-12-12 =
 
 * Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
