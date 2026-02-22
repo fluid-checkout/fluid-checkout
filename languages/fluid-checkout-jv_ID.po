@@ -2496,6 +2496,10 @@ msgstr "Sawise bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sadurunge bagean kode coupon"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Utawa"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

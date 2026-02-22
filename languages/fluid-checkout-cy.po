@@ -2534,6 +2534,10 @@ msgstr "Ar ôl y bar cynnydd"
 msgid "Before coupon codes section"
 msgstr "Cyn yr adran codau cwpon"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Neu"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

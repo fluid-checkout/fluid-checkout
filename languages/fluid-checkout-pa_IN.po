@@ -2489,6 +2489,10 @@ msgstr "ਤਰੱਕੀ ਪੱਟੀ ਤੋਂ ਬਾਅਦ"
 msgid "Before coupon codes section"
 msgstr "ਕੂਪਨ ਕੋਡ ਸੈਕਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ਜਾਂ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

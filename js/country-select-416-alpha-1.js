@@ -222,10 +222,8 @@ jQuery( function( $ ) {
 
 				// CHANGE: Maybe clear cached TomSelect option renderings before updating DOM to prevent old options merging with new ones
 				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
-					// Clear selected options
+					// Clear selected and unselected options
 					$statebox[ 0 ].tomselect.clear();
-
-					// Clear unselected options
 					$statebox[ 0 ].tomselect.clearOptions();
 				}
 
