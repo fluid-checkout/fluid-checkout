@@ -86,7 +86,18 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
+		// Register script
 		wp_register_script( 'fc-compat-woocommerce-smart-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-smart-coupons/checkout-woocommerce-smart-coupons' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_localize_script(
+			'fc-compat-woocommerce-smart-coupons',
+			'fcSmartCoupons',
+			array(
+				'applyUrl'    => WC_AJAX::get_endpoint( 'fc_sc_apply_coupon' ),
+				'applyNonce'  => wp_create_nonce( 'fc-sc-apply-coupon' ),
+				'removeUrl'   => WC_AJAX::get_endpoint( 'fc_sc_remove_coupon' ),
+				'removeNonce' => wp_create_nonce( 'fc-sc-remove-coupon' ),
+			)
+		);
 	}
 
 	/**
@@ -101,18 +112,6 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		// Enqueue assets
 		$this->enqueue_assets();
-
-		// Add script settings
-		wp_localize_script(
-			'fc-compat-woocommerce-smart-coupons',
-			'fcSmartCoupons',
-			array(
-				'applyUrl'    => WC_AJAX::get_endpoint( 'fc_sc_apply_coupon' ),
-				'applyNonce'  => wp_create_nonce( 'fc-sc-apply-coupon' ),
-				'removeUrl'   => WC_AJAX::get_endpoint( 'fc_sc_remove_coupon' ),
-				'removeNonce' => wp_create_nonce( 'fc-sc-remove-coupon' ),
-			)
-		);
 	}
 
 	/**
