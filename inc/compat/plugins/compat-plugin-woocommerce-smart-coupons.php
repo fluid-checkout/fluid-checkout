@@ -47,22 +47,27 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		// Get position
 		$position_hook = $this->get_position_to_display_available_coupons_on_checkout();
 
-		// Available coupons section (only add if a position is selected, not "do not show")
+		// Available coupons section (only add if a position is selected, skip if position set to "do not show")
 		if ( null !== $position_hook ) {
 			if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
 				// New method - Tested on WooCommerce Smart Coupons 8.17.0
 				remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
-				add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_before_checkout_form' ), $position_hook['priority'] );
-			} elseif ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
+				add_action( $position_hook[ 'hook' ], array( $class_object, 'show_available_coupons_before_checkout_form' ), $position_hook[ 'priority' ] );
+			}
+			elseif ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
 				// Old method backward compatibility - Tested on WooCommerce Smart Coupons 4.7.0
 				remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
-				add_action( $position_hook['hook'], array( $class_object, 'show_available_coupons_on_classic_checkout' ), $position_hook['priority'] );
+				add_action( $position_hook[ 'hook' ], array( $class_object, 'show_available_coupons_on_classic_checkout' ), $position_hook[ 'priority' ] );
 			}
-		} else {
+		}
+		// Do not show: remove from default positions
+		else {
 			// Do not show: remove from default positions
 			if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
 				remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
 			}
+
+			// Do not show: remove from default positions
 			if ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
 				remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
 			}
@@ -88,14 +93,16 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
+		// Bail if not on checkout page or fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if class is not available
 		if ( ! class_exists( 'WC_SC_Display_Coupons' ) ) { return; }
 
+		// Enqueue assets
 		$this->enqueue_assets();
 
-		// Pass AJAX URL and nonce to our intercept script. Smart Coupons normally uses full-page reload or
-		// WC's apply_coupon endpoint (HTML response). We use a custom fc_sc_* endpoint that returns JSON
-		// so we can insert notices into .fc-checkout-notices. The JS needs these values to make the request.
+		// Add script settings
 		wp_localize_script(
 			'fc-compat-woocommerce-smart-coupons',
 			'fcSmartCoupons',
@@ -162,7 +169,6 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		check_ajax_referer( 'fc-sc-remove-coupon', 'security' );
 
 		// Get data
-
 		$coupon_code = sanitize_text_field( wp_unslash( $_REQUEST['coupon_code'] ?? '' ) );
 		$reference_id = sanitize_text_field( wp_unslash( $_REQUEST['reference_id'] ?? '' ) );
 
@@ -170,7 +176,8 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		if ( ! empty( $coupon_code ) ) {
 			WC()->cart->remove_coupon( wc_format_coupon_code( $coupon_code ) );
 			wc_add_notice( __( 'Coupon has been removed.', 'woocommerce' ) );
-		} else {
+		}
+		else {
 			wc_add_notice( __( 'Sorry there was a problem removing this coupon.', 'woocommerce' ), 'error' );
 		}
 
@@ -252,10 +259,8 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		// Get option
 		$position = FluidCheckout_Settings::instance()->get_option( 'fc_integration_woocommerce_smart_coupons_position_checkout' );
 
-		// Do not show
-		if ( 'do_not_show' === $position ) {
-			return null;
-		}
+		// Bail if position is set to "do not show", return as `null`
+		if ( 'do_not_show' === $position ) { return null; }
 
 		// Define position hook mapping
 		$position_hook_map = array(
