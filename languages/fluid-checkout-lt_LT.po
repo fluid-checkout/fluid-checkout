@@ -2636,9 +2636,15 @@ msgstr "Po pažangos juostos"
 msgid "Before coupon codes section"
 msgstr "Prieš kuponų kodų skyrių"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "Nerodyti"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Arba"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2764,3 +2770,15 @@ msgstr "Arba tęskite kaip svečias"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Pašalinti vaizdą"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Pristatymas %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Pristatymas"

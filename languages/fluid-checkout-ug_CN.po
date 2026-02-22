@@ -2505,9 +2505,15 @@ msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
 msgid "Before coupon codes section"
 msgstr "تالون كود بۆلىكىدىن بۇرۇن"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "كۆرسەتمەڭ"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ياكى"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2631,3 +2637,15 @@ msgstr "ياكى مېھمان سۈپىتىدە داۋاملاشتۇرۇڭ"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "رەسىمنى ئۆچۈرۈڭ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "يەتكۈزۈش %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "توشۇش"

@@ -2487,9 +2487,15 @@ msgstr "प्रगति पट्टी के बाद"
 msgid "Before coupon codes section"
 msgstr "कूपन कोड अनुभाग से पहले"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "नहीं दिखाते"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "या"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2613,3 +2619,15 @@ msgstr "या अतिथि के रूप में जारी रखे
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "छवि हटाएँ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "शिपिंग %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "शिपिंग"

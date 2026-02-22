@@ -2498,9 +2498,15 @@ msgstr "প্ৰগ্ৰেছ বাৰৰ পিছত"
 msgid "Before coupon codes section"
 msgstr "কুপন ক&#39;ড অংশৰ আগত"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "দেখুৱাব নালাগে"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "অথবা"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2624,3 +2630,15 @@ msgstr "বা অতিথি হিচাপে আগবাঢ়ি যা�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ছবি আঁতৰাওক"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "শিপিং %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "পঠিওৱা"

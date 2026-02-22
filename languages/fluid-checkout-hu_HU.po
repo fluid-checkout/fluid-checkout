@@ -2649,9 +2649,15 @@ msgstr "Az előrehaladási sáv után"
 msgid "Before coupon codes section"
 msgstr "Mielőtt kupon kódok szakasz"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "Ne mutassa"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Vagy"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2777,3 +2783,15 @@ msgstr "Vagy folytassa vendégként"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Kép eltávolítása"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Szállítás %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Szállítás"

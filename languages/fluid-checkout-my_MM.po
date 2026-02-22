@@ -2589,9 +2589,15 @@ msgstr "တိုးတက်မှုဘားပြီးနောက်"
 msgid "Before coupon codes section"
 msgstr "ကူပွန်ကုဒ်များ ကဏ္ဍမစမီ"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "မပြပါနဲ့"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "သို့မဟုတ်"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2715,3 +2721,15 @@ msgstr "ဒါမှမဟုတ် ဧည့်သည်အဖြစ် ဆက�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ပုံကို ဖယ်ရှားပါ။"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "ပို့ဆောင်မှု %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "သင်္ဘောဖြင့်ကုန်ပစ္စည်းပို့ခြင်း"

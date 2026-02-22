@@ -2524,9 +2524,15 @@ msgstr "Орындалу жолағынан кейін"
 msgid "Before coupon codes section"
 msgstr "Купон кодтары бөлімінің алдында"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "Көрсетпеу"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Немесе"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2650,3 +2656,15 @@ msgstr "Немесе қонақ ретінде жалғастырыңыз"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Кескінді жою"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Жеткізу %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Жеткізілім"

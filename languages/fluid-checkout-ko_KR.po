@@ -2301,9 +2301,15 @@ msgstr "진행률 표시줄 이후"
 msgid "Before coupon codes section"
 msgstr "쿠폰 코드 이전 섹션"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "표시하지 않음"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "또는"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2427,3 +2433,15 @@ msgstr "또는 게스트로 계속 참여하기"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "이미지 제거"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "배송 %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "배송"

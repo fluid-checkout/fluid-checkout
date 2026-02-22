@@ -2530,9 +2530,15 @@ msgstr "პროგრესის ზოლის შემდეგ"
 msgid "Before coupon codes section"
 msgstr "კუპონის კოდების განყოფილებამდე"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "არ აჩვენო"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ან"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2656,3 +2662,15 @@ msgstr "ან გააგრძელეთ სტუმრად"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "სურათის წაშლა"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "მიწოდება %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "მიწოდება"

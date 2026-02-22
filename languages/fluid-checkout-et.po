@@ -2484,9 +2484,15 @@ msgstr "Pärast eduriba"
 msgid "Before coupon codes section"
 msgstr "Enne kupongikoodide sektsiooni"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "Mitte näidata"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Või"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2610,3 +2616,15 @@ msgstr "Või jätkake külalisena"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Pildi eemaldamine"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Laevandus %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Laevandus"

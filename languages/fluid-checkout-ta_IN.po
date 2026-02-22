@@ -2573,9 +2573,15 @@ msgstr "முன்னேற்றப் பட்டிக்குப் ப�
 msgid "Before coupon codes section"
 msgstr "கூப்பன் குறியீடுகளுக்கு முன் பிரிவு"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "காட்டாதே"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "அல்லது"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2699,3 +2705,15 @@ msgstr "அல்லது விருந்தினராகத் தொட�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "படத்தை அகற்று"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "அனுப்புதல் %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "கப்பல் போக்குவரத்து"

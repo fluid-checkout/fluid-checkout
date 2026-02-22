@@ -2527,9 +2527,15 @@ msgstr "Setelah bilah kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sebelum bagian kode kupon"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "Jangan tunjukkan"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Atau"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2653,3 +2659,15 @@ msgstr "Atau lanjutkan sebagai tamu"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Menghapus gambar"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Pengiriman %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Pengiriman"

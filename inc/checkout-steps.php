@@ -394,8 +394,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 
-		// Bail if class object or function is not available
-		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+		// Bail if class object is not available
+		if ( ! $class_object ) { return; }
+
+		// Use `stamp_html_element` method for WooCommerce versions 10.5.0+
+		if ( method_exists( $class_object, 'stamp_html_element' ) ) {
+			$class_method = 'stamp_html_element';
+		}
+		// Otherwise, use deprecated `stamp_checkout_html_element_once` method
+		elseif ( method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) {
+			$class_method = 'stamp_checkout_html_element_once';
+		}
+		// Bail if neither method is available
+		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
@@ -411,12 +422,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Remove the order attribution stamp hooks
 		foreach ( $stamp_checkout_html_actions as $hook_name ) {
-			remove_action( $hook_name, array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+			remove_action( $hook_name, array( $class_object, $class_method ), 10 );
 		}
 
 		// Add the order attribution stamp hooks
-		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
-		add_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+		remove_action( 'fc_checkout_after', array( $class_object, $class_method ), 10 );
+		add_action( 'fc_checkout_after', array( $class_object, $class_method ), 10 );
 	}
 
 
@@ -638,8 +649,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get class object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 
-		// Bail if class object or function is not available
-		if ( ! $class_object || ! method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) { return; }
+		// Bail if class object is not available
+		if ( ! $class_object ) { return; }
+
+		// Use `stamp_html_element` method for WooCommerce versions 10.5.0+
+		if ( method_exists( $class_object, 'stamp_html_element' ) ) {
+			$class_method = 'stamp_html_element';
+		}
+		// Otherwise, use deprecated `stamp_checkout_html_element_once` method
+		elseif ( method_exists( $class_object, 'stamp_checkout_html_element_once' ) ) {
+			$class_method = 'stamp_checkout_html_element_once';
+		}
+		// Bail if neither method is available
+		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
 		$stamp_checkout_html_actions = apply_filters(
@@ -654,11 +676,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Remove the order attribution stamp hooks from this plugin
-		remove_action( 'fc_checkout_after', array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+		remove_action( 'fc_checkout_after', array( $class_object, $class_method ), 10 );
 
 		// Re-add the order attribution stamp hooks
 		foreach ( $stamp_checkout_html_actions as $hook_name ) {
-			add_action( $hook_name, array( $class_object, 'stamp_checkout_html_element_once' ), 10 );
+			add_action( $hook_name, array( $class_object, $class_method ), 10 );
 		}
 	}
 
@@ -4024,7 +4046,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Handle package name
 			if ( $has_multiple_packages && $this->is_shipping_package_name_display_enabled() ) {
-				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $package_index, $package );
+				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 				$package_name = '<strong>' . $package_name . '</strong>';
 				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
 			}
@@ -4470,53 +4492,71 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @access public
 	 */
 	public function get_shipping_methods_available() {
+		// Ensure shipping packages are calculated
+		WC()->shipping()->calculate_shipping( WC()->cart->get_shipping_packages() );
+
 		// Calculate shipping before totals. This will ensure any shipping methods that affect things like taxes are chosen prior to final totals being calculated. Ref: #22708.
 		WC()->cart->calculate_shipping();
 		WC()->cart->calculate_totals();
 
+		// Get shipping packages
 		$packages = WC()->shipping->get_packages();
+		$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
 
+		// Start output buffering
 		ob_start();
 
+		// Output start tag for shipping methods packages
 		echo '<div class="fc-shipping-method__packages">';
 
+		// Do action before packages inside
 		do_action( 'fc_shipping_methods_before_packages_inside' );
 
 		$first_item = true;
 		foreach ( $packages as $i => $package ) {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			
+			// Initialize array for product names
 			$product_names = array();
 
-			// Determine if has multiple packages
-			$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
-
+			// Maybe add product names to package details
 			if ( $has_multiple_packages ) {
+				// Iterate package contents
 				foreach ( $package['contents'] as $item_id => $values ) {
+					// Add product name and quantity to array
 					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
 				}
+
+				// Apply filters to product names
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
+			// Output shipping methods available template
 			wc_get_template( 'cart/shipping-methods-available.php', array(
 				'package'                   => $package,
 				'available_methods'         => $package['rates'],
 				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
-				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $i, $package ),
+				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $i, $package ),
 				'package_index'             => $i,
 				'chosen_method'             => $chosen_method,
 				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
 				'has_calculated_shipping'   => WC()->customer->has_calculated_shipping(),
+				'first_item'                => $first_item,
 			) );
 
+			// Set first item flag to false
 			$first_item = false;
 		}
 
+		// Do action after packages inside
 		do_action( 'fc_shipping_methods_after_packages_inside' );
 
+		// Output end tag for shipping methods packages
 		echo '</div>';
 
+		// Return output buffer content
 		return ob_get_clean();
 	}
 
@@ -6420,7 +6460,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			/** translators: %d: Package number */
-			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'woocommerce' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'woocommerce' ), $package_index, $package );
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 			$product_names = array();
 
 			if ( count( $packages ) > 1 ) {

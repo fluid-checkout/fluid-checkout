@@ -2485,9 +2485,15 @@ msgstr "หลังจากแถบความคืบหน้า"
 msgid "Before coupon codes section"
 msgstr "ก่อนส่วนรหัสคูปอง"
 
+<<<<<<< HEAD
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
 msgid "Do not show"
 msgstr "อย่าแสดง"
+=======
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "หรือ"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2611,3 +2617,15 @@ msgstr "หรือดำเนินการต่อในฐานะแข
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ลบรูปภาพ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "ค่าจัดส่ง %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "การส่งสินค้า"
