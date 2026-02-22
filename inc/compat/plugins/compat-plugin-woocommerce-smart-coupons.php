@@ -101,6 +101,13 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	}
 
 	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		wp_enqueue_script( 'fc-compat-woocommerce-smart-coupons' );
+	}
+
+	/**
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
@@ -114,12 +121,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		$this->enqueue_assets();
 	}
 
-	/**
-	 * Enqueue assets.
-	 */
-	public function enqueue_assets() {
-		wp_enqueue_script( 'fc-compat-woocommerce-smart-coupons' );
-	}
+
 
 
 
