@@ -2500,6 +2500,10 @@ msgstr "Eftir framvindustikuna"
 msgid "Before coupon codes section"
 msgstr "Fyrir afsláttarkóðahlutann"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Eða"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

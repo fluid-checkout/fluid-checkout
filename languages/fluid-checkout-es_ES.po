@@ -2726,6 +2726,10 @@ msgstr "Después de la barra de progreso"
 msgid "Before coupon codes section"
 msgstr "Antes de la sección de códigos de cupón"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "O"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

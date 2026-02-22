@@ -2701,6 +2701,10 @@ msgstr "İlerleme çubuğundan sonra"
 msgid "Before coupon codes section"
 msgstr "Kupon kodları bölümünden önce"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Ya da"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

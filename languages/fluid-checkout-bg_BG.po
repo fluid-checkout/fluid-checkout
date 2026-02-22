@@ -2573,6 +2573,10 @@ msgstr "След лентата за напредък"
 msgid "Before coupon codes section"
 msgstr "Преди раздел кодове на купони"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Или"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

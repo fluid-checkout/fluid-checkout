@@ -2535,6 +2535,10 @@ msgstr "Piştî barika pêşketinê"
 msgid "Before coupon codes section"
 msgstr "Berî beşa kodên kuponê"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "An"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2572,6 +2572,10 @@ msgstr "Pagkahuman sa progress bar"
 msgid "Before coupon codes section"
 msgstr "Sa wala pa ang seksyon sa mga code sa kupon"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "O"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

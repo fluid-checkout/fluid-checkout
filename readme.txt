@@ -354,9 +354,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 4.1.6-alpha-7 - 2026-02-19 =
+= Unreleased =
 
-* Fixed: Layout issue with shipping subtotals on WC Subscriptions.
+* Bump tested up to WooCommerce 10.5.2
+* Added: Compatibility with plugin Nextend Social Login PRO.
+* Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
+* Fixed: Compatibility with plugin Packlink PRO. Prevent Packlink errors by ensuring assets only load on checkout page.
+* Fixed: Compatibility with plugin Hezarfen. Fix issue with invoice types on checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Layout issue with shipping subtotals.
+* Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
+* Fixed: Shipping methods section empty without message or options in some specific cases.
 
 = 4.1.5 - 2025-12-12 =
 

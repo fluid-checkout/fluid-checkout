@@ -2502,6 +2502,10 @@ msgstr "Efter förloppsindikatorn"
 msgid "Before coupon codes section"
 msgstr "Före avsnittet om kupongkoder"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Eller"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2542,6 +2542,10 @@ msgstr "Пасля індыкатара прагрэсу"
 msgid "Before coupon codes section"
 msgstr "Раздзел перад кодамі купонаў"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Або"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

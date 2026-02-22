@@ -2703,6 +2703,10 @@ msgstr "Na de voortgangsbalk"
 msgid "Before coupon codes section"
 msgstr "Voor coupon codes sectie"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Of"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

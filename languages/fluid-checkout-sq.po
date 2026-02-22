@@ -2550,6 +2550,10 @@ msgstr "Pas shiritit të progresit"
 msgid "Before coupon codes section"
 msgstr "Para seksionit të kodeve të kuponave"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Ose"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

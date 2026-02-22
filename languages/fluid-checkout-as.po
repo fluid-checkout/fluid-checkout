@@ -2498,6 +2498,10 @@ msgstr "প্ৰগ্ৰেছ বাৰৰ পিছত"
 msgid "Before coupon codes section"
 msgstr "কুপন ক&#39;ড অংশৰ আগত"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "অথবা"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

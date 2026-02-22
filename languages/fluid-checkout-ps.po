@@ -2481,6 +2481,10 @@ msgstr "د پرمختګ بار وروسته"
 msgid "Before coupon codes section"
 msgstr "د کوپن کوډونو برخه مخکې"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "یا"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

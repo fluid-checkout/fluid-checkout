@@ -2639,6 +2639,10 @@ msgstr "Po zobrazení ukazatele průběhu"
 msgid "Before coupon codes section"
 msgstr "Před sekcí s kódy kupónů"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Nebo"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

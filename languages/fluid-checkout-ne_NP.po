@@ -2486,6 +2486,10 @@ msgstr "प्रगति पट्टी पछि"
 msgid "Before coupon codes section"
 msgstr "कुपन कोड खण्ड अघि"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "वा"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

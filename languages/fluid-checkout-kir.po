@@ -2524,6 +2524,10 @@ msgstr "Прогресс тилкесинде кийин"
 msgid "Before coupon codes section"
 msgstr "купон коддору бөлүм алдында"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Же болбосо"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

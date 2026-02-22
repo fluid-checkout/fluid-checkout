@@ -2585,6 +2585,10 @@ msgstr "Às dèidh a’ bhàr adhartais"
 msgid "Before coupon codes section"
 msgstr "Roimhe earrann nan còdan cùpain"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "No"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
