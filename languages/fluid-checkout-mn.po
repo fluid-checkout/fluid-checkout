@@ -2528,6 +2528,10 @@ msgstr "Явцын мөрний дараа"
 msgid "Before coupon codes section"
 msgstr "Купон кодын өмнө"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Эсвэл"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

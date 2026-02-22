@@ -2589,6 +2589,10 @@ msgstr "တိုးတက်မှုဘားပြီးနောက်"
 msgid "Before coupon codes section"
 msgstr "ကူပွန်ကုဒ်များ ကဏ္ဍမစမီ"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "သို့မဟုတ်"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

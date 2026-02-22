@@ -2649,6 +2649,10 @@ msgstr "Az előrehaladási sáv után"
 msgid "Before coupon codes section"
 msgstr "Mielőtt kupon kódok szakasz"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Vagy"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
