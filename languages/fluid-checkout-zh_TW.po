@@ -2391,3 +2391,15 @@ msgstr "或以訪客身分繼續"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "刪除圖片"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "運費百分比"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "船運"

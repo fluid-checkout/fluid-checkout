@@ -1,0 +1,82 @@
+body.theme-diza div.woocommerce form .form-row input,
+body.theme-diza div.woocommerce form .form-row textarea,
+body.theme-diza div.woocommerce form .form-row select,
+body.theme-diza div.woocommerce form .form-row .select2-container,
+body.theme-diza div.woocommerce form .form-row .select2-container .select2-selection {
+  margin-bottom: 0 !important;
+}
+
+body.theme-diza div.woocommerce form .form-row textarea,
+body.theme-diza div.woocommerce form.checkout #order_comments {
+  padding: var(--fluidcheckout--field--padding-left, 8px) !important;
+}
+@media (max-width: 480px) {
+  body.theme-diza div.woocommerce form .form-row textarea,
+  body.theme-diza div.woocommerce form.checkout #order_comments {
+    padding: 8px !important;
+  }
+}
+
+body.theme-diza div.woocommerce form.checkout #order_comments {
+  line-height: normal !important;
+  min-height: 100px;
+}
+
+body.theme-diza div.woocommerce form .form-row .input-checkbox {
+  display: none;
+}
+
+body.theme-diza div.woocommerce form .form-row label.checkbox {
+  display: block;
+}
+
+body.theme-diza div.woocommerce form .form-row .woocommerce-form__input + span {
+  display: inline;
+}
+
+body.theme-diza .fc-content form.woocommerce-checkout {
+  padding: 0;
+}
+
+body.theme-diza .fc-content form.woocommerce-checkout:before {
+  content: none;
+}
+
+body.theme-diza .woocommerce table.shop_table > thead > tr > th .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > thead > tr > td .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tbody > tr > td .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tbody > tr > th .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tfoot > tr > td .woocommerce-Price-amount,
+body.theme-diza .woocommerce table.shop_table > tfoot > tr > th .woocommerce-Price-amount {
+  color: inherit;
+}
+
+body.theme-diza div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]).fc-select2-field:not(.fc-no-validation-icon) select:not([required]) ~ .select2-container .select2-selection.select2-selection--multiple:after {
+  left: 5px;
+}
+
+body.theme-diza div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th,
+body.theme-diza div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td {
+  line-height: 26px !important;
+}
+
+@media (max-width: 480px) {
+  body.theme-diza .ts-control {
+    padding-right: 8px;
+  }
+}
+
+body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-top: 0;
+}
+
+@media (max-width: 480px) {
+  body.theme-diza div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+    padding-right: 8px;
+  }
+}
+
+body.theme-diza div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
+  margin-left: var(--fluidcheckout--select2--inner-spacing, 5px);
+}

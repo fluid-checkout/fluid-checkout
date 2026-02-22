@@ -2624,3 +2624,15 @@ msgstr "বা অতিথি হিচাপে আগবাঢ়ি যা�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ছবি আঁতৰাওক"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "শিপিং %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "পঠিওৱা"

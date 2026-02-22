@@ -2603,3 +2603,15 @@ msgstr "किंवा पाहुणे म्हणून सुरू ठ�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "इमेज काढा"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "शिपिंग %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "शिपिंग"

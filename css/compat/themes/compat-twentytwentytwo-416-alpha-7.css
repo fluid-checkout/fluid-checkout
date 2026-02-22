@@ -1,0 +1,22 @@
+body.theme-twentytwentytwo.woocommerce-checkout #order_review .shop_table .cart-subtotal .woocommerce-Price-amount,
+body.theme-twentytwentytwo.woocommerce-checkout #order_review .shop_table .product-total .woocommerce-Price-amount {
+  font-weight: 400;
+}
+
+body.theme-twentytwentytwo input[type=radio].shipping_method + label::before {
+  margin: 0;
+  transform: none;
+}
+
+body.theme-twentytwentytwo input[type=radio].shipping_method:checked + label::before {
+  background: inherit;
+}
+
+body.theme-twentytwentytwo .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio] + label::before {
+  margin: 0;
+  transform: none;
+}
+
+body.theme-twentytwentytwo .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:checked + label::before {
+  background: inherit;
+}

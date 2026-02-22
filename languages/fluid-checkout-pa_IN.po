@@ -2615,3 +2615,15 @@ msgstr "ਜਾਂ ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ਚਿੱਤਰ ਹਟਾਓ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "ਸ਼ਿਪਿੰਗ %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "ਸ਼ਿਪਿੰਗ"

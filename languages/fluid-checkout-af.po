@@ -2661,3 +2661,15 @@ msgstr "Of gaan voort as &#39;n gas"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Verwyder prent"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Versending %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Versending"

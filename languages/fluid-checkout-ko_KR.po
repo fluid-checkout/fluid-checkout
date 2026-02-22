@@ -2427,3 +2427,15 @@ msgstr "또는 게스트로 계속 참여하기"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "이미지 제거"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "배송 %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "배송"
