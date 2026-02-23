@@ -111,11 +111,12 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
+		// Bail if class is not available
+		$class_name = 'WC_SC_Display_Coupons';
+		if ( ! class_exists( $class_name ) ) { return; }
+
 		// Bail if not on checkout page or fragment
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
-
-		// Bail if class is not available
-		if ( ! class_exists( 'WC_SC_Display_Coupons' ) ) { return; }
 
 		// Enqueue assets
 		$this->enqueue_assets();
