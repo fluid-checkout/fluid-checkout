@@ -36,7 +36,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	 * Add or remove checkout hooks.
 	 */
 	public function checkout_hooks() {
-		// Bail if class is not available
+		// Bail if plugin WooCommerce Smart Coupons class is not available
 		$class_name = 'WC_SC_Display_Coupons';
 		if ( ! class_exists( $class_name ) ) { return; }
 
@@ -111,7 +111,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
-		// Bail if class is not available
+		// Bail if plugin WooCommerce Smart Coupons class is not available
 		$class_name = 'WC_SC_Display_Coupons';
 		if ( ! class_exists( $class_name ) ) { return; }
 
