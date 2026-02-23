@@ -98,6 +98,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 				'removeNonce' => wp_create_nonce( 'fc-sc-remove-coupon' ),
 			)
 		);
+		wp_add_inline_script( 'fc-compat-woocommerce-smart-coupons', 'window.addEventListener("load",function(){fcSmartCouponsCheckoutSettings.init();});' );
 	}
 
 	/**
