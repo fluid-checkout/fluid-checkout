@@ -72,7 +72,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		// Get show available coupons method
 		$show_available_coupons_method = '';
 		foreach ( $method_names as $method_name ) {
-			if ( is_callable( array( $class_object, $method_name ) ) ) {
+			if ( method_exists( $class_object, $method_name ) ) {
 				$show_available_coupons_method = $method_name;
 				break;
 			}
