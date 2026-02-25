@@ -2528,9 +2528,15 @@ msgstr "Явцын мөрний дараа"
 msgid "Before coupon codes section"
 msgstr "Купон кодын өмнө"
 
+<<<<<<< HEAD
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Харуулахгүй"
+=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Эсвэл"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

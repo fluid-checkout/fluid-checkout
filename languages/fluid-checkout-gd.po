@@ -2585,9 +2585,15 @@ msgstr "Às dèidh a’ bhàr adhartais"
 msgid "Before coupon codes section"
 msgstr "Roimhe earrann nan còdan cùpain"
 
+<<<<<<< HEAD
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Na seall"
+=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "No"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

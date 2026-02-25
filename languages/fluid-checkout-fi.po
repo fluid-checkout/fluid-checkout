@@ -2487,9 +2487,15 @@ msgstr "Edistymispalkin jälkeen"
 msgid "Before coupon codes section"
 msgstr "Ennen kuponkikoodit osio"
 
+<<<<<<< HEAD
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Älä näytä"
+=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Tai"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

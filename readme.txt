@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Bump tested up to WooCommerce 10.5.2
 * Added: Compatibility with plugin Nextend Social Login PRO.
+* Improved: Compatibility with plugin WooCommerce Smart Coupons.
 * Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
 * Fixed: Compatibility with plugin Packlink PRO. Prevent Packlink errors by ensuring assets only load on checkout page.
 * Fixed: Compatibility with plugin Hezarfen. Fix issue with invoice types on checkout.

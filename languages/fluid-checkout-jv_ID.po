@@ -2496,9 +2496,15 @@ msgstr "Sawise bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sadurunge bagean kode coupon"
 
+<<<<<<< HEAD
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Aja nuduhake"
+=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Utawa"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

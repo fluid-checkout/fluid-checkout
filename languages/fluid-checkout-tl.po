@@ -2585,9 +2585,15 @@ msgstr "Pagkatapos ng progress bar"
 msgid "Before coupon codes section"
 msgstr "Bago ang seksyon ng mga code ng kupon"
 
+<<<<<<< HEAD
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "Huwag ipakita"
+=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "O kaya"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

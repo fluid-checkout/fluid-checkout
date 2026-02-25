@@ -2497,9 +2497,15 @@ msgstr "ترقی بار کے بعد"
 msgid "Before coupon codes section"
 msgstr "کوپن کوڈز سیکشن سے پہلے"
 
+<<<<<<< HEAD
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
+msgid "Do not show"
+msgstr "نہ دکھاؤ"
+=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "یا"
+>>>>>>> main
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
