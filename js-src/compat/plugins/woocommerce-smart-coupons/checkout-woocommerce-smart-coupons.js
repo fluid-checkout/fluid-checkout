@@ -16,7 +16,6 @@
  *
  * DEPENDS ON:
  * - jQuery
- * - fcSmartCoupons (localized by PHP)
  */
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
@@ -24,7 +23,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.fcSmartCouponsCheckoutSettings = factory(root);
+		root.FCSmartCouponsCheckout = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
@@ -36,14 +35,16 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		checkoutNoticesSelector: '.fc-checkout-notices',
-		woocommerceNoticesWrapperSelector: '.woocommerce-notices-wrapper:first',
-		checkoutFormSelector: 'form.woocommerce-checkout',
+		preferredNoticesWrapperSelector: '.fc-checkout-notices',
+		fallbackNoticesWrapperSelector: '.woocommerce-notices-wrapper:first-child, form.woocommerce-checkout',
 
 		applyButtonSelector: '.apply_coupons_credits',
 		removeLinkSelector: 'a.woocommerce-remove-coupon',
 		innerNoticesWrapperSelector: '.woocommerce-notices-wrapper',
 		codeTextSelector: '.code',
+
+		applyNonce: '', // Defined at initialization
+		removeNonce: '', // Defined at initialization
 	};
 
 
@@ -63,14 +64,14 @@
 	 * @return  jQuery  The notices wrapper element.
 	 */
 	var getNoticesWrapper = function() {
-		var $noticesWrapper = $( _settings.checkoutNoticesSelector );
-		if ( ! $noticesWrapper.length ) {
-			$noticesWrapper = $( _settings.woocommerceNoticesWrapperSelector );
-		}
-		if ( ! $noticesWrapper.length ) {
-			$noticesWrapper = $( _settings.checkoutFormSelector );
-		}
-		return $noticesWrapper;
+		// Get notices wrapper
+		var noticesWrapper = document.querySelector( _settings.preferredNoticesWrapperSelector ) || document.querySelector( _settings.fallbackNoticesWrapperSelector );
+
+		// Bail if no notices wrapper found
+		if ( ! noticesWrapper ) { return null; }
+
+		// Return notices wrapper
+		return noticesWrapper;
 	};
 
 
@@ -83,19 +84,28 @@
 	 * @param   string  message  Raw markup or full response payload.
 	 */
 	var insertNotices = function( message ) {
-		var $noticesWrapper = getNoticesWrapper();
+		// Get notices wrapper
+		var noticesWrapper = getNoticesWrapper();
 
 		// Bail if notices wrapper is not available
-		if ( ! $noticesWrapper.length ) { return; }
+		if ( ! noticesWrapper ) { return; }
 
-		var $response = $( '<div>' ).html( message );
-		var $innerNotices = $response.find( _settings.innerNoticesWrapperSelector );
-		var noticesHtml = $innerNotices.length ? $innerNotices.html() : message;
+		// Create temporary div to parse message
+		var tempDiv = document.createElement('div');
+		tempDiv.innerHTML = message;
 
-		if ( $noticesWrapper.is( 'form' ) ) {
-			$noticesWrapper.prepend( noticesHtml );
-		} else {
-			$noticesWrapper.empty().append( noticesHtml );
+		// Get inner notices
+		var innerNotices = tempDiv.querySelector(_settings.innerNoticesWrapperSelector);
+		var noticesHtml = innerNotices ? innerNotices.innerHTML : message;
+
+		// Insert notices HTML into notices wrapper at the top of the form
+		if ( noticesWrapper.tagName && noticesWrapper.tagName.toLowerCase() === 'form' ) {
+			noticesWrapper.insertAdjacentHTML( 'afterbegin', noticesHtml );
+		}
+		// Otherwise, empty the wrapper and append notices HTML
+		else {
+			noticesWrapper.innerHTML = '';
+			noticesWrapper.insertAdjacentHTML( 'beforeend', noticesHtml );
 		}
 	};
 
@@ -103,39 +113,54 @@
 
 	/**
 	 * Apply a Smart Coupon when the "apply coupon/credits" button is clicked.
-	 *
 	 * Sends an AJAX request using Smart Coupons endpoints and updates checkout.
 	 *
-	 * @param   jQuery  $button  The apply button element.
+	 * @param   Element  button  The apply button element.
 	 */
-	var applySmartCouponForButton = function( $button ) {
+	var applySmartCouponForButton = function( button ) {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+		
+		// Bail if button is not available
+		if ( ! button ) { return; }
+
 		// Newer versions of Smart Coupons changed how coupon data is stored.
 		// Try multiple fallbacks so this works across versions.
-		var couponCode = $button.data( 'coupon_code' )
-			|| $button.data( 'coupon' )
-			|| $button.attr( 'name' )
-			|| $button.find( _settings.codeTextSelector ).text().trim();
-
-		// Bail if no coupon code
+		var couponCode =
+			button.getAttribute('data-coupon_code') ||
+			button.getAttribute('data-coupon') ||
+			button.getAttribute('name');
+		
+		// Maybe get coupon code from code text selector
+		if ( ! couponCode ) {
+			couponCode = button.querySelector( _settings.codeTextSelector ) ? button.querySelector( _settings.codeTextSelector ).textContent.trim() : '';
+		}
+	
+		// Bail if no coupon code value found
 		if ( ! couponCode ) { return; }
 
+		// Define apply URL
+		var applyUrl = fcSettings.wcAjaxUrl.replace( '%%endpoint%%', 'fc_sc_apply_coupon' );
+
+		// Send AJAX request
 		$.ajax( {
 			type: 'POST',
-			url: root.fcSmartCoupons.applyUrl,
+			url: applyUrl,
 			data: {
 				coupon_code: couponCode,
-				reference_id: $button.data( 'reference_id' ) || '',
-				security: root.fcSmartCoupons.applyNonce
+				reference_id: button.getAttribute( 'data-reference_id' ) || '',
+				security: _settings.applyNonce
 			},
 			dataType: 'json',
 			success: function( response ) {
 				// Bail if response or message is not available
 				if ( ! response || ! response.message ) { return; }
 
+				// Insert notices
 				insertNotices( response.message );
-				if ( _hasJQuery ) {
-					$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
-				}
+
+				// Trigger checkout update
+				$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 			},
 			error: function() {}
 		} );
@@ -150,29 +175,41 @@
 	 *
 	 * @param   jQuery  $link  The remove link element.
 	 */
-	var removeSmartCouponForLink = function( $link ) {
-		var couponCode = $link.data( 'coupon' );
+	var removeSmartCouponForLink = function( link ) {
+		// Bail if jQuery is not available
+		if ( ! _hasJQuery ) { return; }
+		
+		// Bail if link is not available
+		if ( ! link ) { return; }
+
+		// Get coupon code
+		var couponCode = link.getAttribute( 'data-coupon' );
 
 		// Bail if no coupon code
 		if ( ! couponCode ) { return; }
 
+		// Define remove URL
+		var removeUrl = fcSettings.wcAjaxUrl.replace( '%%endpoint%%', 'fc_sc_remove_coupon' );
+
+		// Send AJAX request
 		$.ajax( {
 			type: 'POST',
-			url: root.fcSmartCoupons.removeUrl,
+			url: removeUrl,
 			data: {
 				coupon_code: couponCode,
-				reference_id: $link.data( 'reference_id' ) || '',
-				security: root.fcSmartCoupons.removeNonce
+				reference_id: link.getAttribute( 'data-reference_id' ) || '',
+				security: _settings.removeNonce
 			},
 			dataType: 'json',
 			success: function( response ) {
 				// Bail if response or message is not available
 				if ( ! response || ! response.message ) { return; }
 
+				// Insert notices
 				insertNotices( response.message );
-				if ( _hasJQuery ) {
-					$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
-				}
+
+				// Trigger checkout update
+				$( document.body ).trigger( 'update_checkout', { update_shipping_method: false } );
 			},
 			error: function() {}
 		} );
@@ -197,13 +234,13 @@
 		if ( target.closest( _settings.applyButtonSelector ) ) {
 			e.preventDefault();
 			e.stopImmediatePropagation();
-			applySmartCouponForButton( $( target.closest( _settings.applyButtonSelector ) ) );
+			applySmartCouponForButton( target.closest( _settings.applyButtonSelector ) );
 		}
 		// REMOVE COUPON
 		else if ( target.closest( _settings.removeLinkSelector ) ) {
 			e.preventDefault();
 			e.stopImmediatePropagation();
-			removeSmartCouponForLink( $( target.closest( _settings.removeLinkSelector ) ) );
+			removeSmartCouponForLink( target.closest( _settings.removeLinkSelector ) );
 		}
 	};
 
@@ -211,13 +248,15 @@
 
 	/**
 	 * Initialize component and set related handlers.
+	 * 
+	 * @param   object  options  The options object.
 	 */
-	_publicMethods.init = function() {
+	_publicMethods.init = function( options ) {
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
 
-		// Bail if fcSmartCoupons config is not available
-		if ( typeof root.fcSmartCoupons === 'undefined' ) { return; }
+		// Merge settings
+		_settings = FCUtils.extendObject( _settings, options );
 
 		// Add event listeners (capture phase to intercept before Smart Coupons)
 		document.addEventListener( 'click', handleClick, true );

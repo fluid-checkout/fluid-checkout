@@ -25,6 +25,9 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
+		// JS settings object
+		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
+
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
@@ -88,17 +91,7 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	public function register_assets() {
 		// Register script
 		wp_register_script( 'fc-compat-woocommerce-smart-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woocommerce-smart-coupons/checkout-woocommerce-smart-coupons' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_localize_script(
-			'fc-compat-woocommerce-smart-coupons',
-			'fcSmartCoupons',
-			array(
-				'applyUrl'    => WC_AJAX::get_endpoint( 'fc_sc_apply_coupon' ),
-				'applyNonce'  => wp_create_nonce( 'fc-sc-apply-coupon' ),
-				'removeUrl'   => WC_AJAX::get_endpoint( 'fc_sc_remove_coupon' ),
-				'removeNonce' => wp_create_nonce( 'fc-sc-remove-coupon' ),
-			)
-		);
-		wp_add_inline_script( 'fc-compat-woocommerce-smart-coupons', 'window.addEventListener("load",function(){fcSmartCouponsCheckoutSettings.init();});' );
+		wp_add_inline_script( 'fc-compat-woocommerce-smart-coupons', 'window.addEventListener("load",function(){FCSmartCouponsCheckout.init(fcSettings.fcSmartCouponsCheckoutSettings);});' );
 	}
 
 	/**
@@ -121,6 +114,23 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 
 		// Enqueue assets
 		$this->enqueue_assets();
+	}
+
+
+
+	/**
+	 * Add settings to the plugin settings JS object.
+	 *
+	 * @param   array  $settings  JS settings object of the plugin.
+	 */
+	public function add_js_settings( $settings ) {
+
+		$settings[ 'fcSmartCouponsCheckoutSettings' ] = array(
+			'applyNonce'  => wp_create_nonce( 'fc-sc-apply-coupon' ),
+			'removeNonce' => wp_create_nonce( 'fc-sc-remove-coupon' ),
+		);
+
+		return $settings;
 	}
 
 
