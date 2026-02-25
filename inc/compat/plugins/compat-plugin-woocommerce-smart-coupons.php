@@ -19,6 +19,9 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -31,6 +34,17 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
+		// Custom AJAX endpoint to normalize notices on checkout
+		add_action( 'wc_ajax_fc_sc_apply_coupon', array( $this, 'ajax_apply_coupon' ) );
+		add_action( 'wc_ajax_nopriv_fc_sc_apply_coupon', array( $this, 'ajax_apply_coupon' ) );
+		add_action( 'wc_ajax_fc_sc_remove_coupon', array( $this, 'ajax_remove_coupon' ) );
+		add_action( 'wc_ajax_nopriv_fc_sc_remove_coupon', array( $this, 'ajax_remove_coupon' ) );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
 		// Checkout hooks
 		$this->checkout_hooks();
 	}
@@ -43,44 +57,38 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 		$class_name = 'WC_SC_Display_Coupons';
 		if ( ! class_exists( $class_name ) ) { return; }
 
-		// Bail if class object is not found
-		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+		// Make sure class object is loaded
+		$class_object = $class_name::get_instance();
+
+		// Bail if class object is not loaded
 		if ( ! is_object( $class_object ) ) { return; }
+
+		// Define show available coupons method
+		$method_names = array(
+			'show_available_coupons_on_classic_checkout',
+			'show_available_coupons_before_checkout_form',
+		);
+
+		// Get show available coupons method
+		$show_available_coupons_method = '';
+		foreach ( $method_names as $method_name ) {
+			if ( is_callable( array( $class_object, $method_name ) ) ) {
+				$show_available_coupons_method = $method_name;
+				break;
+			}
+		}
+
+		// Remove all show coupons hooks from default positions
+		foreach ( $method_names as $method_name ) {
+			remove_action( 'woocommerce_before_checkout_form', array( $class_object, $method_name ), 11 );
+			remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, $method_name ), 11 );
+		}
 
 		// Get position
 		$position_hook = $this->get_position_to_display_available_coupons_on_checkout();
 
-		// Available coupons section (only add if a position is selected, skip if position set to "do not show")
-		if ( null !== $position_hook ) {
-			if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
-				// New method - Tested on WooCommerce Smart Coupons 8.17.0
-				remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
-				add_action( $position_hook[ 'hook' ], array( $class_object, 'show_available_coupons_before_checkout_form' ), $position_hook[ 'priority' ] );
-			}
-			elseif ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
-				// Old method backward compatibility - Tested on WooCommerce Smart Coupons 4.7.0
-				remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
-				add_action( $position_hook[ 'hook' ], array( $class_object, 'show_available_coupons_on_classic_checkout' ), $position_hook[ 'priority' ] );
-			}
-		}
-		// Do not show: remove from default positions
-		else {
-			// Do not show: remove from default positions
-			if ( is_callable( array( $class_object, 'show_available_coupons_before_checkout_form' ) ) ) {
-				remove_action( 'woocommerce_before_checkout_form', array( $class_object, 'show_available_coupons_before_checkout_form' ), 11 );
-			}
-
-			// Do not show: remove from default positions
-			if ( is_callable( array( $class_object, 'show_available_coupons_on_classic_checkout' ) ) ) {
-				remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'show_available_coupons_on_classic_checkout' ), 11 );
-			}
-		}
-
-		// Custom AJAX endpoint to normalize notices on checkout
-		add_action( 'wc_ajax_fc_sc_apply_coupon', array( $this, 'ajax_apply_coupon' ) );
-		add_action( 'wc_ajax_nopriv_fc_sc_apply_coupon', array( $this, 'ajax_apply_coupon' ) );
-		add_action( 'wc_ajax_fc_sc_remove_coupon', array( $this, 'ajax_remove_coupon' ) );
-		add_action( 'wc_ajax_nopriv_fc_sc_remove_coupon', array( $this, 'ajax_remove_coupon' ) );
+		// Add show available coupons hook to selected position
+		add_action( $position_hook[ 'hook' ], array( $class_object, $show_available_coupons_method ), $position_hook[ 'priority' ] );
 	}
 
 
