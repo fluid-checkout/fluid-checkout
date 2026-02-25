@@ -4,6 +4,7 @@ body.has-fluid-checkout #coupons_list .sc-accordion-header {
 
 div.woocommerce #coupons_list {
   height: auto !important;
+  clear: both;
 }
 
 .woocommerce-notices-wrapper:empty {

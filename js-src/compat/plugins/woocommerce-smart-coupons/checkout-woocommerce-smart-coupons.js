@@ -58,10 +58,7 @@
 	/**
 	 * Get the wrapper where notices should be rendered.
 	 *
-	 * Falls back from Fluid Checkout wrapper to WooCommerce's
-	 * default notices wrapper and finally to the checkout form.
-	 *
-	 * @return  jQuery  The notices wrapper element.
+	 * @return  Element  The notices wrapper element.
 	 */
 	var getNoticesWrapper = function() {
 		// Get notices wrapper
@@ -124,8 +121,7 @@
 		// Bail if button is not available
 		if ( ! button ) { return; }
 
-		// Newer versions of Smart Coupons changed how coupon data is stored.
-		// Try multiple fallbacks so this works across versions.
+		// Get coupon code value
 		var couponCode =
 			button.getAttribute('data-coupon_code') ||
 			button.getAttribute('data-coupon') ||

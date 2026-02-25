@@ -3,6 +3,7 @@
 // ------------------------------------
 div.woocommerce #coupons_list {
 	height: auto !important; // Needed to override theme styles set by JS
+	clear: both;
 }
 
 .woocommerce-notices-wrapper:empty {
