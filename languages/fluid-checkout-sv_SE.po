@@ -2604,6 +2604,9 @@ msgstr "Kollapsad"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Utökad"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Visa inte"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2727,3 +2730,15 @@ msgstr "Eller fortsätt som gäst"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Ta bort bild"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Frakt %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Frakt"

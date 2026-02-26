@@ -2675,6 +2675,9 @@ msgstr "சுருக்கப்பட்டது"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "விரிவாக்கப்பட்டது"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "காட்டாதே"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2798,3 +2801,15 @@ msgstr "அல்லது விருந்தினராகத் தொட�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "படத்தை அகற்று"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "அனுப்புதல் %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "கப்பல் போக்குவரத்து"

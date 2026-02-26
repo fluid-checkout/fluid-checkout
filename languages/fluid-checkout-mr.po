@@ -2579,6 +2579,9 @@ msgstr "कोलॅप्स झाले"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "विस्तारित"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "दाखवू नका"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2702,3 +2705,15 @@ msgstr "किंवा पाहुणे म्हणून सुरू ठ�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "इमेज काढा"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "शिपिंग %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "शिपिंग"

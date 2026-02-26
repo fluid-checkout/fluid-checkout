@@ -2450,6 +2450,9 @@ msgstr "ተሰብስቧል"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "ተዘርግቷል"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "አታሳይ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2573,3 +2576,15 @@ msgstr "ወይም እንደ እንግዳ ቀጥል"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ምስል አስወግድ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "%d መላኪያ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "ጭነት"

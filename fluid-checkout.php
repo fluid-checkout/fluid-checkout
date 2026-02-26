@@ -9,11 +9,11 @@ Version: 4.2.0-alpha-7
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 10.3.6
+WC tested up to: 10.5.2
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2025 Fluid Checkout OÜ
+Copyright (C) 2021-2026 Fluid Checkout OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

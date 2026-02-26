@@ -2608,6 +2608,9 @@ msgstr "Ծալված է"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Ընդլայնված"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Չցուցադրել"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2731,3 +2734,15 @@ msgstr "Կամ շարունակեք որպես հյուր"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Հեռացնել պատկերը"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Առաքում %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Առաքում"

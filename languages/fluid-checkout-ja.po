@@ -2412,6 +2412,9 @@ msgstr "崩壊"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "拡大"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "表示しない"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2535,3 +2538,15 @@ msgstr "またはゲストとして続ける"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "画像を削除する"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "配送 %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "送料"

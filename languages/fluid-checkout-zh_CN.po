@@ -2351,6 +2351,9 @@ msgstr "倒塌"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "已扩展"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "不显示"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2474,3 +2477,15 @@ msgstr "或作为访客继续"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "移除图像"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "发货 %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "运输"

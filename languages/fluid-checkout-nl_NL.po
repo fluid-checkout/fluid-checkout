@@ -2803,6 +2803,9 @@ msgstr "Ingestort"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Uitgebreid"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Niet weergeven"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2930,3 +2933,15 @@ msgstr "Geen."
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Afbeelding verwijderen"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Verzending %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Verzending"

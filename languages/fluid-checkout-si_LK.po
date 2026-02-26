@@ -2584,6 +2584,9 @@ msgstr "හකුළන ලදී"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "පුළුල් කරන ලදී"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "පෙන්වන්න එපා"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2707,3 +2710,15 @@ msgstr "නැතහොත් අමුත්තෙකු ලෙස ඉදිර
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "රූපය ඉවත් කරන්න"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "නැව්ගත කිරීම %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "නැව්ගත කිරීම"

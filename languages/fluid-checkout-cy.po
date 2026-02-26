@@ -2637,6 +2637,9 @@ msgstr "Wedi cwympo"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Wedi&#39;i ehangu"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Peidiwch â dangos"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2760,3 +2763,15 @@ msgstr "Neu barhau fel gwestai"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Dileu delwedd"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Llongau %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Llongau"
