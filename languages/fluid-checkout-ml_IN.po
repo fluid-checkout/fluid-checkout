@@ -2568,15 +2568,13 @@ msgstr "പ്രോഗ്രസ് ബാറിന് ശേഷം"
 msgid "Before coupon codes section"
 msgstr "കൂപ്പൺ കോഡുകൾക്ക് മുമ്പുള്ള വിഭാഗം"
 
-<<<<<<< HEAD
-#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
-msgid "Do not show"
-msgstr "കാണിക്കരുത്"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "അഥവാ"
->>>>>>> main
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "കാണിക്കരുത്"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

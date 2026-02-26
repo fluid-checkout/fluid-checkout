@@ -2504,15 +2504,13 @@ msgstr "Pēc progresa joslas"
 msgid "Before coupon codes section"
 msgstr "Pirms kuponu kodu sadaļas"
 
-<<<<<<< HEAD
-#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
-msgid "Do not show"
-msgstr "Neparādiet"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Vai"
->>>>>>> main
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Neparādiet"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

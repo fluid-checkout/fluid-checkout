@@ -2520,15 +2520,13 @@ msgstr "Efter statuslinjen"
 msgid "Before coupon codes section"
 msgstr "Før sektionen med kuponkoder"
 
-<<<<<<< HEAD
-#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
-msgid "Do not show"
-msgstr "Må ikke vises"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Eller"
->>>>>>> main
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Må ikke vises"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2516,15 +2516,13 @@ msgstr "ಪ್ರಗತಿ ಪಟ್ಟಿಯ ನಂತರ"
 msgid "Before coupon codes section"
 msgstr "ಕೂಪನ್ ಕೋಡ್‌ಗಳ ವಿಭಾಗಕ್ಕಿಂತ ಮೊದಲು"
 
-<<<<<<< HEAD
-#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
-msgid "Do not show"
-msgstr "ತೋರಿಸಬೇಡಿ"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "ಅಥವಾ"
->>>>>>> main
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "ತೋರಿಸಬೇಡಿ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

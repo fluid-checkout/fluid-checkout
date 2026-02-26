@@ -2486,15 +2486,13 @@ msgstr "ຫຼັງຈາກແຖບຄວາມຄືບຫນ້າ"
 msgid "Before coupon codes section"
 msgstr "ກ່ອນທີ່ຈະພາກສ່ວນລະຫັດຄູປອງ"
 
-<<<<<<< HEAD
-#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
-msgid "Do not show"
-msgstr "ຢ່າສະແດງ"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "ຫຼື"
->>>>>>> main
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "ຢ່າສະແດງ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

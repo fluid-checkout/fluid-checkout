@@ -2589,15 +2589,13 @@ msgstr "တိုးတက်မှုဘားပြီးနောက်"
 msgid "Before coupon codes section"
 msgstr "ကူပွန်ကုဒ်များ ကဏ္ဍမစမီ"
 
-<<<<<<< HEAD
-#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
-msgid "Do not show"
-msgstr "မပြပါနဲ့"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "သို့မဟုတ်"
->>>>>>> main
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "မပြပါနဲ့"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

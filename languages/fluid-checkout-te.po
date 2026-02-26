@@ -2529,15 +2529,13 @@ msgstr "ప్రోగ్రెస్ బార్ తర్వాత"
 msgid "Before coupon codes section"
 msgstr "కూపన్ కోడ్‌ల విభాగానికి ముందు"
 
-<<<<<<< HEAD
-#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:224
-msgid "Do not show"
-msgstr "చూపించవద్దు"
-=======
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "లేదా"
->>>>>>> main
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "చూపించవద్దు"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
