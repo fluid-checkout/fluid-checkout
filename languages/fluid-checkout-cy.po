@@ -2637,6 +2637,7 @@ msgstr "Wedi cwympo"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Wedi&#39;i ehangu"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Peidiwch â dangos"

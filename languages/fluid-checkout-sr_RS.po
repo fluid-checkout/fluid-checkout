@@ -2717,6 +2717,7 @@ msgstr "Склопљено"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Проширено"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Не приказуј"

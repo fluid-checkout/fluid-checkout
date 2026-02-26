@@ -2588,6 +2588,7 @@ msgstr "ຫຍໍ້ລົງ"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "ຂະຫຍາຍແລ້ວ"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "ຢ່າສະແດງ"

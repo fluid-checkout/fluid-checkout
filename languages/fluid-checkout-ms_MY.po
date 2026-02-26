@@ -2646,6 +2646,7 @@ msgstr "Runtuh"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Diperluas"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Jangan tunjukkan"

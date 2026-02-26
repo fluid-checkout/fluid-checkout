@@ -2353,6 +2353,7 @@ msgstr "已折疊"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "擴充"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "不顯示"
