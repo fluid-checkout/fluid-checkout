@@ -1390,56 +1390,9 @@ msgstr "Às deidh seòladh luingeis"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Cuir casg air taghadh fèin-ghluasadach den chiad dhòigh luingeis"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Nuair a bhios e comasach, cha tèid a’ chiad dòigh luingeis a tha ri "
-"fhaighinn a thaghadh gu fèin-ghluasadach nuair nach deach dòigh luingeis "
-"sam bith eile a thaghadh roimhe airson gach pasgan luingeis.<br> Bidh an "
-"roghainn seo air a chomasachadh gu fèin-ghluasadach ma tha an roghainn "
-"airson an dòigh luingeis taghte a ghlanadh air a chomasachadh airson am "
-"feart Pickup Ionadail."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Togail ionadail"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Thoir air falbh roinn seòladh luingeis nuair a thèid dòigh luingeis togail "
-"ionadail a thaghadh."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Cuir àite an àite togail an àite an t-seòlaidh luingeis nuair a thèid dòigh "
-"luingeis togail ionadail a thaghadh."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Seall roghainn gus dòighean luingeis a ghlanadh anns an fho-cheum àite "
-"togail"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Seall putan ceangail air an fho-cheum àite togail gus na dòighean luingeis "
-"taghte a ghlanadh. Faodar seo a chleachdadh gus an roinn seòladh luingeis a "
-"shealltainn a-rithist ma chaidh dòigh togail ionadail a thaghadh roimhe seo."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2699,6 +2652,64 @@ msgstr "Leudaichte"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Na seall"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Nuair a bhios e air a chomasachadh, <strong>cha tèid</strong> a’ chiad "
+"dhòigh lìbhrigidh a tha ri fhaighinn a thaghadh gu fèin-ghluasadach mura "
+"deach dòigh lìbhrigidh eile a thaghadh roimhe airson gach pasgan lìbhrigidh."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Thoir air falbh an earrann seòlaidh lìbhrigidh nuair a thèid dòigh luingeis "
+"togail ionadail a thaghadh."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Cuir àite a’ phuing togail an àite seòlaidh lìbhrigidh nuair a thèid dòigh "
+"lìbhrigidh togail ionadail a thaghadh."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Tagh dè an seòrsa lìbhrigidh a thèid a thaghadh gu bunaiteach."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Long"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Togail"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Tagh dè na raointean a thèid a thaisbeanadh airson raointean sìoltachaidh "
+"sòn togail luingeis ionadail. Fàg bàn gus na roghainnean uile a tha rim "
+"faighinn a shealltainn."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Thèid na raointean seo a thaisbeanadh mar chriathrag airson na dòighean "
+"luingeis togail ionadail. Dh’fhaodadh cuid de raointean nochdadh fhathast "
+"aig an àite-pàighidh mura h-eil iad air an taghadh an seo, ma tha feum aca "
+"orra obrachadh gu ceart airson plugins co-chòrdail."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

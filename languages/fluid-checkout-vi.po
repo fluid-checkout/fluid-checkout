@@ -1348,55 +1348,9 @@ msgstr "Địa chỉ sau khi giao hàng"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Ngăn chặn việc tự động lựa chọn phương thức vận chuyển đầu tiên"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Khi được bật, phương thức vận chuyển đầu tiên khả dụng sẽ không được tự "
-"động chọn khi chưa có phương thức vận chuyển nào khác được chọn cho mỗi gói "
-"hàng.<br> Tùy chọn này sẽ tự động được bật nếu tùy chọn xóa phương thức "
-"giao hàng đã chọn được bật cho tính năng Nhận hàng tại địa phương."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Nhận hàng tại địa phương"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Xóa phần địa chỉ giao hàng khi chọn phương thức giao hàng đến lấy hàng tại "
-"địa phương."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Thay thế địa chỉ giao hàng bằng địa điểm nhận hàng khi chọn phương thức "
-"giao hàng đến tận nơi."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Hiển thị tùy chọn để xóa phương thức vận chuyển trong bước phụ địa điểm "
-"nhận hàng"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Hiển thị nút liên kết trên bước phụ địa điểm nhận hàng để xóa các phương "
-"thức giao hàng đã chọn. Có thể sử dụng nút này để cho phép hiển thị lại "
-"phần địa chỉ giao hàng nếu đã chọn phương thức nhận hàng tại địa phương "
-"trước đó."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2604,6 +2558,61 @@ msgstr "Mở rộng"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Không hiển thị"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Khi được kích hoạt, phương thức vận chuyển đầu tiên có sẵn <strong>sẽ "
+"không</strong> được tự động chọn nếu trước đó chưa có phương thức vận "
+"chuyển nào khác được chọn cho mỗi gói hàng."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "Xóa phần địa chỉ giao hàng khi chọn phương thức giao hàng nhận tại cửa hàng."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Khi chọn phương thức giao hàng nhận tại địa điểm, hãy thay thế địa chỉ giao "
+"hàng bằng địa điểm nhận hàng."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Hãy chọn loại hình giao hàng sẽ được chọn mặc định."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Tàu thủy"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Nhặt lên"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Chọn các trường sẽ được hiển thị cho bộ lọc khu vực giao hàng nhận tại cửa "
+"hàng. Để trống để hiển thị tất cả các tùy chọn có sẵn."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Các trường này sẽ được hiển thị dưới dạng bộ lọc cho các phương thức giao "
+"hàng nhận tại cửa hàng. Một số trường vẫn có thể xuất hiện ở trang thanh "
+"toán ngay cả khi không được chọn ở đây, nếu các plugin tương thích yêu cầu "
+"chúng hoạt động đúng cách."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1778,12 +1778,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Usuń"
 
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "Usuwa sekcję adresu wysyłki po wybraniu metody wysyłki z odbiorem lokalnym."
-
 #: inc/admin/admin-settings-tools.php:113
 msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
@@ -1799,14 +1793,6 @@ msgstr ""
 "Zastępuje pola tworzenia konta powiadomieniem i opcją logowania. W "
 "niektórych sytuacjach może być zalecane pozostawienie tej opcji wyłączonej "
 "w celu ochrony prywatności klientów."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Zastępuje adres wysyłki lokalizacją punktu odbioru w przypadku wybrania "
-"metody wysyłki z odbiorem lokalnym."
 
 #: inc/admin/admin-settings-checkout.php:572
 #: inc/admin/admin-settings-checkout.php:587
@@ -1946,16 +1932,6 @@ msgstr "Sposoby wysyłki"
 msgid "Shipping phone"
 msgstr "Telefon do wysyłki"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Pokaż przycisk łącza w podetapie lokalizacji odbioru, aby wyczyścić wybrane "
-"metody wysyłki. Można tego użyć, aby umożliwić ponowne wyświetlenie sekcji "
-"adresu wysyłki, jeśli wcześniej wybrano lokalną metodę odbioru."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr "Pokaż przykład prawidłowego numeru telefonu w polach telefonu"
@@ -1967,10 +1943,6 @@ msgstr "Pokaż kod kraju obok flagi"
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Pokaż, jeśli nie zdefiniowano"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Pokaż opcję wyczyszczenia metod wysyłki w podetapie lokalizacji odbioru"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2389,20 +2361,6 @@ msgstr ""
 "niezależnie od miejsca wyświetlania zdefiniowanego w ustawieniach wtyczki "
 "Sendinblue."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Po włączeniu tej opcji pierwsza dostępna metoda wysyłki nie będzie "
-"automatycznie wybierana, jeśli dla każdej paczki nie wybrano wcześniej "
-"żadnej innej metody wysyłki. <br>Opcja ta zostanie automatycznie włączona, "
-"jeśli opcja usuwania wybranej metody wysyłki jest włączona dla funkcji "
-"odbioru lokalnego."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2813,6 +2771,62 @@ msgstr "Rozszerzony"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Nie pokazuj"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Po włączeniu tej opcji pierwsza dostępna metoda wysyłki <strong>nie "
+"będzie</strong> wybierana automatycznie, jeśli dla każdej paczki nie "
+"wybrano wcześniej żadnej innej metody wysyłki."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Usunięcie sekcji adresu wysyłki po wybraniu metody wysyłki z odbiorem "
+"lokalnym."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Zastąp adres wysyłki lokalizacją punktu odbioru, jeśli wybrano metodę "
+"wysyłki z odbiorem lokalnym."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Wybierz typ dostawy, który zostanie wybrany domyślnie."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Statek"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Odbiór"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Wybierz, które pola będą wyświetlane w polach filtra lokalnej strefy "
+"odbioru. Pozostaw puste, aby wyświetlić wszystkie dostępne opcje."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Pola te będą wyświetlane jako filtr dla metod wysyłki z odbiorem lokalnym. "
+"Niektóre pola mogą nadal pojawiać się przy kasie, jeśli nie zostały tutaj "
+"wybrane, jeśli kompatybilne wtyczki wymagają ich do prawidłowego działania."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

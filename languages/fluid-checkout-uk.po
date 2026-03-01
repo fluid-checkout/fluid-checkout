@@ -1394,53 +1394,9 @@ msgstr "Після адреси доставки"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Заборонити автоматичний вибір першого способу доставки"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Якщо цю опцію увімкнено, перший доступний спосіб доставки не буде "
-"автоматично вибрано, якщо для кожного пакунка не було обрано жодного іншого "
-"способу доставки. <br>Цю опцію буде автоматично ввімкнено, якщо для функції "
-"\"Місцевий самовивіз\" увімкнено опцію очищення вибраного способу доставки."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Місцевий самовивіз"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Видаляє розділ адреси доставки, якщо вибрано спосіб доставки місцевим "
-"самовивозом."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Замінює адресу доставки на місце розташування пункту самовивозу, якщо "
-"вибрано спосіб доставки місцевим самовивозом."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Показати опцію очищення способів доставки на підкроці \"Місце отримання"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Показувати кнопку з посиланням на підкроці \"Адреса самовивозу\", щоб "
-"очистити вибрані способи доставки. Це може бути використано для повторного "
-"відображення розділу адреси доставки, якщо раніше було обрано місцевий "
-"спосіб самовивозу."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2661,6 +2617,64 @@ msgstr "Розширений"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Не показувати"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Якщо увімкнено, перший доступний спосіб доставки <strong>не буде</strong> "
+"автоматично вибиратися, якщо раніше не було обрано жодного іншого способу "
+"доставки для кожного пакунка."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Видаліть розділ з адресою доставки, якщо вибрано спосіб доставки "
+"самовивозом."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Замініть адресу доставки на місце розташування пункту самовивозу, якщо "
+"вибрано спосіб доставки місцевим самовивозом."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Виберіть, який тип доставки буде обрано за замовчуванням."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Корабель"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Пікап."
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Виберіть, які поля будуть відображатися для полів фільтра зони доставки "
+"місцевого самовивозу. Залиште поле порожнім, щоб показати всі доступні "
+"варіанти."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ці поля відображатимуться як фільтр для місцевих способів доставки "
+"самовивозом. Деякі поля можуть відображатися під час оформлення замовлення, "
+"навіть якщо їх не вибрано тут, якщо сумісні плагіни вимагають їх належної "
+"роботи."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1360,53 +1360,9 @@ msgstr "ಶಿಪ್ಪಿಂಗ್ ನಂತರದ ವಿಳಾಸ"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "ಮೊದಲ ಸಾಗಣೆ ವಿಧಾನದ ಸ್ವಯಂಚಾಲಿತ ಆಯ್ಕೆಯನ್ನು ತಡೆಯಿರಿ"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಪ್ರತಿ ಶಿಪ್ಪಿಂಗ್ ಪ್ಯಾಕೇಜ್‌ಗೆ ಈ ಹಿಂದೆ ಬೇರೆ ಯಾವುದೇ ಶಿಪ್ಪಿಂಗ್ "
-"ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡದಿದ್ದಾಗ ಲಭ್ಯವಿರುವ ಮೊದಲ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು "
-"ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆಯ್ಕೆ ಮಾಡಲಾಗುವುದಿಲ್ಲ.<br> ಸ್ಥಳೀಯ ಪಿಕಪ್ ವೈಶಿಷ್ಟ್ಯಕ್ಕಾಗಿ "
-"ಆಯ್ಕೆಮಾಡಿದ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ತೆರವುಗೊಳಿಸುವ ಆಯ್ಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿದರೆ ಈ "
-"ಆಯ್ಕೆಯು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಕ್ರಿಯಗೊಳ್ಳುತ್ತದೆ."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "ಸ್ಥಳೀಯ ಪಿಕಪ್"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು "
-"ತೆಗೆದುಹಾಕುತ್ತದೆ."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸವನ್ನು ಪಿಕಪ್ "
-"ಪಾಯಿಂಟ್ ಸ್ಥಳದೊಂದಿಗೆ ಬದಲಾಯಿಸುತ್ತದೆ."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "ಪಿಕಪ್ ಸ್ಥಳದ ಉಪಹಂತದಲ್ಲಿ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನಗಳನ್ನು ತೆರವುಗೊಳಿಸುವ ಆಯ್ಕೆಯನ್ನು ತೋರಿಸಿ"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"ಆಯ್ಕೆಮಾಡಿದ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನಗಳನ್ನು ತೆರವುಗೊಳಿಸಲು ಪಿಕಪ್ ಸ್ಥಳದ ಉಪಹಂತದಲ್ಲಿ ಲಿಂಕ್ "
-"ಬಟನ್ ಅನ್ನು ತೋರಿಸಿ. ಸ್ಥಳೀಯ ಪಿಕಪ್ ವಿಧಾನವನ್ನು ಈ ಹಿಂದೆ ಆಯ್ಕೆ ಮಾಡಿದ್ದರೆ, "
-"ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು ಮತ್ತೆ ತೋರಿಸಲು ಇದನ್ನು ಬಳಸಬಹುದು."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2615,9 +2571,67 @@ msgstr "ಕುಗ್ಗಿಸಲಾಗಿದೆ"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "ವಿಸ್ತರಿಸಲಾಗಿದೆ"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "ತೋರಿಸಬೇಡಿ"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"ಸಕ್ರಿಯಗೊಳಿಸಿದಾಗ, ಪ್ರತಿ ಶಿಪ್ಪಿಂಗ್ ಪ್ಯಾಕೇಜ್‌ಗೆ ಈ ಹಿಂದೆ ಬೇರೆ ಯಾವುದೇ ಶಿಪ್ಪಿಂಗ್ "
+"ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡದಿದ್ದಾಗ ಲಭ್ಯವಿರುವ ಮೊದಲ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು "
+"ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆಯ್ಕೆ <strong>ಮಾಡಲಾಗುವುದಿಲ್ಲ</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸ ವಿಭಾಗವನ್ನು "
+"ತೆಗೆದುಹಾಕಿ."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆ ಮಾಡಿದಾಗ ಶಿಪ್ಪಿಂಗ್ ವಿಳಾಸವನ್ನು ಪಿಕಪ್ "
+"ಪಾಯಿಂಟ್ ಸ್ಥಳದೊಂದಿಗೆ ಬದಲಾಯಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "ಪೂರ್ವನಿಯೋಜಿತವಾಗಿ ಯಾವ ವಿತರಣಾ ಪ್ರಕಾರವನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಕೆಂದು ಆರಿಸಿ."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "ಹಡಗು"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "ಪಿಕಪ್"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಲಯ ಫಿಲ್ಟರ್ ಕ್ಷೇತ್ರಗಳಿಗೆ ಯಾವ ಕ್ಷೇತ್ರಗಳನ್ನು "
+"ಪ್ರದರ್ಶಿಸಬೇಕೆಂದು ಆರಿಸಿ. ಲಭ್ಯವಿರುವ ಎಲ್ಲಾ ಆಯ್ಕೆಗಳನ್ನು ತೋರಿಸಲು ಖಾಲಿ ಬಿಡಿ."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"ಈ ಕ್ಷೇತ್ರಗಳನ್ನು ಸ್ಥಳೀಯ ಪಿಕಪ್ ಶಿಪ್ಪಿಂಗ್ ವಿಧಾನಗಳಿಗೆ ಫಿಲ್ಟರ್‌ನಂತೆ "
+"ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ. ಹೊಂದಾಣಿಕೆಯ ಪ್ಲಗಿನ್‌ಗಳು ಸರಿಯಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸಲು "
+"ಅಗತ್ಯವಿದ್ದರೆ, ಇಲ್ಲಿ ಆಯ್ಕೆ ಮಾಡದಿದ್ದರೆ ಕೆಲವು ಕ್ಷೇತ್ರಗಳು ಚೆಕ್‌ಔಟ್‌ನಲ್ಲಿ ಇನ್ನೂ "
+"ಗೋಚರಿಸಬಹುದು."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

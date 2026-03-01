@@ -1357,54 +1357,9 @@ msgstr "Жеткізу мекенжайынан кейін"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Бірінші тасымалдау әдісін автоматты түрде таңдауды болдырмаңыз"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Қосылған кезде, әрбір жөнелту пакеті үшін басқа жеткізу әдісі бұрын "
-"таңдалмаған кезде қолжетімді бірінші жеткізу әдісі автоматты түрде "
-"таңдалмайды.<br> Таңдалған тасымалдау әдісін тазалау опциясы Жергілікті "
-"алып кету мүмкіндігі үшін қосылған болса, бұл опция автоматты түрде "
-"қосылады."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Жергілікті алып кету"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Жергілікті алып кетуді жеткізу әдісі таңдалғанда, жеткізу мекенжайы бөлімін "
-"жояды."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Жергілікті алып кетуді жеткізу әдісі таңдалғанда, жеткізу мекенжайын "
-"қабылдау орнының орнына ауыстырады."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Жеткізу орнының қосалқы қадамында жеткізу әдістерін өшіру опциясын көрсету"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Таңдалған жеткізу әдістерін өшіру үшін алып кету орнының қосалқы қадамында "
-"сілтеме түймесін көрсетіңіз. Бұл жергілікті алып кету әдісі бұрын таңдалған "
-"болса, жеткізу мекенжайы бөлімін қайта көрсетуге мүмкіндік беру үшін "
-"пайдаланылуы мүмкін."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2624,9 +2579,66 @@ msgstr "Жиналған"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Кеңейтілген"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Көрсетпеу"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Қосылған кезде, әрбір жеткізу пакеті үшін бұрын басқа жеткізу әдісі "
+"таңдалмаған болса, қолжетімді бірінші жеткізу әдісі автоматты түрде "
+"<strong>таңдалмайды</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Жергілікті алып кету жеткізу әдісі таңдалған кезде жеткізу мекенжайы "
+"бөлімін алып тастаңыз."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Жергілікті алып кету әдісі таңдалған кезде жеткізу мекенжайын алып кету "
+"пунктінің орналасқан жерімен ауыстырыңыз."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Әдепкі бойынша қай жеткізу түрі таңдалатынын таңдаңыз."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Кеме"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Ала кету"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Жергілікті жеткізу аймағының сүзгі өрістері үшін қай өрістер көрсетілетінін "
+"таңдаңыз. Барлық қолжетімді опцияларды көрсету үшін бос қалдырыңыз."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Бұл өрістер жергілікті жеткізу әдістері үшін сүзгі ретінде көрсетіледі. "
+"Кейбір өрістер осында таңдалмаған болса да, үйлесімді плагиндер дұрыс жұмыс "
+"істеуі үшін оларды қажет етсе, төлем кезінде әлі де пайда болуы мүмкін."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

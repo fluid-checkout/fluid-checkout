@@ -1344,50 +1344,9 @@ msgstr "शिपिंग पत्ता नंतर"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "पहिल्या शिपिंग पद्धतीची स्वयंचलित निवड प्रतिबंधित करा"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"सक्षम केल्यावर, प्रत्येक शिपिंग पॅकेजसाठी पूर्वी कोणतीही दुसरी शिपिंग पद्धत "
-"निवडली नसताना उपलब्ध असलेली पहिली शिपिंग पद्धत स्वयंचलितपणे निवडली जाणार "
-"नाही.<br> जर निवडलेल्या शिपिंग पद्धतीला क्लिअर करण्याचा पर्याय स्थानिक "
-"पिकअप वैशिष्ट्यासाठी सक्षम केला असेल तर हा पर्याय स्वयंचलितपणे सक्षम होईल."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "स्थानिक पिकअप"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "स्थानिक पिकअप शिपिंग पद्धत निवडल्यावर शिपिंग पत्ता विभाग काढून टाकतो."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"स्थानिक पिकअप शिपिंग पद्धत निवडल्यावर शिपिंग पत्ता पिकअप पॉइंट स्थानाने "
-"बदलतो."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "पिकअप लोकेशन सबस्टेपमध्ये शिपिंग पद्धती साफ करण्याचा पर्याय दाखवा"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"निवडलेल्या शिपिंग पद्धती साफ करण्यासाठी पिकअप लोकेशन सबस्टेपवर लिंक बटण "
-"दाखवा. जर स्थानिक पिकअप पद्धत पूर्वी निवडली असेल तर शिपिंग पत्ता विभाग "
-"पुन्हा दाखविण्यासाठी याचा वापर केला जाऊ शकतो."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2579,9 +2538,64 @@ msgstr "कोलॅप्स झाले"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "विस्तारित"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "दाखवू नका"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"सक्षम केल्यावर, प्रत्येक शिपिंग पॅकेजसाठी पूर्वी कोणतीही दुसरी शिपिंग पद्धत "
+"निवडली नसताना उपलब्ध असलेली पहिली शिपिंग पद्धत स्वयंचलितपणे निवडली "
+"<strong>जाणार नाही</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "स्थानिक पिकअप शिपिंग पद्धत निवडल्यावर शिपिंग पत्ता विभाग काढून टाका."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"स्थानिक पिकअप शिपिंग पद्धत निवडल्यावर शिपिंग पत्ता पिकअप पॉइंट स्थानाने "
+"बदला."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "डिफॉल्टनुसार कोणता डिलिव्हरी प्रकार निवडला जाईल ते निवडा."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "जहाज"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "पिकअप"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"स्थानिक पिकअप शिपिंग झोन फिल्टर फील्डसाठी कोणते फील्ड प्रदर्शित केले जातील "
+"ते निवडा. सर्व उपलब्ध पर्याय दर्शविण्यासाठी रिकामे सोडा."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"स्थानिक पिकअप शिपिंग पद्धतींसाठी हे फील्ड फिल्टर म्हणून प्रदर्शित केले "
+"जातील. काही फील्ड येथे निवडलेले नसतानाही चेकआउट करताना दिसू शकतात, जर "
+"सुसंगत प्लगइन्सना त्यांना योग्यरित्या कार्य करण्याची आवश्यकता असेल."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

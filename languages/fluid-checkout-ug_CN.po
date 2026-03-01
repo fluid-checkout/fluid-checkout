@@ -1351,50 +1351,9 @@ msgstr "توشۇش ئادرېسىدىن كېيىن"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "تۇنجى توشۇش ئۇسۇلىنى ئاپتوماتىك تاللاشنىڭ ئالدىنى ئېلىش"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"قوزغىتىلغاندا ، ھەر بىر توشۇش بولىقى ئۈچۈن باشقا توشۇش ئۇسۇلى تاللانمىغاندا "
-"، تۇنجى توشۇش ئۇسۇلى ئاپتوماتىك تاللانمايدۇ.<br> ئەگەر يەرلىك توشۇش "
-"ئىقتىدارى ئۈچۈن تاللانغان توشۇش ئۇسۇلىنى تازىلاش تاللانمىسى قوزغىتىلسا ، بۇ "
-"تاللاش ئاپتوماتىك قوزغىتىلىدۇ."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "يەرلىك پىكاپ"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "يەرلىك پىكاپ توشۇش ئۇسۇلى تاللانغاندا توشۇش ئادرېسى بۆلىكىنى ئۆچۈرۈۋېتىدۇ."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"يەرلىك پىكاپ توشۇش ئۇسۇلى تاللانغاندا توشۇش ئادرېسىنى پىكاپ ئورنى بىلەن "
-"ئالماشتۇرىدۇ."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "پىكاپ ئورنىنىڭ تارماق قىسمىدا توشۇش ئۇسۇلىنى تازىلاشنى تاللاڭ"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"تاللانغان توشۇش ئۇسۇلىنى تازىلاش ئۈچۈن پىكاپ ئورنىنىڭ ئاستى قىسمىغا ئۇلىنىش "
-"كۇنۇپكىسىنى كۆرسىتىڭ. ئەگەر ئىلگىرى يەرلىك پىكاپ ئۇسۇلى تاللانغان بولسا ، "
-"توشۇش ئادرېسى بۆلىكىنى يەنە بىر قېتىم كۆرسىتىشكە ئىشلىتىلىدۇ."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2607,9 +2566,68 @@ msgstr "يىقىلدى"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "كېڭەيتىلدى"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "كۆرسەتمەڭ"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"بۇ ئىقتىدار قوزغىتىلغاندا، ھەر بىر توشۇش ئورالمىسى ئۈچۈن ئىلگىرى باشقا "
+"توشۇش ئۇسۇلى تاللانمىغان بولسا، تۇنجى توشۇش ئۇسۇلى ئاپتوماتىك "
+"<strong>تاللانمايدۇ</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"يەرلىك ئېلىپ كېتىش يەتكۈزۈش ئۇسۇلى تاللانغاندا، يەتكۈزۈش ئادرېسى بۆلىكىنى "
+"ئۆچۈرۈڭ."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"يەرلىك ئېلىپ كېتىش ئۇسۇلى تاللانغاندا، يەتكۈزۈش ئادرېسىنى ئېلىپ كېتىش "
+"نۇقتىسىنىڭ ئورنى بىلەن ئالماشتۇرۇڭ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "سۈكۈتتىكى ھالەتتە قايسى يەتكۈزۈش تىپى تاللىنىدىغانلىقىنى تاللاڭ."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "پاراخوت"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "ئېلىپ كېتىش"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"يەرلىك ئېلىپ كېتىش رايونى فىلتىر مەيدانلىرى ئۈچۈن قايسى مەيدانلارنىڭ "
+"كۆرسىتىلىدىغانلىقىنى تاللاڭ. بارلىق مۇمكىن بولغان تاللاشلارنى كۆرسىتىش "
+"ئۈچۈن بوش قالدۇرۇڭ."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"بۇ بوشلۇقلار يەرلىك مالنى ئېلىپ كېتىش ئۇسۇللىرىنىڭ سۈزگۈچ سۈپىتىدە "
+"كۆرسىتىلىدۇ. ئەگەر ماس كېلىدىغان قىستۇرمىلارنىڭ نورمال ئىشلىشى ئۈچۈن بەزى "
+"بوشلۇقلار بۇ يەردە تاللانمىغان بولسىمۇ، سېتىۋېلىش جەريانىدا يەنىلا كۆرۈنۈشى "
+"مۇمكىن."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

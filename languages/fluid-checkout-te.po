@@ -1370,55 +1370,9 @@ msgstr "షిప్పింగ్ తర్వాత చిరునామా"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "మొదటి షిప్పింగ్ పద్ధతి యొక్క ఆటోమేటిక్ ఎంపికను నిరోధించండి"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"ప్రారంభించబడినప్పుడు, ప్రతి షిప్పింగ్ ప్యాకేజీకి గతంలో వేరే షిప్పింగ్ "
-"పద్ధతిని ఎంచుకోనప్పుడు అందుబాటులో ఉన్న మొదటి షిప్పింగ్ పద్ధతి స్వయంచాలకంగా "
-"ఎంపిక చేయబడదు.<br> లోకల్ పికప్ ఫీచర్ కోసం ఎంచుకున్న షిప్పింగ్ పద్ధతిని "
-"క్లియర్ చేసే ఎంపికను ప్రారంభించినట్లయితే ఈ ఎంపిక స్వయంచాలకంగా "
-"ప్రారంభించబడుతుంది."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "స్థానిక పికప్"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"స్థానిక పికప్ షిప్పింగ్ పద్ధతిని ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామా "
-"విభాగాన్ని తొలగిస్తుంది."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"స్థానిక పికప్ షిప్పింగ్ పద్ధతిని ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామాను పికప్ "
-"పాయింట్ స్థానంతో భర్తీ చేస్తుంది."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"పికప్ లొకేషన్ సబ్‌స్టెప్‌లో షిప్పింగ్ పద్ధతులను క్లియర్ చేయడానికి ఆప్షన్‌ను "
-"చూపించు"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"ఎంచుకున్న షిప్పింగ్ పద్ధతులను క్లియర్ చేయడానికి పికప్ లొకేషన్ సబ్‌స్టెప్‌లో "
-"లింక్ బటన్‌ను చూపించు. స్థానిక పికప్ పద్ధతిని గతంలో ఎంచుకున్నట్లయితే, "
-"షిప్పింగ్ చిరునామా విభాగాన్ని మళ్ళీ చూపించడానికి దీనిని ఉపయోగించవచ్చు."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2629,9 +2583,67 @@ msgstr "కుదించబడింది"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "విస్తరించబడింది"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "చూపించవద్దు"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"ప్రారంభించబడినప్పుడు, ప్రతి షిప్పింగ్ ప్యాకేజీకి గతంలో వేరే షిప్పింగ్ "
+"పద్ధతిని ఎంచుకోనప్పుడు అందుబాటులో ఉన్న మొదటి షిప్పింగ్ పద్ధతి స్వయంచాలకంగా "
+"ఎంపిక <strong>చేయబడదు</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"స్థానిక పికప్ షిప్పింగ్ పద్ధతిని ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామా "
+"విభాగాన్ని తీసివేయండి."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"స్థానిక పికప్ షిప్పింగ్ పద్ధతిని ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామాను పికప్ "
+"పాయింట్ స్థానంతో భర్తీ చేయండి."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "డిఫాల్ట్‌గా ఏ డెలివరీ రకాన్ని ఎంచుకోవాలో ఎంచుకోండి."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "ఓడ"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "పికప్"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"స్థానిక పికప్ షిప్పింగ్ జోన్ ఫిల్టర్ ఫీల్డ్‌ల కోసం ఏ ఫీల్డ్‌లు "
+"ప్రదర్శించబడతాయో ఎంచుకోండి. అందుబాటులో ఉన్న అన్ని ఎంపికలను చూపించడానికి "
+"ఖాళీగా వదిలేయండి."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"ఈ ఫీల్డ్‌లు స్థానిక పికప్ షిప్పింగ్ పద్ధతుల కోసం ఫిల్టర్‌గా "
+"ప్రదర్శించబడతాయి. అనుకూల ప్లగిన్‌లు సరిగ్గా పనిచేయాలని కోరితే, ఇక్కడ "
+"ఎంచుకోనప్పుడు కొన్ని ఫీల్డ్‌లు చెక్అవుట్‌లో కనిపించవచ్చు."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

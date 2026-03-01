@@ -1257,45 +1257,9 @@ msgstr "배송지 주소 후"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "첫 번째 배송 방법 자동 선택 방지"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"이 옵션을 활성화하면 각 배송 패키지에 대해 이전에 다른 배송 방법이 선택되지 않은 경우 사용 가능한 첫 번째 배송 방법이 자동으로 "
-"선택되지 않습니다. <br>이 옵션은 선택한 배송 방법을 지우는 옵션이 지역 픽업 기능에 대해 활성화된 경우 자동으로 활성화됩니다."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "현지 픽업"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "지역 픽업 배송 방법을 선택한 경우 배송 주소 섹션을 제거합니다."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr "지역 픽업 배송 방법을 선택한 경우 배송 주소를 픽업 지점 위치로 바꿉니다."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "픽업 위치 하위 단계에서 배송 방법 지우기 옵션 표시"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"픽업 위치 하위 단계에 링크 버튼을 표시하여 선택한 배송 방법을 지웁니다. 이 버튼을 사용하면 이전에 지역 픽업 방법을 선택한 경우 "
-"배송 주소 섹션을 다시 표시할 수 있습니다."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2397,6 +2361,54 @@ msgstr "확장"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "표시하지 않음"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"활성화하면 각 배송 패키지에 대해 이전에 다른 배송 방법을 선택하지 않은 경우 사용 가능한 첫 번째 배송 방법이 자동으로 선택되지 "
+"않습니다."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "지역 픽업 배송 방법을 선택한 경우 배송 주소 섹션을 제거합니다."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr "지역 픽업 배송 방법을 선택한 경우 배송 주소를 픽업 지점 위치로 바꿉니다."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "기본적으로 선택할 배송 유형을 선택합니다."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Ship"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "픽업"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr "지역 픽업 배송 지역 필터 필드에 표시할 필드를 선택합니다. 사용 가능한 모든 옵션을 표시하려면 비워 둡니다."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"이러한 필드는 지역 픽업 배송 방법에 대한 필터로 표시됩니다. 일부 필드는 호환 플러그인이 제대로 작동하도록 요구하는 경우 여기에서 "
+"선택하지 않아도 결제 시 계속 표시될 수 있습니다."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

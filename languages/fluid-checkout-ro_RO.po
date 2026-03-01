@@ -1382,56 +1382,9 @@ msgstr "După adresa de expediere"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Prevenirea selecției automate a primei metode de expediere"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Atunci când este activată, prima metodă de expediere disponibilă nu va fi "
-"selectată automat atunci când nu a fost selectată anterior nicio altă "
-"metodă de expediere pentru fiecare pachet de expediere. <br>Această opțiune "
-"va fi activată automat dacă opțiunea de ștergere a metodei de expediere "
-"selectate este activată pentru funcția Ridicare locală."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Ridicare locală"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Elimină secțiunea privind adresa de expediere atunci când este selectată o "
-"metodă de expediere cu preluare locală."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Înlocuiește adresa de expediere cu locația punctului de preluare atunci "
-"când este selectată o metodă de expediere cu preluare locală."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Afișați opțiunea de ștergere a metodelor de expediere în substep-ul "
-"locației de preluare"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Afișați un buton de legătură în substep-ul locației de preluare pentru a "
-"șterge metodele de expediere alese. Acest lucru poate fi utilizat pentru a "
-"permite afișarea din nou a secțiunii privind adresa de expediere dacă a "
-"fost selectată anterior o metodă de preluare locală."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2668,6 +2621,65 @@ msgstr "Extinse"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Nu afișați"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Atunci când este activată, prima metodă de expediere disponibilă "
+"<strong>nu</strong> va fi selectată automat atunci când nicio altă metodă "
+"de expediere nu a fost selectată anterior pentru fiecare pachet de "
+"expediere."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Eliminarea secțiunii privind adresa de expediere atunci când este selectată "
+"o metodă de expediere cu preluare locală."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Înlocuiți adresa de expediere cu locația punctului de preluare atunci când "
+"este selectată o metodă de expediere cu preluare locală."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Alegeți ce tip de livrare va fi selectat în mod implicit."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Navă"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Alegeți ce câmpuri vor fi afișate pentru câmpurile de filtrare ale zonei de "
+"expediere pentru preluarea locală. Lăsați gol pentru a afișa toate "
+"opțiunile disponibile."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Aceste câmpuri vor fi afișate ca un filtru pentru metodele de expediere "
+"prin ridicarea locală. Unele câmpuri ar putea apărea la finalizarea "
+"comenzii atunci când nu sunt selectate aici, dacă plugin-urile compatibile "
+"le solicită pentru a funcționa corect."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

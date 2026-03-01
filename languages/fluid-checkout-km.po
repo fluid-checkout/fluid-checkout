@@ -1352,55 +1352,9 @@ msgstr "បន្ទាប់ពីអាសយដ្ឋានដឹកជញ្
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "ទប់ស្កាត់ការជ្រើសរើសដោយស្វ័យប្រវត្តិនៃវិធីសាស្រ្តដឹកជញ្ជូនដំបូង"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"នៅពេលបើកដំណើរការ "
-"វិធីសាស្ត្រដឹកជញ្ជូនដំបូងដែលមាននឹងមិនត្រូវបានជ្រើសរើសដោយស្វ័យប្រវត្តិទេ "
-"នៅពេលដែលគ្មានវិធីដឹកជញ្ជូនផ្សេងទៀតត្រូវបានជ្រើសរើសពីមុនសម្រាប់កញ្ចប់ដឹកជញ្ជូ"
-"ននីមួយៗ។<br> ជម្រើសនេះនឹងត្រូវបានបើកដោយស្វ័យប្រវត្តិ "
-"ប្រសិនបើជម្រើសសម្រាប់សម្អាតវិធីសាស្ត្រដឹកជញ្ជូនដែលបានជ្រើសរើសត្រូវបានបើកសម្រ"
-"ាប់មុខងារទៅយកក្នុងស្រុក។"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "មកយកក្នុងស្រុក"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"ដកផ្នែកអាសយដ្ឋានដឹកជញ្ជូនចេញ "
-"នៅពេលដែលវិធីសាស្ត្រដឹកជញ្ជូនតាមតំបន់ត្រូវបានជ្រើសរើស។"
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"ជំនួសអាសយដ្ឋានដឹកជញ្ជូនជាមួយនឹងទីតាំងចំណុចទទួល "
-"នៅពេលដែលវិធីសាស្ត្រដឹកជញ្ជូនតាមតំបន់ត្រូវបានជ្រើសរើស។"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "បង្ហាញជម្រើសដើម្បីសម្អាតវិធីសាស្រ្តដឹកជញ្ជូននៅក្នុងជំហានរងនៃទីតាំងមកយក"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"បង្ហាញប៊ូតុងតំណមួយនៅលើជំហានរងនៃទីតាំងមកយក "
-"ដើម្បីសម្អាតវិធីសាស្ត្រដឹកជញ្ជូនដែលបានជ្រើសរើស។ "
-"វាអាចត្រូវបានប្រើដើម្បីអនុញ្ញាតឱ្យបង្ហាញផ្នែកអាសយដ្ឋានដឹកជញ្ជូនម្តងទៀត "
-"ប្រសិនបើវិធីសាស្ត្រទៅយកក្នុងស្រុកត្រូវបានជ្រើសរើសពីមុន។"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2618,6 +2572,64 @@ msgstr "បានពង្រីក"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "កុំបង្ហាញ"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"នៅពេលបើកដំណើរការ វិធីសាស្ត្រដឹកជញ្ជូនដំបូងដែលមាន <strong>នឹងមិន</strong> "
+"ត្រូវបានជ្រើសរើសដោយស្វ័យប្រវត្តិទេ "
+"នៅពេលដែលគ្មានវិធីសាស្ត្រដឹកជញ្ជូនផ្សេងទៀតត្រូវបានជ្រើសរើសពីមុនសម្រាប់កញ្ចប់ដ"
+"ឹកជញ្ជូននីមួយៗ។"
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"លុបផ្នែកអាសយដ្ឋានដឹកជញ្ជូនចេញ "
+"នៅពេលដែលវិធីសាស្ត្រដឹកជញ្ជូនទៅយកក្នុងស្រុកត្រូវបានជ្រើសរើស។"
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"សូមជំនួសអាសយដ្ឋានដឹកជញ្ជូនដោយទីតាំងចំណុចទទួល "
+"នៅពេលដែលវិធីសាស្ត្រដឹកជញ្ជូនទៅយកក្នុងស្រុកត្រូវបានជ្រើសរើស។"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "ជ្រើសរើសប្រភេទដឹកជញ្ជូនណាដែលនឹងត្រូវបានជ្រើសរើសតាមលំនាំដើម។"
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "កប៉ាល់"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "ទទួលយក"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"ជ្រើសរើស​វាល​ណា​ដែល​នឹង​ត្រូវ​បាន​បង្ហាញ​សម្រាប់​វាល​តម្រង​តំបន់​ដឹកជញ្ជូន​ស"
+"ម្រាប់​ការ​ទៅ​យក​ក្នុង​ស្រុក។ "
+"ទុក​ឲ្យ​នៅ​ទទេ​ដើម្បី​បង្ហាញ​ជម្រើស​ដែល​មាន​ទាំងអស់។"
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"វាលទាំងនេះនឹងត្រូវបានបង្ហាញជាតម្រងសម្រាប់វិធីដឹកជញ្ជូនទៅយកក្នុងស្រុក។ "
+"វាលមួយចំនួនអាចនៅតែលេចឡើងនៅពេលទូទាត់ប្រាក់នៅពេលដែលមិនត្រូវបានជ្រើសរើសនៅទីនេះ "
+"ប្រសិនបើកម្មវិធីជំនួយដែលឆបគ្នាតម្រូវឱ្យពួកវាដំណើរការបានត្រឹមត្រូវ។"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

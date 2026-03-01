@@ -1369,53 +1369,9 @@ msgstr "Po dodacej adrese"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Zabrániť automatickému výberu prvého spôsobu prepravy"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Ak je táto možnosť povolená, prvý dostupný spôsob dopravy sa automaticky "
-"nevyberie, ak pre každý balík nebol predtým vybraný iný spôsob dopravy. "
-"<br>Táto možnosť bude automaticky zapnutá, ak je pre funkciu Miestne "
-"vyzdvihnutie zapnutá možnosť vymazania vybraného spôsobu dopravy."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Miestne vyzdvihnutie"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Odstráni časť s dodacou adresou, keď je vybraný spôsob dopravy s miestnym "
-"vyzdvihnutím."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Nahradí dodaciu adresu miestom vyzdvihnutia, ak je vybraný spôsob dopravy "
-"miestnym vyzdvihnutím."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Zobrazenie možnosti vymazať spôsoby dopravy v podkrokoch miesta vyzdvihnutia"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Zobrazenie tlačidla odkazu v podkrokoch miesta vyzdvihnutia na vymazanie "
-"vybraných spôsobov dopravy. To možno použiť na umožnenie opätovného "
-"zobrazenia časti s adresou prepravy, ak bol predtým zvolený spôsob "
-"miestneho vyzdvihnutia."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2636,6 +2592,62 @@ msgstr "Rozšírené"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Nezobrazujte"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Ak je táto funkcia zapnutá, prvý dostupný spôsob prepravy <strong>nebude "
+"automaticky vybraný</strong>, ak pre každý balík nebol predtým vybraný iný "
+"spôsob prepravy."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Odstránenie časti s dodacou adresou, keď je vybraný spôsob dopravy s "
+"miestnym vyzdvihnutím."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Nahraďte adresu prepravy miestom vyzdvihnutia, ak je vybraný spôsob "
+"prepravy s miestnym vyzdvihnutím."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Vyberte, ktorý typ doručenia bude predvolený."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Loď"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Vyzdvihnutie"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Vyberte, ktoré polia sa zobrazia pre filtračné polia zóny miestneho "
+"vyzdvihnutia. Ak chcete zobraziť všetky dostupné možnosti, nechajte prázdne."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Tieto polia sa zobrazia ako filter pre metódy miestneho vyzdvihnutia. "
+"Niektoré polia sa môžu pri pokladni zobrazovať aj vtedy, keď tu nie sú "
+"vybrané, ak ich kompatibilné doplnky vyžadujú na správne fungovanie."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

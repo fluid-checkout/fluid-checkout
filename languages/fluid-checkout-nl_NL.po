@@ -1770,14 +1770,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Verwijdert de sectie met verzendadressen wanneer een lokale afhaalmethode "
-"is geselecteerd."
-
 #: inc/admin/admin-settings-tools.php:113
 msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
@@ -1794,14 +1786,6 @@ msgstr ""
 "een optie om in te loggen. In sommige contexten kan het aan te raden zijn "
 "om deze optie uitgeschakeld te laten om de privacy van klanten te "
 "beschermen."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Vervangt het verzendadres door de locatie van het afhaalpunt wanneer een "
-"verzendmethode voor lokaal afhalen is geselecteerd."
 
 #: inc/admin/admin-settings-checkout.php:572
 #: inc/admin/admin-settings-checkout.php:587
@@ -1940,16 +1924,6 @@ msgstr "Verzendmethoden"
 msgid "Shipping phone"
 msgstr "Telefoonnummer voor verzending"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Toon een linkknop op de afhaallocatie substap om de gekozen verzendmethoden "
-"te wissen. Dit kan worden gebruikt om het gedeelte met het afleveradres "
-"weer te geven als eerder een lokale afhaalmethode was geselecteerd."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr "Toon een voorbeeld van een geldig telefoonnummer in telefoonvelden"
@@ -1961,10 +1935,6 @@ msgstr "Toon de landcode naast de vlag"
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Tonen indien niet gedefinieerd"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Toon optie om verzendmethoden te wissen in de afhaallocatie substap"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2387,20 +2357,6 @@ msgstr ""
 "contactstap, onafhankelijk van de weergavelocatie die is gedefinieerd in de "
 "instellingen van de Sendinblue-plugin."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Als deze optie is ingeschakeld, wordt niet automatisch de eerste "
-"beschikbare verzendmethode geselecteerd als niet eerder een andere "
-"verzendmethode is geselecteerd voor elk verzendpakket. <br>Deze optie wordt "
-"automatisch ingeschakeld als de optie voor het wissen van de geselecteerde "
-"verzendmethode is ingeschakeld voor de functie Lokaal afhalen."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2803,9 +2759,68 @@ msgstr "Ingestort"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Uitgebreid"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Niet weergeven"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Als deze optie is ingeschakeld, wordt niet automatisch de eerste "
+"beschikbare verzendmethode geselecteerd <strong>als er niet eerder een "
+"andere verzendmethode is geselecteerd voor elk verzendpakket."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Verwijder het gedeelte met het afleveradres wanneer een lokale "
+"afhaalmethode is geselecteerd."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Vervang het verzendadres door de locatie van het afhaalpunt wanneer een "
+"verzendmethode voor lokaal afhalen is geselecteerd."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Kies welk type levering standaard wordt geselecteerd."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Schip"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Kies welke velden worden weergegeven voor de filtervelden van de "
+"verzendzone voor lokale afhaling. Laat leeg om alle beschikbare opties weer "
+"te geven."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Deze velden worden weergegeven als filter voor de verzendmethoden voor "
+"afhalen ter plaatse. Sommige velden kunnen nog steeds worden weergegeven "
+"bij het afrekenen als ze hier niet zijn geselecteerd, als compatibele "
+"plugins ze nodig hebben om goed te werken."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

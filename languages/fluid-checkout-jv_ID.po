@@ -1350,51 +1350,9 @@ msgstr "Sawise alamat pengiriman"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Nyegah pilihan otomatis saka cara pengiriman pisanan"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Yen diaktifake, cara pengiriman pisanan sing kasedhiya ora bakal dipilih "
-"kanthi otomatis nalika ora ana cara pengiriman liyane sing sadurunge "
-"dipilih kanggo saben paket pengiriman.<br> Opsi iki bakal diaktifake kanthi "
-"otomatis yen opsi kanggo mbusak cara pengiriman sing dipilih diaktifake "
-"kanggo fitur Pickup Lokal."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Pickup lokal"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "Mbusak bagean alamat pengiriman nalika cara pengiriman pickup lokal dipilih."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Ngganti alamat pengiriman karo lokasi titik pickup nalika cara pengiriman "
-"pickup lokal dipilih."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Tampilake pilihan kanggo mbusak cara pengiriman ing substep lokasi pickup"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Tampilake tombol link ing substep lokasi pickup kanggo mbusak cara "
-"pengiriman sing dipilih. Iki bisa digunakake kanggo ngidini nuduhake bagean "
-"alamat pengiriman maneh yen cara pickup lokal sadurunge dipilih."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2600,9 +2558,67 @@ msgstr "Ambruk"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Diembangake"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Aja nuduhake"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Nalika diaktifake, metode pengiriman pertama sing kasedhiya <strong>ora "
+"bakal</strong> dipilih kanthi otomatis nalika ora ana metode pengiriman "
+"liyane sing dipilih sadurunge kanggo saben paket pengiriman."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Busak bagean alamat pengiriman nalika metode pengiriman pengambilan lokal "
+"dipilih."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Ganti alamat pengiriman karo lokasi titik pengambilan nalika metode "
+"pengiriman pengambilan lokal dipilih."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Pilih jinis pangiriman sing bakal dipilih kanthi gawan."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Kapal"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Pilih kolom endi sing bakal ditampilake kanggo kolom filter zona pengiriman "
+"pengambilan lokal. Kosongake kanggo nuduhake kabeh pilihan sing kasedhiya."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Kolom-kolom iki bakal ditampilake minangka filter kanggo metode pengiriman "
+"pengambilan lokal. Sawetara kolom isih bisa katon nalika checkout nalika "
+"ora dipilih ing kene, yen plugin sing kompatibel mbutuhake supaya bisa "
+"digunakake kanthi bener."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

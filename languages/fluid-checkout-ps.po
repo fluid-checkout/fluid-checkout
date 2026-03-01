@@ -1348,48 +1348,9 @@ msgstr "د بار وړلو وروسته پته"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "د لومړۍ بار وړلو طریقې د اتوماتیک انتخاب مخه ونیسئ"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"کله چې فعال شي، د بار وړلو لومړۍ موجوده طریقه به په اتوماتيک ډول غوره نشي "
-"کله چې د هر بار وړلو کڅوړې لپاره د بار وړلو بله طریقه مخکې نه وه غوره "
-"شوې.<br> دا اختیار به په اتوماتيک ډول فعال شي که چیرې د ټاکل شوي بار وړلو "
-"میتود پاکولو اختیار د ځایی پیک اپ ځانګړتیا لپاره فعال شي."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "ځایی اخیستل"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "کله چې د ځایی لیږدونې میتود غوره شي، د بار وړلو پتې برخه لرې کوي."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr "کله چې د لیږد ځایي لیږد طریقه غوره شي، د لیږد پته د لیږد نقطې سره بدلوي."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "د پورته کولو ځای فرعي ګام کې د بار وړلو میتودونو پاکولو اختیار وښایاست"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"د غوره شوي بار وړلو میتودونو پاکولو لپاره د پورته کولو ځای فرعي ګام کې د "
-"لینک تڼۍ وښایاست. دا د بار وړلو پتې برخې بیا ښودلو لپاره کارول کیدی شي که "
-"چیرې د ځایی پورته کولو میتود دمخه غوره شوی وي."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2580,9 +2541,63 @@ msgstr "سقوط شوی"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "پراخ شوی"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "مه ښکاره کوه"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"کله چې فعال شي، د بار وړلو لومړۍ موجوده طریقه <strong>به په اتوماتيک ډول "
+"غوره نشي</strong> کله چې د هر بار وړلو کڅوړې لپاره د بار وړلو بله طریقه نه "
+"وي غوره شوې."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "کله چې د ځایي لیږدونې میتود غوره شي، د لیږدونې پتې برخه لرې کړئ."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr "کله چې د لیږد ځایي لیږد طریقه غوره شي، د لیږد پته د لیږد نقطې سره بدله کړئ."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "غوره کړئ چې د تحویلۍ کوم ډول به په ډیفالټ ډول غوره شي."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "کښتۍ"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "پورته کول"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"د محلي پیک اپ بار وړلو زون فلټر ساحو لپاره به کوم ساحې ښودل شي غوره کړئ. د "
+"ټولو شته انتخابونو ښودلو لپاره خالي پریږدئ."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"دا ساحې به د ځایی پیک اپ بار وړلو میتودونو لپاره د فلټر په توګه ښودل شي. "
+"ځینې ساحې ممکن لاهم د چیک آوټ په وخت کې څرګند شي کله چې دلته غوره شوي نه "
+"وي، که چیرې مطابقت لرونکي پلگ انونه دوی ته اړتیا ولري چې په سمه توګه کار "
+"وکړي."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

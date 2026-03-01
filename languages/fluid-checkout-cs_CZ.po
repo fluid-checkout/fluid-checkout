@@ -1749,14 +1749,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Odstranění adresy"
 
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Odebere část s dodací adresou, pokud je vybrán způsob dopravy s místním "
-"vyzvednutím."
-
 #: inc/admin/admin-settings-tools.php:113
 msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
@@ -1772,14 +1764,6 @@ msgstr ""
 "Nahradí pole pro vytvoření účtu oznámením a možností přihlásit se. V "
 "některých souvislostech lze doporučit ponechat tuto možnost vypnutou, aby "
 "bylo chráněno soukromí zákazníků."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Nahradí adresu pro odeslání místem vyzvednutí, pokud je vybrána metoda "
-"místního vyzvednutí."
 
 #: inc/admin/admin-settings-checkout.php:572
 #: inc/admin/admin-settings-checkout.php:587
@@ -1914,17 +1898,6 @@ msgstr "Způsoby přepravy"
 msgid "Shipping phone"
 msgstr "Přepravní telefon"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Zobrazení tlačítka odkazu v dílčím kroku místa vyzvednutí pro vymazání "
-"vybraných způsobů přepravy. To lze použít k tomu, aby bylo možné znovu "
-"zobrazit sekci s adresou dodání, pokud byla dříve vybrána metoda místního "
-"vyzvednutí."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr "Ukázat příklad platného telefonního čísla uvnitř telefonních polí"
@@ -1936,10 +1909,6 @@ msgstr "Zobrazit kód země vedle vlajky"
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Zobrazit, pokud není definováno"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Zobrazit možnost vymazat způsoby přepravy v dílčím kroku místa vyzvednutí"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2339,20 +2308,6 @@ msgstr ""
 "kontaktu nezávisle na umístění zobrazení definovaném v nastavení zásuvného "
 "modulu Sendinblue."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Pokud je tato možnost povolena, nebude automaticky vybrán první dostupný "
-"způsob přepravy, pokud pro každý přepravní balíček nebyl dříve vybrán jiný "
-"způsob přepravy. <br>Tato možnost bude automaticky povolena, pokud je u "
-"funkce Místní vyzvednutí povolena možnost vymazání vybraného způsobu "
-"dopravy."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2747,6 +2702,62 @@ msgstr "Rozšířená stránka"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Nezobrazujte"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Pokud je tato funkce povolena, nebude automaticky vybrán první dostupný "
+"způsob přepravy, pokud pro každý přepravní balíček nebyl dříve vybrán jiný "
+"způsob přepravy."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Odstranění sekce s dodací adresou, pokud je vybrán způsob přepravy s "
+"místním vyzvednutím."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Při výběru metody přepravy s místním vyzvednutím nahraďte přepravní adresu "
+"místem vyzvednutí."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Vyberte, který typ doručení bude vybrán jako výchozí."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Loď"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Zvolte, která pole se zobrazí pro pole filtru zóny místního vyzvednutí. "
+"Pokud chcete zobrazit všechny dostupné možnosti, ponechte je prázdné."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Tato pole se zobrazí jako filtr pro metody přepravy při místním vyzvednutí. "
+"Některá pole se mohou zobrazit při pokladně, i když zde nejsou vybrána, "
+"pokud je kompatibilní zásuvné moduly vyžadují pro správnou funkci."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

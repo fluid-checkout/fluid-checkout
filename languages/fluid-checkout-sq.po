@@ -1377,56 +1377,9 @@ msgstr "Adresa pas dërgimit"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Parandaloni zgjedhjen automatike të metodës së parë të transportit"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Kur aktivizohet, mënyra e parë e disponueshme e transportit nuk do të "
-"zgjidhet automatikisht kur nuk është zgjedhur më parë asnjë metodë tjetër "
-"transporti për secilën paketë transporti.<br> Ky opsion do të aktivizohet "
-"automatikisht nëse opsioni për pastrimin e metodës së zgjedhur të "
-"transportit është aktivizuar për funksionin Local Pickup."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Marrje lokale"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Heq seksionin e adresës së dërgesës kur zgjidhet një metodë transporti "
-"lokale e marrjes."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Zëvendëson adresën e transportit me vendndodhjen e pikës së marrjes kur "
-"zgjidhet një metodë transporti lokale e marrjes."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Shfaq opsionin për të pastruar metodat e transportit në nënhapin e "
-"vendndodhjes së marrjes"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Shfaq një buton lidhjeje në nënhapin e vendndodhjes së marrjes për të "
-"pastruar metodat e zgjedhura të transportit. Kjo mund të përdoret për të "
-"lejuar shfaqjen përsëri të seksionit të adresës së transportit nëse është "
-"zgjedhur më parë një metodë lokale e marrjes."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2652,9 +2605,67 @@ msgstr "Palosur"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Zgjeruar"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Mos e shfaq"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Kur aktivizohet, metoda e parë e transportit në dispozicion <strong>nuk "
+"do</strong> të zgjidhet automatikisht kur nuk është zgjedhur më parë asnjë "
+"metodë tjetër transporti për secilën pako transporti."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Hiq seksionin e adresës së dërgesës kur zgjidhet një metodë transporti me "
+"marrje lokale."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Zëvendësoni adresën e dërgesës me vendndodhjen e pikës së marrjes kur "
+"zgjidhet një metodë transporti lokale për marrje."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Zgjidhni se cili lloj dorëzimi do të zgjidhet si parazgjedhje."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Anije"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Marrje"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Zgjidhni cilat fusha do të shfaqen për fushat e filtrit të zonës lokale të "
+"transportit të marrjes. Lëreni bosh për të shfaqur të gjitha opsionet e "
+"disponueshme."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Këto fusha do të shfaqen si një filtër për metodat lokale të transportit me "
+"marrje. Disa fusha mund të shfaqen ende në arkë kur nuk zgjidhen këtu, nëse "
+"shtojcat e përputhshme kërkojnë që ato të funksionojnë siç duhet."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

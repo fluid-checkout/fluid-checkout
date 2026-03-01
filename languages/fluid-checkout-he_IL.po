@@ -1310,47 +1310,9 @@ msgstr "לאחר כתובת למשלוח"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "מנע בחירה אוטומטית של שיטת המשלוח הראשונה"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"כאשר מופעל, שיטת המשלוח הראשונה הזמינה לא תיבחר אוטומטית כאשר לא נבחרה שיטת "
-"משלוח אחרת עבור כל חבילת משלוח.<br> אפשרות זו תופעל באופן אוטומטי אם "
-"האפשרות לניקוי שיטת המשלוח שנבחרה מופעלת עבור תכונת האיסוף המקומי."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "איסוף מקומי"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "מסיר את קטע כתובת המשלוח כאשר נבחר שיטת משלוח לאיסוף מקומי."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr "מחליף את כתובת המשלוח במיקום נקודת האיסוף כאשר נבחר שיטת משלוח לאיסוף מקומי."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "הצג אפשרות לנקות שיטות משלוח בתת-שלב מיקום האיסוף"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"הצג לחצן קישור בשלב המשנה של מיקום האיסוף כדי לנקות את שיטות המשלוח שנבחרו. "
-"זה יכול לשמש כדי לאפשר להציג שוב את קטע כתובת המשלוח אם נבחרה בעבר שיטת "
-"איסוף מקומית."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2496,9 +2458,60 @@ msgstr "מכווץ"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "מוּרחָב"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "אל תציג"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"כאשר אפשרות זו מופעלת, שיטת המשלוח הראשונה הזמינה <strong>לא</strong> תיבחר "
+"אוטומטית אם לא נבחרה קודם לכן שיטת משלוח אחרת עבור כל חבילת משלוח."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "הסר את סעיף כתובת המשלוח כאשר נבחרה שיטת משלוח לאיסוף מקומי."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr "החלף את כתובת המשלוח במיקום נקודת האיסוף כאשר נבחרה שיטת משלוח לאיסוף מקומי."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "בחר איזה סוג משלוח ייבחר כברירת מחדל."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "סְפִינָה"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "איסוף"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"בחר אילו שדות יוצגו עבור שדות הסינון של אזור המשלוח של איסוף מקומי. השאר "
+"ריק כדי להציג את כל האפשרויות הזמינות."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"שדות אלה יוצגו כמסנן עבור שיטות משלוח לאיסוף מקומי. ייתכן שחלק מהשדות עדיין "
+"יופיעו בקופה אם לא נבחרו כאן, אם תוספים תואמים דורשים מהם לפעול כראוי."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

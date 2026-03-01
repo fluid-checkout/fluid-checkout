@@ -1374,51 +1374,9 @@ msgstr "Ar ôl cyfeiriad cludo"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Atal dewis awtomatig o&#39;r dull cludo cyntaf"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Pan fydd wedi&#39;i alluogi, ni fydd y dull cludo cyntaf sydd ar gael yn "
-"cael ei ddewis yn awtomatig pan na ddewiswyd unrhyw ddull cludo arall "
-"o&#39;r blaen ar gyfer pob pecyn cludo.<br> Bydd yr opsiwn hwn yn cael ei "
-"alluogi&#39;n awtomatig os yw&#39;r opsiwn ar gyfer clirio&#39;r dull cludo "
-"a ddewiswyd wedi&#39;i alluogi ar gyfer y nodwedd Pickup Lleol."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Pickup lleol"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "Yn dileu&#39;r adran cyfeiriad cludo pan ddewisir dull cludo casglu lleol."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Yn disodli&#39;r cyfeiriad cludo gyda lleoliad y pwynt codi pan ddewisir "
-"dull cludo lleol."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Dangos yr opsiwn i glirio dulliau cludo yn yr is-gam lleoliad codi"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Dangoswch fotwm cyswllt ar is-gam y lleoliad codi i glirio&#39;r dulliau "
-"cludo a ddewiswyd. Gellir defnyddio hwn i ganiatáu dangos yr adran "
-"cyfeiriad cludo eto os dewiswyd dull casglu lleol yn flaenorol."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2641,6 +2599,62 @@ msgstr "Wedi&#39;i ehangu"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Peidiwch â dangos"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Pan gaiff ei alluogi, <strong>ni fydd</strong> y dull cludo cyntaf sydd ar "
+"gael yn cael ei ddewis yn awtomatig pan nad oes dull cludo arall wedi&#39;i "
+"ddewis o&#39;r blaen ar gyfer pob pecyn cludo."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "Dileu&#39;r adran cyfeiriad cludo pan ddewisir dull cludo casglu lleol."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Disodli&#39;r cyfeiriad cludo gyda lleoliad y man casglu pan ddewisir dull "
+"cludo casglu lleol."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Dewiswch pa fath o ddosbarthu fydd yn cael ei ddewis yn ddiofyn."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Llong"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Casglu"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Dewiswch pa feysydd fydd yn cael eu harddangos ar gyfer y meysydd hidlo "
+"parth cludo casglu lleol. Gadewch yn wag i ddangos yr holl opsiynau sydd ar "
+"gael."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Bydd y meysydd hyn yn cael eu harddangos fel hidlydd ar gyfer y dulliau "
+"cludo casglu lleol. Efallai y bydd rhai meysydd yn dal i ymddangos wrth y "
+"ddesg dalu pan nad ydynt wedi&#39;u dewis yma, os yw ategion cydnaws yn "
+"gofyn iddynt weithio&#39;n iawn."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

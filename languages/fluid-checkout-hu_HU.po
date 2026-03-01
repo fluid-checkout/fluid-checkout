@@ -1436,53 +1436,9 @@ msgstr "Szállítási cím után"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Az első szállítási mód automatikus kiválasztásának megakadályozása"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Ha engedélyezve van, nem lesz automatikusan kiválasztva az első elérhető "
-"szállítási mód, ha korábban nem volt más szállítási mód kiválasztva az "
-"egyes szállítási csomagokhoz. <br>Ez az opció automatikusan engedélyezve "
-"lesz, ha a Helyi átvétel funkcióhoz engedélyezve van a kiválasztott "
-"szállítási mód törlése opció."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Helyi átvétel"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Eltávolítja a szállítási cím részt, ha helyi átvételi szállítási módot "
-"választ."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"A szállítási címet a helyi átvételi pont helyével helyettesíti, ha helyi "
-"átvételi szállítási módot választ."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "A szállítási módok törlésének lehetősége az átvételi hely allépésében"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Mutasson egy link gombot az átvételi hely allépésen a kiválasztott "
-"szállítási módok törléséhez. Ezzel lehetővé teheti a szállítási cím szakasz "
-"újbóli megjelenítését, ha korábban helyi átvételi módszer volt kiválasztva."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2750,9 +2706,69 @@ msgstr "Összeomlott"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Kibővített"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ne mutassa"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Ha engedélyezve van, az első elérhető szállítási mód <strong>nem</strong> "
+"lesz automatikusan kiválasztva, ha korábban nem volt más szállítási mód "
+"kiválasztva az egyes szállítási csomagokhoz."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"A szállítási cím szakasz eltávolítása, ha helyi átvételi szállítási módot "
+"választottak."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Helyi átvételi szállítási mód kiválasztásakor a szállítási cím helyébe az "
+"átvételi pont helye lép."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr ""
+"Válassza ki, hogy alapértelmezés szerint melyik szállítási típus legyen "
+"kiválasztva."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Hajó"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Válassza ki, hogy mely mezők jelenjenek meg a helyi átvételi szállítási "
+"zóna szűrőmezőiben. Ha üresen hagyja az összes rendelkezésre álló lehetőség "
+"megjelenítéséhez."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ezek a mezők a helyi átvételi szállítási módok szűrőjeként jelennek meg. "
+"Néhány mező akkor is megjelenhet a pénztárnál, ha nem itt van kiválasztva, "
+"ha a kompatibilis bővítmények megkövetelik a megfelelő működésüket."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

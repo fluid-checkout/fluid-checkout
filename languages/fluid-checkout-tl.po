@@ -1397,56 +1397,9 @@ msgstr "Pagkatapos ng address ng pagpapadala"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Pigilan ang awtomatikong pagpili ng unang paraan ng pagpapadala"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Kapag pinagana, ang unang paraan ng pagpapadala na magagamit ay hindi "
-"awtomatikong pipiliin kapag walang ibang paraan ng pagpapadala ang dating "
-"napili para sa bawat pakete ng pagpapadala.<br> Awtomatikong ie-enable ang "
-"opsyong ito kung pinagana ang opsyon para sa pag-clear sa napiling paraan "
-"ng pagpapadala para sa feature na Local Pickup."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Lokal na pickup"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Inaalis ang seksyon ng address sa pagpapadala kapag napili ang isang lokal "
-"na paraan ng pagpapadala ng pickup."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Pinapalitan ang address ng pagpapadala ng lokasyon ng pickup point kapag "
-"napili ang isang lokal na paraan ng pagpapadala ng pickup."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Ipakita ang opsyon upang i-clear ang mga paraan ng pagpapadala sa substep "
-"ng lokasyon ng pickup"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Magpakita ng button ng link sa substep ng lokasyon ng pickup para i-clear "
-"ang mga napiling paraan ng pagpapadala. Magagamit ito upang payagan ang "
-"pagpapakitang muli ng seksyon ng address ng pagpapadala kung dati nang "
-"napili ang isang lokal na paraan ng pagkuha."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2688,9 +2641,68 @@ msgstr "Nabuwag"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Pinalawak"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Huwag ipakita"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Kapag pinagana, ang unang paraan ng pagpapadala na magagamit <strong>ay "
+"hindi</strong> awtomatikong mapipili kapag walang ibang paraan ng "
+"pagpapadala ang napili dati para sa bawat pakete ng pagpapadala."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Alisin ang seksyong address ng pagpapadala kapag napili ang lokal na paraan "
+"ng pagpapadala para sa pagkuha."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Palitan ang address ng pagpapadala ng lokasyon ng pickup point kapag napili "
+"ang lokal na paraan ng pagpapadala para sa pickup."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Piliin kung aling uri ng paghahatid ang pipiliin bilang default."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Barko"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pagkuha"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Piliin kung aling mga field ang ipapakita para sa mga field ng filter ng "
+"local pickup shipping zone. Iwanang blangko para ipakita ang lahat ng "
+"available na opsyon."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ipapakita ang mga field na ito bilang filter para sa mga lokal na paraan ng "
+"pagpapadala para sa pagkuha. Maaaring lumitaw pa rin ang ilang field sa "
+"checkout kapag hindi ito napili rito, kung kinakailangan ng mga compatible "
+"na plugin na gumana nang maayos ang mga ito."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1367,56 +1367,9 @@ msgstr "Piştî navnîşana barkirinê"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Hilbijartina otomatîkî ya rêbaza barkirinê ya yekem asteng bikin"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Dema ku were çalak kirin, gava ku berê ji bo her pakêtek barkirinê rêbazek "
-"din a barkirinê nehatibe hilbijartin, yekem rêbaza barkirinê ya berdest dê "
-"bixweber neyê hilbijartin.<br> Ger vebijarka paqijkirina rêbaza barkirinê "
-"ya hilbijartî ji bo taybetmendiya Hilbijartina Herêmî were çalak kirin ev "
-"vebijark dê bixweber were çalak kirin."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Pişka herêmî"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Dema ku rêbazek barkirinê ya herêmî tê hilbijartin, beşa navnîşana "
-"barkirinê radike."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Dema ku rêbazek barkirinê ya herêmî tê hilbijartin, navnîşana barkirinê bi "
-"cîhê xala hilgirtinê diguhezîne."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Vebijêrk nîşan bide ku rêbazên barkirinê di binê qonaxa hilkişînê de paqij "
-"bike"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Bişkojek lînkê li ser binepêngava cîhê hilgirtinê nîşan bidin da ku rêbazên "
-"barkirinê yên bijartî paqij bikin. Ev dikare were bikar anîn da ku destûr "
-"bide ku beşa navnîşana barkirinê dîsa were xuyang kirin heke berê rêbazek "
-"hilgirtina herêmî hate hilbijartin."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2635,9 +2588,66 @@ msgstr "Hilweşiya"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Berfirehkirî"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Nîşan nede"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Dema ku çalak be, rêbaza şandinê ya yekem a berdest <strong>dê bixweber "
+"neyê</strong> hilbijartin dema ku berê ji bo her pakêta şandinê rêbazek din "
+"a şandinê nehatibe hilbijartin."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Dema ku rêbaza şandina hilgirtina herêmî tê hilbijartin, beşa navnîşana "
+"şandinê jê bike."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Dema ku rêbaza şandina hilgirtina herêmî tê hilbijartin, navnîşana şandinê "
+"bi cihê xala wergirtinê biguherînin."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Hilbijêre ka kîjan celeb radestkirin dê bi xwerû were hilbijartin."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Gemî"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Berguhkê rake"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Hilbijêre ka kîjan qad dê ji bo qadên fîltera herêma şandina hilgirtinê ya "
+"herêmî werin nîşandan. Ji bo nîşandana hemî vebijarkên berdest vala bihêlin."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ev qad dê wekî fîlterek ji bo rêbazên şandina herêmî werin nîşandan. Dibe "
+"ku hin qad hîn jî di qonaxa kirînê de xuya bibin dema ku li vir neyên "
+"hilbijartin, heke pêvekên lihevhatî hewce bikin ku ew bi rêkûpêk bixebitin."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1813,14 +1813,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Rimuove la sezione dell'indirizzo di spedizione quando viene selezionato un "
-"metodo di spedizione con ritiro locale."
-
 #: inc/admin/admin-settings-tools.php:113
 msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
@@ -1836,14 +1828,6 @@ msgstr ""
 "Sostituisce i campi di creazione dell'account con una notifica e un'opzione "
 "di accesso. In alcuni contesti, potrebbe essere consigliabile lasciare "
 "questa opzione disattivata per proteggere la privacy dei clienti."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Sostituisce l'indirizzo di spedizione con la posizione del punto di ritiro "
-"quando viene selezionato un metodo di spedizione con ritiro locale."
 
 #: inc/admin/admin-settings-checkout.php:572
 #: inc/admin/admin-settings-checkout.php:587
@@ -1985,17 +1969,6 @@ msgstr "Modalità di spedizione"
 msgid "Shipping phone"
 msgstr "Telefono per spedizione"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Mostra un pulsante di collegamento nel sottopasso del luogo di ritiro per "
-"cancellare i metodi di spedizione scelti. Questo può essere utilizzato per "
-"visualizzare nuovamente la sezione dell'indirizzo di spedizione se in "
-"precedenza era stato selezionato un metodo di ritiro locale."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr ""
@@ -2009,12 +1982,6 @@ msgstr "Mostra il codice del paese accanto alla bandiera"
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Mostra se non definito"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Mostra l'opzione per cancellare i metodi di spedizione nel sottopasso del "
-"luogo di ritiro"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2440,20 +2407,6 @@ msgstr ""
 "dati di contatto indipendentemente dalla posizione di visualizzazione "
 "definita nelle impostazioni del plugin Sendinblue."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Se attivata, il primo metodo di spedizione disponibile non verrà "
-"selezionato automaticamente quando non è stato selezionato in precedenza "
-"alcun altro metodo di spedizione per ogni pacchetto di spedizione. <Questa "
-"opzione viene attivata automaticamente se l'opzione di cancellazione del "
-"metodo di spedizione selezionato è attivata per la funzione Ritiro locale."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2860,9 +2813,68 @@ msgstr "Crollato"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Espanso"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Non mostrare"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Se abilitato, il primo metodo di spedizione disponibile non verrà "
+"selezionato automaticamente quando non è stato selezionato alcun altro "
+"metodo di spedizione per ogni pacchetto di spedizione."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Rimuovere la sezione dell'indirizzo di spedizione quando si seleziona un "
+"metodo di spedizione con ritiro in loco."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Sostituire l'indirizzo di spedizione con la posizione del punto di ritiro "
+"quando si seleziona un metodo di spedizione con ritiro locale."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Scegliere il tipo di consegna predefinito."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Nave"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Scegliere quali campi saranno visualizzati per il filtro della zona di "
+"spedizione del ritiro locale. Lasciare vuoto per mostrare tutte le opzioni "
+"disponibili."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Questi campi saranno visualizzati come filtro per i metodi di spedizione "
+"del ritiro locale. Alcuni campi potrebbero essere visualizzati al momento "
+"del checkout anche se non selezionati, se i plugin compatibili li "
+"richiedono per funzionare correttamente."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

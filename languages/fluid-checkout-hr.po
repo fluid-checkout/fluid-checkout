@@ -1361,52 +1361,9 @@ msgstr "Nakon adrese za dostavu"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Spriječite automatski odabir prvog načina dostave"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Kada je omogućeno, prvi dostupan način dostave neće biti automatski odabran "
-"ako prethodno nije odabran nijedan drugi način dostave za svaki paket "
-"dostave.<br> Ova će opcija biti automatski omogućena ako je opcija za "
-"brisanje odabranog načina dostave omogućena za značajku lokalnog "
-"preuzimanja."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Lokalno preuzimanje"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "Uklanja odjeljak s adresom za dostavu kada je odabran lokalni način dostave."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Zamjenjuje adresu dostave lokacijom mjesta preuzimanja kada je odabran "
-"lokalni način dostave preuzimanja."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Prikaži opciju za brisanje načina dostave u podkoraku mjesta preuzimanja"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Pokažite gumb za vezu na podkoraku lokacije preuzimanja da biste izbrisali "
-"odabrane načine dostave. Ovo se može koristiti za ponovno prikazivanje "
-"odjeljka s adresom za dostavu ako je prethodno odabran lokalni način "
-"preuzimanja."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2623,6 +2580,62 @@ msgstr "Prošireno"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ne prikazuj"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Kada je omogućeno, prvi dostupni način dostave <strong>neće</strong> se "
+"automatski odabrati ako prethodno nije odabran nijedan drugi način dostave "
+"za svaki paket dostave."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Uklonite odjeljak s adresom za dostavu kada je odabran lokalni način "
+"dostave."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Zamijenite adresu za dostavu lokacijom mjesta preuzimanja kada je odabran "
+"lokalni način dostave."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Odaberite koja će vrsta isporuke biti odabrana prema zadanim postavkama."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Brod"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Kurva"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Odaberite koja će se polja prikazivati za polja filtra za lokalnu zonu "
+"dostave preuzimanja. Ostavite prazno za prikaz svih dostupnih opcija."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ova će se polja prikazati kao filter za lokalne načine dostave preuzimanja. "
+"Neka se polja mogu i dalje prikazivati prilikom plaćanja ako nisu ovdje "
+"odabrana, ako kompatibilni dodaci zahtijevaju njihov ispravan rad."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

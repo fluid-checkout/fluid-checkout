@@ -1796,14 +1796,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Entfernen"
 
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Entfernt den Abschnitt für die Lieferadresse, wenn eine lokale Abholmethode "
-"gewählt wurde."
-
 #: inc/admin/admin-settings-tools.php:113
 msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
@@ -1819,14 +1811,6 @@ msgstr ""
 "Ersetzt die Felder für die Kontoerstellung durch eine Benachrichtigung und "
 "die Möglichkeit, sich anzumelden. In manchen Kontexten kann es ratsam sein, "
 "diese Option zu deaktivieren, um die Privatsphäre der Kunden zu schützen."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Ersetzt die Versandadresse durch den Ort der Abholung, wenn eine lokale "
-"Abholmethode gewählt wurde."
 
 #: inc/admin/admin-settings-checkout.php:572
 #: inc/admin/admin-settings-checkout.php:587
@@ -1965,17 +1949,6 @@ msgstr "Versandarten"
 msgid "Shipping phone"
 msgstr "Telefonnummer (Lieferadresse)"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Zeigen Sie im Unterschritt Abholort eine Verknüpfung an, um die gewählten "
-"Versandmethoden zu löschen. Auf diese Weise können Sie den Abschnitt mit "
-"der Lieferadresse wieder anzeigen lassen, wenn zuvor eine lokale "
-"Abholmethode ausgewählt wurde."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr "Zeigen Sie ein Beispiel für eine gültige Telefonnummer in den Telefonfeldern"
@@ -1987,10 +1960,6 @@ msgstr "Ländercode neben der Flagge anzeigen"
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Anzeigen, wenn nicht definiert"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "Option zum Löschen von Versandmethoden im Teilschritt Abholort anzeigen"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2414,20 +2383,6 @@ msgstr ""
 "den Sendinblue-Plugin-Einstellungen definierten Anzeigeposition in den "
 "Schritt „Kontaktaufnahme“ verschoben."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Wenn diese Option aktiviert ist, wird nicht automatisch die erste "
-"verfügbare Versandart ausgewählt, wenn zuvor keine andere Versandart für "
-"jedes Versandpaket ausgewählt wurde. <br>Diese Option wird automatisch "
-"aktiviert, wenn die Option zum Löschen der ausgewählten Versandart für die "
-"Funktion Lokale Abholung aktiviert ist."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2844,9 +2799,68 @@ msgstr "Zusammengeklappt"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Erweitert"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Nicht anzeigen"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Wenn diese Option aktiviert ist, wird die erste verfügbare Versandmethode "
+"nicht automatisch ausgewählt, wenn zuvor keine andere Versandmethode für "
+"jedes Versandpaket ausgewählt wurde."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Entfernen Sie den Abschnitt für die Lieferadresse, wenn eine Versandart mit "
+"lokaler Abholung gewählt wird."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Ersetzen Sie die Versandadresse durch den Ort der Abholstelle, wenn eine "
+"lokale Abholmethode gewählt wurde."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Wählen Sie aus, welche Zustellungsart standardmäßig ausgewählt werden soll."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Schiff"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Abholung"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Wählen Sie, welche Felder für die Filterfelder der lokalen Abholzone "
+"angezeigt werden sollen. Lassen Sie leer, um alle verfügbaren Optionen "
+"anzuzeigen."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Diese Felder werden als Filter für die Versandarten bei lokaler Abholung "
+"angezeigt. Einige Felder können auch dann an der Kasse erscheinen, wenn sie "
+"hier nicht ausgewählt sind, wenn kompatible Plugins sie benötigen, um "
+"richtig zu funktionieren."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

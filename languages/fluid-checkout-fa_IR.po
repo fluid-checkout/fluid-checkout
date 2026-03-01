@@ -1342,50 +1342,9 @@ msgstr "آدرس پس از ارسال"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "جلوگیری از انتخاب خودکار اولین روش حمل و نقل"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"هنگامی که فعال باشد، اولین روش حمل و نقل موجود به طور خودکار انتخاب نخواهد "
-"شد، در صورتی که قبلاً هیچ روش ارسال دیگری برای هر بسته حمل و نقل انتخاب "
-"نشده باشد.<br> اگر گزینه پاک کردن روش ارسال انتخابی برای ویژگی Local Pickup "
-"فعال باشد، این گزینه به طور خودکار فعال می شود."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "پیکاپ محلی"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "وقتی روش حمل و نقل محلی انتخاب شده است، بخش آدرس حمل و نقل را حذف می کند."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"هنگامی که یک روش حمل و نقل محلی انتخاب می شود، آدرس حمل و نقل را با مکان "
-"نقطه تحویل جایگزین می کند."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "نمایش گزینه برای پاک کردن روش های حمل و نقل در مرحله فرعی مکان تحویل"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"برای پاک کردن روش‌های حمل و نقل انتخابی، یک دکمه پیوند در مرحله فرعی مکان "
-"دریافت نشان دهید. اگر قبلاً یک روش تحویل محلی انتخاب شده باشد، می‌توان از "
-"این امکان برای نمایش مجدد بخش آدرس حمل و نقل استفاده کرد."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2580,9 +2539,62 @@ msgstr "فروریخته"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "گسترش یافته"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "نشان ندهید."
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"وقتی این گزینه فعال باشد، اگر قبلاً هیچ روش حمل و نقل دیگری برای هر بسته "
+"حمل و نقل انتخاب نشده باشد، اولین روش حمل و نقل موجود به طور خودکار انتخاب "
+"<strong>نخواهد</strong> شد."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "بخش آدرس ارسال را هنگام انتخاب روش ارسال محلی حذف کنید."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr "هنگام انتخاب روش ارسال محلی، آدرس ارسال را با محل تحویل کالا جایگزین کنید."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "انتخاب کنید که کدام نوع تحویل به طور پیش‌فرض انتخاب شود."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "کشتی"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "وانت"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"انتخاب کنید که کدام فیلدها برای فیلدهای فیلتر منطقه تحویل محلی نمایش داده "
+"شوند. برای نمایش همه گزینه‌های موجود، خالی بگذارید."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"این فیلدها به عنوان فیلتری برای روش‌های ارسال محلی نمایش داده می‌شوند. برخی "
+"از فیلدها ممکن است در صورت عدم انتخاب در اینجا، در صورت عدم نیاز به عملکرد "
+"صحیح توسط افزونه‌های سازگار، در هنگام پرداخت ظاهر شوند."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1389,54 +1389,9 @@ msgstr "அனுப்பிய பிறகு முகவரி"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "முதல் ஷிப்பிங் முறையை தானாகத் தேர்ந்தெடுப்பதைத் தடுக்கவும்."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"இயக்கப்பட்டால், ஒவ்வொரு ஷிப்பிங் தொகுப்புக்கும் முன்னர் வேறு எந்த ஷிப்பிங் "
-"முறையும் தேர்ந்தெடுக்கப்படாதபோது, கிடைக்கக்கூடிய முதல் ஷிப்பிங் முறை "
-"தானாகவே தேர்ந்தெடுக்கப்படாது.<br> தேர்ந்தெடுக்கப்பட்ட ஷிப்பிங் முறையை "
-"அழிக்கும் விருப்பம் உள்ளூர் பிக்அப் அம்சத்திற்கு இயக்கப்பட்டிருந்தால், இந்த "
-"விருப்பம் தானாகவே இயக்கப்படும்."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "உள்ளூர் பிக்அப் வசதி"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"உள்ளூர் பிக்அப் ஷிப்பிங் முறை தேர்ந்தெடுக்கப்படும்போது ஷிப்பிங் முகவரிப் "
-"பகுதியை நீக்குகிறது."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"உள்ளூர் பிக்அப் ஷிப்பிங் முறை தேர்ந்தெடுக்கப்படும்போது, ஷிப்பிங் முகவரியை "
-"பிக்அப் புள்ளி இருப்பிடத்துடன் மாற்றுகிறது."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "பிக்அப் இட துணைப் படியில் ஷிப்பிங் முறைகளை அழிக்க விருப்பத்தைக் காட்டு."
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"தேர்ந்தெடுக்கப்பட்ட ஷிப்பிங் முறைகளை அழிக்க, பிக்அப் இருப்பிட துணைப் "
-"படியில் இணைப்பு பொத்தானைக் காட்டு. உள்ளூர் பிக்அப் முறை முன்பு "
-"தேர்ந்தெடுக்கப்பட்டிருந்தால், ஷிப்பிங் முகவரிப் பிரிவை மீண்டும் காட்ட இதைப் "
-"பயன்படுத்தலாம்."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2675,9 +2630,67 @@ msgstr "சுருக்கப்பட்டது"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "விரிவாக்கப்பட்டது"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "காட்டாதே"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"இயக்கப்பட்டால், ஒவ்வொரு ஷிப்பிங் தொகுப்புக்கும் முன்னர் வேறு எந்த ஷிப்பிங் "
+"முறையும் தேர்ந்தெடுக்கப்படாதபோது, கிடைக்கக்கூடிய முதல் ஷிப்பிங் முறை "
+"தானாகவே <strong>தேர்ந்தெடுக்கப்படாது</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"உள்ளூர் பிக்அப் ஷிப்பிங் முறை தேர்ந்தெடுக்கப்படும்போது, ஷிப்பிங் முகவரிப் "
+"பகுதியை அகற்றவும்."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"உள்ளூர் பிக்அப் ஷிப்பிங் முறை தேர்ந்தெடுக்கப்படும்போது, ஷிப்பிங் முகவரியை "
+"பிக்அப் பாயிண்ட் இருப்பிடத்துடன் மாற்றவும்."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "இயல்பாக எந்த விநியோக வகை தேர்ந்தெடுக்கப்படும் என்பதைத் தேர்வுசெய்யவும்."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "கப்பல்"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "பிக் அப்"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"உள்ளூர் பிக்அப் ஷிப்பிங் மண்டல வடிகட்டி புலங்களுக்கு எந்த புலங்கள் "
+"காட்டப்பட வேண்டும் என்பதைத் தேர்வுசெய்யவும். கிடைக்கக்கூடிய அனைத்து "
+"விருப்பங்களையும் காட்ட காலியாக விடவும்."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"இந்தப் புலங்கள் உள்ளூர் பிக்அப் ஷிப்பிங் முறைகளுக்கான வடிகட்டியாகக் "
+"காட்டப்படும். இணக்கமான செருகுநிரல்கள் சரியாக வேலை செய்ய வேண்டும் எனில், "
+"இங்கே தேர்ந்தெடுக்கப்படாவிட்டால் சில புலங்கள் செக் அவுட்டில் தோன்றக்கூடும்."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1347,53 +1347,9 @@ msgstr "නැව්ගත කිරීමෙන් පසු ලිපිනය
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "පළමු නැව්ගත කිරීමේ ක්‍රමය ස්වයංක්‍රීයව තෝරා ගැනීම වළක්වන්න"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"සක්‍රිය කළ විට, එක් එක් නැව්ගත කිරීමේ පැකේජය සඳහා වෙනත් නැව්ගත කිරීමේ "
-"ක්‍රමයක් කලින් තෝරාගෙන නොමැති විට, ලබා ගත හැකි පළමු නැව්ගත කිරීමේ ක්‍රමය "
-"ස්වයංක්‍රීයව තෝරා නොගනු ඇත.<br> දේශීය පිකප් විශේෂාංගය සඳහා තෝරාගත් නැව්ගත "
-"කිරීමේ ක්‍රමය හිස් කිරීමේ විකල්පය සක්‍රීය කර ඇත්නම් මෙම විකල්පය "
-"ස්වයංක්‍රීයව සක්‍රීය වනු ඇත."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "දේශීය ලබා ගැනීම"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"දේශීය පිකප් නැව්ගත කිරීමේ ක්‍රමයක් තෝරාගත් විට නැව්ගත කිරීමේ ලිපින කොටස "
-"ඉවත් කරයි."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"දේශීය පිකප් නැව්ගත කිරීමේ ක්‍රමයක් තෝරා ගත් විට නැව්ගත කිරීමේ ලිපිනය පිකප් "
-"ස්ථාන ස්ථානය සමඟ ප්‍රතිස්ථාපනය කරයි."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "පිකප් ස්ථාන උපපියවරේ නැව්ගත කිරීමේ ක්‍රම හිස් කිරීමට විකල්පය පෙන්වන්න"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"තෝරාගත් නැව්ගත කිරීමේ ක්‍රම හිස් කිරීම සඳහා පිකප් ස්ථාන උපපියවරේ සබැඳි "
-"බොත්තමක් පෙන්වන්න. දේශීය පිකප් ක්‍රමයක් කලින් තෝරාගෙන තිබේ නම්, නැව්ගත "
-"කිරීමේ ලිපින කොටස නැවත පෙන්වීමට මෙය භාවිතා කළ හැක."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2584,9 +2540,66 @@ msgstr "හකුළන ලදී"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "පුළුල් කරන ලදී"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "පෙන්වන්න එපා"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"සක්‍රිය කළ විට, එක් එක් නැව්ගත කිරීමේ පැකේජය සඳහා වෙනත් නැව්ගත කිරීමේ "
+"ක්‍රමයක් කලින් තෝරාගෙන නොමැති විට, ලබා ගත හැකි පළමු නැව්ගත කිරීමේ ක්‍රමය "
+"ස්වයංක්‍රීයව තෝරා <strong>නොගනු ඇත</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"දේශීය පිකප් නැව්ගත කිරීමේ ක්‍රමයක් තෝරා ගත් විට නැව්ගත කිරීමේ ලිපින කොටස "
+"ඉවත් කරන්න."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"දේශීය පිකප් නැව්ගත කිරීමේ ක්‍රමයක් තෝරා ගත් විට, නැව්ගත කිරීමේ ලිපිනය පිකප් "
+"ස්ථාන ස්ථානය සමඟ ප්‍රතිස්ථාපනය කරන්න."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "පෙරනිමියෙන් තෝරා ගන්නේ කුමන බෙදාහැරීමේ වර්ගයද යන්න තෝරන්න."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "නැව"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "අවුලා ගන්න"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"දේශීය පිකප් නැව් කලාප පෙරහන් ක්ෂේත්‍ර සඳහා පෙන්වන ක්ෂේත්‍ර තෝරන්න. පවතින "
+"සියලු විකල්ප පෙන්වීමට හිස්ව තබන්න."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"මෙම ක්ෂේත්‍ර දේශීය පිකප් නැව්ගත කිරීමේ ක්‍රම සඳහා පෙරහනක් ලෙස පෙන්වනු ඇත. "
+"අනුකූල ප්ලගීන නිසි ලෙස ක්‍රියා කිරීමට අවශ්‍ය නම්, මෙහි තෝරා නොගත් විට සමහර "
+"ක්ෂේත්‍ර තවමත් පිටවීමේදී දිස්විය හැකිය."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

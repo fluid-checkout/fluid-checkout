@@ -1361,56 +1361,9 @@ msgstr "Efter leveringsadresse"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Forhindre automatisk valg af den første forsendelsesmetode"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Når den er aktiveret, vælges den første tilgængelige forsendelsesmetode "
-"ikke automatisk, når der ikke tidligere er valgt en anden "
-"forsendelsesmetode for hver pakke. <br>Denne mulighed aktiveres automatisk, "
-"hvis muligheden for at rydde den valgte forsendelsesmetode er aktiveret for "
-"funktionen Lokal afhentning."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Lokal afhentning"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Fjerner sektionen med leveringsadresse, når der er valgt en leveringsmetode "
-"med lokal afhentning."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Erstatter leveringsadressen med afhentningsstedets placering, når der er "
-"valgt en lokal afhentningsforsendelsesmetode."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Vis mulighed for at rydde forsendelsesmetoder i undertrinnet for "
-"afhentningssted"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Vis en link-knap i undertrinnet for afhentningssted for at rydde de valgte "
-"forsendelsesmetoder. Dette kan bruges til at vise sektionen med "
-"leveringsadressen igen, hvis der tidligere er valgt en lokal "
-"afhentningsmetode."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2621,9 +2574,68 @@ msgstr "Kollapset"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Udvidet"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Må ikke vises"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Når den er aktiveret, vil den første tilgængelige forsendelsesmetode "
+"<strong>ikke</strong> blive valgt automatisk, når der ikke tidligere er "
+"valgt en anden forsendelsesmetode for hver pakke."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Fjern afsnittet om leveringsadresse, når der er valgt en leveringsmetode "
+"med lokal afhentning."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Erstat leveringsadressen med afhentningsstedets placering, når der er valgt "
+"en leveringsmetode med lokal afhentning."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Vælg, hvilken leveringstype der skal vælges som standard."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Skib"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Vælg, hvilke felter der skal vises for filterfelterne for lokal "
+"afhentningsforsendelseszone. Lad det være tomt for at vise alle "
+"tilgængelige muligheder."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Disse felter vises som et filter for de lokale "
+"afhentningsforsendelsesmetoder. Nogle felter vises muligvis stadig ved "
+"kassen, når de ikke er valgt her, hvis kompatible plugins kræver dem for at "
+"fungere korrekt."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1789,14 +1789,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Αφαιρέστε το"
 
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Αφαιρεί το τμήμα διεύθυνσης αποστολής όταν έχει επιλεγεί μέθοδος αποστολής "
-"με τοπική παραλαβή."
-
 #: inc/admin/admin-settings-tools.php:113
 msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
@@ -1812,14 +1804,6 @@ msgstr ""
 "Αντικαθιστά τα πεδία δημιουργίας λογαριασμού με μια ειδοποίηση και την "
 "επιλογή σύνδεσης. Σε ορισμένα πλαίσια, μπορεί να συνιστάται να αφήσετε αυτή "
 "την επιλογή απενεργοποιημένη για να προστατεύσετε το απόρρητο των πελατών."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Αντικαθιστά τη διεύθυνση αποστολής με την τοποθεσία του σημείου παραλαβής "
-"όταν έχει επιλεγεί μια τοπική μέθοδος αποστολής παραλαβής."
 
 #: inc/admin/admin-settings-checkout.php:572
 #: inc/admin/admin-settings-checkout.php:587
@@ -1961,17 +1945,6 @@ msgstr "Μέθοδοι αποστολής"
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Εμφάνιση ενός κουμπιού συνδέσμου στο υποβήμα της θέσης παραλαβής για την "
-"εκκαθάριση των επιλεγμένων μεθόδων αποστολής. Αυτό μπορεί να χρησιμοποιηθεί "
-"για να επιτρέψει την εμφάνιση του τμήματος διεύθυνσης αποστολής ξανά, εάν "
-"προηγουμένως είχε επιλεγεί μια τοπική μέθοδος παραλαβής."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr ""
@@ -1985,12 +1958,6 @@ msgstr "Εμφάνιση του κωδικού της χώρας δίπλα στ
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Εμφάνιση αν δεν έχει οριστεί"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Εμφάνιση επιλογής για την κατάργηση των μεθόδων αποστολής στο υποβήμα της "
-"τοποθεσίας παραλαβής"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2419,20 +2386,6 @@ msgstr ""
 "επαφής ανεξάρτητα από τη θέση εμφάνισης που ορίζεται στις ρυθμίσεις του "
 "πρόσθετου Sendinblue."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Όταν είναι ενεργοποιημένη, η πρώτη διαθέσιμη μέθοδος αποστολής δεν θα "
-"επιλέγεται αυτόματα όταν δεν έχει επιλεγεί προηγουμένως άλλη μέθοδος "
-"αποστολής για κάθε πακέτο αποστολής. <br>Αυτή η επιλογή θα ενεργοποιηθεί "
-"αυτόματα εάν η επιλογή για την εκκαθάριση της επιλεγμένης μεθόδου αποστολής "
-"είναι ενεργοποιημένη για τη λειτουργία Τοπική παραλαβή."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2840,9 +2793,68 @@ msgstr "Καταρρεύσει"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Διευρυμένο"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Μην εμφανίζετε"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Όταν είναι ενεργοποιημένη, η πρώτη διαθέσιμη μέθοδος αποστολής "
+"<strong>δεν</strong> θα επιλέγεται αυτόματα όταν δεν έχει επιλεγεί "
+"προηγουμένως άλλη μέθοδος αποστολής για κάθε πακέτο αποστολής."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Κατάργηση του τμήματος διεύθυνσης αποστολής όταν έχει επιλεγεί μέθοδος "
+"αποστολής με τοπική παραλαβή."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Αντικαταστήστε τη διεύθυνση αποστολής με την τοποθεσία του σημείου "
+"παραλαβής όταν έχει επιλεγεί μια τοπική μέθοδος αποστολής παραλαβής."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Επιλέξτε ποιος τύπος παράδοσης θα επιλέγεται από προεπιλογή."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Πλοίο"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Παραλαβή"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Επιλέξτε ποια πεδία θα εμφανίζονται για τα πεδία φίλτρου της τοπικής ζώνης "
+"αποστολής παραλαβής. Αφήστε το κενό για να εμφανιστούν όλες οι διαθέσιμες "
+"επιλογές."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Αυτά τα πεδία θα εμφανίζονται ως φίλτρο για τις τοπικές μεθόδους αποστολής "
+"παραλαβής. Ορισμένα πεδία ενδέχεται να εξακολουθούν να εμφανίζονται στο "
+"ταμείο όταν δεν έχουν επιλεγεί εδώ, εάν τα συμβατά πρόσθετα τα απαιτούν για "
+"να λειτουργούν σωστά."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

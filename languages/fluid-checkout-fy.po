@@ -1370,56 +1370,9 @@ msgstr "Nei ferstjoering adres"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Foarkom automatyske seleksje fan de earste skipfeart metoade"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"As it ynskeakele is, sil de earste beskikbere ferstjoermetoade net "
-"automatysk selektearre wurde as gjin oare ferstjoermetoade earder "
-"selektearre is foar elk ferstjoerpakket.<br> Dizze opsje sil automatysk "
-"ynskeakele wurde as de opsje foar it wiskjen fan de selekteare "
-"ferstjoermetoade ynskeakele is foar de funksje Local Pickup."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Lokale pickup"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Ferwideret seksje fan ferstjoeradres as in pleatslike ferstjoermetoade foar "
-"opheljen is selektearre."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Ferfangt it ferstjoeradres mei de lokaasje fan it opheljenpunt as in "
-"pleatslike ferstjoermetoade foar opheljen wurdt selektearre."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Toan opsje om ferstjoermetoaden te wiskjen yn &#39;e substap foar "
-"opheljenlokaasje"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Toan in keppeling knop op de pickup lokaasje substap te wiskjen de keazen "
-"ferstjoermetoaden. Dit kin brûkt wurde om it werjaan fan &#39;e seksje fan "
-"ferstjoeradres wer te litten as in pleatslike oppakmetoade earder "
-"selektearre is."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2639,9 +2592,68 @@ msgstr "Ynstoart"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Útwreide"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Net sjen litte"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"As dit ynskeakele is, <strong>wurdt de earste beskikbere ferstjoermetoade "
+"net</strong> automatysk selektearre as der earder gjin oare "
+"ferstjoermetoade selektearre wie foar elk ferstjoerpakket."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Ferwiderje it seksje foar it ferstjoeradres as in lokale "
+"ophelferstjoermetoade selektearre is."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Ferfang it ferstjoeradres mei de lokaasje fan it ophelpunt as in lokale "
+"ophelferstjoermetoade selektearre is."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Kies hokker leveringstype standert selektearre wurdt."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Skip"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Ophelje"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Kies hokker fjilden werjûn wurde sille foar de filterfjilden foar lokale "
+"ophel- en ferstjoersônes. Lit leech om alle beskikbere opsjes te sjen "
+"litten."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Dizze fjilden wurde werjûn as in filter foar de lokale "
+"ôfhelferstjoermethoden. Guon fjilden kinne noch ferskine by it beteljen as "
+"se hjir net selektearre binne, as kompatibele plugins se fereaskje om goed "
+"te wurkjen."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

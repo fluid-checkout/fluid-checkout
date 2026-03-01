@@ -1395,57 +1395,9 @@ msgstr "ပို့ဆောင်ပြီးနောက်လိပ်စာ
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "ပထမဆုံး ပို့ဆောင်ရေးနည်းလမ်းကို အလိုအလျောက်ရွေးချယ်ခြင်းကို တားဆီးပါ။"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"ဖွင့်ထားသောအခါ၊ ရရှိနိုင်သော ပထမဆုံး ပို့ဆောင်ရေးနည်းလမ်းကို "
-"ပို့ဆောင်ရေးပက်ကေ့ချ်တစ်ခုစီအတွက် အခြား ပို့ဆောင်ရေးနည်းလမ်းကို ယခင်က "
-"မရွေးချယ်ထားသောအခါတွင် ရရှိနိုင်သော ပထမဆုံး ပို့ဆောင်ရေးနည်းလမ်းကို "
-"အလိုအလျောက် ရွေးချယ်မည်မဟုတ်ပါ။<br> Local Pickup အင်္ဂါရပ်အတွက် "
-"ရွေးချယ်ထားသော ပို့ဆောင်ရေးနည်းလမ်းကို ရှင်းလင်းရန် ရွေးချယ်မှုကို "
-"ဖွင့်ထားပါက ဤရွေးချယ်မှုကို အလိုအလျောက် ဖွင့်ပေးပါမည်။"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "ပြည်တွင်း လာယူပါ။"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"ဒေသအလိုက် လာယူသည့် ပို့ဆောင်ရေးနည်းလမ်းကို ရွေးချယ်သောအခါ "
-"ပို့ဆောင်ရေးလိပ်စာအပိုင်းကို ဖယ်ရှားပါ။"
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"ဒေသဆိုင်ရာ လာယူသည့် ပို့ဆောင်ရေးနည်းလမ်းကို ရွေးချယ်သောအခါ "
-"ပို့ဆောင်မှုလိပ်စာကို မှာယူသည့်နေရာနှင့် အစားထိုးပါ။"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"လာယူမည့်နေရာ၏ အဆင့်ခွဲတွင် ပို့ဆောင်ရေးနည်းလမ်းများကို ရှင်းလင်းရန် "
-"ရွေးချယ်မှုကို ပြပါ။"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"ရွေးချယ်ထားသော ပို့ဆောင်ရေးနည်းလမ်းများကို ရှင်းလင်းရန် "
-"ထုတ်ယူသည့်နေရာအဆင့်ခွဲတွင် လင့်ခ်ခလုတ်ကို ပြသပါ။ ဒေသတွင်း "
-"လာယူသည့်နည်းလမ်းကို ယခင်က ရွေးချယ်ထားလျှင် ပို့ဆောင်ရေးလိပ်စာကဏ္ဍကို "
-"ထပ်မံပြသခွင့်ပြုရန် ၎င်းကို အသုံးပြုနိုင်သည်။"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2690,9 +2642,68 @@ msgstr "ခေါက်ထားသည်"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "ချဲ့ထွင်ထားသည်"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "မပြပါနဲ့"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"ဖွင့်ထားသည့်အခါ၊ ပို့ဆောင်မှုပက်ကေ့ဂျ်တစ်ခုစီအတွက် "
+"အခြားပို့ဆောင်မှုနည်းလမ်းကို ယခင်က ရွေးချယ်ထားခြင်းမရှိသေးသည့်အခါ "
+"ရရှိနိုင်သော ပထမဆုံးပို့ဆောင်မှုနည်းလမ်းကို အလိုအလျောက် ရွေးချယ် "
+"<strong>မည်မဟုတ်ပါ</strong> ။"
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"ဒေသတွင်း လာယူသည့် ပို့ဆောင်ရေးနည်းလမ်းကို ရွေးချယ်သောအခါ "
+"ပို့ဆောင်ရမည့်လိပ်စာ အပိုင်းကို ဖယ်ရှားပါ။"
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"ဒေသတွင်း ကောက်ယူမှု ပို့ဆောင်ရေးနည်းလမ်းကို ရွေးချယ်သောအခါ "
+"ပို့ဆောင်ရေးလိပ်စာကို ကောက်ယူမည့်နေရာဖြင့် အစားထိုးပါ။"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "မူရင်းအားဖြင့် ရွေးချယ်မည့် ပို့ဆောင်မှုအမျိုးအစားကို ရွေးချယ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "သင်္ဘော"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "ကောက်ကိုင်လိုက်သည်"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"ဒေသတွင်း လာယူပို့ဆောင်ရေးဇုန် စစ်ထုတ်ကွက်လပ်များအတွက် ပြသမည့်ကွက်လပ်များကို "
+"ရွေးချယ်ပါ။ ရရှိနိုင်သော ရွေးချယ်စရာအားလုံးကို ပြသရန် ဗလာထားခဲ့ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"ဤအကွက်များကို ဒေသတွင်း လာယူပို့ဆောင်မှုနည်းလမ်းများအတွက် filter အဖြစ် "
+"ပြသပါမည်။ တွဲဖက်အသုံးပြုနိုင်သော plugin များက ၎င်းတို့ "
+"ကောင်းမွန်စွာအလုပ်လုပ်ရန် လိုအပ်ပါက ဤနေရာတွင် ရွေးချယ်မထားသော်လည်း "
+"အချို့အကွက်များကို ငွေရှင်းသည့်အခါတွင် ပေါ်လာနိုင်သေးသည်။"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

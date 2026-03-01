@@ -1388,56 +1388,9 @@ msgstr "Després de l&#39;adreça d&#39;enviament"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Impedeix la selecció automàtica del primer mètode d&#39;enviament"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Quan està activat, el primer mètode d&#39;enviament disponible no es "
-"seleccionarà automàticament quan no s&#39;ha seleccionat prèviament cap "
-"altre mètode d&#39;enviament per a cada paquet d&#39;enviament.<br> Aquesta "
-"opció s&#39;habilitarà automàticament si l&#39;opció per esborrar el mètode "
-"d&#39;enviament seleccionat està activada per a la funció Recollida local."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Recollida local"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Elimina la secció d&#39;adreça d&#39;enviament quan es selecciona un mètode "
-"d&#39;enviament de recollida local."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Substitueix l&#39;adreça d&#39;enviament per la ubicació del punt de "
-"recollida quan es selecciona un mètode d&#39;enviament de recollida local."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Mostra l&#39;opció per esborrar els mètodes d&#39;enviament al subpas de la "
-"ubicació de recollida"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Mostra un botó d&#39;enllaç al subpas de la ubicació de recollida per "
-"esborrar els mètodes d&#39;enviament escollits. Això es pot utilitzar per "
-"permetre tornar a mostrar la secció d&#39;adreça d&#39;enviament si "
-"prèviament s&#39;ha seleccionat un mètode de recollida local."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2675,9 +2628,69 @@ msgstr "Col·lapsat"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Expandit"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "No mostrar"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Quan està activat, el primer mètode d&#39;enviament disponible "
+"<strong>no</strong> es seleccionarà automàticament si no s&#39;ha "
+"seleccionat cap altre mètode d&#39;enviament prèviament per a cada paquet "
+"d&#39;enviament."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Elimina la secció d&#39;adreça d&#39;enviament quan se selecciona un mètode "
+"d&#39;enviament de recollida local."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Substitueix l&#39;adreça d&#39;enviament pel punt de recollida quan se "
+"selecciona un mètode d&#39;enviament de recollida local."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Trieu quin tipus de lliurament es seleccionarà per defecte."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Vaixell"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Recollida"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Trieu quins camps es mostraran per als camps del filtre de la zona "
+"d&#39;enviament de recollida local. Deixeu-ho en blanc per mostrar totes "
+"les opcions disponibles."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Aquests camps es mostraran com a filtre per als mètodes d&#39;enviament de "
+"recollida local. Alguns camps encara poden aparèixer al moment de la compra "
+"si no estan seleccionats aquí, si els complements compatibles requereixen "
+"que funcionin correctament."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

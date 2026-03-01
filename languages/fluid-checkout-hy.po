@@ -1351,52 +1351,9 @@ msgstr "Առաքումից հետո հասցեն"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Կանխել առաջին առաքման եղանակի ավտոմատ ընտրությունը"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Երբ միացված է, առաքման առաջին հասանելի եղանակը ավտոմատ կերպով չի ընտրվի, "
-"երբ յուրաքանչյուր առաքման փաթեթի համար նախկինում ընտրված չէ առաքման այլ "
-"եղանակ:<br> Այս ընտրանքն ավտոմատ կերպով կմիացվի, եթե ընտրված առաքման "
-"եղանակը մաքրելու տարբերակը միացված է «Տեղական հավաքման» գործառույթի համար:"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Տեղական պիկապ"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "Հեռացնում է առաքման հասցեի բաժինը, երբ ընտրված է առաքման տեղական եղանակ:"
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Փոխարինում է առաքման հասցեն վերցնելու կետի գտնվելու վայրով, երբ ընտրվում է "
-"տեղային պիկապ առաքման եղանակը:"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Ցուցադրել առաքման եղանակները մաքրելու տարբերակը՝ վերցնելու տեղանքի "
-"ենթակետում"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Ցույց տալ հղման կոճակը վերցնելու տեղանքի ենթակետում՝ առաքման ընտրված "
-"եղանակները մաքրելու համար: Սա կարող է օգտագործվել առաքման հասցեի բաժինը "
-"կրկին ցուցադրելու համար, եթե նախկինում ընտրված է տեղական վերցնելու մեթոդ:"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2612,6 +2569,62 @@ msgstr "Ընդլայնված"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Չցուցադրել"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Միացված լինելու դեպքում, առաջին հասանելի առաքման եղանակը "
+"<strong>չի</strong> ընտրվի ավտոմատ կերպով, եթե յուրաքանչյուր առաքման փաթեթի "
+"համար նախկինում այլ առաքման եղանակ չի ընտրվել։"
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Հեռացրեք առաքման հասցեի բաժինը, երբ ընտրվում է տեղական վերցման առաքման "
+"եղանակը։"
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Տեղական առաքման եղանակ ընտրելու դեպքում փոխարինեք առաքման հասցեն վերցման "
+"կետի տեղադրությամբ։"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Ընտրեք, թե որ առաքման տեսակն է ընտրվելու լռելյայն։"
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Նավ"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Վերցնել"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Ընտրեք, թե որ դաշտերը կցուցադրվեն տեղական վերցման առաքման գոտու ֆիլտրի "
+"դաշտերի համար: Թողեք դատարկ՝ բոլոր հասանելի տարբերակները ցուցադրելու համար:"
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Այս դաշտերը կցուցադրվեն որպես տեղական վերցման առաքման մեթոդների ֆիլտր: Որոշ "
+"դաշտեր կարող են դեռևս հայտնվել վճարման ժամանակ, եթե այստեղ չընտրվեն, եթե "
+"համատեղելի պլագինները պահանջում են, որ դրանք ճիշտ աշխատեն:"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

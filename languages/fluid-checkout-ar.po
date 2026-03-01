@@ -1330,47 +1330,9 @@ msgstr "بعد عنوان الشحن"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "منع الاختيار التلقائي لطريقة الشحن الأولى"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"عند تمكين هذا الخيار، لن يتم تحديد طريقة الشحن الأولى المتاحة تلقائيًا عند "
-"عدم تحديد أي طريقة شحن أخرى مسبقًا لكل حزمة شحن.<br> سيتم تمكين هذا الخيار "
-"تلقائيًا إذا تم تمكين خيار مسح طريقة الشحن المحددة لميزة الاستلام المحلي."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "الاستلام المحلي"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "يقوم بإزالة قسم عنوان الشحن عند تحديد طريقة شحن الاستلام المحلية."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr "يستبدل عنوان الشحن بموقع نقطة الاستلام عند تحديد طريقة شحن الاستلام المحلية."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "إظهار خيار مسح طرق الشحن في الخطوة الفرعية لموقع الاستلام"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"إظهار زر الرابط في الخطوة الفرعية لموقع الاستلام لمسح طرق الشحن المختارة. "
-"يمكن استخدام هذا للسماح بإظهار قسم عنوان الشحن مرة أخرى إذا تم تحديد طريقة "
-"استلام محلية مسبقًا."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2538,6 +2500,57 @@ msgstr "موسع"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "لا تظهر"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"عند التفعيل، <strong>لن</strong> يتم اختيار طريقة الشحن الأولى المتاحة "
+"تلقائيًا عندما لا يتم اختيار أي طريقة شحن أخرى مسبقًا لكل طرد شحن."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "قم بإزالة قسم عنوان الشحن عند اختيار طريقة الشحن بالاستلام المحلي."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr "استبدل عنوان الشحن بموقع نقطة الاستلام عند اختيار طريقة شحن الاستلام المحلي."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "اختر نوع التوصيل الذي سيتم تحديده افتراضياً."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "سفينة"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "يلتقط"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"اختر الحقول التي ستظهر في حقول تصفية منطقة الشحن للاستلام المحلي. اتركها "
+"فارغة لعرض جميع الخيارات المتاحة."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"ستظهر هذه الحقول كفلتر لخيارات الشحن المتاحة للاستلام المحلي. قد تظهر بعض "
+"الحقول عند إتمام عملية الشراء حتى في حال عدم تحديدها هنا، وذلك إذا كانت "
+"الإضافات المتوافقة تتطلبها لتعمل بشكل صحيح."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -1365,55 +1365,9 @@ msgstr "Хүргэлтийн хаягийн дараа"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Эхний тээвэрлэлтийн аргыг автоматаар сонгохоос сэргийлнэ"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Идэвхжүүлсэн үед тээвэрлэлтийн багц бүрт өөр тээвэрлэлтийн аргыг өмнө нь "
-"сонгоогүй үед боломжтой анхны тээвэрлэлтийн аргыг автоматаар сонгохгүй.<br> "
-"Local Pickup функцэд сонгосон тээвэрлэлтийн аргыг арилгах сонголтыг "
-"идэвхжүүлсэн тохиолдолд энэ сонголт автоматаар идэвхжинэ."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Орон нутгийн хүлээн авах"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Орон нутгийн хүлээн авах тээвэрлэлтийн аргыг сонгох үед тээвэрлэлтийн "
-"хаягийн хэсгийг арилгана."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Орон нутгийн хүлээн авах тээвэрлэлтийн аргыг сонгох үед тээвэрлэлтийн "
-"хаягийг хүлээн авах цэгийн байршлаар солино."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Ачаа авах байршлын дэд алхам дахь тээвэрлэлтийн аргыг арилгах сонголтыг "
-"харуул"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Сонгосон тээвэрлэлтийн аргуудыг арилгахын тулд авах байршлын дэд алхам дээр "
-"холбоос товчийг харуул. Хэрэв өмнө нь орон нутгийн тосч авах аргыг сонгосон "
-"бол тээвэрлэлтийн хаягийн хэсгийг дахин харуулахын тулд үүнийг ашиглаж "
-"болно."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2630,9 +2584,67 @@ msgstr "Хураагдсан"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Өргөтгөсөн"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Харуулахгүй"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Идэвхжүүлсэн үед, тээвэрлэлтийн багц бүрт өмнө нь өөр тээвэрлэлтийн аргыг "
+"сонгоогүй байсан бол боломжтой анхны тээвэрлэлтийн аргыг автоматаар "
+"<strong>сонгохгүй</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Орон нутгийн хүргэлтийн аргыг сонгосон үед хүргэлтийн хаягийн хэсгийг "
+"устгана уу."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Орон нутгийн хүргэлтийн аргыг сонгосон үед хүргэлтийн хаягийг хүргэлтийн "
+"цэгийн байршлаар солино уу."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Анхдагчаар ямар хүргэлтийн төрлийг сонгохоо сонгоно уу."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Хөлөг онгоц"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Авах"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Орон нутгийн хүргэлтийн бүсийн шүүлтүүрийн талбаруудад аль талбаруудыг "
+"харуулахыг сонгоно уу. Боломжтой бүх сонголтыг харуулахын тулд хоосон "
+"үлдээнэ үү."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Эдгээр талбарууд нь орон нутгийн хүргэлтийн аргуудын шүүлтүүр хэлбэрээр "
+"харагдах болно. Хэрэв нийцтэй нэмэлт өргөтгөлүүд зөв ажиллахыг шаарддаг бол "
+"зарим талбарууд энд сонгоогүй ч төлбөр тооцооны үеэр гарч ирж магадгүй."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

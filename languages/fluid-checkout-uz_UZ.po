@@ -1386,56 +1386,9 @@ msgstr "Yuk tashish manzilidan keyin"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "Birinchi yuk tashish usulini avtomatik tanlashni oldini olish"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Yoqilganda, har bir jo‘natish paketi uchun avval boshqa jo‘natish usuli "
-"tanlanmagan bo‘lsa, mavjud bo‘lgan birinchi yetkazib berish usuli avtomatik "
-"ravishda tanlanmaydi.<br> Mahalliy olib ketish funksiyasi uchun tanlangan "
-"jo‘natish usulini tozalash opsiyasi yoqilgan bo‘lsa, bu parametr avtomatik "
-"ravishda yoqiladi."
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "Mahalliy olib ketish"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Mahalliy olib ketish usuli tanlanganda yetkazib berish manzili boʻlimini "
-"olib tashlaydi."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Mahalliy olib ketish usuli tanlanganda jo‘natish manzilini qabul qilish "
-"punkti joyi bilan almashtiradi."
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Olib ketish joyi quyi bo‘limida yuk tashish usullarini tozalash variantini "
-"ko‘rsatish"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Tanlangan jo‘natish usullarini tozalash uchun olib ketish joyi pastki "
-"qadamida havola tugmasini ko‘rsating. Agar avval mahalliy olib ketish usuli "
-"tanlangan boʻlsa, undan yuk manzili boʻlimini yana koʻrsatishga ruxsat "
-"berish uchun foydalanish mumkin."
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2675,9 +2628,68 @@ msgstr "Yig&#39;ilgan"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Kengaytirilgan"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ko&#39;rsatilmasin"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Yoqilganda, har bir yetkazib berish paketi uchun ilgari boshqa yetkazib "
+"berish usuli tanlanmagan bo&#39;lsa, mavjud bo&#39;lgan birinchi yetkazib "
+"berish usuli avtomatik ravishda <strong>tanlanmaydi</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Mahalliy olib ketish yetkazib berish usuli tanlanganda yetkazib berish "
+"manzili bo&#39;limini olib tashlang."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Mahalliy olib ketish usuli tanlanganda, yetkazib berish manzilini olib "
+"ketish punkti manzili bilan almashtiring."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Sukut bo&#39;yicha qaysi yetkazib berish turi tanlanishini tanlang."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Kema"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Olib ketish; ko&#39;tarish"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Mahalliy olib ketish yetkazib berish zonasi filtri maydonlari uchun qaysi "
+"maydonlar ko&#39;rsatilishini tanlang. Barcha mavjud variantlarni "
+"ko&#39;rsatish uchun bo&#39;sh qoldiring."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Bu maydonlar mahalliy yetkazib berish usullari uchun filtr sifatida "
+"ko&#39;rsatiladi. Agar mos keladigan plaginlar to&#39;g&#39;ri ishlashi "
+"uchun ularni talab qilsa, ba&#39;zi maydonlar bu yerda tanlanmagan "
+"bo&#39;lsa ham, to&#39;lov vaqtida paydo bo&#39;lishi mumkin."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

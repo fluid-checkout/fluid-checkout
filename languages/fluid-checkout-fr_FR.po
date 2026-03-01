@@ -1811,14 +1811,6 @@ msgstr ""
 msgid "Remove"
 msgstr "Supprimer"
 
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr ""
-"Supprime la section relative à l'adresse d'expédition lorsqu'une méthode "
-"d'expédition par enlèvement local est sélectionnée."
-
 #: inc/admin/admin-settings-tools.php:113
 msgid "Replace <code>select2</code> dropdown components with <code>TomSelect</code>"
 msgstr ""
@@ -1834,14 +1826,6 @@ msgstr ""
 "Remplace les champs de création de compte par une notification et une "
 "option de connexion. Dans certains contextes, il peut être recommandé de "
 "laisser cette option désactivée pour protéger la vie privée des clients."
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr ""
-"Remplace l'adresse de livraison par l'emplacement du point d'enlèvement "
-"lorsqu'une méthode d'expédition par enlèvement local est sélectionnée."
 
 #: inc/admin/admin-settings-checkout.php:572
 #: inc/admin/admin-settings-checkout.php:587
@@ -1985,17 +1969,6 @@ msgstr "Modes de livraison"
 msgid "Shipping phone"
 msgstr "Téléphone d'expédition"
 
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr ""
-"Afficher un bouton de lien dans la sous-étape relative au lieu d'enlèvement "
-"pour effacer les méthodes d'expédition choisies. Ce bouton peut être "
-"utilisé pour afficher à nouveau la section relative à l'adresse de "
-"livraison si une méthode d'enlèvement local a été sélectionnée précédemment."
-
 #: inc/admin/admin-settings-checkout.php:678
 msgid "Show an example of a valid phone number inside phone fields"
 msgstr ""
@@ -2009,12 +1982,6 @@ msgstr "Afficher le code du pays à côté du drapeau"
 #: inc/admin/admin-settings-checkout.php:683
 msgid "Show if not defined"
 msgstr "Afficher si non défini"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr ""
-"Afficher l'option permettant d'effacer les méthodes d'expédition dans la "
-"sous-étape relative au lieu de ramassage"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-sendinblue-newsletter-subscription.php:173
 msgid "Sign up checkbox position"
@@ -2438,20 +2405,6 @@ msgstr ""
 "contact indépendamment de l'emplacement d'affichage défini dans les "
 "paramètres du plugin Sendinblue."
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"Lorsque cette option est activée, le premier mode d'expédition disponible "
-"n'est pas automatiquement sélectionné si aucun autre mode d'expédition n'a "
-"été sélectionné précédemment pour chaque colis. <Cette option sera "
-"automatiquement activée si l'option d'effacement du mode d'expédition "
-"sélectionné est activée pour la fonction d'enlèvement local."
-
 #: inc/compat/plugins/compat-plugin-bluehost-wordpress-plugin.php:83
 msgid ""
 "When enabled, the shipping email field from the Bluehost plugin will be "
@@ -2869,9 +2822,69 @@ msgstr "Effondré"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Élargi"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ne pas afficher"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr ""
+"Lorsque cette option est activée, la première méthode d'expédition "
+"disponible ne sera pas</strong> automatiquement sélectionnée si aucune "
+"autre méthode d'expédition n'a été sélectionnée précédemment pour chaque "
+"colis."
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr ""
+"Supprimer la section relative à l'adresse de livraison lorsqu'une méthode "
+"d'expédition par enlèvement local est sélectionnée."
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr ""
+"Remplacer l'adresse d'expédition par l'emplacement du point d'enlèvement "
+"lorsqu'une méthode d'expédition par enlèvement local est sélectionnée."
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "Choisissez le type de livraison qui sera sélectionné par défaut."
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "Navire"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "Pickup"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr ""
+"Choisissez les champs qui seront affichés pour les champs de filtre de la "
+"zone d'expédition de l'enlèvement local. Laissez le champ vide pour "
+"afficher toutes les options disponibles."
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr ""
+"Ces champs seront affichés en tant que filtre pour les méthodes "
+"d'expédition par enlèvement local. Certains champs peuvent apparaître à la "
+"caisse s'ils ne sont pas sélectionnés ici, si des plugins compatibles les "
+"requièrent pour fonctionner correctement."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

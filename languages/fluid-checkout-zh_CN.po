@@ -1238,43 +1238,9 @@ msgstr "送货地址后"
 msgid "Prevent automatic selection of the first shipping method"
 msgstr "防止自动选择第一种运送方式"
 
-#: inc/admin/admin-settings-checkout.php:517
-msgid ""
-"When enabled, the first shipping method available will not be automatically "
-"selected when no other shipping method was previously selected for each "
-"shipping package. <br>This option will be automatically enabled if the "
-"option for clearing the selected shipping method is enabled for the Local "
-"Pickup feature."
-msgstr ""
-"启用后，如果之前没有为每个送货包选择其他送货方法，则不会自动选择第一个可用的送货方法。<br>如果本地取货功能启用了清除所选运送方法的选项，则此选项将自"
-"动启用。"
-
 #: inc/admin/admin-settings-checkout.php:526
 msgid "Local pickup"
 msgstr "本地取件"
-
-#: inc/admin/admin-settings-checkout.php:527
-msgid ""
-"Removes shipping address section when a local pickup shipping method is "
-"selected."
-msgstr "选择本地取货送货方式时，删除送货地址部分。"
-
-#: inc/admin/admin-settings-checkout.php:528
-msgid ""
-"Replaces the shipping address with the pickup point location when a local "
-"pickup shipping method is selected."
-msgstr "选择本地取货发货方式时，用取货点位置替换发货地址。"
-
-#: inc/admin/admin-settings-checkout.php:538
-msgid "Show option to clear shipping methods in the pickup location substep"
-msgstr "在取货地点子步骤中显示清除运送方法的选项"
-
-#: inc/admin/admin-settings-checkout.php:539
-msgid ""
-"Show a link button on the pickup location substep to clear the chosen "
-"shipping methods. This can be used to allow showing the shipping address "
-"section again if a local pickup method was previously selected."
-msgstr "在取货地点子步骤中显示一个链接按钮，以清除所选的送货方式。如果之前选择了本地取货方式，则可使用此按钮再次显示送货地址部分。"
 
 #: inc/admin/admin-settings-checkout.php:550
 msgid ""
@@ -2355,6 +2321,50 @@ msgstr "已扩展"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "不显示"
+
+#: inc/admin/admin-settings-checkout.php:586
+msgid ""
+"When enabled, the first shipping method available <strong>will not</strong> "
+"be automatically selected when no other shipping method was previously "
+"selected for each shipping package."
+msgstr "启用后，如果之前未为每个运送包选择其他运送方法，则不会自动选择<strong></strong>第一个可用的运送方法。"
+
+#: inc/admin/admin-settings-checkout.php:596
+msgid ""
+"Remove shipping address section when a local pickup shipping method is "
+"selected."
+msgstr "选择本地取货运输方式时，删除送货地址部分。"
+
+#: inc/admin/admin-settings-checkout.php:597
+msgid ""
+"Replace the shipping address with the pickup point location when a local "
+"pickup shipping method is selected."
+msgstr "选择本地取货运送方式时，用取货点位置替换运送地址。"
+
+#: inc/admin/admin-settings-checkout.php:608
+msgid "Choose which delivery type will be selected by default."
+msgstr "选择默认选择的交付类型。"
+
+#: inc/admin/admin-settings-checkout.php:612
+msgid "Ship"
+msgstr "船舶"
+
+#: inc/admin/admin-settings-checkout.php:613
+msgid "Pickup"
+msgstr "皮卡"
+
+#: inc/admin/admin-settings-checkout.php:621
+msgid ""
+"Choose which fields will be displayed for the local pickup shipping zone "
+"filter fields. Leave empty to show all available options."
+msgstr "选择本地取货送货区域筛选字段将显示的字段。留空则显示所有可用选项。"
+
+#: inc/admin/admin-settings-checkout.php:622
+msgid ""
+"These fields will be displayed as a filter for the local pickup shipping "
+"methods. Some fields might still appear at checkout when not selected here, "
+"if compatible plugins require them to work properly."
+msgstr "这些字段将作为本地取货运输方式的过滤器显示。如果兼容的插件需要某些字段才能正常工作，则未在此处选择这些字段时，这些字段仍可能出现在结账时。"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
