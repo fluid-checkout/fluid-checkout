@@ -21,6 +21,7 @@ class FluidCheckout_Admin_SettingType_Select extends FluidCheckout {
 	public function hooks() {
 		// Field types
 		add_action( 'woocommerce_admin_field_fc_select', array( $this, 'output_field' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_multiselect', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -39,6 +40,11 @@ class FluidCheckout_Admin_SettingType_Select extends FluidCheckout {
 			}
 		}
 
+		// Maybe set custom attributes as multiple, use serialized string format
+		if ( 'fc_multiselect' === $value['type'] ) {
+			$custom_attributes[] = 'multiple="multiple"';
+		}
+
 		// Description handling.
 		$field_description = WC_Admin_Settings::get_field_description( $value );
 		$description       = $field_description['description'];
@@ -52,7 +58,7 @@ class FluidCheckout_Admin_SettingType_Select extends FluidCheckout {
 			</th>
 			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 				<select
-					name="<?php echo esc_attr( $value['field_name'] ); ?><?php echo ( 'multiselect' === $value['type'] ) ? '[]' : ''; ?>"
+					name="<?php echo esc_attr( $value['field_name'] ); ?><?php echo ( 'fc_multiselect' === $value['type'] ) ? '[]' : ''; ?>"
 					id="<?php echo esc_attr( $value['id'] ); ?>"
 					style="<?php echo esc_attr( $value['css'] ); ?>"
 					class="<?php echo esc_attr( $value['class'] ); ?>"

@@ -68,10 +68,6 @@ msgstr "Telepono sa pagpadala"
 msgid "Only used for shipping-related questions."
 msgstr "Gigamit ra alang sa mga pangutana nga may kalabotan sa pagpadala."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Daghang lakang"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Usa ka lakang"
@@ -105,14 +101,6 @@ msgstr "Padayon sa pagsingil"
 msgid "Proceed to payment"
 msgstr "Padayon sa pagbayad"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Akong kontak"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Pagpadala sa"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Pamaagi sa pagpadala"
@@ -120,10 +108,6 @@ msgstr "Pamaagi sa pagpadala"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Dugang nga mga nota"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Pagsingil sa"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -942,16 +926,6 @@ msgstr "Layout sa checkout"
 msgid "Design template"
 msgstr "Disenyo nga template"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Kinatibuk-ang mga estilo alang sa mga lakang sa pag-checkout, summary sa "
-"order ug uban pang mga seksyon. Mahimo usab nga magamit sa ubang mga panid "
-"sama sa Cart, Order Received ug View Order nga mga panid."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Dark mode"
@@ -1539,16 +1513,6 @@ msgstr "Idugang ang field sa telepono sa pagsingil sa porma sa pag-checkout."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pilia kung asa nga lakang ipakita ang uma sa telepono sa pagsingil."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"I-enable ang internasyonal nga format sa numero sa telepono ug pag-validate "
-"alang sa mga natad sa telepono"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Pag-format ug pag-validate sa mga numero sa telepono sumala sa matag nasud."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "I-enable ang validation sa numero sa telepono base sa mga lagda sa nasud"
@@ -1992,15 +1956,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimento)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Kini usa ka eksperimento nga bahin ug mahimong dili molihok sama sa "
-"gipaabut sa tanan nga mga tema ug mga plugin. Gamita kini uban ang "
-"pag-amping."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2572,10 +2527,156 @@ msgstr "Pagkahuman sa progress bar"
 msgid "Before coupon codes section"
 msgstr "Sa wala pa ang seksyon sa mga code sa kupon"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "I-enable ang internasyonal nga mga natad sa numero sa telepono"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr ""
+"I-format ang mga numero sa telepono sumala sa mga lagda alang sa matag "
+"nasud."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gamita ang tukma nga pag-validate sa numero sa telepono"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Sulayi pagsiguro nga ang numero sa telepono usa ka balido nga numero sa "
+"mobile o landline base sa mga lagda alang sa pinili nga code sa nasud. Kini "
+"nga opsyon naggamit sa <code>intl-tel-input</code> precise validation "
+"feature, nga mahimong maghatag ug sayop nga mga positibo sa pipila ka "
+"numero sa telepono."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Kini usa ka eksperimento nga bahin ug mahimong dili molihok sama sa "
+"gipaabut sa tanan nga mga setup. Gamita kini uban ang pag-amping."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Ang mga tipo sa pag-validate sa numero sa telepono nga gigamit kung ang "
+"tukma nga pag-validate gipagana."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobile"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Naayo nga linya"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Libre ang bayad"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontaka"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Daghang lakang"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 ka kolum"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 ka kolum"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Kinatibuk-ang mga estilo para sa mga lakang sa pag-checkout, summary sa "
+"order ug uban pang mga seksyon.<br> Mahimo usab nga magamit sa ubang mga "
+"panid sama sa mga panid sa Cart, Order Received ug View Order."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Ang template sa disenyo nga <em>&quot;Split&quot;</em> dili magamit kung "
+"mogamit sa layout nga <em>&quot;1 column&quot;</em> ug mobalik kini sa "
+"<em>&quot;Minimalist&quot;</em> kung pilion."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Sa dili pa ang mga lakang sa pag-checkout"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "O"
 
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kon gamiton ang <em>&quot;1 column&quot;</em> checkout layout, kini nga "
+"opsyon kanunay nga naka-set sa <em>&quot;Before checkout steps&quot;</em> "
+"ug magamit usab sa desktop view."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisyon para sa seksyon sa dugang nga summary sa order sa mobile."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Ang opsyon nga <em>&quot;On the site header&quot;</em> magamit lang kon "
+"gamiton ang distraction-free header."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Sa header sa site (nanginahanglan og header nga walay makabalda)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Inisyal nga kahimtang para sa mapalapad nga seksyon sa summary sa order sa "
+"mobile."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Among girekomendar nga ibutang kini isip <em>gipalapdan</em> para sa "
+"mosunod nga mga nasud tungod sa mga kinahanglanon sa regulasyon: "
+"<strong>Germany</strong> , <strong>Austria</strong> , "
+"<strong>Switzerland</strong> , <strong>Netherlands</strong> , "
+"<strong>Poland</strong> , <strong>Belgium</strong> ug "
+"<strong>France</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Nahugno"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Gipalapdan"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ayaw ipakita"

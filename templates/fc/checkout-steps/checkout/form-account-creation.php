@@ -31,12 +31,15 @@ $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_la
 	<div class="woocommerce-account-fields">
 		<?php if ( ! $checkout->is_registration_required() ) : ?>
 
-			<p class="form-row form-row-wide create-account">
-				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-					<?php // CHANGE: Use variable to determine checked state, and maybe display text "optional" ?>
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" <?php checked( $create_account_checked, true ); ?> type="checkbox" name="createaccount" value="1" /> <span><?php echo esc_html( __( 'Create an account', 'fluid-checkout' ) . $optional_label ); ?></span>
-				</label>
-			</p>
+			<?php
+			// CHANGE: Convert to WooCommerce form field to allow for more customization.
+			woocommerce_form_field( 'createaccount', array(
+				'type'    => 'checkbox',
+				'class'   => array( 'form-row-wide', 'create-account' ),
+				'label'   => __( 'Create an account', 'fluid-checkout' ),
+				'default' => false,
+			), $create_account_checked ? '1' : '' );
+			?>
 
 		<?php endif; ?>
 

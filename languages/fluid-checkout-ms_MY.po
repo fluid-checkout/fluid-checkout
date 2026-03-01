@@ -68,10 +68,6 @@ msgstr "Telefon penghantaran"
 msgid "Only used for shipping-related questions."
 msgstr "Hanya digunakan untuk soalan berkaitan penghantaran."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Berbilang langkah"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Langkah tunggal"
@@ -105,14 +101,6 @@ msgstr "Teruskan ke pengebilan"
 msgid "Proceed to payment"
 msgstr "Teruskan ke pembayaran"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "kenalan saya"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Penghantaran ke"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Kaedah penghantaran"
@@ -120,10 +108,6 @@ msgstr "Kaedah penghantaran"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Nota tambahan"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Pengebilan kepada"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -932,16 +916,6 @@ msgstr "Susun atur pembayaran"
 msgid "Design template"
 msgstr "Templat reka bentuk"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Gaya am untuk langkah pembayaran, ringkasan pesanan dan bahagian lain. "
-"Mungkin juga digunakan pada halaman lain seperti halaman Troli, Pesanan "
-"Diterima dan Lihat Pesanan."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Mod gelap"
@@ -1525,16 +1499,6 @@ msgstr "Tambahkan medan telefon pengebilan pada borang pembayaran."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pilih dalam langkah mana untuk memaparkan medan telefon pengebilan."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Dayakan format nombor telefon antarabangsa dan pengesahan untuk medan "
-"telefon"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Format dan sahkan nombor telefon mengikut setiap negara."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Dayakan pengesahan nombor telefon berdasarkan peraturan negara"
@@ -1967,14 +1931,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(percubaan)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ini ialah ciri percubaan dan mungkin tidak berfungsi seperti yang "
-"diharapkan dengan semua tema dan pemalam. Gunakannya dengan berhati-hati."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2543,9 +2499,153 @@ msgstr "Selepas bar kemajuan"
 msgid "Before coupon codes section"
 msgstr "Sebelum bahagian kod kupon"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Dayakan medan nombor telefon antarabangsa"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Format nombor telefon mengikut peraturan untuk setiap negara."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gunakan pengesahan nombor telefon yang tepat"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Cuba pastikan nombor telefon ialah nombor mudah alih atau talian tetap yang "
+"sah berdasarkan peraturan untuk kod negara yang dipilih. Pilihan ini "
+"menggunakan ciri pengesahan tepat <code>intl-tel-input</code> , yang "
+"mungkin memberikan positif palsu untuk beberapa nombor telefon."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ini ialah ciri percubaan dan mungkin tidak berfungsi seperti yang "
+"diharapkan dalam semua persediaan. Gunakannya dengan berhati-hati."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Jenis pengesahan nombor telefon digunakan apabila pengesahan tepat "
+"didayakan."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mudah alih"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Talian tetap"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Percuma tol"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Atau"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Hubungi"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Pelbagai langkah"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 lajur"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 lajur"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Gaya umum untuk langkah pembayaran, ringkasan pesanan dan bahagian "
+"lain.<br> Mungkin juga terpakai pada halaman lain seperti halaman Troli, "
+"Pesanan Diterima dan Lihat Pesanan."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Templat reka bentuk <em>&quot;Split&quot;</em> tidak tersedia apabila "
+"menggunakan susun atur <em>&quot;1 lajur&quot;</em> dan akan kembali kepada "
+"<em>&quot;Minimalis&quot;</em> jika dipilih."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Sebelum langkah pembayaran"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Apabila menggunakan susun atur pembayaran <em>&quot;1 lajur&quot;,</em> "
+"pilihan ini sentiasa ditetapkan kepada <em>&quot;Sebelum langkah "
+"pembayaran&quot;</em> dan juga terpakai pada paparan desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Jawatan untuk bahagian ringkasan pesanan tambahan di telefon bimbit."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Pilihan <em>&quot;Pengepala di tapak&quot;</em> hanya terpakai apabila "
+"menggunakan pengepala bebas gangguan."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Pada pengepala tapak (memerlukan pengepala bebas gangguan)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Keadaan awal untuk bahagian ringkasan pesanan yang boleh dikembangkan pada "
+"mudah alih."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Kami mengesyorkan untuk menetapkannya sebagai <em>dikembangkan</em> untuk "
+"negara-negara berikut disebabkan oleh keperluan kawal selia: "
+"<strong>Jerman</strong> , <strong>Austria</strong> , "
+"<strong>Switzerland</strong> , <strong>Belanda</strong> , "
+"<strong>Poland</strong> , <strong>Belgium</strong> dan "
+"<strong>Perancis</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Runtuh"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Diperluas"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"

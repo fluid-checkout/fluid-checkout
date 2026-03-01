@@ -53,7 +53,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -244,9 +244,12 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 
 	/**
-	 * Maybe get selected shipping method object if it matches the target method.
+	 * Maybe get selected shipping method ID if it matches the target method.
 	 */
-	public function maybe_get_selected_shipping_method() {
+	public function maybe_get_selected_shipping_method_id() {
+		// Make sure chosen shipping method is set
+		WC()->cart->calculate_shipping();
+
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
 		foreach ( $packages as $i => $package ) {
@@ -301,6 +304,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 			'postcode' => isset( $terminal_data['zip'] ) ? esc_html( $terminal_data['zip'] ) : '',
 			'city' => isset( $terminal_data['city'] ) ? esc_html( $terminal_data['city'] ) : '',
 			'state' => isset( $terminal_data['state'] ) ? esc_html( $terminal_data['state'] ) : '',
+			'country' => isset( $terminal_data['countryCode'] ) ? esc_html( $terminal_data['countryCode'] ) : '',
 		);
 
 		return $selected_terminal_data;
@@ -314,11 +318,14 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get selected shipping method ID
-		$shipping_method_id = $this->maybe_get_selected_shipping_method();
+		$shipping_method_id = $this->maybe_get_selected_shipping_method_id();
 
 		// Bail if target shipping method is not selected
 		if ( empty( $shipping_method_id ) ) { return $review_text_lines; }
@@ -344,19 +351,19 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping substep as incomplete when no pickup point is selected for the target shipping method.
+	 * Set the shipping method substep as incomplete when no pickup point is selected for the target shipping method.
 	 *
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_substep_incomplete_shipping( $is_substep_complete ) {
-		// Get selected shipping method
-		$shipping_method = $this->maybe_get_selected_shipping_method();
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
+		// Get selected shipping method ID
+		$method_id = $this->maybe_get_selected_shipping_method_id();
 
 		// Bail if selected shipping method is not available
-		if ( ! is_object( $shipping_method ) ) { return $is_substep_complete; }
+		if ( empty( $method_id ) ) { return $is_substep_complete; }
 
 		// Bail if selected shipping method is not a local pickup method
-		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return $is_substep_complete; }
+		if ( ! $this->is_shipping_method_local_pickup( $method_id ) ) { return $is_substep_complete; }
 
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();

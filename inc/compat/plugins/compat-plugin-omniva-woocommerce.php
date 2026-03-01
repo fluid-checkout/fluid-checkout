@@ -207,8 +207,8 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 	public function get_customer_country() {
 		// Get country code
 		// Try to get shipping country, then billing country, then base shop country
-		$country = WC()->checkout->get_value( 'shipping_country' );
-		if ( empty( $country ) ) { $country = WC()->checkout->get_billing_country(); }
+		$country = WC()->customer->get_shipping_country();
+		if ( empty( $country ) ) { $country = WC()->customer->get_billing_country(); }
 		if ( empty( $country ) ) { $country = WC()->countries->get_base_country(); }
 
 		return $country;
@@ -261,6 +261,9 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 

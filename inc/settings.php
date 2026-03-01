@@ -21,10 +21,15 @@ class FluidCheckout_Settings extends FluidCheckout {
 	public function hooks() {
 		// Settings values
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
+		add_filter( 'pre_option_fc_checkout_column_layout', array( $this, 'set_option_checkout_column_layout' ), 10, 3 );
 		add_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
+
+		// Settings values (at later stage)
+		// Intentionally use `option_` instead of `pre_option_` as we need to check the value of the option that was saved the to database before making any changes to it.
+		add_filter( 'option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ), 10, 2 );
 
 		// Settings save
 		add_action( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
@@ -39,6 +44,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$defaults = array(
 			// Settings checkout.			
 			'fc_checkout_layout'                                            => 'multi-step',
+			'fc_checkout_column_layout'                                     => 'two_columns',
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
 			'fc_hide_site_header_footer_at_checkout'                        => 'yes',
@@ -56,6 +62,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
+			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
+			'fc_pro_checkout_order_summary_collapsible_initial_state'       => 'collapsed',
 			'fc_pro_enable_checkout_edit_cart'                              => 'no',
 			'fc_pro_cart_items_error_messages_hide_at_checkout'             => 'yes',
 			'fc_checkout_place_order_position'                              => 'below_payment_section',
@@ -67,7 +75,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_shipping_methods_disable_auto_select'                       => 'no',
 			'fc_enable_checkout_local_pickup'                               => 'no',
-			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
+			'fc_local_pickup_default_delivery_type'                         => 'ship',
+			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
@@ -81,6 +90,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_billing_phone_field_position'                               => 'billing_address',
 			'fc_pro_enable_international_phone_fields'                      => 'no',
 			'fc_pro_enable_international_phone_validation'                  => 'no',
+			'fc_pro_enable_international_phone_validation_precise'          => 'no',
+			'fc_pro_enable_international_phone_validation_precise_types'    => array( 'MOBILE', 'FIXED_LINE' ),
 			'fc_pro_enable_international_phone_country_code'                => 'yes',
 			'fc_pro_enable_international_phone_country_list_filter'         => 'yes',
 			'fc_pro_international_phone_fields_placeholder'                 => 'off',
@@ -216,6 +227,17 @@ class FluidCheckout_Settings extends FluidCheckout {
 	}
 
 	/**
+	 * Force the option value for checkout column layout when only Lite plugin is activated.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_checkout_column_layout( $pre_option, $option, $default ) {
+		return $this->get_option_default( 'fc_checkout_column_layout' );
+	}
+
+	/**
 	 * Force the option value for progress bar style when only Lite plugin is activated.
 	 *
 	 * @param  mixed   $pre_option   The value to return instead of the option value.
@@ -235,6 +257,22 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function set_option_replace_edit_cart_link( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' );
+	}
+
+	/**
+	 * Force the option value for order summary section position on mobile when only Lite plugin is activated.
+	 *
+	 * @param  string  $value        The value of the option.
+	 * @param  string  $option       Option name.
+	 */
+	public function set_option_order_summary_position_mobile( $value, $option ) {
+		// Bail if using accepted Lite options
+		$accepted_values = array( 'hidden', 'site_header' );
+		if ( in_array( $value, $accepted_values ) ) {
+			return $value;
+		}
+
+		return $this->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' );
 	}
 
 	/**

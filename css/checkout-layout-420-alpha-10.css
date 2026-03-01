@@ -98,12 +98,12 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
   display: inline-block;
   width: auto;
   padding: 0;
-  padding-right: 26px;
+  padding-left: 26px;
   cursor: pointer;
   text-decoration: none;
   line-height: 1.2;
   font-size: 15px;
-  text-align: right;
+  text-align: left;
 }
 @media (min-width: 750px) {
   div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus {
@@ -128,7 +128,7 @@ div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:bef
   font-size: 24px;
   position: absolute;
   top: 50%;
-  right: -3px;
+  left: -3px;
   transform: translateY(-50%);
 }
 div.woocommerce .fc-expansible-form-section .expansible-section__toggle-plus:focus {
@@ -345,11 +345,11 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   body:not(.has-checkout-must-login-notice).woocommerce-checkout .woocommerce-notices-wrapper,
   body:not(.has-checkout-must-login-notice) .fc-progress-bar,
   body:not(.has-checkout-must-login-notice) .fc-inside {
-    float: right;
+    float: left;
     width: calc(62.5% - var(--fluidcheckout--columns--gap, 50px));
     padding-top: 5px;
-    padding-right: 0;
     padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -363,7 +363,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-progress-bar,
   body:not(.has-checkout-must-login-notice):not(.has-fc-sidebar) .fc-inside {
     width: 62.5% !important;
-    margin-right: 18.75% !important;
+    margin-left: 18.75% !important;
   }
 }
 
@@ -391,10 +391,20 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 }
 @media (min-width: 1000px) {
   .fc-sidebar {
-    z-index: 3;
-    float: left;
-    width: 37.5% !important;
     margin-top: 0 !important;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 999px) {
+  body.has-checkout-column-layout--two_columns .fc-sidebar {
+    margin-top: 20px !important;
+  }
+}
+@media (min-width: 1000px) {
+  body.has-checkout-column-layout--two_columns .fc-sidebar {
+    z-index: 3;
+    float: right;
+    width: 37.5% !important;
   }
 }
 
@@ -402,21 +412,22 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   z-index: 10;
   width: 100%;
 }
+
 @media (min-width: 1000px) {
-  .fc-sidebar__inner {
+  body.has-checkout-column-layout--two_columns .fc-sidebar__inner {
     position: relative;
     padding-top: 5px;
   }
 }
 
 @media (max-width: 999px) {
-  .fc-wrapper .fc-sidebar .fc-sidebar__inner {
+  body.has-checkout-column-layout--two_columns .fc-wrapper .fc-sidebar .fc-sidebar__inner {
     position: static !important;
   }
 }
 
 @media (min-width: 1000px) {
-  .admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
+  body.has-checkout-column-layout--two_columns.admin-bar .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner {
     padding-top: calc(5px + 32px);
   }
 }
@@ -537,13 +548,17 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
   line-height: 1;
 }
 
+.fc-checkout-header .fc-checkout__branding:only-child {
+  margin: 0 auto;
+}
+
 .fc-checkout-header .fc-checkout__branding img {
   max-height: 46px;
   max-width: 130px;
   -o-object-fit: contain;
   object-fit: contain;
-  -o-object-position: right;
-  object-position: right;
+  -o-object-position: left;
+  object-position: left;
 }
 @media (min-width: 400px) {
   .fc-checkout-header .fc-checkout__branding img {
@@ -559,7 +574,7 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 .fc-checkout-header .fc-checkout__cart-link-wrapper {
   position: absolute;
   top: 0;
-  left: 10px;
+  right: 10px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -569,12 +584,12 @@ body.woocommerce-checkout .fc-content div.woocommerce:not(div.woocommerce div.wo
 }
 @media (min-width: 400px) {
   .fc-checkout-header .fc-checkout__cart-link-wrapper {
-    left: 20px;
+    right: 20px;
   }
 }
 @media (min-width: 750px) {
   .fc-checkout-header .fc-checkout__cart-link-wrapper {
-    left: 30px;
+    right: 30px;
   }
 }
 @media (min-width: 1000px) {
@@ -823,7 +838,7 @@ body div.woocommerce .form-row.fc-loading .woocommerce-input-wrapper:after {
   content: "\e816" !important;
   position: absolute;
   top: calc(var(--fluidcheckout--field--height, 45.625px) / 2 - 24px / 2);
-  left: 5px;
+  right: 5px;
   width: 24px !important;
   height: 24px !important;
   font-size: 24px !important;
@@ -866,7 +881,7 @@ body div.woocommerce .fc-place-order .fc-place-order-button.fc-loading:after {
   left: 50% !important;
   transform: translateX(-50%) translateY(-50%);
   margin: 0 !important;
-  left: 10px !important;
+  right: 10px !important;
   width: 24px !important;
   height: 24px !important;
   font-size: 24px !important;

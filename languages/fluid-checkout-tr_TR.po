@@ -437,10 +437,6 @@ msgstr "Fatura Adresi"
 msgid "Billing phone"
 msgstr "Fatura telefonu"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fatura Bilgileri"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Hem ödeme bölümünün hem de sipariş özetinin altında"
@@ -982,12 +978,6 @@ msgstr "Karanlık modu etkinleştir"
 msgid "Enable integrated coupon code section"
 msgstr "Entegre kupon kodu bölümünü etkinleştirin"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Telefon alanları için uluslararası telefon numarası biçimini ve "
-"doğrulamasını etkinleştirin"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Posta Kontrolünü Etkinleştir: (devre dışı bırakılmış özellik)"
@@ -1117,20 +1107,6 @@ msgstr "Altbilgi arka plan rengi"
 #: inc/admin/admin-settings-checkout.php:470
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Fatura ve sevkiyat adreslerini aynı olmaya zorlayın (tek bölüm)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Telefon numaralarını her ülkeye göre biçimlendirin ve doğrulayın."
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Ödeme adımları, sipariş özeti ve diğer bölümler için genel stiller. Sepet, "
-"Alınan Sipariş ve Siparişi Görüntüle sayfaları gibi diğer sayfalar için de "
-"geçerli olabilir."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
@@ -1480,10 +1456,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Kaydol onay kutusunu iletişim adımına taşıyın"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Çok adımlı"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Gönderim ve faturalandırma için birden fazla kayıtlı adres."
@@ -1491,10 +1463,6 @@ msgstr "Gönderim ve faturalandırma için birden fazla kayıtlı adres."
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "Hesap düzenim"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "İletişim"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -1971,10 +1939,6 @@ msgstr "Gönderi yöntemleri"
 msgid "Shipping phone"
 msgstr "Telefon numarası"
 
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Alıcı Bilgileri"
-
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
 "Show a link button on the pickup location substep to clear the chosen "
@@ -2285,14 +2249,6 @@ msgstr "Bu, ilgili alan değeriyle eşleşmiyor."
 #: inc/checkout-validation.php:200
 msgid "This is a required field."
 msgstr "Bu gerekli bir alandır."
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Bu deneysel bir özelliktir ve tüm tema ve eklentilerde beklendiği gibi "
-"çalışmayabilir. Dikkatli kullanın."
 
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
@@ -2701,9 +2657,150 @@ msgstr "İlerleme çubuğundan sonra"
 msgid "Before coupon codes section"
 msgstr "Kupon kodları bölümünden önce"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Uluslararası telefon numarası alanlarını etkinleştirin"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Telefon numaralarını her ülkenin kurallarına göre biçimlendirin."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Kesin telefon numarası doğrulaması kullanın"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Seçilen ülke kodunun kurallarına göre telefon numarasının geçerli bir mobil "
+"veya sabit hat numarası olduğundan emin olmaya çalışın. Bu seçenek, bazı "
+"telefon numaraları için yanlış pozitif sonuç verebilen "
+"<code>intl-tel-input</code> hassas doğrulama özelliğini kullanır."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Bu deneysel bir özelliktir ve tüm kurulumlarda beklendiği gibi "
+"çalışmayabilir. Dikkatli kullanın."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Kesin doğrulama etkinleştirildiğinde kullanılan telefon numarası doğrulama "
+"türleri."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Sabit hat"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Ücretsiz"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "İletişim"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Çoklu adım"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 sütun"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 sütun"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Ödeme adımları, sipariş özeti ve diğer bölümler için genel stiller. "
+"<br>Ayrıca Sepet, Alınan Sipariş ve Siparişi Görüntüle sayfaları gibi diğer "
+"sayfalara da uygulanabilir."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>\"Böl\"</em> tasarım şablonu, <em>\"1 sütun\"</em> düzeni kullanılırken "
+"kullanılamaz ve seçilirse <em>\"Minimalist\"</em> düzenine geri döner."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Ödeme adımlarından önce"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ya da"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>\"1 sütun\"</em> ödeme düzeni kullanılırken bu seçenek her zaman "
+"<em>\"Ödeme adımlarından önce\"</em> olarak ayarlanır ve masaüstü görünümü "
+"için de geçerlidir."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Mobil cihazlarda ekstra sipariş özeti bölümü için konum."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>\"Site başlığında\"</em> seçeneği yalnızca dikkat dağıtmayan başlık "
+"kullanıldığında geçerlidir."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Site başlığında (dikkat dağıtmayan başlık gerektirir)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Mobil cihazlarda genişletilebilir sipariş özeti bölümü için ilk durum."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Düzenleyici gereklilikler nedeniyle aşağıdaki ülkeler için "
+"<em>genişletilmiş</em> olarak ayarlamanızı öneririz: "
+"<strong>Almanya</strong>, <strong>Avusturya</strong>, "
+"<strong>İsviçre</strong>, <strong>Hollanda</strong>, "
+"<strong>Polonya</strong>, <strong>Belçika</strong> ve "
+"<strong>Fransa</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Çökmüş"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Genişletilmiş"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
