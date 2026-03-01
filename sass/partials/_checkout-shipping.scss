@@ -15,9 +15,9 @@ body.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[dat
 	input[type="tel"],
 	input[type="url"],
 	input[type="password"],
-	.select2-selection,
-	.select2-selection .select2-selection__rendered,
-	.ts-control {
+	select + .select2-container .select2-selection,
+	select + .select2-container .select2-selection .select2-selection__rendered,
+	select + .ts-wrapper .ts-control {
 		background-color: $checkout-highlighted-section-fields-background-color !important; // Needed to override theme styles
 		color: inherit !important; // Needed to override theme styles
 	}

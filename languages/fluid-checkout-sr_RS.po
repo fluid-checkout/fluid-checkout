@@ -6,8 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language-Team: Fluid Checkout\n"
-"Last-Translator: Fluid Checkout\n"
+"Language-Team: Serbian\n"
+"Last-Translator: Diego Versiani\n"
 "POT-Creation-Date: 2025-03-06 01:48+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
@@ -19,6 +19,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"PO-Revision-Date: 2025-10-15 15:34+0000\n"
+"Language: sr_RS\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.8.3; php-7.4.30\n"
 
 #: fluid-checkout.php:585
 msgid "WooCommerce"
@@ -30,15 +34,15 @@ msgstr "Идите на претрагу додатака"
 
 #: fluid-checkout.php:592
 msgid "Activate %s"
-msgstr "Активирајте %с"
+msgstr "Активирајте %s"
 
 #: fluid-checkout.php:596
 msgid ""
 "<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and "
 "activated. <a href=\"%4$s\">%3$s</a>"
 msgstr ""
-"<strong>%1$с</strong> захтева да се <strong>%2$с</strong> инсталира и "
-"активира. <a href=\"%4$s\">%3$с</a>"
+"<strong>%1$s</strong> захтева да се <strong>%2$s</strong> инсталира и "
+"активира. <a href=\"%4$s\">%3$s</a>"
 
 #: inc/checkout-coupon-codes.php:274
 msgid "Enter your code here"
@@ -47,7 +51,7 @@ msgstr "Унесите свој код овде"
 #: inc/checkout-coupon-codes.php:311, inc/checkout-hide-optional-fields.php:138
 #. translators: %s: Form field label
 msgid "Add %s"
-msgstr "Додај %с"
+msgstr "Додај %s"
 
 #: inc/checkout-coupon-codes.php:382
 msgid "Remove"
@@ -61,17 +65,14 @@ msgstr "Број поруџбине и рачун ће бити послати �
 msgid "Apartment, unit, building, floor, etc."
 msgstr "Стан, јединица, зграда, спрат итд."
 
-#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:579
+#: inc/checkout-shipping-phone-field.php:104,
+#: inc/admin/admin-settings-checkout.php:579
 msgid "Shipping phone"
 msgstr "Телефон за испоруку"
 
 #: inc/checkout-shipping-phone-field.php:105
 msgid "Only used for shipping-related questions."
 msgstr "Користи се само за питања у вези са испоруком."
-
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Мулти-степ"
 
 #: inc/checkout-steps.php:794
 msgid "Single step"
@@ -88,7 +89,7 @@ msgstr "Укупно у корпи:"
 #: inc/checkout-steps.php:1688
 #. translators: Next checkout step title
 msgid "Proceed to %s"
-msgstr "Наставите до %с"
+msgstr "Наставите до %s"
 
 #: inc/checkout-steps.php:2215
 msgid "Proceed to contact"
@@ -106,14 +107,6 @@ msgstr "Наставите са наплатом"
 msgid "Proceed to payment"
 msgstr "Наставите са плаћањем"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Мој контакт"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Испорука до"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Начин испоруке"
@@ -122,10 +115,6 @@ msgstr "Начин испоруке"
 msgid "Additional notes"
 msgstr "Додатне напомене"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Биллинг то"
-
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
 msgstr "Начин плаћања"
@@ -133,13 +122,14 @@ msgstr "Начин плаћања"
 #: inc/checkout-steps.php:2530
 #. translators: %1$s is replaced with html for "current checkout step number", %2$s is replaced with html for "total number of checkout steps".
 msgid "Step %1$s of %2$s"
-msgstr "Корак %1$с од %2$с"
+msgstr "Корак %1$s од %2$s"
 
 #: inc/checkout-steps.php:2825
 msgid "Change: %s"
-msgstr "Промена: %с"
+msgstr "Промена: %s"
 
-#: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
+#: inc/checkout-steps.php:3918,
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
 msgstr "Још увек није изабрано."
 
@@ -151,18 +141,21 @@ msgstr "Исто као и адреса за доставу"
 msgid "Same as billing address"
 msgstr "Исто као и адреса за обрачун"
 
-#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:248, inc/admin/admin-settings-order-received.php:175
+#: inc/checkout-steps.php:5943, inc/admin/admin-settings-cart.php:131,
+#: inc/admin/admin-settings-checkout.php:248,
+#: inc/admin/admin-settings-order-received.php:175
 msgid "Order summary"
 msgstr "Резиме налога"
 
-#: inc/checkout-steps.php:6008, templates/fc/checkout-steps/checkout/review-order-section.php:58
+#: inc/checkout-steps.php:6008,
+#: templates/fc/checkout-steps/checkout/review-order-section.php:58
 msgid "Edit cart"
 msgstr "Уреди корпу"
 
 #: inc/checkout-validation.php:197
 #. translators: %s: html for the email address typo correction suggestion link
 msgid "Did you mean %s?"
-msgstr "Да ли сте мислили %с?"
+msgstr "Да ли сте мислили %s?"
 
 #: inc/checkout-validation.php:197
 msgid "Change email address to: {suggestion-value}"
@@ -188,7 +181,10 @@ msgstr "ЦПФ број „{цпф_нумбер}“ је неважећи."
 msgid "The CNPJ number \"{cnpj_number}\" is invalid."
 msgstr "ЦНПЈ број „{цнпј_нумбер}“ је неважећи."
 
-#: inc/checkout-validation.php:369, templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16, templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
+#: inc/checkout-validation.php:369,
+#: templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php:5,
+#: templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php:16,
+#: templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php:16
 msgid "(Required)"
 msgstr "(обавезно)"
 
@@ -282,7 +278,8 @@ msgstr ""
 "ВооЦоммерце (бесплатно и ПРО) од ЦодеРоцкз-а. Интеграција са овим додацима "
 "је премештена у Флуид Цхецкоут ПРО.</p>"
 
-#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97, inc/admin/admin.php:141
+#: inc/admin/admin-notice-coderockz-delivery-plugins-detected.php:97,
+#: inc/admin/admin.php:141
 msgid "Upgrade to PRO"
 msgstr "Надоградите на ПРО"
 
@@ -347,7 +344,8 @@ msgstr ""
 msgid "Edit the checkout page"
 msgstr "Уредите страницу за наплату"
 
-#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104, inc/admin/admin.php:215
+#: inc/admin/admin-notice-divi-checkout-layout-being-used.php:104,
+#: inc/admin/admin.php:215
 msgid "Read the documentation."
 msgstr "Прочитајте документацију."
 
@@ -428,11 +426,17 @@ msgstr ""
 "Проширите сву доброту Флуид Цхецкоут-а на страницу са колицима и странице "
 "захвалности."
 
-#: inc/admin/admin-setting-type-fc-addons.php:48, inc/admin/admin-setting-type-fc-addons.php:50, inc/admin/admin-setting-type-fc-addons.php:88, inc/admin/admin-setting-type-fc-addons.php:144, inc/admin/admin-setting-type-fc-addons.php:146, inc/admin/admin-setting-type-fc-setup.php:40
+#: inc/admin/admin-setting-type-fc-addons.php:48,
+#: inc/admin/admin-setting-type-fc-addons.php:50,
+#: inc/admin/admin-setting-type-fc-addons.php:88,
+#: inc/admin/admin-setting-type-fc-addons.php:144,
+#: inc/admin/admin-setting-type-fc-addons.php:146,
+#: inc/admin/admin-setting-type-fc-setup.php:40
 msgid "Fluid Checkout PRO"
 msgstr "Флуид Цхецкоут ПРО"
 
-#: inc/admin/admin-setting-type-fc-addons.php:51, inc/admin/admin-setting-type-fc-addons.php:147
+#: inc/admin/admin-setting-type-fc-addons.php:51,
+#: inc/admin/admin-setting-type-fc-addons.php:147
 msgid ""
 "Design templates, optimized cart and order received pages, account "
 "matching, and much more."
@@ -440,7 +444,8 @@ msgstr ""
 "Шаблони дизајна, оптимизоване странице у колицима и примљене поруџбине, "
 "подударање налога и још много тога."
 
-#: inc/admin/admin-setting-type-fc-addons.php:55, inc/admin/admin-setting-type-fc-addons.php:151
+#: inc/admin/admin-setting-type-fc-addons.php:55,
+#: inc/admin/admin-setting-type-fc-addons.php:151
 msgid ""
 "The best tools to further <strong>improve your WooCommerce checkout "
 "conversion rate</strong> and make the purchase experience consistent on the "
@@ -485,7 +490,8 @@ msgstr "Више позиција за код купона на страници
 msgid "Integrated coupon code field on the cart page"
 msgstr "Интегрисано поље кода купона на страници корпе"
 
-#: inc/admin/admin-setting-type-fc-addons.php:66, inc/admin/admin-settings-checkout.php:633
+#: inc/admin/admin-setting-type-fc-addons.php:66,
+#: inc/admin/admin-settings-checkout.php:633
 msgid "International phone numbers"
 msgstr "Међународни бројеви телефона"
 
@@ -501,15 +507,20 @@ msgstr "Локално преузимање и преузимање у прод�
 msgid "Upgrade to PRO &mdash; 99 EUR"
 msgstr "Надоградите на ПРО — 99 ЕУР"
 
-#: inc/admin/admin-setting-type-fc-addons.php:78, inc/admin/admin-setting-type-fc-addons.php:80, inc/admin/admin-setting-type-fc-addons.php:125, inc/admin/admin-setting-type-fc-addons.php:127
+#: inc/admin/admin-setting-type-fc-addons.php:78,
+#: inc/admin/admin-setting-type-fc-addons.php:80,
+#: inc/admin/admin-setting-type-fc-addons.php:125,
+#: inc/admin/admin-setting-type-fc-addons.php:127
 msgid "Fluid Checkout PRO – Bundle"
 msgstr "Флуид Цхецкоут ПРО – Пакет"
 
-#: inc/admin/admin-setting-type-fc-addons.php:81, inc/admin/admin-setting-type-fc-addons.php:128
+#: inc/admin/admin-setting-type-fc-addons.php:81,
+#: inc/admin/admin-setting-type-fc-addons.php:128
 msgid "All PRO features + All add-ons for a special price."
 msgstr "Све ПРО функције + Сви додаци по посебној цени."
 
-#: inc/admin/admin-setting-type-fc-addons.php:85, inc/admin/admin-setting-type-fc-addons.php:132
+#: inc/admin/admin-setting-type-fc-addons.php:85,
+#: inc/admin/admin-setting-type-fc-addons.php:132
 msgid ""
 "The bundle includes all add-ons we currently offer and Fluid Checkout "
 "add-ons we launch in the future."
@@ -517,19 +528,25 @@ msgstr ""
 "Пакет укључује све додатке које тренутно нудимо и додатке Флуид Цхецкоут "
 "које ћемо покренути у будућности."
 
-#: inc/admin/admin-setting-type-fc-addons.php:87, inc/admin/admin-setting-type-fc-addons.php:133
+#: inc/admin/admin-setting-type-fc-addons.php:87,
+#: inc/admin/admin-setting-type-fc-addons.php:133
 msgid "226 EUR value (Save 42%)"
 msgstr "226 ЕУР вредност (Уштеда 42%)"
 
-#: inc/admin/admin-setting-type-fc-addons.php:89, inc/admin/admin-setting-type-fc-addons.php:165, inc/admin/admin-setting-type-fc-addons.php:167
+#: inc/admin/admin-setting-type-fc-addons.php:89,
+#: inc/admin/admin-setting-type-fc-addons.php:165,
+#: inc/admin/admin-setting-type-fc-addons.php:167
 msgid "Google Address Autocomplete"
 msgstr "Аутоматско довршавање Гоогле адресе"
 
-#: inc/admin/admin-setting-type-fc-addons.php:90, inc/admin/admin-setting-type-fc-addons.php:187
+#: inc/admin/admin-setting-type-fc-addons.php:90,
+#: inc/admin/admin-setting-type-fc-addons.php:187
 msgid "Address Book"
 msgstr "Адресар"
 
-#: inc/admin/admin-setting-type-fc-addons.php:91, inc/admin/admin-setting-type-fc-addons.php:209, inc/admin/admin-setting-type-fc-addons.php:211
+#: inc/admin/admin-setting-type-fc-addons.php:91,
+#: inc/admin/admin-setting-type-fc-addons.php:209,
+#: inc/admin/admin-setting-type-fc-addons.php:211
 msgid "EU-VAT Assistant"
 msgstr "ЕУ-ПДВ помоћник"
 
@@ -541,11 +558,13 @@ msgstr "Сви будући додаци *"
 msgid "* For as long as you have an active subscription."
 msgstr "* Све док имате активну претплату."
 
-#: inc/admin/admin-setting-type-fc-addons.php:97, inc/admin/admin-setting-type-fc-addons.php:136
+#: inc/admin/admin-setting-type-fc-addons.php:97,
+#: inc/admin/admin-setting-type-fc-addons.php:136
 msgid "Get the Bundle – Only 129 EUR"
 msgstr "Набавите пакет – само 129 ЕУР"
 
-#: inc/admin/admin-setting-type-fc-addons.php:104, inc/admin/admin-setting-type-fc-addons.php:234
+#: inc/admin/admin-setting-type-fc-addons.php:104,
+#: inc/admin/admin-setting-type-fc-addons.php:234
 msgid ""
 "All prices shown in EUR. If there are any divergencies with the prices on "
 "our website, the offers shown on the website superseed these and will be "
@@ -566,11 +585,17 @@ msgstr "Побољшајте своје искуство плаћања са о�
 msgid "I already have it – Hide this offer"
 msgstr "Већ га имам – Сакриј ову понуду"
 
-#: inc/admin/admin-setting-type-fc-addons.php:157, inc/admin/admin-setting-type-fc-addons.php:178, inc/admin/admin-setting-type-fc-addons.php:200, inc/admin/admin-setting-type-fc-addons.php:222
+#: inc/admin/admin-setting-type-fc-addons.php:157,
+#: inc/admin/admin-setting-type-fc-addons.php:178,
+#: inc/admin/admin-setting-type-fc-addons.php:200,
+#: inc/admin/admin-setting-type-fc-addons.php:222
 msgid "Installed &mdash; Activate"
 msgstr "Инсталирано — Активирајте"
 
-#: inc/admin/admin-setting-type-fc-addons.php:155, inc/admin/admin-setting-type-fc-addons.php:176, inc/admin/admin-setting-type-fc-addons.php:198, inc/admin/admin-setting-type-fc-addons.php:220
+#: inc/admin/admin-setting-type-fc-addons.php:155,
+#: inc/admin/admin-setting-type-fc-addons.php:176,
+#: inc/admin/admin-setting-type-fc-addons.php:198,
+#: inc/admin/admin-setting-type-fc-addons.php:220
 msgid "Activated"
 msgstr "Активирано"
 
@@ -638,7 +663,9 @@ msgstr ""
 "Сви додаци се продају засебно и захтевају да се додатак <strong>Флуид "
 "Цхецкоут Лите</strong> инсталира и активира, осим када је то наведено."
 
-#: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
+#: inc/admin/admin-setting-type-fc-image-uploader.php:97,
+#: inc/admin/admin-setting-type-fc-image-uploader.php:98,
+#: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Изаберите слику"
 
@@ -655,12 +682,12 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-license-key.php:152
 #. translators: %s: License key expiration date.
 msgid "Valid until %s."
-msgstr "Важи до %с."
+msgstr "Важи до %s."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:158
 #. translators: %s: License key expiration date.
 msgid "Expired on %s."
-msgstr "Истекло %с."
+msgstr "Истекло %s."
 
 #: inc/admin/admin-setting-type-fc-license-key.php:160
 msgid ""
@@ -752,7 +779,8 @@ msgstr "Омогућите оптимизацију странице корпе"
 msgid "Display the cart page with a layout similar to the checkout page."
 msgstr "Прикажите страницу корпе са изгледом сличним страници за наплату."
 
-#: inc/admin/admin-settings-cart.php:96, inc/admin/admin-settings-checkout.php:117
+#: inc/admin/admin-settings-cart.php:96,
+#: inc/admin/admin-settings-checkout.php:117
 msgid "Header and footer"
 msgstr "Заглавље и подножје"
 
@@ -760,7 +788,8 @@ msgstr "Заглавље и подножје"
 msgid "Header and footer template"
 msgstr "Шаблон заглавља и подножја"
 
-#: inc/admin/admin-settings-cart.php:104, inc/admin/admin-settings-checkout.php:126
+#: inc/admin/admin-settings-cart.php:104,
+#: inc/admin/admin-settings-checkout.php:126
 msgid ""
 "Controls whether to use the distraction free page header and footer or keep "
 "the currently active theme's header and footer."
@@ -768,11 +797,13 @@ msgstr ""
 "Контролише да ли ћете користити заглавље и подножје странице без ометања "
 "или задржати заглавље и подножје тренутно активне теме."
 
-#: inc/admin/admin-settings-cart.php:108, inc/admin/admin-settings-checkout.php:130
+#: inc/admin/admin-settings-cart.php:108,
+#: inc/admin/admin-settings-checkout.php:130
 msgid "Distraction free header and footer"
 msgstr "Заглавље и подножје без ометања"
 
-#: inc/admin/admin-settings-cart.php:109, inc/admin/admin-settings-checkout.php:131
+#: inc/admin/admin-settings-cart.php:109,
+#: inc/admin/admin-settings-checkout.php:131
 msgid "Theme's header and footer"
 msgstr "Заглавље и подножје теме"
 
@@ -784,7 +815,9 @@ msgstr "Елементи колица"
 msgid "Make the order summary stay visible on the cart page while scrolling"
 msgstr "Нека резиме поруџбине остане видљив на страници корпе док се крећете"
 
-#: inc/admin/admin-settings-cart.php:141, inc/admin/admin-settings-checkout.php:356, inc/admin/admin-settings-checkout.php:363
+#: inc/admin/admin-settings-cart.php:141,
+#: inc/admin/admin-settings-checkout.php:356,
+#: inc/admin/admin-settings-checkout.php:363
 msgid "Coupon codes"
 msgstr "Кодови купона"
 
@@ -798,7 +831,11 @@ msgstr ""
 "страници корпе. Применљиво само када су АЈАКС корпа и интегрисани кодови "
 "купона на страници за плаћање омогућени."
 
-#: inc/admin/admin-settings-cart.php:146, inc/admin/admin-settings-cart.php:169, inc/admin/admin-settings-cart.php:184, inc/admin/admin-settings-checkout.php:389, inc/admin/admin-settings-checkout.php:697
+#: inc/admin/admin-settings-cart.php:146,
+#: inc/admin/admin-settings-cart.php:169,
+#: inc/admin/admin-settings-cart.php:184,
+#: inc/admin/admin-settings-checkout.php:389,
+#: inc/admin/admin-settings-checkout.php:697
 msgid "Hidden"
 msgstr "Скривено"
 
@@ -826,15 +863,19 @@ msgstr "После одељка за отпрему"
 msgid "Before the order summary"
 msgstr "Пре резимеа поруџбине"
 
-#: inc/admin/admin-settings-cart.php:153, inc/admin/admin-settings-cart.php:171, inc/admin/admin-settings-checkout.php:393
+#: inc/admin/admin-settings-cart.php:153,
+#: inc/admin/admin-settings-cart.php:171,
+#: inc/admin/admin-settings-checkout.php:393
 msgid "Inside the order summary"
 msgstr "Унутар резимеа поруџбине"
 
-#: inc/admin/admin-settings-cart.php:154, inc/admin/admin-settings-checkout.php:394
+#: inc/admin/admin-settings-cart.php:154,
+#: inc/admin/admin-settings-checkout.php:394
 msgid "Before the order totals"
 msgstr "Пре него што се налог зброји"
 
-#: inc/admin/admin-settings-cart.php:155, inc/admin/admin-settings-checkout.php:395
+#: inc/admin/admin-settings-cart.php:155,
+#: inc/admin/admin-settings-checkout.php:395
 msgid "After the order totals"
 msgstr "Након зброја налога"
 
@@ -892,7 +933,10 @@ msgstr "Изглед унакрсне продаје теме"
 msgid "Number of cross-sell items to display on the cart page"
 msgstr "Број артикала унакрсне продаје за приказ на страници корпе"
 
-#: inc/admin/admin-settings-cart.php:219, inc/admin/admin-settings-checkout.php:328, inc/admin/admin-settings-order-pay.php:91, inc/admin/admin-settings-order-received.php:125
+#: inc/admin/admin-settings-cart.php:219,
+#: inc/admin/admin-settings-checkout.php:328,
+#: inc/admin/admin-settings-order-pay.php:91,
+#: inc/admin/admin-settings-order-received.php:125
 msgid "Trust symbols &amp; badges"
 msgstr "Симболи и значке поверења"
 
@@ -923,16 +967,6 @@ msgstr "Изглед наплате"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Шаблон дизајна"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Општи стилови за кораке плаћања, резиме поруџбине и друге одељке. Може се "
-"односити и на друге странице као што су странице Корпа, Поруџбина примљена "
-"и Прегледај поруџбине."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -982,7 +1016,10 @@ msgstr ""
 "Изаберите боју позадине за заглавље странице за плаћање. Важи само када "
 "користите заглавље и подножје без ометања."
 
-#: inc/admin/admin-settings-checkout.php:150, inc/admin/admin-settings-checkout.php:161, inc/admin/admin-settings-checkout.php:172, inc/admin/admin-settings-checkout.php:258
+#: inc/admin/admin-settings-checkout.php:150,
+#: inc/admin/admin-settings-checkout.php:161,
+#: inc/admin/admin-settings-checkout.php:172,
+#: inc/admin/admin-settings-checkout.php:258
 msgid "HTML color value. ie: #f3f3f3"
 msgstr "ХТМЛ вредност боје. тј: #ф3ф3ф3"
 
@@ -1230,7 +1267,9 @@ msgstr "Подразумевани стил дугмета"
 msgid "\"Add\" link button"
 msgstr "Дугме за везу „Додај“."
 
-#: inc/admin/admin-settings-checkout.php:422, inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102, inc/compat/themes/compat-theme-zk-nito.php:87
+#: inc/admin/admin-settings-checkout.php:422,
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:102,
+#: inc/compat/themes/compat-theme-zk-nito.php:87
 msgid "Checkout fields"
 msgstr "Поља за наплату"
 
@@ -1284,7 +1323,8 @@ msgstr ""
 "(тј. „Додај број телефона“ уместо „Додај број телефона“). Ова опција такође "
 "утиче на дугмад за везу за поља кодова купона."
 
-#: inc/admin/admin-settings-checkout.php:460, inc/admin/admin-settings-checkout.php:625
+#: inc/admin/admin-settings-checkout.php:460,
+#: inc/admin/admin-settings-checkout.php:625
 msgid "Billing address"
 msgstr "Адреса за обрачун"
 
@@ -1352,7 +1392,8 @@ msgstr ""
 msgid "Highlight the billing address section in the checkout form"
 msgstr "Истакните одељак адресе за обрачун у обрасцу за плаћање"
 
-#: inc/admin/admin-settings-checkout.php:494, inc/admin/admin-settings-checkout.php:598
+#: inc/admin/admin-settings-checkout.php:494,
+#: inc/admin/admin-settings-checkout.php:598
 msgid "Shipping address"
 msgstr "Адреса за доставу"
 
@@ -1470,15 +1511,22 @@ msgstr ""
 "видљивости, неће бити примењене никакве промене како би други додаци могли "
 "да примењују све промене које су им потребне."
 
-#: inc/admin/admin-settings-checkout.php:570, inc/admin/admin-settings-checkout.php:585, inc/admin/admin-settings-checkout.php:612
+#: inc/admin/admin-settings-checkout.php:570,
+#: inc/admin/admin-settings-checkout.php:585,
+#: inc/admin/admin-settings-checkout.php:612
 msgid "Hidden (remove field)"
 msgstr "Скривено (уклони поље)"
 
-#: inc/admin/admin-settings-checkout.php:571, inc/admin/admin-settings-checkout.php:586, inc/admin/admin-settings-checkout.php:613, inc/admin/admin-settings-checkout.php:698
+#: inc/admin/admin-settings-checkout.php:571,
+#: inc/admin/admin-settings-checkout.php:586,
+#: inc/admin/admin-settings-checkout.php:613,
+#: inc/admin/admin-settings-checkout.php:698
 msgid "Optional"
 msgstr "Опционо"
 
-#: inc/admin/admin-settings-checkout.php:572, inc/admin/admin-settings-checkout.php:587, inc/admin/admin-settings-checkout.php:614
+#: inc/admin/admin-settings-checkout.php:572,
+#: inc/admin/admin-settings-checkout.php:587,
+#: inc/admin/admin-settings-checkout.php:614
 msgid "Required"
 msgstr "Обавезно"
 
@@ -1490,7 +1538,8 @@ msgstr "Додајте поље за телефон за испоруку у о�
 msgid "Choose in which step to display the shipping phone field."
 msgstr "Изаберите у ком кораку желите да прикажете поље за телефон за испоруку."
 
-#: inc/admin/admin-settings-checkout.php:599, inc/admin/admin-settings-checkout.php:626
+#: inc/admin/admin-settings-checkout.php:599,
+#: inc/admin/admin-settings-checkout.php:626
 msgid "Contact step"
 msgstr "Контакт корак"
 
@@ -1505,14 +1554,6 @@ msgstr "Додајте поље за телефон за обрачун у об�
 #: inc/admin/admin-settings-checkout.php:621
 msgid "Choose in which step to display the billing phone field."
 msgstr "Изаберите у ком кораку желите да прикажете поље телефона за наплату."
-
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Омогућите формат међународног телефонског броја и потврду за поља за телефон"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Форматирајте и потврдите бројеве телефона према свакој земљи."
 
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
@@ -1560,7 +1601,8 @@ msgstr "Прикажи ако није дефинисано"
 msgid "Always show"
 msgstr "Увек показуј"
 
-#: inc/admin/admin-settings-checkout.php:692, inc/admin/admin-settings-order-received.php:222
+#: inc/admin/admin-settings-checkout.php:692,
+#: inc/admin/admin-settings-order-received.php:222
 msgid "Order notes"
 msgstr "Напомене о наруџби"
 
@@ -1604,7 +1646,8 @@ msgstr ""
 "Ова опција утиче на страницу за потврду поруџбине (страница захвалности) и "
 "детаље поруџбине на страницама налога, имејловима и отпремницама."
 
-#: inc/admin/admin-settings-checkout.php:746, inc/admin/admin-settings-checkout.php:753
+#: inc/admin/admin-settings-checkout.php:746,
+#: inc/admin/admin-settings-checkout.php:753
 msgid "Account matching"
 msgstr "Подударање налога"
 
@@ -1740,7 +1783,8 @@ msgstr ""
 "Ове опције утичу на страницу захвалности, такође познату као примљена "
 "поруџбина или странице за потврду поруџбине."
 
-#: inc/admin/admin-settings-order-received.php:115, inc/admin/admin-settings-order-received.php:143
+#: inc/admin/admin-settings-order-received.php:115,
+#: inc/admin/admin-settings-order-received.php:143
 msgid "Order details layout"
 msgstr "Изглед детаља поруџбине"
 
@@ -1796,7 +1840,10 @@ msgstr "Статус налога"
 msgid "Display the order status progress bar"
 msgstr "Прикажите траку напредовања статуса поруџбине"
 
-#: inc/admin/admin-settings-order-received.php:176, inc/admin/admin-settings-order-received.php:193, inc/admin/admin-settings-order-received.php:208, inc/admin/admin-settings-order-received.php:223
+#: inc/admin/admin-settings-order-received.php:176,
+#: inc/admin/admin-settings-order-received.php:193,
+#: inc/admin/admin-settings-order-received.php:208,
+#: inc/admin/admin-settings-order-received.php:223
 msgid "Choose in which position to display the section."
 msgstr "Изаберите у којој позицији желите да прикажете одељак."
 
@@ -1804,15 +1851,24 @@ msgstr "Изаберите у којој позицији желите да пр
 msgid "After the order overview and payment instructions"
 msgstr "Након прегледа поруџбине и упутства за плаћање"
 
-#: inc/admin/admin-settings-order-received.php:181, inc/admin/admin-settings-order-received.php:197, inc/admin/admin-settings-order-received.php:212, inc/admin/admin-settings-order-received.php:227
+#: inc/admin/admin-settings-order-received.php:181,
+#: inc/admin/admin-settings-order-received.php:197,
+#: inc/admin/admin-settings-order-received.php:212,
+#: inc/admin/admin-settings-order-received.php:227
 msgid "Before the order items section"
 msgstr "Пре одељка ставке поруџбине"
 
-#: inc/admin/admin-settings-order-received.php:182, inc/admin/admin-settings-order-received.php:198, inc/admin/admin-settings-order-received.php:213, inc/admin/admin-settings-order-received.php:228
+#: inc/admin/admin-settings-order-received.php:182,
+#: inc/admin/admin-settings-order-received.php:198,
+#: inc/admin/admin-settings-order-received.php:213,
+#: inc/admin/admin-settings-order-received.php:228
 msgid "Inside the order items section"
 msgstr "Унутар одељка ставки поруџбина"
 
-#: inc/admin/admin-settings-order-received.php:183, inc/admin/admin-settings-order-received.php:199, inc/admin/admin-settings-order-received.php:214, inc/admin/admin-settings-order-received.php:229
+#: inc/admin/admin-settings-order-received.php:183,
+#: inc/admin/admin-settings-order-received.php:199,
+#: inc/admin/admin-settings-order-received.php:214,
+#: inc/admin/admin-settings-order-received.php:229
 msgid "After the order items section"
 msgstr "Након одељка за ставке поруџбине"
 
@@ -1936,14 +1992,6 @@ msgstr "(ПРО)"
 msgid "(experimental)"
 msgstr "(експериментално)"
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ово је експериментална функција и можда неће радити како се очекује са свим "
-"темама и додацима. Користите га са опрезом."
-
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
 msgstr "Потврди"
@@ -1952,7 +2000,8 @@ msgstr "Потврди"
 msgid "Verify Phone Number"
 msgstr "Потврдите број телефона"
 
-#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375, inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
+#: inc/compat/plugins/compat-plugin-automation-web-platform.php:375,
+#: inc/compat/plugins/compat-plugin-mobile-login-woocommerce-premium.php:623
 msgid "Please verify your phone number."
 msgstr "Проверите свој број телефона."
 
@@ -1992,7 +2041,13 @@ msgstr ""
 "Дефинишите позицију за приказ одељка цаптцха. Неке позиције можда неће "
 "радити у зависности од изабраног типа цаптцха."
 
-#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148, inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126, inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109, inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104, inc/compat/plugins/compat-plugin-seur.php:105, inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
+#: inc/compat/plugins/compat-plugin-gls-shipping-for-woocommerce.php:148,
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:126,
+#: inc/compat/plugins/compat-plugin-mondialrelay-wordpress.php:124,
+#: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:109,
+#: inc/compat/plugins/compat-plugin-packlink-pro-shipping.php:104,
+#: inc/compat/plugins/compat-plugin-seur.php:105,
+#: inc/compat/plugins/compat-plugin-woo-carrier-agents.php:124
 msgid "Selecting a pickup point is required before proceeding."
 msgstr "Пре него што наставите, потребно је изабрати место преузимања."
 
@@ -2000,11 +2055,18 @@ msgstr "Пре него што наставите, потребно је иза�
 msgid "Pickup point"
 msgstr "Место преузимања"
 
-#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307, inc/compat/plugins/compat-plugin-seur.php:386, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:316,
+#: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:297,
+#: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:307,
+#: inc/compat/plugins/compat-plugin-seur.php:386,
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:450
 msgid "Pickup point not selected yet."
 msgstr "Место преузимања још није изабрано."
 
-#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310, inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312, inc/compat/plugins/compat-plugin-seur.php:391, inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
+#: inc/compat/plugins/compat-plugin-hungarian-pickup-points-for-woocommerce.php:310,
+#: inc/compat/plugins/compat-plugin-omniva-woocommerce.php:312,
+#: inc/compat/plugins/compat-plugin-seur.php:391,
+#: inc/compat/plugins/compat-plugin-woocommerce-myparcel.php:438
 msgid "Pickup point:"
 msgstr "Место преузимања:"
 
@@ -2028,9 +2090,10 @@ msgstr ""
 msgid "Before Shipping Address"
 msgstr "Пре слања адреса"
 
-#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87, inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:87,
+#: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
 msgid "(originally \"%s\")"
-msgstr "(првобитно „%с“)"
+msgstr "(првобитно „%s“)"
 
 #: inc/compat/plugins/compat-plugin-shipping-zones-by-drawing-for-woocommerce.php:91
 msgid "After Shipping Address"
@@ -2082,7 +2145,12 @@ msgstr ""
 msgid "Theme Betheme"
 msgstr "Тхеме Бетхеме"
 
-#: inc/compat/themes/compat-theme-betheme.php:178, inc/compat/themes/compat-theme-kapee.php:129, inc/compat/themes/compat-theme-porto.php:202, inc/compat/themes/compat-theme-pressmart.php:186, inc/compat/themes/compat-theme-thegem.php:164, inc/compat/themes/compat-theme-woodmart.php:158
+#: inc/compat/themes/compat-theme-betheme.php:178,
+#: inc/compat/themes/compat-theme-kapee.php:129,
+#: inc/compat/themes/compat-theme-porto.php:202,
+#: inc/compat/themes/compat-theme-pressmart.php:186,
+#: inc/compat/themes/compat-theme-thegem.php:164,
+#: inc/compat/themes/compat-theme-woodmart.php:158
 msgid "Checkout progress"
 msgstr "Напредак наплате"
 
@@ -2226,7 +2294,8 @@ msgstr "Напредак наручивања"
 msgid "Display order progress from the theme"
 msgstr "Прикажи напредак редоследа из теме"
 
-#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103, inc/compat/themes/compat-theme-zk-nito.php:88
+#: inc/compat/themes/compat-theme-wordpress-theme-atomion.php:103,
+#: inc/compat/themes/compat-theme-zk-nito.php:88
 msgid "Display the form field labels visible on the page"
 msgstr "Прикажите ознаке поља обрасца које су видљиве на страници"
 
@@ -2256,7 +2325,8 @@ msgstr ""
 msgid "Go to the home page"
 msgstr "Идите на почетну страницу"
 
-#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54, templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
+#: templates/fc/checkout-page-template/checkout/page-checkout-header.php:54,
+#: templates/compat/themes/enfold/checkout-page-template/checkout/page-checkout-header.php:239
 msgid "Skip to content"
 msgstr "Пређи на садржај"
 
@@ -2274,11 +2344,11 @@ msgstr "Већ имате налог?"
 
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:32
 msgid "Logged in as %1$s. <a href=\"%2$s\">Log out</a>"
-msgstr "Пријављен као %1$с. <a href=\"%2$s\">Одјавите се</a>"
+msgstr "Пријављен као %1$s. <a href=\"%2$s\">Одјавите се</a>"
 
 #: templates/fc/checkout-steps/checkout/payment.php:48
 msgid "Your order has a total amount due of %s. No further payment is needed."
-msgstr "Укупан износ ваше поруџбине је %с. Није потребно даље плаћање."
+msgstr "Укупан износ ваше поруџбине је %s. Није потребно даље плаћање."
 
 #: templates/fc/checkout-steps/checkout/review-order-section.php:59
 msgid "Close and continue with checkout"
@@ -2478,6 +2548,180 @@ msgstr ""
 "страницама, укључујући странице за плаћање, корпу, пријем поруџбине, "
 "плаћање поруџбине и налог."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Паметни купони за WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Позиција на страници за плаћање"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Изаберите где ће се на страници за плаћање приказивати одељак са доступним "
+"купонима."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Пре траке напретка"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "После траке напретка"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Одељак пре кодова за купоне"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Омогући поља за међународне бројеве телефона"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Форматирајте бројеве телефона према правилима за сваку земљу."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Користите прецизну валидацију броја телефона"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Покушајте да се уверите да је број телефона важећи мобилни или фиксни број "
+"на основу правила за изабрани позивни број земље. Ова опција користи "
+"функцију прецизне валидације <code>intl-tel-input</code> , која може дати "
+"лажно позитивне резултате за неке бројеве телефона."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ово је експериментална функција и можда неће радити како се очекује у свим "
+"подешавањима. Користите је са опрезом."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Типови валидације броја телефона који се користе када је омогућена прецизна "
+"валидација."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Мобилни"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Фиксна линија"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Бесплатни позив"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Или"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Контакт"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Више корака"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 колоне"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 колона"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Општи стилови за кораке плаћања, резиме поруџбине и остале одељке.<br> Може "
+"се односити и на друге странице као што су странице Корпа, Примљена "
+"поруџбина и Преглед поруџбине."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Шаблон дизајна <em>„Подељен“</em> није доступан када се користи распоред "
+"<em>„1 колона“</em> и вратиће се на <em>„Минималистички“</em> ако се "
+"изабере."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Кораци пре плаћања"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Када користите распоред плаћања <em>„1 колона“,</em> ова опција је увек "
+"подешена на <em>„Пре корака плаћања“</em> и важи и за приказ на рачунару."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Позиција за додатни одељак са резимеом поруџбине на мобилном уређају."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Опција <em>„У заглављу сајта“</em> важи само када се користи заглавље без "
+"ометања."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "У заглављу сајта (потребно је заглавље без ометања)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Почетно стање за прошириви одељак са резимеом поруџбине на мобилном уређају."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Препоручујемо да га подесите као <em>проширено</em> за следеће земље због "
+"регулаторних захтева: <strong>Немачка</strong> , <strong>Аустрија</strong> "
+", <strong>Швајцарска</strong> , <strong>Холандија</strong> , "
+"<strong>Пољска</strong> , <strong>Белгија</strong> и "
+"<strong>Француска</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Склопљено"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Проширено"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Не приказуј"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2522,13 +2766,13 @@ msgstr "Ниједан."
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format"
 msgid "%1$s"
-msgstr "%1$с"
+msgstr "%1$s"
 
 #: inc/checkout-steps.php:3495
 #. translators: %1$s the selected option text, %2$s the field label.
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
-msgstr "%2$с: %1$с"
+msgstr "%2$s: %1$s"
 
 #: inc/admin/admin-setting-type-fc-image-uploader.php:85
 msgctxt "Image uploader."
@@ -2570,7 +2814,8 @@ msgctxt "Captcha position"
 msgid "Before place order button"
 msgstr "Дугме пре наручивања"
 
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:431,
+#: templates/fc/checkout-steps/checkout/review-order-shipping.php:28
 #. translators: %s shipping destination.
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
@@ -2581,7 +2826,8 @@ msgctxt "Close button aria-label"
 msgid "Close"
 msgstr "Затвори"
 
-#: templates/fc/checkout-steps/checkout/form-contact-login.php:42, templates/fc/checkout-steps/global/form-login.php:66
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:42,
+#: templates/fc/checkout-steps/global/form-login.php:66
 msgctxt "Log in link label at checkout contact step"
 msgid "Log in"
 msgstr "Пријавите се"
@@ -2600,3 +2846,15 @@ msgstr "Или наставите као гост"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Уклони слику"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Достава %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Достава"

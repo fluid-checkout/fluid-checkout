@@ -25,6 +25,9 @@ class FluidCheckout_ElementorPRO extends FluidCheckout {
 
 		// Order received page template
 		add_filter( 'fc_enable_checkout_page_template', array( $this, 'maybe_disable_checkout_page_template_for_order_received_page' ), 300 );
+
+		// Frontend config
+		add_action( 'wp_footer', array( $this, 'maybe_enqueue_frontend_scripts' ), 10 );
 	}
 
 
@@ -83,6 +86,34 @@ class FluidCheckout_ElementorPRO extends FluidCheckout {
 
 		// Otherwise, disable the custom checkout page template
 		return false;
+	}
+
+
+
+	/**
+	 * Maybe force enqueue Elementor's frontend scripts.
+	 */
+	public function maybe_enqueue_frontend_scripts() {
+		// Bail if not on the checkout page
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if not using distraction-free header and footer
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Bail if `elementor-frontend` script is not enqueued
+		if ( ! wp_script_is( 'elementor-frontend', 'enqueued' ) ) { return; }
+
+		// Bail if plugin class is not available
+		if ( ! class_exists( 'Elementor\Plugin' ) ) { return; }
+
+		// Get frontend module instance
+		$frontend = Elementor\Plugin::$instance->frontend;
+
+		// Bail if frontend instance is not available
+		if ( ! $frontend ) { return; }
+
+		// Enqueue frontend scripts
+		$frontend->enqueue_scripts();
 	}
 
 }

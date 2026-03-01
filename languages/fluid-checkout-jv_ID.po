@@ -68,10 +68,6 @@ msgstr "Telpon pengiriman"
 msgid "Only used for shipping-related questions."
 msgstr "Mung digunakake kanggo pitakonan sing gegandhengan karo pengiriman."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Multi-langkah"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Langkah tunggal"
@@ -105,14 +101,6 @@ msgstr "Nerusake menyang tagihan"
 msgid "Proceed to payment"
 msgstr "Nerusake kanggo pembayaran"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Kontakku"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Pengiriman menyang"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Cara pengiriman"
@@ -120,10 +108,6 @@ msgstr "Cara pengiriman"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Cathetan tambahan"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Tagihan kanggo"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -922,16 +906,6 @@ msgstr "tata letak checkout"
 msgid "Design template"
 msgstr "Cithakan desain"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Gaya umum kanggo langkah checkout, ringkesan pesenan lan bagean liyane. "
-"Bisa uga ditrapake kanggo kaca liyane kayata Cart, Order Received lan View "
-"Order page."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Mode peteng"
@@ -1499,14 +1473,6 @@ msgstr "Tambah kolom telpon tagihan menyang formulir checkout."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pilih ing langkah kanggo nampilake kolom telpon tagihan."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Aktifake format nomer telpon internasional lan validasi kanggo kolom telpon"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Format lan validasi nomer telpon miturut saben negara."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Aktifake validasi nomer telpon adhedhasar aturan negara"
@@ -1930,14 +1896,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimental)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Iki minangka fitur eksperimen lan bisa uga ora bisa digunakake kaya sing "
-"dikarepake karo kabeh tema lan plugin. Gunakake kanthi ati-ati."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2472,6 +2430,180 @@ msgstr ""
 "Iki njamin bagean konten ora sempit banget ing kaca WooCommerce kalebu "
 "checkout, cart, pesenan sing ditampa, pesenan mbayar lan kaca akun."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Kupon Pintar WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posisi ing kaca checkout"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Pilih ngendi kanggo nampilake bagean kupon kasedhiya ing kaca checkout."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Sadurunge bar kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Sawise bar kemajuan"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Sadurunge bagean kode coupon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Aktifake kolom nomer telpon internasional"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Format nomer telpon miturut aturan kanggo saben negara."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gunakake validasi nomer telpon sing tepat"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Coba priksa manawa nomer telpon minangka nomer seluler utawa landline sing "
+"bener adhedhasar aturan kanggo kode negara sing dipilih. Opsi iki "
+"nggunakake fitur validasi presisi <code>intl-tel-input</code> , sing bisa "
+"menehi positif palsu kanggo sawetara nomer telpon."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Iki minangka fitur eksperimen lan bisa uga ora bisa digunakake kaya sing "
+"dikarepake ing kabeh persiyapan. Gunakake kanthi ati-ati."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Jinis validasi nomer telpon sing digunakake nalika validasi sing tepat "
+"diaktifake."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Seluler"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Jalur tetep"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bebas pulsa"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Utawa"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontak"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Multi langkah"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolom"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Gaya umum kanggo langkah-langkah checkout, ringkesan pesenan, lan bagean "
+"liyane.<br> Uga bisa ditrapake kanggo kaca liyane kayata kaca Kranjang, "
+"Pesenan Diterima lan Deleng Pesenan."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Cithakan desain <em>&quot;Split&quot;</em> ora kasedhiya nalika nggunakake "
+"tata letak <em>&quot;1 kolom&quot;</em> lan bakal bali menyang "
+"<em>&quot;Minimalis&quot;</em> yen dipilih."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Langkah-langkah sadurunge checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Nalika nggunakake tata letak checkout <em>&quot;1 kolom&quot;,</em> opsi "
+"iki mesthi disetel dadi <em>&quot;Sadurunge langkah checkout&quot;</em> lan "
+"uga ditrapake kanggo tampilan desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisi kanggo bagean ringkesan pesenan tambahan ing seluler."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opsi <em>&quot;Ing header situs&quot;</em> mung ditrapake nalika nggunakake "
+"header sing ora ana gangguan."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Ing header situs (mbutuhake header sing ora ngganggu)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Kahanan awal kanggo bagean ringkesan pesenan sing bisa ditambahi ing "
+"seluler."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Disaranake nyetel minangka <em>sing wis dikembangake</em> kanggo "
+"negara-negara ing ngisor iki amarga syarat peraturan: "
+"<strong>Jerman</strong> , <strong>Austria</strong> , <strong>Swiss</strong> "
+", <strong>Walanda</strong> , <strong>Polandia</strong> , "
+"<strong>Belgia</strong> lan <strong>Prancis</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ambruk"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Diembangake"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Aja nuduhake"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2594,3 +2726,15 @@ msgstr "Utawa terus dadi tamu"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Mbusak gambar"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Pangiriman %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Pangiriman"

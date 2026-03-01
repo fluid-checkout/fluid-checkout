@@ -74,10 +74,6 @@ msgstr "Siuntimo telefonas"
 msgid "Only used for shipping-related questions."
 msgstr "Naudojama tik su siuntimu susijusiems klausimams."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Kelių etapų"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Vienas žingsnis"
@@ -111,14 +107,6 @@ msgstr "Pereiti prie sąskaitų išrašymo"
 msgid "Proceed to payment"
 msgstr "Pereiti prie mokėjimo"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mano kontaktai"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Pristatymas į"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Pristatymo būdas"
@@ -126,10 +114,6 @@ msgstr "Pristatymo būdas"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Papildomos pastabos"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Atsiskaitymas pagal sąskaitą"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -989,16 +973,6 @@ msgstr "Registracijos išdėstymas"
 msgid "Design template"
 msgstr "Dizaino šablonas"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Bendrieji kasos etapų, užsakymo santraukos ir kitų skyrių stiliai. Taip pat "
-"gali būti taikomi ir kitiems puslapiams, pavyzdžiui, Krepšelio, Gauto "
-"užsakymo ir Peržiūrėti užsakymą puslapiams."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Tamsusis režimas"
@@ -1591,16 +1565,6 @@ msgstr "Į kasos formą įtraukite atsiskaitymo telefono lauką."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Pasirinkite, kuriame žingsnyje rodyti sąskaitų išrašymo telefono lauką."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Įgalinti tarptautinio telefono numerio formatą ir telefono laukų "
-"patvirtinimą"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "suformatuokite ir patvirtinkite telefono numerius pagal kiekvieną šalį."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Įgalinti telefono numerio patvirtinimą pagal šalies taisykles"
@@ -2043,14 +2007,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentinis)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Tai eksperimentinė funkcija, todėl ji gali veikti ne su visomis temomis ir "
-"įskiepiais. Naudokite ją atsargiai."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2612,6 +2568,180 @@ msgstr ""
 "krepšelio, gauto užsakymo, užsakymo apmokėjimo ir paskyros puslapius, "
 "turinio skiltis nebūtų per siaura."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "\"WooCommerce\" išmanieji kuponai"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Pozicija kasos puslapyje"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Pasirinkite, kur kasos puslapyje rodyti turimų kuponų skiltį."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Prieš pažangos juostą"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Po pažangos juostos"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Prieš kuponų kodų skyrių"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Įgalinti tarptautinių telefono numerių laukus"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formuokite telefono numerius pagal kiekvienos šalies taisykles."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Naudokite tikslų telefono numerio patvirtinimą"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Pabandykite įsitikinti, kad telefono numeris yra galiojantis mobiliojo arba "
+"fiksuotojo ryšio numeris pagal pasirinktos šalies kodo taisykles. Šioje "
+"parinktyje naudojama <code>intl-tel-input</code> tikslaus patvirtinimo "
+"funkcija, kuri kai kuriems telefono numeriams gali duoti klaidingų teigiamų "
+"rezultatų."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Tai yra eksperimentinė funkcija, todėl gali būti, kad ji neveiks taip, kaip "
+"tikimasi, visose konfigūracijose. Naudokite ją atsargiai."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefono numerio patvirtinimo tipai, naudojami, kai įjungtas tikslus "
+"patvirtinimas."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobilusis"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksuotoji linija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Nemokama"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Arba"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Susisiekite su"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Keli žingsniai"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 stulpeliai"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 stulpelis"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Bendrieji kasos etapų, užsakymo santraukos ir kitų skyrių stiliai. <br>Taip "
+"pat gali būti taikomi kitiems puslapiams, pavyzdžiui, Krepšelio, Gauto "
+"užsakymo ir Užsakymo peržiūros puslapiams."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Dizaino šablonas <em>\"Splitas\"</em> nėra prieinamas, kai naudojamas "
+"<em>\"1 stulpelis\"</em> išdėstymas, o pasirinkus jį bus grįžtama prie "
+"<em>\"Minimalistinis\"</em>."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Veiksmai prieš išsiregistruojant"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Naudojant <em>\"1 stulpelio\"</em> kasos išdėstymą, ši parinktis visada "
+"nustatoma į <em>\"Prieš kasos veiksmus\"</em> ir taip pat taikoma "
+"darbalaukio vaizdui."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Papildomos užsakymo santraukos skilties pozicija mobiliajame telefone."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Parinktis <em>\"Svetainės antraštėje\"</em> taikoma tik tada, kai naudojate "
+"antraštę, neatkreipiančią dėmesio."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Svetainės antraštėje (reikia, kad antraštė neblaškytų dėmesio)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Pradinė išplečiamo užsakymo santraukos skyriaus būsena mobiliajame telefone."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Šiose šalyse dėl reguliavimo reikalavimų rekomenduojame jį nustatyti kaip "
+"<em>išplėstinį</em>: <strong>Vokietija</strong>, <strong>Austrija</strong>, "
+"<strong>Šveicarija</strong>, <strong>Nyderlandai</strong>, "
+"<strong>Lenkija</strong>, <strong>Belgija</strong> ir "
+"<strong>Prancūzija</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Sugriuvęs"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Išplėstas"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Nerodyti"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2736,3 +2866,15 @@ msgstr "Arba tęskite kaip svečias"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Pašalinti vaizdą"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Pristatymas %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Pristatymas"

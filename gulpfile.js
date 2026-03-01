@@ -65,8 +65,18 @@ gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
 	// Get current date
 	var today = new Date();
 
+	// Set patterns to skip version updates
+	var skipVersionPatterns = [ 'beta', 'dev', 'alpha', 'rc' ];
+	var skip = false;
+	for ( var i = 0; i < skipVersionPatterns.length; i++ ) {
+		if ( 0 < _package.version.indexOf( skipVersionPatterns[ i ] ) ) {
+			skip = true;
+			break;
+		}
+	}
+
 	// Only update readme.txt for full release versions
-	if ( _package.version.indexOf( 'beta' ) < 0 && _package.version.indexOf( 'dev' ) < 0 ) {
+	if ( ! skip ) {
 		gulp.src( _gulpSettings.changelogFile )
 		// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
 		.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))

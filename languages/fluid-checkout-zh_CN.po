@@ -68,10 +68,6 @@ msgstr "运送电话"
 msgid "Only used for shipping-related questions."
 msgstr "仅用于与装运相关的问题。"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "多步骤"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "单步"
@@ -105,14 +101,6 @@ msgstr "继续计费"
 msgid "Proceed to payment"
 msgstr "继续付款"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "我的联系人"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "寄往"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "运输方式"
@@ -120,10 +108,6 @@ msgstr "运输方式"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "补充说明"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "账单"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -858,13 +842,6 @@ msgstr "结账布局"
 msgid "Design template"
 msgstr "设计模板"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr "结账步骤、订单摘要和其他部分的一般样式。也可能适用于其他页面，如购物车、已收到订单和查看订单页面。"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "黑暗模式"
@@ -1369,14 +1346,6 @@ msgstr "在结账表单中添加账单电话字段。"
 msgid "Choose in which step to display the billing phone field."
 msgstr "选择在哪个步骤中显示计费电话字段。"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "启用国际电话号码格式并验证电话字段"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "根据每个国家的情况对电话号码进行格式化和验证。"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "根据国家规则启用电话号码验证功能"
@@ -1753,12 +1722,6 @@ msgstr "（专业人员）"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "（实验）"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "这是一项试验性功能，可能无法与所有主题和插件配合使用。请谨慎使用。"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2237,6 +2200,162 @@ msgid ""
 "including checkout, cart, order received, order pay and account pages."
 msgstr "这可确保 WooCommerce 页面（包括结账、购物车、收到订单、订单支付和账户页面）上的内容部分不会过于狭窄。"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce 智能优惠券"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "在结账页面上的位置"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "选择在结账页面上显示可用优惠券部分的位置。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "进度条之前"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "进度条之后"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "优惠券代码部分之前"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "启用国际电话号码字段"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "根据各国的规定格式化电话号码。"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "使用精确的电话号码验证"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"根据所选国家代码的规则，尝试确保电话号码是有效的手机或座机号码。此选项使用 <code>intl-tel-input</code> "
+"精确验证功能，可能会对某些电话号码产生误报。"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "这是一项试验性功能，可能无法在所有设置中正常工作。请谨慎使用。"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "启用精确验证时使用的电话号码验证类型。"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "移动电话"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "固定线路"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "免费电话"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "联系方式"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "多步骤"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 列"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 列"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr "结账步骤、订单摘要和其他部分的一般样式。<br>也可能适用于其他页面，如购物车、已收到订单和查看订单页面。"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"使用 <em>\"1 栏\"</em> 布局时，设计模板 <em>\"Split\"</em> 不可用，如果选择了该模板，则会返回到 "
+"<em>\"Minimalist\"</em> 布局。"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "结账前步骤"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "或者"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr "使用<em>\"1 列\"</em>结账布局时，此选项始终设置为<em>\"结账步骤前\"</em>，也适用于桌面视图。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "为移动设备上的额外订单摘要部分定位。"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr "选项 <em>\"在网站页眉上\"</em> 仅适用于使用无干扰页眉时。"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "在网站页眉上（要求页眉不分散注意力）"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "移动设备上可扩展订单摘要部分的初始状态。"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"由于监管要求，我们建议以下国家/地区将其设置为<em>扩展</em>：<strong>德国</strong>、<strong>奥地利</"
+"strong>、<strong>瑞士</strong>、<strong>荷兰</strong>、<strong>波兰</"
+"strong>、<strong>比利时</strong>和<strong>法国</strong>。"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "倒塌"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "已扩展"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "不显示"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2359,3 +2478,15 @@ msgstr "或作为访客继续"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "移除图像"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "发货 %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "运输"

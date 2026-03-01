@@ -68,10 +68,6 @@ msgstr "Gestuur telefoon"
 msgid "Only used for shipping-related questions."
 msgstr "Slegs gebruik vir versendingverwante vrae."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Multi-stap"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Enkelstap"
@@ -105,14 +101,6 @@ msgstr "Gaan voort na fakturering"
 msgid "Proceed to payment"
 msgstr "Gaan voort na betaling"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "My kontak"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Versending na"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Versending metode"
@@ -120,10 +108,6 @@ msgstr "Versending metode"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Bykomende notas"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fakturering aan"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -929,16 +913,6 @@ msgstr "Betaaluitleg"
 msgid "Design template"
 msgstr "Ontwerp sjabloon"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Algemene style vir die betaalstappe, bestelopsomming en ander afdelings. "
-"Kan ook van toepassing wees op ander bladsye soos die Cart, Order Received "
-"en View Order-bladsye."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Donker modus"
@@ -1518,16 +1492,6 @@ msgstr "Voeg faktuurfoonveld by die betaalvorm."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Kies in watter stap om die faktuurfoonveld te vertoon."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Aktiveer internasionale telefoonnommerformaat en validering vir "
-"telefoonvelde"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formateer en bekragtig telefoonnommers volgens elke land."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Aktiveer telefoonnommerbekragtiging gebaseer op landreëls"
@@ -1956,14 +1920,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimenteel)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dit is &#39;n eksperimentele kenmerk en werk dalk nie soos verwag met alle "
-"temas en inproppe nie. Gebruik dit met omsigtigheid."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2509,6 +2465,183 @@ msgstr ""
 "nie, insluitend die afhandeling, mandjie, bestelling ontvang, bestelling "
 "betaal en rekeningbladsye."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Slim Koepons"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posisie op die afhandelingbladsy"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Kies waar die beskikbare koepons-afdeling op die afhandelingbladsy vertoon "
+"moet word."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Voor die vorderingsbalk"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Na die vorderingsbalk"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Voor koeponkodes-afdeling"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Aktiveer internasionale telefoonnommervelde"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formateer telefoonnommers volgens die reëls vir elke land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gebruik presiese telefoonnommervalidering"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Probeer seker maak dat die telefoonnommer &#39;n geldige selfoon- of "
+"landlynnommer is gebaseer op die reëls vir die gekose landkode. Hierdie "
+"opsie gebruik die presiese valideringsfunksie <code>intl-tel-input</code> , "
+"wat vals positiewe resultate vir sommige telefoonnommers kan gee."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Hierdie is &#39;n eksperimentele kenmerk en werk dalk nie soos verwag in "
+"alle opstellings nie. Gebruik dit met omsigtigheid."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefoonnommervalideringstipes wat gebruik word wanneer presiese validering "
+"geaktiveer is."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiel"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Vaste lyn"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Tolvry"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontak"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Meervoudige stap"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolomme"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Algemene style vir die afhandelingstappies, bestellingsopsomming en ander "
+"afdelings.<br> Kan ook van toepassing wees op ander bladsye soos die "
+"Mandjie-, Bestelling Ontvang- en Bekyk Bestelling-bladsye."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Die ontwerpsjabloon <em>&quot;Split&quot;</em> is nie beskikbaar wanneer "
+"<em>die &quot;1 kolom&quot;</em> -uitleg gebruik word nie en sal terugval "
+"op <em>&quot;Minimalisties&quot;</em> indien gekies."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Stappe voor die afhandeling"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Of"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Wanneer die <em>&quot;1 kolom&quot;</em> -uitleg vir afhandeling gebruik "
+"word, is hierdie opsie altyd gestel op <em>&quot;Stappe voor "
+"afhandeling&quot;</em> en geld ook vir die lessenaar-aansig."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisie vir die ekstra bestellingsopsommingsafdeling op selfoon."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Die opsie <em>&quot;Op die webwerf-koptekst&quot;</em> is slegs van "
+"toepassing wanneer die afleidingsvrye koptekst gebruik word."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Op die webwerf se koptekst (vereis afleidingsvrye koptekst)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Aanvanklike toestand vir die uitbreibare bestellingsopsommingsafdeling op "
+"mobiele toestelle."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Ons beveel aan dat dit as <em>uitgebreid</em> vir die volgende lande "
+"ingestel word as gevolg van regulatoriese vereistes: "
+"<strong>Duitsland</strong> , <strong>Oostenryk</strong> , "
+"<strong>Switserland</strong> , <strong>Nederland</strong> , "
+"<strong>Pole</strong> , <strong>België</strong> en "
+"<strong>Frankryk</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ineengestort"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Uitgebrei"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Moenie wys nie"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2631,3 +2764,15 @@ msgstr "Of gaan voort as &#39;n gas"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Verwyder prent"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Versending %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Versending"

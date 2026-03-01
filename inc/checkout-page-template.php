@@ -234,7 +234,12 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) ) { return false; }
 
 		// Bail if not showing the checkout form
-		if ( ! is_user_logged_in() && ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) { return false; }
+		if (
+			( doing_action( 'woocommerce_checkout_init' ) || did_action( 'woocommerce_checkout_init' ) )
+			&& ! is_user_logged_in()
+			&& ! WC()->checkout()->is_registration_enabled()
+			&& WC()->checkout()->is_registration_required()
+		) { return false; }
 
 		// Return `true` when distraction free header and footer is enabled
 		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' );

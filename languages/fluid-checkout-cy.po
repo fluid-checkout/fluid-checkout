@@ -69,10 +69,6 @@ msgstr "Cludo ffôn"
 msgid "Only used for shipping-related questions."
 msgstr "Defnyddir ar gyfer cwestiynau sy&#39;n ymwneud â llongau yn unig."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Aml-gam"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Cam sengl"
@@ -106,14 +102,6 @@ msgstr "Ymlaen i filio"
 msgid "Proceed to payment"
 msgstr "Ymlaen i&#39;r taliad"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Fy nghysylltiad"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Cludo i"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Dull cludo"
@@ -121,10 +109,6 @@ msgstr "Dull cludo"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Nodiadau ychwanegol"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Bilio i"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -935,16 +919,6 @@ msgstr "Cynllun desg dalu"
 msgid "Design template"
 msgstr "Templed dylunio"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Arddulliau cyffredinol ar gyfer y camau til, crynodeb archeb ac adrannau "
-"eraill. Gallai hefyd fod yn berthnasol i dudalennau eraill fel y tudalennau "
-"Cert, Archeb a Dderbynnir a Gweld Archeb."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Modd tywyll"
@@ -1523,14 +1497,6 @@ msgstr "Ychwanegu maes ffôn bilio at y ffurflen ddesg dalu."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Dewiswch ym mha gam i arddangos y maes ffôn bilio."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Galluogi fformat rhif ffôn rhyngwladol a dilysiad ar gyfer meysydd ffôn"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Fformatio a dilysu rhifau ffôn yn ôl pob gwlad."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Galluogi dilysu rhif ffôn yn seiliedig ar reolau gwlad"
@@ -1957,14 +1923,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(arbrofol)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Mae hon yn nodwedd arbrofol ac efallai na fydd yn gweithio yn ôl y disgwyl "
-"gyda&#39;r holl themâu ac ategion. Defnyddiwch ef yn ofalus."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2510,6 +2468,180 @@ msgstr ""
 "WooCommerce gan gynnwys tudalennau talu, basged, archeb a dderbyniwyd, talu "
 "archeb a chyfrif."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Cwponau Clyfar WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Safle ar y dudalen talu"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Dewiswch ble i arddangos yr adran cwponau sydd ar gael ar y dudalen dalu."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Cyn y bar cynnydd"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Ar ôl y bar cynnydd"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Cyn yr adran codau cwpon"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Galluogi meysydd rhif ffôn rhyngwladol"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Fformatiwch rifau ffôn yn ôl y rheolau ar gyfer pob gwlad."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Defnyddiwch ddilysu rhif ffôn manwl gywir"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Ceisiwch sicrhau bod y rhif ffôn yn rhif ffôn symudol neu linell dir dilys "
+"yn seiliedig ar y rheolau ar gyfer y cod gwlad a ddewiswyd. Mae&#39;r "
+"opsiwn hwn yn defnyddio&#39;r nodwedd dilysu manwl gywir "
+"<code>intl-tel-input</code> , a all roi canlyniadau positif ffug ar gyfer "
+"rhai rhifau ffôn."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Nodwedd arbrofol yw hon ac efallai na fydd yn gweithio fel y disgwylir ym "
+"mhob gosodiad. Defnyddiwch hi&#39;n ofalus."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Mathau dilysu rhifau ffôn a ddefnyddir pan fydd dilysu manwl gywir "
+"wedi&#39;i alluogi."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Symudol"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Llinell sefydlog"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Rhadffôn"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Neu"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Cyswllt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Aml-gam"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 golofn"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 golofn"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Arddulliau cyffredinol ar gyfer y camau talu, crynodeb yr archeb ac "
+"adrannau eraill.<br> Gallai hefyd fod yn berthnasol i dudalennau eraill fel "
+"y tudalennau Basged, Gorchymyn a Dderbyniwyd a Gweld Gorchymyn."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Nid yw&#39;r templed dylunio <em>&quot;Rhannu&quot;</em> ar gael wrth "
+"ddefnyddio&#39;r cynllun <em>&quot;1 colofn&quot;</em> a bydd yn disgyn yn "
+"ôl i <em>&quot;Minimalist&quot;</em> os caiff ei ddewis."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Camau cyn talu"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Wrth ddefnyddio&#39;r cynllun talu <em>&quot;1 colofn&quot;</em> mae&#39;r "
+"opsiwn hwn bob amser wedi&#39;i osod i <em>&quot;Camau cyn talu&quot;</em> "
+"ac mae hefyd yn berthnasol i&#39;r olygfa bwrdd gwaith."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Safle ar gyfer yr adran crynodeb archebion ychwanegol ar ffôn symudol."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Dim ond wrth ddefnyddio&#39;r pennawd di-wrthdynnu y mae&#39;r opsiwn "
+"<em>&quot;Ar y pennawd safle&quot;</em> yn berthnasol."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Pennawd ar y wefan (angen pennawd di-wrthdynnu)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Cyflwr cychwynnol yr adran crynodeb archeb ehanguadwy ar ffôn symudol."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Rydym yn argymell ei osod fel <em>wedi&#39;i ehangu</em> ar gyfer y "
+"gwledydd canlynol oherwydd gofynion rheoleiddio: <strong>yr Almaen</strong> "
+", <strong>Awstria</strong> , <strong>y Swistir</strong> , <strong>yr "
+"Iseldiroedd</strong> , <strong>Gwlad Pwyl</strong> , <strong>Gwlad "
+"Belg</strong> a <strong>Ffrainc</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Wedi cwympo"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Wedi&#39;i ehangu"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Peidiwch â dangos"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2632,3 +2764,15 @@ msgstr "Neu barhau fel gwestai"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Dileu delwedd"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Llongau %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Llongau"

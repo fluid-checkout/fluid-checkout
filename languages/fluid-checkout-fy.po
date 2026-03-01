@@ -68,10 +68,6 @@ msgstr "Shipping telefoan"
 msgid "Only used for shipping-related questions."
 msgstr "Allinnich brûkt foar ferstjoeringsrelatearre fragen."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Multi-stap"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Single stap"
@@ -105,14 +101,6 @@ msgstr "Trochgean nei fakturearring"
 msgid "Proceed to payment"
 msgstr "Trochgean nei betelling"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Myn kontakt"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Ferstjoeren nei"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Shipping metoade"
@@ -120,10 +108,6 @@ msgstr "Shipping metoade"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Oanfoljende notysjes"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Billing oan"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -932,16 +916,6 @@ msgstr "Checkout yndieling"
 msgid "Design template"
 msgstr "Design sjabloan"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Algemiene stilen foar de kassa stappen, oarder gearfetting en oare seksjes. "
-"Kin ek jilde foar oare siden lykas de Cart, Order Received en View Order "
-"siden."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Tsjustere modus"
@@ -1524,16 +1498,6 @@ msgstr "Foegje fakturearring tillefoanfjild ta oan it kassaformulier."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Kies yn hokker stap om it faktuertillefoanfjild wer te jaan."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Ynskeakelje ynternasjonaal telefoannûmer opmaak en falidaasje foar telefoan "
-"fjilden"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Opmaak en falidearje telefoannûmers neffens elk lân."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Ynskeakelje telefoannûmer falidaasje basearre op lân regels"
@@ -1963,14 +1927,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperiminteel)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dit is in eksperimintele funksje en wurket miskien net lykas ferwachte mei "
-"alle tema&#39;s en plugins. Brûk it mei foarsichtigens."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2513,6 +2469,180 @@ msgstr ""
 "WooCommerce-siden, ynklusyf de siden foar kassa, winkelwein, ûntfongen "
 "bestelling, beteljen fan bestelling en akkount."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Smart Coupons"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posysje op &#39;e kassaside"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Kies wêr&#39;t jo de beskikbere coupons-seksje op &#39;e kassa-side werjaan "
+"wolle."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Foar de foarútgongsbalke"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Nei de foarútgongsbalke"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Foarôfgeand oan de seksje koartingskoades"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Ynternasjonale tillefoannûmerfjilden ynskeakelje"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatearje tillefoannûmers neffens de regels foar elk lân."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Brûk krekte tillefoannûmerfalidaasje"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Besykje te soargjen dat it tillefoannûmer in jildich mobyl- of fêste "
+"linenûmer is basearre op &#39;e regels foar de selektearre lânkoade. Dizze "
+"opsje brûkt de krekte falidaasjefunksje <code>intl-tel-input</code> , "
+"dy&#39;t foar guon tillefoannûmers falske positive resultaten kin jaan."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Dit is in eksperimintele funksje en wurket miskien net sa as ferwachte yn "
+"alle opstellingen. Brûk it mei foarsichtigens."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tillefoannûmerfalidaasjetypen dy&#39;t brûkt wurde as krekte falidaasje "
+"ynskeakele is."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobyl"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fêste line"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Tolfrij"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Of"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Meardere stappen"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolommen"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Algemiene stilen foar de kassa-stappen, besteloversjoch en oare "
+"seksjes.<br> Kin ek jilde foar oare siden lykas de siden Winkelwein, "
+"Bestelling ûntfongen en Bestelling besjen."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"De ûntwerpsjabloan <em>&quot;Split&quot;</em> is net beskikber by it brûken "
+"fan de yndieling <em>&quot;1 kolom&quot;</em> en sil weromfalle op "
+"<em>&quot;Minimalistysk&quot;</em> as keazen."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Stappen foar it beteljen"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"By it brûken fan de kassa-yndieling <em>&quot;1 kolom&quot;</em> is dizze "
+"opsje altyd ynsteld op <em>&quot;Stappen foar it beteljen&quot;</em> en "
+"jildt ek foar de buroblêdwerjefte."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posysje foar de ekstra seksje foar oarderoersjoch op mobyl."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"De opsje <em>&quot;Op &#39;e sidekoptekst&quot;</em> jildt allinich by it "
+"brûken fan &#39;e koptekst sûnder ôflieding."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Op &#39;e sidekoptekst (fereasket in koptekst sûnder ôflieding)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Begjinstatus foar de útwreidbere seksje foar oarderoersjoch op mobyl."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Wy riede oan om it yn te stellen as <em>útwreide</em> foar de folgjende "
+"lannen fanwegen regeljouwingseasken: <strong>Dútslân</strong> , "
+"<strong>Eastenryk</strong> , <strong>Switserlân</strong> , "
+"<strong>Nederlân</strong> , <strong>Poalen</strong> , "
+"<strong>België</strong> en <strong>Frankryk</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ynstoart"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Útwreide"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Net sjen litte"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2635,3 +2765,15 @@ msgstr "Of trochgean as gast"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Ofbylding fuortsmite"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Ferstjoering %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Ferstjoering"

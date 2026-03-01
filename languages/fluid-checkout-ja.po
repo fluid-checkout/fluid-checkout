@@ -68,10 +68,6 @@ msgstr "発送電話"
 msgid "Only used for shipping-related questions."
 msgstr "発送に関する質問にのみ使用します。"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "マルチステップ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "シングルステップ"
@@ -105,14 +101,6 @@ msgstr "請求に進む"
 msgid "Proceed to payment"
 msgstr "支払いに進む"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "私の連絡先"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "発送先"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "配送方法"
@@ -120,10 +108,6 @@ msgstr "配送方法"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "追記"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "請求先"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -879,13 +863,6 @@ msgstr "レジのレイアウト"
 msgid "Design template"
 msgstr "デザインテンプレート"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr "チェックアウトのステップ、注文の概要、その他のセクションの一般的なスタイルです。また、カート、注文受付、注文内容の確認などのページにも適用されます。"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "ダークモード"
@@ -1406,14 +1383,6 @@ msgstr "チェックアウトフォームに請求先電話番号フィールド
 msgid "Choose in which step to display the billing phone field."
 msgstr "どのステップで請求先電話フィールドを表示するかを選択します。"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "電話番号フィールドの国際電話番号フォーマットとバリデーションを有効にする"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "それぞれの国に合わせて電話番号をフォーマットし、検証します。"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "国別ルールに基づく電話番号検証を有効にする"
@@ -1801,12 +1770,6 @@ msgstr "(プロ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(実験的）"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "これは実験的な機能であり、すべてのテーマやプラグインで期待通りに動作するとは限りません。注意して使用してください。"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2294,6 +2257,166 @@ msgstr ""
 "これにより、チェックアウト、カート、注文受付、注文支払い、アカウントページなどのWooCommerceページでコンテンツセクションが狭くなりすぎないよう"
 "にします。"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce スマートクーポン"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "チェックアウトページでの位置"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "チェックアウトページの利用可能なクーポンセクションを表示する場所を選択します。"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "プログレスバーの前"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "プログレスバーの後"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "クーポンコード欄の前に"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "国際電話番号フィールドを有効にする"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "各国のルールに従って電話番号をフォーマットする。"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "正確な電話番号の検証"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"選択した国コードのルールに基づいて、電話番号が有効な携帯電話番号または固定電話番号であることを確認しようとします。このオプションは<code>intl-"
+"tel-input</code>の正確な検証機能を使います。"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "これは実験的な機能であり、すべてのセットアップで期待通りに機能するとは限りません。注意して使用してください。"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "正確な検証が有効な場合に使用される電話番号検証タイプ。"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "モバイル"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "固定回線"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "フリーダイヤル"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "あるいは"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "連絡先"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "マルチステップ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2列"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1列"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"チェックアウトのステップ、注文の概要、その他のセクションのための一般的なスタイルです。<br>また、カートページ、注文受付ページ、注文を見るページなどの"
+"他のページにも適用される場合があります。"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"デザインテンプレート <em>\"Split\"</em> は、<em>\"1 column\"</em> "
+"レイアウトを使用している場合は使用できず、<em>\"Minimalist\"</em>を選択した場合にフォールバックします。"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "チェックアウト前の手順"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>\"1カラム\"</em>チェックアウトレイアウトを使用している場合、このオプションは常に<em>\"チェックアウトのステップの前に\"</"
+"em>に設定され、デスクトップ表示にも適用されます。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "モバイルの追加注文概要セクションの位置。"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr "オプション<em>\"On the site header\"</em>はdistraction-free headerを使用するときのみ適用されます。"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "サイトのヘッダーについて（邪魔にならないヘッダーが必要）"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "モバイルの拡張可能な注文概要セクションの初期状態。"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"規制上の要件のため、以下の国では<em>expanded</em>に設定することをお勧めします：<strong>ドイツ</"
+"strong>、<strong>オーストリア</strong>、<strong>スイス</strong>、<strong>オランダ</"
+"strong>、<strong>ポーランド</strong>、<strong>ベルギー</strong>、<strong>フランス</strong>。"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "崩壊"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "拡大"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "表示しない"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2416,3 +2539,15 @@ msgstr "またはゲストとして続ける"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "画像を削除する"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "配送 %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "送料"

@@ -68,10 +68,6 @@ msgstr "Laevatelefon"
 msgid "Only used for shipping-related questions."
 msgstr "Kasutatakse ainult saatmisega seotud küsimuste puhul."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Mitmeastmeline"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Üks samm"
@@ -105,14 +101,6 @@ msgstr "Jätkake arveldamist"
 msgid "Proceed to payment"
 msgstr "Jätkake maksmisega"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Minu kontakt"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Kohaletoimetamine"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Tarne meetod"
@@ -120,10 +108,6 @@ msgstr "Tarne meetod"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Täiendavad märkused"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Arveldamine"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -920,16 +904,6 @@ msgstr "Kassa paigutus"
 msgid "Design template"
 msgstr "Disaini mall"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Üldised stiilid kassasammude, tellimuse kokkuvõtte ja muude jaotiste jaoks. "
-"Võivad kehtida ka teistele lehekülgedele, näiteks ostukorvi, tellimuse "
-"saamise ja tellimuse vaatamise lehekülgedele."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Tume režiim"
@@ -1492,16 +1466,6 @@ msgstr "Lisage arveldustelefoni väli kassavormi."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Valige, millises etapis kuvatakse arveldustelefoni väli."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Võimaldab rahvusvahelise telefoninumbri vormingu ja valideerimise "
-"telefoniväljade jaoks"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Vormindage ja valideerige telefoninumbrid vastavalt igale riigile."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Võimaldab telefoninumbri valideerimise riigireeglite alusel"
@@ -1927,14 +1891,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentaalne)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"See on eksperimentaalne funktsioon ja ei pruugi kõigi teemade ja "
-"pistikprogrammidega toimida ootuspäraselt. Kasutage seda ettevaatlikult."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2460,6 +2416,177 @@ msgstr ""
 "saadud tellimuse, tellimuse tasumise ja konto lehekülgedel ei ole sisuosa "
 "liiga kitsas."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Smart Kupongid"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Asukoht kassalehel"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Valige, kus kuvada saadaval olevate kupongide osa kassalehel."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Enne eduriba"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Pärast eduriba"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Enne kupongikoodide sektsiooni"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Võimaldab rahvusvahelise telefoninumbri väljad"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Vormindage telefoninumbrid vastavalt iga riigi eeskirjadele."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Kasutage täpset telefoninumbri valideerimist"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Proovige veenduda, et telefoninumber on kehtiv mobiil- või "
+"lauatelefoninumber, mis põhineb valitud riigikoodi reeglitel. See valik "
+"kasutab <code>intl-tel-input</code> täpset valideerimisfunktsiooni, mis "
+"võib mõne telefoninumbri puhul anda valepositiivseid tulemusi."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"See on eksperimentaalne funktsioon ja ei pruugi kõigis seadistustes toimida "
+"ootuspäraselt. Kasutage seda ettevaatlikult."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefoninumbri valideerimise tüübid, mida kasutatakse, kui täpne "
+"valideerimine on lubatud."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiilne"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fikseeritud liin"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Tasuta"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Või"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Mitu sammu"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 veergu"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 veerg"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Üldised stiilid kassasammude, tellimuse kokkuvõtte ja muude jaotiste jaoks. "
+"<br>Võib kohaldada ka teistele lehekülgedele, näiteks ostukorvi, tellimuse "
+"saamise ja tellimuse vaatamise lehekülgedele."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Kujundusmall <em>\"Split\"</em> ei ole saadaval, kui kasutatakse <em>\"1 "
+"veerg\"</em> paigutust ja selle valimise korral langeb tagasi "
+"<em>\"Minimalistlik\"</em>."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Enne kassasse minekut sammud"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kui kasutate <em>\"1 veerg\"</em> kassaplaani, on see valik alati seatud "
+"<em>\"Enne kassasammu\"</em> ja kehtib ka töölaua vaates."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Asukoht täiendava tellimuse kokkuvõtte sektsiooni jaoks mobiilis."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Valik <em>\"Saidi päises\"</em> kehtib ainult siis, kui kasutate häireteta "
+"päise."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Saidi päises (nõuab häireteta päise)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Esialgne olek laiendatava tellimuse kokkuvõtte sektsiooni jaoks mobiilis."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Soovitame selle seadistada <em>laiendatud</em> järgmistele riikidele "
+"regulatiivsete nõuete tõttu: <strong>Saksamaa</strong>, "
+"<strong>Austria</strong>, <strong>Sveits</strong>, "
+"<strong>Holland</strong>, <strong>Poola</strong>, <strong>Belgia</strong> "
+"ja <strong>Frangimaa</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Kokkuvarisemine"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Laiendatud"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Mitte näidata"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2582,3 +2709,15 @@ msgstr "Või jätkake külalisena"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Pildi eemaldamine"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Laevandus %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Laevandus"

@@ -68,10 +68,6 @@ msgstr "تلفن حمل و نقل"
 msgid "Only used for shipping-related questions."
 msgstr "فقط برای سوالات مربوط به حمل و نقل استفاده می شود."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "چند مرحله ای"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "تک مرحله ای"
@@ -105,14 +101,6 @@ msgstr "به صورت حساب ادامه دهید"
 msgid "Proceed to payment"
 msgstr "به پرداخت اقدام کنید"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "مخاطب من"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "حمل و نقل به"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "روش ارسال"
@@ -120,10 +108,6 @@ msgstr "روش ارسال"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "یادداشت های اضافی"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "صورتحساب به"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -919,15 +903,6 @@ msgstr "طرح پرداخت"
 msgid "Design template"
 msgstr "قالب طراحی"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"سبک های کلی برای مراحل پرداخت، خلاصه سفارش و بخش های دیگر. ممکن است برای "
-"صفحات دیگر مانند سبد خرید، سفارش دریافت شده و مشاهده سفارش نیز اعمال شود."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "حالت تاریک"
@@ -1489,14 +1464,6 @@ msgstr "فیلد تلفن صورت‌حساب را به فرم پرداخت اض
 msgid "Choose in which step to display the billing phone field."
 msgstr "انتخاب کنید که در کدام مرحله فیلد تلفن صورتحساب نمایش داده شود."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "قالب شماره تلفن بین‌المللی و اعتبارسنجی فیلدهای تلفن را فعال کنید"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "شماره تلفن ها را بر اساس هر کشور قالب بندی و اعتبار سنجی کنید."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "تأیید اعتبار شماره تلفن را بر اساس قوانین کشور فعال کنید"
@@ -1919,14 +1886,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجربی)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"این یک ویژگی آزمایشی است و ممکن است آنطور که انتظار می رود با همه تم ها و "
-"افزونه ها کار نکند. با احتیاط از آن استفاده کنید."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2455,6 +2414,176 @@ msgstr ""
 "این تضمین می‌کند که بخش محتوا در صفحات ووکامرس، از جمله صفحات پرداخت، سبد "
 "خرید، سفارش دریافتی، پرداخت سفارش و حساب کاربری، خیلی محدود نباشد."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "کوپن‌های هوشمند ووکامرس"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "موقعیت در صفحه پرداخت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "انتخاب کنید که بخش کوپن‌های موجود در صفحه پرداخت کجا نمایش داده شود."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "قبل از نوار پیشرفت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "بعد از نوار پیشرفت"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "قبل از بخش کدهای تخفیف"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "فعال کردن فیلدهای شماره تلفن بین‌المللی"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "شماره تلفن‌ها را طبق قوانین هر کشور قالب‌بندی کنید."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "از اعتبارسنجی دقیق شماره تلفن استفاده کنید"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"سعی کنید مطمئن شوید که شماره تلفن، بر اساس قوانین مربوط به کد کشور انتخاب "
+"شده، یک شماره تلفن همراه یا ثابت معتبر است. این گزینه از ویژگی اعتبارسنجی "
+"دقیق <code>intl-tel-input</code> استفاده می‌کند که ممکن است برای برخی از "
+"شماره تلفن‌ها، نتایج مثبت کاذب ارائه دهد."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"این یک ویژگی آزمایشی است و ممکن است در همه تنظیمات آنطور که انتظار می‌رود "
+"کار نکند. با احتیاط از آن استفاده کنید."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"انواع اعتبارسنجی شماره تلفن که هنگام فعال بودن اعتبارسنجی دقیق استفاده "
+"می‌شوند."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "موبایل"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "خط ثابت"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "رایگان"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "یا"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "تماس"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "چند مرحله ای"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "۲ ستون"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "۱ ستون"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"استایل‌های عمومی برای مراحل پرداخت، خلاصه سفارش و سایر بخش‌ها.<br> همچنین "
+"ممکن است برای صفحات دیگری مانند سبد خرید، سفارش دریافت شده و مشاهده سفارش "
+"اعمال شود."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"قالب طراحی <em>«تقسیم‌شده»</em> هنگام استفاده از طرح <em>«۱ ستونه»</em> در "
+"دسترس نیست و در صورت انتخاب، به <em>«مینیمالیستی»</em> برمی‌گردد."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "مراحل قبل از پرداخت"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"هنگام استفاده از طرح پرداخت <em>&quot;۱ ستونه&quot;،</em> این گزینه همیشه "
+"روی <em>&quot;مراحل قبل از پرداخت&quot;</em> تنظیم می‌شود و در نمای دسکتاپ "
+"نیز اعمال می‌شود."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "موقعیت بخش خلاصه سفارش اضافی در موبایل."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"گزینه <em>«در سربرگ سایت»</em> فقط هنگام استفاده از سربرگ بدون حواس‌پرتی "
+"اعمال می‌شود."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "در هدر سایت (به هدر بدون حواس‌پرتی نیاز است)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "حالت اولیه برای بخش خلاصه سفارش قابل توسعه در موبایل."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"به دلیل الزامات قانونی، توصیه می‌کنیم برای کشورهای زیر آن را به صورت "
+"<em>گسترده</em> تنظیم کنید: <strong>آلمان</strong> ، <strong>اتریش</strong> "
+"، <strong>سوئیس</strong> ، <strong>هلند</strong> ، <strong>لهستان</strong> "
+"، <strong>بلژیک</strong> و <strong>فرانسه</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "فروریخته"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "گسترش یافته"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "نشان ندهید."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2577,3 +2706,15 @@ msgstr "یا به عنوان مهمان ادامه دهید"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "حذف تصویر"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "ارسال %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "حمل و نقل"

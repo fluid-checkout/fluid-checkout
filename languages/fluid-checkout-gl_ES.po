@@ -70,10 +70,6 @@ msgstr "Teléfono de envío"
 msgid "Only used for shipping-related questions."
 msgstr "Só se usa para preguntas relacionadas co envío."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Varios pasos"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Paso único"
@@ -107,14 +103,6 @@ msgstr "Proceder á facturación"
 msgid "Proceed to payment"
 msgstr "Proceder ao pago"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "O meu contacto"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Envío a"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Método de envío"
@@ -122,10 +110,6 @@ msgstr "Método de envío"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Notas adicionais"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Facturación a"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -931,16 +915,6 @@ msgstr "Disposición de pago"
 msgid "Design template"
 msgstr "Modelo de deseño"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Estilos xerais para os pasos de compra, resumo de pedidos e outras "
-"seccións. Tamén se pode aplicar a outras páxinas, como as páxinas do carro, "
-"pedido recibido e ver pedido."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Modo escuro"
@@ -1523,16 +1497,6 @@ msgstr "Engade o campo de teléfono de facturación ao formulario de pago."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Escolla en que paso mostrar o campo do teléfono de facturación."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Activa o formato de número de teléfono internacional e a validación dos "
-"campos de teléfono"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatear e validar os números de teléfono segundo cada país."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Activa a validación do número de teléfono en función das regras do país"
@@ -1969,14 +1933,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(experimental)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Esta é unha función experimental e é posible que non funcione como se "
-"esperaba con todos os temas e complementos. Úsao con precaución."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2520,6 +2476,180 @@ msgstr ""
 "páxinas de WooCommerce, incluíndo as páxinas de finalización da compra, "
 "cesta, pedido recibido, pago de pedidos e conta."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Cupóns intelixentes de WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posición na páxina de finalización da compra"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Escolle onde mostrar a sección de cupóns dispoñibles na páxina de "
+"finalización da compra."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Antes da barra de progreso"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Despois da barra de progreso"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Sección anterior aos códigos de cupón"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Activar campos de números de teléfono internacionais"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formata os números de teléfono segundo as regras de cada país."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Usar a validación precisa do número de teléfono"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Tenta asegurarte de que o número de teléfono sexa un número de móbil ou "
+"fixo válido segundo as regras do código de país seleccionado. Esta opción "
+"usa a función de validación precisa <code>intl-tel-input</code> , que pode "
+"dar falsos positivos para algúns números de teléfono."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Esta é unha funcionalidade experimental e pode que non funcione como se "
+"espera en todas as configuracións. Úsaa con precaución."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tipos de validación de números de teléfono empregados cando a validación "
+"precisa está activada."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Móbil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Liña fixa"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Número gratuíto"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Ou"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Contacto"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Varios pasos"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 columnas"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 columna"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Estilos xerais para os pasos de finalización da compra, o resumo do pedido "
+"e outras seccións.<br> Tamén podería aplicarse a outras páxinas como as "
+"páxinas Carro, Pedido recibido e Ver pedido."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"O modelo de deseño <em>&quot;Dividir&quot;</em> non está dispoñible cando "
+"se usa o deseño <em>&quot;1 columna&quot;</em> e volverá a "
+"<em>&quot;Minimalista&quot;</em> se se escolle."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Pasos previos ao pago"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Ao usar o deseño de finalización da compra <em>&quot;1 columna&quot;,</em> "
+"esta opción sempre se define en <em>&quot;Pasos previos á finalización da "
+"compra&quot;</em> e tamén se aplica á vista de escritorio."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posición para a sección adicional de resumo do pedido no móbil."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"A opción <em>&quot;Na cabeceira do sitio&quot;</em> só se aplica cando se "
+"usa a cabeceira sen distraccións."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Na cabeceira do sitio (require unha cabeceira sen distraccións)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Estado inicial da sección de resumo de pedidos expandible en móbiles."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Recomendámoslle configuralo como <em>expandido</em> para os seguintes "
+"países debido aos requisitos regulamentarios: <strong>Alemaña</strong> , "
+"<strong>Austria</strong> , <strong>Suíza</strong> , <strong>Países "
+"Baixos</strong> , <strong>Polonia</strong> , <strong>Bélxica</strong> e "
+"<strong>Francia</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Contraído"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Expandido"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Non mostrar"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2642,3 +2772,15 @@ msgstr "Ou continúa como convidado"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Eliminar imaxe"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Envío %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Envío"

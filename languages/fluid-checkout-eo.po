@@ -68,10 +68,6 @@ msgstr "Sendotelefono"
 msgid "Only used for shipping-related questions."
 msgstr "Nur uzata por send-rilataj demandoj."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Plurpaŝa"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Ununura paŝo"
@@ -105,14 +101,6 @@ msgstr "Procedu al fakturado"
 msgid "Proceed to payment"
 msgstr "Procedu al pago"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mia kontakto"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Sendado al"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Sendado metodo"
@@ -120,10 +108,6 @@ msgstr "Sendado metodo"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Pliaj notoj"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fakturado al"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -918,16 +902,6 @@ msgstr "Checkout aranĝo"
 msgid "Design template"
 msgstr "Dezajna ŝablono"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Ĝeneralaj stiloj por la pagpaŝoj, mendo-resumo kaj aliaj sekcioj. Eble "
-"ankaŭ validi por aliaj paĝoj kiel la Paĝoj Ĉaro, Mendo Ricevita kaj Vidi "
-"Mendo."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Malhela reĝimo"
@@ -1490,14 +1464,6 @@ msgstr "Aldonu fakturan telefonkampon al la pagformularo."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Elektu en kiu paŝo montri la fakturan telefonon kampon."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Ebligu internacian telefonnumerformaton kaj validigon por telefonkampoj"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatu kaj validigu telefonnumerojn laŭ ĉiu lando."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Ebligu telefonnumeron-validigon laŭ landaj reguloj"
@@ -1921,14 +1887,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimenta)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ĉi tio estas eksperimenta funkcio kaj eble ne funkcias kiel atendite kun "
-"ĉiuj temoj kaj kromprogramoj. Uzu ĝin kun singardemo."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2460,6 +2418,176 @@ msgstr ""
 "WooCommerce-paĝoj, inkluzive de kaso, ĉaro, mendo ricevita, mendopago kaj "
 "kontopaĝoj."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Inteligentaj Kuponoj"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Pozicio sur la kaspaĝo"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Elektu kie montri la sekcion de disponeblaj kuponoj sur la kaspaĝo."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Antaŭ la progresbreto"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Post la progresbreto"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Antaŭ la sekcio de kuponkodoj"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Ebligi internaciajn telefonnumerajn kampojn"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatu telefonnumerojn laŭ la reguloj de ĉiu lando."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Uzu precizan validigon de telefonnumero"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Provu certigi, ke la telefonnumero estas valida poŝtelefona aŭ fiksa numero "
+"laŭ la reguloj por la elektita landokodo. Ĉi tiu opcio uzas la precizan "
+"validigan funkcion <code>intl-tel-input</code> , kiu povas doni falsajn "
+"pozitivojn por iuj telefonnumeroj."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ĉi tio estas eksperimenta funkcio kaj eble ne funkcios kiel atendate en "
+"ĉiuj aranĝoj. Uzu ĝin singarde."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Validigo-tipoj de telefonnumero uzataj kiam preciza validigo estas ebligita."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Poŝtelefono"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksa linio"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Senpaga"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Aŭ"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakto"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Plurpaŝa"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolumnoj"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolumno"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Ĝeneralaj stiloj por la kaspaŝoj, mendresumo kaj aliaj sekcioj.<br> Povus "
+"ankaŭ aplikiĝi al aliaj paĝoj kiel ekzemple la paĝoj Ĉaro, Mendo Ricevita "
+"kaj Vidi Mendon."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"La ŝablono <em>&quot;Split&quot;</em> ne haveblas kiam oni uzas la aranĝon "
+"<em>&quot;1 kolumno&quot;</em> kaj ĝi revenos al "
+"<em>&quot;Minimalista&quot;</em> se elektita."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Paŝoj antaŭ la kaso"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Kiam oni uzas la kaspaĝon <em>&quot;1 kolumno&quot;,</em> ĉi tiu opcio ĉiam "
+"estas agordita al <em>&quot;Paŝoj antaŭ kaso&quot;</em> kaj ankaŭ validas "
+"por la skribtabla vido."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozicio por la ekstra sekcio pri mendresumo en poŝtelefono."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"La opcio <em>&quot;En la reteja kaplinio&quot;</em> validas nur kiam oni "
+"uzas la senĝenan kaplinion."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "En la reteja kaplinio (postulas senĝenan kaplinion)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Komenca stato por la pligrandigebla sekcio pri mendresumo en poŝtelefono."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Ni rekomendas agordi ĝin kiel <em>vastigitan</em> por la jenaj landoj pro "
+"reguligaj postuloj: <strong>Germanio</strong> , <strong>Aŭstrio</strong> , "
+"<strong>Svislando</strong> , <strong>Nederlando</strong> , "
+"<strong>Pollando</strong> , <strong>Belgio</strong> kaj "
+"<strong>Francio</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Kolapsinta"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Vastigita"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Ne montru"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2582,3 +2710,15 @@ msgstr "Aŭ daŭrigu kiel gasto"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Forigi bildon"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Sendo %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Sendo"

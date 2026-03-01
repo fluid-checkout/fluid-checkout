@@ -433,10 +433,6 @@ msgstr "Rechnungsadresse"
 msgid "Billing phone"
 msgstr "Telefonnummer (Rechnungsadresse)"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Rechnungsadresse"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Sowohl unterhalb des Zahlungsabschnitts als auch der Bestellübersicht"
@@ -997,12 +993,6 @@ msgstr "Dunkler Modus aktivieren"
 msgid "Enable integrated coupon code section"
 msgstr "Integrierten Gutscheincode-Abschnitts aktivieren"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Aktivieren Sie das internationale Telefonnummernformat und die Validierung "
-"für Telefonfelder"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "E-Mail-Prüfung aktivieren: (deaktivierte Funktion)"
@@ -1134,20 +1124,6 @@ msgstr "Footer-Hintergrundfarbe"
 #: inc/admin/admin-settings-checkout.php:470
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Gleiche Rechnungs- und Lieferadresse erzwingen (einzelner Abschnitt)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatieren und validieren Sie Telefonnummern je nach Land."
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Allgemeine Stile für die Checkout-Schritte, die Bestellzusammenfassung und "
-"andere Abschnitte. Könnte auch für andere Seiten gelten, z.B. für die "
-"Seiten Warenkorb, Bestellung erhalten und Bestellung ansehen."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
@@ -1499,10 +1475,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Anmelde-Checkbox zum Kontaktschritt verschieben"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Mehrstufig"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Mehrere gespeicherte Adressen für Versand und Rechnung."
@@ -1510,10 +1482,6 @@ msgstr "Mehrere gespeicherte Adressen für Versand und Rechnung."
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "Mein Kontolayout"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Kontaktdaten"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -1997,10 +1965,6 @@ msgstr "Versandarten"
 msgid "Shipping phone"
 msgstr "Telefonnummer (Lieferadresse)"
 
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Lieferadresse"
-
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
 "Show a link button on the pickup location substep to clear the chosen "
@@ -2313,14 +2277,6 @@ msgstr "Dieses Feld stimmt nicht mit dem entsprechenden Feldwert überein."
 #: inc/checkout-validation.php:200
 msgid "This is a required field."
 msgstr "Dies ist ein Pflichtfeld."
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dies ist eine experimentelle Funktion und funktioniert möglicherweise nicht "
-"mit allen Themen und Plugins wie erwartet. Verwenden Sie sie mit Bedacht."
 
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
@@ -2713,6 +2669,185 @@ msgstr ""
 "wie Kasse, Einkaufswagen, Bestellungseingang, Bestellungsbezahlung und "
 "Kontoseiten nicht zu eng ist."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Intelligente Gutscheine"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Position auf der Checkout-Seite"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Wählen Sie aus, wo der Abschnitt \"Verfügbare Gutscheine\" auf der "
+"Kassenseite angezeigt werden soll."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Vor dem Fortschrittsbalken"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Nach dem Fortschrittsbalken"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Vor dem Abschnitt Gutscheincodes"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Felder für internationale Rufnummern aktivieren"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr ""
+"Formatieren Sie die Telefonnummern entsprechend den Vorschriften des "
+"jeweiligen Landes."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Genaue Überprüfung der Telefonnummer"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Versuchen Sie sicherzustellen, dass die Telefonnummer eine gültige Mobil- "
+"oder Festnetznummer ist, basierend auf den Regeln für die ausgewählte "
+"Landesvorwahl. Diese Option verwendet die präzise Überprüfungsfunktion "
+"<code>intl-tel-input</code>, die bei einigen Telefonnummern zu falsch "
+"positiven Ergebnissen führen kann."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Es handelt sich hierbei um eine experimentelle Funktion, die möglicherweise "
+"nicht in allen Konfigurationen wie erwartet funktioniert. Verwenden Sie sie "
+"mit Vorsicht."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefonnummernvalidierungstypen, die verwendet werden, wenn die präzise "
+"Validierung aktiviert ist."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Festnetz"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Gebührenfrei"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Oder"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Mehrstufig"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 Spalten"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 Spalte"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Allgemeine Stile für die Schritte der Kaufabwicklung, die Zusammenfassung "
+"der Bestellung und andere Abschnitte. <br>Kann auch für andere Seiten "
+"gelten, wie z.B. die Seiten \"Warenkorb\", \"Bestellung erhalten\" und "
+"\"Bestellung ansehen\"."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Das Design-Template <em>\"Split\"</em> ist bei Verwendung des "
+"<em>\"1-Spalten\"</em>-Layouts nicht verfügbar und fällt auf "
+"<em>\"Minimalist\"</em> zurück, wenn es ausgewählt wird."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Schritte vor dem Checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Bei Verwendung des <em>\"1-spaltigen\"</em> Checkout-Layouts steht diese "
+"Option immer auf <em>\"Vor Checkout-Schritten\"</em> und gilt auch für die "
+"Desktop-Ansicht."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Position für den zusätzlichen Abschnitt der Bestellübersicht auf dem Handy."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Die Option <em>\"In der Kopfzeile der Website\"</em> gilt nur, wenn Sie die "
+"ablenkungsfreie Kopfzeile verwenden."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "In der Kopfzeile der Website (erfordert eine ablenkungsfreie Kopfzeile)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Anfangszustand für die erweiterbare Bestellübersicht auf dem Handy."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Wir empfehlen die Einstellung <em>erweitert</em> für die folgenden Länder "
+"aufgrund gesetzlicher Vorgaben: <strong>Deutschland</strong>, "
+"<strong>Österreich</strong>, <strong>Schweiz</strong>, "
+"<strong>Niederlande</strong>, <strong>Polen</strong>, "
+"<strong>Belgien</strong> und <strong>Frankreich</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Zusammengeklappt"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Erweitert"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Nicht anzeigen"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2839,3 +2974,15 @@ msgstr "Keine."
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Bild entfernen"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Versand %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Versand"

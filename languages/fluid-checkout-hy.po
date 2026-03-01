@@ -68,10 +68,6 @@ msgstr "Առաքման հեռախոս"
 msgid "Only used for shipping-related questions."
 msgstr "Օգտագործվում է միայն առաքման հետ կապված հարցերի համար:"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Բազմաստիճան"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Մեկ քայլ"
@@ -105,14 +101,6 @@ msgstr "Անցեք վճարման"
 msgid "Proceed to payment"
 msgstr "Անցեք վճարմանը"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Իմ կոնտակտը"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Առաքում դեպի"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Առաքման եղանակը"
@@ -120,10 +108,6 @@ msgstr "Առաքման եղանակը"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Լրացուցիչ նշումներ"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Վճարում դեպի"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -927,16 +911,6 @@ msgstr "Ստուգման դասավորությունը"
 msgid "Design template"
 msgstr "Դիզայնի ձևանմուշ"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Ընդհանուր ոճեր վճարման քայլերի, պատվերի ամփոփման և այլ բաժինների համար: "
-"Կարող է տարածվել նաև այլ էջերի վրա, ինչպիսիք են Զամբյուղը, Ստացված պատվերը "
-"և Դիտել Պատվերի էջերը:"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Մութ ռեժիմ"
@@ -1501,16 +1475,6 @@ msgstr "Ավելացրեք վճարման հեռախոսահամարի դաշտ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "Ընտրեք, թե որ քայլով կցուցադրվի վճարային հեռախոսի դաշտը:"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Միացնել հեռախոսահամարի միջազգային ձևաչափը և վավերացումը հեռախոսի դաշտերի "
-"համար"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Ձևաչափեք և հաստատեք հեռախոսահամարներն ըստ յուրաքանչյուր երկրի:"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Միացնել հեռախոսահամարի վավերացումը երկրի կանոնների հիման վրա"
@@ -1943,14 +1907,6 @@ msgstr "(ՊՐՈ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(փորձարարական)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Սա փորձարարական հատկություն է և կարող է չաշխատել այնպես, ինչպես սպասվում էր "
-"բոլոր թեմաների և հավելվածների հետ: Օգտագործեք այն զգուշությամբ:"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2484,6 +2440,179 @@ msgstr ""
 "էջերում, ներառյալ վճարման, զամբյուղի, ստացված պատվերի, պատվերի վճարման և "
 "հաշվի էջերը։"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce խելացի կտրոններ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Դիրքը վճարման էջում"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Ընտրեք, թե որտեղ ցուցադրվի հասանելի կտրոնների բաժինը վճարման էջում։"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Առաջընթացի գոտուց առաջ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Առաջընթացի գոտուց հետո"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Մինչև կտրոնի կոդերի բաժինը"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Միացնել միջազգային հեռախոսահամարի դաշտերը"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Հեռախոսահամարները ձևաչափեք յուրաքանչյուր երկրի կանոններին համապատասխան։"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Օգտագործեք ճշգրիտ հեռախոսահամարի վավերացում"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Փորձեք համոզվել, որ հեռախոսահամարը վավեր բջջային կամ ստացիոնար համար է՝ "
+"ընտրված երկրի կոդի կանոններին համապատասխան: Այս տարբերակն օգտագործում է "
+"<code>intl-tel-input</code> ճշգրիտ վավերացման գործառույթը, որը կարող է որոշ "
+"հեռախոսահամարների համար կեղծ դրական արդյունքներ տալ:"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Սա փորձարարական գործառույթ է և կարող է չաշխատել բոլոր կարգավորումներում "
+"սպասվածի պես։ Օգտագործեք այն զգուշությամբ։"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Հեռախոսահամարի վավերացման տեսակները, որոնք օգտագործվում են ճշգրիտ "
+"վավերացման միացման դեպքում։"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Բջջային"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Ֆիքսված գիծ"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Անվճար զանգ"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Կամ"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Կապ"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Բազմաստիճան"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 սյունակ"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 սյունակ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Վճարման քայլերի, պատվերի ամփոփման և այլ բաժինների ընդհանուր ոճերը։<br> "
+"Կարող է վերաբերել նաև այլ էջերի, ինչպիսիք են «Զամբյուղ», «Ստացված պատվեր» և "
+"«Դիտել պատվերը» էջերը։"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>«Բաժանել»</em> դիզայնի ձևանմուշը հասանելի չէ <em>«1 սյունակ»</em> "
+"դասավորությունն օգտագործելիս և, եթե այն ընտրվի, կվերադառնա "
+"<em>«Մինիմալիստական»-ի</em> ։"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Վճարումից առաջ քայլերը"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>«1 սյունակ»</em> վճարման դասավորությունն օգտագործելիս այս տարբերակը "
+"միշտ դրված է <em>«Վճարման քայլերից առաջ»</em> դիրքում և վերաբերում է նաև "
+"աշխատասեղանի տեսքին։"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Բջջային հեռախոսում պատվերի լրացուցիչ ամփոփման բաժնի դիրքը։"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>«Կայքի վերնագրում»</em> տարբերակը գործում է միայն շեղող վերնագիրն "
+"օգտագործելիս։"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Կայքի վերնագրի վրա (պահանջվում է շեղող գործոններից զերծ վերնագիր)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Բջջային հեռախոսում ընդարձակվող պատվերի ամփոփման բաժնի սկզբնական վիճակը։"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Կարգավորող պահանջների պատճառով խորհուրդ ենք տալիս այն սահմանել "
+"<em>ընդլայնված</em> հետևյալ երկրների համար՝ <strong>Գերմանիա</strong> , "
+"<strong>Ավստրիա</strong> , <strong>Շվեյցարիա</strong> , "
+"<strong>Նիդեռլանդներ</strong> , <strong>Լեհաստան</strong> , "
+"<strong>Բելգիա</strong> և <strong>Ֆրանսիա</strong> ։"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ծալված է"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Ընդլայնված"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Չցուցադրել"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2606,3 +2735,15 @@ msgstr "Կամ շարունակեք որպես հյուր"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Հեռացնել պատկերը"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Առաքում %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Առաքում"

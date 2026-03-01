@@ -15,9 +15,9 @@ body.has-highlighted-billing-section div.woocommerce form .fc-step__substep[data
 	input[type="tel"],
 	input[type="url"],
 	input[type="password"],
-	.select2-selection,
-	.select2-selection .select2-selection__rendered,
-	.ts-control {
+	select + .select2-container .select2-selection,
+	select + .select2-container .select2-selection .select2-selection__rendered,
+	select + .ts-wrapper .ts-control {
 		background-color: $checkout-highlighted-section-fields-background-color !important; // Needed to override theme styles
 		color: inherit !important; // Needed to override theme styles
 	}
@@ -55,7 +55,7 @@ div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:after {
 
 div.woocommerce form .woocommerce-billing-fields__field-wrapper {
 	display: block;
-	margin: 0;
+	margin: 0 !important; // Needed to override theme styles
 }
 div.woocommerce form .woocommerce-billing-only-fields__field-wrapper:not( :last-child ),
 div.woocommerce form .woocommerce-billing-fields__field-wrapper:not( :last-child ) {

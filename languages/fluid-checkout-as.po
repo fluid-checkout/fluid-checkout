@@ -68,10 +68,6 @@ msgstr "শিপিং ফোন"
 msgid "Only used for shipping-related questions."
 msgstr "কেৱল শিপিং সম্পৰ্কীয় প্ৰশ্নৰ বাবে ব্যৱহাৰ কৰা হয়।"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "বহু-পদক্ষেপ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "একক খোজ"
@@ -105,14 +101,6 @@ msgstr "বিলিংলৈ আগবাঢ়ক"
 msgid "Proceed to payment"
 msgstr "পেমেণ্টলৈ আগবাঢ়ি যাওক"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "মোৰ যোগাযোগ"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "শিপিং to..."
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "শিপিং পদ্ধতি"
@@ -120,10 +108,6 @@ msgstr "শিপিং পদ্ধতি"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "অতিৰিক্ত টোকা"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "বিলিং টু"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -922,16 +906,6 @@ msgstr "চেকআউট বিন্যাস"
 msgid "Design template"
 msgstr "ডিজাইন টেমপ্লেট"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"চেকআউট পদক্ষেপসমূহ, অৰ্ডাৰৰ সাৰাংশ আৰু অন্য বিভাগসমূহৰ বাবে সাধাৰণ "
-"শৈলীসমূহ। অন্য পৃষ্ঠা যেনে কাৰ্ট, অৰ্ডাৰ গ্ৰহণ কৰা আৰু অৰ্ডাৰ চাওক "
-"পৃষ্ঠাসমূহৰ বাবেও প্ৰযোজ্য হ&#39;ব পাৰে।"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "ডাৰ্ক মোড"
@@ -1504,16 +1478,6 @@ msgstr "চেকআউট ফৰ্মত বিলিং ফোন ক্ষ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "কোনটো স্তৰত বিলিং ফোন ক্ষেত্ৰ প্ৰদৰ্শন কৰিব নিৰ্ব্বাচন কৰক।"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ফোন ক্ষেত্ৰসমূহৰ বাবে আন্তঃৰাষ্ট্ৰীয় ফোন নম্বৰ বিন্যাস আৰু বৈধকৰণ "
-"সামৰ্থবান কৰক"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "প্ৰতিখন দেশ অনুসৰি ফোন নম্বৰ ফৰ্মেট আৰু বৈধ কৰা।"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "দেশৰ নিয়মৰ ওপৰত ভিত্তি কৰি ফোন নম্বৰৰ বৈধকৰণ সক্ষম কৰক"
@@ -1936,14 +1900,6 @@ msgstr "(প্ৰ&#39;)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(পৰীক্ষামূলক)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"এইটো এটা পৰীক্ষামূলক বৈশিষ্ট্য আৰু সকলো থিম আৰু প্লাগইনৰ সৈতে আশা কৰা ধৰণে "
-"কাম নকৰিবও পাৰে। সাৱধানে ব্যৱহাৰ কৰক।"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2474,6 +2430,177 @@ msgstr ""
 "আৰু একাউণ্ট পৃষ্ঠাসমূহকে ধৰি WooCommerce পৃষ্ঠাসমূহত বিষয়বস্তুৰ অংশটো অতি "
 "সংকীৰ্ণ নহয়।"
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce স্মাৰ্ট কুপন"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "চেকআউট পৃষ্ঠাত অৱস্থান"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "চেকআউট পৃষ্ঠাত উপলব্ধ কুপনসমূহ অংশ ক&#39;ত প্ৰদৰ্শন কৰিব নিৰ্ব্বাচন কৰক।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "প্ৰগ্ৰেছ বাৰৰ আগত"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "প্ৰগ্ৰেছ বাৰৰ পিছত"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "কুপন ক&#39;ড অংশৰ আগত"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "আন্তঃৰাষ্ট্ৰীয় ফোন নম্বৰ ক্ষেত্ৰসমূহ সক্ষম কৰক"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "প্ৰতিখন দেশৰ নিয়ম অনুসৰি ফোন নম্বৰ ফৰ্মেট কৰক।"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "নিৰ্দিষ্ট ফোন নম্বৰৰ বৈধকৰণ ব্যৱহাৰ কৰক"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"নিৰ্বাচিত দেশৰ ক’ডৰ নিয়মৰ ভিত্তিত ফোন নম্বৰটো বৈধ মোবাইল বা লেণ্ডলাইন "
+"নম্বৰ হোৱাটো নিশ্চিত কৰিবলৈ চেষ্টা কৰক। এই বিকল্পই "
+"<code>intl-tel-input</code> নিখুঁত বৈধকৰণ বৈশিষ্ট্য ব্যৱহাৰ কৰে, যিয়ে "
+"কিছুমান ফোন নম্বৰৰ বাবে মিছা ধনাত্মক দিব পাৰে।"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"এইটো এটা পৰীক্ষামূলক বৈশিষ্ট্য আৰু সকলো ছেটআপত আশা কৰা ধৰণে কাম নকৰিবও "
+"পাৰে। সাৱধানে ব্যৱহাৰ কৰক।"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ফোন নম্বৰ বৈধকৰণ ধৰণসমূহ ব্যৱহৃত যেতিয়া নিখুঁত বৈধকৰণ সামৰ্থবান কৰা হয়।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ম’বাইল"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ফিক্সড লাইন"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "টোল ফ্ৰী"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "যোগাযোগ কৰক"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "মাল্টি ষ্টেপ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "২ টা স্তম্ভ"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "১ স্তম্ভ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"চেকআউট পদক্ষেপসমূহ, অৰ্ডাৰৰ সাৰাংশ আৰু অন্য বিভাগসমূহৰ বাবে সাধাৰণ "
+"শৈলীসমূহ।<br> অন্য পৃষ্ঠা যেনে কাৰ্ট, অৰ্ডাৰ গ্ৰহণ কৰা আৰু অৰ্ডাৰ চাওক "
+"পৃষ্ঠাসমূহৰ বাবেও প্ৰযোজ্য হ&#39;ব পাৰে।"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"ডিজাইন সাঁচ <em>&quot;বিভাজন&quot;</em> <em>&quot;1 স্তম্ভ&quot;</em> "
+"পৰিকল্পনা ব্যৱহাৰ কৰাৰ সময়ত উপলব্ধ নহয় আৰু নিৰ্বাচিত হ&#39;লে "
+"<em>&quot;নূন্যতম&quot;</em> লৈ পুনৰ পৰিব।"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "চেকআউট পদক্ষেপৰ আগতে"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "অথবা"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 স্তম্ভ&quot;</em> চেকআউট পৰিকল্পনা ব্যৱহাৰ কৰাৰ সময়ত এই বিকল্প "
+"সদায় <em>&quot;চেকআউট পদক্ষেপসমূহৰ আগতে&quot;</em> লে সংহতি কৰা হয় আৰু "
+"ডেস্কটপ দৰ্শনৰ বাবেও প্ৰযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "মোবাইলত অতিৰিক্ত অৰ্ডাৰৰ সাৰাংশ শিতানৰ বাবে পদ।"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;চাইট হেডাৰত&quot;</em> বিকল্প কেৱল বিক্ষিপ্ততা-মুক্ত হেডাৰ "
+"ব্যৱহাৰ কৰাৰ সময়ত প্ৰযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "চাইট হেডাৰত (বিক্ষিপ্ততা-মুক্ত হেডাৰৰ প্ৰয়োজন)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "মোবাইলত সম্প্ৰসাৰণযোগ্য অৰ্ডাৰৰ সাৰাংশ অংশৰ বাবে প্ৰাৰম্ভিক অৱস্থা।"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"নিয়ন্ত্ৰণৰ প্ৰয়োজনীয়তাৰ বাবে আমি ইয়াক তলত দিয়া দেশসমূহৰ বাবে "
+"<em>সম্প্ৰসাৰিত</em> হিচাপে নিৰ্ধাৰণ কৰাৰ পৰামৰ্শ দিওঁ: "
+"<strong>জাৰ্মানী</strong> , <strong>অষ্ট্ৰিয়া</strong> , "
+"<strong>চুইজাৰলেণ্ড</strong> , <strong>নেদাৰলেণ্ড</strong> , "
+"<strong>পোলেণ্ড</strong> , <strong>বেলজিয়াম</strong> আৰু "
+"<strong>ফ্ৰান্স</strong> ।"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ভাঙি পৰিল"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "সম্প্ৰসাৰিত"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "দেখুৱাব নালাগে"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2596,3 +2723,15 @@ msgstr "বা অতিথি হিচাপে আগবাঢ়ি যা�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ছবি আঁতৰাওক"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "শিপিং %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "পঠিওৱা"

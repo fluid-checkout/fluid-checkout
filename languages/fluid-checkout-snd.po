@@ -68,10 +68,6 @@ msgstr "شپنگ فون"
 msgid "Only used for shipping-related questions."
 msgstr "صرف شپنگ سان لاڳاپيل سوالن لاءِ استعمال ڪيو ويندو آهي."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "گھڻ-قدم"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "هڪ قدم"
@@ -105,14 +101,6 @@ msgstr "بلنگ تي اڳتي وڌو"
 msgid "Proceed to payment"
 msgstr "ادائيگي لاءِ اڳتي وڌو"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "منهنجو رابطو"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "ڏانهن موڪلڻ"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "پهچائڻ جو طريقو"
@@ -120,10 +108,6 @@ msgstr "پهچائڻ جو طريقو"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "اضافي نوٽس"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "بلنگ کي"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -921,15 +905,6 @@ msgstr "چيڪ آئوٽ لي آئوٽ"
 msgid "Design template"
 msgstr "ڊيزائن ٽيمپليٽ"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"چيڪ آئوٽ مرحلن، آرڊر خلاصو ۽ ٻين حصن لاءِ عام انداز. ڪارٽ، آرڊر وصول ٿيل ۽ "
-"آرڊر ڏسو صفحن جهڙن ٻين صفحن تي پڻ لاڳو ٿي سگھي ٿو."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "ڊارڪ موڊ"
@@ -1492,14 +1467,6 @@ msgstr "چيڪ آئوٽ فارم ۾ بلنگ فون فيلڊ شامل ڪريو."
 msgid "Choose in which step to display the billing phone field."
 msgstr "بلنگ فون فيلڊ کي ڪهڙي مرحلي ۾ ڏيکارڻو آهي چونڊيو."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "فون فيلڊز لاءِ بين الاقوامي فون نمبر فارميٽ ۽ تصديق کي فعال ڪريو."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "هر ملڪ جي مطابق فون نمبرن کي فارميٽ ۽ تصديق ڪريو."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "ملڪ جي قاعدن جي بنياد تي فون نمبر جي تصديق کي فعال ڪريو"
@@ -1926,14 +1893,6 @@ msgstr "(پرو)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجرباتي)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"هي هڪ تجرباتي خصوصيت آهي ۽ شايد سڀني ٿيمز ۽ پلگ ان سان توقع مطابق ڪم نه "
-"ڪري. ان کي احتياط سان استعمال ڪريو."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2463,6 +2422,174 @@ msgstr ""
 "هي يقيني بڻائي ٿو ته مواد جو سيڪشن WooCommerce صفحن تي تمام تنگ نه آهي جنهن "
 "۾ چيڪ آئوٽ، ڪارٽ، آرڊر وصول ٿيل، آرڊر جي ادائيگي ۽ اڪائونٽ صفحا شامل آهن."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "وو ڪامرس سمارٽ ڪوپن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "چيڪ آئوٽ صفحي تي پوزيشن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "چيڪ آئوٽ صفحي تي موجود ڪوپن سيڪشن کي ڪٿي ڏيکارڻو آهي چونڊيو."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ترقي واري بار کان اڳ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ترقي واري بار کان پوءِ"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "ڪوپن ڪوڊ سيڪشن کان اڳ"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "بين الاقوامي فون نمبر فيلڊز کي فعال ڪريو"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "هر ملڪ جي قاعدن مطابق فون نمبر فارميٽ ڪريو."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "صحيح فون نمبر جي تصديق استعمال ڪريو"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"ڪوشش ڪريو ته پڪ ڪريو ته فون نمبر چونڊيل ملڪ جي ڪوڊ جي ضابطن جي بنياد تي هڪ "
+"صحيح موبائل يا لينڊ لائن نمبر آهي. هي آپشن <code>intl-tel-input</code> صحيح "
+"تصديق جي خاصيت استعمال ڪري ٿو، جيڪو ڪجهه فون نمبرن لاءِ غلط مثبت نتيجا ڏئي "
+"سگهي ٿو."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"هي هڪ تجرباتي خصوصيت آهي ۽ شايد سڀني سيٽ اپ ۾ توقع مطابق ڪم نه ڪري. ان کي "
+"احتياط سان استعمال ڪريو."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "جڏهن صحيح تصديق فعال هجي ته فون نمبر جي تصديق جا قسم استعمال ٿيندا آهن."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "موبائل"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "مقرر ٿيل لڪير"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ٽول فري"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "يا"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "رابطو"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "گھڻا قدم"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 ڪالم"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 ڪالم"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"چيڪ آئوٽ مرحلن، آرڊر خلاصو ۽ ٻين حصن لاءِ عام انداز.<br> ٻين صفحن تي پڻ "
+"لاڳو ٿي سگھي ٿو جهڙوڪ ڪارٽ، آرڊر وصول ٿيل ۽ آرڊر ڏسو صفحا."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 ڪالم&quot;</em> لي آئوٽ استعمال ڪرڻ وقت ڊيزائن ٽيمپليٽ "
+"<em>&quot;اسپلٽ&quot;</em> موجود نه آهي ۽ جيڪڏهن چونڊيو وڃي ته "
+"<em>&quot;مينيملسٽڪ&quot;</em> ڏانهن واپس اچي ويندو."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "چيڪ آئوٽ کان اڳ جا مرحلا"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 ڪالم&quot;</em> چيڪ آئوٽ لي آئوٽ استعمال ڪرڻ وقت هي آپشن هميشه "
+"<em>&quot;چڪ آئوٽ مرحلن کان اڳ&quot;</em> تي سيٽ ڪيو ويندو آهي ۽ ڊيسڪ ٽاپ "
+"ڏيک تي پڻ لاڳو ٿئي ٿو."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "موبائل تي اضافي آرڊر خلاصو سيڪشن لاءِ پوزيشن."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;سائيٽ هيڊر تي&quot;</em> آپشن صرف ان وقت لاڳو ٿئي ٿو جڏهن خلفشار "
+"کان پاڪ هيڊر استعمال ڪيو وڃي."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "سائيٽ هيڊر تي (بي ڌياني هيڊر جي ضرورت آهي)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "موبائل تي وسعت واري آرڊر خلاصي سيڪشن جي شروعاتي حالت."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"اسان سفارش ڪريون ٿا ته ان کي ريگيوليٽري گهرجن جي ڪري هيٺين ملڪن لاءِ "
+"<em>وڌايو وڃي</em> : <strong>جرمني</strong> ، <strong>آسٽريا</strong> ، "
+"<strong>سوئٽزرلينڊ</strong> ، <strong>هالينڊ</strong> ، "
+"<strong>پولينڊ</strong> ، <strong>بيلجيم</strong> ۽ <strong>فرانس</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ختم ٿي ويو"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "وڌايو ويو"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "نه ڏيکاريو"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2585,3 +2712,15 @@ msgstr "يا مهمان طور جاري رکو"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "تصوير هٽايو"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "شپنگ %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "شپنگ"

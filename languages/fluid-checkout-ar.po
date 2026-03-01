@@ -69,10 +69,6 @@ msgstr "هاتف الشحن"
 msgid "Only used for shipping-related questions."
 msgstr "يستخدم فقط للأسئلة المتعلقة بالشحن."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "متعدد الخطوات"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "خطوة واحدة"
@@ -106,14 +102,6 @@ msgstr "انتقل إلى الفاتورة"
 msgid "Proceed to payment"
 msgstr "انتقل إلى الدفع"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "اتصالي"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "الشحن إلى"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "طريقة الشحن"
@@ -121,10 +109,6 @@ msgstr "طريقة الشحن"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "ملاحظات إضافية"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "الفواتير إلى"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -918,15 +902,6 @@ msgstr "تخطيط الخروج"
 msgid "Design template"
 msgstr "قالب التصميم"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"الأنماط العامة لخطوات الدفع وملخص الطلب والأقسام الأخرى. قد تنطبق أيضًا على "
-"صفحات أخرى مثل صفحة سلة التسوق وصفحات الطلب المستلم وعرض الطلب."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "الوضع المظلم"
@@ -1470,14 +1445,6 @@ msgstr "أضف حقل رقم الهاتف الخاص بالفواتير إلى �
 msgid "Choose in which step to display the billing phone field."
 msgstr "اختر الخطوة التي تريد فيها عرض حقل هاتف الفاتورة."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "تمكين تنسيق رقم الهاتف الدولي والتحقق من صحة حقول الهاتف"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "تنسيق أرقام الهاتف والتحقق منها وفقًا لكل بلد."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "تمكين التحقق من رقم الهاتف بناءً على قواعد البلد"
@@ -1891,14 +1858,6 @@ msgstr "(محترف)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تجريبي)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"هذه ميزة تجريبية وقد لا تعمل بالشكل المتوقع مع كافة السمات والمكونات "
-"الإضافية. لذا استخدمها بحذر."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2412,6 +2371,174 @@ msgstr ""
 "يضمن هذا عدم تضييق قسم المحتوى بشكل كبير على صفحات WooCommerce بما في ذلك "
 "صفحات الخروج، وسلة التسوق، والطلب المستلم، ودفع الطلب، والحساب."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "كوبونات ووكومرس الذكية"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "الموضع على صفحة الخروج"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "اختر مكان عرض قسم القسائم المتوفرة على صفحة الخروج."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "قبل شريط التقدم"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "بعد شريط التقدم"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "قبل قسم أكواد الكوبون"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "تمكين حقول رقم الهاتف الدولي"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "تنسيق أرقام الهاتف وفقًا للقواعد الخاصة بكل بلد."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "استخدم التحقق الدقيق من رقم الهاتف"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"تأكد من أن رقم الهاتف صحيح، سواءً كان جوالاً أو خطاً أرضياً، وفقاً لقواعد "
+"رمز البلد المُختار. يستخدم هذا الخيار ميزة التحقق الدقيق "
+"<code>intl-tel-input</code> ، والتي قد تُعطي نتائج إيجابية خاطئة لبعض أرقام "
+"الهواتف."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "هذه ميزة تجريبية وقد لا تعمل كما هو متوقع في جميع الإعدادات. استخدمها بحذر."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "أنواع التحقق من صحة رقم الهاتف المستخدمة عند تمكين التحقق الدقيق."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "متحرك"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "خط ثابت"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "رقم مجاني"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "اتصال"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "خطوات متعددة"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "عمودان"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "عمود واحد"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"أنماط عامة لخطوات الدفع، وملخص الطلب، والأقسام الأخرى.<br> قد ينطبق ذلك "
+"أيضاً على صفحات أخرى مثل صفحة سلة التسوق، وصفحة استلام الطلب، وصفحة عرض "
+"الطلب."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"قالب التصميم <em>&quot;Split&quot;</em> غير متاح عند استخدام تخطيط "
+"<em>&quot;عمود واحد&quot;</em> وسيعود إلى <em>&quot;Minimalist&quot;</em> "
+"إذا تم اختياره."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "خطوات ما قبل إتمام عملية الشراء"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "أو"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"عند استخدام تخطيط الدفع <em>&quot;عمود واحد&quot;</em> ، يتم دائمًا تعيين "
+"هذا الخيار على <em>&quot;خطوات ما قبل الدفع&quot;</em> وينطبق أيضًا على عرض "
+"سطح المكتب."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "موضع قسم ملخص الطلب الإضافي على الهاتف المحمول."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"لا ينطبق خيار <em>&quot;في رأس الموقع&quot;</em> إلا عند استخدام رأس الموقع "
+"الخالي من عوامل التشتيت."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "في رأس الموقع (يتطلب رأسًا خاليًا من عوامل التشتيت)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "الحالة الأولية لقسم ملخص الطلب القابل للتوسيع على الهاتف المحمول."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"نوصي بتعيينه على أنه <em>موسع</em> للدول التالية بسبب المتطلبات التنظيمية: "
+"<strong>ألمانيا</strong> ، <strong>النمسا</strong> ، "
+"<strong>سويسرا</strong> ، <strong>هولندا</strong> ، <strong>بولندا</strong> "
+"، <strong>بلجيكا</strong> <strong>وفرنسا</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "مُنهار"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "موسع"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "لا تظهر"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2534,3 +2661,15 @@ msgstr "أو استمر كضيف"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "إزالة الصورة"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "الشحن %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "شحن"

@@ -68,10 +68,6 @@ msgstr "නැව්ගත කිරීමේ දුරකථනය"
 msgid "Only used for shipping-related questions."
 msgstr "නැව්ගත කිරීම සම්බන්ධ ප්‍රශ්න සඳහා පමණක් භාවිතා වේ."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "බහු-පියවර"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "තනි පියවර"
@@ -105,14 +101,6 @@ msgstr "බිල්පත් කිරීමට ඉදිරියට යන්
 msgid "Proceed to payment"
 msgstr "ගෙවීමට ඉදිරියට යන්න"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "මගේ සම්බන්ධතාවය"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "නැව්ගත කිරීම"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "නැව්ගත කිරීමේ ක්‍රමය"
@@ -120,10 +108,6 @@ msgstr "නැව්ගත කිරීමේ ක්‍රමය"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "අමතර සටහන්"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "බිල්පත් කිරීම"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -922,16 +906,6 @@ msgstr "පිටවීමේ පිරිසැලසුම"
 msgid "Design template"
 msgstr "නිර්මාණ සැකිල්ල"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"පිටවීමේ පියවර, ඇණවුම් සාරාංශය සහ අනෙකුත් කොටස් සඳහා සාමාන්‍ය විලාස. කරත්තය, "
-"ලැබුණු ඇණවුම් සහ නැරඹුම් ඇණවුම් පිටු වැනි අනෙකුත් පිටු සඳහා ද අදාළ විය "
-"හැකිය."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "අඳුරු ප්‍රකාරය"
@@ -1496,16 +1470,6 @@ msgstr "පිටවීමේ පෝරමයට බිල්පත් දුර
 msgid "Choose in which step to display the billing phone field."
 msgstr "බිල්පත් දුරකථන ක්ෂේත්‍රය පෙන්විය යුතු පියවර තෝරන්න."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"දුරකථන ක්ෂේත්‍ර සඳහා ජාත්‍යන්තර දුරකථන අංක ආකෘතිය සහ වලංගුකරණය සක්‍රීය "
-"කරන්න."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "එක් එක් රට අනුව දුරකථන අංක ආකෘතිගත කර වලංගු කරන්න."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "රටේ නීතිරීති මත පදනම්ව දුරකථන අංක වලංගුකරණය සක්‍රීය කරන්න."
@@ -1926,14 +1890,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(පර්යේෂණාත්මක)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"මෙය පර්යේෂණාත්මක විශේෂාංගයක් වන අතර සියලුම තේමා සහ ප්ලගීන සමඟ අපේක්ෂා කළ "
-"පරිදි ක්‍රියා නොකරනු ඇත. එය ප්‍රවේශමෙන් භාවිතා කරන්න."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2462,6 +2418,176 @@ msgstr ""
 "මෙමගින් WooCommerce පිටුවල අන්තර්ගත කොටස ඉතා පටු නොවන බව සහතික කරයි, එනම් "
 "පිටවීම, කරත්තය, ලැබුණු ඇණවුම, ඇණවුම් ගෙවීම සහ ගිණුම් පිටු ය."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce ස්මාර්ට් කූපන් පත්"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "පිටවීමේ පිටුවේ පිහිටීම"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "පිටවීමේ පිටුවේ ඇති කූපන් පත් කොටස පෙන්විය යුතු ස්ථානය තෝරන්න."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ප්‍රගති තීරුවට පෙර"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ප්‍රගති තීරුවෙන් පසුව"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "කූපන් කේත කොටසට පෙර"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "ජාත්‍යන්තර දුරකථන අංක ක්ෂේත්‍ර සබල කරන්න"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "එක් එක් රට සඳහා වන නීතිරීතිවලට අනුව දුරකථන අංක ආකෘතිගත කරන්න."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "නිවැරදි දුරකථන අංක වලංගුකරණය භාවිතා කරන්න"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"තෝරාගත් රටේ කේතය සඳහා වන නීති මත පදනම්ව දුරකථන අංකය වලංගු ජංගම හෝ ස්ථාවර "
+"දුරකථන අංකයක් බව සහතික කර ගැනීමට උත්සාහ කරන්න. මෙම විකල්පය "
+"<code>intl-tel-input</code> නිරවද්‍ය වලංගුකරණ විශේෂාංගය භාවිතා කරයි, එය "
+"සමහර දුරකථන අංක සඳහා ව්‍යාජ ධනාත්මක ප්‍රතිඵල ලබා දිය හැකිය."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"මෙය අත්හදා බැලීමේ විශේෂාංගයක් වන අතර සියලුම සැකසුම් තුළ අපේක්ෂා කළ පරිදි "
+"ක්‍රියා නොකරනු ඇත. එය ප්‍රවේශමෙන් භාවිතා කරන්න."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "නිරවද්‍ය වලංගුකරණය සක්‍රිය කර ඇති විට භාවිතා කරන දුරකථන අංක වලංගුකරණ වර්ග."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ජංගම"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ස්ථාවර රේඛාව"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ගාස්තු රහිත"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "හෝ"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "අමතන්න"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "බහු පියවර"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "තීරු 2 යි"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "තීරුව 1"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"පිටවීමේ පියවර, ඇණවුම් සාරාංශය සහ අනෙකුත් කොටස් සඳහා සාමාන්‍ය මෝස්තර.<br> "
+"කරත්තය, ලැබුණු ඇණවුම් සහ නැරඹුම් ඇණවුම් පිටු වැනි අනෙකුත් පිටු සඳහාද අදාළ "
+"විය හැක."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 තීරු&quot;</em> පිරිසැලසුම භාවිතා කරන විට "
+"<em>&quot;Split&quot;</em> සැලසුම් අච්චුව ලබා ගත නොහැකි අතර තෝරා ගන්නේ නම් "
+"<em>&quot;Minimalist&quot;</em> වෙත ආපසු යනු ඇත."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "පිටවීමේ පියවරට පෙර"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 තීරුව&quot;</em> පිටවීමේ පිරිසැලසුම භාවිතා කරන විට මෙම විකල්පය "
+"සැමවිටම <em>&quot;පිටවීමේ පියවරට පෙර&quot;</em> ලෙස සකසා ඇති අතර ඩෙස්ක්ටොප් "
+"දර්ශනයටද අදාළ වේ."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "ජංගම දුරකථනයේ අමතර ඇණවුම් සාරාංශ අංශය සඳහා ස්ථානය."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;අඩවි ශීර්ෂයේ&quot;</em> විකල්පය අදාළ වන්නේ අවධානය වෙනතකට යොමු "
+"නොවන ශීර්ෂය භාවිතා කරන විට පමණි."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "අඩවි ශීර්ෂය මත (බාධාවකින් තොර ශීර්ෂයක් අවශ්‍යයි)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "ජංගම දුරකථනයේ පුළුල් කළ හැකි ඇණවුම් සාරාංශ කොටස සඳහා ආරම්භක තත්ත්වය."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"නියාමන අවශ්‍යතා හේතුවෙන් පහත සඳහන් රටවල් සඳහා එය <em>පුළුල් කළ</em> ලෙස "
+"සැකසීමට අපි නිර්දේශ කරමු: <strong>ජර්මනිය</strong> , "
+"<strong>ඔස්ට්‍රියාව</strong> , <strong>ස්විට්සර්ලන්තය</strong> , "
+"<strong>නෙදර්ලන්තය</strong> , <strong>පෝලන්තය</strong> , "
+"<strong>බෙල්ජියම</strong> සහ <strong>ප්‍රංශය</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "හකුළන ලදී"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "පුළුල් කරන ලදී"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "පෙන්වන්න එපා"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2584,3 +2710,15 @@ msgstr "නැතහොත් අමුත්තෙකු ලෙස ඉදිර
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "රූපය ඉවත් කරන්න"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "නැව්ගත කිරීම %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "නැව්ගත කිරීම"

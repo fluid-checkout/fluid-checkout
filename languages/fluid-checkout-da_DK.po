@@ -68,10 +68,6 @@ msgstr "Telefon til forsendelse"
 msgid "Only used for shipping-related questions."
 msgstr "Bruges kun til forsendelsesrelaterede spørgsmål."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Flere trin"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Et enkelt trin"
@@ -105,14 +101,6 @@ msgstr "Fortsæt til fakturering"
 msgid "Proceed to payment"
 msgstr "Fortsæt til betaling"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Min kontaktperson"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Forsendelse til"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Forsendelsesmetode"
@@ -120,10 +108,6 @@ msgstr "Forsendelsesmetode"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Yderligere noter"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fakturering til"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -929,16 +913,6 @@ msgstr "Layout ved kassen"
 msgid "Design template"
 msgstr "Designskabelon"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Generelle stilarter til kassetrin, ordreoversigt og andre sektioner. Kan "
-"også anvendes på andre sider som f.eks. siderne Indkøbskurv, Modtaget ordre "
-"og Vis ordre."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Mørk tilstand"
@@ -1515,14 +1489,6 @@ msgstr "Tilføj et felt til faktureringstelefon til checkout-formularen."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Vælg, i hvilket trin du vil vise feltet for faktureringstelefon."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Aktivér internationalt telefonnummerformat og validering for telefonfelter"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formater og valider telefonnumre i henhold til hvert land."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Aktiver validering af telefonnumre baseret på landeregler"
@@ -1948,14 +1914,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentel)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dette er en eksperimentel funktion og fungerer muligvis ikke som forventet "
-"med alle temaer og plugins. Brug den med forsigtighed."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2496,6 +2454,177 @@ msgstr ""
 "Dette sikrer, at indholdssektionen ikke er for smal på WooCommerce-sider, "
 "herunder checkout-, kurv-, ordre modtaget-, ordrebetalt- og kontosider."
 
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce smarte kuponer"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Placering på kassesiden"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "Vælg, hvor afsnittet om tilgængelige kuponer skal vises på betalingssiden."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Før statuslinjen"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Efter statuslinjen"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Før sektionen med kuponkoder"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Aktivér felter til internationale telefonnumre"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formater telefonnumre i henhold til reglerne for hvert land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Brug præcis validering af telefonnumre"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Prøv at sikre, at telefonnummeret er et gyldigt mobil- eller fastnetnummer "
+"baseret på reglerne for den valgte landekode. Denne indstilling bruger den "
+"præcise valideringsfunktion <code>intl-tel-input</code>, som kan give "
+"falske positiver for nogle telefonnumre."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Dette er en eksperimentel funktion og fungerer muligvis ikke som forventet "
+"i alle opsætninger. Brug den med forsigtighed."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Valideringstyper for telefonnumre, der bruges, når præcis validering er "
+"aktiveret."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fastnet"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Gratis opkald"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Eller"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Flere trin"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 søjler"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 søjle"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Generelle stilarter til kassetrin, ordreoversigt og andre sektioner. "
+"<br>Kan også anvendes på andre sider som f.eks. siderne Indkøbskurv, "
+"Modtaget ordre og Vis ordre."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Designskabelonen <em>\"Split\"</em> er ikke tilgængelig, når du bruger "
+"<em>\"1 kolonne\"</em>-layout og vil falde tilbage til "
+"<em>\"Minimalistisk\"</em>, hvis den vælges."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Før checkout-trin"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Når du bruger kasselayoutet <em>\"1 kolonne\"</em>, er denne mulighed altid "
+"indstillet til <em>\"Før kassetrin\"</em> og gælder også for desktopvisning."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Position for den ekstra sektion med ordreoversigt på mobilen."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Indstillingen <em>\"På sidens overskrift\"</em> gælder kun, når du bruger "
+"den distraktionsfri overskrift."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "På sidens header (kræver distraktionsfri header)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Indledende tilstand for den udvidelige sektion med ordreoversigt på mobilen."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Vi anbefaler at indstille den som <em>udvidet</em> for følgende lande på "
+"grund af lovkrav: <strong>Tyskland</strong>, <strong>Østrig</strong>, "
+"<strong>Schweiz</strong>, <strong>Nederland</strong>, "
+"<strong>Polen</strong>, <strong>Belgien</strong> og "
+"<strong>Frankrig</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Kollapset"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Udvidet"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Må ikke vises"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2618,3 +2747,15 @@ msgstr "Eller fortsæt som gæst"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Fjern billede"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Forsendelse %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Forsendelse"

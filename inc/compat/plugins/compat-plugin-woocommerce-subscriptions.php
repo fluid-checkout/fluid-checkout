@@ -401,6 +401,19 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		// Get recurring carts
 		$recurring_carts = wcs_apply_array_filter( 'woocommerce_subscriptions_display_recurring_subtotals', $recurring_carts, 'next_payment_date' );
 
+		// Calculate total shipping rows (packages) for correct rowspan
+		$total_shipping_rows = 0;
+		foreach ( $recurring_carts as $recurring_cart_key => $recurring_cart ) {
+			WC_Subscriptions_Cart::set_calculation_type( 'recurring_total' );
+			WC_Subscriptions_Cart::set_recurring_cart_key( $recurring_cart_key );
+			WC_Subscriptions_Cart::set_cached_recurring_cart( $recurring_cart );
+
+			// Increment total shipping rows if the recurring cart contains subscriptions needing shipping
+			if ( WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping( $recurring_cart ) ) {
+				$total_shipping_rows += count( $recurring_cart->get_shipping_packages() );
+			}
+		}
+
 		// Iterate recurring carts
 		$display_heading = true;
 		foreach ( $recurring_carts as $recurring_cart_key => $recurring_cart ) {
@@ -410,18 +423,18 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			WC_Subscriptions_Cart::set_cached_recurring_cart( $recurring_cart );
 
 			// Output shipping options for packages in the recurring cart
-			$this->output_shipping_subtotal_html( $recurring_cart, $recurring_carts, $display_heading );
+			$this->output_shipping_subtotal_html( $recurring_cart, $total_shipping_rows, $display_heading );
 		}
 	}
 
 	/**
 	 * Output the shipping subtotal HTML for the given recurring cart.
 	 * 
-	 * @param  object  $recurring_cart     The recurring cart object.
-	 * @param  array   $recurring_carts    All recurring carts.
-	 * @param  bool    $display_heading    Whether to display the table heading.
+	 * @param  object  $recurring_cart      The recurring cart object.
+	 * @param  int     $total_shipping_rows  Total number of shipping rows (for rowspan).
+	 * @param  bool    $display_heading     Whether to display the table heading.
 	 */
-	public function output_shipping_subtotal_html( $recurring_cart, $recurring_carts, &$display_heading ) {
+	public function output_shipping_subtotal_html( $recurring_cart, $total_shipping_rows, &$display_heading ) {
 		// Iterate over each shipping package in the recurring cart
 		foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
 			$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package );
@@ -450,9 +463,9 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 			// Output the shipping subtotal row
 			wc_get_template( 'checkout/recurring-shipping-subtotals.php', array(
-				'display_heading'   => $display_heading,
-				'recurring_carts'   => $recurring_carts,
-				'shipping_subtotal' => $shipping_subtotal,
+				'display_heading'     => $display_heading,
+				'total_shipping_rows' => $total_shipping_rows,
+				'shipping_subtotal'   => $shipping_subtotal,
 			) );
 
 			// Reset the flag to prevent table heading from being displayed again

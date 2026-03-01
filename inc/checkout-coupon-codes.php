@@ -139,6 +139,12 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		// Bail if feature is not enabled
 		if ( ! $this->is_feature_enabled() ) { return; }
 
+		// Get coupon code position
+		$is_hidden_position = false === $this->get_substep_step_id();
+
+		// Bail if no position is set
+		if ( $is_hidden_position ) { return; }
+
 		// Maybe bail if coupon codes is not to be displayed as a substep
 		if ( false === apply_filters( 'fc_coupon_code_displayed_as_substep', true ) ) { return; }
 
@@ -230,7 +236,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-coupons' ), array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);})' );
+		wp_add_inline_script( 'fc-checkout-coupons', 'window.addEventListener("load",function(){CheckoutCoupons.init(fcSettings.checkoutCoupons);});' );
 
 		// Styles
 		wp_register_style( 'fc-checkout-coupons', FluidCheckout_Enqueue::instance()->get_style_url( 'css/checkout-coupons' ), NULL, NULL );
