@@ -17,21 +17,26 @@ class FluidCheckout_AutomateWooBirthdays extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Checkout fields
-		add_action( 'fc_checkout_after_step_billing_fields', array( $this, 'maybe_output_birthday_field' ), 10 );
+		// Use filter to redirect birthday field placement to Fluid Checkout hooks (prevents duplicate fields)
+		add_filter( 'automatewoo/birthdays/checkout_field_placement', array( $this, 'maybe_change_checkout_field_placement' ), 10, 1 );
 	}
 
 	/**
-	 * Output the AutomateWoo birthday field when placement is "After billing details".
+	 * Change the checkout field placement hook to Fluid Checkout's billing step hook when placement is "After billing details".
+	 *
+	 * @param string|false $hook The hook name where the birthday field should be output.
+	 * @return string|false The hook name.
 	 */
-	public function maybe_output_birthday_field() {
+	public function maybe_change_checkout_field_placement( $hook ) {
 		// Bail if AutomateWoo Birthdays is not available
-		if ( ! function_exists( 'AW_Birthdays' ) ) { return; }
+		if ( ! function_exists( 'AW_Birthdays' ) ) { return $hook; }
 
-		// Bail if placement is not "after billing details"
-		if ( 'after_billing_details' !== AW_Birthdays()->options()->checkout_field_placement() ) { return; }
+		// Use Fluid Checkout hook when placement is "after billing details", for logged-in users only.
+		if ( is_user_logged_in() && 'after_billing_details' === AW_Birthdays()->options()->checkout_field_placement() ) {
+			return 'fc_checkout_after_step_billing_fields';
+		}
 
-		\AutomateWoo\Birthdays\Frontend::add_birthday_field_to_checkout_form();
+		return $hook;
 	}
 }
 
