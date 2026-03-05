@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unrelease =
+
+* Fixed: Resolved "Same as billing address" option showing on cart for Address Book add-on.
+
 = 4.1.6 - 2026-02-26 =
 
 * Bump tested up to WooCommerce 10.5.2
