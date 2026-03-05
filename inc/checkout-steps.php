@@ -5061,6 +5061,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail as not available if billing is displayed after shipping
 		if ( ! $this->is_billing_address_before_shipping_address() ) { return false; }
 
+		// Bail when viewing the cart page - billing form is only shown at checkout, so billing address has not been collected yet
+		if ( $this->is_cart_page_or_fragment() ) { return false; }
+
 		// Define whether billing address is available for shipping address.
 		$is_available = true === $this->is_billing_country_allowed_for_shipping();
 		$is_available = apply_filters( 'fc_is_billing_address_available_for_shipping', $is_available );
