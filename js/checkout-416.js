@@ -806,6 +806,11 @@ jQuery( function( $ ) {
 								replaceFragment = false;
 							}
 
+							// CHANGE: Always replace account creation fields when switching to placeholder (account match found). This prevents the section from remaining visible when user has focus on password field.
+							if ( '.woocommerce-account-fields' === key && value && -1 !== value.toString().indexOf( 'woocommerce-account-fields--placeholder' ) ) {
+								replaceFragment = true;
+							}
+
 							// CHANGE: Allow fragments to be replaced every time even when their contents are equal the existing elements in the DOM, this overseeds the check for focus within the fragment.
 							if ( value && -1 !== value.toString().indexOf( 'fc-fragment-always-replace' ) ) {
 								replaceFragment = true;
