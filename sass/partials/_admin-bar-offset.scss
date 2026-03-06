@@ -1,9 +1,6 @@
 // ------------------------------------
-// ADMIN BAR OFFSET - RESET WHEN NOT IN VIEW
+// ADMIN BAR OFFSET
 // ------------------------------------
-// When admin bar exists but is scrolled out of view (e.g. mobile) or hidden,
-// reset offset to 0 so header/progress bar sit at top. Uses !important to
-// override base and theme compat rules. Loaded last via separate stylesheet.
 
 // Checkout header - reset to top
 body.admin-bar:not(.fc-admin-bar-in-view) .fc-checkout-header,
