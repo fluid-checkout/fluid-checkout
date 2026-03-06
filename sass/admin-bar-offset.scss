@@ -1,0 +1,10 @@
+// ------------------------------------
+// ADMIN BAR OFFSET OVERRIDE
+// ------------------------------------
+// Reset admin bar offset when admin bar is not visible in viewport.
+// Loaded after theme compat to override all admin-bar offset rules.
+
+@import
+	"abstract/_all-early",
+	"abstract/_all",
+	"partials/admin-bar-offset";

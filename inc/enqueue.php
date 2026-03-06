@@ -40,6 +40,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_admin_bar_offset_assets' ), 20 );
 
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
@@ -240,6 +241,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);});' );
 
+		wp_register_script( 'fc-admin-bar-offset', $this->get_script_url( 'js/admin-bar-offset' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
 		// Enhanced select
 		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-enhanced-select', $this->get_script_url( 'js/fc-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -259,6 +262,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		// Enhanced select
 		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), null );
+
+		// Admin bar offset styles
+		wp_register_style( 'fc-admin-bar-offset', $this->get_style_url( 'css/admin-bar-offset' ), array(), null );
 	}
 
 
@@ -410,6 +416,22 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Enqueue admin bar offset script and styles.
+	 * Only when distraction-free header is used (FC checkout header/progress bar exist).
+	 * Cart is handled by Pro when optimized cart layout with distraction-free header is active.
+	 */
+	public function enqueue_admin_bar_offset_assets() {
+		// Bail if not on checkout page
+		if ( is_admin() || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+
+		// Bail if not using distraction-free header (FC header/progress bar not present)
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		wp_enqueue_script( 'fc-admin-bar-offset' );
+		wp_enqueue_style( 'fc-admin-bar-offset' );
+	}
 
 	/**
 	 * Enqueue themes compatibility styles.
