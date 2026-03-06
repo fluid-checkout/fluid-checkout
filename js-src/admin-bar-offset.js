@@ -1,6 +1,9 @@
 /**
  * Sync admin bar visibility with body class for checkout header/progress bar offset.
  * Only applies offset when WordPress admin bar is actually visible in the viewport.
+ *
+ * DEPENDS ON:
+ * - None
  */
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
@@ -14,21 +17,34 @@
 
 	'use strict';
 
-	var _classInView = 'fc-admin-bar-in-view';
-	var _adminBarSelector = '#wpadminbar';
+	var _hasInitialized = false;
+	var _publicMethods = {};
+	var _settings = {
+		classInView: 'fc-admin-bar-in-view',
+		adminBarSelector: '#wpadminbar',
+		bodyAdminBarClass: 'admin-bar',
+	}
+
+
+
+	/**
+	 * METHODS
+	 */
+
+
 
 	/**
 	 * Update body class based on admin bar visibility.
 	 *
 	 * @param {boolean} isInView Whether the admin bar is in the viewport.
 	 */
-	function updateBodyClass( isInView ) {
+	var updateBodyClass = function( isInView ) {
 		if ( ! document.body ) { return; }
 
 		if ( isInView ) {
-			document.body.classList.add( _classInView );
+			document.body.classList.add( _settings.classInView );
 		} else {
-			document.body.classList.remove( _classInView );
+			document.body.classList.remove( _settings.classInView );
 		}
 	}
 
@@ -37,7 +53,7 @@
 	 *
 	 * @return {boolean} True if admin bar is visible in viewport.
 	 */
-	function isAdminBarInView() {
+	var isAdminBarInView = function() {
 		var adminBar = document.getElementById( 'wpadminbar' );
 		if ( ! adminBar ) { return false; }
 
@@ -50,11 +66,17 @@
 		return rect.bottom > 0 && rect.top < root.innerHeight;
 	}
 
+
+
 	/**
-	 * Initialize the admin bar visibility observer.
+	 * Initialize component and set admin bar visibility observer.
 	 */
-	function init() {
-		if ( ! document.body || ! document.body.classList.contains( 'admin-bar' ) ) {
+	_publicMethods.init = function( options ) {
+		// Bail if already initialized
+		if ( _hasInitialized ) { return; }
+
+		// Bail if body has no admin-bar class
+		if ( ! document.body || ! document.body.classList.contains( _settings.bodyAdminBarClass ) ) {
 			return;
 		}
 
@@ -90,13 +112,20 @@
 			root.addEventListener( 'scroll', checkVisibility, { passive: true } );
 			root.addEventListener( 'resize', checkVisibility );
 		}
+
+		_hasInitialized = true;
 	}
 
+
+
+	//
+	// Public APIs
+	//
 	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', init );
+		document.addEventListener( 'DOMContentLoaded', function() { _publicMethods.init(); } );
 	} else {
-		init();
+		_publicMethods.init();
 	}
 
-	return { init: init };
+	return _publicMethods;
 });
