@@ -31,9 +31,6 @@ class FluidCheckout_AutomateWooBirthdays extends FluidCheckout {
 		// Bail if AutomateWoo Birthdays is not available
 		if ( ! function_exists( 'AW_Birthdays' ) ) { return $hook; }
 
-		// Bail if user is not logged in
-		if ( ! is_user_logged_in() ) { return $hook; }
-
 		// Bail if not target placement
 		if ( 'after_billing_details' !== AW_Birthdays()->options()->checkout_field_placement() ) { return $hook; }
 
