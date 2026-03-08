@@ -2542,6 +2542,14 @@ msgstr "Пасля індыкатара прагрэсу"
 msgid "Before coupon codes section"
 msgstr "Раздзел перад кодамі купонаў"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Або"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Не паказваць"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2664,3 +2672,15 @@ msgstr "Або працягнуць як госць"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Выдаліць выяву"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Дастаўка %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Дастаўка"

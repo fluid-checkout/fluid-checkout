@@ -2528,6 +2528,14 @@ msgstr "Явцын мөрний дараа"
 msgid "Before coupon codes section"
 msgstr "Купон кодын өмнө"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Эсвэл"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Харуулахгүй"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2650,3 +2658,15 @@ msgstr "Эсвэл зочноор үргэлжлүүлээрэй"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Зургийг арилгах"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Хүргэлт %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Тээвэрлэлт"

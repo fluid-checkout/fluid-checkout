@@ -2501,6 +2501,14 @@ msgstr "Sau thanh tiến trình"
 msgid "Before coupon codes section"
 msgstr "Trước phần mã giảm giá"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Hoặc"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Không hiển thị"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2623,3 +2631,15 @@ msgstr "Hoặc tiếp tục với tư cách là khách"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Xóa hình ảnh"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Vận chuyển %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Vận chuyển"

@@ -2539,6 +2539,14 @@ msgstr "Aurrerapen-barraren ondoren"
 msgid "Before coupon codes section"
 msgstr "Kupoi kodeen aurreko atala"
 
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Edo"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Ez erakutsi"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2661,3 +2669,15 @@ msgstr "Edo gonbidatu gisa jarraitu"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "Kendu irudia"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Bidalketa %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Bidalketa"
