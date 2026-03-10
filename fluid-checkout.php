@@ -618,10 +618,14 @@ class FluidCheckout {
 	 * Return the user id passed in or the current user id
 	 */
 	public function get_user_id( $user_id = null ) {
+		// Maybe get current user id
 		if ( ! $user_id ) {
 			$current_user = wp_get_current_user();
 			$user_id = $current_user->ID;
 		}
+
+		// Sanitize user id
+		$user_id = is_numeric( $user_id ) ? intval( $user_id ) : null;
 
 		return $user_id;
 	}
