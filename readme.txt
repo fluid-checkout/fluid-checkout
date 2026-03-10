@@ -361,6 +361,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin: AutomateWoo - Birthdays Add-on
 * Improved: Use neutral wordings for contact, shipping address and billing address checkout sub-step titles.
 * Improved: Make account creation checkbox field customizable via default WooCommerce hooks.
+* Fix: Focus and scroll behavior for the first invalid field when trying to move to the next step or save a substep after changes.
 
 = 4.1.6 - 2026-02-26 =
 

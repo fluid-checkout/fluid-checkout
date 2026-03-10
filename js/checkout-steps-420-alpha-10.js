@@ -43,6 +43,7 @@
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
+		formRowSelector: '.form-row, .shipping-method__package',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -71,7 +72,8 @@
 		substepVisibleStateAttribute: 'data-substep-visible',
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
-		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
+		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidFocusDelay: 500,
 
 		enablePlaceOrderMove: 'yes',
 		placeOrderButtonSelector: '.fc-place-order-button',
@@ -292,8 +294,12 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				setTimeout( function() {
+					firstInvalidField.focus();
+				}, _settings.invalidFocusDelay );
 			}
 
 			// Bail when substep has invalid fields
@@ -391,8 +397,12 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				setTimeout( function() {
+					firstInvalidField.focus();
+				}, _settings.invalidFocusDelay );
 			}
 
 			// Bail when any substep has invalid fields
