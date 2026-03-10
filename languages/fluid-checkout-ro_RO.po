@@ -69,10 +69,6 @@ msgstr "Telefon de expediere"
 msgid "Only used for shipping-related questions."
 msgstr "Utilizat numai pentru întrebări legate de expediere."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "În mai multe etape"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Un singur pas"
@@ -106,14 +102,6 @@ msgstr "Treceți la facturare"
 msgid "Proceed to payment"
 msgstr "Procedați la plată"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Contactul meu"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Livrare către"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Metoda de expediere"
@@ -121,10 +109,6 @@ msgstr "Metoda de expediere"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Note suplimentare"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Facturare către"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -935,16 +919,6 @@ msgstr "Layout de checkout"
 msgid "Design template"
 msgstr "Șablon de design"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Stiluri generale pentru etapele de plată, rezumatul comenzii și alte "
-"secțiuni. S-ar putea aplica și altor pagini, cum ar fi paginile Coș, "
-"Comanda primită și Vizualizare comandă."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Modul întunecat"
@@ -1536,16 +1510,6 @@ msgstr "Adăugați câmpul telefonic de facturare la formularul de plată."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Alegeți în ce etapă să afișați câmpul telefon de facturare."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Activați formatul și validarea numerelor de telefon internaționale pentru "
-"câmpurile telefonice"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatați și validați numerele de telefon în funcție de fiecare țară."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Activați validarea numărului de telefon în funcție de regulile țării"
@@ -1981,15 +1945,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(experimental)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Aceasta este o caracteristică experimentală și este posibil să nu "
-"funcționeze conform așteptărilor cu toate temele și plugin-urile. "
-"Utilizați-o cu precauție."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2561,9 +2516,154 @@ msgstr "După bara de progres"
 msgid "Before coupon codes section"
 msgstr "Înainte de secțiunea coduri promoționale"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Activați câmpurile pentru numerele de telefon internaționale"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatați numerele de telefon în conformitate cu normele din fiecare țară."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Utilizați validarea exactă a numărului de telefon"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Încercați să vă asigurați că numărul de telefon este un număr valid de "
+"telefon mobil sau fix pe baza regulilor pentru codul de țară selectat. "
+"Această opțiune utilizează funcția de validare precisă "
+"<code>intl-tel-input</code>, care poate da rezultate fals pozitive pentru "
+"unele numere de telefon."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Aceasta este o caracteristică experimentală și este posibil să nu "
+"funcționeze conform așteptărilor în toate configurațiile. Utilizați-o cu "
+"precauție."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Tipuri de validare a numărului de telefon utilizate atunci când validarea "
+"precisă este activată."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Linie fixă"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Apel gratuit"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Sau"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Persoană de contact"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Mai multe etape"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 coloane"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 coloană"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Stiluri generale pentru etapele de plată, rezumatul comenzii și alte "
+"secțiuni. <br>Se pot aplica și altor pagini, cum ar fi paginile Coș, "
+"Comanda primită și Vizualizare comandă."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Șablonul de design <em>\"Split\"</em> nu este disponibil atunci când se "
+"utilizează aspectul <em>\"1 coloană\"</em> și va reveni la "
+"<em>\"Minimalist\"</em> dacă este ales."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Pași înainte de checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Atunci când se utilizează aspectul de plată <em>\"1 coloană\"</em>, această "
+"opțiune este întotdeauna setată la <em>\"Înainte de etapele de plată\"</em> "
+"și se aplică, de asemenea, la vizualizarea desktop."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Poziția pentru secțiunea suplimentară de rezumat al comenzii pe mobil."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opțiunea <em>\"Pe antetul site-ului\"</em> se aplică numai atunci când se "
+"utilizează antetul fără distragere a atenției."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Pe antetul site-ului (necesită un antet care să nu distragă atenția)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Starea inițială pentru secțiunea expansibilă de rezumat al comenzii pe "
+"mobil."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Vă recomandăm să o setați ca <em>expanded</em> pentru următoarele țări din "
+"cauza cerințelor de reglementare: <strong>Germania</strong>, "
+"<strong>Austria</strong>, <strong>Suedia</strong>, <strong>Țările de "
+"Jos</strong>, <strong>Polonia</strong>, <strong>Belgia</strong> și "
+"<strong>Franța</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Colapsat"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Extinse"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"

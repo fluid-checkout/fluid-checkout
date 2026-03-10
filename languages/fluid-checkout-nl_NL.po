@@ -432,10 +432,6 @@ msgstr "Factuuradres"
 msgid "Billing phone"
 msgstr "Facturering telefoon"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Facturering aan"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Zowel onder het betaalgedeelte als het besteloverzicht"
@@ -979,12 +975,6 @@ msgstr "Donkere modus inschakelen"
 msgid "Enable integrated coupon code section"
 msgstr "Geïntegreerde kortingscodesectie inschakelen"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Internationale telefoonnummernotatie en validatie voor telefoonvelden "
-"inschakelen"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "E-mailcontrole inschakelen: (uitgeschakelde functie)"
@@ -1116,20 +1106,6 @@ msgstr "Voettekst achtergrondkleur"
 #: inc/admin/admin-settings-checkout.php:470
 msgid "Force billing and shipping addresses to the same (single section)"
 msgstr "Forceer factuuradressen en verzendadressen tot hetzelfde (enkele sectie)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatteer en valideer telefoonnummers volgens elk land."
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Algemene stijlen voor de afrekenstappen, het besteloverzicht en andere "
-"secties. Kan ook van toepassing zijn op andere pagina's, zoals de pagina's "
-"Winkelwagen, Ontvangen bestelling en Bestelling weergeven."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
@@ -1475,10 +1451,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Het aanmeldingsvakje naar de contactstap verplaatsen"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Meerstappen"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
@@ -1486,10 +1458,6 @@ msgstr "Meerdere opgeslagen adressen voor verzending en facturering."
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "De lay-out van mijn account"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mijn contact"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -1972,10 +1940,6 @@ msgstr "Verzendmethoden"
 msgid "Shipping phone"
 msgstr "Telefoonnummer voor verzending"
 
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Verzenden naar"
-
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
 "Show a link button on the pickup location substep to clear the chosen "
@@ -2287,14 +2251,6 @@ msgstr "Dit veld komt niet overeen met de gerelateerde veldwaarde."
 #: inc/checkout-validation.php:200
 msgid "This is a required field."
 msgstr "Dit is een verplicht veld."
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dit is een experimentele functie en werkt mogelijk niet zoals verwacht met "
-"alle thema's en plugins. Gebruik het met voorzichtigheid."
 
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
@@ -2703,10 +2659,150 @@ msgstr "Na de voortgangsbalk"
 msgid "Before coupon codes section"
 msgstr "Voor coupon codes sectie"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Velden voor internationale telefoonnummers inschakelen"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatteer telefoonnummers volgens de regels voor elk land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gebruik nauwkeurige telefoonnummervalidatie"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Probeer te controleren of het telefoonnummer een geldig mobiel of vast "
+"nummer is op basis van de regels voor de geselecteerde landcode. Deze optie "
+"gebruikt de <code>intl-tel-input</code> precieze validatiefunctie, die voor "
+"sommige telefoonnummers fout-positieve resultaten kan geven."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Dit is een experimentele functie en werkt mogelijk niet zoals verwacht in "
+"alle opstellingen. Gebruik het met voorzichtigheid."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Typen voor validatie van telefoonnummers die worden gebruikt wanneer "
+"precieze validatie is ingeschakeld."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiel"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Vaste lijn"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Gratis"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Of"
 
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Neem contact op met"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Meervoudige stap"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolommen"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Algemene stijlen voor de afrekenstappen, besteloverzicht en andere secties. "
+"<br>Mogelijk ook van toepassing op andere pagina's, zoals de pagina's "
+"Winkelwagen, Ontvangen bestelling en Bestelling bekijken."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"De ontwerpsjabloon <em>\"Split\"</em> is niet beschikbaar bij gebruik van "
+"<em>\"1 kolom\"</em> lay-out en valt terug op <em>\"Minimalist\"</em> als "
+"deze wordt gekozen."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Stappen voor het afrekenen"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Bij gebruik van de <em>\"1 kolom\"</em> afrekenlay-out is deze optie altijd "
+"ingesteld op <em>\"Voor afrekenstappen\"</em> en geldt ook voor de "
+"desktopweergave."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Positie voor de extra besteloverzichtsectie op mobiel."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"De optie <em>\"Op de header van de site\"</em> is alleen van toepassing bij "
+"gebruik van de afleidingsvrije header."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "In de header van de site (vereist een afleidingsvrije header)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Oorspronkelijke status voor de uitbreidbare besteloverzichtsectie op mobiel."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Voor de volgende landen raden we aan om het als <em>uitgebreid</em> in te "
+"stellen vanwege wettelijke vereisten: <strong>Duitsland</strong>, "
+"<strong>Oostenrijk</strong>, <strong>Zwitserland</strong>, "
+"<strong>Nederland</strong>, <strong>Polen</strong>, <strong>België</strong> "
+"en <strong>Frankrijk</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ingestort"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Uitgebreid"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Niet weergeven"

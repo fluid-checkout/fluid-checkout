@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT CREATE ACCOUNT
+// ------------------------------------
+
+.fc-content div.woocommerce form .fc-wrapper .automatewoo-birthday-section--checkout[aria-hidden=true] {
+	display: none; // Plugin uses aria-hidden to hide section using visibility: hidden; but that was conflicting with Fluid Checkout's collapsible blocks so we hide it with display: none;
+}

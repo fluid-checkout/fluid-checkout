@@ -68,10 +68,6 @@ msgstr "Simu ya kusafirisha"
 msgid "Only used for shipping-related questions."
 msgstr "Inatumika kwa maswali yanayohusiana na usafirishaji pekee."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Hatua nyingi"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Hatua moja"
@@ -105,14 +101,6 @@ msgstr "Endelea kwenye malipo"
 msgid "Proceed to payment"
 msgstr "Endelea hadi malipo"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mawasiliano yangu"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Kusafirisha kwenda"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Mbinu ya usafirishaji"
@@ -120,10 +108,6 @@ msgstr "Mbinu ya usafirishaji"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Vidokezo vya ziada"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Kutoza bili"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -932,16 +916,6 @@ msgstr "Mpangilio wa Malipo"
 msgid "Design template"
 msgstr "Kiolezo cha kubuni"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Mitindo ya jumla ya hatua za malipo, muhtasari wa agizo na sehemu zingine. "
-"Inaweza pia kutumika kwa kurasa zingine kama vile Rukwama, Agizo "
-"Lililopokelewa na Kuangalia kurasa za Agizo."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Hali ya giza"
@@ -1522,16 +1496,6 @@ msgstr "Ongeza sehemu ya simu ya bili kwenye fomu ya kulipa."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Chagua katika hatua gani ya kuonyesha sehemu ya simu ya bili."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Washa umbizo la nambari ya simu ya kimataifa na uthibitishaji kwa sehemu za "
-"simu"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Fomati na uthibitishe nambari za simu kulingana na kila nchi."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Washa uthibitishaji wa nambari ya simu kulingana na sheria za nchi"
@@ -1963,14 +1927,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(majaribio)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Hiki ni kipengele cha majaribio na huenda kisifanye kazi inavyotarajiwa na "
-"mandhari na programu-jalizi zote. Itumie kwa tahadhari."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2539,10 +2495,152 @@ msgstr "Baada ya bar ya maendeleo"
 msgid "Before coupon codes section"
 msgstr "Kabla ya sehemu ya misimbo ya kuponi"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Washa sehemu za nambari za simu za kimataifa"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Fomati nambari za simu kulingana na sheria za kila nchi."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Tumia uthibitishaji sahihi wa nambari ya simu"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Jaribu kuhakikisha kuwa nambari ya simu ni nambari halali ya rununu au ya "
+"mezani kulingana na sheria za msimbo wa nchi uliochaguliwa. Chaguo hili "
+"hutumia kipengele cha uthibitishaji sahihi <code>intl-tel-input</code> , "
+"ambacho kinaweza kutoa chanya za uwongo kwa baadhi ya nambari za simu."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Hiki ni kipengele cha majaribio na huenda kisifanye kazi inavyotarajiwa "
+"katika usanidi wote. Itumie kwa tahadhari."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Aina za uthibitishaji wa nambari za simu zinazotumiwa wakati uthibitishaji "
+"kwa usahihi umewashwa."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Simu ya Mkononi"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Mstari usiohamishika"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Bila malipo"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Au"
 
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Mawasiliano"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Hatua nyingi"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "Safu wima 2"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "Safu wima 1"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Mitindo ya jumla ya hatua za kulipa, muhtasari wa agizo na sehemu "
+"zingine.<br> Huenda pia zikatumika kwa kurasa zingine kama vile Rukwama, "
+"Agizo Lililopokelewa na Kuangalia Agizo."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Kiolezo cha muundo <em>&quot;Gawanya&quot;</em> hakipatikani unapotumia "
+"mpangilio wa <em>&quot;safu wima 1&quot;</em> na kitarudi kwenye "
+"<em>&quot;Minimalist&quot;</em> ikiwa kitachaguliwa."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Hatua za kabla ya kulipa"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Unapotumia mpangilio wa malipo wa <em>&quot;safu wima 1&quot;</em> chaguo "
+"hili huwekwa kila wakati kuwa <em>&quot;Hatua za Kabla ya malipo&quot;</em> "
+"na pia hutumika kwa mwonekano wa eneo-kazi."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Nafasi ya sehemu ya muhtasari wa agizo la ziada kwenye simu."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Chaguo <em>&quot;Kwenye kichwa cha habari cha tovuti&quot;</em> linatumika "
+"tu wakati wa kutumia kichwa cha habari kisicho na usumbufu."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Kwenye kichwa cha tovuti (inahitaji kichwa cha habari kisicho na usumbufu)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Hali ya awali ya sehemu ya muhtasari wa agizo linaloweza kupanuliwa kwenye "
+"simu ya mkononi."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Tunapendekeza kuiweka kama <em>iliyopanuliwa</em> kwa nchi zifuatazo "
+"kutokana na mahitaji ya udhibiti: <strong>Ujerumani</strong> , "
+"<strong>Austria</strong> , <strong>Uswisi</strong> , "
+"<strong>Uholanzi</strong> , <strong>Poland</strong> , "
+"<strong>Ubelgiji</strong> na <strong>Ufaransa</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Imekunjwa"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Imepanuliwa"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Usionyeshe"

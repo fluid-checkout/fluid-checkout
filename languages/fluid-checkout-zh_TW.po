@@ -68,10 +68,6 @@ msgstr "出貨電話"
 msgid "Only used for shipping-related questions."
 msgstr "僅用於與運輸相關的問題。"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "多步驟"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "單步"
@@ -105,14 +101,6 @@ msgstr "繼續結算"
 msgid "Proceed to payment"
 msgstr "繼續付款"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "我的聯絡方式"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "發送至"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "送貨方式"
@@ -120,10 +108,6 @@ msgstr "送貨方式"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "其他說明"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "帳單至"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -860,13 +844,6 @@ msgstr "結帳佈局"
 msgid "Design template"
 msgstr "設計模板"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr "結帳步驟、訂單摘要和其他部分的通用樣式。也可能適用於其他頁面，例如購物車、訂單已收到和查看訂單頁面。"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "暗黑模式"
@@ -1372,14 +1349,6 @@ msgstr "在結帳表單中新增帳單電話欄位。"
 msgid "Choose in which step to display the billing phone field."
 msgstr "選擇在哪一步顯示計費電話欄位。"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "啟用國際電話號碼格式並驗證電話字段"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "根據各國格式化並驗證電話號碼。"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "根據國家規則啟用電話號碼驗證"
@@ -1757,12 +1726,6 @@ msgstr "（專業版）"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "（實驗）"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "這是一個實驗性功能，可能無法按預期與所有主題和插件一起工作。請謹慎使用。"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2265,9 +2228,131 @@ msgstr "進度條之後"
 msgid "Before coupon codes section"
 msgstr "優惠券代碼部分之前"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "啟用國際電話號碼字段"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "請依各國規定格式化電話號碼。"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "使用精確的電話號碼驗證"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"請盡量確保輸入的電話號碼是符合所選國家/地區代碼規則的有效手機號碼或座機號碼。此選項使用<code>intl-tel-input</"
+"code>精確驗證功能，但可能會對某些電話號碼產生誤報。"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "這是一項實驗性功能，可能無法在所有環境下正常運作。請謹慎使用。"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "啟用精確驗證時使用的電話號碼驗證類型。"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "移動的"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "固定線路"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "免費電話"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "接觸"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "多步驟"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2列"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1列"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr "結帳步驟、訂單摘要和其他部分的通用樣式。<br>也可能適用於其他頁面，例如購物車、訂單已接收和查看訂單頁面。"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr "使用<em>「1 列」</em>佈局時， <em>「分割」</em>設計範本不可用，如果選擇該模板，則會回退到<em>「極簡」佈局</em>。"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "結帳前的步驟"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "或者"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr "使用<em>「1 列」</em>結帳佈局時，此選項始終設定為<em>「結帳步驟之前」</em> ，並且也適用於桌面視圖。"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "行動端額外訂單摘要部分的位置。"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr "<em>「在網站頁首」</em>選項僅在使用無幹擾頁首時適用。"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "網站頁首（需要無幹擾的頁首）"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "行動端可擴展訂單摘要部分的初始狀態。"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"由於監管要求，我們建議將以下國家的設置設為<em>擴展</em>：<strong>德國</strong>、<strong>奧地利</"
+"strong>、<strong>瑞士</strong>、<strong>荷蘭</strong>、<strong>波蘭</"
+"strong>、<strong>比利時</strong>和<strong>法國</strong>。"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "已折疊"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "擴充"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
