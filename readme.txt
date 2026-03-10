@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 10.6.0
 * Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
 * Added: Support for new layout options: one column layout, and order summary before checkout steps.
 * Added: Compatibility with plugin: AutomateWoo - Birthdays Add-on
