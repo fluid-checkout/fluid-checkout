@@ -782,11 +782,15 @@ jQuery( function( $ ) {
 						$( document.body ).trigger( 'fc_checkout_fragments_replace_before', [ data ] );
 
 						// CHANGE: Try to remove intl-tel-input components from existing fields before replacing fragments
-						if ( window.intlTelInput && window.intlTelInputGlobals ) {
+						if ( window.intlTelInput ) {
+							// Get intl-tel-input object
+							var intlTelInputObject = window.intlTelInputGlobals || window.intlTelInput;
+
+							// Get all phone fields
 							var allPhoneFields = document.querySelectorAll( _settings.phoneFieldSelector );
 							for ( var i = 0; i < allPhoneFields.length; i++ ) {
 								var field = allPhoneFields[i];
-								var phoneField = window.intlTelInputGlobals.getInstance( field );
+								var phoneField = intlTelInputObject.getInstance( field );
 								if ( phoneField ) {
 									var preservedValue = phoneField.getNumber();
 									phoneField.destroy();
