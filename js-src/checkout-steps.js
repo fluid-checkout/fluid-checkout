@@ -73,7 +73,7 @@
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
-		invalidFocusDelay: 500,
+		invalidFocusDelay: 100,
 
 		enablePlaceOrderMove: 'yes',
 		placeOrderButtonSelector: '.fc-place-order-button',
@@ -115,6 +115,34 @@
 
 		FCUtils.scrollToElement( element, _settings.progressBarSelector );
 	}
+
+	/**
+	 * Wait for the element to be in the viewport and then focus it.
+	 * Runs recursively until the element is in the viewport, then focuses it.
+	 *
+	 * @param   HTMLElement  element  Element to check and focus.
+	 */
+	var waitForElementInViewportThenFocus = function( element ) {
+		// Get element bounding client rect
+		var rect = element.getBoundingClientRect();
+		var inView = (
+			rect.top >= 0 &&
+			rect.bottom <= ( window.innerHeight || document.documentElement.clientHeight )
+		);
+
+		// Check if element is in viewport
+		if ( inView ) {
+			setTimeout( function() {
+				element.focus();
+			}, _settings.invalidFocusDelay );
+		}
+		// Otherwise keep waiting
+		else {
+			requestAnimationFrame( function() {
+				waitForElementInViewportThenFocus( element );
+			} );
+		}
+	};
 
 
 
@@ -297,9 +325,7 @@
 			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
 				scrollToElement( fieldRowElement );
-				setTimeout( function() {
-					firstInvalidField.focus();
-				}, _settings.invalidFocusDelay );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when substep has invalid fields
@@ -400,9 +426,7 @@
 			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
 				scrollToElement( fieldRowElement );
-				setTimeout( function() {
-					firstInvalidField.focus();
-				}, _settings.invalidFocusDelay );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when any substep has invalid fields
