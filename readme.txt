@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Login form at checkout not accept certain characters for passwords.
+
 = 4.2.0 - 2026-03-10 =
 
 * Bump tested up to WooCommerce 10.6.0
