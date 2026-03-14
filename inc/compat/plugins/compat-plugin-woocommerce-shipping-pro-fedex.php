@@ -45,7 +45,10 @@ class FluidCheckout_WooCommerce_Shipping_Pro_FedEx extends FluidCheckout {
 			$this->class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $this->class_name );
 		}
 
-		// Move shipping method initialization to the init hook
+		// Bail if class object is not set
+		if ( ! $this->class_object ) { return; }
+
+		// Move shipping method initialization to init hook to make it available earlier
 		remove_action( 'woocommerce_shipping_init', array( $this->class_object, 'wspf_fedex_method_init' ) );
 		add_action( 'init', array( $this->class_object, 'wspf_fedex_method_init' ), 100 );
 	}
