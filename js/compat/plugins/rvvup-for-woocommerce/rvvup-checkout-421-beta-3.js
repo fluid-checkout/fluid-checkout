@@ -63,12 +63,9 @@
 		// Bail if modal iframe element is not found
 		if ( ! modalIframe ) { return; }
 
-		console.log( 'Modal iframe:', modalIframe );
-
 		// Create observer that watches for attribute changes (src) on the modal iframe element
 		var mutationObserver = new MutationObserver( function( mutations ) {
 			mutations.forEach( function( mutation ) {
-				console.log( 'Mutation:', mutation );
 				if ( mutation.type === "attributes" && mutation.attributeName === "src" ) {
 					disableBeforeUnloadWarning();
 				}
