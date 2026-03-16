@@ -25,7 +25,7 @@ class FluidCheckout_WooCommerceGermanizedPRO extends FluidCheckout {
 		if ( ! is_plugin_active( 'woocommerce-germanized/woocommerce-germanized.php' ) ) { return false; }
 
 		// Bail if class not available or Germanized PRO not active
-		if ( ! class_exists( 'WC_GZDP_Dependencies' ) || ! property_exists( 'WC_GZDP_Dependencies', 'instance' ) || ! WC_GZDP_Dependencies::instance()->loadable ) { return false; }
+		if ( ! class_exists( 'WC_GZDP_Dependencies' ) || ! method_exists( 'WC_GZDP_Dependencies', 'instance' ) || ! property_exists( WC_GZDP_Dependencies::instance(), 'loadable' ) || ! WC_GZDP_Dependencies::instance()->loadable ) { return false; }
 
 		return true;
 	}
