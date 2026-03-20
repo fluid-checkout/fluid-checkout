@@ -33,6 +33,9 @@ class FluidCheckout_RvvupForWoocommerce extends FluidCheckout {
 		// Checkout events
 		wp_register_script( 'fc-compat-rvvup-for-woocommerce-checkout', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/rvvup-for-woocommerce/rvvup-checkout' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-compat-rvvup-for-woocommerce-checkout', 'window.addEventListener("load",function(){RvvupCheckout.init();});' );
+
+		// Rvvup scripts.js
+		wp_register_script( 'rvvup_payment_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/rvvup-for-woocommerce/scripts' ), array( 'jquery', 'rvvup_payment_parameters_js', 'rvvup_payment_paypal_js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 	/**

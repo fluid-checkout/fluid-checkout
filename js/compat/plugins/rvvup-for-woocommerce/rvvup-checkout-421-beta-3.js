@@ -23,7 +23,8 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		modalIframeSelector: '.rvvup-modal .rvvup-iframe',
+		modalRvvupIframeSelector:         '.rvvup-modal .rvvup-iframe',
+		modalCardinalIframeSelector:      '#Cardinal-CCA-IFrame',
 	};
 
 
@@ -37,43 +38,57 @@
 	/**
 	 * Disable the `beforeunload` warning.
 	 */
-	var disableBeforeUnloadWarning = function() {
+	var disableUnloadAndPaymentUpdates = function() {
 		window.can_prevent_unload = false;
+		window.can_update_payment_methods = false;
 	};
 
 	/**
 	 * Enable the `beforeunload` warning.
 	 */
-	var enableBeforeUnloadWarning = function() {
+	var enableUnloadAndPaymentUpdates = function() {
 		window.can_prevent_unload = true;
+		window.can_update_payment_methods = true;
 	};
 
 
 
 	/**
+	 * Process modal iframe src mutation.
+	 *
+	 * @param   {Object}  mutation  The mutation object.
+	 */
+	var processModalIframeSrcMutation = function( mutation ) {
+		// Bail if mutation type is not `attributes`
+		if ( mutation.type !== "attributes" ) { return; }
+
+		// Bail if mutation attribute name is not `src`
+		if ( mutation.attributeName !== "src" ) { return; }
+
+		// Disable payment method update and beforeunload warning
+		disableUnloadAndPaymentUpdates();
+	};
+
+	/**
 	 * Initialize mutation observer to watch for Rvvup modal iframe.
 	 */
-	var initializeMutationObserver = function() {
+	var initializeRvvupModalMutationObserver = function() {
 		// Bail if modal iframe selector is not set
-		if ( ! _settings.modalIframeSelector ) { return; }
+		if ( ! _settings.modalRvvupIframeSelector ) { return; }
 
 		// Get the modal iframe element
-		var modalIframe = document.querySelector( _settings.modalIframeSelector );
+		var modalRvvupIframe = document.querySelector( _settings.modalRvvupIframeSelector );
 
 		// Bail if modal iframe element is not found
-		if ( ! modalIframe ) { return; }
+		if ( ! modalRvvupIframe ) { return; }
 
 		// Create observer that watches for attribute changes (src) on the modal iframe element
-		var mutationObserver = new MutationObserver( function( mutations ) {
-			mutations.forEach( function( mutation ) {
-				if ( mutation.type === "attributes" && mutation.attributeName === "src" ) {
-					disableBeforeUnloadWarning();
-				}
-			} );
+		var mutationObserver = new MutationObserver( function( mutationsList ) {
+			mutationsList.forEach( processModalIframeSrcMutation );
 		} );
 
-		// Start observing the modal iframe for src attribute changes
-		mutationObserver.observe( modalIframe, {
+		// Observe
+		mutationObserver.observe( modalRvvupIframe, {
 			attributes: true,
 			attributeFilter: [ "src" ]
 		} );
@@ -82,13 +97,63 @@
 
 
 	/**
-	 * Handle payment method change and route to the appropriate function.
+	 * Initialize mutation observer to watch for Cardinal element added or removed from the DOM.
 	 */
-	var handlePaymentMethodChange = function() {
-		// Re-enable beforeunload warning when user changes payment method
-		// Required for cases where the user cancels the payment without completing it,
-		// and switches to another payment method.
-		enableBeforeUnloadWarning();
+	var initializeCardinalElementAddedMutationObserver = function() {
+		// Bail if modal iframe selector is not set
+		if ( ! _settings.modalCardinalIframeSelector ) { return; }
+
+		// Create a mutation observer to monitor DOM changes (children added/removed) on document body
+		var observer = new MutationObserver( function( mutationsList ) {
+			for ( var i = 0; i < mutationsList.length; i++ ) {
+				// Get the mutation
+				var mutation = mutationsList[ i ];
+
+				// Maybe skip mutation if not added nodes
+				if ( mutation.type !== 'childList' ) { continue; }
+
+				// Get added and removed nodes
+				var addedNodes = mutation.addedNodes ? mutation.addedNodes : [];
+				var removedNodes = mutation.removedNodes ? mutation.removedNodes : [];
+
+				// Iterate through added nodes
+				for ( var j = 0; j < addedNodes.length; j++ ) {
+					// Get the added node
+					var addedNode = addedNodes[ j ];
+
+					// Detects when the target element is added to the DOM
+					// Checks if the added node or any of its descendants matches the selector
+					if (
+						( addedNode.nodeType === 1 && addedNode.matches && addedNode.matches( _settings.modalCardinalIframeSelector ) ) ||
+						( addedNode.nodeType === 1 && addedNode.querySelector && addedNode.querySelector( _settings.modalCardinalIframeSelector ) )
+					) {
+						// Disable payment method update and beforeunload warning
+						disableUnloadAndPaymentUpdates();
+						return;
+					}
+				}
+
+				// Iterate through removed nodes
+				for ( var k = 0; k < removedNodes.length; k++ ) {
+					// Get the removed node
+					var removedNode = removedNodes[ k ];
+
+					// Detects when the target element is removed from the DOM
+					// Checks if the removed node or any of its descendants matches the selector
+					if (
+						( removedNode.nodeType === 1 && removedNode.matches && removedNode.matches( _settings.modalCardinalIframeSelector ) ) ||
+						( removedNode.nodeType === 1 && removedNode.querySelector && removedNode.querySelector( _settings.modalCardinalIframeSelector ) )
+					) {
+						// Enable payment method update and beforeunload warning
+						enableUnloadAndPaymentUpdates();
+						return;
+					}
+				}
+			}
+		} );	
+
+		// Observe
+		observer.observe( document.body, { childList: true, subtree: true } );
 	};
 
 
@@ -99,13 +164,9 @@
 	_publicMethods.init = function() {
 		if ( _hasInitialized ) { return; }
 
-		// Initialize mutation observer
-		initializeMutationObserver();
-
-		// Add jQuery event listeners
-		if ( _hasJQuery ) {
-			$( document.body ).on( 'payment_method_selected', handlePaymentMethodChange );
-		}
+		// Initialize mutation observers
+		initializeRvvupModalMutationObserver();
+		initializeCardinalElementAddedMutationObserver();
 
 		_hasInitialized = true;
 	};
