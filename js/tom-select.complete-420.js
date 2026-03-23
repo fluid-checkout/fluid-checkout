@@ -1591,7 +1591,7 @@
 	  hideSelected: null,
 	  duplicates: false,
 	  addPrecedence: false,
-	  selectOnTab: false,
+	  selectOnTab: true,
 	  preload: null,
 	  allowEmptyOption: false,
 	  //closeAfterSelect: false,
