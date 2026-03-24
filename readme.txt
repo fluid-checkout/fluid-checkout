@@ -354,6 +354,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+* Fixed: Compatibility with Kustom Checkout for WooCommerce. Missing undo hooks statements causing shipping methods to not change correctly for Kustom Checkout and preventing it from completing the order. This fix also applies to other similar plugins.
+
 = 4.2.0 - 2026-03-10 =
 
 * Bump tested up to WooCommerce 10.6.0
