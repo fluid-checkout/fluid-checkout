@@ -500,6 +500,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Contact
 		remove_filter( 'fc_substep_contact_text_lines', array( $this, 'add_substep_text_lines_contact' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_contact_text_fragment' ), 10 );
+		remove_action( 'fc_checkout_account_after_fields', array( $this, 'output_account_creation_notice' ), 100 );
+		remove_action( 'fc_checkout_account_fields_empty_section', array( $this, 'output_account_creation_notice' ), 100 );
 
 		// Log in
 		remove_action( 'woocommerce_checkout_before_customer_details', array( $this, 'output_substep_contact_login_link_section' ), 1 );
@@ -569,7 +571,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Formatted Address
 		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'maybe_add_phone_localisation_address_formats' ), 10 );
-		remove_filter( 'woocommerce_localisation_address_formats', array( $this, 'add_phone_localisation_address_formats' ), 10 );
 		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_phone_formatted_address_replacements' ), 10 );
 		remove_filter( 'woocommerce_formatted_address_replacements', array( $this, 'add_custom_fields_formatted_address_replacements' ), 10);
 		remove_filter( 'fc_add_phone_localisation_formats', array( $this, 'maybe_skip_adding_phone_to_formatted' ), 100);
@@ -588,6 +589,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Order summary
 		remove_action( 'fc_checkout_after', array( $this, 'output_checkout_sidebar_wrapper' ), 10 );
 		remove_action( 'fc_checkout_order_review_section', array( $this, 'output_order_review' ), 10 );
+		remove_action( 'fc_checkout_order_review_content', array( $this, 'output_order_review_content' ), 10 );
 		remove_action( 'fc_checkout_after_order_review_title_after', array( $this, 'output_order_review_header_edit_cart_link' ), 10 );
 		remove_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 
@@ -603,6 +605,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10 );
 		remove_action( 'wp_login', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
+		remove_action( 'woocommerce_customer_reset_password', array( $this, 'unset_all_session_customer_persisted_data' ), 100 );
 		remove_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Re-hook removed WooCommerce functions
@@ -629,6 +632,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Order attribution
 		$this->undo_order_attribution_hooks();
+
+		// Checkout form
+		$this->undo_checkout_form_hooks();
 	}
 
 	/**
@@ -696,6 +702,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $stamp_checkout_html_actions as $hook_name ) {
 			add_action( $hook_name, array( $class_object, $class_method ), 10 );
 		}
+	}
+
+	/**
+	 * Undo checkout form hooks.
+	 */
+	public function undo_checkout_form_hooks() {
+		// Re-add checkout form sections
+		add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
+		add_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
+		add_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+		add_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
+
+		// Remove checkout form sections hooks
+		remove_action( 'woocommerce_checkout_billing', array( $this, 'checkout_form_sections_hooks' ), 9 );
+		remove_action( 'woocommerce_checkout_shipping', array( $this, 'checkout_form_sections_hooks' ), 9 );
+		remove_action( 'woocommerce_checkout_billing', array( $this, 'checkout_form_sections_hooks' ), 11 );
+		remove_action( 'woocommerce_checkout_shipping', array( $this, 'checkout_form_sections_hooks' ), 11 );
 	}
 
 
