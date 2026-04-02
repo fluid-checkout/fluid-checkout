@@ -102,9 +102,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 	public function add_body_class( $classes ) {
 		$is_checkout_validation = function_exists( 'is_checkout' ) && is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page();
 		$is_account_validation = function_exists( 'is_account_page' ) && is_account_page();
-		$is_cart_validation = function_exists( 'is_cart' ) && is_cart();
 
-		if ( ! $is_checkout_validation && ! $is_account_validation && ! $is_cart_validation ) { return $classes; }
+		if ( ! $is_checkout_validation && ! $is_account_validation ) { return $classes; }
 
 		return array_merge( $classes, array( 'has-fc-checkout-validation' ) );
 	}
@@ -168,12 +167,15 @@ class FluidCheckout_Validation extends FluidCheckout {
 	}
 
 	/**
-	 * Whether checkout validation scripts should load (checkout, cart, or customer account address).
+	 * Whether checkout validation scripts should load (checkout or customer account address).
+	 *
+	 * Cart is omitted: default `formSelector` only matches checkout and edit-address forms. The cart
+	 * shipping calculator uses `form.woocommerce-shipping-calculator`, so enqueuing here would load assets
+	 * that never bind. Extend `fc_checkout_validation_script_settings` and enqueue from a compat layer if needed.
 	 */
 	public function should_enqueue_validation_assets() {
 		if ( function_exists( 'is_checkout' ) && is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
 		if ( function_exists( 'is_account_page' ) && is_account_page() ) { return true; }
-		if ( function_exists( 'is_cart' ) && is_cart() ) { return true; }
 		return false;
 	}
 
