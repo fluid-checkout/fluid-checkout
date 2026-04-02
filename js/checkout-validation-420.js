@@ -40,8 +40,11 @@
 
 		typeRequiredSelector:                    '.validate-required',
 		typeEmailSelector:                       '.validate-email',
+		typePostcodeSelector:                    '.validate-postcode',
 		typeConfirmationSelector:                '[data-confirm-with]',
 		typeShippingMethodSelector:              '.shipping-method__package',
+
+		postcodeRules:                           null,
 
 		validClass:                              'woocommerce-validated',
 		invalidClass:                            'woocommerce-invalid',
@@ -51,6 +54,7 @@
 			required:                            'This is a required field.',
 			email:                               'This is not a valid email address.',
 			confirmation:                        'This field does not match the related field value.',
+			postcode:                            'Please enter a valid postcode / ZIP.',
 		},
 	};
 
@@ -315,6 +319,189 @@
 
 
 	/**
+	 * Whether postcode contains characters disallowed by WooCommerce WC_Validation::is_postcode.
+	 */
+	var hasDisallowedPostcodeCharacters = function( postcode ) {
+		if ( null == postcode ) { return false; }
+		var stripped = String( postcode ).replace( /[\s\-A-Za-z0-9]/g, '' );
+		return stripped.length > 0;
+	};
+
+	/**
+	 * Normalize a pattern for RegExp( pattern ): PHP may pass PCRE with / delimiters; filters might too.
+	 */
+	var jsRegexBody = function( pattern ) {
+		if ( typeof pattern !== 'string' ) { return pattern; }
+		if ( pattern.length >= 2 && pattern.charAt( 0 ) === '/' ) {
+			var end = pattern.lastIndexOf( '/' );
+			if ( end > 1 ) { return pattern.substring( 1, end ); }
+		}
+		return pattern;
+	};
+
+
+
+	/**
+	 * Find country field related to a postcode input (billing / shipping / generic).
+	 */
+	var getCountryFieldForPostcodeField = function( field, form ) {
+		if ( ! field || ! form ) { return null; }
+
+		var id = field.id || '';
+		var name = field.name || '';
+		var countrySelector = null;
+
+		if ( id.indexOf( 'billing_' ) === 0 || name.indexOf( 'billing_' ) === 0 ) {
+			countrySelector = '#billing_country, [name="billing_country"]';
+		} else if ( id.indexOf( 'shipping_' ) === 0 || name.indexOf( 'shipping_' ) === 0 ) {
+			countrySelector = '#shipping_country, [name="shipping_country"]';
+		} else {
+			var match = id.match( /^(.+)_postcode$/ ) || name.match( /^(.+)_postcode$/ );
+			if ( match && match[ 1 ] ) {
+				var prefix = match[ 1 ];
+				countrySelector = '#' + prefix + '_country, [name="' + prefix + '_country"]';
+			}
+		}
+
+		if ( countrySelector ) {
+			var found = form.querySelector( countrySelector );
+			if ( found ) { return found; }
+		}
+
+		var generic = form.querySelector( '#country, [name="country"], select.country_select' );
+		if ( generic ) { return generic; }
+
+		return null;
+	};
+
+
+
+	/**
+	 * Read selected country code from a WooCommerce country field (select or hidden input).
+	 */
+	var readCountryFieldValue = function( countryField ) {
+		if ( ! countryField ) { return ''; }
+		if ( countryField.matches( 'select' ) ) {
+			if ( countryField.selectedIndex > -1 && countryField.options[ countryField.selectedIndex ] ) {
+				return countryField.options[ countryField.selectedIndex ].value || '';
+			}
+			return '';
+		}
+		return countryField.value || '';
+	};
+
+
+
+	/**
+	 * True when postcode value matches WooCommerce rules for country (uses fcSettings.postcodeRules).
+	 */
+	var isPostcodeValidForCountry = function( postcode, country, rules ) {
+		if ( ! rules || ! country ) { return true; }
+
+		if ( hasDisallowedPostcodeCharacters( postcode ) ) { return false; }
+
+		if ( 'GB' === country ) {
+			var gbVal = String( postcode ).toLowerCase().replace( /\s/g, '' );
+			var gbPatterns = rules.gbPatterns || [];
+			for ( var g = 0; g < gbPatterns.length; g++ ) {
+				try {
+					if ( new RegExp( jsRegexBody( gbPatterns[ g ] ) ).test( gbVal ) ) { return true; }
+				} catch ( err ) {}
+			}
+			return false;
+		}
+
+		if ( 'IE' === country && rules.ieRegex ) {
+			var ieNorm = String( postcode ).replace( /[\s\-]/g, '' ).toUpperCase();
+			try {
+				return new RegExp( jsRegexBody( rules.ieRegex ) ).test( ieNorm );
+			} catch ( err2 ) { return true; }
+		}
+
+		var map = rules.countryRegex || {};
+		var pattern = jsRegexBody( map[ country ] );
+		if ( ! pattern ) { return true; }
+
+		var flags = '';
+		if ( /^(US|PR|CA|NL)$/.test( country ) ) { flags = 'i'; }
+
+		try {
+			return new RegExp( pattern, flags ).test( String( postcode ).trim() );
+		} catch ( err3 ) { return true; }
+	};
+
+
+
+	/**
+	 * Update inputmode on postcode fields under container from current country (numeric vs text).
+	 */
+	var updatePostcodeInputModesInContainer = function( container ) {
+		if ( ! container || ! _settings.postcodeRules ) { return; }
+		var numericCountries = _settings.postcodeRules.numericInputCountries || [];
+		var rows = container.querySelectorAll( _settings.typePostcodeSelector );
+		for ( var r = 0; r < rows.length; r++ ) {
+			var row = rows[ r ];
+			var input = row.querySelector( 'input.input-text, input[type="text"]' );
+			if ( ! input ) { continue; }
+			var form = row.closest( 'form' );
+			var countryField = getCountryFieldForPostcodeField( input, form );
+			var cc = readCountryFieldValue( countryField );
+			if ( ! cc ) { continue; }
+			if ( numericCountries.indexOf( cc ) !== -1 ) {
+				input.setAttribute( 'inputmode', 'numeric' );
+			} else {
+				input.setAttribute( 'inputmode', 'text' );
+			}
+		}
+	};
+
+
+
+	/**
+	 * Check if form row is for postcode validation.
+	 */
+	var isPostcodeFieldRow = function( field, formRow, validationEvent ) {
+		if ( ! formRow || ! formRow.matches( _settings.typePostcodeSelector ) ) { return false; }
+		if ( ! field.matches( 'input.input-text, input[type="text"]' ) ) { return false; }
+		var fid = field.id || '';
+		var fname = field.name || '';
+		if ( fid.indexOf( 'postcode' ) !== -1 || fname.indexOf( 'postcode' ) !== -1 ) { return true; }
+		var firstText = formRow.querySelector( 'input.input-text, input[type="text"]' );
+		return firstText === field;
+	};
+
+
+
+	/**
+	 * Validate postcode (instant).
+	 */
+	var validatePostcode = function( field, formRow, validationEvent ) {
+		if ( ! _settings.postcodeRules ) { return { valid: true }; }
+
+		if ( ! _publicMethods.hasValue( field ) ) {
+			if ( ! formRow.matches( _settings.typeRequiredSelector ) ) {
+				return { valid: true };
+			}
+			return { valid: true };
+		}
+
+		var form = formRow.closest( 'form' );
+		var countryField = getCountryFieldForPostcodeField( field, form );
+		if ( ! countryField ) { return { valid: true }; }
+
+		var country = readCountryFieldValue( countryField );
+		if ( ! country ) { return { valid: true }; }
+
+		if ( ! isPostcodeValidForCountry( field.value, country, _settings.postcodeRules ) ) {
+			return { valid: false, message: _settings.validationMessages.postcode };
+		}
+
+		return { valid: true };
+	};
+
+
+
+	/**
 	 * Check if form row is a confirmation field.
 	 * @param  {Field}    field            Field for validation.
 	 * @param  {Element}  formRow          Form row element.
@@ -478,6 +665,13 @@
 
 			} );
 
+			updatePostcodeInputModesInContainer( wrapperItem );
+
+			var postcodeInputs = wrapperItem.querySelectorAll( _settings.typePostcodeSelector + ' input.input-text, ' + _settings.typePostcodeSelector + ' input[type="text"]' );
+			for ( var pi = 0; pi < postcodeInputs.length; pi++ ) {
+				_publicMethods.validateField( postcodeInputs[ pi ], 'change', false );
+			}
+
 		} );
 	};
 
@@ -522,6 +716,7 @@
 	var registerValidationTypes = function() {
 		_publicMethods.registerValidationType( 'required', 'required-field', isRequiredField, validateRequired );
 		_publicMethods.registerValidationType( 'email', 'email', isEmailField, validateEmail );
+		_publicMethods.registerValidationType( 'postcode', 'postcode', isPostcodeFieldRow, validatePostcode );
 		_publicMethods.registerValidationType( 'confirmation', 'confirmation-field', isConfirmationField, validateConfirmation );
 		_publicMethods.registerValidationType( 'shipping-method', 'shipping-method-field', isShippingMethodField, validateShippingMethod );
 	}
@@ -611,9 +806,18 @@
 	 * @return {Boolean}           True if all fields are valid.
 	 */
 	_publicMethods.validateAllFields = function( container, validateHidden ) {
-		if ( ! container ) { container = document.querySelector( _settings.formSelector ) }
-
 		var all_valid = true;
+
+		if ( ! container ) {
+			var formList = document.querySelectorAll( _settings.formSelector );
+			for ( var f = 0; f < formList.length; f++ ) {
+				if ( ! _publicMethods.validateAllFields( formList[ f ], validateHidden ) ) {
+					all_valid = false;
+				}
+			}
+			return all_valid;
+		}
+
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for ( var i = 0; i < fields.length; i++ ) {
@@ -690,7 +894,7 @@
 
 		if ( _hasJQuery ) {
 			// Validation events
-			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
+			$( document.body ).on( 'input validate change', _settings.formSelector + ' ' + _settings.validateFieldsSelector, handleValidateEvent );
 
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );
@@ -699,6 +903,8 @@
 
 		// Add body class
 		document.body.classList.add( _settings.bodyClass );
+
+		updatePostcodeInputModesInContainer( document.body );
 
 		_hasInitialized = true;
 	};
