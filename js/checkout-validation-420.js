@@ -40,8 +40,11 @@
 
 		typeRequiredSelector:                    '.validate-required',
 		typeEmailSelector:                       '.validate-email',
+		typePostcodeSelector:                    '.validate-postcode',
 		typeConfirmationSelector:                '[data-confirm-with]',
 		typeShippingMethodSelector:              '.shipping-method__package',
+
+		postcodeRules:                           null,
 
 		validClass:                              'woocommerce-validated',
 		invalidClass:                            'woocommerce-invalid',
@@ -51,6 +54,7 @@
 			required:                            'This is a required field.',
 			email:                               'This is not a valid email address.',
 			confirmation:                        'This field does not match the related field value.',
+			postcode:                            'Please enter a valid postcode / ZIP.',
 		},
 	};
 
@@ -202,6 +206,16 @@
 	};
 
 	/**
+	 * Tom Select fires events on the combobox input inside `.ts-control`; the canonical value is on the hidden `select.ts-hidden-accessible`.
+	 * @param  {Element}  field  Event target or element to test.
+	 * @return {Boolean}         True if this is the Tom Select control input (not the native select).
+	 */
+	var isSelectTomControlInput = function( field ) {
+		if ( ! field || ! field.matches || ! field.matches( 'input' ) ) { return false; }
+		return !! field.closest( _settings.selectTomWrapperSelector + ' .ts-control' );
+	};
+
+	/**
 	 * Check if field is a select field.
 	 * @param  {Element}  field  Field to check.
 	 * @return {Boolean}         True if is a select field.
@@ -309,6 +323,285 @@
 		// Validate email value
 		if ( ! emailPattern.test( field.value ) ) { return { valid: false, message: _settings.validationMessages.email }; }
 
+		return { valid: true };
+	};
+
+
+
+	/**
+	 * Whether postcode contains characters disallowed by WooCommerce WC_Validation::is_postcode.
+	 */
+	var hasDisallowedPostcodeCharacters = function( postcode ) {
+		if ( null == postcode ) { return false; }
+		var stripped = String( postcode ).replace( /[\s\-A-Za-z0-9]/g, '' );
+		return stripped.length > 0;
+	};
+
+	/**
+	 * Normalize a pattern for RegExp( pattern ): PHP may pass PCRE with / delimiters; filters might too.
+	 */
+	var jsRegexBody = function( pattern ) {
+		if ( typeof pattern !== 'string' ) { return pattern; }
+		if ( pattern.length >= 2 && pattern.charAt( 0 ) === '/' ) {
+			var end = pattern.lastIndexOf( '/' );
+			if ( end > 1 ) { return pattern.substring( 1, end ); }
+		}
+		return pattern;
+	};
+
+
+
+	/**
+	 * Find country field related to a postcode input (billing / shipping / {prefix}_postcode).
+	 */
+	var getCountryFieldForPostcodeField = function( field, form ) {
+		// Bail if field or form is not valid
+		if ( ! field || ! form ) { return null; }
+
+		// Get field id and name
+		var id = field.id || '';
+		var name = field.name || '';
+
+		// Initialize country selector
+		var countrySelector = null;
+
+		// Check if field is a billing or shipping postcode field
+		if ( id.indexOf( 'billing_' ) === 0 || name.indexOf( 'billing_' ) === 0 ) {
+			// Billing postcode field
+			countrySelector = '#billing_country, [name="billing_country"]';
+		} else if ( id.indexOf( 'shipping_' ) === 0 || name.indexOf( 'shipping_' ) === 0 ) {
+			// Shipping postcode field
+			countrySelector = '#shipping_country, [name="shipping_country"]';
+		} else {
+			// Not billing_/shipping_: custom {prefix}_postcode (pickup_, plugin fields, etc.)
+			var customMatch = id.match( /^(.+)_postcode$/ ) || name.match( /^(.+)_postcode$/ );
+			var customPrefix = customMatch && customMatch[ 1 ] ? customMatch[ 1 ] : '';
+			if ( customPrefix ) {
+				countrySelector = '#' + customPrefix + '_country, [name="' + customPrefix + '_country"]';
+			}
+		}
+
+		// Check if country selector is valid
+		var found = countrySelector ? form.querySelector( countrySelector ) : null;
+		if ( found ) { return found; }
+
+		// Fallback when prefix logic misses or markup is non-standard: unprefixed `country` / `postcode`
+		return form.querySelector( '#country, [name="country"], select.country_select' );
+	};
+
+
+
+	/**
+	 * Read selected country code from a WooCommerce country field (select or hidden input).
+	 */
+	var readCountryFieldValue = function( countryField ) {
+		// Bail if country field is not valid
+		if ( ! countryField ) { return ''; }
+
+		// Check if country field is a select field
+		if ( ! countryField.matches( 'select' ) ) {
+			// Return country code from hidden input
+			return countryField.value || '';
+		}
+
+		// Get selected country code
+		var idx = countryField.selectedIndex;
+		var opt = countryField.options[ idx ];
+
+		// Bail if no selected option
+		if ( idx < 0 || ! opt ) { return ''; }
+
+		// Return selected country code
+		return opt.value || '';
+	};
+
+
+	/**
+	 * GB: valid if any gbPattern matches (mirrors WC_Validation::is_gb_postcode).
+	 */
+	var isGbPostcodeValidForRules = function( postcode, rules ) {
+		// Normalize postcode
+		var normalized = String( postcode ).toLowerCase().replace( /\s/g, '' );
+
+		// Get GB patterns
+		var patterns = rules.gbPatterns || [];
+
+		// Iterate through GB patterns
+		for ( var i = 0; i < patterns.length; i++ ) {
+			try {
+				if ( new RegExp( jsRegexBody( patterns[ i ] ) ).test( normalized ) ) { return true; }
+			} catch ( err ) {}
+		}
+		return false;
+	};
+
+
+	/**
+	 * IE: optional ieRegex on rules; invalid regex fails open (same as server leniency).
+	 */
+	var isIePostcodeValidForRules = function( postcode, rules ) {
+		// Normalize postcode
+		var normalized = String( postcode ).replace( /[\s\-]/g, '' ).toUpperCase();
+
+		// Validate postcode
+		try {
+			return new RegExp( jsRegexBody( rules.ieRegex ) ).test( normalized );
+		} catch ( err ) {
+			return true;
+		}
+	};
+
+
+	/**
+	 * Default: per-country regex from rules.countryRegex; missing pattern → valid; bad regex → valid.
+	 */
+	var isDefaultPostcodeValidForRules = function( postcode, country, rules ) {
+		// Get default country regex
+		var raw = ( rules.countryRegex || {} )[ country ];
+
+		// Normalize default country regex
+		var body = jsRegexBody( raw );
+
+		// Bail if default country regex is not valid
+		if ( ! body ) { return true; }
+
+		// Get flags
+		var flags = /^(US|PR|CA|NL)$/.test( country ) ? 'i' : '';
+
+		// Validate postcode
+		try {
+			return new RegExp( body, flags ).test( String( postcode ).trim() );
+		} catch ( err ) {
+			return true;
+		}
+	};
+
+
+	/**
+	 * True when postcode value matches WooCommerce rules for country (uses fcSettings.postcodeRules).
+	 */
+	var isPostcodeValidForCountry = function( postcode, country, rules ) {
+		// Bail if rules or country is not valid
+		if ( ! rules || ! country ) { return true; }
+
+		// Bail if postcode contains disallowed characters
+		if ( hasDisallowedPostcodeCharacters( postcode ) ) { return false; }
+
+		// Check if country is Great Britain
+		if ( 'GB' === country ) {
+			return isGbPostcodeValidForRules( postcode, rules );
+		}
+
+		// Check if country is Ireland and if there is an IE regex
+		if ( 'IE' === country && rules.ieRegex ) {
+			return isIePostcodeValidForRules( postcode, rules );
+		}
+
+		// Check if country is a default country
+		return isDefaultPostcodeValidForRules( postcode, country, rules );
+	};
+
+
+
+	/**
+	 * Update inputmode on postcode fields under container from current country (numeric vs text).
+	 */
+	var updatePostcodeInputModesInContainer = function( container ) {
+		// Bail if container or postcode rules are not valid
+		if ( ! container || ! _settings.postcodeRules ) { return; }
+
+		// Get numeric countries
+		var numericCountries = _settings.postcodeRules.numericInputCountries || [];
+
+		// Get rows
+		var rows = container.querySelectorAll( _settings.typePostcodeSelector );
+
+		// Iterate through rows
+		for ( var r = 0; r < rows.length; r++ ) {
+			// Get row
+			var row = rows[ r ];
+
+			// Get input
+			var input = row.querySelector( 'input.input-text, input[type="text"]' );
+			if ( ! input ) { continue; }
+
+			// Get form
+			var form = row.closest( 'form' );
+
+			// Get country field
+			var countryField = getCountryFieldForPostcodeField( input, form );
+
+			// Get country code
+			var cc = readCountryFieldValue( countryField );
+			if ( ! cc ) { continue; }
+
+			// Check if country code is in numeric countries
+			if ( numericCountries.indexOf( cc ) !== -1 ) {
+				// Set inputmode to numeric
+				input.setAttribute( 'inputmode', 'numeric' );
+			} else {
+				// Set inputmode to text
+				input.setAttribute( 'inputmode', 'text' );
+			}
+		}
+	};
+
+
+
+	/**
+	 * Check if form row is for postcode validation.
+	 */
+	var isPostcodeFieldRow = function( field, formRow, validationEvent ) {
+		// Bail if form row or field does not match postcode selector
+		if ( ! formRow || ! formRow.matches( _settings.typePostcodeSelector ) ) { return false; }
+		// Bail if field does not match input.input-text or input[type="text"]
+		if ( ! field.matches( 'input.input-text, input[type="text"]' ) ) { return false; }
+		// Get field id and name
+		var fid = field.id || '';
+		var fname = field.name || '';
+		// Check if field id or name contains postcode
+		if ( fid.indexOf( 'postcode' ) !== -1 || fname.indexOf( 'postcode' ) !== -1 ) { return true; }
+		// Get first text input in form row
+		var firstText = formRow.querySelector( 'input.input-text, input[type="text"]' );
+		// Return true if first text input is the field
+		return firstText === field;
+	};
+
+
+
+	/**
+	 * Validate postcode (instant).
+	 */
+	var validatePostcode = function( field, formRow, validationEvent ) {
+		// Bail if postcode rules are not valid
+		if ( ! _settings.postcodeRules ) { return { valid: true }; }
+
+		// Bail if field does not have a value
+		if ( ! _publicMethods.hasValue( field ) ) {
+			// Bail if field is not required
+			if ( ! formRow.matches( _settings.typeRequiredSelector ) ) { return { valid: true }; }
+
+			// Return valid
+			return { valid: true };
+		}
+
+		// Get form
+		var form = formRow.closest( 'form' );
+		var countryField = getCountryFieldForPostcodeField( field, form );
+
+		// Bail if country field is not valid
+		if ( ! countryField ) { return { valid: true }; }
+
+		// Get country
+		var country = readCountryFieldValue( countryField );
+		if ( ! country ) { return { valid: true }; }
+
+		// Check if postcode is valid for country
+		if ( ! isPostcodeValidForCountry( field.value, country, _settings.postcodeRules ) ) {
+			return { valid: false, message: _settings.validationMessages.postcode };
+		}
+
+		// Return valid
 		return { valid: true };
 	};
 
@@ -478,6 +771,13 @@
 
 			} );
 
+			updatePostcodeInputModesInContainer( wrapperItem );
+
+			var postcodeInputs = wrapperItem.querySelectorAll( _settings.typePostcodeSelector + ' input.input-text, ' + _settings.typePostcodeSelector + ' input[type="text"]' );
+			for ( var pi = 0; pi < postcodeInputs.length; pi++ ) {
+				_publicMethods.validateField( postcodeInputs[ pi ], 'change', false );
+			}
+
 		} );
 	};
 
@@ -493,24 +793,40 @@
 		// Get variables
 		var field = e.target;
 		var formRow = e.target.closest( _settings.formRowSelector );
+		var validateHidden = false;
 
 		// Bail if field or formRow not available
 		if ( ! field || ! formRow ) { return; }
 
-		// Get correct field when is select2
+		// Get correct field when is select2 (native value is on the hidden/inaccessible original select)
 		if ( isSelect2Field( e.target ) ) {
 			if ( formRow ) {
-				field = formRow.querySelector( 'select' );
+				var select2Native = formRow.querySelector( 'select' );
+				if ( select2Native ) {
+					field = select2Native;
+					validateHidden = true;
+				}
+			}
+		}
+
+		// Get correct field when is Tom Select combobox (events target the control input; value lives on select.ts-hidden-accessible)
+		if ( isSelectTomControlInput( e.target ) ) {
+			if ( formRow ) {
+				var tomNative = formRow.querySelector( _settings.selectTomSelector );
+				if ( tomNative ) {
+					field = tomNative;
+					validateHidden = true;
+				}
 			}
 		}
 
 		// Maybe delay validation when user is typing for the first time in the field
 		if ( 'input' === e.type && ! formRow.classList.contains( _settings.validClass ) && ! formRow.classList.contains( _settings.invalidClass ) ) {
-			_publicMethods.validateFieldDebounced( field, e.type );
+			_publicMethods.validateFieldDebounced( field, e.type, validateHidden );
 		}
 		// Otherwise, trigger validation immediatelly
 		else {
-			_publicMethods.validateField( field, e.type );
+			_publicMethods.validateField( field, e.type, validateHidden );
 		}
 	};
 
@@ -522,6 +838,7 @@
 	var registerValidationTypes = function() {
 		_publicMethods.registerValidationType( 'required', 'required-field', isRequiredField, validateRequired );
 		_publicMethods.registerValidationType( 'email', 'email', isEmailField, validateEmail );
+		_publicMethods.registerValidationType( 'postcode', 'postcode', isPostcodeFieldRow, validatePostcode );
 		_publicMethods.registerValidationType( 'confirmation', 'confirmation-field', isConfirmationField, validateConfirmation );
 		_publicMethods.registerValidationType( 'shipping-method', 'shipping-method-field', isShippingMethodField, validateShippingMethod );
 	}
@@ -611,9 +928,18 @@
 	 * @return {Boolean}           True if all fields are valid.
 	 */
 	_publicMethods.validateAllFields = function( container, validateHidden ) {
-		if ( ! container ) { container = document.querySelector( _settings.formSelector ) }
-
 		var all_valid = true;
+
+		if ( ! container ) {
+			var formList = document.querySelectorAll( _settings.formSelector );
+			for ( var f = 0; f < formList.length; f++ ) {
+				if ( ! _publicMethods.validateAllFields( formList[ f ], validateHidden ) ) {
+					all_valid = false;
+				}
+			}
+			return all_valid;
+		}
+
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
 		for ( var i = 0; i < fields.length; i++ ) {
@@ -690,7 +1016,7 @@
 
 		if ( _hasJQuery ) {
 			// Validation events
-			$( _settings.formSelector ).on( 'input validate change', _settings.validateFieldsSelector, handleValidateEvent );
+			$( document.body ).on( 'input validate change', _settings.formSelector + ' ' + _settings.validateFieldsSelector, handleValidateEvent );
 
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );
@@ -699,6 +1025,8 @@
 
 		// Add body class
 		document.body.classList.add( _settings.bodyClass );
+
+		updatePostcodeInputModesInContainer( document.body );
 
 		_hasInitialized = true;
 	};

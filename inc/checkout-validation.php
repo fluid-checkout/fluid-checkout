@@ -54,6 +54,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Add validation status classes to checkout fields
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
 		add_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_icon_hide_class' ), 100, 3 );
+		add_filter( 'woocommerce_form_field_args', array( $this, 'maybe_add_postcode_inputmode_attribute' ), 110, 3 );
 
 		// Fix required marker accessibility
 		add_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
@@ -85,6 +86,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		// Add validation status classes to checkout fields
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_status_classes' ), 100, 3 );
 		remove_filter( 'woocommerce_form_field_args', array( $this, 'add_checkout_field_validation_icon_hide_class' ), 100, 3 );
+		remove_filter( 'woocommerce_form_field_args', array( $this, 'maybe_add_postcode_inputmode_attribute' ), 110, 3 );
 
 		// Fix required marker accessibility
 		remove_filter( 'woocommerce_form_field', array( $this, 'change_required_field_attributes' ), 100, 4 );
@@ -98,8 +100,10 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * @param array  $classes  Current classes.
 	 */
 	public function add_body_class( $classes ) {
-		// Bail if not on checkout page.
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $classes; }
+		$is_checkout_validation = function_exists( 'is_checkout' ) && is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page();
+		$is_account_validation = function_exists( 'is_account_page' ) && is_account_page();
+
+		if ( ! $is_checkout_validation && ! $is_account_validation ) { return $classes; }
 
 		return array_merge( $classes, array( 'has-fc-checkout-validation' ) );
 	}
@@ -157,10 +161,22 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * Maybe enqueue assets.
 	 */
 	public function maybe_enqueue_assets() {
-		// Bail if not at checkout
-		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return; }
+		if ( ! $this->should_enqueue_validation_assets() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+	/**
+	 * Whether checkout validation scripts should load (checkout or customer account address).
+	 *
+	 * Cart is omitted: default `formSelector` only matches checkout and edit-address forms. The cart
+	 * shipping calculator uses `form.woocommerce-shipping-calculator`, so enqueuing here would load assets
+	 * that never bind. Extend `fc_checkout_validation_script_settings` and enqueue from a compat layer if needed.
+	 */
+	public function should_enqueue_validation_assets() {
+		if ( function_exists( 'is_checkout' ) && is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) { return true; }
+		return false;
 	}
 
 	/**
@@ -188,10 +204,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
+			'formSelector'                       => 'form.checkout, form:has( .woocommerce-address-fields__field-wrapper )',
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
 			'validateFieldsSelector'             => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
 			'referenceNodeSelector'              => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
+			'typePostcodeSelector'               => '.validate-postcode',
+			'postcodeRules'                      => $this->get_postcode_validation_rules_for_script(),
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
 				'suggestedElementTemplate'       => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( apply_filters( 'fc_mailcheck_suggestion_message', __( 'Did you mean %s?', 'fluid-checkout' ) ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
@@ -200,6 +219,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 				'required'                       => __( 'This is a required field.', 'fluid-checkout' ),
 				'email'                          => __( 'This is not a valid email address.', 'fluid-checkout' ),
 				'confirmation'                   => __( 'This field does not match the related field value.', 'fluid-checkout' ),
+				'postcode'                       => __( 'Please enter a valid postcode / ZIP.', 'fluid-checkout' ),
 			),
 		) );
 
@@ -421,6 +441,125 @@ class FluidCheckout_Validation extends FluidCheckout {
 		}
 
 		return $field;
+	}
+
+
+
+	/**
+	 * Build postcode validation rules for front-end (mirrors WooCommerce WC_Validation::is_postcode / is_gb_postcode).
+	 *
+	 * @return array
+	 */
+	public function get_postcode_validation_rules_for_script() {
+		$country_regex = array(
+			'AT' => '^([0-9]{4})$',
+			'BE' => '^([0-9]{4})$',
+			'CH' => '^([0-9]{4})$',
+			'HU' => '^([0-9]{4})$',
+			'NO' => '^([0-9]{4})$',
+			'BA' => '^([7-8]{1})([0-9]{4})$',
+			'BR' => '^([0-9]{5})([-])?([0-9]{3})$',
+			'DE' => '^([0]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{3}$',
+			'DK' => '^(DK-)?([1-24-9]\d{3}|3[0-8]\d{2})$',
+			'ES' => '^([0-9]{5})$',
+			'FI' => '^([0-9]{5})$',
+			'EE' => '^([0-9]{5})$',
+			'FR' => '^([0-9]{5})$',
+			'IT' => '^([0-9]{5})$',
+			'IN' => '^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$',
+			'JP' => '^([0-9]{3})([-]?)([0-9]{4})$',
+			'PT' => '^([0-9]{4})([-])([0-9]{3})$',
+			'PR' => '^([0-9]{5})(-[0-9]{4})?$',
+			'US' => '^([0-9]{5})(-[0-9]{4})?$',
+			'CA' => '^([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ])([\ ])?(\d[ABCEGHJKLMNPRSTVWXYZ]\d)$',
+			'PL' => '^([0-9]{2})([-])([0-9]{3})$',
+			'NL' => '^([1-9][0-9]{3})(\s?)(?!SA|SD|SS)[A-Z]{2}$',
+			'SI' => '^([1-9][0-9]{3})$',
+			'LI' => '^(94[8-9][0-9])$',
+		);
+
+		foreach ( array( 'CZ', 'SE', 'SK' ) as $cc ) {
+			$country_regex[ $cc ] = '^(' . $cc . '-)?([0-9]{3})(\s?)([0-9]{2})$';
+		}
+
+		// Pattern body only (no PCRE delimiters) for `new RegExp()` in checkout-validation.js.
+		$ie_regex = '([AC-FHKNPRTV-Y]\d{2}|D6W)[0-9AC-FHKNPRTV-Y]{4}';
+
+		$numeric_input_postcode_countries = array(
+			'AT', 'BE', 'CH', 'HU', 'NO', 'BA', 'BR', 'DE', 'ES', 'FI', 'EE', 'FR', 'IT',
+			'IN', 'JP', 'PL', 'PR', 'US', 'SI', 'LI', 'CZ', 'SE', 'SK',
+		);
+
+		$rules = array(
+			'countryRegex'              => $country_regex,
+			'ieRegex'                   => $ie_regex,
+			'gbPatterns'                => $this->get_gb_postcode_regex_patterns_for_script(),
+			'numericInputCountries'     => $numeric_input_postcode_countries,
+		);
+
+		return apply_filters( 'fc_checkout_postcode_validation_rules_for_script', $rules );
+	}
+
+
+
+	/**
+	 * Regex strings for GB postcode validation (same structure as WC_Validation::is_gb_postcode).
+	 *
+	 * @return array
+	 */
+	protected function get_gb_postcode_regex_patterns_for_script() {
+		$alpha1 = '[abcdefghijklmnoprstuwyz]';
+		$alpha2 = '[abcdefghklmnopqrstuvwxy]';
+		$alpha3 = '[abcdefghjkpstuw]';
+		$alpha4 = '[abehmnprvwxy]';
+		$alpha5 = '[abdefghjlnpqrstuwxyz]';
+
+		return array(
+			'^(' . $alpha1 . '{1}' . $alpha2 . '{0,1}[0-9]{1,2})([0-9]{1}' . $alpha5 . '{2})$',
+			'^(' . $alpha1 . '{1}[0-9]{1}' . $alpha3 . '{1})([0-9]{1}' . $alpha5 . '{2})$',
+			'^(' . $alpha1 . '{1}' . $alpha2 . '[0-9]{1}' . $alpha4 . ')([0-9]{1}' . $alpha5 . '{2})$',
+			'^(gir)(0aa)$',
+			'^(bfpo)([0-9]{1,4})$',
+			'^(bfpo)(c/o[0-9]{1,3})$',
+		);
+	}
+
+
+
+	/**
+	 * Set inputmode on postcode fields when store / customer country uses a digits-only format (optional initial hint).
+	 *
+	 * @param array  $args  Field args.
+	 * @param string $key   Field key.
+	 * @param mixed  $value Field value.
+	 *
+	 * @return array
+	 */
+	public function maybe_add_postcode_inputmode_attribute( $args, $key, $value ) {
+		$format = array_filter( isset( $args['validate'] ) ? (array) $args['validate'] : array() );
+		if ( ! in_array( 'postcode', $format, true ) ) { return $args; }
+		if ( ! isset( $args['type'] ) || 'text' !== $args['type'] ) { return $args; }
+
+		$country = '';
+		if ( function_exists( 'WC' ) && WC()->customer ) {
+			if ( 0 === strpos( (string) $key, 'shipping_' ) ) {
+				$country = (string) WC()->customer->get_shipping_country();
+			} else {
+				$country = (string) WC()->customer->get_billing_country();
+			}
+		}
+
+		if ( '' === $country ) { return $args; }
+
+		$rules = $this->get_postcode_validation_rules_for_script();
+		if ( empty( $rules['numericInputCountries'] ) || ! in_array( $country, $rules['numericInputCountries'], true ) ) { return $args; }
+
+		if ( ! isset( $args['custom_attributes'] ) || ! is_array( $args['custom_attributes'] ) ) {
+			$args['custom_attributes'] = array();
+		}
+		$args['custom_attributes']['inputmode'] = 'numeric';
+
+		return $args;
 	}
 
 }
