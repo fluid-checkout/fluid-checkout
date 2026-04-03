@@ -352,36 +352,41 @@
 
 
 	/**
-	 * Find country field related to a postcode input (billing / shipping / generic).
+	 * Find country field related to a postcode input (billing / shipping / {prefix}_postcode).
 	 */
 	var getCountryFieldForPostcodeField = function( field, form ) {
+		// Bail if field or form is not valid
 		if ( ! field || ! form ) { return null; }
 
+		// Get field id and name
 		var id = field.id || '';
 		var name = field.name || '';
+
+		// Initialize country selector
 		var countrySelector = null;
 
+		// Check if field is a billing or shipping postcode field
 		if ( id.indexOf( 'billing_' ) === 0 || name.indexOf( 'billing_' ) === 0 ) {
+			// Billing postcode field
 			countrySelector = '#billing_country, [name="billing_country"]';
 		} else if ( id.indexOf( 'shipping_' ) === 0 || name.indexOf( 'shipping_' ) === 0 ) {
+			// Shipping postcode field
 			countrySelector = '#shipping_country, [name="shipping_country"]';
 		} else {
-			var match = id.match( /^(.+)_postcode$/ ) || name.match( /^(.+)_postcode$/ );
-			if ( match && match[ 1 ] ) {
-				var prefix = match[ 1 ];
-				countrySelector = '#' + prefix + '_country, [name="' + prefix + '_country"]';
+			// Not billing_/shipping_: custom {prefix}_postcode (pickup_, plugin fields, etc.)
+			var customMatch = id.match( /^(.+)_postcode$/ ) || name.match( /^(.+)_postcode$/ );
+			var customPrefix = customMatch && customMatch[ 1 ] ? customMatch[ 1 ] : '';
+			if ( customPrefix ) {
+				countrySelector = '#' + customPrefix + '_country, [name="' + customPrefix + '_country"]';
 			}
 		}
 
-		if ( countrySelector ) {
-			var found = form.querySelector( countrySelector );
-			if ( found ) { return found; }
-		}
+		// Check if country selector is valid
+		var found = countrySelector ? form.querySelector( countrySelector ) : null;
+		if ( found ) { return found; }
 
-		var generic = form.querySelector( '#country, [name="country"], select.country_select' );
-		if ( generic ) { return generic; }
-
-		return null;
+		// Fallback when prefix logic misses or markup is non-standard: unprefixed `country` / `postcode`
+		return form.querySelector( '#country, [name="country"], select.country_select' );
 	};
 
 
@@ -390,14 +395,25 @@
 	 * Read selected country code from a WooCommerce country field (select or hidden input).
 	 */
 	var readCountryFieldValue = function( countryField ) {
+		// Bail if country field is not valid
 		if ( ! countryField ) { return ''; }
-		if ( countryField.matches( 'select' ) ) {
-			if ( countryField.selectedIndex > -1 && countryField.options[ countryField.selectedIndex ] ) {
-				return countryField.options[ countryField.selectedIndex ].value || '';
-			}
-			return '';
+
+		// Check if country field is a select field
+		if ( ! countryField.matches( 'select' ) ) {
+			// Return country code from hidden input
+			return countryField.value || '';
 		}
-		return countryField.value || '';
+
+		// Get selected country code
+		var idx = countryField.selectedIndex;
+		var opt = countryField.options[ idx ];
+
+		// Bail if no selected option
+		if ( idx < 0 || ! opt ) { return ''; }
+
+		// Return selected country code
+		console.log( 'selected country code', opt.value );
+		return opt.value || '';
 	};
 
 

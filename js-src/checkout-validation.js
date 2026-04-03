@@ -352,36 +352,41 @@
 
 
 	/**
-	 * Find country field related to a postcode input (billing / shipping / generic).
+	 * Find country field related to a postcode input (billing / shipping / {prefix}_postcode).
 	 */
 	var getCountryFieldForPostcodeField = function( field, form ) {
+		// Bail if field or form is not valid
 		if ( ! field || ! form ) { return null; }
 
+		// Get field id and name
 		var id = field.id || '';
 		var name = field.name || '';
+
+		// Initialize country selector
 		var countrySelector = null;
 
+		// Check if field is a billing or shipping postcode field
 		if ( id.indexOf( 'billing_' ) === 0 || name.indexOf( 'billing_' ) === 0 ) {
+			// Billing postcode field
 			countrySelector = '#billing_country, [name="billing_country"]';
 		} else if ( id.indexOf( 'shipping_' ) === 0 || name.indexOf( 'shipping_' ) === 0 ) {
+			// Shipping postcode field
 			countrySelector = '#shipping_country, [name="shipping_country"]';
 		} else {
-			var match = id.match( /^(.+)_postcode$/ ) || name.match( /^(.+)_postcode$/ );
-			if ( match && match[ 1 ] ) {
-				var prefix = match[ 1 ];
-				countrySelector = '#' + prefix + '_country, [name="' + prefix + '_country"]';
+			// Not billing_/shipping_: custom {prefix}_postcode (pickup_, plugin fields, etc.)
+			var customMatch = id.match( /^(.+)_postcode$/ ) || name.match( /^(.+)_postcode$/ );
+			var customPrefix = customMatch && customMatch[ 1 ] ? customMatch[ 1 ] : '';
+			if ( customPrefix ) {
+				countrySelector = '#' + customPrefix + '_country, [name="' + customPrefix + '_country"]';
 			}
 		}
 
-		if ( countrySelector ) {
-			var found = form.querySelector( countrySelector );
-			if ( found ) { return found; }
-		}
+		// Check if country selector is valid
+		var found = countrySelector ? form.querySelector( countrySelector ) : null;
+		if ( found ) { return found; }
 
-		var generic = form.querySelector( '#country, [name="country"], select.country_select' );
-		if ( generic ) { return generic; }
-
-		return null;
+		// Fallback when prefix logic misses or markup is non-standard: unprefixed `country` / `postcode`
+		return form.querySelector( '#country, [name="country"], select.country_select' );
 	};
 
 
@@ -390,54 +395,110 @@
 	 * Read selected country code from a WooCommerce country field (select or hidden input).
 	 */
 	var readCountryFieldValue = function( countryField ) {
+		// Bail if country field is not valid
 		if ( ! countryField ) { return ''; }
-		if ( countryField.matches( 'select' ) ) {
-			if ( countryField.selectedIndex > -1 && countryField.options[ countryField.selectedIndex ] ) {
-				return countryField.options[ countryField.selectedIndex ].value || '';
-			}
-			return '';
+
+		// Check if country field is a select field
+		if ( ! countryField.matches( 'select' ) ) {
+			// Return country code from hidden input
+			return countryField.value || '';
 		}
-		return countryField.value || '';
+
+		// Get selected country code
+		var idx = countryField.selectedIndex;
+		var opt = countryField.options[ idx ];
+
+		// Bail if no selected option
+		if ( idx < 0 || ! opt ) { return ''; }
+
+		// Return selected country code
+		return opt.value || '';
 	};
 
+
+	/**
+	 * GB: valid if any gbPattern matches (mirrors WC_Validation::is_gb_postcode).
+	 */
+	var isGbPostcodeValidForRules = function( postcode, rules ) {
+		// Normalize postcode
+		var normalized = String( postcode ).toLowerCase().replace( /\s/g, '' );
+
+		// Get GB patterns
+		var patterns = rules.gbPatterns || [];
+
+		// Iterate through GB patterns
+		for ( var i = 0; i < patterns.length; i++ ) {
+			try {
+				if ( new RegExp( jsRegexBody( patterns[ i ] ) ).test( normalized ) ) { return true; }
+			} catch ( err ) {}
+		}
+		return false;
+	};
+
+
+	/**
+	 * IE: optional ieRegex on rules; invalid regex fails open (same as server leniency).
+	 */
+	var isIePostcodeValidForRules = function( postcode, rules ) {
+		// Normalize postcode
+		var normalized = String( postcode ).replace( /[\s\-]/g, '' ).toUpperCase();
+
+		// Validate postcode
+		try {
+			return new RegExp( jsRegexBody( rules.ieRegex ) ).test( normalized );
+		} catch ( err ) {
+			return true;
+		}
+	};
+
+
+	/**
+	 * Default: per-country regex from rules.countryRegex; missing pattern → valid; bad regex → valid.
+	 */
+	var isDefaultPostcodeValidForRules = function( postcode, country, rules ) {
+		// Get default country regex
+		var raw = ( rules.countryRegex || {} )[ country ];
+
+		// Normalize default country regex
+		var body = jsRegexBody( raw );
+
+		// Bail if default country regex is not valid
+		if ( ! body ) { return true; }
+
+		// Get flags
+		var flags = /^(US|PR|CA|NL)$/.test( country ) ? 'i' : '';
+
+		// Validate postcode
+		try {
+			return new RegExp( body, flags ).test( String( postcode ).trim() );
+		} catch ( err ) {
+			return true;
+		}
+	};
 
 
 	/**
 	 * True when postcode value matches WooCommerce rules for country (uses fcSettings.postcodeRules).
 	 */
 	var isPostcodeValidForCountry = function( postcode, country, rules ) {
+		// Bail if rules or country is not valid
 		if ( ! rules || ! country ) { return true; }
 
+		// Bail if postcode contains disallowed characters
 		if ( hasDisallowedPostcodeCharacters( postcode ) ) { return false; }
 
+		// Check if country is Great Britain
 		if ( 'GB' === country ) {
-			var gbVal = String( postcode ).toLowerCase().replace( /\s/g, '' );
-			var gbPatterns = rules.gbPatterns || [];
-			for ( var g = 0; g < gbPatterns.length; g++ ) {
-				try {
-					if ( new RegExp( jsRegexBody( gbPatterns[ g ] ) ).test( gbVal ) ) { return true; }
-				} catch ( err ) {}
-			}
-			return false;
+			return isGbPostcodeValidForRules( postcode, rules );
 		}
 
+		// Check if country is Ireland and if there is an IE regex
 		if ( 'IE' === country && rules.ieRegex ) {
-			var ieNorm = String( postcode ).replace( /[\s\-]/g, '' ).toUpperCase();
-			try {
-				return new RegExp( jsRegexBody( rules.ieRegex ) ).test( ieNorm );
-			} catch ( err2 ) { return true; }
+			return isIePostcodeValidForRules( postcode, rules );
 		}
 
-		var map = rules.countryRegex || {};
-		var pattern = jsRegexBody( map[ country ] );
-		if ( ! pattern ) { return true; }
-
-		var flags = '';
-		if ( /^(US|PR|CA|NL)$/.test( country ) ) { flags = 'i'; }
-
-		try {
-			return new RegExp( pattern, flags ).test( String( postcode ).trim() );
-		} catch ( err3 ) { return true; }
+		// Check if country is a default country
+		return isDefaultPostcodeValidForRules( postcode, country, rules );
 	};
 
 
@@ -446,20 +507,40 @@
 	 * Update inputmode on postcode fields under container from current country (numeric vs text).
 	 */
 	var updatePostcodeInputModesInContainer = function( container ) {
+		// Bail if container or postcode rules are not valid
 		if ( ! container || ! _settings.postcodeRules ) { return; }
+
+		// Get numeric countries
 		var numericCountries = _settings.postcodeRules.numericInputCountries || [];
+
+		// Get rows
 		var rows = container.querySelectorAll( _settings.typePostcodeSelector );
+
+		// Iterate through rows
 		for ( var r = 0; r < rows.length; r++ ) {
+			// Get row
 			var row = rows[ r ];
+
+			// Get input
 			var input = row.querySelector( 'input.input-text, input[type="text"]' );
 			if ( ! input ) { continue; }
+
+			// Get form
 			var form = row.closest( 'form' );
+
+			// Get country field
 			var countryField = getCountryFieldForPostcodeField( input, form );
+
+			// Get country code
 			var cc = readCountryFieldValue( countryField );
 			if ( ! cc ) { continue; }
+
+			// Check if country code is in numeric countries
 			if ( numericCountries.indexOf( cc ) !== -1 ) {
+				// Set inputmode to numeric
 				input.setAttribute( 'inputmode', 'numeric' );
 			} else {
+				// Set inputmode to text
 				input.setAttribute( 'inputmode', 'text' );
 			}
 		}
@@ -471,12 +552,18 @@
 	 * Check if form row is for postcode validation.
 	 */
 	var isPostcodeFieldRow = function( field, formRow, validationEvent ) {
+		// Bail if form row or field does not match postcode selector
 		if ( ! formRow || ! formRow.matches( _settings.typePostcodeSelector ) ) { return false; }
+		// Bail if field does not match input.input-text or input[type="text"]
 		if ( ! field.matches( 'input.input-text, input[type="text"]' ) ) { return false; }
+		// Get field id and name
 		var fid = field.id || '';
 		var fname = field.name || '';
+		// Check if field id or name contains postcode
 		if ( fid.indexOf( 'postcode' ) !== -1 || fname.indexOf( 'postcode' ) !== -1 ) { return true; }
+		// Get first text input in form row
 		var firstText = formRow.querySelector( 'input.input-text, input[type="text"]' );
+		// Return true if first text input is the field
 		return firstText === field;
 	};
 
@@ -486,26 +573,35 @@
 	 * Validate postcode (instant).
 	 */
 	var validatePostcode = function( field, formRow, validationEvent ) {
+		// Bail if postcode rules are not valid
 		if ( ! _settings.postcodeRules ) { return { valid: true }; }
 
+		// Bail if field does not have a value
 		if ( ! _publicMethods.hasValue( field ) ) {
-			if ( ! formRow.matches( _settings.typeRequiredSelector ) ) {
-				return { valid: true };
-			}
+			// Bail if field is not required
+			if ( ! formRow.matches( _settings.typeRequiredSelector ) ) { return { valid: true }; }
+
+			// Return valid
 			return { valid: true };
 		}
 
+		// Get form
 		var form = formRow.closest( 'form' );
 		var countryField = getCountryFieldForPostcodeField( field, form );
+
+		// Bail if country field is not valid
 		if ( ! countryField ) { return { valid: true }; }
 
+		// Get country
 		var country = readCountryFieldValue( countryField );
 		if ( ! country ) { return { valid: true }; }
 
+		// Check if postcode is valid for country
 		if ( ! isPostcodeValidForCountry( field.value, country, _settings.postcodeRules ) ) {
 			return { valid: false, message: _settings.validationMessages.postcode };
 		}
 
+		// Return valid
 		return { valid: true };
 	};
 
