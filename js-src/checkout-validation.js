@@ -206,6 +206,16 @@
 	};
 
 	/**
+	 * Tom Select fires events on the combobox input inside `.ts-control`; the canonical value is on the hidden `select.ts-hidden-accessible`.
+	 * @param  {Element}  field  Event target or element to test.
+	 * @return {Boolean}         True if this is the Tom Select control input (not the native select).
+	 */
+	var isSelectTomControlInput = function( field ) {
+		if ( ! field || ! field.matches || ! field.matches( 'input' ) ) { return false; }
+		return !! field.closest( _settings.selectTomWrapperSelector + ' .ts-control' );
+	};
+
+	/**
 	 * Check if field is a select field.
 	 * @param  {Element}  field  Field to check.
 	 * @return {Boolean}         True if is a select field.
@@ -687,24 +697,40 @@
 		// Get variables
 		var field = e.target;
 		var formRow = e.target.closest( _settings.formRowSelector );
+		var validateHidden = false;
 
 		// Bail if field or formRow not available
 		if ( ! field || ! formRow ) { return; }
 
-		// Get correct field when is select2
+		// Get correct field when is select2 (native value is on the hidden/inaccessible original select)
 		if ( isSelect2Field( e.target ) ) {
 			if ( formRow ) {
-				field = formRow.querySelector( 'select' );
+				var select2Native = formRow.querySelector( 'select' );
+				if ( select2Native ) {
+					field = select2Native;
+					validateHidden = true;
+				}
+			}
+		}
+
+		// Get correct field when is Tom Select combobox (events target the control input; value lives on select.ts-hidden-accessible)
+		if ( isSelectTomControlInput( e.target ) ) {
+			if ( formRow ) {
+				var tomNative = formRow.querySelector( _settings.selectTomSelector );
+				if ( tomNative ) {
+					field = tomNative;
+					validateHidden = true;
+				}
 			}
 		}
 
 		// Maybe delay validation when user is typing for the first time in the field
 		if ( 'input' === e.type && ! formRow.classList.contains( _settings.validClass ) && ! formRow.classList.contains( _settings.invalidClass ) ) {
-			_publicMethods.validateFieldDebounced( field, e.type );
+			_publicMethods.validateFieldDebounced( field, e.type, validateHidden );
 		}
 		// Otherwise, trigger validation immediatelly
 		else {
-			_publicMethods.validateField( field, e.type );
+			_publicMethods.validateField( field, e.type, validateHidden );
 		}
 	};
 
