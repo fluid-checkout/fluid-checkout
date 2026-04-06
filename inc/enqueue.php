@@ -69,6 +69,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
 
+		// Admin bar offset
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_admin_bar_offset_assets' ), 10 );
+
 		// Theme and Plugin Compatibility
 		// Should not remove theme and plugin compatibility hooks. Keep this comment here for future reference.
 	}
@@ -240,8 +243,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);});' );
 		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);});' );
-		wp_register_script( 'fc-admin-bar-offset', $this->get_script_url( 'js/fc-admin-bar-offset' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-bar-offset', 'window.addEventListener("load",function(){FCAdminBarOffset.init();});' );
+		wp_register_script( 'fc-frontend-admin-bar-offset', $this->get_script_url( 'js/fc-frontend-admin-bar-offset' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-frontend-admin-bar-offset', 'window.addEventListener("load",function(){FCFrontendAdminBarOffset.init();});' );
 
 		// Enhanced select
 		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -264,7 +267,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), null );
 
 		// Admin bar offset styles
-		wp_register_style( 'fc-admin-bar-offset', $this->get_style_url( 'css/admin-bar-offset' ), array(), null );
+		wp_register_style( 'fc-frontend-admin-bar-offset', $this->get_style_url( 'css/frontend-admin-bar-offset' ), array(), null );
 	}
 
 
@@ -422,8 +425,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function enqueue_admin_bar_offset_assets() {
 		// Enqueue assets
-		wp_enqueue_script( 'fc-admin-bar-offset' );
-		wp_enqueue_style( 'fc-admin-bar-offset' );
+		wp_enqueue_script( 'fc-frontend-admin-bar-offset' );
+		wp_enqueue_style( 'fc-frontend-admin-bar-offset' );
 	}
 
 	/**

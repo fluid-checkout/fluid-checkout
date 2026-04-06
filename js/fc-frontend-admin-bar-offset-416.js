@@ -8,7 +8,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.FCAdminBarOffset = factory(root);
+		root.FCFrontendAdminBarOffset = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
