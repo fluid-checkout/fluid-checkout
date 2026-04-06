@@ -166,9 +166,8 @@
 	 */
 	var removeInlineMessage = function( field, formRow, invalidClass ) {
 		var messageElements = formRow.querySelectorAll( 'span.' + _settings.errorMessageClass + '.invalid-' + invalidClass );
-		for ( var i = 0; i < messageElements.length; i++ ) {
-			// Get variables
-			var messageElement = messageElements[ i ];
+		for ( var messageIndex = 0; messageIndex < messageElements.length; messageIndex++ ) {
+			var messageElement = messageElements[ messageIndex ];
 			var elementId = messageElement.id;
 
 			// Maybe remove validation `aria-describedby` attribute from the field
@@ -179,7 +178,7 @@
 			}
 
 			// Remove message
-			messageElements[ i ].parentNode.removeChild( messageElements[ i ] );
+			messageElements[ messageIndex ].parentNode.removeChild( messageElements[ messageIndex ] );
 		}
 	}
 
@@ -426,10 +425,9 @@
 		// Get GB patterns
 		var patterns = rules.gbPatterns || [];
 
-		// Iterate through GB patterns
-		for ( var i = 0; i < patterns.length; i++ ) {
+		for ( var patternIndex = 0; patternIndex < patterns.length; patternIndex++ ) {
 			try {
-				if ( new RegExp( jsRegexBody( patterns[ i ] ) ).test( normalized ) ) { return true; }
+				if ( new RegExp( jsRegexBody( patterns[ patternIndex ] ) ).test( normalized ) ) { return true; }
 			} catch ( err ) {}
 		}
 		return false;
@@ -516,10 +514,8 @@
 		// Get rows
 		var rows = container.querySelectorAll( _settings.typePostcodeSelector );
 
-		// Iterate through rows
-		for ( var r = 0; r < rows.length; r++ ) {
-			// Get row
-			var row = rows[ r ];
+		for ( var rowIndex = 0; rowIndex < rows.length; rowIndex++ ) {
+			var row = rows[ rowIndex ];
 
 			// Get input
 			var input = row.querySelector( 'input.input-text, input[type="text"]' );
@@ -532,11 +528,11 @@
 			var countryField = getCountryFieldForPostcodeField( input, form );
 
 			// Get country code
-			var cc = readCountryFieldValue( countryField );
-			if ( ! cc ) { continue; }
+			var countryCode = readCountryFieldValue( countryField );
+			if ( ! countryCode ) { continue; }
 
 			// Check if country code is in numeric countries
-			if ( numericCountries.indexOf( cc ) !== -1 ) {
+			if ( numericCountries.indexOf( countryCode ) !== -1 ) {
 				// Set inputmode to numeric
 				input.setAttribute( 'inputmode', 'numeric' );
 			} else {
@@ -683,8 +679,8 @@
 
 		// Test if field needs validation from any validation type
 		var validationTypeNames = Object.getOwnPropertyNames( _validationTypes );
-		for ( var i = 0; i < validationTypeNames.length; i++) {
-			var validationTypeName = validationTypeNames[i];
+		for ( var validationTypeNameIndex = 0; validationTypeNameIndex < validationTypeNames.length; validationTypeNameIndex++ ) {
+			var validationTypeName = validationTypeNames[ validationTypeNameIndex ];
 			var validationType = _validationTypes[ validationTypeName ];
 			if ( validationType.needsValidation( field, formRow, validationEvent ) ) {
 				return true;
@@ -708,8 +704,8 @@
 
 		// Iterate validation results
 		var validationResultsNames = Object.getOwnPropertyNames( validationResults );
-		for ( var i = 0; i < validationResultsNames.length; i++ ) {
-			var validationTypeName = validationResultsNames[ i ];
+		for ( var validationResultIndex = 0; validationResultIndex < validationResultsNames.length; validationResultIndex++ ) {
+			var validationTypeName = validationResultsNames[ validationResultIndex ];
 			var validationType = _validationTypes[ validationTypeName ];
 			var result = validationResults[ validationTypeName ].valid;
 			var message = validationResults[ validationTypeName ].message;
@@ -738,9 +734,9 @@
 		// stay in sync.
 		var hasAnyTypeSpecificInvalid = false;
 		var allValidationTypeNames = Object.getOwnPropertyNames( _validationTypes );
-		for ( var st = 0; st < allValidationTypeNames.length; st++ ) {
-			var invCls = _validationTypes[ allValidationTypeNames[ st ] ].invalidClass;
-			if ( formRow.classList.contains( _settings.invalidClass + '-' + invCls ) ) {
+		for ( var validationTypeIndex = 0; validationTypeIndex < allValidationTypeNames.length; validationTypeIndex++ ) {
+			var invalidClassSuffix = _validationTypes[ allValidationTypeNames[ validationTypeIndex ] ].invalidClass;
+			if ( formRow.classList.contains( _settings.invalidClass + '-' + invalidClassSuffix ) ) {
 				hasAnyTypeSpecificInvalid = true;
 				break;
 			}
@@ -788,27 +784,33 @@
 			// Get postcode inputs
 			var postcodeInputs = wrapperItem.querySelectorAll( _settings.typePostcodeSelector + ' input.input-text, ' + _settings.typePostcodeSelector + ' input[type="text"]' );
 
-			// Iterate through postcode inputs
-			for ( var pi = 0; pi < postcodeInputs.length; pi++ ) {
-				_publicMethods.validateField( postcodeInputs[ pi ], 'change', false );
+			for ( var postcodeInputIndex = 0; postcodeInputIndex < postcodeInputs.length; postcodeInputIndex++ ) {
+				_publicMethods.validateField( postcodeInputs[ postcodeInputIndex ], 'change', false );
 			}
 
 		} );
 	};
 
 	/**
-	 * Re-run postcode validation for all checkout forms. Use after AJAX refreshes checkout fragments
-	 * (update_checkout) because replaced HTML drops FC inline error nodes while session may still hold
-	 * invalid values. validateHidden skips offsetParent checks for edge layouts.
+	 * Re-query postcode inputs in each FC form and validate with validateHidden (avoids stale nodes after fragment replace).
+	 *
+	 * @param {string} validationEvent  Passed to validateField (e.g. 'updated_checkout').
 	 */
-	var revalidatePostcodeFieldsAfterCheckoutUpdate = function() {
+	var revalidatePostcodeFieldsInAllForms = function( validationEvent ) {
 		var forms = document.querySelectorAll( _settings.formSelector );
-		for ( var f = 0; f < forms.length; f++ ) {
-			var postcodeInputs = forms[ f ].querySelectorAll( _settings.typePostcodeSelector + ' input.input-text, ' + _settings.typePostcodeSelector + ' input[type="text"]' );
-			for ( var pi = 0; pi < postcodeInputs.length; pi++ ) {
-				_publicMethods.validateField( postcodeInputs[ pi ], 'updated_checkout', true );
+		for ( var formIndex = 0; formIndex < forms.length; formIndex++ ) {
+			var postcodeInputs = forms[ formIndex ].querySelectorAll( _settings.typePostcodeSelector + ' input.input-text, ' + _settings.typePostcodeSelector + ' input[type="text"]' );
+			for ( var postcodeInputIndex = 0; postcodeInputIndex < postcodeInputs.length; postcodeInputIndex++ ) {
+				_publicMethods.validateField( postcodeInputs[ postcodeInputIndex ], validationEvent, true );
 			}
 		}
+	};
+
+	/**
+	 * After update_checkout: fragment HTML replaces markup and drops FC inline errors while values may still be invalid.
+	 */
+	var revalidatePostcodeFieldsAfterCheckoutUpdate = function() {
+		revalidatePostcodeFieldsInAllForms( 'updated_checkout' );
 	};
 
 
@@ -861,9 +863,13 @@
 			// Postcode: change/focusout can schedule update_checkout; fragment replace drops .fc-inline-error.
 			// Defer a second pass with validateHidden so FC state is restored after sibling handlers / layout.
 			if ( ( 'change' === e.type || 'focusout' === e.type ) && field.closest( _settings.typePostcodeSelector ) ) {
+				// Get field for later
 				var fieldForLater = field;
+				// Set timeout to validate field later
 				window.setTimeout( function() {
+					// Bail if field for later is not valid
 					if ( fieldForLater && fieldForLater.isConnected ) {
+						// Validate field later
 						_publicMethods.validateField( fieldForLater, 'postcode-post-blur', true );
 					}
 				}, 0 );
@@ -897,10 +903,10 @@
 
 		// Remove invalid classes for validation types
 		var validationTypeKeys = Object.keys( _validationTypes );
-		for ( var i = 0; i < validationTypeKeys.length; i++ ) {
-			var type = validationTypeKeys[i];
-			formRow.classList.remove( _settings.invalidClass +'-'+ type );
-			formRow.classList.remove( _settings.invalidClass +'-'+ type + '-field' );
+		for ( var validationTypeKeyIndex = 0; validationTypeKeyIndex < validationTypeKeys.length; validationTypeKeyIndex++ ) {
+			var validationTypeKey = validationTypeKeys[ validationTypeKeyIndex ];
+			formRow.classList.remove( _settings.invalidClass +'-'+ validationTypeKey );
+			formRow.classList.remove( _settings.invalidClass +'-'+ validationTypeKey + '-field' );
 		}
 
 		// Remove valid/invalid classes
@@ -937,15 +943,13 @@
 
 		// Execute validate field for all applicable validation types
 		var validationTypeNames = Object.getOwnPropertyNames( _validationTypes );
-		for ( var i = 0; i < validationTypeNames.length; i++) {
-			var validationTypeName = validationTypeNames[i];
+		for ( var validationTypeNameIndex = 0; validationTypeNameIndex < validationTypeNames.length; validationTypeNameIndex++ ) {
+			var validationTypeName = validationTypeNames[ validationTypeNameIndex ];
 			var validationType = _validationTypes[ validationTypeName ];
 			if ( validationType.needsValidation( field, formRow, validationEvent ) ) {
 				validationResults[ validationTypeName ] = validationType.validate( field, formRow, validationEvent );
 			}
 		}
-
-		// TODO: Maybe trigger validation of related fields (ie zip > State, Country)
 
 		// Process results
 		return processValidationResults( field, formRow, validationResults );
@@ -973,8 +977,8 @@
 
 		if ( ! container ) {
 			var formList = document.querySelectorAll( _settings.formSelector );
-			for ( var f = 0; f < formList.length; f++ ) {
-				if ( ! _publicMethods.validateAllFields( formList[ f ], validateHidden ) ) {
+			for ( var formIndex = 0; formIndex < formList.length; formIndex++ ) {
+				if ( ! _publicMethods.validateAllFields( formList[ formIndex ], validateHidden ) ) {
 					all_valid = false;
 				}
 			}
@@ -983,8 +987,8 @@
 
 		var fields = container.querySelectorAll( _settings.validateFieldsSelector );
 
-		for ( var i = 0; i < fields.length; i++ ) {
-			if ( ! _publicMethods.validateField( fields[i], 'validate-all', validateHidden ) ) {
+		for ( var fieldIndex = 0; fieldIndex < fields.length; fieldIndex++ ) {
+			if ( ! _publicMethods.validateField( fields[ fieldIndex ], 'validate-all', validateHidden ) ) {
 				all_valid = false;
 			}
 		}
