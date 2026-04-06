@@ -536,10 +536,14 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * @return array
 	 */
 	public function maybe_add_postcode_inputmode_attribute( $args, $key, $value ) {
+		// Bail if field does not have postcode validation
 		$format = array_filter( isset( $args['validate'] ) ? (array) $args['validate'] : array() );
 		if ( ! in_array( 'postcode', $format, true ) ) { return $args; }
+
+		// Bail if field type is not text
 		if ( ! isset( $args['type'] ) || 'text' !== $args['type'] ) { return $args; }
 
+		// Get country
 		$country = '';
 		if ( function_exists( 'WC' ) && WC()->customer ) {
 			if ( 0 === strpos( (string) $key, 'shipping_' ) ) {
@@ -549,16 +553,24 @@ class FluidCheckout_Validation extends FluidCheckout {
 			}
 		}
 
+		// Bail if country is not set
 		if ( '' === $country ) { return $args; }
 
+		// Get postcode validation rules
 		$rules = $this->get_postcode_validation_rules_for_script();
+
+		// Bail if numeric input countries are not set or country is not in numeric input countries
 		if ( empty( $rules['numericInputCountries'] ) || ! in_array( $country, $rules['numericInputCountries'], true ) ) { return $args; }
 
+		// Maybe create array of custom attributes for the field
 		if ( ! isset( $args['custom_attributes'] ) || ! is_array( $args['custom_attributes'] ) ) {
 			$args['custom_attributes'] = array();
 		}
+
+		// Set inputmode to numeric
 		$args['custom_attributes']['inputmode'] = 'numeric';
 
+		// Return modified field args
 		return $args;
 	}
 

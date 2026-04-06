@@ -771,9 +771,13 @@
 
 			} );
 
+			// Update inputmode on postcode fields under container from current country (numeric vs text)
 			updatePostcodeInputModesInContainer( wrapperItem );
 
+			// Get postcode inputs
 			var postcodeInputs = wrapperItem.querySelectorAll( _settings.typePostcodeSelector + ' input.input-text, ' + _settings.typePostcodeSelector + ' input[type="text"]' );
+
+			// Iterate through postcode inputs
 			for ( var pi = 0; pi < postcodeInputs.length; pi++ ) {
 				_publicMethods.validateField( postcodeInputs[ pi ], 'change', false );
 			}
