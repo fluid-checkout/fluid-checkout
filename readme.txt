@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Kustom Checkout for WooCommerce. Missing undo hooks statements causing shipping methods to not change correctly for Kustom Checkout and preventing it from completing the order. This fix also applies to other similar plugins.
 * Fixed: Login form at checkout not accept certain characters for passwords.
 * Fixed: Trigger checkout fragments update when filling the email field with the MailCheck suggestion.
+* Fixed: Distraction free header and progress bar staying offset when WP admin bar is scrolled out of view on the checkout page.
 
 = 4.2.0 - 2026-03-10 =
 
