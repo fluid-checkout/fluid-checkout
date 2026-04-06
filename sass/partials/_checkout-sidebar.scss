@@ -1,9 +1,13 @@
 // ------------------------------------
 // CHECKOUT SIDEBAR
 // ------------------------------------
-.fc-sidebar .fc-checkout-order-review__widgets-outside {
-	@media (#{$bp-larger-than-desktop}) {
-		padding-left: $order-summary-cell-padding-horizontal;
-		padding-right: $order-summary-cell-padding-horizontal;
+
+.fc-sidebar .fc-checkout-order-review__widgets-outside,
+.fc-checkout-steps + .fc-checkout-order-review__widgets-outside {
+	margin-top: $global-spacing-small;
+
+	@media (#{$bp-larger-than-tablet}) {
+		padding-#{ $alignment-left }: $order-summary-cell-padding-horizontal;
+		padding-#{ $alignment-right }: $order-summary-cell-padding-horizontal;
 	}
 }

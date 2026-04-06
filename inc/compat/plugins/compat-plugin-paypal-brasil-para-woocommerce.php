@@ -48,8 +48,8 @@ class FluidCheckout_PaypalBrasilParaWooCommerce extends FluidCheckout {
 				// Move PayPal button to custom place order buttons
 				remove_action( 'woocommerce_review_order_before_submit', array( $this->paypal_brasil_gateway, 'html_before_submit_button' ), 10 );
 				remove_action( 'woocommerce_review_order_after_submit', array( $this->paypal_brasil_gateway, 'html_after_submit_button' ), 10 );
-				add_action( 'fc_place_order_custom_buttons', array( $this->paypal_brasil_gateway, 'html_before_submit_button' ), 20 );
-				add_action( 'fc_place_order_custom_buttons', array( $this->paypal_brasil_gateway, 'html_after_submit_button' ), 20 );
+				add_action( 'fc_place_order_custom_buttons', array( $this->paypal_brasil_gateway, 'html_before_submit_button' ), 20 ); // Do not define number of parameters as it causes PHP error as the function being hooked does not expect any parameters.
+				add_action( 'fc_place_order_custom_buttons', array( $this->paypal_brasil_gateway, 'html_after_submit_button' ), 20 ); // Do not define number of parameters as it causes PHP error as the function being hooked does not expect any parameters.
 			}
 		}
 	}
