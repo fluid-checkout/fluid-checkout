@@ -1,9 +1,6 @@
 /**
  * Sync admin bar visibility with body class for checkout header/progress bar offset.
  * Only applies offset when WordPress admin bar is actually visible in the viewport.
- *
- * DEPENDS ON:
- * - None
  */
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
@@ -39,13 +36,11 @@
 	 * @param {boolean} isInView Whether the admin bar is in the viewport.
 	 */
 	var updateBodyClass = function( isInView ) {
+		// Bail if body is not found
 		if ( ! document.body ) { return; }
 
-		if ( isInView ) {
-			document.body.classList.add( _settings.classInView );
-		} else {
-			document.body.classList.remove( _settings.classInView );
-		}
+		// Toggle class based on admin bar visibility
+		document.body.classList.toggle( _settings.classInView, isInView );
 	}
 
 	/**
@@ -54,40 +49,31 @@
 	 * @return {boolean} True if admin bar is visible in viewport.
 	 */
 	var isAdminBarInView = function() {
+		// Get admin bar element
 		var adminBar = document.getElementById( 'wpadminbar' );
+
+		// Bail if admin bar is not found
 		if ( ! adminBar ) { return false; }
 
+		// Get bounding client rect and style
 		var rect = adminBar.getBoundingClientRect();
 		var style = root.getComputedStyle( adminBar );
-		if ( style.display === 'none' || style.visibility === 'hidden' ) {
-			return false;
-		}
 
+		// Bail if admin bar is not visible
+		if ( style.display === 'none' || style.visibility === 'hidden' ) { return false; }
+
+		// Otherwise, return as visible
 		return rect.bottom > 0 && rect.top < root.innerHeight;
 	}
 
 
 
 	/**
-	 * Initialize component and set admin bar visibility observer.
+	 * Initialize observers for admin bar visibility.
 	 */
-	_publicMethods.init = function( options ) {
-		// Bail if already initialized
-		if ( _hasInitialized ) { return; }
-
-		// Bail if body has no admin-bar class
-		if ( ! document.body || ! document.body.classList.contains( _settings.bodyAdminBarClass ) ) {
-			return;
-		}
-
+	var initializeObservers = function() {
+		// Get admin bar element
 		var adminBar = document.getElementById( 'wpadminbar' );
-		if ( ! adminBar ) {
-			updateBodyClass( false );
-			return;
-		}
-
-		// Set initial state before first paint
-		updateBodyClass( isAdminBarInView() );
 
 		// Observe visibility changes (scroll, resize, etc.)
 		if ( 'IntersectionObserver' in root ) {
@@ -104,15 +90,36 @@
 				}
 			);
 			observer.observe( adminBar );
-		} else {
-			// Fallback: check on scroll and resize
+		}
+		// Fallback: check on scroll and resize
+		else {
 			var checkVisibility = function () {
 				updateBodyClass( isAdminBarInView() );
 			};
 			root.addEventListener( 'scroll', checkVisibility, { passive: true } );
 			root.addEventListener( 'resize', checkVisibility );
 		}
+	}
 
+
+
+	/**
+	 * Initialize component and set admin bar visibility observer.
+	 */
+	_publicMethods.init = function( options ) {
+		// Bail if already initialized
+		if ( _hasInitialized ) { return; }
+
+		// Bail if body has no admin-bar class
+		if ( ! document.body || ! document.body.classList.contains( _settings.bodyAdminBarClass ) ) { return; }
+
+		// Set initial state before first paint
+		updateBodyClass( isAdminBarInView() );
+
+		// Initialize observers
+		initializeObservers();
+
+		// Set initialized flag
 		_hasInitialized = true;
 	}
 
@@ -121,11 +128,5 @@
 	//
 	// Public APIs
 	//
-	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', function() { _publicMethods.init(); } );
-	} else {
-		_publicMethods.init();
-	}
-
 	return _publicMethods;
 });
