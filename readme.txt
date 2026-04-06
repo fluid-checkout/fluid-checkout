@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 4.1.6
+Stable tag: 4.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -356,7 +356,26 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-Fixed: Distraction free header and progress bar staying offset when WP admin bar is scrolled out of view on the checkout page.
+* Added: Compatibility with plugin WooCommerce FedEx Shipping Pro by Techspawn.
+* Improved: Added global JS flag `window.can_update_payment_methods` to allow preventing updating the payment methods fragment.
+* Fixed: Compatibility with plugin Rvvup for WooCommerce. Prevent update of payment methods section during payment cause payment to fail.
+* Fixed: Compatibility with plugin Germanized for WooCommerce Pro. Fix criteria to determine if compatibility code for this plugin is active or not.
+* Fixed: Compatibility with plugin Klarna Payments for WooCommerce by Klarna. Disable checkout updates during the `beforeunload` event. Remove plugin's script modifications for versions of the Klarna plugin that already support it.
+* Fixed: Compatibility with plugin Kustom Checkout for WooCommerce. Missing undo hooks statements causing shipping methods to not change correctly for Kustom Checkout and preventing it from completing the order. This fix also applies to other similar plugins.
+* Fixed: Login form at checkout not accept certain characters for passwords.
+* Fixed: Trigger checkout fragments update when filling the email field with the MailCheck suggestion.
+* Fixed: Distraction free header and progress bar staying offset when WP admin bar is scrolled out of view on the checkout page.
+
+= 4.2.0 - 2026-03-10 =
+
+* Bump tested up to WooCommerce 10.6.0
+* Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
+* Added: Support for new layout options: one column layout, and order summary before checkout steps.
+* Added: Compatibility with plugin: AutomateWoo - Birthdays Add-on
+* Improved: Use neutral wordings for contact, shipping address and billing address checkout sub-step titles.
+* Improved: Make account creation checkbox field customizable via default WooCommerce hooks.
+* Improved: Handling of `intl-tel-input` fields when replacing checkout fragments.
+* Fix: Focus and scroll behavior for the first invalid field when trying to move to the next step or save a substep after changes.
 
 = 4.1.6 - 2026-02-26 =
 
@@ -376,7 +395,7 @@ Fixed: Distraction free header and progress bar staying offset when WP admin bar
 * Added: Compatibility with plugin WC Cities Select.
 * Added: Compatibility with plugin WooCommerce Italian Add-on Plus.
 * Added: New filter `fc_mailcheck_suggestion_message` to allow changing the Mailcheck email typo suggestion message.
-* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certains 3rd-party plugins.
+* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certain 3rd-party plugins.
 
 = 4.1.4 - 2025-12-05 =
 

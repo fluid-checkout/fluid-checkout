@@ -69,10 +69,6 @@ msgstr "Telefon za dostavu"
 msgid "Only used for shipping-related questions."
 msgstr "Koristi se samo za pitanja vezana za otpremu."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Više koraka"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Jedan korak"
@@ -106,14 +102,6 @@ msgstr "Nastavite sa naplatom"
 msgid "Proceed to payment"
 msgstr "Nastavite sa plaćanjem"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Moj kontakt"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Dostava do"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Način dostave"
@@ -121,10 +109,6 @@ msgstr "Način dostave"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Dodatne napomene"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Billing to"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -925,16 +909,6 @@ msgstr "Izgled naplate"
 msgid "Design template"
 msgstr "Predložak dizajna"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Opći stilovi za korake naplate, sažetak narudžbe i druge odjeljke. Može se "
-"odnositi i na druge stranice kao što su stranice Korpa, Narudžba primljena "
-"i Prikaz narudžbe."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Tamni mod"
@@ -1510,16 +1484,6 @@ msgstr "Dodajte polje za telefon za naplatu u obrazac za naplatu."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Odaberite u kojem koraku će se prikazati polje za telefon za naplatu."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Omogućite format međunarodnog telefonskog broja i provjeru valjanosti za "
-"telefonska polja"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatirajte i potvrdite brojeve telefona prema svakoj zemlji."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Omogućite provjeru broja telefona na osnovu pravila zemlje"
@@ -1944,14 +1908,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentalno)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ovo je eksperimentalna funkcija i možda neće raditi kako se očekuje sa svim "
-"temama i dodacima. Koristite ga sa oprezom."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2516,9 +2472,150 @@ msgstr "Nakon trake napretka"
 msgid "Before coupon codes section"
 msgstr "Prije odjeljka s kodovima kupona"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Omogući polja za međunarodne telefonske brojeve"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatirajte brojeve telefona prema pravilima za svaku zemlju."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Koristite preciznu validaciju broja telefona"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Pokušajte se uvjeriti da je broj telefona važeći broj mobilnog ili fiksnog "
+"telefona na osnovu pravila za odabrani pozivni broj države. Ova opcija "
+"koristi funkciju precizne validacije <code>intl-tel-input</code> , koja "
+"može dati lažno pozitivne rezultate za neke brojeve telefona."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ovo je eksperimentalna funkcija i možda neće raditi kako se očekuje u svim "
+"postavkama. Koristite je s oprezom."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Vrste validacije telefonskog broja koje se koriste kada je omogućena "
+"precizna validacija."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobilni"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksna linija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Besplatni poziv"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Više koraka"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolone"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolona"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Opći stilovi za korake naplate, sažetak narudžbe i ostale odjeljke.<br> "
+"Može se odnositi i na druge stranice kao što su stranice Korpa, Primljena "
+"narudžba i Pregled narudžbe."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Predložak dizajna <em>&quot;Podijeli&quot;</em> nije dostupan kada se "
+"koristi raspored <em>&quot;1 kolona&quot;</em> i vratit će se na "
+"<em>&quot;Minimalistički&quot;</em> ako se odabere."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Koraci prije plaćanja"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ili"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Prilikom korištenja rasporeda naplate <em>&quot;1 kolona&quot;,</em> ova "
+"opcija je uvijek postavljena na <em>&quot;Prije koraka naplate&quot;</em> i "
+"primjenjuje se i na prikaz za računar."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozicija za dodatni odjeljak sažetka narudžbe na mobilnom uređaju."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opcija <em>&quot;Na zaglavlju stranice&quot;</em> primjenjuje se samo kada "
+"se koristi zaglavlje bez ometanja."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "U zaglavlju stranice (zahtijeva zaglavlje bez ometanja)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Početno stanje za proširivi odjeljak sažetka narudžbe na mobilnom uređaju."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Preporučujemo da ga postavite kao <em>prošireno</em> za sljedeće zemlje "
+"zbog regulatornih zahtjeva: <strong>Njemačka</strong> , "
+"<strong>Austrija</strong> , <strong>Švicarska</strong> , "
+"<strong>Nizozemska</strong> , <strong>Poljska</strong> , "
+"<strong>Belgija</strong> i <strong>Francuska</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Suženo"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Prošireno"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"

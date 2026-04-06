@@ -9,7 +9,7 @@ Version: 4.1.6
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 10.5.2
+WC tested up to: 10.6.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -426,7 +426,7 @@ class FluidCheckout {
 		}
 
 		// Load admin features
-		if( is_admin() ) {
+		if ( is_admin() ) {
 			require_once self::$directory_path . 'inc/admin/admin.php';
 		}
 	}
@@ -618,10 +618,14 @@ class FluidCheckout {
 	 * Return the user id passed in or the current user id
 	 */
 	public function get_user_id( $user_id = null ) {
+		// Maybe get current user id
 		if ( ! $user_id ) {
 			$current_user = wp_get_current_user();
 			$user_id = $current_user->ID;
 		}
+
+		// Sanitize user id
+		$user_id = is_numeric( $user_id ) ? intval( $user_id ) : null;
 
 		return $user_id;
 	}

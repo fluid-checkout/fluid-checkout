@@ -106,26 +106,12 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
-	 * Get the design template option arguments.
-	 *
-	 * @return  array  Design templates arguments.
-	 */
-	public function get_design_template_options() {
-		return array(
-			'classic'     => array( 'label' => __( 'Classic', 'fluid-checkout' ) ),
-			'boxed'       => array( 'label' => __( 'Boxed', 'fluid-checkout' ), 'disabled' => true ),
-			'split'       => array( 'label' => __( 'Split', 'fluid-checkout' ), 'disabled' => true ),
-			'minimalist'  => array( 'label' => __( 'Minimalist', 'fluid-checkout' ), 'disabled' => true ),
-		);
-	}
-
-	/**
 	 * Return the list of values accepted for design templates.
 	 *
 	 * @return  array  List of values accepted for design templates.
 	 */
 	public function get_allowed_design_templates() {
-		return array_keys( $this->get_design_template_options() );
+		return array( 'classic', 'boxed', 'minimalist', 'split' );
 	}
 
 
