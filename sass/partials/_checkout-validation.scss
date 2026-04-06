@@ -6,7 +6,10 @@ div.woocommerce .form-row .fc-inline-error:not( .invalid-country-not-allowed ) {
 	display: none;
 }
 
-div.woocommerce .form-row.woocommerce-invalid .fc-inline-error {
+// Match invalid border rules (see [class*='woocommerce-invalid'] below): message stays visible when a
+// type-specific class remains without base .woocommerce-invalid.
+div.woocommerce .form-row[class*='woocommerce-invalid'] .fc-inline-error:not( .invalid-country-not-allowed ),
+div.woocommerce .shipping-method__package[class*='woocommerce-invalid'] .fc-inline-error:not( .invalid-country-not-allowed ) {
 	display: block;
 }
 

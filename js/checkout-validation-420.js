@@ -733,14 +733,25 @@
 			}
 		}
 
-		// Toggle general field valid/invalid classes
-		formRow.classList.toggle( _settings.validClass, valid );
-		formRow.classList.toggle( _settings.invalidClass, ! valid );
+		// Keep base invalid class aligned with type-specific ones (e.g. woocommerce-invalid-postcode) so
+		// CSS that keys off .woocommerce-invalid and border rules that match [class*='woocommerce-invalid']
+		// stay in sync.
+		var hasAnyTypeSpecificInvalid = false;
+		var allValidationTypeNames = Object.getOwnPropertyNames( _validationTypes );
+		for ( var st = 0; st < allValidationTypeNames.length; st++ ) {
+			var invCls = _validationTypes[ allValidationTypeNames[ st ] ].invalidClass;
+			if ( formRow.classList.contains( _settings.invalidClass + '-' + invCls ) ) {
+				hasAnyTypeSpecificInvalid = true;
+				break;
+			}
+		}
+		var isEffectivelyInvalid = ( ! valid ) || hasAnyTypeSpecificInvalid;
 
-		// Set field as invalid for accessibility
-		field.setAttribute( 'aria-invalid', ! valid );
+		formRow.classList.toggle( _settings.validClass, valid && ! hasAnyTypeSpecificInvalid );
+		formRow.classList.toggle( _settings.invalidClass, isEffectivelyInvalid );
+		field.setAttribute( 'aria-invalid', isEffectivelyInvalid ? 'true' : 'false' );
 
-		return valid;
+		return valid && ! hasAnyTypeSpecificInvalid;
 	};
 
 
@@ -783,6 +794,21 @@
 			}
 
 		} );
+	};
+
+	/**
+	 * Re-run postcode validation for all checkout forms. Use after AJAX refreshes checkout fragments
+	 * (update_checkout) because replaced HTML drops FC inline error nodes while session may still hold
+	 * invalid values. validateHidden skips offsetParent checks for edge layouts.
+	 */
+	var revalidatePostcodeFieldsAfterCheckoutUpdate = function() {
+		var forms = document.querySelectorAll( _settings.formSelector );
+		for ( var f = 0; f < forms.length; f++ ) {
+			var postcodeInputs = forms[ f ].querySelectorAll( _settings.typePostcodeSelector + ' input.input-text, ' + _settings.typePostcodeSelector + ' input[type="text"]' );
+			for ( var pi = 0; pi < postcodeInputs.length; pi++ ) {
+				_publicMethods.validateField( postcodeInputs[ pi ], 'updated_checkout', true );
+			}
+		}
 	};
 
 
@@ -831,6 +857,17 @@
 		// Otherwise, trigger validation immediatelly
 		else {
 			_publicMethods.validateField( field, e.type, validateHidden );
+
+			// Postcode: change/focusout can schedule update_checkout; fragment replace drops .fc-inline-error.
+			// Defer a second pass with validateHidden so FC state is restored after sibling handlers / layout.
+			if ( ( 'change' === e.type || 'focusout' === e.type ) && field.closest( _settings.typePostcodeSelector ) ) {
+				var fieldForLater = field;
+				window.setTimeout( function() {
+					if ( fieldForLater && fieldForLater.isConnected ) {
+						_publicMethods.validateField( fieldForLater, 'postcode-post-blur', true );
+					}
+				}, 0 );
+			}
 		}
 	};
 
@@ -1019,12 +1056,15 @@
 		registerValidationTypes();
 
 		if ( _hasJQuery ) {
-			// Validation events
-			$( document.body ).on( 'input validate change', _settings.formSelector + ' ' + _settings.validateFieldsSelector, handleValidateEvent );
+			// Validation events (focusout: WooCommerce checkout.js runs validate_field on focusout before
+			// bubble reaches body; it has no client-side postcode format check and can mark the row valid.
+			// Re-run FC validation here so postcode/email state stays consistent after blur.)
+			$( document.body ).on( 'input validate change focusout', _settings.formSelector + ' ' + _settings.validateFieldsSelector, handleValidateEvent );
 
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );
 			$( document ).on( 'country_to_state_changed', maybeClearStateFields );
+			$( document.body ).on( 'updated_checkout', revalidatePostcodeFieldsAfterCheckoutUpdate );
 		}
 
 		// Add body class
