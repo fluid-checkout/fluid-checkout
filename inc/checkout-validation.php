@@ -493,7 +493,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 			'numericInputCountries'     => $numeric_input_postcode_countries,
 		);
 
-		return apply_filters( 'fc_checkout_postcode_validation_rules_for_script', $rules );
+		return $rules;
 	}
 
 
