@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-Fix: Checkout header and progress bar staying offset when WordPress admin bar is scrolled out of view.
+Fixed: Distraction free header and progress bar staying offset when WP admin bar is scrolled out of view on the checkout page.
 
 = 4.1.6 - 2026-02-26 =
 
