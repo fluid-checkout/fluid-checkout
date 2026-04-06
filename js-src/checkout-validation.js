@@ -798,8 +798,7 @@
 
 	/**
 	 * Re-run postcode validation for all checkout forms. Use after AJAX refreshes checkout fragments
-	 * (update_checkout) because replaced HTML drops FC inline error nodes while session may still hold
-	 * invalid values. validateHidden skips offsetParent checks for edge layouts.
+	 * (update_checkout) because replaced HTML drops FC inline error nodes while session may still hold invalid values. validateHidden skips offsetParent checks for edge layouts.
 	 */
 	var revalidatePostcodeFieldsAfterCheckoutUpdate = function() {
 		var forms = document.querySelectorAll( _settings.formSelector );
@@ -861,9 +860,13 @@
 			// Postcode: change/focusout can schedule update_checkout; fragment replace drops .fc-inline-error.
 			// Defer a second pass with validateHidden so FC state is restored after sibling handlers / layout.
 			if ( ( 'change' === e.type || 'focusout' === e.type ) && field.closest( _settings.typePostcodeSelector ) ) {
+				// Get field for later
 				var fieldForLater = field;
+				// Set timeout to validate field later
 				window.setTimeout( function() {
+					// Bail if field for later is not valid
 					if ( fieldForLater && fieldForLater.isConnected ) {
+						// Validate field later
 						_publicMethods.validateField( fieldForLater, 'postcode-post-blur', true );
 					}
 				}, 0 );
