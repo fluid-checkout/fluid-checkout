@@ -69,10 +69,6 @@ msgstr "Fòn luingeis"
 msgid "Only used for shipping-related questions."
 msgstr "Air a chleachdadh a-mhàin airson ceistean co-cheangailte ri luingearachd."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Ioma-cheum"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Ceum singilte"
@@ -106,14 +102,6 @@ msgstr "Lean air adhart gu cunntas"
 msgid "Proceed to payment"
 msgstr "Lean air adhart gu pàigheadh"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Mo neach-conaltraidh"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "A &#39;dol gu"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Modh luingeis"
@@ -121,10 +109,6 @@ msgstr "Modh luingeis"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Notaichean a bharrachd"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Bilean gu"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -942,17 +926,6 @@ msgstr "Cruth an t-seic"
 msgid "Design template"
 msgstr "Teamplaid dealbhadh"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Stoidhlichean coitcheann airson na ceumannan pàighidh, geàrr-chunntas "
-"òrdugh agus earrannan eile. Dh’ fhaodadh e cuideachd a bhith a’ buntainn ri "
-"duilleagan eile leithid na duilleagan Cairt, Òrdugh a fhuaireadh agus Faic "
-"Òrdugh."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Modh dorcha"
@@ -1546,16 +1519,6 @@ msgstr "Cuir raon fòn bileachaidh ris an fhoirm pàighidh."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Tagh dè an ceum gus an raon fòn bileachaidh a thaisbeanadh."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Dèan comas air cruth àireamh fòn eadar-nàiseanta agus dearbhadh airson "
-"raointean fòn"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Cruth agus dearbhaich àireamhan fòn a rèir gach dùthaich."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Dèan comas air dearbhadh àireamh fòn stèidhichte air riaghailtean dùthcha"
@@ -1997,14 +1960,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(deuchainneach)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Is e feart deuchainneach a tha seo agus is dòcha nach obraich e mar a "
-"bhiodh dùil leis a h-uile cuspair agus plugan. Cleachd e le cùram."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2585,9 +2540,161 @@ msgstr "Às dèidh a’ bhàr adhartais"
 msgid "Before coupon codes section"
 msgstr "Roimhe earrann nan còdan cùpain"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Cuir raointean àireamh fòn eadar-nàiseanta an gnìomh"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Cuir cruth air àireamhan fòn a rèir nan riaghailtean airson gach dùthaich."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Cleachd dearbhadh àireamh fòn mionaideach"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Feuch ri dèanamh cinnteach gur e àireamh fòn-làimhe no loidhne-tìre "
+"dligheach a th’ anns an àireamh fòn a rèir nan riaghailtean airson a’ chòd "
+"dùthcha a chaidh a thaghadh. Bidh an roghainn seo a’ cleachdadh feart "
+"dearbhaidh mionaideach <code>intl-tel-input</code> , a dh’ fhaodadh "
+"toraidhean dearbhach meallta a thoirt seachad airson cuid de na h-àireamhan "
+"fòn."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Is e feart deuchainneach a tha seo agus is dòcha nach obraich e mar a "
+"bhiodh dùil anns a h-uile suidheachadh. Cleachd e gu faiceallach."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Seòrsaichean dearbhaidh àireamh fòn a thathar a’ cleachdadh nuair a bhios "
+"dearbhadh mionaideach air a chomasachadh."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Fòn-làimhe"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Loidhne stèidhichte"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Saor-chìs"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "No"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Cuir fios"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Ioma-cheum"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 cholbh"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 colbh"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Stoidhlichean coitcheann airson ceumannan an pàighidh, geàrr-chunntas an "
+"òrduigh agus earrannan eile.<br> Dh’fhaodadh e bhith buntainneach ri "
+"duilleagan eile cuideachd leithid na duilleagan Cairt, Òrdugh a fhuaireadh "
+"agus Seall Òrdugh."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Chan eil an teamplaid dealbhaidh <em>&quot;Roinnt&quot;</em> ri fhaighinn "
+"nuair a thathar a’ cleachdadh cruth <em>&quot;1 colbh&quot;</em> agus thèid "
+"e air ais gu <em>&quot;Minimalist&quot;</em> ma thèid a thaghadh."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Ceumannan mus tèid pàigheadh"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Nuair a bhios tu a’ cleachdadh cruth an àite-pàighidh <em>“1 colbh”,</em> "
+"bidh an roghainn seo an-còmhnaidh air a shuidheachadh gu <em>“Ceumannan mus "
+"tèid an t-àite-pàighidh a dhèanamh”</em> agus tha e cuideachd a’ buntainn "
+"ris an t-sealladh deasg."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr ""
+"Suidheachadh airson earrann geàrr-chunntas òrdughan a bharrachd air "
+"fòn-làimhe."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Chan eil an roghainn <em>&quot;Air ceann na làraich&quot;</em> a&#39; "
+"buntainn ach nuair a thathar a&#39; cleachdadh a&#39; cheann gun dragh."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr ""
+"Ceann-sgrìobhaidh air an làrach (feumaidh ceann-sgrìobhaidh gun dragh a "
+"bhith ann)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Staid tòiseachaidh airson earrann geàrr-chunntas òrdughan a ghabhas "
+"leudachadh air fòn-làimhe."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Tha sinn a’ moladh a shuidheachadh mar <em>leudaichte</em> airson nan "
+"dùthchannan a leanas air sgàth riatanasan riaghlaidh: <strong>A’ "
+"Ghearmailt</strong> , <strong>an Ostair</strong> , <strong>an "
+"Eilbheis</strong> , <strong>na Tìrean Ìsle</strong> , <strong>a’ "
+"Phòlainn</strong> , <strong>a’ Bheilg</strong> agus <strong>an "
+"Fhraing</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Air a thuit"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Leudaichte"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"

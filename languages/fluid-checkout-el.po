@@ -436,10 +436,6 @@ msgstr "Διεύθυνση χρέωσης"
 msgid "Billing phone"
 msgstr "Τηλέφωνο χρέωσης"
 
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Χρέωση σε"
-
 #: inc/admin/admin-settings-checkout.php:321
 msgid "Both below the payment section and the order summary"
 msgstr "Τόσο κάτω από το τμήμα πληρωμής όσο και κάτω από τη σύνοψη της παραγγελίας"
@@ -993,12 +989,6 @@ msgstr "Ενεργοποίηση σκοτεινής λειτουργίας"
 msgid "Enable integrated coupon code section"
 msgstr "Ενεργοποιήστε την ενότητα με τον ενσωματωμένο κωδικό κουπονιού"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Ενεργοποίηση της μορφής και της επικύρωσης διεθνών τηλεφωνικών αριθμών για "
-"τα πεδία τηλεφώνου"
-
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:186
 msgid "Enable Mail Check: (disabled feature)"
 msgstr "Ενεργοποίηση ελέγχου αλληλογραφίας: (απενεργοποιημένη λειτουργία)"
@@ -1134,20 +1124,6 @@ msgid "Force billing and shipping addresses to the same (single section)"
 msgstr ""
 "Αναγκάστε τις διευθύνσεις χρέωσης και αποστολής να είναι ίδιες (ενιαίο "
 "τμήμα)"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Μορφοποίηση και επικύρωση τηλεφωνικών αριθμών σύμφωνα με κάθε χώρα."
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Γενικά στυλ για τα βήματα πληρωμής, τη σύνοψη της παραγγελίας και άλλες "
-"ενότητες. Μπορεί επίσης να εφαρμοστεί σε άλλες σελίδες, όπως οι σελίδες "
-"Καλάθι, Παραγγελία παραλήφθηκε και Προβολή παραγγελίας."
 
 #: inc/admin/admin-notice-germanized-pro-multistep-enabled.php:62
 msgid ""
@@ -1493,10 +1469,6 @@ msgstr ""
 msgid "Move the sign up checkbox to the contact step"
 msgstr "Μετακινήστε το πλαίσιο ελέγχου εγγραφής στο βήμα επαφής"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Πολλαπλών βημάτων"
-
 #: inc/admin/admin-setting-type-fc-addons.php:190
 msgid "Multiple saved addresses for shipping and billing."
 msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις για αποστολή και τιμολόγηση."
@@ -1504,10 +1476,6 @@ msgstr "Πολλαπλές αποθηκευμένες διευθύνσεις γ�
 #: inc/compat/themes/compat-theme-go.php:59
 msgid "My account layout"
 msgstr "Η διάταξη του λογαριασμού μου"
-
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Η επαφή μου"
 
 #: inc/admin/admin-settings-integrations.php:95
 msgid ""
@@ -1993,10 +1961,6 @@ msgstr "Μέθοδοι αποστολής"
 msgid "Shipping phone"
 msgstr "Τηλέφωνο αποστολής"
 
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Αποστολή σε"
-
 #: inc/admin/admin-settings-checkout.php:539
 msgid ""
 "Show a link button on the pickup location substep to clear the chosen "
@@ -2314,15 +2278,6 @@ msgstr "Αυτό το πεδίο δεν ταιριάζει με την τιμή 
 #: inc/checkout-validation.php:200
 msgid "This is a required field."
 msgstr "Αυτό το πεδίο είναι υποχρεωτικό."
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Πρόκειται για μια πειραματική λειτουργία και ενδέχεται να μην λειτουργεί "
-"όπως αναμένεται με όλα τα θέματα και τα πρόσθετα. Χρησιμοποιήστε το με "
-"προσοχή."
 
 #: inc/checkout-validation.php:201
 msgid "This is not a valid email address."
@@ -2740,10 +2695,151 @@ msgstr "Μετά τη γραμμή προόδου"
 msgid "Before coupon codes section"
 msgstr "Πριν από το τμήμα κωδικών κουπονιών"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Ενεργοποίηση πεδίων διεθνών τηλεφωνικών αριθμών"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Μορφοποιήστε τους τηλεφωνικούς αριθμούς σύμφωνα με τους κανόνες κάθε χώρας."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Χρησιμοποιήστε ακριβή επικύρωση αριθμού τηλεφώνου"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Προσπαθήστε να βεβαιωθείτε ότι ο αριθμός τηλεφώνου είναι έγκυρος αριθμός "
+"κινητής ή σταθερής τηλεφωνίας με βάση τους κανόνες για τον επιλεγμένο "
+"κωδικό χώρας. Αυτή η επιλογή χρησιμοποιεί τη λειτουργία ακριβούς επικύρωσης "
+"<code>intl-tel-input</code>, η οποία ενδέχεται να δώσει ψευδώς θετικά "
+"αποτελέσματα για ορισμένους τηλεφωνικούς αριθμούς."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Αυτή είναι μια πειραματική λειτουργία και ενδέχεται να μην λειτουργεί όπως "
+"αναμένεται σε όλες τις ρυθμίσεις. Χρησιμοποιήστε το με προσοχή."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Τύποι επικύρωσης αριθμού τηλεφώνου που χρησιμοποιούνται όταν είναι "
+"ενεργοποιημένη η ακριβής επικύρωση."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Κινητό"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Σταθερή γραμμή"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Χωρίς χρέωση"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Ή"
 
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Επικοινωνία"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Πολλαπλό βήμα"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 στήλες"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 στήλη"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Γενικά στυλ για τα βήματα πληρωμής, τη σύνοψη της παραγγελίας και άλλα "
+"τμήματα. <br>Μπορεί επίσης να ισχύει και για άλλες σελίδες, όπως οι σελίδες "
+"Καλάθι, Παραγγελία παραλήφθηκε και Προβολή παραγγελίας."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Το πρότυπο σχεδιασμού <em>\"Split\"</em> δεν είναι διαθέσιμο όταν "
+"χρησιμοποιείται η διάταξη <em>\"1 στήλη\"</em> και θα επανέλθει στο "
+"<em>\"Minimalist\"</em> αν επιλεγεί."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Βήματα πριν από το checkout"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Όταν χρησιμοποιείτε τη διάταξη πληρωμής <em>\"1 στήλη\"</em>, αυτή η "
+"επιλογή είναι πάντα ρυθμισμένη σε <em>\"Πριν από τα βήματα πληρωμής\"</em> "
+"και ισχύει επίσης για την προβολή γραφείου."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Θέση για την πρόσθετη συνοπτική ενότητα παραγγελίας στο κινητό."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Η επιλογή <em>\"Στην επικεφαλίδα του ιστότοπου\"</em> ισχύει μόνο όταν "
+"χρησιμοποιείτε την επικεφαλίδα χωρίς περισπασμούς."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Στην επικεφαλίδα του ιστότοπου (απαιτεί επικεφαλίδα χωρίς περισπασμούς)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Αρχική κατάσταση για την επεκτάσιμη ενότητα σύνοψης παραγγελίας στο κινητό."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Συνιστούμε να το ορίσετε ως <em>επεκταμένο</em> για τις ακόλουθες χώρες "
+"λόγω κανονιστικών απαιτήσεων: <strong>Γερμανία</strong>, "
+"<strong>Αυστρία</strong>, <strong>Ελβετία</strong>, "
+"<strong>Ολλανδία</strong>, <strong>Πολωνία</strong>, "
+"<strong>Βέλγιο</strong> και <strong>Γαλλία</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Καταρρεύσει"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Διευρυμένο"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Μην εμφανίζετε"

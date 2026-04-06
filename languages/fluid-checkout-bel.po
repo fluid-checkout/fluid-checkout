@@ -69,10 +69,6 @@ msgstr "Тэлефон для дастаўкі"
 msgid "Only used for shipping-related questions."
 msgstr "Выкарыстоўваецца толькі для пытанняў, звязаных з дастаўкай."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Шматкрокавая"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Адзін крок"
@@ -106,14 +102,6 @@ msgstr "Прыступайце да выстаўлення рахункаў"
 msgid "Proceed to payment"
 msgstr "Прыступайце да аплаты"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Мой кантакт"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Дастаўка да"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Спосаб дастаўкі"
@@ -121,10 +109,6 @@ msgstr "Спосаб дастаўкі"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Дадатковыя заўвагі"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Выстаўленне рахункаў"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -935,16 +919,6 @@ msgstr "Макет касы"
 msgid "Design template"
 msgstr "Шаблон дызайну"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Агульныя стылі этапаў афармлення заказу, зводкі заказаў і іншых раздзелаў. "
-"Можа таксама прымяняцца да іншых старонак, такіх як старонкі "
-"&quot;Кошык&quot;, &quot;Атрыманы заказ&quot; і &quot;Прагляд заказа&quot;."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Цёмны рэжым"
@@ -1530,14 +1504,6 @@ msgstr "Дадайце поле тэлефона для аплаты ў форм
 msgid "Choose in which step to display the billing phone field."
 msgstr "Выберыце, на якім этапе адлюстроўваць поле тэлефона для аплаты."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Уключыць міжнародны фармат тэлефоннага нумара і праверку для палёў тэлефона"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Фарматуйце і спраўджвайце нумары тэлефонаў у адпаведнасці з кожнай краінай."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Уключыце праверку нумара тэлефона ў адпаведнасці з правіламі краіны"
@@ -1972,14 +1938,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(эксперыментальны)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Гэта эксперыментальная функцыя, і яна можа не працаваць належным чынам з "
-"усімі тэмамі і ўбудовамі. Выкарыстоўвайце яго з асцярожнасцю."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2542,9 +2500,150 @@ msgstr "Пасля індыкатара прагрэсу"
 msgid "Before coupon codes section"
 msgstr "Раздзел перад кодамі купонаў"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Уключыць палі міжнародных нумароў тэлефонаў"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Фарматуйце нумары тэлефонаў у адпаведнасці з правіламі кожнай краіны."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Выкарыстоўвайце праверку дакладнага нумара тэлефона"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Паспрабуйце пераканацца, што нумар тэлефона з&#39;яўляецца сапраўдным "
+"нумарам мабільнага або стацыянарнага тэлефона ў адпаведнасці з правіламі "
+"для выбранага кода краіны. Гэтая опцыя выкарыстоўвае функцыю дакладнай "
+"праверкі <code>intl-tel-input</code> , якая можа даваць ілжывыя "
+"спрацоўванні для некаторых нумароў тэлефонаў."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Гэта эксперыментальная функцыя, і яна можа працаваць неналежным чынам ва "
+"ўсіх наладах. Выкарыстоўвайце яе асцярожна."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Тыпы праверкі нумара тэлефона, якія выкарыстоўваюцца, калі ўключана "
+"дакладная праверка."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Мабільны"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Фіксаваная лінія"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Бясплатны званок"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Кантакт"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Шматступенчаты"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 слупкі"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 слупок"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Агульныя стылі для этапаў афармлення замовы, зводкі замовы і іншых "
+"раздзелаў.<br> Можа таксама прымяняцца да іншых старонак, такіх як «Кошык», "
+"«Заказ атрыманы» і «Прагляд замовы»."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Шаблон дызайну <em>«Падзел»</em> недаступны пры выкарыстанні макета <em>«1 "
+"калона»</em> і пры выбары вернецца да <em>«Мінімалістычнага»</em> ."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Этапы перад афармленнем замовы"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Або"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Пры выкарыстанні макета афармлення замовы <em>«1 слупок»</em> гэтая опцыя "
+"заўсёды мае значэнне <em>«Перад крокамі афармлення замовы»</em> і таксама "
+"распаўсюджваецца на выгляд для камп&#39;ютара."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Размясціць дадатковы раздзел зводкі замовы на мабільным тэлефоне."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Опцыя <em>«У загалоўку сайта»</em> дзейнічае толькі пры выкарыстанні "
+"загалоўка без адцягваючых элементаў."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "У загалоўку сайта (патрабуецца загаловак без адцягненняў)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Пачатковы стан пашыральнага раздзела зводкі замовы на мабільным тэлефоне."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Згодна з патрабаваннямі рэгулятара, мы рэкамендуем усталяваць "
+"<em>пашыраны</em> рэжым для наступных краін: <strong>Германія</strong> , "
+"<strong>Аўстрыя</strong> , <strong>Швейцарыя</strong> , "
+"<strong>Нідэрланды</strong> , <strong>Польшча</strong> , "
+"<strong>Бельгія</strong> і <strong>Францыя</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Згорнута"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Пашырана"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"

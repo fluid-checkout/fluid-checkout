@@ -68,10 +68,6 @@ msgstr "షిప్పింగ్ ఫోన్"
 msgid "Only used for shipping-related questions."
 msgstr "షిప్పింగ్ సంబంధిత ప్రశ్నలకు మాత్రమే ఉపయోగించబడుతుంది."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "బహుళ-దశ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "సింగిల్ స్టెప్"
@@ -105,14 +101,6 @@ msgstr "బిల్లింగ్‌కు వెళ్లండి"
 msgid "Proceed to payment"
 msgstr "చెల్లింపుకు కొనసాగండి"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "నా పరిచయం"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "షిప్పింగ్"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "షిప్పింగ్ పద్ధతి"
@@ -120,10 +108,6 @@ msgstr "షిప్పింగ్ పద్ధతి"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "అదనపు గమనికలు"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "బిల్లింగ్"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -930,16 +914,6 @@ msgstr "చెక్అవుట్ లేఅవుట్"
 msgid "Design template"
 msgstr "డిజైన్ టెంప్లేట్"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"చెక్అవుట్ దశలు, ఆర్డర్ సారాంశం మరియు ఇతర విభాగాల కోసం సాధారణ శైలులు. "
-"కార్ట్, ఆర్డర్ రిసీవ్డ్ మరియు వ్యూ ఆర్డర్ పేజీలు వంటి ఇతర పేజీలకు కూడా "
-"వర్తించవచ్చు."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "డార్క్ మోడ్"
@@ -1523,16 +1497,6 @@ msgstr "చెక్అవుట్ ఫారమ్‌కు బిల్లి�
 msgid "Choose in which step to display the billing phone field."
 msgstr "బిల్లింగ్ ఫోన్ ఫీల్డ్‌ను ఏ దశలో ప్రదర్శించాలో ఎంచుకోండి."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ఫోన్ ఫీల్డ్‌ల కోసం అంతర్జాతీయ ఫోన్ నంబర్ ఫార్మాట్ మరియు ధ్రువీకరణను "
-"ప్రారంభించండి."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ప్రతి దేశం ప్రకారం ఫోన్ నంబర్‌లను ఫార్మాట్ చేయండి మరియు ధృవీకరించండి."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "దేశ నియమాల ఆధారంగా ఫోన్ నంబర్ ధ్రువీకరణను ప్రారంభించండి"
@@ -1959,14 +1923,6 @@ msgstr "(ప్రో)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(ప్రయోగాత్మక)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"ఇది ఒక ప్రయోగాత్మక ఫీచర్ మరియు అన్ని థీమ్‌లు మరియు ప్లగిన్‌లతో ఆశించిన "
-"విధంగా పని చేయకపోవచ్చు. దీన్ని జాగ్రత్తగా ఉపయోగించండి."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2529,10 +2485,150 @@ msgstr "ప్రోగ్రెస్ బార్ తర్వాత"
 msgid "Before coupon codes section"
 msgstr "కూపన్ కోడ్‌ల విభాగానికి ముందు"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "అంతర్జాతీయ ఫోన్ నంబర్ ఫీల్డ్‌లను ప్రారంభించండి"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ప్రతి దేశ నియమాల ప్రకారం ఫోన్ నంబర్‌లను ఫార్మాట్ చేయండి."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "ఖచ్చితమైన ఫోన్ నంబర్ వాలిడేషన్‌ను ఉపయోగించండి"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"ఎంచుకున్న దేశ కోడ్ నియమాల ఆధారంగా ఫోన్ నంబర్ చెల్లుబాటు అయ్యే మొబైల్ లేదా "
+"ల్యాండ్‌లైన్ నంబర్ అని నిర్ధారించుకోవడానికి ప్రయత్నించండి. ఈ ఎంపిక "
+"<code>intl-tel-input</code> ఖచ్చితమైన ధ్రువీకరణ లక్షణాన్ని ఉపయోగిస్తుంది, "
+"ఇది కొన్ని ఫోన్ నంబర్‌లకు తప్పుడు పాజిటివ్‌లను ఇవ్వవచ్చు."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"ఇది ఒక ప్రయోగాత్మక ఫీచర్ మరియు అన్ని సెటప్‌లలో ఆశించిన విధంగా పని "
+"చేయకపోవచ్చు. దీన్ని జాగ్రత్తగా ఉపయోగించండి."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ఖచ్చితమైన ధ్రువీకరణ ప్రారంభించబడినప్పుడు ఉపయోగించే ఫోన్ నంబర్ ధ్రువీకరణ "
+"రకాలు."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "మొబైల్"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "స్థిర లైన్"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "టోల్ ఫ్రీ"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "లేదా"
 
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "సంప్రదించండి"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "బహుళ దశలు"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 నిలువు వరుసలు"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 నిలువు వరుస"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"చెక్అవుట్ దశలు, ఆర్డర్ సారాంశం మరియు ఇతర విభాగాల కోసం సాధారణ శైలులు.<br> "
+"కార్ట్, ఆర్డర్ రిసీవ్డ్ మరియు వ్యూ ఆర్డర్ పేజీలు వంటి ఇతర పేజీలకు కూడా "
+"వర్తించవచ్చు."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 నిలువు వరుస&quot;</em> లేఅవుట్‌ను ఉపయోగిస్తున్నప్పుడు "
+"<em>&quot;స్ప్లిట్&quot;</em> డిజైన్ టెంప్లేట్ అందుబాటులో ఉండదు మరియు "
+"ఎంచుకుంటే <em>&quot;మినిమలిస్ట్&quot;</em> కి తిరిగి వస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "చెక్అవుట్ దశలకు ముందు"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 నిలువు వరుస&quot;</em> చెక్అవుట్ లేఅవుట్‌ను ఉపయోగిస్తున్నప్పుడు "
+"ఈ ఎంపిక ఎల్లప్పుడూ <em>&quot;చెక్అవుట్ దశలకు ముందు&quot;</em> కి సెట్ "
+"చేయబడుతుంది మరియు డెస్క్‌టాప్ వీక్షణకు కూడా వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "మొబైల్‌లో అదనపు ఆర్డర్ సారాంశం విభాగం కోసం స్థానం."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;సైట్ హెడర్‌లో&quot;</em> అనే ఎంపిక డిస్ట్రాక్షన్-ఫ్రీ హెడర్‌ను "
+"ఉపయోగిస్తున్నప్పుడు మాత్రమే వర్తిస్తుంది."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "సైట్ హెడర్‌లో (అంతరాయం లేని హెడర్ అవసరం)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "మొబైల్‌లో విస్తరించదగిన ఆర్డర్ సారాంశం విభాగం యొక్క ప్రారంభ స్థితి."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"నియంత్రణ అవసరాల కారణంగా కింది దేశాలకు దీనిని <em>విస్తరించినట్లు</em> సెట్ "
+"చేయాలని మేము సిఫార్సు చేస్తున్నాము: <strong>జర్మనీ</strong> , "
+"<strong>ఆస్ట్రియా</strong> , <strong>స్విట్జర్లాండ్</strong> , "
+"<strong>నెదర్లాండ్స్</strong> , <strong>పోలాండ్</strong> , "
+"<strong>బెల్జియం</strong> మరియు <strong>ఫ్రాన్స్</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "కుదించబడింది"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "విస్తరించబడింది"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "చూపించవద్దు"

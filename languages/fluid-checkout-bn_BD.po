@@ -68,10 +68,6 @@ msgstr "শিপিং ফোন"
 msgid "Only used for shipping-related questions."
 msgstr "শুধুমাত্র শিপিং-সম্পর্কিত প্রশ্নের জন্য ব্যবহৃত।"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "বহু-পদক্ষেপ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "একক পদক্ষেপ"
@@ -105,14 +101,6 @@ msgstr "বিলিংয়ে এগিয়ে যান"
 msgid "Proceed to payment"
 msgstr "পেমেন্টে এগিয়ে যান"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "আমার যোগাযোগ"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "পাঠানো হচ্ছে"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "শিপিং পদ্ধতি"
@@ -120,10 +108,6 @@ msgstr "শিপিং পদ্ধতি"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "অতিরিক্ত নোট"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "বিলিং করা হচ্ছে"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -922,16 +906,6 @@ msgstr "চেকআউট লেআউট"
 msgid "Design template"
 msgstr "ডিজাইন টেমপ্লেট"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"চেকআউট ধাপ, অর্ডার সারাংশ এবং অন্যান্য বিভাগের জন্য সাধারণ স্টাইল। কার্ট, "
-"অর্ডার রিসিভড এবং ভিউ অর্ডার পৃষ্ঠার মতো অন্যান্য পৃষ্ঠাগুলিতেও প্রযোজ্য "
-"হতে পারে।"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "ডার্ক মোড"
@@ -1498,14 +1472,6 @@ msgstr "চেকআউট ফর্মে বিলিং ফোন ফিল�
 msgid "Choose in which step to display the billing phone field."
 msgstr "কোন ধাপে বিলিং ফোন ফিল্ডটি প্রদর্শন করবেন তা বেছে নিন।"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "ফোন ফিল্ডের জন্য আন্তর্জাতিক ফোন নম্বর ফর্ম্যাট এবং বৈধতা সক্ষম করুন"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "প্রতিটি দেশ অনুসারে ফোন নম্বর ফর্ম্যাট এবং যাচাই করুন।"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "দেশের নিয়মের উপর ভিত্তি করে ফোন নম্বর যাচাইকরণ সক্ষম করুন"
@@ -1932,14 +1898,6 @@ msgstr "(প্রো)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(পরীক্ষামূলক)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"এটি একটি পরীক্ষামূলক বৈশিষ্ট্য এবং সমস্ত থিম এবং প্লাগইনের সাথে প্রত্যাশা "
-"অনুযায়ী কাজ নাও করতে পারে। সাবধানতার সাথে এটি ব্যবহার করুন।"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2496,10 +2454,149 @@ msgstr "অগ্রগতি বারের পরে"
 msgid "Before coupon codes section"
 msgstr "কুপন কোড বিভাগ আগে"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "আন্তর্জাতিক ফোন নম্বর ক্ষেত্রগুলি সক্ষম করুন"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "প্রতিটি দেশের নিয়ম অনুসারে ফোন নম্বর ফর্ম্যাট করুন।"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "সুনির্দিষ্ট ফোন নম্বর যাচাইকরণ ব্যবহার করুন"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"নির্বাচিত দেশের কোডের নিয়ম অনুসারে ফোন নম্বরটি একটি বৈধ মোবাইল বা "
+"ল্যান্ডলাইন নম্বর কিনা তা নিশ্চিত করার চেষ্টা করুন। এই বিকল্পটি "
+"<code>intl-tel-input</code> সুনির্দিষ্ট যাচাইকরণ বৈশিষ্ট্য ব্যবহার করে, যা "
+"কিছু ফোন নম্বরের জন্য মিথ্যা ইতিবাচক ফলাফল দিতে পারে।"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"এটি একটি পরীক্ষামূলক বৈশিষ্ট্য এবং সমস্ত সেটআপে প্রত্যাশা অনুযায়ী কাজ নাও "
+"করতে পারে। সাবধানতার সাথে এটি ব্যবহার করুন।"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "সুনির্দিষ্ট যাচাইকরণ সক্ষম করা হলে ব্যবহৃত ফোন নম্বর যাচাইকরণের ধরণ।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "মোবাইল"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "স্থির রেখা"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "টোল ফ্রি"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "যোগাযোগ"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "বহু ধাপ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "২টি কলাম"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "১টি কলাম"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"চেকআউট ধাপ, অর্ডার সারাংশ এবং অন্যান্য বিভাগের জন্য সাধারণ স্টাইল।<br> "
+"কার্ট, অর্ডার রিসিভড এবং ভিউ অর্ডার পৃষ্ঠার মতো অন্যান্য পৃষ্ঠাগুলিতেও "
+"প্রযোজ্য হতে পারে।"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;১ কলাম&quot;</em> লেআউট ব্যবহার করার সময় "
+"<em>&quot;স্প্লিট&quot;</em> ডিজাইন টেমপ্লেটটি পাওয়া যায় না এবং যদি এটি "
+"বেছে নেওয়া হয় তবে এটি <em>&quot;মিনিমালিস্ট&quot;</em> তে ফিরে আসবে।"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "চেকআউটের আগে ধাপগুলি"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "অথবা"
 
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;১ কলাম&quot;</em> চেকআউট লেআউট ব্যবহার করার সময় এই বিকল্পটি "
+"সর্বদা <em>&quot;চেকআউট পদক্ষেপের আগে&quot;</em> তে সেট করা থাকে এবং "
+"ডেস্কটপ ভিউতেও প্রযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "মোবাইলে অতিরিক্ত অর্ডার সারাংশ বিভাগের অবস্থান।"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;সাইট হেডারে&quot;</em> বিকল্পটি শুধুমাত্র বিক্ষেপ-মুক্ত হেডার "
+"ব্যবহার করার সময় প্রযোজ্য।"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "সাইটের হেডারে (বিক্ষেপ-মুক্ত হেডার প্রয়োজন)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "মোবাইলে সম্প্রসারণযোগ্য অর্ডার সারাংশ বিভাগের প্রাথমিক অবস্থা।"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"নিয়ন্ত্রক প্রয়োজনীয়তার কারণে আমরা নিম্নলিখিত দেশগুলির জন্য এটিকে "
+"<em>সম্প্রসারিত</em> হিসাবে সেট করার পরামর্শ দিচ্ছি: "
+"<strong>জার্মানি</strong> , <strong>অস্ট্রিয়া</strong> , "
+"<strong>সুইজারল্যান্ড</strong> , <strong>নেদারল্যান্ডস</strong> , "
+"<strong>পোল্যান্ড</strong> , <strong>বেলজিয়াম</strong> এবং "
+"<strong>ফ্রান্স</strong> ।"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "সঙ্কুচিত"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "সম্প্রসারিত"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "দেখাবেন না"

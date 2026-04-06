@@ -43,6 +43,7 @@
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
+		formRowSelector: '.form-row, .shipping-method__package',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -71,16 +72,26 @@
 		substepVisibleStateAttribute: 'data-substep-visible',
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
-		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
+		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidFocusDelay: 100,
 
+		enablePlaceOrderMove: 'yes',
 		placeOrderButtonSelector: '.fc-place-order-button',
 		placeOrderSkipMoveSelector: '.has-place-order--below_order_summary',
 		placeOrderSectionMainSelector: '.fc-place-order__section--main',
 		placeOrderPlaceholderMainSelector: '.fc-inside .fc-place-order__section-placeholder',
 		placeOrderPlaceholderSidebarSelector: '.fc-sidebar .fc-place-order__section-placeholder',
 		placeOrderRefreshRate: 50,
+
+		enableOrderSummaryTableMove: 'yes',
+		orderSummaryTableSelector: '#order_review',
+		orderSummaryTableSkipMoveSelector: '.has-order-summary-position--site_header',
+		orderSummaryForceMoveSelector: '.has-checkout-column-layout--one_column',
+		orderSummaryTablePlaceholderMainSelector: '.fc-order-review-table__placeholder--main',
+		orderSummaryTablePlaceholderExtraSelector: '.fc-order-review-table__placeholder--extra',
+		orderSummaryTableRefreshRate: 50,
 	}
-	var _resizeObserver;
+	var _resizeObservers = [];
 
 
 
@@ -104,6 +115,34 @@
 
 		FCUtils.scrollToElement( element, _settings.progressBarSelector );
 	}
+
+	/**
+	 * Wait for the element to be in the viewport and then focus it.
+	 * Runs recursively until the element is in the viewport, then focuses it.
+	 *
+	 * @param   HTMLElement  element  Element to check and focus.
+	 */
+	var waitForElementInViewportThenFocus = function( element ) {
+		// Get element bounding client rect
+		var rect = element.getBoundingClientRect();
+		var inView = (
+			rect.top >= 0 &&
+			rect.bottom <= ( window.innerHeight || document.documentElement.clientHeight )
+		);
+
+		// Check if element is in viewport
+		if ( inView ) {
+			setTimeout( function() {
+				element.focus();
+			}, _settings.invalidFocusDelay );
+		}
+		// Otherwise keep waiting
+		else {
+			requestAnimationFrame( function() {
+				waitForElementInViewportThenFocus( element );
+			} );
+		}
+	};
 
 
 
@@ -283,8 +322,10 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when substep has invalid fields
@@ -382,8 +423,10 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when any substep has invalid fields
@@ -577,10 +620,10 @@
 
 
 	/**
-	 * Maybe move place order section to order summary for small screens.
+	 * Maybe move place order section based on screen size.
 	 */
 	var maybeMovePlaceOrderSection = function() {
-		// Bail if displaying the place order only on the sidebar. In this case there is no need to move the sections.
+		// Bail if should not move the place order section
 		if ( document.body.matches( _settings.placeOrderSkipMoveSelector ) ) { return; }
 
 		// Get viewport width
@@ -601,6 +644,36 @@
 		// Maybe move to steps section
 		else if ( viewportWidth >= 1000 && placeOrderPlaceholderMain.parentNode !== placeOrderMain.parentNode ) {
 			placeOrderPlaceholderMain.parentNode.insertBefore( placeOrderMain, placeOrderPlaceholderMain.nextSibling );
+		}
+	};
+
+
+
+	/**
+	 * Maybe move order summary table based on screen size.
+	 */
+	var maybeMoveOrderSummaryTable = function() {
+		// Bail if should not move the order summary table
+		if ( document.body.matches( _settings.orderSummaryTableSkipMoveSelector ) ) { return; }
+
+		// Get viewport width
+		var viewportWidth = window.innerWidth;
+
+		// Get place order sections
+		var orderSummaryTable = document.querySelector( _settings.orderSummaryTableSelector );
+		var orderSummaryTablePlaceholderMain = document.querySelector( _settings.orderSummaryTablePlaceholderMainSelector );
+		var orderSummaryTablePlaceholderExtra = document.querySelector( _settings.orderSummaryTablePlaceholderExtraSelector );
+
+		// Bail if elements are not found
+		if ( ! orderSummaryTable || ! orderSummaryTablePlaceholderMain || ! orderSummaryTablePlaceholderExtra ) { return; }
+
+		// Maybe move to extra section
+		if ( document.body.matches( _settings.orderSummaryForceMoveSelector ) || ( viewportWidth < 1000 && orderSummaryTablePlaceholderExtra.parentNode !== orderSummaryTable.parentNode ) ) {
+			orderSummaryTablePlaceholderExtra.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderExtra.nextSibling );
+		}
+		// Maybe move to main section
+		else if ( viewportWidth >= 1000 && orderSummaryTablePlaceholderMain.parentNode !== orderSummaryTable.parentNode ) {
+			orderSummaryTablePlaceholderMain.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderMain.nextSibling );
 		}
 	};
 
@@ -669,13 +742,6 @@
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
 
-		// Maybe move place order section, and initialize resize observers
-		maybeMovePlaceOrderSection();
-		if ( window.ResizeObserver ) {
-			_resizeObserver = new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) );
-			_resizeObserver.observe( document.body );
-		}
-
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
@@ -685,6 +751,28 @@
 			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
+		}
+
+		// Maybe initialize resize observers
+		if ( window.ResizeObserver ) {
+			// Maybe enable place order move
+			if ( 'yes' === _settings.enablePlaceOrderMove ) {
+				// Run and initialize observer
+				maybeMovePlaceOrderSection();
+				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) ) );
+			}
+
+			// Maybe enable order summary table move
+			if ( 'yes' === _settings.enableOrderSummaryTableMove ) {
+				// Run and initialize observer
+				maybeMoveOrderSummaryTable();
+				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMoveOrderSummaryTable, _settings.orderSummaryTableRefreshRate ) ) );
+			}
+
+			// Add resize observers to document body
+			for ( var i = 0; i < _resizeObservers.length; i++ ) {
+				_resizeObservers[ i ].observe( document.body );
+			}
 		}
 
 		// Add init class
