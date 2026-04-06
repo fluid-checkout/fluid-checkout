@@ -198,7 +198,7 @@
 	/**
 	 * Check field is a TomSelect element.
 	 * @param  {Field}  field     Field to check.
-	 * @return {Boolean}          True if field is select2.
+	 * @return {Boolean}          True if field is a TomSelect element.
 	 */
 	var isSelectTomField = function( field ) {
 		if ( field.closest( _settings.selectTomSelector ) ) { return true; }
