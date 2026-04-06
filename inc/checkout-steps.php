@@ -2504,7 +2504,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get step title and apply filters
 		$step_title = $step_args[ 'step_title' ];
-		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_title );
+		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_title, $context );
 
 		return $step_title;
 	}
