@@ -1837,7 +1837,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get default label for next step button
 		/** translators: Next checkout step title */
-		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_args[ 'step_title' ] );
+		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $this->get_step_title( $step_id ) );
 
 		// Check whether a specific button label is available for the next step
 		if ( array_key_exists( 'proceed_to_step_button_label', $next_step_args ) ) {
@@ -2369,7 +2369,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_id_contact = 'contact';
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_contact,
-			'step_title' => apply_filters( 'fc_step_title_contact', _x( 'Contact', 'Checkout step title', 'fluid-checkout' ) ),
+			'step_title' => _x( 'Contact', 'Checkout step title', 'fluid-checkout' ),
 			'proceed_to_step_button_label' => __( 'Proceed to contact', 'fluid-checkout' ),
 			'priority' => 10,
 		) );
@@ -2378,7 +2378,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_id_shipping = 'shipping';
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_shipping,
-			'step_title' => apply_filters( 'fc_step_title_shipping', _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ) ),
+			'step_title' => _x( 'Shipping', 'Checkout step title', 'fluid-checkout' ),
 			'proceed_to_step_button_label' => __( 'Proceed to shipping', 'fluid-checkout' ),
 			'priority' => 20,
 			// Need to set condition as an anonymous function that returns checks if shipping is needed directly,
@@ -2390,7 +2390,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_id_billing = 'billing';
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_billing,
-			'step_title' => apply_filters( 'fc_step_title_billing', _x( 'Billing', 'Checkout step title', 'fluid-checkout' ) ),
+			'step_title' => _x( 'Billing', 'Checkout step title', 'fluid-checkout' ),
 			'proceed_to_step_button_label' => __( 'Proceed to billing', 'fluid-checkout' ),
 			'priority' => $this->get_billing_step_hook_priority(),
 		) );
@@ -2399,7 +2399,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_id_payment = 'payment';
 		$this->register_checkout_step( array(
 			'step_id' => $step_id_payment,
-			'step_title' => apply_filters( 'fc_step_title_payment', _x( 'Payment', 'Checkout step title', 'fluid-checkout' ) ),
+			'step_title' => _x( 'Payment', 'Checkout step title', 'fluid-checkout' ),
 			'proceed_to_step_button_label' => __( 'Proceed to payment', 'fluid-checkout' ),
 			'priority' => 100,
 		) );
@@ -2759,7 +2759,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					foreach ( $_checkout_steps as $step_index => $step_args ) :
 						$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
 						$step_id = $step_args[ 'step_id' ];
-						$step_title = $step_args[ 'step_title' ];
+						$step_title = $this->get_step_title( $step_id );
 						$step_title = apply_filters( "fc_progress_bar_step_title_{$step_id}", $step_title, $step_id, $step_args, $step_index, $context );
 						?>
 						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_index + 1 ); ?>"><?php echo esc_html( $step_title ); ?></span>
