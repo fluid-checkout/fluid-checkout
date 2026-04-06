@@ -168,10 +168,6 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 	/**
 	 * Whether checkout validation scripts should load (checkout or customer account address).
-	 *
-	 * Cart is omitted: default `formSelector` only matches checkout and edit-address forms. The cart
-	 * shipping calculator uses `form.woocommerce-shipping-calculator`, so enqueuing here would load assets
-	 * that never bind. Extend `fc_checkout_validation_script_settings` and enqueue from a compat layer if needed.
 	 */
 	public function should_enqueue_validation_assets() {
 		if ( function_exists( 'is_checkout' ) && is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
