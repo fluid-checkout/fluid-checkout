@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WooCommerce 10.6.1
 * Added: Compatibility with plugin WooCommerce FedEx Shipping Pro by Techspawn.
 * Improved: Added global JS flag `window.can_update_payment_methods` to allow preventing updating the payment methods fragment.
 * Fixed: Compatibility with plugin Rvvup for WooCommerce. Prevent update of payment methods section during payment cause payment to fail.
