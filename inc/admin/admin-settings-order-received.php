@@ -249,6 +249,72 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'id'   => 'fc_pro_order_details_layout_options',
 					),
 
+
+
+					array(
+						'title' => __( 'Delayed account creation', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_pro_delayed_account_creation_options',
+					),
+
+					array(
+						'title'             => __( 'Account creation', 'fluid-checkout' ),
+						'desc'              => __( 'Enable delayed account creation', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Enabling this option will also enable the "Account matching" feature.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_enable_delayed_account_creation',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_delayed_account_creation' ),
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
+						'title'             => __( 'Section position', 'fluid-checkout' ),
+						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_delayed_account_creation_position',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'after_order_overview'         => __( 'After the order overview', 'fluid-checkout' ),
+							'before_customer_details'      => __( 'Before customer details section', 'fluid-checkout' ),
+							'after_customer_details'       => __( 'After customer details section', 'fluid-checkout' ),
+							'on_sidebar'                   => __( 'On the sidebar', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_position' ),
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
+						'title'             => __( 'Account creation benefits', 'fluid-checkout' ),
+						'desc'              => __( 'Leaving the field empty will display the default text.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_delayed_account_creation_benefits',
+						'type'              => 'fc_textarea',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_benefits' ),
+						'placeholder'       => _x( "✔ Checkout faster next time\n✔ Manage your payment preferences\n✔ View order status and history", 'Delayed account creation benefits placeholder text', 'fluid-checkout' ),
+						'css'               => 'width:100%; min-height: 80px;',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
+						'title'             => __( 'Privacy notice', 'fluid-checkout' ),
+						'desc'              => sprintf( __( 'Leaving the field empty will display the default text. You can use the shortcode %s and it will be replaced with the "privacy policy" link.', 'fluid-checkout' ), '<code>[privacy_policy]</code>' ),
+						'id'                => 'fc_pro_delayed_account_creation_privacy_notice',
+						'type'              => 'fc_textarea',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_privacy_notice' ),
+						/* translators: %s: Privacy policy shortcode */
+						'placeholder'       => sprintf( _x( 'We treat your personal data with care, for more details view %s.', 'Delayed account creation privacy notice placeholder text', 'fluid-checkout' ), '[privacy_policy]' ),
+						'css'               => 'width:100%; min-height: 80px;',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_pro_delayed_account_creation_options',
+					),
+
 				)
 			);
 		}

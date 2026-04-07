@@ -51,8 +51,6 @@ class FluidCheckout_Admin_SettingType_Textarea extends FluidCheckout {
 				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 			</th>
 			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-				<?php echo $description; // WPCS: XSS ok. ?>
-
 				<textarea
 					name="<?php echo esc_attr( $value['field_name'] ); ?>"
 					id="<?php echo esc_attr( $value['id'] ); ?>"
@@ -62,6 +60,8 @@ class FluidCheckout_Admin_SettingType_Textarea extends FluidCheckout {
 					<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
 					<?php echo array_key_exists( 'disabled', $value ) && false !== $value[ 'disabled' ] ? 'disabled' : ''; ?>
 					><?php echo esc_textarea( $option_value ); // WPCS: XSS ok. ?></textarea>
+
+					<?php echo $description; // WPCS: XSS ok. ?>
 			</td>
 		</tr>
 		<?php
