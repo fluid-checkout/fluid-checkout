@@ -129,7 +129,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
 			'fc_pro_enable_delayed_account_creation'                        => 'no',
-			'fc_pro_delayed_account_creation_position'                      => 'after_order_overview',
+			'fc_pro_delayed_account_creation_section_position'                      => 'after_order_overview',
 			'fc_pro_delayed_account_creation_benefits'                      => '',
 			'fc_pro_delayed_account_creation_privacy_notice'                => '',
 			

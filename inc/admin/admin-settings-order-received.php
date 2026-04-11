@@ -272,7 +272,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 					array(
 						'title'             => __( 'Section position', 'fluid-checkout' ),
 						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
-						'id'                => 'fc_pro_delayed_account_creation_position',
+						'id'                => 'fc_pro_delayed_account_creation_section_position',
 						'type'              => 'fc_select',
 						'options'           => array(
 							'after_order_overview'         => __( 'After the order overview', 'fluid-checkout' ),
@@ -280,7 +280,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 							'after_customer_details'       => __( 'After customer details section', 'fluid-checkout' ),
 							'on_sidebar'                   => __( 'On the sidebar', 'fluid-checkout' ),
 						),
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_position' ),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_section_position' ),
 						'autoload'          => false,
 						'disabled'          => true,
 					),
