@@ -66,6 +66,15 @@
 		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
 		currentLastStepClass: 'fc-checkout-step-current-last',
 
+		stepActionsSelector: '.fc-step__actions',
+		stepVisibleAttribute: 'data-step-visible',
+		stepProceedLabelAttribute: 'data-step-proceed-label',
+		stepFirstAttribute: 'data-step-first',
+		stepLastAttribute: 'data-step-last',
+		stepCountAttribute: 'data-step-count',
+		stepCountTotalSelector: '.fc-progress-bar__total-steps',
+		progressBarStepsContainerSelector: '.fc-progress-bar__steps',
+
 		substepEditableStateFieldSelector: '.fc-substep-editable-state[type="hidden"]',
 		substepEditableStateAttribute: 'data-substep-editable',
 		substepVisibleStateFieldSelector: '.fc-substep-visible-state[type="hidden"]',
@@ -372,7 +381,6 @@
 		if ( ! progressBarElement ) { return; }
 
 		var progressBarItems = progressBarElement.querySelectorAll( _settings.progressBarItemSelector );
-		var progressBarItemsCount = progressBarItems.length;
 
 		// Update progress bar items status
 		for ( var i = 0; i < progressBarItems.length; i++ ) {
@@ -397,9 +405,20 @@
 			}
 		}
 
-		// Calculate the current step text value
-		var currentStepValue = currentStepIndex + 1;
-		currentStepValue = currentStepValue <= progressBarItemsCount ? currentStepValue : progressBarItemsCount;
+		// Get only visible progress bar items
+		var visibleProgressBarItems = Array.from( progressBarItems ).filter( function( bar ) { return 'no' !== bar.getAttribute( _settings.stepVisibleAttribute ); } );
+
+		// Iterate through visible steps and calculate current step number
+		var currentStepValue = 1;
+		for ( var i = 0; i < visibleProgressBarItems.length; i++ ) {
+			// Get step index of the progress bar item
+			var stepIndex = parseInt( visibleProgressBarItems[ i ].getAttribute( _settings.stepIndexAttribute ) );
+
+			// Count visible steps up to and including the current step
+			if ( stepIndex <= currentStepIndex ) {
+				currentStepValue = i + 1;
+			}
+		}
 
 		// Change value of the current step text indicator
 		var currentStepTextElement = progressBarElement.querySelector( _settings.progressBarCurrentSelector );
@@ -452,8 +471,13 @@
 			collapseSubstepEdit( substepElement );
 		}
 
-		// Get next step, and set it as current
-		var nextStepElement = stepElement.parentElement.querySelector( _settings.nextStepSelector );
+		// Get next visible step, and set it as current
+		var nextStepElement = getNextVisibleStep( stepElement );
+
+		// Bail if there is no next visible step
+		if ( ! nextStepElement ) { return; }
+
+		// Set `current` to the next step
 		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
 
 		// Unset `current` from the step that is closing
@@ -483,6 +507,192 @@
 		if ( _hasJQuery ) {
 			$( document.body ).trigger( 'update_checkout' );
 		}
+	}
+
+
+
+	/**
+	 * Get the next visible step after the given step element.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to start searching from.
+	 *
+	 * @return  HTMLElement|null          The next visible step element, or `null` if not found.
+	 */
+	var getNextVisibleStep = function( stepElement ) {
+		var nextVisibleStep = null;
+		var allSteps = getAllSteps();
+		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Iterate forward through steps after the given step
+		for ( var i = stepIndex + 1; i < allSteps.length; i++ ) {
+			// Get next visible step
+			if ( 'no' !== allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) {
+				nextVisibleStep = allSteps[ i ];
+				break;
+			}
+		}
+
+		return nextVisibleStep;
+	}
+
+	/**
+	 * Get the previous visible step before the given step element.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to start searching from.
+	 *
+	 * @return  HTMLElement|null          The previous visible step element, or `null` if not found.
+	 */
+	var getPreviousVisibleStep = function( stepElement ) {
+		var previousVisibleStep = null;
+		var allSteps = getAllSteps();
+		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Iterate backward through steps
+		for ( var i = stepIndex - 1; i >= 0; i-- ) {
+			// Get previous visible step
+			if ( 'no' !== allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) {
+				previousVisibleStep = allSteps[ i ];
+				break;
+			}
+		}
+
+		return previousVisibleStep;
+	}
+
+
+
+	/**
+	 * Check if a step has any visible substeps.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to check.
+	 *
+	 * @return  Boolean                   Whether the step has at least one visible substep.
+	 */
+	var hasVisibleSubsteps = function( stepElement ) {
+		var hasVisibleSubsteps = false;
+
+		// Get substeps of the step
+		var substeps = stepElement.querySelectorAll( _settings.substepSelector );
+
+		// Return true if step has no substeps (e.g. payment step)
+		if ( substeps.length === 0 ) { return true; }
+
+		// Iterate through substeps
+		for ( var i = 0; i < substeps.length; i++ ) {
+			// Find at least one visible substep
+			if ( 'no' !== substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) {
+				hasVisibleSubsteps = true;
+				break;
+			}
+		}
+
+		return hasVisibleSubsteps;
+	}
+
+
+
+	/**
+	 * Update step visibility based on substep visibility state.
+	 *
+	 * @param   Event  _event  An unused `jQuery.Event` object.
+	 * @param   Array  data    The updated checkout data.
+	 */
+	var maybeChangeStepVisibility = function( _event, data ) {
+		var allSteps = getAllSteps();
+		var visibleSteps = [];
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return; }
+
+		// Iterate through steps to update their visibility and collect visible steps
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var stepElement = allSteps[ i ];
+			var stepId = stepElement.getAttribute( _settings.stepIdAttribute );
+			var progressBarItem = document.querySelector( _settings.progressBarItemSelector + '[' + _settings.stepIdAttribute + '="' + stepId + '"]' );
+
+			// Get step visibility status
+			var isVisible = hasVisibleSubsteps( stepElement );
+			var visibleValue = isVisible ? 'yes' : 'no';
+
+			// Set step visibility attribute
+			stepElement.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+
+			// Reset first/last step attributes
+			stepElement.removeAttribute( _settings.stepFirstAttribute );
+			stepElement.removeAttribute( _settings.stepLastAttribute );
+
+			// Collect visible steps
+			if ( isVisible ) {
+				visibleSteps.push( stepElement );
+			}
+
+			// Update corresponding progress bar item visibility
+			if ( progressBarItem ) {
+				progressBarItem.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+			}
+		}
+
+		// Set first/last step attributes on visible steps only
+		if ( visibleSteps.length > 0 ) {
+			visibleSteps[ 0 ].setAttribute( _settings.stepFirstAttribute, '' );
+			visibleSteps[ visibleSteps.length - 1 ].setAttribute( _settings.stepLastAttribute, '' );
+		}
+
+		// Update step count on progress bar container to reflect only visible steps
+		var progressBarStepsContainer = document.querySelector( _settings.progressBarStepsContainerSelector );
+		if ( progressBarStepsContainer ) {
+			progressBarStepsContainer.setAttribute( _settings.stepCountAttribute, visibleSteps.length );
+		}
+
+		// Update total steps count text element
+		var totalStepsElement = document.querySelector( _settings.stepCountTotalSelector );
+		if ( totalStepsElement ) {
+			totalStepsElement.innerText = visibleSteps.length;
+		}
+
+		// Iterate through steps to update proceed button labels and visibility for each step
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var stepElement = allSteps[ i ];
+			var nextStepButton = stepElement.querySelector( _settings.nextStepButtonSelector );
+
+			// Skip hidden steps and steps with no proceed button
+			if ( 'no' === stepElement.getAttribute( _settings.stepVisibleAttribute ) || ! nextStepButton ) { continue; }
+
+			// Get step actions container
+			var stepActions = nextStepButton.closest( _settings.stepActionsSelector );
+
+			// Get next visible step
+			var nextStep = getNextVisibleStep( stepElement );
+
+			// Maybe hide the proceed button if there is no next visible step
+			if ( ! nextStep ) {
+				stepActions.style.display = 'none';
+				continue;
+			}
+
+			// Update button label with next visible step's proceed label
+			var proceedLabel = nextStep.getAttribute( _settings.stepProceedLabelAttribute );
+			if ( proceedLabel ) {
+				nextStepButton.textContent = proceedLabel;
+			}
+
+			// Ensure the button container is visible
+			stepActions.style.display = '';
+		}
+
+		// Maybe handle case where the current step has become hidden
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+		if ( currentStepElement && 'no' === currentStepElement.getAttribute( _settings.stepVisibleAttribute ) ) {
+			// Try to move to the next visible step, or fall back to the previous visible step
+			var targetStep = getNextVisibleStep( currentStepElement ) || getPreviousVisibleStep( currentStepElement );
+			if ( targetStep ) {
+				currentStepElement.removeAttribute( _settings.stepCurrentAttribute );
+				targetStep.setAttribute( _settings.stepCurrentAttribute, '' );
+			}
+		}
+
+		// Update progress bar to reflect changes
+		updateProgressBar();
 	}
 
 
@@ -748,8 +958,9 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
+			$( document.body ).on( 'updated_checkout', maybeChangeStepVisibility );
+			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 		}
 

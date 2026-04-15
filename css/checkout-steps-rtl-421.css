@@ -71,6 +71,10 @@
   transition: width 0.3s linear, background-color 0.3s linear;
 }
 
+.fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step[data-step-visible=no] {
+  display: none;
+}
+
 .fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step.is-complete {
   background-color: var(--fluidcheckout--checkout-progress--bar-color--complete, var(--fluidcheckout--color--success, #007a3d));
 }
@@ -163,6 +167,10 @@
   .fc-wrapper .fc-checkout-step {
     padding: 0;
   }
+}
+
+.fc-wrapper .fc-checkout-step[data-step-visible=no] {
+  display: none !important;
 }
 
 @media (min-width: 750px) {
