@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Conditional visibility for checkout steps based on available substeps.
+
 = 4.2.1 - 2026-04-07 =
 
 * Bump tested up to WooCommerce 10.6.1

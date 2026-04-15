@@ -86,7 +86,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'fc_display_checkout_page_title', array( $this, 'maybe_display_checkout_page_title' ), 10 );
 
 		// Checkout progress bar
-		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_progress_bar' ), 4 ); // Display before the checkout form and notices
+		add_action( 'woocommerce_before_checkout_form', array( $this, 'output_checkout_progress_bar' ), 4, 0 ); // Display before the checkout form and notices
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'maybe_remove_progress_bar_if_cart_expired' ), 10 );
 
 		// Checkout steps
@@ -1657,6 +1657,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 				// Skip if step is complete
 				if ( $this->is_step_complete( $step_args[ 'step_id' ], $context ) ) { continue; }
 
+				// Skip if step is hidden (has no visible substeps)
+				if ( ! $this->has_visible_substeps( $step_args[ 'step_id' ], $context ) ) { continue; }
+
 				// Otherwise, set the current step
 				$current_step = array( $step_index => $step_args );
 				break;
@@ -1735,6 +1738,151 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_current_step = apply_filters( 'fc_is_current_step', $is_current_step, $step_id, $context );
 
 		return $is_current_step;
+	}
+
+
+
+	/**
+	 * Check if a step has any visible substeps.
+	 *
+	 * @param   string  $step_id   Id of the checkout step.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 *
+	 * @return  boolean            Whether the step has at least one visible substep.
+	 */
+	public function has_visible_substeps( $step_id, $context = 'checkout' ) {
+		// Try to return value from cache
+		$cache_handle = 'has_visible_substeps_' . $step_id . '_' . $context;
+		if ( array_key_exists( $cache_handle, $this->cached_values ) ) {
+			return $this->cached_values[ $cache_handle ];
+		}
+
+		// Get substeps for this step
+		$substeps = $this->get_checkout_substeps( $step_id, $context );
+
+		// Return true if step has no substeps
+		if ( ! is_array( $substeps ) || count( $substeps ) < 1 ) { return true; }
+
+		// Iterate through substeps to check for visibility
+		$has_visible_substeps = false;
+		foreach ( $substeps as $substep_args ) {
+			// Set as visible and stop iterating if this substep is visible
+			if ( $this->is_substep_visible( $substep_args, $context ) ) {
+				$has_visible_substeps = true;
+				break;
+			}
+		}
+
+		// Set cache
+		if ( did_action( 'wp' ) || doing_action( 'wp' ) ) {
+			$this->cached_values[ $cache_handle ] = $has_visible_substeps;
+		}
+
+		return $has_visible_substeps;
+	}
+
+
+
+	/**
+	 * Check if a substep is visible based on its attributes.
+	 *
+	 * @param   array   $substep_args  Arguments of the substep to check.
+	 * @param   string  $context       Context in which the function is running. Defaults to `checkout`.
+	 *
+	 * @return  boolean                Whether the substep is visible.
+	 */
+	public function is_substep_visible( $substep_args, $context = 'checkout' ) {
+		// Initialize variables
+		$is_substep_visible = true;
+		$substep_id = $substep_args[ 'substep_id' ];
+		$additional_attributes = array_key_exists( 'additional_attributes', $substep_args ) ? $substep_args[ 'additional_attributes' ] : array();
+
+		// Apply the same substep attributes filter used during rendering
+		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes, $context ) ? : array();
+
+		// Set as not visible if the visibility attribute is set to `no`
+		if ( array_key_exists( 'data-substep-visible', $additional_attributes ) && 'no' === $additional_attributes[ 'data-substep-visible' ] ) {
+			$is_substep_visible = false;
+		}
+
+		return $is_substep_visible;
+	}
+
+
+
+	/**
+	 * Get the first checkout step that has visible substeps.
+	 * 
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 */
+	public function get_first_visible_step( $context = 'checkout' ) {
+		// Get checkout steps
+		$_checkout_steps = $this->get_checkout_steps( $context );
+
+		// Bail if no steps are registered
+		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
+
+		// Iterate through steps and find first visible
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			if ( $this->has_visible_substeps( $step_args[ 'step_id' ], $context ) ) {
+				return array( $step_index => $step_args );
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the last checkout step that has visible substeps.
+	 * 
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 */
+	public function get_last_visible_step( $context = 'checkout' ) {
+		// Get checkout steps
+		$_checkout_steps = $this->get_checkout_steps( $context );
+
+		// Bail if no steps are registered
+		if ( ! is_array( $_checkout_steps ) || count( $_checkout_steps ) === 0 ) { return false; }
+
+		// Iterate through steps and track last visible
+		$last_visible_step = false;
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			if ( $this->has_visible_substeps( $step_args[ 'step_id' ], $context ) ) {
+				$last_visible_step = array( $step_index => $step_args );
+			}
+		}
+
+		return $last_visible_step;
+	}
+
+	/**
+	 * Get the next visible checkout step after the given step.
+	 *
+	 * @param   string  $step_id   Id of the step to find the next visible step after.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 */
+	public function get_next_visible_step( $step_id, $context = 'checkout' ) {
+		// Get list of checkout steps
+		$_checkout_steps = $this->get_checkout_steps( $context );
+
+		// Find the target step, then look for the next visible step after it
+		$found_target = false;
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			// Skip steps until the target step is found
+			if ( ! $found_target ) {
+				if ( $step_id === $step_args[ 'step_id' ] ) {
+					$found_target = true;
+				}
+				continue;
+			}
+
+			// Return first visible step after the target
+			if ( $this->has_visible_substeps( $step_args[ 'step_id' ], $context ) ) {
+				return array( $step_index => $step_args );
+			}
+		}
+
+		return false;
 	}
 
 
@@ -2689,19 +2837,36 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get checkout steps to be rendered
 		$_checkout_steps = $this->get_checkout_steps( $context );
 
-		// Get step count
-		$steps_count = count( $_checkout_steps );
+		// Get step count, excluding steps with no visible substeps
+		$steps_count = 0;
+		foreach ( $_checkout_steps as $step_args ) {
+			// Skip steps with no visible substeps
+			if ( ! $this->has_visible_substeps( $step_args[ 'step_id' ], $context ) ) { continue; }
+
+			$steps_count++;
+		}
 
 		// Get checkout current step
-		$current_step = $this->get_current_step();
+		$current_step = $this->get_current_step( $context );
 
 		// Bail if current step is not defined
 		if ( false === $current_step ) { return; }
 
-		// Get current steps arguments
-		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list.
+		// Get current step arguments
+		$current_step_index = ( array_keys( $current_step )[0] ); // First and only value in the array, the key is preserved from the registered checkout steps list
 		$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
-		$current_step_number = $current_step_index + 1;
+
+		// Calculate current step number counting only visible steps
+		$current_step_number = 0;
+		foreach ( $_checkout_steps as $step_index => $step_args ) {
+			// Only count steps with visible substeps
+			if ( $this->has_visible_substeps( $step_args[ 'step_id' ], $context ) ) {
+				$current_step_number++;
+			}
+
+			// Break once the current step index has been reached
+			if ( $step_index === $current_step_index ) { break; }
+		}
 
 		// Get step count html
 		$steps_count_label_html = apply_filters(
@@ -2761,8 +2926,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 						$step_id = $step_args[ 'step_id' ];
 						$step_title = $this->get_step_title( $step_id );
 						$step_title = apply_filters( "fc_progress_bar_step_title_{$step_id}", $step_title, $step_id, $step_args, $step_index, $context );
+						$step_visible_attr = $this->has_visible_substeps( $step_id, $context ) ? ' data-step-visible="yes"' : ' data-step-visible="no"';
 						?>
-						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_index + 1 ); ?>"><?php echo esc_html( $step_title ); ?></span>
+						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_index + 1 ); ?>"<?php echo $step_visible_attr; // WPCS: XSS ok. ?>><?php echo esc_html( $step_title ); ?></span>
 					<?php
 					endforeach;
 					?>
@@ -2802,11 +2968,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_title = $this->get_step_title( $step_id, $context );
 		$step_title_element_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
+		// Get proceed to step button label
+		$proceed_to_step_button_label = array_key_exists( 'proceed_to_step_button_label', $step_args ) ? $step_args[ 'proceed_to_step_button_label' ] : sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $step_title );
+
 		// Define step attributes
 		$step_attributes = array(
 			'class' => 'fc-checkout-step',
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
 			'data-step-label' => $step_title,
+			'data-step-proceed-label' => apply_filters( 'fc_proceed_to_next_step_button_label', $proceed_to_step_button_label, $step_id, $step_args ),
 			'aria-label' => $step_title,
 			'data-step-index' => $step_index,
 			'data-step-complete' => $this->is_step_complete( $step_id, $context ),
@@ -2815,25 +2985,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'data-next-step-complete' => $this->is_next_step_complete( $step_id, $context ),
 		);
 
-		// Maybe add attribute for first step
-		$first_step = $this->get_first_step();
-		if ( false !== $first_step ) {
-			$first_step_index = array_keys( $first_step )[0];
-			$first_step_id = $first_step[ $first_step_index ][ 'step_id' ];
-			if ( $step_id === $first_step_id ) {
+		// Maybe add attribute for first visible step
+		$first_visible_step = $this->get_first_visible_step( $context );
+		if ( false !== $first_visible_step ) {
+			$first_visible_step_index = array_keys( $first_visible_step )[0];
+			$first_visible_step_id = $first_visible_step[ $first_visible_step_index ][ 'step_id' ];
+			if ( $step_id === $first_visible_step_id ) {
 				$step_attributes[ 'data-step-first' ] = true;
 			}
 		}
 
-		// Maybe add attribute for last step
-		$last_step = $this->get_last_step();
-		if ( false !== $last_step ) {
-			$last_step_index = array_keys( $last_step )[0];
-			$last_step_id = $last_step[ $last_step_index ][ 'step_id' ];
-			if ( $step_id === $last_step_id ) {
+		// Maybe add attribute for last visible step
+		$last_visible_step = $this->get_last_visible_step( $context );
+		if ( false !== $last_visible_step ) {
+			$last_visible_step_index = array_keys( $last_visible_step )[0];
+			$last_visible_step_id = $last_visible_step[ $last_visible_step_index ][ 'step_id' ];
+			if ( $step_id === $last_visible_step_id ) {
 				$step_attributes[ 'data-step-last' ] = true;
 			}
 		}
+
+		// Set step visibility based on substep visibility
+		$step_attributes[ 'data-step-visible' ] = $this->has_visible_substeps( $step_id, $context ) ? 'yes' : 'no';
 
 		// Filter step attributes
 		$step_attributes = apply_filters( 'fc_checkout_step_attributes', $step_attributes, $step_id, $step_index, $context );
@@ -2876,14 +3049,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe output the step actions
 		if ( $this->is_checkout_layout_multistep() ) :
-			// Get last step index
-			$last_step = $this->get_last_step();
-			$last_step_index = array_keys( $last_step )[0];
+			// Get last visible step index
+			$last_visible_step = $this->get_last_visible_step( $context );
+			$last_visible_step_index = false !== $last_visible_step ? array_keys( $last_visible_step )[0] : -1;
 
-			// Maybe output next step button if not on last step
-			if ( 'checkout' === $context && $step_index !== $last_step_index ) :
-				// Maybe output the "Next step" button
-				$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ], $context ), $step_args[ 'step_id' ] );
+			// Maybe output next step button if not on last visible step
+			if ( 'checkout' === $context && $step_index !== $last_visible_step_index ) :
+				// Get next visible step for the button label
+				$next_visible_step = $this->get_next_visible_step( $step_args[ 'step_id' ], $context );
+				$next_visible_step_index = false !== $next_visible_step ? array_keys( $next_visible_step )[0] : -1;
+				$next_visible_step_args = false !== $next_visible_step ? $next_visible_step[ $next_visible_step_index ] : false;
+				$button_label = false !== $next_visible_step_args && array_key_exists( 'proceed_to_step_button_label', $next_visible_step_args ) ? $next_visible_step_args[ 'proceed_to_step_button_label' ] : $this->get_next_step_button_label( $step_args[ 'step_id' ], $context );
+				$button_label = apply_filters( 'fc_next_step_button_label', $button_label, $step_args[ 'step_id' ] );
 
 				$button_attributes = array(
 					'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),

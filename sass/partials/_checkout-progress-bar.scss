@@ -85,6 +85,9 @@
 	background-color: $checkout-progress-bar-color;
 	transition: width $global-animation-duration linear, background-color $global-animation-duration linear;
 }
+.fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step[data-step-visible="no"] { 
+	display: none;
+}
 .fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step.is-complete { background-color: $checkout-progress-bar-complete-color; }
 .fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step.is-current { background-color: $checkout-progress-bar-current-color; }
 
