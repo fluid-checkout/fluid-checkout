@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
 * Fixed: Compatibility with theme BeTheme. Check that theme function exists before trying to use it.
 
 = 4.2.1 - 2026-04-07 =
