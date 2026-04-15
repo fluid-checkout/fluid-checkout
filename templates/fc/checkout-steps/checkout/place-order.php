@@ -12,7 +12,7 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 4.2.2
+ * @version 4.1.0
  * @wc-version 9.8.0
  * @wc-original checkout/payment.php
  */
