@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with theme BeTheme. Check that theme function exists before trying to use it.
+
 = 4.2.1 - 2026-04-07 =
 
 * Bump tested up to WooCommerce 10.6.1
