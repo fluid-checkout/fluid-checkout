@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 4.2.1
+Stable tag: 4.2.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,7 +354,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 4.2.2 - 2026-04-21 =
 
 * Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
 * Fixed: Compatibility with theme BeTheme. Check that theme function exists before trying to use it.
