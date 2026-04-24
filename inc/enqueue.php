@@ -86,6 +86,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_deregister_script( 'wc-country-select' );
 		wp_deregister_script( 'wc-address-i18n' );
 		wp_deregister_script( 'wc-checkout' );
+		wp_deregister_script( 'wc-password-strength-meter' );
 
 		// Select2 / SelectWoo, will be replaced with TomSelect
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
@@ -111,6 +112,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-password-strength-meter', $this->get_script_url( 'js/password-strength-meter' ), array( 'jquery', 'password-strength-meter' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.

@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
+
 = 4.2.2 - 2026-04-21 =
 
 * Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
