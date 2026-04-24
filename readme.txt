@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Password meter styles on checkout page account creation.
 * Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
 
 = 4.2.2 - 2026-04-21 =

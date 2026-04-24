@@ -34,6 +34,12 @@ jQuery( function ( $ ) {
 
 			wc_password_strength_meter.includeMeter( wrapper, field );
 
+			// CHANGE: Trigger password strength meter without associating result to a variable
+			wc_password_strength_meter.checkPasswordStrength(
+				wrapper,
+				field
+			);
+
 			// CHANGE: Remove stop checkout logic as it does not apply correctly with Fluid Checkout
 		},
 

@@ -108,6 +108,90 @@ div.woocommerce form .shipping-method__package[class*=woocommerce-invalid] #ship
   border-color: var(--fluidcheckout--color--error, #cc1818);
 }
 
+div.woocommerce .woocommerce-password-strength {
+  display: block;
+  position: relative;
+  font-weight: normal;
+  padding: 5px 10px 5px !important;
+  padding-left: 28px !important;
+  font-size: 13px;
+  text-align: left;
+  line-height: 1.6;
+  background-color: transparent;
+}
+div.woocommerce .woocommerce-password-strength.strong {
+  color: var(--fluidcheckout--color--success, #007a3d);
+}
+div.woocommerce .woocommerce-password-strength.short {
+  color: var(--fluidcheckout--color--error, #cc1818);
+}
+div.woocommerce .woocommerce-password-strength.bad {
+  color: var(--fluidcheckout--color--error, #cc1818);
+}
+div.woocommerce .woocommerce-password-strength.good {
+  color: var(--fluidcheckout--color--alert, #c95000);
+}
+
+div.woocommerce .woocommerce-password-strength:before {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e800";
+  position: absolute;
+  display: block !important;
+  top: calc(16px - 1px);
+  left: 5px;
+  transform: translateY(-50%);
+  color: inherit !important;
+  speak: never;
+}
+
+div.woocommerce .woocommerce-password-strength.strong:before {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e82b";
+}
+
+div.woocommerce .woocommerce-password-strength.good:before {
+  display: inline-block;
+  font-family: "fluid-checkout-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  content: "\e801";
+}
+
+div.woocommerce .woocommerce-password-hint {
+  display: block;
+  margin: 5px 0 0;
+}
+
 div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon) .select2-selection:after, div.woocommerce form .form-row.woocommerce-validated:not([class*=woocommerce-invalid]):not(.fc-no-validation-icon):not(.fc-select2-field) .woocommerce-input-wrapper:after {
   display: inline-block;
   font-family: "fluid-checkout-icons" !important;
