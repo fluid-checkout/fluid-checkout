@@ -2803,6 +2803,7 @@ msgstr "Ingestort"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Uitgebreid"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Niet weergeven"
@@ -2945,3 +2946,8 @@ msgstr "Verzending %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Verzending"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "volgende stap"

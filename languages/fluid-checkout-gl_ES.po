@@ -2646,6 +2646,7 @@ msgstr "Contraído"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Expandido"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Non mostrar"
@@ -2784,3 +2785,8 @@ msgstr "Envío %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Envío"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "seguinte paso"

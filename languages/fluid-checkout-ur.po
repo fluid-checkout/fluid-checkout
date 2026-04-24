@@ -2597,6 +2597,7 @@ msgstr "سمٹ گیا۔"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "توسیع شدہ"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "نہ دکھاؤ"
@@ -2735,3 +2736,8 @@ msgstr "ترسیل %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "شپنگ"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "اگلا قدم"

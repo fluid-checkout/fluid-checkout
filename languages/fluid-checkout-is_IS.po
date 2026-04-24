@@ -2740,3 +2740,8 @@ msgstr "Sending %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Sendingar"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "næsta skref"
