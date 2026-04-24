@@ -1834,19 +1834,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_next_step_button_label( $step_id, $context = 'checkout' ) {
 		// Get next step args
 		$next_step_args = $this->get_next_step( $step_id, $context );
+		$next_step_title = is_array( $next_step_args ) ? $this->get_step_title( $next_step_args[ 'step_id' ] ) : _x( 'next step', 'Used as fallback for "Proceed to next step" button label', 'fluid-checkout' );
 
 		// Get default label for next step button
 		/** translators: Next checkout step title */
-		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $this->get_step_title( $step_id ) );
+		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_title );
 
 		// Check whether a specific button label is available for the next step
 		if ( array_key_exists( 'proceed_to_step_button_label', $next_step_args ) ) {
 			$button_label = $next_step_args[ 'proceed_to_step_button_label' ];
 		}
 
+		// (Deprecated) Filter to allow changes to the proceed to next step button label
+		// TODO: Deprecated, remove this filter in version 5.0.0, use the filter 'fc_proceed_to_next_step_button_label' below instead.
+		$button_label = apply_filters( 'fc_next_step_button_label', $button_label, $step_id );
+
 		// Filter to allow changes to the proceed to next step button label
 		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $next_step_args );
-
+		
 		return $button_label;
 	}
 
@@ -2883,7 +2888,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Maybe output next step button if not on last step
 			if ( 'checkout' === $context && $step_index !== $last_step_index ) :
 				// Maybe output the "Next step" button
-				$button_label = apply_filters( 'fc_next_step_button_label', $this->get_next_step_button_label( $step_args[ 'step_id' ], $context ), $step_args[ 'step_id' ] );
+				$button_label = $this->get_next_step_button_label( $step_args[ 'step_id' ], $context );
 
 				$button_attributes = array(
 					'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
