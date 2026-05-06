@@ -42,12 +42,14 @@
 	 * Get the checkout phone field wrapper element.
 	 */
 	var getPhoneFieldWrapper = function() {
+		// Try to scope lookup to the checkout form first.
 		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
 		var phoneInputs = checkoutForm
 			? checkoutForm.querySelectorAll( _settings.phoneSelectors )
 			: document.querySelectorAll( _settings.phoneSelectors );
 		if ( ! phoneInputs || ! phoneInputs.length ) { return null; }
 
+		// Prefer the first visible phone field when multiple variants exist.
 		var selectedPhoneInput = null;
 		for ( var i = 0; i < phoneInputs.length; i++ ) {
 			var phoneInput = phoneInputs[ i ];
@@ -64,6 +66,7 @@
 		}
 		if ( ! selectedPhoneInput ) { return null; }
 
+		// Return the closest field wrapper used by the active checkout layout.
 		return selectedPhoneInput.closest( _settings.fieldWrapperSelector ) || selectedPhoneInput.parentElement;
 	};
 
@@ -71,8 +74,10 @@
 	 * Build GDPR checkbox block when not already present.
 	 */
 	var buildCheckboxBlock = function() {
+		// Bail if the consent message is disabled or unavailable.
 		if ( ! shouldShow() || ! root.wcf_ca_vars._gdpr_phone_message ) { return null; }
 
+		// Build the same checkbox structure expected by checkout styles.
 		var block = document.createElement( 'p' );
 		block.className = 'wcar-gdpr-phone-checkbox form-row form-row-wide fc-checkbox-field fc-no-validation-icon';
 		block.id = 'wcf_cf_gdpr_phone_message_block';
@@ -109,11 +114,14 @@
 	 * Ensure checkbox exists and is positioned after phone field.
 	 */
 	var maybeRepositionCheckbox = function() {
+		// Bail when WCAR Pro phone consent should not be shown.
 		if ( ! shouldShow() ) { return; }
 
+		// Bail when the phone field wrapper cannot be resolved.
 		var fieldWrapper = getPhoneFieldWrapper();
 		if ( ! fieldWrapper || ! fieldWrapper.parentNode ) { return; }
 
+		// Reuse existing checkbox block or build it when missing.
 		var checkboxBlock = document.querySelector( _settings.checkboxBlockSelector );
 		if ( ! checkboxBlock ) {
 			checkboxBlock = buildCheckboxBlock();
@@ -121,6 +129,7 @@
 
 		if ( ! checkboxBlock ) { return; }
 
+		// Keep consent checkbox right after the resolved phone field wrapper.
 		fieldWrapper.parentNode.insertBefore( checkboxBlock, fieldWrapper.nextSibling );
 
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
@@ -131,10 +140,13 @@
 	 * Initialize compatibility script.
 	 */
 	_publicMethods.init = function() {
+		// Bail if already initialized.
 		if ( _hasInitialized ) { return; }
 
+		// Ensure checkbox is positioned on page load.
 		maybeRepositionCheckbox();
 
+		// Reposition after checkout updates replace fragments.
 		if ( _hasJQuery ) {
 			$( document.body ).on( 'updated_checkout', maybeRepositionCheckbox );
 		}
