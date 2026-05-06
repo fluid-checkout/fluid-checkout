@@ -18,13 +18,16 @@
 	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
+	var _isConsentChecked = false;
 	var _publicMethods = {};
 	var _settings = {
 		checkboxBlockSelector: '#wcf_cf_gdpr_phone_message_block',
 		checkboxSelector: '#gdpr_phone_consent',
+		checkboxBoundAttribute: 'data-fc-wcar-gdpr-bound',
 		phoneSelectors: '#billing_phone, #billing-phone, #shipping_phone, #shipping-phone, #phone',
 		fieldWrapperSelector: '.form-row, .wc-block-components-text-input, .wc-block-components-phone-number-input',
 		checkoutFormSelector: 'form[name="checkout"]',
+		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 	};
 
 	/**
@@ -104,10 +107,62 @@
 	};
 
 	/**
+	 * Keep consent field value aligned with checked state.
+	 */
+	var syncCheckboxValue = function( checkbox ) {
+		if ( ! checkbox ) { return; }
+		checkbox.value = checkbox.checked ? 'on' : '';
+	};
+
+	/**
+	 * Sync internal consent state from currently rendered checkbox.
+	 */
+	var syncConsentStateFromDOM = function() {
+		var currentCheckbox = document.querySelector( _settings.checkboxSelector );
+		if ( currentCheckbox ) {
+			_isConsentChecked = currentCheckbox.checked;
+		}
+	};
+
+	/**
 	 * Prevent residual WC field invalid classes from being kept when checking consent.
 	 */
 	var maybeBindCheckboxValidationCleanup = function( checkbox, fieldWrapper ) {
-		return;
+		if ( ! checkbox ) { return; }
+		if ( checkbox.getAttribute( _settings.checkboxBoundAttribute ) ) { return; }
+
+		// Keep all consent checkboxes synced in case duplicate elements exist.
+		var syncCheckboxesState = function() {
+			var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+			for ( var i = 0; i < allCheckboxes.length; i++ ) {
+				allCheckboxes[ i ].checked = _isConsentChecked;
+				syncCheckboxValue( allCheckboxes[ i ] );
+			}
+		};
+
+		// Remove validation classes after WooCommerce validation handlers run.
+		var cleanupValidationClasses = function() {
+			setTimeout( function() {
+				if ( fieldWrapper && fieldWrapper.classList ) {
+					for ( var i = 0; i < _settings.invalidClassNames.length; i++ ) {
+						fieldWrapper.classList.remove( _settings.invalidClassNames[ i ] );
+					}
+				}
+			}, 10 );
+		};
+
+		var handleCheckboxStateChange = function() {
+			_isConsentChecked = checkbox.checked;
+			syncCheckboxesState();
+			cleanupValidationClasses();
+		};
+
+		checkbox.addEventListener( 'click', handleCheckboxStateChange );
+		checkbox.addEventListener( 'change', handleCheckboxStateChange );
+		checkbox.addEventListener( 'blur', handleCheckboxStateChange );
+		checkbox.checked = _isConsentChecked;
+		syncCheckboxValue( checkbox );
+		checkbox.setAttribute( _settings.checkboxBoundAttribute, '1' );
 	};
 
 	/**
@@ -116,13 +171,30 @@
 	var maybeRepositionCheckbox = function() {
 		// Bail when WCAR Pro phone consent should not be shown.
 		if ( ! shouldShow() ) { return; }
+		syncConsentStateFromDOM();
 
 		// Bail when the phone field wrapper cannot be resolved.
 		var fieldWrapper = getPhoneFieldWrapper();
 		if ( ! fieldWrapper || ! fieldWrapper.parentNode ) { return; }
 
-		// Reuse existing checkbox block or build it when missing.
-		var checkboxBlock = document.querySelector( _settings.checkboxBlockSelector );
+		// Prefer the block that contains the first visible checkbox, if present.
+		var checkboxBlock = null;
+		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+		for ( var i = 0; i < allCheckboxes.length; i++ ) {
+			var currentCheckbox = allCheckboxes[ i ];
+			var isVisible = currentCheckbox && currentCheckbox.offsetParent !== null;
+			if ( isVisible ) {
+				checkboxBlock = currentCheckbox.closest( _settings.checkboxBlockSelector );
+				break;
+			}
+		}
+
+		// Fallback to the first existing block in the DOM.
+		if ( ! checkboxBlock ) {
+			checkboxBlock = document.querySelector( _settings.checkboxBlockSelector );
+		}
+
+		// Build checkbox block when no block is available.
 		if ( ! checkboxBlock ) {
 			checkboxBlock = buildCheckboxBlock();
 		}
@@ -133,6 +205,10 @@
 		fieldWrapper.parentNode.insertBefore( checkboxBlock, fieldWrapper.nextSibling );
 
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
+		if ( checkbox ) {
+			checkbox.checked = _isConsentChecked;
+		}
+		syncCheckboxValue( checkbox );
 		maybeBindCheckboxValidationCleanup( checkbox, fieldWrapper );
 	};
 
