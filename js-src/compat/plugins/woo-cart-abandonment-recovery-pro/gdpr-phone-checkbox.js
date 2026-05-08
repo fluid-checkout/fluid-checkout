@@ -18,16 +18,19 @@
 	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
+	var _isSyncingCheckout = false;
 	var _isConsentChecked = false;
 	var _publicMethods = {};
 	var _settings = {
 		checkboxBlockSelector: '#wcf_cf_gdpr_phone_message_block',
 		checkboxSelector: '#gdpr_phone_consent',
 		checkboxBoundAttribute: 'data-fc-wcar-gdpr-bound',
+		checkboxFieldName: 'gdpr_phone_consent',
 		phoneSelectors: '#billing_phone, #billing-phone, #shipping_phone, #shipping-phone, #phone',
 		fieldWrapperSelector: '.form-row, .wc-block-components-text-input, .wc-block-components-phone-number-input',
 		checkoutFormSelector: 'form[name="checkout"]',
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
+		updateCheckoutCooldownMs: 300,
 	};
 
 	/**
@@ -92,6 +95,7 @@
 		var checkbox = document.createElement( 'input' );
 		checkbox.type = 'checkbox';
 		checkbox.id = 'gdpr_phone_consent';
+		checkbox.name = _settings.checkboxFieldName;
 		checkbox.className = 'input-checkbox';
 		checkbox.value = 'on';
 
@@ -151,18 +155,73 @@
 			}, 10 );
 		};
 
-		var handleCheckboxStateChange = function() {
+		var maybeTriggerCheckoutUpdate = function( event ) {
+			if ( ! event || 'change' !== event.type ) { return; }
+			if ( event.isTrusted !== true ) { return; }
+			if ( ! _hasJQuery || ! document.querySelector( _settings.checkoutFormSelector ) ) { return; }
+			if ( _isSyncingCheckout ) { return; }
+
+			_isSyncingCheckout = true;
+			$( document.body ).trigger( 'update_checkout' );
+			setTimeout( function() {
+				_isSyncingCheckout = false;
+			}, _settings.updateCheckoutCooldownMs );
+		};
+
+		var handleCheckboxStateChange = function( event ) {
 			_isConsentChecked = checkbox.checked;
 			syncCheckboxesState();
 			cleanupValidationClasses();
+			maybeTriggerCheckoutUpdate( event );
 		};
 
-		checkbox.addEventListener( 'click', handleCheckboxStateChange );
 		checkbox.addEventListener( 'change', handleCheckboxStateChange );
-		checkbox.addEventListener( 'blur', handleCheckboxStateChange );
 		checkbox.checked = _isConsentChecked;
 		syncCheckboxValue( checkbox );
 		checkbox.setAttribute( _settings.checkboxBoundAttribute, '1' );
+	};
+
+	/**
+	 * Keep a single checkbox block and a single checkbox input instance.
+	 */
+	var maybeDedupeCheckboxElements = function() {
+		var allBlocks = document.querySelectorAll( _settings.checkboxBlockSelector );
+		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+		if ( ! allBlocks.length && ! allCheckboxes.length ) { return null; }
+
+		var primaryBlock = null;
+		for ( var i = 0; i < allBlocks.length; i++ ) {
+			var currentBlock = allBlocks[ i ];
+			var hasCheckbox = !! currentBlock.querySelector( _settings.checkboxSelector );
+			if ( hasCheckbox ) {
+				primaryBlock = currentBlock;
+				break;
+			}
+		}
+		if ( ! primaryBlock && allBlocks[ 0 ] ) {
+			primaryBlock = allBlocks[ 0 ];
+		}
+
+		for ( var j = 0; j < allBlocks.length; j++ ) {
+			if ( allBlocks[ j ] === primaryBlock ) { continue; }
+			allBlocks[ j ].parentNode.removeChild( allBlocks[ j ] );
+		}
+
+		if ( ! primaryBlock ) { return null; }
+
+		var primaryCheckbox = primaryBlock.querySelector( _settings.checkboxSelector );
+		if ( ! primaryCheckbox && allCheckboxes[ 0 ] ) {
+			primaryBlock.appendChild( allCheckboxes[ 0 ] );
+			primaryCheckbox = allCheckboxes[ 0 ];
+		}
+
+		allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+		for ( var k = 0; k < allCheckboxes.length; k++ ) {
+			if ( allCheckboxes[ k ] === primaryCheckbox ) { continue; }
+			allCheckboxes[ k ].parentNode.removeChild( allCheckboxes[ k ] );
+		}
+
+		return primaryBlock;
 	};
 
 	/**
@@ -173,28 +232,11 @@
 		if ( ! shouldShow() ) { return; }
 		syncConsentStateFromDOM();
 
-		// Bail when the phone field wrapper cannot be resolved.
 		var fieldWrapper = getPhoneFieldWrapper();
 		if ( ! fieldWrapper || ! fieldWrapper.parentNode ) { return; }
 
 		// Prefer the block that contains the first visible checkbox, if present.
-		var checkboxBlock = null;
-		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
-		for ( var i = 0; i < allCheckboxes.length; i++ ) {
-			var currentCheckbox = allCheckboxes[ i ];
-			var isVisible = currentCheckbox && currentCheckbox.offsetParent !== null;
-			if ( isVisible ) {
-				checkboxBlock = currentCheckbox.closest( _settings.checkboxBlockSelector );
-				break;
-			}
-		}
-
-		// Fallback to the first existing block in the DOM.
-		if ( ! checkboxBlock ) {
-			checkboxBlock = document.querySelector( _settings.checkboxBlockSelector );
-		}
-
-		// Build checkbox block when no block is available.
+		var checkboxBlock = maybeDedupeCheckboxElements();
 		if ( ! checkboxBlock ) {
 			checkboxBlock = buildCheckboxBlock();
 		}
@@ -207,6 +249,7 @@
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
 		if ( checkbox ) {
 			checkbox.checked = _isConsentChecked;
+			checkbox.name = _settings.checkboxFieldName;
 		}
 		syncCheckboxValue( checkbox );
 		maybeBindCheckboxValidationCleanup( checkbox, fieldWrapper );
