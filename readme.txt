@@ -354,6 +354,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Issue with displaying gdpr notice on Cart Abandonment Recovery Pro
+
+
 = 4.2.2 - 2026-04-21 =
 
 * Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
