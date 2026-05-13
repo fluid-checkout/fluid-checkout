@@ -21,6 +21,18 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 
 		// Enqueue assets.
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
+		// Mount point for the phone GDPR block (injected by compat JS). Late priority: after address
+		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_wcar_gdpr_phone_message_anchor' ), 200 );
+	}
+
+	/**
+	 * Output empty wrapper for WCAR Pro phone GDPR checkbox placement (see `gdpr-phone-checkbox.js`).
+	 *
+	 * @return void
+	 */
+	public function output_wcar_gdpr_phone_message_anchor() {
+		echo '<div id="fc-wcar-gdpr-phone-message-anchor" class="fc-wcar-gdpr-phone-message-anchor" data-fc-wcar-gdpr-phone-anchor="1"></div>';
 	}
 
 	/**

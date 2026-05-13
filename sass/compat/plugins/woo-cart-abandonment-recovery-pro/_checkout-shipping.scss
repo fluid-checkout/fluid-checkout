@@ -1,0 +1,14 @@
+// ------------------------------------
+// CHECKOUT SHIPPING — WCAR PRO PHONE GDPR
+// ------------------------------------
+// Mount: `FluidCheckout_WooCartAbandonmentRecoveryPro::output_wcar_gdpr_phone_message_anchor()`.
+
+body.woocommerce-checkout .fc-wrapper .fc-wcar-gdpr-phone-message-anchor {
+	margin-top: $global-spacing-small;
+	margin-bottom: $global-spacing-small;
+}
+
+body.woocommerce-checkout .fc-wrapper .fc-wcar-gdpr-phone-message-anchor .wcar-gdpr-phone-checkbox.form-row {
+	margin: 0 !important;
+}
+

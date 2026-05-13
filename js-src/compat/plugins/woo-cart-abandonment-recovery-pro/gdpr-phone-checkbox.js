@@ -1,5 +1,8 @@
 /**
- * Keep WCAR Pro phone GDPR checkbox visible and positioned after the phone field.
+ * Keep WCAR Pro phone GDPR checkbox visible; when the phone field is in the shipping section,
+ * keep the block inside `#fc-wcar-gdpr-phone-message-anchor` when present, else as the last child
+ * of `.woocommerce-shipping-fields` (after address book notices and shipping-only fields).
+ * Otherwise keep it after the phone field wrapper.
  */
 
 (function (root, factory) {
@@ -29,6 +32,7 @@
 		phoneSelectors: '#billing_phone, #billing-phone, #shipping_phone, #shipping-phone, #phone',
 		fieldWrapperSelector: '.form-row, .wc-block-components-text-input, .wc-block-components-phone-number-input',
 		checkoutFormSelector: 'form[name="checkout"]',
+		gdprPhoneMessageAnchorSelector: '#fc-wcar-gdpr-phone-message-anchor',
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 		updateCheckoutCooldownMs: 300,
 	};
@@ -243,8 +247,22 @@
 
 		if ( ! checkboxBlock ) { return; }
 
-		// Keep consent checkbox right after the resolved phone field wrapper.
-		fieldWrapper.parentNode.insertBefore( checkboxBlock, fieldWrapper.nextSibling );
+		// When the phone field lives under shipping fields, append as the last node inside
+		// `.woocommerce-shipping-fields` so the block stays after address book notices and
+		// shipping-only fields (Fluid Checkout `form-shipping.php` order).
+		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
+		var shippingFieldsRoot = checkoutForm ? checkoutForm.querySelector( '.woocommerce-shipping-fields' ) : null;
+		var gdprAnchor = checkoutForm ? checkoutForm.querySelector( _settings.gdprPhoneMessageAnchorSelector ) : null;
+		if ( shippingFieldsRoot && shippingFieldsRoot.contains( fieldWrapper ) ) {
+			if ( gdprAnchor && shippingFieldsRoot.contains( gdprAnchor ) ) {
+				gdprAnchor.appendChild( checkboxBlock );
+			} else {
+				shippingFieldsRoot.appendChild( checkboxBlock );
+			}
+		} else {
+			// Keep consent checkbox right after the resolved phone field wrapper (e.g. billing-only layouts).
+			fieldWrapper.parentNode.insertBefore( checkboxBlock, fieldWrapper.nextSibling );
+		}
 
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
 		if ( checkbox ) {
