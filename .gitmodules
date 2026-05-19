@@ -1,4 +1,0 @@
-[submodule "fluid-checkout-standards"]
-	path = fluid-checkout-standards
-	url = git@github.com:fluid-checkout/fluid-checkout-standards.git
-	branch = main

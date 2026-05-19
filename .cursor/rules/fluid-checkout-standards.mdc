@@ -1,5 +1,5 @@
 ---
-description: Fluid Checkout ecosystem coding standards (shared submodule)
+description: Fluid Checkout ecosystem coding standards (local symlink to shared repo)
 alwaysApply: true
 ---
 
