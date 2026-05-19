@@ -54,7 +54,7 @@
 		var phoneInputs = checkoutForm
 			? checkoutForm.querySelectorAll( _settings.phoneSelectors )
 			: document.querySelectorAll( _settings.phoneSelectors );
-		if ( ! phoneInputs || ! phoneInputs.length ) { return null; }
+		if ( ! phoneInputs || ! phoneInputs.length ) { return; }
 
 		// Prefer the first visible phone field when multiple variants exist.
 		var selectedPhoneInput = null;
@@ -71,7 +71,7 @@
 		if ( ! selectedPhoneInput && phoneInputs[ 0 ] ) {
 			selectedPhoneInput = phoneInputs[ 0 ];
 		}
-		if ( ! selectedPhoneInput ) { return null; }
+		if ( ! selectedPhoneInput ) { return; }
 
 		// Return the closest field wrapper used by the active checkout layout.
 		return selectedPhoneInput.closest( _settings.fieldWrapperSelector ) || selectedPhoneInput.parentElement;
@@ -82,7 +82,7 @@
 	 */
 	var buildCheckboxBlock = function() {
 		// Bail if the consent message is disabled or unavailable.
-		if ( ! shouldShow() || ! root.wcf_ca_vars._gdpr_phone_message ) { return null; }
+		if ( ! shouldShow() || ! root.wcf_ca_vars._gdpr_phone_message ) { return; }
 
 		// Build the same checkbox structure expected by checkout styles.
 		var block = document.createElement( 'p' );
@@ -188,7 +188,7 @@
 	var maybeDedupeCheckboxElements = function() {
 		var allBlocks = document.querySelectorAll( _settings.checkboxBlockSelector );
 		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
-		if ( ! allBlocks.length && ! allCheckboxes.length ) { return null; }
+		if ( ! allBlocks.length && ! allCheckboxes.length ) { return; }
 
 		var primaryBlock = null;
 		for ( var i = 0; i < allBlocks.length; i++ ) {
@@ -208,7 +208,7 @@
 			allBlocks[ j ].parentNode.removeChild( allBlocks[ j ] );
 		}
 
-		if ( ! primaryBlock ) { return null; }
+		if ( ! primaryBlock ) { return; }
 
 		var primaryCheckbox = primaryBlock.querySelector( _settings.checkboxSelector );
 		if ( ! primaryCheckbox && allCheckboxes[ 0 ] ) {
@@ -253,10 +253,12 @@
 		if ( shippingFieldsRoot && shippingFieldsRoot.contains( fieldWrapper ) ) {
 			if ( gdprCheckboxPlaceholder && shippingFieldsRoot.contains( gdprCheckboxPlaceholder ) ) {
 				gdprCheckboxPlaceholder.appendChild( checkboxBlock );
-			} else {
+			}
+			else {
 				shippingFieldsRoot.appendChild( checkboxBlock );
 			}
-		} else {
+		}
+		else {
 			// Keep consent checkbox right after the resolved phone field wrapper (e.g. billing-only layouts).
 			fieldWrapper.parentNode.insertBefore( checkboxBlock, fieldWrapper.nextSibling );
 		}
