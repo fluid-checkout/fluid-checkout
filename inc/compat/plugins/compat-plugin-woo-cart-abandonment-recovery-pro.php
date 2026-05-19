@@ -26,14 +26,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_wcar_gdpr_phone_message_placeholder' ), 200 );
 	}
 
-	/**
-	 * Output empty wrapper for WCAR Pro phone GDPR checkbox placement (see `gdpr-phone-checkbox.js`).
-	 *
-	 * @return void
-	 */
-	public function output_wcar_gdpr_phone_message_placeholder() {
-		echo '<div id="fc-wcar-gdpr-phone-message-placeholder" class="fc-wcar-gdpr-phone-message-placeholder"></div>';
-	}
+
 
 	/**
 	 * Register assets.
@@ -58,6 +51,17 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		$this->enqueue_assets();
+	}
+
+
+	
+	/**
+	 * Output empty placeholder for WCAR GDPR phone message placement.
+	 *
+	 * @return void
+	 */
+	public function output_wcar_gdpr_phone_message_placeholder() {
+		echo '<div id="fc-wcar-gdpr-phone-message-placeholder" class="fc-wcar-gdpr-phone-message-placeholder"></div>';
 	}
 }
 

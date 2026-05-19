@@ -15,7 +15,7 @@
 	'use strict';
 
 	var $ = jQuery;
-	var _hasJQuery = ( $ != null );
+	var _hasJQuery = ( $ !== null );
 
 	var _hasInitialized = false;
 	var _isSyncingCheckout = false;
@@ -102,7 +102,7 @@
 
 		var message = document.createElement( 'span' );
 		message.className = 'fc-checkbox-label-text';
-		message.innerHTML = root.wcf_ca_vars._gdpr_phone_message;
+		message.innerHTML = root.wcf_ca_vars._gdpr_phone_message; // Uses the same variables from the original plugin.
 
 		label.appendChild( checkbox );
 		label.appendChild( message );
