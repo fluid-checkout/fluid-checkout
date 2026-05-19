@@ -1,0 +1,4 @@
+[submodule "fluid-checkout-standards"]
+	path = fluid-checkout-standards
+	url = /Users/diegoversiani/Local Sites/fluidcheckout/app/public/wp-content/plugins/fluid-checkout-standards
+	branch = main
