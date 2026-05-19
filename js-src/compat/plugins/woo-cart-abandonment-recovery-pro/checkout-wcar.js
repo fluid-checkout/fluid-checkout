@@ -130,55 +130,114 @@
 	};
 
 	/**
+	 * Keep all consent checkboxes synced in case duplicate elements exist.
+	 */
+	var syncCheckboxesState = function() {
+		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+		for ( var i = 0; i < allCheckboxes.length; i++ ) {
+			allCheckboxes[ i ].checked = _isConsentChecked;
+			syncCheckboxValue( allCheckboxes[ i ] );
+		}
+	};
+
+	/**
+	 * Remove invalid classes from the phone field wrapper.
+	 *
+	 * @param {Element} fieldWrapper  Phone field wrapper element.
+	 */
+	var removeInvalidClassesFromWrapper = function( fieldWrapper ) {
+		if ( ! fieldWrapper || ! fieldWrapper.classList ) { return; }
+
+		for ( var i = 0; i < _settings.invalidClassNames.length; i++ ) {
+			fieldWrapper.classList.remove( _settings.invalidClassNames[ i ] );
+		}
+	};
+
+	/**
+	 * Remove validation classes after WooCommerce validation handlers run.
+	 *
+	 * @param {Element} fieldWrapper  Phone field wrapper element.
+	 */
+	var cleanupValidationClasses = function( fieldWrapper ) {
+		setTimeout( removeInvalidClassesFromWrapper.bind( null, fieldWrapper ), 10 );
+	};
+
+	/**
+	 * Reset checkout sync flag after update_checkout cooldown.
+	 */
+	var resetCheckoutSyncFlag = function() {
+		_isSyncingCheckout = false;
+	};
+
+	/**
+	 * Trigger checkout update when consent checkbox changes from user interaction.
+	 *
+	 * @param {Event}  event  Change event from the consent checkbox.
+	 */
+	var maybeTriggerCheckoutUpdate = function( event ) {
+		// Bail if event is not a change event or is not trusted
+		if ( ! event || 'change' !== event.type ) { return; }
+
+		// Bail if event is not trusted
+		if ( event.isTrusted !== true ) { return; }
+
+		// Bail if jQuery is not available or checkout form is not found
+		if ( ! _hasJQuery || ! document.querySelector( _settings.checkoutFormSelector ) ) { return; }
+
+		// Bail if checkout is already syncing
+		if ( _isSyncingCheckout ) { return; }
+
+		// Set syncing flag
+		_isSyncingCheckout = true;
+
+		// Trigger checkout update
+		$( document.body ).trigger( 'update_checkout' );
+
+		// Reset syncing flag after cooldown
+		setTimeout( resetCheckoutSyncFlag, _settings.updateCheckoutCooldownMs );
+	};
+
+	/**
+	 * Handle consent checkbox state change.
+	 *
+	 * @param {HTMLInputElement}  checkbox       Consent checkbox element.
+	 * @param {Element}           fieldWrapper   Phone field wrapper element.
+	 * @param {Event}             event          Change event from the consent checkbox.
+	 */
+	var handleCheckboxStateChange = function( checkbox, fieldWrapper, event ) {
+		// Set consent checked state
+		_isConsentChecked = checkbox.checked;
+
+		// Sync checkboxes state
+		syncCheckboxesState();
+
+		// Clean up validation classes
+		cleanupValidationClasses( fieldWrapper );
+
+		// Maybe trigger checkout update
+		maybeTriggerCheckoutUpdate( event );
+	};
+
+	/**
 	 * Prevent residual WC field invalid classes from being kept when checking consent.
 	 */
 	var maybeBindCheckboxValidationCleanup = function( checkbox, fieldWrapper ) {
+		// Bail if checkbox is not found
 		if ( ! checkbox ) { return; }
+
+		// Bail if checkbox is already bound
 		if ( checkbox.getAttribute( _settings.checkboxBoundAttribute ) ) { return; }
 
-		// Keep all consent checkboxes synced in case duplicate elements exist.
-		var syncCheckboxesState = function() {
-			var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
-			for ( var i = 0; i < allCheckboxes.length; i++ ) {
-				allCheckboxes[ i ].checked = _isConsentChecked;
-				syncCheckboxValue( allCheckboxes[ i ] );
-			}
-		};
+		// Bind change event to handle checkbox state change
+		checkbox.addEventListener( 'change', handleCheckboxStateChange.bind( null, checkbox, fieldWrapper ) );
 
-		// Remove validation classes after WooCommerce validation handlers run.
-		var cleanupValidationClasses = function() {
-			setTimeout( function() {
-				if ( fieldWrapper && fieldWrapper.classList ) {
-					for ( var i = 0; i < _settings.invalidClassNames.length; i++ ) {
-						fieldWrapper.classList.remove( _settings.invalidClassNames[ i ] );
-					}
-				}
-			}, 10 );
-		};
-
-		var maybeTriggerCheckoutUpdate = function( event ) {
-			if ( ! event || 'change' !== event.type ) { return; }
-			if ( event.isTrusted !== true ) { return; }
-			if ( ! _hasJQuery || ! document.querySelector( _settings.checkoutFormSelector ) ) { return; }
-			if ( _isSyncingCheckout ) { return; }
-
-			_isSyncingCheckout = true;
-			$( document.body ).trigger( 'update_checkout' );
-			setTimeout( function() {
-				_isSyncingCheckout = false;
-			}, _settings.updateCheckoutCooldownMs );
-		};
-
-		var handleCheckboxStateChange = function( event ) {
-			_isConsentChecked = checkbox.checked;
-			syncCheckboxesState();
-			cleanupValidationClasses();
-			maybeTriggerCheckoutUpdate( event );
-		};
-
-		checkbox.addEventListener( 'change', handleCheckboxStateChange );
+		// Set checkbox checked state
 		checkbox.checked = _isConsentChecked;
+
+		// Sync checkbox value
 		syncCheckboxValue( checkbox );
+
+		// Set checkbox bound attribute
 		checkbox.setAttribute( _settings.checkboxBoundAttribute, '1' );
 	};
 
@@ -186,42 +245,69 @@
 	 * Keep a single checkbox block and a single checkbox input instance.
 	 */
 	var maybeDedupeCheckboxElements = function() {
+		// Get all blocks and checkboxes
 		var allBlocks = document.querySelectorAll( _settings.checkboxBlockSelector );
 		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+
+		// Bail if no blocks or checkboxes are found
 		if ( ! allBlocks.length && ! allCheckboxes.length ) { return; }
 
+		// Get the primary block
 		var primaryBlock = null;
+
+		// Loop through the blocks and look for the primary block
 		for ( var i = 0; i < allBlocks.length; i++ ) {
+			// Get the current block, and check if it contains the checkbox
 			var currentBlock = allBlocks[ i ];
 			var hasCheckbox = !! currentBlock.querySelector( _settings.checkboxSelector );
-			if ( hasCheckbox ) {
-				primaryBlock = currentBlock;
-				break;
-			}
+
+			// Continue if the block does not contain the checkbox
+			if ( ! hasCheckbox ) { continue; }
+
+			// Set the primary block
+			primaryBlock = currentBlock;
+			break;
 		}
+
+		// Otherwise use the first block
 		if ( ! primaryBlock && allBlocks[ 0 ] ) {
 			primaryBlock = allBlocks[ 0 ];
 		}
 
+		// Loop through the blocks and remove the non-primary blocks
 		for ( var j = 0; j < allBlocks.length; j++ ) {
+			// Continue if the block is the primary block
 			if ( allBlocks[ j ] === primaryBlock ) { continue; }
+
+			// Remove the block
 			allBlocks[ j ].parentNode.removeChild( allBlocks[ j ] );
 		}
 
+		// Bail if no primary block is found
 		if ( ! primaryBlock ) { return; }
 
+		// Get the primary checkbox
 		var primaryCheckbox = primaryBlock.querySelector( _settings.checkboxSelector );
+
+		// If no primary checkbox is found, use the first checkbox
 		if ( ! primaryCheckbox && allCheckboxes[ 0 ] ) {
 			primaryBlock.appendChild( allCheckboxes[ 0 ] );
 			primaryCheckbox = allCheckboxes[ 0 ];
 		}
 
+		// Re-query all checkboxes to ensure we have the correct ones
 		allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+
+		// Loop through checkboxes and remove non-primary checkboxes
 		for ( var k = 0; k < allCheckboxes.length; k++ ) {
+			// Continue if the checkbox is the primary checkbox
 			if ( allCheckboxes[ k ] === primaryCheckbox ) { continue; }
+
+			// Remove the checkbox
 			allCheckboxes[ k ].parentNode.removeChild( allCheckboxes[ k ] );
 		}
 
+		// Return the primary block
 		return primaryBlock;
 	};
 
@@ -231,25 +317,31 @@
 	var maybeRepositionCheckbox = function() {
 		// Bail when WCAR Pro phone consent should not be shown.
 		if ( ! shouldShow() ) { return; }
+
+		// Sync consent state from DOM
 		syncConsentStateFromDOM();
 
+		// Get phone field wrapper
 		var fieldWrapper = getPhoneFieldWrapper();
+
+		// Bail if no field wrapper or parent node is found
 		if ( ! fieldWrapper || ! fieldWrapper.parentNode ) { return; }
 
-		// Prefer the block that contains the first visible checkbox, if present.
+		// Get checkbox block
 		var checkboxBlock = maybeDedupeCheckboxElements();
 		if ( ! checkboxBlock ) {
 			checkboxBlock = buildCheckboxBlock();
 		}
 
+		// Bail if no checkbox block is found
 		if ( ! checkboxBlock ) { return; }
 
-		// When the phone field lives under shipping fields, append as the last node inside
-		// `.woocommerce-shipping-fields` so the block stays after address book notices and
-		// shipping-only fields (Fluid Checkout `form-shipping.php` order).
+		// Get checkout form and shipping fields root
 		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
 		var shippingFieldsRoot = checkoutForm ? checkoutForm.querySelector( '.woocommerce-shipping-fields' ) : null;
 		var gdprCheckboxPlaceholder = checkoutForm ? checkoutForm.querySelector( _settings.gdprPhoneMessagePlaceholderSelector ) : null;
+
+		// Maybe append checkbox block to shipping fields root
 		if ( shippingFieldsRoot && shippingFieldsRoot.contains( fieldWrapper ) ) {
 			if ( gdprCheckboxPlaceholder && shippingFieldsRoot.contains( gdprCheckboxPlaceholder ) ) {
 				gdprCheckboxPlaceholder.appendChild( checkboxBlock );
@@ -258,19 +350,29 @@
 				shippingFieldsRoot.appendChild( checkboxBlock );
 			}
 		}
+		// Otherwise append checkbox block to parent node
 		else {
 			// Keep consent checkbox right after the resolved phone field wrapper (e.g. billing-only layouts).
 			fieldWrapper.parentNode.insertBefore( checkboxBlock, fieldWrapper.nextSibling );
 		}
 
+		// Get checkbox
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
+		
+		// Maybe set checkbox checked state and name
 		if ( checkbox ) {
 			checkbox.checked = _isConsentChecked;
 			checkbox.name = _settings.checkboxFieldName;
 		}
+
+		// Sync checkbox value
 		syncCheckboxValue( checkbox );
+
+		// Maybe bind checkbox validation cleanup
 		maybeBindCheckboxValidationCleanup( checkbox, fieldWrapper );
 	};
+
+
 
 	/**
 	 * Initialize compatibility script.
