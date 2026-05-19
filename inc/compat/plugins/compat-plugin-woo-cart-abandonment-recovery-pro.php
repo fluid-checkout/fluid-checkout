@@ -54,13 +54,23 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Output empty placeholder for WCAR GDPR phone message placement.
 	 *
 	 * @return void
 	 */
 	public function output_wcar_gdpr_phone_message_placeholder() {
+		// Bail if WCAR PRO license is active
+		if ( ! function_exists( 'wcar_pro_is_active_license' ) || ! wcar_pro_is_active_license() ) { return; }
+
+		// Bail if WCAR plugin main class is unavailable
+		if ( ! function_exists( 'wcf_ca' ) ) { return; }
+
+		// Bail if phone GDPR is disabled in plugin settings
+		if ( 'on' !== wcf_ca()->utils->wcar_get_option( 'wcf_ca_phone_gdpr_status' ) ) { return; }
+
+		// Output placeholder
 		echo '<div id="fc-wcar-gdpr-phone-message-placeholder" class="fc-wcar-gdpr-phone-message-placeholder"></div>';
 	}
 }

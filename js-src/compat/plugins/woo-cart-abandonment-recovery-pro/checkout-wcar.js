@@ -15,11 +15,9 @@
 	'use strict';
 
 	var $ = jQuery;
-	var _hasJQuery = ( $ !== null );
+	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
-	var _isSyncingCheckout = false;
-	var _isConsentChecked = false;
 	var _publicMethods = {};
 	var _settings = {
 		checkboxBlockSelector: '#wcf_cf_gdpr_phone_message_block',
@@ -33,6 +31,8 @@
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 		updateCheckoutCooldownMs: 300,
 	};
+	var _isSyncingCheckout = false;
+	var _isConsentChecked = false;
 
 	/**
 	 * Whether the WCAR Pro phone checkbox should be displayed.
@@ -249,10 +249,10 @@
 		// shipping-only fields (Fluid Checkout `form-shipping.php` order).
 		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
 		var shippingFieldsRoot = checkoutForm ? checkoutForm.querySelector( '.woocommerce-shipping-fields' ) : null;
-		var gdprAnchor = checkoutForm ? checkoutForm.querySelector( _settings.gdprPhoneMessagePlaceholderSelector ) : null;
+		var gdprCheckboxPlaceholder = checkoutForm ? checkoutForm.querySelector( _settings.gdprPhoneMessagePlaceholderSelector ) : null;
 		if ( shippingFieldsRoot && shippingFieldsRoot.contains( fieldWrapper ) ) {
-			if ( gdprAnchor && shippingFieldsRoot.contains( gdprAnchor ) ) {
-				gdprAnchor.appendChild( checkboxBlock );
+			if ( gdprCheckboxPlaceholder && shippingFieldsRoot.contains( gdprCheckboxPlaceholder ) ) {
+				gdprCheckboxPlaceholder.appendChild( checkboxBlock );
 			} else {
 				shippingFieldsRoot.appendChild( checkboxBlock );
 			}
