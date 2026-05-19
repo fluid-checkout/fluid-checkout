@@ -1,8 +1,5 @@
 /**
- * Keep WCAR Pro phone GDPR checkbox visible; when the phone field is in the shipping section,
- * keep the block inside `#fc-wcar-gdpr-phone-message-anchor` when present, else as the last child
- * of `.woocommerce-shipping-fields` (after address book notices and shipping-only fields).
- * Otherwise keep it after the phone field wrapper.
+ * Compatibility with Woo Cart Abandonment Recovery Pro (by CartFlows)
  */
 
 (function (root, factory) {
@@ -11,7 +8,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.FCWooCartAbandonmentRecoveryProGdprPhoneCheckbox = factory(root);
+		root.FCWCARCheckout = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
@@ -32,7 +29,7 @@
 		phoneSelectors: '#billing_phone, #billing-phone, #shipping_phone, #shipping-phone, #phone',
 		fieldWrapperSelector: '.form-row, .wc-block-components-text-input, .wc-block-components-phone-number-input',
 		checkoutFormSelector: 'form[name="checkout"]',
-		gdprPhoneMessageAnchorSelector: '#fc-wcar-gdpr-phone-message-anchor',
+		gdprPhoneMessagePlaceholderSelector: '#fc-wcar-gdpr-phone-message-placeholder',
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 		updateCheckoutCooldownMs: 300,
 	};
@@ -252,7 +249,7 @@
 		// shipping-only fields (Fluid Checkout `form-shipping.php` order).
 		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
 		var shippingFieldsRoot = checkoutForm ? checkoutForm.querySelector( '.woocommerce-shipping-fields' ) : null;
-		var gdprAnchor = checkoutForm ? checkoutForm.querySelector( _settings.gdprPhoneMessageAnchorSelector ) : null;
+		var gdprAnchor = checkoutForm ? checkoutForm.querySelector( _settings.gdprPhoneMessagePlaceholderSelector ) : null;
 		if ( shippingFieldsRoot && shippingFieldsRoot.contains( fieldWrapper ) ) {
 			if ( gdprAnchor && shippingFieldsRoot.contains( gdprAnchor ) ) {
 				gdprAnchor.appendChild( checkboxBlock );
