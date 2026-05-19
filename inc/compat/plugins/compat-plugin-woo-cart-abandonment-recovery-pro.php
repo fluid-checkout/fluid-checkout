@@ -5,12 +5,15 @@ defined( 'ABSPATH' ) || exit;
  * Compatibility with plugin: Cart Abandonment Recovery Pro for WooCommerce (by CartFlows Inc).
  */
 class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
+
 	/**
 	 * __construct function.
 	 */
 	public function __construct() {
 		$this->hooks();
 	}
+
+
 
 	/**
 	 * Initialize hooks.
