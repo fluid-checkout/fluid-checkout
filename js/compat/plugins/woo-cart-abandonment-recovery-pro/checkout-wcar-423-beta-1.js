@@ -30,9 +30,13 @@
 		gdprPhoneMessagePlaceholderSelector: '#fc-wcar-gdpr-phone-message-placeholder',
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 		updateCheckoutCooldownMs: 300,
+		enableIntlPhoneWcarCompat: false,
+		fullPhoneFieldSuffix: '_full',
+		abandonmentTrackingAction: 'cartflows_save_cart_abandonment_data',
 	};
 	var _isSyncingCheckout = false;
 	var _isConsentChecked = false;
+	var _hasAbandonmentAjaxPatched = false;
 
 	/**
 	 * Whether the WCAR Pro phone checkbox should be displayed.
@@ -46,17 +50,30 @@
 	};
 
 	/**
-	 * Get the checkout phone field wrapper element.
+	 * Load settings from localized script data.
 	 */
-	var getPhoneFieldWrapper = function() {
-		// Try to scope lookup to the checkout form first.
+	var loadSettings = function() {
+		if ( typeof root.fcWcarCheckoutSettings === 'undefined' || ! root.fcWcarCheckoutSettings ) { return; }
+
+		if ( root.fcWcarCheckoutSettings.enableIntlPhoneWcarCompat ) {
+			_settings.enableIntlPhoneWcarCompat = true;
+		}
+
+		if ( root.fcWcarCheckoutSettings.fullPhoneFieldSuffix ) {
+			_settings.fullPhoneFieldSuffix = root.fcWcarCheckoutSettings.fullPhoneFieldSuffix;
+		}
+	};
+
+	/**
+	 * Get the active checkout phone input element.
+	 */
+	var getActivePhoneInput = function() {
 		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
 		var phoneInputs = checkoutForm
 			? checkoutForm.querySelectorAll( _settings.phoneSelectors )
 			: document.querySelectorAll( _settings.phoneSelectors );
 		if ( ! phoneInputs || ! phoneInputs.length ) { return; }
 
-		// Prefer the first visible phone field when multiple variants exist.
 		var selectedPhoneInput = null;
 		for ( var i = 0; i < phoneInputs.length; i++ ) {
 			var phoneInput = phoneInputs[ i ];
@@ -71,6 +88,115 @@
 		if ( ! selectedPhoneInput && phoneInputs[ 0 ] ) {
 			selectedPhoneInput = phoneInputs[ 0 ];
 		}
+
+		return selectedPhoneInput || null;
+	};
+
+	/**
+	 * Sync FC international phone hidden full-number field for a phone input.
+	 *
+	 * @param   {HTMLInputElement}  phoneInput  Phone input element.
+	 */
+	var syncIntlPhoneHiddenField = function( phoneInput ) {
+		if ( ! phoneInput || ! phoneInput.iti ) { return; }
+
+		var phoneField = phoneInput.iti;
+		var hiddenFieldName = phoneInput.getAttribute( 'name' ) + _settings.fullPhoneFieldSuffix;
+		var hiddenField = document.querySelector( 'input[name="' + hiddenFieldName + '"]' );
+
+		if ( ! hiddenField ) { return; }
+
+		var selectedCountry = phoneField.getSelectedCountryData();
+		var selectedCountryCode = selectedCountry && selectedCountry.dialCode && 0 !== phoneInput.value.indexOf( '+' ) ? '+' + selectedCountry.dialCode : '';
+
+		hiddenField.value = phoneField.isValidNumber() ? phoneField.getNumber() : '';
+
+		if ( ! hiddenField.value && phoneInput.value ) {
+			hiddenField.value = selectedCountryCode + phoneInput.value;
+		}
+	};
+
+	/**
+	 * Get national phone digits and dial code for WCAR abandonment tracking.
+	 *
+	 * @return  {Object|null}  Phone data for WCAR tracking, or null when unavailable.
+	 */
+	var getWcarPhoneDataForTracking = function() {
+		var phoneInput = getActivePhoneInput();
+		if ( ! phoneInput || ! phoneInput.iti ) { return null; }
+
+		var phoneField = phoneInput.iti;
+		var selectedCountry = phoneField.getSelectedCountryData();
+
+		if ( ! selectedCountry || ! selectedCountry.dialCode ) { return null; }
+
+		syncIntlPhoneHiddenField( phoneInput );
+
+		var dialCode = '+' + selectedCountry.dialCode;
+		var nationalNumber = '';
+
+		if ( typeof intlTelInput !== 'undefined' && intlTelInput.utils && phoneField.isValidNumber() ) {
+			var e164Number = phoneField.getNumber();
+			var formattedNationalNumber = intlTelInput.utils.formatNumber( e164Number, selectedCountry.iso2, intlTelInput.utils.numberFormat.NATIONAL );
+			nationalNumber = formattedNationalNumber.replace( /\D/g, '' );
+		}
+
+		if ( ! nationalNumber ) {
+			nationalNumber = phoneInput.value.replace( /\D/g, '' );
+		}
+
+		if ( ! nationalNumber ) { return null; }
+
+		return {
+			wcf_phone: nationalNumber,
+			wcf_phone_country_code: dialCode,
+		};
+	};
+
+	/**
+	 * Maybe enrich WCAR abandonment tracking AJAX payload with international phone data.
+	 *
+	 * @param   {Object}  data  AJAX request data.
+	 */
+	var maybeEnrichAbandonmentTrackingData = function( data ) {
+		if ( ! _settings.enableIntlPhoneWcarCompat ) { return; }
+
+		var phoneData = getWcarPhoneDataForTracking();
+		if ( ! phoneData ) { return; }
+
+		data.wcf_phone = phoneData.wcf_phone;
+		data.wcf_phone_country_code = phoneData.wcf_phone_country_code;
+	};
+
+	/**
+	 * Patch jQuery AJAX to enrich WCAR abandonment tracking requests.
+	 */
+	var maybePatchAbandonmentTrackingAjax = function() {
+		if ( ! _hasJQuery || ! _settings.enableIntlPhoneWcarCompat || _hasAbandonmentAjaxPatched ) { return; }
+
+		var originalAjax = $.ajax;
+
+		$.ajax = function( options ) {
+			if (
+				options
+				&& options.data
+				&& typeof options.data === 'object'
+				&& options.data.action === _settings.abandonmentTrackingAction
+			) {
+				maybeEnrichAbandonmentTrackingData( options.data );
+			}
+
+			return originalAjax.call( this, options );
+		};
+
+		_hasAbandonmentAjaxPatched = true;
+	};
+
+	/**
+	 * Get the checkout phone field wrapper element.
+	 */
+	var getPhoneFieldWrapper = function() {
+		var selectedPhoneInput = getActivePhoneInput();
 		if ( ! selectedPhoneInput ) { return; }
 
 		// Return the closest field wrapper used by the active checkout layout.
@@ -381,6 +507,9 @@
 		// Bail if already initialized.
 		if ( _hasInitialized ) { return; }
 
+		loadSettings();
+		maybePatchAbandonmentTrackingAjax();
+
 		// Ensure checkbox is positioned on page load.
 		maybeRepositionCheckbox();
 
@@ -395,6 +524,9 @@
 	//
 	// Public APIs
 	//
+	loadSettings();
+	maybePatchAbandonmentTrackingAjax();
+
 	return _publicMethods;
 
 });
