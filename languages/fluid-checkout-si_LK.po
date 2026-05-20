@@ -2584,6 +2584,7 @@ msgstr "හකුළන ලදී"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "පුළුල් කරන ලදී"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "පෙන්වන්න එපා"
@@ -2722,3 +2723,8 @@ msgstr "නැව්ගත කිරීම %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "නැව්ගත කිරීම"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "ඊළඟ පියවර"

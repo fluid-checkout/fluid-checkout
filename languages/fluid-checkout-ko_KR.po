@@ -2532,3 +2532,8 @@ msgstr "배송 %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "배송"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "다음 단계"

@@ -2690,6 +2690,7 @@ msgstr "ခေါက်ထားသည်"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "ချဲ့ထွင်ထားသည်"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "မပြပါနဲ့"
@@ -2828,3 +2829,8 @@ msgstr "ပို့ဆောင်မှု %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "သင်္ဘောဖြင့်ကုန်ပစ္စည်းပို့ခြင်း"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "နောက်တစ်ဆင့်"

@@ -356,8 +356,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Issue with displaying gdpr notice on Cart Abandonment Recovery Pro
-
+* Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
+* Fixed: Password meter styles on checkout page account creation.
+* Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
 
 = 4.2.2 - 2026-04-21 =
 

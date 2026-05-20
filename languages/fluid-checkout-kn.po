@@ -2615,6 +2615,7 @@ msgstr "ಕುಗ್ಗಿಸಲಾಗಿದೆ"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "ವಿಸ್ತರಿಸಲಾಗಿದೆ"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "ತೋರಿಸಬೇಡಿ"
@@ -2753,3 +2754,8 @@ msgstr "ಸಾಗಣೆ %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "ಶಿಪ್ಪಿಂಗ್"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "ಮುಂದಿನ ಹೆಜ್ಜೆ"
