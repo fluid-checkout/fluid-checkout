@@ -102,7 +102,7 @@
 
 		var message = document.createElement( 'span' );
 		message.className = 'fc-checkbox-label-text';
-		message.innerHTML = root.wcf_ca_vars._gdpr_phone_message; // Uses the same variables from the original plugin.
+		message.innerHTML = root.wcf_ca_vars._gdpr_phone_message; // Update with message from the original plugin, which is a trusted source for this.
 
 		label.appendChild( checkbox );
 		label.appendChild( message );
@@ -358,7 +358,7 @@
 
 		// Get checkbox
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
-		
+
 		// Maybe set checkbox checked state and name
 		if ( checkbox ) {
 			checkbox.checked = _isConsentChecked;

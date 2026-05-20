@@ -19,10 +19,10 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Register assets.
+		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
-		// Enqueue assets.
+		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_phone_gdpr' ), 10 );
 
 		// Phone GDPR
@@ -55,7 +55,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		wp_register_script( 'fc-compat-checkout-wcar', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-cart-abandonment-recovery-pro/checkout-wcar' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-compat-checkout-wcar', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-cart-abandonment-recovery-pro/checkout-wcar' ), array( 'jquery', 'cartflows-cart-abandonment-tracking' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-compat-checkout-wcar', 'window.addEventListener("load",function(){FCWCARCheckout.init();});' );
 	}
 
