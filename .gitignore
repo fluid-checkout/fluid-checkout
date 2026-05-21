@@ -29,5 +29,8 @@ bower_compoents/**
 .git
 .git/**
 
+# Local symlink to shared standards repo (see DEVELOPMENT.md)
+fluid-checkout-standards
+
 # Zip files
 **/*.zip
