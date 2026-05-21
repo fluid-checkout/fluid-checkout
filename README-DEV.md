@@ -21,7 +21,7 @@ Clone the standards repo as a sibling of this repository under `wp-content/plugi
 
 ```
 wp-content/plugins/
-├── fluid-checkout/              ← this repo
+├── this-repo/                   ← this repo
 ├── fluid-checkout-standards/    ← clone here
 └── …
 ```
