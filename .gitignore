@@ -25,6 +25,9 @@ bower_components
 bower_compoents/**
 /vendor/**/.git
 
+# Standards repo
+fluid-checkout-standards
+
 # Git files
 .git
 .git/**
