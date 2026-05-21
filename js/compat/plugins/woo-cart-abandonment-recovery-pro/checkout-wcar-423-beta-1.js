@@ -23,15 +23,15 @@
 		checkboxBlockSelector: '#wcf_cf_gdpr_phone_message_block',
 		checkboxSelector: '#gdpr_phone_consent',
 		checkboxBoundAttribute: 'data-fc-wcar-gdpr-bound',
-		checkboxFieldName: 'gdpr_phone_consent',
+		checkboxFieldName: 'wcf_gdpr_phone_consent',
 		phoneSelectors: '#billing_phone, #billing-phone, #shipping_phone, #shipping-phone, #phone',
 		fieldWrapperSelector: '.form-row, .wc-block-components-text-input, .wc-block-components-phone-number-input',
 		checkoutFormSelector: 'form[name="checkout"]',
 		gdprPhoneMessagePlaceholderSelector: '#fc-wcar-gdpr-phone-message-placeholder',
+		gdprPhoneConsentHiddenSelector: '#fc-wcar-gdpr-phone-consent-hidden',
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 		updateCheckoutCooldownMs: 300,
 		enableIntlPhoneWcarCompat: false,
-		fullPhoneFieldSuffix: '_full',
 		abandonmentTrackingAction: 'cartflows_save_cart_abandonment_data',
 	};
 	var _isSyncingCheckout = false;
@@ -53,14 +53,12 @@
 	 * Load settings from localized script data.
 	 */
 	var loadSettings = function() {
+		// Bail if localized settings are not available
 		if ( typeof root.fcWcarCheckoutSettings === 'undefined' || ! root.fcWcarCheckoutSettings ) { return; }
 
+		// Maybe enable international phone compatibility with WCAR
 		if ( root.fcWcarCheckoutSettings.enableIntlPhoneWcarCompat ) {
 			_settings.enableIntlPhoneWcarCompat = true;
-		}
-
-		if ( root.fcWcarCheckoutSettings.fullPhoneFieldSuffix ) {
-			_settings.fullPhoneFieldSuffix = root.fcWcarCheckoutSettings.fullPhoneFieldSuffix;
 		}
 	};
 
@@ -68,23 +66,31 @@
 	 * Get the active checkout phone input element.
 	 */
 	var getActivePhoneInput = function() {
+		// Try to scope lookup to the checkout form first
 		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
 		var phoneInputs = checkoutForm
 			? checkoutForm.querySelectorAll( _settings.phoneSelectors )
 			: document.querySelectorAll( _settings.phoneSelectors );
+
+		// Bail if no phone inputs are found
 		if ( ! phoneInputs || ! phoneInputs.length ) { return; }
 
+		// Prefer the first visible phone field when multiple variants exist
 		var selectedPhoneInput = null;
 		for ( var i = 0; i < phoneInputs.length; i++ ) {
+			// Get the current phone input
 			var phoneInput = phoneInputs[ i ];
 			var isVisible = phoneInput && phoneInput.offsetParent !== null;
 
-			if ( isVisible ) {
-				selectedPhoneInput = phoneInput;
-				break;
-			}
+			// Continue if the phone input is not visible
+			if ( ! isVisible ) { continue; }
+
+			// Set the selected phone input
+			selectedPhoneInput = phoneInput;
+			break;
 		}
 
+		// Otherwise use the first phone input
 		if ( ! selectedPhoneInput && phoneInputs[ 0 ] ) {
 			selectedPhoneInput = phoneInputs[ 0 ];
 		}
@@ -98,19 +104,25 @@
 	 * @param   {HTMLInputElement}  phoneInput  Phone input element.
 	 */
 	var syncIntlPhoneHiddenField = function( phoneInput ) {
+		// Bail if phone input or intl-tel-input instance is not available
 		if ( ! phoneInput || ! phoneInput.iti ) { return; }
 
+		// Get phone field instance and hidden full-number field
 		var phoneField = phoneInput.iti;
-		var hiddenFieldName = phoneInput.getAttribute( 'name' ) + _settings.fullPhoneFieldSuffix;
+		var hiddenFieldName = phoneInput.getAttribute( 'name' ) + '_full';
 		var hiddenField = document.querySelector( 'input[name="' + hiddenFieldName + '"]' );
 
+		// Bail if hidden field is not available
 		if ( ! hiddenField ) { return; }
 
+		// Get selected country dial code for fallback value
 		var selectedCountry = phoneField.getSelectedCountryData();
 		var selectedCountryCode = selectedCountry && selectedCountry.dialCode && 0 !== phoneInput.value.indexOf( '+' ) ? '+' + selectedCountry.dialCode : '';
 
+		// Set hidden field value from validated full number
 		hiddenField.value = phoneField.isValidNumber() ? phoneField.getNumber() : '';
 
+		// Maybe append country code to full phone number
 		if ( ! hiddenField.value && phoneInput.value ) {
 			hiddenField.value = selectedCountryCode + phoneInput.value;
 		}
@@ -122,31 +134,42 @@
 	 * @return  {Object|null}  Phone data for WCAR tracking, or null when unavailable.
 	 */
 	var getWcarPhoneDataForTracking = function() {
+		// Get active phone input
 		var phoneInput = getActivePhoneInput();
+
+		// Bail if phone input or intl-tel-input instance is not available
 		if ( ! phoneInput || ! phoneInput.iti ) { return null; }
 
+		// Get phone field instance and selected country data
 		var phoneField = phoneInput.iti;
 		var selectedCountry = phoneField.getSelectedCountryData();
 
+		// Bail if selected country dial code is not available
 		if ( ! selectedCountry || ! selectedCountry.dialCode ) { return null; }
 
+		// Sync hidden full-number field before reading phone data
 		syncIntlPhoneHiddenField( phoneInput );
 
+		// Get dial code and national number for WCAR tracking
 		var dialCode = '+' + selectedCountry.dialCode;
 		var nationalNumber = '';
 
+		// Maybe format national number from validated E.164 value
 		if ( typeof intlTelInput !== 'undefined' && intlTelInput.utils && phoneField.isValidNumber() ) {
 			var e164Number = phoneField.getNumber();
 			var formattedNationalNumber = intlTelInput.utils.formatNumber( e164Number, selectedCountry.iso2, intlTelInput.utils.numberFormat.NATIONAL );
 			nationalNumber = formattedNationalNumber.replace( /\D/g, '' );
 		}
 
+		// Otherwise strip non-digits from visible phone input value
 		if ( ! nationalNumber ) {
 			nationalNumber = phoneInput.value.replace( /\D/g, '' );
 		}
 
+		// Bail if national number is empty
 		if ( ! nationalNumber ) { return null; }
 
+		// Return phone data expected by WCAR abandonment tracking
 		return {
 			wcf_phone: nationalNumber,
 			wcf_phone_country_code: dialCode,
@@ -159,11 +182,16 @@
 	 * @param   {Object}  data  AJAX request data.
 	 */
 	var maybeEnrichAbandonmentTrackingData = function( data ) {
+		// Bail if international phone compatibility is disabled
 		if ( ! _settings.enableIntlPhoneWcarCompat ) { return; }
 
+		// Get phone data for WCAR tracking
 		var phoneData = getWcarPhoneDataForTracking();
+
+		// Bail if phone data is not available
 		if ( ! phoneData ) { return; }
 
+		// Enrich abandonment tracking payload with phone data
 		data.wcf_phone = phoneData.wcf_phone;
 		data.wcf_phone_country_code = phoneData.wcf_phone_country_code;
 	};
@@ -172,11 +200,15 @@
 	 * Patch jQuery AJAX to enrich WCAR abandonment tracking requests.
 	 */
 	var maybePatchAbandonmentTrackingAjax = function() {
+		// Bail if jQuery is not available, compatibility is disabled, or AJAX is already patched
 		if ( ! _hasJQuery || ! _settings.enableIntlPhoneWcarCompat || _hasAbandonmentAjaxPatched ) { return; }
 
+		// Store original jQuery AJAX handler
 		var originalAjax = $.ajax;
 
+		// Patch jQuery AJAX to enrich WCAR abandonment tracking requests
 		$.ajax = function( options ) {
+			// Maybe enrich abandonment tracking payload before request is sent
 			if (
 				options
 				&& options.data
@@ -186,9 +218,11 @@
 				maybeEnrichAbandonmentTrackingData( options.data );
 			}
 
+			// Call original jQuery AJAX handler
 			return originalAjax.call( this, options );
 		};
 
+		// Set AJAX patched flag
 		_hasAbandonmentAjaxPatched = true;
 	};
 
@@ -196,7 +230,10 @@
 	 * Get the checkout phone field wrapper element.
 	 */
 	var getPhoneFieldWrapper = function() {
+		// Get active phone input
 		var selectedPhoneInput = getActivePhoneInput();
+
+		// Bail if no phone input is found
 		if ( ! selectedPhoneInput ) { return; }
 
 		// Return the closest field wrapper used by the active checkout layout.
@@ -222,7 +259,6 @@
 		var checkbox = document.createElement( 'input' );
 		checkbox.type = 'checkbox';
 		checkbox.id = 'gdpr_phone_consent';
-		checkbox.name = _settings.checkboxFieldName;
 		checkbox.className = 'input-checkbox';
 		checkbox.value = 'on';
 
@@ -238,17 +274,42 @@
 	};
 
 	/**
-	 * Keep consent field value aligned with checked state.
+	 * Get the hidden field that persists consent in checkout post data.
 	 */
-	var syncCheckboxValue = function( checkbox ) {
-		if ( ! checkbox ) { return; }
-		checkbox.value = checkbox.checked ? 'on' : '';
+	var getGdprPhoneConsentHiddenField = function() {
+		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
+		if ( ! checkoutForm ) { return null; }
+
+		return checkoutForm.querySelector( _settings.gdprPhoneConsentHiddenSelector );
 	};
 
 	/**
-	 * Sync internal consent state from currently rendered checkbox.
+	 * Check whether a consent field value represents a checked state.
 	 */
-	var syncConsentStateFromDOM = function() {
+	var isConsentValueChecked = function( value ) {
+		return 'on' === value || '1' === value || 1 === value;
+	};
+
+	/**
+	 * Keep the hidden consent field aligned with the checkbox checked state.
+	 */
+	var syncHiddenConsentField = function( checkbox ) {
+		var hiddenField = getGdprPhoneConsentHiddenField();
+		if ( ! hiddenField || ! checkbox ) { return; }
+		hiddenField.value = checkbox.checked ? 'on' : '';
+	};
+
+	/**
+	 * Sync internal consent state from the hidden field or checkbox.
+	 */
+	var syncConsentStateFromPersistedField = function() {
+		var hiddenField = getGdprPhoneConsentHiddenField();
+
+		if ( hiddenField ) {
+			_isConsentChecked = isConsentValueChecked( hiddenField.value );
+			return;
+		}
+
 		var currentCheckbox = document.querySelector( _settings.checkboxSelector );
 		if ( currentCheckbox ) {
 			_isConsentChecked = currentCheckbox.checked;
@@ -262,7 +323,7 @@
 		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
 		for ( var i = 0; i < allCheckboxes.length; i++ ) {
 			allCheckboxes[ i ].checked = _isConsentChecked;
-			syncCheckboxValue( allCheckboxes[ i ] );
+			syncHiddenConsentField( allCheckboxes[ i ] );
 		}
 	};
 
@@ -360,8 +421,8 @@
 		// Set checkbox checked state
 		checkbox.checked = _isConsentChecked;
 
-		// Sync checkbox value
-		syncCheckboxValue( checkbox );
+		// Sync hidden consent field
+		syncHiddenConsentField( checkbox );
 
 		// Set checkbox bound attribute
 		checkbox.setAttribute( _settings.checkboxBoundAttribute, '1' );
@@ -444,8 +505,8 @@
 		// Bail when WCAR Pro phone consent should not be shown.
 		if ( ! shouldShow() ) { return; }
 
-		// Sync consent state from DOM
-		syncConsentStateFromDOM();
+		// Sync consent state from hidden field or checkbox
+		syncConsentStateFromPersistedField();
 
 		// Get phone field wrapper
 		var fieldWrapper = getPhoneFieldWrapper();
@@ -485,20 +546,17 @@
 		// Get checkbox
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
 
-		// Maybe set checkbox checked state and name
+		// Maybe set checkbox checked state
 		if ( checkbox ) {
 			checkbox.checked = _isConsentChecked;
-			checkbox.name = _settings.checkboxFieldName;
 		}
 
-		// Sync checkbox value
-		syncCheckboxValue( checkbox );
+		// Sync hidden consent field
+		syncHiddenConsentField( checkbox );
 
 		// Maybe bind checkbox validation cleanup
 		maybeBindCheckboxValidationCleanup( checkbox, fieldWrapper );
 	};
-
-
 
 	/**
 	 * Initialize compatibility script.
@@ -507,7 +565,10 @@
 		// Bail if already initialized.
 		if ( _hasInitialized ) { return; }
 
+		// Load settings from localized script data
 		loadSettings();
+
+		// Patch jQuery AJAX for WCAR abandonment tracking
 		maybePatchAbandonmentTrackingAjax();
 
 		// Ensure checkbox is positioned on page load.
@@ -515,7 +576,10 @@
 
 		// Reposition after checkout updates replace fragments.
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', maybeRepositionCheckbox );
+			$( document.body ).on( 'updated_checkout', function() {
+				syncConsentStateFromPersistedField();
+				maybeRepositionCheckbox();
+			} );
 		}
 
 		_hasInitialized = true;
@@ -524,7 +588,10 @@
 	//
 	// Public APIs
 	//
+	// Load settings from localized script data
 	loadSettings();
+
+	// Patch jQuery AJAX for WCAR abandonment tracking
 	maybePatchAbandonmentTrackingAjax();
 
 	return _publicMethods;

@@ -23,11 +23,12 @@
 		checkboxBlockSelector: '#wcf_cf_gdpr_phone_message_block',
 		checkboxSelector: '#gdpr_phone_consent',
 		checkboxBoundAttribute: 'data-fc-wcar-gdpr-bound',
-		checkboxFieldName: 'gdpr_phone_consent',
+		checkboxFieldName: 'wcf_gdpr_phone_consent',
 		phoneSelectors: '#billing_phone, #billing-phone, #shipping_phone, #shipping-phone, #phone',
 		fieldWrapperSelector: '.form-row, .wc-block-components-text-input, .wc-block-components-phone-number-input',
 		checkoutFormSelector: 'form[name="checkout"]',
 		gdprPhoneMessagePlaceholderSelector: '#fc-wcar-gdpr-phone-message-placeholder',
+		gdprPhoneConsentHiddenSelector: '#fc-wcar-gdpr-phone-consent-hidden',
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 		updateCheckoutCooldownMs: 300,
 		enableIntlPhoneWcarCompat: false,
@@ -258,7 +259,6 @@
 		var checkbox = document.createElement( 'input' );
 		checkbox.type = 'checkbox';
 		checkbox.id = 'gdpr_phone_consent';
-		checkbox.name = _settings.checkboxFieldName;
 		checkbox.className = 'input-checkbox';
 		checkbox.value = 'on';
 
@@ -274,17 +274,42 @@
 	};
 
 	/**
-	 * Keep consent field value aligned with checked state.
+	 * Get the hidden field that persists consent in checkout post data.
 	 */
-	var syncCheckboxValue = function( checkbox ) {
-		if ( ! checkbox ) { return; }
-		checkbox.value = checkbox.checked ? 'on' : '';
+	var getGdprPhoneConsentHiddenField = function() {
+		var checkoutForm = document.querySelector( _settings.checkoutFormSelector );
+		if ( ! checkoutForm ) { return null; }
+
+		return checkoutForm.querySelector( _settings.gdprPhoneConsentHiddenSelector );
 	};
 
 	/**
-	 * Sync internal consent state from currently rendered checkbox.
+	 * Check whether a consent field value represents a checked state.
 	 */
-	var syncConsentStateFromDOM = function() {
+	var isConsentValueChecked = function( value ) {
+		return 'on' === value || '1' === value || 1 === value;
+	};
+
+	/**
+	 * Keep the hidden consent field aligned with the checkbox checked state.
+	 */
+	var syncHiddenConsentField = function( checkbox ) {
+		var hiddenField = getGdprPhoneConsentHiddenField();
+		if ( ! hiddenField || ! checkbox ) { return; }
+		hiddenField.value = checkbox.checked ? 'on' : '';
+	};
+
+	/**
+	 * Sync internal consent state from the hidden field or checkbox.
+	 */
+	var syncConsentStateFromPersistedField = function() {
+		var hiddenField = getGdprPhoneConsentHiddenField();
+
+		if ( hiddenField ) {
+			_isConsentChecked = isConsentValueChecked( hiddenField.value );
+			return;
+		}
+
 		var currentCheckbox = document.querySelector( _settings.checkboxSelector );
 		if ( currentCheckbox ) {
 			_isConsentChecked = currentCheckbox.checked;
@@ -298,7 +323,7 @@
 		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
 		for ( var i = 0; i < allCheckboxes.length; i++ ) {
 			allCheckboxes[ i ].checked = _isConsentChecked;
-			syncCheckboxValue( allCheckboxes[ i ] );
+			syncHiddenConsentField( allCheckboxes[ i ] );
 		}
 	};
 
@@ -396,8 +421,8 @@
 		// Set checkbox checked state
 		checkbox.checked = _isConsentChecked;
 
-		// Sync checkbox value
-		syncCheckboxValue( checkbox );
+		// Sync hidden consent field
+		syncHiddenConsentField( checkbox );
 
 		// Set checkbox bound attribute
 		checkbox.setAttribute( _settings.checkboxBoundAttribute, '1' );
@@ -480,8 +505,8 @@
 		// Bail when WCAR Pro phone consent should not be shown.
 		if ( ! shouldShow() ) { return; }
 
-		// Sync consent state from DOM
-		syncConsentStateFromDOM();
+		// Sync consent state from hidden field or checkbox
+		syncConsentStateFromPersistedField();
 
 		// Get phone field wrapper
 		var fieldWrapper = getPhoneFieldWrapper();
@@ -521,14 +546,13 @@
 		// Get checkbox
 		var checkbox = checkboxBlock.querySelector( _settings.checkboxSelector );
 
-		// Maybe set checkbox checked state and name
+		// Maybe set checkbox checked state
 		if ( checkbox ) {
 			checkbox.checked = _isConsentChecked;
-			checkbox.name = _settings.checkboxFieldName;
 		}
 
-		// Sync checkbox value
-		syncCheckboxValue( checkbox );
+		// Sync hidden consent field
+		syncHiddenConsentField( checkbox );
 
 		// Maybe bind checkbox validation cleanup
 		maybeBindCheckboxValidationCleanup( checkbox, fieldWrapper );
@@ -552,7 +576,10 @@
 
 		// Reposition after checkout updates replace fragments.
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', maybeRepositionCheckbox );
+			$( document.body ).on( 'updated_checkout', function() {
+				syncConsentStateFromPersistedField();
+				maybeRepositionCheckbox();
+			} );
 		}
 
 		_hasInitialized = true;
