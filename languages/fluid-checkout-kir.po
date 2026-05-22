@@ -68,10 +68,6 @@ msgstr "Жеткирүү телефону"
 msgid "Only used for shipping-related questions."
 msgstr "Жеткирүү менен байланышкан суроолор үчүн гана колдонулат."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Көп кадамдуу"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Жалгыз кадам"
@@ -105,14 +101,6 @@ msgstr "Эсеп коюуга өтүңүз"
 msgid "Proceed to payment"
 msgstr "Төлөмгө өтүңүз"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Менин байланышым"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "чейин жеткирүү"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Жеткирүү ыкмасы"
@@ -120,10 +108,6 @@ msgstr "Жеткирүү ыкмасы"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Кошумча эскертүүлөр"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Эсептөө"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -930,16 +914,6 @@ msgstr "Төлөө макети"
 msgid "Design template"
 msgstr "Дизайн үлгүсү"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Текшерүү кадамдары, буйрутма корутундусу жана башка бөлүмдөр үчүн жалпы "
-"стилдер. Башка барактарга да колдонулушу мүмкүн, мисалы, Араба, Кабыл "
-"алынган заказ жана Заказды көрүү беттери."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "Караңгы режим"
@@ -1513,16 +1487,6 @@ msgstr "Төлөө формасына эсеп телефон талаасын �
 msgid "Choose in which step to display the billing phone field."
 msgstr "Эсеп коюу телефон талаасын көрсөтүү үчүн кайсы кадамды тандаңыз."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Эл аралык телефон номеринин форматын жана телефон талаалары үчүн текшерүүнү "
-"иштетүү"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Ар бир өлкөгө жараша телефон номерлерин форматтап, ырастаңыз."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Өлкө эрежелеринин негизинде телефон номерин текшерүүнү иштетүү"
@@ -1956,14 +1920,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(эксперименталдык)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Бул эксперименталдык функция жана бардык темалар жана плагиндер менен "
-"күтүлгөндөй иштебеши мүмкүн. Аны этияттык менен колдонуңуз."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2524,9 +2480,151 @@ msgstr "Прогресс тилкесинде кийин"
 msgid "Before coupon codes section"
 msgstr "купон коддору бөлүм алдында"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Эл аралык телефон номери талааларын иштетүү"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Телефон номерлерин ар бир өлкөнүн эрежелерине ылайык форматтаңыз."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Так телефон номерин текшерүүнү колдонуңуз"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Тандалган өлкөнүн кодунун эрежелеринин негизинде телефон номери жарактуу "
+"мобилдик же стационардык телефон номери экенин текшерип көрүңүз. Бул "
+"параметр <code>intl-tel-input</code> так текшерүү өзгөчөлүгүн колдонот, ал "
+"кээ бир телефон номерлери үчүн жалган позитивдерди бериши мүмкүн."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Бул эксперименталдык функция жана бардык орнотууларда күтүлгөндөй иштебеши "
+"мүмкүн. Аны этияттык менен колдонуңуз."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "Так текшерүү иштетилгенде колдонулган телефон номерин текшерүү түрлөрү."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Мобилдик"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Туруктуу линия"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Акысыз"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "Же болбосо"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Байланыш"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Көп кадамдуу"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 тилке"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 тилке"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Касса кадамдары, буйрутманын кыскача баяндамасы жана башка бөлүмдөр үчүн "
+"жалпы стилдер.<br> Ошондой эле, &quot;Себет&quot;, &quot;Алынган "
+"буйрутма&quot; жана &quot;Буйрутманы көрүү&quot; баракчалары сыяктуу башка "
+"баракчаларга да тиешелүү болушу мүмкүн."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 тилкелүү&quot;</em> макет колдонулганда "
+"<em>&quot;Бөлүнүү&quot;</em> дизайн шаблону жеткиликтүү эмес жана тандалган "
+"учурда <em>&quot;Минималисттик&quot;</em> абалга кайтып келет."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Кассага чейинки кадамдар"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 тилке&quot;</em> төлөө макетин колдонгондо, бул параметр ар "
+"дайым <em>&quot;Төлөмгө чейинки кадамдар&quot;</em> деп коюлат жана иш "
+"такта көрүнүшүнө да тиешелүү."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Мобилдик түзмөктө кошумча буйрутманын кыскача баяндамасы бөлүмүнүн абалы."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;Сайттагы баш сап&quot;</em> опциясы алаксытпаган баш сап "
+"колдонулганда гана колдонулат."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Сайттын аталышында (алаксытпаган аталышы талап кылынат)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Мобилдик түзмөктөгү кеңейтилүүчү буйрутмалардын кыскача баяндамасы "
+"бөлүмүнүн баштапкы абалы."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Биз аны төмөнкү өлкөлөр үчүн жөнгө салуучу талаптарга байланыштуу "
+"<em>кеңейтилген</em> катары коюуну сунуштайбыз: <strong>Германия</strong> , "
+"<strong>Австрия</strong> , <strong>Швейцария</strong> , "
+"<strong>Нидерланды</strong> , <strong>Польша</strong> , "
+"<strong>Бельгия</strong> жана <strong>Франция</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Жыйыштырылды"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Кеңейтилген"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
@@ -2666,3 +2764,8 @@ msgstr "Жеткирүү %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Жеткирүү"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "кийинки кадам"

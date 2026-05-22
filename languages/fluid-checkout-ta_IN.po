@@ -68,10 +68,6 @@ msgstr "ஷிப்பிங் தொலைபேசி எண்"
 msgid "Only used for shipping-related questions."
 msgstr "கப்பல் போக்குவரத்து தொடர்பான கேள்விகளுக்கு மட்டுமே பயன்படுத்தப்படுகிறது."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "பல-படி"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ஒற்றை படி"
@@ -105,14 +101,6 @@ msgstr "பில்லிங்கிற்குச் செல்லவு�
 msgid "Proceed to payment"
 msgstr "பணம் செலுத்தத் தொடங்குங்கள்"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "எனது தொடர்பு"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "அனுப்புதல்"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "அனுப்பும் முறை"
@@ -120,10 +108,6 @@ msgstr "அனுப்பும் முறை"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "கூடுதல் குறிப்புகள்"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "பில்லிங்"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -940,16 +924,6 @@ msgstr "செக்அவுட் தளவமைப்பு"
 msgid "Design template"
 msgstr "வடிவமைப்பு டெம்ப்ளேட்"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"செக் அவுட் படிகள், ஆர்டர் சுருக்கம் மற்றும் பிற பிரிவுகளுக்கான பொதுவான "
-"பாணிகள். வண்டி, பெறப்பட்ட ஆர்டர் மற்றும் பார்வை ஆர்டர் பக்கங்கள் போன்ற பிற "
-"பக்கங்களுக்கும் பொருந்தக்கூடும்."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "இருண்ட பயன்முறை"
@@ -1545,16 +1519,6 @@ msgstr ""
 "பில்லிங் தொலைபேசி புலத்தை எந்தப் படியில் காட்ட வேண்டும் என்பதைத் "
 "தேர்வுசெய்யவும்."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"தொலைபேசி புலங்களுக்கு சர்வதேச தொலைபேசி எண் வடிவமைப்பு மற்றும் சரிபார்ப்பை "
-"இயக்கு."
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ஒவ்வொரு நாட்டிற்கும் ஏற்ப தொலைபேசி எண்களை வடிவமைத்து சரிபார்க்கவும்."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "நாட்டு விதிகளின் அடிப்படையில் தொலைபேசி எண் சரிபார்ப்பை இயக்கு."
@@ -1990,14 +1954,6 @@ msgstr "(புரோ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(சோதனை)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"இது ஒரு சோதனை அம்சம், மேலும் அனைத்து தீம்கள் மற்றும் செருகுநிரல்களிலும் "
-"எதிர்பார்த்தபடி வேலை செய்யாமல் போகலாம். இதை எச்சரிக்கையுடன் பயன்படுத்தவும்."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2573,9 +2529,152 @@ msgstr "முன்னேற்றப் பட்டிக்குப் ப�
 msgid "Before coupon codes section"
 msgstr "கூப்பன் குறியீடுகளுக்கு முன் பிரிவு"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "சர்வதேச தொலைபேசி எண் புலங்களை இயக்கு."
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ஒவ்வொரு நாட்டிற்கான விதிகளின்படி தொலைபேசி எண்களை வடிவமைக்கவும்."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "துல்லியமான தொலைபேசி எண் சரிபார்ப்பைப் பயன்படுத்தவும்"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட நாட்டுக் குறியீட்டிற்கான விதிகளின் அடிப்படையில், "
+"தொலைபேசி எண் செல்லுபடியாகும் மொபைல் அல்லது லேண்ட்லைன் எண்ணாக இருப்பதை "
+"உறுதிசெய்ய முயற்சிக்கவும். இந்த விருப்பம் <code>intl-tel-input</code> "
+"துல்லியமான சரிபார்ப்பு அம்சத்தைப் பயன்படுத்துகிறது, இது சில தொலைபேசி "
+"எண்களுக்கு தவறான நேர்மறைகளை வழங்கக்கூடும்."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"இது ஒரு சோதனை அம்சம், எல்லா அமைப்புகளிலும் எதிர்பார்த்தபடி வேலை செய்யாமல் "
+"போகலாம். இதை எச்சரிக்கையுடன் பயன்படுத்தவும்."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"துல்லியமான சரிபார்ப்பு இயக்கப்பட்டிருக்கும் போது பயன்படுத்தப்படும் தொலைபேசி "
+"எண் சரிபார்ப்பு வகைகள்."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "மொபைல்"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "நிலையான வரி"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "கட்டணமில்லா சேவை"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "அல்லது"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "தொடர்பு"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "பல படிகள்"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 நெடுவரிசைகள்"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 நெடுவரிசை"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"செக் அவுட் படிகள், ஆர்டர் சுருக்கம் மற்றும் பிற பிரிவுகளுக்கான பொதுவான "
+"பாணிகள்.<br> வண்டி, பெறப்பட்ட ஆர்டர் மற்றும் பார்வை ஆர்டர் பக்கங்கள் போன்ற "
+"பிற பக்கங்களுக்கும் பொருந்தக்கூடும்."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;1 நெடுவரிசை&quot;</em> தளவமைப்பைப் பயன்படுத்தும் போது "
+"<em>&quot;Split&quot;</em> என்ற வடிவமைப்பு டெம்ப்ளேட் கிடைக்காது, மேலும் "
+"தேர்ந்தெடுக்கப்பட்டால் <em>&quot;Minimalist&quot;</em> க்கு திரும்பும்."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "செக்அவுட்டுக்கு முன் படிகள்"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 நெடுவரிசை&quot;</em> செக்அவுட் அமைப்பைப் பயன்படுத்தும் போது "
+"இந்த விருப்பம் எப்போதும் <em>&quot;செக்அவுட் படிகளுக்கு முன்&quot;</em> "
+"என்று அமைக்கப்படும், மேலும் இது டெஸ்க்டாப் பார்வைக்கும் பொருந்தும்."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "மொபைலில் கூடுதல் ஆர்டர் சுருக்கப் பிரிவுக்கான நிலை."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;தளத் தலைப்பில்&quot;</em> என்ற விருப்பம் கவனச்சிதறல் இல்லாத "
+"தலைப்பைப் பயன்படுத்தும்போது மட்டுமே பொருந்தும்."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "தளத் தலைப்பில் (கவனச்சிதறல் இல்லாத தலைப்பு தேவை)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "மொபைலில் விரிவாக்கக்கூடிய ஆர்டர் சுருக்கப் பிரிவின் தொடக்க நிலை."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"ஒழுங்குமுறை தேவைகள் காரணமாக பின்வரும் நாடுகளுக்கு இதை "
+"<em>விரிவாக்கப்பட்டதாக</em> அமைக்க பரிந்துரைக்கிறோம்: "
+"<strong>ஜெர்மனி</strong> , <strong>ஆஸ்திரியா</strong> , "
+"<strong>சுவிட்சர்லாந்து</strong> , <strong>நெதர்லாந்து</strong> , "
+"<strong>போலந்து</strong> , <strong>பெல்ஜியம்</strong> மற்றும் "
+"<strong>பிரான்ஸ்</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "சுருக்கப்பட்டது"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "விரிவாக்கப்பட்டது"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
@@ -2715,3 +2814,8 @@ msgstr "அனுப்புதல் %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "கப்பல் போக்குவரத்து"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "அடுத்த கட்டம்"

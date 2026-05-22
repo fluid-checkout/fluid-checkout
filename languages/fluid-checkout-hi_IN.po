@@ -68,10 +68,6 @@ msgstr "शिपिंग फ़ोन"
 msgid "Only used for shipping-related questions."
 msgstr "केवल शिपिंग से संबंधित प्रश्नों के लिए उपयोग किया जाता है।"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "बहु-चरण"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "एकल चरण"
@@ -105,14 +101,6 @@ msgstr "बिलिंग के लिए आगे बढ़ें"
 msgid "Proceed to payment"
 msgstr "भुगतान के लिए आगे बढ़ें"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "मेरा संपर्क"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "को नौवहन"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "शिपिंग का तरीका"
@@ -120,10 +108,6 @@ msgstr "शिपिंग का तरीका"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "अतिरिक्त टिप्पणी"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "बिलिंग के लिए"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -921,16 +905,6 @@ msgstr "चेकआउट लेआउट"
 msgid "Design template"
 msgstr "डिज़ाइन टेम्पलेट"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"चेकआउट चरणों, ऑर्डर सारांश और अन्य अनुभागों के लिए सामान्य शैलियाँ। कार्ट, "
-"ऑर्डर प्राप्त हुआ और ऑर्डर देखें पृष्ठों जैसे अन्य पृष्ठों पर भी लागू हो "
-"सकती हैं।"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "डार्क मोड"
@@ -1492,14 +1466,6 @@ msgstr "चेकआउट फ़ॉर्म में बिलिंग फ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "बिलिंग फ़ोन फ़ील्ड को किस चरण में प्रदर्शित करना है, इसका चयन करें."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "फ़ोन फ़ील्ड के लिए अंतर्राष्ट्रीय फ़ोन नंबर प्रारूप और सत्यापन सक्षम करें"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "प्रत्येक देश के अनुसार फ़ोन नंबर को प्रारूपित और मान्य करें।"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "देश के नियमों के आधार पर फ़ोन नंबर सत्यापन सक्षम करें"
@@ -1923,14 +1889,6 @@ msgstr "(प्रो)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(प्रयोगात्मक)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"यह एक प्रायोगिक सुविधा है और हो सकता है कि यह सभी थीम और प्लगइन के साथ "
-"अपेक्षित रूप से काम न करे। इसका उपयोग सावधानी से करें।"
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2487,9 +2445,149 @@ msgstr "प्रगति पट्टी के बाद"
 msgid "Before coupon codes section"
 msgstr "कूपन कोड अनुभाग से पहले"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "अंतर्राष्ट्रीय फ़ोन नंबर फ़ील्ड सक्षम करें"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "प्रत्येक देश के नियमों के अनुसार फ़ोन नंबर फ़ॉर्मेट करें।"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "सटीक फ़ोन नंबर सत्यापन का उपयोग करें"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"चयनित देश कोड के नियमों के आधार पर यह सुनिश्चित करने का प्रयास करें कि फ़ोन "
+"नंबर एक मान्य मोबाइल या लैंडलाइन नंबर है। यह विकल्प "
+"<code>intl-tel-input</code> सटीक सत्यापन सुविधा का उपयोग करता है, जो कुछ "
+"फ़ोन नंबरों के लिए गलत सकारात्मक परिणाम दे सकता है।"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"यह एक प्रायोगिक सुविधा है और हो सकता है कि यह सभी सेटअप में अपेक्षानुसार "
+"काम न करे। इसका उपयोग सावधानी से करें।"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"जब सटीक सत्यापन सक्षम होता है, तब फ़ोन नंबर सत्यापन प्रकारों का उपयोग किया "
+"जाता है।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "गतिमान"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "निश्चित रेखा"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "टोल फ्री"
+
 #: templates/fc/checkout-steps/checkout/form-contact-login.php:55
 msgid "Or"
 msgstr "या"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "संपर्क"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "बहु चरण"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 स्तंभ"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 स्तंभ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"चेकआउट चरणों, ऑर्डर सारांश और अन्य अनुभागों के लिए सामान्य शैलियाँ।<br> यह "
+"कार्ट, ऑर्डर प्राप्त और ऑर्डर देखें जैसे अन्य पृष्ठों पर भी लागू हो सकता है।"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;स्प्लिट&quot;</em> डिज़ाइन टेम्प्लेट <em>&quot;1 कॉलम&quot;</em> "
+"लेआउट का उपयोग करते समय उपलब्ध नहीं है और चुने जाने पर यह "
+"<em>&quot;मिनिमलिस्ट&quot;</em> पर वापस आ जाएगा।"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "चेकआउट से पहले के चरण"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;1 कॉलम&quot;</em> चेकआउट लेआउट का उपयोग करते समय यह विकल्प हमेशा "
+"<em>&quot;चेकआउट चरणों से पहले&quot;</em> पर सेट होता है और डेस्कटॉप दृश्य "
+"पर भी लागू होता है।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "मोबाइल पर अतिरिक्त ऑर्डर सारांश अनुभाग के लिए स्थान।"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;साइट हेडर पर&quot;</em> विकल्प केवल तभी लागू होता है जब आप ध्यान "
+"भटकाने वाले तत्वों से मुक्त हेडर का उपयोग कर रहे हों।"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "साइट के हेडर पर (ध्यान भटकाने वाली चीजों से मुक्त हेडर आवश्यक है)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "मोबाइल पर विस्तार योग्य ऑर्डर सारांश अनुभाग के लिए प्रारंभिक स्थिति।"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"नियामक आवश्यकताओं के कारण हम निम्नलिखित देशों के लिए इसे <em>विस्तारित</em> "
+"रूप में सेट करने की अनुशंसा करते हैं: <strong>जर्मनी</strong> , "
+"<strong>ऑस्ट्रिया</strong> , <strong>स्विट्जरलैंड</strong> , "
+"<strong>नीदरलैंड</strong> , <strong>पोलैंड</strong> , "
+"<strong>बेल्जियम</strong> और <strong>फ्रांस।</strong>"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "संक्षिप्त किए गए"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "विस्तारित"
 
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
@@ -2629,3 +2727,8 @@ msgstr "शिपिंग %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "शिपिंग"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "अगला कदम"

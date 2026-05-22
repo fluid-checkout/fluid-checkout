@@ -26,12 +26,14 @@ defined( 'ABSPATH' ) || exit;
 			$site_title = get_bloginfo( 'name' );
 			$homepage_link_description = esc_attr( __( 'Go to the home page', 'fluid-checkout' ) );
 
-			// Get logo image from settings
-			$logo_image_option = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_logo_image' );
-			
+			// Initialize logo HTML
 			$logo_html = '';
 			ob_start();
 
+			// Get logo image from settings
+			$logo_image_option = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_logo_image' );
+
+			// Maybe add the custom logo image from the plugin settings
 			if ( ! empty( $logo_image_option ) ) {
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
@@ -39,12 +41,15 @@ defined( 'ABSPATH' ) || exit;
 					wp_get_attachment_image( $logo_image_option, 'full' )
 				);
 			}
+			// Maybe add logo from action hook, if set
 			else if ( has_action( 'fc_checkout_header_logo' ) ) {
 				do_action( 'fc_checkout_header_logo' );
 			}
+			// Maybe add logo from WordPress settings
 			else if ( function_exists( 'the_custom_logo' ) && get_theme_mod( 'custom_logo' ) ) {
 				the_custom_logo();
 			}
+			// Otherwise, fallback to site name in text format
 			else {
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
@@ -53,10 +58,10 @@ defined( 'ABSPATH' ) || exit;
 				);
 			}
 
-			// Get logo HTML
+			// Get logo HTML from output buffer
 			$logo_html = ob_get_clean();
 			
-			// Maybe add `aria-description`
+			// Maybe add `aria-description` attribute
 			if ( ! strpos( $logo_html, ' aria-description=' ) ) {
 				$logo_html = str_replace( 'rel="home"', 'rel="home" aria-description="' . $homepage_link_description . '"', $logo_html );
 			}
@@ -66,6 +71,7 @@ defined( 'ABSPATH' ) || exit;
 				$logo_html = str_replace( 'alt=""', 'alt="' . $site_title . '"', $logo_html );
 			}
 			
+			// Output logo HTML
 			echo $logo_html;
 			?>
 		</div>
