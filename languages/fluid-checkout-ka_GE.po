@@ -68,10 +68,6 @@ msgstr "მიწოდების ტელეფონი"
 msgid "Only used for shipping-related questions."
 msgstr "გამოიყენება მხოლოდ ტრანსპორტირებასთან დაკავშირებული კითხვებისთვის."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "მრავალსაფეხურიანი"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ერთი ნაბიჯი"
@@ -105,14 +101,6 @@ msgstr "გააგრძელეთ ბილინგი"
 msgid "Proceed to payment"
 msgstr "განაგრძეთ გადახდა"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "ჩემი კონტაქტი"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "მიწოდება"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "გადაზიდვის მეთოდი"
@@ -120,10 +108,6 @@ msgstr "გადაზიდვის მეთოდი"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "დამატებითი შენიშვნები"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "ბილინგი მდე"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -926,16 +910,6 @@ msgstr "შეკვეთის განლაგება"
 msgid "Design template"
 msgstr "დიზაინის შაბლონი"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"ზოგადი სტილები შეკვეთის საფეხურებისთვის, შეკვეთის შეჯამება და სხვა "
-"სექციები. შეიძლება ასევე გავრცელდეს სხვა გვერდებზე, როგორიცაა კალათა, "
-"მიღებული შეკვეთა და შეკვეთის ნახვა."
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "მუქი რეჟიმი"
@@ -1517,16 +1491,6 @@ msgstr "დაამატეთ ბილინგის ტელეფონ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "აირჩიეთ, რომელ საფეხურზე გამოჩნდეს ბილინგის ტელეფონის ველი."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ჩართეთ საერთაშორისო ტელეფონის ნომრის ფორმატი და დადასტურება ტელეფონის "
-"ველებისთვის"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "დააფორმატეთ და დაადასტურეთ ტელეფონის ნომრები თითოეული ქვეყნის მიხედვით."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "ჩართეთ ტელეფონის ნომრის ვალიდაცია ქვეყნის წესების მიხედვით"
@@ -1958,14 +1922,6 @@ msgstr "(პროფ)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(ექსპერიმენტული)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"ეს არის ექსპერიმენტული ფუნქცია და შეიძლება არ იმუშაოს ისე, როგორც "
-"მოსალოდნელია ყველა თემასთან და დანამატთან. გამოიყენეთ იგი სიფრთხილით."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2530,6 +2486,156 @@ msgstr "პროგრესის ზოლის შემდეგ"
 msgid "Before coupon codes section"
 msgstr "კუპონის კოდების განყოფილებამდე"
 
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "ჩართეთ საერთაშორისო ტელეფონის ნომრის ველები"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ტელეფონის ნომრების ფორმატირება თითოეული ქვეყნის წესების შესაბამისად."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "გამოიყენეთ ტელეფონის ნომრის ზუსტი დადასტურება"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"დარწმუნდით, რომ ტელეფონის ნომერი სწორი მობილური ან სახმელეთო ნომერია "
+"არჩეული ქვეყნის კოდის წესების მიხედვით. ეს პარამეტრი იყენებს "
+"<code>intl-tel-input</code> ზუსტი დადასტურების ფუნქციას, რომელმაც შეიძლება "
+"ზოგიერთი ტელეფონის ნომრისთვის ცრუ დადებითი შედეგი გამოიღოს."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"ეს ექსპერიმენტული ფუნქციაა და შესაძლოა ყველა პარამეტრში მოსალოდნელზე კარგად "
+"არ იმუშაოს. გამოიყენეთ იგი სიფრთხილით."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ტელეფონის ნომრის დადასტურების ტიპები, რომლებიც გამოიყენება ზუსტი "
+"დადასტურების ჩართვისას."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "მობილური"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ფიქსირებული ხაზი"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "უფასო ზარი"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ან"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "კონტაქტი"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "მრავალსაფეხურიანი"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 სვეტი"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 სვეტი"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"შეკვეთის გაფორმების ნაბიჯების, შეკვეთის შეჯამებისა და სხვა სექციების ზოგადი "
+"სტილები.<br> შესაძლოა, ეს ასევე ეხებოდეს სხვა გვერდებს, როგორიცაა „კალათა“, "
+"„შეკვეთა მიღებულია“ და „შეკვეთის ნახვა“."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"დიზაინის შაბლონი <em>„გაყოფა“</em> მიუწვდომელია <em>„1 სვეტის“</em> "
+"განლაგების გამოყენებისას და არჩევის შემთხვევაში ისევ "
+"<em>„მინიმალისტურზე“</em> გადავა."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "გადახდის ეტაპები"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>„1 სვეტის“</em> შეკვეთის განლაგების გამოყენებისას, ეს პარამეტრი "
+"ყოველთვის დაყენებულია <em>„შეკვეთის გაკეთების ეტაპებამდე“</em> -ზე და ასევე "
+"გამოიყენება სამუშაო მაგიდის ხედზე."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "მობილურზე დამატებითი შეკვეთის შეჯამების განყოფილების პოზიცია."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"ოფცია <em>„საიტის სათაურზე“</em> გამოიყენება მხოლოდ ყურადღების გამფანტველი "
+"თავისუფალი სათაურის გამოყენებისას."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "საიტის სათაურზე (საჭიროა ყურადღების გამფანტველი, თავისუფალი სათაური)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"მობილურ მოწყობილობაზე გაფართოებადი შეკვეთის შეჯამების სექციის საწყისი "
+"მდგომარეობა."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"მარეგულირებელი მოთხოვნების გამო, გირჩევთ, რომ ის <em>გაფართოებულად</em> "
+"დააყენოთ შემდეგი ქვეყნებისთვის: <strong>გერმანია</strong> , "
+"<strong>ავსტრია</strong> , <strong>შვეიცარია</strong> , "
+"<strong>ნიდერლანდები</strong> , <strong>პოლონეთი</strong> , "
+"<strong>ბელგია</strong> და <strong>საფრანგეთი</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ჩაკეცილი"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "გაფართოებული"
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "არ აჩვენო"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2652,3 +2758,15 @@ msgstr "ან გააგრძელეთ სტუმრად"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "სურათის წაშლა"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "მიწოდება %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "მიწოდება"

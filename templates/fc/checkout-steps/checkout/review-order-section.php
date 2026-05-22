@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 4.0.0
+ * @version 4.2.0
  * @wc-version 3.5.0
  * @wc-original checkout/form-checkout.php
  */
@@ -46,18 +46,11 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-		<div id="order_review" class="woocommerce-checkout-review-order">
-			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
-		</div>
+		<?php do_action( 'fc_checkout_order_review_content' ); ?>
 
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
-		<?php do_action( 'fc_checkout_order_review_sidebar_before_actions' ); ?>
-
-		<div class="fc-checkout-order-review__actions-mobile">
-			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
-			<button type="button" class="fc-checkout-order-review__close-order-summary <?php echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) ); ?>" data-flyout-close aria-label="<?php echo esc_html( __( 'Close and continue with checkout', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Continue', 'fluid-checkout' ) ); ?></button>
-		</div>
+		<?php do_action( 'fc_checkout_order_review_actions' ); ?>
 
 		<?php do_action( 'fc_checkout_after_order_review_inside' ); ?>
 

@@ -36,9 +36,6 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		// Settings
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
-		// Ensure header cart updates when products are added via AJAX from checkout order summary
-		add_filter('woocommerce_update_order_review_fragments', 'woocommerce_header_add_to_cart_fragment');
-
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
@@ -53,6 +50,14 @@ class FluidCheckout_ThemeCompat_BeTheme extends FluidCheckout {
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
+
+		// Ensure header cart updates when products are added via AJAX from checkout order summary
+		if ( function_exists( 'woocommerce_header_add_to_cart_fragment' ) ) {
+			add_filter( 'woocommerce_update_order_review_fragments', 'woocommerce_header_add_to_cart_fragment', 10 );
+		}
+		else if ( function_exists( 'mfn_woocommerce_cart_fragments' ) ) {
+			add_filter( 'woocommerce_update_order_review_fragments', 'mfn_woocommerce_cart_fragments', 10 );
+		}
 	}
 
 	/**

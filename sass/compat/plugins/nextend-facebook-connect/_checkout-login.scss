@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT LOGIN
+// ------------------------------------
+
+div.nsl-container .nsl-container-buttons.nsl-container-buttons { // Double class selector for specificity
+	padding: 0;
+}
+
+.fc-contact-login__separator {
+	margin-top: $global-spacing-small;
+}
+
+.fc-contact-login__separator.fc-contact-login__separator--social-login { // Double class selector for specificity
+	margin-bottom: $global-spacing-small;
+}
