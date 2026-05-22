@@ -7,21 +7,16 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Cartflows extends FluidCheckout {
 
 	/**
-	 * Whether the CartFlows checkout field hooks were already removed for this request.
-	 *
-	 * @var bool
-	 */
-	private $checkout_field_hooks_removed = false;
-
-	/**
-	 * Constructor.
+	 * __construct function.
 	 */
 	public function __construct() {
 		$this->hooks();
 	}
 
+
+
 	/**
-	 * Register hooks.
+	 * Initialize hooks.
 	 */
 	public function hooks() {
 		// Register hooks when CartFlows is loaded
@@ -43,10 +38,18 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		$this->remove_checkout_field_hooks();
 	}
 
+
+
 	/**
 	 * Remove CartFlows filters that modify the checkout fields.
 	 */
 	public function remove_checkout_field_hooks() {
+		// Bail if on a CartFlows checkout step
+		if ( function_exists( '_is_wcf_checkout_type' ) && _is_wcf_checkout_type() ) { return; }
+
+		// Bail if not FC checkout (or checkout AJAX)
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
 		// Bail if CartFlows checkout markup class is not available.
 		if ( ! class_exists( 'Cartflows_Checkout_Markup' ) || ! class_exists( 'Cartflows_Modern_Checkout' ) ) { return; }
 
@@ -65,4 +68,3 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 }
 
 FluidCheckout_Cartflows::instance();
-
