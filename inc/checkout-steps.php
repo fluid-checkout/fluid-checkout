@@ -1851,7 +1851,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Filter to allow changes to the proceed to next step button label
 		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $next_step_args );
-		
+
 		return $button_label;
 	}
 
