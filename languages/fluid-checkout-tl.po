@@ -2688,6 +2688,7 @@ msgstr "Nabuwag"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Pinalawak"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Huwag ipakita"
@@ -2826,3 +2827,8 @@ msgstr "Pagpapadala %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Pagpapadala"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "susunod na hakbang"

@@ -2639,6 +2639,7 @@ msgstr "Tolestuta"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Zabalduta"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ez erakutsi"
@@ -2777,3 +2778,8 @@ msgstr "Bidalketa %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Bidalketa"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "hurrengo urratsa"
