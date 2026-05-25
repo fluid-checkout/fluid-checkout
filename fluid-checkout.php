@@ -9,7 +9,7 @@ Version: 4.2.3-beta-1
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 10.6.1
+WC tested up to: 10.7.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
