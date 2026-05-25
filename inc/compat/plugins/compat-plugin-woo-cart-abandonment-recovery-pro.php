@@ -295,7 +295,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	 * @return  array                   Modified other fields.
 	 */
 	public function normalize_wcar_phone_without_libphonenumber( $other_fields, $full_phone ) {
-		// Remove non-digits and leading `+` from full phone number.
+		// Keep only digits and the '+' sign from full phone number.
 		$phone_number = preg_replace( '/[^\d+]/', '', $full_phone );
 
 		// If full phone number starts with `+`, set WCAR phone number and clear WCAR phone country code.
@@ -508,7 +508,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	 * @return  bool
 	 */
 	public function should_add_gdpr_consent_to_current_substep() {
-		// Bail if cart is not available does
+		// Bail if cart is not available does not need shipping address
 		if ( ! WC()->cart ) { return false; }
 
 		// Get if shipping address is needed
