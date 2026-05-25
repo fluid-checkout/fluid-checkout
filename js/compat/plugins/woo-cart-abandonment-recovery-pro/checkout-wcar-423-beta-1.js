@@ -95,7 +95,7 @@
 			selectedPhoneInput = phoneInputs[ 0 ];
 		}
 
-		return selectedPhoneInput || null;
+		return selectedPhoneInput;
 	};
 
 	/**
@@ -499,6 +499,14 @@
 	};
 
 	/**
+	 * Handle checkout update by syncing consent state and repositioning checkbox.
+	 */
+	var handleUpdatedCheckout = function() {
+		syncConsentStateFromPersistedField();
+		maybeRepositionCheckbox();
+	};
+
+	/**
 	 * Ensure checkbox exists and is positioned after phone field.
 	 */
 	var maybeRepositionCheckbox = function() {
@@ -576,10 +584,7 @@
 
 		// Reposition after checkout updates replace fragments.
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', function() {
-				syncConsentStateFromPersistedField();
-				maybeRepositionCheckbox();
-			} );
+			$( document.body ).on( 'updated_checkout', handleUpdatedCheckout );
 		}
 
 		_hasInitialized = true;
@@ -588,10 +593,8 @@
 	//
 	// Public APIs
 	//
-	// Load settings from localized script data
+	// Run before init() to patch AJAX as early as possible, before WCAR triggers abandonment tracking on page load.
 	loadSettings();
-
-	// Patch jQuery AJAX for WCAR abandonment tracking
 	maybePatchAbandonmentTrackingAjax();
 
 	return _publicMethods;
