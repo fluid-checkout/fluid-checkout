@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 4.2.3 - 2026-05-25 =
 
-* Bump tested up to WordPress 7.0 and WooCommerce 10.7.0
+* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
 * Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
 * Fixed: Password meter styles on checkout page account creation.
 * Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
