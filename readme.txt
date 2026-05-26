@@ -354,9 +354,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unrelease =
+= Unreleased =
 
-* Fixed: Resolved "Same as billing address" option showing on cart for Address Book add-on.
 * Fixed: Resolved "Same as billing address" option showing on cart for Address Book add-on.
 * Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
 * Fixed: Password meter styles on checkout page account creation.
