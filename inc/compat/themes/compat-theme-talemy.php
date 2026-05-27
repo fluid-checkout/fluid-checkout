@@ -24,6 +24,9 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Buttons
+		add_filter( 'fc_place_order_button_classes', array( $this, 'remove_place_order_button_alt_class' ), 10 );
 	}
 
 
@@ -40,6 +43,20 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 
 		// Fixes the product summary not being displayed.
 		$this->remove_action_for_class( 'woocommerce_checkout_after_customer_details', array( 'Talemy_WooCommerce', 'customer_details_end' ), 3000 );
+	}
+
+
+
+	/**
+	 * Remove alt class from place order button.
+	 *
+	 * Talemy styles `.button.alt` but does not define a hover state for it,
+	 * which prevents Fluid Checkout button hover styles from applying.
+	 *
+	 * @param  string  $classes  Button classes.
+	 */
+	public function remove_place_order_button_alt_class( $classes ) {
+		return str_replace( ' alt', '', $classes );
 	}
 
 
