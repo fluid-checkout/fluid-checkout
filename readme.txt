@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when trying to show shipping costs for orders without shipping at cart and checkout.
+* Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.
 
 = 4.2.3 - 2026-05-25 =
 
