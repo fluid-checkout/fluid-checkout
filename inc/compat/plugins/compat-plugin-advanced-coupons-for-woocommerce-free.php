@@ -21,7 +21,6 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 	public function hooks() {
 		// Checkout hooks
 		$this->checkout_hooks();
-
 	}
 
 
@@ -38,7 +37,7 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 		if ( ! $class_object ) { return; }
 
-		// Move Advanced Coupons box to the fixed position before the checkout steps.
+		// Move Advanced Coupons box to the fixed position before the checkout steps
 		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'display_checkout_tabbed_box' ), 11 );
 		add_action( 'fc_checkout_before_steps', array( $class_object, 'display_checkout_tabbed_box' ), 5 );
 
