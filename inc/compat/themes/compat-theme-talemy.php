@@ -50,9 +50,6 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 	/**
 	 * Remove alt class from place order button.
 	 *
-	 * Talemy styles `.button.alt` but does not define a hover state for it,
-	 * which prevents Fluid Checkout button hover styles from applying.
-	 *
 	 * @param  string  $classes  Button classes.
 	 */
 	public function remove_place_order_button_alt_class( $classes ) {
