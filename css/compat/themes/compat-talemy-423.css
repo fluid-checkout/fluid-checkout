@@ -1,0 +1,4 @@
+body.theme-talemy .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset,
+body.theme-talemy #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset {
+  border: 0;
+}
