@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
 * Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
 * Fixed: Password meter styles on checkout page account creation.
 * Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
