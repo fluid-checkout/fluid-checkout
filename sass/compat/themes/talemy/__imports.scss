@@ -12,6 +12,7 @@ $_body-theme-selector:                 '.theme-talemy' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-content-area",
 	"checkout-payment-methods",
 	"checkout-order-review",
 	"woocommerce-form-fields",
