@@ -23,3 +23,7 @@ body.theme-talemy .fc-wrapper .wc-order-review {
 body.theme-talemy .fc-wrapper .quantity .qty {
   font-weight: 400;
 }
+
+body.theme-talemy div.woocommerce form .form-row > label {
+  display: block;
+}
