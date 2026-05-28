@@ -1,0 +1,31 @@
+// ------------------------------------
+// CHECKOUT ORDER REVIEW
+// ------------------------------------
+
+// Price and totals typography.
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .woocommerce-Price-amount,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot td,
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-text-line .woocommerce-Price-amount {
+	font-weight: 400;
+}
+
+
+
+// Order review container reset.
+body#{ $_body-theme-selector } .fc-wrapper .wc-order-review {
+	align-self: auto;
+	background-color: transparent;
+	border: 0;
+	border-radius: 0;
+	font-size: inherit;
+	line-height: inherit;
+	padding: 0;
+}
+
+
+
+// Quantity input typography.
+body#{ $_body-theme-selector } .fc-wrapper .quantity .qty {
+	font-weight: 400;
+}
