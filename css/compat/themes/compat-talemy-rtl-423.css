@@ -27,3 +27,30 @@ body.theme-talemy .fc-wrapper .quantity .qty {
 body.theme-talemy div.woocommerce form .form-row > label {
   display: block;
 }
+
+body.theme-talemy div.woocommerce .woocommerce-error::before,
+body.theme-talemy div.woocommerce .woocommerce-error::after,
+body.theme-talemy div.woocommerce .woocommerce-info::before,
+body.theme-talemy div.woocommerce .woocommerce-info::after,
+body.theme-talemy div.woocommerce .woocommerce-message::before,
+body.theme-talemy div.woocommerce .woocommerce-message::after {
+  content: none;
+  display: none;
+}
+
+body.theme-talemy .fc-wrapper .fc-coupon-code-messages ul.woocommerce-error,
+body.theme-talemy .fc-wrapper .fc-coupon-code-messages ul.woocommerce-info,
+body.theme-talemy .fc-wrapper .fc-coupon-code-messages ul.woocommerce-message {
+  padding: 5px !important;
+}
+
+body.theme-talemy .fc-wrapper .fc-coupon-code-messages .woocommerce-error li,
+body.theme-talemy .fc-wrapper .fc-coupon-code-messages .woocommerce-info li,
+body.theme-talemy .fc-wrapper .fc-coupon-code-messages .woocommerce-message li {
+  padding-right: 20px !important;
+}
+
+body.theme-talemy .fc-wrapper .fc-coupon-code-message-dismiss {
+  padding-left: 10px;
+  text-decoration: underline;
+}

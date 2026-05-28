@@ -14,4 +14,5 @@ $_body-theme-selector:                 '.theme-talemy' !default;
 @import
 	"checkout-payment-methods",
 	"checkout-order-review",
-	"woocommerce-form-fields";
+	"woocommerce-form-fields",
+	"checkout-validation";
