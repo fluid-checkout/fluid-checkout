@@ -2,6 +2,10 @@ body.theme-talemy .fc-wrapper strong {
   color: inherit !important;
 }
 
+body.theme-talemy .woocommerce .fc-wrapper ul#shipping_method .shipping-method__option .shipping-method__option-price .woocommerce-Price-currencySymbol {
+  font-weight: 400 !important;
+}
+
 body.theme-talemy .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset,
 body.theme-talemy #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset {
   border: 0;
