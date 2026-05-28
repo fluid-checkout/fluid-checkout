@@ -72,7 +72,7 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 				'--fluidcheckout--field--padding-left'  => '18px',
 				'--fluidcheckout--field--font-size'     => '15px',
 				'--fluidcheckout--field--border-radius' => '2px',
-				'--fluidcheckout--field--border-color'  => 'var(--theme-color-border)',
+				'--fluidcheckout--field--border-color'  => 'var(--theme-color-border)', // Is available in body selector.
 			),
 		);
 
