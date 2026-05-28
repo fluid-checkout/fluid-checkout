@@ -2,6 +2,7 @@
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper ul#shipping_method .shipping-method__option .shipping-method__option-price .amount,
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper ul#shipping_method .shipping-method__option .shipping-method__option-price .woocommerce-Price-currencySymbol {
-	font-weight: 400 !important; // Needed to remove bold weight from shipping method currency symbol.
+	font-weight: normal !important; // Needed to override Talemy bold weight on shipping method prices.
 }
