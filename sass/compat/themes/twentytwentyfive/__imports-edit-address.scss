@@ -1,9 +1,8 @@
 // ------------------------------------
 // DEFINE LOCAL VARIABLES
 // ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
+$_body-page-selector:                  '.woocommerce-edit-address' !default;
 $_body-theme-selector:                 '.theme-twentytwentyfive' !default;
-
 
 
 
@@ -12,7 +11,5 @@ $_body-theme-selector:                 '.theme-twentytwentyfive' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"order-summary",
 	"tom-select-control",
-	"woocommerce-form-fields-select2",
-	"z-index";
+	"woocommerce-form-fields-select2";

@@ -1,9 +1,3 @@
-body.theme-twentytwentyfive div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody th,
-body.theme-twentytwentyfive div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr:not(.order-total) th,
-body.theme-twentytwentyfive div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr:not(.order-total) td {
-  font-weight: 400;
-}
-
 body.theme-twentytwentyfive .ts-wrapper.single .ts-control {
   background-color: var(--wc-form-color-background, #fff);
   border: var(--wc-form-border-width) solid var(--wc-form-border-color);
@@ -25,8 +19,4 @@ body.theme-twentytwentyfive div.woocommerce form .form-row .select2-container .s
 
 body.theme-twentytwentyfive div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
   line-height: normal;
-}
-
-body.theme-twentytwentyfive .has-child .wp-block-navigation__submenu-container {
-  z-index: 2000;
 }
