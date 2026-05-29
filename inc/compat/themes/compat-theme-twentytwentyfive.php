@@ -41,7 +41,8 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '52.8px',
+				'--fluidcheckout--field--height' => '49.7px',
+				'--fluidcheckout--field--font-size' => '14px',
 				'--fluidcheckout--field--padding-left' => '1.1rem',
 			),
 		);
