@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with theme Twenty Twenty-Five.
+
 = 4.2.3 - 2026-05-25 =
 
 * Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
