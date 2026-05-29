@@ -8,9 +8,9 @@ body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 	border-radius: var(--wc-form-border-radius);
 	color: var(--wc-form-color-text, #000);
 	height: auto;
+	font-weight: 400;
 }
 
 body#{ $_body-theme-selector } .ts-wrapper.single .ts-control .item {
 	line-height: remsize( 4.8rem ); // Needed to match theme styles
-	height: remsize( 4.7rem ); // Needed to match theme styles
 }
