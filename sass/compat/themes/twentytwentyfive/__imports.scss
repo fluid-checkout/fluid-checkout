@@ -12,6 +12,7 @@ $_body-theme-selector:                 '.theme-twentytwentyfive' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-payment-methods",
 	"order-summary",
 	"tom-select-control",
 	"woocommerce-form-fields-select2",

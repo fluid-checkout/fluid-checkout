@@ -1,3 +1,7 @@
+body.theme-twentytwentyfive #add_payment_method fieldset#wc-stripe-upe-form {
+  border: none;
+}
+
 body.theme-twentytwentyfive div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody th,
 body.theme-twentytwentyfive div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr:not(.order-total) th,
 body.theme-twentytwentyfive div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot tr:not(.order-total) td {
