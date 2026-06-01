@@ -48,6 +48,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
 
+		// Ensure shipping phone label and required state from settings are not overridden by address locale scripts.
+		add_filter( 'fc_checkout_address_i18n_override_locale_attributes', array( $this, 'add_shipping_phone_address_i18n_override_attributes' ), 10 );
+
 		// Move shipping phone to contact step
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_position' ) ) {
 			// Add shipping phone to contact fields
@@ -90,6 +93,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		remove_filter( 'woocommerce_billing_fields', array( $this, 'maybe_set_billing_phone_required' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
+
+		// Ensure shipping phone label and required state from settings are not overridden by address locale scripts.
+		remove_filter( 'fc_checkout_address_i18n_override_locale_attributes', array( $this, 'add_shipping_phone_address_i18n_override_attributes' ), 10 );
 	}
 
 
@@ -101,7 +107,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 */
 	public function get_shipping_phone_field() {
 		return apply_filters( 'fc_shipping_phone_field_args', array(
-			'label'        => __( 'Shipping phone', 'fluid-checkout' ),
+			'label'        => __( 'Phone', 'fluid-checkout' ),
 			'description'  => __( 'Only used for shipping-related questions.', 'fluid-checkout' ),
 			'required'     => 'required' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' ),
 			'validate'     => array( 'phone' ),
@@ -192,6 +198,23 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		}
 
 		return $fields;
+	}
+
+	/**
+	 * Add shipping phone field attributes to the list of locale attributes overridden from checkout field settings.
+	 *
+	 * @param   array  $override_attributes  List of field attributes to override from checkout field settings.
+	 */
+	public function add_shipping_phone_address_i18n_override_attributes( $override_attributes ) {
+		if ( ! in_array( 'label', $override_attributes, true ) ) {
+			$override_attributes[] = 'label';
+		}
+
+		if ( ! in_array( 'required', $override_attributes, true ) ) {
+			$override_attributes[] = 'required';
+		}
+
+		return $override_attributes;
 	}
 
 

@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Shipping phone field visibility setting not applied to the field label and required marker after country or locale updates at checkout.
+
 = 4.2.3 - 2026-05-25 =
 
 * Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
