@@ -12,6 +12,8 @@ $_body-theme-selector:                 '.theme-twentytwentyfive' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-columns",
+	"checkout-content-area",
 	"checkout-payment-methods",
 	"order-summary",
 	"tom-select-control",

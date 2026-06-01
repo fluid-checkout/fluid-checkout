@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } main .woocommerce {
+	max-width: unset;
+}
