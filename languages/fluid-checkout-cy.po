@@ -2642,6 +2642,10 @@ msgstr "Wedi&#39;i ehangu"
 msgid "Do not show"
 msgstr "Peidiwch â dangos"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Ffôn"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

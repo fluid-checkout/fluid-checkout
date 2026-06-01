@@ -2680,6 +2680,10 @@ msgstr "விரிவாக்கப்பட்டது"
 msgid "Do not show"
 msgstr "காட்டாதே"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "தொலைபேசி"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

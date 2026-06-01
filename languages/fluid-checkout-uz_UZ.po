@@ -2680,6 +2680,10 @@ msgstr "Kengaytirilgan"
 msgid "Do not show"
 msgstr "Ko&#39;rsatilmasin"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Telefon"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

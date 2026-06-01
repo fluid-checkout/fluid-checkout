@@ -2585,6 +2585,10 @@ msgstr "گسترش یافته"
 msgid "Do not show"
 msgstr "نشان ندهید."
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "تلفن"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

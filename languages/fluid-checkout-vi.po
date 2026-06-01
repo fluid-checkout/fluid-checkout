@@ -2605,6 +2605,10 @@ msgstr "Mở rộng"
 msgid "Do not show"
 msgstr "Không hiển thị"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Điện thoại"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

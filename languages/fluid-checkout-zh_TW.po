@@ -2358,6 +2358,10 @@ msgstr "擴充"
 msgid "Do not show"
 msgstr "不顯示"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "電話"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2584,6 +2584,10 @@ msgstr "વિસ્તૃત"
 msgid "Do not show"
 msgstr "બતાવશો નહીં"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "ફોન"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

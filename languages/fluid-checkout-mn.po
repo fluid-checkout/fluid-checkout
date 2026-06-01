@@ -2635,6 +2635,10 @@ msgstr "Өргөтгөсөн"
 msgid "Do not show"
 msgstr "Харуулахгүй"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Утас"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

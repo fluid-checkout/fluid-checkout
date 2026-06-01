@@ -2605,6 +2605,10 @@ msgstr "Diembangake"
 msgid "Do not show"
 msgstr "Aja nuduhake"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Telpon"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

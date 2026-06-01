@@ -2594,6 +2594,10 @@ msgstr "Laajennettu"
 msgid "Do not show"
 msgstr "Älä näytä"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Puhelin"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

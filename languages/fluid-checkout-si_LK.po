@@ -2589,6 +2589,10 @@ msgstr "පුළුල් කරන ලදී"
 msgid "Do not show"
 msgstr "පෙන්වන්න එපා"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "දුරකථන"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

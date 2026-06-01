@@ -2632,6 +2632,10 @@ msgstr "Diperluas"
 msgid "Do not show"
 msgstr "Jangan tunjukkan"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Telepon"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2593,6 +2593,10 @@ msgstr "ຂະຫຍາຍແລ້ວ"
 msgid "Do not show"
 msgstr "ຢ່າສະແດງ"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "ໂທລະສັບ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

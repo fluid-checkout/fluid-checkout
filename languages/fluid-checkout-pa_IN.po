@@ -2596,6 +2596,10 @@ msgstr "ਫੈਲਾਇਆ ਗਿਆ"
 msgid "Do not show"
 msgstr "ਨਾ ਦਿਖਾਓ"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "ਫ਼ੋਨ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

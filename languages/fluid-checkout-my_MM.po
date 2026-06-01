@@ -2695,6 +2695,10 @@ msgstr "ချဲ့ထွင်ထားသည်"
 msgid "Do not show"
 msgstr "မပြပါနဲ့"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "ဖုန်း"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

@@ -2398,6 +2398,10 @@ msgstr "확장"
 msgid "Do not show"
 msgstr "표시하지 않음"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "전화"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

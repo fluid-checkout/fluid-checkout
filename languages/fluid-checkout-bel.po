@@ -2649,6 +2649,10 @@ msgstr "Пашырана"
 msgid "Do not show"
 msgstr "Не паказваць"
 
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Тэлефон"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
