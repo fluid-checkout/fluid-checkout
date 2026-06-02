@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compatibility with plugin: Klaviyo integration.
+ * Compatibility with plugin: Klaviyo (by Klaviyo)
  */
 class FluidCheckout_Klaviyo extends FluidCheckout {
 
@@ -25,6 +25,7 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 		// Signup
 		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_signup_checkout_field_to_contact_step' ), 10 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_signup_checkbox_field_args' ), 100 );
+
 		// Review text
 		add_filter( 'fc_substep_text_display_value_kl_newsletter_checkbox', array( $this, 'change_klaviyo_checkbox_display_value_for_review_text' ), 10, 4 );
 		add_filter( 'fc_substep_text_display_value_kl_sms_consent_checkbox', array( $this, 'change_klaviyo_checkbox_display_value_for_review_text' ), 10, 4 );
@@ -59,6 +60,7 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 			remove_filter( 'woocommerce_after_checkout_billing_form', $mobile_compliance_callback, 10 );
 		}
 
+		// SMS compliance checkbox
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_sms_compliance_checkbox_field_args' ), 100 );
 		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'maybe_add_sms_compliance_checkout_field_to_contact_step' ), 10 );
 	}
@@ -67,6 +69,8 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 	/**
 	 * Add the signup checkbox field to the contact step.
+	 * 
+	 * @param   array  $display_fields  The display fields.
 	 */
 	public function add_signup_checkout_field_to_contact_step( $display_fields ) {
 		// Checkbox fields
@@ -79,6 +83,8 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 	/**
 	 * Add the SMS compliance checkbox field to the contact step.
+	 * 
+	 * @param   array  $display_fields  The display fields.
 	 */
 	public function maybe_add_sms_compliance_checkout_field_to_contact_step( $display_fields ) {
 		// Bail if billing phone field is not in the list to be displayed in the contact step
@@ -94,6 +100,8 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 	/**
 	 * Maybe change the signup checkbox field arguments.
+	 * 
+	 * @param   array  $fields  The checkout fields.
 	 */
 	public function maybe_change_signup_checkbox_field_args( $fields ) {
 		// Signup
@@ -109,6 +117,8 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 	/**
 	 * Maybe change the SMS compliance checkbox field arguments.
+	 * 
+	 * @param   array  $fields  The checkout fields.
 	 */
 	public function maybe_change_sms_compliance_checkbox_field_args( $fields ) {
 		// SMS Compliance
@@ -135,12 +145,18 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 	/**
 	 * Change Klaviyo checkbox field display value for substep review text.
+	 * 
+	 * @param   string  $field_display_value  The field display value.
+	 * @param   string  $field_value          The field value.
+	 * @param   string  $field_key            The field key.
+	 * @param   array   $field_args           The field arguments.
 	 */
 	public function change_klaviyo_checkbox_display_value_for_review_text( $field_display_value, $field_value, $field_key, $field_args ) {
 		// Bail if field label is not set
 		if ( empty( $field_args[ 'label' ] ) ) { return $field_display_value; }
 
 		$field_label        = $field_args[ 'label' ];
+		// TODO: Use the default functions to display checkbox values as `yes` or `no`
 		$field_value_text   = ! empty( $field_value ) ? __( 'Yes', 'fluid-checkout' ) : __( 'No', 'fluid-checkout' );
 		$show_field_label   = apply_filters( 'fc_substep_text_display_value_show_field_label_checkbox', true );
 
