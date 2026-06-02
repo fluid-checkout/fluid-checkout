@@ -58,7 +58,7 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 	 * @param  array  $classes  The button classes.
 	 */
 	public function add_button_class( $classes ) {
-		// Add 'wp-element-button' class to apply theme styles and 'qodef-m-checkout-link' to add hover animation
+		// Add 'wp-element-button' class to apply theme styles
 		if ( is_array( $classes ) ) {
 			array_push( $classes, 'wp-element-button' );
 		} 

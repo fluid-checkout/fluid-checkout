@@ -2,6 +2,7 @@
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
+// Only for payment methods page with Stripe UPE enabled
 body#{ $_body-theme-selector } #add_payment_method fieldset#wc-stripe-upe-form {
 	border: none;
 }
