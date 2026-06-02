@@ -183,10 +183,12 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		// Bail if compatibility is not needed
 		if ( ! $this->is_fc_intl_phone_wcar_compat_enabled() ) { return $fields; }
 
+		// Maybe remove billing country code field
 		if ( isset( $fields[ 'billing' ][ 'billing_country_code' ] ) ) {
 			unset( $fields[ 'billing' ][ 'billing_country_code' ] );
 		}
 
+		// Maybe remove shipping country code field
 		if ( isset( $fields[ 'shipping' ][ 'shipping_country_code' ] ) ) {
 			unset( $fields[ 'shipping' ][ 'shipping_country_code' ] );
 		}
@@ -222,6 +224,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		if ( class_exists( 'libphonenumber\PhoneNumberUtil' ) ) {
 			$other_fields = $this->normalize_wcar_phone_with_libphonenumber( $other_fields, $full_phone );
 		}
+		// Otherwise, normalize WCAR phone fields without libphonenumber.
 		else {
 			$other_fields = $this->normalize_wcar_phone_without_libphonenumber( $other_fields, $full_phone );
 		}
@@ -452,15 +455,20 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		// Bail if not an array
 		if ( ! is_array( $posted_data ) ) { return $posted_data; }
 
+		// Get consent checkbox value
 		$consent_value = $this->get_gdpr_phone_consent_value_from_posted_data( $posted_data );
 
 		// Bail if consent value is not available in posted data
 		if ( null === $consent_value ) { return $posted_data; }
 
+		// Persist consent value to session
 		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'wcf_gdpr_phone_consent', $consent_value );
-		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'gdpr_phone_consent', '' );
+		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'gdpr_phone_consent', $consent_value );
+
+		// Update posted data
 		$posted_data[ 'wcf_gdpr_phone_consent' ] = $consent_value;
 
+		// Return updated posted data
 		return $posted_data;
 	}
 
@@ -470,6 +478,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	 * @return  string  Field value.
 	 */
 	public function get_gdpr_phone_consent_value() {
+		// Get posted data
 		$posted_data  = FluidCheckout_Steps::instance()->get_parsed_posted_data();
 		$posted_value = $this->get_gdpr_phone_consent_value_from_posted_data( $posted_data );
 
