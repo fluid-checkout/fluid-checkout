@@ -456,7 +456,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		if ( ! is_array( $posted_data ) ) { return $posted_data; }
 
 		// Get consent checkbox value
-		$consent_value = $this->get_gdpr_phone_consent_value_from_posted_data( $posted_data );
+		$consent_value = sanitize_text_field( wp_unslash( $this->get_gdpr_phone_consent_value_from_posted_data( $posted_data ) ) );
 
 		// Bail if consent value is not available in posted data
 		if ( null === $consent_value ) { return $posted_data; }
