@@ -456,17 +456,20 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		if ( ! is_array( $posted_data ) ) { return $posted_data; }
 
 		// Get consent checkbox value
-		$consent_value = sanitize_text_field( wp_unslash( $this->get_gdpr_phone_consent_value_from_posted_data( $posted_data ) ) );
+		$consent_value = $this->get_gdpr_phone_consent_value_from_posted_data( $posted_data );
 
 		// Bail if consent value is not available in posted data
-		if ( empty( $consent_value ) ) { return $posted_data; }
+		if ( null === $consent_value ) { return $posted_data; }
+
+		// Sanitize consent value
+		$consent_value_esc = sanitize_text_field( wp_unslash( $consent_value ) );
 
 		// Persist consent value to session
-		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'wcf_gdpr_phone_consent', $consent_value );
-		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'gdpr_phone_consent', $consent_value );
+		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'wcf_gdpr_phone_consent', $consent_value_esc );
+		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'gdpr_phone_consent', $consent_value_esc );
 
 		// Update posted data
-		$posted_data[ 'wcf_gdpr_phone_consent' ] = $consent_value;
+		$posted_data[ 'wcf_gdpr_phone_consent' ] = $consent_value_esc;
 
 		// Return updated posted data
 		return $posted_data;
