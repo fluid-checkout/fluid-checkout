@@ -2845,6 +2845,14 @@ msgstr "Διευρυμένο"
 msgid "Do not show"
 msgstr "Μην εμφανίζετε"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Ναι"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Όχι"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
