@@ -777,9 +777,9 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                    => 'fc_pro_international_phone_fields_placeholder',
 						'type'                  => 'fc_select',
 						'options'               => array(
-							'off'              => __( 'Do not change placeholders', 'fluid-checkout' ),
-							'polite'           => __( 'Show if not defined', 'fluid-checkout' ),
-							'aggressive'       => __( 'Always show', 'fluid-checkout' ),
+							'OFF'              => __( 'Do not change placeholders', 'fluid-checkout' ),
+							'POLITE'           => __( 'Show if not defined', 'fluid-checkout' ),
+							'AGGRESSIVE'       => __( 'Always show', 'fluid-checkout' ),
 						),
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_international_phone_fields_placeholder' ),
 						'autoload'              => false,

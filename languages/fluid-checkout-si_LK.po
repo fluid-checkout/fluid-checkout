@@ -2589,6 +2589,14 @@ msgstr "පුළුල් කරන ලදී"
 msgid "Do not show"
 msgstr "පෙන්වන්න එපා"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "ඔව්"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "නැත"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

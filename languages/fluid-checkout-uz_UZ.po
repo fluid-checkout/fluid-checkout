@@ -2680,6 +2680,14 @@ msgstr "Kengaytirilgan"
 msgid "Do not show"
 msgstr "Ko&#39;rsatilmasin"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Ha"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Yo&#39;q"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
