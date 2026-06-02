@@ -459,7 +459,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		$consent_value = sanitize_text_field( wp_unslash( $this->get_gdpr_phone_consent_value_from_posted_data( $posted_data ) ) );
 
 		// Bail if consent value is not available in posted data
-		if ( null === $consent_value ) { return $posted_data; }
+		if ( empty( $consent_value ) ) { return $posted_data; }
 
 		// Persist consent value to session
 		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'wcf_gdpr_phone_consent', $consent_value );

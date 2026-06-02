@@ -293,9 +293,20 @@
 	 * Keep the hidden consent field aligned with the checkbox checked state.
 	 */
 	var syncHiddenConsentField = function( checkbox ) {
+		// Bail if checkbox is not available
+		if ( ! checkbox ) { return; }
+
+		// Set checkbox value
+		checkbox.value = checkbox.checked ? 'on' : '';
+
+		// Get hidden field
 		var hiddenField = getGdprPhoneConsentHiddenField();
-		if ( ! hiddenField || ! checkbox ) { return; }
-		hiddenField.value = checkbox.checked ? 'on' : '';
+
+		// Bail if hidden field is not available
+		if ( ! hiddenField ) { return; }
+
+		// Set hidden field value
+		hiddenField.value = checkbox.value;
 	};
 
 	/**
