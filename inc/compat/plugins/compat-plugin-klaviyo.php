@@ -173,6 +173,7 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 	 * @param   array  $klaviyo_settings  Klaviyo plugin settings.
 	 */
 	public function is_mobile_consent_enabled( $klaviyo_settings ) {
+		// Bail if Klaviyo settings not valid SMS list ID is not set
 		if ( ! is_array( $klaviyo_settings ) || empty( $klaviyo_settings[ 'klaviyo_sms_list_id' ] ) ) { return false; }
 
 		// Klaviyo 3.3+ (SMS and/or WhatsApp).
