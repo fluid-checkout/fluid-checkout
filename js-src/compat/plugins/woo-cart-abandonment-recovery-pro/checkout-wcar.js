@@ -23,7 +23,6 @@
 		checkboxBlockSelector: '#wcf_cf_gdpr_phone_message_block',
 		checkboxSelector: '#gdpr_phone_consent',
 		checkboxBoundAttribute: 'data-fc-wcar-gdpr-bound',
-		checkboxFieldName: 'wcf_gdpr_phone_consent',
 		phoneSelectors: '#billing_phone, #billing-phone, #shipping_phone, #shipping-phone, #phone',
 		fieldWrapperSelector: '.form-row, .wc-block-components-text-input, .wc-block-components-phone-number-input',
 		checkoutFormSelector: 'form[name="checkout"]',
