@@ -52,12 +52,14 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 		// Bail if mobile consent not enabled
 		if ( ! $this->is_mobile_consent_enabled( $klaviyo_settings ) ) { return; }
 
-		// Klaviyo renamed the compliance callback in newer versions.
-		$mobile_compliance_callback = $this->get_mobile_compliance_callback();
-
-		// Move mobile consent compliance fields
-		if ( $mobile_compliance_callback ) {
-			remove_filter( 'woocommerce_after_checkout_billing_form', $mobile_compliance_callback, 10 );
+		// Remove mobile consent compliance field, which is replaced with a registered checkout field
+		// Klaviyo 3.7+.
+		if ( function_exists( 'kl_mobile_compliance_text' ) ) {
+			remove_filter( 'woocommerce_after_checkout_billing_form', 'kl_mobile_compliance_text', 10 );
+		}
+		// Klaviyo <= 3.6.x.
+		if ( function_exists( 'kl_sms_compliance_text' ) ) {
+			remove_filter( 'woocommerce_after_checkout_billing_form', 'kl_sms_compliance_text', 10 );
 		}
 
 		// SMS compliance checkbox
@@ -180,21 +182,6 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 		// Legacy: SMS subscribe checkbox only.
 		return ! empty( $klaviyo_settings[ 'klaviyo_sms_subscribe_checkbox' ] );
-	}
-
-
-
-	/**
-	 * Get the mobile compliance callback name available for the active Klaviyo version.
-	 */
-	public function get_mobile_compliance_callback() {
-		// Klaviyo 3.7+.
-		if ( function_exists( 'kl_mobile_compliance_text' ) ) { return 'kl_mobile_compliance_text'; }
-
-		// Klaviyo <= 3.6.x.
-		if ( function_exists( 'kl_sms_compliance_text' ) ) { return 'kl_sms_compliance_text'; }
-
-		return false;
 	}
 
 }
