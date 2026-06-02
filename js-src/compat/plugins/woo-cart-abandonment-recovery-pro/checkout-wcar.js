@@ -313,16 +313,22 @@
 	 * Sync internal consent state from the hidden field or checkbox.
 	 */
 	var syncConsentStateFromPersistedField = function() {
+		// Get hidden field
 		var hiddenField = getGdprPhoneConsentHiddenField();
 
+		// Maybe set consent checked state from hidden field value
 		if ( hiddenField ) {
 			_isConsentChecked = isConsentValueChecked( hiddenField.value );
 			return;
 		}
 
+		// Get current checkbox
 		var currentCheckbox = document.querySelector( _settings.checkboxSelector );
+
+		// Maybe set consent checked state from checkbox checked state
 		if ( currentCheckbox ) {
 			_isConsentChecked = currentCheckbox.checked;
+			return;
 		}
 	};
 
@@ -330,9 +336,15 @@
 	 * Keep all consent checkboxes synced in case duplicate elements exist.
 	 */
 	var syncCheckboxesState = function() {
+		// Get all checkboxes
 		var allCheckboxes = document.querySelectorAll( _settings.checkboxSelector );
+
+		// Loop through all checkboxes and sync their checked state
 		for ( var i = 0; i < allCheckboxes.length; i++ ) {
+			// Set checkbox checked state
 			allCheckboxes[ i ].checked = _isConsentChecked;
+
+			// Sync hidden consent field
 			syncHiddenConsentField( allCheckboxes[ i ] );
 		}
 	};
@@ -343,8 +355,10 @@
 	 * @param {Element} fieldWrapper  Phone field wrapper element.
 	 */
 	var removeInvalidClassesFromWrapper = function( fieldWrapper ) {
+		// Bail if field wrapper is not available or does not have class list
 		if ( ! fieldWrapper || ! fieldWrapper.classList ) { return; }
 
+		// Loop through invalid class names and remove them from the field wrapper class list
 		for ( var i = 0; i < _settings.invalidClassNames.length; i++ ) {
 			fieldWrapper.classList.remove( _settings.invalidClassNames[ i ] );
 		}
@@ -600,13 +614,13 @@
 		_hasInitialized = true;
 	};
 
-	//
-	// Public APIs
-	//
 	// Run before init() to patch AJAX as early as possible, before WCAR triggers abandonment tracking on page load.
 	loadSettings();
 	maybePatchAbandonmentTrackingAjax();
 
+	//
+	// Public APIs
+	//
 	return _publicMethods;
 
 });
