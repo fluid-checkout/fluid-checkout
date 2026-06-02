@@ -502,7 +502,7 @@ class FluidCheckout {
 	public function locate_template( $template, $template_name, $template_path ) {
 		// Add deprecation notice
 		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_Steps::instance()->locate_template() instead.', '2.3.0' );
-		
+
 		// Bail if class `FluidCheckout_Steps` is not yet loaded
 		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return $template; }
 
@@ -522,7 +522,7 @@ class FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Declare compatibility with the WooCommerce features.
 	 */
@@ -601,7 +601,7 @@ class FluidCheckout {
 			$action_label = wp_kses_post( sprintf( __( 'Activate %s', 'fluid-checkout' ), $required_plugin_name ) );
 			$action_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_plugin_path_name ), 'activate-plugin_' . $required_plugin_path_name );
 		}
-		
+
 		/** translators: %1$s: Plugin name, %2$s: Required plugin name, %3$s: Action label, %4$s: Action URL. */
 		$description = wp_kses_post( sprintf( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%4$s">%3$s</a>', 'fluid-checkout' ),
 			self::$plugin,
@@ -646,7 +646,7 @@ class FluidCheckout {
 	public function get_user_geo_location() {
 		// Bail if geolocation class not available
 		if ( ! class_exists( 'WC_Geolocation' ) ) { return false; }
-		
+
 		// Get user location information
 		$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
 		$user_ip  = $geo->get_ip_address(); // Get user IP
@@ -740,10 +740,10 @@ class FluidCheckout {
 		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
 
 		$priority_callbacks = $callbacks[ $priority ];
-		
+
 		// Bail if priority callbacks are not on the expected format
 		if ( ! is_array( $priority_callbacks ) ) { return false; }
-		
+
 		$class_callbacks = array();
 
 		foreach ( $priority_callbacks as $callback ) {
