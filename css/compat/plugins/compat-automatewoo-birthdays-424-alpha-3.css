@@ -1,0 +1,8 @@
+.fc-content div.woocommerce form .fc-wrapper .automatewoo-birthday-section--checkout[aria-hidden=true] {
+  display: none;
+}
+
+body.woocommerce-page div.woocommerce .automatewoo-birthday-section--checkout {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

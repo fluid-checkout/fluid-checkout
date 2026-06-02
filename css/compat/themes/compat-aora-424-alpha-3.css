@@ -1,0 +1,28 @@
+body.theme-aora .shipping-method__option input[type=radio] {
+  display: block !important;
+}
+
+body.theme-aora.woocommerce-page.woocommerce-checkout .fc-wrapper #payment ul.payment_methods {
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
+}
+
+body.theme-aora .fc-wrapper #payment .payment_methods > .wc_payment_method > input[type=radio]:first-child:checked + label:before {
+  background-color: var(--fluidcheckout--color--success, #007a3d) !important;
+}
+
+body.theme-aora .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box:after {
+  display: none !important;
+}
+
+body.theme-aora .fc-place-order {
+  padding-top: 0;
+}
+
+body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+  padding-top: 0;
+}
+
+body.theme-aora div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+  margin-top: var(--fluidcheckout--select2--inner-spacing, 5px);
+  margin-right: var(--fluidcheckout--select2--inner-spacing, 5px);
+}

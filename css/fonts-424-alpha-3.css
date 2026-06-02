@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "fluid-checkout-icons";
+  src: url("../fonts/fluid-checkout-icons.eot");
+  src: url("../fonts/fluid-checkout-icons.eot?#iefix") format("embedded-opentype"), url("../fonts/fluid-checkout-icons.woff2") format("woff2"), url("../fonts/fluid-checkout-icons.woff") format("woff"), url("../fonts/fluid-checkout-icons.ttf") format("truetype"), url("../fonts/fluid-checkout-icons.svg#fluid-checkout-icons") format("svg");
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+}

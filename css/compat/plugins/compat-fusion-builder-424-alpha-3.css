@@ -1,0 +1,7 @@
+.validate-required.woocommerce-validated .ts-control {
+  box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--danger-accent-color);
+}
+
+.validate-required.woocommerce-validated .ts-control input {
+  box-shadow: none !important;
+}

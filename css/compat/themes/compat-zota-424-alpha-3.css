@@ -1,0 +1,54 @@
+body.theme-zota form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+  padding-right: 20px;
+}
+
+body.theme-zota .woocommerce table.shop_table > thead > tr > th,
+body.theme-zota .woocommerce table.shop_table > thead > tr > td,
+body.theme-zota .woocommerce table.shop_table > tbody > tr > td,
+body.theme-zota .woocommerce table.shop_table > tbody > tr > th,
+body.theme-zota .woocommerce table.shop_table > tfoot > tr > td,
+body.theme-zota .woocommerce table.shop_table > tfoot > tr > th {
+  line-height: inherit !important;
+}
+
+body.theme-zota.woocommerce-checkout.woocommerce-page .fc-wrapper #payment ul.payment_methods {
+  border: var(--fluidcheckout--option-box--border-style, solid) var(--fluidcheckout--option-box--border-width, 1px) var(--fluidcheckout--option-box--border-color, var(--fluidcheckout--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8))) !important;
+}
+
+body.theme-zota .fc-wrapper #payment ul.wc_payment_methods > li.wc_payment_method > label {
+  display: flex !important;
+}
+
+body.theme-zota .fc-wrapper .fc-place-order .fc-place-order-button {
+  position: relative !important;
+}
+
+body.theme-zota.woocommerce-checkout form.woocommerce-checkout {
+  padding-top: 0;
+}
+
+body.theme-zota div.woocommerce form .form-row .input-checkbox {
+  display: none;
+}
+
+body.theme-zota div.woocommerce form .form-row .input-text {
+  margin-bottom: 0 !important;
+}
+
+body.theme-zota div.woocommerce form .form-row textarea {
+  min-height: 100px !important;
+  padding: 13px 15px !important;
+}
+@media (max-width: 480px) {
+  body.theme-zota div.woocommerce form .form-row textarea {
+    padding: 8px 10px !important;
+  }
+}
+
+body.theme-zota div.woocommerce form .form-row .woocommerce-form__input + span {
+  display: inline;
+}
+
+body.theme-zota div.woocommerce form .form-row .select2-container {
+  margin-bottom: 0;
+}

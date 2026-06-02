@@ -2630,6 +2630,14 @@ msgstr "Genişləndirilmiş"
 msgid "Do not show"
 msgstr "Göstərməyin"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Bəli"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Xeyr"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

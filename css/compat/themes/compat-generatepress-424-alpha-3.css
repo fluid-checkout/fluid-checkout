@@ -1,0 +1,4 @@
+body.theme-generatepress .select2-container .select2-selection--single {
+  border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+  background-color: var(--fluidcheckout--field--background-color, var(--fluidcheckout--color--white, #fff));
+}

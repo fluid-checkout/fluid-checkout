@@ -1,0 +1,36 @@
+body.theme-kenta .fc-checkout-header {
+  color: var(--kenta-accent-active);
+}
+
+body.theme-kenta .fc-content,
+body.theme-kenta .fc-wrapper {
+  color: var(--kenta-accent-active);
+}
+
+body.theme-kenta {
+  background-color: var(--kenta-base-100);
+}
+
+@media (max-width: 749px) {
+  body.theme-kenta.woocommerce-checkout .fc-content.kenta-container.px-gutter {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+body.theme-kenta .fc-wrapper .fc-place-order .fc-place-order-button {
+  min-height: 50px;
+  font-size: 1.15rem;
+}
+
+body.theme-kenta.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
+  justify-content: center;
+}
+
+body.theme-kenta div.woocommerce form .form-row .required {
+  text-decoration: none;
+}
+
+body.theme-kenta .select2-container--default .select2-selection--single {
+  border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+}

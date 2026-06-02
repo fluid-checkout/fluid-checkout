@@ -1,0 +1,3 @@
+body.theme-bb-theme .select2-container--default .select2-selection--single {
+  border-color: var(--fluidcheckout--field--border-color, var(--fluidcheckout--color--light-grey, #d8d8d8));
+}

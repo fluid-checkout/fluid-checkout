@@ -2593,6 +2593,14 @@ msgstr "विस्तारित"
 msgid "Do not show"
 msgstr "नहीं दिखाते"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "हाँ"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "नहीं"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

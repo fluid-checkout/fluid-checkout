@@ -1,0 +1,33 @@
+body.theme-pressmart .fc-wrapper .woocommerce-billing-fields {
+  margin-bottom: 0;
+}
+
+@media (max-width: 999px) {
+  body.theme-pressmart.woocommerce-checkout header.fc-checkout-header + #page-title {
+    padding-top: 110px;
+  }
+}
+
+@media (max-width: 999px) {
+  body.theme-pressmart.woocommerce-checkout #page-title ~ #main.fc-main {
+    padding-top: 0;
+  }
+}
+
+body.theme-pressmart div.woocommerce form .form-row label.checkbox {
+  line-height: 1.5;
+}
+
+body.theme-pressmart div.woocommerce form .form-row input[type=checkbox]:not(:checked) {
+  background-color: var(--site-input-background);
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+body.theme-pressmart div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+  padding-left: 12px;
+}
+
+body.theme-pressmart div.woocommerce form .form-row .select2-selection .select2-selection__arrow b {
+  margin-top: -2px;
+}

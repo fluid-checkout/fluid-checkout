@@ -1,0 +1,11 @@
+body.theme-smart-home div.woocommerce form .form-row .select2.select2-container--default .select2-selection__arrow {
+  background-position-y: calc(var(--fluidcheckout--field--height, 45.625px) / 2 - 3px);
+}
+
+body.theme-smart-home .woocommerce .columns {
+  overflow-x: hidden;
+}
+
+body.theme-smart-home div.woocommerce form .form-row input[type=checkbox] {
+  margin-right: 5px;
+}
