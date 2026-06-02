@@ -25,6 +25,8 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 		// Signup
 		add_filter( 'fc_checkout_contact_step_field_ids', array( $this, 'add_signup_checkout_field_to_contact_step' ), 10 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_signup_checkbox_field_args' ), 100 );
+		// Review text
+		add_filter( 'fc_substep_text_display_value_kl_sms_consent_checkbox', array( $this, 'change_sms_consent_display_value_for_review_text' ), 10, 4 );
 	}
 
 	/**
@@ -126,6 +128,22 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 		}
 
 		return $fields;
+	}
+
+
+
+	/**
+	 * Change SMS consent field display value for substep review text.
+	 */
+	public function change_sms_consent_display_value_for_review_text( $field_display_value, $field_value, $field_key, $field_args ) {
+		// Bail if field label is not set
+		if ( empty( $field_args[ 'label' ] ) ) { return $field_display_value; }
+
+		/* translators: %1$s field label, %2$s checkbox value text ("Yes" or "No"). */
+		$field_display_value_pattern = _x( '%1$s: %2$s', 'Substep review field format: with label', 'fluid-checkout' );
+		$field_value_text = ! empty( $field_value ) ? __( 'Yes', 'fluid-checkout' ) : __( 'No', 'fluid-checkout' );
+
+		return sprintf( $field_display_value_pattern, $field_args[ 'label' ], $field_value_text );
 	}
 
 
