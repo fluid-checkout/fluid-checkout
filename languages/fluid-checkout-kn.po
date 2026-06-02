@@ -2620,6 +2620,14 @@ msgstr "ವಿಸ್ತರಿಸಲಾಗಿದೆ"
 msgid "Do not show"
 msgstr "ತೋರಿಸಬೇಡಿ"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "ಹೌದು"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "ಇಲ್ಲ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

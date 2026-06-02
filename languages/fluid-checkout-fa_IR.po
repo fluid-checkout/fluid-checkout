@@ -2585,6 +2585,14 @@ msgstr "گسترش یافته"
 msgid "Do not show"
 msgstr "نشان ندهید."
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "بله"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "خیر"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

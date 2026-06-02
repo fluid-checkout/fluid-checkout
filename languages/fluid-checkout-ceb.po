@@ -2682,6 +2682,14 @@ msgstr "Gipalapdan"
 msgid "Do not show"
 msgstr "Ayaw ipakita"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Oo"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Dili"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

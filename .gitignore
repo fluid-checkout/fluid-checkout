@@ -8,6 +8,9 @@ __MACOSX
 # Don't commit package-lock.json to avoid errors between different OS
 package-lock.json
 
+# Don't commit composer.lock to avoid errors between different OS
+composer*.lock
+
 # local environment files
 .vscode
 gulp-settings.local.json
@@ -23,14 +26,28 @@ node_modules
 node_modules/**
 bower_components
 bower_compoents/**
-/vendor/**/.git
+vendor/**/.git
+
+# Composer dependencies
+composer.lock
+composer.dev.json
+composer.dev.lock
+vendor-dev
+
+# PHPUnit
+.phpunit.result.cache
+
+# Local symlink to shared standards repo (see README-DEV.md)
+fluid-checkout-standards
 
 # Git files
 .git
 .git/**
 
-# Local symlink to shared standards repo (see DEVELOPMENT.md)
-fluid-checkout-standards
-
 # Zip files
 **/*.zip
+!**/tests/files/**/*.zip
+
+# Build assets
+js
+css

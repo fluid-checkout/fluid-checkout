@@ -2593,6 +2593,14 @@ msgstr "ຂະຫຍາຍແລ້ວ"
 msgid "Do not show"
 msgstr "ຢ່າສະແດງ"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "ແມ່ນແລ້ວ"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "ບໍ່"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
