@@ -196,7 +196,7 @@ msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:4137, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:577
+#: inc/checkout-steps.php:4137, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:586
 msgid "Not selected yet."
 msgstr ""
 
@@ -1938,7 +1938,7 @@ msgid "Before coupon codes section"
 msgstr ""
 
 #. translators: %s shipping destination.
-#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:444, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
+#: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:453, templates/fc/checkout-steps/checkout/review-order-shipping.php:28
 msgctxt "No shipping method chosen label for the order summary"
 msgid "--"
 msgstr ""

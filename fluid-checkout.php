@@ -193,9 +193,10 @@ class FluidCheckout {
 	/**
 	 * Get the translation file path for the locale, or the main locale for language variants.
 	 *
-	 * @param  string  $file    Path to the translation file to load.
-	 * @param  string  $domain  The text domain.
-	 * @param  string  $locale  The locale.
+	 * @param  string  $file               Path to the translation file to load.
+	 * @param  string  $locale             The locale.
+	 * @param  string  $plugin_slug        The plugin slug. Defaults to `null`.
+	 * @param  string  $plugin_directory   The plugin directory. Defaults to `null`.
 	 */
 	public function get_translation_file_path( $file, $locale, $plugin_slug = null, $plugin_directory = null ) {
 		// Maybe set plugin slug if not provided
@@ -306,6 +307,9 @@ class FluidCheckout {
 
 	/**
 	 * Flush caches when the plugin is successfully updated.
+	 * 
+	 * @param  object  $upgrader_object  The upgrader object.
+	 * @param  array   $options          The options.
 	 */
 	public static function clear_cache_on_updates( $upgrader_object, $options ) {
 		// Bail if necessary options data are not available
@@ -490,6 +494,10 @@ class FluidCheckout {
 	/**
 	 * Locate template files from this plugin.
 	 * @deprecated Use FluidCheckout_Steps::instance()->locate_template() instead. This will be removed in version 3.0.0
+	 * 
+	 * @param  string  $template         The template file.
+	 * @param  string  $template_name    The template name.
+	 * @param  string  $template_path    The template path.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
 		// Add deprecation notice
@@ -807,11 +815,11 @@ class FluidCheckout {
 	 * Remove hook callback by class name (alias for `remove_filter_for_class`).
 	 * @see `remove_filter_for_class`
 	 *
-	 * @param   string  $tag             Hook name.
-	 * @param   string  $function_array  Callable array containing the Object and function name.
-	 * @param   int     $priority        Hook priority.
+	 * @param   string  $tag              Hook name.
+	 * @param   string  $function_array   Callable array containing the Object and function name.
+	 * @param   int     $priority         Hook priority.
 	 *
-	 * @return  bool                     `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                      `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_action_for_class( $tag, $function_array, $priority ) {
 		return $this->remove_filter_for_class( $tag, $function_array, $priority );
@@ -820,11 +828,11 @@ class FluidCheckout {
 	/**
 	 * Remove hook callback for anonymous functions (closure).
 	 *
-	 * @param   string  $tag         Hook name.
-	 * @param   int     $priority    Hook priority.
-	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 * @param   string  $tag               Hook name.
+	 * @param   int     $priority          Hook priority.
+	 * @param   bool    $all_occurencies   Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
 	 *
-	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                       `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_filter_for_closure( $tag, $priority, $all_occurencies = false ) {
 		// Get callbacks for the priority value
@@ -836,7 +844,7 @@ class FluidCheckout {
 		foreach ( $priority_callbacks as $callback ) {
 			if ( $callback['function'] instanceof Closure ) {
 				remove_filter( $tag, $callback['function'], $priority );
-				
+
 				// Skip removing other occurencies, when not removing all occurencies
 				if ( ! $all_occurencies ) { break; }
 			}
@@ -848,11 +856,11 @@ class FluidCheckout {
 	/**
 	 * Remove hook callback for anonymous functions (closure)(alias for `remove_filter_for_closure`).
 	 *
-	 * @param   string  $tag         Hook name.
-	 * @param   int     $priority    Hook priority.
-	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 * @param   string  $tag               Hook name.
+	 * @param   int     $priority          Hook priority.
+	 * @param   bool    $all_occurencies   Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
 	 *
-	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                       `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_action_for_closure( $tag, $priority, $all_occurencies = false ) {
 		return $this->remove_filter_for_closure( $tag, $priority, $all_occurencies );
