@@ -2695,6 +2695,14 @@ msgstr "ချဲ့ထွင်ထားသည်"
 msgid "Do not show"
 msgstr "မပြပါနဲ့"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "ဟုတ်ကဲ့"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "မဟုတ်ပါ"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

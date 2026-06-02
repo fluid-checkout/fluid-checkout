@@ -2602,6 +2602,14 @@ msgstr "সম্প্ৰসাৰিত"
 msgid "Do not show"
 msgstr "দেখুৱাব নালাগে"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "হয়"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "নহয়"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"

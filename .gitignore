@@ -47,3 +47,7 @@ fluid-checkout-standards
 # Zip files
 **/*.zip
 !**/tests/files/**/*.zip
+
+# Build assets
+js
+css
