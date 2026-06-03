@@ -3779,7 +3779,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'number':
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 				case 'checkbox':
+					// Define values to be displayed as "Yes"
+					$yes_values = array( true, 1, '1', 'true', 'yes', 'on' );
+
+					// Maybe set display value to "Yes" for checked checkboxes, otherwise keep the original value.
+					$field_display_value = in_array( $field_display_value, $yes_values ) || in_array( strtolower( $field_display_value ), $yes_values ) ? __( 'yes', 'fluid-checkout' ) : $field_display_value; // Intentionally use loose comparisons on array values
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 					break;
 				case 'password':

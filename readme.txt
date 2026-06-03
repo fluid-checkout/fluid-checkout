@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
+* Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 
 = 4.2.4 - 2026-06-02 =
 
