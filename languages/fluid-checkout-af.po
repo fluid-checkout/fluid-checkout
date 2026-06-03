@@ -2643,13 +2643,9 @@ msgstr "Uitgebrei"
 msgid "Do not show"
 msgstr "Moenie wys nie"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Ja"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Nee"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "ja"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

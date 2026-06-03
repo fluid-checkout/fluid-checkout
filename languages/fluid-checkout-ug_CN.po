@@ -2612,13 +2612,9 @@ msgstr "كېڭەيتىلدى"
 msgid "Do not show"
 msgstr "كۆرسەتمەڭ"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:3788
+msgid "yes"
 msgstr "ھەئە"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "ياق"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

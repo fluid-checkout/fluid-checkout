@@ -2501,13 +2501,9 @@ msgstr "מוּרחָב"
 msgid "Do not show"
 msgstr "אל תציג"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:3788
+msgid "yes"
 msgstr "כֵּן"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "לֹא"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2806,13 +2806,9 @@ msgstr "Genişletilmiş"
 msgid "Do not show"
 msgstr "Gösterme"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Evet"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Hayır"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "Evet."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

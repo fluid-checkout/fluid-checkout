@@ -2742,13 +2742,9 @@ msgstr "Išplėstas"
 msgid "Do not show"
 msgstr "Nerodyti"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Taip"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Ne"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "taip"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

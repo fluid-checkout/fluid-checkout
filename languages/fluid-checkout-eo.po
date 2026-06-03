@@ -2589,13 +2589,9 @@ msgstr "Vastigita"
 msgid "Do not show"
 msgstr "Ne montru"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Jes"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Ne"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "jes"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2693,13 +2693,9 @@ msgstr "Pinalawak"
 msgid "Do not show"
 msgstr "Huwag ipakita"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Oo"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Hindi"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "oo"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

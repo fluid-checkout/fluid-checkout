@@ -2680,13 +2680,9 @@ msgstr "Expandit"
 msgid "Do not show"
 msgstr "No mostrar"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Sí"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "No"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "sí"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2398,13 +2398,9 @@ msgstr "확장"
 msgid "Do not show"
 msgstr "표시하지 않음"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "예"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "아니요"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "yes"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

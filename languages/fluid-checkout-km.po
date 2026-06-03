@@ -2619,13 +2619,9 @@ msgstr "បានពង្រីក"
 msgid "Do not show"
 msgstr "កុំបង្ហាញ"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:3788
+msgid "yes"
 msgstr "បាទ/ចាស៎"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "ទេ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

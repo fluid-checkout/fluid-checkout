@@ -2865,13 +2865,9 @@ msgstr "Espanso"
 msgid "Do not show"
 msgstr "Non mostrare"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Sì"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "No"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "sì"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2613,13 +2613,9 @@ msgstr "Ընդլայնված"
 msgid "Do not show"
 msgstr "Չցուցադրել"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Այո"
-
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Ոչ"
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "այո"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
