@@ -79,7 +79,7 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 		if ( ! is_array( $klaviyo_settings ) || empty( $klaviyo_settings ) ) { return false; }
 
 		// Bail if SMS list ID is not set
-		if ( empty( $klaviyo_settings[ 'klaviyo_sms_list_id' ] ) ) { return false; }
+		if ( ! array_key_exists( 'klaviyo_sms_list_id', $klaviyo_settings ) || empty( $klaviyo_settings[ 'klaviyo_sms_list_id' ] ) ) { return false; }
 
 		// Klaviyo 3.3+ (SMS and/or WhatsApp).
 		if ( function_exists( 'kl_any_mobile_channel_enabled' ) ) {
@@ -134,7 +134,6 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 	 * @param   array  $fields  The checkout fields.
 	 */
 	public function maybe_change_signup_checkbox_field_args( $fields ) {
-
 		// Bail if billing fields not available
 		if ( ! is_array( $fields ) || ! array_key_exists( 'billing', $fields ) ) { return $fields; }
 
