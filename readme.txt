@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 

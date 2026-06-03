@@ -44,7 +44,7 @@ class FluidCheckout_Klaviyo extends FluidCheckout {
 
 		// Remove mobile consent compliance fields
 		remove_filter( 'woocommerce_after_checkout_billing_form', 'kl_mobile_compliance_text', 10 );
-		remove_filter( 'woocommerce_checkout_fields', 'kl_sms_compliance_text', 11 );
+		remove_filter( 'woocommerce_after_checkout_billing_form', 'kl_sms_compliance_text', 10 );
 
 		// SMS compliance checkbox
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_change_sms_compliance_checkbox_field_args' ), 100 );
