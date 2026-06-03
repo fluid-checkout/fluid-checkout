@@ -19,8 +19,14 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Checkout hooks
-		$this->checkout_hooks();
+		// Prevent hiding store credits behind a link button
+		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_store_credits' ), 10 );
+
+		// Prevent Advanced Coupons from using the checkout block
+		add_filter( 'acfw_filter_is_current_page_using_cart_checkout_block', '__return_false', 10 );
+
+		// Checkout tab hooks
+		$this->checkout_tab_hooks();
 	}
 
 
@@ -28,7 +34,7 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 	/**
 	 * Add or remove checkout hooks.
 	 */
-	public function checkout_hooks() {
+	public function checkout_tab_hooks() {
 		// Bail if class is not available
 		$class_name = 'ACFWF\Models\Checkout';
 		if ( ! class_exists( $class_name ) ) { return; }
@@ -40,12 +46,6 @@ class FluidCheckout_AdvancedCouponsForWooCommerceFree extends FluidCheckout {
 		// Move Advanced Coupons box to the fixed position before the checkout steps
 		remove_action( 'woocommerce_checkout_order_review', array( $class_object, 'display_checkout_tabbed_box' ), 11 );
 		add_action( 'fc_checkout_before_steps', array( $class_object, 'display_checkout_tabbed_box' ), 5 );
-
-		// Prevent hiding store credits behind a link button
-		add_filter( 'fc_hide_optional_fields_skip_list', array( $this, 'prevent_hide_optional_fields_store_credits' ), 10 );
-
-		// Prevent Advanced Coupons from using the checkout block
-		add_filter( 'acfw_filter_is_current_page_using_cart_checkout_block', '__return_false', 10 );
 	}
 
 
