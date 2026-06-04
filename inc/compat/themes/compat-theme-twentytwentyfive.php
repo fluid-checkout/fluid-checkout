@@ -61,7 +61,7 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 		// Add 'wp-element-button' class to apply theme styles
 		if ( is_array( $classes ) ) {
 			array_push( $classes, 'wp-element-button' );
-		} 
+		}
 		else {
 			$classes .= ' wp-element-button';
 		}
