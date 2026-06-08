@@ -30,12 +30,9 @@
 		gdprPhoneConsentHiddenSelector: '#fc-wcar-gdpr-phone-consent-hidden',
 		invalidClassNames: [ 'woocommerce-invalid', 'woocommerce-invalid-phone', 'woocommerce-invalid-required-field' ],
 		updateCheckoutCooldownMs: 300,
-		enableIntlPhoneWcarCompat: false,
-		abandonmentTrackingAction: 'cartflows_save_cart_abandonment_data',
 	};
 	var _isSyncingCheckout = false;
 	var _isConsentChecked = false;
-	var _hasAbandonmentAjaxPatched = false;
 
 	/**
 	 * Whether the WCAR Pro phone checkbox should be displayed.
@@ -46,19 +43,6 @@
 			&& root.wcf_ca_vars
 			&& root.wcf_ca_vars._show_gdpr_phone_message === 'on'
 		);
-	};
-
-	/**
-	 * Load settings from localized script data.
-	 */
-	var loadSettings = function() {
-		// Bail if localized settings are not available
-		if ( typeof root.fcWcarCheckoutSettings === 'undefined' || ! root.fcWcarCheckoutSettings ) { return; }
-
-		// Maybe enable international phone compatibility with WCAR
-		if ( root.fcWcarCheckoutSettings.enableIntlPhoneWcarCompat ) {
-			_settings.enableIntlPhoneWcarCompat = true;
-		}
 	};
 
 	/**
@@ -95,134 +79,6 @@
 		}
 
 		return selectedPhoneInput;
-	};
-
-	/**
-	 * Sync FC international phone hidden full-number field for a phone input.
-	 *
-	 * @param   {HTMLInputElement}  phoneInput  Phone input element.
-	 */
-	var syncIntlPhoneHiddenField = function( phoneInput ) {
-		// Bail if phone input or intl-tel-input instance is not available
-		if ( ! phoneInput || ! phoneInput.iti ) { return; }
-
-		// Get phone field instance and hidden full-number field
-		var phoneField = phoneInput.iti;
-		var hiddenFieldName = phoneInput.getAttribute( 'name' ) + '_full';
-		var hiddenField = document.querySelector( 'input[name="' + hiddenFieldName + '"]' );
-
-		// Bail if hidden field is not available
-		if ( ! hiddenField ) { return; }
-
-		// Get selected country dial code for fallback value
-		var selectedCountry = phoneField.getSelectedCountryData();
-		var selectedCountryCode = selectedCountry && selectedCountry.dialCode && 0 !== phoneInput.value.indexOf( '+' ) ? '+' + selectedCountry.dialCode : '';
-
-		// Set hidden field value from validated full number
-		hiddenField.value = phoneField.isValidNumber() ? phoneField.getNumber() : '';
-
-		// Maybe append country code to full phone number
-		if ( ! hiddenField.value && phoneInput.value ) {
-			hiddenField.value = selectedCountryCode + phoneInput.value;
-		}
-	};
-
-	/**
-	 * Get national phone digits and dial code for WCAR abandonment tracking.
-	 *
-	 * @return  {Object|null}  Phone data for WCAR tracking, or null when unavailable.
-	 */
-	var getWcarPhoneDataForTracking = function() {
-		// Get active phone input
-		var phoneInput = getActivePhoneInput();
-
-		// Bail if phone input or intl-tel-input instance is not available
-		if ( ! phoneInput || ! phoneInput.iti ) { return null; }
-
-		// Get phone field instance and selected country data
-		var phoneField = phoneInput.iti;
-		var selectedCountry = phoneField.getSelectedCountryData();
-
-		// Bail if selected country dial code is not available
-		if ( ! selectedCountry || ! selectedCountry.dialCode ) { return null; }
-
-		// Sync hidden full-number field before reading phone data
-		syncIntlPhoneHiddenField( phoneInput );
-
-		// Get dial code and national number for WCAR tracking
-		var dialCode = '+' + selectedCountry.dialCode;
-		var nationalNumber = '';
-
-		// Maybe format national number from validated E.164 value
-		if ( typeof intlTelInput !== 'undefined' && intlTelInput.utils && phoneField.isValidNumber() ) {
-			var e164Number = phoneField.getNumber();
-			var formattedNationalNumber = intlTelInput.utils.formatNumber( e164Number, selectedCountry.iso2, intlTelInput.utils.numberFormat.NATIONAL );
-			nationalNumber = formattedNationalNumber.replace( /\D/g, '' );
-		}
-
-		// Otherwise strip non-digits from visible phone input value
-		if ( ! nationalNumber ) {
-			nationalNumber = phoneInput.value.replace( /\D/g, '' );
-		}
-
-		// Bail if national number is empty
-		if ( ! nationalNumber ) { return null; }
-
-		// Return phone data expected by WCAR abandonment tracking
-		return {
-			wcf_phone: nationalNumber,
-			wcf_phone_country_code: dialCode,
-		};
-	};
-
-	/**
-	 * Maybe enrich WCAR abandonment tracking AJAX payload with international phone data.
-	 *
-	 * @param   {Object}  data  AJAX request data.
-	 */
-	var maybeEnrichAbandonmentTrackingData = function( data ) {
-		// Bail if international phone compatibility is disabled
-		if ( ! _settings.enableIntlPhoneWcarCompat ) { return; }
-
-		// Get phone data for WCAR tracking
-		var phoneData = getWcarPhoneDataForTracking();
-
-		// Bail if phone data is not available
-		if ( ! phoneData ) { return; }
-
-		// Enrich abandonment tracking payload with phone data
-		data.wcf_phone = phoneData.wcf_phone;
-		data.wcf_phone_country_code = phoneData.wcf_phone_country_code;
-	};
-
-	/**
-	 * Patch jQuery AJAX to enrich WCAR abandonment tracking requests.
-	 */
-	var maybePatchAbandonmentTrackingAjax = function() {
-		// Bail if jQuery is not available, compatibility is disabled, or AJAX is already patched
-		if ( ! _hasJQuery || ! _settings.enableIntlPhoneWcarCompat || _hasAbandonmentAjaxPatched ) { return; }
-
-		// Store original jQuery AJAX handler
-		var originalAjax = $.ajax;
-
-		// Patch jQuery AJAX to enrich WCAR abandonment tracking requests
-		$.ajax = function( options ) {
-			// Maybe enrich abandonment tracking payload before request is sent
-			if (
-				options
-				&& options.data
-				&& typeof options.data === 'object'
-				&& options.data.action === _settings.abandonmentTrackingAction
-			) {
-				maybeEnrichAbandonmentTrackingData( options.data );
-			}
-
-			// Call original jQuery AJAX handler
-			return originalAjax.call( this, options );
-		};
-
-		// Set AJAX patched flag
-		_hasAbandonmentAjaxPatched = true;
 	};
 
 	/**
@@ -597,12 +453,6 @@
 		// Bail if already initialized.
 		if ( _hasInitialized ) { return; }
 
-		// Load settings from localized script data
-		loadSettings();
-
-		// Patch jQuery AJAX for WCAR abandonment tracking
-		maybePatchAbandonmentTrackingAjax();
-
 		// Ensure checkbox is positioned on page load.
 		maybeRepositionCheckbox();
 
@@ -613,10 +463,6 @@
 
 		_hasInitialized = true;
 	};
-
-	// Run before init() to patch AJAX as early as possible, before WCAR triggers abandonment tracking on page load.
-	loadSettings();
-	maybePatchAbandonmentTrackingAjax();
 
 	//
 	// Public APIs
