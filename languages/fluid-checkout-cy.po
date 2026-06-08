@@ -2642,6 +2642,10 @@ msgstr "Wedi&#39;i ehangu"
 msgid "Do not show"
 msgstr "Peidiwch â dangos"
 
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "ie"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2776,3 +2780,8 @@ msgstr "Llongau %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Llongau"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "cam nesaf"

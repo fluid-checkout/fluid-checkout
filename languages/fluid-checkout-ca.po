@@ -2675,9 +2675,14 @@ msgstr "Col·lapsat"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Expandit"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "No mostrar"
+
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "sí"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2813,3 +2818,8 @@ msgstr "Enviament %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Enviament"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "següent pas"

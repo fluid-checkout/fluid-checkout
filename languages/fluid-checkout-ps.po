@@ -2580,9 +2580,14 @@ msgstr "سقوط شوی"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "پراخ شوی"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "مه ښکاره کوه"
+
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "هو"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2718,3 +2723,8 @@ msgstr "لېږدول %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "لېږدول"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "بل ګام"

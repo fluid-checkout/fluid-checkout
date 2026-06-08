@@ -389,6 +389,9 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	 * @param  array  $recurring_carts  The recurring carts.
 	 */
 	public function maybe_output_get_recurring_shipping_subtotals( $recurring_carts ) {
+		// Bail if cart does not need shipping
+		if ( ! WC()->cart->needs_shipping() ) { return; }
+
 		// Bail if plugin class is not available
 		if ( ! class_exists( 'WC_Subscriptions_Cart' ) ) { return; }
 
@@ -434,7 +437,13 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	public function output_shipping_subtotal_html( $recurring_cart, $total_shipping_rows, &$display_heading ) {
 		// Iterate over each shipping package in the recurring cart
 		foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
+			// Get shipping package
 			$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package );
+
+			// Continue if shipping package or rates are not available
+			if ( ! $package || ! is_array( $package[ 'rates' ] ) || empty( $package[ 'rates' ] ) ) { continue; }
+
+			// Get available shipping method rates
 			$available_methods = $package[ 'rates' ];
 
 			// Get the chosen shipping method for the recurring cart package

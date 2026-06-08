@@ -2583,9 +2583,14 @@ msgstr "Kokkuvarisemine"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Laiendatud"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Mitte näidata"
+
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "jah"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2721,3 +2726,8 @@ msgstr "Laevandus %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Laevandus"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "järgmine samm"

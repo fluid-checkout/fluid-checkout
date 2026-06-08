@@ -2614,6 +2614,10 @@ msgstr "Paplašināts"
 msgid "Do not show"
 msgstr "Neparādiet"
 
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "jā"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2748,3 +2752,8 @@ msgstr "Piegāde %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Piegāde"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "nākamais solis"

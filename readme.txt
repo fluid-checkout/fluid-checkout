@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.9
-Stable tag: 4.2.1
+Tested up to: 7.0
+Stable tag: 4.2.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -357,6 +357,27 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Conditional visibility for checkout steps based on available substeps.
+* Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
+* Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
+
+= 4.2.4 - 2026-06-02 =
+
+* Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.
+* Fixed: Compatibility with plugin Klaviyo. Prevent fatal error at checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when trying to show shipping costs for orders without shipping at cart and checkout.
+
+= 4.2.3 - 2026-05-25 =
+
+* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
+* Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
+* Fixed: Password meter styles on checkout page account creation.
+* Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
+
+= 4.2.2 - 2026-04-21 =
+
+* Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
+* Fixed: Compatibility with theme BeTheme. Check that theme function exists before trying to use it.
 
 = 4.2.1 - 2026-04-07 =
 

@@ -2579,9 +2579,14 @@ msgstr "સંકુચિત"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "વિસ્તૃત"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "બતાવશો નહીં"
+
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "હા"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2717,3 +2722,8 @@ msgstr "શિપિંગ %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "શિપિંગ"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "આગળનું પગલું"

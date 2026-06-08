@@ -1,0 +1,21 @@
+---
+description: Fluid Checkout ecosystem coding standards (local symlink to shared repo)
+alwaysApply: true
+---
+
+# Fluid Checkout standards
+
+All conventions live in `fluid-checkout-standards/.cursor/rules/`. Read the rule for the language you are editing.
+
+## Build output — never edit
+
+- **Source:** `js-src/`, `sass/`, PHP under `inc/` and plugin root.
+- **Generated (ignore):** `js/`, `css/`, `languages/`.
+
+Do not read, edit, or suggest changes under `js/`, `css/`, or `languages/`.
+
+@fluid-checkout-standards/.cursor/rules/fc-core.mdc
+@fluid-checkout-standards/.cursor/rules/fc-php.mdc
+@fluid-checkout-standards/.cursor/rules/fc-javascript.mdc
+@fluid-checkout-standards/.cursor/rules/fc-sass.mdc
+@fluid-checkout-standards/.cursor/rules/fc-code-review.mdc

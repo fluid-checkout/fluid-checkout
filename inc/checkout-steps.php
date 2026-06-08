@@ -1982,15 +1982,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_next_step_button_label( $step_id, $context = 'checkout' ) {
 		// Get next step args
 		$next_step_args = $this->get_next_step( $step_id, $context );
+		$next_step_title = is_array( $next_step_args ) ? $this->get_step_title( $next_step_args[ 'step_id' ] ) : _x( 'next step', 'Used as fallback for "Proceed to next step" button label', 'fluid-checkout' );
 
 		// Get default label for next step button
 		/** translators: Next checkout step title */
-		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $this->get_step_title( $step_id ) );
+		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_step_title );
 
 		// Check whether a specific button label is available for the next step
 		if ( array_key_exists( 'proceed_to_step_button_label', $next_step_args ) ) {
 			$button_label = $next_step_args[ 'proceed_to_step_button_label' ];
 		}
+
+		// (Deprecated) Filter to allow changes to the proceed to next step button label
+		// TODO: Deprecated, remove this filter in version 5.0.0, use the filter 'fc_proceed_to_next_step_button_label' below instead.
+		$button_label = apply_filters( 'fc_next_step_button_label', $button_label, $step_id );
 
 		// Filter to allow changes to the proceed to next step button label
 		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $next_step_args );
@@ -3059,9 +3064,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$next_visible_step = $this->get_next_visible_step( $step_args[ 'step_id' ], $context );
 				$next_visible_step_index = false !== $next_visible_step ? array_keys( $next_visible_step )[0] : -1;
 				$next_visible_step_args = false !== $next_visible_step ? $next_visible_step[ $next_visible_step_index ] : false;
-				$button_label = false !== $next_visible_step_args && array_key_exists( 'proceed_to_step_button_label', $next_visible_step_args ) ? $next_visible_step_args[ 'proceed_to_step_button_label' ] : $this->get_next_step_button_label( $step_args[ 'step_id' ], $context );
-				$button_label = apply_filters( 'fc_next_step_button_label', $button_label, $step_args[ 'step_id' ] );
 
+				// TODO: Use next visible step args for the button label
+				$button_label = $this->get_next_step_button_label( $step_args[ 'step_id' ], $context );
+
+				// Define button attributes
 				$button_attributes = array(
 					'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
 					'data-step-next' => true,
@@ -3951,7 +3958,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'number':
+					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 				case 'checkbox':
+					// Define values to be displayed as "Yes"
+					$yes_values = array( true, 1, '1', 'true', 'yes', 'on' );
+
+					// Maybe set display value to "Yes" for checked checkboxes, otherwise keep the original value.
+					$field_display_value = in_array( $field_display_value, $yes_values ) || in_array( strtolower( $field_display_value ), $yes_values ) ? __( 'yes', 'fluid-checkout' ) : $field_display_value; // Intentionally use loose comparisons on array values
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 					break;
 				case 'password':

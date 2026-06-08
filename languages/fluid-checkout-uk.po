@@ -2662,6 +2662,10 @@ msgstr "Розширений"
 msgid "Do not show"
 msgstr "Не показувати"
 
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "Так."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2796,3 +2800,8 @@ msgstr "Доставка %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Доставка"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "наступний крок"

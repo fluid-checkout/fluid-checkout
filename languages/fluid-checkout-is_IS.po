@@ -2606,6 +2606,10 @@ msgstr "Stækkað"
 msgid "Do not show"
 msgstr "Ekki sýna"
 
+#: inc/checkout-steps.php:3788
+msgid "yes"
+msgstr "já"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2740,3 +2744,8 @@ msgstr "Sending %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Sendingar"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "næsta skref"
