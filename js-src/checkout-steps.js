@@ -512,6 +512,34 @@
 
 
 	/**
+	 * Check if a step has any visible substeps.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to check.
+	 *
+	 * @return  Boolean                   Whether the step has at least one visible substep.
+	 */
+	var hasVisibleSubsteps = function( stepElement ) {
+		var hasVisibleSubsteps = false;
+
+		// Get substeps of the step
+		var substeps = stepElement.querySelectorAll( _settings.substepSelector );
+
+		// Return true if step has no substeps (e.g. payment step)
+		if ( substeps.length === 0 ) { return true; }
+
+		// Iterate through substeps
+		for ( var i = 0; i < substeps.length; i++ ) {
+			// Find at least one visible substep
+			if ( 'no' !== substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) {
+				hasVisibleSubsteps = true;
+				break;
+			}
+		}
+
+		return hasVisibleSubsteps;
+	}
+
+	/**
 	 * Get the next visible step after the given step element.
 	 *
 	 * @param   HTMLElement  stepElement  The step element to start searching from.
@@ -562,42 +590,12 @@
 
 
 	/**
-	 * Check if a step has any visible substeps.
-	 *
-	 * @param   HTMLElement  stepElement  The step element to check.
-	 *
-	 * @return  Boolean                   Whether the step has at least one visible substep.
-	 */
-	var hasVisibleSubsteps = function( stepElement ) {
-		var hasVisibleSubsteps = false;
-
-		// Get substeps of the step
-		var substeps = stepElement.querySelectorAll( _settings.substepSelector );
-
-		// Return true if step has no substeps (e.g. payment step)
-		if ( substeps.length === 0 ) { return true; }
-
-		// Iterate through substeps
-		for ( var i = 0; i < substeps.length; i++ ) {
-			// Find at least one visible substep
-			if ( 'no' !== substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) {
-				hasVisibleSubsteps = true;
-				break;
-			}
-		}
-
-		return hasVisibleSubsteps;
-	}
-
-
-
-	/**
 	 * Update step visibility based on substep visibility state.
 	 *
-	 * @param   Event  _event  An unused `jQuery.Event` object.
-	 * @param   Array  data    The updated checkout data.
+	 * @param   Event  _event  Unused `jQuery.Event` object.
+	 * @param   Array  _data   Unused updated checkout data.
 	 */
-	var maybeChangeStepVisibility = function( _event, data ) {
+	var maybeChangeStepVisibility = function( _event, _data ) {
 		var allSteps = getAllSteps();
 		var visibleSteps = [];
 
