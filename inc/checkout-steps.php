@@ -2036,7 +2036,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * Ie. for the `billing` step, it will return `Proceed to billing`.
 	 *
-	 * @deprecated      4.1.0      Deprecated in favor of `get_proceed_to_next_step_button_label()`.
+	 * @deprecated      4.3.0      Deprecated in favor of `get_proceed_to_next_step_button_label()`.
 	 *
 	 * @param   string  $step_id   ID of the step to get the button label for.
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
