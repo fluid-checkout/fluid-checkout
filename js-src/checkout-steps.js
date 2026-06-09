@@ -662,10 +662,10 @@
 			var stepActions = nextStepButton.closest( _settings.stepActionsSelector );
 
 			// Get next visible step
-			var nextStep = getNextVisibleStep( stepElement );
+			var nextStepElement = getNextVisibleStep( stepElement );
 
 			// Maybe hide the proceed button if there is no next visible step
-			if ( ! nextStep ) {
+			if ( ! nextStepElement ) {
 				// Maybe hide the step actions container
 				if ( stepActions ) {
 					stepActions.style.display = 'none';
@@ -676,7 +676,7 @@
 			}
 
 			// Update button label with next visible step's proceed label
-			var proceedLabel = nextStep.getAttribute( _settings.stepProceedLabelAttribute );
+			var proceedLabel = nextStepElement.getAttribute( _settings.stepProceedLabelAttribute );
 			if ( proceedLabel ) {
 				nextStepButton.textContent = proceedLabel;
 			}

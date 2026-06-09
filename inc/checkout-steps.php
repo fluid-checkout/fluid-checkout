@@ -1988,24 +1988,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get the label for the proceed to next step button.
+	 * Get the button label "Proceed to <next step>" that will show on a previous step when the this step (from `$step_id`) is the next visible step.
 	 *
-	 * @param   string  $step_id   ID of the step.
+	 * @param   string  $step_id   ID of the step to get the button label for.
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 *
+	 * @return  string             The button label "Proceed to <next step>" for this step.
 	 */
-	public function get_next_step_button_label( $step_id, $context = 'checkout' ) {
-		// Get next visible step for the button label
-		$next_visible_step = $this->get_next_visible_step( $step_id, $context );
-		$next_visible_step_args = is_array( $next_visible_step ) ? $next_visible_step[ array_keys( $next_visible_step )[0] ] : false;
-		$next_visible_step_title = is_array( $next_visible_step_args ) ? $this->get_step_title( $next_visible_step_args[ 'step_id' ] ) : _x( 'next step', 'Used as fallback for "Proceed to next step" button label', 'fluid-checkout' );
+	public function get_proceed_to_next_step_button_label( $step_id, $context = 'checkout' ) {
+		// Get step arguments
+		$step_args = $this->get_step( $step_id, $context );
+		$step_title = $this->get_step_title( $step_args[ 'step_id' ] );
 
 		// Get default label for next step button
 		/** translators: Next checkout step title */
-		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_visible_step_title );
+		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $step_title );
 
 		// Check whether a specific button label is available for the next step
-		if ( is_array( $next_visible_step_args ) && array_key_exists( 'proceed_to_step_button_label', $next_visible_step_args ) ) {
-			$button_label = $next_visible_step_args[ 'proceed_to_step_button_label' ];
+		if ( is_array( $step_args ) && array_key_exists( 'proceed_to_step_button_label', $step_args ) ) {
+			$button_label = $step_args[ 'proceed_to_step_button_label' ];
 		}
 
 		// (Deprecated) Filter to allow changes to the proceed to next step button label
@@ -2013,9 +2014,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$button_label = apply_filters( 'fc_next_step_button_label', $button_label, $step_id );
 
 		// Filter to allow changes to the proceed to next step button label
-		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $next_visible_step_args );
+		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $step_args );
 
 		return $button_label;
+	}
+
+	/**
+	 * Get the button label "Next step" that will show on a step when it is the next visible step.
+	 * 
+	 * @deprecated      4.1.0      Deprecated in favor of `get_proceed_to_next_step_button_label()`.
+	 *
+	 * @param   string  $step_id   ID of the step to get the button label for.
+	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 *
+	 * @return  string             The button label "Next step" for this step.
+	 */
+	public function get_next_step_button_label( $step_id, $context = 'checkout' ) {
+		// Add deprecation notice
+		wc_doing_it_wrong( __FUNCTION__, 'Use `get_proceed_to_next_step_button_label()` instead.', '4.1.0' );
+
+		return $this->get_proceed_to_next_step_button_label( $step_id, $context );
 	}
 
 
@@ -3076,8 +3094,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Maybe output next step button if not on last visible step
 			if ( 'checkout' === $context && $step_index !== $last_visible_step_index ) :
-				// Get next step button label
-				$button_label = $this->get_next_step_button_label( $step_args[ 'step_id' ], $context );
+				// Get next visible step for the button label
+				$next_visible_step = $this->get_next_visible_step( $step_id, $context );
+				$next_visible_step_args = is_array( $next_visible_step ) ? $next_visible_step[ array_keys( $next_visible_step )[0] ] : false;
+				$next_visible_step_id = is_array( $next_visible_step_args ) ? $next_visible_step_args[ 'step_id' ] : '';
+
+				// Get next step button label for the next visible step
+				$button_label = $this->get_proceed_to_next_step_button_label( $next_visible_step_id, $context );
 
 				// Define button attributes
 				$button_attributes = array(
