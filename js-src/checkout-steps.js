@@ -519,7 +519,8 @@
 	 * @return  Boolean                   Whether the step has at least one visible substep.
 	 */
 	var hasVisibleSubsteps = function( stepElement ) {
-		var hasVisibleSubsteps = false;
+		// Initialize variables
+		var _hasVisibleSubsteps = false;
 
 		// Get substeps of the step
 		var substeps = stepElement.querySelectorAll( _settings.substepSelector );
@@ -531,12 +532,12 @@
 		for ( var i = 0; i < substeps.length; i++ ) {
 			// Find at least one visible substep
 			if ( 'no' !== substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) {
-				hasVisibleSubsteps = true;
+				_hasVisibleSubsteps = true;
 				break;
 			}
 		}
 
-		return hasVisibleSubsteps;
+		return _hasVisibleSubsteps;
 	}
 
 	/**
@@ -547,9 +548,18 @@
 	 * @return  HTMLElement|null          The next visible step element, or `null` if not found.
 	 */
 	var getNextVisibleStep = function( stepElement ) {
+		// Initialize variables
 		var nextVisibleStep = null;
 		var allSteps = getAllSteps();
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return null; }
+
+		// Get index of the step element
 		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Bail if step index not found for the given step element
+		if ( -1 === stepIndex ) { return null; }
 
 		// Iterate forward through steps after the given step
 		for ( var i = stepIndex + 1; i < allSteps.length; i++ ) {
@@ -571,9 +581,18 @@
 	 * @return  HTMLElement|null          The previous visible step element, or `null` if not found.
 	 */
 	var getPreviousVisibleStep = function( stepElement ) {
+		// Initialize variables
 		var previousVisibleStep = null;
 		var allSteps = getAllSteps();
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return null; }
+
+		// Get index of the step element
 		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Bail if step index not found for the given step element
+		if ( -1 === stepIndex ) { return null; }
 
 		// Iterate backward through steps
 		for ( var i = stepIndex - 1; i >= 0; i-- ) {
