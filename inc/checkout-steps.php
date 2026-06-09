@@ -2976,13 +2976,34 @@ class FluidCheckout_Steps extends FluidCheckout {
 				<div class="fc-progress-bar__steps" data-progress-bar data-step-count="<?php echo esc_attr( $steps_count ); ?>">
 					<?php
 					foreach ( $_checkout_steps as $step_index => $step_args ) :
-						$step_bar_class = $step_index < $current_step_index ? 'is-complete' : ( $step_index == $current_step_index ? 'is-current' : '' );
 						$step_id = $step_args[ 'step_id' ];
+						$step_is_visible = $this->has_visible_substeps( $step_id, $context );
+						$step_bar_classes = array();
+
+						// Handle hidden state
+						if ( ! $step_is_visible ) {
+							$step_bar_classes[] = 'is-hidden';
+						}
+						// Handle complete state
+						elseif ( $step_index < $current_step_index ) {
+							$step_bar_classes[] = 'is-complete';
+						}
+						// Handle current state
+						elseif ( $step_index == $current_step_index ) {
+							$step_bar_classes[] = 'is-current';
+						}
+
+						// Convert classes to string for HTML attribute
+						$step_bar_class_str = implode( ' ', $step_bar_classes );
+
+						// Get step title
 						$step_title = $this->get_step_title( $step_id );
 						$step_title = apply_filters( "fc_progress_bar_step_title_{$step_id}", $step_title, $step_id, $step_args, $step_index, $context );
-						$step_visible_attr = $this->has_visible_substeps( $step_id, $context ) ? ' data-step-visible="yes"' : ' data-step-visible="no"';
+
+						// Get step visible attribute
+						$step_visible_attr = $step_is_visible ? ' data-step-visible="yes"' : ' data-step-visible="no"';
 						?>
-						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_index + 1 ); ?>"<?php echo $step_visible_attr; // WPCS: XSS ok. ?>><?php echo esc_html( $step_title ); ?></span>
+						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class_str ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_index + 1 ); ?>"<?php echo $step_visible_attr; // WPCS: XSS ok. ?>><?php echo esc_html( $step_title ); ?></span>
 					<?php
 					endforeach;
 					?>

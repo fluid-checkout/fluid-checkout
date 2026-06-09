@@ -62,6 +62,7 @@
 		isLoadingClass: 'is-loading',
 		isCurrentClass: 'is-current',
 		isCompleteClass: 'is-complete',
+		isHiddenClass: 'fc-hidden',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
 		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
 		currentLastStepClass: 'fc-checkout-step-current-last',
@@ -361,6 +362,33 @@
 
 
 	/**
+	 * Set progress bar item visibility state.
+	 *
+	 * @param   HTMLElement  progressBarItem  Progress bar item element.
+	 * @param   boolean      isVisible        Whether the progress bar item should be visible.
+	 */
+	var setProgressBarItemVisibility = function( progressBarItem, isVisible ) {
+		// Define visible state value
+		var visibleValue = isVisible ? 'yes' : 'no';
+
+		// Set visible state attribute
+		progressBarItem.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+
+		// Handle visible state
+		if ( isVisible ) {
+			progressBarItem.classList.remove( _settings.isHiddenClass );
+		}
+		// Handle hidden state
+		else {
+			progressBarItem.classList.add( _settings.isHiddenClass );
+			progressBarItem.classList.remove( _settings.isCurrentClass );
+			progressBarItem.classList.remove( _settings.isCompleteClass );
+		}
+	}
+
+
+
+	/**
 	 * Update the progress bar state.
 	 */
 	var updateProgressBar = function() {
@@ -384,25 +412,27 @@
 
 		// Update progress bar items status
 		for ( var i = 0; i < progressBarItems.length; i++ ) {
-			var bar = progressBarItems[i];
+			var bar = progressBarItems[ i ];
+			var isBarVisible = 'no' !== bar.getAttribute( _settings.stepVisibleAttribute );
+
+			// Skip hidden progress bar items
+			if ( ! isBarVisible ) {
+				setProgressBarItemVisibility( bar, false );
+				continue;
+			}
+
+			// Remove hidden class from the progress bar item
+			bar.classList.remove( _settings.isHiddenClass );
+
+			// Get step index of the progress bar item
 			var stepIndex = parseInt( bar.getAttribute( _settings.stepIndexAttribute ) );
 			stepIndex = isNaN( stepIndex ) ? -1 : stepIndex;
 
-			// Update the `current` status for each progress bar item
-			if ( stepIndex == currentStepIndex ) {
-				bar.classList.add( _settings.isCurrentClass );
-			}
-			else {
-				bar.classList.remove( _settings.isCurrentClass );
-			}
+			// Handle `current` status using toggle method
+			bar.classList.toggle( _settings.isCurrentClass, stepIndex == currentStepIndex );
 
-			// Update the `complete` status for each progress bar item
-			if ( stepIndex < currentStepIndex ) {
-				bar.classList.add( _settings.isCompleteClass );
-			}
-			else {
-				bar.classList.remove( _settings.isCompleteClass );
-			}
+			// Toggle `complete` state based on the step index
+			bar.classList.toggle( _settings.isCompleteClass, stepIndex < currentStepIndex );
 		}
 
 		// Get only visible progress bar items
@@ -645,7 +675,7 @@
 
 			// Update corresponding progress bar item visibility
 			if ( progressBarItem ) {
-				progressBarItem.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+				setProgressBarItemVisibility( progressBarItem, isVisible );
 			}
 		}
 
