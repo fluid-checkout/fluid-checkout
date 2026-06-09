@@ -452,7 +452,16 @@
 			return;
 		}
 
-		// Set current step as complete
+		// Get next visible step, and set it as current
+		var nextStepElement = getNextVisibleStep( stepElement );
+
+		// Bail if there is no next visible step
+		if ( ! nextStepElement ) { return; }
+
+		// Set `current` to the next step
+		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
+
+		// Set previous step as complete
 		stepElement.setAttribute( _settings.stepCompleteAttribute, '' );
 
 		// Collapse substeps fields and display step in text format
@@ -470,15 +479,6 @@
 			// Collapse substep
 			collapseSubstepEdit( substepElement );
 		}
-
-		// Get next visible step, and set it as current
-		var nextStepElement = getNextVisibleStep( stepElement );
-
-		// Bail if there is no next visible step
-		if ( ! nextStepElement ) { return; }
-
-		// Set `current` to the next step
-		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
 
 		// Unset `current` from the step that is closing
 		// (needs to run after setting the next step as the current one)
@@ -666,7 +666,12 @@
 
 			// Maybe hide the proceed button if there is no next visible step
 			if ( ! nextStep ) {
-				stepActions.style.display = 'none';
+				// Maybe hide the step actions container
+				if ( stepActions ) {
+					stepActions.style.display = 'none';
+				}
+
+				// Skip to the next step
 				continue;
 			}
 
@@ -677,7 +682,9 @@
 			}
 
 			// Ensure the button container is visible
-			stepActions.style.display = '';
+			if ( stepActions ) {
+				stepActions.style.display = '';
+			}
 		}
 
 		// Maybe handle case where the current step has become hidden

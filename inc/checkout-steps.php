@@ -1644,9 +1644,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $this->cached_values[ $cache_handle ];
 		}
 
-		// Defaults to last step, otherwise the customer would always return
+		// Defaults to last visible step, otherwise the customer would always return
 		// to first step when all steps are completed, which does not make sense.
-		$current_step = $this->get_last_step( $context );
+		$current_step = $this->get_last_visible_step( $context );
 
 		// Get checkout steps
 		$_checkout_steps = $this->get_checkout_steps( $context );
@@ -1743,6 +1743,36 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Check if a substep is visible based on its attributes.
+	 *
+	 * @param   array   $substep_args  Arguments of the substep to check.
+	 * @param   string  $context       Context in which the function is running. Defaults to `checkout`.
+	 *
+	 * @return  boolean                Whether the substep is visible.
+	 */
+	public function is_substep_visible( $substep_args, $context = 'checkout' ) {
+		// Bail if substep id cannot be retrieved
+		if ( ! is_array( $substep_args ) || ! array_key_exists( 'substep_id', $substep_args ) ) { return false; }
+
+		// Initialize variables
+		$is_substep_visible = true;
+
+		// Get substep id
+		$substep_id = $substep_args[ 'substep_id' ];
+
+		// Get additional attributes
+		$additional_attributes = array_key_exists( 'additional_attributes', $substep_args ) ? $substep_args[ 'additional_attributes' ] : array();
+		$additional_attributes = $this->get_filtered_substep_additional_attributes_for_output( $additional_attributes, $substep_id, $context );
+
+		// Set as not visible if the visibility attribute is set to `no`
+		if ( array_key_exists( 'data-substep-visible', $additional_attributes ) && 'no' === $additional_attributes[ 'data-substep-visible' ] ) {
+			$is_substep_visible = false;
+		}
+
+		return $is_substep_visible;
+	}
+
+	/**
 	 * Check if a step has any visible substeps.
 	 *
 	 * @param   string  $step_id   Id of the checkout step.
@@ -1760,11 +1790,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get substeps for this step
 		$substeps = $this->get_checkout_substeps( $step_id, $context );
 
-		// Return true if step has no substeps
+		// Return true if step has no substeps (e.g. payment step)
 		if ( ! is_array( $substeps ) || count( $substeps ) < 1 ) { return true; }
 
-		// Iterate through substeps to check for visibility
+		// Initialize variables
 		$has_visible_substeps = false;
+
+		// Iterate through substeps to check for visibility
 		foreach ( $substeps as $substep_args ) {
 			// Set as visible and stop iterating if this substep is visible
 			if ( $this->is_substep_visible( $substep_args, $context ) ) {
@@ -1779,33 +1811,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $has_visible_substeps;
-	}
-
-
-
-	/**
-	 * Check if a substep is visible based on its attributes.
-	 *
-	 * @param   array   $substep_args  Arguments of the substep to check.
-	 * @param   string  $context       Context in which the function is running. Defaults to `checkout`.
-	 *
-	 * @return  boolean                Whether the substep is visible.
-	 */
-	public function is_substep_visible( $substep_args, $context = 'checkout' ) {
-		// Initialize variables
-		$is_substep_visible = true;
-		$substep_id = $substep_args[ 'substep_id' ];
-		$additional_attributes = array_key_exists( 'additional_attributes', $substep_args ) ? $substep_args[ 'additional_attributes' ] : array();
-
-		// Apply the same substep attributes filter used during rendering
-		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes, $context ) ? : array();
-
-		// Set as not visible if the visibility attribute is set to `no`
-		if ( array_key_exists( 'data-substep-visible', $additional_attributes ) && 'no' === $additional_attributes[ 'data-substep-visible' ] ) {
-			$is_substep_visible = false;
-		}
-
-		return $is_substep_visible;
 	}
 
 
@@ -1990,7 +1995,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $next_visible_step_title );
 
 		// Check whether a specific button label is available for the next step
-		if ( array_key_exists( 'proceed_to_step_button_label', $next_visible_step_args ) ) {
+		if ( is_array( $next_visible_step_args ) && array_key_exists( 'proceed_to_step_button_label', $next_visible_step_args ) ) {
 			$button_label = $next_visible_step_args[ 'proceed_to_step_button_label' ];
 		}
 
@@ -3061,12 +3066,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Maybe output next step button if not on last visible step
 			if ( 'checkout' === $context && $step_index !== $last_visible_step_index ) :
-				// // Get next visible step for the button label
-				// $next_visible_step = $this->get_next_visible_step( $step_args[ 'step_id' ], $context );
-				// $next_visible_step_index = false !== $next_visible_step ? array_keys( $next_visible_step )[0] : -1;
-				// $next_visible_step_id = false !== $next_visible_step ? $next_visible_step[ $next_visible_step_index ][ 'step_id' ] : false;
-				// $next_visible_step_args = false !== $next_visible_step ? $next_visible_step[ $next_visible_step_index ] : false;
-
 				// Get next step button label
 				$button_label = $this->get_next_step_button_label( $step_args[ 'step_id' ], $context );
 
@@ -3149,6 +3148,33 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get filtered additional attributes for the substep output.
+	 *
+	 * @param   array   $additional_attributes   Additional HTML attributes to add to the substep element.
+	 * @param   string  $substep_id              Id of the substep.
+	 * @param   string  $context                 Context in which the substep is being output for. Defaults to `checkout`.
+	 */
+	public function get_filtered_substep_additional_attributes_for_output( $additional_attributes, $substep_id, $context = 'checkout' ) {
+		// Make sure additional attributes is an array, before applying the filter.
+		$additional_attributes = is_array( $additional_attributes ) ? $additional_attributes : array();
+
+		/**
+		 * Filter additional attributes for the substep output, allowing other plugins to add or modify attributes.
+		 * 
+		 * @param array  $additional_attributes  Additional HTML attributes to add to the substep element.
+		 * @param string $context                Context in which the substep is being output for. Defaults to `checkout`.
+		 *
+		 * @see          $substep_id             Modifier for the filter name: substep ID.
+		 */
+		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes, $context );
+
+		// Make sure additional attributes is an array, after applying the filter.
+		$additional_attributes = is_array( $additional_attributes ) ? $additional_attributes : array();
+
+		return $additional_attributes;
+	}
+
+	/**
 	 * Output checkout substep start tag.
 	 *
 	 * @param   string  $step_id                     Id of the step in which the substep will be rendered.
@@ -3157,11 +3183,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $context                     Context in which the substep is being output for. Defaults to `checkout`.
 	 */
 	public function output_substep_start_tag( $step_id, $substep_id, $additional_attributes = array(), $context = 'checkout' ) {
-		// Filter to allow other plugins to add or modify attributes
-		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes, $context );
-
-		// Make sure additional attributes is an array before using it
-		if ( null === $additional_attributes ) { $additional_attributes = array(); }
+		// Get filtered additional attributes for the substep output
+		$additional_attributes = $this->get_filtered_substep_additional_attributes_for_output( $additional_attributes, $substep_id, $context );
 
 		// Merge additional attributes with default attributes
 		$substep_attributes = array_merge( $additional_attributes, array(
