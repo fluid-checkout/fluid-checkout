@@ -560,11 +560,12 @@
 
 		// Iterate through substeps
 		for ( var i = 0; i < substeps.length; i++ ) {
-			// Find at least one visible substep
-			if ( 'no' !== substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) {
-				_hasVisibleSubsteps = true;
-				break;
-			}
+			// Skip if substep is not visible
+			if ( 'no' === substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) { continue; }
+
+			// Set flag to true
+			_hasVisibleSubsteps = true;
+			break;
 		}
 
 		return _hasVisibleSubsteps;
@@ -593,11 +594,12 @@
 
 		// Iterate forward through steps after the given step
 		for ( var i = stepIndex + 1; i < allSteps.length; i++ ) {
-			// Get next visible step
-			if ( 'no' !== allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) {
-				nextVisibleStep = allSteps[ i ];
-				break;
-			}
+			// Skip if step is not visible
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) { continue; }
+
+			// Set next visible step
+			nextVisibleStep = allSteps[ i ];
+			break;
 		}
 
 		return nextVisibleStep;
@@ -626,11 +628,12 @@
 
 		// Iterate backward through steps
 		for ( var i = stepIndex - 1; i >= 0; i-- ) {
+			// Skip if step is not visible
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) { continue; }
+
 			// Get previous visible step
-			if ( 'no' !== allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) {
-				previousVisibleStep = allSteps[ i ];
-				break;
-			}
+			previousVisibleStep = allSteps[ i ];
+			break;
 		}
 
 		return previousVisibleStep;
@@ -1043,6 +1046,7 @@
 		// Finish initialization
 		maybeChangeSubstepState();
 		maybeChangeStepVisibility();
+		updateGlobalStepStates();
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
