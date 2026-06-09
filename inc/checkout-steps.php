@@ -1819,6 +1819,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get the first checkout step that has visible substeps.
 	 * 
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 * 
+	 * @return  array|bool         An array with only one value, the first checkout step that has visible substeps,
+	 *                             or `false` when no step was found. The index is preserved from the registered checkout steps list, and the value contains the step arguments.
 	 */
 	public function get_first_visible_step( $context = 'checkout' ) {
 		// Get checkout steps
@@ -1841,6 +1844,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get the last checkout step that has visible substeps.
 	 * 
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 * 
+	 * @return  array|bool         An array with only one value, the last checkout step that has visible substeps,
+	 *                             or `false` when no step was found. The index is preserved from the registered checkout steps list, and the value contains the step arguments.
 	 */
 	public function get_last_visible_step( $context = 'checkout' ) {
 		// Get checkout steps
@@ -1865,6 +1871,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param   string  $step_id   Id of the step to find the next visible step after.
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
+	 * 
+	 * @return  array|bool         An array with only one value, the next checkout step that is visible,
+	 *                             or `false` when no step was found. The index is preserved from the registered checkout steps list, and the value contains the step arguments.
 	 */
 	public function get_next_visible_step( $step_id, $context = 'checkout' ) {
 		// Get list of checkout steps
@@ -2980,7 +2989,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_title_element_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
 		// Get proceed to step button label
-		/** translators: %s is replaced with the next step title. */
+		/** translators: %s: Next checkout step title, usually all lowercase depending on the language. */
 		$proceed_to_step_button_label = array_key_exists( 'proceed_to_step_button_label', $step_args ) ? $step_args[ 'proceed_to_step_button_label' ] : sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $step_title );
 
 		// Define step attributes
