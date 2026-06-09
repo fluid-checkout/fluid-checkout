@@ -1988,17 +1988,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get the button label "Proceed to <next step>" that will show on a previous step when the this step (from `$step_id`) is the next visible step.
+	 * Get the "Proceed to <next step>" button label for this step (from `$step_id`), which will then be used on a previous step when the this step is the next visible step.
+	 *
+	 * Ie. for the `billing` step, it will return `Proceed to billing`.
 	 *
 	 * @param   string  $step_id   ID of the step to get the button label for.
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  string             The button label "Proceed to <next step>" for this step.
+	 * @return  string|bool        The button label "Proceed to <next step>" for this step, or `false` if the step is not registered.
 	 */
 	public function get_proceed_to_next_step_button_label( $step_id, $context = 'checkout' ) {
 		// Get step arguments
 		$step_args = $this->get_step( $step_id, $context );
-		$step_title = $this->get_step_title( $step_args[ 'step_id' ] );
+
+		// Bail if step arguments are not an array
+		if ( ! is_array( $step_args ) ) { return false; }
+
+		// Get step title
+		$step_title = $this->get_step_title( $step_args[ 'step_id' ], $context );
 
 		// Get default label for next step button
 		/** translators: Next checkout step title */
@@ -2020,14 +2027,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get the button label "Next step" that will show on a step when it is the next visible step.
+	 * Get the "Proceed to <next step>" button label for this step (from `$step_id`), which will then be used on a previous step when the this step is the next visible step.
+	 *
+	 * Ie. for the `billing` step, it will return `Proceed to billing`.
 	 * 
 	 * @deprecated      4.1.0      Deprecated in favor of `get_proceed_to_next_step_button_label()`.
 	 *
 	 * @param   string  $step_id   ID of the step to get the button label for.
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
 	 *
-	 * @return  string             The button label "Next step" for this step.
+	 * @return  string             The button label "Proceed to <next step>" for this step.
 	 */
 	public function get_next_step_button_label( $step_id, $context = 'checkout' ) {
 		// Add deprecation notice
@@ -3006,16 +3015,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_title = $this->get_step_title( $step_id, $context );
 		$step_title_element_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
-		// Get proceed to step button label
-		/** translators: %s: Next checkout step title, usually all lowercase depending on the language. */
-		$proceed_to_step_button_label = array_key_exists( 'proceed_to_step_button_label', $step_args ) ? $step_args[ 'proceed_to_step_button_label' ] : sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $step_title );
-
 		// Define step attributes
 		$step_attributes = array(
 			'class' => 'fc-checkout-step',
 			'data-step-id' => ! empty( $step_id ) && $step_id != null ? $step_id : '',
 			'data-step-label' => $step_title,
-			'data-step-proceed-label' => apply_filters( 'fc_proceed_to_next_step_button_label', $proceed_to_step_button_label, $step_id, $step_args ),
+			'data-step-proceed-label' => $this->get_proceed_to_next_step_button_label( $step_id, $context ),
 			'aria-label' => $step_title,
 			'data-step-index' => $step_index,
 			'data-step-complete' => $this->is_step_complete( $step_id, $context ),
