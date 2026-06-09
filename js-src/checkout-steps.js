@@ -993,6 +993,10 @@
 			}
 		}
 
+		// Finish initialization
+		maybeChangeSubstepState();
+		maybeChangeStepVisibility();
+
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
 
