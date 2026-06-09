@@ -2980,6 +2980,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_title_element_id = 'fc-step__title--' . $step_args[ 'step_id' ];
 
 		// Get proceed to step button label
+		/** translators: %s is replaced with the next step title. */
 		$proceed_to_step_button_label = array_key_exists( 'proceed_to_step_button_label', $step_args ) ? $step_args[ 'proceed_to_step_button_label' ] : sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $step_title );
 
 		// Define step attributes
