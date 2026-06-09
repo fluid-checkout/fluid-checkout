@@ -2017,7 +2017,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$button_label = sprintf( __( 'Proceed to %s', 'fluid-checkout' ), $step_title );
 
 		// Check whether a specific button label is available for the next step
-		if ( is_array( $step_args ) && array_key_exists( 'proceed_to_step_button_label', $step_args ) ) {
+		if ( array_key_exists( 'proceed_to_step_button_label', $step_args ) ) {
 			$button_label = $step_args[ 'proceed_to_step_button_label' ];
 		}
 
