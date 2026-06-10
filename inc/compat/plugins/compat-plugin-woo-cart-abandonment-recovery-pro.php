@@ -35,6 +35,9 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	public function late_hooks() {
 		// Phone GDPR
 		$this->gdpr_phone_hooks();
+
+		// Country code fields
+		$this->country_code_hooks();
 	}
 
 	/**
@@ -50,6 +53,49 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'maybe_add_gdpr_phone_consent_substep_text_line' ), 30 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_persist_gdpr_phone_consent_to_session' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_gdpr_phone_consent_hidden_fragment' ), 10 );
+	}
+
+	/**
+	 * Initialize WCAR country code field hooks.
+	 */
+	public function country_code_hooks() {
+		// Bail if WCAR plugin main class is unavailable
+		if ( ! function_exists( 'wcf_ca' ) ) { return; }
+
+		add_filter( 'fc_substep_text_shipping_address_field_keys_skip_list', array( $this, 'maybe_add_wcar_country_code_substep_review_text_skip_fields' ), 10 );
+		add_filter( 'fc_substep_text_billing_address_field_keys_skip_list', array( $this, 'maybe_add_wcar_country_code_substep_review_text_skip_fields' ), 10 );
+	}
+
+
+
+	/**
+	 * Check whether WCAR Pro SMS or WhatsApp tracking is enabled.
+	 *
+	 * @return  bool
+	 */
+	public function is_wcar_sms_or_whatsapp_enabled() {
+		// Bail if WCAR PRO license is not active
+		if ( ! function_exists( 'wcar_pro_is_active_license' ) || ! wcar_pro_is_active_license() ) { return false; }
+
+		// Bail if WCAR plugin main class is unavailable
+		if ( ! function_exists( 'wcf_ca' ) ) { return false; }
+
+		$sms_enabled      = 'on' === wcf_ca()->utils->wcar_get_option( 'wcf_ca_sms_tracking_status' );
+		$whatsapp_enabled = 'on' === wcf_ca()->utils->wcar_get_option( 'wcf_ca_whatsapp_tracking_status' );
+
+		return $sms_enabled || $whatsapp_enabled;
+	}
+
+	/**
+	 * Check whether FC PRO international phone fields replace the WCAR country code fields.
+	 *
+	 * @return  bool
+	 */
+	public function is_fc_pro_intl_phone_wcar_compat_enabled() {
+		// Bail if FC PRO WCAR compatibility class is unavailable
+		if ( ! class_exists( 'FluidCheckout_PRO_WooCartAbandonmentRecoveryPro' ) ) { return false; }
+
+		return FluidCheckout_PRO_WooCartAbandonmentRecoveryPro::instance()->is_intl_phone_wcar_compat_enabled();
 	}
 
 
@@ -351,6 +397,36 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		$review_text_lines[] = ! empty( $field_label ) ? sprintf( _x( '%1$s: %2$s', 'Substep review checkbox line', 'fluid-checkout' ), $field_label, $yes_value ) : $yes_value;
 
 		return $review_text_lines;
+	}
+
+	/**
+	 * Maybe add WCAR country code fields to the address substep review text skip list.
+	 *
+	 * @param   array  $field_keys_skip_list  The list of field keys to skip in the substep review text.
+	 *
+	 * @return  array
+	 */
+	public function maybe_add_wcar_country_code_substep_review_text_skip_fields( $field_keys_skip_list ) {
+		// Bail if WCAR Pro SMS or WhatsApp tracking is not enabled
+		if ( ! $this->is_wcar_sms_or_whatsapp_enabled() ) { return $field_keys_skip_list; }
+
+		// Bail if FC PRO international phone fields replace the WCAR country code fields
+		if ( $this->is_fc_pro_intl_phone_wcar_compat_enabled() ) { return $field_keys_skip_list; }
+
+		// Bail if not an array
+		if ( ! is_array( $field_keys_skip_list ) ) { return $field_keys_skip_list; }
+
+		// Maybe skip shipping country code field
+		if ( doing_filter( 'fc_substep_text_shipping_address_field_keys_skip_list' ) ) {
+			$field_keys_skip_list[] = 'shipping_country_code';
+		}
+
+		// Maybe skip billing country code field
+		if ( doing_filter( 'fc_substep_text_billing_address_field_keys_skip_list' ) ) {
+			$field_keys_skip_list[] = 'billing_country_code';
+		}
+
+		return $field_keys_skip_list;
 	}
 }
 
