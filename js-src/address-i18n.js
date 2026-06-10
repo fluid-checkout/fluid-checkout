@@ -156,38 +156,32 @@ jQuery( function( $ ) {
 				if ( wrapper.is( _settings.billingAddressFieldGroupSelector ) ) { addressFieldGroup = 'billing'; }
 				else if ( wrapper.is( _settings.shippingAddressFieldGroupSelector ) ) { addressFieldGroup = 'shipping'; }
 
-				// Determine field key prefix
-				var field_key_prefix = addressFieldGroup + '_';
-
 				// Determine field key
 				// Skip concatenating field key prefix for generic edit address fields group
 				var field_key = key;
 				if ( 'address' !== addressFieldGroup ) {
-					field_key = field_key_prefix + key;
+					field_key = addressFieldGroup + '_' + key;
 				}
 
 				// Get attributes to override for the current field
 				var fieldOverrideAttributes = getFieldLocaleOverrideAttributes( field_key );
 
+				// Get fields for the current group
+				var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
+
 				// Maybe replace field attributes from locale with attributes from checkout fields
-				if ( fieldOverrideAttributes.length > 0 ) {
-					// Get fields for the current group
-					var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
+				if ( fieldOverrideAttributes.length > 0 && groupFields ) {
+					// Get field attributes for the current field
+					var checkoutField = groupFields[ field_key ];
 
-					// Check whether group fields exist
-					if ( groupFields ) {
-						// Get field attributes for the current field
-						var checkoutField = groupFields[ field_key ];
-
-						// Check whether field attributes exist
-						if ( checkoutField ) {
-							// Maybe replace field attribute (native JS)
-							Object.keys( checkoutField ).forEach( function( attr_key ) {
-								if ( fieldOverrideAttributes.indexOf( attr_key ) > -1 ) {
-									fieldLocale[ attr_key ] = checkoutField[ attr_key ];
-								}
-							} );
-						}
+					// Check whether field attributes exist
+					if ( checkoutField ) {
+						// Maybe replace field attribute (native JS)
+						Object.keys( checkoutField ).forEach( function( attr_key ) {
+							if ( fieldOverrideAttributes.indexOf( attr_key ) > -1 ) {
+								fieldLocale[ attr_key ] = checkoutField[ attr_key ];
+							}
+						} );
 					}
 				}
 			}
