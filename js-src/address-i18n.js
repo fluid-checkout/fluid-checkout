@@ -47,6 +47,30 @@ jQuery( function( $ ) {
 		 *   e.g.: { "billing_phone": [ "label", "required" ], "shipping_phone": [ "label", "required" ] }
 		 */
 		overrideLocaleFieldAttributes: {},
+
+		/**
+		 * Edit address fields for My Account edit address pages.
+		 *
+		 * Expected format:
+		 *   An object, where the key is the field key and the value is the field arguments object,
+		 *   e.g.: { "shipping_phone": { "label": "Shipping phone", "required": true } }
+		 */
+		editAddressFields: {},
+
+		/**
+		 * Context for edit address field key resolution on My Account edit address pages.
+		 *
+		 * Expected format:
+		 *   {
+		 *     source: "woocommerce",
+		 *     addressType: "shipping",
+		 *     fieldKeyFormat: "prefixed",
+		 *     fieldKeyPrefix: "shipping_"
+		 *   }
+		 *
+		 * Extensions such as the Address Book add-on may use `fieldKeyFormat: "unprefixed"` and an empty `fieldKeyPrefix`.
+		 */
+		editAddressContext: {},
 	};
 	if ( FCUtils && window.fcSettings && window.fcSettings.addressI18n ) {
 		_settings = FCUtils.extendObject( true, _settings, window.fcSettings.addressI18n );
@@ -115,6 +139,76 @@ jQuery( function( $ ) {
 	};
 	// CHANGE: END - Add function to get list of locale attributes to override for a specific checkout field
 
+	// CHANGE: Add function to resolve field key for address locale attribute overrides
+	/**
+	 * Resolve the field key used to look up field arguments for locale attribute overrides.
+	 *
+	 * @param   string  locale_field_key  Locale field key from country locale information.
+	 * @param   object  wrapper           jQuery wrapper for the address field group.
+	 *
+	 * @return  object                    Field key and field arguments source for locale attribute overrides.
+	 */
+	var getFieldArgsForLocaleOverride = function( locale_field_key, wrapper ) {
+		// Initialize variables
+		var field_key   = locale_field_key;
+		var groupFields = null;
+
+		// Bail if settings are not available
+		if ( ! window.fcSettings ) {
+			return {
+				field_key:   field_key,
+				groupFields: groupFields,
+			};
+		}
+
+		// Edit address page
+		if ( wrapper.is( _settings.editAddressFieldsSelector ) && _settings.editAddressFields ) {
+			// Get edit address context
+			var editAddressContext = _settings.editAddressContext || {};
+
+			// Maybe add field key prefix for prefixed field key format
+			if ( 'prefixed' === editAddressContext.fieldKeyFormat ) {
+				var field_key_prefix = editAddressContext.fieldKeyPrefix || '';
+
+				// Maybe fallback to address type as field key prefix
+				if ( ! field_key_prefix && editAddressContext.addressType ) {
+					field_key_prefix = editAddressContext.addressType + '_';
+				}
+
+				if ( field_key_prefix ) {
+					field_key = field_key_prefix + locale_field_key;
+				}
+			}
+
+			// Get edit address fields
+			groupFields = _settings.editAddressFields;
+
+			return {
+				field_key:   field_key,
+				groupFields: groupFields,
+			};
+		}
+		// Checkout page
+		else if ( window.fcSettings.checkoutFields ) {
+			// Determine address field group
+			var addressFieldGroup = null;
+			if ( wrapper.is( _settings.billingAddressFieldGroupSelector ) ) { addressFieldGroup = 'billing'; }
+			else if ( wrapper.is( _settings.shippingAddressFieldGroupSelector ) ) { addressFieldGroup = 'shipping'; }
+
+			// Maybe set field key and group fields
+			if ( addressFieldGroup ) {
+				field_key   = addressFieldGroup + '_' + locale_field_key;
+				groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
+			}
+		}
+
+		return {
+			field_key:   field_key,
+			groupFields: groupFields,
+		};
+	};
+	// CHANGE: END - Add function to resolve field key for address locale attribute overrides
+
 	// Handle locale
 	// CHANGE: Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
 	var process_country_to_state_changing = function( event, country, wrapper ) {
@@ -148,26 +242,14 @@ jQuery( function( $ ) {
 				fieldLocale = $.extend( true, {}, locale['default'][ key ], thislocale[ key ] );
 
 			// CHANGE: Maybe replace field attributes from locale with attributes from checkout fields
-			if ( window.fcSettings && window.fcSettings.checkoutFields ) {
-				// Determine address field group
-				// Defaults to generic 'address', which might be used for edit address fields group
-				// Otherwise, set it to billing or shipping according to the wrapper
-				var addressFieldGroup = 'address';
-				if ( wrapper.is( _settings.billingAddressFieldGroupSelector ) ) { addressFieldGroup = 'billing'; }
-				else if ( wrapper.is( _settings.shippingAddressFieldGroupSelector ) ) { addressFieldGroup = 'shipping'; }
-
-				// Determine field key
-				// Skip concatenating field key prefix for generic edit address fields group
-				var field_key = key;
-				if ( 'address' !== addressFieldGroup ) {
-					field_key = addressFieldGroup + '_' + key;
-				}
+			if ( window.fcSettings ) {
+				// Get field key and field arguments source for locale attribute overrides
+				var fieldArgsForLocaleOverride = getFieldArgsForLocaleOverride( key, wrapper );
+				var field_key                  = fieldArgsForLocaleOverride.field_key;
+				var groupFields                = fieldArgsForLocaleOverride.groupFields;
 
 				// Get attributes to override for the current field
 				var fieldOverrideAttributes = getFieldLocaleOverrideAttributes( field_key );
-
-				// Get fields for the current group
-				var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
 
 				// Maybe replace field attributes from locale with attributes from checkout fields
 				if ( fieldOverrideAttributes.length > 0 && groupFields ) {

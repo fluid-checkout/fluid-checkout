@@ -357,11 +357,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Conditional visibility for checkout steps based on available substeps.
-* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
+* Improved: Address locale attribute overrides on My Account edit address pages.
+* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
 * Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
-* Fixed: Shipping phone field visibility setting not applied to the field label and required marker after country or locale updates at checkout.
+* Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
 
 = 4.2.4 - 2026-06-02 =
 
