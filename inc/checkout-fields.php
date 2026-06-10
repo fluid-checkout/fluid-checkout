@@ -101,22 +101,10 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * @param   array  $settings  JS settings object of the plugin.
 	 */
 	public function add_js_settings( $settings ) {
-		// Checkout Field Attributes
+		// Add checkout fields attributes to JS settings
 		$settings[ 'checkoutFields' ] = WC()->checkout()->get_checkout_fields();
-
 		// Initialize variables
-		$override_attributes       = array();
-		$override_field_attributes = array();
-
-		// Maybe add `required` attribute to list of attributes to override
-		// 
-		// IMPORTANT:
-		// This filter is intended to be used with some 3rd-party Checkout Field Editor plugins.
-		// Be extra careful when changing the list of attributes to override for address i18n (internationalization),
-		// as it may cause other fields to behave unexpectedly, such as the State field becoming optional when it should be required.
-		if ( true === apply_filters( 'fc_checkout_address_i18n_override_locale_required_attribute', false ) ) {
-			$override_attributes[] = 'required';
-		}
+		$override_attributes = array();
 
 		/**
 		 * Filter per-field locale attributes to override from checkout field settings on address i18n updates.
@@ -125,12 +113,34 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		 */
 		$override_field_attributes = apply_filters( 'fc_checkout_address_i18n_override_locale_field_attributes', $override_field_attributes );
 
-		// Address i18n
-		// 
-		// IMPORTANT:
-		// This filter is intended to be used with some 3rd-party Checkout Field Editor plugins.
-		// Be extra careful when changing the list of attributes to override for address i18n (internationalization),
-		// as it may cause other fields to behave unexpectedly, such as the State field becoming optional when it should be required.
+		// Maybe add `required` attribute to list of global attributes to override
+		/**
+		 * Filter whether to override the `required` attribute for address i18n.
+		 * 
+		 * IMPORTANT:
+		 * This filter is intended to be used with some 3rd-party Checkout Field Editor plugins.
+		 * Be extra careful when changing the list of attributes to override for address i18n (internationalization),
+		 * as it may cause other fields to behave unexpectedly, such as the State field becoming optional when it should be required.
+		 * 
+		 * @param   bool  $override_required  Whether to override the `required` attribute for address i18n.
+		 *
+		 * @return  bool  $override_required  Whether to override the `required` attribute for address i18n.
+		 */
+		if ( true === apply_filters( 'fc_checkout_address_i18n_override_locale_required_attribute', false ) ) {
+			$override_attributes[] = 'required';
+		}
+
+		// Add address i18n settings
+		/**
+		 * Filter the address i18n settings.
+		 * 
+		 * IMPORTANT:
+		 * This filter is intended to be used with some 3rd-party Checkout Field Editor plugins.
+		 * Be extra careful when changing the list of attributes to override for address i18n (internationalization),
+		 * as it may cause other fields to behave unexpectedly, such as the State field becoming optional when it should be required.
+		 *
+		 * @param   array  $address_i18n  Address i18n settings.
+		 */
 		$settings[ 'addressI18n' ] = array(
 			'overrideLocaleAttributes'      => apply_filters( 'fc_checkout_address_i18n_override_locale_attributes', $override_attributes ),
 			'overrideLocaleFieldAttributes' => $override_field_attributes,
