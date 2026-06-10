@@ -2634,9 +2634,9 @@ msgstr "విస్తరించబడింది"
 msgid "Do not show"
 msgstr "చూపించవద్దు"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "అవును"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "ఫోన్"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

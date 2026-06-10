@@ -69,11 +69,11 @@ msgstr ""
 msgid "Apartment, unit, building, floor, etc."
 msgstr ""
 
-#: inc/checkout-shipping-phone-field.php:104, inc/admin/admin-settings-checkout.php:660
-msgid "Shipping phone"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
 msgstr ""
 
-#: inc/checkout-shipping-phone-field.php:105
+#: inc/checkout-shipping-phone-field.php:111
 msgid "Only used for shipping-related questions."
 msgstr ""
 
@@ -1332,6 +1332,10 @@ msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:646
 msgid "Change visibility for the company name field for the billing address section on the checkout form."
+msgstr ""
+
+#: inc/admin/admin-settings-checkout.php:660
+msgid "Shipping phone"
 msgstr ""
 
 #: inc/admin/admin-settings-checkout.php:661

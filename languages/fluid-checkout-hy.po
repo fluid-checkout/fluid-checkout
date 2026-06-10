@@ -2613,9 +2613,9 @@ msgstr "Ընդլայնված"
 msgid "Do not show"
 msgstr "Չցուցադրել"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "այո"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Հեռախոս"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

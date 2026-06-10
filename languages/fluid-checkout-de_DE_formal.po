@@ -2849,9 +2849,9 @@ msgstr "Erweitert"
 msgid "Do not show"
 msgstr "Nicht anzeigen"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "ja"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Telefon"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

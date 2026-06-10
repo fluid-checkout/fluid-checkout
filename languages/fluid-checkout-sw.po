@@ -2646,9 +2646,9 @@ msgstr "Imepanuliwa"
 msgid "Do not show"
 msgstr "Usionyeshe"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "ndiyo"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Simu"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

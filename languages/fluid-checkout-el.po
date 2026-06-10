@@ -2845,9 +2845,9 @@ msgstr "Διευρυμένο"
 msgid "Do not show"
 msgstr "Μην εμφανίζετε"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "ναι"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Τηλέφωνο"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

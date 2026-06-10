@@ -2591,9 +2591,9 @@ msgstr "وڌايو ويو"
 msgid "Do not show"
 msgstr "نه ڏيکاريو"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "ها"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "فون"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2356,9 +2356,9 @@ msgstr "已扩展"
 msgid "Do not show"
 msgstr "不显示"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "是"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "电话"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

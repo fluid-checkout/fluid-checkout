@@ -2632,9 +2632,9 @@ msgstr "Razširjen"
 msgid "Do not show"
 msgstr "Ne prikaži"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "da"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Telefon"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

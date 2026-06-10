@@ -48,6 +48,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		add_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
 
+		// Field attribute overrides
+		add_filter( 'fc_checkout_address_i18n_override_locale_field_attributes', array( $this, 'add_shipping_phone_address_i18n_override_field_attributes' ), 10 );
+
 		// Move shipping phone to contact step
 		if ( 'contact' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_position' ) ) {
 			// Add shipping phone to contact fields
@@ -83,13 +86,16 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Admin fields
 		if ( is_admin() ) {
 			remove_filter( 'woocommerce_admin_shipping_fields', array( $this, 'add_shipping_phone_to_admin_screen' ), 10 );
-			remove_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1, 2 );
+			remove_filter( 'woocommerce_order_formatted_shipping_address', array( $this, 'output_order_formatted_shipping_address_with_phone' ), 1 );
 		}
 
 		// Change shipping field args
 		remove_filter( 'woocommerce_billing_fields', array( $this, 'maybe_set_billing_phone_required' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_set_shipping_phone_required' ), 100 );
 		remove_filter( 'woocommerce_shipping_fields' , array( $this, 'change_shipping_company_field_args' ), 100 );
+
+		// Ensure shipping phone label and required state from settings are not overridden by address locale scripts.
+		remove_filter( 'fc_checkout_address_i18n_override_locale_field_attributes', array( $this, 'add_shipping_phone_address_i18n_override_field_attributes' ), 10 );
 	}
 
 
@@ -114,7 +120,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Change billing phone `required` argument when shipping phone field is required.
 	 *
@@ -194,6 +200,34 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		return $fields;
 	}
 
+	/**
+	 * Add shipping phone field attributes to the per-field list of locale attributes overridden from checkout field settings.
+	 *
+	 * @param   array  $override_field_attributes  Field keys mapped to lists of attribute keys to override from checkout field settings.
+	 */
+	public function add_shipping_phone_address_i18n_override_field_attributes( $override_field_attributes ) {
+		// Ensure override field attributes is an array
+		if ( ! is_array( $override_field_attributes ) ) {
+			$override_field_attributes = array();
+		}
+
+		// Define attributes to override
+		$shipping_phone_overrides = array( 'label', 'required' );
+
+		// Maybe initialize attributes overrides array
+		if ( ! array_key_exists( 'shipping_phone', $override_field_attributes ) || ! is_array( $override_field_attributes[ 'shipping_phone' ] ) ) {
+			$override_field_attributes[ 'shipping_phone' ] = array();
+		}
+
+		// Merge attribute overrides
+		$override_field_attributes[ 'shipping_phone' ] = array_unique( array_merge(
+			$override_field_attributes[ 'shipping_phone' ],
+			$shipping_phone_overrides
+		) );
+
+		return $override_field_attributes;
+	}
+
 
 
 	/**
@@ -231,8 +265,11 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 	/**
 	 * Add the shipping phone field to admin screen.
+	 * 
+	 * @param   array  $shipping_fields  The shipping fields arguments.
 	 */
 	public function add_shipping_phone_to_admin_screen( $shipping_fields ) {
+		// Add shipping phone field to admin screen
 		$shipping_fields[ 'phone' ] = array(
 			'label'         => __( 'Phone', 'woocommerce' ),
 			'wrapper_class' => 'form-field-wide',

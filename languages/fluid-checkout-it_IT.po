@@ -2865,9 +2865,9 @@ msgstr "Espanso"
 msgid "Do not show"
 msgstr "Non mostrare"
 
-#: inc/checkout-steps.php:3788
-msgid "yes"
-msgstr "sì"
+#: inc/checkout-shipping-phone-field.php:110
+msgid "Phone"
+msgstr "Telefono"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
