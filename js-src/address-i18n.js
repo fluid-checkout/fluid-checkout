@@ -20,9 +20,33 @@ jQuery( function( $ ) {
 		expansibleContentSelector: '.fc-expansible-form-section__content',
 		inputSelector: 'input, select, textarea',
 		countryFieldsSelector: '#billing_country, #shipping_country, #country',
-		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
 
+		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
+		billingAddressFieldGroupSelector: '.woocommerce-billing-fields',
+		shippingAddressFieldGroupSelector: '.woocommerce-shipping-fields',
+		editAddressFieldsSelector: '.woocommerce-address-fields',
+
+		/**
+		 * The `overrideLocaleAttributes` setting defines which attributes in the address field locale
+		 * should be overridden by values from the site or plugin settings, instead of being replaced 
+		 * by the defaults provided by the country locale information.
+		 * 
+		 * Expected format:
+		 *   An array of strings, where each string is the key of a field attribute to override,
+		 *   e.g.: [ 'label', 'placeholder', 'required' ]
+		 */
 		overrideLocaleAttributes: [],
+
+		/**
+		 * The `overrideLocaleFieldAttributes` setting defines which attributes in the address field locale
+		 * should be overridden by values from the site or plugin settings, instead of being replaced 
+		 * by the defaults provided by the country locale information.
+		 * 
+		 * Expected format:
+		 *   An object, where the key is the field key and the value is an array of attribute keys to override,
+		 *   e.g.: { "billing_phone": [ "label", "required" ], "shipping_phone": [ "label", "required" ] }
+		 */
+		overrideLocaleFieldAttributes: {},
 	};
 	if ( FCUtils && window.fcSettings && window.fcSettings.addressI18n ) {
 		_settings = FCUtils.extendObject( true, _settings, window.fcSettings.addressI18n );
@@ -52,6 +76,44 @@ jQuery( function( $ ) {
 			}
 		}
 	}
+
+	// CHANGE: Add function to get list of locale attributes to override for a specific checkout field
+	/**
+	 * Get the list of locale attributes to override for a checkout field.
+	 *
+	 * @param   string  field_key  Checkout field key.
+	 *
+	 * @return  Array               List of attribute keys to override from checkout field settings.
+	 */
+	var getFieldLocaleOverrideAttributes = function( field_key ) {
+		// Initialize variables
+		var fieldOverrides = [];
+
+		// Bail early if no override field attributes are set, return the global overrides
+		if (
+			! _settings.overrideLocaleFieldAttributes
+			|| ! _settings.overrideLocaleFieldAttributes[ field_key ]
+			|| ! Array.isArray( _settings.overrideLocaleFieldAttributes[ field_key ] )
+		) {
+			// Get the global overrides
+			fieldOverrides = Array.isArray( _settings.overrideLocaleAttributes ) ? _settings.overrideLocaleAttributes : [];
+			return fieldOverrides;
+		}
+
+		// Get the per-field locale attribute overrides
+		fieldOverrides = _settings.overrideLocaleFieldAttributes[ field_key ];
+
+		// Get the global overrides
+		var globalOverrides = Array.isArray( _settings.overrideLocaleAttributes ) ? _settings.overrideLocaleAttributes : [];
+
+		// Combine global and per-field locale attribute overrides, per-field attributes take precedence
+		fieldOverrides = globalOverrides.filter( function( attr ) {
+			return fieldOverrides.indexOf( attr ) === -1; // Prevent duplicates
+		} ).concat( fieldOverrides );
+
+		return fieldOverrides;
+	};
+	// CHANGE: END - Add function to get list of locale attributes to override for a specific checkout field
 
 	// Handle locale
 	// CHANGE: Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
@@ -86,43 +148,48 @@ jQuery( function( $ ) {
 				fieldLocale = $.extend( true, {}, locale['default'][ key ], thislocale[ key ] );
 
 			// CHANGE: Maybe replace field attributes from locale with attributes from checkout fields
-			if ( _settings.overrideLocaleAttributes.length > 0 && window.fcSettings && window.fcSettings.checkoutFields ) {
+			if ( window.fcSettings && window.fcSettings.checkoutFields ) {
 				// Determine address field group
+				// Defaults to generic 'address', which might be used for edit address fields group
+				// Otherwise, set it to billing or shipping according to the wrapper
 				var addressFieldGroup = 'address';
-				if ( wrapper.hasClass( 'woocommerce-billing-fields' ) ) {
-					addressFieldGroup = 'billing';
-				} else if ( wrapper.hasClass( 'woocommerce-shipping-fields' ) ) {
-					addressFieldGroup = 'shipping';
-				}
+				if ( wrapper.is( _settings.billingAddressFieldGroupSelector ) ) { addressFieldGroup = 'billing'; }
+				else if ( wrapper.is( _settings.shippingAddressFieldGroupSelector ) ) { addressFieldGroup = 'shipping'; }
 
 				// Determine field key prefix
 				var field_key_prefix = addressFieldGroup + '_';
 
 				// Determine field key
+				// Skip concatenating field key prefix for generic edit address fields group
 				var field_key = key;
 				if ( 'address' !== addressFieldGroup ) {
 					field_key = field_key_prefix + key;
 				}
 
-				// Get fields for the current group
-				var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
+				// Get attributes to override for the current field
+				var fieldOverrideAttributes = getFieldLocaleOverrideAttributes( field_key );
 
-				// Check whether group fields exist
-				if ( groupFields ) {
-					// Get field attributes for the current field
-					var checkoutField = groupFields[ field_key ];
+				// Maybe replace field attributes from locale with attributes from checkout fields
+				if ( fieldOverrideAttributes.length > 0 ) {
+					// Get fields for the current group
+					var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
 
-					// Check whether field attributes exist
-					if ( checkoutField ) {
-						// Maybe replace field attribute
-						$.each( checkoutField, function( attr_key, attr_value ) {
-							if ( _settings.overrideLocaleAttributes.indexOf( attr_key ) > -1 ) {
-								fieldLocale[ attr_key ] = attr_value;
-							}
-						} );
+					// Check whether group fields exist
+					if ( groupFields ) {
+						// Get field attributes for the current field
+						var checkoutField = groupFields[ field_key ];
+
+						// Check whether field attributes exist
+						if ( checkoutField ) {
+							// Maybe replace field attribute (native JS)
+							Object.keys( checkoutField ).forEach( function( attr_key ) {
+								if ( fieldOverrideAttributes.indexOf( attr_key ) > -1 ) {
+									fieldLocale[ attr_key ] = checkoutField[ attr_key ];
+								}
+							} );
+						}
 					}
 				}
-
 			}
 			// CHANGE: END - Maybe replace field attributes from locale with attributes from checkout fields
 

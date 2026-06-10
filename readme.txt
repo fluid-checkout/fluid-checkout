@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Conditional visibility for checkout steps based on available substeps.
+* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 * Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
