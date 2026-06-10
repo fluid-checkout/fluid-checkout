@@ -211,15 +211,15 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 			$override_field_attributes = array();
 		}
 
-		// Define attributes to override for the shipping phone field
+		// Define attributes to override
 		$shipping_phone_overrides = array( 'label', 'required' );
 
-		// Maybe initialize shipping attribute overrides
-		if ( ! isset( $override_field_attributes[ 'shipping_phone' ] ) || ! is_array( $override_field_attributes[ 'shipping_phone' ] ) ) {
+		// Maybe initialize attributes overrides array
+		if ( ! array_key_exists( 'shipping_phone', $override_field_attributes ) || ! is_array( $override_field_attributes[ 'shipping_phone' ] ) ) {
 			$override_field_attributes[ 'shipping_phone' ] = array();
 		}
 
-		// Merge attribute overrides using array_merge and array_unique
+		// Merge attribute overrides
 		$override_field_attributes[ 'shipping_phone' ] = array_unique( array_merge(
 			$override_field_attributes[ 'shipping_phone' ],
 			$shipping_phone_overrides
