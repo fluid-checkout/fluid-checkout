@@ -19,12 +19,20 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 );
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+	}
 
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
 		// Phone GDPR
 		$this->gdpr_phone_hooks();
 	}
