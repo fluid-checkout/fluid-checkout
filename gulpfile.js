@@ -285,7 +285,7 @@ gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css', 'npm-ru
 gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 	// Load package.json
 	_package = loadJsonFile.sync( 'package.json' );
-	
+
 	// Bail if destination path or plugin files does not exist
 	if ( ! _gulpSettingsLocal.pluginZipPath || ! fs.existsSync( _gulpSettingsLocal.pluginZipPath ) ) {
 		console.log( 'Skipping: Plugin zip export path not defined or folder does not exist.' );
@@ -299,14 +299,24 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 		del.sync( destinationFolder, { force: true } );
 	}
 
-	exec( 'rsync -av --exclude-from=.gitignore ../' + _package.name + ' ' + _gulpSettingsLocal.pluginZipPath, function ( err, stdout, stderr ) {
-		console.log( stdout );
-		console.log( stderr );
-		if ( err ) {
-			// If an error occurred, make the Gulp task fail
-			done( err );
+	// Override exclusion for js and css folders by specifying explicit includes before the excludes
+	exec(
+		'rsync -av ' +
+		'--include="js/" --include="js/**" ' +
+		'--include="css/" --include="css/**" ' +
+		'--exclude-from=.gitignore ' +
+		'--prune-empty-dirs ' +
+		'../' + _package.name + '/ ' +
+		_gulpSettingsLocal.pluginZipPath + '/' + _package.name,
+		function ( err, stdout, stderr ) {
+			console.log( stdout );
+			console.log( stderr );
+			if ( err ) {
+				// If an error occurred, make the Gulp task fail
+				done( err );
+			}
 		}
-	} );
+	);
 
 	done();
 } ) );
@@ -722,7 +732,7 @@ gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations' ) );
 gulp.task( 'copy-updater', gulp.series( function( done ) {
 	if ( _gulpSettings.copyUpdater ) {
 		del.sync( _gulpSettings.copyUpdater.destination );
-		
+
 		gulp.src( _gulpSettings.copyUpdater.source )
 		.pipe( gulp.dest( _gulpSettings.copyUpdater.destination ) );
 	}
