@@ -114,7 +114,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$override_field_attributes = apply_filters( 'fc_checkout_address_i18n_override_locale_field_attributes', array() );
 
 		/**
-		 * Filter whether to override the `required` attribute for address i18n.
+		 * Filter whether to override the `required` attribute for address i18n locale information.
 		 * 
 		 * IMPORTANT:
 		 * This filter is intended to be used with some 3rd-party Checkout Field Editor plugins.
