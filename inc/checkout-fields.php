@@ -111,7 +111,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		 *
 		 * @param   array  $override_field_attributes  Field keys mapped to lists of attribute keys to override. Ie. `array( 'shipping_phone' => array( 'label', 'required' ) )`.
 		 */
-		$override_field_attributes = apply_filters( 'fc_checkout_address_i18n_override_locale_field_attributes', $override_field_attributes );
+		$override_field_attributes = apply_filters( 'fc_checkout_address_i18n_override_locale_field_attributes', array() );
 
 		// Maybe add `required` attribute to list of global attributes to override
 		/**
