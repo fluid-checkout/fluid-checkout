@@ -2640,9 +2640,9 @@ msgstr "Berfirehkirî"
 msgid "Do not show"
 msgstr "Nîşan nede"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "Telefon"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "erê"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

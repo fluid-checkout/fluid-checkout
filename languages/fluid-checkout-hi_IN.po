@@ -2593,9 +2593,9 @@ msgstr "विस्तारित"
 msgid "Do not show"
 msgstr "नहीं दिखाते"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "फ़ोन"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "हाँ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

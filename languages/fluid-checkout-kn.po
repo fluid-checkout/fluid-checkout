@@ -2620,9 +2620,9 @@ msgstr "ವಿಸ್ತರಿಸಲಾಗಿದೆ"
 msgid "Do not show"
 msgstr "ತೋರಿಸಬೇಡಿ"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "ದೂರವಾಣಿ"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ಹೌದು"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

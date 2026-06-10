@@ -2612,9 +2612,9 @@ msgstr "كېڭەيتىلدى"
 msgid "Do not show"
 msgstr "كۆرسەتمەڭ"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "تېلېفون"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ھەئە"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2671,9 +2671,9 @@ msgstr "വികസിപ്പിച്ചു"
 msgid "Do not show"
 msgstr "കാണിക്കരുത്"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "ഫോൺ"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "അതെ"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

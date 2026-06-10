@@ -2630,9 +2630,9 @@ msgstr "Кеңейтилген"
 msgid "Do not show"
 msgstr "Көрсөтпө"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "Телефон"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ооба"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

@@ -2614,9 +2614,9 @@ msgstr "Paplašināts"
 msgid "Do not show"
 msgstr "Neparādiet"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "Tālrunis"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "jā"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

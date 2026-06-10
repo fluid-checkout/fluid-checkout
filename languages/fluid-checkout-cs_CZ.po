@@ -2748,9 +2748,9 @@ msgstr "Rozšířená stránka"
 msgid "Do not show"
 msgstr "Nezobrazujte"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "Telefon"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ano"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"

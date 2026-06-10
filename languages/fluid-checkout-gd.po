@@ -2700,9 +2700,9 @@ msgstr "Leudaichte"
 msgid "Do not show"
 msgstr "Na seall"
 
-#: inc/checkout-shipping-phone-field.php:110
-msgid "Phone"
-msgstr "Fòn"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "Tha"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
