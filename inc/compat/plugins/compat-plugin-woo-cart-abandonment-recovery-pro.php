@@ -232,7 +232,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		if ( null === $consent_value ) { return $posted_data; }
 
 		// Sanitize consent value
-		$consent_value_esc = sanitize_text_field( wp_unslash( $consent_value ) );
+		$consent_value_esc = sanitize_text_field( $consent_value );
 
 		// Persist consent value to session
 		FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( 'wcf_gdpr_phone_consent', $consent_value_esc );
@@ -289,16 +289,16 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 	 * @return  bool
 	 */
 	public function should_add_gdpr_consent_to_current_substep() {
-		// Bail if cart is not available does not need shipping address
+		// Bail if cart is not available
 		if ( ! WC()->cart ) { return false; }
 
 		// Get if shipping address is needed
 		$needs_shipping_address = WC()->cart->needs_shipping_address();
 
-		// Bail if not on shipping address substep
+		// Show on shipping address substep when a shipping address is required
 		if ( doing_filter( 'fc_substep_shipping_address_text_lines' ) ) { return $needs_shipping_address; }
 
-		// Bail if not on billing address substep
+		// Show on billing address substep when a shipping address is not required
 		if ( doing_filter( 'fc_substep_billing_address_text_lines' ) ) { return ! $needs_shipping_address; }
 
 		return false;
