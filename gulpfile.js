@@ -279,6 +279,47 @@ gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css', 'npm-ru
 
 
 
+/**
+ * Merge plugin zip rsync settings from shared and local config.
+ */
+function getMergedPluginZipRsyncSettings() {
+	var base = _gulpSettings.pluginZipRsync || {};
+	var local = _gulpSettingsLocal.pluginZipRsync || {};
+
+	return {
+		include: ( base.include || [] ).concat( local.include || [] ),
+		exclude: ( base.exclude || [] ).concat( local.exclude || [] ),
+		excludeFrom: local.excludeFrom || base.excludeFrom || null,
+		pruneEmptyDirs: local.pruneEmptyDirs !== undefined ? local.pruneEmptyDirs : base.pruneEmptyDirs,
+	};
+}
+
+/**
+ * Build rsync filter arguments for plugin zip exports.
+ */
+function getPluginZipRsyncArgs() {
+	var rsync = getMergedPluginZipRsyncSettings();
+	var args = [];
+
+	rsync.exclude.forEach( function( pattern ) {
+		args.push( '--exclude="' + pattern + '"' );
+	} );
+
+	rsync.include.forEach( function( pattern ) {
+		args.push( '--include="' + pattern + '"' );
+	} );
+
+	if ( rsync.excludeFrom ) {
+		args.push( '--exclude-from=' + rsync.excludeFrom );
+	}
+
+	if ( rsync.pruneEmptyDirs ) {
+		args.push( '--prune-empty-dirs' );
+	}
+
+	return args.join( ' ' );
+}
+
 // Run:
 // gulp copy-plugin-files
 // Copy the plugin files which are commited to the project into the export folder.
@@ -299,13 +340,11 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 		del.sync( destinationFolder, { force: true } );
 	}
 
-	// Override exclusion for js and css folders by specifying explicit includes before the excludes
+	// Rsync filters are configured in gulp-settings.json → pluginZipRsync
+	var rsyncArgs = getPluginZipRsyncArgs();
 	exec(
 		'rsync -av ' +
-		'--include="js/" --include="js/**" ' +
-		'--include="css/" --include="css/**" ' +
-		'--exclude-from=.gitignore ' +
-		'--prune-empty-dirs ' +
+		( rsyncArgs ? rsyncArgs + ' ' : '' ) +
 		'../' + _package.name + '/ ' +
 		_gulpSettingsLocal.pluginZipPath + '/' + _package.name,
 		function ( err, stdout, stderr ) {
