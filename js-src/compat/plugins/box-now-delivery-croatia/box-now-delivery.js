@@ -7,7 +7,7 @@
       $("#box_now_delivery_button").length === 0 &&
       boxNowDeliverySettings.displayMode === "popup"
     ) {
-      var buttonText = boxNowDeliverySettings.buttonText || "Izaberi paketomat";
+      var buttonText = boxNowDeliverySettings.buttonText || "Pick a locker";
 
       $('label[for="shipping_method_0_box_now_delivery"]').after(
         '<button type="button" id="box_now_delivery_button" style="display:none;">' +
@@ -29,7 +29,7 @@
    * Apply the custom styles for the Box Now Delivery button.
    */
   function applyButtonStyles() {
-    var buttonColor = boxNowDeliverySettings.buttonColor || "#84C33F";
+    var buttonColor = boxNowDeliverySettings.buttonColor || "#6CD04E ";
 
     var styleBlock = `
       <style id="box-now-delivery-button-styles">
@@ -53,7 +53,33 @@
 	  createPopupMap();
 	});
   }
+  function GetUserCountry() {
+    // Get the selected country from the billing_country select input
+    let selectedCountry;
 
+    // Modified if clause that mitigates for shipping, billing address and cases where only one service country is selected.
+    if ($("#ship-to-different-address-checkbox").is(":checked")) {
+      // Check if the shipping country field is a select or hidden input
+      if ($('select[name="shipping_country"]').length) {
+        // If it's a select, get the selected value
+        selectedCountry = $('select[name="shipping_country"]').val();
+      } else if ($('input[name="shipping_country"]').length) {
+        // If it's a hidden input, get the value directly
+        selectedCountry = $('input[name="shipping_country"]').val();
+      }
+    } else {
+      // Check if the billing country field is a select or hidden input
+      if ($('select[name="billing_country"]').length) {
+        // If it's a select, get the selected value
+        selectedCountry = $('select[name="billing_country"]').val();
+      } else if ($('input[name="billing_country"]').length) {
+        // If it's a hidden input, get the value directly
+        selectedCountry = $('input[name="billing_country"]').val();
+      }
+    }
+
+    return selectedCountry;
+  }
   /**
    * Embed the map to the page.
    */
@@ -80,7 +106,8 @@
         .css({
           position: "relative",
           width: "100%",
-          height: "100%", // Set the height to 100%
+          height: "80vh", // Set the height to 100%
+          overflow: "auto",
         })
         .append(iframe)
         .append(lockerInfoContainer.append(lockerDetailsContainer));
@@ -98,7 +125,11 @@
       });
     }
 
-    if ($("#shipping_method_0_box_now_delivery").is(":checked")) {
+    var selected = $(
+      'input[name^="shipping_method"]:checked, input[name^="shipping_method"][type="hidden"]'
+    );
+
+    if (selected.length && selected.val().includes("box_now_delivery")) {
       $("#box_now_delivery_embedded_map").show();
     } else {
       $("#box_now_delivery_embedded_map").hide();
@@ -122,6 +153,9 @@
 
     overlay.on("click", function () {
       $("#box_now_delivery_overlay").remove();
+      $("iframe[src^='https://widget-v5.boxnow.gr/popup.html']").remove();
+      $("iframe[src^='https://widget-v5.boxnow.cy/popup.html']").remove();
+      $("iframe[src^='https://widget-v5.boxnow.bg/popup.html']").remove();
       $("iframe[src^='https://widget-v5.boxnow.hr/popup.html']").remove();
     });
 
@@ -133,16 +167,30 @@
    */
   function createPopupMap() {
     let gpsOption = boxNowDeliverySettings.gps_option;
+    let partnerId = boxNowDeliverySettings.partnerId;
     let postalCode = $('input[name="billing_postcode"]').val();
-    let src = "https://widget-v5.boxnow.hr/popup.html";
+    let country = GetUserCountry();
+    console.log(country);
+
+    if (country === "CY") {
+      src = "https://widget-v5.boxnow.cy/popup.html";
+    } else if (country === "BG") {
+      src = "https://widget-v5.boxnow.bg/popup.html";
+    } else if (country === "HR") {
+      src = "https://widget-v5.boxnow.hr/popup.html";
+    } else {
+      src = "https://widget-v5.boxnow.gr/popup.html";
+    }
+
+    partnerId ? (src += "?partnerId=" + partnerId + "&") : "?";
 
     if (gpsOption === "off") {
       src +=
-        "?gps=no&zip=" +
+        "gps=no&zip=" +
         encodeURIComponent(postalCode) +
         "&autoclose=yes&autoselect=no";
     } else {
-      src += "?gps=yes&autoclose=yes&autoselect=no";
+      src += "gps=yes&autoclose=yes&autoselect=no";
     }
 
     let iframe = $("<iframe>", {
@@ -182,20 +230,33 @@
    */
   function createEmbeddedIframe() {
     let gpsOption = boxNowDeliverySettings.gps_option;
+    let partnerId = boxNowDeliverySettings.partnerId;
     let postalCode = $('input[name="billing_postcode"]').val();
-    let src = "https://widget-v5.boxnow.hr/";
+    let country = GetUserCountry();
+
+    if (country === "CY") {
+      src = "https://widget-v5.boxnow.cy";
+    } else if (country === "BG") {
+      src = "https://widget-v5.boxnow.bg";
+    } else if (country === "HR") {
+      src = "https://widget-v5.boxnow.hr";
+    } else {
+      src = "https://widget-v5.boxnow.gr";
+    }
+
+    partnerId ? (src += "?partnerId=" + partnerId + "&") : "?";
 
     if (gpsOption === "off") {
-      src += "?gps=no&zip=" + encodeURIComponent(postalCode);
+      src += "gps=no&zip=" + encodeURIComponent(postalCode);
     } else {
-      src += "?gps=yes";
+      src += "gps=yes";
     }
 
     return $("<iframe>", {
       src: src,
       css: {
         width: "100%",
-        height: "100%",
+        height: "70%",
         border: 0,
       },
     });
@@ -267,21 +328,21 @@
 
     // Define the content for English.
     var englishContent = `
-<div style="font-family: Arial, sans-serif; margin-top: 10px;">
-  <p style="margin-bottom: 10px; color: rgb(132 195 62);"><b>Izabrani paketomat</b></p>
-  <p style="margin-bottom: 5px; font-size: 14px;"><b>Ime paketomata:</b> ${locker_name}</p>
-  <p style="margin-bottom: 5px; font-size: 14px;"><b>Adresa paketomata:</b> ${locker_address}</p>
-  <p style="margin-bottom: 5px; font-size: 14px;"><b>Poštanski broj:</b> ${locker_postal_code}</p>
+<div style="font-family: Verdana , Arial, sans-serif;font-weight:300;margin-top: -7px;">
+  <p style="margin: 1px 0px; color: #61bb46;font-weight: 400;height: 25px;"><b>Selected Locker</b></p>
+  <p style="margin: 1px 0px; font-size: 13px;line-height:20px;height: 20px;">${locker_name}</p>
+  <p style="margin: 1px 0px; font-size: 13px;line-height:20px;height: 20px;">${locker_address}</p>
+  <p style="margin: 1px 0px; font-size: 13px;line-height:20px;height: 20px;">${locker_postal_code}</p>
 </div>`;
 
     // Define the content for Greek.
-    //     var greekContent = `
-    // <div style="font-family: Arial, sans-serif; margin-top: 10px;">
-    //   <p style="margin-bottom: 10px; color: rgb(132 195 62);"><b>Επιλεγμένο locker</b></p>
-    //   <p style="margin-bottom: 5px; font-size: 14px;"><b>Όνομα locker:</b> ${locker_name}</p>
-    //   <p style="margin-bottom: 5px; font-size: 14px;"><b>Διεύθυνση locker:</b> ${locker_address}</p>
-    //   <p style="margin-bottom: 5px; font-size: 14px;"><b>ΤΚ:</b> ${locker_postal_code}</p>
-    // </div>`;
+    var greekContent = `
+<div style="font-family: Verdana , Arial, sans-serif;font-weight:300;margin-top: -7px;">
+  <p style="margin: 1px 0px; color: #61bb46;font-weight: 400;height: 25px;"><b>Επιλεγμένο locker</b></p>
+  <p style="margin: 1px 0px; font-size: 13px;line-height:20px;height: 20px;">${locker_name}</p>
+  <p style="margin: 1px 0px; font-size: 13px;line-height:20px;height: 20px;">${locker_address}</p>
+  <p style="margin: 1px 0px; font-size: 13px;line-height:20px;height: 20px;">${locker_postal_code}</p>
+</div>`;
 
     // Choose the correct content based on the language.
     var content = language === "el" ? greekContent : englishContent;
@@ -305,6 +366,9 @@
 
     if (boxNowDeliverySettings.displayMode === "popup") {
       $("#box_now_delivery_overlay").remove();
+      $("iframe[src^='https://widget-v5.boxnow.gr/popup.html']").remove();
+      $("iframe[src^='https://widget-v5.boxnow.cy/popup.html']").remove();
+      $("iframe[src^='https://widget-v5.boxnow.bg/popup.html']").remove();
       $("iframe[src^='https://widget-v5.boxnow.hr/popup.html']").remove();
     }
 
@@ -363,7 +427,12 @@
     toggleBoxNowDelivery();
 	// CHANGE: Add event listener to the button skipping the checks from addButton().
 	attachButtonClickListener();
+
 	// CHANGE: Remove clearSelectedLockerDetails() function call.
+
+    if ($("#shipping_method_0_box_now_delivery").is(":checked")) {
+      showSelectedLockerDetailsFromLocalStorage();
+    }
   }
 
   /**
@@ -394,7 +463,7 @@
           event.stopImmediatePropagation();
           alert(
             boxNowDeliverySettings.lockerNotSelectedMessage ||
-              "Obavezno izabrati paketomat!"
+              "Please select a locker first!"
           );
           return false;
         }
@@ -419,5 +488,9 @@
     );
 
 	// CHANGE: Remove addOrderValidation() function call to replace it with field validation from Fluid Checkout.
+
+    $("body").on("change", "#billing_country", function () {
+      clearSelectedLockerDetails();
+    });
   });
 })(jQuery);

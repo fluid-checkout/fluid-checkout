@@ -108,39 +108,39 @@
 	"plugin-compat-template": [
 		{
 			"our_path": "templates/compat/plugins/curiero-plugin/templates/checkout-collectpoint-select.php",
-			"their_path": "plugins/curiero-plugin/templates/checkout-collectpoint-select.php"
+			"their_path": "plugins/curiero-plugin/includes/shipping_methods/fancourier/templates/checkout-collectpoint-select.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/curiero-plugin/templates/checkout-dpd-boxes-select.php",
-			"their_path": "plugins/curiero-plugin/templates/checkout-dpd-boxes-select.php"
+			"their_path": "plugins/curiero-plugin/includes/shipping_methods/dpd/templates/checkout-dpd-boxes-select.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/curiero-plugin/templates/checkout-lockers-select.php",
-			"their_path": "plugins/curiero-plugin/templates/checkout-lockers-select.php"
+			"their_path": "plugins/curiero-plugin/includes/shipping_methods/sameday/templates/checkout-lockers-select.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php",
-			"their_path": "plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php"
+			"their_path": "plugins/lp-express-shipping-method-for-woocommerce/woocommerce/checkout/lpexpress_terminals.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php",
-			"their_path": "plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php"
+			"their_path": "https://plugins.svn.wordpress.org/woo-shipping-dpd-baltic/trunk/public/woocommerce/checkout/form-shipping-dpd-terminals-with-map.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php",
-			"their_path": "plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php"
+			"their_path": "https://plugins.svn.wordpress.org/woo-shipping-dpd-baltic/trunk/public/woocommerce/checkout/form-shipping-dpd-terminals.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woo-ups-pickup/cart/pickup-button-html.php",
-			"their_path": "plugins/woo-ups-pickup/cart/pickup-button-html.php"
+			"their_path": "https://plugins.svn.wordpress.org/woo-ups-pickup/trunk/includes/templates/pickup-button-html.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woo-ups-pickup/cart/pickup-location.php",
-			"their_path": "plugins/woo-ups-pickup/cart/pickup-location.php"
+			"their_path": "https://plugins.svn.wordpress.org/woo-ups-pickup/trunk/templates/pickup-location.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woocommerce-germanized/checkout/dhl/preferred-services.php",
-			"their_path": "plugins/woocommerce-germanized/checkout/dhl/preferred-services.php"
+			"their_path": "https://plugins.svn.wordpress.org/shiptastic-integration-for-dhl/trunk/templates/checkout/dhl/preferred-services.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woocommerce-germanized/checkout/order-submit.php",
@@ -148,7 +148,7 @@
 		},
 		{
 			"our_path": "templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php",
-			"their_path": "plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php"
+			"their_path": "plugins/woocommerce-subscriptions/templates/cart/cart-recurring-shipping.php"
 		}
 	],
 	"woocommerce-template": [
