@@ -1,0 +1,95 @@
+{
+	"manifest_description": "Third-party files replaced or forked by Fluid Checkout.",
+	"wp_content_relative": "../../",
+	"categories": [
+		"plugin-compat-js",
+		"theme-compat-js",
+		"woocommerce-js",
+		"plugin-compat-template",
+		"theme-compat-template",
+		"woocommerce-template"
+	],
+	"scan": {
+		"woocommerce_templates_dir": "templates/fc",
+		"compat_templates_dir": "templates/compat",
+		"plugin_compat_js_dir": "js-src/compat/plugins",
+		"theme_compat_js_dir": "js-src/compat/themes",
+		"compat_php_dir": "inc/compat"
+	},
+	"exclude_template_package": "fluid-checkout",
+	"fc_only_template_basenames": [
+		"form-contact.php",
+		"form-contact-login.php",
+		"form-contact-login-modal.php",
+		"form-account-creation.php",
+		"review-order-section.php",
+		"form-payment.php",
+		"form-additional-fields.php",
+		"page-checkout.php",
+		"page-checkout-header.php",
+		"page-checkout-footer.php",
+		"checkout-header.php",
+		"checkout-footer.php"
+	],
+	"script_handle_overrides": {
+		"js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js": "woocommerce-extra-checkout-fields-for-brazil-front",
+		"js-src/compat/plugins/biteship/biteship-public.js": "biteship"
+	},
+	"their_path_overrides": {
+		"js-src/compat/plugins/klarna-payments-for-woocommerce/klarna-payments.js": "assets/js/klarna-payments.js",
+		"js-src/compat/plugins/yith-woocommerce-checkout-manager/frontend.js": "assets/js/frontend.js",
+		"js-src/compat/plugins/wordfence/login.js": "modules/login-security/js/login.js",
+		"js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js": "assets/js/frontend/frontend.js",
+		"js-src/compat/plugins/woocommerce-eu-vat-field/frontend-checkout-page.js": "assets/js/frontend-checkout-page.js",
+		"js-src/compat/plugins/woocommerce-eu-vat-field/frontend-eu-vat-field-visibility.js": "assets/js/frontend-eu-vat-field-visibility.js",
+		"js-src/compat/plugins/woo-mailerlite/public.js": "public/js/woo-mailerlite-public.js",
+		"js-src/compat/plugins/woocommerce-superfaktura/checkout.js": "assets/js/checkout.js",
+		"js-src/compat/plugins/hezarfen-for-woocommerce/checkout.js": "assets/js/checkout.js",
+		"js-src/compat/plugins/wc-brt-fermopoint-shipping-methods/wc_brt_fermopoint_shipping_methods_js.js": "assets/js/wc_brt_fermopoint_shipping_methods_js.js",
+		"js-src/compat/plugins/wc-postcode-checker/wc-postcode-checker.js": "assets/js/wc-postcode-checker.js",
+		"js-src/compat/plugins/states-cities-and-places-for-woocommerce/place-select.js": "js/place-select.js",
+		"js-src/compat/plugins/rvvup-for-woocommerce/scripts.js": "assets/js/scripts.js",
+		"js-src/compat/plugins/woocommerce-gus/gus.js": "assets/js/gus.js",
+		"js-src/compat/plugins/fooevents/events-frontend.js": "js/events-frontend.js",
+		"js-src/compat/plugins/biteship/biteship-public.js": "public/js/biteship-public.js",
+		"js-src/compat/plugins/box-now-delivery-croatia/box-now-delivery.js": "js/box-now-delivery.js",
+		"js-src/compat/plugins/automation-web-platform/checkout.js": "assets/js/checkout.js",
+		"js-src/compat/plugins/eu-vat-for-woocommerce/alg-wc-eu-vat.js": "assets/js/alg-wc-eu-vat.js",
+		"js-src/compat/plugins/mobile-login-woocommerce-premium/xoo-ml-phone-js.js": "assets/js/xoo-ml-phone-js.js",
+		"templates/compat/plugins/woocommerce-germanized/checkout/order-submit.php": "templates/checkout/order-submit.php",
+		"js-src/compat/plugins/astra-addon/checkout-labels-as-placeholders.js": "assets/js/checkout-labels-as-placeholders.js",
+		"js-src/compat/themes/goya/float-labels.js": "assets/js/float-labels.js",
+		"js-src/compat/themes/flatsome/float-labels.js": "inc/extensions/flatsome-wc-cart/inc/float-labels.js",
+		"js-src/compat/themes/fennik/lazy-load.js": "assets/js/lazy-load.js"
+	},
+	"their_path_url_by_category": {
+		"woocommerce-template": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/{their_path}"
+	},
+	"woocommerce_js_entries": [
+		{
+			"our_path": "js-src/checkout.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/checkout.js",
+			"script_handle": "wc-checkout"
+		},
+		{
+			"our_path": "js-src/country-select.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/country-select.js",
+			"script_handle": "wc-country-select"
+		},
+		{
+			"our_path": "js-src/woocommerce.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/woocommerce.js",
+			"script_handle": "woocommerce"
+		},
+		{
+			"our_path": "js-src/address-i18n.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/address-i18n.js",
+			"script_handle": "wc-address-i18n"
+		},
+		{
+			"our_path": "js-src/password-strength-meter.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/password-strength-meter.js",
+			"script_handle": "wc-password-strength-meter"
+		}
+	]
+}

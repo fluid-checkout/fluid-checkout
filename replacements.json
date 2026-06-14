@@ -1,0 +1,200 @@
+{
+	"schema_version": "1.0",
+	"description": "Third-party files replaced or forked by Fluid Checkout.",
+	"plugin-compat-js": [
+		{
+			"our_path": "js-src/compat/plugins/automation-web-platform/checkout.js",
+			"their_path": "https://plugins.svn.wordpress.org/automation-web-platform/trunk/assets/js/checkout.js",
+			"script_handle": "awp-checkout-js"
+		},
+		{
+			"our_path": "js-src/compat/plugins/biteship/biteship-public.js",
+			"their_path": "plugins/biteship/public/js/biteship-public.js",
+			"script_handle": "biteship"
+		},
+		{
+			"our_path": "js-src/compat/plugins/box-now-delivery-croatia/box-now-delivery.js",
+			"their_path": "https://plugins.svn.wordpress.org/box-now-delivery-croatia/trunk/js/box-now-delivery.js",
+			"script_handle": "box-now-delivery-js"
+		},
+		{
+			"our_path": "js-src/compat/plugins/fooevents/events-frontend.js",
+			"their_path": "plugins/fooevents/js/events-frontend.js",
+			"script_handle": "woocommerce-events-front-script"
+		},
+		{
+			"our_path": "js-src/compat/plugins/hezarfen-for-woocommerce/checkout.js",
+			"their_path": "https://plugins.svn.wordpress.org/hezarfen-for-woocommerce/trunk/assets/js/checkout.js",
+			"script_handle": "wc_hezarfen_checkout_js"
+		},
+		{
+			"our_path": "js-src/compat/plugins/klarna-payments-for-woocommerce/klarna-payments.js",
+			"their_path": "https://plugins.svn.wordpress.org/klarna-payments-for-woocommerce/trunk/assets/js/klarna-payments.js",
+			"script_handle": "klarna_payments"
+		},
+		{
+			"our_path": "js-src/compat/plugins/mobile-login-woocommerce-premium/xoo-ml-phone-js.js",
+			"their_path": "plugins/mobile-login-woocommerce-premium/assets/js/xoo-ml-phone-js.js",
+			"script_handle": "xoo-ml-phone-js"
+		},
+		{
+			"our_path": "js-src/compat/plugins/payplus-payment-gateway/checkout.js",
+			"their_path": "https://plugins.svn.wordpress.org/payplus-payment-gateway/trunk/assets/js/checkout.js",
+			"script_handle": "fc-compat-payplus-payment-gateway-checkout"
+		},
+		{
+			"our_path": "js-src/compat/plugins/rvvup-for-woocommerce/scripts.js",
+			"their_path": "plugins/rvvup-for-woocommerce/assets/js/scripts.js",
+			"script_handle": "rvvup_payment_js"
+		},
+		{
+			"our_path": "js-src/compat/plugins/states-cities-and-places-for-woocommerce/place-select.js",
+			"their_path": "https://plugins.svn.wordpress.org/states-cities-and-places-for-woocommerce/trunk/js/place-select.js",
+			"script_handle": "wc-city-select"
+		},
+		{
+			"our_path": "js-src/compat/plugins/wc-postcode-checker/wc-postcode-checker.js",
+			"their_path": "plugins/wc-postcode-checker/assets/js/wc-postcode-checker.js",
+			"script_handle": "wpo-wcnlpc"
+		},
+		{
+			"our_path": "js-src/compat/plugins/woo-mailerlite/public.js",
+			"their_path": "https://plugins.svn.wordpress.org/woo-mailerlite/trunk/public/js/woo-mailerlite-public.js",
+			"script_handle": "woo-ml-public-script"
+		},
+		{
+			"our_path": "js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce-extra-checkout-fields-for-brazil/trunk/assets/js/frontend/frontend.js",
+			"script_handle": "woocommerce-extra-checkout-fields-for-brazil-front"
+		},
+		{
+			"our_path": "js-src/compat/plugins/woocommerce-gus/gus.js",
+			"their_path": "plugins/woocommerce-gus/assets/js/gus.js",
+			"script_handle": "frontend-ajax-gus"
+		},
+		{
+			"our_path": "js-src/compat/plugins/woocommerce-superfaktura/checkout.js",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce-superfaktura/trunk/assets/js/checkout.js",
+			"script_handle": "wc-sf-checkout-js"
+		}
+	],
+	"woocommerce-js": [
+		{
+			"our_path": "js-src/address-i18n.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/address-i18n.js",
+			"script_handle": "wc-address-i18n"
+		},
+		{
+			"our_path": "js-src/checkout.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/checkout.js",
+			"script_handle": "wc-checkout"
+		},
+		{
+			"our_path": "js-src/country-select.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/country-select.js",
+			"script_handle": "wc-country-select"
+		},
+		{
+			"our_path": "js-src/password-strength-meter.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/password-strength-meter.js",
+			"script_handle": "wc-password-strength-meter"
+		},
+		{
+			"our_path": "js-src/woocommerce.js",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/woocommerce.js",
+			"script_handle": "woocommerce"
+		}
+	],
+	"plugin-compat-template": [
+		{
+			"our_path": "templates/compat/plugins/curiero-plugin/templates/checkout-collectpoint-select.php",
+			"their_path": "plugins/curiero-plugin/templates/checkout-collectpoint-select.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/curiero-plugin/templates/checkout-dpd-boxes-select.php",
+			"their_path": "plugins/curiero-plugin/templates/checkout-dpd-boxes-select.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/curiero-plugin/templates/checkout-lockers-select.php",
+			"their_path": "plugins/curiero-plugin/templates/checkout-lockers-select.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php",
+			"their_path": "plugins/lp-express-shipping-method-for-woocommerce/checkout/lpexpress_terminals.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php",
+			"their_path": "plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php",
+			"their_path": "plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woo-ups-pickup/cart/pickup-button-html.php",
+			"their_path": "plugins/woo-ups-pickup/cart/pickup-button-html.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woo-ups-pickup/cart/pickup-location.php",
+			"their_path": "plugins/woo-ups-pickup/cart/pickup-location.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woocommerce-germanized/checkout/dhl/preferred-services.php",
+			"their_path": "plugins/woocommerce-germanized/checkout/dhl/preferred-services.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woocommerce-germanized/checkout/order-submit.php",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce-germanized/trunk/templates/checkout/order-submit.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php",
+			"their_path": "plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php"
+		}
+	],
+	"woocommerce-template": [
+		{
+			"our_path": "templates/fc/checkout-steps/checkout/cart-errors.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/cart-errors.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/checkout/form-billing.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/form-billing.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/checkout/form-checkout.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/form-checkout.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/checkout/form-shipping.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/form-shipping.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/checkout/payment-method.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/payment-method.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/checkout/payment.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/payment.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/checkout/review-order.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/review-order.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/emails/email-addresses.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/emails/email-addresses.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/emails/plain/email-addresses.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/emails/plain/email-addresses.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/global/form-login.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/global/form-login.php"
+		},
+		{
+			"our_path": "templates/fc/checkout-steps/myaccount/form-add-payment-method.php",
+			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/myaccount/form-add-payment-method.php"
+		}
+	]
+}
