@@ -62,33 +62,35 @@
 		"js-src/compat/themes/flatsome/float-labels.js": "inc/extensions/flatsome-wc-cart/inc/float-labels.js",
 		"js-src/compat/themes/fennik/lazy-load.js": "assets/js/lazy-load.js"
 	},
+	"resolve_their_path_wordpress_org_svn": true,
 	"their_path_url_by_category": {
-		"woocommerce-template": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/{their_path}"
+		"woocommerce-template": "https://plugins.svn.wordpress.org/woocommerce/trunk/{path_in_plugin}",
+		"woocommerce-js": "https://plugins.svn.wordpress.org/woocommerce/trunk/{path_in_plugin}"
 	},
 	"woocommerce_js_entries": [
 		{
 			"our_path": "js-src/checkout.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/checkout.js",
+			"their_path": "assets/js/frontend/checkout.js",
 			"script_handle": "wc-checkout"
 		},
 		{
 			"our_path": "js-src/country-select.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/country-select.js",
+			"their_path": "assets/js/frontend/country-select.js",
 			"script_handle": "wc-country-select"
 		},
 		{
 			"our_path": "js-src/woocommerce.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/woocommerce.js",
+			"their_path": "assets/js/frontend/woocommerce.js",
 			"script_handle": "woocommerce"
 		},
 		{
 			"our_path": "js-src/address-i18n.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/address-i18n.js",
+			"their_path": "assets/js/frontend/address-i18n.js",
 			"script_handle": "wc-address-i18n"
 		},
 		{
 			"our_path": "js-src/password-strength-meter.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/password-strength-meter.js",
+			"their_path": "assets/js/frontend/password-strength-meter.js",
 			"script_handle": "wc-password-strength-meter"
 		}
 	]

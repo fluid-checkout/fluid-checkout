@@ -81,27 +81,27 @@
 	"woocommerce-js": [
 		{
 			"our_path": "js-src/address-i18n.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/address-i18n.js",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/assets/js/frontend/address-i18n.js",
 			"script_handle": "wc-address-i18n"
 		},
 		{
 			"our_path": "js-src/checkout.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/checkout.js",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/assets/js/frontend/checkout.js",
 			"script_handle": "wc-checkout"
 		},
 		{
 			"our_path": "js-src/country-select.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/country-select.js",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/assets/js/frontend/country-select.js",
 			"script_handle": "wc-country-select"
 		},
 		{
 			"our_path": "js-src/password-strength-meter.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/password-strength-meter.js",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/assets/js/frontend/password-strength-meter.js",
 			"script_handle": "wc-password-strength-meter"
 		},
 		{
 			"our_path": "js-src/woocommerce.js",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/client/legacy/js/frontend/woocommerce.js",
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/assets/js/frontend/woocommerce.js",
 			"script_handle": "woocommerce"
 		}
 	],
@@ -154,47 +154,47 @@
 	"woocommerce-template": [
 		{
 			"our_path": "templates/fc/checkout-steps/checkout/cart-errors.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/cart-errors.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/checkout/cart-errors.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/checkout/form-billing.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/form-billing.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/checkout/form-billing.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/checkout/form-checkout.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/form-checkout.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/checkout/form-checkout.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/checkout/form-shipping.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/form-shipping.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/checkout/form-shipping.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/checkout/payment-method.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/payment-method.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/checkout/payment-method.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/checkout/payment.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/payment.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/checkout/payment.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/checkout/review-order.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/checkout/review-order.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/checkout/review-order.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/emails/email-addresses.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/emails/email-addresses.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/emails/email-addresses.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/emails/plain/email-addresses.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/emails/plain/email-addresses.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/emails/plain/email-addresses.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/global/form-login.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/global/form-login.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/global/form-login.php"
 		},
 		{
 			"our_path": "templates/fc/checkout-steps/myaccount/form-add-payment-method.php",
-			"their_path": "https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/plugins/woocommerce/templates/myaccount/form-add-payment-method.php"
+			"their_path": "https://plugins.svn.wordpress.org/woocommerce/trunk/templates/myaccount/form-add-payment-method.php"
 		}
 	]
 }
