@@ -22,6 +22,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Privacy data managers
 		// Shipping phone data export and erasure is handled by the core WooCommerce privacy class.
 
+		// Remove WC-native shipping phone field when FC shipping phone is hidden
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_shipping_phone_field' ), 100 );
+
 		// Shipping phone
 		$this->shipping_phone_hooks();
 	}
@@ -96,6 +99,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Ensure shipping phone label and required state from settings are not overridden by address locale scripts.
 		remove_filter( 'fc_checkout_address_i18n_override_locale_field_attributes', array( $this, 'add_shipping_phone_address_i18n_override_field_attributes' ), 10 );
+
+		// Remove WC-native shipping phone field when FC shipping phone is hidden
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_shipping_phone_field' ), 100 );
 	}
 
 
@@ -145,16 +151,45 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @param   array  $shipping_fields  The shipping fields arguments.
 	 */
 	public function maybe_set_shipping_phone_required( $shipping_fields ) {
+		static $is_processing = false;
+
+		// Bail if already processing shipping fields (prevents infinite recursion when checking billing-same-as-shipping state)
+		if ( $is_processing ) { return $shipping_fields; }
+
 		// Bail if billing before shipping
 		if ( FluidCheckout_Steps::instance()->is_billing_address_before_shipping_address() ) { return $shipping_fields; }
 
 		// Bail if shipping phone not present, or billing phone field not required
 		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || 'required' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) || 'billing_address' !== FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) { return $shipping_fields; }
 
+		// Bail if billing is not the same as shipping (otherwise billing collects its own required phone)
+		$is_processing = true;
+		$is_billing_same_as_shipping = FluidCheckout_Steps::instance()->is_billing_same_as_shipping();
+		$is_processing = false;
+
+		if ( ! $is_billing_same_as_shipping ) { return $shipping_fields; }
+
 		// Set shipping phone as required
 		$shipping_fields['shipping_phone']['required'] = true;
 
 		return $shipping_fields;
+	}
+
+	/**
+	 * Maybe remove the WC-native shipping phone field when FC shipping phone is hidden.
+	 *
+	 * @param   array  $fields  The shipping fields arguments.
+	 */
+	public function maybe_remove_shipping_phone_field( $fields ) {
+		// Bail if FC manages the shipping phone field (enabled)
+		if ( FluidCheckout_Steps::instance()->is_shipping_phone_enabled() ) { return $fields; }
+
+		// Remove WC-native shipping phone field when FC setting is Hidden
+		if ( array_key_exists( 'shipping_phone', $fields ) ) {
+			unset( $fields[ 'shipping_phone' ] );
+		}
+
+		return $fields;
 	}
 
 

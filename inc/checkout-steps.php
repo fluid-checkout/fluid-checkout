@@ -1201,7 +1201,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check whether the shipping phone field is enabled to be used.
 	 */
 	public function is_shipping_phone_enabled() {
-		return 'no' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' );
+		$visibility = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' );
+
+		// Backward compatibility for sites that have not run the database migration yet
+		return 'hidden' !== $visibility && 'no' !== $visibility;
 	}
 
 	/**
