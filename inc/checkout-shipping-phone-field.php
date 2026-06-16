@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 	/**
+	 * Flag to prevent infinite recursion when checking billing-same-as-shipping state.
+	 */
+	private static $_processing_set_shipping_phone_required = false;
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -152,11 +159,8 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @param   array  $shipping_fields  The shipping fields arguments.
 	 */
 	public function maybe_set_shipping_phone_required( $shipping_fields ) {
-		// Define variable to prevent infinite recursion when checking billing-same-as-shipping state
-		static $is_processing = false;
-
 		// Bail if already processing shipping fields (prevents infinite recursion when checking billing-same-as-shipping state)
-		if ( $is_processing ) { return $shipping_fields; }
+		if ( self::$_processing_set_shipping_phone_required ) { return $shipping_fields; }
 
 		// Bail if billing before shipping
 		if ( FluidCheckout_Steps::instance()->is_billing_address_before_shipping_address() ) { return $shipping_fields; }
@@ -165,9 +169,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || 'required' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) || 'billing_address' !== FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) { return $shipping_fields; }
 
 		// Bail if billing is not the same as shipping (otherwise billing collects its own required phone)
-		$is_processing = true;
+		self::$_processing_set_shipping_phone_required = true;
 		$is_billing_same_as_shipping = FluidCheckout_Steps::instance()->is_billing_same_as_shipping();
-		$is_processing = false;
+		self::$_processing_set_shipping_phone_required = false;
 
 		if ( ! $is_billing_same_as_shipping ) { return $shipping_fields; }
 
