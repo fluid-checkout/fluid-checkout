@@ -7,6 +7,13 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 	/**
+	 * Flag to prevent infinite recursion when checking billing-same-as-shipping state.
+	 */
+	private static $_processing_set_shipping_phone_required = false;
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -23,6 +30,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Shipping phone data export and erasure is handled by the core WooCommerce privacy class.
 
 		// Shipping phone
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_native_shipping_phone_field' ), 100 );
 		$this->shipping_phone_hooks();
 	}
 
@@ -96,6 +104,9 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 		// Ensure shipping phone label and required state from settings are not overridden by address locale scripts.
 		remove_filter( 'fc_checkout_address_i18n_override_locale_field_attributes', array( $this, 'add_shipping_phone_address_i18n_override_field_attributes' ), 10 );
+
+		// Shipping phone
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_native_shipping_phone_field' ), 100 );
 	}
 
 
@@ -141,20 +152,50 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 	/**
 	 * Change shipping phone `required` argument when billing phone field is required.
+	 * 
+	 * This is necessary to ensure the shipping address is entirely copied to the billing address when the billing address is the same as the shipping address.
+	 * If we do not make the shipping phone field required, the required billing phone field will not be filled in and the customer will not be able to complete the checkout.
 	 *
 	 * @param   array  $shipping_fields  The shipping fields arguments.
 	 */
 	public function maybe_set_shipping_phone_required( $shipping_fields ) {
+		// Bail if already processing shipping fields (prevents infinite recursion when checking billing-same-as-shipping state)
+		if ( self::$_processing_set_shipping_phone_required ) { return $shipping_fields; }
+
 		// Bail if billing before shipping
 		if ( FluidCheckout_Steps::instance()->is_billing_address_before_shipping_address() ) { return $shipping_fields; }
 
 		// Bail if shipping phone not present, or billing phone field not required
 		if ( ! array_key_exists( 'shipping_phone', $shipping_fields ) || 'required' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) || 'billing_address' !== FluidCheckout_Settings::instance()->get_option( 'fc_billing_phone_field_position' ) ) { return $shipping_fields; }
 
+		// Bail if billing is not the same as shipping (otherwise billing collects its own required phone)
+		self::$_processing_set_shipping_phone_required = true;
+		$is_billing_same_as_shipping = FluidCheckout_Steps::instance()->is_billing_same_as_shipping();
+		self::$_processing_set_shipping_phone_required = false;
+
+		if ( ! $is_billing_same_as_shipping ) { return $shipping_fields; }
+
 		// Set shipping phone as required
 		$shipping_fields['shipping_phone']['required'] = true;
 
 		return $shipping_fields;
+	}
+
+	/**
+	 * Maybe remove the WC-native shipping phone field when FC shipping phone is hidden.
+	 *
+	 * @param   array  $fields  The shipping fields arguments.
+	 */
+	public function maybe_remove_native_shipping_phone_field( $fields ) {
+		// Bail if FC manages the shipping phone field (enabled)
+		if ( FluidCheckout_Steps::instance()->is_shipping_phone_enabled() ) { return $fields; }
+
+		// Remove WC-native shipping phone field when FC setting is Hidden
+		if ( array_key_exists( 'shipping_phone', $fields ) ) {
+			unset( $fields[ 'shipping_phone' ] );
+		}
+
+		return $fields;
 	}
 
 
@@ -212,7 +253,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		}
 
 		// Define attributes to override
-		$shipping_phone_overrides = array( 'label', 'required' );
+		$shipping_phone_overrides = array( 'label', 'required', 'priority' );
 
 		// Maybe initialize attributes overrides array
 		if ( ! array_key_exists( 'shipping_phone', $override_field_attributes ) || ! is_array( $override_field_attributes[ 'shipping_phone' ] ) ) {

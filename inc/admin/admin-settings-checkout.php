@@ -663,7 +663,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                    => 'fc_shipping_phone_field_visibility',
 						'type'                  => 'select',
 						'options'               => array(
-							'no'               => __( 'Hidden (remove field)', 'fluid-checkout' ),
+							'hidden'           => __( 'Hidden (remove field)', 'fluid-checkout' ),
 							'optional'         => __( 'Optional', 'fluid-checkout' ),
 							'required'         => __( 'Required', 'fluid-checkout' ),
 						),
