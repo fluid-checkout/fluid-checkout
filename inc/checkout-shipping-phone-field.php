@@ -145,10 +145,14 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 
 	/**
 	 * Change shipping phone `required` argument when billing phone field is required.
+	 * 
+	 * This is necessary to ensure the shipping address is entirely copied to the billing address when the billing address is the same as the shipping address.
+	 * If we do not make the shipping phone field required, the required billing phone field will not be filled in and the customer will not be able to complete the checkout.
 	 *
 	 * @param   array  $shipping_fields  The shipping fields arguments.
 	 */
 	public function maybe_set_shipping_phone_required( $shipping_fields ) {
+		// Define variable to prevent infinite recursion when checking billing-same-as-shipping state
 		static $is_processing = false;
 
 		// Bail if already processing shipping fields (prevents infinite recursion when checking billing-same-as-shipping state)
