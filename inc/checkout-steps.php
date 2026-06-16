@@ -1201,9 +1201,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check whether the shipping phone field is enabled to be used.
 	 */
 	public function is_shipping_phone_enabled() {
+		// Get current visibility value saved to database
 		$visibility = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_phone_field_visibility' );
 
-		// Backward compatibility for sites that have not run the database migration yet
+		// Check whether set to a hidden value
+		// 'no' = legacy value used before version 4.2.5, that was replaced with 'hidden'
 		return 'hidden' !== $visibility && 'no' !== $visibility;
 	}
 
@@ -2048,7 +2050,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_next_step_button_label( $step_id, $context = 'checkout' ) {
 		// Add deprecation notice
-		wc_doing_it_wrong( __FUNCTION__, 'Use `get_proceed_to_next_step_button_label()` instead.', '4.1.0' );
+		wc_doing_it_wrong( __FUNCTION__, 'Use `get_proceed_to_next_step_button_label()` instead.', '4.3.0' );
 
 		return $this->get_proceed_to_next_step_button_label( $step_id, $context );
 	}
@@ -3005,8 +3007,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 						// Get step visible attribute
 						$step_visible_attr = $step_is_visible ? ' data-step-visible="yes"' : ' data-step-visible="no"';
+
+						// Get step number
+						$step_number = $step_index + 1; // Intentionally add 1 to the step index to get the step number, even though some steps might be hidden
 						?>
-						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class_str ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_index + 1 ); ?>"<?php echo $step_visible_attr; // WPCS: XSS ok. ?>><?php echo esc_html( $step_title ); ?></span>
+						<span class="fc-progress-bar__step <?php echo esc_attr( $step_bar_class_str ); ?>" data-step-id="<?php echo esc_attr( $step_args[ 'step_id' ] ); ?>" data-step-index="<?php echo esc_attr( $step_index ); ?>" data-step-number="<?php echo esc_attr( $step_number ); ?>"<?php echo $step_visible_attr; // WPCS: XSS ok. ?>><?php echo esc_html( $step_title ); ?></span>
 					<?php
 					endforeach;
 					?>
@@ -4053,12 +4058,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 					break;
 				case 'number':
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
+					break;
 				case 'checkbox':
 					// Define values to be displayed as "Yes"
 					$yes_values = array( true, 1, '1', 'true', 'yes', 'on' );
 
 					// Maybe set display value to "Yes" for checked checkboxes, otherwise keep the original value.
-					$field_display_value = in_array( $field_display_value, $yes_values ) || in_array( strtolower( $field_display_value ), $yes_values ) ? __( 'yes', 'fluid-checkout' ) : $field_display_value; // Intentionally use loose comparisons on array values
+					$field_display_value = in_array( $field_display_value, $yes_values ) || in_array( strtolower( (string) $field_display_value ), $yes_values ) ? __( 'yes', 'fluid-checkout' ) : $field_display_value; // Intentionally use loose comparisons on array values
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 					break;
 				case 'password':

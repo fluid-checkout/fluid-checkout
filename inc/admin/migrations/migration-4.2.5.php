@@ -38,7 +38,7 @@ class FluidCheckout_Migration_4_2_5 extends FluidCheckout {
 		// Needs to use `get_option` directly as `FluidCheckout_Settings::get_option()` wrapper function is not available yet
 		$option_value = get_option( $option_key, 'hidden' );
 
-		// Bail if current value is not set to `no`.
+		// Bail if current value is not set to legacy value `no`.
 		if ( 'no' !== $option_value ) { return; }
 
 		// Update option

@@ -22,10 +22,8 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Privacy data managers
 		// Shipping phone data export and erasure is handled by the core WooCommerce privacy class.
 
-		// Remove WC-native shipping phone field when FC shipping phone is hidden
-		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_shipping_phone_field' ), 100 );
-
 		// Shipping phone
+		add_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_native_shipping_phone_field' ), 100 );
 		$this->shipping_phone_hooks();
 	}
 
@@ -100,8 +98,8 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		// Ensure shipping phone label and required state from settings are not overridden by address locale scripts.
 		remove_filter( 'fc_checkout_address_i18n_override_locale_field_attributes', array( $this, 'add_shipping_phone_address_i18n_override_field_attributes' ), 10 );
 
-		// Remove WC-native shipping phone field when FC shipping phone is hidden
-		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_shipping_phone_field' ), 100 );
+		// Shipping phone
+		remove_filter( 'woocommerce_shipping_fields', array( $this, 'maybe_remove_native_shipping_phone_field' ), 100 );
 	}
 
 
@@ -180,7 +178,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 *
 	 * @param   array  $fields  The shipping fields arguments.
 	 */
-	public function maybe_remove_shipping_phone_field( $fields ) {
+	public function maybe_remove_native_shipping_phone_field( $fields ) {
 		// Bail if FC manages the shipping phone field (enabled)
 		if ( FluidCheckout_Steps::instance()->is_shipping_phone_enabled() ) { return $fields; }
 
@@ -247,7 +245,7 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 		}
 
 		// Define attributes to override
-		$shipping_phone_overrides = array( 'label', 'required' );
+		$shipping_phone_overrides = array( 'label', 'required', 'priority' );
 
 		// Maybe initialize attributes overrides array
 		if ( ! array_key_exists( 'shipping_phone', $override_field_attributes ) || ! is_array( $override_field_attributes[ 'shipping_phone' ] ) ) {
