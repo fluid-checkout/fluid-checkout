@@ -50,3 +50,23 @@ test -f fluid-checkout-standards/.cursor/rules/fc-core.mdc && echo OK
 
 The path `fluid-checkout-standards/` should be listed in `.gitignore` for each project repository and **must not** be committed.
 The thin Cursor rule `.cursor/rules/fluid-checkout-standards.mdc` in each project points at the original standards repo `fluid-checkout-standards/.cursor/rules/`.
+
+
+
+## Auto-build after branch changes
+
+Generated assets under `js/`, `css/`, and `languages/` must match the checked-out branch. A Git `post-checkout` hook runs `gulp build` automatically when you switch branches.
+
+Enable it once per clone:
+
+```bash
+./bin/setup-githooks.sh
+```
+
+To skip the build for a single checkout:
+
+```bash
+FC_SKIP_POST_CHECKOUT_BUILD=1 git checkout other-branch
+```
+
+Requirements: `npm install` must have been run so `node_modules/.bin/gulp` exists.
