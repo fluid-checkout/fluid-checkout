@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.9
-Stable tag: 4.2.2
+Tested up to: 7.0
+Stable tag: 4.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -357,6 +357,23 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Resolved "Same as billing address" option showing on cart for Address Book add-on.
+* Added: Conditional visibility for checkout steps based on available substeps.
+* Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
+* Improved: Address locale attribute overrides on My Account edit address pages.
+* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
+* Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
+* Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
+
+= 4.2.4 - 2026-06-02 =
+
+* Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.
+* Fixed: Compatibility with plugin Klaviyo. Prevent fatal error at checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when trying to show shipping costs for orders without shipping at cart and checkout.
+
+= 4.2.3 - 2026-05-25 =
+
+* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
 * Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
 * Fixed: Password meter styles on checkout page account creation.
 * Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
