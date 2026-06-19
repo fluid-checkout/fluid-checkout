@@ -77,7 +77,6 @@ class FluidCheckout {
 	 * @access public
 	 * @static
 	 * @return object
-	 * @since  1.0.0
 	 */
 	public static function instance() {
 		$calledClass = get_called_class();
