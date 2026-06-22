@@ -11,6 +11,10 @@ body.theme-twentytwentyfive.woocommerce-checkout .has-global-padding {
   padding-right: 10px;
 }
 
+body.theme-twentytwentyfive.woocommerce-checkout p {
+  margin-top: 0;
+}
+
 body.theme-twentytwentyfive #add_payment_method fieldset#wc-stripe-upe-form {
   border: none;
 }
