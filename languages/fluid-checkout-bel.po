@@ -2649,6 +2649,14 @@ msgstr "Пашырана"
 msgid "Do not show"
 msgstr "Не паказваць"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Так"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Не"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2783,3 +2791,8 @@ msgstr "Дастаўка %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Дастаўка"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "наступны крок"

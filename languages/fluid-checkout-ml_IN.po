@@ -2666,9 +2666,18 @@ msgstr "ചുരുക്കി"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "വികസിപ്പിച്ചു"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "കാണിക്കരുത്"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "അതെ"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "ഇല്ല"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2804,3 +2813,8 @@ msgstr "ഷിപ്പിംഗ് %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "ഷിപ്പിംഗ്"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "അടുത്ത ഘട്ടം"

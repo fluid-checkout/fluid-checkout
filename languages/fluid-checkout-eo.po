@@ -2584,9 +2584,18 @@ msgstr "Kolapsinta"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Vastigita"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ne montru"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Jes"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Ne"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2722,3 +2731,8 @@ msgstr "Sendo %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Sendo"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "sekva paŝo"

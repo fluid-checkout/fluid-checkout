@@ -5,11 +5,11 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 4.2.0
+Version: 4.2.4
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 10.6.0
+WC tested up to: 10.7.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
@@ -193,9 +193,10 @@ class FluidCheckout {
 	/**
 	 * Get the translation file path for the locale, or the main locale for language variants.
 	 *
-	 * @param  string  $file    Path to the translation file to load.
-	 * @param  string  $domain  The text domain.
-	 * @param  string  $locale  The locale.
+	 * @param  string  $file               Path to the translation file to load.
+	 * @param  string  $locale             The locale.
+	 * @param  string  $plugin_slug        The plugin slug. Defaults to `null`.
+	 * @param  string  $plugin_directory   The plugin directory. Defaults to `null`.
 	 */
 	public function get_translation_file_path( $file, $locale, $plugin_slug = null, $plugin_directory = null ) {
 		// Maybe set plugin slug if not provided
@@ -306,6 +307,9 @@ class FluidCheckout {
 
 	/**
 	 * Flush caches when the plugin is successfully updated.
+	 * 
+	 * @param  object  $upgrader_object  The upgrader object.
+	 * @param  array   $options          The options.
 	 */
 	public static function clear_cache_on_updates( $upgrader_object, $options ) {
 		// Bail if necessary options data are not available
@@ -490,11 +494,15 @@ class FluidCheckout {
 	/**
 	 * Locate template files from this plugin.
 	 * @deprecated Use FluidCheckout_Steps::instance()->locate_template() instead. This will be removed in version 3.0.0
+	 * 
+	 * @param  string  $template         The template file.
+	 * @param  string  $template_name    The template name.
+	 * @param  string  $template_path    The template path.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
 		// Add deprecation notice
 		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_Steps::instance()->locate_template() instead.', '2.3.0' );
-		
+
 		// Bail if class `FluidCheckout_Steps` is not yet loaded
 		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return $template; }
 
@@ -514,7 +522,7 @@ class FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Declare compatibility with the WooCommerce features.
 	 */
@@ -593,7 +601,7 @@ class FluidCheckout {
 			$action_label = wp_kses_post( sprintf( __( 'Activate %s', 'fluid-checkout' ), $required_plugin_name ) );
 			$action_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_plugin_path_name ), 'activate-plugin_' . $required_plugin_path_name );
 		}
-		
+
 		/** translators: %1$s: Plugin name, %2$s: Required plugin name, %3$s: Action label, %4$s: Action URL. */
 		$description = wp_kses_post( sprintf( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%4$s">%3$s</a>', 'fluid-checkout' ),
 			self::$plugin,
@@ -638,7 +646,7 @@ class FluidCheckout {
 	public function get_user_geo_location() {
 		// Bail if geolocation class not available
 		if ( ! class_exists( 'WC_Geolocation' ) ) { return false; }
-		
+
 		// Get user location information
 		$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
 		$user_ip  = $geo->get_ip_address(); // Get user IP
@@ -732,10 +740,10 @@ class FluidCheckout {
 		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
 
 		$priority_callbacks = $callbacks[ $priority ];
-		
+
 		// Bail if priority callbacks are not on the expected format
 		if ( ! is_array( $priority_callbacks ) ) { return false; }
-		
+
 		$class_callbacks = array();
 
 		foreach ( $priority_callbacks as $callback ) {
@@ -807,11 +815,11 @@ class FluidCheckout {
 	 * Remove hook callback by class name (alias for `remove_filter_for_class`).
 	 * @see `remove_filter_for_class`
 	 *
-	 * @param   string  $tag             Hook name.
-	 * @param   string  $function_array  Callable array containing the Object and function name.
-	 * @param   int     $priority        Hook priority.
+	 * @param   string  $tag              Hook name.
+	 * @param   string  $function_array   Callable array containing the Object and function name.
+	 * @param   int     $priority         Hook priority.
 	 *
-	 * @return  bool                     `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                      `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_action_for_class( $tag, $function_array, $priority ) {
 		return $this->remove_filter_for_class( $tag, $function_array, $priority );
@@ -820,11 +828,11 @@ class FluidCheckout {
 	/**
 	 * Remove hook callback for anonymous functions (closure).
 	 *
-	 * @param   string  $tag         Hook name.
-	 * @param   int     $priority    Hook priority.
-	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 * @param   string  $tag               Hook name.
+	 * @param   int     $priority          Hook priority.
+	 * @param   bool    $all_occurencies   Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
 	 *
-	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                       `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_filter_for_closure( $tag, $priority, $all_occurencies = false ) {
 		// Get callbacks for the priority value
@@ -836,7 +844,7 @@ class FluidCheckout {
 		foreach ( $priority_callbacks as $callback ) {
 			if ( $callback['function'] instanceof Closure ) {
 				remove_filter( $tag, $callback['function'], $priority );
-				
+
 				// Skip removing other occurencies, when not removing all occurencies
 				if ( ! $all_occurencies ) { break; }
 			}
@@ -848,11 +856,11 @@ class FluidCheckout {
 	/**
 	 * Remove hook callback for anonymous functions (closure)(alias for `remove_filter_for_closure`).
 	 *
-	 * @param   string  $tag         Hook name.
-	 * @param   int     $priority    Hook priority.
-	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 * @param   string  $tag               Hook name.
+	 * @param   int     $priority          Hook priority.
+	 * @param   bool    $all_occurencies   Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
 	 *
-	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                       `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_action_for_closure( $tag, $priority, $all_occurencies = false ) {
 		return $this->remove_filter_for_closure( $tag, $priority, $all_occurencies );

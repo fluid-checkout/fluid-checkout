@@ -2586,9 +2586,18 @@ msgstr "संक्षिप्त गरियो"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "विस्तारित"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "नदेखाउनुहोस्"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "हो"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "होइन"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2724,3 +2733,8 @@ msgstr "ढुवानी %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "ढुवानी"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "अर्को चरण"

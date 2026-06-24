@@ -2604,9 +2604,18 @@ msgstr "Kollapsad"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Utökad"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Visa inte"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Ja"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Nej"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2742,3 +2751,8 @@ msgstr "Frakt %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Frakt"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "nästa steg"

@@ -12,11 +12,12 @@ jQuery( function( $ ) {
 		return false;
 	}
 
-	// CHANGE: Create flag to allow or block updating the checkout
+	// CHANGE: Add global flags to dynamically indicate whether some operations can be performed
 	window.can_update_checkout = true;
-
-	// CHANGE: Add flag to up prevent users from leaving the page when there is unsaved data
 	window.can_prevent_unload = true;
+	window.can_update_payment_methods = true;
+
+	// CHANGE: Add flag indicate whether Fluid Checkout can prevent users from leaving the page when there is unsaved data
 	var _updateBeforeUnload = false;
 
 	// CHANGE: Add default settings object
@@ -721,7 +722,7 @@ jQuery( function( $ ) {
 			var blockui_selector = _settings.checkoutBlockUISelector;
 
 			// CHANGE: Add flag to indicate whether payment methods fragment should be refreshed
-			if ( false === args.refresh_payment_methods ) {
+			if ( ( undefined !== window.can_update_payment_methods && true !== window.can_update_payment_methods ) || false === args.refresh_payment_methods ) {
 				blockui_selector = blockui_selector.replace( '.woocommerce-checkout-payment, ', '' );
 				data.refresh_payment_methods = 'false';
 			}

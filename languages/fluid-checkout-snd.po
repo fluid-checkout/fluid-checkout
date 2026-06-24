@@ -2586,9 +2586,18 @@ msgstr "ختم ٿي ويو"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "وڌايو ويو"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "نه ڏيکاريو"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "ها"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "نه"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2724,3 +2733,8 @@ msgstr "شپنگ %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "شپنگ"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "ايندڙ قدم"

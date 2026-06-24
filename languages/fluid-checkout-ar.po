@@ -2539,6 +2539,14 @@ msgstr "موسع"
 msgid "Do not show"
 msgstr "لا تظهر"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "نعم"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "لا"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2673,3 +2681,8 @@ msgstr "الشحن %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "شحن"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "الخطوة التالية"

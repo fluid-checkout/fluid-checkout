@@ -2637,6 +2637,14 @@ msgstr "Rozšírené"
 msgid "Do not show"
 msgstr "Nezobrazujte"
 
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Áno"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Nie"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2771,3 +2779,8 @@ msgstr "Preprava %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Preprava"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "ďalší krok"
