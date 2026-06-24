@@ -61,7 +61,7 @@ class FluidCheckout_Admin_SettingType_Textarea extends FluidCheckout {
 					<?php echo array_key_exists( 'disabled', $value ) && false !== $value[ 'disabled' ] ? 'disabled' : ''; ?>
 					><?php echo esc_textarea( $option_value ); // WPCS: XSS ok. ?></textarea>
 
-					<?php echo $description; // WPCS: XSS ok. ?>
+				<?php echo $description; // WPCS: XSS ok. ?>
 			</td>
 		</tr>
 		<?php

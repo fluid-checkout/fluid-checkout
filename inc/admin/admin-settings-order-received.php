@@ -299,6 +299,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 					array(
 						'title'             => __( 'Privacy notice', 'fluid-checkout' ),
+						/* translators: %s: Privacy policy shortcode */
 						'desc'              => sprintf( __( 'Leaving the field empty will display the default text. You can use the shortcode %s and it will be replaced with the "privacy policy" link.', 'fluid-checkout' ), '<code>[privacy_policy]</code>' ),
 						'id'                => 'fc_pro_delayed_account_creation_privacy_notice',
 						'type'              => 'fc_textarea',
