@@ -29,6 +29,10 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 		// Buttons
 		add_filter( 'fc_place_order_button_classes', array( $this, 'remove_place_order_button_alt_class' ), 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -72,6 +76,29 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 	 */
 	public function remove_place_order_button_alt_class( $classes ) {
 		return str_replace( ' alt', '', $classes );
+	}
+
+
+
+	/**
+	 * Change the sticky element relative ID.
+	 *
+	 * @param   array   $attributes    HTML element attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if theme functions are not available
+		if ( ! function_exists( 'talemy_get_option' ) ) { return $attributes; }
+
+		// Bail if sticky navbar is disabled
+		$sticky_navbar = talemy_get_option( 'nav_sticky_style' );
+		if ( 'disable' === $sticky_navbar ) { return $attributes; }
+
+		$attributes['data-sticky-relative-to'] = '#header .navbar';
+
+		return $attributes;
 	}
 
 
