@@ -11,6 +11,6 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } .has-global-padding {
 	padding-right: remsize( 1rem );
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } p {
+body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-wrapper .fc-checkout-step p {
 	margin-top: 0;
 }
