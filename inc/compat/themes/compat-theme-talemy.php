@@ -22,8 +22,9 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
-		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
+		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
 		// Buttons
 		add_filter( 'fc_place_order_button_classes', array( $this, 'remove_place_order_button_alt_class' ), 10 );
@@ -43,6 +44,20 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 
 		// Fixes the product summary not being displayed.
 		$this->remove_action_for_class( 'woocommerce_checkout_after_customer_details', array( 'Talemy_WooCommerce', 'customer_details_end' ), 3000 );
+	}
+
+
+
+	/**
+	 * Add container class to the main content element.
+	 *
+	 * @param string $class Main content element classes.
+	 */
+	public function change_fc_content_section_class( $class ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
+
+		return $class . ' container';
 	}
 
 
