@@ -19,9 +19,6 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
-
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		
@@ -30,6 +27,9 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
