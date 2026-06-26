@@ -7,15 +7,15 @@
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .select2-selection--single,
 body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required[class*='woocommerce-invalid'] .select2-selection--single {
-	box-shadow: none;
+	box-shadow: none !important; // Needed to override Avada validated field styles and move accent to `.select2-selection__rendered`
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .select2-selection--single .select2-selection__rendered {
-	overflow: visible;
-	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--success-accent-color, #{$success-color});
+	overflow: visible; // Needed to prevent clipping the validation accent inset
+	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--success-accent-color, #{$success-color}) !important; // Needed to match Avada validated field styles
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required[class*='woocommerce-invalid'] .select2-selection--single .select2-selection__rendered {
-	overflow: visible;
-	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--danger-accent-color, #{$error-color});
+	overflow: visible; // Needed to prevent clipping the validation accent inset
+	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--danger-accent-color, #{$error-color}) !important; // Needed to match Avada invalid field styles
 }
