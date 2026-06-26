@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Compatibility with theme Avada and Avada Builder plugin.
+
 = 4.2.4 - 2026-06-02 =
 
 * Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.

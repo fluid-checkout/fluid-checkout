@@ -1,0 +1,21 @@
+// ------------------------------------
+// SELECT2 FORM FIELDS - VALIDATION
+// ------------------------------------
+
+// Avada applies the validation accent inset on `.select2-selection--single`, but
+// Select2 clips it via `overflow: hidden` on `.select2-selection__rendered`.
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .select2-selection--single,
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required[class*='woocommerce-invalid'] .select2-selection--single {
+	box-shadow: none;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .select2-selection--single .select2-selection__rendered {
+	overflow: visible;
+	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--success-accent-color, #{$success-color});
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row.validate-required[class*='woocommerce-invalid'] .select2-selection--single .select2-selection__rendered {
+	overflow: visible;
+	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--danger-accent-color, #{$error-color});
+}
