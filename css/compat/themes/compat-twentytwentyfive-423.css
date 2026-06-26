@@ -11,13 +11,16 @@ body.theme-twentytwentyfive.woocommerce-checkout .has-global-padding {
   padding-right: 10px;
 }
 
-body.theme-twentytwentyfive.woocommerce-checkout .fc-wrapper .fc-checkout-step p {
+body.theme-twentytwentyfive .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
   margin-top: 0;
-  background-color: red;
 }
 
 body.theme-twentytwentyfive #add_payment_method fieldset#wc-stripe-upe-form {
   border: none;
+}
+
+body.theme-twentytwentyfive .fc-wrapper .woocommerce-terms-and-conditions-wrapper .woocommerce-privacy-policy-text > p:first-child {
+  margin-top: 0;
 }
 
 body.theme-twentytwentyfive div.woocommerce .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tbody th,
