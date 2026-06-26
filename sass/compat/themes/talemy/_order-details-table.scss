@@ -43,3 +43,13 @@ body#{ $_body-theme-selector }.has-fc-order-received .fc-wrapper .woocommerce-or
 body#{ $_body-theme-selector }.has-fc-order-received .fc-wrapper .woocommerce-order-overview.order_details > li.woocommerce-order-overview__total.total .woocommerce-Price-amount {
 	font-weight: 600;
 }
+
+// Subtotal and total typography.
+body#{ $_body-theme-selector } .fc-wrapper table.woocommerce-table--order-details tr.cart-subtotal th,
+body#{ $_body-theme-selector } .fc-wrapper table.woocommerce-table--order-details tr.cart-subtotal td,
+body#{ $_body-theme-selector } .fc-wrapper table.woocommerce-table--order-details tr.order-total th,
+body#{ $_body-theme-selector } .fc-wrapper table.woocommerce-table--order-details tr.order-total td,
+body#{ $_body-theme-selector } .fc-wrapper table.woocommerce-table--order-details tr.cart-subtotal .woocommerce-Price-amount,
+body#{ $_body-theme-selector } .fc-wrapper table.woocommerce-table--order-details tr.order-total .woocommerce-Price-amount {
+	font-weight: 600;
+}

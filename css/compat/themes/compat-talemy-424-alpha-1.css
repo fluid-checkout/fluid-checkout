@@ -2,6 +2,10 @@ body.theme-talemy .fc-wrapper strong:not(.product-quantity) {
   color: inherit !important;
 }
 
+body.theme-talemy .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+  margin-top: 5px;
+}
+
 body.theme-talemy .woocommerce .fc-wrapper ul#shipping_method .shipping-method__option .shipping-method__option-price .amount,
 body.theme-talemy .woocommerce .fc-wrapper ul#shipping_method .shipping-method__option .shipping-method__option-price .woocommerce-Price-currencySymbol {
   font-weight: normal !important;

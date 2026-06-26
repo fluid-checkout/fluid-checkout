@@ -10,6 +10,16 @@ body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-text-line .woocomme
 	font-weight: 400;
 }
 
+// Subtotal and total typography.
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.cart-subtotal th,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.cart-subtotal td,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.order-total th,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.order-total td,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.cart-subtotal .woocommerce-Price-amount,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tr.order-total .woocommerce-Price-amount {
+	font-weight: 600;
+}
+
 // Order review container reset.
 body#{ $_body-theme-selector } .fc-wrapper .wc-order-review {
 	align-self: auto;
