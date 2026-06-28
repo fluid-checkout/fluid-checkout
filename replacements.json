@@ -4,7 +4,7 @@
 	"plugin-compat-js": [
 		{
 			"our_path": "js-src/compat/plugins/automation-web-platform/checkout.js",
-			"their_path": "https://plugins.svn.wordpress.org/automation-web-platform/trunk/assets/js/checkout.js",
+			"their_path": "plugins/automation-web-platform/assets/js/checkout.js",
 			"script_handle": "awp-checkout-js"
 		},
 		{
