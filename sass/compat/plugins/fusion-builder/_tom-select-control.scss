@@ -23,6 +23,5 @@
 .ts-wrapper.single .ts-control,
 .ts-wrapper.single .ts-control > [data-ts-item],
 .ts-wrapper.single .ts-control > input {
-	// color: var(--form_text_color, var(--awb-color8)) !important; // Needed to override theme form field styles
 	color: inherit;
 }
