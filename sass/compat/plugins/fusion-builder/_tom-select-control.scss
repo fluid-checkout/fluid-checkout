@@ -18,3 +18,11 @@
 .validate-required[class*='woocommerce-invalid'] .ts-control input {
 	box-shadow: none !important; // Needed to override Avada validated field styles
 }
+
+// Avada form text color is a CSS variable that may not resolve when chained on `:root`.
+.ts-wrapper.single .ts-control,
+.ts-wrapper.single .ts-control > [data-ts-item],
+.ts-wrapper.single .ts-control > input {
+	// color: var(--form_text_color, var(--awb-color8)) !important; // Needed to override theme form field styles
+	color: inherit;
+}
