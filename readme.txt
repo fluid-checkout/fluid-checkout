@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Compatibility with theme Avada and Avada Builder plugin.
+* Fixed: Compatibility with theme Avada and Avada Builder plugin. Fix Tom Select dropdown styles on checkout and address book edit address pages.
 
 = 4.2.4 - 2026-06-02 =
 
