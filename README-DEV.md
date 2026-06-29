@@ -84,7 +84,7 @@ When adding a new compat fork, regenerate the manifest and review the diff:
 node fluid-checkout-standards/scripts/generate-replacements-json.js
 ```
 
-Configuration lives in [`replacements.config.json`](replacements.config.json) (scan dirs, exclusions, and manual `their_path` / script handle overrides). See the [replacements skill](../fluid-checkout-standards/.cursor/skills/fluid-checkout-replacements/SKILL.md) for the full workflow.
+Configuration lives in [`replacements.config.json`](replacements.config.json) (scan dirs, exclusions, and manual `their_path` / script handle overrides). See the [replacements update skill](../fluid-checkout-standards/.cursor/skills/fluid-checkout-replacements-update/SKILL.md) for the full workflow.
 
 ### Not tracked
 
