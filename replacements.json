@@ -3,11 +3,6 @@
 	"description": "Third-party files replaced or forked by Fluid Checkout.",
 	"plugin-compat-js": [
 		{
-			"our_path": "js-src/compat/plugins/automation-web-platform/checkout.js",
-			"their_path": "plugins/automation-web-platform/assets/js/checkout.js",
-			"script_handle": "awp-checkout-js"
-		},
-		{
 			"our_path": "js-src/compat/plugins/biteship/biteship-public.js",
 			"their_path": "plugins/biteship/public/js/biteship-public.js",
 			"script_handle": "biteship"
@@ -38,11 +33,6 @@
 			"script_handle": "xoo-ml-phone-js"
 		},
 		{
-			"our_path": "js-src/compat/plugins/payplus-payment-gateway/checkout.js",
-			"their_path": "https://plugins.svn.wordpress.org/payplus-payment-gateway/trunk/assets/js/checkout.js",
-			"script_handle": "fc-compat-payplus-payment-gateway-checkout"
-		},
-		{
 			"our_path": "js-src/compat/plugins/rvvup-for-woocommerce/scripts.js",
 			"their_path": "plugins/rvvup-for-woocommerce/assets/js/scripts.js",
 			"script_handle": "rvvup_payment_js"
@@ -58,7 +48,7 @@
 			"script_handle": "wpo-wcnlpc"
 		},
 		{
-			"our_path": "js-src/compat/plugins/woo-mailerlite/public.js",
+			"our_path": "js-src/compat/plugins/woo-mailerlite/woo-mailerlite-public.js",
 			"their_path": "https://plugins.svn.wordpress.org/woo-mailerlite/trunk/public/js/woo-mailerlite-public.js",
 			"script_handle": "woo-ml-public-script"
 		},

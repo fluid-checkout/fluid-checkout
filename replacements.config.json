@@ -42,7 +42,7 @@
 		"js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js": "assets/js/frontend/frontend.js",
 		"js-src/compat/plugins/woocommerce-eu-vat-field/frontend-checkout-page.js": "assets/js/frontend-checkout-page.js",
 		"js-src/compat/plugins/woocommerce-eu-vat-field/frontend-eu-vat-field-visibility.js": "assets/js/frontend-eu-vat-field-visibility.js",
-		"js-src/compat/plugins/woo-mailerlite/public.js": "public/js/woo-mailerlite-public.js",
+		"js-src/compat/plugins/woo-mailerlite/woo-mailerlite-public.js": "public/js/woo-mailerlite-public.js",
 		"js-src/compat/plugins/woocommerce-superfaktura/checkout.js": "assets/js/checkout.js",
 		"js-src/compat/plugins/hezarfen-for-woocommerce/checkout.js": "assets/js/checkout.js",
 		"js-src/compat/plugins/wc-brt-fermopoint-shipping-methods/wc_brt_fermopoint_shipping_methods_js.js": "assets/js/wc_brt_fermopoint_shipping_methods_js.js",
