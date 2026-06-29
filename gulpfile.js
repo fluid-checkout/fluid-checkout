@@ -19,6 +19,7 @@ var wpPot = require('gulp-wp-pot');
 var po2mo = require('gulp-po2mo');
 var po2json = require('gulp-po2json');
 var through2 = require('through2');
+var path = require('path');
 
 
 
@@ -352,6 +353,93 @@ gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 
 
 
+// Function to get translation log file path
+function getTranslationLogFile() {
+	return _gulpSettings.translationLogFile || './logs/translations.log';
+}
+
+
+
+// Function to get translation concurrency limit
+function getTranslationConcurrency() {
+	return _gulpSettings.translationConcurrency || 10;
+}
+
+
+
+// Function to initialize translation log file
+function initTranslationLog() {
+	var logFile = getTranslationLogFile();
+	var logDir = path.dirname( logFile );
+
+	fs.mkdirSync( logDir, { recursive: true } );
+
+	var header = 'Translation run started: ' + new Date().toISOString() + '\n';
+	header += 'Concurrency: ' + getTranslationConcurrency() + '\n';
+	header += 'Languages: ' + Object.keys( _gulpSettings.languages ).length + '\n\n';
+
+	fs.writeFileSync( logFile, header, { flush: true } );
+}
+
+
+
+// Function to append a line to the translation log file
+function appendTranslationLog( message ) {
+	var logLine = '[' + new Date().toISOString() + '] ' + message + '\n';
+
+	fs.appendFileSync( getTranslationLogFile(), logLine, { flush: true } );
+}
+
+
+
+// Function to update translation progress in the terminal
+function updateTranslationProgress( completed, total, targetLang ) {
+	process.stdout.write( '\rTranslating (' + targetLang + '): ' + completed + ' of ' + total );
+}
+
+
+
+// Function to finish translation progress line in the terminal
+function finishTranslationProgress() {
+	process.stdout.write( '\n' );
+}
+
+
+
+// Function to run items with a concurrency limit
+function runWithConcurrency( items, limit, worker, callback ) {
+	if ( 0 === items.length ) {
+		return callback();
+	}
+
+	var index = 0;
+	var inFlight = 0;
+	var completed = 0;
+
+	function startNext() {
+		while ( inFlight < limit && index < items.length ) {
+			var item = items[ index++ ];
+			inFlight++;
+
+			worker( item, function() {
+				inFlight--;
+				completed++;
+
+				if ( completed >= items.length ) {
+					callback();
+				}
+				else {
+					startNext();
+				}
+			} );
+		}
+	}
+
+	startNext();
+}
+
+
+
 // Function to translate text using Deepl
 function translateWithDeepl( text, targetLang, callback ) {
 	var deeplApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'deepl'; } ).url;
@@ -470,102 +558,70 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 
 		// Initialize translations
 		var translations = po.translations;
-		var contextKeys = Object.keys( translations );
-		var contextIndex = 0;
+		var jobs = [];
 
-		// Translate next string
-		function translateNextContext() {
-			// Check whether all translations are done
-			if ( contextIndex >= contextKeys.length ) {
-				// Run callback
-				return callback();
-			}
-
-			// Reset variables
-			var context = contextKeys[ contextIndex ];
+		// Build flat job list for strings that need translation
+		Object.keys( translations ).forEach( function( context ) {
 			var contextTranslations = translations[ context ];
-			var msgidKeys = Object.keys( contextTranslations );
-			var msgidIndex = 0;
 
-			function translateNextMsgid() {
-				// Check whether all strings are translated in the context
-				if ( msgidIndex >= msgidKeys.length ) {
-					contextIndex++;
-					translateNextContext();
-					return;
-				}
-
-				// Get string id
-				var msgid = msgidKeys[ msgidIndex ];
-
-				// Get plural forms
+			Object.keys( contextTranslations ).forEach( function( msgid ) {
 				var msgidPlural = Object.hasOwnProperty.call( contextTranslations[ msgid ], 'msgid_plural' ) ? contextTranslations[ msgid ].msgid_plural : null;
 				var nPluralForms = msgidPlural ? po.headers[ 'Plural-Forms' ].match( /nplurals\s*=\s*(\d+)/ )[ 1 ] : 1;
-				var msgstrIndex = 0;
 
-				function translateNextMsgstr() {
-					// Check whether all strings are translated in the context
-					if ( msgstrIndex >= nPluralForms ) {
-						msgidIndex++;
-						translateNextMsgid();
-						return;
-					}
-
-					// Get string
+				for ( var msgstrIndex = 0; msgstrIndex < nPluralForms; msgstrIndex++ ) {
 					var msgstr = contextTranslations[ msgid ].msgstr[ msgstrIndex ];
-					var strToTranslate = msgstrIndex > 0 ? msgidPlural : msgid;
 
-					// Maybe translate string
 					if ( ! msgstr ) {
-						// Translate with Deepl if supported, otherwise use Google Translate
 						var useDeepl = langSettings.deepl !== null;
-						var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
-						var translationSource = useDeepl ? 'deepl' : 'google';
-						var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ];
 
-						translateFunction( strToTranslate, apiTargetLang, function( err, translatedText ) {
-							// Handle error
-							if ( err ) {
-								console.error( `Error translating "${strToTranslate}" to ${apiTargetLang} with ${useDeepl ? 'Deepl' : 'Google Translate'}:`, err );
-
-								// Mark language with error
-								_translationErrors.push( { lang: apiTargetLang, error: err.message } );
-
-								// Move to next translation
-								msgstrIndex++;
-								translateNextMsgstr();
-							}
-							else {
-								// Update translation
-								contextTranslations[ msgid ].msgstr[ msgstrIndex ] = translatedText;
-
-								// Log translated text
-								var indexString = msgstrIndex > 0 ? '(' + msgstrIndex + ')' : '';
-								console.log( 'Translated: ' + targetLang + ' ' + translationSource + ' ' + indexString + ' ' + strToTranslate + ' -> ' + translatedText );
-
-								// Update PO file
-								fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
-
-								// Move to next translation
-								msgstrIndex++;
-								translateNextMsgstr();
-							}
+						jobs.push( {
+							context: context,
+							msgid: msgid,
+							msgstrIndex: msgstrIndex,
+							strToTranslate: msgstrIndex > 0 ? msgidPlural : msgid,
+							useDeepl: useDeepl,
+							translationSource: useDeepl ? 'deepl' : 'google',
+							apiTargetLang: useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ]
 						} );
 					}
-					else {
-						// Skip if string is already translated
-						msgstrIndex++;
-						translateNextMsgstr();
-					}
 				}
+			} );
+		} );
 
-				translateNextMsgstr();
-			}
-
-			translateNextMsgid();
+		// Bail if no strings need translation
+		if ( 0 === jobs.length ) {
+			return callback();
 		}
 
-		translateNextContext();
+		var completedCount = 0;
+
+		updateTranslationProgress( 0, jobs.length, targetLang );
+
+		runWithConcurrency( jobs, getTranslationConcurrency(), function( job, done ) {
+			var translateFunction = job.useDeepl ? translateWithDeepl : translateWithGoogle;
+
+			translateFunction( job.strToTranslate, job.apiTargetLang, function( err, translatedText ) {
+				completedCount++;
+
+				if ( err ) {
+					appendTranslationLog( 'Error translating "' + job.strToTranslate + '" to ' + job.apiTargetLang + ' with ' + ( job.useDeepl ? 'Deepl' : 'Google Translate' ) + ': ' + err.message );
+					_translationErrors.push( { lang: job.apiTargetLang, error: err.message } );
+				}
+				else {
+					translations[ job.context ][ job.msgid ].msgstr[ job.msgstrIndex ] = translatedText;
+
+					var indexString = job.msgstrIndex > 0 ? '(' + job.msgstrIndex + ')' : '';
+					appendTranslationLog( 'Translated: ' + targetLang + ' ' + job.translationSource + ' ' + indexString + ' ' + job.strToTranslate + ' -> ' + translatedText );
+				}
+
+				updateTranslationProgress( completedCount, jobs.length, targetLang );
+				done();
+			} );
+		}, function() {
+			finishTranslationProgress();
+			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
+			callback();
+		} );
 	});
 }
 
@@ -634,6 +690,9 @@ function poToPHP ( jsonFile, enc, cb ) {
 // gulp translate-po
 // Translate PO files using Deepl and Google Translate
 gulp.task( 'translate-po', function ( done ) {
+	_translationErrors = [];
+	initTranslationLog();
+
 	// Get languages
 	var languagesList = Object.keys( _gulpSettings.languages );
 	var index = 0;
@@ -641,6 +700,8 @@ gulp.task( 'translate-po', function ( done ) {
 	// Translate next language
 	function translateNext() {
 		if ( index >= languagesList.length ) {
+			appendTranslationLog( 'Translation run finished. Languages processed: ' + languagesList.length + '. Errors: ' + _translationErrors.length );
+
 			// Log errors
 			_translationErrors.forEach( function ( error ) {
 				console.error( `Error translating ${error.lang}:`, error.error );
