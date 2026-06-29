@@ -10,7 +10,9 @@ jQuery( function ( $ ) {
 		checkout_values: {},
 		addresses: {},
 		cart_total: klarna_payments_params.cart_total, // in minor units
-		submit_button_selectors: klarna_payments_params.submit_button_selectors.join( ", " ),
+		// CHANGE: Applies to Klarna version prior to 4.6.0.
+		// CHANGE: Use custom place order button selectors as more than one place order button might exist on the same page.
+		submit_button_selectors: klarna_payments_params && klarna_payments_params.submit_button_selectors ? klarna_payments_params.submit_button_selectors.join( ", " ) : "input#place_order, button#place_order, .fc-place-order-button",
 		log: ( ...args ) => {
 			if ( klarna_payments_params.debug ) {
 				console.log( ...args )
@@ -186,12 +188,14 @@ jQuery( function ( $ ) {
 
 						var options = {
 							container: klarna_payments_container_selector_id,
-							payment_method_category:
-								klarna_payments.getSelectedPaymentCategory() === "klarna_payments"
-									? ""
-									: klarna_payments.getSelectedPaymentCategory(),
 							// purchased_amount is used on the checkout page in any of Klarna payment methods that show a cost breakdown (the "Learn more" OSM widget).
 							purchase_amount: klarna_payments.cart_total,
+						}
+
+						// When the payment methods are combined into a single method, the category is omitted so the widget displays all payment options available in the Klarna session.
+						var payment_method_category = klarna_payments.getSelectedPaymentCategory()
+						if ( "klarna_payments" !== payment_method_category ) {
+							options.payment_method_category = payment_method_category
 						}
 
 						if ( fragments && fragments.kp_cart_total ) {
@@ -276,15 +280,17 @@ jQuery( function ( $ ) {
 
 			klarna_payments.authorization_response = {}
 
+			// The category must match the load() call, so it is omitted here as well when the payment methods are combined into a single method.
+			var options = {}
+			var payment_method_category = klarna_payments.getSelectedPaymentCategory()
+			if ( "klarna_payments" !== payment_method_category ) {
+				options.payment_method_category = payment_method_category
+			}
+
 			try {
 				Klarna.Payments.authorize(
 					address,
-					{
-						payment_method_category:
-							klarna_payments.getSelectedPaymentCategory() === "klarna_payments"
-								? ""
-								: klarna_payments.getSelectedPaymentCategory(),
-					},
+					options,
 					function ( response ) {
 						klarna_payments.authorization_response = response
 						$defer.resolve( response )
@@ -610,10 +616,7 @@ jQuery( function ( $ ) {
 		klarna_payments.setRadioButtonValues()
 	} )
 
-	// CHANGE: Use custom place order button selectors as more than one place order button might exist on the same page
-	$( document ).on( "click",
-		"input#place_order, button#place_order, .fc-place-order-button",
-		function ( e ) {
+	$( document ).on( "click", klarna_payments.submit_button_selectors, function ( e ) {
 		// No strict comparison: wp_localize_script() converts booleans to strings "1", respectively, "0".
 		if ( true == klarna_payments_params.pay_for_order ) {
 			klarna_payments.klarnaPayForOrder( e )
