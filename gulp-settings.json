@@ -93,6 +93,8 @@
 	],
 	"translationDest": "./languages",
 	"textDomain": "fluid-checkout",
+	"translationConcurrency": 50,
+	"translationLogFile": "./logs/translations.log",
 	"languages": {
 		"af": { "deepl": null, "googleTranslate": "af" },
 		"am": { "deepl": null, "googleTranslate": "am" },

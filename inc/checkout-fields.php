@@ -44,6 +44,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_order_field_args' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'change_account_field_args' ), 100 );
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'change_default_locale_field_args' ), 100 );
+		add_filter( 'fc_checkout_address_i18n_override_locale_field_attributes', array( $this, 'add_address_i18n_override_field_attributes' ), 5 ); // Set to priority 5 to determine the default return value
 
 		// Remove `screen-reader-text` from some fields
 		add_filter( 'woocommerce_default_address_fields', array( $this, 'remove_screen_reader_class_default_locale_field_args' ), 100 );
@@ -103,6 +104,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	public function add_js_settings( $settings ) {
 		// Add checkout fields attributes to JS settings
 		$settings[ 'checkoutFields' ] = WC()->checkout()->get_checkout_fields();
+
 		// Initialize variables
 		$override_attributes = array();
 
@@ -193,6 +195,23 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		}
 
 		return apply_filters( 'fc_checkout_field_args', $fields_args );
+	}
+
+	/**
+	 * Add address i18n override field attributes.
+	 *
+	 * @param   array  $override_field_attributes  Field keys mapped to lists of attribute keys to override. Ie. `array( 'shipping_phone' => array( 'label', 'required' ) )`.
+	 */
+	public function add_address_i18n_override_field_attributes( $override_field_attributes ) {
+		// Merge with default attributes
+		$override_field_attributes = array_merge(
+			$override_field_attributes,
+			array(
+				'billing_phone' => array( 'label', 'required', 'priority' ),
+			),
+		);
+
+		return $override_field_attributes;
 	}
 
 

@@ -21,6 +21,10 @@ env.local.config.sh
 **/*.mo~
 **/*.pot~
 
+# Translation logs
+logs/
+logs/**
+
 # Project dependencies
 node_modules
 node_modules/**
