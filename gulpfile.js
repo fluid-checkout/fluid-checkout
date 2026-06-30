@@ -20,6 +20,7 @@ var po2mo = require('gulp-po2mo');
 var po2json = require('gulp-po2json');
 var through2 = require('through2');
 var path = require('path');
+var url = require('url');
 
 
 
@@ -32,6 +33,8 @@ var _gulpSettingsLocal = {};
 var _assetsVersion = '';
 var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAction || 'watch';
 var _translationErrors = [];
+var _translationErrorLimit = 5;
+var _translationAborted = false;
 
 
 
@@ -383,6 +386,15 @@ function initTranslationLog() {
 
 
 
+// Function to print translation log file link in the terminal
+function printTranslationLogLink() {
+	var logFile = path.resolve( getTranslationLogFile() );
+
+	console.log( 'Translation log: ' + url.pathToFileURL( logFile ).href );
+}
+
+
+
 // Function to append a line to the translation log file
 function appendTranslationLog( message ) {
 	var logLine = '[' + new Date().toISOString() + '] ' + message + '\n';
@@ -406,6 +418,22 @@ function finishTranslationProgress() {
 
 
 
+// Function to check whether the translation error limit has been reached
+function hasReachedTranslationErrorLimit() {
+	return _translationErrors.length >= _translationErrorLimit;
+}
+
+
+
+// Function to abort translation when the error limit is reached
+function abortTranslationIfErrorLimitReached() {
+	if ( hasReachedTranslationErrorLimit() ) {
+		_translationAborted = true;
+	}
+}
+
+
+
 // Function to run items with a concurrency limit
 function runWithConcurrency( items, limit, worker, callback ) {
 	if ( 0 === items.length ) {
@@ -416,23 +444,26 @@ function runWithConcurrency( items, limit, worker, callback ) {
 	var inFlight = 0;
 	var completed = 0;
 
+	function maybeComplete() {
+		if ( completed >= items.length || ( _translationAborted && 0 === inFlight ) ) {
+			callback();
+		}
+	}
+
 	function startNext() {
-		while ( inFlight < limit && index < items.length ) {
+		while ( inFlight < limit && index < items.length && ! _translationAborted ) {
 			var item = items[ index++ ];
 			inFlight++;
 
 			worker( item, function() {
 				inFlight--;
 				completed++;
-
-				if ( completed >= items.length ) {
-					callback();
-				}
-				else {
-					startNext();
-				}
+				startNext();
+				maybeComplete();
 			} );
 		}
+
+		maybeComplete();
 	}
 
 	startNext();
@@ -477,11 +508,19 @@ function translateWithDeepl( text, targetLang, callback ) {
  
 // Function to translate text using Google Translate
 function translateWithGoogle( text, targetLang, callback ) {
-	var googleApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).url;
-	var googleApiKey = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).key;
+	var googleApiConfig = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } );
+	var googleApiUrl = googleApiConfig.url;
+	var googleApiKey = googleApiConfig.key;
+	var requestOptions = {};
+
+	if ( googleApiConfig.referrer ) {
+		requestOptions.headers = {
+			'Referer': googleApiConfig.referrer
+		};
+	}
 
 	import( 'node-fetch' ).then( function ( fetch ) {
-		fetch.default( googleApiUrl + '?key=' + googleApiKey + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang )
+		fetch.default( googleApiUrl + '?key=' + googleApiKey + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang, requestOptions )
 		.then( function( response ) {
 			// Handle API error
 			if ( 200 !== response.status ) {
@@ -598,6 +637,10 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 		updateTranslationProgress( 0, jobs.length, targetLang );
 
 		runWithConcurrency( jobs, getTranslationConcurrency(), function( job, done ) {
+			if ( _translationAborted ) {
+				return done();
+			}
+
 			var translateFunction = job.useDeepl ? translateWithDeepl : translateWithGoogle;
 
 			translateFunction( job.strToTranslate, job.apiTargetLang, function( err, translatedText ) {
@@ -606,6 +649,7 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 				if ( err ) {
 					appendTranslationLog( 'Error translating "' + job.strToTranslate + '" to ' + job.apiTargetLang + ' with ' + ( job.useDeepl ? 'Deepl' : 'Google Translate' ) + ': ' + err.message );
 					_translationErrors.push( { lang: job.apiTargetLang, error: err.message } );
+					abortTranslationIfErrorLimitReached();
 				}
 				else {
 					translations[ job.context ][ job.msgid ].msgstr[ job.msgstrIndex ] = translatedText;
@@ -691,7 +735,9 @@ function poToPHP ( jsonFile, enc, cb ) {
 // Translate PO files using Deepl and Google Translate
 gulp.task( 'translate-po', function ( done ) {
 	_translationErrors = [];
+	_translationAborted = false;
 	initTranslationLog();
+	printTranslationLogLink();
 
 	// Get languages
 	var languagesList = Object.keys( _gulpSettings.languages );
@@ -699,6 +745,17 @@ gulp.task( 'translate-po', function ( done ) {
 
 	// Translate next language
 	function translateNext() {
+		if ( _translationAborted ) {
+			appendTranslationLog( 'Translation run stopped after ' + _translationErrorLimit + ' API errors.' );
+			console.error( 'Translation stopped after ' + _translationErrorLimit + ' API errors. See translation log for details.' );
+
+			_translationErrors.forEach( function ( error ) {
+				console.error( `Error translating ${error.lang}:`, error.error );
+			} );
+
+			return done();
+		}
+
 		if ( index >= languagesList.length ) {
 			appendTranslationLog( 'Translation run finished. Languages processed: ' + languagesList.length + '. Errors: ' + _translationErrors.length );
 
