@@ -6,15 +6,15 @@ jQuery( function ( $ ) {
 	} );
 
 	// Target quantity inputs on product pages
-	$( 'input.qty:not(.product-quantity input.qty)' ).each( function() {
+	$( 'input.qty:not(.product-quantity input.qty)' ).each( function () {
 		var min = parseFloat( $( this ).attr( 'min' ) );
 
 		if ( min >= 0 && parseFloat( $( this ).val() ) < min ) {
 			$( this ).val( min );
 		}
-	});
+	} );
 
-	var noticeID   = $( '.woocommerce-store-notice' ).data( 'noticeId' ) || '',
+	var noticeID = $( '.woocommerce-store-notice' ).data( 'noticeId' ) || '',
 		cookieName = 'store_notice' + noticeID;
 
 	// Check the value of that cookie and show/hide the notice accordingly
@@ -53,7 +53,7 @@ jQuery( function ( $ ) {
 
 	$( '.woocommerce-input-wrapper' ).on( 'click', function( event ) {
 		// CHANGE: Exclude the 'show password' button from the event propagation block.
-		if ( $( event.target ).closest( '.show-password-input' ) ) { return; }
+		if ( $( event.target ).closest( '.show-password-input' ).length ) { return; }
 		event.stopPropagation();
 	} );
 
@@ -73,28 +73,46 @@ jQuery( function ( $ ) {
 
 	// CHANGE: Extract password visibility icon code into a function.
 	var handlePasswordVisibility = function() {
-		// Show password visibility hover icon on woocommerce forms
 		// CHANGE: Only wrap password inputs if they aren't already wrapped.
-		$( '.woocommerce form .woocommerce-Input[type="password"]' ).each( function() {
-			if ( 0 === $( this ).closest( '.password-input' ).length ) {
-				$( this ).wrap( '<span class="password-input"></span>' );
-			}
+		// Show password visibility hover icon on woocommerce forms
+		// CHANGE: Target all password fields, not only fields with class `woocommerce-Input`
+		$( '.woocommerce form input[type="password"]' ).each( function() {
+			// Skip if already wrapped
+			if ( 0 < $( this ).closest( '.password-input' ).length ) { return; }
+
+			// CHANGE: Apply to each input field separately
+			$( this ).wrap(
+				'<span class="password-input"></span>'
+			);
 		} );
 
 		// Add 'password-input' class to the password wrapper in checkout page.
-		// CHANGE: Only wrap password inputs if they aren't already wrapped.
-		$( $( '.woocommerce form input' ).filter(':password') ).each( function() {
-			if ( 0 === $( this ).closest( '.password-input' ).length ) {
+		$(
+			$( '.woocommerce form input' )
+				.filter( ':password' )
+			)
+			.each( function() {
+				// Skip if already wrapped
+				if ( 0 === $( this ).closest( '.password-input' ).length ) { return; }
+
 				$( this ).parent('span').addClass('password-input');
 			}
-		} );
+		);
 
-		// CHANGE: Only add the password visibility icon if it doesn't already exist.
-		$( '.password-input' ).each( function() {
-			if ( 0 === $( this ).find( '.show-password-input' ).length ) {
-				$( this ).append( '<span class="show-password-input"></span>' );
-			}
+		$( '.password-input' ).each( function () {
+			// CHANGE: Only add the password visibility icon if it doesn't already exist.
+			if ( 0 < $( this ).find( '.show-password-input' ).length ) { return; }
+
+			const describedBy = $( this ).find( 'input' ).attr( 'id' );
+			$( this ).append(
+				'<button type="button" class="show-password-input" aria-label="' +
+					woocommerce_params.i18n_password_show +
+					'" aria-describedBy="' +
+					describedBy +
+					'"></button>'
+			);
 		} );
+		// CHANGE: END - Only wrap password inputs if they aren't already wrapped.
 
 		// CHANGE: Extracted show password click handler into a reusable function.
 	}
@@ -105,7 +123,9 @@ jQuery( function ( $ ) {
 	$( document.body ).on( 'updated_checkout', handlePasswordVisibility );
 
 	// CHANGE: Extract show password click handler into a reusable function.
-	var handleShowPasswordClick = function( e ) {
+	var handleShowPasswordClick = function( event ) {
+		event.preventDefault();
+
 		if ( $( this ).hasClass( 'display-password' ) ) {
 			$( this ).removeClass( 'display-password' );
 			$( this ).attr(
@@ -131,9 +151,9 @@ jQuery( function ( $ ) {
 
 		$( this ).siblings( 'input' ).focus();
 	}
-	// CHANGE: END - Extract show password click handler into a reusable function.
 	// CHANGE: Handle captured show password click handler button click.
 	$( document.body ).on( 'click', '.show-password-input', handleShowPasswordClick );
+	// CHANGE: END - Extract show password click handler into a reusable function.
 
 	$( 'a.coming-soon-footer-banner-dismiss' ).on( 'click', function ( e ) {
 		var target = $( e.target );
