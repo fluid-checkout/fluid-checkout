@@ -88,8 +88,7 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 	 * Migrate sticky navbar option from smart to always.
 	 */
 	public function migrate_nav_sticky_style_from_smart() {
-		$theme_mods   = get_theme_mods();
-		$sticky_style = isset( $theme_mods[ 'nav_sticky_style' ] ) ? $theme_mods[ 'nav_sticky_style' ] : null;
+		$sticky_style = get_theme_mod( 'nav_sticky_style', null );
 
 		// Bail if sticky navbar is explicitly set to another value
 		if ( null !== $sticky_style && 'smart' !== $sticky_style ) { return; }
