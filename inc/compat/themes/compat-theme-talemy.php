@@ -22,6 +22,10 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Remove theme smart setting from sticky navbar option
+		add_action( 'init', array( $this, 'migrate_nav_sticky_style_from_smart' ), 100 );
+		add_action( 'customize_register', array( $this, 'remove_nav_sticky_smart_customizer_choice' ), 999 );
+
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
@@ -76,6 +80,38 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 	 */
 	public function remove_place_order_button_alt_class( $classes ) {
 		return str_replace( ' alt', '', $classes );
+	}
+
+
+
+	/**
+	 * Migrate sticky navbar option from smart to always.
+	 */
+	public function migrate_nav_sticky_style_from_smart() {
+		$theme_mods   = get_theme_mods();
+		$sticky_style = isset( $theme_mods[ 'nav_sticky_style' ] ) ? $theme_mods[ 'nav_sticky_style' ] : null;
+
+		// Bail if sticky navbar is explicitly set to another value
+		if ( null !== $sticky_style && 'smart' !== $sticky_style ) { return; }
+
+		// Migrate smart setting or unset default (which defaults to smart in Talemy)
+		set_theme_mod( 'nav_sticky_style', 'always' );
+	}
+
+
+
+	/**
+	 * Remove smart option from sticky navbar customizer control.
+	 *
+	 * @param WP_Customize_Manager $wp_customize  Customizer object.
+	 */
+	public function remove_nav_sticky_smart_customizer_choice( $wp_customize ) {
+		$control = $wp_customize->get_control( 'nav_sticky_style' );
+
+		// Bail if control is not available
+		if ( ! $control || empty( $control->choices ) || ! isset( $control->choices[ 'smart' ] ) ) { return; }
+
+		unset( $control->choices[ 'smart' ] );
 	}
 
 
