@@ -148,11 +148,11 @@ class FluidCheckout_ThemeCompat_Talemy extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height'        => '44px',
-				'--fluidcheckout--field--padding-left'  => '15px',
-				'--fluidcheckout--field--font-size'     => '14px',
-				'--fluidcheckout--field--border-color'  => 'var(--theme-color-border)', // Is available in body selector.
-				'--fluidcheckout--field--background-color--accent' => 'var(--theme-color-background)', // Is available in body selector.
+				'--fluidcheckout--field--height'                     => '44px',
+				'--fluidcheckout--field--padding-left'               => '15px',
+				'--fluidcheckout--field--font-size'                  => '14px',
+				'--fluidcheckout--field--border-color'               => 'var(--theme-color-border)', // Is available in body selector.
+				'--fluidcheckout--field--background-color--accent'   => 'var(--theme-color-background)', // Is available in body selector.
 			),
 		);
 
