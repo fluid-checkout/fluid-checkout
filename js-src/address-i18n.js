@@ -1,9 +1,3 @@
-/**
- * Address Internationalization Script
- * 
- * Replaces the original WooCommerce `address-i18n.js`.
- */
-
 /*global wc_address_i18n_params */
 jQuery( function( $ ) {
 
@@ -84,7 +78,9 @@ jQuery( function( $ ) {
 			field.find( 'label .optional' ).remove();
 			field.addClass( 'validate-required' );
 
+			// CHANGE: Should also add required markers to fields that are not currently visible
 			if ( field.find( 'label .required' ).length === 0 ) {
+				// CHANGE: Add title attribute to required marker in label to enhance accessibility
 				field.find( 'label' ).append(
 					'&nbsp;<abbr class="required" title="' +
 					wc_address_i18n_params.i18n_required_text +
@@ -285,7 +281,7 @@ jQuery( function( $ ) {
 			if (
 				typeof fieldLocale.placeholder === 'undefined' &&
 				typeof fieldLocale.label !== 'undefined' &&
-				! field.find( 'label' ).length
+				! field.find( 'label:not(.screen-reader-text)' ).length
 			) {
 				field.find( ':input' ).attr( 'placeholder', fieldLocale.label );
 				field.find( ':input' ).attr( 'data-placeholder', fieldLocale.label );
@@ -304,13 +300,12 @@ jQuery( function( $ ) {
 				field.data( 'priority', fieldLocale.priority );
 			}
 
-			// Hidden fields.
-			if ( 'state' !== key ) {
-				if ( typeof fieldLocale.hidden !== 'undefined' && true === fieldLocale.hidden ) {
-					field.hide().find( ':input' ).val( '' );
-				} else {
-					field.show();
-				}
+			// Hidden fields. State visibility (show) is managed by
+			// country-select.js, but locale can still hide it.
+			if ( true === fieldLocale.hidden ) {
+				field.hide().find( ':input' ).val( '' );
+			} else if ( 'state' !== key ) {
+				field.show();
 			}
 
 			// CHANGE: Handle collapsible fields state
@@ -454,15 +449,15 @@ jQuery( function( $ ) {
 				var row = rowsAfter[ j ];
 				row.parentNode.insertBefore( row, referenceNode.nextSibling );
 			}
-
 			// CHANGE: END - Detach rows and re-attach them in the correct order, without moving the row of the field currently focused.
-		} );
+
+		} ); // CHANGE: Close the `fieldsets.each` loop (replaces upstream `rows.detach().appendTo`)
 
 		// CHANGE: Re-set focus to the element previously with focus
 		FCUtils.maybeRefocusElement( currentFocusedElement );
 	};
-
 	// CHANGE: END - Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
+
 	// CHANGE: Add function to handle country to state changing when event `updated_checkout` is triggered
 	var process_country_to_state_changing_updated_checkout = function() {		
 		// Get all country fields on the page
@@ -477,8 +472,9 @@ jQuery( function( $ ) {
 			}
 		}
 	}
-
 	// CHANGE: END - Add function to handle country to state changing when event `updated_checkout` is triggered
+
+	// CHANGE: Add event listeners
 	$( document.body )
 		// CHANGE: Use extracted function to process country to state changing
 		.on( 'country_to_state_changing', process_country_to_state_changing )

@@ -26,6 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $billing_address_formatted = apply_filters( 'fc_pro_order_details_customer_billing_address_formatted', $order->get_formatted_billing_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
 $shipping_address_formatted = apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $order->get_formatted_shipping_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
 
+// CHANGE: Determine if shipping address should be shown
 $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_address();
 
 // CHANGE: Add filter to allow plugins to define whether to show shipping address
@@ -50,7 +51,7 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 	<hr style="border: 0; border-top: 1px solid #1E1E1E; border-top-color: rgba(30, 30, 30, 0.2); margin: 20px 0;">
 <?php endif; ?>
 <table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top; margin-bottom: <?php echo $email_improvements_enabled ? '0' : '40px'; ?>; padding:0;" border="0" role="presentation">
-	<?php // CHANGE: Move addresses titles to a separate row ?>
+	<?php // CHANGE: Move addresses titles to a separate row: add addresses titles row ?>
 	<tr>
 		<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php if ( $email_improvements_enabled ) { ?>
@@ -71,8 +72,9 @@ $display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display
 			</th>
 		<?php endif; ?>
 	</tr>
-	<?php // CHANGE: END - Move addresses titles to a separate row ?>
+	<?php // CHANGE: END - Move addresses titles to a separate row: add addresses titles row ?>
 
+	<?php // CHANGE: Move addresses titles to a separate row: add addresses content row ?>
 	<tr>
 		<td class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php // CHANGE: Move addresses titles to a separate row ?>

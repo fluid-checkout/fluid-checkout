@@ -3,20 +3,11 @@
  * Recurring Shipping Methods Display
  *
  * Based on the WooCommerce core template: /woocommerce/templates/cart/cart-shipping.php
- * 
- * This template can be overridden by copying it to yourtheme/woocommerce/cart/cart-recurring-shipping.php.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see https://docs.woocommerce.com/document/template-structure/
  * @author  Prospress
  * @package WooCommerce Subscriptions/Templates
  * @version 1.0.0 - Migrated from WooCommerce Subscriptions v2.6.0
- * @fc-version 3.2.5
+ * @fc-version 4.0.5
  */
 
  // CHANGE: This template has been modified to align the shipping methods for subscription plans with Fluid Checkout's original shipping methods.
@@ -24,6 +15,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+// CHANGE: Get packages from the recurring cart
 $packages = WC()->shipping()->get_packages();
 $package_index = array_search( $package, $packages );
 
@@ -32,6 +24,7 @@ $formatted_destination    = isset( $formatted_destination ) ? $formatted_destina
 $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 ?>
 
+<?php // CHANGE: Change element tag to `div` and add class `shipping-method__package` to the shipping method package container ?>
 <div class="shipping shipping-method__package recurring-total <?php echo esc_attr( $recurring_cart_key ); ?>">
 
 	<?php // CHANGE: Conditionally add the shipping package name ?>
@@ -40,8 +33,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<p class="shipping-method__package-name"><?php echo esc_html( apply_filters( 'fc_subscription_shipping_package_name', $package_name, $package_index, $package, $recurring_cart ) ); ?></p>
 	<?php endif; ?>
 
-	<?php if ( count( $available_methods ) > 0 ) : ?>
-
+	<?php // CHANGE: Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
+	<?php if ( 1 < count( $available_methods ) ) : ?>
 		<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
 		<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
@@ -91,8 +84,9 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php if ( FluidCheckout_WooCommerceSubscriptions::instance()->get_all_packages_count() > 1 ) : ?>
 			<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( FluidCheckout_WooCommerceSubscriptions::instance()->get_package_details( $package ) ) . '</small></p>'; ?>
 		<?php endif; ?>
-	
+
 	<?php endif; ?>
+	<?php // CHANGE: END - Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
 
 	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package, only on the checkout page ?>
 	<?php if ( is_checkout() && count( $available_methods ) == 0 ) : ?>

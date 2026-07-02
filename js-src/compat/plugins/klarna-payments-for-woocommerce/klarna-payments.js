@@ -9,6 +9,10 @@ jQuery( function ( $ ) {
 		klarna_container_selector: "#klarna_container_2",
 		checkout_values: {},
 		addresses: {},
+		cart_total: klarna_payments_params.cart_total, // in minor units
+		// CHANGE: Applies to Klarna version prior to 4.6.0.
+		// CHANGE: Use custom place order button selectors as more than one place order button might exist on the same page.
+		submit_button_selectors: klarna_payments_params && klarna_payments_params.submit_button_selectors ? klarna_payments_params.submit_button_selectors.join( ", " ) : "input#place_order, button#place_order, .fc-place-order-button",
 		log: ( ...args ) => {
 			if ( klarna_payments_params.debug ) {
 				console.log( ...args )
@@ -62,7 +66,7 @@ jQuery( function ( $ ) {
 			 * When WooCommerce updates checkout
 			 * Happens on initial page load, country, state and postal code changes
 			 */
-			$( "body" ).on( "updated_checkout", function () {
+			$( "body" ).on( "updated_checkout", function ( event, data ) {
 				// Unblock the payments element if blocked
 				var blocked_el = $( ".woocommerce-checkout-payment" )
 				var blocked_el_data = blocked_el.data()
@@ -73,9 +77,11 @@ jQuery( function ( $ ) {
 				// Check if we need to hide the shipping fields
 				klarna_payments.maybeHideShippingAddress()
 
-				if ( klarna_payments.isKlarnaPaymentsSelected() ) {
+				if (klarna_payments.isKlarnaPaymentsSelected()) {
+					data = data || { fragments: null }
+
 					klarna_payments.initKlarnaCredit()
-					klarna_payments.load().then( klarna_payments.loadHandler )
+					klarna_payments.load( data.fragments ).then( klarna_payments.loadHandler )
 				}
 			} )
 
@@ -155,7 +161,7 @@ jQuery( function ( $ ) {
 			} )
 		},
 
-		load: function () {
+		load: function ( fragments = null ) {
 			var $defer = $.Deferred()
 
 			// Dont run load during checkout completion.
@@ -182,10 +188,20 @@ jQuery( function ( $ ) {
 
 						var options = {
 							container: klarna_payments_container_selector_id,
-							payment_method_category:
-								klarna_payments.getSelectedPaymentCategory() === "klarna_payments"
-									? ""
-									: klarna_payments.getSelectedPaymentCategory(),
+							// purchased_amount is used on the checkout page in any of Klarna payment methods that show a cost breakdown (the "Learn more" OSM widget).
+							purchase_amount: klarna_payments.cart_total,
+						}
+
+						// When the payment methods are combined into a single method, the category is omitted so the widget displays all payment options available in the Klarna session.
+						var payment_method_category = klarna_payments.getSelectedPaymentCategory()
+						if ( "klarna_payments" !== payment_method_category ) {
+							options.payment_method_category = payment_method_category
+						}
+
+						if ( fragments && fragments.kp_cart_total ) {
+							// Update the global instance. If we don't do this, the initial cart total will be used on further loads.
+							klarna_payments.cart_total = fragments.kp_cart_total
+							options.purchase_amount = klarna_payments.cart_total
 						}
 
 						if ( "US" === $( "#billing_country" ).val() ) {
@@ -264,15 +280,17 @@ jQuery( function ( $ ) {
 
 			klarna_payments.authorization_response = {}
 
+			// The category must match the load() call, so it is omitted here as well when the payment methods are combined into a single method.
+			var options = {}
+			var payment_method_category = klarna_payments.getSelectedPaymentCategory()
+			if ( "klarna_payments" !== payment_method_category ) {
+				options.payment_method_category = payment_method_category
+			}
+
 			try {
 				Klarna.Payments.authorize(
 					address,
-					{
-						payment_method_category:
-							klarna_payments.getSelectedPaymentCategory() === "klarna_payments"
-								? ""
-								: klarna_payments.getSelectedPaymentCategory(),
-					},
+					options,
 					function ( response ) {
 						klarna_payments.authorization_response = response
 						$defer.resolve( response )
@@ -598,10 +616,7 @@ jQuery( function ( $ ) {
 		klarna_payments.setRadioButtonValues()
 	} )
 
-	$( document ).on( "click", 
-		// CHANGE: Use a class selector for the place order button as more than one place order button might exist on the same page
-		"input#place_order, button#place_order, .fc-place-order-button", 
-		function ( e ) {
+	$( document ).on( "click", klarna_payments.submit_button_selectors, function ( e ) {
 		// No strict comparison: wp_localize_script() converts booleans to strings "1", respectively, "0".
 		if ( true == klarna_payments_params.pay_for_order ) {
 			klarna_payments.klarnaPayForOrder( e )
