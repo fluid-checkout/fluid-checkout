@@ -19,10 +19,11 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Register hooks when CartFlows is loaded
+		// Register hooks when CartFlows is loaded.
 		if ( did_action( 'cartflows_loaded' ) ) {
 			$this->remove_checkout_field_hooks();
-		} else {
+		}
+		else {
 			add_action( 'cartflows_loaded', array( $this, 'remove_checkout_field_hooks' ), 20 );
 		}
 
@@ -44,10 +45,10 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Remove CartFlows filters that modify the checkout fields.
 	 */
 	public function remove_checkout_field_hooks() {
-		// Bail if on a CartFlows checkout step
+		// Bail if on a CartFlows checkout step.
 		if ( function_exists( '_is_wcf_checkout_type' ) && _is_wcf_checkout_type() ) { return; }
 
-		// Bail if not FC checkout (or checkout AJAX)
+		// Bail if not FC checkout (or checkout AJAX).
 		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
 
 		// Bail if CartFlows checkout markup class is not available.
@@ -56,7 +57,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Removes CartFlows hooks for extra coupon fields, styles and scripts that conflict with Fluid Checkout.
 		remove_action( 'wp', array( Cartflows_Checkout_Markup::get_instance(), 'shortcode_load_data' ), 999 );
 
-		// Removes CartFlows hooks for modifying the order summary
+		// Removes CartFlows hooks for modifying the order summary.
 		remove_filter( 'woocommerce_cart_item_name', array( Cartflows_Checkout_Markup::get_instance(), 'modify_order_review_item_summary' ), 10 );
 		remove_action( 'woocommerce_before_calculate_totals', array( Cartflows_Checkout_Markup::get_instance(), 'custom_price_to_cart_item' ), 9999 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( Cartflows_Checkout_Markup::get_instance(), 'add_updated_cart_price' ), 10 );
