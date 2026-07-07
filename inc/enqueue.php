@@ -86,6 +86,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_deregister_script( 'wc-country-select' );
 		wp_deregister_script( 'wc-address-i18n' );
 		wp_deregister_script( 'wc-checkout' );
+		wp_deregister_script( 'wc-password-strength-meter' );
 
 		// Select2 / SelectWoo, will be replaced with TomSelect
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
@@ -111,6 +112,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-password-strength-meter', $this->get_script_url( 'js/password-strength-meter' ), array( 'jquery', 'password-strength-meter' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
@@ -255,19 +257,19 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_register_script( 'fc-utils', $this->get_script_url( 'js/fc-utils' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Register custom fonts
-		wp_register_style( 'fc-fonts', $this->get_style_url( 'css/fonts' ), array(), null );
+		wp_register_style( 'fc-fonts', $this->get_style_url( 'css/fonts' ), array(), NULL );
 
 		// Register styles
-		wp_register_style( 'fc-edit-address-page', $this->get_style_url( 'css/edit-address-page' ), array(), null );
-		wp_register_style( 'fc-add-payment-method-page', $this->get_style_url( 'css/add-payment-method-page' ), array(), null );
-		wp_register_style( 'fc-flyout-block', $this->get_style_url( 'css/flyout-block' ), array(), null );
-		wp_register_style( 'fc-sticky-states', $this->get_style_url( 'css/sticky-states' ), array(), null );
+		wp_register_style( 'fc-edit-address-page', $this->get_style_url( 'css/edit-address-page' ), array(), NULL );
+		wp_register_style( 'fc-add-payment-method-page', $this->get_style_url( 'css/add-payment-method-page' ), array(), NULL );
+		wp_register_style( 'fc-flyout-block', $this->get_style_url( 'css/flyout-block' ), array(), NULL );
+		wp_register_style( 'fc-sticky-states', $this->get_style_url( 'css/sticky-states' ), array(), NULL );
 
 		// Enhanced select
-		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), null );
+		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), NULL );
 
 		// Admin bar offset styles
-		wp_register_style( 'fc-frontend-admin-bar-offset', $this->get_style_url( 'css/frontend-admin-bar-offset' ), array(), null );
+		wp_register_style( 'fc-frontend-admin-bar-offset', $this->get_style_url( 'css/frontend-admin-bar-offset' ), array(), NULL );
 	}
 
 

@@ -2525,32 +2525,6 @@ msgstr ""
 "Voer het gedeelte met de afrekenstappen van het Nyture-thema uit bij "
 "gebruik van Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Kan worden geforceerd als \"vereist\" als het gedeelte Factuuradres wordt "
-"weergegeven na het gedeelte Verzendadres en het veld Factuurtelefoon is "
-"ingesteld als \"vereist\". Dit is nodig om ervoor te zorgen dat het "
-"verzendadres kan worden gekopieerd naar het factuuradres wanneer die optie "
-"is aangevinkt."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Kan worden geforceerd als \"vereist\" als het gedeelte Factuuradres wordt "
-"weergegeven na het gedeelte Factuuradres en het veld Factuurtelefoon is "
-"ingesteld als \"vereist\". Dit is nodig om ervoor te zorgen dat het "
-"factuuradres kan worden gekopieerd naar het factuuradres wanneer die optie "
-"is aangevinkt."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2803,9 +2777,47 @@ msgstr "Ingestort"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Uitgebreid"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Niet weergeven"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ja"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Het veld voor het telefoonnummer bij verzending kan als \"verplicht\" "
+"worden ingesteld als het gedeelte met het factuuradres na het gedeelte met "
+"het verzendadres wordt weergegeven en het veld voor het telefoonnummer bij "
+"facturering als \"verplicht\" is ingesteld. Dit is nodig om ervoor te "
+"zorgen dat het verzendadres naar het factuuradres kan worden gekopieerd "
+"wanneer die optie is aangevinkt; anders kan de klant het afrekenformulier "
+"mogelijk niet voltooien."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Het veld voor het factuurnummer kan als \"verplicht\" worden ingesteld als "
+"het gedeelte met het factuuradres vóór het gedeelte met het afleveradres "
+"wordt weergegeven en het veld voor het aflevernummer als \"verplicht\" is "
+"ingesteld. Dit is nodig om ervoor te zorgen dat het afleveradres naar het "
+"factuuradres kan worden gekopieerd wanneer die optie is aangevinkt; anders "
+"kan de klant het afrekenformulier mogelijk niet voltooien."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2945,3 +2957,8 @@ msgstr "Verzending %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Verzending"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "volgende stap"
