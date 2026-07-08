@@ -56,7 +56,6 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 				'--fluidcheckout--field--font-size' => '16px',
 
 				// Border styles
-				// ! Can not set the border bottom only? I need to set the border top, left, right and bottom.
 				'--fluidcheckout--field--border-color' => '#e4e6eb',
 				'--fluidcheckout--field--border-width' => '2px',
 				'--fluidcheckout--field--border-style' => 'solid',
