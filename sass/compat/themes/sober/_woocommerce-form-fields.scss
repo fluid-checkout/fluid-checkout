@@ -36,9 +36,9 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__
 	display: inline;
 }
 
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio] + label,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox] + label,
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox,
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row input[type=radio],
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row input[type=checkbox],
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type {
 	position: relative;
 	cursor: pointer;
