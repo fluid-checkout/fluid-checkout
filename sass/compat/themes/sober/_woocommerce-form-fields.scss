@@ -7,7 +7,7 @@ body#{ $_body-theme-selector } .woocommerce form .form-row {
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row input:focus {
-	outline: none !important;
+	outline: none !important; // important is needed to match with the theme styles
 }
 
 body#{ $_body-theme-selector } .woocommerce .woocommerce-address-fields .form-row label {
