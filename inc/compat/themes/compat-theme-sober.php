@@ -31,7 +31,7 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 		$class_object = call_user_func( array( $class_name, 'instance' ) );
 
 		// Remove hooks from theme
-		remove_filter( 'woocommerce_checkout_before_customer_details', array( $class_object, 'billing_title' ) );
+		remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'billing_title' ), 10 );
 		remove_filter( 'woocommerce_loop_add_to_cart_link', array( $class_object, 'add_to_cart_catalog_button' ), 10, 3 );
 		remove_filter( 'woocommerce_cart_item_quantity', array( $class_object, 'cart_item_quantity' ), 10, 3 );
 
