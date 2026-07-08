@@ -63,9 +63,9 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => 'auto',
+				'--fluidcheckout--field--height' => '35.5px',
 				'--fluidcheckout--field--padding-left' => '0',
-				'--fluidcheckout--field--font-size' => '16px',
+				'--fluidcheckout--field--font-size' => '1.6rem',
 				'--fluidcheckout--field--text-color' => '#23232c',
 
 				// Border styles

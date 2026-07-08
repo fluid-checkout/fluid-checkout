@@ -6,9 +6,18 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	color: $form-field-text-color;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single:focus-within {
-	outline: none;
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper form .form-row .select2-selection--single:focus-within,
+body#{ $_body-theme-selector } div.woocommerce .fc-wrapper form .form-row .select2-selection:focus {
+	outline: none!important;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection {
+	height: inherit;
+	min-height: inherit;
+	line-height: normal;
+}
+body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection--single .select2-selection__arrow b {
+	margin: auto;
 }
