@@ -23,10 +23,32 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row-last label {
 
 // Shipping methods checkbox and radio button styles
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox:after,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio]+label:after,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox]+label:after {
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio] + label:after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox] + label:after {
 	border-left: none;
 	border-bottom: none;
 	transform: none;
 	transition: none;
+}
+
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row input[type=checkbox],
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type {
+	display: inline;
+}
+
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio] + label,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox] + label,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type {
+	position: relative;
+	cursor: pointer;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox:before,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox:after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type:before,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type:after {
+	content: none;
 }
