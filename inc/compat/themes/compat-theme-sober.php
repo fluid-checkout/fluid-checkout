@@ -35,7 +35,7 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 		remove_filter( 'woocommerce_loop_add_to_cart_link', array( $class_object, 'add_to_cart_catalog_button' ), 10, 3 );
 		remove_filter( 'woocommerce_cart_item_quantity', array( $class_object, 'cart_item_quantity' ), 10, 3 );
 
-		// Hooks
+		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 

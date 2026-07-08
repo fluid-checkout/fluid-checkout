@@ -11,7 +11,7 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row input:focus {
 }
 
 body#{ $_body-theme-selector } .woocommerce .woocommerce-address-fields .form-row label {
-	margin-left: auto;
+	margin-#{ $alignment-left }: auto;
 	float: none;
 }
 

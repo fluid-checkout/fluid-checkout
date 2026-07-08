@@ -2,7 +2,6 @@
 // WOOCOMMERCE FORM FIELDS SELECT2
 // ------------------------------------
 
-//! Add border fix 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single {
 	border-top: none;
 	border-left: none;
@@ -11,5 +10,5 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 }
 
 body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single:focus-within {
-	outline: none !important;
+	outline: none;
 }
