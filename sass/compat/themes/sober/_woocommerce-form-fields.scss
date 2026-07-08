@@ -2,20 +2,22 @@
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce form .form-row {
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row {
 	padding: 0;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row input:focus {
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row input:focus,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row input#coupon_code:focus,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row textarea:focus {
 	outline: none !important; // important is needed to match with the theme styles
 }
 
-body#{ $_body-theme-selector } .woocommerce .woocommerce-address-fields .form-row label {
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-address-fields .form-row label {
 	margin-#{ $alignment-left }: auto;
 	float: none;
 }
 
-body#{ $_body-theme-selector } .woocommerce form .form-row-last label {
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row-last label {
 	display: inline-block;
 }
 
