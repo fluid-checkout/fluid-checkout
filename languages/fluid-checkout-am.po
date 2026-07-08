@@ -68,10 +68,6 @@ msgstr "የማጓጓዣ ስልክ"
 msgid "Only used for shipping-related questions."
 msgstr "ከመርከብ ጋር ለተያያዙ ጥያቄዎች ብቻ ጥቅም ላይ ይውላል።"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "ባለብዙ ደረጃ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "ነጠላ ደረጃ"
@@ -105,14 +101,6 @@ msgstr "ወደ ክፍያ መጠየቂያ ይቀጥሉ"
 msgid "Proceed to payment"
 msgstr "ወደ ክፍያ ይቀጥሉ"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "የእኔ ግንኙነት"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "መላኪያ ወደ"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "የማጓጓዣ ዘዴ"
@@ -120,10 +108,6 @@ msgstr "የማጓጓዣ ዘዴ"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "ተጨማሪ ማስታወሻዎች"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "ማስከፈል ለ"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -889,15 +873,6 @@ msgstr "አቀማመጥን ይመልከቱ"
 msgid "Design template"
 msgstr "ንድፍ አብነት"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"አጠቃላይ ቅጦች ለቼክ መውጫ ደረጃዎች ፣ የትዕዛዝ ማጠቃለያ እና ሌሎች ክፍሎች። እንዲሁም እንደ ጋሪ፣ ትእዛዝ የተቀበሉ "
-"እና የትዕዛዝ ገጾችን መመልከት ባሉ ሌሎች ገጾች ላይም ሊተገበር ይችላል።"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "ጨለማ ሁነታ"
@@ -1424,14 +1399,6 @@ msgstr "የክፍያ መጠየቂያ የስልክ መስክ ወደ ተመዝግ�
 msgid "Choose in which step to display the billing phone field."
 msgstr "የክፍያ መጠየቂያ ስልክ መስኩን በየትኛው ደረጃ እንደሚያሳዩ ይምረጡ።"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "ለስልክ መስኮች አለምአቀፍ የስልክ ቁጥር ቅርጸት እና ማረጋገጫን አንቃ"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "እንደየአገሩ ስልክ ቁጥሮች ይቅረጹ እና ያረጋግጡ።"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "በአገር ህግ መሰረት የስልክ ቁጥር ማረጋገጥን አንቃ"
@@ -1830,12 +1797,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(የሙከራ)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr "ይህ የሙከራ ባህሪ ነው እና በሁሉም ገጽታዎች እና ተሰኪዎች እንደተጠበቀው ላይሰራ ይችላል። በጥንቃቄ ይጠቀሙበት."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2236,28 +2197,6 @@ msgid ""
 "Checkout."
 msgstr "Fluid Checkout በሚጠቀሙበት ጊዜ የፍተሻ ደረጃዎች ክፍሉን ከናይture ጭብጥ ያውጡ።"
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ምናልባት የመክፈያ አድራሻ ክፍሉ ከማጓጓዣው አድራሻ ክፍል በኋላ ከታየ፣ እና የክፍያ መጠየቂያው ስልክ መስኩ "
-"“አስፈላጊ” ተብሎ ከተዋቀረ “አስፈላጊ” ተብሎ ሊገደድ ይችላል። ይህ አማራጭ ሲረጋገጥ የመላኪያ አድራሻው ወደ የክፍያ "
-"መጠየቂያ አድራሻ መገልበጥ መቻሉን ለማረጋገጥ ያስፈልጋል።"
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ምናልባት የክፍያ መጠየቂያ አድራሻ ክፍሉ ከሂሳብ አከፋፈል አድራሻ ክፍል በኋላ ከታየ እንደ &quot;አስፈላጊ&quot; "
-"ሊገደድ ይችላል, እና የሂሳብ አከፋፈል የስልክ መስኩ &quot;አስፈላጊ ነው. ይህ አማራጭ ሲፈተሽ የመክፈያ አድራሻው "
-"ወደ የክፍያ መጠየቂያ አድራሻ መገልበጥ መቻሉን ለማረጋገጥ ይህ ያስፈልጋል."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2353,6 +2292,177 @@ msgstr "ከሂደት አሞሌ በኋላ"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "ከኩፖን ኮዶች ክፍል በፊት"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "አለምአቀፍ የስልክ ቁጥር መስኮችን አንቃ"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "በእያንዳንዱ ሀገር ደንቦች መሰረት የስልክ ቁጥሮችን ይቅረጹ."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "ትክክለኛ የስልክ ቁጥር ማረጋገጫ ተጠቀም"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"በተመረጠው የአገር ኮድ ደንቦች ላይ በመመስረት የስልክ ቁጥሩ ትክክለኛ የሞባይል ወይም መደበኛ ስልክ ቁጥር መሆኑን "
+"ለማረጋገጥ ይሞክሩ። ይህ አማራጭ የ <code>intl-tel-input</code> ትክክለኛ የማረጋገጫ ባህሪን ይጠቀማል፣ "
+"ይህም ለአንዳንድ የስልክ ቁጥሮች የውሸት አወንታዊ ውጤቶችን ሊሰጥ ይችላል።"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr "ይህ የሙከራ ባህሪ ነው እና በሁሉም ውቅሮች ውስጥ እንደተጠበቀው ላይሰራ ይችላል። በጥንቃቄ ይጠቀሙበት."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr "ትክክለኛ ማረጋገጫ ሲነቃ ጥቅም ላይ የሚውሉ የስልክ ቁጥር ማረጋገጫ ዓይነቶች።"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "ሞባይል"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ቋሚ መስመር"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ከክፍያ ነፃ"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "እውቂያ"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "ባለብዙ ደረጃ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 አምዶች"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 አምድ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"ለቼክ መውጫ ደረጃዎች፣ የትዕዛዝ ማጠቃለያ እና ሌሎች ክፍሎች አጠቃላይ ቅጦች።<br> እንዲሁም እንደ ጋሪ፣ የተቀበሉት "
+"ትዕዛዝ እና የትዕዛዝ ገጾች ባሉ ሌሎች ገጾች ላይ ሊተገበር ይችላል።"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"የ <em>&quot;Split&quot;</em> የዲዛይን አብነት <em>&quot;1 አምድ&quot;</em> አቀማመጥ "
+"ሲጠቀሙ አይገኝም እና ከተመረጠ ወደ <em>&quot;Minimalist&quot;</em> ይመለሳል።"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "ከክፍያ በፊት ደረጃዎች"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ወይም"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"የ <em>&quot;1 አምድ&quot;</em> የቼክ መውጫ አቀማመጥን ሲጠቀሙ ይህ አማራጭ ሁልጊዜ <em>&quot;ከቼክ "
+"መውጫ ደረጃዎች በፊት&quot;</em> ተብሎ የሚቀናበር ሲሆን ለዴስክቶፕ እይታም ይሠራል።"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "በሞባይል ላይ ለተጨማሪ ትዕዛዝ ማጠቃለያ ክፍል ቦታ።"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;በጣቢያው ላይ ያለው ራስጌ&quot;</em> የሚለው አማራጭ የሚተገበረው ትኩረትን የሚከፋፍል ራስጌን "
+"ሲጠቀሙ ብቻ ነው።"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "በጣቢያው ራስጌ ላይ (ትኩረትን የማያከፋፍል ራስጌ ያስፈልገዋል)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "በሞባይል ላይ ለሚሰፋው የትዕዛዝ ማጠቃለያ ክፍል የመጀመሪያ ሁኔታ።"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"በተቆጣጣሪ መስፈርቶች ምክንያት ለሚከተሉት አገሮች <em>እንደተስፋፋ</em> እንዲያዘጋጁት እንመክራለን <strong>፡ "
+"ጀርመን</strong> ፣ <strong>ኦስትሪያ</strong> ፣ <strong>ስዊዘርላንድ</strong> ፣ "
+"<strong>ኔዘርላንድስ</strong> ፣ <strong>ፖላንድ</strong> ፣ <strong>ቤልጂየም</strong> "
+"እና <strong>ፈረንሳይ</strong> ።"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ተሰብስቧል"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "ተዘርግቷል"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "አታሳይ"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "አዎ"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"የክፍያ አድራሻ ክፍሉ ከማጓጓዣ አድራሻ ክፍል በኋላ ከታየ እና የክፍያ ስልክ መስኩ &quot;አስፈላጊ&quot; ከሆነ "
+"የማጓጓዣ ስልክ መስኩ &quot;አስፈላጊ&quot; ተብሎ ሊገደድ ይችላል። ይህ አማራጭ ሲረጋገጥ የማጓጓዣ አድራሻው ወደ "
+"የክፍያ አድራሻው ሊገለበጥ እንደሚችል ለማረጋገጥ ያስፈልጋል፣ አለበለዚያ ደንበኛው የክፍያ ቅጽን መሙላት ላይችል ይችላል።"
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"የክፍያ አድራሻው ክፍል ከማጓጓዣ አድራሻው ክፍል በፊት ከታየ እና የማጓጓዣ ስልክ መስኩ &quot;አስፈላጊ&quot; "
+"ከሆነ የክፍያ ስልክ መስኩ &quot;አስፈላጊ&quot; ተብሎ ሊገደድ ይችላል። ይህ አማራጭ ሲረጋገጥ የማጓጓዣ አድራሻው "
+"ወደ የክፍያ አድራሻው ሊገለበጥ እንደሚችል ለማረጋገጥ ያስፈልጋል፣ አለበለዚያ ደንበኛው የክፍያ ቅጽን መሙላት ላይችል "
+"ይችላል።"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2476,3 +2586,20 @@ msgstr "ወይም እንደ እንግዳ ቀጥል"
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ምስል አስወግድ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "%d መላኪያ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "ጭነት"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "ቀጣዩ እርምጃ"

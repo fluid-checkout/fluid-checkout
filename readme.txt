@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.9
-Stable tag: 4.1.5
+Tested up to: 7.0
+Stable tag: 4.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -357,6 +357,70 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with Theme Sober (by Uixthemes).
+* Added: Conditional visibility for checkout steps based on available substeps.
+* Improved: Exclude development files from installable zip packages for this plugin.
+* Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
+* Improved: Address locale attribute overrides on My Account edit address pages.
+* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
+* Improved: Sync all forked 3rd-party files with upstream sources.
+* Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
+* Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
+* Fixed: Missing styles for the WooCommerce show password button at checkout. Also fixed the button getting duplicated after checkout updates.
+
+= 4.2.4 - 2026-06-02 =
+
+* Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.
+* Fixed: Compatibility with plugin Klaviyo. Prevent fatal error at checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when trying to show shipping costs for orders without shipping at cart and checkout.
+
+= 4.2.3 - 2026-05-25 =
+
+* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
+* Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
+* Fixed: Password meter styles on checkout page account creation.
+* Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
+
+= 4.2.2 - 2026-04-21 =
+
+* Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
+* Fixed: Compatibility with theme BeTheme. Check that theme function exists before trying to use it.
+
+= 4.2.1 - 2026-04-07 =
+
+* Bump tested up to WooCommerce 10.6.1
+* Added: Compatibility with plugin WooCommerce FedEx Shipping Pro by Techspawn.
+* Improved: Added global JS flag `window.can_update_payment_methods` to allow preventing updating the payment methods fragment.
+* Fixed: Compatibility with plugin Rvvup for WooCommerce. Prevent update of payment methods section during payment cause payment to fail.
+* Fixed: Compatibility with plugin Germanized for WooCommerce Pro. Fix criteria to determine if compatibility code for this plugin is active or not.
+* Fixed: Compatibility with plugin Klarna Payments for WooCommerce by Klarna. Disable checkout updates during the `beforeunload` event. Remove plugin's script modifications for versions of the Klarna plugin that already support it.
+* Fixed: Compatibility with plugin Kustom Checkout for WooCommerce. Missing undo hooks statements causing shipping methods to not change correctly for Kustom Checkout and preventing it from completing the order. This fix also applies to other similar plugins.
+* Fixed: Login form at checkout not accept certain characters for passwords.
+* Fixed: Trigger checkout fragments update when filling the email field with the MailCheck suggestion.
+* Fixed: Distraction free header and progress bar staying offset when WP admin bar is scrolled out of view on the checkout page.
+
+= 4.2.0 - 2026-03-10 =
+
+* Bump tested up to WooCommerce 10.6.0
+* Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
+* Added: Support for new layout options: one column layout, and order summary before checkout steps.
+* Added: Compatibility with plugin: AutomateWoo - Birthdays Add-on
+* Improved: Use neutral wordings for contact, shipping address and billing address checkout sub-step titles.
+* Improved: Make account creation checkbox field customizable via default WooCommerce hooks.
+* Improved: Handling of `intl-tel-input` fields when replacing checkout fragments.
+* Fix: Focus and scroll behavior for the first invalid field when trying to move to the next step or save a substep after changes.
+
+= 4.1.6 - 2026-02-26 =
+
+* Bump tested up to WooCommerce 10.5.2
+* Added: Compatibility with plugin Nextend Social Login PRO.
+* Improved: Compatibility with plugin WooCommerce Smart Coupons.
+* Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
+* Fixed: Compatibility with plugin Packlink PRO. Prevent Packlink errors by ensuring assets only load on checkout page.
+* Fixed: Compatibility with plugin Hezarfen. Fix issue with invoice types on checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Layout issue with shipping subtotals.
+* Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
+* Fixed: Shipping methods section empty without message or options in some specific cases.
 
 = 4.1.5 - 2025-12-12 =
 
@@ -364,7 +428,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin WC Cities Select.
 * Added: Compatibility with plugin WooCommerce Italian Add-on Plus.
 * Added: New filter `fc_mailcheck_suggestion_message` to allow changing the Mailcheck email typo suggestion message.
-* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certains 3rd-party plugins.
+* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certain 3rd-party plugins.
 
 = 4.1.4 - 2025-12-05 =
 

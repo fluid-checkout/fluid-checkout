@@ -14,7 +14,7 @@
  * @package fluid-checkout
  * @version 3.2.2
  * @wc-version 3.6.0
- * @wc-original checkout/form-billing.php
+ * @original plugins/woocommerce/templates/checkout/form-billing.php
  */
 
 defined( 'ABSPATH' ) || exit;

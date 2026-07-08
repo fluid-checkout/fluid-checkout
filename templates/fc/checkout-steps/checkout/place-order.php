@@ -10,11 +10,11 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package fluid-checkout
  * @version 4.1.0
- * @wc-version 7.0.1
- * @wc-original checkout/payment.php
+ * @wc-version 9.8.0
+ * @original plugins/woocommerce/templates/checkout/payment.php
  */
 
 defined( 'ABSPATH' ) || exit;

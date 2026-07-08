@@ -1,6 +1,7 @@
+<?php // CHANGE: Add abspath check and exit ?>
 <?php defined( 'ABSPATH' ) || exit; ?>
-<?php // CHANGE: Change table elements with `div` elements ?>
 
+<?php // CHANGE: Change table elements with `div` elements ?>
 <div class="wc_shipping_sameday_lockers_header shipping" style="display: none">
 	<div style="padding-bottom:0"><b><?= esc_html_e('Alege punct EasyBox', 'curiero-plugin') ?> <abbr class="required" title="required">*</abbr></b></div>
 </div>
@@ -39,5 +40,4 @@
 		<button type="button" class="button alt sameday_select_locker" style="padding: 10px; font-size: 15px;" id="select_locker_map" ><?php echo __('Arata Harta Easybox', 'curiero-plugin') ?></button>
 	</div>
 </div>
-
 <?php // CHANGE: END - Change table elements with `div` elements ?>

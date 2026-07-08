@@ -43,6 +43,7 @@
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
+		formRowSelector: '.form-row, .shipping-method__package',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -61,9 +62,19 @@
 		isLoadingClass: 'is-loading',
 		isCurrentClass: 'is-current',
 		isCompleteClass: 'is-complete',
+		isHiddenClass: 'fc-hidden',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
 		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
 		currentLastStepClass: 'fc-checkout-step-current-last',
+
+		stepActionsSelector: '.fc-step__actions',
+		stepVisibleAttribute: 'data-step-visible',
+		stepProceedLabelAttribute: 'data-step-proceed-label',
+		stepFirstAttribute: 'data-step-first',
+		stepLastAttribute: 'data-step-last',
+		stepCountAttribute: 'data-step-count',
+		stepCountTotalSelector: '.fc-progress-bar__total-steps',
+		progressBarStepsContainerSelector: '.fc-progress-bar__steps',
 
 		substepEditableStateFieldSelector: '.fc-substep-editable-state[type="hidden"]',
 		substepEditableStateAttribute: 'data-substep-editable',
@@ -71,16 +82,26 @@
 		substepVisibleStateAttribute: 'data-substep-visible',
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
-		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
+		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidFocusDelay: 100,
 
+		enablePlaceOrderMove: 'yes',
 		placeOrderButtonSelector: '.fc-place-order-button',
 		placeOrderSkipMoveSelector: '.has-place-order--below_order_summary',
 		placeOrderSectionMainSelector: '.fc-place-order__section--main',
 		placeOrderPlaceholderMainSelector: '.fc-inside .fc-place-order__section-placeholder',
 		placeOrderPlaceholderSidebarSelector: '.fc-sidebar .fc-place-order__section-placeholder',
 		placeOrderRefreshRate: 50,
+
+		enableOrderSummaryTableMove: 'yes',
+		orderSummaryTableSelector: '#order_review',
+		orderSummaryTableSkipMoveSelector: '.has-order-summary-position--site_header',
+		orderSummaryForceMoveSelector: '.has-checkout-column-layout--one_column',
+		orderSummaryTablePlaceholderMainSelector: '.fc-order-review-table__placeholder--main',
+		orderSummaryTablePlaceholderExtraSelector: '.fc-order-review-table__placeholder--extra',
+		orderSummaryTableRefreshRate: 50,
 	}
-	var _resizeObserver;
+	var _resizeObservers = [];
 
 
 
@@ -104,6 +125,34 @@
 
 		FCUtils.scrollToElement( element, _settings.progressBarSelector );
 	}
+
+	/**
+	 * Wait for the element to be in the viewport and then focus it.
+	 * Runs recursively until the element is in the viewport, then focuses it.
+	 *
+	 * @param   HTMLElement  element  Element to check and focus.
+	 */
+	var waitForElementInViewportThenFocus = function( element ) {
+		// Get element bounding client rect
+		var rect = element.getBoundingClientRect();
+		var inView = (
+			rect.top >= 0 &&
+			rect.bottom <= ( window.innerHeight || document.documentElement.clientHeight )
+		);
+
+		// Check if element is in viewport
+		if ( inView ) {
+			setTimeout( function() {
+				element.focus();
+			}, _settings.invalidFocusDelay );
+		}
+		// Otherwise keep waiting
+		else {
+			requestAnimationFrame( function() {
+				waitForElementInViewportThenFocus( element );
+			} );
+		}
+	};
 
 
 
@@ -283,8 +332,10 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when substep has invalid fields
@@ -311,6 +362,33 @@
 
 
 	/**
+	 * Set progress bar item visibility state.
+	 *
+	 * @param   HTMLElement  progressBarItem  Progress bar item element.
+	 * @param   boolean      isVisible        Whether the progress bar item should be visible.
+	 */
+	var setProgressBarItemVisibility = function( progressBarItem, isVisible ) {
+		// Define visible state value
+		var visibleValue = isVisible ? 'yes' : 'no';
+
+		// Set visible state attribute
+		progressBarItem.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+
+		// Handle visible state
+		if ( isVisible ) {
+			progressBarItem.classList.remove( _settings.isHiddenClass );
+		}
+		// Handle hidden state
+		else {
+			progressBarItem.classList.add( _settings.isHiddenClass );
+			progressBarItem.classList.remove( _settings.isCurrentClass );
+			progressBarItem.classList.remove( _settings.isCompleteClass );
+		}
+	}
+
+
+
+	/**
 	 * Update the progress bar state.
 	 */
 	var updateProgressBar = function() {
@@ -331,34 +409,46 @@
 		if ( ! progressBarElement ) { return; }
 
 		var progressBarItems = progressBarElement.querySelectorAll( _settings.progressBarItemSelector );
-		var progressBarItemsCount = progressBarItems.length;
 
 		// Update progress bar items status
 		for ( var i = 0; i < progressBarItems.length; i++ ) {
-			var bar = progressBarItems[i];
+			var bar = progressBarItems[ i ];
+			var isBarVisible = 'no' !== bar.getAttribute( _settings.stepVisibleAttribute );
+
+			// Skip hidden progress bar items
+			if ( ! isBarVisible ) {
+				setProgressBarItemVisibility( bar, false );
+				continue;
+			}
+
+			// Remove hidden class from the progress bar item
+			bar.classList.remove( _settings.isHiddenClass );
+
+			// Get step index of the progress bar item
 			var stepIndex = parseInt( bar.getAttribute( _settings.stepIndexAttribute ) );
 			stepIndex = isNaN( stepIndex ) ? -1 : stepIndex;
 
-			// Update the `current` status for each progress bar item
-			if ( stepIndex == currentStepIndex ) {
-				bar.classList.add( _settings.isCurrentClass );
-			}
-			else {
-				bar.classList.remove( _settings.isCurrentClass );
-			}
+			// Handle `current` status using toggle method
+			bar.classList.toggle( _settings.isCurrentClass, stepIndex == currentStepIndex );
 
-			// Update the `complete` status for each progress bar item
-			if ( stepIndex < currentStepIndex ) {
-				bar.classList.add( _settings.isCompleteClass );
-			}
-			else {
-				bar.classList.remove( _settings.isCompleteClass );
-			}
+			// Toggle `complete` state based on the step index
+			bar.classList.toggle( _settings.isCompleteClass, stepIndex < currentStepIndex );
 		}
 
-		// Calculate the current step text value
-		var currentStepValue = currentStepIndex + 1;
-		currentStepValue = currentStepValue <= progressBarItemsCount ? currentStepValue : progressBarItemsCount;
+		// Get only visible progress bar items
+		var visibleProgressBarItems = Array.from( progressBarItems ).filter( function( bar ) { return 'no' !== bar.getAttribute( _settings.stepVisibleAttribute ); } );
+
+		// Iterate through visible steps and calculate current step number
+		var currentStepValue = 1;
+		for ( var i = 0; i < visibleProgressBarItems.length; i++ ) {
+			// Get step index of the progress bar item
+			var stepIndex = parseInt( visibleProgressBarItems[ i ].getAttribute( _settings.stepIndexAttribute ) );
+
+			// Count visible steps up to and including the current step
+			if ( stepIndex <= currentStepIndex ) {
+				currentStepValue = i + 1;
+			}
+		}
 
 		// Change value of the current step text indicator
 		var currentStepTextElement = progressBarElement.querySelector( _settings.progressBarCurrentSelector );
@@ -382,15 +472,26 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when any substep has invalid fields
 			return;
 		}
 
-		// Set current step as complete
+		// Get next visible step, and set it as current
+		var nextStepElement = getNextVisibleStep( stepElement );
+
+		// Bail if there is no next visible step
+		if ( ! nextStepElement ) { return; }
+
+		// Set `current` to the next step
+		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
+
+		// Set previous step as complete
 		stepElement.setAttribute( _settings.stepCompleteAttribute, '' );
 
 		// Collapse substeps fields and display step in text format
@@ -408,10 +509,6 @@
 			// Collapse substep
 			collapseSubstepEdit( substepElement );
 		}
-
-		// Get next step, and set it as current
-		var nextStepElement = stepElement.parentElement.querySelector( _settings.nextStepSelector );
-		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
 
 		// Unset `current` from the step that is closing
 		// (needs to run after setting the next step as the current one)
@@ -440,6 +537,219 @@
 		if ( _hasJQuery ) {
 			$( document.body ).trigger( 'update_checkout' );
 		}
+	}
+
+
+
+	/**
+	 * Check if a step has any visible substeps.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to check.
+	 *
+	 * @return  Boolean                   Whether the step has at least one visible substep.
+	 */
+	var hasVisibleSubsteps = function( stepElement ) {
+		// Initialize variables
+		var _hasVisibleSubsteps = false;
+
+		// Get substeps of the step
+		var substeps = stepElement.querySelectorAll( _settings.substepSelector );
+
+		// Return true if step has no substeps (e.g. payment step)
+		if ( substeps.length === 0 ) { return true; }
+
+		// Iterate through substeps
+		for ( var i = 0; i < substeps.length; i++ ) {
+			// Skip if substep is not visible
+			if ( 'no' === substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) { continue; }
+
+			// Set flag to true
+			_hasVisibleSubsteps = true;
+			break;
+		}
+
+		return _hasVisibleSubsteps;
+	}
+
+	/**
+	 * Get the next visible step after the given step element.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to start searching from.
+	 *
+	 * @return  HTMLElement|null          The next visible step element, or `null` if not found.
+	 */
+	var getNextVisibleStep = function( stepElement ) {
+		// Initialize variables
+		var nextVisibleStep = null;
+		var allSteps = getAllSteps();
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return null; }
+
+		// Get index of the step element
+		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Bail if step index not found for the given step element
+		if ( -1 === stepIndex ) { return null; }
+
+		// Iterate forward through steps after the given step
+		for ( var i = stepIndex + 1; i < allSteps.length; i++ ) {
+			// Skip if step is not visible
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) { continue; }
+
+			// Set next visible step
+			nextVisibleStep = allSteps[ i ];
+			break;
+		}
+
+		return nextVisibleStep;
+	}
+
+	/**
+	 * Get the previous visible step before the given step element.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to start searching from.
+	 *
+	 * @return  HTMLElement|null          The previous visible step element, or `null` if not found.
+	 */
+	var getPreviousVisibleStep = function( stepElement ) {
+		// Initialize variables
+		var previousVisibleStep = null;
+		var allSteps = getAllSteps();
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return null; }
+
+		// Get index of the step element
+		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Bail if step index not found for the given step element
+		if ( -1 === stepIndex ) { return null; }
+
+		// Iterate backward through steps
+		for ( var i = stepIndex - 1; i >= 0; i-- ) {
+			// Skip if step is not visible
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) { continue; }
+
+			// Get previous visible step
+			previousVisibleStep = allSteps[ i ];
+			break;
+		}
+
+		return previousVisibleStep;
+	}
+
+
+
+	/**
+	 * Update step visibility based on substep visibility state.
+	 *
+	 * @param   Event  _event  Unused `jQuery.Event` object.
+	 * @param   Array  _data   Unused updated checkout data.
+	 */
+	var maybeChangeStepVisibility = function( _event, _data ) {
+		var allSteps = getAllSteps();
+		var visibleSteps = [];
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return; }
+
+		// Iterate through steps to update their visibility and collect visible steps
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var stepElement = allSteps[ i ];
+			var stepId = stepElement.getAttribute( _settings.stepIdAttribute );
+			var progressBarItem = document.querySelector( _settings.progressBarItemSelector + '[' + _settings.stepIdAttribute + '="' + stepId + '"]' );
+
+			// Get step visibility status
+			var isVisible = hasVisibleSubsteps( stepElement );
+			var visibleValue = isVisible ? 'yes' : 'no';
+
+			// Set step visibility attribute
+			stepElement.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+
+			// Reset first/last step attributes
+			stepElement.removeAttribute( _settings.stepFirstAttribute );
+			stepElement.removeAttribute( _settings.stepLastAttribute );
+
+			// Collect visible steps
+			if ( isVisible ) {
+				visibleSteps.push( stepElement );
+			}
+
+			// Update corresponding progress bar item visibility
+			if ( progressBarItem ) {
+				setProgressBarItemVisibility( progressBarItem, isVisible );
+			}
+		}
+
+		// Set first/last step attributes on visible steps only
+		if ( visibleSteps.length > 0 ) {
+			visibleSteps[ 0 ].setAttribute( _settings.stepFirstAttribute, '' );
+			visibleSteps[ visibleSteps.length - 1 ].setAttribute( _settings.stepLastAttribute, '' );
+		}
+
+		// Update step count on progress bar container to reflect only visible steps
+		var progressBarStepsContainer = document.querySelector( _settings.progressBarStepsContainerSelector );
+		if ( progressBarStepsContainer ) {
+			progressBarStepsContainer.setAttribute( _settings.stepCountAttribute, visibleSteps.length );
+		}
+
+		// Update total steps count text element
+		var totalStepsElement = document.querySelector( _settings.stepCountTotalSelector );
+		if ( totalStepsElement ) {
+			totalStepsElement.innerText = visibleSteps.length;
+		}
+
+		// Iterate through steps to update proceed button labels and visibility for each step
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var stepElement = allSteps[ i ];
+			var nextStepButton = stepElement.querySelector( _settings.nextStepButtonSelector );
+
+			// Skip hidden steps and steps with no proceed button
+			if ( 'no' === stepElement.getAttribute( _settings.stepVisibleAttribute ) || ! nextStepButton ) { continue; }
+
+			// Get step actions container
+			var stepActions = nextStepButton.closest( _settings.stepActionsSelector );
+
+			// Get next visible step
+			var nextStepElement = getNextVisibleStep( stepElement );
+
+			// Maybe hide the proceed button if there is no next visible step
+			if ( ! nextStepElement ) {
+				// Maybe hide the step actions container
+				if ( stepActions ) {
+					stepActions.style.display = 'none';
+				}
+
+				// Skip to the next step
+				continue;
+			}
+
+			// Update button label with next visible step's proceed label
+			var proceedLabel = nextStepElement.getAttribute( _settings.stepProceedLabelAttribute );
+			if ( proceedLabel ) {
+				nextStepButton.textContent = proceedLabel;
+			}
+
+			// Ensure the button container is visible
+			if ( stepActions ) {
+				stepActions.style.display = '';
+			}
+		}
+
+		// Maybe handle case where the current step has become hidden
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+		if ( currentStepElement && 'no' === currentStepElement.getAttribute( _settings.stepVisibleAttribute ) ) {
+			// Try to move to the next visible step, or fall back to the previous visible step
+			var targetStep = getNextVisibleStep( currentStepElement ) || getPreviousVisibleStep( currentStepElement );
+			if ( targetStep ) {
+				currentStepElement.removeAttribute( _settings.stepCurrentAttribute );
+				targetStep.setAttribute( _settings.stepCurrentAttribute, '' );
+			}
+		}
+
+		// Update progress bar to reflect changes
+		updateProgressBar();
 	}
 
 
@@ -577,10 +887,10 @@
 
 
 	/**
-	 * Maybe move place order section to order summary for small screens.
+	 * Maybe move place order section based on screen size.
 	 */
 	var maybeMovePlaceOrderSection = function() {
-		// Bail if displaying the place order only on the sidebar. In this case there is no need to move the sections.
+		// Bail if should not move the place order section
 		if ( document.body.matches( _settings.placeOrderSkipMoveSelector ) ) { return; }
 
 		// Get viewport width
@@ -601,6 +911,36 @@
 		// Maybe move to steps section
 		else if ( viewportWidth >= 1000 && placeOrderPlaceholderMain.parentNode !== placeOrderMain.parentNode ) {
 			placeOrderPlaceholderMain.parentNode.insertBefore( placeOrderMain, placeOrderPlaceholderMain.nextSibling );
+		}
+	};
+
+
+
+	/**
+	 * Maybe move order summary table based on screen size.
+	 */
+	var maybeMoveOrderSummaryTable = function() {
+		// Bail if should not move the order summary table
+		if ( document.body.matches( _settings.orderSummaryTableSkipMoveSelector ) ) { return; }
+
+		// Get viewport width
+		var viewportWidth = window.innerWidth;
+
+		// Get place order sections
+		var orderSummaryTable = document.querySelector( _settings.orderSummaryTableSelector );
+		var orderSummaryTablePlaceholderMain = document.querySelector( _settings.orderSummaryTablePlaceholderMainSelector );
+		var orderSummaryTablePlaceholderExtra = document.querySelector( _settings.orderSummaryTablePlaceholderExtraSelector );
+
+		// Bail if elements are not found
+		if ( ! orderSummaryTable || ! orderSummaryTablePlaceholderMain || ! orderSummaryTablePlaceholderExtra ) { return; }
+
+		// Maybe move to extra section
+		if ( document.body.matches( _settings.orderSummaryForceMoveSelector ) || ( viewportWidth < 1000 && orderSummaryTablePlaceholderExtra.parentNode !== orderSummaryTable.parentNode ) ) {
+			orderSummaryTablePlaceholderExtra.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderExtra.nextSibling );
+		}
+		// Maybe move to main section
+		else if ( viewportWidth >= 1000 && orderSummaryTablePlaceholderMain.parentNode !== orderSummaryTable.parentNode ) {
+			orderSummaryTablePlaceholderMain.parentNode.insertBefore( orderSummaryTable, orderSummaryTablePlaceholderMain.nextSibling );
 		}
 	};
 
@@ -669,23 +1009,44 @@
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
 
-		// Maybe move place order section, and initialize resize observers
-		maybeMovePlaceOrderSection();
-		if ( window.ResizeObserver ) {
-			_resizeObserver = new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) );
-			_resizeObserver.observe( document.body );
-		}
-
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
+			$( document.body ).on( 'updated_checkout', maybeChangeStepVisibility );
+			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 		}
+
+		// Maybe initialize resize observers
+		if ( window.ResizeObserver ) {
+			// Maybe enable place order move
+			if ( 'yes' === _settings.enablePlaceOrderMove ) {
+				// Run and initialize observer
+				maybeMovePlaceOrderSection();
+				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMovePlaceOrderSection, _settings.placeOrderRefreshRate ) ) );
+			}
+
+			// Maybe enable order summary table move
+			if ( 'yes' === _settings.enableOrderSummaryTableMove ) {
+				// Run and initialize observer
+				maybeMoveOrderSummaryTable();
+				_resizeObservers.push( new ResizeObserver( FCUtils.debounce( maybeMoveOrderSummaryTable, _settings.orderSummaryTableRefreshRate ) ) );
+			}
+
+			// Add resize observers to document body
+			for ( var i = 0; i < _resizeObservers.length; i++ ) {
+				_resizeObservers[ i ].observe( document.body );
+			}
+		}
+
+		// Finish initialization
+		maybeChangeSubstepState();
+		maybeChangeStepVisibility();
+		updateGlobalStepStates();
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );
