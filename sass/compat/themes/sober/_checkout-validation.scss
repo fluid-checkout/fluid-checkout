@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PASSWORD STRENGTH METER
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-password-strength {
+	padding: $global-spacing-extra-small + $global-spacing-tiny !important; // Needed to override fc styles
+	padding-#{ $alignment-left }: $checkout-message-error-padding-left !important; // Needed to override fc styles
+}
