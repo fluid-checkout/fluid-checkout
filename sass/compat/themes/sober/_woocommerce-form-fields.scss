@@ -19,6 +19,8 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper .woocommerce-address-fie
 
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row-last label {
 	display: inline-block;
+	visibility: visible;
+	opacity: 1;
 }
 
 // Shipping methods checkbox and radio button styles
