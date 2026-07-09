@@ -19,6 +19,9 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Template file loader - Fixed coupon code notices templates
+		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 200, 4 );
+
 		// Late hooks
 		add_action( 'wp', array( $this, 'late_hooks' ), 150 );
 
@@ -27,6 +30,46 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+	}
+
+
+
+	/**
+	 * Whether coupon code notices are being printed.
+	 */
+	public function is_printing_coupon_code_notices() {
+		return doing_action( 'wc_ajax_fc_add_coupon_code' ) || doing_action( 'wc_ajax_fc_remove_coupon_code' );
+	}
+
+
+
+	/**
+	 * Use WooCommerce default notice templates when printing coupon code notices.
+	 *
+	 * @param   string  $template        Template file path.
+	 * @param   string  $template_name   Template name.
+	 * @param   string  $template_path   Template path.
+	 * @param   string  $default_path    Default WooCommerce templates path.
+	 */
+	public function locate_template( $template, $template_name, $template_path, $default_path = '' ) {
+		// Bail if not printing coupon code notices
+		if ( ! $this->is_printing_coupon_code_notices() ) { return $template; }
+
+		// Bail if not a notice template
+		$notice_templates = array(
+			'notices/error.php',
+			'notices/success.php',
+			'notices/notice.php',
+		);
+		if ( ! in_array( $template_name, $notice_templates, true ) ) { return $template; }
+
+		// Get default WooCommerce templates path
+		if ( ! $default_path ) {
+			$default_path = WC()->plugin_path() . '/templates/';
+		}
+
+		// Use WooCommerce default notice template
+		return $default_path . $template_name;
 	}
 
 
