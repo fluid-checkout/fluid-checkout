@@ -13,5 +13,7 @@ $_body-theme-selector:                 '.theme-sober' !default;
 // ------------------------------------
 @import
 	"woocommerce-form-fields",
+	"woocommerce-form-fields-select2",
+	"tom-select-control",
 	"woocommerce-password-visibility",
 	"checkout-validation";

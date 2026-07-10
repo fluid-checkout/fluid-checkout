@@ -2,22 +2,10 @@
 // WOOCOMMERCE FORM FIELDS SELECT2
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single {
-	border-top: none;
-	border-left: none;
-	border-right: none;
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .select2-container .select2-selection:after {
+	right: $global-spacing-extra-small;
 }
 
-body#{ $_body-theme-selector } div.woocommerce .fc-wrapper form .form-row .select2-selection--single:focus-within,
-body#{ $_body-theme-selector } div.woocommerce .fc-wrapper form .form-row .select2-selection:focus {
-	outline: none!important;
-}
-
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection {
-	height: inherit;
-	min-height: inherit;
-	line-height: normal;
-}
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-container .select2-selection--single .select2-selection__arrow b {
-	margin: auto;
+body#{ $_body-theme-selector } .woocommerce form.checkout .select2-container .select2-selection {
+	font-size: $form-field-font-size;
 }

@@ -6,9 +6,12 @@ body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	color: $form-field-text-color;
 }
 
 body#{ $_body-theme-selector } .ts-control:focus-within {
 	outline: none !important;
+}
+
+body#{ $_body-theme-selector } .woocommerce .ts-wrapper.single .ts-control > [data-ts-item] {
+	color: inherit;
 }
