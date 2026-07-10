@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with Theme Sober (by Uixthemes).
+* Added: Compatibility with theme Sober (by Uixthemes).
 * Added: Conditional visibility for checkout steps based on available substeps.
 * Improved: Exclude development files from installable zip packages for this plugin.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
