@@ -19,7 +19,7 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Template file loader - Fixed coupon code notices templates
+		// Coupon code notices - use WooCommerce default templates
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 200, 4 );
 
 		// Late hooks
@@ -40,8 +40,6 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 	public function is_printing_coupon_code_notices() {
 		return doing_action( 'wc_ajax_fc_add_coupon_code' ) || doing_action( 'wc_ajax_fc_remove_coupon_code' );
 	}
-
-
 
 	/**
 	 * Use WooCommerce default notice templates when printing coupon code notices.
