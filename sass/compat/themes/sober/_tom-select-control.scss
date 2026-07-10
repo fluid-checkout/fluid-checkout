@@ -9,7 +9,7 @@ body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 }
 
 body#{ $_body-theme-selector } .ts-control:focus-within {
-	outline: none !important;
+	outline: none !important; // Needed to override theme focus outline
 }
 
 body#{ $_body-theme-selector } .woocommerce .ts-wrapper.single .ts-control > [data-ts-item] {

@@ -45,7 +45,7 @@ body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-r
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type {
 	position: relative;
 	cursor: pointer;
-	padding-left: 0;
+	padding-#{ $alignment-left }: 0;
 	margin-bottom: 0;
 }
 

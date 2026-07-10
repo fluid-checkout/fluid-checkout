@@ -3,7 +3,7 @@
 // ------------------------------------
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection:after {
-	right: $global-spacing-extra-small;
+	#{ $alignment-right }: $global-spacing-extra-small;
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection {
