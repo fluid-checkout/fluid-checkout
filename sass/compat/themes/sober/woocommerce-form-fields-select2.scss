@@ -2,10 +2,14 @@
 // WOOCOMMERCE FORM FIELDS SELECT2
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper .select2-container .select2-selection:after {
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection:after {
 	right: $global-spacing-extra-small;
 }
 
-body#{ $_body-theme-selector } .woocommerce form.checkout .select2-container .select2-selection {
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection {
 	font-size: $form-field-font-size;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection__rendered {
+	color: $form-field-text-color;
 }
