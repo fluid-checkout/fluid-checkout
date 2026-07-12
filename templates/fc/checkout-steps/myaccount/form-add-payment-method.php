@@ -10,10 +10,10 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 7.0.1
- * @fc-version 4.0.1
+ * @version 7.8.0
+ * @fc-version 4.2.2
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -46,7 +46,7 @@ if ( $available_gateways ) : ?>
 
 			<div class="form-row">
 				<?php wp_nonce_field( 'woocommerce-add-payment-method', 'woocommerce-add-payment-method-nonce' ); ?>
-				<?php // CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it ?>
+				<?php // CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it, also add filter for custom button classes ?>
 				<button type="submit" class="woocommerce-Button woocommerce-Button--alt button alt<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> <?php echo esc_attr( implode( ' ', apply_filters( 'fc_add_payment_method_button_classes', array() ) ) ); ?>" id="place_order" value="<?php esc_attr_e( 'Add payment method', 'woocommerce' ); ?>"><?php esc_html_e( 'Add payment method', 'woocommerce' ); ?></button>
 				<input type="hidden" name="woocommerce_add_payment_method" id="woocommerce_add_payment_method" value="1" />
 			</div>
@@ -57,5 +57,5 @@ if ( $available_gateways ) : ?>
 
 	</form>
 <?php else : ?>
-	<p class="woocommerce-notice woocommerce-notice--info woocommerce-info"><?php esc_html_e( 'New payment methods can only be added during checkout. Please contact us if you require assistance.', 'woocommerce' ); ?></p>
+	<?php wc_print_notice( esc_html__( 'New payment methods can only be added during checkout. Please contact us if you require assistance.', 'woocommerce' ), 'notice' ); ?>
 <?php endif; ?>

@@ -2677,9 +2677,18 @@ msgstr "Nahugno"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Gipalapdan"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Ayaw ipakita"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Oo"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Dili"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2815,3 +2824,8 @@ msgstr "Pagpadala %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Pagpadala"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "sunod nga lakang"

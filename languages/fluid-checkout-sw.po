@@ -2641,9 +2641,18 @@ msgstr "Imekunjwa"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Imepanuliwa"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Usionyeshe"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Ndiyo"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Hapana"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2779,3 +2788,8 @@ msgstr "Usafirishaji %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Usafirishaji"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "hatua inayofuata"

@@ -2625,9 +2625,18 @@ msgstr "Жыйыштырылды"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Кеңейтилген"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Көрсөтпө"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Ооба"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Жок"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2763,3 +2772,8 @@ msgstr "Жеткирүү %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Жеткирүү"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "кийинки кадам"

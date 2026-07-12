@@ -195,7 +195,7 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			jQuery( document.body ).on( 'payment_method_selected', handlePaymentMethodChange );
+			$( document.body ).on( 'payment_method_selected', handlePaymentMethodChange );
 		}
 
 		_hasInitialized = true;

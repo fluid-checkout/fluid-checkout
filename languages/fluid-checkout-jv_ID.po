@@ -2600,9 +2600,18 @@ msgstr "Ambruk"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Diembangake"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Aja nuduhake"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Ya"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "Ora"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2738,3 +2747,8 @@ msgstr "Pangiriman %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Pangiriman"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "langkah sabanjure"

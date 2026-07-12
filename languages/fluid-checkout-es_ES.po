@@ -2827,9 +2827,18 @@ msgstr "Colapsado"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Ampliado"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "No mostrar"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "Yes"
+msgstr "Sí"
+
+#: inc/compat/plugins/compat-plugin-klaviyo.php:144
+msgid "No"
+msgstr "No"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2969,3 +2978,8 @@ msgstr "Envío %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Envío"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "siguiente paso"

@@ -43,6 +43,7 @@
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
+		formRowSelector: '.form-row, .shipping-method__package',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -71,7 +72,8 @@
 		substepVisibleStateAttribute: 'data-substep-visible',
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
-		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select',
+		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidFocusDelay: 100,
 
 		enablePlaceOrderMove: 'yes',
 		placeOrderButtonSelector: '.fc-place-order-button',
@@ -113,6 +115,34 @@
 
 		FCUtils.scrollToElement( element, _settings.progressBarSelector );
 	}
+
+	/**
+	 * Wait for the element to be in the viewport and then focus it.
+	 * Runs recursively until the element is in the viewport, then focuses it.
+	 *
+	 * @param   HTMLElement  element  Element to check and focus.
+	 */
+	var waitForElementInViewportThenFocus = function( element ) {
+		// Get element bounding client rect
+		var rect = element.getBoundingClientRect();
+		var inView = (
+			rect.top >= 0 &&
+			rect.bottom <= ( window.innerHeight || document.documentElement.clientHeight )
+		);
+
+		// Check if element is in viewport
+		if ( inView ) {
+			setTimeout( function() {
+				element.focus();
+			}, _settings.invalidFocusDelay );
+		}
+		// Otherwise keep waiting
+		else {
+			requestAnimationFrame( function() {
+				waitForElementInViewportThenFocus( element );
+			} );
+		}
+	};
 
 
 
@@ -292,8 +322,10 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when substep has invalid fields
@@ -391,8 +423,10 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
-				firstInvalidField.focus();
+				scrollToElement( fieldRowElement );
+				waitForElementInViewportThenFocus( firstInvalidField );
 			}
 
 			// Bail when any substep has invalid fields
