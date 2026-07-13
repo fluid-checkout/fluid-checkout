@@ -15,7 +15,10 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .se
 	color: $form-field-text-color;
 }
 
-
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row .select2-selection:focus {
+	outline: none!important;
+	border-bottom-color: #23232c;
+}
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection--single .select2-selection__arrow {
 	#{ $alignment-right }: $global-spacing-extra-small;

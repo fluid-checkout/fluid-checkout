@@ -10,6 +10,7 @@ body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 
 body#{ $_body-theme-selector } .ts-control:focus-within {
 	outline: none !important; // Needed to override theme focus outline
+	border-bottom-color: #23232c;
 }
 
 body#{ $_body-theme-selector } .woocommerce .ts-wrapper.single .ts-control > [data-ts-item] {
