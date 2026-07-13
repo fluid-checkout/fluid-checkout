@@ -27,7 +27,9 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row-last label {
 // Shipping methods checkbox and radio button styles
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox:after,
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio] + label:after,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox] + label:after {
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox] + label:after,
+body#{ $_body-theme-selector } .woocommerce .fc-address-book input[type=radio] + label:after,
+body#{ $_body-theme-selector } .woocommerce .address-book input[type=radio] + label:after {
 	border-left: none;
 	border-bottom: none;
 	transform: none;
