@@ -30,7 +30,7 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio] + labe
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox] + label:after,
 body#{ $_body-theme-selector } .woocommerce .fc-address-book input[type=radio] + label:after,
 body#{ $_body-theme-selector } .woocommerce .address-book input[type=radio] + label:after {
-	border-left: none;
+	border-#{ $alignment-left }: none;
 	border-bottom: none;
 	transform: none;
 	transition: none;

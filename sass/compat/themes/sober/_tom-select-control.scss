@@ -4,8 +4,8 @@
 
 body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
 	border-top: none;
-	border-left: none;
-	border-right: none;
+	border-#{ $alignment-left }: none;
+	border-#{ $alignment-right }: none;
 }
 
 body#{ $_body-theme-selector } .ts-control:focus-within {
