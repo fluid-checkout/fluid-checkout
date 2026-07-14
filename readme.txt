@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Resolved "Same as billing address" option showing on cart for Address Book add-on.
+* Fixed: Only show "Same as billing address" on cart when billing is already complete and billing is shown before shipping.
 * Added: Conditional visibility for checkout steps based on available substeps.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 * Improved: Address locale attribute overrides on My Account edit address pages.

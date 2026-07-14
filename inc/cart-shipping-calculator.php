@@ -50,6 +50,52 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 
 	/**
+	 * Clear shipping address fields that are not present in the shipping calculator.
+	 * Prevents leftover street/name data when updating destination from the calculator after a full address was set.
+	 */
+	public function clear_shipping_address_fields_not_in_calculator() {
+		$customer = WC()->customer;
+
+		// Bail if customer object is not available
+		if ( ! $customer ) { return; }
+
+		// Hardcoded list — avoid reading customer getters here (Address Book may cache previous saved-entry values in the same request)
+		$field_keys_to_clear = array(
+			'shipping_first_name',
+			'shipping_last_name',
+			'shipping_company',
+			'shipping_address_1',
+			'shipping_address_2',
+			'shipping_phone',
+		);
+
+		$customer_id = $customer->get_id();
+		$can_set_session = method_exists( FluidCheckout_Steps::instance(), 'set_checkout_field_value_to_session' );
+
+		foreach ( $field_keys_to_clear as $field_key ) {
+			$setter = "set_$field_key";
+
+			// Clear customer property
+			if ( is_callable( array( $customer, $setter ) ) ) {
+				$customer->{$setter}( '' );
+			}
+
+			// Persist empty to user meta for logged-in customers.
+			// WC_Customer_Data_Store_Session skips empty session values on the next request and reloads user meta — leftover streets would otherwise return.
+			if ( $customer_id ) {
+				update_user_meta( $customer_id, $field_key, '' );
+			}
+
+			// Clear checkout session value
+			if ( $can_set_session ) {
+				FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $field_key, '' );
+			}
+		}
+	}
+
+
+
+	/**
 	 * Set the customer new shipping address with the values set in the shipping calculator.
 	 */
 	public function set_new_address_data_from_shipping_calculator() {
@@ -77,6 +123,13 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 		// Maybe apply changes
 		if ( is_array( $changed_values ) && count( $changed_values ) > 0 ) {
+			// Only clear leftover street/name when entering a new Address Book calculator address.
+			// Regular PRO calculator updates should keep previously filled shipping lines (e.g. after "Same as billing").
+			$address_source = array_key_exists( 'shipping_address_source', $_POST ) ? wc_clean( wp_unslash( $_POST[ 'shipping_address_source' ] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			if ( 'new' === $address_source ) {
+				$this->clear_shipping_address_fields_not_in_calculator();
+			}
+
 			// Iterate changed values and apply changes to the customer data and checkout session
 			foreach ( $changed_values as $field_key => $new_field_value ) {
 				// Update field values
