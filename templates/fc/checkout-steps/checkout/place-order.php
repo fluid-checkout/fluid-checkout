@@ -14,7 +14,7 @@
  * @package fluid-checkout
  * @version 4.1.0
  * @wc-version 9.8.0
- * @wc-original checkout/payment.php
+ * @original plugins/woocommerce/templates/checkout/payment.php
  */
 
 defined( 'ABSPATH' ) || exit;

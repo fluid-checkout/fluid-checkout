@@ -14,8 +14,7 @@ All conventions live in `fluid-checkout-standards/.cursor/rules/`. Read the rule
 
 Do not read, edit, or suggest changes under `js/`, `css/`, or `languages/`.
 
-@fluid-checkout-standards/.cursor/rules/fc-core.mdc
-@fluid-checkout-standards/.cursor/rules/fc-php.mdc
-@fluid-checkout-standards/.cursor/rules/fc-javascript.mdc
-@fluid-checkout-standards/.cursor/rules/fc-sass.mdc
-@fluid-checkout-standards/.cursor/rules/fc-code-review.mdc
+// Load all rules from the shared standards rules directory automatically.
+// This ensures all Fluid Checkout standards are always up-to-date, 
+// and avoids manual updates when new rule files are added.
+@fluid-checkout-standards/.cursor/rules/*
