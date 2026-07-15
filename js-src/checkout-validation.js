@@ -837,6 +837,9 @@
 		// Bail if field or formRow not available
 		if ( ! field || ! formRow ) { return; }
 
+		// Bail if field is not inside a validation form
+		if ( ! field.closest( _settings.formSelector ) ) { return; }
+
 		// Get correct field when is select2 (native value is on the hidden/inaccessible original select)
 		if ( isSelect2Field( e.target ) ) {
 			if ( formRow ) {
@@ -1071,7 +1074,7 @@
 			// Validation events (focusout: WooCommerce checkout.js runs validate_field on focusout before
 			// bubble reaches body; it has no client-side postcode format check and can mark the row valid.
 			// Re-run FC validation here so postcode/email state stays consistent after blur.)
-			$( document.body ).on( 'input validate change focusout', _settings.formSelector + ' ' + _settings.validateFieldsSelector, handleValidateEvent );
+			$( document.body ).on( 'input validate change focusout', _settings.validateFieldsSelector, handleValidateEvent );
 
 			// Run on checkout or cart changes
 			$( document ).on( 'load_ajax_content_done', _publicMethods.init );

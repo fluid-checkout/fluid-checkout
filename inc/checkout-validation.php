@@ -101,7 +101,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 */
 	public function add_body_class( $classes ) {
 		$is_checkout_validation = function_exists( 'is_checkout' ) && is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page();
-		$is_account_validation = function_exists( 'is_account_page' ) && is_account_page();
+		$is_account_validation = function_exists( 'is_account_page' ) && function_exists( 'is_wc_endpoint_url' ) && is_account_page() && is_wc_endpoint_url( 'edit-address' );
 
 		if ( ! $is_checkout_validation && ! $is_account_validation ) { return $classes; }
 
@@ -171,7 +171,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 */
 	public function should_enqueue_validation_assets() {
 		if ( function_exists( 'is_checkout' ) && is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) { return true; }
-		if ( function_exists( 'is_account_page' ) && is_account_page() ) { return true; }
+		if ( function_exists( 'is_account_page' ) && function_exists( 'is_wc_endpoint_url' ) && is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) { return true; }
 		return false;
 	}
 
@@ -206,7 +206,8 @@ class FluidCheckout_Validation extends FluidCheckout {
 			'referenceNodeSelector'              => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
 			'typePostcodeSelector'               => '.validate-postcode',
-			'postcodeRules'                      => $this->get_postcode_validation_rules_for_script(),
+			// Disable instant postcode validation when WooCommerce rules are filtered because PHP callbacks cannot be safely mirrored in the browser.
+			'postcodeRules'                      => has_filter( 'woocommerce_validate_postcode' ) ? null : $this->get_postcode_validation_rules_for_script(),
 			'mailcheckSuggestions'               => array(
 				/* translators: %s: html for the email address typo correction suggestion link */
 				'suggestedElementTemplate'       => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( apply_filters( 'fc_mailcheck_suggestion_message', __( 'Did you mean %s?', 'fluid-checkout' ) ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
@@ -442,7 +443,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 
 	/**
-	 * Build postcode validation rules for front-end (mirrors WooCommerce WC_Validation::is_postcode / is_gb_postcode).
+	 * Build postcode validation rules for front-end.
+	 *
+	 * These rules mirror WC_Validation::is_postcode() and WC_Validation::is_gb_postcode().
+	 * Keep them synchronized with WooCommerce whenever its postcode validation rules change.
+	 *
+	 * @see WC_Validation::is_postcode()
+	 * @see WC_Validation::is_gb_postcode()
 	 *
 	 * @return array
 	 */
@@ -503,7 +510,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 *
 	 * @return array
 	 */
-	protected function get_gb_postcode_regex_patterns_for_script() {
+	public function get_gb_postcode_regex_patterns_for_script() {
 		$alpha1 = '[abcdefghijklmnoprstuwyz]';
 		$alpha2 = '[abcdefghklmnopqrstuvwxy]';
 		$alpha3 = '[abcdefghjkpstuw]';
