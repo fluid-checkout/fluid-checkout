@@ -6090,15 +6090,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Reset shipping so packages are recalculated with the new destination
 		WC()->shipping()->reset_shipping();
 
-		// Get list of shipping fields to copy from billing fields, and fields to skip
+		// Get list of shipping fields to copy from billing fields
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
-		$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
+		$customer_id = $customer->get_id();
 
 		// Copy each billing field value into the matching shipping field
 		foreach ( $shipping_copy_billing_field_keys as $field_key ) {
-			// Skip some fields
-			if ( in_array( $field_key, $skip_field_keys, true ) ) { continue; }
-
 			// Get related billing field key and customer accessors
 			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
 			$setter = "set_$field_key";
@@ -6113,6 +6110,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Update customer property and keep the checkout session in sync
 			$customer->{$setter}( $new_field_value );
 			$this->set_checkout_field_value_to_session( $field_key, $new_field_value );
+
+			// Persist to user meta for logged-in customers.
+			// WC_Customer_Data_Store_Session skips empty session values on the next request and reloads user meta — leftover shipping fields would otherwise return.
+			if ( $customer_id ) {
+				update_user_meta( $customer_id, $field_key, $new_field_value );
+			}
 		}
 
 		// Keep the same-as-billing session flag in sync and commit customer changes

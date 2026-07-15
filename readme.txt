@@ -356,7 +356,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Only show "Same as billing address" on cart when billing is already complete and billing is shown before shipping.
 * Added: Conditional visibility for checkout steps based on available substeps.
 * Improved: Exclude development files from installable zip packages for this plugin.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
@@ -367,6 +366,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
 * Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
 * Fixed: Missing styles for the WooCommerce show password button at checkout. Also fixed the button getting duplicated after checkout updates.
+* Fixed: Only show "Same as billing address" on cart when billing is already complete and billing is shown before shipping.
 
 = 4.2.4 - 2026-06-02 =
 
