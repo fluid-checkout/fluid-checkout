@@ -129,6 +129,9 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 		// Maybe apply changes
 		if ( is_array( $changed_values ) && count( $changed_values ) > 0 ) {
+			// Applying a calculator destination — clear same-as-billing so checkout uses these values
+			FluidCheckout_Steps::instance()->set_shipping_same_as_billing_session( false );
+
 			// Clear leftover street/name fields not present in the calculator.
 			// Reached only for the `new`/plain calculator source (other sources bailed above).
 			$this->clear_shipping_address_fields_not_in_calculator();

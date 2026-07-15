@@ -6083,8 +6083,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if billing address is not available for shipping (also enforces the cart "billing before shipping AND complete" requirement)
 		if ( ! $this->is_billing_address_available_for_shipping() ) { return; }
 
-		// Bail if customer object is not available
 		$customer = WC()->customer;
+
+		// Bail if customer object is not available
 		if ( ! $customer ) { return; }
 
 		// Reset shipping so packages are recalculated with the new destination
@@ -6106,6 +6107,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get billing value and allow customizations (same filter used by the checkout page)
 			$new_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $customer->{$getter}(), $field_key, $billing_field_key, array() );
+
+			// Skip update when filter returns null (same as checkout page)
+			if ( null === $new_field_value ) { continue; }
 
 			// Update customer property and keep the checkout session in sync
 			$customer->{$setter}( $new_field_value );
