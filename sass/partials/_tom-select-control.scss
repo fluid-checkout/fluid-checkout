@@ -61,6 +61,8 @@
 }
 
 .ts-wrapper.single .ts-control {
+	align-items: center;
+	flex-wrap: nowrap;
 	border-radius: $ts-select-border-radius;
 	cursor: pointer;
 }
@@ -173,10 +175,43 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 
 
 
+.ts-wrapper.single.plugin-clear_button.has-items .ts-control {
+	padding-#{ $alignment-right }: $ts-select-clearable-padding-right;
+}
+
+.ts-wrapper.single .clear-button {
+	display: none;
+}
+.ts-wrapper.single.has-items .clear-button {
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	#{ $alignment-right }: $ts-select-clear-offset;
+	transform: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	font-size: 0; // Hide Tom Select's default glyph
+	color: $ts-select-arrow-color;
+	cursor: pointer;
+}
+.ts-wrapper.single.has-items .clear-button::before {
+	@include icon( 'i-x' );
+	@include icon-size( $ts-select-font-size );
+}
+.ts-wrapper.single.has-items .clear-button:hover {
+	color: $ts-select-color-text;
+}
+
+
+
 // hide input, while retaining its focus, and maintain layout so users can still click on the space to bring the display back
 // visibility:hidden can prevent the input from receiving focus
 .input-hidden .ts-control > input {
 	opacity: 0;
-	position: absolute;
-	#{ $alignment-left }: -10000px;
+	position: absolute !important; // Needed to remove the input from the flex layout
+	#{ $alignment-left }: -10000px !important; // Needed to move the input off-screen
 }
