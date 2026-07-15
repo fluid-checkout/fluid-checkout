@@ -38,6 +38,15 @@
 		select2WrapperSelector:                  '.select2-container',
 		selectTomSelector:                       '.ts-hidden-accessible',
 		selectTomWrapperSelector:                '.ts-wrapper',
+		selectTomControlSelector:                '.ts-wrapper .ts-control',
+		formElementSelector:                     'form',
+		inputSelector:                           'input',
+		textInputSelector:                       'input.input-text, input[type="text"]',
+		selectSelector:                          'select',
+		billingCountrySelector:                  '#billing_country, [name="billing_country"]',
+		shippingCountrySelector:                 '#shipping_country, [name="shipping_country"]',
+		customCountrySelectorTemplate:           '####PREFIX###_country, [name="###PREFIX###_country"]',
+		defaultCountrySelector:                  '#country, [name="country"], select.country_select',
 
 		typeRequiredSelector:                    '.validate-required',
 		typeEmailSelector:                       '.validate-email',
@@ -211,8 +220,8 @@
 	 * @return {Boolean}         True if this is the Tom Select control input (not the native select).
 	 */
 	var isSelectTomControlInput = function( field ) {
-		if ( ! field || ! field.matches || ! field.matches( 'input' ) ) { return false; }
-		return !! field.closest( _settings.selectTomWrapperSelector + ' .ts-control' );
+		if ( ! field || ! field.matches || ! field.matches( _settings.inputSelector ) ) { return false; }
+		return !! field.closest( _settings.selectTomControlSelector );
 	};
 
 	/**
@@ -221,7 +230,7 @@
 	 * @return {Boolean}         True if is a select field.
 	 */
 	var isSelectField = function( field ) {
-		if ( field.matches( 'select' ) ) { return true; }
+		if ( field.matches( _settings.selectSelector ) ) { return true; }
 		return false;
 	};
 
@@ -349,8 +358,6 @@
 		return pattern;
 	};
 
-
-
 	/**
 	 * Find country field related to a postcode input (billing / shipping / {prefix}_postcode).
 	 */
@@ -368,16 +375,16 @@
 		// Check if field is a billing or shipping postcode field
 		if ( id.indexOf( 'billing_' ) === 0 || name.indexOf( 'billing_' ) === 0 ) {
 			// Billing postcode field
-			countrySelector = '#billing_country, [name="billing_country"]';
+			countrySelector = _settings.billingCountrySelector;
 		} else if ( id.indexOf( 'shipping_' ) === 0 || name.indexOf( 'shipping_' ) === 0 ) {
 			// Shipping postcode field
-			countrySelector = '#shipping_country, [name="shipping_country"]';
+			countrySelector = _settings.shippingCountrySelector;
 		} else {
 			// Not billing_/shipping_: custom {prefix}_postcode (pickup_, plugin fields, etc.)
 			var customMatch = id.match( /^(.+)_postcode$/ ) || name.match( /^(.+)_postcode$/ );
 			var customPrefix = customMatch && customMatch[ 1 ] ? customMatch[ 1 ] : '';
 			if ( customPrefix ) {
-				countrySelector = '#' + customPrefix + '_country, [name="' + customPrefix + '_country"]';
+				countrySelector = _settings.customCountrySelectorTemplate.replace( /###PREFIX###/g, customPrefix );
 			}
 		}
 
@@ -386,7 +393,7 @@
 		if ( found ) { return found; }
 
 		// Fallback when prefix logic misses or markup is non-standard: unprefixed `country` / `postcode`
-		return form.querySelector( '#country, [name="country"], select.country_select' );
+		return form.querySelector( _settings.defaultCountrySelector );
 	};
 
 
@@ -399,7 +406,7 @@
 		if ( ! countryField ) { return ''; }
 
 		// Check if country field is a select field
-		if ( ! countryField.matches( 'select' ) ) {
+		if ( ! countryField.matches( _settings.selectSelector ) ) {
 			// Return country code from hidden input
 			return countryField.value || '';
 		}
@@ -429,7 +436,10 @@
 		for ( var patternIndex = 0; patternIndex < patterns.length; patternIndex++ ) {
 			try {
 				if ( new RegExp( jsRegexBody( patterns[ patternIndex ] ) ).test( normalized ) ) { return true; }
-			} catch ( err ) {}
+			}
+			catch ( err ) {
+				// Continue with the remaining patterns.
+			}
 		}
 		return false;
 	};
@@ -445,7 +455,9 @@
 		// Validate postcode
 		try {
 			return new RegExp( jsRegexBody( rules.ieRegex ) ).test( normalized );
-		} catch ( err ) {
+		}
+		catch ( err ) {
+			// Fail open when the configured pattern is invalid.
 			return true;
 		}
 	};
@@ -464,13 +476,12 @@
 		// Bail if default country regex is not valid
 		if ( ! body ) { return true; }
 
-		// Get flags
-		var flags = /^(US|PR|CA|NL)$/.test( country ) ? 'i' : '';
-
 		// Validate postcode
 		try {
-			return new RegExp( body, flags ).test( String( postcode ).trim() );
-		} catch ( err ) {
+			return new RegExp( body, 'i' ).test( String( postcode ).trim() );
+		}
+		catch ( err ) {
+			// Fail open when the configured pattern is invalid.
 			return true;
 		}
 	};
@@ -519,11 +530,11 @@
 			var row = rows[ rowIndex ];
 
 			// Get input
-			var input = row.querySelector( 'input.input-text, input[type="text"]' );
+			var input = row.querySelector( _settings.textInputSelector );
 			if ( ! input ) { continue; }
 
 			// Get form
-			var form = row.closest( 'form' );
+			var form = row.closest( _settings.formElementSelector );
 
 			// Get country field
 			var countryField = getCountryFieldForPostcodeField( input, form );
@@ -552,14 +563,14 @@
 		// Bail if form row or field does not match postcode selector
 		if ( ! formRow || ! formRow.matches( _settings.typePostcodeSelector ) ) { return false; }
 		// Bail if field does not match input.input-text or input[type="text"]
-		if ( ! field.matches( 'input.input-text, input[type="text"]' ) ) { return false; }
+		if ( ! field.matches( _settings.textInputSelector ) ) { return false; }
 		// Get field id and name
 		var fid = field.id || '';
 		var fname = field.name || '';
 		// Check if field id or name contains postcode
 		if ( fid.indexOf( 'postcode' ) !== -1 || fname.indexOf( 'postcode' ) !== -1 ) { return true; }
 		// Get first text input in form row
-		var firstText = formRow.querySelector( 'input.input-text, input[type="text"]' );
+		var firstText = formRow.querySelector( _settings.textInputSelector );
 		// Return true if first text input is the field
 		return firstText === field;
 	};
@@ -583,7 +594,7 @@
 		}
 
 		// Get form
-		var form = formRow.closest( 'form' );
+		var form = formRow.closest( _settings.formElementSelector );
 		var countryField = getCountryFieldForPostcodeField( field, form );
 
 		// Bail if country field is not valid
