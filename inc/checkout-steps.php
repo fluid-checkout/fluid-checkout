@@ -6073,6 +6073,57 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Copy the customer billing address values into the shipping address (customer object + checkout session).
+	 *
+	 * Shared by the cart shipping calculator "Same as billing address" option in Fluid Checkout PRO and Address Book.
+	 * Uses the same field keys, skip fields and value filter as the checkout page so the resulting shipping address
+	 * matches what the checkout page would produce.
+	 */
+	public function set_customer_shipping_same_as_billing() {
+		// Bail if billing address is not available for shipping (also enforces the cart "billing before shipping AND complete" requirement)
+		if ( ! $this->is_billing_address_available_for_shipping() ) { return; }
+
+		// Bail if customer object is not available
+		$customer = WC()->customer;
+		if ( ! $customer ) { return; }
+
+		// Reset shipping so packages are recalculated with the new destination
+		WC()->shipping()->reset_shipping();
+
+		// Get list of shipping fields to copy from billing fields, and fields to skip
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+		$skip_field_keys = $this->get_shipping_same_as_billing_skip_fields();
+
+		// Copy each billing field value into the matching shipping field
+		foreach ( $shipping_copy_billing_field_keys as $field_key ) {
+			// Skip some fields
+			if ( in_array( $field_key, $skip_field_keys, true ) ) { continue; }
+
+			// Get related billing field key and customer accessors
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+			$setter = "set_$field_key";
+			$getter = "get_$billing_field_key";
+
+			// Skip fields not supported by the customer object
+			if ( ! is_callable( array( $customer, $setter ) ) || ! is_callable( array( $customer, $getter ) ) ) { continue; }
+
+			// Get billing value and allow customizations (same filter used by the checkout page)
+			$new_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $customer->{$getter}(), $field_key, $billing_field_key, array() );
+
+			// Update customer property and keep the checkout session in sync
+			$customer->{$setter}( $new_field_value );
+			$this->set_checkout_field_value_to_session( $field_key, $new_field_value );
+		}
+
+		// Keep the same-as-billing session flag in sync and commit customer changes
+		$this->set_shipping_same_as_billing_session( true );
+		$customer->set_calculated_shipping( true );
+		$customer->save();
+	}
+
+
+
+	/**
 	 * Maybe set shipping address fields values to same as billing address from the posted data.
 	 *
 	 * @param  array  $posted_data   Post data for all checkout fields.
