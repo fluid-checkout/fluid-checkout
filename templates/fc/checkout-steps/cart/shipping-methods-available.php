@@ -8,7 +8,7 @@
  * @package fluid-checkout
  * @version 4.0.1
  * @wc-version 3.6.0
- * @wc-original cart/cart-shipping.php
+ * @original plugins/woocommerce/templates/cart/cart-shipping.php
  */
 
 defined( 'ABSPATH' ) || exit;

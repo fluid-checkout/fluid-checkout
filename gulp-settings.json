@@ -1,6 +1,32 @@
 {
 	"defaultAction": "watch",
 
+	"pluginZipRsync": {
+		"include": [
+			"js/",
+			"js/**",
+			"css/",
+			"css/**"
+		],
+		"exclude": [
+			"bin/",
+			"bin/**",
+			".cursorignore",
+			".gitignore",
+			"env.local.config.example.sh",
+			"env.local.sh",
+			"gulp-settings.local.example.json",
+			"replacements.json",
+			"replacements.config.json",
+			"README-DEV.md",
+			"package.json",
+			"gulp-settings.json",
+			"gulpfile.js"
+		],
+		"excludeFrom": ".gitignore",
+		"pruneEmptyDirs": true
+	},
+
 	"watch": [
 		[ "./sass/**/*.scss", [ "build-css" ] ],
 		[ "./js-src/**/*.js", [ "build-js" ] ],
@@ -23,7 +49,7 @@
 		"themeCompat": [
 			"./sass/compat/themes/*.scss"
 		],
-		
+
 		"pluginCompat": [
 			"./sass/compat/plugins/*.scss"
 		]
@@ -67,6 +93,8 @@
 	],
 	"translationDest": "./languages",
 	"textDomain": "fluid-checkout",
+	"translationConcurrency": 50,
+	"translationLogFile": "./logs/translations.log",
 	"languages": {
 		"af": { "deepl": null, "googleTranslate": "af" },
 		"am": { "deepl": null, "googleTranslate": "am" },

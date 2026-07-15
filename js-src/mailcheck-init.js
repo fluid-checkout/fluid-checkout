@@ -140,6 +140,9 @@
 		if ( window.CheckoutValidation ) {
 			CheckoutValidation.validateField( targetField, 'apply-mailcheck-suggestion' );
 		}
+
+		// Trigger checkout update to refresh for account match fragments (e.g. when FC Pro account matching is enabled).
+		$( document.body ).trigger( 'update_checkout' );
 	}
 
 
