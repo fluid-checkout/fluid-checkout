@@ -68,10 +68,6 @@ msgstr "ပို့ဆောင်ခ ဖုန်း"
 msgid "Only used for shipping-related questions."
 msgstr "ပို့ဆောင်ရေးဆိုင်ရာ မေးခွန်းများအတွက်သာ အသုံးပြုသည်။"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "အဆင့်ပေါင်းများစွာ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "တစ်လှမ်းချင်း"
@@ -105,14 +101,6 @@ msgstr "ငွေတောင်းခံခြင်းသို့ ဆက်�
 msgid "Proceed to payment"
 msgstr "ငွေပေးချေမှုကို ဆက်လက်လုပ်ဆောင်ပါ။"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "ငါ့အဆက်အသွယ်"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "သို့ ပို့ဆောင်ပေးပါသည်။"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "ပို့ဆောင်ရေးနည်းလမ်း"
@@ -120,10 +108,6 @@ msgstr "ပို့ဆောင်ရေးနည်းလမ်း"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "ထပ်လောင်းမှတ်စုများ"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "ငွေတောင်းခံရန်"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -944,17 +928,6 @@ msgstr "ငွေရှင်းခြင်း အပြင်အဆင်"
 msgid "Design template"
 msgstr "ဒီဇိုင်းပုံစံ"
 
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"ငွေရှင်းသည့်အဆင့်များ၊ အမှာစာအကျဉ်းချုပ်နှင့် အခြားကဏ္ဍများအတွက် "
-"အထွေထွေစတိုင်များ။ လှည်း၊ အမှာစာလက်ခံရရှိပြီး "
-"အမှာစာစာမျက်နှာများကြည့်ရှုခြင်းကဲ့သို့သော အခြားစာမျက်နှာများတွင်လည်း "
-"သက်ရောက်နိုင်သည်။"
-
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
 msgstr "အမှောင်မုဒ်"
@@ -1551,16 +1524,6 @@ msgstr "ငွေပေးချေမှုပုံစံတွင် ဖု�
 msgid "Choose in which step to display the billing phone field."
 msgstr "ငွေပေးချေသည့် ဖုန်းအကွက်ကို ပြသရန် မည်သည့်အဆင့်တွင် ရွေးချယ်ပါ။"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"ဖုန်းအကွက်များအတွက် နိုင်ငံတကာဖုန်းနံပါတ်ဖော်မတ်နှင့် "
-"တရားဝင်အတည်ပြုခြင်းကို ဖွင့်ပါ။"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "နိုင်ငံတစ်ခုစီအလိုက် ဖုန်းနံပါတ်များကို ဖော်မတ်လုပ်ပြီး အတည်ပြုပါ။"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "နိုင်ငံစည်းမျဉ်းများအပေါ်အခြေခံ၍ ဖုန်းနံပါတ်အတည်ပြုခြင်းကို ဖွင့်ပါ။"
@@ -2013,14 +1976,6 @@ msgstr "(PRO)"
 msgid "(experimental)"
 msgstr "(စမ်းသပ်မှု)"
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"၎င်းသည် စမ်းသပ်မှုအင်္ဂါရပ်တစ်ခုဖြစ်ပြီး အပြင်အဆင်များနှင့် "
-"ပလပ်အင်အားလုံးတွင် မျှော်လင့်ထားသည့်အတိုင်း အလုပ်မဖြစ်နိုင်ပါ။ သတိနဲ့သုံးပါ။"
-
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
 msgstr "အတည်ပြုပါ။"
@@ -2457,32 +2412,6 @@ msgstr ""
 "Fluid Checkout ကိုအသုံးပြုသောအခါ Nyture အပြင်အဆင်မှ "
 "ငွေရှင်းသည့်အဆင့်များအပိုင်းကို ထုတ်ပါ။"
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ပေးပို့သည့်လိပ်စာအပိုင်းပြီးနောက် ငွေပေးချေရမည့်လိပ်စာအပိုင်းကို ပြသပါက "
-"&quot;လိုအပ်သည်&quot; အဖြစ် ခိုင်းစေနိုင်ပြီး ငွေပေးချေသည့်ဖုန်းအကွက်ကို "
-"&quot;လိုအပ်သည်&quot; အဖြစ် သတ်မှတ်ထားပါသည်။ ၎င်းရွေးချယ်မှုအား "
-"စစ်ဆေးသည့်အခါ ငွေပေးချေသည့်လိပ်စာသို့ ကူးယူနိုင်ကြောင်း သေချာစေရန် ၎င်းကို "
-"လိုအပ်ပါသည်။"
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ငွေပေးချေရမည့်လိပ်စာအပိုင်းကို ဘီလ်ပို့လိပ်စာကဏ္ဍပြီးနောက်တွင် ပြသပါက "
-"ဘီလ်ပို့လိပ်စာအပိုင်းကို &quot;လိုအပ်သည်&quot; အဖြစ် ခိုင်းစေကာ "
-"ငွေပေးချေသည့်ဖုန်းအကွက်ကို &quot;လိုအပ်သည်&quot; အဖြစ် သတ်မှတ်ထားပါသည်။ "
-"၎င်းရွေးချယ်မှုအား စစ်ဆေးသည့်အခါ ငွေပေးချေသည့်လိပ်စာကို ဘီလ်ပို့လိပ်စာသို့ "
-"ကူးယူနိုင်ကြောင်း သေချာစေရန် ၎င်းကို လိုအပ်ပါသည်။"
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2588,6 +2517,196 @@ msgstr "တိုးတက်မှုဘားပြီးနောက်"
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
 msgid "Before coupon codes section"
 msgstr "ကူပွန်ကုဒ်များ ကဏ္ဍမစမီ"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "နိုင်ငံတကာ ဖုန်းနံပါတ် အကွက်များကို ဖွင့်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "နိုင်ငံတစ်ခုစီအတွက် စည်းမျဉ်းများနှင့်အညီ ဖုန်းနံပါတ်များကို ဖော်မတ်လုပ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "တိကျသောဖုန်းနံပါတ်ကို အတည်ပြုခြင်းအား အသုံးပြုပါ။"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"ဖုန်းနံပါတ်သည် ရွေးချယ်ထားသော နိုင်ငံကုဒ်အတွက် စည်းမျဉ်းများအလိုက် "
+"မှန်ကန်သောမိုဘိုင်း သို့မဟုတ် ကြိုးဖုန်းနံပါတ်ဖြစ်ကြောင်း သေချာစေရန် "
+"ကြိုးစားပါ။ ဤရွေးချယ်မှုသည် ဖုန်းနံပါတ်အချို့အတွက် "
+"မှားယွင်းသောအပြုသဘောများကိုပေးစွမ်းနိုင်သည့် <code>intl-tel-input</code> "
+"တိကျသောအတည်ပြုခြင်းအင်္ဂါရပ်ကိုအသုံးပြုသည်။"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"၎င်းသည် စမ်းသပ်မှုအင်္ဂါရပ်တစ်ခုဖြစ်ပြီး တပ်ဆင်မှုအားလုံးတွင် "
+"မျှော်လင့်ထားသည့်အတိုင်း အလုပ်မဖြစ်နိုင်ပါ။ သတိနဲ့သုံးပါ။"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"တိကျသောအတည်ပြုချက်ကို ဖွင့်ထားသောအခါတွင် အသုံးပြုသည့် ဖုန်းနံပါတ် "
+"မှန်ကန်မှုအမျိုးအစားများ။"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "မိုဘိုင်း"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "ပုံသေလိုင်း"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "အခမဲ့"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "သို့မဟုတ်"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "ဆက်သွယ်ရန်"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "အဆင့်များစွာ"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "ကော်လံ ၂ ခု"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "၁ ကော်လံ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"ငွေရှင်းခြင်းအဆင့်များ၊ မှာယူမှုအကျဉ်းချုပ်နှင့် အခြားအပိုင်းများအတွက် "
+"အထွေထွေပုံစံများ။<br> လှည်း၊ မှာယူမှုလက်ခံရရှိပြီး နှင့် မှာယူမှုကြည့်ရန် "
+"စာမျက်နှာများကဲ့သို့သော အခြားစာမျက်နှာများတွင်လည်း သက်ရောက်နိုင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;ကော်လံ ၁ ခု&quot;</em> အပြင်အဆင်ကို အသုံးပြုသည့်အခါ "
+"<em>&quot;Split&quot;</em> ဒီဇိုင်းပုံစံကို ရရှိနိုင်မည်မဟုတ်ပါ။ "
+"ရွေးချယ်ပါက <em>&quot;Minimalist&quot;</em> သို့ ပြန်သွားပါမည်။"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "ငွေရှင်းခြင်းမပြုမီ အဆင့်ဆင့်"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;၁ ကော်လံ&quot;</em> ငွေရှင်းကောင်တာ အပြင်အဆင်ကို အသုံးပြုသည့်အခါ "
+"ဤရွေးချယ်မှုကို <em>&quot;ငွေရှင်းကောင်တာအဆင့်များမတိုင်မီ&quot;</em> အဖြစ် "
+"အမြဲသတ်မှတ်ထားပြီး ဒက်စ်တော့မြင်ကွင်းအတွက်လည်း အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "မိုဘိုင်းပေါ်ရှိ အပိုမှာယူမှုအကျဉ်းချုပ်ကဏ္ဍအတွက် ရာထူး။"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;On the site header&quot;</em> ရွေးချယ်မှုသည် "
+"အာရုံပျံ့လွင့်မှုကင်းသော header ကိုသုံးသည့်အခါတွင်သာ အကျုံးဝင်ပါသည်။"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "ဆိုက်ခေါင်းစဉ်တွင် (အာရုံပျံ့လွင့်မှုကင်းသော ခေါင်းစဉ် လိုအပ်သည်)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "မိုဘိုင်းတွင် ချဲ့ထွင်နိုင်သော အော်ဒါအကျဉ်းချုပ်ကဏ္ဍ၏ ကနဦးအခြေအနေ။"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"စည်းမျဉ်းစည်းကမ်း လိုအပ်ချက်များကြောင့် အောက်ပါနိုင်ငံများအတွက် ၎င်းကို "
+"<em>တိုးချဲ့ထားသည်</em> အဖြစ် သတ်မှတ်ရန် အကြံပြုပါသည်- "
+"<strong>ဂျာမနီ</strong> ၊ <strong>ဩစတြီးယား</strong> ၊ "
+"<strong>ဆွစ်ဇာလန်</strong> <strong>၊ နယ်သာလန်</strong> ၊ "
+"<strong>ပိုလန်</strong> ၊ <strong>ဘယ်လ်ဂျီယံ</strong> နှင့် "
+"<strong>ပြင်သစ်</strong> ။"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "ခေါက်ထားသည်"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "ချဲ့ထွင်ထားသည်"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "မပြပါနဲ့"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ဟုတ်ကဲ့"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"ပို့ဆောင်ရေးလိပ်စာအပိုင်းပြီးနောက်တွင် "
+"ငွေတောင်းခံလွှာပို့ရမည့်လိပ်စာအပိုင်းကို ပြသထားပြီး "
+"ငွေတောင်းခံလွှာပို့ရမည့်ဖုန်းနံပါတ်အပိုင်းကို &quot;လိုအပ်သည်&quot; "
+"ဟုသတ်မှတ်ထားပါက ပို့ဆောင်ရေးဖုန်းနံပါတ်အကွက်ကို &quot;လိုအပ်သည်&quot; အဖြစ် "
+"အတင်းထည့်သွင်းနိုင်သည်။ ထိုရွေးချယ်မှုကို အမှန်ခြစ်ထားသည့်အခါ "
+"ပို့ဆောင်ရေးလိပ်စာကို ငွေတောင်းခံလွှာပို့ရမည့်လိပ်စာသို့ ကူးယူနိုင်ကြောင်း "
+"သေချာစေရန်အတွက် ၎င်းကို လိုအပ်ပါသည်၊ မဟုတ်ပါက ဖောက်သည်သည် "
+"ငွေရှင်းကောင်တာပုံစံကို ဖြည့်စွက်နိုင်မည်မဟုတ်ပါ။"
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"ငွေတောင်းခံလွှာပို့ရန်လိပ်စာအပိုင်းကို ပို့ဆောင်ရေးလိပ်စာအပိုင်းမတိုင်မီ "
+"ပြသထားပြီး ပို့ဆောင်ရေးဖုန်းနံပါတ်အပိုင်းကို &quot;လိုအပ်သည်&quot; "
+"ဟုသတ်မှတ်ထားပါက ငွေတောင်းခံလွှာပို့ရန်ဖုန်းနံပါတ်အကွက်ကို "
+"&quot;လိုအပ်သည်&quot; အဖြစ် အတင်းထည့်သွင်းနိုင်သည်။ ထိုရွေးချယ်မှုကို "
+"အမှန်ခြစ်ထားသည့်အခါ ပို့ဆောင်ရေးလိပ်စာကို ငွေတောင်းခံလွှာပို့ရန်လိပ်စာသို့ "
+"ကူးယူနိုင်ကြောင်း သေချာစေရန်အတွက် ၎င်းကို လိုအပ်ပါသည်၊ မဟုတ်ပါက ဖောက်သည်သည် "
+"ငွေရှင်းကောင်တာပုံစံကို ဖြည့်စွက်နိုင်မည်မဟုတ်ပါ။"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2711,3 +2830,20 @@ msgstr "ဒါမှမဟုတ် ဧည့်သည်အဖြစ် ဆက�
 msgctxt "Clear image selection on admin pages."
 msgid "Remove image"
 msgstr "ပုံကို ဖယ်ရှားပါ။"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "ပို့ဆောင်မှု %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "သင်္ဘောဖြင့်ကုန်ပစ္စည်းပို့ခြင်း"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "နောက်တစ်ဆင့်"

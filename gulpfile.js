@@ -19,6 +19,8 @@ var wpPot = require('gulp-wp-pot');
 var po2mo = require('gulp-po2mo');
 var po2json = require('gulp-po2json');
 var through2 = require('through2');
+var path = require('path');
+var url = require('url');
 
 
 
@@ -31,6 +33,8 @@ var _gulpSettingsLocal = {};
 var _assetsVersion = '';
 var _defaultAction = _gulpSettingsLocal.defaultAction || _gulpSettings.defaultAction || 'watch';
 var _translationErrors = [];
+var _translationErrorLimit = 5;
+var _translationAborted = false;
 
 
 
@@ -65,8 +69,18 @@ gulp.task( 'update-ver-release', gulp.series( 'update-ver', function( done ) {
 	// Get current date
 	var today = new Date();
 
+	// Set patterns to skip version updates
+	var skipVersionPatterns = [ 'beta', 'dev', 'alpha', 'rc' ];
+	var skip = false;
+	for ( var i = 0; i < skipVersionPatterns.length; i++ ) {
+		if ( 0 < _package.version.indexOf( skipVersionPatterns[ i ] ) ) {
+			skip = true;
+			break;
+		}
+	}
+
 	// Only update readme.txt for full release versions
-	if ( _package.version.indexOf( 'beta' ) < 0 && _package.version.indexOf( 'dev' ) < 0 ) {
+	if ( ! skip ) {
 		gulp.src( _gulpSettings.changelogFile )
 		// See http://mdn.io/string.replace#Specifying_a_string_as_a_parameter
 		.pipe(replace(/Stable tag: (.)*/g, 'Stable tag: ' + _package.version ))
@@ -269,13 +283,54 @@ gulp.task( 'build', gulp.series( gulp.parallel( 'build-js', 'build-css', 'npm-ru
 
 
 
+/**
+ * Merge plugin zip rsync settings from shared and local config.
+ */
+function getMergedPluginZipRsyncSettings() {
+	var base = _gulpSettings.pluginZipRsync || {};
+	var local = _gulpSettingsLocal.pluginZipRsync || {};
+
+	return {
+		include: ( base.include || [] ).concat( local.include || [] ),
+		exclude: ( base.exclude || [] ).concat( local.exclude || [] ),
+		excludeFrom: local.excludeFrom || base.excludeFrom || null,
+		pruneEmptyDirs: local.pruneEmptyDirs !== undefined ? local.pruneEmptyDirs : base.pruneEmptyDirs,
+	};
+}
+
+/**
+ * Build rsync filter arguments for plugin zip exports.
+ */
+function getPluginZipRsyncArgs() {
+	var rsync = getMergedPluginZipRsyncSettings();
+	var args = [];
+
+	rsync.exclude.forEach( function( pattern ) {
+		args.push( '--exclude="' + pattern + '"' );
+	} );
+
+	rsync.include.forEach( function( pattern ) {
+		args.push( '--include="' + pattern + '"' );
+	} );
+
+	if ( rsync.excludeFrom ) {
+		args.push( '--exclude-from=' + rsync.excludeFrom );
+	}
+
+	if ( rsync.pruneEmptyDirs ) {
+		args.push( '--prune-empty-dirs' );
+	}
+
+	return args.join( ' ' );
+}
+
 // Run:
 // gulp copy-plugin-files
 // Copy the plugin files which are commited to the project into the export folder.
 gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 	// Load package.json
 	_package = loadJsonFile.sync( 'package.json' );
-	
+
 	// Bail if destination path or plugin files does not exist
 	if ( ! _gulpSettingsLocal.pluginZipPath || ! fs.existsSync( _gulpSettingsLocal.pluginZipPath ) ) {
 		console.log( 'Skipping: Plugin zip export path not defined or folder does not exist.' );
@@ -289,14 +344,22 @@ gulp.task( 'copy-plugin-files', gulp.series( function( done ) {
 		del.sync( destinationFolder, { force: true } );
 	}
 
-	exec( 'rsync -av --exclude-from=.gitignore ../' + _package.name + ' ' + _gulpSettingsLocal.pluginZipPath, function ( err, stdout, stderr ) {
-		console.log( stdout );
-		console.log( stderr );
-		if ( err ) {
-			// If an error occurred, make the Gulp task fail
-			done( err );
+	// Rsync filters are configured in gulp-settings.json → pluginZipRsync
+	var rsyncArgs = getPluginZipRsyncArgs();
+	exec(
+		'rsync -av ' +
+		( rsyncArgs ? rsyncArgs + ' ' : '' ) +
+		'../' + _package.name + '/ ' +
+		_gulpSettingsLocal.pluginZipPath + '/' + _package.name,
+		function ( err, stdout, stderr ) {
+			console.log( stdout );
+			console.log( stderr );
+			if ( err ) {
+				// If an error occurred, make the Gulp task fail
+				done( err );
+			}
 		}
-	} );
+	);
 
 	done();
 } ) );
@@ -329,6 +392,121 @@ gulp.task( 'pack-plugin-zip', gulp.series( function( done ) {
 
 	done();
 } ) );
+
+
+
+// Function to get translation log file path
+function getTranslationLogFile() {
+	return _gulpSettings.translationLogFile || './logs/translations.log';
+}
+
+
+
+// Function to get translation concurrency limit
+function getTranslationConcurrency() {
+	return _gulpSettings.translationConcurrency || 10;
+}
+
+
+
+// Function to initialize translation log file
+function initTranslationLog() {
+	var logFile = getTranslationLogFile();
+	var logDir = path.dirname( logFile );
+
+	fs.mkdirSync( logDir, { recursive: true } );
+
+	var header = 'Translation run started: ' + new Date().toISOString() + '\n';
+	header += 'Concurrency: ' + getTranslationConcurrency() + '\n';
+	header += 'Languages: ' + Object.keys( _gulpSettings.languages ).length + '\n\n';
+
+	fs.writeFileSync( logFile, header, { flush: true } );
+}
+
+
+
+// Function to print translation log file link in the terminal
+function printTranslationLogLink() {
+	var logFile = path.resolve( getTranslationLogFile() );
+
+	console.log( 'Translation log: ' + url.pathToFileURL( logFile ).href );
+}
+
+
+
+// Function to append a line to the translation log file
+function appendTranslationLog( message ) {
+	var logLine = '[' + new Date().toISOString() + '] ' + message + '\n';
+
+	fs.appendFileSync( getTranslationLogFile(), logLine, { flush: true } );
+}
+
+
+
+// Function to update translation progress in the terminal
+function updateTranslationProgress( completed, total, targetLang ) {
+	process.stdout.write( '\rTranslating (' + targetLang + '): ' + completed + ' of ' + total );
+}
+
+
+
+// Function to finish translation progress line in the terminal
+function finishTranslationProgress() {
+	process.stdout.write( '\n' );
+}
+
+
+
+// Function to check whether the translation error limit has been reached
+function hasReachedTranslationErrorLimit() {
+	return _translationErrors.length >= _translationErrorLimit;
+}
+
+
+
+// Function to abort translation when the error limit is reached
+function abortTranslationIfErrorLimitReached() {
+	if ( hasReachedTranslationErrorLimit() ) {
+		_translationAborted = true;
+	}
+}
+
+
+
+// Function to run items with a concurrency limit
+function runWithConcurrency( items, limit, worker, callback ) {
+	if ( 0 === items.length ) {
+		return callback();
+	}
+
+	var index = 0;
+	var inFlight = 0;
+	var completed = 0;
+
+	function maybeComplete() {
+		if ( completed >= items.length || ( _translationAborted && 0 === inFlight ) ) {
+			callback();
+		}
+	}
+
+	function startNext() {
+		while ( inFlight < limit && index < items.length && ! _translationAborted ) {
+			var item = items[ index++ ];
+			inFlight++;
+
+			worker( item, function() {
+				inFlight--;
+				completed++;
+				startNext();
+				maybeComplete();
+			} );
+		}
+
+		maybeComplete();
+	}
+
+	startNext();
+}
 
 
 
@@ -369,11 +547,19 @@ function translateWithDeepl( text, targetLang, callback ) {
  
 // Function to translate text using Google Translate
 function translateWithGoogle( text, targetLang, callback ) {
-	var googleApiUrl = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).url;
-	var googleApiKey = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } ).key;
+	var googleApiConfig = _gulpSettingsLocal.translationAPIs.find( function( api ) { return api.type === 'googleTranslate'; } );
+	var googleApiUrl = googleApiConfig.url;
+	var googleApiKey = googleApiConfig.key;
+	var requestOptions = {};
+
+	if ( googleApiConfig.referrer ) {
+		requestOptions.headers = {
+			'Referer': googleApiConfig.referrer
+		};
+	}
 
 	import( 'node-fetch' ).then( function ( fetch ) {
-		fetch.default( googleApiUrl + '?key=' + googleApiKey + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang )
+		fetch.default( googleApiUrl + '?key=' + googleApiKey + '&q=' + encodeURIComponent( text ) + '&source=en' + '&target=' + targetLang, requestOptions )
 		.then( function( response ) {
 			// Handle API error
 			if ( 200 !== response.status ) {
@@ -450,102 +636,75 @@ function translatePoFile( poFilePath, potFilePath, targetLang, callback ) {
 
 		// Initialize translations
 		var translations = po.translations;
-		var contextKeys = Object.keys( translations );
-		var contextIndex = 0;
+		var jobs = [];
 
-		// Translate next string
-		function translateNextContext() {
-			// Check whether all translations are done
-			if ( contextIndex >= contextKeys.length ) {
-				// Run callback
-				return callback();
-			}
-
-			// Reset variables
-			var context = contextKeys[ contextIndex ];
+		// Build flat job list for strings that need translation
+		Object.keys( translations ).forEach( function( context ) {
 			var contextTranslations = translations[ context ];
-			var msgidKeys = Object.keys( contextTranslations );
-			var msgidIndex = 0;
 
-			function translateNextMsgid() {
-				// Check whether all strings are translated in the context
-				if ( msgidIndex >= msgidKeys.length ) {
-					contextIndex++;
-					translateNextContext();
-					return;
-				}
-
-				// Get string id
-				var msgid = msgidKeys[ msgidIndex ];
-
-				// Get plural forms
+			Object.keys( contextTranslations ).forEach( function( msgid ) {
 				var msgidPlural = Object.hasOwnProperty.call( contextTranslations[ msgid ], 'msgid_plural' ) ? contextTranslations[ msgid ].msgid_plural : null;
 				var nPluralForms = msgidPlural ? po.headers[ 'Plural-Forms' ].match( /nplurals\s*=\s*(\d+)/ )[ 1 ] : 1;
-				var msgstrIndex = 0;
 
-				function translateNextMsgstr() {
-					// Check whether all strings are translated in the context
-					if ( msgstrIndex >= nPluralForms ) {
-						msgidIndex++;
-						translateNextMsgid();
-						return;
-					}
-
-					// Get string
+				for ( var msgstrIndex = 0; msgstrIndex < nPluralForms; msgstrIndex++ ) {
 					var msgstr = contextTranslations[ msgid ].msgstr[ msgstrIndex ];
-					var strToTranslate = msgstrIndex > 0 ? msgidPlural : msgid;
 
-					// Maybe translate string
 					if ( ! msgstr ) {
-						// Translate with Deepl if supported, otherwise use Google Translate
 						var useDeepl = langSettings.deepl !== null;
-						var translateFunction = useDeepl ? translateWithDeepl : translateWithGoogle;
-						var translationSource = useDeepl ? 'deepl' : 'google';
-						var apiTargetLang = useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ];
 
-						translateFunction( strToTranslate, apiTargetLang, function( err, translatedText ) {
-							// Handle error
-							if ( err ) {
-								console.error( `Error translating "${strToTranslate}" to ${apiTargetLang} with ${useDeepl ? 'Deepl' : 'Google Translate'}:`, err );
-
-								// Mark language with error
-								_translationErrors.push( { lang: apiTargetLang, error: err.message } );
-
-								// Move to next translation
-								msgstrIndex++;
-								translateNextMsgstr();
-							}
-							else {
-								// Update translation
-								contextTranslations[ msgid ].msgstr[ msgstrIndex ] = translatedText;
-
-								// Log translated text
-								var indexString = msgstrIndex > 0 ? '(' + msgstrIndex + ')' : '';
-								console.log( 'Translated: ' + targetLang + ' ' + translationSource + ' ' + indexString + ' ' + strToTranslate + ' -> ' + translatedText );
-
-								// Update PO file
-								fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
-
-								// Move to next translation
-								msgstrIndex++;
-								translateNextMsgstr();
-							}
+						jobs.push( {
+							context: context,
+							msgid: msgid,
+							msgstrIndex: msgstrIndex,
+							strToTranslate: msgstrIndex > 0 ? msgidPlural : msgid,
+							useDeepl: useDeepl,
+							translationSource: useDeepl ? 'deepl' : 'google',
+							apiTargetLang: useDeepl ? langSettings.deepl : langSettings[ 'googleTranslate' ]
 						} );
 					}
-					else {
-						// Skip if string is already translated
-						msgstrIndex++;
-						translateNextMsgstr();
-					}
 				}
+			} );
+		} );
 
-				translateNextMsgstr();
-			}
-
-			translateNextMsgid();
+		// Bail if no strings need translation
+		if ( 0 === jobs.length ) {
+			return callback();
 		}
 
-		translateNextContext();
+		var completedCount = 0;
+
+		updateTranslationProgress( 0, jobs.length, targetLang );
+
+		runWithConcurrency( jobs, getTranslationConcurrency(), function( job, done ) {
+			if ( _translationAborted ) {
+				return done();
+			}
+
+			var translateFunction = job.useDeepl ? translateWithDeepl : translateWithGoogle;
+
+			translateFunction( job.strToTranslate, job.apiTargetLang, function( err, translatedText ) {
+				completedCount++;
+
+				if ( err ) {
+					appendTranslationLog( 'Error translating "' + job.strToTranslate + '" to ' + job.apiTargetLang + ' with ' + ( job.useDeepl ? 'Deepl' : 'Google Translate' ) + ': ' + err.message );
+					_translationErrors.push( { lang: job.apiTargetLang, error: err.message } );
+					abortTranslationIfErrorLimitReached();
+				}
+				else {
+					translations[ job.context ][ job.msgid ].msgstr[ job.msgstrIndex ] = translatedText;
+
+					var indexString = job.msgstrIndex > 0 ? '(' + job.msgstrIndex + ')' : '';
+					appendTranslationLog( 'Translated: ' + targetLang + ' ' + job.translationSource + ' ' + indexString + ' ' + job.strToTranslate + ' -> ' + translatedText );
+				}
+
+				updateTranslationProgress( completedCount, jobs.length, targetLang );
+				done();
+			} );
+		}, function() {
+			finishTranslationProgress();
+			fs.writeFileSync( poFilePath, gettextParser.po.compile( po ), { flush: true } );
+			callback();
+		} );
 	});
 }
 
@@ -614,13 +773,31 @@ function poToPHP ( jsonFile, enc, cb ) {
 // gulp translate-po
 // Translate PO files using Deepl and Google Translate
 gulp.task( 'translate-po', function ( done ) {
+	_translationErrors = [];
+	_translationAborted = false;
+	initTranslationLog();
+	printTranslationLogLink();
+
 	// Get languages
 	var languagesList = Object.keys( _gulpSettings.languages );
 	var index = 0;
 
 	// Translate next language
 	function translateNext() {
+		if ( _translationAborted ) {
+			appendTranslationLog( 'Translation run stopped after ' + _translationErrorLimit + ' API errors.' );
+			console.error( 'Translation stopped after ' + _translationErrorLimit + ' API errors. See translation log for details.' );
+
+			_translationErrors.forEach( function ( error ) {
+				console.error( `Error translating ${error.lang}:`, error.error );
+			} );
+
+			return done();
+		}
+
 		if ( index >= languagesList.length ) {
+			appendTranslationLog( 'Translation run finished. Languages processed: ' + languagesList.length + '. Errors: ' + _translationErrors.length );
+
 			// Log errors
 			_translationErrors.forEach( function ( error ) {
 				console.error( `Error translating ${error.lang}:`, error.error );
@@ -712,7 +889,7 @@ gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations' ) );
 gulp.task( 'copy-updater', gulp.series( function( done ) {
 	if ( _gulpSettings.copyUpdater ) {
 		del.sync( _gulpSettings.copyUpdater.destination );
-		
+
 		gulp.src( _gulpSettings.copyUpdater.source )
 		.pipe( gulp.dest( _gulpSettings.copyUpdater.destination ) );
 	}

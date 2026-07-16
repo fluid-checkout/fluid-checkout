@@ -1,9 +1,3 @@
-/**
- * Country Select Script
- *
- * Replaces the original WooCommerce `country-select.js`.
- */
-
 /*global wc_country_select_params */
 jQuery( function( $ ) {
 
@@ -13,7 +7,7 @@ jQuery( function( $ ) {
 	}
 
 
-	// CHANGE: END - Enhanced select fields with TomSelect
+	// CHANGE: Enhanced select fields with TomSelect
 	var usingTomSelect = window.TomSelect && window.fcSettings && fcSettings.use_enhanced_select && 'yes' === fcSettings.use_enhanced_select;
 	if ( usingTomSelect && window.FCEnhancedSelect ) {
 		// CHANGE: Use TomSelect for select2 fields
@@ -76,8 +70,7 @@ jQuery( function( $ ) {
 		};
 
 		var wc_country_select_select2 = function() {
-			// CHANGE: Run function code after a short delay,
-			// to allow components to be completely rendered
+			// CHANGE: Run function code after a short delay, to allow components to be completely rendered
 			requestAnimationFrame(function(){
 				// CHANGE: Allow building `select2` fields while not visible
 				$( 'select.country_select, select.state_select' ).each( function() {
@@ -95,6 +88,7 @@ jQuery( function( $ ) {
 					var select2_args = $.extend({
 						placeholder: $this.attr( 'data-placeholder' ) || $this.attr( 'placeholder' ) || '',
 						label: $this.attr( 'data-label' ) || null,
+						required: $this.attr( 'aria-required' ) === 'true' || null,
 						width: '100%'
 					}, getEnhancedSelectFormatString() );
 
@@ -127,7 +121,7 @@ jQuery( function( $ ) {
 					}, 50 ); // Arbitrary delay to allow `select2` to be completely rendered
 					// CHANGE: END - Maybe reopen `select2` field
 				});
-			});
+			}); // CHANGE: END - Run function code after a short delay, to allow components to be completely rendered
 		};
 
 		wc_country_select_select2();
@@ -169,6 +163,10 @@ jQuery( function( $ ) {
 			placeholder   = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
 
+		if ( placeholder === wc_country_select_params.i18n_select_state_text ) {
+			placeholder = '';
+		}
+
 		// CHANGE: Define class names to be removed from state field when changing its type
 		var state_field_type_classes = [ 'fc-select-field--hidden', 'fc-select-field--text', 'fc-select-field--select' ];
 
@@ -183,7 +181,6 @@ jQuery( function( $ ) {
 				$newstate = $( '<input type="hidden" />' )
 					.prop( 'id', input_id )
 					.prop( 'name', input_name )
-					.prop( 'placeholder', placeholder )
 					.attr( 'data-input-classes', input_classes )
 					.addClass( 'hidden ' + input_classes );
 				$parent.hide().find( '.select2-container' ).remove();
@@ -220,6 +217,13 @@ jQuery( function( $ ) {
 					$statebox = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' );
 				}
 
+				// CHANGE: Maybe clear cached TomSelect option renderings before updating DOM to prevent old options merging with new ones
+				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
+					// Clear selected and unselected options
+					$statebox[ 0 ].tomselect.clear();
+					$statebox[ 0 ].tomselect.clearOptions();
+				}
+
 				$statebox.empty().append( $defaultOption );
 
 				$.each( state, function( index ) {
@@ -228,6 +232,12 @@ jQuery( function( $ ) {
 						.text( state[ index ] );
 					$statebox.append( $option );
 				} );
+
+				// CHANGE: Maybe sync TomSelect with updated DOM options before change event is triggered
+				// to ensure TomSelect has loaded the new options before the value is set
+				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
+					$statebox[ 0 ].tomselect.sync();
+				}
 
 				$statebox.val( value ).trigger( 'change' );
 
@@ -241,8 +251,8 @@ jQuery( function( $ ) {
 				$newstate = $( '<input type="text" />' )
 					.prop( 'id', input_id )
 					.prop( 'name', input_name )
-					.prop('placeholder', placeholder)
-					.attr('data-input-classes', input_classes )
+					.prop( 'placeholder', placeholder )
+					.attr( 'data-input-classes', input_classes )
 					.addClass( 'input-text  ' + input_classes );
 				$parent.show().find( '.select2-container' ).remove();
 				$statebox.replaceWith( $newstate );
