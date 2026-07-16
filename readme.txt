@@ -357,7 +357,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Conditional visibility for checkout steps based on available substeps.
-* Improved: Exclude development files from installable zip packages for this plugin.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 * Improved: Address locale attribute overrides on My Account edit address pages.
 * Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
