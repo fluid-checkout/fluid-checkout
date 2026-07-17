@@ -13,6 +13,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		$this->hooks();
 	}
 
+
+
 	/**
 	 * Initialize hooks.
 	 */
@@ -28,6 +30,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
 	}
 
+
+
 	/**
 	 * Maybe replace plugin scripts with modified version.
 	 */
@@ -39,12 +43,13 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		if ( ! class_exists( 'WCFMmp' ) ) { return; }
 
 		// Replace checkout location script with FC-compatible version
-		wp_register_script( 'wcfmmp_checkout_location_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location' ), array( 'jquery' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wcfmmp_checkout_location_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
+
+
 
 	/**
 	 * Replace order summary shipping output to handle vendor-keyed packages.
-	 *
 	 */
 	public function maybe_replace_order_summary_shipping_output() {
 		// Bail if plugin is not active
@@ -55,8 +60,10 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		add_action( 'fc_review_order_shipping', array( $this, 'output_order_review_shipping_method_chosen' ), 30 );
 	}
 
+
+
 	/**
-	 * Move checkout location map before shipping section.
+	 * Move checkout location map to shipping section.
 	 */
 	public function maybe_reposition_checkout_location_map() {
 		// Bail if plugin is not active
@@ -73,35 +80,39 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 	/**
 	 * Move checkout location fields to shipping section.
+	 *
+	 * @param   array  $fields  Checkout fields.
 	 */
 	public function maybe_reposition_checkout_location_fields( $fields ) {
 		// Bail if plugin is not active
 		if ( ! class_exists( 'WCFMmp' ) ) { return $fields; }
 
 		// Bail if address field is not available
-		if ( ! isset( $fields['billing']['wcfmmp_user_location'] ) ) { return $fields; }
+		if ( ! isset( $fields[ 'billing' ][ 'wcfmmp_user_location' ] ) ) { return $fields; }
 
-		// Bail if shipping section is not available
-		if ( ! isset( $fields['shipping'] ) ) {
-			$fields['shipping'] = array();
+		// Ensure shipping fields section exists
+		if ( ! isset( $fields[ 'shipping' ] ) ) {
+			$fields[ 'shipping' ] = array();
 		}
 
 		// Move the address field to shipping section
-		$fields['shipping']['wcfmmp_user_location'] = $fields['billing']['wcfmmp_user_location'];
-		$fields['shipping']['wcfmmp_user_location']['priority'] = 999;
+		$fields[ 'shipping' ][ 'wcfmmp_user_location' ] = $fields[ 'billing' ][ 'wcfmmp_user_location' ];
+		$fields[ 'shipping' ][ 'wcfmmp_user_location' ][ 'priority' ] = 999;
 
 		// Move latitude and longitude fields to shipping section
-		if ( isset( $fields['billing']['wcfmmp_user_location_lat'] ) ) {
-			$fields['shipping']['wcfmmp_user_location_lat'] = $fields['billing']['wcfmmp_user_location_lat'];
+		if ( isset( $fields[ 'billing' ][ 'wcfmmp_user_location_lat' ] ) ) {
+			$fields[ 'shipping' ][ 'wcfmmp_user_location_lat' ] = $fields[ 'billing' ][ 'wcfmmp_user_location_lat' ];
 		}
-		if ( isset( $fields['billing']['wcfmmp_user_location_lng'] ) ) {
-			$fields['shipping']['wcfmmp_user_location_lng'] = $fields['billing']['wcfmmp_user_location_lng'];
+		if ( isset( $fields[ 'billing' ][ 'wcfmmp_user_location_lng' ] ) ) {
+			$fields[ 'shipping' ][ 'wcfmmp_user_location_lng' ] = $fields[ 'billing' ][ 'wcfmmp_user_location_lng' ];
 		}
 
-		unset( $fields['billing']['wcfmmp_user_location'], $fields['billing']['wcfmmp_user_location_lat'], $fields['billing']['wcfmmp_user_location_lng'] );
+		unset( $fields[ 'billing' ][ 'wcfmmp_user_location' ], $fields[ 'billing' ][ 'wcfmmp_user_location_lat' ], $fields[ 'billing' ][ 'wcfmmp_user_location_lng' ] );
 
 		return $fields;
 	}
+
+
 
 	/**
 	 * Output chosen shipping methods for order summary using package keys.
@@ -127,23 +138,25 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		foreach ( $packages as $package_key => $package ) {
 			if ( isset( $chosen_methods[ $package_key ] ) ) {
 				$numeric_chosen_methods[ $package_index ] = $chosen_methods[ $package_key ];
-			} elseif ( isset( $chosen_methods[ $package_index ] ) ) {
+			}
+			elseif ( isset( $chosen_methods[ $package_index ] ) ) {
 				$numeric_chosen_methods[ $package_index ] = $chosen_methods[ $package_index ];
 			}
 			$package_index++;
 		}
 
-		// Set the chosen shipping methods to the session
-		if ( is_callable( array( WC()->session, 'set' ) ) ) {
-			WC()->session->set( 'chosen_shipping_methods', $numeric_chosen_methods );
+		// Temporarily set numeric keys, then always restore original session values
+		try {
+			if ( is_callable( array( WC()->session, 'set' ) ) ) {
+				WC()->session->set( 'chosen_shipping_methods', $numeric_chosen_methods );
+			}
+
+			FluidCheckout_Steps::instance()->maybe_output_order_review_shipping_method_chosen();
 		}
-
-		// Output the chosen shipping methods
-		FluidCheckout_Steps::instance()->maybe_output_order_review_shipping_method_chosen();
-
-		// Restore original session chosen methods
-		if ( is_callable( array( WC()->session, 'set' ) ) ) {
-			WC()->session->set( 'chosen_shipping_methods', $chosen_methods );
+		finally {
+			if ( is_callable( array( WC()->session, 'set' ) ) ) {
+				WC()->session->set( 'chosen_shipping_methods', $chosen_methods );
+			}
 		}
 	}
 

@@ -2,10 +2,12 @@ jQuery(document).ready(function ($) {
 	var map = geocoder = marker = map_marker = infowindow = '';
 	var initTimeout = null;
 	var initialUserLocationValue = '';
+	// CHANGE: Module-level flags — map lives inside the shipping address fragment and is replaced on update_checkout
+	var _hasSyncedLocation = false;
+	var _hasAutoGeolocated = false;
 
-	// Flag map container to prevent repeated initialization.
+	// CHANGE: Flag map container to prevent repeated initialization for the same DOM node
 	function markInitialized() {
-		// FC: prevent re-initialization across checkout refreshes.
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
 		if ($mapContainer.length) {
 			$mapContainer.data('fcWcfmmpInitialized', true);
@@ -15,7 +17,7 @@ jQuery(document).ready(function ($) {
 	$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
 	$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
 
-	// FC: store initial user location value for later use.
+	// CHANGE: Store initial user location value for Leaflet field replace
 	var $initialLocationField = $('#wcfmmp_user_location');
 	if ($initialLocationField.length) {
 		initialUserLocationValue = $initialLocationField.val() || '';
@@ -91,6 +93,7 @@ jQuery(document).ready(function ($) {
 			});
 		} else {
 			$('#wcfmmp_user_location').replaceWith('<div id="leaflet_wcfmmp_user_location"></div><input type="hidden" class="wcfm_custom_hide" name="wcfmmp_user_location" id="wcfmmp_user_location" />');
+			// CHANGE: Restore location value after Leaflet replaces the visible input
 			if (initialUserLocationValue) {
 				$('#wcfmmp_user_location').val(initialUserLocationValue);
 			}
@@ -156,6 +159,7 @@ jQuery(document).ready(function ($) {
 			});
 
 			map.addControl(searchControl);  //inizialize search control
+			// CHANGE: Restore search input value after Leaflet control is added
 			if (initialUserLocationValue) {
 				$("#leaflet_wcfmmp_user_location").find('.search-input').val(initialUserLocationValue);
 			}
@@ -226,28 +230,40 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
-	// Initialize checkout location map and bind events once.
+	// CHANGE: Initialize map for current DOM; sync/geolocate only once per page load
 	function initializeCheckoutLocation() {
-		// FC: ensure location map setup runs once per checkout render.
+		// Re-read field values after fragment replace
+		$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
+		$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
+		var $locationField = $('#wcfmmp_user_location');
+		if ($locationField.length) {
+			initialUserLocationValue = $locationField.val() || '';
+		}
+
 		initialize();
 		markInitialized();
-		syncSavedLocation();
+
+		// CHANGE: Sync saved location only once — avoids update_checkout loops when the map fragment is replaced
+		if (!_hasSyncedLocation) {
+			syncSavedLocation();
+		}
 
 		if (navigator.geolocation) {
 			$('.wcfmmmp_locate_icon').on('click', function () {
 				setUser_CurrentLocation();
 			});
 
-			if (!$("#wcfmmp_user_location_lat").val() || !$("#wcfmmp_user_location_lng").val()) {
+			// CHANGE: Auto-geolocate only once per page load
+			if (!_hasAutoGeolocated && (!$("#wcfmmp_user_location_lat").val() || !$("#wcfmmp_user_location_lng").val())) {
+				_hasAutoGeolocated = true;
 				setUser_CurrentLocation();
 			}
 		}
 	}
 
-	// Resolve saved lat/lng into address once per render.
+	// CHANGE: Resolve saved lat/lng into address once per page load
 	function syncSavedLocation() {
-		var $mapContainer = $('#wcfmmp-user-locaton-map');
-		if ($mapContainer.data('fcWcfmmpCheckoutSynced')) {
+		if (_hasSyncedLocation) {
 			return;
 		}
 
@@ -257,7 +273,7 @@ jQuery(document).ready(function ($) {
 			return;
 		}
 
-		$mapContainer.data('fcWcfmmpCheckoutSynced', true);
+		_hasSyncedLocation = true;
 
 		if (wcfm_maps.lib === 'google' && geocoder) {
 			geocoder.geocode({
@@ -267,9 +283,9 @@ jQuery(document).ready(function ($) {
 				}
 			}, function (results, status) {
 				if ('OK' === status && results[0]) {
+					// CHANGE: bindDataToForm already triggers update_checkout — do not fire it again
 					bindDataToForm(results[0].formatted_address, latValue, lngValue, true);
 				}
-				$(document.body).trigger('update_checkout');
 			});
 			return;
 		}
@@ -278,16 +294,15 @@ jQuery(document).ready(function ($) {
 			$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, function (data) {
 				var address = data && data.display_name ? data.display_name : '';
 				if (address) {
+					// CHANGE: bindDataToForm already triggers update_checkout — do not fire it again
 					bindDataToForm(address, latValue, lngValue, true);
 				}
-				$(document.body).trigger('update_checkout');
 			});
 		}
 	}
 
-	// Guarded initializer to run after checkout refreshes.
+	// CHANGE: Guarded initializer to run after checkout refreshes
 	function maybeInitCheckoutLocation() {
-		// FC: guard against missing elements and repeated init.
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
 		if (!$mapContainer.length) {
 			return;
@@ -309,5 +324,6 @@ jQuery(document).ready(function ($) {
 	}
 
 	maybeInitCheckoutLocation();
+	// CHANGE: Re-init map after checkout fragment refresh
 	$(document.body).on('updated_checkout', maybeInitCheckoutLocation);
 });
