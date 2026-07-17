@@ -5,12 +5,60 @@ jQuery(document).ready(function ($) {
 	// CHANGE: Module-level flags — map lives inside the shipping address fragment and is replaced on update_checkout
 	var _hasSyncedLocation = false;
 	var _hasAutoGeolocated = false;
+	var _mapResizeObserver = null;
 
 	// CHANGE: Flag map container to prevent repeated initialization for the same DOM node
 	function markInitialized() {
 		var $mapContainer = $('#wcfmmp-user-locaton-map');
 		if ($mapContainer.length) {
 			$mapContainer.data('fcWcfmmpInitialized', true);
+		}
+	}
+
+	/**
+	 * Recalculate map size after layout changes (Address Book, collapsibles, fragments).
+	 */
+	function maybeInvalidateMapSize() {
+		// Bail if map not available
+		if ( ! map ) { return; }
+
+		if ( wcfm_maps.lib === 'google' && window.google && google.maps && google.maps.event ) {
+			google.maps.event.trigger( map, 'resize' );
+			return;
+		}
+
+		if ( wcfm_maps.lib !== 'google' && typeof map.invalidateSize === 'function' ) {
+			map.invalidateSize( false );
+		}
+	}
+
+	/**
+	 * Watch map container size and invalidate when layout settles.
+	 */
+	function watchMapContainerSize() {
+		var mapContainer = document.getElementById( 'wcfmmp-user-locaton-map' );
+
+		// Bail if map container not available
+		if ( ! mapContainer ) { return; }
+
+		// Disconnect previous observer when map is re-created after fragment refresh
+		if ( _mapResizeObserver ) {
+			_mapResizeObserver.disconnect();
+			_mapResizeObserver = null;
+		}
+
+		// Invalidate immediately and after short delays while Address Book / collapsibles settle
+		maybeInvalidateMapSize();
+		setTimeout( maybeInvalidateMapSize, 100 );
+		setTimeout( maybeInvalidateMapSize, 500 );
+		setTimeout( maybeInvalidateMapSize, 1000 );
+
+		// Watch for later size changes (e.g. Address Book cards, expansible sections)
+		if ( typeof ResizeObserver === 'function' ) {
+			_mapResizeObserver = new ResizeObserver( function() {
+				maybeInvalidateMapSize();
+			} );
+			_mapResizeObserver.observe( mapContainer );
 		}
 	}
 
@@ -155,6 +203,8 @@ jQuery(document).ready(function ($) {
 				initial: false,
 				collapsed: false,
 				autoType: false,
+				// CHANGE: Disable autoresize — it applies an inline max-width based on the map container
+				autoResize: false,
 				minLength: 2
 			});
 
@@ -164,12 +214,14 @@ jQuery(document).ready(function ($) {
 				$("#leaflet_wcfmmp_user_location").find('.search-input').val(initialUserLocationValue);
 			}
 
-			//$('#leaflet_wcfmmp_user_location').find('.search-input').val($('#store_location').val());
+			// CHANGE: Clear inline max-width from leaflet-search autoresize
+			$("#leaflet_wcfmmp_user_location").find('.search-input').css( 'max-width', '' );
 
-			setTimeout(function () {
-				map.invalidateSize();
-			}, 3000);
+			//$('#leaflet_wcfmmp_user_location').find('.search-input').val($('#store_location').val());
 		}
+
+		// CHANGE: Keep map tiles aligned after Address Book / collapsible layout changes
+		watchMapContainerSize();
 	}
 
 	
