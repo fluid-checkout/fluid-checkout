@@ -161,7 +161,8 @@ jQuery(document).ready(function ($) {
 			map_marker.on('dragend', function (event) {
 				var position = map_marker.getLatLng();
 
-				var jsonQuery = "http://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.lat + "&lon=" + position.lng + "&zoom=18&addressdetails=1";
+				// CHANGE: Use HTTPS to avoid mixed-content blocks on secure checkouts
+				var jsonQuery = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.lat + "&lon=" + position.lng + "&zoom=18&addressdetails=1";
 
 				var address = '';
 
@@ -301,10 +302,6 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (navigator.geolocation) {
-			$('.wcfmmmp_locate_icon').on('click', function () {
-				setUser_CurrentLocation();
-			});
-
 			// CHANGE: Auto-geolocate only once per page load
 			if (!_hasAutoGeolocated && (!$("#wcfmmp_user_location_lat").val() || !$("#wcfmmp_user_location_lng").val())) {
 				_hasAutoGeolocated = true;
@@ -325,8 +322,6 @@ jQuery(document).ready(function ($) {
 			return;
 		}
 
-		_hasSyncedLocation = true;
-
 		if (wcfm_maps.lib === 'google' && geocoder) {
 			geocoder.geocode({
 				location: {
@@ -335,6 +330,8 @@ jQuery(document).ready(function ($) {
 				}
 			}, function (results, status) {
 				if ('OK' === status && results[0]) {
+					// CHANGE: Only mark synced after a successful bind — failed requests can retry
+					_hasSyncedLocation = true;
 					// CHANGE: bindDataToForm already triggers update_checkout — do not fire it again
 					bindDataToForm(results[0].formatted_address, latValue, lngValue, true);
 				}
@@ -346,6 +343,8 @@ jQuery(document).ready(function ($) {
 			$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, function (data) {
 				var address = data && data.display_name ? data.display_name : '';
 				if (address) {
+					// CHANGE: Only mark synced after a successful bind — failed requests can retry
+					_hasSyncedLocation = true;
 					// CHANGE: bindDataToForm already triggers update_checkout — do not fire it again
 					bindDataToForm(address, latValue, lngValue, true);
 				}
@@ -378,4 +377,8 @@ jQuery(document).ready(function ($) {
 	maybeInitCheckoutLocation();
 	// CHANGE: Re-init map after checkout fragment refresh
 	$(document.body).on('updated_checkout', maybeInitCheckoutLocation);
+	// CHANGE: Delegated locate-icon click — survives fragment refresh without stacking handlers
+	$(document.body).on('click.fcWcfmmpLocate', '.wcfmmmp_locate_icon', function () {
+		setUser_CurrentLocation();
+	});
 });

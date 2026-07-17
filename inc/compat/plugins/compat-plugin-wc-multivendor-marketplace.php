@@ -21,13 +21,13 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	public function hooks() {
 		// Maybe replace plugin scripts with modified version
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
-
 		// Maybe replace order summary shipping output
 		add_action( 'init', array( $this, 'maybe_replace_order_summary_shipping_output' ), 20 );
-
 		// Move checkout location map and field to shipping section
 		add_action( 'init', array( $this, 'maybe_reposition_checkout_location_map' ), 20 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
+		// Output location fields when shipping address is not required (e.g. local pickup)
+		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'maybe_output_checkout_location_fields_without_shipping_address' ), 40 );
 	}
 
 
@@ -75,7 +75,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		if ( ! isset( $WCFMmp->frontend ) ) { return; }
 
 		remove_action( 'woocommerce_after_checkout_billing_form', array( $WCFMmp->frontend, 'wcfmmp_checkout_user_location_map' ), 50 );
-		add_action( 'woocommerce_after_checkout_shipping_form', array( $WCFMmp->frontend, 'wcfmmp_checkout_user_location_map' ), 50 );
+		// Use FC hook outside `needs_shipping_address()` so the map still shows for local pickup
+		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $WCFMmp->frontend, 'wcfmmp_checkout_user_location_map' ), 50 );
 	}
 
 	/**
@@ -112,6 +113,35 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		return $fields;
 	}
 
+	/**
+	 * Output checkout location fields when shipping address is not required.
+	 *
+	 * Shipping-only fields inside `form-shipping.php` are skipped when
+	 * `needs_shipping_address()` is false (e.g. local pickup). Output them here
+	 * so the map and distance shipping still have the required inputs.
+	 */
+	public function maybe_output_checkout_location_fields_without_shipping_address() {
+		// Bail if plugin is not active
+		if ( ! class_exists( 'WCFMmp' ) ) { return; }
+
+		// Bail if checkout or cart is not available
+		if ( ! function_exists( 'WC' ) || ! WC()->checkout() || ! WC()->cart ) { return; }
+
+		// Bail if shipping address is needed (fields already output in the shipping form)
+		if ( WC()->cart->needs_shipping_address() ) { return; }
+
+		$checkout = WC()->checkout();
+		$fields = $checkout->get_checkout_fields( 'shipping' );
+		$location_field_keys = array( 'wcfmmp_user_location', 'wcfmmp_user_location_lat', 'wcfmmp_user_location_lng' );
+
+		foreach ( $location_field_keys as $field_key ) {
+			// Skip if field is not available
+			if ( ! isset( $fields[ $field_key ] ) ) { continue; }
+
+			woocommerce_form_field( $field_key, $fields[ $field_key ], $checkout->get_value( $field_key ) );
+		}
+	}
+
 
 
 	/**
@@ -122,7 +152,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 */
 	public function output_order_review_shipping_method_chosen() {
 		// Bail if not on checkout or cart page
-		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() && ! FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) { return; }
 
 		// Retrieve shipping packages and chosen methods
 		$packages = WC()->shipping()->get_packages();
