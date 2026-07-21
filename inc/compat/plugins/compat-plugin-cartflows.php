@@ -108,7 +108,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Bail if Fluid Checkout PRO order-received is not available
 		if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return false; }
 
-		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' );
+		return FluidCheckout_PRO_OrderReceivedPage::instance()->is_feature_enabled();
 	}
 
 	/**
@@ -145,10 +145,10 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 */
 	public function maybe_prepare_cartflows_page() {
 		$is_checkout = $this->is_cartflows_checkout_context();
-		$is_thankyou = $this->is_cartflows_thankyou_context();
+		$is_thankyou_for_fc_pro = $this->is_cartflows_thankyou_context() && $this->is_fc_pro_order_received_enabled();
 
-		// Bail if not on a CartFlows checkout or thank-you context
-		if ( ! $is_checkout && ! $is_thankyou ) { return; }
+		// Bail if not on a CartFlows checkout or FC PRO thank-you context
+		if ( ! $is_checkout && ! $is_thankyou_for_fc_pro ) { return; }
 
 		// Restore theme styles/scripts (CF strips them and forces default WooCommerce CSS)
 		if ( class_exists( 'Cartflows_Frontend' ) ) {
@@ -157,8 +157,8 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 			remove_filter( 'woocommerce_enqueue_styles', array( $frontend, 'woo_default_css' ), 9999 );
 		}
 
-		// Thank you: remove CF WooCommerce template overrides when FC PRO order-received is enabled
-		if ( $is_thankyou && $this->is_fc_pro_order_received_enabled() ) {
+		// Thank you: remove CF WooCommerce template overrides so FC PRO can use its templates
+		if ( $is_thankyou_for_fc_pro ) {
 			$this->maybe_remove_cartflows_template_overrides();
 		}
 	}
