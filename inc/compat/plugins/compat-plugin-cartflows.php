@@ -51,12 +51,15 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Shared: Store Checkout + sales funnel checkouts.
 	 */
 	public function late_hooks() {
-		// Prevent CartFlows order-summary image / markup surgery (conflicts with Fluid Checkout thumbnails)
-		// and fragment replacements that swap FC order review HTML for CartFlows markup
+		// Prevent CartFlows order-summary image / markup surgery (conflicts with Fluid Checkout thumbnails),
+		// fragment replacements that swap FC order review HTML for CartFlows markup,
+		// and shipping notice HTML wrappers that break FC shipping notices
 		if ( class_exists( 'Cartflows_Checkout_Markup' ) ) {
 			$checkout_markup = Cartflows_Checkout_Markup::get_instance();
 			remove_filter( 'woocommerce_cart_item_name', array( $checkout_markup, 'modify_order_review_item_summary' ), 10 );
 			remove_filter( 'woocommerce_update_order_review_fragments', array( $checkout_markup, 'add_updated_cart_price' ), 10 );
+			remove_filter( 'woocommerce_shipping_may_be_available_html', array( $checkout_markup, 'change_shipping_message_html' ) );
+			remove_filter( 'woocommerce_no_shipping_available_html', array( $checkout_markup, 'change_shipping_message_html' ) );
 			// Keep `custom_price_to_cart_item` — needed for funnel product custom/discounted prices
 		}
 
@@ -68,16 +71,14 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 			remove_filter( 'woocommerce_checkout_fields', array( $modern_checkout, 'unset_fields_for_modern_checkout' ), 10 );
 		}
 
-		// Prevent CartFlows field layout / skin customizations that conflict with Fluid Checkout fields
+		// Prevent CartFlows field layout / skin customizations that conflict with Fluid Checkout fields.
+		// Keep functional field filters (`billing_fields_customization`, `shipping_fields_customization`,
+		// `additional_fields_customization`, `prepare_country_locale`, `woo_default_address_fields`)
+		// so CartFlows field-editor config still applies.
 		if ( class_exists( 'Cartflows_Checkout_Fields' ) ) {
 			$checkout_fields = Cartflows_Checkout_Fields::get_instance();
 			remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'add_three_column_layout_fields' ) );
 			remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'label_skins_fields_customization' ), 1000 );
-			remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'additional_fields_customization' ), 1000 );
-			remove_filter( 'woocommerce_billing_fields', array( $checkout_fields, 'billing_fields_customization' ), 1000 );
-			remove_filter( 'woocommerce_shipping_fields', array( $checkout_fields, 'shipping_fields_customization' ), 1000 );
-			remove_filter( 'woocommerce_get_country_locale_default', array( $checkout_fields, 'prepare_country_locale' ) );
-			remove_filter( 'woocommerce_default_address_fields', array( $checkout_fields, 'woo_default_address_fields' ), 1000 );
 		}
 	}
 
@@ -213,7 +214,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 
 	/**
-	 * Prevent CartFlows checkout UI bootstrap and restore identity fields.
+	 * Prevent CartFlows checkout UI bootstrap and restore needed CartFlows behaviors.
 	 *
 	 * Shared: Store Checkout + sales funnel checkouts.
 	 * Runs before CF `shortcode_load_data` / Instant actions (priority 999).
@@ -223,21 +224,44 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Bail if not on a CartFlows checkout context
 		if ( ! $this->is_cartflows_checkout_context() ) { return; }
 
-		// Prevent CartFlows shortcode UI bootstrap; restore identity fields and URL field prefill
-		// (needed for thank-you redirect, order meta, AJAX endpoints, and funnel query-string prefill)
+		// Prevent CartFlows shortcode UI bootstrap (coupon move, classic billing/shipping re-bind, checkout assets)
+		// then restore identity fields and other behaviors still needed with Fluid Checkout
 		if ( class_exists( 'Cartflows_Checkout_Markup' ) ) {
 			$checkout_markup = Cartflows_Checkout_Markup::get_instance();
 			remove_action( 'wp', array( $checkout_markup, 'shortcode_load_data' ), 999 );
+
+			// Identity fields inside the checkout form and login form
+			// (needed for thank-you redirect, order meta, AJAX endpoints, and post-login funnel redirect)
 			add_action( 'fc_checkout_before', array( $checkout_markup, 'checkout_shortcode_post_id' ), 5 );
+			add_action( 'woocommerce_login_form_end', array( $checkout_markup, 'checkout_shortcode_post_id' ), 99 );
+
+			// URL query-string field prefill
 			add_filter( 'woocommerce_checkout_fields', array( $checkout_markup, 'prefill_checkout_fields' ), 10 );
+
+			// Place order button text on initial page load
+			// (AJAX path is already registered by CF `update_woo_actions_ajax`)
+			add_filter( 'woocommerce_order_button_text', array( $checkout_markup, 'place_order_button_text' ), 99 );
+
+			// Auto-check "Ship to a different address?" when shipping URL params are present
+			add_filter( 'woocommerce_ship_to_different_address_checked', array( $checkout_markup, 'maybe_check_ship_to_different_address' ) );
+
+			// File field type support for CartFlows custom checkout fields
+			add_filter( 'woocommerce_form_field_file', array( $checkout_markup, 'render_file_field' ), 10, 4 );
+
+			// Allow third-party CartFlows hooks that expect this action
+			$checkout_id = absint( get_the_ID() );
+			if ( $checkout_id ) {
+				do_action( 'cartflows_checkout_before_shortcode', $checkout_id );
+			}
 		}
 
-		// Prevent Instant Checkout layout actions and page template override
+		// Prevent Instant Checkout layout actions, page template override, and Instant body class
 		if ( class_exists( 'Cartflows_Instant_Checkout' ) ) {
 			$instant_checkout = Cartflows_Instant_Checkout::get_instance();
 			remove_action( 'wp', array( $instant_checkout, 'instant_checkout_actions' ), 999 );
 			remove_filter( 'cartflows_page_template_file', array( $instant_checkout, 'cartflows_instant_checkout_page_template_file' ), 10 );
 			remove_filter( 'cartflows_checkout_meta_wcf-checkout-layout', array( $instant_checkout, 'stop_other_checkout_layout_implementations' ), 10 );
+			remove_filter( 'cartflows_page_template_body_classes', array( $instant_checkout, 'add_body_class_for_instant_checkout' ) );
 		}
 
 		// Remove CartFlows WooCommerce template overrides so Fluid Checkout templates are used
