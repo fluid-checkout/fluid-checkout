@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
  * Compatibility with plugin: CartFlows (by CartFlows Inc).
  *
  * Shared: Fluid Checkout owns checkout UI; CartFlows keeps routing, cart products, and `_wcf_*` identity.
- * Store / Global Checkout: redirect to WooCommerce order-received (FC PRO thank you).
+ * Store / Global Checkout: redirect to WooCommerce order-received (FC PRO thank you); keep upsell/downsell redirects.
  * Sales funnels: keep CartFlows thank-you redirects; Instant TY disables FC PRO; non-Instant TY allows FC PRO.
  */
 class FluidCheckout_Cartflows extends FluidCheckout {
@@ -142,12 +142,15 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 	/**
 	 * Whether Fluid Checkout PRO order-received is available and enabled.
+	 *
+	 * Reads the option directly (does not re-apply `fc_pro_enable_order_received`)
+	 * to avoid recursion with `maybe_disable_fc_pro_on_instant_thankyou`.
 	 */
 	public function is_fc_pro_order_received_enabled() {
 		// Bail if Fluid Checkout PRO order-received is not available
 		if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return false; }
 
-		return apply_filters( 'fc_pro_enable_order_received', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' ) );
+		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' );
 	}
 
 	/**
@@ -220,9 +223,13 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Bail if not on a CartFlows checkout context
 		if ( ! $this->is_cartflows_checkout_context() ) { return; }
 
-		// Prevent CartFlows shortcode UI bootstrap (coupon move, classic billing/shipping re-bind, checkout assets)
+		// Prevent CartFlows shortcode UI bootstrap; restore identity fields and URL field prefill
+		// (needed for thank-you redirect, order meta, AJAX endpoints, and funnel query-string prefill)
 		if ( class_exists( 'Cartflows_Checkout_Markup' ) ) {
-			remove_action( 'wp', array( Cartflows_Checkout_Markup::get_instance(), 'shortcode_load_data' ), 999 );
+			$checkout_markup = Cartflows_Checkout_Markup::get_instance();
+			remove_action( 'wp', array( $checkout_markup, 'shortcode_load_data' ), 999 );
+			add_action( 'fc_checkout_before', array( $checkout_markup, 'checkout_shortcode_post_id' ), 5 );
+			add_filter( 'woocommerce_checkout_fields', array( $checkout_markup, 'prefill_checkout_fields' ), 10 );
 		}
 
 		// Prevent Instant Checkout layout actions and page template override
@@ -235,12 +242,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 		// Remove CartFlows WooCommerce template overrides so Fluid Checkout templates are used
 		$this->maybe_remove_cartflows_template_overrides();
-
-		// Restore CartFlows flow / checkout identity fields inside the Fluid Checkout form
-		// (needed for thank-you redirect, order meta, and AJAX endpoints)
-		if ( class_exists( 'Cartflows_Checkout_Markup' ) ) {
-			add_action( 'fc_checkout_before', array( Cartflows_Checkout_Markup::get_instance(), 'checkout_shortcode_post_id' ), 5 );
-		}
 	}
 
 
@@ -292,6 +293,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 *
 	 * Store / Global Checkout only. Sales funnels keep the CartFlows thank-you URL
 	 * applied by `Cartflows_Frontend::redirect_to_thankyou_page` (priority 10).
+	 * Upsell / downsell redirects from `cartflows_checkout_next_step_id` are preserved.
 	 *
 	 * @param   string    $order_receive_url  Order received URL.
 	 * @param   WC_Order  $order              Order object.
@@ -299,6 +301,13 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	public function maybe_use_woocommerce_thankyou_for_store_checkout( $order_receive_url, $order ) {
 		// Bail if not a Store / Global Checkout order
 		if ( ! $this->is_store_checkout_order( $order ) ) { return $order_receive_url; }
+
+		// Bail if CartFlows utils / flow are not available
+		if ( ! function_exists( 'wcf' ) || ! wcf()->flow ) { return $order_receive_url; }
+
+		// Bail if redirected to a non-thank-you step (upsell/downsell)
+		$thankyou_page_id = absint( wcf()->flow->get_thankyou_page_id( $order ) );
+		if ( $thankyou_page_id && false === strpos( $order_receive_url, (string) get_permalink( $thankyou_page_id ) ) ) { return $order_receive_url; }
 
 		// Build the native WooCommerce order-received URL (FC PRO can style this page)
 		$woocommerce_order_received_url = wc_get_endpoint_url( 'order-received', $order->get_id(), wc_get_checkout_url() );
@@ -317,8 +326,11 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * @param   bool  $enabled  Whether FC PRO order-received is enabled.
 	 */
 	public function maybe_disable_fc_pro_on_instant_thankyou( $enabled ) {
-		// Bail if not on a CartFlows Instant thank-you step
-		if ( ! $this->is_cartflows_thankyou_context() || ! $this->is_instant_layout_flow() ) { return $enabled; }
+		// Bail if not on a CartFlows thank-you step
+		if ( ! $this->is_cartflows_thankyou_context() ) { return $enabled; }
+
+		// Bail if Instant Layout is not enabled
+		if ( ! $this->is_instant_layout_flow() ) { return $enabled; }
 
 		return false;
 	}
