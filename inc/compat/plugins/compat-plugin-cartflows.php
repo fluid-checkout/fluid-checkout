@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: CartFlows (by CartFlows Inc).
  *
- * Shared: Fluid Checkout owns checkout UI; CartFlows keeps routing, cart products, and `_wcf_*` identity.
+ * Fluid Checkout owns checkout UI; CartFlows keeps routing, cart products, and `_wcf_*` identity.
  * Instant Layout is not supported and should remain deactivated.
  * Store / Global Checkout: redirect to WooCommerce order-received (FC PRO thank you); keep upsell/downsell redirects.
  * Sales funnels: keep CartFlows thank-you redirects; FC PRO can optimize the embedded `thankyou.php`.
@@ -27,10 +27,8 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
-		// Theme assets (CF strips them at `wp` priority 55)
-		add_action( 'wp', array( $this, 'maybe_restore_theme_assets' ), 56 );
-
-		// Checkout UI (must run before CF `shortcode_load_data` at priority 999)
+		// Page setup (after CF `wp_actions` at priority 55; before CF `shortcode_load_data` at 999)
+		add_action( 'wp', array( $this, 'maybe_prepare_cartflows_page' ), 56 );
 		add_action( 'wp', array( $this, 'maybe_take_over_cartflows_checkout_ui' ), 998 );
 
 		// Assets
@@ -38,9 +36,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 		// Store Checkout thank you
 		add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'maybe_use_woocommerce_thankyou_for_store_checkout' ), 20, 2 );
-
-		// Funnel thank you
-		add_action( 'wp', array( $this, 'maybe_prepare_cartflows_thankyou_for_fc_pro' ), 56 );
 	}
 
 
@@ -143,23 +138,29 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 
 	/**
-	 * Stop CartFlows from removing theme styles/scripts and forcing default WooCommerce CSS.
+	 * Prepare CartFlows checkout and thank-you pages for Fluid Checkout.
 	 *
-	 * Also on CartFlows thank-you steps so FC PRO order-received can use theme styles.
+	 * Runs after CF `wp_actions` (priority 55): restore theme assets, and on thank-you
+	 * steps remove CF template overrides so FC PRO can use its `thankyou.php`.
 	 */
-	public function maybe_restore_theme_assets() {
+	public function maybe_prepare_cartflows_page() {
+		$is_checkout = $this->is_cartflows_checkout_context();
+		$is_thankyou = $this->is_cartflows_thankyou_context();
+
 		// Bail if not on a CartFlows checkout or thank-you context
-		if ( ! $this->is_cartflows_checkout_context() && ! $this->is_cartflows_thankyou_context() ) { return; }
+		if ( ! $is_checkout && ! $is_thankyou ) { return; }
 
-		// Bail if CartFlows frontend is not available
-		if ( ! class_exists( 'Cartflows_Frontend' ) ) { return; }
+		// Restore theme styles/scripts (CF strips them and forces default WooCommerce CSS)
+		if ( class_exists( 'Cartflows_Frontend' ) ) {
+			$frontend = Cartflows_Frontend::get_instance();
+			remove_action( 'wp_enqueue_scripts', array( $frontend, 'remove_theme_styles' ), 9999 );
+			remove_filter( 'woocommerce_enqueue_styles', array( $frontend, 'woo_default_css' ), 9999 );
+		}
 
-		// Get CartFlows frontend instance
-		$frontend = Cartflows_Frontend::get_instance();
-
-		// CartFlows registers these in `wp_actions` (priority 55) on step post types
-		remove_action( 'wp_enqueue_scripts', array( $frontend, 'remove_theme_styles' ), 9999 );
-		remove_filter( 'woocommerce_enqueue_styles', array( $frontend, 'woo_default_css' ), 9999 );
+		// Thank you: remove CF WooCommerce template overrides when FC PRO order-received is enabled
+		if ( $is_thankyou && $this->is_fc_pro_order_received_enabled() ) {
+			$this->maybe_remove_cartflows_template_overrides();
+		}
 	}
 
 	/**
@@ -178,7 +179,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Prevent CartFlows checkout UI bootstrap and restore needed CartFlows behaviors.
 	 *
 	 * Runs before CF `shortcode_load_data` (priority 999).
-	 * Template override is already registered by CF `wp_actions` (priority 55).
 	 */
 	public function maybe_take_over_cartflows_checkout_ui() {
 		// Bail if not on a CartFlows checkout context
@@ -223,9 +223,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 	/**
 	 * Dequeue CartFlows normalize/frontend styles that conflict with Fluid Checkout.
-	 *
-	 * Shared checkout: CF normalize replaces theme form-field styles.
-	 * Sales funnels thank you: CF normalize breaks FC PRO order-received layout.
 	 */
 	public function maybe_dequeue_cartflows_normalize_styles() {
 		// Dequeue on CartFlows checkout
@@ -241,25 +238,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 		wp_dequeue_style( 'wcf-normalize-frontend-global' );
 		wp_dequeue_style( 'wcf-frontend-global' );
-	}
-
-
-
-	/**
-	 * Prepare CartFlows thank-you steps for Fluid Checkout PRO.
-	 *
-	 * Sales funnels: remove CartFlows WooCommerce template overrides so FC PRO
-	 * `thankyou.php` / order-details templates are used instead of CartFlows copies.
-	 * Assumes Instant Layout is deactivated (unsupported).
-	 */
-	public function maybe_prepare_cartflows_thankyou_for_fc_pro() {
-		// Bail if not on a CartFlows thank-you step
-		if ( ! $this->is_cartflows_thankyou_context() ) { return; }
-
-		// Bail if Fluid Checkout PRO order-received is not enabled
-		if ( ! $this->is_fc_pro_order_received_enabled() ) { return; }
-
-		$this->maybe_remove_cartflows_template_overrides();
 	}
 
 
