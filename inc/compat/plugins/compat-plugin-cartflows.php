@@ -3,11 +3,6 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Compatibility with plugin: CartFlows (by CartFlows Inc).
- *
- * Fluid Checkout owns checkout UI; CartFlows keeps routing, cart products, and `_wcf_*` identity.
- * Instant Layout is not supported and should remain deactivated.
- * Store / Global Checkout: redirect to WooCommerce order-received (FC PRO thank you); keep upsell/downsell redirects.
- * Sales funnels: keep CartFlows thank-you redirects; FC PRO can optimize the embedded `thankyou.php`.
  */
 class FluidCheckout_Cartflows extends FluidCheckout {
 
@@ -81,10 +76,12 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Whether the current request is a CartFlows checkout page or checkout AJAX.
 	 */
 	public function is_cartflows_checkout_context() {
+		// Check if the current request is a CartFlows checkout page
 		if ( function_exists( '_is_wcf_checkout_type' ) && _is_wcf_checkout_type() ) {
 			return true;
 		}
 
+		// Check if the current request is a CartFlows checkout AJAX request
 		if ( function_exists( '_is_wcf_doing_checkout_ajax' ) && _is_wcf_doing_checkout_ajax() ) {
 			return true;
 		}
