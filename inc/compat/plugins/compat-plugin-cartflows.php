@@ -4,20 +4,9 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Compatibility with plugin: CartFlows (by CartFlows Inc).
  *
- * Shared (Store Checkout + sales funnels):
- * - Fluid Checkout owns the checkout form UI on CartFlows checkout steps.
- * - CartFlows keeps funnel routing, Store Checkout post-swap, cart products,
- *   and `_wcf_*` order meta / identity fields.
- *
- * Store / Global Checkout:
- * - After place order, use the WooCommerce order-received URL so Fluid Checkout
- *   PRO thank you can render (do not send shoppers to the Store Checkout thank-you step).
- *
- * Sales funnels:
- * - Keep CartFlows thank-you redirects to the funnel thank-you step.
- * - Instant Layout thank you: CartFlows Instant Thank You owns the UI (disable FC PRO).
- * - Non-Instant thank you: allow FC PRO to optimize the embedded WooCommerce thankyou.php,
- *   keep theme assets, and dequeue CartFlows normalize/frontend styles that break layout.
+ * Shared: Fluid Checkout owns checkout UI; CartFlows keeps routing, cart products, and `_wcf_*` identity.
+ * Store / Global Checkout: redirect to WooCommerce order-received (FC PRO thank you).
+ * Sales funnels: keep CartFlows thank-you redirects; Instant TY disables FC PRO; non-Instant TY allows FC PRO.
  */
 class FluidCheckout_Cartflows extends FluidCheckout {
 
@@ -34,28 +23,23 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Shared — checkout field filters must be removed before WooCommerce caches them
+		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
-		// Shared — undo CartFlows theme-asset stripping (CF `wp_actions` at priority 55)
+		// Theme assets (CF strips them at `wp` priority 55)
 		add_action( 'wp', array( $this, 'maybe_restore_theme_assets' ), 56 );
 
-		// Shared — neutralize CartFlows checkout UI before it bootstraps (CF runs at priority 999)
-		add_action( 'wp', array( $this, 'before_cartflows_checkout_ui' ), 998 );
+		// Checkout UI (must run before CF `shortcode_load_data` at priority 999)
+		add_action( 'wp', array( $this, 'maybe_take_over_cartflows_checkout_ui' ), 998 );
 
-		// Shared — finish neutralization and restore CartFlows identity fields
-		add_action( 'wp', array( $this, 'after_cartflows_checkout_ui' ), 1000 );
+		// Assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_cartflows_normalize_styles' ), 10000 );
 
-		// Shared — dequeue CartFlows assets that conflict with Fluid Checkout
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_cartflows_conflicting_assets' ), 10000 );
-
-		// Store / Global Checkout — prefer WooCommerce / FC PRO thank you over Store Checkout thank-you step
+		// Store Checkout thank you
 		add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'maybe_use_woocommerce_thankyou_for_store_checkout' ), 20, 2 );
 
-		// Sales funnels — disable FC PRO only on Instant Thank You (non-Instant can use FC PRO)
-		add_filter( 'fc_pro_enable_order_received', array( $this, 'maybe_disable_fc_pro_order_received_on_cartflows_thankyou' ), 10 );
-
-		// Sales funnels — prepare non-Instant thank you for FC PRO (templates)
+		// Funnel thank you
+		add_filter( 'fc_pro_enable_order_received', array( $this, 'maybe_disable_fc_pro_on_instant_thankyou' ), 10 );
 		add_action( 'wp', array( $this, 'maybe_prepare_cartflows_thankyou_for_fc_pro' ), 56 );
 	}
 
@@ -100,64 +84,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 
 	/**
-	 * Get the Store / Global Checkout flow ID.
-	 */
-	public function get_store_checkout_flow_id() {
-		// Bail if CartFlows helper is not available
-		if ( ! class_exists( 'Cartflows_Helper' ) ) { return 0; }
-
-		return absint( Cartflows_Helper::get_global_setting( '_cartflows_store_checkout' ) );
-	}
-
-	/**
-	 * Get the current CartFlows flow ID when available.
-	 */
-	public function get_current_flow_id() {
-		// Bail if CartFlows utils are not available
-		if ( ! function_exists( 'wcf' ) || ! wcf()->utils ) { return 0; }
-
-		return absint( wcf()->utils->get_flow_id() );
-	}
-
-	/**
-	 * Whether a flow ID is the Store / Global Checkout flow.
-	 *
-	 * @param   int  $flow_id  Optional flow ID. Defaults to the current flow.
-	 */
-	public function is_store_checkout_flow( $flow_id = 0 ) {
-		// Get Store Checkout flow ID
-		$store_flow_id = $this->get_store_checkout_flow_id();
-
-		// Bail if Store Checkout is not configured
-		if ( ! $store_flow_id ) { return false; }
-
-		// Maybe use the current flow ID
-		if ( ! $flow_id ) {
-			$flow_id = $this->get_current_flow_id();
-		}
-
-		return $store_flow_id === absint( $flow_id );
-	}
-
-	/**
-	 * Whether an order was placed through the Store / Global Checkout flow.
-	 *
-	 * @param   WC_Order|mixed  $order  Order object.
-	 */
-	public function is_store_checkout_order( $order ) {
-		// Bail if order is not available
-		if ( ! $order || ! is_a( $order, 'WC_Order' ) ) { return false; }
-
-		// Bail if CartFlows utils are not available
-		if ( ! function_exists( 'wcf' ) || ! wcf()->utils ) { return false; }
-
-		// Get flow ID from order meta
-		$flow_id = wcf()->utils->get_flow_id_from_order( $order );
-
-		return $this->is_store_checkout_flow( $flow_id );
-	}
-
-	/**
 	 * Whether the current request is a CartFlows checkout page or checkout AJAX.
 	 *
 	 * Shared: Store Checkout + sales funnel checkouts.
@@ -176,8 +102,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 	/**
 	 * Whether the current request is a CartFlows thank-you step.
-	 *
-	 * Shared: Store Checkout thank-you step and sales funnel thank-you steps.
 	 */
 	public function is_cartflows_thankyou_context() {
 		return function_exists( '_is_wcf_thankyou_type' ) && _is_wcf_thankyou_type();
@@ -194,7 +118,10 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 		// Maybe use the current flow ID
 		if ( ! $flow_id ) {
-			$flow_id = $this->get_current_flow_id();
+			// Bail if CartFlows utils are not available
+			if ( ! function_exists( 'wcf' ) || ! wcf()->utils ) { return false; }
+
+			$flow_id = absint( wcf()->utils->get_flow_id() );
 		}
 
 		// Bail if flow ID is not available
@@ -214,26 +141,37 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Whether CartFlows normalize/frontend styles should be dequeued for Fluid Checkout.
-	 *
-	 * Shared checkout: CF normalize replaces theme form-field styles.
-	 * Non-Instant thank you: CF normalize breaks FC PRO order-received layout.
+	 * Whether Fluid Checkout PRO order-received is available and enabled.
 	 */
-	public function should_dequeue_cartflows_normalize_assets() {
-		// Dequeue on CartFlows checkout (Fluid Checkout form UI)
-		if ( $this->is_cartflows_checkout_context() ) {
-			return true;
-		}
+	public function is_fc_pro_order_received_enabled() {
+		// Bail if Fluid Checkout PRO order-received is not available
+		if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return false; }
 
-		// Dequeue on non-Instant CartFlows thank-you steps when FC PRO order-received is enabled
-		if ( $this->is_non_instant_cartflows_thankyou_context() ) {
-			if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return false; }
-			if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' ) ) { return false; }
+		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' );
+	}
 
-			return true;
-		}
+	/**
+	 * Whether an order was placed through the Store / Global Checkout flow.
+	 *
+	 * @param   WC_Order|mixed  $order  Order object.
+	 */
+	public function is_store_checkout_order( $order ) {
+		// Bail if order is not available
+		if ( ! $order || ! is_a( $order, 'WC_Order' ) ) { return false; }
 
-		return false;
+		// Bail if CartFlows utils / helper are not available
+		if ( ! function_exists( 'wcf' ) || ! wcf()->utils || ! class_exists( 'Cartflows_Helper' ) ) { return false; }
+
+		// Get Store Checkout flow ID
+		$store_flow_id = absint( Cartflows_Helper::get_global_setting( '_cartflows_store_checkout' ) );
+
+		// Bail if Store Checkout is not configured
+		if ( ! $store_flow_id ) { return false; }
+
+		// Get flow ID from order meta
+		$flow_id = absint( wcf()->utils->get_flow_id_from_order( $order ) );
+
+		return $store_flow_id === $flow_id;
 	}
 
 
@@ -259,25 +197,33 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		remove_filter( 'woocommerce_enqueue_styles', array( $frontend, 'woo_default_css' ), 9999 );
 	}
 
+	/**
+	 * Remove CartFlows WooCommerce template overrides so Fluid Checkout templates are used.
+	 */
+	public function maybe_remove_cartflows_template_overrides() {
+		// Bail if CartFlows frontend is not available
+		if ( ! class_exists( 'Cartflows_Frontend' ) ) { return; }
+
+		remove_filter( 'woocommerce_locate_template', array( Cartflows_Frontend::get_instance(), 'override_woo_template' ), 20 );
+	}
+
 
 
 	/**
-	 * Prevent CartFlows checkout UI bootstrap (layouts, hook surgery, assets).
+	 * Prevent CartFlows checkout UI bootstrap and restore identity fields.
 	 *
 	 * Shared: Store Checkout + sales funnel checkouts.
+	 * Runs before CF `shortcode_load_data` / Instant actions (priority 999).
+	 * Template override is already registered by CF `wp_actions` (priority 55).
 	 */
-	public function before_cartflows_checkout_ui() {
+	public function maybe_take_over_cartflows_checkout_ui() {
 		// Bail if not on a CartFlows checkout context
 		if ( ! $this->is_cartflows_checkout_context() ) { return; }
 
-		// Bail if CartFlows checkout markup is not available
-		if ( ! class_exists( 'Cartflows_Checkout_Markup' ) ) { return; }
-
-		// Get CartFlows checkout markup instance
-		$checkout_markup = Cartflows_Checkout_Markup::get_instance();
-
 		// Prevent CartFlows shortcode UI bootstrap (coupon move, classic billing/shipping re-bind, checkout assets)
-		remove_action( 'wp', array( $checkout_markup, 'shortcode_load_data' ), 999 );
+		if ( class_exists( 'Cartflows_Checkout_Markup' ) ) {
+			remove_action( 'wp', array( Cartflows_Checkout_Markup::get_instance(), 'shortcode_load_data' ), 999 );
+		}
 
 		// Prevent Instant Checkout layout actions and page template override
 		if ( class_exists( 'Cartflows_Instant_Checkout' ) ) {
@@ -286,22 +232,9 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 			remove_filter( 'cartflows_page_template_file', array( $instant_checkout, 'cartflows_instant_checkout_page_template_file' ), 10 );
 			remove_filter( 'cartflows_checkout_meta_wcf-checkout-layout', array( $instant_checkout, 'stop_other_checkout_layout_implementations' ), 10 );
 		}
-	}
-
-	/**
-	 * Finish neutralization after CartFlows hooks and restore identity fields.
-	 *
-	 * Shared: Store Checkout + sales funnel checkouts.
-	 */
-	public function after_cartflows_checkout_ui() {
-		// Bail if not on a CartFlows checkout context
-		if ( ! $this->is_cartflows_checkout_context() ) { return; }
 
 		// Remove CartFlows WooCommerce template overrides so Fluid Checkout templates are used
-		if ( class_exists( 'Cartflows_Frontend' ) ) {
-			$frontend = Cartflows_Frontend::get_instance();
-			remove_filter( 'woocommerce_locate_template', array( $frontend, 'override_woo_template' ), 20 );
-		}
+		$this->maybe_remove_cartflows_template_overrides();
 
 		// Restore CartFlows flow / checkout identity fields inside the Fluid Checkout form
 		// (needed for thank-you redirect, order meta, and AJAX endpoints)
@@ -313,14 +246,22 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 
 	/**
-	 * Dequeue CartFlows assets that conflict with Fluid Checkout.
+	 * Dequeue CartFlows normalize/frontend styles that conflict with Fluid Checkout.
 	 *
-	 * Shared checkout: normalize/frontend replace theme form-field styles.
-	 * Sales funnels (non-Instant thank you): normalize breaks FC PRO order-received layout.
+	 * Shared checkout: CF normalize replaces theme form-field styles.
+	 * Sales funnels (non-Instant thank you): CF normalize breaks FC PRO order-received layout.
 	 */
-	public function maybe_dequeue_cartflows_conflicting_assets() {
+	public function maybe_dequeue_cartflows_normalize_styles() {
+		// Dequeue on CartFlows checkout
+		$should_dequeue = $this->is_cartflows_checkout_context();
+
+		// Or on non-Instant CartFlows thank-you steps when FC PRO order-received is enabled
+		if ( ! $should_dequeue && $this->is_non_instant_cartflows_thankyou_context() && $this->is_fc_pro_order_received_enabled() ) {
+			$should_dequeue = true;
+		}
+
 		// Bail if not on a context that needs normalize/frontend removed
-		if ( ! $this->should_dequeue_cartflows_normalize_assets() ) { return; }
+		if ( ! $should_dequeue ) { return; }
 
 		wp_dequeue_style( 'wcf-normalize-frontend-global' );
 		wp_dequeue_style( 'wcf-frontend-global' );
@@ -335,18 +276,11 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * `thankyou.php` / order-details templates are used instead of CartFlows copies.
 	 */
 	public function maybe_prepare_cartflows_thankyou_for_fc_pro() {
-		// Bail if not on a non-Instant CartFlows thank-you step
+		// Bail if not on a non-Instant CartFlows thank-you step with FC PRO enabled
 		if ( ! $this->is_non_instant_cartflows_thankyou_context() ) { return; }
+		if ( ! $this->is_fc_pro_order_received_enabled() ) { return; }
 
-		// Bail if Fluid Checkout PRO order-received is not available / enabled
-		if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return; }
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' ) ) { return; }
-
-		// Bail if CartFlows frontend is not available
-		if ( ! class_exists( 'Cartflows_Frontend' ) ) { return; }
-
-		// Prevent CartFlows from forcing its WooCommerce template copies (thankyou, order-details, etc.)
-		remove_filter( 'woocommerce_locate_template', array( Cartflows_Frontend::get_instance(), 'override_woo_template' ), 20 );
+		$this->maybe_remove_cartflows_template_overrides();
 	}
 
 
@@ -375,20 +309,14 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	/**
 	 * Disable Fluid Checkout PRO order-received on CartFlows Instant Thank You pages.
 	 *
-	 * Sales funnels with Instant Layout: CartFlows Instant Thank You owns the UI —
-	 * FC PRO layout CSS conflicts with it.
-	 *
-	 * Sales funnels without Instant Layout: CartFlows embeds WooCommerce
-	 * `checkout/thankyou.php`, so FC PRO order-received should stay enabled.
+	 * Sales funnels with Instant Layout: CartFlows Instant Thank You owns the UI.
+	 * Without Instant Layout: CartFlows embeds `thankyou.php`, so FC PRO stays enabled.
 	 *
 	 * @param   bool  $enabled  Whether FC PRO order-received is enabled.
 	 */
-	public function maybe_disable_fc_pro_order_received_on_cartflows_thankyou( $enabled ) {
-		// Bail if not on a CartFlows thank-you step
-		if ( ! $this->is_cartflows_thankyou_context() ) { return $enabled; }
-
-		// Bail if Instant Layout is not enabled — allow FC PRO to optimize thankyou.php
-		if ( ! $this->is_instant_layout_flow() ) { return $enabled; }
+	public function maybe_disable_fc_pro_on_instant_thankyou( $enabled ) {
+		// Bail if not on a CartFlows Instant thank-you step
+		if ( ! $this->is_cartflows_thankyou_context() || ! $this->is_instant_layout_flow() ) { return $enabled; }
 
 		return false;
 	}
