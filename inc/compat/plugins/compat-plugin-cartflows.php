@@ -147,7 +147,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Bail if Fluid Checkout PRO order-received is not available
 		if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return false; }
 
-		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' );
+		return apply_filters( 'fc_pro_enable_order_received', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' ) );
 	}
 
 	/**
@@ -276,8 +276,10 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * `thankyou.php` / order-details templates are used instead of CartFlows copies.
 	 */
 	public function maybe_prepare_cartflows_thankyou_for_fc_pro() {
-		// Bail if not on a non-Instant CartFlows thank-you step with FC PRO enabled
+		// Bail if not on a non-Instant CartFlows thank-you step
 		if ( ! $this->is_non_instant_cartflows_thankyou_context() ) { return; }
+
+		// Bail if Fluid Checkout PRO order-received is not enabled
 		if ( ! $this->is_fc_pro_order_received_enabled() ) { return; }
 
 		$this->maybe_remove_cartflows_template_overrides();
