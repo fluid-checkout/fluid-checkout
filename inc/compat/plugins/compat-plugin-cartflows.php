@@ -76,12 +76,10 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Whether the current request is a CartFlows checkout page or checkout AJAX.
 	 */
 	public function is_cartflows_checkout_context() {
-		// Check if the current request is a CartFlows checkout page
 		if ( function_exists( '_is_wcf_checkout_type' ) && _is_wcf_checkout_type() ) {
 			return true;
 		}
 
-		// Check if the current request is a CartFlows checkout AJAX request
 		if ( function_exists( '_is_wcf_doing_checkout_ajax' ) && _is_wcf_doing_checkout_ajax() ) {
 			return true;
 		}
@@ -91,8 +89,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 	/**
 	 * Whether the current request is a CartFlows thank-you step.
-	 *
-	 * Assumes Instant Layout is deactivated (unsupported).
 	 */
 	public function is_cartflows_thankyou_context() {
 		return function_exists( '_is_wcf_thankyou_type' ) && _is_wcf_thankyou_type();
@@ -180,6 +176,11 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	public function maybe_take_over_cartflows_checkout_ui() {
 		// Bail if not on a CartFlows checkout context
 		if ( ! $this->is_cartflows_checkout_context() ) { return; }
+
+		// Prevent CartFlows Instant Layout checkout UI (unsupported; conflicts with Fluid Checkout)
+		if ( class_exists( 'Cartflows_Instant_Checkout' ) ) {
+			remove_action( 'wp', array( Cartflows_Instant_Checkout::get_instance(), 'instant_checkout_actions' ), 999 );
+		}
 
 		// Prevent CartFlows shortcode UI bootstrap (coupon move, classic billing/shipping re-bind, checkout assets)
 		// then restore identity fields and other behaviors still needed with Fluid Checkout

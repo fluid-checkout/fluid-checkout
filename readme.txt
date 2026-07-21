@@ -356,8 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with plugin: CartFlows (by CartFlows Inc).
 * Added: Conditional visibility for checkout steps based on available substeps.
+* Added: Compatibility with plugin: CartFlows (by CartFlows Inc).
 * Improved: Exclude development files from installable zip packages for this plugin.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 * Improved: Address locale attribute overrides on My Account edit address pages.
