@@ -48,9 +48,6 @@ fluid-checkout-standards
 .git
 .git/**
 
-# Local symlink to shared standards repo (see DEVELOPMENT.md)
-fluid-checkout-standards
-
 # Zip files
 **/*.zip
 !**/tests/files/**/*.zip
