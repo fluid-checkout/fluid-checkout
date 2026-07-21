@@ -46,12 +46,8 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Shared — finish neutralization and restore CartFlows identity fields
 		add_action( 'wp', array( $this, 'after_cartflows_checkout_ui' ), 1000 );
 
-		// Shared — dequeue CartFlows checkout assets that conflict with Fluid Checkout
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_cartflows_checkout_assets' ), 10000 );
-
-		// Shared — keep theme assets available for Fluid Checkout on CartFlows templates
-		add_filter( 'cartflows_remove_theme_styles', array( $this, 'maybe_keep_theme_assets' ), 100 );
-		add_filter( 'cartflows_remove_theme_scripts', array( $this, 'maybe_keep_theme_assets' ), 100 );
+		// Shared — dequeue CartFlows assets that conflict with Fluid Checkout
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_cartflows_conflicting_assets' ), 10000 );
 
 		// Store / Global Checkout — prefer WooCommerce / FC PRO thank you over Store Checkout thank-you step
 		add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'maybe_use_woocommerce_thankyou_for_store_checkout' ), 20, 2 );
@@ -59,9 +55,8 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Sales funnels — disable FC PRO only on Instant Thank You (non-Instant can use FC PRO)
 		add_filter( 'fc_pro_enable_order_received', array( $this, 'maybe_disable_fc_pro_order_received_on_cartflows_thankyou' ), 10 );
 
-		// Sales funnels — prepare non-Instant thank you for FC PRO (templates + assets)
+		// Sales funnels — prepare non-Instant thank you for FC PRO (templates)
 		add_action( 'wp', array( $this, 'maybe_prepare_cartflows_thankyou_for_fc_pro' ), 56 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_cartflows_thankyou_assets' ), 10000 );
 	}
 
 
@@ -189,22 +184,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Whether the current request is the Store / Global Checkout step.
-	 */
-	public function is_store_checkout_context() {
-		return $this->is_cartflows_checkout_context() && $this->is_store_checkout_flow();
-	}
-
-	/**
-	 * Whether the current request is a sales-funnel checkout step (not Store Checkout).
-	 */
-	public function is_funnel_checkout_context() {
-		return $this->is_cartflows_checkout_context() && ! $this->is_store_checkout_flow();
-	}
-
-
-
-	/**
 	 * Whether Instant Layout is enabled for a flow.
 	 *
 	 * @param   int  $flow_id  Optional flow ID. Defaults to the current flow.
@@ -222,6 +201,39 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		if ( ! $flow_id ) { return false; }
 
 		return Cartflows_Helper::is_instant_layout_enabled( (int) $flow_id );
+	}
+
+	/**
+	 * Whether the current request is a CartFlows thank-you step without Instant Layout.
+	 *
+	 * Sales funnels: non-Instant thank-you pages embed WooCommerce `thankyou.php`,
+	 * which Fluid Checkout PRO can optimize.
+	 */
+	public function is_non_instant_cartflows_thankyou_context() {
+		return $this->is_cartflows_thankyou_context() && ! $this->is_instant_layout_flow();
+	}
+
+	/**
+	 * Whether CartFlows normalize/frontend styles should be dequeued for Fluid Checkout.
+	 *
+	 * Shared checkout: CF normalize replaces theme form-field styles.
+	 * Non-Instant thank you: CF normalize breaks FC PRO order-received layout.
+	 */
+	public function should_dequeue_cartflows_normalize_assets() {
+		// Dequeue on CartFlows checkout (Fluid Checkout form UI)
+		if ( $this->is_cartflows_checkout_context() ) {
+			return true;
+		}
+
+		// Dequeue on non-Instant CartFlows thank-you steps when FC PRO order-received is enabled
+		if ( $this->is_non_instant_cartflows_thankyou_context() ) {
+			if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return false; }
+			if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' ) ) { return false; }
+
+			return true;
+		}
+
+		return false;
 	}
 
 
@@ -245,16 +257,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// CartFlows registers these in `wp_actions` (priority 55) on step post types
 		remove_action( 'wp_enqueue_scripts', array( $frontend, 'remove_theme_styles' ), 9999 );
 		remove_filter( 'woocommerce_enqueue_styles', array( $frontend, 'woo_default_css' ), 9999 );
-	}
-
-	/**
-	 * Whether the current request is a CartFlows thank-you step without Instant Layout.
-	 *
-	 * Sales funnels: non-Instant thank-you pages embed WooCommerce `thankyou.php`,
-	 * which Fluid Checkout PRO can optimize.
-	 */
-	public function is_non_instant_cartflows_thankyou_context() {
-		return $this->is_cartflows_thankyou_context() && ! $this->is_instant_layout_flow();
 	}
 
 
@@ -284,9 +286,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 			remove_filter( 'cartflows_page_template_file', array( $instant_checkout, 'cartflows_instant_checkout_page_template_file' ), 10 );
 			remove_filter( 'cartflows_checkout_meta_wcf-checkout-layout', array( $instant_checkout, 'stop_other_checkout_layout_implementations' ), 10 );
 		}
-
-		// Re-apply field filter neutralization in case anything re-registered them
-		$this->late_hooks();
 	}
 
 	/**
@@ -302,9 +301,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		if ( class_exists( 'Cartflows_Frontend' ) ) {
 			$frontend = Cartflows_Frontend::get_instance();
 			remove_filter( 'woocommerce_locate_template', array( $frontend, 'override_woo_template' ), 20 );
-
-			// Re-apply theme-asset restoration in case anything re-registered the strippers
-			$this->maybe_restore_theme_assets();
 		}
 
 		// Restore CartFlows flow / checkout identity fields inside the Fluid Checkout form
@@ -317,34 +313,20 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 
 	/**
-	 * Dequeue CartFlows checkout assets that conflict with Fluid Checkout.
+	 * Dequeue CartFlows assets that conflict with Fluid Checkout.
 	 *
-	 * Shared: Store Checkout + sales funnel checkouts.
+	 * Shared checkout: normalize/frontend replace theme form-field styles.
+	 * Sales funnels (non-Instant thank you): normalize breaks FC PRO order-received layout.
 	 */
-	public function maybe_dequeue_cartflows_checkout_assets() {
-		// Bail if not on a CartFlows checkout context
-		if ( ! $this->is_cartflows_checkout_context() ) { return; }
+	public function maybe_dequeue_cartflows_conflicting_assets() {
+		// Bail if not on a context that needs normalize/frontend removed
+		if ( ! $this->should_dequeue_cartflows_normalize_assets() ) { return; }
 
-		// Dequeue CartFlows checkout template assets
-		wp_dequeue_style( 'wcf-checkout-template' );
-		wp_dequeue_script( 'wcf-checkout-template' );
-
-		// Dequeue CartFlows global styles that replace / override theme form-field styles
-		// (`cartflows-normalize` resets inputs/selects; `frontend` is CartFlows UI chrome)
 		wp_dequeue_style( 'wcf-normalize-frontend-global' );
 		wp_dequeue_style( 'wcf-frontend-global' );
-
-		// Dequeue Google Places scripts loaded for CartFlows checkout (Fluid Checkout has its own address tools)
-		wp_dequeue_script( 'wcf-google-places-api' );
-		wp_dequeue_script( 'wcf-google-places' );
-
-		// Dequeue theme-compat CSS that targets CartFlows checkout markup
-		wp_dequeue_style( 'wcf-checkout-template-divi' );
-		wp_dequeue_style( 'wcf-checkout-template-flatsome' );
-		wp_dequeue_style( 'wcf-checkout-template-the-seven' );
-		wp_dequeue_style( 'wcf-checkout-astra-compatibility' );
-		wp_dequeue_style( 'wcf-checkout-bricks-compatibility' );
 	}
+
+
 
 	/**
 	 * Prepare non-Instant CartFlows thank-you steps for Fluid Checkout PRO.
@@ -363,57 +345,8 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Bail if CartFlows frontend is not available
 		if ( ! class_exists( 'Cartflows_Frontend' ) ) { return; }
 
-		// Get CartFlows frontend instance
-		$frontend = Cartflows_Frontend::get_instance();
-
 		// Prevent CartFlows from forcing its WooCommerce template copies (thankyou, order-details, etc.)
-		remove_filter( 'woocommerce_locate_template', array( $frontend, 'override_woo_template' ), 20 );
-
-		// Re-apply theme-asset restoration in case anything re-registered the strippers
-		$this->maybe_restore_theme_assets();
-	}
-
-	/**
-	 * Dequeue CartFlows assets that conflict with Fluid Checkout PRO on thank-you steps.
-	 *
-	 * Sales funnels (non-Instant): `cartflows-normalize` resets tables/box-sizing and breaks
-	 * FC PRO order-summary zebra rows and column widths.
-	 */
-	public function maybe_dequeue_cartflows_thankyou_assets() {
-		// Bail if not on a non-Instant CartFlows thank-you step
-		if ( ! $this->is_non_instant_cartflows_thankyou_context() ) { return; }
-
-		// Bail if Fluid Checkout PRO order-received is not available / enabled
-		if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return; }
-		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_pro_enable_order_received' ) ) { return; }
-
-		// Dequeue CartFlows global styles that fight FC PRO order-received layout
-		wp_dequeue_style( 'wcf-normalize-frontend-global' );
-		wp_dequeue_style( 'wcf-frontend-global' );
-	}
-
-
-
-	/**
-	 * Keep theme styles and scripts so Fluid Checkout styling can rely on the theme when needed.
-	 *
-	 * Shared: Store Checkout + sales funnel checkouts.
-	 * Funnels: also on non-Instant thank-you steps for FC PRO order-received.
-	 *
-	 * @param   bool  $remove  Whether CartFlows should remove theme assets.
-	 */
-	public function maybe_keep_theme_assets( $remove ) {
-		// Keep theme assets on CartFlows checkout (Fluid Checkout form UI)
-		if ( $this->is_cartflows_checkout_context() ) {
-			return false;
-		}
-
-		// Keep theme assets on non-Instant CartFlows thank-you steps (FC PRO order-received)
-		if ( $this->is_non_instant_cartflows_thankyou_context() ) {
-			return false;
-		}
-
-		return $remove;
+		remove_filter( 'woocommerce_locate_template', array( Cartflows_Frontend::get_instance(), 'override_woo_template' ), 20 );
 	}
 
 
