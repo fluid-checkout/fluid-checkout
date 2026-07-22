@@ -12,5 +12,11 @@ $_body-theme-selector:                 '.theme-twentytwentyfive' !default;
 // IMPORT STYLES
 // ------------------------------------
 @import
+	"checkout-columns",
+	"checkout-content-area",
+	"checkout-payment-methods",
+	"checkout-place-order",
+	"order-summary",
 	"tom-select-control",
+	"woocommerce-form-fields-select2",
 	"z-index";

@@ -7,6 +7,7 @@
  * @author   DPD
  */
 
+// CHANGE: Add abspath check and exit
 defined( 'ABSPATH' ) || exit;
 ?>
 

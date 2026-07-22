@@ -17,6 +17,9 @@
 
 	@media (#{$bp-larger-than-tablet}) { padding: $checkout-step-padding--large-screen; }
 }
+.fc-wrapper .fc-checkout-step[data-step-visible="no"] {
+	display: none !important; // Needed to override theme styles set with `!important`
+}
 .fc-wrapper .fc-checkout-step:first-child,
 .fc-wrapper .fc-checkout-step:first-child > div:first-of-type {
 	@media (#{$bp-larger-than-tablet}) {
