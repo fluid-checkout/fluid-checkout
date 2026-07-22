@@ -37,6 +37,9 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+
+		// Avada dropdown styles
+		add_filter( 'avada_setting_get_avada_styles_dropdowns', array( $this, 'maybe_disable_avada_dropdown_styles' ), 10 );
 	}
 
 	/**
@@ -122,6 +125,30 @@ class FluidCheckout_ThemeCompat_Avada extends FluidCheckout {
 		}
 
 		return $attributes;
+	}
+
+
+
+	/**
+	 * Disable Avada dropdown styles on Fluid Checkout pages.
+	 *
+	 * @param  string|int  $value  The Avada dropdown styles option value.
+	 */
+	public function maybe_disable_avada_dropdown_styles( $value ) {
+		// Bail if Avada dropdown styles are not enabled
+		if ( ! $value ) { return $value; }
+
+		// Disable on checkout page or fragment
+		if ( FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) {
+			return '0';
+		}
+
+		// Disable on account address edit page
+		if ( function_exists( 'is_account_page' ) && is_account_page() && is_wc_endpoint_url( 'edit-address' ) ) {
+			return '0';
+		}
+
+		return $value;
 	}
 
 

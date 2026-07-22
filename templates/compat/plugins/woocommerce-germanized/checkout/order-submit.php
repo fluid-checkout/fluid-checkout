@@ -12,8 +12,8 @@
  *
  * @see https://github.com/vendidero/woocommerce-germanized/wiki/Overriding-Germanized-Templates
  * @package Germanized/Templates
- * @version 2.4.3
- * @fc-version 3.1.5
+ * @version 2.7.0
+ * @fc-version 4.2.5
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -32,9 +32,11 @@ if ( ! function_exists( 'wc_gzd_wp_theme_get_element_class_name' ) ) {
 	}
 }
 
+if ( ! wp_doing_ajax() ) {
+	do_action( 'woocommerce_gzd_before_checkout_order_submit' );
+}
 ?>
 <div class="wc-gzd-order-submit">
-
 	<div class="form-row place-order wc-gzd-place-order">
 		<noscript>
 			<?php printf( esc_html__( 'Since your browser does not support JavaScript, or it is disabled, please ensure you click the %1$sUpdate Totals%2$s button before placing your order. You may be charged more than the amount stated above if you fail to do so.', 'woocommerce-germanized' ), '<em>', '</em>' ); ?>
@@ -57,10 +59,18 @@ if ( ! function_exists( 'wc_gzd_wp_theme_get_element_class_name' ) ) {
 
 		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt' . esc_attr( wc_gzd_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_gzd_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
+		<input type="hidden" name="wc_gzd_order_submit_button_shown" value="1" />
+
 		<?php // CHANGE: Remove conditional to output the checkout nonce ?>
-			<?php wp_nonce_field( 'woocommerce-process_checkout' ); ?>
-		<?php // CHANGE: Remove conditional to output the checkout nonce ?>
+		<?php wp_nonce_field( 'woocommerce-process_checkout' ); ?>
+		<?php // CHANGE: END - Remove conditional to output the checkout nonce ?>
 
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
+
+		<?php do_action( 'woocommerce_gzd_review_order_after_submit' ); ?>
 	</div>
 </div>
+<?php
+if ( ! wp_doing_ajax() ) {
+	do_action( 'woocommerce_gzd_after_checkout_order_submit' );
+}
