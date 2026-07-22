@@ -21,7 +21,7 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 	public function hooks() {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
-		
+
 		// Buttons
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
