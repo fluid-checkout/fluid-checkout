@@ -356,13 +356,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Compatibility with theme Twenty Twenty-Five.
 * Added: Compatibility with theme Talemy by ThemeSpirit.
 * Added: Conditional visibility for checkout steps based on available substeps.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 * Improved: Address locale attribute overrides on My Account edit address pages.
 * Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
 * Improved: Sync all forked 3rd-party files with upstream sources.
+* Improved: Refactor compatibility with plugin Cart Abandonment Recovery Pro.
+* Fixed: Compatibility with theme Twenty Twenty-Five.
 * Fixed: Compatibility with theme Avada and Avada Builder plugin. Fix Tom Select dropdown styles on checkout and address book edit address pages.
 * Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
