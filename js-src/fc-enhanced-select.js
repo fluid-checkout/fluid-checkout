@@ -186,6 +186,8 @@
 		searchField.setAttribute( 'autocomplete', 'off-' + Date.now() );
 	}
 
+
+
 	/**
 	 * Maybe scroll to the top of the field when opening the dropdown.
 	 */
@@ -224,6 +226,7 @@
 
 		// Maybe open field dropdown
 		if ( ! tomselect.isOpen ) {
+			maybeSyncOptionsDisabledState( field );
 			tomselect.open();
 		}
 	}
@@ -267,13 +270,58 @@
 
 		// Maybe toggle field dropdown
 		requestAnimationFrame( function() {
-		if ( isOpen ) {
+			if ( isOpen ) {
 				maybeCloseDropdown( field );
 			}
 			else {
 				maybeOpenDropdown( field );
 			}
 		} );
+	}
+
+
+
+	/**
+	 * Sync options disabled state in TomSelect with the associated select field.
+	 * 
+	 * @param  {Element}  field  The select field.
+	 */
+	var maybeSyncOptionsDisabledState = function( field ) {
+		// Bail if field is not valid
+		if ( ! field || ! field.tomselect ) { return; }
+
+		// Get TomSelect instance
+		var instance = field.tomselect;
+
+		// Bail if field is not a TomSelect instance
+		if ( ! instance ) { return; }
+
+		// Initialize variables
+		var optionsUpdated = false;
+
+		// Iterate options
+		for ( var j = 0; j < field.options.length; j++ ) {
+			// Get option
+			var option = field.options[ j ];
+
+			// Skip if option is not found in TomSelect
+			if ( ! instance.options.hasOwnProperty( option.value ) ) { continue; }
+
+			// Get TomSelect option data
+			var optionData = instance.options[ option.value ];
+
+			// Skip if disabled state is already in sync
+			if ( !! optionData.disabled === !! option.disabled ) { continue; }
+
+			// Update disabled state in TomSelect
+			instance.updateOption( option.value, FCUtils.extendObject( optionData, { disabled: option.disabled } ) );
+			optionsUpdated = true;
+		}
+
+		// Refresh options list if any options were updated
+		if ( optionsUpdated ) {
+			instance.refreshOptions( false );
+		}
 	}
 
 
@@ -343,6 +391,9 @@
 
 			// Enhance field with TomSelect
 			instance = new TomSelect( field, settings );
+
+			// Maybe disable options in TomSelect
+			maybeSyncOptionsDisabledState( field );
 
 			// Set value, without triggering `change` event
 			// to avoid infinite loop.

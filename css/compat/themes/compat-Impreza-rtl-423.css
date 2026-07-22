@@ -1,7 +1,0 @@
-body.theme-Impreza .fc-content .l-section-h {
-  padding-top: var(--header-height);
-}
-
-body.theme-Impreza .ts-dropdown .active {
-  background: var(--color-content-primary-grad);
-}

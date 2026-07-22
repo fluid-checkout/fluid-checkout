@@ -4,7 +4,7 @@ Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 4.2.3
+Stable tag: 4.2.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -357,6 +357,23 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Compatibility with theme Twenty Twenty-Five.
+* Added: Compatibility with theme Talemy by ThemeSpirit.
+* Added: Conditional visibility for checkout steps based on available substeps.
+* Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
+* Improved: Address locale attribute overrides on My Account edit address pages.
+* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
+* Improved: Sync all forked 3rd-party files with upstream sources.
+* Fixed: Compatibility with theme Avada and Avada Builder plugin. Fix Tom Select dropdown styles on checkout and address book edit address pages.
+* Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
+* Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
+* Fixed: Missing styles for the WooCommerce show password button at checkout. Also fixed the button getting duplicated after checkout updates.
+
+= 4.2.4 - 2026-06-02 =
+
+* Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.
+* Fixed: Compatibility with plugin Klaviyo. Prevent fatal error at checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when trying to show shipping costs for orders without shipping at cart and checkout.
 
 = 4.2.3 - 2026-05-25 =
 
