@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset,
+body#{ $_body-theme-selector } #add_payment_method .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box fieldset {
+	border: 0;
+}
