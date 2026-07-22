@@ -83,7 +83,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
 			'fc_shipping_company_field_visibility'                          => 'optional',
 			'woocommerce_checkout_company_field'                            => 'optional',
-			'fc_shipping_phone_field_visibility'                            => 'no',
+			'fc_shipping_phone_field_visibility'                            => 'hidden',
 			'fc_shipping_phone_field_position'                              => 'shipping_address',
 			'woocommerce_checkout_phone_field'                              => 'required',
 			'fc_billing_phone_field_position'                               => 'billing_address',

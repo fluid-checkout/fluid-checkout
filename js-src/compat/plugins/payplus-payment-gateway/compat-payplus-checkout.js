@@ -144,7 +144,6 @@
 
 
 
-	
 	/**
 	 * Maybe open the PayPlus iframe on form submit.
 	 */
@@ -194,7 +193,7 @@
 	};
 
 
-	
+
 	//
 	// Public APIs
 	//
