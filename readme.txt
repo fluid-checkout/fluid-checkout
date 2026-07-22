@@ -356,7 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Compatibility with theme Talemy by ThemeSpirit
+* Fixed: Compatibility with theme Twenty Twenty-Five.
+* Added: Compatibility with theme Talemy by ThemeSpirit.
 * Added: Conditional visibility for checkout steps based on available substeps.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 * Improved: Address locale attribute overrides on My Account edit address pages.
