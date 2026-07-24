@@ -36,6 +36,7 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 
 		// Place order position
 		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'change_place_order_position_settings_args' ), 10 );
 	}
 
 	/**
@@ -91,7 +92,7 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 
 
 	/**
-	 * Change the option for the place order position to always `below_order_summary` when using Germanized.
+	 * Change the option for the place order position to always `below_order_summary` when using German Market.
 	 *
 	 * @param  mixed   $pre_option   The value to return instead of the option value.
 	 * @param  string  $option       Option name.
@@ -99,6 +100,27 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 	 */
 	public function change_place_order_position_option( $pre_option, $option, $default ) {
 		return 'below_order_summary';
+	}
+
+	/**
+	 * Disable the place order position setting and explain why it is forced when using German Market.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function change_place_order_position_settings_args( $settings ) {
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than place order position
+			if ( ! array_key_exists( 'id', $setting_args ) || 'fc_checkout_place_order_position' !== $setting_args[ 'id' ] ) { continue; }
+
+			// Disable place order position options and change description explaining why it was disabled
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+			$setting_args[ 'desc' ] = __( 'The place order position is always set to "Below the order summary" when using German Market. That plugin requires the place order button and legal checkboxes to be displayed below the order summary.', 'fluid-checkout' );
+			unset( $setting_args[ 'desc_tip' ] );
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
 	}
 
 
