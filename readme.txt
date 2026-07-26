@@ -354,7 +354,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= 4.2.5 - 2026-07-26 =
 
 * Bump tested up to WordPress 7.0.2 and WooCommerce 10.9.4
 * Added: Compatibility with theme Talemy by ThemeSpirit.
