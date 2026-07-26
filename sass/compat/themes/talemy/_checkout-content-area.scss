@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper strong:not( .product-quantity ) {
+	color: inherit !important; // Needed to override Talemy default color for strong elements.
+}
