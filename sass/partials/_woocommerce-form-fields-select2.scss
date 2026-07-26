@@ -46,8 +46,14 @@ div.woocommerce .form-row .select2-selection .select2-selection__clear {
 	margin-#{ $alignment-right }: 0;
 }
 
+div.woocommerce .form-row .select2-selection--single .select2-selection__arrow {
+	width: $form-field-select2-arrow-width !important; // Needed to override theme styles
+	#{ $alignment-right }: $form-field-select2-arrow-offset !important; // Needed to override theme styles
+}
+
 div.woocommerce .form-row .select2-selection.select2-selection--single .select2-selection__clear {
-	margin-#{ $alignment-right }: $form-field-select2-clear-offset;
+	margin-#{ $alignment-right }: 0 !important; // Needed to override theme styles
+	#{ $alignment-right }: auto !important; // Needed to override theme styles
 }
 
 
@@ -62,6 +68,7 @@ div.woocommerce .form-row .select2-selection--single .select2-selection__rendere
 	padding-top: 0;
 	padding-bottom: 0;
 	padding-#{ $alignment-left }: $form-field-padding-left;
+	padding-#{ $alignment-right }: $form-field-select2-clear-offset;
 	line-height: $form-field-select2-selection-height--single;
 }
 
