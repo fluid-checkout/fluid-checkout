@@ -73,10 +73,7 @@
 		"js-src/compat/themes/fennik/lazy-load.js": "assets/js/lazy-load.js"
 	},
 	"resolve_their_path_wordpress_org_svn": true,
-	"their_path_url_by_category": {
-		"woocommerce-template": "https://plugins.svn.wordpress.org/woocommerce/trunk/{path_in_plugin}",
-		"woocommerce-js": "https://plugins.svn.wordpress.org/woocommerce/trunk/{path_in_plugin}"
-	},
+	"their_path_url_by_category": {},
 	"woocommerce_js_entries": [
 		{
 			"our_path": "js-src/checkout.js",
