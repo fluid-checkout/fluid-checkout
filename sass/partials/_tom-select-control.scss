@@ -200,7 +200,7 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 }
 .ts-wrapper.single.has-items .clear-button::before {
 	@include icon( 'i-x' );
-	@include icon-size( $ts-select-font-size );
+	@include icon-size( $ts-select-clear-size );
 }
 .ts-wrapper.single.has-items .clear-button:hover {
 	color: $ts-select-color-text;

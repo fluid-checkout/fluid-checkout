@@ -60,8 +60,9 @@ $ts-select-arrow-size:                                   remsize( .5rem ) !defau
 $ts-select-arrow-color:                                  $grey !default;
 $ts-select-arrow-offset:                                 remsize( 1rem ) !default;
 
-$ts-select-clear-offset:                                 remsize( 2rem ) !default;
-$ts-select-clearable-padding-right:                      calc( #{ $ts-select-clear-offset } + #{ $ts-select-font-size } ) !default;
+$ts-select-clear-size:                                   remsize( 1rem ) !default;
+$ts-select-clear-offset:                                 remsize( 2.5rem ) !default;
+$ts-select-clearable-padding-right:                      calc( #{ $ts-select-clear-offset } + #{ $ts-select-clear-size } ) !default;
 
 $ts-select-remove-size:                                   $global-spacing-small !default;
 $ts-select-remove-color:                                  $grey !default;
