@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to WordPress 7.0.2 and WooCommerce 10.9.4
 * Added: Compatibility with theme Talemy by ThemeSpirit.
 * Added: Conditional visibility for checkout steps based on available substeps.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
