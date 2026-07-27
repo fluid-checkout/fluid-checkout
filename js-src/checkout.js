@@ -59,7 +59,7 @@ jQuery( function ( $ ) {
 		// CHANGE: Bail if custom place order button API is not available
 		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
-		var $form = wc.customPlaceOrderButton.__getForm();
+		var $form = window.wc.customPlaceOrderButton.__getForm();
 
 		return {
 			/**
@@ -156,7 +156,7 @@ jQuery( function ( $ ) {
 		// CHANGE: Bail if custom place order button API is not available
 		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
-		wc.customPlaceOrderButton.__cleanup();
+		window.wc.customPlaceOrderButton.__cleanup();
 	} );
 
 	// When a gateway registers after a page load, render its button if it's selected.
@@ -164,7 +164,7 @@ jQuery( function ( $ ) {
 		// CHANGE: Bail if custom place order button API is not available
 		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
-		wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
+		window.wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
 	} );
 
 	var wc_checkout_form = {
@@ -213,7 +213,7 @@ jQuery( function ( $ ) {
 				if ( $orderPayMethod.length ) {
 					// CHANGE: Check if custom place order button API is available before using it
 					if ( window.wc && window.wc.customPlaceOrderButton ) {
-						wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $orderPayMethod.val() );
+						window.wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $orderPayMethod.val() );
 					}
 
 					$orderPayMethod.trigger( 'click' );
@@ -582,7 +582,7 @@ jQuery( function ( $ ) {
 			var $selectedMethod = $payment_methods.filter( ':checked' ).eq( 0 );
 			// CHANGE: Check if custom place order button API is available before using it
 			if ( window.wc && window.wc.customPlaceOrderButton && $selectedMethod.length ) {
-				wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $selectedMethod.val() );
+				window.wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $selectedMethod.val() );
 			}
 
 			// Trigger click event for selected method
@@ -641,7 +641,7 @@ jQuery( function ( $ ) {
 			// CHANGE: Check if custom place order button API is available before using it
 			if ( window.wc && window.wc.customPlaceOrderButton ) {
 				var gatewayId = $( this ).val();
-				wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
+				window.wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
 			}
 			// CHANGE: END - Check if custom place order button API is available before using it
 
