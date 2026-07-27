@@ -56,8 +56,8 @@ jQuery( function ( $ ) {
 	 * @return {Object} API object with validate and submit methods
 	 */
 	function createCheckoutPlaceOrderApi() {
-		// CHANGE: Bail if `wc` global object is not available
-		if ( ! window.wc ) { return; }
+		// CHANGE: Bail if custom place order button API is not available
+		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
 		var $form = wc.customPlaceOrderButton.__getForm();
 
@@ -153,16 +153,16 @@ jQuery( function ( $ ) {
 	// After the update, init_payment_methods() will trigger payment method selection,
 	// which will call render() again for the active gateway.
 	$( document.body ).on( 'update_checkout', function () {
-		// CHANGE: Bail if `wc` global object is not available
-		if ( ! window.wc ) { return; }
+		// CHANGE: Bail if custom place order button API is not available
+		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
 		wc.customPlaceOrderButton.__cleanup();
 	} );
 
 	// When a gateway registers after a page load, render its button if it's selected.
 	$( document.body ).on( 'wc_custom_place_order_button_registered', function ( e, gatewayId ) {
-		// CHANGE: Bail if `wc` global object is not available
-		if ( ! window.wc ) { return; }
+		// CHANGE: Bail if custom place order button API is not available
+		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
 		wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
 	} );
@@ -211,8 +211,8 @@ jQuery( function ( $ ) {
 				// Initialize the custom place order button for the "order-pay" page
 				var $orderPayMethod = this.$order_review.find( 'input[name="payment_method"]:checked' );
 				if ( $orderPayMethod.length ) {
-					// CHANGE: Check if `wc` global object is available before using it
-					if ( window.wc ) {
+					// CHANGE: Check if custom place order button API is available before using it
+					if ( window.wc && window.wc.customPlaceOrderButton ) {
 						wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $orderPayMethod.val() );
 					}
 
@@ -580,8 +580,8 @@ jQuery( function ( $ ) {
 			// Check if initially selected gateway has custom place order button (via server-side flag)
 			// This hides the default button immediately to prevent flash while the gateway JS loads
 			var $selectedMethod = $payment_methods.filter( ':checked' ).eq( 0 );
-			// CHANGE: Check if `wc` global object is available before using it
-			if ( window.wc && $selectedMethod.length ) {
+			// CHANGE: Check if custom place order button API is available before using it
+			if ( window.wc && window.wc.customPlaceOrderButton && $selectedMethod.length ) {
 				wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $selectedMethod.val() );
 			}
 
@@ -638,12 +638,12 @@ jQuery( function ( $ ) {
 			document.body.classList.add( 'has-payment-method-selected--' + selectedPaymentMethod );
 
 			// Handle custom place order button
-			// CHANGE: Check if `wc` global object is available before using it
-			if ( window.wc ) {
+			// CHANGE: Check if custom place order button API is available before using it
+			if ( window.wc && window.wc.customPlaceOrderButton ) {
 				var gatewayId = $( this ).val();
 				wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
 			}
-			// CHANGE: END - Check if `wc` global object is available before using it
+			// CHANGE: END - Check if custom place order button API is available before using it
 
 			wc_checkout_form.selectedPaymentMethod = selectedPaymentMethod;
 		},

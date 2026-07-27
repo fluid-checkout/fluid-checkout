@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: JavaScript error when `window.wc` exists without the custom place order button API, which could stop checkout updates and shipping totals from refreshing.
+
 = 4.2.5 - 2026-07-26 =
 
 * Bump tested up to WordPress 7.0.2 and WooCommerce 10.9.4
