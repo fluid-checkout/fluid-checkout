@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 4.1.6
+ * @version 4.3.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -65,6 +65,8 @@ defined( 'ABSPATH' ) || exit;
 				<span class="fc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue below', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) ); ?></span>
 			<?php endif; ?>
 		</div>
+
+		<?php do_action( 'fc_checkout_below_contact_login_separator' ); ?>
 
 	<?php endif; ?>
 
