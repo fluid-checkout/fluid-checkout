@@ -1,0 +1,12 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELD LABELS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row > label {
+	display: block;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row .woocommerce-input-wrapper span.description > code {
+	display: inline;
+	padding: $global-spacing-tiny
+}

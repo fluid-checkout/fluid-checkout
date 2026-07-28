@@ -2319,32 +2319,6 @@ msgstr ""
 "फ्लूइड चेकआउट का उपयोग करते समय Nyture थीम से चेकआउट चरण अनुभाग को आउटपुट "
 "करें।"
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"यदि बिलिंग पता अनुभाग शिपिंग पता अनुभाग के बाद प्रदर्शित किया जाता है, और "
-"बिलिंग फ़ोन फ़ील्ड को &quot;आवश्यक&quot; के रूप में सेट किया जाता है, तो "
-"इसे &quot;आवश्यक&quot; के रूप में बाध्य किया जा सकता है। यह सुनिश्चित करने "
-"के लिए आवश्यक है कि जब उस विकल्प को चेक किया जाता है तो शिपिंग पते को "
-"बिलिंग पते पर कॉपी किया जा सकता है।"
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"यदि बिलिंग पता अनुभाग बिलिंग पता अनुभाग के बाद प्रदर्शित किया जाता है, और "
-"बिलिंग फ़ोन फ़ील्ड को &quot;आवश्यक&quot; के रूप में सेट किया जाता है, तो "
-"इसे &quot;आवश्यक&quot; के रूप में बाध्य किया जा सकता है। यह सुनिश्चित करने "
-"के लिए आवश्यक है कि जब उस विकल्प को चेक किया जाता है तो बिलिंग पते को "
-"बिलिंग पते पर कॉपी किया जा सकता है।"
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2593,13 +2567,39 @@ msgstr "विस्तारित"
 msgid "Do not show"
 msgstr "नहीं दिखाते"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:4058
+msgid "yes"
 msgstr "हाँ"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "नहीं"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"यदि शिपिंग पते के बाद बिलिंग पता अनुभाग प्रदर्शित होता है और बिलिंग फ़ोन "
+"फ़ील्ड को &quot;अनिवार्य&quot; के रूप में सेट किया गया है, तो शिपिंग फ़ोन "
+"फ़ील्ड को अनिवार्य किया जा सकता है। यह सुनिश्चित करने के लिए आवश्यक है कि "
+"जब यह विकल्प चुना जाता है, तो शिपिंग पता बिलिंग पते में कॉपी हो सके; अन्यथा "
+"ग्राहक चेकआउट फ़ॉर्म पूरा नहीं कर पाएगा।"
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"यदि बिलिंग पता अनुभाग शिपिंग पता अनुभाग से पहले प्रदर्शित होता है, और "
+"शिपिंग फ़ोन फ़ील्ड &quot;अनिवार्य&quot; के रूप में सेट है, तो बिलिंग फ़ोन "
+"फ़ील्ड को &quot;अनिवार्य&quot; के रूप में सेट किया जा सकता है। यह सुनिश्चित "
+"करने के लिए आवश्यक है कि जब यह विकल्प चुना जाता है, तो शिपिंग पता बिलिंग "
+"पते में कॉपी हो सके; अन्यथा ग्राहक चेकआउट फ़ॉर्म पूरा नहीं कर पाएगा।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2740,3 +2740,14 @@ msgstr "शिपिंग"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "अगला कदम"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "हाँ"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

@@ -2396,30 +2396,6 @@ msgstr ""
 "I-output ang seksyon sa mga lakang sa pag-checkout gikan sa tema nga Nyture "
 "kung gamiton ang Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Tingali mapugos ingon nga &quot;gikinahanglan&quot; kung ang seksyon sa "
-"address sa pagsingil gipakita pagkahuman sa seksyon sa adres sa pagpadala, "
-"ug ang uma sa telepono sa pagsingil gitakda nga &quot;gikinahanglan."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Tingali mapugos ingon nga &quot;gikinahanglan&quot; kung ang seksyon sa "
-"adres sa pagsingil gipakita pagkahuman sa seksyon sa adres sa pagsingil, ug "
-"ang uma sa telepono sa pagsingil gitakda nga &quot;gikinahanglan. "
-"Kinahanglan kini aron masiguro nga ang adres sa pagsingil mahimong makopya "
-"sa adres sa pagsingil kung gisusi kana nga kapilian."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2682,13 +2658,42 @@ msgstr "Gipalapdan"
 msgid "Do not show"
 msgstr "Ayaw ipakita"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Oo"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "oo"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Dili"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Ang field sa numero sa telepono sa pagpadala mahimong mapugos nga "
+"&quot;gikinahanglan&quot; kon ang seksyon sa adres sa pagbayad gipakita "
+"human sa seksyon sa adres sa pagpadala, ug ang field sa numero sa telepono "
+"sa pagbayad gibutang nga &quot;gikinahanglan&quot;. Kinahanglan kini aron "
+"masiguro nga ang adres sa pagpadala makopya ngadto sa adres sa pagbayad kon "
+"kini nga opsyon gisusi, kay kon dili, ang kustomer mahimong dili "
+"makakompleto sa porma sa pag-checkout."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Ang field sa billing phone mahimong mapugos nga &quot;gikinahanglan&quot; "
+"kon ang seksyon sa billing address gipakita sa dili pa ang seksyon sa "
+"shipping address, ug ang field sa shipping phone gibutang nga "
+"&quot;gikinahanglan&quot;. Kinahanglan kini aron masiguro nga ang shipping "
+"address makopya ngadto sa billing address kon masusi kana nga opsyon, kay "
+"kon dili, ang kustomer mahimong dili makakompleto sa checkout form."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2829,3 +2834,14 @@ msgstr "Pagpadala"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "sunod nga lakang"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Oo"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

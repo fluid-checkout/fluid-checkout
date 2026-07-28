@@ -2317,32 +2317,6 @@ msgid ""
 "Checkout."
 msgstr "Tulosta Nyture-teeman kassavaiheet-osio, kun käytät Fluid Checkoutia."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Voidaan ehkä pakottaa \"pakolliseksi\", jos laskutusosoite-osio näytetään "
-"toimitusosio-osion jälkeen ja laskutuspuhelinkenttä on asetettu "
-"\"pakolliseksi\". Tämä on tarpeen, jotta voidaan varmistaa, että "
-"toimitusosoite voidaan kopioida laskutusosoitteeseen, kun kyseinen "
-"vaihtoehto on valittuna."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Voidaan ehkä pakottaa \"pakolliseksi\", jos laskutusosoiteosio näytetään "
-"laskutusosoiteosion jälkeen ja laskutuspuhelinkenttä on asetettu "
-"\"pakolliseksi\". Tämä on tarpeen, jotta voidaan varmistaa, että "
-"laskutusosoite voidaan kopioida laskutusosoitteeseen, kun kyseinen "
-"vaihtoehto on valittuna."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2594,13 +2568,41 @@ msgstr "Laajennettu"
 msgid "Do not show"
 msgstr "Älä näytä"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Kyllä"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "kyllä"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Ei"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Toimituspuhelinnumerokenttä voidaan asettaa pakolliseksi, jos "
+"laskutusosoiteosio näkyy toimitusosoiteosion jälkeen ja "
+"laskutuspuhelinnumerokenttä on määritetty pakolliseksi. Tämä on tarpeen sen "
+"varmistamiseksi, että toimitusosoite voidaan kopioida laskutusosoitteeksi, "
+"kun kyseinen valinta on valittuna; muussa tapauksessa asiakas ei "
+"välttämättä pysty täyttämään kassalomaketta."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Laskutuspuhelinnumerokenttä voidaan määrittää pakolliseksi, jos "
+"laskutusosoiteosio näkyy ennen toimitusosoiteosiota ja "
+"toimituspuhelinnumerokenttä on määritetty pakolliseksi. Tämä on tarpeen sen "
+"varmistamiseksi, että toimitusosoite voidaan kopioida laskutusosoitteeksi, "
+"kun kyseinen valinta on valittuna; muuten asiakas ei välttämättä pysty "
+"täyttämään kassalomaketta."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2741,3 +2743,14 @@ msgstr "Toimitus"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "seuraava vaihe"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Kyllä"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

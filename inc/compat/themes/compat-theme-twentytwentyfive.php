@@ -19,14 +19,17 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		// Container class
+		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// Buttons
 		add_filter( 'fc_next_step_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_substep_save_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_coupon_code_apply_button_classes', array( $this, 'add_button_class' ), 10 );
 		add_filter( 'fc_checkout_login_button_classes', array( $this, 'add_button_class' ), 10 );
+
+		// CSS variables
+		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -41,7 +44,8 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 		$new_css_variables = array(
 			':root' => array(
 				// Form field styles
-				'--fluidcheckout--field--height' => '52.8px',
+				'--fluidcheckout--field--height' => '49.7px',
+				'--fluidcheckout--field--font-size' => '14px',
 				'--fluidcheckout--field--padding-left' => '1.1rem',
 			),
 		);
@@ -57,10 +61,10 @@ class FluidCheckout_ThemeCompat_TwentyTwentyFive extends FluidCheckout {
 	 * @param  array  $classes  The button classes.
 	 */
 	public function add_button_class( $classes ) {
-		// Add 'wp-element-button' class to apply theme styles and 'qodef-m-checkout-link' to add hover animation
+		// Add 'wp-element-button' class to apply theme styles
 		if ( is_array( $classes ) ) {
 			array_push( $classes, 'wp-element-button' );
-		} 
+		}
 		else {
 			$classes .= ' wp-element-button';
 		}

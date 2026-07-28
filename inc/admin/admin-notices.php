@@ -63,9 +63,9 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 
 			// Maybe add dismiss action
 			if ( $notice['dismissable'] ) {
-				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '" style="margin: 0 20px;">' . $notice['dismiss_label'] . '</a>';
+				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '" style="margin: 0 20px;">' . esc_html( $notice['dismiss_label'] ) . '</a>';
 			}
-			
+
 			?>
 			<div class="notice <?php echo esc_attr( self::$plugin_prefix ); ?>-admin-notice <?php echo $notice['error'] === true ? 'notice-error' : ''; ?>" <?php echo $notice['error'] === true ? '' : 'style="border-left-color: #0047e1;"'; ?>>
 				<?php if ( ! empty( $notice['title'] ) ) : ?>
@@ -115,7 +115,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		$name = sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) );
 		update_option( self::$plugin_prefix . '_dismissed_notice_' . $name, 1 );
 	}
-	
+
 }
 
 FluidCheckout_AdminNotices::instance();

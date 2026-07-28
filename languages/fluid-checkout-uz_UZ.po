@@ -2394,30 +2394,6 @@ msgstr ""
 "Fluid Checkout dan foydalanayotganda Nyture mavzusidagi to&#39;lov "
 "bosqichlari bo&#39;limini chiqaring."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Toʻlov manzili boʻlimi yetkazib berish manzili boʻlimidan keyin koʻrsatilsa "
-"va hisob-kitob telefoni maydoni “majburiy” sifatida oʻrnatilsa, “talab "
-"qilinadi” deb majburlash mumkin. Bu variant belgilansa, joʻnatish manzilini "
-"toʻlov manziliga koʻchirish mumkinligini taʼminlash uchun kerak."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Hisob-kitob manzili boʻlimidan keyin toʻlov manzili boʻlimi koʻrsatilsa va "
-"billing telefon maydoni “majburiy” sifatida oʻrnatilgan boʻlsa, “zarur” deb "
-"majburlash mumkin. Bu variant belgilansa, hisob-kitob manzilini toʻlov "
-"manziliga koʻchirish mumkinligini taʼminlash uchun kerak."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2680,13 +2656,42 @@ msgstr "Kengaytirilgan"
 msgid "Do not show"
 msgstr "Ko&#39;rsatilmasin"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Ha"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ha"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Yo&#39;q"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Agar to&#39;lov manzili bo&#39;limi yetkazib berish manzili bo&#39;limidan "
+"keyin ko&#39;rsatilsa va to&#39;lov telefoni maydoni &quot;majburiy&quot; "
+"deb belgilangan bo&#39;lsa, yetkazib berish telefoni maydoni "
+"&quot;majburiy&quot; deb belgilanishi mumkin. Bu parametr belgilanganda "
+"yetkazib berish manzili to&#39;lov manziliga ko&#39;chirilishi mumkinligini "
+"ta&#39;minlash uchun kerak, aks holda mijoz to&#39;lov shaklini "
+"to&#39;ldira olmasligi mumkin."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Agar toʻlov manzili boʻlimi yetkazib berish manzili boʻlimidan oldin "
+"koʻrsatilsa va yetkazib berish telefoni maydoni “majburiy” deb belgilangan "
+"boʻlsa, toʻlov telefoni maydoni “majburiy” deb belgilanishi mumkin. Bu "
+"parametr belgilanganda yetkazib berish manzili toʻlov manziliga "
+"koʻchirilishini taʼminlash uchun kerak, aks holda mijoz toʻlov shaklini "
+"toʻldira olmasligi mumkin."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2827,3 +2832,14 @@ msgstr "yuk tashish; yetkazib berish"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "keyingi qadam"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Ha"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

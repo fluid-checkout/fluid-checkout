@@ -2275,28 +2275,6 @@ msgid ""
 "Checkout."
 msgstr "قم بإخراج قسم خطوات الخروج من سمة Nyture عند استخدام Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"قد يُفرض هذا الخيار على &quot;مطلوب&quot; إذا تم عرض قسم عنوان الفاتورة بعد "
-"قسم عنوان الشحن، وتم ضبط حقل هاتف الفاتورة على &quot;مطلوب&quot;. هذا ضروري "
-"لضمان إمكانية نسخ عنوان الشحن إلى عنوان الفاتورة عند تحديد هذا الخيار."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"قد يُفرض هذا الخيار على &quot;مطلوب&quot; إذا عُرض قسم عنوان الفاتورة بعده، "
-"وكان حقل هاتف الفاتورة مُعيّنًا على &quot;مطلوب&quot;. هذا ضروري لضمان "
-"إمكانية نسخ عنوان الفاتورة إلى عنوان الفاتورة عند تحديد هذا الخيار."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2539,13 +2517,37 @@ msgstr "موسع"
 msgid "Do not show"
 msgstr "لا تظهر"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:4058
+msgid "yes"
 msgstr "نعم"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "لا"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"قد يُفرض حقل رقم الهاتف الخاص بالشحن كحقل إلزامي إذا كان قسم عنوان الفوترة "
+"معروضًا بعد قسم عنوان الشحن، وكان حقل رقم الهاتف الخاص بالفوترة مُحددًا "
+"كحقل إلزامي. هذا ضروري لضمان إمكانية نسخ عنوان الشحن إلى عنوان الفوترة عند "
+"تحديد هذا الخيار، وإلا فقد لا يتمكن العميل من إكمال نموذج الدفع."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"قد يُفرض إدخال رقم هاتف الفاتورة كحقل إلزامي إذا عُرض قسم عنوان الفاتورة "
+"قبل قسم عنوان الشحن، وكان رقم هاتف الشحن مُحددًا كحقل إلزامي. هذا ضروري "
+"لضمان إمكانية نسخ عنوان الشحن إلى عنوان الفاتورة عند تحديد هذا الخيار، وإلا "
+"فقد لا يتمكن العميل من إكمال عملية الدفع."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2686,3 +2688,14 @@ msgstr "شحن"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "الخطوة التالية"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "نعم"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

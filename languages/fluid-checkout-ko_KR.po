@@ -2148,26 +2148,6 @@ msgid ""
 "Checkout."
 msgstr "유동적 결제를 사용하는 경우 Nyture 테마에서 결제 단계 섹션을 출력합니다."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"청구 주소 섹션이 배송 주소 섹션 뒤에 표시되고 청구 전화 필드가 '필수'로 설정되어 있는 경우 '필수'로 강제 설정될 수 있습니다. "
-"이 옵션을 선택하면 배송 주소가 청구 주소로 복사될 수 있도록 하기 위해 필요합니다."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"청구 주소 섹션 뒤에 청구 주소 섹션이 표시되고 청구 전화 필드가 '필수'로 설정되어 있는 경우 '필수'로 강제 설정될 수 있습니다. "
-"이는 해당 옵션이 선택되어 있을 때 청구 주소가 청구 주소로 복사될 수 있도록 하기 위해 필요합니다."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2398,13 +2378,35 @@ msgstr "확장"
 msgid "Do not show"
 msgstr "표시하지 않음"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "예"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "yes"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "아니요"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"배송지 전화번호 입력란은 배송지 주소 섹션 다음에 청구지 주소 섹션이 표시되고, 청구지 전화번호 입력란이 “필수”로 설정된 경우 "
+"“필수”로 지정될 수 있습니다. 이는 해당 옵션이 선택되었을 때 배송지 주소를 청구지 주소로 복사할 수 있도록 하기 위함이며, 그렇지 "
+"않으면 고객이 결제 절차를 완료하지 못할 수 있습니다."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"배송 주소 섹션보다 청구 주소 섹션이 먼저 표시되고, 배송 전화번호 필드가 “필수”로 설정된 경우, 청구 전화번호 필드도 “필수”로 "
+"강제 설정될 수 있습니다. 이는 해당 옵션이 선택되었을 때 배송 주소를 청구 주소로 복사할 수 있도록 하기 위한 조치이며, 그렇지 "
+"않으면 고객이 결제 절차를 완료하지 못할 수 있습니다."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2545,3 +2547,14 @@ msgstr "배송"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "다음 단계"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "네"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

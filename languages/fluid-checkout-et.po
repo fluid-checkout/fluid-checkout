@@ -2315,30 +2315,6 @@ msgid ""
 "Checkout."
 msgstr "Väljastage nüüdure teema kassasammude osa, kui kasutate Fluid Checkouti."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Võib olla sunnitud \"kohustuslikuks\", kui arveldusaadressi osa kuvatakse "
-"pärast tarneaadressi osa ja arveldustelefoni väli on seatud "
-"\"kohustuslikuks\". Seda on vaja selleks, et tagada, et tarneaadressi saab "
-"kopeerida arveldusaadressi, kui see valik on märgitud."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Võib olla sunnitud \"kohustuslikuks\", kui arveldusaadressi osa kuvatakse "
-"pärast arveldusaadressi osa ja arveldustelefoni väli on määratud "
-"\"kohustuslikuks\". Seda on vaja selleks, et tagada, et arveldusaadressi "
-"saab kopeerida arveldusaadressi, kui see valik on märgitud."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2588,13 +2564,39 @@ msgstr "Laiendatud"
 msgid "Do not show"
 msgstr "Mitte näidata"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Jah"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "jah"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Ei"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Kui arveaadressi osa kuvatakse pärast tarneaadressi osa ja arveaadressi "
+"telefoninumbri väli on märgitud „kohustuslikuks“, võib tarneaadressi "
+"telefoninumbri väli muutuda kohustuslikuks. See on vajalik selleks, et "
+"tagada tarneaadressi kopeerimine arveaadressile, kui vastav valik on "
+"märgitud; vastasel juhul ei pruugi klient suuda ostukorvi vormi täita."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Arve telefoninumbri väli võib muutuda kohustuslikuks, kui arve aadressi osa "
+"kuvatakse enne tarneaadressi osa ja tarne telefoninumbri väli on määratud "
+"kohustuslikuks. See on vajalik selleks, et tagada tarneaadressi kopeerimine "
+"arve aadressile, kui see valik on märgitud; vastasel juhul ei pruugi klient "
+"suuda ostukorvi vormi täita."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2735,3 +2737,14 @@ msgstr "Laevandus"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "järgmine samm"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Jah"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

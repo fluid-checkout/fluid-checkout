@@ -2327,28 +2327,6 @@ msgstr ""
 "তৰল চেকআউট ব্যৱহাৰ কৰাৰ সময়ত Nyture থিমৰ পৰা চেকআউট পদক্ষেপসমূহ অংশ আউটপুট "
 "কৰক।"
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"হয়তো &quot;প্ৰয়োজনীয়&quot; হিচাপে বাধ্য কৰাব যদিহে বিলিং ঠিকনা অংশটো "
-"শিপিং ঠিকনা অংশৰ পিছত প্ৰদৰ্শিত হয়, আৰু বিলিং ফোন ক্ষেত্ৰখন "
-"&quot;প্ৰয়োজনীয়&quot; হিচাপে সংহতি কৰা হয়।"
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"হয়তো &quot;প্ৰয়োজনীয়&quot; হিচাপে বাধ্য কৰাব যদি বিলিং ঠিকনা অংশটো বিলিং "
-"ঠিকনা অংশৰ পিছত প্ৰদৰ্শিত হয়, আৰু বিলিং ফোন ক্ষেত্ৰখন "
-"&quot;প্ৰয়োজনীয়&quot; হিচাপে সংহতি কৰা হয়।"
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2602,13 +2580,40 @@ msgstr "সম্প্ৰসাৰিত"
 msgid "Do not show"
 msgstr "দেখুৱাব নালাগে"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:4058
+msgid "yes"
 msgstr "হয়"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "নহয়"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"যদি বিলিং ঠিকনা অংশ শিপিং ঠিকনা অংশৰ পিছত প্ৰদৰ্শিত হয়, আৰু বিলিং ফোন "
+"ক্ষেত্ৰ &quot;প্ৰয়োজনীয়&quot; হিচাপে সংহতি কৰা হয় তেন্তে শিপিং ফোন "
+"ক্ষেত্ৰখন &quot;প্ৰয়োজনীয়&quot; হিচাপে বাধ্যতামূলক হ&#39;ব পাৰে। ইয়াৰ "
+"প্ৰয়োজন হয় যাতে সেই বিকল্পটো চেক কৰা হয় তেতিয়া শিপিং ঠিকনাটো বিলিং "
+"ঠিকনালৈ কপি কৰিব পৰা যায়, অন্যথা গ্ৰাহকে চেকআউট প্ৰ-পত্ৰ পূৰণ কৰিব "
+"নোৱাৰিবও পাৰে।"
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"বিলিং ফোন ক্ষেত্ৰখনক &quot;প্ৰয়োজনীয়&quot; হিচাপে বাধ্য কৰাব পাৰি যদি "
+"বিলিং ঠিকনা অংশটো শিপিং ঠিকনা অংশৰ আগত প্ৰদৰ্শিত হয়, আৰু শিপিং ফোন "
+"ক্ষেত্ৰখন &quot;প্ৰয়োজনীয়&quot; হিচাপে সংহতি কৰা হয়। ইয়াৰ প্ৰয়োজন হয় "
+"যাতে সেই বিকল্পটো চেক কৰা হয় তেতিয়া শিপিং ঠিকনাটো বিলিং ঠিকনালৈ কপি কৰিব "
+"পৰা যায়, অন্যথা গ্ৰাহকে চেকআউট প্ৰ-পত্ৰ পূৰণ কৰিব নোৱাৰিবও পাৰে।"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2749,3 +2754,14 @@ msgstr "পঠিওৱা"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "পৰৱৰ্তী পদক্ষেপ"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "হয়"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
