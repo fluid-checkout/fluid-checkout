@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to upcoming WooCommerce 11.0.0 (RC).
 * Fixed: JavaScript error that could stop checkout updates and shipping totals from refreshing.
 
 = 4.2.5 - 2026-07-26 =
