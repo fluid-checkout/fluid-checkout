@@ -36,6 +36,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Place order position
 		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'change_place_order_position_settings_args' ), 10 );
 
 		// Germanized thumbnails
 		add_filter( 'woocommerce_gzd_checkout_use_legacy_table_replacement_template', '__return_false', 10 );
@@ -220,6 +221,27 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function change_place_order_position_option( $pre_option, $option, $default ) {
 		return 'below_order_summary';
+	}
+
+	/**
+	 * Disable the place order position setting and explain why it is forced when using Germanized.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function change_place_order_position_settings_args( $settings ) {
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than place order position
+			if ( ! array_key_exists( 'id', $setting_args ) || 'fc_checkout_place_order_position' !== $setting_args[ 'id' ] ) { continue; }
+
+			// Disable place order position options and change description explaining why it was disabled
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+			$setting_args[ 'desc' ] = __( 'The place order position is always set to "Below the order summary" when using Germanized for WooCommerce. That plugin requires the place order button and legal checkboxes to be displayed below the order summary.', 'fluid-checkout' );
+			unset( $setting_args[ 'desc_tip' ] );
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
 	}
 
 
