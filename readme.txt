@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Compatibility with plugin Wawp. Disable the billing phone field position setting and show a notice when OTP verification is enabled.
+* Improved: Compatibility with plugin Biteship. Disable the enhanced select fields setting and show a notice explaining why it is forced off.
 
 = 4.2.6 - 2026-07-28 =
 
