@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with plugin Wawp. Disable the billing phone field position setting and show a notice when OTP verification is enabled.
+
 = 4.2.6 - 2026-07-28 =
 
 * Bump tested up to upcoming WooCommerce 11.0.0 (RC).
