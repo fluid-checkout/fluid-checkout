@@ -12,8 +12,8 @@
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 7.8.0
- * @fc-version 4.2.2
+ * @version 10.9.0
+ * @fc-version 4.2.6
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -28,7 +28,7 @@ if ( $available_gateways ) : ?>
 
 		<div id="payment" class="woocommerce-Payment">
 			<?php // CHANGE: Add class `wc_payment_methods` ?>
-			<ul class="woocommerce-PaymentMethods wc_payment_methods payment_methods methods">
+			<ul class="woocommerce-PaymentMethods wc_payment_methods payment_methods methods" aria-label="<?php esc_attr_e( 'Payment methods', 'woocommerce' ); ?>">
 				<?php
 				// Chosen Method.
 				if ( count( $available_gateways ) ) {
