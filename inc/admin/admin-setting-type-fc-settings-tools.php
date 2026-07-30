@@ -32,9 +32,6 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	 * Whether the current screen is the Fluid Checkout Tools settings section.
 	 */
 	public function is_tools_settings_screen() {
-		// Bail if not in admin
-		if ( ! is_admin() ) { return false; }
-
 		// Bail if required query args are missing
 		if ( ! isset( $_GET[ 'page' ], $_GET[ 'tab' ], $_GET[ 'section' ] ) ) { return false; } // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 

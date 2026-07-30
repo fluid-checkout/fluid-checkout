@@ -28,29 +28,26 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	const BACKUP_TTL = WEEK_IN_SECONDS;
 
 
+
 	/**
-	 * Get default option values for all active Fluid Checkout products.
+	 * __construct function.
+	 */
+	public function __construct() {
+		// No hooks — service only.
+	}
+
+
+
+	/**
+	 * Get default option values for managed settings.
+	 *
+	 * Lite defaults already include Pro / Address Book / VAT via `fc_default_option_values`.
+	 * Fluid Checkout product keys (`fc_*`) are managed even when absent from this map.
 	 *
 	 * @return array
 	 */
 	public function get_default_option_values() {
-		// Start from Lite defaults (includes Pro / Address Book / VAT via filter)
-		$defaults = FluidCheckout_Settings::instance()->get_default_option_values();
-
-		// Maybe merge Google Address Autocomplete defaults
-		if ( class_exists( 'FC_GoogleAddressAutocomplete_Settings' ) ) {
-			$gaa_defaults = FC_GoogleAddressAutocomplete_Settings::instance()->get_default_option_values();
-			if ( is_array( $gaa_defaults ) ) {
-				$defaults = array_merge( $defaults, $gaa_defaults );
-			}
-		}
-
-		/**
-		 * Filter default option values used by settings tools.
-		 *
-		 * @param  array  $defaults  Default option values for managed settings.
-		 */
-		return apply_filters( 'fc_settings_tools_default_option_values', $defaults );
+		return FluidCheckout_Settings::instance()->get_default_option_values();
 	}
 
 
@@ -64,6 +61,8 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 		$keys = array(
 			'fc_debug_mode',
 			'fc_load_unminified_assets',
+			'fc_use_enhanced_select_components',
+			'fc_fix_zoom_in_form_fields_mobile_devices',
 		);
 
 		/**
@@ -212,6 +211,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 			)
 		);
 
+		// Bail if query failed
 		if ( ! is_array( $names ) ) {
 			return array();
 		}
@@ -344,7 +344,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 		);
 
 		// Bail if data is invalid
-		if ( ! is_array( $data ) || ! array_key_exists( 'settings', $data ) || ! is_array( $data[ 'settings' ] ) ) {
+		if ( ! is_array( $data ) || 'fluid-checkout' !== ( $data[ 'generator' ] ?? '' ) || ! array_key_exists( 'settings', $data ) || ! is_array( $data[ 'settings' ] ) ) {
 			$result[ 'errors' ][] = __( 'Invalid settings file. Expected a Fluid Checkout settings export.', 'fluid-checkout' );
 			return $result;
 		}
@@ -384,6 +384,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	public function import_settings_from_json( $json, $create_backup = false ) {
 		$data = json_decode( $json, true );
 
+		// Bail if JSON is invalid
 		if ( null === $data && JSON_ERROR_NONE !== json_last_error() ) {
 			return array(
 				'imported'       => 0,
@@ -457,20 +458,6 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	}
 
 	/**
-	 * Get the backup retention period in seconds.
-	 *
-	 * @return int
-	 */
-	public function get_backup_ttl() {
-		/**
-		 * Filter how long the automatic settings backup remains available.
-		 *
-		 * @param  int  $ttl  Retention period in seconds.
-		 */
-		return (int) apply_filters( 'fc_settings_tools_backup_ttl', self::BACKUP_TTL );
-	}
-
-	/**
 	 * Whether a backup array is structurally valid.
 	 *
 	 * @param  mixed  $backup  Backup data.
@@ -498,7 +485,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 		// Bail if timestamp is invalid
 		if ( false === $created_at ) { return true; }
 
-		return ( time() - $created_at ) > $this->get_backup_ttl();
+		return ( time() - $created_at ) > self::BACKUP_TTL;
 	}
 
 	/**

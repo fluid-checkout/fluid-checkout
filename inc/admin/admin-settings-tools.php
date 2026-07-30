@@ -136,13 +136,13 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				array(
 					'title' => __( 'Backup & reset', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => __( 'License keys, API keys, and troubleshooting options are not included in export or import. License keys and API keys are also left unchanged on reset. An automatic backup is created before import or reset so you can restore previous settings.', 'fluid-checkout' ),
+					'desc'  => __( 'License keys, API keys, and troubleshooting options are not included in export or import. License keys and API keys are also left unchanged on reset. Reset and restore also cover related WooCommerce and integration options managed by Fluid Checkout. An automatic backup is created before import or reset so you can restore previous settings.', 'fluid-checkout' ),
 					'id'    => 'fc_checkout_settings_tools',
 				),
 
 				array(
 					'title'       => __( 'Reset settings', 'fluid-checkout' ),
-					'desc'        => __( 'Delete saved Fluid Checkout settings so the plugin uses its defaults again. An automatic backup is created first.', 'fluid-checkout' ),
+					'desc'        => __( 'Delete saved Fluid Checkout settings (including related WooCommerce and integration options managed by the plugin) so defaults are used again. An automatic backup is created first.', 'fluid-checkout' ),
 					'type'        => 'fc_settings_tools',
 					'id'          => 'fc_settings_tools_reset',
 					'tool_action' => 'reset',

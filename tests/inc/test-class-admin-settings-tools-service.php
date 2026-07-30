@@ -26,7 +26,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Reset: leaves secrets and runtime meta in place.
 	 * Test: Round-trip: export then import restores saved settings.
 	 * Test: WooCommerce options in defaults map: included in managed keys.
-	 * Test: Extra defaults via filter: GAA-like keys can be managed without GAA loaded.
+	 * Test: Fluid Checkout product keys are managed without being in the defaults map.
 	 * Test: Export: includes inactive Fluid Checkout product settings from the database.
 	 * Test: Import: applies Fluid Checkout product settings even when the add-on is inactive.
 	 * Test: Reset: deletes inactive Fluid Checkout product settings from the database.
@@ -128,8 +128,11 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	public function test_troubleshooting_option_keys_are_identified() {
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_debug_mode' ) );
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_load_unminified_assets' ) );
+		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_use_enhanced_select_components' ) );
+		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_fix_zoom_in_form_fields_mobile_devices' ) );
 		$this->assertFalse( $this->service->is_troubleshooting_option_key( 'fc_checkout_layout' ) );
 		$this->assertFalse( $this->service->should_include_option_key( 'fc_debug_mode' ) );
+		$this->assertFalse( $this->service->should_include_option_key( 'fc_use_enhanced_select_components' ) );
 		$this->assertTrue( $this->service->should_include_option_key( 'fc_checkout_layout' ) );
 		$this->assertTrue( $this->service->should_include_option_key( 'woocommerce_checkout_phone_field' ) );
 	}
@@ -139,16 +142,16 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_export_includes_only_saved_managed_values() {
 		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_use_enhanced_select_components', 'yes' );
+		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
 
 		$data = $this->service->get_export_data();
 
 		$this->assertArrayHasKey( 'settings', $data );
 		$this->assertSame( 'single-step', $data[ 'settings' ][ 'fc_checkout_layout' ] );
-		$this->assertSame( 'yes', $data[ 'settings' ][ 'fc_use_enhanced_select_components' ] );
+		$this->assertSame( 'yes', $data[ 'settings' ][ 'fc_enable_dark_mode_styles' ] );
 
 		// Unsaved managed keys should not appear
-		$this->assertArrayNotHasKey( 'fc_enable_dark_mode_styles', $data[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_enable_checkout_progress_bar', $data[ 'settings' ] );
 	}
 
 	/**
@@ -175,12 +178,16 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
 		$this->set_tracked_option( 'fc_debug_mode', 'yes' );
 		$this->set_tracked_option( 'fc_load_unminified_assets', 'yes' );
+		$this->set_tracked_option( 'fc_use_enhanced_select_components', 'yes' );
+		$this->set_tracked_option( 'fc_fix_zoom_in_form_fields_mobile_devices', 'no' );
 
 		$data = $this->service->get_export_data();
 
 		$this->assertSame( 'single-step', $data[ 'settings' ][ 'fc_checkout_layout' ] );
 		$this->assertArrayNotHasKey( 'fc_debug_mode', $data[ 'settings' ] );
 		$this->assertArrayNotHasKey( 'fc_load_unminified_assets', $data[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_use_enhanced_select_components', $data[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_fix_zoom_in_form_fields_mobile_devices', $data[ 'settings' ] );
 	}
 
 	/**
@@ -207,20 +214,21 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_import_applies_known_managed_settings() {
 		$result = $this->service->import_settings( array(
-			'settings' => array(
-				'fc_checkout_layout'                => 'single-step',
-				'fc_use_enhanced_select_components' => 'yes',
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
+				'fc_checkout_layout'         => 'single-step',
+				'fc_enable_dark_mode_styles' => 'yes',
 			),
 		) );
 
 		$this->track_option( 'fc_checkout_layout' );
-		$this->track_option( 'fc_use_enhanced_select_components' );
+		$this->track_option( 'fc_enable_dark_mode_styles' );
 
 		$this->assertSame( 2, $result[ 'imported' ] );
 		$this->assertSame( 0, $result[ 'skipped' ] );
 		$this->assertEmpty( $result[ 'errors' ] );
 		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'yes', get_option( 'fc_use_enhanced_select_components' ) );
+		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
 	}
 
 	/**
@@ -228,19 +236,23 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_import_skips_troubleshooting_options() {
 		$result = $this->service->import_settings( array(
-			'settings' => array(
-				'fc_checkout_layout' => 'single-step',
-				'fc_debug_mode'      => 'yes',
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
+				'fc_checkout_layout'                => 'single-step',
+				'fc_debug_mode'                     => 'yes',
+				'fc_use_enhanced_select_components' => 'yes',
 			),
 		) );
 
 		$this->track_option( 'fc_checkout_layout' );
 		$this->track_option( 'fc_debug_mode' );
+		$this->track_option( 'fc_use_enhanced_select_components' );
 
 		$this->assertSame( 1, $result[ 'imported' ] );
-		$this->assertSame( 1, $result[ 'skipped' ] );
+		$this->assertSame( 2, $result[ 'skipped' ] );
 		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
 		$this->assert_option_does_not_exist( 'fc_debug_mode' );
+		$this->assert_option_does_not_exist( 'fc_use_enhanced_select_components' );
 	}
 
 	/**
@@ -250,7 +262,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_pro_license_key', 'keep-me' );
 
 		$result = $this->service->import_settings( array(
-			'settings' => array(
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
 				'fc_checkout_layout'           => 'single-step',
 				'fc_pro_license_key'           => 'stolen-license',
 				'fc_gaa_google_places_api_key' => 'stolen-api-key',
@@ -277,6 +290,15 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertNotEmpty( $invalid_payload[ 'errors' ] );
 		$this->assertSame( 0, $invalid_payload[ 'imported' ] );
 
+		$wrong_generator = $this->service->import_settings( array(
+			'generator' => 'other-plugin',
+			'settings'  => array(
+				'fc_checkout_layout' => 'single-step',
+			),
+		) );
+		$this->assertNotEmpty( $wrong_generator[ 'errors' ] );
+		$this->assertSame( 0, $wrong_generator[ 'imported' ] );
+
 		$invalid_json = $this->service->import_settings_from_json( '{not-valid-json' );
 		$this->assertNotEmpty( $invalid_json[ 'errors' ] );
 		$this->assertSame( 0, $invalid_json[ 'imported' ] );
@@ -291,7 +313,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'places-secret' );
 
 		$this->service->import_settings( array(
-			'settings' => array(
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
 				'fc_enable_checkout_progress_bar' => 'no',
 				'fc_vat_license_key'              => 'overwrite-vat',
 				'fc_vat_license_key_activated'    => 'no',
@@ -358,27 +381,27 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_round_trip_export_import() {
 		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_use_enhanced_select_components', 'yes' );
+		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
 
 		$export = $this->service->get_export_data();
 
 		// Keep only the keys under test so leftover DB options do not affect counts
 		$export[ 'settings' ] = array_intersect_key(
 			$export[ 'settings' ],
-			array_flip( array( 'fc_checkout_layout', 'fc_use_enhanced_select_components' ) )
+			array_flip( array( 'fc_checkout_layout', 'fc_enable_dark_mode_styles' ) )
 		);
 
 		$this->assertCount( 2, $export[ 'settings' ] );
 
 		// Change values, then import the export
 		update_option( 'fc_checkout_layout', 'multi-step' );
-		update_option( 'fc_use_enhanced_select_components', 'no' );
+		update_option( 'fc_enable_dark_mode_styles', 'no' );
 
 		$result = $this->service->import_settings( $export );
 
 		$this->assertSame( 2, $result[ 'imported' ] );
 		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'yes', get_option( 'fc_use_enhanced_select_components' ) );
+		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
 	}
 
 	/**
@@ -396,7 +419,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertSame( 'optional', $data[ 'settings' ][ 'woocommerce_checkout_phone_field' ] );
 
 		$result = $this->service->import_settings( array(
-			'settings' => array(
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
 				'woocommerce_checkout_phone_field' => 'required',
 			),
 		) );
@@ -409,21 +433,15 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	}
 
 	/**
-	 * Test: Extra defaults via filter: GAA-like keys can be managed without GAA loaded.
+	 * Test: Fluid Checkout product keys are managed without being in the defaults map.
 	 */
-	public function test_extra_defaults_via_filter_for_gaa_like_keys() {
-		$filter = function( $defaults ) {
-			$defaults[ 'fc_gaa_enabled' ]                = 'no';
-			$defaults[ 'fc_gaa_google_places_api_key' ]  = '';
-			$defaults[ 'fc_gaa_load_unminified_assets' ] = 'no';
-			return $defaults;
-		};
-		add_filter( 'fc_settings_tools_default_option_values', $filter );
+	public function test_fc_product_keys_managed_without_defaults_map_entry() {
+		$defaults = $this->service->get_default_option_values();
+		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
 
-		$managed = $this->service->get_managed_option_keys();
-		$this->assertContains( 'fc_gaa_enabled', $managed );
-		$this->assertContains( 'fc_gaa_load_unminified_assets', $managed );
-		$this->assertNotContains( 'fc_gaa_google_places_api_key', $managed );
+		$this->assertTrue( $this->service->is_managed_option_key( 'fc_gaa_enabled' ) );
+		$this->assertTrue( $this->service->should_include_option_key( 'fc_gaa_enabled' ) );
+		$this->assertFalse( $this->service->should_include_option_key( 'fc_gaa_google_places_api_key' ) );
 
 		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
 		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'api-should-stay' );
@@ -433,7 +451,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertArrayNotHasKey( 'fc_gaa_google_places_api_key', $export[ 'settings' ] );
 
 		$result = $this->service->import_settings( array(
-			'settings' => array(
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
 				'fc_gaa_enabled'               => 'no',
 				'fc_gaa_google_places_api_key' => 'should-not-import',
 			),
@@ -447,8 +466,6 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->service->reset_settings();
 		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
 		$this->assertSame( 'api-should-stay', get_option( 'fc_gaa_google_places_api_key' ) );
-
-		remove_filter( 'fc_settings_tools_default_option_values', $filter );
 	}
 
 	/**
@@ -482,7 +499,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_import_applies_inactive_fc_product_settings() {
 		$result = $this->service->import_settings( array(
-			'settings' => array(
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
 				'fc_pro_enable_address_book'     => 'yes',
 				'fc_vat_number_field_visibility' => 'optional',
 				'fc_gaa_enabled'                 => 'yes',
@@ -560,19 +578,12 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
 		$this->service->create_auto_backup( 'import' );
 
-		$ttl_filter = function() {
-			return 1;
-		};
-		add_filter( 'fc_settings_tools_backup_ttl', $ttl_filter );
-
 		$backup = get_option( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY );
-		$backup[ 'created_at' ] = gmdate( 'c', time() - 10 );
+		$backup[ 'created_at' ] = gmdate( 'c', time() - FluidCheckout_Admin_Settings_Tools_Service::BACKUP_TTL - 10 );
 		update_option( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY, $backup, false );
 
 		$this->assertNull( $this->service->get_last_backup() );
 		$this->assert_option_does_not_exist( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY );
-
-		remove_filter( 'fc_settings_tools_backup_ttl', $ttl_filter );
 	}
 
 	/**
@@ -583,7 +594,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$result = $this->service->import_settings(
 			array(
-				'settings' => array(
+				'generator' => 'fluid-checkout',
+				'settings'  => array(
 					'fc_checkout_layout' => 'multi-step',
 				),
 			),
@@ -633,23 +645,24 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$this->service->import_settings(
 			array(
-				'settings' => array(
-					'fc_checkout_layout'                => 'multi-step',
-					'fc_use_enhanced_select_components' => 'yes',
+				'generator' => 'fluid-checkout',
+				'settings'  => array(
+					'fc_checkout_layout'         => 'multi-step',
+					'fc_enable_dark_mode_styles' => 'yes',
 				),
 			),
 			true
 		);
 
-		$this->track_option( 'fc_use_enhanced_select_components' );
+		$this->track_option( 'fc_enable_dark_mode_styles' );
 		$this->assertSame( 'multi-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'yes', get_option( 'fc_use_enhanced_select_components' ) );
+		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
 
 		$restore = $this->service->restore_last_backup();
 
 		$this->assertEmpty( $restore[ 'errors' ] );
 		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assert_option_does_not_exist( 'fc_use_enhanced_select_components' );
+		$this->assert_option_does_not_exist( 'fc_enable_dark_mode_styles' );
 		$this->assertGreaterThanOrEqual( 1, $restore[ 'deleted' ] );
 	}
 

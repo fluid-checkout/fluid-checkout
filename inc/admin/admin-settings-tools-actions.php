@@ -54,23 +54,33 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		return admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=tools' );
 	}
 
+	/**
+	 * Verify nonce and capability for a settings tools request.
+	 *
+	 * @param  string  $nonce_action  Nonce action name.
+	 */
+	public function verify_request( $nonce_action ) {
+		// Bail if nonce is invalid
+		if ( ! isset( $_POST[ '_wpnonce' ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ '_wpnonce' ] ) ), $nonce_action ) ) {
+			wp_die( esc_html__( 'Invalid request.', 'fluid-checkout' ) );
+		}
+
+		// Bail if user does not have necessary permissions
+		if ( ! $this->current_user_can_manage() ) {
+			wp_die( esc_html__( 'You do not have permission to manage settings.', 'fluid-checkout' ) );
+		}
+	}
+
 
 
 	/**
 	 * Handle settings export download.
 	 */
 	public function handle_export() {
-		// Bail if nonce is invalid
-		if ( ! isset( $_POST[ '_wpnonce' ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ '_wpnonce' ] ) ), 'fc_settings_export' ) ) {
-			wp_die( esc_html__( 'Invalid request.', 'fluid-checkout' ) );
-		}
-
-		// Bail if user does not have necessary permissions
-		if ( ! $this->current_user_can_manage() ) {
-			wp_die( esc_html__( 'You do not have permission to export settings.', 'fluid-checkout' ) );
-		}
+		$this->verify_request( 'fc_settings_export' );
 
 		$json = FluidCheckout_Admin_Settings_Tools_Service::instance()->get_export_json();
+
 		// Bail if export failed
 		if ( false === $json ) {
 			$this->redirect_with_notice( array(
@@ -97,15 +107,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	 * Handle settings import upload.
 	 */
 	public function handle_import() {
-		// Bail if nonce is invalid
-		if ( ! isset( $_POST[ '_wpnonce' ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ '_wpnonce' ] ) ), 'fc_settings_import' ) ) {
-			wp_die( esc_html__( 'Invalid request.', 'fluid-checkout' ) );
-		}
-
-		// Bail if user does not have necessary permissions
-		if ( ! $this->current_user_can_manage() ) {
-			wp_die( esc_html__( 'You do not have permission to import settings.', 'fluid-checkout' ) );
-		}
+		$this->verify_request( 'fc_settings_import' );
 
 		// Bail if no file uploaded
 		if ( empty( $_FILES[ 'fc_settings_import_file' ][ 'tmp_name' ] ) ) {
@@ -173,15 +175,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	 * Handle settings reset.
 	 */
 	public function handle_reset() {
-		// Bail if nonce is invalid
-		if ( ! isset( $_POST[ '_wpnonce' ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ '_wpnonce' ] ) ), 'fc_settings_reset' ) ) {
-			wp_die( esc_html__( 'Invalid request.', 'fluid-checkout' ) );
-		}
-
-		// Bail if user does not have necessary permissions
-		if ( ! $this->current_user_can_manage() ) {
-			wp_die( esc_html__( 'You do not have permission to reset settings.', 'fluid-checkout' ) );
-		}
+		$this->verify_request( 'fc_settings_reset' );
 
 		// Bail if confirmation was not checked
 		if ( empty( $_POST[ 'fc_settings_reset_confirm' ] ) ) {
@@ -209,15 +203,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	 * Handle restore from the last automatic backup.
 	 */
 	public function handle_restore() {
-		// Bail if nonce is invalid
-		if ( ! isset( $_POST[ '_wpnonce' ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ '_wpnonce' ] ) ), 'fc_settings_restore' ) ) {
-			wp_die( esc_html__( 'Invalid request.', 'fluid-checkout' ) );
-		}
-
-		// Bail if user does not have necessary permissions
-		if ( ! $this->current_user_can_manage() ) {
-			wp_die( esc_html__( 'You do not have permission to restore settings.', 'fluid-checkout' ) );
-		}
+		$this->verify_request( 'fc_settings_restore' );
 
 		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->restore_last_backup();
 
