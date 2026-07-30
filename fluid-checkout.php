@@ -300,6 +300,23 @@ class FluidCheckout {
 
 		// Clear cache after upgrading the plugin
 		add_action( 'upgrader_process_complete', array( $this, 'clear_cache_on_updates' ), 10, 2 );
+
+		// WP-CLI
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			add_action( 'cli_init', array( $this, 'load_wp_cli' ), 10 );
+		}
+	}
+
+
+
+	/**
+	 * Load WP-CLI commands.
+	 */
+	public function load_wp_cli() {
+		require_once self::$directory_path . 'inc/admin/admin-settings-tools-service.php';
+		require_once self::$directory_path . 'inc/wp-cli/class-wp-cli-command-settings.php';
+
+		\WP_CLI::add_command( 'fc settings', 'FluidCheckout_WPCLI_Command_Settings' );
 	}
 
 

@@ -1,0 +1,18 @@
+// ------------------------------------
+// SETTINGS TOOLS
+// ------------------------------------
+.forminp-fc_settings_tools {
+	.fc-settings-tools {
+		p {
+			margin: 0 0 .75em;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.fc-settings-tools-form {
+	display: none;
+}

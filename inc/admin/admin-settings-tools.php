@@ -133,6 +133,54 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'id'   => 'fc_checkout_advanced_debug_options',
 				),
 
+				array(
+					'title' => __( 'Backup & reset', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => __( 'License keys, API keys, and troubleshooting options are not included in export or import. License keys and API keys are also left unchanged on reset. An automatic backup is created before import or reset so you can restore previous settings.', 'fluid-checkout' ),
+					'id'    => 'fc_checkout_settings_tools',
+				),
+
+				array(
+					'title'       => __( 'Reset settings', 'fluid-checkout' ),
+					'desc'        => __( 'Delete saved Fluid Checkout settings so the plugin uses its defaults again. An automatic backup is created first.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_reset',
+					'tool_action' => 'reset',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Restore previous settings', 'fluid-checkout' ),
+					'desc'        => __( 'Restore the automatic backup created before the last import or reset.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_restore',
+					'tool_action' => 'restore',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Export settings', 'fluid-checkout' ),
+					'desc'        => __( 'Download a JSON file with the current Fluid Checkout settings saved on this site.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_export',
+					'tool_action' => 'export',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Import settings', 'fluid-checkout' ),
+					'desc'        => __( 'Upload a Fluid Checkout settings JSON file. An automatic backup is created first. Logo images and linked pages use site-specific IDs, so re-select them after import if they do not appear correctly.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_import',
+					'tool_action' => 'import',
+					'is_option'   => false,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_checkout_settings_tools',
+				),
+
 			);
 
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings, $current_section );
