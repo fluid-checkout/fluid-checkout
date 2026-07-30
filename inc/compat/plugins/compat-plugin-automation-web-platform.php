@@ -31,6 +31,7 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 		// Phone number field position
 		add_filter( 'pre_option_fc_billing_phone_field_position', array( $this, 'maybe_change_billing_phone_position' ), 10, 3 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'maybe_change_billing_phone_position_settings_args' ), 10 );
 	}
 
 	/**
@@ -134,6 +135,31 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 		if ( ! $this->is_otp_verification_enabled() ) { return $pre_option; }
 
 		return 'contact';
+	}
+
+	/**
+	 * Maybe disable the billing phone field position setting and explain why it is forced when OTP verification is enabled.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function maybe_change_billing_phone_position_settings_args( $settings ) {
+		// Bail if OTP verification is not enabled
+		if ( ! $this->is_otp_verification_enabled() ) { return $settings; }
+
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than billing phone field position
+			if ( ! array_key_exists( 'id', $setting_args ) || 'fc_billing_phone_field_position' !== $setting_args[ 'id' ] ) { continue; }
+
+			// Disable billing phone field position setting and change description explaining why it was disabled
+			$setting_args[ 'disabled' ] = true;
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+			$setting_args[ 'desc' ] = __( 'The billing phone field is always displayed in the contact step when OTP verification is enabled in Wawp.', 'fluid-checkout' );
+			unset( $setting_args[ 'desc_tip' ] );
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
 	}
 
 
