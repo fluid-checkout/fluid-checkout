@@ -520,8 +520,9 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	/**
 	 * Restore managed settings from the last automatic backup.
 	 *
-	 * Re-applies values present in the backup and deletes managed options that
-	 * were not saved at backup time, so import and reset can both be undone.
+	 * Re-applies every managed value stored in the backup (including Fluid Checkout
+	 * product keys that only existed via DB scan at backup time), then deletes
+	 * currently managed options that were not saved at backup time.
 	 *
 	 * @return array{ restored: int, deleted: int, errors: array }
 	 */
@@ -542,18 +543,26 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 		$settings = $backup[ 'data' ][ 'settings' ];
 
-		foreach ( $this->get_managed_option_keys() as $option ) {
-			if ( array_key_exists( $option, $settings ) ) {
-				update_option( $option, $settings[ $option ] );
-				$result[ 'restored' ]++;
-				continue;
-			}
+		// Re-apply backup values even when those options no longer exist in the DB
+		// (e.g. after reset removed inactive add-on keys from the managed-key scan).
+		foreach ( $settings as $option => $value ) {
+			// Bail if option is not managed (secrets, runtime meta, unknown keys)
+			if ( ! $this->is_managed_option_key( $option ) ) { continue; }
 
-			// Remove options that were not saved when the backup was created
-			if ( $this->option_exists( $option ) ) {
-				delete_option( $option );
-				$result[ 'deleted' ]++;
-			}
+			update_option( $option, $value );
+			$result[ 'restored' ]++;
+		}
+
+		// Remove managed options that were not saved when the backup was created
+		foreach ( $this->get_managed_option_keys() as $option ) {
+			// Bail if option is present in the backup (already restored above)
+			if ( array_key_exists( $option, $settings ) ) { continue; }
+
+			// Bail if option does not exist in the database
+			if ( ! $this->option_exists( $option ) ) { continue; }
+
+			delete_option( $option );
+			$result[ 'deleted' ]++;
 		}
 
 		// Clear caches after restore

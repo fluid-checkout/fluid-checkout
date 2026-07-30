@@ -35,6 +35,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Auto-backup: expired backups are cleared and unavailable.
 	 * Test: Import with backup: creates backup before applying and invalid import does not replace backup.
 	 * Test: Reset with backup: creates backup then restore undoes the reset.
+	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
 	 * Test: Restore after import: restores previous values and removes imported-only keys.
 	 * Test: Restore: leaves secrets unchanged and errors when no backup exists.
 	 */
@@ -635,6 +636,34 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertGreaterThanOrEqual( 2, $restore[ 'restored' ] );
 		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
 		$this->assertSame( 'yes', get_option( 'fc_debug_mode' ) );
+	}
+
+	/**
+	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
+	 */
+	public function test_restore_after_reset_restores_inactive_fc_product_settings() {
+		$defaults = $this->service->get_default_option_values();
+		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
+		$this->assertArrayNotHasKey( 'fc_vat_number_field_visibility', $defaults );
+
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
+		$this->set_tracked_option( 'fc_vat_number_field_visibility', 'optional' );
+
+		$this->service->reset_settings( true );
+
+		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
+		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
+		$this->assert_option_does_not_exist( 'fc_vat_number_field_visibility' );
+		$this->assertArrayHasKey( 'fc_gaa_enabled', $this->service->get_last_backup()[ 'data' ][ 'settings' ] );
+
+		$restore = $this->service->restore_last_backup();
+
+		$this->assertEmpty( $restore[ 'errors' ] );
+		$this->assertGreaterThanOrEqual( 3, $restore[ 'restored' ] );
+		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'yes', get_option( 'fc_gaa_enabled' ) );
+		$this->assertSame( 'optional', get_option( 'fc_vat_number_field_visibility' ) );
 	}
 
 	/**
