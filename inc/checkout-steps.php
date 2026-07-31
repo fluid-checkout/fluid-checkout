@@ -5571,6 +5571,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
 	 */
 	public function is_billing_same_as_shipping( $posted_data = array() ) {
+		// Bail if cart is not available
+		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
+
 		// Set to different billing address when shipping address not needed
 		if ( ! WC()->cart->needs_shipping_address() ) {
 			return false;
