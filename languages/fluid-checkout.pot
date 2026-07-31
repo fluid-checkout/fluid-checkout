@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2026-07-28 13:55+0000\n"
+"POT-Creation-Date: 2026-07-31 13:52+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -206,12 +206,12 @@ msgstr ""
 
 #. translators: %d: shipping package number
 #. translators: %d: Package number
-#: inc/checkout-steps.php:4427, inc/checkout-steps.php:4919, inc/checkout-steps.php:6867
+#: inc/checkout-steps.php:4427, inc/checkout-steps.php:4919, inc/checkout-steps.php:6873
 msgctxt "shipping packages"
 msgid "Shipping %d"
 msgstr ""
 
-#: inc/checkout-steps.php:4427, inc/checkout-steps.php:4919, inc/checkout-steps.php:6867
+#: inc/checkout-steps.php:4427, inc/checkout-steps.php:4919, inc/checkout-steps.php:6873
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr ""
@@ -224,19 +224,19 @@ msgstr ""
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:6572, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:285, inc/admin/admin-settings-order-received.php:186
+#: inc/checkout-steps.php:6578, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:285, inc/admin/admin-settings-order-received.php:186
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:6662, inc/checkout-steps.php:6919
+#: inc/checkout-steps.php:6668, inc/checkout-steps.php:6925
 msgid "Edit cart"
 msgstr ""
 
-#: inc/checkout-steps.php:6920
+#: inc/checkout-steps.php:6926
 msgid "Close and continue with checkout"
 msgstr ""
 
-#: inc/checkout-steps.php:6920
+#: inc/checkout-steps.php:6926
 msgid "Continue"
 msgstr ""
 
@@ -2185,4 +2185,44 @@ msgstr ""
 
 #: inc/compat/plugins/elementor-pro/widgets/woocommerce/checkout.php:70
 msgid "<p>This widget has been replaced by Fluid Checkout. </p><p>When using Fluid Checkout, the checkout page needs to use the original WooCommerce shortcode <code>[woocommerce_checkout]</code> to work properly.</p><p>For more information, visit the Fluid Checkout documentation.</p>"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
 msgstr ""

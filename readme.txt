@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Fatal error when opening the WordPress block editor with WooCommerce Stripe active, caused by checking shipping needs while the cart is not available.
+
 = 4.2.6 - 2026-07-28 =
 
 * Bump tested up to upcoming WooCommerce 11.0.0 (RC).
