@@ -501,12 +501,14 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		// Get shipping method info
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods', array() );
 
-		// Maybe set values to arrays
+		// Maybe set chosen shipping methods to an array
 		if ( ! is_array( $chosen_shipping_methods ) ) {
-			$chosen_shipping_methods = array(); 
+			$chosen_shipping_methods = array();
 		}
+
+		// Maybe set available methods to an array
 		if ( ! is_array( $available_methods ) ) {
-			$available_methods = array(); 
+			$available_methods = array();
 		}
 
 		// Maybe return the recurring package method already saved in the session

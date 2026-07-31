@@ -221,7 +221,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		// Assign terminal object property values to the corresponding array keys
 		$selected_terminal_data = array(
 			'company' => isset( $terminal_data[ 'name' ] ) ? esc_html( $terminal_data[ 'name' ] ) : '',
-			'address_1' => isset( $terminal_data[ 'addr' ] ) ? $terminal_data[ 'addr' ] : '',
+			'address_1' => isset( $terminal_data[ 'addr' ] ) ? esc_html( $terminal_data[ 'addr' ] ) : '',
 			'postcode' => isset( $terminal_data[ 'zip' ] ) ? esc_html( $terminal_data[ 'zip' ] ) : '',
 			'city' => isset( $terminal_data[ 'city' ] ) ? esc_html( $terminal_data[ 'city' ] ) : '',
 			'country' => isset( $terminal_data[ 'country' ] ) ? esc_html( $terminal_data[ 'country' ] ) : 'HU',

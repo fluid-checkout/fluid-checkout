@@ -4942,9 +4942,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Initialize product names
 			$product_names = array();
 
-			// Determine if has multiple packages
-			$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
-
 			// Maybe add product names to package details, when there are multiple packages
 			if ( $has_multiple_packages ) {
 				// Iterate package contents

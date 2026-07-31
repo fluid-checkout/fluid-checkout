@@ -418,7 +418,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return; }
 
 		// Check if terminal data is set
-		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id, $shipping_method, true );
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id, true );
 
 		// Output custom hidden fields
 		echo '<div id="gls_shipping-custom_checkout_fields" class="form-row fc-no-validation-icon">';
