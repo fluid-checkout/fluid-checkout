@@ -4733,12 +4733,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! $this->is_prevent_shipping_method_autoselect_enabled() ) { return $default; }
 
 		// Maybe prevent autoselect if chosen method is not in available methods
-		if ( ! empty( $chosen_method ) && ! array_key_exists( $chosen_method, $rates ) ) {
+		if ( empty( $chosen_method ) || ! array_key_exists( $chosen_method, $rates ) ) {
 			return false;
 		}
 
-		// Otherwise, return unchanged value
-		return $default;
+		// Otherwise, keep the customer's chosen method
+		return $chosen_method;
 	}
 
 
