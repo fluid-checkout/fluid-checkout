@@ -598,8 +598,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'id'                => 'fc_enable_checkout_local_pickup',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
-						'checkboxgroup'     => 'start',
-						'show_if_checked'   => 'option',
 						'autoload'          => false,
 						'disabled'          => true,
 					),
@@ -908,10 +906,17 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 	 * @param  mixed   $raw_value  The raw value of the option.
 	 */
 	public function sanitize_local_pickup_shipping_zone_fields( $value, $option, $raw_value ) {
+		// Bail without changing the saved value when the field was not submitted, eg. when disabled in the Lite version
+		// WooCommerce only skips the update when the sanitized value is `null`, so returning an empty array would wipe the saved value
+		if ( null === $raw_value ) { return null; }
+
 		// Ensure the value is an array
 		if ( ! is_array( $value ) ) {
 			$value = array();
 		}
+
+		// Sanitize the field keys
+		$value = array_map( 'sanitize_text_field', $value );
 
 		return $value;
 	}

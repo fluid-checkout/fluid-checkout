@@ -176,6 +176,9 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 		// Get object
 		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
 
+		// Bail if the object is not available
+		if ( ! is_object( $class_object ) ) { return $selected_terminal_info; }
+
 		// Get terminal info
 		$terminal = $class_object->get_terminal_info( $selected_terminal );
 

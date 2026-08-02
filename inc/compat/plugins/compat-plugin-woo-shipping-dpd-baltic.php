@@ -98,7 +98,8 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 		// Get currently selected shipping methods
 		$chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
 
-		if ( ! empty( $chosen_shipping_methods ) && substr( $chosen_shipping_methods[0], 0, strlen( self::SHIPPING_METHOD_ID ) ) === self::SHIPPING_METHOD_ID ) {
+		// CHANGE: Guard against a missing or empty first chosen method (eg. with prevent-autoselect enabled)
+		if ( ! empty( $chosen_shipping_methods[ 0 ] ) && substr( $chosen_shipping_methods[ 0 ], 0, strlen( self::SHIPPING_METHOD_ID ) ) === self::SHIPPING_METHOD_ID ) {
 			$limit = 500;
 			$page = 1;
 			$offset = $limit * ( $page - 1 );

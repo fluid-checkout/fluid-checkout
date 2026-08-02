@@ -219,12 +219,13 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 		if ( empty( $terminal_data ) ) { return; }
 
 		// Assign terminal object property values to the corresponding array keys
+		// Sanitize for storage, as this data is persisted into the order shipping address; escaping is done on output
 		$selected_terminal_data = array(
-			'company' => isset( $terminal_data[ 'name' ] ) ? esc_html( $terminal_data[ 'name' ] ) : '',
-			'address_1' => isset( $terminal_data[ 'addr' ] ) ? esc_html( $terminal_data[ 'addr' ] ) : '',
-			'postcode' => isset( $terminal_data[ 'zip' ] ) ? esc_html( $terminal_data[ 'zip' ] ) : '',
-			'city' => isset( $terminal_data[ 'city' ] ) ? esc_html( $terminal_data[ 'city' ] ) : '',
-			'country' => isset( $terminal_data[ 'country' ] ) ? esc_html( $terminal_data[ 'country' ] ) : 'HU',
+			'company' => isset( $terminal_data[ 'name' ] ) ? sanitize_text_field( $terminal_data[ 'name' ] ) : '',
+			'address_1' => isset( $terminal_data[ 'addr' ] ) ? sanitize_text_field( $terminal_data[ 'addr' ] ) : '',
+			'postcode' => isset( $terminal_data[ 'zip' ] ) ? sanitize_text_field( $terminal_data[ 'zip' ] ) : '',
+			'city' => isset( $terminal_data[ 'city' ] ) ? sanitize_text_field( $terminal_data[ 'city' ] ) : '',
+			'country' => isset( $terminal_data[ 'country' ] ) ? sanitize_text_field( $terminal_data[ 'country' ] ) : 'HU',
 		);
 
 		return $selected_terminal_data;
