@@ -327,7 +327,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		$method = $this->maybe_get_selected_shipping_method();
 
 		// Get session field name
-		$session_field_name = is_object( $method ) ? $this->get_session_field_name( $method->get_method_id() ) : '';
+		$session_field_name = is_object( $method ) ? $this->get_session_field_name( $method->id ) : '';
 
 		// Bail if session field name is not available
 		if ( empty( $session_field_name ) ) { return $posted_data; }
@@ -360,7 +360,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		$method = $this->maybe_get_selected_shipping_method();
 
 		// Get selected terminal data
-		$terminal_data = is_object( $method ) ? $this->get_selected_terminal_data( $method->get_method_id() ) : array();
+		$terminal_data = is_object( $method ) ? $this->get_selected_terminal_data( $method->id ) : array();
 
 		// Bail if there is no selected terminal
 		if ( empty( $terminal_data ) ) { return $review_text_lines; }

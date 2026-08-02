@@ -511,8 +511,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			$available_methods = array();
 		}
 
-		// Maybe return the recurring package method already saved in the session
-		if ( array_key_exists( $recurring_cart_package_key, $chosen_shipping_methods ) && ! empty( $chosen_shipping_methods[ $recurring_cart_package_key ] ) ) {
+		// Maybe return the recurring package method already saved in the session, when it is still available
+		if ( array_key_exists( $recurring_cart_package_key, $chosen_shipping_methods ) && ! empty( $chosen_shipping_methods[ $recurring_cart_package_key ] ) && array_key_exists( $chosen_shipping_methods[ $recurring_cart_package_key ], $available_methods ) ) {
 			return $chosen_shipping_methods[ $recurring_cart_package_key ];
 		}
 
@@ -522,8 +522,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		$package_index_initial_shipment = 0;
 		$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index_initial_shipment ] ) ? $chosen_shipping_methods[ $package_index_initial_shipment ] : '';
 
-		// Maybe set the chosen method to the initial shipment method
-		if ( ! empty( $chosen_initial_method ) && ( empty( $available_methods ) || array_key_exists( $chosen_initial_method, $available_methods ) ) ) {
+		// Maybe set the chosen method to the initial shipment method, when it is available for the recurring package
+		if ( ! empty( $chosen_initial_method ) && array_key_exists( $chosen_initial_method, $available_methods ) ) {
 			$chosen_recurring_method = $chosen_initial_method;
 			$should_update_session = true;
 		}
