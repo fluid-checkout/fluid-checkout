@@ -276,18 +276,11 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 				<input type="file" name="fc_settings_import_file" id="fc_settings_import_file" form="fc_settings_import_form" accept=".json,application/json" required>
 			</p>
 			<p class="fc-settings-tools__import-mode">
-				<label>
-					<input type="radio" name="fc_settings_import_mode" form="fc_settings_import_form" value="update" checked>
-					<strong><?php echo esc_html__( 'Update matching settings only', 'fluid-checkout' ); ?></strong>
+				<label for="fc_settings_import_mode_replace">
+					<input type="checkbox" name="fc_settings_import_mode" id="fc_settings_import_mode_replace" form="fc_settings_import_form" value="replace">
+					<?php echo esc_html__( 'Replace all settings', 'fluid-checkout' ); ?>
 				</label>
-				<span class="description"><?php echo esc_html__( 'Only changes settings present in the file.', 'fluid-checkout' ); ?></span>
-			</p>
-			<p class="fc-settings-tools__import-mode">
-				<label>
-					<input type="radio" name="fc_settings_import_mode" form="fc_settings_import_form" value="replace" id="fc_settings_import_mode_replace">
-					<strong><?php echo esc_html__( 'Replace all Fluid Checkout settings', 'fluid-checkout' ); ?></strong>
-				</label>
-				<span class="description"><?php echo esc_html__( 'Clears saved settings, then applies the file. Best when copying from another site.', 'fluid-checkout' ); ?></span>
+				<span class="description"><?php echo esc_html__( 'Clears saved settings, then applies the file. Leave unchecked to update matching settings only.', 'fluid-checkout' ); ?></span>
 			</p>
 			<p>
 				<button type="submit" class="button button-secondary" form="fc_settings_import_form">
