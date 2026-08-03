@@ -31,8 +31,11 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		// Field types
 		add_action( 'woocommerce_admin_field_fc_settings_tools', array( $this, 'output_field' ), 10 );
 
-		// Scripts
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 10 );
+		// Register assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// Standalone forms outside the WooCommerce settings form
 		add_action( 'admin_footer', array( $this, 'maybe_output_standalone_forms' ), 10 );
@@ -57,16 +60,35 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 
 
 	/**
-	 * Register settings tools scripts.
-	 *
-	 * @param  string  $hook  Current admin page hook.
+	 * Register settings tools assets.
 	 */
-	public function register_scripts( $hook ) {
-		// Bail if not on WooCommerce Settings
-		if ( 'woocommerce_page_wc-settings' !== $hook ) { return; }
-
-		wp_register_script( 'fc-admin-settings-tools', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-settings-tools' ), array(), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-admin-settings-tools', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-settings-tools' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-tools', 'window.addEventListener( "load", function() { FCAdminSettingsTools.init(); } );' );
+	}
+
+	/**
+	 * Enqueue settings tools assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-admin-settings-tools' );
+	}
+
+	/**
+	 * Maybe enqueue settings tools assets on the Tools settings section.
+	 *
+	 * @param  string  $hook_suffix  Current admin page hook.
+	 */
+	public function maybe_enqueue_assets( $hook_suffix ) {
+		// Bail if not on WooCommerce Settings
+		if ( 'woocommerce_page_wc-settings' !== $hook_suffix ) { return; }
+
+		// Bail if not on the Tools settings section
+		if ( ! $this->is_tools_settings_screen() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
@@ -81,9 +103,6 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 
 		// Bail if action is invalid
 		if ( ! in_array( $action, array( 'reset', 'restore', 'export', 'import' ), true ) ) { return; }
-
-		// Enqueue assets used by the tools controls
-		wp_enqueue_script( 'fc-admin-settings-tools' );
 
 		$field_description = WC_Admin_Settings::get_field_description( $value );
 		$description       = $field_description[ 'description' ];
@@ -116,11 +135,26 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	}
 
 	/**
+	 * Whether to show the soft live-site warning on settings tools screens.
+	 *
+	 * Uses the WooCommerce Coming Soon option. When the option is not set to
+	 * coming soon, the site is treated as live so the soft warning still shows.
+	 */
+	public function should_show_live_site_warning() {
+		$is_live = ( 'yes' !== get_option( 'woocommerce_coming_soon' ) );
+
+		/**
+		 * Filter whether to show the live-site soft warning on settings tools.
+		 */
+		return true === apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live );
+	}
+
+	/**
 	 * Output the soft live-site warning markup when applicable.
 	 */
 	public function maybe_output_live_site_warning() {
 		// Bail if warning should not be shown
-		if ( ! FluidCheckout_Admin_Settings_Tools_Service::instance()->should_show_live_site_warning() ) { return; }
+		if ( ! $this->should_show_live_site_warning() ) { return; }
 		?>
 		<p class="fc-settings-tools__live-warning">
 			<?php echo esc_html__( 'This store looks like a live site. Import and reset will change the current configuration.', 'fluid-checkout' ); ?>
@@ -379,19 +413,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 					<?php endforeach; ?>
 				</tbody>
 			</table>
-			<?php if ( $total > self::PREVIEW_ROWS_LIMIT ) : ?>
-				<p class="description">
-					<?php
-					echo esc_html(
-						sprintf(
-							/* translators: %d: number of additional rows not shown */
-							__( 'And %d more…', 'fluid-checkout' ),
-							$total - self::PREVIEW_ROWS_LIMIT
-						)
-					);
-					?>
-				</p>
-			<?php endif; ?>
+			<?php $this->maybe_output_diff_more_notice( $total ); ?>
 		</div>
 		<?php
 	}
@@ -416,20 +438,31 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 					<li><code><?php echo esc_html( $option ); ?></code></li>
 				<?php endforeach; ?>
 			</ul>
-			<?php if ( $total > self::PREVIEW_ROWS_LIMIT ) : ?>
-				<p class="description">
-					<?php
-					echo esc_html(
-						sprintf(
-							/* translators: %d: number of additional rows not shown */
-							__( 'And %d more…', 'fluid-checkout' ),
-							$total - self::PREVIEW_ROWS_LIMIT
-						)
-					);
-					?>
-				</p>
-			<?php endif; ?>
+			<?php $this->maybe_output_diff_more_notice( $total ); ?>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Output a notice when a diff section was truncated for display.
+	 *
+	 * @param  int  $total  Total number of entries before truncation.
+	 */
+	public function maybe_output_diff_more_notice( $total ) {
+		// Bail if all rows are shown
+		if ( $total <= self::PREVIEW_ROWS_LIMIT ) { return; }
+		?>
+		<p class="description">
+			<?php
+			echo esc_html(
+				sprintf(
+					/* translators: %d: number of additional rows not shown */
+					__( 'And %d more…', 'fluid-checkout' ),
+					$total - self::PREVIEW_ROWS_LIMIT
+				)
+			);
+			?>
+		</p>
 		<?php
 	}
 
@@ -441,37 +474,43 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	public function maybe_output_standalone_forms() {
 		// Bail if not on the Tools settings section
 		if ( ! $this->is_tools_settings_screen() ) { return; }
-		?>
-		<form id="fc_settings_export_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">
-			<input type="hidden" name="action" value="fc_settings_export">
-			<?php wp_nonce_field( 'fc_settings_export' ); ?>
-		</form>
 
-		<form id="fc_settings_import_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" enctype="multipart/form-data" class="fc-settings-tools-form">
-			<input type="hidden" name="action" value="fc_settings_import">
-			<?php wp_nonce_field( 'fc_settings_import' ); ?>
-		</form>
+		$forms = array(
+			array(
+				'id'     => 'fc_settings_export_form',
+				'action' => 'fc_settings_export',
+			),
+			array(
+				'id'      => 'fc_settings_import_form',
+				'action'  => 'fc_settings_import',
+				'enctype' => 'multipart/form-data',
+			),
+			array(
+				'id'     => 'fc_settings_import_apply_form',
+				'action' => 'fc_settings_import_apply',
+			),
+			array(
+				'id'     => 'fc_settings_import_cancel_form',
+				'action' => 'fc_settings_import_cancel',
+			),
+			array(
+				'id'     => 'fc_settings_reset_form',
+				'action' => 'fc_settings_reset',
+			),
+			array(
+				'id'     => 'fc_settings_restore_form',
+				'action' => 'fc_settings_restore',
+			),
+		);
 
-		<form id="fc_settings_import_apply_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">
-			<input type="hidden" name="action" value="fc_settings_import_apply">
-			<?php wp_nonce_field( 'fc_settings_import_apply' ); ?>
-		</form>
-
-		<form id="fc_settings_import_cancel_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">
-			<input type="hidden" name="action" value="fc_settings_import_cancel">
-			<?php wp_nonce_field( 'fc_settings_import_cancel' ); ?>
-		</form>
-
-		<form id="fc_settings_reset_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">
-			<input type="hidden" name="action" value="fc_settings_reset">
-			<?php wp_nonce_field( 'fc_settings_reset' ); ?>
-		</form>
-
-		<form id="fc_settings_restore_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">
-			<input type="hidden" name="action" value="fc_settings_restore">
-			<?php wp_nonce_field( 'fc_settings_restore' ); ?>
-		</form>
-		<?php
+		foreach ( $forms as $form ) {
+			?>
+			<form id="<?php echo esc_attr( $form[ 'id' ] ); ?>" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form"<?php echo ! empty( $form[ 'enctype' ] ) ? ' enctype="' . esc_attr( $form[ 'enctype' ] ) . '"' : ''; ?>>
+				<input type="hidden" name="action" value="<?php echo esc_attr( $form[ 'action' ] ); ?>">
+				<?php wp_nonce_field( $form[ 'action' ] ); ?>
+			</form>
+			<?php
+		}
 	}
 
 }

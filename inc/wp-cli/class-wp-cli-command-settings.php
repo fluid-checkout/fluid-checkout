@@ -93,11 +93,11 @@ class FluidCheckout_WPCLI_Command_Settings {
 		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
 		$mode = ! empty( $assoc_args[ 'replace' ] ) ? 'replace' : 'update';
 		$json = file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$data = json_decode( $json, true );
+		$data = $service->decode_import_json( $json );
 
-		// Bail if JSON is invalid
-		if ( null === $data && JSON_ERROR_NONE !== json_last_error() ) {
-			WP_CLI::error( 'Could not parse the settings file. Make sure it is valid JSON.' );
+		// Bail if JSON or payload is invalid
+		if ( is_wp_error( $data ) ) {
+			WP_CLI::error( $data->get_error_message() );
 		}
 
 		$diff = $service->get_import_diff( $data, $mode );

@@ -122,31 +122,18 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	/**
 	 * Whether an option key is excluded from settings tools.
 	 *
+	 * Excludes backup storage, secrets, install metadata, and dismissed admin notices
+	 * so those values survive export, import, and reset.
+	 *
 	 * @param  string  $option  Option name.
 	 */
 	public function is_excluded_option_key( $option ) {
-		$excluded = false;
-
-		// Internal backup storage
-		if ( self::BACKUP_OPTION_KEY === $option ) {
-			$excluded = true;
-		}
-		// License keys or activation flags (any Fluid Checkout product)
-		elseif ( preg_match( '/_license_key(_activated)?$/', $option ) ) {
-			$excluded = true;
-		}
-		// API keys
-		elseif ( preg_match( '/_api_key$/', $option ) ) {
-			$excluded = true;
-		}
-		// Install / migration metadata (activation timestamps and DB schema versions)
-		elseif ( preg_match( '/_plugin_activation_time$/', $option ) || preg_match( '/_db_version$/', $option ) ) {
-			$excluded = true;
-		}
-		// Dismissed admin notices (e.g. review requests). Kept so "Don't show this again" survives reset/import across Lite, PRO, and add-ons.
-		elseif ( false !== strpos( $option, '_dismissed_notice_' ) ) {
-			$excluded = true;
-		}
+		$excluded = self::BACKUP_OPTION_KEY === $option
+			|| (bool) preg_match( '/_license_key(_activated)?$/', $option )
+			|| (bool) preg_match( '/_api_key$/', $option )
+			|| (bool) preg_match( '/_plugin_activation_time$/', $option )
+			|| (bool) preg_match( '/_db_version$/', $option )
+			|| false !== strpos( $option, '_dismissed_notice_' );
 
 		/**
 		 * Filter whether an option key is excluded from settings tools.
@@ -180,13 +167,13 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	}
 
 	/**
-	 * Whether an option key should be included in export or import.
+	 * Whether an option key can be exported or imported.
 	 *
 	 * Troubleshooting options are omitted from transfer but remain resettable.
 	 *
 	 * @param  string  $option  Option name.
 	 */
-	public function should_include_option_key( $option ) {
+	public function is_transferable_option_key( $option ) {
 		// Bail if not managed
 		if ( ! $this->is_managed_option_key( $option ) ) {
 			return false;
@@ -198,6 +185,17 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Whether an option key should be included in export or import.
+	 *
+	 * Prefer `is_transferable_option_key()`.
+	 *
+	 * @param  string  $option  Option name.
+	 */
+	public function should_include_option_key( $option ) {
+		return $this->is_transferable_option_key( $option );
 	}
 
 	/**
@@ -233,17 +231,25 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 * @return array
 	 */
 	public function get_managed_option_keys( $for_transfer = false ) {
+		// Prefer get_transferable_option_keys() for export/import callers
+		if ( $for_transfer ) {
+			return $this->get_transferable_option_keys();
+		}
+
 		$keys = array_keys( $this->get_default_option_values() );
 		$keys = array_merge( $keys, $this->get_saved_fc_product_option_keys() );
 		$keys = array_unique( $keys );
 
-		// Maybe filter for export/import
-		if ( $for_transfer ) {
-			return array_values( array_filter( $keys, array( $this, 'should_include_option_key' ) ) );
-		}
-
-		// Remove excluded keys
 		return array_values( array_filter( $keys, array( $this, 'is_managed_option_key' ) ) );
+	}
+
+	/**
+	 * Get option keys included in export and import (managed, excluding troubleshooting).
+	 *
+	 * @return array
+	 */
+	public function get_transferable_option_keys() {
+		return array_values( array_filter( $this->get_managed_option_keys(), array( $this, 'is_transferable_option_key' ) ) );
 	}
 
 
@@ -267,9 +273,10 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 * @return array
 	 */
 	public function get_snapshot_data( $for_transfer = false ) {
+		$option_keys = $for_transfer ? $this->get_transferable_option_keys() : $this->get_managed_option_keys();
 		$settings = array();
 
-		foreach ( $this->get_managed_option_keys( $for_transfer ) as $option ) {
+		foreach ( $option_keys as $option ) {
 			// Only include values saved in the database
 			if ( ! $this->option_exists( $option ) ) { continue; }
 
@@ -423,7 +430,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 			$option = sanitize_text_field( $option );
 
 			// Skip unknown, excluded, or non-transferable keys
-			if ( ! $this->should_include_option_key( $option ) ) {
+			if ( ! $this->is_transferable_option_key( $option ) ) {
 				$result[ 'skipped_count' ]++;
 				continue;
 			}
@@ -471,18 +478,21 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	}
 
 	/**
-	 * Whether to show the soft live-site warning on settings tools screens.
+	 * Get an empty import result structure.
 	 *
-	 * Uses the WooCommerce Coming Soon option. When the option is not set to
-	 * coming soon, the site is treated as live so the soft warning still shows.
+	 * @param  string  $mode    `update` or `replace`.
+	 * @param  array   $errors  Optional error messages.
+	 * @return array{ imported: int, skipped: int, reset: int, mode: string, errors: array, backup_created: bool }
 	 */
-	public function should_show_live_site_warning() {
-		$is_live = ( 'yes' !== get_option( 'woocommerce_coming_soon' ) );
-
-		/**
-		 * Filter whether to show the live-site soft warning on settings tools.
-		 */
-		return true === apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live );
+	public function get_empty_import_result( $mode = 'update', $errors = array() ) {
+		return array(
+			'imported'       => 0,
+			'skipped'        => 0,
+			'reset'          => 0,
+			'mode'           => $this->normalize_import_mode( $mode ),
+			'errors'         => $errors,
+			'backup_created' => false,
+		);
 	}
 
 	/**
@@ -495,14 +505,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 */
 	public function import_settings( $data, $create_backup = false, $mode = 'update' ) {
 		$mode = $this->normalize_import_mode( $mode );
-		$result = array(
-			'imported'       => 0,
-			'skipped'        => 0,
-			'reset'          => 0,
-			'mode'           => $mode,
-			'errors'         => array(),
-			'backup_created' => false,
-		);
+		$result = $this->get_empty_import_result( $mode );
 
 		// Bail if data is invalid
 		if ( ! $this->is_valid_import_data( $data ) ) {
@@ -526,7 +529,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 			$option = sanitize_text_field( $option );
 
 			// Skip unknown, excluded, or non-transferable keys
-			if ( ! $this->should_include_option_key( $option ) ) {
+			if ( ! $this->is_transferable_option_key( $option ) ) {
 				$result[ 'skipped' ]++;
 				continue;
 			}
@@ -542,6 +545,34 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	}
 
 	/**
+	 * Decode and validate a settings import JSON string.
+	 *
+	 * @param  string  $json  JSON string.
+	 * @return array|\WP_Error  Decoded export data, or WP_Error on failure.
+	 */
+	public function decode_import_json( $json ) {
+		$data = json_decode( $json, true );
+
+		// Bail if JSON is invalid
+		if ( null === $data && JSON_ERROR_NONE !== json_last_error() ) {
+			return new WP_Error(
+				'fc_settings_tools_invalid_json',
+				__( 'Could not parse the settings file. Make sure it is valid JSON.', 'fluid-checkout' )
+			);
+		}
+
+		// Bail if payload structure is invalid
+		if ( ! $this->is_valid_import_data( $data ) ) {
+			return new WP_Error(
+				'fc_settings_tools_invalid_payload',
+				__( 'Invalid settings file. Expected a Fluid Checkout settings export.', 'fluid-checkout' )
+			);
+		}
+
+		return $data;
+	}
+
+	/**
 	 * Import settings from a JSON string.
 	 *
 	 * @param  string  $json           JSON string.
@@ -550,18 +581,11 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 * @return array{ imported: int, skipped: int, reset: int, mode: string, errors: array, backup_created: bool }
 	 */
 	public function import_settings_from_json( $json, $create_backup = false, $mode = 'update' ) {
-		$data = json_decode( $json, true );
+		$data = $this->decode_import_json( $json );
 
-		// Bail if JSON is invalid
-		if ( null === $data && JSON_ERROR_NONE !== json_last_error() ) {
-			return array(
-				'imported'       => 0,
-				'skipped'        => 0,
-				'reset'          => 0,
-				'mode'           => $this->normalize_import_mode( $mode ),
-				'errors'         => array( __( 'Could not parse the settings file. Make sure it is valid JSON.', 'fluid-checkout' ) ),
-				'backup_created' => false,
-			);
+		// Bail if JSON or payload is invalid
+		if ( is_wp_error( $data ) ) {
+			return $this->get_empty_import_result( $mode, array( $data->get_error_message() ) );
 		}
 
 		return $this->import_settings( $data, $create_backup, $mode );

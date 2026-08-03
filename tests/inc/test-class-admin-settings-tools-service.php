@@ -12,7 +12,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 *
 	 * Test: Managed option keys: exclude secrets and runtime meta.
 	 * Test: Excluded option keys: secrets by pattern and filter extensions.
-	 * Test: Troubleshooting option keys are identified.
+	 * Test: Troubleshooting and transferable option keys are identified.
 	 * Test: Export: includes only saved managed values.
 	 * Test: Export: omits secrets even when present in the database.
 	 * Test: Export: omits troubleshooting options.
@@ -133,18 +133,24 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	}
 
 	/**
-	 * Test: Troubleshooting option keys are identified.
+	 * Test: Troubleshooting and transferable option keys are identified.
 	 */
-	public function test_troubleshooting_option_keys_are_identified() {
+	public function test_troubleshooting_and_transferable_option_keys_are_identified() {
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_debug_mode' ) );
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_load_unminified_assets' ) );
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_use_enhanced_select_components' ) );
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_fix_zoom_in_form_fields_mobile_devices' ) );
 		$this->assertFalse( $this->service->is_troubleshooting_option_key( 'fc_checkout_layout' ) );
-		$this->assertFalse( $this->service->should_include_option_key( 'fc_debug_mode' ) );
-		$this->assertFalse( $this->service->should_include_option_key( 'fc_use_enhanced_select_components' ) );
-		$this->assertTrue( $this->service->should_include_option_key( 'fc_checkout_layout' ) );
-		$this->assertTrue( $this->service->should_include_option_key( 'woocommerce_checkout_phone_field' ) );
+		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_debug_mode' ) );
+		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_use_enhanced_select_components' ) );
+		$this->assertTrue( $this->service->is_transferable_option_key( 'fc_checkout_layout' ) );
+		$this->assertTrue( $this->service->is_transferable_option_key( 'woocommerce_checkout_phone_field' ) );
+
+		// Alias kept for backward compatibility
+		$this->assertSame(
+			$this->service->is_transferable_option_key( 'fc_checkout_layout' ),
+			$this->service->should_include_option_key( 'fc_checkout_layout' )
+		);
 	}
 
 	/**
@@ -450,8 +456,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
 
 		$this->assertTrue( $this->service->is_managed_option_key( 'fc_gaa_enabled' ) );
-		$this->assertTrue( $this->service->should_include_option_key( 'fc_gaa_enabled' ) );
-		$this->assertFalse( $this->service->should_include_option_key( 'fc_gaa_google_places_api_key' ) );
+		$this->assertTrue( $this->service->is_transferable_option_key( 'fc_gaa_enabled' ) );
+		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_gaa_google_places_api_key' ) );
 
 		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
 		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'api-should-stay' );

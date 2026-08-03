@@ -124,7 +124,46 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		$mode = $service->normalize_import_mode(
 			isset( $_POST[ 'fc_settings_import_mode' ] ) ? sanitize_text_field( wp_unslash( $_POST[ 'fc_settings_import_mode' ] ) ) : 'update'
 		);
+		$upload = $this->get_validated_import_upload();
+		$data = $service->decode_import_json( $upload[ 'json' ] );
 
+		// Bail if JSON or payload is invalid
+		if ( is_wp_error( $data ) ) {
+			$this->redirect_with_notice( array(
+				'type'    => 'error',
+				'message' => $data->get_error_message(),
+			) );
+		}
+
+		$diff = $service->get_import_diff( $data, $mode );
+
+		// Bail if validation errors
+		if ( ! empty( $diff[ 'errors' ] ) ) {
+			$this->redirect_with_notice( array(
+				'type'    => 'error',
+				'message' => implode( ' ', $diff[ 'errors' ] ),
+			) );
+		}
+
+		$service->set_import_preview( array(
+			'json'     => $upload[ 'json' ],
+			'mode'     => $mode,
+			'diff'     => $diff,
+			'filename' => $upload[ 'filename' ],
+		) );
+
+		wp_safe_redirect( $this->get_tools_settings_url() );
+		exit;
+	}
+
+	/**
+	 * Validate the uploaded settings file and return its contents.
+	 *
+	 * Redirects with an error notice when validation fails.
+	 *
+	 * @return array{ json: string, filename: string }
+	 */
+	public function get_validated_import_upload() {
 		// Bail if no file uploaded
 		if ( empty( $_FILES[ 'fc_settings_import_file' ][ 'tmp_name' ] ) ) {
 			$this->redirect_with_notice( array(
@@ -181,35 +220,19 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Reading validated uploaded temp file.
 		$json = file_get_contents( $tmp_name );
-		$data = json_decode( $json, true );
 
-		// Bail if JSON is invalid
-		if ( null === $data && JSON_ERROR_NONE !== json_last_error() ) {
+		// Bail if file contents could not be read
+		if ( false === $json ) {
 			$this->redirect_with_notice( array(
 				'type'    => 'error',
-				'message' => __( 'Could not parse the settings file. Make sure it is valid JSON.', 'fluid-checkout' ),
+				'message' => __( 'Could not read the uploaded settings file.', 'fluid-checkout' ),
 			) );
 		}
 
-		$diff = $service->get_import_diff( $data, $mode );
-
-		// Bail if validation errors
-		if ( ! empty( $diff[ 'errors' ] ) ) {
-			$this->redirect_with_notice( array(
-				'type'    => 'error',
-				'message' => implode( ' ', $diff[ 'errors' ] ),
-			) );
-		}
-
-		$service->set_import_preview( array(
+		return array(
 			'json'     => $json,
-			'mode'     => $mode,
-			'diff'     => $diff,
 			'filename' => $filename,
-		) );
-
-		wp_safe_redirect( $this->get_tools_settings_url() );
-		exit;
+		);
 	}
 
 	/**
