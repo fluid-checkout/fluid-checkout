@@ -157,12 +157,12 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 			return true;
 		}
 
-		// Bail if runtime / site meta option
+		// Bail if install / migration metadata (activation timestamps and DB schema versions)
 		if ( preg_match( '/_plugin_activation_time$/', $option ) || preg_match( '/_db_version$/', $option ) ) {
 			return true;
 		}
 
-		// Bail if dismissed admin notice flags (any FC product prefix)
+		// Bail if dismissed admin notices (e.g. review requests). Kept so "Don't show this again" survives reset/import across Lite, PRO, and add-ons.
 		if ( false !== strpos( $option, '_dismissed_notice_' ) ) {
 			return true;
 		}
