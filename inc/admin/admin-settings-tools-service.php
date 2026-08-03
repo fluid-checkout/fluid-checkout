@@ -115,59 +115,41 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	}
 
 	/**
-	 * Get option keys that must never be exported, imported, or reset.
-	 *
-	 * @return array
-	 */
-	public function get_excluded_option_keys() {
-		$excluded = array(
-			// License keys and activation flags
-			'fc_pro_license_key',
-			'fc_pro_license_key_activated',
-			'fc_adb_license_key',
-			'fc_adb_license_key_activated',
-			'fc_gaa_license_key',
-			'fc_gaa_license_key_activated',
-			'fc_vat_license_key',
-			'fc_vat_license_key_activated',
-
-			// API keys
-			'fc_gaa_google_places_api_key',
-
-			// Internal backup storage
-			self::BACKUP_OPTION_KEY,
-		);
-
-		/**
-		 * Filter excluded option keys for settings tools.
-		 *
-		 * @param  array  $excluded  Option keys that must not be exported, imported, or reset.
-		 */
-		return apply_filters( 'fc_settings_tools_excluded_option_keys', $excluded );
-	}
-
-	/**
 	 * Whether an option key is excluded from settings tools.
 	 *
 	 * @param  string  $option  Option name.
 	 */
 	public function is_excluded_option_key( $option ) {
-		// Bail if in the hardcoded exclude list
-		if ( in_array( $option, $this->get_excluded_option_keys(), true ) ) {
-			return true;
+		$excluded = false;
+
+		// Internal backup storage
+		if ( self::BACKUP_OPTION_KEY === $option ) {
+			$excluded = true;
+		}
+		// License keys or activation flags (any Fluid Checkout product)
+		elseif ( preg_match( '/_license_key(_activated)?$/', $option ) ) {
+			$excluded = true;
+		}
+		// API keys
+		elseif ( preg_match( '/_api_key$/', $option ) ) {
+			$excluded = true;
+		}
+		// Install / migration metadata (activation timestamps and DB schema versions)
+		elseif ( preg_match( '/_plugin_activation_time$/', $option ) || preg_match( '/_db_version$/', $option ) ) {
+			$excluded = true;
+		}
+		// Dismissed admin notices (e.g. review requests). Kept so "Don't show this again" survives reset/import across Lite, PRO, and add-ons.
+		elseif ( false !== strpos( $option, '_dismissed_notice_' ) ) {
+			$excluded = true;
 		}
 
-		// Bail if install / migration metadata (activation timestamps and DB schema versions)
-		if ( preg_match( '/_plugin_activation_time$/', $option ) || preg_match( '/_db_version$/', $option ) ) {
-			return true;
-		}
-
-		// Bail if dismissed admin notices (e.g. review requests). Kept so "Don't show this again" survives reset/import across Lite, PRO, and add-ons.
-		if ( false !== strpos( $option, '_dismissed_notice_' ) ) {
-			return true;
-		}
-
-		return false;
+		/**
+		 * Filter whether an option key is excluded from settings tools.
+		 *
+		 * @param  bool    $excluded  Whether the option is excluded.
+		 * @param  string  $option    Option name.
+		 */
+		return (bool) apply_filters( 'fc_settings_tools_is_excluded_option_key', $excluded, $option );
 	}
 
 	/**
@@ -485,40 +467,20 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	}
 
 	/**
-	 * Whether the store appears to be a live site for settings-tools warnings.
-	 *
-	 * Uses WooCommerce Coming Soon helper when available. When unavailable, treats
-	 * the site as live so the soft warning still shows.
-	 */
-	public function is_settings_tools_live_site() {
-		$is_live = true;
-
-		if ( class_exists( '\\Automattic\\WooCommerce\\Internal\\ComingSoon\\ComingSoonHelper' ) ) {
-			$helper = new \Automattic\WooCommerce\Internal\ComingSoon\ComingSoonHelper();
-			$is_live = (bool) $helper->is_site_live();
-		}
-
-		/**
-		 * Filter whether the site is considered live for settings tools warnings.
-		 *
-		 * @param  bool  $is_live  Whether the site is considered live.
-		 */
-		return (bool) apply_filters( 'fc_settings_tools_is_live_site', $is_live );
-	}
-
-	/**
 	 * Whether to show the soft live-site warning on settings tools screens.
+	 *
+	 * Uses the WooCommerce Coming Soon option. When the option is not set to
+	 * coming soon, the site is treated as live so the soft warning still shows.
 	 */
 	public function should_show_live_site_warning() {
-		$is_live = $this->is_settings_tools_live_site();
+		$is_live = ( 'yes' !== get_option( 'woocommerce_coming_soon' ) );
 
 		/**
 		 * Filter whether to show the live-site soft warning on settings tools.
 		 *
-		 * @param  bool  $show     Whether to show the warning.
 		 * @param  bool  $is_live  Whether the site is considered live.
 		 */
-		return (bool) apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live, $is_live );
+		return (bool) apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live );
 	}
 
 	/**

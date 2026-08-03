@@ -11,7 +11,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * SUMMARY OF TESTS
 	 *
 	 * Test: Managed option keys: exclude secrets and runtime meta.
-	 * Test: Excluded option keys: hardcoded secrets and filter extensions.
+	 * Test: Excluded option keys: secrets by pattern and filter extensions.
 	 * Test: Troubleshooting option keys are identified.
 	 * Test: Export: includes only saved managed values.
 	 * Test: Export: omits secrets even when present in the database.
@@ -103,7 +103,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	}
 
 	/**
-	 * Test: Excluded option keys: hardcoded secrets and filter extensions.
+	 * Test: Excluded option keys: secrets by pattern and filter extensions.
 	 */
 	public function test_excluded_option_keys_hardcoded_and_filterable() {
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_license_key' ) );
@@ -111,6 +111,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_adb_license_key' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_gaa_license_key' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_vat_license_key' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_paddle_license_key' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_paddle_license_key_activated' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_gaa_google_places_api_key' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_plugin_activation_time' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_db_version' ) );
@@ -119,15 +121,14 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_adb_dismissed_notice_review_request_timed' ) );
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 
-		$filter = function( $excluded ) {
-			$excluded[] = 'fc_checkout_layout';
-			return $excluded;
+		$filter = function( $excluded, $option ) {
+			return 'fc_checkout_layout' === $option ? true : $excluded;
 		};
-		add_filter( 'fc_settings_tools_excluded_option_keys', $filter );
+		add_filter( 'fc_settings_tools_is_excluded_option_key', $filter, 10, 2 );
 
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 
-		remove_filter( 'fc_settings_tools_excluded_option_keys', $filter );
+		remove_filter( 'fc_settings_tools_is_excluded_option_key', $filter );
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 	}
 

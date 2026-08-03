@@ -191,7 +191,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 			'filename' => $filename,
 		) );
 
-		wp_safe_redirect( $this->get_tools_settings_url( array( 'fc_settings_import_preview' => '1' ) ) );
+		wp_safe_redirect( $this->get_tools_settings_url() );
 		exit;
 	}
 
