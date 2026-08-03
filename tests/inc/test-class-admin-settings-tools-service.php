@@ -114,6 +114,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_gaa_google_places_api_key' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_plugin_activation_time' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_db_version' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_dismissed_notice_review_request_timed' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_dismissed_notice_review_request_timed' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_adb_dismissed_notice_review_request_timed' ) );
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 
 		$filter = function( $excluded ) {

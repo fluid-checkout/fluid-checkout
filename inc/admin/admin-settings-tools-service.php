@@ -162,8 +162,8 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 			return true;
 		}
 
-		// Bail if dismissed admin notice flags
-		if ( 0 === strpos( $option, 'fc_dismissed_notice_' ) ) {
+		// Bail if dismissed admin notice flags (any FC product prefix)
+		if ( false !== strpos( $option, '_dismissed_notice_' ) ) {
 			return true;
 		}
 
