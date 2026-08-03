@@ -133,8 +133,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 		if ( 'replace' === $result[ 'mode' ] ) {
 			WP_CLI::success(
 				sprintf(
-					'Settings replaced. Cleared: %d. Imported: %d. Skipped: %d.',
-					(int) $result[ 'reset' ],
+					'Settings replaced. Applied: %d. Skipped: %d.',
 					(int) $result[ 'imported' ],
 					(int) $result[ 'skipped' ]
 				)
@@ -144,7 +143,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 
 		WP_CLI::success(
 			sprintf(
-				'Settings updated. Imported: %d. Skipped: %d.',
+				'Settings updated. Applied: %d. Skipped: %d.',
 				(int) $result[ 'imported' ],
 				(int) $result[ 'skipped' ]
 			)

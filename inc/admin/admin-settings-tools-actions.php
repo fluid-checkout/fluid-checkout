@@ -224,21 +224,21 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		}
 
 		if ( 'replace' === $result[ 'mode' ] ) {
-			$message = sprintf(
-				/* translators: 1: number of settings cleared, 2: number of settings imported, 3: number of settings skipped */
-				__( 'Settings replaced. Cleared: %1$d. Imported: %2$d. Skipped: %3$d. Re-select logo or linked pages if needed.', 'fluid-checkout' ),
-				(int) $result[ 'reset' ],
-				(int) $result[ 'imported' ],
-				(int) $result[ 'skipped' ]
-			);
+			$message = __( 'Settings replaced from the reviewed file.', 'fluid-checkout' );
 		} else {
-			$message = sprintf(
-				/* translators: 1: number of settings imported, 2: number of settings skipped */
-				__( 'Settings updated. Updated: %1$d. Skipped: %2$d. Re-select logo or linked pages if needed.', 'fluid-checkout' ),
-				(int) $result[ 'imported' ],
+			$message = __( 'Settings updated from the reviewed file.', 'fluid-checkout' );
+		}
+
+		// Maybe mention non-transferable keys found in the file
+		if ( (int) $result[ 'skipped' ] > 0 ) {
+			$message .= ' ' . sprintf(
+				/* translators: %d: number of settings skipped from the file */
+				__( 'Skipped: %d (not transferable).', 'fluid-checkout' ),
 				(int) $result[ 'skipped' ]
 			);
 		}
+
+		$message .= ' ' . __( 'Re-select logo or linked pages if needed.', 'fluid-checkout' );
 
 		$this->redirect_with_notice( array(
 			'type'    => 'success',
