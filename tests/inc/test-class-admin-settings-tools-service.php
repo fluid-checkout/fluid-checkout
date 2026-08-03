@@ -20,7 +20,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Import: applies known managed settings.
 	 * Test: Import: skips troubleshooting options.
 	 * Test: Import: skips unknown keys and secrets.
-	 * Test: Import: rejects invalid payload and invalid JSON.
+	 * Test: Import: rejects invalid payload, unsupported format version, and invalid JSON.
 	 * Test: Import: preserves existing secrets.
 	 * Test: Reset: deletes managed saved options and restores defaults via getter.
 	 * Test: Reset: leaves secrets and runtime meta in place.
@@ -230,8 +230,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_import_applies_known_managed_settings() {
 		$result = $this->service->import_settings( array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_checkout_layout'         => 'single-step',
 				'fc_enable_dark_mode_styles' => 'yes',
 			),
@@ -252,8 +253,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_import_skips_troubleshooting_options() {
 		$result = $this->service->import_settings( array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_checkout_layout'                => 'single-step',
 				'fc_debug_mode'                     => 'yes',
 				'fc_use_enhanced_select_components' => 'yes',
@@ -278,8 +280,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_pro_license_key', 'keep-me' );
 
 		$result = $this->service->import_settings( array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_checkout_layout'           => 'single-step',
 				'fc_pro_license_key'           => 'stolen-license',
 				'fc_gaa_google_places_api_key' => 'stolen-api-key',
@@ -299,7 +302,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	}
 
 	/**
-	 * Test: Import: rejects invalid payload and invalid JSON.
+	 * Test: Import: rejects invalid payload, unsupported format version, and invalid JSON.
 	 */
 	public function test_import_rejects_invalid_payload_and_json() {
 		$invalid_payload = $this->service->import_settings( array( 'generator' => 'fluid-checkout' ) );
@@ -307,13 +310,24 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertSame( 0, $invalid_payload[ 'imported' ] );
 
 		$wrong_generator = $this->service->import_settings( array(
-			'generator' => 'other-plugin',
-			'settings'  => array(
+			'generator'      => 'other-plugin',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_checkout_layout' => 'single-step',
 			),
 		) );
 		$this->assertNotEmpty( $wrong_generator[ 'errors' ] );
 		$this->assertSame( 0, $wrong_generator[ 'imported' ] );
+
+		$unsupported_format = $this->service->import_settings( array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => '999',
+			'settings'       => array(
+				'fc_checkout_layout' => 'single-step',
+			),
+		) );
+		$this->assertNotEmpty( $unsupported_format[ 'errors' ] );
+		$this->assertSame( 0, $unsupported_format[ 'imported' ] );
 
 		$invalid_json = $this->service->import_settings_from_json( '{not-valid-json' );
 		$this->assertNotEmpty( $invalid_json[ 'errors' ] );
@@ -329,8 +343,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'places-secret' );
 
 		$this->service->import_settings( array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_enable_checkout_progress_bar' => 'no',
 				'fc_vat_license_key'              => 'overwrite-vat',
 				'fc_vat_license_key_activated'    => 'no',
@@ -435,8 +450,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertSame( 'optional', $data[ 'settings' ][ 'woocommerce_checkout_phone_field' ] );
 
 		$result = $this->service->import_settings( array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'woocommerce_checkout_phone_field' => 'required',
 			),
 		) );
@@ -467,8 +483,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertArrayNotHasKey( 'fc_gaa_google_places_api_key', $export[ 'settings' ] );
 
 		$result = $this->service->import_settings( array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_gaa_enabled'               => 'no',
 				'fc_gaa_google_places_api_key' => 'should-not-import',
 			),
@@ -515,8 +532,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 */
 	public function test_import_applies_inactive_fc_product_settings() {
 		$result = $this->service->import_settings( array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_pro_enable_address_book'     => 'yes',
 				'fc_vat_number_field_visibility' => 'optional',
 				'fc_gaa_enabled'                 => 'yes',
@@ -610,8 +628,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$result = $this->service->import_settings(
 			array(
-				'generator' => 'fluid-checkout',
-				'settings'  => array(
+				'generator'      => 'fluid-checkout',
+				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+				'settings'       => array(
 					'fc_checkout_layout' => 'multi-step',
 				),
 			),
@@ -689,8 +708,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$this->service->import_settings(
 			array(
-				'generator' => 'fluid-checkout',
-				'settings'  => array(
+				'generator'      => 'fluid-checkout',
+				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+				'settings'       => array(
 					'fc_checkout_layout'         => 'multi-step',
 					'fc_enable_dark_mode_styles' => 'yes',
 				),
@@ -742,8 +762,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$result = $this->service->import_settings(
 			array(
-				'generator' => 'fluid-checkout',
-				'settings'  => array(
+				'generator'      => 'fluid-checkout',
+				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+				'settings'       => array(
 					'fc_checkout_layout' => 'multi-step',
 				),
 			),
@@ -769,8 +790,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$result = $this->service->import_settings(
 			array(
-				'generator' => 'fluid-checkout',
-				'settings'  => array(
+				'generator'      => 'fluid-checkout',
+				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+				'settings'       => array(
 					'fc_checkout_layout' => 'multi-step',
 				),
 			),
@@ -799,8 +821,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_enable_checkout_progress_bar', 'yes' );
 
 		$payload = array(
-			'generator' => 'fluid-checkout',
-			'settings'  => array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
 				'fc_checkout_layout'         => 'multi-step',
 				'fc_enable_dark_mode_styles' => 'yes',
 				'fc_gaa_enabled'             => 'yes',
@@ -835,8 +858,9 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$diff = $this->service->get_import_diff(
 			array(
-				'generator' => 'fluid-checkout',
-				'settings'  => array(
+				'generator'      => 'fluid-checkout',
+				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+				'settings'       => array(
 					'fc_checkout_layout'  => 'multi-step',
 					'fc_pro_license_key'  => 'stolen-license',
 					'fc_gaa_google_places_api_key' => 'stolen-api-key',

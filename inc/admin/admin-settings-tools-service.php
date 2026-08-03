@@ -360,6 +360,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	public function is_valid_import_data( $data ) {
 		return is_array( $data )
 			&& 'fluid-checkout' === ( $data[ 'generator' ] ?? '' )
+			&& self::EXPORT_FORMAT_VERSION === (string) ( $data[ 'format_version' ] ?? '' )
 			&& array_key_exists( 'settings', $data )
 			&& is_array( $data[ 'settings' ] );
 	}
@@ -373,9 +374,11 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	public function format_diff_value( $value ) {
 		if ( is_bool( $value ) ) {
 			$formatted = $value ? 'true' : 'false';
-		} elseif ( is_scalar( $value ) || null === $value ) {
+		}
+		elseif ( is_scalar( $value ) || null === $value ) {
 			$formatted = (string) $value;
-		} else {
+		}
+		else {
 			$formatted = wp_json_encode( $value );
 			if ( false === $formatted ) {
 				$formatted = '';

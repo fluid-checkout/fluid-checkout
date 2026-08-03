@@ -265,7 +265,8 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 
 		if ( 'replace' === $result[ 'mode' ] ) {
 			$message = __( 'Settings replaced from the reviewed file.', 'fluid-checkout' );
-		} else {
+		}
+		else {
 			$message = __( 'Settings updated from the reviewed file.', 'fluid-checkout' );
 		}
 
