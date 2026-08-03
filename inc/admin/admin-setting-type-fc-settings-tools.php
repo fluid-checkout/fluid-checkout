@@ -116,7 +116,6 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		?>
 		<fieldset class="fc-settings-tools">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<label>
 					<input type="checkbox" name="fc_settings_reset_confirm" id="fc_settings_reset_confirm" form="fc_settings_reset_form" value="1" required>
@@ -222,6 +221,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		?>
 		<fieldset class="fc-settings-tools">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<input type="file" name="fc_settings_import_file" id="fc_settings_import_file" form="fc_settings_import_form" accept=".json,application/json" required>
 			</p>

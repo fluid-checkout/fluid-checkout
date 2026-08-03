@@ -136,25 +136,16 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				array(
 					'title' => __( 'Backup & reset', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => __( 'Export, import, reset, or restore Fluid Checkout settings, including related WooCommerce and integration options. License keys, API keys, and troubleshooting options are skipped on export and import; license and API keys also stay on reset. Import can update matching settings or replace all after a review. A backup is created before import or reset.', 'fluid-checkout' ),
+					'desc'  => __( 'License keys, API keys, and troubleshooting options are skipped. A backup is created before import or reset.', 'fluid-checkout' ),
 					'id'    => 'fc_checkout_settings_tools',
 				),
 
 				array(
-					'title'       => __( 'Reset settings', 'fluid-checkout' ),
-					'desc'        => __( 'Delete saved settings so defaults are used again.', 'fluid-checkout' ),
+					'title'       => __( 'Import settings', 'fluid-checkout' ),
+					'desc'        => __( 'Logo and linked page IDs are site-specific; re-select them after import if needed.', 'fluid-checkout' ),
 					'type'        => 'fc_settings_tools',
-					'id'          => 'fc_settings_tools_reset',
-					'tool_action' => 'reset',
-					'is_option'   => false,
-				),
-
-				array(
-					'title'       => __( 'Restore previous settings', 'fluid-checkout' ),
-					'desc'        => __( 'Undo the last import or reset.', 'fluid-checkout' ),
-					'type'        => 'fc_settings_tools',
-					'id'          => 'fc_settings_tools_restore',
-					'tool_action' => 'restore',
+					'id'          => 'fc_settings_tools_import',
+					'tool_action' => 'import',
 					'is_option'   => false,
 				),
 
@@ -168,11 +159,20 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'title'       => __( 'Import settings', 'fluid-checkout' ),
-					'desc'        => __( 'Logo and linked page IDs are site-specific; re-select them after import if needed.', 'fluid-checkout' ),
+					'title'       => __( 'Restore previous settings', 'fluid-checkout' ),
+					'desc'        => __( 'Undo the last import or reset.', 'fluid-checkout' ),
 					'type'        => 'fc_settings_tools',
-					'id'          => 'fc_settings_tools_import',
-					'tool_action' => 'import',
+					'id'          => 'fc_settings_tools_restore',
+					'tool_action' => 'restore',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Reset settings', 'fluid-checkout' ),
+					'desc'        => __( 'Delete saved settings so defaults are used again.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_reset',
+					'tool_action' => 'reset',
 					'is_option'   => false,
 				),
 
