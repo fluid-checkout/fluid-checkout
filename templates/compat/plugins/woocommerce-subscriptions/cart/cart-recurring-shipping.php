@@ -7,7 +7,7 @@
  * @author  Prospress
  * @package WooCommerce Subscriptions/Templates
  * @version 1.0.0 - Migrated from WooCommerce Subscriptions v2.6.0
- * @fc-version 4.0.5
+ * @fc-version 4.2.7
  */
 
  // CHANGE: This template has been modified to align the shipping methods for subscription plans with Fluid Checkout's original shipping methods.
@@ -34,7 +34,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php endif; ?>
 
 	<?php // CHANGE: Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
-	<?php if ( 1 < count( $available_methods ) ) : ?>
+	<?php // CHANGE: Always display shipping options for recurring packages, even when only one shipping method is available ?>
+	<?php if ( 0 < count( $available_methods ) ) : ?>
 		<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
 		<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
 
@@ -88,8 +89,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php endif; ?>
 	<?php // CHANGE: END - Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
 
-	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package, only on the checkout page ?>
-	<?php if ( is_checkout() && count( $available_methods ) == 0 ) : ?>
+	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package ?>
+	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && count( $available_methods ) == 0 ) : ?>
 		<?php if ( $has_calculated_shipping && $formatted_destination ) : ?>
 			<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 				<div class="shipping-method__options">
