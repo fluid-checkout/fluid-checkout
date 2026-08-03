@@ -229,15 +229,6 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 			$message = __( 'Settings updated from the reviewed file.', 'fluid-checkout' );
 		}
 
-		// Maybe mention non-transferable keys found in the file
-		if ( (int) $result[ 'skipped' ] > 0 ) {
-			$message .= ' ' . sprintf(
-				/* translators: %d: number of settings skipped from the file */
-				__( 'Skipped: %d (not transferable).', 'fluid-checkout' ),
-				(int) $result[ 'skipped' ]
-			);
-		}
-
 		$message .= ' ' . __( 'Re-select the logo or linked pages if needed.', 'fluid-checkout' );
 
 		$this->redirect_with_notice( array(
@@ -296,12 +287,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 
 		$this->redirect_with_notice( array(
 			'type'    => 'success',
-			'message' => sprintf(
-				/* translators: 1: number of settings restored, 2: number of settings removed */
-				__( 'Previous settings restored. Restored: %1$d. Removed: %2$d.', 'fluid-checkout' ),
-				(int) $result[ 'restored' ],
-				(int) $result[ 'deleted' ]
-			),
+			'message' => __( 'Previous settings restored.', 'fluid-checkout' ),
 		) );
 	}
 
