@@ -142,7 +142,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 				array(
 					'title'       => __( 'Import settings', 'fluid-checkout' ),
-					'desc'        => __( 'Logo and linked page IDs are site-specific; re-select them after import if needed.', 'fluid-checkout' ),
+					'desc'        => __( 'Logo and linked page IDs are site-specific. Re-select them after import if needed.', 'fluid-checkout' ),
 					'type'        => 'fc_settings_tools',
 					'id'          => 'fc_settings_tools_import',
 					'tool_action' => 'import',

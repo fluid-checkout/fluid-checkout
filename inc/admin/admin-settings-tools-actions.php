@@ -238,7 +238,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 			);
 		}
 
-		$message .= ' ' . __( 'Re-select logo or linked pages if needed.', 'fluid-checkout' );
+		$message .= ' ' . __( 'Re-select the logo or linked pages if needed.', 'fluid-checkout' );
 
 		$this->redirect_with_notice( array(
 			'type'    => 'success',
