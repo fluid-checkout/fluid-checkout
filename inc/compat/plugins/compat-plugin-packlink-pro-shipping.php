@@ -156,6 +156,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Initialize flag
 		$is_target_method_selected = false;
+		$chosen_method = '';
 
 		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
@@ -179,6 +180,14 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Bail if target shipping method is not selected
 		if ( ! $is_target_method_selected ) { return; }
+
+		// Keep Packlink's shipping method session aligned with the chosen rate.
+		// Otherwise Packlink clears the selected drop-off when `_packlink_shipping_method_id`
+		// is empty or does not match the chosen method during fragment refreshes.
+		$drop_off_id = class_exists( self::CLASS_NAME ) ? WC()->session->get( Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::DROP_OFF_ID, '' ) : '';
+		if ( ! empty( $chosen_method ) && ! empty( $drop_off_id ) ) {
+			WC()->session->set( Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::SHIPPING_ID, $chosen_method );
+		}
 
 		// Get Packlink checkout handler instance
 		$handler = new Packlink\WooCommerce\Components\Checkout\Checkout_Handler();
@@ -226,9 +235,22 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Bail if method is not available
 		if ( ! method_exists( self::CLASS_NAME, 'get_packlink_shipping_method' ) ) { return false; }
 
-		// Get shipping method instance ID
-		$instance_id_parts = explode( ':', $shipping_method_id );
-		$instance_id = (int) end( $instance_id_parts );
+		// Prefer instance ID from the shipping method object when available.
+		// Order items pass `get_method_id()` without the instance suffix (e.g. `packlink_shipping_method`),
+		// so parsing the ID string alone would cast to `0` and fail to resolve the Packlink method.
+		$instance_id = 0;
+		if ( is_object( $method ) && is_callable( array( $method, 'get_instance_id' ) ) ) {
+			$instance_id = (int) $method->get_instance_id();
+		}
+
+		// Fall back to parsing from shipping method ID string (e.g. `packlink_shipping_method:623`)
+		if ( empty( $instance_id ) && ! empty( $shipping_method_id ) ) {
+			$instance_id_parts = explode( ':', $shipping_method_id );
+			$instance_id = (int) end( $instance_id_parts );
+		}
+
+		// Bail if instance ID is not available
+		if ( empty( $instance_id ) ) { return false; }
 
 		// Get Packlink shipping method object
 		$packlink_method = Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::get_packlink_shipping_method( $instance_id );
@@ -288,14 +310,27 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * Get the selected terminal data.
 	 */
 	public function get_selected_terminal_data() {
-		// Get session field value
-		$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME );
+		// Prefer Packlink's own session key, then FC session copy
+		$terminal_data = null;
+		if ( class_exists( self::CLASS_NAME ) ) {
+			$terminal_data = WC()->session->get( Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::DROP_OFF_EXTRA );
+		}
+
+		// Fallback to FC session key
+		if ( empty( $terminal_data ) ) {
+			$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME );
+		}
 
 		// Bail if terminal data is not available
 		if ( empty( $terminal_data ) ) { return; }
 
-		// Decode terminal data
-		$terminal_data = json_decode( $terminal_data, true );
+		// Decode terminal data when stored as JSON string
+		if ( is_string( $terminal_data ) ) {
+			$terminal_data = json_decode( $terminal_data, true );
+		}
+
+		// Bail if terminal data is invalid
+		if ( ! is_array( $terminal_data ) ) { return; }
 
 		// Assign terminal object property values to the corresponding array keys
 		$selected_terminal_data = array(

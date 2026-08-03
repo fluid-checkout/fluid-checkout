@@ -136,6 +136,38 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 
 	/**
+	 * Get the selected Omniva terminal id from session, posted data or cookie.
+	 *
+	 * @param   array|null  $posted_data  Optional posted checkout data.
+	 *
+	 * @return  string  Selected terminal id, or empty string when none is selected.
+	 */
+	public function get_selected_terminal_id( $posted_data = null ) {
+		$session_field_key = 'omnivalt_terminal_id';
+		$field_key = 'omnivalt_terminal';
+
+		// Try session first
+		$selected_terminal_id = WC()->session ? WC()->session->get( $session_field_key ) : null;
+
+		// Maybe use posted field value
+		if ( empty( $selected_terminal_id ) && is_array( $posted_data ) && array_key_exists( $field_key, $posted_data ) ) {
+			$selected_terminal_id = $posted_data[ $field_key ];
+		}
+
+		// Maybe use Omniva cookie as fallback, same as the Omniva plugin does at checkout processing
+		if ( empty( $selected_terminal_id ) && ! empty( $_COOKIE[ 'omniva_terminal' ] ) ) {
+			$selected_terminal_id = wc_clean( wp_unslash( $_COOKIE[ 'omniva_terminal' ] ) );
+		}
+
+		// Ignore placeholder values
+		if ( empty( $selected_terminal_id ) || 'all' === $selected_terminal_id ) {
+			return '';
+		}
+
+		return $selected_terminal_id;
+	}
+
+	/**
 	 * Maybe set session data for the terminals field.
 	 *
 	 * @param  array  $posted_data   Post data for all checkout fields.
@@ -144,13 +176,19 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		$field_key = 'omnivalt_terminal';
 		$session_field_key = 'omnivalt_terminal_id';
 
+		// Maybe recover terminal id from Omniva cookie when the select field is empty.
+		// Omniva map UI can leave the select empty when the selected option is missing from the field.
+		if ( ( ! array_key_exists( $field_key, $posted_data ) || empty( $posted_data[ $field_key ] ) || 'all' === $posted_data[ $field_key ] ) && ! empty( $_COOKIE[ 'omniva_terminal' ] ) ) {
+			$posted_data[ $field_key ] = wc_clean( wp_unslash( $_COOKIE[ 'omniva_terminal' ] ) );
+		}
+
 		// Bail if field value was not posted
 		if ( ! array_key_exists( $field_key, $posted_data ) ) { return $posted_data; }
 
 		// Save field value to session, as it is needed for the plugin to recover its value
 		WC()->session->set( $session_field_key, $posted_data[ $field_key ] );
 
-		// Return unchanged posted data
+		// Return posted data, maybe with cookie value recovered
 		return $posted_data;
 	}
 
@@ -169,9 +207,11 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 			'omnivalt_ps',
 		);
 
-		// Check if shipping method is local pickup
-		if ( in_array( $method_id, $local_pickup_methods ) ) {
-			return true;
+		// Check if shipping method is local pickup, including instance ids (e.g. `omnivalt_pt:1`)
+		foreach ( $local_pickup_methods as $local_pickup_method ) {
+			if ( 0 === strpos( $method_id, $local_pickup_method ) ) {
+				return true;
+			}
 		}
 
 		// Otherwise, not a local pickup shipping method
@@ -190,9 +230,11 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 			'omnivalt_ps',
 		);
 
-		// Check if shipping method is local pickup
-		if ( in_array( $method_id, $local_pickup_methods ) ) {
-			return true;
+		// Check if shipping method is local pickup, including instance ids (e.g. `omnivalt_pt:1`)
+		foreach ( $local_pickup_methods as $local_pickup_method ) {
+			if ( 0 === strpos( $method_id, $local_pickup_method ) ) {
+				return true;
+			}
 		}
 
 		// Otherwise, not a local pickup shipping method
@@ -241,13 +283,16 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 			if ( ! $this->shipping_method_needs_pickup_location( $chosen_method ) ) { continue; }
 
 			// Get location id
-			$selected_terminal_id = WC()->session->get( 'omnivalt_terminal_id' );
+			$selected_terminal_id = $this->get_selected_terminal_id();
 
 			// Maybe set substep as incomplete
 			if ( empty( $selected_terminal_id ) ) {
 				$is_substep_complete = false;
 				break;
 			}
+
+			// Keep session in sync when recovered from cookie
+			WC()->session->set( 'omnivalt_terminal_id', $selected_terminal_id );
 		}
 
 		return $is_substep_complete;
@@ -292,7 +337,7 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
 
 		// Get location id
-		$selected_terminal_id = WC()->session->get( 'omnivalt_terminal_id' );
+		$selected_terminal_id = $this->get_selected_terminal_id();
 
 		// Maybe set add pickup point address as not selected
 		// to the review text lines, then bail
@@ -300,6 +345,9 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 			$review_text_lines[] = '<em>' . __( 'Pickup point not selected yet.', 'fluid-checkout' ) . '</em>';
 			return $review_text_lines;
 		}
+
+		// Keep session in sync when recovered from cookie
+		WC()->session->set( 'omnivalt_terminal_id', $selected_terminal_id );
 
 		// Get terminal data, with country.
 		$selected_terminal = OmnivaLt_Terminals::get_terminal_address( $selected_terminal_id, true );
