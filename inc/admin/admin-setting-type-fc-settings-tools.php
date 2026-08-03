@@ -137,12 +137,6 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<p>
-				<label>
-					<input type="checkbox" name="fc_settings_reset_confirm" id="fc_settings_reset_confirm" form="fc_settings_reset_form" value="1" required>
-					<?php echo esc_html__( 'I understand this will reset Fluid Checkout settings to their defaults.', 'fluid-checkout' ); ?>
-				</label>
-			</p>
-			<p>
 				<button type="submit" class="button button-secondary fc-settings-tools__action" form="fc_settings_reset_form" data-fc-confirm="<?php echo esc_attr__( 'Reset Fluid Checkout settings to defaults?', 'fluid-checkout' ); ?>">
 					<?php echo esc_html__( 'Reset settings', 'fluid-checkout' ); ?>
 				</button>

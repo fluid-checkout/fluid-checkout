@@ -268,14 +268,6 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_reset() {
 		$this->verify_request( 'fc_settings_reset' );
 
-		// Bail if confirmation was not checked
-		if ( empty( $_POST[ 'fc_settings_reset_confirm' ] ) ) {
-			$this->redirect_with_notice( array(
-				'type'    => 'error',
-				'message' => __( 'Please confirm that you want to reset Fluid Checkout settings.', 'fluid-checkout' ),
-			) );
-		}
-
 		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->reset_settings( true );
 
 		$this->redirect_with_notice( array(
