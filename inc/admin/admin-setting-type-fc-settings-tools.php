@@ -65,7 +65,8 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		// Bail if not on WooCommerce Settings
 		if ( 'woocommerce_page_wc-settings' !== $hook ) { return; }
 
-		wp_register_script( 'fc-admin-settings-tools', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-settings-tools' ), array( 'jquery' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-tools', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-settings-tools' ), array(), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-settings-tools', 'window.addEventListener( "load", function() { FCAdminSettingsTools.init(); } );' );
 	}
 
 
@@ -136,6 +137,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		?>
 		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<button type="submit" class="button button-secondary fc-settings-tools__action" form="fc_settings_reset_form" data-fc-confirm="<?php echo esc_attr__( 'Reset Fluid Checkout settings to defaults?', 'fluid-checkout' ); ?>">
 					<?php echo esc_html__( 'Reset settings', 'fluid-checkout' ); ?>

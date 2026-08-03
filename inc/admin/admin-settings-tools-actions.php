@@ -153,12 +153,29 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		}
 
 		$tmp_name = $file[ 'tmp_name' ];
+		$max_bytes = FluidCheckout_Admin_Settings_Tools_Service::IMPORT_FILE_MAX_BYTES;
 
 		// Bail if temporary file is not readable
 		if ( ! is_uploaded_file( $tmp_name ) || ! is_readable( $tmp_name ) ) {
 			$this->redirect_with_notice( array(
 				'type'    => 'error',
 				'message' => __( 'Could not read the uploaded settings file.', 'fluid-checkout' ),
+			) );
+		}
+
+		// Bail if file exceeds the allowed size
+		$file_size = isset( $file[ 'size' ] ) ? (int) $file[ 'size' ] : 0;
+		if ( $file_size <= 0 ) {
+			$file_size = (int) filesize( $tmp_name );
+		}
+		if ( $file_size > $max_bytes ) {
+			$this->redirect_with_notice( array(
+				'type'    => 'error',
+				'message' => sprintf(
+					/* translators: %s: maximum file size (for example 1 MB) */
+					__( 'The settings file is too large. Maximum size is %s.', 'fluid-checkout' ),
+					size_format( $max_bytes )
+				),
 			) );
 		}
 

@@ -1,35 +1,83 @@
 /**
- * File admin-settings-tools.js
- *
- * Handles Backup & reset tool actions on the Fluid Checkout Tools settings screen.
+ * Handles Backup & reset tool confirmations on the Fluid Checkout Tools settings screen.
  */
-( function( $ ) {
+(function (root, factory) {
+	if ( typeof define === 'function' && define.amd ) {
+		define( [], factory( root ) );
+	}
+	else if ( typeof exports === 'object' ) {
+		module.exports = factory( root );
+	}
+	else {
+		root.FCAdminSettingsTools = factory( root );
+	}
+})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
 	'use strict';
 
-
-
-	jQuery( document ).ready( function() {
-		$( document.body ).on( 'click', '.fc-settings-tools__action', on_action_button_click );
-	} );
+	var _hasInitialized = false;
+	var _publicMethods = { };
+	var _settings = {
+		actionButtonSelector:    '.fc-settings-tools__action',
+		confirmMessageAttribute: 'data-fc-confirm',
+	};
 
 
 
 	/**
-	 * Confirm tool actions before submitting the associated standalone form.
+	 * Confirm a tool action before the associated standalone form submits.
 	 *
-	 * @param  {Event}  event  Click event.
+	 * @param   {Event}    e               Click event.
+	 * @param   {Element}  matchedElement  Matched action button.
 	 */
-	function on_action_button_click( event ) {
-		var confirm_message = $( this ).attr( 'data-fc-confirm' );
+	var handleActionButtonClick = function( e, matchedElement ) {
+		var confirmMessage = matchedElement.getAttribute( _settings.confirmMessageAttribute );
 
 		// Bail if no confirm message
-		if ( ! confirm_message ) { return; }
+		if ( ! confirmMessage ) { return; }
 
 		// Bail if user cancels
-		if ( ! window.confirm( confirm_message ) ) {
-			event.preventDefault();
+		if ( ! window.confirm( confirmMessage ) ) {
+			e.preventDefault();
 		}
-	}
+	};
 
-} )( jQuery );
+
+
+	/**
+	 * Handle document clicks and route to the appropriate handler.
+	 *
+	 * @param  {Event}  e  Click event.
+	 */
+	var handleClick = function( e ) {
+		var matchedElement;
+
+		// ACTION BUTTON
+		if ( matchedElement = e.target.closest( _settings.actionButtonSelector ) ) {
+			handleActionButtonClick( e, matchedElement );
+		}
+	};
+
+
+
+
+
+	/**
+	 * Initialize the script.
+	 */
+	_publicMethods.init = function() {
+		// Bail if already initialized
+		if ( _hasInitialized ) { return; }
+
+		// Add event listeners
+		window.addEventListener( 'click', handleClick, true );
+
+		_hasInitialized = true;
+	};
+
+	//
+	// Public APIs
+	//
+	return _publicMethods;
+
+} );

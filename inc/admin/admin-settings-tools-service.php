@@ -48,6 +48,13 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 */
 	const DIFF_VALUE_MAX_LENGTH = 120;
 
+	/**
+	 * Max upload size for settings import files (1 MB).
+	 *
+	 * @var int
+	 */
+	const IMPORT_FILE_MAX_BYTES = 1048576;
+
 
 
 	/**
@@ -88,8 +95,6 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 		/**
 		 * Filter troubleshooting option keys for settings tools.
-		 *
-		 * @param  array  $keys  Option keys treated as troubleshooting options.
 		 */
 		return apply_filters( 'fc_settings_tools_troubleshooting_option_keys', $keys );
 	}
@@ -146,10 +151,9 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 		/**
 		 * Filter whether an option key is excluded from settings tools.
 		 *
-		 * @param  bool    $excluded  Whether the option is excluded.
-		 * @param  string  $option    Option name.
+		 * @param  string  $option  Option name.
 		 */
-		return (bool) apply_filters( 'fc_settings_tools_is_excluded_option_key', $excluded, $option );
+		return true === apply_filters( 'fc_settings_tools_is_excluded_option_key', $excluded, $option );
 	}
 
 	/**
@@ -477,10 +481,8 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 		/**
 		 * Filter whether to show the live-site soft warning on settings tools.
-		 *
-		 * @param  bool  $is_live  Whether the site is considered live.
 		 */
-		return (bool) apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live );
+		return true === apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live );
 	}
 
 	/**

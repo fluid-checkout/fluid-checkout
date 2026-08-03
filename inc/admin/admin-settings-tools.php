@@ -136,7 +136,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				array(
 					'title' => __( 'Backup & reset', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => __( 'License keys, API keys, and troubleshooting options are skipped. A backup is created before import or reset.', 'fluid-checkout' ),
+					'desc'  => __( 'License keys and API keys are never changed. Troubleshooting options are omitted from export and update import, but cleared on reset and replace. A backup is created before import or reset.', 'fluid-checkout' ),
 					'id'    => 'fc_checkout_settings_tools',
 				),
 
