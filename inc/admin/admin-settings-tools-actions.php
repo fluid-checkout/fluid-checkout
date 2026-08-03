@@ -268,15 +268,11 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_reset() {
 		$this->verify_request( 'fc_settings_reset' );
 
-		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->reset_settings( true );
+		FluidCheckout_Admin_Settings_Tools_Service::instance()->reset_settings( true );
 
 		$this->redirect_with_notice( array(
 			'type'    => 'success',
-			'message' => sprintf(
-				/* translators: %d: number of settings reset */
-				__( 'Settings reset to defaults. Reset: %d.', 'fluid-checkout' ),
-				(int) $result[ 'reset' ]
-			),
+			'message' => __( 'Settings reset to defaults.', 'fluid-checkout' ),
 		) );
 	}
 
