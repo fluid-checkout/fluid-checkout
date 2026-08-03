@@ -31,6 +31,9 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		// Field types
 		add_action( 'woocommerce_admin_field_fc_settings_tools', array( $this, 'output_field' ), 10 );
 
+		// Scripts
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 10 );
+
 		// Standalone forms outside the WooCommerce settings form
 		add_action( 'admin_footer', array( $this, 'maybe_output_standalone_forms' ), 10 );
 	}
@@ -54,6 +57,20 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 
 
 	/**
+	 * Register settings tools scripts.
+	 *
+	 * @param  string  $hook  Current admin page hook.
+	 */
+	public function register_scripts( $hook ) {
+		// Bail if not on WooCommerce Settings
+		if ( 'woocommerce_page_wc-settings' !== $hook ) { return; }
+
+		wp_register_script( 'fc-admin-settings-tools', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-settings-tools' ), array( 'jquery' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
+
+
+	/**
 	 * Output the setting field.
 	 *
 	 * @param   array  $value  Admin settings args values.
@@ -63,6 +80,9 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 
 		// Bail if action is invalid
 		if ( ! in_array( $action, array( 'reset', 'restore', 'export', 'import' ), true ) ) { return; }
+
+		// Enqueue assets used by the tools controls
+		wp_enqueue_script( 'fc-admin-settings-tools' );
 
 		$field_description = WC_Admin_Settings::get_field_description( $value );
 		$description       = $field_description[ 'description' ];
@@ -114,7 +134,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	 */
 	public function output_reset_controls( $description ) {
 		?>
-		<fieldset class="fc-settings-tools">
+		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<p>
 				<label>
@@ -123,7 +143,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 				</label>
 			</p>
 			<p>
-				<button type="submit" class="button button-secondary" form="fc_settings_reset_form" onclick="return confirm( <?php echo wp_json_encode( __( 'Reset Fluid Checkout settings to defaults?', 'fluid-checkout' ) ); ?> );">
+				<button type="submit" class="button button-secondary fc-settings-tools__action" form="fc_settings_reset_form" data-fc-confirm="<?php echo esc_attr__( 'Reset Fluid Checkout settings to defaults?', 'fluid-checkout' ); ?>">
 					<?php echo esc_html__( 'Reset settings', 'fluid-checkout' ); ?>
 				</button>
 			</p>
@@ -139,7 +159,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	public function output_restore_controls( $description ) {
 		$backup = FluidCheckout_Admin_Settings_Tools_Service::instance()->get_last_backup();
 		?>
-		<fieldset class="fc-settings-tools">
+		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<?php if ( $backup ) : ?>
 				<p class="description">
@@ -157,7 +177,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 					?>
 				</p>
 				<p>
-					<button type="submit" class="button button-secondary" form="fc_settings_restore_form" onclick="return confirm( <?php echo wp_json_encode( __( 'Restore previous settings from the backup?', 'fluid-checkout' ) ); ?> );">
+					<button type="submit" class="button button-secondary fc-settings-tools__action" form="fc_settings_restore_form" data-fc-confirm="<?php echo esc_attr__( 'Restore previous settings from the backup?', 'fluid-checkout' ); ?>">
 						<?php echo esc_html__( 'Restore previous settings', 'fluid-checkout' ); ?>
 					</button>
 				</p>
@@ -194,7 +214,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	 */
 	public function output_export_controls( $description ) {
 		?>
-		<fieldset class="fc-settings-tools">
+		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<p>
 				<button type="submit" class="button button-secondary" form="fc_settings_export_form">
@@ -219,7 +239,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 			return;
 		}
 		?>
-		<fieldset class="fc-settings-tools">
+		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
@@ -240,20 +260,11 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 				<span class="description"><?php echo esc_html__( 'Clears saved settings, then applies the file. Best when copying from another site.', 'fluid-checkout' ); ?></span>
 			</p>
 			<p>
-				<button type="submit" class="button button-secondary" form="fc_settings_import_form" onclick="return fcSettingsToolsConfirmImport( event );">
+				<button type="submit" class="button button-secondary" form="fc_settings_import_form">
 					<?php echo esc_html__( 'Review import', 'fluid-checkout' ); ?>
 				</button>
 			</p>
 		</fieldset>
-		<script>
-			function fcSettingsToolsConfirmImport( event ) {
-				var replaceInput = document.getElementById( 'fc_settings_import_mode_replace' );
-				if ( replaceInput && replaceInput.checked ) {
-					return confirm( <?php echo wp_json_encode( __( 'Clear current settings, then review the import?', 'fluid-checkout' ) ); ?> );
-				}
-				return true;
-			}
-		</script>
 		<?php
 	}
 
@@ -270,7 +281,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		$added_count = count( $diff[ 'added' ] );
 		$will_clear_count = count( $diff[ 'will_clear' ] );
 		?>
-		<fieldset class="fc-settings-tools fc-settings-tools--preview">
+		<fieldset class="fc-settings-tools fc-settings-tools--preview wc-settings-prevent-change-event">
 			<p><strong><?php echo esc_html__( 'Review import', 'fluid-checkout' ); ?></strong></p>
 			<?php if ( $filename ) : ?>
 				<p class="description">
@@ -328,7 +339,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 			?>
 
 			<p>
-				<button type="submit" class="button button-primary" form="fc_settings_import_apply_form" onclick="return confirm( <?php echo wp_json_encode( __( 'Apply this import now?', 'fluid-checkout' ) ); ?> );">
+				<button type="submit" class="button button-primary fc-settings-tools__action" form="fc_settings_import_apply_form" data-fc-confirm="<?php echo esc_attr__( 'Apply this import now?', 'fluid-checkout' ); ?>">
 					<?php echo esc_html__( 'Confirm import', 'fluid-checkout' ); ?>
 				</button>
 				<button type="submit" class="button button-secondary" form="fc_settings_import_cancel_form">
