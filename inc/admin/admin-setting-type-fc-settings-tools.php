@@ -102,7 +102,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		if ( ! FluidCheckout_Admin_Settings_Tools_Service::instance()->should_show_live_site_warning() ) { return; }
 		?>
 		<p class="fc-settings-tools__live-warning">
-			<?php echo esc_html__( 'This store looks like a live site. Importing or resetting settings will change the current configuration. An automatic backup is created first and can be restored from this page.', 'fluid-checkout' ); ?>
+			<?php echo esc_html__( 'This store looks like a live site. Import and reset will change the current configuration.', 'fluid-checkout' ); ?>
 		</p>
 		<?php
 	}
@@ -124,7 +124,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 				</label>
 			</p>
 			<p>
-				<button type="submit" class="button button-secondary" form="fc_settings_reset_form" onclick="return confirm( '<?php echo esc_js( __( 'Are you sure you want to reset Fluid Checkout settings to defaults? An automatic backup will be created first.', 'fluid-checkout' ) ); ?>' );">
+				<button type="submit" class="button button-secondary" form="fc_settings_reset_form" onclick="return confirm( <?php echo wp_json_encode( __( 'Reset Fluid Checkout settings to defaults?', 'fluid-checkout' ) ); ?> );">
 					<?php echo esc_html__( 'Reset settings', 'fluid-checkout' ); ?>
 				</button>
 			</p>
@@ -158,12 +158,12 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 					?>
 				</p>
 				<p>
-					<button type="submit" class="button button-secondary" form="fc_settings_restore_form" onclick="return confirm( '<?php echo esc_js( __( 'Are you sure you want to restore the previous Fluid Checkout settings from the automatic backup?', 'fluid-checkout' ) ); ?>' );">
+					<button type="submit" class="button button-secondary" form="fc_settings_restore_form" onclick="return confirm( <?php echo wp_json_encode( __( 'Restore previous settings from the backup?', 'fluid-checkout' ) ); ?> );">
 						<?php echo esc_html__( 'Restore previous settings', 'fluid-checkout' ); ?>
 					</button>
 				</p>
 			<?php else : ?>
-				<p class="description"><?php echo esc_html__( 'No backup is available. A backup is created automatically before import or reset.', 'fluid-checkout' ); ?></p>
+				<p class="description"><?php echo esc_html__( 'No backup is available yet.', 'fluid-checkout' ); ?></p>
 			<?php endif; ?>
 		</fieldset>
 		<?php
@@ -222,7 +222,6 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		?>
 		<fieldset class="fc-settings-tools">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<input type="file" name="fc_settings_import_file" id="fc_settings_import_file" form="fc_settings_import_form" accept=".json,application/json" required>
 			</p>
@@ -231,14 +230,14 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 					<input type="radio" name="fc_settings_import_mode" form="fc_settings_import_form" value="update" checked>
 					<strong><?php echo esc_html__( 'Update matching settings only', 'fluid-checkout' ); ?></strong>
 				</label>
-				<span class="description"><?php echo esc_html__( 'Changes settings that are in the file. Leaves other Fluid Checkout settings on this site as they are.', 'fluid-checkout' ); ?></span>
+				<span class="description"><?php echo esc_html__( 'Only changes settings present in the file.', 'fluid-checkout' ); ?></span>
 			</p>
 			<p class="fc-settings-tools__import-mode">
 				<label>
 					<input type="radio" name="fc_settings_import_mode" form="fc_settings_import_form" value="replace" id="fc_settings_import_mode_replace">
 					<strong><?php echo esc_html__( 'Replace all Fluid Checkout settings', 'fluid-checkout' ); ?></strong>
 				</label>
-				<span class="description"><?php echo esc_html__( 'Clears saved Fluid Checkout settings on this site, then applies the file. Use when copying settings from another site. License keys and API keys are not changed.', 'fluid-checkout' ); ?></span>
+				<span class="description"><?php echo esc_html__( 'Clears saved settings, then applies the file. Best when copying from another site.', 'fluid-checkout' ); ?></span>
 			</p>
 			<p>
 				<button type="submit" class="button button-secondary" form="fc_settings_import_form" onclick="return fcSettingsToolsConfirmImport( event );">
@@ -250,7 +249,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 			function fcSettingsToolsConfirmImport( event ) {
 				var replaceInput = document.getElementById( 'fc_settings_import_mode_replace' );
 				if ( replaceInput && replaceInput.checked ) {
-					return confirm( <?php echo wp_json_encode( __( 'This will clear current Fluid Checkout settings, then import the file. You will review the changes before they are applied. Continue?', 'fluid-checkout' ) ); ?> );
+					return confirm( <?php echo wp_json_encode( __( 'Clear current settings, then review the import?', 'fluid-checkout' ) ); ?> );
 				}
 				return true;
 			}
@@ -290,12 +289,11 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 				<?php
 				echo esc_html(
 					'replace' === $mode
-						? __( 'Mode: Replace all Fluid Checkout settings.', 'fluid-checkout' )
-						: __( 'Mode: Update matching settings only.', 'fluid-checkout' )
+						? __( 'Mode: Replace', 'fluid-checkout' )
+						: __( 'Mode: Update', 'fluid-checkout' )
 				);
 				?>
 			</p>
-			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<?php
 				echo esc_html(
@@ -330,7 +328,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 			?>
 
 			<p>
-				<button type="submit" class="button button-primary" form="fc_settings_import_apply_form" onclick="return confirm( '<?php echo esc_js( __( 'Apply the reviewed settings import now? An automatic backup will be created first.', 'fluid-checkout' ) ); ?>' );">
+				<button type="submit" class="button button-primary" form="fc_settings_import_apply_form" onclick="return confirm( <?php echo wp_json_encode( __( 'Apply this import now?', 'fluid-checkout' ) ); ?> );">
 					<?php echo esc_html__( 'Confirm import', 'fluid-checkout' ); ?>
 				</button>
 				<button type="submit" class="button button-secondary" form="fc_settings_import_cancel_form">

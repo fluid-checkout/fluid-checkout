@@ -133,7 +133,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 		if ( 'replace' === $result[ 'mode' ] ) {
 			WP_CLI::success(
 				sprintf(
-					'Settings replaced. Cleared: %d. Imported: %d. Skipped: %d. Automatic backup created. License keys and API keys were not changed.',
+					'Settings replaced. Cleared: %d. Imported: %d. Skipped: %d.',
 					(int) $result[ 'reset' ],
 					(int) $result[ 'imported' ],
 					(int) $result[ 'skipped' ]
@@ -144,7 +144,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 
 		WP_CLI::success(
 			sprintf(
-				'Settings updated. Imported: %d. Skipped: %d. Automatic backup created. License keys and API keys were not changed.',
+				'Settings updated. Imported: %d. Skipped: %d.',
 				(int) $result[ 'imported' ],
 				(int) $result[ 'skipped' ]
 			)
@@ -167,13 +167,13 @@ class FluidCheckout_WPCLI_Command_Settings {
 	 * @param  array  $assoc_args  Associative arguments.
 	 */
 	public function reset( $args, $assoc_args ) {
-		WP_CLI::confirm( 'Are you sure you want to reset Fluid Checkout settings to defaults? An automatic backup will be created first.', $assoc_args );
+		WP_CLI::confirm( 'Reset Fluid Checkout settings to defaults?', $assoc_args );
 
 		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->reset_settings( true );
 
 		WP_CLI::success(
 			sprintf(
-				'Settings reset to defaults. Reset: %d. Automatic backup created. License keys and API keys were not changed.',
+				'Settings reset to defaults. Reset: %d.',
 				(int) $result[ 'reset' ]
 			)
 		);
@@ -193,7 +193,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 	 * @param  array  $assoc_args  Associative arguments.
 	 */
 	public function restore( $args, $assoc_args ) {
-		WP_CLI::confirm( 'Are you sure you want to restore Fluid Checkout settings from the automatic backup?', $assoc_args );
+		WP_CLI::confirm( 'Restore Fluid Checkout settings from the automatic backup?', $assoc_args );
 
 		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->restore_last_backup();
 
@@ -204,7 +204,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 
 		WP_CLI::success(
 			sprintf(
-				'Previous settings restored. Restored: %d. Removed: %d. License keys and API keys were not changed.',
+				'Previous settings restored. Restored: %d. Removed: %d.',
 				(int) $result[ 'restored' ],
 				(int) $result[ 'deleted' ]
 			)

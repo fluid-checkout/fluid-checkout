@@ -226,7 +226,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		if ( 'replace' === $result[ 'mode' ] ) {
 			$message = sprintf(
 				/* translators: 1: number of settings cleared, 2: number of settings imported, 3: number of settings skipped */
-				__( 'Settings replaced successfully. Cleared: %1$d. Imported: %2$d. Skipped: %3$d. An automatic backup was created and can be restored from this page. License keys and API keys were not changed. Re-select logo images and linked pages if they do not appear correctly.', 'fluid-checkout' ),
+				__( 'Settings replaced. Cleared: %1$d. Imported: %2$d. Skipped: %3$d. Re-select logo or linked pages if needed.', 'fluid-checkout' ),
 				(int) $result[ 'reset' ],
 				(int) $result[ 'imported' ],
 				(int) $result[ 'skipped' ]
@@ -234,7 +234,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		} else {
 			$message = sprintf(
 				/* translators: 1: number of settings imported, 2: number of settings skipped */
-				__( 'Settings updated successfully. Updated: %1$d. Skipped: %2$d. An automatic backup was created and can be restored from this page. License keys and API keys were not changed. Re-select logo images and linked pages if they do not appear correctly.', 'fluid-checkout' ),
+				__( 'Settings updated. Updated: %1$d. Skipped: %2$d. Re-select logo or linked pages if needed.', 'fluid-checkout' ),
 				(int) $result[ 'imported' ],
 				(int) $result[ 'skipped' ]
 			);
@@ -282,7 +282,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 			'type'    => 'success',
 			'message' => sprintf(
 				/* translators: %d: number of settings reset */
-				__( 'Settings reset to defaults. Reset: %d. An automatic backup was created and can be restored from this page. License keys and API keys were not changed.', 'fluid-checkout' ),
+				__( 'Settings reset to defaults. Reset: %d.', 'fluid-checkout' ),
 				(int) $result[ 'reset' ]
 			),
 		) );
@@ -310,7 +310,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 			'type'    => 'success',
 			'message' => sprintf(
 				/* translators: 1: number of settings restored, 2: number of settings removed */
-				__( 'Previous settings restored from the automatic backup. Restored: %1$d. Removed: %2$d. License keys and API keys were not changed.', 'fluid-checkout' ),
+				__( 'Previous settings restored. Restored: %1$d. Removed: %2$d.', 'fluid-checkout' ),
 				(int) $result[ 'restored' ],
 				(int) $result[ 'deleted' ]
 			),
