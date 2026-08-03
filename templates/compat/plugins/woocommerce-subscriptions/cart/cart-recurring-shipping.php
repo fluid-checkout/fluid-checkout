@@ -90,7 +90,7 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php // CHANGE: END - Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
 
 	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package ?>
-	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && count( $available_methods ) == 0 ) : ?>
+	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && 0 === count( $available_methods ) ) : ?>
 		<?php if ( $has_calculated_shipping && $formatted_destination ) : ?>
 			<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 				<div class="shipping-method__options">

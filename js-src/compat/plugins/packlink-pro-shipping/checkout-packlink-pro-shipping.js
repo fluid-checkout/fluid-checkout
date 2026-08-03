@@ -45,7 +45,7 @@
 
 		// Trigger update checkout
 		$( document.body ).trigger( 'update_checkout' );
-	}
+	};
 
 	/**
 	 * Wait until Packlink fills the drop-off id field, then trigger checkout update.
@@ -63,9 +63,10 @@
 				return;
 			}
 
-			// Stop polling after max attempts
+			// Stop polling after max attempts, still triggering the update so the checkout reflects the current state
 			if ( attempts >= _settings.selectionPollMaxAttempts ) {
 				window.clearInterval( intervalId );
+				triggerUpdateCheckout();
 			}
 		}, _settings.selectionPollInterval );
 	};

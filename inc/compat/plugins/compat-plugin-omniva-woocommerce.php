@@ -383,7 +383,7 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		$label_design = $settings[ 'label_design' ] ? $settings[ 'label_design' ] : 'classic';
 
 		// Bail if should not show logo
-		if ( 'full' != $label_design && 'logo' != $label_design ) { return $html; }
+		if ( 'full' !== $label_design && 'logo' !== $label_design ) { return $html; }
 
 		// Get method parameters
 		$method_key = OmnivaLt_Omniva_Order::get_method_key_from_id( $method->id );
