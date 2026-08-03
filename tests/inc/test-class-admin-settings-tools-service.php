@@ -38,6 +38,11 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
 	 * Test: Restore after import: restores previous values and removes imported-only keys.
 	 * Test: Restore: leaves secrets unchanged and errors when no backup exists.
+	 * Test: Update import: leaves extra local keys unchanged.
+	 * Test: Replace import: removes extra local keys then applies the file.
+	 * Test: Import diff: changed, added, unchanged, and will_clear for replace.
+	 * Test: Import diff: secrets and invalid payloads are skipped or errored without values.
+	 * Test: Invalid replace import: does not create a backup or reset settings.
 	 */
 
 
@@ -716,6 +721,155 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertEmpty( $restore[ 'errors' ] );
 		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
 		$this->assertSame( 'changed-license', get_option( 'fc_pro_license_key' ) );
+	}
+
+	/**
+	 * Test: Update import: leaves extra local keys unchanged.
+	 */
+	public function test_update_import_leaves_extra_local_keys() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
+
+		$result = $this->service->import_settings(
+			array(
+				'generator' => 'fluid-checkout',
+				'settings'  => array(
+					'fc_checkout_layout' => 'multi-step',
+				),
+			),
+			false,
+			'update'
+		);
+
+		$this->assertSame( 'update', $result[ 'mode' ] );
+		$this->assertSame( 0, $result[ 'reset' ] );
+		$this->assertSame( 1, $result[ 'imported' ] );
+		$this->assertEmpty( $result[ 'errors' ] );
+		$this->assertSame( 'multi-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
+	}
+
+	/**
+	 * Test: Replace import: removes extra local keys then applies the file.
+	 */
+	public function test_replace_import_removes_extra_local_keys_then_applies_file() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
+		$this->set_tracked_option( 'fc_pro_license_key', 'keep-license' );
+
+		$result = $this->service->import_settings(
+			array(
+				'generator' => 'fluid-checkout',
+				'settings'  => array(
+					'fc_checkout_layout' => 'multi-step',
+				),
+			),
+			true,
+			'replace'
+		);
+
+		$this->assertSame( 'replace', $result[ 'mode' ] );
+		$this->assertTrue( $result[ 'backup_created' ] );
+		$this->assertGreaterThanOrEqual( 2, $result[ 'reset' ] );
+		$this->assertSame( 1, $result[ 'imported' ] );
+		$this->assertEmpty( $result[ 'errors' ] );
+		$this->assertSame( 'multi-step', get_option( 'fc_checkout_layout' ) );
+		$this->assert_option_does_not_exist( 'fc_enable_dark_mode_styles' );
+		$this->assertSame( 'keep-license', get_option( 'fc_pro_license_key' ) );
+		$this->assertSame( 'single-step', $this->service->get_last_backup()[ 'data' ][ 'settings' ][ 'fc_checkout_layout' ] );
+		$this->assertSame( 'yes', $this->service->get_last_backup()[ 'data' ][ 'settings' ][ 'fc_enable_dark_mode_styles' ] );
+	}
+
+	/**
+	 * Test: Import diff: changed, added, unchanged, and will_clear for replace.
+	 */
+	public function test_import_diff_buckets_for_update_and_replace() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
+		$this->set_tracked_option( 'fc_enable_checkout_progress_bar', 'yes' );
+
+		$payload = array(
+			'generator' => 'fluid-checkout',
+			'settings'  => array(
+				'fc_checkout_layout'         => 'multi-step',
+				'fc_enable_dark_mode_styles' => 'yes',
+				'fc_gaa_enabled'             => 'yes',
+			),
+		);
+
+		$update_diff = $this->service->get_import_diff( $payload, 'update' );
+
+		$this->assertSame( 'update', $update_diff[ 'mode' ] );
+		$this->assertArrayHasKey( 'fc_checkout_layout', $update_diff[ 'changed' ] );
+		$this->assertSame( 'single-step', $update_diff[ 'changed' ][ 'fc_checkout_layout' ][ 'from' ] );
+		$this->assertSame( 'multi-step', $update_diff[ 'changed' ][ 'fc_checkout_layout' ][ 'to' ] );
+		$this->assertArrayHasKey( 'fc_gaa_enabled', $update_diff[ 'added' ] );
+		$this->assertSame( 'yes', $update_diff[ 'added' ][ 'fc_gaa_enabled' ][ 'to' ] );
+		$this->assertSame( 1, $update_diff[ 'unchanged_count' ] );
+		$this->assertEmpty( $update_diff[ 'will_clear' ] );
+		$this->assertEmpty( $update_diff[ 'errors' ] );
+
+		$replace_diff = $this->service->get_import_diff( $payload, 'replace' );
+
+		$this->assertSame( 'replace', $replace_diff[ 'mode' ] );
+		$this->assertContains( 'fc_enable_checkout_progress_bar', $replace_diff[ 'will_clear' ] );
+		$this->assertNotContains( 'fc_checkout_layout', $replace_diff[ 'will_clear' ] );
+		$this->assertNotContains( 'fc_enable_dark_mode_styles', $replace_diff[ 'will_clear' ] );
+	}
+
+	/**
+	 * Test: Import diff: secrets and invalid payloads are skipped or errored without values.
+	 */
+	public function test_import_diff_skips_secrets_and_rejects_invalid_payload() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+
+		$diff = $this->service->get_import_diff(
+			array(
+				'generator' => 'fluid-checkout',
+				'settings'  => array(
+					'fc_checkout_layout'  => 'multi-step',
+					'fc_pro_license_key'  => 'stolen-license',
+					'fc_gaa_google_places_api_key' => 'stolen-api-key',
+					'fc_debug_mode'       => 'yes',
+				),
+			),
+			'update'
+		);
+
+		$this->assertSame( 3, $diff[ 'skipped_count' ] );
+		$this->assertArrayHasKey( 'fc_checkout_layout', $diff[ 'changed' ] );
+		$this->assertArrayNotHasKey( 'fc_pro_license_key', $diff[ 'changed' ] );
+		$this->assertArrayNotHasKey( 'fc_pro_license_key', $diff[ 'added' ] );
+		$this->assertStringNotContainsString( 'stolen-license', wp_json_encode( $diff ) );
+		$this->assertStringNotContainsString( 'stolen-api-key', wp_json_encode( $diff ) );
+
+		$invalid = $this->service->get_import_diff( array( 'generator' => 'fluid-checkout' ), 'replace' );
+		$this->assertNotEmpty( $invalid[ 'errors' ] );
+		$this->assertEmpty( $invalid[ 'changed' ] );
+		$this->assertEmpty( $invalid[ 'added' ] );
+		$this->assertEmpty( $invalid[ 'will_clear' ] );
+	}
+
+	/**
+	 * Test: Invalid replace import: does not create a backup or reset settings.
+	 */
+	public function test_invalid_replace_import_does_not_backup_or_reset() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
+
+		$result = $this->service->import_settings(
+			array( 'generator' => 'fluid-checkout' ),
+			true,
+			'replace'
+		);
+
+		$this->assertNotEmpty( $result[ 'errors' ] );
+		$this->assertFalse( $result[ 'backup_created' ] );
+		$this->assertSame( 0, $result[ 'reset' ] );
+		$this->assertSame( 0, $result[ 'imported' ] );
+		$this->assertNull( $this->service->get_last_backup() );
+		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
 	}
 
 }

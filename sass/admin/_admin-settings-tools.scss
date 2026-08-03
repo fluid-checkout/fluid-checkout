@@ -11,6 +11,46 @@
 			}
 		}
 	}
+
+	.fc-settings-tools__live-warning {
+		color: #996800;
+		background: #fcf9e8;
+		border-left: 4px solid #dba617;
+		padding: .75em 1em;
+		margin: 0 0 1em;
+	}
+
+	.fc-settings-tools__import-mode {
+		label {
+			display: block;
+			margin-bottom: .25em;
+		}
+
+		.description {
+			display: block;
+			margin-left: 1.5em;
+		}
+	}
+
+	.fc-settings-tools__diff-section {
+		margin: 1em 0;
+	}
+
+	.fc-settings-tools__diff-table {
+		max-width: 100%;
+		margin-top: .5em;
+
+		code {
+			word-break: break-word;
+			white-space: pre-wrap;
+		}
+	}
+
+	.fc-settings-tools__diff-list {
+		margin: .5em 0 0 1.25em;
+		max-height: 16em;
+		overflow: auto;
+	}
 }
 
 .fc-settings-tools-form {

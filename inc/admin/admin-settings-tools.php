@@ -136,7 +136,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				array(
 					'title' => __( 'Backup & reset', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => __( 'License keys, API keys, and troubleshooting options are not included in export or import. License keys and API keys are also left unchanged on reset. Reset and restore also cover related WooCommerce and integration options managed by Fluid Checkout. An automatic backup is created before import or reset so you can restore previous settings.', 'fluid-checkout' ),
+					'desc'  => __( 'License keys, API keys, and troubleshooting options are not included in export or import. License keys and API keys are also left unchanged on reset. Import can update matching settings only, or replace all Fluid Checkout settings after a review step. Reset and restore also cover related WooCommerce and integration options managed by Fluid Checkout. An automatic backup is created before import or reset so you can restore previous settings.', 'fluid-checkout' ),
 					'id'    => 'fc_checkout_settings_tools',
 				),
 
@@ -169,7 +169,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 				array(
 					'title'       => __( 'Import settings', 'fluid-checkout' ),
-					'desc'        => __( 'Upload a Fluid Checkout settings JSON file. An automatic backup is created first. Logo images and linked pages use site-specific IDs, so re-select them after import if they do not appear correctly.', 'fluid-checkout' ),
+					'desc'        => __( 'Upload a Fluid Checkout settings JSON file, choose update or replace, then review the changes before they are applied. An automatic backup is created when you confirm. Logo images and linked pages use site-specific IDs, so re-select them after import if they do not appear correctly.', 'fluid-checkout' ),
 					'type'        => 'fc_settings_tools',
 					'id'          => 'fc_settings_tools_import',
 					'tool_action' => 'import',

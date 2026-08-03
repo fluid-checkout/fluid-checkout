@@ -51,16 +51,26 @@ class FluidCheckout_WPCLI_Command_Settings {
 	/**
 	 * Import Fluid Checkout settings from a JSON file.
 	 *
-	 * Creates an automatic backup before applying settings.
+	 * Creates an automatic backup before applying settings unless --dry-run is used.
+	 * Default mode updates matching settings only. Use --replace to clear saved
+	 * Fluid Checkout settings first, then apply the file.
 	 *
 	 * ## OPTIONS
 	 *
 	 * --file=<path>
 	 * : Path to the JSON settings file.
 	 *
+	 * [--replace]
+	 * : Clear saved Fluid Checkout settings, then apply the file.
+	 *
+	 * [--dry-run]
+	 * : Show a diff summary without changing settings.
+	 *
 	 * ## EXAMPLES
 	 *
 	 *     wp fc settings import --file=/tmp/fc-settings.json
+	 *     wp fc settings import --file=/tmp/fc-settings.json --replace
+	 *     wp fc settings import --file=/tmp/fc-settings.json --dry-run
 	 *
 	 * @when after_wp_load
 	 *
@@ -80,17 +90,61 @@ class FluidCheckout_WPCLI_Command_Settings {
 			WP_CLI::error( sprintf( 'Could not read settings file: %s', $path ) );
 		}
 
+		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
+		$mode = ! empty( $assoc_args[ 'replace' ] ) ? 'replace' : 'update';
 		$json = file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->import_settings_from_json( $json, true );
+		$data = json_decode( $json, true );
+
+		// Bail if JSON is invalid
+		if ( null === $data && JSON_ERROR_NONE !== json_last_error() ) {
+			WP_CLI::error( 'Could not parse the settings file. Make sure it is valid JSON.' );
+		}
+
+		$diff = $service->get_import_diff( $data, $mode );
+
+		// Bail if validation errors
+		if ( ! empty( $diff[ 'errors' ] ) ) {
+			WP_CLI::error( implode( ' ', $diff[ 'errors' ] ) );
+		}
+
+		WP_CLI::log( sprintf(
+			'Mode: %s. Changed: %d. Added: %d. Unchanged: %d. Skipped: %d. Will clear: %d.',
+			$mode,
+			count( $diff[ 'changed' ] ),
+			count( $diff[ 'added' ] ),
+			(int) $diff[ 'unchanged_count' ],
+			(int) $diff[ 'skipped_count' ],
+			count( $diff[ 'will_clear' ] )
+		) );
+
+		// Maybe stop after dry-run
+		if ( ! empty( $assoc_args[ 'dry-run' ] ) ) {
+			WP_CLI::success( 'Dry run complete. No settings were changed.' );
+			return;
+		}
+
+		$result = $service->import_settings( $data, true, $mode );
 
 		// Bail if validation errors
 		if ( ! empty( $result[ 'errors' ] ) ) {
 			WP_CLI::error( implode( ' ', $result[ 'errors' ] ) );
 		}
 
+		if ( 'replace' === $result[ 'mode' ] ) {
+			WP_CLI::success(
+				sprintf(
+					'Settings replaced. Cleared: %d. Imported: %d. Skipped: %d. Automatic backup created. License keys and API keys were not changed.',
+					(int) $result[ 'reset' ],
+					(int) $result[ 'imported' ],
+					(int) $result[ 'skipped' ]
+				)
+			);
+			return;
+		}
+
 		WP_CLI::success(
 			sprintf(
-				'Settings imported. Imported: %d. Skipped: %d. Automatic backup created. License keys and API keys were not changed.',
+				'Settings updated. Imported: %d. Skipped: %d. Automatic backup created. License keys and API keys were not changed.',
 				(int) $result[ 'imported' ],
 				(int) $result[ 'skipped' ]
 			)

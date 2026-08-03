@@ -7,6 +7,15 @@ defined( 'ABSPATH' ) || exit;
 class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 
 	/**
+	 * Max rows to show per diff section in the import preview.
+	 *
+	 * @var int
+	 */
+	const PREVIEW_ROWS_LIMIT = 50;
+
+
+
+	/**
 	 * __construct function.
 	 */
 	public function __construct() {
@@ -86,6 +95,19 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	}
 
 	/**
+	 * Output the soft live-site warning markup when applicable.
+	 */
+	public function maybe_output_live_site_warning() {
+		// Bail if warning should not be shown
+		if ( ! FluidCheckout_Admin_Settings_Tools_Service::instance()->should_show_live_site_warning() ) { return; }
+		?>
+		<p class="fc-settings-tools__live-warning">
+			<?php echo esc_html__( 'This store looks like a live site. Importing or resetting settings will change the current configuration. An automatic backup is created first and can be restored from this page.', 'fluid-checkout' ); ?>
+		</p>
+		<?php
+	}
+
+	/**
 	 * Output reset controls.
 	 *
 	 * @param  string  $description  Field description HTML.
@@ -94,6 +116,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		?>
 		<fieldset class="fc-settings-tools">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<label>
 					<input type="checkbox" name="fc_settings_reset_confirm" id="fc_settings_reset_confirm" form="fc_settings_reset_form" value="1" required>
@@ -184,23 +207,224 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	}
 
 	/**
-	 * Output import controls.
+	 * Output import controls or the pending preview review panel.
 	 *
 	 * @param  string  $description  Field description HTML.
 	 */
 	public function output_import_controls( $description ) {
+		$preview = FluidCheckout_Admin_Settings_Tools_Service::instance()->get_import_preview();
+
+		// Maybe show import preview review
+		if ( null !== $preview ) {
+			$this->output_import_preview( $preview );
+			return;
+		}
 		?>
 		<fieldset class="fc-settings-tools">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<input type="file" name="fc_settings_import_file" id="fc_settings_import_file" form="fc_settings_import_form" accept=".json,application/json" required>
 			</p>
+			<p class="fc-settings-tools__import-mode">
+				<label>
+					<input type="radio" name="fc_settings_import_mode" form="fc_settings_import_form" value="update" checked>
+					<strong><?php echo esc_html__( 'Update matching settings only', 'fluid-checkout' ); ?></strong>
+				</label>
+				<span class="description"><?php echo esc_html__( 'Changes settings that are in the file. Leaves other Fluid Checkout settings on this site as they are.', 'fluid-checkout' ); ?></span>
+			</p>
+			<p class="fc-settings-tools__import-mode">
+				<label>
+					<input type="radio" name="fc_settings_import_mode" form="fc_settings_import_form" value="replace" id="fc_settings_import_mode_replace">
+					<strong><?php echo esc_html__( 'Replace all Fluid Checkout settings', 'fluid-checkout' ); ?></strong>
+				</label>
+				<span class="description"><?php echo esc_html__( 'Clears saved Fluid Checkout settings on this site, then applies the file. Use when copying settings from another site. License keys and API keys are not changed.', 'fluid-checkout' ); ?></span>
+			</p>
 			<p>
-				<button type="submit" class="button button-secondary" form="fc_settings_import_form">
-					<?php echo esc_html__( 'Import settings', 'fluid-checkout' ); ?>
+				<button type="submit" class="button button-secondary" form="fc_settings_import_form" onclick="return fcSettingsToolsConfirmImport( event );">
+					<?php echo esc_html__( 'Review import', 'fluid-checkout' ); ?>
 				</button>
 			</p>
 		</fieldset>
+		<script>
+			function fcSettingsToolsConfirmImport( event ) {
+				var replaceInput = document.getElementById( 'fc_settings_import_mode_replace' );
+				if ( replaceInput && replaceInput.checked ) {
+					return confirm( <?php echo wp_json_encode( __( 'This will clear current Fluid Checkout settings, then import the file. You will review the changes before they are applied. Continue?', 'fluid-checkout' ) ); ?> );
+				}
+				return true;
+			}
+		</script>
+		<?php
+	}
+
+	/**
+	 * Output the import preview review panel.
+	 *
+	 * @param  array  $preview  Pending preview payload.
+	 */
+	public function output_import_preview( $preview ) {
+		$diff = $preview[ 'diff' ];
+		$mode = $preview[ 'mode' ];
+		$filename = ! empty( $preview[ 'filename' ] ) ? $preview[ 'filename' ] : '';
+		$changed_count = count( $diff[ 'changed' ] );
+		$added_count = count( $diff[ 'added' ] );
+		$will_clear_count = count( $diff[ 'will_clear' ] );
+		?>
+		<fieldset class="fc-settings-tools fc-settings-tools--preview">
+			<p><strong><?php echo esc_html__( 'Review import', 'fluid-checkout' ); ?></strong></p>
+			<?php if ( $filename ) : ?>
+				<p class="description">
+					<?php
+					echo esc_html(
+						sprintf(
+							/* translators: %s: uploaded file name */
+							__( 'File: %s', 'fluid-checkout' ),
+							$filename
+						)
+					);
+					?>
+				</p>
+			<?php endif; ?>
+			<p class="description">
+				<?php
+				echo esc_html(
+					'replace' === $mode
+						? __( 'Mode: Replace all Fluid Checkout settings.', 'fluid-checkout' )
+						: __( 'Mode: Update matching settings only.', 'fluid-checkout' )
+				);
+				?>
+			</p>
+			<?php $this->maybe_output_live_site_warning(); ?>
+			<p>
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: 1: changed count, 2: added count, 3: unchanged count, 4: skipped count */
+						__( 'Changed: %1$d. Added: %2$d. Unchanged: %3$d. Skipped: %4$d.', 'fluid-checkout' ),
+						$changed_count,
+						$added_count,
+						(int) $diff[ 'unchanged_count' ],
+						(int) $diff[ 'skipped_count' ]
+					)
+				);
+				if ( 'replace' === $mode ) {
+					echo ' ';
+					echo esc_html(
+						sprintf(
+							/* translators: %d: number of settings that will be cleared */
+							__( 'Will clear: %d.', 'fluid-checkout' ),
+							$will_clear_count
+						)
+					);
+				}
+				?>
+			</p>
+
+			<?php $this->output_diff_key_value_table( __( 'Settings that will change', 'fluid-checkout' ), $diff[ 'changed' ] ); ?>
+			<?php $this->output_diff_key_value_table( __( 'Settings that will be added', 'fluid-checkout' ), $diff[ 'added' ] ); ?>
+			<?php
+			if ( 'replace' === $mode && $will_clear_count > 0 ) {
+				$this->output_diff_key_list( __( 'Settings that will be cleared', 'fluid-checkout' ), $diff[ 'will_clear' ] );
+			}
+			?>
+
+			<p>
+				<button type="submit" class="button button-primary" form="fc_settings_import_apply_form" onclick="return confirm( '<?php echo esc_js( __( 'Apply the reviewed settings import now? An automatic backup will be created first.', 'fluid-checkout' ) ); ?>' );">
+					<?php echo esc_html__( 'Confirm import', 'fluid-checkout' ); ?>
+				</button>
+				<button type="submit" class="button button-secondary" form="fc_settings_import_cancel_form">
+					<?php echo esc_html__( 'Cancel', 'fluid-checkout' ); ?>
+				</button>
+			</p>
+		</fieldset>
+		<?php
+	}
+
+	/**
+	 * Output a key/from/to table for diff entries.
+	 *
+	 * @param  string  $title    Section title.
+	 * @param  array   $entries  Map of option => { from, to }.
+	 */
+	public function output_diff_key_value_table( $title, $entries ) {
+		// Bail if no entries
+		if ( empty( $entries ) ) { return; }
+
+		$total = count( $entries );
+		$entries = array_slice( $entries, 0, self::PREVIEW_ROWS_LIMIT, true );
+		?>
+		<div class="fc-settings-tools__diff-section">
+			<p><strong><?php echo esc_html( $title ); ?></strong></p>
+			<table class="widefat striped fc-settings-tools__diff-table">
+				<thead>
+					<tr>
+						<th><?php echo esc_html__( 'Setting', 'fluid-checkout' ); ?></th>
+						<th><?php echo esc_html__( 'Current', 'fluid-checkout' ); ?></th>
+						<th><?php echo esc_html__( 'New', 'fluid-checkout' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach ( $entries as $option => $row ) : ?>
+						<tr>
+							<td><code><?php echo esc_html( $option ); ?></code></td>
+							<td><code><?php echo esc_html( null === $row[ 'from' ] ? '—' : (string) $row[ 'from' ] ); ?></code></td>
+							<td><code><?php echo esc_html( (string) $row[ 'to' ] ); ?></code></td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+			<?php if ( $total > self::PREVIEW_ROWS_LIMIT ) : ?>
+				<p class="description">
+					<?php
+					echo esc_html(
+						sprintf(
+							/* translators: %d: number of additional rows not shown */
+							__( 'And %d more…', 'fluid-checkout' ),
+							$total - self::PREVIEW_ROWS_LIMIT
+						)
+					);
+					?>
+				</p>
+			<?php endif; ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Output a simple list of option keys for the will-clear bucket.
+	 *
+	 * @param  string  $title  Section title.
+	 * @param  array   $keys   Option keys.
+	 */
+	public function output_diff_key_list( $title, $keys ) {
+		// Bail if no keys
+		if ( empty( $keys ) ) { return; }
+
+		$total = count( $keys );
+		$keys = array_slice( $keys, 0, self::PREVIEW_ROWS_LIMIT );
+		?>
+		<div class="fc-settings-tools__diff-section">
+			<p><strong><?php echo esc_html( $title ); ?></strong></p>
+			<ul class="fc-settings-tools__diff-list">
+				<?php foreach ( $keys as $option ) : ?>
+					<li><code><?php echo esc_html( $option ); ?></code></li>
+				<?php endforeach; ?>
+			</ul>
+			<?php if ( $total > self::PREVIEW_ROWS_LIMIT ) : ?>
+				<p class="description">
+					<?php
+					echo esc_html(
+						sprintf(
+							/* translators: %d: number of additional rows not shown */
+							__( 'And %d more…', 'fluid-checkout' ),
+							$total - self::PREVIEW_ROWS_LIMIT
+						)
+					);
+					?>
+				</p>
+			<?php endif; ?>
+		</div>
 		<?php
 	}
 
@@ -221,6 +445,16 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		<form id="fc_settings_import_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" enctype="multipart/form-data" class="fc-settings-tools-form">
 			<input type="hidden" name="action" value="fc_settings_import">
 			<?php wp_nonce_field( 'fc_settings_import' ); ?>
+		</form>
+
+		<form id="fc_settings_import_apply_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">
+			<input type="hidden" name="action" value="fc_settings_import_apply">
+			<?php wp_nonce_field( 'fc_settings_import_apply' ); ?>
+		</form>
+
+		<form id="fc_settings_import_cancel_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">
+			<input type="hidden" name="action" value="fc_settings_import_cancel">
+			<?php wp_nonce_field( 'fc_settings_import_cancel' ); ?>
 		</form>
 
 		<form id="fc_settings_reset_form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="fc-settings-tools-form">

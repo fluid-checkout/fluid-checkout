@@ -30,7 +30,9 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function hooks() {
 		// Admin actions
 		add_action( 'admin_post_fc_settings_export', array( $this, 'handle_export' ), 10 );
-		add_action( 'admin_post_fc_settings_import', array( $this, 'handle_import' ), 10 );
+		add_action( 'admin_post_fc_settings_import', array( $this, 'handle_import_preview' ), 10 );
+		add_action( 'admin_post_fc_settings_import_apply', array( $this, 'handle_import_apply' ), 10 );
+		add_action( 'admin_post_fc_settings_import_cancel', array( $this, 'handle_import_cancel' ), 10 );
 		add_action( 'admin_post_fc_settings_reset', array( $this, 'handle_reset' ), 10 );
 		add_action( 'admin_post_fc_settings_restore', array( $this, 'handle_restore' ), 10 );
 
@@ -49,9 +51,18 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 
 	/**
 	 * Get the Tools settings section URL.
+	 *
+	 * @param  array  $args  Optional query args to merge.
 	 */
-	public function get_tools_settings_url() {
-		return admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=tools' );
+	public function get_tools_settings_url( $args = array() ) {
+		$url = admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=tools' );
+
+		// Bail if no extra args
+		if ( empty( $args ) ) {
+			return $url;
+		}
+
+		return add_query_arg( $args, $url );
 	}
 
 	/**
@@ -104,10 +115,15 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 
 
 	/**
-	 * Handle settings import upload.
+	 * Handle settings import upload and store a preview for review.
 	 */
-	public function handle_import() {
+	public function handle_import_preview() {
 		$this->verify_request( 'fc_settings_import' );
+
+		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
+		$mode = $service->normalize_import_mode(
+			isset( $_POST[ 'fc_settings_import_mode' ] ) ? sanitize_text_field( wp_unslash( $_POST[ 'fc_settings_import_mode' ] ) ) : 'update'
+		);
 
 		// Bail if no file uploaded
 		if ( empty( $_FILES[ 'fc_settings_import_file' ][ 'tmp_name' ] ) ) {
@@ -148,7 +164,56 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Reading validated uploaded temp file.
 		$json = file_get_contents( $tmp_name );
-		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->import_settings_from_json( $json, true );
+		$data = json_decode( $json, true );
+
+		// Bail if JSON is invalid
+		if ( null === $data && JSON_ERROR_NONE !== json_last_error() ) {
+			$this->redirect_with_notice( array(
+				'type'    => 'error',
+				'message' => __( 'Could not parse the settings file. Make sure it is valid JSON.', 'fluid-checkout' ),
+			) );
+		}
+
+		$diff = $service->get_import_diff( $data, $mode );
+
+		// Bail if validation errors
+		if ( ! empty( $diff[ 'errors' ] ) ) {
+			$this->redirect_with_notice( array(
+				'type'    => 'error',
+				'message' => implode( ' ', $diff[ 'errors' ] ),
+			) );
+		}
+
+		$service->set_import_preview( array(
+			'json'     => $json,
+			'mode'     => $mode,
+			'diff'     => $diff,
+			'filename' => $filename,
+		) );
+
+		wp_safe_redirect( $this->get_tools_settings_url( array( 'fc_settings_import_preview' => '1' ) ) );
+		exit;
+	}
+
+	/**
+	 * Apply a previously reviewed import preview.
+	 */
+	public function handle_import_apply() {
+		$this->verify_request( 'fc_settings_import_apply' );
+
+		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
+		$preview = $service->get_import_preview();
+
+		// Bail if preview is missing
+		if ( null === $preview ) {
+			$this->redirect_with_notice( array(
+				'type'    => 'error',
+				'message' => __( 'The import preview expired or is no longer available. Please upload the settings file again.', 'fluid-checkout' ),
+			) );
+		}
+
+		$result = $service->import_settings_from_json( $preview[ 'json' ], true, $preview[ 'mode' ] );
+		$service->clear_import_preview();
 
 		// Maybe show parse / validation errors
 		if ( ! empty( $result[ 'errors' ] ) ) {
@@ -158,14 +223,40 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 			) );
 		}
 
-		$this->redirect_with_notice( array(
-			'type'    => 'success',
-			'message' => sprintf(
-				/* translators: 1: number of settings imported, 2: number of settings skipped */
-				__( 'Settings imported successfully. Imported: %1$d. Skipped: %2$d. An automatic backup was created and can be restored from this page. License keys and API keys were not changed. Re-select logo images and linked pages if they do not appear correctly.', 'fluid-checkout' ),
+		if ( 'replace' === $result[ 'mode' ] ) {
+			$message = sprintf(
+				/* translators: 1: number of settings cleared, 2: number of settings imported, 3: number of settings skipped */
+				__( 'Settings replaced successfully. Cleared: %1$d. Imported: %2$d. Skipped: %3$d. An automatic backup was created and can be restored from this page. License keys and API keys were not changed. Re-select logo images and linked pages if they do not appear correctly.', 'fluid-checkout' ),
+				(int) $result[ 'reset' ],
 				(int) $result[ 'imported' ],
 				(int) $result[ 'skipped' ]
-			),
+			);
+		} else {
+			$message = sprintf(
+				/* translators: 1: number of settings imported, 2: number of settings skipped */
+				__( 'Settings updated successfully. Updated: %1$d. Skipped: %2$d. An automatic backup was created and can be restored from this page. License keys and API keys were not changed. Re-select logo images and linked pages if they do not appear correctly.', 'fluid-checkout' ),
+				(int) $result[ 'imported' ],
+				(int) $result[ 'skipped' ]
+			);
+		}
+
+		$this->redirect_with_notice( array(
+			'type'    => 'success',
+			'message' => $message,
+		) );
+	}
+
+	/**
+	 * Cancel a pending import preview.
+	 */
+	public function handle_import_cancel() {
+		$this->verify_request( 'fc_settings_import_cancel' );
+
+		FluidCheckout_Admin_Settings_Tools_Service::instance()->clear_import_preview();
+
+		$this->redirect_with_notice( array(
+			'type'    => 'success',
+			'message' => __( 'Import cancelled. No settings were changed.', 'fluid-checkout' ),
 		) );
 	}
 

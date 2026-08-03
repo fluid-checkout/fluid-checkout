@@ -27,6 +27,27 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 */
 	const BACKUP_TTL = WEEK_IN_SECONDS;
 
+	/**
+	 * How long a pending import preview remains available.
+	 *
+	 * @var int
+	 */
+	const IMPORT_PREVIEW_TTL = 30 * MINUTE_IN_SECONDS;
+
+	/**
+	 * Transient prefix for pending import previews (suffix with user ID).
+	 *
+	 * @var string
+	 */
+	const IMPORT_PREVIEW_TRANSIENT = 'fc_settings_tools_import_preview';
+
+	/**
+	 * Max characters when formatting diff values for display.
+	 *
+	 * @var int
+	 */
+	const DIFF_VALUE_MAX_LENGTH = 120;
+
 
 
 	/**
@@ -329,22 +350,198 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 
 	/**
+	 * Normalize an import mode string.
+	 *
+	 * @param  string  $mode  Requested mode.
+	 * @return string  `update` or `replace`.
+	 */
+	public function normalize_import_mode( $mode ) {
+		return ( 'replace' === $mode ) ? 'replace' : 'update';
+	}
+
+	/**
+	 * Whether the export payload structure is valid.
+	 *
+	 * @param  mixed  $data  Decoded export data.
+	 */
+	public function is_valid_import_data( $data ) {
+		return is_array( $data )
+			&& 'fluid-checkout' === ( $data[ 'generator' ] ?? '' )
+			&& array_key_exists( 'settings', $data )
+			&& is_array( $data[ 'settings' ] );
+	}
+
+	/**
+	 * Format a value for diff display (scalars as string; arrays/objects as truncated JSON).
+	 *
+	 * @param  mixed  $value  Option value.
+	 * @return string
+	 */
+	public function format_diff_value( $value ) {
+		if ( is_bool( $value ) ) {
+			$formatted = $value ? 'true' : 'false';
+		} elseif ( is_scalar( $value ) || null === $value ) {
+			$formatted = (string) $value;
+		} else {
+			$formatted = wp_json_encode( $value );
+			if ( false === $formatted ) {
+				$formatted = '';
+			}
+		}
+
+		if ( strlen( $formatted ) > self::DIFF_VALUE_MAX_LENGTH ) {
+			return substr( $formatted, 0, self::DIFF_VALUE_MAX_LENGTH - 1 ) . '…';
+		}
+
+		return $formatted;
+	}
+
+	/**
+	 * Whether values are considered equal for import diff purposes.
+	 *
+	 * @param  mixed  $a  First value.
+	 * @param  mixed  $b  Second value.
+	 */
+	public function values_are_equal( $a, $b ) {
+		return maybe_serialize( $a ) === maybe_serialize( $b );
+	}
+
+	/**
+	 * Build a diff between an import payload and the current site settings.
+	 *
+	 * @param  array   $data  Decoded export data.
+	 * @param  string  $mode  `update` or `replace`.
+	 * @return array{ mode: string, changed: array, added: array, will_clear: array, unchanged_count: int, skipped_count: int, errors: array }
+	 */
+	public function get_import_diff( $data, $mode = 'update' ) {
+		$mode = $this->normalize_import_mode( $mode );
+		$result = array(
+			'mode'            => $mode,
+			'changed'         => array(),
+			'added'           => array(),
+			'will_clear'      => array(),
+			'unchanged_count' => 0,
+			'skipped_count'   => 0,
+			'errors'          => array(),
+		);
+
+		// Bail if data is invalid
+		if ( ! $this->is_valid_import_data( $data ) ) {
+			$result[ 'errors' ][] = __( 'Invalid settings file. Expected a Fluid Checkout settings export.', 'fluid-checkout' );
+			return $result;
+		}
+
+		$file_transfer_keys = array();
+
+		foreach ( $data[ 'settings' ] as $option => $value ) {
+			$option = sanitize_text_field( $option );
+
+			// Skip unknown, excluded, or non-transferable keys
+			if ( ! $this->should_include_option_key( $option ) ) {
+				$result[ 'skipped_count' ]++;
+				continue;
+			}
+
+			$file_transfer_keys[ $option ] = true;
+
+			// Option not saved on this site yet
+			if ( ! $this->option_exists( $option ) ) {
+				$result[ 'added' ][ $option ] = array(
+					'from' => null,
+					'to'   => $this->format_diff_value( $value ),
+				);
+				continue;
+			}
+
+			$current = get_option( $option );
+
+			// Unchanged
+			if ( $this->values_are_equal( $current, $value ) ) {
+				$result[ 'unchanged_count' ]++;
+				continue;
+			}
+
+			$result[ 'changed' ][ $option ] = array(
+				'from' => $this->format_diff_value( $current ),
+				'to'   => $this->format_diff_value( $value ),
+			);
+		}
+
+		// Replace mode: list managed keys that would be cleared and not restored from the file
+		if ( 'replace' === $mode ) {
+			foreach ( $this->get_managed_option_keys() as $option ) {
+				// Bail if option is not currently saved
+				if ( ! $this->option_exists( $option ) ) { continue; }
+
+				// Bail if file will restore this transferable key
+				if ( isset( $file_transfer_keys[ $option ] ) ) { continue; }
+
+				// Troubleshooting keys are cleared by reset but never restored from transfer files
+				$result[ 'will_clear' ][] = $option;
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Whether the store appears to be a live site for settings-tools warnings.
+	 *
+	 * Uses WooCommerce Coming Soon helper when available. When unavailable, treats
+	 * the site as live so the soft warning still shows.
+	 */
+	public function is_settings_tools_live_site() {
+		$is_live = true;
+
+		if ( class_exists( '\\Automattic\\WooCommerce\\Internal\\ComingSoon\\ComingSoonHelper' ) ) {
+			$helper = new \Automattic\WooCommerce\Internal\ComingSoon\ComingSoonHelper();
+			$is_live = (bool) $helper->is_site_live();
+		}
+
+		/**
+		 * Filter whether the site is considered live for settings tools warnings.
+		 *
+		 * @param  bool  $is_live  Whether the site is considered live.
+		 */
+		return (bool) apply_filters( 'fc_settings_tools_is_live_site', $is_live );
+	}
+
+	/**
+	 * Whether to show the soft live-site warning on settings tools screens.
+	 */
+	public function should_show_live_site_warning() {
+		$is_live = $this->is_settings_tools_live_site();
+
+		/**
+		 * Filter whether to show the live-site soft warning on settings tools.
+		 *
+		 * @param  bool  $show     Whether to show the warning.
+		 * @param  bool  $is_live  Whether the site is considered live.
+		 */
+		return (bool) apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live, $is_live );
+	}
+
+	/**
 	 * Import settings from a decoded data array.
 	 *
-	 * @param  array  $data           Decoded export data.
-	 * @param  bool   $create_backup  Whether to create an automatic backup before applying.
-	 * @return array{ imported: int, skipped: int, errors: array, backup_created: bool }
+	 * @param  array   $data           Decoded export data.
+	 * @param  bool    $create_backup  Whether to create an automatic backup before applying.
+	 * @param  string  $mode           `update` (merge) or `replace` (reset then apply).
+	 * @return array{ imported: int, skipped: int, reset: int, mode: string, errors: array, backup_created: bool }
 	 */
-	public function import_settings( $data, $create_backup = false ) {
+	public function import_settings( $data, $create_backup = false, $mode = 'update' ) {
+		$mode = $this->normalize_import_mode( $mode );
 		$result = array(
 			'imported'       => 0,
 			'skipped'        => 0,
+			'reset'          => 0,
+			'mode'           => $mode,
 			'errors'         => array(),
 			'backup_created' => false,
 		);
 
 		// Bail if data is invalid
-		if ( ! is_array( $data ) || 'fluid-checkout' !== ( $data[ 'generator' ] ?? '' ) || ! array_key_exists( 'settings', $data ) || ! is_array( $data[ 'settings' ] ) ) {
+		if ( ! $this->is_valid_import_data( $data ) ) {
 			$result[ 'errors' ][] = __( 'Invalid settings file. Expected a Fluid Checkout settings export.', 'fluid-checkout' );
 			return $result;
 		}
@@ -353,6 +550,12 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 		if ( $create_backup ) {
 			$this->create_auto_backup( 'import' );
 			$result[ 'backup_created' ] = true;
+		}
+
+		// Replace mode: clear managed settings first (backup already created above when requested)
+		if ( 'replace' === $mode ) {
+			$reset_result = $this->reset_settings( false );
+			$result[ 'reset' ] = (int) $reset_result[ 'reset' ];
 		}
 
 		foreach ( $data[ 'settings' ] as $option => $value ) {
@@ -379,9 +582,10 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 *
 	 * @param  string  $json           JSON string.
 	 * @param  bool    $create_backup  Whether to create an automatic backup before applying.
-	 * @return array{ imported: int, skipped: int, errors: array, backup_created: bool }
+	 * @param  string  $mode           `update` or `replace`.
+	 * @return array{ imported: int, skipped: int, reset: int, mode: string, errors: array, backup_created: bool }
 	 */
-	public function import_settings_from_json( $json, $create_backup = false ) {
+	public function import_settings_from_json( $json, $create_backup = false, $mode = 'update' ) {
 		$data = json_decode( $json, true );
 
 		// Bail if JSON is invalid
@@ -389,12 +593,57 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 			return array(
 				'imported'       => 0,
 				'skipped'        => 0,
+				'reset'          => 0,
+				'mode'           => $this->normalize_import_mode( $mode ),
 				'errors'         => array( __( 'Could not parse the settings file. Make sure it is valid JSON.', 'fluid-checkout' ) ),
 				'backup_created' => false,
 			);
 		}
 
-		return $this->import_settings( $data, $create_backup );
+		return $this->import_settings( $data, $create_backup, $mode );
+	}
+
+	/**
+	 * Get the pending import preview transient key for a user.
+	 *
+	 * @param  int  $user_id  User ID.
+	 */
+	public function get_import_preview_transient_key( $user_id = 0 ) {
+		$user_id = $user_id ? (int) $user_id : get_current_user_id();
+		return self::IMPORT_PREVIEW_TRANSIENT . '_' . $user_id;
+	}
+
+	/**
+	 * Store a pending import preview for the current user.
+	 *
+	 * @param  array  $preview  Preview payload with `json`, `mode`, and `diff`.
+	 */
+	public function set_import_preview( $preview ) {
+		set_transient( $this->get_import_preview_transient_key(), $preview, self::IMPORT_PREVIEW_TTL );
+	}
+
+	/**
+	 * Get the pending import preview for the current user, or null.
+	 *
+	 * @return array|null
+	 */
+	public function get_import_preview() {
+		$preview = get_transient( $this->get_import_preview_transient_key() );
+
+		// Bail if preview is missing or invalid
+		if ( ! is_array( $preview ) || empty( $preview[ 'json' ] ) || empty( $preview[ 'mode' ] ) || empty( $preview[ 'diff' ] ) || ! is_array( $preview[ 'diff' ] ) ) {
+			return null;
+		}
+
+		$preview[ 'mode' ] = $this->normalize_import_mode( $preview[ 'mode' ] );
+		return $preview;
+	}
+
+	/**
+	 * Clear the pending import preview for the current user.
+	 */
+	public function clear_import_preview() {
+		delete_transient( $this->get_import_preview_transient_key() );
 	}
 
 
