@@ -1175,7 +1175,22 @@ jQuery( function ( $ ) {
 								var field = allPhoneFields[i];
 								var phoneField = intlTelInputObject.getInstance( field );
 								if ( phoneField ) {
-									var preservedValue = phoneField.getNumber();
+									var preservedValue = '';
+
+									// Prefer E.164 via getNumber when utils are loaded,
+									// otherwise fall back to dial code + national number
+									if ( field.value && field.value.trim() ) {
+										if ( window.intlTelInput.utils ) {
+											preservedValue = phoneField.getNumber();
+										} else {
+											var selectedCountry = typeof phoneField.getSelectedCountry === 'function'
+												? phoneField.getSelectedCountry()
+												: ( typeof phoneField.getSelectedCountryData === 'function' ? phoneField.getSelectedCountryData() : null );
+											var selectedCountryCode = selectedCountry && selectedCountry.dialCode && 0 !== field.value.indexOf( '+' ) ? '+' + selectedCountry.dialCode : '';
+											preservedValue = selectedCountryCode + field.value;
+										}
+									}
+
 									phoneField.destroy();
 									field.value = preservedValue;
 								}
