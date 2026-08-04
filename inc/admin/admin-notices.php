@@ -28,20 +28,40 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	public function hooks() {
 		add_action( 'admin_notices', array( $this, 'display_notices' ), 10 );
 		add_action( 'admin_init', array( $this, 'dismiss_notice' ), 10 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_styles' ), 10 );
+
+		// Register assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 	}
 
 
 
 	/**
-	 * Maybe enqueue admin notice styles.
+	 * Register admin notice assets.
 	 */
-	public function maybe_enqueue_styles() {
+	public function register_assets() {
+		// Styles
+		wp_register_style( 'fc-admin-notices', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-notices' ), array(), NULL );
+	}
+
+	/**
+	 * Enqueue admin notice assets.
+	 */
+	public function enqueue_assets() {
+		// Styles
+		wp_enqueue_style( 'fc-admin-notices' );
+	}
+
+	/**
+	 * Maybe enqueue admin notice assets.
+	 */
+	public function maybe_enqueue_assets() {
 		// Bail if user does not have necessary permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return; }
 
-		// Styles
-		wp_enqueue_style( 'fc-admin-notices', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-notices' ), array(), null );
+		$this->enqueue_assets();
 	}
 
 
@@ -73,11 +93,8 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		if ( true === $notice['error'] ) {
 			$notice_classes[] = 'notice-error';
 		}
-
-		// Initialize notice style
-		$notice_style = true === $notice['error'] ? '' : 'border-left-color: #0047e1;'; // TODO: Set color via CSS class
 		?>
-		<div class="<?php echo esc_attr( implode( ' ', $notice_classes ) ); ?>" <?php echo $notice_style ? 'style="' . esc_attr( $notice_style ) . '"' : ''; ?>>
+		<div class="<?php echo esc_attr( implode( ' ', $notice_classes ) ); ?>">
 			<div class="fc-admin-notice__inner">
 				<div class="fc-admin-notice__icon">
 					<img src="<?php echo esc_url( $this->get_plugin_icon_url() ); ?>" alt="" width="48" height="48" />

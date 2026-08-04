@@ -21,7 +21,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function hooks() {
 		// Plugin settings link
 		add_filter( 'plugin_action_links_' . self::$plugin_basename, array( $this, 'add_plugin_settings_link' ), 10 );
-		
+
 		// Load dashboard
 		add_action( 'init', array( $this, 'load_dashboard' ), 10 );
 
@@ -31,10 +31,12 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// WooCommerce Settings
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
 
-		// WooCommerce Settings Styles
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 10 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ), 10 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_dashboard_styles' ), 10 );
+		// Register assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_dashboard_assets' ), 10 );
 
 		// Clear cache after saving settings
 		add_action( 'woocommerce_settings_saved', array( $this, 'flush_cache' ), 10 );
@@ -43,50 +45,72 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
-	 * Enqueue styles for the current admin settings page.
-	 *
-	 * @param int $hook_suffix Hook suffix for the current admin page.
+	 * Register admin settings assets.
 	 */
-	public function enqueue_admin_styles( $hook_suffix ) {
-		// Bail if not on WooCommerce settings page
-		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-settings-page', 'window.addEventListener("load",function(){FCSettingsPage.init();});' );
 
-		wp_enqueue_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), NULL, NULL );
+		// Styles
+		wp_register_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), array(), NULL );
+		wp_register_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), array(), NULL );
 	}
 
 	/**
-	 * Enqueue scripts for the current admin settings page.
-	 *
-	 * @param int $hook_suffix Hook suffix for the current admin page.
+	 * Enqueue admin settings assets.
 	 */
-	public function enqueue_admin_scripts( $hook_suffix ) {
-		// Bail if not on WooCommerce settings page
-		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-settings-page' );
 
-		wp_enqueue_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-settings-page', 'window.addEventListener("load",function(){ if ( window.FCSettingsPage ) { FCSettingsPage.init(); } });' );
+		// Styles
+		wp_enqueue_style( 'fc-admin-options' );
 	}
 
 	/**
-	 * Enqueue styles for the current admin settings page.
+	 * Maybe enqueue admin settings assets.
 	 *
-	 * @param int $hook_suffix Hook suffix for the current admin page.
+	 * @param  string  $hook_suffix  Hook suffix for the current admin page.
 	 */
-	public function enqueue_admin_dashboard_styles( $hook_suffix ) {
+	public function maybe_enqueue_assets( $hook_suffix ) {
+		// Bail if not on WooCommerce settings page
+		if ( 'woocommerce_page_wc-settings' !== $hook_suffix ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+	/**
+	 * Enqueue admin dashboard assets.
+	 */
+	public function enqueue_dashboard_assets() {
+		// Styles
+		wp_enqueue_style( 'fc-admin-dashboard' );
+	}
+
+	/**
+	 * Maybe enqueue admin dashboard assets.
+	 *
+	 * @param  string  $hook_suffix  Hook suffix for the current admin page.
+	 */
+	public function maybe_enqueue_dashboard_assets( $hook_suffix ) {
 		// Get current screen
 		$current_screen = get_current_screen();
 
+		// Bail if current screen is not available
+		if ( ! $current_screen ) { return; }
+
 		// Bail if not on WooCommerce settings page
-		if ( $current_screen->id !== 'woocommerce_page_wc-settings' ) { return; }
-		
+		if ( 'woocommerce_page_wc-settings' !== $current_screen->id ) { return; }
+
 		// Get current tab and section
-		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ?? '' ) ) : 'general';
-		$current_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ?? '' ) ) : '';
+		$current_tab = isset( $_GET[ 'tab' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'tab' ] ?? '' ) ) : 'general';
+		$current_section = isset( $_GET[ 'section' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'section' ] ?? '' ) ) : '';
 
 		// Bail if not on dashboard settings page
 		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
 
-		wp_enqueue_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), NULL, NULL );
+		$this->enqueue_dashboard_assets();
 	}
 
 

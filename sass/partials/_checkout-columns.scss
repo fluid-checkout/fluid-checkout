@@ -89,7 +89,7 @@ body.has-checkout-column-layout--one_column.has-fc-design-template--split .fc-si
 body.has-checkout-column-layout--two_columns .fc-wrapper .fc-sidebar .fc-sidebar__inner,
 body.has-checkout-column-layout--one_column.has-fc-design-template--split .fc-wrapper .fc-sidebar .fc-sidebar__inner {
 	@media (#{$bp-smaller-than-desktop}) {
-		position: static !important;
+		position: static !important; // Needed to override theme styles
 	}
 }
 // With admin bar
