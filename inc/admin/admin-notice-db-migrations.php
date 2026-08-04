@@ -46,12 +46,13 @@ class FluidCheckout_AdminNotices_DBMigrations extends FluidCheckout {
 		$database_update_url = wp_nonce_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'update_db' ) ), self::$plugin_prefix . '_update_db' );
 
 		// Build description
-		$description = __( 'Some changes to the database are required. As with any update, we recommend you to <strong>take a full backup of your website before proceeding</strong>.', 'fluid-checkout' );
+		// Do not wrap the full description in a single `<p>` so block elements (lists) stay valid HTML.
+		$description = '<p>' . __( 'Some changes to the database are required. As with any update, we recommend you to <strong>take a full backup of your website before proceeding</strong>.', 'fluid-checkout' ) . '</p>';
 
 		// Maybe add migration change descriptions
 		$migrations_descriptions = FluidCheckout_AdminDBMigrations::instance()->get_migrations_descriptions();
 		if ( ! empty( $migrations_descriptions ) ) {
-			$description .= ' <br><br>' . __( 'The following changes will be applied:', 'fluid-checkout' );
+			$description .= '<p>' . __( 'The following changes will be applied:', 'fluid-checkout' ) . '</p>';
 			$description .= '<ul class="ul-disc">';
 			foreach ( $migrations_descriptions as $migration_description ) {
 				$description .= '<li>' . esc_html( $migration_description ) . '</li>';
@@ -61,11 +62,12 @@ class FluidCheckout_AdminNotices_DBMigrations extends FluidCheckout {
 
 		// Add notice
 		$notices[] = array(
-			'name'           => self::$plugin_prefix . '_db_migrations',
-			'title'          => __( 'Fluid Checkout database update', 'fluid-checkout' ),
-			'description'    => $description,
-			'dismissable'    => false,
-			'actions'        => array(
+			'name'            => self::$plugin_prefix . '_db_migrations',
+			'title'           => __( 'Fluid Checkout database update', 'fluid-checkout' ),
+			'description'     => $description,
+			'paragraph_wrap'  => false,
+			'dismissable'     => false,
+			'actions'         => array(
 				sprintf( '<a href="%s" class="button button-primary">%s</a>', $database_update_url, __( 'Update database', 'fluid-checkout' ) ),
 			),
 		);

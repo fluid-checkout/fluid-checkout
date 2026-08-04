@@ -46,13 +46,14 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		}
 
 		$default_options = array(
-			'name'           => null,
-			'title'          => '',
-			'description'    => '',
-			'error'          => false,
-			'actions'        => array(),
-			'dismissable'    => true,
-			'dismiss_label'  => __( 'Don\'t show this again', 'fluid-checkout' ),
+			'name'            => null,
+			'title'           => '',
+			'description'     => '',
+			'error'           => false,
+			'actions'         => array(),
+			'dismissable'     => true,
+			'dismiss_label'   => __( 'Don\'t show this again', 'fluid-checkout' ),
+			'paragraph_wrap'  => true,
 		);
 
 		foreach ( $notices as $notice ) {
@@ -72,10 +73,16 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 					<p><strong><?php echo wp_kses_post( $notice['title'] ); ?></strong></p>
 				<?php endif; ?>
 
-				<p><?php echo wp_kses_post( $notice['description'] ); ?></p>
+				<?php if ( ! empty( $notice['description'] ) ) : ?>
+					<?php if ( $notice['paragraph_wrap'] ) : ?>
+						<p><?php echo wp_kses_post( $notice['description'] ); ?></p>
+					<?php else : ?>
+						<?php echo wp_kses_post( $notice['description'] ); ?>
+					<?php endif; ?>
+				<?php endif; ?>
 
 				<?php if ( is_array( $notice['actions'] ) && count( $notice['actions'] ) > 0 ) { ?>
-					<p><?php echo wp_kses_post( implode( ' ',  $notice['actions'] ) ); ?></p>
+					<p class="submit"><?php echo wp_kses_post( implode( ' ',  $notice['actions'] ) ); ?></p>
 				<?php } ?>
 			</div>
 			<?php
