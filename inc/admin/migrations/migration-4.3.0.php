@@ -18,6 +18,17 @@ class FluidCheckout_Migration_4_3_0 extends FluidCheckout {
 
 
 	/**
+	 * Get the list of changes applied by this migration.
+	 */
+	public function get_description() {
+		return array(
+			__( 'Copy the order summary background color setting to the new Split design right column background color option.', 'fluid-checkout' ),
+		);
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function migrate() {
