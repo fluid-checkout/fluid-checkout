@@ -27,6 +27,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100, 2 );
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100, 2 );
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100, 2 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_split_right_column' ), 100, 2 );
 
 		// Custom styles
 		add_action( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -47,6 +48,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_split_right_column' ), 100 );
 
 		// Custom styles
 		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -412,6 +414,53 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
 
 		return $this->add_css_variables_order_summary( $css_variables, $context );
+	}
+
+
+
+	/**
+	 * Add CSS variables for the Split design right column background color.
+	 * Falls back to the order summary background color when the Split-specific color is empty.
+	 *
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context        The context for which to get the CSS variables styles. Defaults to `frontend`.
+	 */
+	public function add_css_variables_split_right_column( $css_variables, $context = 'frontend' ) {
+		// Bail if design template is not split
+		if ( 'split' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return $css_variables; }
+
+		// Get Split right column background color when enabled, otherwise fall back to order summary background color
+		$split_color_esc = '';
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_split_right_column_background_color' ) ) {
+			$split_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_split_right_column_background_color' ) ) );
+		}
+		$order_summary_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) ) );
+		$color_esc = ! empty( $split_color_esc ) ? $split_color_esc : $order_summary_color_esc;
+
+		// Bail if color is empty
+		if ( empty( $color_esc ) ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root body.woocommerce-page[class*="theme-"][class*="has-fc-design-template"]' => array(
+				'--fluidcheckout--split--right-column-background-color' => $color_esc,
+			),
+		);
+
+		return $this->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+	/**
+	 * Maybe add CSS variables for the Split design right column background color.
+	 *
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context        The context for which to get the CSS variables styles. Defaults to `frontend`.
+	 */
+	public function maybe_add_css_variables_split_right_column( $css_variables, $context = 'frontend' ) {
+		// Bail if not on checkout page.
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
+
+		return $this->add_css_variables_split_right_column( $css_variables, $context );
 	}
 
 }

@@ -33,6 +33,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ), 10 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_dashboard_styles' ), 10 );
 
 		// Clear cache after saving settings
@@ -51,6 +52,19 @@ class FluidCheckout_Admin extends FluidCheckout {
 		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
 
 		wp_enqueue_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), NULL, NULL );
+	}
+
+	/**
+	 * Enqueue scripts for the current admin settings page.
+	 *
+	 * @param int $hook_suffix Hook suffix for the current admin page.
+	 */
+	public function enqueue_admin_scripts( $hook_suffix ) {
+		// Bail if not on WooCommerce settings page
+		if ( $hook_suffix !== 'woocommerce_page_wc-settings' ) { return; }
+
+		wp_enqueue_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-settings-page', 'window.addEventListener("load",function(){ if ( window.FCSettingsPage ) { FCSettingsPage.init(); } });' );
 	}
 
 	/**
