@@ -59,7 +59,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_enable_checkout_express_checkout_ignore_required_fields'    => 'yes',
 			'fc_checkout_order_review_highlight_color'                      => null,
-			'fc_enable_checkout_split_right_column_background_color'        => 'no',
 			'fc_checkout_split_right_column_background_color'               => null,
 			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',

@@ -123,6 +123,19 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'desc'                  => __( 'Choose a background color for the Split design right column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                    => 'fc_checkout_split_right_column_background_color',
+						'type'                  => 'text',
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_split_right_column_background_color' ),
+						'autoload'              => false,
+						'class'                 => 'colorpick',
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_design_template',
+							'data-conditional-value' => 'split',
+						),
+					),
+
+					array(
 						'title'                 => __( 'Dark mode', 'fluid-checkout' ),
 						'desc'                  => __( 'Enable dark mode', 'fluid-checkout' ),
 						'id'                    => 'fc_enable_dark_mode_styles',
@@ -297,31 +310,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_order_review_highlight_color' ),
 						'autoload'              => false,
 						'class'                 => 'colorpick',
-					),
-
-					array(
-						'desc'                  => __( 'Use a different color for the right column when using Split design template', 'fluid-checkout' ),
-						'id'                    => 'fc_enable_checkout_split_right_column_background_color',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_split_right_column_background_color' ),
-						'autoload'              => false,
-						'custom_attributes'     => array(
-							'data-conditional-id'    => 'fc_design_template',
-							'data-conditional-value' => 'split',
-						),
-					),
-
-					array(
-						'desc'                  => __( 'Choose a background color for the Split design right column.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
-						'id'                    => 'fc_checkout_split_right_column_background_color',
-						'type'                  => 'text',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_split_right_column_background_color' ),
-						'autoload'              => false,
-						'class'                 => 'colorpick',
-						'custom_attributes'     => array(
-							'data-conditional-id'    => 'fc_enable_checkout_split_right_column_background_color',
-							'data-conditional-value' => 'yes',
-						),
 					),
 
 					array(

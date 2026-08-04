@@ -429,11 +429,8 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// Bail if design template is not split
 		if ( 'split' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return $css_variables; }
 
-		// Get Split right column background color when enabled, otherwise fall back to order summary background color
-		$split_color_esc = '';
-		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_checkout_split_right_column_background_color' ) ) {
-			$split_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_split_right_column_background_color' ) ) );
-		}
+		// Get Split right column background color, fall back to order summary background color when empty
+		$split_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_split_right_column_background_color' ) ) );
 		$order_summary_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) ) );
 		$color_esc = ! empty( $split_color_esc ) ? $split_color_esc : $order_summary_color_esc;
 
