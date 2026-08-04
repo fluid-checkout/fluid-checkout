@@ -26,6 +26,10 @@
 		conditionalFieldsForTriggerSelector:   '[data-conditional-id="###ID###"]',
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
+
+		settingsRowSelector:                   'tr',
+
+		hiddenClass:                           'hidden',
 	};
 	var _triggerFieldIds = [];
 
@@ -217,8 +221,8 @@
 			var fieldValue = getFieldValue( triggerElement );
 
 			// Get field row
-			var fieldRow = conditionalField.closest( 'tr' );
-			var triggerFieldRow = triggerElement.closest( 'tr' );
+			var fieldRow = conditionalField.closest( _settings.settingsRowSelector );
+			var triggerFieldRow = triggerElement.closest( _settings.settingsRowSelector );
 
 			// Skip if field row is not found
 			if ( ! fieldRow ) { continue; }
@@ -227,17 +231,17 @@
 			// - Hide field if condition is not met
 			// - Hide related conditional fields if the trigger field itself is hidden
 			var isVisible = fieldValueCondition === fieldValue;
-			if ( triggerFieldRow && triggerFieldRow.classList.contains( 'hidden' ) ) {
+			if ( triggerFieldRow && triggerFieldRow.classList.contains( _settings.hiddenClass ) ) {
 				isVisible = false;
 			}
 
 			// Maybe show/hide field row
 			if ( isVisible ) {
-				fieldRow.classList.remove( 'hidden' );
+				fieldRow.classList.remove( _settings.hiddenClass );
 				fieldRow.style.display = ''; // Clear custom display style
 			}
 			else {
-				fieldRow.classList.add( 'hidden' );
+				fieldRow.classList.add( _settings.hiddenClass );
 				fieldRow.style.display = 'none';
 			}
 
@@ -325,7 +329,8 @@
 	 * @param   {Object}  options  Optional settings overrides (e.g. fieldIdPrefix).
 	 */
 	_publicMethods.init = function( options ) {
-		if ( _hasInitialized ) return;
+		// Bail if already initialized
+		if ( _hasInitialized ) { return; }
 
 		// Merge settings
 		_settings = extend( _settings, options );
@@ -337,6 +342,7 @@
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
 
+		// Set initialized flag
 		_hasInitialized = true;
 	};
 
