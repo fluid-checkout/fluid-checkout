@@ -50,9 +50,61 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 
 	/**
+	 * Clear shipping address fields that are not present in the shipping calculator.
+	 * Prevents leftover street/name data when updating destination from the calculator after a full address was set.
+	 */
+	public function clear_shipping_address_fields_not_in_calculator() {
+		$customer = WC()->customer;
+
+		// Bail if customer object is not available
+		if ( ! $customer ) { return; }
+
+		// Get calculator shipping field keys (ie. `shipping_country`) from the `calc_shipping_*` post keys
+		$calc_field_keys = array();
+		foreach ( $this->get_calc_shipping_address_field_post_keys() as $calc_field_key ) {
+			$calc_field_keys[] = str_replace( 'calc_', '', $calc_field_key );
+		}
+
+		// Clear the shipping fields that are copied on "same as billing" but not entered in the calculator
+		$field_keys_to_clear = array_diff( FluidCheckout_Steps::instance()->get_shipping_same_billing_fields_keys(), $calc_field_keys );
+		$customer_id = $customer->get_id();
+
+		foreach ( $field_keys_to_clear as $field_key ) {
+			$setter = "set_$field_key";
+
+			// Clear customer property
+			if ( is_callable( array( $customer, $setter ) ) ) {
+				$customer->{$setter}( '' );
+			}
+
+			// Persist empty to user meta for logged-in customers.
+			// WC_Customer_Data_Store_Session skips empty session values on the next request and reloads user meta — leftover streets would otherwise return.
+			if ( $customer_id ) {
+				update_user_meta( $customer_id, $field_key, '' );
+			}
+
+			// Clear checkout session value
+			FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $field_key, '' );
+		}
+	}
+
+
+
+	/**
 	 * Set the customer new shipping address with the values set in the shipping calculator.
 	 */
 	public function set_new_address_data_from_shipping_calculator() {
+		// "Same as billing" (PRO checkbox or Address Book) and saved Address Book entries set the shipping address
+		// directly; the calculator fields must not override those destinations.
+		$is_same_as_billing = array_key_exists( 'shipping_same_as_billing', $_POST ) && '1' === wc_clean( wp_unslash( $_POST[ 'shipping_same_as_billing' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$address_source = array_key_exists( 'shipping_address_source', $_POST ) ? wc_clean( wp_unslash( $_POST[ 'shipping_address_source' ] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
+		// Bail if shipping same as billing is selected
+		if ( $is_same_as_billing ) { return; }
+
+		// Bail if address source is not the shipping calculator (new address)
+		if ( null !== $address_source && 'new' !== $address_source ) { return; }
+
 		// Initialize variables
 		$changed_values = array();
 		
@@ -77,6 +129,13 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 
 		// Maybe apply changes
 		if ( is_array( $changed_values ) && count( $changed_values ) > 0 ) {
+			// Applying a calculator destination — clear same-as-billing so checkout uses these values
+			FluidCheckout_Steps::instance()->set_shipping_same_as_billing_session( false );
+
+			// Clear leftover street/name fields not present in the calculator.
+			// Reached only for the `new`/plain calculator source (other sources bailed above).
+			$this->clear_shipping_address_fields_not_in_calculator();
+
 			// Iterate changed values and apply changes to the customer data and checkout session
 			foreach ( $changed_values as $field_key => $new_field_value ) {
 				// Update field values
