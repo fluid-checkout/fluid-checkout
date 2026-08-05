@@ -27,7 +27,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100, 2 );
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100, 2 );
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100, 2 );
-		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_split_right_column' ), 100, 2 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_secondary_column' ), 100, 2 );
 
 		// Custom styles
 		add_action( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -48,7 +48,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
-		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_split_right_column' ), 100 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_secondary_column' ), 100 );
 
 		// Custom styles
 		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -162,7 +162,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		foreach ( $css_variables as $scope => $properties ) {
 			// Maybe skip empty scope
 			if ( empty( $properties ) ) { continue; }
-		
+
 			// Transform array into string of CSS variables
 			$css_variables_str = join( ';', array_map( function( $value, $key ) {
 				return esc_attr( $key ) . ':' . esc_attr( $value );
@@ -177,6 +177,9 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 	/**
 	 * Merge CSS variables within the scopes.
+	 * 
+	 * @param  array  $css_variables           The CSS variables key/value pairs.
+	 * @param  array  $css_variables_to_merge  The CSS variables key/value pairs to merge.
 	 */
 	public function merge_css_variables( $css_variables, $css_variables_to_merge ) {
 		// Start with CSS variables
@@ -238,8 +241,10 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 	/**
 	 * Add the custom styles for the checkout page background color.
+	 * 
+	 * @param  string  $custom_styles  The custom styles to add.
 	 */
-	public function add_checkout_page_custom_styles( $custom_styles ) {		
+	public function add_checkout_page_custom_styles( $custom_styles ) {
 		// Get header background color
 		$page_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color', '' ) );
 
@@ -253,6 +258,8 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 	/**
 	 * Maybe add the custom styles for the checkout page background color.
+	 * 
+	 * @param  string  $custom_styles  The custom styles to add.
 	 */
 	public function maybe_add_checkout_page_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
@@ -262,7 +269,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Get the CSS variables for dark mode.
 	 */
@@ -419,20 +426,20 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
-	 * Add CSS variables for the Split design right column background color.
+	 * Add CSS variables for the Split design secondary column background color.
 	 * Falls back to the order summary background color when the Split-specific color is empty.
 	 *
 	 * @param  array   $css_variables  The CSS variables key/value pairs.
 	 * @param  string  $context        The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function add_css_variables_split_right_column( $css_variables, $context = 'frontend' ) {
+	public function add_css_variables_secondary_column( $css_variables, $context = 'frontend' ) {
 		// Bail if design template is not split
 		if ( 'split' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return $css_variables; }
 
-		// Get Split right column background color, fall back to order summary background color when empty
-		$split_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_split_right_column_background_color' ) ) );
+		// Get Split secondary column background color, fall back to order summary background color when empty
+		$secondary_column_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_secondary_column_background_color' ) ) );
 		$order_summary_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) ) );
-		$color_esc = ! empty( $split_color_esc ) ? $split_color_esc : $order_summary_color_esc;
+		$color_esc = ! empty( $secondary_column_color_esc ) ? $secondary_column_color_esc : $order_summary_color_esc;
 
 		// Bail if color is empty
 		if ( empty( $color_esc ) ) { return $css_variables; }
@@ -440,7 +447,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// Add CSS variables
 		$new_css_variables = array(
 			':root body.woocommerce-page[class*="theme-"][class*="has-fc-design-template"]' => array(
-				'--fluidcheckout--split--right-column-background-color' => $color_esc,
+				'--fluidcheckout--secondary-column-background-color' => $color_esc,
 			),
 		);
 
@@ -448,16 +455,16 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	}
 
 	/**
-	 * Maybe add CSS variables for the Split design right column background color.
+	 * Maybe add CSS variables for the Split design secondary column background color.
 	 *
 	 * @param  array   $css_variables  The CSS variables key/value pairs.
 	 * @param  string  $context        The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
-	public function maybe_add_css_variables_split_right_column( $css_variables, $context = 'frontend' ) {
+	public function maybe_add_css_variables_secondary_column( $css_variables, $context = 'frontend' ) {
 		// Bail if not on checkout page.
 		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
 
-		return $this->add_css_variables_split_right_column( $css_variables, $context );
+		return $this->add_css_variables_secondary_column( $css_variables, $context );
 	}
 
 }

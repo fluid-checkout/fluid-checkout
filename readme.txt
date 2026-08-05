@@ -357,7 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Support for Split design template for the 1-column layout (PRO feature).
-* Added: Setting to choose a background color for the Split design right column (PRO feature).
+* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
 

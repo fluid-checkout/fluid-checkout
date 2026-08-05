@@ -123,10 +123,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Choose a background color for the Split design right column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
-						'id'                    => 'fc_checkout_split_right_column_background_color',
+						'desc'                  => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                    => 'fc_checkout_secondary_column_background_color',
 						'type'                  => 'text',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_split_right_column_background_color' ),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_secondary_column_background_color' ),
 						'autoload'              => false,
 						'class'                 => 'colorpick',
 						'custom_attributes'     => array(
