@@ -130,17 +130,19 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_adb_dismissed_notice_review_request_timed' ) );
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 
+		// Test with a filter to ensure the filter works as expected.
 		$filter = function( $excluded, $option ) {
 			return 'fc_checkout_layout' === $option ? true : $excluded;
 		};
 		add_filter( 'fc_settings_tools_is_excluded_option_key', $filter, 10, 2 );
 
+		// Assert that the filter works as expected.
 		try {
 			$this->assertTrue( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 		} finally {
 			remove_filter( 'fc_settings_tools_is_excluded_option_key', $filter, 10 );
 		}
-
+	
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 	}
 
@@ -429,6 +431,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertNotEmpty( $invalid_payload[ 'errors' ] );
 		$this->assertSame( 0, $invalid_payload[ 'imported' ] );
 
+		// Test with a wrong generator.
 		$wrong_generator = $this->service->import_settings( array(
 			'generator'      => 'other-plugin',
 			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
@@ -439,6 +442,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertNotEmpty( $wrong_generator[ 'errors' ] );
 		$this->assertSame( 0, $wrong_generator[ 'imported' ] );
 
+		// Test with an unsupported format version.
 		$unsupported_format = $this->service->import_settings( array(
 			'generator'      => 'fluid-checkout',
 			'format_version' => '999',
@@ -449,6 +453,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertNotEmpty( $unsupported_format[ 'errors' ] );
 		$this->assertSame( 0, $unsupported_format[ 'imported' ] );
 
+		// Test with invalid JSON.
 		$invalid_json = $this->service->import_settings_from_json( '{not-valid-json' );
 		$this->assertNotEmpty( $invalid_json[ 'errors' ] );
 		$this->assertSame( 0, $invalid_json[ 'imported' ] );
@@ -529,6 +534,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 			true
 		);
 
+		// Assert that the backup was created, and the option was updated.
 		$this->assertTrue( $result[ 'backup_created' ] );
 		$backup = $this->service->get_last_backup();
 		$this->assertNotNull( $backup );
@@ -536,6 +542,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertSame( 'single-step', $backup[ 'data' ][ 'settings' ][ 'fc_checkout_layout' ] );
 		$this->assertSame( 'multi-step', get_option( 'fc_checkout_layout' ) );
 
+		// Invalid payload: missing `format_version` and `settings` — must not replace the existing backup
 		$invalid = $this->service->import_settings( array( 'generator' => 'fluid-checkout' ), true );
 		$this->assertNotEmpty( $invalid[ 'errors' ] );
 		$this->assertFalse( $invalid[ 'backup_created' ] );
@@ -680,6 +687,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
 		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
 
+		// Invalid payload: missing `format_version` and `settings` — must not backup or reset
 		$result = $this->service->import_settings(
 			array( 'generator' => 'fluid-checkout' ),
 			true,
