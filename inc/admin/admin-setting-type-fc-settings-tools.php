@@ -31,6 +31,9 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		// Field types
 		add_action( 'woocommerce_admin_field_fc_settings_tools', array( $this, 'output_field' ), 10 );
 
+		// Section notice
+		add_action( 'woocommerce_settings_fc_checkout_settings_tools', array( $this, 'maybe_output_live_site_warning' ), 10 );
+
 		// Register assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -151,14 +154,19 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 
 	/**
 	 * Output the soft live-site warning markup when applicable.
+	 *
+	 * Rendered once under the Backup & reset section description.
+	 * Closes and reopens the settings table so column widths stay intact.
 	 */
 	public function maybe_output_live_site_warning() {
 		// Bail if warning should not be shown
 		if ( ! $this->should_show_live_site_warning() ) { return; }
 		?>
+		</table>
 		<p class="fc-settings-tools__live-warning">
 			<?php echo esc_html__( 'This store looks like a live site. Import and reset will change the current configuration.', 'fluid-checkout' ); ?>
 		</p>
+		<table class="form-table" role="presentation">
 		<?php
 	}
 
@@ -171,7 +179,6 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		?>
 		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<button type="submit" class="button button-secondary fc-settings-tools__action" form="fc_settings_reset_form" data-fc-confirm="<?php echo esc_attr__( 'Reset Fluid Checkout settings to defaults?', 'fluid-checkout' ); ?>">
 					<?php echo esc_html__( 'Reset settings', 'fluid-checkout' ); ?>
@@ -271,16 +278,15 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 		?>
 		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php $this->maybe_output_live_site_warning(); ?>
 			<p>
 				<input type="file" name="fc_settings_import_file" id="fc_settings_import_file" form="fc_settings_import_form" accept=".json,application/json" required>
 			</p>
-			<p class="fc-settings-tools__import-mode">
+			<p>
 				<label for="fc_settings_import_mode_replace">
 					<input type="checkbox" name="fc_settings_import_mode" id="fc_settings_import_mode_replace" form="fc_settings_import_form" value="replace">
 					<?php echo esc_html__( 'Replace all settings', 'fluid-checkout' ); ?>
+					<?php echo wc_help_tip( __( 'Clears saved settings, then applies the file. Leave unchecked to update matching settings only.', 'fluid-checkout' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</label>
-				<span class="description"><?php echo esc_html__( 'Clears saved settings, then applies the file. Leave unchecked to update matching settings only.', 'fluid-checkout' ); ?></span>
 			</p>
 			<p>
 				<button type="submit" class="button button-secondary" form="fc_settings_import_form">

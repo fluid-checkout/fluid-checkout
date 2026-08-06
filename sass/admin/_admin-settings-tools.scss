@@ -16,23 +16,14 @@
 
 
 
-.forminp-fc_settings_tools .fc-settings-tools__live-warning {
+.fc-settings-tools__live-warning {
+	display: inline-block;
+	max-width: 100%;
 	color: #996800;
 	background: #fcf9e8;
 	border-left: 4px solid #dba617;
 	padding: .75em 1em;
 	margin: 0 0 1em;
-}
-
-
-
-.forminp-fc_settings_tools .fc-settings-tools__import-mode label {
-	display: block;
-	margin-bottom: .25em;
-}
-.forminp-fc_settings_tools .fc-settings-tools__import-mode .description {
-	display: block;
-	margin: .25em 0 0 1.5em;
 }
 
 
