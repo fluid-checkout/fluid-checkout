@@ -80,8 +80,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * @param  string  $option  Option name.
 	 */
 	protected function assert_option_does_not_exist( $option ) {
-		$sentinel = new stdClass();
-		$this->assertSame( $sentinel, get_option( $option, $sentinel ), sprintf( 'Option "%s" should not exist in the database.', $option ) );
+		$this->assertFalse( $this->service->option_exists( $option ), sprintf( 'Option "%s" should not exist in the database.', $option ) );
 	}
 
 	/**
@@ -90,8 +89,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * @param  string  $option  Option name.
 	 */
 	protected function assert_option_exists( $option ) {
-		$sentinel = new stdClass();
-		$this->assertNotSame( $sentinel, get_option( $option, $sentinel ), sprintf( 'Option "%s" should exist in the database.', $option ) );
+		$this->assertTrue( $this->service->option_exists( $option ), sprintf( 'Option "%s" should exist in the database.', $option ) );
 	}
 
 
@@ -137,9 +135,12 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		};
 		add_filter( 'fc_settings_tools_is_excluded_option_key', $filter, 10, 2 );
 
-		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
+		try {
+			$this->assertTrue( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
+		} finally {
+			remove_filter( 'fc_settings_tools_is_excluded_option_key', $filter, 10 );
+		}
 
-		remove_filter( 'fc_settings_tools_is_excluded_option_key', $filter );
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 	}
 
@@ -529,8 +530,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		);
 
 		$this->assertTrue( $result[ 'backup_created' ] );
-		$this->assertTrue( null !== $this->service->get_last_backup() );
 		$backup = $this->service->get_last_backup();
+		$this->assertNotNull( $backup );
 		$this->assertSame( 'import', $backup[ 'created_by' ] );
 		$this->assertSame( 'single-step', $backup[ 'data' ][ 'settings' ][ 'fc_checkout_layout' ] );
 		$this->assertSame( 'multi-step', get_option( 'fc_checkout_layout' ) );
@@ -649,10 +650,10 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 				'generator'      => 'fluid-checkout',
 				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
 				'settings'       => array(
-					'fc_checkout_layout'  => 'multi-step',
-					'fc_pro_license_key'  => 'stolen-license',
+					'fc_checkout_layout'           => 'multi-step',
+					'fc_pro_license_key'           => 'stolen-license',
 					'fc_gaa_google_places_api_key' => 'stolen-api-key',
-					'fc_debug_mode'       => 'yes',
+					'fc_debug_mode'                => 'yes',
 				),
 			),
 			'update'
@@ -743,7 +744,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertSame( 'yes', $backup[ 'data' ][ 'settings' ][ 'fc_debug_mode' ] );
 		$this->assertSame( 'optional', $backup[ 'data' ][ 'settings' ][ 'woocommerce_checkout_phone_field' ] );
 		$this->assertArrayNotHasKey( 'fc_pro_license_key', $backup[ 'data' ][ 'settings' ] );
-		$this->assertTrue( null !== $this->service->get_last_backup() );
+		$this->assertNotNull( $this->service->get_last_backup() );
 		$this->assertSame( $backup, $this->service->get_last_backup() );
 	}
 
@@ -774,7 +775,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $result[ 'backup_created' ] );
 		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
 		$this->assert_option_does_not_exist( 'fc_debug_mode' );
-		$this->assertTrue( null !== $this->service->get_last_backup() );
+		$this->assertNotNull( $this->service->get_last_backup() );
 
 		$restore = $this->service->restore_last_backup();
 
