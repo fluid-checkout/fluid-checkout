@@ -2847,3 +2847,14 @@ msgstr "သင်္ဘောဖြင့်ကုန်ပစ္စည်းပ
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "နောက်တစ်ဆင့်"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "ဟုတ်ကဲ့"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
