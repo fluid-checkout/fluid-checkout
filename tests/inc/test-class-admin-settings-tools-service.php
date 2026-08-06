@@ -10,39 +10,48 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	/**
 	 * SUMMARY OF TESTS
 	 *
+	 * Option keys
 	 * Test: Managed option keys: exclude secrets and runtime meta.
 	 * Test: Excluded option keys: secrets by pattern and filter extensions.
 	 * Test: Troubleshooting and transferable option keys are identified.
+	 * Test: WooCommerce options in defaults map: included in managed keys.
+	 * Test: Fluid Checkout product keys are managed without being in the defaults map.
+	 * Test: Backup option key is excluded from managed keys.
+	 *
+	 * Export
 	 * Test: Export: includes only saved managed values.
 	 * Test: Export: omits secrets even when present in the database.
 	 * Test: Export: omits troubleshooting options.
 	 * Test: Export JSON: valid structure and metadata.
+	 * Test: Export: includes inactive Fluid Checkout product settings from the database.
+	 *
+	 * Import
 	 * Test: Import: applies known managed settings.
 	 * Test: Import: skips troubleshooting options.
 	 * Test: Import: skips unknown keys and secrets.
 	 * Test: Import: rejects invalid payload, unsupported format version, and invalid JSON.
 	 * Test: Import: preserves existing secrets.
-	 * Test: Reset: deletes managed saved options and restores defaults via getter.
-	 * Test: Reset: leaves secrets and runtime meta in place.
-	 * Test: Round-trip: export then import restores saved settings.
-	 * Test: WooCommerce options in defaults map: included in managed keys.
-	 * Test: Fluid Checkout product keys are managed without being in the defaults map.
-	 * Test: Export: includes inactive Fluid Checkout product settings from the database.
 	 * Test: Import: applies Fluid Checkout product settings even when the add-on is inactive.
-	 * Test: Reset: deletes inactive Fluid Checkout product settings from the database.
-	 * Test: Backup option key is excluded from managed keys.
-	 * Test: Auto-backup: stores managed values including troubleshooting and omits secrets.
-	 * Test: Auto-backup: expired backups are cleared and unavailable.
 	 * Test: Import with backup: creates backup before applying and invalid import does not replace backup.
-	 * Test: Reset with backup: creates backup then restore undoes the reset.
-	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
-	 * Test: Restore after import: restores previous values and removes imported-only keys.
-	 * Test: Restore: leaves secrets unchanged and errors when no backup exists.
 	 * Test: Update import: leaves extra local keys unchanged.
 	 * Test: Replace import: removes extra local keys then applies the file.
 	 * Test: Import diff: changed, added, unchanged, and will_clear for replace.
 	 * Test: Import diff: secrets and invalid payloads are skipped or errored without values.
 	 * Test: Invalid replace import: does not create a backup or reset settings.
+	 * Test: Round-trip: export then import restores saved settings.
+	 *
+	 * Restore
+	 * Test: Auto-backup: stores managed values including troubleshooting and omits secrets.
+	 * Test: Auto-backup: expired backups are cleared and unavailable.
+	 * Test: Reset with backup: creates backup then restore undoes the reset.
+	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
+	 * Test: Restore after import: restores previous values and removes imported-only keys.
+	 * Test: Restore: leaves secrets unchanged and errors when no backup exists.
+	 *
+	 * Reset
+	 * Test: Reset: deletes managed saved options and restores defaults via getter.
+	 * Test: Reset: leaves secrets and runtime meta in place.
+	 * Test: Reset: deletes inactive Fluid Checkout product settings from the database.
 	 */
 
 
@@ -86,6 +95,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	}
 
 
+
+	// Option keys
 
 	/**
 	 * Test: Managed option keys: exclude secrets and runtime meta.
@@ -152,6 +163,84 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 			$this->service->should_include_option_key( 'fc_checkout_layout' )
 		);
 	}
+
+	/**
+	 * Test: WooCommerce options in defaults map: included in managed keys.
+	 */
+	public function test_woocommerce_options_in_defaults_are_managed() {
+		$managed = $this->service->get_managed_option_keys();
+
+		$this->assertContains( 'woocommerce_checkout_phone_field', $managed );
+		$this->assertContains( 'woocommerce_checkout_company_field', $managed );
+
+		$this->set_tracked_option( 'woocommerce_checkout_phone_field', 'optional' );
+
+		$data = $this->service->get_export_data();
+		$this->assertSame( 'optional', $data[ 'settings' ][ 'woocommerce_checkout_phone_field' ] );
+
+		$result = $this->service->import_settings( array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
+				'woocommerce_checkout_phone_field' => 'required',
+			),
+		) );
+
+		$this->assertSame( 1, $result[ 'imported' ] );
+		$this->assertSame( 'required', get_option( 'woocommerce_checkout_phone_field' ) );
+
+		$this->service->reset_settings();
+		$this->assert_option_does_not_exist( 'woocommerce_checkout_phone_field' );
+	}
+
+	/**
+	 * Test: Fluid Checkout product keys are managed without being in the defaults map.
+	 */
+	public function test_fc_product_keys_managed_without_defaults_map_entry() {
+		$defaults = $this->service->get_default_option_values();
+		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
+
+		$this->assertTrue( $this->service->is_managed_option_key( 'fc_gaa_enabled' ) );
+		$this->assertTrue( $this->service->is_transferable_option_key( 'fc_gaa_enabled' ) );
+		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_gaa_google_places_api_key' ) );
+
+		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
+		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'api-should-stay' );
+
+		$export = $this->service->get_export_data();
+		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_gaa_enabled' ] );
+		$this->assertArrayNotHasKey( 'fc_gaa_google_places_api_key', $export[ 'settings' ] );
+
+		$result = $this->service->import_settings( array(
+			'generator'      => 'fluid-checkout',
+			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+			'settings'       => array(
+				'fc_gaa_enabled'               => 'no',
+				'fc_gaa_google_places_api_key' => 'should-not-import',
+			),
+		) );
+
+		$this->assertSame( 1, $result[ 'imported' ] );
+		$this->assertSame( 1, $result[ 'skipped' ] );
+		$this->assertSame( 'no', get_option( 'fc_gaa_enabled' ) );
+		$this->assertSame( 'api-should-stay', get_option( 'fc_gaa_google_places_api_key' ) );
+
+		$this->service->reset_settings();
+		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
+		$this->assertSame( 'api-should-stay', get_option( 'fc_gaa_google_places_api_key' ) );
+	}
+
+	/**
+	 * Test: Backup option key is excluded from managed keys.
+	 */
+	public function test_backup_option_key_is_excluded_from_managed_keys() {
+		$this->assertTrue( $this->service->is_excluded_option_key( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY ) );
+		$this->assertNotContains( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY, $this->service->get_managed_option_keys() );
+	}
+
+
+
+	// Export
 
 	/**
 	 * Test: Export: includes only saved managed values.
@@ -224,6 +313,36 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertIsArray( $data[ 'settings' ] );
 		$this->assertArrayNotHasKey( 'transfer_options', $data );
 	}
+
+	/**
+	 * Test: Export: includes inactive Fluid Checkout product settings from the database.
+	 */
+	public function test_export_includes_inactive_fc_product_settings_from_database() {
+		// Simulate Address Book / VAT settings left in the DB while those plugins are inactive
+		$this->set_tracked_option( 'fc_pro_enable_address_book', 'yes' );
+		$this->set_tracked_option( 'fc_adb_plugin_activation_time', time() ); // excluded runtime meta
+		$this->set_tracked_option( 'fc_vat_number_field_visibility', 'yes' );
+		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
+		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'secret-api' ); // excluded secret
+
+		// Confirm these keys are not coming from active defaults alone
+		$defaults = $this->service->get_default_option_values();
+		$this->assertArrayNotHasKey( 'fc_pro_enable_address_book', $defaults );
+		$this->assertArrayNotHasKey( 'fc_vat_number_field_visibility', $defaults );
+		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
+
+		$export = $this->service->get_export_data();
+
+		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_pro_enable_address_book' ] );
+		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_vat_number_field_visibility' ] );
+		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_gaa_enabled' ] );
+		$this->assertArrayNotHasKey( 'fc_adb_plugin_activation_time', $export[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_gaa_google_places_api_key', $export[ 'settings' ] );
+	}
+
+
+
+	// Import
 
 	/**
 	 * Test: Import: applies known managed settings.
@@ -362,172 +481,6 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	}
 
 	/**
-	 * Test: Reset: deletes managed saved options and restores defaults via getter.
-	 */
-	public function test_reset_deletes_managed_options_and_restores_defaults() {
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_debug_mode', 'yes' );
-
-		$result = $this->service->reset_settings();
-
-		$this->assertGreaterThanOrEqual( 2, $result[ 'reset' ] );
-		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
-		$this->assert_option_does_not_exist( 'fc_debug_mode' );
-
-		// Getters should fall back to defaults
-		$this->assertSame(
-			FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' ),
-			FluidCheckout_Settings::instance()->get_option( 'fc_checkout_layout' )
-		);
-		$this->assertSame(
-			FluidCheckout_Settings::instance()->get_option_default( 'fc_debug_mode' ),
-			FluidCheckout_Settings::instance()->get_option( 'fc_debug_mode' )
-		);
-	}
-
-	/**
-	 * Test: Reset: leaves secrets and runtime meta in place.
-	 */
-	public function test_reset_leaves_secrets_and_runtime_meta() {
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_pro_license_key', 'keep-license' );
-		$this->set_tracked_option( 'fc_pro_license_key_activated', 'yes' );
-		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'keep-api' );
-		$this->set_tracked_option( 'fc_plugin_activation_time', 1234567890 );
-		$this->set_tracked_option( 'fc_db_version', '4.2.6' );
-
-		$result = $this->service->reset_settings();
-
-		$this->assertGreaterThanOrEqual( 1, $result[ 'reset' ] );
-		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
-		$this->assertSame( 'keep-license', get_option( 'fc_pro_license_key' ) );
-		$this->assertSame( 'yes', get_option( 'fc_pro_license_key_activated' ) );
-		$this->assertSame( 'keep-api', get_option( 'fc_gaa_google_places_api_key' ) );
-		$this->assertSame( 1234567890, (int) get_option( 'fc_plugin_activation_time' ) );
-		$this->assertSame( '4.2.6', get_option( 'fc_db_version' ) );
-	}
-
-	/**
-	 * Test: Round-trip: export then import restores saved settings.
-	 */
-	public function test_round_trip_export_import() {
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
-
-		$export = $this->service->get_export_data();
-
-		// Keep only the keys under test so leftover DB options do not affect counts
-		$export[ 'settings' ] = array_intersect_key(
-			$export[ 'settings' ],
-			array_flip( array( 'fc_checkout_layout', 'fc_enable_dark_mode_styles' ) )
-		);
-
-		$this->assertCount( 2, $export[ 'settings' ] );
-
-		// Change values, then import the export
-		update_option( 'fc_checkout_layout', 'multi-step' );
-		update_option( 'fc_enable_dark_mode_styles', 'no' );
-
-		$result = $this->service->import_settings( $export );
-
-		$this->assertSame( 2, $result[ 'imported' ] );
-		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
-	}
-
-	/**
-	 * Test: WooCommerce options in defaults map: included in managed keys.
-	 */
-	public function test_woocommerce_options_in_defaults_are_managed() {
-		$managed = $this->service->get_managed_option_keys();
-
-		$this->assertContains( 'woocommerce_checkout_phone_field', $managed );
-		$this->assertContains( 'woocommerce_checkout_company_field', $managed );
-
-		$this->set_tracked_option( 'woocommerce_checkout_phone_field', 'optional' );
-
-		$data = $this->service->get_export_data();
-		$this->assertSame( 'optional', $data[ 'settings' ][ 'woocommerce_checkout_phone_field' ] );
-
-		$result = $this->service->import_settings( array(
-			'generator'      => 'fluid-checkout',
-			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
-			'settings'       => array(
-				'woocommerce_checkout_phone_field' => 'required',
-			),
-		) );
-
-		$this->assertSame( 1, $result[ 'imported' ] );
-		$this->assertSame( 'required', get_option( 'woocommerce_checkout_phone_field' ) );
-
-		$this->service->reset_settings();
-		$this->assert_option_does_not_exist( 'woocommerce_checkout_phone_field' );
-	}
-
-	/**
-	 * Test: Fluid Checkout product keys are managed without being in the defaults map.
-	 */
-	public function test_fc_product_keys_managed_without_defaults_map_entry() {
-		$defaults = $this->service->get_default_option_values();
-		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
-
-		$this->assertTrue( $this->service->is_managed_option_key( 'fc_gaa_enabled' ) );
-		$this->assertTrue( $this->service->is_transferable_option_key( 'fc_gaa_enabled' ) );
-		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_gaa_google_places_api_key' ) );
-
-		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
-		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'api-should-stay' );
-
-		$export = $this->service->get_export_data();
-		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_gaa_enabled' ] );
-		$this->assertArrayNotHasKey( 'fc_gaa_google_places_api_key', $export[ 'settings' ] );
-
-		$result = $this->service->import_settings( array(
-			'generator'      => 'fluid-checkout',
-			'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
-			'settings'       => array(
-				'fc_gaa_enabled'               => 'no',
-				'fc_gaa_google_places_api_key' => 'should-not-import',
-			),
-		) );
-
-		$this->assertSame( 1, $result[ 'imported' ] );
-		$this->assertSame( 1, $result[ 'skipped' ] );
-		$this->assertSame( 'no', get_option( 'fc_gaa_enabled' ) );
-		$this->assertSame( 'api-should-stay', get_option( 'fc_gaa_google_places_api_key' ) );
-
-		$this->service->reset_settings();
-		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
-		$this->assertSame( 'api-should-stay', get_option( 'fc_gaa_google_places_api_key' ) );
-	}
-
-	/**
-	 * Test: Export: includes inactive Fluid Checkout product settings from the database.
-	 */
-	public function test_export_includes_inactive_fc_product_settings_from_database() {
-		// Simulate Address Book / VAT settings left in the DB while those plugins are inactive
-		$this->set_tracked_option( 'fc_pro_enable_address_book', 'yes' );
-		$this->set_tracked_option( 'fc_adb_plugin_activation_time', time() ); // excluded runtime meta
-		$this->set_tracked_option( 'fc_vat_number_field_visibility', 'yes' );
-		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
-		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'secret-api' ); // excluded secret
-
-		// Confirm these keys are not coming from active defaults alone
-		$defaults = $this->service->get_default_option_values();
-		$this->assertArrayNotHasKey( 'fc_pro_enable_address_book', $defaults );
-		$this->assertArrayNotHasKey( 'fc_vat_number_field_visibility', $defaults );
-		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
-
-		$export = $this->service->get_export_data();
-
-		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_pro_enable_address_book' ] );
-		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_vat_number_field_visibility' ] );
-		$this->assertSame( 'yes', $export[ 'settings' ][ 'fc_gaa_enabled' ] );
-		$this->assertArrayNotHasKey( 'fc_adb_plugin_activation_time', $export[ 'settings' ] );
-		$this->assertArrayNotHasKey( 'fc_gaa_google_places_api_key', $export[ 'settings' ] );
-	}
-
-	/**
 	 * Test: Import: applies Fluid Checkout product settings even when the add-on is inactive.
 	 */
 	public function test_import_applies_inactive_fc_product_settings() {
@@ -559,68 +512,6 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	}
 
 	/**
-	 * Test: Reset: deletes inactive Fluid Checkout product settings from the database.
-	 */
-	public function test_reset_deletes_inactive_fc_product_settings() {
-		$this->set_tracked_option( 'fc_pro_enable_address_book', 'yes' );
-		$this->set_tracked_option( 'fc_vat_number_field_visibility', 'yes' );
-		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
-		$this->set_tracked_option( 'fc_adb_license_key', 'keep-license' );
-
-		$result = $this->service->reset_settings();
-
-		$this->assertGreaterThanOrEqual( 3, $result[ 'reset' ] );
-		$this->assert_option_does_not_exist( 'fc_pro_enable_address_book' );
-		$this->assert_option_does_not_exist( 'fc_vat_number_field_visibility' );
-		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
-		$this->assertSame( 'keep-license', get_option( 'fc_adb_license_key' ) );
-	}
-
-	/**
-	 * Test: Backup option key is excluded from managed keys.
-	 */
-	public function test_backup_option_key_is_excluded_from_managed_keys() {
-		$this->assertTrue( $this->service->is_excluded_option_key( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY ) );
-		$this->assertNotContains( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY, $this->service->get_managed_option_keys() );
-	}
-
-	/**
-	 * Test: Auto-backup: stores managed values including troubleshooting and omits secrets.
-	 */
-	public function test_auto_backup_stores_managed_values_including_troubleshooting() {
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_debug_mode', 'yes' );
-		$this->set_tracked_option( 'woocommerce_checkout_phone_field', 'optional' );
-		$this->set_tracked_option( 'fc_pro_license_key', 'secret-license' );
-
-		$backup = $this->service->create_auto_backup( 'reset' );
-
-		$this->assertSame( 'reset', $backup[ 'created_by' ] );
-		$this->assertNotEmpty( $backup[ 'created_at' ] );
-		$this->assertSame( 'single-step', $backup[ 'data' ][ 'settings' ][ 'fc_checkout_layout' ] );
-		$this->assertSame( 'yes', $backup[ 'data' ][ 'settings' ][ 'fc_debug_mode' ] );
-		$this->assertSame( 'optional', $backup[ 'data' ][ 'settings' ][ 'woocommerce_checkout_phone_field' ] );
-		$this->assertArrayNotHasKey( 'fc_pro_license_key', $backup[ 'data' ][ 'settings' ] );
-		$this->assertTrue( null !== $this->service->get_last_backup() );
-		$this->assertSame( $backup, $this->service->get_last_backup() );
-	}
-
-	/**
-	 * Test: Auto-backup: expired backups are cleared and unavailable.
-	 */
-	public function test_auto_backup_expired_is_cleared_and_unavailable() {
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->service->create_auto_backup( 'import' );
-
-		$backup = get_option( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY );
-		$backup[ 'created_at' ] = gmdate( 'c', time() - FluidCheckout_Admin_Settings_Tools_Service::BACKUP_TTL - 10 );
-		update_option( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY, $backup, false );
-
-		$this->assertNull( $this->service->get_last_backup() );
-		$this->assert_option_does_not_exist( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY );
-	}
-
-	/**
 	 * Test: Import with backup: creates backup before applying and invalid import does not replace backup.
 	 */
 	public function test_import_with_backup_and_invalid_import_preserves_existing_backup() {
@@ -648,109 +539,6 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertNotEmpty( $invalid[ 'errors' ] );
 		$this->assertFalse( $invalid[ 'backup_created' ] );
 		$this->assertSame( 'single-step', $this->service->get_last_backup()[ 'data' ][ 'settings' ][ 'fc_checkout_layout' ] );
-	}
-
-	/**
-	 * Test: Reset with backup: creates backup then restore undoes the reset.
-	 */
-	public function test_reset_with_backup_then_restore_undoes_reset() {
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_debug_mode', 'yes' );
-
-		$result = $this->service->reset_settings( true );
-
-		$this->assertTrue( $result[ 'backup_created' ] );
-		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
-		$this->assert_option_does_not_exist( 'fc_debug_mode' );
-		$this->assertTrue( null !== $this->service->get_last_backup() );
-
-		$restore = $this->service->restore_last_backup();
-
-		$this->assertEmpty( $restore[ 'errors' ] );
-		$this->assertGreaterThanOrEqual( 2, $restore[ 'restored' ] );
-		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'yes', get_option( 'fc_debug_mode' ) );
-	}
-
-	/**
-	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
-	 */
-	public function test_restore_after_reset_restores_inactive_fc_product_settings() {
-		$defaults = $this->service->get_default_option_values();
-		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
-		$this->assertArrayNotHasKey( 'fc_vat_number_field_visibility', $defaults );
-
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
-		$this->set_tracked_option( 'fc_vat_number_field_visibility', 'optional' );
-
-		$this->service->reset_settings( true );
-
-		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
-		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
-		$this->assert_option_does_not_exist( 'fc_vat_number_field_visibility' );
-		$this->assertArrayHasKey( 'fc_gaa_enabled', $this->service->get_last_backup()[ 'data' ][ 'settings' ] );
-
-		$restore = $this->service->restore_last_backup();
-
-		$this->assertEmpty( $restore[ 'errors' ] );
-		$this->assertGreaterThanOrEqual( 3, $restore[ 'restored' ] );
-		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'yes', get_option( 'fc_gaa_enabled' ) );
-		$this->assertSame( 'optional', get_option( 'fc_vat_number_field_visibility' ) );
-	}
-
-	/**
-	 * Test: Restore after import: restores previous values and removes imported-only keys.
-	 */
-	public function test_restore_after_import_restores_previous_and_removes_imported_only_keys() {
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-
-		$this->service->import_settings(
-			array(
-				'generator'      => 'fluid-checkout',
-				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
-				'settings'       => array(
-					'fc_checkout_layout'         => 'multi-step',
-					'fc_enable_dark_mode_styles' => 'yes',
-				),
-			),
-			true
-		);
-
-		$this->track_option( 'fc_enable_dark_mode_styles' );
-		$this->assertSame( 'multi-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
-
-		$restore = $this->service->restore_last_backup();
-
-		$this->assertEmpty( $restore[ 'errors' ] );
-		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assert_option_does_not_exist( 'fc_enable_dark_mode_styles' );
-		$this->assertGreaterThanOrEqual( 1, $restore[ 'deleted' ] );
-	}
-
-	/**
-	 * Test: Restore: leaves secrets unchanged and errors when no backup exists.
-	 */
-	public function test_restore_preserves_secrets_and_errors_without_backup() {
-		$this->assertNull( $this->service->get_last_backup() );
-		$missing = $this->service->restore_last_backup();
-		$this->assertNotEmpty( $missing[ 'errors' ] );
-		$this->assertSame( 0, $missing[ 'restored' ] );
-
-		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
-		$this->set_tracked_option( 'fc_pro_license_key', 'keep-license' );
-		$this->service->create_auto_backup( 'import' );
-
-		update_option( 'fc_checkout_layout', 'multi-step' );
-		update_option( 'fc_pro_license_key', 'changed-license' );
-
-		$restore = $this->service->restore_last_backup();
-
-		$this->assertEmpty( $restore[ 'errors' ] );
-		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
-		$this->assertSame( 'changed-license', get_option( 'fc_pro_license_key' ) );
 	}
 
 	/**
@@ -904,6 +692,245 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertNull( $this->service->get_last_backup() );
 		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
 		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
+	}
+
+	/**
+	 * Test: Round-trip: export then import restores saved settings.
+	 */
+	public function test_round_trip_export_import() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_enable_dark_mode_styles', 'yes' );
+
+		$export = $this->service->get_export_data();
+
+		// Keep only the keys under test so leftover DB options do not affect counts
+		$export[ 'settings' ] = array_intersect_key(
+			$export[ 'settings' ],
+			array_flip( array( 'fc_checkout_layout', 'fc_enable_dark_mode_styles' ) )
+		);
+
+		$this->assertCount( 2, $export[ 'settings' ] );
+
+		// Change values, then import the export
+		update_option( 'fc_checkout_layout', 'multi-step' );
+		update_option( 'fc_enable_dark_mode_styles', 'no' );
+
+		$result = $this->service->import_settings( $export );
+
+		$this->assertSame( 2, $result[ 'imported' ] );
+		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
+	}
+
+
+
+	// Restore
+
+	/**
+	 * Test: Auto-backup: stores managed values including troubleshooting and omits secrets.
+	 */
+	public function test_auto_backup_stores_managed_values_including_troubleshooting() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_debug_mode', 'yes' );
+		$this->set_tracked_option( 'woocommerce_checkout_phone_field', 'optional' );
+		$this->set_tracked_option( 'fc_pro_license_key', 'secret-license' );
+
+		$backup = $this->service->create_auto_backup( 'reset' );
+
+		$this->assertSame( 'reset', $backup[ 'created_by' ] );
+		$this->assertNotEmpty( $backup[ 'created_at' ] );
+		$this->assertSame( 'single-step', $backup[ 'data' ][ 'settings' ][ 'fc_checkout_layout' ] );
+		$this->assertSame( 'yes', $backup[ 'data' ][ 'settings' ][ 'fc_debug_mode' ] );
+		$this->assertSame( 'optional', $backup[ 'data' ][ 'settings' ][ 'woocommerce_checkout_phone_field' ] );
+		$this->assertArrayNotHasKey( 'fc_pro_license_key', $backup[ 'data' ][ 'settings' ] );
+		$this->assertTrue( null !== $this->service->get_last_backup() );
+		$this->assertSame( $backup, $this->service->get_last_backup() );
+	}
+
+	/**
+	 * Test: Auto-backup: expired backups are cleared and unavailable.
+	 */
+	public function test_auto_backup_expired_is_cleared_and_unavailable() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->service->create_auto_backup( 'import' );
+
+		$backup = get_option( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY );
+		$backup[ 'created_at' ] = gmdate( 'c', time() - FluidCheckout_Admin_Settings_Tools_Service::BACKUP_TTL - 10 );
+		update_option( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY, $backup, false );
+
+		$this->assertNull( $this->service->get_last_backup() );
+		$this->assert_option_does_not_exist( FluidCheckout_Admin_Settings_Tools_Service::BACKUP_OPTION_KEY );
+	}
+
+	/**
+	 * Test: Reset with backup: creates backup then restore undoes the reset.
+	 */
+	public function test_reset_with_backup_then_restore_undoes_reset() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_debug_mode', 'yes' );
+
+		$result = $this->service->reset_settings( true );
+
+		$this->assertTrue( $result[ 'backup_created' ] );
+		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
+		$this->assert_option_does_not_exist( 'fc_debug_mode' );
+		$this->assertTrue( null !== $this->service->get_last_backup() );
+
+		$restore = $this->service->restore_last_backup();
+
+		$this->assertEmpty( $restore[ 'errors' ] );
+		$this->assertGreaterThanOrEqual( 2, $restore[ 'restored' ] );
+		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'yes', get_option( 'fc_debug_mode' ) );
+	}
+
+	/**
+	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
+	 */
+	public function test_restore_after_reset_restores_inactive_fc_product_settings() {
+		$defaults = $this->service->get_default_option_values();
+		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
+		$this->assertArrayNotHasKey( 'fc_vat_number_field_visibility', $defaults );
+
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
+		$this->set_tracked_option( 'fc_vat_number_field_visibility', 'optional' );
+
+		$this->service->reset_settings( true );
+
+		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
+		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
+		$this->assert_option_does_not_exist( 'fc_vat_number_field_visibility' );
+		$this->assertArrayHasKey( 'fc_gaa_enabled', $this->service->get_last_backup()[ 'data' ][ 'settings' ] );
+
+		$restore = $this->service->restore_last_backup();
+
+		$this->assertEmpty( $restore[ 'errors' ] );
+		$this->assertGreaterThanOrEqual( 3, $restore[ 'restored' ] );
+		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'yes', get_option( 'fc_gaa_enabled' ) );
+		$this->assertSame( 'optional', get_option( 'fc_vat_number_field_visibility' ) );
+	}
+
+	/**
+	 * Test: Restore after import: restores previous values and removes imported-only keys.
+	 */
+	public function test_restore_after_import_restores_previous_and_removes_imported_only_keys() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+
+		$this->service->import_settings(
+			array(
+				'generator'      => 'fluid-checkout',
+				'format_version' => FluidCheckout_Admin_Settings_Tools_Service::EXPORT_FORMAT_VERSION,
+				'settings'       => array(
+					'fc_checkout_layout'         => 'multi-step',
+					'fc_enable_dark_mode_styles' => 'yes',
+				),
+			),
+			true
+		);
+
+		$this->track_option( 'fc_enable_dark_mode_styles' );
+		$this->assertSame( 'multi-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'yes', get_option( 'fc_enable_dark_mode_styles' ) );
+
+		$restore = $this->service->restore_last_backup();
+
+		$this->assertEmpty( $restore[ 'errors' ] );
+		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
+		$this->assert_option_does_not_exist( 'fc_enable_dark_mode_styles' );
+		$this->assertGreaterThanOrEqual( 1, $restore[ 'deleted' ] );
+	}
+
+	/**
+	 * Test: Restore: leaves secrets unchanged and errors when no backup exists.
+	 */
+	public function test_restore_preserves_secrets_and_errors_without_backup() {
+		$this->assertNull( $this->service->get_last_backup() );
+		$missing = $this->service->restore_last_backup();
+		$this->assertNotEmpty( $missing[ 'errors' ] );
+		$this->assertSame( 0, $missing[ 'restored' ] );
+
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_pro_license_key', 'keep-license' );
+		$this->service->create_auto_backup( 'import' );
+
+		update_option( 'fc_checkout_layout', 'multi-step' );
+		update_option( 'fc_pro_license_key', 'changed-license' );
+
+		$restore = $this->service->restore_last_backup();
+
+		$this->assertEmpty( $restore[ 'errors' ] );
+		$this->assertSame( 'single-step', get_option( 'fc_checkout_layout' ) );
+		$this->assertSame( 'changed-license', get_option( 'fc_pro_license_key' ) );
+	}
+
+
+
+	// Reset
+
+	/**
+	 * Test: Reset: deletes managed saved options and restores defaults via getter.
+	 */
+	public function test_reset_deletes_managed_options_and_restores_defaults() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_debug_mode', 'yes' );
+
+		$result = $this->service->reset_settings();
+
+		$this->assertGreaterThanOrEqual( 2, $result[ 'reset' ] );
+		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
+		$this->assert_option_does_not_exist( 'fc_debug_mode' );
+
+		// Getters should fall back to defaults
+		$this->assertSame(
+			FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' ),
+			FluidCheckout_Settings::instance()->get_option( 'fc_checkout_layout' )
+		);
+		$this->assertSame(
+			FluidCheckout_Settings::instance()->get_option_default( 'fc_debug_mode' ),
+			FluidCheckout_Settings::instance()->get_option( 'fc_debug_mode' )
+		);
+	}
+
+	/**
+	 * Test: Reset: leaves secrets and runtime meta in place.
+	 */
+	public function test_reset_leaves_secrets_and_runtime_meta() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'single-step' );
+		$this->set_tracked_option( 'fc_pro_license_key', 'keep-license' );
+		$this->set_tracked_option( 'fc_pro_license_key_activated', 'yes' );
+		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'keep-api' );
+		$this->set_tracked_option( 'fc_plugin_activation_time', 1234567890 );
+		$this->set_tracked_option( 'fc_db_version', '4.2.6' );
+
+		$result = $this->service->reset_settings();
+
+		$this->assertGreaterThanOrEqual( 1, $result[ 'reset' ] );
+		$this->assert_option_does_not_exist( 'fc_checkout_layout' );
+		$this->assertSame( 'keep-license', get_option( 'fc_pro_license_key' ) );
+		$this->assertSame( 'yes', get_option( 'fc_pro_license_key_activated' ) );
+		$this->assertSame( 'keep-api', get_option( 'fc_gaa_google_places_api_key' ) );
+		$this->assertSame( 1234567890, (int) get_option( 'fc_plugin_activation_time' ) );
+		$this->assertSame( '4.2.6', get_option( 'fc_db_version' ) );
+	}
+
+	/**
+	 * Test: Reset: deletes inactive Fluid Checkout product settings from the database.
+	 */
+	public function test_reset_deletes_inactive_fc_product_settings() {
+		$this->set_tracked_option( 'fc_pro_enable_address_book', 'yes' );
+		$this->set_tracked_option( 'fc_vat_number_field_visibility', 'yes' );
+		$this->set_tracked_option( 'fc_gaa_enabled', 'yes' );
+		$this->set_tracked_option( 'fc_adb_license_key', 'keep-license' );
+
+		$result = $this->service->reset_settings();
+
+		$this->assertGreaterThanOrEqual( 3, $result[ 'reset' ] );
+		$this->assert_option_does_not_exist( 'fc_pro_enable_address_book' );
+		$this->assert_option_does_not_exist( 'fc_vat_number_field_visibility' );
+		$this->assert_option_does_not_exist( 'fc_gaa_enabled' );
+		$this->assertSame( 'keep-license', get_option( 'fc_adb_license_key' ) );
 	}
 
 }
