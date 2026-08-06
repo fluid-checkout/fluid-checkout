@@ -133,6 +133,54 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'id'   => 'fc_checkout_advanced_debug_options',
 				),
 
+				array(
+					'title' => __( 'Backup & reset', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => __( 'License keys and API keys are never changed. Troubleshooting options are omitted from export and update import, but cleared on reset and replace. A backup is created before import or reset.', 'fluid-checkout' ),
+					'id'    => 'fc_checkout_settings_tools',
+				),
+
+				array(
+					'title'       => __( 'Import settings', 'fluid-checkout' ),
+					'desc'        => __( 'Logo and linked page IDs are site-specific. Re-select them after import if needed.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_import',
+					'tool_action' => 'import',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Export settings', 'fluid-checkout' ),
+					'desc'        => __( 'Download current settings as JSON.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_export',
+					'tool_action' => 'export',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Restore previous settings', 'fluid-checkout' ),
+					'desc'        => __( 'Undo the last import or reset.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_restore',
+					'tool_action' => 'restore',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Reset settings', 'fluid-checkout' ),
+					'desc'        => __( 'Delete saved settings so defaults are used again.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_reset',
+					'tool_action' => 'reset',
+					'is_option'   => false,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_checkout_settings_tools',
+				),
+
 			);
 
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings, $current_section );

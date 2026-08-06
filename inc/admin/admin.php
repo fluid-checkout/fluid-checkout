@@ -28,6 +28,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Setting types
 		add_action( 'init', array( $this, 'load_setting_types' ), 10 );
 
+		// Settings tools
+		add_action( 'init', array( $this, 'load_settings_tools' ), 10 );
+
 		// WooCommerce Settings
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
 
@@ -107,6 +110,15 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-image-uploader.php';
+	}
+
+	/**
+	 * Load settings tools service, actions, and field type.
+	 */
+	public function load_settings_tools() {
+		include_once self::$directory_path . 'inc/admin/admin-settings-tools-service.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-tools-actions.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-settings-tools.php';
 	}
 
 	/**

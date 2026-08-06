@@ -354,6 +354,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Export, import, and reset Fluid Checkout settings from WooCommerce > Settings > Fluid Checkout > Tools, and via WP-CLI (`wp fc settings`).
+* Added: Unit tests for settings export, import, and reset.
+* Improved: Settings tools layout on the Tools settings page.
+
 = 4.2.6 - 2026-07-28 =
 
 * Bump tested up to upcoming WooCommerce 11.0.0 (RC).

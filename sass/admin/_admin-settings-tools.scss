@@ -1,0 +1,73 @@
+// ------------------------------------
+// SETTINGS TOOLS
+// ------------------------------------
+.forminp-fc_settings_tools {
+	padding: 15px 10px !important; // Needed to override default admin pages styles.
+}
+
+
+
+.forminp-fc_settings_tools .fc-settings-tools p {
+	margin: 0 0 .75em;
+}
+.forminp-fc_settings_tools .fc-settings-tools p:last-child {
+	margin-bottom: 0;
+}
+
+
+
+.fc-settings-tools__live-warning {
+	display: inline-block;
+	max-width: 100%;
+	color: #996800;
+	background: #fcf9e8;
+	border-left: 4px solid #dba617;
+	padding: .75em 1em;
+	margin: 0 0 1em;
+}
+
+
+
+.forminp-fc_settings_tools .fc-settings-tools__diff-section {
+	margin: 1em 0;
+}
+
+
+
+.forminp-fc_settings_tools .fc-settings-tools__diff-table {
+	max-width: 100%;
+	margin-top: .5em;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.forminp-fc_settings_tools .fc-settings-tools__diff-table th,
+.forminp-fc_settings_tools .fc-settings-tools__diff-table td {
+	padding: 10px 12px;
+	text-align: left;
+	vertical-align: top;
+	word-break: break-word;
+}
+.forminp-fc_settings_tools .fc-settings-tools__diff-table code {
+	display: inline-block;
+	max-width: 100%;
+	word-break: break-word;
+	white-space: pre-wrap;
+}
+
+
+
+.forminp-fc_settings_tools .fc-settings-tools__diff-list {
+	margin: .5em 0 0 1.25em;
+	max-height: 16em;
+	overflow: auto;
+	padding-left: .25em;
+}
+.forminp-fc_settings_tools .fc-settings-tools__diff-list li {
+	margin-bottom: .35em;
+}
+
+
+
+.fc-settings-tools-form {
+	display: none;
+}

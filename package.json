@@ -8,7 +8,10 @@
     "postversion": "git push && git push --tags && gulp copy-plugin-files && gulp pack-plugin-zip",
     "start": "wp-scripts start --webpack-src-dir=blocks",
     "build": "wp-scripts build --webpack-src-dir=blocks",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-wp-tests": "bash bin/install-wp-tests.sh wp_tests_fluid_checkout root root",
+    "install-composer-dependencies": "bash bin/install-composer-dependencies.sh",
+    "test": "source ./env.local.sh && cd \"$INIT_CWD\" && WP_TESTS_PHPUNIT_POLYFILLS_PATH=\"$INIT_CWD/vendor-dev/yoast/phpunit-polyfills\" COMPOSER=composer.dev.json composer test",
+    "test:filter": "source ./env.local.sh && cd \"$INIT_CWD\" && WP_TESTS_PHPUNIT_POLYFILLS_PATH=\"$INIT_CWD/vendor-dev/yoast/phpunit-polyfills\" ./vendor-dev/bin/phpunit --filter"
   },
   "repository": {},
   "author": "Fluid Checkout",
