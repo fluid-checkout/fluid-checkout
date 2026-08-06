@@ -28,6 +28,10 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 		// Container class
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
+		// Sticky elements
+		add_filter( 'fc_checkout_progress_bar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
+
 		// CSS variables
 		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
@@ -98,8 +102,38 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 
 
 	/**
+	 * Change the element used to position the progress bar and order summary when sticky.
+	 *
+	 * @param  array  $attributes  The elements attributes.
+	 */
+	public function change_sticky_elements_relative_header( $attributes ) {
+		// Bail if using distraction free header and footer
+		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
+
+		// Bail if theme function is not available
+		if ( ! function_exists( 'sober_get_option' ) ) { return $attributes; }
+
+		// Get sticky header option from the theme
+		$sticky_header = sober_get_option( 'header_sticky' );
+
+		// Maybe change the relative element selector based on the sticky header option
+		switch ( $sticky_header ) {
+			case 'smart':
+				$attributes[ 'data-sticky-relative-to' ] = '.header-sticky-smart .site-header';
+				break;
+			case 'normal':
+				$attributes[ 'data-sticky-relative-to' ] = '.header-sticky-normal .site-header.sticky';
+				break;
+		}
+
+		return $attributes;
+	}
+
+
+
+	/**
 	 * Add CSS variables.
-	 * 
+	 *
 	 * @param  array  $css_variables  The CSS variables key/value pairs.
 	 */
 	public function add_css_variables( $css_variables ) {
@@ -116,7 +150,6 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 				'--fluidcheckout--field--border-color' => '#e4e6eb',
 				'--fluidcheckout--field--border-width' => '2px',
 				'--fluidcheckout--field--border-style' => 'solid',
-
 			),
 		);
 
