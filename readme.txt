@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Compatibility with theme Sober (by Uixthemes).
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
 
 = 4.2.6 - 2026-07-28 =

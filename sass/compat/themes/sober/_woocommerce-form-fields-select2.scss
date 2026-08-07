@@ -1,0 +1,36 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS SELECT2
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-choice:after,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection:after {
+	border: none !important; // Needed to override theme dropdown arrow styles on :after
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection {
+	font-size: $form-field-font-size;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection__rendered {
+	color: $form-field-text-color;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row .select2-selection:focus {
+	outline: none !important; // Needed to override theme focus outline
+	border-bottom-color: #23232c;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection--single .select2-selection__arrow {
+	#{ $alignment-right }: $global-spacing-extra-small;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection--single .select2-selection__arrow b {
+	border-top-width: remsize( .5rem ) !important; // Needed to override theme checkout styles
+}
+
+
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-choice:before,
+body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .select2-container .select2-selection:before {
+	display: none;
+}
