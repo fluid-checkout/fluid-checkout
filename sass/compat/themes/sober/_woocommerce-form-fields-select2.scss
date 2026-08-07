@@ -16,7 +16,7 @@ body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .se
 }
 
 body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row .select2-selection:focus {
-	outline: none!important;
+	outline: none !important; // Needed to override theme focus outline
 	border-bottom-color: #23232c;
 }
 

@@ -10,7 +10,7 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row {
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row input:focus,
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row input#coupon_code:focus,
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row textarea:focus {
-	outline: none !important; // important is needed to match with the theme styles
+	outline: none !important; // Needed to override theme focus outline
 }
 
 body#{ $_body-theme-selector }.has-highlighted-shipping-section div.woocommerce form .fc-step__substep[data-substep-id="shipping_address"],
@@ -45,24 +45,22 @@ body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row-last label {
 
 // Shipping methods checkbox and radio button styles
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.checkbox:after,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio] + label:after,
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=checkbox] + label:after,
-body#{ $_body-theme-selector } .woocommerce .fc-address-book input[type=radio] + label:after,
-body#{ $_body-theme-selector } .woocommerce .address-book input[type=radio] + label:after {
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type="radio"] + label:after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type="checkbox"] + label:after {
 	border-#{ $alignment-left }: none;
 	border-bottom: none;
 	transform: none;
 	transition: none;
 }
 
-body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row input[type=checkbox],
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .form-row input[type="checkbox"],
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type {
 	display: inline;
 }
 
 body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row label.checkbox,
-body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row input[type=radio],
-body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row input[type=checkbox],
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row input[type="radio"],
+body#{ $_body-theme-selector } div.woocommerce form.woocommerce-checkout .form-row input[type="checkbox"],
 body#{ $_body-theme-selector } .woocommerce .fc-wrapper label.woocommerce-form__label-for-checkbox>span:first-of-type {
 	position: relative;
 	cursor: pointer;
