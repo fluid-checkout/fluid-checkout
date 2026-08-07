@@ -67,6 +67,17 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 
 	/**
+	 * Whether a settings import file exceeds the allowed size.
+	 *
+	 * @param  int  $file_size  File size in bytes.
+	 */
+	public function import_file_exceeds_max_bytes( $file_size ) {
+		return (int) $file_size > self::IMPORT_FILE_MAX_BYTES;
+	}
+
+
+
+	/**
 	 * Get default option values for managed settings.
 	 *
 	 * Lite defaults already include Pro / Address Book / VAT via `fc_default_option_values`.
@@ -95,8 +106,6 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 		/**
 		 * Filter troubleshooting option keys for settings tools.
-		 *
-		 * Option keys in this list are omitted from export and update import, but still resettable.
 		 */
 		return apply_filters( 'fc_settings_tools_troubleshooting_option_keys', $keys );
 	}

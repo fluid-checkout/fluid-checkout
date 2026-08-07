@@ -192,7 +192,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		}
 
 		$tmp_name = $file[ 'tmp_name' ];
-		$max_bytes = FluidCheckout_Admin_Settings_Tools_Service::IMPORT_FILE_MAX_BYTES;
+		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
 
 		// Bail if temporary file is not readable
 		if ( ! is_uploaded_file( $tmp_name ) || ! is_readable( $tmp_name ) ) {
@@ -207,13 +207,13 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		if ( $file_size <= 0 ) {
 			$file_size = (int) filesize( $tmp_name );
 		}
-		if ( $file_size > $max_bytes ) {
+		if ( $service->import_file_exceeds_max_bytes( $file_size ) ) {
 			$this->redirect_with_notice( array(
 				'type'    => 'error',
 				'message' => sprintf(
 					/* translators: %s: maximum file size (for example 1 MB) */
 					__( 'The settings file is too large. Maximum size is %s.', 'fluid-checkout' ),
-					size_format( $max_bytes )
+					size_format( FluidCheckout_Admin_Settings_Tools_Service::IMPORT_FILE_MAX_BYTES )
 				),
 			) );
 		}
@@ -352,16 +352,8 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		// Bail if user does not have necessary permissions
 		if ( ! $this->current_user_can_manage() ) { return; }
 
-		$current_screen = get_current_screen();
-
-		// Bail if not on WooCommerce settings
-		if ( ! $current_screen || 'woocommerce_page_wc-settings' !== $current_screen->id ) { return; }
-
-		$tab = isset( $_GET[ 'tab' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'tab' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$section = isset( $_GET[ 'section' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'section' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
-		// Bail if not on the Fluid Checkout Tools settings section
-		if ( 'fc_checkout' !== $tab || 'tools' !== $section ) { return; }
+		// Bail if not on the Tools settings section
+		if ( ! FluidCheckout_Admin_SettingType_Settings_Tools::instance()->is_tools_settings_screen() ) { return; }
 
 		$notice = get_transient( self::NOTICE_TRANSIENT . '_' . get_current_user_id() );
 
