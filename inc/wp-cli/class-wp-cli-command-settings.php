@@ -90,6 +90,19 @@ class FluidCheckout_WPCLI_Command_Settings {
 			WP_CLI::error( sprintf( 'Could not read settings file: %s', $path ) );
 		}
 
+		$max_bytes = FluidCheckout_Admin_Settings_Tools_Service::IMPORT_FILE_MAX_BYTES;
+		$file_size = filesize( $path );
+
+		// Bail if file exceeds the allowed size
+		if ( false === $file_size || $file_size > $max_bytes ) {
+			WP_CLI::error(
+				sprintf(
+					'The settings file is too large. Maximum size is %s.',
+					size_format( $max_bytes )
+				)
+			);
+		}
+
 		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
 		$mode = ! empty( $assoc_args[ 'replace' ] ) ? 'replace' : 'update';
 		$json = file_get_contents( $path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents

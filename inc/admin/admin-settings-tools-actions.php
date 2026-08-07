@@ -352,6 +352,17 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		// Bail if user does not have necessary permissions
 		if ( ! $this->current_user_can_manage() ) { return; }
 
+		$current_screen = get_current_screen();
+
+		// Bail if not on WooCommerce settings
+		if ( ! $current_screen || 'woocommerce_page_wc-settings' !== $current_screen->id ) { return; }
+
+		$tab = isset( $_GET[ 'tab' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'tab' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$section = isset( $_GET[ 'section' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'section' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		// Bail if not on the Fluid Checkout Tools settings section
+		if ( 'fc_checkout' !== $tab || 'tools' !== $section ) { return; }
+
 		$notice = get_transient( self::NOTICE_TRANSIENT . '_' . get_current_user_id() );
 
 		// Bail if no notice

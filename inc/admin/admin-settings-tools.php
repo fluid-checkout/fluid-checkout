@@ -54,7 +54,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 		// Get token position
 		$position_index = count( $sections );
 		for ( $index = 0; $index < count( $sections ); $index++ ) {
-			if ( 'advanced' == array_keys( $sections )[ $index ] ) {
+			if ( 'advanced' === array_keys( $sections )[ $index ] ) {
 				$position_index = $index;
 			}
 		}
@@ -183,7 +183,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 			);
 
-			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings, $current_section );
+			$settings = apply_filters( 'fc_' . $current_section . '_settings', $settings, $current_section );
 		}
 
 		return $settings;

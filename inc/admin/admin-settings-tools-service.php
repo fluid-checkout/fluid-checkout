@@ -95,6 +95,8 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 		/**
 		 * Filter troubleshooting option keys for settings tools.
+		 *
+		 * Option keys in this list are omitted from export and update import, but still resettable.
 		 */
 		return apply_filters( 'fc_settings_tools_troubleshooting_option_keys', $keys );
 	}

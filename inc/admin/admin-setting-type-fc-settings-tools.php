@@ -148,6 +148,8 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 
 		/**
 		 * Filter whether to show the live-site soft warning on settings tools.
+		 *
+		 * Return true to show the warning when import or reset may change live store configuration.
 		 */
 		return true === apply_filters( 'fc_settings_tools_show_live_site_warning', $is_live );
 	}
