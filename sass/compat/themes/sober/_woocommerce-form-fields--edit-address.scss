@@ -13,7 +13,6 @@
 		float: #{ $alignment-right } !important; // Needed to match theme's column layout
 	}
 
-	// Address Book phone uses `.form-row-first` — keep it full-width in the side-label layout.
 	body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce-address-fields .fc-expansible-form-section.form-row-first {
 		width: 100% !important; // Needed to override FC styles
 		padding-#{ $alignment-right }: 0;
