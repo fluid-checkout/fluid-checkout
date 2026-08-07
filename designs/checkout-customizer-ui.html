@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Fluid Checkout — Checkout Customizer (UI Design)</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+	<style>
+		:root {
+			--ink: #1E212B;
+			--ink-soft: #535156;
+			--mute: #7b7575;
+			--line: #d8d8d8;
+			--wash: #f3f3f3;
+			--paper: #ffffff;
+			--accent: #0B6E4F;
+			--accent-soft: #e0f5eb;
+			--warn: #c95000;
+			--danger: #cc1818;
+			--info: #1f01b9;
+			--radius: 10px;
+			--radius-sm: 6px;
+			--shadow: 0 3px 12px rgba(30, 33, 43, 0.08);
+			--font: "DM Sans", system-ui, sans-serif;
+			--mono: "JetBrains Mono", ui-monospace, monospace;
+
+			/* Live FC CSS vars (preview) */
+			--fluidcheckout--color--black: #000000;
+			--fluidcheckout--color--darker-grey: #1E212B;
+			--fluidcheckout--color--dark-grey: #535156;
+			--fluidcheckout--color--grey: #7b7575;
+			--fluidcheckout--color--light-grey: #d8d8d8;
+			--fluidcheckout--color--lighter-grey: #f3f3f3;
+			--fluidcheckout--color--white: #ffffff;
+			--fluidcheckout--color--success: #007a3d;
+			--fluidcheckout--color--error: #cc1818;
+			--fluidcheckout--button--primary--background-color: #000000;
+			--fluidcheckout--button--primary--text-color: #ffffff;
+			--fluidcheckout--button--primary--background-color--hover: #1E212B;
+			--fluidcheckout--button--border-radius: 0px;
+			--fluidcheckout--checkout-header--background-color: #ffffff;
+			--fluidcheckout--order-summary--background-color: #f3f3f3;
+		}
+
+		* { box-sizing: border-box; }
+		html, body { height: 100%; }
+		body {
+			margin: 0;
+			font-family: var(--font);
+			color: var(--ink);
+			background:
+				radial-gradient(1200px 600px at 10% -10%, #e8f0ec 0%, transparent 55%),
+				radial-gradient(900px 500px at 100% 0%, #eceef2 0%, transparent 50%),
+				#f7f7f8;
+			line-height: 1.45;
+		}
+
+		button, input, select, textarea { font: inherit; color: inherit; }
+		button { cursor: pointer; }
+		.hidden { display: none !important; }
+
+		.app {
+			display: grid;
+			grid-template-rows: auto 1fr;
+			min-height: 100vh;
+		}
+
+		/* —— Top bar —— */
+		.topbar {
+			display: flex;
+			align-items: center;
+			gap: 1.25rem;
+			padding: 0.85rem 1.5rem;
+			background: var(--ink);
+			color: #fff;
+			border-bottom: 1px solid rgba(255,255,255,0.08);
+		}
+		.brand {
+			display: flex;
+			align-items: center;
+			gap: 0.7rem;
+			min-width: 220px;
+		}
+		.brand-mark {
+			width: 28px;
+			height: 28px;
+			border-radius: 7px;
+			background: linear-gradient(145deg, #2a9d6e, #0B6E4F);
+			display: grid;
+			place-items: center;
+			font-weight: 700;
+			font-size: 0.75rem;
+			letter-spacing: -0.02em;
+		}
+		.brand-text { display: flex; flex-direction: column; gap: 0.05rem; }
+		.brand-text strong { font-size: 0.92rem; font-weight: 600; }
+		.brand-text span { font-size: 0.72rem; color: rgba(255,255,255,0.55); }
+
+		.tabs {
+			display: flex;
+			gap: 0.25rem;
+			background: rgba(255,255,255,0.06);
+			padding: 0.25rem;
+			border-radius: 999px;
+		}
+		.tab {
+			border: 0;
+			background: transparent;
+			color: rgba(255,255,255,0.65);
+			padding: 0.45rem 1rem;
+			border-radius: 999px;
+			font-size: 0.86rem;
+			font-weight: 500;
+			transition: background 0.15s, color 0.15s;
+		}
+		.tab:hover { color: #fff; }
+		.tab.is-active {
+			background: #fff;
+			color: var(--ink);
+		}
+
+		.topbar-actions {
+			margin-left: auto;
+			display: flex;
+			align-items: center;
+			gap: 0.6rem;
+		}
+		.btn {
+			border: 1px solid transparent;
+			border-radius: var(--radius-sm);
+			padding: 0.5rem 0.9rem;
+			font-size: 0.86rem;
+			font-weight: 550;
+			background: transparent;
+			transition: background 0.15s, border-color 0.15s, color 0.15s;
+		}
+		.btn-ghost {
+			color: rgba(255,255,255,0.8);
+			border-color: rgba(255,255,255,0.18);
+		}
+		.btn-ghost:hover { background: rgba(255,255,255,0.08); color: #fff; }
+		.btn-primary {
+			background: var(--accent);
+			color: #fff;
+		}
+		.btn-primary:hover { filter: brightness(1.08); }
+		.btn-light {
+			background: #fff;
+			color: var(--ink);
+			border-color: var(--line);
+		}
+		.btn-light:hover { background: var(--wash); }
+		.btn-sm { padding: 0.35rem 0.65rem; font-size: 0.8rem; }
+		.btn-icon {
+			width: 32px;
+			height: 32px;
+			padding: 0;
+			display: inline-grid;
+			place-items: center;
+			border-radius: var(--radius-sm);
+			border: 1px solid var(--line);
+			background: #fff;
+		}
+		.btn-icon:hover { background: var(--wash); }
+
+		/* —— Workspace —— */
+		.workspace {
+			display: grid;
+			grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+			gap: 0;
+			min-height: 0;
+		}
+
+		.editor {
+			padding: 1.25rem 1.5rem 2rem;
+			overflow: auto;
+			min-height: 0;
+		}
+
+		.panel {
+			background: var(--paper);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			overflow: hidden;
+		}
+
+		.panel-head {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 1rem;
+			padding: 1rem 1.15rem;
+			border-bottom: 1px solid var(--line);
+			background: linear-gradient(180deg, #fff, #fafafa);
+		}
+		.panel-head h2 {
+			margin: 0;
+			font-size: 1.05rem;
+			font-weight: 650;
+			letter-spacing: -0.02em;
+		}
+		.panel-head p {
+			margin: 0.25rem 0 0;
+			font-size: 0.84rem;
+			color: var(--ink-soft);
+			max-width: 42ch;
+		}
+		.panel-body { padding: 1rem 1.15rem 1.25rem; }
+
+		.section-label {
+			font-size: 0.72rem;
+			font-weight: 650;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--mute);
+			margin: 0 0 0.65rem;
+		}
+
+		/* —— Fields —— */
+		.field-toolbar {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			margin-bottom: 1rem;
+		}
+		.search {
+			flex: 1;
+			min-width: 180px;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			border: 1px solid var(--line);
+			border-radius: var(--radius-sm);
+			padding: 0.45rem 0.7rem;
+			background: #fff;
+		}
+		.search input {
+			border: 0;
+			outline: 0;
+			width: 100%;
+			background: transparent;
+		}
+		.chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+		.chip {
+			border: 1px solid var(--line);
+			background: #fff;
+			border-radius: 999px;
+			padding: 0.28rem 0.7rem;
+			font-size: 0.78rem;
+			color: var(--ink-soft);
+		}
+		.chip.is-active {
+			background: var(--ink);
+			border-color: var(--ink);
+			color: #fff;
+		}
+
+		.field-list { display: flex; flex-direction: column; gap: 0.45rem; }
+		.field-row {
+			display: grid;
+			grid-template-columns: 28px 1fr auto;
+			align-items: center;
+			gap: 0.65rem;
+			padding: 0.7rem 0.8rem;
+			border: 1px solid var(--line);
+			border-radius: var(--radius-sm);
+			background: #fff;
+			transition: border-color 0.15s, box-shadow 0.15s;
+			cursor: pointer;
+		}
+		.field-row:hover { border-color: #bdbdbd; }
+		.field-row.is-selected {
+			border-color: var(--accent);
+			box-shadow: 0 0 0 3px rgba(11, 110, 79, 0.12);
+		}
+		.field-row.is-hidden-field { opacity: 0.55; }
+		.drag {
+			color: var(--mute);
+			font-size: 0.95rem;
+			letter-spacing: -0.08em;
+			user-select: none;
+		}
+		.field-main { min-width: 0; }
+		.field-title {
+			display: flex;
+			align-items: center;
+			gap: 0.45rem;
+			font-weight: 600;
+			font-size: 0.9rem;
+		}
+		.field-meta {
+			font-size: 0.76rem;
+			color: var(--mute);
+			font-family: var(--mono);
+			margin-top: 0.15rem;
+		}
+		.badge {
+			display: inline-flex;
+			align-items: center;
+			padding: 0.1rem 0.4rem;
+			border-radius: 4px;
+			font-size: 0.68rem;
+			font-weight: 650;
+			letter-spacing: 0.02em;
+			text-transform: uppercase;
+		}
+		.badge-req { background: #fde8e8; color: var(--danger); }
+		.badge-opt { background: var(--wash); color: var(--ink-soft); }
+		.badge-custom { background: #e8eefc; color: var(--info); }
+		.badge-step { background: var(--accent-soft); color: var(--accent); }
+
+		.inspector {
+			margin-top: 1rem;
+			border-top: 1px dashed var(--line);
+			padding-top: 1rem;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0.85rem 1rem;
+		}
+		.inspector h3 {
+			grid-column: 1 / -1;
+			margin: 0 0 0.15rem;
+			font-size: 0.92rem;
+		}
+		.form-field { display: flex; flex-direction: column; gap: 0.3rem; }
+		.form-field.span-2 { grid-column: 1 / -1; }
+		.form-field label {
+			font-size: 0.78rem;
+			font-weight: 600;
+			color: var(--ink-soft);
+		}
+		.form-field input,
+		.form-field select,
+		.form-field textarea {
+			border: 1px solid var(--line);
+			border-radius: var(--radius-sm);
+			padding: 0.5rem 0.65rem;
+			background: #fff;
+		}
+		.form-field textarea { min-height: 72px; resize: vertical; }
+		.toggle-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.75rem;
+			padding: 0.55rem 0.65rem;
+			border: 1px solid var(--line);
+			border-radius: var(--radius-sm);
+			background: #fafafa;
+		}
+		.toggle {
+			width: 38px;
+			height: 22px;
+			border-radius: 999px;
+			border: 0;
+			background: var(--line);
+			position: relative;
+			flex-shrink: 0;
+			transition: background 0.15s;
+		}
+		.toggle::after {
+			content: "";
+			position: absolute;
+			top: 3px;
+			left: 3px;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background: #fff;
+			transition: transform 0.15s;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+		}
+		.toggle.is-on { background: var(--accent); }
+		.toggle.is-on::after { transform: translateX(16px); }
+
+		/* —— Colors —— */
+		.color-grid {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+		.color-group {
+			border: 1px solid var(--line);
+			border-radius: var(--radius-sm);
+			overflow: hidden;
+		}
+		.color-group-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.7rem 0.85rem;
+			background: #fafafa;
+			border-bottom: 1px solid var(--line);
+			font-weight: 600;
+			font-size: 0.88rem;
+		}
+		.color-rows { display: flex; flex-direction: column; }
+		.color-row {
+			display: grid;
+			grid-template-columns: 36px 1fr auto;
+			gap: 0.75rem;
+			align-items: center;
+			padding: 0.7rem 0.85rem;
+			border-top: 1px solid var(--wash);
+		}
+		.color-row:first-child { border-top: 0; }
+		.swatch {
+			width: 36px;
+			height: 36px;
+			border-radius: 8px;
+			border: 1px solid rgba(0,0,0,0.12);
+			padding: 0;
+			overflow: hidden;
+			background: none;
+		}
+		.swatch input[type="color"] {
+			width: 150%;
+			height: 150%;
+			transform: translate(-15%, -15%);
+			border: 0;
+			padding: 0;
+			cursor: pointer;
+		}
+		.color-copy { min-width: 0; }
+		.color-name { font-size: 0.88rem; font-weight: 600; }
+		.color-var {
+			font-family: var(--mono);
+			font-size: 0.7rem;
+			color: var(--mute);
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.color-hex {
+			font-family: var(--mono);
+			font-size: 0.78rem;
+			border: 1px solid var(--line);
+			border-radius: 4px;
+			padding: 0.35rem 0.5rem;
+			width: 96px;
+			background: #fff;
+		}
+		.css-export {
+			margin-top: 1rem;
+			background: var(--ink);
+			color: #d8d8d8;
+			border-radius: var(--radius-sm);
+			padding: 0.9rem 1rem;
+			font-family: var(--mono);
+			font-size: 0.74rem;
+			line-height: 1.6;
+			overflow: auto;
+			max-height: 180px;
+			white-space: pre;
+		}
+		.css-export strong { color: #fff; font-weight: 500; }
+
+		/* —— Steps —— */
+		.steps-layout {
+			display: grid;
+			grid-template-columns: 1fr 280px;
+			gap: 1rem;
+		}
+		@media (max-width: 1100px) {
+			.workspace { grid-template-columns: 1fr; }
+			.steps-layout { grid-template-columns: 1fr; }
+			.preview-pane { border-left: 0; border-top: 1px solid var(--line); min-height: 480px; }
+		}
+
+		.step-tree { display: flex; flex-direction: column; gap: 0.75rem; }
+		.step-card {
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			background: #fff;
+			overflow: hidden;
+		}
+		.step-card.is-custom { border-color: #c5d0f5; }
+		.step-card.is-selected { box-shadow: 0 0 0 3px rgba(11, 110, 79, 0.12); border-color: var(--accent); }
+		.step-head {
+			display: grid;
+			grid-template-columns: 28px 1fr auto;
+			gap: 0.55rem;
+			align-items: center;
+			padding: 0.75rem 0.85rem;
+			background: #fafafa;
+			border-bottom: 1px solid var(--line);
+			cursor: pointer;
+		}
+		.step-num {
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			background: var(--ink);
+			color: #fff;
+			display: grid;
+			place-items: center;
+			font-size: 0.72rem;
+			font-weight: 700;
+		}
+		.step-card.is-custom .step-num { background: var(--info); }
+		.step-title { font-weight: 650; font-size: 0.9rem; }
+		.step-sub { font-size: 0.75rem; color: var(--mute); }
+		.substep-list { padding: 0.55rem; display: flex; flex-direction: column; gap: 0.35rem; }
+		.substep {
+			display: grid;
+			grid-template-columns: 22px 1fr auto;
+			gap: 0.5rem;
+			align-items: center;
+			padding: 0.55rem 0.65rem;
+			border: 1px solid var(--wash);
+			border-radius: var(--radius-sm);
+			background: #fff;
+			cursor: pointer;
+		}
+		.substep:hover { border-color: var(--line); }
+		.substep.is-selected {
+			border-color: var(--accent);
+			background: #f4fbf8;
+		}
+		.substep.is-custom { border-style: dashed; border-color: #aebae8; }
+		.substep-name { font-size: 0.84rem; font-weight: 550; }
+		.substep-meta { font-size: 0.72rem; color: var(--mute); }
+
+		.add-menu {
+			border: 1px dashed var(--line);
+			border-radius: var(--radius);
+			padding: 0.9rem;
+			background: #fafafa;
+		}
+		.add-menu h4 { margin: 0 0 0.55rem; font-size: 0.82rem; }
+		.add-actions { display: flex; flex-direction: column; gap: 0.4rem; }
+		.add-actions .btn { justify-content: flex-start; text-align: left; width: 100%; }
+
+		.hint {
+			display: flex;
+			gap: 0.55rem;
+			align-items: flex-start;
+			padding: 0.7rem 0.8rem;
+			background: #f4f6fb;
+			border: 1px solid #d9dff0;
+			border-radius: var(--radius-sm);
+			font-size: 0.8rem;
+			color: var(--ink-soft);
+			margin-bottom: 1rem;
+		}
+		.hint strong { color: var(--ink); }
+
+		/* —— Preview —— */
+		.preview-pane {
+			border-left: 1px solid var(--line);
+			background:
+				linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.35)),
+				repeating-conic-gradient(#ececec 0% 25%, #f5f5f5 0% 50%) 0 0 / 16px 16px;
+			display: flex;
+			flex-direction: column;
+			min-height: 0;
+		}
+		.preview-bar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.75rem;
+			padding: 0.75rem 1rem;
+			background: rgba(255,255,255,0.92);
+			border-bottom: 1px solid var(--line);
+			backdrop-filter: blur(8px);
+		}
+		.preview-bar h3 {
+			margin: 0;
+			font-size: 0.84rem;
+			font-weight: 650;
+		}
+		.device-toggle { display: flex; gap: 0.25rem; }
+		.device-toggle .btn-icon.is-active {
+			background: var(--ink);
+			color: #fff;
+			border-color: var(--ink);
+		}
+		.preview-stage {
+			flex: 1;
+			overflow: auto;
+			padding: 1.25rem;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+		}
+		.checkout-frame {
+			width: min(100%, 520px);
+			background: var(--fluidcheckout--color--white);
+			border: 1px solid var(--fluidcheckout--color--light-grey);
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 12px 40px rgba(30, 33, 43, 0.12);
+			transition: width 0.2s;
+		}
+		.checkout-frame.is-mobile { width: 360px; }
+		.checkout-header {
+			padding: 1rem 1.15rem;
+			background: var(--fluidcheckout--checkout-header--background-color);
+			border-bottom: 1px solid var(--fluidcheckout--color--light-grey);
+			font-weight: 700;
+			letter-spacing: -0.03em;
+		}
+		.progress {
+			display: flex;
+			gap: 0.35rem;
+			padding: 0.85rem 1.15rem 0;
+		}
+		.progress span {
+			flex: 1;
+			height: 3px;
+			border-radius: 999px;
+			background: var(--fluidcheckout--color--light-grey);
+		}
+		.progress span.is-done,
+		.progress span.is-current {
+			background: var(--fluidcheckout--color--darker-grey);
+		}
+		.checkout-body { padding: 1rem 1.15rem 1.25rem; }
+		.pv-step-label {
+			font-size: 0.72rem;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			color: var(--fluidcheckout--color--grey);
+			font-weight: 650;
+			margin-bottom: 0.35rem;
+		}
+		.pv-step-title {
+			font-size: 1.2rem;
+			font-weight: 700;
+			letter-spacing: -0.03em;
+			margin: 0 0 1rem;
+			color: var(--fluidcheckout--color--black);
+		}
+		.pv-substep {
+			border: 1px solid var(--fluidcheckout--color--light-grey);
+			border-radius: 8px;
+			margin-bottom: 0.65rem;
+			overflow: hidden;
+		}
+		.pv-substep-head {
+			padding: 0.7rem 0.85rem;
+			background: var(--fluidcheckout--color--lighter-grey);
+			font-weight: 650;
+			font-size: 0.88rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.pv-substep-body { padding: 0.85rem; display: grid; gap: 0.65rem; }
+		.pv-field label {
+			display: block;
+			font-size: 0.78rem;
+			font-weight: 600;
+			margin-bottom: 0.25rem;
+			color: var(--fluidcheckout--color--dark-grey);
+		}
+		.pv-field .box {
+			height: 40px;
+			border: 1px solid var(--fluidcheckout--color--light-grey);
+			border-radius: 4px;
+			background: #fff;
+			display: flex;
+			align-items: center;
+			padding: 0 0.7rem;
+			color: var(--fluidcheckout--color--grey);
+			font-size: 0.86rem;
+		}
+		.pv-field.half { display: inline-block; width: calc(50% - 0.35rem); }
+		.pv-field.half + .pv-field.half { margin-left: 0.7rem; }
+		.pv-actions {
+			display: flex;
+			justify-content: space-between;
+			gap: 0.75rem;
+			margin-top: 1rem;
+		}
+		.pv-btn {
+			border: 0;
+			padding: 0.75rem 1.1rem;
+			font-weight: 600;
+			font-size: 0.88rem;
+			border-radius: var(--fluidcheckout--button--border-radius);
+		}
+		.pv-btn-secondary {
+			background: var(--fluidcheckout--color--lighter-grey);
+			color: var(--fluidcheckout--color--black);
+		}
+		.pv-btn-primary {
+			background: var(--fluidcheckout--button--primary--background-color);
+			color: var(--fluidcheckout--button--primary--text-color);
+			margin-left: auto;
+		}
+		.order-summary {
+			margin: 0 1.15rem 1.15rem;
+			padding: 0.9rem;
+			background: var(--fluidcheckout--order-summary--background-color);
+			border-radius: 8px;
+			font-size: 0.84rem;
+		}
+		.order-summary .row {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.35rem;
+			color: var(--fluidcheckout--color--dark-grey);
+		}
+		.order-summary .total {
+			font-weight: 700;
+			color: var(--fluidcheckout--color--black);
+			border-top: 1px solid var(--fluidcheckout--color--light-grey);
+			padding-top: 0.45rem;
+			margin-top: 0.45rem;
+		}
+
+		.toast {
+			position: fixed;
+			bottom: 1.25rem;
+			right: 1.25rem;
+			background: var(--ink);
+			color: #fff;
+			padding: 0.75rem 1rem;
+			border-radius: var(--radius-sm);
+			font-size: 0.86rem;
+			box-shadow: var(--shadow);
+			opacity: 0;
+			transform: translateY(8px);
+			pointer-events: none;
+			transition: opacity 0.2s, transform 0.2s;
+			z-index: 20;
+		}
+		.toast.is-on { opacity: 1; transform: translateY(0); }
+	</style>
+</head>
+<body>
+	<div class="app">
+		<header class="topbar">
+			<div class="brand">
+				<div class="brand-mark">FC</div>
+				<div class="brand-text">
+					<strong>Checkout Customizer</strong>
+					<span>No-code fields · colors · steps</span>
+				</div>
+			</div>
+
+			<nav class="tabs" role="tablist" aria-label="Customizer sections">
+				<button class="tab is-active" data-view="fields" type="button">Fields</button>
+				<button class="tab" data-view="colors" type="button">Colors</button>
+				<button class="tab" data-view="steps" type="button">Steps</button>
+			</nav>
+
+			<div class="topbar-actions">
+				<button class="btn btn-ghost" type="button" id="btn-export">Export CSS</button>
+				<button class="btn btn-primary" type="button" id="btn-save">Save changes</button>
+			</div>
+		</header>
+
+		<main class="workspace">
+			<section class="editor">
+				<!-- FIELDS -->
+				<div class="view" id="view-fields">
+					<div class="panel">
+						<div class="panel-head">
+							<div>
+								<h2>Checkout fields</h2>
+								<p>Reorder, rename, and show or hide WooCommerce fields. Add custom fields without writing PHP.</p>
+							</div>
+							<button class="btn btn-light btn-sm" type="button" id="btn-add-field">+ Add field</button>
+						</div>
+						<div class="panel-body">
+							<div class="field-toolbar">
+								<label class="search">
+									<span aria-hidden="true">⌕</span>
+									<input type="search" id="field-search" placeholder="Search fields…" />
+								</label>
+								<div class="chip-row" id="field-filters">
+									<button class="chip is-active" data-filter="all" type="button">All</button>
+									<button class="chip" data-filter="billing" type="button">Billing</button>
+									<button class="chip" data-filter="shipping" type="button">Shipping</button>
+									<button class="chip" data-filter="order" type="button">Order</button>
+									<button class="chip" data-filter="custom" type="button">Custom</button>
+								</div>
+							</div>
+
+							<p class="section-label">Field list</p>
+							<div class="field-list" id="field-list"></div>
+
+							<div class="inspector" id="field-inspector">
+								<h3 id="inspector-title">Edit field</h3>
+								<div class="form-field">
+									<label for="f-label">Label</label>
+									<input id="f-label" type="text" />
+								</div>
+								<div class="form-field">
+									<label for="f-type">Type</label>
+									<select id="f-type">
+										<option value="text">Text</option>
+										<option value="email">Email</option>
+										<option value="tel">Phone</option>
+										<option value="select">Select</option>
+										<option value="textarea">Textarea</option>
+										<option value="checkbox">Checkbox</option>
+									</select>
+								</div>
+								<div class="form-field">
+									<label for="f-placeholder">Placeholder</label>
+									<input id="f-placeholder" type="text" />
+								</div>
+								<div class="form-field">
+									<label for="f-group">Group</label>
+									<select id="f-group">
+										<option value="billing">Billing</option>
+										<option value="shipping">Shipping</option>
+										<option value="order">Order</option>
+									</select>
+								</div>
+								<div class="form-field span-2">
+									<label for="f-substep">Show in substep</label>
+									<select id="f-substep"></select>
+								</div>
+								<div class="toggle-row span-2">
+									<div>
+										<strong style="font-size:0.86rem">Required</strong>
+										<div style="font-size:0.76rem;color:var(--mute)">Validate before continuing</div>
+									</div>
+									<button class="toggle" id="f-required" type="button" aria-pressed="false"></button>
+								</div>
+								<div class="toggle-row span-2">
+									<div>
+										<strong style="font-size:0.86rem">Visible at checkout</strong>
+										<div style="font-size:0.76rem;color:var(--mute)">Hidden fields keep stored values</div>
+									</div>
+									<button class="toggle is-on" id="f-visible" type="button" aria-pressed="true"></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- COLORS -->
+				<div class="view hidden" id="view-colors">
+					<div class="panel">
+						<div class="panel-head">
+							<div>
+								<h2>Color variables</h2>
+								<p>Map store branding to Fluid Checkout CSS variables. Changes update the live preview and export as <code>:root</code> CSS.</p>
+							</div>
+							<button class="btn btn-light btn-sm" type="button" id="btn-reset-colors">Reset defaults</button>
+						</div>
+						<div class="panel-body">
+							<div class="hint">
+								<span>◎</span>
+								<div><strong>No theme child CSS required.</strong> Values write to <code>--fluidcheckout--*</code> variables used across checkout, cart, and thank-you pages.</div>
+							</div>
+							<div class="color-grid" id="color-groups"></div>
+							<div class="css-export" id="css-export" aria-live="polite"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- STEPS -->
+				<div class="view hidden" id="view-steps">
+					<div class="panel">
+						<div class="panel-head">
+							<div>
+								<h2>Steps &amp; substeps</h2>
+								<p>Compose the checkout flow visually. Add custom steps and substeps with titles, fields, and content blocks — no PHP hooks.</p>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="hint">
+								<span>✦</span>
+								<div><strong>Built-in steps stay synced</strong> with Fluid Checkout. Custom steps (dashed borders) are stored as configuration and rendered by the plugin runtime.</div>
+							</div>
+							<div class="steps-layout">
+								<div>
+									<p class="section-label">Checkout flow</p>
+									<div class="step-tree" id="step-tree"></div>
+								</div>
+								<aside class="add-menu">
+									<h4>Add without code</h4>
+									<div class="add-actions">
+										<button class="btn btn-light" type="button" id="btn-add-step">+ Custom step</button>
+										<button class="btn btn-light" type="button" id="btn-add-substep">+ Custom substep</button>
+										<button class="btn btn-light" type="button" id="btn-add-content">+ Content block</button>
+									</div>
+									<div id="step-inspector" style="margin-top:1rem; display:none;">
+										<p class="section-label">Selected</p>
+										<div class="form-field" style="margin-bottom:0.65rem">
+											<label for="s-title">Title</label>
+											<input id="s-title" type="text" />
+										</div>
+										<div class="form-field" style="margin-bottom:0.65rem">
+											<label for="s-id">ID</label>
+											<input id="s-id" type="text" class="color-hex" style="width:100%;font-family:var(--mono)" readonly />
+										</div>
+										<div class="toggle-row" style="margin-bottom:0.65rem">
+											<div>
+												<strong style="font-size:0.82rem">Enabled</strong>
+											</div>
+											<button class="toggle is-on" id="s-enabled" type="button"></button>
+										</div>
+										<div class="form-field">
+											<label for="s-notes">Admin notes</label>
+											<textarea id="s-notes" placeholder="Internal only…"></textarea>
+										</div>
+									</div>
+								</aside>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<aside class="preview-pane">
+				<div class="preview-bar">
+					<h3>Live checkout preview</h3>
+					<div class="device-toggle">
+						<button class="btn-icon is-active" type="button" data-device="desktop" title="Desktop">▣</button>
+						<button class="btn-icon" type="button" data-device="mobile" title="Mobile">▢</button>
+					</div>
+				</div>
+				<div class="preview-stage">
+					<div class="checkout-frame" id="checkout-frame">
+						<div class="checkout-header">Your Store</div>
+						<div class="progress" id="pv-progress"></div>
+						<div class="checkout-body" id="pv-body"></div>
+						<div class="order-summary">
+							<div class="row"><span>Subtotal</span><span>$128.00</span></div>
+							<div class="row"><span>Shipping</span><span>$8.00</span></div>
+							<div class="row total"><span>Total</span><span>$136.00</span></div>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</main>
+	</div>
+
+	<div class="toast" id="toast" role="status"></div>
+
+	<script>
+		const state = {
+			view: "fields",
+			fieldFilter: "all",
+			selectedFieldId: "billing_email",
+			selectedStepId: "contact",
+			selectedSubstepId: "contact_email",
+			mobile: false,
+			fields: [
+				{ id: "billing_email", label: "Email address", type: "email", group: "billing", substep: "contact_email", placeholder: "you@example.com", required: true, visible: true, custom: false },
+				{ id: "billing_phone", label: "Phone", type: "tel", group: "billing", substep: "contact_email", placeholder: "", required: false, visible: true, custom: false },
+				{ id: "shipping_first_name", label: "First name", type: "text", group: "shipping", substep: "shipping_address", placeholder: "", required: true, visible: true, custom: false },
+				{ id: "shipping_last_name", label: "Last name", type: "text", group: "shipping", substep: "shipping_address", placeholder: "", required: true, visible: true, custom: false },
+				{ id: "shipping_address_1", label: "Street address", type: "text", group: "shipping", substep: "shipping_address", placeholder: "House number and street", required: true, visible: true, custom: false },
+				{ id: "shipping_city", label: "Town / City", type: "text", group: "shipping", substep: "shipping_address", placeholder: "", required: true, visible: true, custom: false },
+				{ id: "order_comments", label: "Order notes", type: "textarea", group: "order", substep: "order_notes", placeholder: "Notes about your order", required: false, visible: true, custom: false },
+				{ id: "gift_message", label: "Gift message", type: "textarea", group: "order", substep: "gift_message", placeholder: "Write a short message…", required: false, visible: true, custom: true },
+			],
+			colors: [
+				{ group: "Base colors", items: [
+					{ key: "--fluidcheckout--color--black", label: "Black", value: "#000000" },
+					{ key: "--fluidcheckout--color--darker-grey", label: "Darker grey", value: "#1E212B" },
+					{ key: "--fluidcheckout--color--dark-grey", label: "Dark grey", value: "#535156" },
+					{ key: "--fluidcheckout--color--light-grey", label: "Light grey", value: "#d8d8d8" },
+					{ key: "--fluidcheckout--color--lighter-grey", label: "Lighter grey", value: "#f3f3f3" },
+					{ key: "--fluidcheckout--color--white", label: "White", value: "#ffffff" },
+				]},
+				{ group: "Buttons", items: [
+					{ key: "--fluidcheckout--button--primary--background-color", label: "Primary background", value: "#000000" },
+					{ key: "--fluidcheckout--button--primary--text-color", label: "Primary text", value: "#ffffff" },
+					{ key: "--fluidcheckout--button--primary--background-color--hover", label: "Primary hover", value: "#1E212B" },
+				]},
+				{ group: "Surfaces", items: [
+					{ key: "--fluidcheckout--checkout-header--background-color", label: "Header background", value: "#ffffff" },
+					{ key: "--fluidcheckout--order-summary--background-color", label: "Order summary", value: "#f3f3f3" },
+				]},
+			],
+			colorDefaults: null,
+			steps: [
+				{
+					id: "contact",
+					title: "Contact",
+					custom: false,
+					enabled: true,
+					notes: "",
+					substeps: [
+						{ id: "contact_email", title: "Contact details", custom: false, enabled: true, type: "fields" },
+					],
+				},
+				{
+					id: "shipping",
+					title: "Shipping",
+					custom: false,
+					enabled: true,
+					notes: "",
+					substeps: [
+						{ id: "shipping_address", title: "Shipping address", custom: false, enabled: true, type: "fields" },
+						{ id: "shipping_method", title: "Shipping method", custom: false, enabled: true, type: "methods" },
+					],
+				},
+				{
+					id: "payment",
+					title: "Payment",
+					custom: false,
+					enabled: true,
+					notes: "",
+					substeps: [
+						{ id: "billing_address", title: "Billing address", custom: false, enabled: true, type: "fields" },
+						{ id: "payment_method", title: "Payment method", custom: false, enabled: true, type: "payment" },
+						{ id: "order_notes", title: "Order notes", custom: false, enabled: true, type: "fields" },
+					],
+				},
+				{
+					id: "extras",
+					title: "Extras",
+					custom: true,
+					enabled: true,
+					notes: "Gift options before payment confirmation",
+					substeps: [
+						{ id: "gift_message", title: "Gift message", custom: true, enabled: true, type: "fields" },
+						{ id: "packing_prefs", title: "Packing preferences", custom: true, enabled: true, type: "content" },
+					],
+				},
+			],
+		};
+
+		state.colorDefaults = JSON.parse(JSON.stringify(state.colors));
+
+		const $ = (sel, root = document) => root.querySelector(sel);
+		const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+		function toast(msg) {
+			const el = $("#toast");
+			el.textContent = msg;
+			el.classList.add("is-on");
+			clearTimeout(toast._t);
+			toast._t = setTimeout(() => el.classList.remove("is-on"), 2200);
+		}
+
+		function setView(view) {
+			state.view = view;
+			$$(".tab").forEach((t) => t.classList.toggle("is-active", t.dataset.view === view));
+			$$(".view").forEach((v) => v.classList.toggle("hidden", v.id !== `view-${view}`));
+			renderPreview();
+		}
+
+		function allSubsteps() {
+			return state.steps.flatMap((s) => s.substeps.map((ss) => ({ ...ss, stepTitle: s.title })));
+		}
+
+		/* —— Fields —— */
+		function renderFields() {
+			const q = ($("#field-search").value || "").toLowerCase();
+			const list = $("#field-list");
+			list.innerHTML = "";
+
+			state.fields
+				.filter((f) => state.fieldFilter === "all" || (state.fieldFilter === "custom" ? f.custom : f.group === state.fieldFilter))
+				.filter((f) => !q || f.label.toLowerCase().includes(q) || f.id.includes(q))
+				.forEach((f) => {
+					const row = document.createElement("div");
+					row.className = `field-row${state.selectedFieldId === f.id ? " is-selected" : ""}${f.visible ? "" : " is-hidden-field"}`;
+					row.dataset.id = f.id;
+					row.innerHTML = `
+						<span class="drag" aria-hidden="true">⋮⋮</span>
+						<div class="field-main">
+							<div class="field-title">
+								${escapeHtml(f.label)}
+								${f.required ? '<span class="badge badge-req">Required</span>' : '<span class="badge badge-opt">Optional</span>'}
+								${f.custom ? '<span class="badge badge-custom">Custom</span>' : ""}
+							</div>
+							<div class="field-meta">${f.id} · ${f.group} · ${f.type}</div>
+						</div>
+						<span class="badge badge-step">${escapeHtml(substepTitle(f.substep))}</span>
+					`;
+					row.addEventListener("click", () => {
+						state.selectedFieldId = f.id;
+						renderFields();
+						fillFieldInspector();
+						renderPreview();
+					});
+					list.appendChild(row);
+				});
+
+			const sub = $("#f-substep");
+			sub.innerHTML = allSubsteps().map((ss) => `<option value="${ss.id}">${escapeHtml(ss.stepTitle)} → ${escapeHtml(ss.title)}</option>`).join("");
+			fillFieldInspector();
+		}
+
+		function substepTitle(id) {
+			return allSubsteps().find((s) => s.id === id)?.title || id;
+		}
+
+		function fillFieldInspector() {
+			const f = state.fields.find((x) => x.id === state.selectedFieldId);
+			if (!f) return;
+			$("#inspector-title").textContent = `Edit “${f.label}”`;
+			$("#f-label").value = f.label;
+			$("#f-type").value = f.type;
+			$("#f-placeholder").value = f.placeholder;
+			$("#f-group").value = f.group;
+			$("#f-substep").value = f.substep;
+			$("#f-required").classList.toggle("is-on", f.required);
+			$("#f-required").setAttribute("aria-pressed", f.required);
+			$("#f-visible").classList.toggle("is-on", f.visible);
+			$("#f-visible").setAttribute("aria-pressed", f.visible);
+		}
+
+		function bindFieldInspector() {
+			const apply = () => {
+				const f = state.fields.find((x) => x.id === state.selectedFieldId);
+				if (!f) return;
+				f.label = $("#f-label").value;
+				f.type = $("#f-type").value;
+				f.placeholder = $("#f-placeholder").value;
+				f.group = $("#f-group").value;
+				f.substep = $("#f-substep").value;
+				renderFields();
+				renderPreview();
+			};
+			["f-label", "f-type", "f-placeholder", "f-group", "f-substep"].forEach((id) => {
+				$(`#${id}`).addEventListener("input", apply);
+				$(`#${id}`).addEventListener("change", apply);
+			});
+			$("#f-required").addEventListener("click", () => {
+				const f = state.fields.find((x) => x.id === state.selectedFieldId);
+				f.required = !f.required;
+				fillFieldInspector();
+				renderFields();
+			});
+			$("#f-visible").addEventListener("click", () => {
+				const f = state.fields.find((x) => x.id === state.selectedFieldId);
+				f.visible = !f.visible;
+				fillFieldInspector();
+				renderFields();
+				renderPreview();
+			});
+			$("#field-search").addEventListener("input", renderFields);
+			$$("#field-filters .chip").forEach((chip) => {
+				chip.addEventListener("click", () => {
+					state.fieldFilter = chip.dataset.filter;
+					$$("#field-filters .chip").forEach((c) => c.classList.toggle("is-active", c === chip));
+					renderFields();
+				});
+			});
+			$("#btn-add-field").addEventListener("click", () => {
+				const id = `custom_${Date.now().toString(36)}`;
+				state.fields.push({
+					id,
+					label: "New custom field",
+					type: "text",
+					group: "order",
+					substep: state.steps[state.steps.length - 1].substeps[0].id,
+					placeholder: "",
+					required: false,
+					visible: true,
+					custom: true,
+				});
+				state.selectedFieldId = id;
+				state.fieldFilter = "custom";
+				$$("#field-filters .chip").forEach((c) => c.classList.toggle("is-active", c.dataset.filter === "custom"));
+				renderFields();
+				toast("Custom field added — no PHP required");
+			});
+		}
+
+		/* —— Colors —— */
+		function applyCssVars() {
+			state.colors.forEach((g) => g.items.forEach((item) => {
+				document.documentElement.style.setProperty(item.key, item.value);
+			}));
+		}
+
+		function renderColors() {
+			const root = $("#color-groups");
+			root.innerHTML = "";
+			state.colors.forEach((group, gi) => {
+				const wrap = document.createElement("div");
+				wrap.className = "color-group";
+				wrap.innerHTML = `<div class="color-group-head"><span>${escapeHtml(group.group)}</span><span style="font-size:0.72rem;color:var(--mute);font-weight:500">${group.items.length} variables</span></div>`;
+				const rows = document.createElement("div");
+				rows.className = "color-rows";
+				group.items.forEach((item, ii) => {
+					const row = document.createElement("div");
+					row.className = "color-row";
+					row.innerHTML = `
+						<button class="swatch" type="button" title="Pick color">
+							<input type="color" value="${item.value}" data-g="${gi}" data-i="${ii}" aria-label="${escapeHtml(item.label)}" />
+						</button>
+						<div class="color-copy">
+							<div class="color-name">${escapeHtml(item.label)}</div>
+							<div class="color-var">${escapeHtml(item.key)}</div>
+						</div>
+						<input class="color-hex" type="text" value="${item.value}" data-g="${gi}" data-i="${ii}" maxlength="7" />
+					`;
+					rows.appendChild(row);
+				});
+				wrap.appendChild(rows);
+				root.appendChild(wrap);
+			});
+
+			root.querySelectorAll('input[type="color"]').forEach((el) => {
+				el.addEventListener("input", () => {
+					const item = state.colors[el.dataset.g].items[el.dataset.i];
+					item.value = el.value;
+					renderColors();
+					applyCssVars();
+					renderCssExport();
+				});
+			});
+			root.querySelectorAll("input.color-hex").forEach((el) => {
+				el.addEventListener("change", () => {
+					let v = el.value.trim();
+					if (!/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v)) return;
+					if (v.length === 4) v = `#${v[1]}${v[1]}${v[2]}${v[2]}${v[3]}${v[3]}`;
+					state.colors[el.dataset.g].items[el.dataset.i].value = v.toLowerCase();
+					renderColors();
+					applyCssVars();
+					renderCssExport();
+				});
+			});
+
+			renderCssExport();
+		}
+
+		function renderCssExport() {
+			const lines = state.colors.flatMap((g) => g.items.map((i) => `  ${i.key}: ${i.value};`));
+			$("#css-export").innerHTML = `<strong>:root {</strong>\n${lines.join("\n")}\n<strong>}</strong>`;
+		}
+
+		/* —— Steps —— */
+		function renderSteps() {
+			const tree = $("#step-tree");
+			tree.innerHTML = "";
+			state.steps.forEach((step, index) => {
+				const card = document.createElement("div");
+				card.className = `step-card${step.custom ? " is-custom" : ""}${state.selectedStepId === step.id && !state.selectedSubstepId ? " is-selected" : ""}`;
+				card.innerHTML = `
+					<div class="step-head" data-step="${step.id}">
+						<span class="step-num">${index + 1}</span>
+						<div>
+							<div class="step-title">${escapeHtml(step.title)} ${step.custom ? '<span class="badge badge-custom">Custom</span>' : ""}</div>
+							<div class="step-sub">${step.substeps.length} substep${step.substeps.length === 1 ? "" : "s"}${step.enabled ? "" : " · disabled"}</div>
+						</div>
+						<span style="font-size:0.75rem;color:var(--mute)">${step.custom ? "⋮⋮" : "built-in"}</span>
+					</div>
+					<div class="substep-list"></div>
+				`;
+				const list = card.querySelector(".substep-list");
+				step.substeps.forEach((ss) => {
+					const row = document.createElement("div");
+					row.className = `substep${ss.custom ? " is-custom" : ""}${state.selectedSubstepId === ss.id ? " is-selected" : ""}`;
+					row.dataset.substep = ss.id;
+					row.dataset.step = step.id;
+					row.innerHTML = `
+						<span class="drag">⋮⋮</span>
+						<div>
+							<div class="substep-name">${escapeHtml(ss.title)}</div>
+							<div class="substep-meta">${ss.custom ? "custom · " : ""}${ss.type}</div>
+						</div>
+						${ss.custom ? '<span class="badge badge-custom">Custom</span>' : ""}
+					`;
+					row.addEventListener("click", (e) => {
+						e.stopPropagation();
+						state.selectedStepId = step.id;
+						state.selectedSubstepId = ss.id;
+						renderSteps();
+						fillStepInspector();
+						renderPreview();
+					});
+					list.appendChild(row);
+				});
+				card.querySelector(".step-head").addEventListener("click", () => {
+					state.selectedStepId = step.id;
+					state.selectedSubstepId = null;
+					renderSteps();
+					fillStepInspector();
+					renderPreview();
+				});
+				tree.appendChild(card);
+			});
+			fillStepInspector();
+		}
+
+		function fillStepInspector() {
+			const box = $("#step-inspector");
+			const step = state.steps.find((s) => s.id === state.selectedStepId);
+			if (!step) { box.style.display = "none"; return; }
+			box.style.display = "block";
+			const ss = state.selectedSubstepId ? step.substeps.find((x) => x.id === state.selectedSubstepId) : null;
+			const target = ss || step;
+			$("#s-title").value = target.title;
+			$("#s-id").value = target.id;
+			$("#s-notes").value = step.notes || "";
+			$("#s-enabled").classList.toggle("is-on", target.enabled !== false);
+			$("#s-title").oninput = () => {
+				target.title = $("#s-title").value;
+				renderSteps();
+				renderPreview();
+				renderFields();
+			};
+			$("#s-notes").oninput = () => { step.notes = $("#s-notes").value; };
+			$("#s-enabled").onclick = () => {
+				target.enabled = !target.enabled;
+				fillStepInspector();
+				renderSteps();
+				renderPreview();
+			};
+		}
+
+		function bindSteps() {
+			$("#btn-add-step").addEventListener("click", () => {
+				const id = `step_${Date.now().toString(36)}`;
+				const subId = `sub_${Date.now().toString(36)}`;
+				state.steps.push({
+					id,
+					title: "Custom step",
+					custom: true,
+					enabled: true,
+					notes: "",
+					substeps: [{ id: subId, title: "New section", custom: true, enabled: true, type: "fields" }],
+				});
+				state.selectedStepId = id;
+				state.selectedSubstepId = null;
+				renderSteps();
+				renderPreview();
+				toast("Custom step added — rendered from config, not PHP");
+			});
+			$("#btn-add-substep").addEventListener("click", () => {
+				const step = state.steps.find((s) => s.id === state.selectedStepId) || state.steps[state.steps.length - 1];
+				const id = `sub_${Date.now().toString(36)}`;
+				step.substeps.push({ id, title: "Custom substep", custom: true, enabled: true, type: "fields" });
+				state.selectedStepId = step.id;
+				state.selectedSubstepId = id;
+				renderSteps();
+				renderPreview();
+				toast("Custom substep added to “" + step.title + "”");
+			});
+			$("#btn-add-content").addEventListener("click", () => {
+				const step = state.steps.find((s) => s.id === state.selectedStepId) || state.steps[state.steps.length - 1];
+				const id = `content_${Date.now().toString(36)}`;
+				step.substeps.push({ id, title: "Content block", custom: true, enabled: true, type: "content" });
+				state.selectedStepId = step.id;
+				state.selectedSubstepId = id;
+				renderSteps();
+				renderPreview();
+				toast("Content block substep added");
+			});
+		}
+
+		/* —— Preview —— */
+		function renderPreview() {
+			const frame = $("#checkout-frame");
+			frame.classList.toggle("is-mobile", state.mobile);
+
+			const enabledSteps = state.steps.filter((s) => s.enabled !== false);
+			const current = enabledSteps.find((s) => s.id === state.selectedStepId) || enabledSteps[0];
+			const currentIndex = Math.max(0, enabledSteps.findIndex((s) => s.id === current.id));
+
+			$("#pv-progress").innerHTML = enabledSteps.map((_, i) => {
+				const cls = i < currentIndex ? "is-done" : i === currentIndex ? "is-current" : "";
+				return `<span class="${cls}"></span>`;
+			}).join("");
+
+			const body = $("#pv-body");
+			const substeps = (current.substeps || []).filter((ss) => ss.enabled !== false);
+			body.innerHTML = `
+				<div class="pv-step-label">Step ${currentIndex + 1} of ${enabledSteps.length}</div>
+				<h2 class="pv-step-title">${escapeHtml(current.title)}</h2>
+				${substeps.map((ss) => {
+					const fields = state.fields.filter((f) => f.substep === ss.id && f.visible);
+					const highlight = state.selectedSubstepId === ss.id ? ' style="outline:2px solid var(--accent); outline-offset:1px"' : "";
+					let inner = "";
+					if (ss.type === "content") {
+						inner = `<div style="font-size:0.86rem;color:var(--fluidcheckout--color--dark-grey)">Rich content / HTML block configured in admin. No template override needed.</div>`;
+					} else if (ss.type === "methods" || ss.type === "payment") {
+						inner = `<div class="pv-field"><div class="box">${ss.type === "payment" ? "Credit card · PayPal" : "Flat rate — $8.00"}</div></div>`;
+					} else {
+						inner = fields.length
+							? fields.map((f) => `<div class="pv-field"><label>${escapeHtml(f.label)}${f.required ? " *" : ""}</label><div class="box">${escapeHtml(f.placeholder || " ")}</div></div>`).join("")
+							: `<div style="font-size:0.8rem;color:var(--mute)">No visible fields assigned</div>`;
+					}
+					return `<div class="pv-substep"${highlight}><div class="pv-substep-head"><span>${escapeHtml(ss.title)}</span>${ss.custom ? '<span class="badge badge-custom">Custom</span>' : ""}</div><div class="pv-substep-body">${inner}</div></div>`;
+				}).join("")}
+				<div class="pv-actions">
+					${currentIndex > 0 ? '<button class="pv-btn pv-btn-secondary" type="button">Back</button>' : "<span></span>"}
+					<button class="pv-btn pv-btn-primary" type="button">${currentIndex === enabledSteps.length - 1 ? "Place order" : "Continue"}</button>
+				</div>
+			`;
+		}
+
+		function escapeHtml(str) {
+			return String(str)
+				.replace(/&/g, "&amp;")
+				.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/"/g, "&quot;");
+		}
+
+		/* —— Boot —— */
+		$$(".tab").forEach((tab) => tab.addEventListener("click", () => setView(tab.dataset.view)));
+		$$(".device-toggle .btn-icon").forEach((btn) => {
+			btn.addEventListener("click", () => {
+				state.mobile = btn.dataset.device === "mobile";
+				$$(".device-toggle .btn-icon").forEach((b) => b.classList.toggle("is-active", b === btn));
+				renderPreview();
+			});
+		});
+		$("#btn-save").addEventListener("click", () => toast("Prototype only — configuration would save to wp_options"));
+		$("#btn-export").addEventListener("click", () => {
+			setView("colors");
+			const text = `:root {\n${state.colors.flatMap((g) => g.items.map((i) => `  ${i.key}: ${i.value};`)).join("\n")}\n}`;
+			navigator.clipboard?.writeText(text).then(() => toast("CSS variables copied")).catch(() => toast("Switch to Colors to copy CSS"));
+		});
+		$("#btn-reset-colors").addEventListener("click", () => {
+			state.colors = JSON.parse(JSON.stringify(state.colorDefaults));
+			applyCssVars();
+			renderColors();
+			toast("Colors reset to Fluid Checkout defaults");
+		});
+
+		bindFieldInspector();
+		bindSteps();
+		applyCssVars();
+		renderFields();
+		renderColors();
+		renderSteps();
+		renderPreview();
+	</script>
+</body>
+</html>
