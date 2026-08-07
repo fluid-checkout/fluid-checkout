@@ -70,6 +70,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 	 *
 	 *     wp fc settings import --file=/tmp/fc-settings.json
 	 *     wp fc settings import --file=/tmp/fc-settings.json --replace
+	 *     wp fc settings import --file=/tmp/fc-settings.json --replace --yes
 	 *     wp fc settings import --file=/tmp/fc-settings.json --dry-run
 	 *
 	 * @when after_wp_load
@@ -139,6 +140,11 @@ class FluidCheckout_WPCLI_Command_Settings {
 		if ( ! empty( $assoc_args[ 'dry-run' ] ) ) {
 			WP_CLI::success( 'Dry run complete. No settings were changed.' );
 			return;
+		}
+
+		// Maybe confirm replace mode before changing settings
+		if ( 'replace' === $mode ) {
+			WP_CLI::confirm( 'Replace all Fluid Checkout settings from this file?', $assoc_args );
 		}
 
 		$result = $service->import_settings( $data, true, $mode );
