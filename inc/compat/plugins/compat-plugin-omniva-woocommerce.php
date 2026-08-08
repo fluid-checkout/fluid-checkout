@@ -380,14 +380,24 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 		// Get Omniva settings
 		$settings = OmnivaLt_Core::get_settings();
-		$label_design = $settings[ 'label_design' ] ? $settings[ 'label_design' ] : 'classic';
+		$label_design = $settings[ 'label_design' ] ?? 'classic';
 
 		// Bail if should not show logo
 		if ( 'full' !== $label_design && 'logo' !== $label_design ) { return $html; }
 
 		// Get method parameters
 		$method_key = OmnivaLt_Omniva_Order::get_method_key_from_id( $method->id );
-		$method_params = OmnivaLt_Helper::get_omniva_method_by_key( $method_key );
+
+		// Use `OmnivaLt_Method::get_by_key` method for current Omniva versions
+		if ( method_exists( 'OmnivaLt_Method', 'get_by_key' ) ) {
+			$method_params = OmnivaLt_Method::get_by_key( $method_key );
+		}
+		// Otherwise, fall back to the older `OmnivaLt_Helper::get_omniva_method_by_key` method
+		elseif ( method_exists( 'OmnivaLt_Helper', 'get_omniva_method_by_key' ) ) {
+			$method_params = OmnivaLt_Helper::get_omniva_method_by_key( $method_key );
+		}
+		// Bail if neither method is available
+		else { return $html; }
 
 		// Bail if method parameters not found
 		if ( ! $method_params || ! array_key_exists( 'title_logo', $method_params ) ) { return $html; }
