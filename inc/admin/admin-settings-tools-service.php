@@ -113,10 +113,23 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	/**
 	 * Whether an option key is a troubleshooting option.
 	 *
+	 * Includes Lite keys from `get_troubleshooting_option_keys()` and add-on debug
+	 * options such as `fc_gaa_debug_mode` and `fc_paddle_load_unminified_assets`.
+	 *
 	 * @param  string  $option  Option name.
 	 */
 	public function is_troubleshooting_option_key( $option ) {
-		return in_array( $option, $this->get_troubleshooting_option_keys(), true );
+		if ( in_array( $option, $this->get_troubleshooting_option_keys(), true ) ) {
+			return true;
+		}
+
+		// Add-on debug / unminified asset toggles (Fluid Checkout product keys only)
+		if ( $this->is_fc_product_option_key( $option )
+			&& (bool) preg_match( '/_(debug_mode|load_unminified_assets)$/', $option ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -134,18 +147,24 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 * Whether an option key is excluded from settings tools.
 	 *
 	 * Excludes backup storage, secrets, install metadata, dismissed admin notices,
-	 * and per-site diagnostic logs so those values survive export, import, and reset.
+	 * per-site diagnostic logs, license updater credentials, and admin UI state
+	 * so those values survive export, import, and reset.
 	 *
 	 * @param  string  $option  Option name.
 	 */
 	public function is_excluded_option_key( $option ) {
 		$excluded = self::BACKUP_OPTION_KEY === $option
+			|| 'fc_pro_address_book_migration' === $option
 			|| (bool) preg_match( '/_license_key(_activated)?$/', $option )
 			|| (bool) preg_match( '/_api_key$/', $option )
+			|| (bool) preg_match( '/_consumer_secret$/', $option )
+			|| (bool) preg_match( '/_consumer_key$/', $option )
 			|| (bool) preg_match( '/_plugin_activation_time$/', $option )
 			|| (bool) preg_match( '/_db_version$/', $option )
+			|| (bool) preg_match( '/_show_db_update_notice$/', $option )
 			|| (bool) preg_match( '/_webhook_log$/', $option )
-			|| false !== strpos( $option, '_dismissed_notice_' );
+			|| false !== strpos( $option, '_dismissed_notice_' )
+			|| false !== strpos( $option, '_setup_wizard_' );
 
 		/**
 		 * Filter whether an option key is excluded from settings tools.

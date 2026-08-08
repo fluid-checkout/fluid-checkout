@@ -23,6 +23,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Export: omits secrets even when present in the database.
 	 * Test: Export: omits troubleshooting options.
 	 * Test: Export: omits per-site webhook debug logs.
+	 * Test: Export: omits runtime admin state and add-on troubleshooting options.
 	 * Test: Export JSON: valid structure and metadata.
 	 * Test: Export: includes inactive Fluid Checkout product settings from the database.
 	 *
@@ -130,7 +131,15 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_dismissed_notice_review_request_timed' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_adb_dismissed_notice_review_request_timed' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_paddle_webhook_log' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_consumer_secret' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_gaa_consumer_key' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_show_db_update_notice' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_gaa_setup_wizard_current_step' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_gaa_setup_wizard_sub_step_progress' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_address_book_migration' ) );
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
+		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_pro_product_id' ) );
+		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_pro_api_url' ) );
 
 		// Test with a filter to ensure the filter works as expected.
 		$filter = function( $excluded, $option ) {
@@ -156,7 +165,11 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_load_unminified_assets' ) );
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_use_enhanced_select_components' ) );
 		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_fix_zoom_in_form_fields_mobile_devices' ) );
+		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_gaa_debug_mode' ) );
+		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_gaa_load_unminified_assets' ) );
+		$this->assertTrue( $this->service->is_troubleshooting_option_key( 'fc_paddle_debug_mode' ) );
 		$this->assertFalse( $this->service->is_troubleshooting_option_key( 'fc_checkout_layout' ) );
+		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_gaa_debug_mode' ) );
 		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_debug_mode' ) );
 		$this->assertFalse( $this->service->is_transferable_option_key( 'fc_use_enhanced_select_components' ) );
 		$this->assertTrue( $this->service->is_transferable_option_key( 'fc_checkout_layout' ) );
@@ -311,6 +324,27 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 
 		$this->assertSame( 'multi-step', $data[ 'settings' ][ 'fc_checkout_layout' ] );
 		$this->assertArrayNotHasKey( 'fc_paddle_webhook_log', $data[ 'settings' ] );
+	}
+
+	/**
+	 * Test: Export: omits runtime admin state and add-on troubleshooting options.
+	 */
+	public function test_export_omits_runtime_admin_state_and_addon_troubleshooting_options() {
+		$this->set_tracked_option( 'fc_checkout_layout', 'multi-step' );
+		$this->set_tracked_option( 'fc_gaa_debug_mode', 'yes' );
+		$this->set_tracked_option( 'fc_gaa_setup_wizard_current_step', 'google_cloud' );
+		$this->set_tracked_option( 'fc_pro_consumer_secret', 'cs_secret' );
+		$this->set_tracked_option( 'fc_pro_address_book_migration', 'yes' );
+		$this->set_tracked_option( 'fc_vat_show_db_update_notice', 'yes' );
+
+		$data = $this->service->get_export_data();
+
+		$this->assertSame( 'multi-step', $data[ 'settings' ][ 'fc_checkout_layout' ] );
+		$this->assertArrayNotHasKey( 'fc_gaa_debug_mode', $data[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_gaa_setup_wizard_current_step', $data[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_pro_consumer_secret', $data[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_pro_address_book_migration', $data[ 'settings' ] );
+		$this->assertArrayNotHasKey( 'fc_vat_show_db_update_notice', $data[ 'settings' ] );
 	}
 
 	/**
