@@ -133,8 +133,8 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	/**
 	 * Whether an option key is excluded from settings tools.
 	 *
-	 * Excludes backup storage, secrets, install metadata, and dismissed admin notices
-	 * so those values survive export, import, and reset.
+	 * Excludes backup storage, secrets, install metadata, dismissed admin notices,
+	 * and per-site diagnostic logs so those values survive export, import, and reset.
 	 *
 	 * @param  string  $option  Option name.
 	 */
@@ -144,6 +144,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 			|| (bool) preg_match( '/_api_key$/', $option )
 			|| (bool) preg_match( '/_plugin_activation_time$/', $option )
 			|| (bool) preg_match( '/_db_version$/', $option )
+			|| (bool) preg_match( '/_webhook_log$/', $option )
 			|| false !== strpos( $option, '_dismissed_notice_' );
 
 		/**

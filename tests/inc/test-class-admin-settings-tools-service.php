@@ -22,6 +22,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Export: includes only saved managed values.
 	 * Test: Export: omits secrets even when present in the database.
 	 * Test: Export: omits troubleshooting options.
+	 * Test: Export: omits per-site webhook debug logs.
 	 * Test: Export JSON: valid structure and metadata.
 	 * Test: Export: includes inactive Fluid Checkout product settings from the database.
 	 *
@@ -128,6 +129,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_dismissed_notice_review_request_timed' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_pro_dismissed_notice_review_request_timed' ) );
 		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_adb_dismissed_notice_review_request_timed' ) );
+		$this->assertTrue( $this->service->is_excluded_option_key( 'fc_paddle_webhook_log' ) );
 		$this->assertFalse( $this->service->is_excluded_option_key( 'fc_checkout_layout' ) );
 
 		// Test with a filter to ensure the filter works as expected.
@@ -296,6 +298,19 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->assertArrayNotHasKey( 'fc_load_unminified_assets', $data[ 'settings' ] );
 		$this->assertArrayNotHasKey( 'fc_use_enhanced_select_components', $data[ 'settings' ] );
 		$this->assertArrayNotHasKey( 'fc_fix_zoom_in_form_fields_mobile_devices', $data[ 'settings' ] );
+	}
+
+	/**
+	 * Test: Export: omits per-site webhook debug logs.
+	 */
+	public function test_export_omits_webhook_debug_logs() {
+		$this->set_tracked_option( 'fc_paddle_webhook_log', array( array( 'event_type' => 'transaction.completed' ) ) );
+		$this->set_tracked_option( 'fc_checkout_layout', 'multi-step' );
+
+		$data = $this->service->get_export_data();
+
+		$this->assertSame( 'multi-step', $data[ 'settings' ][ 'fc_checkout_layout' ] );
+		$this->assertArrayNotHasKey( 'fc_paddle_webhook_log', $data[ 'settings' ] );
 	}
 
 	/**
