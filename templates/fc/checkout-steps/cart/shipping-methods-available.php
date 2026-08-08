@@ -6,7 +6,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 4.0.1
+ * @version 4.2.7
  * @wc-version 3.6.0
  * @original plugins/woocommerce/templates/cart/cart-shipping.php
  */
@@ -86,8 +86,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 
 	<?php endif; ?>
 
-	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package, only on the checkout page ?>
-	<?php if ( is_checkout() && 0 === count( $available_methods ) && ( $has_calculated_shipping || 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) ) ) : ?>
+	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package ?>
+	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && 0 === count( $available_methods ) && ( $has_calculated_shipping || 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) ) ) : ?>
 		<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 			<div class="shipping-method__options">
 				<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
@@ -95,8 +95,8 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		</div>
 	<?php endif; ?>
 
-	<?php // CHANGE: Conditionally display message for when shipping costs are calculated during checkout, but shipping address has not yet been provided ?>
-	<?php if ( is_checkout() && 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) && ! $has_calculated_shipping ) : ?>
+	<?php // CHANGE: Conditionally display message for when shipping costs require an address, but shipping address has not yet been provided ?>
+	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) && ! $has_calculated_shipping ) : ?>
 		<div class="fc-shipping-method__incomplete-address shipping-method__package">
 			<div class="shipping-method__options">
 				<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>
