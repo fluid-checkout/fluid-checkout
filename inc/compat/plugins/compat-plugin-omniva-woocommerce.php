@@ -387,6 +387,7 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 		// Get method parameters
 		$method_key = OmnivaLt_Omniva_Order::get_method_key_from_id( $method->id );
+		$method_params = null;
 
 		// Use `OmnivaLt_Method::get_by_key` method for current Omniva versions
 		if ( method_exists( 'OmnivaLt_Method', 'get_by_key' ) ) {
@@ -396,8 +397,6 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 		elseif ( method_exists( 'OmnivaLt_Helper', 'get_omniva_method_by_key' ) ) {
 			$method_params = OmnivaLt_Helper::get_omniva_method_by_key( $method_key );
 		}
-		// Bail if neither method is available
-		else { return $html; }
 
 		// Bail if method parameters not found
 		if ( ! $method_params || ! array_key_exists( 'title_logo', $method_params ) ) { return $html; }
