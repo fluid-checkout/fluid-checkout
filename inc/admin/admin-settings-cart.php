@@ -218,7 +218,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 					array(
 						'title'             => __( 'Clear cart button', 'fluid-checkout' ),
 						'desc'              => __( 'Display a button to clear all cart items on the cart page and checkout page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Removes all items using AJAX without reloading the page. Removed items can be restored individually or all at once with Undo all.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Removes all items using AJAX without reloading the page. Removed items can be restored with Undo all.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_cart_clear_cart_button_enabled',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_clear_cart_button_enabled' ),
 						'type'              => 'checkbox',
