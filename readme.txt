@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Clear cart button and Undo all behavior and styling on cart and checkout.
+
 = 4.2.6 - 2026-07-28 =
 
 * Bump tested up to upcoming WooCommerce 11.0.0 (RC).
