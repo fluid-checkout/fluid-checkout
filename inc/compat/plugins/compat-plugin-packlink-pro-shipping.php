@@ -431,16 +431,29 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Get plugin's shipping method object
 		$method_id = $method->get_instance_id();
-		$packling_method = Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::get_packlink_shipping_method( $method_id );
+		$packlink_method = Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::get_packlink_shipping_method( $method_id );
 
 		// Bail if method is not available
-		if ( ! method_exists( $packling_method, 'isDisplayLogo' ) ) { return $html; }
+		if ( ! is_object( $packlink_method ) || ! method_exists( $packlink_method, 'isDisplayLogo' ) ) { return $html; }
 
 		// Bail if image should not be displayed
-		if ( ! $packling_method->isDisplayLogo() ) { return $html; }
+		if ( ! $packlink_method->isDisplayLogo() ) { return $html; }
 
 		// Get image URL for the chosen carrier
-		$image_url = $packling_method->getLogoUrl();
+		$image_url = $packlink_method->getLogoUrl();
+
+		// Maybe rebuild a plugin-local logo URL against the current site URL
+		// Packlink stores an absolute URL when the method is synced, which breaks after a site URL change
+		if ( ! empty( $image_url ) ) {
+			$logo_path = wp_parse_url( $image_url, PHP_URL_PATH );
+			$plugin_dir = '/packlink-pro-shipping/';
+
+			// Rebuild only when the logo points to the plugin directory, leaving external URLs untouched
+			if ( is_string( $logo_path ) && false !== strpos( $logo_path, $plugin_dir ) ) {
+				$relative_path = substr( $logo_path, strpos( $logo_path, $plugin_dir ) + strlen( $plugin_dir ) );
+				$image_url = trailingslashit( plugins_url() ) . 'packlink-pro-shipping/' . ltrim( $relative_path, '/' );
+			}
+		}
 
 		// If no image is available, use the default one
 		if ( ! $image_url ) {
@@ -448,7 +461,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		}
 
 		// Define image HTML
-		$html = '<img class="shipping_logo" src="' . $image_url . '" alt="Packlink PRO Shipping"/>';
+		$html = '<img class="shipping_logo" src="' . esc_url( $image_url ) . '" alt="Packlink PRO Shipping"/>';
 
 		return $html;
 	}
