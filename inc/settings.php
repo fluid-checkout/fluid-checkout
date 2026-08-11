@@ -115,7 +115,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
 			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
-			
+			'fc_pro_cart_clear_cart_button_enabled'                         => 'no',
+
 			// Settings order received.
 			'fc_pro_enable_order_received'                                  => 'no',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
