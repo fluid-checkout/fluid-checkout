@@ -144,6 +144,15 @@ jQuery( function( $ ) {
 	// since enhanced-select libraries may recreate the underlying <select> node on interaction).
 	var previousCountryByField = {};
 
+	// CHANGE: Seed the map from fields already in the DOM so the first real `change` can detect a
+	// prior country even when `wc_address_i18n_ready` / `refresh` did not run first.
+	$( 'select.country_to_state, input.country_to_state' ).each( function() {
+		var countryFieldKey = $( this ).attr( 'id' ) || $( this ).attr( 'name' );
+		if ( countryFieldKey ) {
+			previousCountryByField[ countryFieldKey ] = $( this ).val();
+		}
+	} );
+
 	$( document.body ).on( 'change refresh', 'select.country_to_state, input.country_to_state', function() {
 		// Grab wrapping element to target only stateboxes in same 'group'
 		var $wrapper = $( this ).closest( wrapper_selectors );
