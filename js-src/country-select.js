@@ -140,6 +140,10 @@ jQuery( function( $ ) {
 			'.woocommerce-address-fields,' +
 			'.woocommerce-shipping-calculator';
 
+	// CHANGE: Track the previous country per field (keyed by field name/id, not the DOM element itself,
+	// since enhanced-select libraries may recreate the underlying <select> node on interaction).
+	var previousCountryByField = {};
+
 	$( document.body ).on( 'change refresh', 'select.country_to_state, input.country_to_state', function() {
 		// Grab wrapping element to target only stateboxes in same 'group'
 		var $wrapper = $( this ).closest( wrapper_selectors );
@@ -152,16 +156,26 @@ jQuery( function( $ ) {
 			$wrapper = $( this ).closest('.form-row').parent();
 		}
 
-		var country     = $( this ).val(),
+		var $countryField  = $( this ),
+			country        = $countryField.val(),
 			// CHANGE: Add selector for address fields without prefix
-			$statebox     = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' ),
-			$parent       = $statebox.closest( '.form-row' ),
-			input_name    = $statebox.attr( 'name' ),
-			input_id      = $statebox.attr('id'),
-			input_classes = $statebox.attr('data-input-classes'),
-			value         = $statebox.val(),
-			placeholder   = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
+			$statebox      = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' ),
+			$parent        = $statebox.closest( '.form-row' ),
+			input_name     = $statebox.attr( 'name' ),
+			input_id       = $statebox.attr('id'),
+			input_classes  = $statebox.attr('data-input-classes'),
+			value          = $statebox.val(),
+			placeholder    = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
+
+		// CHANGE: Track the previous country to tell a genuine country change apart from a UI refresh.
+		// State codes are only valid within the country they belong to, so a value must not be reused
+		// across a real country change even when it happens to also exist as a (different) state in the
+		// new country's list (eg. "AL" is Alagoas in Brazil and Alabama in the US).
+		var countryFieldKey = $countryField.attr( 'id' ) || $countryField.attr( 'name' ),
+			previousCountry  = previousCountryByField[ countryFieldKey ],
+			isCountryChanged = ( 'undefined' !== typeof previousCountry ) && ( previousCountry !== country );
+		previousCountryByField[ countryFieldKey ] = country;
 
 		if ( placeholder === wc_country_select_params.i18n_select_state_text ) {
 			placeholder = '';
@@ -239,7 +253,10 @@ jQuery( function( $ ) {
 					$statebox[ 0 ].tomselect.sync();
 				}
 
-				$statebox.val( value ).trigger( 'change' );
+				// CHANGE: Only keep the previous value when the country hasn't actually changed (eg. a UI
+				// refresh) and it is a valid state for the current country. On a genuine country change,
+				// always clear it instead of matching an unrelated state that happens to share the same code.
+				$statebox.val( ( ! isCountryChanged && state.hasOwnProperty( value ) ) ? value : '' ).trigger( 'change' );
 
 				// CHANGE: Add class for current type of of the state field
 				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--select' );
