@@ -42,6 +42,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	private $cached_values = array();
 
+	/**
+	 * Whether the current `update_order_review` request is older than one already applied.
+	 *
+	 * @var bool
+	 */
+	private $is_stale_checkout_update = false;
+
 
 
 	/**
@@ -210,6 +217,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
 
 		// Persisted data
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_skip_stale_checkout_update_address_data' ), 1 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
@@ -600,6 +608,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90 );
 
 		// Persisted data
+		remove_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_skip_stale_checkout_update_address_data' ), 1 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100 );
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
@@ -7263,18 +7272,141 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Ignore address data from an older `update_order_review` that finished after a newer one.
+	 *
+	 * Country changes can send an empty state before the state selection request. The browser may
+	 * abort the older XHR, but PHP can still finish and overwrite the newer state on the customer.
+	 *
+	 * @param  string  $post_data  Serialized checkout form post data from the AJAX request.
+	 */
+	public function maybe_skip_stale_checkout_update_address_data( $post_data ) {
+		// Bail if WC session or customer not available
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->session ) || ! isset( WC()->customer ) ) { return; }
+
+		// Get request sequence from the AJAX payload (not part of the serialized form)
+		$seq = isset( $_POST[ 'fc_checkout_update_seq' ] ) ? absint( wp_unslash( $_POST[ 'fc_checkout_update_seq' ] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		// Bail if sequence was not provided (compat with older clients / non-FC updates)
+		if ( $seq <= 0 ) { return; }
+
+		// Use a dedicated session key (not via checkout field helpers) so field reset logic cannot clear it
+		$session_key = self::SESSION_PREFIX . 'checkout_update_seq';
+		$last_seq = absint( WC()->session->get( $session_key, 0 ) );
+
+		// Stale request: keep the customer address already applied by a newer update
+		if ( $seq < $last_seq ) {
+			$this->is_stale_checkout_update = true;
+			$this->restore_update_order_review_address_post_from_customer();
+			return;
+		}
+
+		// Record the newest sequence applied for this session
+		if ( $seq > $last_seq ) {
+			WC()->session->set( $session_key, $seq );
+		}
+
+		// Empty country on refresh/race: do not wipe a country already saved on the customer.
+		$posted_s_country = isset( $_POST[ 's_country' ] ) ? wc_clean( wp_unslash( $_POST[ 's_country' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_s_state = isset( $_POST[ 's_state' ] ) ? wc_clean( wp_unslash( $_POST[ 's_state' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$customer_s_country = WC()->customer->get_shipping_country();
+		$customer_s_state = WC()->customer->get_shipping_state();
+		if ( '' === $posted_s_country && '' !== $customer_s_country ) {
+			$_POST[ 's_country' ] = $customer_s_country;
+			$posted_s_country = $customer_s_country;
+		}
+
+		// Same-country empty state: do not wipe a state already saved for this country.
+		// Country changes send an empty state on purpose; that case has a different posted country.
+		if ( '' === $posted_s_state && '' !== $customer_s_state && $posted_s_country === $customer_s_country ) {
+			$_POST[ 's_state' ] = $customer_s_state;
+		}
+
+		$posted_country = isset( $_POST[ 'country' ] ) ? wc_clean( wp_unslash( $_POST[ 'country' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_state = isset( $_POST[ 'state' ] ) ? wc_clean( wp_unslash( $_POST[ 'state' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$customer_b_country = WC()->customer->get_billing_country();
+		$customer_b_state = WC()->customer->get_billing_state();
+		if ( '' === $posted_country && '' !== $customer_b_country ) {
+			$_POST[ 'country' ] = $customer_b_country;
+			$posted_country = $customer_b_country;
+		}
+		if ( '' === $posted_state && '' !== $customer_b_state && $posted_country === $customer_b_country ) {
+			$_POST[ 'state' ] = $customer_b_state;
+		}
+	}
+
+	/**
+	 * Restore WooCommerce `update_order_review` address POST keys from the current customer.
+	 */
+	public function restore_update_order_review_address_post_from_customer() {
+		// Bail if customer not available
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->customer ) ) { return; }
+
+		$customer = WC()->customer;
+
+		$_POST[ 'country' ] = $customer->get_billing_country();
+		$_POST[ 'state' ] = $customer->get_billing_state();
+		$_POST[ 'postcode' ] = $customer->get_billing_postcode();
+		$_POST[ 'city' ] = $customer->get_billing_city();
+		$_POST[ 'address' ] = $customer->get_billing_address_1();
+		$_POST[ 'address_2' ] = $customer->get_billing_address_2();
+
+		$_POST[ 's_country' ] = $customer->get_shipping_country();
+		$_POST[ 's_state' ] = $customer->get_shipping_state();
+		$_POST[ 's_postcode' ] = $customer->get_shipping_postcode();
+		$_POST[ 's_city' ] = $customer->get_shipping_city();
+		$_POST[ 's_address' ] = $customer->get_shipping_address_1();
+		$_POST[ 's_address_2' ] = $customer->get_shipping_address_2();
+	}
+
+	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
 	 * @param  string  $posted_data  Post data for all checkout fields.
 	 */
 	public function update_customer_persisted_data( $posted_data ) {
+		// Bail if this update_order_review is older than one already applied
+		if ( $this->is_stale_checkout_update ) { return $posted_data; }
+
 		// Get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
 		}
 
+		// Keep address values restored onto `$_POST` when `post_data` still lags behind the AJAX address fields.
+		if ( isset( $_POST[ 's_country' ] ) && ( ! array_key_exists( 'shipping_country', $posted_data ) || '' === $posted_data[ 'shipping_country' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'shipping_country' ] = wc_clean( wp_unslash( $_POST[ 's_country' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		}
+		if ( isset( $_POST[ 's_state' ] ) && ( ! array_key_exists( 'shipping_state', $posted_data ) || '' === $posted_data[ 'shipping_state' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'shipping_state' ] = wc_clean( wp_unslash( $_POST[ 's_state' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		}
+		if ( isset( $_POST[ 'country' ] ) && ( ! array_key_exists( 'billing_country', $posted_data ) || '' === $posted_data[ 'billing_country' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'billing_country' ] = wc_clean( wp_unslash( $_POST[ 'country' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		}
+		if ( isset( $_POST[ 'state' ] ) && ( ! array_key_exists( 'billing_state', $posted_data ) || '' === $posted_data[ 'billing_state' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'billing_state' ] = wc_clean( wp_unslash( $_POST[ 'state' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		}
+
+		// Same-country empty state in parsed data: keep the previously saved state on the customer.
+		// Also runs after WC core may have already applied an empty `s_state` from the AJAX request.
+		$customer_s_country = WC()->customer->get_shipping_country();
+		$customer_s_state = WC()->customer->get_shipping_state();
+		$posted_s_country = array_key_exists( 'shipping_country', $posted_data ) ? $posted_data[ 'shipping_country' ] : $customer_s_country;
+		if ( array_key_exists( 'shipping_state', $posted_data ) && '' === $posted_data[ 'shipping_state' ] && '' !== $customer_s_state && $posted_s_country === $customer_s_country ) {
+			$posted_data[ 'shipping_state' ] = $customer_s_state;
+		}
+
+		$customer_b_country = WC()->customer->get_billing_country();
+		$customer_b_state = WC()->customer->get_billing_state();
+		$posted_b_country = array_key_exists( 'billing_country', $posted_data ) ? $posted_data[ 'billing_country' ] : $customer_b_country;
+		if ( array_key_exists( 'billing_state', $posted_data ) && '' === $posted_data[ 'billing_state' ] && '' !== $customer_b_state && $posted_b_country === $customer_b_country ) {
+			$posted_data[ 'billing_state' ] = $customer_b_state;
+		}
+
 		// Get customer object and supported field keys
 		$customer_supported_field_keys = $this->get_supported_customer_property_field_keys();
+
+		// Country/state fields that must not be wiped by an empty AJAX value after a page refresh
+		$preserve_non_empty_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $customer_supported_field_keys as $field_key ) {
@@ -7283,11 +7415,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get the setter method name for the customer property
 			$setter = "set_$field_key";
+			$getter = "get_$field_key";
 
 			// Check if the setter method is supported
 			if ( is_callable( array( WC()->customer, $setter ) ) ) {
 				// Set property value to the customer object
 				if ( array_key_exists( $field_key, $posted_data ) ) {
+					// Do not replace an existing country/state with an empty string from a raced/refresh update
+					if ( '' === $posted_data[ $field_key ] && in_array( $field_key, $preserve_non_empty_field_keys, true ) && is_callable( array( WC()->customer, $getter ) ) && '' !== WC()->customer->{$getter}() ) {
+						continue;
+					}
 					WC()->customer->{$setter}( $posted_data[ $field_key ] );
 				}
 			}
@@ -7300,11 +7437,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$session_field_keys = $this->get_customer_session_field_keys( $posted_data );
 
 		// Save customer data to the session
+		// Empty country/state strings in session hide the customer value after refresh
+		$preserve_non_empty_session_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
 		foreach ( $session_field_keys as $field_key ) {
 			// Set property value to the customer object
 			if ( array_key_exists( $field_key, $posted_data ) ) {
+				// Do not persist empty country/state strings in session; let get_value fall back to the customer object
+				if ( '' === $posted_data[ $field_key ] && in_array( $field_key, $preserve_non_empty_session_field_keys, true ) ) {
+					WC()->session->__unset( self::SESSION_PREFIX . $field_key );
+				}
 				// Set session value
-				$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
+				else {
+					$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
+				}
 			}
 			else {
 				// Set session value as empty
@@ -7423,6 +7568,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe return field value from session
 		$field_session_value = $this->get_checkout_field_value_from_session( $input );
 		if ( null !== $field_session_value ) {
+			// Empty session values for country/state should not hide the customer value after refresh.
+			// A raced update can store these as '', which then wins over the selected values still
+			// saved on the customer object and makes the country/state appear to change or clear.
+			$preserve_non_empty_session_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
+			if ( '' === $field_session_value && in_array( $input, $preserve_non_empty_session_field_keys, true ) ) {
+				return null;
+			}
+
 			return $field_session_value;
 		}
 

@@ -173,7 +173,9 @@ jQuery( function( $ ) {
 			input_name     = $statebox.attr( 'name' ),
 			input_id       = $statebox.attr('id'),
 			input_classes  = $statebox.attr('data-input-classes'),
-			value          = $statebox.val(),
+			// Prefer the live value; if enhanced-select has already cleared it, fall back to the
+			// server-rendered selected option so a page refresh does not drop the saved state.
+			value          = $statebox.val() || $statebox.find( 'option' ).filter( function() { return this.defaultSelected; } ).val() || '',
 			placeholder    = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
 
@@ -240,10 +242,11 @@ jQuery( function( $ ) {
 					$statebox = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' );
 				}
 
-				// CHANGE: Maybe clear cached TomSelect option renderings before updating DOM to prevent old options merging with new ones
+				// CHANGE: Maybe clear cached TomSelect option renderings before updating DOM to prevent old options merging with new ones.
+				// Use silent `clear( true )` so an intermediate empty value does not fire `change` and get persisted to the session.
 				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
 					// Clear selected and unselected options
-					$statebox[ 0 ].tomselect.clear();
+					$statebox[ 0 ].tomselect.clear( true );
 					$statebox[ 0 ].tomselect.clearOptions();
 				}
 
@@ -256,16 +259,27 @@ jQuery( function( $ ) {
 					$statebox.append( $option );
 				} );
 
-				// CHANGE: Maybe sync TomSelect with updated DOM options before change event is triggered
-				// to ensure TomSelect has loaded the new options before the value is set
-				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
-					$statebox[ 0 ].tomselect.sync();
-				}
-
 				// CHANGE: Only keep the previous value when the country hasn't actually changed (eg. a UI
 				// refresh) and it is a valid state for the current country. On a genuine country change,
 				// always clear it instead of matching an unrelated state that happens to share the same code.
-				$statebox.val( ( ! isCountryChanged && state.hasOwnProperty( value ) ) ? value : '' ).trigger( 'change' );
+				var newStateValue = ( ! isCountryChanged && state.hasOwnProperty( value ) ) ? value : '';
+
+				// CHANGE: Maybe sync TomSelect with updated DOM options before the value is set
+				// to ensure TomSelect has loaded the new options before the value is set
+				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
+					$statebox[ 0 ].tomselect.sync();
+					// Set silently, then sync the native select used for form serialization / checkout updates
+					$statebox[ 0 ].tomselect.setValue( newStateValue, true );
+					$statebox.val( newStateValue );
+				} else {
+					$statebox.val( newStateValue );
+				}
+
+				// CHANGE: Only trigger `change` when the value actually changed, so a UI refresh does not
+				// persist an intermediate empty state over the selected value already saved to the session.
+				if ( newStateValue !== value ) {
+					$statebox.trigger( 'change' );
+				}
 
 				// CHANGE: Add class for current type of of the state field
 				$parent.removeClass( state_field_type_classes ).addClass( 'fc-select-field--select' );
