@@ -175,7 +175,8 @@ jQuery( function( $ ) {
 			input_classes  = $statebox.attr('data-input-classes'),
 			// Prefer the live value; if enhanced-select has already cleared it, fall back to the
 			// server-rendered selected option so a page refresh does not drop the saved state.
-			value          = $statebox.val() || $statebox.find( 'option' ).filter( function() { return this.defaultSelected; } ).val() || '',
+			liveValue      = $statebox.val() || '',
+			value          = liveValue || $statebox.find( 'option' ).filter( function() { return this.defaultSelected; } ).val() || '',
 			placeholder    = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
 
@@ -275,9 +276,10 @@ jQuery( function( $ ) {
 					$statebox.val( newStateValue );
 				}
 
-				// CHANGE: Only trigger `change` when the value actually changed, so a UI refresh does not
-				// persist an intermediate empty state over the selected value already saved to the session.
-				if ( newStateValue !== value ) {
+				// CHANGE: Trigger `change` after rebuild unless the state stays empty. A non-empty restored
+				// value must still notify checkout so Address Book / session can re-sync on page refresh.
+				// Skipping only the empty-to-empty case avoids persisting an intermediate blank clear.
+				if ( '' !== newStateValue || newStateValue !== liveValue ) {
 					$statebox.trigger( 'change' );
 				}
 
