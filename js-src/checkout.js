@@ -172,9 +172,6 @@ jQuery( function ( $ ) {
 		dirtyInput: false,
 		selectedPaymentMethod: false,
 		xhr: false,
-		// CHANGE: Monotonic sequence for update_order_review so the server can ignore stale aborted requests.
-		// Start from `Date.now()` so a fresh page load is never treated as older than sequences stored in the PHP session from a previous page view.
-		updateSequence: Date.now(),
 		// CHANGE: Use checkout form and order pay form selectors from settings
 		$order_review: $( _settings.orderPayFormSelector ),
 		$checkout_form: $( _settings.checkoutFormSelector ),
@@ -1064,9 +1061,6 @@ jQuery( function ( $ ) {
 
 			// CHANGE: Removed if handling of different shipping address checkbox, always get shipping address values from shipping fields (see above)
 
-			// CHANGE: Increment and send update sequence so PHP can discard stale address writes from aborted requests
-			wc_checkout_form.updateSequence += 1;
-
 			var data = {
 				security: wc_checkout_params.update_order_review_nonce,
 				payment_method: wc_checkout_form.get_payment_method(),
@@ -1084,8 +1078,6 @@ jQuery( function ( $ ) {
 				s_address_2: s_address_2,
 				has_full_address: has_full_address,
 				post_data: $( 'form.checkout' ).serialize(),
-				// CHANGE: Sequence for stale update_order_review guard
-				fc_checkout_update_seq: wc_checkout_form.updateSequence,
 			};
 
 			if ( false !== args.update_shipping_method ) {

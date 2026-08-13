@@ -42,13 +42,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	private $cached_values = array();
 
-	/**
-	 * Whether the current `update_order_review` request is older than one already applied.
-	 *
-	 * @var bool
-	 */
-	private $is_stale_checkout_update = false;
-
 
 
 	/**
@@ -217,7 +210,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
 
 		// Persisted data
-		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_skip_stale_checkout_update_address_data' ), 1 );
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
@@ -608,7 +601,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90 );
 
 		// Persisted data
-		remove_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_skip_stale_checkout_update_address_data' ), 1 );
+		remove_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100 );
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
@@ -7272,38 +7265,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Ignore address data from an older `update_order_review` that finished after a newer one.
-	 *
-	 * Country changes can send an empty state before the state selection request. The browser may
-	 * abort the older XHR, but PHP can still finish and overwrite the newer state on the customer.
+	 * Prevent empty country/state from a refresh or same-country update from wiping values already
+	 * saved on the customer before WooCommerce applies `$_POST` address fields.
 	 *
 	 * @param  string  $post_data  Serialized checkout form post data from the AJAX request.
 	 */
-	public function maybe_skip_stale_checkout_update_address_data( $post_data ) {
-		// Bail if WC session or customer not available
-		if ( ! function_exists( 'WC' ) || ! isset( WC()->session ) || ! isset( WC()->customer ) ) { return; }
-
-		// Get request sequence from the AJAX payload (not part of the serialized form)
-		$seq = isset( $_POST[ 'fc_checkout_update_seq' ] ) ? absint( wp_unslash( $_POST[ 'fc_checkout_update_seq' ] ) ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
-		// Bail if sequence was not provided (compat with older clients / non-FC updates)
-		if ( $seq <= 0 ) { return; }
-
-		// Use a dedicated session key (not via checkout field helpers) so field reset logic cannot clear it
-		$session_key = self::SESSION_PREFIX . 'checkout_update_seq';
-		$last_seq = absint( WC()->session->get( $session_key, 0 ) );
-
-		// Stale request: keep the customer address already applied by a newer update
-		if ( $seq < $last_seq ) {
-			$this->is_stale_checkout_update = true;
-			$this->restore_update_order_review_address_post_from_customer();
-			return;
-		}
-
-		// Record the newest sequence applied for this session
-		if ( $seq > $last_seq ) {
-			WC()->session->set( $session_key, $seq );
-		}
+	public function maybe_preserve_checkout_update_address_data( $post_data ) {
+		// Bail if WC customer not available
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->customer ) ) { return; }
 
 		// Empty country on refresh/race: do not wipe a country already saved on the customer.
 		$posted_s_country = isset( $_POST[ 's_country' ] ) ? wc_clean( wp_unslash( $_POST[ 's_country' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
@@ -7335,38 +7304,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Restore WooCommerce `update_order_review` address POST keys from the current customer.
-	 */
-	public function restore_update_order_review_address_post_from_customer() {
-		// Bail if customer not available
-		if ( ! function_exists( 'WC' ) || ! isset( WC()->customer ) ) { return; }
-
-		$customer = WC()->customer;
-
-		$_POST[ 'country' ] = $customer->get_billing_country();
-		$_POST[ 'state' ] = $customer->get_billing_state();
-		$_POST[ 'postcode' ] = $customer->get_billing_postcode();
-		$_POST[ 'city' ] = $customer->get_billing_city();
-		$_POST[ 'address' ] = $customer->get_billing_address_1();
-		$_POST[ 'address_2' ] = $customer->get_billing_address_2();
-
-		$_POST[ 's_country' ] = $customer->get_shipping_country();
-		$_POST[ 's_state' ] = $customer->get_shipping_state();
-		$_POST[ 's_postcode' ] = $customer->get_shipping_postcode();
-		$_POST[ 's_city' ] = $customer->get_shipping_city();
-		$_POST[ 's_address' ] = $customer->get_shipping_address_1();
-		$_POST[ 's_address_2' ] = $customer->get_shipping_address_2();
-	}
-
-	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
 	 * @param  string  $posted_data  Post data for all checkout fields.
 	 */
 	public function update_customer_persisted_data( $posted_data ) {
-		// Bail if this update_order_review is older than one already applied
-		if ( $this->is_stale_checkout_update ) { return $posted_data; }
-
 		// Get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
