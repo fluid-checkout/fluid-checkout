@@ -265,21 +265,20 @@ jQuery( function( $ ) {
 				// always clear it instead of matching an unrelated state that happens to share the same code.
 				var newStateValue = ( ! isCountryChanged && state.hasOwnProperty( value ) ) ? value : '';
 
-				// CHANGE: Maybe sync TomSelect with updated DOM options before the value is set
-				// to ensure TomSelect has loaded the new options before the value is set
+				// CHANGE: Set the native select used for form serialization / checkout updates
+				$statebox.val( newStateValue );
+
+				// CHANGE: Maybe sync TomSelect with the updated DOM options and value
 				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
 					$statebox[ 0 ].tomselect.sync();
-					// Set silently, then sync the native select used for form serialization / checkout updates
+					// Set silently so an intermediate empty value does not fire `change`
 					$statebox[ 0 ].tomselect.setValue( newStateValue, true );
-					$statebox.val( newStateValue );
-				} else {
-					$statebox.val( newStateValue );
 				}
 
 				// CHANGE: Trigger `change` after rebuild unless the state stays empty. A non-empty restored
 				// value must still notify checkout so Address Book / session can re-sync on page refresh.
 				// Skipping only the empty-to-empty case avoids persisting an intermediate blank clear.
-				if ( '' !== newStateValue || newStateValue !== liveValue ) {
+				if ( '' !== newStateValue || '' !== liveValue ) {
 					$statebox.trigger( 'change' );
 				}
 
