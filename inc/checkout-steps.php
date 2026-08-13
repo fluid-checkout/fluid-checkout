@@ -7183,6 +7183,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
 
+			// Restore empty country/state before persist runs, so a refresh/race cannot persist `''`
+			$new_posted_data = $this->maybe_restore_empty_address_fields( $new_posted_data );
+			$this->posted_data = $new_posted_data;
+
 			// Update selected shipping method session value.
 			// Will be updated again after the filter is applied.
 			if ( array_key_exists( 'shipping_method', $new_posted_data ) ) {
@@ -7275,7 +7279,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$getter = 'get_' . $field_key;
 		if ( is_callable( array( WC()->customer, $getter ) ) ) {
 			$value = WC()->customer->{$getter}( 'edit' );
-			if ( '' !== $value ) {
+			if ( null !== $value && '' !== $value ) {
 				return $value;
 			}
 		}
@@ -7289,6 +7293,67 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Restore empty country/state onto parsed posted data and `$_POST` from stored customer/session values.
+	 * Same-country only for state, so a real country change can still clear it.
+	 *
+	 * Also set the AJAX `s_*` / `country` / `state` keys on `$_POST`.
+	 * `WC_AJAX::update_order_review` applies those with `isset()` after `woocommerce_checkout_update_order_review`.
+	 * A missing key leaves the customer unchanged, an empty string clears it.
+	 *
+	 * @param  array  $posted_data  Parsed checkout posted data.
+	 */
+	public function maybe_restore_empty_address_fields( $posted_data = array() ) {
+		// Shipping country: prefer parsed `post_data`, then the AJAX `s_country` field
+		$posted_s_country = array_key_exists( 'shipping_country', $posted_data ) ? $posted_data[ 'shipping_country' ] : ( isset( $_POST[ 's_country' ] ) ? wc_clean( wp_unslash( $_POST[ 's_country' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_s_country = is_string( $posted_s_country ) ? $posted_s_country : '';
+		$stored_s_country = $this->get_stored_address_field_value( 'shipping_country' );
+
+		// Maybe restore shipping country wiped by a refresh or raced update
+		if ( '' === $posted_s_country && '' !== $stored_s_country ) {
+			$posted_data[ 'shipping_country' ] = $stored_s_country;
+			$_POST[ 's_country' ] = $stored_s_country;
+			$posted_s_country = $stored_s_country;
+		}
+
+		// Shipping state: prefer parsed `post_data`, then the AJAX `s_state` field
+		$posted_s_state = array_key_exists( 'shipping_state', $posted_data ) ? $posted_data[ 'shipping_state' ] : ( isset( $_POST[ 's_state' ] ) ? wc_clean( wp_unslash( $_POST[ 's_state' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_s_state = is_string( $posted_s_state ) ? $posted_s_state : '';
+		$stored_s_state = $this->get_stored_address_field_value( 'shipping_state' );
+
+		// Maybe restore shipping state when the country did not change.
+		// A country change sends an empty state on purpose and must not reuse the previous country's code.
+		if ( '' === $posted_s_state && '' !== $stored_s_state && $posted_s_country === $stored_s_country ) {
+			$posted_data[ 'shipping_state' ] = $stored_s_state;
+			$_POST[ 's_state' ] = $stored_s_state;
+		}
+
+		// Billing country: prefer parsed `post_data`, then the AJAX `country` field
+		$posted_b_country = array_key_exists( 'billing_country', $posted_data ) ? $posted_data[ 'billing_country' ] : ( isset( $_POST[ 'country' ] ) ? wc_clean( wp_unslash( $_POST[ 'country' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_b_country = is_string( $posted_b_country ) ? $posted_b_country : '';
+		$stored_b_country = $this->get_stored_address_field_value( 'billing_country' );
+
+		// Maybe restore billing country wiped by a refresh or raced update
+		if ( '' === $posted_b_country && '' !== $stored_b_country ) {
+			$posted_data[ 'billing_country' ] = $stored_b_country;
+			$_POST[ 'country' ] = $stored_b_country;
+			$posted_b_country = $stored_b_country;
+		}
+
+		// Billing state: prefer parsed `post_data`, then the AJAX `state` field
+		$posted_b_state = array_key_exists( 'billing_state', $posted_data ) ? $posted_data[ 'billing_state' ] : ( isset( $_POST[ 'state' ] ) ? wc_clean( wp_unslash( $_POST[ 'state' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_b_state = is_string( $posted_b_state ) ? $posted_b_state : '';
+		$stored_b_state = $this->get_stored_address_field_value( 'billing_state' );
+
+		// Maybe restore billing state when the country did not change
+		if ( '' === $posted_b_state && '' !== $stored_b_state && $posted_b_country === $stored_b_country ) {
+			$posted_data[ 'billing_state' ] = $stored_b_state;
+			$_POST[ 'state' ] = $stored_b_state;
+		}
+
+		return $posted_data;
+	}
+
+	/**
 	 * Prevent empty country/state from a refresh or same-country update from wiping values already
 	 * saved on the customer before WooCommerce applies `$_POST` address fields.
 	 *
@@ -7298,33 +7363,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if WC customer not available
 		if ( ! function_exists( 'WC' ) || ! isset( WC()->customer ) ) { return; }
 
-		// Empty country on refresh/race: do not wipe a country already saved on the customer.
-		$posted_s_country = isset( $_POST[ 's_country' ] ) ? wc_clean( wp_unslash( $_POST[ 's_country' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$posted_s_state = isset( $_POST[ 's_state' ] ) ? wc_clean( wp_unslash( $_POST[ 's_state' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$customer_s_country = $this->get_stored_address_field_value( 'shipping_country' );
-		$customer_s_state = $this->get_stored_address_field_value( 'shipping_state' );
-		if ( '' === $posted_s_country && '' !== $customer_s_country ) {
-			$_POST[ 's_country' ] = $customer_s_country;
-			$posted_s_country = $customer_s_country;
-		}
-
-		// Same-country empty state: do not wipe a state already saved for this country.
-		// Country changes send an empty state on purpose; that case has a different posted country.
-		if ( '' === $posted_s_state && '' !== $customer_s_state && $posted_s_country === $customer_s_country ) {
-			$_POST[ 's_state' ] = $customer_s_state;
-		}
-
-		$posted_country = isset( $_POST[ 'country' ] ) ? wc_clean( wp_unslash( $_POST[ 'country' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$posted_state = isset( $_POST[ 'state' ] ) ? wc_clean( wp_unslash( $_POST[ 'state' ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$customer_b_country = $this->get_stored_address_field_value( 'billing_country' );
-		$customer_b_state = $this->get_stored_address_field_value( 'billing_state' );
-		if ( '' === $posted_country && '' !== $customer_b_country ) {
-			$_POST[ 'country' ] = $customer_b_country;
-			$posted_country = $customer_b_country;
-		}
-		if ( '' === $posted_state && '' !== $customer_b_state && $posted_country === $customer_b_country ) {
-			$_POST[ 'state' ] = $customer_b_state;
-		}
+		$this->maybe_restore_empty_address_fields();
 	}
 
 	/**
@@ -7352,27 +7391,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$posted_data[ 'billing_state' ] = wc_clean( wp_unslash( $_POST[ 'state' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 
-		// Same-country empty state in parsed data: keep the previously saved state on the customer.
-		// Also runs after WC core may have already applied an empty `s_state` from the AJAX request.
-		$customer_s_country = WC()->customer->get_shipping_country();
-		$customer_s_state = WC()->customer->get_shipping_state();
-		$posted_s_country = array_key_exists( 'shipping_country', $posted_data ) ? $posted_data[ 'shipping_country' ] : $customer_s_country;
-		if ( array_key_exists( 'shipping_state', $posted_data ) && '' === $posted_data[ 'shipping_state' ] && '' !== $customer_s_state && $posted_s_country === $customer_s_country ) {
-			$posted_data[ 'shipping_state' ] = $customer_s_state;
-		}
-
-		$customer_b_country = WC()->customer->get_billing_country();
-		$customer_b_state = WC()->customer->get_billing_state();
-		$posted_b_country = array_key_exists( 'billing_country', $posted_data ) ? $posted_data[ 'billing_country' ] : $customer_b_country;
-		if ( array_key_exists( 'billing_state', $posted_data ) && '' === $posted_data[ 'billing_state' ] && '' !== $customer_b_state && $posted_b_country === $customer_b_country ) {
-			$posted_data[ 'billing_state' ] = $customer_b_state;
-		}
-
 		// Get customer object and supported field keys
 		$customer_supported_field_keys = $this->get_supported_customer_property_field_keys();
-
-		// Country/state fields that must not be wiped by an empty AJAX value after a page refresh
-		$preserve_non_empty_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
 
 		// Use the `WC_Customer` object for supported properties
 		foreach ( $customer_supported_field_keys as $field_key ) {
@@ -7381,16 +7401,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get the setter method name for the customer property
 			$setter = "set_$field_key";
-			$getter = "get_$field_key";
 
 			// Check if the setter method is supported
 			if ( is_callable( array( WC()->customer, $setter ) ) ) {
 				// Set property value to the customer object
 				if ( array_key_exists( $field_key, $posted_data ) ) {
-					// Do not replace an existing country/state with an empty string from a raced/refresh update
-					if ( '' === $posted_data[ $field_key ] && in_array( $field_key, $preserve_non_empty_field_keys, true ) && is_callable( array( WC()->customer, $getter ) ) && '' !== WC()->customer->{$getter}() ) {
-						continue;
-					}
 					WC()->customer->{$setter}( $posted_data[ $field_key ] );
 				}
 			}
@@ -7403,19 +7418,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$session_field_keys = $this->get_customer_session_field_keys( $posted_data );
 
 		// Save customer data to the session
-		// Empty country/state strings in session hide the customer value after refresh
-		$preserve_non_empty_session_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
 		foreach ( $session_field_keys as $field_key ) {
 			// Set property value to the customer object
 			if ( array_key_exists( $field_key, $posted_data ) ) {
-				// Do not persist empty country/state strings in session; let get_value fall back to the customer object
-				if ( '' === $posted_data[ $field_key ] && in_array( $field_key, $preserve_non_empty_session_field_keys, true ) ) {
-					WC()->session->__unset( self::SESSION_PREFIX . $field_key );
-				}
 				// Set session value
-				else {
-					$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
-				}
+				$this->set_checkout_field_value_to_session( $field_key, $posted_data[ $field_key ] );
 			}
 			else {
 				// Set session value as empty
@@ -7526,9 +7533,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
+		$preserve_address_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
 			$field_posted_data_value = $posted_data[ $input ];
-			return $field_posted_data_value;
+
+			// Empty posted country/state should not hide the stored value during a refresh/race
+			if ( '' !== $field_posted_data_value || ! in_array( $input, $preserve_address_field_keys, true ) ) {
+				return $field_posted_data_value;
+			}
 		}
 
 		// Maybe return field value from session
