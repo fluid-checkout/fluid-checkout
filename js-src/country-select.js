@@ -140,12 +140,10 @@ jQuery( function( $ ) {
 			'.woocommerce-address-fields,' +
 			'.woocommerce-shipping-calculator';
 
-	// CHANGE: Track the previous country per field (keyed by field name/id, not the DOM element itself,
-	// since enhanced-select libraries may recreate the underlying <select> node on interaction).
+	// CHANGE: Track the previous country per field (keyed by field name/id, not the DOM element itself, since enhanced-select libraries may recreate the underlying <select> node on interaction).
 	var previousCountryByField = {};
 
-	// CHANGE: Seed the map from fields already in the DOM so the first real `change` can detect a
-	// prior country even when `wc_address_i18n_ready` / `refresh` did not run first.
+	// CHANGE: Seed the map from fields already in the DOM so the first real `change` can detect a prior country even when `wc_address_i18n_ready` / `refresh` did not run first.
 	$( 'select.country_to_state, input.country_to_state' ).each( function() {
 		var countryFieldKey = $( this ).attr( 'id' ) || $( this ).attr( 'name' );
 		if ( countryFieldKey ) {
@@ -173,17 +171,13 @@ jQuery( function( $ ) {
 			input_name     = $statebox.attr( 'name' ),
 			input_id       = $statebox.attr('id'),
 			input_classes  = $statebox.attr('data-input-classes'),
-			// Prefer the live value; if enhanced-select has already cleared it, fall back to the
-			// server-rendered selected option so a page refresh does not drop the saved state.
+			// Prefer the live value; if enhanced-select has already cleared it, fall back to the server-rendered selected option so a page refresh does not drop the saved state.
 			liveValue      = $statebox.val() || '',
 			value          = liveValue || $statebox.find( 'option' ).filter( function() { return this.defaultSelected; } ).val() || '',
 			placeholder    = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
 
-		// CHANGE: Track the previous country to tell a genuine country change apart from a UI refresh.
-		// State codes are only valid within the country they belong to, so a value must not be reused
-		// across a real country change even when it happens to also exist as a (different) state in the
-		// new country's list (eg. "AL" is Alagoas in Brazil and Alabama in the US).
+		// CHANGE: Track the previous country to tell a genuine country change apart from a UI refresh. State codes are only valid within the country they belong to, so a value must not be reused across a real country change even when it happens to also exist as a (different) state in the new country's list (eg. "AL" is Alagoas in Brazil and Alabama in the US).
 		var countryFieldKey = $countryField.attr( 'id' ) || $countryField.attr( 'name' ),
 			previousCountry  = previousCountryByField[ countryFieldKey ],
 			isCountryChanged = ( 'undefined' !== typeof previousCountry ) && ( previousCountry !== country );
@@ -243,8 +237,7 @@ jQuery( function( $ ) {
 					$statebox = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' );
 				}
 
-				// CHANGE: Maybe clear cached TomSelect option renderings before updating DOM to prevent old options merging with new ones.
-				// Use silent `clear( true )` so an intermediate empty value does not fire `change` and get persisted to the session.
+				// CHANGE: Maybe clear cached TomSelect option renderings before updating DOM to prevent old options merging with new ones. Use silent `clear( true )` so an intermediate empty value does not fire `change` and get persisted to the session.
 				if ( usingTomSelect && $statebox.length > 0 && $statebox[ 0 ].tomselect ) {
 					// Clear selected and unselected options
 					$statebox[ 0 ].tomselect.clear( true );
@@ -260,9 +253,7 @@ jQuery( function( $ ) {
 					$statebox.append( $option );
 				} );
 
-				// CHANGE: Only keep the previous value when the country hasn't actually changed (eg. a UI
-				// refresh) and it is a valid state for the current country. On a genuine country change,
-				// always clear it instead of matching an unrelated state that happens to share the same code.
+				// CHANGE: Only keep the previous value when the country hasn't actually changed (eg. a UI refresh) and it is a valid state for the current country. On a genuine country change, always clear it instead of matching an unrelated state that happens to share the same code.
 				var newStateValue = ( ! isCountryChanged && state.hasOwnProperty( value ) ) ? value : '';
 
 				// CHANGE: Set the native select used for form serialization / checkout updates
@@ -275,9 +266,7 @@ jQuery( function( $ ) {
 					$statebox[ 0 ].tomselect.setValue( newStateValue, true );
 				}
 
-				// CHANGE: Trigger `change` after rebuild unless the state stays empty. A non-empty restored
-				// value must still notify checkout so Address Book / session can re-sync on page refresh.
-				// Skipping only the empty-to-empty case avoids persisting an intermediate blank clear.
+				// CHANGE: Trigger `change` after rebuild unless the state stays empty. A non-empty restored value must still notify checkout so Address Book / session can re-sync on page refresh. Skipping only the empty-to-empty case avoids persisting an intermediate blank clear.
 				if ( '' !== newStateValue || '' !== liveValue ) {
 					$statebox.trigger( 'change' );
 				}
