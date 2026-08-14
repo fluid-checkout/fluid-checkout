@@ -148,6 +148,16 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Total savings', 'fluid-checkout' ),
+						'desc'              => __( 'Display a total savings row in the order totals section, showing the combined savings from sale prices on cart items', 'fluid-checkout' ),
+						'id'                => 'fc_pro_enable_cart_display_total_savings',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_display_total_savings' ),
+						'type'              => 'checkbox',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
 						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
 						'desc'              => __( 'Select position where to display the coupon codes section on the cart page. Only applicable when AJAX cart and the integrated coupon codes in the checkout page are enabled.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_cart_section_position_coupon_code',
