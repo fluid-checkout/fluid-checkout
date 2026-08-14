@@ -309,6 +309,16 @@ div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkou
 	font-size: $font-size-extra-small;
 }
 
+div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table .cart-item__price del,
+div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table .product-total del {
+	opacity: 0.7;
+}
+
+div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table .cart-item__price ins,
+div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table .product-total ins {
+	text-decoration: none;
+}
+
 
 
 div.woocommerce .fc-wrapper #{$_order-review-selector} table.woocommerce-checkout-review-order-table .product-quantity {

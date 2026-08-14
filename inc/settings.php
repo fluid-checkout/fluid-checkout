@@ -109,6 +109,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_page'                                       => 'no',
 			'fc_pro_hide_site_header_footer_at_cart'                        => 'no',
 			'fc_pro_enable_cart_sticky_order_summary'                       => 'yes',
+			'fc_pro_enable_cart_display_original_price'                     => 'no',
+			'fc_pro_enable_cart_display_total_savings'                      => 'no',
 			'fc_pro_cart_section_position_shipping'                         => 'inside_order_summary',
 			'fc_pro_cart_section_position_coupon_code'                      => 'inside_cart_items',
 			'fc_pro_cart_section_position_cross_sells'                      => 'after_cart_items',

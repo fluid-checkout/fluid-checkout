@@ -90,6 +90,9 @@ defined( 'ABSPATH' ) || exit;
 			<td><?php wc_cart_totals_subtotal_html(); ?></td>
 		</tr>
 
+		<?php // CHANGE: Add action after the subtotal row ?>
+		<?php do_action( 'fc_pro_checkout_review_order_after_subtotal' ); ?>
+
 		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
 			<tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
 				<th><?php wc_cart_totals_coupon_label( $coupon ); ?></th>

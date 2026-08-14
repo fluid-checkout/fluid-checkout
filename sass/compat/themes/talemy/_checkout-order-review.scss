@@ -17,3 +17,9 @@ body#{ $_body-theme-selector } .fc-wrapper .wc-order-review {
 body#{ $_body-theme-selector } .fc-wrapper .quantity .qty {
 	font-weight: 400;
 }
+
+// Sale price typography.
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .cart-item__price ins,
+body#{ $_body-theme-selector } .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .product-total ins {
+	text-decoration: none; // Needed to remove default underline from sale prices in checkout order summary.
+}

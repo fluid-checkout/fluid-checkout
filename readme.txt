@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Cart settings placeholders for displaying original price and total savings on the cart page.
+
 = 4.2.6 - 2026-07-28 =
 
 * Bump tested up to upcoming WooCommerce 11.0.0 (RC).
