@@ -4419,7 +4419,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package['rates'];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			$chosen_method_label = $method ? $this->get_substep_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
 			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
 			// Handle package name
@@ -4981,14 +4981,49 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_image_markup', '<span class="shipping-method__option-image">%s</span>', $method, $method_image_html ), $method_image_html );
 		}
 
-		// Get shipping method costs settings
-		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
-		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
+		// Get shipping method cost HTML
+		$method_costs = $this->get_shipping_method_cost_html( $method );
 
 		// Maybe add shipping method costs to label
-		if ( $has_cost && ! $hide_cost ) {
-			$method_costs = '';
+		if ( ! empty( $method_costs ) ) {
+			// Add shipping method costs to label
+			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method, $method_costs ), $method_costs );
+		}
 
+		return $label;
+	}
+
+
+
+	/**
+	 * Get the display mode for zero-cost shipping methods.
+	 *
+	 * @return string Display mode: 'hide', 'amount', or 'free'.
+	 */
+	public function get_shipping_methods_zero_cost_display_mode() {
+		$mode = FluidCheckout_Settings::instance()->get_option( 'fc_pro_shipping_methods_zero_cost_display' );
+
+		return apply_filters( 'fc_shipping_methods_zero_cost_display', $mode );
+	}
+
+
+
+	/**
+	 * Get the shipping method cost HTML for both paid and zero-cost methods.
+	 *
+	 * @param WC_Shipping_Rate $method Shipping method rate data.
+	 *
+	 * @return string Cost HTML, or empty string if cost should be hidden.
+	 */
+	public function get_shipping_method_cost_html( $method ) {
+		// Get whether shipping method has costs
+		$has_cost = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
+
+		// Initialize cost HTML variable
+		$method_costs = '';
+
+		// Maybe get shipping method costs including tax
+		if ( $has_cost ) {
 			// Maybe get shipping method costs including tax
 			if ( WC()->cart->display_prices_including_tax() ) {
 				$method_costs = wc_price( $method->cost + $method->get_shipping_tax() );
@@ -5003,16 +5038,53 @@ class FluidCheckout_Steps extends FluidCheckout {
 					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
 				}
 			}
+		}
+		// Otherwise, handle zero-cost display based on setting
+		else {
+			$display_mode = $this->get_shipping_methods_zero_cost_display_mode();
 
-			// Allow developers to change the shipping method costs
-			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
+			// Maybe set cost HTML based on display mode
+			if ( 'amount' === $display_mode ) {
+				$method_costs = wc_price( 0 );
+			}
+			elseif ( 'free' === $display_mode ) {
+				/* translators: Zero-cost shipping label */
+				$method_costs = __( 'Free', 'fluid-checkout' );
+			}
+			// Otherwise, hide cost (default behavior)
+		}
 
-			// Add shipping method costs to label
-			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method, $method_costs ), $method_costs );
+		// Allow developers to change the shipping method costs
+		$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
+
+		return $method_costs;
+	}
+
+
+
+	/**
+	 * Get the shipping method label for substep review text.
+	 *
+	 * @param WC_Shipping_Rate $method Shipping method rate data.
+	 *
+	 * @return string Shipping method label with cost.
+	 */
+	public function get_substep_shipping_method_label( $method ) {
+		// Initialize label variable
+		$label = $method->get_label();
+
+		// Get shipping method cost HTML
+		$method_costs = $this->get_shipping_method_cost_html( $method );
+
+		// Maybe add shipping method costs to label
+		if ( ! empty( $method_costs ) ) {
+			$label .= ': ' . $method_costs;
 		}
 
 		return $label;
 	}
+
+
 
 	/**
 	 * Get the shipping methods .
@@ -6953,9 +7025,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$method_label = $method->get_label();
 			$shipping_total_label = str_replace( $method_label.': ', '', $shipping_total_label );
 		}
-		// Otherwise, show price as zero if shipping method has no cost
+		// Otherwise, show price based on zero-cost display setting
 		else {
-			$shipping_total_label = wc_price( 0 );
+			$shipping_total_label = $this->get_shipping_method_cost_html( $method );
 		}
 
 		// Filter the shipping method label

@@ -589,6 +589,20 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'                 => __( 'Zero-cost shipping methods', 'fluid-checkout' ),
+						'desc'                  => __( 'Choose how to display the cost for shipping methods with zero cost.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                    => 'fc_pro_shipping_methods_zero_cost_display',
+						'type'                  => 'fc_select',
+						'options'               => array(
+							'hide'    => __( 'Hide costs when shipping cost is zero', 'fluid-checkout' ),
+							'amount'  => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Show formatted zero amount', 'fluid-checkout' ), 'disabled' => true ),
+							'free'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Show "Free" text', 'fluid-checkout' ), 'disabled' => true ),
+						),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_shipping_methods_zero_cost_display' ),
+						'autoload'              => false,
+					),
+
+					array(
 						'title'                 => __( 'Local pickup', 'fluid-checkout' ),
 						'desc'                  => __( 'Removes shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
 						'desc_tip'              => __( 'Replaces the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),

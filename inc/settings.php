@@ -26,6 +26,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
+		add_filter( 'pre_option_fc_pro_shipping_methods_zero_cost_display', array( $this, 'set_option_shipping_methods_zero_cost_display' ), 10, 3 );
 
 		// Settings values (at later stage)
 		// Intentionally use `option_` instead of `pre_option_` as we need to check the value of the option that was saved the to database before making any changes to it.
@@ -74,6 +75,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_hide_optional_fields_skip_address_2'                        => 'no',
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_shipping_methods_disable_auto_select'                       => 'no',
+			'fc_pro_shipping_methods_zero_cost_display'                     => 'hide',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
 			'fc_local_pickup_save_shipping_address'                         => 'no',
@@ -294,6 +296,17 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function set_option_billing_address_position_checkout( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_pro_checkout_billing_address_position' );
+	}
+
+	/**
+	 * Force the option value for zero-cost shipping methods display when only Lite plugin is activated.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_shipping_methods_zero_cost_display( $pre_option, $option, $default ) {
+		return $this->get_option_default( 'fc_pro_shipping_methods_zero_cost_display' );
 	}
 
 
