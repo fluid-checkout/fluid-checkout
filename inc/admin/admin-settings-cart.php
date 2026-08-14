@@ -138,6 +138,16 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 					),
 
 					array(
+						'title'             => __( 'Original price', 'fluid-checkout' ),
+						'desc'              => __( 'Display the original (regular) price crossed out next to the sale price for cart items that are on sale', 'fluid-checkout' ),
+						'id'                => 'fc_pro_enable_cart_display_original_price',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_display_original_price' ),
+						'type'              => 'checkbox',
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
 						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
 						'desc'              => __( 'Select position where to display the coupon codes section on the cart page. Only applicable when AJAX cart and the integrated coupon codes in the checkout page are enabled.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_cart_section_position_coupon_code',
