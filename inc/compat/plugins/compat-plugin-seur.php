@@ -167,16 +167,19 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 * @param  object  $order               The order object.
 	 */
 	public function is_shipping_method_local_pickup( $shipping_method_id, $method = null, $order = null ) {
+		// Maybe set as local pickup when the shipping method is the SEUR local pickup method
+		if ( 0 === strpos( (string) $shipping_method_id, 'seurlocal' ) ) { return true; }
+
 		// Get variables
 		$custom_name_seur_2shop = get_option( 'seur_2shop_custom_name_field' );
 		$custom_name_classic_2shop = get_option( 'seur_classic_int_2shop_custom_name_field' );
 
 		// Get default values if custom names are not set
 		if ( empty( $custom_name_seur_2shop ) ) { $custom_name_seur_2shop = 'SEUR 2SHOP'; }
-		if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'SEUR CLASSIC 2SHOP'; }
+		if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'CLASSIC 2SHOP'; }
 
-		// Maybe set as local pickup shipping method
-		if ( is_object( $method ) && ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) {
+		// Maybe set as local pickup when the shipping method label matches a SEUR 2SHOP method
+		if ( is_object( $method ) && isset( $method->label ) && ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) {
 			return true;
 		}
 
