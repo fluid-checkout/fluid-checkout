@@ -148,8 +148,8 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Total savings', 'fluid-checkout' ),
-						'desc'              => __( 'Display a total savings row in the order totals section, showing the combined savings from sale prices on cart items', 'fluid-checkout' ),
+						'title'             => __( 'You saved', 'fluid-checkout' ),
+						'desc'              => __( 'Display a savings row in the order totals section after the subtotal, showing the combined savings from sale prices on cart items. Coupon and other discounts remain listed separately.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_cart_display_total_savings',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_display_total_savings' ),
 						'type'              => 'checkbox',
