@@ -357,6 +357,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Sober (by Uixthemes).
+* Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
+* Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
 
 = 4.2.6 - 2026-07-28 =
