@@ -166,7 +166,8 @@ jQuery( function( $ ) {
 		// CHANGE: Get the country field element
 		var $countryField  = $( this );
 
-		var country     = $( this ).val(),
+		// CHANGE: Get country field value from field element retrieved above
+		var country     = $countryField.val(),
 			// CHANGE: Add selector for address fields without prefix
 			$statebox     = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' ),
 			$parent       = $statebox.closest( '.form-row' ),
