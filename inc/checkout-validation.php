@@ -383,7 +383,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 				break;
 			case 'state':
 				/* Get country this state field is representing */
-				$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
+				$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout()->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
 				$states      = WC()->countries->get_states( $for_country );
 				if ( ! is_null( $for_country ) && is_array( $states ) ) {
 					$search_str = '<select';

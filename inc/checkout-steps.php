@@ -300,8 +300,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! did_action( 'woocommerce_checkout_init' ) ) { return; }
 
 		// Unhook checkout form sections
-		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout(), 'checkout_form_billing' ), 10 );
+		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout(), 'checkout_form_shipping' ), 10 );
 	}
 
 	/**
@@ -611,8 +611,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Re-hook removed WooCommerce functions
-		add_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		add_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		add_action( 'woocommerce_checkout_billing', array( WC()->checkout(), 'checkout_form_billing' ), 10 );
+		add_action( 'woocommerce_checkout_shipping', array( WC()->checkout(), 'checkout_form_shipping' ), 10 );
 		add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
@@ -3579,8 +3579,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$contact_fields = array();
 
 		// Get all checkout fields
-		$field_groups = WC()->checkout->get_checkout_fields();
-		
+		$field_groups = WC()->checkout()->get_checkout_fields();
+
 		// Iterate contact field ids
 		foreach( $this->get_contact_step_display_field_ids() as $field_key ) {
 			foreach ( $field_groups as $group_key => $fields ) {
@@ -3629,7 +3629,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
-		$checkout_fields = WC()->checkout->get_checkout_fields();
+		$checkout_fields = WC()->checkout()->get_checkout_fields();
 
 		// Define list of address fields to skip as the formatted address has already been added
 		$field_keys_skip_list = apply_filters( "fc_substep_text_contact_field_keys_skip_list", array() );
@@ -3638,12 +3638,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach( $contact_field_ids as $field_key ) {
 			// Maybe skip some fields
 			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
-			
+
 			// Iterate checkout fields
 			foreach ( $checkout_fields as $field_group => $field_group_fields ) {
 				if ( array_key_exists( $field_key, $field_group_fields ) ) {
 					// Get field value
-					$field_value = WC()->checkout->get_value( $field_key );
+					$field_value = WC()->checkout()->get_value( $field_key );
 
 					// Add field value and continue to next field
 					$review_text_lines[] = $this->get_field_display_value( $field_value, $field_key, $field_group_fields[ $field_key ] );
@@ -4161,7 +4161,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
 
 			// Set field value to the address data
-			$field_value = WC()->checkout->get_value( $field_key );
+			$field_value = WC()->checkout()->get_value( $field_key );
 			$field_display_value = $this->get_field_display_value( $field_value, $field_key, $fields[ $field_key ] );
 			$address_data[ $address_field_key ] = null !== $field_display_value ? $field_display_value : '';
 		}
@@ -4243,7 +4243,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_same_as_address_notice_displayed = $this->{"is_{$address_type}_same_as_{$address_type_alt}"}() && true === apply_filters( "fc_{$address_type}_same_as_{$address_type_alt}_display_substep_review_text_notice", true );
 
 		// Get address fields
-		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
+		$address_fields = WC()->checkout()->get_checkout_fields( $address_type );
 
 		// Define list of address fields to skip as the formatted address has already been added
 		$field_keys_skip_list = $this->get_substep_text_extra_fields_skip_list( $address_type );
@@ -4286,7 +4286,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					if ( ! in_array( $field_key_2, $name_field_keys ) ) { continue; }
 
 					// Get field display value
-					$field_value = WC()->checkout->get_value( $field_key_2 );
+					$field_value = WC()->checkout()->get_value( $field_key_2 );
 					$field_display_value = $this->get_field_display_value( $field_value, $field_key_2, $field_args_2 );
 
 					// Maybe add field
@@ -4302,7 +4302,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Get field display value
-			$field_value = WC()->checkout->get_value( $field_key );
+			$field_value = WC()->checkout()->get_value( $field_key );
 			$field_display_value = $this->get_field_display_value( $field_value, $field_key, $field_args );
 
 			// Maybe add field
@@ -5376,7 +5376,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
 		// Get shipping value from customer data
-		$shipping_country = WC()->checkout->get_value( 'shipping_country' );
+		$shipping_country = WC()->checkout()->get_value( 'shipping_country' );
 
 		// Shipping country is defined, return bool
 		if ( null !== $shipping_country && ! empty( $shipping_country ) ) {
@@ -5418,7 +5418,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
 		// Get billing value from customer data
-		$billing_country = WC()->checkout->get_value( 'billing_country' );
+		$billing_country = WC()->checkout()->get_value( 'billing_country' );
 
 		// Billing country is defined, return bool
 		if ( null !== $billing_country && ! empty( $billing_country ) ) {
@@ -5474,7 +5474,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 
 		// Get shipping fields
-		$shipping_fields = WC()->checkout->get_checkout_fields( 'shipping' );
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 
 		// Iterate posted data
 		foreach( $billing_copy_shipping_field_keys as $field_key ) {
@@ -5494,8 +5494,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 				// Maybe get field values from checkout fields
 				else {
-					$billing_field_value = WC()->checkout->get_value( $field_key );
-					$shipping_field_value = WC()->checkout->get_value( $shipping_field_key );
+					$billing_field_value = WC()->checkout()->get_value( $field_key );
+					$shipping_field_value = WC()->checkout()->get_value( $shipping_field_key );
 				}
 
 				if ( $billing_field_value !== $shipping_field_value ) {
@@ -5622,7 +5622,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
 
 		// Get billing fields
-		$billing_fields = WC()->checkout->get_checkout_fields( 'billing' );
+		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 
 		// Iterate posted data
 		foreach( $shipping_copy_billing_field_keys as $field_key ) {
@@ -5642,8 +5642,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 				// Maybe get field values from checkout fields
 				else {
-					$shipping_field_value = WC()->checkout->get_value( $field_key );
-					$billing_field_value = WC()->checkout->get_value( $billing_field_key );
+					$shipping_field_value = WC()->checkout()->get_value( $field_key );
+					$billing_field_value = WC()->checkout()->get_value( $billing_field_key );
 				}
 
 				if ( $shipping_field_value !== $billing_field_value ) {
