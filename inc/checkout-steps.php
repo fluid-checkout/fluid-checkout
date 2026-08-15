@@ -527,7 +527,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
-		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
+		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
@@ -653,7 +653,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Iterate fields
 			foreach ( $group_fields as $field_key => $field ) {
-				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
+				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10 );
 			}
 		}
 	}
@@ -2329,7 +2329,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Unregister a substep of the checkout step.
 	 *
-	 * @param   string  $step_id     ID of the checkout step.
 	 * @param   string  $substep_id  ID of the checkout substep.
 	 *
 	 * @return  boolean           `true` if the substep was successfully unregistered, `false` otherwise.
@@ -2421,7 +2420,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check if a checkout substep is registered the `substep_id` for the step.
 	 *
 	 * @param   string  $substep_id   ID of the checkout substep.
-	 * @param   string  $step_id      ID of the checkout step.
 	 *
 	 * @return  boolean               `true` if a checkout step is registered with the `step_id`, `false` otherwise.
 	 */
@@ -2818,7 +2816,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add phone field replacement to formatted addresses.
 	 *
 	 * @param   array  $replacements  Formatted address replacements.
-	 * @param   array  $address       Contains address fields.
+	 * @param   array  $args          The address formatting arguments.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
 		// Maybe set as empty if should not display phone in formatted addresses
@@ -3426,6 +3424,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the substep review text notice for when there is no review text.
+	 * 
+	 * @param   string  $substep_id  Id of the substep.
 	 */
 	public function get_no_substep_review_text_notice( $substep_id ) {
 		return apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ), $substep_id );
@@ -3433,6 +3433,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the substep review text.
+	 * 
+	 * @param   string  $substep_id  Id of the substep.
 	 */
 	public function get_substep_review_text( $substep_id ) {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--' . $substep_id . '">';
@@ -4106,7 +4108,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add custom field replacements to formatted addresses.
 	 *
 	 * @param   array  $replacements  Formatted address replacements.
-	 * @param   array  $address       Contains address fields.
+	 * @param   array  $args          The address formatting arguments.
 	 */
 	public function add_custom_fields_formatted_address_replacements( $replacements, $args ) {
 		// Get custom field keys
@@ -5135,6 +5137,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add billing address fields section as a checkout fragment.
+	 * 
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	function add_checkout_billing_address_fields_fragment( $fragments ) {
 		$html = $this->get_substep_billing_address_fields();
@@ -5590,6 +5594,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Save value of `billing_same_as_shipping` to the current user session.
+	 * 
+	 * @param   bool  $billing_same_as_shipping  Whether the billing address is the same as the shipping address.
 	 */
 	public function set_billing_same_as_shipping_session( $billing_same_as_shipping ) {
 		// Set session value
@@ -5733,6 +5739,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Save value of `shipping_same_as_billing` to the current user session.
+	 * 
+	 * @param   bool  $shipping_same_as_billing  Whether the shipping address is the same as the billing address.
 	 */
 	public function set_shipping_same_as_billing_session( $shipping_same_as_billing ) {
 		// Set session value
@@ -6336,8 +6344,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Remove phone from address data.
-	 *
-	 * @param   array  $html  HTML for the substep text.
+	 * 
+	 * @param   array  $address_data  The address data.
 	 */
 	public function maybe_remove_phone_address_data( $address_data ) {
 		// Define variables
@@ -6453,6 +6461,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Maybe suppress payment method fragment.
+	 * 
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function maybe_suppress_payment_methods_fragment( $fragments ) {
 		// Bail if payment is not required
@@ -6473,6 +6483,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Remove link elements from payment method icons.
+	 * 
+	 * @param   string  $icon  The icon html.
+	 * @param   string  $id    The id of the icon.
 	 */
 	public function change_payment_gateway_icon_html_remove_links( $icon, $id = null ) {
 		// Bail if icon html is empty
@@ -6487,6 +6500,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Fix accessibility attributes for payment method icons.
+	 * 
+	 * @param   string  $icon  The icon html.
+	 * @param   string  $id    The id of the icon.
 	 */
 	public function change_payment_gateway_icon_html_fix_accessibility_attributes( $icon, $id = null ) {
 		// Bail if icon html is empty
@@ -6817,6 +6833,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add wrapper element and custom class for the checkout place order button.
+	 * 
+	 * @param   string  $button_html  The HTML of the button.
 	 */
 	public function add_place_order_button_wrapper_and_attributes( $button_html ) {
 		// Get current checkout step
@@ -6858,7 +6876,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Initialize variables
 		$first    = true;
-		
+
 		// Iterate packages
 		$package_index = 0;
 		foreach ( $packages as $package_key => $package ) {
@@ -7524,7 +7542,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get checkout field value from posted data or from the persisted fields session.
 	 *
-	 * @param   mixed    $value   Value of the field.
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function get_checkout_field_value_from_session_or_posted_data( $input ) {
@@ -7534,6 +7551,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
 		$preserve_address_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
+
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
 			$field_posted_data_value = $posted_data[ $input ];
 
@@ -7647,6 +7665,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Clear session values for all checkout fields.
+	 * 
+	 * @param   object  $__unused_user_object  The user object.
 	 **/
 	public function unset_all_session_customer_persisted_data( $__unused_user_object ) {
 		// Bail if session not available
@@ -7668,7 +7688,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $clear_field_keys as $field_key ) {
 			// Skip clearing some fields
 			if ( in_array( $field_key, $clear_field_keys_skip_list ) ) { continue; }
-			
+
 			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
 		}
 	}
@@ -7768,6 +7788,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add the custom styles for the cart page background color.
 	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles()` instead.
+	 * 
+	 * @param   string  $custom_styles  The custom styles.
 	 */
 	public function add_checkout_page_custom_styles( $custom_styles ) {
 		// Add deprecation notice
@@ -7779,6 +7801,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add the custom styles for the cart header background color.
 	 * @deprecated            Use CSS variable `--fluidcheckout--header--background-color` instead.
+	 * 
+	 * @param   string  $custom_styles  The custom styles.
 	 */
 	public function add_checkout_header_custom_styles( $custom_styles ) {
 		// Add deprecation notice
@@ -7790,6 +7814,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add the custom styles for the cart footer background color.
 	 * @deprecated            Use CSS variable `--fluidcheckout--footer--background-color` instead.
+	 * 
+	 * @param   string  $custom_styles  The custom styles.
 	 */
 	public function add_checkout_footer_custom_styles( $custom_styles ) {
 		// Add deprecation notice
