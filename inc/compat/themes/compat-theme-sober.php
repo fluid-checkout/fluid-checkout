@@ -94,9 +94,9 @@ class FluidCheckout_ThemeCompat_Sober extends FluidCheckout {
 
 		// Remove hooks from theme
 		remove_action( 'woocommerce_checkout_before_customer_details', array( $class_object, 'billing_title' ), 10 );
-		remove_filter( 'woocommerce_loop_add_to_cart_link', array( $class_object, 'add_to_cart_catalog_button' ), 10, 3 );
-		remove_filter( 'woocommerce_cart_item_quantity', array( $class_object, 'cart_item_quantity' ), 10, 3 );
-		remove_filter( 'woocommerce_form_field_args', array( $class_object, 'form_field_args' ), 10, 2 );
+		remove_filter( 'woocommerce_loop_add_to_cart_link', array( $class_object, 'add_to_cart_catalog_button' ), 10 );
+		remove_filter( 'woocommerce_cart_item_quantity', array( $class_object, 'cart_item_quantity' ), 10 );
+		remove_filter( 'woocommerce_form_field_args', array( $class_object, 'form_field_args' ), 10 );
 	}
 
 
