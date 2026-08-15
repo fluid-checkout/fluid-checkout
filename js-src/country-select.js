@@ -163,18 +163,20 @@ jQuery( function( $ ) {
 			$wrapper = $( this ).closest('.form-row').parent();
 		}
 
-		var $countryField  = $( this ),
-			country        = $countryField.val(),
+		// CHANGE: Get the country field element
+		var $countryField  = $( this );
+
+		var country     = $( this ).val(),
 			// CHANGE: Add selector for address fields without prefix
-			$statebox      = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' ),
-			$parent        = $statebox.closest( '.form-row' ),
-			input_name     = $statebox.attr( 'name' ),
-			input_id       = $statebox.attr('id'),
-			input_classes  = $statebox.attr('data-input-classes'),
-			// Prefer the live value; if enhanced-select has already cleared it, fall back to the server-rendered selected option so a page refresh does not drop the saved state.
-			liveValue      = $statebox.val() || '',
-			value          = liveValue || $statebox.find( 'option' ).filter( function() { return this.defaultSelected; } ).val() || '',
-			placeholder    = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
+			$statebox     = $wrapper.find( '#state, #billing_state, #shipping_state, #calc_shipping_state' ),
+			$parent       = $statebox.closest( '.form-row' ),
+			input_name    = $statebox.attr( 'name' ),
+			input_id      = $statebox.attr('id'),
+			input_classes = $statebox.attr('data-input-classes'),
+			// CHANGE: Prefer the live value; if enhanced-select has already cleared it, fall back to the server-rendered selected option so a page refresh does not drop the saved state.
+			liveValue     = $statebox.val() || '',
+			value         = liveValue || $statebox.find( 'option' ).filter( function() { return this.defaultSelected; } ).val() || '',
+			placeholder   = $statebox.attr( 'placeholder' ) || $statebox.attr( 'data-placeholder' ) || '',
 			$newstate;
 
 		// CHANGE: Track the previous country to tell a genuine country change apart from a UI refresh. State codes are only valid within the country they belong to, so a value must not be reused across a real country change even when it happens to also exist as a (different) state in the new country's list (eg. "AL" is Alagoas in Brazil and Alabama in the US).
