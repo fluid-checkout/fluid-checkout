@@ -4421,7 +4421,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$package_review_text_lines = array();
 
 			// Get shipping method info
-			$available_methods = $package['rates'];
+			$available_methods = apply_filters( 'fc_available_shipping_methods', $package['rates'], $package );
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
