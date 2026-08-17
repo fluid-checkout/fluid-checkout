@@ -56,10 +56,10 @@ jQuery( function ( $ ) {
 	 * @return {Object} API object with validate and submit methods
 	 */
 	function createCheckoutPlaceOrderApi() {
-		// CHANGE: Bail if `wc` global object is not available
-		if ( ! window.wc ) { return; }
+		// CHANGE: Bail if custom place order button API is not available
+		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
-		var $form = wc.customPlaceOrderButton.__getForm();
+		var $form = window.wc.customPlaceOrderButton.__getForm();
 
 		return {
 			/**
@@ -153,18 +153,18 @@ jQuery( function ( $ ) {
 	// After the update, init_payment_methods() will trigger payment method selection,
 	// which will call render() again for the active gateway.
 	$( document.body ).on( 'update_checkout', function () {
-		// CHANGE: Bail if `wc` global object is not available
-		if ( ! window.wc ) { return; }
+		// CHANGE: Bail if custom place order button API is not available
+		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
-		wc.customPlaceOrderButton.__cleanup();
+		window.wc.customPlaceOrderButton.__cleanup();
 	} );
 
 	// When a gateway registers after a page load, render its button if it's selected.
 	$( document.body ).on( 'wc_custom_place_order_button_registered', function ( e, gatewayId ) {
-		// CHANGE: Bail if `wc` global object is not available
-		if ( ! window.wc ) { return; }
+		// CHANGE: Bail if custom place order button API is not available
+		if ( ! window.wc || ! window.wc.customPlaceOrderButton ) { return; }
 
-		wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
+		window.wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
 	} );
 
 	var wc_checkout_form = {
@@ -211,9 +211,9 @@ jQuery( function ( $ ) {
 				// Initialize the custom place order button for the "order-pay" page
 				var $orderPayMethod = this.$order_review.find( 'input[name="payment_method"]:checked' );
 				if ( $orderPayMethod.length ) {
-					// CHANGE: Check if `wc` global object is available before using it
-					if ( window.wc ) {
-						wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $orderPayMethod.val() );
+					// CHANGE: Check if custom place order button API is available before using it
+					if ( window.wc && window.wc.customPlaceOrderButton ) {
+						window.wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $orderPayMethod.val() );
 					}
 
 					$orderPayMethod.trigger( 'click' );
@@ -580,9 +580,9 @@ jQuery( function ( $ ) {
 			// Check if initially selected gateway has custom place order button (via server-side flag)
 			// This hides the default button immediately to prevent flash while the gateway JS loads
 			var $selectedMethod = $payment_methods.filter( ':checked' ).eq( 0 );
-			// CHANGE: Check if `wc` global object is available before using it
-			if ( window.wc && $selectedMethod.length ) {
-				wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $selectedMethod.val() );
+			// CHANGE: Check if custom place order button API is available before using it
+			if ( window.wc && window.wc.customPlaceOrderButton && $selectedMethod.length ) {
+				window.wc.customPlaceOrderButton.__maybeHideDefaultButtonOnInit( $selectedMethod.val() );
 			}
 
 			// Trigger click event for selected method
@@ -638,12 +638,12 @@ jQuery( function ( $ ) {
 			document.body.classList.add( 'has-payment-method-selected--' + selectedPaymentMethod );
 
 			// Handle custom place order button
-			// CHANGE: Check if `wc` global object is available before using it
-			if ( window.wc ) {
+			// CHANGE: Check if custom place order button API is available before using it
+			if ( window.wc && window.wc.customPlaceOrderButton ) {
 				var gatewayId = $( this ).val();
-				wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
+				window.wc.customPlaceOrderButton.__maybeShow( gatewayId, createCheckoutPlaceOrderApi() );
 			}
-			// CHANGE: END - Check if `wc` global object is available before using it
+			// CHANGE: END - Check if custom place order button API is available before using it
 
 			wc_checkout_form.selectedPaymentMethod = selectedPaymentMethod;
 		},
@@ -878,7 +878,8 @@ jQuery( function ( $ ) {
 		maybe_update_checkout: function () {
 			var update_totals = true;
 
-			if ( $( wc_checkout_form.dirtyInput ).length ) {
+			// CHANGE: Skip this incomplete-fields gate for selects (eg. State) — unlike text fields they never fire `change` mid-typing, so gating them the same way can drop their only chance to sync to the session, leaving a stale empty value that a page refresh then reads back.
+			if ( $( wc_checkout_form.dirtyInput ).length && ! $( wc_checkout_form.dirtyInput ).is( 'select' ) ) {
 				var $required_inputs = $( wc_checkout_form.dirtyInput )
 					.closest( 'div' )
 					.find( '.address-field.validate-required' );
@@ -1175,7 +1176,22 @@ jQuery( function ( $ ) {
 								var field = allPhoneFields[i];
 								var phoneField = intlTelInputObject.getInstance( field );
 								if ( phoneField ) {
-									var preservedValue = phoneField.getNumber();
+									var preservedValue = '';
+
+									// Prefer E.164 via getNumber when utils are loaded,
+									// otherwise fall back to dial code + national number
+									if ( field.value && field.value.trim() ) {
+										if ( window.intlTelInput.utils ) {
+											preservedValue = phoneField.getNumber();
+										} else {
+											var selectedCountry = typeof phoneField.getSelectedCountry === 'function'
+												? phoneField.getSelectedCountry()
+												: ( typeof phoneField.getSelectedCountryData === 'function' ? phoneField.getSelectedCountryData() : null );
+											var selectedCountryCode = selectedCountry && selectedCountry.dialCode && 0 !== field.value.indexOf( '+' ) ? '+' + selectedCountry.dialCode : '';
+											preservedValue = selectedCountryCode + field.value;
+										}
+									}
+
 									phoneField.destroy();
 									field.value = preservedValue;
 								}

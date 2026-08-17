@@ -535,7 +535,7 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// Treat `state` fields differently
 		if ( 'state' === $args[ 'type' ] ) {
 			/* Get country this state field is representing */
-			$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
+			$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout()->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
 			$states      = WC()->countries->get_states( $for_country );
 
 			// Text field
