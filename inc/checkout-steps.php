@@ -5005,6 +5005,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_shipping_methods_zero_cost_display_mode() {
 		$mode = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_zero_cost_display' );
 
+		/**
+		 * Filter the zero-cost shipping display mode.
+		 */
 		return apply_filters( 'fc_shipping_methods_zero_cost_display', $mode );
 	}
 
@@ -5046,6 +5049,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return array Order totals rows.
 	 */
 	public function maybe_change_order_item_totals_shipping_row( $total_rows, $order, $tax_display ) {
+		// Bail if not on a Fluid Checkout page or fragment
+		$is_order_pay_page = class_exists( 'FluidCheckout_PRO_OrderPayPage' ) && FluidCheckout_PRO_OrderPayPage::instance()->is_order_pay_page_or_fragment();
+		if ( ! $this->is_cart_page_or_fragment() && ! $this->is_checkout_page_or_fragment() && ! $is_order_pay_page ) { return $total_rows; }
+
 		// Bail if shipping row is not present
 		if ( ! array_key_exists( 'shipping', $total_rows ) ) { return $total_rows; }
 
@@ -5054,9 +5061,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get zero-cost shipping cost HTML
 		$shipping_value = $this->get_zero_cost_shipping_cost_html( $order->get_currency() );
-
-		// Filter the shipping row value
-		$shipping_value = apply_filters( 'fc_order_item_totals_shipping_value_html', $shipping_value, $order, $tax_display );
 
 		// Maybe remove shipping row when zero-cost display is set to hide
 		if ( '' === $shipping_value ) {
@@ -7083,7 +7087,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_total_label = wc_cart_totals_shipping_method_label( $method );
 
 		// Get whether shipping method has costs
-		$has_cost  = 0 < $method->cost;
+		$has_cost = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 
 		// Maybe remove the shipping method label, leaving only the cost
 		if ( $has_cost ) {
