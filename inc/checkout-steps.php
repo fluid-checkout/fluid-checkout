@@ -6946,6 +6946,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
+			$package_name = apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_index, $package );
+
+			// Get formatted shipping price
+			$formatted_shipping_price = $method ? $this->get_cart_totals_shipping_method_label( $method, $package_index, $package, $package_name ) : '';
+
+			// Maybe skip shipping row when zero-cost display is set to hide
+			if ( $method && '' === $formatted_shipping_price ) {
+				$first = false;
+				$package_index++;
+				continue;
+			}
+
 			wc_get_template(
 				'checkout/review-order-shipping.php',
 				array(
@@ -6954,8 +6966,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'show_package_details'     => count( $packages ) > 1,
 					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_index, $package ),
 					'package_details'          => implode( ', ', $product_names ),
-					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_index, $package ),
-					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $package_index ),
+					'package_name'             => $package_name,
+					'formatted_shipping_price' => $formatted_shipping_price,
 					'index'                    => $package_index,
 					'chosen_method'            => $chosen_method,
 					'method'                   => $method,
