@@ -356,7 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Setting to control how zero-cost shipping methods display their price at checkout.
+* Added: Setting to control how zero-cost shipping costs are displayed across Fluid Checkout on the cart, checkout, and order pay pages.
+* Added: New filter `fc_shipping_methods_zero_cost_display` to allow changing the zero-cost shipping display mode.
 
 = 4.2.6 - 2026-07-28 =
 

@@ -4996,7 +4996,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the display mode for zero-cost shipping methods.
+	 * Get the display mode for zero-cost shipping costs across Fluid Checkout.
 	 *
 	 * @return string Display mode: 'hide', 'amount', or 'free'.
 	 */
@@ -5009,7 +5009,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Get the shipping method cost HTML for both paid and zero-cost methods.
+	 * Get the shipping cost HTML for Fluid Checkout areas that display shipping method costs.
 	 *
 	 * @param WC_Shipping_Rate $method Shipping method rate data.
 	 *
