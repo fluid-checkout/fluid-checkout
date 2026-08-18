@@ -357,6 +357,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Compatibility with theme Sober (by Uixthemes).
+* Added: Compatibility with plugin: CartFlows (by CartFlows Inc).
+* Improved: Exclude development files from installable zip packages for this plugin.
 * Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
 * Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
@@ -370,13 +372,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Bump tested up to WordPress 7.0.2 and WooCommerce 10.9.4
 * Added: Compatibility with theme Talemy by ThemeSpirit.
-* Added: Compatibility with plugin: CartFlows (by CartFlows Inc).
 * Added: Conditional visibility for checkout steps based on available substeps.
 * Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
 * Improved: Address locale attribute overrides on My Account edit address pages.
 * Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
-* Improved: Sync all forked 3rd-party files with upstream sources.* Added: Compatibility with plugin: CartFlows (by CartFlows Inc).
-* Improved: Exclude development files from installable zip packages for this plugin.
+* Improved: Sync all forked 3rd-party files with upstream sources.
 * Improved: Refactor compatibility with plugin Cart Abandonment Recovery Pro.
 * Fixed: Compatibility with theme Twenty Twenty-Five.
 * Fixed: Compatibility with theme Avada and Avada Builder plugin. Fix Tom Select dropdown styles on checkout and address book edit address pages.
