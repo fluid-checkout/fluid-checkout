@@ -1272,6 +1272,37 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Returns whether zero-cost shipping should apply to order totals tables.
+	 */
+	public function is_zero_cost_shipping_order_totals_context() {
+		// Cart, checkout, or order pay pages and fragments
+		$is_order_pay_page = class_exists( 'FluidCheckout_PRO_OrderPayPage' ) && FluidCheckout_PRO_OrderPayPage::instance()->is_order_pay_page_or_fragment();
+
+		if ( $this->is_cart_page_or_fragment() || $this->is_checkout_page_or_fragment() || $is_order_pay_page ) {
+			return true;
+		}
+
+		// Order received (thank you) page
+		if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) {
+			return true;
+		}
+
+		// View order page (my account)
+		if ( function_exists( 'is_view_order_page' ) && is_view_order_page() ) {
+			return true;
+		}
+
+		// WooCommerce order emails
+		if ( did_action( 'woocommerce_email' ) ) {
+			return true;
+		}
+
+		return apply_filters( 'fc_is_zero_cost_shipping_order_totals_context', false );
+	}
+
+
+
+	/**
 	 * Returns whether the create account checkbox is checked or registration is required.
 	 */
 	public function is_create_account_checked() {
@@ -5049,9 +5080,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return array Order totals rows.
 	 */
 	public function maybe_change_order_item_totals_shipping_row( $total_rows, $order, $tax_display ) {
-		// Bail if not on a Fluid Checkout page or fragment
-		$is_order_pay_page = class_exists( 'FluidCheckout_PRO_OrderPayPage' ) && FluidCheckout_PRO_OrderPayPage::instance()->is_order_pay_page_or_fragment();
-		if ( ! $this->is_cart_page_or_fragment() && ! $this->is_checkout_page_or_fragment() && ! $is_order_pay_page ) { return $total_rows; }
+		// Bail if not on a supported Fluid Checkout order totals context
+		if ( ! $this->is_zero_cost_shipping_order_totals_context() ) { return $total_rows; }
 
 		// Bail if shipping row is not present
 		if ( ! array_key_exists( 'shipping', $total_rows ) ) { return $total_rows; }
