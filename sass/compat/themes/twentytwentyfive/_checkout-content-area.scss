@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT CONTENT AREA
+// ------------------------------------
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } main .woocommerce {
+	max-width: unset;
+}
+
+body#{ $_body-theme-selector }#{ $_body-page-selector } .has-global-padding {
+	padding-#{$alignment-left}: remsize( 1rem );
+	padding-#{$alignment-right}: remsize( 1rem );
+}

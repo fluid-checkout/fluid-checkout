@@ -1,0 +1,32 @@
+// ------------------------------------
+// CHECKOUT VALIDATION MESSAGES
+// ------------------------------------
+
+// Remove notice icons from Talemy.
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-error::before,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-error::after,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-info::before,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-info::after,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-message::before,
+body#{ $_body-theme-selector } div.woocommerce .woocommerce-message::after {
+	content: none;
+	display: none;
+}
+
+// Reset notice list container padding.
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages ul.woocommerce-error,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages ul.woocommerce-info,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages ul.woocommerce-message {
+	padding: $global-spacing-tiny !important; // Needed to override Talemy notice list container reset.
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-error li,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-info li,
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-messages .woocommerce-message li {
+	padding-#{ $alignment-left }: $global-spacing-small !important; // Needed to override Talemy notice list reset.
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-coupon-code-message-dismiss {
+	padding-#{ $alignment-right }: $global-spacing-extra-small;
+	text-decoration: underline;
+}
