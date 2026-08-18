@@ -138,6 +138,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
+		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_change_order_item_totals_shipping_row' ), 20, 3 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
@@ -527,6 +528,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
 		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
+		remove_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_change_order_item_totals_shipping_row' ), 20, 3 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
@@ -5001,9 +5003,71 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return string Display mode: 'hide', 'amount', or 'free'.
 	 */
 	public function get_shipping_methods_zero_cost_display_mode() {
-		$mode = FluidCheckout_Settings::instance()->get_option( 'fc_pro_shipping_methods_zero_cost_display' );
+		$mode = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_zero_cost_display' );
 
 		return apply_filters( 'fc_shipping_methods_zero_cost_display', $mode );
+	}
+
+
+
+	/**
+	 * Get the zero-cost shipping cost HTML based on the display setting.
+	 *
+	 * @param string|null $currency Optional. Order currency code.
+	 *
+	 * @return string Cost HTML, or empty string if cost should be hidden.
+	 */
+	public function get_zero_cost_shipping_cost_html( $currency = null ) {
+		$display_mode = $this->get_shipping_methods_zero_cost_display_mode();
+
+		// Maybe set cost HTML based on display mode
+		if ( 'amount' === $display_mode ) {
+			$price_args = null !== $currency ? array( 'currency' => $currency ) : array();
+			return wc_price( 0, $price_args );
+		}
+		elseif ( 'free' === $display_mode ) {
+			/* translators: Zero-cost shipping label */
+			return __( 'Free', 'fluid-checkout' );
+		}
+
+		// Otherwise, hide cost (default behavior)
+		return '';
+	}
+
+
+
+	/**
+	 * Maybe change the shipping row on order totals tables for zero-cost shipping.
+	 *
+	 * @param array    $total_rows  Order totals rows.
+	 * @param WC_Order $order       Order object.
+	 * @param string   $tax_display Tax display mode.
+	 *
+	 * @return array Order totals rows.
+	 */
+	public function maybe_change_order_item_totals_shipping_row( $total_rows, $order, $tax_display ) {
+		// Bail if shipping row is not present
+		if ( ! array_key_exists( 'shipping', $total_rows ) ) { return $total_rows; }
+
+		// Bail if order has shipping costs
+		if ( 0 < (float) $order->get_shipping_total() ) { return $total_rows; }
+
+		// Get zero-cost shipping cost HTML
+		$shipping_value = $this->get_zero_cost_shipping_cost_html( $order->get_currency() );
+
+		// Filter the shipping row value
+		$shipping_value = apply_filters( 'fc_order_item_totals_shipping_value_html', $shipping_value, $order, $tax_display );
+
+		// Maybe remove shipping row when zero-cost display is set to hide
+		if ( '' === $shipping_value ) {
+			unset( $total_rows['shipping'] );
+			return $total_rows;
+		}
+
+		// Update shipping row value
+		$total_rows['shipping']['value'] = $shipping_value;
+
+		return $total_rows;
 	}
 
 
@@ -5041,17 +5105,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 		// Otherwise, handle zero-cost display based on setting
 		else {
-			$display_mode = $this->get_shipping_methods_zero_cost_display_mode();
-
-			// Maybe set cost HTML based on display mode
-			if ( 'amount' === $display_mode ) {
-				$method_costs = wc_price( 0 );
-			}
-			elseif ( 'free' === $display_mode ) {
-				/* translators: Zero-cost shipping label */
-				$method_costs = __( 'Free', 'fluid-checkout' );
-			}
-			// Otherwise, hide cost (default behavior)
+			$method_costs = $this->get_zero_cost_shipping_cost_html();
 		}
 
 		// Allow developers to change the shipping method costs

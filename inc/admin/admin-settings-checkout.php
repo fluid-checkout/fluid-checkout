@@ -591,14 +591,14 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					array(
 						'title'                 => __( 'Zero shipping cost', 'fluid-checkout' ),
 						'desc'                  => __( 'How to display shipping when the cost is zero.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                    => 'fc_pro_shipping_methods_zero_cost_display',
+						'id'                    => 'fc_shipping_methods_zero_cost_display',
 						'type'                  => 'fc_select',
 						'options'               => array(
 							'hide'    => __( 'Empty', 'fluid-checkout' ),
 							'amount'  => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( '0.00', 'fluid-checkout' ), 'disabled' => true ),
 							'free'    => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Free', 'fluid-checkout' ), 'disabled' => true ),
 						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_shipping_methods_zero_cost_display' ),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_zero_cost_display' ),
 						'autoload'              => false,
 					),
 
