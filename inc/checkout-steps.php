@@ -1293,12 +1293,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// WooCommerce order emails
-		if ( did_action( 'woocommerce_email' ) ) {
+		if ( doing_action( 'woocommerce_email_order_details' ) ) {
 			return true;
 		}
 
 		// Otherwise, return `false`
 		return false;
+	}
+
+	/**
+	 * Returns whether the shipping total is greater than zero.
+	 *
+	 * When prices are displayed including tax, shipping tax is included in the comparison.
+	 *
+	 * @param  float  $shipping_total                 Shipping total excluding tax.
+	 * @param  float  $shipping_tax                   Shipping tax amount.
+	 * @param  bool   $display_prices_including_tax   Whether prices are displayed including tax.
+	 */
+	public function is_shipping_total_greater_than_zero( $shipping_total, $shipping_tax = 0, $display_prices_including_tax = false ) {
+		$amount = (float) $shipping_total;
+
+		// Maybe add shipping tax to the total
+		if ( $display_prices_including_tax ) {
+			$amount += (float) $shipping_tax;
+		}
+
+		return 0 < $amount;
 	}
 
 
@@ -5085,19 +5105,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! array_key_exists( 'shipping', $total_rows ) ) { return $total_rows; }
 
 		// Bail if order has shipping costs
-		if ( 0 < (float) $order->get_shipping_total() ) { return $total_rows; }
+		if ( $this->is_shipping_total_greater_than_zero( $order->get_shipping_total(), $order->get_shipping_tax(), 'incl' === $tax_display ) ) { return $total_rows; }
 
 		// Get zero-cost shipping cost HTML
 		$shipping_value = $this->get_zero_cost_shipping_cost_html( $order->get_currency() );
 
 		// Maybe omit the shipping totals row when the setting is "Empty"
 		if ( '' === $shipping_value ) {
-			unset( $total_rows['shipping'] );
+			unset( $total_rows[ 'shipping' ] );
 			return $total_rows;
 		}
 
 		// Replace WooCommerce shipping value with "0.00" or "Free"
-		$total_rows['shipping']['value'] = $shipping_value;
+		$total_rows[ 'shipping' ][ 'value' ] = $shipping_value;
 
 		return $total_rows;
 	}
@@ -7102,6 +7122,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  WC_Shipping_Rate  $method         Shipping method rate data.
 	 * @param  int               $package_index  Package index.
 	 * @param  array             $package        Package data.
+	 * @param  string            $package_name   Shipping package name.
 	 *
 	 * @return  string                  Shipping method label with only the cost.
 	 */
