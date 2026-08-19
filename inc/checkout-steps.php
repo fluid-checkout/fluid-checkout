@@ -527,8 +527,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
-		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
-		remove_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_change_order_item_totals_shipping_row' ), 20, 3 );
+		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10 );
+		remove_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_change_order_item_totals_shipping_row' ), 20 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
@@ -1278,6 +1278,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Cart, checkout, or order pay pages and fragments
 		$is_order_pay_page = class_exists( 'FluidCheckout_PRO_OrderPayPage' ) && FluidCheckout_PRO_OrderPayPage::instance()->is_order_pay_page_or_fragment();
 
+		// Cart, checkout, or order pay pages and fragments
 		if ( $this->is_cart_page_or_fragment() || $this->is_checkout_page_or_fragment() || $is_order_pay_page ) {
 			return true;
 		}
@@ -5025,7 +5026,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_cart_shipping_methods_label( $method ) {
 		// Initialize label variable
 		$label = '';
-		
+
 		// Get method label
 		$label .= sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
 
@@ -5051,11 +5052,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the display mode for zero-cost shipping costs across Fluid Checkout.
-	 *
-	 * @return string Display mode: 'hide', 'amount', or 'free'.
 	 */
 	public function get_shipping_methods_zero_cost_display_mode() {
-		return FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_zero_cost_display' );
+		// Define accepted values
+		$accepted_values = array( 'hidden', 'amount', 'free' );
+
+		// Get display mode
+		$display_mode = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_zero_cost_display' );
+
+		// Bail if display mode is not accepted
+		if ( ! in_array( $display_mode, $accepted_values ) ) {
+			$display_mode = FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_zero_cost_display' );
+		}
+
+		// Return display mode
+		return $display_mode;
 	}
 
 
@@ -7052,6 +7063,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
+			// Get shipping package name
 			$package_name = apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_index, $package );
 
 			// Get formatted shipping price
