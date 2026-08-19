@@ -67,6 +67,8 @@
 		"templates/compat/plugins/woo-ups-pickup/cart/pickup-location.php": "templates/pickup-location.php",
 		"templates/compat/plugins/woocommerce-germanized/checkout/dhl/preferred-services.php": "plugins/shiptastic-integration-for-dhl/templates/checkout/dhl/preferred-services.php",
 		"templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php": "templates/cart/cart-recurring-shipping.php",
+		"templates/compat/plugins/woocommerce-subscriptions/checkout/recurring-tax-totals.php": "templates/checkout/recurring-tax-totals.php",
+		"templates/compat/plugins/woocommerce-subscriptions/checkout/recurring-itemized-tax-totals.php": "templates/checkout/recurring-itemized-tax-totals.php",
 		"js-src/compat/plugins/astra-addon/checkout-labels-as-placeholders.js": "assets/js/checkout-labels-as-placeholders.js",
 		"js-src/compat/themes/goya/float-labels.js": "assets/js/float-labels.js",
 		"js-src/compat/themes/flatsome/float-labels.js": "inc/extensions/flatsome-wc-cart/inc/float-labels.js",

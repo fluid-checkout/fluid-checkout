@@ -139,6 +139,14 @@
 		{
 			"our_path": "templates/compat/plugins/woocommerce-subscriptions/cart/cart-recurring-shipping.php",
 			"their_path": "plugins/woocommerce-subscriptions/templates/cart/cart-recurring-shipping.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woocommerce-subscriptions/checkout/recurring-itemized-tax-totals.php",
+			"their_path": "plugins/woocommerce-subscriptions/templates/checkout/recurring-itemized-tax-totals.php"
+		},
+		{
+			"our_path": "templates/compat/plugins/woocommerce-subscriptions/checkout/recurring-tax-totals.php",
+			"their_path": "plugins/woocommerce-subscriptions/templates/checkout/recurring-tax-totals.php"
 		}
 	],
 	"woocommerce-template": [
