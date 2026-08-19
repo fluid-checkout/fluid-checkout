@@ -535,8 +535,8 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get entered phone number
-		$country_code = WC()->checkout->get_value( $country_code_field_key );
-		$phone_number = WC()->checkout->get_value( $phone_number_field_key );
+		$country_code = WC()->checkout()->get_value( $country_code_field_key );
+		$phone_number = WC()->checkout()->get_value( $phone_number_field_key );
 
 		// Add phone number with country code to the review text
 		$review_text_lines[] = $country_code . $phone_number;

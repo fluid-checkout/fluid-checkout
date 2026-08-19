@@ -878,7 +878,8 @@ jQuery( function ( $ ) {
 		maybe_update_checkout: function () {
 			var update_totals = true;
 
-			if ( $( wc_checkout_form.dirtyInput ).length ) {
+			// CHANGE: Skip this incomplete-fields gate for selects (eg. State) — unlike text fields they never fire `change` mid-typing, so gating them the same way can drop their only chance to sync to the session, leaving a stale empty value that a page refresh then reads back.
+			if ( $( wc_checkout_form.dirtyInput ).length && ! $( wc_checkout_form.dirtyInput ).is( 'select' ) ) {
 				var $required_inputs = $( wc_checkout_form.dirtyInput )
 					.closest( 'div' )
 					.find( '.address-field.validate-required' );
@@ -1175,7 +1176,22 @@ jQuery( function ( $ ) {
 								var field = allPhoneFields[i];
 								var phoneField = intlTelInputObject.getInstance( field );
 								if ( phoneField ) {
-									var preservedValue = phoneField.getNumber();
+									var preservedValue = '';
+
+									// Prefer E.164 via getNumber when utils are loaded,
+									// otherwise fall back to dial code + national number
+									if ( field.value && field.value.trim() ) {
+										if ( window.intlTelInput.utils ) {
+											preservedValue = phoneField.getNumber();
+										} else {
+											var selectedCountry = typeof phoneField.getSelectedCountry === 'function'
+												? phoneField.getSelectedCountry()
+												: ( typeof phoneField.getSelectedCountryData === 'function' ? phoneField.getSelectedCountryData() : null );
+											var selectedCountryCode = selectedCountry && selectedCountry.dialCode && 0 !== field.value.indexOf( '+' ) ? '+' + selectedCountry.dialCode : '';
+											preservedValue = selectedCountryCode + field.value;
+										}
+									}
+
 									phoneField.destroy();
 									field.value = preservedValue;
 								}

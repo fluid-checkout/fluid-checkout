@@ -1,0 +1,18 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
+	border-top: none;
+	border-#{ $alignment-left }: none;
+	border-#{ $alignment-right }: none;
+}
+
+body#{ $_body-theme-selector } .ts-control:focus-within {
+	outline: none !important; // Needed to override theme focus outline
+	border-bottom-color: #23232c;
+}
+
+body#{ $_body-theme-selector } .woocommerce .ts-wrapper.single .ts-control > [data-ts-item] {
+	color: inherit;
+}
