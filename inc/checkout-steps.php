@@ -5056,8 +5056,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return wc_price( 0, $price_args );
 		}
 		elseif ( 'free' === $display_mode ) {
-			/* translators: Zero-cost shipping label */
-			return __( 'Free', 'fluid-checkout' );
+			return esc_html__( 'Free', 'fluid-checkout' );
 		}
 
 		// Otherwise, hide cost (default behavior)
