@@ -357,7 +357,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Setting to control how zero-cost shipping costs are displayed on the cart, checkout, order pay, thank you, and view order pages, and in order emails.
-* Added: New filter `fc_shipping_methods_zero_cost_display` to allow changing the zero-cost shipping display mode.
 
 = 4.2.6 - 2026-07-28 =
 

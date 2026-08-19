@@ -5035,12 +5035,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return string Display mode: 'hide', 'amount', or 'free'.
 	 */
 	public function get_shipping_methods_zero_cost_display_mode() {
-		$mode = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_zero_cost_display' );
-
-		/**
-		 * Filter the zero-cost shipping display mode.
-		 */
-		return apply_filters( 'fc_shipping_methods_zero_cost_display', $mode );
+		return FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_zero_cost_display' );
 	}
 
 
