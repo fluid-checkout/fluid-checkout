@@ -3,7 +3,7 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Stable tag: 4.2.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Bump tested up to upcoming WordPress 7.1+
 * Added: Compatibility with theme Sober (by Uixthemes).
 * Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
 * Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
