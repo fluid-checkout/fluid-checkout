@@ -1,11 +1,27 @@
 // ------------------------------------
-// TOM SELECT CONTROL
+// TOM SELECT CONTROL - VALIDATION
 // ------------------------------------
 
-.validate-required.woocommerce-validated .ts-control {
-	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--danger-accent-color); // Needed to use `px` as unit to match theme styles
+// Avada uses an inset box-shadow accent on validated and invalid fields.
+// Tom Select fields are not included in Avada's dynamic CSS selectors.
+
+.validate-required.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .ts-control {
+	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--success-accent-color, #{$success-color}) !important; // Needed to match Avada validated field styles
 }
 
-.validate-required.woocommerce-validated .ts-control input {
-	box-shadow: none !important; // Needed to override theme styles
+.validate-required[class*='woocommerce-invalid'] .ts-control {
+	box-shadow: inset 3px 0 0 var(--fluidcheckout--avada-builder--danger-accent-color, #{$error-color}) !important; // Needed to match Avada invalid field styles
+}
+
+// Avada applies the accent inset on all validated `input` elements, which also matches Tom Select's inner input.
+.validate-required.woocommerce-validated:not( [class*='woocommerce-invalid'] ) .ts-control input,
+.validate-required[class*='woocommerce-invalid'] .ts-control input {
+	box-shadow: none !important; // Needed to override Avada validated field styles
+}
+
+// Avada form text color is a CSS variable that may not resolve when chained on `:root`.
+.ts-wrapper.single .ts-control,
+.ts-wrapper.single .ts-control > [data-ts-item],
+.ts-wrapper.single .ts-control > input {
+	color: inherit;
 }

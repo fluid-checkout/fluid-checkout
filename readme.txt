@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.9
-Stable tag: 4.2.0
+Tested up to: 7.1
+Stable tag: 4.2.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -356,7 +356,66 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fix: TomSelect fields not changing value when pressing TAB after pre-selecting options using the keyboard arrow keys.
+* Bump tested up to upcoming WordPress 7.1+
+* Added: Compatibility with theme Sober (by Uixthemes).
+* Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
+* Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
+* Fixed: TomSelect fields not changing value when pressing TAB after pre-selecting options using the keyboard arrow keys.
+* Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
+* Fixed: Fatal error when opening the WordPress block editor with WooCommerce Stripe active, caused by checking shipping needs while the cart is not available.
+
+= 4.2.6 - 2026-07-28 =
+
+* Bump tested up to upcoming WooCommerce 11.0.0 (RC).
+* Fixed: JavaScript error that could stop checkout updates and shipping totals from refreshing.
+
+= 4.2.5 - 2026-07-26 =
+
+* Bump tested up to WordPress 7.0.2 and WooCommerce 10.9.4
+* Added: Compatibility with theme Talemy by ThemeSpirit.
+* Added: Conditional visibility for checkout steps based on available substeps.
+* Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
+* Improved: Address locale attribute overrides on My Account edit address pages.
+* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
+* Improved: Sync all forked 3rd-party files with upstream sources.
+* Improved: Refactor compatibility with plugin Cart Abandonment Recovery Pro.
+* Fixed: Compatibility with theme Twenty Twenty-Five.
+* Fixed: Compatibility with theme Avada and Avada Builder plugin. Fix Tom Select dropdown styles on checkout and address book edit address pages.
+* Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
+* Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
+* Fixed: Missing styles for the WooCommerce show password button at checkout. Also fixed the button getting duplicated after checkout updates.
+
+= 4.2.4 - 2026-06-02 =
+
+* Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.
+* Fixed: Compatibility with plugin Klaviyo. Prevent fatal error at checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when trying to show shipping costs for orders without shipping at cart and checkout.
+
+= 4.2.3 - 2026-05-25 =
+
+* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
+* Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
+* Fixed: Password meter styles on checkout page account creation.
+* Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
+
+= 4.2.2 - 2026-04-21 =
+
+* Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
+* Fixed: Compatibility with theme BeTheme. Check that theme function exists before trying to use it.
+
+= 4.2.1 - 2026-04-07 =
+
+* Bump tested up to WooCommerce 10.6.1
+* Added: Compatibility with plugin WooCommerce FedEx Shipping Pro by Techspawn.
+* Improved: Added global JS flag `window.can_update_payment_methods` to allow preventing updating the payment methods fragment.
+* Fixed: Compatibility with plugin Rvvup for WooCommerce. Prevent update of payment methods section during payment cause payment to fail.
+* Fixed: Compatibility with plugin Germanized for WooCommerce Pro. Fix criteria to determine if compatibility code for this plugin is active or not.
+* Fixed: Compatibility with plugin Klarna Payments for WooCommerce by Klarna. Disable checkout updates during the `beforeunload` event. Remove plugin's script modifications for versions of the Klarna plugin that already support it.
+* Fixed: Compatibility with plugin Kustom Checkout for WooCommerce. Missing undo hooks statements causing shipping methods to not change correctly for Kustom Checkout and preventing it from completing the order. This fix also applies to other similar plugins.
+* Fixed: Login form at checkout not accept certain characters for passwords.
+* Fixed: Trigger checkout fragments update when filling the email field with the MailCheck suggestion.
+* Fixed: Distraction free header and progress bar staying offset when WP admin bar is scrolled out of view on the checkout page.
 
 = 4.2.0 - 2026-03-10 =
 

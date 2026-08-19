@@ -64,7 +64,7 @@ class FluidCheckout_WooCommerceSuperFaktura extends FluidCheckout {
 	 */
 	public function maybe_set_additional_billing_fields_required( $fields ) {
 		// Get value for the checkbox field "Purchasing as a company"
-		$is_company_purchase = WC()->checkout->get_value( 'wi_as_company' );
+		$is_company_purchase = WC()->checkout()->get_value( 'wi_as_company' );
 
 		// Bail if not a company purchase
 		if ( empty( $is_company_purchase ) ) { return $fields; }
@@ -99,7 +99,7 @@ class FluidCheckout_WooCommerceSuperFaktura extends FluidCheckout {
 	 */
 	public function maybe_add_substep_complete_billing_address_field_skip_list( $skip_list ) {
 		// Get value for the checkbox field "Purchasing as a company"
-		$is_company_purchase = WC()->checkout->get_value( 'wi_as_company' );
+		$is_company_purchase = WC()->checkout()->get_value( 'wi_as_company' );
 
 		// Bail if when purchasing as a company
 		if ( ! empty( $is_company_purchase ) ) { return $skip_list; }

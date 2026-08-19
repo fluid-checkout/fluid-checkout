@@ -10,10 +10,10 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 3.5.0
- * @fc-version 3.0.1
+ * @version 9.4.0
+ * @fc-version 4.2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -51,7 +51,7 @@ if ( ! empty( $custom_attributes ) && is_array( $custom_attributes ) ) {
 // CHANGE: END - Prepare wrapper inside element custom attributes
 ?>
 
-<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data" aria-label="<?php echo esc_attr__( 'Checkout', 'woocommerce' ); ?>">
 
 	<?php // CHANGE: Replace checkout fields and order summary output with new page structure and hooks ?>
 	<div id="fc-wrapper" class="fc-wrapper <?php echo esc_attr( apply_filters( 'fc_wrapper_classes', '' ) ); ?>">

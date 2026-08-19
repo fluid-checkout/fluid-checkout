@@ -448,11 +448,11 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function get_current_checkout_shipping_address() {
 		$address = array(
-			'country'   => WC()->checkout->get_value( 'shipping_country' ),
-			'state'     => WC()->checkout->get_value( 'shipping_state' ),
-			'city'      => WC()->checkout->get_value( 'shipping_city' ),
-			'postcode'  => WC()->checkout->get_value( 'shipping_postcode' ),
-			'address_1' => WC()->checkout->get_value( 'shipping_address_1' ),
+			'country'   => WC()->checkout()->get_value( 'shipping_country' ),
+			'state'     => WC()->checkout()->get_value( 'shipping_state' ),
+			'city'      => WC()->checkout()->get_value( 'shipping_city' ),
+			'postcode'  => WC()->checkout()->get_value( 'shipping_postcode' ),
+			'address_1' => WC()->checkout()->get_value( 'shipping_address_1' ),
 		);
 		return $address;
 	}
@@ -557,7 +557,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Initialize variables
 		$field_group_key = 'shipping';
 		$current_location_field_key = 'current_pickup_location';
-		
+
 		// Get shipping method provider
 		$provider = $this->get_current_shipping_method_provider();
 
@@ -565,7 +565,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $fields; }
 
 		// Get current pickup location
-		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$pickup_location_code = WC()->checkout()->get_value( $current_location_field_key );
 		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
 
 		// Bail if current location is not available
@@ -682,7 +682,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			'current_pickup_location',
 			'pickup_location_customer_number',
 		) );
-		
+
 		return $field_keys_skip_list;
 	}
 
@@ -696,12 +696,12 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get customer number field value
-		$customer_number = WC()->checkout->get_value( 'pickup_location_customer_number' );
+		$customer_number = WC()->checkout()->get_value( 'pickup_location_customer_number' );
 
 		// Maybe add review text lines
 		if ( ! empty( $customer_number ) ) {
 			$review_text_lines[] = '<strong>' . _x( 'Customer Number', 'shipments', 'woocommerce-germanized' ) . '</strong>';
-			$review_text_lines[] = esc_html( $customer_number );
+			$review_text_lines[] = $customer_number;
 		}
 
 		return $review_text_lines;
@@ -726,7 +726,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $is_valid; }
 
 		// Get current pickup location
-		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$pickup_location_code = WC()->checkout()->get_value( $current_location_field_key );
 		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
 
 		// Bail if current location object or its methods are not available
@@ -736,7 +736,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! $current_location->customer_number_is_mandatory() && empty( $customer_number ) ) { return $is_valid; }
 
 		$is_valid = $current_location->customer_number_is_valid( $customer_number );
-		
+
 		return $is_valid;
 	}
 

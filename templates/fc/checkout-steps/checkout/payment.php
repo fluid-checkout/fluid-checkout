@@ -10,10 +10,10 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 6.1.0
- * @fc-version 1.4.3
+ * @version 10.9.0
+ * @fc-version 4.2.6
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -27,22 +27,25 @@ if ( ! wp_doing_ajax() ) {
 	<?php // CHANGE: Added hook for before the payment section ?>
 	<?php do_action( 'fc_checkout_before_payment', $checkout ); ?>
 
-	<?php if ( WC()->cart->needs_payment() ) : ?>
+	<?php if ( WC()->cart && WC()->cart->needs_payment() ) : ?>
 		<?php // CHANGE: Added wrapper for the payment methods list ?>
 		<div class="fc-payment-methods__wrapper">
-			<ul class="wc_payment_methods payment_methods methods">
+			<ul class="wc_payment_methods payment_methods methods" aria-label="<?php esc_attr_e( 'Payment methods', 'woocommerce' ); ?>">
 				<?php
 				if ( ! empty( $available_gateways ) ) {
 					foreach ( $available_gateways as $gateway ) {
 						wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 					}
 				} else {
-					echo '<li class="woocommerce-notice woocommerce-notice--info woocommerce-info">' . apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) ) . '</li>'; // @codingStandardsIgnoreLine
+					echo '<li>';
+					wc_print_notice( apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) ), 'notice' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+					echo '</li>';
 				}
 				?>
 			</ul>
 		</div>
 		<?php // CHANGE: END - Added wrapper for the payment methods list ?>
+
 	<?php // CHANGE: Display info message when payment is not needed ?>
 	<?php else: ?>
 		<?php // translators: %s: Order total amount. ?>
@@ -55,8 +58,6 @@ if ( ! wp_doing_ajax() ) {
 	<?php do_action( 'fc_checkout_after_payment', $checkout ); ?>
 
 </div>
-
-
 <?php
 if ( ! wp_doing_ajax() ) {
 	do_action( 'woocommerce_review_order_after_payment' );

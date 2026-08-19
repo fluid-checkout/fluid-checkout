@@ -2357,32 +2357,6 @@ msgstr ""
 "Voer die afhandelingstappe-afdeling vanaf die Nyture-tema uit wanneer Fluid "
 "Checkout gebruik word."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Miskien gedwing as &quot;verpligtend&quot; as die faktuuradres-afdeling na "
-"die afleweringsadres-afdeling vertoon word, en die faktuurtelefoonveld as "
-"&quot;verpligtend&quot; gestel is. Dit is nodig om te verseker dat die "
-"afleweringsadres na die faktuuradres gekopieer kan word wanneer daardie "
-"opsie gemerk is."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Miskien gedwing as &quot;verpligtend&quot; as die faktuuradres-afdeling na "
-"die faktuuradres-afdeling vertoon word, en die faktuurtelefoonveld as "
-"&quot;verpligtend&quot; gestel is. Dit is nodig om te verseker dat die "
-"faktuuradres na die faktuuradres gekopieer kan word wanneer daardie opsie "
-"gemerk is."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2638,9 +2612,87 @@ msgstr "Ineengestort"
 #: inc/admin/admin-settings-checkout.php:347
 msgid "Expanded"
 msgstr "Uitgebrei"
+
 #: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
 msgid "Do not show"
 msgstr "Moenie wys nie"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ja"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Die veld vir die afleweringstelefoonnommer kan as &quot;verpligtend&quot; "
+"gestel word indien die faktuuradres-afdeling na die "
+"afleweringsadres-afdeling vertoon word, en die faktuurtelefoon-veld as "
+"&quot;verpligtend&quot; gestel is. Dit is nodig om te verseker dat die "
+"afleweringsadres na die faktuuradres gekopieer kan word wanneer daardie "
+"opsie gemerk is, anders kan die kliënt dalk nie die afhandelingsvorm "
+"voltooi nie."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Die faktuurnommerveld kan as &quot;verpligtend&quot; gestel word indien die "
+"faktuuradres-afdeling voor die afleweringsadres-afdeling vertoon word, en "
+"die afleweringsnommerveld as &quot;verpligtend&quot; gestel is. Dit is "
+"nodig om te verseker dat die afleweringsadres na die faktuuradres gekopieer "
+"kan word wanneer daardie opsie gemerk is, anders kan die kliënt dalk nie "
+"die afhandelingsvorm voltooi nie."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr ""
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2776,3 +2828,19 @@ msgstr "Versending %d"
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr "Versending"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "volgende stap"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Ja"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
