@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: Setting to control how zero-cost shipping costs are displayed on the cart, checkout, order pay, thank you, and view order pages, and in order emails.
+* Improved: Shipping totals on thank you, view order, and emails now say "Initial Shipment" for the first order when the cart contains a subscription.
 
 = 4.2.6 - 2026-07-28 =
 

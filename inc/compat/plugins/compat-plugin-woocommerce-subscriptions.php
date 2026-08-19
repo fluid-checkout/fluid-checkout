@@ -35,6 +35,9 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+
+		// Order totals labels
+		add_filter( 'woocommerce_get_order_item_totals', array( $this, 'maybe_change_order_item_totals_shipping_label' ), 25, 3 );
 	}
 
 
@@ -143,6 +146,34 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 
 	/**
+	 * Maybe change the shipping totals row label to Initial shipment on parent subscription orders.
+	 *
+	 * @param  array     $total_rows   Order totals rows.
+	 * @param  WC_Order  $order        Order object.
+	 * @param  string    $tax_display  Tax display mode.
+	 */
+	public function maybe_change_order_item_totals_shipping_label( $total_rows, $order, $tax_display ) {
+		// Bail if shipping row is not present
+		if ( ! array_key_exists( 'shipping', $total_rows ) ) { return $total_rows; }
+
+		// Bail if helper function is not available
+		if ( ! function_exists( 'wcs_order_contains_subscription' ) ) { return $total_rows; }
+
+		// Bail if the order is a subscription
+		if ( function_exists( 'wcs_is_subscription' ) && wcs_is_subscription( $order ) ) { return $total_rows; }
+
+		// Bail if the order is not a parent subscription order
+		if ( ! wcs_order_contains_subscription( $order, 'parent' ) ) { return $total_rows; }
+
+		// INTENTIONAL: Reuse WooCommerce Subscriptions string to match the checkout package name.
+		$total_rows[ 'shipping' ][ 'label' ] = __( 'Initial Shipment', 'woocommerce-subscriptions' ) . ':';
+
+		return $total_rows;
+	}
+
+
+
+	/**
 	 * Locate template files from this plugin.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
@@ -184,6 +215,47 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 
 	/**
+	 * Get the shipping cost HTML for a recurring shipping method.
+	 *
+	 * @param  object         $recurring_cart  The recurring cart object.
+	 * @param  object|string  $method          Either the name of the method's class, or an instance of the method's class.
+	 */
+	public function get_recurring_shipping_method_cost_html( $recurring_cart, $method ) {
+		// Get whether shipping method has costs
+		$has_cost = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
+
+		// Initialize cost HTML variable
+		$method_costs = '';
+
+		// Maybe get shipping method costs including tax
+		if ( $has_cost ) {
+			// Maybe get shipping method costs including tax
+			if ( WC()->cart->display_prices_including_tax() ) {
+				$method_costs = wcs_cart_price_string( $method->cost + $method->get_shipping_tax(), $recurring_cart );
+				if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
+					$method_costs .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
+				}
+			}
+			// Otherwise get shipping method costs excluding tax
+			else {
+				$method_costs = wcs_cart_price_string( $method->cost, $recurring_cart );
+				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
+					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
+				}
+			}
+		}
+		// Otherwise, handle zero-cost display based on setting
+		else {
+			$method_costs = FluidCheckout_Steps::instance()->get_zero_cost_shipping_cost_html();
+		}
+
+		// Allow developers to change the shipping method costs
+		$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
+
+		return $method_costs;
+	}
+
+	/**
 	 * Get shipping method label for a subscription plan.
 	 *
 	 * @param  string         $cart   The recurring cart object.
@@ -205,32 +277,11 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_image_markup', '<span class="shipping-method__option-image">%s</span>', $method, $method_image_html ), $method_image_html );
 		}
 
-		// Get shipping method costs settings
-		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
-		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
+		// Get shipping method cost HTML
+		$method_costs = $this->get_recurring_shipping_method_cost_html( $recurring_cart, $method );
 
 		// Maybe add shipping method costs to label
-		if ( $has_cost && ! $hide_cost ) {
-			$method_costs = '';
-
-			// Maybe get shipping method costs including tax
-			if ( WC()->cart->display_prices_including_tax() ) {
-				$method_costs = wcs_cart_price_string( $method->cost + $method->get_shipping_tax(), $recurring_cart );
-				if ( $method->get_shipping_tax() > 0 && ! wc_prices_include_tax() ) {
-					$method_costs .= ' <small class="tax_label">' . WC()->countries->inc_tax_or_vat() . '</small>';
-				}
-			}
-			// Otherwise get shipping method costs excluding tax
-			else {
-				$method_costs = wcs_cart_price_string( $method->cost, $recurring_cart );
-				if ( $method->get_shipping_tax() > 0 && wc_prices_include_tax() ) {
-					$method_costs .= ' <small class="tax_label">' . WC()->countries->ex_tax_or_vat() . '</small>';
-				}
-			}
-
-			// Allow developers to change the shipping method costs
-			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
-
+		if ( ! empty( $method_costs ) ) {
 			// Add shipping method costs to label
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method, $method_costs ), $method_costs );
 		}
@@ -410,7 +461,10 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 			// Increment total shipping rows if the recurring cart contains subscriptions needing shipping
 			if ( WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping( $recurring_cart ) ) {
-				$total_shipping_rows += count( $recurring_cart->get_shipping_packages() );
+				// Maybe skip shipping rows when zero-cost display is set to hide
+				if ( 0 < (float) $recurring_cart->get_shipping_total() || '' !== FluidCheckout_Steps::instance()->get_zero_cost_shipping_cost_html() ) {
+					$total_shipping_rows += count( $recurring_cart->get_shipping_packages() );
+				}
 			}
 		}
 
@@ -463,8 +517,19 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 					$shipping_subtotal += $shipping_tax;
 				}
 
+				// Maybe use zero-cost display setting
+				if ( 0 < (float) $recurring_cart->get_shipping_total() ) {
+					$shipping_subtotal = wc_price( $shipping_subtotal );
+				}
+				else {
+					$shipping_subtotal = FluidCheckout_Steps::instance()->get_zero_cost_shipping_cost_html();
+
+					// Maybe skip shipping row when zero-cost display is set to hide
+					if ( '' === $shipping_subtotal ) { continue; }
+				}
+
 				// Get formatted shipping subtotal
-				$shipping_subtotal = wcs_cart_price_string( wc_price( $shipping_subtotal ), $recurring_cart );
+				$shipping_subtotal = wcs_cart_price_string( $shipping_subtotal, $recurring_cart );
 			}
 
 			// Output the shipping subtotal row
@@ -583,7 +648,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 			// Get label for the chosen shipping method
 			$method = $available_methods && array_key_exists( $chosen_recurring_method, $available_methods ) ? $available_methods[ $chosen_recurring_method ] : null;
-			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			$chosen_method_label = $method ? FluidCheckout_Steps::instance()->get_substep_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
 			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
 			$has_multiple_packages = $this->get_all_packages_count() > 1;
