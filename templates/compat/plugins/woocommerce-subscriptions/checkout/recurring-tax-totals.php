@@ -46,7 +46,10 @@ foreach ( $recurring_carts as $recurring_cart_key => $recurring_cart ) {
 		<?php // CHANGE: Add rowspan so the tax label spans all recurring carts ?>
 		<th rowspan="<?php echo esc_attr( $total_tax_rows ); ?>"><?php echo esc_html( WC()->countries->tax_or_vat() ); ?></th>
 		<td data-title="<?php echo esc_attr( WC()->countries->tax_or_vat() ); ?>"><?php echo $tax_amount; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
-	<?php } else { ?>
+	<?php
+	}
+	else {
+		?>
 		<?php // CHANGE: Do not output an empty `th` on following tax rows ?>
 		<td><?php echo $tax_amount; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
 	<?php } ?>

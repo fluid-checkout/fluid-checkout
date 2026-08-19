@@ -60,11 +60,13 @@ foreach ( WC()->cart->get_taxes() as $tax_id => $tax_total ) {
 				<?php // CHANGE: Add rowspan so the tax label spans all recurring carts ?>
 				<th rowspan="<?php echo esc_attr( $total_tax_rows ); ?>"><?php echo esc_html( $recurring_tax->label ); ?></th>
 				<td data-title="<?php echo esc_attr( $recurring_tax->label ); ?>"><?php echo $tax_amount; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
-			<?php } else { ?>
+			<?php
+			}
+			else {
+				?>
 				<?php // CHANGE: Do not output an empty `th` on following tax rows ?>
 				<td><?php echo $tax_amount; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
-				<?php
-			} ?>
+			<?php } ?>
 			<?php // CHANGE: Close the table row ?>
 			</tr>
 			<?php
