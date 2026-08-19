@@ -22,52 +22,164 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Late hooks
 		add_action( 'init', array( $this, 'late_hooks' ), 100 );
 
-		// Page setup (after CF `wp_actions` at priority 55; before CF `shortcode_load_data` at 999)
-		add_action( 'wp', array( $this, 'maybe_prepare_cartflows_page' ), 56 );
-		add_action( 'wp', array( $this, 'maybe_take_over_cartflows_checkout_ui' ), 998 );
+		// Frontend hooks
+		add_action( 'wp', array( $this, 'frontend_hooks' ), 56 ); // Set priority to 56 to run after the CartFlows `wp_actions` method at priority 55
+
+		// Checkout page hooks
+		add_action( 'wp', array( $this, 'instant_checkout_layout_hooks' ), 998 ); // Set priority to 998 to run before the CartFlows `instant_checkout_actions` method at priority 999
+		add_action( 'wp', array( $this, 'checkout_form_hooks' ), 998 ); // Set priority to 998 to run before the CartFlows `shortcode_load_data` method at priority 999
 
 		// Assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_dequeue_cartflows_normalize_styles' ), 10000 );
 
-		// Store Checkout thank you
+		// Store Checkout thank you page
 		add_filter( 'woocommerce_get_checkout_order_received_url', array( $this, 'maybe_use_woocommerce_thankyou_for_store_checkout' ), 20, 2 );
 	}
 
-
-
 	/**
-	 * Late hooks that must run after CartFlows registers field filters.
+	 * Add or remove late hooks.
 	 */
 	public function late_hooks() {
-		// Prevent CartFlows order-summary image / markup surgery (conflicts with Fluid Checkout thumbnails),
-		// fragment replacements that swap FC order review HTML for CartFlows markup,
-		// and shipping notice HTML wrappers that break FC shipping notices
-		if ( class_exists( 'Cartflows_Checkout_Markup' ) ) {
-			$checkout_markup = Cartflows_Checkout_Markup::get_instance();
-			remove_filter( 'woocommerce_cart_item_name', array( $checkout_markup, 'modify_order_review_item_summary' ), 10 );
-			remove_filter( 'woocommerce_update_order_review_fragments', array( $checkout_markup, 'add_updated_cart_price' ), 10 );
-			remove_filter( 'woocommerce_shipping_may_be_available_html', array( $checkout_markup, 'change_shipping_message_html' ) );
-			remove_filter( 'woocommerce_no_shipping_available_html', array( $checkout_markup, 'change_shipping_message_html' ) );
-			// Keep `custom_price_to_cart_item` — needed for funnel product custom/discounted prices
-		}
+		// Checkout markup
+		$this->checkout_markup_hooks();
 
-		// Prevent CartFlows Modern layout from unsetting billing_email (and related fields)
-		// before Fluid Checkout can render the contact step
-		if ( class_exists( 'Cartflows_Modern_Checkout' ) ) {
-			$modern_checkout = Cartflows_Modern_Checkout::get_instance();
-			remove_action( 'cartflows_checkout_form_before', array( $modern_checkout, 'modern_checkout_layout_actions' ), 10 );
-			remove_filter( 'woocommerce_checkout_fields', array( $modern_checkout, 'unset_fields_for_modern_checkout' ), 10 );
-		}
+		// Modern layout
+		$this->modern_checkout_layout_hooks();
 
-		// Prevent CartFlows field layout / skin customizations that conflict with Fluid Checkout fields.
-		// Keep functional field filters (`billing_fields_customization`, `shipping_fields_customization`,
-		// `additional_fields_customization`, `prepare_country_locale`, `woo_default_address_fields`)
-		// so CartFlows field-editor config still applies.
-		if ( class_exists( 'Cartflows_Checkout_Fields' ) ) {
-			$checkout_fields = Cartflows_Checkout_Fields::get_instance();
-			remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'add_three_column_layout_fields' ) );
-			remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'label_skins_fields_customization' ), 1000 );
-		}
+		// Checkout fields
+		$this->checkout_fields_hooks();
+	}
+
+	/**
+	 * Add or remove hooks for the CartFlows checkout markup.
+	 */
+	public function checkout_markup_hooks() {
+		// Bail if CartFlows checkout markup class is unavailable
+		if ( ! class_exists( 'Cartflows_Checkout_Markup' ) ) { return; }
+
+		// Get the CartFlows checkout markup object
+		$checkout_markup = Cartflows_Checkout_Markup::get_instance();
+
+		// Remove the order summary image and markup changes, which conflict with the Fluid Checkout thumbnails
+		remove_filter( 'woocommerce_cart_item_name', array( $checkout_markup, 'modify_order_review_item_summary' ), 10 );
+
+		// Remove the fragment replacements that swap the Fluid Checkout order review HTML for the CartFlows markup
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $checkout_markup, 'add_updated_cart_price' ), 10 );
+
+		// Remove the shipping notice HTML wrappers, which break the Fluid Checkout shipping notices
+		remove_filter( 'woocommerce_shipping_may_be_available_html', array( $checkout_markup, 'change_shipping_message_html' ), 10 );
+		remove_filter( 'woocommerce_no_shipping_available_html', array( $checkout_markup, 'change_shipping_message_html' ), 10 );
+
+		// Note: the `custom_price_to_cart_item` hook is intentionally kept, as it is needed for the funnel product custom and discounted prices
+	}
+
+	/**
+	 * Add or remove hooks for the CartFlows Modern checkout layout.
+	 */
+	public function modern_checkout_layout_hooks() {
+		// Bail if CartFlows Modern checkout class is unavailable
+		if ( ! class_exists( 'Cartflows_Modern_Checkout' ) ) { return; }
+
+		// Get the CartFlows Modern checkout object
+		$modern_checkout = Cartflows_Modern_Checkout::get_instance();
+
+		// Remove the Modern layout changes, which unset the `billing_email` and related fields before Fluid Checkout can output the contact step
+		remove_action( 'cartflows_checkout_form_before', array( $modern_checkout, 'modern_checkout_layout_actions' ), 10 );
+		remove_filter( 'woocommerce_checkout_fields', array( $modern_checkout, 'unset_fields_for_modern_checkout' ), 10 );
+	}
+
+	/**
+	 * Add or remove hooks for the CartFlows checkout fields.
+	 */
+	public function checkout_fields_hooks() {
+		// Bail if CartFlows checkout fields class is unavailable
+		if ( ! class_exists( 'Cartflows_Checkout_Fields' ) ) { return; }
+
+		// Get the CartFlows checkout fields object
+		$checkout_fields = Cartflows_Checkout_Fields::get_instance();
+
+		// Remove the field layout and skin changes, which conflict with the Fluid Checkout fields
+		remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'add_three_column_layout_fields' ), 10 );
+		remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'label_skins_fields_customization' ), 1000 );
+
+		// Note: the `billing_fields_customization`, `shipping_fields_customization`, `additional_fields_customization`, `prepare_country_locale` and `woo_default_address_fields` hooks are intentionally kept, so the CartFlows field editor settings still apply
+	}
+
+	/**
+	 * Add or remove hooks for the CartFlows frontend.
+	 */
+	public function frontend_hooks() {
+		// Bail if CartFlows frontend class is unavailable
+		if ( ! class_exists( 'Cartflows_Frontend' ) ) { return; }
+
+		// Bail if not on a CartFlows checkout or Fluid Checkout PRO thank you page context
+		if ( ! $this->is_cartflows_checkout_context() && ! $this->is_fc_pro_thankyou_context() ) { return; }
+
+		// Get the CartFlows frontend object
+		$frontend = Cartflows_Frontend::get_instance();
+
+		// Restore the theme styles and scripts, which CartFlows removes to force the default WooCommerce styles
+		remove_action( 'wp_enqueue_scripts', array( $frontend, 'remove_theme_styles' ), 9999 );
+		remove_filter( 'woocommerce_enqueue_styles', array( $frontend, 'woo_default_css' ), 9999 );
+
+		// Remove the WooCommerce template overrides, so the Fluid Checkout templates are used
+		remove_filter( 'woocommerce_locate_template', array( $frontend, 'override_woo_template' ), 20 );
+	}
+
+	/**
+	 * Add or remove hooks for the CartFlows Instant Checkout layout.
+	 */
+	public function instant_checkout_layout_hooks() {
+		// Bail if CartFlows Instant Checkout class is unavailable
+		if ( ! class_exists( 'Cartflows_Instant_Checkout' ) ) { return; }
+
+		// Bail if not on a CartFlows checkout context
+		if ( ! $this->is_cartflows_checkout_context() ) { return; }
+
+		// Remove the Instant Checkout layout, which is not supported and conflicts with Fluid Checkout
+		remove_action( 'wp', array( Cartflows_Instant_Checkout::get_instance(), 'instant_checkout_actions' ), 999 );
+	}
+
+	/**
+	 * Add or remove hooks for the CartFlows checkout form.
+	 */
+	public function checkout_form_hooks() {
+		// Bail if CartFlows checkout markup class is unavailable
+		if ( ! class_exists( 'Cartflows_Checkout_Markup' ) ) { return; }
+
+		// Bail if not on a CartFlows checkout context
+		if ( ! $this->is_cartflows_checkout_context() ) { return; }
+
+		// Get the CartFlows checkout markup object
+		$checkout_markup = Cartflows_Checkout_Markup::get_instance();
+
+		// Remove the checkout shortcode setup, which moves the coupon field, re-binds the classic billing and shipping sections, and loads the CartFlows checkout assets
+		remove_action( 'wp', array( $checkout_markup, 'shortcode_load_data' ), 999 );
+
+		// Add the identity fields inside the checkout form and login form, which are needed for the thank you page redirect, order meta, AJAX endpoints and post login funnel redirect
+		add_action( 'fc_checkout_before', array( $checkout_markup, 'checkout_shortcode_post_id' ), 5 );
+		add_action( 'woocommerce_login_form_end', array( $checkout_markup, 'checkout_shortcode_post_id' ), 99 );
+
+		// Add the URL query string field prefill
+		add_filter( 'woocommerce_checkout_fields', array( $checkout_markup, 'prefill_checkout_fields' ), 10 );
+
+		// Add the place order button text
+		add_filter( 'woocommerce_order_button_text', array( $checkout_markup, 'place_order_button_text' ), 99 ); // Only needed for the initial page load, as the AJAX path is already registered by the CartFlows `update_woo_actions_ajax` method
+
+		// Add the automatic check for "Ship to a different address?" when the shipping URL parameters are present
+		add_filter( 'woocommerce_ship_to_different_address_checked', array( $checkout_markup, 'maybe_check_ship_to_different_address' ), 10 );
+
+		// Add the file field type support for the CartFlows custom checkout fields
+		add_filter( 'woocommerce_form_field_file', array( $checkout_markup, 'render_file_field' ), 10, 4 );
+
+		// Get the checkout page ID
+		$checkout_id = absint( get_the_ID() );
+
+		// Bail if checkout page ID is not available
+		if ( ! $checkout_id ) { return; }
+
+		// Run the third party hooks that expect this CartFlows action
+		do_action( 'cartflows_checkout_before_shortcode', $checkout_id );
 	}
 
 
@@ -76,29 +188,23 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	 * Whether the current request is a CartFlows checkout page or checkout AJAX.
 	 */
 	public function is_cartflows_checkout_context() {
-		if ( function_exists( '_is_wcf_checkout_type' ) && _is_wcf_checkout_type() ) {
-			return true;
-		}
+		// Return `true` if on a CartFlows checkout step
+		if ( function_exists( '_is_wcf_checkout_type' ) && _is_wcf_checkout_type() ) { return true; }
 
-		if ( function_exists( '_is_wcf_doing_checkout_ajax' ) && _is_wcf_doing_checkout_ajax() ) {
-			return true;
-		}
+		// Return `true` if doing a CartFlows checkout AJAX request
+		if ( function_exists( '_is_wcf_doing_checkout_ajax' ) && _is_wcf_doing_checkout_ajax() ) { return true; }
 
 		return false;
 	}
 
 	/**
-	 * Whether the current request is a CartFlows thank-you step.
+	 * Whether the current request is a CartFlows thank you step handled by the Fluid Checkout PRO order received page.
 	 */
-	public function is_cartflows_thankyou_context() {
-		return function_exists( '_is_wcf_thankyou_type' ) && _is_wcf_thankyou_type();
-	}
+	public function is_fc_pro_thankyou_context() {
+		// Bail if not on a CartFlows thank you step
+		if ( ! function_exists( '_is_wcf_thankyou_type' ) || ! _is_wcf_thankyou_type() ) { return false; }
 
-	/**
-	 * Whether Fluid Checkout PRO order-received is available and enabled.
-	 */
-	public function is_fc_pro_order_received_enabled() {
-		// Bail if Fluid Checkout PRO order-received is not available
+		// Bail if Fluid Checkout PRO order received page is not available
 		if ( ! class_exists( 'FluidCheckout_PRO_OrderReceivedPage' ) ) { return false; }
 
 		return FluidCheckout_PRO_OrderReceivedPage::instance()->is_feature_enabled();
@@ -131,109 +237,13 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 
 	/**
-	 * Prepare CartFlows checkout and thank-you pages for Fluid Checkout.
-	 *
-	 * Runs after CF `wp_actions` (priority 55): restore theme assets, and on thank-you
-	 * steps remove CF template overrides so FC PRO can use its `thankyou.php`.
-	 */
-	public function maybe_prepare_cartflows_page() {
-		$is_checkout = $this->is_cartflows_checkout_context();
-		$is_thankyou_for_fc_pro = $this->is_cartflows_thankyou_context() && $this->is_fc_pro_order_received_enabled();
-
-		// Bail if not on a CartFlows checkout or FC PRO thank-you context
-		if ( ! $is_checkout && ! $is_thankyou_for_fc_pro ) { return; }
-
-		// Restore theme styles/scripts (CF strips them and forces default WooCommerce CSS)
-		if ( class_exists( 'Cartflows_Frontend' ) ) {
-			$frontend = Cartflows_Frontend::get_instance();
-			remove_action( 'wp_enqueue_scripts', array( $frontend, 'remove_theme_styles' ), 9999 );
-			remove_filter( 'woocommerce_enqueue_styles', array( $frontend, 'woo_default_css' ), 9999 );
-		}
-
-		// Thank you: remove CF WooCommerce template overrides so FC PRO can use its templates
-		if ( $is_thankyou_for_fc_pro ) {
-			$this->maybe_remove_cartflows_template_overrides();
-		}
-	}
-
-	/**
-	 * Remove CartFlows WooCommerce template overrides so Fluid Checkout templates are used.
-	 */
-	public function maybe_remove_cartflows_template_overrides() {
-		// Bail if CartFlows frontend is not available
-		if ( ! class_exists( 'Cartflows_Frontend' ) ) { return; }
-
-		remove_filter( 'woocommerce_locate_template', array( Cartflows_Frontend::get_instance(), 'override_woo_template' ), 20 );
-	}
-
-
-
-	/**
-	 * Prevent CartFlows checkout UI bootstrap and restore needed CartFlows behaviors.
-	 *
-	 * Runs before CF `shortcode_load_data` (priority 999).
-	 */
-	public function maybe_take_over_cartflows_checkout_ui() {
-		// Bail if not on a CartFlows checkout context
-		if ( ! $this->is_cartflows_checkout_context() ) { return; }
-
-		// Prevent CartFlows Instant Layout checkout UI (unsupported; conflicts with Fluid Checkout)
-		if ( class_exists( 'Cartflows_Instant_Checkout' ) ) {
-			remove_action( 'wp', array( Cartflows_Instant_Checkout::get_instance(), 'instant_checkout_actions' ), 999 );
-		}
-
-		// Prevent CartFlows shortcode UI bootstrap (coupon move, classic billing/shipping re-bind, checkout assets)
-		// then restore identity fields and other behaviors still needed with Fluid Checkout
-		if ( class_exists( 'Cartflows_Checkout_Markup' ) ) {
-			$checkout_markup = Cartflows_Checkout_Markup::get_instance();
-			remove_action( 'wp', array( $checkout_markup, 'shortcode_load_data' ), 999 );
-
-			// Identity fields inside the checkout form and login form
-			// (needed for thank-you redirect, order meta, AJAX endpoints, and post-login funnel redirect)
-			add_action( 'fc_checkout_before', array( $checkout_markup, 'checkout_shortcode_post_id' ), 5 );
-			add_action( 'woocommerce_login_form_end', array( $checkout_markup, 'checkout_shortcode_post_id' ), 99 );
-
-			// URL query-string field prefill
-			add_filter( 'woocommerce_checkout_fields', array( $checkout_markup, 'prefill_checkout_fields' ), 10 );
-
-			// Place order button text on initial page load
-			// (AJAX path is already registered by CF `update_woo_actions_ajax`)
-			add_filter( 'woocommerce_order_button_text', array( $checkout_markup, 'place_order_button_text' ), 99 );
-
-			// Auto-check "Ship to a different address?" when shipping URL params are present
-			add_filter( 'woocommerce_ship_to_different_address_checked', array( $checkout_markup, 'maybe_check_ship_to_different_address' ) );
-
-			// File field type support for CartFlows custom checkout fields
-			add_filter( 'woocommerce_form_field_file', array( $checkout_markup, 'render_file_field' ), 10, 4 );
-
-			// Allow third-party CartFlows hooks that expect this action
-			$checkout_id = absint( get_the_ID() );
-			if ( $checkout_id ) {
-				do_action( 'cartflows_checkout_before_shortcode', $checkout_id );
-			}
-		}
-
-		// Remove CartFlows WooCommerce template overrides so Fluid Checkout templates are used
-		$this->maybe_remove_cartflows_template_overrides();
-	}
-
-
-
-	/**
 	 * Dequeue CartFlows normalize/frontend styles that conflict with Fluid Checkout.
 	 */
 	public function maybe_dequeue_cartflows_normalize_styles() {
-		// Dequeue on CartFlows checkout
-		$should_dequeue = $this->is_cartflows_checkout_context();
+		// Bail if not on a CartFlows checkout or Fluid Checkout PRO thank you page context
+		if ( ! $this->is_cartflows_checkout_context() && ! $this->is_fc_pro_thankyou_context() ) { return; }
 
-		// Or on CartFlows thank-you steps when FC PRO order-received is enabled
-		if ( ! $should_dequeue && $this->is_cartflows_thankyou_context() && $this->is_fc_pro_order_received_enabled() ) {
-			$should_dequeue = true;
-		}
-
-		// Bail if not on a context that needs normalize/frontend removed
-		if ( ! $should_dequeue ) { return; }
-
+		// Dequeue styles
 		wp_dequeue_style( 'wcf-normalize-frontend-global' );
 		wp_dequeue_style( 'wcf-frontend-global' );
 	}
@@ -241,9 +251,9 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 
 
 	/**
-	 * Use the WooCommerce order-received URL for Store / Global Checkout orders.
+	 * Use the WooCommerce order received URL for Store / Global Checkout orders.
 	 *
-	 * Store / Global Checkout only. Sales funnels keep the CartFlows thank-you URL
+	 * Store / Global Checkout only. Sales funnels keep the CartFlows thank you page URL
 	 * applied by `Cartflows_Frontend::redirect_to_thankyou_page` (priority 10).
 	 * Upsell / downsell redirects from `cartflows_checkout_next_step_id` are preserved.
 	 *
@@ -257,11 +267,14 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		// Bail if CartFlows utils / flow are not available
 		if ( ! function_exists( 'wcf' ) || ! wcf()->flow ) { return $order_receive_url; }
 
-		// Bail if redirected to a non-thank-you step (upsell/downsell)
+		// Get thank you step permalink
 		$thankyou_page_id = absint( wcf()->flow->get_thankyou_page_id( $order ) );
-		if ( $thankyou_page_id && false === strpos( $order_receive_url, (string) get_permalink( $thankyou_page_id ) ) ) { return $order_receive_url; }
+		$thankyou_page_url = $thankyou_page_id ? get_permalink( $thankyou_page_id ) : '';
 
-		// Build the native WooCommerce order-received URL (FC PRO can style this page)
+		// Bail if redirected to a step other than the thank you step (upsell/downsell)
+		if ( ! empty( $thankyou_page_url ) && false === strpos( $order_receive_url, $thankyou_page_url ) ) { return $order_receive_url; }
+
+		// Build the native WooCommerce order received URL (FC PRO can style this page)
 		$woocommerce_order_received_url = wc_get_endpoint_url( 'order-received', $order->get_id(), wc_get_checkout_url() );
 
 		return add_query_arg( 'key', $order->get_order_key(), $woocommerce_order_received_url );
