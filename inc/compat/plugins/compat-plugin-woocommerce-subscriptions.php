@@ -461,7 +461,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 			// Increment total shipping rows if the recurring cart contains subscriptions needing shipping
 			if ( WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping( $recurring_cart ) ) {
-				// Maybe skip shipping rows when zero-cost display is set to hide
+				// Maybe skip zero-cost shipping rows when the setting is "Empty"
 				if ( 0 < (float) $recurring_cart->get_shipping_total() || '' !== FluidCheckout_Steps::instance()->get_zero_cost_shipping_cost_html() ) {
 					$total_shipping_rows += count( $recurring_cart->get_shipping_packages() );
 				}
@@ -524,7 +524,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 				else {
 					$shipping_subtotal = FluidCheckout_Steps::instance()->get_zero_cost_shipping_cost_html();
 
-					// Maybe skip shipping row when zero-cost display is set to hide
+					// Maybe omit the shipping totals row when the setting is "Empty"
 					if ( '' === $shipping_subtotal ) { continue; }
 				}
 
