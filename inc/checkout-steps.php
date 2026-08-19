@@ -1297,7 +1297,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return true;
 		}
 
-		return apply_filters( 'fc_is_zero_cost_shipping_order_totals_context', false );
+		// Otherwise, return `false`
+		return false;
 	}
 
 
