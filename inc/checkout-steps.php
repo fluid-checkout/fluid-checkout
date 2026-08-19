@@ -7042,7 +7042,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Maybe skip shipping row when zero-cost display is set to hide
 			if ( $method && '' === $formatted_shipping_price ) {
-				$first = false;
 				$package_index++;
 				continue;
 			}
