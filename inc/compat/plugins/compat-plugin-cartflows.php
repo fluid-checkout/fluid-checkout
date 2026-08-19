@@ -51,7 +51,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks for the CartFlows checkout markup.
+	 * Add or remove CartFlows checkout markup hooks.
 	 */
 	public function checkout_markup_hooks() {
 		// Bail if CartFlows checkout markup class is unavailable
@@ -74,7 +74,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks for the CartFlows Modern checkout layout.
+	 * Add or remove CartFlows Modern checkout layout hooks.
 	 */
 	public function modern_checkout_layout_hooks() {
 		// Bail if CartFlows Modern checkout class is unavailable
@@ -89,7 +89,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks for the CartFlows checkout fields.
+	 * Add or remove CartFlows checkout fields hooks.
 	 */
 	public function checkout_fields_hooks() {
 		// Bail if CartFlows checkout fields class is unavailable
@@ -106,7 +106,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks for the CartFlows frontend.
+	 * Add or remove CartFlows frontend hooks.
 	 */
 	public function frontend_hooks() {
 		// Bail if CartFlows frontend class is unavailable
@@ -127,7 +127,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks for the CartFlows Instant Checkout layout.
+	 * Add or remove CartFlows Instant Checkout layout hooks.
 	 */
 	public function instant_checkout_layout_hooks() {
 		// Bail if CartFlows Instant Checkout class is unavailable
@@ -141,7 +141,7 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks for the CartFlows checkout form.
+	 * Add or remove CartFlows checkout form hooks.
 	 */
 	public function checkout_form_hooks() {
 		// Bail if CartFlows checkout markup class is unavailable
