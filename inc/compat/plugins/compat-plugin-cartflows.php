@@ -102,7 +102,9 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'add_three_column_layout_fields' ), 10 );
 		remove_filter( 'woocommerce_checkout_fields', array( $checkout_fields, 'label_skins_fields_customization' ), 1000 );
 
-		// Note: the `billing_fields_customization`, `shipping_fields_customization`, `additional_fields_customization`, `prepare_country_locale` and `woo_default_address_fields` hooks are intentionally kept, so the CartFlows field editor settings still apply
+		// Note: the `billing_fields_customization`, `shipping_fields_customization`, `additional_fields_customization`,
+		// `prepare_country_locale` and `woo_default_address_fields` hooks are intentionally kept,
+		// so the CartFlows field editor settings still apply.
 	}
 
 	/**
