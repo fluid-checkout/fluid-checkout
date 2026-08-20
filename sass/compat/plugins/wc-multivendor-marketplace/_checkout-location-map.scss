@@ -26,7 +26,6 @@
 
 .fc-wrapper #leaflet_wcfmmp_user_location .leaflet-control-search .search-input {
 	width: 100%;
-	// Needed to override inline max-width set by leaflet-search on input
 	max-width: none !important; // Override leaflet-search inline max-width from map container width
 	box-sizing: border-box;
 }
@@ -34,7 +33,6 @@
 .fc-wrapper #leaflet_wcfmmp_user_location .leaflet-control-search .search-tooltip {
 	width: 100%;
 	max-width: 100%;
-	// Needed to override theme `ol, ul` margin (e.g. `0 0 1.5em 3em`)
 	margin: 0 !important; // Override theme list margin that offsets the suggestions dropdown
 	padding-left: 0;
 }

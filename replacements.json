@@ -3,6 +3,11 @@
 	"description": "Third-party files replaced or forked by Fluid Checkout.",
 	"plugin-compat-js": [
 		{
+			"our_path": "js-src/compat/plugins/automation-web-platform/checkout.js",
+			"their_path": "plugins/automation-web-platform/assets/js/checkout.js",
+			"script_handle": "awp-checkout-js"
+		},
+		{
 			"our_path": "js-src/compat/plugins/biteship/biteship-public.js",
 			"their_path": "plugins/biteship/public/js/biteship-public.js",
 			"script_handle": "biteship"
@@ -43,6 +48,11 @@
 			"script_handle": "wc-city-select"
 		},
 		{
+			"our_path": "js-src/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location.js",
+			"their_path": "https://plugins.svn.wordpress.org/wc-multivendor-marketplace/trunk/assets/js/checkout/wcfmmp-script-checkout-location.js",
+			"script_handle": "wcfmmp_checkout_location_js"
+		},
+		{
 			"our_path": "js-src/compat/plugins/wc-postcode-checker/wc-postcode-checker.js",
 			"their_path": "plugins/wc-postcode-checker/assets/js/wc-postcode-checker.js",
 			"script_handle": "wpo-wcnlpc"
@@ -56,11 +66,6 @@
 			"our_path": "js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js",
 			"their_path": "https://plugins.svn.wordpress.org/woocommerce-extra-checkout-fields-for-brazil/trunk/assets/js/frontend/frontend.js",
 			"script_handle": "woocommerce-extra-checkout-fields-for-brazil-front"
-		},
-		{
-			"our_path": "js-src/compat/plugins/woocommerce-gus/gus.js",
-			"their_path": "plugins/woocommerce-gus/assets/js/gus.js",
-			"script_handle": "frontend-ajax-gus"
 		},
 		{
 			"our_path": "js-src/compat/plugins/woocommerce-superfaktura/checkout.js",
