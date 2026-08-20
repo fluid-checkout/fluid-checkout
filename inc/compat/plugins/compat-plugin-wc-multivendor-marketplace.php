@@ -35,6 +35,9 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Maybe replace plugin scripts with modified version
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
 
+		// Vendor-keyed shipping packages
+		add_action( 'init', array( $this, 'maybe_replace_vendor_keyed_shipping_handlers' ), 20 );
+
 		// Move checkout location map and field to shipping section
 		add_action( 'init', array( $this, 'maybe_reposition_checkout_location_map' ), 20 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
@@ -70,6 +73,27 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		// Replace checkout location script with FC-compatible version
 		wp_register_script( 'wcfmmp_checkout_location_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
+	/**
+	 * Replace core shipping handlers that look up chosen methods by numeric index.
+	 *
+	 * WCFM stores chosen methods keyed by vendor ID (package key).
+	 */
+	public function maybe_replace_vendor_keyed_shipping_handlers() {
+		// Bail if plugin is not active
+		if ( ! class_exists( 'WCFMmp' ) ) { return; }
+
+		// Order summary shipping rows
+		remove_action( 'fc_review_order_shipping', array( FluidCheckout_Steps::instance(), 'maybe_output_order_review_shipping_method_chosen' ), 30 );
+		add_action( 'fc_review_order_shipping', array( $this, 'output_order_review_shipping_method_chosen' ), 30 );
+
+		// Shipping method substep review text
+		remove_filter( 'fc_substep_shipping_method_text_lines', array( FluidCheckout_Steps::instance(), 'add_substep_text_lines_shipping_method' ), 10 );
+		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
+
+		// Shipping method substep completeness
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_fix_substep_complete_shipping_method' ), 10 );
 	}
 
 
@@ -313,6 +337,130 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		}
 
 		return $has_chosen_method;
+	}
+
+
+
+	/**
+	 * Get the chosen shipping method ID for a package.
+	 *
+	 * Prefer the real package key (vendor ID), then fall back to a sequential numeric index.
+	 *
+	 * @param  int|string  $package_key    Package key from `WC()->shipping()->get_packages()`.
+	 * @param  int         $package_index  Sequential package index starting at 0.
+	 */
+	public function get_chosen_shipping_method_for_package( $package_key, $package_index = 0 ) {
+		// Bail if session is not available
+		if ( ! function_exists( 'WC' ) || ! WC()->session ) { return ''; }
+
+		// Get chosen shipping methods
+		$chosen_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+
+		// Bail if chosen shipping methods are not available
+		if ( empty( $chosen_methods ) || ! is_array( $chosen_methods ) ) { return ''; }
+
+		// Prefer package key (vendor-keyed packages)
+		if ( isset( $chosen_methods[ $package_key ] ) && '' !== $chosen_methods[ $package_key ] && null !== $chosen_methods[ $package_key ] ) {
+			return $chosen_methods[ $package_key ];
+		}
+
+		// Fall back to sequential numeric index
+		if ( isset( $chosen_methods[ $package_index ] ) && '' !== $chosen_methods[ $package_index ] && null !== $chosen_methods[ $package_index ] ) {
+			return $chosen_methods[ $package_index ];
+		}
+
+		return '';
+	}
+
+	/**
+	 * Map vendor-keyed chosen shipping methods to sequential numeric indexes.
+	 *
+	 * Used so core Fluid Checkout handlers that only look up numeric indexes still work.
+	 */
+	public function get_numeric_chosen_shipping_methods() {
+		$packages = function_exists( 'WC' ) && WC()->shipping() ? WC()->shipping()->get_packages() : array();
+		$chosen_methods = function_exists( 'WC' ) && WC()->session ? WC()->session->get( 'chosen_shipping_methods', array() ) : array();
+		$numeric_chosen_methods = array();
+		$package_index = 0;
+
+		foreach ( $packages as $package_key => $package ) {
+			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
+			if ( '' !== $chosen_method ) {
+				$numeric_chosen_methods[ $package_index ] = $chosen_method;
+			}
+			$package_index++;
+		}
+
+		return $numeric_chosen_methods;
+	}
+
+	/**
+	 * Run a callback with chosen shipping methods temporarily remapped to numeric indexes.
+	 *
+	 * @param  callable  $callback  Callback to run while session values are remapped.
+	 */
+	public function with_numeric_chosen_shipping_methods( $callback ) {
+		// Bail if session is not available
+		if ( ! function_exists( 'WC' ) || ! WC()->session || ! is_callable( array( WC()->session, 'get' ) ) || ! is_callable( array( WC()->session, 'set' ) ) ) {
+			return call_user_func( $callback );
+		}
+
+		// Retrieve original chosen methods from session
+		$chosen_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+
+		try {
+			WC()->session->set( 'chosen_shipping_methods', $this->get_numeric_chosen_shipping_methods() );
+			return call_user_func( $callback );
+		}
+		finally {
+			WC()->session->set( 'chosen_shipping_methods', $chosen_methods );
+		}
+	}
+
+	/**
+	 * Output chosen shipping methods for order summary using package keys.
+	 */
+	public function output_order_review_shipping_method_chosen() {
+		$this->with_numeric_chosen_shipping_methods( function() {
+			FluidCheckout_Steps::instance()->maybe_output_order_review_shipping_method_chosen();
+		} );
+	}
+
+	/**
+	 * Add shipping method substep review text lines using package keys.
+	 *
+	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
+	 */
+	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		return $this->with_numeric_chosen_shipping_methods( function() use ( $review_text_lines ) {
+			return FluidCheckout_Steps::instance()->add_substep_text_lines_shipping_method( $review_text_lines );
+		} );
+	}
+
+	/**
+	 * Maybe fix shipping method substep completeness for vendor-keyed packages.
+	 *
+	 * @param  bool  $is_substep_complete  Whether the substep is complete.
+	 */
+	public function maybe_fix_substep_complete_shipping_method( $is_substep_complete ) {
+		// Bail if plugin is not active
+		if ( ! class_exists( 'WCFMmp' ) ) { return $is_substep_complete; }
+
+		// Bail if shipping is not available
+		if ( ! function_exists( 'WC' ) || ! WC()->shipping() ) { return $is_substep_complete; }
+
+		// Re-check completeness using package keys
+		$packages = WC()->shipping()->get_packages();
+		$package_index = 0;
+		foreach ( $packages as $package_key => $package ) {
+			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
+			if ( empty( $chosen_method ) ) {
+				return false;
+			}
+			$package_index++;
+		}
+
+		return true;
 	}
 
 }
