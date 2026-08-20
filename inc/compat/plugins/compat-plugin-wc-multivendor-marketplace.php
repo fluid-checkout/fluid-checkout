@@ -85,6 +85,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		wp_register_script( 'wcfmmp_checkout_location_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
+
+
 	/**
 	 * Replace core shipping handlers that look up chosen methods by numeric index.
 	 *
@@ -392,7 +394,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 */
 	public function maybe_output_order_review_shipping_method_chosen() {
 		// Bail if not on checkout or cart page
-		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() && ! FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) { return; }
 
 		// Bail if shipping is not available
 		if ( ! function_exists( 'WC' ) || ! WC()->shipping() || ! WC()->customer ) { return; }
@@ -427,7 +429,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 					'package'                  => $package,
 					'available_methods'        => $available_methods,
 					'show_package_details'     => count( $packages ) > 1,
-					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_index, $package ),
+					'show_shipping_calculator' => $steps->is_cart_page_or_fragment() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_index, $package ),
 					'package_details'          => implode( ', ', $product_names ),
 					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_index, $package ),
 					'formatted_shipping_price' => $steps->get_cart_totals_shipping_method_label( $method, $package, $package_index ),
