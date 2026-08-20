@@ -4503,6 +4503,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get chosen shipping methods
 		$chosen_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+
+		// Bail if chosen shipping methods are not available
 		if ( empty( $chosen_methods ) || ! is_array( $chosen_methods ) ) { return ''; }
 
 		// Prefer package key (vendor-keyed packages, recurring carts, etc.)
@@ -6944,7 +6946,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_key, $package ),
 					'package_details'          => implode( ', ', $product_names ),
 					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_key, $package ),
-					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $package_key ),
+					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package_key, $package ),
 					'index'                    => $package_key,
 					'chosen_method'            => $chosen_method,
 					'method'                   => $method,

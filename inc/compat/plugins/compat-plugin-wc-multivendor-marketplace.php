@@ -35,9 +35,6 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Maybe replace plugin scripts with modified version
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
 
-		// Maybe replace order summary shipping output
-		add_action( 'init', array( $this, 'maybe_replace_order_summary_shipping_output' ), 20 );
-
 		// Move checkout location map and field to shipping section
 		add_action( 'init', array( $this, 'maybe_reposition_checkout_location_map' ), 20 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
@@ -73,20 +70,6 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		// Replace checkout location script with FC-compatible version
 		wp_register_script( 'wcfmmp_checkout_location_js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-	}
-
-
-
-	/**
-	 * Replace order summary shipping output to handle vendor-keyed packages.
-	 */
-	public function maybe_replace_order_summary_shipping_output() {
-		// Bail if plugin is not active
-		if ( ! class_exists( 'WCFMmp' ) ) { return; }
-
-		// Remove the default action and add our own
-		remove_action( 'fc_review_order_shipping', array( FluidCheckout_Steps::instance(), 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		add_action( 'fc_review_order_shipping', array( $this, 'output_order_review_shipping_method_chosen' ), 30 );
 	}
 
 
@@ -216,7 +199,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Bail if delivery location is empty
 		if ( empty( $location ) ) { return $review_text_lines; }
 
-		// Add delivery location heading and values
+		// Intentionally use the text domain from the WCFM plugin
 		$review_text_lines[] = '<strong>' . esc_html__( 'Delivery Location', 'wc-multivendor-marketplace' ) . '</strong>';
 		$review_text_lines[] = esc_html( $location );
 
@@ -294,8 +277,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Bail if delivery location field is not available
 		if ( ! isset( $fields[ 'wcfmmp_user_location' ] ) ) { return false; }
 
-		// Use loose comparison for `required` attribute to allow type casting
-		return array_key_exists( 'required', $fields[ 'wcfmmp_user_location' ] ) && true == $fields[ 'wcfmmp_user_location' ][ 'required' ];
+		return array_key_exists( 'required', $fields[ 'wcfmmp_user_location' ] ) && true === (bool) $fields[ 'wcfmmp_user_location' ][ 'required' ];
 	}
 
 	/**
@@ -312,6 +294,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		// Get chosen shipping methods
 		$chosen_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+
+		// Bail if chosen shipping methods are not available
 		if ( empty( $chosen_methods ) || ! is_array( $chosen_methods ) ) { return false; }
 
 		// All chosen methods must be local pickup
@@ -329,54 +313,6 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		}
 
 		return $has_chosen_method;
-	}
-
-
-
-	/**
-	 * Output chosen shipping methods for order summary using package keys.
-	 *
-	 * WCFM stores chosen methods keyed by vendor/package key. We temporarily
-	 * map them to numeric indexes so the core FC output can be reused.
-	 */
-	public function output_order_review_shipping_method_chosen() {
-		// Bail if not on checkout or cart page
-		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() && ! FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) { return; }
-
-		// Retrieve shipping packages and chosen methods
-		$packages = WC()->shipping()->get_packages();
-
-		// Retrieve chosen methods from session
-		$chosen_methods = is_callable( array( WC()->session, 'get' ) ) ? WC()->session->get( 'chosen_shipping_methods', array() ) : array();
-
-		// Initialize variables
-		$numeric_chosen_methods = array();
-		$package_index = 0;
-
-		// Map vendor-keyed chosen methods to numeric indexes for compatibility
-		foreach ( $packages as $package_key => $package ) {
-			if ( isset( $chosen_methods[ $package_key ] ) ) {
-				$numeric_chosen_methods[ $package_index ] = $chosen_methods[ $package_key ];
-			}
-			elseif ( isset( $chosen_methods[ $package_index ] ) ) {
-				$numeric_chosen_methods[ $package_index ] = $chosen_methods[ $package_index ];
-			}
-			$package_index++;
-		}
-
-		// Temporarily set numeric keys, then always restore original session values
-		try {
-			if ( is_callable( array( WC()->session, 'set' ) ) ) {
-				WC()->session->set( 'chosen_shipping_methods', $numeric_chosen_methods );
-			}
-
-			FluidCheckout_Steps::instance()->maybe_output_order_review_shipping_method_chosen();
-		}
-		finally {
-			if ( is_callable( array( WC()->session, 'set' ) ) ) {
-				WC()->session->set( 'chosen_shipping_methods', $chosen_methods );
-			}
-		}
 	}
 
 }
