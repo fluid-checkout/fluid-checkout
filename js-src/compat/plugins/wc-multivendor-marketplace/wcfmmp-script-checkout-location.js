@@ -76,7 +76,10 @@ jQuery(document).ready(function ($) {
 
 		if (wcfm_maps.lib == 'google') {
 			$('#wcfmmp_user_location').parent().append('<i class="wcfmmmp_locate_icon" style="background-image: url(' + wcfmmp_checkout_map_options.locate_svg + ')"></i>');
-			var latlng = new google.maps.LatLng(wcfmmp_checkout_map_options.default_lat, wcfmmp_checkout_map_options.default_lng, 13);
+			// CHANGE: Prefer saved lat/lng so the map does not reset to the default location after update_checkout
+			var mapCenterLat = $wcfmmp_user_location_lat ? parseFloat( $wcfmmp_user_location_lat ) : parseFloat( wcfmmp_checkout_map_options.default_lat );
+			var mapCenterLng = $wcfmmp_user_location_lng ? parseFloat( $wcfmmp_user_location_lng ) : parseFloat( wcfmmp_checkout_map_options.default_lng );
+			var latlng = new google.maps.LatLng( mapCenterLat, mapCenterLng );
 			map = new google.maps.Map(document.getElementById("wcfmmp-user-locaton-map"), {
 				center: latlng,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
