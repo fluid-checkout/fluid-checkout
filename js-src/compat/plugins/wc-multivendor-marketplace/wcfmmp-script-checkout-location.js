@@ -1,18 +1,31 @@
-jQuery(document).ready(function ($) {
+jQuery(document).ready( function($) {
 	var map = geocoder = marker = map_marker = infowindow = '';
+	// CHANGE: Module-level state for fragment refresh, one-time sync/geolocate, and map resize watching
 	var initTimeout = null;
 	var initialUserLocationValue = '';
-	// CHANGE: Module-level flags — map lives inside the shipping address fragment and is replaced on update_checkout
 	var _hasSyncedLocation = false;
 	var _hasAutoGeolocated = false;
 	var _mapResizeObserver = null;
+	
+	$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
+	$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
+	// CHANGE: Store initial user location value for Leaflet field replace
+	var $initialLocationField = $('#wcfmmp_user_location');
+	if ( $initialLocationField.length ) {
+		initialUserLocationValue = $initialLocationField.val() || '';
+	}
 
-	// CHANGE: Flag map container to prevent repeated initialization for the same DOM node
+	// CHANGE: FC-authored helpers for init guards, map resize, and fragment refresh
+	/**
+	 * Flag map container to prevent repeated initialization for the same DOM node.
+	 */
 	function markInitialized() {
-		var $mapContainer = $('#wcfmmp-user-locaton-map');
-		if ($mapContainer.length) {
-			$mapContainer.data('fcWcfmmpInitialized', true);
-		}
+		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
+
+		// Bail if map container not available
+		if ( ! $mapContainer.length ) { return; }
+
+		$mapContainer.data( 'fcWcfmmpInitialized', true );
 	}
 
 	/**
@@ -61,50 +74,40 @@ jQuery(document).ready(function ($) {
 			_mapResizeObserver.observe( mapContainer );
 		}
 	}
-
-	$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
-	$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
-
-	// CHANGE: Store initial user location value for Leaflet field replace
-	var $initialLocationField = $('#wcfmmp_user_location');
-	if ($initialLocationField.length) {
-		initialUserLocationValue = $initialLocationField.val() || '';
-	}
-
-	// Initialize map, marker, and autocomplete for checkout location.
+	
 	function initialize() {
-
-		if (wcfm_maps.lib == 'google') {
-			$('#wcfmmp_user_location').parent().append('<i class="wcfmmmp_locate_icon" style="background-image: url(' + wcfmmp_checkout_map_options.locate_svg + ')"></i>');
+  	
+  	if( wcfm_maps.lib == 'google' ) {
+  		$('#wcfmmp_user_location').parent().append('<i class="wcfmmmp_locate_icon" style="background-image: url('+wcfmmp_checkout_map_options.locate_svg+')"></i>');
 			// CHANGE: Prefer saved lat/lng so the map does not reset to the default location after update_checkout
 			var mapCenterLat = $wcfmmp_user_location_lat ? parseFloat( $wcfmmp_user_location_lat ) : parseFloat( wcfmmp_checkout_map_options.default_lat );
 			var mapCenterLng = $wcfmmp_user_location_lng ? parseFloat( $wcfmmp_user_location_lng ) : parseFloat( wcfmmp_checkout_map_options.default_lng );
 			var latlng = new google.maps.LatLng( mapCenterLat, mapCenterLng );
 			map = new google.maps.Map(document.getElementById("wcfmmp-user-locaton-map"), {
-				center: latlng,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				zoom: parseInt(wcfmmp_checkout_map_options.default_zoom)
+					center: latlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					zoom: parseInt( wcfmmp_checkout_map_options.default_zoom )
 			});
 			var customIcon = {
-				url: wcfmmp_checkout_map_options.store_icon,
-				scaledSize: new google.maps.Size(wcfmmp_checkout_map_options.icon_width, wcfmmp_checkout_map_options.icon_height), // scaled size
-			};
+												url: wcfmmp_checkout_map_options.store_icon,
+												scaledSize: new google.maps.Size( wcfmmp_checkout_map_options.icon_width, wcfmmp_checkout_map_options.icon_height ), // scaled size
+											};
 			marker = new google.maps.Marker({
-				map: map,
-				position: latlng,
-				animation: google.maps.Animation.DROP,
-				icon: customIcon,
-				draggable: true,
+					map: map,
+					position: latlng,
+					animation: google.maps.Animation.DROP,
+					icon: customIcon,
+					draggable: true,
 			});
-
+		
 			var wcfmmp_user_location_input = document.getElementById("wcfmmp_user_location");
 			//map.controls[google.maps.ControlPosition.TOP_LEFT].push(wcfmmp_user_location_input);
 			geocoder = new google.maps.Geocoder();
 			var autocomplete = new google.maps.places.Autocomplete(wcfmmp_user_location_input);
 			autocomplete.bindTo("bounds", map);
-			infowindow = new google.maps.InfoWindow();
-
-			autocomplete.addListener("place_changed", function () {
+			infowindow = new google.maps.InfoWindow();   
+		
+			autocomplete.addListener("place_changed", function() {
 				infowindow.close();
 				marker.setVisible(false);
 				var place = autocomplete.getPlace();
@@ -112,124 +115,124 @@ jQuery(document).ready(function ($) {
 					window.alert("Autocomplete returned place contains no geometry");
 					return;
 				}
-
+	
 				// If the place has a geometry, then present it on a map.
 				if (place.geometry.viewport) {
 					map.fitBounds(place.geometry.viewport);
 				} else {
 					map.setCenter(place.geometry.location);
-					map.setZoom(parseInt(wcfmmp_checkout_map_options.default_zoom));
+					map.setZoom( parseInt( wcfmmp_checkout_map_options.default_zoom ) );
 				}
-
+	
 				marker.setPosition(place.geometry.location);
 				marker.setVisible(true);
-
-				bindDataToForm(place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng(), false);
+	
+				bindDataToForm(place.formatted_address,place.geometry.location.lat(),place.geometry.location.lng(), false);
 				infowindow.setContent(place.formatted_address);
 				infowindow.open(map, marker);
-				showTooltip(infowindow, marker, place.formatted_address);
-
+				showTooltip(infowindow,marker,place.formatted_address);
+		
 			});
-			google.maps.event.addListener(marker, "dragend", function () {
-				geocoder.geocode({ "latLng": marker.getPosition() }, function (results, status) {
+			google.maps.event.addListener(marker, "dragend", function() {
+				geocoder.geocode({"latLng": marker.getPosition()}, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
-						if (results[0]) {
-							bindDataToForm(results[0].formatted_address, marker.getPosition().lat(), marker.getPosition().lng(), true);
+						if (results[0]) {        
+							bindDataToForm(results[0].formatted_address,marker.getPosition().lat(),marker.getPosition().lng(), true);
 							infowindow.setContent(results[0].formatted_address);
 							infowindow.open(map, marker);
-							showTooltip(infowindow, marker, results[0].formatted_address);
+							showTooltip(infowindow,marker,results[0].formatted_address);
 						}
 					}
 				});
 			});
 		} else {
-			$('#wcfmmp_user_location').replaceWith('<div id="leaflet_wcfmmp_user_location"></div><input type="hidden" class="wcfm_custom_hide" name="wcfmmp_user_location" id="wcfmmp_user_location" />');
+			$('#wcfmmp_user_location').replaceWith( '<div id="leaflet_wcfmmp_user_location"></div><input type="hidden" class="wcfm_custom_hide" name="wcfmmp_user_location" id="wcfmmp_user_location" />' );
 			// CHANGE: Restore location value after Leaflet replaces the visible input
-			if (initialUserLocationValue) {
-				$('#wcfmmp_user_location').val(initialUserLocationValue);
+			if ( initialUserLocationValue ) {
+				$('#wcfmmp_user_location').val( initialUserLocationValue );
 			}
-
-			if ($wcfmmp_user_location_lat && $wcfmmp_user_location_lng) {
-				map = new L.Map('wcfmmp-user-locaton-map', { zoom: parseInt(wcfmmp_checkout_map_options.default_zoom), center: new L.latLng([$wcfmmp_user_location_lat, $wcfmmp_user_location_lng]) });
+			
+			if( $wcfmmp_user_location_lat && $wcfmmp_user_location_lng ) {
+				map = new L.Map( 'wcfmmp-user-locaton-map', {zoom: parseInt( wcfmmp_checkout_map_options.default_zoom ), center: new L.latLng([$wcfmmp_user_location_lat, $wcfmmp_user_location_lng]) });
 				map.addLayer(new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
-				map_marker = L.marker([$wcfmmp_user_location_lat, $wcfmmp_user_location_lng], { draggable: 'true' }).addTo(map).on('click', function () {
-					window.open('https://www.openstreetmap.org/?mlat=' + $wcfmmp_user_location_lat + '&mlon=' + $wcfmmp_user_location_lng + '#map=14/' + $wcfmmp_user_location_lat + '/' + $wcfmmp_user_location_lng, '_blank');
+				map_marker = L.marker([$wcfmmp_user_location_lat, $wcfmmp_user_location_lng], {draggable: 'true'}).addTo(map).on('click', function() {
+					window.open( 'https://www.openstreetmap.org/?mlat='+$wcfmmp_user_location_lat+'&mlon='+$wcfmmp_user_location_lng+'#map=14/'+$wcfmmp_user_location_lat+'/'+$wcfmmp_user_location_lng, '_blank');
 				});
 			} else {
-				map = new L.Map('wcfmmp-user-locaton-map', { zoom: parseInt(wcfmmp_checkout_map_options.default_zoom), center: new L.latLng([wcfmmp_checkout_map_options.default_lat, wcfmmp_checkout_map_options.default_lng]) });
+				map = new L.Map( 'wcfmmp-user-locaton-map', {zoom: parseInt( wcfmmp_checkout_map_options.default_zoom ), center: new L.latLng([wcfmmp_checkout_map_options.default_lat, wcfmmp_checkout_map_options.default_lng]) });
 				map.addLayer(new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));	//base layer
-				map_marker = L.marker([0, 0], { draggable: 'true' });
+				map_marker = L.marker([0,0], {draggable: 'true'});
 			}
-
-			map_marker.on('dragend', function (event) {
+			
+			map_marker.on('dragend', function(event) {
 				var position = map_marker.getLatLng();
-
+				
 				// CHANGE: Use HTTPS to avoid mixed-content blocks on secure checkouts
 				var jsonQuery = "https://nominatim.openstreetmap.org/reverse?format=json&lat=" + position.lat + "&lon=" + position.lng + "&zoom=18&addressdetails=1";
-
+    		
 				var address = '';
+				
+    		$.getJSON(jsonQuery).done( function (result_data) {
+    			var road;
+    			if(result_data.address.road) {
+    				address += result_data.address.road + ", ";
+    			} else if (result_data.address.pedestrian) {
+    				address += result_data.address.pedestrian + ", ";
+    			} else {
+    				address = "";
+    			}
+    			
+    			if( result_data.address.house_number ) address += result_data.address.house_number + ", ";
+    			if( result_data.address.city_district ) address += result_data.address.city_district + ", ";
+    			if( result_data.address.city ) address += result_data.address.city + ", ";
+    			if( result_data.address.postcode ) address += result_data.address.postcode;
+    			
+    			bindDataToForm( address, position.lat, position.lng, true );
+    			
+    			var popup_text = address;
 
-				$.getJSON(jsonQuery).done(function (result_data) {
-					var road;
-					if (result_data.address.road) {
-						address += result_data.address.road + ", ";
-					} else if (result_data.address.pedestrian) {
-						address += result_data.address.pedestrian + ", ";
-					} else {
-						address = "";
-					}
-
-					if (result_data.address.house_number) address += result_data.address.house_number + ", ";
-					if (result_data.address.city_district) address += result_data.address.city_district + ", ";
-					if (result_data.address.city) address += result_data.address.city + ", ";
-					if (result_data.address.postcode) address += result_data.address.postcode;
-
-					bindDataToForm(address, position.lat, position.lng, true);
-
-					var popup_text = address;
-
-					map_marker.bindPopup(popup_text).openPopup();
-				});
+    			map_marker.bindPopup(popup_text).openPopup();
+    		});
 			});
-
+		
 			var searchControl = new L.Control.Search({
-				container: 'leaflet_wcfmmp_user_location',
-				url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
-				jsonpParam: 'json_callback',
-				propertyName: 'display_name',
-				propertyLoc: ['lat', 'lon'],
-				marker: map_marker,
-				moveToLocation: function (latlng, title, map) {
-					bindDataToForm(title, latlng.lat, latlng.lng, true);
-					map.setView(latlng, parseInt(wcfmmp_checkout_map_options.default_zoom)); // access the zoom
-				},
-				//autoCollapse: true,
-				initial: false,
-				collapsed: false,
-				autoType: false,
-				// CHANGE: Disable autoresize — it applies an inline max-width based on the map container
-				autoResize: false,
-				minLength: 2
-			});
-
-			map.addControl(searchControl);  //inizialize search control
+														container: 'leaflet_wcfmmp_user_location',
+														url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+														jsonpParam: 'json_callback',
+														propertyName: 'display_name',
+														propertyLoc: ['lat','lon'],
+														marker: map_marker,
+														moveToLocation: function(latlng, title, map) {
+															bindDataToForm( title, latlng.lat, latlng.lng, true );
+															map.setView(latlng, parseInt( wcfmmp_checkout_map_options.default_zoom ) ); // access the zoom
+														},
+														//autoCollapse: true,
+														initial: false,
+														collapsed:false,
+														autoType: false,
+														// CHANGE: Disable autoresize. It applies an inline max-width based on the map container.
+														autoResize: false,
+														minLength: 2
+													});
+			
+			map.addControl( searchControl );  //inizialize search control
 			// CHANGE: Restore search input value after Leaflet control is added
-			if (initialUserLocationValue) {
-				$("#leaflet_wcfmmp_user_location").find('.search-input').val(initialUserLocationValue);
+			if ( initialUserLocationValue ) {
+				$( '#leaflet_wcfmmp_user_location' ).find( '.search-input' ).val( initialUserLocationValue );
 			}
 
 			// CHANGE: Clear inline max-width from leaflet-search autoresize
-			$("#leaflet_wcfmmp_user_location").find('.search-input').css( 'max-width', '' );
-
+			$( '#leaflet_wcfmmp_user_location' ).find( '.search-input' ).css( 'max-width', '' );
+			
 			//$('#leaflet_wcfmmp_user_location').find('.search-input').val($('#store_location').val());
+			
+			// CHANGE: Remove fixed 3000ms invalidateSize. watchMapContainerSize handles layout settles below.
 		}
 
 		// CHANGE: Keep map tiles aligned after Address Book / collapsible layout changes
 		watchMapContainerSize();
 	}
-
 	
-	// Sync address and coordinates into hidden fields and refresh checkout.
 	function bindDataToForm(address,lat,lng, find_field_refresh) {
 		if( find_field_refresh ) {
 			if( wcfm_maps.lib == 'google' ) {
@@ -245,143 +248,151 @@ jQuery(document).ready(function ($) {
 		
 		$( document.body ).trigger( 'update_checkout' );
 	}
-
-	// Attach click handler to show the info window on marker.
-	function showTooltip(infowindow, marker, address) {
-		google.maps.event.addListener(marker, "click", function () {
-			infowindow.setContent(address);
-			infowindow.open(map, marker);
+	function showTooltip(infowindow,marker,address){
+	 google.maps.event.addListener(marker, "click", function() { 
+				infowindow.setContent(address);
+				infowindow.open(map, marker);
 		});
 	}
-
-	// Fetch current position and update map/fields.
+	
 	function setUser_CurrentLocation() {
-		navigator.geolocation.getCurrentPosition(function (position) {
+		navigator.geolocation.getCurrentPosition( function( position ) {
 			$current_location_fetched = true;
-			if (wcfm_maps.lib == 'google') {
-				geocoder.geocode({
-					location: {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude
-					}
-				}, function (results, status) {
-					if ('OK' === status) {
-						bindDataToForm(results[0].formatted_address, position.coords.latitude, position.coords.longitude, true);
-						var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-						marker.setPosition(latlng);
-						marker.setVisible(true);
-
-						infowindow.setContent(results[0].formatted_address);
-						infowindow.open(map, marker);
-						showTooltip(infowindow, marker, results[0].formatted_address);
-					}
-				})
+			// CHANGE: Remove debug console.log from upstream
+			if( wcfm_maps.lib == 'google' ) {
+				geocoder.geocode( {
+						location: {
+								lat: position.coords.latitude,
+								lng: position.coords.longitude
+						}
+				}, function ( results, status ) {
+						if ( 'OK' === status ) {
+							bindDataToForm( results[0].formatted_address, position.coords.latitude, position.coords.longitude, true );
+							var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+							marker.setPosition(latlng);
+							marker.setVisible(true);
+							
+							infowindow.setContent( results[0].formatted_address );
+							infowindow.open( map, marker );
+							showTooltip( infowindow, marker, results[0].formatted_address );
+						}
+				} )
 			} else {
-				$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude, function (data) {
-					bindDataToForm(data.address.road, position.coords.latitude, position.coords.longitude, true);
-
+				$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+position.coords.latitude+'&lon='+position.coords.longitude, function(data) {
+					bindDataToForm( data.address.road, position.coords.latitude, position.coords.longitude, true );
+					
 					map_marker.bindPopup(data.address.road).openPopup();
 				});
 			}
 		});
 	}
 
-	// CHANGE: Initialize map for current DOM; sync/geolocate only once per page load
+	// CHANGE: Replace one-shot init with fragment-safe init, sync, and event wiring
+	/**
+	 * Initialize map for current DOM. Sync and geolocate only once per page load.
+	 */
 	function initializeCheckoutLocation() {
 		// Re-read field values after fragment replace
-		$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
-		$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
-		var $locationField = $('#wcfmmp_user_location');
-		if ($locationField.length) {
+		$wcfmmp_user_location_lat = jQuery( '#wcfmmp_user_location_lat' ).val();
+		$wcfmmp_user_location_lng = jQuery( '#wcfmmp_user_location_lng' ).val();
+		var $locationField = $( '#wcfmmp_user_location' );
+		if ( $locationField.length ) {
 			initialUserLocationValue = $locationField.val() || '';
 		}
 
 		initialize();
 		markInitialized();
 
-		// CHANGE: Sync saved location only once — avoids update_checkout loops when the map fragment is replaced
-		if (!_hasSyncedLocation) {
+		// CHANGE: Sync saved location only once. Avoids update_checkout loops when the map fragment is replaced.
+		if ( ! _hasSyncedLocation ) {
 			syncSavedLocation();
 		}
 
-		if (navigator.geolocation) {
-			// CHANGE: Auto-geolocate only once per page load
-			if (!_hasAutoGeolocated && (!$("#wcfmmp_user_location_lat").val() || !$("#wcfmmp_user_location_lng").val())) {
-				_hasAutoGeolocated = true;
-				setUser_CurrentLocation();
-			}
+		// Bail if geolocation is not available
+		if ( ! navigator.geolocation ) { return; }
+
+		// CHANGE: Auto-geolocate only once per page load, and only when lat/lng are empty
+		if ( ! _hasAutoGeolocated && ( ! $( '#wcfmmp_user_location_lat' ).val() || ! $( '#wcfmmp_user_location_lng' ).val() ) ) {
+			_hasAutoGeolocated = true;
+			setUser_CurrentLocation();
 		}
 	}
 
-	// CHANGE: Resolve saved lat/lng into address once per page load
+	/**
+	 * Resolve saved lat/lng into an address once per page load.
+	 */
 	function syncSavedLocation() {
-		if (_hasSyncedLocation) {
-			return;
-		}
+		// Bail if already synced
+		if ( _hasSyncedLocation ) { return; }
 
-		var latValue = $("#wcfmmp_user_location_lat").val();
-		var lngValue = $("#wcfmmp_user_location_lng").val();
-		if (!latValue || !lngValue) {
-			return;
-		}
+		var latValue = $( '#wcfmmp_user_location_lat' ).val();
+		var lngValue = $( '#wcfmmp_user_location_lng' ).val();
 
-		if (wcfm_maps.lib === 'google' && geocoder) {
-			geocoder.geocode({
+		// Bail if lat/lng are not available
+		if ( ! latValue || ! lngValue ) { return; }
+
+		if ( wcfm_maps.lib === 'google' && geocoder ) {
+			geocoder.geocode( {
 				location: {
-					lat: parseFloat(latValue),
-					lng: parseFloat(lngValue)
+					lat: parseFloat( latValue ),
+					lng: parseFloat( lngValue )
 				}
-			}, function (results, status) {
-				if ('OK' === status && results[0]) {
-					// CHANGE: Only mark synced after a successful bind — failed requests can retry
+			}, function( results, status ) {
+				if ( 'OK' === status && results[0] ) {
+					// CHANGE: Only mark synced after a successful bind. Failed requests can retry.
 					_hasSyncedLocation = true;
-					// CHANGE: bindDataToForm already triggers update_checkout — do not fire it again
-					bindDataToForm(results[0].formatted_address, latValue, lngValue, true);
+					// CHANGE: bindDataToForm already triggers update_checkout. Do not fire it again.
+					bindDataToForm( results[0].formatted_address, latValue, lngValue, true );
 				}
-			});
+			} );
 			return;
 		}
 
-		if (wcfm_maps.lib !== 'google') {
-			$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, function (data) {
-				var address = data && data.display_name ? data.display_name : '';
-				if (address) {
-					// CHANGE: Only mark synced after a successful bind — failed requests can retry
-					_hasSyncedLocation = true;
-					// CHANGE: bindDataToForm already triggers update_checkout — do not fire it again
-					bindDataToForm(address, latValue, lngValue, true);
-				}
-			});
-		}
+		// Bail if not using a non-Google map library
+		if ( wcfm_maps.lib === 'google' ) { return; }
+
+		$.get( 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, function( data ) {
+			var address = data && data.display_name ? data.display_name : '';
+
+			// Bail if address is empty
+			if ( ! address ) { return; }
+
+			// CHANGE: Only mark synced after a successful bind. Failed requests can retry.
+			_hasSyncedLocation = true;
+			// CHANGE: bindDataToForm already triggers update_checkout. Do not fire it again.
+			bindDataToForm( address, latValue, lngValue, true );
+		} );
 	}
 
-	// CHANGE: Guarded initializer to run after checkout refreshes
+	/**
+	 * Guarded initializer to run after checkout refreshes.
+	 */
 	function maybeInitCheckoutLocation() {
-		var $mapContainer = $('#wcfmmp-user-locaton-map');
-		if (!$mapContainer.length) {
-			return;
-		}
-		if ($mapContainer.data('fcWcfmmpInitialized')) {
-			return;
-		}
-		if ($("#wcfmmp_user_location_lat").length === 0) {
-			return;
+		var $mapContainer = $( '#wcfmmp-user-locaton-map' );
+
+		// Bail if map container not available
+		if ( ! $mapContainer.length ) { return; }
+
+		// Bail if already initialized for this DOM node
+		if ( $mapContainer.data( 'fcWcfmmpInitialized' ) ) { return; }
+
+		// Bail if lat field is not available
+		if ( $( '#wcfmmp_user_location_lat' ).length === 0 ) { return; }
+
+		if ( initTimeout ) {
+			clearTimeout( initTimeout );
 		}
 
-		if (initTimeout) {
-			clearTimeout(initTimeout);
-		}
-
-		initTimeout = setTimeout(function () {
+		initTimeout = setTimeout( function() {
 			initializeCheckoutLocation();
-		}, 500);
+		}, 500 );
 	}
 
+	// CHANGE: Replace one-shot init with guarded init that survives checkout fragment refresh
 	maybeInitCheckoutLocation();
-	// CHANGE: Re-init map after checkout fragment refresh
-	$(document.body).on('updated_checkout', maybeInitCheckoutLocation);
-	// CHANGE: Delegated locate-icon click — survives fragment refresh without stacking handlers
-	$(document.body).on('click.fcWcfmmpLocate', '.wcfmmmp_locate_icon', function () {
+	$( document.body ).on( 'updated_checkout', maybeInitCheckoutLocation );
+	// CHANGE: Delegated locate-icon click. Survives fragment refresh without stacking handlers.
+	$( document.body ).on( 'click.fcWcfmmpLocate', '.wcfmmmp_locate_icon', function() {
 		setUser_CurrentLocation();
-	});
+	} );
 });
