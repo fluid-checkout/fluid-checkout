@@ -26,7 +26,7 @@
 
 .fc-wrapper #leaflet_wcfmmp_user_location .leaflet-control-search .search-input {
 	width: 100%;
-	max-width: none !important; // Override leaflet-search inline max-width from map container width
+	max-width: none !important; // leaflet-search re-applies inline max-width on every map resize
 	box-sizing: border-box;
 }
 

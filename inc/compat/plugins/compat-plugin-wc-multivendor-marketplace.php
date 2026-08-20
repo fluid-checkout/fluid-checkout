@@ -35,11 +35,10 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Maybe replace plugin scripts with modified version
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
 
-		// Vendor-keyed shipping packages
-		add_action( 'init', array( $this, 'maybe_replace_vendor_keyed_shipping_handlers' ), 20 );
+		// Late hooks. Priority 20: after WCFM builds `$WCFMmp->frontend` on `init` 10 via `wcfm_init`.
+		add_action( 'init', array( $this, 'late_hooks' ), 20 );
 
-		// Move checkout location map and field to shipping section
-		add_action( 'init', array( $this, 'maybe_reposition_checkout_location_map' ), 20 );
+		// Move checkout location fields to shipping section
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
 
 		// Output location fields when shipping address is not required (e.g. local pickup)
@@ -57,6 +56,17 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		// Checkout validation
 		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_validate_delivery_location' ), 10 );
+	}
+
+	/**
+	 * Add or remove late hooks.
+	 */
+	public function late_hooks() {
+		// Vendor-keyed shipping packages
+		$this->maybe_replace_vendor_keyed_shipping_handlers();
+
+		// Move checkout location map to shipping section
+		$this->maybe_reposition_checkout_location_map();
 	}
 
 
@@ -86,7 +96,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		// Order summary shipping rows
 		remove_action( 'fc_review_order_shipping', array( FluidCheckout_Steps::instance(), 'maybe_output_order_review_shipping_method_chosen' ), 30 );
-		add_action( 'fc_review_order_shipping', array( $this, 'output_order_review_shipping_method_chosen' ), 30 );
+		add_action( 'fc_review_order_shipping', array( $this, 'maybe_output_order_review_shipping_method_chosen' ), 30 );
 
 		// Shipping method substep review text
 		remove_filter( 'fc_substep_shipping_method_text_lines', array( FluidCheckout_Steps::instance(), 'add_substep_text_lines_shipping_method' ), 10 );
@@ -344,7 +354,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	/**
 	 * Get the chosen shipping method ID for a package.
 	 *
-	 * Prefer the real package key (vendor ID), then fall back to a sequential numeric index.
+	 * Prefer the real package key (vendor ID). Only fall back to a sequential numeric
+	 * index when that index is not also a vendor package key (avoids picking another vendor).
 	 *
 	 * @param  int|string  $package_key    Package key from `WC()->shipping()->get_packages()`.
 	 * @param  int         $package_index  Sequential package index starting at 0.
@@ -353,8 +364,9 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Bail if session is not available
 		if ( ! function_exists( 'WC' ) || ! WC()->session ) { return ''; }
 
-		// Get chosen shipping methods
+		// Get chosen shipping methods and packages
 		$chosen_methods = WC()->session->get( 'chosen_shipping_methods', array() );
+		$packages = function_exists( 'WC' ) && WC()->shipping() ? WC()->shipping()->get_packages() : array();
 
 		// Bail if chosen shipping methods are not available
 		if ( empty( $chosen_methods ) || ! is_array( $chosen_methods ) ) { return ''; }
@@ -364,8 +376,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 			return $chosen_methods[ $package_key ];
 		}
 
-		// Fall back to sequential numeric index
-		if ( isset( $chosen_methods[ $package_index ] ) && '' !== $chosen_methods[ $package_index ] && null !== $chosen_methods[ $package_index ] ) {
+		// Fall back to sequential numeric index only when it is not a vendor package key
+		if ( ! array_key_exists( $package_index, $packages ) && isset( $chosen_methods[ $package_index ] ) && '' !== $chosen_methods[ $package_index ] && null !== $chosen_methods[ $package_index ] ) {
 			return $chosen_methods[ $package_index ];
 		}
 
@@ -373,68 +385,159 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	}
 
 	/**
-	 * Map vendor-keyed chosen shipping methods to sequential numeric indexes.
+	 * Output chosen shipping methods for order summary using package keys.
 	 *
-	 * Used so core Fluid Checkout handlers that only look up numeric indexes still work.
+	 * Copied from `FluidCheckout_Steps::maybe_output_order_review_shipping_method_chosen()`
+	 * so vendor-keyed chosen methods are resolved without mutating the session.
 	 */
-	public function get_numeric_chosen_shipping_methods() {
-		$packages = function_exists( 'WC' ) && WC()->shipping() ? WC()->shipping()->get_packages() : array();
-		$chosen_methods = function_exists( 'WC' ) && WC()->session ? WC()->session->get( 'chosen_shipping_methods', array() ) : array();
-		$numeric_chosen_methods = array();
-		$package_index = 0;
+	public function maybe_output_order_review_shipping_method_chosen() {
+		// Bail if not on checkout or cart page
+		if ( ! function_exists( 'is_checkout' ) || ( ! is_checkout() && ! is_cart() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) ) { return; }
 
+		// Bail if shipping is not available
+		if ( ! function_exists( 'WC' ) || ! WC()->shipping() || ! WC()->customer ) { return; }
+
+		// Get packages
+		$packages = WC()->shipping()->get_packages();
+		$steps = FluidCheckout_Steps::instance();
+
+		// Initialize variables
+		$first = true;
+
+		// Iterate packages
+		$package_index = 0;
 		foreach ( $packages as $package_key => $package ) {
+			$available_methods = $package[ 'rates' ];
 			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
-			if ( '' !== $chosen_method ) {
-				$numeric_chosen_methods[ $package_index ] = $chosen_method;
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+			/** translators: %d: Package number */
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
+			$product_names = array();
+
+			if ( count( $packages ) > 1 ) {
+				foreach ( $package[ 'contents' ] as $item_id => $values ) {
+					$product_names[ $item_id ] = $values[ 'data' ]->get_name() . ' &times;' . $values[ 'quantity' ];
+				}
+				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
+
+			wc_get_template(
+				'checkout/review-order-shipping.php',
+				array(
+					'package'                  => $package,
+					'available_methods'        => $available_methods,
+					'show_package_details'     => count( $packages ) > 1,
+					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_index, $package ),
+					'package_details'          => implode( ', ', $product_names ),
+					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_index, $package ),
+					'formatted_shipping_price' => $steps->get_cart_totals_shipping_method_label( $method, $package, $package_index ),
+					'index'                    => $package_index,
+					'chosen_method'            => $chosen_method,
+					'method'                   => $method,
+					'formatted_destination'    => WC()->countries->get_formatted_address( $package[ 'destination' ], ', ' ),
+					'has_calculated_shipping'  => WC()->customer->has_calculated_shipping(),
+				)
+			);
+
+			$first = false;
 			$package_index++;
 		}
-
-		return $numeric_chosen_methods;
-	}
-
-	/**
-	 * Run a callback with chosen shipping methods temporarily remapped to numeric indexes.
-	 *
-	 * @param  callable  $callback  Callback to run while session values are remapped.
-	 */
-	public function with_numeric_chosen_shipping_methods( $callback ) {
-		// Bail if session is not available
-		if ( ! function_exists( 'WC' ) || ! WC()->session || ! is_callable( array( WC()->session, 'get' ) ) || ! is_callable( array( WC()->session, 'set' ) ) ) {
-			return call_user_func( $callback );
-		}
-
-		// Retrieve original chosen methods from session
-		$chosen_methods = WC()->session->get( 'chosen_shipping_methods', array() );
-
-		try {
-			WC()->session->set( 'chosen_shipping_methods', $this->get_numeric_chosen_shipping_methods() );
-			return call_user_func( $callback );
-		}
-		finally {
-			WC()->session->set( 'chosen_shipping_methods', $chosen_methods );
-		}
-	}
-
-	/**
-	 * Output chosen shipping methods for order summary using package keys.
-	 */
-	public function output_order_review_shipping_method_chosen() {
-		$this->with_numeric_chosen_shipping_methods( function() {
-			FluidCheckout_Steps::instance()->maybe_output_order_review_shipping_method_chosen();
-		} );
 	}
 
 	/**
 	 * Add shipping method substep review text lines using package keys.
 	 *
+	 * Copied from `FluidCheckout_Steps::add_substep_text_lines_shipping_method()`
+	 * so vendor-keyed chosen methods are resolved without mutating the session.
+	 *
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
-		return $this->with_numeric_chosen_shipping_methods( function() use ( $review_text_lines ) {
-			return FluidCheckout_Steps::instance()->add_substep_text_lines_shipping_method( $review_text_lines );
-		} );
+		// Bail if not an array
+		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
+
+		// Bail if shipping is not available
+		if ( ! function_exists( 'WC' ) || ! WC()->shipping() ) { return $review_text_lines; }
+
+		// Get shipping packages
+		$packages = WC()->shipping()->get_packages();
+		$steps = FluidCheckout_Steps::instance();
+
+		// Determine if has multiple packages
+		$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
+
+		// Determine allowed kses attributes and tags
+		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array(), 'br' => array() );
+
+		// Iterate shipping packages
+		$package_index = 0;
+		foreach ( $packages as $package_key => $package ) {
+			$package_review_text_lines = array();
+
+			// Get shipping method info
+			$available_methods = $package[ 'rates' ];
+			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
+			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
+			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
+
+			// Handle package name
+			if ( $has_multiple_packages && $steps->is_shipping_package_name_display_enabled() ) {
+				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
+				$package_name = '<strong>' . $package_name . '</strong>';
+				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
+			}
+
+			// Add chosen shipping method line
+			$package_review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
+
+			// Handle package destination
+			if ( $has_multiple_packages && $steps->is_shipping_package_contents_destination_text_lines_enabled() ) {
+				// Get package destination
+				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
+				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $package_index, $package, $chosen_method, $method );
+
+				// Get formatted destination text
+				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
+				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $package_index, $package, $chosen_method, $method );
+
+				// Add package destination line
+				if ( ! empty( $destination_text ) ) {
+					$package_review_text_lines[] = wp_kses( $destination_text, $allowed_kses_attributes );
+				}
+			}
+
+			// Filter review text lines for the shipping package before adding the package contents
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $package_index, $package, $chosen_method, $method );
+
+			// Handle package contents
+			if ( $has_multiple_packages && $steps->is_shipping_package_contents_substep_text_lines_enabled() ) {
+				// Get shipping package contents
+				$contents = '';
+				foreach ( $package[ 'contents' ] as $item_id => $values ) {
+					$contents .= $values[ 'quantity' ] . ' × ' . $values[ 'data' ]->get_name() . ', ';
+				}
+				// Remove extra comma at the end
+				$contents = trim( rtrim( $contents, ', ' ) );
+
+				// Wrap contents in a `span` tag for small text
+				$contents = '<span class="fc-step__substep-text-line--small-text">' . $contents . '</span>';
+
+				// Add package contents line
+				$package_review_text_lines[] = wp_kses( $contents, $allowed_kses_attributes );
+			}
+
+			// Filter review text lines for the shipping package
+			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $package_index, $package, $chosen_method, $method );
+
+			// Add package review text lines
+			$review_text_lines = array_merge( $review_text_lines, $package_review_text_lines );
+
+			// Increase package index
+			$package_index++;
+		}
+
+		return $review_text_lines;
 	}
 
 	/**

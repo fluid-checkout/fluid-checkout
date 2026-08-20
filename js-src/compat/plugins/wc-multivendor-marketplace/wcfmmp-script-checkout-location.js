@@ -1,3 +1,7 @@
+/**
+ * Checkout location scripts for: WCFM - WooCommerce Multivendor Marketplace (by WC Lovers).
+ */
+
 jQuery(document).ready( function($) {
 	var map = geocoder = marker = map_marker = infowindow = '';
 	// CHANGE: Module-level state for fragment refresh, one-time sync/geolocate, and map resize watching
@@ -6,6 +10,7 @@ jQuery(document).ready( function($) {
 	var _hasSyncedLocation = false;
 	var _hasAutoGeolocated = false;
 	var _mapResizeObserver = null;
+	var _mapInvalidateRaf = null;
 	
 	$wcfmmp_user_location_lat = jQuery("#wcfmmp_user_location_lat").val();
 	$wcfmmp_user_location_lng = jQuery("#wcfmmp_user_location_lng").val();
@@ -35,14 +40,26 @@ jQuery(document).ready( function($) {
 		// Bail if map not available
 		if ( ! map ) { return; }
 
-		if ( wcfm_maps.lib === 'google' && window.google && google.maps && google.maps.event ) {
-			google.maps.event.trigger( map, 'resize' );
-			return;
-		}
+		// Bail if a resize pass is already scheduled (ResizeObserver can feedback via invalidateSize)
+		if ( _mapInvalidateRaf ) { return; }
 
-		if ( wcfm_maps.lib !== 'google' && typeof map.invalidateSize === 'function' ) {
-			map.invalidateSize( false );
-		}
+		var schedule = typeof window.requestAnimationFrame === 'function' ? window.requestAnimationFrame : function( callback ) { return window.setTimeout( callback, 0 ); };
+
+		_mapInvalidateRaf = schedule( function() {
+			_mapInvalidateRaf = null;
+
+			// Bail if map was cleared while waiting
+			if ( ! map ) { return; }
+
+			if ( wcfm_maps.lib === 'google' && window.google && google.maps && google.maps.event ) {
+				google.maps.event.trigger( map, 'resize' );
+				return;
+			}
+
+			if ( wcfm_maps.lib !== 'google' && typeof map.invalidateSize === 'function' ) {
+				map.invalidateSize( false );
+			}
+		} );
 	}
 
 	/**
@@ -210,8 +227,6 @@ jQuery(document).ready( function($) {
 														initial: false,
 														collapsed:false,
 														autoType: false,
-														// CHANGE: Disable autoresize. It applies an inline max-width based on the map container.
-														autoResize: false,
 														minLength: 2
 													});
 			
@@ -221,9 +236,6 @@ jQuery(document).ready( function($) {
 				$( '#leaflet_wcfmmp_user_location' ).find( '.search-input' ).val( initialUserLocationValue );
 			}
 
-			// CHANGE: Clear inline max-width from leaflet-search autoresize
-			$( '#leaflet_wcfmmp_user_location' ).find( '.search-input' ).css( 'max-width', '' );
-			
 			//$('#leaflet_wcfmmp_user_location').find('.search-input').val($('#store_location').val());
 			
 			// CHANGE: Remove fixed 3000ms invalidateSize. watchMapContainerSize handles layout settles below.
@@ -256,6 +268,10 @@ jQuery(document).ready( function($) {
 	}
 	
 	function setUser_CurrentLocation() {
+		// CHANGE: Guard geolocation. Upstream only bound the locate icon when the API exists.
+		// Bail if geolocation is not available
+		if ( ! navigator.geolocation ) { return; }
+
 		navigator.geolocation.getCurrentPosition( function( position ) {
 			$current_location_fetched = true;
 			// CHANGE: Remove debug console.log from upstream
@@ -338,12 +354,14 @@ jQuery(document).ready( function($) {
 					lng: parseFloat( lngValue )
 				}
 			}, function( results, status ) {
-				if ( 'OK' === status && results[0] ) {
-					// CHANGE: Only mark synced after a successful bind. Failed requests can retry.
-					_hasSyncedLocation = true;
-					// CHANGE: bindDataToForm already triggers update_checkout. Do not fire it again.
-					bindDataToForm( results[0].formatted_address, latValue, lngValue, true );
-				}
+				// CHANGE: Mark synced on completion. Avoids unbounded reverse-geocode retries on every updated_checkout.
+				_hasSyncedLocation = true;
+
+				// Bail if geocode failed
+				if ( 'OK' !== status || ! results[0] ) { return; }
+
+				// CHANGE: bindDataToForm already triggers update_checkout. Do not fire it again.
+				bindDataToForm( results[0].formatted_address, latValue, lngValue, true );
 			} );
 			return;
 		}
@@ -351,17 +369,20 @@ jQuery(document).ready( function($) {
 		// Bail if not using a non-Google map library
 		if ( wcfm_maps.lib === 'google' ) { return; }
 
-		$.get( 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue, function( data ) {
-			var address = data && data.display_name ? data.display_name : '';
+		$.get( 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + latValue + '&lon=' + lngValue )
+			.done( function( data ) {
+				var address = data && data.display_name ? data.display_name : '';
 
-			// Bail if address is empty
-			if ( ! address ) { return; }
+				// Bail if address is empty
+				if ( ! address ) { return; }
 
-			// CHANGE: Only mark synced after a successful bind. Failed requests can retry.
-			_hasSyncedLocation = true;
-			// CHANGE: bindDataToForm already triggers update_checkout. Do not fire it again.
-			bindDataToForm( address, latValue, lngValue, true );
-		} );
+				// CHANGE: bindDataToForm already triggers update_checkout. Do not fire it again.
+				bindDataToForm( address, latValue, lngValue, true );
+			} )
+			.always( function() {
+				// CHANGE: Mark synced on completion. Avoids unbounded Nominatim retries on every updated_checkout.
+				_hasSyncedLocation = true;
+			} );
 	}
 
 	/**

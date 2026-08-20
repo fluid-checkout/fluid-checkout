@@ -361,6 +361,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Compatibility with plugin: WCFM - WooCommerce Multivendor Marketplace (by WC Lovers).
 * Improved: Compatibility with plugin WCFM Multivendor Marketplace. Show delivery location with a clear heading in the shipping address review, keep the map pin after checkout updates, and block checkout when the delivery location is required but missing.
 * Fixed: Compatibility with plugin WCFM Multivendor Marketplace. Show the selected shipping method in the substep review text when packages are keyed by vendor ID.
+* Fixed: Compatibility with plugin WCFM Multivendor Marketplace. Resolve vendor-keyed shipping methods without rewriting the session, avoid matching another vendor on numeric fallback, stop unbounded reverse-geocode retries after a failed location sync, and avoid locate-icon errors when geolocation is unavailable.
 * Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
 * Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
