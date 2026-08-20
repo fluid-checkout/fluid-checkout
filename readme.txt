@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = 4.2.7 - 2026-08-19 =
 
-* Bump tested up to upcoming WordPress 7.1+
+* Bump tested up to WordPress 7.1+
 * Added: Compatibility with theme Sober (by Uixthemes).
 * Added: Compatibility with plugin CartFlows.
 * Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
