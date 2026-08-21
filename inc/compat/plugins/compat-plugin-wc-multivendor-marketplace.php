@@ -32,11 +32,11 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Maybe replace plugin scripts with modified version
-		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
-
 		// Late hooks. Priority 20: after WCFM builds `$WCFMmp->frontend` on `init` 10 via `wcfm_init`.
 		add_action( 'init', array( $this, 'late_hooks' ), 20 );
+
+		// Maybe replace plugin scripts with modified version
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
 
 		// Move checkout location fields to shipping section
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
@@ -63,10 +63,10 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 */
 	public function late_hooks() {
 		// Vendor-keyed shipping packages
-		$this->maybe_replace_vendor_keyed_shipping_handlers();
+		$this->shipping_methods_hooks();
 
 		// Move checkout location map to shipping section
-		$this->maybe_reposition_checkout_location_map();
+		$this->checkout_location_map_hooks();
 	}
 
 
@@ -88,11 +88,12 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 
 	/**
-	 * Replace core shipping handlers that look up chosen methods by numeric index.
+	 * Add or remove shipping methods hooks.
 	 *
-	 * WCFM stores chosen methods keyed by vendor ID (package key).
+	 * Replaces core handlers that look up chosen methods by numeric index,
+	 * as WCFM stores chosen methods keyed by vendor ID (package key).
 	 */
-	public function maybe_replace_vendor_keyed_shipping_handlers() {
+	public function shipping_methods_hooks() {
 		// Bail if plugin is not active
 		if ( ! class_exists( 'WCFMmp' ) ) { return; }
 
@@ -111,9 +112,9 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 
 	/**
-	 * Move checkout location map to shipping section.
+	 * Add or remove checkout location map hooks.
 	 */
-	public function maybe_reposition_checkout_location_map() {
+	public function checkout_location_map_hooks() {
 		// Bail if plugin is not active
 		if ( ! class_exists( 'WCFMmp' ) ) { return; }
 
@@ -148,14 +149,17 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		$fields[ 'shipping' ][ 'wcfmmp_user_location' ] = $fields[ 'billing' ][ 'wcfmmp_user_location' ];
 		$fields[ 'shipping' ][ 'wcfmmp_user_location' ][ 'priority' ] = 999;
 
-		// Move latitude and longitude fields to shipping section
+		// Maybe move the latitude field to shipping section
 		if ( isset( $fields[ 'billing' ][ 'wcfmmp_user_location_lat' ] ) ) {
 			$fields[ 'shipping' ][ 'wcfmmp_user_location_lat' ] = $fields[ 'billing' ][ 'wcfmmp_user_location_lat' ];
 		}
+
+		// Maybe move the longitude field to shipping section
 		if ( isset( $fields[ 'billing' ][ 'wcfmmp_user_location_lng' ] ) ) {
 			$fields[ 'shipping' ][ 'wcfmmp_user_location_lng' ] = $fields[ 'billing' ][ 'wcfmmp_user_location_lng' ];
 		}
 
+		// Remove the fields from the billing section
 		unset( $fields[ 'billing' ][ 'wcfmmp_user_location' ], $fields[ 'billing' ][ 'wcfmmp_user_location_lat' ], $fields[ 'billing' ][ 'wcfmmp_user_location_lng' ] );
 
 		return $fields;
@@ -178,13 +182,16 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Bail if shipping address is needed (fields already output in the shipping form)
 		if ( WC()->cart->needs_shipping_address() ) { return; }
 
+		// Get checkout shipping fields
 		$checkout = WC()->checkout();
 		$fields = $checkout->get_checkout_fields( 'shipping' );
 
+		// Iterate location field keys
 		foreach ( $this->location_field_keys as $field_key ) {
 			// Skip if field is not available
 			if ( ! isset( $fields[ $field_key ] ) ) { continue; }
 
+			// Output the location field
 			woocommerce_form_field( $field_key, $fields[ $field_key ], $checkout->get_value( $field_key ) );
 		}
 	}
@@ -236,12 +243,12 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		if ( empty( $location ) ) { return $review_text_lines; }
 
 		// Intentionally use the text domain from the WCFM plugin
-		$review_text_lines[] = '<strong>' . esc_html__( 'Delivery Location', 'wc-multivendor-marketplace' ) . '</strong>';
-		$review_text_lines[] = esc_html( $location );
+		$review_text_lines[] = '<strong>' . __( 'Delivery Location', 'wc-multivendor-marketplace' ) . '</strong>';
+		$review_text_lines[] = $location;
 
 		// Maybe add coordinates on a single line
 		if ( ! empty( $lat ) && ! empty( $lng ) ) {
-			$review_text_lines[] = esc_html( $lat . ' ' . $lng );
+			$review_text_lines[] = $lat . ' ' . $lng;
 		}
 
 		return $review_text_lines;
@@ -321,6 +328,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 */
 	public function is_local_pickup_selected() {
 		// Prefer PRO local pickup detection when available
+		// Maybe use the PRO local pickup detection
 		if ( class_exists( 'FluidCheckout_PRO_CheckoutLocalPickup' ) && method_exists( FluidCheckout_PRO_CheckoutLocalPickup::instance(), 'is_shipping_method_local_pickup_selected' ) ) {
 			return FluidCheckout_PRO_CheckoutLocalPickup::instance()->is_shipping_method_local_pickup_selected();
 		}
@@ -336,6 +344,8 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 		// All chosen methods must be local pickup
 		$has_chosen_method = false;
+
+		// Iterate chosen shipping methods
 		foreach ( $chosen_methods as $method_id ) {
 			// Skip empty method ids
 			if ( empty( $method_id ) ) { continue; }
@@ -409,6 +419,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Iterate packages
 		$package_index = 0;
 		foreach ( $packages as $package_key => $package ) {
+			// Get shipping method info
 			$available_methods = $package[ 'rates' ];
 			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
@@ -416,7 +427,9 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 			$product_names = array();
 
+			// Maybe get package contents for multiple packages
 			if ( count( $packages ) > 1 ) {
+				// Iterate package contents
 				foreach ( $package[ 'contents' ] as $item_id => $values ) {
 					$product_names[ $item_id ] = $values[ 'data' ]->get_name() . ' &times;' . $values[ 'quantity' ];
 				}
@@ -554,14 +567,21 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Bail if shipping is not available
 		if ( ! function_exists( 'WC' ) || ! WC()->shipping() ) { return $is_substep_complete; }
 
-		// Re-check completeness using package keys
+		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
+
+		// Iterate shipping packages
 		$package_index = 0;
 		foreach ( $packages as $package_key => $package ) {
+			// Get chosen shipping method for the package
 			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
+
+			// Return `false` if the package does not have a chosen shipping method
 			if ( empty( $chosen_method ) ) {
 				return false;
 			}
+
+			// Increase package index
 			$package_index++;
 		}
 

@@ -68,6 +68,11 @@
 			"script_handle": "woocommerce-extra-checkout-fields-for-brazil-front"
 		},
 		{
+			"our_path": "js-src/compat/plugins/woocommerce-gus/gus.js",
+			"their_path": "plugins/woocommerce-gus/assets/js/gus.js",
+			"script_handle": "frontend-ajax-gus"
+		},
+		{
 			"our_path": "js-src/compat/plugins/woocommerce-superfaktura/checkout.js",
 			"their_path": "https://plugins.svn.wordpress.org/woocommerce-superfaktura/trunk/assets/js/checkout.js",
 			"script_handle": "wc-sf-checkout-js"
