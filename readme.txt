@@ -356,9 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Keep shipping address session values (including empty fields) without overwriting the customer account shipping address on the cart.
-* Fixed: Only show "Same as billing address" on cart when billing is already complete and billing is shown before shipping.
-* Fixed: Restore the previous shipping address when unchecking "Same as billing address" on the cart page.
+* Fixed: "Same as billing address" behavior on the cart shipping calculator.
 
 = 4.2.7 - 2026-08-19 =
 
