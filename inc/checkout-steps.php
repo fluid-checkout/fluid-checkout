@@ -5238,6 +5238,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Initialize label variable
 		$label = $method->get_label();
 
+		// Get whether shipping method has costs
+		$has_cost = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
+
+		// Maybe skip zero-cost when the setting is "hidden" (same as main branch substep review)
+		if ( ! $has_cost && 'hidden' === $this->get_shipping_methods_zero_cost_display_mode() ) {
+			return $label;
+		}
+
 		// Get shipping method cost HTML
 		$method_costs = $this->get_shipping_method_cost_html( $method );
 
