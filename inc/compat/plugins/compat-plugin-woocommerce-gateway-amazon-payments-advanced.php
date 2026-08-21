@@ -25,7 +25,7 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 	}
-	
+
 	/**
 	 * Add or remove very late hooks.
 	 */
@@ -36,11 +36,11 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 
 			// Get the gateway object
 			$this->amazon_pay_gateway = $this->get_object_by_class_name_from_hooks( 'WC_Gateway_Amazon_Payments_Advanced' );
-			
+
 			if ( null !== $this->amazon_pay_gateway ) {
 				// Run checkout initialization later
 				remove_action( 'woocommerce_checkout_init', array( $this->amazon_pay_gateway, 'checkout_init' ), 10 );
-				$this->amazon_pay_gateway->checkout_init( WC()->checkout );
+				$this->amazon_pay_gateway->checkout_init( WC()->checkout() );
 			}
 
 		}
@@ -54,7 +54,7 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 			if ( null !== $this->amazon_pay_gateway_legacy ) {
 				// Run checkout initialization later
 				remove_action( 'woocommerce_checkout_init', array( $this->amazon_pay_gateway_legacy, 'checkout_init' ), 10 );
-				$this->amazon_pay_gateway_legacy->checkout_init( WC()->checkout );
+				$this->amazon_pay_gateway_legacy->checkout_init( WC()->checkout() );
 			}
 
 		}

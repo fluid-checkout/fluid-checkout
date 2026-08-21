@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 7.0
-Stable tag: 4.2.6
+Tested up to: 7.1
+Stable tag: 4.2.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,12 +354,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= Unrelased =
 
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
+
+= 4.2.7 - 2026-08-19 =
+
+* Bump tested up to WordPress 7.1+
+* Added: Compatibility with theme Sober (by Uixthemes).
+* Added: Compatibility with plugin CartFlows.
+* Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
+* Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
+* Fixed: TomSelect fields not changing value when pressing TAB after pre-selecting options using the keyboard arrow keys.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
+* Fixed: Fatal error when opening the WordPress block editor with WooCommerce Stripe active, caused by checking shipping needs while the cart is not available.
 
 = 4.2.6 - 2026-07-28 =
 
