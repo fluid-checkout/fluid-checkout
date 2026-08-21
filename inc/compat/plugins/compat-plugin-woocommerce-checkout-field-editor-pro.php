@@ -42,7 +42,7 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 
 		// Enhanced select fields
 		add_filter( 'option_thwcfe_advanced_settings', array( $this, 'maybe_disable_enhanced_select2_fields_option' ), 10, 3 );
-		
+
 		// Add select2 field types
 		add_filter( 'fc_select2_field_types', array( $this, 'add_select2_field_types' ), 10 );
 		add_filter( 'fc_no_validation_icon_field_types', array( $this, 'add_no_validation_icon_field_types' ), 10 );
@@ -172,7 +172,7 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 
 		// Bail if hooks is empty or not an array
 		if ( ! is_array( $hooks ) || empty( $hooks ) ) { return $is_substep_complete; }
-		
+
 		// Get section ids
 		$sections = array();
 		foreach ( $hooks as $hook_name ) {
@@ -198,7 +198,7 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 
 			// Skip invalid sections
 			if ( ! THWCFE_Utils_Section::is_valid_section( $section ) ){ continue; }
-			
+
 			// Maybe skip section without fields
 			if ( ! property_exists( $section, 'fields' ) || ! is_array( $section->fields ) || 0 === count( $section->fields ) ) { continue; }
 
@@ -216,7 +216,7 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 				if ( ! $required ) { continue; }
 
 				// Check field value
-				$field_value = WC()->checkout->get_value( $field_key );
+				$field_value = WC()->checkout()->get_value( $field_key );
 				if ( empty( $field_value ) && 0 == strlen( strval( $field_value ) ) ) {
 					// Update cache
 					self::$cached_values[ $cache_key ] = false;
@@ -231,9 +231,9 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 					// Skip fields not marked as phone validation
 					$format = array_filter( isset( $field_args['validate'] ) ? (array) $field_args['validate'] : array() );
 					if ( ! in_array( 'phone', $format, true ) ) { continue; }
-	
+
 					// Check field value
-					$field_value = WC()->checkout->get_value( $field_key );
+					$field_value = WC()->checkout()->get_value( $field_key );
 					if ( ! FluidCheckout_Validation::instance()->is_valid_phone_number( $field_value ) ) {
 						// Update cache
 						self::$cached_values[ $cache_key ] = false;

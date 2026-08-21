@@ -52,7 +52,7 @@ class FluidCheckout_OmnisendForWooCommerce extends FluidCheckout {
 		if ( ! $connected ) { return; }
 
 		// CHANGE: Save field value to variable
-		$field_value = WC()->checkout->get_value( $field_key );
+		$field_value = WC()->checkout()->get_value( $field_key );
 		if ( null === $field_value && Omnisend_Settings::STATUS_ENABLED === Omnisend_Settings::get_checkout_opt_in_preselected_status() ) {
 			$field_value = 1;
 		}

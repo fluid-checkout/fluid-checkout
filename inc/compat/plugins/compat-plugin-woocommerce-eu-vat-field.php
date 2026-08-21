@@ -491,10 +491,10 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get field values
-		$vat_number = WC()->checkout->get_value( 'billing_eu_vat' );
-		$sdi = WC()->checkout->get_value( 'billing_it_sid_pec' );
-		$codice_fiscale = WC()->checkout->get_value( 'billing_it_codice_fiscale' );
-		$nif_nie = WC()->checkout->get_value( 'billing_es_nif_nie' );
+		$vat_number = WC()->checkout()->get_value( 'billing_eu_vat' );
+		$sdi = WC()->checkout()->get_value( 'billing_it_sid_pec' );
+		$codice_fiscale = WC()->checkout()->get_value( 'billing_it_codice_fiscale' );
+		$nif_nie = WC()->checkout()->get_value( 'billing_es_nif_nie' );
 
 		// Validate field values
 		$is_vat_valid = $this->is_vat_number_valid( $vat_number );
