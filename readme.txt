@@ -354,6 +354,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Keep shipping address session values (including empty fields) without overwriting the customer account shipping address on the cart.
+* Fixed: Only show "Same as billing address" on cart when billing is already complete and billing is shown before shipping.
+* Fixed: Restore the previous shipping address when unchecking "Same as billing address" on the cart page.
+
 = 4.2.7 - 2026-08-19 =
 
 * Bump tested up to WordPress 7.1+
@@ -363,8 +369,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
 * Fixed: TomSelect fields not changing value when pressing TAB after pre-selecting options using the keyboard arrow keys.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
-* Fixed: Keep shipping address session values (including empty fields) without overwriting the customer account shipping address on the cart.
-* Fixed: Restore the previous shipping address when unchecking "Same as billing address" on the cart page.
 * Fixed: Fatal error when opening the WordPress block editor with WooCommerce Stripe active, caused by checking shipping needs while the cart is not available.
 
 = 4.2.6 - 2026-07-28 =
@@ -388,7 +392,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
 * Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
 * Fixed: Missing styles for the WooCommerce show password button at checkout. Also fixed the button getting duplicated after checkout updates.
-* Fixed: Only show "Same as billing address" on cart when billing is already complete and billing is shown before shipping.
 
 = 4.2.4 - 2026-06-02 =
 
