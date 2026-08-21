@@ -5447,6 +5447,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Define whether billing address is available for shipping address.
 		$is_available = true === $this->is_billing_country_allowed_for_shipping();
+
+		// Cart has no billing form: only offer same-as-billing when billing is already complete.
+		if ( $is_available && $this->is_cart_page_or_fragment() ) {
+			$is_available = $this->is_substep_complete_billing_address();
+		}
+
 		$is_available = apply_filters( 'fc_is_billing_address_available_for_shipping', $is_available );
 
 		return $is_available;
@@ -5524,9 +5530,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  bool  `true` checkbox "billing address same as shipping" is checked, `false` otherwise.
 	 */
 	public function is_billing_same_as_shipping_checked( $posted_data = array() ) {
-		// Bail if cart is not available
-		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
-
 		// Get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
@@ -5554,7 +5557,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$billing_same_as_shipping = isset( $_POST['billing_same_as_shipping'] ) && wc_clean( wp_unslash( $_POST['billing_same_as_shipping'] ?? '' ) ) === '1' ? true : false;
 		}
 		// Try to get value from the session
-		else if ( null !== WC()->session && WC()->session->__isset( 'fc_billing_same_as_shipping' ) ) {
+		else if ( WC()->session->__isset( 'fc_billing_same_as_shipping' ) ) {
 			$billing_same_as_shipping = WC()->session->get( 'fc_billing_same_as_shipping' ) === '1';
 		}
 
@@ -5577,9 +5580,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
 	 */
 	public function is_billing_same_as_shipping( $posted_data = array() ) {
-		// Bail if cart is not available
-		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
-
 		// Set to different billing address when shipping address not needed
 		if ( ! WC()->cart->needs_shipping_address() ) {
 			return false;
@@ -6078,6 +6078,177 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		return $posted_data;
+	}
+
+
+
+	/**
+	 * Get shipping address field keys used when stashing/restoring a distinct shipping address (cart/checkout).
+	 *
+	 * @return  array  List of shipping_* field keys.
+	 */
+	public function get_shipping_address_field_keys_for_session() {
+		$shipping_field_keys = array();
+
+		// Prefer checkout shipping fields when available
+		if ( function_exists( 'WC' ) && WC()->checkout() ) {
+			$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
+			if ( is_array( $shipping_fields ) ) {
+				$shipping_field_keys = array_keys( $shipping_fields );
+			}
+		}
+
+		// Fall back to customer-supported shipping properties
+		if ( empty( $shipping_field_keys ) ) {
+			foreach ( $this->get_supported_customer_property_field_keys() as $field_key ) {
+				if ( 0 === strpos( $field_key, 'shipping_' ) ) {
+					$shipping_field_keys[] = $field_key;
+				}
+			}
+		}
+
+		return apply_filters( 'fc_shipping_address_field_keys_for_session', $shipping_field_keys );
+	}
+
+	/**
+	 * Stash the current customer shipping address into save_shipping_* session keys.
+	 * Used on the cart before applying "Same as billing" so unticking can restore the previous destination.
+	 */
+	public function save_customer_shipping_address_to_session() {
+		$customer = WC()->customer;
+
+		// Bail if customer object is not available
+		if ( ! $customer ) { return; }
+
+		foreach ( $this->get_shipping_address_field_keys_for_session() as $field_key ) {
+			$getter = "get_$field_key";
+			$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+
+			// Get value from customer object when supported, otherwise from FC session
+			if ( is_callable( array( $customer, $getter ) ) ) {
+				$field_value = $customer->{$getter}();
+			}
+			else {
+				$field_value = $this->get_checkout_field_value_from_session( $field_key );
+			}
+
+			$this->set_checkout_field_value_to_session( $save_field_key, null !== $field_value ? $field_value : '' );
+		}
+	}
+
+	/**
+	 * Restore the customer shipping address from save_shipping_* session keys.
+	 * Mirrors calculator fields into $_POST so FluidCheckout_CartShippingCalculator stays in sync.
+	 *
+	 * @return  bool  True when at least one field was restored from session.
+	 */
+	public function restore_customer_shipping_address_from_saved_session() {
+		$customer = WC()->customer;
+
+		// Bail if customer object is not available
+		if ( ! $customer ) { return false; }
+
+		$restored = false;
+		$calc_field_map = array(
+			'shipping_country'  => 'calc_shipping_country',
+			'shipping_state'    => 'calc_shipping_state',
+			'shipping_city'     => 'calc_shipping_city',
+			'shipping_postcode' => 'calc_shipping_postcode',
+		);
+
+		// Reset shipping so packages are recalculated with the restored destination
+		WC()->shipping()->reset_shipping();
+
+		foreach ( $this->get_shipping_address_field_keys_for_session() as $field_key ) {
+			$save_field_key = str_replace( 'shipping_', 'save_shipping_', $field_key );
+			$new_field_value = $this->get_checkout_field_value_from_session( $save_field_key );
+
+			// Skip keys that were never stashed
+			if ( null === $new_field_value ) { continue; }
+
+			$restored = true;
+			$setter = "set_$field_key";
+
+			// Update customer property
+			if ( is_callable( array( $customer, $setter ) ) ) {
+				$customer->{$setter}( $new_field_value );
+			}
+			else {
+				$customer->__set( $field_key, $new_field_value );
+			}
+
+			// Keep the checkout session in sync
+			$this->set_checkout_field_value_to_session( $field_key, $new_field_value );
+
+			// Mirror calculator POST fields so Lite sync does not overwrite the restored destination
+			if ( array_key_exists( $field_key, $calc_field_map ) ) {
+				$_POST[ $calc_field_map[ $field_key ] ] = $new_field_value; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			}
+		}
+
+		// Bail if nothing was restored
+		if ( ! $restored ) { return false; }
+
+		$customer->set_calculated_shipping( true );
+		$customer->save();
+
+		return true;
+	}
+
+	/**
+	 * Copy the customer billing address values into the shipping address (customer object + checkout session).
+	 *
+	 * Shared by the cart shipping calculator "Same as billing address" option in Fluid Checkout PRO and Address Book.
+	 * Uses the same field keys, skip fields and value filter as the checkout page so the resulting shipping address
+	 * matches what the checkout page would produce.
+	 *
+	 * Empty shipping values are kept in the FC session only. The customer getter honors empty session values so
+	 * account shipping meta is not mutated for a transient cart/checkout UI state.
+	 *
+	 * @return  bool  True when shipping was copied from billing, false when the copy was skipped.
+	 */
+	public function set_customer_shipping_same_as_billing() {
+		// Bail if billing address is not available for shipping (also enforces the cart "billing before shipping AND complete" requirement)
+		if ( ! $this->is_billing_address_available_for_shipping() ) { return false; }
+
+		$customer = WC()->customer;
+
+		// Bail if customer object is not available
+		if ( ! $customer ) { return false; }
+
+		// Reset shipping so packages are recalculated with the new destination
+		WC()->shipping()->reset_shipping();
+
+		// Get list of shipping fields to copy from billing fields
+		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
+
+		// Copy each billing field value into the matching shipping field
+		foreach ( $shipping_copy_billing_field_keys as $field_key ) {
+			// Get related billing field key and customer accessors
+			$billing_field_key = str_replace( 'shipping_', 'billing_', $field_key );
+			$setter = "set_$field_key";
+			$getter = "get_$billing_field_key";
+
+			// Skip fields not supported by the customer object
+			if ( ! is_callable( array( $customer, $setter ) ) || ! is_callable( array( $customer, $getter ) ) ) { continue; }
+
+			// Get billing value and allow customizations (same filter used by the checkout page)
+			$new_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $customer->{$getter}(), $field_key, $billing_field_key, array() );
+
+			// Skip update when filter returns null (same as checkout page)
+			if ( null === $new_field_value ) { continue; }
+
+			// Update customer property and keep the checkout session in sync
+			$customer->{$setter}( $new_field_value );
+			$this->set_checkout_field_value_to_session( $field_key, $new_field_value );
+		}
+
+		// Keep the same-as-billing session flag in sync and commit customer changes
+		$this->set_shipping_same_as_billing_session( true );
+		$customer->set_calculated_shipping( true );
+		$customer->save();
+
+		return true;
 	}
 
 
@@ -7518,8 +7689,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get checkout session value
 		$session_value = $this->get_checkout_field_value_from_session_or_posted_data( $field_key );
 
-		// Maybe set new value from session value
-		if ( ! empty( $session_value ) ) {
+		// Honor FC session values including intentional empty strings.
+		// WC_Customer_Data_Store_Session skips empty WC session props and reloads user meta; empty fc_* session
+		// must still win so cart/checkout UI state does not mutate account shipping meta.
+		if ( null !== $session_value ) {
 			$value = $session_value;
 		}
 
