@@ -280,6 +280,12 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		// Get shipping method cost HTML
 		$method_costs = $this->get_recurring_shipping_method_cost_html( $recurring_cart, $method );
 
+		// Maybe hide zero-cost in the shipping methods list when the setting is "hidden"
+		$has_cost = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
+		if ( ! $has_cost && 'hidden' === FluidCheckout_Steps::instance()->get_shipping_methods_zero_cost_display_mode() ) {
+			$method_costs = '';
+		}
+
 		// Maybe add shipping method costs to label
 		if ( ! empty( $method_costs ) ) {
 			// Add shipping method costs to label
@@ -461,13 +467,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 			// Increment total shipping rows if the recurring cart contains subscriptions needing shipping
 			if ( WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping( $recurring_cart ) ) {
-				// Get whether the recurring cart has shipping costs
-				$has_shipping_cost = FluidCheckout_Steps::instance()->is_shipping_total_greater_than_zero( $recurring_cart->get_shipping_total(), $recurring_cart->get_shipping_tax(), $recurring_cart->display_prices_including_tax() );
-
-				// Maybe skip zero-cost shipping rows when the setting is "Empty"
-				if ( $has_shipping_cost || '' !== FluidCheckout_Steps::instance()->get_zero_cost_shipping_cost_html() ) {
-					$total_shipping_rows += count( $recurring_cart->get_shipping_packages() );
-				}
+				$total_shipping_rows += count( $recurring_cart->get_shipping_packages() );
 			}
 		}
 
@@ -526,9 +526,6 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 				}
 				else {
 					$shipping_subtotal = FluidCheckout_Steps::instance()->get_zero_cost_shipping_cost_html();
-
-					// Maybe omit the shipping totals row when the setting is "Empty"
-					if ( '' === $shipping_subtotal ) { continue; }
 				}
 
 				// Get formatted shipping subtotal

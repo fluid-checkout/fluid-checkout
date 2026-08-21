@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Added: Setting to control how zero-cost shipping costs are displayed on the cart, checkout, order pay, thank you, and view order pages, and in order emails.
 * Improved: Compatibility with plugin WooCommerce Subscriptions. Shipping and tax totals for subscriptions now follow the same layout and zero-cost shipping display as other orders.
+* Fixed: Zero-cost shipping option that hides the cost in the shipping methods list now still shows "0.00" in the order summary and other areas.
 
 = 4.2.6 - 2026-07-28 =
 

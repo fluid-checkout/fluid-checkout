@@ -5039,6 +5039,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get shipping method cost HTML
 		$method_costs = $this->get_shipping_method_cost_html( $method );
 
+		// Maybe hide zero-cost in the shipping methods list when the setting is "hidden"
+		$has_cost = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
+		if ( ! $has_cost && 'hidden' === $this->get_shipping_methods_zero_cost_display_mode() ) {
+			$method_costs = '';
+		}
+
 		// Maybe add shipping method costs to label
 		if ( ! empty( $method_costs ) ) {
 			// Add shipping method costs to label
@@ -5074,24 +5080,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get the zero-cost shipping cost HTML based on the display setting.
 	 *
+	 * For the "hidden" setting, this still returns a formatted "0.00" for order summary and other non-list surfaces.
+	 * Callers that render the shipping methods list should hide the cost separately when the setting is "hidden".
+	 *
 	 * @param string|null $currency Optional. Order currency code.
 	 *
-	 * @return string Cost HTML for "0.00" or "Free", or empty string for "Empty" (callers omit the shipping totals row).
+	 * @return string Cost HTML for "0.00" or "Free".
 	 */
 	public function get_zero_cost_shipping_cost_html( $currency = null ) {
 		$display_mode = $this->get_shipping_methods_zero_cost_display_mode();
 
-		// Maybe set cost HTML based on display mode
-		if ( 'amount' === $display_mode ) {
-			$price_args = null !== $currency ? array( 'currency' => $currency ) : array();
-			return wc_price( 0, $price_args );
-		}
-		elseif ( 'free' === $display_mode ) {
+		// Maybe return free label
+		if ( 'free' === $display_mode ) {
 			return esc_html__( 'Free', 'fluid-checkout' );
 		}
 
-		// Otherwise, hide cost (default behavior)
-		return '';
+		// Otherwise, return formatted zero amount (for "amount" and "hidden" modes)
+		$price_args = null !== $currency ? array( 'currency' => $currency ) : array();
+		return wc_price( 0, $price_args );
 	}
 
 
@@ -5099,8 +5105,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Maybe change the shipping row on order totals tables for zero-cost shipping.
 	 *
-	 * When the setting is "Empty", the shipping totals row is omitted to avoid a blank cell.
-	 * When the setting is "0.00" or "Free", the WooCommerce shipping value (including "via {method}") is replaced with that cost text.
+	 * When the setting is "0.00", "hidden", or "Free", the WooCommerce shipping value (including "via {method}") is replaced with that cost text.
+	 * When the setting is "Free" and the shipping row is missing on a shippable order, the shipping row is added.
 	 *
 	 * @param array    $total_rows  Order totals rows.
 	 * @param WC_Order $order       Order object.
@@ -5112,24 +5118,66 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if not on a supported Fluid Checkout order totals context
 		if ( ! $this->is_zero_cost_shipping_order_totals_context() ) { return $total_rows; }
 
-		// Bail if shipping row is not present
-		if ( ! array_key_exists( 'shipping', $total_rows ) ) { return $total_rows; }
-
 		// Bail if order has shipping costs
 		if ( $this->is_shipping_total_greater_than_zero( $order->get_shipping_total(), $order->get_shipping_tax(), 'incl' === $tax_display ) ) { return $total_rows; }
 
 		// Get zero-cost shipping cost HTML
 		$shipping_value = $this->get_zero_cost_shipping_cost_html( $order->get_currency() );
 
-		// Maybe omit the shipping totals row when the setting is "Empty"
-		if ( '' === $shipping_value ) {
-			unset( $total_rows[ 'shipping' ] );
-			return $total_rows;
+		// Maybe add the shipping totals row when missing and the setting is "Free"
+		if ( ! array_key_exists( 'shipping', $total_rows ) ) {
+			// Bail if not free mode
+			if ( 'free' !== $this->get_shipping_methods_zero_cost_display_mode() ) { return $total_rows; }
+
+			// Bail if order does not need shipping
+			if ( ! method_exists( $order, 'needs_shipping' ) || ! $order->needs_shipping() ) { return $total_rows; }
+
+			// Insert shipping row after discount or subtotal when possible
+			$shipping_row = array(
+				'type'  => 'shipping',
+				'label' => __( 'Shipping:', 'woocommerce' ),
+				'value' => $shipping_value,
+			);
+			return $this->insert_order_item_totals_shipping_row( $total_rows, $shipping_row );
 		}
 
 		// Replace WooCommerce shipping value with "0.00" or "Free"
 		$total_rows[ 'shipping' ][ 'value' ] = $shipping_value;
 
+		return $total_rows;
+	}
+
+	/**
+	 * Insert a shipping row into order totals in the usual WooCommerce position.
+	 *
+	 * @param array $total_rows   Order totals rows.
+	 * @param array $shipping_row Shipping row data.
+	 *
+	 * @return array Order totals rows.
+	 */
+	public function insert_order_item_totals_shipping_row( $total_rows, $shipping_row ) {
+		// Determine key to insert after (discount, otherwise subtotal)
+		$insert_after = null;
+		if ( array_key_exists( 'discount', $total_rows ) ) {
+			$insert_after = 'discount';
+		} elseif ( array_key_exists( 'cart_subtotal', $total_rows ) ) {
+			$insert_after = 'cart_subtotal';
+		}
+
+		// Maybe rebuild rows with shipping inserted after the chosen key
+		if ( null !== $insert_after ) {
+			$new_total_rows = array();
+			foreach ( $total_rows as $key => $row ) {
+				$new_total_rows[ $key ] = $row;
+				if ( $key === $insert_after ) {
+					$new_total_rows[ 'shipping' ] = $shipping_row;
+				}
+			}
+			return $new_total_rows;
+		}
+
+		// Otherwise, append shipping row
+		$total_rows[ 'shipping' ] = $shipping_row;
 		return $total_rows;
 	}
 
@@ -5140,7 +5188,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 *
 	 * @param WC_Shipping_Rate $method Shipping method rate data.
 	 *
-	 * @return string Cost HTML, or empty string if cost should be hidden.
+	 * @return string Cost HTML.
 	 */
 	public function get_shipping_method_cost_html( $method ) {
 		// Get whether shipping method has costs
@@ -7069,12 +7117,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get formatted shipping price
 			$formatted_shipping_price = $method ? $this->get_cart_totals_shipping_method_label( $method, $package_index, $package, $package_name ) : '';
 
-			// Maybe omit the shipping totals row when the setting is "Empty"
-			if ( $method && '' === $formatted_shipping_price ) {
-				$package_index++;
-				continue;
-			}
-
 			wc_get_template(
 				'checkout/review-order-shipping.php',
 				array(
@@ -7155,7 +7197,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$method_label = $method->get_label();
 			$shipping_total_label = str_replace( $method_label.': ', '', $shipping_total_label );
 		}
-		// Otherwise, show only the zero-cost setting text ("0.00", "Free", or empty for "Empty")
+		// Otherwise, show only the zero-cost setting text ("0.00" or "Free")
 		else {
 			$shipping_total_label = $this->get_shipping_method_cost_html( $method );
 		}
