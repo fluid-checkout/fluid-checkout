@@ -360,6 +360,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
 * Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
+* Fixed: Keep shipping address session values (including empty fields) without overwriting the customer account shipping address on the cart.
+* Fixed: Restore the previous shipping address when unchecking "Same as billing address" on the cart page.
 
 = 4.2.6 - 2026-07-28 =
 

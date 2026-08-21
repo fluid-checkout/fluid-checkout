@@ -65,9 +65,8 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 			$calc_field_keys[] = str_replace( 'calc_', '', $calc_field_key );
 		}
 
-		// Clear the shipping fields that are copied on "same as billing" but not entered in the calculator
-		$field_keys_to_clear = array_diff( FluidCheckout_Steps::instance()->get_shipping_same_billing_fields_keys(), $calc_field_keys );
-		$customer_id = $customer->get_id();
+		// Clear all shipping address fields not entered in the calculator (not only same-as-billing intersection)
+		$field_keys_to_clear = array_diff( FluidCheckout_Steps::instance()->get_shipping_address_field_keys_for_session(), $calc_field_keys );
 
 		foreach ( $field_keys_to_clear as $field_key ) {
 			$setter = "set_$field_key";
@@ -76,14 +75,11 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 			if ( is_callable( array( $customer, $setter ) ) ) {
 				$customer->{$setter}( '' );
 			}
-
-			// Persist empty to user meta for logged-in customers.
-			// WC_Customer_Data_Store_Session skips empty session values on the next request and reloads user meta — leftover streets would otherwise return.
-			if ( $customer_id ) {
-				update_user_meta( $customer_id, $field_key, '' );
+			else {
+				$customer->__set( $field_key, '' );
 			}
 
-			// Clear checkout session value
+			// Clear checkout session value (including intentional empty — customer getters honor empty fc_* session)
 			FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $field_key, '' );
 		}
 	}
@@ -99,8 +95,11 @@ class FluidCheckout_CartShippingCalculator extends FluidCheckout {
 		$is_same_as_billing = array_key_exists( 'shipping_same_as_billing', $_POST ) && '1' === wc_clean( wp_unslash( $_POST[ 'shipping_same_as_billing' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$address_source = array_key_exists( 'shipping_address_source', $_POST ) ? wc_clean( wp_unslash( $_POST[ 'shipping_address_source' ] ) ) : null; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-		// Bail if shipping same as billing is selected
-		if ( $is_same_as_billing ) { return; }
+		// Non-AJAX fallback: copy billing into shipping when same-as-billing is posted (PRO AJAX may already have done this)
+		if ( $is_same_as_billing ) {
+			FluidCheckout_Steps::instance()->set_customer_shipping_same_as_billing();
+			return;
+		}
 
 		// Bail if address source is not the shipping calculator (new address)
 		if ( null !== $address_source && 'new' !== $address_source ) { return; }
