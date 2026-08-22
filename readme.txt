@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Improved: Compatibility with plugins Germanized for WooCommerce and German Market. Show a settings notice explaining why the place order position is always set to "Below the order summary".
+
 = 4.2.7 - 2026-08-19 =
 
 * Bump tested up to WordPress 7.1+
