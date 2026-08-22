@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Fluid Checkout\n"
 "Last-Translator: Fluid Checkout\n"
-"POT-Creation-Date: 2026-06-29 19:14+0000\n"
+"POT-Creation-Date: 2026-08-21 09:19+0000\n"
 "Report-Msgid-Bugs-To: https://fluidcheckout.com/support\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -77,21 +77,21 @@ msgstr ""
 msgid "Only used for shipping-related questions."
 msgstr ""
 
-#: inc/checkout-steps.php:1108
+#: inc/checkout-steps.php:1110
 msgid "Click to go to the order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:1108
+#: inc/checkout-steps.php:1110
 msgid "Cart total:"
 msgstr ""
 
-#: inc/checkout-steps.php:2017
+#: inc/checkout-steps.php:2019
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr ""
 
 #. translators: Next checkout step title
-#: inc/checkout-steps.php:2022
+#: inc/checkout-steps.php:2024
 msgid "Proceed to %s"
 msgstr ""
 
@@ -175,68 +175,68 @@ msgctxt "Checkout substep save link label"
 msgid "Save changes"
 msgstr ""
 
-#: inc/checkout-steps.php:3429
+#: inc/checkout-steps.php:3431
 msgctxt "Substep review text"
 msgid "None."
 msgstr ""
 
-#: inc/checkout-steps.php:3698
+#: inc/checkout-steps.php:3702
 msgid "An account will be created with the information provided at checkout when completing the order."
 msgstr ""
 
 #. translators: Substep review field format
-#: inc/checkout-steps.php:3986
+#: inc/checkout-steps.php:3990
 msgctxt "Substep review field format"
 msgid "%1$s"
 msgstr ""
 
 #. translators: %1$s the selected option text, %2$s the field label.
-#: inc/checkout-steps.php:3991
+#: inc/checkout-steps.php:3995
 msgctxt "Substep review field format: with label"
 msgid "%2$s: %1$s"
 msgstr ""
 
-#: inc/checkout-steps.php:4067
+#: inc/checkout-steps.php:4071
 msgid "yes"
 msgstr ""
 
-#: inc/checkout-steps.php:4422, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:586
+#: inc/checkout-steps.php:4426, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:586
 msgid "Not selected yet."
 msgstr ""
 
 #. translators: %d: shipping package number
 #. translators: %d: Package number
-#: inc/checkout-steps.php:4427, inc/checkout-steps.php:4919, inc/checkout-steps.php:6867
+#: inc/checkout-steps.php:4431, inc/checkout-steps.php:4923, inc/checkout-steps.php:6893
 msgctxt "shipping packages"
 msgid "Shipping %d"
 msgstr ""
 
-#: inc/checkout-steps.php:4427, inc/checkout-steps.php:4919, inc/checkout-steps.php:6867
+#: inc/checkout-steps.php:4431, inc/checkout-steps.php:4923, inc/checkout-steps.php:6893
 msgctxt "shipping packages"
 msgid "Shipping"
 msgstr ""
 
-#: inc/checkout-steps.php:5249
+#: inc/checkout-steps.php:5255
 msgid "Same as shipping address"
 msgstr ""
 
-#: inc/checkout-steps.php:5294
+#: inc/checkout-steps.php:5300
 msgid "Same as billing address"
 msgstr ""
 
-#: inc/checkout-steps.php:6572, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:285, inc/admin/admin-settings-order-received.php:186
+#: inc/checkout-steps.php:6596, inc/admin/admin-settings-cart.php:131, inc/admin/admin-settings-checkout.php:285, inc/admin/admin-settings-order-received.php:186
 msgid "Order summary"
 msgstr ""
 
-#: inc/checkout-steps.php:6662, inc/checkout-steps.php:6919
+#: inc/checkout-steps.php:6686, inc/checkout-steps.php:6945
 msgid "Edit cart"
 msgstr ""
 
-#: inc/checkout-steps.php:6920
+#: inc/checkout-steps.php:6946
 msgid "Close and continue with checkout"
 msgstr ""
 
-#: inc/checkout-steps.php:6920
+#: inc/checkout-steps.php:6946
 msgid "Continue"
 msgstr ""
 
@@ -1859,6 +1859,17 @@ msgstr ""
 
 #: inc/compat/plugins/compat-plugin-wc-brt-fermopoint-shipping-methods.php:153
 msgid "Selecting a collection point is required when shipping with FermoPoint."
+msgstr ""
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr ""
+
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
 msgstr ""
 
 #: inc/compat/plugins/compat-plugin-woocommerce-extra-checkout-fields-for-brazil.php:189

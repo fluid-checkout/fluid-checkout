@@ -176,7 +176,7 @@ class FluidCheckout_MailchimpForWooCommerce extends FluidCheckout {
 
 		// Get the field html
 		ob_start();
-		$service->applyNewsletterField( WC()->checkout );
+		$service->applyNewsletterField( WC()->checkout() );
 		$field = ob_get_clean();
 
 		return $field;

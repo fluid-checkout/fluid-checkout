@@ -207,9 +207,9 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 		// Bail if cart has only virtual products
 		if ( $is_virtual ) { return $fields; }
-		
-		$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
-		$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
+
+		$pickups_location1_value = WC()->checkout()->get_value( 'pickups_location1' );
+		$pickups_location2_value = WC()->checkout()->get_value( 'pickups_location2' );
 		?>
 		<div class="ups-pickup-location-hidden-fields form-row validate-required fc-no-validation-icon">
 			<span class="woocommerce-input-wrapper">
@@ -277,7 +277,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 			if ( 'woo-ups-pickups' != $chosen_method ) { continue; }
 
 			// Get pickup location code
-			$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
+			$pickups_location1_value = WC()->checkout()->get_value( 'pickups_location1' );
 			$pickups_location1_prefix = substr( $pickups_location1_value, 0, 4 );
 
 			// Maybe mark substep as incomplete if pickup location code is not accepted
@@ -311,8 +311,8 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 			if ( 'woo-ups-pickups' != $chosen_method ) { continue; }
 
 			// Get pickup location code
-			$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
-			$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
+			$pickups_location1_value = WC()->checkout()->get_value( 'pickups_location1' );
+			$pickups_location2_value = WC()->checkout()->get_value( 'pickups_location2' );
 			$pickups_location1_prefix = substr( $pickups_location1_value, 0, 4 );
 
 			// Maybe mark step as incomplete if pickup location code is not accepted

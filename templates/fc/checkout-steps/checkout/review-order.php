@@ -12,8 +12,8 @@
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 5.2.0
- * @fc-version 2.1.0
+ * @version 11.0.0
+ * @fc-version 4.2.6
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -33,11 +33,23 @@ defined( 'ABSPATH' ) || exit;
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+
+			// Change: Get product ID from the cart item
 			$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
-			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+			/**
+			 * Filter whether this cart item is visible in the checkout review order table.
+			 *
+			 * @since 2.1.0
+			 * @param bool   $visible       Whether the cart item is visible. Default true.
+			 * @param array  $cart_item     The cart item data.
+			 * @param string $cart_item_key The cart item key.
+			 */
+			$visible = apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key );
+
+			if ( $_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible ) {
 				?>
-				<?php // CHANGE: Add variation of class `cart-item` to allow for better compatibility with styles between different pages ?>
+				<?php // CHANGE: Add alternative class `cart-item` to allow for better compatibility with styles between different pages, and add product ID to the data attributes ?>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item cart-item', $cart_item, $cart_item_key ) ); ?>" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>">
 					<?php // CHANGE: Use `div` as columns to allow better control over the columns sizing ?>
 					<td colspan="2" role="none">
@@ -62,6 +74,7 @@ defined( 'ABSPATH' ) || exit;
 							<?php do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product ); ?>
 						</div>
 					</td>
+					<?php // CHANGE: END - Use `div` as columns to allow better control over the columns sizing ?>
 				</tr>
 				<?php
 			}
