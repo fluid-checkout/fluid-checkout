@@ -36,6 +36,8 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 
 		// Place order position
 		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'change_place_order_position_settings_args' ), 10 );
+		add_filter( 'woocommerce_admin_settings_sanitize_option_fc_checkout_place_order_position', array( $this, 'prevent_place_order_position_option_save' ), 10 );
 	}
 
 	/**
@@ -91,7 +93,7 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 
 
 	/**
-	 * Change the option for the place order position to always `below_order_summary` when using Germanized.
+	 * Change the option for the place order position to always `below_order_summary` when using German Market.
 	 *
 	 * @param  mixed   $pre_option   The value to return instead of the option value.
 	 * @param  string  $option       Option name.
@@ -99,6 +101,43 @@ class FluidCheckout_WooCommerceGermanMarket extends FluidCheckout {
 	 */
 	public function change_place_order_position_option( $pre_option, $option, $default ) {
 		return 'below_order_summary';
+	}
+
+	/**
+	 * Disable the place order position setting and explain why it is forced when using German Market.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function change_place_order_position_settings_args( $settings ) {
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than place order position
+			if ( ! array_key_exists( 'id', $setting_args ) || 'fc_checkout_place_order_position' !== $setting_args[ 'id' ] ) { continue; }
+
+			// Disable the place order position options
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+
+			// Change the description explaining why the setting was disabled
+			$setting_args[ 'desc' ] = __( 'The place order position is always set to "Below the order summary" when using German Market. That plugin requires the place order button and legal checkboxes to be displayed below the order summary.', 'fluid-checkout' );
+
+			// Remove the description tooltip as the new description already explains the setting
+			unset( $setting_args[ 'desc_tip' ] );
+
+			// Update the setting args
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Prevent saving the place order position option, as the setting field is disabled and its value is not submitted when using German Market.
+	 *
+	 * @param   mixed  $value  The sanitized option value.
+	 */
+	public function prevent_place_order_position_option_save( $value ) {
+		// Return `null` to skip saving the option and keep the currently saved value
+		return null;
 	}
 
 
