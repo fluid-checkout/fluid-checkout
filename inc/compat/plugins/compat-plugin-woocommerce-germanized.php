@@ -36,6 +36,8 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Place order position
 		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'change_place_order_position_settings_args' ), 10 );
+		// add_filter( 'woocommerce_admin_settings_sanitize_option_fc_checkout_place_order_position', array( $this, 'prevent_place_order_position_option_save' ), 10 );
 
 		// Germanized thumbnails
 		add_filter( 'woocommerce_gzd_checkout_use_legacy_table_replacement_template', '__return_false', 10 );
@@ -220,6 +222,43 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function change_place_order_position_option( $pre_option, $option, $default ) {
 		return 'below_order_summary';
+	}
+
+	/**
+	 * Disable the place order position setting and explain why it is forced when using Germanized.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function change_place_order_position_settings_args( $settings ) {
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than place order position
+			if ( ! array_key_exists( 'id', $setting_args ) || 'fc_checkout_place_order_position' !== $setting_args[ 'id' ] ) { continue; }
+
+			// Disable the place order position options
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+
+			// Change the description explaining why the setting was disabled
+			$setting_args[ 'desc' ] = __( 'The place order position is always set to "Below the order summary" when using Germanized for WooCommerce. That plugin requires the place order button and legal checkboxes to be displayed below the order summary.', 'fluid-checkout' );
+
+			// Remove the description tooltip as the new description already explains the setting
+			unset( $setting_args[ 'desc_tip' ] );
+
+			// Update the setting args
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Prevent saving the place order position option, as the setting field is disabled and its value is not submitted when using Germanized.
+	 *
+	 * @param   mixed  $value  The sanitized option value.
+	 */
+	public function prevent_place_order_position_option_save( $value ) {
+		// Return `null` to skip saving the option and keep the currently saved value
+		return null;
 	}
 
 
@@ -448,11 +487,11 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function get_current_checkout_shipping_address() {
 		$address = array(
-			'country'   => WC()->checkout->get_value( 'shipping_country' ),
-			'state'     => WC()->checkout->get_value( 'shipping_state' ),
-			'city'      => WC()->checkout->get_value( 'shipping_city' ),
-			'postcode'  => WC()->checkout->get_value( 'shipping_postcode' ),
-			'address_1' => WC()->checkout->get_value( 'shipping_address_1' ),
+			'country'   => WC()->checkout()->get_value( 'shipping_country' ),
+			'state'     => WC()->checkout()->get_value( 'shipping_state' ),
+			'city'      => WC()->checkout()->get_value( 'shipping_city' ),
+			'postcode'  => WC()->checkout()->get_value( 'shipping_postcode' ),
+			'address_1' => WC()->checkout()->get_value( 'shipping_address_1' ),
 		);
 		return $address;
 	}
@@ -557,7 +596,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Initialize variables
 		$field_group_key = 'shipping';
 		$current_location_field_key = 'current_pickup_location';
-		
+
 		// Get shipping method provider
 		$provider = $this->get_current_shipping_method_provider();
 
@@ -565,7 +604,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $fields; }
 
 		// Get current pickup location
-		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$pickup_location_code = WC()->checkout()->get_value( $current_location_field_key );
 		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
 
 		// Bail if current location is not available
@@ -682,7 +721,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			'current_pickup_location',
 			'pickup_location_customer_number',
 		) );
-		
+
 		return $field_keys_skip_list;
 	}
 
@@ -696,7 +735,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get customer number field value
-		$customer_number = WC()->checkout->get_value( 'pickup_location_customer_number' );
+		$customer_number = WC()->checkout()->get_value( 'pickup_location_customer_number' );
 
 		// Maybe add review text lines
 		if ( ! empty( $customer_number ) ) {
@@ -726,7 +765,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $is_valid; }
 
 		// Get current pickup location
-		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$pickup_location_code = WC()->checkout()->get_value( $current_location_field_key );
 		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
 
 		// Bail if current location object or its methods are not available
@@ -736,7 +775,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! $current_location->customer_number_is_mandatory() && empty( $customer_number ) ) { return $is_valid; }
 
 		$is_valid = $current_location->customer_number_is_valid( $customer_number );
-		
+
 		return $is_valid;
 	}
 

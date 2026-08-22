@@ -207,8 +207,8 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 	public function get_customer_country() {
 		// Get country code
 		// Try to get shipping country, then billing country, then base shop country
-		$country = WC()->checkout->get_value( 'shipping_country' );
-		if ( empty( $country ) ) { $country = WC()->checkout->get_billing_country(); }
+		$country = WC()->checkout()->get_value( 'shipping_country' );
+		if ( empty( $country ) ) { $country = WC()->checkout()->get_billing_country(); }
 		if ( empty( $country ) ) { $country = WC()->countries->get_base_country(); }
 
 		return $country;

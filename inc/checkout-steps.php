@@ -210,6 +210,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90, 3 );
 
 		// Persisted data
+		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
@@ -299,8 +300,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! did_action( 'woocommerce_checkout_init' ) ) { return; }
 
 		// Unhook checkout form sections
-		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		remove_action( 'woocommerce_checkout_billing', array( WC()->checkout(), 'checkout_form_billing' ), 10 );
+		remove_action( 'woocommerce_checkout_shipping', array( WC()->checkout(), 'checkout_form_shipping' ), 10 );
 	}
 
 	/**
@@ -526,7 +527,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
-		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
+		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
@@ -600,6 +601,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_order_summary_cart_item_details', array( $this, 'output_order_summary_cart_item_quantity' ), 90 );
 
 		// Persisted data
+		remove_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
 		remove_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100 );
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
@@ -609,8 +611,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'template_redirect', array( $this, 'maybe_update_checkout_address_from_account' ), 5 );
 
 		// Re-hook removed WooCommerce functions
-		add_action( 'woocommerce_checkout_billing', array( WC()->checkout, 'checkout_form_billing' ), 10 );
-		add_action( 'woocommerce_checkout_shipping', array( WC()->checkout, 'checkout_form_shipping' ), 10 );
+		add_action( 'woocommerce_checkout_billing', array( WC()->checkout(), 'checkout_form_billing' ), 10 );
+		add_action( 'woocommerce_checkout_shipping', array( WC()->checkout(), 'checkout_form_shipping' ), 10 );
 		add_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10 );
 		add_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 		add_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
@@ -651,7 +653,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Iterate fields
 			foreach ( $group_fields as $field_key => $field ) {
-				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10, 2 );
+				remove_filter( 'woocommerce_customer_get_' . $field_key, array( $this, 'maybe_change_customer_address_field_value_from_checkout_data' ), 10 );
 			}
 		}
 	}
@@ -2327,7 +2329,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Unregister a substep of the checkout step.
 	 *
-	 * @param   string  $step_id     ID of the checkout step.
 	 * @param   string  $substep_id  ID of the checkout substep.
 	 *
 	 * @return  boolean           `true` if the substep was successfully unregistered, `false` otherwise.
@@ -2419,7 +2420,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check if a checkout substep is registered the `substep_id` for the step.
 	 *
 	 * @param   string  $substep_id   ID of the checkout substep.
-	 * @param   string  $step_id      ID of the checkout step.
 	 *
 	 * @return  boolean               `true` if a checkout step is registered with the `step_id`, `false` otherwise.
 	 */
@@ -2816,7 +2816,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add phone field replacement to formatted addresses.
 	 *
 	 * @param   array  $replacements  Formatted address replacements.
-	 * @param   array  $address       Contains address fields.
+	 * @param   array  $args          The address formatting arguments.
 	 */
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
 		// Maybe set as empty if should not display phone in formatted addresses
@@ -3424,6 +3424,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the substep review text notice for when there is no review text.
+	 * 
+	 * @param   string  $substep_id  Id of the substep.
 	 */
 	public function get_no_substep_review_text_notice( $substep_id ) {
 		return apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ), $substep_id );
@@ -3431,6 +3433,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Get the substep review text.
+	 * 
+	 * @param   string  $substep_id  Id of the substep.
 	 */
 	public function get_substep_review_text( $substep_id ) {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--' . $substep_id . '">';
@@ -3577,8 +3581,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$contact_fields = array();
 
 		// Get all checkout fields
-		$field_groups = WC()->checkout->get_checkout_fields();
-		
+		$field_groups = WC()->checkout()->get_checkout_fields();
+
 		// Iterate contact field ids
 		foreach( $this->get_contact_step_display_field_ids() as $field_key ) {
 			foreach ( $field_groups as $group_key => $fields ) {
@@ -3627,7 +3631,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get fields
 		$contact_field_ids = $this->get_contact_step_display_field_ids();
-		$checkout_fields = WC()->checkout->get_checkout_fields();
+		$checkout_fields = WC()->checkout()->get_checkout_fields();
 
 		// Define list of address fields to skip as the formatted address has already been added
 		$field_keys_skip_list = apply_filters( "fc_substep_text_contact_field_keys_skip_list", array() );
@@ -3636,12 +3640,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach( $contact_field_ids as $field_key ) {
 			// Maybe skip some fields
 			if ( in_array( $field_key, $field_keys_skip_list ) ) { continue; }
-			
+
 			// Iterate checkout fields
 			foreach ( $checkout_fields as $field_group => $field_group_fields ) {
 				if ( array_key_exists( $field_key, $field_group_fields ) ) {
 					// Get field value
-					$field_value = WC()->checkout->get_value( $field_key );
+					$field_value = WC()->checkout()->get_value( $field_key );
 
 					// Add field value and continue to next field
 					$review_text_lines[] = $this->get_field_display_value( $field_value, $field_key, $field_group_fields[ $field_key ] );
@@ -4104,7 +4108,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Add custom field replacements to formatted addresses.
 	 *
 	 * @param   array  $replacements  Formatted address replacements.
-	 * @param   array  $address       Contains address fields.
+	 * @param   array  $args          The address formatting arguments.
 	 */
 	public function add_custom_fields_formatted_address_replacements( $replacements, $args ) {
 		// Get custom field keys
@@ -4159,7 +4163,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_field_key = str_replace( $field_key_prefix, '', $field_key );
 
 			// Set field value to the address data
-			$field_value = WC()->checkout->get_value( $field_key );
+			$field_value = WC()->checkout()->get_value( $field_key );
 			$field_display_value = $this->get_field_display_value( $field_value, $field_key, $fields[ $field_key ] );
 			$address_data[ $address_field_key ] = null !== $field_display_value ? $field_display_value : '';
 		}
@@ -4241,7 +4245,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_same_as_address_notice_displayed = $this->{"is_{$address_type}_same_as_{$address_type_alt}"}() && true === apply_filters( "fc_{$address_type}_same_as_{$address_type_alt}_display_substep_review_text_notice", true );
 
 		// Get address fields
-		$address_fields = WC()->checkout->get_checkout_fields( $address_type );
+		$address_fields = WC()->checkout()->get_checkout_fields( $address_type );
 
 		// Define list of address fields to skip as the formatted address has already been added
 		$field_keys_skip_list = $this->get_substep_text_extra_fields_skip_list( $address_type );
@@ -4284,7 +4288,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 					if ( ! in_array( $field_key_2, $name_field_keys ) ) { continue; }
 
 					// Get field display value
-					$field_value = WC()->checkout->get_value( $field_key_2 );
+					$field_value = WC()->checkout()->get_value( $field_key_2 );
 					$field_display_value = $this->get_field_display_value( $field_value, $field_key_2, $field_args_2 );
 
 					// Maybe add field
@@ -4300,7 +4304,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Get field display value
-			$field_value = WC()->checkout->get_value( $field_key );
+			$field_value = WC()->checkout()->get_value( $field_key );
 			$field_display_value = $this->get_field_display_value( $field_value, $field_key, $field_args );
 
 			// Maybe add field
@@ -5133,6 +5137,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add billing address fields section as a checkout fragment.
+	 * 
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	function add_checkout_billing_address_fields_fragment( $fragments ) {
 		$html = $this->get_substep_billing_address_fields();
@@ -5374,7 +5380,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
 		// Get shipping value from customer data
-		$shipping_country = WC()->checkout->get_value( 'shipping_country' );
+		$shipping_country = WC()->checkout()->get_value( 'shipping_country' );
 
 		// Shipping country is defined, return bool
 		if ( null !== $shipping_country && ! empty( $shipping_country ) ) {
@@ -5416,7 +5422,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || null === WC()->customer ) { return null; }
 
 		// Get billing value from customer data
-		$billing_country = WC()->checkout->get_value( 'billing_country' );
+		$billing_country = WC()->checkout()->get_value( 'billing_country' );
 
 		// Billing country is defined, return bool
 		if ( null !== $billing_country && ! empty( $billing_country ) ) {
@@ -5472,7 +5478,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$billing_copy_shipping_field_keys = $this->get_billing_same_shipping_fields_keys();
 
 		// Get shipping fields
-		$shipping_fields = WC()->checkout->get_checkout_fields( 'shipping' );
+		$shipping_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 
 		// Iterate posted data
 		foreach( $billing_copy_shipping_field_keys as $field_key ) {
@@ -5492,8 +5498,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 				// Maybe get field values from checkout fields
 				else {
-					$billing_field_value = WC()->checkout->get_value( $field_key );
-					$shipping_field_value = WC()->checkout->get_value( $shipping_field_key );
+					$billing_field_value = WC()->checkout()->get_value( $field_key );
+					$shipping_field_value = WC()->checkout()->get_value( $shipping_field_key );
 				}
 
 				if ( $billing_field_value !== $shipping_field_value ) {
@@ -5518,6 +5524,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  bool  `true` checkbox "billing address same as shipping" is checked, `false` otherwise.
 	 */
 	public function is_billing_same_as_shipping_checked( $posted_data = array() ) {
+		// Bail if cart is not available
+		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
+
 		// Get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
@@ -5545,7 +5554,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$billing_same_as_shipping = isset( $_POST['billing_same_as_shipping'] ) && wc_clean( wp_unslash( $_POST['billing_same_as_shipping'] ?? '' ) ) === '1' ? true : false;
 		}
 		// Try to get value from the session
-		else if ( WC()->session->__isset( 'fc_billing_same_as_shipping' ) ) {
+		else if ( null !== WC()->session && WC()->session->__isset( 'fc_billing_same_as_shipping' ) ) {
 			$billing_same_as_shipping = WC()->session->get( 'fc_billing_same_as_shipping' ) === '1';
 		}
 
@@ -5568,6 +5577,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  bool  `true` if the billing address is the same as the shipping address, `false` otherwise.
 	 */
 	public function is_billing_same_as_shipping( $posted_data = array() ) {
+		// Bail if cart is not available
+		if ( ! function_exists( 'WC' ) || null === WC()->cart ) { return false; }
+
 		// Set to different billing address when shipping address not needed
 		if ( ! WC()->cart->needs_shipping_address() ) {
 			return false;
@@ -5588,6 +5600,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Save value of `billing_same_as_shipping` to the current user session.
+	 * 
+	 * @param   bool  $billing_same_as_shipping  Whether the billing address is the same as the shipping address.
 	 */
 	public function set_billing_same_as_shipping_session( $billing_same_as_shipping ) {
 		// Set session value
@@ -5620,7 +5634,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$shipping_copy_billing_field_keys = $this->get_shipping_same_billing_fields_keys();
 
 		// Get billing fields
-		$billing_fields = WC()->checkout->get_checkout_fields( 'billing' );
+		$billing_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 
 		// Iterate posted data
 		foreach( $shipping_copy_billing_field_keys as $field_key ) {
@@ -5640,8 +5654,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 				// Maybe get field values from checkout fields
 				else {
-					$shipping_field_value = WC()->checkout->get_value( $field_key );
-					$billing_field_value = WC()->checkout->get_value( $billing_field_key );
+					$shipping_field_value = WC()->checkout()->get_value( $field_key );
+					$billing_field_value = WC()->checkout()->get_value( $billing_field_key );
 				}
 
 				if ( $shipping_field_value !== $billing_field_value ) {
@@ -5731,6 +5745,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Save value of `shipping_same_as_billing` to the current user session.
+	 * 
+	 * @param   bool  $shipping_same_as_billing  Whether the shipping address is the same as the billing address.
 	 */
 	public function set_shipping_same_as_billing_session( $shipping_same_as_billing ) {
 		// Set session value
@@ -6334,8 +6350,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Remove phone from address data.
-	 *
-	 * @param   array  $html  HTML for the substep text.
+	 * 
+	 * @param   array  $address_data  The address data.
 	 */
 	public function maybe_remove_phone_address_data( $address_data ) {
 		// Define variables
@@ -6451,6 +6467,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Maybe suppress payment method fragment.
+	 * 
+	 * @param   array  $fragments  Checkout fragments.
 	 */
 	public function maybe_suppress_payment_methods_fragment( $fragments ) {
 		// Bail if payment is not required
@@ -6471,6 +6489,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Remove link elements from payment method icons.
+	 * 
+	 * @param   string  $icon  The icon html.
+	 * @param   string  $id    The id of the icon.
 	 */
 	public function change_payment_gateway_icon_html_remove_links( $icon, $id = null ) {
 		// Bail if icon html is empty
@@ -6485,6 +6506,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Fix accessibility attributes for payment method icons.
+	 * 
+	 * @param   string  $icon  The icon html.
+	 * @param   string  $id    The id of the icon.
 	 */
 	public function change_payment_gateway_icon_html_fix_accessibility_attributes( $icon, $id = null ) {
 		// Bail if icon html is empty
@@ -6815,6 +6839,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Add wrapper element and custom class for the checkout place order button.
+	 * 
+	 * @param   string  $button_html  The HTML of the button.
 	 */
 	public function add_place_order_button_wrapper_and_attributes( $button_html ) {
 		// Get current checkout step
@@ -6856,7 +6882,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Initialize variables
 		$first    = true;
-		
+
 		// Iterate packages
 		$package_index = 0;
 		foreach ( $packages as $package_key => $package ) {
@@ -7181,6 +7207,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// especially those used by filters hooked to `fc_set_parsed_posted_data` below.
 			$this->posted_data = $new_posted_data;
 
+			// Restore empty country/state before persist runs, so a refresh/race cannot persist `''`
+			$new_posted_data = $this->maybe_restore_empty_address_fields( $new_posted_data );
+			$this->posted_data = $new_posted_data;
+
 			// Update selected shipping method session value.
 			// Will be updated again after the filter is applied.
 			if ( array_key_exists( 'shipping_method', $new_posted_data ) ) {
@@ -7263,6 +7293,104 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
+	 * Get a stored country/state value from the customer object, falling back to the checkout session.
+	 * Uses the `edit` context so `woocommerce_customer_get_*` does not parse posted data and persist
+	 * empty AJAX values before `$_POST` is restored.
+	 *
+	 * @param  string  $field_key  Checkout field key (ie. shipping_state).
+	 */
+	public function get_stored_address_field_value( $field_key ) {
+		$getter = 'get_' . $field_key;
+		if ( is_callable( array( WC()->customer, $getter ) ) ) {
+			$value = WC()->customer->{$getter}( 'edit' );
+			if ( null !== $value && '' !== $value ) {
+				return $value;
+			}
+		}
+
+		$session_value = $this->get_checkout_field_value_from_session( $field_key );
+		if ( null !== $session_value && '' !== $session_value ) {
+			return $session_value;
+		}
+
+		return '';
+	}
+
+	/**
+	 * Restore empty country/state onto parsed posted data and `$_POST` from stored customer/session values.
+	 * Same-country only for state, so a real country change can still clear it.
+	 *
+	 * Also set the AJAX `s_*` / `country` / `state` keys on `$_POST`.
+	 * `WC_AJAX::update_order_review` applies those with `isset()` after `woocommerce_checkout_update_order_review`.
+	 * A missing key leaves the customer unchanged, an empty string clears it.
+	 *
+	 * @param  array  $posted_data  Parsed checkout posted data.
+	 */
+	public function maybe_restore_empty_address_fields( $posted_data = array() ) {
+		// Shipping country: prefer parsed `post_data`, then the AJAX `s_country` field
+		$posted_s_country = array_key_exists( 'shipping_country', $posted_data ) ? $posted_data[ 'shipping_country' ] : ( isset( $_POST[ 's_country' ] ) ? wc_clean( wp_unslash( $_POST[ 's_country' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_s_country = is_string( $posted_s_country ) ? $posted_s_country : '';
+		$stored_s_country = $this->get_stored_address_field_value( 'shipping_country' );
+
+		// Maybe restore shipping country wiped by a refresh or raced update
+		if ( '' === $posted_s_country && '' !== $stored_s_country ) {
+			$posted_data[ 'shipping_country' ] = $stored_s_country;
+			$_POST[ 's_country' ] = $stored_s_country;
+			$posted_s_country = $stored_s_country;
+		}
+
+		// Shipping state: prefer parsed `post_data`, then the AJAX `s_state` field
+		$posted_s_state = array_key_exists( 'shipping_state', $posted_data ) ? $posted_data[ 'shipping_state' ] : ( isset( $_POST[ 's_state' ] ) ? wc_clean( wp_unslash( $_POST[ 's_state' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_s_state = is_string( $posted_s_state ) ? $posted_s_state : '';
+		$stored_s_state = $this->get_stored_address_field_value( 'shipping_state' );
+
+		// Maybe restore shipping state when the country did not change.
+		// A country change sends an empty state on purpose and must not reuse the previous country's code.
+		if ( '' === $posted_s_state && '' !== $stored_s_state && $posted_s_country === $stored_s_country ) {
+			$posted_data[ 'shipping_state' ] = $stored_s_state;
+			$_POST[ 's_state' ] = $stored_s_state;
+		}
+
+		// Billing country: prefer parsed `post_data`, then the AJAX `country` field
+		$posted_b_country = array_key_exists( 'billing_country', $posted_data ) ? $posted_data[ 'billing_country' ] : ( isset( $_POST[ 'country' ] ) ? wc_clean( wp_unslash( $_POST[ 'country' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_b_country = is_string( $posted_b_country ) ? $posted_b_country : '';
+		$stored_b_country = $this->get_stored_address_field_value( 'billing_country' );
+
+		// Maybe restore billing country wiped by a refresh or raced update
+		if ( '' === $posted_b_country && '' !== $stored_b_country ) {
+			$posted_data[ 'billing_country' ] = $stored_b_country;
+			$_POST[ 'country' ] = $stored_b_country;
+			$posted_b_country = $stored_b_country;
+		}
+
+		// Billing state: prefer parsed `post_data`, then the AJAX `state` field
+		$posted_b_state = array_key_exists( 'billing_state', $posted_data ) ? $posted_data[ 'billing_state' ] : ( isset( $_POST[ 'state' ] ) ? wc_clean( wp_unslash( $_POST[ 'state' ] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$posted_b_state = is_string( $posted_b_state ) ? $posted_b_state : '';
+		$stored_b_state = $this->get_stored_address_field_value( 'billing_state' );
+
+		// Maybe restore billing state when the country did not change
+		if ( '' === $posted_b_state && '' !== $stored_b_state && $posted_b_country === $stored_b_country ) {
+			$posted_data[ 'billing_state' ] = $stored_b_state;
+			$_POST[ 'state' ] = $stored_b_state;
+		}
+
+		return $posted_data;
+	}
+
+	/**
+	 * Prevent empty country/state from a refresh or same-country update from wiping values already
+	 * saved on the customer before WooCommerce applies `$_POST` address fields.
+	 *
+	 * @param  string  $post_data  Serialized checkout form post data from the AJAX request.
+	 */
+	public function maybe_preserve_checkout_update_address_data( $post_data ) {
+		// Bail if WC customer not available
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->customer ) ) { return; }
+
+		$this->maybe_restore_empty_address_fields();
+	}
+
+	/**
 	 * Update the customer's data to the WC_Customer object.
 	 *
 	 * @param  string  $posted_data  Post data for all checkout fields.
@@ -7271,6 +7399,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
+		}
+
+		// Keep address values restored onto `$_POST` when `post_data` still lags behind the AJAX address fields.
+		if ( isset( $_POST[ 's_country' ] ) && ( ! array_key_exists( 'shipping_country', $posted_data ) || '' === $posted_data[ 'shipping_country' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'shipping_country' ] = wc_clean( wp_unslash( $_POST[ 's_country' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		}
+		if ( isset( $_POST[ 's_state' ] ) && ( ! array_key_exists( 'shipping_state', $posted_data ) || '' === $posted_data[ 'shipping_state' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'shipping_state' ] = wc_clean( wp_unslash( $_POST[ 's_state' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		}
+		if ( isset( $_POST[ 'country' ] ) && ( ! array_key_exists( 'billing_country', $posted_data ) || '' === $posted_data[ 'billing_country' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'billing_country' ] = wc_clean( wp_unslash( $_POST[ 'country' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		}
+		if ( isset( $_POST[ 'state' ] ) && ( ! array_key_exists( 'billing_state', $posted_data ) || '' === $posted_data[ 'billing_state' ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$posted_data[ 'billing_state' ] = wc_clean( wp_unslash( $_POST[ 'state' ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 
 		// Get customer object and supported field keys
@@ -7406,7 +7548,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Get checkout field value from posted data or from the persisted fields session.
 	 *
-	 * @param   mixed    $value   Value of the field.
 	 * @param   string   $input   Checkout field key (ie. order_comments ).
 	 */
 	public function get_checkout_field_value_from_session_or_posted_data( $input ) {
@@ -7415,14 +7556,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe return field value from posted data
 		$posted_data = $this->get_parsed_posted_data();
+		$preserve_address_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
+
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && array_key_exists( $input, $posted_data ) ) {
 			$field_posted_data_value = $posted_data[ $input ];
-			return $field_posted_data_value;
+
+			// Empty posted country/state should not hide the stored value during a refresh/race
+			if ( '' !== $field_posted_data_value || ! in_array( $input, $preserve_address_field_keys, true ) ) {
+				return $field_posted_data_value;
+			}
 		}
 
 		// Maybe return field value from session
 		$field_session_value = $this->get_checkout_field_value_from_session( $input );
 		if ( null !== $field_session_value ) {
+			// Empty session values for country/state should not hide the customer value after refresh.
+			// A raced update can store these as '', which then wins over the selected values still
+			// saved on the customer object and makes the country/state appear to change or clear.
+			$preserve_non_empty_session_field_keys = array( 'shipping_country', 'billing_country', 'shipping_state', 'billing_state' );
+			if ( '' === $field_session_value && in_array( $input, $preserve_non_empty_session_field_keys, true ) ) {
+				return null;
+			}
+
 			return $field_session_value;
 		}
 
@@ -7516,6 +7671,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Clear session values for all checkout fields.
+	 * 
+	 * @param   object  $__unused_user_object  The user object.
 	 **/
 	public function unset_all_session_customer_persisted_data( $__unused_user_object ) {
 		// Bail if session not available
@@ -7537,7 +7694,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		foreach ( $clear_field_keys as $field_key ) {
 			// Skip clearing some fields
 			if ( in_array( $field_key, $clear_field_keys_skip_list ) ) { continue; }
-			
+
 			WC()->session->__unset( self::SESSION_PREFIX . $field_key );
 		}
 	}
@@ -7637,6 +7794,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add the custom styles for the cart page background color.
 	 * @deprecated            Use `FluidCheckout_DesignTemplates::instance()->add_checkout_page_custom_styles()` instead.
+	 * 
+	 * @param   string  $custom_styles  The custom styles.
 	 */
 	public function add_checkout_page_custom_styles( $custom_styles ) {
 		// Add deprecation notice
@@ -7648,6 +7807,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add the custom styles for the cart header background color.
 	 * @deprecated            Use CSS variable `--fluidcheckout--header--background-color` instead.
+	 * 
+	 * @param   string  $custom_styles  The custom styles.
 	 */
 	public function add_checkout_header_custom_styles( $custom_styles ) {
 		// Add deprecation notice
@@ -7659,6 +7820,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	/**
 	 * Add the custom styles for the cart footer background color.
 	 * @deprecated            Use CSS variable `--fluidcheckout--footer--background-color` instead.
+	 * 
+	 * @param   string  $custom_styles  The custom styles.
 	 */
 	public function add_checkout_footer_custom_styles( $custom_styles ) {
 		// Add deprecation notice
