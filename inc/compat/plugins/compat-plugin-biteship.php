@@ -57,20 +57,10 @@ class FluidCheckout_Biteship extends FluidCheckout {
 	 * @param   array  $settings  Admin settings args values.
 	 */
 	public function change_enhanced_select_settings_args( $settings ) {
-		// Iterate settings
-		foreach ( $settings as $key => $setting_args ) {
-			// Skip settings other than enhanced select fields
-			if ( ! array_key_exists( 'id', $setting_args ) || 'fc_use_enhanced_select_components' !== $setting_args[ 'id' ] ) { continue; }
+		// Define the settings field description
+		$description = __( 'The enhanced select fields feature is always disabled when using the Biteship plugin.', 'fluid-checkout' );
 
-			// Disable enhanced select fields setting and change description explaining why it was disabled
-			$setting_args[ 'disabled' ] = true;
-			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
-			$setting_args[ 'desc' ] = __( 'The enhanced select fields feature is always disabled when using the Biteship plugin.', 'fluid-checkout' );
-			unset( $setting_args[ 'desc_tip' ] );
-			$settings[ $key ] = $setting_args;
-		}
-
-		return $settings;
+		return FluidCheckout_Settings::instance()->disable_settings_field( $settings, 'fc_use_enhanced_select_components', $description );
 	}
 
 }
