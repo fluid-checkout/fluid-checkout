@@ -290,8 +290,8 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 			add_filter( 'woocommerce_checkout_fields', array( $this, 'unset_hezarfen_company_tax_fields_from_validation' ), 999998, 1 );
 
 			// Clear cached checkout fields so get_checkout_fields() re-initializes and applies our filter.
-			if ( function_exists( 'WC' ) && WC()->checkout ) {
-				WC()->checkout->checkout_fields = null;
+			if ( function_exists( 'WC' ) && WC()->checkout() ) {
+				WC()->checkout()->checkout_fields = null;
 			}
 		}
 	}
@@ -340,12 +340,12 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 
 		// Get display values for company fields to remove from summary
 		$values_to_remove = array();
-		if ( function_exists( 'WC' ) && WC()->checkout && class_exists( 'FluidCheckout_Steps' ) ) {
-			$address_fields = WC()->checkout->get_checkout_fields( 'billing' );
+		if ( function_exists( 'WC' ) && WC()->checkout() && class_exists( 'FluidCheckout_Steps' ) ) {
+			$address_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 			$company_field_keys = array( 'billing_company', 'billing_hez_tax_number', 'billing_hez_tax_office' );
 			foreach ( $company_field_keys as $field_key ) {
 				if ( isset( $address_fields[ $field_key ] ) ) {
-					$field_value = WC()->checkout->get_value( $field_key );
+					$field_value = WC()->checkout()->get_value( $field_key );
 					$display_value = FluidCheckout_Steps::instance()->get_field_display_value( $field_value, $field_key, $address_fields[ $field_key ] );
 					if ( ! empty( $display_value ) ) {
 						$values_to_remove[] = wp_strip_all_tags( $display_value );
@@ -377,8 +377,8 @@ class FluidCheckout_HezarfenForWooCommerce extends FluidCheckout {
 		// Initialize invoice type
 		$invoice_type = '';
 		// Get invoice type from checkout value
-		if ( function_exists( 'WC' ) && WC()->checkout ) {
-			$invoice_type = WC()->checkout->get_value( 'billing_hez_invoice_type' );
+		if ( function_exists( 'WC' ) && WC()->checkout() ) {
+			$invoice_type = WC()->checkout()->get_value( 'billing_hez_invoice_type' );
 		}
 		// Get invoice type from POST data
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing
