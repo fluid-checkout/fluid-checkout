@@ -41,6 +41,11 @@
 
 	"changelogFile": "./readme.txt",
 
+	"copyUpdater": {
+		"source": "./node_modules/fluidweb-updater/plugin-license-manager.php",
+		"destination": "./vendor/fluidweb/fluidweb-updater/"
+	},
+
 	"sassSources": {
 		"main": [
 			"./sass/*.scss"

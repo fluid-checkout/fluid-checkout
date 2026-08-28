@@ -22,6 +22,7 @@
     "@wordpress/scripts": "^27.0.0",
     "browser-sync": "^2.27.9",
     "del": "^5.1.0",
+    "fluidweb-updater": "github:fluidweb-co/fluidweb-updater",
     "gettext-parser": "^8.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",

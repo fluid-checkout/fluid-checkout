@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Added: Optional weekly site environment report to Fluid Checkout. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
+
 = 4.2.7 - 2026-08-19 =
 
 * Bump tested up to WordPress 7.1+

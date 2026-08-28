@@ -108,6 +108,10 @@ class FluidCheckout {
 		// Run hooks initialization after all plugins have been loaded
 		add_action( 'plugins_loaded', array( $this, 'load_settings' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
+
+		// Site environment report cron
+		add_action( 'init', array( $this, 'maybe_schedule_site_report_cron' ) );
+		add_action( 'fc_site_report_weekly', array( $this, 'run_site_report_cron' ) );
 	}
 
 
@@ -123,6 +127,50 @@ class FluidCheckout {
 		self::$plugin_basename = plugin_basename( __FILE__ );
 		self::$version = get_file_data( __FILE__ , ['Version' => 'Version'], 'plugin')['Version'];
 		self::$asset_version = $this->get_assets_version_number();
+	}
+
+
+
+	/**
+	 * Load the license manager class file when needed.
+	 */
+	private function load_license_manager_class() {
+		// Bail if class is already loaded
+		if ( class_exists( 'Fluidweb_PluginLicenseManager' ) ) { return; }
+
+		require_once self::$directory_path . 'vendor/fluidweb/fluidweb-updater/plugin-license-manager.php';
+	}
+
+	/**
+	 * Whether site environment reporting is supported by the loaded license manager.
+	 */
+	private function is_site_report_supported() {
+		$this->load_license_manager_class();
+
+		// Bail if license manager class is not available
+		if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) { return false; }
+
+		return method_exists( 'Fluidweb_PluginLicenseManager', 'maybe_send_site_report' );
+	}
+
+	/**
+	 * Schedule the weekly site report cron if not already scheduled.
+	 */
+	public function maybe_schedule_site_report_cron() {
+		// Bail if site report is not supported
+		if ( ! $this->is_site_report_supported() ) { return; }
+
+		Fluidweb_PluginLicenseManager::schedule_site_report_cron();
+	}
+
+	/**
+	 * Run the weekly site environment report cron job.
+	 */
+	public function run_site_report_cron() {
+		// Bail if site report is not supported
+		if ( ! $this->is_site_report_supported() ) { return; }
+
+		Fluidweb_PluginLicenseManager::maybe_send_site_report();
 	}
 
 
