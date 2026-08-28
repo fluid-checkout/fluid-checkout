@@ -128,7 +128,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
-			
+
 			// Settings order pay.
 			'fc_pro_enable_pay_received'                                    => 'no',
 			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
@@ -138,6 +138,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_load_unminified_assets'                                     => 'no',
 			'fc_use_enhanced_select_components'                             => 'no',
 			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
+			'fc_enable_site_report'                                         => 'no',
+			'fc_site_report_data_groups'                                    => array( 'basic_environment', 'woocommerce_sales_metrics', 'plugin_settings' ),
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,

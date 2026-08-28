@@ -160,6 +160,9 @@ class FluidCheckout {
 		// Bail if site report is not supported
 		if ( ! $this->is_site_report_supported() ) { return; }
 
+		// Bail if site reporting is disabled
+		if ( ! Fluidweb_PluginLicenseManager::is_site_report_enabled() ) { return; }
+
 		Fluidweb_PluginLicenseManager::schedule_site_report_cron();
 	}
 

@@ -36,6 +36,10 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 		// Settings
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+
+		// Site report settings
+		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'sanitize_site_report_settings' ), 10, 3 );
+		add_action( 'woocommerce_settings_saved', array( $this, 'maybe_sync_site_report_cron_on_settings_saved' ), 10 );
 	}
 
 
@@ -133,12 +137,165 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'id'   => 'fc_checkout_advanced_debug_options',
 				),
 
+				array(
+					'title' => __( 'Site environment reports', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => __( 'Send weekly anonymous site environment reports to help Fluid Checkout improve compatibility. These settings apply to all Fluid Checkout plugins installed on this site.', 'fluid-checkout' ),
+					'id'    => 'fc_checkout_site_report_options',
+				),
+
+				array(
+					'title'           => __( 'Enable site environment reports', 'fluid-checkout' ),
+					'desc'            => __( 'Send weekly site environment reports to Fluid Checkout', 'fluid-checkout' ),
+					'desc_tip'        => __( 'Reports are not sent until you enable this option. No customer, user, or sensitive data are included.', 'fluid-checkout' ),
+					'id'              => 'fc_enable_site_report',
+					'type'            => 'checkbox',
+					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_site_report' ),
+					'checkboxgroup'   => 'start',
+					'show_if_checked' => 'option',
+					'autoload'        => false,
+				),
+				array(
+					'title'             => __( 'Data to share', 'fluid-checkout' ),
+					'desc'              => __( 'Choose which optional data groups to include in site reports.', 'fluid-checkout' ),
+					'id'                => 'fc_site_report_data_groups',
+					'type'              => 'fc_checkboxgroup',
+					'options'           => array(
+						'basic_environment'         => array(
+							'label'       => __( 'Basic environment info', 'fluid-checkout' ),
+							'description' => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled.', 'fluid-checkout' ),
+						),
+						'woocommerce_sales_metrics' => array(
+							'label'       => __( 'WooCommerce sales metrics', 'fluid-checkout' ),
+							'description' => __( 'Order count and total sales for the last 30 days. No customer data is included.', 'fluid-checkout' ),
+						),
+						'plugin_settings'           => array(
+							'label'       => __( 'Plugin settings', 'fluid-checkout' ),
+							'description' => __( 'Fluid Checkout plugin settings. Coming soon.', 'fluid-checkout' ),
+						),
+					),
+					'required_options'  => array( 'basic_environment' ),
+					'disabled_options'  => array( 'basic_environment', 'plugin_settings' ),
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_site_report_data_groups' ),
+					'checkboxgroup'     => 'end',
+					'show_if_checked'   => 'yes',
+					'autoload'          => false,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_checkout_site_report_options',
+				),
+
 			);
 
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings, $current_section );
 		}
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Sanitize site report settings on save.
+	 *
+	 * @param mixed $value     Sanitized option value.
+	 * @param array $option    Option definition.
+	 * @param mixed $raw_value Raw option value.
+	 */
+	public function sanitize_site_report_settings( $value, $option, $raw_value ) {
+		if ( empty( $option['id'] ) || 'fc_site_report_data_groups' !== $option['id'] ) {
+			return $value;
+		}
+
+		// Preserve stored groups when reporting is disabled and the field is hidden.
+		if ( 'no' === get_option( 'fc_enable_site_report', 'no' ) ) {
+			return $this->normalize_site_report_data_groups( get_option( 'fc_site_report_data_groups', array( 'basic_environment' ) ) );
+		}
+
+		$groups = is_array( $raw_value ) ? $raw_value : array();
+
+		return $this->normalize_site_report_data_groups( $groups );
+	}
+
+
+
+	/**
+	 * Normalize selected site report data groups.
+	 *
+	 * @param mixed $groups Raw or sanitized group values.
+	 */
+	public function normalize_site_report_data_groups( $groups ) {
+		$allowed = array( 'basic_environment', 'woocommerce_sales_metrics', 'plugin_settings' );
+
+		if ( ! is_array( $groups ) ) {
+			$groups = array();
+		}
+
+		$groups = array_values(
+			array_intersect(
+				array_map( 'sanitize_key', $groups ),
+				$allowed
+			)
+		);
+
+		if ( empty( $groups ) ) {
+			return array( 'basic_environment' );
+		}
+
+		if ( ! in_array( 'basic_environment', $groups, true ) ) {
+			$groups[] = 'basic_environment';
+		}
+
+		$dependent_groups = array( 'woocommerce_sales_metrics', 'plugin_settings' );
+
+		if ( array_intersect( $groups, $dependent_groups ) && ! in_array( 'basic_environment', $groups, true ) ) {
+			$groups[] = 'basic_environment';
+		}
+
+		return array_values( array_unique( $groups ) );
+	}
+
+
+
+	/**
+	 * Schedule or clear the site report cron when Tools settings are saved.
+	 */
+	public function maybe_sync_site_report_cron_on_settings_saved() {
+		// Bail if not saving Fluid Checkout Tools settings
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( empty( $_GET['tab'] ) || 'fc_checkout' !== wp_unslash( $_GET['tab'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( empty( $_GET['section'] ) || 'tools' !== wp_unslash( $_GET['section'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			return;
+		}
+
+		$this->load_license_manager_class();
+
+		// Bail if license manager class is not available
+		if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) { return; }
+
+		if ( Fluidweb_PluginLicenseManager::is_site_report_enabled() ) {
+			Fluidweb_PluginLicenseManager::schedule_site_report_cron();
+			return;
+		}
+
+		wp_clear_scheduled_hook( Fluidweb_PluginLicenseManager::SITE_REPORT_CRON_HOOK );
+	}
+
+
+
+	/**
+	 * Load the shared plugin license manager class.
+	 */
+	private function load_license_manager_class() {
+		if ( class_exists( 'Fluidweb_PluginLicenseManager', false ) ) { return; }
+
+		require_once FluidCheckout::$directory_path . 'vendor/fluidweb/fluidweb-updater/plugin-license-manager.php';
 	}
 
 }

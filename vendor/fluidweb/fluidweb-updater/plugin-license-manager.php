@@ -39,6 +39,16 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		const SITE_REPORT_SEND_LOCK_TRANSIENT = 'fc_site_report_send_lock';
 
 		/**
+		 * Option key for site report opt-in.
+		 */
+		const SITE_REPORT_ENABLE_OPTION = 'fc_enable_site_report';
+
+		/**
+		 * Option key for selected site report data groups.
+		 */
+		const SITE_REPORT_DATA_GROUPS_OPTION = 'fc_site_report_data_groups';
+
+		/**
 		 * Minimum interval between sends when the environment fingerprint has changed.
 		 */
 		const SITE_REPORT_CHANGED_INTERVAL = WEEK_IN_SECONDS;
@@ -385,12 +395,22 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		 * Maybe send a consolidated site environment report to Fluid Checkout.
 		 */
 		public static function maybe_send_site_report() {
+			// Bail if site reporting is disabled
+			if ( ! self::is_site_report_enabled() ) { return; }
+
 			// Bail if a site report request is already in progress
 			if ( get_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT ) ) { return; }
 
 			set_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT, 1, MINUTE_IN_SECONDS );
 
-			$payload     = self::build_site_report_payload();
+			$payload = self::build_site_report_payload();
+
+			// Bail if payload is empty
+			if ( empty( $payload ) || empty( $payload['site_url'] ) ) {
+				delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
+				return;
+			}
+
 			$fingerprint = self::get_site_report_fingerprint( $payload );
 
 			// Bail if the site report should not be sent
@@ -437,35 +457,120 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 
 		/**
+		 * Whether site environment reporting is enabled for this site.
+		 */
+		public static function is_site_report_enabled() {
+			return 'yes' === get_option( self::SITE_REPORT_ENABLE_OPTION, 'no' );
+		}
+
+
+
+		/**
+		 * Get normalized site report data groups selected by the merchant.
+		 */
+		public static function get_site_report_data_groups() {
+			$groups = get_option( self::SITE_REPORT_DATA_GROUPS_OPTION, array( 'basic_environment' ) );
+
+			return self::normalize_site_report_data_groups( $groups );
+		}
+
+
+
+		/**
+		 * Normalize selected site report data groups.
+		 *
+		 * @param mixed $groups Raw or sanitized group values.
+		 */
+		private static function normalize_site_report_data_groups( $groups ) {
+			$allowed = array( 'basic_environment', 'woocommerce_sales_metrics', 'plugin_settings' );
+
+			if ( ! is_array( $groups ) ) {
+				$groups = array();
+			}
+
+			$groups = array_values(
+				array_intersect(
+					array_map( 'sanitize_key', $groups ),
+					$allowed
+				)
+			);
+
+			if ( empty( $groups ) ) {
+				return array( 'basic_environment' );
+			}
+
+			$dependent_groups = array( 'woocommerce_sales_metrics', 'plugin_settings' );
+
+			if ( array_intersect( $groups, $dependent_groups ) && ! in_array( 'basic_environment', $groups, true ) ) {
+				$groups[] = 'basic_environment';
+			}
+
+			return array_values( array_unique( $groups ) );
+		}
+
+
+
+		/**
 		 * Build the site environment report payload.
 		 */
 		public static function build_site_report_payload() {
-			// Bail if `get_plugins` function is not available
-			if ( ! function_exists( 'get_plugins' ) ) { return array(); }
+			// Bail if site reporting is disabled
+			if ( ! self::is_site_report_enabled() ) { return array(); }
 
+			$groups = self::get_site_report_data_groups();
+
+			// Bail if no data groups are selected
+			if ( empty( $groups ) ) { return array(); }
+
+			$site_url = untrailingslashit( esc_url_raw( home_url() ) );
+			$payload  = array(
+				'schema_version' => 2,
+				'site_url'       => $site_url,
+				'report_groups'  => $groups,
+			);
+
+			if ( in_array( 'basic_environment', $groups, true ) ) {
+				$payload = array_merge( $payload, self::build_basic_environment_payload() );
+			}
+
+			if ( in_array( 'woocommerce_sales_metrics', $groups, true ) ) {
+				$sales_metrics = self::build_sales_metrics();
+
+				if ( ! empty( $sales_metrics ) ) {
+					$payload['sales_metrics'] = $sales_metrics;
+				}
+			}
+
+			return $payload;
+		}
+
+
+
+		/**
+		 * Build the basic environment section of the site report payload.
+		 */
+		private static function build_basic_environment_payload() {
 			$theme      = wp_get_theme();
-			$site_url   = untrailingslashit( esc_url_raw( home_url() ) );
 			$wc_version = defined( 'WC_VERSION' ) ? WC_VERSION : null;
+			$plugins    = array();
 
-			$plugins = array();
+			if ( function_exists( 'get_plugins' ) ) {
+				foreach ( get_plugins() as $plugin_file => $plugin_data ) {
+					$plugin_slug = self::get_plugin_slug_from_file( $plugin_file );
+					$plugin_row  = array(
+						'plugin_slug' => $plugin_slug,
+						'plugin_file' => $plugin_file,
+						'name'        => $plugin_data['Name'],
+						'version'     => $plugin_data['Version'],
+						'active'      => is_plugin_active( $plugin_file ),
+					);
 
-			foreach ( get_plugins() as $plugin_file => $plugin_data ) {
-				$plugin_slug = self::get_plugin_slug_from_file( $plugin_file );
-				$plugin_row  = array(
-					'plugin_slug' => $plugin_slug,
-					'plugin_file' => $plugin_file,
-					'name'        => $plugin_data['Name'],
-					'version'     => $plugin_data['Version'],
-					'active'      => is_plugin_active( $plugin_file ),
-				);
-
-				self::maybe_add_license_status_plugin_row( $plugin_row, $plugin_slug );
-				$plugins[] = $plugin_row;
+					self::maybe_add_license_status_plugin_row( $plugin_row, $plugin_slug );
+					$plugins[] = $plugin_row;
+				}
 			}
 
 			return array(
-				'schema_version'   => 1,
-				'site_url'         => $site_url,
 				'wp_version'       => get_bloginfo( 'version' ),
 				'php_version'      => PHP_VERSION,
 				'wc_version'       => $wc_version,
@@ -482,49 +587,107 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 
 		/**
+		 * Build WooCommerce sales metrics for the site report payload.
+		 */
+		private static function build_sales_metrics() {
+			if ( ! function_exists( 'wc_get_orders' ) || ! function_exists( 'get_woocommerce_currency' ) ) {
+				return null;
+			}
+
+			$period_days = 30;
+			$date_after  = gmdate( 'Y-m-d H:i:s', time() - ( $period_days * DAY_IN_SECONDS ) );
+			$order_ids   = wc_get_orders(
+				array(
+					'limit'        => -1,
+					'return'       => 'ids',
+					'status'       => array( 'wc-completed', 'wc-processing' ),
+					'date_created' => '>' . $date_after,
+				)
+			);
+
+			if ( ! is_array( $order_ids ) ) {
+				$order_ids = array();
+			}
+
+			$gross_sales = 0;
+
+			foreach ( $order_ids as $order_id ) {
+				$order = wc_get_order( $order_id );
+
+				if ( ! $order ) { continue; }
+
+				$gross_sales += (float) $order->get_total();
+			}
+
+			return array(
+				'period_days'  => $period_days,
+				'orders_count' => count( $order_ids ),
+				'gross_sales'  => wc_format_decimal( $gross_sales, 2 ),
+				'currency'     => get_woocommerce_currency(),
+			);
+		}
+
+
+
+		/**
 		 * Get a fingerprint hash for change detection.
 		 *
 		 * @param array $payload Site report payload.
 		 */
 		public static function get_site_report_fingerprint( $payload ) {
 			$minimal = array(
-				'site_url'         => $payload['site_url'],
-				'wp_version'       => $payload['wp_version'],
-				'php_version'      => $payload['php_version'],
-				'wc_version'       => $payload['wc_version'],
-				'locale'           => $payload['locale'],
-				'is_multisite'     => $payload['is_multisite'],
-				'is_ssl'           => $payload['is_ssl'],
-				'theme_template'   => $payload['theme_template'],
-				'theme_stylesheet' => $payload['theme_stylesheet'],
-				'theme_version'    => $payload['theme_version'],
-				'plugins'          => array(),
+				'site_url'      => $payload['site_url'] ?? '',
+				'report_groups' => $payload['report_groups'] ?? array(),
 			);
 
-			foreach ( $payload['plugins'] as $plugin ) {
-				$plugin_minimal = array(
-					'plugin_slug' => $plugin['plugin_slug'],
-					'version'     => $plugin['version'],
-					'active'      => $plugin['active'],
-				);
+			if ( ! empty( $payload['report_groups'] ) && in_array( 'basic_environment', $payload['report_groups'], true ) ) {
+				$minimal['wp_version']       = $payload['wp_version'] ?? '';
+				$minimal['php_version']      = $payload['php_version'] ?? '';
+				$minimal['wc_version']       = $payload['wc_version'] ?? null;
+				$minimal['locale']           = $payload['locale'] ?? '';
+				$minimal['is_multisite']     = $payload['is_multisite'] ?? false;
+				$minimal['is_ssl']           = $payload['is_ssl'] ?? false;
+				$minimal['theme_template']   = $payload['theme_template'] ?? '';
+				$minimal['theme_stylesheet'] = $payload['theme_stylesheet'] ?? '';
+				$minimal['theme_version']    = $payload['theme_version'] ?? '';
+				$minimal['plugins']          = array();
 
-				if ( array_key_exists( 'license_status', $plugin ) ) {
-					$plugin_minimal['license_status'] = $plugin['license_status'];
+				if ( ! empty( $payload['plugins'] ) && is_array( $payload['plugins'] ) ) {
+					foreach ( $payload['plugins'] as $plugin ) {
+						$plugin_minimal = array(
+							'plugin_slug' => $plugin['plugin_slug'],
+							'version'     => $plugin['version'],
+							'active'      => $plugin['active'],
+						);
+
+						if ( array_key_exists( 'license_status', $plugin ) ) {
+							$plugin_minimal['license_status'] = $plugin['license_status'];
+						}
+
+						if ( array_key_exists( 'license_key_hash', $plugin ) && ! empty( $plugin['license_key_hash'] ) ) {
+							$plugin_minimal['license_key_hash'] = $plugin['license_key_hash'];
+						}
+
+						$minimal['plugins'][] = $plugin_minimal;
+					}
+
+					usort(
+						$minimal['plugins'],
+						function( $a, $b ) {
+							return strcmp( $a['plugin_slug'], $b['plugin_slug'] );
+						}
+					);
 				}
-
-				if ( array_key_exists( 'license_key_hash', $plugin ) && ! empty( $plugin['license_key_hash'] ) ) {
-					$plugin_minimal['license_key_hash'] = $plugin['license_key_hash'];
-				}
-
-				$minimal['plugins'][] = $plugin_minimal;
 			}
 
-			usort(
-				$minimal['plugins'],
-				function( $a, $b ) {
-					return strcmp( $a['plugin_slug'], $b['plugin_slug'] );
-				}
-			);
+			if ( ! empty( $payload['sales_metrics'] ) && is_array( $payload['sales_metrics'] ) ) {
+				$minimal['sales_metrics'] = array(
+					'period_days'  => $payload['sales_metrics']['period_days'] ?? null,
+					'orders_count' => $payload['sales_metrics']['orders_count'] ?? null,
+					'gross_sales'  => $payload['sales_metrics']['gross_sales'] ?? null,
+					'currency'     => $payload['sales_metrics']['currency'] ?? null,
+				);
+			}
 
 			return hash( 'sha256', wp_json_encode( $minimal ) );
 		}
