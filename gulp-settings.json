@@ -89,6 +89,7 @@
 	"translationSources": [
 		"./**/*.php",
 		"!./vendor/**",
+		"!./vendor-dev/**",
 		"!./languages/**"
 	],
 	"translationDest": "./languages",
