@@ -84,7 +84,6 @@
 	height: $checkout-progress-bar-height;
 	background-color: $checkout-progress-bar-color;
 	transition: width $global-animation-duration linear, background-color $global-animation-duration linear;
-
 	// Move the step label out of view while keeping it available to screen readers,
 	// as some themes force a text color that makes the label partially visible inside the bar
 	overflow: hidden;
