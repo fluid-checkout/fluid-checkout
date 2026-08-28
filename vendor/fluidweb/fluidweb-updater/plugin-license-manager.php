@@ -671,17 +671,61 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			}
 
 			return array(
-				'wp_version'       => get_bloginfo( 'version' ),
-				'php_version'      => PHP_VERSION,
-				'wc_version'       => $wc_version,
-				'locale'           => get_locale(),
-				'is_multisite'     => is_multisite(),
-				'is_ssl'           => is_ssl(),
-				'theme_template'   => $theme->get_template(),
-				'theme_stylesheet' => $theme->get_stylesheet(),
-				'theme_version'    => $theme->get( 'Version' ),
-				'plugins'          => $plugins,
+				'wp_version'        => get_bloginfo( 'version' ),
+				'php_version'       => PHP_VERSION,
+				'wc_version'        => $wc_version,
+				'locale'            => get_locale(),
+				'wc_store_country'  => self::get_wc_store_country(),
+				'wc_store_timezone' => self::get_wc_store_timezone(),
+				'wc_store_currency' => self::get_wc_store_currency(),
+				'is_multisite'      => is_multisite(),
+				'is_ssl'            => is_ssl(),
+				'theme_template'    => $theme->get_template(),
+				'theme_stylesheet'  => $theme->get_stylesheet(),
+				'theme_version'     => $theme->get( 'Version' ),
+				'plugins'           => $plugins,
 			);
+		}
+
+
+
+		/**
+		 * Get the WooCommerce store base country code.
+		 */
+		private static function get_wc_store_country() {
+			if ( ! function_exists( 'WC' ) || ! WC() ) {
+				return null;
+			}
+
+			$country = WC()->countries->get_base_country();
+
+			return $country ? $country : null;
+		}
+
+
+
+		/**
+		 * Get the store timezone identifier used for WooCommerce reporting.
+		 */
+		private static function get_wc_store_timezone() {
+			$timezone_name = self::get_site_report_timezone()->getName();
+
+			return $timezone_name ? $timezone_name : null;
+		}
+
+
+
+		/**
+		 * Get the WooCommerce store currency code.
+		 */
+		private static function get_wc_store_currency() {
+			if ( ! function_exists( 'get_woocommerce_currency' ) ) {
+				return null;
+			}
+
+			$currency = get_woocommerce_currency();
+
+			return $currency ? $currency : null;
 		}
 
 
@@ -996,6 +1040,9 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 				$minimal['php_version']      = $payload['php_version'] ?? '';
 				$minimal['wc_version']       = $payload['wc_version'] ?? null;
 				$minimal['locale']           = $payload['locale'] ?? '';
+				$minimal['wc_store_country']  = $payload['wc_store_country'] ?? null;
+				$minimal['wc_store_timezone'] = $payload['wc_store_timezone'] ?? null;
+				$minimal['wc_store_currency'] = $payload['wc_store_currency'] ?? null;
 				$minimal['is_multisite']     = $payload['is_multisite'] ?? false;
 				$minimal['is_ssl']           = $payload['is_ssl'] ?? false;
 				$minimal['theme_template']   = $payload['theme_template'] ?? '';
