@@ -167,11 +167,11 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 						),
 						'woocommerce_sales_metrics' => array(
 							'label'       => __( 'WooCommerce sales metrics', 'fluid-checkout' ),
-							'description' => __( 'Order count and total sales for the last 30 days. No customer data is included.', 'fluid-checkout' ),
+							'description' => __( 'Order count and total sales for the last closed calendar month. No customer data is included.', 'fluid-checkout' ),
 						),
 						'plugin_settings'           => array(
 							'label'       => __( 'Plugin settings', 'fluid-checkout' ),
-							'description' => __( 'Fluid Checkout plugin settings. Coming soon.', 'fluid-checkout' ),
+							'description' => __( 'Fluid Checkout plugin settings to help with support requests. Coming soon.', 'fluid-checkout' ),
 						),
 					),
 					'required_options'  => array( 'basic_environment' ),

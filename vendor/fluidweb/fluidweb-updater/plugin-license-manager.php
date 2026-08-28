@@ -54,6 +54,11 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		const SITE_REPORT_API_URL_OPTION = 'fc_site_report_api_url';
 
 		/**
+		 * Option key indicating sales metrics history backfill was sent.
+		 */
+		const SITE_REPORT_SALES_BACKFILL_SENT_OPTION = 'fc_site_report_sales_backfill_sent';
+
+		/**
 		 * Minimum interval between sends when the environment fingerprint has changed.
 		 */
 		const SITE_REPORT_CHANGED_INTERVAL = WEEK_IN_SECONDS;
@@ -470,6 +475,10 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			if ( 200 === $response_code ) {
 				update_option( self::SITE_REPORT_FINGERPRINT_OPTION, $fingerprint );
 				update_option( self::SITE_REPORT_LAST_SENT_OPTION, time() );
+
+				if ( in_array( 'woocommerce_sales_metrics', $payload['report_groups'] ?? array(), true ) && ! self::has_site_report_sales_backfill_sent() ) {
+					update_option( self::SITE_REPORT_SALES_BACKFILL_SENT_OPTION, 'yes' );
+				}
 			}
 
 			delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
@@ -597,6 +606,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 			if ( in_array( 'basic_environment', $groups, true ) ) {
 				$payload = array_merge( $payload, self::build_basic_environment_payload() );
+				$payload['plugin_activations'] = self::build_plugin_activations();
 			}
 
 			if ( in_array( 'woocommerce_sales_metrics', $groups, true ) ) {
@@ -604,6 +614,14 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 				if ( ! empty( $sales_metrics ) ) {
 					$payload['sales_metrics'] = $sales_metrics;
+				}
+
+				if ( ! self::has_site_report_sales_backfill_sent() ) {
+					$sales_metrics_history = self::build_sales_metrics_history();
+
+					if ( ! empty( $sales_metrics_history ) ) {
+						$payload['sales_metrics_history'] = $sales_metrics_history;
+					}
 				}
 			}
 
@@ -653,44 +671,244 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 
 		/**
-		 * Build WooCommerce sales metrics for the site report payload.
+		 * Whether sales metrics history backfill has already been sent.
 		 */
-		private static function build_sales_metrics() {
-			if ( ! function_exists( 'wc_get_orders' ) || ! function_exists( 'get_woocommerce_currency' ) ) {
-				return null;
+		private static function has_site_report_sales_backfill_sent() {
+			return 'yes' === get_option( self::SITE_REPORT_SALES_BACKFILL_SENT_OPTION, 'no' );
+		}
+
+
+
+		/**
+		 * Get the site timezone used for monthly sales metrics.
+		 */
+		private static function get_site_report_timezone() {
+			return wp_timezone();
+		}
+
+
+
+		/**
+		 * Get the last closed calendar month key (YYYY-MM) in the site timezone.
+		 */
+		private static function get_last_closed_calendar_month_key() {
+			$date = new DateTimeImmutable( 'first day of last month', self::get_site_report_timezone() );
+
+			return $date->format( 'Y-m' );
+		}
+
+
+
+		/**
+		 * Get the start of a calendar month in the site timezone.
+		 *
+		 * @param string $month_key Month key in YYYY-MM format.
+		 */
+		private static function get_month_start_datetime( $month_key ) {
+			$parts = explode( '-', $month_key );
+
+			return new DateTimeImmutable(
+				sprintf( '%04d-%02d-01 00:00:00', (int) $parts[0], (int) $parts[1] ),
+				self::get_site_report_timezone()
+			);
+		}
+
+
+
+		/**
+		 * Get the end of a calendar month in the site timezone.
+		 *
+		 * @param string $month_key Month key in YYYY-MM format.
+		 */
+		private static function get_month_end_datetime( $month_key ) {
+			return self::get_month_start_datetime( $month_key )->modify( 'last day of this month 23:59:59' );
+		}
+
+
+
+		/**
+		 * Add calendar months to a month key.
+		 *
+		 * @param string $month_key Month key in YYYY-MM format.
+		 * @param int    $months    Number of months to add (negative to subtract).
+		 */
+		private static function add_calendar_months_to_key( $month_key, $months ) {
+			$modifier = $months >= 0 ? '+' . $months . ' months' : $months . ' months';
+
+			return self::get_month_start_datetime( $month_key )->modify( $modifier )->format( 'Y-m' );
+		}
+
+
+
+		/**
+		 * List month keys from start through end, inclusive.
+		 *
+		 * @param string $start_month_key Start month key in YYYY-MM format.
+		 * @param string $end_month_key   End month key in YYYY-MM format.
+		 */
+		private static function list_month_keys_inclusive( $start_month_key, $end_month_key ) {
+			$months  = array();
+			$current = $start_month_key;
+
+			while ( strcmp( $current, $end_month_key ) <= 0 ) {
+				$months[] = $current;
+				$current  = self::add_calendar_months_to_key( $current, 1 );
+
+				// Bail if the month range is unexpectedly large
+				if ( count( $months ) > 240 ) { break; }
 			}
 
-			$period_days = 30;
-			$date_after  = gmdate( 'Y-m-d H:i:s', time() - ( $period_days * DAY_IN_SECONDS ) );
-			$order_ids   = wc_get_orders(
+			return $months;
+		}
+
+
+
+		/**
+		 * Aggregate WooCommerce sales metrics for one or more closed calendar months.
+		 *
+		 * @param array $month_keys Month keys in YYYY-MM format.
+		 */
+		private static function aggregate_sales_metrics_for_months( $month_keys ) {
+			if ( empty( $month_keys ) ) {
+				return array();
+			}
+
+			if ( ! function_exists( 'wc_get_orders' ) || ! function_exists( 'get_woocommerce_currency' ) ) {
+				return array();
+			}
+
+			$month_keys = array_values( array_unique( $month_keys ) );
+			sort( $month_keys );
+
+			$start      = self::get_month_start_datetime( $month_keys[0] );
+			$end        = self::get_month_end_datetime( $month_keys[ count( $month_keys ) - 1 ] );
+			$timezone   = self::get_site_report_timezone();
+			$aggregates = array();
+
+			foreach ( $month_keys as $month_key ) {
+				$aggregates[ $month_key ] = array(
+					'orders_count' => 0,
+					'gross_sales'  => 0.0,
+				);
+			}
+
+			$orders = wc_get_orders(
 				array(
 					'limit'        => -1,
-					'return'       => 'ids',
+					'return'       => 'objects',
 					'status'       => array( 'wc-completed', 'wc-processing' ),
-					'date_created' => '>' . $date_after,
+					'date_created' => $start->format( 'Y-m-d H:i:s' ) . '...' . $end->format( 'Y-m-d H:i:s' ),
 				)
 			);
 
-			if ( ! is_array( $order_ids ) ) {
-				$order_ids = array();
+			if ( ! is_array( $orders ) ) {
+				$orders = array();
 			}
 
-			$gross_sales = 0;
-
-			foreach ( $order_ids as $order_id ) {
-				$order = wc_get_order( $order_id );
-
+			foreach ( $orders as $order ) {
 				if ( ! $order ) { continue; }
 
-				$gross_sales += (float) $order->get_total();
+				$created = $order->get_date_created();
+
+				if ( ! $created ) { continue; }
+
+				$created->setTimezone( $timezone );
+				$month_key = $created->format( 'Y-m' );
+
+				if ( ! isset( $aggregates[ $month_key ] ) ) { continue; }
+
+				$aggregates[ $month_key ]['orders_count']++;
+				$aggregates[ $month_key ]['gross_sales'] += (float) $order->get_total();
 			}
 
-			return array(
-				'period_days'  => $period_days,
-				'orders_count' => count( $order_ids ),
-				'gross_sales'  => wc_format_decimal( $gross_sales, 2 ),
-				'currency'     => get_woocommerce_currency(),
+			$currency = get_woocommerce_currency();
+			$results  = array();
+
+			foreach ( $month_keys as $month_key ) {
+				$results[] = array(
+					'month'        => $month_key,
+					'orders_count' => $aggregates[ $month_key ]['orders_count'],
+					'gross_sales'  => wc_format_decimal( $aggregates[ $month_key ]['gross_sales'], 2 ),
+					'currency'     => $currency,
+				);
+			}
+
+			return $results;
+		}
+
+
+
+		/**
+		 * Build WooCommerce sales metrics for the last closed calendar month.
+		 */
+		private static function build_sales_metrics() {
+			$results = self::aggregate_sales_metrics_for_months(
+				array( self::get_last_closed_calendar_month_key() )
 			);
+
+			return ! empty( $results ) ? $results[0] : null;
+		}
+
+
+
+		/**
+		 * Build monthly sales metrics history for the first site report.
+		 */
+		private static function build_sales_metrics_history() {
+			if ( ! function_exists( 'wc_get_orders' ) ) {
+				return array();
+			}
+
+			$lite_activation = (int) get_option( 'fc_plugin_activation_time', 0 );
+
+			if ( $lite_activation <= 0 ) {
+				return array();
+			}
+
+			$timezone          = self::get_site_report_timezone();
+			$install_month     = ( new DateTimeImmutable( '@' . $lite_activation ) )->setTimezone( $timezone )->format( 'Y-m' );
+			$last_closed_month = self::get_last_closed_calendar_month_key();
+			$pre_install_end   = self::add_calendar_months_to_key( $install_month, -1 );
+			$pre_install_start = self::add_calendar_months_to_key( $pre_install_end, -11 );
+			$month_keys        = self::list_month_keys_inclusive( $pre_install_start, $pre_install_end );
+			$post_install      = self::list_month_keys_inclusive( $install_month, $last_closed_month );
+
+			$month_keys = array_values( array_unique( array_merge( $month_keys, $post_install ) ) );
+			sort( $month_keys );
+
+			return self::aggregate_sales_metrics_for_months( $month_keys );
+		}
+
+
+
+		/**
+		 * Build first-activation timestamps for Fluid Checkout catalog plugins.
+		 */
+		private static function build_plugin_activations() {
+			$option_map = array(
+				'fluid-checkout'                 => 'fc_plugin_activation_time',
+				'fluid-checkout-pro'             => 'fc_pro_plugin_activation_time',
+				'fc-address-book'                => 'fc_adb_plugin_activation_time',
+				'fc-google-address-autocomplete' => 'fc_gaa_plugin_activation_time',
+				'fc-paddle-payments'             => 'fc_paddle_plugin_activation_time',
+				'fc-vat-assistant'               => 'fc_vat_plugin_activation_time',
+				'fc-conversion-kit'              => 'fc_kit_plugin_activation_time',
+			);
+
+			$activations = array();
+
+			foreach ( $option_map as $plugin_slug => $option_name ) {
+				$timestamp = get_option( $option_name, null );
+
+				if ( null === $timestamp || '' === $timestamp ) {
+					$activations[ $plugin_slug ] = null;
+					continue;
+				}
+
+				$activations[ $plugin_slug ] = absint( $timestamp );
+			}
+
+			return $activations;
 		}
 
 
@@ -744,11 +962,16 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 						}
 					);
 				}
+
+				if ( ! empty( $payload['plugin_activations'] ) && is_array( $payload['plugin_activations'] ) ) {
+					$minimal['plugin_activations'] = $payload['plugin_activations'];
+					ksort( $minimal['plugin_activations'] );
+				}
 			}
 
 			if ( ! empty( $payload['sales_metrics'] ) && is_array( $payload['sales_metrics'] ) ) {
 				$minimal['sales_metrics'] = array(
-					'period_days'  => $payload['sales_metrics']['period_days'] ?? null,
+					'month'        => $payload['sales_metrics']['month'] ?? null,
 					'orders_count' => $payload['sales_metrics']['orders_count'] ?? null,
 					'gross_sales'  => $payload['sales_metrics']['gross_sales'] ?? null,
 					'currency'     => $payload['sales_metrics']['currency'] ?? null,
