@@ -356,15 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Site report data preview modal on Tools settings with option to send a report immediately.
-* Added: Send now button on Tools settings when site environment reports are enabled.
-* Improved: Site report send errors now show a rate limit message when appropriate, and a generic message for other failures.
-* Added: Site report opt-in on Tools settings for all Fluid Checkout plugins installed on the site.
-* Added: Optional weekly site environment report to Fluid Checkout. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
-* Improved: Site reports are not sent until the merchant opts in from Tools settings.
-* Improved: WooCommerce sales metrics now report the last closed calendar month instead of a rolling 30-day window.
-* Added: First site report sends monthly sales history backfill and FC plugin activation timestamps.
-* Added: Dismissible admin and dashboard prompts to opt in to anonymous site environment reports after 3 days.
+* Added: Optional/Opt-in site environment reports sent to Fluid Checkout to help improve compatibility and support. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
 
 = 4.2.7 - 2026-08-19 =
 

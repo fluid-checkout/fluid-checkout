@@ -59,6 +59,11 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		const SITE_REPORT_SALES_BACKFILL_SENT_OPTION = 'fc_site_report_sales_backfill_sent';
 
 		/**
+		 * Option key for the last closed sales month included in a successful site report.
+		 */
+		const SITE_REPORT_LAST_SALES_METRICS_MONTH_OPTION = 'fc_site_report_last_sales_metrics_month';
+
+		/**
 		 * Minimum interval between sends when the environment fingerprint has changed.
 		 */
 		const SITE_REPORT_CHANGED_INTERVAL = WEEK_IN_SECONDS;
@@ -476,8 +481,12 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 				update_option( self::SITE_REPORT_FINGERPRINT_OPTION, $fingerprint );
 				update_option( self::SITE_REPORT_LAST_SENT_OPTION, time() );
 
-				if ( in_array( 'woocommerce_sales_metrics', $payload['report_groups'] ?? array(), true ) && ! self::has_site_report_sales_backfill_sent() ) {
-					update_option( self::SITE_REPORT_SALES_BACKFILL_SENT_OPTION, 'yes' );
+				if ( in_array( 'woocommerce_sales_metrics', $payload['report_groups'] ?? array(), true ) ) {
+					if ( ! self::has_site_report_sales_backfill_sent() ) {
+						update_option( self::SITE_REPORT_SALES_BACKFILL_SENT_OPTION, 'yes' );
+					}
+
+					self::update_site_report_last_sales_metrics_month( $payload );
 				}
 			}
 
@@ -623,6 +632,13 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 					if ( ! empty( $sales_metrics_history ) ) {
 						$payload['sales_metrics_history'] = $sales_metrics_history;
+					}
+				}
+				else {
+					$sales_metrics_catchup = self::build_sales_metrics_catchup();
+
+					if ( ! empty( $sales_metrics_catchup ) ) {
+						$payload['sales_metrics_history'] = $sales_metrics_catchup;
 					}
 				}
 			}
@@ -849,6 +865,57 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			);
 
 			return ! empty( $results ) ? $results[0] : null;
+		}
+
+
+
+		/**
+		 * Build closed-month sales metrics catch-up entries since the last successful report.
+		 */
+		private static function build_sales_metrics_catchup() {
+			if ( ! function_exists( 'wc_get_orders' ) ) {
+				return array();
+			}
+
+			$last_sent_month = get_option( self::SITE_REPORT_LAST_SALES_METRICS_MONTH_OPTION, '' );
+
+			if ( empty( $last_sent_month ) ) {
+				return array();
+			}
+
+			$last_closed_month = self::get_last_closed_calendar_month_key();
+
+			if ( strcmp( $last_sent_month, $last_closed_month ) >= 0 ) {
+				return array();
+			}
+
+			$start_month = self::add_calendar_months_to_key( $last_sent_month, 1 );
+
+			if ( strcmp( $start_month, $last_closed_month ) > 0 ) {
+				return array();
+			}
+
+			return self::aggregate_sales_metrics_for_months(
+				self::list_month_keys_inclusive( $start_month, $last_closed_month )
+			);
+		}
+
+
+
+		/**
+		 * Remember the last closed sales month sent in a successful site report.
+		 *
+		 * @param array $payload Site report payload.
+		 */
+		private static function update_site_report_last_sales_metrics_month( $payload ) {
+			if ( empty( $payload['sales_metrics']['month'] ) ) {
+				return;
+			}
+
+			update_option(
+				self::SITE_REPORT_LAST_SALES_METRICS_MONTH_OPTION,
+				sanitize_text_field( (string) $payload['sales_metrics']['month'] )
+			);
 		}
 
 
