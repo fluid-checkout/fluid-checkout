@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Checkout step names appearing partially visible inside the progress bar with some themes.
+
 = 4.2.7 - 2026-08-19 =
 
 * Bump tested up to WordPress 7.1+
