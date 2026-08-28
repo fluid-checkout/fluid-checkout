@@ -1173,7 +1173,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			$plugin_row['license_status'] = $license_status;
 
 			if ( ! empty( $license_key ) ) {
-				$plugin_row['license_key_hash'] = hash( 'sha256', $license_key );
+				$plugin_row['license_key_hash'] = hash( 'sha256', strtoupper( $license_key ) );
 			}
 		}
 
