@@ -49,6 +49,11 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		const SITE_REPORT_DATA_GROUPS_OPTION = 'fc_site_report_data_groups';
 
 		/**
+		 * Option key for the site report API base URL.
+		 */
+		const SITE_REPORT_API_URL_OPTION = 'fc_site_report_api_url';
+
+		/**
 		 * Minimum interval between sends when the environment fingerprint has changed.
 		 */
 		const SITE_REPORT_CHANGED_INTERVAL = WEEK_IN_SECONDS;
@@ -398,36 +403,90 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			// Bail if site reporting is disabled
 			if ( ! self::is_site_report_enabled() ) { return; }
 
-			// Bail if a site report request is already in progress
-			if ( get_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT ) ) { return; }
+			self::send_site_report_now( null, false, false );
+		}
+
+
+
+		/**
+		 * Send a site environment report immediately.
+		 *
+		 * @param array|null $groups             Optional data groups to include.
+		 * @param bool       $enable_if_disabled Whether to enable reporting before sending.
+		 * @param bool       $respect_send_rules Whether to apply fingerprint send intervals.
+		 */
+		public static function send_site_report_now( $groups = null, $enable_if_disabled = false, $respect_send_rules = true ) {
+			if ( get_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT ) ) {
+				return array(
+					'success'    => false,
+					'error_code' => 'in_progress',
+				);
+			}
+
+			if ( $enable_if_disabled && ! self::is_site_report_enabled() ) {
+				update_option( self::SITE_REPORT_ENABLE_OPTION, 'yes' );
+				self::schedule_site_report_cron();
+			}
+
+			if ( null !== $groups ) {
+				$groups = self::normalize_site_report_data_groups( $groups );
+				update_option( self::SITE_REPORT_DATA_GROUPS_OPTION, $groups );
+			}
+
+			if ( ! self::is_site_report_enabled() ) {
+				return array(
+					'success'    => false,
+					'error_code' => 'disabled',
+				);
+			}
 
 			set_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT, 1, MINUTE_IN_SECONDS );
 
-			$payload = self::build_site_report_payload();
+			$payload = self::build_site_report_payload( $groups );
 
-			// Bail if payload is empty
 			if ( empty( $payload ) || empty( $payload['site_url'] ) ) {
 				delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
-				return;
+
+				return array(
+					'success'    => false,
+					'error_code' => 'empty_payload',
+				);
 			}
 
 			$fingerprint = self::get_site_report_fingerprint( $payload );
 
-			// Bail if the site report should not be sent
-			if ( ! self::should_send_site_report( $fingerprint ) ) {
+			if ( $respect_send_rules && ! self::should_send_site_report( $fingerprint ) ) {
 				delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
-				return;
+
+				return array(
+					'success'    => false,
+					'error_code' => 'rate_limited',
+				);
 			}
 
-			$response = self::send_site_report( $payload );
-			$code     = is_wp_error( $response ) ? 0 : (int) wp_remote_retrieve_response_code( $response );
+			$response      = self::send_site_report( $payload );
+			$response_code = is_wp_error( $response ) ? 0 : (int) wp_remote_retrieve_response_code( $response );
 
-			if ( 200 === $code ) {
+			if ( 200 === $response_code ) {
 				update_option( self::SITE_REPORT_FINGERPRINT_OPTION, $fingerprint );
 				update_option( self::SITE_REPORT_LAST_SENT_OPTION, time() );
 			}
 
 			delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
+
+			if ( 200 !== $response_code ) {
+				return array(
+					'success'       => false,
+					'error_code'    => 'request_failed',
+					'response_code' => $response_code,
+				);
+			}
+
+			return array(
+				'success'       => true,
+				'response_code' => $response_code,
+				'is_enabled'    => self::is_site_report_enabled(),
+			);
 		}
 
 
@@ -481,7 +540,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		 *
 		 * @param mixed $groups Raw or sanitized group values.
 		 */
-		private static function normalize_site_report_data_groups( $groups ) {
+		public static function normalize_site_report_data_groups( $groups ) {
 			$allowed = array( 'basic_environment', 'woocommerce_sales_metrics', 'plugin_settings' );
 
 			if ( ! is_array( $groups ) ) {
@@ -512,12 +571,19 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 		/**
 		 * Build the site environment report payload.
+		 *
+		 * @param array|null $groups Optional data groups to include. When omitted, uses saved settings and requires opt-in.
 		 */
-		public static function build_site_report_payload() {
-			// Bail if site reporting is disabled
-			if ( ! self::is_site_report_enabled() ) { return array(); }
+		public static function build_site_report_payload( $groups = null ) {
+			if ( null === $groups ) {
+				// Bail if site reporting is disabled
+				if ( ! self::is_site_report_enabled() ) { return array(); }
 
-			$groups = self::get_site_report_data_groups();
+				$groups = self::get_site_report_data_groups();
+			}
+			else {
+				$groups = self::normalize_site_report_data_groups( $groups );
+			}
 
 			// Bail if no data groups are selected
 			if ( empty( $groups ) ) { return array(); }
@@ -700,9 +766,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		 * @param array $payload Site report payload.
 		 */
 		public static function send_site_report( $payload ) {
-			$api_url = untrailingslashit(
-				apply_filters( 'fc_site_report_api_url', 'https://fluidcheckout.com' )
-			);
+			$api_url = untrailingslashit( self::get_site_report_api_url() );
 
 			return wp_remote_post(
 				$api_url . '/wp-json/fc-licenses/v1/site-report',
@@ -715,6 +779,18 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 					'body'    => wp_json_encode( $payload ),
 					'timeout' => 15,
 				)
+			);
+		}
+
+
+
+		/**
+		 * Get the site report API base URL.
+		 */
+		public static function get_site_report_api_url() {
+			return apply_filters(
+				'fc_site_report_api_url',
+				get_option( self::SITE_REPORT_API_URL_OPTION, 'https://fluidcheckout.com' )
 			);
 		}
 

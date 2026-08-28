@@ -103,7 +103,6 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 
 		if ( 'end' === $checkboxgroup ) {
 			?>
-			</fieldset>
 			</td>
 			</tr>
 			<?php

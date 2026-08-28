@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Site report data preview modal on Tools settings with option to send a report immediately.
 * Added: Site report opt-in on Tools settings for all Fluid Checkout plugins installed on the site.
 * Added: Optional weekly site environment report to Fluid Checkout. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
 * Improved: Site reports are not sent until the merchant opts in from Tools settings.

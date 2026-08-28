@@ -1,0 +1,118 @@
+.fc-site-report-enable-actions {
+	margin: 8px 0 0;
+}
+
+.fc-checkboxgroup-option {
+	margin: 0 0 12px;
+}
+
+body.fc-site-report-modal-open {
+	overflow: hidden;
+}
+
+.fc-site-report-modal {
+	display: none;
+	inset: 0;
+	padding: 24px;
+	position: fixed;
+	z-index: 100000;
+}
+
+.fc-site-report-modal.is-open {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.fc-site-report-modal__backdrop {
+	background: rgba( 0, 0, 0, 0.55 );
+	inset: 0;
+	position: absolute;
+}
+
+.fc-site-report-modal__dialog {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	box-shadow: 0 8px 32px rgba( 0, 0, 0, 0.2 );
+	display: flex;
+	flex-direction: column;
+	max-height: calc( 100vh - 48px );
+	max-width: 900px;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+
+.fc-site-report-modal__header {
+	align-items: center;
+	border-bottom: 1px solid #dcdcde;
+	display: flex;
+	justify-content: space-between;
+	padding: 16px 20px;
+}
+
+.fc-site-report-modal__header h2 {
+	font-size: 18px;
+	line-height: 1.4;
+	margin: 0;
+}
+
+.fc-site-report-modal__close {
+	background: transparent;
+	border: 0;
+	color: #50575e;
+	cursor: pointer;
+	font-size: 24px;
+	line-height: 1;
+	padding: 0;
+}
+
+.fc-site-report-modal__body {
+	overflow: auto;
+	padding: 16px 20px;
+}
+
+.fc-site-report-modal__payload {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 12px;
+	line-height: 1.5;
+	margin: 12px 0 0;
+	max-height: 420px;
+	min-height: 120px;
+	overflow: auto;
+	padding: 12px;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.fc-site-report-modal__feedback {
+	margin: 12px 0 0;
+}
+
+.fc-site-report-modal__feedback.is-error {
+	color: #b32d2e;
+}
+
+.fc-site-report-modal__feedback.is-success {
+	color: #007017;
+}
+
+.fc-site-report-modal__footer {
+	border-top: 1px solid #dcdcde;
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	padding: 16px 20px;
+}
+
+.fc-site-report-modal__send-button.is-hidden {
+	display: none;
+}
+
+.fc-site-report-modal__feedback.is-hidden {
+	display: none;
+}

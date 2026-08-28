@@ -149,7 +149,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'desc'            => __( 'Send weekly site environment reports to Fluid Checkout', 'fluid-checkout' ),
 					'desc_tip'        => __( 'Reports are not sent until you enable this option. No customer, user, or sensitive data are included.', 'fluid-checkout' ),
 					'id'              => 'fc_enable_site_report',
-					'type'            => 'checkbox',
+					'type'            => 'fc_site_report_enable',
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_site_report' ),
 					'checkboxgroup'   => 'start',
 					'show_if_checked' => 'option',
