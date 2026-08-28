@@ -133,7 +133,12 @@ class FluidCheckout_Admin_SettingType_SiteReportEnable extends FluidCheckout {
 				class="button button-secondary fc-site-report-preview-button"
 				aria-haspopup="dialog"
 			><?php esc_html_e( 'Preview report data', 'fluid-checkout' ); ?></button>
+			<button
+				type="button"
+				class="button button-secondary fc-site-report-send-now-button<?php echo 'yes' === $option_value ? '' : ' is-hidden'; ?>"
+			><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
 		</p>
+		<p class="fc-site-report-enable-actions__feedback is-hidden" aria-live="polite"></p>
 
 		<?php
 		if ( ! isset( $checkboxgroup ) || 'end' === $checkboxgroup ) {

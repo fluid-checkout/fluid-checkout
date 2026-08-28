@@ -85,6 +85,57 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 			$settings = array(
 
 				array(
+					'title' => __( 'Site environment reports', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => __( 'Send non-sensitive site environment reports to help Fluid Checkout improve compatibility. Reports are not sent until enabled in the options below.', 'fluid-checkout' ),
+					'id'    => 'fc_checkout_site_report_options',
+				),
+
+				array(
+					'title'           => __( 'Site environment reports', 'fluid-checkout' ),
+					'desc'            => __( 'Enable sending site environment reports to Fluid Checkout', 'fluid-checkout' ),
+					'desc_tip'        => __( 'Reports are sent weekly when enabled and help us improve compatibility and support for your site.', 'fluid-checkout' ) . '<br>' .
+									 __( 'No customer, user, or sensitive data are included in the reports.', 'fluid-checkout' ),
+					'id'              => 'fc_enable_site_report',
+					'type'            => 'fc_site_report_enable',
+					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_site_report' ),
+					'checkboxgroup'   => 'start',
+					'show_if_checked' => 'option',
+					'autoload'        => false,
+				),
+				array(
+					'title'             => __( 'Data to share', 'fluid-checkout' ),
+					'desc'              => __( 'Choose which optional data groups to include in site reports.', 'fluid-checkout' ),
+					'id'                => 'fc_site_report_data_groups',
+					'type'              => 'fc_checkboxgroup',
+					'options'           => array(
+						'basic_environment'         => array(
+							'label'       => __( 'Basic environment info', 'fluid-checkout' ),
+							'description' => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled.', 'fluid-checkout' ),
+						),
+						'woocommerce_sales_metrics' => array(
+							'label'       => __( 'WooCommerce sales metrics', 'fluid-checkout' ),
+							'description' => __( 'Order count and total sales for the last closed calendar month. No customer data is included.', 'fluid-checkout' ),
+						),
+						'plugin_settings'           => array(
+							'label'       => __( 'Plugin settings', 'fluid-checkout' ),
+							'description' => __( 'Fluid Checkout plugin settings to help with support requests. Coming soon.', 'fluid-checkout' ),
+						),
+					),
+					'required_options'  => array( 'basic_environment' ),
+					'disabled_options'  => array( 'basic_environment', 'plugin_settings' ),
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_site_report_data_groups' ),
+					'checkboxgroup'     => 'end',
+					'show_if_checked'   => 'yes',
+					'autoload'          => false,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_checkout_site_report_options',
+				),
+
+				array(
 					'title' => __( 'Troubleshooting', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
@@ -135,56 +186,6 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				array(
 					'type' => 'sectionend',
 					'id'   => 'fc_checkout_advanced_debug_options',
-				),
-
-				array(
-					'title' => __( 'Site environment reports', 'fluid-checkout' ),
-					'type'  => 'title',
-					'desc'  => __( 'Send weekly anonymous site environment reports to help Fluid Checkout improve compatibility. These settings apply to all Fluid Checkout plugins installed on this site.', 'fluid-checkout' ),
-					'id'    => 'fc_checkout_site_report_options',
-				),
-
-				array(
-					'title'           => __( 'Enable site environment reports', 'fluid-checkout' ),
-					'desc'            => __( 'Send weekly site environment reports to Fluid Checkout', 'fluid-checkout' ),
-					'desc_tip'        => __( 'Reports are not sent until you enable this option. No customer, user, or sensitive data are included.', 'fluid-checkout' ),
-					'id'              => 'fc_enable_site_report',
-					'type'            => 'fc_site_report_enable',
-					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_site_report' ),
-					'checkboxgroup'   => 'start',
-					'show_if_checked' => 'option',
-					'autoload'        => false,
-				),
-				array(
-					'title'             => __( 'Data to share', 'fluid-checkout' ),
-					'desc'              => __( 'Choose which optional data groups to include in site reports.', 'fluid-checkout' ),
-					'id'                => 'fc_site_report_data_groups',
-					'type'              => 'fc_checkboxgroup',
-					'options'           => array(
-						'basic_environment'         => array(
-							'label'       => __( 'Basic environment info', 'fluid-checkout' ),
-							'description' => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled.', 'fluid-checkout' ),
-						),
-						'woocommerce_sales_metrics' => array(
-							'label'       => __( 'WooCommerce sales metrics', 'fluid-checkout' ),
-							'description' => __( 'Order count and total sales for the last closed calendar month. No customer data is included.', 'fluid-checkout' ),
-						),
-						'plugin_settings'           => array(
-							'label'       => __( 'Plugin settings', 'fluid-checkout' ),
-							'description' => __( 'Fluid Checkout plugin settings to help with support requests. Coming soon.', 'fluid-checkout' ),
-						),
-					),
-					'required_options'  => array( 'basic_environment' ),
-					'disabled_options'  => array( 'basic_environment', 'plugin_settings' ),
-					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_site_report_data_groups' ),
-					'checkboxgroup'     => 'end',
-					'show_if_checked'   => 'yes',
-					'autoload'          => false,
-				),
-
-				array(
-					'type' => 'sectionend',
-					'id'   => 'fc_checkout_site_report_options',
 				),
 
 			);

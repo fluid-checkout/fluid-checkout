@@ -484,9 +484,11 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
 
 			if ( 200 !== $response_code ) {
+				$error_code = 429 === $response_code ? 'rate_limited' : 'request_failed';
+
 				return array(
 					'success'       => false,
-					'error_code'    => 'request_failed',
+					'error_code'    => $error_code,
 					'response_code' => $response_code,
 				);
 			}

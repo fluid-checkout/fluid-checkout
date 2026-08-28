@@ -71,6 +71,10 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 				),
 
 				array(
+					'type'     => 'fc_site_report_telemetry_prompt',
+					'autoload' => false,
+				),
+				array(
 					'type'             => 'fc_setup',
 					'autoload'         => false,
 				),

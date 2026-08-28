@@ -404,6 +404,8 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
+		require_once self::$directory_path . 'inc/admin/admin-site-report-telemetry.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-site-report-telemetry.php';
 	}
 
 

@@ -151,10 +151,17 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 		$result = Fluidweb_PluginLicenseManager::send_site_report_now( $groups, $enable_if_disabled, false );
 
 		if ( empty( $result['success'] ) ) {
+			$error_code = $result['error_code'] ?? 'request_failed';
+
+			if ( 'request_failed' === $error_code && 429 === (int) ( $result['response_code'] ?? 0 ) ) {
+				$error_code = 'rate_limited';
+			}
+
 			wp_send_json_error(
 				array(
-					'message'    => $this->get_send_error_message( $result ),
-					'error_code' => $result['error_code'] ?? 'request_failed',
+					'message'       => $this->get_send_error_message( $result ),
+					'error_code'    => $error_code,
+					'response_code' => (int) ( $result['response_code'] ?? 0 ),
 				),
 				400
 			);
@@ -226,13 +233,17 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 	private function get_send_error_message( $result ) {
 		$messages = array(
 			'in_progress'    => __( 'A site report request is already in progress. Try again in a moment.', 'fluid-checkout' ),
-			'disabled'     => __( 'Site environment reporting is disabled.', 'fluid-checkout' ),
+			'disabled'       => __( 'Site environment reporting is disabled.', 'fluid-checkout' ),
 			'empty_payload'  => __( 'No site report data is available to send.', 'fluid-checkout' ),
 			'rate_limited'   => __( 'A site report was sent recently. Try again later.', 'fluid-checkout' ),
 			'request_failed' => __( 'The site report could not be sent. Try again later.', 'fluid-checkout' ),
 		);
 
 		$error_code = $result['error_code'] ?? 'request_failed';
+
+		if ( 'request_failed' === $error_code && 429 === (int) ( $result['response_code'] ?? 0 ) ) {
+			$error_code = 'rate_limited';
+		}
 
 		return $messages[ $error_code ] ?? $messages['request_failed'];
 	}
