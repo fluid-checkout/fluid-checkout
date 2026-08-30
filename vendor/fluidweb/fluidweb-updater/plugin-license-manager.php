@@ -590,9 +590,10 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		/**
 		 * Build the site environment report payload.
 		 *
-		 * @param array|null $groups Optional data groups to include. When omitted, uses saved settings and requires opt-in.
+		 * @param array|null $groups               Optional data groups to include. When omitted, uses saved settings and requires opt-in.
+		 * @param string|null $plugins_report_scope Whether the plugins list is a full inventory or partial subset. Defaults to `complete`.
 		 */
-		public static function build_site_report_payload( $groups = null ) {
+		public static function build_site_report_payload( $groups = null, $plugins_report_scope = null ) {
 			if ( null === $groups ) {
 				// Bail if site reporting is disabled
 				if ( ! self::is_site_report_enabled() ) { return array(); }
@@ -615,7 +616,8 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 			if ( in_array( 'basic_environment', $groups, true ) ) {
 				$payload = array_merge( $payload, self::build_basic_environment_payload() );
-				$payload['plugin_activations'] = self::build_plugin_activations();
+				$payload['plugin_activations']  = self::build_plugin_activations();
+				$payload['plugins_report_scope'] = null !== $plugins_report_scope ? $plugins_report_scope : 'complete';
 			}
 
 			if ( in_array( 'woocommerce_sales_metrics', $groups, true ) ) {
@@ -650,9 +652,8 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		 * Build the basic environment section of the site report payload.
 		 */
 		private static function build_basic_environment_payload() {
-			$theme      = wp_get_theme();
-			$wc_version = defined( 'WC_VERSION' ) ? WC_VERSION : null;
-			$plugins    = array();
+			$theme   = wp_get_theme();
+			$plugins = array();
 
 			if ( function_exists( 'get_plugins' ) ) {
 				foreach ( get_plugins() as $plugin_file => $plugin_data ) {
@@ -673,7 +674,6 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			return array(
 				'wp_version'        => get_bloginfo( 'version' ),
 				'php_version'       => PHP_VERSION,
-				'wc_version'        => $wc_version,
 				'locale'            => get_locale(),
 				'wc_store_country'  => self::get_wc_store_country(),
 				'wc_store_timezone' => self::get_wc_store_timezone(),
@@ -1038,7 +1038,6 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			if ( ! empty( $payload['report_groups'] ) && in_array( 'basic_environment', $payload['report_groups'], true ) ) {
 				$minimal['wp_version']       = $payload['wp_version'] ?? '';
 				$minimal['php_version']      = $payload['php_version'] ?? '';
-				$minimal['wc_version']       = $payload['wc_version'] ?? null;
 				$minimal['locale']           = $payload['locale'] ?? '';
 				$minimal['wc_store_country']  = $payload['wc_store_country'] ?? null;
 				$minimal['wc_store_timezone'] = $payload['wc_store_timezone'] ?? null;
