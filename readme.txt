@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: JavaScript error on the checkout page when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which stopped the notices and coupon code sections from being updated.
+* Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
 
 = 4.2.7 - 2026-08-19 =
 
