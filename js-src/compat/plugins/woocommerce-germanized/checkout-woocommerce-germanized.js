@@ -47,11 +47,17 @@
 	 * Get a list of address fields that are set for value replacement.
 	 */
 	var getAddressReplacementFields = function() {
+		// Bail if plugin object is not available
+		if ( 'undefined' === typeof window.shiptastic || 'undefined' === typeof window.shiptastic.shipments_pickup_locations ) { return; }
+
 		// Bail if plugin function is not available
 		if ( 'undefined' === typeof window.shiptastic.shipments_pickup_locations.getPickupLocation ) { return; }
 
 		// Get current pickup location input
 		var currentPickupLocationInput = document.querySelector( _settings.currentPickupLocationInputSelector );
+
+		// Bail if current pickup location input is not available
+		if ( ! currentPickupLocationInput ) { return; }
 
 		// Bail if current pickup location is not set
 		if ( ! currentPickupLocationInput.value ) { return; }
@@ -75,6 +81,9 @@
 	 * Maybe add "Managed by pickup location" notice to the field.
 	 */
 	var maybeAddFieldNotice = function() {
+		// Bail if plugin object is not available
+		if ( 'undefined' === typeof window.shiptastic || 'undefined' === typeof window.shiptastic.shipments_pickup_locations || 'undefined' === typeof window.shiptastic.shipments_pickup_locations.params ) { return; }
+
 		// Bail if notice element from the plugin is not available
 		if ( 'undefined' === typeof window.shiptastic.shipments_pickup_locations.params.i18n_managed_by_pickup_location ) { return; }
 
