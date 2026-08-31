@@ -42,7 +42,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function get_default_option_values() {
 		$defaults = array(
-			// Settings checkout.			
+			// Settings checkout.
 			'fc_checkout_layout'                                            => 'multi-step',
 			'fc_checkout_column_layout'                                     => 'two_columns',
 			'fc_design_template'                                            => 'classic',
@@ -115,7 +115,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
 			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
-			
+
 			// Settings order received.
 			'fc_pro_enable_order_received'                                  => 'no',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
@@ -128,7 +128,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
-			
+
 			// Settings order pay.
 			'fc_pro_enable_pay_received'                                    => 'no',
 			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
