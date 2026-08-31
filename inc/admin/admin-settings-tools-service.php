@@ -78,20 +78,6 @@ class FluidCheckout_AdminSettingsTools_Service extends FluidCheckout {
 
 
 	/**
-	 * Get default option values for managed settings.
-	 *
-	 * Lite defaults already include Pro / Address Book / VAT via `fc_default_option_values`.
-	 * Fluid Checkout product keys (`fc_*`) are managed even when absent from this map.
-	 *
-	 * @param  string  $context  Context for which defaults are requested. `all` or `export`.
-	 */
-	public function get_default_option_values( $context = 'all' ) {
-		return FluidCheckout_Settings::instance()->get_default_option_values( $context );
-	}
-
-
-
-	/**
 	 * Get troubleshooting option keys.
 	 *
 	 * @return array
@@ -194,7 +180,7 @@ class FluidCheckout_AdminSettingsTools_Service extends FluidCheckout {
 		}
 
 		// WooCommerce / third-party keys from active defaults
-		return array_key_exists( $option, $this->get_default_option_values() );
+		return array_key_exists( $option, FluidCheckout_Settings::instance()->get_default_option_values() );
 	}
 
 	/**
@@ -263,7 +249,7 @@ class FluidCheckout_AdminSettingsTools_Service extends FluidCheckout {
 	 */
 	public function get_managed_option_keys( $for_transfer = false ) {
 		$context = $for_transfer ? 'export' : 'all';
-		$keys = array_keys( $this->get_default_option_values( $context ) );
+		$keys = array_keys( FluidCheckout_Settings::instance()->get_default_option_values( $context ) );
 		$keys = array_merge( $keys, $this->get_saved_fc_product_option_keys() );
 		$keys = array_unique( $keys );
 

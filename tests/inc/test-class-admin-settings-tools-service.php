@@ -215,7 +215,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Fluid Checkout product keys are managed without being in the defaults map.
 	 */
 	public function test_fc_product_keys_managed_without_defaults_map_entry() {
-		$defaults = $this->service->get_default_option_values();
+		$defaults = FluidCheckout_Settings::instance()->get_default_option_values();
 		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
 
 		$this->assertTrue( $this->service->is_managed_option_key( 'fc_gaa_enabled' ) );
@@ -351,8 +351,8 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Export: omits hidden and deprecated settings from the defaults map.
 	 */
 	public function test_export_omits_hidden_and_deprecated_settings_from_defaults_map() {
-		$all_defaults = $this->service->get_default_option_values();
-		$export_defaults = $this->service->get_default_option_values( 'export' );
+		$all_defaults = FluidCheckout_Settings::instance()->get_default_option_values();
+		$export_defaults = FluidCheckout_Settings::instance()->get_default_option_values( 'export' );
 
 		$this->assertArrayHasKey( 'fc_apply_checkout_field_args', $all_defaults );
 		$this->assertArrayHasKey( 'fc_enable_checkout_place_order_sidebar', $all_defaults );
@@ -396,7 +396,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 		$this->set_tracked_option( 'fc_gaa_google_places_api_key', 'secret-api' ); // excluded secret
 
 		// Confirm these keys are not coming from active defaults alone
-		$defaults = $this->service->get_default_option_values();
+		$defaults = FluidCheckout_Settings::instance()->get_default_option_values();
 		$this->assertArrayNotHasKey( 'fc_pro_enable_address_book', $defaults );
 		$this->assertArrayNotHasKey( 'fc_vat_number_field_visibility', $defaults );
 		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
@@ -864,7 +864,7 @@ class Admin_Settings_Tools_Service_Test extends TestCase {
 	 * Test: Restore after reset: restores inactive Fluid Checkout product settings not in defaults.
 	 */
 	public function test_restore_after_reset_restores_inactive_fc_product_settings() {
-		$defaults = $this->service->get_default_option_values();
+		$defaults = FluidCheckout_Settings::instance()->get_default_option_values();
 		$this->assertArrayNotHasKey( 'fc_gaa_enabled', $defaults );
 		$this->assertArrayNotHasKey( 'fc_vat_number_field_visibility', $defaults );
 
