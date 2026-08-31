@@ -39,8 +39,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 	/**
 	 * Get the default values for all options.
+	 *
+	 * @param  string  $context  Context for which defaults are requested. `all` or `export`.
 	 */
-	public function get_default_option_values() {
+	public function get_default_option_values( $context = 'all' ) {
 		$defaults = array(
 			// Settings checkout.
 			'fc_checkout_layout'                                            => 'multi-step',
@@ -139,12 +141,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_use_enhanced_select_components'                             => 'no',
 			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
 
-			// Settings without options in the admin panel.
-			'fc_plugin_activation_time'                                     => null,
-			'fc_apply_checkout_field_args'                                  => 'yes',
-			'fc_enable_checkout_validation'                                 => 'yes',
-			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
-
 			// Compatibility settings for plugins.
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
 			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
@@ -177,12 +173,30 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_go_enable_account_wide_layout'                 => 'yes',
 			'fc_compat_theme_fennik_output_breadcrumbs_section'             => 'no',
 			'fc_compat_theme_dt_the7_output_additional_header_sections'     => 'no',
+		);
+
+		$extra_defaults = array(
+			// Settings without options in the admin panel.
+			'fc_plugin_activation_time'                                     => null,
+			'fc_apply_checkout_field_args'                                  => 'yes',
+			'fc_enable_checkout_validation'                                 => 'yes',
+			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
 
 			// Deprecated settings.
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
 		);
 
-		return apply_filters( 'fc_default_option_values', $defaults );
+		// Maybe merge extra defaults
+		if ( 'all' === $context ) {
+			$defaults = array_merge( $defaults, $extra_defaults );
+		}
+
+		/**
+		 * Filter the default option values.
+		 *
+		 * @param  string  $context  Context for which defaults are requested. `all` or `export`.
+		 */
+		return apply_filters( 'fc_default_option_values', $defaults, $context );
 	}
 
 

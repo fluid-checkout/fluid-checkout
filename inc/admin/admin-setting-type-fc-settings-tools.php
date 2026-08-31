@@ -194,7 +194,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	 * @param  string  $description  Field description HTML.
 	 */
 	public function output_restore_controls( $description ) {
-		$backup = FluidCheckout_Admin_Settings_Tools_Service::instance()->get_last_backup();
+		$backup = FluidCheckout_AdminSettingsTools_Service::instance()->get_last_backup();
 		?>
 		<fieldset class="fc-settings-tools wc-settings-prevent-change-event">
 			<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -219,7 +219,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 					</button>
 				</p>
 			<?php else : ?>
-				<p class="description"><?php echo esc_html__( 'No backup is available yet.', 'fluid-checkout' ); ?></p>
+				<p class="description"><?php echo esc_html__( 'No settings backups available yet.', 'fluid-checkout' ); ?></p>
 			<?php endif; ?>
 		</fieldset>
 		<?php
@@ -268,7 +268,7 @@ class FluidCheckout_Admin_SettingType_Settings_Tools extends FluidCheckout {
 	 * @param  string  $description  Field description HTML.
 	 */
 	public function output_import_controls( $description ) {
-		$preview = FluidCheckout_Admin_Settings_Tools_Service::instance()->get_import_preview();
+		$preview = FluidCheckout_AdminSettingsTools_Service::instance()->get_import_preview();
 
 		// Maybe show import preview review
 		if ( null !== $preview ) {

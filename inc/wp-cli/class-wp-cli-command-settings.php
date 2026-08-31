@@ -25,7 +25,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 	 * @param  array  $assoc_args  Associative arguments.
 	 */
 	public function export( $args, $assoc_args ) {
-		$json = FluidCheckout_Admin_Settings_Tools_Service::instance()->get_export_json();
+		$json = FluidCheckout_AdminSettingsTools_Service::instance()->get_export_json();
 
 		// Bail if export failed
 		if ( false === $json ) {
@@ -98,14 +98,14 @@ class FluidCheckout_WPCLI_Command_Settings {
 			WP_CLI::error( sprintf( 'Could not read settings file: %s', $path ) );
 		}
 
-		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
+		$service = FluidCheckout_AdminSettingsTools_Service::instance();
 
 		// Bail if file exceeds the allowed size
 		if ( $service->import_file_exceeds_max_bytes( $file_size ) ) {
 			WP_CLI::error(
 				sprintf(
 					'The settings file is too large. Maximum size is %s.',
-					size_format( FluidCheckout_Admin_Settings_Tools_Service::IMPORT_FILE_MAX_BYTES )
+					size_format( FluidCheckout_AdminSettingsTools_Service::IMPORT_FILE_MAX_BYTES )
 				)
 			);
 		}
@@ -192,7 +192,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 	public function reset( $args, $assoc_args ) {
 		WP_CLI::confirm( 'Reset Fluid Checkout settings to defaults?', $assoc_args );
 
-		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->reset_settings( true );
+		$result = FluidCheckout_AdminSettingsTools_Service::instance()->reset_settings( true );
 
 		WP_CLI::success(
 			sprintf(
@@ -218,7 +218,7 @@ class FluidCheckout_WPCLI_Command_Settings {
 	public function restore( $args, $assoc_args ) {
 		WP_CLI::confirm( 'Restore Fluid Checkout settings from the automatic backup?', $assoc_args );
 
-		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->restore_last_backup();
+		$result = FluidCheckout_AdminSettingsTools_Service::instance()->restore_last_backup();
 
 		// Bail if validation errors
 		if ( ! empty( $result[ 'errors' ] ) ) {

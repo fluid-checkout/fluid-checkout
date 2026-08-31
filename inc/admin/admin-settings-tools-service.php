@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Service for exporting, importing, and resetting Fluid Checkout settings.
  */
-class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
+class FluidCheckout_AdminSettingsTools_Service extends FluidCheckout {
 
 	/**
 	 * Export format version.
@@ -83,10 +83,10 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 * Lite defaults already include Pro / Address Book / VAT via `fc_default_option_values`.
 	 * Fluid Checkout product keys (`fc_*`) are managed even when absent from this map.
 	 *
-	 * @return array
+	 * @param  string  $context  Context for which defaults are requested. `all` or `export`.
 	 */
-	public function get_default_option_values() {
-		return FluidCheckout_Settings::instance()->get_default_option_values();
+	public function get_default_option_values( $context = 'all' ) {
+		return FluidCheckout_Settings::instance()->get_default_option_values( $context );
 	}
 
 
@@ -262,16 +262,19 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 * @return array
 	 */
 	public function get_managed_option_keys( $for_transfer = false ) {
-		// Prefer get_transferable_option_keys() for export/import callers
-		if ( $for_transfer ) {
-			return $this->get_transferable_option_keys();
-		}
-
-		$keys = array_keys( $this->get_default_option_values() );
+		$context = $for_transfer ? 'export' : 'all';
+		$keys = array_keys( $this->get_default_option_values( $context ) );
 		$keys = array_merge( $keys, $this->get_saved_fc_product_option_keys() );
 		$keys = array_unique( $keys );
 
-		return array_values( array_filter( $keys, array( $this, 'is_managed_option_key' ) ) );
+		$keys = array_values( array_filter( $keys, array( $this, 'is_managed_option_key' ) ) );
+
+		// Maybe omit troubleshooting options
+		if ( $for_transfer ) {
+			return array_values( array_filter( $keys, array( $this, 'is_transferable_option_key' ) ) );
+		}
+
+		return $keys;
 	}
 
 	/**
@@ -280,7 +283,7 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 	 * @return array
 	 */
 	public function get_transferable_option_keys() {
-		return array_values( array_filter( $this->get_managed_option_keys(), array( $this, 'is_transferable_option_key' ) ) );
+		return $this->get_managed_option_keys( true );
 	}
 
 
@@ -844,4 +847,4 @@ class FluidCheckout_Admin_Settings_Tools_Service extends FluidCheckout {
 
 }
 
-FluidCheckout_Admin_Settings_Tools_Service::instance();
+FluidCheckout_AdminSettingsTools_Service::instance();

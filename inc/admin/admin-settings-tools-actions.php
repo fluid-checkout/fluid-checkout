@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Handle admin actions for settings export, import, and reset.
  */
-class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
+class FluidCheckout_AdminSettingsTools_Actions extends FluidCheckout {
 
 	/**
 	 * Transient key for admin notices after redirect.
@@ -90,7 +90,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_export() {
 		$this->verify_request( 'fc_settings_export' );
 
-		$json = FluidCheckout_Admin_Settings_Tools_Service::instance()->get_export_json();
+		$json = FluidCheckout_AdminSettingsTools_Service::instance()->get_export_json();
 
 		// Bail if export failed
 		if ( false === $json ) {
@@ -120,7 +120,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_import_preview() {
 		$this->verify_request( 'fc_settings_import' );
 
-		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
+		$service = FluidCheckout_AdminSettingsTools_Service::instance();
 		$mode = $service->normalize_import_mode(
 			isset( $_POST[ 'fc_settings_import_mode' ] ) ? sanitize_text_field( wp_unslash( $_POST[ 'fc_settings_import_mode' ] ) ) : 'update'
 		);
@@ -192,7 +192,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 		}
 
 		$tmp_name = $file[ 'tmp_name' ];
-		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
+		$service = FluidCheckout_AdminSettingsTools_Service::instance();
 
 		// Bail if temporary file is not readable
 		if ( ! is_uploaded_file( $tmp_name ) || ! is_readable( $tmp_name ) ) {
@@ -213,7 +213,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 				'message' => sprintf(
 					/* translators: %s: maximum file size (for example 1 MB) */
 					__( 'The settings file is too large. Maximum size is %s.', 'fluid-checkout' ),
-					size_format( FluidCheckout_Admin_Settings_Tools_Service::IMPORT_FILE_MAX_BYTES )
+					size_format( FluidCheckout_AdminSettingsTools_Service::IMPORT_FILE_MAX_BYTES )
 				),
 			) );
 		}
@@ -241,7 +241,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_import_apply() {
 		$this->verify_request( 'fc_settings_import_apply' );
 
-		$service = FluidCheckout_Admin_Settings_Tools_Service::instance();
+		$service = FluidCheckout_AdminSettingsTools_Service::instance();
 		$preview = $service->get_import_preview();
 
 		// Bail if preview is missing
@@ -284,7 +284,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_import_cancel() {
 		$this->verify_request( 'fc_settings_import_cancel' );
 
-		FluidCheckout_Admin_Settings_Tools_Service::instance()->clear_import_preview();
+		FluidCheckout_AdminSettingsTools_Service::instance()->clear_import_preview();
 
 		$this->redirect_with_notice( array(
 			'type'    => 'success',
@@ -300,7 +300,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_reset() {
 		$this->verify_request( 'fc_settings_reset' );
 
-		FluidCheckout_Admin_Settings_Tools_Service::instance()->reset_settings( true );
+		FluidCheckout_AdminSettingsTools_Service::instance()->reset_settings( true );
 
 		$this->redirect_with_notice( array(
 			'type'    => 'success',
@@ -316,7 +316,7 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 	public function handle_restore() {
 		$this->verify_request( 'fc_settings_restore' );
 
-		$result = FluidCheckout_Admin_Settings_Tools_Service::instance()->restore_last_backup();
+		$result = FluidCheckout_AdminSettingsTools_Service::instance()->restore_last_backup();
 
 		// Maybe show errors
 		if ( ! empty( $result[ 'errors' ] ) ) {
@@ -372,4 +372,4 @@ class FluidCheckout_Admin_Settings_Tools_Actions extends FluidCheckout {
 
 }
 
-FluidCheckout_Admin_Settings_Tools_Actions::instance();
+FluidCheckout_AdminSettingsTools_Actions::instance();

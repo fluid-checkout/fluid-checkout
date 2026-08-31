@@ -141,20 +141,20 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'title'       => __( 'Import settings', 'fluid-checkout' ),
-					'desc'        => __( 'Logo and linked page IDs are site-specific. Re-select them after import if needed.', 'fluid-checkout' ),
-					'type'        => 'fc_settings_tools',
-					'id'          => 'fc_settings_tools_import',
-					'tool_action' => 'import',
-					'is_option'   => false,
-				),
-
-				array(
 					'title'       => __( 'Export settings', 'fluid-checkout' ),
 					'desc'        => __( 'Download current settings as JSON.', 'fluid-checkout' ),
 					'type'        => 'fc_settings_tools',
 					'id'          => 'fc_settings_tools_export',
 					'tool_action' => 'export',
+					'is_option'   => false,
+				),
+
+				array(
+					'title'       => __( 'Import settings', 'fluid-checkout' ),
+					'desc'        => __( 'Logo and linked page IDs are site-specific. Re-select them after import if needed.', 'fluid-checkout' ),
+					'type'        => 'fc_settings_tools',
+					'id'          => 'fc_settings_tools_import',
+					'tool_action' => 'import',
 					'is_option'   => false,
 				),
 
