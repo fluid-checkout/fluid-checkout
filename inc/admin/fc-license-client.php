@@ -1,11 +1,10 @@
 <?php
 /**
- * Plugin Updater.
- *
- * Allow activation and auto updates for plugins hosted with License Manager for WooCommerce.
+ * Fluid Licenses Client.
+ * Allow activation, auto updates, and site environment reports for plugins hosted with Fluid Licenses.
  */
-if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
-	class Fluidweb_PluginLicenseManager {
+if ( ! class_exists( 'FC_Licenses_Client' ) ) {
+	class FC_Licenses_Client {
 		private $slug;
 		private $plugin_data;
 		private $api_update_called = false;
@@ -17,11 +16,6 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		private $customer_secret;
 		private $license_key;
 		private $activate_option;
-
-		/**
-		 * Cron hook name for weekly site environment reports.
-		 */
-		const SITE_REPORT_CRON_HOOK = 'fc_site_report_weekly';
 
 		/**
 		 * Option key for the last successful site report fingerprint.
@@ -47,11 +41,6 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		 * Option key for selected site report data groups.
 		 */
 		const SITE_REPORT_DATA_GROUPS_OPTION = 'fc_site_report_data_groups';
-
-		/**
-		 * Option key for the site report API base URL.
-		 */
-		const SITE_REPORT_API_URL_OPTION = 'fc_site_report_api_url';
 
 		/**
 		 * Option key indicating sales metrics history backfill was sent.
@@ -171,7 +160,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			if ( ! $license_key ) {
 				$license_key = $this->license_key;
 			}
-	
+
 			$url = untrailingslashit( $this->api_url ) . '/wp-json/lmfwc/v2/licenses/' . $license_key;
 
 			$response = $this->call_api( $url );
@@ -197,7 +186,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			if ( ! $license_key ) {
 				$license_key = $this->license_key;
 			}
-	
+
 			$url = untrailingslashit( $this->api_url ) . '/wp-json/lmfwc/v2/licenses/validate/' . $license_key;
 
 			$response = $this->call_api( $url );
@@ -230,11 +219,11 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 				$error_response->message = 'Missing the license key. Please provide a valid license key and try again.';
 				return $error_response;
 			}
-	
+
 			$url = untrailingslashit( $this->api_url ) . '/wp-json/lmfwc/v2/licenses/activate/' . $license_key;
-	
+
 			$response = $this->call_api( $url );
-	
+
 			if ( $response ) {
 				$data = json_decode( $response );
 
@@ -269,7 +258,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 			// Get flag for `force-check` (force check only once)
 			$force_check = ( ! $this->api_update_called ) ? ! empty( $_GET['force-check'] ) : false;
-			
+
 			// Get plugin & latest release information
 			$this->init_plugin_data();
 			$release_info = $this->get_release_info( $force_check );
@@ -279,7 +268,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 			// Check the versions if we need to do an update ( $repo_version > current version )
 			$doUpdate = version_compare( $release_info->data->version, $this->plugin_data["Version"] );
-	
+
 			// Update the transient to include our updated plugin data
 			if ( $doUpdate == 1 ) {
 				$obj = new \stdClass();
@@ -296,7 +285,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 						$obj->icons[ $key ] = $value;
 					}
 				}
-				
+
 				$transient->response[ $this->slug ] = $obj;
 			}
 
@@ -396,24 +385,104 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 		/**
 		 * Schedule the weekly site report cron event.
+		 *
+		 * @param string      $plugin_slug Plugin slug from the consuming plugin.
+		 * @param string|null $cron_hook   Cron hook name from the consuming plugin.
 		 */
-		public static function schedule_site_report_cron() {
-			// Bail if already scheduled
-			if ( wp_next_scheduled( self::SITE_REPORT_CRON_HOOK ) ) { return; }
+		public static function schedule_site_report_cron( $plugin_slug, $cron_hook = null ) {
+			if ( null === $cron_hook || '' === $cron_hook ) {
+				$cron_hook = apply_filters( 'fc_licenses_site_report_cron_hook', '', $plugin_slug );
+			}
 
-			wp_schedule_event( time() + WEEK_IN_SECONDS, 'weekly', self::SITE_REPORT_CRON_HOOK );
+			// Bail if cron hook is not defined by the consuming plugin
+			if ( empty( $cron_hook ) ) { return; }
+
+			// Bail if already scheduled
+			if ( wp_next_scheduled( $cron_hook ) ) { return; }
+
+			wp_schedule_event( time() + WEEK_IN_SECONDS, 'weekly', $cron_hook );
+		}
+
+
+
+		/**
+		 * Whether site environment reporting is supported by this license client.
+		 */
+		public static function is_site_report_supported() {
+			return method_exists( __CLASS__, 'schedule_site_report_cron' ) && method_exists( __CLASS__, 'maybe_send_site_report' );
+		}
+
+
+
+		/**
+		 * Schedule the weekly site report cron when reporting is enabled.
+		 *
+		 * @param string      $plugin_slug Plugin slug from the consuming plugin.
+		 * @param string|null $cron_hook   Cron hook name from the consuming plugin.
+		 */
+		public static function maybe_schedule_site_report_cron( $plugin_slug, $cron_hook = null ) {
+			// Bail if site report is not supported
+			if ( ! self::is_site_report_supported() ) { return; }
+
+			// Bail if site reporting is disabled
+			if ( ! self::is_site_report_enabled() ) { return; }
+
+			self::schedule_site_report_cron( $plugin_slug, $cron_hook );
+		}
+
+
+
+		/**
+		 * Run the weekly site environment report cron job.
+		 *
+		 * @param string      $plugin_slug Plugin slug from the consuming plugin.
+		 * @param string|null $api_url     Site report API base URL from the consuming plugin.
+		 */
+		public static function run_site_report_cron( $plugin_slug, $api_url = null ) {
+			// Bail if site report is not supported
+			if ( ! self::is_site_report_supported() ) { return; }
+
+			self::maybe_send_site_report( $plugin_slug, $api_url );
+		}
+
+
+
+		/**
+		 * Register init and cron hooks for weekly site environment reports.
+		 *
+		 * @param string      $plugin_slug Plugin slug from the consuming plugin.
+		 * @param string      $cron_hook   Cron hook name from the consuming plugin.
+		 * @param string|null $api_url     Site report API base URL from the consuming plugin.
+		 */
+		public static function register_site_report_cron_hooks( $plugin_slug, $cron_hook, $api_url = null ) {
+			add_action(
+				'init',
+				function () use ( $plugin_slug, $cron_hook ) {
+					self::maybe_schedule_site_report_cron( $plugin_slug, $cron_hook );
+				}
+			);
+
+			add_action(
+				$cron_hook,
+				function () use ( $plugin_slug, $api_url ) {
+					self::run_site_report_cron( $plugin_slug, $api_url );
+				}
+			);
 		}
 
 
 
 		/**
 		 * Maybe send a consolidated site environment report to Fluid Checkout.
+		 *
+		 * @param string      $plugin_slug Plugin slug from the consuming plugin.
+		 * @param string|null $api_url     Site report API base URL from the consuming plugin.
 		 */
-		public static function maybe_send_site_report() {
+		public static function maybe_send_site_report( $plugin_slug, $api_url = null ) {
 			// Bail if site reporting is disabled
 			if ( ! self::is_site_report_enabled() ) { return; }
 
-			self::send_site_report_now( null, false, false );
+			self::send_site_report_now( null, false, false, $plugin_slug, $api_url );
 		}
 
 
@@ -421,11 +490,14 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		/**
 		 * Send a site environment report immediately.
 		 *
-		 * @param array|null $groups             Optional data groups to include.
-		 * @param bool       $enable_if_disabled Whether to enable reporting before sending.
-		 * @param bool       $respect_send_rules Whether to apply fingerprint send intervals.
+		 * @param array|null  $groups             Optional data groups to include.
+		 * @param bool        $enable_if_disabled Whether to enable scheduled reporting before sending.
+		 * @param bool        $respect_send_rules Whether to apply fingerprint send intervals.
+		 * @param string|null $plugin_slug        Plugin slug from the consuming plugin.
+		 * @param string|null $api_url            Site report API base URL from the consuming plugin.
+		 * @param string|null $cron_hook          Cron hook name from the consuming plugin.
 		 */
-		public static function send_site_report_now( $groups = null, $enable_if_disabled = false, $respect_send_rules = true ) {
+		public static function send_site_report_now( $groups = null, $enable_if_disabled = false, $respect_send_rules = true, $plugin_slug = null, $api_url = null, $cron_hook = null ) {
 			if ( get_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT ) ) {
 				return array(
 					'success'    => false,
@@ -435,7 +507,7 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 			if ( $enable_if_disabled && ! self::is_site_report_enabled() ) {
 				update_option( self::SITE_REPORT_ENABLE_OPTION, 'yes' );
-				self::schedule_site_report_cron();
+				self::schedule_site_report_cron( $plugin_slug, $cron_hook );
 			}
 
 			if ( null !== $groups ) {
@@ -457,6 +529,13 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 			if ( empty( $payload ) || empty( $payload['site_url'] ) ) {
 				delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
 
+				self::log_site_report_error(
+					'Site report payload is empty or missing site_url.',
+					array(
+						'plugin_slug' => $plugin_slug,
+					)
+				);
+
 				return array(
 					'success'    => false,
 					'error_code' => 'empty_payload',
@@ -474,8 +553,40 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 				);
 			}
 
-			$response      = self::send_site_report( $payload );
-			$response_code = is_wp_error( $response ) ? 0 : (int) wp_remote_retrieve_response_code( $response );
+			$response       = self::send_site_report( $payload, $api_url, $plugin_slug );
+			$request_url    = untrailingslashit( self::get_remote_api_url( $api_url, $plugin_slug ) ) . '/wp-json/fc-licenses/v1/site-report';
+			$response_code  = 0;
+
+			if ( is_wp_error( $response ) ) {
+				self::log_site_report_error(
+					$response->get_error_message(),
+					array(
+						'plugin_slug' => $plugin_slug,
+						'request_url' => $request_url,
+						'error_code'  => $response->get_error_code(),
+					)
+				);
+			} else {
+				$response_code = (int) wp_remote_retrieve_response_code( $response );
+
+				if ( 200 !== $response_code ) {
+					$response_body = wp_remote_retrieve_body( $response );
+					$log_message   = 'Site report request failed with HTTP ' . $response_code . '.';
+
+					if ( ! empty( $response_body ) ) {
+						$log_message .= ' Response: ' . $response_body;
+					}
+
+					self::log_site_report_error(
+						$log_message,
+						array(
+							'plugin_slug'   => $plugin_slug,
+							'request_url'   => $request_url,
+							'response_code' => $response_code,
+						)
+					);
+				}
+			}
 
 			if ( 200 === $response_code ) {
 				update_option( self::SITE_REPORT_FINGERPRINT_OPTION, $fingerprint );
@@ -505,6 +616,22 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 				'response_code' => $response_code,
 				'is_enabled'    => self::is_site_report_enabled(),
 			);
+		}
+
+
+
+		/**
+		 * Log a site report error to the WooCommerce logger.
+		 *
+		 * @param string $message Log message.
+		 * @param array  $context Optional context data.
+		 */
+		private static function log_site_report_error( $message, $context = array() ) {
+			if ( ! function_exists( 'wc_get_logger' ) ) { return; }
+
+			$context['source'] = 'fc-site-report';
+
+			wc_get_logger()->error( $message, $context );
 		}
 
 
@@ -1099,10 +1226,17 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 		/**
 		 * POST the site report payload to the Fluid Checkout licenses API.
 		 *
-		 * @param array $payload Site report payload.
+		 * @param array       $payload     Site report payload.
+		 * @param string|null $api_url     Site report API base URL from the consuming plugin.
+		 * @param string|null $plugin_slug Plugin slug from the consuming plugin.
 		 */
-		public static function send_site_report( $payload ) {
-			$api_url = untrailingslashit( self::get_site_report_api_url() );
+		public static function send_site_report( $payload, $api_url = null, $plugin_slug = null ) {
+			$api_url = untrailingslashit( self::get_remote_api_url( $api_url, $plugin_slug ) );
+
+			// Bail if API URL is not defined by the consuming plugin
+			if ( empty( $api_url ) ) {
+				return new WP_Error( 'fc_licenses_missing_site_report_api_url', 'Site report API URL is not defined.' );
+			}
 
 			return wp_remote_post(
 				$api_url . '/wp-json/fc-licenses/v1/site-report',
@@ -1121,13 +1255,24 @@ if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) {
 
 
 		/**
-		 * Get the site report API base URL.
+		 * Get the remote Fluid Checkout licenses API base URL.
+		 *
+		 * Used by site reports; plugin updates will use this in a later phase.
+		 *
+		 * @param string|null $api_url     Remote API base URL from the consuming plugin.
+		 * @param string|null $plugin_slug Plugin slug from the consuming plugin.
 		 */
-		public static function get_site_report_api_url() {
-			return apply_filters(
-				'fc_site_report_api_url',
-				get_option( self::SITE_REPORT_API_URL_OPTION, 'https://fluidcheckout.com' )
-			);
+		public static function get_remote_api_url( $api_url = null, $plugin_slug = null ) {
+			if ( null === $api_url ) {
+				$api_url = '';
+			}
+
+			$api_url = apply_filters( 'fc_licenses_api_url', $api_url, $plugin_slug );
+
+			// Bail if API URL is not defined
+			if ( empty( $api_url ) ) { return ''; }
+
+			return $api_url;
 		}
 
 

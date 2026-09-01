@@ -8,7 +8,8 @@
     "postversion": "git push && git push --tags && gulp copy-plugin-files && gulp pack-plugin-zip",
     "start": "wp-scripts start --webpack-src-dir=blocks",
     "build": "wp-scripts build --webpack-src-dir=blocks",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync:shared": "node fluid-checkout-standards/scripts/sync-shared-files.js"
   },
   "repository": {},
   "author": "Fluid Checkout",
@@ -22,7 +23,6 @@
     "@wordpress/scripts": "^27.0.0",
     "browser-sync": "^2.27.9",
     "del": "^5.1.0",
-    "fluidweb-updater": "github:fluidweb-co/fluidweb-updater",
     "gettext-parser": "^8.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",

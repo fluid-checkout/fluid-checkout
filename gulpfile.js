@@ -884,22 +884,6 @@ gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations' ) );
 
 
 // Run:
-// gulp copy-updater
-// Copy the theme/plugin updater class into the project
-gulp.task( 'copy-updater', gulp.series( function( done ) {
-	if ( _gulpSettings.copyUpdater ) {
-		del.sync( _gulpSettings.copyUpdater.destination );
-
-		gulp.src( _gulpSettings.copyUpdater.source )
-		.pipe( gulp.dest( _gulpSettings.copyUpdater.destination ) );
-	}
-
-	done();
-} ) );
-
-
-
-// Run:
 // gulp browser-sync
 // Starts browser-sync task for starting the server.
 gulp.task( 'browser-sync', gulp.series( function( done ) {

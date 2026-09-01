@@ -278,14 +278,14 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 		$this->load_license_manager_class();
 
 		// Bail if license manager class is not available
-		if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) { return; }
+		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
 
-		if ( Fluidweb_PluginLicenseManager::is_site_report_enabled() ) {
-			Fluidweb_PluginLicenseManager::schedule_site_report_cron();
+		if ( FC_Licenses_Client::is_site_report_enabled() ) {
+			FC_Licenses_Client::schedule_site_report_cron( FluidCheckout::$plugin_slug, FluidCheckout::SITE_REPORT_CRON_HOOK );
 			return;
 		}
 
-		wp_clear_scheduled_hook( Fluidweb_PluginLicenseManager::SITE_REPORT_CRON_HOOK );
+		wp_clear_scheduled_hook( FluidCheckout::SITE_REPORT_CRON_HOOK );
 	}
 
 
@@ -294,9 +294,9 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 * Load the shared plugin license manager class.
 	 */
 	private function load_license_manager_class() {
-		if ( class_exists( 'Fluidweb_PluginLicenseManager', false ) ) { return; }
+		if ( class_exists( 'FC_Licenses_Client', false ) ) { return; }
 
-		require_once FluidCheckout::$directory_path . 'vendor/fluidweb/fluidweb-updater/plugin-license-manager.php';
+		require_once FluidCheckout::$directory_path . 'inc/admin/fc-license-client.php';
 	}
 
 }

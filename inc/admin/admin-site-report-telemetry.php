@@ -155,8 +155,8 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 
 		$this->load_license_manager_class();
 
-		if ( class_exists( 'Fluidweb_PluginLicenseManager', false ) ) {
-			Fluidweb_PluginLicenseManager::schedule_site_report_cron();
+		if ( class_exists( 'FC_Licenses_Client', false ) ) {
+			FC_Licenses_Client::schedule_site_report_cron( FluidCheckout::$plugin_slug, FluidCheckout::SITE_REPORT_CRON_HOOK );
 		}
 	}
 
@@ -203,9 +203,9 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 	 * Load the shared plugin license manager class.
 	 */
 	private function load_license_manager_class() {
-		if ( class_exists( 'Fluidweb_PluginLicenseManager', false ) ) { return; }
+		if ( class_exists( 'FC_Licenses_Client', false ) ) { return; }
 
-		require_once FluidCheckout::$directory_path . 'vendor/fluidweb/fluidweb-updater/plugin-license-manager.php';
+		require_once FluidCheckout::$directory_path . 'inc/admin/fc-license-client.php';
 	}
 
 }

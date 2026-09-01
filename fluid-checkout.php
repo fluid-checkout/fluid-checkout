@@ -57,6 +57,16 @@ class FluidCheckout {
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
 	/**
+	 * Cron hook for weekly site environment reports.
+	 */
+	const SITE_REPORT_CRON_HOOK = 'fc_site_report_weekly';
+
+	/**
+	 * Default site report API base URL.
+	 */
+	const SITE_REPORT_API_URL = 'https://fluidcheckout.com';
+
+	/**
 	 * Hold list of the plugin features to load when initializing.
 	 *
 	 * @var array
@@ -98,6 +108,8 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
+		$this->load_license_manager_class();
+		$this->register_site_report_cron_hooks();
 		$this->load_db_migrations();
 		$this->load_admin_notices();
 		$this->register_features();
@@ -108,10 +120,6 @@ class FluidCheckout {
 		// Run hooks initialization after all plugins have been loaded
 		add_action( 'plugins_loaded', array( $this, 'load_settings' ), 10 );
 		add_action( 'plugins_loaded', array( $this, 'hooks' ), 10 );
-
-		// Site environment report cron
-		add_action( 'init', array( $this, 'maybe_schedule_site_report_cron' ) );
-		add_action( 'fc_site_report_weekly', array( $this, 'run_site_report_cron' ) );
 	}
 
 
@@ -136,44 +144,19 @@ class FluidCheckout {
 	 */
 	private function load_license_manager_class() {
 		// Bail if class is already loaded
-		if ( class_exists( 'Fluidweb_PluginLicenseManager' ) ) { return; }
+		if ( class_exists( 'FC_Licenses_Client' ) ) { return; }
 
-		require_once self::$directory_path . 'vendor/fluidweb/fluidweb-updater/plugin-license-manager.php';
+		require_once self::$directory_path . 'inc/admin/fc-license-client.php';
 	}
 
 	/**
-	 * Whether site environment reporting is supported by the loaded license manager.
+	 * Register the site report cron hooks.
 	 */
-	private function is_site_report_supported() {
-		$this->load_license_manager_class();
+	private function register_site_report_cron_hooks() {
+		// Bail if class is not loaded
+		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
 
-		// Bail if license manager class is not available
-		if ( ! class_exists( 'Fluidweb_PluginLicenseManager' ) ) { return false; }
-
-		return method_exists( 'Fluidweb_PluginLicenseManager', 'maybe_send_site_report' );
-	}
-
-	/**
-	 * Schedule the weekly site report cron if not already scheduled.
-	 */
-	public function maybe_schedule_site_report_cron() {
-		// Bail if site report is not supported
-		if ( ! $this->is_site_report_supported() ) { return; }
-
-		// Bail if site reporting is disabled
-		if ( ! Fluidweb_PluginLicenseManager::is_site_report_enabled() ) { return; }
-
-		Fluidweb_PluginLicenseManager::schedule_site_report_cron();
-	}
-
-	/**
-	 * Run the weekly site environment report cron job.
-	 */
-	public function run_site_report_cron() {
-		// Bail if site report is not supported
-		if ( ! $this->is_site_report_supported() ) { return; }
-
-		Fluidweb_PluginLicenseManager::maybe_send_site_report();
+		FC_Licenses_Client::register_site_report_cron_hooks( self::$plugin_slug, self::SITE_REPORT_CRON_HOOK, self::SITE_REPORT_API_URL );
 	}
 
 
