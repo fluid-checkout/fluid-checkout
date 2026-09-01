@@ -146,7 +146,7 @@ class FluidCheckout {
 		// Bail if class is already loaded
 		if ( class_exists( 'FC_Licenses_Client' ) ) { return; }
 
-		require_once self::$directory_path . 'inc/admin/fc-license-client.php';
+		require_once self::$directory_path . 'inc/admin/fc-licenses-client.php';
 	}
 
 	/**

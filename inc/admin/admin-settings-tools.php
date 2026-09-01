@@ -296,7 +296,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	private function load_license_manager_class() {
 		if ( class_exists( 'FC_Licenses_Client', false ) ) { return; }
 
-		require_once FluidCheckout::$directory_path . 'inc/admin/fc-license-client.php';
+		require_once FluidCheckout::$directory_path . 'inc/admin/fc-licenses-client.php';
 	}
 
 }

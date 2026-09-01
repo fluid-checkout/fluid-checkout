@@ -1235,7 +1235,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 			// Bail if API URL is not defined by the consuming plugin
 			if ( empty( $api_url ) ) {
-				return new WP_Error( 'fc_licenses_missing_site_report_api_url', 'Site report API URL is not defined.' );
+				return new WP_Error( 'fc_licenses_missing_remote_api_url', 'Remote API URL is not defined.' );
 			}
 
 			return wp_remote_post(
@@ -1263,10 +1263,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		 * @param string|null $plugin_slug Plugin slug from the consuming plugin.
 		 */
 		public static function get_remote_api_url( $api_url = null, $plugin_slug = null ) {
-			if ( null === $api_url ) {
-				$api_url = '';
-			}
-
 			$api_url = apply_filters( 'fc_licenses_api_url', $api_url, $plugin_slug );
 
 			// Bail if API URL is not defined
