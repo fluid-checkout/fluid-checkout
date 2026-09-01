@@ -151,13 +151,14 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 	 * Enable site report telemetry and schedule the weekly cron.
 	 */
 	public function enable_site_report_telemetry() {
+		// Bail if license manager class is not available
+		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
+
+		// Enable site report
 		update_option( 'fc_enable_site_report', 'yes' );
 
-		$this->load_license_manager_class();
-
-		if ( class_exists( 'FC_Licenses_Client', false ) ) {
-			FC_Licenses_Client::schedule_site_report_cron( FluidCheckout::$plugin_slug, FluidCheckout::SITE_REPORT_CRON_HOOK );
-		}
+		// Schedule the site report cron
+		FC_Licenses_Client::schedule_site_report_cron( FluidCheckout::$plugin_slug, FluidCheckout::SITE_REPORT_CRON_HOOK );
 	}
 
 
@@ -195,17 +196,6 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 
 		wp_safe_redirect( $redirect_url );
 		exit;
-	}
-
-
-
-	/**
-	 * Load the shared plugin license manager class.
-	 */
-	private function load_license_manager_class() {
-		if ( class_exists( 'FC_Licenses_Client', false ) ) { return; }
-
-		require_once FluidCheckout::$directory_path . 'inc/admin/fc-licenses-client.php';
 	}
 
 }

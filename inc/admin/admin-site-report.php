@@ -113,7 +113,15 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 
 		$groups = $this->get_request_data_groups();
 
-		$this->load_license_manager_class();
+		// Bail if license manager class is not available or does not support site report preview
+		if ( ! class_exists( 'FC_Licenses_Client' ) || ! method_exists( 'FC_Licenses_Client', 'build_site_report_payload' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'Site environment reporting is not available.', 'fluid-checkout' ),
+				),
+				500
+			);
+		}
 
 		$payload = FC_Licenses_Client::build_site_report_payload( $groups );
 
@@ -146,7 +154,15 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 		$groups             = $this->get_request_data_groups();
 		$enable_if_disabled = 'yes' !== $this->get_request_enable_value();
 
-		$this->load_license_manager_class();
+		// Bail if license client does not support sending site reports
+		if ( ! class_exists( 'FC_Licenses_Client' ) || ! method_exists( 'FC_Licenses_Client', 'send_site_report_now' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'Site environment reporting is not available.', 'fluid-checkout' ),
+				),
+				500
+			);
+		}
 
 		$result = FC_Licenses_Client::send_site_report_now( $groups, $enable_if_disabled, false, self::$plugin_slug, self::SITE_REPORT_API_URL, self::SITE_REPORT_CRON_HOOK );
 
@@ -218,7 +234,9 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 
 		$groups = array_map( 'sanitize_key', wp_unslash( $_POST['data_groups'] ) );
 
-		$this->load_license_manager_class();
+		if ( ! class_exists( 'FC_Licenses_Client' ) || ! method_exists( 'FC_Licenses_Client', 'normalize_site_report_data_groups' ) ) {
+			return $groups;
+		}
 
 		return FC_Licenses_Client::normalize_site_report_data_groups( $groups );
 	}
@@ -279,17 +297,6 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 		}
 
 		return true;
-	}
-
-
-
-	/**
-	 * Load the shared plugin license manager class.
-	 */
-	private function load_license_manager_class() {
-		if ( class_exists( 'FC_Licenses_Client', false ) ) { return; }
-
-		require_once FluidCheckout::$directory_path . 'inc/admin/fc-licenses-client.php';
 	}
 
 }

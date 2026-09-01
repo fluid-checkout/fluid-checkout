@@ -275,28 +275,17 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 			return;
 		}
 
-		$this->load_license_manager_class();
-
 		// Bail if license manager class is not available
 		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
 
+		// Maybe schedule site report cron if enabled
 		if ( FC_Licenses_Client::is_site_report_enabled() ) {
 			FC_Licenses_Client::schedule_site_report_cron( FluidCheckout::$plugin_slug, FluidCheckout::SITE_REPORT_CRON_HOOK );
 			return;
 		}
 
+		// Otherwise clear the site report cron
 		wp_clear_scheduled_hook( FluidCheckout::SITE_REPORT_CRON_HOOK );
-	}
-
-
-
-	/**
-	 * Load the shared plugin license manager class.
-	 */
-	private function load_license_manager_class() {
-		if ( class_exists( 'FC_Licenses_Client', false ) ) { return; }
-
-		require_once FluidCheckout::$directory_path . 'inc/admin/fc-licenses-client.php';
 	}
 
 }
