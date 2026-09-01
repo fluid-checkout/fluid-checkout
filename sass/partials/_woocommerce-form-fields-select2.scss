@@ -2,20 +2,20 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-div.woocommerce form span.select2-container {
+div.woocommerce span.select2-container {
 	width: 100% !important; // Prevents select2 from overflowing the available space
 	max-width: 100%; // Prevents select2 from overflowing the available space
 }
 
 
 
-div.woocommerce form .form-row span.select2-container {
+div.woocommerce .form-row span.select2-container {
 	height: auto;
 }
 
 
 
-div.woocommerce form .form-row .select2-selection {
+div.woocommerce .form-row .select2-selection {
 	height: auto;
 	min-height: $form-field-select2-selection-height--single;
 	border-radius: $form-field-border-radius;
@@ -24,15 +24,15 @@ div.woocommerce form .form-row .select2-selection {
 
 
 
-div.woocommerce form .form-row .select2-selection__rendered {
+div.woocommerce .form-row .select2-selection__rendered {
 	min-height: $form-field-select2-selection-height--single;
 	border-radius: $form-field-border-radius;
 }
 
 
 
-div.woocommerce form .form-row .select2-selection .select2-selection__clear,
-div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
+div.woocommerce .form-row .select2-selection .select2-selection__clear,
+div.woocommerce .form-row .select2-selection .select2-selection__arrow {
 	top: 0;
 	margin-top: 0;
 	height: auto;
@@ -41,36 +41,52 @@ div.woocommerce form .form-row .select2-selection .select2-selection__arrow {
 	transform: none;
 }
 
+div.woocommerce .form-row .select2-selection .select2-selection__clear {
+	float: #{ $alignment-right };
+	margin-#{ $alignment-right }: 0;
+}
+
+div.woocommerce .form-row .select2-selection--single .select2-selection__arrow {
+	width: $form-field-select2-arrow-width !important; // Needed to override theme styles
+	#{ $alignment-right }: $form-field-select2-arrow-offset !important; // Needed to override theme styles
+}
+
+div.woocommerce .form-row .select2-selection.select2-selection--single .select2-selection__clear {
+	margin-#{ $alignment-right }: 0 !important; // Needed to override theme styles
+	#{ $alignment-right }: auto !important; // Needed to override theme styles
+}
 
 
-div.woocommerce form .form-row .select2-selection--single {
+
+div.woocommerce .form-row .select2-selection--single {
 	padding: 0;
 }
 
 
 
-div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+div.woocommerce .form-row .select2-selection--single .select2-selection__rendered {
 	padding-top: 0;
 	padding-bottom: 0;
 	padding-#{ $alignment-left }: $form-field-padding-left;
+	padding-#{ $alignment-right }: $form-field-select2-clear-offset;
 	line-height: $form-field-select2-selection-height--single;
 }
 
 
-div.woocommerce form .form-row .select2-selection--multiple {
+div.woocommerce .form-row .select2-selection--multiple {
 	border-width: $form-field-border-width;
 }
 
 
 
-div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+div.woocommerce .form-row .select2-selection--multiple .select2-selection__rendered {
 	padding-bottom: $form-field-select2-inner-spacing;
 	min-height: $form-field-select2-selection-height--multiple;
  	line-height: $form-field-select2-selection-height--multiple;
  	white-space: normal;
 }
 
-div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+div.woocommerce .form-row .select2-selection--multiple .select2-selection__choice {
 	margin-top: $form-field-select2-inner-spacing;
 	line-height: $form-field-select2-inner-component-height;
 	overflow: hidden;
@@ -78,13 +94,13 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-selection__
 
 
 
-div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline {
+div.woocommerce .form-row .select2-selection--multiple .select2-search--inline {
 	margin-top: $form-field-select2-inner-spacing;
 	min-height: $form-field-select2-inner-component-height;
 	line-height: $form-field-select2-inner-component-height;
 }
 
-div.woocommerce form .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
+div.woocommerce .form-row .select2-selection--multiple .select2-search--inline .select2-search__field {
 	margin-top: 0;
 	height: $form-field-select2-selection-height--multiple;
  	min-height: auto;

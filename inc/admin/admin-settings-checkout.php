@@ -36,6 +36,9 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 		// Settings
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+
+		// Sanitize settings
+		add_filter( 'woocommerce_admin_settings_sanitize_option_fc_local_pickup_shipping_zone_fields', array( $this, 'sanitize_local_pickup_shipping_zone_fields' ), 10, 3 );
 	}
 
 
@@ -107,7 +110,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Design template', 'fluid-checkout' ),
-						'desc'                  => __( 'General styles for the checkout steps, order summary and other sections. <br>Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' <br>' . __( 'The design template <em>"Split"</em> is not available when using <em>"1 column"</em> layout and will fall back to <em>"Minimalist"</em> if chosen.', 'fluid-checkout' ) . ' <br>' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => __( 'General styles for the checkout steps, order summary and other sections. <br>Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' <br>' . __( 'When using the <em>"1 column"</em> layout with the <em>"Split"</em> design template, a right column is shown only if the page sidebar widget area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). Otherwise the page stays as a single column with Split styles.', 'fluid-checkout' ) . ' <br>' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_design_template',
 						'type'                  => 'fc_template_selector',
 						'options'               => array(
@@ -120,6 +123,19 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'              => false,
 						'wrapper_class'         => 'fc-design-template',
 						'class'                 => 'fc-design-template__option',
+					),
+
+					array(
+						'desc'                  => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                    => 'fc_checkout_secondary_column_background_color',
+						'type'                  => 'text',
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_secondary_column_background_color' ),
+						'autoload'              => false,
+						'class'                 => 'colorpick',
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_design_template',
+							'data-conditional-value' => 'split',
+						),
 					),
 
 					array(
@@ -291,8 +307,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc_tip'              => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ),
-						'desc'                  => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'desc'                  => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_order_review_highlight_color',
 						'type'                  => 'text',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_order_review_highlight_color' ),
@@ -579,37 +594,49 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
-						'desc_tip'              => __( 'When enabled, the first shipping method available will not be automatically selected when no other shipping method was previously selected for each shipping package. <br>This option will be automatically enabled if the option for clearing the selected shipping method is enabled for the Local Pickup feature.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                    => 'fc_shipping_methods_disable_auto_select',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
-						'autoload'              => false,
-						'disabled'              => true,
+						'desc'              => __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
+						'desc_tip'          => __( 'When enabled, the first shipping method available <strong>will not</strong> be automatically selected when no other shipping method was previously selected for each shipping package.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                => 'fc_shipping_methods_disable_auto_select',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
+						'autoload'          => false,
+						'disabled'          => true,
 					),
 
 					array(
-						'title'                 => __( 'Local pickup', 'fluid-checkout' ),
-						'desc'                  => __( 'Removes shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Replaces the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                    => 'fc_enable_checkout_local_pickup',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
-						'checkboxgroup'         => 'start',
-						'show_if_checked'       => 'option',
-						'autoload'              => false,
-						'disabled'              => true,
+						'title'             => __( 'Local pickup', 'fluid-checkout' ),
+						'desc'              => __( 'Remove shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Replace the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                => 'fc_enable_checkout_local_pickup',
+						'type'              => 'checkbox',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
+						'autoload'          => false,
+						'disabled'          => true,
 					),
+
 					array(
-						'desc'                  => __( 'Show option to clear shipping methods in the pickup location substep', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Show a link button on the pickup location substep to clear the chosen shipping methods. This can be used to allow showing the shipping address section again if a local pickup method was previously selected.', 'fluid-checkout' ),
-						'id'                    => 'fc_local_pickup_display_clear_shipping_methods_button',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_display_clear_shipping_methods_button' ),
-						'checkboxgroup'         => 'end',
-						'show_if_checked'       => 'yes',
-						'autoload'              => false,
-						'disabled'              => true,
+						'desc'              => __( 'Choose which delivery type will be selected by default.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_default_delivery_type',
+						'type'              => 'fc_select',
+						'options'           => array(
+							'ship'          => __( 'Ship', 'fluid-checkout' ),
+							'pickup'        => __( 'Pickup', 'fluid-checkout' ),
+						),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_default_delivery_type' ),
+						'autoload'          => false,
+						'disabled'          => true,
+					),
+
+					array(
+						'desc'              => __( 'Choose which fields will be displayed for the local pickup shipping zone filter fields. Leave empty to show all available options.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ),
+						'desc_tip'          => __( 'These fields will be displayed as a filter for the local pickup shipping methods. Some fields might still appear at checkout when not selected here, if compatible plugins require them to work properly.', 'fluid-checkout' ),
+						'id'                => 'fc_local_pickup_shipping_zone_fields',
+						'type'              => 'fc_multiselect',
+						'options'           => apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() ),
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_shipping_zone_fields' ),
+						'autoload'          => false,
+						'disabled'          => true,
+						'class'             => 'wc-enhanced-select',
 					),
 
 					array(
@@ -879,6 +906,32 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 		}
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Sanitize the local pickup shipping zone fields option to ensure it's saved as an array.
+	 * 
+	 * @param  mixed   $value      The option value.
+	 * @param  mixed   $option     The option arguments.
+	 * @param  mixed   $raw_value  The raw value of the option.
+	 */
+	public function sanitize_local_pickup_shipping_zone_fields( $value, $option, $raw_value ) {
+		// Bail without changing the saved value when a disabled field was not submitted, eg. when disabled in the Lite version
+		// WooCommerce only skips the update when the sanitized value is `null`, so returning an empty array would wipe the saved value
+		// Check for the disabled field, as a cleared multiselect also submits no value and should still save an empty array
+		if ( null === $raw_value && is_array( $option ) && ! empty( $option[ 'disabled' ] ) ) { return null; }
+
+		// Ensure the value is an array, as a cleared multiselect submits no value
+		if ( ! is_array( $value ) ) {
+			$value = array();
+		}
+
+		// Sanitize the field keys
+		$value = array_map( 'sanitize_text_field', $value );
+
+		return $value;
 	}
 
 }

@@ -512,6 +512,7 @@ $order-summary-box-shadow:                       $box-shadow-offset-x $box-shado
 $order-summary-box-shadow--large-screen:         $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color--large-screen, transparent ) !default;
 $order-summary-background-color:                 var( --fluidcheckout--order-summary--background-color, $white ) !default;
 $order-summary-background-color--popup:          var( --fluidcheckout--order-summary--background-color--popup, $white ) !default;
+$secondary-column-background-color:              var( --fluidcheckout--secondary-column-background-color, $order-summary-background-color ) !default;
 
 $order-summary-container-margin:                 0 !default;
 $order-summary-container-padding:                0 !default;
@@ -692,6 +693,10 @@ $form-field-select2-inner-spacing:                    var( --fluidcheckout--sele
 $form-field-select2-inner-component-height:           var( --fluidcheckout--select2--inner-component-height, calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) ) !default;
 $form-field-select2-selection-height--single:         calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) !default;
 $form-field-select2-selection-height--multiple:       calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) - ( #{ $form-field-select2-inner-spacing } * 2 ) ) !default;
+
+$form-field-select2-arrow-width:                      var( --fluidcheckout--select2--arrow-width, remsize( 1.5rem ) ) !default;
+$form-field-select2-arrow-offset:                     var( --fluidcheckout--select2--arrow-offset, remsize( 1rem ) ) !default;
+$form-field-select2-clear-offset:                     var( --fluidcheckout--select2--clear-offset, remsize( 3rem ) ) !default;
 
 $show-password-button-offset:                         0.7em !default;
 $show-password-button-size:                           remsize( 2.2rem ) !default;

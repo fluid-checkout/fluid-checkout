@@ -42,7 +42,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function get_default_option_values() {
 		$defaults = array(
-			// Settings checkout.			
+			// Settings checkout.
 			'fc_checkout_layout'                                            => 'multi-step',
 			'fc_checkout_column_layout'                                     => 'two_columns',
 			'fc_design_template'                                            => 'classic',
@@ -59,6 +59,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_enable_checkout_express_checkout_ignore_required_fields'    => 'yes',
 			'fc_checkout_order_review_highlight_color'                      => null,
+			'fc_checkout_secondary_column_background_color'               => null,
 			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
@@ -75,7 +76,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_shipping_methods_disable_auto_select'                       => 'no',
 			'fc_enable_checkout_local_pickup'                               => 'no',
-			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
+			'fc_local_pickup_default_delivery_type'                         => 'ship',
+			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',

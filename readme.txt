@@ -356,7 +356,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Added: Compatibility with plugin: WCFM - WooCommerce Multivendor Marketplace (by WC Lovers).
+* Improved: Show the Fluid Checkout plugin icon on admin notices.
 
 = 4.2.7 - 2026-08-19 =
 
