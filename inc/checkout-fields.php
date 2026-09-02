@@ -271,8 +271,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			unset( $fields[ 'shipping_company' ] );
 		}
 		// Maybe set as required
-		else if( 'required' === $field_visibility ) {
+		elseif ( 'required' === $field_visibility ) {
 			$fields[ 'shipping_company' ][ 'required' ] = true;
+		}
+		// Maybe set as optional, only to undo the shared WooCommerce company option
+		// leaking the billing `required` state into the shipping company field.
+		elseif ( 'optional' === $field_visibility && 'required' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_company_field' ) ) {
+			$fields[ 'shipping_company' ][ 'required' ] = false;
 		}
 
 		return $fields;
