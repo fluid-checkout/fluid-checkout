@@ -57,7 +57,26 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 		// Maybe call license API and update license status transient.
 		if (
 			! empty( $option_value )
-			// && ( false === $license_status || ! is_array( $license_status ) )
+			&& ( ! is_array( $license_status ) || $option_value !== $license_status[ 'license_key' ] )
+			&& ! empty( $value['plugin_slug'] )
+			&& class_exists( 'FC_Licenses_Client' )
+			&& method_exists( 'FC_Licenses_Client', 'get_info' )
+		) {
+			$config = FC_Licenses_Client::get_plugin_config( $value['plugin_slug'] );
+
+			if ( ! empty( $config ) ) {
+				$config['license_key'] = $option_value;
+				$api_result = FC_Licenses_Client::get_info(
+					$value['plugin_slug'],
+					$config['plugin_file'],
+					$config
+				);
+
+				$license_status = $this->maybe_set_license_status_transient( $option_value, $api_result, $license_status_transient_id );
+			}
+		}
+		elseif (
+			! empty( $option_value )
 			&& ( ! is_array( $license_status ) || $option_value !== $license_status[ 'license_key' ] )
 			&& array_key_exists( 'license_manager', $value )
 			&& 'object' === gettype( $value[ 'license_manager' ] )
@@ -67,64 +86,7 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 			$license_manager = $value[ 'license_manager' ];
 			$api_result = $license_manager->get_info( $option_value );
 
-			// Determine initial transient expiration.
-			$transient_expiration = 60 * 60 * 24; // 24 hours.
-
-			// Maybe set transient based on API results.
-			if ( property_exists( $api_result, 'success' ) && true === $api_result->success ) {
-				// Update transient in memory
-				$license_info_transient = $api_result->data;
-
-				// Maybe set status based on API results saved in transient.
-				if ( ! empty( $option_value ) && null !== $api_result->data ) {
-					// Determine if license key is expired.
-					$license_key_expiration_timestamp = null === $api_result->data->expiresAt ? strtotime( $api_result->data->createdAt ) + ( $api_result->data->validFor * 60 * 60 * 24 ) : strtotime( $api_result->data->expiresAt );
-					$license_key_expiration_date = date( 'Y-m-d', $license_key_expiration_timestamp );
-					$license_key_is_expired = time() > $license_key_expiration_timestamp;
-
-					// Determine if license key is active.
-					$license_key_active_statuses = array(
-						2, // Delivered
-						3, // Active
-						5, // Disabled (but still not expired)
-					);
-					$license_key_is_active = ! $license_key_is_expired && in_array( $api_result->data->status, $license_key_active_statuses );
-
-					// Define license key status text
-					if ( 6 === $api_result->data->status ) { // 6 = Cancelled
-						$license_key_status = 'cancelled';
-					}
-					elseif ( $license_key_is_active ) {
-						$license_key_status = 'active';
-					}
-					elseif ( $license_key_is_expired ) {
-						$license_key_status = 'expired';
-					}
-				}
-
-				// Update license status object.
-				$license_status = array(
-					'license_key' => $option_value,
-					'status' => $license_key_status,
-					'expiration' => $license_key_expiration_timestamp,
-					'data' => $api_result->data,
-				);
-
-				// Update transient in database.
-				set_transient( $license_status_transient_id, $license_status, $transient_expiration );
-			}
-			// Maybe set status to error and delete transient.
-			else {
-				// Update license status object.
-				$license_status = array(
-					'license_key' => $option_value,
-					'status' => 'error',
-					'data' => $api_result->message,
-				);
-
-				// Update transient in database.
-				set_transient( $license_status_transient_id, $license_status, $transient_expiration );
-			}
+			$license_status = $this->maybe_set_license_status_transient( $option_value, $api_result, $license_status_transient_id );
 		}
 		elseif ( empty( $option_value ) ) {
 			$license_status = array(
@@ -155,6 +117,7 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 					$license_action_html = '';
 					break;
 				case 'expired':
+					$license_key_expiration_date = date( 'Y-m-d', $license_status[ 'expiration' ] );
 					// translators: %s: License key expiration date.
 					$license_key_status_text = sprintf( __( 'Expired on %s.', 'fluid-checkout' ), $license_key_expiration_date );
 					$license_key_status_class = 'fc-license-key__status-label--expired';
@@ -192,6 +155,73 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 			</td>
 		</tr>
 		<?php
+	}
+
+
+
+	/**
+	 * Maybe set license status transient from API results.
+	 *
+	 * @param   string  $option_value                 License key option value.
+	 * @param   object  $api_result                   License API result.
+	 * @param   string  $license_status_transient_id  License status transient ID.
+	 */
+	private function maybe_set_license_status_transient( $option_value, $api_result, $license_status_transient_id ) {
+		$license_key_status = 'error';
+		$license_key_expiration_timestamp = null;
+
+		// Determine initial transient expiration.
+		$transient_expiration = 60 * 60 * 24; // 24 hours.
+
+		// Maybe set transient based on API results.
+		if ( property_exists( $api_result, 'success' ) && true === $api_result->success ) {
+			// Maybe set status based on API results saved in transient.
+			if ( ! empty( $option_value ) && null !== $api_result->data ) {
+				// Determine if license key is expired.
+				$license_key_expiration_timestamp = null === $api_result->data->expiresAt ? strtotime( $api_result->data->createdAt ) + ( $api_result->data->validFor * 60 * 60 * 24 ) : strtotime( $api_result->data->expiresAt );
+				$license_key_is_expired = time() > $license_key_expiration_timestamp;
+
+				// Determine if license key is active.
+				$license_key_active_statuses = array(
+					2, // Delivered
+					3, // Active
+					5, // Disabled (but still not expired)
+				);
+				$license_key_is_active = ! $license_key_is_expired && in_array( $api_result->data->status, $license_key_active_statuses );
+
+				// Define license key status text
+				if ( 6 === $api_result->data->status ) { // 6 = Cancelled
+					$license_key_status = 'cancelled';
+				}
+				elseif ( $license_key_is_active ) {
+					$license_key_status = 'active';
+				}
+				elseif ( $license_key_is_expired ) {
+					$license_key_status = 'expired';
+				}
+			}
+
+			$license_status = array(
+				'license_key' => $option_value,
+				'status' => $license_key_status,
+				'expiration' => $license_key_expiration_timestamp,
+				'data' => $api_result->data,
+			);
+
+			set_transient( $license_status_transient_id, $license_status, $transient_expiration );
+
+			return $license_status;
+		}
+
+		$license_status = array(
+			'license_key' => $option_value,
+			'status' => 'error',
+			'data' => $api_result->message,
+		);
+
+		set_transient( $license_status_transient_id, $license_status, $transient_expiration );
+
+		return $license_status;
 	}
 
 }

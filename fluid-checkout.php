@@ -109,7 +109,7 @@ class FluidCheckout {
 	public function __construct() {
 		$this->set_plugin_vars();
 		$this->load_license_manager_class();
-		$this->register_site_report_cron_hooks();
+		$this->init_site_report_hooks();
 		$this->load_db_migrations();
 		$this->load_admin_notices();
 		$this->register_features();
@@ -150,9 +150,9 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Register the site report cron hooks.
+	 * Initialize site report hooks.
 	 */
-	private function register_site_report_cron_hooks() {
+	private function init_site_report_hooks() {
 		// Bail if class is not loaded
 		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
 

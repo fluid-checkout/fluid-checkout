@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: License key admin field supports static `FC_Licenses_Client` API via `plugin_slug` setting argument.
 * Improved: License client file renamed to `inc/admin/fc-licenses-client.php`.
 * Improved: Site report send failures are logged to WooCommerce logs (source: `fc-site-report`).
 * Added: Optional/Opt-in site environment reports sent to Fluid Checkout to help improve compatibility and support. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
