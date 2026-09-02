@@ -130,7 +130,7 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 					$license_action_html = sprintf( __( '<a href="%s" target="_blank">Purchase a new license key</a> and continue to receive updates and support.', 'fluid-checkout' ), esc_url( $value[ 'product_url' ] ) );
 					break;
 				case 'error':
-					$license_key_status_text = __( 'Error: ', 'fluid-checkout' ) . $license_status[ 'data' ];
+					$license_key_status_text = __( 'Error: ', 'fluid-checkout' ) . $license_status[ 'data' ] . '<br/>';
 					$license_key_status_class = 'fc-license-key__status-label--error';
 			}
 		}
@@ -151,7 +151,7 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 					<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
 					/><?php echo esc_html( $value['suffix'] ); ?> <?php echo $description; // WPCS: XSS ok. ?>
 
-					<p class="fc-license-key__status"><strong class="<?php echo esc_attr( $license_key_status_class ); ?>"><?php echo esc_html( $license_key_status_text ); ?></strong> <?php echo wp_kses_post( $license_action_html ); ?></p>
+					<p class="fc-license-key__status"><strong class="<?php echo esc_attr( $license_key_status_class ); ?>"><?php echo wp_kses_post( $license_key_status_text ); ?></strong> <?php echo wp_kses_post( $license_action_html ); ?></p>
 			</td>
 		</tr>
 		<?php
