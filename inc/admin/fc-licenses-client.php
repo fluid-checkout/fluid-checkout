@@ -92,8 +92,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				array(
 					'product_id'      => '',
 					'api_url'         => '',
-					'consumer_key'    => '',
-					'consumer_secret' => '',
 					'license_key'     => '',
 					'activate_option' => '',
 				)
@@ -166,19 +164,44 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
+		 * Get default HTTP headers for license and site-report API requests.
+		 *
+		 * @param array $extra Optional headers to merge.
+		 */
+		private static function get_api_request_headers( $extra = array() ) {
+			$headers = array(
+				'Referer' => home_url(),
+			);
+
+			if ( ! empty( $extra ) && is_array( $extra ) ) {
+				$headers = array_merge( $headers, $extra );
+			}
+
+			return $headers;
+		}
+
+
+
+		/**
 		 * Call API for data.
 		 *
-		 * @param   string  $url              API URL.
-		 * @param   string  $consumer_key     API consumer key.
-		 * @param   string  $consumer_secret  API consumer secret.
+		 * @param string $url     API URL.
+		 * @param array  $headers Optional HTTP headers.
 		 */
-		private static function call_api( $url, $consumer_key, $consumer_secret ) {
-			$process = curl_init( $url );
-			curl_setopt( $process, CURLOPT_USERPWD, sprintf( '%s:%s', $consumer_key, $consumer_secret ) );
-			curl_setopt( $process, CURLOPT_RETURNTRANSFER, true );
-			$response = curl_exec( $process );
-			curl_close( $process );
-			return $response;
+		private static function call_api( $url, $headers = array() ) {
+			$response = wp_remote_get(
+				$url,
+				array(
+					'headers' => self::get_api_request_headers( $headers ),
+					'timeout' => 15,
+				)
+			);
+
+			if ( is_wp_error( $response ) ) {
+				return '';
+			}
+
+			return wp_remote_retrieve_body( $response );
 		}
 
 
@@ -208,7 +231,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
 			$url     = $api_url . '/wp-json/lmfwc/v2/products/update/' . $config['product_id'];
 
-			$response = self::call_api( $url, $config['consumer_key'], $config['consumer_secret'] );
+			$response = self::call_api( $url );
 			$response = json_decode( $response );
 
 			self::$api_update_called[ $plugin_slug ] = true;
@@ -233,7 +256,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
 			$url     = $api_url . '/wp-json/lmfwc/v2/licenses/' . $config['license_key'];
 
-			$response = self::call_api( $url, $config['consumer_key'], $config['consumer_secret'] );
+			$response = self::call_api( $url );
 
 			if ( $response ) {
 				$data = json_decode( $response );
@@ -261,7 +284,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
 			$url     = $api_url . '/wp-json/lmfwc/v2/licenses/validate/' . $config['license_key'];
 
-			$response = self::call_api( $url, $config['consumer_key'], $config['consumer_secret'] );
+			$response = self::call_api( $url );
 
 			if ( $response ) {
 				$data = json_decode( $response );
@@ -296,7 +319,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
 			$url     = $api_url . '/wp-json/lmfwc/v2/licenses/activate/' . $config['license_key'];
 
-			$response = self::call_api( $url, $config['consumer_key'], $config['consumer_secret'] );
+			$response = self::call_api( $url );
 
 			if ( $response ) {
 				$data = json_decode( $response );
@@ -695,11 +718,11 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 			$payload = self::build_site_report_payload( $groups );
 
-			if ( empty( $payload ) || empty( $payload['site_url'] ) ) {
+			if ( empty( $payload ) || empty( $payload['site_domain'] ) ) {
 				delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
 
 				self::log_site_report_error(
-					'Site report payload is empty or missing site_url.',
+					'Site report payload is empty or missing site_domain.',
 					array(
 						'plugin_slug' => $plugin_slug,
 					)
@@ -875,6 +898,55 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
+		 * Get the plain site domain for telemetry payloads.
+		 */
+		private static function get_site_report_domain() {
+			$parsed = wp_parse_url( home_url() );
+
+			if ( empty( $parsed['host'] ) ) {
+				return '';
+			}
+
+			$domain = strtolower( $parsed['host'] );
+
+			if ( filter_var( $domain, FILTER_VALIDATE_IP ) ) {
+				return '';
+			}
+
+			if ( substr_count( $domain, '.' ) < 1 ) {
+				return '';
+			}
+
+			$blocked_suffixes = array(
+				'.local',
+				'.localhost',
+				'.test',
+				'.invalid',
+				'.example',
+				'.internal',
+				'.intranet',
+				'.lan',
+				'.home',
+				'.corp',
+				'.localdomain',
+			);
+
+			foreach ( $blocked_suffixes as $suffix ) {
+				if ( $domain === ltrim( $suffix, '.' ) || substr( $domain, -strlen( $suffix ) ) === $suffix ) {
+					return '';
+				}
+			}
+
+			if ( 'localhost' === $domain ) {
+				return '';
+			}
+
+			return $domain;
+		}
+
+
+
+		/**
 		 * Build the site environment report payload.
 		 *
 		 * @param array|null $groups               Optional data groups to include. When omitted, uses saved settings and requires opt-in.
@@ -894,10 +966,15 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			// Bail if no data groups are selected
 			if ( empty( $groups ) ) { return array(); }
 
-			$site_url = untrailingslashit( esc_url_raw( home_url() ) );
+			$site_domain = self::get_site_report_domain();
+
+			if ( '' === $site_domain ) {
+				return array();
+			}
+
 			$payload  = array(
 				'schema_version' => 2,
-				'site_url'       => $site_url,
+				'site_domain'    => $site_domain,
 				'report_groups'  => $groups,
 			);
 
@@ -965,7 +1042,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				'wc_store_timezone' => self::get_wc_store_timezone(),
 				'wc_store_currency' => self::get_wc_store_currency(),
 				'is_multisite'      => is_multisite(),
-				'is_ssl'            => is_ssl(),
 				'theme_template'    => $theme->get_template(),
 				'theme_stylesheet'  => $theme->get_stylesheet(),
 				'theme_version'     => $theme->get( 'Version' ),
@@ -1317,7 +1393,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		 */
 		public static function get_site_report_fingerprint( $payload ) {
 			$minimal = array(
-				'site_url'      => $payload['site_url'] ?? '',
+				'site_domain'   => $payload['site_domain'] ?? '',
 				'report_groups' => $payload['report_groups'] ?? array(),
 			);
 
@@ -1329,7 +1405,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				$minimal['wc_store_timezone'] = $payload['wc_store_timezone'] ?? null;
 				$minimal['wc_store_currency'] = $payload['wc_store_currency'] ?? null;
 				$minimal['is_multisite']     = $payload['is_multisite'] ?? false;
-				$minimal['is_ssl']           = $payload['is_ssl'] ?? false;
 				$minimal['theme_template']   = $payload['theme_template'] ?? '';
 				$minimal['theme_stylesheet'] = $payload['theme_stylesheet'] ?? '';
 				$minimal['theme_version']    = $payload['theme_version'] ?? '';
@@ -1400,10 +1475,11 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			return wp_remote_post(
 				$api_url . '/wp-json/fc-licenses/v1/site-report',
 				array(
-					'headers' => array(
-						'Content-Type' => 'application/json',
-						'Referer'      => home_url(),
-						'User-Agent'   => 'Fluid Checkout Site Report/' . self::get_site_report_user_agent_version(),
+					'headers' => self::get_api_request_headers(
+						array(
+							'Content-Type' => 'application/json',
+							'User-Agent'   => 'Fluid Checkout Site Report/' . self::get_site_report_user_agent_version(),
+						)
 					),
 					'body'    => wp_json_encode( $payload ),
 					'timeout' => 15,
