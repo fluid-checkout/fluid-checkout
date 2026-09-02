@@ -856,9 +856,9 @@
 			// Handle expanded state
 			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
 			if ( expandedHiddenField ) {
+				// Maybe expand section when not already expanded
 				var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
-				if ( isSetExpanded ) {
-					// Expand section
+				if ( isSetExpanded && ! substepElement.classList.contains( _settings.isEditingClass ) ) {
 					expandSubstepEdit( substepElement, true, false );
 				}
 

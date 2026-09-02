@@ -376,28 +376,29 @@
 		if ( document.body === currentFocusedElement ) { return; }
 
 		requestAnimationFrame( function() {
+			// Define variables
 			var elementToFocus;
 
-			// Try findind the `select2` focusable element
-			if ( currentFocusedElement.closest( _settings.select2FormRowSelector ) ) {
-				var formRow = currentFocusedElement.closest( _settings.select2FormRowSelector );
-				elementToFocus = formRow.querySelector( _settings.select2FocusElementSelector );
-			}
-			// Try findind the updated element by id
-			else if ( currentFocusedElement.id ) {
+			// Try finding the updated element by id
+			if ( currentFocusedElement.id ) {
 				elementToFocus = document.getElementById( currentFocusedElement.id );
 			}
-			// Try findind the updated element by name attribute
-			else if ( currentFocusedElement.getAttribute( 'name' ) ) {
+			// Try finding the updated element by name attribute
+			if ( ! elementToFocus && currentFocusedElement.getAttribute( 'name' ) ) {
 				var nameAttr = currentFocusedElement.getAttribute( 'name' );
 				elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
 			}
 
-			// Try setting focus if element is found
 			if ( elementToFocus ) {
 				// Get related select field
 				var formRow = elementToFocus.closest( _settings.tomSelectFormRowSelector );
 				var selectField = formRow && formRow.querySelector( 'select' );
+				var select2Field = elementToFocus.querySelector( _settings.select2FocusElementSelector );
+
+				// Maybe set Select2 field as the element to focus
+				if ( select2Field ) {
+					elementToFocus = select2Field;
+				}
 
 				// Maybe set class for keeping dropdown closed
 				if ( ! window.fcCurrentFocusedElementReopenDropdown && formRow ) {

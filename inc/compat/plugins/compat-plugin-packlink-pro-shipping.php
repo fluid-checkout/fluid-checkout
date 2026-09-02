@@ -53,7 +53,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -156,6 +156,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Initialize flag
 		$is_target_method_selected = false;
+		$chosen_method = '';
 
 		// Get shipping packages
 		$packages = WC()->shipping()->get_packages();
@@ -179,6 +180,14 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Bail if target shipping method is not selected
 		if ( ! $is_target_method_selected ) { return; }
+
+		// Keep Packlink's shipping method session aligned with the chosen rate.
+		// Otherwise Packlink clears the selected drop-off when `_packlink_shipping_method_id`
+		// is empty or does not match the chosen method during fragment refreshes.
+		$drop_off_id = class_exists( self::CLASS_NAME ) ? WC()->session->get( Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::DROP_OFF_ID, '' ) : '';
+		if ( ! empty( $chosen_method ) && ! empty( $drop_off_id ) ) {
+			WC()->session->set( Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::SHIPPING_ID, $chosen_method );
+		}
 
 		// Get Packlink checkout handler instance
 		$handler = new Packlink\WooCommerce\Components\Checkout\Checkout_Handler();
@@ -226,9 +235,22 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Bail if method is not available
 		if ( ! method_exists( self::CLASS_NAME, 'get_packlink_shipping_method' ) ) { return false; }
 
-		// Get shipping method instance ID
-		$instance_id_parts = explode( ':', $shipping_method_id );
-		$instance_id = (int) end( $instance_id_parts );
+		// Prefer instance ID from the shipping method object when available.
+		// Order items pass `get_method_id()` without the instance suffix (e.g. `packlink_shipping_method`),
+		// so parsing the ID string alone would cast to `0` and fail to resolve the Packlink method.
+		$instance_id = 0;
+		if ( is_object( $method ) && is_callable( array( $method, 'get_instance_id' ) ) ) {
+			$instance_id = (int) $method->get_instance_id();
+		}
+
+		// Fall back to parsing from shipping method ID string (e.g. `packlink_shipping_method:623`)
+		if ( empty( $instance_id ) && ! empty( $shipping_method_id ) ) {
+			$instance_id_parts = explode( ':', $shipping_method_id );
+			$instance_id = (int) end( $instance_id_parts );
+		}
+
+		// Bail if instance ID is not available
+		if ( empty( $instance_id ) ) { return false; }
 
 		// Get Packlink shipping method object
 		$packlink_method = Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::get_packlink_shipping_method( $instance_id );
@@ -244,9 +266,12 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 
 	/**
-	 * Maybe get selected shipping method object if it matches the target method.
+	 * Maybe get selected shipping method ID if it matches the target method.
 	 */
-	public function maybe_get_selected_shipping_method() {
+	public function maybe_get_selected_shipping_method_id() {
+		// Make sure chosen shipping method is set
+		WC()->cart->calculate_shipping();
+
 		// Check chosen shipping method
 		$packages = WC()->shipping()->get_packages();
 		foreach ( $packages as $i => $package ) {
@@ -285,14 +310,27 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * Get the selected terminal data.
 	 */
 	public function get_selected_terminal_data() {
-		// Get session field value
-		$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME );
+		// Prefer Packlink's own session key, then FC session copy
+		$terminal_data = null;
+		if ( class_exists( self::CLASS_NAME ) ) {
+			$terminal_data = WC()->session->get( Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::DROP_OFF_EXTRA );
+		}
+
+		// Fallback to FC session key
+		if ( empty( $terminal_data ) ) {
+			$terminal_data = WC()->session->get( self::SESSION_FIELD_NAME );
+		}
 
 		// Bail if terminal data is not available
 		if ( empty( $terminal_data ) ) { return; }
 
-		// Decode terminal data
-		$terminal_data = json_decode( $terminal_data, true );
+		// Decode terminal data when stored as JSON string
+		if ( is_string( $terminal_data ) ) {
+			$terminal_data = json_decode( $terminal_data, true );
+		}
+
+		// Bail if terminal data is invalid
+		if ( ! is_array( $terminal_data ) ) { return; }
 
 		// Assign terminal object property values to the corresponding array keys
 		$selected_terminal_data = array(
@@ -301,6 +339,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 			'postcode' => isset( $terminal_data['zip'] ) ? esc_html( $terminal_data['zip'] ) : '',
 			'city' => isset( $terminal_data['city'] ) ? esc_html( $terminal_data['city'] ) : '',
 			'state' => isset( $terminal_data['state'] ) ? esc_html( $terminal_data['state'] ) : '',
+			'country' => isset( $terminal_data['countryCode'] ) ? esc_html( $terminal_data['countryCode'] ) : '',
 		);
 
 		return $selected_terminal_data;
@@ -314,11 +353,14 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get selected shipping method ID
-		$shipping_method_id = $this->maybe_get_selected_shipping_method();
+		$shipping_method_id = $this->maybe_get_selected_shipping_method_id();
 
 		// Bail if target shipping method is not selected
 		if ( empty( $shipping_method_id ) ) { return $review_text_lines; }
@@ -344,19 +386,19 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 
 	/**
-	 * Set the shipping substep as incomplete when no pickup point is selected for the target shipping method.
+	 * Set the shipping method substep as incomplete when no pickup point is selected for the target shipping method.
 	 *
 	 * @param   bool  $is_substep_complete  Whether the substep is complete or not.
 	 */
-	public function maybe_set_substep_incomplete_shipping( $is_substep_complete ) {
-		// Get selected shipping method
-		$shipping_method = $this->maybe_get_selected_shipping_method();
+	public function maybe_set_substep_incomplete_shipping_method( $is_substep_complete ) {
+		// Get selected shipping method ID
+		$method_id = $this->maybe_get_selected_shipping_method_id();
 
 		// Bail if selected shipping method is not available
-		if ( ! is_object( $shipping_method ) ) { return $is_substep_complete; }
+		if ( empty( $method_id ) ) { return $is_substep_complete; }
 
 		// Bail if selected shipping method is not a local pickup method
-		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return $is_substep_complete; }
+		if ( ! $this->is_shipping_method_local_pickup( $method_id ) ) { return $is_substep_complete; }
 
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
@@ -389,16 +431,29 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Get plugin's shipping method object
 		$method_id = $method->get_instance_id();
-		$packling_method = Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::get_packlink_shipping_method( $method_id );
+		$packlink_method = Packlink\WooCommerce\Components\ShippingMethod\Shipping_Method_Helper::get_packlink_shipping_method( $method_id );
 
 		// Bail if method is not available
-		if ( ! method_exists( $packling_method, 'isDisplayLogo' ) ) { return $html; }
+		if ( ! is_object( $packlink_method ) || ! method_exists( $packlink_method, 'isDisplayLogo' ) ) { return $html; }
 
 		// Bail if image should not be displayed
-		if ( ! $packling_method->isDisplayLogo() ) { return $html; }
+		if ( ! $packlink_method->isDisplayLogo() ) { return $html; }
 
 		// Get image URL for the chosen carrier
-		$image_url = $packling_method->getLogoUrl();
+		$image_url = $packlink_method->getLogoUrl();
+
+		// Maybe rebuild a plugin-local logo URL against the current site URL
+		// Packlink stores an absolute URL when the method is synced, which breaks after a site URL change
+		if ( ! empty( $image_url ) ) {
+			$logo_path = wp_parse_url( $image_url, PHP_URL_PATH );
+			$plugin_dir = '/packlink-pro-shipping/';
+
+			// Rebuild only when the logo points to the plugin directory, leaving external URLs untouched
+			if ( is_string( $logo_path ) && false !== strpos( $logo_path, $plugin_dir ) ) {
+				$relative_path = substr( $logo_path, strpos( $logo_path, $plugin_dir ) + strlen( $plugin_dir ) );
+				$image_url = trailingslashit( plugins_url() ) . 'packlink-pro-shipping/' . ltrim( $relative_path, '/' );
+			}
+		}
 
 		// If no image is available, use the default one
 		if ( ! $image_url ) {
@@ -406,7 +461,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		}
 
 		// Define image HTML
-		$html = '<img class="shipping_logo" src="' . $image_url . '" alt="Packlink PRO Shipping"/>';
+		$html = '<img class="shipping_logo" src="' . esc_url( $image_url ) . '" alt="Packlink PRO Shipping"/>';
 
 		return $html;
 	}
