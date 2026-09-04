@@ -90,7 +90,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$config = wp_parse_args(
 				$config,
 				array(
-					'product_id'              => '',
 					'api_url'                 => '',
 					'license_key'             => '',
 					'license_key_option'      => '',
@@ -387,45 +386,80 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Get registered product IDs for a normalized API URL.
-		 *
-		 * @param string $api_url Normalized API base URL.
+		 * Build installed plugins payload for batch updates (slug-only rows).
 		 */
-		private static function get_registered_product_ids_for_api_url( $api_url ) {
-			$product_ids = array();
+		private static function get_installed_plugins_payload() {
+			$plugins = array();
+			$seen    = array();
 
-			foreach ( array_keys( self::$plugin_configs ) as $plugin_slug ) {
-				$config = self::get_plugin_config( $plugin_slug );
-
-				if ( empty( $config['product_id'] ) ) {
-					continue;
-				}
-
-				$config_api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
-
-				if ( $config_api_url !== $api_url ) {
-					continue;
-				}
-
-				$product_ids[] = absint( $config['product_id'] );
+			if ( ! function_exists( 'get_plugins' ) ) {
+				return $plugins;
 			}
 
-			$product_ids = array_values( array_unique( array_filter( $product_ids ) ) );
-			sort( $product_ids, SORT_NUMERIC );
+			foreach ( get_plugins() as $plugin_file => $plugin_data ) {
+				$plugin_slug = self::get_plugin_slug_from_file( $plugin_file );
 
-			return $product_ids;
+				if ( empty( $plugin_slug ) || isset( $seen[ $plugin_slug ] ) ) {
+					continue;
+				}
+
+				$seen[ $plugin_slug ] = true;
+				$plugins[]            = array(
+					'plugin_slug' => $plugin_slug,
+				);
+			}
+
+			usort(
+				$plugins,
+				function ( $a, $b ) {
+					return strcmp( $a['plugin_slug'], $b['plugin_slug'] );
+				}
+			);
+
+			return $plugins;
 		}
 
 
 
 		/**
-		 * Build batch updates transient name from API URL + product ID set.
+		 * Resolve the main plugin file for a folder slug from installed plugins.
 		 *
-		 * @param string $api_url     Normalized API base URL.
-		 * @param array  $product_ids Sorted unique product IDs.
+		 * @param string $plugin_slug Plugin folder slug.
 		 */
-		private static function get_batch_updates_transient_name( $api_url, $product_ids ) {
-			$fingerprint = md5( $api_url . '|' . implode( ',', $product_ids ) );
+		private static function get_plugin_file_for_slug( $plugin_slug ) {
+			$plugin_slug = sanitize_key( $plugin_slug );
+
+			if ( empty( $plugin_slug ) || ! function_exists( 'get_plugins' ) ) {
+				return '';
+			}
+
+			foreach ( get_plugins() as $plugin_file => $plugin_data ) {
+				if ( self::get_plugin_slug_from_file( $plugin_file ) === $plugin_slug ) {
+					return $plugin_file;
+				}
+			}
+
+			return '';
+		}
+
+
+
+		/**
+		 * Build batch updates transient name from API URL + installed plugin slug set.
+		 *
+		 * @param string $api_url  Normalized API base URL.
+		 * @param array  $plugins  Sorted unique plugin rows with plugin_slug.
+		 */
+		private static function get_batch_updates_transient_name( $api_url, $plugins ) {
+			$slugs = array();
+
+			foreach ( $plugins as $plugin ) {
+				if ( ! empty( $plugin['plugin_slug'] ) ) {
+					$slugs[] = $plugin['plugin_slug'];
+				}
+			}
+
+			$fingerprint = md5( $api_url . '|' . implode( ',', $slugs ) );
 
 			return 'fc_lcs_batch_updates_' . $fingerprint;
 		}
@@ -433,21 +467,20 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Fetch batch product update metadata for an API URL + product ID set.
+		 * Fetch batch product update metadata for an API URL + installed plugins list.
 		 *
 		 * @param string $api_url      Normalized API base URL.
-		 * @param array  $product_ids  Product IDs.
+		 * @param array  $plugins      Plugin rows (slug-only supported).
 		 * @param bool   $force_check  Whether to bypass the batch transient.
 		 */
-		private static function fetch_batch_product_updates( $api_url, $product_ids, $force_check = false ) {
-			$product_ids = array_values( array_unique( array_filter( array_map( 'absint', (array) $product_ids ) ) ) );
-			sort( $product_ids, SORT_NUMERIC );
+		private static function fetch_batch_product_updates( $api_url, $plugins, $force_check = false ) {
+			$plugins = is_array( $plugins ) ? $plugins : array();
 
-			if ( empty( $api_url ) || empty( $product_ids ) ) {
+			if ( empty( $api_url ) || empty( $plugins ) ) {
 				return null;
 			}
 
-			$transient_name = self::get_batch_updates_transient_name( $api_url, $product_ids );
+			$transient_name = self::get_batch_updates_transient_name( $api_url, $plugins );
 
 			if ( ! $force_check ) {
 				$transient = get_transient( $transient_name );
@@ -456,14 +489,20 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				}
 			}
 
-			$url = add_query_arg(
+			$url      = $api_url . '/wp-json/fc-licenses/v1/products/updates';
+			$response = self::call_api_post(
+				$url,
 				array(
-					'product_ids' => $product_ids,
+					'Content-Type' => 'application/json',
 				),
-				$api_url . '/wp-json/fc-licenses/v1/products/updates'
+				array(
+					'body' => wp_json_encode(
+						array(
+							'plugins' => $plugins,
+						)
+					),
+				)
 			);
-
-			$response = self::call_api( $url );
 			$decoded  = $response ? json_decode( $response ) : null;
 
 			set_transient( $transient_name, $decoded, DAY_IN_SECONDS );
@@ -479,12 +518,13 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		 * @param bool $force_check Whether to force fresh API checks.
 		 */
 		private static function prefetch_batch_updates_for_registered_plugins( $force_check = false ) {
-			$groups = array();
+			$groups  = array();
+			$plugins = self::get_installed_plugins_payload();
 
 			foreach ( array_keys( self::$plugin_configs ) as $plugin_slug ) {
 				$config = self::get_plugin_config( $plugin_slug );
 
-				if ( empty( $config['product_id'] ) || empty( $config['api_url'] ) ) {
+				if ( empty( $config['api_url'] ) ) {
 					continue;
 				}
 
@@ -502,7 +542,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			}
 
 			foreach ( $groups as $api_url => $plugin_slugs ) {
-				$product_ids = self::get_registered_product_ids_for_api_url( $api_url );
 				$group_force = false;
 
 				foreach ( $plugin_slugs as $plugin_slug ) {
@@ -512,11 +551,48 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 					}
 				}
 
-				self::fetch_batch_product_updates( $api_url, $product_ids, $group_force );
+				self::fetch_batch_product_updates( $api_url, $plugins, $group_force );
+				self::maybe_register_installed_own_plugins_for_updates( $api_url );
 
 				foreach ( $plugin_slugs as $plugin_slug ) {
 					self::$api_update_called[ $plugin_slug ] = true;
 				}
+			}
+		}
+
+
+
+		/**
+		 * Register minimal update configs for installed own plugins missing from $plugin_configs.
+		 *
+		 * @param string $api_url Normalized API base URL.
+		 */
+		private static function maybe_register_installed_own_plugins_for_updates( $api_url ) {
+			$own_map = self::get_own_plugins_option_map( $api_url );
+
+			foreach ( array_keys( $own_map ) as $plugin_slug ) {
+				if ( isset( self::$plugin_configs[ $plugin_slug ] ) ) {
+					continue;
+				}
+
+				$plugin_file = self::get_plugin_file_for_slug( $plugin_slug );
+
+				if ( empty( $plugin_file ) ) {
+					continue;
+				}
+
+				$options = $own_map[ $plugin_slug ];
+
+				self::$plugin_configs[ $plugin_slug ] = self::parse_client_config(
+					$plugin_slug,
+					$plugin_file,
+					array(
+						'api_url'                 => $api_url,
+						'license_key_option'      => $options['license_key_option'] ?? '',
+						'license_key_hash_option' => $options['license_key_hash_option'] ?? '',
+						'activate_option'         => $options['license_activated_option'] ?? '',
+					)
+				);
 			}
 		}
 
@@ -531,13 +607,13 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		private static function get_release_info( $plugin_slug, $force_check = false ) {
 			$config = self::get_plugin_config( $plugin_slug );
 
-			if ( empty( $config ) || empty( $config['product_id'] ) ) {
+			if ( empty( $config ) || empty( $config['api_url'] ) ) {
 				return null;
 			}
 
-			$api_url     = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
-			$product_ids = self::get_registered_product_ids_for_api_url( $api_url );
-			$batch       = self::fetch_batch_product_updates( $api_url, $product_ids, $force_check );
+			$api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
+			$plugins = self::get_installed_plugins_payload();
+			$batch   = self::fetch_batch_product_updates( $api_url, $plugins, $force_check );
 
 			self::$api_update_called[ $plugin_slug ] = true;
 
@@ -545,18 +621,17 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return null;
 			}
 
-			$product_id_key = (string) absint( $config['product_id'] );
-			$products       = $batch->data->products;
+			$products = $batch->data->products;
 
-			if ( is_object( $products ) && isset( $products->{$product_id_key} ) ) {
+			if ( is_object( $products ) && isset( $products->{$plugin_slug} ) ) {
 				$wrapper       = new \stdClass();
-				$wrapper->data = $products->{$product_id_key};
+				$wrapper->data = $products->{$plugin_slug};
 				return $wrapper;
 			}
 
-			if ( is_array( $products ) && isset( $products[ $product_id_key ] ) ) {
+			if ( is_array( $products ) && isset( $products[ $plugin_slug ] ) ) {
 				$wrapper       = new \stdClass();
-				$wrapper->data = $products[ $product_id_key ];
+				$wrapper->data = $products[ $plugin_slug ];
 				return $wrapper;
 			}
 
@@ -1365,7 +1440,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 					$plugin_slug = self::get_plugin_slug_from_file( $plugin_file );
 					$plugin_row  = array(
 						'plugin_slug' => $plugin_slug,
-						'plugin_file' => $plugin_file,
 						'name'        => $plugin_data['Name'],
 						'version'     => $plugin_data['Version'],
 						'active'      => is_plugin_active( $plugin_file ),
