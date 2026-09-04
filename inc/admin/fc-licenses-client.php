@@ -90,10 +90,12 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$config = wp_parse_args(
 				$config,
 				array(
-					'product_id'      => '',
-					'api_url'         => '',
-					'license_key'     => '',
-					'activate_option' => '',
+					'product_id'              => '',
+					'api_url'                 => '',
+					'license_key'             => '',
+					'license_key_option'      => '',
+					'license_key_hash_option' => '',
+					'activate_option'         => '',
 				)
 			);
 
@@ -170,7 +172,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		 */
 		private static function get_api_request_headers( $extra = array() ) {
 			$headers = array(
-				'Referer' => home_url(),
+				'Origin' => home_url(),
 			);
 
 			if ( ! empty( $extra ) && is_array( $extra ) ) {
@@ -183,7 +185,146 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Call API for data.
+		 * Hash a license key the same way as FC_Licenses_LicenseKeyRepository.
+		 *
+		 * @param string $license_key Raw license key.
+		 */
+		public static function hash_license_key( $license_key ) {
+			return hash( 'sha256', strtoupper( trim( (string) $license_key ) ) );
+		}
+
+
+
+		/**
+		 * Whether a value looks like a SHA-256 license key hash.
+		 *
+		 * @param string $value Candidate value.
+		 */
+		public static function looks_like_license_key_hash( $value ) {
+			return (bool) preg_match( '/^[a-f0-9]{64}$/i', (string) $value );
+		}
+
+
+
+		/**
+		 * Get the stored license key hash for a plugin config.
+		 *
+		 * @param array $config Parsed client config.
+		 */
+		public static function get_stored_license_key_hash( $config ) {
+			if ( empty( $config['license_key_hash_option'] ) ) {
+				return '';
+			}
+
+			$hash = get_option( $config['license_key_hash_option'], '' );
+
+			return is_string( $hash ) ? $hash : '';
+		}
+
+
+
+		/**
+		 * Resolve the license key hash to use for API paths and package URLs.
+		 *
+		 * Prefers the stored hash option; otherwise hashes an in-memory raw key.
+		 *
+		 * @param array $config Parsed client config.
+		 */
+		public static function resolve_license_key_hash( $config ) {
+			$hash = self::get_stored_license_key_hash( $config );
+
+			if ( ! empty( $hash ) ) {
+				return $hash;
+			}
+
+			if ( empty( $config['license_key'] ) ) {
+				return '';
+			}
+
+			$license_key = (string) $config['license_key'];
+
+			if ( self::looks_like_license_key_hash( $license_key ) ) {
+				return strtolower( $license_key );
+			}
+
+			return self::hash_license_key( $license_key );
+		}
+
+
+
+		/**
+		 * Invalidate license activation status cache.
+		 *
+		 * @param string $license_key_hash License key hash.
+		 */
+		private static function invalidate_license_activation_cache( $license_key_hash ) {
+			if ( empty( $license_key_hash ) ) {
+				return;
+			}
+
+			$domain = wp_parse_url( home_url(), PHP_URL_HOST );
+			$domain = is_string( $domain ) ? $domain : '';
+
+			delete_transient( 'fc_lcs_license_active_' . md5( $license_key_hash . '|' . $domain ) );
+		}
+
+
+
+		/**
+		 * Whether a license get_license_key_details/activate_license_key response is successful own-API data.
+		 *
+		 * @param mixed $response Decoded API response.
+		 */
+		public static function is_own_license_data_response( $response ) {
+			return is_object( $response )
+				&& isset( $response->data )
+				&& is_object( $response->data )
+				&& isset( $response->data->id )
+				&& ! isset( $response->code );
+		}
+
+
+
+		/**
+		 * Check whether a plugin license is activated for this site (via get_license_key_details).
+		 *
+		 * @param string $plugin_slug Plugin slug.
+		 */
+		public static function is_license_activated( $plugin_slug ) {
+			$config = self::get_plugin_config( $plugin_slug );
+
+			if ( empty( $config ) || empty( $config['plugin_file'] ) ) {
+				return false;
+			}
+
+			$hash = self::resolve_license_key_hash( $config );
+
+			if ( empty( $hash ) ) {
+				return false;
+			}
+
+			$domain    = wp_parse_url( home_url(), PHP_URL_HOST );
+			$domain    = is_string( $domain ) ? $domain : '';
+			$cache_key = 'fc_lcs_license_active_' . md5( $hash . '|' . $domain );
+			$cached    = get_transient( $cache_key );
+
+			if ( false !== $cached ) {
+				return (bool) $cached;
+			}
+
+			$config['license_key'] = $hash;
+			$result                = self::get_license_key_details( $plugin_slug, $config['plugin_file'], $config );
+			$is_active             = self::is_own_license_data_response( $result );
+
+			set_transient( $cache_key, $is_active ? 1 : 0, DAY_IN_SECONDS );
+
+			return $is_active;
+		}
+
+
+
+		/**
+		 * Call API with GET.
 		 *
 		 * @param string $url     API URL.
 		 * @param array  $headers Optional HTTP headers.
@@ -207,19 +348,106 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Get information regarding plugin releases from repository.
+		 * Call API with POST.
 		 *
-		 * @param   string  $plugin_slug   Plugin slug.
-		 * @param   bool    $force_check   Whether to force a fresh API check.
+		 * @param string $url     API URL.
+		 * @param array  $headers Optional HTTP headers.
+		 * @param array  $args    Optional extra wp_remote_post args.
 		 */
-		private static function get_release_info( $plugin_slug, $force_check = false ) {
-			$config = self::get_plugin_config( $plugin_slug );
+		private static function call_api_post( $url, $headers = array(), $args = array() ) {
+			$request_args = array_merge(
+				array(
+					'headers' => self::get_api_request_headers( $headers ),
+					'timeout' => 15,
+				),
+				is_array( $args ) ? $args : array()
+			);
 
-			if ( empty( $config ) ) {
+			$response = wp_remote_post( $url, $request_args );
+
+			if ( is_wp_error( $response ) ) {
+				return '';
+			}
+
+			return wp_remote_retrieve_body( $response );
+		}
+
+
+
+		/**
+		 * Normalize an API base URL for grouping and cache keys.
+		 *
+		 * @param string      $api_url     Remote API base URL.
+		 * @param string|null $plugin_slug Plugin slug.
+		 */
+		private static function normalize_api_url( $api_url, $plugin_slug = null ) {
+			return untrailingslashit( self::get_remote_api_url( $api_url, $plugin_slug ) );
+		}
+
+
+
+		/**
+		 * Get registered product IDs for a normalized API URL.
+		 *
+		 * @param string $api_url Normalized API base URL.
+		 */
+		private static function get_registered_product_ids_for_api_url( $api_url ) {
+			$product_ids = array();
+
+			foreach ( array_keys( self::$plugin_configs ) as $plugin_slug ) {
+				$config = self::get_plugin_config( $plugin_slug );
+
+				if ( empty( $config['product_id'] ) ) {
+					continue;
+				}
+
+				$config_api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
+
+				if ( $config_api_url !== $api_url ) {
+					continue;
+				}
+
+				$product_ids[] = absint( $config['product_id'] );
+			}
+
+			$product_ids = array_values( array_unique( array_filter( $product_ids ) ) );
+			sort( $product_ids, SORT_NUMERIC );
+
+			return $product_ids;
+		}
+
+
+
+		/**
+		 * Build batch updates transient name from API URL + product ID set.
+		 *
+		 * @param string $api_url     Normalized API base URL.
+		 * @param array  $product_ids Sorted unique product IDs.
+		 */
+		private static function get_batch_updates_transient_name( $api_url, $product_ids ) {
+			$fingerprint = md5( $api_url . '|' . implode( ',', $product_ids ) );
+
+			return 'fc_lcs_batch_updates_' . $fingerprint;
+		}
+
+
+
+		/**
+		 * Fetch batch product update metadata for an API URL + product ID set.
+		 *
+		 * @param string $api_url      Normalized API base URL.
+		 * @param array  $product_ids  Product IDs.
+		 * @param bool   $force_check  Whether to bypass the batch transient.
+		 */
+		private static function fetch_batch_product_updates( $api_url, $product_ids, $force_check = false ) {
+			$product_ids = array_values( array_unique( array_filter( array_map( 'absint', (array) $product_ids ) ) ) );
+			sort( $product_ids, SORT_NUMERIC );
+
+			if ( empty( $api_url ) || empty( $product_ids ) ) {
 				return null;
 			}
 
-			$transient_name = $plugin_slug . '_plugin_info';
+			$transient_name = self::get_batch_updates_transient_name( $api_url, $product_ids );
 
 			if ( ! $force_check ) {
 				$transient = get_transient( $transient_name );
@@ -228,33 +456,136 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				}
 			}
 
-			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
-			$url     = $api_url . '/wp-json/lmfwc/v2/products/update/' . $config['product_id'];
+			$url = add_query_arg(
+				array(
+					'product_ids' => $product_ids,
+				),
+				$api_url . '/wp-json/fc-licenses/v1/products/updates'
+			);
 
 			$response = self::call_api( $url );
-			$response = json_decode( $response );
+			$decoded  = $response ? json_decode( $response ) : null;
+
+			set_transient( $transient_name, $decoded, DAY_IN_SECONDS );
+
+			return $decoded;
+		}
+
+
+
+		/**
+		 * Prefetch batch updates for all registered plugins, grouped by API URL.
+		 *
+		 * @param bool $force_check Whether to force fresh API checks.
+		 */
+		private static function prefetch_batch_updates_for_registered_plugins( $force_check = false ) {
+			$groups = array();
+
+			foreach ( array_keys( self::$plugin_configs ) as $plugin_slug ) {
+				$config = self::get_plugin_config( $plugin_slug );
+
+				if ( empty( $config['product_id'] ) || empty( $config['api_url'] ) ) {
+					continue;
+				}
+
+				$api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
+
+				if ( empty( $api_url ) ) {
+					continue;
+				}
+
+				if ( ! isset( $groups[ $api_url ] ) ) {
+					$groups[ $api_url ] = array();
+				}
+
+				$groups[ $api_url ][] = $plugin_slug;
+			}
+
+			foreach ( $groups as $api_url => $plugin_slugs ) {
+				$product_ids = self::get_registered_product_ids_for_api_url( $api_url );
+				$group_force = false;
+
+				foreach ( $plugin_slugs as $plugin_slug ) {
+					if ( empty( self::$api_update_called[ $plugin_slug ] ) && $force_check ) {
+						$group_force = true;
+						break;
+					}
+				}
+
+				self::fetch_batch_product_updates( $api_url, $product_ids, $group_force );
+
+				foreach ( $plugin_slugs as $plugin_slug ) {
+					self::$api_update_called[ $plugin_slug ] = true;
+				}
+			}
+		}
+
+
+
+		/**
+		 * Get information regarding plugin releases from repository.
+		 *
+		 * @param   string  $plugin_slug   Plugin slug.
+		 * @param   bool    $force_check   Whether to force a fresh API check.
+		 */
+		private static function get_release_info( $plugin_slug, $force_check = false ) {
+			$config = self::get_plugin_config( $plugin_slug );
+
+			if ( empty( $config ) || empty( $config['product_id'] ) ) {
+				return null;
+			}
+
+			$api_url     = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
+			$product_ids = self::get_registered_product_ids_for_api_url( $api_url );
+			$batch       = self::fetch_batch_product_updates( $api_url, $product_ids, $force_check );
 
 			self::$api_update_called[ $plugin_slug ] = true;
 
-			set_transient( $transient_name, $response, DAY_IN_SECONDS );
+			if ( ! $batch || ! isset( $batch->data ) || ! isset( $batch->data->products ) ) {
+				return null;
+			}
 
-			return $response;
+			$product_id_key = (string) absint( $config['product_id'] );
+			$products       = $batch->data->products;
+
+			if ( is_object( $products ) && isset( $products->{$product_id_key} ) ) {
+				$wrapper       = new \stdClass();
+				$wrapper->data = $products->{$product_id_key};
+				return $wrapper;
+			}
+
+			if ( is_array( $products ) && isset( $products[ $product_id_key ] ) ) {
+				$wrapper       = new \stdClass();
+				$wrapper->data = $products[ $product_id_key ];
+				return $wrapper;
+			}
+
+			return null;
 		}
 
 
 
 		/**
-		 * Get the plugin license information from the license manager server.
+		 * Get the plugin license key details from the license manager server.
 		 *
 		 * @param   string  $plugin_slug  Plugin slug.
 		 * @param   string  $plugin_file  Main plugin file path.
 		 * @param   array   $config       Client config array.
 		 */
-		public static function get_info( $plugin_slug, $plugin_file, $config ) {
+		public static function get_license_key_details( $plugin_slug, $plugin_file, $config ) {
 			$config = self::parse_client_config( $plugin_slug, $plugin_file, $config );
 
-			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
-			$url     = $api_url . '/wp-json/lmfwc/v2/licenses/' . $config['license_key'];
+			$license_key_hash = self::resolve_license_key_hash( $config );
+
+			if ( empty( $license_key_hash ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fwplm_missing_license_key';
+				$error_response->message = 'Missing the license key hash. Activate a license key first.';
+				return $error_response;
+			}
+
+			$api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
+			$url     = $api_url . '/wp-json/fc-licenses/v1/licenses/' . rawurlencode( $license_key_hash );
 
 			$response = self::call_api( $url );
 
@@ -263,8 +594,8 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return $data;
 			}
 
-			$error_response = new \stdClass();
-			$error_response->code = 'fwplm_rest_connection_error';
+			$error_response          = new \stdClass();
+			$error_response->code    = 'fwplm_rest_connection_error';
 			$error_response->message = sprintf( 'Couldn\'t connect to the license server (%s). Try again later.', $api_url );
 			return $error_response;
 		}
@@ -272,72 +603,69 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Validate the plugin license key against the license manager server.
+		 * Activate the plugin license key against the license manager server.
 		 *
 		 * @param   string  $plugin_slug  Plugin slug.
 		 * @param   string  $plugin_file  Main plugin file path.
 		 * @param   array   $config       Client config array.
 		 */
-		public static function validate( $plugin_slug, $plugin_file, $config ) {
+		public static function activate_license_key( $plugin_slug, $plugin_file, $config ) {
 			$config = self::parse_client_config( $plugin_slug, $plugin_file, $config );
 
-			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
-			$url     = $api_url . '/wp-json/lmfwc/v2/licenses/validate/' . $config['license_key'];
-
-			$response = self::call_api( $url );
-
-			if ( $response ) {
-				$data = json_decode( $response );
-				return $data;
-			}
-
-			$error_response = new \stdClass();
-			$error_response->code = 'fwplm_rest_connection_error';
-			$error_response->message = sprintf( 'Couldn\'t connect to the license server (%s). Try again later.', $api_url );
-			return $error_response;
-		}
-
-
-
-		/**
-		 * Activate the plugin license, also validate against the license manager server.
-		 *
-		 * @param   string  $plugin_slug  Plugin slug.
-		 * @param   string  $plugin_file  Main plugin file path.
-		 * @param   array   $config       Client config array.
-		 */
-		public static function activate( $plugin_slug, $plugin_file, $config ) {
-			$config = self::parse_client_config( $plugin_slug, $plugin_file, $config );
-
-			if ( ! $config['license_key'] ) {
-				$error_response = new \stdClass();
-				$error_response->code = 'fwplm_missing_license_key';
+			if ( empty( $config['license_key'] ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fwplm_missing_license_key';
 				$error_response->message = 'Missing the license key. Please provide a valid license key and try again.';
 				return $error_response;
 			}
 
-			$api_url = untrailingslashit( self::get_remote_api_url( $config['api_url'], $config['plugin_slug'] ) );
-			$url     = $api_url . '/wp-json/lmfwc/v2/licenses/activate/' . $config['license_key'];
+			$raw_license_key = (string) $config['license_key'];
 
-			$response = self::call_api( $url );
+			if ( self::looks_like_license_key_hash( $raw_license_key ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fc_lcs_license_key_hash_not_allowed';
+				$error_response->message = 'Hashed license keys are not allowed for activation. Provide the raw license key.';
+				return $error_response;
+			}
+
+			$api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
+			$url     = $api_url . '/wp-json/fc-licenses/v1/licenses/activate/' . rawurlencode( $raw_license_key );
+
+			$response = self::call_api_post( $url );
 
 			if ( $response ) {
 				$data = json_decode( $response );
 
-				if ( $data && isset( $data->success ) && $data->success ) {
-					update_option( $config['activate_option'], 'yes' );
+				if ( self::is_own_license_data_response( $data ) ) {
+					$hash = self::hash_license_key( $raw_license_key );
+
+					if ( ! empty( $config['license_key_hash_option'] ) ) {
+						update_option( $config['license_key_hash_option'], $hash, false );
+					}
+
+					if ( ! empty( $config['license_key_option'] ) ) {
+						delete_option( $config['license_key_option'] );
+					}
+
+					if ( ! empty( $config['activate_option'] ) ) {
+						delete_option( $config['activate_option'] );
+					}
+
+					self::invalidate_license_activation_cache( $hash );
+
 					return $data;
 				}
-				else if ( $data && isset( $data->message ) && $data->message ) {
-					$error_response = new \stdClass();
-					$error_response->code = isset( $data->code ) ? $data->code : 'fwplm_generic_error';
+
+				if ( $data && isset( $data->message ) && $data->message ) {
+					$error_response          = new \stdClass();
+					$error_response->code    = isset( $data->code ) ? $data->code : 'fwplm_generic_error';
 					$error_response->message = $data->message;
 					return $error_response;
 				}
 			}
 
-			$error_response = new \stdClass();
-			$error_response->code = 'fwplm_rest_connection_error';
+			$error_response          = new \stdClass();
+			$error_response->code    = 'fwplm_rest_connection_error';
 			$error_response->message = sprintf( 'Couldn\'t connect to the license server (%s). Try again later.', $api_url );
 			return $error_response;
 		}
@@ -353,6 +681,9 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			if ( ! isset( $transient->response ) ) {
 				return $transient;
 			}
+
+			$force_check = ! empty( $_GET['force-check'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			self::prefetch_batch_updates_for_registered_plugins( $force_check );
 
 			foreach ( array_keys( self::$plugin_configs ) as $plugin_slug ) {
 				$transient = self::set_transient_for_plugin( $transient, $plugin_slug );
@@ -380,25 +711,28 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$slug        = $context['slug'];
 			$plugin_data = $context['plugin_data'];
 
-			$force_check = empty( self::$api_update_called[ $plugin_slug ] ) ? ! empty( $_GET['force-check'] ) : false;
-
+			$force_check  = empty( self::$api_update_called[ $plugin_slug ] ) ? ! empty( $_GET['force-check'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$release_info = self::get_release_info( $plugin_slug, $force_check );
 
-			if ( ! $release_info || ! property_exists( $release_info, 'success' ) || ! $release_info->success || ! isset( $release_info->data ) ) {
+			if ( ! $release_info || ! isset( $release_info->data ) || ! isset( $release_info->data->version ) ) {
 				return $transient;
 			}
 
 			$do_update = version_compare( $release_info->data->version, $plugin_data['Version'] );
 
 			if ( 1 === $do_update ) {
-				$obj = new \stdClass();
-				$obj->slug = $slug;
-				$obj->new_version = $release_info->data->version;
-				$obj->tested = $release_info->data->tested;
-				$obj->url = $plugin_data['PluginURI'];
-				$obj->package = str_replace( '{license_key}', $config['license_key'], $release_info->data->package );
+				$license_key_hash = self::resolve_license_key_hash( $config );
 
-				if ( $release_info->data->icons ) {
+				$obj              = new \stdClass();
+				$obj->slug        = $slug;
+				$obj->new_version = $release_info->data->version;
+				$obj->tested      = $release_info->data->tested;
+				$obj->url         = $plugin_data['PluginURI'];
+				$obj->package     = ! empty( $license_key_hash ) && isset( $release_info->data->package )
+					? str_replace( '{license_key}', $license_key_hash, $release_info->data->package )
+					: '';
+
+				if ( ! empty( $release_info->data->icons ) ) {
 					$obj->icons = array();
 					foreach ( $release_info->data->icons as $key => $value ) {
 						$obj->icons[ $key ] = $value;
@@ -458,7 +792,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 			$release_info = self::get_release_info( $plugin_slug );
 
-			if ( ! $release_info || ! property_exists( $release_info, 'success' ) || ! $release_info->success || ! isset( $release_info->data ) ) {
+			if ( ! $release_info || ! isset( $release_info->data ) || ! isset( $release_info->data->version ) ) {
 				return $res;
 			}
 
@@ -478,25 +812,30 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 					$res->$key = $value;
 				}
 
-				if ( $release_info->data->icons ) {
+				if ( ! empty( $release_info->data->icons ) ) {
 					$res->icons = array();
 					foreach ( $release_info->data->icons as $key => $value ) {
 						$res->icons[ $key ] = $value;
 					}
 				}
 
-				if ( $release_info->data->banners ) {
+				if ( ! empty( $release_info->data->banners ) ) {
 					$res->banners = array();
 					foreach ( $release_info->data->banners as $key => $value ) {
 						$res->banners[ $key ] = $value;
 					}
 				}
 
-				if ( $release_info->data->sections ) {
+				if ( ! empty( $release_info->data->sections ) ) {
 					$res->sections = array();
 					foreach ( $release_info->data->sections as $key => $value ) {
 						$res->sections[ $key ] = $value;
 					}
+				}
+
+				$license_key_hash = self::resolve_license_key_hash( $context['config'] );
+				if ( ! empty( $license_key_hash ) && ! empty( $res->package ) ) {
+					$res->package = str_replace( '{license_key}', $license_key_hash, $res->package );
 				}
 			}
 
@@ -665,7 +1004,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Maybe send a consolidated site environment report to Fluid Checkout.
+		 * Maybe send a consolidated site environment report to a plugin.
 		 *
 		 * @param string      $plugin_slug Plugin slug from the consuming plugin.
 		 * @param string|null $api_url     Site report API base URL from the consuming plugin.
@@ -716,7 +1055,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 			set_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT, 1, MINUTE_IN_SECONDS );
 
-			$payload = self::build_site_report_payload( $groups );
+			$payload = self::build_site_report_payload( $groups, null, $api_url );
 
 			if ( empty( $payload ) || empty( $payload['site_domain'] ) ) {
 				delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
@@ -949,10 +1288,11 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		/**
 		 * Build the site environment report payload.
 		 *
-		 * @param array|null $groups               Optional data groups to include. When omitted, uses saved settings and requires opt-in.
+		 * @param array|null  $groups               Optional data groups to include. When omitted, uses saved settings and requires opt-in.
 		 * @param string|null $plugins_report_scope Whether the plugins list is a full inventory or partial subset. Defaults to `complete`.
+		 * @param string|null $api_url              Site report API base URL from the consuming plugin.
 		 */
-		public static function build_site_report_payload( $groups = null, $plugins_report_scope = null ) {
+		public static function build_site_report_payload( $groups = null, $plugins_report_scope = null, $api_url = null ) {
 			if ( null === $groups ) {
 				// Bail if site reporting is disabled
 				if ( ! self::is_site_report_enabled() ) { return array(); }
@@ -979,8 +1319,8 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			);
 
 			if ( in_array( 'basic_environment', $groups, true ) ) {
-				$payload = array_merge( $payload, self::build_basic_environment_payload() );
-				$payload['plugin_activations']  = self::build_plugin_activations();
+				$payload = array_merge( $payload, self::build_basic_environment_payload( $api_url ) );
+				$payload['plugin_activations']  = self::build_plugin_activations( $api_url );
 				$payload['plugins_report_scope'] = null !== $plugins_report_scope ? $plugins_report_scope : 'complete';
 			}
 
@@ -1013,8 +1353,10 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 		/**
 		 * Build the basic environment section of the site report payload.
+		 *
+		 * @param string|null $api_url Site report API base URL from the consuming plugin.
 		 */
-		private static function build_basic_environment_payload() {
+		private static function build_basic_environment_payload( $api_url = null ) {
 			$theme   = wp_get_theme();
 			$plugins = array();
 
@@ -1029,7 +1371,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 						'active'      => is_plugin_active( $plugin_file ),
 					);
 
-					self::maybe_add_license_status_plugin_row( $plugin_row, $plugin_slug );
+					self::maybe_add_own_plugin_license_status_row( $plugin_row, $plugin_slug, $api_url );
 					$plugins[] = $plugin_row;
 				}
 			}
@@ -1355,23 +1697,20 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Build first-activation timestamps for Fluid Checkout catalog plugins.
+		 * Build first-activation timestamps for registered own plugins.
+		 *
+		 * @param string|null $api_url Site report API base URL from the consuming plugin.
 		 */
-		private static function build_plugin_activations() {
-			$option_map = array(
-				'fluid-checkout'                 => 'fc_plugin_activation_time',
-				'fluid-checkout-pro'             => 'fc_pro_plugin_activation_time',
-				'fc-address-book'                => 'fc_adb_plugin_activation_time',
-				'fc-google-address-autocomplete' => 'fc_gaa_plugin_activation_time',
-				'fc-paddle-payments'             => 'fc_paddle_plugin_activation_time',
-				'fc-vat-assistant'               => 'fc_vat_plugin_activation_time',
-				'fc-conversion-kit'              => 'fc_kit_plugin_activation_time',
-			);
-
+		private static function build_plugin_activations( $api_url = null ) {
 			$activations = array();
 
-			foreach ( $option_map as $plugin_slug => $option_name ) {
-				$timestamp = get_option( $option_name, null );
+			foreach ( self::get_own_plugins_option_map( $api_url ) as $plugin_slug => $plugin_options ) {
+				if ( empty( $plugin_options['activation_time_option'] ) ) {
+					$activations[ $plugin_slug ] = null;
+					continue;
+				}
+
+				$timestamp = get_option( $plugin_options['activation_time_option'], null );
 
 				if ( null === $timestamp || '' === $timestamp ) {
 					$activations[ $plugin_slug ] = null;
@@ -1458,7 +1797,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * POST the site report payload to the Fluid Checkout licenses API.
+		 * POST the site report payload to the plugin's licenses API.
 		 *
 		 * @param array       $payload     Site report payload.
 		 * @param string|null $api_url     Site report API base URL from the consuming plugin.
@@ -1478,7 +1817,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 					'headers' => self::get_api_request_headers(
 						array(
 							'Content-Type' => 'application/json',
-							'User-Agent'   => 'Fluid Checkout Site Report/' . self::get_site_report_user_agent_version(),
+							'User-Agent'   => 'Fluid Licenses Site Report/' . self::get_site_report_user_agent_version( $api_url ),
 						)
 					),
 					'body'    => wp_json_encode( $payload ),
@@ -1490,7 +1829,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Get the remote Fluid Checkout licenses API base URL.
+		 * Get the remote plugin's licenses API base URL.
 		 *
 		 * Used by site reports, plugin updates, and license API calls.
 		 *
@@ -1509,20 +1848,22 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Get the Fluid Checkout plugin version for the site report User-Agent header.
+		 * Get the plugin version for the site report User-Agent header.
+		 *
+		 * @param string|null $api_url Site report API base URL from the consuming plugin.
 		 */
-		private static function get_site_report_user_agent_version() {
+		private static function get_site_report_user_agent_version( $api_url = null ) {
 			// Bail if `get_plugins` function is not available
 			if ( ! function_exists( 'get_plugins' ) ) { return 'unknown'; }
 
-			$plugins = get_plugins();
+			$own_plugins = array_keys( self::get_own_plugins_option_map( $api_url ) );
+			$plugins     = get_plugins();
 
 			foreach ( $plugins as $plugin_file => $plugin_data ) {
 				$plugin_slug = self::get_plugin_slug_from_file( $plugin_file );
 
-				// Skip if not a premium Fluid Checkout plugin or the lite plugin
-				$premium_fc_plugins = array_keys( self::get_premium_fc_license_option_map() );
-				if ( 'fluid-checkout' !== $plugin_slug && ! in_array( $plugin_slug, $premium_fc_plugins, true ) ) { continue; }
+				// Skip if not a registered own plugin
+				if ( ! in_array( $plugin_slug, $own_plugins, true ) ) { continue; }
 
 				if ( ! is_plugin_active( $plugin_file ) ) { continue; }
 
@@ -1537,76 +1878,91 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Get premium FC plugin license option map keyed by plugin folder slug.
+		 * Get own plugins option map keyed by plugin folder slug.
+		 *
+		 * Empty by default. Each client plugin merges its entry via `fc_licenses_own_plugins`
+		 * when loading the licenses client (activation time and optional license options).
+		 *
+		 * @param string|null $api_url Remote API base URL from the consuming plugin.
+		 * @return array {
+		 *     @type array $plugin_slug {
+		 *         @type string $activation_time_option
+		 *         @type string $license_key_option       Optional.
+		 *         @type string $license_key_hash_option  Optional.
+		 *         @type string $license_activated_option Optional.
+		 *     }
+		 * }
 		 */
-		private static function get_premium_fc_license_option_map() {
-			return array(
-				'fluid-checkout-pro'             => array(
-					'license_key_option'       => 'fc_pro_license_key',
-					'license_activated_option' => 'fc_pro_license_key_activated',
-				),
-				'fc-address-book'                => array(
-					'license_key_option'       => 'fc_adb_license_key',
-					'license_activated_option' => 'fc_adb_license_key_activated',
-				),
-				'fc-vat-assistant'               => array(
-					'license_key_option'       => 'fc_vat_license_key',
-					'license_activated_option' => 'fc_vat_license_key_activated',
-				),
-				'fc-google-address-autocomplete' => array(
-					'license_key_option'       => 'fc_gaa_license_key',
-					'license_activated_option' => 'fc_gaa_license_key_activated',
-				),
-				'fc-paddle-payments'             => array(
-					'license_key_option'       => 'fc_paddle_license_key',
-					'license_activated_option' => 'fc_paddle_license_key_activated',
-				),
-				'fc-conversion-kit'              => array(
-					'license_key_option'       => 'fc_kit_license_key',
-					'license_activated_option' => 'fc_kit_license_key_activated',
-				),
-			);
+		private static function get_own_plugins_option_map( $api_url = null ) {
+			$plugins = apply_filters( 'fc_licenses_own_plugins', array(), $api_url );
+
+			if ( ! is_array( $plugins ) ) {
+				return array();
+			}
+
+			return $plugins;
 		}
 
 
 
 		/**
-		 * Attach license fields to a premium FC plugin row when applicable.
+		 * Attach license fields to an own plugin row when applicable.
 		 *
-		 * @param array  $plugin_row Plugin payload row.
-		 * @param string $plugin_slug Plugin folder slug.
+		 * @param array       $plugin_row  Plugin payload row.
+		 * @param string      $plugin_slug Plugin folder slug.
+		 * @param string|null $api_url     Remote API base URL from the consuming plugin.
 		 */
-		private static function maybe_add_license_status_plugin_row( &$plugin_row, $plugin_slug ) {
-			$license_map = self::get_premium_fc_license_option_map();
+		private static function maybe_add_own_plugin_license_status_row( &$plugin_row, $plugin_slug, $api_url = null ) {
+			$plugins_map = self::get_own_plugins_option_map( $api_url );
 
-			if ( ! array_key_exists( $plugin_slug, $license_map ) ) {
+			if ( ! array_key_exists( $plugin_slug, $plugins_map ) ) {
 				return;
 			}
 
-			$license_options = $license_map[ $plugin_slug ];
-			$license_key     = get_option( $license_options['license_key_option'], '' );
-			$license_status  = self::get_premium_fc_license_status(
+			$plugin_options = $plugins_map[ $plugin_slug ];
+
+			// Bail if this own plugin has no license options (e.g. Lite)
+			if ( empty( $plugin_options['license_key_option'] ) || empty( $plugin_options['license_key_hash_option'] ) || empty( $plugin_options['license_activated_option'] ) ) {
+				return;
+			}
+
+			$license_key   = get_option( $plugin_options['license_key_option'], '' );
+			$license_hash  = get_option( $plugin_options['license_key_hash_option'], '' );
+			$activated_opt = get_option( $plugin_options['license_activated_option'], '' );
+
+			$license_status = self::get_own_plugin_license_status(
+				$plugin_slug,
 				$license_key,
-				get_option( $license_options['license_activated_option'], '' )
+				$license_hash,
+				$activated_opt
 			);
 
 			$plugin_row['license_status'] = $license_status;
 
-			if ( ! empty( $license_key ) ) {
-				$plugin_row['license_key_hash'] = hash( 'sha256', strtoupper( trim( $license_key ) ) );
+			// Prefer stored hash; otherwise derive from plaintext key
+			if ( ! empty( $license_hash ) && is_string( $license_hash ) ) {
+				$plugin_row['license_key_hash'] = $license_hash;
+			} elseif ( ! empty( $license_key ) ) {
+				$plugin_row['license_key_hash'] = self::hash_license_key( $license_key );
 			}
 		}
 
 
 
 		/**
-		 * Resolve license status for a premium FC plugin.
+		 * Resolve license status for an own plugin.
 		 *
-		 * @param string $license_key License key option value.
+		 * Considers legacy activated option and/or live get_license_key_details via is_license_activated().
+		 *
+		 * @param string $plugin_slug            Plugin folder slug.
+		 * @param string $license_key            License key option value.
+		 * @param string $license_hash           License key hash option value.
 		 * @param string $activated_option_value Activation option value.
 		 */
-		private static function get_premium_fc_license_status( $license_key, $activated_option_value ) {
-			if ( empty( $license_key ) ) {
+		private static function get_own_plugin_license_status( $plugin_slug, $license_key, $license_hash, $activated_option_value ) {
+			$key_present = ! empty( $license_key ) || ! empty( $license_hash );
+
+			if ( ! $key_present ) {
 				return 'missing';
 			}
 
@@ -1614,7 +1970,11 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return 'valid';
 			}
 
-			if ( in_array( $activated_option_value, array( 'no', '', null ), true ) ) {
+			if ( self::is_license_activated( $plugin_slug ) ) {
+				return 'valid';
+			}
+
+			if ( in_array( $activated_option_value, array( 'no', '', null ), true ) && empty( $license_hash ) ) {
 				return 'invalid';
 			}
 

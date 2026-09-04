@@ -164,7 +164,7 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 			);
 		}
 
-		$result = FC_Licenses_Client::send_site_report_now( $groups, $enable_if_disabled, false, self::$plugin_slug, self::SITE_REPORT_API_URL, self::SITE_REPORT_CRON_HOOK );
+		$result = FC_Licenses_Client::send_site_report_now( $groups, $enable_if_disabled, false, self::$plugin_slug, self::FC_LICENSES_API_URL, self::SITE_REPORT_CRON_HOOK );
 
 		if ( empty( $result['success'] ) ) {
 			$error_code = $result['error_code'] ?? 'request_failed';

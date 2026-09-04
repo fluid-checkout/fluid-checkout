@@ -64,7 +64,7 @@ class FluidCheckout {
 	/**
 	 * Default site report API base URL.
 	 */
-	const SITE_REPORT_API_URL = 'https://fluidcheckout.com';
+	const FC_LICENSES_API_URL = 'https://fluidcheckout.com';
 
 	/**
 	 * Hold list of the plugin features to load when initializing.
@@ -143,10 +143,99 @@ class FluidCheckout {
 	 * Load the license manager class file when needed.
 	 */
 	private function load_license_manager_class() {
+		self::maybe_register_own_plugins_licensing();
+
 		// Bail if class is already loaded
 		if ( class_exists( 'FC_Licenses_Client' ) ) { return; }
 
 		require_once self::$directory_path . 'inc/admin/fc-licenses-client.php';
+	}
+
+
+
+	/**
+	 * Register this plugin in the licenses client own-plugins map.
+	 */
+	private static function maybe_register_own_plugins_licensing() {
+		if ( has_filter( 'fc_licenses_own_plugins', array( __CLASS__, 'set_own_plugins_license_options' ) ) ) {
+			return;
+		}
+
+		add_filter( 'fc_licenses_own_plugins', array( __CLASS__, 'set_own_plugins_license_options' ) );
+	}
+
+
+
+	/**
+	 * Add this plugin to the licenses client own-plugins map.
+	 *
+	 * @param array       $plugins Own plugins map.
+	 * @param string|null $api_url Remote API base URL from the consuming plugin.
+	 */
+	public static function set_own_plugins_license_options( $plugins, $api_url = null ) {
+		// Bail if not updating plugins for the same API URL.
+		if ( $api_url !== self::FC_LICENSES_API_URL ) { return $plugins; }
+
+		// Define own plugins license options.
+		$own_plugins = array(
+			'fluid-checkout' => array(
+				'activation_time_option' => 'fc_plugin_activation_time',
+				'license_key_option' => 'fc_plugin_license_key',
+				'license_key_hash_option' => 'fc_plugin_license_key_hash',
+				'license_activated_option' => 'fc_plugin_license_activated',
+			),
+			'fluid-checkout-pro' => array(
+				'activation_time_option' => 'fc_pro_plugin_activation_time',
+				'license_key_option' => 'fc_pro_plugin_license_key',
+				'license_key_hash_option' => 'fc_pro_plugin_license_key_hash',
+				'license_activated_option' => 'fc_pro_plugin_license_activated',
+			),
+			'fc-address-book' => array(
+				'activation_time_option' => 'fc_adb_plugin_activation_time',
+				'license_key_option' => 'fc_adb_plugin_license_key',
+				'license_key_hash_option' => 'fc_adb_plugin_license_key_hash',
+				'license_activated_option' => 'fc_adb_plugin_license_activated',
+			),
+			'fc-vat-assistant' => array(
+				'activation_time_option' => 'fc_vat_plugin_activation_time',
+				'license_key_option' => 'fc_vat_plugin_license_key',
+				'license_key_hash_option' => 'fc_vat_plugin_license_key_hash',
+				'license_activated_option' => 'fc_vat_plugin_license_activated',
+			),
+			'fc-google-address-autocomplete' => array(
+				'activation_time_option' => 'fc_gaa_plugin_activation_time',
+				'license_key_option' => 'fc_gaa_plugin_license_key',
+				'license_key_hash_option' => 'fc_gaa_plugin_license_key_hash',
+				'license_activated_option' => 'fc_gaa_plugin_license_activated',
+			),
+			'fc-conversion-kit' => array(
+				'activation_time_option' => 'fc_kit_plugin_activation_time',
+				'license_key_option' => 'fc_kit_plugin_license_key',
+				'license_key_hash_option' => 'fc_kit_plugin_license_key_hash',
+				'license_activated_option' => 'fc_kit_plugin_license_activated',
+			),
+		);
+
+		return self::merge_own_plugins_license_options( $plugins, $own_plugins );
+	}
+
+	/**
+	 * Deep merge own-plugins map entries into an existing map.
+	 *
+	 * @param array $plugins     Existing own plugins map.
+	 * @param array $own_plugins Own plugins entries to merge in.
+	 */
+	private static function merge_own_plugins_license_options( $plugins, $own_plugins ) {
+		foreach ( $own_plugins as $plugin_key => $settings ) {
+			if ( isset( $plugins[ $plugin_key ] ) && is_array( $plugins[ $plugin_key ] ) ) {
+				$plugins[ $plugin_key ] = array_merge( $plugins[ $plugin_key ], $settings );
+			}
+			else {
+				$plugins[ $plugin_key ] = $settings;
+			}
+		}
+
+		return $plugins;
 	}
 
 	/**
@@ -156,7 +245,7 @@ class FluidCheckout {
 		// Bail if class is not loaded
 		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
 
-		FC_Licenses_Client::register_site_report_cron_hooks( self::$plugin_slug, self::SITE_REPORT_CRON_HOOK, self::SITE_REPORT_API_URL );
+		FC_Licenses_Client::register_site_report_cron_hooks( self::$plugin_slug, self::SITE_REPORT_CRON_HOOK, self::FC_LICENSES_API_URL );
 	}
 
 
