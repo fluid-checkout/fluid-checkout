@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: Shipping company field no longer becomes required when only the billing company field is set as required.
+* Fixed: Company field requirements at checkout no longer affect unrelated address fields.
 
 = 4.2.7 - 2026-08-19 =
 
