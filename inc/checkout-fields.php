@@ -257,6 +257,9 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	/**
 	 * Maybe change shipping company field arguments to make it required, optional or remove the field.
 	 *
+	 * When shipping company is optional and billing company is required, also clears the shipping
+	 * company `required` flag set by WooCommerce's shared company field option.
+	 *
 	 * @param   array  $fields  Fields used in checkout.
 	 */
 	public function maybe_change_shipping_company_field_args( $fields ) {
