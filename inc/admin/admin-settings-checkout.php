@@ -629,7 +629,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					array(
 						'title'                 => __( 'Company name field for shipping address', 'fluid-checkout' ),
 						'desc'                  => __( 'Change visibility for the company name field for the shipping address section on the checkout form.', 'fluid-checkout' ),
-						'desc_tip'              => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'desc_tip'              => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need. When the billing company field is required, "optional" here also prevents that required state from applying to the shipping company field.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_company_field_visibility',
 						'type'                  => 'select',
 						'options'               => array(
