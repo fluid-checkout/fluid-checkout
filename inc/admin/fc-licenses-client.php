@@ -1130,6 +1130,25 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 			set_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT, 1, MINUTE_IN_SECONDS );
 
+			$host = self::get_site_report_host();
+
+			if ( '' === $host || ! self::is_site_report_domain_eligible( $host ) ) {
+				delete_transient( self::SITE_REPORT_SEND_LOCK_TRANSIENT );
+
+				self::log_site_report_error(
+					'Site report domain is not eligible for sending.',
+					array(
+						'plugin_slug' => $plugin_slug,
+						'site_domain' => $host,
+					)
+				);
+
+				return array(
+					'success'    => false,
+					'error_code' => '' === $host ? 'empty_payload' : 'ineligible_domain',
+				);
+			}
+
 			$payload = self::build_site_report_payload( $groups, null, $api_url );
 
 			if ( empty( $payload ) || empty( $payload['site_domain'] ) ) {
@@ -1312,46 +1331,92 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Get the plain site domain for telemetry payloads.
+		 * Get the plain site host from home_url (no eligibility checks).
 		 */
-		private static function get_site_report_domain() {
+		private static function get_site_report_host() {
 			$parsed = wp_parse_url( home_url() );
 
 			if ( empty( $parsed['host'] ) ) {
 				return '';
 			}
 
-			$domain = strtolower( $parsed['host'] );
+			return strtolower( $parsed['host'] );
+		}
+
+
+
+		/**
+		 * Whether a site domain is eligible for sending site reports.
+		 *
+		 * Blocks IP hosts, single-label hosts, localhost, and common local/dev suffixes.
+		 *
+		 * @param string $domain Site host.
+		 */
+		public static function is_site_report_domain_eligible( $domain ) {
+			$domain = strtolower( (string) $domain );
+
+			if ( '' === $domain ) {
+				return false;
+			}
+
+			$eligible = true;
 
 			if ( filter_var( $domain, FILTER_VALIDATE_IP ) ) {
-				return '';
+				$eligible = false;
 			}
-
-			if ( substr_count( $domain, '.' ) < 1 ) {
-				return '';
+			elseif ( substr_count( $domain, '.' ) < 1 ) {
+				$eligible = false;
 			}
+			elseif ( 'localhost' === $domain ) {
+				$eligible = false;
+			}
+			else {
+				$blocked_suffixes = array(
+					'.local',
+					'.localhost',
+					'.test',
+					'.invalid',
+					'.example',
+					'.internal',
+					'.intranet',
+					'.lan',
+					'.home',
+					'.corp',
+					'.localdomain',
+				);
 
-			$blocked_suffixes = array(
-				'.local',
-				'.localhost',
-				'.test',
-				'.invalid',
-				'.example',
-				'.internal',
-				'.intranet',
-				'.lan',
-				'.home',
-				'.corp',
-				'.localdomain',
-			);
-
-			foreach ( $blocked_suffixes as $suffix ) {
-				if ( $domain === ltrim( $suffix, '.' ) || substr( $domain, -strlen( $suffix ) ) === $suffix ) {
-					return '';
+				foreach ( $blocked_suffixes as $suffix ) {
+					if ( $domain === ltrim( $suffix, '.' ) || substr( $domain, -strlen( $suffix ) ) === $suffix ) {
+						$eligible = false;
+						break;
+					}
 				}
 			}
 
-			if ( 'localhost' === $domain ) {
+			/**
+			 * Filter whether a site domain may send site reports.
+			 *
+			 * @param bool   $eligible Whether the domain is eligible.
+			 * @param string $domain   Site host.
+			 */
+			return (bool) apply_filters( 'fc_licenses_is_site_report_domain_eligible', $eligible, $domain );
+		}
+
+
+
+		/**
+		 * Get the plain site domain for telemetry payloads.
+		 *
+		 * @param bool $require_eligible Whether to return empty for ineligible/local domains.
+		 */
+		private static function get_site_report_domain( $require_eligible = true ) {
+			$domain = self::get_site_report_host();
+
+			if ( '' === $domain ) {
+				return '';
+			}
+
+			if ( $require_eligible && ! self::is_site_report_domain_eligible( $domain ) ) {
 				return '';
 			}
 
@@ -1363,11 +1428,15 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		/**
 		 * Build the site environment report payload.
 		 *
-		 * @param array|null  $groups               Optional data groups to include. When omitted, uses saved settings and requires opt-in.
-		 * @param string|null $plugins_report_scope Whether the plugins list is a full inventory or partial subset. Defaults to `complete`.
-		 * @param string|null $api_url              Site report API base URL from the consuming plugin.
+		 * Domain eligibility is enforced when sending, not when building. Admin preview
+		 * and local development can inspect the payload for ineligible hosts.
+		 *
+		 * @param array|null  $groups                  Optional data groups to include. When omitted, uses saved settings and requires opt-in.
+		 * @param string|null $plugins_report_scope    Whether the plugins list is a full inventory or partial subset. Defaults to `complete`.
+		 * @param string|null $api_url                 Site report API base URL from the consuming plugin.
+		 * @param bool        $require_eligible_domain Whether to require a production-eligible domain. Defaults to false.
 		 */
-		public static function build_site_report_payload( $groups = null, $plugins_report_scope = null, $api_url = null ) {
+		public static function build_site_report_payload( $groups = null, $plugins_report_scope = null, $api_url = null, $require_eligible_domain = false ) {
 			if ( null === $groups ) {
 				// Bail if site reporting is disabled
 				if ( ! self::is_site_report_enabled() ) { return array(); }
@@ -1381,7 +1450,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			// Bail if no data groups are selected
 			if ( empty( $groups ) ) { return array(); }
 
-			$site_domain = self::get_site_report_domain();
+			$site_domain = self::get_site_report_domain( $require_eligible_domain );
 
 			if ( '' === $site_domain ) {
 				return array();

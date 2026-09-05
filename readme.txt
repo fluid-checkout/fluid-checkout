@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Site report preview works on local and development domains (send still blocked for those domains).
 * Improved: License key admin field supports static `FC_Licenses_Client` API via `plugin_slug` setting argument.
 * Improved: License client file renamed to `inc/admin/fc-licenses-client.php`.
 * Improved: Site report send failures are logged to WooCommerce logs (source: `fc-site-report`).

@@ -101,7 +101,7 @@
 			}
 		).done( function( response ) {
 			if ( ! response || ! response.success ) {
-				showFeedback( $feedback, response && response.data && response.data.message ? response.data.message : ( _i18n.loadError || 'Could not load the site report preview. Try again.' ), 'error' );
+				showFeedback( $feedback, getPreviewErrorMessage( response && response.data ), 'error' );
 				$payload.text( '' );
 				updateSendButton( formState.enabled === 'yes' );
 				return;
@@ -110,11 +110,32 @@
 			isEnabled = !! response.data.is_enabled;
 			$payload.text( response.data.payload_json || '' );
 			updateSendButton( isEnabled );
-		} ).fail( function() {
-			showFeedback( $feedback, _i18n.loadError || 'Could not load the site report preview. Try again.', 'error' );
+		} ).fail( function( xhr ) {
+			showFeedback( $feedback, getPreviewErrorMessage( getSendErrorDataFromXhr( xhr ) ), 'error' );
 			$payload.text( '' );
 			updateSendButton( formState.enabled === 'yes' );
 		} );
+	};
+
+
+
+	/**
+	 * Get user-facing message for a failed preview response.
+	 *
+	 * @param {Object} data Error payload from the server.
+	 */
+	var getPreviewErrorMessage = function( data ) {
+		data = data || {};
+
+		if ( 'string' === typeof data ) {
+			return data;
+		}
+
+		if ( data.message ) {
+			return data.message;
+		}
+
+		return _i18n.loadError || 'Could not load the site report preview. Try again.';
 	};
 
 
@@ -137,6 +158,7 @@
 			in_progress: _i18n.inProgress,
 			disabled: _i18n.disabled,
 			empty_payload: _i18n.emptyPayload,
+			ineligible_domain: _i18n.ineligibleDomain,
 			request_failed: _i18n.requestFailed,
 		};
 

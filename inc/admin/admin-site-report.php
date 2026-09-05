@@ -67,6 +67,7 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 					'inProgress'           => __( 'A site report request is already in progress. Try again in a moment.', 'fluid-checkout' ),
 					'disabled'             => __( 'Site environment reporting is disabled.', 'fluid-checkout' ),
 					'emptyPayload'         => __( 'No site report data is available to send.', 'fluid-checkout' ),
+					'ineligibleDomain'     => __( 'This site domain cannot send environment reports (local or development domains are excluded).', 'fluid-checkout' ),
 					'rateLimited'          => __( 'A site report was sent recently. Try again later.', 'fluid-checkout' ),
 					'requestFailed'        => __( 'The site report could not be sent. Try again later.', 'fluid-checkout' ),
 				),
@@ -123,12 +124,14 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 			);
 		}
 
+		// Build payload including local/dev domains so the JSON preview is always inspectable.
 		$payload = FC_Licenses_Client::build_site_report_payload( $groups );
 
 		if ( empty( $payload ) ) {
 			wp_send_json_error(
 				array(
-					'message' => __( 'No site report data is available for the selected settings.', 'fluid-checkout' ),
+					'message'    => __( 'No site report data is available for the selected settings.', 'fluid-checkout' ),
+					'error_code' => 'empty_payload',
 				),
 				400
 			);
@@ -250,11 +253,12 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 	 */
 	private function get_send_error_message( $result ) {
 		$messages = array(
-			'in_progress'    => __( 'A site report request is already in progress. Try again in a moment.', 'fluid-checkout' ),
-			'disabled'       => __( 'Site environment reporting is disabled.', 'fluid-checkout' ),
-			'empty_payload'  => __( 'No site report data is available to send.', 'fluid-checkout' ),
-			'rate_limited'   => __( 'A site report was sent recently. Try again later.', 'fluid-checkout' ),
-			'request_failed' => __( 'The site report could not be sent. Try again later.', 'fluid-checkout' ),
+			'in_progress'        => __( 'A site report request is already in progress. Try again in a moment.', 'fluid-checkout' ),
+			'disabled'           => __( 'Site environment reporting is disabled.', 'fluid-checkout' ),
+			'empty_payload'      => __( 'No site report data is available to send.', 'fluid-checkout' ),
+			'ineligible_domain'  => __( 'This site domain cannot send environment reports (local or development domains are excluded).', 'fluid-checkout' ),
+			'rate_limited'       => __( 'A site report was sent recently. Try again later.', 'fluid-checkout' ),
+			'request_failed'     => __( 'The site report could not be sent. Try again later.', 'fluid-checkout' ),
 		);
 
 		$error_code = $result['error_code'] ?? 'request_failed';
