@@ -356,7 +356,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: License key field recovers from a cached error status by refreshing license details when a stored key hash is available.
+* Fixed: Site reports include license key hashes using the correct settings option names.
+* Fixed: License key activation feedback is shown on each license field instead of as admin notices when saving settings.
+* Fixed: License key field status is cleared when saving a different license key, instead of keeping the previous key's status.
+* Fixed: Successful license activation shows the valid-until status on the license field and marks the plugin as activated.
+* Improved: Saved license keys are stored hashed with a masked display value (last chunk only), including invalid keys.
+* Improved: License key fields are locked when a value is saved, with a Clear control to enter a new key.
+* Fixed: License keys settings fields remain visible after saving the settings page.
 * Fixed: Site report preview works on local and development domains (send still blocked for those domains).
+* Fixed: Own plugin license fields in site reports match by plugin slug (API URL filter now receives both arguments).
+* Removed: Site report payloads no longer include client-reported `license_status` (resolved server-side).
 * Improved: License key admin field supports static `FC_Licenses_Client` API via `plugin_slug` setting argument.
 * Improved: License client file renamed to `inc/admin/fc-licenses-client.php`.
 * Improved: Site report send failures are logged to WooCommerce logs (source: `fc-site-report`).

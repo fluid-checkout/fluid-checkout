@@ -1,6 +1,21 @@
 // ------------------------------------
 // CHECKOUT OPTIONS - LICENSE KEYS
 // ------------------------------------
+.forminp-fc_license_key .fc-license-key__field-wrap {
+	display: inline-flex;
+	align-items: center;
+	gap: .5em;
+	flex-wrap: wrap;
+}
+
+
+
+.forminp-fc_license_key .fc-license-key__clear {
+	vertical-align: middle;
+}
+
+
+
 .forminp-fc_license_key .fc-license-key__status-label--active {
 	color: $success-color;
 }

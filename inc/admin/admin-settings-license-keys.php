@@ -66,14 +66,15 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_settings_group( $settings, $current_section ) {
-		// Bail if license keys group already exists
-		if ( apply_filters( 'fc_admin_license_keys_group_exists', false ) ) { return $settings; }
-
 		// Bail if not on correct section
 		if ( 'license_keys' !== $current_section ) { return $settings; }
 
-		// Set license keys group as existent so it won't be loaded again
-		add_filter( 'fc_admin_license_keys_group_exists', '__return_true', 10 );
+		// Bail if license keys group already added in this settings array
+		foreach ( $settings as $setting ) {
+			if ( isset( $setting['id'], $setting['type'] ) && 'fc_license_keys' === $setting['id'] && 'title' === $setting['type'] ) {
+				return $settings;
+			}
+		}
 
 		$settings_new = array(
 			array(

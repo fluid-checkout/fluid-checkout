@@ -206,6 +206,93 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
+		 * Whether a value looks like a masked license key (only last chunk legible).
+		 *
+		 * @param string $value Candidate value.
+		 */
+		public static function looks_like_masked_license_key( $value ) {
+			return (bool) preg_match( '/(^|[^A-Z0-9])XXXX([^A-Z0-9]|$)/i', (string) $value );
+		}
+
+
+
+		/**
+		 * Mask a license key so only the last chunk remains legible.
+		 *
+		 * @param string $license_key Raw license key.
+		 */
+		public static function mask_license_key( $license_key ) {
+			$key = strtoupper( trim( (string) $license_key ) );
+
+			if ( '' === $key ) {
+				return '';
+			}
+
+			if ( self::looks_like_masked_license_key( $key ) || self::looks_like_license_key_hash( $key ) ) {
+				return $key;
+			}
+
+			$separator = '';
+			if ( false !== strpos( $key, '-' ) ) {
+				$separator = '-';
+			} elseif ( false !== strpos( $key, '_' ) ) {
+				$separator = '_';
+			}
+
+			if ( '' === $separator ) {
+				$length = strlen( $key );
+
+				if ( $length <= 4 ) {
+					return $key;
+				}
+
+				return str_repeat( 'X', $length - 4 ) . substr( $key, -4 );
+			}
+
+			$parts = explode( $separator, $key );
+			$last  = array_pop( $parts );
+
+			if ( empty( $parts ) ) {
+				return $key;
+			}
+
+			$masked_parts = array_fill( 0, count( $parts ), 'XXXX' );
+			$masked_parts[] = $last;
+
+			return implode( $separator, $masked_parts );
+		}
+
+
+
+		/**
+		 * Persist hashed and masked license key options (never store raw keys).
+		 *
+		 * @param array  $config       Parsed client config.
+		 * @param string $license_key  Raw license key to hash and mask.
+		 */
+		public static function persist_license_key_storage( $config, $license_key ) {
+			$license_key = trim( (string) $license_key );
+
+			// Bail if empty, already masked, or already a hash — nothing safe to persist from this value.
+			if ( '' === $license_key || self::looks_like_masked_license_key( $license_key ) || self::looks_like_license_key_hash( $license_key ) ) {
+				return;
+			}
+
+			$hash   = self::hash_license_key( $license_key );
+			$masked = self::mask_license_key( $license_key );
+
+			if ( ! empty( $config['license_key_hash_option'] ) ) {
+				update_option( $config['license_key_hash_option'], $hash, false );
+			}
+
+			if ( ! empty( $config['license_key_option'] ) ) {
+				update_option( $config['license_key_option'], $masked, false );
+			}
+		}
+
+
+
+		/**
 		 * Get the stored license key hash for a plugin config.
 		 *
 		 * @param array $config Parsed client config.
@@ -225,28 +312,38 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		/**
 		 * Resolve the license key hash to use for API paths and package URLs.
 		 *
-		 * Prefers the stored hash option; otherwise hashes an in-memory raw key.
+		 * Prefers an in-memory raw key when present (including when it differs from the
+		 * stored hash, e.g. a newly entered key on settings save). Masked values are
+		 * ignored so status lookups use the stored hash. Otherwise uses the stored hash.
 		 *
 		 * @param array $config Parsed client config.
 		 */
 		public static function resolve_license_key_hash( $config ) {
-			$hash = self::get_stored_license_key_hash( $config );
+			$stored_hash = self::get_stored_license_key_hash( $config );
 
-			if ( ! empty( $hash ) ) {
-				return $hash;
+			if ( ! empty( $config['license_key'] ) ) {
+				$license_key = (string) $config['license_key'];
+
+				// Masked display values are not hashable for API use — prefer stored hash.
+				if ( ! self::looks_like_masked_license_key( $license_key ) ) {
+					if ( self::looks_like_license_key_hash( $license_key ) ) {
+						return strtolower( $license_key );
+					}
+
+					$from_key = self::hash_license_key( $license_key );
+
+					// Prefer the in-memory key when it differs from the stored hash (new key entered).
+					if ( empty( $stored_hash ) || $from_key !== $stored_hash ) {
+						return $from_key;
+					}
+				}
 			}
 
-			if ( empty( $config['license_key'] ) ) {
-				return '';
+			if ( ! empty( $stored_hash ) ) {
+				return $stored_hash;
 			}
 
-			$license_key = (string) $config['license_key'];
-
-			if ( self::looks_like_license_key_hash( $license_key ) ) {
-				return strtolower( $license_key );
-			}
-
-			return self::hash_license_key( $license_key );
+			return '';
 		}
 
 
@@ -265,6 +362,28 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$domain = is_string( $domain ) ? $domain : '';
 
 			delete_transient( 'fc_lcs_license_active_' . md5( $license_key_hash . '|' . $domain ) );
+		}
+
+
+
+		/**
+		 * Clear the stored license key hash and its activation status cache.
+		 *
+		 * Used when a different raw license key is saved so status and activation
+		 * no longer follow the previous key.
+		 *
+		 * @param array $config Parsed client config.
+		 */
+		public static function clear_stored_license_key_hash( $config ) {
+			$stored_hash = self::get_stored_license_key_hash( $config );
+
+			if ( ! empty( $stored_hash ) ) {
+				self::invalidate_license_activation_cache( $stored_hash );
+			}
+
+			if ( ! empty( $config['license_key_hash_option'] ) ) {
+				delete_option( $config['license_key_hash_option'] );
+			}
 		}
 
 
@@ -703,6 +822,13 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return $error_response;
 			}
 
+			if ( self::looks_like_masked_license_key( $raw_license_key ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fc_lcs_license_key_masked_not_allowed';
+				$error_response->message = 'Masked license keys are not allowed for activation. Provide the raw license key.';
+				return $error_response;
+			}
+
 			$api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
 			$url     = $api_url . '/wp-json/fc-licenses/v1/licenses/activate/' . rawurlencode( $raw_license_key );
 
@@ -712,21 +838,20 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				$data = json_decode( $response );
 
 				if ( self::is_own_license_data_response( $data ) ) {
+					self::persist_license_key_storage( $config, $raw_license_key );
+
 					$hash = self::hash_license_key( $raw_license_key );
-
-					if ( ! empty( $config['license_key_hash_option'] ) ) {
-						update_option( $config['license_key_hash_option'], $hash, false );
-					}
-
-					if ( ! empty( $config['license_key_option'] ) ) {
-						delete_option( $config['license_key_option'] );
-					}
 
 					if ( ! empty( $config['activate_option'] ) ) {
 						delete_option( $config['activate_option'] );
 					}
 
 					self::invalidate_license_activation_cache( $hash );
+
+					$domain    = wp_parse_url( home_url(), PHP_URL_HOST );
+					$domain    = is_string( $domain ) ? $domain : '';
+					$cache_key = 'fc_lcs_license_active_' . md5( $hash . '|' . $domain );
+					set_transient( $cache_key, 1, DAY_IN_SECONDS );
 
 					return $data;
 				}
@@ -1514,7 +1639,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 						'active'      => is_plugin_active( $plugin_file ),
 					);
 
-					self::maybe_add_own_plugin_license_status_row( $plugin_row, $plugin_slug, $api_url );
+					self::maybe_add_own_plugin_license_hash_row( $plugin_row, $plugin_slug, $api_url );
 					$plugins[] = $plugin_row;
 				}
 			}
@@ -1900,10 +2025,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 							'active'      => $plugin['active'],
 						);
 
-						if ( array_key_exists( 'license_status', $plugin ) ) {
-							$plugin_minimal['license_status'] = $plugin['license_status'];
-						}
-
 						if ( array_key_exists( 'license_key_hash', $plugin ) && ! empty( $plugin['license_key_hash'] ) ) {
 							$plugin_minimal['license_key_hash'] = $plugin['license_key_hash'];
 						}
@@ -2049,13 +2170,15 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Attach license fields to an own plugin row when applicable.
+		 * Attach the license key hash to an own plugin row when applicable.
+		 *
+		 * License validity is determined server-side from the hash and activations.
 		 *
 		 * @param array       $plugin_row  Plugin payload row.
 		 * @param string      $plugin_slug Plugin folder slug.
 		 * @param string|null $api_url     Remote API base URL from the consuming plugin.
 		 */
-		private static function maybe_add_own_plugin_license_status_row( &$plugin_row, $plugin_slug, $api_url = null ) {
+		private static function maybe_add_own_plugin_license_hash_row( &$plugin_row, $plugin_slug, $api_url = null ) {
 			$plugins_map = self::get_own_plugins_option_map( $api_url );
 
 			if ( ! array_key_exists( $plugin_slug, $plugins_map ) ) {
@@ -2065,63 +2188,21 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			$plugin_options = $plugins_map[ $plugin_slug ];
 
 			// Bail if this own plugin has no license options (e.g. Lite)
-			if ( empty( $plugin_options['license_key_option'] ) || empty( $plugin_options['license_key_hash_option'] ) || empty( $plugin_options['license_activated_option'] ) ) {
+			if ( empty( $plugin_options['license_key_option'] ) || empty( $plugin_options['license_key_hash_option'] ) ) {
 				return;
 			}
 
-			$license_key   = get_option( $plugin_options['license_key_option'], '' );
-			$license_hash  = get_option( $plugin_options['license_key_hash_option'], '' );
-			$activated_opt = get_option( $plugin_options['license_activated_option'], '' );
+			$license_key  = get_option( $plugin_options['license_key_option'], '' );
+			$license_hash = get_option( $plugin_options['license_key_hash_option'], '' );
 
-			$license_status = self::get_own_plugin_license_status(
-				$plugin_slug,
-				$license_key,
-				$license_hash,
-				$activated_opt
-			);
-
-			$plugin_row['license_status'] = $license_status;
-
-			// Prefer stored hash; otherwise derive from plaintext key
+			// Prefer stored hash; otherwise derive from plaintext key (never hash masked display values).
 			if ( ! empty( $license_hash ) && is_string( $license_hash ) ) {
 				$plugin_row['license_key_hash'] = $license_hash;
-			} elseif ( ! empty( $license_key ) ) {
+			} elseif ( ! empty( $license_key ) && ! self::looks_like_masked_license_key( $license_key ) && ! self::looks_like_license_key_hash( $license_key ) ) {
 				$plugin_row['license_key_hash'] = self::hash_license_key( $license_key );
+			} elseif ( ! empty( $license_key ) && self::looks_like_license_key_hash( $license_key ) ) {
+				$plugin_row['license_key_hash'] = strtolower( (string) $license_key );
 			}
-		}
-
-
-
-		/**
-		 * Resolve license status for an own plugin.
-		 *
-		 * Considers legacy activated option and/or live get_license_key_details via is_license_activated().
-		 *
-		 * @param string $plugin_slug            Plugin folder slug.
-		 * @param string $license_key            License key option value.
-		 * @param string $license_hash           License key hash option value.
-		 * @param string $activated_option_value Activation option value.
-		 */
-		private static function get_own_plugin_license_status( $plugin_slug, $license_key, $license_hash, $activated_option_value ) {
-			$key_present = ! empty( $license_key ) || ! empty( $license_hash );
-
-			if ( ! $key_present ) {
-				return 'missing';
-			}
-
-			if ( 'yes' === $activated_option_value ) {
-				return 'valid';
-			}
-
-			if ( self::is_license_activated( $plugin_slug ) ) {
-				return 'valid';
-			}
-
-			if ( in_array( $activated_option_value, array( 'no', '', null ), true ) && empty( $license_hash ) ) {
-				return 'invalid';
-			}
-
-			return 'unknown';
 		}
 
 

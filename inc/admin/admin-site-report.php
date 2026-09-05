@@ -125,7 +125,7 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 		}
 
 		// Build payload including local/dev domains so the JSON preview is always inspectable.
-		$payload = FC_Licenses_Client::build_site_report_payload( $groups );
+		$payload = FC_Licenses_Client::build_site_report_payload( $groups, null, self::FC_LICENSES_API_URL );
 
 		if ( empty( $payload ) ) {
 			wp_send_json_error(

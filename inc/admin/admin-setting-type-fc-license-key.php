@@ -21,6 +21,23 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 	public function hooks() {
 		// Field types
 		add_action( 'woocommerce_admin_field_fc_license_key', array( $this, 'output_field' ), 10 );
+
+		// Scripts
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 10 );
+	}
+
+
+
+	/**
+	 * Register the setting type scripts.
+	 *
+	 * @param string $hook Current admin page hook.
+	 */
+	public function register_scripts( $hook ) {
+		// Bail if not on WooCommerce Settings
+		if ( 'woocommerce_page_wc-settings' !== $hook ) { return; }
+
+		wp_register_script( 'fc-admin-license-key', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-license-key' ), array(), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 
@@ -31,6 +48,9 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
+		// Enqueue assets
+		wp_enqueue_script( 'fc-admin-license-key' );
+
 		// Custom attribute handling.
 		$custom_attributes = array();
 		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
@@ -46,13 +66,11 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 
 		// Get option value.
 		$option_value = $value['value'];
+		$has_saved_value = ! empty( $option_value );
 
 		// Get status transients.
 		$license_status_transient_id = $value[ 'id' ] . '_status';
 		$license_status = get_transient( $license_status_transient_id );
-
-		// Get license key value from the database
-		$license_key_saved = FluidCheckout_Settings::instance()->get_option( $value[ 'id' ] );
 
 		$plugin_config = array();
 		if ( ! empty( $value['plugin_slug'] ) && class_exists( 'FC_Licenses_Client' ) ) {
@@ -64,13 +82,40 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 			$license_key_hash = get_option( $plugin_config['license_key_hash_option'], '' );
 		}
 
-		// Cache identity: prefer entered key, else stored hash
-		$status_cache_token = ! empty( $option_value ) ? $option_value : (string) $license_key_hash;
+		// Prefer hash as status identity; fall back to raw option value (never hash masked display values).
+		$status_cache_token = '';
+		if ( ! empty( $license_key_hash ) ) {
+			$status_cache_token = (string) $license_key_hash;
+		} elseif ( ! empty( $option_value ) && class_exists( 'FC_Licenses_Client' ) && method_exists( 'FC_Licenses_Client', 'looks_like_masked_license_key' ) && ! FC_Licenses_Client::looks_like_masked_license_key( $option_value ) && ! FC_Licenses_Client::looks_like_license_key_hash( $option_value ) ) {
+			$status_cache_token = (string) $option_value;
+		}
+
+		// Whether cached status still applies to the current field value.
+		$status_matches = false;
+		if ( is_array( $license_status ) && ! empty( $status_cache_token ) ) {
+			$cached_token   = isset( $license_status['license_key'] ) ? (string) $license_status['license_key'] : '';
+			$status_matches = ( $status_cache_token === $cached_token );
+
+			if ( ! $status_matches && class_exists( 'FC_Licenses_Client' ) && method_exists( 'FC_Licenses_Client', 'hash_license_key' ) && ! FC_Licenses_Client::looks_like_license_key_hash( $status_cache_token ) ) {
+				$status_matches = ( FC_Licenses_Client::hash_license_key( $status_cache_token ) === $cached_token );
+			}
+
+			// Do not keep a cached error when a hash is available — refetch so a successful
+			// server activation is not stuck behind a prior "key not found" lookup.
+			if ( $status_matches && ! empty( $license_key_hash ) && isset( $license_status['status'] ) && 'error' === $license_status['status'] ) {
+				$status_matches = false;
+			}
+
+			if ( ! $status_matches ) {
+				$license_status = false;
+				delete_transient( $license_status_transient_id );
+			}
+		}
 
 		// Maybe call license API and update license status transient.
 		if (
 			! empty( $status_cache_token )
-			&& ( ! is_array( $license_status ) || $status_cache_token !== $license_status[ 'license_key' ] )
+			&& ! $status_matches
 			&& ! empty( $value['plugin_slug'] )
 			&& class_exists( 'FC_Licenses_Client' )
 			&& method_exists( 'FC_Licenses_Client', 'get_license_key_details' )
@@ -78,7 +123,7 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 		) {
 			$config = $plugin_config;
 
-			if ( ! empty( $option_value ) ) {
+			if ( ! empty( $option_value ) && method_exists( 'FC_Licenses_Client', 'looks_like_masked_license_key' ) && ! FC_Licenses_Client::looks_like_masked_license_key( $option_value ) ) {
 				$config['license_key'] = $option_value;
 			}
 
@@ -112,16 +157,22 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 
 			switch ( $license_status[ 'status' ] ) {
 				case 'active':
-					$active_until_date = date( 'Y-m-d', $license_status[ 'expiration' ] - ( 60 * 60 * 24 ) ); // Expiration date - 1 day.
-					// translators: %s: License key expiration date.
-					$license_key_status_text = sprintf( __( 'Valid until %s.', 'fluid-checkout' ), $active_until_date );
+					if ( ! empty( $license_status[ 'expiration' ] ) ) {
+						$active_until_date = date( 'Y-m-d', $license_status[ 'expiration' ] - ( 60 * 60 * 24 ) ); // Expiration date - 1 day.
+						// translators: %s: License key expiration date.
+						$license_key_status_text = sprintf( __( 'Valid until %s.', 'fluid-checkout' ), $active_until_date );
+					} else {
+						$license_key_status_text = __( 'License key active.', 'fluid-checkout' );
+					}
 					$license_key_status_class = 'fc-license-key__status-label--active';
 					$license_action_html = '';
 					break;
 				case 'expired':
-					$license_key_expiration_date = date( 'Y-m-d', $license_status[ 'expiration' ] );
+					$license_key_expiration_date = ! empty( $license_status[ 'expiration' ] ) ? date( 'Y-m-d', $license_status[ 'expiration' ] ) : '';
 					// translators: %s: License key expiration date.
-					$license_key_status_text = sprintf( __( 'Expired on %s.', 'fluid-checkout' ), $license_key_expiration_date );
+					$license_key_status_text = $license_key_expiration_date
+						? sprintf( __( 'Expired on %s.', 'fluid-checkout' ), $license_key_expiration_date )
+						: __( 'License key expired.', 'fluid-checkout' );
 					$license_key_status_class = 'fc-license-key__status-label--expired';
 					$license_action_html = __( '<a href="https://fluidcheckout.com/account/" target="_blank">Log in to your account</a> to renew your license key and continue to receive updates and support.', 'fluid-checkout' );
 					break;
@@ -142,21 +193,67 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 			</th>
 			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-				<input
-					name="<?php echo esc_attr( $value['field_name'] ); ?>"
-					id="<?php echo esc_attr( $value['id'] ); ?>"
-					type="text"
-					style="<?php echo esc_attr( $value['css'] ); ?>"
-					value="<?php echo esc_attr( $option_value ); ?>"
-					class="<?php echo esc_attr( $value['class'] ); ?>"
-					placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
-					<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
-					/><?php echo esc_html( $value['suffix'] ); ?> <?php echo $description; // WPCS: XSS ok. ?>
+				<span class="fc-license-key__field-wrap">
+					<?php if ( $has_saved_value ) : ?>
+						<input type="hidden" class="fc-license-key__preserved-value" name="<?php echo esc_attr( $value['field_name'] ); ?>" value="<?php echo esc_attr( $option_value ); ?>" />
+					<?php endif; ?>
+					<input
+						name="<?php echo esc_attr( $value['field_name'] ); ?>"
+						id="<?php echo esc_attr( $value['id'] ); ?>"
+						type="text"
+						style="<?php echo esc_attr( $value['css'] ); ?>"
+						value="<?php echo esc_attr( $option_value ); ?>"
+						class="<?php echo esc_attr( trim( ( isset( $value['class'] ) ? $value['class'] : '' ) . ' fc-license-key__input' ) ); ?>"
+						placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
+						<?php disabled( $has_saved_value ); ?>
+						<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
+						/>
+					<?php if ( $has_saved_value ) : ?>
+						<button type="button" class="button-link fc-license-key__clear"><?php echo esc_html( __( 'Clear', 'fluid-checkout' ) ); ?></button>
+					<?php endif; ?>
+				</span><?php echo esc_html( $value['suffix'] ); ?> <?php echo $description; // WPCS: XSS ok. ?>
 
 					<p class="fc-license-key__status"><strong class="<?php echo esc_attr( $license_key_status_class ); ?>"><?php echo wp_kses_post( $license_key_status_text ); ?></strong> <?php echo wp_kses_post( $license_action_html ); ?></p>
 			</td>
 		</tr>
 		<?php
+	}
+
+
+
+	/**
+	 * Store license field status after an activation attempt on settings save.
+	 *
+	 * @param string $option_id         Setting field option ID.
+	 * @param string $license_key       License key submitted for activation.
+	 * @param mixed  $activation_result Result from FC_Licenses_Client::activate_license_key, or an error-like object.
+	 */
+	public function set_status_from_activation_result( $option_id, $license_key, $activation_result ) {
+		$transient_id = $option_id . '_status';
+
+		// Prefer hash as cache identity so it matches the field after raw keys are replaced with masked values.
+		$cache_token = $license_key;
+		if ( class_exists( 'FC_Licenses_Client' ) && method_exists( 'FC_Licenses_Client', 'hash_license_key' ) && ! FC_Licenses_Client::looks_like_masked_license_key( $license_key ) && ! FC_Licenses_Client::looks_like_license_key_hash( $license_key ) && ! empty( $license_key ) ) {
+			$cache_token = FC_Licenses_Client::hash_license_key( $license_key );
+		}
+
+		// Successful activation — store field status from the activation response (shows "Valid until").
+		if ( class_exists( 'FC_Licenses_Client' ) && FC_Licenses_Client::is_own_license_data_response( $activation_result ) ) {
+			$this->maybe_set_license_status_transient( $cache_token, $activation_result, $transient_id );
+			return;
+		}
+
+		$message = __( 'Error while activating the license key. Plugin updates might not be available until the license key is validated.', 'fluid-checkout' );
+
+		if ( is_object( $activation_result ) && ! empty( $activation_result->message ) ) {
+			$message = $activation_result->message;
+		}
+
+		$error_response          = new stdClass();
+		$error_response->code    = is_object( $activation_result ) && ! empty( $activation_result->code ) ? $activation_result->code : 'fc_license_activation_error';
+		$error_response->message = $message;
+
+		$this->maybe_set_license_status_transient( $cache_token, $error_response, $transient_id );
 	}
 
 

@@ -161,7 +161,7 @@ class FluidCheckout {
 			return;
 		}
 
-		add_filter( 'fc_licenses_own_plugins', array( __CLASS__, 'set_own_plugins_license_options' ) );
+		add_filter( 'fc_licenses_own_plugins', array( __CLASS__, 'set_own_plugins_license_options' ), 10, 2 );
 	}
 
 
@@ -173,8 +173,8 @@ class FluidCheckout {
 	 * @param string|null $api_url Remote API base URL from the consuming plugin.
 	 */
 	public static function set_own_plugins_license_options( $plugins, $api_url = null ) {
-		// Bail if not updating plugins for the same API URL.
-		if ( $api_url !== self::FC_LICENSES_API_URL ) { return $plugins; }
+		// Bail if a specific API URL was requested and it is not this plugin's licenses API.
+		if ( null !== $api_url && ! self::is_own_licenses_api_url( $api_url ) ) { return $plugins; }
 
 		// Define own plugins license options.
 		$own_plugins = array(
@@ -186,37 +186,55 @@ class FluidCheckout {
 			),
 			'fluid-checkout-pro' => array(
 				'activation_time_option' => 'fc_pro_plugin_activation_time',
-				'license_key_option' => 'fc_pro_plugin_license_key',
-				'license_key_hash_option' => 'fc_pro_plugin_license_key_hash',
-				'license_activated_option' => 'fc_pro_plugin_license_activated',
+				'license_key_option' => 'fc_pro_license_key',
+				'license_key_hash_option' => 'fc_pro_license_key_hash',
+				'license_activated_option' => 'fc_pro_license_key_activated',
 			),
 			'fc-address-book' => array(
 				'activation_time_option' => 'fc_adb_plugin_activation_time',
-				'license_key_option' => 'fc_adb_plugin_license_key',
-				'license_key_hash_option' => 'fc_adb_plugin_license_key_hash',
-				'license_activated_option' => 'fc_adb_plugin_license_activated',
+				'license_key_option' => 'fc_adb_license_key',
+				'license_key_hash_option' => 'fc_adb_license_key_hash',
+				'license_activated_option' => 'fc_adb_license_key_activated',
 			),
 			'fc-vat-assistant' => array(
 				'activation_time_option' => 'fc_vat_plugin_activation_time',
-				'license_key_option' => 'fc_vat_plugin_license_key',
-				'license_key_hash_option' => 'fc_vat_plugin_license_key_hash',
-				'license_activated_option' => 'fc_vat_plugin_license_activated',
+				'license_key_option' => 'fc_vat_license_key',
+				'license_key_hash_option' => 'fc_vat_license_key_hash',
+				'license_activated_option' => 'fc_vat_license_key_activated',
 			),
 			'fc-google-address-autocomplete' => array(
 				'activation_time_option' => 'fc_gaa_plugin_activation_time',
-				'license_key_option' => 'fc_gaa_plugin_license_key',
-				'license_key_hash_option' => 'fc_gaa_plugin_license_key_hash',
-				'license_activated_option' => 'fc_gaa_plugin_license_activated',
+				'license_key_option' => 'fc_gaa_license_key',
+				'license_key_hash_option' => 'fc_gaa_license_key_hash',
+				'license_activated_option' => 'fc_gaa_license_key_activated',
 			),
 			'fc-conversion-kit' => array(
 				'activation_time_option' => 'fc_kit_plugin_activation_time',
-				'license_key_option' => 'fc_kit_plugin_license_key',
-				'license_key_hash_option' => 'fc_kit_plugin_license_key_hash',
-				'license_activated_option' => 'fc_kit_plugin_license_activated',
+				'license_key_option' => 'fc_kit_license_key',
+				'license_key_hash_option' => 'fc_kit_license_key_hash',
+				'license_activated_option' => 'fc_kit_license_key_activated',
 			),
 		);
 
 		return self::merge_own_plugins_license_options( $plugins, $own_plugins );
+	}
+
+	/**
+	 * Whether an API URL belongs to this plugin's licenses API (canonical or filtered).
+	 *
+	 * @param string $api_url Remote API base URL.
+	 */
+	private static function is_own_licenses_api_url( $api_url ) {
+		$api_url   = untrailingslashit( (string) $api_url );
+		$canonical = untrailingslashit( self::FC_LICENSES_API_URL );
+
+		if ( $api_url === $canonical ) {
+			return true;
+		}
+
+		$filtered = untrailingslashit( (string) apply_filters( 'fc_licenses_api_url', self::FC_LICENSES_API_URL, self::$plugin_slug ) );
+
+		return $api_url === $filtered;
 	}
 
 	/**
