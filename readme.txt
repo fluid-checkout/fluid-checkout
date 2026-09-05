@@ -372,6 +372,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Site report send failures are logged to WooCommerce logs (source: `fc-site-report`).
 * Added: Optional/Opt-in site environment reports sent to Fluid Checkout to help improve compatibility and support. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Fixed: License key field showed a "key not found" error when no license key was saved.
+* Fixed: A saved license key that no longer exists on our server is now cleared, so a new license key can be entered.
 
 = 4.2.7 - 2026-08-19 =
 

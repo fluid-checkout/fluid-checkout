@@ -82,6 +82,12 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 			$license_key_hash = get_option( $plugin_config['license_key_hash_option'], '' );
 		}
 
+		// No license key saved: drop leftover license data so the field shows its empty state.
+		if ( empty( $option_value ) && ! empty( $license_key_hash ) && method_exists( 'FC_Licenses_Client', 'clear_license_key_storage' ) ) {
+			FC_Licenses_Client::clear_license_key_storage( $plugin_config );
+			$license_key_hash = '';
+		}
+
 		// Prefer hash as status identity; fall back to raw option value (never hash masked display values).
 		$status_cache_token = '';
 		if ( ! empty( $license_key_hash ) ) {
@@ -133,15 +139,40 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 				$config
 			);
 
-			$license_status = $this->maybe_set_license_status_transient( $status_cache_token, $api_result, $license_status_transient_id );
+			// Stored license key is no longer on the license server: clear it so a new key can be entered.
+			// Only a lookup made with the stored hash can invalidate it.
+			if (
+				method_exists( 'FC_Licenses_Client', 'is_license_not_found_response' )
+				&& FC_Licenses_Client::is_license_not_found_response( $api_result )
+				&& FC_Licenses_Client::is_stored_license_key_hash_in_use( $config )
+			) {
+				FC_Licenses_Client::clear_license_key_storage( $plugin_config );
+				delete_transient( $license_status_transient_id );
+
+				$option_value     = '';
+				$has_saved_value  = false;
+				$license_key_hash = '';
+				$license_status   = array(
+					'license_key' => '',
+					'status' => 'empty',
+				);
+			}
+			else {
+				$license_status = $this->maybe_set_license_status_transient( $status_cache_token, $api_result, $license_status_transient_id );
+			}
 		}
 		elseif ( empty( $option_value ) && empty( $license_key_hash ) ) {
-			$license_status = array(
-				'license_key' => '',
-				'status' => 'empty',
-			);
-			// Delete transient when license key is empty.
-			delete_transient( $license_status_transient_id );
+			// Keep a status stored for the empty field, such as a rejected license key, so the message is not lost.
+			$has_empty_field_status = is_array( $license_status ) && isset( $license_status[ 'license_key' ] ) && '' === (string) $license_status[ 'license_key' ];
+
+			if ( ! $has_empty_field_status ) {
+				$license_status = array(
+					'license_key' => '',
+					'status' => 'empty',
+				);
+				// Delete transient when license key is empty.
+				delete_transient( $license_status_transient_id );
+			}
 		}
 
 		// Determine default license key status.
@@ -269,8 +300,9 @@ class FluidCheckout_Admin_SettingType_LicenseKey extends FluidCheckout {
 		$license_key_status = 'error';
 		$license_key_expiration_timestamp = null;
 
-		// Determine initial transient expiration.
-		$transient_expiration = 60 * 60 * 24; // 24 hours.
+		// Determine initial transient expiration. A status not tied to a stored license key,
+		// such as a rejected key, is short-lived feedback for the settings page.
+		$transient_expiration = '' === (string) $option_value ? 60 * 15 : 60 * 60 * 24; // 15 minutes or 24 hours.
 
 		// Process license key status from API response.
 		if (

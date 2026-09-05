@@ -386,6 +386,62 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			}
 		}
 
+		/**
+		 * Clear all stored license key data for a plugin config.
+		 *
+		 * Used when the license server does not recognize the stored license key hash,
+		 * so the settings field returns to its empty state and a key can be entered again.
+		 *
+		 * @param array $config Parsed client config.
+		 */
+		public static function clear_license_key_storage( $config ) {
+			self::clear_stored_license_key_hash( $config );
+
+			if ( ! empty( $config['license_key_option'] ) ) {
+				delete_option( $config['license_key_option'] );
+			}
+
+			if ( ! empty( $config['activate_option'] ) ) {
+				delete_option( $config['activate_option'] );
+			}
+		}
+
+
+
+		/**
+		 * Whether a license API response means the license key does not exist on the server.
+		 *
+		 * Connection and permission errors are not included: only a definitive
+		 * "not found" result invalidates a stored license key.
+		 *
+		 * @param mixed $response Decoded API response.
+		 */
+		public static function is_license_not_found_response( $response ) {
+			if ( ! is_object( $response ) || empty( $response->code ) ) {
+				return false;
+			}
+
+			return 'fc_lcs_license_not_found' === (string) $response->code;
+		}
+
+		/**
+		 * Whether API requests for a config resolve to the stored license key hash.
+		 *
+		 * A "not found" result only invalidates the stored license key when the request
+		 * was made with the stored hash, and not with a license key held in memory.
+		 *
+		 * @param array $config Parsed client config.
+		 */
+		public static function is_stored_license_key_hash_in_use( $config ) {
+			$stored_hash = self::get_stored_license_key_hash( $config );
+
+			if ( empty( $stored_hash ) ) {
+				return false;
+			}
+
+			return self::resolve_license_key_hash( $config ) === $stored_hash;
+		}
+
 
 
 		/**
