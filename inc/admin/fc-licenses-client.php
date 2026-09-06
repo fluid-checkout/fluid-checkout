@@ -144,6 +144,15 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
+		 * Get registered plugin slugs that have licenses client configs.
+		 */
+		public static function get_registered_plugin_slugs() {
+			return array_keys( self::$plugin_configs );
+		}
+
+
+
+		/**
 		 * Get plugin context for update operations.
 		 *
 		 * @param   string  $plugin_slug  Plugin slug.
@@ -349,7 +358,35 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Invalidate license activation status cache.
+		 * Shared cache key for detailed license status by hash + site domain.
+		 *
+		 * @param string $license_key_hash License key hash.
+		 */
+		private static function get_license_status_details_cache_key( $license_key_hash ) {
+			$domain = wp_parse_url( home_url(), PHP_URL_HOST );
+			$domain = is_string( $domain ) ? $domain : '';
+
+			return 'fc_lcs_license_status_' . md5( (string) $license_key_hash . '|' . $domain );
+		}
+
+
+
+		/**
+		 * Shared cache key for cheap license-active boolean by hash + site domain.
+		 *
+		 * @param string $license_key_hash License key hash.
+		 */
+		private static function get_license_active_cache_key( $license_key_hash ) {
+			$domain = wp_parse_url( home_url(), PHP_URL_HOST );
+			$domain = is_string( $domain ) ? $domain : '';
+
+			return 'fc_lcs_license_active_' . md5( (string) $license_key_hash . '|' . $domain );
+		}
+
+
+
+		/**
+		 * Invalidate license activation and detailed status caches for a hash.
 		 *
 		 * @param string $license_key_hash License key hash.
 		 */
@@ -358,10 +395,75 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return;
 			}
 
-			$domain = wp_parse_url( home_url(), PHP_URL_HOST );
-			$domain = is_string( $domain ) ? $domain : '';
+			delete_transient( self::get_license_active_cache_key( $license_key_hash ) );
+			delete_transient( self::get_license_status_details_cache_key( $license_key_hash ) );
+		}
 
-			delete_transient( 'fc_lcs_license_active_' . md5( $license_key_hash . '|' . $domain ) );
+
+
+		/**
+		 * Store detailed license API data for a hash (1-day TTL).
+		 *
+		 * @param string $license_key_hash License key hash.
+		 * @param mixed  $details         Decoded license data object or array.
+		 */
+		public static function set_license_status_details_cache( $license_key_hash, $details ) {
+			if ( empty( $license_key_hash ) || empty( $details ) ) {
+				return;
+			}
+
+			set_transient( self::get_license_status_details_cache_key( $license_key_hash ), $details, DAY_IN_SECONDS );
+		}
+
+
+
+		/**
+		 * Get cached detailed license API data for a hash, or false when missing/stale.
+		 *
+		 * @param string $license_key_hash License key hash.
+		 */
+		public static function get_license_status_details_cache( $license_key_hash ) {
+			if ( empty( $license_key_hash ) ) {
+				return false;
+			}
+
+			return get_transient( self::get_license_status_details_cache_key( $license_key_hash ) );
+		}
+
+
+
+		/**
+		 * Mark a plugin license as activated for cheap admin UI checks.
+		 *
+		 * @param array  $config           Parsed client config.
+		 * @param string $license_key_hash License key hash used for shared caches.
+		 */
+		public static function mark_license_activated( $config, $license_key_hash = '' ) {
+			if ( ! empty( $config['activate_option'] ) ) {
+				update_option( $config['activate_option'], 'yes', false );
+			}
+
+			if ( ! empty( $license_key_hash ) ) {
+				set_transient( self::get_license_active_cache_key( $license_key_hash ), 1, DAY_IN_SECONDS );
+			}
+		}
+
+
+
+		/**
+		 * Clear the activated flag for a plugin (and optional hash caches).
+		 *
+		 * @param array  $config           Parsed client config.
+		 * @param string $license_key_hash Optional hash whose caches should be invalidated.
+		 */
+		public static function mark_license_deactivated( $config, $license_key_hash = '' ) {
+			if ( ! empty( $config['activate_option'] ) ) {
+				delete_option( $config['activate_option'] );
+			}
+
+			if ( ! empty( $license_key_hash ) ) {
+				self::invalidate_license_activation_cache( $license_key_hash );
+			}
 		}
 
 
@@ -384,6 +486,10 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			if ( ! empty( $config['license_key_hash_option'] ) ) {
 				delete_option( $config['license_key_hash_option'] );
 			}
+
+			if ( ! empty( $config['activate_option'] ) ) {
+				delete_option( $config['activate_option'] );
+			}
 		}
 
 		/**
@@ -399,10 +505,6 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 			if ( ! empty( $config['license_key_option'] ) ) {
 				delete_option( $config['license_key_option'] );
-			}
-
-			if ( ! empty( $config['activate_option'] ) ) {
-				delete_option( $config['activate_option'] );
 			}
 		}
 
@@ -460,39 +562,25 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Check whether a plugin license is activated for this site (via get_license_key_details).
+		 * Check whether a plugin license is activated for this site.
+		 *
+		 * Uses the local activate_option for cheap admin UI checks (plugin list links).
+		 * Does not call the remote API on every plugins screen.
 		 *
 		 * @param string $plugin_slug Plugin slug.
 		 */
 		public static function is_license_activated( $plugin_slug ) {
 			$config = self::get_plugin_config( $plugin_slug );
 
-			if ( empty( $config ) || empty( $config['plugin_file'] ) ) {
+			if ( empty( $config ) ) {
 				return false;
 			}
 
-			$hash = self::resolve_license_key_hash( $config );
-
-			if ( empty( $hash ) ) {
-				return false;
+			if ( ! empty( $config['activate_option'] ) ) {
+				return 'yes' === get_option( $config['activate_option'], '' );
 			}
 
-			$domain    = wp_parse_url( home_url(), PHP_URL_HOST );
-			$domain    = is_string( $domain ) ? $domain : '';
-			$cache_key = 'fc_lcs_license_active_' . md5( $hash . '|' . $domain );
-			$cached    = get_transient( $cache_key );
-
-			if ( false !== $cached ) {
-				return (bool) $cached;
-			}
-
-			$config['license_key'] = $hash;
-			$result                = self::get_license_key_details( $plugin_slug, $config['plugin_file'], $config );
-			$is_active             = self::is_own_license_data_response( $result );
-
-			set_transient( $cache_key, $is_active ? 1 : 0, DAY_IN_SECONDS );
-
-			return $is_active;
+			return ! empty( self::get_stored_license_key_hash( $config ) );
 		}
 
 
@@ -816,6 +904,184 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
+		 * Whether a bulk map entry is successful own-API license data.
+		 *
+		 * @param mixed $entry Map entry from activate/status bulk response.
+		 */
+		public static function is_own_license_map_entry_success( $entry ) {
+			if ( is_object( $entry ) ) {
+				return isset( $entry->id ) && ! isset( $entry->code );
+			}
+
+			if ( is_array( $entry ) ) {
+				return isset( $entry['id'] ) && ! isset( $entry['code'] );
+			}
+
+			return false;
+		}
+
+
+
+		/**
+		 * Wrap a bulk map entry as a single-key own-API response (`{ data: … }` or error object).
+		 *
+		 * @param mixed $entry Map entry from activate/status bulk response.
+		 */
+		public static function wrap_license_map_entry_as_response( $entry ) {
+			if ( self::is_own_license_map_entry_success( $entry ) ) {
+				$wrapper       = new \stdClass();
+				$wrapper->data = is_array( $entry ) ? (object) $entry : $entry;
+				return $wrapper;
+			}
+
+			$error_response          = new \stdClass();
+			$error_response->code    = 'fwplm_generic_error';
+			$error_response->message = 'Unknown license API error.';
+
+			if ( is_object( $entry ) ) {
+				if ( ! empty( $entry->code ) ) {
+					$error_response->code = $entry->code;
+				}
+				if ( ! empty( $entry->message ) ) {
+					$error_response->message = $entry->message;
+				}
+			} elseif ( is_array( $entry ) ) {
+				if ( ! empty( $entry['code'] ) ) {
+					$error_response->code = $entry['code'];
+				}
+				if ( ! empty( $entry['message'] ) ) {
+					$error_response->message = $entry['message'];
+				}
+			}
+
+			return $error_response;
+		}
+
+
+
+		/**
+		 * Activate multiple plaintext license keys (bulk-capable POST body).
+		 *
+		 * @param array  $raw_keys Plaintext license keys.
+		 * @param string $api_url  Optional API base URL override.
+		 */
+		public static function activate_license_keys( $raw_keys, $api_url = '', $plugin_slug = null ) {
+			$raw_keys = array_values( array_filter( array_map( 'strval', (array) $raw_keys ) ) );
+
+			if ( empty( $raw_keys ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fwplm_missing_license_key';
+				$error_response->message = 'Missing the license key. Please provide a valid license key and try again.';
+				return $error_response;
+			}
+
+			$api_url = self::normalize_api_url( $api_url, $plugin_slug );
+			$url     = $api_url . '/wp-json/fc-licenses/v1/licenses/activate';
+
+			$response = self::call_api_post(
+				$url,
+				array(
+					'Content-Type' => 'application/json',
+				),
+				array(
+					'body' => wp_json_encode(
+						array(
+							'license_keys' => $raw_keys,
+						)
+					),
+				)
+			);
+
+			if ( $response ) {
+				$data = json_decode( $response );
+
+				if ( is_object( $data ) && isset( $data->data ) ) {
+					return $data;
+				}
+
+				if ( $data && isset( $data->message ) && $data->message ) {
+					$error_response          = new \stdClass();
+					$error_response->code    = isset( $data->code ) ? $data->code : 'fwplm_generic_error';
+					$error_response->message = $data->message;
+					return $error_response;
+				}
+			}
+
+			$error_response          = new \stdClass();
+			$error_response->code    = 'fwplm_rest_connection_error';
+			$error_response->message = sprintf( 'Couldn\'t connect to the license server (%s). Try again later.', $api_url );
+			return $error_response;
+		}
+
+
+
+		/**
+		 * Get license details for multiple hashes (bulk-capable POST body).
+		 *
+		 * @param array  $hashes  License key hashes.
+		 * @param string $api_url Optional API base URL override.
+		 */
+		public static function get_license_keys_details( $hashes, $api_url = '', $plugin_slug = null ) {
+			$normalized = array();
+
+			foreach ( (array) $hashes as $hash ) {
+				$hash = strtolower( trim( (string) $hash ) );
+
+				if ( self::looks_like_license_key_hash( $hash ) ) {
+					$normalized[] = $hash;
+				}
+			}
+
+			$normalized = array_values( array_unique( $normalized ) );
+
+			if ( empty( $normalized ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fwplm_missing_license_key';
+				$error_response->message = 'Missing the license key hash. Activate a license key first.';
+				return $error_response;
+			}
+
+			$api_url = self::normalize_api_url( $api_url, $plugin_slug );
+			$url     = $api_url . '/wp-json/fc-licenses/v1/licenses';
+
+			$response = self::call_api_post(
+				$url,
+				array(
+					'Content-Type' => 'application/json',
+				),
+				array(
+					'body' => wp_json_encode(
+						array(
+							'license_key_hashes' => $normalized,
+						)
+					),
+				)
+			);
+
+			if ( $response ) {
+				$data = json_decode( $response );
+
+				if ( is_object( $data ) && isset( $data->data ) ) {
+					return $data;
+				}
+
+				if ( $data && isset( $data->message ) && $data->message ) {
+					$error_response          = new \stdClass();
+					$error_response->code    = isset( $data->code ) ? $data->code : 'fwplm_generic_error';
+					$error_response->message = $data->message;
+					return $error_response;
+				}
+			}
+
+			$error_response          = new \stdClass();
+			$error_response->code    = 'fwplm_rest_connection_error';
+			$error_response->message = sprintf( 'Couldn\'t connect to the license server (%s). Try again later.', $api_url );
+			return $error_response;
+		}
+
+
+
+		/**
 		 * Get the plugin license key details from the license manager server.
 		 *
 		 * @param   string  $plugin_slug  Plugin slug.
@@ -834,20 +1100,41 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return $error_response;
 			}
 
-			$api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
-			$url     = $api_url . '/wp-json/fc-licenses/v1/licenses/' . rawurlencode( $license_key_hash );
+			$cached = self::get_license_status_details_cache( $license_key_hash );
 
-			$response = self::call_api( $url );
-
-			if ( $response ) {
-				$data = json_decode( $response );
-				return $data;
+			if ( false !== $cached && self::is_own_license_map_entry_success( $cached ) ) {
+				return self::wrap_license_map_entry_as_response( $cached );
 			}
 
-			$error_response          = new \stdClass();
-			$error_response->code    = 'fwplm_rest_connection_error';
-			$error_response->message = sprintf( 'Couldn\'t connect to the license server (%s). Try again later.', $api_url );
-			return $error_response;
+			$bulk = self::get_license_keys_details( array( $license_key_hash ), $config['api_url'], $plugin_slug );
+
+			if ( ! is_object( $bulk ) || ! isset( $bulk->data ) ) {
+				return $bulk;
+			}
+
+			$entry = null;
+
+			if ( is_object( $bulk->data ) && isset( $bulk->data->{$license_key_hash} ) ) {
+				$entry = $bulk->data->{$license_key_hash};
+			} elseif ( is_array( $bulk->data ) && isset( $bulk->data[ $license_key_hash ] ) ) {
+				$entry = $bulk->data[ $license_key_hash ];
+			}
+
+			if ( null === $entry ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fwplm_generic_error';
+				$error_response->message = 'License key details were not returned by the server.';
+				return $error_response;
+			}
+
+			if ( self::is_own_license_map_entry_success( $entry ) ) {
+				self::set_license_status_details_cache( $license_key_hash, $entry );
+				self::mark_license_activated( $config, $license_key_hash );
+			} elseif ( self::is_license_not_found_response( self::wrap_license_map_entry_as_response( $entry ) ) ) {
+				self::mark_license_deactivated( $config, $license_key_hash );
+			}
+
+			return self::wrap_license_map_entry_as_response( $entry );
 		}
 
 
@@ -885,45 +1172,41 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return $error_response;
 			}
 
-			$api_url = self::normalize_api_url( $config['api_url'], $config['plugin_slug'] );
-			$url     = $api_url . '/wp-json/fc-licenses/v1/licenses/activate/' . rawurlencode( $raw_license_key );
+			$hash = self::hash_license_key( $raw_license_key );
+			$bulk = self::activate_license_keys( array( $raw_license_key ), $config['api_url'], $plugin_slug );
 
-			$response = self::call_api_post( $url );
-
-			if ( $response ) {
-				$data = json_decode( $response );
-
-				if ( self::is_own_license_data_response( $data ) ) {
-					self::persist_license_key_storage( $config, $raw_license_key );
-
-					$hash = self::hash_license_key( $raw_license_key );
-
-					if ( ! empty( $config['activate_option'] ) ) {
-						delete_option( $config['activate_option'] );
-					}
-
-					self::invalidate_license_activation_cache( $hash );
-
-					$domain    = wp_parse_url( home_url(), PHP_URL_HOST );
-					$domain    = is_string( $domain ) ? $domain : '';
-					$cache_key = 'fc_lcs_license_active_' . md5( $hash . '|' . $domain );
-					set_transient( $cache_key, 1, DAY_IN_SECONDS );
-
-					return $data;
-				}
-
-				if ( $data && isset( $data->message ) && $data->message ) {
-					$error_response          = new \stdClass();
-					$error_response->code    = isset( $data->code ) ? $data->code : 'fwplm_generic_error';
-					$error_response->message = $data->message;
-					return $error_response;
-				}
+			if ( ! is_object( $bulk ) || ! isset( $bulk->data ) ) {
+				return $bulk;
 			}
 
-			$error_response          = new \stdClass();
-			$error_response->code    = 'fwplm_rest_connection_error';
-			$error_response->message = sprintf( 'Couldn\'t connect to the license server (%s). Try again later.', $api_url );
-			return $error_response;
+			$entry = null;
+
+			if ( is_object( $bulk->data ) && isset( $bulk->data->{$hash} ) ) {
+				$entry = $bulk->data->{$hash};
+			} elseif ( is_array( $bulk->data ) && isset( $bulk->data[ $hash ] ) ) {
+				$entry = $bulk->data[ $hash ];
+			}
+
+			if ( null === $entry ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fwplm_generic_error';
+				$error_response->message = 'License activation result was not returned by the server.';
+				return $error_response;
+			}
+
+			$response = self::wrap_license_map_entry_as_response( $entry );
+
+			if ( self::is_own_license_data_response( $response ) ) {
+				self::persist_license_key_storage( $config, $raw_license_key );
+				self::set_license_status_details_cache( $hash, $entry );
+				self::mark_license_activated( $config, $hash );
+
+				return $response;
+			}
+
+			self::mark_license_deactivated( $config, $hash );
+
+			return $response;
 		}
 
 

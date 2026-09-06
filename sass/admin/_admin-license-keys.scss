@@ -10,8 +10,9 @@
 
 
 
-.forminp-fc_license_key .fc-license-key__clear {
-	vertical-align: middle;
+.forminp-fc_license_key .fc-license-key__activate.is-busy {
+	opacity: .7;
+	pointer-events: none;
 }
 
 

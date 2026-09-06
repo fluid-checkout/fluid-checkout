@@ -356,6 +356,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Temporary license activation errors are not kept after refreshing the License keys page.
+* Improved: License keys are activated with a per-field Activate button instead of saving the settings page.
+* Improved: License status on the License keys page refreshes in bulk and is cached for one day.
+* Removed: Clear control and locked inputs on license key fields; fields stay editable and status messages clear when typing.
 * Fixed: License key field recovers from a cached error status by refreshing license details when a stored key hash is available.
 * Fixed: Site reports include license key hashes using the correct settings option names.
 * Fixed: License key activation feedback is shown on each license field instead of as admin notices when saving settings.
