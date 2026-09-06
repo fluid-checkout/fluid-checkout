@@ -67,7 +67,8 @@ jQuery( 'body' ).on( 'focusout', 'input#billing_phone, input#billing_email', fun
 	}
 });
 
-jQuery( 'body' ).on( 'change', 'input#ship-to-different-address-checkbox', function() {
+// CHANGE: Also listen for the fields used to search for pickup locations
+jQuery( 'body' ).on( 'change', 'input#ship-to-different-address-checkbox, #shipping_zone_country, #shipping_city_brt_fermopoint, #shipping_postcode_brt_fermopoint', function() {
 	if( isSelectedBrtFermopointShippingMethod() ){
 		checkPudableCartNew();
 	}
@@ -198,9 +199,45 @@ function getCoordsFromGeolocation() {
 	}
 }
 
+// CHANGE: Check whether the pickup location search fields are displayed.
+function hasPickupSearchFields() {
+	return jQuery( '#shipping_city_brt_fermopoint, #shipping_postcode_brt_fermopoint' ).length > 0;
+}
+
+// CHANGE: Read a value from a field, when it is present and filled.
+function getPudoSearchFieldValue( selector ) {
+	var field = jQuery( selector );
+	if ( field.length > 0 && field.val() ) {
+		return field.val();
+	}
+
+	return '';
+}
+
 function getShippingAddress(){
 	var returnObj = {};	
 	
+	// CHANGE: Use the pickup location search fields when they are displayed,
+	// as they are the fields used to search for pickup locations.
+	// The values are used even when still incomplete, so that the plugin asks for the missing
+	// fields instead of searching with an address that is not used to collect the order.
+	if ( hasPickupSearchFields() ) {
+		returnObj.city = getPudoSearchFieldValue( '#shipping_city_brt_fermopoint' );
+		returnObj.cap = getPudoSearchFieldValue( '#shipping_postcode_brt_fermopoint' );
+
+		// Get the country from the pickup shipping zone filter field, then from the shipping
+		// or billing address, as the search fields do not include a country field
+		returnObj.country = getPudoSearchFieldValue( '#shipping_zone_country' );
+		if ( ! returnObj.country ) {
+			returnObj.country = getPudoSearchFieldValue( '#shipping_country' );
+		}
+		if ( ! returnObj.country ) {
+			returnObj.country = getPudoSearchFieldValue( '#billing_country' );
+		}
+
+		return returnObj;
+	}
+
 	if(isShippingDifferentAddressChecked()) {
 		returnObj.city = jQuery('#shipping_city').val();
 		returnObj.country = jQuery('#shipping_country').val();

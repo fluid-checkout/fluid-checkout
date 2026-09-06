@@ -22,6 +22,7 @@
 		bodyClass:                             'has-fc-enhanced-select',
 		formRowSelector:                       '.form-row.fc-select2-field',
 		selectFieldSelector:                   '.fc-select2-field select',
+		clearableFieldSelector:                '.fc-enhanced-select--clearable',
 		wrapperElementSelector:                '.ts-wrapper',
 		inputFieldSelector:                    '.ts-control > input',
 
@@ -32,6 +33,7 @@
 			openOnFocus: false,
 		},
 		fieldPluginsSingle: [],
+		fieldPluginsSingleClearable: [ 'clear_button' ],
 		fieldPluginsMulti: [ 'remove_button' ],
 	};
 
@@ -383,6 +385,10 @@
 			// Multiple select
 			if ( isMultiple ) {
 				settings.plugins = _settings.fieldPluginsMulti;
+			}
+			// Single select that allows clearing the selected value
+			else if ( field.closest( _settings.clearableFieldSelector ) ) {
+				settings.plugins = _settings.fieldPluginsSingleClearable;
 			}
 			// Single select
 			else {

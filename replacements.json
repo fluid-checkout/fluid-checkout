@@ -3,6 +3,11 @@
 	"description": "Third-party files replaced or forked by Fluid Checkout.",
 	"plugin-compat-js": [
 		{
+			"our_path": "js-src/compat/plugins/automation-web-platform/checkout.js",
+			"their_path": "plugins/automation-web-platform/assets/js/checkout.js",
+			"script_handle": "awp-checkout-js"
+		},
+		{
 			"our_path": "js-src/compat/plugins/biteship/biteship-public.js",
 			"their_path": "plugins/biteship/public/js/biteship-public.js",
 			"script_handle": "biteship"
@@ -41,6 +46,11 @@
 			"our_path": "js-src/compat/plugins/states-cities-and-places-for-woocommerce/place-select.js",
 			"their_path": "https://plugins.svn.wordpress.org/states-cities-and-places-for-woocommerce/trunk/js/place-select.js",
 			"script_handle": "wc-city-select"
+		},
+		{
+			"our_path": "js-src/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location.js",
+			"their_path": "https://plugins.svn.wordpress.org/wc-multivendor-marketplace/trunk/assets/js/checkout/wcfmmp-script-checkout-location.js",
+			"script_handle": "wcfmmp_checkout_location_js"
 		},
 		{
 			"our_path": "js-src/compat/plugins/wc-postcode-checker/wc-postcode-checker.js",

@@ -33,7 +33,8 @@
 	],
 	"script_handle_overrides": {
 		"js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js": "woocommerce-extra-checkout-fields-for-brazil-front",
-		"js-src/compat/plugins/biteship/biteship-public.js": "biteship"
+		"js-src/compat/plugins/biteship/biteship-public.js": "biteship",
+		"js-src/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location.js": "wcfmmp_checkout_location_js"
 	},
 	"their_path_overrides": {
 		"js-src/compat/plugins/klarna-payments-for-woocommerce/klarna-payments.js": "assets/js/klarna-payments.js",
@@ -56,6 +57,7 @@
 		"js-src/compat/plugins/automation-web-platform/checkout.js": "assets/js/checkout.js",
 		"js-src/compat/plugins/eu-vat-for-woocommerce/alg-wc-eu-vat.js": "assets/js/alg-wc-eu-vat.js",
 		"js-src/compat/plugins/mobile-login-woocommerce-premium/xoo-ml-phone-js.js": "assets/js/xoo-ml-phone-js.js",
+		"js-src/compat/plugins/wc-multivendor-marketplace/wcfmmp-script-checkout-location.js": "assets/js/checkout/wcfmmp-script-checkout-location.js",
 		"templates/compat/plugins/woocommerce-germanized/checkout/order-submit.php": "templates/checkout/order-submit.php",
 		"templates/compat/plugins/curiero-plugin/templates/checkout-collectpoint-select.php": "includes/shipping_methods/fancourier/templates/checkout-collectpoint-select.php",
 		"templates/compat/plugins/curiero-plugin/templates/checkout-dpd-boxes-select.php": "includes/shipping_methods/dpd/templates/checkout-dpd-boxes-select.php",

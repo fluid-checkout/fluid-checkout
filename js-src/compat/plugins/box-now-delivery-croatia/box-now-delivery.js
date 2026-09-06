@@ -36,7 +36,7 @@ function handleBoxNowMessage(event) {
 
     // Handle locker data selection
     updateLockerDetailsContainer(data);
-    showSelectedLockerDetailsFromLocalStorage();
+	// CHANGE: Do not restore from localStorage. It is redundant after `updateLockerDetailsContainer` and would re-trigger `update_checkout`.
     lockerSelected = true;
 }
 
@@ -88,14 +88,11 @@ function handleBoxNowMessage(event) {
      * Attach click event listener to the Box Now Delivery button.
      */
     function attachButtonClickListener() {
-        // CHANGE: Use captured event listener, instead of directly attaching it to the button.
-        $( document )
-	   // CHANGE: Remove code that removes old event listeners, as it is not needed when capturing the event
-        .on("click", "#box_now_delivery_button", function (event) {
-            event.preventDefault();
-            createPopupMap();
-        });
-	   // CHANGE: END - Use captured event listener, instead of directly attaching it to the button.
+		// CHANGE: Add event delegation so the listener survives checkout fragment replacements.
+		$( document ).off( "click.boxNowDelivery", "#box_now_delivery_button" ).on( "click.boxNowDelivery", "#box_now_delivery_button", function ( event ) {
+			event.preventDefault();
+			createPopupMap();
+		} );
     }
 
     function GetUserCountry() {
@@ -322,6 +319,17 @@ function sendLockerToServer(lockerId) {
         var locker_name = lockerData.boxnowLockerName;
         // Add more fields as needed
 
+		// CHANGE: Remember previously selected locker id before updating the fields.
+		var previous_locker_id = $( '#_boxnow_locker_id' ).val() || '';
+		if ( ! previous_locker_id && $( '#box_now_selected_locker_input' ).length ) {
+			try {
+				var previous_locker_data = JSON.parse( $( '#box_now_selected_locker_input' ).val() );
+				previous_locker_id = previous_locker_data && previous_locker_data.boxnowLockerId ? previous_locker_data.boxnowLockerId : '';
+			} catch ( e ) {
+				previous_locker_id = '';
+			}
+		}
+
         localStorage.setItem("box_now_selected_locker", JSON.stringify(lockerData));
 
         // Ensure the locker details container is added after the Box Now Delivery button
@@ -390,9 +398,6 @@ function sendLockerToServer(lockerId) {
 
         sendLockerToServer(locker_id);
 
-	   // CHANGE: Remove the overlay after setting new locker selected.
-	   $("#box_now_delivery_overlay").remove();
-
         if (boxNowDeliverySettings.displayMode === "popup") {
             $("#box_now_delivery_overlay").remove();
             $("iframe[src^='https://widget-v5.boxnow.gr/popup.html']").remove();
@@ -400,6 +405,11 @@ function sendLockerToServer(lockerId) {
             $("iframe[src^='https://widget-v5.boxnow.bg/popup.html']").remove();
             $("iframe[src^='https://widget-v5.boxnow.hr/popup.html']").remove();
         }
+
+		// CHANGE: Trigger update checkout only when the selected locker changed.
+		if ( String( previous_locker_id ) !== String( locker_id ) ) {
+			$( document.body ).trigger( "update_checkout" );
+		}
     }
 
     /**
@@ -466,8 +476,8 @@ function sendLockerToServer(lockerId) {
         addButton();
         toggleBoxNowDelivery();
 
-        // CHANGE: Add event listener to the button skipping the checks from addButton().
-	   attachButtonClickListener();
+		// CHANGE: Always re-attach the button listener after checkout fragments are replaced.
+		attachButtonClickListener();
 
         if ($("#shipping_method_0_box_now_delivery").is(":checked")) {
             showSelectedLockerDetailsFromLocalStorage();
@@ -543,8 +553,8 @@ function sendLockerToServer(lockerId) {
             toggleBoxNowDelivery
         );
 
-        // CHANGE: Remove addOrderValidation() function call to replace it with field validation from Fluid Checkout.
-        
+		// CHANGE: Remove addOrderValidation() function call to replace it with field validation from Fluid Checkout.
+
         // When shipping country changes clear selected locker from local storage and session
         $(document.body).on("change", "#shipping_country", function () {
             localStorage.removeItem("box_now_selected_locker");

@@ -1,0 +1,38 @@
+// ------------------------------------
+// WCFM CHECKOUT LOCATION MAP
+// ------------------------------------
+
+// Full-width map inside Fluid Checkout shipping fields
+.fc-wrapper #wcfmmp-user-locaton-map {
+	width: 100%;
+	max-width: 100%;
+}
+
+
+
+// Leaflet search sits above the map (not as a map control overlay)
+.fc-wrapper #leaflet_wcfmmp_user_location {
+	width: 100%;
+	display: block;
+	margin-bottom: $global-spacing-extra-small;
+}
+
+.fc-wrapper #leaflet_wcfmmp_user_location .leaflet-control-search {
+	width: 100%;
+	margin: 0;
+	float: none;
+	position: relative;
+}
+
+.fc-wrapper #leaflet_wcfmmp_user_location .leaflet-control-search .search-input {
+	width: 100%;
+	max-width: none !important; // leaflet-search re-applies inline max-width on every map resize
+	box-sizing: border-box;
+}
+
+.fc-wrapper #leaflet_wcfmmp_user_location .leaflet-control-search .search-tooltip {
+	width: 100%;
+	max-width: 100%;
+	margin: 0 !important; // Override theme list margin that offsets the suggestions dropdown
+	padding-left: 0;
+}

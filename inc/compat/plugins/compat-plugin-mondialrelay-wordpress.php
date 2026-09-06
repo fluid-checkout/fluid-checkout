@@ -12,9 +12,14 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	public const SHIPPING_METHOD_ID = 'mondialrelay';
 
 	/**
-	 * Session field name.
+	 * Session field name for the selected parcel shop address.
 	 */
 	public const SESSION_FIELD_NAME = 'mrwp_parcel_shop_address';
+
+	/**
+	 * Session field name for the selected parcel shop ID.
+	 */
+	public const SESSION_FIELD_ID = 'mrwp_parcel_shop_id';
 
 
 	/**
@@ -44,7 +49,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
 		// Enqueue assets
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 
 		// JS settings object
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
@@ -60,6 +65,9 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Persisted data
 		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+
+		// Restore parcel shop ID before Mondial Relay validates checkout
+		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_restore_parcel_shop_id_from_session' ), 5 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -108,6 +116,16 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		// Scripts
 		wp_enqueue_script( 'fc-checkout-mondial-relay' );
 		wp_enqueue_script( 'fc-checkout-validation-mondial-relay' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		$this->enqueue_assets();
 	}
 
 
@@ -295,14 +313,43 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 * @param  array  $posted_data   Post data for all checkout fields.
 	 */
 	public function maybe_set_terminals_field_session_values( $posted_data ) {
-		// Bail if field value was not posted or is empty
-		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) { return $posted_data; }
+		// Maybe save parcel shop address to session
+		// Skip empty values, as Mondial Relay JS may clear the field on `updated_checkout`
+		if ( array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) && ! empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) {
+			WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+		}
 
-		// Save field value to session, as it is needed for the plugin to recover its value
-		WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+		// Maybe save parcel shop ID to session
+		if ( array_key_exists( self::SESSION_FIELD_ID, $posted_data ) && ! empty( $posted_data[ self::SESSION_FIELD_ID ] ) ) {
+			WC()->session->set( self::SESSION_FIELD_ID, $posted_data[ self::SESSION_FIELD_ID ] );
+		}
 
 		// Return unchanged posted data
 		return $posted_data;
+	}
+
+	/**
+	 * Maybe restore the Mondial Relay parcel shop ID from session into `$_POST`.
+	 * Required since Mondial Relay clears `#mrwp_parcel_shop_id` on `updated_checkout`.
+	 */
+	public function maybe_restore_parcel_shop_id_from_session() {
+		// Bail if parcel shop selection is not mandatory for the current shipping method
+		// The mandatory flag is used instead of `is_shipping_method_selected()`, as shipping packages may be empty during `woocommerce_checkout_process`
+		if ( 'Yes' !== sanitize_text_field( wp_unslash( $_POST[ 'mrwp_parcel_shop_mandatory' ] ?? '' ) ) ) { return; } // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
+		// Get the selected parcel shop values from session
+		$selected_terminal_id = WC()->session->get( self::SESSION_FIELD_ID );
+		$selected_terminal_address = WC()->session->get( self::SESSION_FIELD_NAME );
+
+		// Maybe restore parcel shop ID to posted data before Mondial Relay validates the checkout
+		if ( empty( $_POST[ self::SESSION_FIELD_ID ] ) && ! empty( $selected_terminal_id ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$_POST[ self::SESSION_FIELD_ID ] = $selected_terminal_id; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		}
+
+		// Maybe restore parcel shop address to posted data for the order meta
+		if ( empty( $_POST[ self::SESSION_FIELD_NAME ] ) && ! empty( $selected_terminal_address ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$_POST[ self::SESSION_FIELD_NAME ] = $selected_terminal_address; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		}
 	}
 
 
@@ -347,6 +394,9 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 

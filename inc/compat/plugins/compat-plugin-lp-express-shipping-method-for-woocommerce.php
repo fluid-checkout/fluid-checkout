@@ -157,11 +157,60 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 
 
 	/**
+	 * Get the selected terminal address information mapped to shipping address field keys.
+	 */
+	public function get_selected_terminal_info() {
+		// Initialize variables
+		$selected_terminal_info = array();
+
+		// Bail if class is not available
+		$class_name = 'WC_LPExpress_Terminals_Shipping_Method';
+		if ( ! class_exists( $class_name ) ) { return $selected_terminal_info; }
+
+		// Get selected terminal
+		$selected_terminal = WC()->session->get( self::SHIPPING_METHOD_ID );
+
+		// Bail if there is no selected terminal
+		if ( empty( $selected_terminal ) ) { return $selected_terminal_info; }
+
+		// Get object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( $class_name );
+
+		// Bail if the object is not available
+		if ( ! is_object( $class_object ) ) { return $selected_terminal_info; }
+
+		// Get terminal info
+		$terminal = $class_object->get_terminal_info( $selected_terminal );
+
+		// Bail if there is no information for the selected terminal
+		if ( empty( $terminal ) ) { return $selected_terminal_info; }
+
+		// Get terminal street and house number
+		$street = isset( $terminal->street ) ? $terminal->street : '';
+		$house = isset( $terminal->house ) ? $terminal->house : '';
+
+		// Set address data from the terminal info
+		$selected_terminal_info = array(
+			'company'   => isset( $terminal->name ) ? $terminal->name : '',
+			'address_1' => trim( $street . ' ' . $house ),
+			'postcode'  => isset( $terminal->zipcode ) ? $terminal->zipcode : '',
+			'city'      => isset( $terminal->city ) ? $terminal->city : '',
+		);
+
+		return $selected_terminal_info;
+	}
+
+
+
+	/**
 	 * Add the shipping methods substep review text lines.
-	 * 
+	 *
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
