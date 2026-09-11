@@ -80,6 +80,8 @@
 		substepEditableStateAttribute: 'data-substep-editable',
 		substepVisibleStateFieldSelector: '.fc-substep-visible-state[type="hidden"]',
 		substepVisibleStateAttribute: 'data-substep-visible',
+		substepFirstAttribute: 'data-substep-first',
+		substepLastAttribute: 'data-substep-last',
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
@@ -838,6 +840,7 @@
 		var substepElements = document.querySelectorAll( _settings.substepSelector );
 		for ( var i = 0; i < substepElements.length; i++ ) {
 			var substepElement = substepElements[i];
+			var isSetExpanded = false;
 
 			// Handle editable state
 			var editableHiddenField = substepElement.querySelector( _settings.substepEditableStateFieldSelector );
@@ -856,7 +859,7 @@
 			// Handle expanded state
 			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
 			if ( expandedHiddenField ) {
-				var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
+				isSetExpanded = 'yes' === expandedHiddenField.value;
 				if ( isSetExpanded ) {
 					// Expand section
 					expandSubstepEdit( substepElement, true, false );
@@ -867,19 +870,70 @@
 			}
 
 			// Handle visibility state
-			var visibilityHiddenField = substepElement.querySelector( _settings.substepVisibleStateFieldSelector );
-			if ( visibilityHiddenField ) {
+			var visibilityHiddenFields = substepElement.querySelectorAll( _settings.substepVisibleStateFieldSelector );
+			if ( visibilityHiddenFields.length > 0 ) {
+				// When multiple compat plugins output visibility fields, hide the substep if any of them require it
+				var visibilityValue = 'yes';
+
+				// Iterate visibility hidden fields
+				for ( var j = 0; j < visibilityHiddenFields.length; j++ ) {
+					// Hide substep if any visibility field requires it
+					if ( 'no' === visibilityHiddenFields[ j ].value ) {
+						visibilityValue = 'no';
+						break;
+					}
+				}
+
 				// Change visibility state
-				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityHiddenField.value );
+				substepElement.setAttribute( _settings.substepVisibleStateAttribute, visibilityValue );
 
 				// Maybe collapse substep edit
 				// when substep is already hidden, set as complete and set as expanded
-				if ( 'no' === visibilityHiddenField.value && ! isSetExpanded && isStepComplete( substepElement ) ) {
+				if ( 'no' === visibilityValue && ! isSetExpanded && isStepComplete( substepElement ) ) {
 					collapseSubstepEdit( substepElement, true, false );
 				}
 
-				// Remove visibility state hidden field, to avoid it being used again
-				visibilityHiddenField.parentNode.removeChild( visibilityHiddenField );
+				// Remove all visibility state hidden fields, to avoid stale fields being used again
+				for ( var k = 0; k < visibilityHiddenFields.length; k++ ) {
+					visibilityHiddenFields[ k ].parentNode.removeChild( visibilityHiddenFields[ k ] );
+				}
+			}
+		}
+
+		// Update first/last visible substep attributes for each step
+		maybeUpdateSubstepFirstLastAttributes();
+	}
+
+	/**
+	 * Update first/last visible substep attributes within each checkout step.
+	 */
+	var maybeUpdateSubstepFirstLastAttributes = function() {
+		var allSteps = getAllSteps();
+
+		// Iterate through steps
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var stepElement = allSteps[ i ];
+			var substeps = stepElement.querySelectorAll( _settings.substepSelector );
+			var visibleSubsteps = [];
+
+			// Collect visible substeps
+			for ( var j = 0; j < substeps.length; j++ ) {
+				// Skip if substep is not visible
+				if ( 'no' === substeps[ j ].getAttribute( _settings.substepVisibleStateAttribute ) ) { continue; }
+
+				visibleSubsteps.push( substeps[ j ] );
+			}
+
+			// Reset first/last attributes on all substeps
+			for ( var k = 0; k < substeps.length; k++ ) {
+				substeps[ k ].removeAttribute( _settings.substepFirstAttribute );
+				substeps[ k ].removeAttribute( _settings.substepLastAttribute );
+			}
+
+			// Set first/last attributes on visible substeps only
+			if ( visibleSubsteps.length > 0 ) {
+				visibleSubsteps[ 0 ].setAttribute( _settings.substepFirstAttribute, '' );
+				visibleSubsteps[ visibleSubsteps.length - 1 ].setAttribute( _settings.substepLastAttribute, '' );
 			}
 		}
 	}
