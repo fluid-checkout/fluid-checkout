@@ -639,7 +639,72 @@
 		return previousVisibleStep;
 	}
 
+	/**
+	 * Get the first visible step that is not complete.
+	 *
+	 * @return  HTMLElement|null  The first visible incomplete step element, or `null` if not found.
+	 */
+	var getFirstVisibleIncompleteStep = function() {
+		// Initialize variables
+		var firstIncompleteStep = null;
+		var allSteps = getAllSteps();
 
+		// Iterate through steps
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			// Skip if step is not visible or is complete
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) || isStepComplete( allSteps[ i ] ) ) { continue; }
+
+			// Set first incomplete step
+			firstIncompleteStep = allSteps[ i ];
+			break;
+		}
+
+		return firstIncompleteStep;
+	}
+
+
+
+	/**
+	 * Maybe change the current step back to the first visible incomplete step before it.
+	 */
+	var maybeChangeCurrentStep = function() {
+		// Get current step and first incomplete step
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+		var targetStepElement = getFirstVisibleIncompleteStep();
+
+		// Bail if current step or incomplete step not found
+		if ( ! currentStepElement || ! targetStepElement ) { return; }
+
+		// Get step positions
+		var allSteps = getAllSteps();
+		var targetStepIndex = allSteps.indexOf( targetStepElement );
+
+		// Bail if incomplete step is not before the current step
+		if ( targetStepIndex >= allSteps.indexOf( currentStepElement ) ) { return; }
+
+		// Move `current` to the incomplete step
+		currentStepElement.removeAttribute( _settings.stepCurrentAttribute );
+		targetStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
+
+		// Get index of the step before the new current step, where the incomplete steps now start
+		var firstIncompleteStepIndex = targetStepIndex > 0 ? targetStepIndex - 1 : 0;
+
+		// Iterate steps from the first incomplete step
+		for ( var i = firstIncompleteStepIndex; i < allSteps.length; i++ ) {
+			allSteps[ i ].classList.add( _settings.stepNextIncompleteClass );
+		}
+
+		// Iterate steps after the new current step to reset them to the state of steps that have not been reached yet
+		for ( var i = targetStepIndex + 1; i < allSteps.length; i++ ) {
+			allSteps[ i ].removeAttribute( _settings.stepCompleteAttribute );
+		}
+
+		// Iterate substeps of the new current step to expand the fields for editing
+		var substepElements = targetStepElement.querySelectorAll( _settings.substepSelector );
+		for ( var i = 0; i < substepElements.length; i++ ) {
+			expandSubstepEdit( substepElements[ i ], false, false );
+		}
+	}
 
 	/**
 	 * Update step visibility based on substep visibility state.
@@ -748,6 +813,9 @@
 			}
 		}
 
+		// Maybe change the current step when an earlier step became visible and is incomplete
+		maybeChangeCurrentStep();
+
 		// Update progress bar to reflect changes
 		updateProgressBar();
 	}
@@ -769,6 +837,9 @@
 			var className = _settings.currentStepClassTemplate.replace( '##STEP_ID##', stepId );
 			document.body.classList.remove( className );
 		}
+
+		// Remove last step class
+		document.body.classList.remove( _settings.currentLastStepClass );
 
 		// Maybe add current step class
 		var currentStepElement = document.querySelector( _settings.currentStepSelector );
