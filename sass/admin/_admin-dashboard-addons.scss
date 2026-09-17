@@ -2,6 +2,97 @@
 // DASHBOARD ADDONS
 // ------------------------------------
 
+.fc-addons__site-key {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	max-width: 600px;
+}
+
+.fc-addons__site-key-label {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.fc-addons__site-key-form {
+	margin: 0;
+}
+
+.fc-addons__site-key-field-row {
+	align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 8px;
+	width: 100%;
+}
+
+.fc-addons__site-key-field-row .fc-addons__site-key-input,
+.fc-addons__site-key-field-row input[type="text"] {
+	flex: 1 1 auto;
+	margin: 0;
+	max-width: none;
+	min-width: 0;
+	width: auto;
+}
+
+.fc-addons__site-key-field-actions {
+	align-items: center;
+	display: inline-flex;
+	flex-shrink: 0;
+	flex-wrap: nowrap;
+	gap: 8px;
+}
+
+.fc-addons__site-key-field-actions .button {
+	flex-shrink: 0;
+	margin: 0;
+	white-space: nowrap;
+	width: auto;
+}
+
+.fc-addons__site-key-manage {
+	flex-shrink: 0;
+	margin: 0;
+	white-space: nowrap;
+}
+
+.fc-addons__site-key-description {
+	margin-top: 8px;
+}
+
+.fc-addons__site-key-result {
+	border-radius: 4px;
+	margin-top: 12px;
+	padding: 10px 12px;
+}
+
+.fc-addons__site-key-result[hidden] {
+	display: none;
+}
+
+.fc-addons__site-key-result--success {
+	background: #edfaef;
+	border: 1px solid #68de7c;
+	color: #007a3d;
+}
+
+.fc-addons__site-key-result--error {
+	background: #fcf0f1;
+	border: 1px solid #d63638;
+	color: #b32d2e;
+}
+
+.fc-addons__site-key-result-line {
+	margin: 0;
+}
+
+.fc-addons__site-key-result a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+
+
 .fc-addons-list {
 	display: flex;
 	align-items: stretch;
@@ -143,6 +234,7 @@
 	text-align: center;
 	line-height: 1.4;
 }
+.fc-addons__item-actions .button + .fc-addons__item-action-notice,
 .fc-addons__item-actions .button + .button {
 	margin-top: 10px;
 }
@@ -154,4 +246,40 @@
 
 .fc-addons__item-actions .button.button--activated {
 	color: #007a3d !important;
+}
+
+.fc-addons__item-actions .button.button-primary.button--install {
+	background: #007a3d;
+	border-color: #007a3d;
+	color: #fff;
+}
+
+.fc-addons__item-actions .button.button-primary.button--install:hover,
+.fc-addons__item-actions .button.button-primary.button--install:focus {
+	background: #006432;
+	border-color: #006432;
+	color: #fff;
+}
+
+.fc-addons__item-action-notice {
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 8px 10px;
+	width: 100%;
+}
+
+.fc-addons__item-action-notice[hidden] {
+	display: none;
+}
+
+.fc-addons__item-action-notice--success {
+	background: #edfaef;
+	border: 1px solid #68de7c;
+	color: #007a3d;
+}
+
+.fc-addons__item-action-notice--error {
+	background: #fcf0f1;
+	border: 1px solid #d63638;
+	color: #b32d2e;
 }

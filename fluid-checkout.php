@@ -67,6 +67,11 @@ class FluidCheckout {
 	const FC_LICENSES_API_URL = 'https://fluidcheckout.com';
 
 	/**
+	 * Default site key account URL.
+	 */
+	const FC_LICENSES_ACCOUNT_URL = 'https://fluidcheckout.com/my-account/sites/';
+
+	/**
 	 * Hold list of the plugin features to load when initializing.
 	 *
 	 * @var array

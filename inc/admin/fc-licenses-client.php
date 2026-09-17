@@ -27,6 +27,13 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		private static $update_hooks_registered = false;
 
 		/**
+		 * Whether the HTTP Origin injection filter has been registered.
+		 *
+		 * @var bool
+		 */
+		private static $http_origin_hooks_registered = false;
+
+		/**
 		 * Option key for the last successful site report fingerprint.
 		 */
 		const SITE_REPORT_FINGERPRINT_OPTION = 'fc_site_report_last_fingerprint';
@@ -122,6 +129,8 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				add_filter( 'upgrader_post_install', array( __CLASS__, 'filter_post_install' ), 10, 3 );
 				self::$update_hooks_registered = true;
 			}
+
+			self::maybe_register_http_origin_hooks();
 		}
 
 
@@ -188,6 +197,66 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			}
 
 			return $headers;
+		}
+
+
+
+		/**
+		 * Register http_request_args filter to inject Origin on licenses API requests.
+		 */
+		private static function maybe_register_http_origin_hooks() {
+			if ( self::$http_origin_hooks_registered ) {
+				return;
+			}
+
+			add_filter( 'http_request_args', array( __CLASS__, 'filter_http_request_args_inject_origin' ), 10, 2 );
+			self::$http_origin_hooks_registered = true;
+		}
+
+
+
+		/**
+		 * Whether a remote URL targets the Fluid Licenses REST API.
+		 *
+		 * @param string $url Request URL.
+		 */
+		private static function is_licenses_api_request_url( $url ) {
+			$url = (string) $url;
+
+			if ( '' === $url ) {
+				return false;
+			}
+
+			// Own REST API (updates, downloads, licenses, sites, telemetry)
+			return false !== strpos( $url, '/wp-json/fc-licenses/' );
+		}
+
+
+
+		/**
+		 * Inject the site Origin header for requests to the Fluid Licenses API.
+		 *
+		 * Covers package ZIP downloads via Plugin_Upgrader, which do not use call_api*.
+		 *
+		 * @param array  $args HTTP request arguments.
+		 * @param string $url  Request URL.
+		 */
+		public static function filter_http_request_args_inject_origin( $args, $url ) {
+			if ( ! self::is_licenses_api_request_url( $url ) ) {
+				return $args;
+			}
+
+			if ( ! is_array( $args ) ) {
+				$args = array();
+			}
+
+			if ( ! isset( $args['headers'] ) || ! is_array( $args['headers'] ) ) {
+				$args['headers'] = array();
+			}
+
+			$args['headers'] = array_merge( $args['headers'], self::get_api_request_headers() );
+
+			return $args;
 		}
 
 
@@ -1440,6 +1509,552 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		//
+		// SITE KEY FUNCTIONS
+		//
+
+		/**
+		 * Option key for the stored site key hash (non-autoloaded).
+		 */
+		const SITE_KEY_HASH_OPTION = 'fc_site_key_hash';
+
+		/**
+		 * Option key for the stored site key last chunk (non-autoloaded).
+		 */
+		const SITE_KEY_LAST_CHUNK_OPTION = 'fc_site_key_last_chunk';
+
+		/**
+		 * Transient key for cached site-key validate/entitlements result.
+		 */
+		const SITE_KEY_ENTITLEMENTS_TRANSIENT = 'fc_site_key_entitlements';
+
+		/**
+		 * Cache TTL for site-key entitlements (24 hours).
+		 */
+		const SITE_KEY_ENTITLEMENTS_CACHE_TTL = DAY_IN_SECONDS;
+
+
+
+		/**
+		 * Message when a site key is invalid, rotated, or unknown.
+		 *
+		 * @param string $account_url Account URL on the licenses website (sites page).
+		 */
+		public static function get_site_key_invalid_message( $account_url = '' ) {
+			$account_url = apply_filters( 'fc_lcs_site_key_account_url', (string) $account_url );
+			$account_url = esc_url( $account_url );
+
+			if ( '' === $account_url ) {
+				return 'This site key is not valid. Get a new site key from your account and try again.';
+			}
+
+			return sprintf(
+				'This site key is not valid. <a href="%s" target="_blank" rel="noopener noreferrer">Get a new site key</a> and try again.',
+				$account_url
+			);
+		}
+
+
+
+		/**
+		 * Get the stored site key hash.
+		 */
+		public static function get_site_key_hash() {
+			$hash = get_option( self::SITE_KEY_HASH_OPTION, '' );
+
+			return is_string( $hash ) ? strtolower( trim( $hash ) ) : '';
+		}
+
+
+
+		/**
+		 * Get the stored site key last chunk.
+		 */
+		public static function get_site_key_last_chunk() {
+			$chunk = get_option( self::SITE_KEY_LAST_CHUNK_OPTION, '' );
+
+			return is_string( $chunk ) ? trim( $chunk ) : '';
+		}
+
+
+
+		/**
+		 * Whether a site key hash is stored.
+		 */
+		public static function has_site_key() {
+			return self::looks_like_license_key_hash( self::get_site_key_hash() );
+		}
+
+
+
+		/**
+		 * Masked display value: SITEKEY-XXXX-XXXX-XXXX-{last_chunk}.
+		 */
+		public static function get_site_key_display_value() {
+			$last_chunk = self::get_site_key_last_chunk();
+
+			if ( '' === $last_chunk ) {
+				return '';
+			}
+
+			return 'SITEKEY-XXXX-XXXX-XXXX-' . $last_chunk;
+		}
+
+
+
+		/**
+		 * Persist site key hash and last chunk from a successful validate response.
+		 *
+		 * @param string $site_key_hash       Site key hash.
+		 * @param string $site_key_last_chunk Last chunk for masked display.
+		 */
+		public static function save_site_key_storage( $site_key_hash, $site_key_last_chunk ) {
+			$site_key_hash       = strtolower( trim( (string) $site_key_hash ) );
+			$site_key_last_chunk = trim( (string) $site_key_last_chunk );
+
+			if ( ! self::looks_like_license_key_hash( $site_key_hash ) || '' === $site_key_last_chunk ) {
+				return false;
+			}
+
+			update_option( self::SITE_KEY_HASH_OPTION, $site_key_hash, false );
+			update_option( self::SITE_KEY_LAST_CHUNK_OPTION, $site_key_last_chunk, false );
+			self::clear_site_key_entitlements_cache();
+
+			// Remove legacy plaintext option if present.
+			delete_option( 'fc_site_key' );
+
+			return true;
+		}
+
+
+
+		/**
+		 * Clear the stored site key and entitlements cache.
+		 */
+		public static function clear_site_key() {
+			delete_option( self::SITE_KEY_HASH_OPTION );
+			delete_option( self::SITE_KEY_LAST_CHUNK_OPTION );
+			delete_option( 'fc_site_key' );
+			self::clear_site_key_entitlements_cache();
+		}
+
+
+
+		/**
+		 * Clear the cached site-key entitlements transient.
+		 */
+		public static function clear_site_key_entitlements_cache() {
+			delete_transient( self::SITE_KEY_ENTITLEMENTS_TRANSIENT );
+		}
+
+
+
+		/**
+		 * Validate a site key (plaintext or stored hash) and cache entitlements.
+		 *
+		 * @param string $site_key_or_hash Plaintext SITEKEY-… or 64-char hash.
+		 * @param string $api_url          Optional API base URL override.
+		 * @param bool   $force_check      Bypass the transient cache.
+		 * @param string $account_url      Account URL for invalid-key messages (sites page).
+		 * @return array {
+		 *     @type bool        $success
+		 *     @type array       $products
+		 *     @type string|null $site_key_hash
+		 *     @type string|null $site_key_last_chunk
+		 *     @type string|null $error
+		 * }
+		 */
+		public static function validate_site_key( $site_key_or_hash = '', $api_url = '', $force_check = false, $account_url = '' ) {
+			$site_key_or_hash = trim( (string) $site_key_or_hash );
+
+			if ( '' === $site_key_or_hash ) {
+				$site_key_or_hash = self::get_site_key_hash();
+			}
+
+			$result = array(
+				'success'              => false,
+				'products'             => array(),
+				'site_key_hash'        => null,
+				'site_key_last_chunk'  => null,
+				'error'                => null,
+			);
+
+			if ( '' === $site_key_or_hash || self::looks_like_masked_license_key( $site_key_or_hash ) ) {
+				$result['error'] = self::get_site_key_invalid_message( $account_url );
+				return $result;
+			}
+
+			$using_stored_hash = self::looks_like_license_key_hash( $site_key_or_hash );
+
+			if ( ! $force_check && $using_stored_hash && $site_key_or_hash === self::get_site_key_hash() ) {
+				$cached = get_transient( self::SITE_KEY_ENTITLEMENTS_TRANSIENT );
+
+				if ( is_array( $cached ) && ! empty( $cached['success'] ) && isset( $cached['products'] ) && is_array( $cached['products'] ) ) {
+					return $cached;
+				}
+			}
+
+			$api_url = self::normalize_api_url( $api_url, null );
+			$url     = $api_url . '/wp-json/fc-licenses/v1/sites/keys/validate';
+
+			$body = $using_stored_hash
+				? array( 'site_key_hash' => $site_key_or_hash )
+				: array( 'site_key' => $site_key_or_hash );
+
+			$response = self::call_api_post(
+				$url,
+				array(
+					'Content-Type' => 'application/json',
+				),
+				array(
+					'body' => wp_json_encode( $body ),
+				)
+			);
+
+			if ( ! $response ) {
+				$result['error'] = self::get_site_key_invalid_message( $account_url );
+				self::clear_site_key_entitlements_cache();
+				return $result;
+			}
+
+			$data = json_decode( $response );
+
+			if ( ! is_object( $data ) || empty( $data->data ) ) {
+				$result['error'] = self::get_site_key_invalid_message( $account_url );
+				self::clear_site_key_entitlements_cache();
+				return $result;
+			}
+
+			$payload = is_object( $data->data ) ? (array) $data->data : (array) $data->data;
+			$hash    = isset( $payload['site_key_hash'] ) ? strtolower( trim( (string) $payload['site_key_hash'] ) ) : '';
+			$chunk   = isset( $payload['site_key_last_chunk'] ) ? trim( (string) $payload['site_key_last_chunk'] ) : '';
+
+			if ( ! self::looks_like_license_key_hash( $hash ) || '' === $chunk ) {
+				$result['error'] = self::get_site_key_invalid_message( $account_url );
+				self::clear_site_key_entitlements_cache();
+				return $result;
+			}
+
+			$products = self::normalize_site_key_entitlements_products( $payload );
+
+			$result['success']             = true;
+			$result['products']            = $products;
+			$result['site_key_hash']       = $hash;
+			$result['site_key_last_chunk'] = $chunk;
+			$result['error']               = null;
+
+			set_transient( self::SITE_KEY_ENTITLEMENTS_TRANSIENT, $result, self::SITE_KEY_ENTITLEMENTS_CACHE_TTL );
+
+			return $result;
+		}
+
+
+
+		/**
+		 * Get site-key entitlements for the stored hash (24h cache).
+		 *
+		 * @param string $api_url     Optional API base URL override.
+		 * @param bool   $force_check Bypass the transient cache.
+		 * @param string $account_url Account URL for invalid-key messages (sites page).
+		 */
+		public static function get_site_key_entitlements( $api_url = '', $force_check = false, $account_url = '' ) {
+			if ( ! self::has_site_key() ) {
+				return array(
+					'success'              => false,
+					'products'             => array(),
+					'site_key_hash'        => null,
+					'site_key_last_chunk'  => null,
+					'error'                => null,
+				);
+			}
+
+			return self::validate_site_key( self::get_site_key_hash(), $api_url, $force_check, $account_url );
+		}
+
+
+
+		/**
+		 * Normalize entitlements API payload into a map keyed by plugin_slug.
+		 *
+		 * @param object|array $data Response `data` object or array.
+		 * @return array Map of plugin_slug => product row.
+		 */
+		private static function normalize_site_key_entitlements_products( $data ) {
+			$products = array();
+			$rows     = array();
+
+			if ( is_object( $data ) && isset( $data->products ) ) {
+				$rows = $data->products;
+			} elseif ( is_array( $data ) && isset( $data['products'] ) ) {
+				$rows = $data['products'];
+			} elseif ( is_array( $data ) ) {
+				$rows = $data;
+			}
+
+			foreach ( (array) $rows as $key => $row ) {
+				$row = (array) $row;
+
+				$plugin_slug = isset( $row['plugin_slug'] ) ? sanitize_key( $row['plugin_slug'] ) : '';
+
+				if ( '' === $plugin_slug && is_string( $key ) ) {
+					$plugin_slug = sanitize_key( $key );
+				}
+
+				if ( '' === $plugin_slug ) {
+					continue;
+				}
+
+				$license_keys = array();
+
+				if ( ! empty( $row['license_keys'] ) && is_array( $row['license_keys'] ) ) {
+					foreach ( $row['license_keys'] as $license_key_row ) {
+						$license_key_row = (array) $license_key_row;
+						$hash            = isset( $license_key_row['license_key_hash'] ) ? strtolower( trim( (string) $license_key_row['license_key_hash'] ) ) : '';
+
+						if ( ! self::looks_like_license_key_hash( $hash ) ) {
+							continue;
+						}
+
+						$license_keys[] = array(
+							'license_key_hash'       => $hash,
+							'license_key_last_chunk' => isset( $license_key_row['license_key_last_chunk'] ) ? (string) $license_key_row['license_key_last_chunk'] : '',
+							'purchased_at'           => isset( $license_key_row['purchased_at'] ) ? (string) $license_key_row['purchased_at'] : '',
+						);
+					}
+				} elseif ( ! empty( $row['license_key_hash'] ) && self::looks_like_license_key_hash( $row['license_key_hash'] ) ) {
+					$license_keys[] = array(
+						'license_key_hash'       => strtolower( trim( (string) $row['license_key_hash'] ) ),
+						'license_key_last_chunk' => isset( $row['license_key_last_chunk'] ) ? (string) $row['license_key_last_chunk'] : '',
+						'purchased_at'           => isset( $row['purchased_at'] ) ? (string) $row['purchased_at'] : '',
+					);
+				}
+
+				$products[ $plugin_slug ] = array(
+					'plugin_slug'  => $plugin_slug,
+					'name'         => isset( $row['name'] ) ? (string) $row['name'] : $plugin_slug,
+					'package'      => isset( $row['package'] ) ? esc_url_raw( (string) $row['package'] ) : '',
+					'license_keys' => $license_keys,
+				);
+			}
+
+			return $products;
+		}
+
+
+
+		/**
+		 * Get the entitlement row for a plugin slug, if present.
+		 *
+		 * @param string $plugin_slug Plugin folder slug.
+		 * @param string $api_url     Optional API base URL override.
+		 * @return array|null
+		 */
+		public static function get_site_key_entitlement_for_plugin( $plugin_slug, $api_url = '' ) {
+			$plugin_slug  = sanitize_key( $plugin_slug );
+			$entitlements = self::get_site_key_entitlements( $api_url );
+
+			if ( empty( $entitlements['success'] ) || empty( $entitlements['products'][ $plugin_slug ] ) ) {
+				return null;
+			}
+
+			return $entitlements['products'][ $plugin_slug ];
+		}
+
+
+
+		/**
+		 * Whether the stored site key entitles a plugin slug (with a package URL).
+		 *
+		 * @param string $plugin_slug Plugin folder slug.
+		 * @param string $api_url     Optional API base URL override.
+		 */
+		public static function is_plugin_entitled_with_site_key( $plugin_slug, $api_url = '' ) {
+			$entitlement = self::get_site_key_entitlement_for_plugin( $plugin_slug, $api_url );
+
+			return is_array( $entitlement ) && ! empty( $entitlement['package'] );
+		}
+
+
+
+		/**
+		 * Activate a product for this site using the stored site key hash.
+		 *
+		 * @param string $plugin_slug      Plugin folder slug.
+		 * @param string $license_key_hash Optional license key hash (defaults to first entitlement hash).
+		 * @param string $api_url          Optional API base URL override.
+		 * @param string $account_url      Account URL for invalid-key messages (sites page).
+		 * @return object Success data object or error object with code/message.
+		 */
+		public static function activate_product_with_site_key( $plugin_slug, $license_key_hash = '', $api_url = '', $account_url = '' ) {
+			$plugin_slug    = sanitize_key( $plugin_slug );
+			$site_key_hash  = self::get_site_key_hash();
+
+			if ( ! self::looks_like_license_key_hash( $site_key_hash ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fc_lcs_missing_site_key';
+				$error_response->message = self::get_site_key_invalid_message( $account_url );
+				return $error_response;
+			}
+
+			if ( empty( $license_key_hash ) ) {
+				$entitlement = self::get_site_key_entitlement_for_plugin( $plugin_slug, $api_url );
+
+				if ( is_array( $entitlement ) && ! empty( $entitlement['license_keys'][0]['license_key_hash'] ) ) {
+					$license_key_hash = $entitlement['license_keys'][0]['license_key_hash'];
+				}
+			}
+
+			$license_key_hash = strtolower( trim( (string) $license_key_hash ) );
+
+			if ( ! self::looks_like_license_key_hash( $license_key_hash ) ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fc_lcs_missing_license_key';
+				$error_response->message = self::get_site_key_invalid_message( $account_url );
+				return $error_response;
+			}
+
+			$api_url = self::normalize_api_url( $api_url, $plugin_slug );
+			$url     = $api_url . '/wp-json/fc-licenses/v1/sites/keys/activate-product';
+
+			$body = array(
+				'site_key_hash' => $site_key_hash,
+				'products'      => array(
+					$plugin_slug => $license_key_hash,
+				),
+			);
+
+			$response = self::call_api_post(
+				$url,
+				array(
+					'Content-Type' => 'application/json',
+				),
+				array(
+					'body' => wp_json_encode( $body ),
+				)
+			);
+
+			if ( ! $response ) {
+				$error_response          = new \stdClass();
+				$error_response->code    = 'fwplm_rest_connection_error';
+				$error_response->message = self::get_site_key_invalid_message( $account_url );
+				return $error_response;
+			}
+
+			$data = json_decode( $response );
+
+			if ( is_object( $data ) && isset( $data->data ) ) {
+				$own_map = self::get_own_plugins_option_map( $api_url );
+
+				if ( ! empty( $own_map[ $plugin_slug ] ) ) {
+					$config = array(
+						'activate_option'         => $own_map[ $plugin_slug ]['license_activated_option'] ?? '',
+						'license_key_option'      => $own_map[ $plugin_slug ]['license_key_option'] ?? '',
+						'license_key_hash_option' => $own_map[ $plugin_slug ]['license_key_hash_option'] ?? '',
+					);
+
+					if ( ! empty( $config['license_key_hash_option'] ) ) {
+						update_option( $config['license_key_hash_option'], $license_key_hash, false );
+					}
+
+					self::mark_license_activated( $config, $license_key_hash );
+				}
+
+				return $data;
+			}
+
+			$error_response          = new \stdClass();
+			$error_response->code    = isset( $data->code ) ? $data->code : 'fc_lcs_site_key_invalid';
+			$error_response->message = self::get_site_key_invalid_message( $account_url );
+			return $error_response;
+		}
+
+
+
+		/**
+		 * Download and install a plugin ZIP from a package URL.
+		 *
+		 * Uses WP_Ajax_Upgrader_Skin so install failures (including null from
+		 * Plugin_Upgrader::install when $this->result was never set) surface real errors.
+		 *
+		 * @param string $package_url Package ZIP URL.
+		 * @param string $plugin_slug Expected plugin folder slug (for feedback only).
+		 * @return true|WP_Error
+		 */
+		public static function install_plugin_from_package_url( $package_url, $plugin_slug = '' ) {
+			$package_url = esc_url_raw( (string) $package_url );
+
+			if ( empty( $package_url ) ) {
+				return new WP_Error( 'fc_lcs_missing_package', 'Missing package URL for this product.' );
+			}
+
+			if ( ! current_user_can( 'install_plugins' ) ) {
+				return new WP_Error( 'fc_lcs_install_forbidden', 'You do not have permission to install plugins.' );
+			}
+
+			self::maybe_register_http_origin_hooks();
+
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			require_once ABSPATH . 'wp-admin/includes/misc.php';
+			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+			$skin     = new WP_Ajax_Upgrader_Skin();
+			$upgrader = new Plugin_Upgrader( $skin );
+			$result   = $upgrader->install( $package_url );
+
+			// Match core wp_ajax_install_plugin error handling (ajax-actions.php)
+			if ( is_wp_error( $result ) ) {
+				return $result;
+			}
+
+			if ( is_wp_error( $skin->result ) ) {
+				return $skin->result;
+			}
+
+			if ( $skin->get_errors()->has_errors() ) {
+				return new WP_Error(
+					'fc_lcs_install_failed',
+					$skin->get_error_messages()
+				);
+			}
+
+			if ( is_null( $result ) ) {
+				global $wp_filesystem;
+
+				$error_message = 'Unable to connect to the filesystem. Please confirm your credentials.';
+
+				if ( $wp_filesystem instanceof WP_Filesystem_Base && is_wp_error( $wp_filesystem->errors ) && $wp_filesystem->errors->has_errors() ) {
+					$error_message = $wp_filesystem->errors->get_error_message();
+				}
+
+				return new WP_Error( 'unable_to_connect_to_filesystem', $error_message );
+			}
+
+			if ( true !== $result ) {
+				$error_message = 'Could not install the plugin.';
+				$skin_message  = '';
+
+				if ( $skin->get_errors()->has_errors() ) {
+					$skin_message = $skin->get_error_messages();
+				} else {
+					$upgrade_messages = $skin->get_upgrade_messages();
+					if ( ! empty( $upgrade_messages ) ) {
+						$skin_message = implode( ' ', array_map( 'wp_strip_all_tags', $upgrade_messages ) );
+					}
+				}
+
+				if ( '' !== $skin_message ) {
+					$error_message .= ' ' . $skin_message;
+				}
+
+				return new WP_Error( 'fc_lcs_install_failed', $error_message );
+			}
+
+			return true;
+		}
+
+
+
+		//
 		// SITE REPORT FUNCTIONS
 		//
 
@@ -1525,6 +2140,8 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		 * @param string|null $api_url     Site report API base URL from the consuming plugin.
 		 */
 		public static function register_site_report_cron_hooks( $plugin_slug, $cron_hook, $api_url = null ) {
+			self::maybe_register_http_origin_hooks();
+
 			add_action(
 				'init',
 				function () use ( $plugin_slug, $cron_hook ) {
@@ -1643,7 +2260,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			}
 
 			$response       = self::send_site_report( $payload, $api_url, $plugin_slug );
-			$request_url    = untrailingslashit( self::get_remote_api_url( $api_url, $plugin_slug ) ) . '/wp-json/fc-licenses/v1/site-report';
+			$request_url    = untrailingslashit( self::get_remote_api_url( $api_url, $plugin_slug ) ) . '/wp-json/fc-licenses/v1/sites/telemetry';
 			$response_code  = 0;
 
 			if ( is_wp_error( $response ) ) {
@@ -2415,7 +3032,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 			}
 
 			return wp_remote_post(
-				$api_url . '/wp-json/fc-licenses/v1/site-report',
+				$api_url . '/wp-json/fc-licenses/v1/sites/telemetry',
 				array(
 					'headers' => self::get_api_request_headers(
 						array(

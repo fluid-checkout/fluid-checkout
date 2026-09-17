@@ -356,6 +356,20 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: After installing an add-on from the Dashboard, the Install button changes to Activate without reloading the page.
+* Improved: Activating an add-on from the Dashboard reloads the page so the add-ons list updates.
+* Improved: Dashboard plugin install from a site key uses the AJAX upgrader skin so install failures show the real error message.
+* Fixed: Plugin package downloads and updates send the site Origin header required by the licenses API.
+* Improved: Dashboard Install errors show below the Install button as “Could not install the plugin.”
+* Improved: Dashboard Add-ons site key actions include a Manage licenses link to this site’s Fluid Checkout account page.
+* Improved: Dashboard site key description changes when a key is saved, and invalid-key errors include a link to get a new site key.
+* Improved: Dashboard site key field stays visible with a masked value and is disabled until the key is removed.
+* Improved: Validating or removing a site key refreshes the add-ons list via AJAX without reloading the page.
+* Improved: Dashboard site key Validate, Remove key, Install, and Activate run via AJAX.
+* Improved: Dashboard site key field layout, description, and link to get a site key from your Fluid Checkout account.
+* Added: Site key field on the Dashboard Add-ons section to validate owned products, install, and activate add-ons.
+* Improved: Dashboard add-on cards are rendered from a catalog; Install uses a green primary button when the site key entitles the product.
+* Improved: Site environment reports are sent to `POST /sites/telemetry` on the licenses API (replaces `/site-report`).
 * Fixed: Temporary license activation errors are not kept after refreshing the License keys page.
 * Improved: License keys are activated with a per-field Activate button instead of saving the settings page.
 * Improved: License status on the License keys page refreshes in bulk and is cached for one day.
