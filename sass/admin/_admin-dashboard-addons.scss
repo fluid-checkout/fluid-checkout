@@ -35,6 +35,11 @@
 	width: auto;
 }
 
+.fc-addons__site-key-field-row .fc-addons__site-key-input:disabled,
+.fc-addons__site-key-field-row input[type="text"]:disabled {
+	cursor: not-allowed;
+}
+
 .fc-addons__site-key-field-row .fc-addons__site-key-input--valid,
 .fc-addons__site-key-field-row .fc-addons__site-key-input--valid:disabled,
 .fc-addons__site-key-field-row .fc-addons__site-key-input--valid:focus {

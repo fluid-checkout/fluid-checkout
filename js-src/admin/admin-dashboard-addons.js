@@ -219,7 +219,7 @@
 		var text = hasSiteKey
 			? ( i18n.descriptionSaved || 'Install and activate below the add-ons you own, or purchase the add-ons you need.' )
 			: ( i18n.descriptionEmpty || 'Paste your site key to install and activate products you already own.' );
-		var linkLabel = i18n.getSiteKey || 'Get your site key';
+		var linkLabel = i18n.getSiteKey || 'Get your site key at fluidcheckout.com';
 		var linkUrl = i18n.getSiteKeyUrl || 'https://fluidcheckout.com/my-account/sites/';
 		var link;
 
@@ -229,7 +229,7 @@
 		description.textContent = '';
 		description.appendChild( document.createTextNode( text + ( hasSiteKey ? '' : ' ' ) ) );
 
-		// Empty state also shows the account link
+		// Empty state: get site key link only (no manage licenses)
 		if ( ! hasSiteKey ) {
 			link = document.createElement( 'a' );
 			link.href = linkUrl;
@@ -237,6 +237,7 @@
 			link.rel = 'noopener noreferrer';
 			link.textContent = linkLabel;
 			description.appendChild( link );
+			return;
 		}
 
 		appendManageLicensesLink( description );

@@ -75,7 +75,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					'manageLicensesUrl'  => $this->get_manage_licenses_url(),
 					'descriptionEmpty'   => __( 'Paste your site key to install and activate products you already own.', 'fluid-checkout' ),
 					'descriptionSaved'   => __( 'Install and activate below the add-ons you own, or purchase the add-ons you need.', 'fluid-checkout' ),
-					'getSiteKey'         => __( 'Get your site key', 'fluid-checkout' ),
+					'getSiteKey'         => $this->get_get_site_key_link_label(),
 					'getSiteKeyUrl'      => FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL,
 				),
 			)
@@ -104,16 +104,42 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 
 	/**
+	 * Get the display host from the licenses website base URL.
+	 *
+	 * @return string
+	 */
+	private function get_licenses_website_host_label() {
+		$host = wp_parse_url( FluidCheckout::FC_LICENSES_WEBSITE_BASE_URL, PHP_URL_HOST );
+
+		if ( is_string( $host ) && '' !== $host ) {
+			return $host;
+		}
+
+		return untrailingslashit( FluidCheckout::FC_LICENSES_WEBSITE_BASE_URL );
+	}
+
+
+
+	/**
 	 * Get the “Manage licenses at …” link label using the licenses website base URL.
 	 *
 	 * @return string
 	 */
 	private function get_manage_licenses_link_label() {
-		$host = wp_parse_url( FluidCheckout::FC_LICENSES_WEBSITE_BASE_URL, PHP_URL_HOST );
-		$host = is_string( $host ) && '' !== $host ? $host : untrailingslashit( FluidCheckout::FC_LICENSES_WEBSITE_BASE_URL );
-
 		/* translators: %s: Fluid Checkout website host (e.g. fluidcheckout.com) */
-		return sprintf( __( 'Manage licenses at %s', 'fluid-checkout' ), $host );
+		return sprintf( __( 'Manage licenses at %s', 'fluid-checkout' ), $this->get_licenses_website_host_label() );
+	}
+
+
+
+	/**
+	 * Get the “Get your site key at …” link label using the licenses website base URL.
+	 *
+	 * @return string
+	 */
+	private function get_get_site_key_link_label() {
+		/* translators: %s: Fluid Checkout website host (e.g. fluidcheckout.com) */
+		return sprintf( __( 'Get your site key at %s', 'fluid-checkout' ), $this->get_licenses_website_host_label() );
 	}
 
 
@@ -306,11 +332,11 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			<p class="description fc-addons__site-key-description">
 				<?php if ( $has_site_key ) : ?>
 					<?php echo esc_html( __( 'Install and activate below the add-ons you own, or purchase the add-ons you need.', 'fluid-checkout' ) ); ?>
+					<?php $this->output_manage_licenses_description_link(); ?>
 				<?php else : ?>
 					<?php echo esc_html( __( 'Paste your site key to install and activate products you already own.', 'fluid-checkout' ) ); ?>
-					<a href="<?php echo esc_url( FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Get your site key', 'fluid-checkout' ) ); ?></a>
+					<a href="<?php echo esc_url( FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $this->get_get_site_key_link_label() ); ?></a>
 				<?php endif; ?>
-				<?php $this->output_manage_licenses_description_link(); ?>
 			</p>
 
 			<div class="fc-addons__site-key-result<?php echo ( is_array( $notice ) && ! empty( $notice['message'] ) ) ? ' fc-addons__site-key-result--' . esc_attr( ( isset( $notice['type'] ) && 'success' === $notice['type'] ) ? 'success' : 'error' ) : ''; ?>"<?php echo ( ! is_array( $notice ) || empty( $notice['message'] ) ) ? ' hidden' : ''; ?>>
