@@ -83,6 +83,7 @@
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidRowSelector:      '.woocommerce-invalid.form-row, .woocommerce-invalid.shipping-method__package',
 		invalidFocusDelay: 100,
 
 		enablePlaceOrderMove: 'yes',
@@ -151,6 +152,31 @@
 			requestAnimationFrame( function() {
 				waitForElementInViewportThenFocus( element );
 			} );
+		}
+	};
+
+
+
+	/**
+	 * Scroll to and focus the first invalid field, or scroll to the first invalid row.
+	 *
+	 * @param   HTMLElement  containerElement  Container element to search within.
+	 */
+	var maybeScrollToFirstInvalid = function( containerElement ) {
+		// Try to focus the first invalid field
+		var firstInvalidField = containerElement.querySelector( _settings.invalidFieldRowSelector );
+		if ( firstInvalidField ) {
+			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
+			scrollToElement( fieldRowElement );
+			waitForElementInViewportThenFocus( firstInvalidField );
+		}
+		// Otherwise scroll to the first invalid row
+		else {
+			var firstInvalidRow = containerElement.querySelector( _settings.invalidRowSelector );
+			// Scroll to the first invalid row when found
+			if ( firstInvalidRow ) {
+				scrollToElement( firstInvalidRow );
+			}
 		}
 	};
 
@@ -330,13 +356,7 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalid( substepElement );
 
 			// Bail when substep has invalid fields
 			return;
@@ -470,13 +490,7 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalid( stepElement );
 
 			// Bail when any substep has invalid fields
 			return;
