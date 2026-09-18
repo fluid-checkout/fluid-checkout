@@ -356,50 +356,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: License keys settings section notes that a site key can be used on the Dashboard to install and activate add-ons.
-* Improved: Dashboard site key “Manage licenses” link moved into the field description as “Manage licenses at fluidcheckout.com”.
-* Improved: Dashboard site key field shows green text and border when the saved key is still valid.
-* Fixed: Invalid or rotated site keys are cleared from the store on Dashboard load so the field can be edited again.
-* Improved: Dashboard add-on cards use a license key dropdown when multiple keys are entitled, with Install plugin / Activate plugin buttons.
-* Improved: Site-key entitlements cache is cleared after Dashboard Install or Activate.
-* Improved: Dashboard add-on card actions use “Install plugin” and “Activate plugin” labels.
-* Improved: Dashboard site key mask uses the `SITE-` prefix.
-* Improved: After installing an add-on from the Dashboard, the Install button changes to Activate without reloading the page.
-* Improved: Activating an add-on from the Dashboard reloads the page so the add-ons list updates.
-* Improved: Dashboard plugin install from a site key uses the AJAX upgrader skin so install failures show the real error message.
-* Fixed: Plugin package downloads and updates send the site Origin header required by the licenses API.
-* Improved: Dashboard Install errors show below the Install button as “Could not install the plugin.”
-* Improved: Dashboard Add-ons site key actions include a Manage licenses link to this site’s Fluid Checkout account page.
-* Improved: Dashboard site key description changes when a key is saved, and invalid-key errors include a link to get a new site key.
-* Improved: Dashboard site key field stays visible with a masked value and is disabled until the key is removed.
-* Improved: Validating or removing a site key refreshes the add-ons list via AJAX without reloading the page.
-* Improved: Dashboard site key Validate, Remove key, Install, and Activate run via AJAX.
-* Improved: Dashboard site key field layout, description, and link to get a site key from your Fluid Checkout account.
-* Added: Site key field on the Dashboard Add-ons section to validate owned products, install, and activate add-ons.
-* Improved: Dashboard add-on cards are rendered from a catalog; Install uses a green primary button when the site key entitles the product.
+* Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
+* Improved: Opt-in telemetry uses `FC_Telemetry_Client` with renamed telemetry hooks, options, and admin files.
+* Improved: Dashboard add-ons keep local Activate and purchase links; site key and remote Install are provided by Fluid Checkout PRO.
+* Improved: Dashboard Add-ons expose hooks for PRO to extend site key, Install, and licensed Activate.
 * Improved: Site environment reports are sent to `POST /sites/telemetry` on the licenses API (replaces `/site-report`).
-* Fixed: Temporary license activation errors are not kept after refreshing the License keys page.
-* Improved: License keys are activated with a per-field Activate button instead of saving the settings page.
-* Improved: License status on the License keys page refreshes in bulk and is cached for one day.
-* Removed: Clear control and locked inputs on license key fields; fields stay editable and status messages clear when typing.
-* Fixed: License key field recovers from a cached error status by refreshing license details when a stored key hash is available.
-* Fixed: Site reports include license key hashes using the correct settings option names.
-* Fixed: License key activation feedback is shown on each license field instead of as admin notices when saving settings.
-* Fixed: License key field status is cleared when saving a different license key, instead of keeping the previous key's status.
-* Fixed: Successful license activation shows the valid-until status on the license field and marks the plugin as activated.
-* Improved: Saved license keys are stored hashed with a masked display value (last chunk only), including invalid keys.
-* Improved: License key fields are locked when a value is saved, with a Clear control to enter a new key.
-* Fixed: License keys settings fields remain visible after saving the settings page.
-* Fixed: Site report preview works on local and development domains (send still blocked for those domains).
-* Fixed: Own plugin license fields in site reports match by plugin slug (API URL filter now receives both arguments).
-* Removed: Site report payloads no longer include client-reported `license_status` (resolved server-side).
-* Improved: License key admin field supports static `FC_Licenses_Client` API via `plugin_slug` setting argument.
-* Improved: License client file renamed to `inc/admin/fc-licenses-client.php`.
-* Improved: Site report send failures are logged to WooCommerce logs (source: `fc-site-report`).
+* Fixed: Telemetry preview works on local and development domains (send still blocked for those domains).
+* Fixed: Own plugin license fields in telemetry reports match by plugin slug (API URL filter now receives both arguments).
+* Removed: Telemetry payloads no longer include client-reported `license_status` (resolved server-side).
+* Improved: Telemetry send failures are logged to WooCommerce logs (source: `fc-telemetry`).
 * Added: Optional/Opt-in site environment reports sent to Fluid Checkout to help improve compatibility and support. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
-* Fixed: License key field showed a "key not found" error when no license key was saved.
-* Fixed: A saved license key that no longer exists on our server is now cleared, so a new license key can be entered.
 
 = 4.2.7 - 2026-08-19 =
 

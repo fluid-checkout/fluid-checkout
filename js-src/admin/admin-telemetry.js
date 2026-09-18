@@ -5,7 +5,7 @@
 ( function( $ ) {
 	'use strict';
 
-	var _settings = window.fcAdminSiteReportSettings || {};
+	var _settings = window.fcAdminTelemetrySettings || {};
 	var _i18n = _settings.i18n || {};
 	var $modal;
 	var $payload;
@@ -21,21 +21,21 @@
 	 * Initialize the site report admin UI.
 	 */
 	var init = function() {
-		$modal = $( '#fc-site-report-modal' );
-		$inlineSendButton = $( '.fc-site-report-send-now-button' );
-		$inlineFeedback = $( '.fc-site-report-enable-actions__feedback' );
+		$modal = $( '#fc-telemetry-modal' );
+		$inlineSendButton = $( '.fc-telemetry-send-now-button' );
+		$inlineFeedback = $( '.fc-telemetry-enable-actions__feedback' );
 
 		// Bail if modal is not available
 		if ( ! $modal.length ) { return; }
 
-		$payload = $modal.find( '.fc-site-report-modal__payload' );
-		$feedback = $modal.find( '.fc-site-report-modal__feedback' );
-		$sendButton = $modal.find( '.fc-site-report-modal__send-button' );
+		$payload = $modal.find( '.fc-telemetry-modal__payload' );
+		$feedback = $modal.find( '.fc-telemetry-modal__feedback' );
+		$sendButton = $modal.find( '.fc-telemetry-modal__send-button' );
 
-		$( document ).on( 'click', '.fc-site-report-preview-button', openPreview );
-		$( document ).on( 'click', '.fc-site-report-send-now-button', sendReportNowInline );
-		$( '#fc_enable_site_report' ).on( 'change', updateInlineSendButtonVisibility );
-		$modal.on( 'click', '[data-fc-site-report-close]', closeModal );
+		$( document ).on( 'click', '.fc-telemetry-preview-button', openPreview );
+		$( document ).on( 'click', '.fc-telemetry-send-now-button', sendReportNowInline );
+		$( '#fc_enable_telemetry' ).on( 'change', updateInlineSendButtonVisibility );
+		$modal.on( 'click', '[data-fc-telemetry-close]', closeModal );
 		$sendButton.on( 'click', sendReportNowModal );
 		$( document ).on( 'keydown', handleKeydown );
 
@@ -48,11 +48,11 @@
 	 * Collect the current site report form state.
 	 */
 	var getFormState = function() {
-		var enabled = $( '#fc_enable_site_report' ).is( ':checked' );
+		var enabled = $( '#fc_enable_telemetry' ).is( ':checked' );
 		var groups = [ 'basic_environment' ];
 
 		if ( enabled ) {
-			$( 'input[name="fc_site_report_data_groups[]"]:checked' ).each( function() {
+			$( 'input[name="fc_telemetry_data_groups[]"]:checked' ).each( function() {
 				var value = $( this ).val();
 
 				if ( value && groups.indexOf( value ) === -1 ) {
@@ -94,7 +94,7 @@
 		$.post(
 			_settings.ajaxUrl,
 			{
-				action: 'fc_site_report_preview',
+				action: 'fc_telemetry_preview',
 				nonce: _settings.nonce,
 				enabled: formState.enabled,
 				data_groups: formState.data_groups,
@@ -240,12 +240,12 @@
 
 		clearFeedback( $feedbackTarget );
 		$trigger.prop( 'disabled', true );
-		$( '.fc-site-report-preview-button' ).prop( 'disabled', true );
+		$( '.fc-telemetry-preview-button' ).prop( 'disabled', true );
 
 		$.post(
 			_settings.ajaxUrl,
 			{
-				action: 'fc_site_report_send_now',
+				action: 'fc_telemetry_send_now',
 				nonce: _settings.nonce,
 				enabled: formState.enabled,
 				data_groups: formState.data_groups,
@@ -262,7 +262,7 @@
 			}
 
 			if ( enableIfDisabled ) {
-				$( '#fc_enable_site_report' ).prop( 'checked', true ).trigger( 'change' );
+				$( '#fc_enable_telemetry' ).prop( 'checked', true ).trigger( 'change' );
 			}
 
 			isEnabled = true;
@@ -277,7 +277,7 @@
 			showFeedback( $feedbackTarget, getSendErrorMessage( getSendErrorDataFromXhr( xhr ) ), 'error' );
 		} ).always( function() {
 			$trigger.prop( 'disabled', false );
-			$( '.fc-site-report-preview-button' ).prop( 'disabled', false );
+			$( '.fc-telemetry-preview-button' ).prop( 'disabled', false );
 		} );
 	};
 
@@ -289,7 +289,7 @@
 	var updateInlineSendButtonVisibility = function() {
 		if ( ! $inlineSendButton.length ) { return; }
 
-		if ( $( '#fc_enable_site_report' ).is( ':checked' ) ) {
+		if ( $( '#fc_enable_telemetry' ).is( ':checked' ) ) {
 			$inlineSendButton.removeClass( 'is-hidden' );
 			return;
 		}
@@ -360,7 +360,7 @@
 	 */
 	var openModal = function() {
 		$modal.addClass( 'is-open' ).attr( 'aria-hidden', 'false' );
-		$( 'body' ).addClass( 'fc-site-report-modal-open' );
+		$( 'body' ).addClass( 'fc-telemetry-modal-open' );
 	};
 
 
@@ -374,7 +374,7 @@
 		if ( event ) { event.preventDefault(); }
 
 		$modal.removeClass( 'is-open' ).attr( 'aria-hidden', 'true' );
-		$( 'body' ).removeClass( 'fc-site-report-modal-open' );
+		$( 'body' ).removeClass( 'fc-telemetry-modal-open' );
 	};
 
 

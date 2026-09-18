@@ -38,8 +38,8 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
 
 		// Site report settings
-		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'sanitize_site_report_settings' ), 10, 3 );
-		add_action( 'woocommerce_settings_saved', array( $this, 'maybe_sync_site_report_cron_on_settings_saved' ), 10 );
+		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'sanitize_telemetry_settings' ), 10, 3 );
+		add_action( 'woocommerce_settings_saved', array( $this, 'maybe_sync_telemetry_cron_on_settings_saved' ), 10 );
 	}
 
 
@@ -88,7 +88,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'title' => __( 'Site environment reports', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => __( 'Send non-sensitive site environment reports to help Fluid Checkout improve compatibility. Reports are not sent until enabled in the options below.', 'fluid-checkout' ),
-					'id'    => 'fc_checkout_site_report_options',
+					'id'    => 'fc_checkout_telemetry_options',
 				),
 
 				array(
@@ -96,9 +96,9 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'desc'            => __( 'Enable sending site environment reports to Fluid Checkout', 'fluid-checkout' ),
 					'desc_tip'        => __( 'Reports are sent weekly when enabled and help us improve compatibility and support for your site.', 'fluid-checkout' ) . '<br>' .
 									 __( 'No customer, user, or sensitive data are included in the reports.', 'fluid-checkout' ),
-					'id'              => 'fc_enable_site_report',
-					'type'            => 'fc_site_report_enable',
-					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_site_report' ),
+					'id'              => 'fc_enable_telemetry',
+					'type'            => 'fc_telemetry_enable',
+					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_telemetry' ),
 					'checkboxgroup'   => 'start',
 					'show_if_checked' => 'option',
 					'autoload'        => false,
@@ -106,25 +106,25 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				array(
 					'title'             => __( 'Data to share', 'fluid-checkout' ),
 					'desc'              => __( 'Choose which optional data groups to include in site reports.', 'fluid-checkout' ),
-					'id'                => 'fc_site_report_data_groups',
+					'id'                => 'fc_telemetry_data_groups',
 					'type'              => 'fc_checkboxgroup',
 					'options'           => array(
 						'basic_environment'         => array(
 							'label'       => __( 'Basic environment info', 'fluid-checkout' ),
-							'description' => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled.', 'fluid-checkout' ),
+							'description' => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled. Helps us understand the environment your site is running in.', 'fluid-checkout' ),
 						),
 						'woocommerce_sales_metrics' => array(
-							'label'       => __( 'WooCommerce sales metrics', 'fluid-checkout' ),
-							'description' => __( 'Order count and total sales for the last closed calendar month. No customer data is included.', 'fluid-checkout' ),
+							'label'       => __( 'Sales metrics', 'fluid-checkout' ),
+							'description' => __( 'Monthly order count and total sales for one year prior to installing Fluid Checkout up to today. Helps us understand if you are making more money with our plugins installed. No customer or user data is ever sent.', 'fluid-checkout' ),
 						),
 						'plugin_settings'           => array(
-							'label'       => __( 'Plugin settings', 'fluid-checkout' ),
-							'description' => __( 'Fluid Checkout plugin settings to help with support requests. Coming soon.', 'fluid-checkout' ),
+							'label'       => __( 'Plugin settings', 'fluid-checkout' ) . ' ' . __( '[coming soon]', 'fluid-checkout' ),
+							'description' => __( 'Fluid Checkout plugin settings to help with support requests. Helps us understand how you are using our plugins.', 'fluid-checkout' ),
 						),
 					),
 					'required_options'  => array( 'basic_environment' ),
 					'disabled_options'  => array( 'basic_environment', 'plugin_settings' ),
-					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_site_report_data_groups' ),
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_data_groups' ),
 					'checkboxgroup'     => 'end',
 					'show_if_checked'   => 'yes',
 					'autoload'          => false,
@@ -132,7 +132,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 				array(
 					'type' => 'sectionend',
-					'id'   => 'fc_checkout_site_report_options',
+					'id'   => 'fc_checkout_telemetry_options',
 				),
 
 				array(
@@ -205,19 +205,19 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 * @param array $option    Option definition.
 	 * @param mixed $raw_value Raw option value.
 	 */
-	public function sanitize_site_report_settings( $value, $option, $raw_value ) {
-		if ( empty( $option['id'] ) || 'fc_site_report_data_groups' !== $option['id'] ) {
+	public function sanitize_telemetry_settings( $value, $option, $raw_value ) {
+		if ( empty( $option['id'] ) || 'fc_telemetry_data_groups' !== $option['id'] ) {
 			return $value;
 		}
 
 		// Preserve stored groups when reporting is disabled and the field is hidden.
-		if ( 'no' === get_option( 'fc_enable_site_report', 'no' ) ) {
-			return $this->normalize_site_report_data_groups( get_option( 'fc_site_report_data_groups', array( 'basic_environment' ) ) );
+		if ( 'no' === get_option( 'fc_enable_telemetry', 'no' ) ) {
+			return $this->normalize_telemetry_data_groups( get_option( 'fc_telemetry_data_groups', array( 'basic_environment' ) ) );
 		}
 
 		$groups = is_array( $raw_value ) ? $raw_value : array();
 
-		return $this->normalize_site_report_data_groups( $groups );
+		return $this->normalize_telemetry_data_groups( $groups );
 	}
 
 
@@ -227,7 +227,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 *
 	 * @param mixed $groups Raw or sanitized group values.
 	 */
-	public function normalize_site_report_data_groups( $groups ) {
+	public function normalize_telemetry_data_groups( $groups ) {
 		$allowed = array( 'basic_environment', 'woocommerce_sales_metrics', 'plugin_settings' );
 
 		if ( ! is_array( $groups ) ) {
@@ -263,7 +263,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	/**
 	 * Schedule or clear the site report cron when Tools settings are saved.
 	 */
-	public function maybe_sync_site_report_cron_on_settings_saved() {
+	public function maybe_sync_telemetry_cron_on_settings_saved() {
 		// Bail if not saving Fluid Checkout Tools settings
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( empty( $_GET['tab'] ) || 'fc_checkout' !== wp_unslash( $_GET['tab'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -275,17 +275,17 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 			return;
 		}
 
-		// Bail if license manager class is not available
-		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
+		// Bail if telemetry client is not available
+		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
 
-		// Maybe schedule site report cron if enabled
-		if ( FC_Licenses_Client::is_site_report_enabled() ) {
-			FC_Licenses_Client::schedule_site_report_cron( FluidCheckout::$plugin_slug, FluidCheckout::SITE_REPORT_CRON_HOOK );
+		// Maybe schedule telemetry cron if enabled
+		if ( FC_Telemetry_Client::is_telemetry_enabled() ) {
+			FC_Telemetry_Client::schedule_telemetry_cron( FluidCheckout::$plugin_slug, FluidCheckout::TELEMETRY_CRON_HOOK );
 			return;
 		}
 
 		// Otherwise clear the site report cron
-		wp_clear_scheduled_hook( FluidCheckout::SITE_REPORT_CRON_HOOK );
+		wp_clear_scheduled_hook( FluidCheckout::TELEMETRY_CRON_HOOK );
 	}
 
 }

@@ -4,17 +4,17 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Site report telemetry opt-in prompts (admin notice + dashboard banner).
  */
-class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
+class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 
 	/**
 	 * Admin notice name and dismiss option suffix.
 	 */
-	const NOTICE_NAME = 'site_report_telemetry';
+	const NOTICE_NAME = 'telemetry';
 
 	/**
 	 * Nonce action for enabling telemetry from a prompt.
 	 */
-	const ENABLE_NONCE_ACTION = 'enable-site-report-telemetry';
+	const ENABLE_NONCE_ACTION = 'enable-telemetry';
 
 
 
@@ -39,12 +39,12 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 	/**
 	 * Whether the telemetry opt-in prompt should be shown.
 	 */
-	public function should_show_site_report_telemetry_prompt() {
+	public function should_show_telemetry_prompt() {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return false; }
 
 		// Bail if site reporting is already enabled
-		if ( 'yes' === get_option( 'fc_enable_site_report', 'no' ) ) { return false; }
+		if ( 'yes' === get_option( 'fc_enable_telemetry', 'no' ) ) { return false; }
 
 		// Bail if the prompt was dismissed
 		if ( $this->is_dismissed() ) { return false; }
@@ -119,7 +119,7 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 		return wp_nonce_url(
 			add_query_arg(
 				array(
-					'fc_action' => 'enable_site_report_telemetry',
+					'fc_action' => 'enable_telemetry',
 				),
 				admin_url( 'admin.php' )
 			),
@@ -150,15 +150,15 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 	/**
 	 * Enable site report telemetry and schedule the weekly cron.
 	 */
-	public function enable_site_report_telemetry() {
-		// Bail if license manager class is not available
-		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
+	public function enable_telemetry() {
+		// Bail if telemetry client class is not available
+		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
 
-		// Enable site report
-		update_option( 'fc_enable_site_report', 'yes' );
+		// Enable telemetry
+		update_option( 'fc_enable_telemetry', 'yes' );
 
 		// Schedule the site report cron
-		FC_Licenses_Client::schedule_site_report_cron( FluidCheckout::$plugin_slug, FluidCheckout::SITE_REPORT_CRON_HOOK );
+		FC_Telemetry_Client::schedule_telemetry_cron( FluidCheckout::$plugin_slug, FluidCheckout::TELEMETRY_CRON_HOOK );
 	}
 
 
@@ -166,7 +166,7 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 	/**
 	 * Dismiss the telemetry opt-in prompt.
 	 */
-	public function dismiss_site_report_telemetry_prompt() {
+	public function dismiss_telemetry_prompt() {
 		update_option( 'fc_dismissed_notice_' . self::NOTICE_NAME, 1 );
 	}
 
@@ -177,7 +177,7 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 	 */
 	public function maybe_handle_enable_request() {
 		// Bail if not an enable request
-		if ( ! array_key_exists( 'fc_action', $_GET ) || 'enable_site_report_telemetry' !== sanitize_text_field( wp_unslash( $_GET['fc_action'] ) ) ) { return; }
+		if ( ! array_key_exists( 'fc_action', $_GET ) || 'enable_telemetry' !== sanitize_text_field( wp_unslash( $_GET['fc_action'] ) ) ) { return; }
 
 		// Bail if nonce is invalid
 		if ( ! array_key_exists( '_wpnonce', $_GET ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), self::ENABLE_NONCE_ACTION ) ) { return; }
@@ -185,8 +185,8 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return; }
 
-		$this->enable_site_report_telemetry();
-		$this->dismiss_site_report_telemetry_prompt();
+		$this->enable_telemetry();
+		$this->dismiss_telemetry_prompt();
 
 		$redirect_url = wp_get_referer();
 
@@ -200,4 +200,4 @@ class FluidCheckout_Admin_SiteReportTelemetry extends FluidCheckout {
 
 }
 
-FluidCheckout_Admin_SiteReportTelemetry::instance();
+FluidCheckout_Admin_TelemetrySettings::instance();

@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Site report admin preview and send-now actions.
  */
-class FluidCheckout_Admin_SiteReport extends FluidCheckout {
+class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -19,8 +19,8 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'wp_ajax_fc_site_report_preview', array( $this, 'ajax_preview_site_report' ) );
-		add_action( 'wp_ajax_fc_site_report_send_now', array( $this, 'ajax_send_site_report_now' ) );
+		add_action( 'wp_ajax_fc_telemetry_preview', array( $this, 'ajax_preview_telemetry' ) );
+		add_action( 'wp_ajax_fc_telemetry_send_now', array( $this, 'ajax_send_telemetry_now' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts_styles' ), 10 );
 		add_action( 'admin_footer', array( $this, 'output_modal_markup' ), 10 );
 	}
@@ -36,8 +36,8 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 		if ( ! $this->is_tools_settings_screen( $hook ) ) { return; }
 
 		wp_register_script(
-			'fc-admin-site-report',
-			FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-site-report' ),
+			'fc-admin-telemetry',
+			FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-telemetry' ),
 			array( 'jquery' ),
 			null,
 			array(
@@ -46,14 +46,14 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 			)
 		);
 
-		wp_enqueue_script( 'fc-admin-site-report' );
+		wp_enqueue_script( 'fc-admin-telemetry' );
 
 		wp_localize_script(
-			'fc-admin-site-report',
-			'fcAdminSiteReportSettings',
+			'fc-admin-telemetry',
+			'fcAdminTelemetrySettings',
 			array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'nonce'   => wp_create_nonce( 'fc_site_report_admin' ),
+				'nonce'   => wp_create_nonce( 'fc_telemetry_admin' ),
 				'i18n'    => array(
 					'modalTitle'           => __( 'Site report preview', 'fluid-checkout' ),
 					'modalDescription'     => __( 'This is the data that would be included in the next site environment report based on your current settings.', 'fluid-checkout' ),
@@ -83,21 +83,21 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 	public function output_modal_markup() {
 		if ( ! $this->is_tools_settings_screen() ) { return; }
 		?>
-		<div id="fc-site-report-modal" class="fc-site-report-modal" aria-hidden="true">
-			<div class="fc-site-report-modal__backdrop" data-fc-site-report-close></div>
-			<div class="fc-site-report-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="fc-site-report-modal-title">
-				<div class="fc-site-report-modal__header">
-					<h2 id="fc-site-report-modal-title"><?php esc_html_e( 'Site report preview', 'fluid-checkout' ); ?></h2>
-					<button type="button" class="fc-site-report-modal__close" data-fc-site-report-close aria-label="<?php esc_attr_e( 'Close', 'fluid-checkout' ); ?>">&times;</button>
+		<div id="fc-telemetry-modal" class="fc-telemetry-modal" aria-hidden="true">
+			<div class="fc-telemetry-modal__backdrop" data-fc-telemetry-close></div>
+			<div class="fc-telemetry-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="fc-telemetry-modal-title">
+				<div class="fc-telemetry-modal__header">
+					<h2 id="fc-telemetry-modal-title"><?php esc_html_e( 'Site report preview', 'fluid-checkout' ); ?></h2>
+					<button type="button" class="fc-telemetry-modal__close" data-fc-telemetry-close aria-label="<?php esc_attr_e( 'Close', 'fluid-checkout' ); ?>">&times;</button>
 				</div>
-				<div class="fc-site-report-modal__body">
+				<div class="fc-telemetry-modal__body">
 					<p class="description"><?php esc_html_e( 'This is the data that would be included in the next site environment report based on your current settings.', 'fluid-checkout' ); ?></p>
-					<pre class="fc-site-report-modal__payload" aria-live="polite"></pre>
-					<p class="fc-site-report-modal__feedback is-hidden"></p>
+					<pre class="fc-telemetry-modal__payload" aria-live="polite"></pre>
+					<p class="fc-telemetry-modal__feedback is-hidden"></p>
 				</div>
-				<div class="fc-site-report-modal__footer">
-					<button type="button" class="button" data-fc-site-report-close><?php esc_html_e( 'Close', 'fluid-checkout' ); ?></button>
-					<button type="button" class="button button-primary fc-site-report-modal__send-button is-hidden"><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
+				<div class="fc-telemetry-modal__footer">
+					<button type="button" class="button" data-fc-telemetry-close><?php esc_html_e( 'Close', 'fluid-checkout' ); ?></button>
+					<button type="button" class="button button-primary fc-telemetry-modal__send-button is-hidden"><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
 				</div>
 			</div>
 		</div>
@@ -109,13 +109,13 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 	/**
 	 * AJAX handler for site report preview.
 	 */
-	public function ajax_preview_site_report() {
+	public function ajax_preview_telemetry() {
 		$this->verify_ajax_request();
 
 		$groups = $this->get_request_data_groups();
 
-		// Bail if license manager class is not available or does not support site report preview
-		if ( ! class_exists( 'FC_Licenses_Client' ) || ! method_exists( 'FC_Licenses_Client', 'build_site_report_payload' ) ) {
+		// Bail if telemetry client class is not available or does not support site report preview
+		if ( ! class_exists( 'FC_Telemetry_Client' ) || ! method_exists( 'FC_Telemetry_Client', 'build_telemetry_payload' ) ) {
 			wp_send_json_error(
 				array(
 					'message' => __( 'Site environment reporting is not available.', 'fluid-checkout' ),
@@ -125,7 +125,7 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 		}
 
 		// Build payload including local/dev domains so the JSON preview is always inspectable.
-		$payload = FC_Licenses_Client::build_site_report_payload( $groups, null, self::FC_LICENSES_API_URL );
+		$payload = FC_Telemetry_Client::build_telemetry_payload( $groups, null, self::FC_TELEMETRY_API_URL );
 
 		if ( empty( $payload ) ) {
 			wp_send_json_error(
@@ -151,14 +151,14 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 	/**
 	 * AJAX handler for sending a site report immediately.
 	 */
-	public function ajax_send_site_report_now() {
+	public function ajax_send_telemetry_now() {
 		$this->verify_ajax_request();
 
 		$groups             = $this->get_request_data_groups();
 		$enable_if_disabled = 'yes' !== $this->get_request_enable_value();
 
-		// Bail if license client does not support sending site reports
-		if ( ! class_exists( 'FC_Licenses_Client' ) || ! method_exists( 'FC_Licenses_Client', 'send_site_report_now' ) ) {
+		// Bail if telemetry client class is not available or does not support sending site reports
+		if ( ! class_exists( 'FC_Telemetry_Client' ) || ! method_exists( 'FC_Telemetry_Client', 'send_telemetry_now' ) ) {
 			wp_send_json_error(
 				array(
 					'message' => __( 'Site environment reporting is not available.', 'fluid-checkout' ),
@@ -167,7 +167,7 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 			);
 		}
 
-		$result = FC_Licenses_Client::send_site_report_now( $groups, $enable_if_disabled, false, self::$plugin_slug, self::FC_LICENSES_API_URL, self::SITE_REPORT_CRON_HOOK );
+		$result = FC_Telemetry_Client::send_telemetry_now( $groups, $enable_if_disabled, false, self::$plugin_slug, self::FC_TELEMETRY_API_URL, self::TELEMETRY_CRON_HOOK );
 
 		if ( empty( $result['success'] ) ) {
 			$error_code = $result['error_code'] ?? 'request_failed';
@@ -209,7 +209,7 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 			);
 		}
 
-		check_ajax_referer( 'fc_site_report_admin', 'nonce' );
+		check_ajax_referer( 'fc_telemetry_admin', 'nonce' );
 	}
 
 
@@ -237,11 +237,11 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 
 		$groups = array_map( 'sanitize_key', wp_unslash( $_POST['data_groups'] ) );
 
-		if ( ! class_exists( 'FC_Licenses_Client' ) || ! method_exists( 'FC_Licenses_Client', 'normalize_site_report_data_groups' ) ) {
+		if ( ! class_exists( 'FC_Telemetry_Client' ) || ! method_exists( 'FC_Telemetry_Client', 'normalize_telemetry_data_groups' ) ) {
 			return $groups;
 		}
 
-		return FC_Licenses_Client::normalize_site_report_data_groups( $groups );
+		return FC_Telemetry_Client::normalize_telemetry_data_groups( $groups );
 	}
 
 
@@ -305,4 +305,4 @@ class FluidCheckout_Admin_SiteReport extends FluidCheckout {
 
 }
 
-FluidCheckout_Admin_SiteReport::instance();
+FluidCheckout_Admin_Telemetry::instance();

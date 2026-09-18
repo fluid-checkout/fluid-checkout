@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Admin notice: ask permission to send site report telemetry.
  */
-class FluidCheckout_AdminNotices_SiteReportTelemetry extends FluidCheckout {
+class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -30,16 +30,16 @@ class FluidCheckout_AdminNotices_SiteReportTelemetry extends FluidCheckout {
 	 * @param array $notices Admin notices from the plugin.
 	 */
 	public function add_notice( $notices = array() ) {
-		$telemetry = FluidCheckout_Admin_SiteReportTelemetry::instance();
+		$telemetry = FluidCheckout_Admin_TelemetrySettings::instance();
 
 		// Bail if the telemetry prompt should not be shown
-		if ( ! $telemetry->should_show_site_report_telemetry_prompt() ) { return $notices; }
+		if ( ! $telemetry->should_show_telemetry_prompt() ) { return $notices; }
 
 		// Bail on the Dashboard settings screen where the inline prompt is shown instead
 		if ( $telemetry->is_fc_checkout_dashboard_screen() ) { return $notices; }
 
 		$notices[] = array(
-			'name'        => FluidCheckout_Admin_SiteReportTelemetry::NOTICE_NAME,
+			'name'        => FluidCheckout_Admin_TelemetrySettings::NOTICE_NAME,
 			'title'       => __( 'Help us improve Fluid Checkout', 'fluid-checkout' ),
 			'description' => __( 'Share anonymous site environment reports with Fluid Checkout to help us improve compatibility and measure impact. No customer, user, or sensitive data are included. You can choose what is shared anytime from the Tools settings.', 'fluid-checkout' ),
 			'actions'     => array(
@@ -61,4 +61,4 @@ class FluidCheckout_AdminNotices_SiteReportTelemetry extends FluidCheckout {
 
 }
 
-FluidCheckout_AdminNotices_SiteReportTelemetry::instance();
+FluidCheckout_AdminNotices_Telemetry::instance();

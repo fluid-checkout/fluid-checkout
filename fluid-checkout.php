@@ -57,24 +57,14 @@ class FluidCheckout {
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
 	/**
-	 * Cron hook for weekly site environment reports.
+	 * Cron hook for weekly telemetry.
 	 */
-	const SITE_REPORT_CRON_HOOK = 'fc_site_report_weekly';
+	const TELEMETRY_CRON_HOOK = 'fc_telemetry_weekly';
 
 	/**
-	 * Default licenses API base URL.
+	 * Default telemetry API base URL.
 	 */
-	const FC_LICENSES_API_URL = 'https://fluidcheckout.com';
-
-	/**
-	 * Default licenses website base URL.
-	 */
-	const FC_LICENSES_WEBSITE_BASE_URL = 'https://fluidcheckout.com';
-
-	/**
-	 * Default site key account URL.
-	 */
-	const FC_LICENSES_WEBSITE_ACCOUNT_URL = 'https://fluidcheckout.com/my-account/sites/';
+	const FC_TELEMETRY_API_URL = 'https://fluidcheckout.com';
 
 	/**
 	 * Hold list of the plugin features to load when initializing.
@@ -118,8 +108,8 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
-		$this->load_license_manager_class();
-		$this->init_site_report_hooks();
+		$this->load_telemetry_client_class();
+		$this->init_telemetry_hooks();
 		$this->load_db_migrations();
 		$this->load_admin_notices();
 		$this->register_features();
@@ -150,43 +140,43 @@ class FluidCheckout {
 
 
 	/**
-	 * Load the license manager class file when needed.
+	 * Load the telemetry client class file when needed.
 	 */
-	private function load_license_manager_class() {
-		self::maybe_register_own_plugins_licensing();
+	private function load_telemetry_client_class() {
+		self::maybe_register_own_plugins_telemetry();
 
 		// Bail if class is already loaded
-		if ( class_exists( 'FC_Licenses_Client' ) ) { return; }
+		if ( class_exists( 'FC_Telemetry_Client' ) ) { return; }
 
-		require_once self::$directory_path . 'inc/admin/fc-licenses-client.php';
+		require_once self::$directory_path . 'inc/admin/fc-telemetry-client.php';
 	}
 
 
 
 	/**
-	 * Register this plugin in the licenses client own-plugins map.
+	 * Register this plugin in the telemetry own-plugins map.
 	 */
-	private static function maybe_register_own_plugins_licensing() {
-		if ( has_filter( 'fc_licenses_own_plugins', array( __CLASS__, 'set_own_plugins_license_options' ) ) ) {
+	private static function maybe_register_own_plugins_telemetry() {
+		if ( has_filter( 'fc_telemetry_own_plugins', array( __CLASS__, 'set_own_plugins_telemetry_options' ) ) ) {
 			return;
 		}
 
-		add_filter( 'fc_licenses_own_plugins', array( __CLASS__, 'set_own_plugins_license_options' ), 10, 2 );
+		add_filter( 'fc_telemetry_own_plugins', array( __CLASS__, 'set_own_plugins_telemetry_options' ), 10, 2 );
 	}
 
 
 
 	/**
-	 * Add this plugin to the licenses client own-plugins map.
+	 * Add this plugin to the telemetry own-plugins map.
 	 *
 	 * @param array       $plugins Own plugins map.
 	 * @param string|null $api_url Remote API base URL from the consuming plugin.
 	 */
-	public static function set_own_plugins_license_options( $plugins, $api_url = null ) {
-		// Bail if a specific API URL was requested and it is not this plugin's licenses API.
-		if ( null !== $api_url && ! self::is_own_licenses_api_url( $api_url ) ) { return $plugins; }
+	public static function set_own_plugins_telemetry_options( $plugins, $api_url = null ) {
+		// Bail if a specific API URL was requested and it is not this plugin's telemetry API.
+		if ( null !== $api_url && ! self::is_own_telemetry_api_url( $api_url ) ) { return $plugins; }
 
-		// Define own plugins license options, so that we can track the activation time of each plugin for the opt-in telemetry.
+		// Define own plugins options so telemetry can track activation time and optional license hashes when commercial plugins are present.
 		$own_plugins = array(
 			'fluid-checkout' => array(
 				'activation_time_option' => 'fc_plugin_activation_time',
@@ -217,29 +207,32 @@ class FluidCheckout {
 			),
 			'fc-conversion-kit' => array(
 				'activation_time_option' => 'fc_kit_plugin_activation_time',
-				'license_key_option' => 'fc_kit_license_key',
-				'license_key_hash_option' => 'fc_kit_license_key_hash',
-				'license_activated_option' => 'fc_kit_license_key_activated',
+			),
+			'fc-paddle-payments' => array(
+				'activation_time_option' => 'fc_paddle_plugin_activation_time',
+				'license_key_option' => 'fc_paddle_license_key',
+				'license_key_hash_option' => 'fc_paddle_license_key_hash',
+				'license_activated_option' => 'fc_paddle_license_key_activated',
 			),
 		);
 
-		return self::merge_own_plugins_license_options( $plugins, $own_plugins );
+		return self::merge_own_plugins_telemetry_options( $plugins, $own_plugins );
 	}
 
 	/**
-	 * Whether an API URL belongs to this plugin's licenses API (canonical or filtered).
+	 * Whether an API URL belongs to this plugin's telemetry API (canonical or filtered).
 	 *
 	 * @param string $api_url Remote API base URL.
 	 */
-	private static function is_own_licenses_api_url( $api_url ) {
+	private static function is_own_telemetry_api_url( $api_url ) {
 		$api_url   = untrailingslashit( (string) $api_url );
-		$canonical = untrailingslashit( self::FC_LICENSES_API_URL );
+		$canonical = untrailingslashit( self::FC_TELEMETRY_API_URL );
 
 		if ( $api_url === $canonical ) {
 			return true;
 		}
 
-		$filtered = untrailingslashit( (string) apply_filters( 'fc_licenses_api_url', self::FC_LICENSES_API_URL, self::$plugin_slug ) );
+		$filtered = untrailingslashit( (string) apply_filters( 'fc_telemetry_api_url', self::FC_TELEMETRY_API_URL, self::$plugin_slug ) );
 
 		return $api_url === $filtered;
 	}
@@ -250,7 +243,7 @@ class FluidCheckout {
 	 * @param array $plugins     Existing own plugins map.
 	 * @param array $own_plugins Own plugins entries to merge in.
 	 */
-	private static function merge_own_plugins_license_options( $plugins, $own_plugins ) {
+	private static function merge_own_plugins_telemetry_options( $plugins, $own_plugins ) {
 		foreach ( $own_plugins as $plugin_key => $settings ) {
 			if ( isset( $plugins[ $plugin_key ] ) && is_array( $plugins[ $plugin_key ] ) ) {
 				$plugins[ $plugin_key ] = array_merge( $plugins[ $plugin_key ], $settings );
@@ -264,13 +257,14 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Initialize site report hooks.
+	 * Initialize telemetry hooks.
 	 */
-	private function init_site_report_hooks() {
-		// Bail if class is not loaded
-		if ( ! class_exists( 'FC_Licenses_Client' ) ) { return; }
+	private function init_telemetry_hooks() {
+		$this->load_telemetry_client_class();
 
-		FC_Licenses_Client::register_site_report_cron_hooks( self::$plugin_slug, self::SITE_REPORT_CRON_HOOK, self::FC_LICENSES_API_URL );
+		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
+
+		FC_Telemetry_Client::register_telemetry_cron_hooks( self::$plugin_slug, self::TELEMETRY_CRON_HOOK, self::FC_TELEMETRY_API_URL );
 	}
 
 
@@ -501,8 +495,8 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
-		require_once self::$directory_path . 'inc/admin/admin-site-report-telemetry.php';
-		require_once self::$directory_path . 'inc/admin/admin-notice-site-report-telemetry.php';
+		require_once self::$directory_path . 'inc/admin/admin-telemetry-settings.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-telemetry.php';
 	}
 
 

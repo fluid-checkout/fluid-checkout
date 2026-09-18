@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Dashboard telemetry opt-in prompt field.
  */
-class FluidCheckout_Admin_SettingType_SiteReportTelemetryPrompt extends FluidCheckout {
+class FluidCheckout_Admin_SettingType_TelemetryPrompt extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -19,7 +19,7 @@ class FluidCheckout_Admin_SettingType_SiteReportTelemetryPrompt extends FluidChe
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'woocommerce_admin_field_fc_site_report_telemetry_prompt', array( $this, 'output_field' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_telemetry_prompt', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -30,10 +30,10 @@ class FluidCheckout_Admin_SettingType_SiteReportTelemetryPrompt extends FluidChe
 	 * @param array $value Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		$telemetry = FluidCheckout_Admin_SiteReportTelemetry::instance();
+		$telemetry = FluidCheckout_Admin_TelemetrySettings::instance();
 
 		// Bail if the telemetry prompt should not be shown
-		if ( ! $telemetry->should_show_site_report_telemetry_prompt() ) { return; }
+		if ( ! $telemetry->should_show_telemetry_prompt() ) { return; }
 		?>
 
 		<tr valign="top" class="fc-dashboard-section__row fc-dashboard-section--telemetry-prompt">
@@ -55,4 +55,4 @@ class FluidCheckout_Admin_SettingType_SiteReportTelemetryPrompt extends FluidChe
 
 }
 
-FluidCheckout_Admin_SettingType_SiteReportTelemetryPrompt::instance();
+FluidCheckout_Admin_SettingType_TelemetryPrompt::instance();

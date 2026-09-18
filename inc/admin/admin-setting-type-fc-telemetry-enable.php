@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Site report enable checkbox with preview action.
  */
-class FluidCheckout_Admin_SettingType_SiteReportEnable extends FluidCheckout {
+class FluidCheckout_Admin_SettingType_TelemetryEnable extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -19,7 +19,7 @@ class FluidCheckout_Admin_SettingType_SiteReportEnable extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'woocommerce_admin_field_fc_site_report_enable', array( $this, 'output_field' ), 10 );
+		add_action( 'woocommerce_admin_field_fc_telemetry_enable', array( $this, 'output_field' ), 10 );
 		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'sanitize_option_value' ), 10, 3 );
 	}
 
@@ -33,7 +33,7 @@ class FluidCheckout_Admin_SettingType_SiteReportEnable extends FluidCheckout {
 	 * @param mixed $raw_value Raw option value.
 	 */
 	public function sanitize_option_value( $value, $option, $raw_value ) {
-		if ( empty( $option['type'] ) || 'fc_site_report_enable' !== $option['type'] ) {
+		if ( empty( $option['type'] ) || 'fc_telemetry_enable' !== $option['type'] ) {
 			return $value;
 		}
 
@@ -127,18 +127,18 @@ class FluidCheckout_Admin_SettingType_SiteReportEnable extends FluidCheckout {
 			<?php echo $label_text; // WPCS: XSS ok. ?>
 		</label>
 		<?php echo $desc_tip_html; // WPCS: XSS ok. ?>
-		<p class="fc-site-report-enable-actions">
+		<p class="fc-telemetry-enable-actions">
 			<button
 				type="button"
-				class="button button-secondary fc-site-report-preview-button"
+				class="button button-secondary fc-telemetry-preview-button"
 				aria-haspopup="dialog"
 			><?php esc_html_e( 'Preview report data', 'fluid-checkout' ); ?></button>
 			<button
 				type="button"
-				class="button button-secondary fc-site-report-send-now-button<?php echo 'yes' === $option_value ? '' : ' is-hidden'; ?>"
+				class="button button-secondary fc-telemetry-send-now-button<?php echo 'yes' === $option_value ? '' : ' is-hidden'; ?>"
 			><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
 		</p>
-		<p class="fc-site-report-enable-actions__feedback is-hidden" aria-live="polite"></p>
+		<p class="fc-telemetry-enable-actions__feedback is-hidden" aria-live="polite"></p>
 
 		<?php
 		if ( ! isset( $checkboxgroup ) || 'end' === $checkboxgroup ) {
@@ -156,4 +156,4 @@ class FluidCheckout_Admin_SettingType_SiteReportEnable extends FluidCheckout {
 
 }
 
-FluidCheckout_Admin_SettingType_SiteReportEnable::instance();
+FluidCheckout_Admin_SettingType_TelemetryEnable::instance();
