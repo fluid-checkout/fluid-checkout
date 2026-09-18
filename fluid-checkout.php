@@ -186,13 +186,10 @@ class FluidCheckout {
 		// Bail if a specific API URL was requested and it is not this plugin's licenses API.
 		if ( null !== $api_url && ! self::is_own_licenses_api_url( $api_url ) ) { return $plugins; }
 
-		// Define own plugins license options.
+		// Define own plugins license options, so that we can track the activation time of each plugin for the opt-in telemetry.
 		$own_plugins = array(
 			'fluid-checkout' => array(
 				'activation_time_option' => 'fc_plugin_activation_time',
-				'license_key_option' => 'fc_plugin_license_key',
-				'license_key_hash_option' => 'fc_plugin_license_key_hash',
-				'license_activated_option' => 'fc_plugin_license_activated',
 			),
 			'fluid-checkout-pro' => array(
 				'activation_time_option' => 'fc_pro_plugin_activation_time',
