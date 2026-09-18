@@ -53,7 +53,7 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 		$sections = array_merge( $sections, array(
 			'license_keys' => __( 'License keys', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
 	}
 
