@@ -62,14 +62,19 @@ class FluidCheckout {
 	const SITE_REPORT_CRON_HOOK = 'fc_site_report_weekly';
 
 	/**
-	 * Default site report API base URL.
+	 * Default licenses API base URL.
 	 */
 	const FC_LICENSES_API_URL = 'https://fluidcheckout.com';
 
 	/**
+	 * Default licenses website base URL.
+	 */
+	const FC_LICENSES_WEBSITE_BASE_URL = 'https://fluidcheckout.com';
+
+	/**
 	 * Default site key account URL.
 	 */
-	const FC_LICENSES_ACCOUNT_URL = 'https://fluidcheckout.com/my-account/sites/';
+	const FC_LICENSES_WEBSITE_ACCOUNT_URL = 'https://fluidcheckout.com/my-account/sites/';
 
 	/**
 	 * Hold list of the plugin features to load when initializing.

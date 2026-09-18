@@ -18,6 +18,7 @@
 		addonsListSelector:     'ul.fc-addons-list:not(.fc-addons-list--pro)',
 		activateSelector:       '.fc-addons__item-action--activate',
 		installSelector:        '.fc-addons__item-action--install',
+		licenseSelectSelector:  '.fc-addons__item-license-select',
 	};
 
 
@@ -161,9 +162,6 @@
 		var i18n = config.i18n || {};
 		var validateLabel = i18n.validate || 'Validate';
 		var removeLabel = i18n.removeKey || 'Remove key';
-		var manageLabel = i18n.manageLicenses || 'Manage licenses';
-		var manageUrl = i18n.manageLicensesUrl || '';
-		var manageLink;
 
 		// Bail if actions container missing
 		if ( ! actions ) { return; }
@@ -171,21 +169,39 @@
 		if ( hasSiteKey ) {
 			actions.innerHTML = '<button type="button" class="button fc-addons__site-key-remove"></button>';
 			actions.querySelector( _settings.removeSelector ).textContent = removeLabel;
-		} else {
-			actions.innerHTML = '<button type="button" class="button button-primary fc-addons__site-key-validate"></button>';
-			actions.querySelector( _settings.validateSelector ).textContent = validateLabel;
+			return;
 		}
 
-		// Keep Manage licenses link beside Validate / Remove
-		if ( manageUrl ) {
-			manageLink = document.createElement( 'a' );
-			manageLink.className = 'fc-addons__site-key-manage';
-			manageLink.href = manageUrl;
-			manageLink.target = '_blank';
-			manageLink.rel = 'noopener noreferrer';
-			manageLink.textContent = manageLabel;
-			actions.appendChild( manageLink );
-		}
+		actions.innerHTML = '<button type="button" class="button button-primary fc-addons__site-key-validate"></button>';
+		actions.querySelector( _settings.validateSelector ).textContent = validateLabel;
+	};
+
+
+
+	/**
+	 * Append the Manage licenses description link.
+	 *
+	 * @param {Element} description Description element.
+	 */
+	var appendManageLicensesLink = function( description ) {
+		var config = getConfig();
+		var i18n = config.i18n || {};
+		var manageLabel = i18n.manageLicenses || 'Manage licenses at fluidcheckout.com';
+		var manageUrl = i18n.manageLicensesUrl || '';
+		var manageLink;
+
+		// Bail if description or URL missing
+		if ( ! description || ! manageUrl ) { return; }
+
+		description.appendChild( document.createTextNode( ' ' ) );
+
+		manageLink = document.createElement( 'a' );
+		manageLink.className = 'fc-addons__site-key-manage';
+		manageLink.href = manageUrl;
+		manageLink.target = '_blank';
+		manageLink.rel = 'noopener noreferrer';
+		manageLink.textContent = manageLabel;
+		description.appendChild( manageLink );
 	};
 
 
@@ -222,6 +238,8 @@
 			link.textContent = linkLabel;
 			description.appendChild( link );
 		}
+
+		appendManageLicensesLink( description );
 	};
 
 
@@ -242,6 +260,7 @@
 
 		input.value = hasSiteKey ? displayValue : '';
 		input.disabled = hasSiteKey;
+		input.classList.toggle( 'fc-addons__site-key-input--valid', hasSiteKey );
 		renderSiteKeyActions( hasSiteKey );
 		renderSiteKeyDescription( hasSiteKey );
 	};
@@ -249,13 +268,16 @@
 
 
 	/**
-	 * Get or create the notice element immediately after an action button.
+	 * Get or create the notice element for an add-on action button.
+	 *
+	 * Prefers a shared notice in the actions container when multiple buttons are stacked.
 	 *
 	 * @param {Element} control Action button.
 	 * @return {Element|null}
 	 */
 	var getAddonActionNoticeElement = function( control ) {
 		var notice;
+		var actions;
 
 		// Bail if control missing
 		if ( ! control ) { return null; }
@@ -264,6 +286,21 @@
 
 		// Reuse the notice placed directly after this button
 		if ( notice && notice.classList.contains( 'fc-addons__item-action-notice' ) ) {
+			return notice;
+		}
+
+		actions = control.closest( '.fc-addons__item-actions' );
+
+		if ( actions ) {
+			notice = actions.querySelector( '.fc-addons__item-action-notice' );
+
+			if ( notice ) {
+				return notice;
+			}
+
+			notice = document.createElement( 'div' );
+			notice.className = 'fc-addons__item-action-notice';
+			actions.appendChild( notice );
 			return notice;
 		}
 
@@ -322,7 +359,7 @@
 	var convertInstallButtonToActivate = function( button ) {
 		var config = getConfig();
 		var i18n = config.i18n || {};
-		var activateLabel = i18n.activate || 'Activate';
+		var activateLabel = i18n.activate || 'Activate plugin';
 
 		// Bail if button missing
 		if ( ! button ) { return; }
@@ -332,6 +369,10 @@
 		button.textContent = activateLabel;
 		button.disabled = false;
 		button.removeAttribute( 'aria-busy' );
+
+		if ( button.dataset.originalLabel ) {
+			delete button.dataset.originalLabel;
+		}
 	};
 
 
@@ -383,11 +424,6 @@
 
 		// Swap Install → Activate after a successful package install
 		if ( payload.data && payload.data.show_activate ) {
-			// Clear busy without restoring the previous Install label
-			if ( control && control.dataset.originalLabel ) {
-				delete control.dataset.originalLabel;
-			}
-
 			convertInstallButtonToActivate( control );
 			return;
 		}
@@ -471,6 +507,32 @@
 
 
 	/**
+	 * Resolve the license key hash for an Install/Activate control.
+	 *
+	 * @param {Element} button Action button.
+	 * @return {string}
+	 */
+	var getSelectedLicenseKeyHash = function( button ) {
+		var actions;
+		var select;
+		var hash = button && button.getAttribute( 'data-license-key-hash' ) ? button.getAttribute( 'data-license-key-hash' ) : '';
+
+		// Bail if button missing
+		if ( ! button ) { return ''; }
+
+		actions = button.closest( '.fc-addons__item-actions' );
+		select = actions ? actions.querySelector( _settings.licenseSelectSelector ) : null;
+
+		if ( select && select.value ) {
+			return select.value;
+		}
+
+		return hash;
+	};
+
+
+
+	/**
 	 * Handle Install / Activate plugin click.
 	 *
 	 * @param {Event}   e          Click event.
@@ -483,6 +545,7 @@
 
 		var config = getConfig();
 		var plugin = button.getAttribute( 'data-plugin' ) || '';
+		var licenseKeyHash = getSelectedLicenseKeyHash( button );
 		var nonce = config[ nonceKey ];
 
 		// Bail if AJAX not configured
@@ -495,6 +558,10 @@
 		body.append( 'action', ajaxAction );
 		body.append( 'nonce', nonce );
 		body.append( 'plugin', plugin );
+
+		if ( licenseKeyHash ) {
+			body.append( 'license_key_hash', licenseKeyHash );
+		}
 
 		postAjax( body ).then( function( payload ) {
 			handleSuccessPayload( payload, button, 'addonAction' );

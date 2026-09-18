@@ -35,6 +35,14 @@
 	width: auto;
 }
 
+.fc-addons__site-key-field-row .fc-addons__site-key-input--valid,
+.fc-addons__site-key-field-row .fc-addons__site-key-input--valid:disabled,
+.fc-addons__site-key-field-row .fc-addons__site-key-input--valid:focus {
+	border-color: #007a3d !important;
+	box-shadow: 0 0 0 1px #007a3d;
+	color: #007a3d !important;
+}
+
 .fc-addons__site-key-field-actions {
 	align-items: center;
 	display: inline-flex;
@@ -51,9 +59,7 @@
 }
 
 .fc-addons__site-key-manage {
-	flex-shrink: 0;
-	margin: 0;
-	white-space: nowrap;
+	margin-left: 0.35em;
 }
 
 .fc-addons__site-key-description {
@@ -227,15 +233,35 @@
 	width: 100%;
 }
 
-.fc-addons__item-actions .button {
+.fc-addons__item-actions .button,
+.fc-addons__item-actions .fc-addons__item-license-select {
+	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
+}
+
+.fc-addons__item-actions .button {
 	padding-top: 8px;
 	padding-bottom: 8px;
 	text-align: center;
 	line-height: 1.4;
 }
+
+.fc-addons__item-actions .fc-addons__item-license-select {
+	display: block;
+	margin: 0;
+	text-align: center;
+	text-align-last: center;
+	// Override WP admin `select { max-width: 25rem; }` and related width limits
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+// Match stacked button spacing on the PRO / Bundle cards
 .fc-addons__item-actions .button + .fc-addons__item-action-notice,
-.fc-addons__item-actions .button + .button {
+.fc-addons__item-actions .button + .button,
+.fc-addons__item-actions .fc-addons__item-license-select + .button,
+.fc-addons__item-actions .fc-addons__item-action-notice {
 	margin-top: 10px;
 }
 

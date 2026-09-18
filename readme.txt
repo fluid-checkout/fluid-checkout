@@ -356,6 +356,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Dashboard site key “Manage licenses” link moved into the field description as “Manage licenses at fluidcheckout.com”.
+* Improved: Dashboard site key field shows green text and border when the saved key is still valid.
+* Fixed: Invalid or rotated site keys are cleared from the store on Dashboard load so the field can be edited again.
+* Improved: Dashboard add-on cards use a license key dropdown when multiple keys are entitled, with Install plugin / Activate plugin buttons.
+* Improved: Site-key entitlements cache is cleared after Dashboard Install or Activate.
+* Improved: Dashboard add-on card actions use “Install plugin” and “Activate plugin” labels.
+* Improved: Dashboard site key mask uses the `SITE-` prefix.
 * Improved: After installing an add-on from the Dashboard, the Install button changes to Activate without reloading the page.
 * Improved: Activating an add-on from the Dashboard reloads the page so the add-ons list updates.
 * Improved: Dashboard plugin install from a site key uses the AJAX upgrader skin so install failures show the real error message.

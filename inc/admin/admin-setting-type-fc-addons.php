@@ -70,13 +70,13 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					'genericError'       => __( 'Something went wrong. Please try again.', 'fluid-checkout' ),
 					'validate'           => __( 'Validate', 'fluid-checkout' ),
 					'removeKey'          => __( 'Remove key', 'fluid-checkout' ),
-					'activate'           => __( 'Activate', 'fluid-checkout' ),
-					'manageLicenses'     => __( 'Manage licenses', 'fluid-checkout' ),
+					'activate'           => __( 'Activate plugin', 'fluid-checkout' ),
+					'manageLicenses'     => $this->get_manage_licenses_link_label(),
 					'manageLicensesUrl'  => $this->get_manage_licenses_url(),
 					'descriptionEmpty'   => __( 'Paste your site key to install and activate products you already own.', 'fluid-checkout' ),
 					'descriptionSaved'   => __( 'Install and activate below the add-ons you own, or purchase the add-ons you need.', 'fluid-checkout' ),
 					'getSiteKey'         => __( 'Get your site key', 'fluid-checkout' ),
-					'getSiteKeyUrl'      => FluidCheckout::FC_LICENSES_ACCOUNT_URL,
+					'getSiteKeyUrl'      => FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL,
 				),
 			)
 		);
@@ -92,13 +92,44 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	private function get_manage_licenses_url() {
 		$host = wp_parse_url( home_url(), PHP_URL_HOST );
 		$host = is_string( $host ) ? strtolower( $host ) : '';
-		$base = untrailingslashit( FluidCheckout::FC_LICENSES_ACCOUNT_URL );
+		$base = untrailingslashit( FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL );
 
 		if ( '' === $host ) {
 			return trailingslashit( $base );
 		}
 
 		return $base . '/' . rawurlencode( $host );
+	}
+
+
+
+	/**
+	 * Get the “Manage licenses at …” link label using the licenses website base URL.
+	 *
+	 * @return string
+	 */
+	private function get_manage_licenses_link_label() {
+		$host = wp_parse_url( FluidCheckout::FC_LICENSES_WEBSITE_BASE_URL, PHP_URL_HOST );
+		$host = is_string( $host ) && '' !== $host ? $host : untrailingslashit( FluidCheckout::FC_LICENSES_WEBSITE_BASE_URL );
+
+		/* translators: %s: Fluid Checkout website host (e.g. fluidcheckout.com) */
+		return sprintf( __( 'Manage licenses at %s', 'fluid-checkout' ), $host );
+	}
+
+
+
+	/**
+	 * Output the Manage licenses description link.
+	 */
+	private function output_manage_licenses_description_link() {
+		?>
+		<a
+			class="fc-addons__site-key-manage"
+			href="<?php echo esc_url( $this->get_manage_licenses_url() ); ?>"
+			target="_blank"
+			rel="noopener noreferrer"
+		><?php echo esc_html( $this->get_manage_licenses_link_label() ); ?></a>
+		<?php
 	}
 
 
@@ -228,10 +259,11 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		$has_site_key  = FC_Licenses_Client::has_site_key();
 		$display_value = FC_Licenses_Client::get_site_key_display_value();
 		$notice        = null;
+		$input_class   = 'fc-addons__site-key-input';
 
-		// Refresh entitlements when a key is already saved; clear on stale/invalid
+		// Re-validate saved keys on page load; clear storage when invalidated
 		if ( $has_site_key ) {
-			$entitlements = FC_Licenses_Client::get_site_key_entitlements( FluidCheckout::FC_LICENSES_API_URL, false, FluidCheckout::FC_LICENSES_ACCOUNT_URL );
+			$entitlements = FC_Licenses_Client::get_site_key_entitlements( FluidCheckout::FC_LICENSES_API_URL, true, FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL );
 
 			if ( empty( $entitlements['success'] ) ) {
 				FC_Licenses_Client::clear_site_key();
@@ -239,8 +271,10 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				$display_value = '';
 				$notice        = array(
 					'type'    => 'error',
-					'message' => ! empty( $entitlements['error'] ) ? $entitlements['error'] : FC_Licenses_Client::get_site_key_invalid_message( FluidCheckout::FC_LICENSES_ACCOUNT_URL ),
+					'message' => ! empty( $entitlements['error'] ) ? $entitlements['error'] : FC_Licenses_Client::get_site_key_invalid_message( FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL ),
 				);
+			} else {
+				$input_class .= ' fc-addons__site-key-input--valid';
 			}
 		}
 		?>
@@ -253,7 +287,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 						type="text"
 						id="fc_site_key"
 						name="fc_site_key"
-						class="fc-addons__site-key-input"
+						class="<?php echo esc_attr( $input_class ); ?>"
 						value="<?php echo esc_attr( $has_site_key ? $display_value : '' ); ?>"
 						autocomplete="off"
 						placeholder="<?php echo esc_attr( __( 'Enter your site key', 'fluid-checkout' ) ); ?>"
@@ -265,12 +299,6 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 						<?php else : ?>
 							<button type="button" class="button button-primary fc-addons__site-key-validate"><?php echo esc_html( __( 'Validate', 'fluid-checkout' ) ); ?></button>
 						<?php endif; ?>
-						<a
-							class="fc-addons__site-key-manage"
-							href="<?php echo esc_url( $this->get_manage_licenses_url() ); ?>"
-							target="_blank"
-							rel="noopener noreferrer"
-						><?php echo esc_html( __( 'Manage licenses', 'fluid-checkout' ) ); ?></a>
 					</div>
 				</div>
 			</form>
@@ -280,8 +308,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					<?php echo esc_html( __( 'Install and activate below the add-ons you own, or purchase the add-ons you need.', 'fluid-checkout' ) ); ?>
 				<?php else : ?>
 					<?php echo esc_html( __( 'Paste your site key to install and activate products you already own.', 'fluid-checkout' ) ); ?>
-					<a href="<?php echo esc_url( FluidCheckout::FC_LICENSES_ACCOUNT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Get your site key', 'fluid-checkout' ) ); ?></a>
+					<a href="<?php echo esc_url( FluidCheckout::FC_LICENSES_WEBSITE_ACCOUNT_URL ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Get your site key', 'fluid-checkout' ) ); ?></a>
 				<?php endif; ?>
+				<?php $this->output_manage_licenses_description_link(); ?>
 			</p>
 
 			<div class="fc-addons__site-key-result<?php echo ( is_array( $notice ) && ! empty( $notice['message'] ) ) ? ' fc-addons__site-key-result--' . esc_attr( ( isset( $notice['type'] ) && 'success' === $notice['type'] ) ? 'success' : 'error' ) : ''; ?>"<?php echo ( ! is_array( $notice ) || empty( $notice['message'] ) ) ? ' hidden' : ''; ?>>
@@ -291,6 +320,65 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			</div>
 		</div>
 		<?php
+	}
+
+
+
+	/**
+	 * Get entitlement license key rows for a plugin slug.
+	 *
+	 * @param string $plugin_slug Plugin folder slug.
+	 * @return array
+	 */
+	private function get_entitlement_license_keys( $plugin_slug ) {
+		// Bail if licenses client is not available
+		if ( ! class_exists( 'FC_Licenses_Client' ) || empty( $plugin_slug ) ) {
+			return array();
+		}
+
+		$entitlement = FC_Licenses_Client::get_site_key_entitlement_for_plugin( $plugin_slug, FluidCheckout::FC_LICENSES_API_URL );
+
+		if ( empty( $entitlement['license_keys'] ) || ! is_array( $entitlement['license_keys'] ) ) {
+			return array();
+		}
+
+		$keys = array();
+
+		foreach ( $entitlement['license_keys'] as $license_key_row ) {
+			$hash = isset( $license_key_row['license_key_hash'] ) ? strtolower( trim( (string) $license_key_row['license_key_hash'] ) ) : '';
+
+			if ( ! FC_Licenses_Client::looks_like_license_key_hash( $hash ) ) {
+				continue;
+			}
+
+			$keys[] = array(
+				'license_key_hash'       => $hash,
+				'license_key_last_chunk' => isset( $license_key_row['license_key_last_chunk'] ) ? (string) $license_key_row['license_key_last_chunk'] : '',
+			);
+		}
+
+		return $keys;
+	}
+
+
+
+	/**
+	 * Build a select option label for a masked license key.
+	 *
+	 * @param string $last_chunk License key last chunk.
+	 */
+	private function get_license_select_option_label( $last_chunk ) {
+		$last_chunk = trim( (string) $last_chunk );
+
+		if ( '' === $last_chunk ) {
+			return __( 'License', 'fluid-checkout' );
+		}
+
+		// Match default Fluid Licenses generator shape (3 chunks): XXXX-XXXX-<last>
+		$masked = 'XXXX-XXXX-' . $last_chunk;
+
+		/* translators: %s: masked license key with last chunk visible */
+		return sprintf( __( 'License %s', 'fluid-checkout' ), $masked );
 	}
 
 
@@ -307,12 +395,14 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		// Bail if plugin file is missing
 		if ( empty( $plugin_file ) ) { return; }
 
-		$is_activated = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
-		$is_installed = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
-		$is_entitled  = false;
+		$is_activated  = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
+		$is_installed  = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
+		$is_entitled   = false;
+		$license_keys  = array();
 
 		if ( class_exists( 'FC_Licenses_Client' ) && ! empty( $plugin_slug ) ) {
-			$is_entitled = FC_Licenses_Client::is_plugin_entitled_with_site_key( $plugin_slug, FluidCheckout::FC_LICENSES_API_URL );
+			$is_entitled  = FC_Licenses_Client::is_plugin_entitled_with_site_key( $plugin_slug, FluidCheckout::FC_LICENSES_API_URL );
+			$license_keys = $this->get_entitlement_license_keys( $plugin_slug );
 		}
 
 		if ( $is_activated ) :
@@ -320,13 +410,13 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			<a href="javascript:void(0);" class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></a>
 			<?php
 		elseif ( $is_installed ) :
+			$this->output_plugin_addon_action_controls( 'activate', $plugin_file, $license_keys );
 			?>
-			<button type="button" class="button fc-addons__item-action--activate" data-plugin="<?php echo esc_attr( $plugin_file ); ?>"><?php echo esc_html( __( 'Activate', 'fluid-checkout' ) ); ?></button>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
 		elseif ( $is_entitled ) :
+			$this->output_plugin_addon_action_controls( 'install', $plugin_file, $license_keys );
 			?>
-			<button type="button" class="button button-primary button--install fc-addons__item-action--install" data-plugin="<?php echo esc_attr( $plugin_file ); ?>"><?php echo esc_html( __( 'Install', 'fluid-checkout' ) ); ?></button>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
 		else :
@@ -334,6 +424,61 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo wp_kses_post( $addon['purchase_label'] ); ?></a>
 			<?php
 		endif;
+	}
+
+
+
+	/**
+	 * Output Install/Activate controls, with a license select when multiple keys are available.
+	 *
+	 * @param string $action       install|activate.
+	 * @param string $plugin_file  Plugin basename.
+	 * @param array  $license_keys Entitlement license key rows.
+	 */
+	private function output_plugin_addon_action_controls( $action, $plugin_file, $license_keys ) {
+		$action       = ( 'activate' === $action ) ? 'activate' : 'install';
+		$license_keys = is_array( $license_keys ) ? array_values( $license_keys ) : array();
+		$label        = ( 'activate' === $action ) ? __( 'Activate plugin', 'fluid-checkout' ) : __( 'Install plugin', 'fluid-checkout' );
+		$classes      = 'button';
+		$hash         = '';
+
+		if ( 'install' === $action ) {
+			$classes .= ' button-primary button--install fc-addons__item-action--install';
+		} else {
+			$classes .= ' fc-addons__item-action--activate';
+		}
+
+		if ( ! empty( $license_keys[0]['license_key_hash'] ) ) {
+			$hash = (string) $license_keys[0]['license_key_hash'];
+		}
+
+		if ( count( $license_keys ) > 1 ) :
+			?>
+			<select class="fc-addons__item-license-select" aria-label="<?php echo esc_attr( __( 'License key', 'fluid-checkout' ) ); ?>">
+				<?php foreach ( $license_keys as $license_key_row ) : ?>
+					<?php
+					$option_hash = isset( $license_key_row['license_key_hash'] ) ? (string) $license_key_row['license_key_hash'] : '';
+					$last_chunk  = isset( $license_key_row['license_key_last_chunk'] ) ? (string) $license_key_row['license_key_last_chunk'] : '';
+
+					if ( '' === $option_hash ) {
+						continue;
+					}
+					?>
+					<option value="<?php echo esc_attr( $option_hash ); ?>"><?php echo esc_html( $this->get_license_select_option_label( $last_chunk ) ); ?></option>
+				<?php endforeach; ?>
+			</select>
+			<?php
+		endif;
+		?>
+		<button
+			type="button"
+			class="<?php echo esc_attr( $classes ); ?>"
+			data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
+			<?php if ( '' !== $hash && count( $license_keys ) <= 1 ) : ?>
+				data-license-key-hash="<?php echo esc_attr( $hash ); ?>"
+			<?php endif; ?>
+		><?php echo esc_html( $label ); ?></button>
+		<?php
 	}
 
 
@@ -470,7 +615,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		<tr valign="top" class="fc-dashboard-section__row">
 			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
 
-				<h3 class="fc-dashboard-section__row-title"><?php echo esc_html( __( 'Add-ons & other products', 'fluid-checkout' ) ); ?></h3>
+				<h3 class="fc-dashboard-section__row-title"><?php echo esc_html( __( 'Add-ons', 'fluid-checkout' ) ); ?></h3>
 				<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Enhance your checkout experience with these add-ons.', 'fluid-checkout' ) ); ?></p>
 
 				<?php $this->output_site_key_field(); ?>

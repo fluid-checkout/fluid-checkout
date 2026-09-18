@@ -1587,7 +1587,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 
 
 		/**
-		 * Masked display value: SITEKEY-XXXX-XXXX-XXXX-{last_chunk}.
+		 * Masked display value for a site key.
 		 */
 		public static function get_site_key_display_value() {
 			$last_chunk = self::get_site_key_last_chunk();
@@ -1596,7 +1596,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 				return '';
 			}
 
-			return 'SITEKEY-XXXX-XXXX-XXXX-' . $last_chunk;
+			return 'SITE-XXXX-XXXX-XXXX-' . $last_chunk;
 		}
 
 
@@ -1651,7 +1651,7 @@ if ( ! class_exists( 'FC_Licenses_Client' ) ) {
 		/**
 		 * Validate a site key (plaintext or stored hash) and cache entitlements.
 		 *
-		 * @param string $site_key_or_hash Plaintext SITEKEY-… or 64-char hash.
+		 * @param string $site_key_or_hash Plaintext site key or 64-char hash.
 		 * @param string $api_url          Optional API base URL override.
 		 * @param bool   $force_check      Bypass the transient cache.
 		 * @param string $account_url      Account URL for invalid-key messages (sites page).
