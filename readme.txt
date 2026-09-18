@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: TomSelect fields not changing value when pressing TAB after pre-selecting options using the keyboard arrow keys.
 * Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
 * Fixed: Fatal error when opening the WordPress block editor with WooCommerce Stripe active, caused by checking shipping needs while the cart is not available.
+* Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
 
 = 4.2.6 - 2026-07-28 =
 

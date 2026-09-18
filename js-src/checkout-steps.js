@@ -332,10 +332,17 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
+				var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 				scrollToElement( fieldRowElement );
 				waitForElementInViewportThenFocus( firstInvalidField );
+			}
+			else {
+				// Scroll to the first invalid row when the invalid field cannot be focused
+				var firstInvalidRow = substepElement.querySelector( _settings.formRowSelector + '.woocommerce-invalid' );
+				if ( firstInvalidRow ) {
+					scrollToElement( firstInvalidRow );
+				}
 			}
 
 			// Bail when substep has invalid fields
@@ -472,10 +479,17 @@
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
 			// Try to focus the first invalid field
 			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 			if ( firstInvalidField ) {
+				var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
 				scrollToElement( fieldRowElement );
 				waitForElementInViewportThenFocus( firstInvalidField );
+			}
+			else {
+				// Scroll to the first invalid row when the invalid field cannot be focused
+				var firstInvalidRow = stepElement.querySelector( _settings.formRowSelector + '.woocommerce-invalid' );
+				if ( firstInvalidRow ) {
+					scrollToElement( firstInvalidRow );
+				}
 			}
 
 			// Bail when any substep has invalid fields
