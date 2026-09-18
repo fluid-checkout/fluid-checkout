@@ -76,10 +76,16 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 			}
 		}
 
-		$settings_new = array(
+		$dashboard_url = admin_url( 'admin.php?page=wc-settings&tab=fc_checkout' );
+		$settings_new  = array(
 			array(
 				'title' => _x( 'License keys', 'Settings section title', 'fluid-checkout' ),
 				'type'  => 'title',
+				'desc'  => sprintf(
+					/* translators: %s: link to the Fluid Checkout Dashboard settings page */
+					__( 'If you have a site key, you can install and activate add-ons from the %s.', 'fluid-checkout' ),
+					'<a href="' . esc_url( $dashboard_url ) . '">' . esc_html__( 'Dashboard', 'fluid-checkout' ) . '</a>'
+				),
 				'id'    => 'fc_license_keys',
 			),
 		);
