@@ -686,23 +686,27 @@
 		currentStepElement.removeAttribute( _settings.stepCurrentAttribute );
 		targetStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
 
-		// Get index of the step before the new current step, where the incomplete steps now start
-		var firstIncompleteStepIndex = targetStepIndex > 0 ? targetStepIndex - 1 : 0;
+		// Get index of the first step which the next step is incomplete, the step before the new current step
+		var nextStepIncompleteIndex = targetStepIndex > 0 ? targetStepIndex - 1 : 0;
 
-		// Iterate steps from the first incomplete step
-		for ( var i = firstIncompleteStepIndex; i < allSteps.length; i++ ) {
+		// Iterate steps from the first step which the next step is incomplete
+		for ( var i = nextStepIncompleteIndex; i < allSteps.length; i++ ) {
 			allSteps[ i ].classList.add( _settings.stepNextIncompleteClass );
 		}
 
-		// Iterate steps after the new current step to reset them to the state of steps that have not been reached yet
-		for ( var i = targetStepIndex + 1; i < allSteps.length; i++ ) {
-			allSteps[ i ].removeAttribute( _settings.stepCompleteAttribute );
-		}
+		// Iterate the new current step and the steps after it
+		for ( var i = targetStepIndex; i < allSteps.length; i++ ) {
+			// Maybe reset the step to the state of a step that has not been reached yet
+			if ( i > targetStepIndex ) {
+				allSteps[ i ].removeAttribute( _settings.stepCompleteAttribute );
+			}
 
-		// Iterate substeps of the new current step to expand the fields for editing
-		var substepElements = targetStepElement.querySelectorAll( _settings.substepSelector );
-		for ( var i = 0; i < substepElements.length; i++ ) {
-			expandSubstepEdit( substepElements[ i ], false, false );
+			// Iterate substeps to expand the fields for editing,
+			// as the fields are collapsed for steps that were complete.
+			var substepElements = allSteps[ i ].querySelectorAll( _settings.substepSelector );
+			for ( var j = 0; j < substepElements.length; j++ ) {
+				expandSubstepEdit( substepElements[ j ], false, false );
+			}
 		}
 	}
 
