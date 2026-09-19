@@ -359,6 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Dashboard setup section links to Tools settings to enable site environment reports.
 * Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
 * Removed: License key field script and styles from this free plugin; commercial add-ons own those assets.
+* Removed: Site key field styles from the free plugin Dashboard stylesheet; site key UI is owned by Fluid Checkout PRO.
 * Improved: Opt-in telemetry uses `FC_Telemetry_Client` with renamed telemetry hooks, options, and admin files.
 * Improved: Dashboard add-ons keep local Activate and purchase links; site key and remote Install are provided by Fluid Checkout PRO.
 * Improved: Dashboard Add-ons expose hooks for PRO to extend site key, Install, and licensed Activate.
