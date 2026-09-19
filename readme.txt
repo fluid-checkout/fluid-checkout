@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Fixed: Checkout not moving back to an earlier step when it becomes visible again and is incomplete.
 
 = 4.2.7 - 2026-08-19 =
 
