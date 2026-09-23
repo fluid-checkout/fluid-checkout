@@ -4844,19 +4844,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Hide the shipping method substep
 			$visibility[ 'shipping_method' ] = 'no';
 
-			// Hide the shipping address by default
+			// Hide the shipping address so virtual-only carts show billing alone,
+			// including during `update_order_review` after a cold load with `force_single_address`
 			$visibility[ 'shipping_address' ] = 'no';
-
-			// Keep shipping address visible during checkout AJAX updates when billing fields
-			// were forced into it. Do not use `is_billing_forced_same_as_shipping()` here:
-			// that getter returns false when shipping is not needed. Skip on full page load
-			// so virtual-only carts match PRO and show billing as a separate step.
-			$is_update_order_review = array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET[ 'wc-ajax' ] ?? '' ) );
-
-			// Maybe keep shipping address visible during AJAX when force_single_address is active
-			if ( $is_update_order_review && 'force_single_address' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' ) ) {
-				$visibility[ 'shipping_address' ] = 'yes';
-			}
 		}
 
 		return $visibility;
