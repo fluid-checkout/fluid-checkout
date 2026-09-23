@@ -23,6 +23,11 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 	 */
 	const FEATURE = 'vat_assistant';
 
+	/**
+	 * Product page URL for the VAT Assistant add-on.
+	 */
+	const PRODUCT_URL = 'https://fluidcheckout.com/fc-eu-vat-assistant/';
+
 
 
 	/**
@@ -94,6 +99,42 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 
 	/**
+	 * Get the promotional settings card shown at the top of the VAT Assistant tab when the add-on is not active.
+	 */
+	public function get_promo_settings() {
+		// Bail if the add-on feature is already unlocked
+		if ( FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return array(); }
+
+		return array(
+			array(
+				'title'            => __( 'VAT Assistant', 'fluid-checkout' ),
+				'type'             => 'fc_promo',
+				'id'               => 'fc_vat_assistant_promo',
+				'is_card'          => true,
+				'promo'            => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant-promo', self::PRODUCT_URL, self::FEATURE ),
+				'tagline'          => __( 'Collect and validate EU VAT numbers at checkout, with reverse charge and location evidence when needed.', 'fluid-checkout' ),
+				'features'         => array(
+					__( 'Add an optional or required VAT Number field to the billing form.', 'fluid-checkout' ),
+					__( 'Validate EU VAT numbers against the European VIES database.', 'fluid-checkout' ),
+					__( 'Apply reverse charge and show the right labels on invoices.', 'fluid-checkout' ),
+					__( 'Autocomplete company names and collect location evidence for digital goods.', 'fluid-checkout' ),
+				),
+				'learn_more_url'   => add_query_arg(
+					array(
+						'mtm_campaign' => 'addons',
+						'mtm_kwd'      => 'vat-assistant-promo-learn-more',
+						'mtm_source'   => 'lite-plugin',
+					),
+					self::PRODUCT_URL
+				),
+				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+			),
+		);
+	}
+
+
+
+	/**
 	 * Add the VAT Assistant settings.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
@@ -105,20 +146,15 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 		$settings = apply_filters(
 			'fc_vat_' . $current_section . '_settings',
-			array(
+			array_merge(
+				$this->get_promo_settings(),
+				array(
 				array(
 					'title'             => __( 'VAT Assistant', 'fluid-checkout' ),
 					'type'              => 'title',
 					'desc'              => '',
 					'id'                => 'fc_vat_number',
-				),
-
-				array(
-					'desc'              => FluidCheckout_Admin::instance()->get_addon_locked_notice_html( __( 'VAT Assistant', 'fluid-checkout' ), 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat-settings&mtm_source=lite-plugin' ),
-					'id'                => 'fc_vat_number_locked_notice',
-					'type'              => 'fc_paragraph',
-					'requires'          => self::FEATURE,
-					'locked_only'       => true,
+					'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant', self::PRODUCT_URL, self::FEATURE ),
 				),
 
 				array(
@@ -159,6 +195,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'title',
 					'desc'              => '',
 					'id'                => 'fc_vat_eu_vat_options',
+					'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant-eu-vat', self::PRODUCT_URL, self::FEATURE ),
 				),
 
 				array(
@@ -283,6 +320,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'title',
 					'desc'              => __( 'From January 1st, 2015, modifications have been made to the EU VAT regulations concerning digital goods, impacting exclusively B2C transactions. The VAT on digital goods must be calculated based on the customer\'s location, and evidence of this needs to be collected (IP address and billing address).', 'fluid-checkout' ),
 					'id'                => 'fc_vat_eu_vat_digital_goods_options',
+					'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant-digital-goods', self::PRODUCT_URL, self::FEATURE ),
 				),
 
 				array(
@@ -316,6 +354,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'sectionend',
 					'id'                => 'fc_vat_eu_vat_digital_goods_options',
 				),
+				)
 			)
 		);
 

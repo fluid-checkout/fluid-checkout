@@ -391,17 +391,17 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	}
 
 	/**
-	 * Whether the current settings tab uses custom info tip icons for field descriptions.
+	 * Whether the current settings page uses custom info tip icons for field descriptions.
 	 */
 	public function uses_info_tooltips() {
-		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'cart' );
+		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
 	}
 
 	/**
-	 * Whether the current settings tab renders checkboxes as toggle switches.
+	 * Whether the current settings page renders checkboxes as toggle switches.
 	 */
 	public function uses_toggle_checkboxes() {
-		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'cart' );
+		return class_exists( 'FluidCheckout_Admin_Settings_Page' ) && FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
 	}
 
 	/**
@@ -691,6 +691,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?> colorpick"
 			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
+			autocomplete="off"
 			<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<?php disabled( $this->is_field_disabled( $value ) ); ?>
 			/>&lrm; <?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

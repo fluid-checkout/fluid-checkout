@@ -86,7 +86,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 			$settings = array(
 
 				array(
-					'title' => __( 'Site environment reports', 'fluid-checkout' ),
+					'title' => __( 'Site Environment Reports', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => __( 'Send non-sensitive site environment reports to help Fluid Checkout improve compatibility. Reports are not sent until enabled in the options below.', 'fluid-checkout' ),
 					'id'    => 'fc_checkout_telemetry_options',

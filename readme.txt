@@ -357,15 +357,29 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Improved: Settings page layout and styles for the vertical sidebar and settings cards.
-* Improved: Cart settings use toggle switches and info tip icons for field descriptions.
-* Improved: Cart settings group Trust Symbols & Badges in its own section with a documentation link.
+* Improved: Settings pages use toggle switches and info tip icons for field descriptions.
+* Improved: Cart, Checkout, Thank You, and Order Pay settings group Trust Symbols & Badges in their own section with a documentation link.
 * Improved: Reduced spacing between settings fields on the settings page.
 * Added: Admin page header with logo, Support, Documentation, and Upgrade links on the settings page.
-* Improved: Cart settings show a PRO feature badge on locked sections instead of upgrade copy.
-* Added: Promotional Cart page optimization card on the Cart settings tab when PRO is not active.
+* Improved: Locked PRO and add-on sections show a feature badge instead of upgrade copy.
+* Added: Promotional cards on Cart, Thank You, Order Pay, Address Book, Address Autocomplete, and VAT Assistant settings tabs when the related product is not active.
+* Improved: Add-on promo badges use a dark grey style to distinguish them from PRO feature badges.
 * Added: Dashboard setup section links to Tools settings to enable site environment reports.
 * Added: New Fluid Checkout admin menu with Dashboard and Settings items.
 * Added: New settings page with a vertical sidebar and settings cards.
+* Added: Express Checkout, Account Matching, Local Pickup, Gift Options, and International Phone Numbers as separate settings tabs.
+* Improved: Settings sidebar navigation switches tabs without reloading the page, with support for direct links to a specific tab.
+* Improved: Save settings is available on the Dashboard tab and saves changes made on other settings tabs.
+* Improved: Dashboard setup section uses a standard settings card titled Getting started.
+* Improved: Dashboard add-on cards display two per row.
+* Removed: Special offers section from the Dashboard.
+* Removed: Fluid Checkout PRO – Bundle add-on card from the Dashboard.
+* Improved: Fluid Checkout PRO add-on card uses the promo dark grey border and spans the full first row.
+* Improved: Fluid Checkout PRO price shown as 129 EUR on the Dashboard.
+* Added: Placeholder Site key section on the Dashboard, shown after Add-ons.
+* Improved: Lite Site key placeholder is hidden when PRO or any add-on is activated.
+* Improved: Site key placeholder card uses the same dark grey promo border as other promotional settings cards.
+* Improved: Primary and secondary buttons on the settings page match the header button styles.
 * Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
 * Removed: License key field script and styles from this free plugin; commercial add-ons own those assets.
 * Removed: Site key field styles from the free plugin Dashboard stylesheet; site key UI is owned by Fluid Checkout PRO.

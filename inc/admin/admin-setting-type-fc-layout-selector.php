@@ -41,7 +41,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 		// Iterate over options and accumulate styles
 		foreach ( $value[ 'options' ] as $key => $val ) {
 			$option_image_url = apply_filters( 'fc_layout_selector_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-layout-'. esc_attr( $key ) .'.png', $key, $val );
-			$this->field_styles .= '.forminp-fc_layout_selector .fc-checkout-layout__option[value="' . esc_attr( $key ) . '"]:after { background-image: url( ' . esc_url( $option_image_url ) . ' ); }' . "\n";
+			$this->field_styles .= '.forminp-fc_layout_selector label:has( .fc-checkout-layout__option[value="' . esc_attr( $key ) . '"] ):after { background-image: url( ' . esc_url( $option_image_url ) . ' ); }' . "\n";
 		}
 	}
 
@@ -108,6 +108,9 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
+		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
+		$field_disabled = $renderer->is_field_disabled( $value );
+
 		// Accumulate field option styles
 		$this->collect_option_styles( $value );
 
@@ -130,8 +133,11 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 		<?php // Output available options ?>
 		<ul>
 			<?php foreach ( $value['options'] as $key => $args ) : ?>
+				<?php
+				$option_disabled = $field_disabled || ( array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] );
+				?>
 				<li>
-					<label <?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'class="disabled"' : ''; ?>><input
+					<label <?php echo $option_disabled ? 'class="disabled"' : ''; ?>><input
 						name="<?php echo esc_attr( $value[ 'id' ] ); ?>"
 						value="<?php echo esc_attr( $key ); ?>"
 						type="radio"
@@ -139,7 +145,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 						class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 						<?php echo implode( ' ', $custom_attributes_esc ); // WPCS: XSS ok. ?>
 						<?php checked( $key, $option_value ); ?>
-						<?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'disabled' : ''; ?>
+						<?php echo $option_disabled ? 'disabled' : ''; ?>
 						/> <?php echo esc_html( $args[ 'label' ] ); ?></label>
 				</li>
 			<?php endforeach; ?>

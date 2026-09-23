@@ -76,6 +76,30 @@
 
 
 
+.fc-settings-field__control .colorpickpreview {
+	display: inline-block;
+	width: $fc-settings-input-height;
+	height: $fc-settings-input-height;
+	margin: 0;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	box-sizing: border-box;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.fc-settings-field__control .colorpick {
+	width: auto;
+	max-width: 8rem;
+	flex: 0 0 auto;
+}
+
+.fc-settings-field__control .iris-picker {
+	z-index: 100;
+}
+
+
+
 .fc-settings-field__control input[type="text"],
 .fc-settings-field__control input[type="password"],
 .fc-settings-field__control input[type="email"],
@@ -152,6 +176,9 @@
 .fc-settings-field__control select:disabled,
 .fc-settings-field__control textarea:disabled {
 	background-color: $fc-settings-input-background-color-disabled;
+	color: $fc-settings-input-color;
+	-webkit-text-fill-color: $fc-settings-input-color;
+	opacity: 1;
 }
 
 .fc-settings-field__control select:disabled {
@@ -159,7 +186,6 @@
 	background-repeat: no-repeat;
 	background-position: right 10px center;
 	background-size: $fc-settings-select-caret-size;
-	opacity: 1;
 }
 
 .rtl .fc-settings-field__control select:disabled {

@@ -74,6 +74,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-dashboard-actions.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry-prompt.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-setup.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-site-key.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-addons.php';
 	}
 
@@ -118,6 +119,11 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-express-checkout.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-account-matching.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-local-pickup.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-gift-options.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-international-phone.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-address-autocomplete.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-address-book.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-vat-assistant.php';
@@ -177,14 +183,16 @@ class FluidCheckout_Admin extends FluidCheckout {
 	/**
 	 * Get HTML for the PRO feature promo pill badge.
 	 *
-	 * @param  string  $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 * @param  string|null  $label         Optional badge label. Defaults to "PRO feature".
 	 */
-	public function get_pro_feature_badge_html( $section_slug = '' ) {
+	public function get_pro_feature_badge_html( $section_slug = '', $label = null ) {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
 
 		$section_slug = sanitize_title( $section_slug );
 		$mtm_kwd = ! empty( $section_slug ) ? 'pro-badge-' . $section_slug : 'pro-badge';
+		$label = null !== $label ? $label : __( 'PRO feature', 'fluid-checkout' );
 
 		$url = add_query_arg(
 			array(
@@ -198,8 +206,47 @@ class FluidCheckout_Admin extends FluidCheckout {
 		return sprintf(
 			'<a class="fc-settings-promo-pill" href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
 			esc_url( $url ),
-			esc_html( __( 'PRO feature', 'fluid-checkout' ) )
+			esc_html( $label )
 		);
+	}
+
+	/**
+	 * Get HTML for the add-on feature promo pill badge.
+	 * Also includes a short "PRO" badge next to the add-on badge when PRO is not active.
+	 *
+	 * @param  string  $section_slug  Section slug used in tracking as `mtm_kwd=addon-badge-{slug}`.
+	 * @param  string  $product_url   Add-on product page URL.
+	 * @param  string  $feature_slug  Feature slug checked against the settings access registry.
+	 */
+	public function get_addon_feature_badge_html( $section_slug = '', $product_url = '', $feature_slug = '' ) {
+		// Bail if the add-on feature is already unlocked
+		if ( ! empty( $feature_slug ) && class_exists( 'FluidCheckout_Admin_Settings_Access' ) && FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( $feature_slug ) ) {
+			return '';
+		}
+
+		$section_slug = sanitize_title( $section_slug );
+		$mtm_kwd = ! empty( $section_slug ) ? 'addon-badge-' . $section_slug : 'addon-badge';
+		$product_url = ! empty( $product_url ) ? $product_url : 'https://fluidcheckout.com/';
+
+		$url = add_query_arg(
+			array(
+				'mtm_campaign' => 'addons',
+				'mtm_kwd'      => $mtm_kwd,
+				'mtm_source'   => 'lite-plugin',
+			),
+			$product_url
+		);
+
+		$addon_badge_html = sprintf(
+			'<a class="fc-settings-promo-pill fc-settings-promo-pill--addon" href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
+			esc_url( $url ),
+			esc_html( __( 'Add-on', 'fluid-checkout' ) )
+		);
+
+		// Also show a short PRO badge next to the add-on badge
+		$pro_badge_html = $this->get_pro_feature_badge_html( $section_slug, __( 'PRO', 'fluid-checkout' ) );
+
+		return $addon_badge_html . $pro_badge_html;
 	}
 
 	/**

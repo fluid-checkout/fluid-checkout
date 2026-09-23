@@ -6,24 +6,46 @@
 	background-color: #fff;
 }
 
+.fc-settings-wrap .forminp-fc_template_selector {
+	padding: 0 !important; // Needed to override WC admin options styles inside the settings cards.
+	background-color: transparent;
+}
+
 
 
 .forminp-fc_template_selector ul {
 	margin: 0;
+	padding: 0;
 	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
 }
 
 .forminp-fc_template_selector li {
 	position: relative;
 	display: block;
-	padding: 85px 2px 0;
+	margin: 0;
+	padding: 0;
 	width: 100px;
 }
+
 .forminp-fc_template_selector li + li {
 	margin-left: 10px;
 }
 
+.rtl .forminp-fc_template_selector li + li {
+	margin-left: 0;
+	margin-right: 10px;
+}
 
+
+
+.forminp-fc_template_selector label {
+	position: relative;
+	display: block;
+	padding: 85px 2px 0;
+	box-sizing: border-box;
+}
 
 .forminp-fc_template_selector label.disabled {
 	cursor: not-allowed;
@@ -32,9 +54,8 @@
 
 
 
-.forminp-fc_template_selector .fc-design-template__option:after {
+.forminp-fc_template_selector label:after {
 	content: '';
-	float: none;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -44,8 +65,17 @@
 	border: solid 2px #fff;
 	background-color: #F0EFF1;
 	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	box-sizing: border-box;
 }
-.forminp-fc_template_selector .fc-design-template__option:checked:after {
+
+.rtl .forminp-fc_template_selector label:after {
+	left: auto;
+	right: 0;
+}
+
+.forminp-fc_template_selector label:has( .fc-design-template__option:checked ):after {
 	border: solid 2px #3481C4;
 }
 

@@ -79,7 +79,6 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Enqueue assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets_dashboard' ), 10 );
 
 		// License key field assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_register_license_key_assets' ), 10 );
@@ -229,6 +228,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 				type="submit"
 				form="mainform"
 				class="fc-header__button fc-header__button--save"
+				data-fc-settings-save
 				<?php disabled( ! $can_save ); ?>
 			><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
 		</div>
@@ -265,18 +265,24 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$this->load_settings_pages();
 
 		$tabs = array(
-			'dashboard'                => array( 'label' => __( 'Dashboard', 'fluid-checkout' ), 'section' => '', 'show_save_button' => false ),
+			'dashboard'                => array( 'label' => __( 'Dashboard', 'fluid-checkout' ), 'section' => '', 'show_save_button' => true ),
 			'checkout'                 => array( 'label' => __( 'Checkout', 'fluid-checkout' ), 'section' => 'checkout' ),
 			'cart'                     => array( 'label' => __( 'Cart', 'fluid-checkout' ), 'section' => 'cart' ),
 			'order_received'           => array( 'label' => __( 'Thank You', 'fluid-checkout' ), 'section' => 'order_received' ),
 			'order_pay'                => array( 'label' => __( 'Order Pay', 'fluid-checkout' ), 'section' => 'order_pay' ),
-			'separator_features'       => array( 'type' => 'separator' ),
+			'separator'                => array( 'type' => 'separator' ),
+			'express_checkout'         => array( 'label' => __( 'Express Checkout', 'fluid-checkout' ), 'section' => 'express_checkout' ),
+			'account_matching'         => array( 'label' => __( 'Account Matching', 'fluid-checkout' ), 'section' => 'account_matching' ),
+			'local_pickup'             => array( 'label' => __( 'Local Pickup', 'fluid-checkout' ), 'section' => 'local_pickup' ),
+			'gift_options'             => array( 'label' => __( 'Gift Options', 'fluid-checkout' ), 'section' => 'gift_options' ),
+			'international_phone'      => array( 'label' => __( 'International Phone Numbers', 'fluid-checkout' ), 'section' => 'international_phone' ),
+			'separator_2'              => array( 'type' => 'separator' ),
 			'address_autocomplete'     => array( 'label' => __( 'Address Autocomplete', 'fluid-checkout' ), 'section' => 'address_autocomplete' ),
 			'address_book'             => array( 'label' => __( 'Address Book', 'fluid-checkout' ), 'section' => 'address_book' ),
-			'vat_assistant'            => array( 'label' => __( 'VAT Assistant', 'fluid-checkout' ), 'section' => 'vat_number' ),
+			'vat_assistant'            => array( 'label' => __( 'EU-VAT Assistant', 'fluid-checkout' ), 'section' => 'vat_number' ),
 		);
 		$tabs_after = array(
-			'separator_tools'          => array( 'type' => 'separator' ),
+			'separator_3'              => array( 'type' => 'separator' ),
 			'integrations'             => array( 'label' => __( 'Integrations', 'fluid-checkout' ), 'section' => 'integrations' ),
 			'tools'                    => array( 'label' => __( 'Tools', 'fluid-checkout' ), 'section' => 'tools' ),
 			'license_keys'             => array( 'label' => __( 'License Keys', 'fluid-checkout' ), 'section' => 'license_keys', 'show_save_button' => false ),
@@ -438,7 +444,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 
 	/**
-	 * Maybe save settings for the current tab.
+	 * Maybe save settings for all saveable tabs.
+	 * All tab panels are rendered in one form, so every saveable tab is saved together.
 	 */
 	public function maybe_save_settings() {
 		// Bail if not on the settings page
@@ -452,28 +459,30 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		check_admin_referer( 'fc_settings_save', 'fc_settings_nonce' );
 
-		$tab = $this->get_current_tab();
+		$current_tab = $this->get_current_tab();
 		$tabs = $this->get_tabs();
 
-		// Bail if tab does not have settings to save
-		if ( ! $tabs[ $tab ][ 'show_save_button' ] ) { return; }
+		foreach ( $tabs as $tab => $tab_args ) {
+			// Skip separators and tabs without settings to save
+			if ( 'tab' !== $tab_args[ 'type' ] || ! $tab_args[ 'show_save_button' ] ) { continue; }
 
-		$settings = $this->get_saveable_settings( $this->get_tab_settings( $tab ) );
-		WC_Admin_Settings::save_fields( $settings );
+			$settings = $this->get_saveable_settings( $this->get_tab_settings( $tab ) );
+			WC_Admin_Settings::save_fields( $settings );
 
-		// Run the WooCommerce section save hook
-		if ( '' !== $tabs[ $tab ][ 'section' ] ) {
-			do_action( 'woocommerce_update_options_' . self::WC_SETTINGS_TAB_ID . '_' . $tabs[ $tab ][ 'section' ] );
+			// Run the WooCommerce section save hook
+			if ( '' !== $tab_args[ 'section' ] ) {
+				do_action( 'woocommerce_update_options_' . self::WC_SETTINGS_TAB_ID . '_' . $tab_args[ 'section' ] );
+			}
 		}
 
 		/**
 		 * After settings are saved on the Fluid Checkout settings page.
 		 *
-		 * @param  string  $tab  Settings tab slug.
+		 * @param  string  $tab  Settings tab slug that was active when saving.
 		 */
-		do_action( 'fc_admin_settings_saved', $tab );
+		do_action( 'fc_admin_settings_saved', $current_tab );
 
-		wp_safe_redirect( add_query_arg( 'settings-updated', 'true', $this->get_settings_url( $tab ) ) );
+		wp_safe_redirect( add_query_arg( 'settings-updated', 'true', $this->get_settings_url( $current_tab ) ) );
 		exit;
 	}
 
@@ -502,6 +511,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 	}
 
 	/**
@@ -511,9 +522,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Styles
 		wp_enqueue_style( 'fc-admin-options' );
 		wp_enqueue_style( 'fc-admin-settings' );
+		wp_enqueue_style( 'fc-admin-dashboard' );
+		wp_enqueue_style( 'wp-color-picker' );
 
 		// Scripts
+		wp_enqueue_script( 'iris' );
 		wp_enqueue_script( 'fc-admin-settings-tooltips' );
+		wp_enqueue_script( 'fc-admin-settings-nav' );
+		wp_enqueue_script( 'fc-admin-settings-colorpicker' );
 	}
 
 	/**
@@ -529,40 +545,15 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
-	 * Enqueue assets for the Dashboard tab.
-	 */
-	public function enqueue_assets_dashboard() {
-		// Styles
-		wp_enqueue_style( 'fc-admin-dashboard' );
-	}
-
-	/**
-	 * Maybe enqueue assets for the Dashboard tab.
-	 *
-	 * @param  string  $hook_suffix  Hook suffix for the current admin page.
-	 */
-	public function maybe_enqueue_assets_dashboard( $hook_suffix ) {
-		// Bail if not on the settings page
-		if ( $hook_suffix !== $this->page_hook_suffix ) { return; }
-
-		// Bail if not on the Dashboard tab
-		if ( ! $this->is_settings_page( 'dashboard' ) ) { return; }
-
-		$this->enqueue_assets_dashboard();
-	}
-
-	/**
 	 * Maybe register the license key field assets for the License Keys tab.
 	 * The license key field type is provided by licensed products.
+	 * Assets are registered on every settings page load because all tabs are rendered at once.
 	 *
 	 * @param  string  $hook_suffix  Hook suffix for the current admin page.
 	 */
 	public function maybe_register_license_key_assets( $hook_suffix ) {
 		// Bail if not on the settings page
 		if ( $hook_suffix !== $this->page_hook_suffix ) { return; }
-
-		// Bail if not on the License Keys tab
-		if ( ! $this->is_settings_page( 'license_keys' ) ) { return; }
 
 		// Bail if the license key field type is not available
 		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_LicenseKey' ) ) { return; }
@@ -575,6 +566,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 	/**
 	 * Output the settings page.
+	 * All tabs are rendered in the same form so navigation can switch panels without a page reload.
 	 */
 	public function output_page() {
 		// Bail if user does not have enough permissions
@@ -582,10 +574,10 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		$tabs = $this->get_tabs();
 		$current_tab = $this->get_current_tab();
-		$current_tab_args = $tabs[ $current_tab ];
+		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
 		?>
 		<div class="wrap woocommerce fc-wrap fc-settings-wrap">
-			<form method="post" action="<?php echo esc_url( $this->get_settings_url( $current_tab ) ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data">
+			<form method="post" action="<?php echo esc_url( $this->get_settings_url( $current_tab ) ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" data-fc-settings-form>
 				<div class="fc-settings-layout">
 
 					<div class="fc-settings-sidebar">
@@ -605,27 +597,37 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 							<div class="notice notice-success is-dismissible"><p><?php echo esc_html( __( 'Your settings have been saved.', 'fluid-checkout' ) ); ?></p></div>
 						<?php endif; ?>
 
-						<div class="fc-settings-tab fc-settings-tab--<?php echo esc_attr( $current_tab ); ?> is-active">
-							<h2 class="fc-settings-content__title"><?php echo esc_html( $current_tab_args[ 'label' ] ); ?></h2>
-
+						<?php foreach ( $tabs as $tab => $tab_args ) : ?>
 							<?php
-							FluidCheckout_Admin_Settings_Renderer::instance()->output_fields( $this->get_tab_settings( $current_tab ) );
+							// Skip separators
+							if ( 'separator' === $tab_args[ 'type' ] ) { continue; }
 
-							/**
-							 * Output additional content for a tab of the Fluid Checkout settings page.
-							 */
-							do_action( 'fc_admin_settings_tab_' . $current_tab );
+							$is_active = $tab === $current_tab;
 							?>
+							<div
+								class="fc-settings-tab fc-settings-tab--<?php echo esc_attr( $tab ); ?><?php echo $is_active ? ' is-active' : ''; ?>"
+								data-fc-settings-tab="<?php echo esc_attr( $tab ); ?>"
+								data-fc-settings-show-save="<?php echo $tab_args[ 'show_save_button' ] ? 'yes' : 'no'; ?>"
+							>
+								<h2 class="fc-settings-content__title"><?php echo esc_html( $tab_args[ 'label' ] ); ?></h2>
 
-							<input type="hidden" name="fc_settings_action" value="save">
-							<?php wp_nonce_field( 'fc_settings_save', 'fc_settings_nonce' ); ?>
+								<?php
+								FluidCheckout_Admin_Settings_Renderer::instance()->output_fields( $this->get_tab_settings( $tab ) );
 
-							<?php if ( $current_tab_args[ 'show_save_button' ] ) : ?>
-								<p class="fc-settings-submit submit">
-									<button type="submit" class="button-primary woocommerce-save-button fc-settings-submit__button"><?php echo esc_html( __( 'Save changes', 'fluid-checkout' ) ); ?></button>
-								</p>
-							<?php endif; ?>
-						</div>
+								/**
+								 * Output additional content for a tab of the Fluid Checkout settings page.
+								 */
+								do_action( 'fc_admin_settings_tab_' . $tab );
+								?>
+							</div>
+						<?php endforeach; ?>
+
+						<input type="hidden" name="fc_settings_action" value="save">
+						<?php wp_nonce_field( 'fc_settings_save', 'fc_settings_nonce' ); ?>
+
+						<p class="fc-settings-submit submit" data-fc-settings-submit <?php echo $can_save ? '' : 'hidden'; ?>>
+							<button type="submit" class="fc-header__button fc-header__button--save fc-settings-submit__button" data-fc-settings-save <?php disabled( ! $can_save ); ?>><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
+						</p>
 					</div>
 
 				</div>
@@ -642,14 +644,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 */
 	public function output_sidebar_nav( $tabs, $current_tab ) {
 		?>
-		<ul class="fc-settings-nav">
+		<ul class="fc-settings-nav" data-fc-settings-nav>
 			<?php foreach ( $tabs as $slug => $tab ) : ?>
 				<?php if ( 'separator' === $tab[ 'type' ] ) : ?>
 					<li class="fc-settings-nav__separator" role="separator" aria-hidden="true"></li>
 				<?php else : ?>
 					<?php $is_active = $slug === $current_tab; ?>
-					<li class="fc-settings-nav__item fc-settings-nav__item--<?php echo esc_attr( $slug ); ?> <?php echo $is_active ? 'is-active' : ''; ?>">
-						<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_settings_url( $slug ) ); ?>" <?php echo $is_active ? 'aria-current="page"' : ''; ?>>
+					<li class="fc-settings-nav__item fc-settings-nav__item--<?php echo esc_attr( $slug ); ?> <?php echo $is_active ? 'is-active' : ''; ?>" data-fc-settings-nav-item="<?php echo esc_attr( $slug ); ?>">
+						<a class="fc-settings-nav__link" href="<?php echo esc_url( $this->get_settings_url( $slug ) ); ?>" data-fc-settings-nav-link="<?php echo esc_attr( $slug ); ?>" <?php echo $is_active ? 'aria-current="page"' : ''; ?>>
 							<span class="fc-settings-nav__marker" aria-hidden="true">&#8985;</span>
 							<span class="fc-settings-nav__label"><?php echo esc_html( $tab[ 'label' ] ); ?></span>
 						</a>

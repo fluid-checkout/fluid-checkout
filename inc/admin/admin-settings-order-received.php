@@ -53,6 +53,35 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 
 	/**
+	 * Get the promotional settings card shown at the top of the Thank You tab when PRO is not active.
+	 */
+	public function get_promo_settings() {
+		// Bail if PRO is already activated
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return array(); }
+
+		return array(
+			array(
+				'title'            => __( 'Thank You Page Optimization', 'fluid-checkout' ),
+				'type'             => 'fc_promo',
+				'id'               => 'fc_pro_order_received_promo',
+				'is_card'          => true,
+				'promo'            => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-promo' ),
+				'tagline'          => __( 'Make the thank you page and order details clearer for customers after they buy.', 'fluid-checkout' ),
+				'features'         => array(
+					__( 'Optimize the thank you page and account order details with a clearer layout.', 'fluid-checkout' ),
+					__( 'Show order status progress, actions, downloads, and notes where they make sense.', 'fluid-checkout' ),
+					__( 'Customize order details sections on email notifications.', 'fluid-checkout' ),
+					__( 'Add trust symbols and badges where shoppers need reassurance after purchase.', 'fluid-checkout' ),
+				),
+				'learn_more_url'   => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=order-received-promo-learn-more&mtm_source=lite-plugin',
+				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+			),
+		);
+	}
+
+
+
+	/**
 	 * Add new settings to the Fluid Checkout admin settings sections.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
@@ -63,19 +92,22 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 			$settings = apply_filters(
 				'fc_pro_order_received_settings',
-				array(
+				array_merge(
+					$this->get_promo_settings(),
+					array(
 
 					array(
-						'title' => __( 'Thank you page & order details layout', 'fluid-checkout' ),
+						'title' => __( 'Thank You Page & Order Details Layout', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
+						'desc'  => '',
 						'id'    => 'fc_pro_order_received_layout_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-layout' ),
 					),
 
 					array(
 						'title'             => __( 'Order details optimizations', 'fluid-checkout' ),
 						'desc'              => __( 'Enable thank you page and order details optimizations', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Changes the layout of order details on the thank you page and account pages.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'Changes the layout of order details on the thank you page and account pages.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_order_received',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_received' ),
@@ -107,10 +139,11 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 
 					array(
-						'title' => __( 'Thank you page', 'fluid-checkout' ),
+						'title' => __( 'Thank You Page', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'These options affect the thank you page, also known as order received or order confirmation pages.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'    => 'fc_pro_order_received_layout_options',
+						'desc'  => __( 'These options affect the thank you page, also known as order received or order confirmation pages.', 'fluid-checkout' ),
+						'id'    => 'fc_pro_order_received_page_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-page' ),
 					),
 
 					array(
@@ -137,9 +170,25 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 					),
 
 					array(
-						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
+						'type' => 'sectionend',
+						'id'   => 'fc_pro_order_received_page_options',
+					),
+
+
+
+					array(
+						'title' => __( 'Trust Symbols & Badges', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_pro_order_received_trust_symbols_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-trust-symbols' ),
+						'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
+					),
+
+					array(
+						'title'             => __( 'Widget areas', 'fluid-checkout' ),
 						'desc'              => __( 'Add widget areas to the thank you page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the thank you page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
+						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the thank you page.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_order_received_widget_areas',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_received_widget_areas' ),
@@ -150,16 +199,17 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 					array(
 						'type' => 'sectionend',
-						'id'   => 'fc_pro_order_received_layout_options',
+						'id'   => 'fc_pro_order_received_trust_symbols_options',
 					),
 
 
 
 					array(
-						'title' => __( 'Order details layout', 'fluid-checkout' ),
+						'title' => __( 'Order Details Layout', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'These options affect the thank you page , view order details on account pages and on email notifications.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'  => __( 'These options affect the thank you page, view order details on account pages and on email notifications.', 'fluid-checkout' ),
 						'id'    => 'fc_pro_order_details_layout_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-details-layout' ),
 					),
 
 					array(
@@ -260,6 +310,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'id'   => 'fc_pro_order_details_layout_options',
 					),
 
+					)
 				)
 			);
 		}

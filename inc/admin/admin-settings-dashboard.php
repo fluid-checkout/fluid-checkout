@@ -81,6 +81,11 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 					'is_card'          => true,
 					'autoload'         => false,
 				),
+				array(
+					'type'             => 'fc_site_key',
+					'is_card'          => true,
+					'autoload'         => false,
+				),
 
 			);
 

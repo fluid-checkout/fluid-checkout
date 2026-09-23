@@ -6,19 +6,43 @@
 	background-color: #fff;
 }
 
-.forminp-fc_layout_selector fieldset {
+.fc-settings-wrap .forminp-fc_layout_selector {
+	padding: 0 !important; // Needed to override WC admin options styles inside the settings cards.
+	background-color: transparent;
+}
+
+.forminp-fc_layout_selector fieldset,
+.fc-settings-field__control.forminp-fc_layout_selector > fieldset {
 	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
 }
 
 .forminp-fc_layout_selector ul {
 	margin: 0;
+	padding: 0;
 	display: flex;
+	list-style: none;
 }
+
 .forminp-fc_layout_selector ul + ul {
 	position: relative;
 	margin-left: 20px;
 	padding-left: 20px;
 }
+
+.rtl .forminp-fc_layout_selector ul + ul {
+	margin-left: 0;
+	margin-right: 20px;
+	padding-left: 0;
+	padding-right: 20px;
+}
+
 .forminp-fc_layout_selector ul + ul:before {
 	content: '';
 	position: absolute;
@@ -29,17 +53,36 @@
 	background-color: #f0f0f1;
 }
 
+.rtl .forminp-fc_layout_selector ul + ul:before {
+	left: auto;
+	right: 0;
+}
+
 .forminp-fc_layout_selector li {
 	position: relative;
 	display: block;
-	padding: 85px 2px 0;
+	margin: 0;
+	padding: 0;
 	width: 100px;
 }
+
 .forminp-fc_layout_selector li + li {
 	margin-left: 10px;
 }
 
+.rtl .forminp-fc_layout_selector li + li {
+	margin-left: 0;
+	margin-right: 10px;
+}
 
+
+
+.forminp-fc_layout_selector label {
+	position: relative;
+	display: block;
+	padding: 85px 2px 0;
+	box-sizing: border-box;
+}
 
 .forminp-fc_layout_selector label.disabled {
 	cursor: not-allowed;
@@ -48,9 +91,8 @@
 
 
 
-.forminp-fc_layout_selector .fc-checkout-layout__option:after {
+.forminp-fc_layout_selector label:after {
 	content: '';
-	float: none;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -60,9 +102,17 @@
 	border: solid 2px #fff;
 	background-color: #F0EFF1;
 	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	box-sizing: border-box;
 }
 
-.forminp-fc_layout_selector .fc-checkout-layout__option:checked:after {
+.rtl .forminp-fc_layout_selector label:after {
+	left: auto;
+	right: 0;
+}
+
+.forminp-fc_layout_selector label:has( .fc-checkout-layout__option:checked ):after {
 	border: solid 2px #3481C4;
 }
 

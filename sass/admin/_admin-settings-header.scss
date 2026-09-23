@@ -89,7 +89,7 @@
 	box-shadow: none;
 }
 
-.fc-header__button:active {
+.fc-header__button:active:not( :disabled ):not( .disabled ) {
 	border-width: 2px 1px 1px;
 }
 
@@ -116,7 +116,7 @@
 .fc-header__button--upgrade:focus {
 	background: $fc-header-button-upgrade-background-hover;
 	border-color: $fc-header-button-upgrade-border-color-hover;
-	color: $fc-header-button-upgrade-color;
+	color: $fc-header-button-upgrade-color-hover;
 }
 
 
@@ -136,8 +136,8 @@
 
 .fc-header__button--save:disabled,
 .fc-header__button--save.disabled {
-	background: #bceefd;
-	border-color: #8cc9e2;
+	background: $fc-header-button-save-background-disabled;
+	border-color: $fc-header-button-save-border-color-disabled;
 	color: $white;
 	cursor: not-allowed;
 	opacity: 1;

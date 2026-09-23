@@ -4,17 +4,13 @@
 
 .fc-addons-list {
 	display: flex;
-	align-items: stretch;
-	justify-content: flex-start;
-	gap: 0;
 	flex-wrap: wrap;
+	align-items: stretch;
+	gap: 20px;
 	list-style: none;
 	margin: 0;
 	margin-top: 30px;
 	padding: 0;
-
-	@media (min-width: 750px) { gap: 4%; }
-	@media (min-width: 1200px) { gap: 3.5%; }
 }
 
 
@@ -25,19 +21,31 @@
 	align-items: flex-start;
 	flex-grow: 0;
 	flex-shrink: 0;
-	margin-bottom: 30px;
+	margin: 0;
 	padding: 30px;
 	width: 100%;
-     border: solid 1px #f3f3f3;
-	border-radius: 8px;
+	box-sizing: border-box;
+	border: solid 1px #f3f3f3;
+	border-radius: 0;
 	background-color: #f9f9f9;
 
-	@media (min-width: 750px) { width: 48%; }
-	@media (min-width: 1200px) { width: 31%; }
+	@media ( min-width: 600px ) {
+		width: calc( 50% - 10px );
+	}
 }
 
 .fc-addons__item.fc-addons__item--bundle {
 	border: solid 2px #1E212B;
+}
+
+.fc-addons__item.fc-addons__item--pro {
+	border: solid 2px #646970;
+}
+
+.fc-settings-card--addons .fc-addons__item.fc-addons__item--pro {
+	@media ( min-width: 600px ) {
+		width: 100%;
+	}
 }
 
 
@@ -82,6 +90,16 @@
 	list-style: none;
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+.fc-addons__item-features-list--columns {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0 20px;
+
+	@media ( min-width: 600px ) {
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 
@@ -174,7 +192,36 @@
 }
 
 .fc-addons__item-actions .button.button--activated {
-	color: #007a3d !important;
+	color: #007a3d !important; // Needed to override settings-page button color
+}
+
+.fc-addons__item-actions .button.button--activated::before {
+	// Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
+	content: "\f147";
+	font-family: dashicons;
+	display: inline-block;
+	margin: -2px 6px 0 0;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	speak: never;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	text-align: center;
+	vertical-align: middle;
+	color: #007a3d;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	// END - Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
+}
+
+.rtl .fc-addons__item-actions .button.button--activated::before {
+	margin: -2px 0 0 6px;
 }
 
 .fc-addons__item-actions .button.button-primary.button--install {

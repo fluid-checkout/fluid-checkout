@@ -72,7 +72,10 @@
 }
 
 .fc-settings-card__promo {
+	display: inline-flex;
 	flex: 0 0 auto;
+	align-items: center;
+	gap: 8px;
 }
 
 .fc-settings-card__header > .fc-settings-card__promo {
@@ -107,6 +110,17 @@
 	box-shadow: 0 2px 6px 0 rgba( 0, 0, 0, .15 );
 }
 
+.fc-settings-promo-pill--addon {
+	border-color: $fc-settings-promo-pill-addon-border-color;
+	background: $fc-settings-promo-pill-addon-background-color;
+	color: $fc-settings-promo-pill-addon-color;
+}
+
+.fc-settings-promo-pill--addon:hover,
+.fc-settings-promo-pill--addon:focus {
+	color: $fc-settings-promo-pill-addon-color-hover;
+}
+
 .fc-settings-card__description {
 	flex: 1 1 100%;
 	color: $fc-settings-card-description-color;
@@ -128,7 +142,19 @@
 	}
 }
 
+.fc-settings-card__inner > p:first-child {
+	margin-top: 0;
+}
+
+.fc-settings-card__inner > p:last-child {
+	margin-bottom: 0;
+}
+
 .fc-settings-card__footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
 	padding: $fc-settings-card-padding;
 	border-top: 1px solid $fc-settings-card-header-border-color;
 	background-color: $fc-settings-card-footer-background-color;
@@ -163,13 +189,7 @@
 	margin-bottom: 0;
 }
 
-.fc-settings-card--setup .fc-settings-card__inner {
-	padding-top: 24px;
-	padding-bottom: 24px;
-}
-
-.fc-settings-card--addons .fc-addons-list,
-.fc-settings-card--special-offers .fc-addons-list {
+.fc-settings-card--addons .fc-addons-list {
 	margin-top: 16px;
 }
 
@@ -181,7 +201,8 @@
 // SETTINGS PAGE - PROMO CARDS
 // ------------------------------------
 
-.fc-settings-card--promo {
+.fc-settings-card--promo,
+.fc-settings-card--site-key-placeholder {
 	border: solid 2px #646970;
 	box-shadow: none;
 }
@@ -211,17 +232,29 @@
 }
 
 .fc-settings-promo__features li::before {
-	content: '';
+	// Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
+	content: "\f147";
+	font-family: dashicons;
+	display: inline-block;
 	position: absolute;
 	left: 0;
 	top: 50%;
-	margin-top: -8px;
-	width: 16px;
-	height: 16px;
-	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2.5' stroke='%2316a085'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E" );
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
+	margin-top: -10px;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	speak: never;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	text-align: center;
+	color: #007a3d;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	// END - Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
 }
 
 .rtl .fc-settings-promo__features li {
@@ -235,37 +268,66 @@
 
 
 
+// Match header primary / secondary button styles on settings page content.
+.fc-settings-wrap .button,
+.fc-settings-wrap .button-secondary,
 .fc-settings-button {
 	display: inline-block;
 	margin: 0;
-	padding: 5px 11px;
+	padding: $fc-header-button-padding;
 	background: $white;
-	border-color: #c8d7e1;
+	border-color: $fc-header-button-border-color;
 	border-style: solid;
 	border-width: 1px 1px 2px;
-	border-radius: 4px;
-	color: $fc-settings-text-color;
+	border-radius: $fc-header-button-border-radius;
+	color: $fc-header-button-color;
 	cursor: pointer;
 	outline: 0;
-	font-size: 13px;
-	font-weight: 500;
-	line-height: 21px;
+	overflow: hidden;
+	font-size: $fc-header-button-font-size;
+	font-weight: $fc-header-button-font-weight;
+	line-height: $fc-header-button-line-height;
+	text-overflow: ellipsis;
 	text-decoration: none;
 	vertical-align: middle;
 	box-sizing: border-box;
 	box-shadow: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
-.fc-settings-button:hover {
-	color: $fc-settings-text-color;
-	border-color: #a8bece;
-}
-
+.fc-settings-wrap .button:hover,
+.fc-settings-wrap .button:focus,
+.fc-settings-wrap .button-secondary:hover,
+.fc-settings-wrap .button-secondary:focus,
+.fc-settings-button:hover,
 .fc-settings-button:focus {
-	color: $fc-settings-text-color;
+	color: $fc-header-button-color;
+	border-color: $fc-header-button-border-color-hover;
+	background: $white;
 	box-shadow: none;
+	text-decoration: none;
 }
 
-.fc-settings-button:active {
+.fc-settings-wrap .button:active:not( :disabled ):not( .disabled ),
+.fc-settings-wrap .button-secondary:active:not( :disabled ):not( .disabled ),
+.fc-settings-button:active:not( :disabled ):not( .disabled ) {
 	border-width: 2px 1px 1px;
+}
+
+.fc-settings-wrap .button.button-primary,
+.fc-settings-button--primary {
+	background: $fc-header-button-save-background;
+	border-color: $fc-header-button-save-border-color;
+	color: $fc-header-button-save-color;
+}
+
+.fc-settings-wrap .button.button-primary:hover,
+.fc-settings-wrap .button.button-primary:focus,
+.fc-settings-button--primary:hover,
+.fc-settings-button--primary:focus {
+	background: $fc-header-button-save-background-hover;
+	border-color: $fc-header-button-save-border-color-hover;
+	color: $fc-header-button-save-color;
 }

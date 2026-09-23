@@ -110,6 +110,7 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 .fc-settings-content {
 	flex: 1 1 auto;
 	min-width: 0;
+	max-width: $fc-settings-content-max-width;
 	padding: $fc-settings-content-padding;
 	padding-bottom: $fc-settings-content-padding-bottom;
 	position: relative;

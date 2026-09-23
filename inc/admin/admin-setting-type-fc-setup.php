@@ -33,14 +33,13 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 	public function output_field( $value ) {
 		$settings_page = FluidCheckout_Admin_Settings_Page::instance();
 		?>
-		<div class="fc-settings-card fc-settings-card--setup fc-dashboard-section--docs">
+		<div class="fc-settings-card fc-settings-card--setup">
+			<div class="fc-settings-card__header">
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Getting started', 'fluid-checkout' ) ); ?></h3>
+			</div>
+
 			<div class="fc-settings-card__inner">
-
-				<img class="fc-dashboard__logo" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/fluid-checkout-logo.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?>">
-				<h3 class="fc-dashboard-section-title"><?php echo esc_html( __( 'Setup & Documentation', 'fluid-checkout' ) ); ?></h3>
-				<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Great! Your checkout page is now running on Fluid Checkout.', 'fluid-checkout' ) ); ?></p>
-
-				<p><?php echo wp_kses_post( __( 'Here are a few resources for you to get started:', 'fluid-checkout' ) ); ?></p>
+				<p><?php echo wp_kses_post( __( '<strong>Great! Your checkout page is now running on Fluid Checkout.</strong>', 'fluid-checkout' ) . ' ' . __( 'Here are a few resources for you to get started:', 'fluid-checkout' ) ); ?></p>
 
 				<div class="fc-dashboard-docs">
 					<ul>
@@ -58,7 +57,6 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						<li><?php echo wp_kses_post( sprintf( __( 'If you ever need help, <a href="%s" target="_blank">open a support ticket</a> on our official support channel.', 'fluid-checkout' ), 'https://fluidcheckout.com/support/' ) ); ?></li>
 					</ul>
 				</div>
-
 			</div>
 		</div>
 		<?php
