@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Shipping step and substep visibility when the cart starts or stops needing shipping during checkout AJAX updates.
+* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
 
 = 4.2.7 - 2026-08-19 =
 

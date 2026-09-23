@@ -26,7 +26,7 @@ class FluidCheckout_AdminNotices_DBMigrationsApplied extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'fc_admin_notices', array( $this, 'add_notice' ), 10 );
+		add_filter( 'fc_admin_notices', array( $this, 'add_notice' ), 10 );
 	}
 
 
