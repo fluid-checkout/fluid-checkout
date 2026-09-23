@@ -1827,7 +1827,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	}
 
 	/**
-	 * Get the ids of substeps that will be output for a checkout step.
+	 * Get the ids of currently visible substeps for a checkout step.
+	 * Used to set first/last visible substep markers. Hidden substeps are still rendered.
 	 *
 	 * @param   string  $step_id   Id of the checkout step.
 	 * @param   string  $context   Context in which the function is running. Defaults to `checkout`.
@@ -4851,6 +4852,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// that getter returns false when shipping is not needed. Skip on full page load
 			// so virtual-only carts match PRO and show billing as a separate step.
 			$is_update_order_review = array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET[ 'wc-ajax' ] ?? '' ) );
+
+			// Maybe keep shipping address visible during AJAX when force_single_address is active
 			if ( $is_update_order_review && 'force_single_address' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' ) ) {
 				$visibility[ 'shipping_address' ] = 'yes';
 			}
@@ -4888,7 +4891,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function change_substep_attributes_shipping_method( $substep_attributes ) {
 		// Get computed visibility for the shipping method substep
 		$visibility = $this->get_shipping_step_substep_visibility();
-		$substep_attributes[ 'data-substep-visible' ] = $visibility[ 'shipping_method' ];
+
+		// Get current visibility from other plugins
+		$current_visible = array_key_exists( 'data-substep-visible', $substep_attributes ) ? $substep_attributes[ 'data-substep-visible' ] : 'yes';
+
+		// Prefer hidden when either the visibility map or another plugin requires it
+		// Matches the JS "any no wins" rule for `.fc-substep-visible-state` fields
+		$substep_attributes[ 'data-substep-visible' ] = ( 'no' === $visibility[ 'shipping_method' ] || 'no' === $current_visible ) ? 'no' : 'yes';
 
 		return $substep_attributes;
 	}
