@@ -1,0 +1,61 @@
+// ------------------------------------
+// SETTINGS PAGE - SIDEBAR
+// ------------------------------------
+
+.fc-settings-sidebar {
+	position: sticky;
+	top: $fc-settings-sticky-offset;
+	flex: 0 0 $fc-settings-sidebar-width;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	align-self: flex-start;
+	width: $fc-settings-sidebar-width;
+	overflow: hidden;
+	background-color: $fc-settings-sidebar-background-color;
+	box-shadow: $fc-settings-sidebar-box-shadow;
+	box-sizing: border-box;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		position: static;
+		flex: 0 0 auto;
+		align-self: stretch;
+		width: 100%;
+		box-shadow: none;
+		border-bottom: 1px solid $admin-border-color-strong;
+	}
+}
+
+.rtl .fc-settings-sidebar {
+	box-shadow: $fc-settings-sidebar-box-shadow-rtl;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		box-shadow: none;
+	}
+}
+
+.fc-settings-sidebar__inner {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	min-height: 0;
+	width: 100%;
+}
+
+
+
+.fc-settings-sidebar-header {
+	flex-shrink: 0;
+	padding: $fc-settings-sidebar-header-padding;
+	border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+}
+
+.fc-settings-wrap .fc-settings-sidebar-header__title {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size: $fc-settings-sidebar-title-font-size;
+	font-weight: $fc-settings-sidebar-title-font-weight;
+	line-height: $fc-settings-sidebar-title-line-height;
+	color: $fc-settings-text-color;
+}

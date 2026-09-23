@@ -2,9 +2,16 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Checkout admin options.
+ * Input field types for the Fluid Checkout settings page, with support for disabled fields.
  */
 class FluidCheckout_Admin_SettingType_Input extends FluidCheckout {
+
+	/**
+	 * Input types supported by this field type, prefixed with `fc_` in the settings arrays.
+	 */
+	const INPUT_TYPES = array( 'text', 'password', 'datetime', 'datetime-local', 'date', 'month', 'time', 'week', 'number', 'email', 'url', 'tel' );
+
+
 
 	/**
 	 * __construct function.
@@ -20,18 +27,9 @@ class FluidCheckout_Admin_SettingType_Input extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_text', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_password', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_datetime', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_datetime-local', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_date', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_month', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_time', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_week', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_number', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_email', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_url', array( $this, 'output_field' ), 10 );
-		add_action( 'woocommerce_admin_field_fc_tel', array( $this, 'output_field' ), 10 );
+		foreach ( self::INPUT_TYPES as $input_type ) {
+			add_action( 'fc_admin_settings_render_field_fc_' . $input_type, array( $this, 'output_field' ), 10 );
+		}
 	}
 
 
@@ -42,44 +40,48 @@ class FluidCheckout_Admin_SettingType_Input extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		// Get field type
-		$hook_name = current_action();
-		$field_type = str_replace( 'woocommerce_admin_field_fc_', '', $hook_name );
+		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
 
-		// Custom attribute handling.
-		$custom_attributes = array();
-		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
-			foreach ( $value['custom_attributes'] as $attribute => $attribute_value ) {
-				$custom_attributes[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
-			}
+		// Get input type from the field type
+		$input_type = preg_replace( '/^fc_/', '', $value[ 'type' ] );
+
+		$field_description = $renderer->get_field_description( $value );
+		$suffix_label = isset( $value[ 'suffix_label' ] ) ? $value[ 'suffix_label' ] : '';
+		$has_suffix_label = '' !== $suffix_label;
+
+		$renderer->output_field_start( $value );
+
+		if ( $has_suffix_label ) {
+			echo '<span class="fc-settings-input-group fc-settings-input-group--split">';
 		}
-
-		// Description handling.
-		$field_description = WC_Admin_Settings::get_field_description( $value );
-		$description       = $field_description['description'];
-		$tooltip_html      = $field_description['tooltip_html'];
-
-		$option_value = $value['value'];
 		?>
-		<tr class="<?php echo esc_attr( $value['row_class'] ); ?>">
-			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
-			</th>
-			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-				<input
-					name="<?php echo esc_attr( $value['field_name'] ); ?>"
-					id="<?php echo esc_attr( $value['id'] ); ?>"
-					type="<?php echo esc_attr( $field_type ); ?>"
-					style="<?php echo esc_attr( $value['css'] ); ?>"
-					value="<?php echo esc_attr( $option_value ); ?>"
-					class="<?php echo esc_attr( $value['class'] ); ?>"
-					placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
-					<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
-					<?php echo array_key_exists( 'disabled', $value ) && false !== $value[ 'disabled' ] ? 'disabled' : ''; ?>
-					/><?php echo esc_html( $value['suffix'] ); ?> <?php echo $description; // WPCS: XSS ok. ?>
-			</td>
-		</tr>
+		<input
+			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
+			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			type="<?php echo esc_attr( $input_type ); ?>"
+			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
+			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"
+			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
+			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
+			<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php disabled( $renderer->is_field_disabled( $value ) ); ?>
+		/>
+		<?php if ( $has_suffix_label ) : ?>
+			<input
+				type="text"
+				class="fc-settings-input-group__label"
+				value="<?php echo esc_attr( $suffix_label ); ?>"
+				disabled
+				tabindex="-1"
+				aria-hidden="true"
+			/>
+			</span>
+		<?php else : ?>
+			<?php echo esc_html( $value[ 'suffix' ] ); ?>
+		<?php endif; ?>
+		<?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php
+		$renderer->output_field_end( $value );
 	}
 
 }

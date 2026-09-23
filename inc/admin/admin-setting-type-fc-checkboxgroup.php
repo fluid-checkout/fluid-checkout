@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Checkbox group admin setting field.
+ * Checkbox group field type for the Fluid Checkout settings page.
  */
 class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 
@@ -19,7 +19,8 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'woocommerce_admin_field_fc_checkboxgroup', array( $this, 'output_field' ), 10 );
+		// Field types
+		add_action( 'fc_admin_settings_render_field_fc_checkboxgroup', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -30,83 +31,70 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 	 * @param array $value Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		$visibility_class = array();
+		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
+		$field_description = $renderer->get_field_description( $value );
+		$description        = $field_description[ 'description' ];
+		$tooltip_html       = $field_description[ 'tooltip_html' ];
+		$option_value       = is_array( $value[ 'value' ] ) ? $value[ 'value' ] : array();
+		$options            = isset( $value[ 'options' ] ) && is_array( $value[ 'options' ] ) ? $value[ 'options' ] : array();
+		$disabled_options   = ! empty( $value[ 'disabled_options' ] ) && is_array( $value[ 'disabled_options' ] ) ? $value[ 'disabled_options' ] : array();
+		$required_options   = ! empty( $value[ 'required_options' ] ) && is_array( $value[ 'required_options' ] ) ? $value[ 'required_options' ] : array();
+		$has_title          = '' !== $value[ 'title' ];
 
-		if ( ! isset( $value['show_if_checked'] ) ) {
-			$value['show_if_checked'] = false;
-		}
+		$renderer->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false ) );
 
-		if ( 'yes' === $value['show_if_checked'] ) {
-			$visibility_class[] = 'hidden_option';
-		}
-
-		$container_class = implode( ' ', $visibility_class );
-		$field_description = WC_Admin_Settings::get_field_description( $value );
-		$description       = $field_description['description'];
-		$tooltip_html      = $field_description['tooltip_html'];
-		$option_value       = is_array( $value['value'] ) ? $value['value'] : array();
-		$disabled_options   = ! empty( $value['disabled_options'] ) && is_array( $value['disabled_options'] ) ? $value['disabled_options'] : array();
-		$required_options   = ! empty( $value['required_options'] ) && is_array( $value['required_options'] ) ? $value['required_options'] : array();
-		$checkboxgroup      = $value['checkboxgroup'] ?? '';
-		$has_title          = isset( $value['title'] ) && '' !== $value['title'];
+		// Titles of fields continuing a field group are displayed with the options, as the row label belongs to the first field
+		$is_group_start = $renderer->is_current_field_row_start();
 		?>
-		<fieldset class="<?php echo esc_attr( $container_class ); ?>">
-			<?php if ( $has_title ) : ?>
-				<legend class="screen-reader-text"><span><?php echo esc_html( $value['title'] ); ?></span></legend>
-			<?php endif; ?>
+		<?php if ( $has_title ) : ?>
+			<legend class="screen-reader-text"><span><?php echo esc_html( $value[ 'title' ] ); ?></span></legend>
+		<?php endif; ?>
 
-			<?php if ( $has_title || $description || $tooltip_html ) : ?>
-				<p class="description">
-					<?php if ( $has_title ) : ?>
-						<strong><?php echo esc_html( $value['title'] ); ?></strong>
-						<?php echo $tooltip_html; // WPCS: XSS ok. ?>
-						<br>
-					<?php endif; ?>
-					<?php echo $description; // WPCS: XSS ok. ?>
-				</p>
-			<?php endif; ?>
+		<?php if ( ( $has_title && ! $is_group_start ) || $description || ( $tooltip_html && ! $is_group_start ) ) : ?>
+			<p class="description">
+				<?php if ( $has_title && ! $is_group_start ) : ?>
+					<strong><?php echo esc_html( $value[ 'title' ] ); ?></strong>
+					<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<br>
+				<?php endif; ?>
+				<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</p>
+		<?php endif; ?>
 
-			<?php foreach ( $value['options'] as $option_key => $option_data ) : ?>
-				<?php
-				$option_label       = is_array( $option_data ) ? ( $option_data['label'] ?? '' ) : $option_data;
-				$option_description = is_array( $option_data ) ? ( $option_data['description'] ?? '' ) : '';
-				$is_disabled        = in_array( $option_key, $disabled_options, true );
-				$is_required        = in_array( $option_key, $required_options, true );
-				$is_checked         = $is_required || in_array( (string) $option_key, $option_value, true );
-				?>
-				<p class="fc-checkboxgroup-option">
-					<label>
-						<?php if ( $is_disabled && $is_checked ) : ?>
-							<input
-								type="hidden"
-								name="<?php echo esc_attr( $value['field_name'] ); ?>[]"
-								value="<?php echo esc_attr( $option_key ); ?>"
-							/>
-						<?php endif; ?>
-						<input
-							type="checkbox"
-							name="<?php echo esc_attr( $value['field_name'] ); ?>[]"
-							value="<?php echo esc_attr( $option_key ); ?>"
-							<?php checked( $is_checked, true ); ?>
-							<?php disabled( $is_disabled ); ?>
-						/>
-						<strong><?php echo esc_html( $option_label ); ?></strong>
-					</label>
-					<?php if ( ! empty( $option_description ) ) : ?>
-						<br>
-						<span class="description"><?php echo esc_html( $option_description ); ?></span>
-					<?php endif; ?>
-				</p>
-			<?php endforeach; ?>
-		</fieldset>
-		<?php
-
-		if ( 'end' === $checkboxgroup ) {
-			?>
-			</td>
-			</tr>
+		<?php foreach ( $options as $option_key => $option_data ) : ?>
 			<?php
-		}
+			$option_label       = is_array( $option_data ) ? ( $option_data[ 'label' ] ?? '' ) : $option_data;
+			$option_description = is_array( $option_data ) ? ( $option_data[ 'description' ] ?? '' ) : '';
+			$is_disabled        = $renderer->is_field_disabled( $value ) || in_array( $option_key, $disabled_options, true );
+			$is_required        = in_array( $option_key, $required_options, true );
+			$is_checked         = $is_required || in_array( (string) $option_key, $option_value, true );
+			?>
+			<p class="fc-checkboxgroup-option">
+				<label>
+					<?php if ( $is_disabled && $is_checked ) : ?>
+						<input
+							type="hidden"
+							name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>[]"
+							value="<?php echo esc_attr( $option_key ); ?>"
+						/>
+					<?php endif; ?>
+					<input
+						type="checkbox"
+						name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>[]"
+						value="<?php echo esc_attr( $option_key ); ?>"
+						<?php checked( $is_checked, true ); ?>
+						<?php disabled( $is_disabled ); ?>
+					/>
+					<strong><?php echo esc_html( $option_label ); ?></strong>
+				</label>
+				<?php if ( ! empty( $option_description ) ) : ?>
+					<br>
+					<span class="description"><?php echo esc_html( $option_description ); ?></span>
+				<?php endif; ?>
+			</p>
+		<?php endforeach; ?>
+		<?php
+		$renderer->output_field_end( $value, array( 'fieldset' => true ) );
 	}
 
 }

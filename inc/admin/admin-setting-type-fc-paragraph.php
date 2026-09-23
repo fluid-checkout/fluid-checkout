@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Checkout admin options.
+ * Paragraph field type for the Fluid Checkout settings page.
  */
 class FluidCheckout_Admin_SettingType_Paragraph extends FluidCheckout {
 
@@ -20,7 +20,7 @@ class FluidCheckout_Admin_SettingType_Paragraph extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_paragraph', array( $this, 'output_field' ), 10 );
+		add_action( 'fc_admin_settings_render_field_fc_paragraph', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -31,16 +31,10 @@ class FluidCheckout_Admin_SettingType_Paragraph extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		$field_description = WC_Admin_Settings::get_field_description( $value );
-		$description       = $field_description['description'];
 		?>
-		<tr valign="top">
-			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-				<p>
-					<?php echo $description; // WPCS: XSS ok. ?>
-				</p>
-			</td>
-		</tr>
+		<div class="fc-settings-field fc-settings-field--paragraph forminp-<?php echo esc_attr( sanitize_title( $value[ 'type' ] ) ); ?>">
+			<p><?php echo wp_kses_post( $value[ 'desc' ] ); ?></p>
+		</div>
 		<?php
 	}
 

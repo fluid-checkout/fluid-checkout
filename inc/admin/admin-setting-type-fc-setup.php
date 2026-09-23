@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Checkout admin options.
+ * Setup and documentation card for the Dashboard tab of the Fluid Checkout settings page.
  */
 class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
@@ -20,7 +20,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_setup', array( $this, 'output_field' ), 10 );
+		add_action( 'fc_admin_settings_render_field_fc_setup', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -31,16 +31,15 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
+		$settings_page = FluidCheckout_Admin_Settings_Page::instance();
 		?>
+		<div class="fc-settings-card fc-settings-card--setup fc-dashboard-section--docs">
+			<div class="fc-settings-card__inner">
 
-		<tr valign="top" class="fc-dashboard-section__row fc-dashboard-section--docs">
-
-			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-			
 				<img class="fc-dashboard__logo" src="<?php echo esc_url( FluidCheckout::$directory_url . 'images/admin/fluid-checkout-logo.png' ); ?>" alt="<?php echo esc_attr( __( 'Fluid Checkout PRO', 'fluid-checkout' ) ); ?>">
 				<h3 class="fc-dashboard-section-title"><?php echo esc_html( __( 'Setup & Documentation', 'fluid-checkout' ) ); ?></h3>
 				<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Great! Your checkout page is now running on Fluid Checkout.', 'fluid-checkout' ) ); ?></p>
-				
+
 				<p><?php echo wp_kses_post( __( 'Here are a few resources for you to get started:', 'fluid-checkout' ) ); ?></p>
 
 				<div class="fc-dashboard-docs">
@@ -48,11 +47,11 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						<?php // translators: %s: Documentation link. ?>
 						<li><?php echo wp_kses_post( sprintf( __( 'Read the installation guide <a href="%s" target="_blank">Getting stated with Fluid Checkout</a>.', 'fluid-checkout' ), 'https://fluidcheckout.com/docs/getting-started-fluid-checkout/' ) ); ?></li>
 						<?php // translators: %s: Checkout options link. ?>
-						<li><?php echo wp_kses_post( sprintf( __( 'Setup layout and design on the <a href="%s">checkout options</a>.', 'fluid-checkout' ), admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=checkout' ) ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'Setup layout and design on the <a href="%s">checkout options</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'checkout' ) ) ) ); ?></li>
 						<?php // translators: %s: Integrations link. ?>
-						<li><?php echo wp_kses_post( sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for other plugins you have installed.', 'fluid-checkout' ), admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=integrations' ) ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for other plugins you have installed.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'integrations' ) ) ) ); ?></li>
 						<?php // translators: %s: Tools settings link. ?>
-						<li><?php echo wp_kses_post( sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable site environment reports</a> from the tools settings.', 'fluid-checkout' ), admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=tools' ) ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable site environment reports</a> from the tools settings.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ) ); ?></li>
 						<?php // translators: %s: Documentation link. ?>
 						<li><?php echo wp_kses_post( sprintf( __( 'Visit <a href="%s" target="_blank">our documentation</a> for more information about Fluid Checkout features.', 'fluid-checkout' ), 'https://fluidcheckout.com/docs/' ) ); ?></li>
 						<?php // translators: %s: Support link. ?>
@@ -60,9 +59,8 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 					</ul>
 				</div>
 
-			</td>
-
-		</tr>
+			</div>
+		</div>
 		<?php
 	}
 

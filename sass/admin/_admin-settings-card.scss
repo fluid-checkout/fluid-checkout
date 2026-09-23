@@ -1,0 +1,271 @@
+// ------------------------------------
+// SETTINGS PAGE - CARDS
+// ------------------------------------
+
+.fc-settings-card {
+	max-width: $fc-settings-card-max-width;
+	margin: 0 0 $fc-settings-card-margin-bottom;
+	border: none;
+	border-radius: $fc-settings-card-border-radius;
+	background-color: $fc-settings-card-background-color;
+	box-shadow: $fc-settings-card-box-shadow;
+	box-sizing: border-box;
+}
+
+.fc-settings-card__header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 10px;
+	padding: $fc-settings-card-padding;
+	border-bottom: 1px solid $fc-settings-card-header-border-color;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+.fc-settings-wrap .fc-settings-card__title {
+	flex: 1 1 auto;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	font-size: $fc-settings-card-title-font-size;
+	font-weight: $fc-settings-card-title-font-weight;
+	line-height: 1.4;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-card__actions {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 8px;
+	margin-left: auto;
+}
+
+.rtl .fc-settings-card__actions {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.fc-settings-docs-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	color: $fc-settings-docs-icon-color;
+	text-decoration: none;
+	line-height: 1;
+}
+
+.fc-settings-docs-icon .dashicons {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+}
+
+.fc-settings-docs-icon:hover,
+.fc-settings-docs-icon:focus {
+	color: $fc-settings-docs-icon-color-hover;
+}
+
+.fc-settings-card__promo {
+	flex: 0 0 auto;
+}
+
+.fc-settings-card__header > .fc-settings-card__promo {
+	margin-left: auto;
+}
+
+.rtl .fc-settings-card__header > .fc-settings-card__promo {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.fc-settings-promo-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: $fc-settings-promo-pill-padding;
+	border: 1px solid $fc-settings-promo-pill-border-color;
+	border-radius: $fc-settings-promo-pill-border-radius;
+	background: $fc-settings-promo-pill-background-color;
+	color: $fc-settings-promo-pill-color;
+	font-size: $fc-settings-promo-pill-font-size;
+	font-weight: normal;
+	line-height: 12px;
+	text-decoration: none;
+	transition: color .15s ease-in-out, transform .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.fc-settings-promo-pill:hover,
+.fc-settings-promo-pill:focus {
+	color: $fc-settings-promo-pill-color-hover;
+	text-decoration: none;
+	transform: scale( 1.025 );
+	box-shadow: 0 2px 6px 0 rgba( 0, 0, 0, .15 );
+}
+
+.fc-settings-card__description {
+	flex: 1 1 100%;
+	color: $fc-settings-card-description-color;
+}
+
+.fc-settings-card__description p {
+	margin: 0;
+}
+
+.fc-settings-card__description p + p {
+	margin-top: .5em;
+}
+
+.fc-settings-card__inner {
+	padding: $fc-settings-card-padding;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+.fc-settings-card__footer {
+	padding: $fc-settings-card-padding;
+	border-top: 1px solid $fc-settings-card-header-border-color;
+	background-color: $fc-settings-card-footer-background-color;
+	border-radius: 0 0 $fc-settings-card-border-radius $fc-settings-card-border-radius;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - DASHBOARD CARDS
+// ------------------------------------
+
+.fc-settings-card .fc-dashboard-section-title {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.fc-settings-card p.fc-dashboard-section__subtitle {
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #666;
+}
+
+.fc-settings-card .fc-addons__item p.fc-dashboard-section__subtitle {
+	margin-bottom: 0;
+}
+
+.fc-settings-card--setup .fc-settings-card__inner {
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+
+.fc-settings-card--addons .fc-addons-list,
+.fc-settings-card--special-offers .fc-addons-list {
+	margin-top: 16px;
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - PROMO CARDS
+// ------------------------------------
+
+.fc-settings-card--promo {
+	border: solid 2px #646970;
+	box-shadow: none;
+}
+
+.fc-settings-promo__tagline {
+	margin: 0 0 16px;
+	padding: 0;
+	font-weight: 500;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-promo__features {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.fc-settings-promo__features li {
+	position: relative;
+	margin: 5px 0 0;
+	padding: 10px 0 5px 26px;
+	color: #444;
+}
+
+.fc-settings-promo__features li + li {
+	border-top: 1px solid rgba( 200, 215, 225, .4 );
+}
+
+.fc-settings-promo__features li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -8px;
+	width: 16px;
+	height: 16px;
+	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2.5' stroke='%2316a085'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E" );
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.rtl .fc-settings-promo__features li {
+	padding: 10px 26px 5px 0;
+}
+
+.rtl .fc-settings-promo__features li::before {
+	left: auto;
+	right: 0;
+}
+
+
+
+.fc-settings-button {
+	display: inline-block;
+	margin: 0;
+	padding: 5px 11px;
+	background: $white;
+	border-color: #c8d7e1;
+	border-style: solid;
+	border-width: 1px 1px 2px;
+	border-radius: 4px;
+	color: $fc-settings-text-color;
+	cursor: pointer;
+	outline: 0;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 21px;
+	text-decoration: none;
+	vertical-align: middle;
+	box-sizing: border-box;
+	box-shadow: none;
+}
+
+.fc-settings-button:hover {
+	color: $fc-settings-text-color;
+	border-color: #a8bece;
+}
+
+.fc-settings-button:focus {
+	color: $fc-settings-text-color;
+	box-shadow: none;
+}
+
+.fc-settings-button:active {
+	border-width: 2px 1px 1px;
+}

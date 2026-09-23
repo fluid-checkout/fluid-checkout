@@ -22,6 +22,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Plugin settings link
 		add_filter( 'plugin_action_links_' . self::$plugin_basename, array( $this, 'add_plugin_settings_link' ), 10 );
 
+		// Settings page
+		add_action( 'init', array( $this, 'load_settings_page' ), 10 );
+
 		// Load dashboard
 		add_action( 'init', array( $this, 'load_dashboard' ), 10 );
 
@@ -33,10 +36,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 		// WooCommerce Settings Styles
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 10 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_dashboard_styles' ), 10 );
 
 		// Clear cache after saving settings
 		add_action( 'woocommerce_settings_saved', array( $this, 'flush_cache' ), 10 );
+		add_action( 'fc_admin_settings_saved', array( $this, 'flush_cache' ), 10 );
 	}
 
 
@@ -53,29 +56,16 @@ class FluidCheckout_Admin extends FluidCheckout {
 		wp_enqueue_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), NULL, NULL );
 	}
 
+
+
 	/**
-	 * Enqueue styles for the current admin settings page.
-	 *
-	 * @param int $hook_suffix Hook suffix for the current admin page.
+	 * Load the Fluid Checkout settings page, field renderer and settings access registry.
 	 */
-	public function enqueue_admin_dashboard_styles( $hook_suffix ) {
-		// Get current screen
-		$current_screen = get_current_screen();
-
-		// Bail if not on WooCommerce settings page
-		if ( $current_screen->id !== 'woocommerce_page_wc-settings' ) { return; }
-
-		// Get current tab and section
-		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ?? '' ) ) : 'general';
-		$current_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ?? '' ) ) : '';
-
-		// Bail if not on dashboard settings page
-		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
-
-		wp_enqueue_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), NULL, NULL );
+	public function load_settings_page() {
+		include_once self::$directory_path . 'inc/admin/admin-settings-access.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-renderer.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-page.php';
 	}
-
-
 
 	/**
 	 * Load dashboard section types.
@@ -93,6 +83,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function load_setting_types() {
 		// Load settings field types
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-promo.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
@@ -127,8 +118,12 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-address-autocomplete.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-address-book.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-vat-assistant.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
+		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
 
 		return $settings;
 	}
@@ -142,7 +137,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function add_plugin_settings_link( $links = array() ) {
 		// Add links before existing ones
 		$new_links = array(
-			sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=wc-settings&tab=fc_checkout' ), esc_html( __( 'Settings', 'fluid-checkout' ) ) ),
+			sprintf( '<a href="%s">%s</a>', esc_url( admin_url( 'admin.php?page=fluid-checkout&tab=checkout' ) ), esc_html( __( 'Settings', 'fluid-checkout' ) ) ),
 			sprintf( '<a href="%s" target="_blank">%s</a>', 'https://fluidcheckout.com/support/', esc_html( __( 'Support', 'fluid-checkout' ) ) ),
 		);
 
@@ -177,6 +172,34 @@ class FluidCheckout_Admin extends FluidCheckout {
 		}
 
 		return $html;
+	}
+
+	/**
+	 * Get HTML for the PRO feature promo pill badge.
+	 *
+	 * @param  string  $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 */
+	public function get_pro_feature_badge_html( $section_slug = '' ) {
+		// Bail if PRO is already activated
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
+
+		$section_slug = sanitize_title( $section_slug );
+		$mtm_kwd = ! empty( $section_slug ) ? 'pro-badge-' . $section_slug : 'pro-badge';
+
+		$url = add_query_arg(
+			array(
+				'mtm_campaign' => 'upgrade-pro',
+				'mtm_kwd'      => $mtm_kwd,
+				'mtm_source'   => 'lite-plugin',
+			),
+			'https://fluidcheckout.com/pricing/'
+		);
+
+		return sprintf(
+			'<a class="fc-settings-promo-pill" href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
+			esc_url( $url ),
+			esc_html( __( 'PRO feature', 'fluid-checkout' ) )
+		);
 	}
 
 	/**
@@ -222,10 +245,38 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
+	 * Get HTML for the locked add-on notice displayed on settings of add-ons that are not active.
+	 *
+	 * @param  string  $addon_name   Add-on name.
+	 * @param  string  $product_url  URL of the add-on product page.
+	 */
+	public function get_addon_locked_notice_html( $addon_name, $product_url ) {
+		// translators: %1$s: Add-on product page URL, %2$s: Add-on name.
+		$html = sprintf( __( '<a target="_blank" href="%1$s">Get %2$s</a> to unlock these options.', 'fluid-checkout' ), esc_url( $product_url ), esc_html( $addon_name ) );
+
+		return wp_kses_post( '<span class="fc-settings-badge">' . esc_html( __( 'Add-on', 'fluid-checkout' ) ) . '</span> ' . $html );
+	}
+
+	/**
 	 * Get HTML for documentation link to be used on settings descriptions.
 	 */
 	public function get_documentation_link_html( $url = 'https://fluidcheckout.com/docs/' ) {
 		return sprintf( '<a target="_blank" href="%s">%s</a>', esc_url( $url ), __( 'Read the documentation.', 'fluid-checkout' ) );
+	}
+
+	/**
+	 * Get HTML for a documentation info icon link, typically used in settings card headers.
+	 *
+	 * @param  string  $url  Documentation URL.
+	 */
+	public function get_documentation_icon_html( $url = 'https://fluidcheckout.com/docs/' ) {
+		$label = __( 'View documentation', 'fluid-checkout' );
+
+		return sprintf(
+			'<a class="fc-settings-docs-icon" href="%1$s" target="_blank" rel="noopener noreferrer" aria-label="%2$s" title="%2$s"><span class="dashicons dashicons-info-outline" aria-hidden="true"></span></a>',
+			esc_url( $url ),
+			esc_attr( $label )
+		);
 	}
 
 

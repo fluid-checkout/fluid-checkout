@@ -27,7 +27,7 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_layout_selector', array( $this, 'output_field' ), 10 );
+		add_action( 'fc_admin_settings_render_field_fc_layout_selector', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -69,17 +69,10 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field_wrapper_start_tag( $value ) {
-		// Description handling.
-		$field_description = WC_Admin_Settings::get_field_description( $value );
-		$tooltip_html      = $field_description[ 'tooltip_html' ];
+		FluidCheckout_Admin_Settings_Renderer::instance()->output_field_start( $value, array( 'label_for' => false ) );
 		?>
-		<tr valign="top">
-			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo esc_html( $value[ 'title' ] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
-			</th>
-			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value[ 'type' ] ) ); ?>">
-				<fieldset>
-				<?php
+		<fieldset>
+		<?php
 	}
 
 	/**
@@ -88,22 +81,23 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field_wrapper_end_tag( $value ) {
+		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
+
 		// Description handling.
-		$field_description = WC_Admin_Settings::get_field_description( $value );
+		$field_description = $renderer->get_field_description( $value );
 		$description       = $field_description[ 'description' ];
 
 		// Output accumulated field styles and reset for the next fieldgroup
 		$option_styles = $this->get_collected_option_styles();
 		$this->clear_collected_option_styles();
 		?>
-				</fieldset>
-				<?php echo $description; // WPCS: XSS ok. ?>
-				<style>
-					<?php echo $option_styles; // WPCS: XSS ok. ?>
-				</style>
-			</td>
-		</tr>
+		</fieldset>
+		<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<style>
+			<?php echo $option_styles; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</style>
 		<?php
+		$renderer->output_field_end( $value );
 	}
 
 

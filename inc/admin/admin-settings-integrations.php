@@ -78,34 +78,30 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( 'integrations' === $current_section ) {
 
-			$settings_new = array(
-				array(
-					'title' => _x( 'Integrations', 'Settings section title', 'fluid-checkout' ),
-					'type'  => 'title',
-					'id'    => 'fc_integrations',
-				),
-			);
+			// Get settings for each integration, each with its own settings section
+			$settings_new = apply_filters( 'fc_'.$current_section.'_settings_add', array(), $current_section );
 
-			$settings_add = apply_filters( 'fc_'.$current_section.'_settings_add', array(), $current_section );
+			// Maybe add a section with a notice when no integrations are available
+			if ( 0 === count( $settings_new ) ) {
+				$settings_new = array(
+					array(
+						'title' => _x( 'Integrations', 'Settings section title', 'fluid-checkout' ),
+						'type'  => 'title',
+						'id'    => 'fc_integrations',
+					),
 
-			// Maybe add notice when no integrations are available
-			if ( 0 == count( $settings_add ) ) {
-				$settings_add[] = array(
-					'type'        => 'fc_paragraph',
-					'desc'        => __( 'No integrations available at the moment on this section. The options related to each plugin will only appear here if that plugin is activated.', 'fluid-checkout' ),
-					'id'          => 'fc_no_integrations',
+					array(
+						'type'        => 'fc_paragraph',
+						'desc'        => __( 'No integrations available at the moment on this section. The options related to each plugin will only appear here if that plugin is activated.', 'fluid-checkout' ),
+						'id'          => 'fc_no_integrations',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_integrations',
+					),
 				);
 			}
-
-			// Close integrations section to avoid errors with other sections
-			$settings_new = array_merge( $settings_new, array(
-				array(
-					'type' => 'sectionend',
-					'id'   => 'fc_integrations',
-				),
-			) );
-
-			$settings_new = array_merge( $settings_new, $settings_add );
 
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings_new, $current_section );
 		}

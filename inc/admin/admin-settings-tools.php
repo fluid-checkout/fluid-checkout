@@ -40,6 +40,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 		// Site report settings
 		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'sanitize_telemetry_settings' ), 10, 3 );
 		add_action( 'woocommerce_settings_saved', array( $this, 'maybe_sync_telemetry_cron_on_settings_saved' ), 10 );
+		add_action( 'fc_admin_settings_saved', array( $this, 'maybe_sync_telemetry_cron_on_fc_settings_saved' ), 10 );
 	}
 
 
@@ -275,6 +276,25 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 			return;
 		}
 
+		$this->sync_telemetry_cron();
+	}
+
+	/**
+	 * Schedule or clear the site report cron when Tools settings are saved on the Fluid Checkout settings page.
+	 *
+	 * @param  string  $tab  Settings tab slug.
+	 */
+	public function maybe_sync_telemetry_cron_on_fc_settings_saved( $tab ) {
+		// Bail if not saving the Tools tab
+		if ( 'tools' !== $tab ) { return; }
+
+		$this->sync_telemetry_cron();
+	}
+
+	/**
+	 * Schedule or clear the site report cron based on the site report settings.
+	 */
+	public function sync_telemetry_cron() {
 		// Bail if telemetry client is not available
 		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
 

@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Checkout admin options.
+ * Multiselect field type for the Fluid Checkout settings page, with support for disabled fields.
  */
 class FluidCheckout_Admin_SettingType_Multiselect extends FluidCheckout {
 
@@ -20,7 +20,7 @@ class FluidCheckout_Admin_SettingType_Multiselect extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_multiselect', array( $this, 'output_field' ), 10 );
+		add_action( 'fc_admin_settings_render_field_fc_multiselect', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -31,59 +31,28 @@ class FluidCheckout_Admin_SettingType_Multiselect extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		// Set as multiselect field type
-		$value['type'] = 'multiselect';
+		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
+		$field_description = $renderer->get_field_description( $value );
+		$option_value = $value[ 'value' ];
+		$options = isset( $value[ 'options' ] ) && is_array( $value[ 'options' ] ) ? $value[ 'options' ] : array();
 
-		// Custom attribute handling.
-		$custom_attributes = array();
-		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
-			foreach ( $value['custom_attributes'] as $attribute => $attribute_value ) {
-				$custom_attributes[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
-			}
-		}
-
-		// Description handling.
-		$field_description = WC_Admin_Settings::get_field_description( $value );
-		$description       = $field_description['description'];
-		$tooltip_html      = $field_description['tooltip_html'];
-
-		$option_value = $value['value'];
+		$renderer->output_field_start( $value );
 		?>
-		<tr class="<?php echo esc_attr( $value['row_class'] ); ?>">
-			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
-			</th>
-			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-				<select
-					name="<?php echo esc_attr( $value['field_name'] ); ?><?php echo ( 'multiselect' === $value['type'] ) ? '[]' : ''; ?>"
-					id="<?php echo esc_attr( $value['id'] ); ?>"
-					style="<?php echo esc_attr( $value['css'] ); ?>"
-					class="<?php echo esc_attr( $value['class'] ); ?>"
-					<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
-					<?php echo 'multiselect' === $value['type'] ? 'multiple="multiple"' : ''; ?>
-					<?php echo array_key_exists( 'disabled', $value ) && false !== $value[ 'disabled' ] ? 'disabled' : ''; ?>
-					>
-					<?php
-					foreach ( $value['options'] as $key => $val ) {
-						?>
-						<option value="<?php echo esc_attr( $key ); ?>"
-							<?php
-
-							if ( is_array( $option_value ) ) {
-								selected( in_array( (string) $key, $option_value, true ), true );
-							} else {
-								selected( $option_value, (string) $key );
-							}
-
-							?>
-						><?php echo esc_html( $val ); ?></option>
-						<?php
-					}
-					?>
-				</select> <?php echo $description; // WPCS: XSS ok. ?>
-			</td>
-		</tr>
+		<select
+			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>[]"
+			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
+			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
+			<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			multiple="multiple"
+			<?php disabled( $renderer->is_field_disabled( $value ) ); ?>
+			>
+			<?php foreach ( $options as $key => $val ) : ?>
+				<option value="<?php echo esc_attr( $key ); ?>" <?php $renderer->output_option_selected( $option_value, $key ); ?>><?php echo esc_html( $val ); ?></option>
+			<?php endforeach; ?>
+		</select> <?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php
+		$renderer->output_field_end( $value );
 	}
 
 }

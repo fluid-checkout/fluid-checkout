@@ -85,6 +85,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -96,6 +97,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 						'type'              => 'checkbox',
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(

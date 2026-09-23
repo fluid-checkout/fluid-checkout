@@ -20,7 +20,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_addons', array( $this, 'output_field' ), 10 );
+		add_action( 'fc_admin_settings_render_field_fc_addons', array( $this, 'output_field' ), 10 );
 
 		// Assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 10 );
@@ -32,18 +32,8 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 * Enqueue Dashboard Add-ons AJAX script on the Lite dashboard.
 	 */
 	public function enqueue_scripts() {
-		$current_screen = get_current_screen();
-
-		// Bail if not on WooCommerce settings page
-		if ( ! $current_screen || 'woocommerce_page_wc-settings' !== $current_screen->id ) { return; }
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'general';
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$current_section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
-
-		// Bail if not on dashboard settings page
-		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
+		// Bail if not on the Dashboard tab of the settings page
+		if ( ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'dashboard' ) ) { return; }
 
 		// Enqueue dashboard add-ons script
 		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array(), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -286,14 +276,24 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
+		// Get the site key field output from other plugins, displayed as a separate card
+		ob_start();
+
+		/**
+		 * Before the Dashboard Add-ons list (e.g. PRO site key field).
+		 */
+		do_action( 'fc_dashboard_addons_before_list' );
+
+		$site_key_html = trim( (string) ob_get_clean() );
 		?>
 
 		<?php if ( ! FluidCheckout::instance()->is_pro_installed() && ! FluidCheckout::instance()->is_pro_activated() ) : ?>
-		<tr valign="top" class="fc-dashboard-section__row fc-dashboard-section__row--special-offers">
+		<div class="fc-settings-card fc-settings-card--special-offers">
+			<div class="fc-settings-card__header">
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Special offers', 'fluid-checkout' ) ); ?></h3>
+			</div>
 
-			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-
-				<h3 class="fc-dashboard-section__row-title"><?php echo esc_html( __( 'Special offers', 'fluid-checkout' ) ); ?></h3>
+			<div class="fc-settings-card__inner">
 
 				<p><?php echo wp_kses_post( __( 'Extend all the goodness of Fluid Checkout to your cart page and thank you pages.', 'fluid-checkout' ) ); ?></p>
 
@@ -360,23 +360,28 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					</ul>
 				</div>
 
-			</td>
-
-		</tr>
+			</div>
+		</div>
 		<?php endif; ?>
 
-		<tr valign="top" class="fc-dashboard-section__row">
-			<td colspan="2" class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+		<?php if ( '' !== $site_key_html ) : ?>
+		<div class="fc-settings-card fc-settings-card--site-key">
+			<div class="fc-settings-card__header">
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Site key', 'fluid-checkout' ) ); ?></h3>
+			</div>
+			<div class="fc-settings-card__inner">
+				<?php echo $site_key_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</div>
+		</div>
+		<?php endif; ?>
 
-				<h3 class="fc-dashboard-section__row-title"><?php echo esc_html( __( 'Add-ons', 'fluid-checkout' ) ); ?></h3>
-				<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( __( 'Enhance your checkout experience with these add-ons.', 'fluid-checkout' ) ); ?></p>
+		<div class="fc-settings-card fc-settings-card--addons">
+			<div class="fc-settings-card__header">
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Add-ons', 'fluid-checkout' ) ); ?></h3>
+				<div class="fc-settings-card__description"><p><?php echo wp_kses_post( __( 'Enhance your checkout experience with these add-ons.', 'fluid-checkout' ) ); ?></p></div>
+			</div>
 
-				<?php
-				/**
-				 * Before the Dashboard Add-ons list (e.g. PRO site key field).
-				 */
-				do_action( 'fc_dashboard_addons_before_list' );
-				?>
+			<div class="fc-settings-card__inner">
 
 				<ul class="fc-addons-list">
 					<?php foreach ( $this->get_addons_catalog() as $addon ) : ?>
@@ -391,8 +396,8 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					</ul>
 				</div>
 
-			</td>
-		</tr>
+			</div>
+		</div>
 		<?php
 	}
 

@@ -1,0 +1,479 @@
+// ------------------------------------
+// SETTINGS PAGE - FIELDS
+// ------------------------------------
+
+.fc-settings-field {
+	padding: $fc-settings-field-padding-y 0;
+	border-top: none;
+}
+
+.fc-settings-field:first-child {
+	border-top: none;
+}
+
+.fc-settings-field--inline {
+	display: flex;
+	align-items: flex-start;
+	gap: $fc-settings-field-inline-gap;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		flex-direction: column;
+		gap: 8px;
+	}
+}
+
+
+
+.fc-settings-field__label {
+	flex: 0 0 $fc-settings-field-label-width;
+	padding-top: 5px;
+	font-size: $fc-settings-field-label-font-size;
+	font-weight: normal;
+	line-height: 1.4;
+	color: $fc-settings-text-color;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		flex: 0 0 auto;
+		padding-top: 0;
+	}
+}
+
+.fc-settings-field__label label {
+	color: inherit;
+}
+
+.fc-settings-field__control {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 8px;
+	min-width: 0;
+	padding-top: 5px;
+}
+
+.fc-settings-field__control > fieldset {
+	display: flex;
+	flex: 1 1 auto;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	min-width: 0;
+	padding: 0;
+	border: 0;
+}
+
+.fc-settings-field__control fieldset + fieldset {
+	margin-top: 8px;
+}
+
+.fc-settings-field__control .description {
+	margin-top: 6px;
+	color: $admin-text-color-muted;
+}
+
+
+
+.fc-settings-field__control input[type="text"],
+.fc-settings-field__control input[type="password"],
+.fc-settings-field__control input[type="email"],
+.fc-settings-field__control input[type="url"],
+.fc-settings-field__control input[type="tel"],
+.fc-settings-field__control input[type="number"],
+.fc-settings-field__control input[type="search"],
+.fc-settings-field__control select,
+.fc-settings-field__control textarea {
+	width: 100%;
+	max-width: $fc-settings-field-control-max-width;
+	min-height: 1px;
+	margin: 0;
+	padding: $fc-settings-input-padding;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $fc-settings-input-background-color;
+	box-shadow: $fc-settings-input-box-shadow;
+	box-sizing: border-box;
+	color: $fc-settings-input-color;
+	font-size: $fc-settings-input-font-size;
+	line-height: $fc-settings-input-line-height;
+	transition: all .05s ease-in-out;
+}
+
+.fc-settings-field__control input[type="text"],
+.fc-settings-field__control input[type="password"],
+.fc-settings-field__control input[type="email"],
+.fc-settings-field__control input[type="url"],
+.fc-settings-field__control input[type="tel"],
+.fc-settings-field__control input[type="number"],
+.fc-settings-field__control input[type="search"],
+.fc-settings-field__control select {
+	height: $fc-settings-input-height;
+}
+
+.fc-settings-field__control select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-right: $fc-settings-select-caret-padding-right;
+	line-height: $fc-settings-input-height - 2px;
+	background-color: $fc-settings-input-background-color;
+	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%232e4453'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" );
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: $fc-settings-select-caret-size;
+}
+
+.rtl .fc-settings-field__control select {
+	padding-right: 10px;
+	padding-left: $fc-settings-select-caret-padding-right;
+	background-position: left 10px center;
+}
+
+.fc-settings-field__control input[type="number"] {
+	max-width: $fc-settings-field-control-number-max-width;
+}
+
+.fc-settings-field__control textarea {
+	min-height: 100px;
+	height: auto;
+}
+
+.fc-settings-field__control input[type="text"]:disabled,
+.fc-settings-field__control input[type="password"]:disabled,
+.fc-settings-field__control input[type="email"]:disabled,
+.fc-settings-field__control input[type="url"]:disabled,
+.fc-settings-field__control input[type="tel"]:disabled,
+.fc-settings-field__control input[type="number"]:disabled,
+.fc-settings-field__control input[type="search"]:disabled,
+.fc-settings-field__control select:disabled,
+.fc-settings-field__control textarea:disabled {
+	background-color: $fc-settings-input-background-color-disabled;
+}
+
+.fc-settings-field__control select:disabled {
+	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%232e4453'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" );
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: $fc-settings-select-caret-size;
+	opacity: 1;
+}
+
+.rtl .fc-settings-field__control select:disabled {
+	background-position: left 10px center;
+}
+
+.fc-settings-field__control input[type="text"]:focus,
+.fc-settings-field__control input[type="password"]:focus,
+.fc-settings-field__control input[type="email"]:focus,
+.fc-settings-field__control input[type="url"]:focus,
+.fc-settings-field__control input[type="tel"]:focus,
+.fc-settings-field__control input[type="number"]:focus,
+.fc-settings-field__control input[type="search"]:focus,
+.fc-settings-field__control select:focus,
+.fc-settings-field__control textarea:focus {
+	border-color: $fc-settings-input-border-color-focus;
+	outline: 1px solid $fc-settings-input-border-color-focus;
+	box-shadow: none;
+}
+
+.fc-settings-field__control input::placeholder,
+.fc-settings-field__control textarea::placeholder {
+	color: $fc-settings-input-placeholder-color;
+	opacity: 1;
+}
+
+
+
+.fc-settings-input-group {
+	display: flex;
+	gap: $fc-settings-input-group-gap;
+	width: 100%;
+	max-width: $fc-settings-field-control-max-width;
+}
+
+.fc-settings-field__control .fc-settings-input-group--split > input,
+.fc-settings-field__control .fc-settings-input-group--split > select {
+	flex: 1 1 50%;
+	max-width: none;
+}
+
+
+
+.fc-settings-field--disabled .fc-settings-field__label,
+.fc-settings-field--disabled .fc-settings-switch__text,
+.fc-settings-field--disabled .fc-settings-field__control .description {
+	opacity: .6;
+}
+
+
+
+.fc-settings-field--paragraph p {
+	margin: 0;
+	color: $admin-text-color-muted;
+}
+
+
+
+.fc-settings-badge {
+	display: inline-block;
+	margin-right: 6px;
+	padding: 2px 8px;
+	border-radius: $fc-settings-badge-border-radius;
+	background-color: $fc-settings-badge-background-color;
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-badge-font-size;
+	font-weight: 600;
+	line-height: 1.6;
+	vertical-align: middle;
+}
+
+.rtl .fc-settings-badge {
+	margin-right: 0;
+	margin-left: 6px;
+}
+
+
+
+.fc-settings-field--legacy .form-table {
+	margin: 0;
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - TOGGLE SWITCHES
+// ------------------------------------
+
+.fc-settings-switch {
+	position: relative;
+	display: inline-block;
+	flex: 0 0 auto;
+	vertical-align: middle;
+}
+
+.fc-settings-toggle {
+	position: absolute !important;
+	margin-left: -9999px !important;
+	visibility: hidden !important;
+}
+
+.fc-settings-toggle + label {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	outline: none;
+	user-select: none;
+}
+
+input.fc-settings-toggle--round + label {
+	padding: $fc-settings-toggle-padding;
+	width: $fc-settings-toggle-width;
+	height: $fc-settings-toggle-height;
+	background-color: $fc-settings-toggle-background;
+	border-radius: 20px;
+	box-sizing: content-box;
+	transition: background .4s;
+}
+
+input.fc-settings-toggle--round + label::before,
+input.fc-settings-toggle--round + label::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: $fc-settings-toggle-padding;
+	left: $fc-settings-toggle-padding;
+	bottom: $fc-settings-toggle-padding;
+}
+
+input.fc-settings-toggle--round + label::before {
+	right: $fc-settings-toggle-padding;
+	border-radius: 20px;
+	transition: background .4s;
+}
+
+input.fc-settings-toggle--round + label::after {
+	width: $fc-settings-toggle-knob-size;
+	background-color: $white;
+	border-radius: 100%;
+	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 );
+	transition: margin .4s;
+}
+
+input.fc-settings-toggle--round:checked + label {
+	background-color: $fc-settings-toggle-background-checked;
+}
+
+input.fc-settings-toggle--round:checked + label::after {
+	margin-left: $fc-settings-toggle-knob-offset;
+}
+
+input.fc-settings-toggle--round:checked:disabled + label,
+.fc-settings-switch--disabled input.fc-settings-toggle--round:checked + label {
+	background-color: $fc-settings-toggle-background;
+}
+
+input.fc-settings-toggle--round:focus + label {
+	box-shadow: 0 0 0 1px $white, 0 0 0 3px $fc-settings-nav-focus-outline-color;
+}
+
+.fc-settings-switch--disabled .fc-settings-toggle + label {
+	cursor: not-allowed;
+}
+
+.fc-settings-switch__text {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding-top: 2px;
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-field-label-font-size;
+	line-height: 1.4;
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - INFO TIPS
+// ------------------------------------
+
+.fc-settings-info-tip {
+	position: absolute;
+	z-index: auto;
+	top: 6px;
+	left: -$fc-settings-info-tip-offset;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: $fc-settings-info-tip-size;
+	height: $fc-settings-info-tip-size;
+}
+
+.fc-settings-info-tip:hover,
+.fc-settings-info-tip.is-open {
+	z-index: 100000;
+}
+
+.rtl .fc-settings-info-tip {
+	left: auto;
+	right: -$fc-settings-info-tip-offset;
+}
+
+.fc-settings-info-tip__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: $fc-settings-info-tip-color;
+	cursor: pointer;
+	line-height: 1;
+}
+
+.fc-settings-info-tip__button .dashicons {
+	width: $fc-settings-info-tip-size;
+	height: $fc-settings-info-tip-size;
+	font-size: $fc-settings-info-tip-size;
+}
+
+.fc-settings-info-tip:hover .fc-settings-info-tip__button,
+.fc-settings-info-tip.is-open .fc-settings-info-tip__button,
+.fc-settings-info-tip__button:focus {
+	color: $fc-settings-info-tip-color-hover;
+}
+
+.fc-settings-info-tip__content {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	z-index: 100000;
+	top: 28px;
+	left: 50%;
+	width: $fc-settings-info-tip-width;
+	margin-left: -120px; // Half of $fc-settings-info-tip-width for centering
+	padding: 12px 14px;
+	border: 1px solid $fc-settings-info-tip-border-color;
+	border-radius: 4px;
+	background: $fc-settings-info-tip-background;
+	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 ), 0 0 56px rgba( 0, 0, 0, .075 );
+	box-sizing: border-box;
+	color: $fc-settings-info-tip-text-color;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 1.4;
+	transition: opacity .2s ease-in-out, visibility .2s ease-in-out, top .2s ease-in-out;
+}
+
+.fc-settings-info-tip__content::before,
+.fc-settings-info-tip__content::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-color: transparent;
+}
+
+.fc-settings-info-tip__content::before {
+	top: -10px;
+	margin-left: -10px;
+	border-width: 0 10px 10px;
+	border-bottom-color: $fc-settings-info-tip-border-color;
+}
+
+.fc-settings-info-tip__content::after {
+	top: -8px;
+	margin-left: -9px;
+	border-width: 0 9px 9px;
+	border-bottom-color: $fc-settings-info-tip-background;
+}
+
+.fc-settings-info-tip__content > :first-child {
+	margin-top: 0;
+}
+
+.fc-settings-info-tip__content > :last-child {
+	margin-bottom: 0;
+}
+
+.fc-settings-info-tip__content p,
+.fc-settings-info-tip__content ul,
+.fc-settings-info-tip__content ol {
+	margin: 0 0 .75em;
+}
+
+.fc-settings-info-tip__content ul,
+.fc-settings-info-tip__content ol {
+	padding-left: 1.25em;
+}
+
+.fc-settings-info-tip__content li + li {
+	margin-top: .25em;
+}
+
+.fc-settings-info-tip__content code {
+	padding: 1px 4px;
+	border-radius: 3px;
+	background: rgba( 200, 215, 225, .35 );
+	font-size: 12px;
+}
+
+.fc-settings-info-tip:hover .fc-settings-info-tip__content,
+.fc-settings-info-tip.is-open .fc-settings-info-tip__content {
+	opacity: 1;
+	visibility: visible;
+	top: 26px;
+}
+
+.fc-settings-info-tip__content a {
+	color: inherit;
+}

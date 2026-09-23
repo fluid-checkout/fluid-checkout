@@ -1,0 +1,149 @@
+// ------------------------------------
+// SETTINGS PAGE - LAYOUT
+// ------------------------------------
+
+body.fc-settings-page #wpfooter {
+	display: none;
+}
+
+// Hide the Help / Screen Options toggles; Help tabs are also removed in PHP.
+body.fc-settings-page #screen-meta,
+body.fc-settings-page #screen-meta-links {
+	display: none;
+}
+
+body.fc-settings-page #wpbody-content {
+	padding-bottom: 0;
+}
+
+// Extend the sidebar white background + separator to the full page height via #wpcontent.
+// Zero left padding so the gradient origin matches the sidebar (which bleeds to the content edge).
+body.fc-settings-page #wpcontent {
+	padding-left: 0;
+	background: linear-gradient(
+		to right,
+		$fc-settings-sidebar-background-color $fc-settings-sidebar-width,
+		$admin-border-color-strong $fc-settings-sidebar-width,
+		$admin-border-color-strong ( $fc-settings-sidebar-width + 1px ),
+		$fc-settings-page-background-color ( $fc-settings-sidebar-width + 1px )
+	);
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding-left: 0;
+		background: $fc-settings-page-background-color;
+	}
+}
+
+body.rtl.fc-settings-page #wpcontent {
+	padding-left: 0;
+	padding-right: 0;
+	background: linear-gradient(
+		to left,
+		$fc-settings-sidebar-background-color $fc-settings-sidebar-width,
+		$admin-border-color-strong $fc-settings-sidebar-width,
+		$admin-border-color-strong ( $fc-settings-sidebar-width + 1px ),
+		$fc-settings-page-background-color ( $fc-settings-sidebar-width + 1px )
+	);
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		background: $fc-settings-page-background-color;
+	}
+}
+
+// Hide notices in their initial position; show them once WP relocates them into the content pane.
+body.fc-settings-page #wpbody-content > .notice,
+body.fc-settings-page #wpbody-content > .error {
+	display: none;
+}
+
+body.fc-settings-page #wpbody-content .fc-settings-content .notice,
+body.fc-settings-page #wpbody-content .fc-settings-content .error {
+	display: block;
+	margin-bottom: 16px;
+}
+
+
+
+.fc-settings-wrap {
+	margin: 0;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-wrap [class*="fc-settings-"] {
+	box-sizing: border-box;
+}
+
+.fc-settings-wrap hr.wp-header-end {
+	display: block;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+
+
+.fc-settings-layout {
+	display: flex;
+	align-items: stretch;
+	min-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	margin-left: 0;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		flex-direction: column;
+		min-height: 0;
+		margin-left: 0;
+	}
+}
+
+.rtl .fc-settings-layout {
+	margin-left: 0;
+	margin-right: 0;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		margin-right: 0;
+	}
+}
+
+
+
+.fc-settings-content {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: $fc-settings-content-padding;
+	padding-bottom: $fc-settings-content-padding-bottom;
+	position: relative;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-content-padding-mobile;
+		padding-bottom: 30px;
+	}
+}
+
+.fc-settings-content__title {
+	margin: $fc-settings-content-title-margin;
+	padding: 0;
+	border: none;
+	font-size: $fc-settings-content-title-font-size;
+	font-weight: $fc-settings-content-title-font-weight;
+	line-height: $fc-settings-content-title-line-height;
+	color: $fc-settings-text-color;
+}
+
+
+
+.fc-settings-tab {
+	display: none;
+}
+
+.fc-settings-tab.is-active {
+	display: block;
+	animation: fc-settings-tab-fade-in $fc-settings-tab-animation-duration ease-out;
+
+	@media ( prefers-reduced-motion: reduce ) { animation: none; }
+}
+
+@keyframes fc-settings-tab-fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}

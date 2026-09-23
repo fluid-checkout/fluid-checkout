@@ -63,29 +63,23 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( '' === $current_section ) {
 
+			// Dashboard field types output their own settings cards
 			$settings = array(
 
 				array(
-					'type'  => 'title',
-					'id'    => 'fc_checkout_addons_options',
-				),
-
-				array(
-					'type'     => 'fc_telemetry_prompt',
-					'autoload' => false,
+					'type'             => 'fc_telemetry_prompt',
+					'is_card'          => true,
+					'autoload'         => false,
 				),
 				array(
 					'type'             => 'fc_setup',
+					'is_card'          => true,
 					'autoload'         => false,
 				),
 				array(
 					'type'             => 'fc_addons',
+					'is_card'          => true,
 					'autoload'         => false,
-				),
-
-				array(
-					'type' => 'sectionend',
-					'id'   => 'fc_checkout_addons_options',
 				),
 
 			);

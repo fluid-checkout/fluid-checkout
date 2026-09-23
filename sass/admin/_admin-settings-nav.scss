@@ -1,0 +1,88 @@
+// ------------------------------------
+// SETTINGS PAGE - NAVIGATION
+// ------------------------------------
+
+.fc-settings-nav {
+	flex: 1 1 auto;
+	margin: 0;
+	padding: $fc-settings-nav-padding-y 0;
+	list-style: none;
+	overflow-y: auto;
+	max-height: calc( 100vh - #{$fc-settings-sidebar-nav-max-height-offset} );
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		max-height: none;
+		overflow-y: visible;
+	}
+}
+
+.fc-settings-nav__item {
+	margin: $fc-settings-nav-item-margin;
+	padding: 0;
+}
+
+.fc-settings-nav__link {
+	display: flex;
+	align-items: center;
+	gap: $fc-settings-nav-link-gap;
+	width: 100%;
+	padding: $fc-settings-nav-link-padding;
+	border-radius: $fc-settings-nav-pill-radius;
+	box-sizing: border-box;
+	font-size: $fc-settings-nav-link-font-size;
+	line-height: $fc-settings-nav-link-line-height;
+	color: $fc-settings-text-color;
+	text-decoration: none;
+	box-shadow: none;
+	transition: background-color .12s ease, color .12s ease;
+}
+
+.fc-settings-nav__link:hover {
+	background-color: $fc-settings-nav-link-hover-background;
+	color: $fc-settings-nav-link-hover-color;
+}
+
+.fc-settings-nav__link:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px $fc-settings-nav-focus-outline-color;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-nav__item.is-active .fc-settings-nav__link {
+	background-color: $fc-settings-nav-link-active-background;
+	font-weight: 600;
+	color: $fc-settings-text-color;
+}
+
+
+
+.fc-settings-nav__marker {
+	flex: 0 0 auto;
+	display: inline-block;
+	font-size: $fc-settings-nav-marker-font-size;
+	line-height: 1;
+	color: $fc-settings-nav-marker-color;
+	transform: translateY( -2px );
+}
+
+.rtl .fc-settings-nav__marker {
+	transform: translateY( -2px ) scaleX( -1 );
+}
+
+.fc-settings-nav__item.is-active .fc-settings-nav__marker {
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-nav__label {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+
+
+.fc-settings-nav__separator {
+	height: 1px;
+	margin: $fc-settings-nav-separator-margin;
+	padding: 0;
+	background-color: $admin-separator-color;
+}

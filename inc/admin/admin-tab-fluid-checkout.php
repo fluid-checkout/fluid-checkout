@@ -31,41 +31,43 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 
 	/**
 	 * Get sections.
+	 * Sections are displayed as tabs on the Fluid Checkout settings page instead.
 	 *
 	 * @return array
 	 */
 	public function get_sections() {
-		return apply_filters( 'woocommerce_get_sections_' . $this->id, array() );
+		return array();
 	}
 
 
 
 	/**
-	 * Output the settings.
+	 * Output a notice that the settings have moved to the Fluid Checkout settings page.
 	 */
 	public function output() {
 		global $current_section;
 
-		$settings = $this->get_settings( $current_section );
+		// Hide the save button as there are no settings on this page
+		$GLOBALS[ 'hide_save_button' ] = true;
 
-		WC_Admin_Settings::output_fields( $settings );
+		// Get the settings page URL for the current section
+		$settings_page = FluidCheckout_Admin_Settings_Page::instance();
+		$settings_url = $settings_page->get_settings_url( $settings_page->get_tab_for_section( (string) $current_section ) );
+		?>
+		<div class="notice notice-info inline fc-settings-moved-notice">
+			<p><?php echo esc_html( __( 'These settings have been moved to WP Admin > Fluid Checkout > Settings.', 'fluid-checkout' ) ); ?></p>
+			<p><a class="button button-primary" href="<?php echo esc_url( $settings_url ); ?>"><?php echo esc_html( __( 'Go to settings page', 'fluid-checkout' ) ); ?></a></p>
+		</div>
+		<?php
 	}
 
 
 
 	/**
 	 * Save settings.
+	 * Intentionally empty as settings are saved on the Fluid Checkout settings page.
 	 */
-	public function save() {
-		global $current_section;
-
-		$settings = $this->get_settings( $current_section );
-		WC_Admin_Settings::save_fields( $settings );
-
-		if ( $current_section ) {
-			do_action( 'woocommerce_update_options_' . $this->id . '_' . $current_section );
-		}
-	}
+	public function save() {}
 
 
 

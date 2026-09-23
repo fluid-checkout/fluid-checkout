@@ -83,6 +83,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'show_if_checked'   => 'option',
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -95,6 +96,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'show_if_checked'   => 'yes',
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -120,6 +122,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_page_block_based_template' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -130,6 +133,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_details_wide_layout' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -141,6 +145,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_received_widget_areas' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -170,6 +175,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_actions_position' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -180,6 +186,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_details_order_status_progress_bar' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -197,6 +204,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_summary_position' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -212,6 +220,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_downloads_position' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -227,6 +236,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_gift_message_position' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -242,6 +252,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_notes_position' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(

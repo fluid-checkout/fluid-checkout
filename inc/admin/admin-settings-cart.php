@@ -65,38 +65,27 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 
 			$settings = apply_filters(
 				'fc_pro_cart_settings',
-				array(
+				array_merge(
+					$this->get_cart_promo_settings(),
+					array(
 
 					array(
-						'title' => __( 'Cart layout', 'fluid-checkout' ),
+						'title' => __( 'Cart Layout', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
+						'desc'  => '',
 						'id'    => 'fc_pro_cart_layout_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'cart-layout' ),
 					),
 
 					array(
 						'title'             => __( 'Cart optimizations', 'fluid-checkout' ),
 						'desc'              => __( 'Enable cart page optimizations', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Display the cart page with a layout similar to the checkout page.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                => 'fc_pro_enable_cart_page',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_page' ),
 						'type'              => 'checkbox',
 						'autoload'          => false,
 						'disabled'          => true,
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_pro_cart_layout_options',
-					),
-
-
-
-					array(
-						'title' => __( 'Header and footer', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
-						'type'  => 'title',
-						'desc'  => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
-						'id'    => 'fc_pro_cart_header_options',
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -111,30 +100,34 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_hide_site_header_footer_at_cart' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
 						'type' => 'sectionend',
-						'id'   => 'fc_pro_cart_header_options',
-					),					
+						'id'   => 'fc_pro_cart_layout_options',
+					),
 
 
 
 					array(
-						'title' => __( 'Cart elements', 'fluid-checkout' ),
+						'title' => __( 'Cart Elements', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
+						'desc'  => '',
 						'id'    => 'fc_pro_cart_elements_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'cart-elements' ),
 					),
 
 					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
-						'desc'              => __( 'Make the order summary stay visible on the cart page while scrolling', 'fluid-checkout' ),
+						'desc'              => __( 'Sticky order summary', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Make the order summary stay visible on the cart page while scrolling', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_cart_sticky_order_summary',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_sticky_order_summary' ),
 						'type'              => 'checkbox',
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -158,6 +151,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_section_position_coupon_code' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -173,6 +167,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_section_position_shipping' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -191,6 +186,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'autoload'          => false,
 						'type'              => 'fc_select',
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -204,6 +200,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_cross_sells' ),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -211,19 +208,10 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'id'                => 'fc_pro_cart_cross_sells_display_items_limit',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_cross_sells_display_items_limit' ),
 						'type'              => 'fc_number',
+						'suffix_label'      => __( 'Items', 'fluid-checkout' ),
 						'autoload'          => false,
 						'disabled'          => true,
-					),
-
-					array(
-						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ),
-						'desc'              => __( 'Add widget areas to the cart page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the cart page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
-						'id'                => 'fc_pro_enable_cart_widget_areas',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_widget_areas' ),
-						'type'              => 'checkbox',
-						'autoload'          => false,
-						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -231,11 +219,67 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 						'id'   => 'fc_pro_cart_elements_options',
 					),
 
+
+
+					array(
+						'title' => __( 'Trust Symbols & Badges', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_pro_cart_trust_symbols_options',
+						'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'cart-trust-symbols' ),
+					),
+
+					array(
+						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ),
+						'desc'              => __( 'Add widget areas to the cart page', 'fluid-checkout' ),
+						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the cart page.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_enable_cart_widget_areas',
+						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_widget_areas' ),
+						'type'              => 'checkbox',
+						'autoload'          => false,
+						'disabled'          => true,
+						'requires'          => 'pro',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_pro_cart_trust_symbols_options',
+					),
+
+					)
 				)
 			);
 		}
 
 		return $settings;
+	}
+
+	/**
+	 * Get the promotional settings card shown at the top of the Cart tab when PRO is not active.
+	 */
+	public function get_cart_promo_settings() {
+		// Bail if PRO is already activated
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return array(); }
+
+		return array(
+			array(
+				'title'            => __( 'Cart Page Optimization', 'fluid-checkout' ),
+				'type'             => 'fc_promo',
+				'id'               => 'fc_pro_cart_promo',
+				'is_card'          => true,
+				'promo'            => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'cart-promo' ),
+				'tagline'          => __( 'Give your cart the same clear, conversion-focused layout as your checkout.', 'fluid-checkout' ),
+				'features'         => array(
+					__( 'Match the cart layout to the checkout page for a consistent purchase journey.', 'fluid-checkout' ),
+					__( 'Keep the cart always updated in the background, no full page reloads when quantities change.', 'fluid-checkout' ),
+					__( 'Place coupon codes, shipping, and cross-sells exactly where they convert best.', 'fluid-checkout' ),
+					__( 'Keep the order summary visible while scrolling, and add trust symbols where shoppers need reassurance.', 'fluid-checkout' ),
+				),
+				'learn_more_url'   => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=cart-promo-learn-more&mtm_source=lite-plugin',
+				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+			),
+		);
 	}
 
 }

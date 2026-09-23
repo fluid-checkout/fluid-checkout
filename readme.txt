@@ -356,7 +356,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Settings page layout and styles for the vertical sidebar and settings cards.
+* Improved: Cart settings use toggle switches and info tip icons for field descriptions.
+* Improved: Cart settings group Trust Symbols & Badges in its own section with a documentation link.
+* Improved: Reduced spacing between settings fields on the settings page.
+* Added: Admin page header with logo, Support, Documentation, and Upgrade links on the settings page.
+* Improved: Cart settings show a PRO feature badge on locked sections instead of upgrade copy.
+* Added: Promotional Cart page optimization card on the Cart settings tab when PRO is not active.
 * Added: Dashboard setup section links to Tools settings to enable site environment reports.
+* Added: New Fluid Checkout admin menu with Dashboard and Settings items.
+* Added: New settings page with a vertical sidebar and settings cards.
 * Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
 * Removed: License key field script and styles from this free plugin; commercial add-ons own those assets.
 * Removed: Site key field styles from the free plugin Dashboard stylesheet; site key UI is owned by Fluid Checkout PRO.
@@ -368,8 +377,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Own plugin license fields in telemetry reports match by plugin slug (API URL filter now receives both arguments).
 * Removed: Telemetry payloads no longer include client-reported `license_status` (resolved server-side).
 * Improved: Telemetry send failures are logged to WooCommerce logs (source: `fc-telemetry`).
+* Improved: Fluid Checkout settings moved from WooCommerce > Settings to the new Fluid Checkout menu. The old settings tab now shows a link to the new page.
+* Improved: PRO settings are always shown on the settings page, and are unlocked when Fluid Checkout PRO is active.
+* Improved: Locked settings are no longer saved, even if their values are changed in the form.
+* Fixed: Country list settings from add-ons are now displayed on the new settings page.
 * Added: Optional/Opt-in site environment reports sent to Fluid Checkout to help improve compatibility and support. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
+* Added: License Keys tab on the settings page. License keys appear there when a licensed plugin or add-on is active.
+* Added: Address Autocomplete, Address Book and VAT Assistant tabs on the settings page. Their options are shown locked until the add-on is active.
+* Added: Address Autocomplete debug options on the Tools tab, locked until the add-on is active.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Fixed: Message shown when no integrations are available now appears inside the Integrations section.
 
 = 4.2.7 - 2026-08-19 =
 

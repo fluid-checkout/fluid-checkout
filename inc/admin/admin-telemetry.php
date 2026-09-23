@@ -278,29 +278,10 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 * @param string $hook_suffix Optional admin page hook suffix.
 	 */
 	private function is_tools_settings_screen( $hook_suffix = '' ) {
-		if ( ! empty( $hook_suffix ) && 'woocommerce_page_wc-settings' !== $hook_suffix ) {
-			return false;
-		}
+		// Bail if settings page class is not available
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return false; }
 
-		if ( empty( $hook_suffix ) && function_exists( 'get_current_screen' ) ) {
-			$screen = get_current_screen();
-
-			if ( ! $screen || 'woocommerce_page_wc-settings' !== $screen->id ) {
-				return false;
-			}
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $_GET['tab'] ) || 'fc_checkout' !== sanitize_text_field( wp_unslash( $_GET['tab'] ) ) ) {
-			return false;
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $_GET['section'] ) || 'tools' !== sanitize_text_field( wp_unslash( $_GET['section'] ) ) ) {
-			return false;
-		}
-
-		return true;
+		return FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'tools' );
 	}
 
 }

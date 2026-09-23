@@ -1,0 +1,214 @@
+// ------------------------------------
+// SETTINGS PAGE - ADMIN HEADER
+// ------------------------------------
+
+#fc-header {
+	padding: $fc-header-padding-y $fc-header-padding-x;
+	margin-left: 0;
+	margin-bottom: 20px;
+	text-align: right;
+	background: $fc-header-background-color;
+	height: $fc-header-height;
+	box-shadow: $fc-header-box-shadow;
+	box-sizing: content-box;
+}
+
+.rtl #fc-header {
+	margin-left: 0;
+	margin-right: 0;
+	text-align: left;
+}
+
+#fc-header .fc-header__logo {
+	float: left;
+	display: inline-flex;
+	align-items: center;
+	gap: $fc-header-logo-gap;
+	text-decoration: none;
+	vertical-align: middle;
+	color: $fc-header-logo-text-color;
+}
+
+.rtl #fc-header .fc-header__logo {
+	float: right;
+}
+
+#fc-header .fc-header__logo-icon {
+	display: block;
+	max-height: $fc-header-logo-max-height;
+	width: auto;
+}
+
+#fc-header .fc-header__logo-text {
+	font-size: $fc-header-logo-text-font-size;
+	font-weight: $fc-header-logo-text-font-weight;
+	line-height: $fc-header-logo-text-line-height;
+	letter-spacing: $fc-header-logo-text-letter-spacing;
+	color: inherit;
+}
+
+
+
+.fc-header__button {
+	display: inline-block;
+	margin: 0 0 0 $fc-header-button-margin-left;
+	padding: $fc-header-button-padding;
+	background: $white;
+	border-color: $fc-header-button-border-color;
+	border-style: solid;
+	border-width: 1px 1px 2px;
+	border-radius: $fc-header-button-border-radius;
+	color: $fc-header-button-color;
+	cursor: pointer;
+	outline: 0;
+	overflow: hidden;
+	font-size: $fc-header-button-font-size;
+	font-weight: $fc-header-button-font-weight;
+	line-height: $fc-header-button-line-height;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	vertical-align: middle;
+	box-sizing: border-box;
+	box-shadow: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.rtl .fc-header__button {
+	margin: 0 $fc-header-button-margin-left 0 0;
+}
+
+.fc-header__button:hover {
+	color: $fc-header-button-color;
+	border-color: $fc-header-button-border-color-hover;
+}
+
+.fc-header__button:focus {
+	color: $fc-header-button-color;
+	box-shadow: none;
+}
+
+.fc-header__button:active {
+	border-width: 2px 1px 1px;
+}
+
+.fc-header__button .dashicons {
+	font-size: 16px;
+	height: 16px;
+	width: 16px;
+	margin: 2px 5px 0 -5px;
+}
+
+.rtl .fc-header__button .dashicons {
+	margin: 2px -5px 0 5px;
+}
+
+
+
+.fc-header__button--upgrade {
+	background: $fc-header-button-upgrade-background;
+	border-color: $fc-header-button-upgrade-border-color;
+	color: $fc-header-button-upgrade-color;
+}
+
+.fc-header__button--upgrade:hover,
+.fc-header__button--upgrade:focus {
+	background: $fc-header-button-upgrade-background-hover;
+	border-color: $fc-header-button-upgrade-border-color-hover;
+	color: $fc-header-button-upgrade-color;
+}
+
+
+
+.fc-header__button--save {
+	background: $fc-header-button-save-background;
+	border-color: $fc-header-button-save-border-color;
+	color: $fc-header-button-save-color;
+}
+
+.fc-header__button--save:hover,
+.fc-header__button--save:focus {
+	background: $fc-header-button-save-background-hover;
+	border-color: $fc-header-button-save-border-color-hover;
+	color: $fc-header-button-save-color;
+}
+
+.fc-header__button--save:disabled,
+.fc-header__button--save.disabled {
+	background: #bceefd;
+	border-color: #8cc9e2;
+	color: $white;
+	cursor: not-allowed;
+	opacity: 1;
+}
+
+
+
+// Fixed header on the settings page (desktop).
+body.fc-settings-page #fc-header {
+	position: fixed;
+	top: $fc-settings-admin-bar-offset;
+	left: $admin-wp-menu-width;
+	right: 0;
+	margin: 0;
+	z-index: $fc-header-z-index;
+}
+
+body.fc-settings-page.folded #fc-header {
+	left: $admin-wp-menu-width-folded;
+}
+
+body.rtl.fc-settings-page #fc-header {
+	left: 0;
+	right: $admin-wp-menu-width;
+}
+
+body.rtl.fc-settings-page.folded #fc-header {
+	right: $admin-wp-menu-width-folded;
+}
+
+body.fc-settings-page #wpbody-content {
+	padding-top: $fc-settings-page-header-height;
+}
+
+@media screen and ( max-width: $admin-breakpoint-auto-fold ) {
+	body.fc-settings-page.auto-fold #fc-header {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page.auto-fold #fc-header {
+		right: $admin-wp-menu-width-folded;
+		left: 0;
+	}
+}
+
+@media screen and ( max-width: $admin-breakpoint-mobile ) {
+	body.fc-settings-page #fc-header {
+		position: relative;
+		z-index: 1;
+		top: auto;
+		left: auto;
+		right: auto;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	body.rtl.fc-settings-page #fc-header {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	body.fc-settings-page.auto-fold #fc-header {
+		left: auto;
+	}
+
+	body.rtl.fc-settings-page.auto-fold #fc-header {
+		right: auto;
+		left: auto;
+	}
+
+	body.fc-settings-page #wpbody-content {
+		padding-top: 0;
+	}
+}
