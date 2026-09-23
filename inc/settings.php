@@ -59,7 +59,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_enable_checkout_express_checkout_ignore_required_fields'    => 'yes',
 			'fc_checkout_order_review_highlight_color'                      => null,
-			'fc_checkout_secondary_column_background_color'               => null,
+			'fc_checkout_secondary_column_background_color'                 => null,
 			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
@@ -116,7 +116,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
 			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
-			
+
 			// Settings order received.
 			'fc_pro_enable_order_received'                                  => 'no',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
