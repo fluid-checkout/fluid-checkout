@@ -901,22 +901,22 @@
 		}
 
 		// Update first/last visible substep attributes for each step
-		maybeUpdateSubstepFirstLastAttributes();
+		updateSubstepFirstLastAttributes();
 	}
 
 	/**
 	 * Update first/last visible substep attributes within each checkout step.
 	 */
-	var maybeUpdateSubstepFirstLastAttributes = function() {
+	var updateSubstepFirstLastAttributes = function() {
 		var allSteps = getAllSteps();
 
-		// Iterate through steps
+		// Iterate steps
 		for ( var i = 0; i < allSteps.length; i++ ) {
 			var stepElement = allSteps[ i ];
 			var substeps = stepElement.querySelectorAll( _settings.substepSelector );
 			var visibleSubsteps = [];
 
-			// Collect visible substeps
+			// Iterate substeps to collect visible ones
 			for ( var j = 0; j < substeps.length; j++ ) {
 				// Skip if substep is not visible
 				if ( 'no' === substeps[ j ].getAttribute( _settings.substepVisibleStateAttribute ) ) { continue; }
