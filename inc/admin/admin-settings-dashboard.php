@@ -48,7 +48,7 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 		$sections = array_merge( $sections, array(
 			'' => __( 'Dashboard', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
 	}
 
@@ -70,6 +70,10 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 					'id'    => 'fc_checkout_addons_options',
 				),
 
+				array(
+					'type'     => 'fc_telemetry_prompt',
+					'autoload' => false,
+				),
 				array(
 					'type'             => 'fc_setup',
 					'autoload'         => false,

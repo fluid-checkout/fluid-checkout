@@ -101,7 +101,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		if ( ! $current_screen ) { return; }
 
 		// Bail if not on WooCommerce settings page
-		if ( 'woocommerce_page_wc-settings' !== $current_screen->id ) { return; }
+		if ( $current_screen->id !== 'woocommerce_page_wc-settings' ) { return; }
 
 		// Get current tab and section
 		$current_tab = isset( $_GET[ 'tab' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'tab' ] ?? '' ) ) : 'general';
@@ -120,6 +120,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function load_dashboard() {
 		include_once self::$directory_path . 'inc/admin/admin-dashboard-actions.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry-prompt.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-setup.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-addons.php';
 	}
@@ -128,19 +129,14 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Load custom setting field types.
 	 */
 	public function load_setting_types() {
-		// Maybe add license key field type, if not already added
-		if ( ! apply_filters( 'fc_admin_field_type_license_exists', false ) ) {
-			include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-license-key.php';
-
-			// Set field type as existent so it won't be loaded again
-			add_filter( 'fc_admin_field_type_license_exists', '__return_true', 10 );
-		}
-
 		// Load settings field types
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-checkboxgroup.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry-enable.php';
+		include_once self::$directory_path . 'inc/admin/admin-telemetry.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-template-selector.php';
@@ -171,8 +167,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
 		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
-		
+
 		return $settings;
 	}
 
@@ -213,12 +208,12 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Get HTML for the upgrade link
 		// translators: %s: Upgrade link.
 		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
-		
+
 		// Maybe add line break
 		if ( $newline ) {
 			$html = ' <br>' . $html;
 		}
-	
+
 		return $html;
 	}
 

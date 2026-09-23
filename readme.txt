@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unrelased =
 
+* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
