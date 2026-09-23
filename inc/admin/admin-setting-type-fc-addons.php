@@ -46,7 +46,8 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		if ( 'fc_checkout' !== $current_tab || ! empty( $current_section ) ) { return; }
 
 		// Enqueue dashboard add-ons script
-		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array(), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-dashboard-addons', 'window.addEventListener("load",function(){FCAdminDashboardAddons.init(fcAdminDashboardAddonsSettings);});' );
 
 		// EXCEPTION: Runtime values — AJAX URL and nonce for local Activate.
 		wp_localize_script(

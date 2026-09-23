@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Dashboard add-ons, image uploader, and telemetry admin scripts follow Fluid Checkout JavaScript standards (UMD modules, settings merge, capture-phase events).
 * Improved: Telemetry client aggregates reports per API URL from `TELEMETRY_SETTINGS`, with the shortest send interval when plugins disagree.
 * Improved: Renamed the telemetry enable option to `fc_telemetry_enabled`.
 * Improved: Sales metrics data group is unchecked by default; plugin settings listed before sales metrics.

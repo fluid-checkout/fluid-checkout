@@ -36,7 +36,8 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 		if ( ! $this->is_tools_settings_screen( $hook ) ) { return; }
 
 		// Scripts
-		wp_register_script( 'fc-admin-telemetry', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-telemetry' ), array( 'jquery' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-telemetry', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-telemetry' ), array( 'jquery', 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-telemetry', 'window.addEventListener("load",function(){FCAdminTelemetry.init(fcAdminTelemetrySettings);});' );
 		wp_localize_script(
 			'fc-admin-telemetry',
 			'fcAdminTelemetrySettings',
