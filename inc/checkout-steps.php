@@ -4834,8 +4834,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_shipping_step_substep_visibility() {
 		// Define default visibility, all shipping substeps visible
 		$visibility = array(
-			'shipping_address'        => 'yes',
-			'shipping_method'         => 'yes',
+			'shipping_address' => 'yes',
+			'shipping_method'  => 'yes',
 		);
 
 		// Maybe hide shipping substeps when the cart does not need shipping
@@ -4843,15 +4843,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Hide the shipping method substep
 			$visibility[ 'shipping_method' ] = 'no';
 
-			// Keep shipping address visible when billing fields are forced into it
-			// Do not use `is_billing_forced_same_as_shipping()` here: that getter returns false when shipping is not needed
-			$visibility[ 'shipping_address' ] = 'force_single_address' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' ) ? 'yes' : 'no';
+			// Hide the shipping address by default
+			$visibility[ 'shipping_address' ] = 'no';
+
+			// Keep shipping address visible during checkout AJAX updates when billing fields
+			// were forced into it. Do not use `is_billing_forced_same_as_shipping()` here:
+			// that getter returns false when shipping is not needed. Skip on full page load
+			// so virtual-only carts match PRO and show billing as a separate step.
+			$is_update_order_review = array_key_exists( 'wc-ajax', $_GET ) && 'update_order_review' === sanitize_text_field( wp_unslash( $_GET[ 'wc-ajax' ] ?? '' ) );
+			if ( $is_update_order_review && 'force_single_address' === FluidCheckout_Settings::instance()->get_option( 'fc_pro_checkout_billing_address_position' ) ) {
+				$visibility[ 'shipping_address' ] = 'yes';
+			}
 		}
 
-		/**
-		 * Filter the visibility state for each shipping step substep.
-		 */
-		return apply_filters( 'fc_shipping_step_substep_visibility', $visibility );
+		return $visibility;
 	}
 
 
@@ -4883,13 +4888,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function change_substep_attributes_shipping_method( $substep_attributes ) {
 		// Get computed visibility for the shipping method substep
 		$visibility = $this->get_shipping_step_substep_visibility();
-
-		// Get current visibility from other plugins
-		$current_visible = array_key_exists( 'data-substep-visible', $substep_attributes ) ? $substep_attributes[ 'data-substep-visible' ] : 'yes';
-
-		// Prefer hidden when either the visibility map or another plugin requires it
-		// Matches the JS "any no wins" rule for `.fc-substep-visible-state` fields
-		$substep_attributes[ 'data-substep-visible' ] = ( 'no' === $visibility[ 'shipping_method' ] || 'no' === $current_visible ) ? 'no' : 'yes';
+		$substep_attributes[ 'data-substep-visible' ] = $visibility[ 'shipping_method' ];
 
 		return $substep_attributes;
 	}
