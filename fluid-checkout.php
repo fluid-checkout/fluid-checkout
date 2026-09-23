@@ -57,14 +57,24 @@ class FluidCheckout {
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
 	/**
-	 * Cron hook for weekly telemetry.
+	 * Telemetry settings keyed by API URL.
+	 *
+	 * @var array
 	 */
-	const TELEMETRY_CRON_HOOK = 'fc_telemetry_weekly';
-
-	/**
-	 * Default telemetry API base URL.
-	 */
-	const FC_TELEMETRY_API_URL = 'https://fluidcheckout.com';
+	const TELEMETRY_SETTINGS = array(
+		'https://fluidcheckout.com' => array(
+			'cron_hook'                       => 'fc_telemetry_weekly',
+			'enable_option'                   => 'fc_telemetry_enabled',
+			'data_groups_option'              => 'fc_telemetry_data_groups',
+			'fingerprint_option'              => 'fc_telemetry_last_fingerprint',
+			'last_sent_option'                => 'fc_telemetry_last_sent',
+			'send_lock_transient'             => 'fc_telemetry_send_lock',
+			'sales_backfill_sent_option'      => 'fc_telemetry_sales_backfill_sent',
+			'last_sales_metrics_month_option' => 'fc_telemetry_last_sales_metrics_month',
+			'changed_interval'                => WEEK_IN_SECONDS,
+			'unchanged_interval'              => 4 * WEEK_IN_SECONDS,
+		),
+	);
 
 	/**
 	 * Hold list of the plugin features to load when initializing.
@@ -220,21 +230,39 @@ class FluidCheckout {
 	}
 
 	/**
+	 * Get the primary telemetry API URL for this plugin.
+	 */
+	public static function get_telemetry_api_url() {
+		foreach ( array_keys( self::TELEMETRY_SETTINGS ) as $api_url ) {
+			return untrailingslashit( (string) $api_url );
+		}
+
+		return '';
+	}
+
+	/**
 	 * Whether an API URL belongs to this plugin's telemetry API (canonical or filtered).
 	 *
 	 * @param string $api_url Remote API base URL.
 	 */
 	private static function is_own_telemetry_api_url( $api_url ) {
-		$api_url   = untrailingslashit( (string) $api_url );
-		$canonical = untrailingslashit( self::FC_TELEMETRY_API_URL );
+		$api_url = untrailingslashit( (string) $api_url );
 
-		if ( $api_url === $canonical ) {
-			return true;
+		foreach ( array_keys( self::TELEMETRY_SETTINGS ) as $canonical ) {
+			$canonical = untrailingslashit( (string) $canonical );
+
+			if ( $api_url === $canonical ) {
+				return true;
+			}
+
+			$filtered = untrailingslashit( (string) apply_filters( 'fc_telemetry_api_url', $canonical, self::$plugin_slug ) );
+
+			if ( $api_url === $filtered ) {
+				return true;
+			}
 		}
 
-		$filtered = untrailingslashit( (string) apply_filters( 'fc_telemetry_api_url', self::FC_TELEMETRY_API_URL, self::$plugin_slug ) );
-
-		return $api_url === $filtered;
+		return false;
 	}
 
 	/**
@@ -264,7 +292,7 @@ class FluidCheckout {
 
 		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
 
-		FC_Telemetry_Client::register_telemetry_cron_hooks( self::$plugin_slug, self::TELEMETRY_CRON_HOOK, self::FC_TELEMETRY_API_URL );
+		FC_Telemetry_Client::register_telemetry_configs( self::TELEMETRY_SETTINGS );
 	}
 
 

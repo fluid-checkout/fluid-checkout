@@ -44,7 +44,7 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		if ( ! current_user_can( 'install_plugins' ) ) { return false; }
 
 		// Bail if site reporting is already enabled
-		if ( 'yes' === get_option( 'fc_enable_telemetry', 'no' ) ) { return false; }
+		if ( 'yes' === get_option( 'fc_telemetry_enabled', 'no' ) ) { return false; }
 
 		// Bail if the prompt was dismissed
 		if ( $this->is_dismissed() ) { return false; }
@@ -155,10 +155,10 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
 
 		// Enable telemetry
-		update_option( 'fc_enable_telemetry', 'yes' );
+		update_option( 'fc_telemetry_enabled', 'yes' );
 
 		// Schedule the site report cron
-		FC_Telemetry_Client::schedule_telemetry_cron( FluidCheckout::$plugin_slug, FluidCheckout::TELEMETRY_CRON_HOOK );
+		FC_Telemetry_Client::schedule_telemetry_cron( FluidCheckout::get_telemetry_api_url() );
 	}
 
 

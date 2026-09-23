@@ -34,12 +34,12 @@
 
 		$( document ).on( 'click', '.fc-telemetry-preview-button', openPreview );
 		$( document ).on( 'click', '.fc-telemetry-send-now-button', sendReportNowInline );
-		$( '#fc_enable_telemetry' ).on( 'change', updateInlineSendButtonVisibility );
+		$( document.body ).on( 'change', '#fc_telemetry_enabled', handleEnableCheckboxChange );
 		$modal.on( 'click', '[data-fc-telemetry-close]', closeModal );
 		$sendButton.on( 'click', sendReportNowModal );
 		$( document ).on( 'keydown', handleKeydown );
 
-		updateInlineSendButtonVisibility();
+		updateInlineSendButtonVisibility( $( '#fc_telemetry_enabled' ).is( ':checked' ) );
 	};
 
 
@@ -48,7 +48,7 @@
 	 * Collect the current site report form state.
 	 */
 	var getFormState = function() {
-		var enabled = $( '#fc_enable_telemetry' ).is( ':checked' );
+		var enabled = $( '#fc_telemetry_enabled' ).is( ':checked' );
 		var groups = [ 'basic_environment' ];
 
 		if ( enabled ) {
@@ -262,12 +262,12 @@
 			}
 
 			if ( enableIfDisabled ) {
-				$( '#fc_enable_telemetry' ).prop( 'checked', true ).trigger( 'change' );
+				$( '#fc_telemetry_enabled' ).prop( 'checked', true );
 			}
 
 			isEnabled = true;
 			updateSendButton( true );
-			updateInlineSendButtonVisibility();
+			updateInlineSendButtonVisibility( true );
 			showFeedback(
 				$feedbackTarget,
 				response.data.message || _i18n.sendSuccess || 'Site report sent successfully.',
@@ -284,12 +284,24 @@
 
 
 	/**
-	 * Toggle the inline send button based on the enable checkbox.
+	 * Handle enable checkbox changes and update the inline Send now button.
 	 */
-	var updateInlineSendButtonVisibility = function() {
+	var handleEnableCheckboxChange = function() {
+		updateInlineSendButtonVisibility( $( '#fc_telemetry_enabled' ).is( ':checked' ) );
+	};
+
+
+
+	/**
+	 * Show or hide the inline Send now button.
+	 *
+	 * @param {boolean} enabled Whether the enable checkbox is checked.
+	 */
+	var updateInlineSendButtonVisibility = function( enabled ) {
+		// Bail if inline send button is not available
 		if ( ! $inlineSendButton.length ) { return; }
 
-		if ( $( '#fc_enable_telemetry' ).is( ':checked' ) ) {
+		if ( enabled ) {
 			$inlineSendButton.removeClass( 'is-hidden' );
 			return;
 		}

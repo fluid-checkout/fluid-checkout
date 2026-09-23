@@ -138,8 +138,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_load_unminified_assets'                                     => 'no',
 			'fc_use_enhanced_select_components'                             => 'no',
 			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
-			'fc_enable_telemetry'                                         => 'no',
-			'fc_telemetry_data_groups'                                    => array( 'basic_environment', 'woocommerce_sales_metrics', 'plugin_settings' ),
+			'fc_telemetry_enabled'                                         => 'no',
+			'fc_telemetry_data_groups'                                    => array( 'basic_environment', 'plugin_settings' ),
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,

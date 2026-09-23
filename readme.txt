@@ -356,6 +356,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Telemetry client aggregates reports per API URL from `TELEMETRY_SETTINGS`, with the shortest send interval when plugins disagree.
+* Improved: Renamed the telemetry enable option to `fc_telemetry_enabled`.
+* Improved: Sales metrics data group is unchecked by default; plugin settings listed before sales metrics.
 * Added: Dashboard setup section links to Tools settings to enable site environment reports.
 * Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
 * Removed: License key field script and styles from this free plugin; commercial add-ons own those assets.
