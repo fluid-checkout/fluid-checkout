@@ -4850,8 +4850,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		/**
 		 * Filter the visibility state for each shipping step substep.
-		 *
-		 * @param  array  $visibility  Associative array of `substep_id => 'yes'|'no'` visibility values.
 		 */
 		return apply_filters( 'fc_shipping_step_substep_visibility', $visibility );
 	}
