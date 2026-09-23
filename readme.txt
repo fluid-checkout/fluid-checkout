@@ -356,24 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Improved: Dashboard add-ons, image uploader, and telemetry admin scripts follow Fluid Checkout JavaScript standards (UMD modules, settings merge, capture-phase events).
-* Improved: Telemetry client aggregates reports per API URL from `TELEMETRY_SETTINGS`, with the shortest send interval when plugins disagree.
-* Improved: Renamed the telemetry enable option to `fc_telemetry_enabled`.
-* Improved: Sales metrics data group is unchecked by default; plugin settings listed before sales metrics.
-* Added: Dashboard setup section links to Tools settings to enable site environment reports.
-* Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
-* Removed: License key field script and styles from this free plugin; commercial add-ons own those assets.
-* Removed: Site key field styles from the free plugin Dashboard stylesheet; site key UI is owned by Fluid Checkout PRO.
-* Improved: Opt-in telemetry uses `FC_Telemetry_Client` with renamed telemetry hooks, options, and admin files.
-* Improved: Dashboard add-ons keep local Activate and purchase links; site key and remote Install are provided by Fluid Checkout PRO.
-* Improved: Dashboard Add-ons expose hooks for PRO to extend site key, Install, and licensed Activate.
-* Improved: Site environment reports are sent to `POST /sites/telemetry` on the licenses API (replaces `/site-report`).
-* Fixed: Telemetry preview works on local and development domains (send still blocked for those domains).
-* Fixed: Own plugin license fields in telemetry reports match by plugin slug (API URL filter now receives both arguments).
-* Removed: Telemetry payloads no longer include client-reported `license_status` (resolved server-side).
-* Improved: Telemetry send failures are logged to WooCommerce logs (source: `fc-telemetry`).
-* Added: Optional/Opt-in site environment reports sent to Fluid Checkout to help improve compatibility and support. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
-* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 
 = 4.2.7 - 2026-08-19 =
 
