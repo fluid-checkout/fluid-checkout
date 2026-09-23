@@ -179,6 +179,11 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Build HTTP headers for telemetry API requests.
+		 *
+		 * @param array $extra Optional extra headers to merge.
+		 */
 		private static function get_api_request_headers( $extra = array() ) {
 			$headers = array(
 				'Origin' => home_url(),
@@ -211,6 +216,9 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Register the HTTP Origin injection filter once.
+		 */
 		private static function maybe_register_http_origin_hooks() {
 			if ( self::$http_origin_hooks_registered ) {
 				return;
@@ -253,6 +261,12 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Inject the site Origin header into telemetry API HTTP requests.
+		 *
+		 * @param array  $args Request arguments.
+		 * @param string $url  Request URL.
+		 */
 		public static function filter_http_request_args_inject_origin( $args, $url ) {
 			if ( ! self::is_telemetry_api_request_url( $url ) ) {
 				return $args;
@@ -273,24 +287,45 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Hash a license key for telemetry payloads (SHA-256 of uppercase trimmed key).
+		 *
+		 * @param string $license_key License key value.
+		 */
 		private static function hash_license_key( $license_key ) {
 			return hash( 'sha256', strtoupper( trim( (string) $license_key ) ) );
 		}
 
 
 
+		/**
+		 * Whether a value looks like a SHA-256 license key hash.
+		 *
+		 * @param string $value Candidate hash or key value.
+		 */
 		private static function looks_like_license_key_hash( $value ) {
 			return (bool) preg_match( '/^[a-f0-9]{64}$/i', (string) $value );
 		}
 
 
 
+		/**
+		 * Whether a value looks like a masked license key display string.
+		 *
+		 * @param string $value Candidate license key value.
+		 */
 		private static function looks_like_masked_license_key( $value ) {
 			return (bool) preg_match( '/(^|[^A-Z0-9])XXXX([^A-Z0-9]|$)/i', (string) $value );
 		}
 
 
 
+		/**
+		 * Resolve the remote telemetry API base URL.
+		 *
+		 * @param string|null $api_url     Optional API base URL.
+		 * @param string|null $plugin_slug Optional plugin slug for filters.
+		 */
 		public static function get_remote_api_url( $api_url = null, $plugin_slug = null ) {
 			$api_url = apply_filters( 'fc_telemetry_api_url', $api_url, $plugin_slug );
 
@@ -1320,6 +1355,11 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Get a plugin version string for the telemetry User-Agent header.
+		 *
+		 * @param string|null $api_url Telemetry API base URL.
+		 */
 		private static function get_telemetry_user_agent_version( $api_url = null ) {
 			// Bail if `get_plugins` function is not available
 			if ( ! function_exists( 'get_plugins' ) ) { return 'unknown'; }
@@ -1345,6 +1385,11 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Get the map of own plugins registered for telemetry for an API URL.
+		 *
+		 * @param string|null $api_url Telemetry API base URL.
+		 */
 		private static function get_own_plugins_option_map( $api_url = null ) {
 			$plugins = apply_filters( 'fc_telemetry_own_plugins', array(), $api_url );
 
@@ -1357,6 +1402,13 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Maybe add a license key hash to an own-plugin telemetry row.
+		 *
+		 * @param array       $plugin_row  Plugin telemetry row (passed by reference).
+		 * @param string      $plugin_slug Plugin slug.
+		 * @param string|null $api_url     Telemetry API base URL.
+		 */
 		private static function maybe_add_own_plugin_license_hash_row( &$plugin_row, $plugin_slug, $api_url = null ) {
 			$plugins_map = self::get_own_plugins_option_map( $api_url );
 
@@ -1386,6 +1438,11 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 
 
+		/**
+		 * Derive a plugin slug from a plugin file path.
+		 *
+		 * @param string $plugin_file Plugin basename path (e.g. plugin-dir/plugin.php).
+		 */
 		private static function get_plugin_slug_from_file( $plugin_file ) {
 			$plugin_file = str_replace( '\\', '/', $plugin_file );
 			$parts       = explode( '/', $plugin_file );
