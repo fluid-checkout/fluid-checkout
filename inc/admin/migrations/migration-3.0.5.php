@@ -18,6 +18,17 @@ class FluidCheckout_Migration_3_0_5 extends FluidCheckout {
 
 
 	/**
+	 * Get the list of changes applied by this migration.
+	 */
+	public function get_description() {
+		return array(
+			__( 'Update the billing phone field visibility option from the legacy value to match WooCommerce conventions.', 'fluid-checkout' ),
+		);
+	}
+
+
+
+	/**
 	 * Initialize hooks.
 	 */
 	public function migrate() {
