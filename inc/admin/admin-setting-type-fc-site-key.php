@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
  * Placeholder Site key card for the Dashboard tab of the Fluid Checkout settings page.
  * This Lite placeholder is independent of the working site key UI provided by Fluid Checkout PRO.
  */
-class FluidCheckout_Admin_SettingType_SiteKey extends FluidCheckout {
+class FluidCheckout_Admin_SettingType_SiteKeyPlaceholder extends FluidCheckout {
 
 	/**
 	 * __construct function.
@@ -100,4 +100,4 @@ class FluidCheckout_Admin_SettingType_SiteKey extends FluidCheckout {
 
 }
 
-FluidCheckout_Admin_SettingType_SiteKey::instance();
+FluidCheckout_Admin_SettingType_SiteKeyPlaceholder::instance();

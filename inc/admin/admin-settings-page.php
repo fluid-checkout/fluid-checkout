@@ -284,7 +284,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$this->load_settings_pages();
 
 		$tabs = array(
-			'dashboard'                => array( 'label' => __( 'Dashboard', 'fluid-checkout' ), 'section' => '', 'show_save_button' => true ),
+			'dashboard'                => array( 'label' => __( 'Dashboard', 'fluid-checkout' ), 'section' => '' ),
 			'checkout'                 => array( 'label' => __( 'Checkout', 'fluid-checkout' ), 'section' => 'checkout' ),
 			'cart'                     => array( 'label' => __( 'Cart', 'fluid-checkout' ), 'section' => 'cart' ),
 			'order_received'           => array( 'label' => __( 'Thank You', 'fluid-checkout' ), 'section' => 'order_received' ),
@@ -304,7 +304,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'separator_3'              => array( 'type' => 'separator' ),
 			'integrations'             => array( 'label' => __( 'Integrations', 'fluid-checkout' ), 'section' => 'integrations' ),
 			'tools'                    => array( 'label' => __( 'Tools', 'fluid-checkout' ), 'section' => 'tools' ),
-			'license_keys'             => array( 'label' => __( 'License Keys', 'fluid-checkout' ), 'section' => 'license_keys', 'show_save_button' => false ),
+			'license_keys'             => array( 'label' => __( 'License Keys', 'fluid-checkout' ), 'section' => 'license_keys' ),
 		);
 
 		// Get settings sections registered for the WooCommerce settings tab
@@ -568,8 +568,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Bail if the license key field type is not available
 		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_LicenseKey' ) ) { return; }
 
-		// The license key field type only registers its assets for the WooCommerce settings page hook
-		FluidCheckout_Admin_SettingType_LicenseKey::instance()->register_scripts( 'woocommerce_page_wc-settings' );
+		FluidCheckout_Admin_SettingType_LicenseKey::instance()->register_scripts();
 	}
 
 

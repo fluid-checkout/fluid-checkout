@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Fluid Checkout Telemetry Client.
  * Opt-in site environment telemetry for Fluid Checkout ecosystem plugins.
@@ -472,30 +474,10 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				);
 			}
 
-			if ( $enable_if_disabled && ! self::is_telemetry_enabled( $api_url ) ) {
-				update_option( $config['enable_option'], 'yes' );
-				self::schedule_telemetry_cron( $api_url );
-			}
-
-			if ( null !== $groups ) {
-				$groups = self::normalize_telemetry_data_groups( $groups );
-				update_option( $config['data_groups_option'], $groups );
-			}
-
-			if ( ! self::is_telemetry_enabled( $api_url ) ) {
-				return array(
-					'success'    => false,
-					'error_code' => 'disabled',
-				);
-			}
-
-			set_transient( $config['send_lock_transient'], 1, MINUTE_IN_SECONDS );
-
 			$host = self::get_telemetry_host();
 
+			// Bail before enabling or persisting groups when the domain cannot send reports
 			if ( '' === $host || ! self::is_telemetry_domain_eligible( $host ) ) {
-				delete_transient( $config['send_lock_transient'] );
-
 				self::log_telemetry_error(
 					'Telemetry domain is not eligible for sending.',
 					array(
@@ -509,6 +491,28 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 					'error_code' => '' === $host ? 'empty_payload' : 'ineligible_domain',
 				);
 			}
+
+			// Maybe enable scheduled reporting after the domain is eligible
+			if ( $enable_if_disabled && ! self::is_telemetry_enabled( $api_url ) ) {
+				update_option( $config['enable_option'], 'yes' );
+				self::schedule_telemetry_cron( $api_url );
+			}
+
+			// Maybe persist selected data groups
+			if ( null !== $groups ) {
+				$groups = self::normalize_telemetry_data_groups( $groups );
+				update_option( $config['data_groups_option'], $groups );
+			}
+
+			// Bail if reporting is still disabled
+			if ( ! self::is_telemetry_enabled( $api_url ) ) {
+				return array(
+					'success'    => false,
+					'error_code' => 'disabled',
+				);
+			}
+
+			set_transient( $config['send_lock_transient'], 1, MINUTE_IN_SECONDS );
 
 			$payload = self::build_telemetry_payload( $groups, null, $api_url );
 

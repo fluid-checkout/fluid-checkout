@@ -195,7 +195,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 * Verify AJAX permissions and nonce.
 	 */
 	private function verify_ajax_request() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			wp_send_json_error(
 				array(
 					'message' => __( 'You are not allowed to manage site reports.', 'fluid-checkout' ),
