@@ -241,35 +241,39 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		}
 		?>
 		<li class="<?php echo esc_attr( $item_class ); ?>">
-			<div class="fc-addons__item-header">
-				<img class="fc-addons__item-image" src="<?php echo esc_url( $addon['image'] ); ?>" alt="<?php echo esc_attr( $addon['title'] ); ?>">
-				<div class="fc-addons__item-title-section">
-					<h3 class="fc-addons__item-title"><?php echo esc_html( $addon['title'] ); ?></h3>
-					<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $addon['subtitle'] ); ?></p>
+			<div class="fc-addons__item-inner">
+				<div class="fc-addons__item-header">
+					<img class="fc-addons__item-image" src="<?php echo esc_url( $addon['image'] ); ?>" alt="<?php echo esc_attr( $addon['title'] ); ?>">
+					<div class="fc-addons__item-title-section">
+						<h3 class="fc-addons__item-title"><?php echo esc_html( $addon['title'] ); ?></h3>
+						<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $addon['subtitle'] ); ?></p>
+					</div>
+				</div>
+				<div class="fc-addons__item-description">
+					<p><?php echo wp_kses_post( $addon['description'] ); ?></p>
+					<?php if ( ! empty( $addon['value_note'] ) ) : ?>
+						<p><strong><?php echo esc_html( $addon['value_note'] ); ?></strong></p>
+					<?php endif; ?>
+					<?php if ( ! empty( $addon['features'] ) && is_array( $addon['features'] ) && ! FluidCheckout::instance()->is_pro_installed() ) : ?>
+						<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns">
+							<?php foreach ( $addon['features'] as $feature ) : ?>
+								<li><?php echo esc_html( $feature ); ?></li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
 				</div>
 			</div>
-			<div class="fc-addons__item-description">
-				<p><?php echo wp_kses_post( $addon['description'] ); ?></p>
-				<?php if ( ! empty( $addon['value_note'] ) ) : ?>
-					<p><strong><?php echo esc_html( $addon['value_note'] ); ?></strong></p>
-				<?php endif; ?>
-				<?php if ( ! empty( $addon['features'] ) && is_array( $addon['features'] ) && ! FluidCheckout::instance()->is_pro_installed() ) : ?>
-					<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns">
-						<?php foreach ( $addon['features'] as $feature ) : ?>
-							<li><?php echo esc_html( $feature ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-			</div>
-			<div class="fc-addons__item-actions">
-				<?php if ( 'bundle' === $addon['type'] ) : ?>
-					<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( $addon['purchase_label'] ); ?></a>
-					<?php if ( ! empty( $addon['dismiss_notice'] ) ) : ?>
-						<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $addon['dismiss_notice'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'I already have it – Hide this offer', 'fluid-checkout' ) ); ?></a>
+			<div class="fc-addons__item-footer">
+				<div class="fc-addons__item-actions">
+					<?php if ( 'bundle' === $addon['type'] ) : ?>
+						<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( $addon['purchase_label'] ); ?></a>
+						<?php if ( ! empty( $addon['dismiss_notice'] ) ) : ?>
+							<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $addon['dismiss_notice'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'I already have it – Hide this offer', 'fluid-checkout' ) ); ?></a>
+						<?php endif; ?>
+					<?php else : ?>
+						<?php $this->output_plugin_addon_actions( $addon ); ?>
 					<?php endif; ?>
-				<?php else : ?>
-					<?php $this->output_plugin_addon_actions( $addon ); ?>
-				<?php endif; ?>
+				</div>
 			</div>
 		</li>
 		<?php
@@ -296,6 +300,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		<?php if ( '' !== $site_key_html ) : ?>
 		<div class="fc-settings-card fc-settings-card--site-key">
+			<div class="fc-settings-card__header">
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Site key', 'fluid-checkout' ) ); ?></h3>
+			</div>
 			<div class="fc-settings-card__inner">
 				<?php echo $site_key_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>

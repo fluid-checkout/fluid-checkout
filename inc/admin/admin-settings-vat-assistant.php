@@ -128,6 +128,8 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					self::PRODUCT_URL
 				),
 				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+				'plugin_file'      => 'fc-vat-assistant/fc-vat-assistant.php',
+				'plugin_slug'      => 'fc-vat-assistant',
 			),
 		);
 	}
@@ -328,7 +330,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'id'                => 'fc_vat_number_eu_vat_digital_goods_tax_classes',
 					'desc_tip'          => true,
 					'type'              => 'multiselect',
-					'class'             => 'chosen_select wp-enhanced-select',
+					'class'             => 'fc-enhanced-select',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_digital_goods_tax_classes' ),
 					'options'           => $this->get_tax_classes_options(),
 					'custom_attributes' => array(

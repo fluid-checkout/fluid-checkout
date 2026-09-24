@@ -356,6 +356,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Tools usage tracking section uses toggle switches and is titled Usage tracking.
+* Improved: Dashboard Site key card shows a section title.
+* Fixed: Dependent settings such as "Load unminified assets" only show when their parent debug option is enabled.
+* Improved: Address Autocomplete debug section on Tools is titled "Troubleshooting - Address Autocomplete".
+* Added: Locked Address Book Migration card on the Tools settings page when the Address Book add-on is not active.
+* Improved: Fluid Checkout admin menu uses a custom logo icon.
 * Improved: Settings page layout and styles for the vertical sidebar and settings cards.
 * Improved: Settings pages use toggle switches and info tip icons for field descriptions.
 * Improved: Cart, Checkout, Thank You, and Order Pay settings group Trust Symbols & Badges in their own section with a documentation link.
@@ -380,6 +386,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Lite Site key placeholder is hidden when PRO or any add-on is activated.
 * Improved: Site key placeholder card uses the same dark grey promo border as other promotional settings cards.
 * Improved: Primary and secondary buttons on the settings page match the header button styles.
+* Fixed: Settings page no longer shows the WooCommerce “Connection lost” notice.
+* Improved: Settings page country and multiselect fields use TomSelect instead of WooCommerce Select2.
+* Added: Activate and Install plugin actions on Address Book, Address Autocomplete, and VAT Assistant promo cards.
+* Improved: Dashboard and promo Activate / Install buttons use the same padding as settings header buttons.
+* Improved: TomSelect multi-select option labels no longer use a text shadow.
+* Improved: Dashboard add-on cards use a card background and move actions into a footer, similar to promo cards.
+* Improved: Settings card descriptions are shown in the card content section.
+* Fixed: Load unminified assets only shows when Debug mode is enabled on the Tools tab.
+* Improved: Address Autocomplete debug section on Tools is titled Troubleshooting - Address Autocomplete.
+* Improved: Address Book Migration was moved out of the Address Book settings placeholders.
 * Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
 * Removed: License key field script and styles from this free plugin; commercial add-ons own those assets.
 * Removed: Site key field styles from the free plugin Dashboard stylesheet; site key UI is owned by Fluid Checkout PRO.

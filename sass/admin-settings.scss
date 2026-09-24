@@ -8,9 +8,52 @@
 
 
 
+// Override Tom Select variables for admin settings fields
+$form-field-height:                           $fc-settings-input-height;
+$form-field-border-width:                     1px;
+$form-field-border-radius:                    $fc-settings-input-border-radius;
+$form-field-padding-left:                     10px;
+$focus-outline-field:                         none;
+$focus-outline-offset-field:                  0;
+$ts-select-color-text:                        $fc-settings-input-color;
+$ts-select-color-background:                  $fc-settings-input-background-color;
+$ts-select-color-background-focus:            $fc-settings-input-background-color;
+$ts-select-color-border:                      $fc-settings-input-border-color;
+$ts-select-color-disabled:                    $fc-settings-input-background-color-disabled;
+$ts-select-color-item:                        $admin-background-color;
+$ts-select-color-item-text:                   $fc-settings-input-color;
+$ts-select-color-item-border:                 $fc-settings-input-border-color;
+$ts-select-color-item-active:                 $fc-header-button-save-background;
+$ts-select-color-item-active-text:            $white;
+$ts-select-color-item-active-border:          $fc-header-button-save-border-color;
+$ts-select-color-dropdown:                    $white;
+$ts-select-color-dropdown-border:             $fc-settings-input-border-color;
+$ts-select-font-size:                         $fc-settings-input-font-size;
+$ts-select-padding-x:                         10px;
+$ts-select-padding-y:                         6px;
+$ts-select-padding-left:                      10px;
+$ts-select-border-width:                      1px;
+$ts-select-field-height:                      $fc-settings-input-height;
+$ts-select-border-radius:                     $fc-settings-input-border-radius;
+$ts-select-border-radius-item:                3px;
+$ts-select-shadow-input:                      $fc-settings-input-box-shadow;
+$ts-select-shadow-input-focus:                0 0 0 1px $fc-settings-input-border-color-focus;
+$ts-select-opacity-disabled:                  1;
+$ts-select-arrow-color:                       $admin-text-color;
+$ts-select-remove-color:                      $admin-text-color-muted;
+$ts-select-remove-color-hover:                $admin-text-color;
+
+@import
+	"abstract/variables-tom-select";
+
+
+
 
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
 @import
-	"admin/__imports-admin-settings";
+	"admin/__imports-admin-settings",
+	"partials/tom-select-control",
+	"partials/tom-select-dropdown",
+	"partials/tom-select-multi";

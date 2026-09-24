@@ -55,10 +55,11 @@
 
 .fc-settings-field__control > fieldset {
 	display: flex;
-	flex: 1 1 auto;
+	flex: 1 1 100%;
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 8px;
+	width: 100%;
 	margin: 0;
 	min-width: 0;
 	padding: 0;
@@ -67,6 +68,20 @@
 
 .fc-settings-field__control fieldset + fieldset {
 	margin-top: 8px;
+}
+
+// Dependent checkbox options (mirrors WooCommerce `show_if_checked` / `hide_if_checked`).
+// Only the controlling checkbox (not inside `.hidden_option`) toggles visibility.
+.fc-settings-wrap .show_options_if_checked .hidden_option {
+	display: none;
+}
+
+.fc-settings-wrap .show_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) .hidden_option {
+	display: flex;
+}
+
+.fc-settings-wrap .hide_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) .hidden_option {
+	display: none;
 }
 
 .fc-settings-field__control .description {
@@ -96,6 +111,24 @@
 
 .fc-settings-field__control .iris-picker {
 	z-index: 100;
+	display: none;
+	position: absolute;
+	// Sit below the color input row (control padding-top + input height + gap)
+	top: calc( 5px + #{$fc-settings-input-height} + 8px );
+	left: 0;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-shadow: 0 1px 3px rgba( 0, 0, 0, .2 );
+}
+
+// Buttons next to inputs match the field control height
+.fc-settings-field__control > .button,
+.fc-settings-field__control > .button-secondary,
+.fc-settings-field__control > .fc-settings-button,
+.fc-settings-wrap .fc-license-key__field-wrap .button,
+.fc-settings-wrap .fc-addons__site-key-field-row .button {
+	height: $fc-settings-input-height;
+	min-height: $fc-settings-input-height;
 }
 
 

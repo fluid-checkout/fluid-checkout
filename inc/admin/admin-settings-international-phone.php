@@ -111,7 +111,7 @@ class WC_Settings_FluidCheckout_InternationalPhone_Settings extends WC_Settings_
 					'desc'                  => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_enable_international_phone_validation_precise_types',
 					'type'                  => 'fc_multiselect',
-					'class'                 => 'chosen_select wp-enhanced-select',
+					'class'                 => 'fc-enhanced-select',
 					'options'               => array(
 						'MOBILE'           => __( 'Mobile', 'fluid-checkout' ),
 						'FIXED_LINE'       => __( 'Fixed line', 'fluid-checkout' ),

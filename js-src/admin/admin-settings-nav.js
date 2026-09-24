@@ -134,17 +134,6 @@
 
 		updateSaveControls( tabPanel );
 
-		// Recalculate enhanced select widths after a previously hidden tab becomes visible
-		if ( typeof jQuery !== 'undefined' ) {
-			jQuery( tabPanel ).find( '.select2-hidden-accessible' ).each( function() {
-				var $field = jQuery( this );
-				var $container = $field.next( '.select2-container' );
-				if ( $container.length ) {
-					$container.css( 'width', '100%' );
-				}
-			} );
-		}
-
 		// Sync the browser URL
 		if ( updateUrl ) {
 			if ( replaceState ) {

@@ -71,14 +71,11 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Remove WooCommerce Help tabs on this page
 		add_action( 'admin_head', array( $this, 'maybe_remove_help_tabs' ), 10 );
 
-		// WooCommerce admin scripts and styles
-		add_filter( 'woocommerce_screen_ids', array( $this, 'add_woocommerce_screen_ids' ), 10 );
-
 		// Register assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
-		// Enqueue assets
-		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+		// Enqueue assets after shared library scripts are registered
+		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 20 );
 
 		// License key field assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'maybe_register_license_key_assets' ), 10 );
@@ -97,7 +94,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			self::CAPABILITY,
 			self::PAGE_SLUG,
 			array( $this, 'output_page' ),
-			'dashicons-cart',
+			$this->get_menu_icon_url(),
 			56
 		);
 
@@ -107,6 +104,28 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Remove the submenu item automatically added for the top-level page,
 		// so the top-level menu links to the Dashboard tab
 		remove_submenu_page( self::PAGE_SLUG, self::PAGE_SLUG );
+	}
+
+	/**
+	 * Get the admin menu icon as a base64-encoded SVG data URI for WordPress color scheme painting.
+	 */
+	public function get_menu_icon_url() {
+		$icon_path = FluidCheckout::$directory_path . 'images/admin/logo--menu.svg';
+
+		// Bail if icon file is missing
+		if ( ! file_exists( $icon_path ) ) {
+			return 'dashicons-cart';
+		}
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local plugin asset.
+		$svg = file_get_contents( $icon_path );
+
+		// Bail if icon could not be read
+		if ( false === $svg || '' === $svg ) {
+			return 'dashicons-cart';
+		}
+
+		return 'data:image/svg+xml;base64,' . base64_encode( $svg );
 	}
 
 	/**
@@ -214,10 +233,10 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			</a>
 
 			<a class="fc-header__button" href="<?php echo esc_url( $support_url ); ?>" target="_blank" rel="noopener noreferrer">
-				<span class="dashicons dashicons-email-alt" aria-hidden="true"></span><?php echo esc_html( __( 'Support', 'fluid-checkout' ) ); ?>
+				<span class="dashicons dashicons-editor-help" aria-hidden="true"></span><?php echo esc_html( __( 'Support', 'fluid-checkout' ) ); ?>
 			</a>
 			<a class="fc-header__button" href="<?php echo esc_url( $docs_url ); ?>" target="_blank" rel="noopener noreferrer">
-				<span class="dashicons dashicons-book" aria-hidden="true"></span><?php echo esc_html( __( 'Docs', 'fluid-checkout' ) ); ?>
+				<span class="dashicons dashicons-info-outline" aria-hidden="true"></span><?php echo esc_html( __( 'Docs', 'fluid-checkout' ) ); ?>
 			</a>
 			<?php if ( ! FluidCheckout::instance()->is_pro_activated() ) : ?>
 				<a class="fc-header__button fc-header__button--upgrade" href="<?php echo esc_url( $upgrade_url ); ?>" target="_blank" rel="noopener noreferrer">
@@ -489,18 +508,6 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 
 	/**
-	 * Add the settings page to the WooCommerce screen IDs, which loads the WooCommerce admin scripts and styles.
-	 *
-	 * @param  array  $screen_ids  WooCommerce screen IDs.
-	 */
-	public function add_woocommerce_screen_ids( $screen_ids ) {
-		$screen_ids[] = 'toplevel_page_' . self::PAGE_SLUG;
-		return $screen_ids;
-	}
-
-
-
-	/**
 	 * Register assets.
 	 */
 	public function register_assets() {
@@ -513,6 +520,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-enhanced-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-settings-enhanced-select', 'window.addEventListener("load",function(){FCAdminSettingsEnhancedSelect.init();});' );
 	}
 
 	/**
@@ -530,6 +539,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_enqueue_script( 'fc-admin-settings-tooltips' );
 		wp_enqueue_script( 'fc-admin-settings-nav' );
 		wp_enqueue_script( 'fc-admin-settings-colorpicker' );
+		wp_enqueue_script( 'fc-admin-settings-enhanced-select' );
 	}
 
 	/**

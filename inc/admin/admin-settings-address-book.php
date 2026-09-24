@@ -46,6 +46,9 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 	public function hooks() {
 		// Settings
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+
+		// Tools: Address Book migration after troubleshooting sections (locked until the add-on replaces these settings)
+		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_migration_settings' ), 30, 2 );
 	}
 
 
@@ -80,6 +83,40 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 					self::PRODUCT_URL
 				),
 				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+				'plugin_file'      => 'fc-address-book/fc-address-book.php',
+				'plugin_slug'      => 'fc-address-book',
+			),
+		);
+	}
+
+
+
+	/**
+	 * Get the locked placeholder settings for Address Book migration on the Tools tab.
+	 */
+	public function get_locked_migration_settings() {
+		return array(
+			array(
+				'title'    => __( 'Address Book Migration', 'fluid-checkout' ),
+				'type'     => 'title',
+				'desc'     => '',
+				'id'       => 'fc_pro_address_book_migration_options',
+				'promo'    => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-book-migration', self::PRODUCT_URL, self::FEATURE ),
+			),
+
+			array(
+				'title'    => __( 'WooCommerce Addresses', 'fluid-checkout' ),
+				'desc'     => __( 'Copy existing shipping and billing addresses from WooCommerce into the customers\' address book.', 'fluid-checkout' ),
+				'id'       => 'fc_pro_address_book_migration',
+				'type'     => 'fc_address_book_migration',
+				'autoload' => false,
+				'disabled' => true,
+				'requires' => self::FEATURE,
+			),
+
+			array(
+				'type' => 'sectionend',
+				'id'   => 'fc_pro_address_book_migration_options',
 			),
 		);
 	}
@@ -136,16 +173,6 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'title'             => __( 'Address book migration', 'fluid-checkout' ),
-						'desc'              => __( 'Copy existing shipping and billing addresses into the customers\' address book. <br/>Customers that already have an address book entry will be skipped, even when they do not have any address saved to their account. <br/>You may leave this page while the migration is running and it will continue in the background. <br/><span style="color: #D21F26;"><strong>CAUTION: Please take a full backup of your website before running the migration process.</strong> <br>Once a customer is marked as migrated they cannot be migrated again, even when they have no addresses saved to their account. <br>In case you decide to disable the Address Book feature after customer\'s addresses have been migrated or after customers have saved any new addresses, the shipping and billing addresses used on their last order will be still be available on their account in the WooCommerce way (only one address for shipping and another for billing).</span>', 'fluid-checkout' ),
-						'id'                => 'fc_pro_address_book_migration',
-						'type'              => 'fc_address_book_migration',
-						'autoload'          => false,
-						'disabled'          => true,
-						'requires'          => self::FEATURE,
-					),
-
-					array(
 						'type'              => 'sectionend',
 						'id'                => 'fc_pro_address_book_options',
 					),
@@ -154,6 +181,31 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 		);
 
 		return $settings;
+	}
+
+	/**
+	 * Add Address Book migration settings to the Tools tab.
+	 * The Address Book add-on replaces the locked placeholders with the migration controls.
+	 *
+	 * @param   array   $settings         Array with all settings for the current section.
+	 * @param   string  $current_section  Current section name.
+	 */
+	public function add_migration_settings( $settings, $current_section ) {
+		// Bail if not on the tools section
+		if ( 'tools' !== $current_section ) { return $settings; }
+
+		/**
+		 * Filter the Address Book migration settings displayed on the Tools tab.
+		 * The Address Book add-on replaces the locked placeholder settings with its own settings.
+		 *
+		 * @param  array  $settings  Locked placeholder settings.
+		 */
+		$migration_settings = apply_filters( 'fc_admin_address_book_migration_settings', $this->get_locked_migration_settings() );
+
+		// Bail if migration settings are not valid
+		if ( ! is_array( $migration_settings ) ) { return $settings; }
+
+		return array_merge( is_array( $settings ) ? $settings : array(), $migration_settings );
 	}
 
 }

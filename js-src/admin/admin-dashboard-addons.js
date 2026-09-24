@@ -29,18 +29,30 @@
 	 * @param {string}  type    success|error.
 	 */
 	var showItemNotice = function( button, message, type ) {
-		var item = button.closest( '.fc-addons__item' );
+		var item = button.closest( '.fc-addons__item, .fc-settings-card--promo' );
+		var actions = button.closest( '.fc-addons__item-actions' );
 		var notice;
 
-		// Bail if item missing
-		if ( ! item ) { return; }
+		// Prefer the actions block notice when present
+		if ( actions ) {
+			notice = actions.querySelector( '.fc-addons__item-action-notice' );
 
-		notice = item.querySelector( '.fc-addons__item-action-notice' );
+			if ( ! notice ) {
+				notice = document.createElement( 'div' );
+				notice.className = 'fc-addons__item-action-notice';
+				actions.appendChild( notice );
+			}
+		} else {
+			// Bail if item missing
+			if ( ! item ) { return; }
 
-		if ( ! notice ) {
-			notice = document.createElement( 'div' );
-			notice.className = 'fc-addons__item-action-notice';
-			button.parentNode.appendChild( notice );
+			notice = item.querySelector( '.fc-addons__item-action-notice' );
+
+			if ( ! notice ) {
+				notice = document.createElement( 'div' );
+				notice.className = 'fc-addons__item-action-notice';
+				button.parentNode.appendChild( notice );
+			}
 		}
 
 		notice.hidden = false;

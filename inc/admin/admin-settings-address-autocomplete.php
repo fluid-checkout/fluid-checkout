@@ -84,6 +84,8 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 					self::PRODUCT_URL
 				),
 				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+				'plugin_file'      => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
+				'plugin_slug'      => 'fc-google-address-autocomplete',
 			),
 		);
 	}
@@ -229,7 +231,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 	public function get_locked_debug_settings() {
 		return array(
 			array(
-				'title'             => __( 'Address Autocomplete Debug', 'fluid-checkout' ),
+				'title'             => __( 'Troubleshooting - Address Autocomplete', 'fluid-checkout' ),
 				'type'              => 'title',
 				'desc'              => '',
 				'id'                => 'fc_gaa_debug_options',
@@ -246,6 +248,8 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
+				'checkboxgroup'     => 'start',
+				'show_if_checked'   => 'option',
 			),
 
 			array(
@@ -257,6 +261,8 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
+				'checkboxgroup'     => 'end',
+				'show_if_checked'   => 'yes',
 			),
 
 			array(

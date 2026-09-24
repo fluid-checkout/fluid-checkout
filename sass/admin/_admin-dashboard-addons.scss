@@ -18,16 +18,17 @@
 .fc-addons__item {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: stretch;
 	flex-grow: 0;
 	flex-shrink: 0;
+	overflow: hidden;
 	margin: 0;
-	padding: 30px;
+	padding: 0;
 	width: 100%;
 	box-sizing: border-box;
-	border: solid 1px #f3f3f3;
-	border-radius: 0;
-	background-color: #f9f9f9;
+	border: solid 1px $admin-border-color;
+	border-radius: $fc-settings-card-border-radius;
+	background-color: $fc-settings-card-background-color;
 
 	@media ( min-width: 600px ) {
 		width: calc( 50% - 10px );
@@ -45,6 +46,20 @@
 .fc-settings-card--addons .fc-addons__item.fc-addons__item--pro {
 	@media ( min-width: 600px ) {
 		width: 100%;
+	}
+}
+
+
+
+.fc-addons__item-inner {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: $fc-settings-card-padding;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
 	}
 }
 
@@ -148,10 +163,26 @@
 
 
 
+.fc-addons__item-footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	margin-top: auto;
+	padding: $fc-settings-card-padding;
+	border-top: 1px solid $fc-settings-card-header-border-color;
+	background-color: $fc-settings-card-footer-background-color;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+
+
 .fc-addons__item-actions {
-	align-self: flex-end;
-	margin-top: 30px;
 	width: 100%;
+	margin-top: 0;
 }
 
 .fc-addons__item-actions .button,
@@ -159,13 +190,6 @@
 	box-sizing: border-box;
 	width: 100%;
 	max-width: 100%;
-}
-
-.fc-addons__item-actions .button {
-	padding-top: 8px;
-	padding-bottom: 8px;
-	text-align: center;
-	line-height: 1.4;
 }
 
 .fc-addons__item-actions .fc-addons__item-license-select {
@@ -186,13 +210,25 @@
 	margin-top: 10px;
 }
 
-.fc-addons__item-actions .button.button-primary {
-	font-size: 15px;
-	white-space: normal;
+.fc-addons__item-actions .button.button--activated {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
+	width: 100%;
+	background: $white !important; // Needed to override settings-page / disabled button background
+	border-color: #007a3d !important; // Needed to override settings-page button border
+	color: #007a3d !important; // Needed to override settings-page button color
+	text-align: center;
 }
 
-.fc-addons__item-actions .button.button--activated {
-	color: #007a3d !important; // Needed to override settings-page button color
+.fc-addons__item-actions .button.button--activated:hover,
+.fc-addons__item-actions .button.button--activated:focus,
+.fc-addons__item-actions .button.button--activated:disabled,
+.fc-addons__item-actions .button.button--activated.disabled {
+	background: $white !important; // Needed to keep Activated state on hover / disabled
+	border-color: #007a3d !important;
+	color: #007a3d !important;
 }
 
 .fc-addons__item-actions .button.button--activated::before {
@@ -200,7 +236,8 @@
 	content: "\f147";
 	font-family: dashicons;
 	display: inline-block;
-	margin: -2px 6px 0 0;
+	flex-shrink: 0;
+	margin: 0 6px 0 0;
 	padding: 0;
 	width: 20px;
 	height: 20px;
@@ -221,9 +258,10 @@
 }
 
 .rtl .fc-addons__item-actions .button.button--activated::before {
-	margin: -2px 0 0 6px;
+	margin: 0 0 0 6px;
 }
 
+// Install CTA keeps header button sizing; only color differs
 .fc-addons__item-actions .button.button-primary.button--install {
 	background: #007a3d;
 	border-color: #007a3d;

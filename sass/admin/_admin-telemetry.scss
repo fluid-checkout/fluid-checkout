@@ -1,8 +1,10 @@
 .fc-telemetry-enable-actions {
 	display: flex;
 	flex-wrap: wrap;
+	flex: 1 1 100%;
 	gap: 8px;
 	margin: 8px 0 0;
+	width: 100%;
 }
 
 .fc-telemetry-enable-actions__feedback {
@@ -23,7 +25,22 @@
 }
 
 .fc-checkboxgroup-option {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 8px;
 	margin: 0 0 12px;
+	width: 100%;
+}
+
+.fc-checkboxgroup-option:last-child {
+	margin-bottom: 0;
+}
+
+.fc-checkboxgroup-option__description {
+	flex: 1 1 100%;
+	margin: 0;
+	padding-left: calc( #{$fc-settings-toggle-width} + #{$fc-settings-toggle-padding} * 2 + 8px );
 }
 
 body.fc-telemetry-modal-open {

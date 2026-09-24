@@ -1,0 +1,12 @@
+// ------------------------------------
+// SETTINGS PAGE - TOM SELECT
+// ------------------------------------
+
+.fc-settings-field__control .ts-wrapper {
+	max-width: $fc-settings-field-control-max-width;
+}
+
+.fc-settings-field__control .ts-wrapper.multi {
+	height: auto;
+	min-height: $fc-settings-input-height;
+}

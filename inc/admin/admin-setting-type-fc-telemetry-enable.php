@@ -51,34 +51,48 @@ class FluidCheckout_Admin_SettingType_TelemetryEnable extends FluidCheckout {
 	 * @param array $value Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		$renderer      = FluidCheckout_Admin_Settings_Renderer::instance();
-		$option_value  = $value[ 'value' ];
-		$has_title     = '' !== $value[ 'title' ];
-		$label_text    = ! empty( $value[ 'desc' ] ) ? wp_kses_post( $value[ 'desc' ] ) : '';
-		$desc_tip_html = '';
+		$renderer     = FluidCheckout_Admin_Settings_Renderer::instance();
+		$option_value = $value[ 'value' ];
+		$has_title    = '' !== $value[ 'title' ];
+		$is_disabled  = $renderer->is_field_disabled( $value );
+		$use_toggle   = $renderer->uses_toggle_checkboxes();
+		$label_text   = ! empty( $value[ 'desc' ] ) ? wp_kses_post( $value[ 'desc' ] ) : '';
 
-		if ( ! empty( $value[ 'desc_tip' ] ) && true !== $value[ 'desc_tip' ] ) {
-			$desc_tip_html = '<p class="description">' . wp_kses_post( $value[ 'desc_tip' ] ) . '</p>';
-		}
-
-		$renderer->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false, 'tooltip' => false ) );
+		$renderer->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false ) );
 		?>
 		<?php if ( $has_title ) : ?>
 			<legend class="screen-reader-text"><span><?php echo esc_html( $value[ 'title' ] ); ?></span></legend>
 		<?php endif; ?>
-		<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>">
-			<input
-				name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-				id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
-				type="checkbox"
-				class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
-				value="1"
-				<?php checked( $option_value, 'yes' ); ?>
-				<?php disabled( $renderer->is_field_disabled( $value ) ); ?>
-			/>
-			<?php echo $label_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		</label>
-		<?php echo $desc_tip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php if ( $use_toggle ) : ?>
+			<span class="fc-settings-switch<?php echo $is_disabled ? ' fc-settings-switch--disabled' : ''; ?>">
+				<input
+					name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
+					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					type="checkbox"
+					class="fc-settings-toggle fc-settings-toggle--round <?php echo esc_attr( $value[ 'class' ] ); ?>"
+					value="1"
+					<?php checked( $option_value, 'yes' ); ?>
+					<?php disabled( $is_disabled ); ?>
+				/>
+				<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"></label>
+			</span>
+			<?php if ( ! empty( $label_text ) ) : ?>
+				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo $label_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
+			<?php endif; ?>
+		<?php else : ?>
+			<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>">
+				<input
+					name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
+					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					type="checkbox"
+					class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
+					value="1"
+					<?php checked( $option_value, 'yes' ); ?>
+					<?php disabled( $is_disabled ); ?>
+				/>
+				<?php echo $label_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			</label>
+		<?php endif; ?>
 		<p class="fc-telemetry-enable-actions">
 			<button
 				type="button"

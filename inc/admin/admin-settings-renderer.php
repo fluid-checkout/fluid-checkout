@@ -191,7 +191,8 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		$docs_html = ! empty( $value[ 'docs' ] ) ? $value[ 'docs' ] : '';
 		$promo_html = ! empty( $value[ 'promo' ] ) ? $value[ 'promo' ] : '';
 		$has_actions = ! empty( $docs_html ) || ! empty( $promo_html );
-		$has_header = ! empty( $value[ 'title' ] ) || ! empty( $value[ 'desc' ] ) || $has_actions;
+		$has_header = ! empty( $value[ 'title' ] ) || $has_actions;
+		$has_description = ! empty( $value[ 'desc' ] );
 		$allowed_actions_html = array(
 			'a' => array(
 				'class'       => true,
@@ -223,12 +224,12 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 							}
 						?></div>
 					<?php endif; ?>
-					<?php if ( ! empty( $value[ 'desc' ] ) ) : ?>
-						<div id="<?php echo esc_attr( sanitize_title( $value[ 'id' ] ) ); ?>-description" class="fc-settings-card__description"><?php echo wp_kses_post( wpautop( wptexturize( $value[ 'desc' ] ) ) ); ?></div>
-					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 			<div class="fc-settings-card__inner">
+				<?php if ( $has_description ) : ?>
+					<div id="<?php echo esc_attr( sanitize_title( $value[ 'id' ] ) ); ?>-description" class="fc-settings-card__description"><?php echo wp_kses_post( wpautop( wptexturize( $value[ 'desc' ] ) ) ); ?></div>
+				<?php endif; ?>
 		<?php
 		$this->is_card_open = true;
 
@@ -418,6 +419,11 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			return $value;
 		}
 
+		// Keep the Address Book migration description next to the controls
+		if ( 'fc_address_book_migration' === $value[ 'type' ] ) {
+			return $value;
+		}
+
 		// Move tip or field description into the info tip
 		if ( $has_string_tip || true === $value[ 'desc_tip' ] || ! empty( $value[ 'desc' ] ) ) {
 			$value[ 'desc' ] = '';
@@ -441,6 +447,11 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		// When desc_tip is true, WooCommerce uses the description as the tip
 		if ( true === $value[ 'desc_tip' ] && ! empty( $value[ 'desc' ] ) ) {
 			return $value[ 'desc' ];
+		}
+
+		// Keep migration description next to the controls instead of in the tip
+		if ( 'fc_address_book_migration' === $value[ 'type' ] ) {
+			return '';
 		}
 
 		// Move non-checkbox field descriptions into the tip
@@ -738,9 +749,9 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			$options = WC()->countries->countries;
 		}
 
-		// Use enhanced select for country fields, same as the WooCommerce settings API
+		// Use TomSelect for country multiselect fields
 		if ( 'multi_select_countries' === $value[ 'type' ] && empty( $value[ 'class' ] ) ) {
-			$value[ 'class' ] = 'wc-enhanced-select';
+			$value[ 'class' ] = 'fc-enhanced-select';
 		}
 
 		$this->output_field_start( $value );
