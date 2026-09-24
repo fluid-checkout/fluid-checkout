@@ -354,69 +354,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unreleased =
+= Unrelased =
 
-* Improved: Tools usage tracking section uses toggle switches and is titled Usage tracking.
-* Improved: Dashboard Site key card shows a section title.
-* Fixed: Dependent settings such as "Load unminified assets" only show when their parent debug option is enabled.
-* Improved: Address Autocomplete debug section on Tools is titled "Troubleshooting - Address Autocomplete".
-* Added: Locked Address Book Migration card on the Tools settings page when the Address Book add-on is not active.
-* Improved: Fluid Checkout admin menu uses a custom logo icon.
-* Improved: Settings page layout and styles for the vertical sidebar and settings cards.
-* Improved: Settings pages use toggle switches and info tip icons for field descriptions.
-* Improved: Cart, Checkout, Thank You, and Order Pay settings group Trust Symbols & Badges in their own section with a documentation link.
-* Improved: Reduced spacing between settings fields on the settings page.
-* Added: Admin page header with logo, Support, Documentation, and Upgrade links on the settings page.
-* Improved: Locked PRO and add-on sections show a feature badge instead of upgrade copy.
-* Added: Promotional cards on Cart, Thank You, Order Pay, Address Book, Address Autocomplete, and VAT Assistant settings tabs when the related product is not active.
-* Improved: Add-on promo badges use a dark grey style to distinguish them from PRO feature badges.
-* Added: Dashboard setup section links to Tools settings to enable site environment reports.
-* Added: New Fluid Checkout admin menu with Dashboard and Settings items.
-* Added: New settings page with a vertical sidebar and settings cards.
-* Added: Express Checkout, Account Matching, Local Pickup, Gift Options, and International Phone Numbers as separate settings tabs.
-* Improved: Settings sidebar navigation switches tabs without reloading the page, with support for direct links to a specific tab.
-* Improved: Save settings is available on the Dashboard tab and saves changes made on other settings tabs.
-* Improved: Dashboard setup section uses a standard settings card titled Getting started.
-* Improved: Dashboard add-on cards display two per row.
-* Removed: Special offers section from the Dashboard.
-* Removed: Fluid Checkout PRO – Bundle add-on card from the Dashboard.
-* Improved: Fluid Checkout PRO add-on card uses the promo dark grey border and spans the full first row.
-* Improved: Fluid Checkout PRO price shown as 129 EUR on the Dashboard.
-* Added: Placeholder Site key section on the Dashboard, shown after Add-ons.
-* Improved: Lite Site key placeholder is hidden when PRO or any add-on is activated.
-* Improved: Site key placeholder card uses the same dark grey promo border as other promotional settings cards.
-* Improved: Primary and secondary buttons on the settings page match the header button styles.
-* Fixed: Settings page no longer shows the WooCommerce “Connection lost” notice.
-* Improved: Settings page country and multiselect fields use TomSelect instead of WooCommerce Select2.
-* Added: Activate and Install plugin actions on Address Book, Address Autocomplete, and VAT Assistant promo cards.
-* Improved: Dashboard and promo Activate / Install buttons use the same padding as settings header buttons.
-* Improved: TomSelect multi-select option labels no longer use a text shadow.
-* Improved: Dashboard add-on cards use a card background and move actions into a footer, similar to promo cards.
-* Improved: Settings card descriptions are shown in the card content section.
-* Fixed: Load unminified assets only shows when Debug mode is enabled on the Tools tab.
-* Improved: Address Autocomplete debug section on Tools is titled Troubleshooting - Address Autocomplete.
-* Improved: Address Book Migration was moved out of the Address Book settings placeholders.
-* Improved: Removed proprietary license client, License keys settings, and remote Install / site key from this free plugin for WordPress.org compliance.
-* Removed: License key field script and styles from this free plugin; commercial add-ons own those assets.
-* Removed: Site key field styles from the free plugin Dashboard stylesheet; site key UI is owned by Fluid Checkout PRO.
-* Improved: Opt-in telemetry uses `FC_Telemetry_Client` with renamed telemetry hooks, options, and admin files.
-* Improved: Dashboard add-ons keep local Activate and purchase links; site key and remote Install are provided by Fluid Checkout PRO.
-* Improved: Dashboard Add-ons expose hooks for PRO to extend site key, Install, and licensed Activate.
-* Improved: Site environment reports are sent to `POST /sites/telemetry` on the licenses API (replaces `/site-report`).
-* Fixed: Telemetry preview works on local and development domains (send still blocked for those domains).
-* Fixed: Own plugin license fields in telemetry reports match by plugin slug (API URL filter now receives both arguments).
-* Removed: Telemetry payloads no longer include client-reported `license_status` (resolved server-side).
-* Improved: Telemetry send failures are logged to WooCommerce logs (source: `fc-telemetry`).
-* Improved: Fluid Checkout settings moved from WooCommerce > Settings to the new Fluid Checkout menu. The old settings tab now shows a link to the new page.
-* Improved: PRO settings are always shown on the settings page, and are unlocked when Fluid Checkout PRO is active.
-* Improved: Locked settings are no longer saved, even if their values are changed in the form.
-* Fixed: Country list settings from add-ons are now displayed on the new settings page.
-* Added: Optional/Opt-in site environment reports sent to Fluid Checkout to help improve compatibility and support. Sends at most once every 7 days when the environment changes, or every 4 weeks when unchanged.
-* Added: License Keys tab on the settings page. License keys appear there when a licensed plugin or add-on is active.
-* Added: Address Autocomplete, Address Book and VAT Assistant tabs on the settings page. Their options are shown locked until the add-on is active.
-* Added: Address Autocomplete debug options on the Tools tab, locked until the add-on is active.
-* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
-* Fixed: Message shown when no integrations are available now appears inside the Integrations section.
+* Added: New settings pages and setup wizard.
+* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
+* Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
+* Improved: Show the Fluid Checkout plugin icon on admin notices.
 
 = 4.2.7 - 2026-08-19 =
 
