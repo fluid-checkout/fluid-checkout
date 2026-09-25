@@ -43,7 +43,7 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return false; }
 
-		// Bail if site reporting is already enabled
+		// Bail if telemetry is already enabled
 		if ( 'yes' === get_option( 'fc_telemetry_enabled', 'no' ) ) { return false; }
 
 		// Bail if the prompt was dismissed

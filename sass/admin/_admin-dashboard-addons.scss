@@ -9,7 +9,6 @@
 	gap: 20px;
 	list-style: none;
 	margin: 0;
-	margin-top: 30px;
 	padding: 0;
 }
 
@@ -98,7 +97,8 @@
 	margin-bottom: 0;
 }
 
-.form-table td .fc-addons__item p.fc-dashboard-section__subtitle {
+.fc-addons__item p.fc-dashboard-section__subtitle {
+	margin-top: 5px;
 	margin-bottom: 0;
 }
 
@@ -163,6 +163,14 @@
 
 .fc-addons__item-description {
 	flex-grow: 1;
+}
+
+.fc-addons__item-description > *:first-child {
+	margin-top: 0;
+}
+
+.fc-addons__item-description > *:last-child {
+	margin-bottom: 0;
 }
 
 
@@ -308,6 +316,16 @@
 // ------------------------------------
 // PLUGINS CATALOG — MARKETING ACTIONS
 // ------------------------------------
+
+.fc-settings-card--plugins-catalog .fc-addons__item-title .fc-settings-badge {
+	margin-right: 0;
+	margin-left: 6px;
+}
+
+.rtl .fc-settings-card--plugins-catalog .fc-addons__item-title .fc-settings-badge {
+	margin-right: 6px;
+	margin-left: 0;
+}
 
 .fc-settings-card--plugins-catalog .fc-addons__item-actions--marketing {
 	display: flex;

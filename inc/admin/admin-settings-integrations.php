@@ -63,7 +63,7 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 		$new_sections = array_slice( $sections, 0, $position_index );
 		$new_sections = array_merge( $new_sections, $insert_sections );
 		$new_sections = array_merge( $new_sections, array_slice( $sections, $position_index, count( $sections ) ) );
-		
+
 		return $new_sections;
 	}
 
@@ -92,7 +92,7 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 
 					array(
 						'type'        => 'fc_paragraph',
-						'desc'        => __( 'No integrations available at the moment on this section. The options related to each plugin will only appear here if that plugin is activated.', 'fluid-checkout' ),
+						'desc'        => __( 'No integrations available at the moment on this section. The options related to each plugin and theme will only appear here when that plugin or theme is activated.', 'fluid-checkout' ),
 						'id'          => 'fc_no_integrations',
 					),
 

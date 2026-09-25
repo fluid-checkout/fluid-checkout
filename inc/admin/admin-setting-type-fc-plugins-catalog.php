@@ -216,7 +216,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 
 				<div class="fc-dashboard__disclaimer">
 					<ul>
-						<li><?php echo wp_kses_post( __( 'These are <strong>separate plugins</strong> from Fluid Checkout, not add-ons. They are not included with Fluid Checkout PRO or add-on bundle plans.', 'fluid-checkout' ) ); ?></li>
+						<li><?php echo wp_kses_post( __( 'These are <strong>separate plugins</strong> which are not part of Fluid Checkout PRO offer and need to be purchased separately.', 'fluid-checkout' ) ); ?></li>
 					</ul>
 				</div>
 
