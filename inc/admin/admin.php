@@ -313,6 +313,16 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
+	 * Get HTML for the “Other plugins” category promo pill badge (non-interactive).
+	 */
+	public function get_other_plugins_badge_html() {
+		return sprintf(
+			'<span class="fc-settings-promo-pill fc-settings-promo-pill--addon fc-settings-promo-pill--static">%s</span>',
+			esc_html( __( 'Other plugins', 'fluid-checkout' ) )
+		);
+	}
+
+	/**
 	 * Get HTML for PRO features label.
 	 * 
 	 * @param  bool  $add_space_after  Whether to add a space after the text. Defaults to `false`, which adds the space before.

@@ -43,6 +43,10 @@
 	border: solid 2px #646970;
 }
 
+.fc-addons__item.fc-addons__item--highlight-conversion {
+	border: solid 2px #0B7A6F;
+}
+
 .fc-addons__item.fc-addons__item--wide {
 	@media ( min-width: 600px ) {
 		width: 100%;

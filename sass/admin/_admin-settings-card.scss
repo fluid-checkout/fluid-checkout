@@ -121,6 +121,15 @@
 	color: $fc-settings-promo-pill-addon-color-hover;
 }
 
+.fc-settings-promo-pill--static,
+.fc-settings-promo-pill--static:hover,
+.fc-settings-promo-pill--static:focus {
+	cursor: default;
+	transform: none;
+	box-shadow: none;
+	color: $fc-settings-promo-pill-addon-color;
+}
+
 .fc-settings-card__description {
 	margin: 0 0 16px;
 	color: $fc-settings-card-description-color;

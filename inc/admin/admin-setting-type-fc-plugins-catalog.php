@@ -35,13 +35,13 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 		$catalog = array(
 			array(
 				'id'          => 'fc-conversion-kit',
-				'item_class'  => 'fc-addons__item--wide',
+				'item_class'  => 'fc-addons__item--wide fc-addons__item--highlight-conversion',
 				'plugin_file' => 'fc-conversion-kit/fc-conversion-kit.php',
 				'plugin_slug' => 'fc-conversion-kit',
 				'title'       => __( 'Fluid Conversion Kit', 'fluid-checkout' ),
 				'subtitle'    => __( 'Conversion tools for shop and product pages.', 'fluid-checkout' ),
-				'description' => __( 'Boost conversions across your store with <strong>countdowns</strong>, a <strong>free shipping bar</strong>, <strong>product badges</strong> (bestseller, discount, on-sale, backorder), plus <strong>add to cart from listing pages</strong> and <strong>stock meter / FOMO</strong> prompts — without changing cart, checkout, thank you, or order pay.', 'fluid-checkout' ),
-				'image'       => $icon_url,
+				'description' => __( 'Boost conversions across your store with <strong>countdowns</strong>, a <strong>free shipping bar</strong>, <strong>product badges</strong> (bestseller, discount, on-sale, backorder), plus <strong>add to cart from listing pages</strong> and <strong>stock meter / FOMO</strong> prompts.', 'fluid-checkout' ),
+				'image'       => $directory_url . 'images/admin/plugins/fc-conversion-kit-icon.svg',
 				'product_url' => 'https://fluidcheckout.com/fc-conversion-kit/',
 			),
 			array(
@@ -51,7 +51,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'title'       => __( 'Paddle Payments for WooCommerce', 'fluid-checkout' ),
 				'subtitle'    => __( 'Sell with Paddle as your merchant of record.', 'fluid-checkout' ),
 				'description' => __( 'Accept payments through <strong>Paddle</strong> on your WooCommerce store, with taxes and compliance handled for you.', 'fluid-checkout' ),
-				'image'       => $directory_url . 'images/admin/addons/fc-paddle-payments-icon.svg',
+				'image'       => $directory_url . 'images/admin/plugins/fc-paddle-payments-icon.svg',
 				'product_url' => 'https://fluidcheckout.com/fc-paddle-payments/',
 			),
 			array(
@@ -61,7 +61,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'title'       => __( 'Fluid Licenses', 'fluid-checkout' ),
 				'subtitle'    => __( 'License keys, updates, and plugin usage tracking.', 'fluid-checkout' ),
 				'description' => __( 'Sell and manage <strong>software license keys</strong> on WooCommerce, with customer account downloads, automatic plugin updates, and <strong>plugin usage tracking</strong>.', 'fluid-checkout' ),
-				'image'       => $icon_url,
+				'image'       => $directory_url . 'images/admin/plugins/fc-licenses-icon.svg',
 				'product_url' => 'https://fluidcheckout.com/fc-licenses/',
 			),
 		);
@@ -145,8 +145,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 		$plugin_file  = isset( $plugin[ 'plugin_file' ] ) ? $plugin[ 'plugin_file' ] : '';
 		$is_activated = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$is_installed = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_installed( $plugin_file );
-		$show_coming_soon = ! $is_activated && ! $is_installed;
-		$is_marketing     = $show_coming_soon;
+		$is_marketing = ! $is_activated && ! $is_installed;
 
 		$item_class = 'fc-addons__item';
 		if ( ! empty( $plugin[ 'item_class' ] ) ) {
@@ -165,9 +164,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 					<div class="fc-addons__item-title-section">
 						<h3 class="fc-addons__item-title">
 							<?php echo esc_html( $plugin[ 'title' ] ); ?>
-							<?php if ( $show_coming_soon ) : ?>
-								<span class="fc-settings-badge"><?php echo esc_html( __( 'Coming soon', 'fluid-checkout' ) ); ?></span>
-							<?php endif; ?>
+							<span class="fc-settings-badge"><?php echo esc_html( __( 'Coming soon', 'fluid-checkout' ) ); ?></span>
 						</h3>
 						<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $plugin[ 'subtitle' ] ); ?></p>
 					</div>
@@ -196,7 +193,17 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 		?>
 		<div class="fc-settings-card fc-settings-card--plugins-catalog">
 			<div class="fc-settings-card__header">
-				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'More plugins from Fluid Checkout', 'fluid-checkout' ) ); ?></h3>
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'More plugins from the Fluid Checkout family', 'fluid-checkout' ) ); ?></h3>
+				<div class="fc-settings-card__promo"><?php
+					echo wp_kses(
+						FluidCheckout_Admin::instance()->get_other_plugins_badge_html(),
+						array(
+							'span' => array(
+								'class' => true,
+							),
+						)
+					);
+				?></div>
 			</div>
 
 			<div class="fc-settings-card__inner">

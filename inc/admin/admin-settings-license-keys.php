@@ -50,14 +50,12 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 
 		$settings_new = array();
 
-		// Maybe add the Lite Site key placeholder card when not replaced by a premium plugin
-		if ( ! apply_filters( 'fc_site_key_placeholder_replaced', false ) ) {
-			$settings_new[] = array(
-				'type'     => 'fc_site_key',
-				'is_card'  => true,
-				'autoload' => false,
-			);
-		}
+		// Site key card — Lite owns the shell; PRO may replace the inner contents
+		$settings_new[] = array(
+			'type'     => 'fc_site_key',
+			'is_card'  => true,
+			'autoload' => false,
+		);
 
 		$settings_new[] = array(
 			'title' => _x( 'License Keys', 'Settings section title', 'fluid-checkout' ),
