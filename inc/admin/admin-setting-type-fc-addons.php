@@ -200,7 +200,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			?>
 			<button
 				type="button"
-				class="button fc-addons__item-action--activate"
+				class="button button-primary fc-addons__item-action--activate"
 				data-action="activate"
 				data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
 			><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>

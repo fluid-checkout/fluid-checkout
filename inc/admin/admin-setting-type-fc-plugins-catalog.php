@@ -49,7 +49,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'plugin_file' => 'fc-paddle-payments/fc-paddle-payments.php',
 				'plugin_slug' => 'fc-paddle-payments',
 				'title'       => __( 'Paddle Payments for WooCommerce', 'fluid-checkout' ),
-				'subtitle'    => __( 'Sell with Paddle as your merchant of record.', 'fluid-checkout' ),
+				'subtitle'    => __( 'Sell digital products with Paddle as your merchant of record.', 'fluid-checkout' ),
 				'description' => __( 'Accept payments through <strong>Paddle</strong> on your WooCommerce store, with taxes and compliance handled for you.', 'fluid-checkout' ),
 				'image'       => $directory_url . 'images/admin/plugins/fc-paddle-payments-icon.svg',
 				'product_url' => 'https://fluidcheckout.com/fc-paddle-payments/',
@@ -117,7 +117,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 			?>
 			<button
 				type="button"
-				class="button fc-addons__item-action--activate"
+				class="button button-primary fc-addons__item-action--activate"
 				data-action="activate"
 				data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
 			><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>

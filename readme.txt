@@ -365,6 +365,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
 * Improved: Use the checkmark menu icon in the settings page header.
 * Improved: Moved the Site key section from the dashboard to the License keys settings page.
+* Improved: Show the site environment reports opt-in notice only two weeks after installation, and not on Fluid Checkout settings pages.
+* Improved: Moved the Address Book Migration section from the Tools tab to the Address Book settings page.
 
 = 4.2.7 - 2026-08-19 =
 

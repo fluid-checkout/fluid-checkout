@@ -32,6 +32,8 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 	 */
 	public function output_field( $value ) {
 		$settings_page = FluidCheckout_Admin_Settings_Page::instance();
+		$dashboard_url = $settings_page->get_settings_url( 'dashboard' );
+		$tools_url     = $settings_page->get_settings_url( 'tools' );
 		?>
 		<div class="fc-settings-card fc-settings-card--setup">
 			<div class="fc-settings-card__header">
@@ -50,13 +52,18 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						<?php // translators: %s: Integrations link. ?>
 						<li><?php echo wp_kses_post( sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for other plugins you have installed.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'integrations' ) ) ) ); ?></li>
 						<?php // translators: %s: Tools settings link. ?>
-						<li><?php echo wp_kses_post( sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable site environment reports</a> from the tools settings.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ) ); ?></li>
+						<li><?php echo wp_kses_post( sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable usage tracking</a> from the tools settings.', 'fluid-checkout' ), esc_url( $tools_url ) ) ); ?></li>
 						<?php // translators: %s: Documentation link. ?>
 						<li><?php echo wp_kses_post( sprintf( __( 'Visit <a href="%s" target="_blank">our documentation</a> for more information about Fluid Checkout features.', 'fluid-checkout' ), 'https://fluidcheckout.com/docs/' ) ); ?></li>
 						<?php // translators: %s: Support link. ?>
 						<li><?php echo wp_kses_post( sprintf( __( 'If you ever need help, <a href="%s" target="_blank">open a support ticket</a> on our official support channel.', 'fluid-checkout' ), 'https://fluidcheckout.com/support/' ) ); ?></li>
 					</ul>
 				</div>
+			</div>
+
+			<div class="fc-settings-card__footer">
+				<a class="fc-settings-button fc-settings-button--primary" href="<?php echo esc_url( $dashboard_url ); ?>"><?php echo esc_html( __( 'Setup wizard', 'fluid-checkout' ) ); ?></a>
+				<a class="fc-settings-button" href="<?php echo esc_url( $tools_url ); ?>"><?php echo esc_html( __( 'Usage tracking settings', 'fluid-checkout' ) ); ?></a>
 			</div>
 		</div>
 		<?php

@@ -134,7 +134,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function load_dashboard() {
 		include_once self::$directory_path . 'inc/admin/admin-dashboard-actions.php';
-		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry-prompt.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-setup.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-site-key.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-addons.php';

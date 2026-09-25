@@ -47,7 +47,7 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 		// Settings
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
 
-		// Tools: Address Book migration after troubleshooting sections (locked until the add-on replaces these settings)
+		// Address Book migration after the main Address Book options (locked until the add-on replaces these settings)
 		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_migration_settings' ), 30, 2 );
 	}
 
@@ -101,7 +101,7 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 
 
 	/**
-	 * Get the locked placeholder settings for Address Book migration on the Tools tab.
+	 * Get the locked placeholder settings for Address Book migration on the Address Book tab.
 	 */
 	public function get_locked_migration_settings() {
 		return array(
@@ -193,18 +193,18 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 	}
 
 	/**
-	 * Add Address Book migration settings to the Tools tab.
+	 * Add Address Book migration settings to the Address Book tab.
 	 * The Address Book add-on replaces the locked placeholders with the migration controls.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
 	public function add_migration_settings( $settings, $current_section ) {
-		// Bail if not on the tools section
-		if ( 'tools' !== $current_section ) { return $settings; }
+		// Bail if not on the address book section
+		if ( 'address_book' !== $current_section ) { return $settings; }
 
 		/**
-		 * Filter the Address Book migration settings displayed on the Tools tab.
+		 * Filter the Address Book migration settings displayed on the Address Book tab.
 		 * The Address Book add-on replaces the locked placeholder settings with its own settings.
 		 *
 		 * @param  array  $settings  Locked placeholder settings.

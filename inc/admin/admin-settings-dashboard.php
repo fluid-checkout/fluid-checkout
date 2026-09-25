@@ -67,11 +67,6 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 			$settings = array(
 
 				array(
-					'type'             => 'fc_telemetry_prompt',
-					'is_card'          => true,
-					'autoload'         => false,
-				),
-				array(
 					'type'             => 'fc_setup',
 					'is_card'          => true,
 					'autoload'         => false,

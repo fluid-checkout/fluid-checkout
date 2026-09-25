@@ -54,9 +54,9 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		// Bail if install date is missing
 		if ( $install_date <= 0 ) { return false; }
 
-		$past_date = strtotime( '-3 days' );
+		$past_date = strtotime( '-2 weeks' );
 
-		// Bail if 3 days have not passed since installation
+		// Bail if 2 weeks have not passed since installation
 		if ( $past_date < $install_date ) { return false; }
 
 		return true;
@@ -74,13 +74,13 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 
 
 	/**
-	 * Whether the current request is the Fluid Checkout Dashboard settings screen.
+	 * Whether the current request is any Fluid Checkout settings screen.
 	 */
-	public function is_fc_checkout_dashboard_screen() {
+	public function is_fc_settings_screen() {
 		// Bail if settings page class is not available
 		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return false; }
 
-		return FluidCheckout_Admin_Settings_Page::instance()->is_settings_page( 'dashboard' );
+		return FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
 	}
 
 
