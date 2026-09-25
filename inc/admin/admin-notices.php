@@ -72,7 +72,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * @return  string
 	 */
 	public function get_plugin_icon_url() {
-		return self::$directory_url . 'images/fluid-checkout-icon.png';
+		return self::$directory_url . 'images/admin/fluid-checkout-icon.svg';
 	}
 
 

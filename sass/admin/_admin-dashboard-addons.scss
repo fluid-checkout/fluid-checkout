@@ -39,11 +39,11 @@
 	border: solid 2px #1E212B;
 }
 
-.fc-addons__item.fc-addons__item--pro {
+.fc-addons__item.fc-addons__item--highlight {
 	border: solid 2px #646970;
 }
 
-.fc-settings-card--addons .fc-addons__item.fc-addons__item--pro {
+.fc-addons__item.fc-addons__item--wide {
 	@media ( min-width: 600px ) {
 		width: 100%;
 	}
@@ -296,4 +296,30 @@
 	background: #fcf0f1;
 	border: 1px solid #d63638;
 	color: #b32d2e;
+}
+
+
+
+// ------------------------------------
+// PLUGINS CATALOG — MARKETING ACTIONS
+// ------------------------------------
+
+.fc-settings-card--plugins-catalog .fc-addons__item-actions--marketing {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+}
+
+.fc-settings-card--plugins-catalog .fc-addons__item-actions--marketing .button,
+.fc-settings-card--plugins-catalog .fc-addons__item-actions--marketing .fc-settings-button {
+	width: auto;
+	max-width: none;
+	white-space: nowrap;
+}
+
+.fc-settings-card--plugins-catalog .fc-addons__item-actions--marketing .button + .button,
+.fc-settings-card--plugins-catalog .fc-addons__item-actions--marketing .button + .fc-settings-button,
+.fc-settings-card--plugins-catalog .fc-addons__item-actions--marketing .fc-settings-button + .button {
+	margin-top: 0;
 }

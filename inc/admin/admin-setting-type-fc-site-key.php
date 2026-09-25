@@ -2,8 +2,8 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Placeholder Site key card for the Dashboard tab of the Fluid Checkout settings page.
- * This Lite placeholder is independent of the working site key UI provided by Fluid Checkout PRO.
+ * Placeholder Site key card for the License Keys tab of the Fluid Checkout settings page.
+ * Replaced by Fluid Checkout PRO (and later other premium plugins) via `fc_site_key_placeholder_replaced`.
  */
 class FluidCheckout_Admin_SettingType_SiteKeyPlaceholder extends FluidCheckout {
 
@@ -28,25 +28,17 @@ class FluidCheckout_Admin_SettingType_SiteKeyPlaceholder extends FluidCheckout {
 
 	/**
 	 * Whether the Lite Site key placeholder should be hidden.
-	 * Hidden when PRO or any catalog add-on is activated, since those provide the working site key UI.
+	 * Hidden when a premium plugin replaces it with the working site key UI (e.g. Fluid Checkout PRO).
 	 */
 	private function should_hide_placeholder() {
-		// Bail early when PRO is activated
-		if ( FluidCheckout::instance()->is_pro_activated() ) { return true; }
-
-		// Maybe hide when any catalog add-on plugin is activated
-		if ( class_exists( 'FluidCheckout_Admin_SettingType_Addons' ) ) {
-			foreach ( FluidCheckout_Admin_SettingType_Addons::instance()->get_addons_catalog() as $addon ) {
-				// Skip items without a plugin file
-				if ( empty( $addon[ 'plugin_file' ] ) ) { continue; }
-
-				if ( FluidCheckout::instance()->is_plugin_activated( $addon[ 'plugin_file' ] ) ) {
-					return true;
-				}
-			}
-		}
-
-		return false;
+		/**
+		 * Whether the Lite Site key placeholder is replaced by a premium plugin.
+		 *
+		 * Premium plugins that own the working site key UI should return true.
+		 *
+		 * @param bool $replaced Whether the placeholder is replaced.
+		 */
+		return (bool) apply_filters( 'fc_site_key_placeholder_replaced', false );
 	}
 
 
@@ -57,7 +49,7 @@ class FluidCheckout_Admin_SettingType_SiteKeyPlaceholder extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		// Bail if PRO or any add-on is activated
+		// Bail if a premium plugin replaced this placeholder
 		if ( $this->should_hide_placeholder() ) { return; }
 
 		$get_site_key_url = 'https://fluidcheckout.com/account/sites/?mtm_campaign=site-key&mtm_kwd=get-site-key&mtm_source=lite-plugin';

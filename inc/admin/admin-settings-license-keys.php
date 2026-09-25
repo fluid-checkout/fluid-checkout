@@ -48,12 +48,21 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 		// Bail if not on the license keys section
 		if ( 'license_keys' !== $current_section ) { return $settings; }
 
-		$settings_new = array(
-			array(
-				'title' => _x( 'License Keys', 'Settings section title', 'fluid-checkout' ),
-				'type'  => 'title',
-				'id'    => 'fc_license_keys',
-			),
+		$settings_new = array();
+
+		// Maybe add the Lite Site key placeholder card when not replaced by a premium plugin
+		if ( ! apply_filters( 'fc_site_key_placeholder_replaced', false ) ) {
+			$settings_new[] = array(
+				'type'     => 'fc_site_key',
+				'is_card'  => true,
+				'autoload' => false,
+			);
+		}
+
+		$settings_new[] = array(
+			'title' => _x( 'License Keys', 'Settings section title', 'fluid-checkout' ),
+			'type'  => 'title',
+			'id'    => 'fc_license_keys',
 		);
 
 		$settings_add = apply_filters( 'fc_' . $current_section . '_settings_add', array(), $current_section );

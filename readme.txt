@@ -354,13 +354,17 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= Unrelased =
+= Unreleased =
 
+* Added: New “More plugins from Fluid Checkout” section on the settings dashboard.
 * Added: New settings pages and setup wizard.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
+* Improved: Clarified on the dashboard that Fluid Checkout PRO includes all listed add-ons.
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
+* Improved: Use the checkmark menu icon in the settings page header.
+* Improved: Moved the Site key section from the dashboard to the License keys settings page.
 
 = 4.2.7 - 2026-08-19 =
 

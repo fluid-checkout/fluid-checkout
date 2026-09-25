@@ -110,7 +110,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 * Get the admin menu icon as a base64-encoded SVG data URI for WordPress color scheme painting.
 	 */
 	public function get_menu_icon_url() {
-		$icon_path = FluidCheckout::$directory_path . 'images/admin/logo--menu.svg';
+		$icon_path = FluidCheckout::$directory_path . 'images/admin/menu-icon.svg';
 
 		// Bail if icon file is missing
 		if ( ! file_exists( $icon_path ) ) {
@@ -220,7 +220,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$current_tab = $this->get_current_tab();
 		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
 
-		$logo_url = FluidCheckout::$directory_url . 'images/admin/fluid-checkout-icon.png';
+		$logo_url = FluidCheckout::$directory_url . 'images/admin/fluid-checkout-checkmark-logo.svg';
 		$home_url = 'https://fluidcheckout.com/?mtm_campaign=admin-header&mtm_kwd=logo&mtm_source=settings-header';
 		$support_url = 'https://fluidcheckout.com/support/?mtm_campaign=admin-header&mtm_kwd=support&mtm_source=settings-header';
 		$docs_url = 'https://fluidcheckout.com/docs/?mtm_campaign=admin-header&mtm_kwd=docs&mtm_source=settings-header';
