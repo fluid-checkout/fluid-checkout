@@ -163,6 +163,25 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
+		else :
+			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
+			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
+
+			// Maybe build the purchase label from a price using the centralized helpers
+			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
+				$purchase_price = (string) $value[ 'purchase_price' ];
+				if ( false !== strpos( $plugin_file, 'fluid-checkout-pro/' ) ) {
+					$purchase_label = FluidCheckout_Admin::instance()->get_pro_upgrade_button_label( $purchase_price );
+				} else {
+					$purchase_label = FluidCheckout_Admin::instance()->get_addon_purchase_button_label( $purchase_price );
+				}
+			}
+
+			if ( '' !== $purchase_url && '' !== $purchase_label ) :
+				?>
+				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
+				<?php
+			endif;
 		endif;
 
 		$html = (string) ob_get_clean();

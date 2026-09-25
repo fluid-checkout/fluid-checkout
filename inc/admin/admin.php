@@ -323,6 +323,26 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
+	 * Get the purchase button label for an add-on.
+	 *
+	 * @param  string  $price  Formatted price including currency, e.g. `29 EUR`.
+	 */
+	public function get_addon_purchase_button_label( $price ) {
+		/* translators: %s: formatted price including currency, e.g. "29 EUR" */
+		return sprintf( __( 'Get this add-on &mdash; %s', 'fluid-checkout' ), $price );
+	}
+
+	/**
+	 * Get the upgrade button label for Fluid Checkout PRO.
+	 *
+	 * @param  string  $price  Formatted price including currency, e.g. `129 EUR`.
+	 */
+	public function get_pro_upgrade_button_label( $price = '129 EUR' ) {
+		/* translators: %s: formatted price including currency, e.g. "129 EUR" */
+		return sprintf( __( 'Upgrade to PRO &mdash; %s', 'fluid-checkout' ), $price );
+	}
+
+	/**
 	 * Get HTML for PRO features label.
 	 * 
 	 * @param  bool  $add_space_after  Whether to add a space after the text. Defaults to `false`, which adds the space before.

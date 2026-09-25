@@ -90,7 +90,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				),
 				'image'         => $directory_url . 'images/admin/addons/fluid-checkout-pro-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro&mtm_source=lite-plugin',
-				'purchase_label'=> __( 'Upgrade to PRO &mdash; 129 EUR', 'fluid-checkout' ),
+				'purchase_label'=> FluidCheckout_Admin::instance()->get_pro_upgrade_button_label( '129 EUR' ),
 			),
 			array(
 				'id'            => 'fc-google-address-autocomplete',
@@ -102,7 +102,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'description'   => __( 'Avoid delivery delays and unsatisfied customers. Collect the <strong>correct address information</strong> from the first time they buy with you.', 'fluid-checkout' ),
 				'image'         => $directory_url . 'images/admin/addons/fc-google-address-autocomplete-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/fc-google-address-autocomplete/?mtm_campaign=addons&mtm_kwd=fc-gaa&mtm_source=lite-plugin',
-				'purchase_label'=> __( 'Get this add-on &mdash; 29 EUR', 'fluid-checkout' ),
+				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '29 EUR' ),
 			),
 			array(
 				'id'            => 'fc-address-book',
@@ -114,7 +114,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'description'   => __( 'Let customers <strong>save multiple shipping and billing addresses</strong> on their account and choose which ones to use at checkout and cart pages.', 'fluid-checkout' ),
 				'image'         => $directory_url . 'images/admin/addons/fc-address-book-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/fc-address-book/?mtm_campaign=addons&mtm_kwd=fc-adb&mtm_source=lite-plugin',
-				'purchase_label'=> __( 'Get this add-on &mdash; 59 EUR', 'fluid-checkout' ),
+				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '59 EUR' ),
 			),
 			array(
 				'id'            => 'fc-vat-assistant',
@@ -126,7 +126,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'description'   => __( 'Collect and <strong>validate EU VAT numbers at the checkout page</strong>, removes tax charges on reverse charge basis and confirms customer location when needed.', 'fluid-checkout' ),
 				'image'         => $directory_url . 'images/admin/addons/fc-vat-assistant-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat&mtm_source=lite-plugin',
-				'purchase_label'=> __( 'Get this add-on &mdash; 39 EUR', 'fluid-checkout' ),
+				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '39 EUR' ),
 			),
 		);
 

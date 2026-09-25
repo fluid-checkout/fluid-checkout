@@ -130,6 +130,15 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
 				'plugin_file'      => 'fc-vat-assistant/fc-vat-assistant.php',
 				'plugin_slug'      => 'fc-vat-assistant',
+				'purchase_url'     => add_query_arg(
+					array(
+						'mtm_campaign' => 'addons',
+						'mtm_kwd'      => 'vat-assistant-promo-purchase',
+						'mtm_source'   => 'lite-plugin',
+					),
+					self::PRODUCT_URL
+				),
+				'purchase_price'   => '39 EUR',
 			),
 		);
 	}

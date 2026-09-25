@@ -85,6 +85,15 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
 				'plugin_file'      => 'fc-address-book/fc-address-book.php',
 				'plugin_slug'      => 'fc-address-book',
+				'purchase_url'     => add_query_arg(
+					array(
+						'mtm_campaign' => 'addons',
+						'mtm_kwd'      => 'address-book-promo-purchase',
+						'mtm_source'   => 'lite-plugin',
+					),
+					self::PRODUCT_URL
+				),
+				'purchase_price'   => '59 EUR',
 			),
 		);
 	}

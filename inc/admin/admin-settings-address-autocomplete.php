@@ -86,6 +86,15 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
 				'plugin_file'      => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
 				'plugin_slug'      => 'fc-google-address-autocomplete',
+				'purchase_url'     => add_query_arg(
+					array(
+						'mtm_campaign' => 'addons',
+						'mtm_kwd'      => 'address-autocomplete-promo-purchase',
+						'mtm_source'   => 'lite-plugin',
+					),
+					self::PRODUCT_URL
+				),
+				'purchase_price'   => '29 EUR',
 			),
 		);
 	}
