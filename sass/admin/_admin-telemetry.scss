@@ -33,6 +33,15 @@
 	width: 100%;
 }
 
+.fc-checkboxgroup-option > label:has( > input[type="checkbox"] ) {
+	display: flex;
+	flex: 1 1 0;
+	align-items: flex-start;
+	gap: 8px;
+	min-width: 0;
+	max-width: 100%;
+}
+
 .fc-checkboxgroup-option:last-child {
 	margin-bottom: 0;
 }

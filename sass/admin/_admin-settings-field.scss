@@ -57,7 +57,7 @@
 	display: flex;
 	flex: 1 1 100%;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: flex-start;
 	gap: 8px;
 	width: 100%;
 	margin: 0;
@@ -68,6 +68,16 @@
 
 .fc-settings-field__control fieldset + fieldset {
 	margin-top: 8px;
+}
+
+// Keep checkbox label text beside the control; wrap long copy without dropping under the input
+.fc-settings-field__control > fieldset > label:has( > input[type="checkbox"] ) {
+	display: flex;
+	flex: 1 1 0;
+	align-items: flex-start;
+	gap: 8px;
+	min-width: 0;
+	max-width: 100%;
 }
 
 // Dependent checkbox options (mirrors WooCommerce `show_if_checked` / `hide_if_checked`).
@@ -386,7 +396,7 @@ input.fc-settings-toggle--round:focus + label {
 }
 
 .fc-settings-switch__text {
-	flex: 1 1 auto;
+	flex: 1 1 0;
 	min-width: 0;
 	padding-top: 2px;
 	color: $fc-settings-text-color;
