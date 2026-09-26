@@ -161,7 +161,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				$this->get_promo_settings(),
 				array(
 				array(
-					'title'             => __( 'VAT Assistant', 'fluid-checkout' ),
+					'title'             => __( 'VAT Number Field', 'fluid-checkout' ),
 					'type'              => 'title',
 					'desc'              => '',
 					'id'                => 'fc_vat_number',
@@ -169,7 +169,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'title'             => __( 'VAT Number', 'fluid-checkout' ),
+					'title'             => __( 'Field Visibility', 'fluid-checkout' ),
 					'desc'              => '',
 					'desc_tip'          => __( 'Add a VAT Number field to the billing form.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_field_visibility',
@@ -186,7 +186,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'title'             => __( 'VAT Number Label', 'fluid-checkout' ),
+					'title'             => __( 'Field Label', 'fluid-checkout' ),
 					'desc'              => '',
 					'desc_tip'          => __( 'Set the label of the VAT Number field (ie. VAT Number). On multi-language websites, it is better to leave this field empty and translate the original string.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_field_label',
@@ -212,6 +212,19 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				),
 
 				array(
+					'title'             => __( 'VAT Validation', 'fluid-checkout' ),
+					'desc'              => __( 'Validate VAT Number field for EU-VAT during checkout', 'fluid-checkout' ),
+					'desc_tip'          => __( 'Checks if the VAT Number provided is a valid VAT number registered on the European VIES Database (VAT Information Exchange System).', 'fluid-checkout' ),
+					'id'                => 'fc_vat_number_eu_vat_validation',
+					'type'              => 'checkbox',
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_validation' ),
+					'show_if_checked'   => 'option',
+					'autoload'          => false,
+					'disabled'          => true,
+					'requires'          => self::FEATURE,
+				),
+
+				array(
 					'title'             => __( 'Shop VAT Number', 'fluid-checkout' ),
 					'desc'              => __( 'The shop\'s VAT number used for requesting EU-VAT validation, and printed on invoices. <br><strong>We strongly recommend adding your Shop VAT number</strong> as otherwise the VIES consultation results might not be valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or <code>EE999999999</code>.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_shop',
@@ -223,26 +236,13 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'title'             => __( 'VAT Validation', 'fluid-checkout' ),
-					'desc'              => __( 'Validate VAT Number field for EU-VAT during checkout', 'fluid-checkout' ),
-					'desc_tip'          => __( 'Checks if the VAT Number provided is a valid VAT number registered on the European VIES Database (VAT Information Exchange System).', 'fluid-checkout' ),
-					'id'                => 'fc_vat_number_eu_vat_validation',
-					'type'              => 'checkbox',
-					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_validation' ),
-					'checkboxgroup'     => 'start',
-					'show_if_checked'   => 'option',
-					'autoload'          => false,
-					'disabled'          => true,
-					'requires'          => self::FEATURE,
-				),
-
-				array(
+					'title'             => __( 'Reverse charge', 'fluid-checkout' ),
 					'desc'              => __( 'Apply reverse charge mechanism', 'fluid-checkout' ),
 					'desc_tip'          => __( 'Set tax rate to zero and display "Reverse charge" on invoices when the customer\'s VAT number is valid. A different "Reverse charge" text might be required depending on the store\'s country.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge',
 					'type'              => 'checkbox',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_reverse_charge' ),
-					'checkboxgroup'     => '',
+					'checkboxgroup'     => 'start',
 					'show_if_checked'   => 'yes',
 					'autoload'          => false,
 					'disabled'          => true,
@@ -276,32 +276,6 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'title'             => __( 'Company Name', 'fluid-checkout' ),
-					'desc'              => __( 'Autocomplete company name from VAT number', 'fluid-checkout' ),
-					'desc_tip'          => __( 'Fill in the billing company name based on the valid VAT number provided by the customer.', 'fluid-checkout' ),
-					'id'                => 'fc_vat_number_autocomplete_billing_company_name',
-					'type'              => 'checkbox',
-					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_autocomplete_billing_company_name' ),
-					'checkboxgroup'     => 'start',
-					'show_if_checked'   => 'option',
-					'autoload'          => false,
-					'disabled'          => true,
-					'requires'          => self::FEATURE,
-				),
-				array(
-					'desc'              => __( 'Allow editing of auto-filled company name', 'fluid-checkout' ),
-					'desc_tip'          => __( 'When enabled, customers can change the company name associated with the provided VAT number.', 'fluid-checkout' ),
-					'id'                => 'fc_vat_number_autocomplete_billing_company_name_editing',
-					'type'              => 'checkbox',
-					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_autocomplete_billing_company_name_editing' ),
-					'checkboxgroup'     => 'end',
-					'show_if_checked'   => 'yes',
-					'autoload'          => false,
-					'disabled'          => true,
-					'requires'          => self::FEATURE,
-				),
-
-				array(
 					'title'             => __( 'Reverse Charge Label on Invoices', 'fluid-checkout' ),
 					'desc'              => '',
 					'desc_tip'          => __( 'Set the label of "reverse charge" on the checkout page and order details.', 'fluid-checkout' ),
@@ -322,6 +296,32 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'text',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_reverse_charge_label_invoice' ),
 					'placeholder'       => __( 'Tax to be paid on reverse charge basis', 'fluid-checkout' ),
+					'autoload'          => false,
+					'disabled'          => true,
+					'requires'          => self::FEATURE,
+				),
+
+				array(
+					'title'             => __( 'Company Name', 'fluid-checkout' ),
+					'desc'              => __( 'Autocomplete company name from VAT number', 'fluid-checkout' ),
+					'desc_tip'          => __( 'Fill in the billing company name based on the valid VAT number provided by the customer.', 'fluid-checkout' ),
+					'id'                => 'fc_vat_number_autocomplete_billing_company_name',
+					'type'              => 'checkbox',
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_autocomplete_billing_company_name' ),
+					'checkboxgroup'     => 'start',
+					'show_if_checked'   => 'option',
+					'autoload'          => false,
+					'disabled'          => true,
+					'requires'          => self::FEATURE,
+				),
+				array(
+					'desc'              => __( 'Allow editing of auto-filled company name', 'fluid-checkout' ),
+					'desc_tip'          => __( 'When enabled, customers can change the company name associated with the provided VAT number.', 'fluid-checkout' ),
+					'id'                => 'fc_vat_number_autocomplete_billing_company_name_editing',
+					'type'              => 'checkbox',
+					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_autocomplete_billing_company_name_editing' ),
+					'checkboxgroup'     => 'end',
+					'show_if_checked'   => 'yes',
 					'autoload'          => false,
 					'disabled'          => true,
 					'requires'          => self::FEATURE,

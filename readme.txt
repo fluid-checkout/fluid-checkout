@@ -376,6 +376,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Move Data to share option descriptions into info tips and tighten spacing between options.
 * Improved: Move most settings field descriptions into info tips (License keys and Tools pages unchanged).
 * Improved: Notify settings scripts when switching tabs so Address Autocomplete can run Google API key validation on first visit.
+* Improved: Clarify VAT Number Field and EU-VAT settings labels and field order on the VAT Assistant promo settings.
 
 = 4.2.7 - 2026-08-19 =
 

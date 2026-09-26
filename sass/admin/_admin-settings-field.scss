@@ -81,6 +81,8 @@
 }
 
 // Dependent checkbox options (mirrors WooCommerce `show_if_checked` / `hide_if_checked`).
+// Nested dependents share the controlling field's control (checkboxgroup start/end).
+// Sibling dependents are separate `.fc-settings-field.hidden_option` rows after the controller.
 // Only the controlling checkbox (not inside `.hidden_option`) toggles visibility.
 .fc-settings-wrap .show_options_if_checked .hidden_option {
 	display: none;
@@ -91,6 +93,31 @@
 }
 
 .fc-settings-wrap .hide_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) .hidden_option {
+	display: none;
+}
+
+.fc-settings-wrap .fc-settings-field.show_options_if_checked ~ .fc-settings-field.hidden_option {
+	display: none;
+}
+
+.fc-settings-wrap .fc-settings-field.show_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) ~ .fc-settings-field.hidden_option {
+	display: flex;
+}
+
+.fc-settings-wrap .fc-settings-field.hide_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) ~ .fc-settings-field.hidden_option {
+	display: none;
+}
+
+// Later controllers own following sibling dependents (mirrors WooCommerce `nextUntil`).
+.fc-settings-wrap .fc-settings-field.show_options_if_checked ~ .fc-settings-field.show_options_if_checked ~ .fc-settings-field.hidden_option {
+	display: none;
+}
+
+.fc-settings-wrap .fc-settings-field.show_options_if_checked ~ .fc-settings-field.show_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) ~ .fc-settings-field.hidden_option {
+	display: flex;
+}
+
+.fc-settings-wrap .fc-settings-field.hide_options_if_checked ~ .fc-settings-field.hide_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) ~ .fc-settings-field.hidden_option {
 	display: none;
 }
 
