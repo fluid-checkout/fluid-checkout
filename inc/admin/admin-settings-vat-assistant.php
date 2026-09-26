@@ -170,7 +170,8 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 				array(
 					'title'             => __( 'VAT Number', 'fluid-checkout' ),
-					'desc'              => __( 'Add a VAT Number field to the billing form.', 'fluid-checkout' ),
+					'desc'              => '',
+					'desc_tip'          => __( 'Add a VAT Number field to the billing form.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_field_visibility',
 					'type'              => 'select',
 					'options'           => array(
@@ -186,7 +187,8 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 				array(
 					'title'             => __( 'VAT Number Label', 'fluid-checkout' ),
-					'desc'              => __( 'Set the label of the VAT Number field (ie. VAT Number). On multi-language websites, it is better to leave this field empty and translate the original string.', 'fluid-checkout' ),
+					'desc'              => '',
+					'desc_tip'          => __( 'Set the label of the VAT Number field (ie. VAT Number). On multi-language websites, it is better to leave this field empty and translate the original string.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_field_label',
 					'type'              => 'text',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_field_label' ),
@@ -261,7 +263,9 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'desc'              => '<strong>' . __( 'Reverse Charge Exceptions', 'fluid-checkout' ) . ': </strong><br>' . __( 'Select additional countries to skip applying the reverse charge mechanism.', 'fluid-checkout' ) . ' <br>' . __( 'Taxes will be charged to orders from these countries even when a valid VAT number is provided.', 'fluid-checkout' ),
+					'title'             => __( 'Reverse Charge Exceptions', 'fluid-checkout' ),
+					'desc'              => '',
+					'desc_tip'          => __( 'Select additional countries to skip applying the reverse charge mechanism.', 'fluid-checkout' ) . ' <br>' . __( 'Taxes will be charged to orders from these countries even when a valid VAT number is provided.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_countries_skip_list',
 					'type'              => 'multi_select_countries',
 					'options'           => $this->get_reverse_charge_countries_skip_list_options(),
@@ -299,7 +303,8 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 				array(
 					'title'             => __( 'Reverse Charge Label on Invoices', 'fluid-checkout' ),
-					'desc'              => __( 'Set the label of "reverse charge" on the checkout page and order details.', 'fluid-checkout' ),
+					'desc'              => '',
+					'desc_tip'          => __( 'Set the label of "reverse charge" on the checkout page and order details.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_label',
 					'type'              => 'text',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_reverse_charge_label' ),
@@ -311,7 +316,8 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 				array(
 					'title'             => __( 'Reverse Charge Text on Invoices', 'fluid-checkout' ),
-					'desc'              => __( 'Set the label of "reverse charge" text on invoices.', 'fluid-checkout' ),
+					'desc'              => '',
+					'desc_tip'          => __( 'Set the label of "reverse charge" text on invoices.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_label_invoice',
 					'type'              => 'text',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_reverse_charge_label_invoice' ),

@@ -115,7 +115,8 @@ class WC_Settings_FluidCheckout_AddressBook_Settings extends WC_Settings_Page {
 
 			array(
 				'title'    => __( 'WooCommerce Addresses', 'fluid-checkout' ),
-				'desc'     => __( 'Copy existing shipping and billing addresses from WooCommerce into the customers\' address book.', 'fluid-checkout' ),
+				'desc'     => '',
+				'desc_tip'          => __( 'Copy existing shipping and billing addresses from WooCommerce into the customers\' address book.', 'fluid-checkout' ),
 				'id'       => 'fc_pro_address_book_migration',
 				'type'     => 'fc_address_book_migration',
 				'autoload' => false,

@@ -214,7 +214,8 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 					array(
 						'title'             => __( 'Order actions', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the order actions.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the order actions.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_actions_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -241,7 +242,8 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_summary_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -259,7 +261,8 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 					array(
 						'title'             => __( 'Order downloads', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_downloads_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -275,7 +278,8 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 					array(
 						'title'             => __( 'Gift message', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_gift_message_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -291,7 +295,8 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 					array(
 						'title'             => __( 'Order notes', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_notes_position',
 						'type'              => 'fc_select',
 						'options'           => array(

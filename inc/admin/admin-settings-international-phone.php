@@ -108,7 +108,8 @@ class WC_Settings_FluidCheckout_InternationalPhone_Settings extends WC_Settings_
 					'requires'              => 'pro',
 				),
 				array(
-					'desc'                  => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
+					'desc'                  => '',
+					'desc_tip'          => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_enable_international_phone_validation_precise_types',
 					'type'                  => 'fc_multiselect',
 					'class'                 => 'fc-enhanced-select',
@@ -144,7 +145,8 @@ class WC_Settings_FluidCheckout_InternationalPhone_Settings extends WC_Settings_
 				),
 
 				array(
-					'desc'                  => __( 'Show an example of a valid phone number inside phone fields', 'fluid-checkout' ),
+					'desc'                  => '',
+					'desc_tip'          => __( 'Show an example of a valid phone number inside phone fields', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_international_phone_fields_placeholder',
 					'type'                  => 'fc_select',
 					'options'               => array(

@@ -92,7 +92,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => '',
-						'desc'                  => FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => '',
+						'desc_tip'          => FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_checkout_column_layout',
 						'requires'              => 'pro',
 						'type'                  => 'fc_layout_selector',
@@ -110,7 +111,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Design template', 'fluid-checkout' ),
-						'desc'                  => __( 'General styles for the checkout steps, order summary and other sections. <br>Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' <br>' . __( 'When using the <em>"1 column"</em> layout with the <em>"Split"</em> design template, a right column is shown only if the page sidebar widget area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). Otherwise the page stays as a single column with Split styles.', 'fluid-checkout' ) . ' <br>' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => '',
+						'desc_tip'          => __( 'General styles for the checkout steps, order summary and other sections. <br>Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' <br>' . __( 'When using the <em>"1 column"</em> layout with the <em>"Split"</em> design template, a right column is shown only if the page sidebar widget area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). Otherwise the page stays as a single column with Split styles.', 'fluid-checkout' ) . ' <br>' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_design_template',
 						'requires'              => 'pro',
 						'type'                  => 'fc_template_selector',
@@ -127,7 +129,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_secondary_column_background_color',
 						'type'                  => 'text',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_secondary_column_background_color' ),
@@ -164,8 +167,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Header and footer templates', 'fluid-checkout' ),
-						'desc'                  => __( 'We recommend using the distraction free header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Controls whether to use the distraction free page header and footer or keep the currently active theme\'s header and footer.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => __( 'We recommend using the distraction free header and footer to avoid distractions at the checkout page. <a href="https://baymard.com/blog/cart-abandonment" target="_blank">Read the research about cart abandonment</a>.', 'fluid-checkout' ) . ' ' . __( 'Controls whether to use the distraction free page header and footer or keep the currently active theme\'s header and footer.', 'fluid-checkout' ),
 						'id'                    => 'fc_hide_site_header_footer_at_checkout',
 						'type'                  => 'select',
 						'options'               => array(
@@ -188,8 +191,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Header background color', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Choose a background color for the checkout page header. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
-						'desc'                  => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'desc_tip'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ) . ' ' . __( 'Choose a background color for the checkout page header. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
+						'desc'                  => '',
 						'id'                    => 'fc_checkout_header_background_color',
 						'type'                  => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_header_background_color' ),
@@ -199,8 +202,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Page background color', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Choose a background color for the checkout page. Color is applied to the <em>body</em> element.', 'fluid-checkout' ),
-						'desc'                  => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'desc_tip'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ) . ' ' . __( 'Choose a background color for the checkout page. Color is applied to the <em>body</em> element.', 'fluid-checkout' ),
+						'desc'                  => '',
 						'id'                    => 'fc_checkout_page_background_color',
 						'type'                  => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_page_background_color' ),
@@ -210,8 +213,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Footer background color', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Choose a background color for the checkout page footer. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
-						'desc'                  => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'desc_tip'              => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ) . ' ' . __( 'Choose a background color for the checkout page footer. Only applies when using the distraction free header and footer.', 'fluid-checkout' ),
+						'desc'                  => '',
 						'id'                    => 'fc_checkout_footer_background_color',
 						'type'                  => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_footer_background_color' ),
@@ -254,7 +257,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Choose the style of the progress bar.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Choose the style of the progress bar.', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_progress_bar_style',
 						'requires'              => 'pro',
 						'type'                  => 'fc_select',
@@ -276,7 +280,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_order_review_highlight_color',
 						'type'                  => 'color',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_order_review_highlight_color' ),
@@ -294,7 +299,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Action link on the order summary at checkout.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Action link on the order summary at checkout.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_pro_checkout_edit_cart_replace_edit_cart_link',
 						'requires'              => 'pro',
 						'type'                  => 'fc_select',
@@ -308,7 +314,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Position for the extra order summary section on mobile.', 'fluid-checkout' ) . 
+						'desc'                  => '',
+						'desc_tip'          => __( 'Position for the extra order summary section on mobile.', 'fluid-checkout' ) . 
 												'<br>' . __( 'The option <em>"On the site header"</em> only applies when using the distraction-free header.', 'fluid-checkout' ) .
 												'<br>' . __( 'When using the <em>"1 column"</em> checkout layout this option is always set to <em>"Before checkout steps"</em> and also applies to desktop view.', 'fluid-checkout' ) .
 												FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
@@ -324,7 +331,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'              => false,
 					),
 					array(
-						'desc'                  => __( 'Initial state for the expansible order summary section on mobile.', 'fluid-checkout' ) .
+						'desc'                  => '',
+						'desc_tip'          => __( 'Initial state for the expansible order summary section on mobile.', 'fluid-checkout' ) .
 												'<br>' . __( 'We recommend setting it as <em>expanded</em> for the following countries due to regulatory requirements: <strong>Germany</strong>, <strong>Austria</strong>, <strong>Switzerland</strong>, <strong>Netherlands</strong>, <strong>Poland</strong>, <strong>Belgium</strong> and <strong>France</strong>.', 'fluid-checkout' ),
 						'id'                    => 'fc_pro_checkout_order_summary_collapsible_initial_state',
 						'type'                  => 'fc_select',
@@ -366,8 +374,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Place order', 'fluid-checkout' ),
-						'desc'                  => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ) . ' ' . __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_place_order_position',
 						'type'                  => 'select',
 						'options'               => array(
@@ -452,7 +460,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Select position where to display the coupon codes section on the checkout page.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_pro_checkout_coupon_codes_position',
 						'requires'              => 'pro',
 						'type'                  => 'fc_select',
@@ -470,7 +479,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Select style of the "apply coupon" button. Only applicable when the coupon code section is displayed "Before the checkout steps" on the checkout page, or "Before the cart items section" on the cart page.', 'fluid-checkout' ),
 						'id'                    => 'fc_pro_checkout_coupon_code_message_button_style',
 						'type'                  => 'fc_select',
 						'options'               => array(
@@ -530,7 +540,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Billing address', 'fluid-checkout' ),
-						'desc'                  => __( 'Select position where to display the billing address section on the checkout page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-billing-address-positions/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Select position where to display the billing address section on the checkout page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-billing-address-positions/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_pro_checkout_billing_address_position',
 						'requires'              => 'pro',
 						'type'                  => 'fc_select',
@@ -574,7 +585,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Shipping methods', 'fluid-checkout' ),
-						'desc'                  => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_methods_substep_position',
 						'type'                  => 'select',
 						'options'               => array(
@@ -598,8 +610,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Company name field for shipping address', 'fluid-checkout' ),
-						'desc'                  => __( 'Change visibility for the company name field for the shipping address section on the checkout form.', 'fluid-checkout' ),
-						'desc_tip'              => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => __( 'Change visibility for the company name field for the shipping address section on the checkout form.', 'fluid-checkout' ) . ' ' . __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_company_field_visibility',
 						'type'                  => 'select',
 						'options'               => array(
@@ -613,8 +625,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Company name field for billing address', 'fluid-checkout' ),
-						'desc'                  => __( 'Change visibility for the company name field for the billing address section on the checkout form.', 'fluid-checkout' ),
-						'desc_tip'              => __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => __( 'Change visibility for the company name field for the billing address section on the checkout form.', 'fluid-checkout' ) . ' ' . __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
 						'id'                    => 'woocommerce_checkout_company_field',
 						'type'                  => 'select',
 						'options'               => array(
@@ -628,7 +640,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Shipping phone', 'fluid-checkout' ),
-						'desc'                  => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The shipping phone field may be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The shipping phone field may be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_phone_field_visibility',
 						'type'                  => 'select',
 						'options'               => array(
@@ -641,7 +654,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Choose in which step to display the shipping phone field.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Choose in which step to display the shipping phone field.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_phone_field_position',
 						'type'                  => 'select',
 						'options'               => array(
@@ -654,7 +668,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Billing phone', 'fluid-checkout' ),
-						'desc'                  => __( 'Add billing phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The billing phone field may be forced as "required" if the billing address section is displayed before the shipping address section, and the shipping phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Add billing phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The billing phone field may be forced as "required" if the billing address section is displayed before the shipping address section, and the shipping phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
 						'id'                    => 'woocommerce_checkout_phone_field',
 						'type'                  => 'select',
 						'options'               => array(
@@ -667,7 +682,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'                  => __( 'Choose in which step to display the billing phone field.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Choose in which step to display the billing phone field.', 'fluid-checkout' ),
 						'id'                    => 'fc_billing_phone_field_position',
 						'type'                  => 'select',
 						'options'               => array(
@@ -680,7 +696,8 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Order notes', 'fluid-checkout' ),
-						'desc'                  => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'          => __( 'Define the visibility of the additional order notes field.', 'fluid-checkout' ),
 						'id'                    => 'woocommerce_enable_order_comments',
 						'type'                  => 'select',
 						'options'               => array(

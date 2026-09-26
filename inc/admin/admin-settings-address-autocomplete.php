@@ -139,7 +139,8 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 
 			array(
 				'title'             => __( 'Google API Language', 'fluid-checkout' ),
-				'desc'              => __( 'This language will be used to display the Google Places API address suggestions and addresses will also be autocompleted in this language.', 'fluid-checkout' ),
+				'desc'              => '',
+				'desc_tip'          => __( 'This language will be used to display the Google Places API address suggestions and addresses will also be autocompleted in this language.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_google_places_api_language',
 				'type'              => 'select',
 				'options'           => array(
@@ -153,7 +154,8 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 
 			array(
 				'title'             => __( 'Result types', 'fluid-checkout' ),
-				'desc'              => __( 'Leave empty to accept any type of results, which usually yields better matching results. <br>Select up to 5 types of address search results to return on address autocomplete fields.', 'fluid-checkout' ),
+				'desc'              => '',
+				'desc_tip'          => __( 'Leave empty to accept any type of results, which usually yields better matching results. <br>Select up to 5 types of address search results to return on address autocomplete fields.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_search_results_types_address',
 				'type'              => 'multiselect',
 				'class'             => 'fc-enhanced-select',
@@ -215,7 +217,8 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 			),
 
 			array(
-				'desc'              => __( 'Choose which version of the Brasil API CEP method to use.', 'fluid-checkout' ),
+				'title'             => __( 'API Version', 'fluid-checkout' ),
+				'desc_tip'          => __( 'Choose which version of the Brasil API CEP method to use.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_brasil_api_version',
 				'type'              => 'select',
 				'options'           => array(

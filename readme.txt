@@ -374,6 +374,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Keep usage tracking and Address Autocomplete admin scripts available across all Fluid Checkout settings tabs.
 * Improved: Keep usage tracking enabled when “Enable and send now” fails to send, without saving other pending settings.
 * Improved: Move Data to share option descriptions into info tips and tighten spacing between options.
+* Improved: Move most settings field descriptions into info tips (License keys and Tools pages unchanged).
+* Improved: Notify settings scripts when switching tabs so Address Autocomplete can run Google API key validation on first visit.
 
 = 4.2.7 - 2026-08-19 =
 

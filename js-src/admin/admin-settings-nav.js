@@ -150,6 +150,9 @@
 			}
 		}
 
+		// Notify listeners that a settings tab became active (SPA navigation)
+		window.dispatchEvent( new CustomEvent( 'fcSettingsTabActivated', { detail: { tab: tab } } ) );
+
 		return true;
 	};
 

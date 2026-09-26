@@ -102,7 +102,8 @@ class WC_Settings_FluidCheckout_LocalPickup_Settings extends WC_Settings_Page {
 				),
 
 				array(
-					'desc'                  => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
+					'desc'                  => '',
+					'desc_tip'          => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
 					'id'                    => 'fc_local_pickup_save_shipping_address',
 					'type'                  => 'fc_select',
 					'options'               => array(
