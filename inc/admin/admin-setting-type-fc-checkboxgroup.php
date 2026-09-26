@@ -65,6 +65,7 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 		<?php foreach ( $options as $option_key => $option_data ) : ?>
 			<?php
 			$option_label       = is_array( $option_data ) ? ( $option_data[ 'label' ] ?? '' ) : $option_data;
+			$option_badge       = is_array( $option_data ) ? ( $option_data[ 'badge' ] ?? '' ) : '';
 			$option_description = is_array( $option_data ) ? ( $option_data[ 'description' ] ?? '' ) : '';
 			$is_disabled        = $renderer->is_field_disabled( $value ) || in_array( $option_key, $disabled_options, true );
 			$is_required        = in_array( $option_key, $required_options, true );
@@ -94,6 +95,9 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 					</span>
 					<label class="fc-settings-switch__text" for="<?php echo esc_attr( $input_id ); ?>">
 						<strong><?php echo esc_html( $option_label ); ?></strong>
+						<?php if ( ! empty( $option_badge ) ) : ?>
+							<span class="fc-settings-badge"><?php echo esc_html( $option_badge ); ?></span>
+						<?php endif; ?>
 					</label>
 				<?php else : ?>
 					<label for="<?php echo esc_attr( $input_id ); ?>">
@@ -106,6 +110,9 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 							<?php disabled( $is_disabled ); ?>
 						/>
 						<strong><?php echo esc_html( $option_label ); ?></strong>
+						<?php if ( ! empty( $option_badge ) ) : ?>
+							<span class="fc-settings-badge"><?php echo esc_html( $option_badge ); ?></span>
+						<?php endif; ?>
 					</label>
 				<?php endif; ?>
 				<?php if ( ! empty( $option_description ) ) : ?>

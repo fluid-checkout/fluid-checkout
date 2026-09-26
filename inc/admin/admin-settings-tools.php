@@ -115,7 +115,8 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 							'description' => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled. Helps us understand the environment your site is running in.', 'fluid-checkout' ),
 						),
 						'plugin_settings'           => array(
-							'label'       => __( 'Plugin settings', 'fluid-checkout' ) . ' ' . __( '[coming soon]', 'fluid-checkout' ),
+							'label'       => __( 'Plugin settings', 'fluid-checkout' ),
+							'badge'       => __( 'Coming soon', 'fluid-checkout' ),
 							'description' => __( 'Sends Fluid Checkout plugin settings to help with support requests and helps us understand how you are using our plugins.', 'fluid-checkout' ),
 						),
 						'woocommerce_sales_metrics' => array(
@@ -137,6 +138,38 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				),
 
 				array(
+					'title' => __( 'Utilities', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => '',
+					'id'    => 'fc_checkout_utilities_options',
+				),
+
+				array(
+					'title'            => __( 'Enhanced select fields', 'fluid-checkout' ),
+					'desc'             => __( 'Use <code>TomSelect</code> dropdown components instead of <code>select2</code>', 'fluid-checkout' ),
+					'desc_tip'         => __( 'TomSelect is a simpler dropdown selection component which is less prone to errors than Select2, while offering the same functionality.', 'fluid-checkout' ),
+					'id'               => 'fc_use_enhanced_select_components',
+					'type'             => 'checkbox',
+					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_use_enhanced_select_components' ),
+					'autoload'         => false,
+				),
+
+				array(
+					'title'            => __( 'Fix automatic zoom-in on form fields', 'fluid-checkout' ),
+					'desc'             => __( 'Set <code>font-size</code> inside form fields to 16px', 'fluid-checkout' ),
+					'desc_tip'         => __( 'Sets the font size inside form fields to 16px on pages optimized by this plugin to avoid automatically zooming in when interacting with form fields on small devices.', 'fluid-checkout' ) . '<br><br>' . __( 'Safari and other browsers might automatically zoom in on mobile devices to make the text easier to read when the font size is smaller than 16px.', 'fluid-checkout' ),
+					'id'               => 'fc_fix_zoom_in_form_fields_mobile_devices',
+					'type'             => 'checkbox',
+					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_fix_zoom_in_form_fields_mobile_devices' ),
+					'autoload'         => false,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_checkout_utilities_options',
+				),
+
+				array(
 					'title' => __( 'Troubleshooting', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
@@ -146,7 +179,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 				array(
 					'title'            => __( 'Debug options', 'fluid-checkout' ),
 					'desc'             => __( 'Debug mode', 'fluid-checkout' ),
-					'desc_tip'         => __( 'Using debug mode affects the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
+					'desc_tip'         => __( 'Enable script processing tracking on the browser console.', 'fluid-checkout' ) . '<br><br>' . __( 'Using debug mode affects the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
 					'id'               => 'fc_debug_mode',
 					'type'             => 'checkbox',
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_debug_mode' ),
@@ -161,26 +194,6 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_load_unminified_assets' ),
 					'checkboxgroup'    => 'end',
 					'show_if_checked'  => 'yes',
-					'autoload'         => false,
-				),
-
-				array(
-					'title'            => __( 'Enhanced select fields', 'fluid-checkout' ),
-					'desc'             => __( 'Replace <code>select2</code> dropdown components with <code>TomSelect</code>', 'fluid-checkout' ),
-					'desc_tip'         => __( 'TomSelect is a simpler dropdown selection component which is less prone to errors than Select2, while offering the same features that are actually used on WooCommerce checkout pages.', 'fluid-checkout' ),
-					'id'               => 'fc_use_enhanced_select_components',
-					'type'             => 'checkbox',
-					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_use_enhanced_select_components' ),
-					'autoload'         => false,
-				),
-
-				array(
-					'title'            => __( 'Fix automatic zoom-in on form fields', 'fluid-checkout' ),
-					'desc'             => __( 'Set <code>font-size</code> inside form fields to 16px', 'fluid-checkout' ),
-					'desc_tip'         => __( 'When the font size inside form fields is smaller than 16px, Safari and other browsers might automatically zoom in on mobile devices to make the text easier to read. When this option is enabled, it will set the font size for inside the form fields to 16px on pages optimized by Fluid Checkout to avoid it zooming in.', 'fluid-checkout' ),
-					'id'               => 'fc_fix_zoom_in_form_fields_mobile_devices',
-					'type'             => 'checkbox',
-					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_fix_zoom_in_form_fields_mobile_devices' ),
 					'autoload'         => false,
 				),
 

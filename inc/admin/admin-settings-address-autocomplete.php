@@ -250,33 +250,6 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 			),
 
 			array(
-				'title'             => __( 'Debug mode', 'fluid-checkout' ),
-				'desc'              => __( 'Enable debug mode', 'fluid-checkout' ),
-				'desc_tip'          => __( 'When enabled, some information such as the selected "Place" details returned by the API will be logged to the browser console.', 'fluid-checkout' ),
-				'id'                => 'fc_gaa_debug_mode',
-				'type'              => 'checkbox',
-				'default'           => 'no',
-				'autoload'          => false,
-				'disabled'          => true,
-				'requires'          => self::FEATURE,
-				'checkboxgroup'     => 'start',
-				'show_if_checked'   => 'option',
-			),
-
-			array(
-				'desc'              => __( 'Load unminified assets', 'fluid-checkout' ),
-				'desc_tip'          => __( 'Loading unminified assets affects the website performance. Only use this option while troubleshooting.', 'fluid-checkout' ),
-				'id'                => 'fc_gaa_load_unminified_assets',
-				'type'              => 'checkbox',
-				'default'           => 'no',
-				'autoload'          => false,
-				'disabled'          => true,
-				'requires'          => self::FEATURE,
-				'checkboxgroup'     => 'end',
-				'show_if_checked'   => 'yes',
-			),
-
-			array(
 				'title'             => __( 'Google Maps scripts', 'fluid-checkout' ),
 				'desc'              => __( 'Do not remove duplicate Google Maps scripts', 'fluid-checkout' ),
 				'desc_tip'          => __( 'When enabled, duplicate Google Maps scripts will NOT be removed which can cause errors and performance issues. Only use this option while troubleshooting.', 'fluid-checkout' ),

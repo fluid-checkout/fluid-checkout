@@ -382,7 +382,7 @@ input.fc-settings-toggle--round:checked + label::after {
 
 input.fc-settings-toggle--round:checked:disabled + label,
 .fc-settings-switch--disabled input.fc-settings-toggle--round:checked + label {
-	background-color: $fc-settings-toggle-background;
+	background-color: $fc-settings-toggle-background-checked-disabled;
 }
 
 input.fc-settings-toggle--round:focus + label {
@@ -400,6 +400,16 @@ input.fc-settings-toggle--round:focus + label {
 	color: $fc-settings-text-color;
 	font-size: $fc-settings-field-label-font-size;
 	line-height: 1.4;
+}
+
+.fc-settings-switch__text .fc-settings-badge {
+	margin-left: 6px;
+	vertical-align: middle;
+}
+
+.rtl .fc-settings-switch__text .fc-settings-badge {
+	margin-right: 6px;
+	margin-left: 0;
 }
 
 

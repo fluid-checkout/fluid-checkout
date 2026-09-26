@@ -369,6 +369,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Moved the Address Book Migration section from the Tools tab to the Address Book settings page.
 * Improved: Removed the experimental label from the precise phone number validation option.
 * Improved: Show field descriptions below settings fields, and use info tips only for tip content.
+* Improved: Clarified the Tools settings labels for TomSelect and debug mode.
+* Improved: Moved enhanced select and form field zoom-fix options into a Utilities section on the Tools settings page.
+* Improved: Keep usage tracking and Address Autocomplete admin scripts available across all Fluid Checkout settings tabs.
 
 = 4.2.7 - 2026-08-19 =
 

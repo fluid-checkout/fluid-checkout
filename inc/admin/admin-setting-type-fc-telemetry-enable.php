@@ -101,7 +101,8 @@ class FluidCheckout_Admin_SettingType_TelemetryEnable extends FluidCheckout {
 			><?php esc_html_e( 'Preview report data', 'fluid-checkout' ); ?></button>
 			<button
 				type="button"
-				class="button button-secondary fc-telemetry-send-now-button<?php echo 'yes' === $option_value ? '' : ' is-hidden'; ?>"
+				class="button button-secondary fc-telemetry-send-now-button"
+				<?php disabled( 'yes' !== $option_value ); ?>
 			><?php esc_html_e( 'Send now', 'fluid-checkout' ); ?></button>
 		</p>
 		<p class="fc-telemetry-enable-actions__feedback is-hidden" aria-live="polite"></p>
