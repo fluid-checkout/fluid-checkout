@@ -24,12 +24,17 @@
 }
 
 .fc-checkboxgroup-option {
+	position: relative;
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: flex-start;
 	gap: 8px;
-	margin: 0 0 12px;
+	margin: 0;
 	width: 100%;
+}
+
+.fc-checkboxgroup-option + .fc-checkboxgroup-option {
+	margin-top: 8px;
 }
 
 .fc-checkboxgroup-option > label:has( > input[type="checkbox"] ) {
@@ -41,14 +46,17 @@
 	max-width: 100%;
 }
 
-.fc-checkboxgroup-option:last-child {
-	margin-bottom: 0;
+.fc-checkboxgroup-option > .fc-settings-switch__text {
+	flex: 0 1 auto;
 }
 
-.fc-checkboxgroup-option__description {
-	flex: 1 1 100%;
-	margin: 0;
-	padding-left: calc( #{$fc-settings-toggle-width} + #{$fc-settings-toggle-padding} * 2 + 8px );
+.fc-checkboxgroup-option > .fc-settings-switch--disabled + .fc-settings-switch__text {
+	opacity: .6;
+}
+
+// Align per-option tips with other field tips (left of the control)
+.fc-checkboxgroup-option > .fc-settings-info-tip {
+	top: 3px;
 }
 
 body.fc-telemetry-modal-open {

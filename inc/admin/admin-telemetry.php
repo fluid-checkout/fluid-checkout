@@ -177,6 +177,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 					'message'       => $this->get_send_error_message( $result ),
 					'error_code'    => $error_code,
 					'response_code' => (int) ( $result['response_code'] ?? 0 ),
+					'is_enabled'    => ! empty( $result['is_enabled'] ),
 				),
 				400
 			);

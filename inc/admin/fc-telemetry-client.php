@@ -471,6 +471,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => 'in_progress',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 
@@ -489,6 +490,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => '' === $host ? 'empty_payload' : 'ineligible_domain',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 
@@ -498,10 +500,9 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				self::schedule_telemetry_cron( $api_url );
 			}
 
-			// Maybe persist selected data groups
+			// Normalize groups for this send only — do not persist pending form values here
 			if ( null !== $groups ) {
 				$groups = self::normalize_telemetry_data_groups( $groups );
-				update_option( $config['data_groups_option'], $groups );
 			}
 
 			// Bail if reporting is still disabled
@@ -509,6 +510,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => 'disabled',
+					'is_enabled' => false,
 				);
 			}
 
@@ -529,6 +531,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => 'empty_payload',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 
@@ -540,6 +543,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => 'rate_limited',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 
@@ -591,6 +595,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 					'success'       => false,
 					'error_code'    => 'request_failed',
 					'response_code' => $response_code,
+					'is_enabled'    => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 

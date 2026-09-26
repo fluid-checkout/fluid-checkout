@@ -41,6 +41,7 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 		$required_options = ! empty( $value[ 'required_options' ] ) && is_array( $value[ 'required_options' ] ) ? $value[ 'required_options' ] : array();
 		$has_title        = '' !== $value[ 'title' ];
 		$use_toggle       = $renderer->uses_toggle_checkboxes();
+		$use_info_tips    = $renderer->uses_info_tooltips();
 
 		$renderer->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false ) );
 
@@ -51,16 +52,13 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 			<legend class="screen-reader-text"><span><?php echo esc_html( $value[ 'title' ] ); ?></span></legend>
 		<?php endif; ?>
 
-		<?php if ( ( $has_title && ! $is_group_start ) || $description || ( $tooltip_html && ! $is_group_start ) ) : ?>
+		<?php if ( $has_title && ! $is_group_start ) : ?>
 			<p class="description">
-				<?php if ( $has_title && ! $is_group_start ) : ?>
-					<strong><?php echo esc_html( $value[ 'title' ] ); ?></strong>
-					<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					<br>
-				<?php endif; ?>
-				<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<strong><?php echo esc_html( $value[ 'title' ] ); ?></strong>
+				<?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</p>
 		<?php endif; ?>
+		<?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 		<?php foreach ( $options as $option_key => $option_data ) : ?>
 			<?php
@@ -71,8 +69,10 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 			$is_required        = in_array( $option_key, $required_options, true );
 			$is_checked         = $is_required || in_array( (string) $option_key, $option_value, true );
 			$input_id           = $value[ 'id' ] . '_' . sanitize_html_class( (string) $option_key );
+			$option_tip_html    = ( $use_info_tips && ! empty( $option_description ) ) ? $renderer->get_info_tooltip_html( $option_description ) : '';
 			?>
 			<div class="fc-checkboxgroup-option">
+				<?php echo $option_tip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<?php if ( $is_disabled && $is_checked ) : ?>
 					<input
 						type="hidden"
@@ -94,7 +94,7 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 						<label for="<?php echo esc_attr( $input_id ); ?>"></label>
 					</span>
 					<label class="fc-settings-switch__text" for="<?php echo esc_attr( $input_id ); ?>">
-						<strong><?php echo esc_html( $option_label ); ?></strong>
+						<?php echo esc_html( $option_label ); ?>
 						<?php if ( ! empty( $option_badge ) ) : ?>
 							<span class="fc-settings-badge"><?php echo esc_html( $option_badge ); ?></span>
 						<?php endif; ?>
@@ -109,14 +109,11 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 							<?php checked( $is_checked, true ); ?>
 							<?php disabled( $is_disabled ); ?>
 						/>
-						<strong><?php echo esc_html( $option_label ); ?></strong>
+						<?php echo esc_html( $option_label ); ?>
 						<?php if ( ! empty( $option_badge ) ) : ?>
 							<span class="fc-settings-badge"><?php echo esc_html( $option_badge ); ?></span>
 						<?php endif; ?>
 					</label>
-				<?php endif; ?>
-				<?php if ( ! empty( $option_description ) ) : ?>
-					<span class="description fc-checkboxgroup-option__description"><?php echo esc_html( $option_description ); ?></span>
 				<?php endif; ?>
 			</div>
 		<?php endforeach; ?>

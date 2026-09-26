@@ -398,15 +398,37 @@
 
 
 	/**
+	 * Apply the saved enabled state to the enable checkbox and Send now controls.
+	 *
+	 * @param {boolean} enabled Whether reporting is enabled.
+	 */
+	var applyEnabledState = function( enabled ) {
+		if ( enabled ) {
+			$( _settings.enableCheckboxSelector ).prop( 'checked', true );
+		}
+
+		_isEnabled = !! enabled;
+		updateSendButton( _isEnabled );
+		updateInlineSendButtonState( _isEnabled );
+	};
+
+
+
+	/**
 	 * Handle a successful send-now AJAX response.
 	 *
-	 * @param {Object}  response        Parsed AJAX response.
-	 * @param {jQuery}  $feedbackTarget Feedback element.
-	 * @param {boolean} enableIfDisabled Whether the request asked to enable reporting.
+	 * @param {Object} response        Parsed AJAX response.
+	 * @param {jQuery} $feedbackTarget Feedback element.
 	 */
-	var handleSendResponse = function( response, $feedbackTarget, enableIfDisabled ) {
-		// Maybe show a send error
+	var handleSendResponse = function( response, $feedbackTarget ) {
+		var isEnabled = !!( response && response.data && response.data.is_enabled );
+
+		// Maybe show a send error — still apply enabled state when the option was already saved
 		if ( ! response || ! response.success ) {
+			if ( isEnabled ) {
+				applyEnabledState( true );
+			}
+
 			showFeedback(
 				$feedbackTarget,
 				getSendErrorMessage( response && response.data ),
@@ -415,14 +437,7 @@
 			return;
 		}
 
-		// Maybe check the enable checkbox after enabling via send-now
-		if ( enableIfDisabled ) {
-			$( _settings.enableCheckboxSelector ).prop( 'checked', true );
-		}
-
-		_isEnabled = true;
-		updateSendButton( true );
-		updateInlineSendButtonState( true );
+		applyEnabledState( true );
 		showFeedback(
 			$feedbackTarget,
 			response.data.message || _settings.i18n.sendSuccess || 'Site report sent successfully.',
@@ -483,9 +498,16 @@
 				enable_if_disabled: enableIfDisabled ? _settings.enabledYesValue : _settings.enabledNoValue,
 			}
 		).done( function( response ) {
-			handleSendResponse( response, $feedbackTarget, enableIfDisabled );
+			handleSendResponse( response, $feedbackTarget );
 		} ).fail( function( xhr ) {
-			showFeedback( $feedbackTarget, getSendErrorMessage( getSendErrorDataFromXhr( xhr ) ), 'error' );
+			var errorData = getSendErrorDataFromXhr( xhr );
+
+			// Maybe apply enabled state when the option was already saved before the send failed
+			if ( errorData && errorData.is_enabled ) {
+				applyEnabledState( true );
+			}
+
+			showFeedback( $feedbackTarget, getSendErrorMessage( errorData ), 'error' );
 		} ).always( function() {
 			restoreSendControls( $trigger );
 		} );
