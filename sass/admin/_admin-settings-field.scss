@@ -415,13 +415,17 @@ input.fc-settings-toggle--round:focus + label {
 .fc-settings-info-tip {
 	position: absolute;
 	z-index: auto;
-	top: 6px;
+	top: 14px;
 	left: -$fc-settings-info-tip-offset;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	width: $fc-settings-info-tip-size;
 	height: $fc-settings-info-tip-size;
+}
+
+.fc-settings-field__control:has( .fc-settings-switch, input[type="checkbox"] ) > .fc-settings-info-tip {
+	top: 7px;
 }
 
 .fc-settings-info-tip:hover,
