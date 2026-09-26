@@ -95,7 +95,10 @@
 }
 
 .fc-settings-field__control .description {
+	flex: 1 1 100%;
+	width: 100%;
 	margin-top: 6px;
+	margin-bottom: 0;
 	color: $admin-text-color-muted;
 }
 
@@ -153,7 +156,7 @@
 .fc-settings-field__control select,
 .fc-settings-field__control textarea {
 	width: 100%;
-	max-width: $fc-settings-field-control-max-width;
+	max-width: none; // Needed to override WP admin `max-width: 25rem`
 	min-height: 1px;
 	margin: 0;
 	padding: $fc-settings-input-padding;
@@ -198,10 +201,6 @@
 	padding-right: 10px;
 	padding-left: $fc-settings-select-caret-padding-right;
 	background-position: left 10px center;
-}
-
-.fc-settings-field__control input[type="number"] {
-	max-width: $fc-settings-field-control-number-max-width;
 }
 
 .fc-settings-field__control textarea {
@@ -250,7 +249,8 @@
 }
 
 .fc-settings-field__control input::placeholder,
-.fc-settings-field__control textarea::placeholder {
+.fc-settings-field__control textarea::placeholder,
+.fc-settings-wrap .ts-control > input::placeholder {
 	color: $fc-settings-input-placeholder-color;
 	opacity: 1;
 }
@@ -261,13 +261,11 @@
 	display: flex;
 	gap: $fc-settings-input-group-gap;
 	width: 100%;
-	max-width: $fc-settings-field-control-max-width;
 }
 
 .fc-settings-field__control .fc-settings-input-group--split > input,
 .fc-settings-field__control .fc-settings-input-group--split > select {
 	flex: 1 1 50%;
-	max-width: none;
 }
 
 

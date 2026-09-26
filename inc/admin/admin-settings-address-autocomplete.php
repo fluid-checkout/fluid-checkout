@@ -126,6 +126,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 			),
 
 			array(
+				'title'             => __( 'Google Address Autocomplete', 'fluid-checkout' ),
 				'desc'              => __( 'Enable Google Address Autocomplete', 'fluid-checkout' ),
 				'desc_tip'          => __( 'Enable address autocompletion using the Google Maps APIs.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_enabled',
@@ -155,6 +156,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 				'desc'              => __( 'Leave empty to accept any type of results, which usually yields better matching results. <br>Select up to 5 types of address search results to return on address autocomplete fields.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_search_results_types_address',
 				'type'              => 'multiselect',
+				'class'             => 'fc-enhanced-select',
 				'options'           => array(),
 				'default'           => array(),
 				'autoload'          => false,

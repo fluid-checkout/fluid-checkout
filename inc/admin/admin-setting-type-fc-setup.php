@@ -62,7 +62,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			</div>
 
 			<div class="fc-settings-card__footer">
-				<a class="fc-settings-button fc-settings-button--primary" href="<?php echo esc_url( $dashboard_url ); ?>"><?php echo esc_html( __( 'Setup wizard', 'fluid-checkout' ) ); ?></a>
+				<a class="fc-settings-button fc-settings-button--primary" href="<?php echo esc_url( $dashboard_url ); ?>"><?php echo esc_html( __( 'Guided setup', 'fluid-checkout' ) ); ?></a>
 				<a class="fc-settings-button" href="<?php echo esc_url( $tools_url ); ?>"><?php echo esc_html( __( 'Usage tracking settings', 'fluid-checkout' ) ); ?></a>
 			</div>
 		</div>

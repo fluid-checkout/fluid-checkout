@@ -130,6 +130,15 @@
 				fieldSettings.plugins = _settings.fieldPluginsSingle;
 			}
 
+			// Maybe limit the number of selected items from the field attribute
+			var maxSelectionLength = field.getAttribute( 'data-maximum-selection-length' );
+			if ( maxSelectionLength ) {
+				var maxItems = parseInt( maxSelectionLength, 10 );
+				if ( ! isNaN( maxItems ) && maxItems > 0 ) {
+					fieldSettings.maxItems = maxItems;
+				}
+			}
+
 			instance = new TomSelect( field, fieldSettings );
 
 			// Set value without triggering change to avoid feedback loops

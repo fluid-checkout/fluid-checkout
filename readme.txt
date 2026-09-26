@@ -357,7 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Added: New “More plugins from Fluid Checkout” section on the settings dashboard.
-* Added: New settings pages and setup wizard.
+* Added: New settings pages and guided setup.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
@@ -367,6 +367,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Moved the Site key section from the dashboard to the License keys settings page.
 * Improved: Show the site environment reports opt-in notice only two weeks after installation, and not on Fluid Checkout settings pages.
 * Improved: Moved the Address Book Migration section from the Tools tab to the Address Book settings page.
+* Improved: Removed the experimental label from the precise phone number validation option.
+* Improved: Show field descriptions below settings fields, and use info tips only for tip content.
 
 = 4.2.7 - 2026-08-19 =
 

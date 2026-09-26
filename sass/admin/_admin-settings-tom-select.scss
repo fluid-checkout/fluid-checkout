@@ -3,7 +3,8 @@
 // ------------------------------------
 
 .fc-settings-field__control .ts-wrapper {
-	max-width: $fc-settings-field-control-max-width;
+	width: 100%;
+	max-width: none; // Needed to override WP admin `max-width: 25rem`
 }
 
 .fc-settings-field__control .ts-wrapper.multi {

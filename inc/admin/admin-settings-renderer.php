@@ -383,7 +383,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function get_field_description( $value ) {
-		// Maybe move description content into the custom info tip on the Cart settings tab
+		// Maybe suppress WooCommerce tip markup when using custom info tips
 		if ( $this->uses_info_tooltips() ) {
 			$value = $this->prepare_field_args_for_info_tooltips( $value );
 		}
@@ -406,57 +406,28 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	}
 
 	/**
-	 * Clear description arguments that are shown via the custom info tip instead.
+	 * Suppress WooCommerce tip markup when custom info tips are used.
+	 * Keeps `desc` so the field description is shown below the control.
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function prepare_field_args_for_info_tooltips( $value ) {
-		$has_string_tip = ! empty( $value[ 'desc_tip' ] ) && true !== $value[ 'desc_tip' ];
-
-		// Keep the checkbox label text next to the toggle; only suppress the WooCommerce tip
-		if ( 'checkbox' === $value[ 'type' ] ) {
-			$value[ 'desc_tip' ] = false;
-			return $value;
-		}
-
-		// Keep the Address Book migration description next to the controls
-		if ( 'fc_address_book_migration' === $value[ 'type' ] ) {
-			return $value;
-		}
-
-		// Move tip or field description into the info tip
-		if ( $has_string_tip || true === $value[ 'desc_tip' ] || ! empty( $value[ 'desc' ] ) ) {
-			$value[ 'desc' ] = '';
-			$value[ 'desc_tip' ] = false;
-		}
+		// Custom tip is rendered from `desc_tip` separately; clear WC tip output only
+		$value[ 'desc_tip' ] = false;
 
 		return $value;
 	}
 
 	/**
 	 * Get the content shown inside the custom info tip for a field.
+	 * Uses only the string `desc_tip` value. Field `desc` is shown below the control.
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function get_info_tooltip_content( $value ) {
-		// Prefer an explicit tip string
+		// Only explicit tip strings become tip content
 		if ( ! empty( $value[ 'desc_tip' ] ) && true !== $value[ 'desc_tip' ] ) {
 			return $value[ 'desc_tip' ];
-		}
-
-		// When desc_tip is true, WooCommerce uses the description as the tip
-		if ( true === $value[ 'desc_tip' ] && ! empty( $value[ 'desc' ] ) ) {
-			return $value[ 'desc' ];
-		}
-
-		// Keep migration description next to the controls instead of in the tip
-		if ( 'fc_address_book_migration' === $value[ 'type' ] ) {
-			return '';
-		}
-
-		// Move non-checkbox field descriptions into the tip
-		if ( 'checkbox' !== $value[ 'type' ] && ! empty( $value[ 'desc' ] ) ) {
-			return $value[ 'desc' ];
 		}
 
 		return '';
@@ -719,7 +690,6 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		$field_description = $this->get_field_description( $value );
 
 		$this->output_field_start( $value );
-		echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
 		<textarea
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
@@ -730,6 +700,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<?php disabled( $this->is_field_disabled( $value ) ); ?>
 			><?php echo esc_textarea( $value[ 'value' ] ); ?></textarea>
+		<?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php
 		$this->output_field_end( $value );
 	}
