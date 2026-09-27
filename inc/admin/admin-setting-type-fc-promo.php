@@ -37,10 +37,11 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		// Bail if not on the Fluid Checkout settings page
 		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) || ! FluidCheckout_Admin_Settings_Page::instance()->is_settings_page() ) { return; }
 
-		// Bail if the dashboard script is already registered (Dashboard tab owns enqueue there)
+		// Bail if already enqueued (Dashboard tab may own enqueue there)
 		if ( wp_script_is( 'fc-admin-dashboard-addons', 'enqueued' ) ) { return; }
 
-		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array(), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-dashboard-addons', 'window.addEventListener("load",function(){FCAdminDashboardAddons.init(fcAdminDashboardAddonsSettings);});' );
 
 		// EXCEPTION: Runtime values — AJAX URL and nonce for local Activate.
 		wp_localize_script(
@@ -148,8 +149,10 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			return '';
 		}
 
-		$is_installed = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
-		$action_type  = $is_installed ? 'activate' : 'purchase';
+		$is_pro_promo  = false !== strpos( $plugin_file, 'fluid-checkout-pro/' );
+		$is_installed  = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
+		$action_type   = $is_installed ? 'activate' : 'purchase';
+		$admin         = FluidCheckout_Admin::instance();
 
 		ob_start();
 
@@ -164,16 +167,48 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
 		else :
+			// Add-on promos: also offer Upgrade to PRO when PRO is not active
+			if ( ! $is_pro_promo && ! FluidCheckout::instance()->is_pro_activated() ) {
+				$pro_plugin_file = 'fluid-checkout-pro/fluid-checkout-pro.php';
+				$pro_price       = ! empty( $value[ 'pro_purchase_price' ] ) ? (string) $value[ 'pro_purchase_price' ] : '129 EUR';
+				$pro_purchase_url = ! empty( $value[ 'pro_purchase_url' ] )
+					? (string) $value[ 'pro_purchase_url' ]
+					: add_query_arg(
+						array(
+							'mtm_campaign' => 'upgrade-pro',
+							'mtm_kwd'      => sanitize_title( ! empty( $value[ 'id' ] ) ? $value[ 'id' ] : 'addon-promo' ) . '-upgrade-pro',
+							'mtm_source'   => 'lite-plugin',
+						),
+						'https://fluidcheckout.com/pricing/'
+					);
+
+				if ( FluidCheckout::instance()->is_plugin_installed( $pro_plugin_file ) ) :
+					?>
+					<button
+						type="button"
+						class="button button-primary fc-addons__item-action--activate"
+						data-action="activate"
+						data-plugin="<?php echo esc_attr( $pro_plugin_file ); ?>"
+					><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>
+					<div class="fc-addons__item-action-notice" hidden></div>
+					<?php
+				else :
+					?>
+					<a href="<?php echo esc_url( $pro_purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $admin->get_pro_upgrade_button_label( $pro_price ) ); ?></a>
+					<?php
+				endif;
+			}
+
 			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
 			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
 
 			// Maybe build the purchase label from a price using the centralized helpers
 			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
 				$purchase_price = (string) $value[ 'purchase_price' ];
-				if ( false !== strpos( $plugin_file, 'fluid-checkout-pro/' ) ) {
-					$purchase_label = FluidCheckout_Admin::instance()->get_pro_upgrade_button_label( $purchase_price );
+				if ( $is_pro_promo ) {
+					$purchase_label = $admin->get_pro_upgrade_button_label( $purchase_price );
 				} else {
-					$purchase_label = FluidCheckout_Admin::instance()->get_addon_purchase_button_label( $purchase_price );
+					$purchase_label = $admin->get_addon_purchase_button_label( $purchase_price );
 				}
 			}
 

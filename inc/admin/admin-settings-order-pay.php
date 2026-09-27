@@ -65,6 +65,10 @@ class FluidCheckout_Settings_OrderPay {
 				),
 				'learn_more_url'   => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=order-pay-promo-learn-more&mtm_source=lite-plugin',
 				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+				'plugin_file'      => 'fluid-checkout-pro/fluid-checkout-pro.php',
+				'plugin_slug'      => 'fluid-checkout-pro',
+				'purchase_url'     => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=order-pay-promo-purchase&mtm_source=lite-plugin',
+				'purchase_price'   => '129 EUR',
 			),
 		);
 	}

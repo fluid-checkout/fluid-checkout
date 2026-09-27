@@ -344,7 +344,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function get_addon_purchase_button_label( $price ) {
 		/* translators: %s: formatted price including currency, e.g. "29 EUR" */
-		return sprintf( __( 'Get this add-on &mdash; %s', 'fluid-checkout' ), $price );
+		return sprintf( __( 'Get only this add-on &mdash; %s', 'fluid-checkout' ), $price );
 	}
 
 	/**
