@@ -143,7 +143,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_telemetry_data_groups'                                    => array( 'basic_environment', 'plugin_settings' ),
 
 			// Settings without options in the admin panel.
-			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
 			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
