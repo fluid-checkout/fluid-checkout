@@ -149,10 +149,19 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			return '';
 		}
 
-		$is_pro_promo  = false !== strpos( $plugin_file, 'fluid-checkout-pro/' );
-		$is_installed  = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
-		$action_type   = $is_installed ? 'activate' : 'purchase';
-		$admin         = FluidCheckout_Admin::instance();
+		$is_pro_promo     = false !== strpos( $plugin_file, 'fluid-checkout-pro/' );
+		$pro_plugin_file  = 'fluid-checkout-pro/fluid-checkout-pro.php';
+		$is_pro_installed = FluidCheckout::instance()->is_plugin_installed( $pro_plugin_file );
+		$is_installed     = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
+		$plugin_slug      = isset( $value[ 'plugin_slug' ] ) ? sanitize_key( (string) $value[ 'plugin_slug' ] ) : '';
+		$action_type      = $is_installed ? 'activate' : 'purchase';
+		$admin            = FluidCheckout_Admin::instance();
+
+		// Fallback slug from the plugin basename folder when not provided
+		if ( '' === $plugin_slug ) {
+			$parts       = explode( '/', $plugin_file );
+			$plugin_slug = sanitize_key( $parts[0] ?? '' );
+		}
 
 		ob_start();
 
@@ -166,11 +175,36 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 			><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
+		elseif ( $is_pro_promo ) :
+			// PRO feature promos (Cart, Thank You, Order Pay): upgrade or activate PRO
+			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
+			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
+
+			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
+				$purchase_label = $admin->get_pro_upgrade_button_label( (string) $value[ 'purchase_price' ] );
+			}
+
+			if ( '' !== $purchase_url && '' !== $purchase_label ) :
+				?>
+				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
+				<?php
+			endif;
 		else :
-			// Add-on promos: also offer Upgrade to PRO when PRO is not active
-			if ( ! $is_pro_promo && ! FluidCheckout::instance()->is_pro_activated() ) {
-				$pro_plugin_file = 'fluid-checkout-pro/fluid-checkout-pro.php';
-				$pro_price       = ! empty( $value[ 'pro_purchase_price' ] ) ? (string) $value[ 'pro_purchase_price' ] : '129 EUR';
+			// Add-on promos
+			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
+			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
+			$is_entitled    = '' !== $plugin_slug
+				&& class_exists( 'FC_Licenses_Client' )
+				&& FC_Licenses_Client::has_site_key()
+				&& FC_Licenses_Client::is_plugin_entitled_with_site_key( $plugin_slug );
+
+			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
+				$purchase_label = $admin->get_addon_purchase_button_label( (string) $value[ 'purchase_price' ] );
+			}
+
+			if ( ! $is_pro_installed ) :
+				// PRO not installed: Upgrade to PRO + optional “Get only this add-on”
+				$pro_price        = ! empty( $value[ 'pro_purchase_price' ] ) ? (string) $value[ 'pro_purchase_price' ] : '129 EUR';
 				$pro_purchase_url = ! empty( $value[ 'pro_purchase_url' ] )
 					? (string) $value[ 'pro_purchase_url' ]
 					: add_query_arg(
@@ -181,42 +215,23 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 						),
 						'https://fluidcheckout.com/pricing/'
 					);
-
-				if ( FluidCheckout::instance()->is_plugin_installed( $pro_plugin_file ) ) :
-					?>
-					<button
-						type="button"
-						class="button button-primary fc-addons__item-action--activate"
-						data-action="activate"
-						data-plugin="<?php echo esc_attr( $pro_plugin_file ); ?>"
-					><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>
-					<div class="fc-addons__item-action-notice" hidden></div>
-					<?php
-				else :
-					?>
-					<a href="<?php echo esc_url( $pro_purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $admin->get_pro_upgrade_button_label( $pro_price ) ); ?></a>
-					<?php
-				endif;
-			}
-
-			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
-			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
-
-			// Maybe build the purchase label from a price using the centralized helpers
-			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
-				$purchase_price = (string) $value[ 'purchase_price' ];
-				if ( $is_pro_promo ) {
-					$purchase_label = $admin->get_pro_upgrade_button_label( $purchase_price );
-				} else {
-					$purchase_label = $admin->get_addon_purchase_button_label( $purchase_price );
-				}
-			}
-
-			if ( '' !== $purchase_url && '' !== $purchase_label ) :
 				?>
-				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
-				<?php
-			endif;
+				<a href="<?php echo esc_url( $pro_purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $admin->get_pro_upgrade_button_label( $pro_price ) ); ?></a>
+				<?php if ( '' !== $purchase_url && '' !== $purchase_label ) : ?>
+					<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
+				<?php endif; ?>
+			<?php elseif ( $is_entitled ) : ?>
+				<?php // PRO installed: Install when entitled (PRO may replace via filter). Keep action_type as `purchase` so active PRO can swap in the licensed Install UI. ?>
+				<button
+					type="button"
+					class="button button-primary button--install fc-addons__item-action--install"
+					data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
+				><?php echo esc_html( __( 'Install plugin', 'fluid-checkout' ) ); ?></button>
+				<div class="fc-addons__item-action-notice" hidden></div>
+			<?php elseif ( '' !== $purchase_url ) : ?>
+				<?php // PRO installed, not entitled: price-less purchase CTA so entitled customers are not nudged to pay again. ?>
+				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $admin->get_addon_purchase_button_label_without_price() ); ?></a>
+			<?php endif;
 		endif;
 
 		$html = (string) ob_get_clean();

@@ -348,6 +348,15 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
+	 * Get the purchase button label for an add-on without a price.
+	 *
+	 * Used when PRO is installed so entitled customers are not nudged to pay again.
+	 */
+	public function get_addon_purchase_button_label_without_price() {
+		return __( 'Get this add-on', 'fluid-checkout' );
+	}
+
+	/**
 	 * Get the upgrade button label for Fluid Checkout PRO.
 	 *
 	 * @param  string  $price  Formatted price including currency, e.g. `129 EUR`.
