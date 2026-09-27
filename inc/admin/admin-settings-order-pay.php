@@ -1,40 +1,29 @@
 <?php
 /**
  * Fluid Checkout PRO Order Pay Settings
- *
- * @package fluid-checkout-pro
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_OrderPay_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_OrderPay_Settings();
+if ( class_exists( 'FluidCheckout_Settings_OrderPay', false ) ) {
+	FluidCheckout_Settings_OrderPay::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_OrderPay_Settings.
+ * FluidCheckout_Settings_OrderPay.
  */
-class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_OrderPay {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -44,7 +33,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'order_pay' => _x( 'Order pay', 'Settings section', 'fluid-checkout' ),
 		) );
@@ -57,7 +46,7 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 	/**
 	 * Get the promotional settings card shown at the top of the Order Pay tab when PRO is not active.
 	 */
-	public function get_promo_settings() {
+	public static function get_promo_settings() {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return array(); }
 
@@ -88,13 +77,13 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'order_pay' === $current_section ) {
 
 			$settings = apply_filters(
 				'fc_pro_order_pay_settings',
 				array_merge(
-					$this->get_promo_settings(),
+					self::get_promo_settings(),
 					array(
 
 					array(
@@ -114,7 +103,6 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_pay' ),
 						'checkboxgroup'     => 'start',
-						'show_if_checked'   => 'option',
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',
@@ -163,4 +151,4 @@ class WC_Settings_FluidCheckout_OrderPay_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_OrderPay_Settings();
+FluidCheckout_Settings_OrderPay::hooks();

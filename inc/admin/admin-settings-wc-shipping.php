@@ -1,42 +1,31 @@
 <?php
 /**
  * WooCommerce Checkout Settings
- *
- * @package fluid-checkout
- * @version 1.2.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_WCShippingSettings', false ) ) {
-	return new WC_Settings_FluidCheckout_WCShippingSettings();
+if ( class_exists( 'FluidCheckout_Settings_WCShipping', false ) ) {
+	FluidCheckout_Settings_WCShipping::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_WCShippingSettings.
+ * FluidCheckout_Settings_WCShipping.
  */
-class WC_Settings_FluidCheckout_WCShippingSettings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_WCShipping {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// WooCommerce Shipping Settings
-		add_filter( 'woocommerce_get_settings_shipping', array( $this, 'change_shipping_destination_settings_args' ), 100, 2 );
+		add_filter( 'woocommerce_get_settings_shipping', array( __CLASS__, 'change_shipping_destination_settings_args' ), 100, 2 );
 	}
 
 
 
-	public function change_shipping_destination_settings_args( $settings, $current_section ) {
+	public static function change_shipping_destination_settings_args( $settings, $current_section ) {
 		// Bail if not on shipping options section
 		if ( $current_section != 'options' ) { return $settings; }
 
@@ -56,4 +45,4 @@ class WC_Settings_FluidCheckout_WCShippingSettings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_WCShippingSettings();
+FluidCheckout_Settings_WCShipping::hooks();

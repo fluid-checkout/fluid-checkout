@@ -1,40 +1,29 @@
 <?php
 /**
  * Fluid Checkout Account Matching Settings
- *
- * @package fluid-checkout
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_AccountMatching_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_AccountMatching_Settings();
+if ( class_exists( 'FluidCheckout_Settings_AccountMatching', false ) ) {
+	FluidCheckout_Settings_AccountMatching::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_AccountMatching_Settings.
+ * FluidCheckout_Settings_AccountMatching.
  */
-class WC_Settings_FluidCheckout_AccountMatching_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_AccountMatching {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -44,7 +33,7 @@ class WC_Settings_FluidCheckout_AccountMatching_Settings extends WC_Settings_Pag
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'account_matching' => __( 'Account Matching', 'fluid-checkout' ),
 		) );
@@ -60,7 +49,7 @@ class WC_Settings_FluidCheckout_AccountMatching_Settings extends WC_Settings_Pag
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'account_matching' !== $current_section ) { return $settings; }
 
 		return apply_filters(
@@ -82,7 +71,6 @@ class WC_Settings_FluidCheckout_AccountMatching_Settings extends WC_Settings_Pag
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_account_matching' ),
 					'checkboxgroup'         => 'start',
-					'show_if_checked'       => 'option',
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -94,7 +82,10 @@ class WC_Settings_FluidCheckout_AccountMatching_Settings extends WC_Settings_Pag
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_account_matching_display_account_exists_message' ),
 					'checkboxgroup'         => '',
-					'show_if_checked'       => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_pro_enable_account_matching',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -110,4 +101,4 @@ class WC_Settings_FluidCheckout_AccountMatching_Settings extends WC_Settings_Pag
 
 }
 
-return new WC_Settings_FluidCheckout_AccountMatching_Settings();
+FluidCheckout_Settings_AccountMatching::hooks();

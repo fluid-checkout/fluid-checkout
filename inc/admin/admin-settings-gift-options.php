@@ -1,40 +1,29 @@
 <?php
 /**
  * Fluid Checkout Gift Options Settings
- *
- * @package fluid-checkout
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_GiftOptions_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_GiftOptions_Settings();
+if ( class_exists( 'FluidCheckout_Settings_GiftOptions', false ) ) {
+	FluidCheckout_Settings_GiftOptions::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_GiftOptions_Settings.
+ * FluidCheckout_Settings_GiftOptions.
  */
-class WC_Settings_FluidCheckout_GiftOptions_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_GiftOptions {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -44,7 +33,7 @@ class WC_Settings_FluidCheckout_GiftOptions_Settings extends WC_Settings_Page {
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'gift_options' => __( 'Gift Options', 'fluid-checkout' ),
 		) );
@@ -60,7 +49,7 @@ class WC_Settings_FluidCheckout_GiftOptions_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'gift_options' !== $current_section ) { return $settings; }
 
 		return apply_filters(
@@ -82,7 +71,6 @@ class WC_Settings_FluidCheckout_GiftOptions_Settings extends WC_Settings_Page {
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_gift_options' ),
 					'checkboxgroup'         => 'start',
-					'show_if_checked'       => 'option',
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -93,7 +81,10 @@ class WC_Settings_FluidCheckout_GiftOptions_Settings extends WC_Settings_Page {
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_default_gift_options_expanded' ),
 					'checkboxgroup'         => '',
-					'show_if_checked'       => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_enable_checkout_gift_options',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -105,7 +96,10 @@ class WC_Settings_FluidCheckout_GiftOptions_Settings extends WC_Settings_Page {
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_display_gift_message_in_order_details' ),
 					'checkboxgroup'         => 'end',
-					'show_if_checked'       => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_enable_checkout_gift_options',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -121,4 +115,4 @@ class WC_Settings_FluidCheckout_GiftOptions_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_GiftOptions_Settings();
+FluidCheckout_Settings_GiftOptions::hooks();

@@ -1,22 +1,20 @@
 <?php
 /**
  * Fluid Checkout VAT Assistant Settings
- *
- * @package fluid-checkout
- * @version 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_VATAssistant_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_VATAssistant_Settings();
+if ( class_exists( 'FluidCheckout_Settings_VATAssistant', false ) ) {
+	FluidCheckout_Settings_VATAssistant::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_VATAssistant_Settings.
+ * FluidCheckout_Settings_VATAssistant.
  * Settings are locked until the VAT Assistant add-on unlocks the feature `vat_assistant`.
  */
-class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
+class FluidCheckout_Settings_VATAssistant {
 
 	/**
 	 * Feature slug used to lock and unlock the settings.
@@ -31,21 +29,11 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 
 	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
-
-	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -53,7 +41,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 	/**
 	 * Get the tax class options for the digital goods setting.
 	 */
-	public function get_tax_classes_options() {
+	public static function get_tax_classes_options() {
 		// Define standard tax classes
 		$tax_classes_options = array(
 			'standard' => __( 'Standard', 'fluid-checkout' ),
@@ -73,7 +61,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 	/**
 	 * Get the shop VAT country name, from the VAT Assistant add-on when available, or the WooCommerce store country.
 	 */
-	public function get_shop_vat_country_name() {
+	public static function get_shop_vat_country_name() {
 		// Maybe get country name from the VAT Assistant add-on
 		if ( class_exists( 'FC_VAT_Assistant_Checkout_EU_VAT' ) ) {
 			return FC_VAT_Assistant_Checkout_EU_VAT::instance()->get_shop_vat_country_name();
@@ -91,7 +79,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 	/**
 	 * Get the countries options for the reverse charge exceptions setting.
 	 */
-	public function get_reverse_charge_countries_skip_list_options() {
+	public static function get_reverse_charge_countries_skip_list_options() {
 		$countries = function_exists( 'WC' ) ? WC()->countries->countries : array();
 		return apply_filters( 'fc_vat_reverse_charge_countries_skip_list_options', $countries );
 	}
@@ -101,7 +89,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 	/**
 	 * Get the promotional settings card shown at the top of the VAT Assistant tab when the add-on is not active.
 	 */
-	public function get_promo_settings() {
+	public static function get_promo_settings() {
 		// Bail if the add-on feature is already unlocked
 		if ( FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return array(); }
 
@@ -151,14 +139,14 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		// Bail if not on the VAT Assistant section
 		if ( 'vat_number' !== $current_section ) { return $settings; }
 
 		$settings = apply_filters(
 			'fc_vat_' . $current_section . '_settings',
 			array_merge(
-				$this->get_promo_settings(),
+				self::get_promo_settings(),
 				array(
 				array(
 					'title'             => __( 'VAT Number Field', 'fluid-checkout' ),
@@ -218,7 +206,6 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'id'                => 'fc_vat_number_eu_vat_validation',
 					'type'              => 'checkbox',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_validation' ),
-					'show_if_checked'   => 'option',
 					'autoload'          => false,
 					'disabled'          => true,
 					'requires'          => self::FEATURE,
@@ -243,20 +230,26 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'checkbox',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_reverse_charge' ),
 					'checkboxgroup'     => 'start',
-					'show_if_checked'   => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_vat_number_eu_vat_validation',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'          => false,
 					'disabled'          => true,
 					'requires'          => self::FEATURE,
 				),
 
 				array(
-					'desc'              => __( 'Apply reverse charge mechanism for transactions in the shop country:', 'fluid-checkout' ) . ' <strong>' . esc_html( $this->get_shop_vat_country_name() ) . '</strong>',
+					'desc'              => __( 'Apply reverse charge mechanism for transactions in the shop country:', 'fluid-checkout' ) . ' <strong>' . esc_html( self::get_shop_vat_country_name() ) . '</strong>',
 					'desc_tip'          => __( 'Enables applying reverse charge mechanism for transactions between companies in the same country as the shop.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_same_country',
 					'type'              => 'checkbox',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_reverse_charge_same_country' ),
 					'checkboxgroup'     => 'end',
-					'show_if_checked'   => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_vat_number_eu_vat_validation',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'          => false,
 					'disabled'          => true,
 					'requires'          => self::FEATURE,
@@ -268,7 +261,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'desc_tip'          => __( 'Select additional countries to skip applying the reverse charge mechanism.', 'fluid-checkout' ) . ' <br>' . __( 'Taxes will be charged to orders from these countries even when a valid VAT number is provided.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_countries_skip_list',
 					'type'              => 'multi_select_countries',
-					'options'           => $this->get_reverse_charge_countries_skip_list_options(),
+					'options'           => self::get_reverse_charge_countries_skip_list_options(),
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_reverse_charge_countries_skip_list' ),
 					'autoload'          => false,
 					'disabled'          => true,
@@ -309,7 +302,6 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'checkbox',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_autocomplete_billing_company_name' ),
 					'checkboxgroup'     => 'start',
-					'show_if_checked'   => 'option',
 					'autoload'          => false,
 					'disabled'          => true,
 					'requires'          => self::FEATURE,
@@ -321,7 +313,10 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'checkbox',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_autocomplete_billing_company_name_editing' ),
 					'checkboxgroup'     => 'end',
-					'show_if_checked'   => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_vat_number_autocomplete_billing_company_name',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'          => false,
 					'disabled'          => true,
 					'requires'          => self::FEATURE,
@@ -347,7 +342,7 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 					'type'              => 'multiselect',
 					'class'             => 'fc-enhanced-select',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_eu_vat_digital_goods_tax_classes' ),
-					'options'           => $this->get_tax_classes_options(),
+					'options'           => self::get_tax_classes_options(),
 					'custom_attributes' => array(
 						'data-placeholder' => __( 'Select some tax classes', 'fluid-checkout' ),
 					),
@@ -380,4 +375,4 @@ class WC_Settings_FluidCheckout_VATAssistant_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_VATAssistant_Settings();
+FluidCheckout_Settings_VATAssistant::hooks();

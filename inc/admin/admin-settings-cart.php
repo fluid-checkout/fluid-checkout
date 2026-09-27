@@ -1,40 +1,29 @@
 <?php
 /**
- * Fluid Checkout PRO Cart Settings
- *
- * @package fluid-checkout
+ * Fluid Checkout Cart Settings
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_Cart_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_Cart_Settings();
+if ( class_exists( 'FluidCheckout_Settings_Cart', false ) ) {
+	FluidCheckout_Settings_Cart::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_Cart_Settings.
+ * FluidCheckout_Settings_Cart.
  */
-class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_Cart {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -44,7 +33,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'cart' => _x( 'Cart', 'Settings section', 'fluid-checkout' ),
 		) );
@@ -60,13 +49,13 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'cart' === $current_section ) {
 
 			$settings = apply_filters(
 				'fc_pro_cart_settings',
 				array_merge(
-					$this->get_cart_promo_settings(),
+					self::get_cart_promo_settings(),
 					array(
 
 					array(
@@ -263,7 +252,7 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 	/**
 	 * Get the promotional settings card shown at the top of the Cart tab when PRO is not active.
 	 */
-	public function get_cart_promo_settings() {
+	public static function get_cart_promo_settings() {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return array(); }
 
@@ -289,4 +278,4 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_Cart_Settings();
+FluidCheckout_Settings_Cart::hooks();

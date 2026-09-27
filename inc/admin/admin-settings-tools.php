@@ -1,46 +1,32 @@
 <?php
 /**
  * Fluid Checkout Tools Settings
- *
- * @package fluid-checkout
- * @version 1.5.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_Tools_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_Tools_Settings();
+if ( class_exists( 'FluidCheckout_Settings_Tools', false ) ) {
+	FluidCheckout_Settings_Tools::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_Tools_Settings.
+ * FluidCheckout_Settings_Tools.
  */
-class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_Tools {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 
 		// Site report settings
-		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'sanitize_telemetry_settings' ), 10, 3 );
-		add_action( 'woocommerce_settings_saved', array( $this, 'maybe_sync_telemetry_cron_on_settings_saved' ), 10 );
-		add_action( 'fc_admin_settings_saved', array( $this, 'maybe_sync_telemetry_cron_on_fc_settings_saved' ), 10 );
+		add_action( 'fc_admin_settings_saved', array( __CLASS__, 'maybe_sync_telemetry_cron_on_fc_settings_saved' ), 10 );
 	}
 
 
@@ -50,7 +36,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		// Define sections to insert
 		$insert_sections = array(
 			'tools' => __( 'Tools', 'fluid-checkout' ),
@@ -80,7 +66,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'tools' === $current_section ) {
 
 			$settings = array(
@@ -101,7 +87,6 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'type'            => 'fc_telemetry_enable',
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_enabled' ),
 					'checkboxgroup'   => 'start',
-					'show_if_checked' => 'option',
 					'autoload'        => false,
 				),
 				array(
@@ -128,7 +113,10 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'disabled_options'  => array( 'basic_environment', 'plugin_settings' ),
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_data_groups' ),
 					'checkboxgroup'     => 'end',
-					'show_if_checked'   => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_telemetry_enabled',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'          => false,
 				),
 
@@ -184,7 +172,6 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'type'             => 'checkbox',
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_debug_mode' ),
 					'checkboxgroup'    => 'start',
-					'show_if_checked'  => 'option',
 					'autoload'         => false,
 				),
 				array(
@@ -193,7 +180,10 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 					'type'             => 'checkbox',
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_load_unminified_assets' ),
 					'checkboxgroup'    => 'end',
-					'show_if_checked'  => 'yes',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_debug_mode',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'         => false,
 				),
 
@@ -219,19 +209,19 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 * @param array $option    Option definition.
 	 * @param mixed $raw_value Raw option value.
 	 */
-	public function sanitize_telemetry_settings( $value, $option, $raw_value ) {
+	public static function sanitize_telemetry_settings( $value, $option, $raw_value ) {
 		if ( empty( $option['id'] ) || 'fc_telemetry_data_groups' !== $option['id'] ) {
 			return $value;
 		}
 
 		// Preserve stored groups when reporting is disabled and the field is hidden.
-		if ( 'no' === get_option( 'fc_telemetry_enabled', 'no' ) ) {
-			return $this->normalize_telemetry_data_groups( get_option( 'fc_telemetry_data_groups', array( 'basic_environment' ) ) );
+		if ( 'no' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ) ) {
+			return self::normalize_telemetry_data_groups( FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_data_groups', array( 'basic_environment' ) ) );
 		}
 
 		$groups = is_array( $raw_value ) ? $raw_value : array();
 
-		return $this->normalize_telemetry_data_groups( $groups );
+		return self::normalize_telemetry_data_groups( $groups );
 	}
 
 
@@ -241,7 +231,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 *
 	 * @param mixed $groups Raw or sanitized group values.
 	 */
-	public function normalize_telemetry_data_groups( $groups ) {
+	public static function normalize_telemetry_data_groups( $groups ) {
 		$allowed = array( 'basic_environment', 'plugin_settings', 'woocommerce_sales_metrics' );
 
 		if ( ! is_array( $groups ) ) {
@@ -277,7 +267,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	/**
 	 * Schedule or clear the site report cron when Tools settings are saved.
 	 */
-	public function maybe_sync_telemetry_cron_on_settings_saved() {
+	public static function maybe_sync_telemetry_cron_on_settings_saved() {
 		// Bail if not saving Fluid Checkout Tools settings
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( empty( $_GET['tab'] ) || 'fc_checkout' !== wp_unslash( $_GET['tab'] ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -289,7 +279,7 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 			return;
 		}
 
-		$this->sync_telemetry_cron();
+		self::sync_telemetry_cron();
 	}
 
 	/**
@@ -297,17 +287,17 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 	 *
 	 * @param  string  $tab  Settings tab slug.
 	 */
-	public function maybe_sync_telemetry_cron_on_fc_settings_saved( $tab ) {
+	public static function maybe_sync_telemetry_cron_on_fc_settings_saved( $tab ) {
 		// Bail if not saving the Tools tab
 		if ( 'tools' !== $tab ) { return; }
 
-		$this->sync_telemetry_cron();
+		self::sync_telemetry_cron();
 	}
 
 	/**
 	 * Schedule or clear the site report cron based on the site report settings.
 	 */
-	public function sync_telemetry_cron() {
+	public static function sync_telemetry_cron() {
 		// Bail if telemetry client is not available
 		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
 
@@ -326,4 +316,4 @@ class WC_Settings_FluidCheckout_Tools_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_Tools_Settings();
+FluidCheckout_Settings_Tools::hooks();

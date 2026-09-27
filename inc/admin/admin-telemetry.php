@@ -44,7 +44,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 			array(
 				'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
 				'nonce'           => wp_create_nonce( 'fc_telemetry_admin' ),
-				'isEnabledSaved'  => 'yes' === get_option( 'fc_telemetry_enabled', 'no' ),
+				'isEnabledSaved'  => 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ),
 				'i18n'            => array(
 					'modalTitle'       => __( 'Site report preview', 'fluid-checkout' ),
 					'modalDescription' => __( 'This is the data that would be included in the next site environment report based on your current settings.', 'fluid-checkout' ),

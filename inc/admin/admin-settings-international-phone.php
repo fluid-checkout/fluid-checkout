@@ -1,40 +1,29 @@
 <?php
 /**
  * Fluid Checkout International Phone Numbers Settings
- *
- * @package fluid-checkout
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_InternationalPhone_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_InternationalPhone_Settings();
+if ( class_exists( 'FluidCheckout_Settings_InternationalPhone', false ) ) {
+	FluidCheckout_Settings_InternationalPhone::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_InternationalPhone_Settings.
+ * FluidCheckout_Settings_InternationalPhone.
  */
-class WC_Settings_FluidCheckout_InternationalPhone_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_InternationalPhone {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -44,7 +33,7 @@ class WC_Settings_FluidCheckout_InternationalPhone_Settings extends WC_Settings_
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'international_phone' => __( 'International Phone Numbers', 'fluid-checkout' ),
 		) );
@@ -60,7 +49,7 @@ class WC_Settings_FluidCheckout_InternationalPhone_Settings extends WC_Settings_
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'international_phone' !== $current_section ) { return $settings; }
 
 		return apply_filters(
@@ -170,4 +159,4 @@ class WC_Settings_FluidCheckout_InternationalPhone_Settings extends WC_Settings_
 
 }
 
-return new WC_Settings_FluidCheckout_InternationalPhone_Settings();
+FluidCheckout_Settings_InternationalPhone::hooks();

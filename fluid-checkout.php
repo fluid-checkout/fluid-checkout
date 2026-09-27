@@ -512,7 +512,6 @@ class FluidCheckout {
 
 	/**
 	 * Load admin notices.
-	 * @since 1.2.5
 	 */
 	private function load_admin_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
@@ -523,6 +522,7 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-settings-legacy-cleanup.php';
 		require_once self::$directory_path . 'inc/admin/admin-telemetry-settings.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-telemetry.php';
 	}
@@ -531,7 +531,6 @@ class FluidCheckout {
 
 	/**
 	 * Register plugin features.
-	 * @since 1.2.0
 	 */
 	private function register_features() {
 		self::$features = array(
@@ -585,11 +584,15 @@ class FluidCheckout {
 
 	/**
 	 * Load the plugin features
-	 * @since 1.2.0
 	 */
 	public function load_features() {
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
+
+		// Load admin features
+		if ( is_admin() ) {
+			require_once self::$directory_path . 'inc/admin/admin.php';
+		}
 
 		// Load each features
 		foreach ( self::$features as $feature_key => $feature ) {
@@ -599,18 +602,12 @@ class FluidCheckout {
 				require_once $file;
 			}
 		}
-
-		// Load admin features
-		if ( is_admin() ) {
-			require_once self::$directory_path . 'inc/admin/admin.php';
-		}
 	}
 
 
 
 	/**
 	 * Load plugins compatibility features.
-	 * @since 1.2.0
 	 */
 	public function load_plugin_compat_features() {
 		// Get active plugins
@@ -640,7 +637,6 @@ class FluidCheckout {
 
 	/**
 	 * Load themes compatibility features.
-	 * @since 1.2.0
 	 */
 	public function load_theme_compat_features() {
 		// Get currently active theme and child theme
@@ -684,8 +680,6 @@ class FluidCheckout {
 
 	/**
 	 * Check if Woocommerce is active on a single install or network wide.
-	 *
-	 * @since 1.0.0
 	 */
 	public function is_woocommerce_activated() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -712,7 +706,6 @@ class FluidCheckout {
 	 * Check if a plugin is installed on a single install or network wide.
 	 * 
 	 * @param  string  $plugin_file   The plugin file name.
-	 * @since 3.0.0
 	 */
 	public function is_plugin_installed( $plugin_file ) {
 		$is_installed = file_exists( trailingslashit( WP_PLUGIN_DIR ) . $plugin_file ) || $this->is_plugin_activated( $plugin_file );
@@ -723,7 +716,6 @@ class FluidCheckout {
 	 * Check if a plugin is active on a single install or network wide.
 	 * 
 	 * @param  string  $plugin_file   The plugin file name.
-	 * @since 3.0.0
 	 */
 	public function is_plugin_activated( $plugin_file ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -734,8 +726,6 @@ class FluidCheckout {
 
 	/**
 	 * Check if Fluid Checkout PRO is installed on a single install or network wide.
-	 *
-	 * @since 3.0.0
 	 */
 	public function is_pro_installed() {
 		return $this->is_plugin_installed( 'fluid-checkout-pro/fluid-checkout-pro.php' );
@@ -743,8 +733,6 @@ class FluidCheckout {
 
 	/**
 	 * Check if Fluid Checkout PRO is active on a single install or network wide.
-	 *
-	 * @since 1.5.0
 	 */
 	public function is_pro_activated() {
 		return $this->is_plugin_activated( 'fluid-checkout-pro/fluid-checkout-pro.php' );
@@ -754,7 +742,6 @@ class FluidCheckout {
 
 	/**
 	 * Display a admin notice regarding the need for WooCommerce to be active.
-	 * @since  1.2.0
 	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public function add_woocommerce_required_notice( $notices = array() ) {

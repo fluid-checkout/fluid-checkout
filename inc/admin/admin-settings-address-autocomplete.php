@@ -1,23 +1,21 @@
 <?php
 /**
  * Fluid Checkout Address Autocomplete Settings
- *
- * @package fluid-checkout
- * @version 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_AddressAutocomplete_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_AddressAutocomplete_Settings();
+if ( class_exists( 'FluidCheckout_Settings_AddressAutocomplete', false ) ) {
+	FluidCheckout_Settings_AddressAutocomplete::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_AddressAutocomplete_Settings.
+ * FluidCheckout_Settings_AddressAutocomplete.
  * Displays locked placeholders for the Address Autocomplete add-on settings.
  * When the add-on is active, it replaces the placeholders with its own settings.
  */
-class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings_Page {
+class FluidCheckout_Settings_AddressAutocomplete {
 
 	/**
 	 * Feature slug used to lock and unlock the settings.
@@ -32,24 +30,14 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 
 
 	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
-
-	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 
 		// Tools settings, runs after the Tools settings are added
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_debug_settings' ), 20, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_debug_settings' ), 20, 2 );
 	}
 
 
@@ -57,7 +45,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 	/**
 	 * Get the promotional settings card shown at the top of the Address Autocomplete tab when the add-on is not active.
 	 */
-	public function get_promo_settings() {
+	public static function get_promo_settings() {
 		// Bail if the add-on feature is already unlocked
 		if ( FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( self::FEATURE ) ) { return array(); }
 
@@ -102,9 +90,9 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 	/**
 	 * Get the locked placeholder settings for the Address Autocomplete tab.
 	 */
-	public function get_locked_settings() {
+	public static function get_locked_settings() {
 		return array_merge(
-			$this->get_promo_settings(),
+			self::get_promo_settings(),
 			array(
 			array(
 				'title'             => __( 'Google Address Autocomplete', 'fluid-checkout' ),
@@ -242,7 +230,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 	/**
 	 * Get the locked placeholder settings for the Address Autocomplete debug options, displayed on the Tools tab.
 	 */
-	public function get_locked_debug_settings() {
+	public static function get_locked_debug_settings() {
 		return array(
 			array(
 				'title'             => __( 'Troubleshooting - Address Autocomplete', 'fluid-checkout' ),
@@ -279,7 +267,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		// Bail if not on the address autocomplete section
 		if ( 'address_autocomplete' !== $current_section ) { return $settings; }
 
@@ -289,7 +277,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 		 *
 		 * @param  array  $settings  Locked placeholder settings.
 		 */
-		return apply_filters( 'fc_admin_address_autocomplete_settings', $this->get_locked_settings() );
+		return apply_filters( 'fc_admin_address_autocomplete_settings', self::get_locked_settings() );
 	}
 
 	/**
@@ -298,7 +286,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_debug_settings( $settings, $current_section ) {
+	public static function add_debug_settings( $settings, $current_section ) {
 		// Bail if not on the tools section
 		if ( 'tools' !== $current_section ) { return $settings; }
 
@@ -308,7 +296,7 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 		 *
 		 * @param  array  $settings  Locked placeholder settings.
 		 */
-		$debug_settings = apply_filters( 'fc_admin_address_autocomplete_debug_settings', $this->get_locked_debug_settings() );
+		$debug_settings = apply_filters( 'fc_admin_address_autocomplete_debug_settings', self::get_locked_debug_settings() );
 
 		// Bail if debug settings are not valid
 		if ( ! is_array( $debug_settings ) ) { return $settings; }
@@ -318,4 +306,4 @@ class WC_Settings_FluidCheckout_AddressAutocomplete_Settings extends WC_Settings
 
 }
 
-return new WC_Settings_FluidCheckout_AddressAutocomplete_Settings();
+FluidCheckout_Settings_AddressAutocomplete::hooks();

@@ -89,6 +89,7 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 							class="fc-settings-toggle fc-settings-toggle--round"
 							value="<?php echo esc_attr( $option_key ); ?>"
 							<?php checked( $is_checked, true ); ?>
+							<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<?php disabled( $is_disabled ); ?>
 						/>
 						<label for="<?php echo esc_attr( $input_id ); ?>"></label>
@@ -107,6 +108,7 @@ class FluidCheckout_Admin_SettingType_Checkboxgroup extends FluidCheckout {
 							name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>[]"
 							value="<?php echo esc_attr( $option_key ); ?>"
 							<?php checked( $is_checked, true ); ?>
+							<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<?php disabled( $is_disabled ); ?>
 						/>
 						<?php echo esc_html( $option_label ); ?>

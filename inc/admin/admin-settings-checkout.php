@@ -1,41 +1,29 @@
 <?php
 /**
- * Fluid Checkout General Settings
- *
- * @package fluid-checkout
- * @version 1.3.1
+ * Fluid Checkout Checkout Settings
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_Checkout_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_Checkout_Settings();
+if ( class_exists( 'FluidCheckout_Settings_Checkout', false ) ) {
+	FluidCheckout_Settings_Checkout::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_Checkout_Settings.
+ * FluidCheckout_Settings_Checkout.
  */
-class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_Checkout {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -45,7 +33,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'checkout' => __( 'Checkout', 'fluid-checkout' ),
 		) );
@@ -61,7 +49,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'checkout' === $current_section ) {
 
 			$settings = apply_filters(
@@ -243,7 +231,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_progress_bar' ),
 						'type'                  => 'checkbox',
 						'checkboxgroup'         => 'start',
-						'show_if_checked'       => 'option',
 						'autoload'              => false,
 					),
 					array(
@@ -252,7 +239,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_sticky_progress_bar' ),
 						'type'                  => 'checkbox',
 						'checkboxgroup'         => 'end',
-						'show_if_checked'       => 'yes',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_enable_checkout_progress_bar',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'              => false,
 					),
 
@@ -354,7 +344,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_checkout_edit_cart' ),
 						'checkboxgroup'         => 'start',
-						'show_if_checked'       => 'option',
 						'autoload'              => false,
 						'disabled'              => true,
 						'requires'              => 'pro',
@@ -366,7 +355,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_items_error_messages_hide_at_checkout' ),
 						'checkboxgroup'         => 'end',
-						'show_if_checked'       => 'yes',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_checkout_edit_cart',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'              => false,
 						'disabled'              => true,
 						'requires'              => 'pro',
@@ -410,7 +402,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_areas' ),
 						'checkboxgroup'         => 'start',
-						'show_if_checked'       => 'option',
 						'autoload'              => false,
 					),
 					array(
@@ -419,7 +410,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_area_sidebar_last_step' ),
 						'checkboxgroup'         => 'end',
-						'show_if_checked'       => 'yes',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_enable_checkout_widget_areas',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'              => false,
 					),
 
@@ -445,7 +439,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_coupon_codes' ),
 						'checkboxgroup'         => 'start',
-						'show_if_checked'       => 'option',
 						'autoload'              => false,
 					),
 					array(
@@ -455,7 +448,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_display_coupon_code_section_title' ),
 						'checkboxgroup'         => 'end',
-						'show_if_checked'       => 'yes',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_enable_checkout_coupon_codes',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'              => false,
 					),
 
@@ -515,7 +511,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_hide_optional_fields' ),
 						'checkboxgroup'         => 'start',
-						'show_if_checked'       => 'option',
 						'autoload'              => false,
 					),
 					array(
@@ -525,7 +520,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'type'                  => 'checkbox',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_hide_optional_fields_skip_address_2' ),
 						'checkboxgroup'         => 'end',
-						'show_if_checked'       => 'yes',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_enable_checkout_hide_optional_fields',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'              => false,
 					),
 
@@ -722,4 +720,4 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_Checkout_Settings();
+FluidCheckout_Settings_Checkout::hooks();

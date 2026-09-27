@@ -1,41 +1,29 @@
 <?php
 /**
  * Fluid Checkout Integration Settings
- *
- * @package fluid-checkout
- * @version 1.3.1
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_Integrations_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_Integrations_Settings();
+if ( class_exists( 'FluidCheckout_Settings_Integrations', false ) ) {
+	FluidCheckout_Settings_Integrations::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_Integrations_Settings.
+ * FluidCheckout_Settings_Integrations.
  */
-class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_Integrations {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -45,7 +33,7 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		// Define sections to insert
 		$insert_sections = array(
 			'integrations' => __( 'Integrations', 'fluid-checkout' ),
@@ -75,7 +63,7 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'integrations' === $current_section ) {
 
 			// Get settings for each integration, each with its own settings section
@@ -111,4 +99,4 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_Integrations_Settings();
+FluidCheckout_Settings_Integrations::hooks();

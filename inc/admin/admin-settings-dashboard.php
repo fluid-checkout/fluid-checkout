@@ -1,40 +1,29 @@
 <?php
 /**
- * Fluid Checkout Tools Settings
- *
- * @package fluid-checkout
+ * Fluid Checkout Dashboard Settings
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_Addons_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_Addons_Settings();
+if ( class_exists( 'FluidCheckout_Settings_Dashboard', false ) ) {
+	FluidCheckout_Settings_Dashboard::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_Addons_Settings.
+ * FluidCheckout_Settings_Dashboard.
  */
-class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_Dashboard {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -44,7 +33,7 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'' => __( 'Dashboard', 'fluid-checkout' ),
 		) );
@@ -60,7 +49,7 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( '' === $current_section ) {
 
 			// Dashboard field types output their own settings cards
@@ -92,4 +81,4 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_Addons_Settings();
+FluidCheckout_Settings_Dashboard::hooks();

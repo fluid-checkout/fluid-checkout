@@ -257,31 +257,12 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 
 	/**
-	 * Load the WooCommerce settings pages, which register the settings sections used by the settings page tabs.
-	 */
-	public function load_settings_pages() {
-		// Maybe load the WooCommerce admin settings class
-		if ( ! class_exists( 'WC_Admin_Settings', false ) && function_exists( 'WC' ) ) {
-			include_once WC()->plugin_path() . '/includes/admin/class-wc-admin-settings.php';
-		}
-
-		// Bail if the WooCommerce admin settings class is not available
-		if ( ! class_exists( 'WC_Admin_Settings', false ) ) { return; }
-
-		WC_Admin_Settings::get_settings_pages();
-	}
-
-
-
-	/**
 	 * Get the settings tabs.
 	 * Settings sections registered by other plugins which are not part of the default tabs are added as extra tabs.
 	 */
 	public function get_tabs() {
 		// Maybe return cached tabs
 		if ( null !== $this->tabs ) { return $this->tabs; }
-
-		$this->load_settings_pages();
 
 		$tabs = array(
 			'dashboard'                => array( 'label' => __( 'Dashboard', 'fluid-checkout' ), 'section' => '' ),
@@ -307,8 +288,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'license_keys'             => array( 'label' => __( 'License Keys', 'fluid-checkout' ), 'section' => 'license_keys' ),
 		);
 
-		// Get settings sections registered for the WooCommerce settings tab
-		$sections = apply_filters( 'woocommerce_get_sections_' . self::WC_SETTINGS_TAB_ID, array() );
+		// Get settings sections registered for the Fluid Checkout settings page
+		$sections = apply_filters( 'fc_admin_settings_sections', array() );
 		$sections = is_array( $sections ) ? $sections : array();
 
 		// Collect section slugs already claimed by the fixed tabs (skip separators)
@@ -440,8 +421,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Bail if tab is not valid
 		if ( ! $this->is_valid_tab( $tab ) ) { return array(); }
 
-		// Get settings from the settings sections of the WooCommerce settings tab
-		$settings = apply_filters( 'woocommerce_get_settings_' . self::WC_SETTINGS_TAB_ID, array(), $tabs[ $tab ][ 'section' ] );
+		// Get settings from the settings sections of the Fluid Checkout settings page
+		$settings = apply_filters( 'fc_admin_settings', array(), $tabs[ $tab ][ 'section' ] );
 
 		// Bail if settings are not valid
 		if ( ! is_array( $settings ) ) { return array(); }
@@ -486,11 +467,12 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			if ( 'tab' !== $tab_args[ 'type' ] || ! $tab_args[ 'show_save_button' ] ) { continue; }
 
 			$settings = $this->get_saveable_settings( $this->get_tab_settings( $tab ) );
-			WC_Admin_Settings::save_fields( $settings );
+			FluidCheckout_Settings::instance()->save_settings( $settings );
 
-			// Run the WooCommerce section save hook
+			// Run the section save hook
 			if ( '' !== $tab_args[ 'section' ] ) {
 				do_action( 'woocommerce_update_options_' . self::WC_SETTINGS_TAB_ID . '_' . $tab_args[ 'section' ] );
+				do_action( 'fc_admin_settings_update_' . $tab_args[ 'section' ] );
 			}
 		}
 
@@ -517,6 +499,8 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_register_style( 'fc-admin-settings', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-settings' ), array( 'fc-admin-options' ), NULL );
 
 		// Scripts
+		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-settings-page', 'window.addEventListener("load",function(){FCSettingsPage.init();});' );
 		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -536,6 +520,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Scripts
 		wp_enqueue_script( 'iris' );
+		wp_enqueue_script( 'fc-settings-page' );
 		wp_enqueue_script( 'fc-admin-settings-tooltips' );
 		wp_enqueue_script( 'fc-admin-settings-nav' );
 		wp_enqueue_script( 'fc-admin-settings-colorpicker' );

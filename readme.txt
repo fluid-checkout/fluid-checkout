@@ -361,6 +361,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
+* Added: Settings profiles storage with get_option compatibility for managed settings.
+* Improved: Own the Fluid Checkout settings page end-to-end, including save and field value loading.
+* Improved: Show and hide dependent settings with data attributes instead of WooCommerce show_if_checked.
+* Improved: Mark the WooCommerce > Settings > Fluid Checkout tab as deprecated (removable; removal in 6.0).
 * Improved: Clarified on the dashboard that Fluid Checkout PRO includes all listed add-ons.
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
 * Improved: Use the checkmark menu icon in the settings page header.

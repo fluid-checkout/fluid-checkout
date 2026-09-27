@@ -1,38 +1,26 @@
 <?php
 /**
  * Fluid Checkout License Keys Settings
- *
- * @package fluid-checkout
- * @version 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_LicenseKeys_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_LicenseKeys_Settings();
+if ( class_exists( 'FluidCheckout_Settings_LicenseKeys', false ) ) {
+	FluidCheckout_Settings_LicenseKeys::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_LicenseKeys_Settings.
+ * FluidCheckout_Settings_LicenseKeys.
  */
-class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_LicenseKeys {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Settings, runs before licensed products add the same settings group
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 5, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 5, 2 );
 	}
 
 
@@ -44,7 +32,7 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		// Bail if not on the license keys section
 		if ( 'license_keys' !== $current_section ) { return $settings; }
 
@@ -96,4 +84,4 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 
 }
 
-return new WC_Settings_FluidCheckout_LicenseKeys_Settings();
+FluidCheckout_Settings_LicenseKeys::hooks();

@@ -174,7 +174,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			$default = null !== $plugin_default ? $plugin_default : $default;
 		}
 
-		return WC_Admin_Settings::get_option( $value[ 'id' ], $default );
+		return FluidCheckout_Settings::instance()->get_option( $value[ 'id' ], $default );
 	}
 
 
@@ -500,24 +500,12 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
 	/**
 	 * Get the visibility and state classes for a field container.
-	 * Uses the same classes as the WooCommerce settings API for toggling dependent fields.
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function get_field_container_classes( $value ) {
 		$classes = array();
-		$hide_if_checked = isset( $value[ 'hide_if_checked' ] ) ? $value[ 'hide_if_checked' ] : false;
-		$show_if_checked = isset( $value[ 'show_if_checked' ] ) ? $value[ 'show_if_checked' ] : false;
 
-		if ( 'yes' === $hide_if_checked || 'yes' === $show_if_checked ) {
-			$classes[] = 'hidden_option';
-		}
-		if ( 'option' === $hide_if_checked ) {
-			$classes[] = 'hide_options_if_checked';
-		}
-		if ( 'option' === $show_if_checked ) {
-			$classes[] = 'show_options_if_checked';
-		}
 		if ( ! empty( $value[ 'row_class' ] ) ) {
 			$classes[] = $value[ 'row_class' ];
 		}

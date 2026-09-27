@@ -31,7 +31,10 @@ class FluidCheckout_Admin extends FluidCheckout {
 		// Setting types
 		add_action( 'init', array( $this, 'load_setting_types' ), 10 );
 
-		// WooCommerce Settings
+		// Settings providers (FC hooks)
+		add_action( 'init', array( $this, 'load_settings_providers' ), 10 );
+
+		// WooCommerce Settings redirect stub (deprecated, remove in 6.0)
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_settings_pages' ), 50 );
 
 		// Register assets
@@ -151,7 +154,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-checkboxgroup.php';
-		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry-enable.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry.php';
 		include_once self::$directory_path . 'inc/admin/admin-telemetry.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-layout-selector.php';
@@ -160,38 +163,51 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
-	 * Add new WooCommerce settings pages/tabs.
+	 * Load settings providers that register tabs, sections and fields on FC hooks.
+	 */
+	public function load_settings_providers() {
+		include_once self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-dashboard.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-checkout.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-cart.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-order-received.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-express-checkout.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-account-matching.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-local-pickup.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-gift-options.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-international-phone.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-address-autocomplete.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-address-book.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-vat-assistant.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-integrations.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-tools.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
+	}
+
+	/**
+	 * Add the deprecated WooCommerce Settings redirect stub for Fluid Checkout.
+	 * Settings providers are loaded on `init` via `load_settings_providers()`.
+	 * Remove this stub in version 6.0.
+	 *
+	 * @param  array  $settings  WooCommerce settings page instances.
 	 */
 	public function add_settings_pages( $settings ) {
 		// `$settings` need to be an array
 		if ( ! is_array( $settings ) ) { $settings = array( $settings ); }
 
-		// Maybe add settings tab if not already added
+		// Bail if the merchant opted out of the WooCommerce Settings tab
+		if ( 'yes' === get_option( 'fc_hide_wc_settings_tab', 'no' ) ) {
+			return $settings;
+		}
+
+		// Maybe add settings tab stub if not already added
 		if ( ! apply_filters( 'fc_admin_tab_fluidcheckout_exists', false ) ) {
 			$settings[] = include self::$directory_path . 'inc/admin/admin-tab-fluid-checkout.php';
 
 			// Set admin tab as existent so it won't be loaded again
 			add_filter( 'fc_admin_tab_fluidcheckout_exists', '__return_true', 10 );
 		}
-
-		// Load settings pages
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-dashboard.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-checkout.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-cart.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-received.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-express-checkout.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-account-matching.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-local-pickup.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-gift-options.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-international-phone.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-address-autocomplete.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-address-book.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-vat-assistant.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-integrations.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-tools.php';
-		$settings[] = include self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
 
 		return $settings;
 	}

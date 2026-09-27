@@ -44,7 +44,7 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		if ( ! current_user_can( 'install_plugins' ) ) { return false; }
 
 		// Bail if telemetry is already enabled
-		if ( 'yes' === get_option( 'fc_telemetry_enabled', 'no' ) ) { return false; }
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ) ) { return false; }
 
 		// Bail if the prompt was dismissed
 		if ( $this->is_dismissed() ) { return false; }

@@ -27,7 +27,7 @@
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
-		settingsRowSelector:                   'tr',
+		settingsRowSelector:                   '.fc-settings-field, tr',
 
 		hiddenClass:                           'hidden',
 	};
@@ -194,6 +194,63 @@
 		return null;
 	}
 
+	/**
+	 * Get the visibility container for a conditional field.
+	 * Walks up to the nearest settings field row, including nested fieldsets inside fc_checkboxgroup.
+	 *
+	 * @param   {Element}  element  The conditional field element.
+	 * @return  {Element}           The container element, or null.
+	 */
+	var getConditionalContainer = function( element ) {
+		// Bail if element is not valid
+		if ( ! element ) { return null; }
+
+		// Prefer the nearest settings field row
+		var settingsField = element.closest( '.fc-settings-field' );
+		if ( settingsField ) {
+			var control = settingsField.querySelector( '.fc-settings-field__control' );
+
+			// Nested checkboxgroup children share one settings field row with multiple fieldsets
+			if ( control ) {
+				var fieldsets = [];
+				for ( var i = 0; i < control.children.length; i++ ) {
+					if ( 'FIELDSET' === control.children[ i ].tagName ) {
+						fieldsets.push( control.children[ i ] );
+					}
+				}
+
+				// Hide only the nested fieldset when multiple fields share the row
+				if ( fieldsets.length > 1 ) {
+					var nestedFieldset = element.closest( 'fieldset' );
+					if ( nestedFieldset && control.contains( nestedFieldset ) ) {
+						return nestedFieldset;
+					}
+				}
+			}
+
+			return settingsField;
+		}
+
+		// Fall back to a nested fieldset then a table row for WC embeds
+		var fieldset = element.closest( 'fieldset' );
+		if ( fieldset ) { return fieldset; }
+
+		return element.closest( 'tr' );
+	}
+
+	/**
+	 * Whether a container is currently hidden by conditional visibility.
+	 *
+	 * @param   {Element}  container  The container element.
+	 * @return  {boolean}
+	 */
+	var isContainerHidden = function( container ) {
+		// Bail if container is not valid
+		if ( ! container ) { return false; }
+
+		return container.classList.contains( _settings.hiddenClass ) || 'none' === container.style.display;
+	}
+
 
 
 	/**
@@ -220,9 +277,9 @@
 			var fieldValueCondition = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
 			var fieldValue = getFieldValue( triggerElement );
 
-			// Get field row
-			var fieldRow = conditionalField.closest( _settings.settingsRowSelector );
-			var triggerFieldRow = triggerElement.closest( _settings.settingsRowSelector );
+			// Get field containers
+			var fieldRow = getConditionalContainer( conditionalField );
+			var triggerFieldRow = getConditionalContainer( triggerElement );
 
 			// Skip if field row is not found
 			if ( ! fieldRow ) { continue; }
@@ -231,7 +288,7 @@
 			// - Hide field if condition is not met
 			// - Hide related conditional fields if the trigger field itself is hidden
 			var isVisible = fieldValueCondition === fieldValue;
-			if ( triggerFieldRow && triggerFieldRow.classList.contains( _settings.hiddenClass ) ) {
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
 				isVisible = false;
 			}
 
