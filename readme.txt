@@ -357,6 +357,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: "Activate plugin" buttons on add-on promo cards in the settings page.
+* Fixed: Make text in disabled settings fields look disabled while staying readable.
 * Improved: Show Activate / upgrade actions on Cart, Thank You, and Order Pay promo cards when PRO is not active.
 * Improved: On add-on promo cards, show Upgrade to PRO plus “Get only this add-on” when PRO is not installed; when PRO is installed, show Install when entitled, or “Get this add-on” without a price plus Learn more.
 * Added: New “More plugins from Fluid Checkout” section on the settings dashboard.

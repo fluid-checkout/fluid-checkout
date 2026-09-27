@@ -9,7 +9,7 @@
 // ADMIN - SHARED
 
 $admin-text-color:                          #2e4453 !default;
-$admin-text-color-muted:                    #50575e !default;
+$admin-text-color-muted:                    #68717a !default;
 $admin-text-color-subtle:                   #8a9ba8 !default;
 $admin-background-color:                    #f3f6f8 !default;
 $admin-border-color:                        rgba( 200, 215, 225, .5 ) !default;
@@ -184,6 +184,7 @@ $fc-settings-input-border-color-focus:      #00aadc !default;
 $fc-settings-input-background-color:        $white !default;
 $fc-settings-input-background-color-disabled: #edf2f5 !default;
 $fc-settings-input-color:                   $admin-text-color !default;
+$fc-settings-input-color-disabled:          $admin-text-color-muted !default;
 $fc-settings-input-placeholder-color:       #949494 !default;
 $fc-settings-input-box-shadow:              0 0 0 0 rgba( 0, 0, 0, 0 ), 0 0 0 0 rgba( 0, 0, 0, 0 ), 0 1px 2px 0 rgba( 0, 0, 0, .04 ) !default;
 $fc-settings-input-group-gap:               10px !default;
