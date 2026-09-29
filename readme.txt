@@ -359,6 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
 * Fixed: "Same as billing address" behavior on the cart shipping calculator.
+* Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
 
 = 4.2.7 - 2026-08-19 =
 
