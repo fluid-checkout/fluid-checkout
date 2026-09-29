@@ -285,7 +285,7 @@ class FluidCheckout {
 	public function hooks() {
 		// Check if Woocommerce is activated
 		if( ! $this->is_woocommerce_activated() ) {
-			add_action( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
+			add_filter( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
 			return;
 		}
 
@@ -587,7 +587,7 @@ class FluidCheckout {
 	 */
 	public function add_woocommerce_required_notice( $notices = array() ) {
 		// Bail if user does not have enough permissions
-		if ( ! current_user_can( 'install_plugins' ) ) { return; }
+		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
 		$required_plugin_name = __( 'WooCommerce', 'fluid-checkout' );
 		$required_plugin_path_name = 'woocommerce/woocommerce.php';

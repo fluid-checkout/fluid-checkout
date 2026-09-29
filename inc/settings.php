@@ -32,7 +32,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		add_filter( 'option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ), 10, 2 );
 
 		// Settings save
-		add_action( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
+		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
 	}
 
 
@@ -299,25 +299,64 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 
 	/**
-	 * Maybe prevent changes to the option value when the option is disabled.
+	 * Disable a settings field.
+	 * Not intended for settings fields of the type `radio`, as WooCommerce uses the `disabled` argument for the list of option values to disable on those fields.
+	 *
+	 * @param  array   $settings     Admin settings argument values.
+	 * @param  string  $option_name  Option name of the settings field to disable.
+	 * @param  string  $description  (optional) Description explaining why the settings field was disabled. Defaults to `null`, keeping the current description and description tooltip.
+	 */
+	public function disable_settings_field( $settings, $option_name, $description = null ) {
+		// Bail if the settings arguments are not valid
+		if ( ! is_array( $settings ) ) { return $settings; }
+
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than the target settings field
+			if ( ! is_array( $setting_args ) || ! array_key_exists( 'id', $setting_args ) || $option_name !== $setting_args[ 'id' ] ) { continue; }
+
+			// Maybe initialize the custom attributes arguments
+			if ( ! array_key_exists( 'custom_attributes', $setting_args ) || ! is_array( $setting_args[ 'custom_attributes' ] ) ) {
+				$setting_args[ 'custom_attributes' ] = array();
+			}
+
+			// Disable the settings field
+			$setting_args[ 'disabled' ] = true;
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+
+			// Maybe change the description explaining why the settings field was disabled
+			if ( null !== $description ) {
+				$setting_args[ 'desc' ] = $description;
+
+				// Remove the description tooltip
+				unset( $setting_args[ 'desc_tip' ] );
+			}
+
+			// Update the settings field arguments
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Maybe prevent changes to the option value when the settings field is disabled.
 	 * 
 	 * @param  mixed   $value      The option value.
 	 * @param  string  $option     The option arguments.
 	 * @param  mixed   $raw_value  The raw value of the option.
 	 */
 	public function maybe_prevent_change_disabled_settings_on_save( $value, $option, $raw_value ) {
-		global $current_tab, $current_section;
+		global $current_tab;
 
-		// Bail if not the plugin settings.
-		if ( ! 'fc_checkout' === $current_tab ) { return $value; }
+		// Bail if not saving the plugin settings, as other plugins also use the `disabled` argument on their own settings fields
+		if ( 'fc_checkout' !== $current_tab ) { return $value; }
 
-		// Maybe set the value to the saved value if the option is disabled.
-		if( array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
-			$saved_value = get_option( $option[ 'id' ] );
-			$value = $saved_value;
-		}
+		// Bail if the settings field is not disabled
+		if ( ! array_key_exists( 'disabled', $option ) || true !== $option[ 'disabled' ] ) { return $value; }
 
-		return $value;
+		// Return `null` to skip saving the option, as disabled fields are not submitted and would otherwise be saved with the default value
+		return null;
 	}
 
 }
