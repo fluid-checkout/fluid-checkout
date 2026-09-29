@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
 * Fixed: "Same as billing address" behavior on the cart shipping calculator.
 
 = 4.2.7 - 2026-08-19 =
