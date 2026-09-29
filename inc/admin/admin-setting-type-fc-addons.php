@@ -128,6 +128,19 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'purchase_url'  => 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat&mtm_source=lite-plugin',
 				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '39 EUR' ),
 			),
+			array(
+				'id'            => 'fc-checkout-editor',
+				'type'          => 'plugin',
+				'plugin_file'   => 'fc-checkout-editor/fc-checkout-editor.php',
+				'plugin_slug'   => 'fc-checkout-editor',
+				'title'         => __( 'Checkout Editor', 'fluid-checkout' ),
+				'subtitle'      => __( 'Edit styles, fields, and steps without custom code', 'fluid-checkout' ),
+				'description'   => __( 'Customize <strong>checkout styles</strong>, <strong>fields attributes</strong>, and <strong>custom steps and sub-steps</strong> from the admin. Built for customizations that were only possible with custom code.', 'fluid-checkout' ),
+				'badge'         => __( 'Coming soon', 'fluid-checkout' ),
+				'coming_soon'   => true,
+				'image'         => $directory_url . 'images/admin/fluid-checkout-icon.svg',
+				'product_url'   => 'https://fluidcheckout.com/fc-checkout-editor/',
+			),
 		);
 
 		return apply_filters( 'fc_addons_catalog', $catalog );
@@ -174,6 +187,26 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 
 	/**
+	 * Build a product URL with Matomo tracking parameters for Dashboard add-on cards.
+	 *
+	 * @param  string  $product_url  Base product page URL.
+	 * @param  string  $addon_id     Catalog item id used in `mtm_kwd`.
+	 * @param  string  $action       Tracking action suffix (e.g. early-access, learn-more).
+	 */
+	private function get_tracked_product_url( $product_url, $addon_id, $action ) {
+		return add_query_arg(
+			array(
+				'mtm_campaign' => 'addons',
+				'mtm_kwd'      => $addon_id . '-' . $action,
+				'mtm_source'   => 'lite-plugin',
+			),
+			$product_url
+		);
+	}
+
+
+
+	/**
 	 * Output action buttons for a plugin add-on card.
 	 *
 	 * @param array $addon Catalog item.
@@ -186,6 +219,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		$is_activated = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$is_installed = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
+		$is_coming_soon = ! empty( $addon['coming_soon'] );
 		$action_type  = 'purchase';
 
 		ob_start();
@@ -206,6 +240,16 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
+		elseif ( $is_coming_soon ) :
+			$action_type  = 'coming_soon';
+			$addon_id     = isset( $addon['id'] ) ? $addon['id'] : '';
+			$product_url  = ! empty( $addon['product_url'] ) ? $addon['product_url'] : ( isset( $addon['purchase_url'] ) ? $addon['purchase_url'] : '' );
+			$early_access_url = $this->get_tracked_product_url( $product_url, $addon_id, 'early-access' );
+			$learn_more_url   = $this->get_tracked_product_url( $product_url, $addon_id, 'learn-more' );
+			?>
+			<a href="<?php echo esc_url( $early_access_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Get early access', 'fluid-checkout' ) ); ?></a>
+			<a href="<?php echo esc_url( $learn_more_url ); ?>" class="fc-settings-button" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Learn more', 'fluid-checkout' ) ); ?></a>
+			<?php
 		else :
 			$action_type = 'purchase';
 			?>
@@ -220,7 +264,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		 *
 		 * @param string $html        Default actions HTML.
 		 * @param array  $addon       Catalog item.
-		 * @param string $action_type activated|activate|purchase (or custom from extensions).
+		 * @param string $action_type activated|activate|purchase|coming_soon (or custom from extensions).
 		 * @param string $plugin_file Plugin basename.
 		 */
 		echo apply_filters( 'fc_dashboard_addon_actions_html', $html, $addon, $action_type, $plugin_file ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -237,9 +281,19 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		// Bail if item should not be shown
 		if ( ! $this->should_show_addon( $addon ) ) { return; }
 
+		$plugin_file  = isset( $addon['plugin_file'] ) ? $addon['plugin_file'] : '';
+		$is_activated = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_activated( $plugin_file );
+		$is_installed = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_installed( $plugin_file );
+		$is_marketing = ! empty( $addon['coming_soon'] ) && ! $is_activated && ! $is_installed;
+
 		$item_class = 'fc-addons__item';
 		if ( ! empty( $addon['item_class'] ) ) {
 			$item_class .= ' ' . $addon['item_class'];
+		}
+
+		$actions_class = 'fc-addons__item-actions';
+		if ( $is_marketing ) {
+			$actions_class .= ' fc-addons__item-actions--marketing';
 		}
 		?>
 		<li class="<?php echo esc_attr( $item_class ); ?>">
@@ -247,7 +301,12 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				<div class="fc-addons__item-header">
 					<img class="fc-addons__item-image" src="<?php echo esc_url( $addon['image'] ); ?>" alt="<?php echo esc_attr( $addon['title'] ); ?>">
 					<div class="fc-addons__item-title-section">
-						<h3 class="fc-addons__item-title"><?php echo esc_html( $addon['title'] ); ?></h3>
+						<h3 class="fc-addons__item-title">
+							<?php echo esc_html( $addon['title'] ); ?>
+							<?php if ( ! empty( $addon['badge'] ) ) : ?>
+								<span class="fc-settings-badge"><?php echo esc_html( $addon['badge'] ); ?></span>
+							<?php endif; ?>
+						</h3>
 						<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $addon['subtitle'] ); ?></p>
 					</div>
 				</div>
@@ -266,7 +325,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				</div>
 			</div>
 			<div class="fc-addons__item-footer">
-				<div class="fc-addons__item-actions">
+				<div class="<?php echo esc_attr( $actions_class ); ?>">
 					<?php if ( 'bundle' === $addon['type'] ) : ?>
 						<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( $addon['purchase_label'] ); ?></a>
 						<?php if ( ! empty( $addon['dismiss_notice'] ) ) : ?>
