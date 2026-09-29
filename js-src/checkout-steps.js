@@ -43,7 +43,6 @@
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
-		formRowSelector: '.form-row, .shipping-method__package',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -83,6 +82,7 @@
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidRowSelector: '.woocommerce-invalid.form-row, .woocommerce-invalid.shipping-method__package',
 		invalidFocusDelay: 100,
 
 		enablePlaceOrderMove: 'yes',
@@ -151,6 +151,33 @@
 			requestAnimationFrame( function() {
 				waitForElementInViewportThenFocus( element );
 			} );
+		}
+	};
+
+	/**
+	 * Maybe scroll to the first invalid row, then focus its first invalid field when there is one.
+	 *
+	 * @param   HTMLElement  containerElement  Container element to search within.
+	 */
+	var maybeScrollToFirstInvalidRow = function( containerElement ) {
+		// Bail if container element not provided
+		if ( ! containerElement ) { return; }
+
+		// Get the first invalid row
+		var firstInvalidRow = containerElement.querySelector( _settings.invalidRowSelector );
+
+		// Bail if no invalid row found
+		if ( ! firstInvalidRow ) { return; }
+
+		// Scroll to the first invalid row
+		scrollToElement( firstInvalidRow );
+
+		// Get the first invalid field of the row
+		var firstInvalidField = firstInvalidRow.querySelector( _settings.invalidFieldRowSelector );
+
+		// Maybe focus the invalid field, as some rows only contain fields that cannot be focused
+		if ( firstInvalidField ) {
+			waitForElementInViewportThenFocus( firstInvalidField );
 		}
 	};
 
@@ -330,13 +357,7 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalidRow( substepElement );
 
 			// Bail when substep has invalid fields
 			return;
@@ -470,13 +491,7 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalidRow( stepElement );
 
 			// Bail when any substep has invalid fields
 			return;
