@@ -398,8 +398,12 @@
 		// Bail if no current step was found
 		if ( ! currentStepElement ) { return; }
 
+		// Get the step to set as current on the progress bar.
+		// The progress bar goes back to the first visible incomplete step, while the steps sections do not.
+		var progressBarStepElement = getFirstVisibleIncompleteStep() || currentStepElement;
+
 		// Get index of the current step
-		var currentStepIndex = parseInt( currentStepElement.getAttribute( _settings.stepIndexAttribute ) );
+		var currentStepIndex = parseInt( progressBarStepElement.getAttribute( _settings.stepIndexAttribute ) );
 		currentStepIndex = isNaN( currentStepIndex ) ? -1 : currentStepIndex;
 
 		// Get progress bar items
@@ -665,52 +669,6 @@
 
 
 	/**
-	 * Maybe change the current step back to the first visible incomplete step before it.
-	 */
-	var maybeChangeCurrentStep = function() {
-		// Get current step and first incomplete step
-		var currentStepElement = document.querySelector( _settings.currentStepSelector );
-		var targetStepElement = getFirstVisibleIncompleteStep();
-
-		// Bail if current step or incomplete step not found
-		if ( ! currentStepElement || ! targetStepElement ) { return; }
-
-		// Get step positions
-		var allSteps = getAllSteps();
-		var targetStepIndex = allSteps.indexOf( targetStepElement );
-
-		// Bail if incomplete step is not before the current step
-		if ( targetStepIndex >= allSteps.indexOf( currentStepElement ) ) { return; }
-
-		// Move `current` to the incomplete step
-		currentStepElement.removeAttribute( _settings.stepCurrentAttribute );
-		targetStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
-
-		// Get index of the first step which the next step is incomplete, the step before the new current step
-		var nextStepIncompleteIndex = targetStepIndex > 0 ? targetStepIndex - 1 : 0;
-
-		// Iterate steps from the first step which the next step is incomplete
-		for ( var i = nextStepIncompleteIndex; i < allSteps.length; i++ ) {
-			allSteps[ i ].classList.add( _settings.stepNextIncompleteClass );
-		}
-
-		// Iterate the new current step and the steps after it
-		for ( var i = targetStepIndex; i < allSteps.length; i++ ) {
-			// Maybe reset the step to the state of a step that has not been reached yet
-			if ( i > targetStepIndex ) {
-				allSteps[ i ].removeAttribute( _settings.stepCompleteAttribute );
-			}
-
-			// Iterate substeps to expand the fields for editing,
-			// as the fields are collapsed for steps that were complete.
-			var substepElements = allSteps[ i ].querySelectorAll( _settings.substepSelector );
-			for ( var j = 0; j < substepElements.length; j++ ) {
-				expandSubstepEdit( substepElements[ j ], false, false );
-			}
-		}
-	}
-
-	/**
 	 * Update step visibility based on substep visibility state.
 	 *
 	 * @param   Event  _event  Unused `jQuery.Event` object.
@@ -816,9 +774,6 @@
 				targetStep.setAttribute( _settings.stepCurrentAttribute, '' );
 			}
 		}
-
-		// Maybe change the current step when an earlier step became visible and is incomplete
-		maybeChangeCurrentStep();
 
 		// Update progress bar to reflect changes
 		updateProgressBar();
