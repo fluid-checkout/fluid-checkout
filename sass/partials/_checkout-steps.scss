@@ -68,7 +68,9 @@
 }
 
 .fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
-.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep[data-substep-editable="no"] .fc-step__substep-edit,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep[data-substep-editable="no"] .fc-step__substep-save {
 	display: none !important; // Needed to override theme styles set with `!important`
 }
 
@@ -254,7 +256,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 
 	@media (#{$bp-larger-than-desktop-medium}) { width: calc( 100% - #{ remsize( 22rem ) } ); }
 }
-.fc-wrapper [data-step-complete] .fc-step__substep-text {
+.fc-wrapper [data-step-complete] .fc-step__substep-text,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-text {
 	display: block;
 }
 .fc-wrapper .fc-step__substep-fields.is-expanded:not( .is-transitioning ) + .fc-step__substep-text {
@@ -288,7 +291,8 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 	padding-bottom: $global-spacing-small;
 	text-align: center;
 }
-.has-checkout-layout--multi-step [data-step-complete] .fc-step__actions {
+.has-checkout-layout--multi-step [data-step-complete] .fc-step__actions,
+.has-checkout-layout--multi-step .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__actions {
 	display: none;
 }
 
@@ -349,12 +353,16 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 }
 
 .fc-wrapper [data-step-complete] .fc-step__substep-edit,
-.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .is-editing .fc-step__substep-save,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-edit,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-fields.is-expanded ~ .fc-step__substep-save {
 	display: inline-block !important; // Needed to override theme styles
 }
 
 .fc-wrapper [data-step-complete] .is-editing .fc-step__substep-edit,
-.fc-wrapper [data-step-complete] .fc-step__substep-save {
+.fc-wrapper [data-step-complete] .fc-step__substep-save,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-fields.is-expanded ~ .fc-step__substep-edit,
+.fc-wrapper .fc-checkout-step.fc-checkout-step--before-current-step .fc-step__substep-save {
 	display: none !important; // Needed to override theme styles
 }
 

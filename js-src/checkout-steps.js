@@ -64,6 +64,7 @@
 		isCompleteClass: 'is-complete',
 		isHiddenClass: 'fc-hidden',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
+		stepBeforeCurrentClass: 'fc-checkout-step--before-current-step',
 		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
 		currentLastStepClass: 'fc-checkout-step-current-last',
 
@@ -531,6 +532,9 @@
 		// Update progress bar
 		updateProgressBar();
 
+		// Update class for steps before the current step
+		updateStepBeforeCurrentClass();
+
 		// Maybe set focus to the first focusable element that is visible in the next step
 		maybeFocusFirstElement( nextStepElement );
 
@@ -666,7 +670,44 @@
 		return firstIncompleteStep;
 	}
 
+	/**
+	 * Check whether the step is positioned before the current step.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to check.
+	 *
+	 * @return  Boolean                   Whether the step is positioned before the current step.
+	 */
+	var isStepBeforeCurrentStep = function( stepElement ) {
+		// Get current step
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
 
+		// Bail if step or current step not found
+		if ( ! stepElement || ! currentStepElement ) { return false; }
+
+		// Get step positions
+		var allSteps = getAllSteps();
+		var stepIndex = allSteps.indexOf( stepElement );
+		var currentStepIndex = allSteps.indexOf( currentStepElement );
+
+		// Bail if any of the steps was not found in the steps list
+		if ( -1 === stepIndex || -1 === currentStepIndex ) { return false; }
+
+		return stepIndex < currentStepIndex;
+	}
+
+
+
+	/**
+	 * Update the class of the steps positioned before the current step.
+	 */
+	var updateStepBeforeCurrentClass = function() {
+		var allSteps = getAllSteps();
+
+		// Iterate steps to toggle the class
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			allSteps[ i ].classList.toggle( _settings.stepBeforeCurrentClass, isStepBeforeCurrentStep( allSteps[ i ] ) );
+		}
+	}
 
 	/**
 	 * Update step visibility based on substep visibility state.
@@ -777,6 +818,9 @@
 
 		// Update progress bar to reflect changes
 		updateProgressBar();
+
+		// Update class for steps before the current step
+		updateStepBeforeCurrentClass();
 	}
 
 
