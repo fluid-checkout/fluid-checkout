@@ -129,6 +129,28 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 		// on the Svea checkout page.
 		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
 		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
+
+		// Dequeue remaining assets, such as theme and plugin compatibility styles
+		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_fluid_checkout_assets' ), 1000 );
+	}
+
+
+
+	/**
+	 * Dequeue assets from Fluid Checkout and its add-ons on the Svea Checkout page.
+	 */
+	public function dequeue_fluid_checkout_assets() {
+		foreach ( wp_styles()->queue as $handle ) {
+			if ( 0 === strpos( $handle, 'fc-' ) ) {
+				wp_dequeue_style( $handle );
+			}
+		}
+
+		foreach ( wp_scripts()->queue as $handle ) {
+			if ( 0 === strpos( $handle, 'fc-' ) ) {
+				wp_dequeue_script( $handle );
+			}
+		}
 	}
 
 
