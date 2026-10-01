@@ -100,6 +100,12 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 			// Run undo hooks
 			$class_name::instance()->undo_hooks();
 		}
+
+		// Remove payment section from positions where Svea does not remove it,
+		// otherwise Svea scripts reload the page indefinitely when a payment method is selected
+		// on the Svea checkout page.
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
 	}
 
 
