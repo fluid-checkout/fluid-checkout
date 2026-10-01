@@ -19,12 +19,35 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Checkout fragments
+		add_filter( 'fc_is_checkout_page_or_fragment', array( $this, 'maybe_set_request_as_checkout_fragment' ), 10 );
+
 		// Undo hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks_early' ), 5 ); // Before very late hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks' ), 300 ); // After very late hooks
 
 		// Persisted data
 		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_updated_before_unload' ), 10 );
+	}
+
+
+
+	/**
+	 * Maybe set the current request as a checkout fragment when Svea Checkout requests to update the checkout fragments.
+	 */
+	public function maybe_set_request_as_checkout_fragment( $is_checkout_fragment ) {
+		global $wp_query;
+
+		// Get AJAX action
+		$ajax_action = ! empty( $wp_query ) ? $wp_query->get( 'wc-ajax' ) : '';
+		if ( empty( $ajax_action ) && array_key_exists( 'wc-ajax', $_GET ) ) {
+			$ajax_action = sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) );
+		}
+
+		// Bail if not a Svea Checkout request to update the checkout fragments
+		if ( ! in_array( $ajax_action, array( 'refresh_sco_snippet', 'update_sco_order_nshift_information' ), true ) ) { return $is_checkout_fragment; }
+
+		return true;
 	}
 
 
