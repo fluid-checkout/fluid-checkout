@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Place the site key upgrade translators comment next to its sprintf string.
 * Added: New settings pages and guided setup.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.

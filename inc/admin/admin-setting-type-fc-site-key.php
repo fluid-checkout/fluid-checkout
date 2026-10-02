@@ -91,10 +91,10 @@ class FluidCheckout_Admin_SettingType_SiteKeyPlaceholder extends FluidCheckout {
 					?>
 				<?php else : ?>
 					<p><?php
-						echo wp_kses_post(
-							__( 'You can use Fluid Checkout Lite for free.', 'fluid-checkout' )
-							// Translators: %s is a link to the upgrade page.
-							. ' ' . sprintf( __( 'When you <a href="%s" target="_blank" rel="noopener noreferrer">upgrade to Fluid Checkout PRO</a>, you get access to advanced functionality and priority support.', 'fluid-checkout' ), esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=site-key&mtm_kwd=upgrade-to-pro&mtm_source=lite-plugin' ) ));
+						echo wp_kses_post( __( 'You can use Fluid Checkout Lite for free.', 'fluid-checkout' ) );
+						echo ' ';
+						/* translators: %s: URL to the Fluid Checkout PRO upgrade/pricing page. */
+						echo wp_kses_post( sprintf( __( 'When you <a href="%s" target="_blank" rel="noopener noreferrer">upgrade to Fluid Checkout PRO</a>, you get access to advanced functionality and priority support.', 'fluid-checkout' ), esc_url( 'https://fluidcheckout.com/pricing/?mtm_campaign=site-key&mtm_kwd=upgrade-to-pro&mtm_source=lite-plugin' ) ) );
 						?></p>
 					<p><?php echo wp_kses_post( __( 'If you own <em>valid license keys</em> for Fluid Checkout plugins or add-ons, you can use a single <em>site key</em> to install and activate them without having to enter each license key individually.', 'fluid-checkout' ) ); ?></p>
 					<p><?php echo wp_kses_post( __( 'You need to have at least one of our premium plugins installed to use a site key. You can find your site key in your account on our website.', 'fluid-checkout' ) ); ?></p>

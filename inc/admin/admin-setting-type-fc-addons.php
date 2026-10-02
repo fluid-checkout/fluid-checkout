@@ -138,7 +138,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'description'   => __( 'Customize <strong>checkout styles</strong>, <strong>fields attributes</strong>, and <strong>custom steps and sub-steps</strong> from the admin without code.', 'fluid-checkout' ),
 				'badge'         => __( 'Coming soon', 'fluid-checkout' ),
 				'coming_soon'   => true,
-				'image'         => $directory_url . 'images/admin/fluid-checkout-icon.svg',
+				'image'         => $directory_url . 'images/admin/addons/fc-checkout-editor-icon.svg',
 				'product_url'   => 'https://fluidcheckout.com/fc-checkout-editor/',
 			),
 		);
