@@ -28,6 +28,9 @@
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
 		settingsRowSelector:                   '.fc-settings-field, tr',
+		layoutOptionsSelector:                 '.fc-settings-layout-options',
+		layoutOptionSelector:                  '.fc-settings-layout-option',
+		isSelectedClass:                       'is-selected',
 
 		hiddenClass:                           'hidden',
 	};
@@ -365,11 +368,40 @@
 	}
 
 	/**
+	 * Sync selected class on layout / template option cards.
+	 *
+	 * @param  {Element}  input  Changed radio input.
+	 */
+	var syncLayoutOptionSelectedState = function( input ) {
+		var group;
+		var options;
+		var i;
+
+		// Bail if input is not a radio inside a layout options group
+		if ( ! input || 'radio' !== input.type ) { return; }
+
+		group = input.closest( _settings.layoutOptionsSelector );
+
+		// Bail if not inside a layout options group
+		if ( ! group ) { return; }
+
+		options = group.querySelectorAll( _settings.layoutOptionSelector );
+
+		// Iterate options and mark the checked one as selected
+		for ( i = 0; i < options.length; i++ ) {
+			options[ i ].classList.toggle( _settings.isSelectedClass, options[ i ].contains( input ) && input.checked );
+		}
+	};
+
+	/**
 	 * Handle change events.
 	 *
 	 * @param   {Event}  event  The change event.
 	 */
 	var handleChange = function( event ) {
+		// LAYOUT OPTION SELECTED STATE
+		syncLayoutOptionSelectedState( event.target );
+
 		// CONDITIONAL FIELDS TRIGGER
 		var triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {

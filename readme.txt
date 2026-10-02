@@ -357,6 +357,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 = Unreleased =
 
 * Fixed: Place the site key upgrade translators comment next to its sprintf string.
+* Added: Page preview column on settings tabs, with viewport sizes and expand to full width.
+* Improved: Limit settings content sections to a 600px max width for easier scanning.
+* Improved: Split design template, checkout layout, and columns into separate settings sections with larger option cards.
 * Added: New settings pages and guided setup.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.

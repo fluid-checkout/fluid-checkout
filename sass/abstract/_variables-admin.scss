@@ -35,7 +35,7 @@ $admin-breakpoint-auto-fold:                960px !default;
 
 $fc-header-height:                          36px !default;
 $fc-header-padding-y:                       10px !default;
-$fc-header-padding-x:                       20px !default;
+$fc-header-padding-x:                       10px !default;
 $fc-header-background-color:                $white !default;
 $fc-header-box-shadow:                      0 1px 1px #c8d7e1 !default;
 $fc-header-logo-max-height:                 36px !default;
@@ -73,21 +73,29 @@ $fc-header-z-index:                         200 !default;
 // ----------------------------------------
 // ADMIN - SETTINGS PAGE LAYOUT
 
-$fc-settings-sidebar-width:                 240px !default;
+$fc-settings-sidebar-width:                 200px !default;
 $fc-settings-admin-bar-offset:              $admin-wp-admin-bar-height !default;
 $fc-settings-page-header-height:            56px !default;
 $fc-settings-sticky-offset:                 $fc-settings-admin-bar-offset + $fc-settings-page-header-height !default;
 $fc-settings-page-background-color:         $admin-background-color !default;
 $fc-settings-text-color:                    $admin-text-color !default;
-$fc-settings-content-padding:               24px !default;
-$fc-settings-content-padding-mobile:        10px !default;
+$fc-settings-content-padding:               24px 12px !default;
+$fc-settings-content-padding-mobile:        10px 5px !default;
 $fc-settings-content-padding-bottom:        40px !default;
-$fc-settings-content-max-width:             800px !default;
+$fc-settings-content-max-width:             600px !default;
 $fc-settings-content-title-margin:          0 0 20px !default;
 $fc-settings-content-title-font-size:       20px !default;
 $fc-settings-content-title-font-weight:     500 !default;
 $fc-settings-content-title-line-height:     1.3 !default;
 $fc-settings-tab-animation-duration:        .2s !default;
+
+$fc-settings-preview-toolbar-padding-x:     8px !default;
+$fc-settings-preview-toolbar-gap:           10px !default;
+$fc-settings-preview-expand-size:           32px !default;
+$fc-settings-preview-border-width:          1px !default;
+$fc-settings-preview-min-width:             360px !default;
+$fc-settings-preview-viewport-mobile:       390px !default;
+$fc-settings-preview-viewport-tablet:       768px !default;
 
 // END - ADMIN - SETTINGS PAGE LAYOUT
 // ----------------------------------------
@@ -145,7 +153,7 @@ $fc-settings-nav-separator-margin:          10px 12px !default;
 // ----------------------------------------
 // ADMIN - SETTINGS PAGE CARDS
 
-$fc-settings-card-max-width:                800px !default;
+$fc-settings-card-max-width:                600px !default;
 $fc-settings-card-margin-bottom:            20px !default;
 $fc-settings-card-border-radius:            1px !default;
 $fc-settings-card-box-shadow:               0 0 0 1px $admin-border-color, 0 1px 2px #e9eff3 !default;

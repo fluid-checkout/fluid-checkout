@@ -1,0 +1,61 @@
+// ------------------------------------
+// SETTINGS PAGE - SECTIONED BUTTONS
+// ------------------------------------
+
+.fc-settings-sectioned-buttons {
+	display: flex;
+	width: 100%;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	overflow: hidden;
+}
+
+.fc-settings-sectioned-buttons__option {
+	position: relative;
+	flex: 1 1 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	min-width: 0;
+	min-height: 28px;
+	height: auto;
+	padding: 6px 8px;
+	border: 0;
+	border-right: 1px solid $fc-settings-input-border-color;
+	background: transparent;
+	color: $fc-settings-text-color;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.2;
+	text-align: center;
+	cursor: pointer;
+}
+
+.fc-settings-sectioned-buttons__option:last-child {
+	border-right: 0;
+}
+
+.fc-settings-sectioned-buttons__option input {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.fc-settings-sectioned-buttons__option:hover {
+	background: $fc-settings-nav-link-hover-background;
+}
+
+.fc-settings-sectioned-buttons__option:has( input:checked ) {
+	background: $fc-settings-nav-link-active-background;
+	color: $fc-settings-text-color;
+	font-weight: 600;
+}
+
+.fc-settings-sectioned-buttons__option:has( input:focus-visible ) {
+	outline: 2px solid $fc-settings-nav-focus-outline-color;
+	outline-offset: -2px;
+	z-index: 1;
+}

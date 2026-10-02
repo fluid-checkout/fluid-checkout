@@ -569,10 +569,13 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$tabs = $this->get_tabs();
 		$current_tab = $this->get_current_tab();
 		$can_save = ! empty( $tabs[ $current_tab ][ 'show_save_button' ] );
+		$has_preview = class_exists( 'FluidCheckout_Admin_Settings_Preview' ) && FluidCheckout_Admin_Settings_Preview::instance()->is_preview_visible_for_tab( $current_tab );
+		$layout_class = 'fc-settings-layout';
+		$layout_class .= $has_preview ? ' has-preview' : '';
 		?>
 		<div class="wrap woocommerce fc-wrap fc-settings-wrap">
 			<form method="post" action="<?php echo esc_url( $this->get_settings_url( $current_tab ) ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" data-fc-settings-form>
-				<div class="fc-settings-layout">
+				<div class="<?php echo esc_attr( $layout_class ); ?>" data-fc-settings-layout>
 
 					<div class="fc-settings-sidebar">
 						<div class="fc-settings-sidebar__inner">
@@ -623,6 +626,15 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 							<button type="submit" class="fc-header__button fc-header__button--save fc-settings-submit__button" data-fc-settings-save <?php disabled( ! $can_save ); ?>><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
 						</p>
 					</div>
+
+					<?php
+					/**
+					 * After the settings content column (e.g. page preview).
+					 *
+					 * @param  string  $current_tab  Active settings tab slug.
+					 */
+					do_action( 'fc_admin_settings_after_content', $current_tab );
+					?>
 
 				</div>
 			</form>

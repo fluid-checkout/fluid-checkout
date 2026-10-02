@@ -1,0 +1,277 @@
+// ------------------------------------
+// SETTINGS PAGE - PREVIEW COLUMN
+// ------------------------------------
+
+.fc-settings-layout.has-preview {
+	// Allow the preview column to extend past the viewport; clipped by #wpcontent / #wpbody-content
+	overflow-x: clip;
+}
+
+.fc-settings-preview {
+	position: sticky;
+	top: $fc-settings-sticky-offset;
+	align-self: start;
+	// Fill leftover space, but never shrink below the usable preview width
+	flex: 1 0 $fc-settings-preview-min-width;
+	display: flex;
+	flex-direction: column;
+	width: $fc-settings-preview-min-width;
+	min-width: $fc-settings-preview-min-width;
+	height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	overflow: hidden;
+	border-left: $fc-settings-preview-border-width solid $admin-border-color-strong;
+	background: $white;
+	box-sizing: border-box;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		position: static;
+		flex: 0 0 auto;
+		width: 100%;
+		min-width: 0;
+		height: auto;
+		max-height: none;
+		border-left: 0;
+		border-top: 1px solid $admin-border-color-strong;
+	}
+}
+
+.fc-settings-preview[ hidden ] {
+	display: none !important; // Needed to override flex display when the preview is hidden
+}
+
+.fc-settings-layout.has-preview .fc-settings-content {
+	// Keep settings column width stable so the preview fills the leftover space
+	flex: 0 0 $fc-settings-content-max-width;
+	width: $fc-settings-content-max-width;
+	max-width: $fc-settings-content-max-width;
+	min-width: 0;
+}
+
+.fc-settings-layout:not( .has-preview ) .fc-settings-content {
+	max-width: none;
+}
+
+.fc-settings-layout.is-preview-expanded .fc-settings-sidebar,
+.fc-settings-layout.is-preview-expanded .fc-settings-content {
+	display: none;
+}
+
+.fc-settings-layout.is-preview-expanded .fc-settings-preview {
+	flex: 1 1 auto;
+	width: auto;
+	min-width: 0;
+	border-left: 0;
+}
+
+body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent {
+	background: $fc-settings-page-background-color;
+}
+
+
+
+.fc-settings-preview__toolbar {
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: $fc-settings-preview-toolbar-gap;
+	margin: 0;
+	padding: 12px $fc-settings-preview-toolbar-padding-x;
+	width: 100%;
+	min-width: 0;
+	border-bottom: 1px solid $admin-border-color;
+	background: $white;
+	box-sizing: border-box;
+}
+
+.fc-settings-preview__expand {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: $fc-settings-preview-expand-size;
+	height: $fc-settings-preview-expand-size;
+	padding: 0;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	color: $fc-settings-text-color;
+	cursor: pointer;
+}
+
+.fc-settings-preview__expand:hover {
+	background: $fc-settings-nav-link-hover-background;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-preview__expand[ aria-pressed="true" ] {
+	background: $fc-settings-nav-link-active-background;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-preview__expand-icon {
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.fc-settings-preview__expand[ aria-pressed="true" ] .fc-settings-preview__expand-icon--expand,
+.fc-settings-preview__expand:not( [ aria-pressed="true" ] ) .fc-settings-preview__expand-icon--collapse {
+	display: none;
+}
+
+.fc-settings-preview__viewports {
+	flex: 0 0 auto;
+	width: auto;
+}
+
+.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option {
+	flex: 0 0 auto;
+	width: 32px;
+	min-height: 32px;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+}
+
+.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option svg {
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.fc-settings-preview__status {
+	flex: 0 0 auto;
+	margin: 0;
+	color: $admin-text-color-muted;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.3;
+	white-space: nowrap;
+}
+
+
+
+.fc-settings-preview__tabs {
+	display: flex;
+	flex-wrap: nowrap;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 4px;
+	padding: 8px $fc-settings-preview-toolbar-padding-x 0;
+	width: max-content;
+	max-width: none;
+	background: $white;
+	box-sizing: border-box;
+}
+
+.fc-settings-preview__tab {
+	padding: 6px 12px;
+	border: 0;
+	border-radius: $fc-settings-nav-pill-radius;
+	background: transparent;
+	color: $fc-settings-text-color;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.fc-settings-preview__tab:hover {
+	background: $fc-settings-nav-link-hover-background;
+}
+
+.fc-settings-preview__tab.is-active {
+	background: $fc-settings-nav-link-active-background;
+	font-weight: 600;
+}
+
+
+
+.fc-settings-preview__panel {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	min-height: 0;
+	width: 100%;
+	padding: 12px $fc-settings-preview-toolbar-padding-x 16px;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.fc-settings-preview__panel[ hidden ] {
+	display: none !important; // Needed to override flex display when panel is toggled
+}
+
+
+
+.fc-settings-preview__frame-wrap {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	align-self: stretch;
+	min-height: 0;
+	min-width: 0;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	transition: max-width .2s ease;
+
+	@media ( prefers-reduced-motion: reduce ) {
+		transition: none;
+	}
+}
+
+.fc-settings-preview__frame-wrap[ data-viewport="mobile" ] {
+	max-width: $fc-settings-preview-viewport-mobile;
+}
+
+.fc-settings-preview__frame-wrap[ data-viewport="tablet" ] {
+	max-width: $fc-settings-preview-viewport-tablet;
+}
+
+.fc-settings-preview__frame-wrap[ data-viewport="desktop" ] {
+	max-width: none;
+}
+
+.fc-settings-preview__dims {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	z-index: 1;
+	margin: 0;
+	padding: 2px 6px;
+	border-radius: 3px;
+	background: rgba( 30, 30, 30, .72 );
+	color: $white;
+	font-size: 11px;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.3;
+	pointer-events: none;
+	user-select: none;
+}
+
+.rtl .fc-settings-preview__dims {
+	right: auto;
+	left: 8px;
+}
+
+.fc-settings-preview__frame {
+	position: relative;
+	flex: 1 1 auto;
+	align-self: stretch;
+	display: block;
+	width: 100%;
+	height: 100%;
+	min-height: 280px;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 1px solid $admin-border-color-strong;
+	border-radius: 4px;
+	background: $white;
+	box-sizing: border-box;
+}

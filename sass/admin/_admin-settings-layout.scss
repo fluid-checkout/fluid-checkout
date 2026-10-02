@@ -14,12 +14,16 @@ body.fc-settings-page #screen-meta-links {
 
 body.fc-settings-page #wpbody-content {
 	padding-bottom: 0;
+	// Clip preview overflow without creating a scroll container (keeps sticky preview)
+	overflow-x: clip;
 }
 
 // Extend the sidebar white background + separator to the full page height via #wpcontent.
 // Zero left padding so the gradient origin matches the sidebar (which bleeds to the content edge).
+// Clip preview overflow to the right without horizontal scrollbars.
 body.fc-settings-page #wpcontent {
 	padding-left: 0;
+	overflow-x: clip;
 	background: linear-gradient(
 		to right,
 		$fc-settings-sidebar-background-color $fc-settings-sidebar-width,
@@ -37,6 +41,7 @@ body.fc-settings-page #wpcontent {
 body.rtl.fc-settings-page #wpcontent {
 	padding-left: 0;
 	padding-right: 0;
+	overflow-x: clip;
 	background: linear-gradient(
 		to left,
 		$fc-settings-sidebar-background-color $fc-settings-sidebar-width,
