@@ -356,36 +356,15 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Fixed: "Activate plugin" buttons on add-on promo cards in the settings page.
-* Fixed: Make text in disabled settings fields look disabled while staying readable.
-* Improved: Show Activate / upgrade actions on Cart, Thank You, and Order Pay promo cards when PRO is not active.
-* Improved: On add-on promo cards, show Upgrade to PRO plus “Get only this add-on” when PRO is not installed; when PRO is installed, show Install when entitled, or “Get this add-on” without a price plus Learn more.
-* Added: Checkout Editor promo card on the settings dashboard add-ons list.
-* Added: New “More plugins from Fluid Checkout” section on the settings dashboard.
 * Added: New settings pages and guided setup.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
-* Added: Support for Split design template for the 1-column layout (PRO feature).
-* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
-* Added: Settings profiles storage with get_option compatibility for managed settings.
-* Improved: Own the Fluid Checkout settings page end-to-end, including save and field value loading.
-* Improved: Show and hide dependent settings with data attributes instead of WooCommerce show_if_checked.
-* Improved: Mark the WooCommerce > Settings > Fluid Checkout tab as deprecated (removable; removal in 6.0).
-* Improved: Clarified on the dashboard that Fluid Checkout PRO includes all listed add-ons.
-* Improved: Show the Fluid Checkout plugin icon on admin notices.
-* Improved: Use the checkmark menu icon in the settings page header.
-* Improved: Moved the Site key section from the dashboard to the License keys settings page.
-* Improved: Show the site environment reports opt-in notice only two weeks after installation, and not on Fluid Checkout settings pages.
-* Improved: Moved the Address Book Migration section from the Tools tab to the Address Book settings page.
-* Improved: Removed the experimental label from the precise phone number validation option.
-* Improved: Show field descriptions below settings fields, and use info tips only for tip content.
-* Improved: Clarified the Tools settings labels for TomSelect and debug mode.
-* Improved: Moved enhanced select and form field zoom-fix options into a Utilities section on the Tools settings page.
-* Improved: Keep usage tracking and Address Autocomplete admin scripts available across all Fluid Checkout settings tabs.
-* Improved: Keep usage tracking enabled when “Enable and send now” fails to send, without saving other pending settings.
-* Improved: Move Data to share option descriptions into info tips and tighten spacing between options.
-* Improved: Move most settings field descriptions into info tips (License keys and Tools pages unchanged).
-* Improved: Notify settings scripts when switching tabs so Address Autocomplete can run Google API key validation on first visit.
-* Improved: Clarify VAT Number Field and EU-VAT settings labels and field order on the VAT Assistant promo settings.
+* Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
+* Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
+* Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
+* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Fixed: "Same as billing address" behavior on the cart shipping calculator.
+* Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
+* Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
 
 = 4.2.7 - 2026-08-19 =
 

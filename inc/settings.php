@@ -1157,7 +1157,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			}
 		}
 
-		return $value;
+		// Return `null` to skip saving the option, as disabled fields are not submitted and would otherwise be saved with the default value
+		return null;
 	}
 
 }
