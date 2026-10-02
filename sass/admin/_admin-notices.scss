@@ -1,0 +1,40 @@
+// ------------------------------------
+// ADMIN NOTICES
+// ------------------------------------
+.woocommerce-embed-page .notice.fc-admin-notice {
+	padding: 8px 12px;
+}
+
+
+
+.fc-admin-notice__inner {
+	align-items: flex-start;
+	display: flex;
+	gap: 12px;
+}
+
+
+
+.fc-admin-notice__icon {
+	flex-shrink: 0;
+}
+
+.fc-admin-notice__icon img {
+	border-radius: 3px;
+	display: block;
+	height: 48px;
+	width: 48px;
+}
+
+
+
+.fc-admin-notice__content {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.fc-admin-notice__content > :first-child {
+	margin-top: 0;
+}
+.fc-admin-notice__content > :last-child {
+	margin-bottom: 0;
+}

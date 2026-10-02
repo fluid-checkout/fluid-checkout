@@ -116,8 +116,11 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 
 		// Apply migrations
 		foreach ( $migrations_to_apply as $migration ) {
-			// Initialize migration class
-			$migration_class = require_once $migration;
+			// Get migration class object
+			$migration_class = $this->get_migration_class_instance( $migration );
+
+			// Skip if migration class is not available
+			if ( ! $migration_class ) { continue; }
 
 			// Maybe apply migration
 			if ( method_exists( $migration_class, 'migrate' ) ) {
@@ -129,6 +132,70 @@ class FluidCheckout_AdminDBMigrations extends FluidCheckout {
 				$this->update_db_version( $migration_class->get_db_version() );
 			}
 		}
+	}
+
+
+
+	/**
+	 * Get the migration class instance for a migration file.
+	 *
+	 * @param   string  $migration_file  Absolute path to the migration file.
+	 */
+	public function get_migration_class_instance( $migration_file ) {
+		// Get version number from file name
+		$migration_version = str_replace( 'migration-', '', basename( $migration_file ) );
+		$migration_version = str_replace( '.php', '', $migration_version );
+		$class_name = 'FluidCheckout_Migration_' . str_replace( '.', '_', $migration_version );
+
+		// Maybe load migration file
+		if ( ! class_exists( $class_name ) ) {
+			require_once $migration_file;
+		}
+
+		// Bail if migration class is not available
+		if ( ! class_exists( $class_name ) ) { return null; }
+
+		// Return migration class instance
+		return $class_name::instance();
+	}
+
+
+
+	/**
+	 * Get descriptions of changes from migrations that have not been applied yet.
+	 */
+	public function get_migrations_descriptions() {
+		// Get migrations to apply
+		$migrations_to_apply = $this->get_migrations_to_apply();
+
+		// Get descriptions
+		$descriptions = array();
+		foreach ( $migrations_to_apply as $migration ) {
+			// Get migration class object
+			$migration_class = $this->get_migration_class_instance( $migration );
+
+			// Skip if migration class is not available
+			if ( ! $migration_class ) { continue; }
+
+			// Skip if migration does not provide a description
+			if ( ! method_exists( $migration_class, 'get_description' ) ) { continue; }
+
+			// Get description
+			$migration_description = $migration_class->get_description();
+
+			// Skip if description is empty
+			if ( empty( $migration_description ) ) { continue; }
+
+			// Maybe convert single description string to array
+			if ( ! is_array( $migration_description ) ) {
+				$migration_description = array( $migration_description );
+			}
+
+			// Add descriptions
+			$descriptions = array_merge( $descriptions, $migration_description );
+		}
+
+		return $descriptions;
 	}
 
 

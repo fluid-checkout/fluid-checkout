@@ -356,6 +356,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
+* Improved: Show the Fluid Checkout plugin icon on admin notices.
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
