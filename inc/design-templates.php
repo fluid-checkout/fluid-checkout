@@ -461,8 +461,11 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * @param  string  $context        The context for which to get the CSS variables styles. Defaults to `frontend`.
 	 */
 	public function maybe_add_css_variables_secondary_column( $css_variables, $context = 'frontend' ) {
-		// Bail if not on checkout page.
-		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
+		// Bail if not on checkout or cart page.
+		if (
+			( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() )
+			&& ( ! function_exists( 'is_cart' ) || ! is_cart() )
+		) { return $css_variables; }
 
 		return $this->add_css_variables_secondary_column( $css_variables, $context );
 	}
