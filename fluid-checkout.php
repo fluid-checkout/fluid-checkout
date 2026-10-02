@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 4.2.7
+Version: 4.2.8-alpha-3
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -285,7 +285,7 @@ class FluidCheckout {
 	public function hooks() {
 		// Check if Woocommerce is activated
 		if( ! $this->is_woocommerce_activated() ) {
-			add_action( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
+			add_filter( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
 			return;
 		}
 
@@ -587,7 +587,7 @@ class FluidCheckout {
 	 */
 	public function add_woocommerce_required_notice( $notices = array() ) {
 		// Bail if user does not have enough permissions
-		if ( ! current_user_can( 'install_plugins' ) ) { return; }
+		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
 		$required_plugin_name = __( 'WooCommerce', 'fluid-checkout' );
 		$required_plugin_path_name = 'woocommerce/woocommerce.php';
