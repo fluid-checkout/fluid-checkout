@@ -115,7 +115,7 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'title' => __( 'Checkout layout', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'Multi-step or single-step checkout, and one or two columns on large screens.', 'fluid-checkout' ),
+						'desc'  => '',
 						'id'    => 'fc_checkout_layout_options',
 					),
 
@@ -160,7 +160,7 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'title' => __( 'Page templates', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'Use the distraction-free header and footer, or keep the theme\'s.', 'fluid-checkout' ),
+						'desc'  => '',
 						'id'    => 'fc_checkout_page_templates_options',
 					),
 
@@ -231,7 +231,7 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'title' => __( 'Progress bar', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'Show and style the checkout progress bar. Applies when using multi-step checkout layout.', 'fluid-checkout' ),
+						'desc'  => '',
 						'id'    => 'fc_checkout_progress_bar_options',
 					),
 
@@ -282,7 +282,7 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'title' => __( 'Order summary', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'Layout behavior for the order summary.', 'fluid-checkout' ),
+						'desc'  => '',
 						'id'    => 'fc_checkout_order_summary_options',
 					),
 

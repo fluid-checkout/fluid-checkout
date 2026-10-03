@@ -1,16 +1,37 @@
 // ------------------------------------
-// SETTINGS PAGE - SUBMIT
+// SETTINGS PAGE - ACTIONS (SAVE BAR)
 // ------------------------------------
 
-.fc-settings-submit {
-	margin: 20px 0 0;
-	padding: 0;
+.fc-settings-actions {
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+	z-index: $fc-settings-actions-z-index;
+	margin: 0;
+	padding: $fc-settings-actions-padding;
+	border-top: 1px solid $fc-settings-actions-border-color;
+	background: $fc-settings-actions-background-color;
+	box-shadow: $fc-settings-actions-box-shadow;
+	box-sizing: border-box;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		position: sticky;
+		bottom: 0;
+		padding: $fc-settings-actions-padding-mobile;
+	}
 }
 
-.fc-settings-submit .fc-header__button {
+.fc-settings-actions[ hidden ] {
+	display: none !important; // Needed to override flex display when the actions bar is hidden
+}
+
+.fc-settings-actions .fc-header__button {
 	margin-left: 0;
 }
 
-.rtl .fc-settings-submit .fc-header__button {
+.rtl .fc-settings-actions .fc-header__button {
 	margin-right: 0;
 }

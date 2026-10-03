@@ -81,8 +81,14 @@ $fc-settings-page-background-color:         $admin-background-color !default;
 $fc-settings-text-color:                    $admin-text-color !default;
 $fc-settings-content-padding:               24px 12px !default;
 $fc-settings-content-padding-mobile:        10px 5px !default;
-$fc-settings-content-padding-bottom:        40px !default;
+$fc-settings-content-padding-bottom:        16px !default;
 $fc-settings-content-max-width:             600px !default;
+$fc-settings-actions-padding:               12px !default;
+$fc-settings-actions-padding-mobile:        10px 5px !default;
+$fc-settings-actions-background-color:      $fc-settings-page-background-color !default;
+$fc-settings-actions-border-color:          $admin-border-color-strong !default;
+$fc-settings-actions-box-shadow:            0 -1px 2px rgba( 0, 0, 0, .04 ) !default;
+$fc-settings-actions-z-index:               20 !default;
 $fc-settings-content-title-margin:          0 0 20px !default;
 $fc-settings-content-title-font-size:       20px !default;
 $fc-settings-content-title-font-weight:     500 !default;
@@ -91,7 +97,7 @@ $fc-settings-tab-animation-duration:        .2s !default;
 
 $fc-settings-preview-toolbar-padding-x:     8px !default;
 $fc-settings-preview-toolbar-gap:           10px !default;
-$fc-settings-preview-expand-size:           32px !default;
+$fc-settings-preview-expand-size:           36px !default;
 $fc-settings-preview-border-width:          1px !default;
 $fc-settings-preview-frame-border-width:    1px !default;
 // Inner preview frame width (panel paddings and frame borders are added separately)

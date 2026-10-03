@@ -587,44 +587,46 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 					</div>
 
 					<div class="fc-settings-content">
-						<hr class="wp-header-end">
+						<div class="fc-settings-content__scroll">
+							<hr class="wp-header-end">
 
-						<?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
-						<?php if ( isset( $_GET[ 'settings-updated' ] ) ) : ?>
-							<div class="notice notice-success is-dismissible"><p><?php echo esc_html( __( 'Your settings have been saved.', 'fluid-checkout' ) ); ?></p></div>
-						<?php endif; ?>
+							<?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+							<?php if ( isset( $_GET[ 'settings-updated' ] ) ) : ?>
+								<div class="notice notice-success is-dismissible"><p><?php echo esc_html( __( 'Your settings have been saved.', 'fluid-checkout' ) ); ?></p></div>
+							<?php endif; ?>
 
-						<?php foreach ( $tabs as $tab => $tab_args ) : ?>
-							<?php
-							// Skip separators
-							if ( 'separator' === $tab_args[ 'type' ] ) { continue; }
-
-							$is_active = $tab === $current_tab;
-							?>
-							<div
-								class="fc-settings-tab fc-settings-tab--<?php echo esc_attr( $tab ); ?><?php echo $is_active ? ' is-active' : ''; ?>"
-								data-fc-settings-tab="<?php echo esc_attr( $tab ); ?>"
-								data-fc-settings-show-save="<?php echo $tab_args[ 'show_save_button' ] ? 'yes' : 'no'; ?>"
-							>
-								<h2 class="fc-settings-content__title"><?php echo esc_html( $tab_args[ 'label' ] ); ?></h2>
-
+							<?php foreach ( $tabs as $tab => $tab_args ) : ?>
 								<?php
-								FluidCheckout_Admin_Settings_Renderer::instance()->output_fields( $this->get_tab_settings( $tab ) );
+								// Skip separators
+								if ( 'separator' === $tab_args[ 'type' ] ) { continue; }
 
-								/**
-								 * Output additional content for a tab of the Fluid Checkout settings page.
-								 */
-								do_action( 'fc_admin_settings_tab_' . $tab );
+								$is_active = $tab === $current_tab;
 								?>
-							</div>
-						<?php endforeach; ?>
+								<div
+									class="fc-settings-tab fc-settings-tab--<?php echo esc_attr( $tab ); ?><?php echo $is_active ? ' is-active' : ''; ?>"
+									data-fc-settings-tab="<?php echo esc_attr( $tab ); ?>"
+									data-fc-settings-show-save="<?php echo $tab_args[ 'show_save_button' ] ? 'yes' : 'no'; ?>"
+								>
+									<h2 class="fc-settings-content__title"><?php echo esc_html( $tab_args[ 'label' ] ); ?></h2>
 
-						<input type="hidden" name="fc_settings_action" value="save">
-						<?php wp_nonce_field( 'fc_settings_save', 'fc_settings_nonce' ); ?>
+									<?php
+									FluidCheckout_Admin_Settings_Renderer::instance()->output_fields( $this->get_tab_settings( $tab ) );
 
-						<p class="fc-settings-submit submit" data-fc-settings-submit <?php echo $can_save ? '' : 'hidden'; ?>>
-							<button type="submit" class="fc-header__button fc-header__button--save fc-settings-submit__button" data-fc-settings-save <?php disabled( ! $can_save ); ?>><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
-						</p>
+									/**
+									 * Output additional content for a tab of the Fluid Checkout settings page.
+									 */
+									do_action( 'fc_admin_settings_tab_' . $tab );
+									?>
+								</div>
+							<?php endforeach; ?>
+
+							<input type="hidden" name="fc_settings_action" value="save">
+							<?php wp_nonce_field( 'fc_settings_save', 'fc_settings_nonce' ); ?>
+						</div>
+
+						<div class="fc-settings-actions" data-fc-settings-submit <?php echo $can_save ? '' : 'hidden'; ?>>
+							<button type="submit" class="fc-header__button fc-header__button--save fc-settings-actions__button" data-fc-settings-save <?php disabled( ! $can_save ); ?>><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
+						</div>
 					</div>
 
 					<?php

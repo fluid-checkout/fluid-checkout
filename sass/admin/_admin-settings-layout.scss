@@ -113,17 +113,51 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 
 
 .fc-settings-content {
+	position: sticky;
+	top: $fc-settings-sticky-offset;
+	align-self: flex-start;
+	display: flex;
 	flex: 1 1 auto;
+	flex-direction: column;
 	min-width: 0;
 	max-width: $fc-settings-content-max-width;
-	padding: $fc-settings-content-padding;
-	padding-bottom: $fc-settings-content-padding-bottom;
-	position: relative;
+	height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	padding: 0;
+	overflow: hidden;
 
 	@media ( max-width: $admin-breakpoint-mobile ) {
-		padding: $fc-settings-content-padding-mobile;
-		padding-bottom: 30px;
+		position: static;
+		align-self: stretch;
+		height: auto;
+		max-height: none;
+		overflow: visible;
 	}
+}
+
+.fc-settings-content__scroll {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: $fc-settings-content-padding;
+	padding-bottom: $fc-settings-content-padding-bottom;
+	scrollbar-width: none; // Firefox
+	-ms-overflow-style: none; // Legacy Edge
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		overflow: visible;
+		padding: $fc-settings-content-padding-mobile;
+		padding-bottom: $fc-settings-content-padding-bottom;
+	}
+}
+
+.fc-settings-content__scroll::-webkit-scrollbar {
+	display: none; // Chrome, Safari, Edge
+}
+
+.fc-settings-content__scroll .fc-settings-card:last-child {
+	margin-bottom: 0;
 }
 
 .fc-settings-content__title {
