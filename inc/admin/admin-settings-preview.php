@@ -131,17 +131,20 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			'fc-admin-settings-preview',
 			'fcAdminSettingsPreviewSettings',
 			array(
-				'hiddenTabs'  => self::HIDDEN_TABS,
-				'initialTab'  => $page->get_current_tab(),
-				'initialPage' => $this->get_preview_page_for_tab( $page->get_current_tab() ),
-				'i18n'        => array(
-					'expand'            => __( 'Expand preview', 'fluid-checkout' ),
-					'collapse'          => __( 'Collapse preview', 'fluid-checkout' ),
-					'preview'           => __( 'Page preview', 'fluid-checkout' ),
+				'hiddenTabs'             => self::HIDDEN_TABS,
+				'initialTab'             => $page->get_current_tab(),
+				'initialPage'            => $this->get_preview_page_for_tab( $page->get_current_tab() ),
+				'previewProUrlTemplate'  => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=settings-preview-{page}&mtm_source=lite-plugin',
+				'i18n'                   => array(
+					'expand'               => __( 'Expand preview', 'fluid-checkout' ),
+					'collapse'             => __( 'Collapse preview', 'fluid-checkout' ),
+					'preview'              => __( 'Page preview', 'fluid-checkout' ),
 					/* translators: %s: preview page label, e.g. Checkout */
-					'previewTitle'      => __( '%s preview', 'fluid-checkout' ),
-					'previewSubtitle'   => __( 'Isolated session · fields read-only', 'fluid-checkout' ),
-					'previewSubtitlePro'=> __( 'Available with Fluid Checkout PRO.', 'fluid-checkout' ),
+					'previewTitle'         => __( '%s preview', 'fluid-checkout' ),
+					'previewSubtitle'      => __( 'Isolated session · fields read-only', 'fluid-checkout' ),
+					/* translators: %s: HTML link to Fluid Checkout PRO pricing page */
+					'previewSubtitlePro'   => __( 'Available with %s.', 'fluid-checkout' ),
+					'previewProLinkLabel'  => __( 'Fluid Checkout PRO', 'fluid-checkout' ),
 				),
 			)
 		);
@@ -159,7 +162,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		$initial_page = $this->get_preview_page_for_tab( $current_tab );
 		$is_visible = $this->is_preview_visible_for_tab( $current_tab );
 		$initial_requires_pro = ! empty( $pages[ $initial_page ][ 'requires_pro' ] );
-		$iframe_srcdoc = $this->get_placeholder_iframe_srcdoc( $pages[ $initial_page ][ 'label' ], $initial_requires_pro );
+		$iframe_srcdoc = $this->get_placeholder_iframe_srcdoc( $pages[ $initial_page ][ 'label' ], $initial_requires_pro, $initial_page );
 		?>
 		<aside
 			class="fc-settings-preview"
@@ -240,23 +243,72 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	}
 
 	/**
+	 * Get the Fluid Checkout PRO upgrade URL for the preview placeholder.
+	 *
+	 * @param  string  $page_slug  Preview page slug.
+	 * @return string
+	 */
+	private function get_pro_preview_upgrade_url( $page_slug = '' ) {
+		$page_slug = str_replace( '_', '-', sanitize_title( $page_slug ) );
+		$mtm_kwd = ! empty( $page_slug ) ? 'settings-preview-' . $page_slug : 'settings-preview';
+
+		return add_query_arg(
+			array(
+				'mtm_campaign' => 'upgrade-pro',
+				'mtm_kwd'      => $mtm_kwd,
+				'mtm_source'   => 'lite-plugin',
+			),
+			'https://fluidcheckout.com/pricing/'
+		);
+	}
+
+	/**
+	 * Get the PRO unlock subtitle HTML for the preview placeholder.
+	 *
+	 * @param  string  $page_slug  Preview page slug.
+	 * @return string
+	 */
+	private function get_pro_preview_subtitle_html( $page_slug = '' ) {
+		$link = sprintf(
+			'<a href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
+			esc_url( $this->get_pro_preview_upgrade_url( $page_slug ) ),
+			esc_html__( 'Fluid Checkout PRO', 'fluid-checkout' )
+		);
+
+		return sprintf(
+			/* translators: %s: HTML link to Fluid Checkout PRO pricing page */
+			__( 'Available with %s.', 'fluid-checkout' ),
+			$link
+		);
+	}
+
+	/**
 	 * Build a minimal placeholder document for the preview iframe.
 	 *
 	 * @param  string  $page_label    Label of the preview page.
 	 * @param  bool    $requires_pro  Whether the page preview requires PRO.
+	 * @param  string  $page_slug     Preview page slug (for PRO upgrade tracking).
 	 * @return string
 	 */
-	private function get_placeholder_iframe_srcdoc( $page_label, $requires_pro = false ) {
+	private function get_placeholder_iframe_srcdoc( $page_label, $requires_pro = false, $page_slug = '' ) {
 		$title = sprintf(
 			/* translators: %s: preview page label, e.g. Checkout */
 			__( '%s preview', 'fluid-checkout' ),
 			$page_label
 		);
 		$subtitle = $requires_pro
-			? __( 'Available with Fluid Checkout PRO.', 'fluid-checkout' )
-			: __( 'Isolated session · fields read-only', 'fluid-checkout' );
+			? $this->get_pro_preview_subtitle_html( $page_slug )
+			: esc_html__( 'Isolated session · fields read-only', 'fluid-checkout' );
 
-		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . esc_html( $subtitle ) . '</span></div></body></html>';
+		$allowed_subtitle_html = array(
+			'a' => array(
+				'href'   => true,
+				'target' => true,
+				'rel'    => true,
+			),
+		);
+
+		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}a{color:#2271b1;text-decoration:underline}a:hover,a:focus{color:#135e96}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . wp_kses( $subtitle, $allowed_subtitle_html ) . '</span></div></body></html>';
 	}
 
 }

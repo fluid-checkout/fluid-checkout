@@ -184,7 +184,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-settings-tools.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-license-keys.php';
 
-		// Preview column (after settings providers so promo cards can be reused)
+		// Preview column
 		include_once self::$directory_path . 'inc/admin/admin-settings-preview.php';
 	}
 

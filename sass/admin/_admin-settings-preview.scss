@@ -11,12 +11,14 @@
 	position: sticky;
 	top: $fc-settings-sticky-offset;
 	align-self: start;
+	// Column min width = inner frame + horizontal panel paddings + left border
+	$fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-toolbar-padding-x } + #{$fc-settings-preview-border-width} );
 	// Fill leftover space, but never shrink below the usable preview width
-	flex: 1 0 $fc-settings-preview-min-width;
+	flex: 1 0 $fc-settings-preview-column-min-width;
 	display: flex;
 	flex-direction: column;
-	width: $fc-settings-preview-min-width;
-	min-width: $fc-settings-preview-min-width;
+	width: $fc-settings-preview-column-min-width;
+	min-width: $fc-settings-preview-column-min-width;
 	height: calc( 100vh - #{$fc-settings-sticky-offset} );
 	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
 	overflow: hidden;
@@ -159,7 +161,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	flex-wrap: nowrap;
 	flex: 0 0 auto;
 	align-items: center;
-	gap: 4px;
+	gap: 0;
 	padding: 8px $fc-settings-preview-toolbar-padding-x 0;
 	width: max-content;
 	max-width: none;
@@ -213,7 +215,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	flex-direction: column;
 	align-self: stretch;
 	min-height: 0;
-	min-width: 0;
+	min-width: $fc-settings-preview-min-width;
 	width: 100%;
 	height: 100%;
 	max-width: 100%;

@@ -93,7 +93,8 @@ $fc-settings-preview-toolbar-padding-x:     8px !default;
 $fc-settings-preview-toolbar-gap:           10px !default;
 $fc-settings-preview-expand-size:           32px !default;
 $fc-settings-preview-border-width:          1px !default;
-$fc-settings-preview-min-width:             360px !default;
+// Inner preview frame width (panel paddings and preview border are added separately)
+$fc-settings-preview-min-width:             280px !default;
 $fc-settings-preview-viewport-mobile:       390px !default;
 $fc-settings-preview-viewport-tablet:       768px !default;
 
@@ -179,7 +180,7 @@ $fc-settings-card-inner-field-padding-x:    0 !default;
 
 $fc-settings-field-padding-y:               8px !default;
 $fc-settings-field-border-color:            #f0f0f1 !default;
-$fc-settings-field-label-width:             220px !default;
+$fc-settings-field-label-width:             180px !default;
 $fc-settings-field-label-font-size:         14px !default;
 $fc-settings-field-inline-gap:              24px !default;
 $fc-settings-input-height:                  36px !default;

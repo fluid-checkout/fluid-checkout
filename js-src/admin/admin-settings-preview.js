@@ -42,13 +42,15 @@
 		hiddenTabs:                  [ 'dashboard', 'license_keys' ],
 		initialTab:                  'checkout',
 		initialPage:                 'checkout',
+		previewProUrlTemplate:       'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=settings-preview-{page}&mtm_source=lite-plugin',
 		i18n: {
 			expand:                  'Expand preview',
 			collapse:                'Collapse preview',
 			preview:                 'Page preview',
 			previewTitle:            '%s preview',
 			previewSubtitle:         'Isolated session · fields read-only',
-			previewSubtitlePro:      'Available with Fluid Checkout PRO.',
+			previewSubtitlePro:      'Available with %s.',
+			previewProLinkLabel:     'Fluid Checkout PRO',
 		},
 	};
 
@@ -157,17 +159,44 @@
 	};
 
 	/**
+	 * Escape text for safe HTML insertion.
+	 *
+	 * @param   {string}  text  Raw text.
+	 * @return  {string}
+	 */
+	var escapeHtml = function( text ) {
+		var el = document.createElement( 'span' );
+		el.textContent = text || '';
+		return el.innerHTML;
+	};
+
+	/**
+	 * Build the PRO unlock subtitle HTML with a pricing link.
+	 *
+	 * @param   {string}  page  Preview page slug.
+	 * @return  {string}
+	 */
+	var getProPreviewSubtitleHtml = function( page ) {
+		var pageSlug = String( page || '' ).replace( /_/g, '-' );
+		var url = ( _settings.previewProUrlTemplate || '' ).replace( '{page}', pageSlug );
+		var linkLabel = _settings.i18n.previewProLinkLabel || 'Fluid Checkout PRO';
+		var linkHtml = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + escapeHtml( linkLabel ) + '</a>';
+
+		return ( _settings.i18n.previewSubtitlePro || 'Available with %s.' ).replace( '%s', linkHtml );
+	};
+
+	/**
 	 * Update the preview iframe title and subtitle for the selected page.
 	 *
+	 * @param  {string}   page         Preview page slug.
 	 * @param  {string}   pageLabel    Label of the selected preview page.
 	 * @param  {boolean}  requiresPro  Whether the page preview requires PRO.
 	 */
-	var setPreviewContent = function( pageLabel, requiresPro ) {
+	var setPreviewContent = function( page, pageLabel, requiresPro ) {
 		var frame = document.querySelector( _settings.frameSelector );
 		var doc;
 		var titleEl;
 		var subtitleEl;
-		var subtitle;
 
 		// Bail if frame is missing
 		if ( ! frame ) { return; }
@@ -188,10 +217,13 @@
 
 		subtitleEl = doc.getElementById( 'fc-settings-preview-subtitle' );
 		if ( subtitleEl ) {
-			subtitle = requiresPro
-				? ( _settings.i18n.previewSubtitlePro || 'Available with Fluid Checkout PRO.' )
-				: ( _settings.i18n.previewSubtitle || 'Isolated session · fields read-only' );
-			subtitleEl.textContent = subtitle;
+			if ( requiresPro ) {
+				subtitleEl.innerHTML = getProPreviewSubtitleHtml( page );
+			}
+			// Otherwise show the isolated-session subtitle
+			else {
+				subtitleEl.textContent = _settings.i18n.previewSubtitle || 'Isolated session · fields read-only';
+			}
 		}
 	};
 
@@ -295,7 +327,7 @@
 			panel.removeAttribute( 'hidden' );
 		}
 
-		setPreviewContent( pageLabel, requiresPro );
+		setPreviewContent( page, pageLabel, requiresPro );
 		updatePreviewDims();
 	};
 
