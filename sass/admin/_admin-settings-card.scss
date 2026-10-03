@@ -127,6 +127,11 @@
 	cursor: default;
 	transform: none;
 	box-shadow: none;
+}
+
+.fc-settings-promo-pill--addon.fc-settings-promo-pill--static,
+.fc-settings-promo-pill--addon.fc-settings-promo-pill--static:hover,
+.fc-settings-promo-pill--addon.fc-settings-promo-pill--static:focus {
 	color: $fc-settings-promo-pill-addon-color;
 }
 

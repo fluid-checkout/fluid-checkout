@@ -763,26 +763,41 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	public function output_field_radio( $value ) {
 		$field_description = $this->get_field_description( $value );
 		$options = isset( $value[ 'options' ] ) && is_array( $value[ 'options' ] ) ? $value[ 'options' ] : array();
+		$field_disabled = $this->is_field_disabled( $value );
+		$option_value = $value[ 'value' ];
+		$group_label = ! empty( $value[ 'title' ] ) ? $value[ 'title' ] : __( 'Options', 'fluid-checkout' );
 
 		$this->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false ) );
-		echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
-		<ul>
-			<?php foreach ( $options as $key => $val ) : ?>
-				<li>
-					<label><input
+		<div class="fc-settings-radio-options" role="radiogroup" aria-label="<?php echo esc_attr( $group_label ); ?>">
+			<?php foreach ( $options as $key => $args ) : ?>
+				<?php
+				// Normalize option args
+				if ( ! is_array( $args ) ) {
+					$args = array( 'label' => $args );
+				}
+
+				$option_disabled = $field_disabled || ( array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] );
+				$option_classes = 'fc-settings-radio-option';
+				$option_classes .= $option_disabled ? ' is-disabled' : '';
+				$option_classes .= (string) $key === (string) $option_value ? ' is-selected' : '';
+				?>
+				<label class="<?php echo esc_attr( $option_classes ); ?>">
+					<input
 						name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
 						value="<?php echo esc_attr( $key ); ?>"
 						type="radio"
 						style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 						class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 						<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-						<?php checked( (string) $key, (string) $value[ 'value' ] ); ?>
-						<?php disabled( $this->is_field_disabled( $value ) ); ?>
-						/> <?php echo esc_html( $val ); ?></label>
-				</li>
+						<?php checked( (string) $key, (string) $option_value ); ?>
+						<?php disabled( $option_disabled ); ?>
+						/>
+					<span class="fc-settings-radio-option__label"><?php echo esc_html( $args[ 'label' ] ); ?></span>
+				</label>
 			<?php endforeach; ?>
-		</ul>
+		</div>
+		<?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php
 		$this->output_field_end( $value, array( 'fieldset' => true ) );
 	}

@@ -375,18 +375,21 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 		$effective = $this->get_effective_values();
 
-		// Return overlay / active profile value when present
+		// Get overlay / active profile value when present
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
-			return $effective[ $option ];
+			$value = $effective[ $option ];
 		}
-
 		// Managed keys without a stored value use the code default
-		if ( $this->is_managed_option( $option ) ) {
-			return $default;
+		elseif ( $this->is_managed_option( $option ) ) {
+			$value = $default;
+		}
+		// Unmanaged keys fall through to WordPress
+		else {
+			$value = $this->get_raw_option( $option, $default );
 		}
 
-		// Unmanaged keys fall through to WordPress
-		return $this->get_raw_option( $option, $default );
+		// Maybe force Lite-compatible values when PRO is not active
+		return $this->maybe_force_lite_option_value( $option, $value );
 	}
 
 
@@ -774,12 +777,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$effective = $this->get_effective_values();
 
 		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
-			return $effective[ $option ];
+			return $this->maybe_force_lite_option_value( $option, $effective[ $option ] );
 		}
 
 		// Managed keys missing from the map use code defaults
 		$code_default = $this->get_option_default( $option );
-		return null !== $code_default ? $code_default : $default;
+		$value = null !== $code_default ? $code_default : $default;
+
+		return $this->maybe_force_lite_option_value( $option, $value );
 	}
 
 
@@ -949,6 +954,55 @@ class FluidCheckout_Settings extends FluidCheckout {
 	}
 
 
+
+	/**
+	 * Maybe force Lite-compatible option values when PRO is not active.
+	 * Uses the same hooks PRO removes on activation, so behavior stays in sync with `pre_option_*` / `option_*` filters.
+	 *
+	 * @param  string  $option  Option name.
+	 * @param  mixed   $value   Resolved option value.
+	 */
+	public function maybe_force_lite_option_value( $option, $value ) {
+		switch ( $option ) {
+			case 'fc_design_template':
+				// Bail if PRO removed the Lite force filter
+				if ( ! has_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ) ) ) { return $value; }
+				return $this->set_option_lite_design_template( $value, $option, null );
+
+			case 'fc_checkout_column_layout':
+				// Bail if PRO removed the Lite force filter
+				if ( ! has_filter( 'pre_option_fc_checkout_column_layout', array( $this, 'set_option_checkout_column_layout' ) ) ) { return $value; }
+				return $this->set_option_checkout_column_layout( $value, $option, null );
+
+			case 'fc_checkout_progress_bar_style':
+				// Bail if PRO removed the Lite force filter
+				if ( ! has_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ) ) ) { return $value; }
+				return $this->set_option_progress_bar_style( $value, $option, null );
+
+			case 'fc_pro_checkout_edit_cart_replace_edit_cart_link':
+				// Bail if PRO removed the Lite force filter
+				if ( ! has_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ) ) ) { return $value; }
+				return $this->set_option_replace_edit_cart_link( $value, $option, null );
+
+			case 'fc_pro_checkout_coupon_codes_position':
+				// Bail if PRO removed the Lite force filter
+				if ( ! has_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ) ) ) { return $value; }
+				return $this->set_option_coupon_code_position_checkout( $value, $option, null );
+
+			case 'fc_pro_checkout_billing_address_position':
+				// Bail if PRO removed the Lite force filter
+				if ( ! has_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ) ) ) { return $value; }
+				return $this->set_option_billing_address_position_checkout( $value, $option, null );
+
+			case 'fc_pro_checkout_order_summary_position_mobile':
+				// Bail if PRO removed the Lite force filter
+				if ( ! has_filter( 'option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ) ) ) { return $value; }
+				return $this->set_option_order_summary_position_mobile( $value, $option );
+
+			default:
+				return $value;
+		}
+	}
 
 	/**
 	 * Force the option value for design template when only Lite plugin is activated.
@@ -1127,7 +1181,16 @@ class FluidCheckout_Settings extends FluidCheckout {
 			case 'fc_select':
 			case 'fc_layout_selector':
 			case 'fc_template_selector':
-				$allowed_values = empty( $option[ 'options' ] ) ? array() : array_map( 'strval', array_keys( $option[ 'options' ] ) );
+				// Only allow enabled options so disabled PRO values fall back to the Lite-compatible default
+				$allowed_values = array();
+				if ( ! empty( $option[ 'options' ] ) && is_array( $option[ 'options' ] ) ) {
+					foreach ( $option[ 'options' ] as $key => $args ) {
+						if ( is_array( $args ) && array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ) {
+							continue;
+						}
+						$allowed_values[] = (string) $key;
+					}
+				}
 				if ( empty( $option[ 'default' ] ) && empty( $allowed_values ) ) {
 					$value = null;
 					break;
@@ -1163,8 +1226,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			}
 		}
 
-		// Return `null` to skip saving the option, as disabled fields are not submitted and would otherwise be saved with the default value
-		return null;
+		return $value;
 	}
 
 }

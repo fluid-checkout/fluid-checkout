@@ -28,8 +28,8 @@
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
 		settingsRowSelector:                   '.fc-settings-field, tr',
-		layoutOptionsSelector:                 '.fc-settings-layout-options',
-		layoutOptionSelector:                  '.fc-settings-layout-option',
+		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
+		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
 
 		hiddenClass:                           'hidden',
@@ -368,7 +368,7 @@
 	}
 
 	/**
-	 * Sync selected class on layout / template option cards.
+	 * Sync selected class on layout / template option buttons.
 	 *
 	 * @param  {Element}  input  Changed radio input.
 	 */

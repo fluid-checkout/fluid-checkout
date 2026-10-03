@@ -359,10 +359,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Place the site key upgrade translators comment next to its sprintf string.
 * Added: Page preview column on settings tabs, with viewport sizes, zoom controls, and expand to full width.
 * Improved: Limit settings content sections to a 600px max width for easier scanning.
-* Improved: Split design template, checkout layout, and columns into separate settings sections with larger option cards.
+* Improved: Split design template and checkout layout into separate settings sections with larger option cards.
 * Added: New settings pages and guided setup.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
+* Improved: Design template options use bordered radio boxes; checkout layout and columns use segmented buttons matching the settings design.
+* Improved: Split page templates, progress bar, and order summary into their own checkout settings sections.
+* Fixed: PRO-only settings values are forced back to Lite-compatible options when Fluid Checkout PRO is not active.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
