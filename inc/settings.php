@@ -518,7 +518,13 @@ class FluidCheckout_Settings extends FluidCheckout {
 			return array();
 		}
 
-		$values = maybe_unserialize( $post->post_content );
+		// Unserialize profile payload without allowing object instantiation
+		$raw_values = $post->post_content;
+		if ( is_string( $raw_values ) ) {
+			$values = unserialize( $raw_values, array( 'allowed_classes' => false ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
+		} else {
+			$values = maybe_unserialize( $raw_values );
+		}
 
 		// Fail soft to empty map on invalid payload
 		if ( ! is_array( $values ) ) {

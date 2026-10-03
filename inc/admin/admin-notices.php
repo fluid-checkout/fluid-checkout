@@ -192,8 +192,20 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		// Bail if not dismissing notices
 		if ( ! array_key_exists( self::$plugin_prefix . '_action', $_GET ) || 'dismiss_notice' !== sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_action' ] ) ) || ! array_key_exists( self::$plugin_prefix . '_notice', $_GET ) || empty( sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) ) ) ) { return; }
 
-		// Update notice dismiss option
+		// Get notice name
 		$name = sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) );
+
+		// Bail if notice name is not registered
+		$registered_notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
+		$registered_names = array();
+		foreach ( $registered_notices as $notice ) {
+			// Skip notices without a name
+			if ( empty( $notice['name'] ) ) { continue; }
+			$registered_names[] = $notice['name'];
+		}
+		if ( ! in_array( $name, $registered_names, true ) ) { return; }
+
+		// Update notice dismiss option
 		update_option( self::$plugin_prefix . '_dismissed_notice_' . $name, 1 );
 	}
 

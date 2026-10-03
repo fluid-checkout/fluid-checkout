@@ -133,7 +133,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 		?>
 		<div class="row-container">
-			<div class="row row-parent <?php echo $container_width_class . $color_scheme_class; ?>" <?php echo $custom_styles; ?>>
+			<div class="row row-parent <?php echo esc_attr( $container_width_class . $color_scheme_class ); ?>"<?php echo ! empty( $custom_styles ) ? ' style="' . esc_attr( $custom_styles ) . '"' : ''; ?>>
 			<?php
 	}
 
@@ -193,7 +193,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 				
 				// Set custom width attribute
 				if ( is_array( $generic_custom_width ) && ! empty( $generic_custom_width ) ) {
-					$container_info['custom_styles'] = ' style="max-width: ' . implode( '', $generic_custom_width ) . '; margin: auto;"';
+					$container_info['custom_styles'] = $this->get_validated_max_width_style( $generic_custom_width );
 				}
 			}
 		} 
@@ -206,18 +206,25 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 
 				// Check if custom width is set in the page settings
 				if ( isset( $metabox_data['_uncode_specific_layout_width_custom'][0] ) ) {
-					$page_settings_value = unserialize( $metabox_data['_uncode_specific_layout_width_custom'][0] );
+					$raw_page_settings = $metabox_data['_uncode_specific_layout_width_custom'][0];
+
+					// Maybe unserialize without allowing object instantiation
+					if ( is_string( $raw_page_settings ) ) {
+						$page_settings_value = unserialize( $raw_page_settings, array( 'allowed_classes' => false ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
+					} else {
+						$page_settings_value = maybe_unserialize( $raw_page_settings );
+					}
 				}
 
 				// Check if custom width is set
 				if ( is_array( $page_settings_value ) && ! empty( $page_settings_value ) && '' !== $page_settings_value[0] ) {
 					// Round width in 12 columns grid if the units are set to 'px'
-					if ( $page_settings_value[1] === 'px' ) {
+					if ( isset( $page_settings_value[1] ) && 'px' === $page_settings_value[1] && is_numeric( $page_settings_value[0] ) ) {
 						$page_settings_value[0] = 12 * round( ( $page_settings_value[0] ) / 12 );
 					}
 
 					// Set custom width attribute
-					$container_info['custom_styles'] = ' style="max-width: ' . implode( '', $page_settings_value ) . '; margin: auto;"';
+					$container_info['custom_styles'] = $this->get_validated_max_width_style( $page_settings_value );
 				}
 			}
 		}
@@ -225,12 +232,31 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		// Get color scheme class
 		$container_info['color_scheme_class'] = '';
 		if ( ! empty( $metabox_data['_uncode_specific_style'][0] ) ) {
-			$container_info['color_scheme_class'] = ' style-' . $metabox_data['_uncode_specific_style'][0];
+			$container_info['color_scheme_class'] = ' style-' . sanitize_html_class( $metabox_data['_uncode_specific_style'][0] );
 		} else {
-			$container_info['color_scheme_class'] = ' style-' . ot_get_option( '_uncode_general_style' );
+			$container_info['color_scheme_class'] = ' style-' . sanitize_html_class( ot_get_option( '_uncode_general_style' ) );
 		}
 
 		return $container_info;
+	}
+
+	/**
+	 * Build a validated max-width CSS declaration from theme width settings.
+	 *
+	 * @param  array  $width_settings  Width value and unit pair from the theme.
+	 */
+	private function get_validated_max_width_style( $width_settings ) {
+		// Bail if settings are not a usable pair
+		if ( ! is_array( $width_settings ) || ! isset( $width_settings[0], $width_settings[1] ) ) { return ''; }
+
+		$width = $width_settings[0];
+		$unit = $width_settings[1];
+		$allowed_units = array( 'px', '%', 'em', 'rem', 'vw' );
+
+		// Bail if width or unit is invalid
+		if ( ! is_numeric( $width ) || ! in_array( $unit, $allowed_units, true ) ) { return ''; }
+
+		return 'max-width: ' . floatval( $width ) . $unit . '; margin: auto;';
 	}
 
 

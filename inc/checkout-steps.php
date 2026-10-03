@@ -1138,10 +1138,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Bail if visiting the checkout page.
 		if( ! function_exists( 'is_checkout' ) || ( is_checkout() && ! is_order_received_page() && ! is_checkout_pay_page() ) ) { return; }
 
-		// Get redirect URL
-		$redirect_url = array_key_exists( '_redirect', $_GET ) ? esc_url_raw( wp_unslash( $_GET[ '_redirect' ] ?? '' ) ) : wc_get_page_permalink( 'myaccount' );
+		// Get fallback and redirect URL
+		$fallback = wc_get_page_permalink( 'myaccount' );
+		$redirect_url = array_key_exists( '_redirect', $_GET ) ? esc_url_raw( wp_unslash( $_GET[ '_redirect' ] ?? '' ) ) : $fallback;
 
-		echo '<input type="hidden" name="redirect" value="' . wp_validate_redirect( $redirect_url, wc_get_page_permalink( 'myaccount' ) ) . '" />';
+		echo '<input type="hidden" name="redirect" value="' . esc_url( wp_validate_redirect( $redirect_url, $fallback ) ) . '" />';
 	}
 
 
