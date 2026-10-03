@@ -16,20 +16,25 @@
 	box-shadow: $fc-settings-sidebar-box-shadow;
 	box-sizing: border-box;
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
-		position: static;
+	// Compact: header bar only; no full-height column decoration
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		position: sticky;
+		top: $fc-settings-sticky-offset;
+		z-index: 90;
 		flex: 0 0 auto;
 		align-self: stretch;
 		width: 100%;
+		max-width: none;
+		overflow: visible;
+		background-color: transparent;
 		box-shadow: none;
-		border-bottom: 1px solid $admin-border-color-strong;
 	}
 }
 
 .rtl .fc-settings-sidebar {
 	box-shadow: $fc-settings-sidebar-box-shadow-rtl;
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		box-shadow: none;
 	}
 }
@@ -45,9 +50,19 @@
 
 
 .fc-settings-sidebar-header {
+	display: flex;
 	flex-shrink: 0;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 8px;
 	padding: $fc-settings-sidebar-header-padding;
 	border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		padding: 12px;
+		border-bottom: 0;
+		background-color: transparent;
+	}
 }
 
 .fc-settings-wrap .fc-settings-sidebar-header__title {
@@ -58,4 +73,123 @@
 	font-weight: $fc-settings-sidebar-title-font-weight;
 	line-height: $fc-settings-sidebar-title-line-height;
 	color: $fc-settings-text-color;
+}
+
+
+
+.fc-settings-sidebar-toggle {
+	display: none;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: $fc-settings-sidebar-toggle-size;
+	height: $fc-settings-sidebar-toggle-size;
+	margin: 0;
+	padding: 0;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	color: $fc-settings-text-color;
+	cursor: pointer;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		display: inline-flex;
+	}
+}
+
+.fc-settings-sidebar-toggle:hover {
+	background: $fc-settings-nav-link-hover-background;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-sidebar-toggle__icon {
+	display: block;
+	width: 18px;
+	height: 18px;
+}
+
+.fc-settings-sidebar-toggle__icon--close {
+	display: none;
+}
+
+.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar-toggle__icon--menu {
+	display: none;
+}
+
+.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar-toggle__icon--close {
+	display: block;
+}
+
+
+
+// Compact expanded: fill the space under the settings header (same idea as the preview drawer)
+@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+	.fc-settings-layout .fc-settings-sidebar.is-nav-expanded,
+	.fc-settings-layout.has-preview .fc-settings-sidebar.is-nav-expanded {
+		position: fixed;
+		top: $fc-settings-sticky-offset;
+		right: 0;
+		bottom: 0;
+		left: $admin-wp-menu-width;
+		z-index: 101; // Above the preview drawer, below the settings header
+		display: flex;
+		flex-direction: column;
+		width: auto;
+		max-width: none;
+		min-height: 0;
+		overflow: hidden;
+		background-color: $fc-settings-sidebar-background-color;
+		box-shadow: none;
+	}
+
+	.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar__inner {
+		flex: 1 1 auto;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar-header {
+		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+	}
+
+	.fc-settings-sidebar.is-nav-expanded .fc-settings-nav {
+		display: block;
+		flex: 1 1 auto;
+		max-height: none;
+		min-height: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+
+	body.fc-settings-page.folded .fc-settings-sidebar.is-nav-expanded {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-sidebar.is-nav-expanded {
+		left: 0;
+		right: $admin-wp-menu-width;
+	}
+
+	body.rtl.fc-settings-page.folded .fc-settings-sidebar.is-nav-expanded {
+		right: $admin-wp-menu-width-folded;
+	}
+}
+
+@media screen and ( max-width: $admin-breakpoint-auto-fold ) {
+	body.fc-settings-page.auto-fold .fc-settings-sidebar.is-nav-expanded {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar.is-nav-expanded {
+		right: $admin-wp-menu-width-folded;
+		left: 0;
+	}
+}
+
+@media screen and ( max-width: $admin-breakpoint-mobile ) {
+	.fc-settings-sidebar.is-nav-expanded {
+		left: 0;
+		right: 0;
+	}
 }

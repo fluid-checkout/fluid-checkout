@@ -2,7 +2,10 @@
 // SETTINGS PAGE - PREVIEW COLUMN
 // ------------------------------------
 
+$fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-frame-border-width } + #{ 2 * $fc-settings-preview-toolbar-padding-x } + #{$fc-settings-preview-border-width} );
+
 .fc-settings-layout.has-preview {
+	position: relative;
 	// Allow the preview column to extend past the viewport; clipped by #wpcontent / #wpbody-content
 	overflow-x: clip;
 }
@@ -11,8 +14,6 @@
 	position: sticky;
 	top: $fc-settings-sticky-offset;
 	align-self: start;
-	// Column min width = inner frame + frame borders + horizontal panel paddings + left border
-	$fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-frame-border-width } + #{ 2 * $fc-settings-preview-toolbar-padding-x } + #{$fc-settings-preview-border-width} );
 	// Fill leftover space, but never shrink below the usable preview width
 	flex: 1 0 $fc-settings-preview-column-min-width;
 	display: flex;
@@ -25,17 +26,6 @@
 	border-left: $fc-settings-preview-border-width solid $admin-border-color-strong;
 	background: $white;
 	box-sizing: border-box;
-
-	@media ( max-width: $admin-breakpoint-mobile ) {
-		position: static;
-		flex: 0 0 auto;
-		width: 100%;
-		min-width: 0;
-		height: auto;
-		max-height: none;
-		border-left: 0;
-		border-top: 1px solid $admin-border-color-strong;
-	}
 }
 
 .fc-settings-preview[ hidden ] {
@@ -54,20 +44,187 @@
 	max-width: none;
 }
 
-.fc-settings-layout.is-preview-expanded .fc-settings-sidebar,
-.fc-settings-layout.is-preview-expanded .fc-settings-content {
-	display: none;
-}
+// Desktop: expand as a fixed overlay that slides in from the right.
+// Keep left/center column widths locked so only the preview moves.
+@media ( min-width: $fc-settings-preview-compact-breakpoint + 1px ) {
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		flex: 0 0 $fc-settings-sidebar-width;
+		width: $fc-settings-sidebar-width;
+	}
 
-.fc-settings-layout.is-preview-expanded .fc-settings-preview {
-	flex: 1 1 auto;
-	width: auto;
-	min-width: 0;
-	border-left: 0;
+	.fc-settings-layout.has-preview .fc-settings-content {
+		flex: 0 0 $fc-settings-content-max-width;
+		width: $fc-settings-content-max-width;
+		max-width: $fc-settings-content-max-width;
+	}
+
+	.fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		position: fixed;
+		top: $fc-settings-sticky-offset;
+		right: 0;
+		bottom: 0;
+		left: $admin-wp-menu-width;
+		z-index: 100; // Below the settings header, above page content
+		align-self: stretch;
+		flex: none;
+		width: auto;
+		min-width: 0;
+		height: auto;
+		max-height: none;
+		min-height: 0;
+		border-left: 0;
+		border-top: 0;
+		opacity: 1;
+		transform: none;
+		pointer-events: auto;
+		transition: opacity $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing, transform $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing;
+
+		@media ( prefers-reduced-motion: reduce ) {
+			transition: none;
+		}
+	}
+
+	// Enter start frame: no transition so the overlay starts off-screen instantly
+	.fc-settings-layout.is-preview-expanded.is-preview-enter .fc-settings-preview {
+		opacity: 0;
+		transform: translateX( 100% );
+		pointer-events: none;
+		transition: none;
+	}
+
+	// Exit frame: slide out with the same transition as expand
+	.fc-settings-layout.is-preview-expanded.is-preview-collapsing .fc-settings-preview {
+		opacity: 0;
+		transform: translateX( 100% );
+		pointer-events: none;
+	}
+
+	body.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		left: 0;
+		right: $admin-wp-menu-width;
+	}
+
+	body.rtl.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		right: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded.is-preview-enter .fc-settings-preview,
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded.is-preview-collapsing .fc-settings-preview {
+		transform: translateX( -100% );
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded.is-preview-enter .fc-settings-preview {
+		transition: none;
+	}
 }
 
 body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent {
 	background: $fc-settings-page-background-color;
+}
+
+// Compact: preview is always the same fixed drawer box; only transform/opacity change
+@media ( max-width: $fc-settings-preview-compact-breakpoint ) {
+	.fc-settings-layout.has-preview {
+		flex-direction: column;
+		align-items: stretch;
+		height: calc( 100vh - #{$fc-settings-sticky-offset} );
+		max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		position: static;
+		flex: 0 0 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content {
+		position: relative;
+		top: auto;
+		flex: 1 1 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+		min-width: 0;
+		height: auto;
+		max-height: none;
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-preview {
+		position: fixed;
+		top: $fc-settings-sticky-offset;
+		right: 0;
+		bottom: 0;
+		left: $admin-wp-menu-width;
+		z-index: 100;
+		align-self: stretch;
+		flex: none;
+		width: auto;
+		min-width: 0;
+		height: auto;
+		max-height: none;
+		min-height: 0;
+		border-left: 0;
+		border-top: 0;
+		transform: translateY( 100% );
+		opacity: 0;
+		pointer-events: none;
+		transition: transform $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing, opacity $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing;
+
+		@media ( prefers-reduced-motion: reduce ) {
+			transition: none;
+		}
+	}
+
+	.fc-settings-layout.has-preview.is-preview-expanded .fc-settings-preview {
+		transform: none;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	body.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.has-preview .fc-settings-preview {
+		left: 0;
+		right: $admin-wp-menu-width;
+	}
+
+	body.rtl.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview {
+		right: $admin-wp-menu-width-folded;
+	}
+}
+
+// Menu offsets shared by the desktop expanded overlay and the compact drawer
+@media screen and ( max-width: $admin-breakpoint-auto-fold ) {
+	body.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		right: $admin-wp-menu-width-folded;
+		left: 0;
+	}
+}
+
+@media screen and ( max-width: $admin-breakpoint-mobile ) {
+	.fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	.fc-settings-layout.has-preview .fc-settings-preview {
+		left: 0;
+		right: 0;
+	}
 }
 
 
@@ -132,6 +289,33 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 .fc-settings-preview__expand[ aria-pressed="true" ] .fc-settings-preview__expand-icon--expand,
 .fc-settings-preview__expand:not( [ aria-pressed="true" ] ) .fc-settings-preview__expand-icon--collapse {
 	display: none;
+}
+
+.fc-settings-actions__preview[ aria-expanded="true" ] .fc-settings-preview__expand-icon--expand,
+.fc-settings-actions__preview:not( [ aria-expanded="true" ] ) .fc-settings-preview__expand-icon--collapse {
+	display: none;
+}
+
+// Desktop: horizontal expand/collapse icons
+.fc-settings-preview__expand-icon--vertical {
+	display: none;
+}
+
+// Compact: vertical expand/collapse icons
+@media ( max-width: $fc-settings-preview-compact-breakpoint ) {
+	.fc-settings-preview__expand .fc-settings-preview__expand-icon--horizontal {
+		display: none;
+	}
+
+	.fc-settings-preview__expand:not( [ aria-pressed="true" ] ) .fc-settings-preview__expand-icon--expand.fc-settings-preview__expand-icon--vertical,
+	.fc-settings-preview__expand[ aria-pressed="true" ] .fc-settings-preview__expand-icon--collapse.fc-settings-preview__expand-icon--vertical {
+		display: block;
+	}
+
+	.fc-settings-preview__expand[ aria-pressed="true" ] .fc-settings-preview__expand-icon--expand.fc-settings-preview__expand-icon--vertical,
+	.fc-settings-preview__expand:not( [ aria-pressed="true" ] ) .fc-settings-preview__expand-icon--collapse.fc-settings-preview__expand-icon--vertical {
+		display: none;
+	}
 }
 
 .fc-settings-preview__viewports,

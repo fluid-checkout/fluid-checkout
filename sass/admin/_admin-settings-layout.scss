@@ -32,7 +32,8 @@ body.fc-settings-page #wpcontent {
 		$fc-settings-page-background-color ( $fc-settings-sidebar-width + 1px )
 	);
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	// No full-height left column decoration when the nav is a compact menu
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		padding-left: 0;
 		background: $fc-settings-page-background-color;
 	}
@@ -50,7 +51,7 @@ body.rtl.fc-settings-page #wpcontent {
 		$fc-settings-page-background-color ( $fc-settings-sidebar-width + 1px )
 	);
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		background: $fc-settings-page-background-color;
 	}
 }
@@ -94,7 +95,7 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	min-height: calc( 100vh - #{$fc-settings-sticky-offset} );
 	margin-left: 0;
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		flex-direction: column;
 		min-height: 0;
 		margin-left: 0;
@@ -105,7 +106,7 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	margin-left: 0;
 	margin-right: 0;
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		margin-right: 0;
 	}
 }

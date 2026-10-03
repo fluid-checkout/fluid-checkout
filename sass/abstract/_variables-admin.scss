@@ -104,6 +104,10 @@ $fc-settings-preview-frame-border-width:    1px !default;
 $fc-settings-preview-min-width:             280px !default;
 $fc-settings-preview-viewport-mobile:       350px !default;
 $fc-settings-preview-viewport-tablet:       750px !default;
+// Below this width the preview starts collapsed and opens vertically from the actions bar
+$fc-settings-preview-compact-breakpoint:    1280px !default;
+$fc-settings-preview-transition-duration:   .28s !default;
+$fc-settings-preview-transition-easing:     ease !default;
 
 // END - ADMIN - SETTINGS PAGE LAYOUT
 // ----------------------------------------
@@ -125,6 +129,9 @@ $fc-settings-sidebar-title-font-size:       14px !default;
 $fc-settings-sidebar-title-font-weight:     600 !default;
 $fc-settings-sidebar-title-line-height:     1.4 !default;
 $fc-settings-sidebar-nav-max-height-offset: $fc-settings-sticky-offset + $fc-settings-sidebar-header-height !default;
+// Below this width the settings nav collapses into an expandable menu
+$fc-settings-nav-compact-breakpoint:        980px !default;
+$fc-settings-sidebar-toggle-size:           36px !default;
 
 // END - ADMIN - SETTINGS PAGE SIDEBAR
 // ----------------------------------------

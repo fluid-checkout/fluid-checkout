@@ -35,3 +35,21 @@
 .rtl .fc-settings-actions .fc-header__button {
 	margin-right: 0;
 }
+
+.fc-settings-actions__preview {
+	display: none;
+	align-items: center;
+	gap: 6px;
+}
+
+.fc-settings-actions__preview .fc-settings-preview__expand-icon {
+	width: 16px;
+	height: 16px;
+}
+
+// Show the Preview control only while the compact preview drawer is closed
+@media ( max-width: $fc-settings-preview-compact-breakpoint ) {
+	.fc-settings-layout.has-preview:not( .is-preview-expanded ) .fc-settings-actions__preview {
+		display: inline-flex;
+	}
+}

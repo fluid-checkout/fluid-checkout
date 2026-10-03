@@ -135,9 +135,11 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'initialTab'             => $page->get_current_tab(),
 				'initialPage'            => $this->get_preview_page_for_tab( $page->get_current_tab() ),
 				'previewProUrlTemplate'  => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=settings-preview-{page}&mtm_source=lite-plugin',
+				'compactBreakpoint'      => 1280,
 				'i18n'                   => array(
 					'expand'               => __( 'Expand preview', 'fluid-checkout' ),
 					'collapse'             => __( 'Collapse preview', 'fluid-checkout' ),
+					'showPreview'          => __( 'Preview', 'fluid-checkout' ),
 					'preview'              => __( 'Page preview', 'fluid-checkout' ),
 					/* translators: %s: preview page label, e.g. Checkout */
 					'previewTitle'         => __( '%s preview', 'fluid-checkout' ),
@@ -176,13 +178,21 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			<div class="fc-settings-preview__toolbar">
 				<div class="fc-settings-preview__controls">
 					<button type="button" class="fc-settings-preview__expand" data-fc-settings-preview-expand aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>">
-						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand fc-settings-preview__expand-icon--horizontal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 8.25L4.5 12l3.75 3.75"/>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25L19.5 12l-3.75 3.75"/>
 						</svg>
-						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--collapse fc-settings-preview__expand-icon--horizontal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 8.25L8.25 12 4.5 15.75"/>
 							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25L15.75 12 19.5 15.75"/>
+						</svg>
+						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand fc-settings-preview__expand-icon--vertical" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 8.25L12 4.5l3.75 3.75"/>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15.75L12 19.5l3.75-3.75"/>
+						</svg>
+						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--collapse fc-settings-preview__expand-icon--vertical" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5L12 8.25 15.75 4.5"/>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 19.5L12 15.75 15.75 19.5"/>
 						</svg>
 					</button>
 

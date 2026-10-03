@@ -10,7 +10,9 @@
 	overflow-y: auto;
 	max-height: calc( 100vh - #{$fc-settings-sidebar-nav-max-height-offset} );
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	// Compact: hidden until the menu is expanded
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		display: none;
 		max-height: none;
 		overflow-y: visible;
 	}

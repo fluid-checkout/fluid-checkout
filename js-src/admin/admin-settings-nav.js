@@ -1,25 +1,33 @@
 /**
  * Client-side tab navigation for the Fluid Checkout settings page.
  * Switches panels without a full page reload and keeps the URL in sync.
+ * On narrow viewports, toggles the expandable settings menu.
  */
 
 ( function() {
 	'use strict';
 
 	var _hasInitialized = false;
+	var _navCompactMediaQuery = null;
 	var _settings = {
 		formSelector:         '[data-fc-settings-form]',
+		sidebarSelector:      '[data-fc-settings-sidebar]',
 		navSelector:          '[data-fc-settings-nav]',
 		navItemSelector:      '[data-fc-settings-nav-item]',
 		navLinkSelector:      '[data-fc-settings-nav-link]',
+		navToggleSelector:    '[data-fc-settings-nav-toggle]',
 		tabSelector:          '[data-fc-settings-tab]',
 		submitSelector:       '[data-fc-settings-submit]',
 		saveButtonSelector:   '[data-fc-settings-save]',
 		activeClass:          'is-active',
+		isNavExpandedClass:   'is-nav-expanded',
 		tabAttribute:         'data-fc-settings-tab',
 		showSaveAttribute:    'data-fc-settings-show-save',
 		navItemAttribute:     'data-fc-settings-nav-item',
 		navLinkAttribute:     'data-fc-settings-nav-link',
+		labelOpenAttribute:   'data-label-open',
+		labelCloseAttribute:  'data-label-close',
+		navCompactBreakpoint: 980,
 	};
 
 
@@ -59,6 +67,68 @@
 	 */
 	var getActiveTabPanel = function() {
 		return document.querySelector( _settings.tabSelector + '.' + _settings.activeClass );
+	};
+
+	/**
+	 * Whether the layout is in the compact settings-nav breakpoint.
+	 *
+	 * @return  {boolean}
+	 */
+	var isNavCompactLayout = function() {
+		return !!( _navCompactMediaQuery && _navCompactMediaQuery.matches );
+	};
+
+	/**
+	 * Get the settings sidebar element.
+	 *
+	 * @return  {Element|null}
+	 */
+	var getSidebar = function() {
+		return document.querySelector( _settings.sidebarSelector );
+	};
+
+	/**
+	 * Sync the nav toggle button attributes with the expanded state.
+	 *
+	 * @param  {boolean}  expanded  Whether the nav menu is open.
+	 */
+	var syncNavToggleControls = function( expanded ) {
+		var toggleButton = document.querySelector( _settings.navToggleSelector );
+		var label;
+
+		// Bail if toggle is missing
+		if ( ! toggleButton ) { return; }
+
+		label = expanded
+			? toggleButton.getAttribute( _settings.labelCloseAttribute )
+			: toggleButton.getAttribute( _settings.labelOpenAttribute );
+
+		toggleButton.setAttribute( 'aria-expanded', expanded ? 'true' : 'false' );
+
+		// Maybe update the accessible label
+		if ( label ) {
+			toggleButton.setAttribute( 'aria-label', label );
+		}
+	};
+
+	/**
+	 * Expand or collapse the compact settings navigation menu.
+	 *
+	 * @param  {boolean}  expanded  Whether the menu should be open.
+	 */
+	var setNavExpanded = function( expanded ) {
+		var sidebar = getSidebar();
+
+		// Bail if sidebar is missing
+		if ( ! sidebar ) { return; }
+
+		// Only keep the expanded class while the compact menu layout is active
+		if ( ! isNavCompactLayout() ) {
+			expanded = false;
+		}
+
+		sidebar.classList.toggle( _settings.isNavExpandedClass, expanded );
+		syncNavToggleControls( expanded );
 	};
 
 	/**
@@ -164,6 +234,7 @@
 	var handleNavClick = function( e ) {
 		var link = e.target.closest( _settings.navLinkSelector );
 		var tab;
+		var activePanel;
 
 		// Bail if click was not on a nav link
 		if ( ! link ) { return; }
@@ -176,9 +247,11 @@
 		// Bail if tab slug is missing
 		if ( ! tab ) { return; }
 
-		// Bail if already on this tab
-		var activePanel = getActiveTabPanel();
+		activePanel = getActiveTabPanel();
+
+		// Already on this tab: close the compact menu and stay put
 		if ( activePanel && tab === activePanel.getAttribute( _settings.tabAttribute ) ) {
+			setNavExpanded( false );
 			e.preventDefault();
 			return;
 		}
@@ -186,7 +259,37 @@
 		// Bail if tab cannot be activated (fall through to full navigation)
 		if ( ! activateTab( tab, true, false ) ) { return; }
 
+		// Close the compact menu after choosing a tab
+		setNavExpanded( false );
 		e.preventDefault();
+	};
+
+	/**
+	 * Handle clicks on the compact settings-menu toggle.
+	 *
+	 * @param  {Event}  e  Click event.
+	 */
+	var handleNavToggleClick = function( e ) {
+		var toggleButton = e.target.closest( _settings.navToggleSelector );
+		var sidebar;
+
+		// Bail if click was not on the nav toggle
+		if ( ! toggleButton ) { return; }
+
+		sidebar = getSidebar();
+
+		// Bail if sidebar is missing
+		if ( ! sidebar ) { return; }
+
+		setNavExpanded( ! sidebar.classList.contains( _settings.isNavExpandedClass ) );
+		e.preventDefault();
+	};
+
+	/**
+	 * Collapse the compact nav when leaving the breakpoint.
+	 */
+	var handleNavCompactBreakpointChange = function() {
+		setNavExpanded( false );
 	};
 
 	/**
@@ -199,6 +302,7 @@
 		if ( ! tab ) { return; }
 
 		activateTab( tab, false, false );
+		setNavExpanded( false );
 	};
 
 
@@ -208,6 +312,9 @@
 	 */
 	var init = function() {
 		var form;
+		var breakpoint;
+		var initialTab;
+		var activePanel;
 
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
@@ -218,15 +325,30 @@
 		if ( ! form ) { return; }
 
 		document.addEventListener( 'click', handleNavClick, true );
+		document.addEventListener( 'click', handleNavToggleClick, true );
 		window.addEventListener( 'popstate', handlePopState );
 
+		// Track the compact settings-nav breakpoint
+		breakpoint = parseInt( _settings.navCompactBreakpoint, 10 ) || 980;
+		_navCompactMediaQuery = window.matchMedia( '(max-width: ' + breakpoint + 'px)' );
+		if ( typeof _navCompactMediaQuery.addEventListener === 'function' ) {
+			_navCompactMediaQuery.addEventListener( 'change', handleNavCompactBreakpointChange );
+		}
+		// Older browsers
+		else if ( typeof _navCompactMediaQuery.addListener === 'function' ) {
+			_navCompactMediaQuery.addListener( handleNavCompactBreakpointChange );
+		}
+
 		// Ensure the current URL is represented in history state for back / forward
-		var initialTab = getTabFromUrl( window.location.href );
-		var activePanel = getActiveTabPanel();
+		initialTab = getTabFromUrl( window.location.href );
+		activePanel = getActiveTabPanel();
 
 		if ( ! activateTab( initialTab, true, true ) && activePanel ) {
 			activateTab( activePanel.getAttribute( _settings.tabAttribute ), true, true );
 		}
+
+		// Start with the compact menu closed
+		setNavExpanded( false );
 
 		_hasInitialized = true;
 	};

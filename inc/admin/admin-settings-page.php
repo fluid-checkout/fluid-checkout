@@ -577,9 +577,29 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			<form method="post" action="<?php echo esc_url( $this->get_settings_url( $current_tab ) ); ?>" id="mainform" class="fc-settings-form" enctype="multipart/form-data" data-fc-settings-form>
 				<div class="<?php echo esc_attr( $layout_class ); ?>" data-fc-settings-layout>
 
-					<div class="fc-settings-sidebar">
+					<div class="fc-settings-sidebar" data-fc-settings-sidebar>
 						<div class="fc-settings-sidebar__inner">
 							<div class="fc-settings-sidebar-header">
+								<button
+									type="button"
+									class="fc-settings-sidebar-toggle"
+									data-fc-settings-nav-toggle
+									aria-controls="fc-settings-nav"
+									aria-expanded="false"
+									aria-label="<?php echo esc_attr( __( 'Open settings menu', 'fluid-checkout' ) ); ?>"
+									data-label-open="<?php echo esc_attr( __( 'Open settings menu', 'fluid-checkout' ) ); ?>"
+									data-label-close="<?php echo esc_attr( __( 'Close settings menu', 'fluid-checkout' ) ); ?>"
+								>
+									<svg class="fc-settings-sidebar-toggle__icon fc-settings-sidebar-toggle__icon--menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16"/>
+										<path stroke-linecap="round" stroke-linejoin="round" d="M4 12h16"/>
+										<path stroke-linecap="round" stroke-linejoin="round" d="M4 17h16"/>
+									</svg>
+									<svg class="fc-settings-sidebar-toggle__icon fc-settings-sidebar-toggle__icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12"/>
+										<path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18"/>
+									</svg>
+								</button>
 								<h1 class="fc-settings-sidebar-header__title"><?php echo esc_html( __( 'Settings', 'fluid-checkout' ) ); ?></h1>
 							</div>
 							<?php $this->output_sidebar_nav( $tabs, $current_tab ); ?>
@@ -626,6 +646,25 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 						<div class="fc-settings-actions" data-fc-settings-submit <?php echo $can_save ? '' : 'hidden'; ?>>
 							<button type="submit" class="fc-header__button fc-header__button--save fc-settings-actions__button" data-fc-settings-save <?php disabled( ! $can_save ); ?>><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
+							<?php if ( class_exists( 'FluidCheckout_Admin_Settings_Preview' ) ) : ?>
+								<button
+									type="button"
+									class="fc-header__button fc-settings-actions__preview"
+									data-fc-settings-preview-toggle
+									aria-controls="fc-settings-preview"
+									aria-expanded="false"
+								>
+									<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 8.25L12 4.5l3.75 3.75"/>
+										<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15.75L12 19.5l3.75-3.75"/>
+									</svg>
+									<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5L12 8.25 15.75 4.5"/>
+										<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 19.5L12 15.75 15.75 19.5"/>
+									</svg>
+									<span><?php echo esc_html( __( 'Preview', 'fluid-checkout' ) ); ?></span>
+								</button>
+							<?php endif; ?>
 						</div>
 					</div>
 
@@ -652,7 +691,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 */
 	public function output_sidebar_nav( $tabs, $current_tab ) {
 		?>
-		<ul class="fc-settings-nav" data-fc-settings-nav>
+		<ul class="fc-settings-nav" id="fc-settings-nav" data-fc-settings-nav>
 			<?php foreach ( $tabs as $slug => $tab ) : ?>
 				<?php if ( 'separator' === $tab[ 'type' ] ) : ?>
 					<li class="fc-settings-nav__separator" role="separator" aria-hidden="true"></li>

@@ -23,10 +23,12 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _previewZoom = 100;
+	var _collapseTimer = null;
 	var _settings = {
 		layoutSelector:              '[data-fc-settings-layout]',
 		previewSelector:             '[data-fc-settings-preview]',
 		expandSelector:              '[data-fc-settings-preview-expand]',
+		toggleSelector:              '[data-fc-settings-preview-toggle]',
 		panelSelector:               '[data-fc-settings-preview-panel]',
 		frameWrapSelector:           '[data-fc-settings-preview-frame-wrap]',
 		frameSelector:               '[data-fc-settings-preview-frame]',
@@ -38,6 +40,8 @@
 		viewportInputName:           'fc-settings-preview-viewport',
 		hasPreviewClass:             'has-preview',
 		isExpandedClass:             'is-preview-expanded',
+		isEnterClass:                'is-preview-enter',
+		isCollapsingClass:           'is-preview-collapsing',
 		isActiveClass:               'is-active',
 		pageAttribute:               'data-fc-settings-preview-page',
 		requiresProAttribute:        'data-requires-pro',
@@ -45,6 +49,8 @@
 		zoomMin:                     50,
 		zoomMax:                     200,
 		zoomStep:                    25,
+		compactBreakpoint:           1280,
+		previewTransitionMs:         280,
 		hiddenTabs:                  [ 'dashboard', 'license_keys' ],
 		initialTab:                  'checkout',
 		initialPage:                 'checkout',
@@ -52,6 +58,7 @@
 		i18n: {
 			expand:                  'Expand preview',
 			collapse:                'Collapse preview',
+			showPreview:             'Preview',
 			preview:                 'Page preview',
 			previewTitle:            '%s preview',
 			previewSubtitle:         'Isolated session · fields read-only',
@@ -61,6 +68,7 @@
 			zoomOut:                 'Zoom out',
 		},
 	};
+	var _compactMediaQuery = null;
 
 
 
@@ -252,27 +260,126 @@
 	};
 
 	/**
-	 * Expand or collapse the preview to full width.
+	 * Whether the layout is in the compact preview breakpoint.
 	 *
-	 * @param  {boolean}  expanded  Whether the preview should cover the layout.
+	 * @return  {boolean}
 	 */
-	var setPreviewExpanded = function( expanded ) {
-		var layout = getLayout();
+	var isCompactPreviewLayout = function() {
+		return !!( _compactMediaQuery && _compactMediaQuery.matches );
+	};
+
+	/**
+	 * Whether the user prefers reduced motion.
+	 *
+	 * @return  {boolean}
+	 */
+	var prefersReducedMotion = function() {
+		return !!( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches );
+	};
+
+	/**
+	 * Sync expand/collapse control attributes with the current state.
+	 *
+	 * @param  {boolean}  expanded  Whether the preview is expanded/open.
+	 */
+	var syncPreviewExpandedControls = function( expanded ) {
 		var expandButton = document.querySelector( _settings.expandSelector );
+		var toggleButton = document.querySelector( _settings.toggleSelector );
 		var label = expanded ? _settings.i18n.collapse : _settings.i18n.expand;
 
-		// Bail if layout is missing
-		if ( ! layout ) { return; }
-
-		layout.classList.toggle( _settings.isExpandedClass, expanded );
-
+		// Maybe update the expand button
 		if ( expandButton ) {
 			expandButton.setAttribute( 'aria-pressed', expanded ? 'true' : 'false' );
 			expandButton.setAttribute( 'aria-label', label );
 			expandButton.setAttribute( 'title', label );
 		}
 
+		// Maybe update the actions-bar toggle
+		if ( toggleButton ) {
+			toggleButton.setAttribute( 'aria-expanded', expanded ? 'true' : 'false' );
+		}
+	};
+
+	/**
+	 * Finish a desktop collapse after the exit transition.
+	 *
+	 * @param  {Element}  layout  Settings layout element.
+	 */
+	var finishPreviewCollapse = function( layout ) {
+		// Bail if layout is missing
+		if ( ! layout ) { return; }
+
+		layout.classList.remove( _settings.isExpandedClass );
+		layout.classList.remove( _settings.isCollapsingClass );
+		layout.classList.remove( _settings.isEnterClass );
+		_collapseTimer = null;
+		syncPreviewExpandedControls( false );
 		updatePreviewDims();
+	};
+
+	/**
+	 * Expand or collapse the preview (full width on desktop, vertical drawer when compact).
+	 *
+	 * @param  {boolean}  expanded  Whether the preview should be expanded/open.
+	 */
+	var setPreviewExpanded = function( expanded ) {
+		var layout = getLayout();
+		var isCompact = isCompactPreviewLayout();
+		var reduceMotion = prefersReducedMotion();
+		var transitionMs = parseInt( _settings.previewTransitionMs, 10 ) || 280;
+
+		// Bail if layout is missing
+		if ( ! layout ) { return; }
+
+		// Cancel a pending desktop collapse when toggling again
+		if ( _collapseTimer ) {
+			window.clearTimeout( _collapseTimer );
+			_collapseTimer = null;
+			layout.classList.remove( _settings.isCollapsingClass );
+		}
+
+		// EXPAND
+		if ( expanded ) {
+			layout.classList.remove( _settings.isCollapsingClass );
+			layout.classList.add( _settings.isExpandedClass );
+			syncPreviewExpandedControls( true );
+
+			// Compact CSS transitions transform/opacity; desktop needs an enter frame
+			if ( ! isCompact && ! reduceMotion ) {
+				layout.classList.add( _settings.isEnterClass );
+				// Wait two frames so the off-screen start state paints, then transition in
+				window.requestAnimationFrame( function() {
+					window.requestAnimationFrame( function() {
+						layout.classList.remove( _settings.isEnterClass );
+						updatePreviewDims();
+					} );
+				} );
+			}
+			// Otherwise clear any leftover enter frame
+			else {
+				layout.classList.remove( _settings.isEnterClass );
+				updatePreviewDims();
+			}
+
+			return;
+		}
+
+		// COLLAPSE — compact animates via CSS when the expanded class is removed
+		if ( isCompact || reduceMotion || ! layout.classList.contains( _settings.isExpandedClass ) ) {
+			layout.classList.remove( _settings.isExpandedClass );
+			layout.classList.remove( _settings.isEnterClass );
+			layout.classList.remove( _settings.isCollapsingClass );
+			syncPreviewExpandedControls( false );
+			updatePreviewDims();
+			return;
+		}
+
+		// Desktop collapse: keep fixed positioning until the exit transition ends
+		layout.classList.add( _settings.isCollapsingClass );
+		syncPreviewExpandedControls( false );
+		_collapseTimer = window.setTimeout( function() {
+			finishPreviewCollapse( layout );
+		}, transitionMs );
 	};
 
 	/**
@@ -425,6 +532,11 @@
 
 		if ( isVisible ) {
 			preview.removeAttribute( 'hidden' );
+
+			// Keep the compact drawer closed when switching to a tab that has preview
+			if ( isCompactPreviewLayout() ) {
+				setPreviewExpanded( false );
+			}
 		}
 		// Otherwise hide the preview and collapse it
 		else {
@@ -506,6 +618,29 @@
 
 		setPreviewExpanded( ! layout.classList.contains( _settings.isExpandedClass ) );
 		e.preventDefault();
+	};
+
+	/**
+	 * Handle actions-bar Preview toggle clicks (compact layout).
+	 *
+	 * @param  {Event}  e  Click event.
+	 */
+	var handleToggleClick = function( e ) {
+		var toggleButton = e.target.closest( _settings.toggleSelector );
+
+		// Bail if click was not on the preview toggle
+		if ( ! toggleButton ) { return; }
+
+		setPreviewExpanded( true );
+		e.preventDefault();
+	};
+
+	/**
+	 * Collapse the preview when crossing the compact breakpoint.
+	 */
+	var handleCompactBreakpointChange = function() {
+		setPreviewExpanded( false );
+		updatePreviewDims();
 	};
 
 	/**
@@ -599,6 +734,7 @@
 		var preview;
 		var expandButton;
 		var frame;
+		var breakpoint;
 
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
@@ -611,11 +747,23 @@
 		// Bail if preview column is not available
 		if ( ! preview ) { return; }
 
+		// Track the compact preview breakpoint
+		breakpoint = parseInt( _settings.compactBreakpoint, 10 ) || 1280;
+		_compactMediaQuery = window.matchMedia( '(max-width: ' + breakpoint + 'px)' );
+		if ( typeof _compactMediaQuery.addEventListener === 'function' ) {
+			_compactMediaQuery.addEventListener( 'change', handleCompactBreakpointChange );
+		}
+		// Otherwise use the legacy MediaQueryList API
+		else if ( typeof _compactMediaQuery.addListener === 'function' ) {
+			_compactMediaQuery.addListener( handleCompactBreakpointChange );
+		}
+
 		// Add event listeners
 		expandButton = document.querySelector( _settings.expandSelector );
 		if ( expandButton ) {
 			expandButton.addEventListener( 'click', handleExpandClick );
 		}
+		document.addEventListener( 'click', handleToggleClick, true );
 		document.addEventListener( 'change', handleViewportChange, true );
 		document.addEventListener( 'click', handlePageTabClick, true );
 		document.addEventListener( 'click', handleZoomClick, true );
@@ -648,6 +796,11 @@
 		// Sync from the initial settings tab and zoom UI
 		setPreviewZoom( _previewZoom );
 		syncFromSettingsTab( _settings.initialTab );
+
+		// Start with the compact drawer closed
+		if ( isCompactPreviewLayout() ) {
+			setPreviewExpanded( false );
+		}
 
 		_hasInitialized = true;
 	};
