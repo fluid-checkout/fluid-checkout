@@ -93,10 +93,11 @@ $fc-settings-preview-toolbar-padding-x:     8px !default;
 $fc-settings-preview-toolbar-gap:           10px !default;
 $fc-settings-preview-expand-size:           32px !default;
 $fc-settings-preview-border-width:          1px !default;
-// Inner preview frame width (panel paddings and preview border are added separately)
+$fc-settings-preview-frame-border-width:    1px !default;
+// Inner preview frame width (panel paddings and frame borders are added separately)
 $fc-settings-preview-min-width:             280px !default;
-$fc-settings-preview-viewport-mobile:       390px !default;
-$fc-settings-preview-viewport-tablet:       768px !default;
+$fc-settings-preview-viewport-mobile:       350px !default;
+$fc-settings-preview-viewport-tablet:       750px !default;
 
 // END - ADMIN - SETTINGS PAGE LAYOUT
 // ----------------------------------------
@@ -182,6 +183,8 @@ $fc-settings-field-padding-y:               8px !default;
 $fc-settings-field-border-color:            #f0f0f1 !default;
 $fc-settings-field-label-width:             180px !default;
 $fc-settings-field-label-font-size:         14px !default;
+$fc-settings-field-label-padding-top:       11px !default;
+$fc-settings-field-label-padding-top-toggle: 5px !default;
 $fc-settings-field-inline-gap:              24px !default;
 $fc-settings-input-height:                  36px !default;
 $fc-settings-input-padding:                 7px 10px !default;
@@ -231,6 +234,7 @@ $fc-settings-info-tip-size:                 18px !default;
 $fc-settings-info-tip-color:                #b8cad7 !default;
 $fc-settings-info-tip-color-hover:          $admin-text-color !default;
 $fc-settings-info-tip-offset:               26px !default;
+$fc-settings-info-tip-label-padding:        10px !default;
 $fc-settings-info-tip-width:                240px !default;
 $fc-settings-info-tip-background:           $white !default;
 $fc-settings-info-tip-border-color:         #c8d7e1 !default;

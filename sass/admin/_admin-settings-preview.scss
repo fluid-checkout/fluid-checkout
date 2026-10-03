@@ -11,8 +11,8 @@
 	position: sticky;
 	top: $fc-settings-sticky-offset;
 	align-self: start;
-	// Column min width = inner frame + horizontal panel paddings + left border
-	$fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-toolbar-padding-x } + #{$fc-settings-preview-border-width} );
+	// Column min width = inner frame + frame borders + horizontal panel paddings + left border
+	$fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-frame-border-width } + #{ 2 * $fc-settings-preview-toolbar-padding-x } + #{$fc-settings-preview-border-width} );
 	// Fill leftover space, but never shrink below the usable preview width
 	flex: 1 0 $fc-settings-preview-column-min-width;
 	display: flex;
@@ -75,9 +75,10 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 .fc-settings-preview__toolbar {
 	display: flex;
 	flex: 0 0 auto;
+	flex-direction: column;
 	flex-wrap: nowrap;
-	align-items: center;
-	gap: $fc-settings-preview-toolbar-gap;
+	align-items: stretch;
+	gap: 8px;
 	margin: 0;
 	padding: 12px $fc-settings-preview-toolbar-padding-x;
 	width: 100%;
@@ -85,6 +86,15 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	border-bottom: 1px solid $admin-border-color;
 	background: $white;
 	box-sizing: border-box;
+}
+
+.fc-settings-preview__controls {
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: $fc-settings-preview-toolbar-gap;
+	min-width: 0;
 }
 
 .fc-settings-preview__expand {
@@ -124,12 +134,14 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	display: none;
 }
 
-.fc-settings-preview__viewports {
+.fc-settings-preview__viewports,
+.fc-settings-preview__zoom {
 	flex: 0 0 auto;
 	width: auto;
 }
 
-.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option {
+.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option,
+.fc-settings-preview__zoom-button {
 	flex: 0 0 auto;
 	width: 32px;
 	min-height: 32px;
@@ -138,20 +150,37 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	line-height: 0;
 }
 
-.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option svg {
+.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option svg,
+.fc-settings-preview__zoom-button svg {
 	display: block;
 	width: 16px;
 	height: 16px;
 }
 
-.fc-settings-preview__status {
+button.fc-settings-preview__zoom-button,
+button.fc-settings-preview__zoom-value {
+	font-family: inherit;
+}
+
+.fc-settings-preview__zoom-button:disabled {
+	opacity: .4;
+	cursor: default;
+}
+
+.fc-settings-preview__zoom-button:disabled:hover {
+	background: transparent;
+}
+
+.fc-settings-preview__zoom-value {
 	flex: 0 0 auto;
-	margin: 0;
-	color: $admin-text-color-muted;
-	font-size: 13px;
-	font-weight: 500;
-	line-height: 1.3;
+	min-width: 44px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.2;
 	white-space: nowrap;
+	user-select: none;
 }
 
 
@@ -215,10 +244,16 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	flex-direction: column;
 	align-self: stretch;
 	min-height: 0;
-	min-width: $fc-settings-preview-min-width;
+	// Keep the iframe content box at least the configured min width
+	min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-frame-border-width } );
 	width: 100%;
 	height: 100%;
 	max-width: 100%;
+	border: $fc-settings-preview-frame-border-width solid $admin-border-color-strong;
+	border-radius: 4px;
+	box-sizing: border-box;
+	// Clip transform-scaled iframe when zoomed
+	overflow: hidden;
 	transition: max-width .2s ease;
 
 	@media ( prefers-reduced-motion: reduce ) {
@@ -227,11 +262,12 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 }
 
 .fc-settings-preview__frame-wrap[ data-viewport="mobile" ] {
-	max-width: $fc-settings-preview-viewport-mobile;
+	// Outer size includes the frame border so the iframe content box is the viewport width
+	max-width: calc( #{$fc-settings-preview-viewport-mobile} + #{ 2 * $fc-settings-preview-frame-border-width } );
 }
 
 .fc-settings-preview__frame-wrap[ data-viewport="tablet" ] {
-	max-width: $fc-settings-preview-viewport-tablet;
+	max-width: calc( #{$fc-settings-preview-viewport-tablet} + #{ 2 * $fc-settings-preview-frame-border-width } );
 }
 
 .fc-settings-preview__frame-wrap[ data-viewport="desktop" ] {
@@ -272,8 +308,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	min-width: 0;
 	margin: 0;
 	padding: 0;
-	border: 1px solid $admin-border-color-strong;
-	border-radius: 4px;
+	border: 0;
 	background: $white;
 	box-sizing: border-box;
 }

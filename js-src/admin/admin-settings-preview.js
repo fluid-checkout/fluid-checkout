@@ -22,16 +22,19 @@
 
 	var _hasInitialized = false;
 	var _publicMethods = {};
+	var _previewZoom = 100;
 	var _settings = {
 		layoutSelector:              '[data-fc-settings-layout]',
 		previewSelector:             '[data-fc-settings-preview]',
 		expandSelector:              '[data-fc-settings-preview-expand]',
-		statusSelector:              '[data-fc-settings-preview-status]',
 		panelSelector:               '[data-fc-settings-preview-panel]',
 		frameWrapSelector:           '[data-fc-settings-preview-frame-wrap]',
 		frameSelector:               '[data-fc-settings-preview-frame]',
 		dimsSelector:                '[data-fc-settings-preview-dims]',
 		pageTabSelector:             '[data-fc-settings-preview-page]',
+		zoomInSelector:              '[data-fc-settings-preview-zoom-in]',
+		zoomOutSelector:             '[data-fc-settings-preview-zoom-out]',
+		zoomValueSelector:           '[data-fc-settings-preview-zoom-value]',
 		viewportInputName:           'fc-settings-preview-viewport',
 		hasPreviewClass:             'has-preview',
 		isExpandedClass:             'is-preview-expanded',
@@ -39,6 +42,9 @@
 		pageAttribute:               'data-fc-settings-preview-page',
 		requiresProAttribute:        'data-requires-pro',
 		viewportAttribute:           'data-viewport',
+		zoomMin:                     50,
+		zoomMax:                     200,
+		zoomStep:                    25,
 		hiddenTabs:                  [ 'dashboard', 'license_keys' ],
 		initialTab:                  'checkout',
 		initialPage:                 'checkout',
@@ -51,6 +57,8 @@
 			previewSubtitle:         'Isolated session · fields read-only',
 			previewSubtitlePro:      'Available with %s.',
 			previewProLinkLabel:     'Fluid Checkout PRO',
+			zoomIn:                  'Zoom in',
+			zoomOut:                 'Zoom out',
 		},
 	};
 
@@ -140,21 +148,37 @@
 	};
 
 	/**
-	 * Update the iframe dimension label from the current frame size.
+	 * Update the dimension label from the iframe layout viewport
+	 * (projected CSS px size — changes with zoom like browser Ctrl+/−).
 	 */
 	var updatePreviewDims = function() {
 		var frame = document.querySelector( _settings.frameSelector );
 		var dims = document.querySelector( _settings.dimsSelector );
-		var rect;
+		var win;
+		var doc;
 		var width;
 		var height;
 
 		// Bail if frame or dims label is missing
 		if ( ! frame || ! dims ) { return; }
 
-		rect = frame.getBoundingClientRect();
-		width = Math.round( rect.width );
-		height = Math.round( rect.height );
+		try {
+			win = frame.contentWindow;
+			doc = frame.contentDocument;
+		} catch ( err ) {
+			return;
+		}
+
+		// Bail if iframe document is not available
+		if ( ! win || ! doc || ! doc.documentElement ) { return; }
+
+		// Layout viewport inside the iframe (widens when zoomed out, narrows when zoomed in)
+		width = Math.round( win.innerWidth || doc.documentElement.clientWidth || 0 );
+		height = Math.round( win.innerHeight || doc.documentElement.clientHeight || 0 );
+
+		// Bail if viewport size is not available yet
+		if ( ! width || ! height ) { return; }
+
 		dims.textContent = width + ' \u00d7 ' + height;
 	};
 
@@ -263,6 +287,124 @@
 		if ( ! frameWrap ) { return; }
 
 		frameWrap.setAttribute( _settings.viewportAttribute, viewport || 'desktop' );
+
+		// Re-apply zoom so the layout viewport matches the new visual frame size
+		applyPreviewZoom();
+		updatePreviewDims();
+	};
+
+	/**
+	 * Clamp a zoom percentage to the allowed range.
+	 *
+	 * @param   {number}  percent  Requested zoom percentage.
+	 * @return  {number}
+	 */
+	var clampPreviewZoom = function( percent ) {
+		var min = parseInt( _settings.zoomMin, 10 ) || 50;
+		var max = parseInt( _settings.zoomMax, 10 ) || 200;
+		var value = parseInt( percent, 10 );
+
+		if ( isNaN( value ) ) {
+			value = 100;
+		}
+
+		if ( value < min ) { return min; }
+		if ( value > max ) { return max; }
+		return value;
+	};
+
+	/**
+	 * Clear inline zoom sizing/transform from the preview iframe.
+	 *
+	 * @param  {Element}  frame  Preview iframe element.
+	 */
+	var clearPreviewZoomStyles = function( frame ) {
+		frame.style.position = '';
+		frame.style.top = '';
+		frame.style.left = '';
+		frame.style.width = '';
+		frame.style.height = '';
+		frame.style.transform = '';
+		frame.style.transformOrigin = '';
+	};
+
+	/**
+	 * Apply zoom like browser Ctrl+/−: keep the visual frame size, expand/shrink
+	 * the iframe layout viewport, then scale so it fits. Dims then measure the
+	 * projected CSS px size inside the iframe.
+	 */
+	var applyPreviewZoom = function() {
+		var frame = document.querySelector( _settings.frameSelector );
+		var frameWrap = document.querySelector( _settings.frameWrapSelector );
+		var doc;
+		var zoom;
+		var visualWidth;
+		var visualHeight;
+
+		// Bail if frame or wrap is missing
+		if ( ! frame || ! frameWrap ) { return; }
+
+		// Remove document-level zoom if a previous build set it
+		try {
+			doc = frame.contentDocument;
+			if ( doc && doc.documentElement ) {
+				doc.documentElement.style.zoom = '';
+			}
+		} catch ( err ) {
+			// Ignore cross-origin access errors
+		}
+
+		zoom = _previewZoom / 100;
+
+		// At 100%, use normal flex-filled iframe sizing
+		if ( 1 === zoom ) {
+			clearPreviewZoomStyles( frame );
+			return;
+		}
+
+		visualWidth = frameWrap.clientWidth;
+		visualHeight = frameWrap.clientHeight;
+
+		// Bail if the visual frame size is not available yet
+		if ( ! visualWidth || ! visualHeight ) { return; }
+
+		// Larger layout viewport when zoomed out; smaller when zoomed in
+		frame.style.position = 'absolute';
+		frame.style.top = '0';
+		frame.style.left = '0';
+		frame.style.width = ( visualWidth / zoom ) + 'px';
+		frame.style.height = ( visualHeight / zoom ) + 'px';
+		frame.style.transformOrigin = 'top left';
+		frame.style.transform = 'scale( ' + zoom + ' )';
+	};
+
+	/**
+	 * Update zoom control UI and apply zoom to the preview iframe.
+	 *
+	 * @param  {number}  percent  Zoom percentage to apply.
+	 */
+	var setPreviewZoom = function( percent ) {
+		var valueEl = document.querySelector( _settings.zoomValueSelector );
+		var zoomInButton = document.querySelector( _settings.zoomInSelector );
+		var zoomOutButton = document.querySelector( _settings.zoomOutSelector );
+		var min = parseInt( _settings.zoomMin, 10 ) || 50;
+		var max = parseInt( _settings.zoomMax, 10 ) || 200;
+
+		_previewZoom = clampPreviewZoom( percent );
+
+		if ( valueEl ) {
+			valueEl.textContent = _previewZoom + '%';
+		}
+
+		if ( zoomOutButton ) {
+			zoomOutButton.disabled = _previewZoom <= min;
+		}
+
+		if ( zoomInButton ) {
+			zoomInButton.disabled = _previewZoom >= max;
+		}
+
+		applyPreviewZoom();
 		updatePreviewDims();
 	};
 
@@ -300,7 +442,6 @@
 	var setPreviewPage = function( page, requiresPro ) {
 		var pageTabs = document.querySelectorAll( _settings.pageTabSelector );
 		var panel = document.querySelector( _settings.panelSelector );
-		var status = document.querySelector( _settings.statusSelector );
 		var pageLabel = _settings.i18n.preview;
 		var i;
 		var tab;
@@ -318,16 +459,13 @@
 			}
 		}
 
-		if ( status ) {
-			status.textContent = pageLabel;
-		}
-
 		// Always show the iframe placeholder panel
 		if ( panel ) {
 			panel.removeAttribute( 'hidden' );
 		}
 
 		setPreviewContent( page, pageLabel, requiresPro );
+		applyPreviewZoom();
 		updatePreviewDims();
 	};
 
@@ -382,6 +520,35 @@
 		if ( ! input || _settings.viewportInputName !== input.name || ! input.checked ) { return; }
 
 		setPreviewViewport( input.value );
+	};
+
+	/**
+	 * Handle zoom in/out/reset control clicks.
+	 *
+	 * @param  {Event}  e  Click event.
+	 */
+	var handleZoomClick = function( e ) {
+		var zoomInButton = e.target.closest( _settings.zoomInSelector );
+		var zoomOutButton = e.target.closest( _settings.zoomOutSelector );
+		var zoomValueButton = e.target.closest( _settings.zoomValueSelector );
+		var step = parseInt( _settings.zoomStep, 10 ) || 25;
+
+		// Bail if click was not on a zoom control
+		if ( ! zoomInButton && ! zoomOutButton && ! zoomValueButton ) { return; }
+
+		if ( zoomValueButton ) {
+			setPreviewZoom( 100 );
+		}
+		// Otherwise maybe zoom in
+		else if ( zoomInButton && ! zoomInButton.disabled ) {
+			setPreviewZoom( _previewZoom + step );
+		}
+		// Otherwise maybe zoom out
+		else if ( zoomOutButton && ! zoomOutButton.disabled ) {
+			setPreviewZoom( _previewZoom - step );
+		}
+
+		e.preventDefault();
 	};
 
 	/**
@@ -451,21 +618,35 @@
 		}
 		document.addEventListener( 'change', handleViewportChange, true );
 		document.addEventListener( 'click', handlePageTabClick, true );
+		document.addEventListener( 'click', handleZoomClick, true );
 		window.addEventListener( 'fcSettingsTabActivated', handleSettingsTabActivated );
 
 		frame = document.querySelector( _settings.frameSelector );
-		if ( frame && typeof ResizeObserver !== 'undefined' ) {
-			var previewResizeObserver = new ResizeObserver( function() {
+		if ( frame ) {
+			frame.addEventListener( 'load', function() {
+				applyPreviewZoom();
 				updatePreviewDims();
 			} );
-			previewResizeObserver.observe( frame );
-		}
-		// Otherwise update dims on window resize
-		else {
-			window.addEventListener( 'resize', updatePreviewDims );
 		}
 
-		// Sync from the initial settings tab
+		var frameWrap = document.querySelector( _settings.frameWrapSelector );
+		if ( frameWrap && typeof ResizeObserver !== 'undefined' ) {
+			var previewResizeObserver = new ResizeObserver( function() {
+				applyPreviewZoom();
+				updatePreviewDims();
+			} );
+			previewResizeObserver.observe( frameWrap );
+		}
+		// Otherwise re-apply zoom and dims on window resize
+		else {
+			window.addEventListener( 'resize', function() {
+				applyPreviewZoom();
+				updatePreviewDims();
+			} );
+		}
+
+		// Sync from the initial settings tab and zoom UI
+		setPreviewZoom( _previewZoom );
 		syncFromSettingsTab( _settings.initialTab );
 
 		_hasInitialized = true;

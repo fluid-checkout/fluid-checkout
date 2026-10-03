@@ -145,6 +145,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 					/* translators: %s: HTML link to Fluid Checkout PRO pricing page */
 					'previewSubtitlePro'   => __( 'Available with %s.', 'fluid-checkout' ),
 					'previewProLinkLabel'  => __( 'Fluid Checkout PRO', 'fluid-checkout' ),
+					'zoomIn'               => __( 'Zoom in', 'fluid-checkout' ),
+					'zoomOut'              => __( 'Zoom out', 'fluid-checkout' ),
 				),
 			)
 		);
@@ -172,45 +174,77 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			<?php echo $is_visible ? '' : 'hidden'; ?>
 		>
 			<div class="fc-settings-preview__toolbar">
-				<button type="button" class="fc-settings-preview__expand" data-fc-settings-preview-expand aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>">
-					<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 8.25L4.5 12l3.75 3.75"/>
-						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25L19.5 12l-3.75 3.75"/>
-					</svg>
-					<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 8.25L8.25 12 4.5 15.75"/>
-						<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25L15.75 12 19.5 15.75"/>
-					</svg>
-				</button>
+				<div class="fc-settings-preview__controls">
+					<button type="button" class="fc-settings-preview__expand" data-fc-settings-preview-expand aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Expand preview', 'fluid-checkout' ) ); ?>">
+						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 8.25L4.5 12l3.75 3.75"/>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25L19.5 12l-3.75 3.75"/>
+						</svg>
+						<svg class="fc-settings-preview__expand-icon fc-settings-preview__expand-icon--collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 8.25L8.25 12 4.5 15.75"/>
+							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25L15.75 12 19.5 15.75"/>
+						</svg>
+					</button>
 
-				<div class="fc-settings-sectioned-buttons fc-settings-preview__viewports" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview viewport', 'fluid-checkout' ) ); ?>">
-					<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Mobile', 'fluid-checkout' ) ); ?>">
-						<input type="radio" name="fc-settings-preview-viewport" value="mobile">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5h3m-6 0h9A1.5 1.5 0 0118 3v18a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 016 21V3A1.5 1.5 0 017.5 1.5z"/>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M10 19h4"/>
-						</svg>
-						<span class="screen-reader-text"><?php echo esc_html( __( 'Mobile', 'fluid-checkout' ) ); ?></span>
-					</label>
-					<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Tablet', 'fluid-checkout' ) ); ?>">
-						<input type="radio" name="fc-settings-preview-viewport" value="tablet">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 2.25h13.5A1.5 1.5 0 0120.25 3.75v16.5a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V3.75a1.5 1.5 0 011.5-1.5z"/>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5h3"/>
-						</svg>
-						<span class="screen-reader-text"><?php echo esc_html( __( 'Tablet', 'fluid-checkout' ) ); ?></span>
-					</label>
-					<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Desktop', 'fluid-checkout' ) ); ?>">
-						<input type="radio" name="fc-settings-preview-viewport" value="desktop" checked>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.5h16.5A1.5 1.5 0 0121.75 6v9a1.5 1.5 0 01-1.5 1.5H3.75A1.5 1.5 0 012.25 15V6A1.5 1.5 0 013.75 4.5z"/>
-							<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 19.5h7.5M12 16.5v3"/>
-						</svg>
-						<span class="screen-reader-text"><?php echo esc_html( __( 'Desktop', 'fluid-checkout' ) ); ?></span>
-					</label>
+					<div class="fc-settings-sectioned-buttons fc-settings-preview__viewports" role="radiogroup" aria-label="<?php echo esc_attr( __( 'Preview viewport', 'fluid-checkout' ) ); ?>">
+						<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Mobile', 'fluid-checkout' ) ); ?>">
+							<input type="radio" name="fc-settings-preview-viewport" value="mobile">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5h3m-6 0h9A1.5 1.5 0 0118 3v18a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 016 21V3A1.5 1.5 0 017.5 1.5z"/>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M10 19h4"/>
+							</svg>
+							<span class="screen-reader-text"><?php echo esc_html( __( 'Mobile', 'fluid-checkout' ) ); ?></span>
+						</label>
+						<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Tablet', 'fluid-checkout' ) ); ?>">
+							<input type="radio" name="fc-settings-preview-viewport" value="tablet">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 2.25h13.5A1.5 1.5 0 0120.25 3.75v16.5a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V3.75a1.5 1.5 0 011.5-1.5z"/>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5h3"/>
+							</svg>
+							<span class="screen-reader-text"><?php echo esc_html( __( 'Tablet', 'fluid-checkout' ) ); ?></span>
+						</label>
+						<label class="fc-settings-sectioned-buttons__option" title="<?php echo esc_attr( __( 'Desktop', 'fluid-checkout' ) ); ?>">
+							<input type="radio" name="fc-settings-preview-viewport" value="desktop" checked>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.5h16.5A1.5 1.5 0 0121.75 6v9a1.5 1.5 0 01-1.5 1.5H3.75A1.5 1.5 0 012.25 15V6A1.5 1.5 0 013.75 4.5z"/>
+								<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 19.5h7.5M12 16.5v3"/>
+							</svg>
+							<span class="screen-reader-text"><?php echo esc_html( __( 'Desktop', 'fluid-checkout' ) ); ?></span>
+						</label>
+					</div>
+
+					<div class="fc-settings-sectioned-buttons fc-settings-preview__zoom" role="group" aria-label="<?php echo esc_attr( __( 'Preview zoom', 'fluid-checkout' ) ); ?>">
+						<button
+							type="button"
+							class="fc-settings-sectioned-buttons__option fc-settings-preview__zoom-button"
+							data-fc-settings-preview-zoom-out
+							title="<?php echo esc_attr( __( 'Zoom out', 'fluid-checkout' ) ); ?>"
+							aria-label="<?php echo esc_attr( __( 'Zoom out', 'fluid-checkout' ) ); ?>"
+						>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6"/>
+							</svg>
+						</button>
+						<button
+							type="button"
+							class="fc-settings-sectioned-buttons__option fc-settings-preview__zoom-value"
+							data-fc-settings-preview-zoom-value
+							title="<?php echo esc_attr( __( 'Reset zoom', 'fluid-checkout' ) ); ?>"
+							aria-label="<?php echo esc_attr( __( 'Reset zoom to 100%', 'fluid-checkout' ) ); ?>"
+						>100%</button>
+						<button
+							type="button"
+							class="fc-settings-sectioned-buttons__option fc-settings-preview__zoom-button"
+							data-fc-settings-preview-zoom-in
+							title="<?php echo esc_attr( __( 'Zoom in', 'fluid-checkout' ) ); ?>"
+							aria-label="<?php echo esc_attr( __( 'Zoom in', 'fluid-checkout' ) ); ?>"
+						>
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"/>
+							</svg>
+						</button>
+					</div>
 				</div>
-
-				<p class="fc-settings-preview__status" data-fc-settings-preview-status><?php echo esc_html( __( 'Page preview', 'fluid-checkout' ) ); ?></p>
 			</div>
 
 			<div class="fc-settings-preview__tabs" role="tablist" aria-label="<?php echo esc_attr( __( 'Preview page', 'fluid-checkout' ) ); ?>">

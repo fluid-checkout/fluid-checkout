@@ -26,7 +26,7 @@
 
 .fc-settings-field__label {
 	flex: 0 0 $fc-settings-field-label-width;
-	padding-top: 5px;
+	padding-top: $fc-settings-field-label-padding-top;
 	font-size: $fc-settings-field-label-font-size;
 	font-weight: normal;
 	line-height: 1.4;
@@ -36,6 +36,24 @@
 		flex: 0 0 auto;
 		padding-top: 0;
 	}
+}
+
+// Align labels with shorter toggle-switch / checkbox controls
+.fc-settings-field--checkbox > .fc-settings-field__label,
+.fc-settings-field--fc_checkboxgroup > .fc-settings-field__label,
+.fc-settings-field--fc_telemetry > .fc-settings-field__label,
+.fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label {
+	padding-top: $fc-settings-field-label-padding-top-toggle;
+}
+
+// Clear space for the floating desc_tip / info icon beside the label
+.fc-settings-field--inline:has( > .fc-settings-field__control > .fc-settings-info-tip ) > .fc-settings-field__label {
+	padding-right: $fc-settings-info-tip-label-padding;
+}
+
+.rtl .fc-settings-field--inline:has( > .fc-settings-field__control > .fc-settings-info-tip ) > .fc-settings-field__label {
+	padding-right: 0;
+	padding-left: $fc-settings-info-tip-label-padding;
 }
 
 .fc-settings-field__label label {
