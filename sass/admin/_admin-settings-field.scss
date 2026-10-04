@@ -16,7 +16,8 @@
 	align-items: flex-start;
 	gap: $fc-settings-field-inline-gap;
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	// Stack label above control below the content reading width
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
 		flex-direction: column;
 		gap: 8px;
 	}
@@ -25,6 +26,7 @@
 
 
 .fc-settings-field__label {
+	position: relative;
 	flex: 0 0 $fc-settings-field-label-width;
 	padding-top: $fc-settings-field-label-padding-top;
 	font-size: $fc-settings-field-label-font-size;
@@ -32,7 +34,7 @@
 	line-height: 1.4;
 	color: $fc-settings-text-color;
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
 		flex: 0 0 auto;
 		padding-top: 0;
 	}
@@ -46,14 +48,18 @@
 	padding-top: $fc-settings-field-label-padding-top-toggle;
 }
 
-// Clear space for the floating desc_tip / info icon beside the label
-.fc-settings-field--inline:has( > .fc-settings-field__control > .fc-settings-info-tip ) > .fc-settings-field__label {
-	padding-right: $fc-settings-info-tip-label-padding;
+// Clear space for the floating info icon on the right of the label
+.fc-settings-field__label:has( > .fc-settings-info-tip ) {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		padding-right: $fc-settings-info-tip-offset;
+	}
 }
 
-.rtl .fc-settings-field--inline:has( > .fc-settings-field__control > .fc-settings-info-tip ) > .fc-settings-field__label {
-	padding-right: 0;
-	padding-left: $fc-settings-info-tip-label-padding;
+.rtl .fc-settings-field__label:has( > .fc-settings-info-tip ) {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		padding-right: 0;
+		padding-left: $fc-settings-info-tip-offset;
+	}
 }
 
 .fc-settings-field__label label {
@@ -69,6 +75,10 @@
 	gap: 8px;
 	min-width: 0;
 	padding-top: 5px;
+
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
+		width: 100%;
+	}
 }
 
 .fc-settings-field__control > fieldset {
@@ -434,29 +444,54 @@ input.fc-settings-toggle--round:focus + label {
 // ------------------------------------
 
 .fc-settings-info-tip {
-	position: absolute;
+	position: relative;
 	z-index: auto;
-	top: 14px;
-	left: -$fc-settings-info-tip-offset;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	width: $fc-settings-info-tip-size;
 	height: $fc-settings-info-tip-size;
+	vertical-align: text-top;
 }
 
-.fc-settings-field__control:has( .fc-settings-switch, input[type="checkbox"] ) > .fc-settings-info-tip {
-	top: 7px;
+// Field label tip: inline on small screens, floating to the right from 600px up
+.fc-settings-field__label > .fc-settings-info-tip {
+	position: static;
+	margin-inline-start: 6px;
+
+	@media ( min-width: $fc-settings-content-max-width ) {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		left: auto;
+		margin: 0;
+		transform: translateY( -50% );
+	}
+}
+
+.rtl .fc-settings-field__label > .fc-settings-info-tip {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		right: auto;
+		left: 0;
+	}
+}
+
+// Per-option tips stay floating to the left of the option control
+.fc-checkboxgroup-option > .fc-settings-info-tip {
+	position: absolute;
+	top: 3px;
+	left: -$fc-settings-info-tip-offset;
+	margin: 0;
+}
+
+.rtl .fc-checkboxgroup-option > .fc-settings-info-tip {
+	left: auto;
+	right: -$fc-settings-info-tip-offset;
 }
 
 .fc-settings-info-tip:hover,
 .fc-settings-info-tip.is-open {
 	z-index: 100000;
-}
-
-.rtl .fc-settings-info-tip {
-	left: auto;
-	right: -$fc-settings-info-tip-offset;
 }
 
 .fc-settings-info-tip__button {

@@ -32,7 +32,7 @@ class FluidCheckout_Admin_SettingType_Paragraph extends FluidCheckout {
 	 */
 	public function output_field( $value ) {
 		?>
-		<div class="fc-settings-field fc-settings-field--paragraph forminp-<?php echo esc_attr( sanitize_title( $value[ 'type' ] ) ); ?>">
+		<div class="fc-settings-field fc-settings-field--paragraph">
 			<p><?php echo wp_kses_post( $value[ 'desc' ] ); ?></p>
 		</div>
 		<?php

@@ -2,14 +2,8 @@
 // SETTINGS PAGE - LAYOUT / TEMPLATE OPTIONS
 // ------------------------------------
 
-.fc-settings-wrap .forminp-fc_layout_selector,
-.fc-settings-wrap .forminp-fc_template_selector {
-	padding: 0 !important; // Needed to override WC admin options styles inside the settings cards.
-	background-color: transparent;
-}
-
-.forminp-fc_layout_selector,
-.forminp-fc_template_selector {
+.fc-settings-field--fc_layout_selector .fc-settings-field__control,
+.fc-settings-field--fc_template_selector .fc-settings-field__control {
 	padding: 0;
 	background-color: transparent;
 }

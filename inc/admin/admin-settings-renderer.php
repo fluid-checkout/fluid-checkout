@@ -552,6 +552,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		$field_description = $this->get_field_description( $value );
 		$row_classes = array_merge( array( 'fc-settings-field', 'fc-settings-field--inline', 'fc-settings-field--' . sanitize_html_class( $value[ 'type' ] ) ), $container_classes );
 		$show_wc_tooltip = $args[ 'tooltip' ] && ! $this->uses_info_tooltips();
+		$show_custom_tooltip = $args[ 'tooltip' ] && $this->uses_info_tooltips();
 		?>
 		<div class="<?php echo esc_attr( implode( ' ', $row_classes ) ); ?>">
 			<div class="fc-settings-field__label">
@@ -563,14 +564,14 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 					<?php endif; ?>
 				<?php endif; ?>
 				<?php if ( $show_wc_tooltip ) { echo $field_description[ 'tooltip_html' ]; } // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			</div>
-			<div class="fc-settings-field__control forminp forminp-<?php echo esc_attr( sanitize_title( $value[ 'type' ] ) ); ?>">
 				<?php
-				// Maybe output the custom info tip before the field control
-				if ( $this->uses_info_tooltips() ) {
+				// Maybe output the custom info tip beside the field label
+				if ( $show_custom_tooltip ) {
 					echo $this->get_info_tooltip_html( $this->get_info_tooltip_content( $value ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 				?>
+			</div>
+			<div class="fc-settings-field__control">
 		<?php
 		$this->is_field_row_open = true;
 
