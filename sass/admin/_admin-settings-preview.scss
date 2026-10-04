@@ -193,15 +193,13 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	}
 }
 
-// Below nav-compact: stack left/center; preview drawer still applies from the rule above
+// Below nav-compact: stack left/center; page scrolls naturally; preview drawer overlays
 @media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 	.fc-settings-layout.has-preview {
 		flex-direction: column;
 		align-items: stretch;
-		height: calc( 100vh - #{$fc-settings-sticky-offset} );
-		max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
 		min-height: 0;
-		overflow: hidden;
+		overflow: visible;
 	}
 
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
@@ -210,20 +208,17 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 		align-self: stretch;
 		width: 100%;
 		max-width: none;
+		height: auto;
+		max-height: none;
 	}
 
 	.fc-settings-layout.has-preview .fc-settings-content {
 		position: relative;
-		top: auto;
 		flex: 1 1 auto;
 		align-self: stretch;
 		width: 100%;
 		max-width: none;
 		min-width: 0;
-		height: auto;
-		max-height: none;
-		min-height: 0;
-		overflow: hidden;
 	}
 }
 
@@ -265,16 +260,8 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 		right: 0;
 	}
 
-	// Page scrolls on small screens; do not lock the layout to the viewport height.
-	.fc-settings-layout.has-preview {
-		height: auto;
-		max-height: none;
-		overflow: visible;
-	}
-
 	.fc-settings-layout.has-preview .fc-settings-content {
 		position: static;
-		overflow: visible;
 	}
 }
 

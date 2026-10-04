@@ -252,10 +252,6 @@
 				window.history.pushState( { fcSettingsTab: tab }, '', getUrlForTab( tab ) );
 
 				// Scroll back to the top when switching tabs via the sidebar
-				var content = document.querySelector( '.fc-settings-content' );
-				if ( content ) {
-					content.scrollTop = 0;
-				}
 				window.scrollTo( 0, 0 );
 			}
 		}

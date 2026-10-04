@@ -139,9 +139,9 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 
 
 
+// Center column is natural document flow: the page scrolls, not an inner pane.
 .fc-settings-content {
-	position: sticky;
-	top: $fc-settings-sticky-offset;
+	position: relative;
 	z-index: $fc-settings-content-z-index;
 	align-self: flex-start;
 	display: flex;
@@ -149,26 +149,15 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	flex-direction: column;
 	min-width: 0;
 	max-width: $fc-settings-content-max-width;
-	height: calc( 100vh - #{$fc-settings-sticky-offset} );
-	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
 	padding: 0;
 	// Clear space for the fixed actions bar at the bottom of the screen
 	padding-bottom: $fc-settings-actions-bar-height;
-	overflow: hidden;
 
 	// Compact nav: fill available width so the actions bar reaches the screen edge
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		align-self: stretch;
 		width: 100%;
 		max-width: none;
-	}
-
-	@media ( max-width: $admin-breakpoint-mobile ) {
-		position: static;
-		align-self: stretch;
-		height: auto;
-		max-height: none;
-		overflow: visible;
 	}
 }
 
@@ -179,38 +168,20 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 
 .fc-settings-content__scroll {
 	flex: 1 1 auto;
-	min-height: 0;
-	overflow-x: hidden;
-	overflow-y: auto;
 	padding: $fc-settings-content-padding;
 	padding-bottom: $fc-settings-content-padding-bottom;
-	scrollbar-width: none; // Firefox
-	-ms-overflow-style: none; // Legacy Edge
 
 	// Keep settings fields at the desktop reading width when the column grows
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		max-width: $fc-settings-content-max-width;
 		width: 100%;
 	}
-
-	@media ( max-width: $admin-breakpoint-mobile ) {
-		overflow: visible;
-	}
 }
 
-// Lock page and center-column scroll while a drawer overlay is open
+// Lock page scroll while a drawer overlay is open
 body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ),
 body.fc-settings-page:has( .fc-settings-sidebar.is-nav-expanded ) {
 	overflow: hidden;
-}
-
-.fc-settings-layout.is-preview-expanded .fc-settings-content__scroll,
-.fc-settings-layout:has( .fc-settings-sidebar.is-nav-expanded ) .fc-settings-content__scroll {
-	overflow: hidden;
-}
-
-.fc-settings-content__scroll::-webkit-scrollbar {
-	display: none; // Chrome, Safari, Edge
 }
 
 .fc-settings-content__scroll .fc-settings-card:last-child {

@@ -185,14 +185,14 @@ body.fc-settings-page #wpbody-content {
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
 	body.fc-settings-page #fc-header {
-		position: relative;
-		// Stay above columns, expanded preview, and the compact settings menu bar
-		z-index: $fc-header-z-index;
-		top: auto;
+		// Stay sticky above the compact settings menu bar while the page scrolls
+		position: sticky;
+		top: $admin-wp-admin-bar-height-mobile;
 		left: auto;
 		right: auto;
 		margin-left: 0;
 		margin-right: 0;
+		z-index: $fc-header-z-index;
 	}
 
 	body.rtl.fc-settings-page #fc-header {

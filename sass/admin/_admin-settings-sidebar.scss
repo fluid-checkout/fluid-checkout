@@ -12,29 +12,34 @@
 	flex-shrink: 0;
 	align-self: flex-start;
 	width: $fc-settings-sidebar-width;
+	// Pin to the available viewport; nav scrolls inside when taller
+	height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
 	overflow: hidden;
 	background-color: $fc-settings-sidebar-background-color;
 	box-shadow: $fc-settings-sidebar-box-shadow;
 	box-sizing: border-box;
 
-	// Compact: full-width header bar (menu stays a sliding drawer)
+	// Compact: full-width menu bar sticks below the settings page header
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		position: sticky;
-		top: 0;
+		top: $fc-settings-sticky-offset;
 		z-index: $fc-settings-nav-bar-z-index; // Above columns; below expanded drawers and the page header
 		flex: 0 0 auto;
 		align-self: stretch;
 		width: 100%;
 		max-width: none;
+		height: auto;
+		max-height: none;
 		overflow: visible;
 		background-color: $fc-settings-sidebar-background-color;
 		box-shadow: none;
 		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
 	}
 
-	// Admin bar stays fixed in this range; keep the title bar below it
-	@media ( min-width: $fc-settings-content-max-width + 1px ) and ( max-width: $admin-breakpoint-mobile ) {
-		top: $admin-wp-admin-bar-height-mobile;
+	// Taller admin bar on small screens; page header is sticky above this bar
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		top: $fc-settings-sticky-offset-mobile;
 	}
 }
 
@@ -52,6 +57,7 @@
 	flex: 1 1 auto;
 	min-height: 0;
 	width: 100%;
+	height: 100%;
 }
 
 
@@ -168,12 +174,14 @@
 	.fc-settings-layout .fc-settings-sidebar,
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
 		position: sticky;
-		top: 0;
+		top: $fc-settings-sticky-offset;
 		z-index: $fc-settings-nav-bar-z-index;
 		flex: 0 0 auto;
 		align-self: stretch;
 		width: 100%;
 		max-width: none;
+		height: auto;
+		max-height: none;
 		overflow: visible;
 		background-color: $fc-settings-sidebar-background-color;
 		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
@@ -236,14 +244,6 @@
 	}
 }
 
-// Admin bar stays fixed in this range; keep the title bar below it
-@media ( min-width: $fc-settings-content-max-width + 1px ) and ( max-width: $admin-breakpoint-mobile ) {
-	.fc-settings-layout .fc-settings-sidebar,
-	.fc-settings-layout.has-preview .fc-settings-sidebar {
-		top: $admin-wp-admin-bar-height-mobile;
-	}
-}
-
 @media screen and ( max-width: $admin-breakpoint-auto-fold ) {
 	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
 		left: $admin-wp-menu-width-folded;
@@ -256,6 +256,12 @@
 }
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
+	// Taller admin bar; keep the menu bar below the sticky page header
+	.fc-settings-layout .fc-settings-sidebar,
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		top: $fc-settings-sticky-offset-mobile;
+	}
+
 	// WP admin menu is not a left column on small screens — span the full viewport width.
 	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
 	.fc-settings-sidebar .fc-settings-nav,

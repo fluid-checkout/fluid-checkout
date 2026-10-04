@@ -79,8 +79,8 @@ $fc-settings-sidebar-width:                 200px !default;
 $fc-settings-admin-bar-offset:              $admin-wp-admin-bar-height !default;
 $fc-settings-page-header-height:            56px !default;
 $fc-settings-sticky-offset:                 $fc-settings-admin-bar-offset + $fc-settings-page-header-height !default;
-// Admin bar is taller on small screens; page header stays in normal flow
-$fc-settings-sticky-offset-mobile:          105px !default;
+// Admin bar is taller on small screens; keep the compact menu bar below the sticky page header
+$fc-settings-sticky-offset-mobile:          $admin-wp-admin-bar-height-mobile + $fc-settings-page-header-height !default;
 $fc-settings-page-background-color:         $admin-background-color !default;
 $fc-settings-text-color:                    $admin-text-color !default;
 $fc-settings-content-padding:               24px 12px !default;

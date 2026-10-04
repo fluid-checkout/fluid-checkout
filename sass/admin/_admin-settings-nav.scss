@@ -4,15 +4,18 @@
 
 .fc-settings-nav {
 	flex: 1 1 auto;
+	min-height: 0;
 	margin: 0;
 	padding: $fc-settings-nav-padding-y 0;
 	list-style: none;
+	// Scroll inside the pinned sidebar when the nav is taller than the viewport
+	overflow-x: hidden;
 	overflow-y: auto;
-	max-height: calc( 100vh - #{$fc-settings-sidebar-nav-max-height-offset} );
 
 	// Compact drawer styles live in `_admin-settings-sidebar.scss`
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
-		max-height: none;
+		flex: none;
+		min-height: 0;
 	}
 }
 

@@ -8,7 +8,7 @@
 	var openTip = null;
 	var hoveredTip = null;
 	var viewportPadding = 8;
-	var clipParentSelector = '.fc-settings-content__scroll, .fc-settings-content';
+	var clipParentSelector = '.fc-settings-content';
 
 
 
