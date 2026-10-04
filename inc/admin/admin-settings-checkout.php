@@ -345,7 +345,7 @@ class FluidCheckout_Settings_Checkout {
 						'options'               => array(
 							'hidden'                => array( 'label' => __( 'Hidden', 'fluid-checkout' ) ),
 							'site_header'           => array( 'label' => __( 'On the site header (requires distraction-free header)', 'fluid-checkout' ) ),
-							'before_checkout_steps' => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(), 'disabled' => true ),
+							'before_checkout_steps' => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Before checkout steps', 'fluid-checkout' ), 'disabled' => true ),
 						),
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' ),
 						'autoload'              => false,
