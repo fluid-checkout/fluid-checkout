@@ -461,18 +461,27 @@ input.fc-settings-toggle--round:focus + label {
 
 	@media ( min-width: $fc-settings-content-max-width ) {
 		position: absolute;
-		top: 50%;
-		right: 0;
+		top: 15px;
+		right: -15px;
 		left: auto;
 		margin: 0;
-		transform: translateY( -50% );
+	}
+}
+
+// Align the tip with shorter toggle-switch / checkbox controls
+.fc-settings-field--checkbox > .fc-settings-field__label > .fc-settings-info-tip,
+.fc-settings-field--fc_checkboxgroup > .fc-settings-field__label > .fc-settings-info-tip,
+.fc-settings-field--fc_telemetry > .fc-settings-field__label > .fc-settings-info-tip,
+.fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label > .fc-settings-info-tip {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		top: 8px;
 	}
 }
 
 .rtl .fc-settings-field__label > .fc-settings-info-tip {
 	@media ( min-width: $fc-settings-content-max-width ) {
 		right: auto;
-		left: 0;
+		left: -15px;
 	}
 }
 

@@ -2,7 +2,12 @@
 // SETTINGS PAGE - LAYOUT / TEMPLATE OPTIONS
 // ------------------------------------
 
-.fc-settings-field--fc_layout_selector .fc-settings-field__control,
+// Keep the default control `padding-top` on layout selectors so the label and
+// info tip align with the 36px sectioned control like text/select fields.
+.fc-settings-field--fc_layout_selector .fc-settings-field__control {
+	background-color: transparent;
+}
+
 .fc-settings-field--fc_template_selector .fc-settings-field__control {
 	padding: 0;
 	background-color: transparent;
