@@ -454,9 +454,10 @@ input.fc-settings-toggle--round:focus + label {
 	vertical-align: text-top;
 }
 
-// Field label tip: inline on small screens, floating to the right from 600px up
+// Field label tip: inline on small screens, floating to the right from 600px up.
+// Keep `position: relative` when inline so the popup anchors to the icon, not the label box.
 .fc-settings-field__label > .fc-settings-info-tip {
-	position: static;
+	position: relative;
 	margin-inline-start: 6px;
 
 	@media ( min-width: $fc-settings-content-max-width ) {
@@ -536,7 +537,8 @@ input.fc-settings-toggle--round:focus + label {
 	top: 28px;
 	left: 50%;
 	width: $fc-settings-info-tip-width;
-	margin-left: -120px; // Half of $fc-settings-info-tip-width for centering
+	// Center on the icon; `--fc-settings-info-tip-shift` keeps the popup inside the viewport
+	margin-left: calc( #{ -0.5 * $fc-settings-info-tip-width } + var( --fc-settings-info-tip-shift, 0px ) );
 	padding: 12px 14px;
 	border: 1px solid $fc-settings-info-tip-border-color;
 	border-radius: 4px;
@@ -554,7 +556,8 @@ input.fc-settings-toggle--round:focus + label {
 .fc-settings-info-tip__content::after {
 	content: "";
 	position: absolute;
-	left: 50%;
+	// Keep the caret under the icon when the popup is shifted horizontally
+	left: calc( 50% - var( --fc-settings-info-tip-shift, 0px ) );
 	width: 0;
 	height: 0;
 	border-style: solid;
