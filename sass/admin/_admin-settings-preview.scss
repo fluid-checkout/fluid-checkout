@@ -13,6 +13,7 @@ $fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} +
 .fc-settings-preview {
 	position: sticky;
 	top: $fc-settings-sticky-offset;
+	z-index: $fc-settings-preview-z-index;
 	align-self: start;
 	// Fill leftover space, but never shrink below the usable preview width
 	flex: 1 0 $fc-settings-preview-column-min-width;
@@ -126,37 +127,17 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	background: $fc-settings-page-background-color;
 }
 
-// Compact: preview is always the same fixed drawer box; only transform/opacity change
+// Compact preview drawer (≤1279): keep left/center as desktop columns; preview overlays
 @media ( max-width: $fc-settings-preview-compact-breakpoint ) {
-	.fc-settings-layout.has-preview {
-		flex-direction: column;
-		align-items: stretch;
-		height: calc( 100vh - #{$fc-settings-sticky-offset} );
-		max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
-		min-height: 0;
-		overflow: hidden;
-	}
-
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
-		position: static;
-		flex: 0 0 auto;
-		align-self: stretch;
-		width: 100%;
-		max-width: none;
+		flex: 0 0 $fc-settings-sidebar-width;
+		width: $fc-settings-sidebar-width;
 	}
 
 	.fc-settings-layout.has-preview .fc-settings-content {
-		position: relative;
-		top: auto;
-		flex: 1 1 auto;
-		align-self: stretch;
-		width: 100%;
-		max-width: none;
-		min-width: 0;
-		height: auto;
-		max-height: none;
-		min-height: 0;
-		overflow: hidden;
+		flex: 0 0 $fc-settings-content-max-width;
+		width: $fc-settings-content-max-width;
+		max-width: $fc-settings-content-max-width;
 	}
 
 	.fc-settings-layout.has-preview .fc-settings-preview {
@@ -202,6 +183,40 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 
 	body.rtl.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview {
 		right: $admin-wp-menu-width-folded;
+	}
+}
+
+// Below nav-compact: stack left/center; preview drawer still applies from the rule above
+@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+	.fc-settings-layout.has-preview {
+		flex-direction: column;
+		align-items: stretch;
+		height: calc( 100vh - #{$fc-settings-sticky-offset} );
+		max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+		min-height: 0;
+		overflow: hidden;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		// Keep sticky full-width header bar from `_admin-settings-sidebar.scss`
+		flex: 0 0 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content {
+		position: relative;
+		top: auto;
+		flex: 1 1 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: $fc-settings-content-max-width;
+		min-width: 0;
+		height: auto;
+		max-height: none;
+		min-height: 0;
+		overflow: hidden;
 	}
 }
 

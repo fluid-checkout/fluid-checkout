@@ -116,6 +116,7 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 .fc-settings-content {
 	position: sticky;
 	top: $fc-settings-sticky-offset;
+	z-index: $fc-settings-content-z-index;
 	align-self: flex-start;
 	display: flex;
 	flex: 1 1 auto;
@@ -148,8 +149,6 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 
 	@media ( max-width: $admin-breakpoint-mobile ) {
 		overflow: visible;
-		padding: $fc-settings-content-padding-mobile;
-		padding-bottom: $fc-settings-content-padding-bottom;
 	}
 }
 

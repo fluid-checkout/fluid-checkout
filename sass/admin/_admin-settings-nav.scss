@@ -10,11 +10,9 @@
 	overflow-y: auto;
 	max-height: calc( 100vh - #{$fc-settings-sidebar-nav-max-height-offset} );
 
-	// Compact: hidden until the menu is expanded
+	// Compact drawer styles live in `_admin-settings-sidebar.scss`
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
-		display: none;
 		max-height: none;
-		overflow-y: visible;
 	}
 }
 

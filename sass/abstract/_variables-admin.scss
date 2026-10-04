@@ -88,7 +88,11 @@ $fc-settings-actions-padding-mobile:        10px 5px !default;
 $fc-settings-actions-background-color:      $fc-settings-page-background-color !default;
 $fc-settings-actions-border-color:          $admin-border-color-strong !default;
 $fc-settings-actions-box-shadow:            0 -1px 2px rgba( 0, 0, 0, .04 ) !default;
+// Center column below left/right so sidebar/preview borders paint above the actions bar
+$fc-settings-content-z-index:               10 !default;
 $fc-settings-actions-z-index:               20 !default;
+$fc-settings-sidebar-z-index:               30 !default;
+$fc-settings-preview-z-index:               30 !default;
 $fc-settings-content-title-margin:          0 0 20px !default;
 $fc-settings-content-title-font-size:       20px !default;
 $fc-settings-content-title-font-weight:     500 !default;
@@ -132,6 +136,9 @@ $fc-settings-sidebar-nav-max-height-offset: $fc-settings-sticky-offset + $fc-set
 // Below this width the settings nav collapses into an expandable menu
 $fc-settings-nav-compact-breakpoint:        980px !default;
 $fc-settings-sidebar-toggle-size:           36px !default;
+$fc-settings-sidebar-header-padding-compact: 12px !default;
+// Toggle size + vertical compact header padding
+$fc-settings-sidebar-header-height-compact: $fc-settings-sidebar-toggle-size + ( 2 * $fc-settings-sidebar-header-padding-compact ) !default;
 
 // END - ADMIN - SETTINGS PAGE SIDEBAR
 // ----------------------------------------

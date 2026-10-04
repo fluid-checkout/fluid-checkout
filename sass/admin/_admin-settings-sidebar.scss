@@ -5,6 +5,7 @@
 .fc-settings-sidebar {
 	position: sticky;
 	top: $fc-settings-sticky-offset;
+	z-index: $fc-settings-sidebar-z-index;
 	flex: 0 0 $fc-settings-sidebar-width;
 	display: flex;
 	flex-direction: column;
@@ -16,18 +17,19 @@
 	box-shadow: $fc-settings-sidebar-box-shadow;
 	box-sizing: border-box;
 
-	// Compact: header bar only; no full-height column decoration
+	// Compact: full-width header bar (menu stays a sliding drawer)
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		position: sticky;
-		top: $fc-settings-sticky-offset;
-		z-index: 90;
+		top: 0;
+		z-index: 102; // Above page content; header/nav z-index resolved inside this context
 		flex: 0 0 auto;
 		align-self: stretch;
 		width: 100%;
 		max-width: none;
 		overflow: visible;
-		background-color: transparent;
+		background-color: $fc-settings-sidebar-background-color;
 		box-shadow: none;
+		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
 	}
 }
 
@@ -50,6 +52,7 @@
 
 
 .fc-settings-sidebar-header {
+	position: relative;
 	display: flex;
 	flex-shrink: 0;
 	flex-wrap: nowrap;
@@ -57,11 +60,14 @@
 	gap: 8px;
 	padding: $fc-settings-sidebar-header-padding;
 	border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+	background-color: $fc-settings-sidebar-background-color;
 
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
-		padding: 12px;
+		z-index: 2; // Above the sliding nav drawer within the sidebar stacking context
+		padding: $fc-settings-sidebar-header-padding-compact;
 		border-bottom: 0;
-		background-color: transparent;
+		width: 100%;
+		box-sizing: border-box;
 	}
 }
 
@@ -123,72 +129,85 @@
 
 
 
-// Compact expanded: fill the space under the settings header (same idea as the preview drawer)
+// Compact: nav is always the same fixed drawer box; only transform/opacity change.
+// Opposite of the preview drawer: expands top-to-bottom, collapses bottom-to-up.
 @media ( max-width: $fc-settings-nav-compact-breakpoint ) {
-	.fc-settings-layout .fc-settings-sidebar.is-nav-expanded,
-	.fc-settings-layout.has-preview .fc-settings-sidebar.is-nav-expanded {
+	.fc-settings-layout .fc-settings-sidebar,
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		position: sticky;
+		top: 0;
+		z-index: 102;
+		flex: 0 0 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+		overflow: visible;
+		background-color: $fc-settings-sidebar-background-color;
+		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+	}
+
+	.fc-settings-sidebar .fc-settings-nav {
+		display: block;
 		position: fixed;
 		top: $fc-settings-sticky-offset;
 		right: 0;
 		bottom: 0;
 		left: $admin-wp-menu-width;
-		z-index: 101; // Above the preview drawer, below the settings header
-		display: flex;
-		flex-direction: column;
+		z-index: 1; // Below `.fc-settings-sidebar-header` in this stacking context
+		flex: none;
 		width: auto;
 		max-width: none;
+		max-height: none;
 		min-height: 0;
-		overflow: hidden;
+		margin: 0;
+		padding: $fc-settings-sidebar-header-height-compact 0 $fc-settings-nav-padding-y;
+		overflow-x: hidden;
+		overflow-y: auto;
 		background-color: $fc-settings-sidebar-background-color;
-		box-shadow: none;
-	}
+		transform: translateY( -100% );
+		opacity: 0;
+		pointer-events: none;
+		transition: transform $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing, opacity $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing;
+		box-sizing: border-box;
 
-	.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar__inner {
-		flex: 1 1 auto;
-		min-height: 0;
-		overflow: hidden;
-	}
-
-	.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar-header {
-		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+		@media ( prefers-reduced-motion: reduce ) {
+			transition: none;
+		}
 	}
 
 	.fc-settings-sidebar.is-nav-expanded .fc-settings-nav {
-		display: block;
-		flex: 1 1 auto;
-		max-height: none;
-		min-height: 0;
-		overflow-x: hidden;
-		overflow-y: auto;
+		transform: none;
+		opacity: 1;
+		pointer-events: auto;
 	}
 
-	body.fc-settings-page.folded .fc-settings-sidebar.is-nav-expanded {
+	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav {
 		left: $admin-wp-menu-width-folded;
 	}
 
-	body.rtl.fc-settings-page .fc-settings-sidebar.is-nav-expanded {
+	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav {
 		left: 0;
 		right: $admin-wp-menu-width;
 	}
 
-	body.rtl.fc-settings-page.folded .fc-settings-sidebar.is-nav-expanded {
+	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav {
 		right: $admin-wp-menu-width-folded;
 	}
 }
 
 @media screen and ( max-width: $admin-breakpoint-auto-fold ) {
-	body.fc-settings-page.auto-fold .fc-settings-sidebar.is-nav-expanded {
+	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
 		left: $admin-wp-menu-width-folded;
 	}
 
-	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar.is-nav-expanded {
+	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
 		right: $admin-wp-menu-width-folded;
 		left: 0;
 	}
 }
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
-	.fc-settings-sidebar.is-nav-expanded {
+	.fc-settings-sidebar .fc-settings-nav {
 		left: 0;
 		right: 0;
 	}
