@@ -186,7 +186,8 @@ body.fc-settings-page #wpbody-content {
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
 	body.fc-settings-page #fc-header {
 		position: relative;
-		z-index: 1;
+		// Stay above columns, expanded preview, and the compact settings menu bar
+		z-index: $fc-header-z-index;
 		top: auto;
 		left: auto;
 		right: auto;

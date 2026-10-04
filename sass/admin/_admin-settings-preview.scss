@@ -65,7 +65,7 @@ $fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} +
 		right: 0;
 		bottom: 0;
 		left: $admin-wp-menu-width;
-		z-index: 100; // Below the settings header, above page content
+		z-index: $fc-settings-drawer-z-index; // Below the settings header, above columns
 		align-self: stretch;
 		flex: none;
 		width: auto;
@@ -153,7 +153,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 		right: 0;
 		bottom: 0;
 		left: $admin-wp-menu-width;
-		z-index: 100;
+		z-index: $fc-settings-drawer-z-index;
 		align-self: stretch;
 		flex: none;
 		width: auto;

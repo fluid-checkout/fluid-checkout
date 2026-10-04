@@ -21,7 +21,7 @@
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		position: sticky;
 		top: 0;
-		z-index: 102; // Above page content; header/nav z-index resolved inside this context
+		z-index: $fc-settings-nav-bar-z-index; // Above drawers; below the page header
 		flex: 0 0 auto;
 		align-self: stretch;
 		width: 100%;
@@ -65,7 +65,6 @@
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		z-index: 2; // Above the sliding nav drawer within the sidebar stacking context
 		padding: $fc-settings-sidebar-header-padding-compact;
-		border-bottom: 0;
 		width: 100%;
 		box-sizing: border-box;
 	}
@@ -136,7 +135,7 @@
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
 		position: sticky;
 		top: 0;
-		z-index: 102;
+		z-index: $fc-settings-nav-bar-z-index;
 		flex: 0 0 auto;
 		align-self: stretch;
 		width: 100%;
@@ -207,7 +206,19 @@
 }
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
-	.fc-settings-sidebar .fc-settings-nav {
+	// WP admin menu is not a left column on small screens — span the full viewport width.
+	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
+	.fc-settings-sidebar .fc-settings-nav,
+	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav,
+	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+		top: $fc-settings-sticky-offset-mobile;
+		left: 0;
+		right: 0;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav,
+	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
 		left: 0;
 		right: 0;
 	}
