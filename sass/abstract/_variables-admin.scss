@@ -92,7 +92,7 @@ $fc-settings-actions-padding-mobile:        10px 5px !default;
 $fc-settings-actions-background-color:      $fc-settings-page-background-color !default;
 $fc-settings-actions-border-color:          $admin-border-color-strong !default;
 $fc-settings-actions-box-shadow:            0 -1px 2px rgba( 0, 0, 0, .04 ) !default;
-// Stacking: columns < compact nav bar < drawers < page header ( `$fc-header-z-index` )
+// Stacking: columns < compact nav bar < preview drawer < expanded nav drawer < page header
 $fc-settings-content-z-index:               10 !default;
 $fc-settings-actions-z-index:               20 !default;
 $fc-settings-sidebar-z-index:               30 !default;
@@ -100,6 +100,8 @@ $fc-settings-preview-z-index:               30 !default;
 $fc-settings-nav-bar-z-index:               110 !default;
 // Above the compact settings title bar so an expanded preview covers it
 $fc-settings-drawer-z-index:                120 !default;
+// Above the preview drawer while the settings menu is open
+$fc-settings-nav-drawer-z-index:            130 !default;
 $fc-settings-content-title-margin:          0 0 20px !default;
 $fc-settings-content-title-font-size:       20px !default;
 $fc-settings-content-title-font-weight:     500 !default;

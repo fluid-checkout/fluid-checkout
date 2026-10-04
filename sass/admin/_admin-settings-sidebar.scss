@@ -210,6 +210,12 @@
 		}
 	}
 
+	// Match `.has-preview` sidebar specificity so this wins over the default nav-bar z-index
+	.fc-settings-layout .fc-settings-sidebar.is-nav-expanded,
+	.fc-settings-layout.has-preview .fc-settings-sidebar.is-nav-expanded {
+		z-index: $fc-settings-nav-drawer-z-index; // Above the expanded preview drawer
+	}
+
 	.fc-settings-sidebar.is-nav-expanded .fc-settings-nav {
 		transform: none;
 		opacity: 1;

@@ -162,6 +162,16 @@
 	};
 
 	/**
+	 * Collapse the settings preview drawer when available.
+	 */
+	var collapsePreviewDrawer = function() {
+		// Bail if the preview API is not available
+		if ( typeof FCAdminSettingsPreview === 'undefined' || typeof FCAdminSettingsPreview.setExpanded !== 'function' ) { return; }
+
+		FCAdminSettingsPreview.setExpanded( false );
+	};
+
+	/**
 	 * Update save button visibility and disabled state for a tab panel.
 	 *
 	 * @param  {Element}  tabPanel  Active tab panel element.
@@ -281,6 +291,7 @@
 
 		// Already on this tab: close the compact menu and stay put
 		if ( activePanel && tab === activePanel.getAttribute( _settings.tabAttribute ) ) {
+			collapsePreviewDrawer();
 			setNavExpanded( false );
 			e.preventDefault();
 			return;
@@ -289,7 +300,8 @@
 		// Bail if tab cannot be activated (fall through to full navigation)
 		if ( ! activateTab( tab, true, false ) ) { return; }
 
-		// Close the compact menu after choosing a tab
+		// Close the preview and compact menu after choosing a tab
+		collapsePreviewDrawer();
 		setNavExpanded( false );
 		e.preventDefault();
 	};

@@ -50,6 +50,9 @@
 		zoomMax:                     200,
 		zoomStep:                    25,
 		compactBreakpoint:           1280,
+		// Same as settings nav: title / menu bar is the full-width sticky section
+		navCompactBreakpoint:        980,
+		sidebarHeaderSelector:       '.fc-settings-sidebar-header',
 		previewTransitionMs:         280,
 		hiddenTabs:                  [ 'dashboard', 'license_keys' ],
 		initialTab:                  'checkout',
@@ -69,6 +72,7 @@
 		},
 	};
 	var _compactMediaQuery = null;
+	var _navCompactMediaQuery = null;
 
 
 
@@ -269,12 +273,47 @@
 	};
 
 	/**
+	 * Whether the settings title / menu bar is in the compact (full-width) layout.
+	 *
+	 * @return  {boolean}
+	 */
+	var isNavCompactLayout = function() {
+		return !!( _navCompactMediaQuery && _navCompactMediaQuery.matches );
+	};
+
+	/**
 	 * Whether the user prefers reduced motion.
 	 *
 	 * @return  {boolean}
 	 */
 	var prefersReducedMotion = function() {
 		return !!( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches );
+	};
+
+	/**
+	 * Anchor the compact preview drawer below the settings title / menu bar.
+	 * Keeps `bottom: 0` and the upward slide animation; only the top edge follows
+	 * the live title-bar position when the admin bar and page header scroll away.
+	 */
+	var syncPreviewDrawerPosition = function() {
+		var preview = getPreview();
+		var header;
+
+		// Bail if preview is missing
+		if ( ! preview ) { return; }
+
+		// Clear inline offsets outside the compact title-bar layout
+		if ( ! isCompactPreviewLayout() || ! isNavCompactLayout() ) {
+			preview.style.top = '';
+			return;
+		}
+
+		header = document.querySelector( _settings.sidebarHeaderSelector );
+
+		// Bail if header is missing
+		if ( ! header ) { return; }
+
+		preview.style.top = Math.round( header.getBoundingClientRect().bottom ) + 'px';
 	};
 
 	/**
@@ -337,6 +376,9 @@
 			_collapseTimer = null;
 			layout.classList.remove( _settings.isCollapsingClass );
 		}
+
+		// Keep the drawer pinned to the title bar before toggling visibility
+		syncPreviewDrawerPosition();
 
 		// EXPAND
 		if ( expanded ) {
@@ -640,6 +682,7 @@
 	 */
 	var handleCompactBreakpointChange = function() {
 		setPreviewExpanded( false );
+		syncPreviewDrawerPosition();
 		updatePreviewDims();
 	};
 
@@ -735,6 +778,7 @@
 		var expandButton;
 		var frame;
 		var breakpoint;
+		var navCompactBreakpoint;
 
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
@@ -758,6 +802,17 @@
 			_compactMediaQuery.addListener( handleCompactBreakpointChange );
 		}
 
+		// Track when the settings title / menu bar is the compact sticky section
+		navCompactBreakpoint = parseInt( _settings.navCompactBreakpoint, 10 ) || 980;
+		_navCompactMediaQuery = window.matchMedia( '(max-width: ' + navCompactBreakpoint + 'px)' );
+		if ( typeof _navCompactMediaQuery.addEventListener === 'function' ) {
+			_navCompactMediaQuery.addEventListener( 'change', syncPreviewDrawerPosition );
+		}
+		// Otherwise use the legacy MediaQueryList API
+		else if ( typeof _navCompactMediaQuery.addListener === 'function' ) {
+			_navCompactMediaQuery.addListener( syncPreviewDrawerPosition );
+		}
+
 		// Add event listeners
 		expandButton = document.querySelector( _settings.expandSelector );
 		if ( expandButton ) {
@@ -768,6 +823,9 @@
 		document.addEventListener( 'click', handlePageTabClick, true );
 		document.addEventListener( 'click', handleZoomClick, true );
 		window.addEventListener( 'fcSettingsTabActivated', handleSettingsTabActivated );
+		// Capture scroll from nested containers; keep the drawer aligned while sticky headers move
+		window.addEventListener( 'scroll', syncPreviewDrawerPosition, true );
+		window.addEventListener( 'resize', syncPreviewDrawerPosition );
 
 		frame = document.querySelector( _settings.frameSelector );
 		if ( frame ) {
@@ -802,11 +860,14 @@
 			setPreviewExpanded( false );
 		}
 
+		syncPreviewDrawerPosition();
+
 		_hasInitialized = true;
 	};
 
 	// Public APIs
 	_publicMethods.init = init;
+	_publicMethods.setExpanded = setPreviewExpanded;
 
 	return _publicMethods;
 } );
