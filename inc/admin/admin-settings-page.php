@@ -210,6 +210,30 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	}
 
 	/**
+	 * Output the upgrade and save settings header action buttons.
+	 *
+	 * @param  bool  $can_save  Whether the save button should be enabled.
+	 */
+	public function output_settings_header_action_buttons( $can_save ) {
+		$upgrade_url = 'https://fluidcheckout.com/pricing/?mtm_campaign=admin-header&mtm_kwd=upgrade-pro&mtm_source=settings-header';
+
+		// Maybe output the upgrade button when PRO is not active
+		if ( ! FluidCheckout::instance()->is_pro_activated() ) : ?>
+			<a class="fc-header__button fc-header__button--upgrade" href="<?php echo esc_url( $upgrade_url ); ?>" target="_blank" rel="noopener noreferrer">
+				<span class="dashicons dashicons-upload" aria-hidden="true"></span><?php echo esc_html( __( 'Upgrade to PRO', 'fluid-checkout' ) ); ?>
+			</a>
+		<?php endif; ?>
+		<button
+			type="submit"
+			form="mainform"
+			class="fc-header__button fc-header__button--save"
+			data-fc-settings-save
+			<?php disabled( ! $can_save ); ?>
+		><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
+		<?php
+	}
+
+	/**
 	 * Output the Fluid Checkout admin page header.
 	 */
 	public function output_admin_header() {
@@ -224,7 +248,6 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$home_url = 'https://fluidcheckout.com/?mtm_campaign=admin-header&mtm_kwd=logo&mtm_source=settings-header';
 		$support_url = 'https://fluidcheckout.com/support/?mtm_campaign=admin-header&mtm_kwd=support&mtm_source=settings-header';
 		$docs_url = 'https://fluidcheckout.com/docs/?mtm_campaign=admin-header&mtm_kwd=docs&mtm_source=settings-header';
-		$upgrade_url = 'https://fluidcheckout.com/pricing/?mtm_campaign=admin-header&mtm_kwd=upgrade-pro&mtm_source=settings-header';
 		?>
 		<div id="fc-header">
 			<a class="fc-header__logo" href="<?php echo esc_url( $home_url ); ?>" target="_blank" rel="noopener noreferrer">
@@ -238,18 +261,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			<a class="fc-header__button" href="<?php echo esc_url( $docs_url ); ?>" target="_blank" rel="noopener noreferrer">
 				<span class="dashicons dashicons-book" aria-hidden="true"></span><?php echo esc_html( __( 'Docs', 'fluid-checkout' ) ); ?>
 			</a>
-			<?php if ( ! FluidCheckout::instance()->is_pro_activated() ) : ?>
-				<a class="fc-header__button fc-header__button--upgrade" href="<?php echo esc_url( $upgrade_url ); ?>" target="_blank" rel="noopener noreferrer">
-					<span class="dashicons dashicons-upload" aria-hidden="true"></span><?php echo esc_html( __( 'Upgrade to PRO', 'fluid-checkout' ) ); ?>
-				</a>
-			<?php endif; ?>
-			<button
-				type="submit"
-				form="mainform"
-				class="fc-header__button fc-header__button--save"
-				data-fc-settings-save
-				<?php disabled( ! $can_save ); ?>
-			><?php echo esc_html( __( 'Save settings', 'fluid-checkout' ) ); ?></button>
+			<?php $this->output_settings_header_action_buttons( $can_save ); ?>
 		</div>
 		<?php
 	}
@@ -601,6 +613,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 									</svg>
 								</button>
 								<h1 class="fc-settings-sidebar-header__title"><?php echo esc_html( __( 'Settings', 'fluid-checkout' ) ); ?></h1>
+								<div class="fc-settings-sidebar-header__actions">
+									<?php $this->output_settings_header_action_buttons( $can_save ); ?>
+								</div>
 							</div>
 							<?php $this->output_sidebar_nav( $tabs, $current_tab ); ?>
 						</div>

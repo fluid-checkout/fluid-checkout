@@ -209,6 +209,12 @@ body.fc-settings-page #wpbody-content {
 		left: auto;
 	}
 
+	// Upgrade / Save move into the settings title bar on small screens
+	body.fc-settings-page #fc-header .fc-header__button--upgrade,
+	body.fc-settings-page #fc-header .fc-header__button--save {
+		display: none;
+	}
+
 	body.fc-settings-page #wpbody-content {
 		padding-top: 0;
 	}

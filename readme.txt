@@ -358,6 +358,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 * Fixed: Place the site key upgrade translators comment next to its sprintf string.
 * Improved: Settings navigation becomes an expandable menu on smaller screens.
+* Improved: On small screens, the Upgrade and Save settings buttons move into the settings title bar.
 * Added: Page preview column on settings tabs, with viewport sizes, zoom controls, and expand to full width.
 * Improved: Limit settings content sections to a 600px max width for easier scanning.
 * Improved: Split design template and checkout layout into separate settings sections with larger option cards.

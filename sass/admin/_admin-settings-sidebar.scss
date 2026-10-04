@@ -71,6 +71,8 @@
 }
 
 .fc-settings-wrap .fc-settings-sidebar-header__title {
+	flex: 1 1 auto;
+	min-width: 0;
 	margin: 0;
 	padding: 0;
 	border: none;
@@ -78,6 +80,33 @@
 	font-weight: $fc-settings-sidebar-title-font-weight;
 	line-height: $fc-settings-sidebar-title-line-height;
 	color: $fc-settings-text-color;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+
+.fc-settings-sidebar-header__actions {
+	display: none;
+	flex: 0 0 auto;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 8px;
+	margin-inline-start: auto;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		display: inline-flex;
+	}
+}
+
+.fc-settings-sidebar-header__actions .fc-header__button {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.fc-settings-sidebar-header__actions .fc-header__button .dashicons {
+	display: none; // Keep the compact title bar actions short on narrow screens
 }
 
 
