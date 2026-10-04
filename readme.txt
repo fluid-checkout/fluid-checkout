@@ -356,6 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Rename the International Phone Numbers settings page to Phone fields, and move shipping and billing phone field options there.
+* Improved: Move Trust badges settings to their own settings page, with one section per front-end page.
 * Improved: Move the Google Maps scripts troubleshooting option into Tools > Troubleshooting.
 * Fixed: Place the site key upgrade translators comment next to its sprintf string.
 * Improved: Settings navigation becomes an expandable menu on smaller screens.

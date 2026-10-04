@@ -117,34 +117,6 @@ class FluidCheckout_Settings_OrderPay {
 						'id'   => 'fc_pro_order_pay_layout_options',
 					),
 
-
-
-					array(
-						'title' => __( 'Trust Symbols & Badges', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_pro_order_pay_trust_symbols_options',
-						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-pay-trust-symbols' ),
-						'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
-					),
-
-					array(
-						'title'             => __( 'Widget areas', 'fluid-checkout' ),
-						'desc'              => __( 'Add widget areas to the order pay page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the order pay page.', 'fluid-checkout' ),
-						'id'                => 'fc_pro_enable_order_pay_widget_areas',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_pay_widget_areas' ),
-						'type'              => 'checkbox',
-						'autoload'          => false,
-						'disabled'          => true,
-						'requires'          => 'pro',
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_pro_order_pay_trust_symbols_options',
-					),
-
 					)
 				)
 			);

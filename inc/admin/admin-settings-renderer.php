@@ -815,7 +815,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		$is_disabled = $this->is_field_disabled( $value );
 		$use_toggle = $this->uses_toggle_checkboxes();
 
-		$this->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false, 'tooltip' => false ) );
+		$this->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false ) );
 		?>
 		<?php if ( $has_title || $has_legend ) : ?>
 			<legend class="<?php echo $has_legend ? '' : 'screen-reader-text'; ?>"><span><?php echo esc_html( $has_legend ? $value[ 'legend' ] : $value[ 'title' ] ); ?></span></legend>

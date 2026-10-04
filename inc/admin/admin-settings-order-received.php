@@ -174,34 +174,6 @@ class FluidCheckout_Settings_OrderReceived {
 
 
 					array(
-						'title' => __( 'Trust Symbols & Badges', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_pro_order_received_trust_symbols_options',
-						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-trust-symbols' ),
-						'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
-					),
-
-					array(
-						'title'             => __( 'Widget areas', 'fluid-checkout' ),
-						'desc'              => __( 'Add widget areas to the thank you page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the thank you page.', 'fluid-checkout' ),
-						'id'                => 'fc_pro_enable_order_received_widget_areas',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_received_widget_areas' ),
-						'autoload'          => false,
-						'disabled'          => true,
-						'requires'          => 'pro',
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_pro_order_received_trust_symbols_options',
-					),
-
-
-
-					array(
 						'title' => __( 'Order Details Layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => __( 'These options affect the thank you page, view order details on account pages and on email notifications.', 'fluid-checkout' ),

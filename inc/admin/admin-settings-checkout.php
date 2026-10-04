@@ -432,44 +432,6 @@ class FluidCheckout_Settings_Checkout {
 
 
 					array(
-						'title' => __( 'Trust Symbols & Badges', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_checkout_trust_symbols_options',
-						'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
-					),
-
-					array(
-						'title'                 => __( 'Widget areas', 'fluid-checkout' ),
-						'desc'                  => __( 'Add widget areas to the checkout page', 'fluid-checkout' ),
-						'desc_tip'              => __( 'These widget areas are used to add trust symbols and trust badges on the checkout page.', 'fluid-checkout' ),
-						'id'                    => 'fc_enable_checkout_widget_areas',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_areas' ),
-						'checkboxgroup'         => 'start',
-						'autoload'              => false,
-					),
-					array(
-						'desc'                  => __( 'Display checkout sidebar widgets only when viewing the last checkout step on mobile devices when using multi-step checkout layout', 'fluid-checkout' ),
-						'id'                    => 'fc_enable_checkout_widget_area_sidebar_last_step',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_area_sidebar_last_step' ),
-						'checkboxgroup'         => 'end',
-						'custom_attributes' => array(
-							'data-conditional-id'    => 'fc_enable_checkout_widget_areas',
-							'data-conditional-value' => 'yes',
-						),
-						'autoload'              => false,
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_checkout_trust_symbols_options',
-					),
-
-
-
-					array(
 						'title' => __( 'Coupon Codes', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
@@ -679,64 +641,6 @@ class FluidCheckout_Settings_Checkout {
 							'required' => __( 'Required', 'fluid-checkout' ),
 						),
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_checkout_company_field' ),
-						'autoload'              => false,
-					),
-
-					array(
-						'title'                 => __( 'Shipping phone', 'fluid-checkout' ),
-						'desc'                  => '',
-						'desc_tip'              => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The shipping phone field may be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
-						'id'                    => 'fc_shipping_phone_field_visibility',
-						'type'                  => 'select',
-						'options'               => array(
-							'hidden'   => __( 'Hidden (remove field)', 'fluid-checkout' ),
-							'optional' => __( 'Optional', 'fluid-checkout' ),
-							'required' => __( 'Required', 'fluid-checkout' ),
-						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_phone_field_visibility' ),
-						'autoload'              => false,
-					),
-
-					array(
-						'title'                 => __( 'Shipping phone position', 'fluid-checkout' ),
-						'desc'                  => '',
-						'desc_tip'              => __( 'Choose in which step to display the shipping phone field.', 'fluid-checkout' ),
-						'id'                    => 'fc_shipping_phone_field_position',
-						'type'                  => 'select',
-						'options'               => array(
-							'shipping_address' => __( 'Shipping address', 'fluid-checkout' ),
-							'contact'          => __( 'Contact step', 'fluid-checkout' ),
-						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_phone_field_position' ),
-						'autoload'              => false,
-					),
-
-					array(
-						'title'                 => __( 'Billing phone', 'fluid-checkout' ),
-						'desc'                  => '',
-						'desc_tip'              => __( 'Add billing phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The billing phone field may be forced as "required" if the billing address section is displayed before the shipping address section, and the shipping phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
-						'id'                    => 'woocommerce_checkout_phone_field',
-						'type'                  => 'select',
-						'options'               => array(
-							'hidden'   => __( 'Hidden (remove field)', 'fluid-checkout' ),
-							'optional' => __( 'Optional', 'fluid-checkout' ),
-							'required' => __( 'Required', 'fluid-checkout' ),
-						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_checkout_phone_field' ),
-						'autoload'              => false,
-					),
-
-					array(
-						'title'                 => __( 'Billing phone position', 'fluid-checkout' ),
-						'desc'                  => '',
-						'desc_tip'              => __( 'Choose in which step to display the billing phone field.', 'fluid-checkout' ),
-						'id'                    => 'fc_billing_phone_field_position',
-						'type'                  => 'select',
-						'options'               => array(
-							'billing_address' => __( 'Billing address', 'fluid-checkout' ),
-							'contact'         => __( 'Contact step', 'fluid-checkout' ),
-						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_billing_phone_field_position' ),
 						'autoload'              => false,
 					),
 

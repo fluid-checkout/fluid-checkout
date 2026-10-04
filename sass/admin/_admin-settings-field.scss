@@ -306,6 +306,12 @@
 	color: $admin-text-color-muted;
 }
 
+.fc-settings-field--separator {
+	margin: $fc-settings-field-padding-y 0;
+	padding: 0;
+	border-top: 1px solid $fc-settings-field-border-color;
+}
+
 
 
 .fc-settings-badge {

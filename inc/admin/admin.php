@@ -149,6 +149,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function load_setting_types() {
 		// Load settings field types
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-paragraph.php';
+		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-separator.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-promo.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
@@ -177,6 +178,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-settings-local-pickup.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-gift-options.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-international-phone.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-trust-symbols.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-address-autocomplete.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-address-book.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-vat-assistant.php';

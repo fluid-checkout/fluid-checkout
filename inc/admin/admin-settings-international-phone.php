@@ -1,6 +1,6 @@
 <?php
 /**
- * Fluid Checkout International Phone Numbers Settings
+ * Fluid Checkout Phone Fields Settings
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -35,7 +35,7 @@ class FluidCheckout_Settings_InternationalPhone {
 	 */
 	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
-			'international_phone' => __( 'International Phone Numbers', 'fluid-checkout' ),
+			'international_phone' => __( 'Phone fields', 'fluid-checkout' ),
 		) );
 
 		return $sections;
@@ -50,13 +50,101 @@ class FluidCheckout_Settings_InternationalPhone {
 	 * @param   string  $current_section  Current section name.
 	 */
 	public static function add_settings( $settings, $current_section ) {
+		// Bail if not the phone fields section
 		if ( 'international_phone' !== $current_section ) { return $settings; }
 
 		return apply_filters(
 			'fc_international_phone_settings',
 			array(
+
 				array(
-					'title' => __( 'International Phone Numbers', 'fluid-checkout' ),
+					'title' => __( 'Shipping phone', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => '',
+					'id'    => 'fc_shipping_phone_fields_options',
+				),
+
+				array(
+					'title'                 => __( 'Field visibility', 'fluid-checkout' ),
+					'desc'                  => '',
+					'desc_tip'              => __( 'Add shipping phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The shipping phone field may be forced as "required" if the billing address section is displayed after the shipping address section, and the billing phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
+					'id'                    => 'fc_shipping_phone_field_visibility',
+					'type'                  => 'select',
+					'options'               => array(
+						'hidden'   => __( 'Hidden (remove field)', 'fluid-checkout' ),
+						'optional' => __( 'Optional', 'fluid-checkout' ),
+						'required' => __( 'Required', 'fluid-checkout' ),
+					),
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_phone_field_visibility' ),
+					'autoload'              => false,
+				),
+
+				array(
+					'title'                 => __( 'Field position', 'fluid-checkout' ),
+					'desc'                  => '',
+					'desc_tip'              => __( 'Choose in which step to display the shipping phone field.', 'fluid-checkout' ),
+					'id'                    => 'fc_shipping_phone_field_position',
+					'type'                  => 'select',
+					'options'               => array(
+						'shipping_address' => __( 'Shipping address', 'fluid-checkout' ),
+						'contact'          => __( 'Contact step', 'fluid-checkout' ),
+					),
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_phone_field_position' ),
+					'autoload'              => false,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_shipping_phone_fields_options',
+				),
+
+
+
+				array(
+					'title' => __( 'Billing phone', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => '',
+					'id'    => 'fc_billing_phone_fields_options',
+				),
+
+				array(
+					'title'                 => __( 'Field visibility', 'fluid-checkout' ),
+					'desc'                  => '',
+					'desc_tip'              => __( 'Add billing phone field to the checkout form.', 'fluid-checkout' ) . '<br>' . __( 'The billing phone field may be forced as "required" if the billing address section is displayed before the shipping address section, and the shipping phone field is set as "required". This is needed to ensure the shipping address can be copied to the billing address when that option is checked, otherwise the customer might not be able to complete the checkout form.', 'fluid-checkout' ),
+					'id'                    => 'woocommerce_checkout_phone_field',
+					'type'                  => 'select',
+					'options'               => array(
+						'hidden'   => __( 'Hidden (remove field)', 'fluid-checkout' ),
+						'optional' => __( 'Optional', 'fluid-checkout' ),
+						'required' => __( 'Required', 'fluid-checkout' ),
+					),
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_checkout_phone_field' ),
+					'autoload'              => false,
+				),
+
+				array(
+					'title'                 => __( 'Field position', 'fluid-checkout' ),
+					'desc'                  => '',
+					'desc_tip'              => __( 'Choose in which step to display the billing phone field.', 'fluid-checkout' ),
+					'id'                    => 'fc_billing_phone_field_position',
+					'type'                  => 'select',
+					'options'               => array(
+						'billing_address' => __( 'Billing address', 'fluid-checkout' ),
+						'contact'         => __( 'Contact step', 'fluid-checkout' ),
+					),
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_billing_phone_field_position' ),
+					'autoload'              => false,
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_billing_phone_fields_options',
+				),
+
+
+
+				array(
+					'title' => __( 'Phone country code & validation', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'fc_international_phone_options',
@@ -65,8 +153,8 @@ class FluidCheckout_Settings_InternationalPhone {
 				),
 
 				array(
-					'title'                 => __( 'International phone numbers', 'fluid-checkout' ),
-					'desc'                  => __( 'Enable international phone number fields', 'fluid-checkout' ),
+					'title'                 => __( 'Country', 'fluid-checkout' ),
+					'desc'                  => __( 'Enable country on phone fields', 'fluid-checkout' ),
 					'desc_tip'              => __( 'Format phone numbers according to the rules for each country.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_enable_international_phone_fields',
 					'type'                  => 'checkbox',
@@ -75,10 +163,30 @@ class FluidCheckout_Settings_InternationalPhone {
 					'disabled'              => true,
 					'requires'              => 'pro',
 				),
+				array(
+					'desc'                  => __( 'Show country code beside the flag', 'fluid-checkout' ),
+					'id'                    => 'fc_pro_enable_international_phone_country_code',
+					'type'                  => 'checkbox',
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_code' ),
+					'autoload'              => false,
+					'disabled'              => true,
+					'requires'              => 'pro',
+				),
+				array(
+					'desc'                  => __( 'Filter countries for shipping or billing', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Limit the country selector on each phone field to the countries allowed for shipping or billing on your store.', 'fluid-checkout' ),
+					'id'                    => 'fc_pro_enable_international_phone_country_list_filter',
+					'type'                  => 'checkbox',
+					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_list_filter' ),
+					'autoload'              => false,
+					'disabled'              => true,
+					'requires'              => 'pro',
+				),
 
 				array(
-					'desc'                  => __( 'Enable phone number validation based on country rules', 'fluid-checkout' ),
-					'desc_tip'              => __( 'When disabled, the phone field validation will not check if country or area codes are valid for the country.', 'fluid-checkout' ),
+					'title'                 => __( 'Validation', 'fluid-checkout' ),
+					'desc'                  => __( 'Enable simple validation based on country rules', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Checks that the phone number is valid for the selected country, including country code and length.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_enable_international_phone_validation',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation' ),
@@ -88,7 +196,7 @@ class FluidCheckout_Settings_InternationalPhone {
 				),
 				array(
 					'desc'                  => __( 'Use precise phone number validation', 'fluid-checkout' ),
-					'desc_tip'              => __( 'Try to ensure the phone number is a valid mobile or landline number based on the rules for the selected country code. This option uses the <code>intl-tel-input</code> precise validation feature, which may give false positives for some phone numbers.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://intl-tel-input.com/examples/validation.html' ),
+					'desc_tip'              => __( 'Stricter check that the number is a valid mobile, fixed line, or other accepted type for the selected country. May reject some valid numbers.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://intl-tel-input.com/examples/validation.html' ),
 					'id'                    => 'fc_pro_enable_international_phone_validation_precise',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
@@ -98,7 +206,7 @@ class FluidCheckout_Settings_InternationalPhone {
 				),
 				array(
 					'desc'                  => '',
-					'desc_tip'          => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_enable_international_phone_validation_precise_types',
 					'type'                  => 'fc_multiselect',
 					'class'                 => 'fc-enhanced-select',
@@ -114,28 +222,9 @@ class FluidCheckout_Settings_InternationalPhone {
 				),
 
 				array(
-					'desc'                  => __( 'Only show allowed countries for shipping or billing', 'fluid-checkout' ),
-					'desc_tip'              => __( 'When enabled, only the countries allowed for shipping will be available in the shipping phone field, and only countries allowed for billing will be available for the billing phone field.', 'fluid-checkout' ),
-					'id'                    => 'fc_pro_enable_international_phone_country_list_filter',
-					'type'                  => 'checkbox',
-					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_list_filter' ),
-					'autoload'              => false,
-					'disabled'              => true,
-					'requires'              => 'pro',
-				),
-				array(
-					'desc'                  => __( 'Show country code beside the flag', 'fluid-checkout' ),
-					'id'                    => 'fc_pro_enable_international_phone_country_code',
-					'type'                  => 'checkbox',
-					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_code' ),
-					'autoload'              => false,
-					'disabled'              => true,
-					'requires'              => 'pro',
-				),
-
-				array(
+					'title'                 => __( 'Placeholders', 'fluid-checkout' ),
 					'desc'                  => '',
-					'desc_tip'          => __( 'Show an example of a valid phone number inside phone fields', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Show an example of a valid phone number inside phone fields', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_international_phone_fields_placeholder',
 					'type'                  => 'fc_select',
 					'options'               => array(
@@ -153,6 +242,7 @@ class FluidCheckout_Settings_InternationalPhone {
 					'type' => 'sectionend',
 					'id'   => 'fc_international_phone_options',
 				),
+
 			)
 		);
 	}
