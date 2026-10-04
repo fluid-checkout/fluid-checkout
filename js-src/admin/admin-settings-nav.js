@@ -10,24 +10,25 @@
 	var _hasInitialized = false;
 	var _navCompactMediaQuery = null;
 	var _settings = {
-		formSelector:         '[data-fc-settings-form]',
-		sidebarSelector:      '[data-fc-settings-sidebar]',
-		navSelector:          '[data-fc-settings-nav]',
-		navItemSelector:      '[data-fc-settings-nav-item]',
-		navLinkSelector:      '[data-fc-settings-nav-link]',
-		navToggleSelector:    '[data-fc-settings-nav-toggle]',
-		tabSelector:          '[data-fc-settings-tab]',
-		submitSelector:       '[data-fc-settings-submit]',
-		saveButtonSelector:   '[data-fc-settings-save]',
-		activeClass:          'is-active',
-		isNavExpandedClass:   'is-nav-expanded',
-		tabAttribute:         'data-fc-settings-tab',
-		showSaveAttribute:    'data-fc-settings-show-save',
-		navItemAttribute:     'data-fc-settings-nav-item',
-		navLinkAttribute:     'data-fc-settings-nav-link',
-		labelOpenAttribute:   'data-label-open',
-		labelCloseAttribute:  'data-label-close',
-		navCompactBreakpoint: 980,
+		formSelector:           '[data-fc-settings-form]',
+		sidebarSelector:        '[data-fc-settings-sidebar]',
+		sidebarHeaderSelector:  '.fc-settings-sidebar-header',
+		navSelector:            '[data-fc-settings-nav]',
+		navItemSelector:        '[data-fc-settings-nav-item]',
+		navLinkSelector:        '[data-fc-settings-nav-link]',
+		navToggleSelector:      '[data-fc-settings-nav-toggle]',
+		tabSelector:            '[data-fc-settings-tab]',
+		submitSelector:         '[data-fc-settings-submit]',
+		saveButtonSelector:     '[data-fc-settings-save]',
+		activeClass:            'is-active',
+		isNavExpandedClass:     'is-nav-expanded',
+		tabAttribute:           'data-fc-settings-tab',
+		showSaveAttribute:      'data-fc-settings-show-save',
+		navItemAttribute:       'data-fc-settings-nav-item',
+		navLinkAttribute:       'data-fc-settings-nav-link',
+		labelOpenAttribute:     'data-label-open',
+		labelCloseAttribute:    'data-label-close',
+		navCompactBreakpoint:   980,
 	};
 
 
@@ -112,6 +113,32 @@
 	};
 
 	/**
+	 * Anchor the compact nav drawer below the settings title / menu bar.
+	 * Uses the live header position so the drawer stays correct when the admin bar
+	 * and page header have scrolled out of view.
+	 */
+	var syncNavDrawerPosition = function() {
+		var nav = document.querySelector( _settings.navSelector );
+		var header;
+
+		// Bail if nav is missing
+		if ( ! nav ) { return; }
+
+		// Clear inline offsets outside the compact nav layout
+		if ( ! isNavCompactLayout() ) {
+			nav.style.top = '';
+			return;
+		}
+
+		header = document.querySelector( _settings.sidebarHeaderSelector );
+
+		// Bail if header is missing
+		if ( ! header ) { return; }
+
+		nav.style.top = Math.round( header.getBoundingClientRect().bottom ) + 'px';
+	};
+
+	/**
 	 * Expand or collapse the compact settings navigation menu.
 	 *
 	 * @param  {boolean}  expanded  Whether the menu should be open.
@@ -126,6 +153,9 @@
 		if ( ! isNavCompactLayout() ) {
 			expanded = false;
 		}
+
+		// Keep the drawer pinned to the title bar before toggling visibility
+		syncNavDrawerPosition();
 
 		sidebar.classList.toggle( _settings.isNavExpandedClass, expanded );
 		syncNavToggleControls( expanded );
@@ -290,6 +320,7 @@
 	 */
 	var handleNavCompactBreakpointChange = function() {
 		setNavExpanded( false );
+		syncNavDrawerPosition();
 	};
 
 	/**
@@ -327,6 +358,9 @@
 		document.addEventListener( 'click', handleNavClick, true );
 		document.addEventListener( 'click', handleNavToggleClick, true );
 		window.addEventListener( 'popstate', handlePopState );
+		// Capture scroll from nested containers; keep the drawer aligned while sticky headers move
+		window.addEventListener( 'scroll', syncNavDrawerPosition, true );
+		window.addEventListener( 'resize', syncNavDrawerPosition );
 
 		// Track the compact settings-nav breakpoint
 		breakpoint = parseInt( _settings.navCompactBreakpoint, 10 ) || 980;
@@ -349,6 +383,7 @@
 
 		// Start with the compact menu closed
 		setNavExpanded( false );
+		syncNavDrawerPosition();
 
 		_hasInitialized = true;
 	};
