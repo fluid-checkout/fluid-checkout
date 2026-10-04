@@ -90,6 +90,7 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 
 
 .fc-settings-layout {
+	position: relative;
 	display: flex;
 	align-items: stretch;
 	min-height: calc( 100vh - #{$fc-settings-sticky-offset} );
@@ -102,6 +103,25 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	}
 }
 
+// Full-height left column face above the center actions bar.
+// `#wpcontent` gradient alone paints behind descendants, so the actions bar would cover it.
+.fc-settings-layout::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: $fc-settings-sidebar-z-index;
+	width: $fc-settings-sidebar-width;
+	background-color: $fc-settings-sidebar-background-color;
+	box-shadow: $fc-settings-sidebar-box-shadow;
+	pointer-events: none;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		content: none;
+	}
+}
+
 .rtl .fc-settings-layout {
 	margin-left: 0;
 	margin-right: 0;
@@ -109,6 +129,12 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		margin-right: 0;
 	}
+}
+
+.rtl .fc-settings-layout::before {
+	left: auto;
+	right: 0;
+	box-shadow: $fc-settings-sidebar-box-shadow-rtl;
 }
 
 
@@ -128,6 +154,13 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	padding: 0;
 	overflow: hidden;
 
+	// Compact nav: fill available width so the actions bar reaches the screen edge
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+	}
+
 	@media ( max-width: $admin-breakpoint-mobile ) {
 		position: static;
 		align-self: stretch;
@@ -146,6 +179,12 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	padding-bottom: $fc-settings-content-padding-bottom;
 	scrollbar-width: none; // Firefox
 	-ms-overflow-style: none; // Legacy Edge
+
+	// Keep settings fields at the desktop reading width when the column grows
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		max-width: $fc-settings-content-max-width;
+		width: 100%;
+	}
 
 	@media ( max-width: $admin-breakpoint-mobile ) {
 		overflow: visible;

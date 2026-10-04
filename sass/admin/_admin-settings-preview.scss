@@ -127,7 +127,8 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	background: $fc-settings-page-background-color;
 }
 
-// Compact preview drawer (≤1279): keep left/center as desktop columns; preview overlays
+// Compact preview drawer (≤1279): keep left/center as desktop columns; preview overlays.
+// Let the center column grow to the right edge so the actions bar can fill that space.
 @media ( max-width: $fc-settings-preview-compact-breakpoint ) {
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
 		flex: 0 0 $fc-settings-sidebar-width;
@@ -135,9 +136,15 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	}
 
 	.fc-settings-layout.has-preview .fc-settings-content {
-		flex: 0 0 $fc-settings-content-max-width;
-		width: $fc-settings-content-max-width;
+		flex: 1 1 auto;
+		width: auto;
+		max-width: none;
+		min-width: 0;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content__scroll {
 		max-width: $fc-settings-content-max-width;
+		width: 100%;
 	}
 
 	.fc-settings-layout.has-preview .fc-settings-preview {
@@ -211,7 +218,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 		flex: 1 1 auto;
 		align-self: stretch;
 		width: 100%;
-		max-width: $fc-settings-content-max-width;
+		max-width: none;
 		min-width: 0;
 		height: auto;
 		max-height: none;
