@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Move the Google Maps scripts troubleshooting option into Tools > Troubleshooting.
 * Fixed: Place the site key upgrade translators comment next to its sprintf string.
 * Improved: Settings navigation becomes an expandable menu on smaller screens.
 * Improved: On small screens, the Upgrade and Save settings buttons move into the settings title bar.

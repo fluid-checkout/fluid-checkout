@@ -2,7 +2,13 @@
 // SETTINGS PAGE - ACTIONS (SAVE BAR)
 // ------------------------------------
 
+// Fixed to the viewport so page scroll from a tall WP admin menu cannot move the bar.
+// Left/width are synced to the center column in `fc-settings-page.js`.
 .fc-settings-actions {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	display: flex;
 	flex: 0 0 auto;
 	flex-wrap: wrap;
@@ -12,15 +18,22 @@
 	z-index: $fc-settings-actions-z-index;
 	margin: 0;
 	padding: $fc-settings-actions-padding;
-	width: 100%;
+	width: auto;
 	border-top: 1px solid $fc-settings-actions-border-color;
 	background: $fc-settings-actions-background-color;
 	box-shadow: $fc-settings-actions-box-shadow;
 	box-sizing: border-box;
 
-	@media ( max-width: $admin-breakpoint-mobile ) {
-		position: sticky;
-		bottom: 0;
+	// Continue the nav/content separator: the sidebar face no longer stacks above this fixed bar
+	@media ( min-width: $fc-settings-nav-compact-breakpoint + 1px ) {
+		border-left: 1px solid $fc-settings-actions-border-color;
+	}
+}
+
+.rtl .fc-settings-actions {
+	@media ( min-width: $fc-settings-nav-compact-breakpoint + 1px ) {
+		border-left: none;
+		border-right: 1px solid $fc-settings-actions-border-color;
 	}
 }
 

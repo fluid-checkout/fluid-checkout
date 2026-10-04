@@ -81,8 +81,8 @@ class FluidCheckout_Settings_Tools {
 				array(
 					'title'           => __( 'Usage tracking', 'fluid-checkout' ),
 					'desc'            => __( 'Send usage tracking reports to Fluid Checkout', 'fluid-checkout' ),
-					'desc_tip'        => __( 'Reports are sent weekly when enabled and help us improve compatibility and support for your site.', 'fluid-checkout' ) . '<br>' .
-									 __( 'No customer, user, or sensitive data are included in the reports.', 'fluid-checkout' ),
+					'desc_tip'        => __( 'These reports help us improve compatibility and support for your site and are sent weekly when enabled.', 'fluid-checkout' ) . '<br>' .
+									 __( 'No customer, admin user, or any other sensitive data is included in the reports.', 'fluid-checkout' ),
 					'id'              => 'fc_telemetry_enabled',
 					'type'            => 'fc_telemetry_enable',
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_enabled' ),

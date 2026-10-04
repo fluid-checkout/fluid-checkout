@@ -1,5 +1,5 @@
 /**
- * Manage conditional field visibility on Fluid Checkout admin settings pages.
+ * Manage Fluid Checkout admin settings page behavior (conditionals, actions bar).
  *
  * DEPENDS ON:
  * - None (vanilla JS)
@@ -32,9 +32,13 @@
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
 
+		contentSelector:                       '.fc-settings-content',
+		actionsSelector:                       '.fc-settings-actions',
+
 		hiddenClass:                           'hidden',
 	};
 	var _triggerFieldIds = [];
+	var _actionsSyncScheduled = false;
 
 
 
@@ -354,6 +358,45 @@
 
 
 	/**
+	 * Pin the actions bar to the viewport bottom, matching the center column width.
+	 * Needed when a tall WP admin menu forces page scroll past the settings layout.
+	 */
+	var syncActionsBarPosition = function() {
+		var actions = document.querySelector( _settings.actionsSelector );
+		var content = document.querySelector( _settings.contentSelector );
+		var rect;
+
+		// Bail if the actions bar is missing or hidden
+		if ( ! actions || actions.hasAttribute( 'hidden' ) ) { return; }
+
+		// Bail if the content column is missing
+		if ( ! content ) { return; }
+
+		rect = content.getBoundingClientRect();
+
+		actions.style.left = Math.round( rect.left ) + 'px';
+		actions.style.width = Math.round( rect.width ) + 'px';
+		actions.style.right = 'auto';
+	};
+
+	/**
+	 * Schedule a single actions-bar position sync on the next animation frame.
+	 */
+	var scheduleActionsBarSync = function() {
+		// Bail if a sync is already queued
+		if ( _actionsSyncScheduled ) { return; }
+
+		_actionsSyncScheduled = true;
+
+		window.requestAnimationFrame( function() {
+			_actionsSyncScheduled = false;
+			syncActionsBarPosition();
+		} );
+	};
+
+
+
+	/**
 	 * Handle click events.
 	 *
 	 * @param   {Event}  event  The click event.
@@ -427,9 +470,15 @@
 		// Initialize conditionals
 		initializeConditionals();
 
+		// Pin the actions bar before the first paint settles
+		syncActionsBarPosition();
+
 		// Event handlers
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
+		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
+		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
+		window.addEventListener( 'resize', scheduleActionsBarSync );
 
 		// Set initialized flag
 		_hasInitialized = true;

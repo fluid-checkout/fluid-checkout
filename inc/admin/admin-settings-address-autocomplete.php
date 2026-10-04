@@ -228,18 +228,11 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	}
 
 	/**
-	 * Get the locked placeholder settings for the Address Autocomplete debug options, displayed on the Tools tab.
+	 * Get the locked placeholder debug fields for Address Autocomplete.
+	 * Inserted into Tools > Troubleshooting when the add-on is not active.
 	 */
 	public static function get_locked_debug_settings() {
 		return array(
-			array(
-				'title'             => __( 'Troubleshooting - Address Autocomplete', 'fluid-checkout' ),
-				'type'              => 'title',
-				'desc'              => '',
-				'id'                => 'fc_gaa_debug_options',
-				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-debug', self::PRODUCT_URL, self::FEATURE ),
-			),
-
 			array(
 				'title'             => __( 'Google Maps scripts', 'fluid-checkout' ),
 				'desc'              => __( 'Do not remove duplicate Google Maps scripts', 'fluid-checkout' ),
@@ -250,11 +243,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
-			),
-
-			array(
-				'type'              => 'sectionend',
-				'id'                => 'fc_gaa_debug_options',
+				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete-debug', self::PRODUCT_URL, self::FEATURE ),
 			),
 		);
 	}
@@ -281,7 +270,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 	}
 
 	/**
-	 * Add the Address Autocomplete debug settings to the Tools tab.
+	 * Add the Address Autocomplete debug settings into Tools > Troubleshooting.
 	 *
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
@@ -299,9 +288,22 @@ class FluidCheckout_Settings_AddressAutocomplete {
 		$debug_settings = apply_filters( 'fc_admin_address_autocomplete_debug_settings', self::get_locked_debug_settings() );
 
 		// Bail if debug settings are not valid
-		if ( ! is_array( $debug_settings ) ) { return $settings; }
+		if ( ! is_array( $debug_settings ) || empty( $debug_settings ) ) { return $settings; }
 
-		return array_merge( is_array( $settings ) ? $settings : array(), $debug_settings );
+		// Insert into the Troubleshooting section, before its section end
+		$result = array();
+		foreach ( (array) $settings as $setting ) {
+			// Maybe insert Address Autocomplete debug fields before the Troubleshooting section end
+			if ( isset( $setting[ 'id' ], $setting[ 'type' ] ) && 'fc_checkout_advanced_debug_options' === $setting[ 'id' ] && 'sectionend' === $setting[ 'type' ] ) {
+				foreach ( $debug_settings as $debug_setting ) {
+					$result[] = $debug_setting;
+				}
+			}
+
+			$result[] = $setting;
+		}
+
+		return $result;
 	}
 
 }

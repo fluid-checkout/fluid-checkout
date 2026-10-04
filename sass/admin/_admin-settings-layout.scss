@@ -152,6 +152,8 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	height: calc( 100vh - #{$fc-settings-sticky-offset} );
 	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
 	padding: 0;
+	// Clear space for the fixed actions bar at the bottom of the screen
+	padding-bottom: $fc-settings-actions-bar-height;
 	overflow: hidden;
 
 	// Compact nav: fill available width so the actions bar reaches the screen edge
@@ -168,6 +170,11 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 		max-height: none;
 		overflow: visible;
 	}
+}
+
+// No save bar on the active tab: drop the reserved space
+.fc-settings-content:not( :has( .fc-settings-actions:not( [ hidden ] ) ) ) {
+	padding-bottom: 0;
 }
 
 .fc-settings-content__scroll {
