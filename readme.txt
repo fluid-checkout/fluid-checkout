@@ -378,6 +378,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: Escape the login form redirect URL attribute and harden Uncode theme width settings unserialization.
 * Fixed: Harden settings profile payload unserialization.
 * Fixed: Only dismiss admin notices when the notice name is registered.
+* Removed: Experimental label from the mobile order summary "Before checkout steps" option.
 
 = 4.2.7 - 2026-08-19 =
 
