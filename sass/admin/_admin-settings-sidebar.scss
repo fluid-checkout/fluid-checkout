@@ -31,6 +31,11 @@
 		box-shadow: none;
 		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
 	}
+
+	// Admin bar stays fixed in this range; keep the title bar below it
+	@media ( min-width: $fc-settings-content-max-width + 1px ) and ( max-width: $admin-breakpoint-mobile ) {
+		top: $admin-wp-admin-bar-height-mobile;
+	}
 }
 
 .rtl .fc-settings-sidebar {
@@ -222,6 +227,14 @@
 
 	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav {
 		right: $admin-wp-menu-width-folded;
+	}
+}
+
+// Admin bar stays fixed in this range; keep the title bar below it
+@media ( min-width: $fc-settings-content-max-width + 1px ) and ( max-width: $admin-breakpoint-mobile ) {
+	.fc-settings-layout .fc-settings-sidebar,
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		top: $admin-wp-admin-bar-height-mobile;
 	}
 }
 
