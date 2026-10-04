@@ -65,7 +65,7 @@ $fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} +
 		right: 0;
 		bottom: 0;
 		left: $admin-wp-menu-width;
-		z-index: $fc-settings-drawer-z-index; // Below the settings header, above columns
+		z-index: $fc-settings-drawer-z-index; // Above the compact settings title bar; below the page header
 		align-self: stretch;
 		flex: none;
 		width: auto;
@@ -242,10 +242,39 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 }
 
 @media screen and ( max-width: $admin-breakpoint-mobile ) {
+	// Taller admin bar + full width (no left admin menu column on small screens).
+	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
 	.fc-settings-layout.is-preview-expanded .fc-settings-preview,
-	.fc-settings-layout.has-preview .fc-settings-preview {
+	.fc-settings-layout.has-preview .fc-settings-preview,
+	body.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview,
+	body.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		top: $fc-settings-sticky-offset-mobile;
 		left: 0;
 		right: 0;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page .fc-settings-layout.has-preview .fc-settings-preview,
+	body.rtl.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		left: 0;
+		right: 0;
+	}
+
+	// Page scrolls on small screens; do not lock the layout to the viewport height.
+	.fc-settings-layout.has-preview {
+		height: auto;
+		max-height: none;
+		overflow: visible;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content {
+		position: static;
+		overflow: visible;
 	}
 }
 

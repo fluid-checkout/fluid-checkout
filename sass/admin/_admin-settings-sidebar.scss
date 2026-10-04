@@ -21,7 +21,7 @@
 	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
 		position: sticky;
 		top: 0;
-		z-index: $fc-settings-nav-bar-z-index; // Above drawers; below the page header
+		z-index: $fc-settings-nav-bar-z-index; // Above columns; below expanded drawers and the page header
 		flex: 0 0 auto;
 		align-self: stretch;
 		width: 100%;

@@ -191,6 +191,17 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	}
 }
 
+// Lock page and center-column scroll while a drawer overlay is open
+body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ),
+body.fc-settings-page:has( .fc-settings-sidebar.is-nav-expanded ) {
+	overflow: hidden;
+}
+
+.fc-settings-layout.is-preview-expanded .fc-settings-content__scroll,
+.fc-settings-layout:has( .fc-settings-sidebar.is-nav-expanded ) .fc-settings-content__scroll {
+	overflow: hidden;
+}
+
 .fc-settings-content__scroll::-webkit-scrollbar {
 	display: none; // Chrome, Safari, Edge
 }
