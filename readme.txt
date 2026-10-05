@@ -356,6 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Guest checkout, login, and account creation options on the Customer accounts settings page, so they can use different values per settings profile.
+* Improved: Disable guest checkout, login, and account creation options on the WooCommerce Accounts settings page when Fluid Checkout is active, and point merchants to Customer accounts settings.
 * Improved: Rename the International Phone Numbers settings page to Phone fields, and move shipping and billing phone field options there.
 * Improved: Move Trust badges settings to their own settings page, with one section per front-end page.
 * Improved: Move the Google Maps scripts troubleshooting option into Tools > Troubleshooting.

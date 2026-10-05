@@ -168,13 +168,14 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function load_settings_providers() {
 		include_once self::$directory_path . 'inc/admin/admin-settings-wc-shipping.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-wc-accounts.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-dashboard.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-checkout.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-cart.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-order-received.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-order-pay.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-express-checkout.php';
-		include_once self::$directory_path . 'inc/admin/admin-settings-account-matching.php';
+		include_once self::$directory_path . 'inc/admin/admin-settings-customer-accounts.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-local-pickup.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-gift-options.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-international-phone.php';

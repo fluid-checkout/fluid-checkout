@@ -35,7 +35,7 @@ class FluidCheckout_Settings_GiftOptions {
 	 */
 	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
-			'gift_options' => __( 'Gift Options', 'fluid-checkout' ),
+			'gift_options' => __( 'Gift options', 'fluid-checkout' ),
 		) );
 
 		return $sections;
@@ -56,7 +56,7 @@ class FluidCheckout_Settings_GiftOptions {
 			'fc_gift_options_settings',
 			array(
 				array(
-					'title' => __( 'Gift Options', 'fluid-checkout' ),
+					'title' => __( 'Gift message', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'fc_gift_options',
@@ -64,7 +64,7 @@ class FluidCheckout_Settings_GiftOptions {
 				),
 
 				array(
-					'title'                 => __( 'Gift options', 'fluid-checkout' ),
+					'title'                 => __( 'Gift message', 'fluid-checkout' ),
 					'desc'                  => __( 'Display gift message and other gift options at the checkout page', 'fluid-checkout' ),
 					'desc_tip'              => __( 'Allow customers to add a gift message and other gift related options to the order.', 'fluid-checkout' ),
 					'id'                    => 'fc_enable_checkout_gift_options',
