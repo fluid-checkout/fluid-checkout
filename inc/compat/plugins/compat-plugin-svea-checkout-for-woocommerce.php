@@ -19,12 +19,39 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
+		// Checkout fragments
+		add_filter( 'fc_is_checkout_page_or_fragment', array( $this, 'maybe_set_request_as_checkout_fragment' ), 10 );
+
 		// Undo hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks_early' ), 5 ); // Before very late hooks
 		add_action( 'wp', array( $this, 'maybe_undo_hooks' ), 300 ); // After very late hooks
 
 		// Persisted data
 		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_updated_before_unload' ), 10 );
+	}
+
+
+
+	/**
+	 * Maybe set the current request as a checkout fragment when Svea Checkout requests to update the checkout fragments.
+	 *
+	 * @param   bool  $is_checkout_fragment  Whether the current request is a checkout fragment.
+	 */
+	public function maybe_set_request_as_checkout_fragment( $is_checkout_fragment ) {
+		global $wp_query;
+
+		// Get AJAX action
+		$ajax_action = ! empty( $wp_query ) ? $wp_query->get( 'wc-ajax' ) : '';
+
+		// Maybe get AJAX action from the query string
+		if ( empty( $ajax_action ) && array_key_exists( 'wc-ajax', $_GET ) ) {
+			$ajax_action = sanitize_text_field( wp_unslash( $_GET[ 'wc-ajax' ] ) );
+		}
+
+		// Bail if not a Svea Checkout request to update the checkout fragments
+		if ( ! in_array( $ajax_action, array( 'refresh_sco_snippet', 'update_sco_order_nshift_information' ), true ) ) { return $is_checkout_fragment; }
+
+		return true;
 	}
 
 
@@ -99,6 +126,38 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 
 			// Run undo hooks
 			$class_name::instance()->undo_hooks();
+		}
+
+		// Remove payment section from positions where Svea does not remove it,
+		// otherwise Svea scripts reload the page indefinitely when a payment method is selected
+		// on the Svea checkout page.
+		remove_action( 'woocommerce_checkout_after_order_review', 'woocommerce_checkout_payment', 20 );
+		remove_action( 'woocommerce_checkout_shipping', 'woocommerce_checkout_payment', 20 );
+
+		// Dequeue remaining assets, such as theme and plugin compatibility styles
+		add_action( 'wp_enqueue_scripts', array( $this, 'dequeue_fluid_checkout_assets' ), 1000 );
+	}
+
+
+
+	/**
+	 * Dequeue assets from Fluid Checkout and its add-ons on the Svea Checkout page.
+	 */
+	public function dequeue_fluid_checkout_assets() {
+		// Iterate queued styles
+		foreach ( wp_styles()->queue as $handle ) {
+			// Dequeue Fluid Checkout styles
+			if ( 0 === strpos( $handle, 'fc-' ) ) {
+				wp_dequeue_style( $handle );
+			}
+		}
+
+		// Iterate queued scripts
+		foreach ( wp_scripts()->queue as $handle ) {
+			// Dequeue Fluid Checkout scripts
+			if ( 0 === strpos( $handle, 'fc-' ) ) {
+				wp_dequeue_script( $handle );
+			}
 		}
 	}
 

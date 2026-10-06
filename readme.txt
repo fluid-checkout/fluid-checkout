@@ -354,6 +354,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= Unreleased =
+
+* Fixed: Checkout page reloading indefinitely when using Svea Checkout for WooCommerce 3.0.0+ as payment method.
+* Fixed: Styles from Fluid Checkout applied to the Svea Checkout page, and shipping method options missing from the order summary, when using Svea Checkout for WooCommerce 3.0.0+ as payment method.
+
 = 4.2.7 - 2026-08-19 =
 
 * Bump tested up to WordPress 7.1+
