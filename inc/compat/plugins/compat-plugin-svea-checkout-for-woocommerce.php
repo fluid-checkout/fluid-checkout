@@ -34,14 +34,18 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Maybe set the current request as a checkout fragment when Svea Checkout requests to update the checkout fragments.
+	 *
+	 * @param   bool  $is_checkout_fragment  Whether the current request is a checkout fragment.
 	 */
 	public function maybe_set_request_as_checkout_fragment( $is_checkout_fragment ) {
 		global $wp_query;
 
 		// Get AJAX action
 		$ajax_action = ! empty( $wp_query ) ? $wp_query->get( 'wc-ajax' ) : '';
+
+		// Maybe get AJAX action from the query string
 		if ( empty( $ajax_action ) && array_key_exists( 'wc-ajax', $_GET ) ) {
-			$ajax_action = sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) );
+			$ajax_action = sanitize_text_field( wp_unslash( $_GET[ 'wc-ajax' ] ) );
 		}
 
 		// Bail if not a Svea Checkout request to update the checkout fragments
@@ -140,13 +144,17 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 	 * Dequeue assets from Fluid Checkout and its add-ons on the Svea Checkout page.
 	 */
 	public function dequeue_fluid_checkout_assets() {
+		// Iterate queued styles
 		foreach ( wp_styles()->queue as $handle ) {
+			// Dequeue Fluid Checkout styles
 			if ( 0 === strpos( $handle, 'fc-' ) ) {
 				wp_dequeue_style( $handle );
 			}
 		}
 
+		// Iterate queued scripts
 		foreach ( wp_scripts()->queue as $handle ) {
+			// Dequeue Fluid Checkout scripts
 			if ( 0 === strpos( $handle, 'fc-' ) ) {
 				wp_dequeue_script( $handle );
 			}
