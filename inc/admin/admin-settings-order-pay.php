@@ -52,7 +52,7 @@ class FluidCheckout_Settings_OrderPay {
 
 		return array(
 			array(
-				'title'            => __( 'Order Pay Page Optimization', 'fluid-checkout' ),
+				'title'            => __( 'Order pay page optimization', 'fluid-checkout' ),
 				'type'             => 'fc_promo',
 				'id'               => 'fc_pro_order_pay_promo',
 				'is_card'          => true,
@@ -91,7 +91,7 @@ class FluidCheckout_Settings_OrderPay {
 					array(
 
 					array(
-						'title' => __( 'Order Pay Page', 'fluid-checkout' ),
+						'title' => __( 'Order pay page', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => __( 'Allows customers to make payments for orders that are either created manually by the store admin or not completed during checkout.', 'fluid-checkout' ),
 						'id'    => 'fc_pro_order_pay_layout_options',

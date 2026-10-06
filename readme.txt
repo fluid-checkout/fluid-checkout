@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Use sentence case for settings menu items, page titles, section titles, and field labels.
 * Added: Guest checkout, login, and account creation options on the Customer accounts settings page, so they can use different values per settings profile.
 * Improved: Disable guest checkout, login, and account creation options on the WooCommerce Accounts settings page when Fluid Checkout is active, and point merchants to Customer accounts settings.
 * Improved: Rename the International Phone Numbers settings page to Phone fields, and move shipping and billing phone field options there.

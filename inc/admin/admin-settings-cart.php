@@ -59,7 +59,7 @@ class FluidCheckout_Settings_Cart {
 					array(
 
 					array(
-						'title' => __( 'Cart Layout', 'fluid-checkout' ),
+						'title' => __( 'Cart layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_pro_cart_layout_options',
@@ -100,7 +100,7 @@ class FluidCheckout_Settings_Cart {
 
 
 					array(
-						'title' => __( 'Cart Elements', 'fluid-checkout' ),
+						'title' => __( 'Cart elements', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_pro_cart_elements_options',
@@ -230,7 +230,7 @@ class FluidCheckout_Settings_Cart {
 
 		return array(
 			array(
-				'title'            => __( 'Cart Page Optimization', 'fluid-checkout' ),
+				'title'            => __( 'Cart page optimization', 'fluid-checkout' ),
 				'type'             => 'fc_promo',
 				'id'               => 'fc_pro_cart_promo',
 				'is_card'          => true,

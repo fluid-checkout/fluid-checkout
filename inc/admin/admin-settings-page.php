@@ -280,25 +280,25 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'dashboard'                => array( 'label' => __( 'Dashboard', 'fluid-checkout' ), 'section' => '' ),
 			'checkout'                 => array( 'label' => __( 'Checkout', 'fluid-checkout' ), 'section' => 'checkout' ),
 			'cart'                     => array( 'label' => __( 'Cart', 'fluid-checkout' ), 'section' => 'cart' ),
-			'order_received'           => array( 'label' => __( 'Thank You', 'fluid-checkout' ), 'section' => 'order_received' ),
-			'order_pay'                => array( 'label' => __( 'Order Pay', 'fluid-checkout' ), 'section' => 'order_pay' ),
+			'order_received'           => array( 'label' => __( 'Thank you', 'fluid-checkout' ), 'section' => 'order_received' ),
+			'order_pay'                => array( 'label' => __( 'Order pay', 'fluid-checkout' ), 'section' => 'order_pay' ),
 			'separator'                => array( 'type' => 'separator' ),
-			'express_checkout'         => array( 'label' => __( 'Express Checkout', 'fluid-checkout' ), 'section' => 'express_checkout' ),
+			'express_checkout'         => array( 'label' => __( 'Express checkout', 'fluid-checkout' ), 'section' => 'express_checkout' ),
 			'account_matching'         => array( 'label' => __( 'Customer accounts', 'fluid-checkout' ), 'section' => 'account_matching' ),
-			'local_pickup'             => array( 'label' => __( 'Local Pickup', 'fluid-checkout' ), 'section' => 'local_pickup' ),
+			'local_pickup'             => array( 'label' => __( 'Local pickup', 'fluid-checkout' ), 'section' => 'local_pickup' ),
 			'gift_options'             => array( 'label' => __( 'Gift options', 'fluid-checkout' ), 'section' => 'gift_options' ),
 			'international_phone'      => array( 'label' => __( 'Phone fields', 'fluid-checkout' ), 'section' => 'international_phone' ),
 			'trust_symbols'            => array( 'label' => __( 'Trust badges', 'fluid-checkout' ), 'section' => 'trust_symbols' ),
 			'separator_2'              => array( 'type' => 'separator' ),
-			'address_autocomplete'     => array( 'label' => __( 'Address Autocomplete', 'fluid-checkout' ), 'section' => 'address_autocomplete' ),
-			'address_book'             => array( 'label' => __( 'Address Book', 'fluid-checkout' ), 'section' => 'address_book' ),
-			'vat_assistant'            => array( 'label' => __( 'EU-VAT Assistant', 'fluid-checkout' ), 'section' => 'vat_number' ),
+			'address_autocomplete'     => array( 'label' => __( 'Address autocomplete', 'fluid-checkout' ), 'section' => 'address_autocomplete' ),
+			'address_book'             => array( 'label' => __( 'Address book', 'fluid-checkout' ), 'section' => 'address_book' ),
+			'vat_assistant'            => array( 'label' => __( 'EU-VAT assistant', 'fluid-checkout' ), 'section' => 'vat_number' ),
 		);
 		$tabs_after = array(
 			'separator_3'              => array( 'type' => 'separator' ),
 			'integrations'             => array( 'label' => __( 'Integrations', 'fluid-checkout' ), 'section' => 'integrations' ),
 			'tools'                    => array( 'label' => __( 'Tools', 'fluid-checkout' ), 'section' => 'tools' ),
-			'license_keys'             => array( 'label' => __( 'License Keys', 'fluid-checkout' ), 'section' => 'license_keys' ),
+			'license_keys'             => array( 'label' => __( 'License keys', 'fluid-checkout' ), 'section' => 'license_keys' ),
 		);
 
 		// Get settings sections registered for the Fluid Checkout settings page

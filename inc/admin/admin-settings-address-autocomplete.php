@@ -51,7 +51,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 
 		return array(
 			array(
-				'title'            => __( 'Google Address Autocomplete', 'fluid-checkout' ),
+				'title'            => __( 'Google address autocomplete', 'fluid-checkout' ),
 				'type'             => 'fc_promo',
 				'id'               => 'fc_gaa_address_autocomplete_promo',
 				'is_card'          => true,
@@ -95,7 +95,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 			self::get_promo_settings(),
 			array(
 			array(
-				'title'             => __( 'Google Address Autocomplete', 'fluid-checkout' ),
+				'title'             => __( 'Google address autocomplete', 'fluid-checkout' ),
 				'type'              => 'title',
 				'desc'              => '',
 				'id'                => 'fc_gaa_google_address_autocomplete',
@@ -103,7 +103,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 			),
 
 			array(
-				'title'             => __( 'Google API Key', 'fluid-checkout' ),
+				'title'             => __( 'Google API key', 'fluid-checkout' ),
 				'desc'              => __( 'Paste your Google API key and use the test button to confirm it works for this website.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_google_places_api_key',
 				'type'              => 'text',
@@ -114,8 +114,8 @@ class FluidCheckout_Settings_AddressAutocomplete {
 			),
 
 			array(
-				'title'             => __( 'Google Address Autocomplete', 'fluid-checkout' ),
-				'desc'              => __( 'Enable Google Address Autocomplete', 'fluid-checkout' ),
+				'title'             => __( 'Google address autocomplete', 'fluid-checkout' ),
+				'desc'              => __( 'Enable Google address autocomplete', 'fluid-checkout' ),
 				'desc_tip'          => __( 'Enable address autocompletion using the Google Maps APIs.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_enabled',
 				'type'              => 'checkbox',
@@ -126,7 +126,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 			),
 
 			array(
-				'title'             => __( 'Google API Language', 'fluid-checkout' ),
+				'title'             => __( 'Google API language', 'fluid-checkout' ),
 				'desc'              => '',
 				'desc_tip'          => __( 'This language will be used to display the Google Places API address suggestions and addresses will also be autocompleted in this language.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_google_places_api_language',
@@ -185,7 +185,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 			),
 
 			array(
-				'title'             => __( 'Brasil API Address Autocomplete', 'fluid-checkout' ),
+				'title'             => __( 'Brasil API address autocomplete', 'fluid-checkout' ),
 				'type'              => 'title',
 				'desc'              => '',
 				'id'                => 'fc_gaa_brasil_api',
@@ -194,7 +194,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 
 			array(
 				'title'             => __( 'Brasil API', 'fluid-checkout' ),
-				'desc'              => __( 'Enable Brasil API Address Autocomplete for CEP fields', 'fluid-checkout' ),
+				'desc'              => __( 'Enable Brasil API address autocomplete for CEP fields', 'fluid-checkout' ),
 				'desc_tip'          => __( 'Use Brasil API to retrive and autofill addresses using the CEP/Postcode field. Only relevant for Brazilian addresses.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_enabled_brasil_api',
 				'type'              => 'checkbox',
@@ -205,7 +205,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 			),
 
 			array(
-				'title'             => __( 'API Version', 'fluid-checkout' ),
+				'title'             => __( 'API version', 'fluid-checkout' ),
 				'desc_tip'          => __( 'Choose which version of the Brasil API CEP method to use.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_brasil_api_version',
 				'type'              => 'select',

@@ -35,7 +35,7 @@ class FluidCheckout_Settings_LocalPickup {
 	 */
 	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
-			'local_pickup' => __( 'Local Pickup', 'fluid-checkout' ),
+			'local_pickup' => __( 'Local pickup', 'fluid-checkout' ),
 		) );
 
 		return $sections;
@@ -56,7 +56,7 @@ class FluidCheckout_Settings_LocalPickup {
 			'fc_local_pickup_settings',
 			array(
 				array(
-					'title' => __( 'Local Pickup', 'fluid-checkout' ),
+					'title' => __( 'Local pickup', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'fc_local_pickup_options',

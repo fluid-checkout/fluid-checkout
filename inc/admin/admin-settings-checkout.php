@@ -375,7 +375,7 @@ class FluidCheckout_Settings_Checkout {
 
 
 					array(
-						'title' => __( 'Checkout Elements', 'fluid-checkout' ),
+						'title' => __( 'Checkout elements', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_checkout_elements_options',
@@ -432,7 +432,7 @@ class FluidCheckout_Settings_Checkout {
 
 
 					array(
-						'title' => __( 'Coupon Codes', 'fluid-checkout' ),
+						'title' => __( 'Coupon codes', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_checkout_coupon_code_options',
@@ -505,7 +505,7 @@ class FluidCheckout_Settings_Checkout {
 
 
 					array(
-						'title' => __( 'Checkout Fields', 'fluid-checkout' ),
+						'title' => __( 'Checkout fields', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_checkout_fields_options',

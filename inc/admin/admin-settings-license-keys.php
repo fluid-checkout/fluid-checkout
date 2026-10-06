@@ -46,7 +46,7 @@ class FluidCheckout_Settings_LicenseKeys {
 		);
 
 		$settings_new[] = array(
-			'title' => _x( 'License Keys', 'Settings section title', 'fluid-checkout' ),
+			'title' => _x( 'License keys', 'Settings section title', 'fluid-checkout' ),
 			'type'  => 'title',
 			'id'    => 'fc_license_keys',
 		);

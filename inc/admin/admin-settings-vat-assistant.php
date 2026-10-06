@@ -95,14 +95,14 @@ class FluidCheckout_Settings_VATAssistant {
 
 		return array(
 			array(
-				'title'            => __( 'VAT Assistant', 'fluid-checkout' ),
+				'title'            => __( 'VAT assistant', 'fluid-checkout' ),
 				'type'             => 'fc_promo',
 				'id'               => 'fc_vat_assistant_promo',
 				'is_card'          => true,
 				'promo'            => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'vat-assistant-promo', self::PRODUCT_URL, self::FEATURE ),
 				'tagline'          => __( 'Collect and validate EU VAT numbers at checkout, with reverse charge and location evidence when needed.', 'fluid-checkout' ),
 				'features'         => array(
-					__( 'Add an optional or required VAT Number field to the billing form.', 'fluid-checkout' ),
+					__( 'Add an optional or required VAT number field to the billing form.', 'fluid-checkout' ),
 					__( 'Validate EU VAT numbers against the European VIES database.', 'fluid-checkout' ),
 					__( 'Apply reverse charge and show the right labels on invoices.', 'fluid-checkout' ),
 					__( 'Autocomplete company names and collect location evidence for digital goods.', 'fluid-checkout' ),
@@ -149,7 +149,7 @@ class FluidCheckout_Settings_VATAssistant {
 				self::get_promo_settings(),
 				array(
 				array(
-					'title'             => __( 'VAT Number Field', 'fluid-checkout' ),
+					'title'             => __( 'VAT number field', 'fluid-checkout' ),
 					'type'              => 'title',
 					'desc'              => '',
 					'id'                => 'fc_vat_number',
@@ -157,15 +157,15 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Field Visibility', 'fluid-checkout' ),
+					'title'             => __( 'Field visibility', 'fluid-checkout' ),
 					'desc'              => '',
-					'desc_tip'          => __( 'Add a VAT Number field to the billing form.', 'fluid-checkout' ),
+					'desc_tip'          => __( 'Add a VAT number field to the billing form.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_field_visibility',
 					'type'              => 'select',
 					'options'           => array(
-						'no'            => _x( 'Hidden', 'VAT Number field visibility', 'fluid-checkout' ),
-						'optional'      => _x( 'Optional', 'VAT Number field visibility', 'fluid-checkout' ),
-						'required'      => _x( 'Required', 'VAT Number field visibility', 'fluid-checkout' ),
+						'no'            => _x( 'Hidden', 'VAT number field visibility', 'fluid-checkout' ),
+						'optional'      => _x( 'Optional', 'VAT number field visibility', 'fluid-checkout' ),
+						'required'      => _x( 'Required', 'VAT number field visibility', 'fluid-checkout' ),
 					),
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_field_visibility' ),
 					'autoload'          => false,
@@ -174,9 +174,9 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Field Label', 'fluid-checkout' ),
+					'title'             => __( 'Field label', 'fluid-checkout' ),
 					'desc'              => '',
-					'desc_tip'          => __( 'Set the label of the VAT Number field (ie. VAT Number). On multi-language websites, it is better to leave this field empty and translate the original string.', 'fluid-checkout' ),
+					'desc_tip'          => __( 'Set the label of the VAT number field (ie. VAT number). On multi-language websites, it is better to leave this field empty and translate the original string.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_field_label',
 					'type'              => 'text',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_vat_number_field_label' ),
@@ -200,8 +200,8 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'VAT Validation', 'fluid-checkout' ),
-					'desc'              => __( 'Validate VAT Number field for EU-VAT during checkout', 'fluid-checkout' ),
+					'title'             => __( 'VAT validation', 'fluid-checkout' ),
+					'desc'              => __( 'Validate VAT number field for EU-VAT during checkout', 'fluid-checkout' ),
 					'desc_tip'          => __( 'Checks if the VAT Number provided is a valid VAT number registered on the European VIES Database (VAT Information Exchange System).', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_validation',
 					'type'              => 'checkbox',
@@ -212,7 +212,7 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Shop VAT Number', 'fluid-checkout' ),
+					'title'             => __( 'Shop VAT number', 'fluid-checkout' ),
 					'desc'              => __( 'The shop\'s VAT number used for requesting EU-VAT validation, and printed on invoices. <br><strong>We strongly recommend adding your Shop VAT number</strong> as otherwise the VIES consultation results might not be valid for accounting purposes. <br>Ie.: <code>ATU99999999</code> or <code>EE999999999</code>.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_shop',
 					'type'              => 'text',
@@ -256,7 +256,7 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Reverse Charge Exceptions', 'fluid-checkout' ),
+					'title'             => __( 'Reverse charge exceptions', 'fluid-checkout' ),
 					'desc'              => '',
 					'desc_tip'          => __( 'Select additional countries to skip applying the reverse charge mechanism.', 'fluid-checkout' ) . ' <br>' . __( 'Taxes will be charged to orders from these countries even when a valid VAT number is provided.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_countries_skip_list',
@@ -269,7 +269,7 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Reverse Charge Label on Invoices', 'fluid-checkout' ),
+					'title'             => __( 'Reverse charge label on invoices', 'fluid-checkout' ),
 					'desc'              => '',
 					'desc_tip'          => __( 'Set the label of "reverse charge" on the checkout page and order details.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_label',
@@ -282,7 +282,7 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Reverse Charge Text on Invoices', 'fluid-checkout' ),
+					'title'             => __( 'Reverse charge text on invoices', 'fluid-checkout' ),
 					'desc'              => '',
 					'desc_tip'          => __( 'Set the label of "reverse charge" text on invoices.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_reverse_charge_label_invoice',
@@ -295,7 +295,7 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Company Name', 'fluid-checkout' ),
+					'title'             => __( 'Company name', 'fluid-checkout' ),
 					'desc'              => __( 'Autocomplete company name from VAT number', 'fluid-checkout' ),
 					'desc_tip'          => __( 'Fill in the billing company name based on the valid VAT number provided by the customer.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_autocomplete_billing_company_name',
@@ -328,7 +328,7 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'EU-VAT for Digital Goods', 'fluid-checkout' ),
+					'title'             => __( 'EU-VAT for digital goods', 'fluid-checkout' ),
 					'type'              => 'title',
 					'desc'              => __( 'From January 1st, 2015, modifications have been made to the EU VAT regulations concerning digital goods, impacting exclusively B2C transactions. The VAT on digital goods must be calculated based on the customer\'s location, and evidence of this needs to be collected (IP address and billing address).', 'fluid-checkout' ),
 					'id'                => 'fc_vat_eu_vat_digital_goods_options',
@@ -351,7 +351,7 @@ class FluidCheckout_Settings_VATAssistant {
 				),
 
 				array(
-					'title'             => __( 'Location Evidence', 'fluid-checkout' ),
+					'title'             => __( 'Location evidence', 'fluid-checkout' ),
 					'desc'              => __( 'Collect customer\'s location evidence', 'fluid-checkout' ),
 					'desc_tip'          => __( 'Saves the IP address and validate it against the customer\'s billing address. Customer\'s must confirm their billing address by checking a checkbox on the checkout page if the country from their billing address and IP do not match.', 'fluid-checkout' ),
 					'id'                => 'fc_vat_number_eu_vat_country_confirmation',

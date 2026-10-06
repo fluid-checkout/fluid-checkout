@@ -124,7 +124,7 @@ class FluidCheckout_Settings_TrustSymbols {
 
 
 				array(
-					'title' => __( 'Thank You', 'fluid-checkout' ),
+					'title' => __( 'Thank you', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'fc_pro_order_received_trust_symbols_options',
@@ -152,7 +152,7 @@ class FluidCheckout_Settings_TrustSymbols {
 
 
 				array(
-					'title' => __( 'Order Pay', 'fluid-checkout' ),
+					'title' => __( 'Order pay', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'fc_pro_order_pay_trust_symbols_options',

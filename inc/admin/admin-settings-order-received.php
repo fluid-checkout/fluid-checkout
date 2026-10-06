@@ -52,7 +52,7 @@ class FluidCheckout_Settings_OrderReceived {
 
 		return array(
 			array(
-				'title'            => __( 'Thank You Page Optimization', 'fluid-checkout' ),
+				'title'            => __( 'Thank you page optimization', 'fluid-checkout' ),
 				'type'             => 'fc_promo',
 				'id'               => 'fc_pro_order_received_promo',
 				'is_card'          => true,
@@ -92,7 +92,7 @@ class FluidCheckout_Settings_OrderReceived {
 					array(
 
 					array(
-						'title' => __( 'Thank You Page & Order Details Layout', 'fluid-checkout' ),
+						'title' => __( 'Thank you page & order details layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
 						'id'    => 'fc_pro_order_received_layout_options',
@@ -136,7 +136,7 @@ class FluidCheckout_Settings_OrderReceived {
 
 
 					array(
-						'title' => __( 'Thank You Page', 'fluid-checkout' ),
+						'title' => __( 'Thank you page', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => __( 'These options affect the thank you page, also known as order received or order confirmation pages.', 'fluid-checkout' ),
 						'id'    => 'fc_pro_order_received_page_options',
@@ -174,7 +174,7 @@ class FluidCheckout_Settings_OrderReceived {
 
 
 					array(
-						'title' => __( 'Order Details Layout', 'fluid-checkout' ),
+						'title' => __( 'Order details layout', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => __( 'These options affect the thank you page, view order details on account pages and on email notifications.', 'fluid-checkout' ),
 						'id'    => 'fc_pro_order_details_layout_options',

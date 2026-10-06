@@ -50,7 +50,7 @@ class FluidCheckout_Settings_AddressBook {
 
 		return array(
 			array(
-				'title'            => __( 'Address Book', 'fluid-checkout' ),
+				'title'            => __( 'Address book', 'fluid-checkout' ),
 				'type'             => 'fc_promo',
 				'id'               => 'fc_pro_address_book_promo',
 				'is_card'          => true,
@@ -94,7 +94,7 @@ class FluidCheckout_Settings_AddressBook {
 	public static function get_locked_migration_settings() {
 		return array(
 			array(
-				'title'    => __( 'Address Book Migration', 'fluid-checkout' ),
+				'title'    => __( 'Address book migration', 'fluid-checkout' ),
 				'type'     => 'title',
 				'desc'     => '',
 				'id'       => 'fc_pro_address_book_migration_options',
@@ -102,7 +102,7 @@ class FluidCheckout_Settings_AddressBook {
 			),
 
 			array(
-				'title'    => __( 'WooCommerce Addresses', 'fluid-checkout' ),
+				'title'    => __( 'WooCommerce addresses', 'fluid-checkout' ),
 				'desc'     => __( 'Copy existing shipping and billing addresses from WooCommerce into the customers\' address book.', 'fluid-checkout' ),
 				'id'       => 'fc_pro_address_book_migration',
 				'type'     => 'fc_address_book_migration',
@@ -136,7 +136,7 @@ class FluidCheckout_Settings_AddressBook {
 				self::get_promo_settings(),
 				array(
 					array(
-						'title'             => __( 'Address Book', 'fluid-checkout' ),
+						'title'             => __( 'Address book', 'fluid-checkout' ),
 						'type'              => 'title',
 						'desc'              => '',
 						'id'                => 'fc_pro_address_book_options',

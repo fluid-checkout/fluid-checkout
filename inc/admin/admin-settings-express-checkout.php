@@ -35,7 +35,7 @@ class FluidCheckout_Settings_ExpressCheckout {
 	 */
 	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
-			'express_checkout' => __( 'Express Checkout', 'fluid-checkout' ),
+			'express_checkout' => __( 'Express checkout', 'fluid-checkout' ),
 		) );
 
 		return $sections;
@@ -56,7 +56,7 @@ class FluidCheckout_Settings_ExpressCheckout {
 			'fc_express_checkout_settings',
 			array(
 				array(
-					'title' => __( 'Express Checkout', 'fluid-checkout' ),
+					'title' => __( 'Express checkout', 'fluid-checkout' ),
 					'type'  => 'title',
 					'desc'  => '',
 					'id'    => 'fc_express_checkout_options',
