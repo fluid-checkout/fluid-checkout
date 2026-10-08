@@ -157,7 +157,8 @@ class FluidCheckout_Settings_OrderReceived {
 
 					array(
 						'title'             => __( 'Order details layout', 'fluid-checkout' ),
-						'desc'              => __( 'Display the order details with wide layout on the thank you page', 'fluid-checkout' ),
+						'desc'              => __( 'Use wide layout on thank you page', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Display the order details with wide layout on the thank you page', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_order_details_wide_layout',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_details_wide_layout' ),
