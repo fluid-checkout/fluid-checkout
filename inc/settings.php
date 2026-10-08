@@ -219,6 +219,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			// Google Address Autocomplete (feature keys; FCGAA overrides when both active).
 			'fc_gaa_enabled'                                                => 'no',
 			'fc_gaa_google_places_api_key'                                  => '',
+			'fc_gaa_google_places_api_key_validated_hash'                   => '',
 			'fc_gaa_google_places_api_version'                              => 'current',
 			'fc_gaa_google_places_api_language'                             => '',
 			'fc_gaa_search_results_types'                                   => 'address',

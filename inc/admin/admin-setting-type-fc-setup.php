@@ -52,19 +52,40 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			array(
 				'id'    => 'integrations',
 				/* translators: %s: Integrations settings URL. */
-				'label' => sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for other plugins you have installed.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'integrations' ) ) ),
+				'label' => sprintf( __( 'Check if there are any <a href="%s">integration options</a> available for the theme or other plugins you have installed.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'integrations' ) ) ),
 			),
 			array(
 				'id'    => 'tracking',
 				/* translators: %s: Tools settings URL. */
 				'label' => sprintf( __( 'Help us improve compatibility and measure impact. <a href="%s">Enable usage tracking</a> from the tools settings.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'tools' ) ) ),
 			),
+			array(
+				'id'         => 'optimized_pages',
+				/* translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL. */
+				'label'      => sprintf( __( 'Enable optimized <a href="%1$s">cart</a>, <a href="%2$s">thank you</a> and <a href="%3$s">order pay</a> pages.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'cart' ) ), esc_url( $settings_page->get_settings_url( 'order_received' ) ), esc_url( $settings_page->get_settings_url( 'order_pay' ) ) ),
+				'badge'      => 'setup-optimized-pages',
+				'requires_pro' => true,
+			),
+			array(
+				'id'         => 'address_autocomplete',
+				/* translators: %s: Address autocomplete settings URL. */
+				'label'      => sprintf( __( 'Enable <a href="%s">address autocomplete</a> from Google Maps.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_autocomplete' ) ) ),
+				'badge'      => 'setup-address-autocomplete',
+				'requires_pro' => true,
+			),
+			array(
+				'id'         => 'address_book',
+				/* translators: %s: Address book settings URL. */
+				'label'      => sprintf( __( 'Enable multiple saved addresses with <a href="%s">address book</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_book' ) ) ),
+				'badge'      => 'setup-address-book',
+				'requires_pro' => true,
+			),
 		);
 
 		/**
 		 * Filter the getting-started checklist steps on the Dashboard.
 		 *
-		 * @param  array[]  $steps  Checklist steps with `id` and `label` keys.
+		 * @param  array[]  $steps  Checklist steps with `id`, `label`, optional `badge`, and optional `requires_pro` keys.
 		 */
 		return apply_filters( 'fc_setup_checklist_steps', $steps );
 	}
@@ -102,7 +123,60 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled' );
 		}
 
+		// PRO feature steps: only complete while PRO is active, even if options stay enabled in the database
+		if ( in_array( $step_id, array( 'optimized_pages', 'address_autocomplete', 'address_book' ), true ) ) {
+			// Bail if PRO is not activated — keep the step number visible
+			if ( ! FluidCheckout::instance()->is_pro_activated() ) { return false; }
+
+			$settings = FluidCheckout_Settings::instance();
+
+			if ( 'optimized_pages' === $step_id ) {
+				return 'yes' === $settings->get_option( 'fc_pro_enable_cart_page' )
+					&& 'yes' === $settings->get_option( 'fc_pro_enable_order_received' )
+					&& 'yes' === $settings->get_option( 'fc_pro_enable_order_pay' );
+			}
+
+			if ( 'address_autocomplete' === $step_id ) {
+				return $this->is_address_autocomplete_step_complete( $settings );
+			}
+
+			if ( 'address_book' === $step_id ) {
+				return 'yes' === $settings->get_option( 'fc_pro_enable_address_book' );
+			}
+		}
+
 		return in_array( $step_id, $this->get_completed_steps(), true );
+	}
+
+
+
+	/**
+	 * Whether the address autocomplete checklist step is complete.
+	 * Brasil API alone is enough. Google Maps requires the feature enabled and a successfully tested API key.
+	 *
+	 * @param   FluidCheckout_Settings  $settings  Settings instance.
+	 * @return  bool
+	 */
+	public function is_address_autocomplete_step_complete( $settings ) {
+		// Brasil API does not need a Google API key
+		if ( 'yes' === $settings->get_option( 'fc_gaa_enabled_brasil_api' ) ) {
+			return true;
+		}
+
+		// Bail if Google address autocomplete is not enabled
+		if ( 'yes' !== $settings->get_option( 'fc_gaa_enabled' ) ) { return false; }
+
+		$api_key = $settings->get_option( 'fc_gaa_google_places_api_key' );
+
+		// Bail if the Google API key is empty
+		if ( empty( $api_key ) ) { return false; }
+
+		$validated_hash = $settings->get_option( 'fc_gaa_google_places_api_key_validated_hash' );
+
+		// Bail if the saved key has not been tested successfully
+		if ( empty( $validated_hash ) ) { return false; }
+
+		return hash_equals( (string) $validated_hash, wp_hash( (string) $api_key ) );
 	}
 
 
@@ -187,10 +261,18 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						if ( $is_complete ) {
 							$item_class .= ' is-completed';
 						}
+
+						$badge_html = '';
+						if ( ! empty( $step['badge'] ) && class_exists( 'FluidCheckout_Admin' ) ) {
+							$badge_html = FluidCheckout_Admin::instance()->get_pro_feature_badge_html( $step['badge'] );
+						}
 						?>
 						<li class="<?php echo esc_attr( $item_class ); ?>">
 							<span class="fc-dashboard-checklist__marker" aria-hidden="true"></span>
 							<span class="fc-dashboard-checklist__label"><?php echo wp_kses_post( isset( $step['label'] ) ? $step['label'] : '' ); ?></span>
+							<?php if ( ! empty( $badge_html ) ) : ?>
+								<span class="fc-dashboard-checklist__promo"><?php echo wp_kses_post( $badge_html ); ?></span>
+							<?php endif; ?>
 						</li>
 					<?php endforeach; ?>
 				</ol>

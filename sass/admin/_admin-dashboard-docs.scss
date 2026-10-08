@@ -48,8 +48,8 @@
 
 .fc-dashboard-checklist__item.is-completed .fc-dashboard-checklist__marker {
 	border-color: #007a3d;
-	background: $white;
-	color: #007a3d;
+	background: #007a3d;
+	color: $white;
 }
 
 .fc-dashboard-checklist__item.is-completed .fc-dashboard-checklist__marker::before {
@@ -69,7 +69,7 @@
 	text-rendering: auto;
 	text-align: center;
 	vertical-align: middle;
-	color: #007a3d;
+	color: $white;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	// END - Copied from `.fc-addons__item-actions .button.button--activated::before` / `.dashicons-yes`
@@ -82,4 +82,18 @@
 	min-width: 0;
 	padding-top: 4px;
 	line-height: 1.5;
+}
+
+// Match `.fc-settings-card__header > .fc-settings-card__promo` right alignment
+.fc-dashboard-checklist__promo {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	margin-left: auto;
+	padding-top: 2px;
+}
+
+.rtl .fc-dashboard-checklist__promo {
+	margin-left: 0;
+	margin-right: auto;
 }
