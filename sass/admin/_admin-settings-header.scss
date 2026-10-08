@@ -87,6 +87,8 @@
 .fc-header__button:focus {
 	color: $fc-header-button-color;
 	box-shadow: none;
+	outline: 2px solid $fc-settings-nav-focus-outline-color;
+	outline-offset: 2px;
 }
 
 .fc-header__button:active:not( :disabled ):not( .disabled ) {

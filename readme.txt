@@ -356,6 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Split checkout Cart items and Place order into their own settings sections, and rename the edit cart items option label.
+* Improved: Show a focus outline on settings page buttons.
 * Improved: Rename add-on purchase buttons to Install add-on.
 * Improved: Dashboard add-on cards hide purchase prices, and EU-VAT assistant actions stay hidden until PRO is activated.
 * Improved: Getting started checklist promotes PRO page optimizations, address autocomplete from Google Maps, and address book, completable only while PRO is active.

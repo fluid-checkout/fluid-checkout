@@ -375,15 +375,15 @@ class FluidCheckout_Settings_Checkout {
 
 
 					array(
-						'title' => __( 'Checkout elements', 'fluid-checkout' ),
+						'title' => __( 'Cart items', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => '',
-						'id'    => 'fc_checkout_elements_options',
+						'id'    => 'fc_checkout_cart_items_options',
 					),
 
 					array(
 						'title'                 => __( 'Cart items', 'fluid-checkout' ),
-						'desc'                  => __( 'Enable options to edit cart items on the checkout page', 'fluid-checkout' ),
+						'desc'                  => __( 'Enable editing cart items at checkout', 'fluid-checkout' ),
 						'desc_tip'              => __( 'Allow customers to change product quantities or removing items directly at the checkout page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-checkout-edit-cart/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_pro_enable_checkout_edit_cart',
 						'type'                  => 'checkbox',
@@ -410,23 +410,8 @@ class FluidCheckout_Settings_Checkout {
 					),
 
 					array(
-						'title'                 => __( 'Place order', 'fluid-checkout' ),
-						'desc'                  => '',
-						'desc_tip'              => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ) . ' ' . __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
-						'id'                    => 'fc_checkout_place_order_position',
-						'type'                  => 'select',
-						'options'               => array(
-							'below_payment_section'          => __( 'Below the payment section', 'fluid-checkout' ),
-							'below_order_summary'            => __( 'Below the order summary', 'fluid-checkout' ),
-							'both_payment_and_order_summary' => __( 'Both below the payment section and the order summary', 'fluid-checkout' ),
-						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_place_order_position' ),
-						'autoload'              => false,
-					),
-
-					array(
 						'type' => 'sectionend',
-						'id'   => 'fc_checkout_elements_options',
+						'id'   => 'fc_checkout_cart_items_options',
 					),
 
 
@@ -500,6 +485,35 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_checkout_coupon_code_options',
+					),
+
+
+
+					array(
+						'title' => __( 'Place order', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_checkout_place_order_options',
+					),
+
+					array(
+						'title'                 => __( 'Place order', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => __( 'Define the position to display "Place order" and terms checkbox section.', 'fluid-checkout' ) . ' ' . __( 'Some options might not be compatible with some plugins and themes.', 'fluid-checkout' ),
+						'id'                    => 'fc_checkout_place_order_position',
+						'type'                  => 'select',
+						'options'               => array(
+							'below_payment_section'          => __( 'Below the payment section', 'fluid-checkout' ),
+							'below_order_summary'            => __( 'Below the order summary', 'fluid-checkout' ),
+							'both_payment_and_order_summary' => __( 'Both below the payment section and the order summary', 'fluid-checkout' ),
+						),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_place_order_position' ),
+						'autoload'              => false,
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_checkout_place_order_options',
 					),
 
 

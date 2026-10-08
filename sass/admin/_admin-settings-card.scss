@@ -360,6 +360,13 @@
 	text-decoration: none;
 }
 
+.fc-settings-wrap .button:focus,
+.fc-settings-wrap .button-secondary:focus,
+.fc-settings-button:focus {
+	outline: 2px solid $fc-settings-nav-focus-outline-color;
+	outline-offset: 2px;
+}
+
 .fc-settings-wrap .button:active:not( :disabled ):not( .disabled ),
 .fc-settings-wrap .button-secondary:active:not( :disabled ):not( .disabled ),
 .fc-settings-button:active:not( :disabled ):not( .disabled ) {
