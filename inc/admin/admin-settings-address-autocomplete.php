@@ -51,7 +51,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 
 		return array(
 			array(
-				'title'            => __( 'Google address autocomplete', 'fluid-checkout' ),
+				'title'            => __( 'Address autocomplete', 'fluid-checkout' ),
 				'type'             => 'fc_promo',
 				'id'               => 'fc_gaa_address_autocomplete_promo',
 				'is_card'          => true,

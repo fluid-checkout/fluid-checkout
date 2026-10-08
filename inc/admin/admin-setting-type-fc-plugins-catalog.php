@@ -35,7 +35,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 		$catalog = array(
 			array(
 				'id'          => 'fc-conversion-kit',
-				'item_class'  => 'fc-addons__item--wide fc-addons__item--highlight-conversion',
+				'item_class'  => 'fc-addons__item--highlight-conversion',
 				'plugin_file' => 'fc-conversion-kit/fc-conversion-kit.php',
 				'plugin_slug' => 'fc-conversion-kit',
 				'title'       => __( 'Fluid Conversion Kit', 'fluid-checkout' ),
@@ -217,6 +217,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				<div class="fc-dashboard__disclaimer">
 					<ul>
 						<li><?php echo wp_kses_post( __( 'These are <strong>separate plugins</strong> which are not part of Fluid Checkout PRO offer and need to be purchased separately.', 'fluid-checkout' ) ); ?></li>
+						<li><?php echo wp_kses_post( __( 'All prices shown in EUR. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
 					</ul>
 				</div>
 

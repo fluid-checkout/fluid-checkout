@@ -67,7 +67,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			array(
 				'id'            => 'fluid-checkout-pro',
 				'type'          => 'plugin',
-				'item_class'    => 'fc-addons__item--wide fc-addons__item--highlight',
+				'item_class'    => 'fc-addons__item--highlight',
 				'plugin_file'   => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'   => 'fluid-checkout-pro',
 				'title'         => __( 'Fluid Checkout PRO', 'fluid-checkout' ) . ' - ' . __( 'The complete bundle', 'fluid-checkout' ),
@@ -93,53 +93,15 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'purchase_label'=> FluidCheckout_Admin::instance()->get_pro_upgrade_button_label( '129 EUR' ),
 			),
 			array(
-				'id'            => 'fc-google-address-autocomplete',
-				'type'          => 'plugin',
-				'plugin_file'   => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
-				'plugin_slug'   => 'fc-google-address-autocomplete',
-				'title'         => __( 'Google address autocomplete', 'fluid-checkout' ),
-				'subtitle'      => __( 'Up to 40% less checkout fields to fill in.', 'fluid-checkout' ),
-				'description'   => __( 'Avoid delivery delays and unsatisfied customers. Collect the <strong>correct address information</strong> from the first time they buy with you.', 'fluid-checkout' ),
-				'image'         => $directory_url . 'images/admin/addons/fc-google-address-autocomplete-icon.svg',
-				'purchase_url'  => 'https://fluidcheckout.com/fc-google-address-autocomplete/?mtm_campaign=addons&mtm_kwd=fc-gaa&mtm_source=lite-plugin',
-				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '29 EUR' ),
-			),
-			array(
-				'id'            => 'fc-address-book',
-				'type'          => 'plugin',
-				'plugin_file'   => 'fc-address-book/fc-address-book.php',
-				'plugin_slug'   => 'fc-address-book',
-				'title'         => __( 'Address book', 'fluid-checkout' ),
-				'subtitle'      => __( 'Multiple saved addresses for shipping and billing.', 'fluid-checkout' ),
-				'description'   => __( 'Let customers <strong>save multiple shipping and billing addresses</strong> on their account and choose which ones to use at checkout and cart pages.', 'fluid-checkout' ),
-				'image'         => $directory_url . 'images/admin/addons/fc-address-book-icon.svg',
-				'purchase_url'  => 'https://fluidcheckout.com/fc-address-book/?mtm_campaign=addons&mtm_kwd=fc-adb&mtm_source=lite-plugin',
-				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '59 EUR' ),
-			),
-			array(
 				'id'            => 'fc-vat-assistant',
 				'type'          => 'plugin',
 				'plugin_file'   => 'fc-vat-assistant/fc-vat-assistant.php',
 				'plugin_slug'   => 'fc-vat-assistant',
 				'title'         => __( 'EU-VAT assistant', 'fluid-checkout' ),
 				'subtitle'      => __( 'Simplified EU-VAT validation for your store.', 'fluid-checkout' ),
-				'description'   => __( 'Collect and <strong>validate EU VAT numbers at the checkout page</strong>, removes tax charges on reverse charge basis and confirms customer location when needed.', 'fluid-checkout' ),
 				'image'         => $directory_url . 'images/admin/addons/fc-vat-assistant-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat&mtm_source=lite-plugin',
 				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '39 EUR' ),
-			),
-			array(
-				'id'            => 'fc-checkout-editor',
-				'type'          => 'plugin',
-				'plugin_file'   => 'fc-checkout-editor/fc-checkout-editor.php',
-				'plugin_slug'   => 'fc-checkout-editor',
-				'title'         => __( 'Checkout editor', 'fluid-checkout' ),
-				'subtitle'      => __( 'Edit styles, fields, and custom steps without code', 'fluid-checkout' ),
-				'description'   => __( 'Customize <strong>checkout styles</strong>, <strong>fields attributes</strong>, and <strong>custom steps and sub-steps</strong> from the admin without code.', 'fluid-checkout' ),
-				'badge'         => __( 'Coming soon', 'fluid-checkout' ),
-				'coming_soon'   => true,
-				'image'         => $directory_url . 'images/admin/addons/fc-checkout-editor-icon.svg',
-				'product_url'   => 'https://fluidcheckout.com/fc-checkout-editor/',
 			),
 		);
 
@@ -310,19 +272,28 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 						<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $addon['subtitle'] ); ?></p>
 					</div>
 				</div>
-				<div class="fc-addons__item-description">
-					<p><?php echo wp_kses_post( $addon['description'] ); ?></p>
-					<?php if ( ! empty( $addon['value_note'] ) ) : ?>
-						<p><strong><?php echo esc_html( $addon['value_note'] ); ?></strong></p>
-					<?php endif; ?>
-					<?php if ( ! empty( $addon['features'] ) && is_array( $addon['features'] ) && ! FluidCheckout::instance()->is_pro_installed() ) : ?>
-						<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns">
-							<?php foreach ( $addon['features'] as $feature ) : ?>
-								<li><?php echo esc_html( $feature ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					<?php endif; ?>
-				</div>
+				<?php
+				$has_description = ! empty( $addon['description'] );
+				$has_value_note  = ! empty( $addon['value_note'] );
+				$has_features    = ! empty( $addon['features'] ) && is_array( $addon['features'] ) && ! FluidCheckout::instance()->is_pro_installed();
+				?>
+				<?php if ( $has_description || $has_value_note || $has_features ) : ?>
+					<div class="fc-addons__item-description">
+						<?php if ( $has_description ) : ?>
+							<p><?php echo wp_kses_post( $addon['description'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( $has_value_note ) : ?>
+							<p><strong><?php echo esc_html( $addon['value_note'] ); ?></strong></p>
+						<?php endif; ?>
+						<?php if ( $has_features ) : ?>
+							<ul class="fc-addons__item-features-list fc-addons__item-features-list--columns">
+								<?php foreach ( $addon['features'] as $feature ) : ?>
+									<li><?php echo esc_html( $feature ); ?></li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 			<div class="fc-addons__item-footer">
 				<div class="<?php echo esc_attr( $actions_class ); ?>">
@@ -380,8 +351,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 				<div class="fc-dashboard__disclaimer">
 					<ul>
-						<li><?php echo wp_kses_post( __( '<strong>Fluid Checkout PRO</strong> includes all add-ons listed in this section. <strong>Add-ons</strong> can also be purchased individually', 'fluid-checkout' ) ); ?></li>
-						<li><?php echo wp_kses_post( __( '<strong>Fluid Checkout Lite is required</strong> to be installed and activated to use PRO and add-ons.', 'fluid-checkout' ) ); ?></li>
+						<li><?php echo wp_kses_post( __( '<strong>Fluid Checkout PRO</strong> includes all add-ons listed in this section.', 'fluid-checkout' ) ); ?></li>
 						<li><?php echo wp_kses_post( __( 'All prices shown in EUR. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
 					</ul>
 				</div>

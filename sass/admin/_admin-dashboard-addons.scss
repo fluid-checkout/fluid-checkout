@@ -34,6 +34,15 @@
 	}
 }
 
+.fc-addons__item.fc-addons__item--bundle,
+.fc-addons__item.fc-addons__item--highlight,
+.fc-addons__item.fc-addons__item--highlight-conversion,
+.fc-addons__item.fc-addons__item--wide {
+	@media ( min-width: 600px ) {
+		width: 100%;
+	}
+}
+
 .fc-addons__item.fc-addons__item--bundle {
 	border: solid 2px #1E212B;
 }
@@ -44,12 +53,6 @@
 
 .fc-addons__item.fc-addons__item--highlight-conversion {
 	border: solid 2px #0B7A6F;
-}
-
-.fc-addons__item.fc-addons__item--wide {
-	@media ( min-width: 600px ) {
-		width: 100%;
-	}
 }
 
 
@@ -74,7 +77,6 @@
 	justify-content: flex-start;
 	flex-wrap: nowrap;
 	gap: 20px;
-	margin-bottom: 20px;
 }
 
 
@@ -163,6 +165,7 @@
 
 .fc-addons__item-description {
 	flex-grow: 1;
+	margin-top: 20px;
 }
 
 .fc-addons__item-description > *:first-child {

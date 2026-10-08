@@ -295,11 +295,11 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
-	 * Get HTML for the add-on feature promo pill badge.
-	 * Also includes a short "PRO" badge next to the add-on badge when PRO is not active.
+	 * Get HTML for the PRO feature promo pill on add-on settings sections.
+	 * Returns empty when the add-on feature is already unlocked.
 	 *
-	 * @param  string  $section_slug  Section slug used in tracking as `mtm_kwd=addon-badge-{slug}`.
-	 * @param  string  $product_url   Add-on product page URL.
+	 * @param  string  $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 * @param  string  $product_url   Unused. Kept for backward compatibility with existing call sites.
 	 * @param  string  $feature_slug  Feature slug checked against the settings access registry.
 	 */
 	public function get_addon_feature_badge_html( $section_slug = '', $product_url = '', $feature_slug = '' ) {
@@ -308,29 +308,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 			return '';
 		}
 
-		$section_slug = sanitize_title( $section_slug );
-		$mtm_kwd = ! empty( $section_slug ) ? 'addon-badge-' . $section_slug : 'addon-badge';
-		$product_url = ! empty( $product_url ) ? $product_url : 'https://fluidcheckout.com/';
-
-		$url = add_query_arg(
-			array(
-				'mtm_campaign' => 'addons',
-				'mtm_kwd'      => $mtm_kwd,
-				'mtm_source'   => 'lite-plugin',
-			),
-			$product_url
-		);
-
-		$addon_badge_html = sprintf(
-			'<a class="fc-settings-promo-pill fc-settings-promo-pill--addon" href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
-			esc_url( $url ),
-			esc_html( __( 'Add-on', 'fluid-checkout' ) )
-		);
-
-		// Also show a short PRO badge next to the add-on badge
-		$pro_badge_html = $this->get_pro_feature_badge_html( $section_slug, __( 'PRO', 'fluid-checkout' ) );
-
-		return $addon_badge_html . $pro_badge_html;
+		return $this->get_pro_feature_badge_html( $section_slug );
 	}
 
 	/**
