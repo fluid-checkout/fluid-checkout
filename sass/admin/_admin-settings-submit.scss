@@ -69,7 +69,7 @@
 }
 
 // Show the Preview control only while the compact preview drawer is closed
-@media ( max-width: $fc-settings-preview-compact-breakpoint ) {
+@media ( max-width: $fc-settings-preview-compact-breakpoint - 1px ) {
 	.fc-settings-layout.has-preview:not( .is-preview-expanded ) .fc-settings-actions__preview {
 		display: inline-flex;
 	}

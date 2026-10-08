@@ -791,9 +791,9 @@
 		// Bail if preview column is not available
 		if ( ! preview ) { return; }
 
-		// Track the compact preview breakpoint
+		// Track the compact preview breakpoint (right column from 1280px; compact below that)
 		breakpoint = parseInt( _settings.compactBreakpoint, 10 ) || 1280;
-		_compactMediaQuery = window.matchMedia( '(max-width: ' + breakpoint + 'px)' );
+		_compactMediaQuery = window.matchMedia( '(max-width: ' + ( breakpoint - 1 ) + 'px)' );
 		if ( typeof _compactMediaQuery.addEventListener === 'function' ) {
 			_compactMediaQuery.addEventListener( 'change', handleCompactBreakpointChange );
 		}

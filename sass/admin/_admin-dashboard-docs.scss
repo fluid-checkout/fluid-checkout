@@ -1,8 +1,85 @@
 // ------------------------------------
-// DASHBOARD DOCS
+// DASHBOARD GETTING STARTED CHECKLIST
 // ------------------------------------
 
-.fc-dashboard-docs ul {
-	list-style: disc;
-	padding-left: 20px;
+.fc-dashboard-checklist {
+	list-style: none;
+	margin: 16px 0 0;
+	padding: 0;
+	counter-reset: fc-setup-step;
+}
+
+
+
+.fc-dashboard-checklist__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin: 0;
+	padding: 10px 0;
+	counter-increment: fc-setup-step;
+}
+
+.fc-dashboard-checklist__item + .fc-dashboard-checklist__item {
+	border-top: 1px solid rgba( 200, 215, 225, .4 );
+}
+
+
+
+.fc-dashboard-checklist__marker {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border: 2px solid $admin-border-color-strong;
+	border-radius: 50%;
+	box-sizing: border-box;
+	color: $fc-settings-text-color;
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.fc-dashboard-checklist__marker::before {
+	content: counter( fc-setup-step );
+}
+
+.fc-dashboard-checklist__item.is-completed .fc-dashboard-checklist__marker {
+	border-color: #007a3d;
+	background: $white;
+	color: #007a3d;
+}
+
+.fc-dashboard-checklist__item.is-completed .fc-dashboard-checklist__marker::before {
+	// Copied from `.fc-addons__item-actions .button.button--activated::before` / `.dashicons-yes`
+	content: "\f147";
+	font-family: dashicons;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	speak: never;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	text-align: center;
+	vertical-align: middle;
+	color: #007a3d;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	// END - Copied from `.fc-addons__item-actions .button.button--activated::before` / `.dashicons-yes`
+}
+
+
+
+.fc-dashboard-checklist__label {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding-top: 4px;
+	line-height: 1.5;
 }

@@ -356,6 +356,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Show the settings page preview column from 1280px viewport width.
+* Improved: Show Checkout layout before Design template on the Checkout settings page.
+* Improved: Getting started card on the Dashboard uses a numbered checklist that marks steps as complete when visited or when usage tracking is enabled.
 * Improved: Settings section headers show only the PRO badge, not the Add-on badge.
 * Improved: Use sentence case for settings menu items, page titles, section titles, and field labels.
 * Added: Guest checkout, login, and account creation options on the Customer accounts settings page, so they can use different values per settings profile.

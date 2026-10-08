@@ -47,7 +47,7 @@ $fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} +
 
 // Desktop: expand as a fixed overlay that slides in from the right.
 // Keep left/center column widths locked so only the preview moves.
-@media ( min-width: $fc-settings-preview-compact-breakpoint + 1px ) {
+@media ( min-width: $fc-settings-preview-compact-breakpoint ) {
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
 		flex: 0 0 $fc-settings-sidebar-width;
 		width: $fc-settings-sidebar-width;
@@ -127,9 +127,9 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 	background: $fc-settings-page-background-color;
 }
 
-// Compact preview drawer (≤1279): keep left/center as desktop columns; preview overlays.
+// Compact preview drawer (<1280): keep left/center as desktop columns; preview overlays.
 // Let the center column grow to the right edge so the actions bar can fill that space.
-@media ( max-width: $fc-settings-preview-compact-breakpoint ) {
+@media ( max-width: $fc-settings-preview-compact-breakpoint - 1px ) {
 	.fc-settings-layout.has-preview .fc-settings-sidebar {
 		flex: 0 0 $fc-settings-sidebar-width;
 		width: $fc-settings-sidebar-width;
@@ -340,7 +340,7 @@ body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent 
 }
 
 // Compact: vertical expand/collapse icons
-@media ( max-width: $fc-settings-preview-compact-breakpoint ) {
+@media ( max-width: $fc-settings-preview-compact-breakpoint - 1px ) {
 	.fc-settings-preview__expand .fc-settings-preview__expand-icon--horizontal {
 		display: none;
 	}

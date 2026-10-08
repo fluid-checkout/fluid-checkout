@@ -56,6 +56,51 @@ class FluidCheckout_Settings_Checkout {
 				'fc_checkout_general_settings',
 				array(
 					array(
+						'title' => __( 'Checkout layout', 'fluid-checkout' ),
+						'type'  => 'title',
+						'desc'  => '',
+						'id'    => 'fc_checkout_layout_options',
+					),
+
+					array(
+						'title'                 => __( 'Checkout layout', 'fluid-checkout' ),
+						'id'                    => 'fc_checkout_layout',
+						'type'                  => 'fc_layout_selector',
+						'options'               => array(
+							'multi-step'       => array( 'label' => __( 'Multi step', 'fluid-checkout' ) ),
+							'single-step'      => array( 'label' => __( 'Single step', 'fluid-checkout' ) ),
+						),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' ),
+						'autoload'              => false,
+						'wrapper_class'         => 'fc-checkout-layout',
+						'class'                 => 'fc-checkout-layout__option',
+					),
+
+					array(
+						'title'                 => __( 'Columns', 'fluid-checkout' ),
+						'desc'                  => '',
+						'desc_tip'              => FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'id'                    => 'fc_checkout_column_layout',
+						'requires'              => 'pro',
+						'type'                  => 'fc_layout_selector',
+						'options'               => array(
+							'two_columns'      => array( 'label' => __( '2 columns', 'fluid-checkout' ) ),
+							'one_column'       => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( '1 column', 'fluid-checkout' ), 'disabled' => true ),
+						),
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_column_layout' ),
+						'autoload'              => false,
+						'wrapper_class'         => 'fc-checkout-layout',
+						'class'                 => 'fc-checkout-layout__option',
+					),
+
+					array(
+						'type' => 'sectionend',
+						'id'   => 'fc_checkout_layout_options',
+					),
+
+
+
+					array(
 						'title' => __( 'Design template', 'fluid-checkout' ),
 						'type'  => 'title',
 						'desc'  => __( 'General styles for the checkout steps, order summary and other sections. Applies to other checkout, cart, thank you (order received), and view order pages.', 'fluid-checkout' ),
@@ -108,51 +153,6 @@ class FluidCheckout_Settings_Checkout {
 					array(
 						'type' => 'sectionend',
 						'id'   => 'fc_design_template_options',
-					),
-
-
-
-					array(
-						'title' => __( 'Checkout layout', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_checkout_layout_options',
-					),
-
-					array(
-						'title'                 => __( 'Checkout layout', 'fluid-checkout' ),
-						'id'                    => 'fc_checkout_layout',
-						'type'                  => 'fc_layout_selector',
-						'options'               => array(
-							'multi-step'       => array( 'label' => __( 'Multi step', 'fluid-checkout' ) ),
-							'single-step'      => array( 'label' => __( 'Single step', 'fluid-checkout' ) ),
-						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_layout' ),
-						'autoload'              => false,
-						'wrapper_class'         => 'fc-checkout-layout',
-						'class'                 => 'fc-checkout-layout__option',
-					),
-
-					array(
-						'title'                 => __( 'Columns', 'fluid-checkout' ),
-						'desc'                  => '',
-						'desc_tip'              => FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                    => 'fc_checkout_column_layout',
-						'requires'              => 'pro',
-						'type'                  => 'fc_layout_selector',
-						'options'               => array(
-							'two_columns'      => array( 'label' => __( '2 columns', 'fluid-checkout' ) ),
-							'one_column'       => array( 'label' => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( '1 column', 'fluid-checkout' ), 'disabled' => true ),
-						),
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_column_layout' ),
-						'autoload'              => false,
-						'wrapper_class'         => 'fc-checkout-layout',
-						'class'                 => 'fc-checkout-layout__option',
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_checkout_layout_options',
 					),
 
 
