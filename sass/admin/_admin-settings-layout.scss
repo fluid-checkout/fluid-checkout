@@ -161,6 +161,25 @@ body.fc-settings-page #wpbody-content .fc-settings-content .error {
 	}
 }
 
+// Dashboard sections use a wider reading column
+.fc-settings-content:has( .fc-settings-tab--dashboard.is-active ) {
+	max-width: $fc-settings-dashboard-content-max-width;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		max-width: none;
+	}
+}
+
+.fc-settings-content:has( .fc-settings-tab--dashboard.is-active ) .fc-settings-card {
+	max-width: $fc-settings-dashboard-content-max-width;
+}
+
+.fc-settings-content:has( .fc-settings-tab--dashboard.is-active ) .fc-settings-content__scroll {
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		max-width: $fc-settings-dashboard-content-max-width;
+	}
+}
+
 // No save bar on the active tab: drop the reserved space
 .fc-settings-content:not( :has( .fc-settings-actions:not( [ hidden ] ) ) ) {
 	padding-bottom: 0;

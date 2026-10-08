@@ -316,14 +316,9 @@
 
 
 
-.fc-addons__item-title .fc-settings-badge {
-	margin-right: 0;
-	margin-left: 6px;
-}
-
-.rtl .fc-addons__item-title .fc-settings-badge {
-	margin-right: 6px;
-	margin-left: 0;
+.fc-addons__item-title-section > .fc-settings-badge {
+	display: inline-block;
+	margin: 0 0 6px;
 }
 
 

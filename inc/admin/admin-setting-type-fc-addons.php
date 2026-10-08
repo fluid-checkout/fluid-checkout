@@ -263,12 +263,10 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				<div class="fc-addons__item-header">
 					<img class="fc-addons__item-image" src="<?php echo esc_url( $addon['image'] ); ?>" alt="<?php echo esc_attr( $addon['title'] ); ?>">
 					<div class="fc-addons__item-title-section">
-						<h3 class="fc-addons__item-title">
-							<?php echo esc_html( $addon['title'] ); ?>
-							<?php if ( ! empty( $addon['badge'] ) ) : ?>
-								<span class="fc-settings-badge"><?php echo esc_html( $addon['badge'] ); ?></span>
-							<?php endif; ?>
-						</h3>
+						<?php if ( ! empty( $addon['badge'] ) ) : ?>
+							<span class="fc-settings-badge"><?php echo esc_html( $addon['badge'] ); ?></span>
+						<?php endif; ?>
+						<h3 class="fc-addons__item-title"><?php echo esc_html( $addon['title'] ); ?></h3>
 						<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $addon['subtitle'] ); ?></p>
 					</div>
 				</div>

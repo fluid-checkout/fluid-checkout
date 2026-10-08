@@ -162,10 +162,8 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				<div class="fc-addons__item-header">
 					<img class="fc-addons__item-image" src="<?php echo esc_url( $plugin[ 'image' ] ); ?>" alt="<?php echo esc_attr( $plugin[ 'title' ] ); ?>">
 					<div class="fc-addons__item-title-section">
-						<h3 class="fc-addons__item-title">
-							<?php echo esc_html( $plugin[ 'title' ] ); ?>
-							<span class="fc-settings-badge"><?php echo esc_html( __( 'Coming soon', 'fluid-checkout' ) ); ?></span>
-						</h3>
+						<span class="fc-settings-badge"><?php echo esc_html( __( 'Coming soon', 'fluid-checkout' ) ); ?></span>
+						<h3 class="fc-addons__item-title"><?php echo esc_html( $plugin[ 'title' ] ); ?></h3>
 						<p class="fc-dashboard-section__subtitle"><?php echo wp_kses_post( $plugin[ 'subtitle' ] ); ?></p>
 					</div>
 				</div>
