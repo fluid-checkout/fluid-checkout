@@ -346,7 +346,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Used when PRO is installed so entitled customers are not nudged to pay again.
 	 */
 	public function get_addon_purchase_button_label_without_price() {
-		return __( 'Get this add-on', 'fluid-checkout' );
+		return __( 'Install add-on', 'fluid-checkout' );
 	}
 
 	/**
@@ -357,6 +357,13 @@ class FluidCheckout_Admin extends FluidCheckout {
 	public function get_pro_upgrade_button_label( $price = '129 EUR' ) {
 		/* translators: %s: formatted price including currency, e.g. "129 EUR" */
 		return sprintf( __( 'Upgrade to PRO &mdash; %s', 'fluid-checkout' ), $price );
+	}
+
+	/**
+	 * Get the upgrade button label for Fluid Checkout PRO without a price.
+	 */
+	public function get_pro_upgrade_button_label_without_price() {
+		return __( 'Upgrade to PRO', 'fluid-checkout' );
 	}
 
 	/**

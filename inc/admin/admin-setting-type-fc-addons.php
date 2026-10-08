@@ -67,7 +67,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			array(
 				'id'            => 'fluid-checkout-pro',
 				'type'          => 'plugin',
-				'item_class'    => 'fc-addons__item--highlight',
+				'item_class'    => 'fc-addons__item--wide',
 				'plugin_file'   => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'   => 'fluid-checkout-pro',
 				'title'         => __( 'Fluid Checkout PRO', 'fluid-checkout' ) . ' - ' . __( 'The complete bundle', 'fluid-checkout' ),
@@ -90,7 +90,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				),
 				'image'         => $directory_url . 'images/admin/addons/fluid-checkout-pro-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro&mtm_source=lite-plugin',
-				'purchase_label'=> FluidCheckout_Admin::instance()->get_pro_upgrade_button_label( '129 EUR' ),
+				'purchase_label'=> FluidCheckout_Admin::instance()->get_pro_upgrade_button_label_without_price(),
 			),
 			array(
 				'id'            => 'fc-vat-assistant',
@@ -101,7 +101,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'subtitle'      => __( 'Simplified EU-VAT validation for your store.', 'fluid-checkout' ),
 				'image'         => $directory_url . 'images/admin/addons/fc-vat-assistant-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/fc-eu-vat-assistant/?mtm_campaign=addons&mtm_kwd=fc-vat&mtm_source=lite-plugin',
-				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label( '39 EUR' ),
+				'purchase_label'=> FluidCheckout_Admin::instance()->get_addon_purchase_button_label_without_price(),
 			),
 		);
 
@@ -169,6 +169,24 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 
 	/**
+	 * Whether a catalog item should show action buttons.
+	 *
+	 * @param array $addon Catalog item.
+	 */
+	private function should_show_addon_actions( $addon ) {
+		$addon_id = isset( $addon['id'] ) ? $addon['id'] : '';
+
+		// Hide EU-VAT assistant actions until PRO is activated
+		if ( 'fc-vat-assistant' === $addon_id && ! FluidCheckout::instance()->is_pro_activated() ) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+
+	/**
 	 * Output action buttons for a plugin add-on card.
 	 *
 	 * @param array $addon Catalog item.
@@ -178,6 +196,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 		// Bail if plugin file is missing
 		if ( empty( $plugin_file ) ) { return; }
+
+		// Bail if actions should not be shown for this add-on
+		if ( ! $this->should_show_addon_actions( $addon ) ) { return; }
 
 		$is_activated = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$is_installed = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
@@ -293,18 +314,20 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					</div>
 				<?php endif; ?>
 			</div>
-			<div class="fc-addons__item-footer">
-				<div class="<?php echo esc_attr( $actions_class ); ?>">
-					<?php if ( 'bundle' === $addon['type'] ) : ?>
-						<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( $addon['purchase_label'] ); ?></a>
-						<?php if ( ! empty( $addon['dismiss_notice'] ) ) : ?>
-							<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $addon['dismiss_notice'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'I already have it – Hide this offer', 'fluid-checkout' ) ); ?></a>
+			<?php if ( $this->should_show_addon_actions( $addon ) ) : ?>
+				<div class="fc-addons__item-footer">
+					<div class="<?php echo esc_attr( $actions_class ); ?>">
+						<?php if ( 'bundle' === $addon['type'] ) : ?>
+							<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( $addon['purchase_label'] ); ?></a>
+							<?php if ( ! empty( $addon['dismiss_notice'] ) ) : ?>
+								<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $addon['dismiss_notice'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'I already have it – Hide this offer', 'fluid-checkout' ) ); ?></a>
+							<?php endif; ?>
+						<?php else : ?>
+							<?php $this->output_plugin_addon_actions( $addon ); ?>
 						<?php endif; ?>
-					<?php else : ?>
-						<?php $this->output_plugin_addon_actions( $addon ); ?>
-					<?php endif; ?>
+					</div>
 				</div>
-			</div>
+			<?php endif; ?>
 		</li>
 		<?php
 	}
@@ -350,7 +373,6 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				<div class="fc-dashboard__disclaimer">
 					<ul>
 						<li><?php echo wp_kses_post( __( '<strong>Fluid Checkout PRO</strong> includes all add-ons listed in this section.', 'fluid-checkout' ) ); ?></li>
-						<li><?php echo wp_kses_post( __( 'All prices shown in EUR. If there are any divergencies with the prices on our website, the offers shown on the website superseed these and will be applied.', 'fluid-checkout' ) ); ?></li>
 					</ul>
 				</div>
 

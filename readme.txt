@@ -356,6 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Rename add-on purchase buttons to Install add-on.
+* Improved: Dashboard add-on cards hide purchase prices, and EU-VAT assistant actions stay hidden until PRO is activated.
 * Improved: Getting started checklist promotes PRO page optimizations, address autocomplete from Google Maps, and address book, completable only while PRO is active.
 * Improved: Address autocomplete checklist step completes when Google Maps is enabled with a tested API key, or when Brasil API is enabled.
 * Improved: Show the settings page preview column from 1280px viewport width.
