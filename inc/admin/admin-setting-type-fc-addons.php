@@ -49,7 +49,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'i18n'          => array(
 					'processing'   => __( 'Processing…', 'fluid-checkout' ),
 					'genericError' => __( 'Something went wrong. Please try again.', 'fluid-checkout' ),
-					'activate'     => __( 'Activate plugin', 'fluid-checkout' ),
+					'activate'     => __( 'Activate add-on', 'fluid-checkout' ),
 				),
 			)
 		);
@@ -220,7 +220,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				class="button button-primary fc-addons__item-action--activate"
 				data-action="activate"
 				data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
-			><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>
+			><?php echo esc_html( __( 'Activate add-on', 'fluid-checkout' ) ); ?></button>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
 		elseif ( $is_coming_soon ) :

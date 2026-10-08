@@ -38,7 +38,7 @@
 		i18n: {
 			processing:                       'Processing…',
 			genericError:                     'Something went wrong. Please try again.',
-			activate:                         'Activate plugin',
+			activate:                         'Activate add-on',
 		},
 	};
 
@@ -67,7 +67,7 @@
 	 * @return {string} Activate button label.
 	 */
 	var getActivateLabel = function() {
-		return _settings.i18n && _settings.i18n.activate ? _settings.i18n.activate : 'Activate plugin';
+		return _settings.i18n && _settings.i18n.activate ? _settings.i18n.activate : 'Activate add-on';
 	};
 
 
