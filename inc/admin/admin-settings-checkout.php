@@ -550,15 +550,6 @@ class FluidCheckout_Settings_Checkout {
 					),
 
 					array(
-						'desc'                  => __( 'Display the "Add" link buttons in lowercase', 'fluid-checkout' ),
-						'desc_tip'              => __( 'Make the labels of optional field "Add" link button as <code>lowercase</code> (ie. "Add phone number" instead of "Add Phone Number"). This option also affects the link buttons for coupon code fields.', 'fluid-checkout' ),
-						'id'                    => 'fc_optional_fields_link_label_lowercase',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_optional_fields_link_label_lowercase' ),
-						'autoload'              => false,
-					),
-
-					array(
 						'title'                 => __( 'Billing address', 'fluid-checkout' ),
 						'desc'                  => '',
 						'desc_tip'          => __( 'Select position where to display the billing address section on the checkout page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-billing-address-positions/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),

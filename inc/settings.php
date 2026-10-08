@@ -133,7 +133,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_widget_areas'                               => 'yes',
 			'fc_enable_checkout_widget_area_sidebar_last_step'              => 'no',
 			'fc_enable_checkout_hide_optional_fields'                       => 'yes',
-			'fc_optional_fields_link_label_lowercase'                       => 'yes',
 			'fc_hide_optional_fields_skip_address_2'                        => 'no',
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_shipping_methods_disable_auto_select'                       => 'no',
