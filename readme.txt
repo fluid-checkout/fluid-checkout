@@ -364,6 +364,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Dashboard add-on cards hide purchase prices, show Learn more when only Lite is active, and keep Learn more beside Install when PRO is active but the add-on is not installed yet.
 * Improved: Disable Activate add-on when the add-on is installed but Fluid Checkout PRO is not activated.
 * Improved: Show Learn more beside Activate add-on when the add-on is installed but not activated.
+* Removed: Site key section from the License keys settings page.
 * Improved: Getting started checklist promotes PRO page optimizations, address autocomplete from Google Maps, and address book, completable only while PRO is active.
 * Improved: Address autocomplete checklist step completes when Google Maps is enabled with a tested API key, or when Brasil API is enabled.
 * Improved: Show the settings page preview column from 1280px viewport width.

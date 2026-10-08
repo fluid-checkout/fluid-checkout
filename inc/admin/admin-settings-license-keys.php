@@ -38,13 +38,6 @@ class FluidCheckout_Settings_LicenseKeys {
 
 		$settings_new = array();
 
-		// Site key card — Lite owns the shell; PRO may replace the inner contents
-		$settings_new[] = array(
-			'type'     => 'fc_site_key',
-			'is_card'  => true,
-			'autoload' => false,
-		);
-
 		$settings_new[] = array(
 			'title' => _x( 'License keys', 'Settings section title', 'fluid-checkout' ),
 			'type'  => 'title',
