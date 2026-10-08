@@ -38,3 +38,16 @@
 .fc-admin-notice__content > :last-child {
 	margin-bottom: 0;
 }
+
+.fc-admin-notice__content > .submit {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin: 12px 0 0;
+	padding: 0;
+}
+
+.fc-admin-notice__dismiss {
+	margin: 0;
+}

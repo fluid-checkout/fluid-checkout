@@ -34,8 +34,16 @@
 
 		contentSelector:                       '.fc-settings-content',
 		actionsSelector:                       '.fc-settings-actions',
+		formSelector:                          '[data-fc-settings-form]',
+		saveButtonSelector:                    '[data-fc-settings-save]',
+		isBusyClass:                           'is-busy',
+		isPinnedClass:                         'is-pinned',
 
 		hiddenClass:                           'hidden',
+
+		i18n: {
+			saving:                            'Saving...',
+		},
 	};
 	var _triggerFieldIds = [];
 	var _actionsSyncScheduled = false;
@@ -374,9 +382,13 @@
 
 		rect = content.getBoundingClientRect();
 
+		// Bail if layout metrics are not ready yet
+		if ( rect.width <= 0 ) { return; }
+
 		actions.style.left = Math.round( rect.left ) + 'px';
 		actions.style.width = Math.round( rect.width ) + 'px';
 		actions.style.right = 'auto';
+		actions.classList.add( _settings.isPinnedClass );
 	};
 
 	/**
@@ -456,6 +468,69 @@
 
 
 	/**
+	 * Get the saving label from settings.
+	 *
+	 * @return  {string}  Saving label.
+	 */
+	var getSavingLabel = function() {
+		return _settings.i18n && _settings.i18n.saving ? _settings.i18n.saving : 'Saving...';
+	};
+
+	/**
+	 * Show the saving state on all settings save buttons.
+	 * Locks each button to its current width so the label change does not shrink it.
+	 */
+	var setSaveButtonsSavingState = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+		var width;
+
+		// Iterate save buttons
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+
+			// Bail if already in the saving state
+			if ( button.classList.contains( _settings.isBusyClass ) ) { continue; }
+
+			// Lock width to the idle label size before changing the text
+			width = Math.ceil( button.getBoundingClientRect().width );
+			if ( width > 0 ) {
+				button.style.minWidth = width + 'px';
+			}
+
+			button.textContent = getSavingLabel();
+			button.classList.add( _settings.isBusyClass );
+		}
+
+		// Disable after the submit has started so browsers do not cancel the POST
+		window.setTimeout( function() {
+			var saveButtons = document.querySelectorAll( _settings.saveButtonSelector );
+			var j;
+
+			// Iterate save buttons
+			for ( j = 0; j < saveButtons.length; j++ ) {
+				saveButtons[ j ].disabled = true;
+			}
+		}, 0 );
+	};
+
+	/**
+	 * Handle settings form submit events.
+	 *
+	 * @param   {Event}  event  The submit event.
+	 */
+	var handleSubmit = function( event ) {
+		// Bail if not the settings form
+		if ( ! event.target || ! event.target.matches || ! event.target.matches( _settings.formSelector ) ) { return; }
+
+		// Show saving state on save buttons
+		setSaveButtonsSavingState();
+	};
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 *
 	 * @param   {Object}  options  Optional settings overrides (e.g. fieldIdPrefix).
@@ -465,7 +540,7 @@
 		if ( _hasInitialized ) { return; }
 
 		// Merge settings
-		_settings = extend( _settings, options );
+		_settings = extend( true, _settings, options );
 
 		// Initialize conditionals
 		initializeConditionals();
@@ -476,6 +551,7 @@
 		// Event handlers
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
+		window.addEventListener( 'submit', handleSubmit, true );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
 		window.addEventListener( 'resize', scheduleActionsBarSync );

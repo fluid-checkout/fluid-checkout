@@ -513,7 +513,16 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-settings-page', 'window.addEventListener("load",function(){FCSettingsPage.init();});' );
+		wp_localize_script(
+			'fc-settings-page',
+			'fcSettingsPageSettings',
+			array(
+				'i18n' => array(
+					'saving' => __( 'Saving...', 'fluid-checkout' ),
+				),
+			)
+		);
+		wp_add_inline_script( 'fc-settings-page', '(function(){var i=function(){FCSettingsPage.init(window.fcSettingsPageSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );

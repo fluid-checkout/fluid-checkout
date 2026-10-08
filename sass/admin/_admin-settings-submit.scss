@@ -4,6 +4,7 @@
 
 // Fixed to the viewport so page scroll from a tall WP admin menu cannot move the bar.
 // Left/width are synced to the center column in `fc-settings-page.js`.
+// Hidden until `.is-pinned` so the bar does not flash full-width over the WP admin menu.
 .fc-settings-actions {
 	position: fixed;
 	left: 0;
@@ -23,11 +24,18 @@
 	background: $fc-settings-actions-background-color;
 	box-shadow: $fc-settings-actions-box-shadow;
 	box-sizing: border-box;
+	visibility: hidden;
+	pointer-events: none;
 
 	// Continue the nav/content separator: the sidebar face no longer stacks above this fixed bar
 	@media ( min-width: $fc-settings-nav-compact-breakpoint + 1px ) {
 		border-left: 1px solid $fc-settings-actions-border-color;
 	}
+}
+
+.fc-settings-actions.is-pinned {
+	visibility: visible;
+	pointer-events: auto;
 }
 
 .rtl .fc-settings-actions {
