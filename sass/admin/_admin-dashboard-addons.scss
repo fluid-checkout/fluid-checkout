@@ -336,19 +336,34 @@
 .fc-addons__item-actions--marketing {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: stretch;
 	gap: 10px;
 }
 
+// Two action buttons share the row evenly; a single button fills the width
 .fc-addons__item-actions--marketing .button,
 .fc-addons__item-actions--marketing .fc-settings-button {
+	flex: 1 1 0;
+	box-sizing: border-box;
 	width: auto;
 	max-width: none;
+	min-width: 0;
+	text-align: center;
 	white-space: nowrap;
+}
+
+// License select and notices span the full row below / above the button pair
+.fc-addons__item-actions--marketing .fc-addons__item-license-select,
+.fc-addons__item-actions--marketing .fc-addons__item-action-notice {
+	flex: 1 0 100%;
+	width: 100%;
 }
 
 .fc-addons__item-actions--marketing .button + .button,
 .fc-addons__item-actions--marketing .button + .fc-settings-button,
-.fc-addons__item-actions--marketing .fc-settings-button + .button {
+.fc-addons__item-actions--marketing .button + .fc-addons__item-action-notice,
+.fc-addons__item-actions--marketing .fc-settings-button + .button,
+.fc-addons__item-actions--marketing .fc-addons__item-license-select + .button,
+.fc-addons__item-actions--marketing .fc-addons__item-action-notice {
 	margin-top: 0;
 }

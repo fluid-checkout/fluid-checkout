@@ -49,6 +49,56 @@
 	};
 
 	/**
+	 * Resolve a settings tab slug from a clicked link.
+	 *
+	 * Prefers `data-fc-settings-nav-link`. Falls back to same-origin
+	 * `admin.php?page=fluid-checkout&tab=…` links inside the settings form.
+	 *
+	 * @param   {Element}  link  Anchor element.
+	 * @return  {string}         Tab slug, or empty string when not a settings tab link.
+	 */
+	var getTabFromSettingsLink = function( link ) {
+		var tab;
+		var href;
+		var parsed;
+
+		// Bail if link is missing
+		if ( ! link ) { return ''; }
+
+		tab = link.getAttribute( _settings.navLinkAttribute );
+
+		// Prefer the explicit nav-link attribute
+		if ( tab ) {
+			return tab;
+		}
+
+		// Bail if the link is outside the settings form
+		if ( ! link.closest( _settings.formSelector ) ) { return ''; }
+
+		// Bail if the link opens in a new browsing context
+		if ( link.target && '_self' !== String( link.target ).toLowerCase() ) { return ''; }
+
+		href = link.getAttribute( 'href' );
+
+		// Bail if href is missing or is a non-navigation value
+		if ( ! href || 0 === href.indexOf( '#' ) || 0 === href.indexOf( 'javascript:' ) ) { return ''; }
+
+		try {
+			parsed = new URL( href, window.location.origin );
+		} catch ( err ) {
+			return '';
+		}
+
+		// Bail if the link leaves this admin origin
+		if ( parsed.origin !== window.location.origin ) { return ''; }
+
+		// Bail if the link is not a Fluid Checkout settings URL
+		if ( 'fluid-checkout' !== parsed.searchParams.get( 'page' ) ) { return ''; }
+
+		return parsed.searchParams.get( 'tab' ) || '';
+	};
+
+	/**
 	 * Build the settings page URL for a tab slug.
 	 *
 	 * @param   {string}  tab  Tab slug.
@@ -263,24 +313,24 @@
 	};
 
 	/**
-	 * Handle clicks on settings sidebar navigation links.
+	 * Handle clicks on settings tab links (sidebar and in-page links).
 	 *
 	 * @param  {Event}  e  Click event.
 	 */
 	var handleNavClick = function( e ) {
-		var link = e.target.closest( _settings.navLinkSelector );
+		var link = e.target.closest( 'a' );
 		var tab;
 		var activePanel;
 
-		// Bail if click was not on a nav link
+		// Bail if click was not on a link
 		if ( ! link ) { return; }
 
 		// Bail if modifier keys were used (allow open in new tab)
 		if ( e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || 1 === e.button ) { return; }
 
-		tab = link.getAttribute( _settings.navLinkAttribute );
+		tab = getTabFromSettingsLink( link );
 
-		// Bail if tab slug is missing
+		// Bail if the link does not target a settings tab
 		if ( ! tab ) { return; }
 
 		activePanel = getActiveTabPanel();

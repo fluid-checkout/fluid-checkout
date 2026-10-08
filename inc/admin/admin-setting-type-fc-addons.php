@@ -169,19 +169,52 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 
 	/**
-	 * Whether a catalog item should show action buttons.
+	 * Whether a catalog item is the Fluid Checkout PRO bundle card.
 	 *
 	 * @param array $addon Catalog item.
 	 */
-	private function should_show_addon_actions( $addon ) {
-		$addon_id = isset( $addon['id'] ) ? $addon['id'] : '';
+	private function is_pro_bundle_addon( $addon ) {
+		return isset( $addon['id'] ) && 'fluid-checkout-pro' === $addon['id'];
+	}
 
-		// Hide EU-VAT assistant actions until PRO is activated
-		if ( 'fc-vat-assistant' === $addon_id && ! FluidCheckout::instance()->is_pro_activated() ) {
-			return false;
+
+
+	/**
+	 * Get the product page URL for a catalog item.
+	 *
+	 * @param array $addon Catalog item.
+	 * @return string
+	 */
+	private function get_addon_product_url( $addon ) {
+		if ( ! empty( $addon['product_url'] ) ) {
+			return (string) $addon['product_url'];
 		}
 
-		return true;
+		if ( ! empty( $addon['purchase_url'] ) ) {
+			return (string) $addon['purchase_url'];
+		}
+
+		return '';
+	}
+
+
+
+	/**
+	 * Output the Learn more link for a catalog item.
+	 *
+	 * @param array $addon Catalog item.
+	 */
+	private function output_learn_more_link( $addon ) {
+		$addon_id    = isset( $addon['id'] ) ? $addon['id'] : '';
+		$product_url = $this->get_addon_product_url( $addon );
+
+		// Bail if no product URL is available
+		if ( '' === $product_url ) { return; }
+
+		$learn_more_url = $this->get_tracked_product_url( $product_url, $addon_id, 'learn-more' );
+		?>
+		<a href="<?php echo esc_url( $learn_more_url ); ?>" class="fc-settings-button" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Learn more', 'fluid-checkout' ) ); ?></a>
+		<?php
 	}
 
 
@@ -197,13 +230,12 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		// Bail if plugin file is missing
 		if ( empty( $plugin_file ) ) { return; }
 
-		// Bail if actions should not be shown for this add-on
-		if ( ! $this->should_show_addon_actions( $addon ) ) { return; }
-
-		$is_activated = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
-		$is_installed = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
+		$is_activated   = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
+		$is_installed   = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
 		$is_coming_soon = ! empty( $addon['coming_soon'] );
-		$action_type  = 'purchase';
+		$is_pro_bundle  = $this->is_pro_bundle_addon( $addon );
+		$is_pro_active  = FluidCheckout::instance()->is_pro_activated();
+		$action_type    = 'purchase';
 
 		ob_start();
 
@@ -214,30 +246,50 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			<?php
 		elseif ( $is_installed ) :
 			$action_type = 'activate';
+			// Stand-alone add-ons require PRO to be activated
+			$activate_disabled = ! $is_pro_bundle && ! $is_pro_active;
+			$activate_classes  = 'button button-primary fc-addons__item-action--activate';
+			if ( $activate_disabled ) {
+				$activate_classes .= ' disabled';
+			}
 			?>
 			<button
 				type="button"
-				class="button button-primary fc-addons__item-action--activate"
+				class="<?php echo esc_attr( $activate_classes ); ?>"
 				data-action="activate"
 				data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
+				<?php disabled( $activate_disabled ); ?>
 			><?php echo esc_html( __( 'Activate add-on', 'fluid-checkout' ) ); ?></button>
+			<?php
+			// Stand-alone add-ons: Learn more stays enabled even when Activate is disabled
+			if ( ! $is_pro_bundle ) {
+				$this->output_learn_more_link( $addon );
+			}
+			?>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
 		elseif ( $is_coming_soon ) :
-			$action_type  = 'coming_soon';
-			$addon_id     = isset( $addon['id'] ) ? $addon['id'] : '';
-			$product_url  = ! empty( $addon['product_url'] ) ? $addon['product_url'] : ( isset( $addon['purchase_url'] ) ? $addon['purchase_url'] : '' );
+			$action_type      = 'coming_soon';
+			$addon_id         = isset( $addon['id'] ) ? $addon['id'] : '';
+			$product_url      = $this->get_addon_product_url( $addon );
 			$early_access_url = $this->get_tracked_product_url( $product_url, $addon_id, 'early-access' );
-			$learn_more_url   = $this->get_tracked_product_url( $product_url, $addon_id, 'learn-more' );
 			?>
 			<a href="<?php echo esc_url( $early_access_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Get early access', 'fluid-checkout' ) ); ?></a>
-			<a href="<?php echo esc_url( $learn_more_url ); ?>" class="fc-settings-button" target="_blank" rel="noopener noreferrer"><?php echo esc_html( __( 'Learn more', 'fluid-checkout' ) ); ?></a>
+			<?php $this->output_learn_more_link( $addon ); ?>
 			<?php
+		// Lite only: Learn more for stand-alone add-ons (purchase stays on the PRO bundle card)
+		elseif ( ! $is_pro_bundle && ! $is_pro_active ) :
+			$action_type = 'learn_more';
+			$this->output_learn_more_link( $addon );
 		else :
 			$action_type = 'purchase';
 			?>
 			<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo wp_kses_post( $addon['purchase_label'] ); ?></a>
 			<?php
+			// Stand-alone add-ons also get Learn more beside purchase (PRO may replace with Install + Learn more)
+			if ( ! $is_pro_bundle ) {
+				$this->output_learn_more_link( $addon );
+			}
 		endif;
 
 		$html = (string) ob_get_clean();
@@ -247,7 +299,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		 *
 		 * @param string $html        Default actions HTML.
 		 * @param array  $addon       Catalog item.
-		 * @param string $action_type activated|activate|purchase|coming_soon (or custom from extensions).
+		 * @param string $action_type activated|activate|purchase|coming_soon|learn_more (or custom from extensions).
 		 * @param string $plugin_file Plugin basename.
 		 */
 		echo apply_filters( 'fc_dashboard_addon_actions_html', $html, $addon, $action_type, $plugin_file ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -267,7 +319,8 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		$plugin_file  = isset( $addon['plugin_file'] ) ? $addon['plugin_file'] : '';
 		$is_activated = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$is_installed = ! empty( $plugin_file ) && FluidCheckout::instance()->is_plugin_installed( $plugin_file );
-		$is_marketing = ! empty( $addon['coming_soon'] ) && ! $is_activated && ! $is_installed;
+		// Marketing layout for stand-alone add-on CTAs (Learn more, Activate/Install + Learn more)
+		$is_marketing = ! $is_activated && ( ! empty( $addon['coming_soon'] ) || ! $this->is_pro_bundle_addon( $addon ) );
 
 		$item_class = 'fc-addons__item';
 		if ( ! empty( $addon['item_class'] ) ) {
@@ -314,20 +367,18 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					</div>
 				<?php endif; ?>
 			</div>
-			<?php if ( $this->should_show_addon_actions( $addon ) ) : ?>
-				<div class="fc-addons__item-footer">
-					<div class="<?php echo esc_attr( $actions_class ); ?>">
-						<?php if ( 'bundle' === $addon['type'] ) : ?>
-							<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( $addon['purchase_label'] ); ?></a>
-							<?php if ( ! empty( $addon['dismiss_notice'] ) ) : ?>
-								<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $addon['dismiss_notice'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'I already have it – Hide this offer', 'fluid-checkout' ) ); ?></a>
-							<?php endif; ?>
-						<?php else : ?>
-							<?php $this->output_plugin_addon_actions( $addon ); ?>
+			<div class="fc-addons__item-footer">
+				<div class="<?php echo esc_attr( $actions_class ); ?>">
+					<?php if ( 'bundle' === $addon['type'] ) : ?>
+						<a href="<?php echo esc_url( $addon['purchase_url'] ); ?>" class="button button-primary" target="_blank"><?php echo esc_html( $addon['purchase_label'] ); ?></a>
+						<?php if ( ! empty( $addon['dismiss_notice'] ) ) : ?>
+							<a href="<?php echo esc_url( add_query_arg( array( 'fc_action' => 'dismiss_notice', 'fc_notice' => $addon['dismiss_notice'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ); ?>" class="button"><?php echo esc_html( __( 'I already have it – Hide this offer', 'fluid-checkout' ) ); ?></a>
 						<?php endif; ?>
-					</div>
+					<?php else : ?>
+						<?php $this->output_plugin_addon_actions( $addon ); ?>
+					<?php endif; ?>
 				</div>
-			<?php endif; ?>
+			</div>
 		</li>
 		<?php
 	}

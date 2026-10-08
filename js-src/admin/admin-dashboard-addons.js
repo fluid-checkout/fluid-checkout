@@ -214,6 +214,9 @@
 
 		e.preventDefault();
 
+		// Bail if the control is disabled (e.g. add-on installed while PRO is inactive)
+		if ( button.disabled || button.classList.contains( 'disabled' ) ) { return; }
+
 		// Bail if AJAX not configured
 		if ( ! plugin || ! _settings.ajaxUrl || ! _settings.activateNonce ) { return; }
 

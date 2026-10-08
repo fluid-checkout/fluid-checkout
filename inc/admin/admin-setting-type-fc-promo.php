@@ -166,13 +166,23 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		ob_start();
 
 		if ( $is_installed ) :
+			// Add-on activate requires PRO; PRO itself can still be activated without that gate
+			$activate_disabled = ! $is_pro_promo && ! FluidCheckout::instance()->is_pro_activated();
+			$activate_classes  = 'button button-primary fc-addons__item-action--activate';
+			if ( $activate_disabled ) {
+				$activate_classes .= ' disabled';
+			}
+			$activate_label = $is_pro_promo
+				? __( 'Activate plugin', 'fluid-checkout' )
+				: __( 'Activate add-on', 'fluid-checkout' );
 			?>
 			<button
 				type="button"
-				class="button button-primary fc-addons__item-action--activate"
+				class="<?php echo esc_attr( $activate_classes ); ?>"
 				data-action="activate"
 				data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
-			><?php echo esc_html( __( 'Activate plugin', 'fluid-checkout' ) ); ?></button>
+				<?php disabled( $activate_disabled ); ?>
+			><?php echo esc_html( $activate_label ); ?></button>
 			<div class="fc-addons__item-action-notice" hidden></div>
 			<?php
 		elseif ( $is_pro_promo ) :
