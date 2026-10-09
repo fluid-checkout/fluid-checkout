@@ -30,7 +30,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php if ( count( $available_methods ) > 0 ) : ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
-			<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
+			<?php
+				/**
+				 * Filters the opening markup of the shipping method options list.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $html HTML markup.
+				 */
+				echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' );
+			?>
 
 			<?php // CHANGE: Add shipping methods elements markup ?>
 			<?php
@@ -40,6 +49,14 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 
 				// Get contents after the shipping rate
 				ob_start();
+				/**
+				 * Fires after the shipping rate.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param WC_Shipping_Rate $method        Method.
+				 * @param int              $package_index Zero-based package index.
+				 */
 				do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
 				$after_shipping_rate = ob_get_clean();
 				if ( ! empty( $after_shipping_rate ) ) {
@@ -55,6 +72,17 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 					$label_extra_classes = 'has-tax-notes';
 				}
 
+				/**
+				 * Filters the HTML for the shipping method option.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string           $html          HTML markup.
+				 * @param WC_Shipping_Rate $method        Method.
+				 * @param int              $package_index Zero-based package index.
+				 * @param string           $chosen_method Chosen method.
+				 * @param mixed            $first         First.
+				 */
 				echo apply_filters( 'fc_shipping_method_option_markup',
 					sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
 						<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
@@ -74,7 +102,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 			endforeach; ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element closing tag ?>
-			<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
+			<?php
+				/**
+				 * Filters the closing markup of the shipping method options list.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $html HTML markup. Default `</ul>`.
+				 */
+				echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' );
+			?>
 
 			<?php // CHANGE: Remove shipping calculator and related messages, moved to template file `fc-pro/cart/cart/shipping-methods-calculate-shipping.php` ?>
 
@@ -90,7 +127,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php if ( is_checkout() && 0 === count( $available_methods ) && ( $has_calculated_shipping || 'yes' !== FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) ) ) : ?>
 		<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 			<div class="shipping-method__options">
-				<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
+				<?php
+					/**
+					 * Filters the message shown when no shipping methods are available.
+					 *
+					 * @since 1.4.1
+					 *
+					 * @param string $html HTML markup.
+					 */
+					echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) );
+				?>
 			</div>
 		</div>
 	<?php endif; ?>
@@ -99,7 +145,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php if ( is_checkout() && 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_shipping_cost_requires_address' ) && ! $has_calculated_shipping ) : ?>
 		<div class="fc-shipping-method__incomplete-address shipping-method__package">
 			<div class="shipping-method__options">
-				<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>
+				<?php
+					/**
+					 * Filters the message shown when shipping methods may become available after an address is entered.
+					 *
+					 * @since 2.3.1
+					 *
+					 * @param string $html HTML markup.
+					 */
+					echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) );
+				?>
 			</div>
 		</div>
 	<?php endif; ?>

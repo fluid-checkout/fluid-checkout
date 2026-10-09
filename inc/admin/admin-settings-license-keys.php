@@ -47,6 +47,13 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 	 */
 	public function add_sections( $sections ) {
 		// Bail if not plugins with require license keys are active
+		/**
+		 * Filters whether the license keys settings section is registered.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param bool $settings Settings to output. Default false.
+		 */
 		if ( false === apply_filters( 'fc_show_settings_license_keys', false ) ) { return $sections; }
 
 		// Insert as the last section
@@ -67,6 +74,13 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 	 */
 	public function add_settings_group( $settings, $current_section ) {
 		// Bail if license keys group already exists
+		/**
+		 * Filters whether the license keys settings group has already been added.
+		 *
+		 * @since 4.0.5
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( apply_filters( 'fc_admin_license_keys_group_exists', false ) ) { return $settings; }
 
 		// Bail if not on correct section
@@ -83,6 +97,20 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 			),
 		);
 
+		/**
+		 * Filters extra settings rows appended to a Fluid Checkout settings section.
+		 *
+		 * The dynamic portion of the hook name, `$current_section`, refers to the settings section
+		 * slug. At this call the section is fixed by the surrounding condition.
+		 * Possible hook names include:
+		 *
+		 * - `fc_license_keys_settings_add`
+		 *
+		 * @since 1.3.1
+		 *
+		 * @param array  $value           Value to filter. Default empty array.
+		 * @param string $current_section Current settings section slug. An empty string is the dashboard section.
+		 */
 		$settings_add = apply_filters( 'fc_'.$current_section.'_settings_add', array(), $current_section );
 
 		// Maybe add notice when no integrations are available
@@ -110,6 +138,20 @@ class WC_Settings_FluidCheckout_LicenseKeys_Settings extends WC_Settings_Page {
 			),
 		) );
 
+		/**
+		 * Filters the settings for one Fluid Checkout admin section.
+		 *
+		 * The dynamic portion of the hook name, `$current_section`, refers to the settings section
+		 * slug. At this call the section is fixed by the surrounding condition.
+		 * Possible hook names include:
+		 *
+		 * - `fc_license_keys_settings`
+		 *
+		 * @since 1.3.1
+		 *
+		 * @param array  $settings_new    Settings for the current section.
+		 * @param string $current_section Current settings section slug. An empty string is the dashboard section.
+		 */
 		$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings_new, $current_section );
 
 		return $settings;

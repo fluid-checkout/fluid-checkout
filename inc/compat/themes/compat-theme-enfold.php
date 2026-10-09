@@ -56,6 +56,16 @@ class FluidCheckout_ThemeCompat_Enfold extends FluidCheckout {
 			$_template = $plugin_path . $template_name;
 
 			// Look for template file in the theme
+			/**
+			 * Filters whether a theme template file may replace a plugin template.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 				$_template_override = locate_template( array(
 					trailingslashit( $template_path ) . $template_name,

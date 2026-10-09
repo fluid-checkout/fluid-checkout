@@ -35,6 +35,18 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_sections() {
+		/**
+		 * Filters the sections of the Fluid Checkout WooCommerce settings tab.
+		 *
+		 * The dynamic portion of the hook name, `$this->id`, is the settings tab ID.
+		 * Possible hook names include:
+		 *
+		 * - `woocommerce_get_sections_fc_checkout`
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $value Value to filter. Default empty array.
+		 */
 		return apply_filters( 'woocommerce_get_sections_' . $this->id, array() );
 	}
 
@@ -63,6 +75,24 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 		WC_Admin_Settings::save_fields( $settings );
 
 		if ( $current_section ) {
+			/**
+			 * Fires when a Fluid Checkout settings section is saved.
+			 *
+			 * The dynamic portions of the hook name are the settings tab ID (`$this->id`,
+			 * `fc_checkout`) and the current section slug. The action only runs when a section slug is
+			 * present. Additional sections registered on the tab create further hook names.
+			 * Possible hook names include:
+			 *
+			 * - `woocommerce_update_options_fc_checkout_checkout`
+			 * - `woocommerce_update_options_fc_checkout_cart`
+			 * - `woocommerce_update_options_fc_checkout_order_pay`
+			 * - `woocommerce_update_options_fc_checkout_order_received`
+			 * - `woocommerce_update_options_fc_checkout_integrations`
+			 * - `woocommerce_update_options_fc_checkout_tools`
+			 * - `woocommerce_update_options_fc_checkout_license_keys`
+			 *
+			 * @since 1.2.0
+			 */
 			do_action( 'woocommerce_update_options_' . $this->id . '_' . $current_section );
 		}
 	}
@@ -76,6 +106,19 @@ class WC_Settings_FluidCheckout_Checkout extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings( $current_section = '' ) {
+		/**
+		 * Filters the settings fields for the Fluid Checkout WooCommerce settings tab.
+		 *
+		 * The dynamic portion of the hook name, `$this->id`, is the settings tab ID.
+		 * Possible hook names include:
+		 *
+		 * - `woocommerce_get_settings_fc_checkout`
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array  $value           Value to filter. Default empty array.
+		 * @param string $current_section Current settings section slug. An empty string is the dashboard section.
+		 */
 		return apply_filters( 'woocommerce_get_settings_' . $this->id, array(), $current_section );
 	}
 

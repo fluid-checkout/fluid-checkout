@@ -63,6 +63,13 @@ class FluidCheckout_AccountEditAddress extends FluidCheckout {
 		$add_classes = array();
 
 		// Add extra class to enable form fields font-size styles
+		/**
+		 * Filters whether form fields use a 16px font size to prevent mobile browsers from zooming in.
+		 *
+		 * @since 4.0.1
+		 *
+		 * @param string $value Value to filter.
+		 */
 		if ( true === apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_fix_zoom_in_form_fields_mobile_devices' ) ) ) ) {
 			$add_classes[] = 'has-form-field-font-size-fix';
 		}
@@ -161,6 +168,14 @@ class FluidCheckout_AccountEditAddress extends FluidCheckout {
 		$fields = WC()->countries->get_address_fields( $country, $load_address . '_' );
 
 		// Apply same filters as the native WooCommerce edit address form
+		/**
+		 * Filters the address to edit.
+		 *
+		 * @since 4.2.5
+		 *
+		 * @param array $fields       Fields.
+		 * @param mixed $load_address Load address.
+		 */
 		$fields = apply_filters( 'woocommerce_address_to_edit', $fields, $load_address );
 
 		// Remove field values, only field arguments are needed for JS

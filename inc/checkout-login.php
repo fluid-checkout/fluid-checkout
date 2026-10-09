@@ -20,6 +20,13 @@ class FluidCheckout_Login extends FluidCheckout {
 	 */
 	public function is_feature_enabled() {
 		// Bail if feature is disabled
+		/**
+		 * Filters whether AJAX login is enabled at checkout.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		if ( true !== apply_filters( 'fc_enable_checkout_ajax_login', true ) ) { return false; }
 
 		return true;
@@ -116,6 +123,13 @@ class FluidCheckout_Login extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 		// Add settings
+		/**
+		 * Filters the login settings passed to the frontend script.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'checkoutLogin' ] = apply_filters( 'fc_checkout_login_script_settings', array(
 			'checkoutLoginNonce' => wp_create_nonce( 'fc-checkout-login' ),
 		) );
@@ -142,6 +156,15 @@ class FluidCheckout_Login extends FluidCheckout {
 			);
 
 			$validation_error = new WP_Error();
+			/**
+			 * Filters the process login errors.
+			 *
+			 * @since 4.0.4
+			 *
+			 * @param WP_Error $validation_error Login validation error. Add an error to block the login.
+			 * @param string   $user_login       Submitted username or email address.
+			 * @param string   $user_password    Submitted password.
+			 */
 			$validation_error = apply_filters( 'woocommerce_process_login_errors', $validation_error, $creds['user_login'], $creds['user_password'] );
 
 			if ( $validation_error->get_error_code() ) {
@@ -162,6 +185,13 @@ class FluidCheckout_Login extends FluidCheckout {
 			}
 
 			// Perform the login.
+			/**
+			 * Filters the login credentials.
+			 *
+			 * @since 4.0.4
+			 *
+			 * @param mixed $creds Creds.
+			 */
 			$user = wp_signon( apply_filters( 'woocommerce_login_credentials', $creds ), is_ssl() );
 
 			if ( is_wp_error( $user ) ) {
@@ -189,10 +219,22 @@ class FluidCheckout_Login extends FluidCheckout {
 		}
 		catch ( Exception $e ) {
 			// CHANGE: Replace `wc_add_notice` with JSON response.
+			/**
+			 * Fires when a checkout login attempt fails.
+			 *
+			 * @since 4.0.4
+			 */
 			do_action( 'woocommerce_login_failed' );
 			wp_send_json(
 				array(
 					'result'   => 'error',
+					/**
+					 * Filters the login errors.
+					 *
+					 * @since 4.0.4
+					 *
+					 * @param mixed $getMessage GetMessage.
+					 */
 					'message'  => apply_filters( 'login_errors', $e->getMessage() ),
 				)
 			);

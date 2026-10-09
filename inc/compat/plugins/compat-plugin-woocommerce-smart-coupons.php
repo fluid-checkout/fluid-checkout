@@ -239,6 +239,13 @@ class FluidCheckout_WooCommerceSmartCoupons extends FluidCheckout {
 			),
 		);
 
+		/**
+		 * Filters the Smart Coupons integration settings.
+		 *
+		 * @since 4.1.4
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings_new = array_merge( $settings_new, apply_filters( 'fc_integrations_woocommerce_smart_coupons_settings',
 			array(
 				array(	

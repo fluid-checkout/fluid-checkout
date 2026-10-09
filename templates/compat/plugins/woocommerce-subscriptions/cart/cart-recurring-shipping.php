@@ -30,13 +30,34 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 	<?php // CHANGE: Conditionally add the shipping package name ?>
 	<?php if ( FluidCheckout_Steps::instance()->is_shipping_package_name_display_enabled() ) : ?>
 		<?php // CHANGE: Filter the package name at the output as only the first shipping package name is displayed by default for subscriptions ?> 
-		<p class="shipping-method__package-name"><?php echo esc_html( apply_filters( 'fc_subscription_shipping_package_name', $package_name, $package_index, $package, $recurring_cart ) ); ?></p>
+		<p class="shipping-method__package-name"><?php
+			/**
+			 * Filters the name of a subscription recurring shipping package.
+			 *
+			 * @since 3.2.5
+			 *
+			 * @param string $package_name   Package name.
+			 * @param int    $package_index  Zero-based package index.
+			 * @param array  $package        Shipping package data.
+			 * @param array  $recurring_cart Recurring cart data for the subscription.
+			 */
+			echo esc_html( apply_filters( 'fc_subscription_shipping_package_name', $package_name, $package_index, $package, $recurring_cart ) );
+		?></p>
 	<?php endif; ?>
 
 	<?php // CHANGE: Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
 	<?php if ( 1 < count( $available_methods ) ) : ?>
 		<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
-		<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
+		<?php
+			/**
+			 * Filters the opening markup of the shipping method options list.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $html HTML markup.
+			 */
+			echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' );
+		?>
 
 		<?php // CHANGE: Remove special treatment for when only one shipping method is available ?>
 			<?php
@@ -46,6 +67,14 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 
 				// Get contents after the shipping rate
 				ob_start();
+				/**
+				 * Fires after the shipping rate.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param WC_Shipping_Rate $method        Method.
+				 * @param int              $package_index Zero-based package index.
+				 */
 				do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
 				$after_shipping_rate = ob_get_clean();
 				if ( ! empty( $after_shipping_rate ) ) {
@@ -61,6 +90,17 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 					$label_extra_classes = 'has-tax-notes';
 				}
 
+				/**
+				 * Filters the HTML for the shipping method option.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string           $html          HTML markup.
+				 * @param WC_Shipping_Rate $method        Method.
+				 * @param int              $package_index Zero-based package index.
+				 * @param string           $chosen_method Chosen method.
+				 * @param mixed            $first         First.
+				 */
 				echo apply_filters( 'fc_shipping_method_option_markup',
 					sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$s]" data-index="%1$s" id="shipping_method_%1$s_%2$s" value="%3$s" class="shipping_method" %4$s />
 						<label for="shipping_method_%1$s_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
@@ -79,7 +119,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 				$first = false;
 			endforeach; ?>
 
-		<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
+		<?php
+			/**
+			 * Filters the closing markup of the shipping method options list.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $html HTML markup. Default `</ul>`.
+			 */
+			echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' );
+		?>
 
 		<?php if ( FluidCheckout_WooCommerceSubscriptions::instance()->get_all_packages_count() > 1 ) : ?>
 			<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( FluidCheckout_WooCommerceSubscriptions::instance()->get_package_details( $package ) ) . '</small></p>'; ?>
@@ -93,13 +142,31 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php if ( $has_calculated_shipping && $formatted_destination ) : ?>
 			<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 				<div class="shipping-method__options">
-					<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
+					<?php
+						/**
+						 * Filters the message shown when no shipping methods are available.
+						 *
+						 * @since 1.4.1
+						 *
+						 * @param string $html HTML markup.
+						 */
+						echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) );
+					?>
 				</div>
 			</div>
 		<?php else: ?>
 			<div class="fc-shipping-method__incomplete-address shipping-method__package">
 				<div class="shipping-method__options">
-					<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>
+					<?php
+						/**
+						 * Filters the message shown when shipping methods may become available after an address is entered.
+						 *
+						 * @since 2.3.1
+						 *
+						 * @param string $html HTML markup.
+						 */
+						echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) );
+					?>
 				</div>
 			</div>
 		<?php endif; ?>

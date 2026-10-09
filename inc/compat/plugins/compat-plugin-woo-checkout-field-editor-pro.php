@@ -42,6 +42,13 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 	 */
 	public function account_edit_address_hooks() {
 		// Bail if account edit address is disabled for this plugin
+		/**
+		 * Filters whether Checkout Field Editor Pro changes are applied on the edit-address screen.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $value Value to filter. Default `yes`.
+		 */
 		if ( 'yes' !== apply_filters( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes', 'yes' ) ) { return; }
 
 		// Get the plugin public class object
@@ -51,9 +58,20 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 		if ( ! self::$thwcfd_public ) { return; }
 
 		/**
-		 * @see THWCFD_Public_Checkout::define_public_hooks()
+		 * Filters the billing field priority used by Checkout Field Editor for WooCommerce.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param int $priority Hook or step priority. Default 1000.
 		 */
 		$hp_billing_fields  = apply_filters( 'thwcfd_billing_fields_priority', 1000 );
+		/**
+		 * Filters the shipping field priority used by Checkout Field Editor for WooCommerce.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param int $priority Hook or step priority. Default 1000.
+		 */
 		$hp_shipping_fields = apply_filters( 'thwcfd_shipping_fields_priority', 1000 );
 
 		// Add filters to apply changes to the billing and shipping fields on the edit address screen

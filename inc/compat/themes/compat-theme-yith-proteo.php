@@ -76,6 +76,13 @@ class FluidCheckout_ThemeCompat_YithProteo extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $attributes; }
 
 		// Get sticky header setting from the theme
+		/**
+		 * Filters whether the YITH Proteo sticky header is enabled.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param string $enabled Sticky header setting. `yes` or `no`. Default `no`.
+		 */
 		$is_sticky = apply_filters( 'yith_proteo_enable_sticky_header', get_theme_mod( 'yith_proteo_header_sticky', 'no' ) );
 
 		// Bail if sticky header is not enabled

@@ -188,6 +188,16 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			$_template = $plugin_path . $template_name;
 
 			// Look for template file in the theme
+			/**
+			 * Filters whether a theme template file may replace a plugin template.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 				$_template_override = locate_template( array(
 					trailingslashit( $template_path ) . $template_name,
@@ -254,6 +264,11 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 * Execute actions from the Germanized template `review-order-product-table.php` for compatibility.
 	 */
 	public function do_action_woocommerce_gzd_review_order_before_cart_contents() {
+		/**
+		 * Fires before the cart contents in the Germanized order review.
+		 *
+		 * @since 1.3.0
+		 */
 		do_action( 'woocommerce_gzd_review_order_before_cart_contents' );
 	}
 
@@ -362,6 +377,14 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			return false;
 		}
 
+		/**
+		 * Filters the gzd coupon is voucher.
+		 *
+		 * @since 3.2.1
+		 *
+		 * @param string $value  Value to filter.
+		 * @param mixed  $coupon Coupon.
+		 */
 		return apply_filters( 'woocommerce_gzd_coupon_is_voucher', ( 'yes' === $coupon->get_meta( 'is_voucher', true ) ), $coupon );
 	}
 
@@ -410,6 +433,14 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! $this->coupon_is_voucher( $coupon ) ) { return $label; }
 
 		// Get the voucher label
+		/**
+		 * Filters the gzd voucher name.
+		 *
+		 * @since 3.2.1
+		 *
+		 * @param string $value    Value to filter.
+		 * @param mixed  $get_code Get code.
+		 */
 		$label = apply_filters( 'woocommerce_gzd_voucher_name', sprintf( __( 'Voucher: %1$s', 'woocommerce-germanized' ), $coupon->get_code() ), $coupon->get_code() );
 
 		return $label;

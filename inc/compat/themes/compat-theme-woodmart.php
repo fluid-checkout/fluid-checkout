@@ -57,6 +57,13 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		if ( ! class_exists( 'XTS\Modules\Checkout_Order_Table' ) ) { return; }
 
 		// Check whether to disable theme checkout options
+		/**
+		 * Filters whether WoodMart checkout options are disabled while Fluid Checkout is active.
+		 *
+		 * @since 3.0.2
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_woodmart_disable_theme_checkout_options' ) || true === apply_filters( 'fc_compat_theme_woodmart_disable_theme_checkout_options', false ) ) {
 			// Get theme class instances
 			$checkout_module_instance = XTS\Modules\Checkout_Order_Table::get_instance();

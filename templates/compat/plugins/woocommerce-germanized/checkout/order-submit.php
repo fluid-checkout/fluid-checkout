@@ -33,6 +33,11 @@ if ( ! function_exists( 'wc_gzd_wp_theme_get_element_class_name' ) ) {
 }
 
 if ( ! wp_doing_ajax() ) {
+	/**
+	 * Fires before the Germanized checkout order-submit section.
+	 *
+	 * @since 4.2.5
+	 */
 	do_action( 'woocommerce_gzd_before_checkout_order_submit' );
 }
 ?>
@@ -44,7 +49,14 @@ if ( ! wp_doing_ajax() ) {
 			<button type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch ?></button>
 		</noscript>
 
-		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
+		<?php
+			/**
+			 * Fires before the place order button.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'woocommerce_review_order_before_submit' );
+		?>
 
 		<?php
 		/**
@@ -57,7 +69,16 @@ if ( ! wp_doing_ajax() ) {
 		do_action( 'woocommerce_gzd_review_order_before_submit' );
 		?>
 
-		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt' . esc_attr( wc_gzd_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_gzd_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php
+			/**
+			 * Filters the place order button HTML.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $html HTML markup.
+			 */
+			echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt' . esc_attr( wc_gzd_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_gzd_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		?>
 
 		<input type="hidden" name="wc_gzd_order_submit_button_shown" value="1" />
 
@@ -65,12 +86,31 @@ if ( ! wp_doing_ajax() ) {
 		<?php wp_nonce_field( 'woocommerce-process_checkout' ); ?>
 		<?php // CHANGE: END - Remove conditional to output the checkout nonce ?>
 
-		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
+		<?php
+			/**
+			 * Fires after the place order button.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'woocommerce_review_order_after_submit' );
+		?>
 
-		<?php do_action( 'woocommerce_gzd_review_order_after_submit' ); ?>
+		<?php
+			/**
+			 * Fires after the order submit button in Germanized for WooCommerce.
+			 *
+			 * @since 4.2.5
+			 */
+			do_action( 'woocommerce_gzd_review_order_after_submit' );
+		?>
 	</div>
 </div>
 <?php
 if ( ! wp_doing_ajax() ) {
+	/**
+	 * Fires after the Germanized checkout order-submit section.
+	 *
+	 * @since 4.2.5
+	 */
 	do_action( 'woocommerce_gzd_after_checkout_order_submit' );
 }

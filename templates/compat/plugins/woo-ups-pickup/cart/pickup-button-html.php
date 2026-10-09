@@ -11,6 +11,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+/**
+ * Fires before the pickup button HTML.
+ *
+ * @since 2.0.9
+ */
 do_action( 'woocommerce_before_pickup_button_html' ); ?>
 <?php // CHANGE: From table elements to `div` elements ?>
 <div class="pickups_location" onclick="window.PickupsSDK.onClick();return;" style="cursor: pointer;">
@@ -26,4 +31,11 @@ do_action( 'woocommerce_before_pickup_button_html' ); ?>
     </div>
 <?php // CHANGE: From table elements to `div` elements ?>
 </div>
-<?php do_action( 'woocommerce_after_pickup_button_html' ); ?>
+<?php
+	/**
+	 * Fires after the UPS pickup button HTML.
+	 *
+	 * @since 2.0.9
+	 */
+	do_action( 'woocommerce_after_pickup_button_html' );
+?>

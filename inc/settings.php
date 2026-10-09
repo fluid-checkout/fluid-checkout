@@ -183,6 +183,13 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
 		);
 
+		/**
+		 * Filters the default values for Fluid Checkout options.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array $defaults Default option values keyed by option name.
+		 */
 		return apply_filters( 'fc_default_option_values', $defaults );
 	}
 

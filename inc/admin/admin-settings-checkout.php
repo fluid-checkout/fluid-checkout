@@ -64,6 +64,13 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( 'checkout' === $current_section ) {
 
+			/**
+			 * Filters the checkout settings fields.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_checkout_general_settings',
 				array(

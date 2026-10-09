@@ -107,6 +107,13 @@ class FluidCheckout_WooCommerceMyParcel extends FluidCheckout {
 			}
 		}
 
+		/**
+		 * Filters the wc myparcel show delivery options.
+		 *
+		 * @since 3.2.6
+		 *
+		 * @param mixed $showDeliveryOptions ShowDeliveryOptions.
+		 */
 		return apply_filters( 'wc_myparcel_show_delivery_options', $showDeliveryOptions );
 	}
 

@@ -22,9 +22,27 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <div class="woocommerce-additional-fields">
-	<?php do_action( 'woocommerce_before_order_notes', $checkout ); ?>
+	<?php
+		/**
+		 * Fires before the order notes field.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param WC_Checkout $checkout Checkout object.
+		 */
+		do_action( 'woocommerce_before_order_notes', $checkout );
+	?>
 
-	<?php if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) : ?>
+	<?php
+		/**
+		 * Filters whether the order notes field is enabled.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $value Value to filter.
+		 */
+		if ( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) :
+	?>
 
 		<?php // CHANGE: Remove section title "Additional Information" because it is already added as the substep title ?>
 
@@ -36,5 +54,14 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php endif; ?>
 
-	<?php do_action( 'woocommerce_after_order_notes', $checkout ); ?>
+	<?php
+		/**
+		 * Fires after the order notes field.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param WC_Checkout $checkout Checkout object.
+		 */
+		do_action( 'woocommerce_after_order_notes', $checkout );
+	?>
 </div>

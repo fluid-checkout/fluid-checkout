@@ -24,13 +24,15 @@ $lightbox_option = avia_get_option( 'lightbox_active' );
 $avia_config['use_standard_lightbox'] = empty( $lightbox_option ) || ( 'lightbox_active' == $lightbox_option ) ? 'lightbox_active' : 'disabled';
 
 /**
- * Allow to overwrite the option setting for using the standard lightbox
- * Make sure to return 'disabled' to deactivate the standard lightbox - all checks are done against this string
+ * Filters whether Enfold uses its standard lightbox.
  *
- * @added_by Günter
+ * Allow to overwrite the option setting for using the standard lightbox
+ * Make sure to return 'disabled' to deactivate the standard lightbox - all checks are done
+ * against this string
+ *
  * @since 4.2.6
- * @param string $use_standard_lightbox				'lightbox_active' | 'disabled'
- * @return string									'lightbox_active' | 'disabled'
+ *
+ * @param string $use_standard_lightbox Whether the standard lightbox is active. `lightbox_active` or `disabled`.
  */
 $avia_config['use_standard_lightbox'] = apply_filters( 'avf_use_standard_lightbox', $avia_config['use_standard_lightbox'] );
 
@@ -123,17 +125,25 @@ $avia_config['footer_behavior'] = $footer_behavior;
 $avia_config['footer_media'] = $footer_media;
 
 /**
+ * Filters whether the Enfold lightbox shows the image alt text.
+ *
  * If title attribute is missing for an image default lightbox displays the alt attribute
  *
  * @since 4.7.6.2
- * @param bool
- * @return false|mixed			anything except false will activate this feature
+ *
+ * @param bool $text Text to display. Default false.
  */
 $body_classes[] = false !== apply_filters( 'avf_lightbox_show_alt_text', false ) ? 'avia-mfp-show-alt-text' : '';
 
 /**
+ * Filters whether the Enfold burger menu is active.
+ *
  * Allows to alter default settings Enfold-> Main Menu -> General -> Menu Items for Desktop
+ *
  * @since 4.4.2
+ *
+ * @param bool   $is_burger_menu Whether the burger menu is active.
+ * @param string $context        Menu context. Default `header`.
  */
 $is_burger_menu = apply_filters( 'avf_burger_menu_active', avia_is_burger_menu(), 'header' );
 $html_classes[] = $is_burger_menu ? 'html_burger_menu_active' : 'html_text_menu_active';
@@ -145,15 +155,23 @@ if( ! $is_burger_menu )
 }
 
 /**
+ * Filters extra body classes added by Enfold.
+ *
  * Add additional custom body classes
  * e.g. to disable default image hover effect add av-disable-avia-hover-effect
  *
  * @since 4.4.2
+ *
+ * @param string $classes CSS classes. Default empty string.
  */
 $body_classes[] = apply_filters( 'avf_custom_body_classes', '' );
 
 /**
- * @since 4.2.3 we support columns in rtl order (before they were ltr only). To be backward comp. with old sites use this filter.
+ * Filters whether Enfold columns use RTL order.
+ *
+ * @since 4.2.3
+ *
+ * @param string $value Value to filter. Default `yes`.
  */
 $body_classes[] = 'yes' == apply_filters( 'avf_rtl_column_support', 'yes' ) ? 'rtl_columns' : '';
 
@@ -197,9 +215,11 @@ if( function_exists( 'avia_set_follow' ) )
 $meta_viewport = ( strpos( $responsive, 'responsive' ) !== false ) ?  '<meta name="viewport" content="width=device-width, initial-scale=1">' : '';
 
 /**
+ * Filters the Enfold viewport meta tag content.
+ *
  * @since 4.7.6.4
- * @param string
- * @return string
+ *
+ * @param string $meta_viewport Viewport meta tag content.
  */
 echo apply_filters( 'avf_header_meta_viewport', $meta_viewport );
 ?>
@@ -228,9 +248,19 @@ $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
 	}
 	else
 	{
+		/**
+		 * Fires after the opening body tag.
+		 *
+		 * @since 1.6.1
+		 */
 		do_action( 'wp_body_open' );
 	}
 
+	/**
+	 * Fires after the opening body tag in the Enfold header markup.
+	 *
+	 * @since 1.6.1
+	 */
 	do_action( 'ava_after_body_opening_tag' );
 	?>
 
@@ -241,7 +271,14 @@ $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
 <!-- CHANGE: Added opening div tag for #wrap_all -->
 <div id='wrap_all'>
 
-<?php do_action( 'fc_checkout_header' ); ?>
+<?php
+	/**
+	 * Fires inside the distraction-free checkout header.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_header' );
+?>
 
 <?php // CHANGE: Added class and attributes from theme ?>
 <main id="main" class="content-area fc-main all_colors" data-scroll-offset="<?php echo avia_header_setting( 'header_scroll_offset' ); ?>">

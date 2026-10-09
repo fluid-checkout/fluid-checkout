@@ -70,6 +70,13 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		if ( null === $this->thwcfe ) { return; }
 
 		// Get hook priority
+		/**
+		 * Filters the priority of the thwcfd woocommerce checkout fields hook.
+		 *
+		 * @since 2.0.7
+		 *
+		 * @param mixed $change_hook_priority Change hook priority.
+		 */
 		$hp_cf = apply_filters( 'thwcfd_woocommerce_checkout_fields_hook_priority', $this->change_hook_priority() );
 
 		// Output hidden fields
@@ -350,6 +357,13 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 	 */
 	public function change_customer_persisted_data_clear_fields_order_processed( $clear_field_keys ) {
 		// Define skip fields
+		/**
+		 * Filters the thwcfe clear field keys skip list.
+		 *
+		 * @since 2.0.7
+		 *
+		 * @param array $skip Whether to skip the default behavior.
+		 */
 		$clear_field_keys_skip_list = apply_filters( 'fc_thwcfe_clear_field_keys_skip_list', array(
 			'billing_email',
 			'billing_first_name',

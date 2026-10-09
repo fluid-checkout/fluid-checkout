@@ -19,7 +19,16 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <?php // CHANGE: Add filter to add additional classes to the review order table ?>
-<table class="shop_table woocommerce-checkout-review-order-table <?php echo esc_attr( apply_filters( 'fc_pro_checkout_review_order_table_classes', '' ) ); ?>">
+<table class="shop_table woocommerce-checkout-review-order-table <?php
+	/**
+	 * Filters extra CSS classes on the checkout order review table.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $classes CSS classes. Default empty string.
+	 */
+	echo esc_attr( apply_filters( 'fc_pro_checkout_review_order_table_classes', '' ) );
+?>">
 	<thead>
 		<?php // CHANGE: Hide the table header visually while still allowing screen readers to see it ?>
 		<tr class="screen-reader-text">
@@ -29,12 +38,35 @@ defined( 'ABSPATH' ) || exit;
 	</thead>
 	<tbody>
 		<?php
+		/**
+		 * Fires before the cart items in the order review.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'woocommerce_review_order_before_cart_contents' );
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+			/**
+			 * Filters the product object for a cart item.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param array  $value         Value to filter.
+			 * @param array  $cart_item     Cart item data.
+			 * @param string $cart_item_key Cart item key.
+			 */
 			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
 			// Change: Get product ID from the cart item
+			/**
+			 * Filters the product ID for a cart item.
+			 *
+			 * @since 2.1.0
+			 *
+			 * @param int    $value         Value to filter.
+			 * @param array  $cart_item     Cart item data.
+			 * @param string $cart_item_key Cart item key.
+			 */
 			$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
 			/**
@@ -50,28 +82,94 @@ defined( 'ABSPATH' ) || exit;
 			if ( $_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible ) {
 				?>
 				<?php // CHANGE: Add alternative class `cart-item` to allow for better compatibility with styles between different pages, and add product ID to the data attributes ?>
-				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item cart-item', $cart_item, $cart_item_key ) ); ?>" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>">
+				<tr class="<?php
+					/**
+					 * Filters the CSS class for a cart item row.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param string $classes       CSS classes. Default `cart_item cart-item`.
+					 * @param array  $cart_item     Cart item data.
+					 * @param string $cart_item_key Cart item key.
+					 */
+					echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item cart-item', $cart_item, $cart_item_key ) );
+				?>" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>">
 					<?php // CHANGE: Use `div` as columns to allow better control over the columns sizing ?>
 					<td colspan="2" role="none">
 						<div class="product-name" role="cell">
 
 							<?php // CHANGE: Add product images ?>
-							<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php
+								/**
+								 * Filters the thumbnail HTML for a cart item.
+								 *
+								 * @since 1.2.0
+								 *
+								 * @param mixed  $get_image     Get image.
+								 * @param array  $cart_item     Cart item data.
+								 * @param string $cart_item_key Cart item key.
+								 */
+								echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							?>
 
 							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
 							<div class="product-details">
-								<?php do_action( 'fc_order_summary_cart_item_details', $cart_item, $cart_item_key, $_product ); ?>
+								<?php
+									/**
+									 * Fires inside each order summary cart item, where the product details are rendered.
+									 *
+									 * @since 2.1.0
+									 *
+									 * @param array      $cart_item     Cart item data.
+									 * @param string     $cart_item_key Cart item key.
+									 * @param WC_Product $_product      Product object.
+									 */
+									do_action( 'fc_order_summary_cart_item_details', $cart_item, $cart_item_key, $_product );
+								?>
 							</div>
 
 						</div>
 						<div class="product-total" role="cell">
 							<?php // CHANGE: Add hook for before the cart item product totals ?>
-							<?php do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product ); ?>
+							<?php
+								/**
+								 * Fires before the line total of an order summary cart item.
+								 *
+								 * @since 3.0.5
+								 *
+								 * @param array      $cart_item     Cart item data.
+								 * @param string     $cart_item_key Cart item key.
+								 * @param WC_Product $_product      Product object.
+								 */
+								do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product );
+							?>
 
-							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php
+								/**
+								 * Filters the line subtotal HTML for a cart item.
+								 *
+								 * @since 1.2.0
+								 *
+								 * @param mixed  $value         Value to filter.
+								 * @param array  $cart_item     Cart item data.
+								 * @param string $cart_item_key Cart item key.
+								 */
+								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							?>
 
 							<?php // CHANGE: Add hook for after the cart item product totals ?>
-							<?php do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product ); ?>
+							<?php
+								/**
+								 * Fires after the line total of an order summary cart item.
+								 *
+								 * @since 3.0.5
+								 *
+								 * @param array      $cart_item     Cart item data.
+								 * @param string     $cart_item_key Cart item key.
+								 * @param WC_Product $_product      Product object.
+								 */
+								do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product );
+							?>
 						</div>
 					</td>
 					<?php // CHANGE: END - Use `div` as columns to allow better control over the columns sizing ?>
@@ -80,6 +178,11 @@ defined( 'ABSPATH' ) || exit;
 			}
 		}
 
+		/**
+		 * Fires after the cart items in the order review.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'woocommerce_review_order_after_cart_contents' );
 		?>
 	</tbody>
@@ -98,16 +201,44 @@ defined( 'ABSPATH' ) || exit;
 		<?php endforeach; ?>
 
 		<?php // CHANGE: Add action after the coupon codes row ?>
-		<?php do_action( 'fc_pro_checkout_review_order_after_coupon_code' ); ?>
+		<?php
+			/**
+			 * Fires after the coupon code row in the checkout order review.
+			 *
+			 * @since 2.0.5
+			 */
+			do_action( 'fc_pro_checkout_review_order_after_coupon_code' );
+		?>
 
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
-			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
+			<?php
+				/**
+				 * Fires before the shipping rows in the order review.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'woocommerce_review_order_before_shipping' );
+			?>
 
 			<?php // CHANGE: Replaced cart totals shipping markup with an action hook to allow for customizations ?>
-			<?php do_action( 'fc_review_order_shipping' ); ?>
+			<?php
+				/**
+				 * Fires where the chosen shipping method is rendered in the order review.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'fc_review_order_shipping' );
+			?>
 
-			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
+			<?php
+				/**
+				 * Fires after the shipping rows in the order review.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'woocommerce_review_order_after_shipping' );
+			?>
 
 		<?php endif; ?>
 
@@ -134,14 +265,28 @@ defined( 'ABSPATH' ) || exit;
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
+		<?php
+			/**
+			 * Fires before the order total row.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'woocommerce_review_order_before_order_total' );
+		?>
 
 		<tr class="order-total">
 			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 			<td><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 
-		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
+		<?php
+			/**
+			 * Fires after the order total row.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'woocommerce_review_order_after_order_total' );
+		?>
 
 	</tfoot>
 </table>

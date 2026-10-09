@@ -140,6 +140,13 @@ class FluidCheckout {
 	 * Get the locales to be used for each language variant.
 	 */
 	public function get_locale_language_variants() {
+		/**
+		 * Filters the locale used for each language variant when loading translations.
+		 *
+		 * @since 2.3.2
+		 *
+		 * @param array $value Value to filter.
+		 */
 		return apply_filters( 'fc_locale_language_variant', array(
 			'de_DE'          => 'de_DE_formal',
 			'de_AT'          => 'de_DE_formal',
@@ -452,6 +459,17 @@ class FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a plugin compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_plugin_' . $plugin_slug, true ) ) { continue; }
 
 			// Get plugin file path
@@ -476,6 +494,17 @@ class FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a theme compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_theme_' . $theme_slug, true ) ) { continue; }
 
 			// Get current theme's compatibility file name

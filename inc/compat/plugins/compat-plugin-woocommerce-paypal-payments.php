@@ -60,6 +60,13 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 		if ( ! $class_object || ! method_exists( $class_object, 'dcc_renderer' ) ) { return; }
 
 		// Use plugin's hook since the getter method is private
+		/**
+		 * Filters the paypal payments checkout dcc renderer hook.
+		 *
+		 * @since 2.0.8
+		 *
+		 * @param string $value Value to filter. Default `woocommerce_review_order_after_submit`.
+		 */
 		$hook = apply_filters( 'woocommerce_paypal_payments_checkout_dcc_renderer_hook', 'woocommerce_review_order_after_submit' );
 
 		// Replace button rendering method
@@ -96,6 +103,13 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 		$current_step = FluidCheckout_Steps::instance()->get_current_step();
 
 		// Maybe disable the place order button if not in the last step
+		/**
+		 * Filters whether the place order button is disabled until the last checkout step.
+		 *
+		 * @since 1.6.1
+		 *
+		 * @param string $value Value to filter. Default `yes`.
+		 */
 		if ( false !== $current_step && 'yes' === apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ) && FluidCheckout_Steps::instance()->is_checkout_layout_multistep() ) {
 			$current_step_index = array_keys( $current_step )[0];
 			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
@@ -111,6 +125,13 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 		}
 
 		// Add Fluid Checkout class to the place order button HTML
+		/**
+		 * Filters the CSS classes for the place order button.
+		 *
+		 * @since 1.2.5
+		 *
+		 * @param string $classes CSS classes. Default `button alt`.
+		 */
 		$button_class = esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button';
 		$html = str_replace( 'ppcp-dcc-order-button', 'ppcp-dcc-order-button ' . $button_class, $html );
 

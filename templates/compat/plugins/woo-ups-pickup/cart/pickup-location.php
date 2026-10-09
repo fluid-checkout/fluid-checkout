@@ -15,4 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <?php // CHANGE: Remove unnecessary inline styles ?>
 
-<?php do_action( 'woocommerce_after_pickup_location_template_html' ); ?>
+<?php
+	/**
+	 * Fires after the UPS pickup location template HTML.
+	 *
+	 * @since 2.0.9
+	 */
+	do_action( 'woocommerce_after_pickup_location_template_html' );
+?>

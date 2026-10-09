@@ -351,7 +351,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Run order notes hooks for better compatibility with plugins that rely on them,
 		// because they originally run regardless of the order notes fields existence.
 		else {
+			/**
+			 * Filters the hook used to render the order notes section.
+			 *
+			 * @since 1.4.2
+			 *
+			 * @param string $value Value to filter.
+			 */
 			$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
+			/**
+			 * Filters the priority used to render the order notes section.
+			 *
+			 * @since 1.4.2
+			 *
+			 * @param int $priority Hook or step priority. Default 100.
+			 */
 			$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 			add_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
 		}
@@ -424,6 +438,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
+		/**
+		 * Filters the wc order attribution stamp checkout HTML actions.
+		 *
+		 * @since 3.2.0
+		 *
+		 * @param array $html HTML markup.
+		 */
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
 			array(
@@ -625,7 +646,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Order notes
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_order_notes_text_fragment' ), 10 );
+		/**
+		 * Filters the hook used to render the order notes section.
+		 *
+		 * @since 1.4.2
+		 *
+		 * @param string $value Value to filter.
+		 */
 		$order_notes_substep_position = apply_filters( 'fc_do_order_notes_hooks_position', 'fc_checkout_after_step_shipping_fields_inside' );
+		/**
+		 * Filters the priority used to render the order notes section.
+		 *
+		 * @since 1.4.2
+		 *
+		 * @param int $priority Hook or step priority. Default 100.
+		 */
 		$order_notes_substep_priority = apply_filters( 'fc_do_order_notes_hooks_priority', 100 );
 		remove_action( $order_notes_substep_position, array( $this, 'do_order_notes_hooks' ), $order_notes_substep_priority );
 
@@ -686,6 +721,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
+		/**
+		 * Filters the wc order attribution stamp checkout HTML actions.
+		 *
+		 * @since 3.2.0
+		 *
+		 * @param array $html HTML markup.
+		 */
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
 			array(
@@ -791,26 +833,61 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add extra class to highlight the shipping section
+		/**
+		 * Filters the show shipping section highlighted.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $value Value to filter.
+		 */
 		if ( true === apply_filters( 'fc_show_shipping_section_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_shipping_section_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-shipping-section';
 		}
 
 		// Add extra class to highlight the billing section
+		/**
+		 * Filters the show billing section highlighted.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $value Value to filter.
+		 */
 		if ( true === apply_filters( 'fc_show_billing_section_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_billing_section_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-billing-section';
 		}
 
 		// Add extra class to highlight the order totals row in the order summary table
+		/**
+		 * Filters the show order totals row highlighted.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param string $value Value to filter.
+		 */
 		if ( true === apply_filters( 'fc_show_order_totals_row_highlighted', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_order_totals_row_highlighted' ) ) ) ) {
 			$add_classes[] = 'has-highlighted-order-totals';
 		}
 
 		// Add extra class to enable form fields font-size styles
+		/**
+		 * Filters whether form fields use a 16px font size to prevent mobile browsers from zooming in.
+		 *
+		 * @since 4.0.1
+		 *
+		 * @param string $value Value to filter.
+		 */
 		if ( true === apply_filters( 'fc_fix_zoom_in_form_fields_mobile_devices', ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_fix_zoom_in_form_fields_mobile_devices' ) ) ) ) {
 			$add_classes[] = 'has-form-field-font-size-fix';
 		}
 
 		// Add extra class to enable form fields font-size styles
+		/**
+		 * Filters the use verbose loading indicator.
+		 *
+		 * @since 4.0.2
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( true === apply_filters( 'fc_use_verbose_loading_indicator', false ) ) {
 			$add_classes[] = 'has-loading-indicator-verbose';
 		}
@@ -864,8 +941,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 		// Checkout steps settings
+		/**
+		 * Filters the checkout step settings passed to the frontend script.
+		 *
+		 * @since 1.6.1
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'checkoutSteps' ] = apply_filters( 'fc_checkout_steps_script_settings', array(
 			'isMultistepLayout'               => $this->is_checkout_layout_multistep() ? 'yes' : 'no',
+			/**
+			 * Filters whether the place order button is disabled until the last checkout step.
+			 *
+			 * @since 1.6.1
+			 *
+			 * @param string $value Value to filter. Default `yes`.
+			 */
 			'maybeDisablePlaceOrderButton'    => apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ),
 
 			'enablePlaceOrderMove'            => 'yes',
@@ -958,6 +1049,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Filter to allow other plugins to add their own conditions
 		// Keep `_get` prefix on filter name for backward compatibility
+		/**
+		 * Filters the checkout layout slug.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed $current_value Current value.
+		 */
 		$current_value = apply_filters( 'fc_get_checkout_layout', $current_value );
 
 		// Set layout to default value if value not set or not allowed
@@ -974,6 +1072,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  boolean  `true` if the current checkout layout option value is set to `multi-step`, `false` otherwise.
 	 */
 	public function is_checkout_layout_multistep() {
+		/**
+		 * Filters whether the checkout uses the multi-step layout.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $value Value to filter.
+		 */
 		return apply_filters( 'fc_is_checkout_layout_multistep', 'multi-step' === $this->get_checkout_layout() );
 	}
 
@@ -990,6 +1095,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_checkout_column_layout' );
 
 		// Filter to allow other plugins to add their own conditions
+		/**
+		 * Filters the checkout column layout slug.
+		 *
+		 * @since 4.2.0
+		 *
+		 * @param mixed $current_value Current value.
+		 */
 		$current_value = apply_filters( 'fc_checkout_column_layout', $current_value );
 
 		// Set layout to default value if value not set or not allowed
@@ -1021,6 +1133,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Look for template file in the theme
+		/**
+		 * Filters whether a theme template file may replace a plugin template.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param bool   $value         Value to filter. Default false.
+		 * @param string $template      Located template path.
+		 * @param string $template_name Template name.
+		 * @param string $template_path Template path.
+		 */
 		if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 			$_template_override = locate_template( array(
 				trailingslashit( $template_path ) . $template_name,
@@ -1105,6 +1227,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get cart totals
 		$cart_totals_html = '<strong>' . WC()->cart->get_total() . '</strong> ';
 		$link_label_html = preg_replace( '/<br\s*\/?>/i', '', $cart_totals_html );
+		/**
+		 * Filters the HTML label of the checkout header cart link.
+		 *
+		 * @since 2.0.3
+		 *
+		 * @param string $link_label_html Link label html.
+		 */
 		$link_label_html = apply_filters( 'fc_checkout_header_cart_link_label_html', $link_label_html );
 		?>
 		<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout__cart-link" aria-description="<?php echo esc_attr( __( 'Click to go to the order summary', 'fluid-checkout' ) ); ?>" data-flyout-toggle data-flyout-target="[data-flyout-order-review]"><span class="screen-reader-text"><?php echo esc_html( __( 'Cart total:', 'fluid-checkout' ) ); ?></span> <?php echo wp_kses_post( $link_label_html ); ?></a>
@@ -1157,6 +1286,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return $class; }
 
 		// Maybe add the container class
+		/**
+		 * Filters whether the checkout step markup includes the container class.
+		 *
+		 * @since 1.6.0
+		 *
+		 * @param bool $classes CSS classes. Default true.
+		 */
 		if ( apply_filters( 'fc_add_container_class', true ) ) {
 			$class = $class . ' fc-container';
 		}
@@ -1224,6 +1360,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check whether the account creation notice is enabled.
 	 */
 	public function is_account_creation_notice_enabled() {
+		/**
+		 * Filters the show account creation notice checkout contact step text.
+		 *
+		 * @since 2.3.0
+		 *
+		 * @param string $text Text to display. Default `yes`.
+		 */
 		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_show_account_creation_notice_checkout_contact_step_text' ) && 'yes' === apply_filters( 'fc_show_account_creation_notice_checkout_contact_step_text', 'yes' );
 	}
 
@@ -1244,6 +1387,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( array_key_exists( 'wc-ajax', $_GET ) && 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ?? '' ) ) ) { return true; }
 
 		// Filter to allow other plugins to add their own conditions
+		/**
+		 * Filters whether the current request is the checkout page or a checkout fragment.
+		 *
+		 * @since 2.3.1
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( true === apply_filters( 'fc_is_checkout_page_or_fragment', false ) ) { return true; }
 
 		// Otherwise, return `false`
@@ -1263,6 +1413,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ( array_key_exists( 'wc-ajax', $_GET ) && 'fc_pro_update_cart_fragments' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ?? '' ) ) ) ) { return true; } // Needed to check for AJAX calls for the cart fragments early in the request.
 
 		// Filter to allow other plugins to add their own conditions
+		/**
+		 * Filters whether the current request is the cart page or a cart fragment.
+		 *
+		 * @since 1.6.0
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( true === apply_filters( 'fc_is_cart_page_or_fragment', false ) ) { return true; }
 
 		// Otherwise, return `false`
@@ -1283,6 +1440,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe get default checked state
 		if ( null === $create_account_field_value ) {
+			/**
+			 * Filters the create account default checked.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param bool $value Value to filter. Default false.
+			 */
 			$create_account_field_value = apply_filters( 'woocommerce_create_account_default_checked', false ) ? '1' : '';
 		}
 
@@ -1351,6 +1515,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_steps( $context = 'checkout' ) {
 		// Allow developers to hijack the returning value
+		/**
+		 * Filters the checkout steps list before the default steps are returned.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param mixed  $value   Short-circuit value. Return a non-null value to override the default behavior. Default null.
+		 * @param string $context Context in which the hook runs. Default `checkout`.
+		 */
 		$value_from_filter = apply_filters( 'fc_get_checkout_steps_before', null, $context );
 		if ( null !== $value_from_filter ) {
 			return $value_from_filter;
@@ -1483,7 +1655,33 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Filter to allow other plugins to add their own conditions
+			/**
+			 * Filters whether a checkout step is complete.
+			 *
+			 * The dynamic portion of the hook name, `$step_id`, refers to the checkout step ID.
+			 * Additional hook names are created for steps registered by other plugins.
+			 * Possible hook names include:
+			 *
+			 * - `fc_is_step_complete_contact`
+			 * - `fc_is_step_complete_shipping`
+			 * - `fc_is_step_complete_billing`
+			 * - `fc_is_step_complete_payment`
+			 *
+			 * @since 4.0.0
+			 *
+			 * @param bool   $is_step_complete Whether the step is complete.
+			 * @param string $context          Context in which the hook runs. Default `checkout`.
+			 */
 			$is_step_complete = apply_filters( 'fc_is_step_complete_' . $step_id, $is_step_complete, $context );
+			/**
+			 * Filters whether a checkout step is complete.
+			 *
+			 * @since 4.0.0
+			 *
+			 * @param bool   $is_step_complete Whether the step is complete.
+			 * @param string $step_id          Checkout step ID.
+			 * @param string $context          Context in which the hook runs. Default `checkout`.
+			 */
 			$is_step_complete = apply_filters( 'fc_is_step_complete', $is_step_complete, $step_id, $context );
 
 			// Maybe add steps to the complete steps list
@@ -1742,6 +1940,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Define and filter return value
 		$is_current_step = ( $step_id == $current_step_id );
+		/**
+		 * Filters whether a checkout step is the current step.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool   $is_current_step Is current step.
+		 * @param string $step_id         Checkout step ID.
+		 * @param string $context         Context in which the hook runs. Default `checkout`.
+		 */
 		$is_current_step = apply_filters( 'fc_is_current_step', $is_current_step, $step_id, $context );
 
 		return $is_current_step;
@@ -2030,9 +2237,30 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// (Deprecated) Filter to allow changes to the proceed to next step button label
 		// TODO: Deprecated, remove this filter in version 5.0.0, use the filter 'fc_proceed_to_next_step_button_label' below instead.
+		/**
+		 * Filters the label of the button that proceeds to the next checkout step.
+		 *
+		 * Deprecated in favor of `fc_proceed_to_next_step_button_label`.
+		 *
+		 * @since 1.4.0
+		 *
+		 * @deprecated 5.0.0 Use `fc_proceed_to_next_step_button_label` instead.
+		 *
+		 * @param string $button_label Button label.
+		 * @param string $step_id      Checkout step ID.
+		 */
 		$button_label = apply_filters( 'fc_next_step_button_label', $button_label, $step_id );
 
 		// Filter to allow changes to the proceed to next step button label
+		/**
+		 * Filters the label of the button that proceeds to the next checkout step.
+		 *
+		 * @since 3.2.6
+		 *
+		 * @param string $button_label Button label.
+		 * @param string $step_id      Checkout step ID.
+		 * @param array  $step_args    Checkout step arguments.
+		 */
 		$button_label = apply_filters( 'fc_proceed_to_next_step_button_label', $button_label, $step_id, $step_args );
 
 		return $button_label;
@@ -2085,6 +2313,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Allow developers to change args for checkout steps at registration
+		/**
+		 * Filters the register checkout step args.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $step_args Checkout step arguments.
+		 */
 		$step_args = apply_filters( 'fc_register_checkout_step_args', $step_args );
 
 		// Sanitize step id after applying filters to ensure it is safe to use
@@ -2297,6 +2532,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Allow developers to change args for checkout steps at registration
+		/**
+		 * Filters the register checkout substep args.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param array  $substep_args Substep args.
+		 * @param string $step_id      Checkout step ID.
+		 */
 		$substep_args = apply_filters( 'fc_register_checkout_substep_args', $substep_args, $step_id );
 
 		// Sanitize substep id
@@ -2680,7 +2923,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		) );
 
 		/**
+		 * Fires when checkout steps are registered so other plugins can add or change steps.
+		 *
 		 * Trigger action to let plugins add or modify checkout steps.
+		 *
+		 * @since 1.4.0
 		 */
 		do_action( 'fc_register_steps' );
 	}
@@ -2711,6 +2958,23 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get step title and apply filters
 		$step_title = $step_args[ 'step_title' ];
+		/**
+		 * Filters the title of a checkout step.
+		 *
+		 * The dynamic portion of the hook name, `$step_id`, refers to the checkout step ID.
+		 * Additional hook names are created for steps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_step_title_contact`
+		 * - `fc_step_title_shipping`
+		 * - `fc_step_title_billing`
+		 * - `fc_step_title_payment`
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $step_title Checkout step title.
+		 * @param string $context    Context in which the hook runs. Default `checkout`.
+		 */
 		$step_title = apply_filters( "fc_step_title_{$step_id}", $step_title, $context );
 
 		return $step_title;
@@ -2788,6 +3052,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_phone_localisation_address_formats( $formats ) {
 		// Bail if should not display phone in formatted addresses
+		/**
+		 * Filters whether the phone number is added to formatted address formats.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $value Value to filter. Default `yes`.
+		 */
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) { return $formats; }
 
 		foreach ( $formats as $locale => $format) {
@@ -2821,6 +3092,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function add_phone_formatted_address_replacements( $replacements, $args ) {
 		// Maybe set as empty if should not display phone in formatted addresses
 		// then bail
+		/**
+		 * Filters whether the phone number is added to formatted address formats.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $value Value to filter. Default `yes`.
+		 */
 		if ( 'yes' !== apply_filters( 'fc_add_phone_localisation_formats', 'yes' ) ) {
 			$replacements['{phone}'] = '';
 			return $replacements;
@@ -2868,6 +3146,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_progress_bar_style() {
 		// Get progress bar style
+		/**
+		 * Filters the progress bar style slug.
+		 *
+		 * @since 4.1.0
+		 *
+		 * @param string $progress_bar_style Progress bar style slug. `bars` or `breadcrumbs`.
+		 */
 		$progress_bar_style = apply_filters( 'fc_checkout_progress_bar_style', FluidCheckout_Settings::instance()->get_option( 'fc_checkout_progress_bar_style' ) );
 		
 		// Validate, and revert to default if not valid
@@ -2928,6 +3213,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Get step count html
+		/**
+		 * Filters the "Step X of Y" HTML in the checkout progress bar.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $html            HTML markup.
+		 * @param mixed  $_checkout_steps  checkout steps.
+		 * @param mixed  $current_step    Current step.
+		 */
 		$steps_count_label_html = apply_filters(
 			'fc_steps_count_html',
 			sprintf(
@@ -2964,7 +3258,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter attributes
+		/**
+		 * Filters the HTML attributes of the checkout progress bar.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $progress_bar_attributes Progress bar attributes.
+		 */
 		$progress_bar_attributes = apply_filters( 'fc_checkout_progress_bar_attributes', $progress_bar_attributes );
+		/**
+		 * Filters the HTML attributes of the inner progress bar element.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $progress_bar_inner_attributes Progress bar inner attributes.
+		 */
 		$progress_bar_inner_attributes = apply_filters( 'fc_checkout_progress_bar_inner_attributes', $progress_bar_inner_attributes );
 
 		// Convert attributes to string
@@ -2974,7 +3282,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<div <?php echo $progress_bar_attributes_str; // WPCS: XSS ok. ?>>
 			<div <?php echo $progress_bar_attributes_inner_str; // WPCS: XSS ok. ?>>
 
-				<?php if ( true === apply_filters( 'fc_checkout_progress_bar_display_count', true ) ) : ?>
+				<?php
+					/**
+					 * Filters whether the progress bar shows the current step number.
+					 *
+					 * @since 4.1.0
+					 *
+					 * @param bool $enabled Whether the feature is enabled. Default true.
+					 */
+					if ( true === apply_filters( 'fc_checkout_progress_bar_display_count', true ) ) :
+				?>
 					<div class="fc-progress-bar__count" data-step-count-text><?php echo $steps_count_label_html; // WPCS: XSS ok. ?></div>
 				<?php endif; ?>
 
@@ -3003,6 +3320,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 						// Get step title
 						$step_title = $this->get_step_title( $step_id );
+						/**
+						 * Filters the progress bar label of a checkout step.
+						 *
+						 * The dynamic portion of the hook name, `$step_id`, refers to the checkout step ID.
+						 * Additional hook names are created for steps registered by other plugins.
+						 * Possible hook names include:
+						 *
+						 * - `fc_progress_bar_step_title_contact`
+						 * - `fc_progress_bar_step_title_shipping`
+						 * - `fc_progress_bar_step_title_billing`
+						 * - `fc_progress_bar_step_title_payment`
+						 *
+						 * @since 4.1.0
+						 *
+						 * @param string $step_title Checkout step title.
+						 * @param string $step_id    Checkout step ID.
+						 * @param array  $step_args  Checkout step arguments.
+						 * @param int    $step_index Zero-based position of the step.
+						 * @param string $context    Context in which the hook runs. Default `checkout`.
+						 */
 						$step_title = apply_filters( "fc_progress_bar_step_title_{$step_id}", $step_title, $step_id, $step_args, $step_index, $context );
 
 						// Get step visible attribute
@@ -3029,6 +3366,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_remove_progress_bar_if_cart_expired ( $fragments ) {
 		// Add empty progress bar fragment if cart expired
+		/**
+		 * Filters the update order review expired on checkout.
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param bool $value Value to filter. Default true.
+		 */
 		if ( WC()->cart->is_empty() && ! is_customize_preview() && apply_filters( 'woocommerce_checkout_update_order_review_expired', true ) ) {
 			$fragments['.fc-progress-bar'] = '';
 		}
@@ -3089,6 +3433,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$step_attributes[ 'data-step-visible' ] = $this->has_visible_substeps( $step_id, $context ) ? 'yes' : 'no';
 
 		// Filter step attributes
+		/**
+		 * Filters the HTML attributes of a checkout step element.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param array  $step_attributes Step attributes.
+		 * @param string $step_id         Checkout step ID.
+		 * @param int    $step_index      Zero-based position of the step.
+		 * @param string $context         Context in which the hook runs. Default `checkout`.
+		 */
 		$step_attributes = apply_filters( 'fc_checkout_step_attributes', $step_attributes, $step_id, $step_index, $context );
 
 		// Maybe add class for previous step completed
@@ -3104,6 +3458,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$step_attributes['class'] .= ' fc-checkout-step--next-step-incomplete';
 		}
 
+		/**
+		 * Fires before a checkout step element.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param string $step_id    Checkout step ID.
+		 * @param array  $step_args  Checkout step arguments.
+		 * @param int    $step_index Zero-based position of the step.
+		 * @param string $context    Context in which the hook runs. Default `checkout`.
+		 */
 		do_action( 'fc_checkout_before_step', $step_id, $step_args, $step_index, $context );
 
 		// Output step start tag and title
@@ -3111,6 +3475,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		echo '<section ' . $step_attributes_str . '>'; // WPCS: XSS ok.
 		echo '<h2 id="' . esc_attr( $step_title_element_id ) . '" class="fc-step__title screen-reader-text">' . wp_kses( $step_title, array( 'span' => array( 'class' => array() ), 'i' => array( 'class' => array() ) ) ) . '</h2>';
 
+		/**
+		 * Fires at the start of a checkout step, inside the step element.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param string $step_id    Checkout step ID.
+		 * @param array  $step_args  Checkout step arguments.
+		 * @param int    $step_index Zero-based position of the step.
+		 * @param string $context    Context in which the hook runs. Default `checkout`.
+		 */
 		do_action( 'fc_checkout_start_step', $step_id, $step_args, $step_index, $context );
 	}
 
@@ -3125,6 +3499,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Get step id
 		$step_id = $step_args[ 'step_id' ];
 
+		/**
+		 * Fires at the end of a checkout step, inside the step element.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param string $step_id    Checkout step ID.
+		 * @param array  $step_args  Checkout step arguments.
+		 * @param int    $step_index Zero-based position of the step.
+		 * @param string $context    Context in which the hook runs. Default `checkout`.
+		 */
 		do_action( 'fc_checkout_end_step', $step_id, $step_args, $step_index, $context );
 
 		// Maybe output the step actions
@@ -3145,6 +3529,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 				// Define button attributes
 				$button_attributes = array(
+					/**
+					 * Filters the CSS classes for the next step button.
+					 *
+					 * @since 1.4.1
+					 *
+					 * @param array $classes CSS classes.
+					 */
 					'class' => implode( ' ', array_merge( array( 'fc-step__next-step' ), apply_filters( 'fc_next_step_button_classes', array( 'button' ) ), $step_args[ 'next_step_button_classes' ] ) ),
 					'data-step-next' => true,
 				);
@@ -3160,6 +3551,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Output the step end tag
 		echo '</section>';
 
+		/**
+		 * Fires after a checkout step element.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param string $step_id    Checkout step ID.
+		 * @param array  $step_args  Checkout step arguments.
+		 * @param int    $step_index Zero-based position of the step.
+		 * @param string $context    Context in which the hook runs. Default `checkout`.
+		 */
 		do_action( 'fc_checkout_after_step', $step_id, $step_args, $step_index, $context );
 	}
 
@@ -3197,6 +3598,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Apply filters
+		/**
+		 * Filters the title of a checkout substep.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_substep_title_contact`
+		 * - `fc_substep_title_shipping_address`
+		 * - `fc_substep_title_shipping_method`
+		 * - `fc_substep_title_order_notes`
+		 * - `fc_substep_title_billing_address`
+		 * - `fc_substep_title_payment`
+		 * - `fc_substep_title_coupon_codes`
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $substep_title Checkout substep title.
+		 */
 		$substep_title = apply_filters( "fc_substep_title_{$substep_id}", $substep_title );
 
 		return $substep_title;
@@ -3233,12 +3653,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$additional_attributes = is_array( $additional_attributes ) ? $additional_attributes : array();
 
 		/**
-		 * Filter additional attributes for the substep output, allowing other plugins to add or modify attributes.
-		 * 
-		 * @param array  $additional_attributes  Additional HTML attributes to add to the substep element.
-		 * @param string $context                Context in which the substep is being output for. Defaults to `checkout`.
+		 * Filters additional attributes for the substep output, allowing other plugins to add or modify attributes.
 		 *
-		 * @see          $substep_id             Modifier for the filter name: substep ID.
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_substep_contact_attributes`
+		 * - `fc_substep_shipping_address_attributes`
+		 * - `fc_substep_shipping_method_attributes`
+		 * - `fc_substep_order_notes_attributes`
+		 * - `fc_substep_billing_address_attributes`
+		 * - `fc_substep_payment_attributes`
+		 * - `fc_substep_coupon_codes_attributes`
+		 *
+		 * @since 1.3.1
+		 *
+		 * @param array  $additional_attributes Additional HTML attributes to add to the substep element.
+		 * @param string $context               Context in which the substep is being output for. Defaults to `checkout`.
 		 */
 		$additional_attributes = apply_filters( "fc_substep_{$substep_id}_attributes", $additional_attributes, $context );
 
@@ -3272,6 +3704,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<section <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
 			echo $this->get_substep_title_html( $substep_id ); // WPCS: XSS ok.
+			/**
+			 * Fires before a checkout substep.
+			 *
+			 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+			 * Additional hook names are created for substeps registered by other plugins.
+			 * Possible hook names include:
+			 *
+			 * - `fc_before_substep_contact`
+			 * - `fc_before_substep_shipping_address`
+			 * - `fc_before_substep_shipping_method`
+			 * - `fc_before_substep_order_notes`
+			 * - `fc_before_substep_billing_address`
+			 * - `fc_before_substep_payment`
+			 * - `fc_before_substep_coupon_codes`
+			 *
+			 * @since 1.2.9
+			 *
+			 * @param string $step_id    Checkout step ID.
+			 * @param string $substep_id Checkout substep ID.
+			 * @param string $context    Context in which the hook runs. Default `checkout`.
+			 */
 			do_action( "fc_before_substep_{$substep_id}", $step_id, $substep_id, $context );
 	}
 
@@ -3287,14 +3740,63 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Get the substep title for accessibility label
 			$substep_title = $this->get_substep_title( $substep_id );
 
+			/**
+			 * Fires after a checkout substep.
+			 *
+			 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+			 * This hook runs before the optional substep edit and save buttons. Additional hook names
+			 * are created for substeps registered by other plugins.
+			 * Possible hook names include:
+			 *
+			 * - `fc_after_substep_contact`
+			 * - `fc_after_substep_shipping_address`
+			 * - `fc_after_substep_shipping_method`
+			 * - `fc_after_substep_order_notes`
+			 * - `fc_after_substep_billing_address`
+			 * - `fc_after_substep_payment`
+			 * - `fc_after_substep_coupon_codes`
+			 *
+			 * @since 1.2.9
+			 *
+			 * @param string $step_id             Checkout step ID.
+			 * @param string $substep_id          Checkout substep ID.
+			 * @param mixed  $output_edit_buttons Whether edit and save buttons are output for the substep.
+			 * @param string $context             Context in which the hook runs. Default `checkout`.
+			 */
 			do_action( "fc_after_substep_{$substep_id}", $step_id, $substep_id, $output_edit_buttons, $context );
 			?>
 
 			<?php // Maybe output substep action edit and save buttons ?>
 			<?php if ( $output_edit_buttons && $this->is_checkout_layout_multistep() ) : ?>
 				<?php // translators: %s: Substep title. ?>
-				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s', 'fluid-checkout' ), $substep_title ); ?>"><?php echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) ); ?></a>
-				<button class="fc-step__substep-save <?php echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) ); ?>" data-step-save><?php echo esc_html( apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
+				<a tabindex="0" role="button" class="fc-step__substep-edit" data-step-edit aria-label="<?php echo sprintf( __( 'Change: %s', 'fluid-checkout' ), $substep_title ); ?>"><?php
+					/**
+					 * Filters the label of the substep change button.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param string $label Label text.
+					 */
+					echo esc_html( apply_filters( 'fc_substep_change_button_label', _x( 'Change', 'Checkout substep change link label', 'fluid-checkout' ) ) );
+				?></a>
+				<button class="fc-step__substep-save <?php
+					/**
+					 * Filters the CSS classes of the substep save button.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param string $classes CSS classes. Default `button`.
+					 */
+					echo esc_attr( apply_filters( 'fc_substep_save_button_classes', 'button' ) );
+				?>" data-step-save><?php echo esc_html( 
+					/**
+					 * Filters the label of the substep save button.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param string $label Label text.
+					 */
+					apply_filters( 'fc_substep_save_button_label', _x( 'Save changes', 'Checkout substep save link label', 'fluid-checkout' ) ) ); ?></button>
 			<?php endif; ?>
 
 		</section>
@@ -3350,6 +3852,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		<div <?php echo $substep_attributes_str; // WPCS: XSS ok. ?>>
 			<div <?php echo $substep_inner_attributes_str; // WPCS: XSS ok. ?>>
 			<?php
+			/**
+			 * Fires before the fields inside a checkout substep.
+			 *
+			 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+			 * Additional hook names are created for substeps registered by other plugins.
+			 * Possible hook names include:
+			 *
+			 * - `fc_before_substep_fields_contact`
+			 * - `fc_before_substep_fields_shipping_address`
+			 * - `fc_before_substep_fields_shipping_method`
+			 * - `fc_before_substep_fields_order_notes`
+			 * - `fc_before_substep_fields_billing_address`
+			 * - `fc_before_substep_fields_payment`
+			 * - `fc_before_substep_fields_coupon_codes`
+			 *
+			 * @since 3.1.3
+			 *
+			 * @param string $step_id     Checkout step ID.
+			 * @param string $substep_id  Checkout substep ID.
+			 * @param bool   $collapsible Whether the substep fields section is collapsible.
+			 * @param string $context     Context in which the hook runs. Default `checkout`.
+			 */
 			do_action( "fc_before_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible, $context );
 	}
 
@@ -3362,6 +3886,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string   $context       Context in which the function is running. Defaults to `checkout`.
 	 */
 	public function output_substep_fields_end_tag( $step_id = null, $substep_id = null, $collapsible = true, $context = 'checkout' ) {
+			/**
+			 * Fires after the fields inside a checkout substep.
+			 *
+			 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+			 * Additional hook names are created for substeps registered by other plugins.
+			 * Possible hook names include:
+			 *
+			 * - `fc_after_substep_fields_contact`
+			 * - `fc_after_substep_fields_shipping_address`
+			 * - `fc_after_substep_fields_shipping_method`
+			 * - `fc_after_substep_fields_order_notes`
+			 * - `fc_after_substep_fields_billing_address`
+			 * - `fc_after_substep_fields_payment`
+			 * - `fc_after_substep_fields_coupon_codes`
+			 *
+			 * @since 3.1.3
+			 *
+			 * @param string $step_id     Checkout step ID.
+			 * @param string $substep_id  Checkout substep ID.
+			 * @param bool   $collapsible Whether the substep fields section is collapsible.
+			 * @param string $context     Context in which the hook runs. Default `checkout`.
+			 */
 			do_action( "fc_after_substep_fields_{$substep_id}", $step_id, $substep_id, $collapsible, $context );
 			?>
 			</div>
@@ -3428,6 +3974,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   string  $substep_id  Id of the substep.
 	 */
 	public function get_no_substep_review_text_notice( $substep_id ) {
+		/**
+		 * Filters the no substep review text notice.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $text       Text to display.
+		 * @param string $substep_id Checkout substep ID.
+		 */
 		return apply_filters( 'fc_no_substep_review_text_notice', _x( 'None.', 'Substep review text', 'fluid-checkout' ), $substep_id );
 	}
 
@@ -3440,6 +3994,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--' . $substep_id . '">';
 
 		// Get substep review text lines
+		/**
+		 * Filters the review text lines for a checkout substep.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Each line is a string of HTML or plain text. Additional hook names are created for
+		 * substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_substep_contact_text_lines`
+		 * - `fc_substep_shipping_address_text_lines`
+		 * - `fc_substep_shipping_method_text_lines`
+		 * - `fc_substep_order_notes_text_lines`
+		 * - `fc_substep_billing_address_text_lines`
+		 * - `fc_substep_payment_text_lines`
+		 * - `fc_substep_coupon_codes_text_lines`
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $value Value to filter. Default empty array.
+		 */
 		$review_text_lines = apply_filters( "fc_substep_{$substep_id}_text_lines", array() );
 
 		// Maybe add notice for empty substep text
@@ -3454,6 +4028,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		$html .= '</div>';
 
+		/**
+		 * Filters the rendered review text HTML for a checkout substep.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_substep_contact_text`
+		 * - `fc_substep_shipping_address_text`
+		 * - `fc_substep_shipping_method_text`
+		 * - `fc_substep_order_notes_text`
+		 * - `fc_substep_billing_address_text`
+		 * - `fc_substep_payment_text`
+		 * - `fc_substep_coupon_codes_text`
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $html HTML markup.
+		 */
 		return apply_filters( "fc_substep_{$substep_id}_text", $html );
 	}
 
@@ -3607,6 +4200,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $substep_id  Id of the substep.
 	 */
 	public function output_substep_contact_fields( $step_id, $substep_id ) {
+		/**
+		 * Fires before the customer details on checkout.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'woocommerce_checkout_before_customer_details' );
 
 		wc_get_template(
@@ -3634,6 +4232,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$checkout_fields = WC()->checkout()->get_checkout_fields();
 
 		// Define list of address fields to skip as the formatted address has already been added
+		/**
+		 * Filters the substep text contact field keys skip list.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param array $skip Whether to skip the default behavior. Default empty array.
+		 */
 		$field_keys_skip_list = apply_filters( "fc_substep_text_contact_field_keys_skip_list", array() );
 
 		// Add a text line for each field
@@ -3699,6 +4304,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get account creation notice message.
 	 */
 	public function get_account_creation_notice_message() {
+		/**
+		 * Filters the notice shown when an account will be created at checkout.
+		 *
+		 * @since 4.1.0
+		 *
+		 * @param string $text Text to display.
+		 */
 		return apply_filters( 'fc_checkout_account_creation_notice_message', __( 'An account will be created with the information provided at checkout when completing the order.', 'fluid-checkout' ) );
 	}
 
@@ -3769,6 +4381,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		/**
+		 * Filters whether a checkout substep is complete.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_is_substep_complete_contact`
+		 * - `fc_is_substep_complete_shipping_address`
+		 * - `fc_is_substep_complete_shipping_method`
+		 * - `fc_is_substep_complete_order_notes`
+		 * - `fc_is_substep_complete_billing_address`
+		 * - `fc_is_substep_complete_payment`
+		 * - `fc_is_substep_complete_coupon_codes`
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool $is_substep_complete Whether the substep is complete.
+		 */
 		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
 	}
 
@@ -3799,6 +4430,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Return list of checkout fields for contact step.
 	 */
 	public function get_contact_step_display_field_ids() {
+		/**
+		 * Filters the field keys displayed in the contact step.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed $get_default_contact_step_display_field_ids Get default contact step display field ids.
+		 */
 		return array_unique( apply_filters( 'fc_checkout_contact_step_field_ids', $this->get_default_contact_step_display_field_ids() ) );
 	}
 
@@ -3856,7 +4494,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Run additional order notes hooks, for when the order notes fields are disabled.
 	 */
 	public function do_order_notes_hooks() {
+		/**
+		 * Fires before the order notes field.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param WC_Checkout $checkout Checkout object.
+		 */
 		do_action( 'woocommerce_before_order_notes', WC()->checkout() );
+		/**
+		 * Fires after the order notes field.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param WC_Checkout $checkout Checkout object.
+		 */
 		do_action( 'woocommerce_after_order_notes', WC()->checkout() );
 	}
 
@@ -3924,8 +4576,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $substep_id  Id of the substep.
 	 */
 	public function output_substep_shipping_address_fields( $step_id, $substep_id ) {
+		/**
+		 * Fires before the shipping step fields.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'fc_checkout_before_step_shipping_fields' );
 		echo $this->get_substep_shipping_address_fields();
+		/**
+		 * Fires after the shipping step fields.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'fc_checkout_after_step_shipping_fields' );
 	}
 
@@ -4040,6 +4702,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! empty( $field_value ) ) {
 
 			// Get show label flag
+			/**
+			 * Filters the label for the substep text display value show field.
+			 *
+			 * @since 1.5.0
+			 *
+			 * @param bool $label Label text. Default false.
+			 */
 			$show_field_label = apply_filters( 'fc_substep_text_display_value_show_field_label', false );
 
 			// Get field display values based on type
@@ -4058,9 +4727,69 @@ class FluidCheckout_Steps extends FluidCheckout {
 				case 'email':
 				case 'url':
 				case 'tel':
+					/**
+					 * Filters whether the substep review text includes the label for a field type.
+					 *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+					 * Custom field types also receive this hook.
+					 * Possible hook names include:
+					 *
+					 * - `fc_substep_text_display_value_show_field_label_text`
+					 * - `fc_substep_text_display_value_show_field_label_password`
+					 * - `fc_substep_text_display_value_show_field_label_datetime`
+					 * - `fc_substep_text_display_value_show_field_label_datetime-local`
+					 * - `fc_substep_text_display_value_show_field_label_date`
+					 * - `fc_substep_text_display_value_show_field_label_month`
+					 * - `fc_substep_text_display_value_show_field_label_time`
+					 * - `fc_substep_text_display_value_show_field_label_week`
+					 * - `fc_substep_text_display_value_show_field_label_email`
+					 * - `fc_substep_text_display_value_show_field_label_url`
+					 * - `fc_substep_text_display_value_show_field_label_tel`
+					 * - `fc_substep_text_display_value_show_field_label_number`
+					 * - `fc_substep_text_display_value_show_field_label_checkbox`
+					 * - `fc_substep_text_display_value_show_field_label_country`
+					 * - `fc_substep_text_display_value_show_field_label_state`
+					 * - `fc_substep_text_display_value_show_field_label_radio`
+					 * - `fc_substep_text_display_value_show_field_label_select`
+					 * - `fc_substep_text_display_value_show_field_label_textarea`
+					 *
+					 * @since 1.5.1
+					 *
+					 * @param bool $show_field_label Whether to include the field label in the review text.
+					 */
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'number':
+					/**
+					 * Filters whether the substep review text includes the label for a field type.
+					 *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+					 * Custom field types also receive this hook.
+					 * Possible hook names include:
+					 *
+					 * - `fc_substep_text_display_value_show_field_label_text`
+					 * - `fc_substep_text_display_value_show_field_label_password`
+					 * - `fc_substep_text_display_value_show_field_label_datetime`
+					 * - `fc_substep_text_display_value_show_field_label_datetime-local`
+					 * - `fc_substep_text_display_value_show_field_label_date`
+					 * - `fc_substep_text_display_value_show_field_label_month`
+					 * - `fc_substep_text_display_value_show_field_label_time`
+					 * - `fc_substep_text_display_value_show_field_label_week`
+					 * - `fc_substep_text_display_value_show_field_label_email`
+					 * - `fc_substep_text_display_value_show_field_label_url`
+					 * - `fc_substep_text_display_value_show_field_label_tel`
+					 * - `fc_substep_text_display_value_show_field_label_number`
+					 * - `fc_substep_text_display_value_show_field_label_checkbox`
+					 * - `fc_substep_text_display_value_show_field_label_country`
+					 * - `fc_substep_text_display_value_show_field_label_state`
+					 * - `fc_substep_text_display_value_show_field_label_radio`
+					 * - `fc_substep_text_display_value_show_field_label_select`
+					 * - `fc_substep_text_display_value_show_field_label_textarea`
+					 *
+					 * @since 1.5.1
+					 *
+					 * @param bool $value Value to filter. Default true.
+					 */
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 					break;
 				case 'checkbox':
@@ -4069,26 +4798,205 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 					// Maybe set display value to "Yes" for checked checkboxes, otherwise keep the original value.
 					$field_display_value = in_array( $field_display_value, $yes_values ) || in_array( strtolower( (string) $field_display_value ), $yes_values ) ? __( 'yes', 'fluid-checkout' ) : $field_display_value; // Intentionally use loose comparisons on array values
+					/**
+					 * Filters whether the substep review text includes the label for a field type.
+					 *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+					 * Custom field types also receive this hook.
+					 * Possible hook names include:
+					 *
+					 * - `fc_substep_text_display_value_show_field_label_text`
+					 * - `fc_substep_text_display_value_show_field_label_password`
+					 * - `fc_substep_text_display_value_show_field_label_datetime`
+					 * - `fc_substep_text_display_value_show_field_label_datetime-local`
+					 * - `fc_substep_text_display_value_show_field_label_date`
+					 * - `fc_substep_text_display_value_show_field_label_month`
+					 * - `fc_substep_text_display_value_show_field_label_time`
+					 * - `fc_substep_text_display_value_show_field_label_week`
+					 * - `fc_substep_text_display_value_show_field_label_email`
+					 * - `fc_substep_text_display_value_show_field_label_url`
+					 * - `fc_substep_text_display_value_show_field_label_tel`
+					 * - `fc_substep_text_display_value_show_field_label_number`
+					 * - `fc_substep_text_display_value_show_field_label_checkbox`
+					 * - `fc_substep_text_display_value_show_field_label_country`
+					 * - `fc_substep_text_display_value_show_field_label_state`
+					 * - `fc_substep_text_display_value_show_field_label_radio`
+					 * - `fc_substep_text_display_value_show_field_label_select`
+					 * - `fc_substep_text_display_value_show_field_label_textarea`
+					 *
+					 * @since 1.5.1
+					 *
+					 * @param bool $value Value to filter. Default true.
+					 */
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", true ) );
 					break;
 				case 'password':
+					/**
+					 * Filters the character used to mask a password field in the substep review text.
+					 *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+					 * The built-in call uses `password`.
+					 * Possible hook names include:
+					 *
+					 * - `fc_substep_text_display_value_password_char`
+					 *
+					 * @since 1.5.1
+					 *
+					 * @param string $value Value to filter. Default `*`.
+					 */
 					$field_display_value = str_repeat( apply_filters( 'fc_substep_text_display_value_' . $field_type . '_char', '*' ), strlen( $field_value ) );
+					/**
+					 * Filters whether the substep review text includes the label for a field type.
+					 *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+					 * Custom field types also receive this hook.
+					 * Possible hook names include:
+					 *
+					 * - `fc_substep_text_display_value_show_field_label_text`
+					 * - `fc_substep_text_display_value_show_field_label_password`
+					 * - `fc_substep_text_display_value_show_field_label_datetime`
+					 * - `fc_substep_text_display_value_show_field_label_datetime-local`
+					 * - `fc_substep_text_display_value_show_field_label_date`
+					 * - `fc_substep_text_display_value_show_field_label_month`
+					 * - `fc_substep_text_display_value_show_field_label_time`
+					 * - `fc_substep_text_display_value_show_field_label_week`
+					 * - `fc_substep_text_display_value_show_field_label_email`
+					 * - `fc_substep_text_display_value_show_field_label_url`
+					 * - `fc_substep_text_display_value_show_field_label_tel`
+					 * - `fc_substep_text_display_value_show_field_label_number`
+					 * - `fc_substep_text_display_value_show_field_label_checkbox`
+					 * - `fc_substep_text_display_value_show_field_label_country`
+					 * - `fc_substep_text_display_value_show_field_label_state`
+					 * - `fc_substep_text_display_value_show_field_label_radio`
+					 * - `fc_substep_text_display_value_show_field_label_select`
+					 * - `fc_substep_text_display_value_show_field_label_textarea`
+					 *
+					 * @since 1.5.1
+					 *
+					 * @param bool $show_field_label Whether to include the field label in the review text.
+					 */
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				case 'country':
 				case 'state':
 				case 'radio':
 				case 'select':
+					/**
+					 * Filters whether the substep review text includes the label for a field type.
+					 *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+					 * Custom field types also receive this hook.
+					 * Possible hook names include:
+					 *
+					 * - `fc_substep_text_display_value_show_field_label_text`
+					 * - `fc_substep_text_display_value_show_field_label_password`
+					 * - `fc_substep_text_display_value_show_field_label_datetime`
+					 * - `fc_substep_text_display_value_show_field_label_datetime-local`
+					 * - `fc_substep_text_display_value_show_field_label_date`
+					 * - `fc_substep_text_display_value_show_field_label_month`
+					 * - `fc_substep_text_display_value_show_field_label_time`
+					 * - `fc_substep_text_display_value_show_field_label_week`
+					 * - `fc_substep_text_display_value_show_field_label_email`
+					 * - `fc_substep_text_display_value_show_field_label_url`
+					 * - `fc_substep_text_display_value_show_field_label_tel`
+					 * - `fc_substep_text_display_value_show_field_label_number`
+					 * - `fc_substep_text_display_value_show_field_label_checkbox`
+					 * - `fc_substep_text_display_value_show_field_label_country`
+					 * - `fc_substep_text_display_value_show_field_label_state`
+					 * - `fc_substep_text_display_value_show_field_label_radio`
+					 * - `fc_substep_text_display_value_show_field_label_select`
+					 * - `fc_substep_text_display_value_show_field_label_textarea`
+					 *
+					 * @since 1.5.1
+					 *
+					 * @param bool $show_field_label Whether to include the field label in the review text.
+					 */
 					$field_display_value = $this->get_field_display_value_from_field_options( $field_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 				default:
 					$field_display_value = $this->get_field_display_value_from_array( $field_display_value );
+					/**
+					 * Filters whether the substep review text includes the label for a field type.
+					 *
+					 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+					 * Custom field types also receive this hook.
+					 * Possible hook names include:
+					 *
+					 * - `fc_substep_text_display_value_show_field_label_text`
+					 * - `fc_substep_text_display_value_show_field_label_password`
+					 * - `fc_substep_text_display_value_show_field_label_datetime`
+					 * - `fc_substep_text_display_value_show_field_label_datetime-local`
+					 * - `fc_substep_text_display_value_show_field_label_date`
+					 * - `fc_substep_text_display_value_show_field_label_month`
+					 * - `fc_substep_text_display_value_show_field_label_time`
+					 * - `fc_substep_text_display_value_show_field_label_week`
+					 * - `fc_substep_text_display_value_show_field_label_email`
+					 * - `fc_substep_text_display_value_show_field_label_url`
+					 * - `fc_substep_text_display_value_show_field_label_tel`
+					 * - `fc_substep_text_display_value_show_field_label_number`
+					 * - `fc_substep_text_display_value_show_field_label_checkbox`
+					 * - `fc_substep_text_display_value_show_field_label_country`
+					 * - `fc_substep_text_display_value_show_field_label_state`
+					 * - `fc_substep_text_display_value_show_field_label_radio`
+					 * - `fc_substep_text_display_value_show_field_label_select`
+					 * - `fc_substep_text_display_value_show_field_label_textarea`
+					 *
+					 * @since 1.5.1
+					 *
+					 * @param bool $show_field_label Whether to include the field label in the review text.
+					 */
 					$field_display_value = $this->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_{$field_type}", $show_field_label ) );
 					break;
 			}
 		}
 
+		/**
+		 * Filters the substep review display value for a checkout field type.
+		 *
+		 * The dynamic portion of the hook name, `$field_type`, refers to the checkout field type.
+		 * The field-key hook runs after this one.
+		 * Possible hook names include:
+		 *
+		 * - `fc_substep_text_display_value_text`
+		 * - `fc_substep_text_display_value_password`
+		 * - `fc_substep_text_display_value_datetime`
+		 * - `fc_substep_text_display_value_datetime-local`
+		 * - `fc_substep_text_display_value_date`
+		 * - `fc_substep_text_display_value_month`
+		 * - `fc_substep_text_display_value_time`
+		 * - `fc_substep_text_display_value_week`
+		 * - `fc_substep_text_display_value_email`
+		 * - `fc_substep_text_display_value_url`
+		 * - `fc_substep_text_display_value_tel`
+		 * - `fc_substep_text_display_value_number`
+		 * - `fc_substep_text_display_value_checkbox`
+		 * - `fc_substep_text_display_value_country`
+		 * - `fc_substep_text_display_value_state`
+		 * - `fc_substep_text_display_value_radio`
+		 * - `fc_substep_text_display_value_select`
+		 * - `fc_substep_text_display_value_textarea`
+		 *
+		 * @since 1.5.1
+		 *
+		 * @param string $field_display_value Value prepared for display in the substep review text.
+		 * @param mixed  $field_value         Submitted field value.
+		 * @param string $field_key           Checkout field key.
+		 * @param array  $field_args          Checkout field arguments.
+		 */
 		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_type, $field_display_value, $field_value, $field_key, $field_args );
+		/**
+		 * Filters the substep review display value for one checkout field.
+		 *
+		 * The dynamic portion of the hook name, `$field_key`, refers to the checkout field key,
+		 * for example `billing_email` or `shipping_city`. This runs after the field-type hook.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $field_display_value Value prepared for display in the substep review text.
+		 * @param mixed  $field_value         Submitted field value.
+		 * @param string $field_key           Checkout field key.
+		 * @param array  $field_args          Checkout field arguments.
+		 */
 		$field_display_value = apply_filters( 'fc_substep_text_display_value_' . $field_key, $field_display_value, $field_value, $field_key, $field_args );
 
 		return $field_display_value;
@@ -4101,6 +5009,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Field keys may include the field group prefixes, which will be removed before adding the replacements.
 	 */
 	public function get_formatted_address_replacements_custom_field_keys() {
+		/**
+		 * Filters the custom field keys added to formatted address replacements.
+		 *
+		 * @since 3.1.6
+		 *
+		 * @param array $value Value to filter. Default empty array.
+		 */
 		return apply_filters( 'fc_formatted_address_replacements_custom_field_keys', array() );
 	}
 
@@ -4169,6 +5084,19 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter address data
+		/**
+		 * Filters the address data used to build a substep review text line.
+		 *
+		 * The dynamic portion of the hook name, `$address_type`, refers to the address type.
+		 * Possible hook names include:
+		 *
+		 * - `fc_billing_substep_text_address_data`
+		 * - `fc_shipping_substep_text_address_data`
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $address_data Address data used to format the substep review text.
+		 */
 		$address_data = apply_filters( 'fc_' . $address_type . '_substep_text_address_data', $address_data );
 
 		// Bail if no address data
@@ -4215,6 +5143,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Return list of field keys to skip
+		/**
+		 * Filters the rendered review text HTML for a checkout substep.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_substep_contact_text`
+		 * - `fc_substep_shipping_address_text`
+		 * - `fc_substep_shipping_method_text`
+		 * - `fc_substep_order_notes_text`
+		 * - `fc_substep_billing_address_text`
+		 * - `fc_substep_payment_text`
+		 * - `fc_substep_coupon_codes_text`
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $value Value to filter.
+		 */
 		return apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, $custom_field_keys, array(
 			$address_type . '_first_name',
 			$address_type . '_last_name',
@@ -4242,6 +5189,20 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Initialize variables
 		$address_type_alt = 'billing' === $address_type ? 'shipping' : 'billing';
+		/**
+		 * Filters whether to show the "same as the other address" notice in a substep review text.
+		 *
+		 * The dynamic portions of the hook name, `$address_type` and `$address_type_alt`, refer to
+		 * the current address type and the opposite address type.
+		 * Possible hook names include:
+		 *
+		 * - `fc_billing_same_as_shipping_display_substep_review_text_notice`
+		 * - `fc_shipping_same_as_billing_display_substep_review_text_notice`
+		 *
+		 * @since 3.1.10
+		 *
+		 * @param bool $value Value to filter. Default true.
+		 */
 		$is_same_as_address_notice_displayed = $this->{"is_{$address_type}_same_as_{$address_type_alt}"}() && true === apply_filters( "fc_{$address_type}_same_as_{$address_type_alt}_display_substep_review_text_notice", true );
 
 		// Get address fields
@@ -4325,6 +5286,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_address( $review_text_lines = array() ) {
 		// Maybe display shipping same as billing notice
+		/**
+		 * Filters whether the shipping substep review text shows the same-as-billing notice.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param bool $text Text to display. Default true.
+		 */
 		if ( true === apply_filters( 'fc_shipping_same_as_billing_display_substep_review_text_notice', true ) && $this->is_shipping_same_as_billing() ) {
 			$review_text_lines[] = '<em>' . $this->get_option_label_shipping_same_as_billing() . '</em>';
 		}
@@ -4379,6 +5347,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Determine if shipping package names should be displayed.
 	 */
 	public function is_shipping_package_name_display_enabled() {
+		/**
+		 * Filters whether the shipping package name is displayed.
+		 *
+		 * @since 1.4.1
+		 *
+		 * @param bool $package_name Package name. Default false.
+		 */
 		return apply_filters( 'fc_shipping_method_display_package_name', false );
 	}
 
@@ -4386,6 +5361,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Determine if shipping package contents should be displayed on substep review text.
 	 */
 	public function is_shipping_package_contents_substep_text_lines_enabled() {
+		/**
+		 * Filters the shipping method display package content substep text lines.
+		 *
+		 * @since 3.0.3
+		 *
+		 * @param bool $text Text to display. Default true.
+		 */
 		return apply_filters( 'fc_shipping_method_display_package_content_substep_text_lines', true );
 	}
 
@@ -4393,6 +5375,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Determine if shipping package destination should be displayed on substep review text.
 	 */
 	public function is_shipping_package_contents_destination_text_lines_enabled() {
+		/**
+		 * Filters whether the package destination is included in the shipping method review text.
+		 *
+		 * @since 3.0.3
+		 *
+		 * @param bool $text Text to display. Default true.
+		 */
 		return apply_filters( 'fc_shipping_method_display_package_destination_substep_text_lines', true );
 	}
 
@@ -4409,6 +5398,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$packages = WC()->shipping()->get_packages();
 
 		// Determine if has multiple packages
+		/**
+		 * Filters whether the cart is treated as having multiple shipping packages.
+		 *
+		 * @since 3.2.5
+		 *
+		 * @param bool $has_multiple_packages Whether the cart has multiple shipping packages.
+		 */
 		$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
 
 		// Determine allowed kses attributes and tags
@@ -4424,10 +5420,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			/**
+			 * Filters the label for the shipping method substep text chosen method.
+			 *
+			 * @since 3.0.2
+			 *
+			 * @param string           $chosen_method_label Chosen method label.
+			 * @param WC_Shipping_Rate $method              Method.
+			 */
 			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
 			// Handle package name
 			if ( $has_multiple_packages && $this->is_shipping_package_name_display_enabled() ) {
+				/**
+				 * Filters the name of a shipping package.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $package_name  Package name.
+				 * @param int    $package_index Zero-based package index.
+				 * @param array  $package       Shipping package data.
+				 */
 				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 				$package_name = '<strong>' . $package_name . '</strong>';
 				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
@@ -4440,10 +5453,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled() ) {
 				// Get package destination
 				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
+				/**
+				 * Filters the shipping method substep text package destination data.
+				 *
+				 * @since 3.0.3
+				 *
+				 * @param mixed            $destination   Destination.
+				 * @param int              $package_index Zero-based package index.
+				 * @param array            $package       Shipping package data.
+				 * @param string           $chosen_method Chosen method.
+				 * @param WC_Shipping_Rate $method        Method.
+				 */
 				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $package_index, $package, $chosen_method, $method );
 
 				// Get formatted destination text
 				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
+				/**
+				 * Filters the shipping method substep text package destination text.
+				 *
+				 * @since 3.0.3
+				 *
+				 * @param string           $destination_text Destination text.
+				 * @param int              $package_index    Zero-based package index.
+				 * @param array            $package          Shipping package data.
+				 * @param string           $chosen_method    Chosen method.
+				 * @param WC_Shipping_Rate $method           Method.
+				 */
 				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $package_index, $package, $chosen_method, $method );
 
 				// Add package destination line
@@ -4453,6 +5488,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Filter review text lines for the shipping package before adding the package contents
+			/**
+			 * Filters the shipping method substep text package review text lines before contents.
+			 *
+			 * @since 3.0.3
+			 *
+			 * @param string           $package_review_text_lines Package review text lines.
+			 * @param int              $package_index             Zero-based package index.
+			 * @param array            $package                   Shipping package data.
+			 * @param string           $chosen_method             Chosen method.
+			 * @param WC_Shipping_Rate $method                    Method.
+			 */
 			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $package_index, $package, $chosen_method, $method );
 	
 			// Handle package contents
@@ -4474,6 +5520,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Filter review text lines for the shipping package
+			/**
+			 * Filters the shipping method substep text package review text lines.
+			 *
+			 * @since 3.0.3
+			 *
+			 * @param string           $package_review_text_lines Package review text lines.
+			 * @param int              $package_index             Zero-based package index.
+			 * @param array            $package                   Shipping package data.
+			 * @param string           $chosen_method             Chosen method.
+			 * @param WC_Shipping_Rate $method                    Method.
+			 */
 			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $package_index, $package, $chosen_method, $method );
 
 			// Add package review text lines
@@ -4533,6 +5590,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
 
 		// Bail if no additional order fields are present
+		/**
+		 * Filters whether the order notes field is enabled.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $value Value to filter.
+		 */
 		if ( ! is_array( $additional_order_fields ) || 0 == count( $additional_order_fields ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) { return false; }
 
 		// Otherwise, should render the substep
@@ -4596,6 +5660,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$substep_id = 'order_notes';
 		$is_substep_complete = true;
 
+		/**
+		 * Filters whether a checkout substep is complete.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_is_substep_complete_contact`
+		 * - `fc_is_substep_complete_shipping_address`
+		 * - `fc_is_substep_complete_shipping_method`
+		 * - `fc_is_substep_complete_order_notes`
+		 * - `fc_is_substep_complete_billing_address`
+		 * - `fc_is_substep_complete_payment`
+		 * - `fc_is_substep_complete_coupon_codes`
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool $is_substep_complete Whether the substep is complete.
+		 */
 		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
 	}
 
@@ -4626,6 +5709,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$address_fields = WC()->countries->get_address_fields( $shipping_country, 'shipping_' );
 
 			// Get fields skip list
+			/**
+			 * Filters whether substep complete shipping address field keys skip list.
+			 *
+			 * @since 4.0.0
+			 *
+			 * @param mixed $get_contact_step_display_field_ids Get contact step display field ids.
+			 */
 			$step_complete_field_keys_skip_list = apply_filters( 'fc_is_substep_complete_shipping_address_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
 
 			// Check each required country field
@@ -4642,6 +5732,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		/**
+		 * Filters whether a checkout substep is complete.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_is_substep_complete_contact`
+		 * - `fc_is_substep_complete_shipping_address`
+		 * - `fc_is_substep_complete_shipping_method`
+		 * - `fc_is_substep_complete_order_notes`
+		 * - `fc_is_substep_complete_billing_address`
+		 * - `fc_is_substep_complete_payment`
+		 * - `fc_is_substep_complete_coupon_codes`
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool $is_substep_complete Whether the substep is complete.
+		 */
 		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
 	}
 
@@ -4666,6 +5775,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		/**
+		 * Filters whether a checkout substep is complete.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_is_substep_complete_contact`
+		 * - `fc_is_substep_complete_shipping_address`
+		 * - `fc_is_substep_complete_shipping_method`
+		 * - `fc_is_substep_complete_order_notes`
+		 * - `fc_is_substep_complete_billing_address`
+		 * - `fc_is_substep_complete_payment`
+		 * - `fc_is_substep_complete_coupon_codes`
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool $is_substep_complete Whether the substep is complete.
+		 */
 		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
 	}
 
@@ -4698,6 +5826,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_prevent_autoselect_shipping_method( $default, $rates, $chosen_method ) {
 		// Bail if option is not enabled
+		/**
+		 * Filters the shipping methods disable auto select.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param string $value         Value to filter.
+		 * @param mixed  $default       Default.
+		 * @param array  $rates         Rates.
+		 * @param string $chosen_method Chosen method.
+		 */
 		if ( apply_filters( 'fc_shipping_methods_disable_auto_select', 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' ), $default, $rates, $chosen_method ) ) { return $default; }
 
 		// Prevent autoselect
@@ -4791,6 +5929,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_billing_address_before_shipping_address() {
 		// Define default value
 		$is_billing_before_shipping = false;
+		/**
+		 * Filters whether the billing address is displayed before the shipping address.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param bool $is_billing_before_shipping Is billing before shipping.
+		 */
 		return apply_filters( 'fc_is_billing_address_before_shipping_address', $is_billing_before_shipping );
 	}
 
@@ -4800,6 +5945,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function is_billing_forced_same_as_shipping() {
 		// Define default value
 		$is_billing_forced_same_as_shipping = false;
+		/**
+		 * Filters whether the billing address is forced to match the shipping address.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param bool $is_billing_forced_same_as_shipping Is billing forced same as shipping.
+		 */
 		return apply_filters( 'fc_is_billing_address_forced_same_as_shipping_address', $is_billing_forced_same_as_shipping );
 	}
 
@@ -4809,6 +5961,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function get_billing_step_hook_priority() {
 		// Define default priority
 		$step_priority = 30;
+		/**
+		 * Filters the priority of the billing checkout step.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param mixed $step_priority Step priority.
+		 */
 		return apply_filters( 'fc_billing_step_hook_priority', $step_priority );
 	}
 
@@ -4817,6 +5976,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_billing_address_substep_position_args() {
 		// Define substep position and priority for each positioning option
+		/**
+		 * Filters the step and priority used to place the billing address substep.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param array $value Value to filter.
+		 */
 		$substep_position_args = apply_filters( 'fc_billing_address_substep_position_args', array(
 			'step_after_shipping'        => array( 'step_id' => 'billing', 'priority' => 10 ),
 			// PRO: Step position and priority for other positioning options are added from the PRO plugin.
@@ -4883,6 +6049,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Get shipping packages
 		$packages = WC()->shipping->get_packages();
+		/**
+		 * Filters whether the cart is treated as having multiple shipping packages.
+		 *
+		 * @since 3.2.5
+		 *
+		 * @param bool $has_multiple_packages Whether the cart has multiple shipping packages.
+		 */
 		$has_multiple_packages = apply_filters( 'fc_cart_has_multiple_packages', 1 < count( $packages ) );
 
 		// Start output buffering
@@ -4892,6 +6065,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		echo '<div class="fc-shipping-method__packages">';
 
 		// Do action before packages inside
+		/**
+		 * Fires inside the shipping methods section, before the packages.
+		 *
+		 * @since 1.6.0
+		 */
 		do_action( 'fc_shipping_methods_before_packages_inside' );
 
 		$first_item = true;
@@ -4910,6 +6088,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 
 				// Apply filters to product names
+				/**
+				 * Filters the product names shown for a shipping package.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param mixed $product_names Product names.
+				 * @param array $package       Shipping package data.
+				 */
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
@@ -4919,8 +6105,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'available_methods'         => $package['rates'],
 				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
-				/* translators: %d: shipping package number */
-				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $i, $package ),
+				/**
+				 * Filters the name of a shipping package.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $package_name Package name.
+				 * @param int    $i            Zero-based index.
+				 * @param array  $package      Shipping package data.
+				 */
+				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( 
+					/* translators: %d: shipping package number */
+					_x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $i, $package ),
 				'package_index'             => $i,
 				'chosen_method'             => $chosen_method,
 				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
@@ -4933,6 +6129,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Do action after packages inside
+		/**
+		 * Fires inside the shipping methods section, after the packages.
+		 *
+		 * @since 1.6.0
+		 */
 		do_action( 'fc_shipping_methods_after_packages_inside' );
 
 		// Output end tag for shipping methods packages
@@ -4960,8 +6161,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $substep_id  Id of the substep.
 	 */
 	public function output_shipping_methods_available( $step_id = 'shipping', $substep_id = 'shipping_methods' ) {
+		/**
+		 * Fires before the shipping method packages.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'fc_shipping_methods_before_packages' );
 		echo $this->get_shipping_methods_available();
+		/**
+		 * Fires after the shipping method packages.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'fc_shipping_methods_after_packages' );
 	}
 
@@ -4977,15 +6188,48 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$label = '';
 		
 		// Get method label
+		/**
+		 * Filters the label markup of a shipping method option.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string           $label  Label text.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$label .= sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
 
 		// Maybe add shipping method logo image to label
+		/**
+		 * Filters the HTML for the shipping method option image.
+		 *
+		 * @since 3.1.9
+		 *
+		 * @param string           $html   HTML markup. Default empty string.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$method_image_html = apply_filters( 'fc_shipping_method_option_image_html', '', $method );
 		if ( ! empty( $method_image_html ) ) {
+			/**
+			 * Filters the HTML for the shipping method option image.
+			 *
+			 * @since 3.1.9
+			 *
+			 * @param string           $html              HTML markup.
+			 * @param WC_Shipping_Rate $method            Method.
+			 * @param string           $method_image_html Method image html.
+			 */
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_image_markup', '<span class="shipping-method__option-image">%s</span>', $method, $method_image_html ), $method_image_html );
 		}
 
 		// Get shipping method costs settings
+		/**
+		 * Filters the shipping method has cost.
+		 *
+		 * @since 3.0.2
+		 *
+		 * @param mixed            $value  Value to filter.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
@@ -5009,9 +6253,26 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Allow developers to change the shipping method costs
+			/**
+			 * Filters the shipping method option price.
+			 *
+			 * @since 3.0.2
+			 *
+			 * @param mixed            $method_costs Method costs.
+			 * @param WC_Shipping_Rate $method       Method.
+			 */
 			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
 
 			// Add shipping method costs to label
+			/**
+			 * Filters the HTML for the shipping method option price.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string           $html         HTML markup.
+			 * @param WC_Shipping_Rate $method       Method.
+			 * @param mixed            $method_costs Method costs.
+			 */
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method, $method_costs ), $method_costs );
 		}
 
@@ -5027,12 +6288,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_cart_shipping_methods_description( $method ) {
 		// Get HTML element to use for the shipping method description
+		/**
+		 * Filters the shipping method description HTML element.
+		 *
+		 * @since 1.5.2
+		 *
+		 * @param string $html HTML markup. Default `small`.
+		 */
 		$method_description_element = apply_filters( 'fc_shipping_method_description_html_element', 'small' );
 
 		// Get shipping method description
+		/**
+		 * Filters the description of a shipping method option.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string           $value  Value to filter. Default empty string.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$method_description = apply_filters( 'fc_shipping_method_option_description', '', $method );
 
 		// Get shipping method description markup
+		/**
+		 * Filters the HTML for the shipping method option description.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string           $html   HTML markup.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$method_description_markup = ! empty( $method_description ) ? sprintf( apply_filters( 'fc_shipping_method_option_description_markup', '<%1$s class="shipping-method__option-description">%2$s</%1$s>', $method ), $method_description_element, $method_description ) : '';
 
 		return $method_description_markup;
@@ -5095,8 +6379,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $substep_id  Id of the substep.
 	 */
 	public function output_substep_billing_address_fields( $step_id, $substep_id ) {
+		/**
+		 * Fires before the billing step fields.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'fc_checkout_before_step_billing_fields' );
 		echo $this->get_substep_billing_address_fields();
+		/**
+		 * Fires after the billing step fields.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'fc_checkout_after_step_billing_fields' );
 	}
 
@@ -5155,6 +6449,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_billing_address( $review_text_lines = array() ) {
 		// Maybe display billing same as shipping notice
+		/**
+		 * Filters whether the billing substep review text shows the same-as-shipping notice.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param bool $text Text to display. Default true.
+		 */
 		if ( true === apply_filters( 'fc_billing_same_as_shipping_display_substep_review_text_notice', true ) && $this->is_billing_same_as_shipping() ) {
 			$review_text_lines[] = '<em>' . $this->get_option_label_billing_same_as_shipping() . '</em>';
 		}
@@ -5228,6 +6529,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$address_fields = WC()->countries->get_address_fields( $billing_country, 'billing_' );
 
 		// Get fields skip list
+		/**
+		 * Filters whether substep complete billing address field keys skip list.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param mixed $get_contact_step_display_field_ids Get contact step display field ids.
+		 */
 		$step_complete_field_keys_skip_list = apply_filters( 'fc_is_substep_complete_billing_address_field_keys_skip_list', $this->get_contact_step_display_field_ids() );
 
 		// Check each required country field
@@ -5243,6 +6551,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
+		/**
+		 * Filters whether a checkout substep is complete.
+		 *
+		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
+		 * Additional hook names are created for substeps registered by other plugins.
+		 * Possible hook names include:
+		 *
+		 * - `fc_is_substep_complete_contact`
+		 * - `fc_is_substep_complete_shipping_address`
+		 * - `fc_is_substep_complete_shipping_method`
+		 * - `fc_is_substep_complete_order_notes`
+		 * - `fc_is_substep_complete_billing_address`
+		 * - `fc_is_substep_complete_payment`
+		 * - `fc_is_substep_complete_coupon_codes`
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool $is_substep_complete Whether the substep is complete.
+		 */
 		return apply_filters( 'fc_is_substep_complete_' . $substep_id, $is_substep_complete );
 	}
 
@@ -5252,6 +6579,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get the label for billing same as shipping option.
 	 */
 	public function get_option_label_billing_same_as_shipping() {
+		/**
+		 * Filters the label of the "same as shipping address" option.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $label Label text.
+		 */
 		return apply_filters( 'fc_billing_same_as_shipping_option_label', __( 'Same as shipping address', 'fluid-checkout' ) );
 	}
 
@@ -5268,6 +6602,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_billing_same_as_shipping_available = $this->is_shipping_address_available_for_billing() ? 1 : 0;
 
 		// Output a hidden field when shipping country not allowed for billing, or shipping not needed
+		/**
+		 * Filters the output billing same as shipping as hidden field.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( apply_filters( 'fc_output_billing_same_as_shipping_as_hidden_field', false ) || ! $is_billing_same_as_shipping_available ) :
 			?>
 			<input type="hidden" name="billing_same_as_shipping" id="billing_same_as_shipping" value="<?php echo esc_attr( $is_billing_same_as_shipping_checked ); ?>">
@@ -5297,6 +6638,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get the label for shipping same as billing option.
 	 */
 	public function get_option_label_shipping_same_as_billing() {
+		/**
+		 * Filters the label of the "same as billing address" option.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param string $label Label text.
+		 */
 		return apply_filters( 'fc_shipping_same_as_billing_option_label', __( 'Same as billing address', 'fluid-checkout' ) );
 	}
 
@@ -5313,6 +6661,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$is_shipping_same_as_billing_available = $this->is_billing_address_available_for_shipping() ? 1 : 0;
 
 		// Output a hidden field when billing country not allowed for shipping
+		/**
+		 * Filters the output shipping same as billing as hidden field.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( apply_filters( 'fc_output_shipping_same_as_billing_as_hidden_field', false ) || ! $this->is_billing_address_available_for_shipping() ) :
 			?>
 			<input type="hidden" name="shipping_same_as_billing" id="shipping_same_as_billing" value="<?php echo esc_attr( $is_shipping_same_as_billing_checked ); ?>">
@@ -5405,6 +6760,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Define whether shipping address is available for billing address.
 		$is_available = WC()->cart->needs_shipping_address() && true === $this->is_shipping_country_allowed_for_billing();
+		/**
+		 * Filters whether the shipping address can be used as the billing address.
+		 *
+		 * @since 2.3.3
+		 *
+		 * @param bool $is_available Is available.
+		 */
 		$is_available = apply_filters( 'fc_is_shipping_address_available_for_billing', $is_available );
 
 		return $is_available;
@@ -5453,6 +6815,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$is_available = $this->is_substep_complete_billing_address();
 		}
 
+		/**
+		 * Filters whether the billing address can be used as the shipping address.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param bool $is_available Is available.
+		 */
 		$is_available = apply_filters( 'fc_is_billing_address_available_for_shipping', $is_available );
 
 		return $is_available;
@@ -5467,6 +6836,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_billing_address_data_same_as_shipping( $posted_data = array() ) {
 		// Allow developers to hijack the returning value
+		/**
+		 * Filters the early result of comparing billing address data with the shipping address.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param mixed $value Short-circuit value. Return a non-null value to override the default behavior. Default null.
+		 */
 		$value_from_filter = apply_filters( 'fc_is_billing_address_data_same_as_shipping_before', null );
 		if ( null !== $value_from_filter ) {
 			return $value_from_filter;
@@ -5543,6 +6919,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe set default value if not doing AJAX requests for the checkout page
 		if ( ! array_key_exists( 'wc-ajax', $_GET ) || ( 'checkout' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) || 'update_order_review' === sanitize_text_field( wp_unslash( $_GET['wc-ajax'] ) ) ) ) {
+			/**
+			 * Filters whether the "same address" checkbox starts checked.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $value Value to filter.
+			 */
 			$billing_same_as_shipping = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
 		}
 
@@ -5570,6 +6953,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter to allow for customizations
+		/**
+		 * Filters whether the billing address is the same as the shipping address.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param mixed $billing_same_as_shipping Billing same as shipping.
+		 */
 		$billing_same_as_shipping = apply_filters( 'fc_is_billing_same_as_shipping_checked', $billing_same_as_shipping );
 
 		return $billing_same_as_shipping;
@@ -5623,6 +7013,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function is_shipping_address_data_same_as_billing( $posted_data = array() ) {
 		// Allow developers to hijack the returning value
+		/**
+		 * Filters the early result of comparing shipping address data with the billing address.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param mixed $value Short-circuit value. Return a non-null value to override the default behavior. Default null.
+		 */
 		$value_from_filter = apply_filters( 'fc_is_shipping_address_data_same_as_billing_before', null );
 		if ( null !== $value_from_filter ) {
 			return $value_from_filter;
@@ -5700,6 +7097,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// to be used only when copying shipping to billing address. Later when adding option to
 			// move the billing address before shipping, the option name was not changed or
 			// a new option was not added to avoid duplicate options in the plugin settings.
+			/**
+			 * Filters whether the "same address" checkbox starts checked.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $value Value to filter.
+			 */
 			$shipping_same_as_billing = apply_filters( 'fc_default_to_billing_same_as_shipping', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_default_to_billing_same_as_shipping' ) );
 		}
 
@@ -5722,6 +7126,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter to allow for customizations
+		/**
+		 * Filters whether the shipping address is the same as the billing address.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param mixed $shipping_same_as_billing Shipping same as billing.
+		 */
 		$shipping_same_as_billing = apply_filters( 'fc_is_shipping_same_as_billing_checked', $shipping_same_as_billing );
 
 		return $shipping_same_as_billing;
@@ -5765,6 +7176,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get list of shipping fields to skip copying from billing fields.
 	 */
 	public function get_shipping_same_as_billing_skip_fields() {
+		/**
+		 * Filters the shipping same as billing skip fields.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $skip Whether to skip the default behavior. Default empty array.
+		 */
 		return apply_filters( 'fc_shipping_same_as_billing_skip_fields', array() );
 	}
 
@@ -5800,6 +7218,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Remove ignored shipping fields
 		$shipping_copy_shipping_field_keys = array_diff( $shipping_copy_shipping_field_keys, $this->get_shipping_address_ignored_shipping_field_ids() );
 
+		/**
+		 * Filters the shipping same as billing field keys.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param mixed $shipping_copy_shipping_field_keys Shipping copy shipping field keys.
+		 */
 		return apply_filters( 'fc_shipping_same_as_billing_field_keys', $shipping_copy_shipping_field_keys );
 	}
 
@@ -5807,6 +7232,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Get list of billing fields to skip copying from shipping fields.
 	 */
 	public function get_billing_same_as_shipping_skip_fields() {
+		/**
+		 * Filters the billing field keys that are not copied from the shipping address.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $skip Whether to skip the default behavior. Default empty array.
+		 */
 		return apply_filters( 'fc_billing_same_as_shipping_skip_fields', array() );
 	}
 
@@ -5843,6 +7275,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Remove ignored billing fields
 		$billing_copy_shipping_field_keys = array_diff( $billing_copy_shipping_field_keys, $this->get_billing_address_ignored_billing_field_ids() );
 
+		/**
+		 * Filters the billing field keys copied from the shipping address.
+		 *
+		 * @since 1.2.9
+		 *
+		 * @param mixed $billing_copy_shipping_field_keys Billing copy shipping field keys.
+		 */
 		return apply_filters( 'fc_billing_same_as_shipping_field_keys', $billing_copy_shipping_field_keys );
 	}
 
@@ -5908,6 +7347,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( '1' === $is_billing_same_as_shipping_previous || true === $is_billing_same_as_shipping_checked ) { return $posted_data; }
 
 		// Bail if forced to skip
+		/**
+		 * Filters the save new address data billing skip update.
+		 *
+		 * @since 1.5.3
+		 *
+		 * @param bool  $skip        Whether to skip the default behavior. Default false.
+		 * @param array $posted_data Parsed posted checkout data.
+		 */
 		if ( apply_filters( 'fc_save_new_address_data_billing_skip_update', false, $posted_data ) ) { return $posted_data; }
 
 		// Get list of billing fields to copy from shipping fields
@@ -5970,6 +7417,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 
 				// Filter field value before updating post data
+				/**
+				 * Filters a billing field value copied from the matching shipping field.
+				 *
+				 * @since 3.0.7
+				 *
+				 * @param mixed  $new_field_value    New field value.
+				 * @param string $field_key          Checkout field key.
+				 * @param mixed  $shipping_field_key Shipping field key.
+				 * @param array  $posted_data        Parsed posted checkout data.
+				 */
 				$filtered_field_value = apply_filters( 'fc_billing_same_as_shipping_field_value', $new_field_value, $field_key, $shipping_field_key, $posted_data );
 
 				// Maybe update post data with new field value
@@ -6047,6 +7504,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Copy field value from shipping fields, maybe set field as empty if not found in shipping fields
 			$new_field_value = isset( $post_data[ $shipping_field_key ] ) ? $post_data[ $shipping_field_key ] : null;
+			/**
+			 * Filters a billing field value copied from the matching shipping field.
+			 *
+			 * @since 3.0.7
+			 *
+			 * @param mixed  $new_field_value    New field value.
+			 * @param string $field_key          Checkout field key.
+			 * @param mixed  $shipping_field_key Shipping field key.
+			 * @param array  $post_data          Posted checkout data.
+			 */
 			$new_field_value = apply_filters( 'fc_billing_same_as_shipping_field_value', $new_field_value, $field_key, $shipping_field_key, $post_data );
 
 			// Update billing field values
@@ -6072,6 +7539,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( '1' === $is_shipping_same_as_billing_previous || true === $is_shipping_same_as_billing_checked ) { return $posted_data; }
 
 		// Bail if forced to skip
+		/**
+		 * Filters the save new address data shipping skip update.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param bool  $skip        Whether to skip the default behavior. Default false.
+		 * @param array $posted_data Parsed posted checkout data.
+		 */
 		if ( apply_filters( 'fc_save_new_address_data_shipping_skip_update', false, $posted_data ) ) { return $posted_data; }
 
 		// Get list of shipping fields to copy from billing fields
@@ -6203,6 +7678,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 			if ( ! is_callable( array( $customer, $setter ) ) || ! is_callable( array( $customer, $getter ) ) ) { continue; }
 
 			// Get billing field value and allow customizations
+			/**
+			 * Filters a shipping field value copied from the matching billing field.
+			 *
+			 * @since 3.1.0
+			 *
+			 * @param mixed  $value             Field value copied from the billing address.
+			 * @param string $field_key         Shipping field key being updated.
+			 * @param string $billing_field_key Matching billing field key.
+			 * @param array  $args              Extra arguments. Default empty array.
+			 */
 			$new_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $customer->{$getter}(), $field_key, $billing_field_key, array() );
 
 			// Skip update when the filter returns null
@@ -6271,6 +7756,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 
 				// Filter field value before updating post data
+				/**
+				 * Filters a shipping field value copied from the matching billing field.
+				 *
+				 * @since 3.1.0
+				 *
+				 * @param mixed  $new_field_value   New field value.
+				 * @param string $field_key         Checkout field key.
+				 * @param mixed  $billing_field_key Billing field key.
+				 * @param array  $posted_data       Parsed posted checkout data.
+				 */
 				$filtered_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $new_field_value, $field_key, $billing_field_key, $posted_data );
 
 				// Maybe update post data with new field value
@@ -6349,6 +7844,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Copy field value from billing fields, maybe set field as empty if not found in billing fields
 			$new_field_value = isset( $post_data[ $billing_field_key ] ) ? $post_data[ $billing_field_key ] : null;
+			/**
+			 * Filters a shipping field value copied from the matching billing field.
+			 *
+			 * @since 3.1.0
+			 *
+			 * @param mixed  $new_field_value   New field value.
+			 * @param string $field_key         Checkout field key.
+			 * @param mixed  $billing_field_key Billing field key.
+			 * @param array  $post_data         Posted checkout data.
+			 */
 			$new_field_value = apply_filters( 'fc_shipping_same_as_billing_field_value', $new_field_value, $field_key, $billing_field_key, $post_data );
 
 			// Update billing field values
@@ -6377,6 +7882,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		);
 
 		// Filter field keys
+		/**
+		 * Filters the shipping not needed shipping field keys.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param mixed $shipping_copy_billing_field_keys Shipping copy billing field keys.
+		 */
 		$shipping_copy_billing_field_keys = apply_filters( 'fc_shipping_not_needed_shipping_field_keys', $shipping_copy_billing_field_keys );
 
 		return $shipping_copy_billing_field_keys;
@@ -6421,6 +7933,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( WC()->cart->needs_shipping_address() ) { return $posted_data; }
 
 		// Bail if forced to not set shipping address
+		/**
+		 * Filters whether the billing address is copied to shipping when the cart does not need shipping.
+		 *
+		 * @since 3.2.5
+		 *
+		 * @param bool $value Value to filter. Default true.
+		 */
 		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $posted_data; }
 
 		// Copy the billing address field values to the shipping address
@@ -6439,6 +7958,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( WC()->cart->needs_shipping_address() ) { return $post_data; }
 
 		// Bail if forced to not set shipping address
+		/**
+		 * Filters whether the billing address is copied to shipping when the cart does not need shipping.
+		 *
+		 * @since 3.2.5
+		 *
+		 * @param bool $value Value to filter. Default true.
+		 */
 		if ( true !== apply_filters( 'fc_copy_billing_to_shipping_address_when_shipping_not_needed', true ) ) { return $post_data; }
 
 		// Iterate posted data
@@ -6569,6 +8095,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Get review text line
 			$payment_method_review_text = '<span class="payment-method-icon">' . $icon_html /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ . '</span>' . '<span class="payment-method-title">' . $gateway->get_title() /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ . '</span>';
+			/**
+			 * Filters the review text for the chosen payment method.
+			 *
+			 * The dynamic portion of the hook name, `$chosen_method_key`, refers to the payment
+			 * gateway ID, for example `bacs`, `cheque`, or `cod`.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param string             $payment_method_review_text Payment method review text.
+			 * @param WC_Payment_Gateway $gateway                    Payment gateway object.
+			 */
 			$payment_method_review_text = apply_filters( 'fc_payment_method_review_text_' . $chosen_method_key, $payment_method_review_text, $gateway );
 
 			// Add review text line
@@ -6670,6 +8207,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Run the action hook `woocommerce_checkout_after_customer_details`.
 	 */
 	public function run_action_woocommerce_checkout_after_customer_details() {
+		/**
+		 * Fires after the customer details on checkout.
+		 *
+		 * @since 1.5.0
+		 */
 		do_action( 'woocommerce_checkout_after_customer_details' );
 	}
 
@@ -6713,7 +8255,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter attributes
+		/**
+		 * Filters the HTML attributes of the checkout sidebar.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $sidebar_attributes Sidebar attributes.
+		 */
 		$sidebar_attributes = apply_filters( 'fc_checkout_sidebar_attributes', $sidebar_attributes );
+		/**
+		 * Filters the HTML attributes of the inner checkout sidebar element.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $sidebar_attributes_inner Sidebar attributes inner.
+		 */
 		$sidebar_attributes_inner = apply_filters( 'fc_checkout_sidebar_attributes_inner', $sidebar_attributes_inner );
 
 		// Convert attributes to string
@@ -6722,7 +8278,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<div <?php echo $sidebar_attributes_str; // WPCS: XSS ok. ?>>
 			<div <?php echo $sidebar_attributes_inner_str; // WPCS: XSS ok. ?>>
-				<?php do_action( 'fc_checkout_order_review_section' ); ?>
+				<?php
+					/**
+					 * Fires where the order review section is rendered.
+					 *
+					 * @since 1.2.0
+					 */
+					do_action( 'fc_checkout_order_review_section' );
+				?>
 			</div>
 		</div>
 		<?php
@@ -6736,6 +8299,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @return  string  The order review section title.
 	 */
 	public function get_order_review_title() {
+		/**
+		 * Filters the order review title.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $title Title text.
+		 */
 		return apply_filters( 'fc_order_review_title', __( 'Order summary', 'fluid-checkout' ) );
 	}
 
@@ -6811,7 +8381,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_order_review_content() {
 		?>
 		<div id="order_review" class="woocommerce-checkout-review-order">
-			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
+			<?php
+				/**
+				 * Fires where the checkout order review is rendered.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'woocommerce_checkout_order_review' );
+			?>
 		</div>
 		<?php
 	}
@@ -6823,6 +8400,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_review_header_edit_cart_link() {
 		// Bail if edit cart link is disabled
+		/**
+		 * Filters the order summary display desktop edit cart link.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		if ( true !== apply_filters( 'fc_order_summary_display_desktop_edit_cart_link', true ) ) { return; }
 
 		?>
@@ -6850,6 +8434,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'checkout/place-order.php',
 			array(
 				'checkout'           => WC()->checkout(),
+				/**
+				 * Filters the place order button text.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $text Text to display.
+				 */
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
@@ -6906,6 +8497,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		// Output place order section
 		$section_class = true === $is_sidebar ? 'fc-place-order__section--sidebar' : 'fc-place-order__section--main';
 		echo '<div class="fc-place-order__section ' . esc_attr( $section_class ) . '">';
+		/**
+		 * Fires where the place-order section is rendered.
+		 *
+		 * @since 2.2.0
+		 *
+		 * @param string $step_id    Checkout step ID.
+		 * @param bool   $is_sidebar Is sidebar.
+		 */
 		do_action( 'fc_place_order', $step_id, $is_sidebar );
 		echo '</div>';
 	}
@@ -6938,6 +8537,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_checkout_place_order_custom_buttons( $step_id = 'payment', $is_sidebar = false ) {
 		echo '<div class="fc-place-order__custom-buttons">';
+		/**
+		 * Fires where custom place-order buttons are rendered.
+		 *
+		 * @since 2.2.0
+		 *
+		 * @param string $step_id    Checkout step ID.
+		 * @param bool   $is_sidebar Is sidebar.
+		 */
 		do_action( 'fc_place_order_custom_buttons', $step_id, $is_sidebar );
 		echo '</div>';
 	}
@@ -6990,6 +8597,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$current_step = $this->get_current_step();
 
 		// Maybe disable the place order button if not in the last step
+		/**
+		 * Filters whether the place order button is disabled until the last checkout step.
+		 *
+		 * @since 1.6.1
+		 *
+		 * @param string $value Value to filter. Default `yes`.
+		 */
 		if ( false !== $current_step && 'yes' === apply_filters( 'fc_checkout_maybe_disable_place_order_button', 'yes' ) && $this->is_checkout_layout_multistep() ) {
 			$current_step_index = array_keys( $current_step )[0];
 			$current_step_id = $current_step[ $current_step_index ][ 'step_id' ];
@@ -7005,6 +8619,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Add extra button class and filter
+		/**
+		 * Filters the CSS classes for the place order button.
+		 *
+		 * @since 1.2.5
+		 *
+		 * @param string $classes CSS classes. Default `button alt`.
+		 */
 		$button_html = str_replace( 'class="button alt', 'class="' . esc_attr( apply_filters( 'fc_place_order_button_classes', 'button alt' ) ) . ' fc-place-order-button', $button_html );
 
 		// Add button wrapper and return
@@ -7032,14 +8653,32 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package[ 'rates' ];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			/** translators: %d: Package number */
-			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
+			/**
+			 * Filters the name of a shipping package.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $package_name  Package name.
+			 * @param int    $package_index Zero-based package index.
+			 * @param array  $package       Shipping package data.
+			 */
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( 
+				/** translators: %d: Package number */
+				_x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 			$product_names = array();
 
 			if ( count( $packages ) > 1 ) {
 				foreach ( $package['contents'] as $item_id => $values ) {
 					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
 				}
+				/**
+				 * Filters the product names shown for a shipping package.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param mixed $product_names Product names.
+				 * @param array $package       Shipping package data.
+				 */
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
@@ -7049,8 +8688,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'package'                  => $package,
 					'available_methods'        => $available_methods,
 					'show_package_details'     => count( $packages ) > 1,
+					/**
+					 * Filters the shipping show shipping calculator.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param mixed $first         First.
+					 * @param int   $package_index Zero-based package index.
+					 * @param array $package       Shipping package data.
+					 */
 					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_index, $package ),
 					'package_details'          => implode( ', ', $product_names ),
+					/**
+					 * Filters the order summary shipping package name.
+					 *
+					 * @since 3.0.4
+					 *
+					 * @param string           $package_name  Package name.
+					 * @param WC_Shipping_Rate $method        Method.
+					 * @param int              $package_index Zero-based package index.
+					 * @param array            $package       Shipping package data.
+					 */
 					'package_name'             => apply_filters( 'fc_order_summary_shipping_package_name', $package_name, $method, $package_index, $package ),
 					'formatted_shipping_price' => $this->get_cart_totals_shipping_method_label( $method, $package, $package_index ),
 					'index'                    => $package_index,
@@ -7072,6 +8730,11 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Output the order review actions for mobile devices.
 	 */
 	public function run_action_sidebar_before_actions_for_backwards_compatibility() {
+		/**
+		 * Fires before the actions in the order review sidebar.
+		 *
+		 * @since 1.2.0
+		 */
 		do_action( 'fc_checkout_order_review_sidebar_before_actions' );
 	}
 
@@ -7086,7 +8749,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		?>
 		<div class="fc-checkout-order-review__actions-mobile">
 			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="fc-checkout-order-review__edit-cart"><?php echo esc_html( __( 'Edit cart', 'fluid-checkout' ) ); ?></a>
-			<button type="button" class="fc-checkout-order-review__close-order-summary <?php echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) ); ?>" data-flyout-close aria-label="<?php echo esc_html( __( 'Close and continue with checkout', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Continue', 'fluid-checkout' ) ); ?></button>
+			<button type="button" class="fc-checkout-order-review__close-order-summary <?php
+				/**
+				 * Filters the CSS classes of the order summary continue button.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $classes CSS classes. Default `button`.
+				 */
+				echo esc_attr( apply_filters( 'fc_order_summary_continue_button_classes', 'button' ) );
+			?>" data-flyout-close aria-label="<?php echo esc_html( __( 'Close and continue with checkout', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Continue', 'fluid-checkout' ) ); ?></button>
 		</div>
 		<?php
 	}
@@ -7128,6 +8800,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter the shipping method label
+		/**
+		 * Filters the HTML for the order summary shipping package price.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param string           $shipping_total_label Shipping total label.
+		 * @param WC_Shipping_Rate $method               Method.
+		 * @param int              $package_index        Zero-based package index.
+		 * @param array            $package              Shipping package data.
+		 * @param string           $package_name         Package name.
+		 */
 		$shipping_total_label = apply_filters( 'fc_order_summary_shipping_package_price_html', $shipping_total_label, $method, $package_index, $package, $package_name );
 
 		return $shipping_total_label;
@@ -7144,6 +8827,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
 		// CHANGE: Remove no-break-space from the end of the product name, add wrapper for the product name
+		/**
+		 * Filters the product name HTML for a cart item.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed  $get_name      Get name.
+		 * @param array  $cart_item     Cart item data.
+		 * @param string $cart_item_key Cart item key.
+		 */
 		echo '<div class="cart-item__element cart-item__name">' . apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
@@ -7156,9 +8848,25 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_summary_cart_item_unit_price( $cart_item, $cart_item_key, $product ) {
 		// Bail if option is disabled
+		/**
+		 * Filters whether the order summary shows the cart item unit price.
+		 *
+		 * @since 2.1.0
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
 
 		// Item unit price
+		/**
+		 * Filters the price HTML for a cart item.
+		 *
+		 * @since 2.1.0
+		 *
+		 * @param string $value         Value to filter.
+		 * @param array  $cart_item     Cart item data.
+		 * @param string $cart_item_key Cart item key.
+		 */
 		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( __( 'Price', 'woocommerce' ) ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
 	}
 
@@ -7188,6 +8896,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Product  $product        The product object.
 	 */
 	public function output_order_summary_cart_item_quantity( $cart_item, $cart_item_key, $product ) {
+		/**
+		 * Filters the cart item quantity on checkout.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $value         Value to filter.
+		 * @param array  $cart_item     Cart item data.
+		 * @param string $cart_item_key Cart item key.
+		 */
 		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
@@ -7277,12 +8994,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter skip fields to allow developers to add more fields to the skip list
+		/**
+		 * Filters the checkout field keys that are not restored from the session.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param mixed $skip_field_keys    Skip field keys.
+		 * @param array $parsed_posted_data Parsed posted checkout data.
+		 */
 		$skip_field_keys = apply_filters( 'fc_customer_persisted_data_skip_fields', $skip_field_keys, $parsed_posted_data );
 
 		// Remove fields that should be skipped
 		$session_field_keys = array_diff( $session_field_keys, $skip_field_keys );
 
 		// Filter session field keys
+		/**
+		 * Filters the checkout field keys saved in the customer session.
+		 *
+		 * @since 4.1.0
+		 *
+		 * @param mixed $session_field_keys Session field keys.
+		 * @param array $parsed_posted_data Parsed posted checkout data.
+		 */
 		$session_field_keys = apply_filters( 'fc_customer_persisted_data_session_field_keys', $session_field_keys, $parsed_posted_data );
 
 		return $session_field_keys;
@@ -7361,6 +9094,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Filter to allow customizations
+			/**
+			 * Filters the parsed checkout form data before it is stored.
+			 *
+			 * @since 1.5.0
+			 *
+			 * @param mixed $new_posted_data New posted data.
+			 */
 			$new_posted_data = apply_filters( 'fc_set_parsed_posted_data', $new_posted_data );
 
 			// Update selected shipping method session value.
@@ -7424,6 +9164,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Other fields
+		/**
+		 * Filters the parsed posted data reset field keys.
+		 *
+		 * @since 3.0.3
+		 *
+		 * @param array $value       Value to filter.
+		 * @param array $posted_data Parsed posted checkout data.
+		 */
 		$other_fields_keys = apply_filters( 'fc_parsed_posted_data_reset_field_keys', array( 'createaccount' ), $posted_data );
 		foreach ( $other_fields_keys as $field_key ) {
 			if ( ! in_array( $field_key, array_keys( $posted_data ) ) ) {
@@ -7620,6 +9368,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$field_keys = array_keys( $fields );
 
 		// Skip some fields
+		/**
+		 * Filters the address field keys skipped when formatting an address.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $skip Whether to skip the default behavior.
+		 */
 		$skip_field_keys = apply_filters( 'fc_address_field_keys_skip_list', array( $field_key_prefix.'email' ) );
 		$field_keys = array_diff( $field_keys, $skip_field_keys );
 
@@ -7629,6 +9384,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter to allow customizations
+		/**
+		 * Filters the field keys that belong to an address type.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string[] $field_keys   Field keys.
+		 * @param string   $address_type Address type. Either `billing` or `shipping`.
+		 */
 		$field_keys = apply_filters( 'fc_address_field_keys', $field_keys, $address_type );
 
 		return $field_keys;
@@ -7647,6 +9410,15 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_change_customer_address_field_value_from_checkout_data( $value, $customer ) {
 		// Bail if forced to skip
+		/**
+		 * Filters the skip change customer address field value from checkout data.
+		 *
+		 * @since 4.1.0
+		 *
+		 * @param bool        $skip     Whether to skip the default behavior. Default false.
+		 * @param mixed       $value    Value to filter.
+		 * @param WC_Customer $customer Customer.
+		 */
 		if ( apply_filters( 'fc_skip_change_customer_address_field_value_from_checkout_data', false, $value, $customer ) ) { return $value; }
 
 		// Get name of the current filter hook running this function
@@ -7695,6 +9467,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function get_checkout_field_value_from_session_or_posted_data( $input ) {
 		// Bail if forced to skip
+		/**
+		 * Filters the skip checkout field value from session or posted data.
+		 *
+		 * @since 4.0.2
+		 *
+		 * @param bool  $skip  Whether to skip the default behavior. Default false.
+		 * @param mixed $input Input.
+		 */
 		if ( true === apply_filters( 'fc_skip_checkout_field_value_from_session_or_posted_data', false, $input ) ) { return null; }
 
 		// Maybe return field value from posted data
@@ -7789,6 +9569,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		}
 
 		// Filter clear fields to allow developers to add more fields to be cleared
+		/**
+		 * Filters the persisted checkout field keys cleared after the order is processed.
+		 *
+		 * @since 1.4.0
+		 *
+		 * @param mixed $clear_field_keys Clear field keys.
+		 */
 		$clear_field_keys = apply_filters( 'fc_customer_persisted_data_clear_fields_order_processed', $clear_field_keys );
 
 		// Clear customer data from the session
@@ -7805,6 +9592,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function clear_customer_meta_order_processed( $customer, $data ) {
 		// Filter clear customer meta fields to allow developers to add more fields to be cleared
+		/**
+		 * Filters the customer meta keys cleared after the order is processed.
+		 *
+		 * @since 2.0.3
+		 *
+		 * @param array $value Value to filter. Default empty array.
+		 */
 		$clear_customer_meta_field_keys = apply_filters( 'fc_customer_meta_data_clear_fields_order_processed', array() );
 
 		foreach ( $clear_customer_meta_field_keys as $field_key ) {
@@ -7822,6 +9616,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) || ! isset( WC()->session ) ) { return; }
 
 		// Filter clear fields to allow developers to add more fields to skip being cleared
+		/**
+		 * Filters the persisted field keys that are not cleared.
+		 *
+		 * @since 1.4.0
+		 *
+		 * @param array $skip Whether to skip the default behavior.
+		 */
 		$clear_field_keys_skip_list = apply_filters( 'fc_customer_persisted_data_clear_all_fields_skip_list', array( 'order_comments' ) );
 
 		// Get field keys from the session
@@ -7882,6 +9683,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Hook to allow modification of value.
+			/**
+			 * Filters an account address field value before it is saved from checkout.
+			 *
+			 * The dynamic portion of the hook name, `$key`, refers to the checkout field key. This is
+			 * the WooCommerce account-field hook, called while copying the checkout address onto the
+			 * customer.
+			 *
+			 * @since 3.1.6
+			 *
+			 * @param mixed $value Value to filter.
+			 */
 			$value = apply_filters( 'woocommerce_process_myaccount_field_' . $key, $value );
 
 			// Update checkout field value on session
