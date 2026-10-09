@@ -519,14 +519,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			 * Filters whether to enqueue a theme compatibility stylesheet on checkout and account screens.
 			 *
 			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
-			 * directory name from `get_template()` or `get_stylesheet()`. Return `false` to skip the
-			 * stylesheet. Any other value keeps it enabled.
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * enqueue the stylesheet. Any other value skips it.
 			 *
 			 * @since 1.2.10
 			 *
 			 * @param bool $value Value to filter. Default true.
 			 */
-			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
+			if ( true !== apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-' . $theme_slug, false );
@@ -560,14 +560,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			 * Filters whether to enqueue a plugin compatibility stylesheet on checkout and account screens.
 			 *
 			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
-			 * slug (or the plugin file name without `.php` for single-file plugins). Return `false` to
-			 * skip the stylesheet. Any other value keeps it enabled.
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to enqueue the stylesheet. Any other value skips it.
 			 *
 			 * @since 1.2.10
 			 *
 			 * @param bool $value Value to filter. Default true.
 			 */
-			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
+			if ( true !== apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-' . $plugin_slug, false );
@@ -597,14 +597,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			 * Filters whether to enqueue a theme compatibility stylesheet on customer account screens.
 			 *
 			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
-			 * directory name from `get_template()` or `get_stylesheet()`. Return `false` to skip the
-			 * stylesheet. Any other value keeps it enabled.
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * enqueue the stylesheet. Any other value skips it.
 			 *
 			 * @since 3.1.9
 			 *
 			 * @param bool $value Value to filter. Default true.
 			 */
-			if ( apply_filters( 'fc_enable_compat_theme_account_style_' . $theme_slug, true ) === false ) { continue; }
+			if ( true !== apply_filters( 'fc_enable_compat_theme_account_style_' . $theme_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-account-' . $theme_slug, false );
@@ -634,14 +634,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			 * Filters whether to enqueue a theme compatibility stylesheet on the account edit-address screen.
 			 *
 			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
-			 * directory name from `get_template()` or `get_stylesheet()`. Return `false` to skip the
-			 * stylesheet. Any other value keeps it enabled.
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * enqueue the stylesheet. Any other value skips it.
 			 *
 			 * @since 3.1.6
 			 *
 			 * @param bool $value Value to filter. Default true.
 			 */
-			if ( apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) === false ) { continue; }
+			if ( true !== apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-edit-address-' . $theme_slug, false );
@@ -677,14 +677,14 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			 * Filters whether to enqueue a plugin compatibility stylesheet on the account edit-address screen.
 			 *
 			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
-			 * slug (or the plugin file name without `.php` for single-file plugins). Return `false` to
-			 * skip the stylesheet. Any other value keeps it enabled.
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to enqueue the stylesheet. Any other value skips it.
 			 *
 			 * @since 3.1.6
 			 *
 			 * @param bool $value Value to filter. Default true.
 			 */
-			if ( apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) === false ) { continue; }
+			if ( true !== apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-edit-address-' . $plugin_slug, false );
