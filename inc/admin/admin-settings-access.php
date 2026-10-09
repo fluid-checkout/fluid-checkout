@@ -93,6 +93,7 @@ class FluidCheckout_Admin_Settings_Access extends FluidCheckout {
 	/**
 	 * Enable settings that require unlocked features, including their options.
 	 * Settings with `locked_only` set to `true`, such as upgrade notices, are removed when their feature is unlocked.
+	 * Settings with `unlocked_only` set to `true` are removed while their required feature is still locked.
 	 *
 	 * @param  array  $settings  Settings arrays, same format as WooCommerce settings.
 	 */
@@ -101,6 +102,14 @@ class FluidCheckout_Admin_Settings_Access extends FluidCheckout {
 		if ( ! is_array( $settings ) ) { return $settings; }
 
 		foreach ( $settings as $setting_key => $setting ) {
+			// Remove settings only displayed while the feature is unlocked
+			if ( ! empty( $setting[ 'unlocked_only' ] ) ) {
+				if ( empty( $setting[ 'requires' ] ) || ! $this->is_unlocked( $setting[ 'requires' ] ) ) {
+					unset( $settings[ $setting_key ] );
+				}
+				continue;
+			}
+
 			// Skip settings which do not require an unlocked feature
 			if ( ! $this->is_setting_unlocked( $setting ) ) { continue; }
 

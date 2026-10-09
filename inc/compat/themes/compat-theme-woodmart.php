@@ -151,11 +151,12 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 				'title' => __( 'Theme Woodmart', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_woodmart_options',
+				'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
 			),
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
+				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_woodmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_output_checkout_steps_section' ),
@@ -165,7 +166,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 			array(
 				'title'           => __( 'Checkout options', 'fluid-checkout' ),
 				'desc'            => __( 'Disable the theme checkout options', 'fluid-checkout' ),
-				'desc_tip'        => __( 'The options display product image, quantity field, remove button and link to product page added by the theme are disabled by default.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
+				'desc_tip'        => __( 'The options display product image, quantity field, remove button and link to product page added by the theme are disabled by default.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_woodmart_disable_theme_checkout_options',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_disable_theme_checkout_options' ),

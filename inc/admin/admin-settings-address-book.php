@@ -141,6 +141,7 @@ class FluidCheckout_Settings_AddressBook {
 						'desc'              => '',
 						'id'                => 'fc_pro_address_book_options',
 						'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-book', self::PRODUCT_URL, self::FEATURE ),
+						'docs'              => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/fc-address-book/' ),
 					),
 
 					array(
@@ -150,18 +151,17 @@ class FluidCheckout_Settings_AddressBook {
 						'id'                => 'fc_pro_enable_address_book',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_address_book' ),
-						'checkboxgroup'     => 'start',
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => self::FEATURE,
 					),
 					array(
+						'title'             => __( 'Address labels', 'fluid-checkout' ),
 						'desc'              => __( 'Allow customers to add a custom label for each address', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Address labels make it easier to for customers to distinguish between their saved addresses (ie.: "Mom\'s House"). The address labels are private to the customers, and will not be displayed or printed on the order details page or invoices.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_address_book_address_label',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_address_book_address_label' ),
-						'checkboxgroup'     => '',
 						'custom_attributes' => array(
 							'data-conditional-id'    => 'fc_pro_enable_address_book',
 							'data-conditional-value' => 'yes',

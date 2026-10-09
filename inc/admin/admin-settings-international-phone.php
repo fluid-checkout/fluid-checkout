@@ -90,6 +90,10 @@ class FluidCheckout_Settings_InternationalPhone {
 						'contact'          => __( 'Contact step', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_phone_field_position' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_shipping_phone_field_visibility',
+						'data-conditional-value' => 'optional,required',
+					),
 					'autoload'              => false,
 				),
 
@@ -133,6 +137,10 @@ class FluidCheckout_Settings_InternationalPhone {
 						'contact'         => __( 'Contact step', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_billing_phone_field_position' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'woocommerce_checkout_phone_field',
+						'data-conditional-value' => 'optional,required',
+					),
 					'autoload'              => false,
 				),
 
@@ -168,6 +176,10 @@ class FluidCheckout_Settings_InternationalPhone {
 					'id'                    => 'fc_pro_enable_international_phone_country_code',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_code' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -178,6 +190,10 @@ class FluidCheckout_Settings_InternationalPhone {
 					'id'                    => 'fc_pro_enable_international_phone_country_list_filter',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_list_filter' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -190,6 +206,10 @@ class FluidCheckout_Settings_InternationalPhone {
 					'id'                    => 'fc_pro_enable_international_phone_validation',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -200,6 +220,10 @@ class FluidCheckout_Settings_InternationalPhone {
 					'id'                    => 'fc_pro_enable_international_phone_validation_precise',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_pro_enable_international_phone_validation',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -216,6 +240,10 @@ class FluidCheckout_Settings_InternationalPhone {
 						'TOLL_FREE'        => __( 'Toll free', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise_types' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_pro_enable_international_phone_validation_precise',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
@@ -233,6 +261,10 @@ class FluidCheckout_Settings_InternationalPhone {
 						'AGGRESSIVE'       => __( 'Always show', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_international_phone_fields_placeholder' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',

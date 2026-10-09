@@ -87,6 +87,10 @@ class FluidCheckout_Settings_Cart {
 							'no'            => __( 'Theme\'s header and footer', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_hide_site_header_footer_at_cart' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_page',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',
@@ -108,12 +112,28 @@ class FluidCheckout_Settings_Cart {
 					),
 
 					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'Enable cart page optimizations to see more options', 'fluid-checkout' ),
+						'id'                => 'fc_pro_cart_elements_enable_notice',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_page',
+							'data-conditional-value' => 'no',
+						),
+						'requires'          => 'pro',
+						'unlocked_only'     => true,
+					),
+
+					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
 						'desc'              => __( 'Sticky order summary', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Make the order summary stay visible on the cart page while scrolling', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_cart_sticky_order_summary',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_sticky_order_summary' ),
 						'type'              => 'checkbox',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_page',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',
@@ -122,7 +142,7 @@ class FluidCheckout_Settings_Cart {
 					array(
 						'title'             => __( 'Coupon codes', 'fluid-checkout' ),
 						'desc'              => '',
-						'desc_tip'          => __( 'Select position where to display the coupon codes section on the cart page. Only applicable when AJAX cart and the integrated coupon codes in the checkout page are enabled.', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Select position where to display the coupon codes section on the cart page. Only applicable when AJAX cart is enabled, and if use of coupon codes are enabled in the WooCommerce settings.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_cart_section_position_coupon_code',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -139,6 +159,10 @@ class FluidCheckout_Settings_Cart {
 							'after_order_summary'      => __( 'After the order summary', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_section_position_coupon_code' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_page',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',
@@ -156,6 +180,10 @@ class FluidCheckout_Settings_Cart {
 							'inside_order_summary'     => __( 'Inside the order summary', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_section_position_shipping' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_page',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',
@@ -175,6 +203,10 @@ class FluidCheckout_Settings_Cart {
 							'after_order_summary'      => __( 'After the order summary', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_section_position_cross_sells' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_page',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'type'              => 'fc_select',
 						'disabled'          => true,
@@ -191,6 +223,10 @@ class FluidCheckout_Settings_Cart {
 							'no'            => __( 'Theme\'s cross-sells layout', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_cross_sells' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_page',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',
@@ -203,6 +239,10 @@ class FluidCheckout_Settings_Cart {
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_cart_cross_sells_display_items_limit' ),
 						'type'              => 'fc_number',
 						'suffix_label'      => __( 'Items', 'fluid-checkout' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_cart_cross_sells',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',

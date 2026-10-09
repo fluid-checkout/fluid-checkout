@@ -42,7 +42,6 @@
 
 // Align labels with shorter toggle-switch / checkbox controls
 .fc-settings-field--checkbox > .fc-settings-field__label,
-.fc-settings-field--fc_checkboxgroup > .fc-settings-field__label,
 .fc-settings-field--fc_telemetry > .fc-settings-field__label,
 .fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label {
 	padding-top: $fc-settings-field-label-padding-top-toggle;
@@ -82,6 +81,7 @@
 }
 
 .fc-settings-field__control > fieldset {
+	position: relative;
 	display: flex;
 	flex: 1 1 100%;
 	flex-wrap: wrap;
@@ -477,7 +477,6 @@ input.fc-settings-toggle--round:focus + label {
 
 // Align the tip with shorter toggle-switch / checkbox controls
 .fc-settings-field--checkbox > .fc-settings-field__label > .fc-settings-info-tip,
-.fc-settings-field--fc_checkboxgroup > .fc-settings-field__label > .fc-settings-info-tip,
 .fc-settings-field--fc_telemetry > .fc-settings-field__label > .fc-settings-info-tip,
 .fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label > .fc-settings-info-tip {
 	@media ( min-width: $fc-settings-content-max-width ) {
@@ -490,19 +489,6 @@ input.fc-settings-toggle--round:focus + label {
 		right: auto;
 		left: -15px;
 	}
-}
-
-// Per-option tips stay floating to the left of the option control
-.fc-checkboxgroup-option > .fc-settings-info-tip {
-	position: absolute;
-	top: 3px;
-	left: -$fc-settings-info-tip-offset;
-	margin: 0;
-}
-
-.rtl .fc-checkboxgroup-option > .fc-settings-info-tip {
-	left: auto;
-	right: -$fc-settings-info-tip-offset;
 }
 
 .fc-settings-info-tip:hover,

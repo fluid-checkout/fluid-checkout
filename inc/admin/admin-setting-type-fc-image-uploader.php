@@ -64,7 +64,13 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 			<?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 			<div class="image-upload__wrapper <?php echo esc_attr( $value[ 'class' ] ); ?>">
-				<input type="hidden" name="<?php echo esc_attr( $value[ 'id' ] ); ?>" id="<?php echo esc_attr( $value[ 'id' ] ); ?>" value="<?php echo esc_attr( $option_value ); ?>">
+				<input
+					type="hidden"
+					name="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					value="<?php echo esc_attr( $option_value ); ?>"
+					<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				>
 				<div class="image-upload-preview">
 					<div id="<?php echo esc_attr( $value[ 'id' ] ); ?>_preview" class="placeholder">
 					<?php

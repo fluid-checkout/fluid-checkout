@@ -106,7 +106,6 @@ class FluidCheckout_Settings_OrderPay {
 						'id'                => 'fc_pro_enable_order_pay',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_pay' ),
-						'checkboxgroup'     => 'start',
 						'autoload'          => false,
 						'disabled'          => true,
 						'requires'          => 'pro',

@@ -71,18 +71,17 @@ class FluidCheckout_Settings_LocalPickup {
 					'id'                    => 'fc_enable_checkout_local_pickup',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_local_pickup' ),
-					'checkboxgroup'         => 'start',
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
 				),
 				array(
-					'desc'                  => __( 'Show option to clear shipping methods in the pickup location substep', 'fluid-checkout' ),
-					'desc_tip'              => __( 'Show a link button on the pickup location substep to clear the chosen shipping methods. This can be used to allow showing the shipping address section again if a local pickup method was previously selected.', 'fluid-checkout' ),
+					'title'                 => __( 'Clear shipping methods', 'fluid-checkout' ),
+					'desc'                  => __( 'Show option to clear shipping methods in the pickup location sub-step', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Show a link button on the pickup location sub-step to clear the chosen shipping methods. This can be used to allow showing the shipping address section again if a local pickup method was previously selected.', 'fluid-checkout' ),
 					'id'                    => 'fc_local_pickup_display_clear_shipping_methods_button',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_display_clear_shipping_methods_button' ),
-					'checkboxgroup'         => 'end',
 					'custom_attributes' => array(
 						'data-conditional-id'    => 'fc_enable_checkout_local_pickup',
 						'data-conditional-value' => 'yes',
@@ -93,8 +92,9 @@ class FluidCheckout_Settings_LocalPickup {
 				),
 
 				array(
+					'title'                 => __( 'Order shipping address', 'fluid-checkout' ),
 					'desc'                  => '',
-					'desc_tip'          => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Choose which address to save as the shipping address for local pickup orders.', 'fluid-checkout' ),
 					'id'                    => 'fc_local_pickup_save_shipping_address',
 					'type'                  => 'fc_select',
 					'options'               => array(
@@ -103,6 +103,10 @@ class FluidCheckout_Settings_LocalPickup {
 						'no'                         => __( 'Do not save any shipping address', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_save_shipping_address' ),
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_enable_checkout_local_pickup',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',

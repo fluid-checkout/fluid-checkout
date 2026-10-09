@@ -71,17 +71,16 @@ class FluidCheckout_Settings_ExpressCheckout {
 					'id'                    => 'fc_enable_checkout_express_checkout',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout' ),
 					'type'                  => 'checkbox',
-					'checkboxgroup'         => 'start',
 					'autoload'              => false,
 					'disabled'              => true,
 					'requires'              => 'pro',
 				),
 				array(
+					'title'                 => __( 'Inline buttons', 'fluid-checkout' ),
 					'desc'                  => __( 'Display express checkout buttons in one line for larger screens', 'fluid-checkout' ),
 					'id'                    => 'fc_enable_checkout_express_checkout_inline_buttons',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout_inline_buttons' ),
-					'checkboxgroup'         => '',
 					'custom_attributes' => array(
 						'data-conditional-id'    => 'fc_enable_checkout_express_checkout',
 						'data-conditional-value' => 'yes',
@@ -91,11 +90,11 @@ class FluidCheckout_Settings_ExpressCheckout {
 					'requires'              => 'pro',
 				),
 				array(
+					'title'                 => __( 'Required fields', 'fluid-checkout' ),
 					'desc'                  => __( 'Ignore additional checkout required fields when paying with a compatible express checkout payment gateway', 'fluid-checkout' ),
 					'id'                    => 'fc_enable_checkout_express_checkout_ignore_required_fields',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_express_checkout_ignore_required_fields' ),
-					'checkboxgroup'         => 'end',
 					'custom_attributes' => array(
 						'data-conditional-id'    => 'fc_enable_checkout_express_checkout',
 						'data-conditional-value' => 'yes',

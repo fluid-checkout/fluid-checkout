@@ -23,36 +23,6 @@
 	display: none;
 }
 
-.fc-checkboxgroup-option {
-	position: relative;
-	display: flex;
-	flex-wrap: nowrap;
-	align-items: flex-start;
-	gap: 8px;
-	margin: 0;
-	width: 100%;
-}
-
-.fc-checkboxgroup-option + .fc-checkboxgroup-option {
-	margin-top: 8px;
-}
-
-.fc-checkboxgroup-option > label:has( > input[type="checkbox"] ) {
-	display: flex;
-	flex: 1 1 0;
-	align-items: flex-start;
-	gap: 8px;
-	min-width: 0;
-	max-width: 100%;
-}
-
-.fc-checkboxgroup-option > .fc-settings-switch__text {
-	flex: 0 1 auto;
-}
-
-.fc-checkboxgroup-option > .fc-settings-switch--disabled + .fc-settings-switch__text {
-	opacity: .6;
-}
 
 
 body.fc-telemetry-modal-open {

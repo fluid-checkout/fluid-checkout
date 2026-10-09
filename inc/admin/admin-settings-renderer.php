@@ -21,18 +21,11 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	private $is_card_open = false;
 
 	/**
-	 * Whether a field row is currently open, waiting for more fields of the same group.
+	 * Whether a field row is currently open.
 	 *
 	 * @var bool
 	 */
 	private $is_field_row_open = false;
-
-	/**
-	 * Whether the field currently being rendered opened a new field row.
-	 *
-	 * @var bool
-	 */
-	private $is_current_field_row_start = true;
 
 
 
@@ -100,11 +93,6 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 					// Maybe open a card without header for fields outside of a section
 					if ( ! $this->is_card_open ) {
 						$this->output_card_start( array( 'id' => '', 'title' => '', 'desc' => '' ) );
-					}
-
-					// Close field row left open by a field group without an `end` field
-					if ( $this->is_field_group_start( $value ) ) {
-						$this->close_open_field_row();
 					}
 
 					$this->output_field( $value );
@@ -342,39 +330,23 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
 
 	/**
-	 * Check whether the field starts a new field row.
-	 * Fields in a group, with `checkboxgroup` set to empty or `end`, continue the row opened by the `start` field.
-	 *
-	 * @param  array  $value  Settings field arguments.
-	 */
-	public function is_field_group_start( $value ) {
-		return ! isset( $value[ 'checkboxgroup' ] ) || 'start' === $value[ 'checkboxgroup' ];
-	}
-
-	/**
-	 * Check whether the field currently being rendered opened a new field row.
-	 * Only accurate after calling `output_field_start()` for the field.
-	 */
-	public function is_current_field_row_start() {
-		return $this->is_current_field_row_start;
-	}
-
-	/**
-	 * Check whether the field closes the current field row.
-	 *
-	 * @param  array  $value  Settings field arguments.
-	 */
-	public function is_field_group_end( $value ) {
-		return ! isset( $value[ 'checkboxgroup' ] ) || 'end' === $value[ 'checkboxgroup' ];
-	}
-
-	/**
-	 * Check whether the field is disabled.
+	 * Check whether the field is disabled (locked for discovery, not hidden by conditionals).
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function is_field_disabled( $value ) {
 		return array_key_exists( 'disabled', $value ) && false !== $value[ 'disabled' ];
+	}
+
+	/**
+	 * Check whether the field control should be non-interactive.
+	 * Unlike `disabled`, this does not keep the field visible when conditionals would hide it.
+	 *
+	 * @param  array  $value  Settings field arguments.
+	 */
+	public function is_control_disabled( $value ) {
+		return $this->is_field_disabled( $value )
+			|| ( array_key_exists( 'control_disabled', $value ) && false !== $value[ 'control_disabled' ] );
 	}
 
 	/**
@@ -520,13 +492,13 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
 
 	/**
-	 * Output opening tags for a field row, or for a field inside a field group.
+	 * Output opening tags for a field row.
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 * @param  array  $args   {
 	 *     Optional. Field wrapper arguments.
 	 *
-	 *     @type  bool  $fieldset   Whether to wrap the control with a `fieldset`. Fields in a group are always wrapped. Defaults to `false`.
+	 *     @type  bool  $fieldset   Whether to wrap the control with a `fieldset`. Defaults to `false`.
 	 *     @type  bool  $label_for  Whether to output the title as a `label` for the field ID. Defaults to `true`.
 	 *     @type  bool  $tooltip    Whether to output the tooltip next to the title. Defaults to `true`.
 	 * }
@@ -539,14 +511,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		) );
 		$container_classes = $this->get_field_container_classes( $value );
 
-		// Maybe continue a field group opened by a previous field
-		$this->is_current_field_row_start = $this->is_field_group_start( $value ) || ! $this->is_field_row_open;
-		if ( ! $this->is_current_field_row_start ) {
-			echo '<fieldset class="' . esc_attr( implode( ' ', $container_classes ) ) . '">';
-			return;
-		}
-
-		// Close field row left open by a field group without an `end` field
+		// Close any field row left open
 		$this->close_open_field_row();
 
 		$field_description = $this->get_field_description( $value );
@@ -575,13 +540,14 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		<?php
 		$this->is_field_row_open = true;
 
+		// Maybe wrap the control in a fieldset (checkboxes, radios)
 		if ( $args[ 'fieldset' ] ) {
 			echo '<fieldset>';
 		}
 	}
 
 	/**
-	 * Output closing tags for a field row, or for a field inside a field group.
+	 * Output closing tags for a field row.
 	 *
 	 * @param  array  $value  Settings field arguments.
 	 * @param  array  $args   Optional. Same arguments passed to `output_field_start()`.
@@ -592,12 +558,9 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		) );
 
 		// Maybe close the `fieldset` element
-		if ( $args[ 'fieldset' ] || ! $this->is_current_field_row_start ) {
+		if ( $args[ 'fieldset' ] ) {
 			echo '</fieldset>';
 		}
-
-		// Bail if field row should stay open for the next fields in the group
-		if ( ! $this->is_field_group_end( $value ) ) { return; }
 
 		$this->close_open_field_row();
 	}
@@ -806,49 +769,68 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	/**
 	 * Output a checkbox field.
 	 *
+	 * When `checkbox_value` is set, the control posts as part of an array option
+	 * (`field_name[]`) and is checked when that value is present in the saved array.
+	 *
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function output_field_checkbox( $value ) {
 		$field_description = $this->get_field_description( $value );
 		$has_title = '' !== $value[ 'title' ];
 		$has_legend = isset( $value[ 'legend' ] ) && '' !== $value[ 'legend' ];
-		$is_disabled = $this->is_field_disabled( $value );
+		$is_disabled = $this->is_control_disabled( $value );
 		$use_toggle = $this->uses_toggle_checkboxes();
+		$has_checkbox_value = array_key_exists( 'checkbox_value', $value ) && '' !== (string) $value[ 'checkbox_value' ];
+		$checkbox_value = $has_checkbox_value ? (string) $value[ 'checkbox_value' ] : '1';
+		$field_name = $value[ 'field_name' ] . ( $has_checkbox_value ? '[]' : '' );
+		$badge_html = ! empty( $value[ 'badge' ] ) ? ' <span class="fc-settings-badge">' . esc_html( $value[ 'badge' ] ) . '</span>' : '';
+
+		// Array options: checked when the checkbox value is in the saved list
+		if ( $has_checkbox_value && is_array( $value[ 'value' ] ) ) {
+			$is_checked = in_array( $checkbox_value, array_map( 'strval', $value[ 'value' ] ), true );
+		}
+		// Otherwise use the yes/no option value
+		else {
+			$is_checked = ( 'yes' === $value[ 'value' ] );
+		}
 
 		$this->output_field_start( $value, array( 'fieldset' => true, 'label_for' => false ) );
 		?>
 		<?php if ( $has_title || $has_legend ) : ?>
 			<legend class="<?php echo $has_legend ? '' : 'screen-reader-text'; ?>"><span><?php echo esc_html( $has_legend ? $value[ 'legend' ] : $value[ 'title' ] ); ?></span></legend>
 		<?php endif; ?>
+		<?php if ( $is_disabled && $is_checked && $has_checkbox_value ) : ?>
+			<input type="hidden" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $checkbox_value ); ?>" />
+		<?php endif; ?>
 		<?php if ( $use_toggle ) : ?>
 			<span class="fc-settings-switch<?php echo $is_disabled ? ' fc-settings-switch--disabled' : ''; ?>">
 				<input
-					name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
+					name="<?php echo esc_attr( $field_name ); ?>"
 					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
 					type="checkbox"
 					class="fc-settings-toggle fc-settings-toggle--round <?php echo esc_attr( $value[ 'class' ] ); ?>"
-					value="1"
-					<?php checked( $value[ 'value' ], 'yes' ); ?>
+					value="<?php echo esc_attr( $checkbox_value ); ?>"
+					<?php checked( $is_checked, true ); ?>
 					<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php disabled( $is_disabled ); ?>
 				/>
 				<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"></label>
 			</span>
-			<?php if ( ! empty( $field_description[ 'description' ] ) ) : ?>
-				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
+			<?php if ( ! empty( $field_description[ 'description' ] ) || '' !== $badge_html ) : ?>
+				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
 			<?php endif; ?>
 		<?php else : ?>
 			<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>">
 				<input
-					name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
+					name="<?php echo esc_attr( $field_name ); ?>"
 					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
 					type="checkbox"
 					class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
-					value="1"
-					<?php checked( $value[ 'value' ], 'yes' ); ?>
+					value="<?php echo esc_attr( $checkbox_value ); ?>"
+					<?php checked( $is_checked, true ); ?>
 					<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php disabled( $is_disabled ); ?>
-				/> <?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				/> <?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</label> <?php echo $field_description[ 'tooltip_html' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php endif; ?>
 		<?php

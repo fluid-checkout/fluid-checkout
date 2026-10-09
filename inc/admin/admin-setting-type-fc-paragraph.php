@@ -31,8 +31,9 @@ class FluidCheckout_Admin_SettingType_Paragraph extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
+		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
 		?>
-		<div class="fc-settings-field fc-settings-field--paragraph">
+		<div class="fc-settings-field fc-settings-field--paragraph" <?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 			<p><?php echo wp_kses_post( $value[ 'desc' ] ); ?></p>
 		</div>
 		<?php

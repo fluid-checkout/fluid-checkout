@@ -162,7 +162,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-input.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-select.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-multiselect.php';
-		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-checkboxgroup.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-telemetry.php';
 		include_once self::$directory_path . 'inc/admin/admin-telemetry.php';
 		include_once self::$directory_path . 'inc/admin/admin-setting-type-fc-textarea.php';
@@ -250,27 +249,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 
-
-	/**
-	 * Get HTML for "upgrade to PRO" to be used on settings descriptions.
-	 * 
-	 * @param  bool  $newline  Whether to add a new line before.
-	 */
-	public function get_upgrade_pro_html( $newline = true ) {
-		// Bail if PRO is already activated
-		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
-
-		// Get HTML for the upgrade link
-		// translators: %s: Upgrade link.
-		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
-
-		// Maybe add line break
-		if ( $newline ) {
-			$html = ' <br>' . $html;
-		}
-
-		return $html;
-	}
 
 	/**
 	 * Get HTML for the PRO feature promo pill badge.
@@ -421,19 +399,57 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
-	 * Get HTML for documentation link to be used on settings descriptions.
+	 * Maybe append Matomo tracking query args to a Fluid Checkout documentation URL.
+	 *
+	 * @param  string  $url      Documentation URL.
+	 * @param  string  $mtm_kwd  Optional tracking keyword. Defaults to the last URL path segment.
 	 */
-	public function get_documentation_link_html( $url = 'https://fluidcheckout.com/docs/' ) {
+	public function maybe_add_documentation_mtm_args( $url, $mtm_kwd = '' ) {
+		// Bail if not a Fluid Checkout URL
+		if ( false === strpos( $url, 'fluidcheckout.com' ) ) { return $url; }
+
+		// Maybe derive keyword from the documentation URL path
+		if ( empty( $mtm_kwd ) ) {
+			$path = wp_parse_url( $url, PHP_URL_PATH );
+			$mtm_kwd = sanitize_title( basename( untrailingslashit( (string) $path ) ) );
+		}
+
+		// Fallback keyword
+		if ( empty( $mtm_kwd ) ) {
+			$mtm_kwd = 'docs';
+		}
+
+		return add_query_arg(
+			array(
+				'mtm_campaign' => 'settings-docs',
+				'mtm_kwd'      => $mtm_kwd,
+				'mtm_source'   => 'lite-plugin',
+			),
+			$url
+		);
+	}
+
+	/**
+	 * Get HTML for documentation link to be used on settings descriptions.
+	 *
+	 * @param  string  $url      Documentation URL.
+	 * @param  string  $mtm_kwd  Optional Matomo keyword for Fluid Checkout docs URLs.
+	 */
+	public function get_documentation_link_html( $url = 'https://fluidcheckout.com/docs/', $mtm_kwd = '' ) {
+		$url = $this->maybe_add_documentation_mtm_args( $url, $mtm_kwd );
+
 		return sprintf( '<a target="_blank" href="%s">%s</a>', esc_url( $url ), __( 'Read the documentation.', 'fluid-checkout' ) );
 	}
 
 	/**
 	 * Get HTML for a documentation info icon link, typically used in settings card headers.
 	 *
-	 * @param  string  $url  Documentation URL.
+	 * @param  string  $url      Documentation URL.
+	 * @param  string  $mtm_kwd  Optional Matomo keyword for Fluid Checkout docs URLs.
 	 */
-	public function get_documentation_icon_html( $url = 'https://fluidcheckout.com/docs/' ) {
+	public function get_documentation_icon_html( $url = 'https://fluidcheckout.com/docs/', $mtm_kwd = '' ) {
 		$label = __( 'View documentation', 'fluid-checkout' );
+		$url = $this->maybe_add_documentation_mtm_args( $url, $mtm_kwd );
 
 		return sprintf(
 			'<a class="fc-settings-docs-icon" href="%1$s" target="_blank" rel="noopener noreferrer" aria-label="%2$s" title="%2$s"><span class="dashicons dashicons-info-outline" aria-hidden="true"></span></a>',

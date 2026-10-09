@@ -31,6 +31,7 @@
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
 		isSelectedClass:                       'is-selected',
+		disabledFieldClass:                    'fc-settings-field--disabled',
 
 		contentSelector:                       '.fc-settings-content',
 		actionsSelector:                       '.fc-settings-actions',
@@ -169,21 +170,30 @@
 
 	/**
 	 * Get the trigger field element by its full field id (with prefix).
+	 * Prefers named form controls so values from other settings tabs are used
+	 * (all tabs stay in the DOM during SPA navigation).
 	 *
 	 * @param   {string}   fieldId  The full field id including prefix.
 	 * @return  {Element}           The trigger field element, or null.
 	 */
 	var getTriggerFieldElement = function( fieldId ) {
-		// Try by id first
-		var element = document.getElementById( fieldId );
-		if ( element ) { return element; }
+		var checkedRadio;
+		var namedElement;
 
-		// Maybe radio group matched by name
-		var checkedRadio = document.querySelector( 'input[type="radio"][name="' + fieldId + '"]:checked' );
+		// Prefer checked radio by name (layout / template selectors)
+		checkedRadio = document.querySelector( 'input[type="radio"][name="' + fieldId + '"]:checked' );
 		if ( checkedRadio ) { return checkedRadio; }
 
 		// Fall back to the first radio in the group
-		return document.querySelector( 'input[type="radio"][name="' + fieldId + '"]' );
+		checkedRadio = document.querySelector( 'input[type="radio"][name="' + fieldId + '"]' );
+		if ( checkedRadio ) { return checkedRadio; }
+
+		// Prefer named inputs (checkboxes, selects, text) over id-only mirrors
+		namedElement = document.querySelector( '[name="' + fieldId + '"]' );
+		if ( namedElement ) { return namedElement; }
+
+		// Fall back to element id
+		return document.getElementById( fieldId );
 	}
 
 	/**
@@ -211,7 +221,6 @@
 
 	/**
 	 * Get the visibility container for a conditional field.
-	 * Walks up to the nearest settings field row, including nested fieldsets inside fc_checkboxgroup.
 	 *
 	 * @param   {Element}  element  The conditional field element.
 	 * @return  {Element}           The container element, or null.
@@ -222,29 +231,7 @@
 
 		// Prefer the nearest settings field row
 		var settingsField = element.closest( '.fc-settings-field' );
-		if ( settingsField ) {
-			var control = settingsField.querySelector( '.fc-settings-field__control' );
-
-			// Nested checkboxgroup children share one settings field row with multiple fieldsets
-			if ( control ) {
-				var fieldsets = [];
-				for ( var i = 0; i < control.children.length; i++ ) {
-					if ( 'FIELDSET' === control.children[ i ].tagName ) {
-						fieldsets.push( control.children[ i ] );
-					}
-				}
-
-				// Hide only the nested fieldset when multiple fields share the row
-				if ( fieldsets.length > 1 ) {
-					var nestedFieldset = element.closest( 'fieldset' );
-					if ( nestedFieldset && control.contains( nestedFieldset ) ) {
-						return nestedFieldset;
-					}
-				}
-			}
-
-			return settingsField;
-		}
+		if ( settingsField ) { return settingsField; }
 
 		// Fall back to a nested fieldset then a table row for WC embeds
 		var fieldset = element.closest( 'fieldset' );
@@ -266,6 +253,171 @@
 		return container.classList.contains( _settings.hiddenClass ) || 'none' === container.style.display;
 	}
 
+	/**
+	 * Whether a conditional field value matches the trigger value.
+	 * Supports a single value or an OR list separated by commas or pipes
+	 * (e.g. `optional,required` or `optional|required` when paired in an AND list).
+	 *
+	 * @param   {string}  conditionValue  Expected value(s) from data-conditional-value.
+	 * @param   {string}  fieldValue      Current trigger field value.
+	 * @return  {boolean}
+	 */
+	var doesConditionalValueMatch = function( conditionValue, fieldValue ) {
+		var allowedValues;
+		var i;
+
+		// Bail if condition or field value is missing
+		if ( null === conditionValue || undefined === conditionValue || null === fieldValue || undefined === fieldValue ) {
+			return false;
+		}
+
+		// Exact match for a single value
+		if ( conditionValue === fieldValue ) {
+			return true;
+		}
+
+		// Otherwise match against a comma- or pipe-separated OR list
+		allowedValues = String( conditionValue ).split( /[,|]/ );
+		for ( i = 0; i < allowedValues.length; i++ ) {
+			if ( allowedValues[ i ].trim() === fieldValue ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Parse comma-separated trigger ids from a conditional field attribute.
+	 *
+	 * @param   {string}  conditionIds  Value of data-conditional-id.
+	 * @return  {Array}                 Trimmed non-empty trigger keys.
+	 */
+	var parseConditionalIds = function( conditionIds ) {
+		var parts;
+		var result = [];
+		var i;
+
+		// Bail if condition ids are missing
+		if ( null === conditionIds || undefined === conditionIds || '' === conditionIds ) {
+			return result;
+		}
+
+		parts = String( conditionIds ).split( ',' );
+		for ( i = 0; i < parts.length; i++ ) {
+			var part = parts[ i ].trim();
+			if ( part ) {
+				result.push( part );
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * Whether a conditional field lists the given trigger key in data-conditional-id.
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @param   {string}   triggerKey        Trigger key without field id prefix.
+	 * @return  {boolean}
+	 */
+	var conditionalFieldDependsOnTrigger = function( conditionalField, triggerKey ) {
+		var conditionIds;
+		var i;
+
+		// Bail if arguments are not valid
+		if ( ! conditionalField || ! triggerKey ) { return false; }
+
+		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			if ( conditionIds[ i ] === triggerKey ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Evaluate whether all conditional id/value pairs currently match (AND).
+	 * A single id with a comma-separated value list still uses OR matching for that value.
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @return  {boolean}
+	 */
+	var doAllConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIds;
+		var conditionValuesRaw;
+		var conditionValues;
+		var i;
+		var triggerElement;
+		var expectedValue;
+		var triggerFieldRow;
+
+		// Bail if element is not valid
+		if ( ! conditionalField ) { return false; }
+
+		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+
+		// Bail if no trigger ids
+		if ( ! conditionIds.length ) { return false; }
+
+		// Single trigger: OR list in data-conditional-value (existing behavior)
+		if ( 1 === conditionIds.length ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ 0 ] );
+			if ( ! triggerElement ) { return false; }
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				return false;
+			}
+
+			return doesConditionalValueMatch( conditionValuesRaw, getFieldValue( triggerElement ) );
+		}
+
+		// Multiple triggers: pair each id with the value at the same index (AND)
+		conditionValues = String( conditionValuesRaw || '' ).split( ',' );
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ i ] );
+			expectedValue = conditionValues[ i ] ? conditionValues[ i ].trim() : '';
+
+			// Missing trigger or value mismatch hides the field
+			if ( ! triggerElement || ! doesConditionalValueMatch( expectedValue, getFieldValue( triggerElement ) ) ) {
+				return false;
+			}
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Whether the field row is a locked (disabled) settings field kept visible for discovery.
+	 *
+	 * @param   {Element}  fieldRow  The visibility container element.
+	 * @return  {boolean}
+	 */
+	var isDisabledSettingsField = function( fieldRow ) {
+		var settingsField;
+
+		// Bail if field row is not valid
+		if ( ! fieldRow ) { return false; }
+
+		// Direct match on the settings field row
+		if ( fieldRow.classList.contains( _settings.disabledFieldClass ) ) {
+			return true;
+		}
+
+		// Nested fieldsets still belong to a locked settings field row
+		settingsField = fieldRow.closest( '.fc-settings-field' );
+		return !!( settingsField && settingsField.classList.contains( _settings.disabledFieldClass ) );
+	}
+
 
 
 	/**
@@ -274,37 +426,42 @@
 	 * @param   {Element}  triggerElement  The field that controls related conditional fields.
 	 */
 	var maybeProcessConditionalFields = function( triggerElement ) {
+		var triggerKey;
+		var allConditionalFields;
+		var i;
+		var conditionalField;
+		var fieldRow;
+		var isVisible;
+
 		// Bail if element is not valid
 		if ( ! triggerElement ) { return; }
 
-		// Get related conditional fields selector
-		var triggerKey = getTriggerKey( triggerElement );
-		var selector = _settings.conditionalFieldsForTriggerSelector.replace( '###ID###', triggerKey );
+		triggerKey = getTriggerKey( triggerElement );
 
-		// Get related conditional fields
-		var relatedConditionalFields = document.querySelectorAll( selector );
+		// Bail if trigger key is missing
+		if ( ! triggerKey ) { return; }
+
+		// Scan all conditionals; attribute may list multiple trigger ids (AND)
+		allConditionalFields = document.querySelectorAll( _settings.conditionalFieldsSelector );
 
 		// Maybe show/hide related conditional fields
-		// Loop through each related conditional field
-		for ( var i = 0; i < relatedConditionalFields.length; i++ ) {
-			// Get conditional field variables
-			var conditionalField = relatedConditionalFields[ i ];
-			var fieldValueCondition = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
-			var fieldValue = getFieldValue( triggerElement );
+		for ( i = 0; i < allConditionalFields.length; i++ ) {
+			conditionalField = allConditionalFields[ i ];
 
-			// Get field containers
-			var fieldRow = getConditionalContainer( conditionalField );
-			var triggerFieldRow = getConditionalContainer( triggerElement );
+			// Skip fields that do not depend on this trigger
+			if ( ! conditionalFieldDependsOnTrigger( conditionalField, triggerKey ) ) { continue; }
+
+			fieldRow = getConditionalContainer( conditionalField );
 
 			// Skip if field row is not found
 			if ( ! fieldRow ) { continue; }
 
 			// Define visibility state
-			// - Hide field if condition is not met
-			// - Hide related conditional fields if the trigger field itself is hidden
-			var isVisible = fieldValueCondition === fieldValue;
-			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
-				isVisible = false;
+			// - Keep locked fields visible for discovery
+			// - Hide field if any paired condition is not met
+			isVisible = true;
+			if ( ! isDisabledSettingsField( fieldRow ) ) {
+				isVisible = doAllConditionalConditionsMatch( conditionalField );
 			}
 
 			// Maybe show/hide field row
@@ -329,31 +486,42 @@
 	 * Initialize the list of conditional field triggers.
 	 */
 	var initializeConditionals = function() {
+		var conditionalFields;
+		var i;
+		var j;
+		var conditionalField;
+		var conditionIds;
+		var fieldValue;
+		var fieldId;
+		var fieldElement;
+
 		// Get conditional fields
-		var conditionalFields = document.querySelectorAll( _settings.conditionalFieldsSelector );
+		conditionalFields = document.querySelectorAll( _settings.conditionalFieldsSelector );
 
 		// Build list of conditional field trigger ids
-		// Loop through each conditional field
-		for ( var i = 0; i < conditionalFields.length; i++ ) {
-			var conditionalField = conditionalFields[ i ];
-			var fieldId = _settings.fieldIdPrefix + conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute );
-			var fieldValue = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+		for ( i = 0; i < conditionalFields.length; i++ ) {
+			conditionalField = conditionalFields[ i ];
+			conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+			fieldValue = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
 
 			// Skip if condition field id or value is not set
-			if ( ! fieldId || ! fieldValue ) { continue; }
+			if ( ! conditionIds.length || ! fieldValue ) { continue; }
 
-			// Skip if field id is already added to conditionals
-			if ( _triggerFieldIds.includes( fieldId ) ) { continue; }
+			// Register each trigger id from an AND list
+			for ( j = 0; j < conditionIds.length; j++ ) {
+				fieldId = _settings.fieldIdPrefix + conditionIds[ j ];
 
-			// Add to conditionals
-			_triggerFieldIds.push( fieldId );
+				// Skip if field id is already added to conditionals
+				if ( _triggerFieldIds.includes( fieldId ) ) { continue; }
+
+				_triggerFieldIds.push( fieldId );
+			}
 		}
 
 		// Maybe process conditional fields
-		// Loop through each conditional field trigger
-		for ( var i = 0; i < _triggerFieldIds.length; i++ ) {
-			var fieldId = _triggerFieldIds[ i ];
-			var fieldElement = getTriggerFieldElement( fieldId );
+		for ( i = 0; i < _triggerFieldIds.length; i++ ) {
+			fieldId = _triggerFieldIds[ i ];
+			fieldElement = getTriggerFieldElement( fieldId );
 
 			// Skip if field element is not found
 			if ( ! fieldElement ) { continue; }

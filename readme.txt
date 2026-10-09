@@ -356,6 +356,16 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
+* Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
+* Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
+* Improved: Show usage tracking data groups as individual settings toggles instead of a checkbox group.
+* Removed: Checkbox group field nesting from the Fluid Checkout settings page. Each option uses its own toggle row.
+* Improved: Support comma-separated values, pipe-separated OR values, and multiple trigger ids (AND) in settings field conditionals, including triggers from other settings tabs without a page reload.
+* Improved: Show the option to display trust badge widgets only at the last step on mobile when checkout widget areas are enabled and the multi-step layout is selected.
+* Improved: Show logo image and header, page, and footer background colors only when the distraction free checkout template is selected.
+* Improved: Move documentation links for Design template, Cart items, and theme integrations to the section title info icon, and add tracking parameters to settings documentation links.
+* Added: Documentation info icon on the Address book, Google Address Autocomplete, and EU-VAT settings sections.
 * Improved: Split checkout Cart items and Place order into their own settings sections, and rename the edit cart items option label.
 * Improved: Show a focus outline on settings page buttons.
 * Improved: Rename add-on purchase buttons to Install add-on.

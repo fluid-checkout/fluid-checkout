@@ -100,6 +100,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'desc'              => '',
 				'id'                => 'fc_gaa_google_address_autocomplete',
 				'promo'             => FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'address-autocomplete', self::PRODUCT_URL, self::FEATURE ),
+				'docs'              => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/getting-started-google-address-autocomplete/' ),
 			),
 
 			array(
@@ -135,6 +136,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 					''              => __( 'Auto-detect', 'fluid-checkout' ),
 				),
 				'default'           => '',
+				'custom_attributes' => array(
+					'data-conditional-id'    => 'fc_gaa_enabled',
+					'data-conditional-value' => 'yes',
+				),
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
@@ -149,6 +154,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'class'             => 'fc-enhanced-select',
 				'options'           => array(),
 				'default'           => array(),
+				'custom_attributes' => array(
+					'data-conditional-id'    => 'fc_gaa_enabled',
+					'data-conditional-value' => 'yes',
+				),
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
@@ -161,19 +170,26 @@ class FluidCheckout_Settings_AddressAutocomplete {
 				'id'                => 'fc_gaa_company_autocomplete_value_enabled',
 				'type'              => 'checkbox',
 				'default'           => 'no',
-				'checkboxgroup'     => 'start',
+				'custom_attributes' => array(
+					'data-conditional-id'    => 'fc_gaa_enabled',
+					'data-conditional-value' => 'yes',
+				),
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
 			),
 
 			array(
+				'title'             => __( 'Business search', 'fluid-checkout' ),
 				'desc'              => __( 'Enable search for businesses in the company field', 'fluid-checkout' ),
 				'desc_tip'          => __( 'Enable suggestion of addresses associated with a business when typing in the company field, then autocomplete all addresses fields when a business is selected from the suggestions.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_company_autocomplete_input_enabled',
 				'type'              => 'checkbox',
 				'default'           => 'no',
-				'checkboxgroup'     => 'end',
+				'custom_attributes' => array(
+					'data-conditional-id'    => 'fc_gaa_company_autocomplete_value_enabled',
+					'data-conditional-value' => 'yes',
+				),
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,
@@ -214,6 +230,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 					'v2'            => _x( 'Version 2', 'Brasil API versions', 'fluid-checkout' ),
 				),
 				'default'           => 'v2',
+				'custom_attributes' => array(
+					'data-conditional-id'    => 'fc_gaa_enabled_brasil_api',
+					'data-conditional-value' => 'yes',
+				),
 				'autoload'          => false,
 				'disabled'          => true,
 				'requires'          => self::FEATURE,

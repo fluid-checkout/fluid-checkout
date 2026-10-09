@@ -72,18 +72,18 @@ class FluidCheckout_Settings_TrustSymbols {
 					'id'                    => 'fc_enable_checkout_widget_areas',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_areas' ),
-					'checkboxgroup'         => 'start',
 					'autoload'              => false,
 				),
 				array(
-					'desc'                  => __( 'Display checkout sidebar widgets only when viewing the last checkout step on mobile devices when using multi-step checkout layout', 'fluid-checkout' ),
+					'title'                 => __( 'Last step on mobile', 'fluid-checkout' ),
+					'desc'                  => __( 'Display widgets only at last step on mobile', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Display checkout trust badge widgets only when viewing the last checkout step on mobile devices', 'fluid-checkout' ),
 					'id'                    => 'fc_enable_checkout_widget_area_sidebar_last_step',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_enable_checkout_widget_area_sidebar_last_step' ),
-					'checkboxgroup'         => 'end',
-					'custom_attributes' => array(
-						'data-conditional-id'    => 'fc_enable_checkout_widget_areas',
-						'data-conditional-value' => 'yes',
+					'custom_attributes'     => array(
+						'data-conditional-id'    => 'fc_enable_checkout_widget_areas,fc_checkout_layout',
+						'data-conditional-value' => 'yes,multi-step',
 					),
 					'autoload'              => false,
 				),
@@ -105,12 +105,16 @@ class FluidCheckout_Settings_TrustSymbols {
 				),
 
 				array(
-					'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ),
+					'title'             => __( 'Widget areas', 'fluid-checkout' ),
 					'desc'              => __( 'Add widget areas to the cart page', 'fluid-checkout' ),
 					'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the cart page.', 'fluid-checkout' ),
 					'id'                => 'fc_pro_enable_cart_widget_areas',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_cart_widget_areas' ),
 					'type'              => 'checkbox',
+					'custom_attributes' => array(
+						'data-conditional-id'    => 'fc_pro_enable_cart_page',
+						'data-conditional-value' => 'yes',
+					),
 					'autoload'          => false,
 					'disabled'          => true,
 					'requires'          => 'pro',

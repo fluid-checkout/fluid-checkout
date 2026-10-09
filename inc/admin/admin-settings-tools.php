@@ -69,6 +69,18 @@ class FluidCheckout_Settings_Tools {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'tools' === $current_section ) {
 
+			$telemetry_data_groups = FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_data_groups', FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_data_groups' ) );
+
+			// Fallback when the stored option is not an array
+			if ( ! is_array( $telemetry_data_groups ) ) {
+				$telemetry_data_groups = array( 'basic_environment' );
+			}
+
+			$telemetry_data_groups_conditional = array(
+				'data-conditional-id'    => 'fc_telemetry_enabled',
+				'data-conditional-value' => 'yes',
+			);
+
 			$settings = array(
 
 				array(
@@ -86,37 +98,47 @@ class FluidCheckout_Settings_Tools {
 					'id'              => 'fc_telemetry_enabled',
 					'type'            => 'fc_telemetry_enable',
 					'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_enabled' ),
-					'checkboxgroup'   => 'start',
 					'autoload'        => false,
 				),
 				array(
-					'title'             => __( 'Data to share', 'fluid-checkout' ),
-					'desc'              => __( 'Choose which optional data groups to include in site reports.', 'fluid-checkout' ),
+					'title'             => '',
+					'desc'              => __( 'Basic environment info', 'fluid-checkout' ),
+					'desc_tip'          => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled. Helps us understand the environment your site is running in.', 'fluid-checkout' ),
+					'id'                => 'fc_telemetry_data_groups_basic_environment',
+					'field_name'        => 'fc_telemetry_data_groups',
+					'checkbox_value'    => 'basic_environment',
+					'type'              => 'checkbox',
+					'value'             => $telemetry_data_groups,
+					'control_disabled'  => true,
+					'is_option'         => false,
+					'custom_attributes' => $telemetry_data_groups_conditional,
+					'autoload'          => false,
+				),
+				array(
+					'title'             => '',
+					'desc'              => __( 'Plugin settings', 'fluid-checkout' ),
+					'desc_tip'          => __( 'Sends Fluid Checkout plugin settings to help with support requests and helps us understand how you are using our plugins.', 'fluid-checkout' ),
+					'id'                => 'fc_telemetry_data_groups_plugin_settings',
+					'field_name'        => 'fc_telemetry_data_groups',
+					'checkbox_value'    => 'plugin_settings',
+					'type'              => 'checkbox',
+					'value'             => $telemetry_data_groups,
+					'badge'             => __( 'Coming soon', 'fluid-checkout' ),
+					'control_disabled'  => true,
+					'is_option'         => false,
+					'custom_attributes' => $telemetry_data_groups_conditional,
+					'autoload'          => false,
+				),
+				array(
+					'title'             => '',
+					'desc'              => __( 'Sales metrics', 'fluid-checkout' ),
+					'desc_tip'          => __( 'Monthly order count and total sales for one year prior to installing Fluid Checkout up to today. Helps us understand if you are making more money with our plugins installed. No customer or user data is ever sent.', 'fluid-checkout' ),
 					'id'                => 'fc_telemetry_data_groups',
-					'type'              => 'fc_checkboxgroup',
-					'options'           => array(
-						'basic_environment'         => array(
-							'label'       => __( 'Basic environment info', 'fluid-checkout' ),
-							'description' => __( 'WordPress, PHP, WooCommerce, theme, and plugin list data. Always included when reporting is enabled. Helps us understand the environment your site is running in.', 'fluid-checkout' ),
-						),
-						'plugin_settings'           => array(
-							'label'       => __( 'Plugin settings', 'fluid-checkout' ),
-							'badge'       => __( 'Coming soon', 'fluid-checkout' ),
-							'description' => __( 'Sends Fluid Checkout plugin settings to help with support requests and helps us understand how you are using our plugins.', 'fluid-checkout' ),
-						),
-						'woocommerce_sales_metrics' => array(
-							'label'       => __( 'Sales metrics', 'fluid-checkout' ),
-							'description' => __( 'Monthly order count and total sales for one year prior to installing Fluid Checkout up to today. Helps us understand if you are making more money with our plugins installed. No customer or user data is ever sent.', 'fluid-checkout' ),
-						),
-					),
-					'required_options'  => array( 'basic_environment' ),
-					'disabled_options'  => array( 'basic_environment', 'plugin_settings' ),
+					'field_name'        => 'fc_telemetry_data_groups',
+					'checkbox_value'    => 'woocommerce_sales_metrics',
+					'type'              => 'checkbox',
 					'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_telemetry_data_groups' ),
-					'checkboxgroup'     => 'end',
-					'custom_attributes' => array(
-						'data-conditional-id'    => 'fc_telemetry_enabled',
-						'data-conditional-value' => 'yes',
-					),
+					'custom_attributes' => $telemetry_data_groups_conditional,
 					'autoload'          => false,
 				),
 
@@ -171,15 +193,14 @@ class FluidCheckout_Settings_Tools {
 					'id'               => 'fc_debug_mode',
 					'type'             => 'checkbox',
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_debug_mode' ),
-					'checkboxgroup'    => 'start',
 					'autoload'         => false,
 				),
 				array(
+					'title'            => __( 'Unminified assets', 'fluid-checkout' ),
 					'desc'             => __( 'Load unminified assets', 'fluid-checkout' ),
 					'id'               => 'fc_load_unminified_assets',
 					'type'             => 'checkbox',
 					'default'          => FluidCheckout_Settings::instance()->get_option_default( 'fc_load_unminified_assets' ),
-					'checkboxgroup'    => 'end',
 					'custom_attributes' => array(
 						'data-conditional-id'    => 'fc_debug_mode',
 						'data-conditional-value' => 'yes',
