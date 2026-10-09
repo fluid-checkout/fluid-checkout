@@ -3,6 +3,11 @@
 	"description": "Third-party files replaced or forked by Fluid Checkout.",
 	"plugin-compat-js": [
 		{
+			"our_path": "js-src/compat/plugins/automation-web-platform/checkout.js",
+			"their_path": "plugins/automation-web-platform/assets/js/checkout.js",
+			"script_handle": "awp-checkout-js"
+		},
+		{
 			"our_path": "js-src/compat/plugins/biteship/biteship-public.js",
 			"their_path": "plugins/biteship/public/js/biteship-public.js",
 			"script_handle": "biteship"
@@ -11,6 +16,11 @@
 			"our_path": "js-src/compat/plugins/box-now-delivery-croatia/box-now-delivery.js",
 			"their_path": "https://plugins.svn.wordpress.org/box-now-delivery-croatia/trunk/js/box-now-delivery.js",
 			"script_handle": "box-now-delivery-js"
+		},
+		{
+			"our_path": "js-src/compat/plugins/eu-vat-for-woocommerce/wpfactory-wc-eu-vat.js",
+			"their_path": "https://plugins.svn.wordpress.org/eu-vat-for-woocommerce/trunk/assets/js/wpfactory-wc-eu-vat.js",
+			"script_handle": "wpfactory-wc-eu-vat"
 		},
 		{
 			"our_path": "js-src/compat/plugins/fooevents/events-frontend.js",
@@ -56,11 +66,6 @@
 			"our_path": "js-src/compat/plugins/woocommerce-extra-checkout-fields-for-brazil/frontend.js",
 			"their_path": "https://plugins.svn.wordpress.org/woocommerce-extra-checkout-fields-for-brazil/trunk/assets/js/frontend/frontend.js",
 			"script_handle": "woocommerce-extra-checkout-fields-for-brazil-front"
-		},
-		{
-			"our_path": "js-src/compat/plugins/woocommerce-gus/gus.js",
-			"their_path": "plugins/woocommerce-gus/assets/js/gus.js",
-			"script_handle": "frontend-ajax-gus"
 		},
 		{
 			"our_path": "js-src/compat/plugins/woocommerce-superfaktura/checkout.js",
@@ -114,11 +119,11 @@
 		},
 		{
 			"our_path": "templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals-with-map.php",
-			"their_path": "https://plugins.svn.wordpress.org/woo-shipping-dpd-baltic/trunk/public/woocommerce/checkout/form-shipping-dpd-terminals-with-map.php"
+			"their_path": "plugins/woo-shipping-dpd-baltic/public/woocommerce/checkout/form-shipping-dpd-terminals-with-map.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woo-shipping-dpd-baltic/checkout/form-shipping-dpd-terminals.php",
-			"their_path": "https://plugins.svn.wordpress.org/woo-shipping-dpd-baltic/trunk/public/woocommerce/checkout/form-shipping-dpd-terminals.php"
+			"their_path": "plugins/woo-shipping-dpd-baltic/public/woocommerce/checkout/form-shipping-dpd-terminals.php"
 		},
 		{
 			"our_path": "templates/compat/plugins/woo-ups-pickup/cart/pickup-button-html.php",
