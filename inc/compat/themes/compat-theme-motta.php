@@ -41,7 +41,7 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Product thumbnails
 		remove_filter( 'woocommerce_cart_item_name', array( $class_object, 'review_product_name_html' ), 10, 3);
@@ -62,7 +62,7 @@ class FluidCheckout_ThemeCompat_Motta extends FluidCheckout {
 	 */
 	public function very_late_hooks() {
 		// CSS variables on edit address page
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables_edit_address' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables_edit_address' ), 20 );
 	}
 
 

@@ -36,7 +36,7 @@ class FluidCheckout_ThemeCompat_DTThe7 extends FluidCheckout {
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 	/**

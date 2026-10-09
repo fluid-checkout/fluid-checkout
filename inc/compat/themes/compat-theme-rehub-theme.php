@@ -30,7 +30,7 @@ class FluidCheckout_ThemeCompat_RehubTheme extends FluidCheckout {
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Order review section layout
 		remove_action( 'woocommerce_checkout_before_order_review_heading', 'rehub_woo_order_checkout', 10 );

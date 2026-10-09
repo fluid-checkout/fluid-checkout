@@ -139,29 +139,29 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
 		// Billing address
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_billing_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_billing_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
 		// Billing same as shipping
 		add_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
 		// Shipping same as billing
 		add_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
 
 		// Shipping same as billing
 		// Fix for when shipping is not needed while
 		// billing address is displayed after shipping address.
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		add_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
 		// Billing phone
@@ -188,7 +188,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		add_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
-		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
+		add_filter( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
 		add_action( 'fc_checkout_end_step', array( $this, 'maybe_output_checkout_place_order_placeholder_for_substep' ), 100, 4 );
@@ -211,7 +211,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		add_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100, 2 );
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		add_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10, 2 );
@@ -550,7 +550,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
 		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
-		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
 		// Order notes
 		remove_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
@@ -560,22 +560,22 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_billing_address' ), 10 );
 		remove_filter( 'fc_substep_billing_address_text_lines', array( $this, 'add_substep_text_lines_extra_fields_billing_address' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_billing_address_text_fragment' ), 10 );
-		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_billing_address' ), 7 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_billing_address' ), 7 );
 
 		// Billing same as shipping
 		remove_action( 'woocommerce_before_checkout_billing_form', array( $this, 'output_billing_same_as_shipping_field' ), 100 );
-		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping' ), 10 );
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_billing_address_same_as_shipping_on_process_checkout' ), 10 );
 
 		// Shipping same as billing
 		remove_action( 'woocommerce_before_checkout_shipping_form', array( $this, 'output_shipping_same_as_billing_field' ), 100 );
-		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing' ), 10 );
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_set_shipping_address_same_as_billing_on_process_checkout' ), 10 );
 
 		// Shipping same as billing
 		// Fix for when shipping is not needed while
 		// billing address is displayed after shipping address.
-		remove_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
 		remove_filter( 'woocommerce_checkout_posted_data', array( $this, 'maybe_fix_shipping_address_when_shipping_not_needed_on_process_checkout' ), 10 );
 
 		// Billing phone
@@ -602,7 +602,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		remove_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
-		remove_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
+		remove_filter( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
 		remove_action( 'fc_checkout_end_step', array( $this, 'maybe_output_checkout_place_order_placeholder_for_substep' ), 100 );
@@ -623,7 +623,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Persisted data
 		remove_action( 'woocommerce_checkout_update_order_review', array( $this, 'maybe_preserve_checkout_update_address_data' ), 1 );
-		remove_action( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'update_customer_persisted_data' ), 100 );
 		remove_filter( 'woocommerce_checkout_get_value', array( $this, 'change_default_checkout_field_value_from_session_or_posted_data' ), 100 );
 		remove_action( 'woocommerce_checkout_order_processed', array( $this, 'unset_session_customer_persisted_data_order_processed' ), 100 );
 		remove_filter( 'woocommerce_checkout_update_customer', array( $this, 'clear_customer_meta_order_processed' ), 10 );

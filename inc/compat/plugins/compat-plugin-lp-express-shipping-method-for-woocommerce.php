@@ -30,7 +30,7 @@ class FluidCheckout_LPExpressShippingMethodForWooCommerce extends FluidCheckout 
 		add_filter( 'woocommerce_locate_template', array( $this, 'locate_template' ), 100, 3 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Shipping methods hooks
 		add_action( 'woocommerce_shipping_init', array( $this, 'shipping_methods_hooks' ), 100 );

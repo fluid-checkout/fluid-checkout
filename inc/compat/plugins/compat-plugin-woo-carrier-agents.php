@@ -64,7 +64,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		add_action( 'init', array( $this, 'fetch_button_option_values' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );

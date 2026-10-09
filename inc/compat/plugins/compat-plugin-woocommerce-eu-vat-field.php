@@ -73,7 +73,7 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 
 		// VAT validation
 		remove_action( 'woocommerce_checkout_update_order_review', array( $class_object, 'validate_vat_field_and_remove_tax' ), 10 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_tax_exemption' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_tax_exemption' ), 10 );
 	}
 
 

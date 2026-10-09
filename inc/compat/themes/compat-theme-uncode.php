@@ -35,7 +35,7 @@ class FluidCheckout_ThemeCompat_Uncode extends FluidCheckout {
 		add_filter( 'fc_enable_dark_mode_styles', array( $this, 'maybe_set_is_dark_mode' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Product price HTML
 		remove_filter( 'woocommerce_get_price_html', 'uncode_price_html', 10, 2 );

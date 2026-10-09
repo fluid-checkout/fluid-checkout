@@ -57,7 +57,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'add_maps_or_list' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Output hidden fields
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
@@ -92,7 +92,7 @@ class FluidCheckout_WC_BRT_FermopointShippingMethods extends FluidCheckout {
 
 		// Shipping method description
 		remove_action( 'woocommerce_after_shipping_rate', array( WC_BRT_FermoPoint_Shipping_Methods::instance()->core, 'add_shipping_description' ), 10 );
-		add_action( 'fc_shipping_method_option_description', array( $this, 'add_shipping_method_description_without_refresh_button' ), 10, 2 );
+		add_filter( 'fc_shipping_method_option_description', array( $this, 'add_shipping_method_description_without_refresh_button' ), 10, 2 );
 
 		// Refresh button
 		add_filter( 'fc_shipping_method_option_label_markup', array( $this, 'maybe_add_refresh_button_to_shipping_method_label' ), 10, 2 );

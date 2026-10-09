@@ -66,7 +66,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -105,7 +105,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 		// Move shipping method hooks
 		remove_filter( 'woocommerce_cart_shipping_method_full_label', array( $this->class_object, 'add_gls_button_to_shipping_method' ), 10 );
-		remove_filter( 'woocommerce_review_order_after_shipping', array( $this->class_object, 'display_pickup_information'), 10 );
+		remove_action( 'woocommerce_review_order_after_shipping', array( $this->class_object, 'display_pickup_information'), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this->class_object, 'display_pickup_information' ), 10 );
 	}

@@ -29,8 +29,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 		// Shipping methods
 		add_filter( 'fc_cart_has_multiple_packages', array( $this, 'maybe_set_cart_with_multiple_packages' ), 10 );
-		add_action( 'fc_shipping_method_display_package_destination_substep_text_lines', array( $this, 'maybe_enable_show_shipping_method_package_destination' ), 10 );
-		add_action( 'fc_shipping_method_display_package_name', array( $this, 'maybe_enable_show_shipping_method_package_name' ), 10 );
+		add_filter( 'fc_shipping_method_display_package_destination_substep_text_lines', array( $this, 'maybe_enable_show_shipping_method_package_destination' ), 10 );
+		add_filter( 'fc_shipping_method_display_package_name', array( $this, 'maybe_enable_show_shipping_method_package_name' ), 10 );
 		add_filter( 'fc_subscription_shipping_package_name', array( $this, 'maybe_change_subscription_shipping_package_name' ), 10, 4 );
 
 		// Add substep review text lines

@@ -55,7 +55,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'remove_pickup_location_from_copy_billing_field_keys' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
 
 		// Shipping address review text
 		add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_customer_number_from_text_address_data' ), 10 );
