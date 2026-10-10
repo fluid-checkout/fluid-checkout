@@ -97,20 +97,8 @@
 			return;
 		}
 
-		// Re-execute Packlink config scripts (locations, selected id, etc.),
-		// but skip init scripts to avoid binding handlers twice.
-		var scripts = shippingSection.querySelectorAll( 'script' );
-		for ( var i = 0; i < scripts.length; i++ ) {
-			var scriptContent = scripts[ i ].textContent || '';
-			if ( -1 === scriptContent.indexOf( 'Packlink.checkout' ) ) { continue; }
-			if ( -1 !== scriptContent.indexOf( 'Packlink.checkout.init' ) ) { continue; }
-
-			var newScript = document.createElement( 'script' );
-			newScript.text = scriptContent;
-			scripts[ i ].parentNode.replaceChild( newScript, scripts[ i ] );
-		}
-
-		// Bind handlers once for this button node
+		// Bind handlers once for this button node. Do not execute scripts copied
+		// out of the shipping fragment. Fragment HTML is not a safe code channel.
 		if ( 'function' === typeof Packlink.checkout.init ) {
 			Packlink.checkout.init();
 		}
