@@ -1,0 +1,214 @@
+# Publish Fluid Checkout Lite hook JSON to fluid-checkout/fluid-checkout-docs.
+#
+# Plugin id `lite` is the id in that repo's plugins.json.
+# Secrets on this repository: DOCS_APP_ID, DOCS_APP_PRIVATE_KEY.
+# The GitHub App needs contents and pull request write on fluid-checkout-docs.
+
+name: Docs
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hook-docs
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      PLUGIN_ID: lite
+      DOCS_REPO: fluid-checkout/fluid-checkout-docs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Classify ref
+        id: release
+        run: |
+          set -euo pipefail
+          tag=""
+          version=""
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            tag="${GITHUB_REF#refs/tags/}"
+            semver="${tag#v}"
+            # Plain semver only. A leading v is allowed. alpha and beta never create a version.
+            if [[ "${semver}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] \
+              && [[ ! "${tag}" =~ [Aa]lpha ]] \
+              && [[ ! "${tag}" =~ [Bb]eta ]]; then
+              version="${semver}"
+            fi
+          fi
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          if [[ -n "${version}" ]]; then
+            echo "Stable tag ${tag}: docs version ${version}."
+          elif [[ -n "${tag}" ]]; then
+            echo "Tag ${tag} is not a stable version. Hook JSON only."
+          else
+            echo "Branch or manual run. Hook JSON only."
+          fi
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          coverage: none
+          tools: composer:v2
+
+      - name: Setup Node
+        if: steps.release.outputs.version != ''
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install wp-hooks/generator
+        run: |
+          set -euo pipefail
+          mkdir -p wp-hooks-generator
+          composer require \
+            --working-dir=wp-hooks-generator \
+            --no-interaction \
+            --no-progress \
+            "wp-hooks/generator:^1.0" \
+            "erusev/parsedown:1.8.0-beta-7"
+
+      - name: Generate hook JSON
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          php wp-hooks-generator/vendor/bin/wp-hooks-generator \
+            --input=. \
+            --output=data \
+            --ignore-files=vendor/,languages/,node_modules/,/js/,/css/,/build/,wp-hooks-generator,fluid-checkout-docs
+          test -f data/actions.json
+          test -f data/filters.json
+          echo "Actions: $(jq '.hooks | length' data/actions.json)"
+          echo "Filters: $(jq '.hooks | length' data/filters.json)"
+
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.DOCS_APP_ID }}
+          private-key: ${{ secrets.DOCS_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: fluid-checkout-docs
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Open or update docs pull request
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          SOURCE_SHA: ${{ github.sha }}
+          SOURCE_REF_NAME: ${{ github.ref_name }}
+          SOURCE_TAG: ${{ steps.release.outputs.tag }}
+          SOURCE_VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          short_sha="${SOURCE_SHA:0:8}"
+          branch="docs/${PLUGIN_ID}/hooks-${short_sha}"
+          docs_dir="${GITHUB_WORKSPACE}/fluid-checkout-docs"
+
+          rm -rf "${docs_dir}"
+          gh repo clone "${DOCS_REPO}" "${docs_dir}" -- --depth=1
+          git -C "${docs_dir}" config user.name "github-actions[bot]"
+          git -C "${docs_dir}" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          gh auth setup-git
+
+          if git -C "${docs_dir}" ls-remote --exit-code --heads origin "${branch}" >/dev/null 2>&1; then
+            git -C "${docs_dir}" fetch --depth=1 origin "${branch}"
+            git -C "${docs_dir}" checkout -B "${branch}" FETCH_HEAD
+          else
+            git -C "${docs_dir}" checkout -B "${branch}"
+          fi
+
+          entry=$(jq -c --arg id "${PLUGIN_ID}" '.plugins[] | select(.id == $id)' "${docs_dir}/plugins.json")
+          if [[ -z "${entry}" ]]; then
+            echo "plugins.json has no plugin id '${PLUGIN_ID}'." >&2
+            exit 1
+          fi
+          status=$(jq -r '.status // empty' <<<"${entry}")
+          route=$(jq -r '.routeBasePath // empty' <<<"${entry}")
+          echo "Docs plugin ${PLUGIN_ID}: status=${status:-missing} route=${route:-none}"
+
+          mkdir -p "${docs_dir}/data/${PLUGIN_ID}"
+          cp data/actions.json "${docs_dir}/data/${PLUGIN_ID}/actions.json"
+          cp data/filters.json "${docs_dir}/data/${PLUGIN_ID}/filters.json"
+
+          version_created=0
+          version_note="No docs version for this ref."
+          if [[ -n "${SOURCE_VERSION}" ]]; then
+            if [[ "${status}" == "available" && -n "${route}" ]]; then
+              npm --prefix "${docs_dir}" ci
+              npm --prefix "${docs_dir}" run generate
+              npm --prefix "${docs_dir}" run docusaurus -- "docs:version:${PLUGIN_ID}" "${SOURCE_VERSION}"
+              version_created=1
+              version_note="Created docs version ${SOURCE_VERSION}."
+            else
+              version_note="Stable tag ${SOURCE_TAG} maps to docs version ${SOURCE_VERSION}, but plugin '${PLUGIN_ID}' is '${status:-missing}' and has no docs instance yet. Hook JSON was updated. No version snapshot was created."
+              echo "::warning::${version_note}"
+            fi
+          elif [[ -n "${SOURCE_TAG}" ]]; then
+            version_note="Tag ${SOURCE_TAG} contains a pre-release suffix (or is not plain semver). No docs version was created."
+          fi
+
+          git -C "${docs_dir}" add -- "data/${PLUGIN_ID}/actions.json" "data/${PLUGIN_ID}/filters.json"
+          if [[ "${version_created}" == "1" ]]; then
+            for path in "${PLUGIN_ID}_versions.json" "${PLUGIN_ID}_versioned_docs" "${PLUGIN_ID}_versioned_sidebars"; do
+              if [[ ! -e "${docs_dir}/${path}" ]]; then
+                echo "Version snapshot did not create ${path}." >&2
+                exit 1
+              fi
+              git -C "${docs_dir}" add -- "${path}"
+            done
+          fi
+
+          if ! git -C "${docs_dir}" diff --cached --quiet; then
+            git -C "${docs_dir}" commit -m "docs(${PLUGIN_ID}): update hook data"
+            git -C "${docs_dir}" push origin "HEAD:${branch}"
+          else
+            echo "Hook JSON already matches ${branch}."
+          fi
+
+          compare_paths=("data/${PLUGIN_ID}")
+          if [[ "${version_created}" == "1" ]]; then
+            compare_paths+=("${PLUGIN_ID}_versions.json" "${PLUGIN_ID}_versioned_docs" "${PLUGIN_ID}_versioned_sidebars")
+          fi
+          if git -C "${docs_dir}" diff --quiet "origin/main" HEAD -- "${compare_paths[@]}"; then
+            echo "No docs changes to propose."
+            exit 0
+          fi
+
+          body_file=$(mktemp)
+          cat > "${body_file}" <<EOF
+          Updates the generated hook JSON for Fluid Checkout Lite.
+
+          Source:
+          - Repository: ${GITHUB_REPOSITORY}
+          - Ref: ${SOURCE_REF_NAME}
+          - Commit: ${SOURCE_SHA}
+          - Tag: ${SOURCE_TAG:-none}
+
+          Plugin id: ${PLUGIN_ID}
+
+          ${version_note}
+          EOF
+
+          existing=$(gh pr list --repo "${DOCS_REPO}" --head "${branch}" --state open --json number --jq '.[0].number // empty')
+          title="docs(${PLUGIN_ID}): update hook data"
+          if [[ -n "${existing}" ]]; then
+            gh pr edit "${existing}" --repo "${DOCS_REPO}" --title "${title}" --body-file "${body_file}"
+            echo "Updated pull request #${existing}."
+          else
+            gh pr create --repo "${DOCS_REPO}" --base main --head "${branch}" --title "${title}" --body-file "${body_file}"
+          fi
