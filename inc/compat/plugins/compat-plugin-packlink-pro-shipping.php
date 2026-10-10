@@ -269,14 +269,17 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * Maybe get selected shipping method ID if it matches the target method.
 	 */
 	public function maybe_get_selected_shipping_method_id() {
-		// Make sure chosen shipping method is set
-		WC()->cart->calculate_shipping();
+		// Read the session and already calculated packages. Do not call
+		// calculate_shipping() here: this runs while checkout fragments are built.
+		$chosen_shipping_methods = WC()->session ? WC()->session->get( 'chosen_shipping_methods', array() ) : array();
+		if ( ! is_array( $chosen_shipping_methods ) ) { $chosen_shipping_methods = array(); }
 
-		// Check chosen shipping method
-		$packages = WC()->shipping()->get_packages();
+		$packages = WC()->shipping() ? WC()->shipping()->get_packages() : array();
+		if ( ! is_array( $packages ) ) { $packages = array(); }
+
 		foreach ( $packages as $i => $package ) {
 			// Check if a target shipping method is selected
-			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$chosen_method = isset( $chosen_shipping_methods[ $i ] ) ? $chosen_shipping_methods[ $i ] : '';
 			if ( $chosen_method && $this->is_shipping_method_packlink( $chosen_method ) ) {
 				return $chosen_method;
 			}
