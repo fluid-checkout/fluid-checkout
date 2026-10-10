@@ -1,0 +1,290 @@
+# Publish Fluid Checkout Lite hook JSON to fluid-checkout/fluid-checkout-docs.
+#
+# Contract (fluid-checkout-docs CONTRIBUTING.md):
+# - data/lite/actions.json and data/lite/filters.json only
+# - branch docs/lite/hooks-<short>
+# - title docs(lite): update hook data
+# - body names the source repository, commit, and tag
+# - versioned_docs/ is not written here; a plain semver tag is recorded so a
+#   later docs-repo step can snapshot it
+#
+# No pull_request trigger. Fork pull requests must not run this workflow.
+#
+# Generated JSON and the Composer install live under RUNNER_TEMP, outside the
+# plugin tree. The docs checkout has to sit under the workspace (fluid-checkout-docs/)
+# because the checkout and pull-request actions only accept a workspace-relative
+# path. That directory, data/, and wp-hooks-generator/ are gitignored and
+# excluded from the plugin zip.
+
+name: Hook docs data
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      # Glob, not regex. [0-9]+ is one or more digits. The whole tag must match.
+      # 4.2.7 and v4.2.7 match. 4.2.7-beta-1 and v4.2.7-alpha-1 do not.
+      - "[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hook-docs-data-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish Fluid Checkout Lite hook data
+    runs-on: ubuntu-latest
+    # Second check for tag pushes that match the glob. workflow_dispatch and
+    # pushes to main are not tag-filtered. contains() is case-sensitive; the
+    # step below rejects any other casing on a tag push.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.ref_type == 'branch' ||
+      (
+        github.ref_type == 'tag' &&
+        !contains(github.ref_name, 'beta') &&
+        !contains(github.ref_name, 'alpha')
+      )
+
+    steps:
+      - name: Reject pre-release tags
+        if: github.event_name == 'push' && github.ref_type == 'tag'
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          if [[ "${tag}" =~ [Bb][Ee][Tt][Aa]|[Aa][Ll][Pp][Hh][Aa] ]]; then
+            echo "::error::Refusing pre-release tag ${tag}."
+            exit 1
+          fi
+          if [[ ! "${tag}" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Refusing tag ${tag}. Only plain semver tags, with an optional leading v, are published."
+            exit 1
+          fi
+
+      - name: Checkout Fluid Checkout Lite
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          coverage: none
+          extensions: mbstring, xml, dom, tokenizer
+          tools: composer:v2
+
+      - name: Install wp-hooks/generator
+        run: |
+          set -euo pipefail
+          generator_dir="${RUNNER_TEMP}/wp-hooks-generator"
+          mkdir -p "${generator_dir}"
+          cd "${generator_dir}"
+          composer init \
+            --name="fluid-checkout/wp-hooks-generator-run" \
+            --description="Temporary runner. Not part of the plugin." \
+            --no-interaction
+          composer config minimum-stability beta
+          composer config prefer-stable true
+          composer require --no-interaction --no-progress \
+            "wp-hooks/generator:^1.0" \
+            "erusev/parsedown:1.8.0-beta-7"
+
+      - name: Generate hook JSON
+        run: |
+          set -euo pipefail
+          generator_dir="${RUNNER_TEMP}/wp-hooks-generator"
+          output_dir="${RUNNER_TEMP}/hooks"
+          log_file="${RUNNER_TEMP}/wp-hooks-generator.log"
+          mkdir -p "${output_dir}"
+          # Run from the temp project so its vendor/autoload.php is used.
+          # The plugin checkout also has vendor/autoload.php, which does not
+          # contain the generator.
+          (
+            cd "${generator_dir}"
+            ./vendor/bin/wp-hooks-generator \
+              --input="${GITHUB_WORKSPACE}" \
+              --output="${output_dir}" \
+              --ignore-files="vendor/,languages/,node_modules/,js/,css/,build/"
+          ) 2>&1 | tee "${log_file}"
+
+          # Fail only for undocumented hooks this plugin documents.
+          # Prefixes come from fluid-checkout-docs plugins.json: lite hookPrefixes,
+          # minus catalog hookExcludePrefixes and hookExcludeNames. Copied
+          # WooCommerce, plugin, and theme hooks are not edited, so a missing
+          # docblock on those names is ignored.
+          catalog="${RUNNER_TEMP}/plugins.json"
+          gh api "repos/fluid-checkout/fluid-checkout-docs/contents/plugins.json" --jq '.content' | base64 -d > "${catalog}"
+          if ! jq -e '.plugins[] | select(.id == "lite") | .hookPrefixes | length > 0' "${catalog}" >/dev/null; then
+            echo "::error::plugins.json has no hookPrefixes for lite."
+            exit 1
+          fi
+          own_prefixes=()
+          exclude_prefixes=()
+          exclude_names=()
+          mapfile -t own_prefixes < <(jq -r '.plugins[] | select(.id == "lite") | .hookPrefixes[]' "${catalog}")
+          mapfile -t exclude_prefixes < <(jq -r '.hookExcludePrefixes[]?' "${catalog}")
+          mapfile -t exclude_names < <(jq -r '.hookExcludeNames[]?' "${catalog}")
+
+          hook_is_lite() {
+            local name="$1"
+            local candidate="$name"
+            local q="'"
+            local dq='"'
+            if [[ "${candidate}" == "$q"* ]]; then
+              candidate="${candidate#"$q"}"
+              candidate="${candidate%%"$q"*}"
+            elif [[ "${candidate}" == "$dq"* ]]; then
+              candidate="${candidate#"$dq"}"
+              candidate="${candidate%%"$dq"*}"
+            fi
+
+            local prefix matched=0
+            for prefix in "${own_prefixes[@]}"; do
+              if [[ -n "${prefix}" && "${candidate}" == "${prefix}"* ]]; then
+                matched=1
+                break
+              fi
+            done
+            if [[ "${matched}" -eq 0 ]]; then
+              return 1
+            fi
+            for prefix in "${exclude_prefixes[@]}"; do
+              if [[ -n "${prefix}" && "${candidate}" == "${prefix}"* ]]; then
+                return 1
+              fi
+            done
+            local excluded
+            for excluded in "${exclude_names[@]}"; do
+              if [[ -n "${excluded}" && ( "${candidate}" == "${excluded}" || "${name}" == "${excluded}" ) ]]; then
+                return 1
+              fi
+            done
+            return 0
+          }
+
+          own_failures=0
+          third_party=0
+          while IFS= read -r line; do
+            if [[ ! "${line}" =~ ^Hook\ \'(.*)\'\ in\ file\ \'(.*)\'\ (is\ missing\ a\ docblock|has\ an\ empty\ docblock)\.$ ]]; then
+              continue
+            fi
+            hook_name="${BASH_REMATCH[1]}"
+            if hook_is_lite "${hook_name}"; then
+              own_failures=$((own_failures + 1))
+              echo "::error::${line}"
+            else
+              third_party=$((third_party + 1))
+            fi
+          done < "${log_file}"
+          echo "Ignored ${third_party} third-party hook call(s) without a docblock."
+          if [[ "${own_failures}" -gt 0 ]]; then
+            echo "::error::${own_failures} Fluid Checkout hook call(s) need a docblock before publishing."
+            exit 1
+          fi
+          for name in actions.json filters.json; do
+            file="${output_dir}/${name}"
+            if ! jq -e '(.hooks | type) == "array"' "${file}" >/dev/null; then
+              echo "::error::${name} is missing a hooks array."
+              exit 1
+            fi
+            echo "${name} hooks: $(jq '.hooks | length' "${file}")"
+          done
+
+      - name: Describe the docs pull request
+        id: meta
+        run: |
+          set -euo pipefail
+          short_sha="${GITHUB_SHA:0:8}"
+          version=""
+          if [[ "${GITHUB_REF_TYPE}" == "tag" && "${GITHUB_REF_NAME}" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            version="${GITHUB_REF_NAME#v}"
+          fi
+          if [[ -n "${version}" ]]; then
+            ref_slug="${version}"
+          else
+            ref_slug="${short_sha}"
+          fi
+          {
+            echo "ref_slug=${ref_slug}"
+            echo "version=${version}"
+            echo "title=docs(lite): update hook data"
+          } >> "${GITHUB_OUTPUT}"
+
+          body_file="${RUNNER_TEMP}/docs-pr-body.md"
+          {
+            echo "Updates \`data/lite/actions.json\` and \`data/lite/filters.json\` from wp-hooks/generator."
+            echo
+            echo "- Source repository: \`${GITHUB_REPOSITORY}\`"
+            echo "- Source commit: \`${GITHUB_SHA}\`"
+            echo "- Source ref: \`${GITHUB_REF}\`"
+            if [[ -n "${version}" ]]; then
+              echo "- Tag: \`${version}\`"
+              echo "- Version: ${version}"
+              echo
+              echo "Plain semver release. This pull request does not write \`versioned_docs/\`. When version snapshots are enabled, a later step in this docs repository can run:"
+              echo
+              echo "\`\`\`bash"
+              echo "npm run docusaurus docs:version:lite ${version}"
+              echo "\`\`\`"
+            else
+              echo "- Tag: none"
+              echo
+              echo "Latest hook data only. This run does not request a version snapshot."
+            fi
+            echo
+            echo "Only the generated JSON is included. PHP source is not part of this pull request. File paths inside the JSON are paths in the plugin source."
+          } > "${body_file}"
+
+      - name: Create docs repository token
+        id: docs-token
+        uses: actions/create-github-app-token@v3
+        with:
+          app-id: ${{ secrets.DOCS_APP_ID }}
+          private-key: ${{ secrets.DOCS_APP_PRIVATE_KEY }}
+          owner: fluid-checkout
+          repositories: fluid-checkout-docs
+
+      - name: Checkout fluid-checkout-docs
+        uses: actions/checkout@v4
+        with:
+          repository: fluid-checkout/fluid-checkout-docs
+          ref: main
+          path: fluid-checkout-docs
+          token: ${{ steps.docs-token.outputs.token }}
+          persist-credentials: false
+
+      - name: Copy hook JSON
+        run: |
+          set -euo pipefail
+          docs_data="${GITHUB_WORKSPACE}/fluid-checkout-docs/data/lite"
+          mkdir -p "${docs_data}"
+          cp "${RUNNER_TEMP}/hooks/actions.json" "${docs_data}/actions.json"
+          cp "${RUNNER_TEMP}/hooks/filters.json" "${docs_data}/filters.json"
+          if find "${docs_data}" -name '*.php' -print -quit | grep -q .; then
+            echo "::error::Refusing to publish PHP source to the docs repository."
+            exit 1
+          fi
+
+      - name: Open or update docs pull request
+        id: docs-pr
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ steps.docs-token.outputs.token }}
+          path: fluid-checkout-docs
+          base: main
+          branch: docs/lite/hooks-${{ steps.meta.outputs.ref_slug }}
+          add-paths: |
+            data/lite/actions.json
+            data/lite/filters.json
+          commit-message: "docs(lite): update hook data from ${{ github.repository }}@${{ github.sha }}"
+          title: ${{ steps.meta.outputs.title }}
+          body-path: ${{ runner.temp }}/docs-pr-body.md
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
