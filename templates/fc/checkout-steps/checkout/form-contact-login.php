@@ -70,27 +70,21 @@ defined( 'ABSPATH' ) || exit;
 				/**
 				 * Filters the CSS classes of the checkout contact-step login link.
 				 *
-				 * The value is a space-separated list of class names.
-				 *
 				 * @since 1.5.3
-				 * @deprecated 4.2.8 Use `fc_checkout_login_button_classes` instead.
+				 * @deprecated 4.2.8 Use `fc_checkout_contact_login_link_classes` instead.
 				 *
 				 * @param string $classes CSS classes. Default `fc-contact-login__action--underline`.
 				 */
-				$login_link_classes = apply_filters_deprecated( 'fc_checkout_login_button_class', array( 'fc-contact-login__action--underline' ), '4.2.8', 'fc_checkout_login_button_classes' );
+				$login_link_classes = apply_filters_deprecated( 'fc_checkout_login_button_class', array( 'fc-contact-login__action--underline' ), '4.2.8', 'fc_checkout_contact_login_link_classes' );
 
 				/**
-				 * Filters the CSS classes added to login buttons and the contact-step login link.
+				 * Filters the CSS classes of the checkout contact-step login link.
 				 *
-				 * The value is a space-separated list of class names. This call passes the
-				 * contact-step login link classes. The login submit button passes
-				 * `woocommerce-button button` by default.
-				 *
-				 * @since 4.0.5
+				 * @since 4.2.8
 				 *
 				 * @param string $classes CSS classes. Default `fc-contact-login__action--underline`.
 				 */
-				echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', $login_link_classes ) );
+				echo esc_attr( apply_filters( 'fc_checkout_contact_login_link_classes', $login_link_classes ) );
 			?>" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]"><?php echo esc_html( 
 				/**
 				 * Filters the login button label at checkout.
