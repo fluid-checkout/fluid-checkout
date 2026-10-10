@@ -435,7 +435,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 					}
 
 					// CHANGE: Use delivery-type filtered methods so chosen-method resolution matches what is displayed
-					$available_methods = apply_filters( 'fc_available_shipping_methods', $package[ 'rates' ], $package );
+					$available_methods = FluidCheckout_Steps::instance()->get_available_shipping_methods( $package[ 'rates' ], $package );
 
 					// CHANGE: Always get chosen method for the first package as the initial shipment
 					$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index_initial_shipment ] ) ? $chosen_shipping_methods[ $package_index_initial_shipment ] : '';
@@ -587,7 +587,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			if ( ! $package || ! is_array( $package[ 'rates' ] ) || empty( $package[ 'rates' ] ) ) { continue; }
 
 			// Get available shipping method rates
-			$available_methods = apply_filters( 'fc_available_shipping_methods', $package[ 'rates' ], $package );
+			$available_methods = FluidCheckout_Steps::instance()->get_available_shipping_methods( $package[ 'rates' ], $package );
 
 			// Get the chosen shipping method for the recurring cart package
 			$chosen_recurring_method = $this->get_chosen_shipping_method_for_package( $recurring_cart, $recurring_cart_package_key, $package, $available_methods );
@@ -742,7 +742,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			if ( ! is_array( $package ) || empty( $package[ 'rates' ] ) ) { continue; }
 
 			// Get available shipping method rates
-			$available_methods = apply_filters( 'fc_available_shipping_methods', $package[ 'rates' ], $package );
+			$available_methods = FluidCheckout_Steps::instance()->get_available_shipping_methods( $package[ 'rates' ], $package );
 
 			// Get the chosen shipping method for the recurring cart package
 			$chosen_recurring_method = $this->get_chosen_shipping_method_for_package( $recurring_cart, $recurring_cart_package_key, $package, $available_methods );

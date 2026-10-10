@@ -68,6 +68,15 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 		if ( 'checkout' === $current_section ) {
 
 			/**
+			 * Filters the options for the local pickup shipping zone fields setting.
+			 *
+			 * @since 4.2.8
+			 *
+			 * @param array $options Field options keyed by field id.
+			 */
+			$local_pickup_shipping_zone_field_options = apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() );
+
+			/**
 			 * Filters the checkout settings fields.
 			 *
 			 * @since 1.2.0
@@ -639,7 +648,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'desc_tip'          => __( 'These fields will be displayed as a filter for the local pickup shipping methods. Some fields might still appear at checkout when not selected here, if compatible plugins require them to work properly.', 'fluid-checkout' ),
 						'id'                => 'fc_local_pickup_shipping_zone_fields',
 						'type'              => 'fc_multiselect',
-						'options'           => apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() ),
+						'options'           => $local_pickup_shipping_zone_field_options,
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_shipping_zone_fields' ),
 						'autoload'          => false,
 						'disabled'          => true,
