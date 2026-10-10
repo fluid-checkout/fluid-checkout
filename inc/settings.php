@@ -77,6 +77,8 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_disable_auto_select'                       => 'no',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_default_delivery_type'                         => 'ship',
+			// Deprecated 4.2.8. The setting is no longer shown. The default stays so existing integrations can still read it.
+			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
 			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
