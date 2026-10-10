@@ -7,7 +7,7 @@
  * @author  Prospress
  * @package WooCommerce Subscriptions/Templates
  * @version 1.0.0 - Migrated from WooCommerce Subscriptions v2.6.0
- * @fc-version 4.2.7
+ * @fc-version 4.2.8
  */
 
  // CHANGE: This template has been modified to align the shipping methods for subscription plans with Fluid Checkout's original shipping methods.
