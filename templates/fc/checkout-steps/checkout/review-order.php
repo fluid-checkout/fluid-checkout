@@ -66,7 +66,6 @@ defined( 'ABSPATH' ) || exit;
 
 							<?php // CHANGE: Add product images ?>
 							<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-							?>
 
 							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
 							<div class="product-details">
@@ -101,7 +100,6 @@ defined( 'ABSPATH' ) || exit;
 							?>
 
 							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-							?>
 
 							<?php // CHANGE: Add hook for after the cart item product totals ?>
 							<?php

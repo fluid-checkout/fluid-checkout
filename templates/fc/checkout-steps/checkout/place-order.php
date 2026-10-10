@@ -45,7 +45,6 @@ defined( 'ABSPATH' ) || exit;
 
     <?php // CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it ?>
     <?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt' . esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
-    ?>
 
     <?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
