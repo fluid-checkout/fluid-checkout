@@ -337,14 +337,15 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Bail if terminal data is invalid
 		if ( ! is_array( $terminal_data ) ) { return; }
 
-		// Assign terminal object property values to the corresponding array keys
+		// Assign terminal object property values to the corresponding array keys.
+		// Sanitize here and escape when the address is printed.
 		$selected_terminal_data = array(
-			'company' => isset( $terminal_data['name'] ) ? esc_html( $terminal_data['name'] ) : '',
-			'address_1' => isset( $terminal_data['address'] ) ? $terminal_data['address'] : '',
-			'postcode' => isset( $terminal_data['zip'] ) ? esc_html( $terminal_data['zip'] ) : '',
-			'city' => isset( $terminal_data['city'] ) ? esc_html( $terminal_data['city'] ) : '',
-			'state' => isset( $terminal_data['state'] ) ? esc_html( $terminal_data['state'] ) : '',
-			'country' => isset( $terminal_data['countryCode'] ) ? esc_html( $terminal_data['countryCode'] ) : '',
+			'company' => isset( $terminal_data['name'] ) ? sanitize_text_field( $terminal_data['name'] ) : '',
+			'address_1' => isset( $terminal_data['address'] ) ? sanitize_text_field( $terminal_data['address'] ) : '',
+			'postcode' => isset( $terminal_data['zip'] ) ? sanitize_text_field( $terminal_data['zip'] ) : '',
+			'city' => isset( $terminal_data['city'] ) ? sanitize_text_field( $terminal_data['city'] ) : '',
+			'state' => isset( $terminal_data['state'] ) ? sanitize_text_field( $terminal_data['state'] ) : '',
+			'country' => isset( $terminal_data['countryCode'] ) ? sanitize_text_field( $terminal_data['countryCode'] ) : '',
 		);
 
 		return $selected_terminal_data;
