@@ -169,18 +169,24 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			 * @param string $template_name Template name.
 			 * @param string $template_path Template path.
 			 */
-			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) || 
-				/**
-				 * Filters whether a theme template file may replace a Fluid Checkout PRO template.
-				 *
-				 * @since 3.2.5
-				 *
-				 * @param bool   $value         Value to filter. Default false.
-				 * @param string $template      Located template path.
-				 * @param string $template_name Template name.
-				 * @param string $template_path Template path.
-				 */
-				apply_filters( 'fc_pro_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+			$override_with_theme_file = apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path );
+
+			/**
+			 * Filters whether a theme template file may replace a Fluid Checkout PRO template.
+			 *
+			 * Kept so callbacks on the old hook still run. Prefer `fc_override_template_with_theme_file`.
+			 *
+			 * @since 3.2.5
+			 * @deprecated 4.2.8 Use `fc_override_template_with_theme_file` instead.
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
+			$override_with_pro_hook = apply_filters_deprecated( 'fc_pro_override_template_with_theme_file', array( false, $template, $template_name, $template_path ), '4.2.8', 'fc_override_template_with_theme_file' );
+
+			if ( $override_with_theme_file || $override_with_pro_hook ) {
 				$_template_override = locate_template( array(
 					trailingslashit( $template_path ) . $template_name,
 					$template_name,

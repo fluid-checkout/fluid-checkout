@@ -104,7 +104,12 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		<?php // CHANGE: Change login button label to be consistent across checkout, also adding filter for custom button classes. ?>
 		<button type="submit" class="woocommerce-form-login__submit <?php
 			/**
-			 * Filters the CSS classes of the login submit button.
+			 * Filters the CSS classes added to login buttons and the contact-step login link.
+			 *
+			 * The value is a space-separated list of class names. This call passes the login
+			 * submit button classes. The contact-step login link passes
+			 * `fc-contact-login__action--underline` after the deprecated
+			 * `fc_checkout_login_button_class` filter.
 			 *
 			 * @since 4.0.5
 			 *
