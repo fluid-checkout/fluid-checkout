@@ -16,11 +16,13 @@ body.fc-admin-preview .checkout-button,
 body.fc-admin-preview .fc-cart-action__proceed-checkout,
 body.fc-admin-preview .add_to_cart_button,
 body.fc-admin-preview .single_add_to_cart_button,
-body.fc-admin-preview .wc-block-components-product-button__button {
+body.fc-admin-preview .wc-block-components-product-button__button,
+body.fc-admin-preview :has( > iframe ) {
 	cursor: not-allowed;
 }
 
 body.fc-admin-preview .fc-place-order__custom-buttons *,
-body.fc-admin-preview .fc-express-checkout * {
+body.fc-admin-preview .fc-express-checkout *,
+body.fc-admin-preview iframe {
 	pointer-events: none;
 }

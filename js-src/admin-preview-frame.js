@@ -33,7 +33,7 @@
 		probeId:                      'fc-admin-preview-probe',
 		customStylesId:               'fc-custom-styles',
 
-		inertActionSelector:          '#place_order, .fc-place-order-button, .fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button',
+		inertActionSelector:          '#place_order, .fc-place-order-button, .fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, body :has( > iframe )',
 		linkSelector:                 'a[href], area[href]',
 		scriptLinkSelector:           '.woocommerce-terms-and-conditions-link',
 		readOnlyFieldSelector:        '.form-row input:not([type="checkbox"]):not([type="radio"]), .form-row textarea, .quantity input',
