@@ -2,7 +2,6 @@
  * Keep pages shown in the admin preview frame inside the preview.
  *
  * DEPENDS ON:
- * - jQuery // Add the preview token to AJAX requests
  * - FCUtils // Utility functions
  */
 (function (root, factory) {
@@ -16,9 +15,6 @@
 })(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
 
 	'use strict';
-
-	var $ = jQuery;
-	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
 	var _publicMethods = {};
@@ -52,6 +48,9 @@
 	var _colorScheme = '';
 	var _hasDarkModeClass = false;
 	var _shippingMethods = {};
+	var _originalFetch = null;
+	var _originalXhrOpen = null;
+	var _originalSendBeacon = null;
 
 
 
@@ -83,39 +82,103 @@
 
 
 	/**
-	 * Maybe add the preview token and mode, and the shipping methods chosen in the page, to jQuery AJAX requests sent to the frontend, such as admin AJAX requests from other plugins.
+	 * Get a request URL with the preview token and mode, and the shipping methods chosen in the page, when the request is sent to the frontend.
 	 *
-	 * @param {Object}  options  jQuery AJAX request options.
+	 * @param {string}  requestUrl  Request URL, which can be relative to the preview page.
+	 *
+	 * @return {string}  The request URL with the preview arguments, or the same URL when sent to another origin or when there are no arguments to add.
 	 */
-	var maybeAddPreviewArgsToAjaxRequest = function( options ) {
+	var getPreviewRequestUrl = function( requestUrl ) {
 		var url;
-		var shippingMethodsArgs = {};
+		var addedArgs = new URLSearchParams();
+		var name;
+		var index;
 
 		// Get request URL, resolving relative URLs from the preview page
 		try {
-			url = new URL( options.url, root.location.href );
+			url = new URL( requestUrl, root.location.href );
 		}
 		// Bail if the URL is not valid
 		catch ( error ) {
-			return;
+			return requestUrl;
 		}
 
 		// Bail if the request is sent to another origin, which must not receive the preview token
-		if ( root.location.origin !== url.origin ) { return; }
+		if ( root.location.origin !== url.origin ) { return requestUrl; }
 
-		// Maybe add the preview arguments to the request URL, unless it already has them, such as WooCommerce AJAX requests
+		// Maybe add the preview arguments, unless the URL already has them, such as WooCommerce AJAX URLs
 		if ( ! url.searchParams.has( _settings.tokenQueryArg ) ) {
-			url.search = ( url.search ? url.search + '&' : '?' ) + $.param( _settings.previewArgs );
+			// Iterate preview arguments
+			for ( name in _settings.previewArgs ) {
+				addedArgs.set( name, _settings.previewArgs[ name ] );
+			}
 		}
 
-		// Maybe add the shipping methods chosen in the page, as preview requests do not keep them for the next requests
-		if ( ! $.isEmptyObject( _shippingMethods ) ) {
-			shippingMethodsArgs[ _settings.shippingMethodsQueryArg ] = _shippingMethods;
-			url.search = ( url.search ? url.search + '&' : '?' ) + $.param( shippingMethodsArgs );
+		// Iterate shipping methods chosen in the page, as preview requests do not keep them for the next requests
+		for ( index in _shippingMethods ) {
+			addedArgs.set( _settings.shippingMethodsQueryArg + '[' + index + ']', _shippingMethods[ index ] );
 		}
 
-		// Use the request URL with the preview arguments, keeping its other arguments as they are
-		options.url = url.href;
+		// Bail if there are no arguments to add
+		if ( ! addedArgs.toString() ) { return requestUrl; }
+
+		// Add the arguments after the existing ones, keeping the existing ones as they are
+		url.search = ( url.search ? url.search + '&' : '?' ) + addedArgs.toString();
+
+		return url.href;
+	};
+
+	/**
+	 * Send `fetch` requests with the preview arguments when sent to the frontend.
+	 *
+	 * @param {string|URL|Request}  resource  Request URL or request object.
+	 * @param {Object}              options   Request options.
+	 *
+	 * @return {Promise}  The response promise.
+	 */
+	var fetchWithPreviewArgs = function( resource, options ) {
+		// Get the request URL, and the same URL with the preview arguments
+		var requestUrl = resource instanceof Request ? resource.url : String( resource );
+		var previewRequestUrl = getPreviewRequestUrl( requestUrl );
+
+		// Bail with the original request when its URL does not change, such as requests sent to other origins
+		if ( previewRequestUrl === requestUrl ) { return _originalFetch.call( root, resource, options ); }
+
+		// Maybe copy request objects with the new URL, keeping their method, headers and body
+		if ( resource instanceof Request ) {
+			return _originalFetch.call( root, new Request( previewRequestUrl, resource ), options );
+		}
+
+		// Send the request to the URL with the preview arguments
+		return _originalFetch.call( root, previewRequestUrl, options );
+	};
+
+	/**
+	 * Open `XMLHttpRequest` requests with the preview arguments when sent to the frontend, including jQuery AJAX requests.
+	 *
+	 * @param {string}  method  Request method.
+	 * @param {string}  url     Request URL.
+	 */
+	var openXhrWithPreviewArgs = function( method, url ) {
+		var args = Array.prototype.slice.call( arguments );
+
+		// Use the request URL with the preview arguments, keeping the other arguments as they are
+		args[ 1 ] = getPreviewRequestUrl( String( url ) );
+
+		// Open the request
+		return _originalXhrOpen.apply( this, args );
+	};
+
+	/**
+	 * Send beacon requests with the preview arguments when sent to the frontend.
+	 *
+	 * @param {string}  url   Request URL.
+	 * @param {*}       data  Request data.
+	 *
+	 * @return {boolean}  Whether the browser queued the request.
+	 */
+	var sendBeaconWithPreviewArgs = function( url, data ) {
+		return _originalSendBeacon.call( root.navigator, getPreviewRequestUrl( String( url ) ), data );
 	};
 
 
@@ -503,10 +566,13 @@
 		window.addEventListener( 'submit', preventAction, true ); // Stops all form submissions, as forms must not submit from the preview
 		window.addEventListener( 'message', handleMessage, true );
 
-		// Add jQuery AJAX prefilter
-		if ( _hasJQuery ) {
-			$.ajaxPrefilter( maybeAddPreviewArgsToAjaxRequest );
-		}
+		// Send requests to the frontend with the preview arguments, from jQuery and any other script
+		_originalFetch = root.fetch;
+		_originalXhrOpen = root.XMLHttpRequest.prototype.open;
+		_originalSendBeacon = root.navigator.sendBeacon;
+		root.fetch = fetchWithPreviewArgs;
+		root.XMLHttpRequest.prototype.open = openXhrWithPreviewArgs;
+		root.navigator.sendBeacon = sendBeaconWithPreviewArgs;
 
 		// Let the admin page know the preview is ready
 		maybeSendReadyMessage();

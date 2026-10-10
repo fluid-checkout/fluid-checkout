@@ -171,7 +171,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks that stop preview requests from placing orders, logging in, adding to cart and sending emails.
+	 * Add or remove hooks that stop preview requests from placing orders, logging in, adding to cart, sending emails, saving data and contacting other sites.
 	 * Registered when the class loads, so they also apply to requests handled before `init` finishes.
 	 */
 	public function preview_guard_hooks() {
@@ -195,6 +195,18 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Emails
 		add_filter( 'pre_wp_mail', '__return_false', 10 ); // Required as preview requests must not send emails
+
+		// Database writes
+		add_filter( 'query', array( $this, 'maybe_skip_database_write' ), PHP_INT_MAX ); // Last, to check queries after other filters change them
+
+		// Scheduled actions
+		add_filter( 'pre_as_enqueue_async_action', '__return_zero', 10 ); // Required as Action Scheduler fails with an error when it cannot save scheduled actions
+		add_filter( 'pre_as_schedule_single_action', '__return_zero', 10 );
+		add_filter( 'pre_as_schedule_recurring_action', '__return_zero', 10 );
+		add_filter( 'pre_as_schedule_cron_action', '__return_zero', 10 );
+
+		// Requests to other sites
+		add_filter( 'pre_http_request', array( $this, 'maybe_block_request_to_other_site' ), PHP_INT_MAX, 3 ); // Last, as other filters may answer requests without sending them
 	}
 
 	/**
@@ -440,6 +452,23 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		return $admin_origin;
 	}
 
+	/**
+	 * Get the hosts of other sites that preview pages and preview requests may contact.
+	 *
+	 * @return  string[]  Host names, where a leading `*.` matches any subdomain.
+	 */
+	public function get_allowed_hosts() {
+		/**
+		 * Filter the hosts of other sites that preview pages and preview requests may contact, where a leading `*.` matches any subdomain.
+		 */
+		$hosts = (array) apply_filters( 'fc_admin_preview_allowed_hosts', array() );
+
+		// Keep valid host names only, as they are added to the content security policy of preview pages
+		return array_values( array_filter( $hosts, function( $host ) {
+			return is_string( $host ) && 1 === preg_match( '/^(\*\.)?[a-z0-9-]+(\.[a-z0-9-]+)+$/i', $host );
+		} ) );
+	}
+
 
 
 	/**
@@ -456,11 +485,14 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		$headers[ 'X-Robots-Tag' ] = 'noindex, nofollow, noarchive';
 		$headers[ 'Referrer-Policy' ] = 'same-origin';
 
-		// Get directives of an existing content security policy, except frame ancestors which preview pages set
+		// Get directives of an existing content security policy, except the frame ancestors and connect sources which preview pages set
 		$policy = array_key_exists( 'Content-Security-Policy', $headers ) ? $headers[ 'Content-Security-Policy' ] : '';
 		$policy_directives = array_filter( array_map( 'trim', explode( ';', $policy ) ), function( $directive ) {
-			return '' !== $directive && 0 !== stripos( $directive, 'frame-ancestors' );
+			return '' !== $directive && 0 !== stripos( $directive, 'frame-ancestors' ) && 0 !== stripos( $directive, 'connect-src' );
 		} );
+
+		// Only allow scripts to send requests to this site and allowed hosts, so tracking scripts send nothing from preview pages
+		$policy_directives[] = trim( "connect-src 'self' " . implode( ' ', $this->get_allowed_hosts() ) );
 
 		// Only allow the frontend and the admin to load preview pages in a frame, replacing frame options set by other plugins
 		$policy_directives[] = "frame-ancestors 'self' " . $this->get_admin_origin();
@@ -523,10 +555,10 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	public function register_assets() {
 		// Scripts, initialized right away instead of on `load`, so the frame guards apply before other scripts handle clicks or send requests
 		// Settings are passed directly, as the plugin settings object is not output on every page the preview shows
-		wp_register_script( 'fc-admin-preview-frame', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin-preview-frame' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-preview-frame', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin-preview-frame' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-preview-frame', 'FCAdminPreviewFrame.init(' . wp_json_encode( $this->get_frame_script_settings() ) . ');' );
 
-		// Add the preview token and mode to REST requests sent through `wp.apiFetch`, such as Store API requests from blocks
+		// Add the preview token and mode to REST requests sent through `wp.apiFetch`, also before the deferred frame script runs, such as Store API requests from blocks
 		// Uses a middleware, as filtering the REST URL would break how `wp.apiFetch` appends request paths to it
 		wp_add_inline_script( 'wp-api-fetch', 'wp.apiFetch.use(function(options,next){return next(options.path?Object.assign({},options,{path:wp.url.addQueryArgs(options.path,' . wp_json_encode( $this->get_preview_args() ) . ')}):options);});' );
 
@@ -678,6 +710,45 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		$referer = wp_get_referer();
 
 		return false !== $referer ? $referer : wc_get_cart_url();
+	}
+
+	/**
+	 * Skip queries that write to the database, so plugins save nothing from preview requests.
+	 *
+	 * @param   string  $query  Database query.
+	 */
+	public function maybe_skip_database_write( $query ) {
+		// Bail if the query does not write to the database
+		if ( 1 !== preg_match( '/^\s*(INSERT|UPDATE|DELETE|REPLACE|ALTER|DROP|TRUNCATE|RENAME|CREATE(?!\s+TEMPORARY))\s/i', $query ) ) { return $query; }
+
+		// Return an empty query, which WordPress skips
+		return '';
+	}
+
+	/**
+	 * Block server requests to other sites, so plugins send nothing from preview requests.
+	 *
+	 * @param   false|array|WP_Error  $preempt  Response to return instead of sending the request, or `false` to send it.
+	 * @param   array                 $args     Request arguments.
+	 * @param   string                $url      Request URL.
+	 */
+	public function maybe_block_request_to_other_site( $preempt, $args, $url ) {
+		// Bail if another filter already answers the request
+		if ( false !== $preempt ) { return $preempt; }
+
+		// Get request host
+		$host = strtolower( (string) wp_parse_url( $url, PHP_URL_HOST ) );
+
+		// Bail if the request is sent to this site, such as background task requests
+		if ( in_array( $host, array( wp_parse_url( home_url(), PHP_URL_HOST ), wp_parse_url( site_url(), PHP_URL_HOST ) ), true ) ) { return $preempt; }
+
+		// Iterate hosts the preview may contact
+		foreach ( $this->get_allowed_hosts() as $allowed_host ) {
+			// Bail if the request is sent to an allowed host, where `*.` matches any subdomain
+			if ( 1 === preg_match( '/^' . str_replace( '\*', '.+', preg_quote( $allowed_host, '/' ) ) . '$/i', $host ) ) { return $preempt; }
+		}
+
+		return new WP_Error( 'fc_admin_preview_request_blocked', __( 'Requests to other sites are blocked in the preview.', 'fluid-checkout' ) );
 	}
 
 
