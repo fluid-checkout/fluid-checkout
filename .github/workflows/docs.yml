@@ -1,10 +1,11 @@
 # Publish Fluid Checkout Lite hook JSON to fluid-checkout/fluid-checkout-docs.
 #
 # Contract (fluid-checkout-docs CONTRIBUTING.md):
-# - data/lite/actions.json and data/lite/filters.json only
+# - data/lite/actions.json and data/lite/filters.json
+# - data/lite/readme.txt and data/lite/changelog.md, copied as they are
 # - branch docs/lite/hooks-<short>
 # - title docs(lite): update hook data
-# - body names the source repository, commit, and tag
+# - body names the source repository, commit, and tag, and the changelog files
 # - versioned_docs/ is not written here; a plain semver tag is recorded so a
 #   later docs-repo step can snapshot it
 #
@@ -219,7 +220,7 @@ jobs:
 
           body_file="${RUNNER_TEMP}/docs-pr-body.md"
           {
-            echo "Updates \`data/lite/actions.json\` and \`data/lite/filters.json\` from wp-hooks/generator."
+            echo "Updates \`data/lite/actions.json\` and \`data/lite/filters.json\` from wp-hooks/generator, and copies \`data/lite/readme.txt\` and \`data/lite/changelog.md\`."
             echo
             echo "- Source repository: \`${GITHUB_REPOSITORY}\`"
             echo "- Source commit: \`${GITHUB_SHA}\`"
@@ -239,7 +240,7 @@ jobs:
               echo "Latest hook data only. This run does not request a version snapshot."
             fi
             echo
-            echo "Only the generated JSON is included. PHP source is not part of this pull request. File paths inside the JSON are paths in the plugin source."
+            echo "The pull request includes the generated JSON and the changelog files \`readme.txt\` and \`changelog.md\`. PHP source is not part of this pull request. File paths inside the JSON are paths in the plugin source."
           } > "${body_file}"
 
       - name: Create docs repository token
@@ -260,13 +261,15 @@ jobs:
           token: ${{ steps.docs-token.outputs.token }}
           persist-credentials: false
 
-      - name: Copy hook JSON
+      - name: Copy hook JSON and changelog
         run: |
           set -euo pipefail
           docs_data="${GITHUB_WORKSPACE}/fluid-checkout-docs/data/lite"
           mkdir -p "${docs_data}"
           cp "${RUNNER_TEMP}/hooks/actions.json" "${docs_data}/actions.json"
           cp "${RUNNER_TEMP}/hooks/filters.json" "${docs_data}/filters.json"
+          cp "${GITHUB_WORKSPACE}/readme.txt" "${docs_data}/readme.txt"
+          cp "${GITHUB_WORKSPACE}/changelog.md" "${docs_data}/changelog.md"
           if find "${docs_data}" -name '*.php' -print -quit | grep -q .; then
             echo "::error::Refusing to publish PHP source to the docs repository."
             exit 1
@@ -283,6 +286,8 @@ jobs:
           add-paths: |
             data/lite/actions.json
             data/lite/filters.json
+            data/lite/readme.txt
+            data/lite/changelog.md
           commit-message: "docs(lite): update hook data from ${{ github.repository }}@${{ github.sha }}"
           title: ${{ steps.meta.outputs.title }}
           body-path: ${{ runner.temp }}/docs-pr-body.md
