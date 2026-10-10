@@ -51,14 +51,7 @@ if ( $available_gateways ) : ?>
 				?>
 			</ul>
 
-			<?php
-				/**
-				 * Fires at the bottom of the add-payment-method form.
-				 *
-				 * @since 2.0.0
-				 */
-				do_action( 'woocommerce_add_payment_method_form_bottom' );
-			?>
+			<?php do_action( 'woocommerce_add_payment_method_form_bottom' ); ?>
 
 			<div class="form-row">
 				<?php wp_nonce_field( 'woocommerce-add-payment-method', 'woocommerce-add-payment-method-nonce' ); ?>

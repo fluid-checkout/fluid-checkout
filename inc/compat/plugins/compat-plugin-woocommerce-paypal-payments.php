@@ -60,13 +60,6 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 		if ( ! $class_object || ! method_exists( $class_object, 'dcc_renderer' ) ) { return; }
 
 		// Use plugin's hook since the getter method is private
-		/**
-		 * Filters the paypal payments checkout dcc renderer hook.
-		 *
-		 * @since 2.0.8
-		 *
-		 * @param string $value Value to filter. Default `woocommerce_review_order_after_submit`.
-		 */
 		$hook = apply_filters( 'woocommerce_paypal_payments_checkout_dcc_renderer_hook', 'woocommerce_review_order_after_submit' );
 
 		// Replace button rendering method

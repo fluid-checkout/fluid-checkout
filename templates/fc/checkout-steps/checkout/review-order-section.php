@@ -46,14 +46,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 			do_action( 'fc_checkout_before_order_review_inside' );
 		?>
 
-		<?php
-			/**
-			 * Fires before the order review heading.
-			 *
-			 * @since 1.2.0
-			 */
-			do_action( 'woocommerce_checkout_before_order_review_heading' );
-		?>
+		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
 		<div class="fc-checkout-order-review__head">
 
@@ -79,14 +72,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 
 		</div>
 
-		<?php
-			/**
-			 * Fires before the order review section.
-			 *
-			 * @since 1.2.0
-			 */
-			do_action( 'woocommerce_checkout_before_order_review' );
-		?>
+		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
 		<?php
 			/**
@@ -97,14 +83,7 @@ $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(
 			do_action( 'fc_checkout_order_review_content' );
 		?>
 
-		<?php
-			/**
-			 * Fires after the order review section.
-			 *
-			 * @since 1.2.0
-			 */
-			do_action( 'woocommerce_checkout_after_order_review' );
-		?>
+		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
 		<?php
 			/**

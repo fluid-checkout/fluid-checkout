@@ -188,7 +188,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20, 2 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		add_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
-		add_filter( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
+		add_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
 		add_action( 'fc_checkout_end_step', array( $this, 'maybe_output_checkout_place_order_placeholder_for_substep' ), 100, 4 );
@@ -438,13 +438,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
-		/**
-		 * Filters the wc order attribution stamp checkout HTML actions.
-		 *
-		 * @since 3.2.0
-		 *
-		 * @param array $html HTML markup.
-		 */
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
 			array(
@@ -602,7 +595,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_action( 'fc_place_order', array( $this, 'output_checkout_place_order_custom_buttons' ), 20 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_place_order_fragment' ), 10 );
 		remove_action( 'fc_checkout_place_order_terms', array( $this, 'output_checkout_place_order_terms' ), 10 );
-		remove_filter( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
+		remove_action( 'woocommerce_order_button_html', array( $this, 'add_place_order_button_wrapper_and_attributes' ), 10 );
 
 		// Place order placeholder
 		remove_action( 'fc_checkout_end_step', array( $this, 'maybe_output_checkout_place_order_placeholder_for_substep' ), 100 );
@@ -721,13 +714,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		else { return; }
 
 		// Get list of hooks to which the order attribution stamp should be added
-		/**
-		 * Filters the wc order attribution stamp checkout HTML actions.
-		 *
-		 * @since 3.2.0
-		 *
-		 * @param array $html HTML markup.
-		 */
 		$stamp_checkout_html_actions = apply_filters(
 			'wc_order_attribution_stamp_checkout_html_actions',
 			array(
@@ -1440,13 +1426,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Maybe get default checked state
 		if ( null === $create_account_field_value ) {
-			/**
-			 * Filters the create account default checked.
-			 *
-			 * @since 1.2.0
-			 *
-			 * @param bool $value Value to filter. Default false.
-			 */
 			$create_account_field_value = apply_filters( 'woocommerce_create_account_default_checked', false ) ? '1' : '';
 		}
 
@@ -3366,13 +3345,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_remove_progress_bar_if_cart_expired ( $fragments ) {
 		// Add empty progress bar fragment if cart expired
-		/**
-		 * Filters the update order review expired on checkout.
-		 *
-		 * @since 2.0.0
-		 *
-		 * @param bool $value Value to filter. Default true.
-		 */
 		if ( WC()->cart->is_empty() && ! is_customize_preview() && apply_filters( 'woocommerce_checkout_update_order_review_expired', true ) ) {
 			$fragments['.fc-progress-bar'] = '';
 		}
@@ -4200,11 +4172,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $substep_id  Id of the substep.
 	 */
 	public function output_substep_contact_fields( $step_id, $substep_id ) {
-		/**
-		 * Fires before the customer details on checkout.
-		 *
-		 * @since 1.2.0
-		 */
 		do_action( 'woocommerce_checkout_before_customer_details' );
 
 		wc_get_template(
@@ -4494,21 +4461,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Run additional order notes hooks, for when the order notes fields are disabled.
 	 */
 	public function do_order_notes_hooks() {
-		/**
-		 * Fires before the order notes field.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @param WC_Checkout $checkout Checkout object.
-		 */
 		do_action( 'woocommerce_before_order_notes', WC()->checkout() );
-		/**
-		 * Fires after the order notes field.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @param WC_Checkout $checkout Checkout object.
-		 */
 		do_action( 'woocommerce_after_order_notes', WC()->checkout() );
 	}
 
@@ -5432,15 +5385,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 			// Handle package name
 			if ( $has_multiple_packages && $this->is_shipping_package_name_display_enabled() ) {
-				/**
-				 * Filters the name of a shipping package.
-				 *
-				 * @since 1.2.0
-				 *
-				 * @param string $package_name  Package name.
-				 * @param int    $package_index Zero-based package index.
-				 * @param array  $package       Shipping package data.
-				 */
 				$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 				$package_name = '<strong>' . $package_name . '</strong>';
 				$package_review_text_lines[] = wp_kses( $package_name, $allowed_kses_attributes );
@@ -5590,13 +5534,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$additional_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
 
 		// Bail if no additional order fields are present
-		/**
-		 * Filters whether the order notes field is enabled.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @param string $value Value to filter.
-		 */
 		if ( ! is_array( $additional_order_fields ) || 0 == count( $additional_order_fields ) || ! apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_order_comments' ) ) ) { return false; }
 
 		// Otherwise, should render the substep
@@ -6088,14 +6025,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 				}
 
 				// Apply filters to product names
-				/**
-				 * Filters the product names shown for a shipping package.
-				 *
-				 * @since 1.2.0
-				 *
-				 * @param mixed $product_names Product names.
-				 * @param array $package       Shipping package data.
-				 */
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
@@ -6105,18 +6034,8 @@ class FluidCheckout_Steps extends FluidCheckout {
 				'available_methods'         => $package['rates'],
 				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
-				/**
-				 * Filters the name of a shipping package.
-				 *
-				 * @since 1.2.0
-				 *
-				 * @param string $package_name Package name.
-				 * @param int    $i            Zero-based index.
-				 * @param array  $package      Shipping package data.
-				 */
-				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( 
-					/* translators: %d: shipping package number */
-					_x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $i, $package ),
+				/* translators: %d: shipping package number */
+				'package_name'              => apply_filters( 'woocommerce_shipping_package_name', ( ( $i + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $i + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $i, $package ),
 				'package_index'             => $i,
 				'chosen_method'             => $chosen_method,
 				'formatted_destination'     => WC()->countries->get_formatted_address( $package['destination'], ', ' ),
@@ -8207,11 +8126,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Run the action hook `woocommerce_checkout_after_customer_details`.
 	 */
 	public function run_action_woocommerce_checkout_after_customer_details() {
-		/**
-		 * Fires after the customer details on checkout.
-		 *
-		 * @since 1.5.0
-		 */
 		do_action( 'woocommerce_checkout_after_customer_details' );
 	}
 
@@ -8381,14 +8295,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	public function output_order_review_content() {
 		?>
 		<div id="order_review" class="woocommerce-checkout-review-order">
-			<?php
-				/**
-				 * Fires where the checkout order review is rendered.
-				 *
-				 * @since 1.2.0
-				 */
-				do_action( 'woocommerce_checkout_order_review' );
-			?>
+			<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 		</div>
 		<?php
 	}
@@ -8434,13 +8341,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			'checkout/place-order.php',
 			array(
 				'checkout'           => WC()->checkout(),
-				/**
-				 * Filters the place order button text.
-				 *
-				 * @since 1.2.0
-				 *
-				 * @param string $text Text to display.
-				 */
 				'order_button_text'  => apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ),
 			)
 		);
@@ -8653,32 +8553,14 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$available_methods = $package[ 'rates' ];
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
-			/**
-			 * Filters the name of a shipping package.
-			 *
-			 * @since 1.2.0
-			 *
-			 * @param string $package_name  Package name.
-			 * @param int    $package_index Zero-based package index.
-			 * @param array  $package       Shipping package data.
-			 */
-			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( 
-				/** translators: %d: Package number */
-				_x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
+			/** translators: %d: Package number */
+			$package_name = apply_filters( 'woocommerce_shipping_package_name', ( ( $package_index + 1 ) > 1 ) ? sprintf( _x( 'Shipping %d', 'shipping packages', 'fluid-checkout' ), ( $package_index + 1 ) ) : _x( 'Shipping', 'shipping packages', 'fluid-checkout' ), $package_index, $package );
 			$product_names = array();
 
 			if ( count( $packages ) > 1 ) {
 				foreach ( $package['contents'] as $item_id => $values ) {
 					$product_names[ $item_id ] = $values['data']->get_name() . ' &times;' . $values['quantity'];
 				}
-				/**
-				 * Filters the product names shown for a shipping package.
-				 *
-				 * @since 1.2.0
-				 *
-				 * @param mixed $product_names Product names.
-				 * @param array $package       Shipping package data.
-				 */
 				$product_names = apply_filters( 'woocommerce_shipping_package_details_array', $product_names, $package );
 			}
 
@@ -8688,15 +8570,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 					'package'                  => $package,
 					'available_methods'        => $available_methods,
 					'show_package_details'     => count( $packages ) > 1,
-					/**
-					 * Filters the shipping show shipping calculator.
-					 *
-					 * @since 1.2.0
-					 *
-					 * @param mixed $first         First.
-					 * @param int   $package_index Zero-based package index.
-					 * @param array $package       Shipping package data.
-					 */
 					'show_shipping_calculator' => is_cart() && apply_filters( 'woocommerce_shipping_show_shipping_calculator', $first, $package_index, $package ),
 					'package_details'          => implode( ', ', $product_names ),
 					/**
@@ -8827,15 +8700,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
 		// CHANGE: Remove no-break-space from the end of the product name, add wrapper for the product name
-		/**
-		 * Filters the product name HTML for a cart item.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @param mixed  $get_name      Get name.
-		 * @param array  $cart_item     Cart item data.
-		 * @param string $cart_item_key Cart item key.
-		 */
 		echo '<div class="cart-item__element cart-item__name">' . apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
@@ -8858,15 +8722,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 		if ( true !== apply_filters( 'fc_enable_order_summary_cart_item_unit_price', true ) ) { return; }
 
 		// Item unit price
-		/**
-		 * Filters the price HTML for a cart item.
-		 *
-		 * @since 2.1.0
-		 *
-		 * @param string $value         Value to filter.
-		 * @param array  $cart_item     Cart item data.
-		 * @param string $cart_item_key Cart item key.
-		 */
 		echo '<div class="cart-item__element cart-item__price">' . apply_filters( 'woocommerce_cart_item_price', '<span class="screen-reader-text">' . esc_html( __( 'Price', 'woocommerce' ) ) . ': </span>' . WC()->cart->get_product_price( $product ), $cart_item, $cart_item_key ) . '</div>'; // PHPCS: XSS ok.
 	}
 
@@ -8896,15 +8751,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Product  $product        The product object.
 	 */
 	public function output_order_summary_cart_item_quantity( $cart_item, $cart_item_key, $product ) {
-		/**
-		 * Filters the cart item quantity on checkout.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @param string $value         Value to filter.
-		 * @param array  $cart_item     Cart item data.
-		 * @param string $cart_item_key Cart item key.
-		 */
 		echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
@@ -9683,17 +9529,6 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 
 			// Hook to allow modification of value.
-			/**
-			 * Filters an account address field value before it is saved from checkout.
-			 *
-			 * The dynamic portion of the hook name, `$key`, refers to the checkout field key. This is
-			 * the WooCommerce account-field hook, called while copying the checkout address onto the
-			 * customer.
-			 *
-			 * @since 3.1.6
-			 *
-			 * @param mixed $value Value to filter.
-			 */
 			$value = apply_filters( 'woocommerce_process_myaccount_field_' . $key, $value );
 
 			// Update checkout field value on session

@@ -181,13 +181,6 @@ class FluidCheckout_Cartflows extends FluidCheckout {
 		if ( ! $checkout_id ) { return; }
 
 		// Run the third party hooks that expect this CartFlows action
-		/**
-		 * Fires before the CartFlows checkout shortcode contents.
-		 *
-		 * @since 4.2.7
-		 *
-		 * @param int $checkout_id CartFlows checkout ID.
-		 */
 		do_action( 'cartflows_checkout_before_shortcode', $checkout_id );
 	}
 

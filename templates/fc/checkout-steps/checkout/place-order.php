@@ -41,35 +41,13 @@ defined( 'ABSPATH' ) || exit;
         do_action( 'fc_checkout_place_order_terms' );
     ?>
 
-    <?php
-        /**
-         * Fires before the place order button.
-         *
-         * @since 1.2.0
-         */
-        do_action( 'woocommerce_review_order_before_submit' );
-    ?>
+    <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 
     <?php // CHANGE: Check if function introduced in WooCommerce 7.1 is available before trying to use it ?>
-    <?php
-        /**
-         * Filters the place order button HTML.
-         *
-         * @since 1.2.0
-         *
-         * @param string $html HTML markup.
-         */
-        echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt' . esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine
+    <?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt' . esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
     ?>
 
-    <?php
-        /**
-         * Fires after the place order button.
-         *
-         * @since 1.2.0
-         */
-        do_action( 'woocommerce_review_order_after_submit' );
-    ?>
+    <?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
     <?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>
 </div>

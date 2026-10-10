@@ -330,14 +330,6 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		// Iterate through recurring carts
 		foreach ( WC()->cart->recurring_carts as $recurring_cart_key => $recurring_cart ) {
 			// Allow third parties to filter whether the recurring cart has a shipment.
-			/**
-			 * Filters the subscriptions cart has next shipment.
-			 *
-			 * @since 3.2.5
-			 *
-			 * @param bool  $value          Value to filter.
-			 * @param array $recurring_cart Recurring cart data for the subscription.
-			 */
 			$cart_has_next_shipment = apply_filters( 'woocommerce_subscriptions_cart_has_next_shipment', 0 !== $recurring_cart->next_payment_date, $recurring_cart );
 
 			// Increment packages count if the recurring cart contains subscriptions needing shipping.
@@ -394,14 +386,6 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			WC_Subscriptions_Cart::set_cached_recurring_cart( $recurring_cart );
 
 			// Allow third parties to filter whether the recurring cart has a shipment.
-			/**
-			 * Filters the subscriptions cart has next shipment.
-			 *
-			 * @since 3.2.5
-			 *
-			 * @param bool  $value          Value to filter.
-			 * @param array $recurring_cart Recurring cart data for the subscription.
-			 */
 			$cart_has_next_shipment = apply_filters( 'woocommerce_subscriptions_cart_has_next_shipment', 0 !== $recurring_cart->next_payment_date, $recurring_cart );
 
 			// Create shipping packages for each subscription item
@@ -428,18 +412,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 					// CHANGE: Remove code related to package details and product names
 
 					// CHANGE: Always show the package name
-					/**
-					 * Filters the name of a shipping package.
-					 *
-					 * @since 1.2.0
-					 *
-					 * @param string $package_name  Package name.
-					 * @param int    $package_index Zero-based package index.
-					 * @param array  $package       Shipping package data.
-					 */
-					$package_name = apply_filters( 'woocommerce_shipping_package_name', sprintf( 
-						// translators: %d: package number.
-						_n( 'Shipping', 'Shipping %d', ( $package_index + 1 ), 'woocommerce-subscriptions' ), ( $package_index + 1 ) ), $package_index, $package ); // phpcs:ignore WordPress.WP.I18n.MissingSingularPlaceholder,WordPress.WP.I18n.MismatchedPlaceholders
+					// translators: %d: package number.
+					$package_name = apply_filters( 'woocommerce_shipping_package_name', sprintf( _n( 'Shipping', 'Shipping %d', ( $package_index + 1 ), 'woocommerce-subscriptions' ), ( $package_index + 1 ) ), $package_index, $package ); // phpcs:ignore WordPress.WP.I18n.MissingSingularPlaceholder,WordPress.WP.I18n.MismatchedPlaceholders
 
 					wc_get_template(
 						'cart/cart-recurring-shipping.php',
@@ -461,17 +435,6 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 					);
 					$show_package_name = false;
 
-					/**
-					 * Fires after the recurring shipping rates for a subscription.
-					 *
-					 * @since 3.2.5
-					 *
-					 * @param mixed $recurring_cart_package_key   Recurring cart package key.
-					 * @param mixed $recurring_cart_package       Recurring cart package.
-					 * @param array $recurring_cart               Recurring cart data for the subscription.
-					 * @param mixed $chosen_recurring_method      Chosen recurring method.
-					 * @param mixed $shipping_selection_displayed Shipping selection displayed.
-					 */
 					do_action( 'woocommerce_subscriptions_after_recurring_shipping_rates', $recurring_cart_package_key, $recurring_cart_package, $recurring_cart, $chosen_recurring_method, $shipping_selection_displayed );
 
 					// CHANGE: Increase the value for the package index

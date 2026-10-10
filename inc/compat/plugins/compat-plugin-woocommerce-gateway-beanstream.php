@@ -67,17 +67,14 @@ class FluidCheckout_WooCommerceGatewayBeanstream extends FluidCheckout {
 			$js_url = $class_object->get_plugin()->get_plugin_url() . '/assets/js/frontend/' . $handle . '.min.js';
 
 			/**
-			 * Concrete Payment Gateway JS URL.
+			 * Concrete Payment Gateway JS URL
 			 *
-			 * Allow actors to modify the URL used when loading a concrete payment gateway's
-			 * javascript.
-			 * The dynamic portion of the hook name is the payment gateway plugin ID returned by
-			 * `$class_object->get_plugin()->get_id()`. This hook is defined by the SkyVerge
-			 * WooCommerce payment gateway framework.
+			 * Allow actors to modify the URL used when loading a concrete
+			 * payment gateway's javascript.
 			 *
 			 * @since 2.0.0
-			 *
-			 * @param string $js_url JavaScript asset URL.
+			 * @param string $js_url JS asset URL
+			 * @return string
 			 */
 			$js_url = apply_filters( 'wc_payment_gateway_' . $class_object->get_plugin()->get_id() . '_javascript_url', $js_url );
 
@@ -89,16 +86,14 @@ class FluidCheckout_WooCommerceGatewayBeanstream extends FluidCheckout {
 			$css_url = $class_object->get_plugin()->get_plugin_url() . '/assets/css/frontend/' . $handle . '.min.css';
 
 			/**
-			 * Concrete Payment Gateway CSS URL.
+			 * Concrete Payment Gateway CSS URL
 			 *
-			 * Allow actors to modify the URL used when loading a concrete payment gateway's CSS.
-			 * The dynamic portion of the hook name is the payment gateway plugin ID returned by
-			 * `$class_object->get_plugin()->get_id()`. This hook is defined by the SkyVerge
-			 * WooCommerce payment gateway framework.
+			 * Allow actors to modify the URL used when loading a concrete payment
+			 * gateway's CSS.
 			 *
 			 * @since 4.3.0
-			 *
-			 * @param string $css_url CSS asset URL.
+			 * @param string $css_url CSS asset URL
+			 * @return string
 			 */
 			$css_url = apply_filters( 'wc_payment_gateway_' . $class_object->get_plugin()->get_id() . '_css_url', $css_url );
 

@@ -70,13 +70,6 @@ class FluidCheckout_WooCommerceCheckoutFieldEditorPRO extends FluidCheckout {
 		if ( null === $this->thwcfe ) { return; }
 
 		// Get hook priority
-		/**
-		 * Filters the priority of the thwcfd woocommerce checkout fields hook.
-		 *
-		 * @since 2.0.7
-		 *
-		 * @param mixed $change_hook_priority Change hook priority.
-		 */
 		$hp_cf = apply_filters( 'thwcfd_woocommerce_checkout_fields_hook_priority', $this->change_hook_priority() );
 
 		// Output hidden fields

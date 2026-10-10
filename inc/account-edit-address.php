@@ -168,14 +168,6 @@ class FluidCheckout_AccountEditAddress extends FluidCheckout {
 		$fields = WC()->countries->get_address_fields( $country, $load_address . '_' );
 
 		// Apply same filters as the native WooCommerce edit address form
-		/**
-		 * Filters the address to edit.
-		 *
-		 * @since 4.2.5
-		 *
-		 * @param array $fields       Fields.
-		 * @param mixed $load_address Load address.
-		 */
 		$fields = apply_filters( 'woocommerce_address_to_edit', $fields, $load_address );
 
 		// Remove field values, only field arguments are needed for JS

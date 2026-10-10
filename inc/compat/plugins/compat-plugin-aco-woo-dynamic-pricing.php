@@ -39,13 +39,6 @@ class FluidCheckout_AcoWooDynamicPricing extends FluidCheckout {
 
 		// Get discount rules coupon information
 		$coupon             = get_option( 'awdp_fee_label' ) ? get_option( 'awdp_fee_label' ) : 'Discount';
-		/**
-		 * Filters the coupon code.
-		 *
-		 * @since 3.1.7
-		 *
-		 * @param mixed $coupon Coupon.
-		 */
 		$coupon_code        = apply_filters( 'woocommerce_coupon_code', $coupon );
 		$coupon_code        = wc_format_coupon_code( $coupon_code );
 

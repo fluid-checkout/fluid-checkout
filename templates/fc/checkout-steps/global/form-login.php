@@ -38,14 +38,7 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 ?>
 <form class="woocommerce-form woocommerce-form-login login" method="post" <?php echo ( $hidden ) ? 'style="display:none;"' : ''; ?>>
 
-	<?php
-		/**
-		 * Fires at the start of the login form.
-		 *
-		 * @since 1.2.0
-		 */
-		do_action( 'woocommerce_login_form_start' );
-	?>
+	<?php do_action( 'woocommerce_login_form_start' ); ?>
 
 	<?php echo ( $message ) ? wpautop( wptexturize( $message ) ) : ''; // @codingStandardsIgnoreLine ?>
 
@@ -81,14 +74,7 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 	</p>
 	<div class="clear"></div>
 
-	<?php
-		/**
-		 * Fires inside the login form, before the submit button.
-		 *
-		 * @since 1.2.0
-		 */
-		do_action( 'woocommerce_login_form' );
-	?>
+	<?php do_action( 'woocommerce_login_form' ); ?>
 
 	<p class="form-row">
 		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
@@ -133,13 +119,6 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 
 	<div class="clear"></div>
 
-	<?php
-		/**
-		 * Fires at the end of the login form.
-		 *
-		 * @since 1.2.0
-		 */
-		do_action( 'woocommerce_login_form_end' );
-	?>
+	<?php do_action( 'woocommerce_login_form_end' ); ?>
 
 </form>

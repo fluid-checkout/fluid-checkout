@@ -20,26 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Fires before the checkout form.
- *
- * @since 1.2.0
- *
- * @param WC_Checkout $checkout Checkout object.
- */
 do_action( 'woocommerce_before_checkout_form', $checkout );
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
 	// CHANGE: Add element wrapping "must login" message
 	echo '<div class="fc-must-login-notice">';
-	/**
-	 * Filters the message for the must be logged in.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @param string $text Text to display.
-	 */
 	echo esc_html( apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) ) );
 	echo '</div>';
 	// CHANGE: END - Add element wrapping "must login" message
@@ -152,13 +138,4 @@ if ( ! empty( $custom_attributes ) && is_array( $custom_attributes ) ) {
 
 </form>
 
-<?php
-	/**
-	 * Fires after the checkout form.
-	 *
-	 * @since 1.2.0
-	 *
-	 * @param WC_Checkout $checkout Checkout object.
-	 */
-	do_action( 'woocommerce_after_checkout_form', $checkout );
-?>
+<?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>

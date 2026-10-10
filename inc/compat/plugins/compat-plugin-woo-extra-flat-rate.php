@@ -64,7 +64,7 @@ class FluidCheckout_WooExtraFlatRate extends FluidCheckout {
 		if ( ! is_object( $this->public_class_object ) || ! method_exists( $this->public_class_object, 'afrsm_add_tooltip_and_subtitle_callback' ) ) { return; }
 
 		// Change tooltip position
-		remove_action( 'woocommerce_after_shipping_rate', array( $this->public_class_object, 'afrsm_add_tooltip_and_subtitle_callback' ), 10 );
+		remove_filter( 'woocommerce_after_shipping_rate', array( $this->public_class_object, 'afrsm_add_tooltip_and_subtitle_callback' ), 10 );
 		add_filter( 'fc_shipping_method_option_label_markup', array( $this, 'maybe_add_tooltip_icon_to_shipping_method_label' ), 10, 2 );
 	}
 

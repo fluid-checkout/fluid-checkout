@@ -48,14 +48,6 @@ class FluidCheckout_GiftCardsCouponInput extends FluidCheckout {
 		if ( empty( $_REQUEST['coupon_code'] ) ) { return; }
 
 		$coupon_code = wp_unslash( $_REQUEST['coupon_code'] );
-		/**
-		 * Filters the gc coupon input pattern.
-		 *
-		 * @since 4.1.5
-		 *
-		 * @param string $value       Value to filter.
-		 * @param string $coupon_code Coupon code.
-		 */
 		$pattern     = apply_filters( 'woocommerce_gc_coupon_input_pattern', '/(?>[a-zA-Z0-9]{4}\-){3}[a-zA-Z0-9]{4}/', $coupon_code );
 		
 		// Check if code matches gift card pattern
@@ -73,13 +65,6 @@ class FluidCheckout_GiftCardsCouponInput extends FluidCheckout {
 		} else {
 			$giftcard = new WC_GC_Gift_Card( $giftcard_data );
 			try {
-				/**
-				 * Filters the gc auto redeem.
-				 *
-				 * @since 4.1.5
-				 *
-				 * @param bool $value Value to filter. Default false.
-				 */
 				if ( get_current_user_id() && apply_filters( 'woocommerce_gc_auto_redeem', false ) ) {
 					$giftcard->redeem( get_current_user_id() );
 				} else {

@@ -38,35 +38,12 @@ defined( 'ABSPATH' ) || exit;
 	</thead>
 	<tbody>
 		<?php
-		/**
-		 * Fires before the cart items in the order review.
-		 *
-		 * @since 1.2.0
-		 */
 		do_action( 'woocommerce_review_order_before_cart_contents' );
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-			/**
-			 * Filters the product object for a cart item.
-			 *
-			 * @since 1.2.0
-			 *
-			 * @param array  $value         Value to filter.
-			 * @param array  $cart_item     Cart item data.
-			 * @param string $cart_item_key Cart item key.
-			 */
 			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
 			// Change: Get product ID from the cart item
-			/**
-			 * Filters the product ID for a cart item.
-			 *
-			 * @since 2.1.0
-			 *
-			 * @param int    $value         Value to filter.
-			 * @param array  $cart_item     Cart item data.
-			 * @param string $cart_item_key Cart item key.
-			 */
 			$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
 			/**
@@ -82,34 +59,13 @@ defined( 'ABSPATH' ) || exit;
 			if ( $_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible ) {
 				?>
 				<?php // CHANGE: Add alternative class `cart-item` to allow for better compatibility with styles between different pages, and add product ID to the data attributes ?>
-				<tr class="<?php
-					/**
-					 * Filters the CSS class for a cart item row.
-					 *
-					 * @since 1.2.0
-					 *
-					 * @param string $classes       CSS classes. Default `cart_item cart-item`.
-					 * @param array  $cart_item     Cart item data.
-					 * @param string $cart_item_key Cart item key.
-					 */
-					echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item cart-item', $cart_item, $cart_item_key ) );
-				?>" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>">
+				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item cart-item', $cart_item, $cart_item_key ) ); ?>" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>">
 					<?php // CHANGE: Use `div` as columns to allow better control over the columns sizing ?>
 					<td colspan="2" role="none">
 						<div class="product-name" role="cell">
 
 							<?php // CHANGE: Add product images ?>
-							<?php
-								/**
-								 * Filters the thumbnail HTML for a cart item.
-								 *
-								 * @since 1.2.0
-								 *
-								 * @param mixed  $get_image     Get image.
-								 * @param array  $cart_item     Cart item data.
-								 * @param string $cart_item_key Cart item key.
-								 */
-								echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							<?php echo apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							?>
 
 							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
@@ -144,17 +100,7 @@ defined( 'ABSPATH' ) || exit;
 								do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product );
 							?>
 
-							<?php
-								/**
-								 * Filters the line subtotal HTML for a cart item.
-								 *
-								 * @since 1.2.0
-								 *
-								 * @param mixed  $value         Value to filter.
-								 * @param array  $cart_item     Cart item data.
-								 * @param string $cart_item_key Cart item key.
-								 */
-								echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							?>
 
 							<?php // CHANGE: Add hook for after the cart item product totals ?>
@@ -178,11 +124,6 @@ defined( 'ABSPATH' ) || exit;
 			}
 		}
 
-		/**
-		 * Fires after the cart items in the order review.
-		 *
-		 * @since 1.2.0
-		 */
 		do_action( 'woocommerce_review_order_after_cart_contents' );
 		?>
 	</tbody>
@@ -212,14 +153,7 @@ defined( 'ABSPATH' ) || exit;
 
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
-			<?php
-				/**
-				 * Fires before the shipping rows in the order review.
-				 *
-				 * @since 1.2.0
-				 */
-				do_action( 'woocommerce_review_order_before_shipping' );
-			?>
+			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
 			<?php // CHANGE: Replaced cart totals shipping markup with an action hook to allow for customizations ?>
 			<?php
@@ -231,14 +165,7 @@ defined( 'ABSPATH' ) || exit;
 				do_action( 'fc_review_order_shipping' );
 			?>
 
-			<?php
-				/**
-				 * Fires after the shipping rows in the order review.
-				 *
-				 * @since 1.2.0
-				 */
-				do_action( 'woocommerce_review_order_after_shipping' );
-			?>
+			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 
 		<?php endif; ?>
 
@@ -265,28 +192,14 @@ defined( 'ABSPATH' ) || exit;
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<?php
-			/**
-			 * Fires before the order total row.
-			 *
-			 * @since 1.2.0
-			 */
-			do_action( 'woocommerce_review_order_before_order_total' );
-		?>
+		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 		<tr class="order-total">
 			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
 			<td><?php wc_cart_totals_order_total_html(); ?></td>
 		</tr>
 
-		<?php
-			/**
-			 * Fires after the order total row.
-			 *
-			 * @since 1.2.0
-			 */
-			do_action( 'woocommerce_review_order_after_order_total' );
-		?>
+		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
 	</tfoot>
 </table>

@@ -85,13 +85,6 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		);
 
 		// Maybe return custom colors from theme options
-		/**
-		 * Filters whether the Electro theme uses its predefined color schemes.
-		 *
-		 * @since 2.5.0
-		 *
-		 * @param bool $value Value to filter. Default true.
-		 */
 		if ( ! apply_filters( 'electro_use_predefined_colors', true ) ) {
 			// Return custom colors
 			return array_merge(
@@ -107,13 +100,6 @@ class FluidCheckout_ThemeCompat_Electro extends FluidCheckout {
 		// Otherwise, continue to use predefined colors
 
 		// Get color scheme from theme options
-		/**
-		 * Filters the Electro theme primary color scheme slug.
-		 *
-		 * @since 2.5.0
-		 *
-		 * @param string $value Value to filter. Default `yellow`.
-		 */
 		$color_scheme = apply_filters( 'electro_primary_color', 'yellow' );
 
 		// Define color schemes

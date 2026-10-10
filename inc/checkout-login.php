@@ -156,15 +156,6 @@ class FluidCheckout_Login extends FluidCheckout {
 			);
 
 			$validation_error = new WP_Error();
-			/**
-			 * Filters the process login errors.
-			 *
-			 * @since 4.0.4
-			 *
-			 * @param WP_Error $validation_error Login validation error. Add an error to block the login.
-			 * @param string   $user_login       Submitted username or email address.
-			 * @param string   $user_password    Submitted password.
-			 */
 			$validation_error = apply_filters( 'woocommerce_process_login_errors', $validation_error, $creds['user_login'], $creds['user_password'] );
 
 			if ( $validation_error->get_error_code() ) {
@@ -185,13 +176,6 @@ class FluidCheckout_Login extends FluidCheckout {
 			}
 
 			// Perform the login.
-			/**
-			 * Filters the login credentials.
-			 *
-			 * @since 4.0.4
-			 *
-			 * @param mixed $creds Creds.
-			 */
 			$user = wp_signon( apply_filters( 'woocommerce_login_credentials', $creds ), is_ssl() );
 
 			if ( is_wp_error( $user ) ) {
@@ -219,22 +203,10 @@ class FluidCheckout_Login extends FluidCheckout {
 		}
 		catch ( Exception $e ) {
 			// CHANGE: Replace `wc_add_notice` with JSON response.
-			/**
-			 * Fires when a checkout login attempt fails.
-			 *
-			 * @since 4.0.4
-			 */
 			do_action( 'woocommerce_login_failed' );
 			wp_send_json(
 				array(
 					'result'   => 'error',
-					/**
-					 * Filters the login errors.
-					 *
-					 * @since 4.0.4
-					 *
-					 * @param mixed $getMessage GetMessage.
-					 */
 					'message'  => apply_filters( 'login_errors', $e->getMessage() ),
 				)
 			);

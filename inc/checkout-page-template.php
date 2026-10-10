@@ -117,13 +117,6 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if ( $this->is_feature_enabled() ) { return; }
 
 		// Define shortcode tag
-		/**
-		 * Filters the shortcode tag on checkout.
-		 *
-		 * @since 3.1.0
-		 *
-		 * @param string $value Value to filter. Default `woocommerce_checkout`.
-		 */
 		$checkout_shortcode_tag = apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' );
 
 		// Replace checkout shortcode

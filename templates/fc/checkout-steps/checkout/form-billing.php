@@ -34,16 +34,7 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_ini
 <div class="woocommerce-billing-fields">
 	<?php // CHANGE: Remove billing section title ?>
 
-	<?php
-		/**
-		 * Fires before the billing form fields.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @param WC_Checkout $checkout Checkout object.
-		 */
-		do_action( 'woocommerce_before_checkout_billing_form', $checkout );
-	?>
+	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
 	<?php // CHANGE: Add markup for collapsible-block component ?>
 	<div id="woocommerce-billing-fields__field-wrapper" class="woocommerce-billing-fields__field-wrapper <?php echo 'collapsed' === $collapsible_initial_state ? 'is-collapsed' : ''; ?>" data-collapsible data-collapsible-content data-collapsible-initial-state="<?php echo esc_attr( $collapsible_initial_state ); ?>">
@@ -95,24 +86,8 @@ $collapsible_initial_state = apply_filters( 'fc_checkout_billing_collapsible_ini
 
 	<?php
 	// CHANGE: Added for compatibility with plugins that use this action hook
-	/**
-	 * Fires inside the billing checkout form.
-	 *
-	 * @since 1.2.3
-	 *
-	 * @param WC_Checkout $checkout Checkout object.
-	 */
 	do_action( 'woocommerce_checkout_billing', $checkout );
 	?>
 
-	<?php
-		/**
-		 * Fires after the billing form fields.
-		 *
-		 * @since 1.2.0
-		 *
-		 * @param WC_Checkout $checkout Checkout object.
-		 */
-		do_action( 'woocommerce_after_checkout_billing_form', $checkout );
-	?>
+	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
 </div>

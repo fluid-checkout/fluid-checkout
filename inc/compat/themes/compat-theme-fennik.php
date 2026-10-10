@@ -251,21 +251,7 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		if ( ! function_exists( 'fennik_get_post_meta' ) || ! function_exists( 'fennik_get_option' ) || ! function_exists( 'fennik_get_option' ) || ! function_exists( 'fennik_title' ) || ! function_exists( 'fennik_get_schema_markup' ) || ! function_exists( 'fennik_breadcrumb_trail' ) ) { return; }
 
 		// Global theme settings for page title and breadcrumbs
-		/**
-		 * Filters whether the Fennik theme shows the page title.
-		 *
-		 * @since 3.1.10
-		 *
-		 * @param bool $title Title text. Default true.
-		 */
 		$show_page_title = apply_filters( 'fennik/filter/show_page_title', true );
-		/**
-		 * Filters whether the Fennik theme shows breadcrumbs.
-		 *
-		 * @since 3.1.10
-		 *
-		 * @param bool $value Value to filter. Default true.
-		 */
 		$show_breadcrumbs = apply_filters( 'fennik/filter/show_breadcrumbs', true );
 
 		// Current page settings for page title and breadcrumbs

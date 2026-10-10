@@ -58,20 +58,9 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 		if ( ! self::$thwcfd_public ) { return; }
 
 		/**
-		 * Filters the billing field priority used by Checkout Field Editor for WooCommerce.
-		 *
-		 * @since 1.5.0
-		 *
-		 * @param int $priority Hook or step priority. Default 1000.
+		 * @see THWCFD_Public_Checkout::define_public_hooks()
 		 */
 		$hp_billing_fields  = apply_filters( 'thwcfd_billing_fields_priority', 1000 );
-		/**
-		 * Filters the shipping field priority used by Checkout Field Editor for WooCommerce.
-		 *
-		 * @since 1.5.0
-		 *
-		 * @param int $priority Hook or step priority. Default 1000.
-		 */
 		$hp_shipping_fields = apply_filters( 'thwcfd_shipping_fields_priority', 1000 );
 
 		// Add filters to apply changes to the billing and shipping fields on the edit address screen

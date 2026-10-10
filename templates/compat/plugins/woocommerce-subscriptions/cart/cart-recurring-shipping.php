@@ -67,14 +67,6 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 
 				// Get contents after the shipping rate
 				ob_start();
-				/**
-				 * Fires after the shipping rate.
-				 *
-				 * @since 1.2.0
-				 *
-				 * @param WC_Shipping_Rate $method        Method.
-				 * @param int              $package_index Zero-based package index.
-				 */
 				do_action( 'woocommerce_after_shipping_rate', $method, $package_index );
 				$after_shipping_rate = ob_get_clean();
 				if ( ! empty( $after_shipping_rate ) ) {
@@ -142,31 +134,13 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php if ( $has_calculated_shipping && $formatted_destination ) : ?>
 			<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 				<div class="shipping-method__options">
-					<?php
-						/**
-						 * Filters the message shown when no shipping methods are available.
-						 *
-						 * @since 1.4.1
-						 *
-						 * @param string $html HTML markup.
-						 */
-						echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) );
-					?>
+					<?php echo wp_kses_post( apply_filters( 'woocommerce_no_shipping_available_html', __( 'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.', 'woocommerce' ) ) ); ?>
 				</div>
 			</div>
 		<?php else: ?>
 			<div class="fc-shipping-method__incomplete-address shipping-method__package">
 				<div class="shipping-method__options">
-					<?php
-						/**
-						 * Filters the message shown when shipping methods may become available after an address is entered.
-						 *
-						 * @since 2.3.1
-						 *
-						 * @param string $html HTML markup.
-						 */
-						echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) );
-					?>
+					<?php echo wp_kses_post( apply_filters( 'woocommerce_shipping_may_be_available_html', __( 'Enter your address to view shipping options.', 'woocommerce' ) ) ); ?>
 				</div>
 			</div>
 		<?php endif; ?>

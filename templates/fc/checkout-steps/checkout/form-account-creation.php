@@ -50,16 +50,7 @@ $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_la
 
 		<?php endif; ?>
 
-		<?php
-			/**
-			 * Fires before the checkout registration form.
-			 *
-			 * @since 1.2.0
-			 *
-			 * @param WC_Checkout $checkout Checkout object.
-			 */
-			do_action( 'woocommerce_before_checkout_registration_form', $checkout );
-		?>
+		<?php do_action( 'woocommerce_before_checkout_registration_form', $checkout ); ?>
 
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 
@@ -119,15 +110,6 @@ $optional_label = apply_filters( 'fc_checkout_display_create_account_optional_la
 		<?php endif; ?>
 
 
-		<?php
-			/**
-			 * Fires after the checkout registration form.
-			 *
-			 * @since 1.2.0
-			 *
-			 * @param WC_Checkout $checkout Checkout object.
-			 */
-			do_action( 'woocommerce_after_checkout_registration_form', $checkout );
-		?>
+		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 	</div>
 <?php endif; ?>
