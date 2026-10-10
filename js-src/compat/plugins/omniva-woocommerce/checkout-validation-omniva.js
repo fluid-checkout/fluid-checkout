@@ -55,7 +55,11 @@
 		for ( var i = 0; i < cookies.length; i++ ) {
 			var cookie = cookies[ i ].trim();
 			if ( 0 === cookie.indexOf( cookiePrefix ) ) {
-				return decodeURIComponent( cookie.substring( cookiePrefix.length ) );
+				try {
+					return decodeURIComponent( cookie.substring( cookiePrefix.length ) );
+				} catch ( e ) {
+					return '';
+				}
 			}
 		}
 
