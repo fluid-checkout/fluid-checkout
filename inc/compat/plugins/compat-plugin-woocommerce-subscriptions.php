@@ -29,8 +29,8 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 		// Shipping methods
 		add_filter( 'fc_cart_has_multiple_packages', array( $this, 'maybe_set_cart_with_multiple_packages' ), 10 );
-		add_action( 'fc_shipping_method_display_package_destination_substep_text_lines', array( $this, 'maybe_enable_show_shipping_method_package_destination' ), 10 );
-		add_action( 'fc_shipping_method_display_package_name', array( $this, 'maybe_enable_show_shipping_method_package_name' ), 10 );
+		add_filter( 'fc_shipping_method_display_package_destination_substep_text_lines', array( $this, 'maybe_enable_show_shipping_method_package_destination' ), 10 );
+		add_filter( 'fc_shipping_method_display_package_name', array( $this, 'maybe_enable_show_shipping_method_package_name' ), 10 );
 		add_filter( 'fc_subscription_shipping_package_name', array( $this, 'maybe_change_subscription_shipping_package_name' ), 10, 4 );
 
 		// Add substep review text lines
@@ -159,7 +159,34 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			$_template = $plugin_path . $template_name;
 
 			// Look for template file in the theme
-			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) || apply_filters( 'fc_pro_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
+			/**
+			 * Filters whether a theme template file may replace a plugin template.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
+			$override_with_theme_file = apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path );
+
+			/**
+			 * Filters whether a theme template file may replace a Fluid Checkout PRO template.
+			 *
+			 * Kept so callbacks on the old hook still run. Prefer `fc_override_template_with_theme_file`.
+			 *
+			 * @since 3.2.5
+			 * @deprecated 4.2.8 Use `fc_override_template_with_theme_file` instead.
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
+			$override_with_pro_hook = apply_filters_deprecated( 'fc_pro_override_template_with_theme_file', array( false, $template, $template_name, $template_path ), '4.2.8', 'fc_override_template_with_theme_file' );
+
+			if ( $override_with_theme_file || $override_with_pro_hook ) {
 				$_template_override = locate_template( array(
 					trailingslashit( $template_path ) . $template_name,
 					$template_name,
@@ -197,15 +224,48 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		$label = '';
 
 		// Get method label
+		/**
+		 * Filters the label markup of a shipping method option.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string           $label  Label text.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$label .= sprintf( apply_filters( 'fc_shipping_method_option_label_markup', '<span class="shipping-method__option-text">%s</span>', $method ), $method->get_label() );
 
 		// Maybe add shipping method logo image to label
+		/**
+		 * Filters the HTML for the shipping method option image.
+		 *
+		 * @since 3.1.9
+		 *
+		 * @param string           $html   HTML markup. Default empty string.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$method_image_html = apply_filters( 'fc_shipping_method_option_image_html', '', $method );
 		if ( ! empty( $method_image_html ) ) {
+			/**
+			 * Filters the HTML for the shipping method option image.
+			 *
+			 * @since 3.1.9
+			 *
+			 * @param string           $html              HTML markup.
+			 * @param WC_Shipping_Rate $method            Method.
+			 * @param string           $method_image_html Method image html.
+			 */
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_image_markup', '<span class="shipping-method__option-image">%s</span>', $method, $method_image_html ), $method_image_html );
 		}
 
 		// Get shipping method costs settings
+		/**
+		 * Filters the shipping method has cost.
+		 *
+		 * @since 3.0.2
+		 *
+		 * @param mixed            $value  Value to filter.
+		 * @param WC_Shipping_Rate $method Method.
+		 */
 		$has_cost  = apply_filters( 'fc_shipping_method_has_cost', 0 < $method->cost, $method );
 		$hide_cost = ! $has_cost && in_array( $method->get_method_id(), array( 'free_shipping', 'local_pickup' ), true );
 
@@ -229,9 +289,26 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			}
 
 			// Allow developers to change the shipping method costs
+			/**
+			 * Filters the shipping method option price.
+			 *
+			 * @since 3.0.2
+			 *
+			 * @param mixed            $method_costs Method costs.
+			 * @param WC_Shipping_Rate $method       Method.
+			 */
 			$method_costs = apply_filters( 'fc_shipping_method_option_price', $method_costs, $method );
 
 			// Add shipping method costs to label
+			/**
+			 * Filters the HTML for the shipping method option price.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string           $html         HTML markup.
+			 * @param WC_Shipping_Rate $method       Method.
+			 * @param mixed            $method_costs Method costs.
+			 */
 			$label .= sprintf( apply_filters( 'fc_shipping_method_option_price_markup', ' <span class="shipping-method__option-price">%s</span>', $method, $method_costs ), $method_costs );
 		}
 
@@ -615,6 +692,14 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			// Get label for the chosen shipping method
 			$method = $available_methods && array_key_exists( $chosen_recurring_method, $available_methods ) ? $available_methods[ $chosen_recurring_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
+			/**
+			 * Filters the label for the shipping method substep text chosen method.
+			 *
+			 * @since 3.0.2
+			 *
+			 * @param string           $chosen_method_label Chosen method label.
+			 * @param WC_Shipping_Rate $method              Method.
+			 */
 			$chosen_method_label = apply_filters( 'fc_shipping_method_substep_text_chosen_method_label', $chosen_method_label, $method );
 
 			$has_multiple_packages = $this->get_all_packages_count() > 1;
@@ -632,10 +717,32 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			if ( $has_multiple_packages && FluidCheckout_Steps::instance()->is_shipping_package_contents_destination_text_lines_enabled() ) {
 				// Get package destination
 				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
+				/**
+				 * Filters the shipping method substep text package destination data.
+				 *
+				 * @since 3.0.3
+				 *
+				 * @param mixed            $destination                Destination.
+				 * @param mixed            $recurring_cart_package_key Recurring cart package key.
+				 * @param array            $package                    Shipping package data.
+				 * @param mixed            $chosen_recurring_method    Chosen recurring method.
+				 * @param WC_Shipping_Rate $method                     Method.
+				 */
 				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 
 				// Get formatted destination text
 				$destination_text = WC()->countries->get_formatted_address( $destination, ', ' );
+				/**
+				 * Filters the shipping method substep text package destination text.
+				 *
+				 * @since 3.0.3
+				 *
+				 * @param string           $destination_text           Destination text.
+				 * @param mixed            $recurring_cart_package_key Recurring cart package key.
+				 * @param array            $package                    Shipping package data.
+				 * @param mixed            $chosen_recurring_method    Chosen recurring method.
+				 * @param WC_Shipping_Rate $method                     Method.
+				 */
 				$destination_text = apply_filters( 'fc_shipping_method_substep_text_package_destination_text', $destination_text, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 
 				// Add package destination line
@@ -645,6 +752,17 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			}
 
 			// Filter review text lines for the shipping package before adding the package contents
+			/**
+			 * Filters the shipping method substep text package review text lines before contents.
+			 *
+			 * @since 3.0.3
+			 *
+			 * @param string           $package_review_text_lines  Package review text lines.
+			 * @param mixed            $recurring_cart_package_key Recurring cart package key.
+			 * @param array            $package                    Shipping package data.
+			 * @param mixed            $chosen_recurring_method    Chosen recurring method.
+			 * @param WC_Shipping_Rate $method                     Method.
+			 */
 			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines_before_contents', $package_review_text_lines, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 	
 			// Handle package contents
@@ -665,6 +783,17 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			}
 
 			// Filter review text lines for the shipping package
+			/**
+			 * Filters the shipping method substep text package review text lines.
+			 *
+			 * @since 3.0.3
+			 *
+			 * @param string           $package_review_text_lines  Package review text lines.
+			 * @param mixed            $recurring_cart_package_key Recurring cart package key.
+			 * @param array            $package                    Shipping package data.
+			 * @param mixed            $chosen_recurring_method    Chosen recurring method.
+			 * @param WC_Shipping_Rate $method                     Method.
+			 */
 			$package_review_text_lines = apply_filters( 'fc_shipping_method_substep_text_package_review_text_lines', $package_review_text_lines, $recurring_cart_package_key, $package, $chosen_recurring_method, $method );
 		}
 

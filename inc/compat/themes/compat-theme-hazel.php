@@ -37,7 +37,7 @@ class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -104,7 +104,16 @@ class FluidCheckout_ThemeCompat_Hazel extends FluidCheckout {
 		if ( isset( $qode_options_hazel['logo_image'] ) && $qode_options_hazel['logo_image'] != '' ) { $logo_image = $qode_options_hazel['logo_image']; } else { $logo_image =  get_template_directory_uri().'/img/logo.png'; };
 		if ( isset( $qode_options_hazel['logo_image_dark'] ) && $qode_options_hazel['logo_image_dark'] != '' ) { $logo_image_dark = $qode_options_hazel['logo_image_dark']; } else { $logo_image_dark =  get_template_directory_uri().'/img/logo_black.png'; };
 		?>
-		<a href="<?php echo esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) ); ?>">
+		<a href="<?php
+			/**
+			 * Filters the URL used by the checkout header logo.
+			 *
+			 * @since 1.5.4
+			 *
+			 * @param mixed $url URL.
+			 */
+			echo esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) );
+		?>">
 			<?php if ( ! empty( $logo_image_dark ) ) : ?>
 				<img src="<?php echo esc_url($logo_image_dark); ?>" alt="<?php esc_attr_e( 'Logo', 'hazel' ); ?>"/>
 			<?php else: ?>

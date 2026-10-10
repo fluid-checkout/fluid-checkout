@@ -241,7 +241,14 @@ $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
 <!-- CHANGE: Added opening div tag for #wrap_all -->
 <div id='wrap_all'>
 
-<?php do_action( 'fc_checkout_header' ); ?>
+<?php
+	/**
+	 * Fires inside the distraction-free checkout header.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_header' );
+?>
 
 <?php // CHANGE: Added class and attributes from theme ?>
 <main id="main" class="content-area fc-main all_colors" data-scroll-offset="<?php echo avia_header_setting( 'header_scroll_offset' ); ?>">

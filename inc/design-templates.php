@@ -122,6 +122,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Check whether dark mode color scheme is enabled for the page.
 	 */
 	public function is_dark_mode_enabled() {
+		/**
+		 * Filters whether dark mode styles are applied.
+		 *
+		 * @since 3.0.3
+		 *
+		 * @param string $enabled Whether the feature is enabled.
+		 */
 		return true === apply_filters( 'fc_enable_dark_mode_styles', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) );
 	}
 
@@ -131,6 +138,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Check whether custom button color styles are enabled for the page.
 	 */
 	public function is_button_color_styles_enabled() {
+		/**
+		 * Filters whether Fluid Checkout button color styles are applied.
+		 *
+		 * @since 2.5.1
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		return true === apply_filters( 'fc_apply_button_colors_styles', false );
 	}
 
@@ -138,6 +152,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Check whether custom button design styles are enabled for the page.
 	 */
 	public function is_button_design_styles_enabled() {
+		/**
+		 * Filters whether Fluid Checkout button design styles are applied.
+		 *
+		 * @since 3.0.1
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		return true === apply_filters( 'fc_apply_button_design_styles', false );
 	}
 
@@ -150,6 +171,14 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function get_css_variables_styles( $context = 'frontend' ) {
 		// Get CSS variables
+		/**
+		 * Filters the CSS variables output for Fluid Checkout design templates.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array  $value   Value to filter.
+		 * @param string $context Context in which the hook runs. Default `checkout`.
+		 */
 		$css_variables = apply_filters( 'fc_css_variables', array( ':root' => array() ), $context );
 
 		// Bail if no scope for CSS variables
@@ -209,6 +238,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function output_custom_styles() {
 		// Get styles
+		/**
+		 * Filters the custom CSS output for the checkout design.
+		 *
+		 * @since 1.4.2
+		 *
+		 * @param string $value Value to filter. Default empty string.
+		 */
 		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
 
 		// Prepend CSS variables

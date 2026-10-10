@@ -77,6 +77,15 @@ class FluidCheckout_Admin_SettingType_TemplateSelector extends FluidCheckout {
 				<style>
 					<?php
 					foreach ( $value['options'] as $key => $val ) {
+						/**
+						 * Filters the preview image URL of a design template option in settings.
+						 *
+						 * @since 3.0.0
+						 *
+						 * @param mixed  $url URL.
+						 * @param string $key Field key.
+						 * @param mixed  $val Val.
+						 */
 						$option_image_url = apply_filters( 'fc_design_template_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-template-'. esc_attr( $key ) .'.png', $key, $val );
 						?>
 						.forminp-fc_template_selector .fc-design-template__option[value="<?php echo esc_attr( $key ); ?>"]:after {

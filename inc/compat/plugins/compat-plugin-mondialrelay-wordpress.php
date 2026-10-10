@@ -64,7 +64,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Restore parcel shop ID before Mondial Relay validates checkout
 		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_restore_parcel_shop_id_from_session' ), 5 );

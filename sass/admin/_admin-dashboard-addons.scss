@@ -136,14 +136,35 @@
 	width: 100%;
 }
 
-.fc-addons__item-actions .button {
+.fc-addons__item-actions .button,
+.fc-addons__item-actions .fc-addons__item-license-select {
+	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
+}
+
+.fc-addons__item-actions .button {
 	padding-top: 8px;
 	padding-bottom: 8px;
 	text-align: center;
 	line-height: 1.4;
 }
-.fc-addons__item-actions .button + .button {
+
+.fc-addons__item-actions .fc-addons__item-license-select {
+	display: block;
+	margin: 0;
+	text-align: center;
+	text-align-last: center;
+	// Override WP admin `select { max-width: 25rem; }` and related width limits
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+// Match stacked button spacing on the PRO / Bundle cards
+.fc-addons__item-actions .button + .fc-addons__item-action-notice,
+.fc-addons__item-actions .button + .button,
+.fc-addons__item-actions .fc-addons__item-license-select + .button,
+.fc-addons__item-actions .fc-addons__item-action-notice {
 	margin-top: 10px;
 }
 
@@ -154,4 +175,40 @@
 
 .fc-addons__item-actions .button.button--activated {
 	color: #007a3d !important;
+}
+
+.fc-addons__item-actions .button.button-primary.button--install {
+	background: #007a3d;
+	border-color: #007a3d;
+	color: #fff;
+}
+
+.fc-addons__item-actions .button.button-primary.button--install:hover,
+.fc-addons__item-actions .button.button-primary.button--install:focus {
+	background: #006432;
+	border-color: #006432;
+	color: #fff;
+}
+
+.fc-addons__item-action-notice {
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 8px 10px;
+	width: 100%;
+}
+
+.fc-addons__item-action-notice[hidden] {
+	display: none;
+}
+
+.fc-addons__item-action-notice--success {
+	background: #edfaef;
+	border: 1px solid #68de7c;
+	color: #007a3d;
+}
+
+.fc-addons__item-action-notice--error {
+	background: #fcf0f1;
+	border: 1px solid #d63638;
+	color: #b32d2e;
 }

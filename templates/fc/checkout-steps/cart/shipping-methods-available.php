@@ -30,7 +30,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 		<?php if ( count( $available_methods ) > 0 ) : ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
-			<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
+			<?php
+				/**
+				 * Filters the opening markup of the shipping method options list.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $html HTML markup.
+				 */
+				echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' );
+			?>
 
 			<?php // CHANGE: Add shipping methods elements markup ?>
 			<?php
@@ -55,6 +64,17 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 					$label_extra_classes = 'has-tax-notes';
 				}
 
+				/**
+				 * Filters the HTML for the shipping method option.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string           $html          HTML markup.
+				 * @param WC_Shipping_Rate $method        Method.
+				 * @param int              $package_index Zero-based package index.
+				 * @param string           $chosen_method Chosen method.
+				 * @param mixed            $first         First.
+				 */
 				echo apply_filters( 'fc_shipping_method_option_markup',
 					sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$d]" data-index="%1$d" id="shipping_method_%1$d_%2$s" value="%3$s" class="shipping_method" %4$s />
 						<label for="shipping_method_%1$d_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
@@ -74,7 +94,16 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 			endforeach; ?>
 
 			<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element closing tag ?>
-			<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
+			<?php
+				/**
+				 * Filters the closing markup of the shipping method options list.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $html HTML markup. Default `</ul>`.
+				 */
+				echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' );
+			?>
 
 			<?php // CHANGE: Remove shipping calculator and related messages, moved to template file `fc-pro/cart/cart/shipping-methods-calculate-shipping.php` ?>
 

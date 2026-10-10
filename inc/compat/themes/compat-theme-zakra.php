@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_Zakra extends FluidCheckout {
 	 */
 	public function hooks() {
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Remove theme's spin buttons
 		$this->remove_action_for_class( 'woocommerce_before_quantity_input_field', array( 'Zakra_WooCommerce', 'product_quantity_minus_button' ), 10 );

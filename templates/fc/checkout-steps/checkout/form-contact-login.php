@@ -22,7 +22,16 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php if ( is_user_logged_in() ) : ?>
 		
-		<?php if ( 'yes' === apply_filters( 'fc_output_checkout_contact_logout_cta_section', 'no' ) ) : ?>
+		<?php
+			/**
+			 * Filters whether the contact step shows the logout call to action for logged-in customers.
+			 *
+			 * @since 2.0.0
+			 *
+			 * @param string $value Value to filter. Default `no`.
+			 */
+			if ( 'yes' === apply_filters( 'fc_output_checkout_contact_logout_cta_section', 'no' ) ) :
+		?>
 			<div class="fc-contact-login__content">
 				<div class="fc-contact-login__cta-text">
 					<?php
@@ -38,13 +47,65 @@ defined( 'ABSPATH' ) || exit;
 	<?php else : ?>
 
 		<div class="fc-contact-login__content">
-			<?php if ( 'yes' === apply_filters( 'fc_output_checkout_contact_login_cta_section', 'yes' ) ) : ?>
-			<div class="fc-contact-login__cta-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_cta_text', __( 'Already have an account?', 'fluid-checkout' ) ) ); ?> <a class="fc-contact-login__action <?php echo esc_html( apply_filters( 'fc_checkout_login_button_class', 'fc-contact-login__action--underline' ) ); ?>" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]"><?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></a></div>
+			<?php
+				/**
+				 * Filters whether the contact step shows the login call to action.
+				 *
+				 * @since 1.4.2
+				 *
+				 * @param string $value Value to filter. Default `yes`.
+				 */
+				if ( 'yes' === apply_filters( 'fc_output_checkout_contact_login_cta_section', 'yes' ) ) :
+			?>
+			<div class="fc-contact-login__cta-text"><?php
+				/**
+				 * Filters the call-to-action text prompting customers to log in.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $text Text to display.
+				 */
+				echo esc_html( apply_filters( 'fc_checkout_login_cta_text', __( 'Already have an account?', 'fluid-checkout' ) ) );
+			?> <a class="fc-contact-login__action <?php
+				/**
+				 * Filters the CSS classes of the checkout contact-step login link.
+				 *
+				 * @since 1.5.3
+				 * @deprecated 4.2.8 Use `fc_checkout_contact_login_link_classes` instead.
+				 *
+				 * @param string $classes CSS classes. Default `fc-contact-login__action--underline`.
+				 */
+				$login_link_classes = apply_filters_deprecated( 'fc_checkout_login_button_class', array( 'fc-contact-login__action--underline' ), '4.2.8', 'fc_checkout_contact_login_link_classes' );
+
+				/**
+				 * Filters the CSS classes of the checkout contact-step login link.
+				 *
+				 * @since 4.2.8
+				 *
+				 * @param string $classes CSS classes. Default `fc-contact-login__action--underline`.
+				 */
+				echo esc_attr( apply_filters( 'fc_checkout_contact_login_link_classes', $login_link_classes ) );
+			?>" data-flyout-toggle data-flyout-target="[data-flyout-checkout-login]"><?php echo esc_html( 
+				/**
+				 * Filters the login button label at checkout.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $label Label text.
+				 */
+				apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></a></div>
 			<?php endif; ?>
 
 			<?php if ( has_action( 'fc_checkout_below_contact_login_cta' ) ) : ?>
 			<div class="fc-contact-login__extra-content">
-				<?php do_action( 'fc_checkout_below_contact_login_cta' ); ?>
+				<?php
+					/**
+					 * Fires below the contact step login call to action.
+					 *
+					 * @since 1.4.2
+					 */
+					do_action( 'fc_checkout_below_contact_login_cta' );
+				?>
 			</div>
 			<?php endif; ?>
 		</div>
@@ -52,17 +113,51 @@ defined( 'ABSPATH' ) || exit;
 		<?php if ( has_action( 'fc_checkout_social_login' ) ) : ?>
 			<div class="fc-contact-login__separator fc-contact-login__separator--social-login">
 				<span class="fc-contact-login__separator-text">
-					<?php echo esc_html( apply_filters( 'fc_checkout_social_login_separator_text', __( 'Or', 'fluid-checkout' ) ) ); ?>
+					<?php
+						/**
+						 * Filters the separator text above the social login buttons.
+						 *
+						 * @since 4.1.6
+						 *
+						 * @param string $text Text to display.
+						 */
+						echo esc_html( apply_filters( 'fc_checkout_social_login_separator_text', __( 'Or', 'fluid-checkout' ) ) );
+					?>
 				</span>
 			</div>
-			<?php do_action( 'fc_checkout_social_login' ); ?>
+			<?php
+				/**
+				 * Fires where social login buttons are rendered on the contact step.
+				 *
+				 * @since 4.1.6
+				 */
+				do_action( 'fc_checkout_social_login' );
+			?>
 		<?php endif; ?>
 
 		<div class="fc-contact-login__separator fc-contact-login__separator--guest">
 			<?php if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_enable_guest_checkout' ) ) : ?>
-				<span class="fc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue as a guest', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) ); ?></span>
+				<span class="fc-contact-login__separator-text"><?php
+					/**
+					 * Filters the separator text in the checkout login prompt.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param string $text Text to display.
+					 */
+					echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue as a guest', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) );
+				?></span>
 			<?php else: ?>
-				<span class="fc-contact-login__separator-text"><?php echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue below', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) ); ?></span>
+				<span class="fc-contact-login__separator-text"><?php
+					/**
+					 * Filters the separator text in the checkout login prompt.
+					 *
+					 * @since 1.2.0
+					 *
+					 * @param string $text Text to display.
+					 */
+					echo esc_html( apply_filters( 'fc_checkout_login_separator_text', _x( 'Or continue below', 'Log in separator label at for when guest checkout is disabled', 'fluid-checkout' ) ) );
+				?></span>
 			<?php endif; ?>
 		</div>
 
