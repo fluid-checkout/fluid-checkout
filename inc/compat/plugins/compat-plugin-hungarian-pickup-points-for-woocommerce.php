@@ -46,6 +46,8 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
+		// Deprecated 4.2.8. PRO may still register a `pickup_point` substep.
+		add_filter( 'fc_is_substep_complete_pickup_point', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Shipping address
 		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
