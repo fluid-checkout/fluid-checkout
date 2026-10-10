@@ -1,7 +1,7 @@
 # Publish Fluid Checkout Lite hook JSON to fluid-checkout/fluid-checkout-docs.
 #
 # Contract (fluid-checkout-docs CONTRIBUTING.md):
-# - data/lite/actions.json and data/lite/filters.json, each with a top-level commit SHA
+# - data/lite/actions.json and data/lite/filters.json
 # - data/lite/readme.txt and data/lite/changelog.md, copied as they are
 # - branch docs/lite/hooks-<short>
 # - title docs(lite): update hook data
@@ -189,23 +189,10 @@ jobs:
             echo "::error::${own_failures} Fluid Checkout hook call(s) need a docblock before publishing."
             exit 1
           fi
-          if [[ -z "${GITHUB_SHA}" ]]; then
-            echo "::error::GITHUB_SHA is empty."
-            exit 1
-          fi
           for name in actions.json filters.json; do
             file="${output_dir}/${name}"
             if ! jq -e '(.hooks | type) == "array"' "${file}" >/dev/null; then
               echo "::error::${name} is missing a hooks array."
-              exit 1
-            fi
-            # Top-level commit is the full source SHA. The docs site uses it
-            # for blob/<commit>/<file> links instead of a branch name.
-            tmp="${file}.tmp"
-            jq --arg sha "${GITHUB_SHA}" '. + {commit: $sha}' "${file}" > "${tmp}"
-            mv "${tmp}" "${file}"
-            if ! jq -e --arg sha "${GITHUB_SHA}" '.commit == $sha and (.hooks | type) == "array"' "${file}" >/dev/null; then
-              echo "::error::${name} is missing the source commit."
               exit 1
             fi
             echo "${name} hooks: $(jq '.hooks | length' "${file}")"
