@@ -694,6 +694,10 @@ $form-field-select2-inner-component-height:           var( --fluidcheckout--sele
 $form-field-select2-selection-height--single:         calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) !default;
 $form-field-select2-selection-height--multiple:       calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) - ( #{ $form-field-select2-inner-spacing } * 2 ) ) !default;
 
+$form-field-select2-arrow-width:                      var( --fluidcheckout--select2--arrow-width, remsize( 1.5rem ) ) !default;
+$form-field-select2-arrow-offset:                     var( --fluidcheckout--select2--arrow-offset, remsize( 1rem ) ) !default;
+$form-field-select2-clear-offset:                     var( --fluidcheckout--select2--clear-offset, remsize( 3rem ) ) !default;
+
 $show-password-button-offset:                         0.7em !default;
 $show-password-button-size:                           remsize( 2.2rem ) !default;
 
