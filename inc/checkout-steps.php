@@ -5299,6 +5299,60 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the shipping methods available for a package after delivery-type filtering.
+	 *
+	 * @param  array  $rates    Shipping rates keyed by rate id.
+	 * @param  array  $package  Shipping package data.
+	 */
+	public function get_available_shipping_methods( $rates, $package ) {
+		if ( ! is_array( $rates ) ) { $rates = array(); }
+
+		/**
+		 * Filters the shipping methods available for a package.
+		 *
+		 * @since 4.2.8
+		 *
+		 * @param array $rates   Shipping rates keyed by rate id.
+		 * @param array $package Shipping package data.
+		 */
+		$rates = apply_filters( 'fc_available_shipping_methods', $rates, $package );
+
+		if ( ! is_array( $rates ) ) { $rates = array(); }
+
+		return $rates;
+	}
+
+	/**
+	 * Whether pickup point information should be added to the shipping method review text.
+	 */
+	public function is_pickup_point_info_review_text_lines_enabled() {
+		/**
+		 * Filters whether pickup point information is added to the shipping method review text.
+		 *
+		 * @since 4.2.8
+		 *
+		 * @param bool $enabled Whether to add the pickup point information. Default true.
+		 */
+		$enabled = apply_filters( 'fc_add_pickup_point_info_as_review_text_lines', true );
+
+		/**
+		 * Filters whether to skip adding pickup point information to the shipping method review text.
+		 *
+		 * Returning true skips the pickup point lines.
+		 *
+		 * @since 4.2.8
+		 * @deprecated 4.2.8 Use `fc_add_pickup_point_info_as_review_text_lines` instead.
+		 *
+		 * @param bool $skip Whether to skip adding the pickup point information. Default false.
+		 */
+		$skip = apply_filters_deprecated( 'fc_skip_add_pickup_point_info_as_review_text_lines', array( false ), '4.2.8', 'fc_add_pickup_point_info_as_review_text_lines' );
+
+		if ( true === $skip ) { return false; }
+
+		return true === $enabled;
+	}
+
+	/**
 	 * Determine if shipping package names should be displayed.
 	 */
 	public function is_shipping_package_name_display_enabled() {
@@ -5376,7 +5430,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$package_review_text_lines = array();
 
 			// Get shipping method info
-			$available_methods = apply_filters( 'fc_available_shipping_methods', $package['rates'], $package );
+			$available_methods = $this->get_available_shipping_methods( $package['rates'], $package );
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
@@ -5783,20 +5837,43 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Check whether the option to prevent shipping method autoselect is enabled.
+	 *
+	 * @param  string  $default        Default shipping method.
+	 * @param  array   $rates          Shipping rates.
+	 * @param  string  $chosen_method  Chosen method id.
 	 */
-	public function is_prevent_shipping_method_autoselect_enabled() {
-		// Define default value
-		$should_prevent_autoselect = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
+	public function is_prevent_shipping_method_autoselect_enabled( $default = '', $rates = array(), $chosen_method = '' ) {
+		// Truthy means "do not prevent", which is the original filter polarity.
+		$do_not_prevent = 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
 
-		// Return value
 		/**
-		 * Filters the shipping methods disable auto select.
+		 * Filters whether WooCommerce should keep its automatic shipping method selection.
+		 *
+		 * A truthy value means do not prevent automatic selection.
 		 *
 		 * @since 4.0.0
+		 * @deprecated 4.2.8 Use `fc_prevent_shipping_method_autoselect` instead.
 		 *
-		 * @param string $value Value to filter.
+		 * @param bool   $do_not_prevent Whether to keep the default shipping method.
+		 * @param string $default        Default shipping method.
+		 * @param array  $rates          Shipping rates.
+		 * @param string $chosen_method  Chosen method id.
 		 */
-		return apply_filters( 'fc_shipping_methods_disable_auto_select', $should_prevent_autoselect );
+		$do_not_prevent = apply_filters_deprecated( 'fc_shipping_methods_disable_auto_select', array( $do_not_prevent, $default, $rates, $chosen_method ), '4.2.8', 'fc_prevent_shipping_method_autoselect' );
+
+		/**
+		 * Filters whether automatic selection of the first shipping method is prevented.
+		 *
+		 * A truthy value means the first available method is not selected automatically.
+		 *
+		 * @since 4.2.8
+		 *
+		 * @param bool   $should_prevent Whether to prevent automatic selection.
+		 * @param string $default        Default shipping method.
+		 * @param array  $rates          Shipping rates.
+		 * @param string $chosen_method  Chosen method id.
+		 */
+		return apply_filters( 'fc_prevent_shipping_method_autoselect', ! $do_not_prevent, $default, $rates, $chosen_method );
 	}
 
 	/**
@@ -5808,7 +5885,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_prevent_autoselect_shipping_method( $default, $rates, $chosen_method ) {
 		// Bail if option is not enabled
-		if ( ! $this->is_prevent_shipping_method_autoselect_enabled() ) { return $default; }
+		if ( ! $this->is_prevent_shipping_method_autoselect_enabled( $default, $rates, $chosen_method ) ) { return $default; }
 
 		// Maybe prevent autoselect if chosen method is not in available methods
 		if ( empty( $chosen_method ) || ! array_key_exists( $chosen_method, $rates ) ) {
@@ -6075,7 +6152,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Output shipping methods available template
 			wc_get_template( 'cart/shipping-methods-available.php', array(
 				'package'                   => $package,
-				'available_methods'         => apply_filters( 'fc_available_shipping_methods', $package['rates'], $package ),
+				'available_methods'         => $this->get_available_shipping_methods( $package['rates'], $package ),
 				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */

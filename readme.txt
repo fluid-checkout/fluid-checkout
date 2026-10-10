@@ -356,6 +356,14 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
+* Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting.
+* Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. The filter `fc_shipping_methods_disable_auto_select` is deprecated and keeps its previous arguments and meaning: a truthy value does not prevent automatic selection.
+* Added: Filter `fc_add_pickup_point_info_as_review_text_lines` to include pickup point details in the shipping method review text. The filter `fc_skip_add_pickup_point_info_as_review_text_lines` is deprecated. Returning true from that filter still skips those lines.
+* Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
+* Deprecated: Option `fc_local_pickup_display_clear_shipping_methods_button`. It is no longer shown in the settings. The default value `no` remains available.
+* Deprecated: Hungarian Pickup Points still runs on `fc_is_substep_complete_pickup_point`, and Packlink still runs on `fc_is_substep_complete_shipping`. Use `fc_is_substep_complete_shipping_method`.
+* Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).

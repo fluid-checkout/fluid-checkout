@@ -28,6 +28,11 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 	 */
 	private $terminal_cache = array();
 
+	/**
+	 * Whether the terminals template was already printed during this request.
+	 */
+	private $is_terminals_hook_executed = false;
+
 
 
 	/**
@@ -86,8 +91,6 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 	 * 
 	 */
 	public function review_order_after_shipping() {
-		global $is_hook_executed;
-
 		// Bail if class is not available
 		if ( ! class_exists( self::CLASS_NAME ) ) { return; }
 
@@ -139,7 +142,8 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 
 			$google_map_api = get_option( 'dpd_google_map_key' );
 
-			if ( ! method_exists( $dpd_object, 'checkDoesNotFitInTerminal' ) || ! $dpd_object->checkDoesNotFitInTerminal( WC()->cart->get_cart() ) && ! $is_hook_executed ) {
+			$fits_in_terminal = ! method_exists( $dpd_object, 'checkDoesNotFitInTerminal' ) || ! $dpd_object->checkDoesNotFitInTerminal( WC()->cart->get_cart() );
+			if ( $fits_in_terminal && ! $this->is_terminals_hook_executed ) {
 				if ( '' != $google_map_api ) {
 					// CHANGE: Use the already-retrieved $selected_terminal_name instead of calling get_terminal_name() again
 					$template_data[ 'selected_name' ] = $selected_terminal_name;
@@ -148,7 +152,7 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 					wc_get_template( 'checkout/form-shipping-dpd-terminals.php', $template_data );
 				}
 
-				$is_hook_executed = true;
+				$this->is_terminals_hook_executed = true;
 			}
 
 			do_action( self::SHIPPING_METHOD_ID . '_after_terminals' );
@@ -349,7 +353,7 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Maybe skip adding pickup point address as review text lines
-		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
 
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }

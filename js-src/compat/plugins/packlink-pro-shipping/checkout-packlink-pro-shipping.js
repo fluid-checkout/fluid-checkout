@@ -18,6 +18,7 @@
 	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
+	var _selectionPollIntervalId = null;
 	var _publicMethods = {};
 	var _settings = {
 		buttonSelector: '.lp-select-button',
@@ -50,30 +51,39 @@
 	/**
 	 * Wait until Packlink fills the drop-off id field, then trigger checkout update.
 	 */
+	var clearSelectionPoll = function() {
+		if ( null === _selectionPollIntervalId ) { return; }
+
+		window.clearInterval( _selectionPollIntervalId );
+		_selectionPollIntervalId = null;
+	};
+
 	var maybeTriggerUpdateCheckoutAfterSelection = function() {
 		var attempts = 0;
 
-		var intervalId = window.setInterval( function() {
+		// Replace any poll already waiting on a previous click.
+		clearSelectionPoll();
+
+		_selectionPollIntervalId = window.setInterval( function() {
 			attempts++;
 
 			var dropOffIdField = document.querySelector( _settings.dropOffIdFieldSelector );
 			if ( dropOffIdField && dropOffIdField.value ) {
-				window.clearInterval( intervalId );
+				clearSelectionPoll();
 				window.setTimeout( triggerUpdateCheckout, _settings.updateCheckoutDelay );
 				return;
 			}
 
 			// Stop polling after max attempts, still triggering the update so the checkout reflects the current state
 			if ( attempts >= _settings.selectionPollMaxAttempts ) {
-				window.clearInterval( intervalId );
+				clearSelectionPoll();
 				triggerUpdateCheckout();
 			}
 		}, _settings.selectionPollInterval );
 	};
 
 	/**
-	 * Re-run Packlink checkout config scripts after fragment updates.
-	 * WooCommerce/jQuery fragment replacement inserts script tags without executing them.
+	 * Call Packlink's checkout API after fragment updates.
 	 *
 	 * Packlink.checkout.init() is not idempotent (adds click listeners each call),
 	 * so only initialize once per drop-off button DOM node.
@@ -97,20 +107,8 @@
 			return;
 		}
 
-		// Re-execute Packlink config scripts (locations, selected id, etc.),
-		// but skip init scripts to avoid binding handlers twice.
-		var scripts = shippingSection.querySelectorAll( 'script' );
-		for ( var i = 0; i < scripts.length; i++ ) {
-			var scriptContent = scripts[ i ].textContent || '';
-			if ( -1 === scriptContent.indexOf( 'Packlink.checkout' ) ) { continue; }
-			if ( -1 !== scriptContent.indexOf( 'Packlink.checkout.init' ) ) { continue; }
-
-			var newScript = document.createElement( 'script' );
-			newScript.text = scriptContent;
-			scripts[ i ].parentNode.replaceChild( newScript, scripts[ i ] );
-		}
-
-		// Bind handlers once for this button node
+		// Bind handlers once for this button node. Do not execute scripts copied
+		// out of the shipping fragment. Fragment HTML is not a safe code channel.
 		if ( 'function' === typeof Packlink.checkout.init ) {
 			Packlink.checkout.init();
 		}

@@ -54,6 +54,8 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
+		// Deprecated 4.2.8. Kept so existing callbacks on the previous substep id still run.
+		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -269,14 +271,17 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 * Maybe get selected shipping method ID if it matches the target method.
 	 */
 	public function maybe_get_selected_shipping_method_id() {
-		// Make sure chosen shipping method is set
-		WC()->cart->calculate_shipping();
+		// Read the session and already calculated packages. Do not call
+		// calculate_shipping() here: this runs while checkout fragments are built.
+		$chosen_shipping_methods = WC()->session ? WC()->session->get( 'chosen_shipping_methods', array() ) : array();
+		if ( ! is_array( $chosen_shipping_methods ) ) { $chosen_shipping_methods = array(); }
 
-		// Check chosen shipping method
-		$packages = WC()->shipping()->get_packages();
+		$packages = WC()->shipping() ? WC()->shipping()->get_packages() : array();
+		if ( ! is_array( $packages ) ) { $packages = array(); }
+
 		foreach ( $packages as $i => $package ) {
 			// Check if a target shipping method is selected
-			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
+			$chosen_method = isset( $chosen_shipping_methods[ $i ] ) ? $chosen_shipping_methods[ $i ] : '';
 			if ( $chosen_method && $this->is_shipping_method_packlink( $chosen_method ) ) {
 				return $chosen_method;
 			}
@@ -332,14 +337,15 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 		// Bail if terminal data is invalid
 		if ( ! is_array( $terminal_data ) ) { return; }
 
-		// Assign terminal object property values to the corresponding array keys
+		// Assign terminal object property values to the corresponding array keys.
+		// Sanitize here and escape when the address is printed.
 		$selected_terminal_data = array(
-			'company' => isset( $terminal_data['name'] ) ? esc_html( $terminal_data['name'] ) : '',
-			'address_1' => isset( $terminal_data['address'] ) ? $terminal_data['address'] : '',
-			'postcode' => isset( $terminal_data['zip'] ) ? esc_html( $terminal_data['zip'] ) : '',
-			'city' => isset( $terminal_data['city'] ) ? esc_html( $terminal_data['city'] ) : '',
-			'state' => isset( $terminal_data['state'] ) ? esc_html( $terminal_data['state'] ) : '',
-			'country' => isset( $terminal_data['countryCode'] ) ? esc_html( $terminal_data['countryCode'] ) : '',
+			'company' => isset( $terminal_data['name'] ) ? sanitize_text_field( $terminal_data['name'] ) : '',
+			'address_1' => isset( $terminal_data['address'] ) ? sanitize_text_field( $terminal_data['address'] ) : '',
+			'postcode' => isset( $terminal_data['zip'] ) ? sanitize_text_field( $terminal_data['zip'] ) : '',
+			'city' => isset( $terminal_data['city'] ) ? sanitize_text_field( $terminal_data['city'] ) : '',
+			'state' => isset( $terminal_data['state'] ) ? sanitize_text_field( $terminal_data['state'] ) : '',
+			'country' => isset( $terminal_data['countryCode'] ) ? sanitize_text_field( $terminal_data['countryCode'] ) : '',
 		);
 
 		return $selected_terminal_data;
@@ -354,7 +360,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Maybe skip adding pickup point address as review text lines
-		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
 
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }

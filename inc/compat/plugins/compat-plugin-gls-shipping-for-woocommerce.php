@@ -265,8 +265,22 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Get the selected terminal data.
+	 *
+	 * @param  string|bool|null  $method_id    Shipping method id. A boolean is the deprecated `$unformatted` argument.
+	 * @param  bool              $unformatted  Whether to return the raw session value.
 	 */
-	public function get_selected_terminal_data( $method_id, $unformatted = false ) {
+	public function get_selected_terminal_data( $method_id = null, $unformatted = false ) {
+		// Deprecated call: get_selected_terminal_data( true ) meant unformatted data.
+		if ( is_bool( $method_id ) ) {
+			$unformatted = $method_id;
+			$method_id = null;
+		}
+
+		if ( empty( $method_id ) ) {
+			$method = $this->maybe_get_selected_shipping_method();
+			$method_id = is_object( $method ) ? $method->id : '';
+		}
+
 		// Get session field name
 		$session_field_name = $this->get_session_field_name( $method_id );
 
@@ -304,8 +318,17 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Get the session field name based on the selected shipping method.
+	 *
+	 * @param  string|null  $method_id  Shipping method id. Resolved from the chosen method when empty.
 	 */
-	public function get_session_field_name( $method_id ) {
+	public function get_session_field_name( $method_id = null ) {
+		if ( empty( $method_id ) || is_bool( $method_id ) ) {
+			$method = $this->maybe_get_selected_shipping_method();
+			$method_id = is_object( $method ) ? $method->id : '';
+		}
+
+		if ( empty( $method_id ) ) { return ''; }
+
 		// Get the session field name based on the selected shipping method
 		$session_field_name = self::SESSION_FIELD_NAME . '_' . $method_id;
 
@@ -351,7 +374,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Maybe skip adding pickup point address as review text lines
-		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
 
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
