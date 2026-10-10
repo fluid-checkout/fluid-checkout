@@ -167,23 +167,38 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 * @param  object  $order               The order object.
 	 */
 	public function is_shipping_method_local_pickup( $shipping_method_id, $method = null, $order = null ) {
-		// Maybe set as local pickup when the shipping method is the SEUR local pickup method
-		if ( 0 === strpos( (string) $shipping_method_id, 'seurlocal' ) ) { return true; }
+		// Maybe set as local pickup when the shipping method is the SEUR local pickup method.
+		// Match the id exactly, or with a WooCommerce instance suffix (`seurlocal:1`).
+		if ( $this->shipping_method_id_matches( $shipping_method_id, 'seurlocal' ) ) { return true; }
 
 		// Get variables
 		$custom_name_seur_2shop = get_option( 'seur_2shop_custom_name_field' );
 		$custom_name_classic_2shop = get_option( 'seur_classic_int_2shop_custom_name_field' );
 
-		// Get default values if custom names are not set
-		if ( empty( $custom_name_seur_2shop ) ) { $custom_name_seur_2shop = 'SEUR 2SHOP'; }
-		if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'CLASSIC 2SHOP'; }
+		// Get default values if custom names are not set.
+		// The official empty-option classic label could not be confirmed, so accept both labels used by this integration.
+		$seur_2shop_labels = empty( $custom_name_seur_2shop ) ? array( 'SEUR 2SHOP' ) : array( $custom_name_seur_2shop );
+		$classic_2shop_labels = empty( $custom_name_classic_2shop ) ? array( 'CLASSIC 2SHOP', 'SEUR CLASSIC 2SHOP' ) : array( $custom_name_classic_2shop );
 
 		// Maybe set as local pickup when the shipping method label matches a SEUR 2SHOP method
-		if ( is_object( $method ) && isset( $method->label ) && ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) {
+		if ( is_object( $method ) && isset( $method->label ) && ( in_array( $method->label, $seur_2shop_labels, true ) || in_array( $method->label, $classic_2shop_labels, true ) ) ) {
 			return true;
 		}
 
 		return false;
+	}
+
+	/**
+	 * Whether a shipping method id is an exact match or an instance of that method.
+	 *
+	 * @param  string  $method_id     Shipping method id, possibly with an instance suffix.
+	 * @param  string  $expected_id   Method id without an instance suffix.
+	 */
+	public function shipping_method_id_matches( $method_id, $expected_id ) {
+		$method_id = (string) $method_id;
+		$expected_id = (string) $expected_id;
+
+		return $method_id === $expected_id || 0 === strpos( $method_id, $expected_id . ':' );
 	}
 
 
