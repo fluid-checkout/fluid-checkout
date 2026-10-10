@@ -1,0 +1,19 @@
+// ------------------------------------
+// DASHBOARD TELEMETRY PROMPT
+// ------------------------------------
+
+.fc-dashboard-section--telemetry-prompt {
+	border-left: 4px solid #0047e1;
+}
+
+.fc-dashboard-telemetry-prompt__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	margin-top: 20px;
+}
+
+.fc-dashboard-telemetry-prompt__dismiss {
+	margin-left: 10px;
+}

@@ -8,7 +8,8 @@
     "postversion": "git push && git push --tags && gulp copy-plugin-files && gulp pack-plugin-zip",
     "start": "wp-scripts start --webpack-src-dir=blocks",
     "build": "wp-scripts build --webpack-src-dir=blocks",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync:shared": "node fluid-checkout-standards/scripts/sync-shared-files.js"
   },
   "repository": {},
   "author": "Fluid Checkout",

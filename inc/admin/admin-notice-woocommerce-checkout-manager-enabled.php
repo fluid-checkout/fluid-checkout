@@ -32,10 +32,10 @@ class FluidCheckout_AdminNotices_WooCommmerceCheckoutManager_Enabled extends Flu
 
 		// Get plugin file path
 		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . $plugin_path_name;
-		
+
 		// Bail if plugin file does not exist
 		if ( ! file_exists( $plugin_file ) ) { return false; }
-		
+
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( $plugin_path_name ) && class_exists( 'QuadLayers\WOOCCM\Plugin' );
 	}

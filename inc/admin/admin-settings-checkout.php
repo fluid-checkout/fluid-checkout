@@ -49,7 +49,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 		$sections = array_merge( $sections, array(
 			'checkout' => __( 'Checkout', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
 	}
 
