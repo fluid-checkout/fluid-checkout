@@ -139,7 +139,8 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 
 			$google_map_api = get_option( 'dpd_google_map_key' );
 
-			if ( ! method_exists( $dpd_object, 'checkDoesNotFitInTerminal' ) || ! $dpd_object->checkDoesNotFitInTerminal( WC()->cart->get_cart() ) && ! $is_hook_executed ) {
+			$fits_in_terminal = ! method_exists( $dpd_object, 'checkDoesNotFitInTerminal' ) || ! $dpd_object->checkDoesNotFitInTerminal( WC()->cart->get_cart() );
+			if ( $fits_in_terminal && ! $is_hook_executed ) {
 				if ( '' != $google_map_api ) {
 					// CHANGE: Use the already-retrieved $selected_terminal_name instead of calling get_terminal_name() again
 					$template_data[ 'selected_name' ] = $selected_terminal_name;
