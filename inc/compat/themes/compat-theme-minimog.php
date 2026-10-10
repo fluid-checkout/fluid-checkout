@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_Minimog extends FluidCheckout {
 	 */
 	public function hooks() {
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_deregister_woocommerce_scripts' ), 20 );

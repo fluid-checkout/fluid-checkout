@@ -24,37 +24,93 @@ $attributes_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'ma
 $attributes_inner_str = implode( ' ', array_map( array( FluidCheckout::instance(), 'map_html_attributes' ), array_keys( $attributes_inner ), $attributes_inner ) );
 ?>
 
-<?php do_action( 'fc_checkout_before_order_review' ); ?>
+<?php
+	/**
+	 * Fires before the order review section.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_before_order_review' );
+?>
 
 <div <?php echo $attributes_str; // WPCS: XSS ok. ?>>
 
 	<div <?php echo $attributes_inner_str; // WPCS: XSS ok. ?>>
 
-		<?php do_action( 'fc_checkout_before_order_review_inside' ); ?>
+		<?php
+			/**
+			 * Fires inside the order review section, before its contents.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'fc_checkout_before_order_review_inside' );
+		?>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 
 		<div class="fc-checkout-order-review__head">
 
-			<?php do_action( 'fc_checkout_after_order_review_title_before' ); ?>
+			<?php
+				/**
+				 * Fires before the inner order review title.
+				 *
+				 * @since 2.1.0
+				 */
+				do_action( 'fc_checkout_after_order_review_title_before' );
+			?>
 
 			<h3 class="fc-checkout-order-review-title fc-step__substep-title"><?php echo esc_html( $order_review_title ); ?></h3>
 
-			<?php do_action( 'fc_checkout_after_order_review_title_after' ); ?>
+			<?php
+				/**
+				 * Fires after the inner order review title.
+				 *
+				 * @since 2.1.0
+				 */
+				do_action( 'fc_checkout_after_order_review_title_after' );
+			?>
 
 		</div>
 
 		<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-		<?php do_action( 'fc_checkout_order_review_content' ); ?>
+		<?php
+			/**
+			 * Fires where the order review table is rendered.
+			 *
+			 * @since 4.2.0
+			 */
+			do_action( 'fc_checkout_order_review_content' );
+		?>
 
 		<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
-		<?php do_action( 'fc_checkout_order_review_actions' ); ?>
+		<?php
+			/**
+			 * Fires where the order review actions are rendered.
+			 *
+			 * @since 4.2.0
+			 */
+			do_action( 'fc_checkout_order_review_actions' );
+		?>
 
-		<?php do_action( 'fc_checkout_after_order_review_inside' ); ?>
+		<?php
+			/**
+			 * Fires inside the order review section, after its contents.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'fc_checkout_after_order_review_inside' );
+		?>
 
 	</div>
 </div>
 
-<?php do_action( 'fc_checkout_after_order_review' ); ?>
+<?php
+	/**
+	 * Fires after the order review section.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_after_order_review' );
+?>

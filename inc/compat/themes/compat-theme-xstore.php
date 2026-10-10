@@ -27,7 +27,7 @@ class FluidCheckout_ThemeCompat_XStore extends FluidCheckout {
 		add_filter( 'fc_content_section_class', array( $this, 'add_content_section_class' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );

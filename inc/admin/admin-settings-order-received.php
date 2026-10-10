@@ -61,6 +61,13 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 	public function add_settings( $settings, $current_section ) {
 		if ( 'order_received' === $current_section ) {
 
+			/**
+			 * Filters the order received settings.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_pro_order_received_settings',
 				array(

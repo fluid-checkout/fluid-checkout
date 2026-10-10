@@ -139,6 +139,13 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			),
 		);
 
+		/**
+		 * Filters the add-ons catalog shown on the dashboard.
+		 *
+		 * @since 4.2.8
+		 *
+		 * @param array $catalog Add-on catalog items.
+		 */
 		return apply_filters( 'fc_addons_catalog', $catalog );
 	}
 
@@ -225,7 +232,9 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		$html = (string) ob_get_clean();
 
 		/**
-		 * Filter Dashboard add-on card action HTML.
+		 * Filters the Dashboard add-on card action HTML.
+		 *
+		 * @since 4.2.8
 		 *
 		 * @param string $html        Default actions HTML.
 		 * @param array  $addon       Catalog item.
@@ -374,7 +383,11 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 
 				<?php
 				/**
-				 * Before the Dashboard Add-ons list (e.g. PRO site key field).
+				 * Fires before the Dashboard add-ons list.
+				 *
+				 * Extensions can print markup here, for example a PRO site key field.
+				 *
+				 * @since 4.2.8
 				 */
 				do_action( 'fc_dashboard_addons_before_list' );
 				?>

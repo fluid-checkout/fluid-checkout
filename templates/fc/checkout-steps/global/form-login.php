@@ -26,6 +26,13 @@ if ( is_user_logged_in() ) {
 
 // CHANGE: Define unique id for the login inputs
 $unique_id = '_' . uniqid();
+/**
+ * Filters the unique ID suffix used by the checkout login fields.
+ *
+ * @since 3.0.3
+ *
+ * @param string $unique_id Unique id.
+ */
 $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 
 ?>
@@ -39,13 +46,31 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 	<p class="form-row form-row-wide">
 		<?php // CHANGE: Add unique id to the fields label and input element, and input field classes filter hook ?>
 		<label for="username<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'woocommerce' ); ?></span></label>
-		<input type="text" class="input-text <?php echo esc_attr( apply_filters( 'fc_checkout_login_input_classes', '' ) ); ?>" name="username" id="username<?php echo esc_attr( $unique_id ); ?>" autocomplete="username" required aria-required="true" />
+		<input type="text" class="input-text <?php
+			/**
+			 * Filters extra CSS classes for the checkout login inputs.
+			 *
+			 * @since 4.1.0
+			 *
+			 * @param string $classes CSS classes. Default empty string.
+			 */
+			echo esc_attr( apply_filters( 'fc_checkout_login_input_classes', '' ) );
+		?>" name="username" id="username<?php echo esc_attr( $unique_id ); ?>" autocomplete="username" required aria-required="true" />
 	</p>
 	<?php // CHANGE: Form row class to `form-row-wide` ?>
 	<p class="form-row form-row-wide">
 		<?php // CHANGE: Add unique id to the fields label and input element, and input field classes filter hook ?>
 		<label for="password<?php echo esc_attr( $unique_id ); ?>"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span class="required" aria-hidden="true">*</span><span class="screen-reader-text"><?php esc_html_e( 'Required', 'woocommerce' ); ?></span></label>
-		<input class="input-text woocommerce-Input <?php echo esc_attr( apply_filters( 'fc_checkout_login_input_classes', '' ) ); ?>" type="password" name="password" id="password<?php echo esc_attr( $unique_id ); ?>" autocomplete="current-password" required aria-required="true" />
+		<input class="input-text woocommerce-Input <?php
+			/**
+			 * Filters extra CSS classes for the checkout login inputs.
+			 *
+			 * @since 4.1.0
+			 *
+			 * @param string $classes CSS classes. Default empty string.
+			 */
+			echo esc_attr( apply_filters( 'fc_checkout_login_input_classes', '' ) );
+		?>" type="password" name="password" id="password<?php echo esc_attr( $unique_id ); ?>" autocomplete="current-password" required aria-required="true" />
 	</p>
 	<div class="clear"></div>
 
@@ -63,7 +88,24 @@ $unique_id = apply_filters( 'fc_checkout_login_fields_unique_id', $unique_id );
 		<?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
 		<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
 		<?php // CHANGE: Change login button label to be consistent across checkout, also adding filter for custom button classes. ?>
-		<button type="submit" class="woocommerce-form-login__submit <?php echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' ) ); ?> <?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) ? wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php echo esc_html( apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></button>
+		<button type="submit" class="woocommerce-form-login__submit <?php
+			/**
+			 * Filters the CSS classes of the login submit button.
+			 *
+			 * @since 4.0.5
+			 *
+			 * @param string $classes CSS classes. Default `woocommerce-button button`.
+			 */
+			echo esc_attr( apply_filters( 'fc_checkout_login_button_classes', 'woocommerce-button button' ) );
+		?> <?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) ? wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php echo esc_html( 
+			/**
+			 * Filters the login button label at checkout.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $label Label text.
+			 */
+			apply_filters( 'fc_checkout_login_button_label', _x( 'Log in', 'Log in link label at checkout contact step', 'fluid-checkout' ) ) ); ?></button>
 	</p>
 
 	<p class="lost_password">

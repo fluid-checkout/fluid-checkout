@@ -19,7 +19,16 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <?php // CHANGE: Add filter to add additional classes to the review order table ?>
-<table class="shop_table woocommerce-checkout-review-order-table <?php echo esc_attr( apply_filters( 'fc_pro_checkout_review_order_table_classes', '' ) ); ?>">
+<table class="shop_table woocommerce-checkout-review-order-table <?php
+	/**
+	 * Filters extra CSS classes on the checkout order review table.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $classes CSS classes. Default empty string.
+	 */
+	echo esc_attr( apply_filters( 'fc_pro_checkout_review_order_table_classes', '' ) );
+?>">
 	<thead>
 		<?php // CHANGE: Hide the table header visually while still allowing screen readers to see it ?>
 		<tr class="screen-reader-text">
@@ -60,18 +69,51 @@ defined( 'ABSPATH' ) || exit;
 
 							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
 							<div class="product-details">
-								<?php do_action( 'fc_order_summary_cart_item_details', $cart_item, $cart_item_key, $_product ); ?>
+								<?php
+									/**
+									 * Fires inside each order summary cart item, where the product details are rendered.
+									 *
+									 * @since 2.1.0
+									 *
+									 * @param array      $cart_item     Cart item data.
+									 * @param string     $cart_item_key Cart item key.
+									 * @param WC_Product $_product      Product object.
+									 */
+									do_action( 'fc_order_summary_cart_item_details', $cart_item, $cart_item_key, $_product );
+								?>
 							</div>
 
 						</div>
 						<div class="product-total" role="cell">
 							<?php // CHANGE: Add hook for before the cart item product totals ?>
-							<?php do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product ); ?>
+							<?php
+								/**
+								 * Fires before the line total of an order summary cart item.
+								 *
+								 * @since 3.0.5
+								 *
+								 * @param array      $cart_item     Cart item data.
+								 * @param string     $cart_item_key Cart item key.
+								 * @param WC_Product $_product      Product object.
+								 */
+								do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product );
+							?>
 
 							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 							<?php // CHANGE: Add hook for after the cart item product totals ?>
-							<?php do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product ); ?>
+							<?php
+								/**
+								 * Fires after the line total of an order summary cart item.
+								 *
+								 * @since 3.0.5
+								 *
+								 * @param array      $cart_item     Cart item data.
+								 * @param string     $cart_item_key Cart item key.
+								 * @param WC_Product $_product      Product object.
+								 */
+								do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product );
+							?>
 						</div>
 					</td>
 					<?php // CHANGE: END - Use `div` as columns to allow better control over the columns sizing ?>
@@ -98,14 +140,28 @@ defined( 'ABSPATH' ) || exit;
 		<?php endforeach; ?>
 
 		<?php // CHANGE: Add action after the coupon codes row ?>
-		<?php do_action( 'fc_pro_checkout_review_order_after_coupon_code' ); ?>
+		<?php
+			/**
+			 * Fires after the coupon code row in the checkout order review.
+			 *
+			 * @since 2.0.5
+			 */
+			do_action( 'fc_pro_checkout_review_order_after_coupon_code' );
+		?>
 
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
 			<?php // CHANGE: Replaced cart totals shipping markup with an action hook to allow for customizations ?>
-			<?php do_action( 'fc_review_order_shipping' ); ?>
+			<?php
+				/**
+				 * Fires where the chosen shipping method is rendered in the order review.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'fc_review_order_shipping' );
+			?>
 
 			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 

@@ -32,7 +32,14 @@ defined( 'ABSPATH' ) || exit;
     </noscript>
 
     <?php // CHANGE: Replace the output of the terms and conditions checkbox with a custom hook ?>
-    <?php do_action( 'fc_checkout_place_order_terms' ); ?>
+    <?php
+        /**
+         * Fires where the terms and conditions checkbox is rendered.
+         *
+         * @since 4.1.0
+         */
+        do_action( 'fc_checkout_place_order_terms' );
+    ?>
 
     <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 

@@ -88,7 +88,9 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			}
 
 			/**
-			 * Filter telemetry client config for an API URL.
+			 * Filters the telemetry client config for an API URL.
+			 *
+			 * @since 4.2.8
 			 *
 			 * @param array  $config  Telemetry config.
 			 * @param string $api_url Remote API base URL.
@@ -152,6 +154,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 			$config           = self::get_telemetry_config( $api_url );
 			$resolved_api_url = self::get_remote_api_url( $api_url );
+			/**
+			 * Filters the WP-Cron hook used for telemetry.
+			 *
+			 * @since 4.2.8
+			 *
+			 * @param string $cron_hook Cron hook name. Default `fc_telemetry_weekly`.
+			 * @param string $api_url   Remote API base URL.
+			 */
 			$cron_hook        = apply_filters( 'fc_telemetry_cron_hook', $config['cron_hook'], $api_url );
 
 			// Bail if cron hook is not defined
@@ -327,6 +337,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		 * @param string|null $plugin_slug Optional plugin slug for filters.
 		 */
 		public static function get_remote_api_url( $api_url = null, $plugin_slug = null ) {
+			/**
+			 * Filters the remote telemetry API base URL.
+			 *
+			 * @since 4.2.8
+			 *
+			 * @param string|null $api_url     Remote API base URL.
+			 * @param string|null $plugin_slug Plugin slug passed by the caller. Default null.
+			 */
 			$api_url = apply_filters( 'fc_telemetry_api_url', $api_url, $plugin_slug );
 
 			if ( empty( $api_url ) ) { return ''; }
@@ -391,6 +409,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		public static function schedule_telemetry_cron( $api_url = null ) {
 			$api_url = self::resolve_api_url( $api_url );
 			$config  = self::get_telemetry_config( $api_url );
+			/**
+			 * Filters the WP-Cron hook used for telemetry.
+			 *
+			 * @since 4.2.8
+			 *
+			 * @param string $cron_hook Cron hook name. Default `fc_telemetry_weekly`.
+			 * @param string $api_url   Remote API base URL.
+			 */
 			$cron_hook = apply_filters( 'fc_telemetry_cron_hook', $config['cron_hook'], $api_url );
 
 			// Bail if cron hook is not defined
@@ -756,7 +782,9 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			}
 
 			/**
-			 * Filter whether a site domain may send telemetrys.
+			 * Filters whether a site domain may send telemetry.
+			 *
+			 * @since 4.2.8
 			 *
 			 * @param bool   $eligible Whether the domain is eligible.
 			 * @param string $domain   Site host.
@@ -1391,6 +1419,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		 * @param string|null $api_url Telemetry API base URL.
 		 */
 		private static function get_own_plugins_option_map( $api_url = null ) {
+			/**
+			 * Filters the own plugins registered for telemetry.
+			 *
+			 * @since 4.2.8
+			 *
+			 * @param array       $plugins Map of plugin slug to plugin option names.
+			 * @param string|null $api_url Telemetry API base URL.
+			 */
 			$plugins = apply_filters( 'fc_telemetry_own_plugins', array(), $api_url );
 
 			if ( ! is_array( $plugins ) ) {

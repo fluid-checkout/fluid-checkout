@@ -5,7 +5,7 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 4.2.7
+Version: 4.2.8-alpha-3
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
@@ -255,6 +255,14 @@ class FluidCheckout {
 				return true;
 			}
 
+			/**
+			 * Filters the remote telemetry API base URL.
+			 *
+			 * @since 4.2.8
+			 *
+			 * @param string $api_url     Canonical telemetry API base URL.
+			 * @param string $plugin_slug Plugin slug. Default `fluid-checkout`.
+			 */
 			$filtered = untrailingslashit( (string) apply_filters( 'fc_telemetry_api_url', $canonical, self::$plugin_slug ) );
 
 			if ( $api_url === $filtered ) {
@@ -310,6 +318,13 @@ class FluidCheckout {
 	 * Get the locales to be used for each language variant.
 	 */
 	public function get_locale_language_variants() {
+		/**
+		 * Filters the locale used for each language variant when loading translations.
+		 *
+		 * @since 2.3.2
+		 *
+		 * @param array $value Value to filter.
+		 */
 		return apply_filters( 'fc_locale_language_variant', array(
 			'de_DE'          => 'de_DE_formal',
 			'de_AT'          => 'de_DE_formal',
@@ -624,6 +639,17 @@ class FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a plugin compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_plugin_' . $plugin_slug, true ) ) { continue; }
 
 			// Get plugin file path
@@ -648,6 +674,17 @@ class FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a theme compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_theme_' . $theme_slug, true ) ) { continue; }
 
 			// Get current theme's compatibility file name
