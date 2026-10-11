@@ -266,12 +266,17 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	/**
 	 * Get the selected terminal data.
 	 *
+	 * Passing a boolean as the first argument is deprecated since 5.0.0.
+	 * That value is treated as `$unformatted`. Pass the shipping method id first,
+	 * then whether to return the raw session value.
+	 *
 	 * @param  string|bool|null  $method_id    Shipping method id. A boolean is the deprecated `$unformatted` argument.
 	 * @param  bool              $unformatted  Whether to return the raw session value.
 	 */
 	public function get_selected_terminal_data( $method_id = null, $unformatted = false ) {
 		// Deprecated call: get_selected_terminal_data( true ) meant unformatted data.
 		if ( is_bool( $method_id ) ) {
+			_deprecated_argument( __METHOD__, '5.0.0', 'Pass the shipping method id as the first argument and whether to return the raw session value as the second argument.' );
 			$unformatted = $method_id;
 			$method_id = null;
 		}
