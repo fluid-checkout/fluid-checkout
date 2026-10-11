@@ -5843,28 +5843,13 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param  string  $chosen_method  Chosen method id.
 	 */
 	public function is_prevent_shipping_method_autoselect_enabled( $default = '', $rates = array(), $chosen_method = '' ) {
-		// Truthy means "do not prevent", which is the original filter polarity.
-		$do_not_prevent = 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
-
-		/**
-		 * Filters whether WooCommerce should keep its automatic shipping method selection.
-		 *
-		 * A truthy value means do not prevent automatic selection.
-		 *
-		 * @since 4.0.0
-		 * @deprecated 5.0.0 Use `fc_prevent_shipping_method_autoselect` instead.
-		 *
-		 * @param bool   $do_not_prevent Whether to keep the default shipping method.
-		 * @param string $default        Default shipping method.
-		 * @param array  $rates          Shipping rates.
-		 * @param string $chosen_method  Chosen method id.
-		 */
-		$do_not_prevent = apply_filters_deprecated( 'fc_shipping_methods_disable_auto_select', array( $do_not_prevent, $default, $rates, $chosen_method ), '5.0.0', 'fc_prevent_shipping_method_autoselect' );
+		// Option "yes" prevents automatic selection.
+		$should_prevent = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
 
 		/**
 		 * Filters whether automatic selection of the first shipping method is prevented.
 		 *
-		 * A truthy value means the first available method is not selected automatically.
+		 * Return `true` to prevent auto-selecting a shipping method.
 		 *
 		 * @since 5.0.0
 		 *
@@ -5873,7 +5858,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * @param array  $rates          Shipping rates.
 		 * @param string $chosen_method  Chosen method id.
 		 */
-		return apply_filters( 'fc_prevent_shipping_method_autoselect', ! $do_not_prevent, $default, $rates, $chosen_method );
+		return apply_filters( 'fc_prevent_shipping_method_autoselect', $should_prevent, $default, $rates, $chosen_method );
 	}
 
 	/**
