@@ -128,8 +128,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		if ( ! $this->is_preview_request() ) { return; }
 
 		// Response headers
-		remove_action( 'template_redirect', 'wc_send_frame_options_header', 10 ); // Replaced by the `frame-ancestors` policy, which also allows the admin origin
 		add_filter( 'wp_headers', array( $this, 'add_preview_headers' ), 100 ); // Late to override values set by other plugins
+		add_action( 'template_redirect', array( $this, 'replace_security_headers' ), PHP_INT_MAX ); // Last before the page is output, as other plugins also send these headers with `header()`
 		add_filter( 'wp_robots', 'wp_robots_no_robots', 10 );
 
 		// Admin bar
@@ -502,21 +502,45 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		$headers[ 'X-Robots-Tag' ] = 'noindex, nofollow, noarchive';
 		$headers[ 'Referrer-Policy' ] = 'same-origin';
 
-		// Get directives of an existing content security policy, except the frame ancestors and connect sources which preview pages set
-		$policy = array_key_exists( 'Content-Security-Policy', $headers ) ? $headers[ 'Content-Security-Policy' ] : '';
-		$policy_directives = array_filter( array_map( 'trim', explode( ';', $policy ) ), function( $directive ) {
-			return '' !== $directive && 0 !== stripos( $directive, 'frame-ancestors' ) && 0 !== stripos( $directive, 'connect-src' );
-		} );
+		return $headers;
+	}
+
+	/**
+	 * Replace the frame options and content security policies sent for preview pages with one policy, keeping the directives of other policies.
+	 */
+	public function replace_security_headers() {
+		// Bail if the headers are already sent
+		if ( headers_sent() ) { return; }
+
+		// Define directives of the content security policies sent so far
+		$policy_directives = array();
+
+		// Iterate headers sent so far
+		foreach ( headers_list() as $header ) {
+			// Get header name and value
+			$header_parts = array_map( 'trim', explode( ':', $header, 2 ) );
+
+			// Skip headers other than content security policies
+			if ( 2 !== count( $header_parts ) || 0 !== strcasecmp( $header_parts[ 0 ], 'Content-Security-Policy' ) ) { continue; }
+
+			// Iterate directives of the policy
+			foreach ( array_map( 'trim', explode( ';', $header_parts[ 1 ] ) ) as $directive ) {
+				// Skip empty directives, and the frame ancestors and connect sources which preview pages set
+				if ( '' === $directive || 0 === stripos( $directive, 'frame-ancestors' ) || 0 === stripos( $directive, 'connect-src' ) ) { continue; }
+
+				$policy_directives[] = $directive;
+			}
+		}
 
 		// Only allow scripts to send requests to this site and allowed hosts, so tracking scripts send nothing from preview pages
 		$policy_directives[] = trim( "connect-src 'self' " . implode( ' ', $this->get_allowed_hosts() ) );
 
-		// Only allow the frontend and the admin to load preview pages in a frame, replacing frame options set by other plugins
+		// Only allow the frontend and the admin to load preview pages in a frame, replacing frame options sent by the site and other plugins
 		$policy_directives[] = "frame-ancestors 'self' " . $this->get_admin_origin();
-		$headers[ 'Content-Security-Policy' ] = implode( '; ', $policy_directives );
-		unset( $headers[ 'X-Frame-Options' ] );
+		header_remove( 'X-Frame-Options' );
 
-		return $headers;
+		// Send the policy, replacing the policies sent so far
+		header( 'Content-Security-Policy: ' . implode( '; ', $policy_directives ) );
 	}
 
 	/**
