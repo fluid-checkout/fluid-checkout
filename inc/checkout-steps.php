@@ -6062,13 +6062,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the position of the shipping methods section relative to the shipping address.
+	 *
+	 * An unsaved option uses the settings default. A saved value that is not
+	 * `before_shipping_address` or `after_shipping_address` uses that same default.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @return  string  `before_shipping_address` or `after_shipping_address`.
+	 */
+	public function get_shipping_methods_substep_position() {
+		// Define accepted values
+		$accepted_values = array(
+			'before_shipping_address',
+			'after_shipping_address',
+		);
+
+		// Get current value. Unsaved options use the settings default.
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' );
+
+		// Use the settings default when the saved value is missing or not allowed
+		if ( ! in_array( $current_value, $accepted_values, true ) ) {
+			$current_value = FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_substep_position' );
+		}
+
+		// Fall back when the settings default itself is not an accepted value
+		if ( ! in_array( $current_value, $accepted_values, true ) ) {
+			$current_value = 'before_shipping_address';
+		}
+
+		return $current_value;
+	}
+
+	/**
 	 * Get hook priority for the shipping address substep.
 	 */
 	public function get_shipping_address_hook_priority() {
 		$priority = 10;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
+		if ( 'before_shipping_address' === $this->get_shipping_methods_substep_position() ) {
 			$priority = 20;
 		}
 
@@ -6082,7 +6115,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 20;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
+		if ( 'before_shipping_address' === $this->get_shipping_methods_substep_position() ) {
 			$priority = 10;
 		}
 
