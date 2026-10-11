@@ -2228,7 +2228,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * @param string $button_label Button label.
 		 * @param string $step_id      Checkout step ID.
 		 */
-		$button_label = apply_filters( 'fc_next_step_button_label', $button_label, $step_id );
+		$button_label = apply_filters_deprecated( 'fc_next_step_button_label', array( $button_label, $step_id ), '5.0.0', 'fc_proceed_to_next_step_button_label' );
 
 		// Filter to allow changes to the proceed to next step button label
 		/**
@@ -3979,7 +3979,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * - `fc_substep_shipping_method_text_lines`
 		 * - `fc_substep_order_notes_text_lines`
 		 * - `fc_substep_billing_address_text_lines`
-		 * - `fc_substep_payment_text_lines`
+		 * - `fc_substep_payment_method_text_lines`
 		 * - `fc_substep_coupon_codes_text_lines`
 		 *
 		 * @since 1.5.0
@@ -4012,7 +4012,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * - `fc_substep_shipping_method_text`
 		 * - `fc_substep_order_notes_text`
 		 * - `fc_substep_billing_address_text`
-		 * - `fc_substep_payment_text`
+		 * - `fc_substep_payment_method_text`
 		 * - `fc_substep_coupon_codes_text`
 		 *
 		 * @since 1.5.0
@@ -5097,23 +5097,17 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 		// Return list of field keys to skip
 		/**
-		 * Filters the rendered review text HTML for a checkout substep.
+		 * Filters the field keys skipped in the address substep review text.
 		 *
-		 * The dynamic portion of the hook name, `$substep_id`, refers to the checkout substep ID.
-		 * Additional hook names are created for substeps registered by other plugins.
+		 * The dynamic portion of the hook name, `$address_type`, refers to the address type.
 		 * Possible hook names include:
 		 *
-		 * - `fc_substep_contact_text`
-		 * - `fc_substep_shipping_address_text`
-		 * - `fc_substep_shipping_method_text`
-		 * - `fc_substep_order_notes_text`
-		 * - `fc_substep_billing_address_text`
-		 * - `fc_substep_payment_text`
-		 * - `fc_substep_coupon_codes_text`
+		 * - `fc_substep_text_shipping_address_field_keys_skip_list`
+		 * - `fc_substep_text_billing_address_field_keys_skip_list`
 		 *
 		 * @since 1.5.0
 		 *
-		 * @param array $value Value to filter.
+		 * @param array $skip_list Field keys to skip.
 		 */
 		return apply_filters( "fc_substep_text_{$address_type}_address_field_keys_skip_list", array_merge( $contact_field_ids, $custom_field_keys, array(
 			$address_type . '_first_name',
