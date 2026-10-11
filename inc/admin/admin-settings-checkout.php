@@ -24,6 +24,9 @@ class FluidCheckout_Settings_Checkout {
 
 		// Settings
 		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
+
+		// Sanitize settings
+		add_filter( 'woocommerce_admin_settings_sanitize_option_fc_local_pickup_shipping_zone_fields', array( __CLASS__, 'sanitize_local_pickup_shipping_zone_fields' ), 10, 3 );
 	}
 
 
@@ -52,6 +55,13 @@ class FluidCheckout_Settings_Checkout {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'checkout' === $current_section ) {
 
+			/**
+			 * Filters the checkout settings fields.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_checkout_general_settings',
 				array(
@@ -622,17 +632,6 @@ class FluidCheckout_Settings_Checkout {
 					),
 
 					array(
-						'desc'                  => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
-						'desc_tip'              => __( 'When enabled, the first shipping method available will not be automatically selected when no other shipping method was previously selected for each shipping package. <br>This option will be automatically enabled if the option for clearing the selected shipping method is enabled for the Local Pickup feature.', 'fluid-checkout' ),
-						'id'                    => 'fc_shipping_methods_disable_auto_select',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
-						'autoload'              => false,
-						'disabled'              => true,
-						'requires'              => 'pro',
-					),
-
-					array(
 						'title'                 => __( 'Company name field for shipping address', 'fluid-checkout' ),
 						'desc'                  => '',
 						'desc_tip'              => __( 'Change visibility for the company name field for the shipping address section on the checkout form.', 'fluid-checkout' ) . ' ' . __( 'If field is set as "optional", which is the default visibility state, no changes will be applied to let other plugins apply any changes they need.', 'fluid-checkout' ),
@@ -686,6 +685,32 @@ class FluidCheckout_Settings_Checkout {
 		}
 
 		return $settings;
+	}
+
+
+
+	/**
+	 * Sanitize the local pickup shipping zone fields option to ensure it's saved as an array.
+	 * 
+	 * @param  mixed   $value      The option value.
+	 * @param  mixed   $option     The option arguments.
+	 * @param  mixed   $raw_value  The raw value of the option.
+	 */
+	public static function sanitize_local_pickup_shipping_zone_fields( $value, $option, $raw_value ) {
+		// Bail without changing the saved value when a disabled field was not submitted, eg. when disabled in the Lite version
+		// WooCommerce only skips the update when the sanitized value is `null`, so returning an empty array would wipe the saved value
+		// Check for the disabled field, as a cleared multiselect also submits no value and should still save an empty array
+		if ( null === $raw_value && is_array( $option ) && ! empty( $option[ 'disabled' ] ) ) { return null; }
+
+		// Ensure the value is an array, as a cleared multiselect submits no value
+		if ( ! is_array( $value ) ) {
+			$value = array();
+		}
+
+		// Sanitize the field keys
+		$value = array_map( 'sanitize_text_field', $value );
+
+		return $value;
 	}
 
 }

@@ -290,9 +290,21 @@ function getMergedPluginZipRsyncSettings() {
 	var base = _gulpSettings.pluginZipRsync || {};
 	var local = _gulpSettingsLocal.pluginZipRsync || {};
 
+	// Hook docs workflow directories, and the workflow itself, stay out of the plugin zip.
+	var packageExcludes = [
+		'data/',
+		'data/**',
+		'wp-hooks-generator/',
+		'wp-hooks-generator/**',
+		'fluid-checkout-docs/',
+		'fluid-checkout-docs/**',
+		'.github/',
+		'.github/**',
+	];
+
 	return {
 		include: ( base.include || [] ).concat( local.include || [] ),
-		exclude: ( base.exclude || [] ).concat( local.exclude || [] ),
+		exclude: ( base.exclude || [] ).concat( packageExcludes ).concat( local.exclude || [] ),
 		excludeFrom: local.excludeFrom || base.excludeFrom || null,
 		pruneEmptyDirs: local.pruneEmptyDirs !== undefined ? local.pruneEmptyDirs : base.pruneEmptyDirs,
 	};

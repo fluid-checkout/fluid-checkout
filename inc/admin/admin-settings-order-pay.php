@@ -84,6 +84,13 @@ class FluidCheckout_Settings_OrderPay {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'order_pay' === $current_section ) {
 
+			/**
+			 * Filters the order pay settings.
+			 *
+			 * @since 4.0.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_pro_order_pay_settings',
 				array_merge(

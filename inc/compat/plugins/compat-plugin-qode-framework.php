@@ -33,7 +33,7 @@ class FluidCheckout_QodeFramework extends FluidCheckout {
 		add_filter( 'fc_apply_button_colors_styles', array( $this, 'maybe_enable_fc_button_color_styles' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'maybe_add_css_variables' ), 30 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables' ), 30 );
 	}
 
 

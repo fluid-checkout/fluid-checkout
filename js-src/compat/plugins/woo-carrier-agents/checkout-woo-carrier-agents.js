@@ -101,7 +101,7 @@
 	 */
 	var handleClick = function( e ) {
 		// POSTCODE SEARCH RADIO FIELD
-		if ( e.target.matches( _settings.searchRadioFieldSelector ) ) {
+		if ( e.target.closest( _settings.searchRadioFieldSelector ) ) {
 			maybeTriggerCheckoutUpdate( e.target );
 		}
 	};

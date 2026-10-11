@@ -20,7 +20,14 @@ defined( 'ABSPATH' ) || exit;
 
 </main>
 
-<?php do_action( 'fc_checkout_footer' ); ?>
+<?php
+	/**
+	 * Fires inside the distraction-free checkout footer.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_footer' );
+?>
 
 <?php wp_footer(); ?>
 

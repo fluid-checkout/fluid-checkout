@@ -42,6 +42,13 @@ class FluidCheckout_WooCheckoutFieldEditorPro extends FluidCheckout {
 	 */
 	public function account_edit_address_hooks() {
 		// Bail if account edit address is disabled for this plugin
+		/**
+		 * Filters whether Checkout Field Editor Pro changes are applied on the edit-address screen.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param string $value Value to filter. Default `yes`.
+		 */
 		if ( 'yes' !== apply_filters( 'fc_integration_woo_checkout_field_editor_pro_enable_edit_address_changes', 'yes' ) ) { return; }
 
 		// Get the plugin public class object

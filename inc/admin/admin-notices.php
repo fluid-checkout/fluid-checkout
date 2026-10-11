@@ -131,6 +131,19 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		// Bail if user does not have necessary permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return; }
 
+		/**
+		 * Filters the admin notices displayed by Fluid Checkout.
+		 *
+		 * The notice list is built from the plugin prefix stored in
+		 * `FluidCheckout_AdminNotices::$plugin_prefix`, which is `fc`.
+		 * Possible hook names include:
+		 *
+		 * - `fc_admin_notices`
+		 *
+		 * @since 2.3.2
+		 *
+		 * @param array $value Value to filter. Default empty array.
+		 */
 		$notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
 
 		if ( empty( $notices ) ) {

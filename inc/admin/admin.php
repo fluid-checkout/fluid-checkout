@@ -215,6 +215,13 @@ class FluidCheckout_Admin extends FluidCheckout {
 		}
 
 		// Maybe add settings tab stub if not already added
+		/**
+		 * Filters whether the Fluid Checkout settings tab has already been added.
+		 *
+		 * @since 4.0.5
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( ! apply_filters( 'fc_admin_tab_fluidcheckout_exists', false ) ) {
 			$settings[] = include self::$directory_path . 'inc/admin/admin-tab-fluid-checkout.php';
 

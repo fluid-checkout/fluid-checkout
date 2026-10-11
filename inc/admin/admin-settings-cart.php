@@ -52,6 +52,13 @@ class FluidCheckout_Settings_Cart {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'cart' === $current_section ) {
 
+			/**
+			 * Filters the cart settings.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_pro_cart_settings',
 				array_merge(

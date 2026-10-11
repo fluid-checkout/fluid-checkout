@@ -18,8 +18,29 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<?php do_action( 'fc_checkout_before_step_payment_fields' ); ?>
+<?php
+	/**
+	 * Fires before the payment step fields.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_before_step_payment_fields' );
+?>
 
-<?php do_action( 'fc_checkout_payment' ); ?>
+<?php
+	/**
+	 * Fires where the payment section is rendered inside the payment step.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_payment' );
+?>
 
-<?php do_action( 'fc_checkout_after_step_payment_fields' ); ?>
+<?php
+	/**
+	 * Fires after the payment step fields.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_after_step_payment_fields' );
+?>
