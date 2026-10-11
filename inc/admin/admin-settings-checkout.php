@@ -610,16 +610,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
-						'desc_tip'          => __( 'When enabled, the first shipping method available <strong>will not</strong> be automatically selected when no other shipping method was previously selected for each shipping package.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                => 'fc_shipping_methods_disable_auto_select',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
 						'title'             => __( 'Local pickup', 'fluid-checkout' ),
 						'desc'              => __( 'Remove shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Replace the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),

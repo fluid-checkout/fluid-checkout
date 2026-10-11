@@ -359,7 +359,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting.
 * Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
-* Removed: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
+* Removed: Option to prevent automatic selection of the first shipping method. Use the filter `fc_prevent_shipping_method_autoselect` to prevent it with code. The filter `fc_shipping_methods_disable_auto_select` is removed.
 * Added: Filter `fc_add_pickup_point_info_as_review_text_lines` to include pickup point details in the shipping method review text. The filter `fc_skip_add_pickup_point_info_as_review_text_lines` is deprecated. Returning true from that filter still skips those lines.
 * Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
 * Deprecated: Option `fc_local_pickup_display_clear_shipping_methods_button`. It is no longer shown in the settings. The default value `no` remains available.

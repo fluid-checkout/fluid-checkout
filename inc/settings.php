@@ -74,7 +74,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_optional_fields_link_label_lowercase'                       => 'yes',
 			'fc_hide_optional_fields_skip_address_2'                        => 'no',
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
-			'fc_shipping_methods_disable_auto_select'                       => 'no',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_default_delivery_type'                         => 'ship',
 			// Deprecated 5.0.0. The setting is no longer shown. The default stays so existing integrations can still read it.

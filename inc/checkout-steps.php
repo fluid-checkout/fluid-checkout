@@ -5836,29 +5836,28 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Check whether the option to prevent shipping method autoselect is enabled.
+	 * Check whether automatic selection of the shipping method is prevented.
+	 *
+	 * Defaults to `false`. Code can prevent selection with `fc_prevent_shipping_method_autoselect`.
 	 *
 	 * @param  string  $default        Default shipping method.
 	 * @param  array   $rates          Shipping rates.
 	 * @param  string  $chosen_method  Chosen method id.
 	 */
 	public function is_prevent_shipping_method_autoselect_enabled( $default = '', $rates = array(), $chosen_method = '' ) {
-		// Option "yes" prevents automatic selection.
-		$should_prevent = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' );
-
 		/**
 		 * Filters whether automatic selection of the first shipping method is prevented.
 		 *
-		 * Return `true` to prevent auto-selecting a shipping method.
+		 * Return `true` to prevent auto-selecting a shipping method. Default `false`, so WooCommerce's choice is kept unless code changes it.
 		 *
 		 * @since 5.0.0
 		 *
-		 * @param bool   $should_prevent Whether to prevent automatic selection.
+		 * @param bool   $should_prevent Whether to prevent automatic selection. Default `false`.
 		 * @param string $default        Default shipping method.
 		 * @param array  $rates          Shipping rates.
 		 * @param string $chosen_method  Chosen method id.
 		 */
-		return apply_filters( 'fc_prevent_shipping_method_autoselect', $should_prevent, $default, $rates, $chosen_method );
+		return apply_filters( 'fc_prevent_shipping_method_autoselect', false, $default, $rates, $chosen_method );
 	}
 
 	/**
@@ -5869,7 +5868,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param string $chosen_method Chosen method id.
 	 */
 	public function maybe_prevent_autoselect_shipping_method( $default, $rates, $chosen_method ) {
-		// Bail if option is not enabled
+		// Bail when prevention is off, and leave the current choice unchanged for a later callback.
 		if ( ! $this->is_prevent_shipping_method_autoselect_enabled( $default, $rates, $chosen_method ) ) { return $default; }
 
 		// Maybe prevent autoselect if chosen method is not in available methods
