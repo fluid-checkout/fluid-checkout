@@ -324,7 +324,7 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 	 */
 	public function maybe_set_substep_incomplete_shipping( $is_substep_complete ) {
 		// Bail if target shipping method is not selected
-		if ( ! $this->is_shipping_method_selected() ) { return; }
+		if ( ! $this->is_shipping_method_selected() ) { return $is_substep_complete; }
 
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
