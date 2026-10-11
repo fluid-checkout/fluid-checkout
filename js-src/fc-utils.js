@@ -386,14 +386,28 @@
 			// Try finding the updated element by name attribute
 			if ( ! elementToFocus && currentFocusedElement.getAttribute( 'name' ) ) {
 				var nameAttr = currentFocusedElement.getAttribute( 'name' );
-				elementToFocus = document.querySelector( '[name="'+nameAttr+'"]' );
+				var escapedName = window.CSS && 'function' === typeof window.CSS.escape ? window.CSS.escape( nameAttr ) : nameAttr.replace( /\\/g, '\\\\' ).replace( /"/g, '\\"' );
+				elementToFocus = document.querySelector( '[name="' + escapedName + '"]' );
 			}
 
 			if ( elementToFocus ) {
 				// Get related select field
 				var formRow = elementToFocus.closest( _settings.tomSelectFormRowSelector );
 				var selectField = formRow && formRow.querySelector( 'select' );
-				var select2Field = elementToFocus.querySelector( _settings.select2FocusElementSelector );
+				var select2Field = null;
+
+				// Select2 renders `.select2-selection` beside the `<select>`, not inside it.
+				if ( 'SELECT' === elementToFocus.tagName ) {
+					if ( formRow ) {
+						select2Field = formRow.querySelector( '.select2-selection' );
+					}
+					if ( ! select2Field && elementToFocus.nextElementSibling && elementToFocus.nextElementSibling.classList.contains( 'select2-container' ) ) {
+						select2Field = elementToFocus.nextElementSibling.querySelector( '.select2-selection' );
+					}
+				}
+				else {
+					select2Field = elementToFocus.querySelector( _settings.select2FocusElementSelector );
+				}
 
 				// Maybe set Select2 field as the element to focus
 				if ( select2Field ) {

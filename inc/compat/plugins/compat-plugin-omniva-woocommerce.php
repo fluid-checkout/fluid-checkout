@@ -209,7 +209,7 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 		// Check if shipping method is local pickup, including instance ids (e.g. `omnivalt_pt:1`)
 		foreach ( $local_pickup_methods as $local_pickup_method ) {
-			if ( 0 === strpos( $method_id, $local_pickup_method ) ) {
+			if ( $this->shipping_method_id_matches( $method_id, $local_pickup_method ) ) {
 				return true;
 			}
 		}
@@ -232,13 +232,26 @@ class FluidCheckout_OmnivaWooCommerce extends FluidCheckout {
 
 		// Check if shipping method is local pickup, including instance ids (e.g. `omnivalt_pt:1`)
 		foreach ( $local_pickup_methods as $local_pickup_method ) {
-			if ( 0 === strpos( $method_id, $local_pickup_method ) ) {
+			if ( $this->shipping_method_id_matches( $method_id, $local_pickup_method ) ) {
 				return true;
 			}
 		}
 
 		// Otherwise, not a local pickup shipping method
 		return false;
+	}
+
+	/**
+	 * Whether a shipping method id is an exact match or an instance of that method.
+	 *
+	 * @param  string  $method_id     Shipping method id, possibly with an instance suffix.
+	 * @param  string  $expected_id   Method id without an instance suffix.
+	 */
+	public function shipping_method_id_matches( $method_id, $expected_id ) {
+		$method_id = (string) $method_id;
+		$expected_id = (string) $expected_id;
+
+		return $method_id === $expected_id || 0 === strpos( $method_id, $expected_id . ':' );
 	}
 
 

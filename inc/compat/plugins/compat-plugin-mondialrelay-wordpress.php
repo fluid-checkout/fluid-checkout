@@ -316,12 +316,12 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		// Maybe save parcel shop address to session
 		// Skip empty values, as Mondial Relay JS may clear the field on `updated_checkout`
 		if ( array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) && ! empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) {
-			WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+			WC()->session->set( self::SESSION_FIELD_NAME, sanitize_text_field( $posted_data[ self::SESSION_FIELD_NAME ] ) );
 		}
 
 		// Maybe save parcel shop ID to session
 		if ( array_key_exists( self::SESSION_FIELD_ID, $posted_data ) && ! empty( $posted_data[ self::SESSION_FIELD_ID ] ) ) {
-			WC()->session->set( self::SESSION_FIELD_ID, $posted_data[ self::SESSION_FIELD_ID ] );
+			WC()->session->set( self::SESSION_FIELD_ID, sanitize_text_field( $posted_data[ self::SESSION_FIELD_ID ] ) );
 		}
 
 		// Return unchanged posted data
@@ -343,12 +343,12 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Maybe restore parcel shop ID to posted data before Mondial Relay validates the checkout
 		if ( empty( $_POST[ self::SESSION_FIELD_ID ] ) && ! empty( $selected_terminal_id ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$_POST[ self::SESSION_FIELD_ID ] = $selected_terminal_id; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$_POST[ self::SESSION_FIELD_ID ] = sanitize_text_field( $selected_terminal_id ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 
 		// Maybe restore parcel shop address to posted data for the order meta
 		if ( empty( $_POST[ self::SESSION_FIELD_NAME ] ) && ! empty( $selected_terminal_address ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$_POST[ self::SESSION_FIELD_NAME ] = $selected_terminal_address; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$_POST[ self::SESSION_FIELD_NAME ] = sanitize_text_field( $selected_terminal_address ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 	}
 

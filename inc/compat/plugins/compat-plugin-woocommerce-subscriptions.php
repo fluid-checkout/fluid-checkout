@@ -366,6 +366,31 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 
 
 	/**
+	 * Whether package index 0 is a duplicate of the rekeyed recurring package.
+	 *
+	 * `WC_Cart::get_shipping_packages()` always builds index 0. Subscriptions
+	 * rekeys that package while recurring totals are calculated. Skip index 0
+	 * only when that rekeyed package is also in the same list. On a normal
+	 * subscription cart, index 0 is the only package and must be shown.
+	 *
+	 * @param  array       $packages            Shipping packages from the recurring cart.
+	 * @param  int|string  $package_key         Package key.
+	 * @param  string      $recurring_cart_key  Recurring cart key.
+	 */
+	public function is_duplicate_recurring_shipping_package( $packages, $package_key, $recurring_cart_key ) {
+		// Only index 0 is the package WooCommerce always creates.
+		if ( 0 !== $package_key && '0' !== $package_key ) { return false; }
+
+		if ( ! class_exists( 'WC_Subscriptions_Cart' ) || ! method_exists( 'WC_Subscriptions_Cart', 'get_recurring_shipping_package_key' ) ) { return false; }
+
+		$rekeyed_package_key = WC_Subscriptions_Cart::get_recurring_shipping_package_key( $recurring_cart_key, 0 );
+
+		return array_key_exists( $rekeyed_package_key, $packages );
+	}
+
+
+
+	/**
 	 * Output the shipping methods available for recurring carts.
 	 * COPIED AND ADAPTED FROM: wcs_cart_totals_shipping_html()
 	 */
@@ -393,19 +418,24 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 				// CHANGE: Initialize variables for package index
 				$package_index_initial_shipment = 0;
 				$package_index = 0;
+				$recurring_shipping_packages = $recurring_cart->get_shipping_packages();
 
-				foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
-					// CHANGE: Skip package with index 0 to avoid duplication returned by `$recurring_cart->get_shipping_packages()` in some instances
-					if ( 0 === $recurring_cart_package_key || '0' === $recurring_cart_package_key ) { continue; }
+				foreach ( $recurring_shipping_packages as $recurring_cart_package_key => $recurring_cart_package ) {
+					// Skip index 0 only when Subscriptions also returned the rekeyed package.
+					if ( $this->is_duplicate_recurring_shipping_package( $recurring_shipping_packages, $recurring_cart_package_key, $recurring_cart_key ) ) { continue; }
 
 					// CHANGE: Pass the recurring package key so rates are not cached/chosen under package index `0`
 					$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package, $recurring_cart_package_key );
 
-					// CHANGE: Bail if package rates could not be calculated
-					if ( ! is_array( $package ) || empty( $package[ 'rates' ] ) ) { continue; }
+					// Bail if the package could not be calculated. Empty rates still render the empty state.
+					if ( ! is_array( $package ) ) { continue; }
+
+					if ( ! isset( $package[ 'rates' ] ) || ! is_array( $package[ 'rates' ] ) ) {
+						$package[ 'rates' ] = array();
+					}
 
 					// CHANGE: Use delivery-type filtered methods so chosen-method resolution matches what is displayed
-					$available_methods = apply_filters( 'fc_available_shipping_methods', $package[ 'rates' ], $package );
+					$available_methods = FluidCheckout_Steps::instance()->get_available_shipping_methods( $package[ 'rates' ], $package );
 
 					// CHANGE: Always get chosen method for the first package as the initial shipment
 					$chosen_initial_method = isset( $chosen_shipping_methods[ $package_index_initial_shipment ] ) ? $chosen_shipping_methods[ $package_index_initial_shipment ] : '';
@@ -492,9 +522,9 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			WC_Subscriptions_Cart::set_recurring_cart_key( $recurring_cart_key );
 			WC_Subscriptions_Cart::set_cached_recurring_cart( $recurring_cart );
 
-			// Increment total shipping rows if the recurring cart contains subscriptions needing shipping
+			// Count the rows this cart will actually render.
 			if ( WC_Subscriptions_Cart::cart_contains_subscriptions_needing_shipping( $recurring_cart ) ) {
-				$total_shipping_rows += count( $recurring_cart->get_shipping_packages() );
+				$total_shipping_rows += $this->count_recurring_shipping_subtotal_rows( $recurring_cart, $recurring_cart_key );
 			}
 		}
 
@@ -512,17 +542,43 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 	}
 
 	/**
+	 * Count recurring shipping subtotal rows using the same skips as the renderer.
+	 *
+	 * @param  WC_Cart  $recurring_cart      Recurring cart.
+	 * @param  string   $recurring_cart_key  Recurring cart key.
+	 */
+	public function count_recurring_shipping_subtotal_rows( $recurring_cart, $recurring_cart_key ) {
+		$recurring_shipping_packages = $recurring_cart->get_shipping_packages();
+		if ( ! is_array( $recurring_shipping_packages ) ) { return 0; }
+
+		$row_count = 0;
+		foreach ( $recurring_shipping_packages as $package_key => $base_package ) {
+			if ( $this->is_duplicate_recurring_shipping_package( $recurring_shipping_packages, $package_key, $recurring_cart_key ) ) { continue; }
+
+			$package = WC()->shipping->calculate_shipping_for_package( $base_package, $package_key );
+			if ( ! is_array( $package ) || empty( $package[ 'rates' ] ) || ! is_array( $package[ 'rates' ] ) ) { continue; }
+
+			$row_count++;
+		}
+
+		return $row_count;
+	}
+
+	/**
 	 * Output the shipping subtotal HTML for the given recurring cart.
 	 * 
-	 * @param  object  $recurring_cart      The recurring cart object.
+	 * @param  object  $recurring_cart       The recurring cart object.
 	 * @param  int     $total_shipping_rows  Total number of shipping rows (for rowspan).
-	 * @param  bool    $display_heading     Whether to display the table heading.
+	 * @param  bool    $display_heading      Whether to display the table heading.
 	 */
 	public function output_shipping_subtotal_html( $recurring_cart, $total_shipping_rows, &$display_heading ) {
+		$recurring_cart_key = isset( $recurring_cart->recurring_cart_key ) ? $recurring_cart->recurring_cart_key : '';
+
 		// Iterate over each shipping package in the recurring cart
-		foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
-			// Skip numeric package index duplicates returned in some cases
-			if ( 0 === $recurring_cart_package_key || '0' === $recurring_cart_package_key ) { continue; }
+		$recurring_shipping_packages = $recurring_cart->get_shipping_packages();
+		foreach ( $recurring_shipping_packages as $recurring_cart_package_key => $recurring_cart_package ) {
+			// Skip index 0 only when Subscriptions also returned the rekeyed package.
+			if ( $this->is_duplicate_recurring_shipping_package( $recurring_shipping_packages, $recurring_cart_package_key, $recurring_cart_key ) ) { continue; }
 
 			// Get shipping package
 			$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package, $recurring_cart_package_key );
@@ -531,7 +587,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			if ( ! $package || ! is_array( $package[ 'rates' ] ) || empty( $package[ 'rates' ] ) ) { continue; }
 
 			// Get available shipping method rates
-			$available_methods = apply_filters( 'fc_available_shipping_methods', $package[ 'rates' ], $package );
+			$available_methods = FluidCheckout_Steps::instance()->get_available_shipping_methods( $package[ 'rates' ], $package );
 
 			// Get the chosen shipping method for the recurring cart package
 			$chosen_recurring_method = $this->get_chosen_shipping_method_for_package( $recurring_cart, $recurring_cart_package_key, $package, $available_methods );
@@ -673,9 +729,11 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 		$allowed_kses_attributes = array( 'span' => array( 'class' => true ), 'bdi' => array(), 'strong' => array(), 'br' => array() );
 
 		// Iterate over each shipping package in the recurring cart
-		foreach ( $recurring_cart->get_shipping_packages() as $recurring_cart_package_key => $recurring_cart_package ) {
-			// Skip numeric package index duplicates returned in some cases
-			if ( 0 === $recurring_cart_package_key || '0' === $recurring_cart_package_key ) { continue; }
+		$recurring_cart_key = isset( $recurring_cart->recurring_cart_key ) ? $recurring_cart->recurring_cart_key : '';
+		$recurring_shipping_packages = $recurring_cart->get_shipping_packages();
+		foreach ( $recurring_shipping_packages as $recurring_cart_package_key => $recurring_cart_package ) {
+			// Skip index 0 only when Subscriptions also returned the rekeyed package.
+			if ( $this->is_duplicate_recurring_shipping_package( $recurring_shipping_packages, $recurring_cart_package_key, $recurring_cart_key ) ) { continue; }
 
 			// Get the shipping package
 			$package = WC()->shipping->calculate_shipping_for_package( $recurring_cart_package, $recurring_cart_package_key );
@@ -684,7 +742,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			if ( ! is_array( $package ) || empty( $package[ 'rates' ] ) ) { continue; }
 
 			// Get available shipping method rates
-			$available_methods = apply_filters( 'fc_available_shipping_methods', $package[ 'rates' ], $package );
+			$available_methods = FluidCheckout_Steps::instance()->get_available_shipping_methods( $package[ 'rates' ], $package );
 
 			// Get the chosen shipping method for the recurring cart package
 			$chosen_recurring_method = $this->get_chosen_shipping_method_for_package( $recurring_cart, $recurring_cart_package_key, $package, $available_methods );

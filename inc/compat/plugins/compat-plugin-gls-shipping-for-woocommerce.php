@@ -75,7 +75,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
@@ -265,8 +265,22 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Get the selected terminal data.
+	 *
+	 * @param  string|bool|null  $method_id    Shipping method id. A boolean is the deprecated `$unformatted` argument.
+	 * @param  bool              $unformatted  Whether to return the raw session value.
 	 */
-	public function get_selected_terminal_data( $method_id, $unformatted = false ) {
+	public function get_selected_terminal_data( $method_id = null, $unformatted = false ) {
+		// Deprecated call: get_selected_terminal_data( true ) meant unformatted data.
+		if ( is_bool( $method_id ) ) {
+			$unformatted = $method_id;
+			$method_id = null;
+		}
+
+		if ( empty( $method_id ) ) {
+			$method = $this->maybe_get_selected_shipping_method();
+			$method_id = is_object( $method ) ? $method->id : '';
+		}
+
 		// Get session field name
 		$session_field_name = $this->get_session_field_name( $method_id );
 
@@ -304,8 +318,17 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Get the session field name based on the selected shipping method.
+	 *
+	 * @param  string|null  $method_id  Shipping method id. Resolved from the chosen method when empty.
 	 */
-	public function get_session_field_name( $method_id ) {
+	public function get_session_field_name( $method_id = null ) {
+		if ( empty( $method_id ) || is_bool( $method_id ) ) {
+			$method = $this->maybe_get_selected_shipping_method();
+			$method_id = is_object( $method ) ? $method->id : '';
+		}
+
+		if ( empty( $method_id ) ) { return ''; }
+
 		// Get the session field name based on the selected shipping method
 		$session_field_name = self::SESSION_FIELD_NAME . '_' . $method_id;
 
