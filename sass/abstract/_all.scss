@@ -1,3 +1,6 @@
+// Public Sass entry point for Fluid Checkout Lite and dependent plugins.
+// Load with `@import`, after `abstract/_all-early`. Do not `@use` this file.
+// See sass/IMPORTING.md.
 @import
 	"_variables",
 	"functions/_all",

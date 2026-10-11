@@ -356,6 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Upgraded Sass build tooling to the latest version.
 * Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
 * Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
 * Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
