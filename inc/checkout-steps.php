@@ -5839,16 +5839,35 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * Check whether automatic selection of the shipping method is prevented.
 	 *
 	 * Defaults to `false`. Code can prevent selection with `fc_prevent_shipping_method_autoselect`.
+	 * `fc_shipping_methods_disable_auto_select` is deprecated: a truthy value does not prevent selection.
 	 *
 	 * @param  string  $default        Default shipping method.
 	 * @param  array   $rates          Shipping rates.
 	 * @param  string  $chosen_method  Chosen method id.
 	 */
 	public function is_prevent_shipping_method_autoselect_enabled( $default = '', $rates = array(), $chosen_method = '' ) {
+		// Original polarity: a truthy value does not prevent selection. Default true because prevention is off.
+		$do_not_prevent = true;
+
+		/**
+		 * Filters whether WooCommerce should keep its automatic shipping method selection.
+		 *
+		 * A truthy value means do not prevent automatic selection. Return `false` to prevent it.
+		 *
+		 * @since 4.0.0
+		 * @deprecated 5.0.0 Use `fc_prevent_shipping_method_autoselect` instead.
+		 *
+		 * @param bool   $do_not_prevent Whether to keep the default shipping method. Default `true`.
+		 * @param string $default        Default shipping method.
+		 * @param array  $rates          Shipping rates.
+		 * @param string $chosen_method  Chosen method id.
+		 */
+		$do_not_prevent = apply_filters_deprecated( 'fc_shipping_methods_disable_auto_select', array( $do_not_prevent, $default, $rates, $chosen_method ), '5.0.0', 'fc_prevent_shipping_method_autoselect' );
+
 		/**
 		 * Filters whether automatic selection of the first shipping method is prevented.
 		 *
-		 * Return `true` to prevent auto-selecting a shipping method. Default `false`, so WooCommerce's choice is kept unless code changes it.
+		 * Return `true` to prevent auto-selecting a shipping method. Default `false`.
 		 *
 		 * @since 5.0.0
 		 *
@@ -5857,7 +5876,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * @param array  $rates          Shipping rates.
 		 * @param string $chosen_method  Chosen method id.
 		 */
-		return apply_filters( 'fc_prevent_shipping_method_autoselect', false, $default, $rates, $chosen_method );
+		return apply_filters( 'fc_prevent_shipping_method_autoselect', ! $do_not_prevent, $default, $rates, $chosen_method );
 	}
 
 	/**
