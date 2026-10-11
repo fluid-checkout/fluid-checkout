@@ -156,6 +156,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Enqueue assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
 
 		// Orders and payments
 		remove_action( 'wp', array( 'WC_Form_Handler', 'pay_action' ), 20 );
@@ -616,6 +617,28 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Styles
 		wp_enqueue_style( 'fc-admin-preview-frame' );
+	}
+
+	/**
+	 * Enqueue themes compatibility styles for preview pages.
+	 */
+	public function enqueue_theme_compat_styles() {
+		// Get currently active theme and child theme
+		$theme_slugs = array( get_template(), get_stylesheet() );
+
+		// Iterate theme slugs
+		foreach ( $theme_slugs as $theme_slug ) {
+			// Maybe skip compat file
+			if ( apply_filters( 'fc_enable_compat_theme_admin_preview_style_' . $theme_slug, true ) === false ) { continue; }
+
+			// Get file path
+			$compat_file_path = FluidCheckout_Enqueue::instance()->get_style_url( 'css/compat/themes/compat-admin-preview-' . $theme_slug, false );
+
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-admin-preview-' . $theme_slug, self::$directory_url . $compat_file_path, array( 'fc-admin-preview-frame' ), null );
+			}
+		}
 	}
 
 	/**

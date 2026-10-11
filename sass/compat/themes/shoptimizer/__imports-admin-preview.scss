@@ -1,0 +1,15 @@
+// ------------------------------------
+// DEFINE LOCAL VARIABLES
+// ------------------------------------
+$_body-page-selector:                  '.fc-admin-preview' !default;
+$_body-theme-selector:                 '.theme-shoptimizer' !default;
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"admin-preview-frame";

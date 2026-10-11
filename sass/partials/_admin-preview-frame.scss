@@ -2,7 +2,7 @@
 // ADMIN PREVIEW FRAME
 // ------------------------------------
 
-body.fc-admin-preview--hide-header-footer :is( header, footer, nav, [role="banner"], [role="contentinfo"], [role="navigation"] ):not( :is( main, article, .fc-content, .woocommerce ) * ) {
+body.fc-admin-preview--hide-header-footer :is( header, footer, nav, [role="banner"], [role="contentinfo"], [role="navigation"], .wp-site-blocks > :not( :has( .fc-content, .woocommerce ) ) ):not( :is( main, article, .fc-content, .woocommerce ) * ) {
 	display: none !important; // Needed to override theme styles
 }
 
