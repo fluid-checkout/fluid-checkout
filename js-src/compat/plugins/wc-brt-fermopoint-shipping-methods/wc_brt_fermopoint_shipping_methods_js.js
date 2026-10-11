@@ -215,8 +215,8 @@ function getPudoSearchFieldValue( selector ) {
 }
 
 function getShippingAddress(){
-	var returnObj = {};	
-	
+	var returnObj = {};
+
 	// CHANGE: Use the pickup location search fields when they are displayed,
 	// as they are the fields used to search for pickup locations.
 	// The values are used even when still incomplete, so that the plugin asks for the missing
