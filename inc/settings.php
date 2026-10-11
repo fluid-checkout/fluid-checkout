@@ -73,7 +73,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_hide_optional_fields'                       => 'yes',
 			'fc_optional_fields_link_label_lowercase'                       => 'yes',
 			'fc_hide_optional_fields_skip_address_2'                        => 'no',
-			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
+			'fc_shipping_methods_substep_position'                          => 'before_shipping_address',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_default_delivery_type'                         => 'ship',
 			'fc_local_pickup_shipping_zone_fields'                          => array(),
