@@ -373,6 +373,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: "Same as billing address" behavior on the cart shipping calculator.
 * Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
 * Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
+* Fixed: Shipping method substep validation for BOX NOW Delivery Croatia, GLS Shipping for WooCommerce and WooCommerce Carrier Agents not being applied.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Removed: Unused option `fc_local_pickup_display_clear_shipping_methods_button`.
 * Removed: Option to prevent automatic selection of the first shipping method. Use the filter `fc_prevent_shipping_method_autoselect` to prevent it with code.
