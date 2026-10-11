@@ -76,8 +76,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_default_delivery_type'                         => 'ship',
-			// Deprecated 5.0.0. The setting is no longer shown. The default stays so existing integrations can still read it.
-			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
 			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
