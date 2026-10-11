@@ -354,7 +354,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 5.0.0 =
+= Unreleased =
 
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
 * Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting.
@@ -364,9 +364,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Deprecated: Option `fc_local_pickup_display_clear_shipping_methods_button`. It is no longer shown in the settings. The default value `no` remains available.
 * Deprecated: Hungarian Pickup Points still runs on `fc_is_substep_complete_pickup_point`, and Packlink still runs on `fc_is_substep_complete_shipping`. Use `fc_is_substep_complete_shipping_method`.
 * Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
-
-= Unreleased =
-
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
