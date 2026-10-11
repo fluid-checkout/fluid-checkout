@@ -70,7 +70,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 			/**
 			 * Filters the options for the local pickup shipping zone fields setting.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param array $options Field options keyed by field id.
 			 */

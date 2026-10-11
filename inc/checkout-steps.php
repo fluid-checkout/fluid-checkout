@@ -5310,7 +5310,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		/**
 		 * Filters the shipping methods available for a package.
 		 *
-		 * @since 4.2.8
+		 * @since 5.0.0
 		 *
 		 * @param array $rates   Shipping rates keyed by rate id.
 		 * @param array $package Shipping package data.
@@ -5329,7 +5329,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		/**
 		 * Filters whether pickup point information is added to the shipping method review text.
 		 *
-		 * @since 4.2.8
+		 * @since 5.0.0
 		 *
 		 * @param bool $enabled Whether to add the pickup point information. Default true.
 		 */
@@ -5340,12 +5340,12 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 *
 		 * Returning true skips the pickup point lines.
 		 *
-		 * @since 4.2.8
-		 * @deprecated 4.2.8 Use `fc_add_pickup_point_info_as_review_text_lines` instead.
+		 * @since 5.0.0
+		 * @deprecated 5.0.0 Use `fc_add_pickup_point_info_as_review_text_lines` instead.
 		 *
 		 * @param bool $skip Whether to skip adding the pickup point information. Default false.
 		 */
-		$skip = apply_filters_deprecated( 'fc_skip_add_pickup_point_info_as_review_text_lines', array( false ), '4.2.8', 'fc_add_pickup_point_info_as_review_text_lines' );
+		$skip = apply_filters_deprecated( 'fc_skip_add_pickup_point_info_as_review_text_lines', array( false ), '5.0.0', 'fc_add_pickup_point_info_as_review_text_lines' );
 
 		if ( true === $skip ) { return false; }
 
@@ -5852,21 +5852,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 * A truthy value means do not prevent automatic selection.
 		 *
 		 * @since 4.0.0
-		 * @deprecated 4.2.8 Use `fc_prevent_shipping_method_autoselect` instead.
+		 * @deprecated 5.0.0 Use `fc_prevent_shipping_method_autoselect` instead.
 		 *
 		 * @param bool   $do_not_prevent Whether to keep the default shipping method.
 		 * @param string $default        Default shipping method.
 		 * @param array  $rates          Shipping rates.
 		 * @param string $chosen_method  Chosen method id.
 		 */
-		$do_not_prevent = apply_filters_deprecated( 'fc_shipping_methods_disable_auto_select', array( $do_not_prevent, $default, $rates, $chosen_method ), '4.2.8', 'fc_prevent_shipping_method_autoselect' );
+		$do_not_prevent = apply_filters_deprecated( 'fc_shipping_methods_disable_auto_select', array( $do_not_prevent, $default, $rates, $chosen_method ), '5.0.0', 'fc_prevent_shipping_method_autoselect' );
 
 		/**
 		 * Filters whether automatic selection of the first shipping method is prevented.
 		 *
 		 * A truthy value means the first available method is not selected automatically.
 		 *
-		 * @since 4.2.8
+		 * @since 5.0.0
 		 *
 		 * @param bool   $should_prevent Whether to prevent automatic selection.
 		 * @param string $default        Default shipping method.

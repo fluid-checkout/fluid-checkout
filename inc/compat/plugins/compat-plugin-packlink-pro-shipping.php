@@ -54,7 +54,7 @@ class FluidCheckout_PacklinkPROShipping extends FluidCheckout {
 
 		// Maybe set substep as incomplete
 		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
-		// Deprecated 4.2.8. Kept so existing callbacks on the previous substep id still run.
+		// Deprecated 5.0.0. Kept so existing callbacks on the previous substep id still run.
 		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping_method' ), 10 );
 
 		// Add substep review text lines
