@@ -354,6 +354,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
+= 5.0.0 =
+
+* Added: Filter `fc_add_pickup_point_info_as_review_text_lines` to include pickup point details in the shipping method review text. The filter `fc_skip_add_pickup_point_info_as_review_text_lines` is deprecated. Returning true from that filter still skips those lines.
+
 = Unreleased =
 
 * Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.

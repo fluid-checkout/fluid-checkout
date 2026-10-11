@@ -349,7 +349,7 @@ class FluidCheckout_WooShippingDPDBaltic extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Maybe skip adding pickup point address as review text lines
-		if ( class_exists( 'FluidCheckout_Steps' ) && method_exists( 'FluidCheckout_Steps', 'should_skip_add_pickup_point_info_as_review_text_lines' ) && FluidCheckout_Steps::instance()->should_skip_add_pickup_point_info_as_review_text_lines() ) { return $review_text_lines; }
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
 
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }

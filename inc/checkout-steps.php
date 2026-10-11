@@ -5299,24 +5299,33 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
-	 * Whether pickup point information should be skipped in the shipping method review text.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @return bool
+	 * Whether pickup point information should be added to the shipping method review text.
 	 */
-	public function should_skip_add_pickup_point_info_as_review_text_lines() {
+	public function is_pickup_point_info_review_text_lines_enabled() {
+		/**
+		 * Filters whether pickup point information is added to the shipping method review text.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param bool $enabled Whether to add the pickup point information. Default true.
+		 */
+		$enabled = apply_filters( 'fc_add_pickup_point_info_as_review_text_lines', true );
+
 		/**
 		 * Filters whether to skip adding pickup point information to the shipping method review text.
 		 *
 		 * Returning true skips the pickup point lines.
 		 *
 		 * @since 5.0.0
+		 * @deprecated 5.0.0 Use `fc_add_pickup_point_info_as_review_text_lines` instead.
 		 *
 		 * @param bool $skip Whether to skip adding the pickup point information. Default false.
-		 * @return bool
 		 */
-		return true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false );
+		$skip = apply_filters_deprecated( 'fc_skip_add_pickup_point_info_as_review_text_lines', array( false ), '5.0.0', 'fc_add_pickup_point_info_as_review_text_lines' );
+
+		if ( true === $skip ) { return false; }
+
+		return true === $enabled;
 	}
 
 	/**
