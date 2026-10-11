@@ -5299,6 +5299,27 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Whether pickup point information should be skipped in the shipping method review text.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @return bool
+	 */
+	public function should_skip_add_pickup_point_info_as_review_text_lines() {
+		/**
+		 * Filters whether to skip adding pickup point information to the shipping method review text.
+		 *
+		 * Returning true skips the pickup point lines.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param bool $skip Whether to skip adding the pickup point information. Default false.
+		 * @return bool
+		 */
+		return true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false );
+	}
+
+	/**
 	 * Determine if shipping package names should be displayed.
 	 */
 	public function is_shipping_package_name_display_enabled() {
