@@ -131,15 +131,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		add_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
 		// Shipping method
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_method_title_fragment' ), 10 );
 		add_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10, 3 );
 		add_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10, 2 );
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
-		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 ); // Set priority to 7 to ensure it runs after the phone data is set (priority 5) in the PRO plugin
 
 		// Billing address
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_checkout_billing_address_fields_fragment' ), 10 );
@@ -535,15 +536,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 		remove_filter( 'woocommerce_ship_to_different_address_checked', array( $this, 'set_ship_to_different_address_true' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_address_text_fragment' ), 10 );
+		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
 		// Shipping method
 		remove_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_fields_fragment' ), 10 );
 		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_methods_text_fragment' ), 10 );
+		remove_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_shipping_method_title_fragment' ), 10 );
 		remove_filter( 'woocommerce_shipping_chosen_method', array( $this, 'maybe_prevent_autoselect_shipping_method' ), 10 );
 		remove_filter( 'fc_shipping_method_option_description' , array( $this, 'maybe_add_shipping_method_option_description' ), 10 );
 		remove_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_substep_state_hidden_fields_shipping_methods' ), 10 );
-		remove_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_update_saved_shipping_address' ), 7 );
 
 		// Order notes
 		remove_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
@@ -1693,7 +1695,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			}
 		}
 
-		// Update cache with complete steps consiering the current step
+		// Update cache with complete steps considering the current step
 		$this->cached_values[ $cache_handle ] = $complete_steps;
 
 		return $complete_steps;
@@ -5291,6 +5293,60 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the shipping methods available for a package after delivery-type filtering.
+	 *
+	 * @param  array  $rates    Shipping rates keyed by rate id.
+	 * @param  array  $package  Shipping package data.
+	 */
+	public function get_available_shipping_methods( $rates, $package ) {
+		if ( ! is_array( $rates ) ) { $rates = array(); }
+
+		/**
+		 * Filters the shipping methods available for a package.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param array $rates   Shipping rates keyed by rate id.
+		 * @param array $package Shipping package data.
+		 */
+		$rates = apply_filters( 'fc_available_shipping_methods', $rates, $package );
+
+		if ( ! is_array( $rates ) ) { $rates = array(); }
+
+		return $rates;
+	}
+
+	/**
+	 * Whether pickup point information should be added to the shipping method review text.
+	 */
+	public function is_pickup_point_info_review_text_lines_enabled() {
+		/**
+		 * Filters whether pickup point information is added to the shipping method review text.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param bool $enabled Whether to add the pickup point information. Default true.
+		 */
+		$enabled = apply_filters( 'fc_add_pickup_point_info_as_review_text_lines', true );
+
+		/**
+		 * Filters whether to skip adding pickup point information to the shipping method review text.
+		 *
+		 * Returning true skips the pickup point lines.
+		 *
+		 * @since 5.0.0
+		 * @deprecated 5.0.0 Use `fc_add_pickup_point_info_as_review_text_lines` instead.
+		 *
+		 * @param bool $skip Whether to skip adding the pickup point information. Default false.
+		 */
+		$skip = apply_filters_deprecated( 'fc_skip_add_pickup_point_info_as_review_text_lines', array( false ), '5.0.0', 'fc_add_pickup_point_info_as_review_text_lines' );
+
+		if ( true === $skip ) { return false; }
+
+		return true === $enabled;
+	}
+
+	/**
 	 * Determine if shipping package names should be displayed.
 	 */
 	public function is_shipping_package_name_display_enabled() {
@@ -5320,16 +5376,21 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 	/**
 	 * Determine if shipping package destination should be displayed on substep review text.
+	 * 
+	 * @param  WC_Shipping_Rate|null  $method         The shipping method object.
+	 * @param  int                    $package_index  The shipping package index.
 	 */
-	public function is_shipping_package_contents_destination_text_lines_enabled() {
+	public function is_shipping_package_contents_destination_text_lines_enabled( $method = null, $package_index = 0 ) {
 		/**
 		 * Filters whether the package destination is included in the shipping method review text.
 		 *
 		 * @since 3.0.3
 		 *
-		 * @param bool $text Text to display. Default true.
+		 * @param bool                  $text          Text to display. Default true.
+		 * @param WC_Shipping_Rate|null $method        The shipping method object.
+		 * @param int                   $package_index The shipping package index.
 		 */
-		return apply_filters( 'fc_shipping_method_display_package_destination_substep_text_lines', true );
+		return apply_filters( 'fc_shipping_method_display_package_destination_substep_text_lines', true, $method, $package_index );
 	}
 
 	/**
@@ -5363,7 +5424,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$package_review_text_lines = array();
 
 			// Get shipping method info
-			$available_methods = $package['rates'];
+			$available_methods = $this->get_available_shipping_methods( $package['rates'], $package );
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $package_index ] ) ? WC()->session->chosen_shipping_methods[ $package_index ] : '';
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
@@ -5388,7 +5449,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			$package_review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
 
 			// Handle package destination
-			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled() ) {
+			if ( $has_multiple_packages && $this->is_shipping_package_contents_destination_text_lines_enabled( $method, $package_index ) ) {
 				// Get package destination
 				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
 				/**
@@ -5507,6 +5568,24 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function output_substep_text_shipping_method( $step_id, $substep_id ) {
 		echo $this->get_substep_text_shipping_method();
+	}
+
+	/**
+	 * Get shipping method substep title.
+	 */
+	public function get_substep_title_shipping_method() {
+		return $this->get_substep_title_html( 'shipping_method' );
+	}
+
+	/**
+	 * Add shipping method substep title as checkout fragment.
+	 *
+	 * @param array $fragments Checkout fragments.
+	 */
+	public function add_shipping_method_title_fragment( $fragments ) {
+		$html = $this->get_substep_title_shipping_method();
+		$fragments[ '.fc-step__substep-title--shipping_method' ] = $html;
+		return $fragments;
 	}
 
 
@@ -5748,6 +5827,52 @@ class FluidCheckout_Steps extends FluidCheckout {
 		return 1;
 	}
 
+
+
+	/**
+	 * Check whether automatic selection of the shipping method is prevented.
+	 *
+	 * Defaults to `false`. Code can prevent selection with `fc_prevent_shipping_method_autoselect`.
+	 * `fc_shipping_methods_disable_auto_select` is deprecated: a truthy value does not prevent selection.
+	 *
+	 * @param  string  $default        Default shipping method.
+	 * @param  array   $rates          Shipping rates.
+	 * @param  string  $chosen_method  Chosen method id.
+	 */
+	public function is_prevent_shipping_method_autoselect_enabled( $default = '', $rates = array(), $chosen_method = '' ) {
+		// Original polarity: a truthy value does not prevent selection. Default true because prevention is off.
+		$do_not_prevent = true;
+
+		/**
+		 * Filters whether WooCommerce should keep its automatic shipping method selection.
+		 *
+		 * A truthy value means do not prevent automatic selection. Return `false` to prevent it.
+		 *
+		 * @since 4.0.0
+		 * @deprecated 5.0.0 Use `fc_prevent_shipping_method_autoselect` instead.
+		 *
+		 * @param bool   $do_not_prevent Whether to keep the default shipping method. Default `true`.
+		 * @param string $default        Default shipping method.
+		 * @param array  $rates          Shipping rates.
+		 * @param string $chosen_method  Chosen method id.
+		 */
+		$do_not_prevent = apply_filters_deprecated( 'fc_shipping_methods_disable_auto_select', array( $do_not_prevent, $default, $rates, $chosen_method ), '5.0.0', 'fc_prevent_shipping_method_autoselect' );
+
+		/**
+		 * Filters whether automatic selection of the first shipping method is prevented.
+		 *
+		 * Return `true` to prevent auto-selecting a shipping method. Default `false`.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param bool   $should_prevent Whether to prevent automatic selection. Default `false`.
+		 * @param string $default        Default shipping method.
+		 * @param array  $rates          Shipping rates.
+		 * @param string $chosen_method  Chosen method id.
+		 */
+		return apply_filters( 'fc_prevent_shipping_method_autoselect', ! $do_not_prevent, $default, $rates, $chosen_method );
+	}
+
 	/**
 	 * Maybe prevent autoselect shipping method.
 	 * 
@@ -5756,21 +5881,16 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param string $chosen_method Chosen method id.
 	 */
 	public function maybe_prevent_autoselect_shipping_method( $default, $rates, $chosen_method ) {
-		// Bail if option is not enabled
-		/**
-		 * Filters the shipping methods disable auto select.
-		 *
-		 * @since 4.0.0
-		 *
-		 * @param string $value         Value to filter.
-		 * @param mixed  $default       Default.
-		 * @param array  $rates         Rates.
-		 * @param string $chosen_method Chosen method.
-		 */
-		if ( apply_filters( 'fc_shipping_methods_disable_auto_select', 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_disable_auto_select' ), $default, $rates, $chosen_method ) ) { return $default; }
+		// Bail when prevention is off, and leave the current choice unchanged for a later callback.
+		if ( ! $this->is_prevent_shipping_method_autoselect_enabled( $default, $rates, $chosen_method ) ) { return $default; }
 
-		// Prevent autoselect
-		return false;
+		// Maybe prevent autoselect if chosen method is not in available methods
+		if ( empty( $chosen_method ) || ! array_key_exists( $chosen_method, $rates ) ) {
+			return false;
+		}
+
+		// Otherwise, keep the customer's chosen method
+		return $chosen_method;
 	}
 
 
@@ -5783,7 +5903,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 */
 	public function maybe_add_shipping_method_option_description( $shipping_method_description, $method ) {
 		// Bail if class methods are not available
-		if ( ! method_exists( $method, 'get_delivery_time' ) || ! method_exists( $method, 'get_description' ) ) { return; }
+		if ( ! method_exists( $method, 'get_delivery_time' ) || ! method_exists( $method, 'get_description' ) ) { return $shipping_method_description; }
 
 		// Initialize variables
 		$new_description = '';
@@ -5936,13 +6056,46 @@ class FluidCheckout_Steps extends FluidCheckout {
 
 
 	/**
+	 * Get the position of the shipping methods section relative to the shipping address.
+	 *
+	 * An unsaved option uses the settings default. A saved value that is not
+	 * `before_shipping_address` or `after_shipping_address` uses that same default.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @return  string  `before_shipping_address` or `after_shipping_address`.
+	 */
+	public function get_shipping_methods_substep_position() {
+		// Define accepted values
+		$accepted_values = array(
+			'before_shipping_address',
+			'after_shipping_address',
+		);
+
+		// Get current value. Unsaved options use the settings default.
+		$current_value = FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' );
+
+		// Use the settings default when the saved value is missing or not allowed
+		if ( ! in_array( $current_value, $accepted_values, true ) ) {
+			$current_value = FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_substep_position' );
+		}
+
+		// Fall back when the settings default itself is not an accepted value
+		if ( ! in_array( $current_value, $accepted_values, true ) ) {
+			$current_value = 'before_shipping_address';
+		}
+
+		return $current_value;
+	}
+
+	/**
 	 * Get hook priority for the shipping address substep.
 	 */
 	public function get_shipping_address_hook_priority() {
 		$priority = 10;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
+		if ( 'before_shipping_address' === $this->get_shipping_methods_substep_position() ) {
 			$priority = 20;
 		}
 
@@ -5956,7 +6109,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 		$priority = 20;
 
 		// Change priority depending on the settings
-		if ( 'before_shipping_address' === FluidCheckout_Settings::instance()->get_option( 'fc_shipping_methods_substep_position' ) ) {
+		if ( 'before_shipping_address' === $this->get_shipping_methods_substep_position() ) {
 			$priority = 10;
 		}
 
@@ -6003,14 +6156,18 @@ class FluidCheckout_Steps extends FluidCheckout {
 		 */
 		do_action( 'fc_shipping_methods_before_packages_inside' );
 
+		// Initialize first item flag
 		$first_item = true;
+
+		// Iterate shipping packages
 		foreach ( $packages as $i => $package ) {
+			// Get chosen shipping method
 			$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
-			
-			// Initialize array for product names
+
+			// Initialize product names
 			$product_names = array();
 
-			// Maybe add product names to package details
+			// Maybe add product names to package details, when there are multiple packages
 			if ( $has_multiple_packages ) {
 				// Iterate package contents
 				foreach ( $package['contents'] as $item_id => $values ) {
@@ -6025,7 +6182,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			// Output shipping methods available template
 			wc_get_template( 'cart/shipping-methods-available.php', array(
 				'package'                   => $package,
-				'available_methods'         => $package['rates'],
+				'available_methods'         => $this->get_available_shipping_methods( $package['rates'], $package ),
 				'show_package_details'      => $has_multiple_packages,
 				'package_details'           => implode( ', ', $product_names ),
 				/* translators: %d: shipping package number */
@@ -6761,7 +6918,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $value_from_filter;
 		}
 
-		// Get parsed posted data
+		// Maybe get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
 		}
@@ -6938,7 +7095,7 @@ class FluidCheckout_Steps extends FluidCheckout {
 			return $value_from_filter;
 		}
 
-		// Get parsed posted data
+		// Maybe get parsed posted data
 		if ( empty( $posted_data ) ) {
 			$posted_data = $this->get_parsed_posted_data();
 		}
