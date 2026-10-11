@@ -375,7 +375,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
 * Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
 * Removed: Unused option `fc_local_pickup_display_clear_shipping_methods_button`.
-* Deprecated: Hungarian Pickup Points still runs on `fc_is_substep_complete_pickup_point`, and Packlink still runs on `fc_is_substep_complete_shipping`. Use `fc_is_substep_complete_shipping_method`.
 * Removed: Option to prevent automatic selection of the first shipping method. Use the filter `fc_prevent_shipping_method_autoselect` to prevent it with code.
 
 = 4.2.7 - 2026-08-19 =
