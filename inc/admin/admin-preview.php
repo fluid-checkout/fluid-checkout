@@ -104,6 +104,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Preview guards
 		$this->preview_guard_hooks();
 
+		// Preview optimizations
+		$this->preview_optimization_hooks();
+
 		// Preview session
 		$this->preview_session_hooks();
 
@@ -207,6 +210,20 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Requests to other sites
 		add_filter( 'pre_http_request', array( $this, 'maybe_block_request_to_other_site' ), PHP_INT_MAX, 3 ); // Last, as other filters may answer requests without sending them
+	}
+
+	/**
+	 * Add or remove preview optimization hooks, which leave the scripts and styles of preview pages as they are.
+	 */
+	public function preview_optimization_hooks() {
+		// Bail if not a preview request
+		if ( ! $this->is_preview_request() ) { return; }
+
+		// Page optimizations
+		add_action( 'after_setup_theme', array( $this, 'define_no_optimization_constants' ), 15 ); // Before optimization plugins read the constants at `init`
+		add_filter( 'perfmatters_delay_js', '__return_false', 10 ); // Perfmatters has no constant
+		add_filter( 'perfmatters_defer_js', '__return_false', 10 );
+		add_filter( 'wpo_minify_run_on_page', '__return_false', 10 ); // WP-Optimize has no constant
 	}
 
 	/**
@@ -749,6 +766,22 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		}
 
 		return new WP_Error( 'fc_admin_preview_request_blocked', __( 'Requests to other sites are blocked in the preview.', 'fluid-checkout' ) );
+	}
+
+
+
+	/**
+	 * Define the constants that optimization plugins check to leave a page as it is.
+	 * Delayed scripts would run the frame script after other scripts, and combined styles would hide the custom styles that the preview refreshes.
+	 */
+	public function define_no_optimization_constants() {
+		// Iterate constants of Autoptimize and others, WP Rocket and LiteSpeed Cache
+		foreach ( array( 'DONOTMINIFY', 'DONOTROCKETOPTIMIZE', 'LITESPEED_NO_OPTM' ) as $constant ) {
+			// Skip constants already defined
+			if ( defined( $constant ) ) { continue; }
+
+			define( $constant, true );
+		}
 	}
 
 
