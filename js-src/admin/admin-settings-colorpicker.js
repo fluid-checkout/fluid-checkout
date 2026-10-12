@@ -177,8 +177,16 @@
 
 	/**
 	 * Hide open Iris pickers when clicking outside them.
+	 *
+	 * @param  {Event}  e  Click event.
 	 */
-	var handleDocumentClick = function() {
+	var handleDocumentClick = function( e ) {
+		var target = e.target;
+
+		// Bail if the click is on the color control or inside the open picker.
+		// The open and hide handlers are both on `document.body`, so `stopPropagation()` does not skip this one.
+		if ( target && target.closest && ( target.closest( _settings.controlSelector ) || target.closest( _settings.irisPickerSelector ) ) ) { return; }
+
 		$( _settings.irisPickerSelector ).hide();
 	};
 
@@ -199,12 +207,11 @@
 
 		initColorPickers();
 
-		$( document.body )
-			.on( 'click focus', _settings.colorInputSelector, handleColorInputActivate )
-			.on( 'change', _settings.colorInputSelector, handleColorInputChange )
-			.on( 'click', _settings.previewClickSelector, handlePreviewClick )
-			.on( 'click', _settings.irisSquareSelector, handleIrisSquareClick )
-			.on( 'click', handleDocumentClick );
+		$( document.body ).on( 'click focus', _settings.colorInputSelector, handleColorInputActivate );
+		$( document.body ).on( 'change', _settings.colorInputSelector, handleColorInputChange );
+		$( document.body ).on( 'click', _settings.previewClickSelector, handlePreviewClick );
+		$( document.body ).on( 'click', _settings.irisSquareSelector, handleIrisSquareClick );
+		$( document.body ).on( 'click', handleDocumentClick );
 
 		_hasInitialized = true;
 	};

@@ -401,6 +401,20 @@
 	};
 
 	/**
+	 * Close the compact settings menu when pressing Escape.
+	 *
+	 * @param  {Event}  e  Keyboard event.
+	 */
+	var handleNavKeydown = function( e ) {
+		var sidebar = getSidebar();
+
+		// Bail if Escape was not pressed or the compact menu is closed
+		if ( ! window.FCUtils || FCUtils.keyboardKeys.ESC !== e.key || ! sidebar || ! sidebar.classList.contains( _settings.isNavExpandedClass ) ) { return; }
+
+		setNavExpanded( false );
+	};
+
+	/**
 	 * Collapse the compact nav when leaving the breakpoint.
 	 */
 	var handleNavCompactBreakpointChange = function() {
@@ -442,6 +456,7 @@
 
 		document.addEventListener( 'click', handleNavClick, true );
 		document.addEventListener( 'click', handleNavToggleClick, true );
+		document.addEventListener( 'keydown', handleNavKeydown, true );
 		window.addEventListener( 'popstate', handlePopState );
 		// Capture scroll from nested containers; keep the drawer aligned while sticky headers move
 		window.addEventListener( 'scroll', syncNavDrawerPosition, true );

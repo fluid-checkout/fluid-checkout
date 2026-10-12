@@ -219,9 +219,8 @@
 	margin: 0;
 	text-align: center;
 	text-align-last: center;
-	// Override WP admin `select { max-width: 25rem; }` and related width limits
-	width: 100% !important;
-	max-width: 100% !important;
+	width: 100% !important; // Needed to override WP admin select width limits
+	max-width: 100% !important; // Needed to override WP admin select max-width
 }
 
 // Match stacked button spacing on the PRO / Bundle cards
@@ -249,8 +248,8 @@
 .fc-addons__item-actions .button.button--activated:disabled,
 .fc-addons__item-actions .button.button--activated.disabled {
 	background: $white !important; // Needed to keep Activated state on hover / disabled
-	border-color: #007a3d !important;
-	color: #007a3d !important;
+	border-color: #007a3d !important; // Needed to keep Activated state on hover / disabled
+	color: #007a3d !important; // Needed to keep Activated state on hover / disabled
 }
 
 .fc-addons__item-actions .button.button--activated::before {

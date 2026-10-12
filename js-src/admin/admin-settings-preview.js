@@ -195,30 +195,33 @@
 	};
 
 	/**
-	 * Escape text for safe HTML insertion.
+	 * Fill the PRO unlock subtitle with a pricing link.
 	 *
-	 * @param   {string}  text  Raw text.
-	 * @return  {string}
+	 * @param  {HTMLElement}  subtitleEl  Subtitle element inside the preview iframe.
+	 * @param  {string}       page        Preview page slug.
 	 */
-	var escapeHtml = function( text ) {
-		var el = document.createElement( 'span' );
-		el.textContent = text || '';
-		return el.innerHTML;
-	};
-
-	/**
-	 * Build the PRO unlock subtitle HTML with a pricing link.
-	 *
-	 * @param   {string}  page  Preview page slug.
-	 * @return  {string}
-	 */
-	var getProPreviewSubtitleHtml = function( page ) {
+	var setProPreviewSubtitle = function( subtitleEl, page ) {
 		var pageSlug = String( page || '' ).replace( /_/g, '-' );
-		var url = ( _settings.previewProUrlTemplate || '' ).replace( '{page}', pageSlug );
+		var url = ( _settings.previewProUrlTemplate || '' ).replace( '{page}', encodeURIComponent( pageSlug ) );
 		var linkLabel = _settings.i18n.previewProLinkLabel || 'Fluid Checkout PRO';
-		var linkHtml = '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + escapeHtml( linkLabel ) + '</a>';
+		var template = _settings.i18n.previewSubtitlePro || 'Available with %s.';
+		var parts = template.split( '%s' );
+		var doc = subtitleEl.ownerDocument;
+		var link = doc.createElement( 'a' );
 
-		return ( _settings.i18n.previewSubtitlePro || 'Available with %s.' ).replace( '%s', linkHtml );
+		link.href = url;
+		link.target = '_blank';
+		link.rel = 'noopener noreferrer';
+		link.textContent = linkLabel;
+
+		subtitleEl.textContent = '';
+		subtitleEl.appendChild( doc.createTextNode( parts[ 0 ] || '' ) );
+		subtitleEl.appendChild( link );
+
+		// Keep the text that follows the link placeholder
+		if ( parts.length > 1 ) {
+			subtitleEl.appendChild( doc.createTextNode( parts.slice( 1 ).join( '%s' ) ) );
+		}
 	};
 
 	/**
@@ -239,7 +242,9 @@
 
 		try {
 			doc = frame.contentDocument;
-		} catch ( err ) {
+		}
+		// Bail if the iframe document cannot be read
+		catch ( err ) {
 			return;
 		}
 
@@ -247,14 +252,19 @@
 		if ( ! doc ) { return; }
 
 		titleEl = doc.getElementById( 'fc-settings-preview-title' );
+
+		// Update the preview title
 		if ( titleEl ) {
 			titleEl.textContent = ( _settings.i18n.previewTitle || '%s preview' ).replace( '%s', pageLabel );
 		}
 
 		subtitleEl = doc.getElementById( 'fc-settings-preview-subtitle' );
+
+		// Update the preview subtitle
 		if ( subtitleEl ) {
+			// PRO pages link to the upgrade page
 			if ( requiresPro ) {
-				subtitleEl.innerHTML = getProPreviewSubtitleHtml( page );
+				setProPreviewSubtitle( subtitleEl, page );
 			}
 			// Otherwise show the isolated-session subtitle
 			else {

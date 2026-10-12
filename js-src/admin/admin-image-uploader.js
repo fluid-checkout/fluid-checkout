@@ -106,6 +106,7 @@
 
 				image = document.createElement( 'img' );
 				image.src = attachment.attributes.url;
+				image.alt = attachment.attributes.alt || attachment.attributes.title || '';
 				listItem.appendChild( image );
 				list.appendChild( listItem );
 			}
