@@ -408,6 +408,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Filter `fc_add_pickup_point_info_as_review_text_lines` to include pickup point details in the shipping method review text. The filter `fc_skip_add_pickup_point_info_as_review_text_lines` is deprecated. Returning true from that filter still skips those lines.
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
 * Improved: Default position of the shipping method section is now before the shipping address.
+* Improved: Local pickup settings include the default delivery type, shipping zone fields, and the shipping method position, which is shared with the Checkout section.
 * Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
 * Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.

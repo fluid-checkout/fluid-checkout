@@ -472,6 +472,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		check_admin_referer( 'fc_settings_save', 'fc_settings_nonce' );
 
+		// One form posts every tab. Track the pre-save value of each option so a shared field is not saved twice.
+		FluidCheckout_Settings::instance()->reset_settings_save_request();
+
 		$current_tab = $this->get_current_tab();
 		$tabs = $this->get_tabs();
 

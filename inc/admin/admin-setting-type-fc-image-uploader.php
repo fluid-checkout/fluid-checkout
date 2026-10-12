@@ -56,6 +56,7 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
 		$field_description = $renderer->get_field_description( $value );
 		$option_value = $value[ 'value' ];
+		$html_id = $renderer->get_field_html_id( $value );
 		$image_url = $option_value ? wp_get_attachment_image_url( $option_value, 'full' ) : '';
 
 		$renderer->output_field_start( $value, array( 'label_for' => false ) );
@@ -66,13 +67,13 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 			<div class="image-upload__wrapper <?php echo esc_attr( $value[ 'class' ] ); ?>">
 				<input
 					type="hidden"
-					name="<?php echo esc_attr( $value[ 'id' ] ); ?>"
-					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
+					id="<?php echo esc_attr( $html_id ); ?>"
 					value="<?php echo esc_attr( $option_value ); ?>"
 					<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				>
 				<div class="image-upload-preview">
-					<div id="<?php echo esc_attr( $value[ 'id' ] ); ?>_preview" class="placeholder">
+					<div id="<?php echo esc_attr( $html_id ); ?>_preview" class="placeholder">
 					<?php
 						if ( empty( $image_url ) ) {
 							echo esc_html( _x( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) );
@@ -84,21 +85,21 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 					</div>
 					<div class="actions">
 						<button
-							id="<?php echo esc_attr( $value[ 'id' ] ); ?>_select_button"
+							id="<?php echo esc_attr( $html_id ); ?>_select_button"
 							type="button"
 							class="button image-upload-select-button"
 							data-dialog-title="<?php echo esc_attr( __( 'Select an image', 'fluid-checkout' ) ); ?>"
 							data-dialog-button-text="<?php echo esc_attr( __( 'Select an image', 'fluid-checkout' ) ); ?>"
 							data-library-type="image"
-							data-preview-id="<?php echo esc_attr( $value[ 'id' ] ); ?>_preview"
-							data-control-id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+							data-preview-id="<?php echo esc_attr( $html_id ); ?>_preview"
+							data-control-id="<?php echo esc_attr( $html_id ); ?>"
 							<?php disabled( $renderer->is_field_disabled( $value ) ); ?>><?php echo esc_html( __( 'Select an image', 'fluid-checkout' ) ); ?></button>
 						<button
-							id="<?php echo esc_attr( $value[ 'id' ] ); ?>clear_button"
+							id="<?php echo esc_attr( $html_id ); ?>clear_button"
 							type="button"
 							class="button image-upload-clear-button"
-							data-preview-id="<?php echo esc_attr( $value[ 'id' ] ); ?>_preview"
-							data-control-id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+							data-preview-id="<?php echo esc_attr( $html_id ); ?>_preview"
+							data-control-id="<?php echo esc_attr( $html_id ); ?>"
 							data-message="<?php echo esc_attr( _x( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) ); ?>"
 							<?php disabled( $renderer->is_field_disabled( $value ) ); ?>><?php echo esc_html( _x( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ) ); ?></button>
 					</div>

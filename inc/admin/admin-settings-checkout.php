@@ -24,9 +24,6 @@ class FluidCheckout_Settings_Checkout {
 
 		// Settings
 		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
-
-		// Sanitize settings
-		add_filter( 'woocommerce_admin_settings_sanitize_option_fc_local_pickup_shipping_zone_fields', array( __CLASS__, 'sanitize_local_pickup_shipping_zone_fields' ), 10, 3 );
 	}
 
 
@@ -619,7 +616,7 @@ class FluidCheckout_Settings_Checkout {
 
 					array(
 						'title'                 => __( 'Shipping methods', 'fluid-checkout' ),
-						'desc'                  => '',
+						'desc'                  => __( 'This setting is shared between the Checkout and Local pickup sections. On the Local pickup section, it also decides whether the Ship/Pickup selector shows inside the shipping method section (before the address) or as a separate section (after).', 'fluid-checkout' ),
 						'desc_tip'              => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_methods_substep_position',
 						'type'                  => 'select',
@@ -685,32 +682,6 @@ class FluidCheckout_Settings_Checkout {
 		}
 
 		return $settings;
-	}
-
-
-
-	/**
-	 * Sanitize the local pickup shipping zone fields option to ensure it's saved as an array.
-	 * 
-	 * @param  mixed   $value      The option value.
-	 * @param  mixed   $option     The option arguments.
-	 * @param  mixed   $raw_value  The raw value of the option.
-	 */
-	public static function sanitize_local_pickup_shipping_zone_fields( $value, $option, $raw_value ) {
-		// Bail without changing the saved value when a disabled field was not submitted, eg. when disabled in the Lite version
-		// WooCommerce only skips the update when the sanitized value is `null`, so returning an empty array would wipe the saved value
-		// Check for the disabled field, as a cleared multiselect also submits no value and should still save an empty array
-		if ( null === $raw_value && is_array( $option ) && ! empty( $option[ 'disabled' ] ) ) { return null; }
-
-		// Ensure the value is an array, as a cleared multiselect submits no value
-		if ( ! is_array( $value ) ) {
-			$value = array();
-		}
-
-		// Sanitize the field keys
-		$value = array_map( 'sanitize_text_field', $value );
-
-		return $value;
 	}
 
 }
