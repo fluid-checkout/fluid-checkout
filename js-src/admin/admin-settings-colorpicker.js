@@ -1,12 +1,50 @@
 /**
  * Color picker fields on the Fluid Checkout settings page.
  * Mirrors WooCommerce settings colorpick behavior without relying on table cells.
+ *
+ * DEPENDS ON:
+ * - jQuery
+ * - jQuery Iris
  */
+( function ( root, factory ) {
+	if ( typeof define === 'function' && define.amd ) {
+		define( [], factory( root ) );
+	}
+	else if ( typeof exports === 'object' ) {
+		module.exports = factory( root );
+	}
+	else {
+		root.FCAdminSettingsColorPicker = factory( root );
+	}
+} )( typeof global !== 'undefined' ? global : this.window || this.global, function ( root ) {
 
-( function( $ ) {
 	'use strict';
 
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
 	var _hasInitialized = false;
+	var _publicMethods = {};
+	var _settings = {
+		wrapSelector:                  '.fc-settings-wrap',
+		colorInputSelector:            '.fc-settings-wrap .colorpick',
+		colorInputSiblingSelector:     '.colorpick',
+		previewSelector:               '.colorpickpreview',
+		previewClickSelector:          '.fc-settings-wrap .colorpickpreview',
+		controlSelector:               '.fc-settings-field__control',
+		irisPickerSelector:            '.iris-picker',
+		irisSquareSelector:            '.fc-settings-wrap .iris-square-value',
+		irisErrorClass:                'iris-error',
+		colorDataReadyKey:             'fcColorpickReady',
+		colorDataOriginalKey:          'originalValue',
+		colorPattern:                  /^\#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+	};
+
+
+
+	/**
+	 * METHODS
+	 */
 
 
 
@@ -17,27 +55,30 @@
 	 * @return  {jQuery}          Control wrapper, or the input parent as fallback.
 	 */
 	var getColorControl = function( $input ) {
-		var $control = $input.closest( '.fc-settings-field__control' );
+		var $control = $input.closest( _settings.controlSelector );
+
 		return $control.length ? $control : $input.parent();
 	};
+
+
 
 	/**
 	 * Initialize Iris color pickers for settings color fields.
 	 */
 	var initColorPickers = function() {
-		// Bail if Iris is not available
-		if ( 'function' !== typeof $.fn.iris ) { return; }
+		// Bail if jQuery or Iris is not available
+		if ( ! _hasJQuery || 'function' !== typeof $.fn.iris ) { return; }
 
-		$( '.fc-settings-wrap .colorpick' ).each( function() {
+		$( _settings.colorInputSelector ).each( function() {
 			var $input = $( this );
 
 			// Bail if already initialized
-			if ( $input.data( 'fcColorpickReady' ) ) { return; }
+			if ( $input.data( _settings.colorDataReadyKey ) ) { return; }
 
 			$input.iris( {
 				change: function( event, ui ) {
 					getColorControl( $input )
-						.find( '.colorpickpreview' )
+						.find( _settings.previewSelector )
 						.css( { backgroundColor: ui.color.toString() } );
 
 					setTimeout( function() {
@@ -48,9 +89,11 @@
 				border: true,
 			} );
 
-			$input.data( 'fcColorpickReady', true );
+			$input.data( _settings.colorDataReadyKey, true );
 		} );
 	};
+
+
 
 	/**
 	 * Show the Iris picker for a color input and hide other pickers.
@@ -58,10 +101,12 @@
 	 * @param  {jQuery}  $input  Color input element.
 	 */
 	var showColorPicker = function( $input ) {
-		$( '.iris-picker' ).hide();
-		getColorControl( $input ).find( '.iris-picker' ).show();
-		$input.data( 'originalValue', $input.val() );
+		$( _settings.irisPickerSelector ).hide();
+		getColorControl( $input ).find( _settings.irisPickerSelector ).show();
+		$input.data( _settings.colorDataOriginalKey, $input.val() );
 	};
+
+
 
 	/**
 	 * Handle click or focus on a color input.
@@ -75,26 +120,35 @@
 		showColorPicker( $input );
 	};
 
+
+
 	/**
 	 * Restore the previous valid color when Iris marks the value as invalid.
 	 *
 	 * @param  {Event}  e  Change event.
 	 */
 	var handleColorInputChange = function( e ) {
-		var $input = $( e.currentTarget );
+		var $input;
 		var originalValue;
 
+		$input = $( e.currentTarget );
+
 		// Bail if the value is still valid
-		if ( ! $input.is( '.iris-error' ) ) { return; }
+		if ( ! $input.is( '.' + _settings.irisErrorClass ) ) { return; }
 
-		originalValue = $input.data( 'originalValue' );
+		originalValue = $input.data( _settings.colorDataOriginalKey );
 
-		if ( originalValue && originalValue.match( /^\#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/ ) ) {
+		// Restore a previously valid hex color
+		if ( originalValue && originalValue.match( _settings.colorPattern ) ) {
 			$input.val( originalValue ).trigger( 'change' );
-		} else {
+		}
+		// Otherwise clear the invalid value
+		else {
 			$input.val( '' ).trigger( 'change' );
 		}
 	};
+
+
 
 	/**
 	 * Open the color picker when the preview swatch is clicked.
@@ -105,8 +159,10 @@
 		var $preview = $( e.currentTarget );
 
 		e.stopPropagation();
-		$preview.next( '.colorpick' ).trigger( 'click' );
+		$preview.next( _settings.colorInputSiblingSelector ).trigger( 'click' );
 	};
+
+
 
 	/**
 	 * Prevent Iris square clicks from bubbling and closing the picker.
@@ -117,11 +173,13 @@
 		e.preventDefault();
 	};
 
+
+
 	/**
 	 * Hide open Iris pickers when clicking outside them.
 	 */
 	var handleDocumentClick = function() {
-		$( '.iris-picker' ).hide();
+		$( _settings.irisPickerSelector ).hide();
 	};
 
 
@@ -129,25 +187,33 @@
 	/**
 	 * Initialize color picker behavior on the settings page.
 	 */
-	var init = function() {
+	_publicMethods.init = function() {
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
 
+		// Bail if jQuery is unavailable
+		if ( ! _hasJQuery ) { return; }
+
 		// Bail if settings form is not available
-		if ( ! document.querySelector( '.fc-settings-wrap' ) ) { return; }
+		if ( ! document.querySelector( _settings.wrapSelector ) ) { return; }
 
 		initColorPickers();
 
 		$( document.body )
-			.on( 'click focus', '.fc-settings-wrap .colorpick', handleColorInputActivate )
-			.on( 'change', '.fc-settings-wrap .colorpick', handleColorInputChange )
-			.on( 'click', '.fc-settings-wrap .colorpickpreview', handlePreviewClick )
-			.on( 'click', '.fc-settings-wrap .iris-square-value', handleIrisSquareClick )
+			.on( 'click focus', _settings.colorInputSelector, handleColorInputActivate )
+			.on( 'change', _settings.colorInputSelector, handleColorInputChange )
+			.on( 'click', _settings.previewClickSelector, handlePreviewClick )
+			.on( 'click', _settings.irisSquareSelector, handleIrisSquareClick )
 			.on( 'click', handleDocumentClick );
 
 		_hasInitialized = true;
 	};
 
-	$( init );
 
-} )( jQuery );
+
+	//
+	// Public APIs
+	//
+	return _publicMethods;
+
+} );
