@@ -3,8 +3,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Render settings arrays as cards and field rows on the Fluid Checkout settings page.
- * Uses the same settings arrays and field names as the WooCommerce settings API,
- * so values can be saved with `WC_Admin_Settings::save_fields()`.
+ * Uses the same settings arrays and field names as the WooCommerce settings API.
+ * Values are saved with `FluidCheckout_Settings::save_settings()`.
  */
 class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
