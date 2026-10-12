@@ -7143,8 +7143,10 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Product  $product        The product object.
 	 */
 	public function output_order_summary_cart_item_product_name( $cart_item, $cart_item_key, $product ) {
-		// CHANGE: Remove no-break-space from the end of the product name, add wrapper for the product name
-		echo '<div class="cart-item__element cart-item__name">' . apply_filters( 'woocommerce_cart_item_name', $product->get_name(), $cart_item, $cart_item_key ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// CHANGE: Use cart item product name API and wrapper markup for the order summary (WooCommerce 11.2.0 review-order.php)
+		$cart_item_name = WC()->cart->get_item_product_name( $cart_item, $product );
+		$product_name   = apply_filters( 'woocommerce_cart_item_name', $cart_item_name, $cart_item, $cart_item_key );
+		echo '<div class="cart-item__element cart-item__name">' . wp_kses_post( $product_name ) . '</div>';
 	}
 
 	/**
@@ -7170,8 +7172,9 @@ class FluidCheckout_Steps extends FluidCheckout {
 	 * @param   WC_Product  $product        The product object.
 	 */
 	public function output_order_summary_cart_item_meta_data( $cart_item, $cart_item_key, $product ) {
-		// Get meta data
-		$item_meta_data = wc_get_formatted_cart_item_data( $cart_item );
+		// CHANGE: Pass cart item product name for formatted meta output (WooCommerce 11.2.0 review-order.php)
+		$cart_item_name = WC()->cart->get_item_product_name( $cart_item, $product );
+		$item_meta_data = wc_get_formatted_cart_item_data( $cart_item, false, $cart_item_name );
 
 		// Bail if meta data is empty
 		if ( empty( $item_meta_data ) ) { return; }
