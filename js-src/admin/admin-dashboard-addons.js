@@ -22,13 +22,15 @@
 	var _publicMethods = { };
 	var _settings = {
 		activateSelector:                     '.fc-addons__item-action--activate',
-		itemSelector:                         '.fc-addons__item',
+		itemSelector:                         '.fc-addons__item, .fc-settings-card--promo',
+		actionsSelector:                      '.fc-addons__item-actions',
 		itemActionNoticeSelector:             '.fc-addons__item-action-notice',
 
 		itemActionNoticeClass:                'fc-addons__item-action-notice',
 		itemActionNoticeModifierClassTemplate: 'fc-addons__item-action-notice--###TYPE###',
 
 		pluginAttribute:                      'data-plugin',
+		labelAttribute:                       'data-fc-activate-label',
 
 		activatePluginAction:                 'fc_activate_plugin',
 		pluginFieldName:                      'plugin',
@@ -104,28 +106,32 @@
 	 * @param {string}  type    success|error.
 	 */
 	var showItemNotice = function( button, message, type ) {
-		var item = button.closest( '.fc-addons__item, .fc-settings-card--promo' );
-		var actions = button.closest( '.fc-addons__item-actions' );
+		var item = button.closest( _settings.itemSelector );
+		var actions = button.closest( _settings.actionsSelector );
 		var notice;
 
 		// Prefer the actions block notice when present
 		if ( actions ) {
-			notice = actions.querySelector( '.fc-addons__item-action-notice' );
+			notice = actions.querySelector( _settings.itemActionNoticeSelector );
 
+			// Create the notice when the card does not have one yet
 			if ( ! notice ) {
 				notice = document.createElement( 'div' );
-				notice.className = 'fc-addons__item-action-notice';
+				notice.className = _settings.itemActionNoticeClass;
 				actions.appendChild( notice );
 			}
-		} else {
+		}
+		// Otherwise attach the notice to the card
+		else {
 			// Bail if item missing
 			if ( ! item ) { return; }
 
-			notice = item.querySelector( '.fc-addons__item-action-notice' );
+			notice = item.querySelector( _settings.itemActionNoticeSelector );
 
+			// Create the notice when the card does not have one yet
 			if ( ! notice ) {
 				notice = document.createElement( 'div' );
-				notice.className = 'fc-addons__item-action-notice';
+				notice.className = _settings.itemActionNoticeClass;
 				button.parentNode.appendChild( notice );
 			}
 		}
@@ -155,8 +161,10 @@
 	 * @param {Element} button Activate button.
 	 */
 	var restoreActivateButton = function( button ) {
+		var storedLabel = button.getAttribute( _settings.labelAttribute );
+
 		button.disabled = false;
-		button.textContent = getActivateLabel();
+		button.textContent = storedLabel ? storedLabel : getActivateLabel();
 	};
 
 
@@ -219,6 +227,11 @@
 
 		// Bail if AJAX not configured
 		if ( ! plugin || ! _settings.ajaxUrl || ! _settings.activateNonce ) { return; }
+
+		// Keep the button's own label so "Activate plugin" is not replaced with "Activate add-on"
+		if ( ! button.getAttribute( _settings.labelAttribute ) ) {
+			button.setAttribute( _settings.labelAttribute, button.textContent );
+		}
 
 		button.disabled = true;
 		button.textContent = getProcessingLabel();
