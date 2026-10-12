@@ -60,8 +60,23 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 		$image_url = $option_value ? wp_get_attachment_image_url( $option_value, 'full' ) : '';
 
 		$renderer->output_field_start( $value, array( 'label_for' => false ) );
+		$image_alt = '';
+
+		// Prefer the attachment alt text for the preview
+		if ( $option_value ) {
+			$image_alt = (string) get_post_meta( $option_value, '_wp_attachment_image_alt', true );
+		}
+
+		// Otherwise name the preview with the field title
+		if ( '' === $image_alt && ! empty( $value[ 'title' ] ) ) {
+			$image_alt = $value[ 'title' ];
+		}
 		?>
 		<fieldset>
+			<?php // Name the group for assistive tech. The visible title stays in the field label column. ?>
+			<?php if ( '' !== $value[ 'title' ] ) : ?>
+				<legend class="screen-reader-text"><?php echo esc_html( $value[ 'title' ] ); ?></legend>
+			<?php endif; ?>
 			<?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 			<div class="image-upload__wrapper <?php echo esc_attr( $value[ 'class' ] ); ?>">
@@ -75,11 +90,13 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 				<div class="image-upload-preview">
 					<div id="<?php echo esc_attr( $html_id ); ?>_preview" class="placeholder">
 					<?php
+						// Show the empty state when no attachment is selected
 						if ( empty( $image_url ) ) {
 							echo esc_html( _x( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) );
 						}
+						// Otherwise show the selected image
 						else {
-							echo '<img src="' . esc_url( $image_url ) . '">';
+							echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( $image_alt ) . '">';
 						}
 					?>
 					</div>

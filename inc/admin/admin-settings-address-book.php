@@ -130,6 +130,11 @@ class FluidCheckout_Settings_AddressBook {
 		// Bail if not on the address book section
 		if ( 'address_book' !== $current_section ) { return $settings; }
 
+		/**
+		 * Filters the Address book settings.
+		 *
+		 * @since 5.0.0
+		 */
 		$settings = apply_filters(
 			'fc_pro_address_book_settings',
 			array_merge(
@@ -194,10 +199,10 @@ class FluidCheckout_Settings_AddressBook {
 		if ( 'address_book' !== $current_section ) { return $settings; }
 
 		/**
-		 * Filter the Address Book migration settings displayed on the Address Book tab.
+		 * Filters the Address Book migration settings displayed on the Address Book tab.
 		 * The Address Book add-on replaces the locked placeholder settings with its own settings.
 		 *
-		 * @param  array  $settings  Locked placeholder settings.
+		 * @since 5.0.0
 		 */
 		$migration_settings = apply_filters( 'fc_admin_address_book_migration_settings', self::get_locked_migration_settings() );
 

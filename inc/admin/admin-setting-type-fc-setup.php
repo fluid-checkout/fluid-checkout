@@ -83,9 +83,9 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		);
 
 		/**
-		 * Filter the getting-started checklist steps on the Dashboard.
+		 * Filters the getting-started checklist steps on the Dashboard.
 		 *
-		 * @param  array[]  $steps  Checklist steps with `id`, `label`, optional `badge`, and optional `requires_pro` keys.
+		 * @since 5.0.0
 		 */
 		return apply_filters( 'fc_setup_checklist_steps', $steps );
 	}
@@ -250,7 +250,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			</div>
 
 			<div class="fc-settings-card__inner">
-				<p><?php echo wp_kses_post( __( '<strong>Great! Your checkout page is now running on Fluid Checkout.</strong>', 'fluid-checkout' ) . ' ' . __( 'Here are a few steps to get started:', 'fluid-checkout' ) ); ?></p>
+				<p><?php echo wp_kses_post( __( '<strong>Great! Your checkout page is now running on Fluid Checkout.</strong> Here are a few steps to get started:', 'fluid-checkout' ) ); ?></p>
 
 				<ol class="fc-dashboard-checklist">
 					<?php foreach ( $steps as $step ) : ?>
@@ -270,6 +270,9 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						<li class="<?php echo esc_attr( $item_class ); ?>">
 							<span class="fc-dashboard-checklist__marker" aria-hidden="true"></span>
 							<span class="fc-dashboard-checklist__label"><?php echo wp_kses_post( isset( $step['label'] ) ? $step['label'] : '' ); ?></span>
+							<?php if ( $is_complete ) : ?>
+								<span class="screen-reader-text"><?php echo esc_html( __( 'Completed', 'fluid-checkout' ) ); ?></span>
+							<?php endif; ?>
 							<?php if ( ! empty( $badge_html ) ) : ?>
 								<span class="fc-dashboard-checklist__promo"><?php echo wp_kses_post( $badge_html ); ?></span>
 							<?php endif; ?>

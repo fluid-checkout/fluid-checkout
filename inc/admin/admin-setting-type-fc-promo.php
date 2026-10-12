@@ -153,6 +153,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		$pro_plugin_file  = 'fluid-checkout-pro/fluid-checkout-pro.php';
 		$is_pro_installed = FluidCheckout::instance()->is_plugin_installed( $pro_plugin_file );
 		$is_installed     = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
+		$is_activated     = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$plugin_slug      = isset( $value[ 'plugin_slug' ] ) ? sanitize_key( (string) $value[ 'plugin_slug' ] ) : '';
 		$action_type      = $is_installed ? 'activate' : 'purchase';
 		$admin            = FluidCheckout_Admin::instance();
@@ -165,7 +166,12 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 
 		ob_start();
 
-		if ( $is_installed ) :
+		// Show the activated state when the plugin is already active
+		if ( $is_activated ) :
+			?>
+			<span class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></span>
+			<?php
+		elseif ( $is_installed ) :
 			// Add-on activate requires PRO; PRO itself can still be activated without that gate
 			$activate_disabled = ! $is_pro_promo && ! FluidCheckout::instance()->is_pro_activated();
 			$activate_classes  = 'button button-primary fc-addons__item-action--activate';
@@ -247,12 +253,13 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		$html = (string) ob_get_clean();
 
 		/**
-		 * Filter settings promo card action HTML.
+		 * Filters settings promo card action HTML.
 		 *
-		 * @param string $html        Default actions HTML.
-		 * @param array  $value       Promo field args.
-		 * @param string $action_type activate|purchase (or custom from extensions).
-		 * @param string $plugin_file Plugin basename.
+		 * @since 5.0.0
+		 *
+		 * @param  array   $value        Promo field args.
+		 * @param  string  $action_type  activate|purchase (or custom from extensions).
+		 * @param  string  $plugin_file  Plugin basename.
 		 */
 		return (string) apply_filters( 'fc_settings_promo_actions_html', $html, $value, $action_type, $plugin_file );
 	}

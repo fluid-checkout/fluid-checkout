@@ -53,6 +53,11 @@ class FluidCheckout_Settings_AccountMatching {
 		// Bail if not the customer accounts section
 		if ( 'account_matching' !== $current_section ) { return $settings; }
 
+		/**
+		 * Filters the Customer accounts settings.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters(
 			'fc_account_matching_settings',
 			array(

@@ -70,7 +70,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'item_class'    => 'fc-addons__item--wide',
 				'plugin_file'   => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'   => 'fluid-checkout-pro',
-				'title'         => __( 'Fluid Checkout PRO', 'fluid-checkout' ) . ' - ' . __( 'The complete bundle', 'fluid-checkout' ),
+				'title'         => __( 'Fluid Checkout PRO - The complete bundle', 'fluid-checkout' ),
 				'subtitle'      => __( 'All PRO features + all add-ons, one price. Design templates, optimized cart and order received pages, account matching, and much more.', 'fluid-checkout' ),
 				'description'   => __( 'The best tools to further <strong>improve your WooCommerce checkout conversion rate</strong> and make the purchase experience consistent on the entire journey.', 'fluid-checkout' ),
 				'features'      => array(
