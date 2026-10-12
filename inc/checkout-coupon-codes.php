@@ -17,7 +17,7 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 	/**
 	 * Check whether the feature is enabled or not.
-	 * Always enabled. WooCommerce coupon availability is checked separately where hooks are registered.
+	 * Always enabled since 5.0.0. WooCommerce coupon availability is checked separately where hooks are registered.
 	 */
 	public function is_feature_enabled() {
 		return true;
