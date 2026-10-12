@@ -288,7 +288,7 @@ jQuery( function( $ ) {
 				field.find( '.select2-selection__placeholder' ).text( fieldLocale.label );
 			}
 
-			// Required.
+			// Required. A field the locale hides is not required, as on the server.
 			if ( typeof fieldLocale.required !== 'undefined' ) {
 				field_is_required( field, fieldLocale.required && true !== fieldLocale.hidden );
 			} else {
