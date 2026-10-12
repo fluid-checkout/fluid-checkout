@@ -52,6 +52,24 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	private $pre_option_registered = false;
 
+	/**
+	 * Runtime callback for `fc_settings_context_profile`, removed before the next one is added.
+	 *
+	 * Intentionally private. Only `set_context_profile()` should replace this callback.
+	 *
+	 * @var callable|null
+	 */
+	private $context_profile_callback = null;
+
+	/**
+	 * Whether a profile write is already in progress.
+	 *
+	 * Intentionally private. Stops `update_option()` sync from re-entering profile writes.
+	 *
+	 * @var bool
+	 */
+	private $is_updating_profile = false;
+
 
 
 	/**
@@ -73,6 +91,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 		// Migration and pre_option bootstrap
 		add_action( 'init', array( $this, 'maybe_migrate_legacy_options' ), 6 );
 		add_action( 'init', array( $this, 'maybe_register_pre_option_filters' ), 7 );
+
+		// Keep `update_option()` writes for managed keys on the active profile
+		add_filter( 'pre_update_option', array( $this, 'filter_pre_update_option' ), 10, 3 );
 
 		// Settings values forced when only Lite is active
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
@@ -460,9 +481,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function get_context_profile_slug() {
 		/**
-		 * Filter the settings profile slug to overlay for the current request.
+		 * Filters the settings profile slug to overlay for the current request.
 		 *
-		 * @param  string|null  $slug  Profile slug, or empty/null for no overlay.
+		 * @since 5.0.0
 		 */
 		$slug = apply_filters( 'fc_settings_context_profile', null );
 		$slug = is_string( $slug ) ? sanitize_title( $slug ) : '';
@@ -484,13 +505,18 @@ class FluidCheckout_Settings extends FluidCheckout {
 	public function set_context_profile( $slug ) {
 		$slug = null === $slug ? '' : sanitize_title( (string) $slug );
 
-		// Remove previous runtime setter if any
-		remove_all_filters( 'fc_settings_context_profile' );
+		// Remove only the previous runtime setter so other callbacks stay registered
+		if ( is_callable( $this->context_profile_callback ) ) {
+			remove_filter( 'fc_settings_context_profile', $this->context_profile_callback, 10 );
+			$this->context_profile_callback = null;
+		}
 
+		// Overlay a profile for the rest of this request
 		if ( '' !== $slug ) {
-			add_filter( 'fc_settings_context_profile', function() use ( $slug ) {
+			$this->context_profile_callback = function() use ( $slug ) {
 				return $slug;
-			}, 10 );
+			};
+			add_filter( 'fc_settings_context_profile', $this->context_profile_callback, 10 );
 		}
 
 		$this->invalidate_effective_cache();
@@ -567,6 +593,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$post_id = $this->get_profile_post_id_by_slug( $slug );
 		$post_content = serialize( $values ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize -- Intentional for CPT post_content payload.
 
+		// Create the profile post without the payload. `wp_insert_post()` runs `content_save_pre`, which kses and slashes would corrupt a serialized map.
 		if ( null === $post_id ) {
 			$post_id = wp_insert_post(
 				array(
@@ -574,28 +601,57 @@ class FluidCheckout_Settings extends FluidCheckout {
 					'post_status'  => 'publish',
 					'post_title'   => $slug,
 					'post_name'    => $slug,
-					'post_content' => $post_content,
-				),
-				true
-			);
-		} else {
-			$post_id = wp_update_post(
-				array(
-					'ID'           => $post_id,
-					'post_content' => $post_content,
+					'post_content' => '',
 				),
 				true
 			);
 		}
 
-		// Bail if save failed
+		// Bail if the profile post could not be created
 		if ( is_wp_error( $post_id ) || ! $post_id ) {
 			return false;
 		}
 
+		$written = $this->write_profile_post_content( (int) $post_id, $post_content );
+
+		// Bail if the payload could not be stored
+		if ( ! $written ) { return false; }
+
 		$this->invalidate_cache_for_slug( $slug );
 
+		// Bail if the stored payload does not round-trip, so callers do not treat a corrupt write as saved
+		$stored = $this->get_profile_values( $slug );
+		if ( serialize( $stored ) !== serialize( $values ) ) { // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+			return false;
+		}
+
 		return true;
+	}
+
+	/**
+	 * Write a profile payload directly, bypassing post content filters.
+	 *
+	 * @param  int     $post_id       Profile post ID.
+	 * @param  string  $post_content  Serialized option map.
+	 */
+	public function write_profile_post_content( $post_id, $post_content ) {
+		global $wpdb;
+
+		$updated = $wpdb->update(
+			$wpdb->posts,
+			array(
+				'post_content' => $post_content,
+			),
+			array(
+				'ID' => $post_id,
+			),
+			array( '%s' ),
+			array( '%d' )
+		);
+
+		clean_post_cache( $post_id );
+
+		return false !== $updated;
 	}
 
 
@@ -691,6 +747,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 		$defaults = $this->get_default_option_values();
 		$payload = array();
+		$had_legacy_fc_options = false;
 
 		// Iterate managed keys and copy existing individual option values
 		foreach ( $defaults as $key => $default ) {
@@ -700,6 +757,11 @@ class FluidCheckout_Settings extends FluidCheckout {
 			if ( null === $raw ) { continue; }
 
 			$payload[ $key ] = $raw;
+
+			// Remember real plugin rows so fresh installs do not ask to delete leftovers
+			if ( 0 === strpos( $key, 'fc_' ) ) {
+				$had_legacy_fc_options = true;
+			}
 		}
 
 		// Merge code defaults under stored values so the active profile is complete
@@ -714,7 +776,11 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$this->set_active_profile( $slug );
 		$this->update_raw_option( self::MIGRATION_FLAG_OPTION, 'yes', false );
 		$this->maybe_set_migration_time();
-		$this->update_raw_option( self::CLEANUP_NOTICE_OPTION, 'yes', false );
+
+		// Ask to delete leftover rows only when individual plugin options were copied
+		if ( $had_legacy_fc_options ) {
+			$this->update_raw_option( self::CLEANUP_NOTICE_OPTION, 'yes', false );
+		}
 	}
 
 	/**
@@ -797,6 +863,34 @@ class FluidCheckout_Settings extends FluidCheckout {
 		$value = null !== $code_default ? $code_default : $default;
 
 		return $this->maybe_force_lite_option_value( $option, $value );
+	}
+
+	/**
+	 * Copy `update_option()` writes for managed keys onto the active profile.
+	 * `get_option()` reads the profile, so a raw options-table write would be ignored.
+	 *
+	 * @param  mixed   $value      New option value.
+	 * @param  string  $option     Option name.
+	 * @param  mixed   $old_value  Previous option value.
+	 */
+	public function filter_pre_update_option( $value, $option, $old_value ) {
+		// Bail while this class is writing pointer and migration options
+		if ( $this->bypass_pre_option ) { return $value; }
+
+		// Bail while a profile write is already in progress
+		if ( $this->is_updating_profile ) { return $value; }
+
+		// Bail until legacy rows have been copied, so early writes stay in the options table for migration
+		if ( 'yes' !== $this->get_raw_option( self::MIGRATION_FLAG_OPTION, 'no' ) ) { return $value; }
+
+		// Bail if this key is not part of the settings profile
+		if ( ! is_string( $option ) || ! $this->is_managed_option( $option ) ) { return $value; }
+
+		$this->is_updating_profile = true;
+		$this->update_active_profile_values( array( $option => $value ) );
+		$this->is_updating_profile = false;
+
+		return $value;
 	}
 
 
@@ -1024,6 +1118,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function set_option_lite_design_template( $pre_option, $option, $default ) {
+		// Bail while reading the stored row for migration
+		if ( $this->bypass_pre_option ) { return $pre_option; }
+
 		return $this->get_option_default( 'fc_design_template' );
 	}
 
@@ -1035,6 +1132,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function set_option_checkout_column_layout( $pre_option, $option, $default ) {
+		// Bail while reading the stored row for migration
+		if ( $this->bypass_pre_option ) { return $pre_option; }
+
 		return $this->get_option_default( 'fc_checkout_column_layout' );
 	}
 
@@ -1046,6 +1146,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function set_option_progress_bar_style( $pre_option, $option, $default ) {
+		// Bail while reading the stored row for migration
+		if ( $this->bypass_pre_option ) { return $pre_option; }
+
 		return $this->get_option_default( 'fc_checkout_progress_bar_style' );
 	}
 
@@ -1057,6 +1160,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function set_option_replace_edit_cart_link( $pre_option, $option, $default ) {
+		// Bail while reading the stored row for migration
+		if ( $this->bypass_pre_option ) { return $pre_option; }
+
 		return $this->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' );
 	}
 
@@ -1067,6 +1173,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  string  $option       Option name.
 	 */
 	public function set_option_order_summary_position_mobile( $value, $option ) {
+		// Bail while reading the stored row for migration
+		if ( $this->bypass_pre_option ) { return $value; }
+
 		// Bail if using accepted Lite options
 		$accepted_values = array( 'hidden', 'site_header' );
 		if ( in_array( $value, $accepted_values ) ) {
@@ -1084,6 +1193,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function set_option_coupon_code_position_checkout( $pre_option, $option, $default ) {
+		// Bail while reading the stored row for migration
+		if ( $this->bypass_pre_option ) { return $pre_option; }
+
 		return $this->get_option_default( 'fc_pro_checkout_coupon_codes_position' );
 	}
 
@@ -1095,6 +1207,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  mixed   $default      The fallback value to return if the option does not exist.
 	 */
 	public function set_option_billing_address_position_checkout( $pre_option, $option, $default ) {
+		// Bail while reading the stored row for migration
+		if ( $this->bypass_pre_option ) { return $pre_option; }
+
 		return $this->get_option_default( 'fc_pro_checkout_billing_address_position' );
 	}
 
@@ -1107,6 +1222,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  array|null  $data     Posted data. Defaults to `$_POST`.
 	 */
 	public function save_settings( $options, $data = null ) {
+		// Use the current request when the caller did not pass posted data
 		if ( null === $data ) {
 			$data = $_POST; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Caller verifies nonce.
 		}
@@ -1125,9 +1241,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 				continue;
 			}
 
-			// Keep the stored value for disabled fields
+			// Skip disabled fields so a forced read is not written back over the stored value
 			if ( array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
-				$update_values[ $option[ 'id' ] ] = $this->get_option( $option[ 'id' ] );
+				continue;
+			}
+
+			// Skip options Lite is forcing, so a save while PRO is inactive does not replace the stored PRO value
+			$stored_value = $this->get_stored_option_value( $option[ 'id' ] );
+			if ( $this->maybe_force_lite_option_value( $option[ 'id' ], $stored_value ) !== $stored_value ) {
 				continue;
 			}
 
@@ -1139,7 +1260,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 				$option_name = current( array_keys( $option_name_array ) );
 				$setting_name = key( $option_name_array[ $option_name ] );
 				$raw_value = isset( $data[ $option_name ][ $setting_name ] ) ? wp_unslash( $data[ $option_name ][ $setting_name ] ) : null;
-			} else {
+			}
+			// Otherwise read the posted field directly
+			else {
 				$raw_value = isset( $data[ $option_name ] ) ? wp_unslash( $data[ $option_name ] ) : null;
 			}
 
@@ -1159,6 +1282,88 @@ class FluidCheckout_Settings extends FluidCheckout {
 		}
 
 		return $this->update_active_profile_values( $update_values );
+	}
+
+	/**
+	 * Get the stored profile value for an option, without Lite force filters.
+	 *
+	 * @param  string  $option  Option name.
+	 */
+	public function get_stored_option_value( $option ) {
+		$effective = $this->get_effective_values();
+
+		// Use the profile value when the key has been stored or seeded from defaults
+		if ( is_array( $effective ) && array_key_exists( $option, $effective ) ) {
+			return $effective[ $option ];
+		}
+
+		return $this->get_option_default( $option );
+	}
+
+	/**
+	 * Copy the active profile back to individual options.
+	 * Used on deactivation, when `get_option()` no longer reads the profile.
+	 */
+	public function sync_active_profile_to_raw_options() {
+		$slug = $this->get_active_profile_slug();
+
+		// Bail if no profile is active
+		if ( '' === $slug ) { return; }
+
+		$values = $this->get_profile_values( $slug );
+
+		// Bail if the profile payload is missing
+		if ( ! is_array( $values ) || empty( $values ) ) { return; }
+
+		// Iterate stored values and write them to the options table
+		foreach ( $values as $key => $value ) {
+			// Skip invalid keys
+			if ( ! is_string( $key ) || '' === $key ) { continue; }
+
+			// Keep the existing autoload flag when the row is already present
+			$this->update_raw_option( $key, $value, null );
+		}
+	}
+
+	/**
+	 * Disable a settings field.
+	 * Not intended for settings fields of the type `radio`, as WooCommerce uses the `disabled` argument for the list of option values to disable on those fields.
+	 *
+	 * @param  array        $settings     Admin settings argument values.
+	 * @param  string       $option_name  Option name of the settings field to disable.
+	 * @param  string|null  $description  Description explaining why the settings field was disabled. Defaults to `null`, keeping the current description and description tooltip.
+	 */
+	public function disable_settings_field( $settings, $option_name, $description = null ) {
+		// Bail if the settings arguments are not valid
+		if ( ! is_array( $settings ) ) { return $settings; }
+
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than the target settings field
+			if ( ! is_array( $setting_args ) || ! array_key_exists( 'id', $setting_args ) || $option_name !== $setting_args[ 'id' ] ) { continue; }
+
+			// Maybe initialize the custom attributes arguments
+			if ( ! array_key_exists( 'custom_attributes', $setting_args ) || ! is_array( $setting_args[ 'custom_attributes' ] ) ) {
+				$setting_args[ 'custom_attributes' ] = array();
+			}
+
+			// Disable the settings field
+			$setting_args[ 'disabled' ] = true;
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+
+			// Maybe change the description explaining why the settings field was disabled
+			if ( null !== $description ) {
+				$setting_args[ 'desc' ] = $description;
+
+				// Remove the description tooltip
+				unset( $setting_args[ 'desc_tip' ] );
+			}
+
+			// Update the settings field arguments
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
 	}
 
 	/**
