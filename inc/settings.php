@@ -52,20 +52,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	private $pre_option_registered = false;
 
-	/**
-	 * Option values read before this request's settings save changed them, keyed by option id.
-	 *
-	 * @var array
-	 */
-	private $settings_save_original_values = array();
-
-	/**
-	 * Option values already written during this request's settings save, keyed by option id.
-	 *
-	 * @var array
-	 */
-	private $settings_save_written_values = array();
-
 
 
 	/**
@@ -1139,44 +1125,32 @@ class FluidCheckout_Settings extends FluidCheckout {
 				continue;
 			}
 
-			$option_id = $option[ 'id' ];
-
-			// Remember the value from before this request's first write, while it is still unchanged
-			$this->get_settings_save_original_value( $option_id );
-
 			// Keep the stored value for disabled fields
 			if ( array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
-				$value = $this->get_option( $option_id );
-			}
-			else {
-				$option_name = $option[ 'field_name' ] ?? $option_id;
-
-				// Get posted value (supports nested option names)
-				if ( strstr( $option_name, '[' ) ) {
-					parse_str( $option_name, $option_name_array );
-					$option_name = current( array_keys( $option_name_array ) );
-					$setting_name = key( $option_name_array[ $option_name ] );
-					$raw_value = isset( $data[ $option_name ][ $setting_name ] ) ? wp_unslash( $data[ $option_name ][ $setting_name ] ) : null;
-				} else {
-					$raw_value = isset( $data[ $option_name ] ) ? wp_unslash( $data[ $option_name ] ) : null;
-				}
-
-				$value = $this->sanitize_setting_value( $option, $raw_value, $update_values );
-
-				// Skip null values (e.g. passwords left blank)
-				if ( null === $value ) {
-					continue;
-				}
-			}
-
-			// A second field for the same option still posts the value from when the page was rendered.
-			// Skip that stale copy when this request already saved a different value.
-			if ( $this->should_skip_stale_settings_value( $option_id, $value ) ) {
+				$update_values[ $option[ 'id' ] ] = $this->get_option( $option[ 'id' ] );
 				continue;
 			}
 
-			$update_values[ $option_id ] = $value;
-			$this->settings_save_written_values[ $option_id ] = $value;
+			$option_name = $option[ 'field_name' ] ?? $option[ 'id' ];
+
+			// Get posted value (supports nested option names)
+			if ( strstr( $option_name, '[' ) ) {
+				parse_str( $option_name, $option_name_array );
+				$option_name = current( array_keys( $option_name_array ) );
+				$setting_name = key( $option_name_array[ $option_name ] );
+				$raw_value = isset( $data[ $option_name ][ $setting_name ] ) ? wp_unslash( $data[ $option_name ][ $setting_name ] ) : null;
+			} else {
+				$raw_value = isset( $data[ $option_name ] ) ? wp_unslash( $data[ $option_name ] ) : null;
+			}
+
+			$value = $this->sanitize_setting_value( $option, $raw_value, $update_values );
+
+			// Skip null values (e.g. passwords left blank)
+			if ( null === $value ) {
+				continue;
+			}
+
+			$update_values[ $option[ 'id' ] ] = $value;
 		}
 
 		// Bail if nothing to update
@@ -1275,55 +1249,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 		}
 
 		return $value;
-	}
-
-	/**
-	 * Forget values tracked while saving settings.
-	 *
-	 * The settings page saves every tab from one form. Reset this before that loop so two fields
-	 * for the same option can tell a new value from the value that was already stored.
-	 *
-	 * @since 5.0.0
-	 */
-	public function reset_settings_save_request() {
-		$this->settings_save_original_values = array();
-		$this->settings_save_written_values = array();
-	}
-
-	/**
-	 * Get the option value from before this save request changed it.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @param  string  $option_id  Option id.
-	 */
-	private function get_settings_save_original_value( $option_id ) {
-		if ( ! array_key_exists( $option_id, $this->settings_save_original_values ) ) {
-			$this->settings_save_original_values[ $option_id ] = $this->get_option( $option_id );
-		}
-
-		return $this->settings_save_original_values[ $option_id ];
-	}
-
-	/**
-	 * Whether this value still matches the pre-save value and should not replace a different value already saved in this request.
-	 *
-	 * Checkout and Local pickup both edit `fc_shipping_methods_substep_position`. All tabs are saved together,
-	 * so the field the merchant did not change still posts the value from when the page was rendered.
-	 *
-	 * @since 5.0.0
-	 *
-	 * @param  string  $option_id  Option id.
-	 * @param  mixed   $value      Sanitized value from this field.
-	 */
-	private function should_skip_stale_settings_value( $option_id, $value ) {
-		// Bail if this option has not been written yet in this request
-		if ( ! array_key_exists( $option_id, $this->settings_save_written_values ) ) { return false; }
-
-		$original = $this->get_settings_save_original_value( $option_id );
-		$written = $this->settings_save_written_values[ $option_id ];
-
-		return $value === $original && $written !== $original;
 	}
 
 	/**

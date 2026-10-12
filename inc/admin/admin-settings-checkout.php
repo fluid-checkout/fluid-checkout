@@ -620,6 +620,9 @@ class FluidCheckout_Settings_Checkout {
 						'desc_tip'              => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_methods_substep_position',
 						'type'                  => 'select',
+						'custom_attributes'     => array(
+							'data-fc-settings-sync-group' => 'fc_shipping_methods_substep_position',
+						),
 						'options'               => array(
 							'before_shipping_address' => __( 'Before shipping address', 'fluid-checkout' ),
 							'after_shipping_address'  => __( 'After shipping address', 'fluid-checkout' ),

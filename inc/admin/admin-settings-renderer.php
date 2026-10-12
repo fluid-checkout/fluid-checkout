@@ -699,9 +699,12 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		}
 
 		$this->output_field_start( $value );
+		$field_name = empty( $value[ 'display_only' ] ) ? $value[ 'field_name' ] . ( $is_multiselect ? '[]' : '' ) : '';
 		?>
 		<select
-			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?><?php echo $is_multiselect ? '[]' : ''; ?>"
+			<?php if ( '' !== $field_name ) : ?>
+			name="<?php echo esc_attr( $field_name ); ?>"
+			<?php endif; ?>
 			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"

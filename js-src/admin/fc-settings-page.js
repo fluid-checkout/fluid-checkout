@@ -42,6 +42,8 @@
 
 		hiddenClass:                           'hidden',
 
+		syncedSelectAttribute:                 'data-fc-settings-sync-group',
+
 		i18n: {
 			saving:                            'Saving...',
 		},
@@ -617,6 +619,120 @@
 	};
 
 	/**
+	 * Get the sync group key for a settings control.
+	 *
+	 * @param   {Element}  element  The form control.
+	 * @return  {string}            Group key, or an empty string.
+	 */
+	var getSyncedSelectGroup = function( element ) {
+		// Bail if element is not valid
+		if ( ! element || ! element.getAttribute ) { return ''; }
+
+		return element.getAttribute( _settings.syncedSelectAttribute ) || '';
+	};
+
+	/**
+	 * Get every control in a sync group, including controls inside tabs hidden on load.
+	 * Inactive settings tabs stay in the DOM, so a hidden copy can still be updated.
+	 *
+	 * @param   {string}  group  Sync group key.
+	 * @return  {Array}          Matching elements.
+	 */
+	var getSyncedSelects = function( group ) {
+		var all;
+		var matches = [];
+		var i;
+
+		// Bail if group is missing
+		if ( ! group ) { return matches; }
+
+		all = document.querySelectorAll( '[' + _settings.syncedSelectAttribute + ']' );
+
+		// Keep controls that belong to this group
+		for ( i = 0; i < all.length; i++ ) {
+			if ( group === all[ i ].getAttribute( _settings.syncedSelectAttribute ) ) {
+				matches.push( all[ i ] );
+			}
+		}
+
+		return matches;
+	};
+
+	/**
+	 * Copy a select value to the other controls in its sync group.
+	 *
+	 * @param   {Element}  source  The select the merchant changed, or the submitted select on load.
+	 */
+	var syncMirroredSelectValue = function( source ) {
+		var group;
+		var mirrors;
+		var i;
+
+		// Bail if the control is not a select
+		if ( ! source || ! source.tagName || 'select' !== source.tagName.toLowerCase() ) { return; }
+
+		group = getSyncedSelectGroup( source );
+
+		// Bail if this select is not in a sync group
+		if ( ! group ) { return; }
+
+		mirrors = getSyncedSelects( group );
+
+		// Update the other copies without dispatching change, so this does not loop
+		for ( i = 0; i < mirrors.length; i++ ) {
+			if ( mirrors[ i ] === source ) { continue; }
+			if ( mirrors[ i ].value === source.value ) { continue; }
+
+			mirrors[ i ].value = source.value;
+		}
+	};
+
+	/**
+	 * Align each sync group with the select that is submitted.
+	 * Display-only copies have no name, so the named Checkout field is the source on load.
+	 */
+	var syncMirroredSelectsOnLoad = function() {
+		var selects;
+		var seen = {};
+		var i;
+		var j;
+		var group;
+		var mirrors;
+		var source;
+
+		selects = document.querySelectorAll( 'select[' + _settings.syncedSelectAttribute + ']' );
+
+		// Iterate groups once
+		for ( i = 0; i < selects.length; i++ ) {
+			group = getSyncedSelectGroup( selects[ i ] );
+
+			// Skip groups already synced
+			if ( ! group || seen[ group ] ) { continue; }
+
+			seen[ group ] = true;
+			mirrors = getSyncedSelects( group );
+			source = null;
+
+			// Prefer the select that posts with the form
+			for ( j = 0; j < mirrors.length; j++ ) {
+				if ( mirrors[ j ].name ) {
+					source = mirrors[ j ];
+					break;
+				}
+			}
+
+			// Fall back to the first control in the group
+			if ( ! source && mirrors.length ) {
+				source = mirrors[ 0 ];
+			}
+
+			if ( source ) {
+				syncMirroredSelectValue( source );
+			}
+		}
+	};
+
+	/**
 	 * Handle change events.
 	 *
 	 * @param   {Event}  event  The change event.
@@ -624,6 +740,9 @@
 	var handleChange = function( event ) {
 		// LAYOUT OPTION SELECTED STATE
 		syncLayoutOptionSelectedState( event.target );
+
+		// SYNCED SELECTS
+		syncMirroredSelectValue( event.target );
 
 		// CONDITIONAL FIELDS TRIGGER
 		var triggerFieldId = resolveTriggerFieldId( event.target );
@@ -712,6 +831,9 @@
 
 		// Initialize conditionals
 		initializeConditionals();
+
+		// Align shared selects, including copies inside tabs that are hidden on load
+		syncMirroredSelectsOnLoad();
 
 		// Pin the actions bar before the first paint settles
 		syncActionsBarPosition();

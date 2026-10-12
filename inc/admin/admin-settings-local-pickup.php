@@ -145,24 +145,40 @@ class FluidCheckout_Settings_LocalPickup {
 				),
 
 				array(
+					'type' => 'sectionend',
+					'id'   => 'fc_local_pickup_options',
+				),
+
+				array(
+					'title' => __( 'Shipping methods', 'fluid-checkout' ),
+					'type'  => 'title',
+					'desc'  => '',
+					'id'    => 'fc_local_pickup_shipping_methods_options',
+				),
+
+				array(
 					'title'                 => __( 'Shipping methods', 'fluid-checkout' ),
 					'desc'                  => __( 'This setting is shared between the Checkout and Local pickup sections. On the Local pickup section, it also decides whether the Ship/Pickup selector shows inside the shipping method section (before the address) or as a separate section (after).', 'fluid-checkout' ),
 					'desc_tip'              => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
 					'id'                    => 'fc_shipping_methods_substep_position',
 					'html_id'               => 'fc_shipping_methods_substep_position_local_pickup',
-					'field_name'            => 'fc_shipping_methods_substep_position_local_pickup',
 					'type'                  => 'select',
 					'options'               => array(
 						'before_shipping_address' => __( 'Before shipping address', 'fluid-checkout' ),
 						'after_shipping_address'  => __( 'After shipping address', 'fluid-checkout' ),
 					),
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_substep_position' ),
+					'custom_attributes'     => array(
+						'data-fc-settings-sync-group' => 'fc_shipping_methods_substep_position',
+					),
 					'autoload'              => false,
+					'display_only'          => true,
+					'is_option'             => false,
 				),
 
 				array(
 					'type' => 'sectionend',
-					'id'   => 'fc_local_pickup_options',
+					'id'   => 'fc_local_pickup_shipping_methods_options',
 				),
 			)
 		);
