@@ -99,13 +99,26 @@
 	font-weight: normal;
 	line-height: 12px;
 	text-decoration: none;
-	cursor: default;
+	transition: color .15s ease-in-out, transform .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.fc-settings-promo-pill:hover,
+.fc-settings-promo-pill:focus {
+	color: $fc-settings-promo-pill-color-hover;
+	text-decoration: none;
+	transform: scale( 1.025 );
+	box-shadow: 0 2px 6px 0 rgba( 0, 0, 0, .15 );
 }
 
 .fc-settings-promo-pill--addon {
 	border-color: $fc-settings-promo-pill-addon-border-color;
 	background: $fc-settings-promo-pill-addon-background-color;
 	color: $fc-settings-promo-pill-addon-color;
+}
+
+.fc-settings-promo-pill--addon:hover,
+.fc-settings-promo-pill--addon:focus {
+	color: $fc-settings-promo-pill-addon-color-hover;
 }
 
 .fc-settings-promo-pill--static,

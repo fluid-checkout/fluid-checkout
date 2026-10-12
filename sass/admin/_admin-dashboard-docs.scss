@@ -97,3 +97,14 @@
 	margin-left: 0;
 	margin-right: auto;
 }
+
+// Getting started badges are not links. Other `.fc-settings-promo-pill` links keep their hover styles.
+.fc-dashboard-checklist__promo .fc-settings-promo-pill,
+.fc-dashboard-checklist__promo .fc-settings-promo-pill:hover,
+.fc-dashboard-checklist__promo .fc-settings-promo-pill:focus {
+	cursor: default;
+	color: $fc-settings-promo-pill-color;
+	text-decoration: none;
+	transform: none;
+	box-shadow: none;
+}

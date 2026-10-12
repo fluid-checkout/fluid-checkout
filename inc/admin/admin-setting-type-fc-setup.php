@@ -260,8 +260,12 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						}
 
 						$badge_html = '';
-						if ( ! empty( $step['badge'] ) && class_exists( 'FluidCheckout_Admin' ) ) {
-							$badge_html = FluidCheckout_Admin::instance()->get_pro_feature_badge_html( $step['badge'] );
+						// Getting started checklist badges are plain text.
+						if ( ! empty( $step['badge'] ) && ! FluidCheckout::instance()->is_pro_activated() ) {
+							$badge_html = sprintf(
+								'<span class="fc-settings-promo-pill">%s</span>',
+								esc_html( __( 'PRO feature', 'fluid-checkout' ) )
+							);
 						}
 						?>
 						<li class="<?php echo esc_attr( $item_class ); ?>">

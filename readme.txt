@@ -356,7 +356,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Improved: PRO feature badges stay on screen without linking anywhere, and do not change when hovered.
+* Improved: PRO feature badges on the Getting started checklist stay on screen without linking anywhere, and do not change when hovered.
 * Improved: Google address autocomplete is enabled by default.
 * Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
 * Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
