@@ -40,7 +40,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		// Bail if already enqueued (Dashboard tab may own enqueue there)
 		if ( wp_script_is( 'fc-admin-dashboard-addons', 'enqueued' ) ) { return; }
 
-		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'jquery', 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-dashboard-addons', 'window.addEventListener("load",function(){FCAdminDashboardAddons.init(fcAdminDashboardAddonsSettings);});' );
 
 		// EXCEPTION: Runtime values — AJAX URL and nonce for local Activate.
@@ -154,15 +154,8 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		$is_pro_installed = FluidCheckout::instance()->is_plugin_installed( $pro_plugin_file );
 		$is_installed     = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
 		$is_activated     = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
-		$plugin_slug      = isset( $value[ 'plugin_slug' ] ) ? sanitize_key( (string) $value[ 'plugin_slug' ] ) : '';
 		$action_type      = $is_installed ? 'activate' : 'purchase';
 		$admin            = FluidCheckout_Admin::instance();
-
-		// Fallback slug from the plugin basename folder when not provided
-		if ( '' === $plugin_slug ) {
-			$parts       = explode( '/', $plugin_file );
-			$plugin_slug = sanitize_key( $parts[0] ?? '' );
-		}
 
 		ob_start();
 
@@ -206,13 +199,9 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 				<?php
 			endif;
 		else :
-			// Add-on promos
+			// Add-on promos link out to upgrade or purchase.
 			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
 			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
-			$is_entitled    = '' !== $plugin_slug
-				&& class_exists( 'FC_Licenses_Client' )
-				&& FC_Licenses_Client::has_site_key()
-				&& FC_Licenses_Client::is_plugin_entitled_with_site_key( $plugin_slug );
 
 			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
 				$purchase_label = $admin->get_addon_purchase_button_label( (string) $value[ 'purchase_price' ] );
@@ -236,16 +225,8 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 				<?php if ( '' !== $purchase_url && '' !== $purchase_label ) : ?>
 					<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
 				<?php endif; ?>
-			<?php elseif ( $is_entitled ) : ?>
-				<?php // PRO installed: Install when entitled (PRO may replace via filter). Keep action_type as `purchase` so active PRO can swap in the licensed Install UI. ?>
-				<button
-					type="button"
-					class="button button-primary button--install fc-addons__item-action--install"
-					data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
-				><?php echo esc_html( __( 'Install plugin', 'fluid-checkout' ) ); ?></button>
-				<div class="fc-addons__item-action-notice" hidden></div>
 			<?php elseif ( '' !== $purchase_url ) : ?>
-				<?php // PRO installed, not entitled: price-less purchase CTA so entitled customers are not nudged to pay again. ?>
+				<?php // PRO installed: price-less purchase CTA so customers are not nudged to pay again. ?>
 				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $admin->get_addon_purchase_button_label_without_price() ); ?></a>
 			<?php endif;
 		endif;

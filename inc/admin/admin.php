@@ -270,30 +270,19 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 	/**
 	 * Get HTML for the PRO feature promo pill badge.
+	 * The badge is not a link and has no hover behavior.
 	 *
-	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 * @param  string       $section_slug  Unused. Kept for existing call sites.
 	 * @param  string|null  $label         Optional badge label. Defaults to "PRO feature".
 	 */
 	public function get_pro_feature_badge_html( $section_slug = '', $label = null ) {
 		// Bail if PRO is already activated
 		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
 
-		$section_slug = sanitize_title( $section_slug );
-		$mtm_kwd = ! empty( $section_slug ) ? 'pro-badge-' . $section_slug : 'pro-badge';
 		$label = null !== $label ? $label : __( 'PRO feature', 'fluid-checkout' );
 
-		$url = add_query_arg(
-			array(
-				'mtm_campaign' => 'upgrade-pro',
-				'mtm_kwd'      => $mtm_kwd,
-				'mtm_source'   => 'lite-plugin',
-			),
-			'https://fluidcheckout.com/pricing/'
-		);
-
 		return sprintf(
-			'<a class="fc-settings-promo-pill" href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>',
-			esc_url( $url ),
+			'<span class="fc-settings-promo-pill fc-settings-promo-pill--static">%s</span>',
 			esc_html( $label )
 		);
 	}
@@ -302,7 +291,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * Get HTML for the PRO feature promo pill on add-on settings sections.
 	 * Returns empty when the add-on feature is already unlocked.
 	 *
-	 * @param  string  $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
+	 * @param  string  $section_slug  Unused. Kept for existing call sites.
 	 * @param  string  $product_url   Unused. Kept for backward compatibility with existing call sites.
 	 * @param  string  $feature_slug  Feature slug checked against the settings access registry.
 	 */

@@ -64,21 +64,18 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 				/* translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL. */
 				'label'      => sprintf( __( 'Enable optimized <a href="%1$s">cart</a>, <a href="%2$s">thank you</a> and <a href="%3$s">order pay</a> pages.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'cart' ) ), esc_url( $settings_page->get_settings_url( 'order_received' ) ), esc_url( $settings_page->get_settings_url( 'order_pay' ) ) ),
 				'badge'      => 'setup-optimized-pages',
-				'requires_pro' => true,
 			),
 			array(
 				'id'         => 'address_autocomplete',
 				/* translators: %s: Address autocomplete settings URL. */
 				'label'      => sprintf( __( 'Enable <a href="%s">address autocomplete</a> from Google Maps.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_autocomplete' ) ) ),
 				'badge'      => 'setup-address-autocomplete',
-				'requires_pro' => true,
 			),
 			array(
 				'id'         => 'address_book',
 				/* translators: %s: Address book settings URL. */
 				'label'      => sprintf( __( 'Enable multiple saved addresses with <a href="%s">address book</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_book' ) ) ),
 				'badge'      => 'setup-address-book',
-				'requires_pro' => true,
 			),
 		);
 

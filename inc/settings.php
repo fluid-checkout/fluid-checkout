@@ -239,7 +239,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_vat_number_per_account_limit'                               => 'one_per_account',
 
 			// Google Address Autocomplete (feature keys; FCGAA overrides when both active).
-			'fc_gaa_enabled'                                                => 'no',
+			'fc_gaa_enabled'                                                => 'yes',
 			'fc_gaa_google_places_api_key'                                  => '',
 			'fc_gaa_google_places_api_key_validated_hash'                   => '',
 			'fc_gaa_google_places_api_version'                              => 'current',
