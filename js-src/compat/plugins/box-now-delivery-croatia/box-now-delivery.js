@@ -537,8 +537,8 @@
                 terminalField.val(JSON.stringify(lockerData));
             }
             $(document.body).trigger("update_checkout");
-            // CHANGE: END - Sync Fluid Checkout validation field immediately and refresh checkout so session and step validation do not lag behind the selected locker UI.
         }
+        // CHANGE: END - Sync Fluid Checkout validation field immediately and refresh checkout so session and step validation do not lag behind the selected locker UI.
         toggleExpressCheckoutForBoxNow();
 
         if (options.closePopup && boxNowDeliverySettings.displayMode === "popup") {
