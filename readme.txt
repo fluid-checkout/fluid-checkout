@@ -368,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Fixed: "Same as billing address" behavior on the cart shipping calculator.
 * Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
 * Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
+* Fixed: Compatibility with plugin Wawp (Automation Web Platform). Fix phone country code being applied twice after a page reload, and the phone country dropdown collapsing so countries cannot be selected on checkout.
 
 = 4.2.7 - 2026-08-19 =
 

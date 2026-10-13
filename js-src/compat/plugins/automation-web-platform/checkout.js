@@ -1,3 +1,4 @@
+// FC-REPLACEMENTS: exclude — FC-owned legacy OTP fork; upstream removed checkout.js in Wawp 5.1.
 jQuery(document).ready(function($) {
     var otpSent = false;
     var resendInterval;

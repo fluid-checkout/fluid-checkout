@@ -29,9 +29,23 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 		// Very late hooks
 		add_action( 'wp', array( $this, 'very_late_hooks' ), 100 );
 
+		// Country code script (Wawp 5.1+)
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_country_code_script' ), 20 );
+
 		// Phone number field position
 		add_filter( 'pre_option_fc_billing_phone_field_position', array( $this, 'maybe_change_billing_phone_position' ), 10, 3 );
 		add_filter( 'fc_checkout_general_settings', array( $this, 'maybe_change_billing_phone_position_settings_args' ), 20 ); // Priority needs to be higher than that used by the PRO plugin to enable the settings fields (10)
+	}
+
+	/**
+	 * Replace Wawp country-code script with the FC fork.
+	 */
+	public function maybe_replace_country_code_script() {
+		// Bail if the upstream script is not registered or enqueued
+		if ( ! wp_script_is( 'wawp-country-code-script', 'registered' ) && ! wp_script_is( 'wawp-country-code-script', 'enqueued' ) ) { return; }
+
+		wp_deregister_script( 'wawp-country-code-script' );
+		wp_enqueue_script( 'wawp-country-code-script', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/block-checkout-intl-tel' ), array( 'wawp-intl-tel-input-js', 'jquery' ), NULL, true );
 	}
 
 	/**
@@ -59,7 +73,10 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	public function otp_verification_hooks() {
 		// Bail if OTP verification is not enabled
 		if ( ! $this->is_otp_verification_enabled() ) { return; }
-		
+
+		// Get object
+		$class_object = FluidCheckout::instance()->get_object_by_class_name_from_hooks( self::CLASS_NAME );
+
 		// Move OTP verification popup
 		remove_action( 'woocommerce_after_order_notes', array( $class_object, 'add_otp_verification_popup' ), 10 );
 		add_action( 'the_content', array( $this, 'add_otp_verification_popup' ), 10, 2 );
@@ -356,7 +373,7 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// WAWP checkout script
+		// FC-owned legacy OTP script for Wawp before 5.1, when upstream still shipped checkout.js.
 		wp_register_script( 'awp-checkout-js', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout' ), array( 'jquery' ), NULL );
 
 		// Checkout scripts

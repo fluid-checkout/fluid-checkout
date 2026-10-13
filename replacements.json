@@ -3,9 +3,9 @@
 	"description": "Third-party files replaced or forked by Fluid Checkout.",
 	"plugin-compat-js": [
 		{
-			"our_path": "js-src/compat/plugins/automation-web-platform/checkout.js",
-			"their_path": "plugins/automation-web-platform/assets/js/checkout.js",
-			"script_handle": "awp-checkout-js"
+			"our_path": "js-src/compat/plugins/automation-web-platform/block-checkout-intl-tel.js",
+			"their_path": "https://plugins.svn.wordpress.org/automation-web-platform/trunk/assets/js/block-checkout-intl-tel.js",
+			"script_handle": "wawp-country-code-script"
 		},
 		{
 			"our_path": "js-src/compat/plugins/biteship/biteship-public.js",
