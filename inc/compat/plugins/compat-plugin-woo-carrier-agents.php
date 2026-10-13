@@ -64,10 +64,10 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		add_action( 'init', array( $this, 'fetch_button_option_values' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -426,7 +426,7 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Maybe skip adding pickup point address as review text lines
-		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
 
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }

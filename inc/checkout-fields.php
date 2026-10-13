@@ -109,21 +109,25 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$override_attributes = array();
 
 		/**
-		 * Filter which attributes to override for specific checkout fields on address i18n locale information.
+		 * Filters which attributes to override for specific checkout fields on address i18n locale information.
 		 *
-		 * @param   array  $override_field_attributes  Field keys mapped to lists of attribute keys to override. Ie. `array( 'shipping_phone' => array( 'label', 'required' ) )`.
+		 * @since 4.2.5
+		 *
+		 * @param array $override_field_attributes Field keys mapped to lists of attribute keys to override. Ie. `array( 'shipping_phone' => array( 'label', 'required' ) )`.
 		 */
 		$override_field_attributes = apply_filters( 'fc_checkout_address_i18n_override_locale_field_attributes', array() );
 
 		/**
-		 * Filter whether to override the `required` attribute for address i18n locale information.
-		 * 
-		 * IMPORTANT:
-		 * This filter is intended to be used with some 3rd-party Checkout Field Editor plugins.
-		 * Be extra careful when changing the list of attributes to override for address i18n (internationalization),
-		 * as it may cause other fields to behave unexpectedly, such as the State field becoming optional when it should be required.
-		 * 
-		 * @param   bool  $override_required  Whether to override the `required` attribute for address i18n.
+		 * Filters whether to override the `required` attribute for address i18n locale information.
+		 *
+		 * IMPORTANT: This filter is intended to be used with some 3rd-party Checkout Field Editor
+		 * plugins. Be extra careful when changing the list of attributes to override for address
+		 * i18n (internationalization), as it may cause other fields to behave unexpectedly, such
+		 * as the State field becoming optional when it should be required.
+		 *
+		 * @since 3.0.5
+		 *
+		 * @param bool $override_required Whether to override the `required` attribute for address i18n.
 		 */
 		$override_required = apply_filters( 'fc_checkout_address_i18n_override_locale_required_attribute', false );
 
@@ -135,14 +139,16 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		// Add address i18n settings
 		$settings[ 'addressI18n' ] = array(
 			/**
-			 * Filter which attributes to globally override for address i18n locale information.
-			 * 
-			 * IMPORTANT:
-			 * This filter is intended to be used with some 3rd-party Checkout Field Editor plugins.
-			 * Be extra careful when changing the list of attributes to override for address i18n (internationalization),
-			 * as it may cause other fields to behave unexpectedly, such as the State field becoming optional when it should be required.
+			 * Filters which attributes to globally override for address i18n locale information.
 			 *
-			 * @param   array  $override_attributes  Attributes to override globally.
+			 * IMPORTANT: This filter is intended to be used with some 3rd-party Checkout Field Editor
+			 * plugins. Be extra careful when changing the list of attributes to override for address
+			 * i18n (internationalization), as it may cause other fields to behave unexpectedly, such
+			 * as the State field becoming optional when it should be required.
+			 *
+			 * @since 3.0.5
+			 *
+			 * @param array $override_attributes Attributes to override globally.
 			 */
 			'overrideLocaleAttributes'      => apply_filters( 'fc_checkout_address_i18n_override_locale_attributes', $override_attributes ),
 			'overrideLocaleFieldAttributes' => $override_field_attributes,
@@ -157,6 +163,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 * Get the checkout fields args.
 	 */
 	public function get_checkout_field_args() {
+		/**
+		 * Filters the description of the billing email field.
+		 *
+		 * @since 2.0.3
+		 *
+		 * @param string $value Value to filter.
+		 */
 		$billing_email_description = apply_filters( 'fc_checkout_email_field_description', __( 'Order number and receipt will be sent to this email address.', 'fluid-checkout' ) );
 		$billing_company_class = 'required' === FluidCheckout_Settings::instance()->get_option( 'woocommerce_checkout_phone_field' ) ? 'form-row-last' : 'form-row-wide';
 
@@ -194,6 +207,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			$fields_args[ 'shipping_postcode' ][ 'class' ] = array( 'form-row-first' );
 		}
 
+		/**
+		 * Filters the argument overrides applied to checkout fields.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $fields_args Fields args.
+		 */
 		return apply_filters( 'fc_checkout_field_args', $fields_args );
 	}
 
@@ -225,11 +245,25 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 		$new_field_args = array();
 
 		// Maybe change address 1 field description
+		/**
+		 * Filters whether the address line 1 field description is replaced.
+		 *
+		 * @since 3.0.2
+		 *
+		 * @param bool $value Value to filter. Default true.
+		 */
 		if ( true === apply_filters( 'fc_apply_address_1_field_description', true ) ) {
 			$new_field_args[ 'address_1' ] = array( 'class' => array( 'form-row-wide' ), 'description' => __( 'House number and street name', 'woocommerce' ), 'placeholder' => '' );
 		}
 
 		// Maybe change address 2 field description and place holder
+		/**
+		 * Filters whether the address line 2 field description and placeholder are replaced.
+		 *
+		 * @since 3.0.2
+		 *
+		 * @param bool $value Value to filter. Default true.
+		 */
 		if ( true === apply_filters( 'fc_apply_address_2_field_description', true ) ) {
 			$address_2_field_description = __( 'Apartment, unit, building, floor, etc.', 'fluid-checkout' );
 			$new_field_args[ 'address_2' ] = array( 'class' => array( 'form-row-wide' ), 'description' => $address_2_field_description, 'placeholder' => $address_2_field_description );
@@ -242,6 +276,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 			$new_field_args[ 'postcode' ][ 'class' ] = array( 'form-row-first' );
 		}
 
+		/**
+		 * Filters the default field arguments applied for the current locale.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $new_field_args New field args.
+		 */
 		$new_field_args = apply_filters( 'fc_default_locale_field_args', $new_field_args );
 
 		foreach( $fields as $field_key => $original_args ) {
@@ -519,6 +560,13 @@ class FluidCheckout_CheckoutFields extends FluidCheckout {
 	 */
 	public function add_select2_field_class( $args, $key, $value ) {
 		// Define field types which render as a `select2` field
+		/**
+		 * Filters the select2 field types.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $types List of values to filter.
+		 */
 		$select2_field_types = apply_filters( 'fc_select2_field_types', array( 'country', 'state', 'select' ) );
 
 		// Bail if field type is not a `select2` field

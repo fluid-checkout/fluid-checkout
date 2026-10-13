@@ -111,6 +111,13 @@ class FluidCheckout_UpsellOrderBumpOfferForWooCommerce extends FluidCheckout {
 			$position = '_after_payment_gateways';
 		}
 
+		/**
+		 * Filters the upsell order bump section position args.
+		 *
+		 * @since 4.1.4
+		 *
+		 * @param array $position_args Hook name and priority used to place the order bump section.
+		 */
 		return apply_filters( 'fc_upsell_order_bump_section_position_args', $position_args[ $position ] );
 	}
 

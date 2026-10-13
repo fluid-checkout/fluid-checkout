@@ -40,6 +40,15 @@ class FluidCheckout_Admin_SettingType_LayoutSelector extends FluidCheckout {
 	public function collect_option_styles( $value ) {
 		// Iterate over options and accumulate styles
 		foreach ( $value[ 'options' ] as $key => $val ) {
+			/**
+			 * Filters the URL for the layout selector option image.
+			 *
+			 * @since 4.2.0
+			 *
+			 * @param mixed  $url URL.
+			 * @param string $key Field key.
+			 * @param mixed  $val Val.
+			 */
 			$option_image_url = apply_filters( 'fc_layout_selector_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-layout-'. esc_attr( $key ) .'.png', $key, $val );
 			$this->field_styles .= '.forminp-fc_layout_selector .fc-checkout-layout__option[value="' . esc_attr( $key ) . '"]:after { background-image: url( ' . esc_url( $option_image_url ) . ' ); }' . "\n";
 		}

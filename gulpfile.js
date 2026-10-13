@@ -290,9 +290,21 @@ function getMergedPluginZipRsyncSettings() {
 	var base = _gulpSettings.pluginZipRsync || {};
 	var local = _gulpSettingsLocal.pluginZipRsync || {};
 
+	// Hook docs workflow directories, and the workflow itself, stay out of the plugin zip.
+	var packageExcludes = [
+		'data/',
+		'data/**',
+		'wp-hooks-generator/',
+		'wp-hooks-generator/**',
+		'fluid-checkout-docs/',
+		'fluid-checkout-docs/**',
+		'.github/',
+		'.github/**',
+	];
+
 	return {
 		include: ( base.include || [] ).concat( local.include || [] ),
-		exclude: ( base.exclude || [] ).concat( local.exclude || [] ),
+		exclude: ( base.exclude || [] ).concat( packageExcludes ).concat( local.exclude || [] ),
 		excludeFrom: local.excludeFrom || base.excludeFrom || null,
 		pruneEmptyDirs: local.pruneEmptyDirs !== undefined ? local.pruneEmptyDirs : base.pruneEmptyDirs,
 	};
@@ -880,22 +892,6 @@ gulp.task( 'generate-pot', function ( done ) {
 // gulp translations
 // Generate POT file and update translations
 gulp.task( 'translate', gulp.series( 'generate-pot', 'update-translations' ) );
-
-
-
-// Run:
-// gulp copy-updater
-// Copy the theme/plugin updater class into the project
-gulp.task( 'copy-updater', gulp.series( function( done ) {
-	if ( _gulpSettings.copyUpdater ) {
-		del.sync( _gulpSettings.copyUpdater.destination );
-
-		gulp.src( _gulpSettings.copyUpdater.source )
-		.pipe( gulp.dest( _gulpSettings.copyUpdater.destination ) );
-	}
-
-	done();
-} ) );
 
 
 

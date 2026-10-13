@@ -64,7 +64,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Restore parcel shop ID before Mondial Relay validates checkout
 		add_action( 'woocommerce_checkout_process', array( $this, 'maybe_restore_parcel_shop_id_from_session' ), 5 );
@@ -316,12 +316,12 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 		// Maybe save parcel shop address to session
 		// Skip empty values, as Mondial Relay JS may clear the field on `updated_checkout`
 		if ( array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) && ! empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) {
-			WC()->session->set( self::SESSION_FIELD_NAME, $posted_data[ self::SESSION_FIELD_NAME ] );
+			WC()->session->set( self::SESSION_FIELD_NAME, sanitize_text_field( $posted_data[ self::SESSION_FIELD_NAME ] ) );
 		}
 
 		// Maybe save parcel shop ID to session
 		if ( array_key_exists( self::SESSION_FIELD_ID, $posted_data ) && ! empty( $posted_data[ self::SESSION_FIELD_ID ] ) ) {
-			WC()->session->set( self::SESSION_FIELD_ID, $posted_data[ self::SESSION_FIELD_ID ] );
+			WC()->session->set( self::SESSION_FIELD_ID, sanitize_text_field( $posted_data[ self::SESSION_FIELD_ID ] ) );
 		}
 
 		// Return unchanged posted data
@@ -343,12 +343,12 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 
 		// Maybe restore parcel shop ID to posted data before Mondial Relay validates the checkout
 		if ( empty( $_POST[ self::SESSION_FIELD_ID ] ) && ! empty( $selected_terminal_id ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$_POST[ self::SESSION_FIELD_ID ] = $selected_terminal_id; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$_POST[ self::SESSION_FIELD_ID ] = sanitize_text_field( $selected_terminal_id ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 
 		// Maybe restore parcel shop address to posted data for the order meta
 		if ( empty( $_POST[ self::SESSION_FIELD_NAME ] ) && ! empty( $selected_terminal_address ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$_POST[ self::SESSION_FIELD_NAME ] = $selected_terminal_address; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$_POST[ self::SESSION_FIELD_NAME ] = sanitize_text_field( $selected_terminal_address ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 	}
 
@@ -395,7 +395,7 @@ class FluidCheckout_MondialRelayWordpress extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Maybe skip adding pickup point address as review text lines
-		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
 
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }

@@ -63,6 +63,13 @@ class WC_Settings_FluidCheckout_Cart_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( 'cart' === $current_section ) {
 
+			/**
+			 * Filters the cart settings.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_pro_cart_settings',
 				array(

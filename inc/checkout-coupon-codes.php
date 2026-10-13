@@ -122,6 +122,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Get the step id for where to display the coupon codes substep.
 	 */
 	public function get_substep_step_id() {
+		/**
+		 * Filters the checkout step ID where the coupon code substep is registered.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param string $value Value to filter. Default `payment`.
+		 */
 		return apply_filters( 'fc_coupon_code_substep_step_id', 'payment' );
 	}
 
@@ -129,6 +136,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 * Get the priority for the coupon codes substep.
 	 */
 	public function get_substep_priority() {
+		/**
+		 * Filters the priority of the coupon code substep.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param int $priority Hook or step priority. Default 10.
+		 */
 		return apply_filters( 'fc_coupon_code_substep_priority', 10 );
 	}
 
@@ -146,12 +160,26 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( $is_hidden_position ) { return; }
 
 		// Maybe bail if coupon codes is not to be displayed as a substep
+		/**
+		 * Filters whether coupon codes are displayed as a checkout substep.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		if ( false === apply_filters( 'fc_coupon_code_displayed_as_substep', true ) ) { return; }
 
 		// Get variables for the substep
 		$step_id = $this->get_substep_step_id();
 		$substep_priority = $this->get_substep_priority();
 		$substep_id = 'coupon_codes';
+		/**
+		 * Filters the coupon code substep title.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $title Title text.
+		 */
 		$substep_title = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_display_coupon_code_section_title' ) ? apply_filters( 'fc_substep_coupon_codes_section_title', __( 'Coupon code', 'woocommerce' ) ) : null; // Intentionally using text domain from WooCommerce
 
 		// Register substep
@@ -272,6 +300,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 
+		/**
+		 * Filters the coupon code settings passed to the frontend script.
+		 *
+		 * @since 1.6.0
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'checkoutCoupons' ] = apply_filters( 'fc_checkout_coupons_script_settings', array(
 			'isEnabled'                => $this->is_feature_enabled() ? 'yes' : 'no',
 			'addCouponCodeNonce'       => wp_create_nonce( 'fc-add-coupon-code' ),
@@ -292,9 +327,37 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function output_section_coupon_codes_fields( $field_args = array(), $expansible_section_args = array(), $output_handle = true, $section_key = null ) {
 		// Define labels
+		/**
+		 * Filters the coupon code field label.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $label Label text.
+		 */
 		$coupon_code_field_label       = apply_filters( 'fc_coupon_code_field_label', __( 'Coupon code', 'woocommerce' ) ); // Intentionally using text domain from WooCommerce
+		/**
+		 * Filters the coupon code field description.
+		 *
+		 * @since 2.3.4
+		 *
+		 * @param string $value Value to filter. Default empty string.
+		 */
 		$coupon_code_field_description = apply_filters( 'fc_coupon_code_field_description', '' );
+		/**
+		 * Filters the coupon code field placeholder.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $value Value to filter.
+		 */
 		$coupon_code_field_placeholder = apply_filters( 'fc_coupon_code_field_placeholder', __( 'Enter your code here', 'fluid-checkout' ) );
+		/**
+		 * Filters the apply-coupon button label.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $label Label text.
+		 */
 		$coupon_code_button_label      = apply_filters( 'fc_coupon_code_button_label', _x( 'Apply', 'Button label for applying coupon codes', 'fluid-checkout' ) );
 
 		// Maybe define section key
@@ -319,6 +382,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 
 		// Expansible section args
 		$coupon_code_expansible_args = array_merge( array(
+			/**
+			 * Filters whether the coupon code field starts expanded.
+			 *
+			 * @since 1.2.10
+			 *
+			 * @param bool $value Value to filter. Default false.
+			 */
 			'initial_state' => true === apply_filters( 'fc_coupon_code_field_initially_expanded', false ) ? 'expanded' : 'collapsed',
 			'section_attributes' => array(
 				'class' => 'fc-coupon_code__collapsible',
@@ -330,22 +400,55 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( $output_handle ) {
 			// Output coupon code field and button in an expansible form section
 			$coupon_code_toggle_label = 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_optional_fields_link_label_lowercase' ) ? strtolower( $coupon_code_field_label ) : $coupon_code_field_label;
-			/* translators: %s: Form field label */
-			$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_' . $section_id, sprintf( __( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
+			/**
+			 * Filters the toggle label of an expansible section.
+			 *
+			 * The dynamic portion of the hook name, `$section_id`, refers to the expansible section
+			 * ID.
+			 * Possible hook names include:
+			 *
+			 * - `fc_expansible_section_toggle_label_coupon_code`
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param string $value Value to filter.
+			 */
+			$coupon_code_toggle_label = apply_filters( 'fc_expansible_section_toggle_label_' . $section_id, sprintf( 
+				/* translators: %s: Form field label */
+				__( 'Add %s', 'fluid-checkout' ), $coupon_code_toggle_label ) );
 		}
 
 		// Output section
 		FluidCheckout_Steps::instance()->output_expansible_form_section_start_tag( $section_key, $coupon_code_toggle_label, $coupon_code_expansible_args );
 
+		/**
+		 * Fires before the coupon code field inside the coupon section.
+		 *
+		 * @since 3.2.3
+		 */
 		do_action( 'fc_coupon_code_section_before' );
 
 		?>
 		<div class="fc-coupon-code-section">
 			<?php woocommerce_form_field( $field_key, $coupon_code_field_args ); ?>
-			<button type="button" class="fc-coupon-code__apply <?php echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) ); ?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
+			<button type="button" class="fc-coupon-code__apply <?php
+				/**
+				 * Filters the CSS classes of the apply-coupon button.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string $classes CSS classes. Default `button`.
+				 */
+				echo esc_attr( apply_filters( 'fc_coupon_code_apply_button_classes', 'button' ) );
+			?>" data-apply-coupon-button><?php echo esc_html( $coupon_code_button_label ); ?></button>
 		</div>
 		<?php
 
+		/**
+		 * Fires after the coupon code field inside the coupon section.
+		 *
+		 * @since 3.2.3
+		 */
 		do_action( 'fc_coupon_code_section_after' );
 
 		FluidCheckout_Steps::instance()->output_expansible_form_section_end_tag();
@@ -393,6 +496,11 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		$html = '<div class="fc-step__substep-text-content fc-step__substep-text-content--coupon-codes">';
 		ob_start();
 
+		/**
+		 * Fires before the coupon code substep review text.
+		 *
+		 * @since 1.3.1
+		 */
 		do_action( 'fc_substep_coupon_codes_text_before' );
 
 		foreach ( WC()->cart->get_coupons() as $code => $coupon ) :
@@ -412,11 +520,23 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 			<?php
 		endforeach;
 
+		/**
+		 * Fires after the coupon code substep review text.
+		 *
+		 * @since 1.3.1
+		 */
 		do_action( 'fc_substep_coupon_codes_text_after' );
 
 		$html .= ob_get_clean();
 		$html .= '</div>';
 
+		/**
+		 * Filters the substep coupon codes text.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param string $html HTML markup.
+		 */
 		return apply_filters( 'fc_substep_coupon_codes_text', $html );
 	}
 
@@ -455,6 +575,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 	 */
 	public function maybe_add_coupon_code_error_message_dismiss_buttons( $message, $coupon_code ) {
 		// Bail if dismiss button is not enabled
+		/**
+		 * Filters whether coupon error messages include a dismiss button.
+		 *
+		 * @since 4.1.0
+		 *
+		 * @param bool $text Text to display. Default true.
+		 */
 		if ( ! apply_filters( 'fc_coupon_code_error_message_dismiss_button_enabled', true ) ) { return $message; }
 		
 		// Bail if no error messages found
@@ -462,6 +589,13 @@ class FluidCheckout_CouponCodes extends FluidCheckout {
 		if ( ! $is_error ) { return $message; }
 	
 		// Create dismiss button HTML
+		/**
+		 * Filters the dismiss button HTML for a coupon error message.
+		 *
+		 * @since 4.0.6
+		 *
+		 * @param string $text Text to display.
+		 */
 		$dismiss_button = apply_filters( 'fc_coupon_code_error_message_dismiss_button', '<a href="#dismiss_coupon_message" data-coupon="' . esc_attr( $coupon_code ) . '" class="fc-coupon-code-message-dismiss">' . __( 'Dismiss', 'fluid-checkout' ) . '</a>' );
 
 		// Error class name

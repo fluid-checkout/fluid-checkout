@@ -43,7 +43,6 @@
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
-		formRowSelector: '.form-row, .shipping-method__package',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -64,6 +63,7 @@
 		isCompleteClass: 'is-complete',
 		isHiddenClass: 'fc-hidden',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
+		stepBeforeCurrentClass: 'fc-checkout-step--before-current-step',
 		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
 		currentLastStepClass: 'fc-checkout-step-current-last',
 
@@ -83,6 +83,7 @@
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidRowSelector: '.woocommerce-invalid.form-row, .woocommerce-invalid.shipping-method__package',
 		invalidFocusDelay: 100,
 
 		enablePlaceOrderMove: 'yes',
@@ -151,6 +152,33 @@
 			requestAnimationFrame( function() {
 				waitForElementInViewportThenFocus( element );
 			} );
+		}
+	};
+
+	/**
+	 * Maybe scroll to the first invalid row, then focus its first invalid field when there is one.
+	 *
+	 * @param   HTMLElement  containerElement  Container element to search within.
+	 */
+	var maybeScrollToFirstInvalidRow = function( containerElement ) {
+		// Bail if container element not provided
+		if ( ! containerElement ) { return; }
+
+		// Get the first invalid row
+		var firstInvalidRow = containerElement.querySelector( _settings.invalidRowSelector );
+
+		// Bail if no invalid row found
+		if ( ! firstInvalidRow ) { return; }
+
+		// Scroll to the first invalid row
+		scrollToElement( firstInvalidRow );
+
+		// Get the first invalid field of the row
+		var firstInvalidField = firstInvalidRow.querySelector( _settings.invalidFieldRowSelector );
+
+		// Maybe focus the invalid field, as some rows only contain fields that cannot be focused
+		if ( firstInvalidField ) {
+			waitForElementInViewportThenFocus( firstInvalidField );
 		}
 	};
 
@@ -330,13 +358,7 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalidRow( substepElement );
 
 			// Bail when substep has invalid fields
 			return;
@@ -398,8 +420,12 @@
 		// Bail if no current step was found
 		if ( ! currentStepElement ) { return; }
 
+		// Get the step to set as current on the progress bar.
+		// The progress bar goes back to the first visible incomplete step, while the steps sections do not.
+		var progressBarStepElement = getFirstVisibleIncompleteStep() || currentStepElement;
+
 		// Get index of the current step
-		var currentStepIndex = parseInt( currentStepElement.getAttribute( _settings.stepIndexAttribute ) );
+		var currentStepIndex = parseInt( progressBarStepElement.getAttribute( _settings.stepIndexAttribute ) );
 		currentStepIndex = isNaN( currentStepIndex ) ? -1 : currentStepIndex;
 
 		// Get progress bar items
@@ -470,13 +496,7 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalidRow( stepElement );
 
 			// Bail when any substep has invalid fields
 			return;
@@ -526,6 +546,9 @@
 
 		// Update progress bar
 		updateProgressBar();
+
+		// Update class for steps before the current step
+		updateStepBeforeCurrentClass();
 
 		// Maybe set focus to the first focusable element that is visible in the next step
 		maybeFocusFirstElement( nextStepElement );
@@ -639,7 +662,67 @@
 		return previousVisibleStep;
 	}
 
+	/**
+	 * Get the first visible step that is not complete.
+	 *
+	 * @return  HTMLElement|null  The first visible incomplete step element, or `null` if not found.
+	 */
+	var getFirstVisibleIncompleteStep = function() {
+		// Initialize variables
+		var firstIncompleteStep = null;
+		var allSteps = getAllSteps();
 
+		// Iterate through steps
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			// Skip if step is not visible or is complete
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) || isStepComplete( allSteps[ i ] ) ) { continue; }
+
+			// Set first incomplete step
+			firstIncompleteStep = allSteps[ i ];
+			break;
+		}
+
+		return firstIncompleteStep;
+	}
+
+	/**
+	 * Check whether the step is positioned before the current step.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to check.
+	 *
+	 * @return  Boolean                   Whether the step is positioned before the current step.
+	 */
+	var isStepBeforeCurrentStep = function( stepElement ) {
+		// Get current step
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+
+		// Bail if step or current step not found
+		if ( ! stepElement || ! currentStepElement ) { return false; }
+
+		// Get step positions
+		var allSteps = getAllSteps();
+		var stepIndex = allSteps.indexOf( stepElement );
+		var currentStepIndex = allSteps.indexOf( currentStepElement );
+
+		// Bail if any of the steps was not found in the steps list
+		if ( -1 === stepIndex || -1 === currentStepIndex ) { return false; }
+
+		return stepIndex < currentStepIndex;
+	}
+
+
+
+	/**
+	 * Update the class of the steps positioned before the current step.
+	 */
+	var updateStepBeforeCurrentClass = function() {
+		var allSteps = getAllSteps();
+
+		// Iterate steps to toggle the class
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			allSteps[ i ].classList.toggle( _settings.stepBeforeCurrentClass, isStepBeforeCurrentStep( allSteps[ i ] ) );
+		}
+	}
 
 	/**
 	 * Update step visibility based on substep visibility state.
@@ -750,6 +833,9 @@
 
 		// Update progress bar to reflect changes
 		updateProgressBar();
+
+		// Update class for steps before the current step
+		updateStepBeforeCurrentClass();
 	}
 
 
@@ -769,6 +855,9 @@
 			var className = _settings.currentStepClassTemplate.replace( '##STEP_ID##', stepId );
 			document.body.classList.remove( className );
 		}
+
+		// Remove last step class
+		document.body.classList.remove( _settings.currentLastStepClass );
 
 		// Maybe add current step class
 		var currentStepElement = document.querySelector( _settings.currentStepSelector );

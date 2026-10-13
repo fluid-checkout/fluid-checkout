@@ -52,7 +52,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 		$sections = array_merge( $sections, array(
 			'checkout' => __( 'Checkout', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
 	}
 
@@ -67,6 +67,22 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 	public function add_settings( $settings, $current_section ) {
 		if ( 'checkout' === $current_section ) {
 
+			/**
+			 * Filters the options for the local pickup shipping zone fields setting.
+			 *
+			 * @since 5.0.0
+			 *
+			 * @param array $options Field options keyed by field id.
+			 */
+			$local_pickup_shipping_zone_field_options = apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() );
+
+			/**
+			 * Filters the checkout settings fields.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_checkout_general_settings',
 				array(
@@ -594,16 +610,6 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc'              => __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
-						'desc_tip'          => __( 'When enabled, the first shipping method available <strong>will not</strong> be automatically selected when no other shipping method was previously selected for each shipping package.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'                => 'fc_shipping_methods_disable_auto_select',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
 						'title'             => __( 'Local pickup', 'fluid-checkout' ),
 						'desc'              => __( 'Remove shipping address section when a local pickup shipping method is selected.', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Replace the shipping address with the pickup point location when a local pickup shipping method is selected.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-local-pickup/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
@@ -632,7 +638,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'desc_tip'          => __( 'These fields will be displayed as a filter for the local pickup shipping methods. Some fields might still appear at checkout when not selected here, if compatible plugins require them to work properly.', 'fluid-checkout' ),
 						'id'                => 'fc_local_pickup_shipping_zone_fields',
 						'type'              => 'fc_multiselect',
-						'options'           => apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() ),
+						'options'           => $local_pickup_shipping_zone_field_options,
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_local_pickup_shipping_zone_fields' ),
 						'autoload'          => false,
 						'disabled'          => true,

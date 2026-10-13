@@ -86,6 +86,20 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 				),
 			);
 
+			/**
+			 * Filters extra settings rows appended to a Fluid Checkout settings section.
+			 *
+			 * The dynamic portion of the hook name, `$current_section`, refers to the settings section
+			 * slug. At this call the section is fixed by the surrounding condition.
+			 * Possible hook names include:
+			 *
+			 * - `fc_integrations_settings_add`
+			 *
+			 * @since 1.3.1
+			 *
+			 * @param array  $value           Value to filter. Default empty array.
+			 * @param string $current_section Current settings section slug. An empty string is the dashboard section.
+			 */
 			$settings_add = apply_filters( 'fc_'.$current_section.'_settings_add', array(), $current_section );
 
 			// Maybe add notice when no integrations are available
@@ -107,6 +121,20 @@ class WC_Settings_FluidCheckout_Integrations_Settings extends WC_Settings_Page {
 
 			$settings_new = array_merge( $settings_new, $settings_add );
 
+			/**
+			 * Filters the settings for one Fluid Checkout admin section.
+			 *
+			 * The dynamic portion of the hook name, `$current_section`, refers to the settings section
+			 * slug. At this call the section is fixed by the surrounding condition.
+			 * Possible hook names include:
+			 *
+			 * - `fc_integrations_settings`
+			 *
+			 * @since 1.3.1
+			 *
+			 * @param array  $settings_new    Settings for the current section.
+			 * @param string $current_section Current settings section slug. An empty string is the dashboard section.
+			 */
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings_new, $current_section );
 		}
 

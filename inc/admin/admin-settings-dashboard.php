@@ -48,7 +48,7 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 		$sections = array_merge( $sections, array(
 			'' => __( 'Dashboard', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
 	}
 
@@ -71,6 +71,10 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 				),
 
 				array(
+					'type'     => 'fc_telemetry_prompt',
+					'autoload' => false,
+				),
+				array(
 					'type'             => 'fc_setup',
 					'autoload'         => false,
 				),
@@ -86,6 +90,20 @@ class WC_Settings_FluidCheckout_Addons_Settings extends WC_Settings_Page {
 
 			);
 
+			/**
+			 * Filters the settings for one Fluid Checkout admin section.
+			 *
+			 * The dynamic portion of the hook name, `$current_section`, refers to the settings section
+			 * slug. The dashboard section slug is an empty string, so the hook name is `fc__settings`.
+			 * Possible hook names include:
+			 *
+			 * - `fc__settings`
+			 *
+			 * @since 1.3.1
+			 *
+			 * @param array  $settings        Settings to output.
+			 * @param string $current_section Current settings section slug. An empty string is the dashboard section.
+			 */
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings, $current_section );
 		}
 

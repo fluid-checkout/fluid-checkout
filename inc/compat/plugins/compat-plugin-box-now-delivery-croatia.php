@@ -41,7 +41,7 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Move shipping method hooks
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_pickup_point_selection_ui' ), 10 );
@@ -54,7 +54,7 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 
 		// Save terminal data to order meta
 		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'save_terminal_data_to_order_meta' ), 10 );
@@ -292,7 +292,7 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
 		// Maybe skip adding pickup point address as review text lines
-		if ( true === apply_filters( 'fc_skip_add_pickup_point_info_as_review_text_lines', false ) ) { return $review_text_lines; }
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
 
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
@@ -324,7 +324,7 @@ class FluidCheckout_BoxNowDeliveryCroatia extends FluidCheckout {
 	 */
 	public function maybe_set_substep_incomplete_shipping( $is_substep_complete ) {
 		// Bail if target shipping method is not selected
-		if ( ! $this->is_shipping_method_selected() ) { return; }
+		if ( ! $this->is_shipping_method_selected() ) { return $is_substep_complete; }
 
 		// Get selected terminal data
 		$terminal_data = $this->get_selected_terminal_data();
