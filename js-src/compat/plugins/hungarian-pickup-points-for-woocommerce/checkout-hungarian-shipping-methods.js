@@ -22,9 +22,9 @@
 	var _settings = {
 		selectedShippingMethodOptionSelector: 'input[type="radio"][name^="shipping_method"]:checked',
 		shipToDifferentAddressCheckboxSelector: '#ship-to-different-address-checkbox',
-
 		hungarianShippingMethodID: 'vp_pont',
 	};
+
 
 
 	/**
@@ -49,38 +49,34 @@
 			isHungarianShippingMethod = selectedShippingMethodOption.value.includes( _settings.hungarianShippingMethodID );
 		}
 
-		// Show or hide the shipping address section based on the selected shipping method
-		// This function also ticks the "Ship to a different address" checkbox
+		// Show or hide the shipping address section, which also unchecks "Ship to a different address" when hiding it
 		vp_woo_pont_frontend.show_and_hide_shipping_address( isHungarianShippingMethod );
 
-		// Ensure the "Ship to a different address" field is always checked when the Hungarian shipping method is not selected
-		// The field should remain checked for Fluid Checkout to work correctly
-		if ( shipToDifferentAddressCheckbox && ( ! selectedShippingMethodOption || ! isHungarianShippingMethod ) ) {
+		// Maybe check "Ship to a different address" again, as Fluid Checkout requires it for other shipping methods
+		if ( shipToDifferentAddressCheckbox && ! isHungarianShippingMethod ) {
 			shipToDifferentAddressCheckbox.checked = true;
 		}
-	}
+	};
 
 
 
 	/**
 	 * Initialize component and set related handlers.
 	 */
-	_publicMethods.init = function( options ) {
+	_publicMethods.init = function() {
+		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
-
-		// Merge settings
-		_settings = FCUtils.extendObject( _settings, options );
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			$( document ).on( 'updated_checkout', maybeUpdateShippingAddressFieldsVisibility );
+			$( document.body ).on( 'updated_checkout', maybeUpdateShippingAddressFieldsVisibility );
 		}
 
 		_hasInitialized = true;
 	};
 
 
-	
+
 	//
 	// Public APIs
 	//

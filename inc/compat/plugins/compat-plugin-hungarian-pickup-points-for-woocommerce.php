@@ -49,10 +49,6 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 
 		// Shipping address
 		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_substep_state_hidden_fields_shipping_address' ), 10 );
-		add_filter( 'fc_is_substep_complete_shipping_address', array( $this, 'maybe_set_substep_shipping_address_completed' ), 10 );
-
-		// Fragments
-		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_hidden_fields_fragment' ), 10 );
 	}
 
 	/**
@@ -99,9 +95,9 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 * Register assets.
 	 */
 	public function register_assets() {
-		// Checkout scripts
-		wp_register_script( 'fc-checkout-hungarian-shipping-methods', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/hungarian-pickup-points-for-woocommerce/checkout-hungarian-shipping-methods' ), array( 'jquery', 'fc-utils', 'vp_woo_pont_frontend_js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-hungarian-shipping-methods', 'window.addEventListener("load",function(){CheckoutHungarianShippingMethods.init(fcSettings.checkoutHungarianShippingMethods);})' );
+		// Add shipping address visibility script
+		wp_register_script( 'fc-checkout-hungarian-shipping-methods', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/hungarian-pickup-points-for-woocommerce/checkout-hungarian-shipping-methods' ), array( 'jquery', 'vp_woo_pont_frontend_js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-hungarian-shipping-methods', 'window.addEventListener("load",function(){CheckoutHungarianShippingMethods.init();});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-hungarian-shipping-methods', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/hungarian-pickup-points-for-woocommerce/checkout-validation-hungarian-shipping-methods' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
@@ -390,43 +386,7 @@ class FluidCheckout_HungarianPickupPointsForWooCommerce extends FluidCheckout {
 	 */
 	public function output_substep_state_hidden_fields_shipping_address() {
 		$substep_visible = $this->is_shipping_method_vp_pont_selected() ? 'no' : 'yes';
-
-		echo '<div id="hungarian-shipping-methods-custom_checkout_fields" class="form-row fc-no-validation-icon hungarian-shipping-methods-custom_checkout_fields">';
-		echo '<div class="woocommerce-input-wrapper">';
 		echo '<input class="fc-substep-visible-state" type="hidden" value="' . $substep_visible . '" />';
-		echo '</div>';
-		echo '</div>';
-	}
-
-	/**
-	 * Add hidden fields as checkout fragment.
-	 *
-	 * @param array $fragments Checkout fragments.
-	 */
-	public function add_hidden_fields_fragment( $fragments ) {
-		// Get custom hidden fields HTML
-		ob_start();
-		$this->output_substep_state_hidden_fields_shipping_address();
-		$html = ob_get_clean();
-
-		// Add fragment
-		$fragments[ '.hungarian-shipping-methods-custom_checkout_fields' ] = $html;
-		return $fragments;
-	}
-
-
-
-	/**
-	 * Maybe set the shipping address substep as complete when Hungarian Pickup Points shipping method is selected.
-	 * 
-	 * @param   bool  $is_substep_complete  Whether the substep is complete.
-	 */
-	public function maybe_set_substep_shipping_address_completed( $is_substep_complete ) {
-		// Bail if selected shipping method is not a Hungarian Pickup Points shipping method
-		if ( ! $this->is_shipping_method_vp_pont_selected() ) { return $is_substep_complete; }
-
-		// Set substep as complete
-		return true;
 	}
 
 
