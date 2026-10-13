@@ -24,6 +24,9 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Replace plugin checkout script with FC fork
+		add_action( 'wp_enqueue_scripts', array( $this, 'replace_enqueue_assets' ), 20 );
 	}
 
 	/**
@@ -73,11 +76,21 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 		add_filter( 'fc_parsed_posted_data_reset_field_keys', array( $this, 'add_checkbox_reset_posted_data_field_key' ), 10, 2 );
 
 		// Move the checkbox to the new hook position
+		// Older plugin versions
 		remove_action( 'woocommerce_' . $checkout_position, 'woo_ml_checkout_label', 20 );
+		// Current plugin versions (3.x)
+		if ( class_exists( 'WooMailerLitePluginController' ) ) {
+			remove_action( 'woocommerce_' . $checkout_position, array( WooMailerLitePluginController::instance(), 'addMlSubscribeCheckbox' ), PHP_INT_MAX );
+		}
 		add_action( $checkout_new_position, array( $this, 'output_woo_ml_checkout_label' ), $checkout_new_priority );
 
 		// Maybe remove field from billing address
+		// Older plugin versions
 		remove_filter( 'woocommerce_checkout_fields', 'woo_ml_billing_checkout_fields', PHP_INT_MAX );
+		// Current plugin versions (3.x)
+		if ( class_exists( 'WooMailerLitePluginController' ) ) {
+			remove_filter( 'woocommerce_checkout_fields', array( WooMailerLitePluginController::instance(), 'addBillingCheckoutFields' ), PHP_INT_MAX );
+		}
 	}
 
 
@@ -88,6 +101,51 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'woo-ml-public-script', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-mailerlite/woo-mailerlite-public' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
+	/**
+	 * Replace the plugin checkout script with the FC fork on checkout.
+	 */
+	public function replace_enqueue_assets() {
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
+			return;
+		}
+
+		wp_dequeue_script( 'woo-mailerlite-public' );
+		wp_deregister_script( 'woo-mailerlite-public' );
+
+		wp_enqueue_script( 'woo-ml-public-script' );
+		wp_localize_script(
+			'woo-ml-public-script',
+			'wooMailerLitePublicData',
+			array(
+				'ajaxUrl'          => admin_url( 'admin-ajax.php' ),
+				'nonce'            => wp_create_nonce( 'woo_mailerlite_cart_nonce' ),
+				'language'         => get_locale(),
+				'checkboxSettings' => $this->get_checkbox_settings_for_script(),
+			)
+		);
+	}
+
+	/**
+	 * Checkbox settings passed to the public checkout script.
+	 *
+	 * @return array
+	 */
+	public function get_checkbox_settings_for_script() {
+		$enabled = 'yes' === $this->get_option_from_plugin( 'checkout', 'no' );
+		$group   = $this->get_option_from_plugin( 'group' );
+
+		if ( empty( $group ) ) {
+			$enabled = false;
+		}
+
+		return array(
+			'enabled'   => $enabled,
+			'label'     => $this->get_option_from_plugin( 'checkout_label', '' ),
+			'preselect' => 'yes' === $this->get_option_from_plugin( 'checkout_preselect', 'no' ),
+			'hidden'    => 'yes' === $this->get_option_from_plugin( 'checkout_hide', 'no' ),
+		);
 	}
 
 
@@ -103,17 +161,79 @@ class FluidCheckout_WooMailerLite extends FluidCheckout {
 		// Get plugin settings
 		$value = null;
 
-		// Get settings using different methods for older versions
-		// Newer versions
-		if ( class_exists( 'MailerLite\Includes\Classes\Settings\MailerLiteSettings' ) ) {
+		// Current plugin versions (3.x) use WooMailerLiteOptions
+		if ( class_exists( 'WooMailerLiteOptions' ) ) {
+			$value = $this->get_option_from_woo_mailerlite_options( $option, $default_value );
+		}
+		// Legacy class-based settings API
+		else if ( class_exists( 'MailerLite\Includes\Classes\Settings\MailerLiteSettings' ) ) {
 			$value = MailerLite\Includes\Classes\Settings\MailerLiteSettings::getInstance()->getMlOption( $option, $default_value );
 		}
-		// Older versions
+		// Older helper function
 		else if ( function_exists( 'woo_ml_get_option' ) ) {
 			$value = woo_ml_get_option( $option, $default_value );
 		}
 
+		// Maybe fall back to the legacy WooCommerce settings option
+		if ( null === $value || false === $value ) {
+			$legacy_settings = get_option( 'woocommerce_mailerlite_settings', array() );
+			if ( is_array( $legacy_settings ) && array_key_exists( $option, $legacy_settings ) ) {
+				$value = $legacy_settings[ $option ];
+			}
+		}
+
+		// Maybe use the default when still empty
+		if ( null === $value || false === $value ) {
+			$value = $default_value;
+		}
+
 		return $value;
+	}
+
+	/**
+	 * Map Fluid Checkout option keys to WooMailerLiteOptions values.
+	 *
+	 * @param   string  $option         The option name used by Fluid Checkout.
+	 * @param   mixed   $default_value  The default value to return if the option is not set.
+	 */
+	public function get_option_from_woo_mailerlite_options( $option, $default_value = null ) {
+		// Map FC keys to current plugin option paths
+		$option_map = array(
+			'checkout'           => 'settings.subscribeOnCheckout',
+			'checkout_position'  => 'settings.selectedCheckoutPosition',
+			'checkout_preselect' => 'settings.checkoutPreselect',
+			'checkout_hide'      => 'settings.checkoutHidden',
+			'checkout_label'     => 'settings.checkoutLabel',
+			'group'              => 'group',
+		);
+
+		// Bail if option is not mapped
+		if ( ! isset( $option_map[ $option ] ) ) { return $default_value; }
+
+		// Use a sentinel so falsey plugin values are not treated as missing
+		$missing = new stdClass();
+		$raw_value = WooMailerLiteOptions::get( $option_map[ $option ], $missing );
+
+		// Bail if option is not set in the current plugin options
+		if ( $missing === $raw_value ) { return $default_value; }
+
+		// Normalize boolean-like options to yes/no strings expected by FC
+		$boolean_options = array( 'checkout', 'checkout_preselect', 'checkout_hide' );
+		if ( in_array( $option, $boolean_options, true ) ) {
+			return $raw_value ? 'yes' : 'no';
+		}
+
+		// Normalize group option to a non-empty scalar when possible
+		if ( 'group' === $option && is_array( $raw_value ) ) {
+			// Maybe return the group id when available
+			if ( ! empty( $raw_value[ 'id' ] ) ) {
+				return $raw_value[ 'id' ];
+			}
+
+			return $default_value;
+		}
+
+		return $raw_value;
 	}
 
 

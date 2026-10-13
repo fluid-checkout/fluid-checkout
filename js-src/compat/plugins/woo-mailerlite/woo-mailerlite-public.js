@@ -1,4 +1,5 @@
 jQuery(document).ready(function(a) {
+	// CHANGE: Track in-flight AJAX so overlapping FC checkout updates do not stack requests
 	var _xhr = null;
 	// CHANGE: Replace field variables with selectors variables
 	var _emailFieldSelector = '#billing_email';
@@ -6,9 +7,11 @@ jQuery(document).ready(function(a) {
 	var _lastNameFieldSelector = '#billing_last_name';
 	var _signupSelector = '#woo_ml_subscribe';
  
-	if (jQuery('#woo_ml_preselect_enabled')?.val() == 'yes') {
-	    // CHANGE: Use selector variable, instead of declaring the selector directly
-	    jQuery( _signupSelector ).prop('checked', true);
+	// CHANGE: Preselect from localized settings (current plugin) or legacy hidden field
+	if ( typeof wooMailerLitePublicData !== 'undefined' && wooMailerLitePublicData.checkboxSettings && wooMailerLitePublicData.checkboxSettings.preselect ) {
+	    jQuery( _signupSelector ).prop( 'checked', true );
+	} else if ( jQuery( '#woo_ml_preselect_enabled' )?.val() == 'yes' ) {
+	    jQuery( _signupSelector ).prop( 'checked', true );
 	}
  
 	// CHANGE: Remove event handler declarations as they are replaced with captured events at bottom
@@ -56,19 +59,42 @@ jQuery(document).ready(function(a) {
  
 	    // CHANGE: Bail if an ajax request is already running
 	    if ( _xhr !== null ) { return; }
- 
-	    _xhr = jQuery.ajax({
-		   url: woo_ml_public_post.ajax_url,
-		   type: "post",
-		   data: {
-			  action: "post_woo_ml_email_cookie",
-			  email: email.value,
+
+	    // CHANGE: Use current plugin AJAX action when localized data is available
+	    var ajaxUrl;
+	    var ajaxData;
+
+	    if ( typeof wooMailerLitePublicData !== 'undefined' ) {
+		   ajaxUrl = wooMailerLitePublicData.ajaxUrl;
+		   ajaxData = {
+			  action: 'woo_mailerlite_set_cart_email',
+			  nonce: wooMailerLitePublicData.nonce,
+			  email: email !== null ? email.value : null,
+			  signup: accept_marketing,
+			  language: wooMailerLitePublicData.language,
+			  name: first_name,
+			  last_name: last_name,
+			  cookie_mailerlite_checkout_token: getCookie( 'mailerlite_checkout_token' ),
+		   };
+	    } else if ( typeof woo_ml_public_post !== 'undefined' ) {
+		   ajaxUrl = woo_ml_public_post.ajax_url;
+		   ajaxData = {
+			  action: 'post_woo_ml_email_cookie',
+			  email: email !== null ? email.value : null,
 			  signup: accept_marketing,
 			  language: woo_ml_public_post.language,
 			  first_name: first_name,
 			  last_name: last_name,
-			  cookie_mailerlite_checkout_token:getCookie('mailerlite_checkout_token')
-		   },
+			  cookie_mailerlite_checkout_token: getCookie( 'mailerlite_checkout_token' ),
+		   };
+	    } else {
+		   return;
+	    }
+
+	    _xhr = jQuery.ajax({
+		   url: ajaxUrl,
+		   type: 'post',
+		   data: ajaxData,
 		   // CHANGE: Set the xhr variable to null when the request is complete
 		   complete: function() {
 			  _xhr = null;
