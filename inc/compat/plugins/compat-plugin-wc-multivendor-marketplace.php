@@ -38,6 +38,12 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Maybe replace plugin scripts with modified version
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_replace_plugin_scripts' ), 5 );
 
+		// Register assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
+
+		// Enqueue assets
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
+
 		// Move checkout location fields to shipping section
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_reposition_checkout_location_fields' ), 100 );
 
@@ -88,6 +94,38 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 
 
 	/**
+	 * Register assets.
+	 */
+	public function register_assets() {
+		// Scripts
+		wp_register_script( 'fc-checkout-wc-multivendor-marketplace', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/wc-multivendor-marketplace/checkout-wc-multivendor-marketplace' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-checkout-wc-multivendor-marketplace', 'window.addEventListener("load",function(){CheckoutWCMultivendorMarketplace.init();});' );
+	}
+
+	/**
+	 * Enqueue assets.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-checkout-wc-multivendor-marketplace' );
+	}
+
+	/**
+	 * Maybe enqueue assets.
+	 */
+	public function maybe_enqueue_assets() {
+		// Bail if not at checkout
+		if ( ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if plugin is not active
+		if ( ! class_exists( 'WCFMmp' ) ) { return; }
+
+		$this->enqueue_assets();
+	}
+
+
+
+	/**
 	 * Add or remove shipping methods hooks.
 	 *
 	 * Replaces core handlers that look up chosen methods by numeric index,
@@ -104,9 +142,6 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		// Shipping method substep review text
 		remove_filter( 'fc_substep_shipping_method_text_lines', array( FluidCheckout_Steps::instance(), 'add_substep_text_lines_shipping_method' ), 10 );
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
-
-		// Shipping method substep completeness
-		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_fix_substep_complete_shipping_method' ), 10 );
 	}
 
 
@@ -327,7 +362,6 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 	 * Whether a local pickup shipping method is currently selected.
 	 */
 	public function is_local_pickup_selected() {
-		// Prefer PRO local pickup detection when available
 		// Maybe use the PRO local pickup detection
 		if ( class_exists( 'FluidCheckout_PRO_CheckoutLocalPickup' ) && method_exists( FluidCheckout_PRO_CheckoutLocalPickup::instance(), 'is_shipping_method_local_pickup_selected' ) ) {
 			return FluidCheckout_PRO_CheckoutLocalPickup::instance()->is_shipping_method_local_pickup_selected();
@@ -490,7 +524,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 			$package_review_text_lines = array();
 
 			// Get shipping method info
-			$available_methods = $package[ 'rates' ];
+			$available_methods = $steps->get_available_shipping_methods( $package[ 'rates' ], $package );
 			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
 			$method = $available_methods && array_key_exists( $chosen_method, $available_methods ) ? $available_methods[ $chosen_method ] : null;
 			$chosen_method_label = $method ? wc_cart_totals_shipping_method_label( $method ) : __( 'Not selected yet.', 'fluid-checkout' );
@@ -507,7 +541,7 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 			$package_review_text_lines[] = wp_kses( $chosen_method_label, $allowed_kses_attributes );
 
 			// Handle package destination
-			if ( $has_multiple_packages && $steps->is_shipping_package_contents_destination_text_lines_enabled() ) {
+			if ( $has_multiple_packages && $steps->is_shipping_package_contents_destination_text_lines_enabled( $method, $package_index ) ) {
 				// Get package destination
 				$destination = array_key_exists( 'destination', $package ) && ! empty( $package[ 'destination' ] ) ? $package[ 'destination' ] : array();
 				$destination = apply_filters( 'fc_shipping_method_substep_text_package_destination_data', $destination, $package_index, $package, $chosen_method, $method );
@@ -553,39 +587,6 @@ class FluidCheckout_WCFMMultiVendorMarketplace extends FluidCheckout {
 		}
 
 		return $review_text_lines;
-	}
-
-	/**
-	 * Maybe fix shipping method substep completeness for vendor-keyed packages.
-	 *
-	 * @param  bool  $is_substep_complete  Whether the substep is complete.
-	 */
-	public function maybe_fix_substep_complete_shipping_method( $is_substep_complete ) {
-		// Bail if plugin is not active
-		if ( ! class_exists( 'WCFMmp' ) ) { return $is_substep_complete; }
-
-		// Bail if shipping is not available
-		if ( ! function_exists( 'WC' ) || ! WC()->shipping() ) { return $is_substep_complete; }
-
-		// Get shipping packages
-		$packages = WC()->shipping()->get_packages();
-
-		// Iterate shipping packages
-		$package_index = 0;
-		foreach ( $packages as $package_key => $package ) {
-			// Get chosen shipping method for the package
-			$chosen_method = $this->get_chosen_shipping_method_for_package( $package_key, $package_index );
-
-			// Return `false` if the package does not have a chosen shipping method
-			if ( empty( $chosen_method ) ) {
-				return false;
-			}
-
-			// Increase package index
-			$package_index++;
-		}
-
-		return true;
 	}
 
 }
