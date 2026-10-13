@@ -108,7 +108,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		/**
 		 * Filters the add-ons catalog shown on the dashboard.
 		 *
-		 * @since 4.2.8
+		 * @since 5.0.0
 		 *
 		 * @param array $catalog Add-on catalog items.
 		 */
@@ -304,7 +304,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		/**
 		 * Filters the Dashboard add-on card action HTML.
 		 *
-		 * @since 4.2.8
+		 * @since 5.0.0
 		 *
 		 * @param string $html        Default actions HTML.
 		 * @param array  $addon       Catalog item.
@@ -427,7 +427,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			/**
 			 * Fires before the Dashboard add-ons list.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 */
 			do_action( 'fc_dashboard_addons_before_list' );
 			?>
