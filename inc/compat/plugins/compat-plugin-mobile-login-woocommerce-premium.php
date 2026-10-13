@@ -535,8 +535,8 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get entered phone number
-		$country_code = WC()->checkout->get_value( $country_code_field_key );
-		$phone_number = WC()->checkout->get_value( $phone_number_field_key );
+		$country_code = WC()->checkout()->get_value( $country_code_field_key );
+		$phone_number = WC()->checkout()->get_value( $phone_number_field_key );
 
 		// Add phone number with country code to the review text
 		$review_text_lines[] = $country_code . $phone_number;
@@ -580,11 +580,11 @@ class FluidCheckout_MobileLoginWoocommercePremium extends FluidCheckout {
 
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-mobile-login-woocommerce-premium', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/checkout-mobile-login-woocommerce-premium' ), array( 'jquery', 'fc-utils' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutMobileLoginWoocommercePremium.init(fcSettings.checkoutMobileLoginWoocommercePremium);})' );
+		wp_add_inline_script( 'fc-checkout-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutMobileLoginWoocommercePremium.init(fcSettings.checkoutMobileLoginWoocommercePremium);});' );
 
 		// Validation scripts
 		wp_register_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mobile-login-woocommerce-premium/checkout-validation-mobile-login-woocommerce-premium' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutValidationMobileLoginWoocommercePremium.init(fcSettings.checkoutValidationMobileLoginWoocommercePremium);})' );
+		wp_add_inline_script( 'fc-checkout-validation-mobile-login-woocommerce-premium', 'window.addEventListener("load",function(){CheckoutValidationMobileLoginWoocommercePremium.init(fcSettings.checkoutValidationMobileLoginWoocommercePremium);});' );
 	}
 
 	/**

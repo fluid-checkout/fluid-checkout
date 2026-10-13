@@ -21,6 +21,13 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	public function is_feature_enabled() {
 		// Return whether the feature is enabled or not.
 		// Use comparison to `true` to ensure a boolean value is returned.
+		/**
+		 * Filters whether the distraction-free checkout page template is used.
+		 *
+		 * @since 2.3.2
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		return true === apply_filters( 'fc_enable_checkout_page_template', true );
 	}
 
@@ -122,6 +129,13 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 */
 	public function get_shortcode_wrapper_attributes() {
 		return array(
+			/**
+			 * Filters extra CSS classes for the checkout content wrapper.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $classes CSS classes. Default empty string.
+			 */
 			'before' => '<div class="fc-content ' . esc_attr( apply_filters( 'fc_content_section_class', '' ) ) . '"><div class="woocommerce">',
 			'after'  => '</div></div>',
 		);
@@ -132,6 +146,13 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 	 */
 	public function output_checkout_shortcode_wrapper( $attributes ) {
 		// Maybe output the checkout shortcode contents with a `fc-content` wrapper
+		/**
+		 * Filters whether the checkout shortcode output is wrapped in the content container.
+		 *
+		 * @since 4.0.0
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default false.
+		 */
 		if ( true === apply_filters( 'fc_enable_checkout_shortcode_wrapper', false ) ) {
 			return WC_Shortcodes::shortcode_wrapper( array( 'WC_Shortcode_Checkout', 'output' ), $attributes, $this->get_shortcode_wrapper_attributes() );
 		}
@@ -176,6 +197,16 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		}
 
 		// Look for template file in the theme
+		/**
+		 * Filters whether a theme template file may replace a plugin template.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param bool   $value         Value to filter. Default false.
+		 * @param string $template      Located template path.
+		 * @param string $template_name Template name.
+		 * @param string $template_path Template path.
+		 */
 		if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 			$_template_override = locate_template( array(
 				trailingslashit( $template_path ) . $template_name,
@@ -234,7 +265,12 @@ class FluidCheckout_CheckoutPageTemplate extends FluidCheckout {
 		if ( ! function_exists( 'WC' ) ) { return false; }
 
 		// Bail if not showing the checkout form
-		if ( ! is_user_logged_in() && ! WC()->checkout()->is_registration_enabled() && WC()->checkout()->is_registration_required() ) { return false; }
+		if (
+			( doing_action( 'woocommerce_checkout_init' ) || did_action( 'woocommerce_checkout_init' ) )
+			&& ! is_user_logged_in()
+			&& ! WC()->checkout()->is_registration_enabled()
+			&& WC()->checkout()->is_registration_required()
+		) { return false; }
 
 		// Return `true` when distraction free header and footer is enabled
 		return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_hide_site_header_footer_at_checkout' );

@@ -1,0 +1,15 @@
+// ------------------------------------
+// CHECKOUT HEADER
+// ------------------------------------
+
+// If theme's checkout steps are added to header while distraction free mode is active
+body#{ $_body-theme-selector }#{ $_body-page-selector } header.fc-checkout-header + .wd-page-title {
+	@media (#{$bp-smaller-than-desktop}) { 
+		margin-top: $checkout-header-height;
+	}
+}
+body#{ $_body-theme-selector }#{ $_body-page-selector } .wd-page-title ~ #main.fc-main {
+	@media (#{$bp-smaller-than-desktop}) {
+		padding-top: 0;
+	}
+}

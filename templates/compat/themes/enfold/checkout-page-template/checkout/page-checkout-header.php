@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 1.2.0
+ * @version 4.1.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -238,7 +238,17 @@ $body_classes = implode( ' ', array_unique( array_filter( $body_classes ) ) );
 
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'fluid-checkout' ); ?></a>
 
-<?php do_action( 'fc_checkout_header' ); ?>
+<!-- CHANGE: Added opening div tag for #wrap_all -->
+<div id='wrap_all'>
+
+<?php
+	/**
+	 * Fires inside the distraction-free checkout header.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_header' );
+?>
 
 <?php // CHANGE: Added class and attributes from theme ?>
 <main id="main" class="content-area fc-main all_colors" data-scroll-offset="<?php echo avia_header_setting( 'header_scroll_offset' ); ?>">

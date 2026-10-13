@@ -68,10 +68,6 @@ msgstr "مال ئەۋەتىش"
 msgid "Only used for shipping-related questions."
 msgstr "پەقەت توشۇشقا مۇناسىۋەتلىك سوئاللارغا ئىشلىتىلىدۇ."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "كۆپ باسقۇچ"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "يەككە قەدەم"
@@ -105,14 +101,6 @@ msgstr "ھېسابات قىلىشنى داۋاملاشتۇرۇڭ"
 msgid "Proceed to payment"
 msgstr "پۇل تۆلەشنى داۋاملاشتۇرۇڭ"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "مېنىڭ ئالاقىلىشىم"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "توشۇش"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "توشۇش ئۇسۇلى"
@@ -120,10 +108,6 @@ msgstr "توشۇش ئۇسۇلى"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "قوشۇمچە ئىزاھات"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Billing to"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -137,10 +121,6 @@ msgstr "قەدەم% 1 $ s نىڭ% 2 $ s"
 #: inc/checkout-steps.php:2825
 msgid "Change: %s"
 msgstr "ئۆزگەرتىش:% s"
-
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "تەمىنلەنگەن ئۇچۇرلار بىلەن ھېسابات قۇرۇلىدۇ."
 
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -404,14 +384,6 @@ msgstr "قىستۇرمىغا باھا بېرىڭ"
 msgid "I need help!"
 msgstr "ماڭا ياردەم كېرەك!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Quadlayers نىڭ قىستۇرما WooCommerce تەكشۈرۈش باشقۇرغۇچىسى سۇيۇقلۇق تەكشۈرۈش "
-"بىلەن ماسلاشمايدۇ"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +630,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "رەسىمنى تاللاڭ"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "رەسىم تاللانمىدى."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "رەسىمنى ئۆچۈرۈڭ"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -945,16 +909,6 @@ msgstr "چىقىمدان ئورۇنلاشتۇرۇشى"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "لايىھىلەش قېلىپى"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"چىقىم قىلىش باسقۇچلىرى ، زاكاز خۇلاسىسى ۋە باشقا بۆلەكلەرنىڭ ئومۇمىي "
-"ئۇسلۇبى. ھارۋا ، زاكاز قوبۇل قىلىنغان ۋە زاكاز بېتىنى كۆرۈش قاتارلىق باشقا "
-"بەتلەرگىمۇ ماس كېلىشى مۇمكىن."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -1519,14 +1473,6 @@ msgstr "چىقىم قىلىش جەدۋىلىگە ھېسابات تېلېفون �
 msgid "Choose in which step to display the billing phone field."
 msgstr "ھەق تۆلەش تېلېفون مەيدانىنى قايسى باسقۇچتا كۆرسىتىشنى تاللاڭ."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "خەلقئارالىق تېلېفون نومۇرى فورماتى ۋە تېلېفون ساھەسىنى دەلىللەشنى قوزغىتىڭ"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "ھەر بىر دۆلەتكە ئاساسەن تېلېفون نومۇرىنى فورماتلاڭ ۋە دەلىللەڭ."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "دۆلەت قائىدىسىگە ئاساسەن تېلېفون نومۇرىنى دەلىللەشنى قوزغىتىڭ"
@@ -1956,14 +1902,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(تەجرىبە)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"بۇ بىر تەجرىبە ئىقتىدارى بولۇپ ، بارلىق باشتېمىلار ۋە قىستۇرمىلاردا "
-"مۆلچەردىكىدەك ئىشلىمەسلىكى مۇمكىن. ئېھتىيات بىلەن ئىشلىتىڭ."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2398,6 +2336,294 @@ msgstr ""
 "سۇيۇقلۇق چىقىمداننى ئىشلەتكەندە Nyture باشتېمىسىدىن چىقىم قىلىش "
 "باسقۇچلىرىنى چىقىرىڭ."
 
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"خېرىدارلارنىڭ دۇكان باشقۇرغۇچى تەرىپىدىن قولدا ياسالغان ياكى چىقىمداندا "
+"تاماملانمىغان زاكاز ئۈچۈن پۇل تۆلىشىگە يول قويىدۇ."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Quadlayers نىڭ قىستۇرما WooCommerce تەكشۈرۈش باشقۇرغۇچىسى سۇيۇقلۇق "
+"تەكشۈرۈشكە ماس كەلمەيدۇ"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "ھېسابات ئادرېسى ئۈچۈن شىركەت ئىسمى"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"چىقىم جەدۋىلىدىكى ھېسابات ئادرېسى بۆلىكىنىڭ شىركەت نامىنىڭ كۆرۈنۈشچانلىقىنى "
+"ئۆزگەرتىڭ."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "تېما كىتابخانىسى"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"سۇيۇقلۇق چىقىمداننى ئىشلەتكەندە كىتاب بېسىش تېمىسىدىكى چىقىم باسقۇچلىرى "
+"بۆلىكىنى چىقىرىڭ."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "ھېسابات پارولى"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "زاكازنى تاماملىغاندا چىقىمداندا تەمىنلەنگەن ئۇچۇرلار بىلەن ھېسابات قۇرۇلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "ئىلگىرىلەش بالدىقىنىڭ ئۇسلۇبىنى تاللاڭ."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bars"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Theme Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce بەت ئورۇنلاشتۇرۇشى"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce بېتىدە كەڭ ئورۇنلاشتۇرۇشنى زورلاڭ"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"بۇ WooCommerce بېتىدە چىقىمدان ، ھارۋا ، تاپشۇرۇۋالغان زاكاز ، زاكاز ھەققى "
+"ۋە ھېسابات بېتىنى ئۆز ئىچىگە ئالغان مەزمۇن بۆلىكىنىڭ بەك تار بولماسلىقىغا "
+"كاپالەتلىك قىلىدۇ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Smart Coupons"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "چىقىمدان بېتىدىكى ئورۇن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "چىقىمدان بېتىدە بار بولغان تالون بۆلەكلىرىنى قەيەردە كۆرسىتىشنى تاللاڭ."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "ئىلگىرىلەش بالدىقىدىن بۇرۇن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "ئىلگىرىلەش بالدىقىدىن كېيىن"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "تالون كود بۆلىكىدىن بۇرۇن"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "خەلقئارالىق تېلېفون نومۇرى ساھەلىرىنى قوزغىتىڭ"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "ھەر بىر دۆلەتنىڭ قائىدىسىگە ئاساسەن تېلېفون نومۇرىنى فورماتلاڭ."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "ئېنىق تېلېفون نومۇرىنى دەلىللەشنى ئىشلىتىڭ"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"تېلېفون نومۇرىنىڭ تاللانغان دۆلەت كودى قائىدىسىگە ئاساسەن ئىناۋەتلىك كۆچمە "
+"ياكى مۇقىم تېلېفون نومۇرى بولۇشىغا كاپالەتلىك قىلىڭ. بۇ تاللانما "
+"<code>intl-tel-input</code> ئېنىق دەلىللەش ئىقتىدارىنى ئىشلىتىدۇ ، بۇ "
+"بەلكىم بەزى تېلېفون نومۇرلىرىغا يالغان ئاكتىپلىق بېرىشى مۇمكىن."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"بۇ بىر تەجرىبە ئىقتىدارى بولۇپ ، بارلىق تەڭشەشلەردە مۆلچەردىكىدەك "
+"ئىشلىمەسلىكى مۇمكىن. ئېھتىيات بىلەن ئىشلىتىڭ."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"ئېنىق دەلىللەش قوزغىتىلغاندا ئىشلىتىلىدىغان تېلېفون نومۇرىنى دەلىللەش "
+"تىپلىرى."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "كۆچمە"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "مۇقىم سىزىق"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "ھەقسىز"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "ئالاقىلىشىش"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "كۆپ قەدەملىك"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 ئىستون"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 ئىستون"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"تەكشۈرۈش باسقۇچلىرى، زاكاز خۇلاسىسى ۋە باشقا بۆلەكلەرنىڭ ئادەتتىكى "
+"ئۇسلۇبلىرى.<br> سېۋەت، تاپشۇرۇۋېلىنغان زاكاز ۋە زاكازنى كۆرۈش بەتلىرى "
+"قاتارلىق باشقا بەتلەرگىمۇ ماس كېلىشى مۇمكىن."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>«بىر ئىستون»</em> لايىھەسىنى ئىشلەتكەندە <em>«بۆلۈش»</em> لايىھە قېلىپى "
+"ئىشلەتكىلى بولمايدۇ، ئەگەر تاللانسا <em>«مىنىمالىزم»</em> غا قايتىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "تەكشۈرۈشتىن بۇرۇنقى قەدەملەر"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "ياكى"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>«1 ئىستون»</em> ئارقىلىق تۆلەش لايىھەسىنى ئىشلەتكەندە، بۇ تاللاش ھەمىشە "
+"<em>«تۆلەشتىن بۇرۇنقى قەدەملەر»</em> گە تەڭشىلىنىدۇ ھەمدە ئۈستەل يۈزى "
+"كۆرۈنۈشىگىمۇ ماس كېلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "يانفوندا قوشۇمچە زاكاز خۇلاسىسى بۆلۈمىنىڭ ئورنى."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>«تور بېتىدە باشلىق»</em> تاللانمىسى پەقەت دىققەتنى چېچىپ قويمايدىغان "
+"باشلىق ئىشلىتىلگەندىلا قوللىنىلىدۇ."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "تور بېكەت باشلىقى (دىققەتنى چېچىپ قويمايدىغان باشلىق تەلەپ قىلىنىدۇ)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "يانفوندا كېڭەيتكىلى بولىدىغان زاكاز خۇلاسىسى بۆلىكىنىڭ دەسلەپكى ھالىتى."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"بىز بۇنى تۆۋەندىكى دۆلەتلەر ئۈچۈن تەڭشەش تەلىپى سەۋەبىدىن "
+"<em>كېڭەيتىلگەن</em> قىلىپ بەلگىلەشنى تەۋسىيە قىلىمىز: "
+"<strong>گېرمانىيە</strong> ، <strong>ئاۋسترىيە</strong> ، "
+"<strong>شىۋىتسارىيە</strong> ، <strong>گوللاندىيە</strong> ، "
+"<strong>پولشا</strong> ، <strong>بېلگىيە</strong> ۋە "
+"<strong>فرانسىيە</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "يىقىلدى"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "كېڭەيتىلدى"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "كۆرسەتمەڭ"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ھەئە"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"ئەگەر ھەق ئېلىش ئادرېسى بۆلىكىدىن كېيىن ھەق ئېلىش ئادرېسى كۆرسىتىلسە ۋە ھەق "
+"ئېلىش تېلېفونى بۆلىكى «مەجبۇرىي» دەپ بەلگىلەنگەن بولسا، يەتكۈزۈش تېلېفونى "
+"بۆلىكى مەجبۇرىي «مەجبۇرىي» قىلىپ قويۇلۇشى مۇمكىن. بۇ تاللاش تاللانغاندا، "
+"يەتكۈزۈش ئادرېسىنى ھەق ئېلىش ئادرېسىغا كۆچۈرگىلى بولىدىغانلىقىغا كاپالەتلىك "
+"قىلىش ئۈچۈن كېرەك، بولمىسا خېرىدار ھەق ئېلىش جەدۋىلىنى تولدۇرالماسلىقى "
+"مۇمكىن."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"ئەگەر ھەق ئېلىش ئادرېسى بۆلىكى توشۇش ئادرېسى بۆلىكىدىن بۇرۇن كۆرسىتىلسە ۋە "
+"يەتكۈزۈش تېلېفونى بۆلىكى «مەجبۇرىي» دەپ بەلگىلەنگەن بولسا، ھەق ئېلىش "
+"تېلېفونى بۆلىكى مەجبۇرىي «مەجبۇرىي» قىلىپ قويۇلۇشى مۇمكىن. بۇ تاللاش "
+"تاللانغاندا، يەتكۈزۈش ئادرېسىنى ھەق ئېلىش ئادرېسىغا كۆچۈرگىلى "
+"بولىدىغانلىقىغا كاپالەتلىك قىلىش ئۈچۈن كېرەك، بولمىسا خېرىدار ھەق ئېلىش "
+"جەدۋىلىنى تولدۇرالماسلىقى مۇمكىن."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2515,3 +2741,36 @@ msgstr "ياكى تۆۋەندە داۋاملاشتۇرۇڭ"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "ياكى مېھمان سۈپىتىدە داۋاملاشتۇرۇڭ"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "رەسىمنى ئۆچۈرۈڭ"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "يەتكۈزۈش %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "توشۇش"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "كېيىنكى قەدەم"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "ھەئە"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

@@ -1,0 +1,7 @@
+// ------------------------------------
+// CHECKOUT WIDGET AREAS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .widget::after {
+	width: 100%;
+}

@@ -1,9 +1,0 @@
-body.woocommerce-checkout #payment div.payment_box.payment_method_stripe fieldset {
-  padding-left: 0;
-  padding-right: 0;
-  border: 0;
-}
-
-body.woocommerce-checkout #payment div.payment_box.payment_method_stripe #wc-stripe-cc-form > .form-row {
-  padding: 0;
-}

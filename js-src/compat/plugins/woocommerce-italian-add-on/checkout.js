@@ -1,0 +1,106 @@
+/**
+ * Compatibility helpers for the WooCommerce Italian Add-On.
+ *
+ * Ensures the Italian helper callbacks trigger whenever Fluid Checkout updates
+ * the UI so that the add-on enforces its required logic after AJAX refreshes.
+ */
+(function (root, factory) {
+	if ( typeof define === 'function' && define.amd ) {
+		define([], factory(root));
+	} else if ( typeof exports === 'object' ) {
+		module.exports = factory(root);
+	} else {
+		root.WooCommerceItalianAddOnCheckout = factory(root);
+	}
+})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
+	'use strict';
+
+	var $ = jQuery;
+	var _hasJQuery = ( $ != null );
+
+	var _publicMethods = {};
+	var _hasInitialized = false;
+	var _namespace = '.fcItalianAddOn';
+
+
+
+	/**
+	 * METHODS
+	 */
+
+
+
+	/**
+	 * Refresh the state of the Italian add-on helpers so they reapply their rules after updates.
+	 */
+	_publicMethods.refreshState = function () {
+		// Bail if jQuery is not loaded
+		if ( ! _hasJQuery ) { return; }
+
+		var helpers = [
+			wcpdf_IT_billing_customer_type_change,
+			wcpdf_IT_check_required,
+			wcpdf_IT_check_cf2,
+			wcpdf_IT_check_PEC,
+			wcpdf_IT_check_billing_company,
+			wcpdf_IT_check_visible_required_fields,
+			wcpdf_IT_billing_invoice_type_change,
+		];
+
+		// Run all available Italian add-on helpers
+		helpers.forEach( function ( helper ) {
+			if ( typeof helper === 'function' ) { helper(); }
+		} );
+	};
+
+
+
+	/**
+	 * Handle change events on the fields Fluid Checkout exposes to the Italian add-on.
+	 */
+	var handleChange = function ( event ) {
+		// Bail if event or event target is not set
+		if ( ! event || ! event.target ) { return; }
+
+		// When the Italian customer type selector changes, run its helper if available.
+		if ( event.target.matches( '#billing_customer_type' ) && typeof wcpdf_IT_billing_customer_type_change === 'function' ) {
+			wcpdf_IT_billing_customer_type_change();
+		}
+
+		// When the billing country selector changes, ask the add-on to revalidate required fields.
+		if ( event.target.matches( '#billing_country' ) && typeof wcpdf_IT_check_required === 'function' ) {
+			wcpdf_IT_check_required();
+		}
+	};
+
+
+
+	/**
+	 * Initialize the compatibility handler.
+	 */
+	_publicMethods.init = function () {
+		// Bail if already initialized
+		if ( _hasInitialized ) { return; }
+
+		// jQuery event listeners
+		if ( _hasJQuery ) {
+			$( 'body' ).on( 'updated_checkout' + _namespace, _publicMethods.refreshState );
+			$( 'body' ).on( 'fc_fragments_refreshed' + _namespace, _publicMethods.refreshState );
+		}
+
+		// Event listeners
+		document.addEventListener( 'change', handleChange, true );
+
+		// Refresh state of fields at initialization
+		_publicMethods.refreshState();
+
+		// Set initialized flag
+		_hasInitialized = true;
+	};
+
+	//
+	// Public APIs
+	//
+	return _publicMethods;
+});
+

@@ -41,7 +41,7 @@ class FluidCheckout_AstraAddon extends FluidCheckout {
 	public function register_assets() {
 		// Modern input styles event handler
 		wp_register_script( 'fc-compat-astra-addon-woo-common-input-event-handler', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/astra-addon/woo-common-input-event-handler' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-compat-astra-addon-woo-common-input-event-handler', 'window.addEventListener("load",function(){WooCommonInputEventHandler.init();})' );
+		wp_add_inline_script( 'fc-compat-astra-addon-woo-common-input-event-handler', 'window.addEventListener("load",function(){WooCommonInputEventHandler.init();});' );
 
 		// Label as placeholder
 		wp_register_script( 'astra-checkout-labels-as-placeholders', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/astra-addon/checkout-labels-as-placeholders' ), array( 'jquery', 'astra-addon-js' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );

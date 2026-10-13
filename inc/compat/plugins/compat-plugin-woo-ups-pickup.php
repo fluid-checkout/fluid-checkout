@@ -99,6 +99,16 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 			$_template = $plugin_path . $template_name;
 
 			// Look for template file in the theme
+			/**
+			 * Filters whether a theme template file may replace a plugin template.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 				$_template_override = locate_template( array(
 					trailingslashit( $template_path ) . $template_name,
@@ -129,7 +139,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-compat-woo-ups-pickup-location-handler', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-ups-pickup/ups-pickup-location-handler' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-compat-woo-ups-pickup-location-handler', 'window.addEventListener("load",function(){UpsPickupLocationHandler.init();})' );
+		wp_add_inline_script( 'fc-compat-woo-ups-pickup-location-handler', 'window.addEventListener("load",function(){UpsPickupLocationHandler.init();});' );
 	}
 
 	/**
@@ -207,9 +217,9 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 
 		// Bail if cart has only virtual products
 		if ( $is_virtual ) { return $fields; }
-		
-		$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
-		$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
+
+		$pickups_location1_value = WC()->checkout()->get_value( 'pickups_location1' );
+		$pickups_location2_value = WC()->checkout()->get_value( 'pickups_location2' );
 		?>
 		<div class="ups-pickup-location-hidden-fields form-row validate-required fc-no-validation-icon">
 			<span class="woocommerce-input-wrapper">
@@ -277,7 +287,7 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 			if ( 'woo-ups-pickups' != $chosen_method ) { continue; }
 
 			// Get pickup location code
-			$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
+			$pickups_location1_value = WC()->checkout()->get_value( 'pickups_location1' );
 			$pickups_location1_prefix = substr( $pickups_location1_value, 0, 4 );
 
 			// Maybe mark substep as incomplete if pickup location code is not accepted
@@ -311,8 +321,8 @@ class FluidCheckout_WooUPSPickup extends FluidCheckout {
 			if ( 'woo-ups-pickups' != $chosen_method ) { continue; }
 
 			// Get pickup location code
-			$pickups_location1_value = WC()->checkout->get_value( 'pickups_location1' );
-			$pickups_location2_value = WC()->checkout->get_value( 'pickups_location2' );
+			$pickups_location1_value = WC()->checkout()->get_value( 'pickups_location1' );
+			$pickups_location2_value = WC()->checkout()->get_value( 'pickups_location2' );
 			$pickups_location1_prefix = substr( $pickups_location1_value, 0, 4 );
 
 			// Maybe mark step as incomplete if pickup location code is not accepted

@@ -1,0 +1,11 @@
+// ------------------------------------
+// CHECKOUT SHIPPING ADDRESS
+// ------------------------------------
+
+// Remove padding and border from shipping fields wrapper
+body#{ $_body-theme-selector } .woocommerce form.checkout .woocommerce-shipping-fields .shipping_address {
+	padding: 0;
+	margin-bottom: 0;
+	border: none;
+	border-radius: 0;
+}

@@ -40,6 +40,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_admin_bar_offset_assets' ), 10 );
 
 		// Theme and Plugin Compatibility
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_compat_styles' ), 10 );
@@ -68,6 +69,9 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_edit_address' ), 10 );
 		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_assets_add_payment_method' ), 10 );
 
+		// Admin bar offset
+		remove_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_admin_bar_offset_assets' ), 10 );
+
 		// Theme and Plugin Compatibility
 		// Should not remove theme and plugin compatibility hooks. Keep this comment here for future reference.
 	}
@@ -82,6 +86,7 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		wp_deregister_script( 'wc-country-select' );
 		wp_deregister_script( 'wc-address-i18n' );
 		wp_deregister_script( 'wc-checkout' );
+		wp_deregister_script( 'wc-password-strength-meter' );
 
 		// Select2 / SelectWoo, will be replaced with TomSelect
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_use_enhanced_select_components' ) ) {
@@ -100,11 +105,25 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		// Deregsiter WooCommerce scripts if already registered
 		$this->deregister_woocommerce_scripts();
 
+		// Get WooCommerce version
+		$woocommerce_version = defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
+
+		// Define WooCommerce script dependencies
+		$woocommerce_deps = version_compare( $woocommerce_version, '10.3.0', '>=' ) ? array( 'jquery', 'wc-jquery-blockui', 'wc-js-cookie' ) : array( 'jquery', 'jquery-blockui', 'js-cookie' );
+
+		// Define checkout script dependencies
+		$checkout_deps = array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' );
+		// Maybe add custom place order button utility as a checkout dependency for WooCommerce 10.6.0+
+		if ( version_compare( $woocommerce_version, '10.6.0', '>=' ) ) {
+			$checkout_deps[] = 'wc-custom-place-order-button';
+		}
+
 		// Register WooCommerce scripts with modified version
-		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), array( 'jquery', 'jquery-blockui', 'js-cookie' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'woocommerce', $this->get_script_url( 'js/woocommerce' ), $woocommerce_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-country-select', $this->get_script_url( 'js/country-select' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'wc-address-i18n', $this->get_script_url( 'js/address-i18n' ), array( 'jquery', 'wc-country-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), array( 'jquery', 'woocommerce', 'wc-country-select', 'wc-address-i18n', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-checkout', $this->get_script_url( 'js/checkout' ), $checkout_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'wc-password-strength-meter', $this->get_script_url( 'js/password-strength-meter' ), array( 'jquery', 'password-strength-meter' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Select2 / SelectWoo, replaced with TomSelect but keeping the same handle and dependencies
 		// because many plugins and themes depend on `select2` or `selectWoo` scripts.
@@ -137,8 +156,8 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		$settings = array(
 			'ver'                            => self::$version,
 			'assetsVersion'                  => self::$asset_version,
-			'cookiePath'                     => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
-			'cookieDomain'                   => parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_HOST ),
+			'cookiePath'                     => wp_parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_PATH ),
+			'cookieDomain'                   => wp_parse_url( FluidCheckout_Settings::instance()->get_option( 'siteurl' ), PHP_URL_HOST ),
 			'jsPath'                         => self::$directory_url . 'js/',
 			'jsLibPath'                      => self::$directory_url . 'js/lib/',
 			'cssPath'                        => self::$directory_url . 'css/',
@@ -153,13 +172,48 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			),
 			'collapsibleBlock'               => array(),
 			'stickyStates'                   => array(),
+			/**
+			 * Filters the checkout behavior settings passed to the frontend script.
+			 *
+			 * @since 3.2.2
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			'checkout'                       => apply_filters( 'fc_checkout_script_settings', array(
+				/**
+				 * Filters whether checkout fragments update before the page unloads.
+				 *
+				 * @since 1.5.2
+				 *
+				 * @param string $value Value to filter. Default `yes`.
+				 */
 				'checkoutUpdateBeforeUnload'                => apply_filters( 'fc_checkout_update_before_unload', 'yes' ),
+				/**
+				 * Filters whether checkout fragments update when the page becomes visible again.
+				 *
+				 * @since 2.5.0
+				 *
+				 * @param string $value Value to filter. Default `yes`.
+				 */
 				'checkoutUpdateOnVisibilityChange'          => apply_filters( 'fc_checkout_update_on_visibility_change', 'yes' ),
+				/**
+				 * Filters the CSS selectors of fields that trigger a checkout update.
+				 *
+				 * @since 1.5.0
+				 *
+				 * @param array $value Value to filter.
+				 */
 				'checkoutUpdateFieldsSelector'              => join( ',', apply_filters( 'fc_checkout_update_fields_selectors', array(
 					'.address-field input.input-text',
 					'.update_totals_on_change input.input-text',
 				) ) ),
+				/**
+				 * Filters the coupon code settings passed to the frontend script.
+				 *
+				 * @since 1.6.0
+				 *
+				 * @param array $settings Settings to output.
+				 */
 				'checkoutCoupons'                           => apply_filters( 'fc_checkout_coupons_script_settings', array(
 					// This is required to prevent the default WC coupon code methods execution when the FC feature is enabled
 					'isEnabled' => FluidCheckout_CouponCodes::instance()->is_feature_enabled() ? 'yes' : 'no',
@@ -170,6 +224,13 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 		);
 
 		// Filter settings
+		/**
+		 * Filters the JavaScript settings passed to the Fluid Checkout frontend script.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings = apply_filters( 'fc_js_settings', $settings );
 
 		return $settings;
@@ -229,34 +290,39 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Register library scripts
-		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL ); // Should be loaded at the `<head>`
+		wp_register_script( 'fc-polyfill-inert', $this->get_script_url( 'js/lib/inert' ), array(), NULL, array( 'in_footer' => false ) ); // Should be loaded at the `<head>`
 		wp_register_script( 'fc-animate-helper', $this->get_script_url( 'js/lib/animate-helper' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-collapsible-block', $this->get_script_url( 'js/lib/collapsible-block' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);})' );
+		wp_add_inline_script( 'fc-collapsible-block', 'window.addEventListener("load",function(){CollapsibleBlock.init(fcSettings.collapsibleBlock);});' );
 		wp_register_script( 'fc-flyout-block', $this->get_script_url( 'js/lib/flyout-block' ), array( 'fc-polyfill-inert', 'fc-animate-helper' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);})' );
+		wp_add_inline_script( 'fc-flyout-block', 'window.addEventListener("load",function(){FlyoutBlock.init(fcSettings.flyoutBlock);});' );
 		wp_register_script( 'fc-sticky-states', $this->get_script_url( 'js/lib/sticky-states' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);})' );
+		wp_add_inline_script( 'fc-sticky-states', 'window.addEventListener("load",function(){StickyStates.init(fcSettings.stickyStates);});' );
+		wp_register_script( 'fc-frontend-admin-bar-offset', $this->get_script_url( 'js/fc-frontend-admin-bar-offset' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-frontend-admin-bar-offset', 'window.addEventListener("load",function(){FCFrontendAdminBarOffset.init();});' );
 
 		// Enhanced select
 		wp_register_script( 'tomselect', $this->get_script_url( 'js/tom-select.complete' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-enhanced-select', $this->get_script_url( 'js/fc-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();})' );
+		wp_add_inline_script( 'fc-enhanced-select', 'window.addEventListener("load",function(){FCEnhancedSelect.init();});' );
 
 		// Register script utilities
 		wp_register_script( 'fc-utils', $this->get_script_url( 'js/fc-utils' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 		// Register custom fonts
-		wp_register_style( 'fc-fonts', $this->get_style_url( 'css/fonts' ), array(), null );
+		wp_register_style( 'fc-fonts', $this->get_style_url( 'css/fonts' ), array(), NULL );
 
 		// Register styles
-		wp_register_style( 'fc-edit-address-page', $this->get_style_url( 'css/edit-address-page' ), array(), null );
-		wp_register_style( 'fc-add-payment-method-page', $this->get_style_url( 'css/add-payment-method-page' ), array(), null );
-		wp_register_style( 'fc-flyout-block', $this->get_style_url( 'css/flyout-block' ), array(), null );
-		wp_register_style( 'fc-sticky-states', $this->get_style_url( 'css/sticky-states' ), array(), null );
+		wp_register_style( 'fc-edit-address-page', $this->get_style_url( 'css/edit-address-page' ), array(), NULL );
+		wp_register_style( 'fc-add-payment-method-page', $this->get_style_url( 'css/add-payment-method-page' ), array(), NULL );
+		wp_register_style( 'fc-flyout-block', $this->get_style_url( 'css/flyout-block' ), array(), NULL );
+		wp_register_style( 'fc-sticky-states', $this->get_style_url( 'css/sticky-states' ), array(), NULL );
 
 		// Enhanced select
-		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), null );
+		wp_register_style( 'tomselect', $this->get_style_url( 'css/tom-select' ), array(), NULL );
+
+		// Admin bar offset styles
+		wp_register_style( 'fc-frontend-admin-bar-offset', $this->get_style_url( 'css/frontend-admin-bar-offset' ), array(), NULL );
 	}
 
 
@@ -410,6 +476,34 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 
 	/**
+	 * Enqueue admin bar offset script and styles.
+	 */
+	public function enqueue_admin_bar_offset_assets() {
+		// Enqueue assets
+		wp_enqueue_script( 'fc-frontend-admin-bar-offset' );
+		wp_enqueue_style( 'fc-frontend-admin-bar-offset' );
+	}
+
+	/**
+	 * Maybe enqueue admin bar offset script and styles.
+	 */
+	public function maybe_enqueue_admin_bar_offset_assets() {
+		// Bail if not on checkout page
+		if ( is_admin() || ! FluidCheckout_Steps::instance()->is_checkout_page_or_fragment() ) { return; }
+
+		// Bail if not using distraction-free header (FC header/progress bar not present)
+		if ( ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout() ) { return; }
+
+		// Bail if admin bar is not showing
+		if ( ! is_admin_bar_showing() ) { return; }
+
+		// Enqueue assets
+		$this->enqueue_admin_bar_offset_assets();
+	}
+
+
+
+	/**
 	 * Enqueue themes compatibility styles.
 	 */
 	public function enqueue_theme_compat_styles() {
@@ -421,7 +515,18 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) === false ) { continue; }
+			/**
+			 * Filters whether to enqueue a theme compatibility stylesheet on checkout and account screens.
+			 *
+			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * enqueue the stylesheet. Any other value skips it.
+			 *
+			 * @since 1.2.10
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
+			if ( true !== apply_filters( 'fc_enable_compat_theme_style_' . $theme_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-' . $theme_slug, false );
@@ -451,7 +556,18 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
-			if ( apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) === false ) { continue; }
+			/**
+			 * Filters whether to enqueue a plugin compatibility stylesheet on checkout and account screens.
+			 *
+			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to enqueue the stylesheet. Any other value skips it.
+			 *
+			 * @since 1.2.10
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
+			if ( true !== apply_filters( 'fc_enable_compat_plugin_style_' . $plugin_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-' . $plugin_slug, false );
@@ -477,7 +593,18 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( apply_filters( 'fc_enable_compat_theme_account_style_' . $theme_slug, true ) === false ) { continue; }
+			/**
+			 * Filters whether to enqueue a theme compatibility stylesheet on customer account screens.
+			 *
+			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * enqueue the stylesheet. Any other value skips it.
+			 *
+			 * @since 3.1.9
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
+			if ( true !== apply_filters( 'fc_enable_compat_theme_account_style_' . $theme_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-account-' . $theme_slug, false );
@@ -503,7 +630,18 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) === false ) { continue; }
+			/**
+			 * Filters whether to enqueue a theme compatibility stylesheet on the account edit-address screen.
+			 *
+			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * enqueue the stylesheet. Any other value skips it.
+			 *
+			 * @since 3.1.6
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
+			if ( true !== apply_filters( 'fc_enable_compat_theme_edit_address_style_' . $theme_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/themes/compat-edit-address-' . $theme_slug, false );
@@ -535,7 +673,18 @@ class FluidCheckout_Enqueue extends FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
-			if ( apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) === false ) { continue; }
+			/**
+			 * Filters whether to enqueue a plugin compatibility stylesheet on the account edit-address screen.
+			 *
+			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to enqueue the stylesheet. Any other value skips it.
+			 *
+			 * @since 3.1.6
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
+			if ( true !== apply_filters( 'fc_enable_compat_plugin_edit_address_style_' . $plugin_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = $this->get_style_url( 'css/compat/plugins/compat-edit-address-' . $plugin_slug, false );

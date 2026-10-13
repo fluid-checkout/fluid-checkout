@@ -14,18 +14,32 @@
  * @package fluid-checkout
  * @version 3.2.2
  * @wc-version 3.6.0
- * @wc-original checkout/form-billing.php
+ * @original plugins/woocommerce/templates/checkout/form-billing.php
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<?php do_action( 'fc_checkout_before_contact_fields' ); ?>
+<?php
+	/**
+	 * Fires before the contact fields section.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_before_contact_fields' );
+?>
 
 <div class="fc-contact-fields fc-clearfix">
 
 	<div class="fc-contact-fields__wrapper">
-		<?php do_action( 'fc_checkout_contact_before_fields' ); ?>
+		<?php
+			/**
+			 * Fires before the contact fields.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'fc_checkout_contact_before_fields' );
+		?>
 
 		<?php
 		// CHANGE: Display fields for the contact step
@@ -34,9 +48,23 @@ defined( 'ABSPATH' ) || exit;
 		}
 		?>
 
-		<?php do_action( 'fc_checkout_contact_after_fields' ); ?>
+		<?php
+			/**
+			 * Fires after the contact fields.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'fc_checkout_contact_after_fields' );
+		?>
 	</div>
 
 </div>
 
-<?php do_action( 'fc_checkout_after_contact_fields' ); ?>
+<?php
+	/**
+	 * Fires after the contact fields section.
+	 *
+	 * @since 1.2.0
+	 */
+	do_action( 'fc_checkout_after_contact_fields' );
+?>

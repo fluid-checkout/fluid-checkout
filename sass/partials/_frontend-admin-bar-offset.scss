@@ -1,0 +1,25 @@
+// ------------------------------------
+// ADMIN BAR OFFSET
+// ------------------------------------
+
+// Checkout header - reset to top
+body.admin-bar:not( .fc-admin-bar-in-view ) .fc-checkout-header,
+body.admin-bar:not( .fc-admin-bar-in-view ) header.fc-checkout-header {
+	top: 0 !important; // Needed to override the admin bar offset
+}
+
+// Progress bar when sticky - reset transform
+body.admin-bar:not( .fc-admin-bar-in-view ) .fc-progress-bar[data-sticky-states].is-sticky--top .fc-progress-bar__inner {
+	transform: translateY( 0 ) !important; // Needed to override the admin bar offset
+}
+
+// Sidebar when sticky - reset padding (remove admin bar offset)
+body.admin-bar:not( .fc-admin-bar-in-view ) .fc-wrapper .fc-sidebar.is-sticky .fc-sidebar__inner,
+body.admin-bar:not( .fc-admin-bar-in-view ) .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
+	padding-top: $global-spacing-tiny !important; // Needed to override the admin bar offset
+}
+
+// Order summary flyout - reset padding to header height only
+body.admin-bar:not( .fc-admin-bar-in-view ) .fc-wrapper .fc-checkout-order-review[data-flyout].is-activated.is-open {
+	padding: $checkout-header-height 0 0 !important; // Needed to override the admin bar offset
+}

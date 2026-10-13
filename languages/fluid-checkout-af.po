@@ -68,10 +68,6 @@ msgstr "Gestuur telefoon"
 msgid "Only used for shipping-related questions."
 msgstr "Slegs gebruik vir versendingverwante vrae."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Multi-stap"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Enkelstap"
@@ -105,14 +101,6 @@ msgstr "Gaan voort na fakturering"
 msgid "Proceed to payment"
 msgstr "Gaan voort na betaling"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "My kontak"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Versending na"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Versending metode"
@@ -120,10 +108,6 @@ msgstr "Versending metode"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Bykomende notas"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Fakturering aan"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -137,10 +121,6 @@ msgstr "Stap %1$s van %2$s"
 #: inc/checkout-steps.php:2825
 msgid "Change: %s"
 msgstr "Verandering: %s"
-
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "&#39;n Rekening sal geskep word met die inligting wat verskaf word."
 
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -402,14 +382,6 @@ msgstr "Beoordeel die inprop"
 msgid "I need help!"
 msgstr "Ek het hulp nodig!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Die inprop WooCommerce Checkout Manager deur Quadlayers is nie versoenbaar "
-"met Fluid Checkout nie"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -658,14 +630,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Kies &#39;n prent"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Geen prent gekies nie."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Verwyder prent"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -948,16 +912,6 @@ msgstr "Betaaluitleg"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Ontwerp sjabloon"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Algemene style vir die betaalstappe, bestelopsomming en ander afdelings. "
-"Kan ook van toepassing wees op ander bladsye soos die Cart, Order Received "
-"en View Order-bladsye."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -1538,16 +1492,6 @@ msgstr "Voeg faktuurfoonveld by die betaalvorm."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Kies in watter stap om die faktuurfoonveld te vertoon."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Aktiveer internasionale telefoonnommerformaat en validering vir "
-"telefoonvelde"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formateer en bekragtig telefoonnommers volgens elke land."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Aktiveer telefoonnommerbekragtiging gebaseer op landreëls"
@@ -1976,14 +1920,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimenteel)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Dit is &#39;n eksperimentele kenmerk en werk dalk nie soos verwag met alle "
-"temas en inproppe nie. Gebruik dit met omsigtigheid."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2421,6 +2357,343 @@ msgstr ""
 "Voer die afhandelingstappe-afdeling vanaf die Nyture-tema uit wanneer Fluid "
 "Checkout gebruik word."
 
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Laat kliënte toe om betalings te maak vir bestellings wat óf handmatig deur "
+"die winkeladministrateur geskep word óf nie tydens die afhandeling voltooi "
+"is nie."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Die inprop WooCommerce Checkout Manager deur Quadlayers is nie versoenbaar "
+"met Fluid Checkout nie."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Maatskappynaamveld vir faktuuradres"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Verander die sigbaarheid vir die maatskappynaamveld vir die "
+"faktuuradres-afdeling op die afhandelingsvorm."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tema Boekrak"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Voer die afhandelingstappe-afdeling vanaf die Boekrak-tema uit wanneer "
+"Fluid Checkout gebruik word."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Rekeningwagwoord"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"&#39;n Rekening sal geskep word met die inligting wat by die afhandeling "
+"van die bestelling verskaf word."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Kies die styl van die vorderingsbalk."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Kroeë"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce-bladsyuitleg"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Forseer wye uitleg op WooCommerce-bladsye"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Dit verseker dat die inhoudsafdeling nie te nou is op WooCommerce-bladsye "
+"nie, insluitend die afhandeling, mandjie, bestelling ontvang, bestelling "
+"betaal en rekeningbladsye."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce Slim Koepons"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Posisie op die afhandelingbladsy"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Kies waar die beskikbare koepons-afdeling op die afhandelingbladsy vertoon "
+"moet word."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Voor die vorderingsbalk"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Na die vorderingsbalk"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Voor koeponkodes-afdeling"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Aktiveer internasionale telefoonnommervelde"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formateer telefoonnommers volgens die reëls vir elke land."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Gebruik presiese telefoonnommervalidering"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Probeer seker maak dat die telefoonnommer &#39;n geldige selfoon- of "
+"landlynnommer is gebaseer op die reëls vir die gekose landkode. Hierdie "
+"opsie gebruik die presiese valideringsfunksie <code>intl-tel-input</code> , "
+"wat vals positiewe resultate vir sommige telefoonnommers kan gee."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Hierdie is &#39;n eksperimentele kenmerk en werk dalk nie soos verwag in "
+"alle opstellings nie. Gebruik dit met omsigtigheid."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Telefoonnommervalideringstipes wat gebruik word wanneer presiese validering "
+"geaktiveer is."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobiel"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Vaste lyn"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Tolvry"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontak"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Meervoudige stap"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 kolomme"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 kolom"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Algemene style vir die afhandelingstappies, bestellingsopsomming en ander "
+"afdelings.<br> Kan ook van toepassing wees op ander bladsye soos die "
+"Mandjie-, Bestelling Ontvang- en Bekyk Bestelling-bladsye."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Die ontwerpsjabloon <em>&quot;Split&quot;</em> is nie beskikbaar wanneer "
+"<em>die &quot;1 kolom&quot;</em> -uitleg gebruik word nie en sal terugval "
+"op <em>&quot;Minimalisties&quot;</em> indien gekies."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Stappe voor die afhandeling"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Of"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Wanneer die <em>&quot;1 kolom&quot;</em> -uitleg vir afhandeling gebruik "
+"word, is hierdie opsie altyd gestel op <em>&quot;Stappe voor "
+"afhandeling&quot;</em> en geld ook vir die lessenaar-aansig."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Posisie vir die ekstra bestellingsopsommingsafdeling op selfoon."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Die opsie <em>&quot;Op die webwerf-koptekst&quot;</em> is slegs van "
+"toepassing wanneer die afleidingsvrye koptekst gebruik word."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Op die webwerf se koptekst (vereis afleidingsvrye koptekst)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr ""
+"Aanvanklike toestand vir die uitbreibare bestellingsopsommingsafdeling op "
+"mobiele toestelle."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Ons beveel aan dat dit as <em>uitgebreid</em> vir die volgende lande "
+"ingestel word as gevolg van regulatoriese vereistes: "
+"<strong>Duitsland</strong> , <strong>Oostenryk</strong> , "
+"<strong>Switserland</strong> , <strong>Nederland</strong> , "
+"<strong>Pole</strong> , <strong>België</strong> en "
+"<strong>Frankryk</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Ineengestort"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Uitgebrei"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Moenie wys nie"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "ja"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Die veld vir die afleweringstelefoonnommer kan as &quot;verpligtend&quot; "
+"gestel word indien die faktuuradres-afdeling na die "
+"afleweringsadres-afdeling vertoon word, en die faktuurtelefoon-veld as "
+"&quot;verpligtend&quot; gestel is. Dit is nodig om te verseker dat die "
+"afleweringsadres na die faktuuradres gekopieer kan word wanneer daardie "
+"opsie gemerk is, anders kan die kliënt dalk nie die afhandelingsvorm "
+"voltooi nie."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Die faktuurnommerveld kan as &quot;verpligtend&quot; gestel word indien die "
+"faktuuradres-afdeling voor die afleweringsadres-afdeling vertoon word, en "
+"die afleweringsnommerveld as &quot;verpligtend&quot; gestel is. Dit is "
+"nodig om te verseker dat die afleweringsadres na die faktuuradres gekopieer "
+"kan word wanneer daardie opsie gemerk is, anders kan die kliënt dalk nie "
+"die afhandelingsvorm voltooi nie."
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/template-top-level.php:3
+msgid "Top Level"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/template-top-level-post-types-child.php:3
+msgid "Top Level In A Child Theme"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/no-trailing-period-post-types.php:3
+msgid "No Trailing Period"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/tilde-post-types.php:3
+msgid "Tilde in Post Type."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-comma-post-types.php:3
+msgid "Trailing Comma,"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-post-types.php:3
+msgid "Trailing Period."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-period-whitespace-post-types.php:3
+msgid "Trailing Period, White Space."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/38766/trailing-whitespace-period-post-types.php:3
+msgid "Trailing White Space, Period."
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir-post-types.php:3, vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates/subdir/template-sub-dir.php:3
+msgid "Sub Dir"
+msgstr ""
+
+#: vendor-dev/wp-phpunit/wp-phpunit/data/themedir1/page-templates-child/subdir/template-sub-dir-post-types-child.php:3
+msgid "Sub Dir In A Child Theme"
+msgstr ""
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2538,3 +2811,36 @@ msgstr "Of gaan verder hieronder"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Of gaan voort as &#39;n gas"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Verwyder prent"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Versending %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Versending"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "volgende stap"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Ja"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

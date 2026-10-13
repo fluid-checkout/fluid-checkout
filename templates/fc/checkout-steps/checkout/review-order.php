@@ -10,16 +10,25 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://docs.woocommerce.com/document/template-structure/
+ * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 5.2.0
- * @fc-version 2.1.0
+ * @version 11.0.0
+ * @fc-version 4.2.6
  */
 
 defined( 'ABSPATH' ) || exit;
 ?>
 <?php // CHANGE: Add filter to add additional classes to the review order table ?>
-<table class="shop_table woocommerce-checkout-review-order-table <?php echo esc_attr( apply_filters( 'fc_pro_checkout_review_order_table_classes', '' ) ); ?>">
+<table class="shop_table woocommerce-checkout-review-order-table <?php
+	/**
+	 * Filters extra CSS classes on the checkout order review table.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $classes CSS classes. Default empty string.
+	 */
+	echo esc_attr( apply_filters( 'fc_pro_checkout_review_order_table_classes', '' ) );
+?>">
 	<thead>
 		<?php // CHANGE: Hide the table header visually while still allowing screen readers to see it ?>
 		<tr class="screen-reader-text">
@@ -33,11 +42,23 @@ defined( 'ABSPATH' ) || exit;
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+
+			// Change: Get product ID from the cart item
 			$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
-			if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+			/**
+			 * Filter whether this cart item is visible in the checkout review order table.
+			 *
+			 * @since 2.1.0
+			 * @param bool   $visible       Whether the cart item is visible. Default true.
+			 * @param array  $cart_item     The cart item data.
+			 * @param string $cart_item_key The cart item key.
+			 */
+			$visible = apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key );
+
+			if ( $_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible ) {
 				?>
-				<?php // CHANGE: Add variation of class `cart-item` to allow for better compatibility with styles between different pages ?>
+				<?php // CHANGE: Add alternative class `cart-item` to allow for better compatibility with styles between different pages, and add product ID to the data attributes ?>
 				<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item cart-item', $cart_item, $cart_item_key ) ); ?>" data-cart_item_key="<?php echo esc_attr( $cart_item_key ); ?>" data-product_id="<?php echo esc_attr( $product_id ); ?>">
 					<?php // CHANGE: Use `div` as columns to allow better control over the columns sizing ?>
 					<td colspan="2" role="none">
@@ -48,20 +69,54 @@ defined( 'ABSPATH' ) || exit;
 
 							<?php // CHANGE: Add product details wrapper and move all details content to output via hooks ?>
 							<div class="product-details">
-								<?php do_action( 'fc_order_summary_cart_item_details', $cart_item, $cart_item_key, $_product ); ?>
+								<?php
+									/**
+									 * Fires inside each order summary cart item, where the product details are rendered.
+									 *
+									 * @since 2.1.0
+									 *
+									 * @param array      $cart_item     Cart item data.
+									 * @param string     $cart_item_key Cart item key.
+									 * @param WC_Product $_product      Product object.
+									 */
+									do_action( 'fc_order_summary_cart_item_details', $cart_item, $cart_item_key, $_product );
+								?>
 							</div>
 
 						</div>
 						<div class="product-total" role="cell">
 							<?php // CHANGE: Add hook for before the cart item product totals ?>
-							<?php do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product ); ?>
+							<?php
+								/**
+								 * Fires before the line total of an order summary cart item.
+								 *
+								 * @since 3.0.5
+								 *
+								 * @param array      $cart_item     Cart item data.
+								 * @param string     $cart_item_key Cart item key.
+								 * @param WC_Product $_product      Product object.
+								 */
+								do_action( 'fc_order_summary_cart_item_totals_before', $cart_item, $cart_item_key, $_product );
+							?>
 
 							<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 							<?php // CHANGE: Add hook for after the cart item product totals ?>
-							<?php do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product ); ?>
+							<?php
+								/**
+								 * Fires after the line total of an order summary cart item.
+								 *
+								 * @since 3.0.5
+								 *
+								 * @param array      $cart_item     Cart item data.
+								 * @param string     $cart_item_key Cart item key.
+								 * @param WC_Product $_product      Product object.
+								 */
+								do_action( 'fc_order_summary_cart_item_totals_after', $cart_item, $cart_item_key, $_product );
+							?>
 						</div>
 					</td>
+					<?php // CHANGE: END - Use `div` as columns to allow better control over the columns sizing ?>
 				</tr>
 				<?php
 			}
@@ -85,14 +140,28 @@ defined( 'ABSPATH' ) || exit;
 		<?php endforeach; ?>
 
 		<?php // CHANGE: Add action after the coupon codes row ?>
-		<?php do_action( 'fc_pro_checkout_review_order_after_coupon_code' ); ?>
+		<?php
+			/**
+			 * Fires after the coupon code row in the checkout order review.
+			 *
+			 * @since 2.0.5
+			 */
+			do_action( 'fc_pro_checkout_review_order_after_coupon_code' );
+		?>
 
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
 			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
 
 			<?php // CHANGE: Replaced cart totals shipping markup with an action hook to allow for customizations ?>
-			<?php do_action( 'fc_review_order_shipping' ); ?>
+			<?php
+				/**
+				 * Fires where the chosen shipping method is rendered in the order review.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'fc_review_order_shipping' );
+			?>
 
 			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
 

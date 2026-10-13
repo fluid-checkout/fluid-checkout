@@ -74,10 +74,6 @@ msgstr "Szállítótelefon"
 msgid "Only used for shipping-related questions."
 msgstr "Csak szállítással kapcsolatos kérdések esetén használható."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Többlépcsős"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Egyetlen lépés"
@@ -111,14 +107,6 @@ msgstr "Tovább a számlázáshoz"
 msgid "Proceed to payment"
 msgstr "Folytassa a fizetést"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Kapcsolattartóm"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Szállítás a következő címre"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Szállítási mód"
@@ -126,10 +114,6 @@ msgstr "Szállítási mód"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "További megjegyzések"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Számlázás a"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -143,10 +127,6 @@ msgstr "%1$s. lépés a %2$s-ből."
 #: inc/checkout-steps.php:2825
 msgid "Change: %s"
 msgstr "Változás: %s"
-
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "A megadott adatokkal létrejön egy fiók."
 
 #: inc/checkout-steps.php:3918,
 #: inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
@@ -415,14 +395,6 @@ msgstr "Értékelje a plugint"
 #: inc/admin/admin-notice-review-request.php:51
 msgid "I need help!"
 msgstr "Segítségre van szükségem!"
-
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"A Quadlayers által készített WooCommerce Checkout Manager plugin nem "
-"kompatibilis a Fluid Checkouttal"
 
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
@@ -701,14 +673,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Kép kiválasztása"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nincs kiválasztott kép."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Kép eltávolítása"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -1011,16 +975,6 @@ msgstr "Pénztár elrendezése"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Tervezési sablon"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Általános stílusok a pénztári lépésekhez, a rendelés összefoglalójához és "
-"más részekhez. Más oldalakra is alkalmazható, például a Kosár, a "
-"Megrendelés beérkezett és a Megrendelés megtekintése oldalakra."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -1615,16 +1569,6 @@ msgstr "Számlázási telefon mező hozzáadása a pénztár űrlaphoz."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Válassza ki, hogy melyik lépésben jelenjen meg a számlázási telefon mező."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Nemzetközi telefonszám formátum és érvényesítés engedélyezése a "
-"telefonmezőkhöz"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formázza és érvényesítse a telefonszámokat az egyes országoknak megfelelően."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "A telefonszám érvényesítésének engedélyezése az ország szabályai alapján"
@@ -2075,14 +2019,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(kísérleti)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ez egy kísérleti funkció, és előfordulhat, hogy nem minden témával és "
-"bővítménnyel működik a várt módon. Óvatosan használja."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2537,6 +2473,300 @@ msgstr ""
 "A pénztárlépések szakaszának kimenete a Nyture témából a Fluid Checkout "
 "használatakor."
 
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Lehetővé teszi a vásárlók számára, hogy olyan megrendelésekre fizessenek, "
+"amelyeket vagy az áruház adminisztrátora hozott létre kézzel, vagy nem "
+"fejezte be a pénztár során."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"A Quadlayers által készített WooCommerce Checkout Manager plugin nem "
+"kompatibilis a Fluid Checkouttal"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Cégnév mező a számlázási címhez"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"A cégnév mező láthatóságának módosítása a számlázási cím szakaszban a "
+"pénztár űrlapon."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Téma könyvespolc"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"A Bookshelf téma pénztárlépések szakaszának kimenete a Fluid Checkout "
+"használatakor."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Fiók jelszó"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"A fiókot a pénztárnál megadott adatokkal hozzuk létre a megrendelés "
+"befejezésekor."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Válassza ki az előrehaladási sáv stílusát."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Bárok"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Téma Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce oldal elrendezése"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Széles elrendezés kikényszerítése a WooCommerce oldalakon"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Ez biztosítja, hogy a tartalmi rész ne legyen túl szűk a WooCommerce "
+"oldalakon, beleértve a pénztár, a kosár, a kapott megrendelés, a "
+"megrendelés kifizetése és a fiók oldalakat."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce intelligens kuponok"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Pozíció a pénztár oldalra"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Válassza ki, hogy hol jelenjen meg az elérhető kuponok rész a pénztár "
+"oldalain."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Az előrehaladási sáv előtt"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Az előrehaladási sáv után"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Mielőtt kupon kódok szakasz"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Nemzetközi telefonszám mezők engedélyezése"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formázza a telefonszámokat az egyes országok szabályainak megfelelően."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Használjon pontos telefonszám-érvényesítést"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Próbáljon meggyőződni arról, hogy a telefonszám a kiválasztott országkódra "
+"vonatkozó szabályok alapján érvényes mobil- vagy vezetékes telefonszám. Ez "
+"az opció a <code>intl-tel-input</code> pontos érvényesítési funkciót "
+"használja, amely néhány telefonszám esetében téves pozitív eredményt adhat."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ez egy kísérleti funkció, és előfordulhat, hogy nem minden beállításban "
+"működik a várt módon. Óvatosan használja."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"A telefonszám érvényesítésének típusai, ha a pontos érvényesítés "
+"engedélyezve van."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobil"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Vezetékes vonal"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Díjmentes"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Vagy"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kapcsolat"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Több lépés"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 oszlop"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 oszlop"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Általános stílusok a pénztári lépésekhez, a rendelés összefoglalójához és "
+"más részekhez. <br>Elképzelhető, hogy más oldalakra is vonatkozik, például "
+"a Kosár, a Megrendelés beérkezett és a Megrendelés megtekintése oldalakra."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"A <em>\"Osztott\"</em> tervezési sablon nem érhető el, ha az <em>\"1 "
+"oszlop\"</em> elrendezést használja, és visszaáll a "
+"<em>\"Minimalista\"</em> elrendezésre, ha azt választja."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "A pénztár előtti lépések"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Az <em>\"1 oszlop\"</em> pénztár elrendezés használata esetén ez a "
+"beállítás mindig <em>\"A pénztár lépései előtt\"</em>-ra van állítva, és az "
+"asztali nézetre is vonatkozik."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Az extra rendelési összefoglaló rész mobilon történő elhelyezése."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"A <em>\"A webhely fejlécén\"</em> csak akkor érvényes, ha a "
+"figyelemelterelés nélküli fejlécet használja."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "Az oldal fejlécén (figyelemelterelés-mentes fejlécet igényel)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "A bővíthető rendelési összefoglaló rész kezdeti állapota mobilon."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"A szabályozási követelmények miatt a következő országok esetében "
+"javasoljuk, hogy a <em>bővített</em> értéket állítsa be: "
+"<strong>Németország</strong>, <strong>Ausztria</strong>, "
+"<strong>Svájc</strong>, <strong>Hollandia</strong>, "
+"<strong>Lengyelország</strong>, <strong>Belgium</strong> és "
+"<strong>Franciaország</strong>."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Összeomlott"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Kibővített"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Ne mutassa"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "igen"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"A szállítási telefonszám mező „kötelező” mezőként jelenhet meg, ha a "
+"számlázási cím szakasz a szállítási cím szakasz után jelenik meg, és a "
+"számlázási telefonszám mező „kötelező” beállítású. Erre azért van szükség, "
+"hogy a szállítási cím átmásolható legyen a számlázási címbe, ha az adott "
+"opció be van jelölve; ellenkező esetben előfordulhat, hogy az ügyfél nem "
+"tudja kitölteni a fizetési űrlapot."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"A számlázási telefonszám mező „kötelező” mezőként jelenhet meg, ha a "
+"számlázási cím szakasz a szállítási cím szakasz előtt jelenik meg, és a "
+"szállítási telefonszám mező „kötelező” beállítású. Erre azért van szükség, "
+"hogy a szállítási cím átmásolható legyen a számlázási címbe, ha az adott "
+"opció be van jelölve; ellenkező esetben előfordulhat, hogy az ügyfél nem "
+"tudja kitölteni a fizetési űrlapot."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2656,3 +2886,36 @@ msgstr "Vagy folytassa alább"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Vagy folytassa vendégként"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Kép eltávolítása"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Szállítás %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Szállítás"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "következő lépés"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Igen"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

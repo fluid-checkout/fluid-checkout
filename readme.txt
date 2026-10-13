@@ -3,8 +3,8 @@ Contributors: diegoversiani
 Tags: woocommerce, checkout, conversion, multi-step, one-page
 Requires PHP: 7.4
 Requires at least: 5.0
-Tested up to: 6.8.1
-Stable tag: 4.0.6
+Tested up to: 7.1
+Stable tag: 4.2.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -354,97 +354,207 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 == Changelog ==
 
-= 4.0.6 - 2025-06-10 =
+= Unreleased =
 
-* Bump tested up to WooCommerce 9.9.3
-* Added: Support for modern email design for transactional emails.
-* Added: Compatibility with theme Nyture.
-* Added: Compatibility with theme Twenty Twenty-Five.
-* Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
-* Added: Compatibility with plugin YITH WooCommerce Checkout Manager.
-* Improved: Coupon codes are now highlighted when added, and "Apply/Add coupon" button is now blocked while processing.
-* Improved: Translations of "Add <field>" link buttons and checkout step count in Hungarian.
-* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Add option to disable payment form style modifications from Fluid Checkout. Remove extra spacing and border from the payment fields.
-* Fixed: Compatibility with plugin Breakdance. Fix style issues with recent versions of Breakdance.
-* Fixed: Compatibility with plugin Germanized for WooCommerce. Fix "DHL Preferred delivery" field values not being preserved.
-* Fixed: Compatibility with plugin Dintero. Support for new popout and embed Dintero checkout flow options.
-* Fixed: Compatibility with plugin Flexible Shipping. Shipping method descriptions showing duplicated.
-* Fixed: Compatibility with plugin Nets/Nexi Checkout (formerly Dibs). Fix integration with Redirect and Overlay checkout flow options.
+* Added: Optional/Opt-in plugin usage tracking to help improve compatibility and support.
+* Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
+* Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
+* Added: Filter `fc_local_pickup_shipping_zone_fields_options` for the local pickup shipping zone fields setting.
+* Added: Filter `fc_prevent_shipping_method_autoselect` to prevent automatic selection of the first shipping method. Return `true` to prevent auto-selecting a shipping method.
+* Added: Filter `fc_add_pickup_point_info_as_review_text_lines` to include pickup point details in the shipping method review text. The filter `fc_skip_add_pickup_point_info_as_review_text_lines` is deprecated. Returning true from that filter still skips those lines.
+* Improved: Show the Fluid Checkout plugin icon on admin notices.
+* Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
+* Improved: Default position of the shipping method section is now before the shipping address.
+* Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
+* Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
 * Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix shipping address fields triggering validation errors when the plugin's shipping method is selected.
-* Fixed: Coupon code messages location when being applied from certain sections.
-* Fixed: RTL styles for compatibility with various themes and plugins.
-* Fixed: Set selected shipping method value to session early so it can be used by filters when setting posted data.
+* Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
+* Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
+* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Fixed: "Same as billing address" behavior on the cart shipping calculator.
+* Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
+* Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
+* Fixed: Shipping method substep validation for BOX NOW Delivery Croatia, GLS Shipping for WooCommerce and WooCommerce Carrier Agents not being applied.
+* Deprecated: Filter `fc_next_step_button_label` now shows a deprecation notice, use `fc_proceed_to_next_step_button_label` instead.
+* Deprecated: Filter `fc_shipping_methods_disable_auto_select`, use `fc_prevent_shipping_method_autoselect` instead. Note that the new filter has inverted logic: return `true` to prevent auto-selecting a shipping method.
+* Removed: Unused option `fc_local_pickup_display_clear_shipping_methods_button`.
+* Removed: Option to prevent automatic selection of the first shipping method. Use the filter `fc_prevent_shipping_method_autoselect` to prevent it with code.
 
-= 4.0.5 - 2025-05-03 =
+= 4.2.7 - 2026-08-19 =
 
-* Bump tested up to WordPress 6.8.1 and WooCommerce 9.8.3
-* Added: Compatibility with theme Twenty Twenty-Four.
-* Added: Compatibility with plugin BOX NOW Delivery Croatia.
-* Added: Compatibility with plugin Tamara Checkout.
-* Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
-* Improved: Compatibility with plugin Germanized for WooCommerce. Add compatibility with pickup location selection for shipping service providers.
-* Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
-* Fixed: Phone number showing duplicated on admin pages.
+* Bump tested up to WordPress 7.1+
+* Added: Compatibility with theme Sober (by Uixthemes).
+* Added: Compatibility with plugin CartFlows.
+* Fixed: Clear the state field when the country changes, so a state code from the previous country is not reused by mistake.
+* Fixed: Keep the selected country and state after a page refresh when address fields are re-initialized.
+* Fixed: TomSelect fields not changing value when pressing TAB after pre-selecting options using the keyboard arrow keys.
+* Fixed: Error when updating checkout before international phone utils finish loading, when that PRO feature is enabled.
+* Fixed: Fatal error when opening the WordPress block editor with WooCommerce Stripe active, caused by checking shipping needs while the cart is not available.
 
-= 4.0.4 - 2025-04-15 =
+= 4.2.6 - 2026-07-28 =
 
-* Bump tested up to WooCommerce 9.8.1
-* Added: Support for description and delivery time attributes for shipping methods.
-* Added: Compatibility with theme LeadEngine.
-* Added: Compatibility with theme NewStore.
-* Added: Compatibility with theme YITH Proteo.
-* Added: Compatibility with plugin Omnisend for WooCommerce.
-* Added: Compatibility with plugin Woocommerce GUS/Regon.
-* Improved: User experience when using login popup on the checkout page.
-* Improved: Rename inline validation message classes to avoid conflicts with other plugins.
-* Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
-* Improved: Compatibility with plugin CartBounty. Remove overrides for plugin assets as they are no longer required.
-* Improved: Compatibility with plugin Klarna Payments. Update modified script from the Klarna plugin to its latest version.
-* Fixed: Compatibility with theme Divi. Fix position for the place order button icons.
-* Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
-* Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
-* Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
-* Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
-* Fixed: Spacing for elements above the order summary section.
+* Bump tested up to upcoming WooCommerce 11.0.0 (RC).
+* Fixed: JavaScript error that could stop checkout updates and shipping totals from refreshing.
 
-= 4.0.3 - 2025-03-17 =
+= 4.2.5 - 2026-07-26 =
 
-* Bump tested up to WooCommerce 9.7.1
-* Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
-* Added: Compatibility with theme The7.
-* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce Pro by ThemeHigh. Fix spacing for custom sections positioned after account creation form fields.
-* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Fixed express checkout changes affecting correct preloading of some checkout field values.
-* Improved: Enforce some styles for the place order button to improve compatibility with some themes.
-* Fixed: Billing and shipping address values not being preserved after toggling "Same as <shipping/billing> address" checkbox.
-* Fixed: Field values reverting back to previous value (usually empty) when using `select2` for enhanced dropdown fields.
-* Fixed: Use treated display value for replacements on formatted addresses.
+* Bump tested up to WordPress 7.0.2 and WooCommerce 10.9.4
+* Added: Compatibility with theme Talemy by ThemeSpirit.
+* Added: Conditional visibility for checkout steps based on available substeps.
+* Improved: Display checked checkbox in substep review text as "yes", instead of showing the actual checkbox value.
+* Improved: Address locale attribute overrides on My Account edit address pages.
+* Improved: New filter `fc_checkout_address_i18n_override_locale_field_attributes` to allow overriding locale-based checkout field attributes via custom code or plugins.
+* Improved: Sync all forked 3rd-party files with upstream sources.
+* Improved: Refactor compatibility with plugin Cart Abandonment Recovery Pro.
+* Fixed: Compatibility with theme Twenty Twenty-Five.
+* Fixed: Compatibility with theme Avada and Avada Builder plugin. Fix Tom Select dropdown styles on checkout and address book edit address pages.
+* Fixed: Compatibility with plugin Klaviyo. Further fixes to prevent fatal error at checkout.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix positioning for coupon section.
+* Fixed: Phone fields showing as "optional" at checkout and account edit address, even though it is set as required in the settings.
+* Fixed: Missing styles for the WooCommerce show password button at checkout. Also fixed the button getting duplicated after checkout updates.
 
-= 4.0.2 - 2025-02-24 =
+= 4.2.4 - 2026-06-02 =
 
-* Bump tested up to WordPress 6.7.2 and WooCommerce 9.6.2
-* Added: Compatibility with theme Motta.
-* Added: Compatibility with theme Rehub.
-* Added: Compatibility with plugin Fetchify.
-* Added: Compatibility with plugin WooComerce Quantity Discounts, Rules & Swatches.
-* Added: Compatibility with plugin Revolut Gateway for WooCommerce.
-* Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
-* Added: New filter `fc_use_verbose_loading_indicator` to enable use of verbose loading indicator icon on blocked parts of the page, and on the entire page when submitting the checkout form.
-* Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
-* Improved: Compatibility with plugin Germanized for WooCommerce. Remove duplicate place order button when using WooCommerce PayPal Payments plugin.
-* Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
-* Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
-* Improved: Compatibility with plugin WooPayments. Fixed layout breaking when WooPayments payment method is selected on checkout page.
-* Improved: Compatibility with plugin WooCommerce PDF Invoices & Packing Slips.
-* Improved: Compatibility with plugin Mailchimp for WooCommerce. Remove subscription checkbox value from the step review text lines.
-* Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
-* Improved: Styles for loading indicator for the place order button to only show loading icon while processing, hiding its text.
-* Improved: Styles code for the order summary section, to allow changing the main element's selector.
-* Fixed: Compatibility with plugin WooCommerce Stripe Gateway. Ensure use of data from express checkout methods when updating checkout and processing orders.
-* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
-* Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
-* Fixed: Layout styles causing sticky header for some themes to not get sticky.
-* Fixed: PHP warnings for undefined variable `$new_line`.
-* Fixed: Custom translation files from Loco Translate not loading correctly.
+* Improved: Disable dropdown options in `TomSelect` components when the option is disabled in the associated `select` field.
+* Fixed: Compatibility with plugin Klaviyo. Prevent fatal error at checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Fix fatal error when trying to show shipping costs for orders without shipping at cart and checkout.
+
+= 4.2.3 - 2026-05-25 =
+
+* Bump tested up to WordPress 7.0 and WooCommerce 10.8.0
+* Fixed: Compatibility with plugin Cart Abandonment Recovery Pro. Issue with displaying GDPR notice at checkout, and integration with International Phone Numbers feature.
+* Fixed: Password meter styles on checkout page account creation.
+* Fixed: Prevent password meter script from unblocking the place order button before reaching the last checkout step.
+
+= 4.2.2 - 2026-04-21 =
+
+* Improved: Update Fluid Checkout template files to the current latest versions from WooCommerce.
+* Fixed: Compatibility with theme BeTheme. Check that theme function exists before trying to use it.
+
+= 4.2.1 - 2026-04-07 =
+
+* Bump tested up to WooCommerce 10.6.1
+* Added: Compatibility with plugin WooCommerce FedEx Shipping Pro by Techspawn.
+* Improved: Added global JS flag `window.can_update_payment_methods` to allow preventing updating the payment methods fragment.
+* Fixed: Compatibility with plugin Rvvup for WooCommerce. Prevent update of payment methods section during payment cause payment to fail.
+* Fixed: Compatibility with plugin Germanized for WooCommerce Pro. Fix criteria to determine if compatibility code for this plugin is active or not.
+* Fixed: Compatibility with plugin Klarna Payments for WooCommerce by Klarna. Disable checkout updates during the `beforeunload` event. Remove plugin's script modifications for versions of the Klarna plugin that already support it.
+* Fixed: Compatibility with plugin Kustom Checkout for WooCommerce. Missing undo hooks statements causing shipping methods to not change correctly for Kustom Checkout and preventing it from completing the order. This fix also applies to other similar plugins.
+* Fixed: Login form at checkout not accept certain characters for passwords.
+* Fixed: Trigger checkout fragments update when filling the email field with the MailCheck suggestion.
+* Fixed: Distraction free header and progress bar staying offset when WP admin bar is scrolled out of view on the checkout page.
+
+= 4.2.0 - 2026-03-10 =
+
+* Bump tested up to WooCommerce 10.6.0
+* Added: Support for new option to enable precise international phone number validation at checkout with Fluid Checkout PRO.
+* Added: Support for new layout options: one column layout, and order summary before checkout steps.
+* Added: Compatibility with plugin: AutomateWoo - Birthdays Add-on
+* Improved: Use neutral wordings for contact, shipping address and billing address checkout sub-step titles.
+* Improved: Make account creation checkbox field customizable via default WooCommerce hooks.
+* Improved: Handling of `intl-tel-input` fields when replacing checkout fragments.
+* Fix: Focus and scroll behavior for the first invalid field when trying to move to the next step or save a substep after changes.
+
+= 4.1.6 - 2026-02-26 =
+
+* Bump tested up to WooCommerce 10.5.2
+* Added: Compatibility with plugin Nextend Social Login PRO.
+* Improved: Compatibility with plugin WooCommerce Smart Coupons.
+* Fixed: Compatibility with plugin Germanized PRO. Prevent fatal errors when Germanized PRO is active but its features are not loaded because it is missing dependencies.
+* Fixed: Compatibility with plugin Packlink PRO. Prevent Packlink errors by ensuring assets only load on checkout page.
+* Fixed: Compatibility with plugin Hezarfen. Fix issue with invoice types on checkout.
+* Fixed: Compatibility with plugin WooCommerce Subscriptions. Layout issue with shipping subtotals.
+* Fixed: Use of class method deprecated in WooCommerce 10.5.0 causing order attribution feature to stop working.
+* Fixed: Shipping methods section empty without message or options in some specific cases.
+
+= 4.1.5 - 2025-12-12 =
+
+* Added: Compatibility with plugin Gift Cards - Coupon Input (by SomewhereWarm).
+* Added: Compatibility with plugin WC Cities Select.
+* Added: Compatibility with plugin WooCommerce Italian Add-on Plus.
+* Added: New filter `fc_mailcheck_suggestion_message` to allow changing the Mailcheck email typo suggestion message.
+* Fixed: Critical error when trying to prevent WooCommerce from outputting duplicate sections, which happens when using certain 3rd-party plugins.
+
+= 4.1.4 - 2025-12-05 =
+
+* Bump tested up to WordPress 6.9 and WooCommerce 10.3.6
+* Added: Compatibility with plugin SUMO Subscriptions.
+* Added: Compatibility with plugin Shop as Client for WooCommerce (by Naked Cat Plugins).
+* Added: Compatibility with plugin Upsell Funnel Builder for WooCommerce.
+* Added: Compatibility with plugin WooCommerce Buy One Get One Free by Oscar Gare.
+* Added: Compatibility with plugin WooCommerce Smart Coupons.
+* Improved: Add wrapper for the product name on order summary cart items to allow better control of the layout.
+* Improved: Show and allow checking "Same as shipping/billing address" checkbox when the first address is not yet complete.
+* Fixed: Compatibility with theme Flatsome. Fix page content width on the checkout page. Fix issue causing payment processing to be cancelled when using third-party payment gateway plugins.
+* Fixed: Compatibility with plugin Klarna Payments for WooCommerce. Fix Klarna payment button not working when using newer versions of Klarna Payments. Update modified script from the plugin to its latest version and add missing dependancy.
+* Fixed: Compatibility with plugin Revolut Gateway for WooCommerce. Fix title edits being applied globally for the Revolut payment method. Fix Revolut payments getting aborted when switching browser tabs during checkout.
+* Fixed: Compatibility with plugin WooCommerce Delivery Slots by Iconic. Fix delivery slots field styles.
+* Fixed: Compatibility with plugin WooCommerce Order Delivery. Fix fatal error occurring when using newer versions of the plugin alongside Fluid Checkout.
+* Fixed: Compatibility with plugin WooCommerce PayPal Payments. Fix place order section styles on the checkout page. Fix place order button being active before reaching the last checkout step when using the German Market plugin.
+* Fixed: Hidden position option for the coupon code section on the checkout page not working as expected.
+* Fixed: JavaScript errors triggered by inline scripts when minified.
+
+= 4.1.3 - 2025-10-28 =
+
+* Fixed: Use of deprecated asset handles in WooCommerce 10.3.0+
+* Fixed: Compatibility with plugin Elementor PRO. Missing frontend script config object when using distraction-free header and footer.
+* Fixed: Wrong `not-allowed` cursor and other styles being applied to readonly fields of various types.
+
+= 4.1.2 - 2025-10-21 =
+
+* Bump tested up to WooCommerce 10.2.2
+* Added: Compatibility with theme Kiosko.
+* Added: Compatibility with theme Listable.
+* Added: Compatibility with theme Twenty Twenty-Two.
+* Added: Compatibility with plugin Advanced Flat Rate Shipping For WooCommerce Premium.
+* Added: Compatibility with plugin Flat Rate Shipping Method for WooCommerce.
+* Fixed: String position marks in Serbian translations.
+* Fixed: Compatibility with theme Woodmart. Fix fatal error caused by changes on the theme code on theme version 8.3+.
+* Fixed: Compatibility with plugin BRT Fermopoint. Fix pickup point selection UI not appearing. Add selected pickup point address to the substep review text.
+* Fixed: Wrong logic for displaing phone number in email templates.
+* Fixed: Progress bar showing only steps title when invalid values are defined for the option. Should revert to default "Bars" style.
+
+= 4.1.1 - 2025-08-22 =
+
+* Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix payment processing error when using the plugin along with some other payment gateways.
+* Fixed: Header, Footer and Page background colors set in plugin settings not applying.
+* Fixed: Progress bar steps marked as complete when they are actually the current step.
+* Fixed: Order summary and side bar section not interactive because of transparent pseudo element on top of it.
+
+= 4.1.0 - 2025-08-17 =
+
+* Bump tested up to WordPress 6.8.2 and WooCommerce 10.1.0
+* Added: Support for new progress bar style options.
+* Added: Compatibility with theme Avanam.
+* Added: Compatibility with theme Bookshelf.
+* Added: Compatibility with theme Cartzilla.
+* Added: Compatibility with theme Ireca.
+* Added: Compatibility with theme Neighborhood.
+* Added: Compatibility with theme Sahel.
+* Added: Compatibility with theme Seese.
+* Added: Compatibility with theme Suki.
+* Added: Compatibility with plugin ELEX EasyPost Shipping.
+* Added: Compatibility with plugin FooEvents for WooCommerce.
+* Added: Compatibility with plugin TemplateMela Core.
+* Added: Compatibility with plugin TemplateMela Autorapid.
+* Added: Compatibility with plugin WooCommerce Bambora Gateway.
+* Added: Compatibility with plugin WooCommerce EU Vat & B2B.
+* Improved: Compatibility with theme Betheme.
+* Improved: Compatibility with theme Enfold.
+* Improved: Update checkout fragments when an item is removed from the cart using the mini cart widget from the site header.
+* Improved: Add field visibility option in the plugin settings for the Billing Company field, as the original option is not available when using the block based checkout form.
+* Improved: Expose more methods to interact with the enhanced select fields component `TomSelect`.
+* Improved: Account creation field labels and notice wording, and also show notice in the account creation fields section.
+* Improved: Add hook `fc_checkout_place_order_terms` to allow developers to move the terms checkbox and related terms content section.
+* Fixed: Compatibility with theme Woodmart. Fix checkout steps section style when using distraction free header and footer.
+* Fixed: Compatibility with plugin Advanced Coupons for WooCommerce Free. Fix issue on checkout page when checkout form was added as a block.
+* Fixed: Compatibility with plugin Payment Plugins for PayPal WooCommerce. Fix endless loading and data loss issues when using PayPal express button on the checkout page.
+* Fixed: Change selected value on enhanced dropdown fields (TomSelect) when the `change` event is triggered with jQuery events.
+* Fixed: Remove previous error messages when adding or removing coupon codes successfully.
+* Fixed: Force styles of `fc-loading` class to override styles from theme.
+* Fixed: Run checkout steps registration earlier for Ajax requests, and run it also for REST API requests. This fixes missing address section titles on email messages and previews.
+* Fixed: State field losing selected value when update checkout is triggered while still processing State fields options update from selected country.
 
 [See complete changelog](https://fluidcheckout.com/docs/changelog-fluid-checkout/)
 

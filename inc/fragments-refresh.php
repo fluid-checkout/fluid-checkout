@@ -56,9 +56,23 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 */
 	public function maybe_add_js_settings( $settings ) {
 		// Bail if fragments refresh is not enabled
+		/**
+		 * Filters whether the checkout fragment-refresh feature is enabled.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default false.
+		 */
 		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return $settings; }
 
 		// Add settings for fragments refresh
+		/**
+		 * Filters the fragment-refresh settings passed to the frontend script.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'fragmentsRefresh' ] = apply_filters( 'fc_fragments_update_settings', array(
 			'updateFragmentsNonce' => wp_create_nonce( 'fc-fragments-refresh' ),
 		) );
@@ -73,8 +87,10 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Register scripts
-		wp_register_script( 'fc-fragments-update', FluidCheckout_Enqueue::instance()->get_script_url( 'js/fc-fragments-refresh' ), array( 'jquery', 'jquery-blockui', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-fragments-update', 'window.addEventListener("load",function(){FCFragmentsRefresh.init(fcSettings.fragmentsRefresh);})' );
+		$woocommerce_version = defined( 'WC_VERSION' ) ? WC_VERSION : '0.0.0';
+		$fc_fragments_deps = version_compare( $woocommerce_version, '10.3.0', '>=' ) ? array( 'jquery', 'wc-jquery-blockui', 'fc-utils' ) : array( 'jquery', 'jquery-blockui', 'fc-utils' );
+		wp_register_script( 'fc-fragments-update', FluidCheckout_Enqueue::instance()->get_script_url( 'js/fc-fragments-refresh' ), $fc_fragments_deps, NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-fragments-update', 'window.addEventListener("load",function(){FCFragmentsRefresh.init(fcSettings.fragmentsRefresh);});' );
 
 		// Register styles
 		wp_register_style( 'fc-fragments-update', FluidCheckout_Enqueue::instance()->get_style_url( 'css/fragments-update' ), array(), null );
@@ -98,6 +114,13 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 	 */
 	public function maybe_enqueue_assets_fragment_refresh() {
 		// Bail if fragments refresh is not enabled
+		/**
+		 * Filters whether the checkout fragment-refresh feature is enabled.
+		 *
+		 * @since 3.0.4
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default false.
+		 */
 		if ( true !== apply_filters( 'fc_enable_fragments_refresh', false ) ) { return; }
 
 		$this->enqueue_assets_fragment_refresh();
@@ -127,6 +150,13 @@ class FluidCheckout_FragmentsRefresh extends FluidCheckout {
 		wp_send_json(
 			array(
 				'result'    => 'success',
+				/**
+				 * Filters the HTML fragments returned by the fragment-refresh request.
+				 *
+				 * @since 3.0.4
+				 *
+				 * @param array $value Value to filter. Default empty array.
+				 */
 				'fragments' => apply_filters( 'fc_update_fragments', array() ),
 			)
 		);

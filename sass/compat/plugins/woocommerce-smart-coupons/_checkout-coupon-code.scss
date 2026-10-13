@@ -1,0 +1,23 @@
+// ------------------------------------
+// CHECKOUT COUPON CODE
+// ------------------------------------
+div.woocommerce #coupons_list {
+	height: auto !important; // Needed to override theme styles set by JS
+	clear: both;
+}
+
+.woocommerce-notices-wrapper:empty {
+	display: none; // Needed to fix the notices wrapper changing layout of Coupons section.
+}
+
+// Notices inserted by the plugin's JS
+div.woocommerce .fc-checkout-notices + .woocommerce-message,
+div.woocommerce .fc-checkout-notices + .woocommerce-error,
+div.woocommerce .fc-checkout-notices + .woocommerce-info {
+	display: inline-block;
+	width: 100%;
+
+	@media (#{$bp-larger-than-desktop}) {
+		width: calc( #{ $checkout-steps-width--large-screen } - #{ $checkout-column-gap--large-screen } );
+	}
+}

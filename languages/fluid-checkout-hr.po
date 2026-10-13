@@ -69,10 +69,6 @@ msgstr "Telefon za dostavu"
 msgid "Only used for shipping-related questions."
 msgstr "Koristi se samo za pitanja u vezi s otpremom."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Višestruki korak"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Jedan korak"
@@ -106,14 +102,6 @@ msgstr "Nastavite s naplatom"
 msgid "Proceed to payment"
 msgstr "Prijeđite na plaćanje"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Moj kontakt"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Dostava do"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Način dostave"
@@ -121,10 +109,6 @@ msgstr "Način dostave"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Dodatne napomene"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Naplata za"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -138,10 +122,6 @@ msgstr "Korak %1$s od %2$s"
 #: inc/checkout-steps.php:2825
 msgid "Change: %s"
 msgstr "Promjena: %s"
-
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "Račun će biti kreiran s navedenim podacima."
 
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -401,14 +381,6 @@ msgstr "Ocijenite dodatak"
 msgid "I need help!"
 msgstr "Trebam pomoć!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Dodatak WooCommerce Checkout Manager tvrtke Quadlayers nije kompatibilan s "
-"Fluid Checkoutom"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -656,14 +628,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Odaberite sliku"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Nema odabrane slike."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Ukloni sliku"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -946,16 +910,6 @@ msgstr "Izgled blagajne"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Predložak dizajna"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Opći stilovi za korake naplate, sažetak narudžbe i druge odjeljke. Može se "
-"primjenjivati i na druge stranice kao što su stranice Košarica, Primljena "
-"narudžba i Prikaz narudžbe."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -1531,16 +1485,6 @@ msgstr "Dodajte polje telefona za naplatu u obrazac za naplatu."
 msgid "Choose in which step to display the billing phone field."
 msgstr "Odaberite u kojem koraku želite prikazati polje telefona za naplatu."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"Omogućite međunarodni format telefonskog broja i provjeru valjanosti za "
-"polja telefona"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Formatirajte i potvrdite telefonske brojeve prema svakoj zemlji."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Omogućite provjeru telefonskog broja na temelju pravila zemlje"
@@ -1966,14 +1910,6 @@ msgstr "(PRO)"
 #: inc/admin/admin.php:199
 msgid "(experimental)"
 msgstr "(eksperimentalno)"
-
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Ovo je eksperimentalna značajka i možda neće raditi kako se očekuje sa svim "
-"temama i dodacima. Koristite ga s oprezom."
 
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
@@ -2406,6 +2342,298 @@ msgstr ""
 "Ispišite odjeljak koraka naplate iz Nyture teme kada koristite Fluid "
 "Checkout."
 
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Omogućuje kupcima plaćanje za narudžbe koje je ručno kreirao administrator "
+"trgovine ili nisu dovršene tijekom plaćanja."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Dodatak WooCommerce Checkout Manager tvrtke Quadlayers nije kompatibilan s "
+"Fluid Checkoutom."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Polje za naziv tvrtke za adresu za naplatu"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Promijenite vidljivost polja naziva tvrtke za odjeljak adrese za naplatu na "
+"obrascu za naplatu."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Tematska polica za knjige"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Ispišite odjeljak s koracima naplate iz teme Bookshelf kada koristite Fluid "
+"Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Lozinka računa"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Prilikom narudžbe, s podacima navedenima prilikom plaćanja, bit će kreiran "
+"račun."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Odaberite stil trake napretka."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Barovi"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Tema Ireca"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Izgled WooCommerce stranice"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Nametnite široki raspored na WooCommerce stranicama"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"To osigurava da odjeljak sadržaja nije preuzak na WooCommerce stranicama, "
+"uključujući stranice za naplatu, košaricu, primljenu narudžbu, plaćanje "
+"narudžbe i račun."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce pametni kuponi"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Pozicija na stranici za naplatu"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Odaberite gdje će se na stranici za plaćanje prikazati odjeljak dostupnih "
+"kupona."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Prije trake napretka"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Nakon trake napretka"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Prije odjeljka s kodovima kupona"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Omogući polja za međunarodne telefonske brojeve"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Formatirajte telefonske brojeve prema pravilima za svaku zemlju."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Koristite preciznu validaciju telefonskog broja"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Pokušajte osigurati da je telefonski broj važeći mobilni ili fiksni broj na "
+"temelju pravila za odabrani pozivni broj države. Ova opcija koristi "
+"značajku precizne validacije <code>intl-tel-input</code> , koja može dati "
+"lažno pozitivne rezultate za neke telefonske brojeve."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Ovo je eksperimentalna značajka i možda neće raditi kako se očekuje u svim "
+"postavkama. Koristite je s oprezom."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Vrste validacije telefonskog broja koje se koriste kada je omogućena "
+"precizna validacija."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Mobilni uređaj"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Fiksna linija"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Besplatni poziv"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Ili"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Više koraka"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 stupca"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 stupac"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Opći stilovi za korake naplate, sažetak narudžbe i ostale odjeljke.<br> "
+"Može se odnositi i na druge stranice kao što su stranice Košarica, "
+"Primljena narudžba i Pregled narudžbe."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Predložak dizajna <em>&quot;Podijeli&quot;</em> nije dostupan kada se "
+"koristi raspored <em>&quot;1 stupac&quot;</em> i vratit će se na "
+"<em>&quot;Minimalistički&quot;</em> ako se odabere."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Koraci prije plaćanja"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Prilikom korištenja izgleda blagajne <em>&quot;1 stupac&quot;</em> ova je "
+"opcija uvijek postavljena na <em>&quot;Prije koraka blagajne&quot;</em> i "
+"primjenjuje se i na prikaz za stolna računala."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Pozicija za dodatni odjeljak sažetka narudžbe na mobilnom uređaju."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Opcija <em>&quot;Na zaglavlju web-mjesta&quot;</em> primjenjuje se samo "
+"kada se koristi zaglavlje bez ometanja."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "U zaglavlju stranice (potreban je zaglavlje bez ometanja)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Početno stanje za proširivi odjeljak sažetka narudžbe na mobilnom uređaju."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Preporučujemo da ga postavite kao <em>proširenog</em> za sljedeće zemlje "
+"zbog regulatornih zahtjeva: <strong>Njemačku</strong> , "
+"<strong>Austriju</strong> , <strong>Švicarsku</strong> , "
+"<strong>Nizozemsku</strong> , <strong>Poljsku</strong> , "
+"<strong>Belgiju</strong> i <strong>Francusku</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Sažeto"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Prošireno"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Ne prikazuj"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "Da"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Polje za broj telefona za dostavu može biti &quot;obavezno&quot; ako se "
+"odjeljak s adresom za naplatu prikazuje nakon odjeljka s adresom za "
+"dostavu, a polje za broj telefona za naplatu postavljeno je kao "
+"&quot;obavezno&quot;. To je potrebno kako bi se osiguralo da se adresa za "
+"dostavu može kopirati na adresu za naplatu kada je ta opcija označena, "
+"inače kupac možda neće moći dovršiti obrazac za naplatu."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Polje za telefonski broj za naplatu može biti &quot;obavezno&quot; ako se "
+"odjeljak s adresom za naplatu prikazuje prije odjeljka s adresom za "
+"dostavu, a polje za telefonski broj za dostavu postavljeno je kao "
+"&quot;obavezno&quot;. To je potrebno kako bi se osiguralo da se adresa za "
+"dostavu može kopirati na adresu za naplatu kada je ta opcija označena, "
+"inače kupac možda neće moći dovršiti obrazac za naplatu."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2523,3 +2751,36 @@ msgstr "Ili nastavite u nastavku"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Ili nastavite kao gost"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Ukloni sliku"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Dostava %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Dostava"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "sljedeći korak"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Da"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

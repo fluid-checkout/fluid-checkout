@@ -11,6 +11,8 @@
 	}
 }
 
+
+
 .fc-progress-bar .fc-progress-bar__inner {
 	padding: $checkout-progress-padding;
 	background-color: $checkout-progress-background-color;
@@ -46,7 +48,7 @@
 
 
 
-.fc-progress-bar__count {
+.fc-progress-bar .fc-progress-bar__count {
 	margin: $checkout-step-count-margin;
 	color: $checkout-step-count-color;
 	font-weight: $checkout-step-count-font-weight;
@@ -65,7 +67,7 @@
 
 
 
-.fc-progress-bar__bars {
+.fc-progress-bar--bars .fc-progress-bar__steps {
 	width: 100%;
 	height: $checkout-progress-bar-height;
 	border: $checkout-progress-bar-border;
@@ -74,7 +76,7 @@
 	overflow: hidden;
 }
 
-.fc-progress-bar__bar {
+.fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step {
 	display: block;
 	float:left;
 	margin: 0;
@@ -83,14 +85,14 @@
 	background-color: $checkout-progress-bar-color;
 	transition: width $global-animation-duration linear, background-color $global-animation-duration linear;
 }
-.fc-progress-bar__bar.is-complete { background-color: $checkout-progress-bar-complete-color; }
-.fc-progress-bar__bar.is-current { background-color: $checkout-progress-bar-current-color; }
+.fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step.is-complete { background-color: $checkout-progress-bar-complete-color; }
+.fc-progress-bar--bars .fc-progress-bar__steps .fc-progress-bar__step.is-current { background-color: $checkout-progress-bar-current-color; }
 
 // Progress bar width
 // Supports from 2 to 10 checkout steps
 @for $count from 2 through 10 {
-	.fc-progress-bar__bars[data-step-count="#{$count}"] .fc-progress-bar__bar.is-complete,
-	.fc-progress-bar__bars[data-step-count="#{$count}"] .fc-progress-bar__bar.is-current {
+	.fc-progress-bar--bars .fc-progress-bar__steps[data-step-count="#{$count}"] .fc-progress-bar__step.is-complete,
+	.fc-progress-bar--bars .fc-progress-bar__steps[data-step-count="#{$count}"] .fc-progress-bar__step.is-current {
 		width: #{ math.div( 100%, $count ) };
 	}
 }

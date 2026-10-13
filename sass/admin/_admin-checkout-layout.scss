@@ -1,14 +1,32 @@
 // ------------------------------------
 // CHECKOUT OPTIONS - LAYOUT
 // ------------------------------------
-.forminp-fc_layout_selector fieldset {
-	padding: 20px;
+.forminp-fc_layout_selector {
+	padding: 20px !important; // Needed to override default admin pages styles.
 	background-color: #fff;
+}
+
+.forminp-fc_layout_selector fieldset {
+	display: flex;
 }
 
 .forminp-fc_layout_selector ul {
 	margin: 0;
 	display: flex;
+}
+.forminp-fc_layout_selector ul + ul {
+	position: relative;
+	margin-left: 20px;
+	padding-left: 20px;
+}
+.forminp-fc_layout_selector ul + ul:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 100%;
+	background-color: #f0f0f1;
 }
 
 .forminp-fc_layout_selector li {
@@ -19,6 +37,13 @@
 }
 .forminp-fc_layout_selector li + li {
 	margin-left: 10px;
+}
+
+
+
+.forminp-fc_layout_selector label.disabled {
+	cursor: not-allowed;
+	opacity: .5;
 }
 
 
@@ -36,6 +61,18 @@
 	background-color: #F0EFF1;
 	background-size: 100% 100%;
 }
+
 .forminp-fc_layout_selector .fc-checkout-layout__option:checked:after {
 	border: solid 2px #3481C4;
+}
+
+.forminp-fc_layout_selector .fc-checkout-layout__option:disabled {
+	cursor: not-allowed;
+}
+
+
+
+.forminp-fc_layout_selector .description {
+	width: 100%;
+	clear: both;
 }

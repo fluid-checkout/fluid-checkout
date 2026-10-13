@@ -1,0 +1,36 @@
+// ------------------------------------
+// UPSELL ORDER BUMP
+// ------------------------------------
+
+.fc-wrapper .wps_upsell_offer_main_wrapper {
+	padding-top: 0 !important; // Needed to override plugin styles
+	padding-bottom: 0 !important; // Needed to override plugin styles
+}
+
+
+
+.fc-wrapper #fc-checkout-order-review .wrapup_order_bump {
+	margin-top: $global-spacing-small !important; // Needed to override plugin styles
+}
+.fc-wrapper .fc-sidebar__inner > .wrapup_order_bump {
+	@media (#{$bp-smaller-than-tablet}) {
+		margin: $global-spacing-small 0 !important; // Needed to override plugin styles
+	}
+}
+
+
+
+.fc-wrapper .fc-substep__fields--payment .wrapup_order_bump {
+	margin-bottom: $global-spacing-small !important; // Needed to override plugin styles
+}
+
+.fc-wrapper .fc-substep__fields--payment .woocommerce-checkout-payment ~ .wrapup_order_bump {
+	margin-top: $global-spacing-small !important; // Needed to override plugin styles
+	margin-bottom: 0 !important; // Needed to override plugin styles
+}
+
+
+
+.fc-wrapper .fc-place-order__section .wrapup_order_bump {
+	margin-bottom: $global-spacing-small !important; // Needed to override plugin styles
+}

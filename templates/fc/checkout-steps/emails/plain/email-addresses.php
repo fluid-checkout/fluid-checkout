@@ -20,14 +20,54 @@ defined( 'ABSPATH' ) || exit;
 
 // CHANGE: Add filter to allow plugins to define whether to show shipping address
 $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_address();
+/**
+ * Filters whether the shipping address column is shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param bool     $show_shipping Show shipping.
+ * @param WC_Order $order         Order object.
+ */
 $show_shipping = apply_filters( 'fc_pro_order_details_customer_information_show_shipping', $show_shipping, $order );
 
 // CHANGE: Define labels for shipping and billing columns
+/**
+ * Filters the billing address label shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param mixed    $label Label text.
+ * @param WC_Order $order Order object.
+ */
 $billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'billing_address' ), $order );
+/**
+ * Filters the shipping address label shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param mixed    $label Label text.
+ * @param WC_Order $order Order object.
+ */
 $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'shipping_address' ), $order );
 
 // CHANGE: Replace variables for formatted addresses with filters to allow plugins to change the displayed addresses
+/**
+ * Filters the formatted billing address shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param string   $value Value to filter.
+ * @param WC_Order $order Order object.
+ */
 $billing_address_formatted = apply_filters( 'fc_pro_order_details_customer_billing_address_formatted', $order->get_formatted_billing_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
+/**
+ * Filters the formatted shipping address shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param string   $value Value to filter.
+ * @param WC_Order $order Order object.
+ */
 $shipping_address_formatted = apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $order->get_formatted_shipping_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
 
 // CHANGE: Use the section title from from the variables above
@@ -36,7 +76,7 @@ echo "\n" . esc_html( wc_strtoupper( esc_html( $billing_address_label ) ) ) . "\
 echo preg_replace( '#<br\s*/?>#i', "\n", $billing_address_formatted ) . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 // CHANGE: Only output the phone number if it is not already included in the formatted address
-if ( $order->get_billing_phone() && -1 === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) {
+if ( $order->get_billing_phone() && false === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) {
 	echo $order->get_billing_phone() . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
@@ -67,8 +107,7 @@ if ( $show_shipping ) {
 	echo preg_replace( '#<br\s*/?>#i', "\n", $shipping_address_formatted ) . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	// CHANGE: Only output the phone number if it is not already included in the formatted address
-	if ( $order->get_shipping_phone() && -1 === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) {
-		echo strpos( $shipping_address_formatted, $order->get_shipping_phone() );
+	if ( $order->get_shipping_phone() && false === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) {
 		echo $order->get_shipping_phone() . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 

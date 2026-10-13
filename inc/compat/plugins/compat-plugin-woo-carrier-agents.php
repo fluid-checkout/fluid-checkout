@@ -64,10 +64,10 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 		add_action( 'init', array( $this, 'fetch_button_option_values' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -84,11 +84,11 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-woo-carrier-agents' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutWooCarrierAgents.init(fcSettings.checkoutWooCarrierAgents);})' );
+		wp_add_inline_script( 'fc-checkout-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutWooCarrierAgents.init(fcSettings.checkoutWooCarrierAgents);});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-woo-carrier-agents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/woo-carrier-agents/checkout-validation-woo-carrier-agents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.checkoutValidationWooCarrierAgents);})' );
+		wp_add_inline_script( 'fc-checkout-validation-woo-carrier-agents', 'window.addEventListener("load",function(){CheckoutValidationWooCarrierAgents.init(fcSettings.checkoutValidationWooCarrierAgents);});' );
 	}
 
 	/**
@@ -425,6 +425,9 @@ class FluidCheckout_WooCarrierAgents extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 

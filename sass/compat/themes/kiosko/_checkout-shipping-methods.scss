@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT SHIPPING METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } input[type="radio"].shipping_method + label::before {
+	margin: 0;
+	transform: none;
+}
+
+body#{ $_body-theme-selector } input[type="radio"].shipping_method:checked + label::before {
+	background: inherit;
+}

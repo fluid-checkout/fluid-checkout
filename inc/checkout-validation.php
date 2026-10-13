@@ -115,14 +115,14 @@ class FluidCheckout_Validation extends FluidCheckout {
 
 		// Scripts
 		wp_register_script( 'fc-checkout-validation', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation' ), array( 'jquery', 'wc-checkout', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);})' );
+		wp_add_inline_script( 'fc-checkout-validation', 'window.addEventListener("load",function(){CheckoutValidation.init(fcSettings.checkoutValidation);});' );
 		wp_register_script( 'fc-mailcheck', FluidCheckout_Enqueue::instance()->get_script_url( 'js/lib/mailcheck' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_register_script( 'fc-mailcheck-init', FluidCheckout_Enqueue::instance()->get_script_url( 'js/mailcheck-init' ), array( 'jquery', 'fc-utils', 'fc-mailcheck' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);})' );
+		wp_add_inline_script( 'fc-mailcheck-init', 'window.addEventListener("load",function(){MailcheckInit.init(fcSettings.checkoutValidation.mailcheckSuggestions);});' );
 
 		// Brazilian documents validation script
 		wp_register_script( 'fc-checkout-validation-brazilian-documents', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-validation-brazilian-documents' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);})' );
+		wp_add_inline_script( 'fc-checkout-validation-brazilian-documents', 'window.addEventListener("load",function(){CheckoutValidationBrazilianDocuments.init(fcSettings.checkoutValidationBrazilianDocuments);});' );
 	}
 
 	/**
@@ -187,14 +187,29 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 
+		/**
+		 * Filters the checkout field validation settings passed to the frontend script.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'checkoutValidation' ] = apply_filters( 'fc_checkout_validation_script_settings', array(
 			'formRowSelector'                    => '.form-row, .shipping-method__package',
 			'validateFieldsSelector'             => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
 			'referenceNodeSelector'              => '.input-text, .input-checkbox, input[type="date"], select, .shipping-method__options',
 			'alwaysValidateFieldsSelector'       => '',
 			'mailcheckSuggestions'               => array(
-				/* translators: %s: html for the email address typo correction suggestion link */
-				'suggestedElementTemplate'       => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( __( 'Did you mean %s?', 'fluid-checkout' ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
+				/**
+				 * Filters the email typo suggestion message.
+				 *
+				 * @since 4.1.5
+				 *
+				 * @param string $text Text to display.
+				 */
+				'suggestedElementTemplate'       => '<div class="fc-mailcheck-suggestion" data-mailcheck-suggestion>' . sprintf( apply_filters( 'fc_mailcheck_suggestion_message', 
+					/* translators: %s: html for the email address typo correction suggestion link */
+					__( 'Did you mean %s?', 'fluid-checkout' ) ), '<a class="mailcheck-suggestion" href="#apply-suggestion" role="button" aria-label="'.esc_attr( __( 'Change email address to: {suggestion-value}', 'fluid-checkout' ) ).'" data-mailcheck-apply data-suggestion-value="{suggestion-value}">{suggestion}</a>' ) . '</div>',
 			),
 			'validationMessages'                 => array(
 				'required'                       => __( 'This is a required field.', 'fluid-checkout' ),
@@ -204,6 +219,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 		) );
 
 		// Add validation settings
+		/**
+		 * Filters the Brazilian CPF and CNPJ validation settings passed to the frontend script.
+		 *
+		 * @since 2.5.0
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'checkoutValidationBrazilianDocuments' ] = apply_filters( 'fc_checkout_validation_brazilian_documents_script_settings', array(
 			'validateCPF'         => 'yes',
 			'validateCNPJ'        => 'yes',
@@ -222,6 +244,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * Check whether the Mailcheck email typo suggestions feature is enabled.
 	 */
 	public function is_email_typo_suggestions_enabled() {
+		/**
+		 * Filters whether email typo suggestions are enabled at checkout.
+		 *
+		 * @since 3.1.5
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		return true === apply_filters( 'fc_enable_checkout_email_mailcheck', true );
 	}
 
@@ -231,10 +260,24 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * Checks whether a phone number is valid.
 	 *
 	 * @param   string  $phone_number  The phone number to validate.
+	 * @param   string  $field_key     The field key.
+	 * @param   array   $field_args    The field args.
+	 *
+	 * @return  boolean                 Whether the phone number is valid.
 	 */
-	public function is_valid_phone_number( $phone_number ) {
+	public function is_valid_phone_number( $phone_number, $field_key = null, $field_args = null ) {
 		$is_valid = WC_Validation::is_phone( $phone_number );
-		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number );
+		/**
+		 * Filters whether a checkout phone number passes validation.
+		 *
+		 * @since 2.0.4
+		 *
+		 * @param bool   $is_valid     Is valid.
+		 * @param string $phone_number Phone number to validate.
+		 * @param string $field_key    Checkout field key.
+		 * @param array  $field_args   Checkout field arguments.
+		 */
+		return apply_filters( 'fc_checkout_is_valid_phone_number', $is_valid, $phone_number, $field_key, $field_args );
 	}
 
 
@@ -252,6 +295,13 @@ class FluidCheckout_Validation extends FluidCheckout {
 		$email_field_custom_attributes = array( 'data-mailcheck' => 1 );
 
 		// Get list of email fields to apply the custom attributes
+		/**
+		 * Filters the field keys that receive email typo suggestions.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $value Value to filter.
+		 */
 		$checkout_email_fields = apply_filters( 'fc_checkout_email_fields_for_mailcheck', array( 'billing_email' ) );
 
 		// Apply custom attributes to each email field
@@ -305,7 +355,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 		}
 
 		// Validate phone fields
-		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! $this->is_valid_phone_number( $value ) ) {
+		if ( $field_valid && in_array( 'phone', $format, true ) && '' !== $value && ! $this->is_valid_phone_number( $value, $key, $args ) ) {
 			$field_valid = false;
 			$args['class'] = array_merge( $args['class'], array( 'woocommerce-invalid', 'woocommerce-invalid-phone' ) );
 		}
@@ -335,7 +385,21 @@ class FluidCheckout_Validation extends FluidCheckout {
 	 * @return  array           Modified checkout field args.
 	 */
 	public function add_checkout_field_validation_icon_hide_class( $args, $key, $value ) {
+		/**
+		 * Filters the no validation icon field types.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $types List of values to filter.
+		 */
 		$no_validation_icon_field_types = apply_filters( 'fc_no_validation_icon_field_types', array( 'hidden', 'checkbox', 'radio' ) );
+		/**
+		 * Filters the no validation icon field keys.
+		 *
+		 * @since 1.5.0
+		 *
+		 * @param array $value Value to filter. Default empty array.
+		 */
 		$no_validation_icon_field_keys = apply_filters( 'fc_no_validation_icon_field_keys', array() );
 
 		// Bail if field type
@@ -379,7 +443,7 @@ class FluidCheckout_Validation extends FluidCheckout {
 				break;
 			case 'state':
 				/* Get country this state field is representing */
-				$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
+				$for_country = isset( $args['country'] ) ? $args['country'] : WC()->checkout()->get_value( 'billing_state' === $key ? 'billing_country' : 'shipping_country' );
 				$states      = WC()->countries->get_states( $for_country );
 				if ( ! is_null( $for_country ) && is_array( $states ) ) {
 					$search_str = '<select';

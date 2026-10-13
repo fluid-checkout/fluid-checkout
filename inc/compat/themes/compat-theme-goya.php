@@ -32,7 +32,7 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 		add_filter( 'fc_checkout_sidebar_attributes', array( $this, 'change_sticky_elements_relative_header' ), 20 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
@@ -49,7 +49,7 @@ class FluidCheckout_ThemeCompat_Goya extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-compat-goya-floating-labels', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/themes/goya/float-labels' ), array( 'jquery' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-compat-goya-floating-labels', 'window.addEventListener("load",function(){GoyaFloatLabels.init();})' );
+		wp_add_inline_script( 'fc-compat-goya-floating-labels', 'window.addEventListener("load",function(){GoyaFloatLabels.init();});' );
 	}
 
 	/**

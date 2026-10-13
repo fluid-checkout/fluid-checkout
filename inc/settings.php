@@ -21,9 +21,15 @@ class FluidCheckout_Settings extends FluidCheckout {
 	public function hooks() {
 		// Settings values
 		add_filter( 'pre_option_fc_design_template', array( $this, 'set_option_lite_design_template' ), 10, 3 );
+		add_filter( 'pre_option_fc_checkout_column_layout', array( $this, 'set_option_checkout_column_layout' ), 10, 3 );
+		add_filter( 'pre_option_fc_checkout_progress_bar_style', array( $this, 'set_option_progress_bar_style' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_edit_cart_replace_edit_cart_link', array( $this, 'set_option_replace_edit_cart_link' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_coupon_codes_position', array( $this, 'set_option_coupon_code_position_checkout' ), 10, 3 );
 		add_filter( 'pre_option_fc_pro_checkout_billing_address_position', array( $this, 'set_option_billing_address_position_checkout' ), 10, 3 );
+
+		// Settings values (at later stage)
+		// Intentionally use `option_` instead of `pre_option_` as we need to check the value of the option that was saved the to database before making any changes to it.
+		add_filter( 'option_fc_pro_checkout_order_summary_position_mobile', array( $this, 'set_option_order_summary_position_mobile' ), 10, 2 );
 
 		// Settings save
 		add_action( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
@@ -36,8 +42,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function get_default_option_values() {
 		$defaults = array(
-			// Settings checkout.			
+			// Settings checkout.
 			'fc_checkout_layout'                                            => 'multi-step',
+			'fc_checkout_column_layout'                                     => 'two_columns',
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
 			'fc_hide_site_header_footer_at_checkout'                        => 'yes',
@@ -47,13 +54,17 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_checkout_footer_background_color'                           => null,
 			'fc_enable_checkout_progress_bar'                               => 'yes',
 			'fc_enable_checkout_sticky_progress_bar'                        => 'yes',
+			'fc_checkout_progress_bar_style'                                => 'bars',
 			'fc_enable_checkout_express_checkout'                           => 'no',
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_enable_checkout_express_checkout_ignore_required_fields'    => 'yes',
 			'fc_checkout_order_review_highlight_color'                      => null,
+			'fc_checkout_secondary_column_background_color'                 => null,
 			'fc_show_order_totals_row_highlighted'                          => 'no',
 			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
 			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
+			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
+			'fc_pro_checkout_order_summary_collapsible_initial_state'       => 'collapsed',
 			'fc_pro_enable_checkout_edit_cart'                              => 'no',
 			'fc_pro_cart_items_error_messages_hide_at_checkout'             => 'yes',
 			'fc_checkout_place_order_position'                              => 'below_payment_section',
@@ -62,25 +73,28 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_hide_optional_fields'                       => 'yes',
 			'fc_optional_fields_link_label_lowercase'                       => 'yes',
 			'fc_hide_optional_fields_skip_address_2'                        => 'no',
-			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
-			'fc_shipping_methods_disable_auto_select'                       => 'no',
+			'fc_shipping_methods_substep_position'                          => 'before_shipping_address',
 			'fc_enable_checkout_local_pickup'                               => 'no',
-			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
+			'fc_local_pickup_default_delivery_type'                         => 'ship',
+			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
 			'fc_show_billing_section_highlighted'                           => 'yes',
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
 			'fc_shipping_company_field_visibility'                          => 'optional',
-			'fc_shipping_phone_field_visibility'                            => 'no',
+			'woocommerce_checkout_company_field'                            => 'optional',
+			'fc_shipping_phone_field_visibility'                            => 'hidden',
 			'fc_shipping_phone_field_position'                              => 'shipping_address',
 			'woocommerce_checkout_phone_field'                              => 'required',
 			'fc_billing_phone_field_position'                               => 'billing_address',
 			'fc_pro_enable_international_phone_fields'                      => 'no',
 			'fc_pro_enable_international_phone_validation'                  => 'no',
+			'fc_pro_enable_international_phone_validation_precise'          => 'no',
+			'fc_pro_enable_international_phone_validation_precise_types'    => array( 'MOBILE', 'FIXED_LINE' ),
 			'fc_pro_enable_international_phone_country_code'                => 'yes',
 			'fc_pro_enable_international_phone_country_list_filter'         => 'yes',
-			'fc_pro_international_phone_fields_placeholder'                 => 'off',
+			'fc_pro_international_phone_fields_placeholder'                 => 'OFF',
 			'woocommerce_enable_order_comments'                             => 'yes',
 			'fc_enable_checkout_gift_options'                               => 'no',
 			'fc_default_gift_options_expanded'                              => 'no',
@@ -102,7 +116,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_cart_cross_sells'                                => 'yes',
 			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
 			'fc_pro_enable_cart_widget_areas'                               => 'yes',
-			
+
 			// Settings order received.
 			'fc_pro_enable_order_received'                                  => 'no',
 			'fc_pro_enable_order_details_email_customizations'              => 'yes',
@@ -115,7 +129,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
 			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
 			'fc_pro_enable_order_received_widget_areas'                     => 'no',
-			
+
 			// Settings order pay.
 			'fc_pro_enable_pay_received'                                    => 'no',
 			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
@@ -125,12 +139,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_load_unminified_assets'                                     => 'no',
 			'fc_use_enhanced_select_components'                             => 'no',
 			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
+			'fc_telemetry_enabled'                                         => 'no',
+			'fc_telemetry_data_groups'                                    => array( 'basic_environment', 'plugin_settings' ),
 
 			// Settings without options in the admin panel.
 			'fc_plugin_activation_time'                                     => null,
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
-			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'true',
+			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
 
 			// Compatibility settings for plugins.
 			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
@@ -138,6 +154,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
 			'fc_integration_mailchimp_force_subscribe_checkbox_position'    => 'yes',
 			'fc_integration_woocommerce_gateway_stripe_apply_styles'        => 'yes',
+			'fc_integration_woocommerce_smart_coupons_position_checkout'    => 'before_progress_bar',
 			'gm_order_review_checkboxes_before_order_review'                => 'off',
 			'hezarfen_checkout_fields_auto_sort'                            => 'no',
 			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
@@ -168,6 +185,13 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
 		);
 
+		/**
+		 * Filters the default values for Fluid Checkout options.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array $defaults Default option values keyed by option name.
+		 */
 		return apply_filters( 'fc_default_option_values', $defaults );
 	}
 
@@ -212,6 +236,28 @@ class FluidCheckout_Settings extends FluidCheckout {
 	}
 
 	/**
+	 * Force the option value for checkout column layout when only Lite plugin is activated.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_checkout_column_layout( $pre_option, $option, $default ) {
+		return $this->get_option_default( 'fc_checkout_column_layout' );
+	}
+
+	/**
+	 * Force the option value for progress bar style when only Lite plugin is activated.
+	 *
+	 * @param  mixed   $pre_option   The value to return instead of the option value.
+	 * @param  string  $option       Option name.
+	 * @param  mixed   $default      The fallback value to return if the option does not exist.
+	 */
+	public function set_option_progress_bar_style( $pre_option, $option, $default ) {
+		return $this->get_option_default( 'fc_checkout_progress_bar_style' );
+	}
+
+	/**
 	 * Force the option value for replacing edit cart link when only Lite plugin is activated.
 	 *
 	 * @param  mixed   $pre_option   The value to return instead of the option value.
@@ -220,6 +266,22 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 */
 	public function set_option_replace_edit_cart_link( $pre_option, $option, $default ) {
 		return $this->get_option_default( 'fc_pro_checkout_edit_cart_replace_edit_cart_link' );
+	}
+
+	/**
+	 * Force the option value for order summary section position on mobile when only Lite plugin is activated.
+	 *
+	 * @param  string  $value        The value of the option.
+	 * @param  string  $option       Option name.
+	 */
+	public function set_option_order_summary_position_mobile( $value, $option ) {
+		// Bail if using accepted Lite options
+		$accepted_values = array( 'hidden', 'site_header' );
+		if ( in_array( $value, $accepted_values ) ) {
+			return $value;
+		}
+
+		return $this->get_option_default( 'fc_pro_checkout_order_summary_position_mobile' );
 	}
 
 	/**
@@ -247,25 +309,64 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 
 	/**
-	 * Maybe prevent changes to the option value when the option is disabled.
+	 * Disable a settings field.
+	 * Not intended for settings fields of the type `radio`, as WooCommerce uses the `disabled` argument for the list of option values to disable on those fields.
+	 *
+	 * @param  array   $settings     Admin settings argument values.
+	 * @param  string  $option_name  Option name of the settings field to disable.
+	 * @param  string  $description  (optional) Description explaining why the settings field was disabled. Defaults to `null`, keeping the current description and description tooltip.
+	 */
+	public function disable_settings_field( $settings, $option_name, $description = null ) {
+		// Bail if the settings arguments are not valid
+		if ( ! is_array( $settings ) ) { return $settings; }
+
+		// Iterate settings
+		foreach ( $settings as $key => $setting_args ) {
+			// Skip settings other than the target settings field
+			if ( ! is_array( $setting_args ) || ! array_key_exists( 'id', $setting_args ) || $option_name !== $setting_args[ 'id' ] ) { continue; }
+
+			// Maybe initialize the custom attributes arguments
+			if ( ! array_key_exists( 'custom_attributes', $setting_args ) || ! is_array( $setting_args[ 'custom_attributes' ] ) ) {
+				$setting_args[ 'custom_attributes' ] = array();
+			}
+
+			// Disable the settings field
+			$setting_args[ 'disabled' ] = true;
+			$setting_args[ 'custom_attributes' ][ 'disabled' ] = true;
+
+			// Maybe change the description explaining why the settings field was disabled
+			if ( null !== $description ) {
+				$setting_args[ 'desc' ] = $description;
+
+				// Remove the description tooltip
+				unset( $setting_args[ 'desc_tip' ] );
+			}
+
+			// Update the settings field arguments
+			$settings[ $key ] = $setting_args;
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * Maybe prevent changes to the option value when the settings field is disabled.
 	 * 
 	 * @param  mixed   $value      The option value.
 	 * @param  string  $option     The option arguments.
 	 * @param  mixed   $raw_value  The raw value of the option.
 	 */
 	public function maybe_prevent_change_disabled_settings_on_save( $value, $option, $raw_value ) {
-		global $current_tab, $current_section;
+		global $current_tab;
 
-		// Bail if not the plugin settings.
-		if ( ! 'fc_checkout' === $current_tab ) { return $value; }
+		// Bail if not saving the plugin settings, as other plugins also use the `disabled` argument on their own settings fields
+		if ( 'fc_checkout' !== $current_tab ) { return $value; }
 
-		// Maybe set the value to the saved value if the option is disabled.
-		if( array_key_exists( 'disabled', $option ) && true === $option[ 'disabled' ] ) {
-			$saved_value = get_option( $option[ 'id' ] );
-			$value = $saved_value;
-		}
+		// Bail if the settings field is not disabled
+		if ( ! array_key_exists( 'disabled', $option ) || true !== $option[ 'disabled' ] ) { return $value; }
 
-		return $value;
+		// Return `null` to skip saving the option, as disabled fields are not submitted and would otherwise be saved with the default value
+		return null;
 	}
 
 }

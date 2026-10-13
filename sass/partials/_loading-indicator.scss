@@ -46,7 +46,7 @@ body#{ $_body-theme-selector } div.woocommerce .form-row.fc-loading .woocommerce
 body#{ $_body-theme-selector } div.woocommerce button.fc-loading,
 body#{ $_body-theme-selector } div.woocommerce .button.fc-loading,
 body#{ $_body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-button.fc-loading {
-	position: relative;
+	position: relative !important; // Needed to override theme styles
 	color: transparent !important; // Needed to override theme styles
 }
 
@@ -56,21 +56,24 @@ body#{ $_body-theme-selector } div.woocommerce .fc-place-order .fc-place-order-b
 	@include icon( $loader-icon-name );
 	@include icon-size( $icon-size );
 
-	z-index: z( 'above' );
-	position: absolute;
-	top: 50%;
-	left: 50%; // Does not need to handle RTL
-	transform: translateX( -50% ) translateY( -50% );
-	#{ $alignment-right }: $global-spacing-extra-small;
-	width: $icon-size;
-	height: $icon-size;
-	font-size: $icon-size;
-	line-height: 1;
-	border-radius: 100%;
-	background-color: transparent;
-	animation: $loader-animation-name--button $loader-animation-speed linear infinite;
+	z-index: z( 'above' ) !important; // Needed to override theme styles
+	position: absolute !important; // Needed to override theme styles
+	top: 50% !important; // Needed to override theme styles
+	left: 50% !important; // Needed to override theme styles
+	transform: translateX( -50% ) translateY( -50% ); // Cannot force this to be !important, because it causes the spinner animation to stop working
+	margin: 0 !important; // Needed to override theme styles
+	#{ $alignment-right }: $global-spacing-extra-small !important; // Needed to override theme styles
+	width: $icon-size !important; // Needed to override theme styles
+	height: $icon-size !important; // Needed to override theme styles
+	font-size: $icon-size !important; // Needed to override theme styles
+	line-height: 1 !important; // Needed to override theme styles
+	border-radius: 100% !important; // Needed to override theme styles
+	border: 0 !important; // Needed to override theme styles
+	background-color: transparent !important; // Needed to override theme styles
+	animation: $loader-animation-name--button $loader-animation-speed linear infinite !important; // Needed to override theme styles
 	color: $white !important; // Needed to override theme styles
-	pointer-events: none;
+	opacity: 1 !important; // Needed to override theme styles
+	pointer-events: none !important; // Needed to override theme styles
 }
 
 

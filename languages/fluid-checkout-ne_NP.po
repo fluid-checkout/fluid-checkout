@@ -68,10 +68,6 @@ msgstr "ढुवानी फोन"
 msgid "Only used for shipping-related questions."
 msgstr "ढुवानी-सम्बन्धित प्रश्नहरूको लागि मात्र प्रयोग गरिन्छ।"
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "बहु-चरण"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "एकल चरण"
@@ -105,14 +101,6 @@ msgstr "बिलिङमा अगाडि बढ्नुहोस्"
 msgid "Proceed to payment"
 msgstr "भुक्तानीमा अगाडि बढ्नुहोस्"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "मेरो सम्पर्क"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "ढुवानी गर्दै"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "ढुवानी विधि"
@@ -120,10 +108,6 @@ msgstr "ढुवानी विधि"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "थप नोटहरू"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "बिलिङ गर्दै"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -137,10 +121,6 @@ msgstr "%2$s मध्ये %1$s चरण"
 #: inc/checkout-steps.php:2825
 msgid "Change: %s"
 msgstr "परिवर्तन: %s"
-
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "प्रदान गरिएको जानकारीको आधारमा खाता सिर्जना गरिनेछ।"
 
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -400,14 +380,6 @@ msgstr "प्लगइनको मूल्याङ्कन गर्नु�
 msgid "I need help!"
 msgstr "मलाई सहयोग चाहियो!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"क्वाडलेयर्सको WooCommerce चेकआउट प्रबन्धक प्लगइन फ्लुइड चेकआउटसँग उपयुक्त "
-"छैन।"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -652,14 +624,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "एउटा छवि चयन गर्नुहोस्"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "कुनै छवि चयन गरिएको छैन।"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "छवि हटाउनुहोस्"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -938,16 +902,6 @@ msgstr "चेकआउट लेआउट"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "डिजाइन टेम्प्लेट"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"चेकआउट चरणहरू, अर्डर सारांश र अन्य खण्डहरूको लागि सामान्य शैलीहरू। कार्ट, "
-"अर्डर प्राप्त र अर्डर हेर्नुहोस् पृष्ठहरू जस्ता अन्य पृष्ठहरूमा पनि लागू "
-"हुन सक्छ।"
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -1513,16 +1467,6 @@ msgstr "चेकआउट फारममा बिलिङ फोन फि�
 msgid "Choose in which step to display the billing phone field."
 msgstr "कुन चरणमा बिलिङ फोन फिल्ड प्रदर्शन गर्ने छनौट गर्नुहोस्।"
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr ""
-"फोन क्षेत्रहरूको लागि अन्तर्राष्ट्रिय फोन नम्बर ढाँचा र प्रमाणीकरण सक्षम "
-"गर्नुहोस्।"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "प्रत्येक देश अनुसार फोन नम्बरहरू ढाँचाबद्ध र प्रमाणित गर्नुहोस्।"
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "देशका नियमहरूको आधारमा फोन नम्बर प्रमाणीकरण सक्षम पार्नुहोस्"
@@ -1949,14 +1893,6 @@ msgstr "(प्रो)"
 msgid "(experimental)"
 msgstr "(प्रयोगात्मक)"
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"यो एक प्रयोगात्मक सुविधा हो र सबै विषयवस्तु र प्लगइनहरूमा अपेक्षा गरेअनुसार "
-"काम नगर्न सक्छ। यसलाई सावधानीपूर्वक प्रयोग गर्नुहोस्।"
-
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
 msgstr "पुष्टि गर्नुहोस्"
@@ -2380,6 +2316,291 @@ msgid ""
 "Checkout."
 msgstr "फ्लुइड चेकआउट प्रयोग गर्दा Nyture थिमबाट चेकआउट चरण खण्ड आउटपुट गर्नुहोस्।"
 
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"ग्राहकहरूलाई स्टोर व्यवस्थापकद्वारा म्यानुअल रूपमा सिर्जना गरिएका वा "
+"चेकआउटको समयमा पूरा नभएका अर्डरहरूको लागि भुक्तानी गर्न अनुमति दिन्छ।"
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"क्वाडलेयर्सको WooCommerce चेकआउट प्रबन्धक प्लगइन फ्लुइड चेकआउटसँग उपयुक्त "
+"छैन।"
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "बिलिङ ठेगानाको लागि कम्पनीको नाम क्षेत्र"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"चेकआउट फारममा रहेको बिलिङ ठेगाना खण्डको लागि कम्पनीको नाम फिल्डको दृश्यता "
+"परिवर्तन गर्नुहोस्।"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "थिम बुकशेल्फ"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"फ्लुइड चेकआउट प्रयोग गर्दा बुकशेल्फ थिमबाट चेकआउट चरणहरू खण्ड आउटपुट "
+"गर्नुहोस्।"
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "खाता पासवर्ड"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr "अर्डर पूरा गर्दा चेकआउटमा प्रदान गरिएको जानकारीको साथ खाता सिर्जना गरिनेछ।"
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "प्रगति पट्टीको शैली छनौट गर्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "बारहरू"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "थिम इरेका"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "WooCommerce पृष्ठ लेआउट"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "WooCommerce पृष्ठहरूमा फराकिलो लेआउट बल गर्नुहोस्"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"यसले चेकआउट, कार्ट, अर्डर प्राप्त, अर्डर भुक्तानी र खाता पृष्ठहरू सहित "
+"WooCommerce पृष्ठहरूमा सामग्री खण्ड धेरै साँघुरो नभएको सुनिश्चित गर्दछ।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "WooCommerce स्मार्ट कुपनहरू"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "चेकआउट पृष्ठमा रहेको स्थान"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr "चेकआउट पृष्ठमा उपलब्ध कुपन खण्ड कहाँ प्रदर्शन गर्ने भनेर छनौट गर्नुहोस्।"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "प्रगति पट्टी अघि"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "प्रगति पट्टी पछि"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "कुपन कोड खण्ड अघि"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "अन्तर्राष्ट्रिय फोन नम्बर क्षेत्रहरू सक्षम गर्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "प्रत्येक देशको नियम अनुसार फोन नम्बरहरू ढाँचा गर्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "सटीक फोन नम्बर प्रमाणीकरण प्रयोग गर्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"चयन गरिएको देश कोडको नियमहरूको आधारमा फोन नम्बर मान्य मोबाइल वा ल्यान्डलाइन "
+"नम्बर हो भनी सुनिश्चित गर्ने प्रयास गर्नुहोस्। यो विकल्पले "
+"<code>intl-tel-input</code> सटीक प्रमाणीकरण सुविधा प्रयोग गर्दछ, जसले केही "
+"फोन नम्बरहरूको लागि गलत सकारात्मक परिणाम दिन सक्छ।"
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"यो एक प्रयोगात्मक सुविधा हो र सबै सेटअपहरूमा अपेक्षा गरेअनुसार काम नगर्न "
+"सक्छ। यसलाई सावधानीपूर्वक प्रयोग गर्नुहोस्।"
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"सटीक प्रमाणीकरण सक्षम पारिएको बेला प्रयोग गरिने फोन नम्बर प्रमाणीकरण "
+"प्रकारहरू।"
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "मोबाइल"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "फिक्स्ड लाइन"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "टोल फ्री"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "वा"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "सम्पर्क गर्नुहोस्"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "बहु चरण"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "२ स्तम्भहरू"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "१ स्तम्भ"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"चेकआउट चरणहरू, अर्डर सारांश र अन्य खण्डहरूको लागि सामान्य शैलीहरू।<br> "
+"कार्ट, अर्डर प्राप्त र अर्डर हेर्नुहोस् पृष्ठहरू जस्ता अन्य पृष्ठहरूमा पनि "
+"लागू हुन सक्छ।"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"<em>&quot;१ स्तम्भ&quot;</em> लेआउट प्रयोग गर्दा डिजाइन टेम्प्लेट "
+"<em>&quot;स्प्लिट&quot;</em> उपलब्ध हुँदैन र छनोट भएमा "
+"<em>&quot;मिनिमलिस्ट&quot;</em> मा फर्किनेछ।"
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "चेकआउट गर्नु अघिका चरणहरू"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"<em>&quot;१ स्तम्भ&quot;</em> चेकआउट लेआउट प्रयोग गर्दा यो विकल्प सधैं "
+"<em>&quot;चेकआउट चरणहरू अघि&quot;</em> मा सेट गरिएको हुन्छ र डेस्कटप "
+"दृश्यमा पनि लागू हुन्छ।"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "मोबाइलमा अतिरिक्त अर्डर सारांश खण्डको लागि स्थान।"
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"<em>&quot;साइट हेडरमा&quot;</em> विकल्प केवल व्याकुलता-रहित हेडर प्रयोग "
+"गर्दा मात्र लागू हुन्छ।"
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "साइट हेडरमा (विचलित-रहित हेडर आवश्यक छ)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "मोबाइलमा विस्तारयोग्य अर्डर सारांश खण्डको लागि प्रारम्भिक स्थिति।"
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"हामी नियामक आवश्यकताहरूको कारणले गर्दा निम्न देशहरूको लागि यसलाई "
+"<em>विस्तारित</em> रूपमा सेट गर्न सिफारिस गर्छौं: <strong>जर्मनी</strong> , "
+"<strong>अस्ट्रिया</strong> , <strong>स्विट्जरल्याण्ड</strong> , "
+"<strong>नेदरल्याण्ड्स</strong> , <strong>पोल्याण्ड</strong> , "
+"<strong>बेल्जियम</strong> र <strong>फ्रान्स</strong> ।"
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "संक्षिप्त गरियो"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "विस्तारित"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "नदेखाउनुहोस्"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "हो"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"यदि बिलिङ ठेगाना खण्ड ढुवानी ठेगाना खण्ड पछि प्रदर्शित हुन्छ भने ढुवानी फोन "
+"क्षेत्रलाई &quot;आवश्यक&quot; को रूपमा जबरजस्ती गर्न सकिन्छ, र बिलिङ फोन "
+"क्षेत्र &quot;आवश्यक&quot; को रूपमा सेट गरिएको छ। त्यो विकल्प जाँच गर्दा "
+"ढुवानी ठेगाना बिलिङ ठेगानामा प्रतिलिपि गर्न सकिन्छ भनेर सुनिश्चित गर्न यो "
+"आवश्यक छ, अन्यथा ग्राहकले चेकआउट फारम पूरा गर्न सक्षम नहुन सक्छ।"
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"यदि बिलिङ ठेगाना खण्ड ढुवानी ठेगाना खण्डभन्दा अगाडि प्रदर्शित गरिएको छ भने "
+"बिलिङ फोन फिल्डलाई &quot;आवश्यक&quot; को रूपमा जबरजस्ती गर्न सकिन्छ, र "
+"ढुवानी फोन फिल्ड &quot;आवश्यक&quot; को रूपमा सेट गरिएको छ। त्यो विकल्प जाँच "
+"गर्दा ढुवानी ठेगाना बिलिङ ठेगानामा प्रतिलिपि गर्न सकिन्छ भनेर सुनिश्चित "
+"गर्न यो आवश्यक छ, अन्यथा ग्राहकले चेकआउट फारम पूरा गर्न सक्षम नहुन सक्छ।"
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2497,3 +2718,36 @@ msgstr "अथवा तल जारी राख्नुहोस्"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "अथवा अतिथिको रूपमा जारी राख्नुहोस्"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "छवि हटाउनुहोस्"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "ढुवानी %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "ढुवानी"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "अर्को चरण"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "हो"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%१$s: %२$s"

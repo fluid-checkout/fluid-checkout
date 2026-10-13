@@ -1,0 +1,15 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"],
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="radio"] {
+	#{ $alignment-left }: auto;
+	vertical-align: middle;
+	line-height: normal;
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row {
+	margin-#{ $alignment-right }: 0;
+	margin-#{ $alignment-left }: 0;
+}

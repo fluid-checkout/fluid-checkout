@@ -33,7 +33,7 @@ class FluidCheckout_VerifyPass extends FluidCheckout {
 		global $verifypass;
 
 		// Bail if plugin instance or its method is not avaialble
-		if ( ! is_object( $verifypass ) || ! method_exists( $verifypass, 'hook_after_coupon' ) ) { return $field; }
+		if ( ! is_object( $verifypass ) || ! method_exists( $verifypass, 'hook_after_coupon' ) ) { return; }
 
 		// Output buttons with custom container
 		echo '<div class="verifypass-discount-buttons">';

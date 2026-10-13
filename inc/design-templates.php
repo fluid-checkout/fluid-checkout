@@ -27,6 +27,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100, 2 );
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100, 2 );
 		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100, 2 );
+		add_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_secondary_column' ), 100, 2 );
 
 		// Custom styles
 		add_action( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -47,6 +48,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_header' ), 100 );
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_footer' ), 100 );
 		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_order_summary' ), 100 );
+		remove_filter( 'fc_css_variables', array( $this, 'maybe_add_css_variables_secondary_column' ), 100 );
 
 		// Custom styles
 		remove_filter( 'wp_head', array( $this, 'maybe_output_custom_styles' ), 10 );
@@ -106,26 +108,12 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 
 	/**
-	 * Get the design template option arguments.
-	 *
-	 * @return  array  Design templates arguments.
-	 */
-	public function get_design_template_options() {
-		return array(
-			'classic'     => array( 'label' => __( 'Classic', 'fluid-checkout' ) ),
-			'boxed'       => array( 'label' => __( 'Boxed', 'fluid-checkout' ), 'disabled' => true ),
-			'split'       => array( 'label' => __( 'Split', 'fluid-checkout' ), 'disabled' => true ),
-			'minimalist'  => array( 'label' => __( 'Minimalist', 'fluid-checkout' ), 'disabled' => true ),
-		);
-	}
-
-	/**
 	 * Return the list of values accepted for design templates.
 	 *
 	 * @return  array  List of values accepted for design templates.
 	 */
 	public function get_allowed_design_templates() {
-		return array_keys( $this->get_design_template_options() );
+		return array( 'classic', 'boxed', 'minimalist', 'split' );
 	}
 
 
@@ -134,6 +122,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Check whether dark mode color scheme is enabled for the page.
 	 */
 	public function is_dark_mode_enabled() {
+		/**
+		 * Filters whether dark mode styles are applied.
+		 *
+		 * @since 3.0.3
+		 *
+		 * @param string $enabled Whether the feature is enabled.
+		 */
 		return true === apply_filters( 'fc_enable_dark_mode_styles', 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_enable_dark_mode_styles' ) );
 	}
 
@@ -143,6 +138,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Check whether custom button color styles are enabled for the page.
 	 */
 	public function is_button_color_styles_enabled() {
+		/**
+		 * Filters whether Fluid Checkout button color styles are applied.
+		 *
+		 * @since 2.5.1
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		return true === apply_filters( 'fc_apply_button_colors_styles', false );
 	}
 
@@ -150,6 +152,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 * Check whether custom button design styles are enabled for the page.
 	 */
 	public function is_button_design_styles_enabled() {
+		/**
+		 * Filters whether Fluid Checkout button design styles are applied.
+		 *
+		 * @since 3.0.1
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		return true === apply_filters( 'fc_apply_button_design_styles', false );
 	}
 
@@ -162,6 +171,14 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function get_css_variables_styles( $context = 'frontend' ) {
 		// Get CSS variables
+		/**
+		 * Filters the CSS variables output for Fluid Checkout design templates.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array  $value   Value to filter.
+		 * @param string $context Context in which the hook runs. Default `checkout`.
+		 */
 		$css_variables = apply_filters( 'fc_css_variables', array( ':root' => array() ), $context );
 
 		// Bail if no scope for CSS variables
@@ -174,7 +191,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		foreach ( $css_variables as $scope => $properties ) {
 			// Maybe skip empty scope
 			if ( empty( $properties ) ) { continue; }
-		
+
 			// Transform array into string of CSS variables
 			$css_variables_str = join( ';', array_map( function( $value, $key ) {
 				return esc_attr( $key ) . ':' . esc_attr( $value );
@@ -189,6 +206,9 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 	/**
 	 * Merge CSS variables within the scopes.
+	 * 
+	 * @param  array  $css_variables           The CSS variables key/value pairs.
+	 * @param  array  $css_variables_to_merge  The CSS variables key/value pairs to merge.
 	 */
 	public function merge_css_variables( $css_variables, $css_variables_to_merge ) {
 		// Start with CSS variables
@@ -218,6 +238,13 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	 */
 	public function output_custom_styles() {
 		// Get styles
+		/**
+		 * Filters the custom CSS output for the checkout design.
+		 *
+		 * @since 1.4.2
+		 *
+		 * @param string $value Value to filter. Default empty string.
+		 */
 		$custom_styles = apply_filters( 'fc_output_custom_styles', '' );
 
 		// Prepend CSS variables
@@ -226,7 +253,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		// Bail if styles are empty
 		if ( empty( $custom_styles ) ) { return; }
 
-		echo '<style id="fc-custom-styles">' . sanitize_text_field( $custom_styles ) . '</style>';
+		echo '<style id="fc-custom-styles">' . $custom_styles . '</style>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -250,8 +277,10 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 	/**
 	 * Add the custom styles for the checkout page background color.
+	 * 
+	 * @param  string  $custom_styles  The custom styles to add.
 	 */
-	public function add_checkout_page_custom_styles( $custom_styles ) {		
+	public function add_checkout_page_custom_styles( $custom_styles ) {
 		// Get header background color
 		$page_background_color = trim( FluidCheckout_Settings::instance()->get_option( 'fc_checkout_page_background_color', '' ) );
 
@@ -265,6 +294,8 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 
 	/**
 	 * Maybe add the custom styles for the checkout page background color.
+	 * 
+	 * @param  string  $custom_styles  The custom styles to add.
 	 */
 	public function maybe_add_checkout_page_custom_styles( $custom_styles ) {
 		// Bail if not on checkout page.
@@ -274,7 +305,7 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Get the CSS variables for dark mode.
 	 */
@@ -426,6 +457,50 @@ class FluidCheckout_DesignTemplates extends FluidCheckout {
 		if( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
 
 		return $this->add_css_variables_order_summary( $css_variables, $context );
+	}
+
+
+
+	/**
+	 * Add CSS variables for the Split design secondary column background color.
+	 * Falls back to the order summary background color when the Split-specific color is empty.
+	 *
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context        The context for which to get the CSS variables styles. Defaults to `frontend`.
+	 */
+	public function add_css_variables_secondary_column( $css_variables, $context = 'frontend' ) {
+		// Bail if design template is not split
+		if ( 'split' !== FluidCheckout_Settings::instance()->get_option( 'fc_design_template' ) ) { return $css_variables; }
+
+		// Get Split secondary column background color, fall back to order summary background color when empty
+		$secondary_column_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_secondary_column_background_color' ) ) );
+		$order_summary_color_esc = esc_attr( trim( (string) FluidCheckout_Settings::instance()->get_option( 'fc_checkout_order_review_highlight_color' ) ) );
+		$color_esc = ! empty( $secondary_column_color_esc ) ? $secondary_column_color_esc : $order_summary_color_esc;
+
+		// Bail if color is empty
+		if ( empty( $color_esc ) ) { return $css_variables; }
+
+		// Add CSS variables
+		$new_css_variables = array(
+			':root body.woocommerce-page[class*="theme-"][class*="has-fc-design-template"]' => array(
+				'--fluidcheckout--secondary-column-background-color' => $color_esc,
+			),
+		);
+
+		return $this->merge_css_variables( $css_variables, $new_css_variables );
+	}
+
+	/**
+	 * Maybe add CSS variables for the Split design secondary column background color.
+	 *
+	 * @param  array   $css_variables  The CSS variables key/value pairs.
+	 * @param  string  $context        The context for which to get the CSS variables styles. Defaults to `frontend`.
+	 */
+	public function maybe_add_css_variables_secondary_column( $css_variables, $context = 'frontend' ) {
+		// Bail if not on checkout page.
+		if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() || is_checkout_pay_page() ) { return $css_variables; }
+
+		return $this->add_css_variables_secondary_column( $css_variables, $context );
 	}
 
 }

@@ -9,6 +9,14 @@ body#{ $_body-page-selector } {
 
 
 
+// Remove the `alignwide` class styles from the classic shortcode block.
+body#{ $_body-page-selector } div[data-block-name="woocommerce/classic-shortcode"].alignwide {
+	left: 0 !important; // Needed to override theme styles for the class `.alignwide`
+	width: 100% !important; // Needed to override theme styles for the class `.alignwide`
+}
+
+
+
 // Remove margins inherited from some themes
 body#{ $_body-page-selector } .fc-content,
 form.woocommerce-checkout {

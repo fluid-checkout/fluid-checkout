@@ -5,15 +5,15 @@ Plugin URI: https://fluidcheckout.com/
 Description: Provides a distraction free checkout experience for any WooCommerce store. Ask for shipping information before billing in a truly linear multi-step or one-step checkout and display a coupon code field at the checkout page that does not distract your customers.
 Text Domain: fluid-checkout
 Domain Path: /languages
-Version: 4.0.6
+Version: 4.2.8-alpha-3
 Author: Fluid Checkout
 Author URI: https://fluidcheckout.com/
 WC requires at least: 5.0
-WC tested up to: 9.9.3
+WC tested up to: 11.0.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 License: GPLv3
 
-Copyright (C) 2021-2025 Fluid Checkout OÜ
+Copyright (C) 2021-2026 Fluid Checkout OÜ
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -57,6 +57,26 @@ class FluidCheckout {
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
 	/**
+	 * Telemetry settings keyed by API URL.
+	 *
+	 * @var array
+	 */
+	const TELEMETRY_SETTINGS = array(
+		'https://fluidcheckout.com' => array(
+			'cron_hook'                       => 'fc_telemetry_weekly',
+			'enable_option'                   => 'fc_telemetry_enabled',
+			'data_groups_option'              => 'fc_telemetry_data_groups',
+			'fingerprint_option'              => 'fc_telemetry_last_fingerprint',
+			'last_sent_option'                => 'fc_telemetry_last_sent',
+			'send_lock_transient'             => 'fc_telemetry_send_lock',
+			'sales_backfill_sent_option'      => 'fc_telemetry_sales_backfill_sent',
+			'last_sales_metrics_month_option' => 'fc_telemetry_last_sales_metrics_month',
+			'changed_interval'                => WEEK_IN_SECONDS,
+			'unchanged_interval'              => 4 * WEEK_IN_SECONDS,
+		),
+	);
+
+	/**
 	 * Hold list of the plugin features to load when initializing.
 	 *
 	 * @var array
@@ -77,7 +97,6 @@ class FluidCheckout {
 	 * @access public
 	 * @static
 	 * @return object
-	 * @since  1.0.0
 	 */
 	public static function instance() {
 		$calledClass = get_called_class();
@@ -99,6 +118,8 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
+		$this->load_telemetry_client_class();
+		$this->init_telemetry_hooks();
 		$this->load_db_migrations();
 		$this->load_admin_notices();
 		$this->register_features();
@@ -129,6 +150,162 @@ class FluidCheckout {
 
 
 	/**
+	 * Load the telemetry client class file when needed.
+	 */
+	private function load_telemetry_client_class() {
+		self::maybe_register_own_plugins_telemetry();
+
+		// Bail if class is already loaded
+		if ( class_exists( 'FC_Telemetry_Client' ) ) { return; }
+
+		require_once self::$directory_path . 'inc/admin/fc-telemetry-client.php';
+	}
+
+
+
+	/**
+	 * Register this plugin in the telemetry own-plugins map.
+	 */
+	private static function maybe_register_own_plugins_telemetry() {
+		if ( has_filter( 'fc_telemetry_own_plugins', array( __CLASS__, 'set_own_plugins_telemetry_options' ) ) ) {
+			return;
+		}
+
+		add_filter( 'fc_telemetry_own_plugins', array( __CLASS__, 'set_own_plugins_telemetry_options' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Add this plugin to the telemetry own-plugins map.
+	 *
+	 * @param array       $plugins Own plugins map.
+	 * @param string|null $api_url Remote API base URL from the consuming plugin.
+	 */
+	public static function set_own_plugins_telemetry_options( $plugins, $api_url = null ) {
+		// Bail if a specific API URL was requested and it is not this plugin's telemetry API.
+		if ( null !== $api_url && ! self::is_own_telemetry_api_url( $api_url ) ) { return $plugins; }
+
+		// Define own plugins options so telemetry can track activation time and optional license hashes when commercial plugins are present.
+		$own_plugins = array(
+			'fluid-checkout' => array(
+				'activation_time_option' => 'fc_plugin_activation_time',
+			),
+			'fluid-checkout-pro' => array(
+				'activation_time_option' => 'fc_pro_plugin_activation_time',
+				'license_key_option' => 'fc_pro_license_key',
+				'license_key_hash_option' => 'fc_pro_license_key_hash',
+				'license_activated_option' => 'fc_pro_license_key_activated',
+			),
+			'fc-address-book' => array(
+				'activation_time_option' => 'fc_adb_plugin_activation_time',
+				'license_key_option' => 'fc_adb_license_key',
+				'license_key_hash_option' => 'fc_adb_license_key_hash',
+				'license_activated_option' => 'fc_adb_license_key_activated',
+			),
+			'fc-vat-assistant' => array(
+				'activation_time_option' => 'fc_vat_plugin_activation_time',
+				'license_key_option' => 'fc_vat_license_key',
+				'license_key_hash_option' => 'fc_vat_license_key_hash',
+				'license_activated_option' => 'fc_vat_license_key_activated',
+			),
+			'fc-google-address-autocomplete' => array(
+				'activation_time_option' => 'fc_gaa_plugin_activation_time',
+				'license_key_option' => 'fc_gaa_license_key',
+				'license_key_hash_option' => 'fc_gaa_license_key_hash',
+				'license_activated_option' => 'fc_gaa_license_key_activated',
+			),
+			'fc-conversion-kit' => array(
+				'activation_time_option' => 'fc_kit_plugin_activation_time',
+			),
+			'fc-paddle-payments' => array(
+				'activation_time_option' => 'fc_paddle_plugin_activation_time',
+				'license_key_option' => 'fc_paddle_license_key',
+				'license_key_hash_option' => 'fc_paddle_license_key_hash',
+				'license_activated_option' => 'fc_paddle_license_key_activated',
+			),
+		);
+
+		return self::merge_own_plugins_telemetry_options( $plugins, $own_plugins );
+	}
+
+	/**
+	 * Get the primary telemetry API URL for this plugin.
+	 */
+	public static function get_telemetry_api_url() {
+		foreach ( array_keys( self::TELEMETRY_SETTINGS ) as $api_url ) {
+			return untrailingslashit( (string) $api_url );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Whether an API URL belongs to this plugin's telemetry API (canonical or filtered).
+	 *
+	 * @param string $api_url Remote API base URL.
+	 */
+	private static function is_own_telemetry_api_url( $api_url ) {
+		$api_url = untrailingslashit( (string) $api_url );
+
+		foreach ( array_keys( self::TELEMETRY_SETTINGS ) as $canonical ) {
+			$canonical = untrailingslashit( (string) $canonical );
+
+			if ( $api_url === $canonical ) {
+				return true;
+			}
+
+			/**
+			 * Filters the remote telemetry API base URL.
+			 *
+			 * @since 4.2.8
+			 *
+			 * @param string $api_url     Canonical telemetry API base URL.
+			 * @param string $plugin_slug Plugin slug. Default `fluid-checkout`.
+			 */
+			$filtered = untrailingslashit( (string) apply_filters( 'fc_telemetry_api_url', $canonical, self::$plugin_slug ) );
+
+			if ( $api_url === $filtered ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Deep merge own-plugins map entries into an existing map.
+	 *
+	 * @param array $plugins     Existing own plugins map.
+	 * @param array $own_plugins Own plugins entries to merge in.
+	 */
+	private static function merge_own_plugins_telemetry_options( $plugins, $own_plugins ) {
+		foreach ( $own_plugins as $plugin_key => $settings ) {
+			if ( isset( $plugins[ $plugin_key ] ) && is_array( $plugins[ $plugin_key ] ) ) {
+				$plugins[ $plugin_key ] = array_merge( $plugins[ $plugin_key ], $settings );
+			}
+			else {
+				$plugins[ $plugin_key ] = $settings;
+			}
+		}
+
+		return $plugins;
+	}
+
+	/**
+	 * Initialize telemetry hooks.
+	 */
+	private function init_telemetry_hooks() {
+		$this->load_telemetry_client_class();
+
+		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
+
+		FC_Telemetry_Client::register_telemetry_configs( self::TELEMETRY_SETTINGS );
+	}
+
+
+
+	/**
 	 * Load settings manager.
 	 */
 	public function load_settings() {
@@ -141,6 +318,13 @@ class FluidCheckout {
 	 * Get the locales to be used for each language variant.
 	 */
 	public function get_locale_language_variants() {
+		/**
+		 * Filters the locale used for each language variant when loading translations.
+		 *
+		 * @since 2.3.2
+		 *
+		 * @param array $value Value to filter.
+		 */
 		return apply_filters( 'fc_locale_language_variant', array(
 			'de_DE'          => 'de_DE_formal',
 			'de_AT'          => 'de_DE_formal',
@@ -193,9 +377,10 @@ class FluidCheckout {
 	/**
 	 * Get the translation file path for the locale, or the main locale for language variants.
 	 *
-	 * @param  string  $file    Path to the translation file to load.
-	 * @param  string  $domain  The text domain.
-	 * @param  string  $locale  The locale.
+	 * @param  string  $file               Path to the translation file to load.
+	 * @param  string  $locale             The locale.
+	 * @param  string  $plugin_slug        The plugin slug. Defaults to `null`.
+	 * @param  string  $plugin_directory   The plugin directory. Defaults to `null`.
 	 */
 	public function get_translation_file_path( $file, $locale, $plugin_slug = null, $plugin_directory = null ) {
 		// Maybe set plugin slug if not provided
@@ -285,7 +470,7 @@ class FluidCheckout {
 	public function hooks() {
 		// Check if Woocommerce is activated
 		if( ! $this->is_woocommerce_activated() ) {
-			add_action( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
+			add_filter( 'fc_admin_notices', array( $this, 'add_woocommerce_required_notice' ), 10 );
 			return;
 		}
 
@@ -306,6 +491,9 @@ class FluidCheckout {
 
 	/**
 	 * Flush caches when the plugin is successfully updated.
+	 * 
+	 * @param  object  $upgrader_object  The upgrader object.
+	 * @param  array   $options          The options.
 	 */
 	public static function clear_cache_on_updates( $upgrader_object, $options ) {
 		// Bail if necessary options data are not available
@@ -350,6 +538,8 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
+		require_once self::$directory_path . 'inc/admin/admin-telemetry-settings.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-telemetry.php';
 	}
 
 
@@ -426,7 +616,7 @@ class FluidCheckout {
 		}
 
 		// Load admin features
-		if( is_admin() ) {
+		if ( is_admin() ) {
 			require_once self::$directory_path . 'inc/admin/admin.php';
 		}
 	}
@@ -449,6 +639,17 @@ class FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a plugin compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_plugin_' . $plugin_slug, true ) ) { continue; }
 
 			// Get plugin file path
@@ -473,6 +674,17 @@ class FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a theme compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_theme_' . $theme_slug, true ) ) { continue; }
 
 			// Get current theme's compatibility file name
@@ -490,11 +702,15 @@ class FluidCheckout {
 	/**
 	 * Locate template files from this plugin.
 	 * @deprecated Use FluidCheckout_Steps::instance()->locate_template() instead. This will be removed in version 3.0.0
+	 * 
+	 * @param  string  $template         The template file.
+	 * @param  string  $template_name    The template name.
+	 * @param  string  $template_path    The template path.
 	 */
 	public function locate_template( $template, $template_name, $template_path ) {
 		// Add deprecation notice
 		wc_doing_it_wrong( __FUNCTION__, 'Use FluidCheckout_Steps::instance()->locate_template() instead.', '2.3.0' );
-		
+
 		// Bail if class `FluidCheckout_Steps` is not yet loaded
 		if ( ! class_exists( 'FluidCheckout_Steps' ) ) { return $template; }
 
@@ -514,7 +730,7 @@ class FluidCheckout {
 	}
 
 
-	
+
 	/**
 	 * Declare compatibility with the WooCommerce features.
 	 */
@@ -541,7 +757,7 @@ class FluidCheckout {
 	}
 
 	/**
-	 * Check if Fluid Checkout PRO is active on a single install or network wide.
+	 * Check if a plugin is active on a single install or network wide.
 	 * 
 	 * @param  string  $plugin_file   The plugin file name.
 	 * @since 3.0.0
@@ -580,7 +796,7 @@ class FluidCheckout {
 	 */
 	public function add_woocommerce_required_notice( $notices = array() ) {
 		// Bail if user does not have enough permissions
-		if ( ! current_user_can( 'install_plugins' ) ) { return; }
+		if ( ! current_user_can( 'install_plugins' ) ) { return $notices; }
 
 		$required_plugin_name = __( 'WooCommerce', 'fluid-checkout' );
 		$required_plugin_path_name = 'woocommerce/woocommerce.php';
@@ -589,10 +805,12 @@ class FluidCheckout {
 		$action_url = admin_url( 'plugin-install.php?s=' . $required_plugin_search_term . '&tab=search&type=term' );
 
 		if ( ! is_wp_error( validate_plugin( $required_plugin_path_name ) ) ) {
+			/** translators: %s: Required plugin name. */
 			$action_label = wp_kses_post( sprintf( __( 'Activate %s', 'fluid-checkout' ), $required_plugin_name ) );
 			$action_url = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=' . $required_plugin_path_name ), 'activate-plugin_' . $required_plugin_path_name );
 		}
-		
+
+		/** translators: %1$s: Plugin name, %2$s: Required plugin name, %3$s: Action label, %4$s: Action URL. */
 		$description = wp_kses_post( sprintf( __( '<strong>%1$s</strong> requires <strong>%2$s</strong> to be installed and activated. <a href="%4$s">%3$s</a>', 'fluid-checkout' ),
 			self::$plugin,
 			$required_plugin_name,
@@ -616,10 +834,14 @@ class FluidCheckout {
 	 * Return the user id passed in or the current user id
 	 */
 	public function get_user_id( $user_id = null ) {
+		// Maybe get current user id
 		if ( ! $user_id ) {
 			$current_user = wp_get_current_user();
 			$user_id = $current_user->ID;
 		}
+
+		// Sanitize user id
+		$user_id = is_numeric( $user_id ) ? intval( $user_id ) : null;
 
 		return $user_id;
 	}
@@ -632,7 +854,7 @@ class FluidCheckout {
 	public function get_user_geo_location() {
 		// Bail if geolocation class not available
 		if ( ! class_exists( 'WC_Geolocation' ) ) { return false; }
-		
+
 		// Get user location information
 		$geo      = new WC_Geolocation(); // Get WC_Geolocation instance object
 		$user_ip  = $geo->get_ip_address(); // Get user IP
@@ -726,10 +948,10 @@ class FluidCheckout {
 		if ( ! is_array( $callbacks ) || ! array_key_exists( $priority, $callbacks ) ) { return false; }
 
 		$priority_callbacks = $callbacks[ $priority ];
-		
+
 		// Bail if priority callbacks are not on the expected format
 		if ( ! is_array( $priority_callbacks ) ) { return false; }
-		
+
 		$class_callbacks = array();
 
 		foreach ( $priority_callbacks as $callback ) {
@@ -801,11 +1023,11 @@ class FluidCheckout {
 	 * Remove hook callback by class name (alias for `remove_filter_for_class`).
 	 * @see `remove_filter_for_class`
 	 *
-	 * @param   string  $tag             Hook name.
-	 * @param   string  $function_array  Callable array containing the Object and function name.
-	 * @param   int     $priority        Hook priority.
+	 * @param   string  $tag              Hook name.
+	 * @param   string  $function_array   Callable array containing the Object and function name.
+	 * @param   int     $priority         Hook priority.
 	 *
-	 * @return  bool                     `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                      `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_action_for_class( $tag, $function_array, $priority ) {
 		return $this->remove_filter_for_class( $tag, $function_array, $priority );
@@ -814,11 +1036,11 @@ class FluidCheckout {
 	/**
 	 * Remove hook callback for anonymous functions (closure).
 	 *
-	 * @param   string  $tag         Hook name.
-	 * @param   int     $priority    Hook priority.
-	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 * @param   string  $tag               Hook name.
+	 * @param   int     $priority          Hook priority.
+	 * @param   bool    $all_occurencies   Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
 	 *
-	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                       `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_filter_for_closure( $tag, $priority, $all_occurencies = false ) {
 		// Get callbacks for the priority value
@@ -830,7 +1052,7 @@ class FluidCheckout {
 		foreach ( $priority_callbacks as $callback ) {
 			if ( $callback['function'] instanceof Closure ) {
 				remove_filter( $tag, $callback['function'], $priority );
-				
+
 				// Skip removing other occurencies, when not removing all occurencies
 				if ( ! $all_occurencies ) { break; }
 			}
@@ -842,11 +1064,11 @@ class FluidCheckout {
 	/**
 	 * Remove hook callback for anonymous functions (closure)(alias for `remove_filter_for_closure`).
 	 *
-	 * @param   string  $tag         Hook name.
-	 * @param   int     $priority    Hook priority.
-	 * @param   bool    $first_only  Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
+	 * @param   string  $tag               Hook name.
+	 * @param   int     $priority          Hook priority.
+	 * @param   bool    $all_occurencies   Whether to remove all occurencies or only the first one. Defaults to only the first occurency.
 	 *
-	 * @return  bool                 `true` when the function was found and removed, `false` otherwise.
+	 * @return  bool                       `true` when the function was found and removed, `false` otherwise.
 	 */
 	public function remove_action_for_closure( $tag, $priority, $all_occurencies = false ) {
 		return $this->remove_filter_for_closure( $tag, $priority, $all_occurencies );

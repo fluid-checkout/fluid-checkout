@@ -10,11 +10,11 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
+ * @see     https://woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 2.2.2
- * @wc-version 7.0.1
- * @wc-original checkout/payment.php
+ * @version 4.2.6
+ * @wc-version 10.9.0
+ * @original plugins/woocommerce/templates/checkout/payment.php
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -31,7 +31,15 @@ defined( 'ABSPATH' ) || exit;
         <br/><button type="submit" class="button alt<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
     </noscript>
 
-    <?php wc_get_template( 'checkout/terms.php' ); ?>
+    <?php // CHANGE: Replace the output of the terms and conditions checkbox with a custom hook ?>
+    <?php
+        /**
+         * Fires where the terms and conditions checkbox is rendered.
+         *
+         * @since 4.1.0
+         */
+        do_action( 'fc_checkout_place_order_terms' );
+    ?>
 
     <?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 

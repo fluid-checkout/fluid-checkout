@@ -1,0 +1,30 @@
+// ------------------------------------
+// WOOCOMMERCE FORM FIELDS
+// ------------------------------------
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row input[type=checkbox]:focus {
+	outline: none !important; // Needed to override FC styles to fix double checkmark.
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.checkbox,
+body#{ $_body-theme-selector } div.woocommerce-page form .form-row label.checkbox {
+	padding-#{ $alignment-left }: 0;
+}
+
+body#{ $_body-theme-selector } form button:not(.components-button) { 
+	height: 100%; 
+}
+
+body#{ $_body-theme-selector } div.woocommerce form .form-row label.woocommerce-form__label-for-checkbox {
+	padding-#{ $alignment-left }: $global-spacing-small;
+}
+
+body#{ $_body-theme-selector } .woocommerce .fc-checkout-step .fc-step__substep input[type=radio] + :after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper .fc-inside input[type=radio] + :after,
+body#{ $_body-theme-selector } .woocommerce .fc-wrapper input[type=radio] + label:after {
+	z-index: 1;
+}
+
+body#{ $_body-theme-selector } div.woocommerce #payment ul.payment_methods li input[type="checkbox"] {
+	position: absolute !important; // Needed to override theme styles using !important.
+}

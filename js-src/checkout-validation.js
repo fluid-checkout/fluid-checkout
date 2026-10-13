@@ -1,8 +1,9 @@
 /**
- * Manage checkout front-end validation.
+ * Manage checkout front-end instant validation.
  *
  * DEPENDS ON:
  * - jQuery // Interact with WooCommerce events
+ * - FCUtils // Utility functions
  */
 
 (function (root, factory) {
@@ -59,7 +60,7 @@
 	/**
 	 * METHODS
 	 */
-	
+
 
 
 	/**
@@ -246,7 +247,7 @@
 
 		// Check for all other fields
 		if ( field.value != '' ) { return true; }
-		
+
 		return false;
 	};
 
@@ -411,6 +412,7 @@
 	 * @return {Boolean}                     True if all fields are valid.
 	 */
 	var processValidationResults = function( field, formRow, validationResults ) {
+		// Initialize variables
 		var valid = true;
 
 		// Iterate validation results
@@ -428,10 +430,12 @@
 
 			// Maybe set field as invalid
 			if ( true !== result ) {
+				// Set validation result as invalid
 				valid = false;
 
 				// Maybe display inline message and set field as invalid
 				if ( null !== result ) {
+					// Add inline message
 					addInlineMessage( field, formRow, message, invalidClass );
 
 					// Add field validation invalid classes for the validation type
@@ -463,19 +467,22 @@
 		// Bail if jQuery is not available
 		if ( ! _hasJQuery ) { return; }
 
+		// Get wrappers list
 		var wrappersList = $( wrapper ).toArray();
 
+		// Iterate wrappers list
 		wrappersList.forEach( function( wrapperItem ) {
-			
+			// Get fields to clear validation results
 			var fields = Array.from( wrapperItem.querySelectorAll( _settings.clearValidationCountryChangedSelector ) );
-			
-			fields.forEach( function( field ) {
-				
-				if ( '' == field.value ) {
-					var formRow = field.closest( _settings.formRowSelector );
-					_publicMethods.clearValidationResults( field, formRow );
-				}
 
+			// Iterate fields to clear validation results
+			fields.forEach( function( field ) {
+				// Continue if field does not have a value
+				if ( ! _publicMethods.hasValue( field ) ) { return; }
+
+				// Clear validation results
+				var formRow = field.closest( _settings.formRowSelector );
+				_publicMethods.clearValidationResults( field, formRow );
 			} );
 
 		} );
@@ -592,6 +599,7 @@
 		// Process results
 		return processValidationResults( field, formRow, validationResults );
 	};
+
 	/**
 	 * Test multiple validations on the passed field, debounced to allow time for the user to interact with the field.
 	 * 
@@ -704,7 +712,7 @@
 	};
 
 
-	
+
 	//
 	// Public APIs
 	//

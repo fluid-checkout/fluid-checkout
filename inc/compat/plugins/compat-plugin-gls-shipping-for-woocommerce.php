@@ -66,7 +66,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 
 		// Add substep review text lines
 		add_filter( 'fc_substep_shipping_method_text_lines', array( $this, 'add_substep_text_lines_shipping_method' ), 10 );
@@ -75,7 +75,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		add_action( 'fc_shipping_methods_after_packages_inside', array( $this, 'output_custom_hidden_fields' ), 10 );
 
 		// Maybe set substep as incomplete
-		add_filter( 'fc_is_substep_complete_shipping', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
+		add_filter( 'fc_is_substep_complete_shipping_method', array( $this, 'maybe_set_substep_incomplete_shipping' ), 10 );
 
 		// Checkout validation settings
 		add_filter( 'fc_checkout_validation_script_settings', array( $this, 'change_js_settings_checkout_validation' ), 10 );
@@ -118,11 +118,11 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	public function register_assets() {
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-gls-shipping-for-woocommerce', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/gls-shipping-for-woocommerce/checkout-gls-shipping-for-woocommerce' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutGLSShippingForWooCommerce.init(fcSettings.checkoutGLSShippingForWooCommerce);})' );
+		wp_add_inline_script( 'fc-checkout-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutGLSShippingForWooCommerce.init(fcSettings.checkoutGLSShippingForWooCommerce);});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/gls-shipping-for-woocommerce/checkout-validation-gls-shipping-for-woocommerce' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutValidationGLSShippingForWooCommerce.init(fcSettings.checkoutValidationGLSShippingForWooCommerce);})' );
+		wp_add_inline_script( 'fc-checkout-validation-gls-shipping-for-woocommerce', 'window.addEventListener("load",function(){CheckoutValidationGLSShippingForWooCommerce.init(fcSettings.checkoutValidationGLSShippingForWooCommerce);});' );
 	}
 
 	/**
@@ -245,7 +245,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		$html = preg_replace( '/<br[^>]*>/', '', $html );
 
 		// Get selected terminal data
-		$terminal_data = $this->get_selected_terminal_data();
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id );
 
 		// If local pickup feature is disabled, output selected terminal data
 		if ( ! empty( $terminal_data ) && ! empty( $terminal_data['address_1'] ) ) {
@@ -265,13 +265,32 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Get the selected terminal data.
+	 *
+	 * Passing a boolean as the first argument is deprecated since 5.0.0.
+	 * That value is treated as `$unformatted`. Pass the shipping method id first,
+	 * then whether to return the raw session value.
+	 *
+	 * @param  string|bool|null  $method_id    Shipping method id. A boolean is the deprecated `$unformatted` argument.
+	 * @param  bool              $unformatted  Whether to return the raw session value.
 	 */
-	public function get_selected_terminal_data( $unformatted = false ) {
+	public function get_selected_terminal_data( $method_id = null, $unformatted = false ) {
+		// Deprecated call: get_selected_terminal_data( true ) meant unformatted data.
+		if ( is_bool( $method_id ) ) {
+			_deprecated_argument( __METHOD__, '5.0.0', 'Pass the shipping method id as the first argument and whether to return the raw session value as the second argument.' );
+			$unformatted = $method_id;
+			$method_id = null;
+		}
+
+		if ( empty( $method_id ) ) {
+			$method = $this->maybe_get_selected_shipping_method();
+			$method_id = is_object( $method ) ? $method->id : '';
+		}
+
 		// Get session field name
-		$session_field_name = $this->get_session_field_name();
+		$session_field_name = $this->get_session_field_name( $method_id );
 
 		// Bail if session field name is not available
-		if ( empty( $session_field_name ) ) { return $posted_data; }
+		if ( empty( $session_field_name ) ) { return; }
 
 		// Get session field value
 		$terminal_data = WC()->session->get( $session_field_name );
@@ -304,16 +323,19 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 
 	/**
 	 * Get the session field name based on the selected shipping method.
+	 *
+	 * @param  string|null  $method_id  Shipping method id. Resolved from the chosen method when empty.
 	 */
-	public function get_session_field_name() {
-		// Get selected shipping method
-		$shipping_method = $this->maybe_get_selected_shipping_method();
+	public function get_session_field_name( $method_id = null ) {
+		if ( empty( $method_id ) || is_bool( $method_id ) ) {
+			$method = $this->maybe_get_selected_shipping_method();
+			$method_id = is_object( $method ) ? $method->id : '';
+		}
 
-		// Bail if selected shipping method is not available
-		if ( ! is_object( $shipping_method ) ) { return; }
+		if ( empty( $method_id ) ) { return ''; }
 
 		// Get the session field name based on the selected shipping method
-		$session_field_name = self::SESSION_FIELD_NAME . '_' . $shipping_method->id;
+		$session_field_name = self::SESSION_FIELD_NAME . '_' . $method_id;
 
 		return $session_field_name;
 	}
@@ -329,8 +351,11 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		// Bail if field value was not posted or is empty
 		if ( ! array_key_exists( self::SESSION_FIELD_NAME, $posted_data ) || empty( $posted_data[ self::SESSION_FIELD_NAME ] ) ) { return $posted_data; }
 
+		// Maybe get selected shipping method
+		$method = $this->maybe_get_selected_shipping_method();
+
 		// Get session field name
-		$session_field_name = $this->get_session_field_name();
+		$session_field_name = is_object( $method ) ? $this->get_session_field_name( $method->id ) : '';
 
 		// Bail if session field name is not available
 		if ( empty( $session_field_name ) ) { return $posted_data; }
@@ -353,11 +378,17 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
+		// Maybe get selected shipping method
+		$method = $this->maybe_get_selected_shipping_method();
+
 		// Get selected terminal data
-		$terminal_data = $this->get_selected_terminal_data();
+		$terminal_data = is_object( $method ) ? $this->get_selected_terminal_data( $method->id ) : array();
 
 		// Bail if there is no selected terminal
 		if ( empty( $terminal_data ) ) { return $review_text_lines; }
@@ -389,7 +420,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return $is_substep_complete; }
 
 		// Get selected terminal data
-		$terminal_data = $this->get_selected_terminal_data();
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id );
 
 		// Maybe set step as incomplete if terminal data is not set
 		if ( empty( $terminal_data ) ) {
@@ -415,7 +446,7 @@ class FluidCheckout_GLSShippingForWooCommerce extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $shipping_method->id ) ) { return; }
 
 		// Check if terminal data is set
-		$terminal_data = $this->get_selected_terminal_data( true );
+		$terminal_data = $this->get_selected_terminal_data( $shipping_method->id, true );
 
 		// Output custom hidden fields
 		echo '<div id="gls_shipping-custom_checkout_fields" class="form-row fc-no-validation-icon">';

@@ -180,7 +180,7 @@ class FluidCheckout_FluentCampaignPRO extends FluidCheckout {
 		if ( array_key_exists( $field_key, $post_data ) ) { return $post_data; }
 
 		// Set the field value to the posted data
-		$post_data[ $field_key ] = WC()->checkout->get_value( $field_key );
+		$post_data[ $field_key ] = WC()->checkout()->get_value( $field_key );
 
 		return $post_data;
 	}

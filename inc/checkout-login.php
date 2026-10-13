@@ -20,6 +20,13 @@ class FluidCheckout_Login extends FluidCheckout {
 	 */
 	public function is_feature_enabled() {
 		// Bail if feature is disabled
+		/**
+		 * Filters whether AJAX login is enabled at checkout.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param bool $enabled Whether the feature is enabled. Default true.
+		 */
 		if ( true !== apply_filters( 'fc_enable_checkout_ajax_login', true ) ) { return false; }
 
 		return true;
@@ -86,7 +93,7 @@ class FluidCheckout_Login extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-checkout-login', FluidCheckout_Enqueue::instance()->get_script_url( 'js/checkout-login' ), array( 'jquery', 'fc-utils', 'fc-collapsible-block' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-checkout-login', 'window.addEventListener("load",function(){CheckoutLogin.init(fcSettings.checkoutLogin);})' );
+		wp_add_inline_script( 'fc-checkout-login', 'window.addEventListener("load",function(){CheckoutLogin.init(fcSettings.checkoutLogin);});' );
 	}
 
 	/**
@@ -116,6 +123,13 @@ class FluidCheckout_Login extends FluidCheckout {
 	 */
 	public function add_js_settings( $settings ) {
 		// Add settings
+		/**
+		 * Filters the login settings passed to the frontend script.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @param array $settings Settings to output.
+		 */
 		$settings[ 'checkoutLogin' ] = apply_filters( 'fc_checkout_login_script_settings', array(
 			'checkoutLoginNonce' => wp_create_nonce( 'fc-checkout-login' ),
 		) );
@@ -136,9 +150,9 @@ class FluidCheckout_Login extends FluidCheckout {
 		try {
 			// CHANGE: Replace with data received from request.
 			$creds = array(
-				'user_login'     => isset( $_REQUEST[ 'username' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'username' ] ) ) : '',
-				'user_password'  => isset( $_REQUEST[ 'password' ] ) ? $_REQUEST[ 'password' ] : '',
-				'remember'       => isset( $_REQUEST[ 'rememberme' ] ) ? filter_var( $_REQUEST[ 'rememberme' ], FILTER_VALIDATE_BOOLEAN ) : false,
+				'user_login'     => trim( wp_unslash( $_POST['username'] ) ), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				'user_password'  => $_POST['password'], // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+				'remember'       => isset( $_POST[ 'rememberme' ] ) ? filter_var( wp_unslash( $_POST[ 'rememberme' ] ?? '' ), FILTER_VALIDATE_BOOLEAN ) : false,
 			);
 
 			$validation_error = new WP_Error();

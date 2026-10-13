@@ -1,10 +1,12 @@
 // ------------------------------------
 // CHECKOUT OPTIONS - DESIGN TEMPLATE
 // ------------------------------------
-.forminp-fc_template_selector fieldset {
-	padding: 20px;
+.forminp-fc_template_selector {
+	padding: 20px !important; // Needed to override default admin pages styles.
 	background-color: #fff;
 }
+
+
 
 .forminp-fc_template_selector ul {
 	margin: 0;

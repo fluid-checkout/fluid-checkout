@@ -34,7 +34,7 @@ class FluidCheckout_MolliePaymentsForWooCommerce extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-mollie-billie-company-mirror', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/mollie-payments-for-woocommerce/mollie-billie-company-mirror' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-mollie-billie-company-mirror', 'window.addEventListener("load",function(){MollieBillieCompanyMirror.init();})' );
+		wp_add_inline_script( 'fc-mollie-billie-company-mirror', 'window.addEventListener("load",function(){MollieBillieCompanyMirror.init();});' );
 	}
 
 	/**

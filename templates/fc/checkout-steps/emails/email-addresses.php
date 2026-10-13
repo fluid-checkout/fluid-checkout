@@ -12,8 +12,8 @@
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates\Emails
- * @version 9.8.0
- * @fc-version 4.0.6
+ * @version 10.6.0
+ * @fc-version 4.2.2
  */
 
 use Automattic\WooCommerce\Utilities\FeaturesUtil;
@@ -23,28 +23,81 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // CHANGE: Replace variables for formatted addresses with filters to allow plugins to change the displayed addresses
+/**
+ * Filters the formatted billing address shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param string   $value Value to filter.
+ * @param WC_Order $order Order object.
+ */
 $billing_address_formatted = apply_filters( 'fc_pro_order_details_customer_billing_address_formatted', $order->get_formatted_billing_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
+/**
+ * Filters the formatted shipping address shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param string   $value Value to filter.
+ * @param WC_Order $order Order object.
+ */
 $shipping_address_formatted = apply_filters( 'fc_pro_order_details_customer_shipping_address_formatted', $order->get_formatted_shipping_address( esc_html__( 'N/A', 'woocommerce' ) ), $order );
 
+// CHANGE: Determine if shipping address should be shown
 $show_shipping = ! wc_ship_to_billing_address_only() && $order->needs_shipping_address();
 
 // CHANGE: Add filter to allow plugins to define whether to show shipping address
+/**
+ * Filters whether the shipping address column is shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param bool     $show_shipping Show shipping.
+ * @param WC_Order $order         Order object.
+ */
 $show_shipping = apply_filters( 'fc_pro_order_details_customer_information_show_shipping', $show_shipping, $order );
 
 // CHANGE: Define labels for shipping and billing columns
+/**
+ * Filters the billing address label shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param mixed    $label Label text.
+ * @param WC_Order $order Order object.
+ */
 $billing_address_label = apply_filters( 'fc_pro_order_details_customer_billing_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'billing_address' ), $order );
+/**
+ * Filters the shipping address label shown in order details.
+ *
+ * @since 3.2.0
+ *
+ * @param mixed    $label Label text.
+ * @param WC_Order $order Order object.
+ */
 $shipping_address_label = apply_filters( 'fc_pro_order_details_customer_shipping_address_label', FluidCheckout_Steps::instance()->get_substep_title( 'shipping_address' ), $order );
 
 $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improvements' );
 
-?><table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top; margin-bottom: <?php echo $email_improvements_enabled ? '0' : '40px'; ?>; padding:0;" border="0">
-	<?php // CHANGE: Move addresses titles to a separate row ?>
+/**
+ * Filter whether to display the section divider in the email body.
+ *
+ * @since 10.6.0
+ * @param bool $display_section_divider Whether to display the section divider. Default true.
+ */
+$display_section_divider = (bool) apply_filters( 'woocommerce_email_body_display_section_divider', true );
+
+?>
+<?php if ( $display_section_divider ) : ?>
+	<hr style="border: 0; border-top: 1px solid #1E1E1E; border-top-color: rgba(30, 30, 30, 0.2); margin: 20px 0;">
+<?php endif; ?>
+<table id="addresses" cellspacing="0" cellpadding="0" style="width: 100%; vertical-align: top; margin-bottom: <?php echo $email_improvements_enabled ? '0' : '40px'; ?>; padding:0;" border="0" role="presentation">
+	<?php // CHANGE: Move addresses titles to a separate row: add addresses titles row ?>
 	<tr>
 		<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php if ( $email_improvements_enabled ) { ?>
-				<b class="address-title"><?php esc_html_e( $billing_address_label ); ?></b>
+				<b class="address-title"><?php echo esc_html( $billing_address_label ); ?></b>
 			<?php } else { ?>
-				<h2><?php esc_html_e( $billing_address_label ); ?></h2>
+				<h2><?php echo esc_html( $billing_address_label ); ?></h2>
 			<?php } ?>
 		</th>
 
@@ -52,15 +105,16 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 		<?php if ( $show_shipping ) : ?>
 			<th class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 				<?php if ( $email_improvements_enabled ) { ?>
-					<b class="address-title"><?php esc_html_e( $shipping_address_label ); ?></b>
+					<b class="address-title"><?php echo esc_html( $shipping_address_label ); ?></b>
 				<?php } else { ?>
-					<h2><?php esc_html_e( $shipping_address_label ); ?></h2>
+					<h2><?php echo esc_html( $shipping_address_label ); ?></h2>
 				<?php } ?>
 			</th>
 		<?php endif; ?>
 	</tr>
-	<?php // CHANGE: END - Move addresses titles to a separate row ?>
+	<?php // CHANGE: END - Move addresses titles to a separate row: add addresses titles row ?>
 
+	<?php // CHANGE: Move addresses titles to a separate row: add addresses content row ?>
 	<tr>
 		<td class="font-family text-align-left" style="border:0; padding:0;" valign="top" width="50%">
 			<?php // CHANGE: Move addresses titles to a separate row ?>
@@ -70,7 +124,7 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 				<?php echo wp_kses_post( $billing_address_formatted ); ?>
 
 				<?php // CHANGE: Only output the phone number if it is not already included in the formatted address ?>
-				<?php if ( $order->get_billing_phone() && -1 === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) : ?>
+				<?php if ( $order->get_billing_phone() && false === strpos( $billing_address_formatted, $order->get_billing_phone() ) ) : ?>
 					<br/><?php echo wc_make_phone_clickable( $order->get_billing_phone() ); ?>
 				<?php endif; ?>
 				<?php if ( $order->get_billing_email() ) : ?>
@@ -102,7 +156,7 @@ $email_improvements_enabled = FeaturesUtil::feature_is_enabled( 'email_improveme
 					<?php echo wp_kses_post( $shipping_address_formatted ); ?>
 
 					<?php // CHANGE: Only output the phone number if it is not already included in the formatted address ?>
-					<?php if ( $order->get_shipping_phone() && -1 === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) : ?>
+					<?php if ( $order->get_shipping_phone() && false === strpos( $shipping_address_formatted, $order->get_shipping_phone() ) ) : ?>
 						<br /><?php echo wc_make_phone_clickable( $order->get_shipping_phone() ); ?>
 					<?php endif; ?>
 					<?php

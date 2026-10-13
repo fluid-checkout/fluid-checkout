@@ -36,8 +36,9 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 	public function register_scripts_styles( $hook ) {
 		// Bail if not on WooCommerce Settings
 		if ( 'woocommerce_page_wc-settings' !== $hook ) { return; }
-		
+
 		wp_register_script( 'fc-admin-image-uploader', FluidCheckout_Enqueue::instance()->get_script_url( '/js/admin/admin-image-uploader' ), array( 'jquery', 'media-upload', 'media-views' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-image-uploader', 'window.addEventListener("load",function(){FCAdminImageUploader.init();});' );
 	}
 
 
@@ -51,7 +52,7 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 		// Enqueue assets
 		wp_enqueue_media();
 		wp_enqueue_script( 'fc-admin-image-uploader' );
-		
+
 		// Custom attribute handling.
 		$custom_attributes = array();
 		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
@@ -105,7 +106,7 @@ class FluidCheckout_Admin_SettingType_ImageUploader extends FluidCheckout {
 										class="button image-upload-clear-button"
 										data-preview-id="<?php echo esc_attr( $value['id'] ); ?>_preview"
 										data-control-id="<?php echo esc_attr( $value['id'] ); ?>"
-										data-message="<?php echo esc_attr( __( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) ); ?>"><?php echo esc_html( __( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ) ); ?></button>
+										data-message="<?php echo esc_attr( _x( 'No image selected.', 'Image uploader.', 'fluid-checkout' ) ); ?>"><?php echo esc_html( _x( 'Remove image', 'Clear image selection on admin pages.', 'fluid-checkout' ) ); ?></button>
 								</div>
 							</div>
 						</div>

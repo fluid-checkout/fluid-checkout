@@ -91,7 +91,7 @@ class FluidCheckout_ExpressCheckoutPaypalPaymentGatewayForWoocommerce extends Fl
 		$extra_classes = ! array_key_exists( 'smart_button_enabled', $plugin_settings ) || 'yes' !== $plugin_settings[ 'smart_button_enabled' ] ? 'hide-description' : '';
 
 		// Output the payment buttons
-		echo '<div class="fc-payment-buttons--webtoffee-paypal ' . $extra_classes . '">';
+		echo '<div class="fc-payment-buttons--webtoffee-paypal ' . esc_attr( $extra_classes ) . '">';
 		$this->hooks_class_object->eh_express_checkout_hook();
 		echo '</div>';
 	}

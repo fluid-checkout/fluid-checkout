@@ -31,3 +31,21 @@
 .has-checkout-must-create-account .fc-content div.woocommerce form .fc-wrapper div.create-account {
 	background-color: transparent;
 }
+
+
+
+.fc-wrapper .woocommerce-account-fields .fc-account-creation-notice {
+	box-sizing: border-box;
+	position: static;
+	display: block;
+	margin: $global-spacing-small 0 0 0;
+	padding: 0;
+	font-size: $checkout-field-description-font-size;
+	line-height: 1.2;
+
+	@media (#{$bp-larger-than-desktop}) { font-size: $checkout-field-description-font-size--large-screen; }
+}
+
+.fc-wrapper .woocommerce-account-fields .create-account--empty .fc-account-creation-notice {
+	margin-top: 0;
+}

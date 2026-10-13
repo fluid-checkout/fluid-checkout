@@ -19,7 +19,7 @@ class FluidCheckout_AdminNotices_Divi_CheckoutLayoutBeingUsed extends FluidCheck
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'fc_admin_notices', array( $this, 'add_notice' ), 10 );
+		add_filter( 'fc_admin_notices', array( $this, 'add_notice' ), 10 );
 	}
 
 

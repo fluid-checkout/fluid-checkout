@@ -1,0 +1,8 @@
+// ------------------------------------
+// CHECKOUT PROGRESS BAR
+// ------------------------------------
+
+// Needed to give the same offset from order summary
+body#{ $_body-theme-selector } .fc-progress-bar[data-sticky-states].is-activated .fc-progress-bar__inner {
+	margin-top: $global-spacing-tiny;
+}

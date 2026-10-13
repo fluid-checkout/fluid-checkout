@@ -69,10 +69,6 @@ msgstr "Тэлефон для дастаўкі"
 msgid "Only used for shipping-related questions."
 msgstr "Выкарыстоўваецца толькі для пытанняў, звязаных з дастаўкай."
 
-#: inc/checkout-steps.php:793
-msgid "Multi-step"
-msgstr "Шматкрокавая"
-
 #: inc/checkout-steps.php:794
 msgid "Single step"
 msgstr "Адзін крок"
@@ -106,14 +102,6 @@ msgstr "Прыступайце да выстаўлення рахункаў"
 msgid "Proceed to payment"
 msgstr "Прыступайце да аплаты"
 
-#: inc/checkout-steps.php:2256
-msgid "My contact"
-msgstr "Мой кантакт"
-
-#: inc/checkout-steps.php:2266
-msgid "Shipping to"
-msgstr "Дастаўка да"
-
 #: inc/checkout-steps.php:2276
 msgid "Shipping method"
 msgstr "Спосаб дастаўкі"
@@ -121,10 +109,6 @@ msgstr "Спосаб дастаўкі"
 #: inc/checkout-steps.php:2286
 msgid "Additional notes"
 msgstr "Дадатковыя заўвагі"
-
-#: inc/checkout-steps.php:2300
-msgid "Billing to"
-msgstr "Выстаўленне рахункаў"
 
 #: inc/checkout-steps.php:2310
 msgid "Payment method"
@@ -138,10 +122,6 @@ msgstr "Крок %1$s з %2$s"
 #: inc/checkout-steps.php:2825
 msgid "Change: %s"
 msgstr "Змена: %s"
-
-#: inc/checkout-steps.php:3184
-msgid "An account will be created with the information provided."
-msgstr "З прадстаўленай інфармацыяй будзе створаны ўліковы запіс."
 
 #: inc/checkout-steps.php:3918, inc/compat/plugins/compat-plugin-woocommerce-subscriptions.php:564
 msgid "Not selected yet."
@@ -406,14 +386,6 @@ msgstr "Ацаніце плагін"
 msgid "I need help!"
 msgstr "Мне патрэбна дапамога!"
 
-#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
-msgid ""
-"The plugin WooCommerce Checkout Manager by Quadlayers is not compatibile "
-"with Fluid Checkout"
-msgstr ""
-"Убудова WooCommerce Checkout Manager ад Quadlayers несумяшчальны з Fluid "
-"Checkout"
-
 #: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:62
 msgid ""
 "Some features of WooCommerce Checkout Manager by Quadlayers might not work "
@@ -659,14 +631,6 @@ msgstr ""
 #: inc/admin/admin-setting-type-fc-image-uploader.php:97, inc/admin/admin-setting-type-fc-image-uploader.php:98, inc/admin/admin-setting-type-fc-image-uploader.php:101
 msgid "Select an image"
 msgstr "Выберыце малюнак"
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "No image selected."
-msgstr "Відарыс не выбраны."
-
-#: inc/admin/admin-setting-type-fc-image-uploader.php:108
-msgid "Remove image"
-msgstr "Выдаліць выяву"
 
 #: inc/admin/admin-setting-type-fc-license-key.php:142
 msgid ""
@@ -954,16 +918,6 @@ msgstr "Макет касы"
 #: inc/admin/admin-settings-checkout.php:89
 msgid "Design template"
 msgstr "Шаблон дызайну"
-
-#: inc/admin/admin-settings-checkout.php:90
-msgid ""
-"General styles for the checkout steps, order summary and other sections. "
-"Might also apply to other pages such as the Cart, Order Received and View "
-"Order pages."
-msgstr ""
-"Агульныя стылі этапаў афармлення заказу, зводкі заказаў і іншых раздзелаў. "
-"Можа таксама прымяняцца да іншых старонак, такіх як старонкі "
-"&quot;Кошык&quot;, &quot;Атрыманы заказ&quot; і &quot;Прагляд заказа&quot;."
 
 #: inc/admin/admin-settings-checkout.php:101
 msgid "Dark mode"
@@ -1550,14 +1504,6 @@ msgstr "Дадайце поле тэлефона для аплаты ў форм
 msgid "Choose in which step to display the billing phone field."
 msgstr "Выберыце, на якім этапе адлюстроўваць поле тэлефона для аплаты."
 
-#: inc/admin/admin-settings-checkout.php:634
-msgid "Enable international phone number format and validation for phone fields"
-msgstr "Уключыць міжнародны фармат тэлефоннага нумара і праверку для палёў тэлефона"
-
-#: inc/admin/admin-settings-checkout.php:635
-msgid "Format and validate phone numbers according to each country."
-msgstr "Фарматуйце і спраўджвайце нумары тэлефонаў у адпаведнасці з кожнай краінай."
-
 #: inc/admin/admin-settings-checkout.php:645
 msgid "Enable phone number validation based on country rules"
 msgstr "Уключыце праверку нумара тэлефона ў адпаведнасці з правіламі краіны"
@@ -1993,14 +1939,6 @@ msgstr "(PRO)"
 msgid "(experimental)"
 msgstr "(эксперыментальны)"
 
-#: inc/admin/admin.php:208
-msgid ""
-"This is an experimental feature and may not work as expected with all "
-"themes and plugins. Use it with caution."
-msgstr ""
-"Гэта эксперыментальная функцыя, і яна можа не працаваць належным чынам з "
-"усімі тэмамі і ўбудовамі. Выкарыстоўвайце яго з асцярожнасцю."
-
 #: inc/compat/plugins/compat-plugin-automation-web-platform.php:159
 msgid "Confirm"
 msgstr "Пацвердзіць"
@@ -2428,6 +2366,299 @@ msgstr ""
 "Вывесці раздзел крокаў афармлення замовы з тэмы Nyture пры выкарыстанні "
 "Fluid Checkout."
 
+#: inc/admin/admin-settings-order-pay.php:73
+msgid ""
+"Allows customers to make payments for orders that are either created "
+"manually by the store admin or not completed during checkout."
+msgstr ""
+"Дазваляе кліентам ажыццяўляць аплату за заказы, якія былі створаны ўручную "
+"адміністратарам крамы або не былі завершаны падчас афармлення замовы."
+
+#: inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php:61
+msgid ""
+"The plugin WooCommerce Checkout Manager by Quadlayers is not compatible "
+"with Fluid Checkout"
+msgstr ""
+"Убудова WooCommerce Checkout Manager ад Quadlayers не сумяшчальная з Fluid "
+"Checkout."
+
+#: inc/admin/admin-settings-checkout.php:579
+msgid "Company name field for billing address"
+msgstr "Поле назвы кампаніі для адраса для выстаўлення рахункаў"
+
+#: inc/admin/admin-settings-checkout.php:580
+msgid ""
+"Change visibility for the company name field for the billing address "
+"section on the checkout form."
+msgstr ""
+"Змяніць бачнасць поля назвы кампаніі ў раздзеле плацежнага адраса ў форме "
+"афармлення замовы."
+
+#: inc/compat/themes/compat-theme-bookshelf.php:101
+msgid "Theme Bookshelf"
+msgstr "Тэматычная кніжная паліца"
+
+#: inc/compat/themes/compat-theme-bookshelf.php:108
+msgid ""
+"Output the checkout steps section from the Bookshelf theme when using Fluid "
+"Checkout."
+msgstr ""
+"Вывесці раздзел крокаў афармлення замовы з тэмы Bookshelf пры выкарыстанні "
+"Fluid Checkout."
+
+#: inc/checkout-fields.php:154
+msgid "Account password"
+msgstr "Пароль уліковага запісу"
+
+#: inc/checkout-steps.php:3260
+msgid ""
+"An account will be created with the information provided at checkout when "
+"completing the order."
+msgstr ""
+"Уліковы запіс будзе створаны з выкарыстаннем інфармацыі, указанай пры "
+"афармленні замовы."
+
+#: inc/admin/admin-settings-checkout.php:215
+msgid "Choose the style of the progress bar."
+msgstr "Выберыце стыль індыкатара прагрэсу."
+
+#: inc/admin/admin-settings-checkout.php:219
+msgid "Bars"
+msgstr "Бары"
+
+#: inc/compat/themes/compat-theme-ireca.php:165
+msgid "Theme Ireca"
+msgstr "Тэма Ірэка"
+
+#: inc/compat/themes/compat-theme-ireca.php:171
+msgid "WooCommerce page layout"
+msgstr "Макет старонкі WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:172
+msgid "Force wide layout on WooCommerce pages"
+msgstr "Прымусовае шырокае размяшчэнне на старонках WooCommerce"
+
+#: inc/compat/themes/compat-theme-ireca.php:173
+msgid ""
+"This ensures the content section is not too narrow on WooCommerce pages "
+"including checkout, cart, order received, order pay and account pages."
+msgstr ""
+"Гэта гарантуе, што раздзел зместу на старонках WooCommerce, уключаючы "
+"афармленне замовы, кошык, атрыманне замовы, аплату замовы і старонкі "
+"ўліковага запісу, не будзе занадта вузкім."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:61
+msgid "WooCommerce Smart Coupons"
+msgstr "Разумныя купоны WooCommerce"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:70
+msgid "Position on checkout page"
+msgstr "Пазіцыя на старонцы афармлення замовы"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:71
+msgid "Choose where to display the available coupons section on the checkout page."
+msgstr ""
+"Выберыце, дзе на старонцы афармлення замовы адлюстроўваць раздзел даступных "
+"купонаў."
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:77
+msgid "Before the progress bar"
+msgstr "Перад індыкатарам прагрэсу"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:78
+msgid "After the progress bar"
+msgstr "Пасля індыкатара прагрэсу"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:80
+msgid "Before coupon codes section"
+msgstr "Раздзел перад кодамі купонаў"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid "Enable international phone number fields"
+msgstr "Уключыць палі міжнародных нумароў тэлефонаў"
+
+#: inc/admin/admin-settings-checkout.php:662
+msgid "Format phone numbers according to the rules for each country."
+msgstr "Фарматуйце нумары тэлефонаў у адпаведнасці з правіламі кожнай краіны."
+
+#: inc/admin/admin-settings-checkout.php:683
+msgid "Use precise phone number validation"
+msgstr "Выкарыстоўвайце праверку дакладнага нумара тэлефона"
+
+#: inc/admin/admin-settings-checkout.php:684
+msgid ""
+"Try to ensure the phone number is a valid mobile or landline number based "
+"on the rules for the selected country code. This option uses the "
+"<code>intl-tel-input</code> precise validation feature, which may give "
+"false positives for some phone numbers."
+msgstr ""
+"Паспрабуйце пераканацца, што нумар тэлефона з&#39;яўляецца сапраўдным "
+"нумарам мабільнага або стацыянарнага тэлефона ў адпаведнасці з правіламі "
+"для выбранага кода краіны. Гэтая опцыя выкарыстоўвае функцыю дакладнай "
+"праверкі <code>intl-tel-input</code> , якая можа даваць ілжывыя "
+"спрацоўванні для некаторых нумароў тэлефонаў."
+
+#: inc/admin/admin.php:225
+msgid ""
+"This is an experimental feature and may not work as expected in all setups. "
+"Use it with caution."
+msgstr ""
+"Гэта эксперыментальная функцыя, і яна можа працаваць неналежным чынам ва "
+"ўсіх наладах. Выкарыстоўвайце яе асцярожна."
+
+#: inc/admin/admin-settings-checkout.php:689
+msgid "Phone number validation types used when precise validation is enabled."
+msgstr ""
+"Тыпы праверкі нумара тэлефона, якія выкарыстоўваюцца, калі ўключана "
+"дакладная праверка."
+
+#: inc/admin/admin-settings-checkout.php:694
+msgid "Mobile"
+msgstr "Мабільны"
+
+#: inc/admin/admin-settings-checkout.php:695
+msgid "Fixed line"
+msgstr "Фіксаваная лінія"
+
+#: inc/admin/admin-settings-checkout.php:696
+msgid "Toll free"
+msgstr "Бясплатны званок"
+
+#: inc/checkout-steps.php:2403
+msgid "Contact"
+msgstr "Кантакт"
+
+#: inc/admin/admin-settings-checkout.php:82
+msgid "Multi step"
+msgstr "Шматступенчаты"
+
+#: inc/admin/admin-settings-checkout.php:98
+msgid "2 columns"
+msgstr "2 слупкі"
+
+#: inc/admin/admin-settings-checkout.php:99
+msgid "1 column"
+msgstr "1 слупок"
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"General styles for the checkout steps, order summary and other sections. "
+"<br>Might also apply to other pages such as the Cart, Order Received and "
+"View Order pages."
+msgstr ""
+"Агульныя стылі для этапаў афармлення замовы, зводкі замовы і іншых "
+"раздзелаў.<br> Можа таксама прымяняцца да іншых старонак, такіх як «Кошык», "
+"«Заказ атрыманы» і «Прагляд замовы»."
+
+#: inc/admin/admin-settings-checkout.php:110
+msgid ""
+"The design template <em>\"Split\"</em> is not available when using <em>\"1 "
+"column\"</em> layout and will fall back to <em>\"Minimalist\"</em> if "
+"chosen."
+msgstr ""
+"Шаблон дызайну <em>«Падзел»</em> недаступны пры выкарыстанні макета <em>«1 "
+"калона»</em> і пры выбары вернецца да <em>«Мінімалістычнага»</em> ."
+
+#: inc/admin/admin-settings-checkout.php:331
+msgid "Before checkout steps"
+msgstr "Этапы перад афармленнем замовы"
+
+#: templates/fc/checkout-steps/checkout/form-contact-login.php:55
+msgid "Or"
+msgstr "Або"
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid ""
+"When using the <em>\"1 column\"</em> checkout layout this option is always "
+"set to <em>\"Before checkout steps\"</em> and also applies to desktop view."
+msgstr ""
+"Пры выкарыстанні макета афармлення замовы <em>«1 слупок»</em> гэтая опцыя "
+"заўсёды мае значэнне <em>«Перад крокамі афармлення замовы»</em> і таксама "
+"распаўсюджваецца на выгляд для камп&#39;ютара."
+
+#: inc/admin/admin-settings-checkout.php:326
+msgid "Position for the extra order summary section on mobile."
+msgstr "Размясціць дадатковы раздзел зводкі замовы на мабільным тэлефоне."
+
+#: inc/admin/admin-settings-checkout.php:327
+msgid ""
+"The option <em>\"On the site header\"</em> only applies when using the "
+"distraction-free header."
+msgstr ""
+"Опцыя <em>«У загалоўку сайта»</em> дзейнічае толькі пры выкарыстанні "
+"загалоўка без адцягваючых элементаў."
+
+#: inc/admin/admin-settings-checkout.php:334
+msgid "On the site header (requires distraction-free header)"
+msgstr "У загалоўку сайта (патрабуецца загаловак без адцягненняў)"
+
+#: inc/admin/admin-settings-checkout.php:341
+msgid "Initial state for the expansible order summary section on mobile."
+msgstr "Пачатковы стан пашыральнага раздзела зводкі замовы на мабільным тэлефоне."
+
+#: inc/admin/admin-settings-checkout.php:342
+msgid ""
+"We recommend setting it as <em>expanded</em> for the following countries "
+"due to regulatory requirements: <strong>Germany</strong>, "
+"<strong>Austria</strong>, <strong>Switzerland</strong>, "
+"<strong>Netherlands</strong>, <strong>Poland</strong>, "
+"<strong>Belgium</strong> and <strong>France</strong>."
+msgstr ""
+"Згодна з патрабаваннямі рэгулятара, мы рэкамендуем усталяваць "
+"<em>пашыраны</em> рэжым для наступных краін: <strong>Германія</strong> , "
+"<strong>Аўстрыя</strong> , <strong>Швейцарыя</strong> , "
+"<strong>Нідэрланды</strong> , <strong>Польшча</strong> , "
+"<strong>Бельгія</strong> і <strong>Францыя</strong> ."
+
+#: inc/admin/admin-settings-checkout.php:346
+msgid "Collapsed"
+msgstr "Згорнута"
+
+#: inc/admin/admin-settings-checkout.php:347
+msgid "Expanded"
+msgstr "Пашырана"
+
+#: inc/compat/plugins/compat-plugin-woocommerce-smart-coupons.php:252
+msgid "Do not show"
+msgstr "Не паказваць"
+
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "так"
+
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Поле тэлефона дастаўкі можа быць прымусова запаўнена як «абавязковае», калі "
+"раздзел адраса для выстаўлення рахункаў адлюстроўваецца пасля раздзела "
+"адраса дастаўкі, і поле тэлефона для выстаўлення рахункаў усталявана як "
+"«абавязковае». Гэта неабходна для таго, каб адрас дастаўкі можна было "
+"скапіяваць у адрас для выстаўлення рахункаў, калі гэтая опцыя адзначана, "
+"інакш кліент можа не мець магчымасці запоўніць форму афармлення замовы."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Поле нумара тэлефона для выстаўлення рахункаў можа быць прымусова запаўнена "
+"як «абавязковае», калі раздзел адраса для выстаўлення рахункаў "
+"адлюстроўваецца перад раздзелам адраса дастаўкі, і поле нумара тэлефона "
+"дастаўкі ўстаноўлена як «абавязковае». Гэта неабходна для таго, каб адрас "
+"дастаўкі можна было скапіяваць у адрас для выстаўлення рахункаў, калі гэтая "
+"опцыя ўключана, інакш кліент можа не мець магчымасці запоўніць форму "
+"афармлення замовы."
+
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
 msgid "Apply"
@@ -2545,3 +2776,36 @@ msgstr "Або працягнуць ніжэй"
 msgctxt "Log in separator label at for when guest checkout is disabled"
 msgid "Or continue as a guest"
 msgstr "Або працягнуць як госць"
+
+#: inc/admin/admin-setting-type-fc-image-uploader.php:108
+msgctxt "Clear image selection on admin pages."
+msgid "Remove image"
+msgstr "Выдаліць выяву"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+#. translators: %d: shipping package number
+#. translators: %d: Package number
+msgctxt "shipping packages"
+msgid "Shipping %d"
+msgstr "Дастаўка %d"
+
+#: inc/checkout-steps.php:4027, inc/checkout-steps.php:4506, inc/checkout-steps.php:6423
+msgctxt "shipping packages"
+msgid "Shipping"
+msgstr "Дастаўка"
+
+#: inc/checkout-steps.php:1837
+msgctxt "Used as fallback for \"Proceed to next step\" button label"
+msgid "next step"
+msgstr "наступны крок"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Так"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

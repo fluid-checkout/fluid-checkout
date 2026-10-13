@@ -1,0 +1,27 @@
+// ------------------------------------
+// BUTTONS -- CHECKOUT
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-save,
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__next-step,
+body#{ $_body-theme-selector } .fc-coupon-code__apply,
+body#{ $_body-theme-selector } .woocommerce-form-login__submit {
+	padding: remsize( 1.7rem ) remsize( 4.2rem );
+	font-family: inherit;
+	font-size: remsize( 1.1rem );
+	letter-spacing: remsize( .3em );
+	line-height: 2.7em;
+	text-transform: uppercase;
+	cursor: pointer;
+	border: remsize( .1rem ) solid transparent;
+	transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
+	color: $white;
+	background-color: $darker-grey;
+}
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-save:hover,
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__next-step:hover,
+body#{ $_body-theme-selector } .fc-coupon-code__apply:hover,
+body#{ $_body-theme-selector } .woocommerce-form-login__submit:hover {
+	background-color: $black;
+}

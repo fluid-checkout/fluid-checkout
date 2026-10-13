@@ -1,7 +1,0 @@
-body.has-payment-method-selected--payment_method_rvvup_gateway_PAYPAL .fc-wrapper .fc-sidebar .fc-sidebar__inner div.fc-place-order__section--sidebar {
-  display: none;
-}
-
-.fc-wrapper .fc-place-order .fc-place-order-button.rvvup-hide-element {
-  display: none !important;
-}

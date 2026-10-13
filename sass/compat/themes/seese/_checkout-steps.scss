@@ -1,0 +1,13 @@
+// ------------------------------------
+// CHECKOUT STEPS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep.wc-stripe-banner-checkout.active {
+	max-width: 100%;
+}
+
+body#{ $_body-theme-selector } .fc-wrapper input[type="radio"]:checked + label::after {
+	background-color: transparent;
+	transform: none;
+	top: 10px !important; // Needed to override theme styles with !important
+}

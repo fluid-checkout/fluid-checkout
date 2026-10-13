@@ -19,6 +19,97 @@ Additional labels for beta builds are available as extensions to the MAJOR.MINOR
 
 [See latest changes in the plugin's readme.txt](https://github.com/fluid-checkout/fluid-checkout/blob/main/readme.txt)
 
+= 4.0.6 - 2025-06-10 =
+
+* Bump tested up to WooCommerce 9.9.3
+* Added: Support for modern email design for transactional emails.
+* Added: Compatibility with theme Nyture.
+* Added: Compatibility with theme Twenty Twenty-Five.
+* Added: Compatibility with plugin WooCommerce Email Template Customizer Premium.
+* Added: Compatibility with plugin YITH WooCommerce Checkout Manager.
+* Improved: Coupon codes are now highlighted when added, and "Apply/Add coupon" button is now blocked while processing.
+* Improved: Translations of "Add <field>" link buttons and checkout step count in Hungarian.
+* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Add option to disable payment form style modifications from Fluid Checkout. Remove extra spacing and border from the payment fields.
+* Fixed: Compatibility with plugin Breakdance. Fix style issues with recent versions of Breakdance.
+* Fixed: Compatibility with plugin Germanized for WooCommerce. Fix "DHL Preferred delivery" field values not being preserved.
+* Fixed: Compatibility with plugin Dintero. Support for new popout and embed Dintero checkout flow options.
+* Fixed: Compatibility with plugin Flexible Shipping. Shipping method descriptions showing duplicated.
+* Fixed: Compatibility with plugin Nets/Nexi Checkout (formerly Dibs). Fix integration with Redirect and Overlay checkout flow options.
+* Fixed: Coupon code messages location when being applied from certain sections.
+* Fixed: RTL styles for compatibility with various themes and plugins.
+* Fixed: Set selected shipping method value to session early so it can be used by filters when setting posted data.
+
+= 4.0.5 - 2025-05-03 =
+
+* Bump tested up to WordPress 6.8.1 and WooCommerce 9.8.3
+* Added: Compatibility with theme Twenty Twenty-Four.
+* Added: Compatibility with plugin BOX NOW Delivery Croatia.
+* Added: Compatibility with plugin Tamara Checkout.
+* Improved: How settings tabs and sections are added for better compatibility with other Fluid Checkout add-ons and plugins.
+* Improved: Compatibility with plugin Germanized for WooCommerce. Add compatibility with pickup location selection for shipping service providers.
+* Fixed: Compatibility with plugin Omnisend for WooCommerce. Respect plugin settings to enable the checkbox and pre-check it.
+* Fixed: Phone number showing duplicated on admin pages.
+
+= 4.0.4 - 2025-04-15 =
+
+* Bump tested up to WooCommerce 9.8.1
+* Added: Support for description and delivery time attributes for shipping methods.
+* Added: Compatibility with theme LeadEngine.
+* Added: Compatibility with theme NewStore.
+* Added: Compatibility with theme YITH Proteo.
+* Added: Compatibility with plugin Omnisend for WooCommerce.
+* Added: Compatibility with plugin Woocommerce GUS/Regon.
+* Improved: User experience when using login popup on the checkout page.
+* Improved: Rename inline validation message classes to avoid conflicts with other plugins.
+* Improved: Styles for the shipping method costs tax information to avoid layout issue with some themes.
+* Improved: Compatibility with plugin CartBounty. Remove overrides for plugin assets as they are no longer required.
+* Improved: Compatibility with plugin Klarna Payments. Update modified script from the Klarna plugin to its latest version.
+* Fixed: Compatibility with theme Divi. Fix position for the place order button icons.
+* Fixed: Compatibility with theme Twenty Twenty-one. Fix width of checkbox fields on Safari mobile.
+* Fixed: Compatibility with theme Porto. Fix layout issue when theme checkout type is set to "type 2".
+* Fixed: Compatibility with plugin WooCommerce PayPal Payments. Change context to classic Checkout form so scripts work properly with Fluid Checkout.
+* Fixed: Checkout user data emptied when customer resets password with the WooCommerce password reset tool.
+* Fixed: Spacing for elements above the order summary section.
+
+= 4.0.3 - 2025-03-17 =
+
+* Bump tested up to WooCommerce 9.7.1
+* Added: Automatic translations for all 83 languages supported by WordPress, and Deepl or Google Translate.
+* Added: Compatibility with theme The7.
+* Improved: Compatibility with plugin Checkout Field Editor for WooCommerce Pro by ThemeHigh. Fix spacing for custom sections positioned after account creation form fields.
+* Improved: Compatibility with plugin WooCommerce Stripe Gateway. Fixed express checkout changes affecting correct preloading of some checkout field values.
+* Improved: Enforce some styles for the place order button to improve compatibility with some themes.
+* Fixed: Billing and shipping address values not being preserved after toggling "Same as <shipping/billing> address" checkbox.
+* Fixed: Field values reverting back to previous value (usually empty) when using `select2` for enhanced dropdown fields.
+* Fixed: Use treated display value for replacements on formatted addresses.
+
+= 4.0.2 - 2025-02-24 =
+
+* Bump tested up to WordPress 6.7.2 and WooCommerce 9.6.2
+* Added: Compatibility with theme Motta.
+* Added: Compatibility with theme Rehub.
+* Added: Compatibility with plugin Fetchify.
+* Added: Compatibility with plugin WooComerce Quantity Discounts, Rules & Swatches.
+* Added: Compatibility with plugin Revolut Gateway for WooCommerce.
+* Added: New CSS variables to set different background color for the highlighed sections billing address, shipping address, and for the total row on the order summary.
+* Added: New filter `fc_use_verbose_loading_indicator` to enable use of verbose loading indicator icon on blocked parts of the page, and on the entire page when submitting the checkout form.
+* Improved: Set product image size styles to avoid larger images when other plugins add an unexpected `p` element around the image on the checkout page.
+* Improved: Compatibility with plugin Germanized for WooCommerce. Remove duplicate place order button when using WooCommerce PayPal Payments plugin.
+* Improved: Compatibility with theme Woodmart. Fixed customer's data not being retrieved when using the "Social authentication" feature.
+* Improved: Compatibility with theme Shoptimizer. Fixed `z-index` position for mobile menu and menu overlay, fix relative sticky elements for header layouts.
+* Improved: Compatibility with plugin WooPayments. Fixed layout breaking when WooPayments payment method is selected on checkout page.
+* Improved: Compatibility with plugin WooCommerce PDF Invoices & Packing Slips.
+* Improved: Compatibility with plugin Mailchimp for WooCommerce. Remove subscription checkbox value from the step review text lines.
+* Improved: Get variable for shipping same as billing directly in the shipping form template file to avoid PHP warnings when that information is not passed when using it.
+* Improved: Styles for loading indicator for the place order button to only show loading icon while processing, hiding its text.
+* Improved: Styles code for the order summary section, to allow changing the main element's selector.
+* Fixed: Compatibility with plugin WooCommerce Stripe Gateway. Ensure use of data from express checkout methods when updating checkout and processing orders.
+* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue).
+* Fixed: Remove some WooCommerce checkout form hooks in multiple places to avoid issues with other plugins that move or call them early.
+* Fixed: Layout styles causing sticky header for some themes to not get sticky.
+* Fixed: PHP warnings for undefined variable `$new_line`.
+* Fixed: Custom translation files from Loco Translate not loading correctly.
+
 = 4.0.1 - 2025-01-07 =
 
 * Bump tested up to WooCommerce 9.5.1

@@ -31,6 +31,7 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 		// Phone number field position
 		add_filter( 'pre_option_fc_billing_phone_field_position', array( $this, 'maybe_change_billing_phone_position' ), 10, 3 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'maybe_change_billing_phone_position_settings_args' ), 20 ); // Priority needs to be higher than that used by the PRO plugin to enable the settings fields (10)
 	}
 
 	/**
@@ -134,6 +135,21 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 		if ( ! $this->is_otp_verification_enabled() ) { return $pre_option; }
 
 		return 'contact';
+	}
+
+	/**
+	 * Maybe disable the billing phone field position setting and explain why it is forced when OTP verification is enabled.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function maybe_change_billing_phone_position_settings_args( $settings ) {
+		// Bail if OTP verification is not enabled
+		if ( ! $this->is_otp_verification_enabled() ) { return $settings; }
+
+		// Define the settings field description
+		$description = __( 'The billing phone field is always displayed in the contact step when OTP verification is enabled in Wawp.', 'fluid-checkout' );
+
+		return FluidCheckout_Settings::instance()->disable_settings_field( $settings, 'fc_billing_phone_field_position', $description );
 	}
 
 
@@ -345,11 +361,11 @@ class FluidCheckout_AutomationWebPlatform extends FluidCheckout {
 
 		// Checkout scripts
 		wp_register_script( 'fc-checkout-automation-web-platform', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout-automation-web-platform' ), array( 'jquery', 'fc-utils' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-automation-web-platform', 'window.addEventListener("load",function(){CheckoutWAWP.init(fcSettings.checkoutWAWP);})' );
+		wp_add_inline_script( 'fc-checkout-automation-web-platform', 'window.addEventListener("load",function(){CheckoutWAWP.init(fcSettings.checkoutWAWP);});' );
 
 		// Add validation script
 		wp_register_script( 'fc-checkout-validation-automation-web-platform', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/plugins/automation-web-platform/checkout-validation-automation-web-platform' ), array( 'jquery', 'fc-utils', 'fc-checkout-validation' ), NULL, true );
-		wp_add_inline_script( 'fc-checkout-validation-automation-web-platform', 'window.addEventListener("load",function(){CheckoutValidationWAWP.init(fcSettings.checkoutValidationWAWP);})' );
+		wp_add_inline_script( 'fc-checkout-validation-automation-web-platform', 'window.addEventListener("load",function(){CheckoutValidationWAWP.init(fcSettings.checkoutValidationWAWP);});' );
 	}
 
 	/**

@@ -26,7 +26,7 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 		add_filter( 'fc_integrations_settings_add', array( $this, 'add_settings' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Checkout template hooks
 		$this->checkout_template_hooks();
@@ -151,7 +151,7 @@ class FluidCheckout_ThemeCompat_Fennik extends FluidCheckout {
 	public function register_assets() {
 		// Scripts
 		wp_register_script( 'fc-compat-fennik-image-lazy-load', FluidCheckout_Enqueue::instance()->get_script_url( 'js/compat/themes/fennik/lazy-load' ), array( 'jquery', 'fennik-theme' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-compat-fennik-image-lazy-load', 'window.addEventListener("load",function(){FennikLazyLoad.init();})' );
+		wp_add_inline_script( 'fc-compat-fennik-image-lazy-load', 'window.addEventListener("load",function(){FennikLazyLoad.init();});' );
 	}
 
 	/**
