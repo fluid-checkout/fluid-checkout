@@ -360,6 +360,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Improved: Show the Fluid Checkout plugin icon on admin notices.
 * Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
+* Improved: Hide dependent international phone number settings when the feature is disabled.
 * Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
 * Improved: Updated replaced checkout templates `form-shipping.php` and `review-order.php` for WooCommerce 11.2.0 compatibility.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
