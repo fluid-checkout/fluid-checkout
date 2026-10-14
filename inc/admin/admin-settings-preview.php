@@ -550,7 +550,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			),
 		);
 
-		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}a{color:#2271b1;text-decoration:underline}a:hover,a:focus{color:#135e96}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . wp_kses( $subtitle, $allowed_subtitle_html ) . '</span></div></body></html>';
+		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}div{zoom:calc(1/var(--fc-settings-preview-scale,1))}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}a{color:#2271b1;text-decoration:underline}a:hover,a:focus{color:#135e96}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . wp_kses( $subtitle, $allowed_subtitle_html ) . '</span></div></body></html>';
 	}
 
 

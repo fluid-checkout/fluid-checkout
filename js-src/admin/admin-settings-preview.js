@@ -72,6 +72,7 @@
 		pageAttribute:               'data-fc-settings-preview-page',
 		urlAttribute:                'data-fc-settings-preview-url',
 		enableSettingAttribute:      'data-fc-settings-preview-enable-setting',
+		placeholderScaleProperty:    '--fc-settings-preview-scale',
 		viewportWidths:              { mobile: 350, tablet: 750, desktop: 1000 },
 		widthMin:                    320,
 		widthMax:                    1920,
@@ -404,6 +405,11 @@
 		frame.style.width = _previewWidth + 'px';
 		frame.style.height = frameHeight + 'px';
 		frame.style.transform = 1 === scale ? '' : 'scale( ' + scale + ' )';
+
+		// Maybe keep the placeholder text at its size on screen, as placeholders are scaled down along with page previews
+		if ( ! getPreviewOrigin() && frame.contentDocument ) {
+			frame.contentDocument.documentElement.style.setProperty( _settings.placeholderScaleProperty, scale );
+		}
 
 		// Maybe show the size and zoom of the page preview
 		if ( dims ) {
@@ -1091,6 +1097,9 @@
 
 		_isPreviewLoading = false;
 		_isRefreshingStyles = false;
+
+		// Size the preview again, so a placeholder that just loaded gets the scale
+		applyPreviewSize();
 
 		// Refresh the page preview with the settings saved while it loaded
 		maybeRefreshPreview();
