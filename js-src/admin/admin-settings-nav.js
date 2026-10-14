@@ -42,6 +42,8 @@
 		navLinkAttribute:       'data-fc-settings-nav-link',
 		labelOpenAttribute:     'data-label-open',
 		labelCloseAttribute:    'data-label-close',
+		settingsLinkSelector:   'a',
+		hrefAttribute:          'href',
 		navCompactBreakpoint:   980,
 	};
 
@@ -65,7 +67,9 @@
 		try {
 			parsed = new URL( url, window.location.origin );
 			return parsed.searchParams.get( 'tab' ) || '';
-		} catch ( err ) {
+		}
+		// Bail when the URL cannot be parsed
+		catch ( err ) {
 			return '';
 		}
 	};
@@ -100,14 +104,16 @@
 		// Bail if the link opens in a new browsing context
 		if ( link.target && '_self' !== String( link.target ).toLowerCase() ) { return ''; }
 
-		href = link.getAttribute( 'href' );
+		href = link.getAttribute( _settings.hrefAttribute );
 
 		// Bail if href is missing or is a non-navigation value
 		if ( ! href || 0 === href.indexOf( '#' ) || 0 === href.indexOf( 'javascript:' ) ) { return ''; }
 
 		try {
 			parsed = new URL( href, window.location.origin );
-		} catch ( err ) {
+		}
+		// Bail when the href cannot be parsed
+		catch ( err ) {
 			return '';
 		}
 
@@ -254,14 +260,18 @@
 		var saveButtons = document.querySelectorAll( _settings.saveButtonSelector );
 		var i;
 
+		// Maybe show or hide the sticky submit wrapper
 		if ( submit ) {
 			if ( canSave ) {
 				submit.removeAttribute( 'hidden' );
-			} else {
+			}
+			// Otherwise hide save actions for read-only tabs
+			else {
 				submit.setAttribute( 'hidden', '' );
 			}
 		}
 
+		// Iterate save buttons
 		for ( i = 0; i < saveButtons.length; i++ ) {
 			saveButtons[ i ].disabled = ! canSave;
 		}
@@ -345,7 +355,7 @@
 	 * @param  {Event}  e  Click event.
 	 */
 	var handleNavClick = function( e ) {
-		var link = e.target.closest( 'a' );
+		var link = e.target.closest( _settings.settingsLinkSelector );
 		var tab;
 		var activePanel;
 

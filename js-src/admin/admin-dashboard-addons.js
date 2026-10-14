@@ -2,7 +2,6 @@
  * Dashboard Add-ons — local plugin activate via AJAX.
  *
  * DEPENDS ON:
- * - jQuery  // AJAX helpers
  * - FCUtils // Settings merge
  */
 (function ( root, factory ) {
@@ -18,9 +17,6 @@
 })( typeof global !== 'undefined' ? global : this.window || this.global, function ( root ) {
 
 	'use strict';
-
-	var $ = jQuery;
-	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
 	var _publicMethods = { };
@@ -208,26 +204,15 @@
 
 
 	/**
-	 * Handle a parsed Activate response.
-	 * `this` is the button that started the request.
+	 * Parse a fetch response body as JSON when possible.
 	 *
-	 * @param {Object} payload Parsed JSON response.
+	 * @param  {Response} response Fetch response.
+	 * @return {Promise}  Promise resolving to a parsed payload or null.
 	 */
-	var handleActivateDone = function( payload ) {
-		handleActivateResponse( payload, this );
-	};
-
-
-	/**
-	 * Handle a failed Activate request.
-	 * `this` is the button that started the request.
-	 *
-	 * @param {Object} jqXHR jQuery XHR object.
-	 */
-	var handleActivateFail = function( jqXHR ) {
-		var payload = jqXHR && jqXHR.responseJSON ? jqXHR.responseJSON : null;
-
-		handleActivateResponse( payload, this );
+	var parseJsonResponse = function( response ) {
+		return response.json().catch( function() {
+			return null;
+		} );
 	};
 
 
@@ -240,15 +225,15 @@
 	 */
 	var handleActivateClick = function( e, button ) {
 		var plugin = button.getAttribute( _settings.pluginAttribute ) || '';
-		var requestData = {};
+		var body;
 
 		e.preventDefault();
 
 		// Bail if the control is disabled (e.g. add-on installed while PRO is inactive)
 		if ( button.disabled || button.classList.contains( _settings.disabledClass ) ) { return; }
 
-		// Bail if jQuery or AJAX is not configured
-		if ( ! _hasJQuery || ! plugin || ! _settings.ajaxUrl || ! _settings.activateNonce ) { return; }
+		// Bail if AJAX is not configured
+		if ( ! plugin || ! _settings.ajaxUrl || ! _settings.activateNonce ) { return; }
 
 		// Keep the button's own label so "Activate plugin" is not replaced with "Activate add-on"
 		if ( ! button.getAttribute( _settings.labelAttribute ) ) {
@@ -258,17 +243,26 @@
 		button.disabled = true;
 		button.textContent = getProcessingLabel();
 
-		requestData[ _settings.actionFieldName ] = _settings.activatePluginAction;
-		requestData[ _settings.nonceFieldName ] = _settings.activateNonce;
-		requestData[ _settings.pluginFieldName ] = plugin;
+		body = new window.URLSearchParams();
+		body.append( _settings.actionFieldName, _settings.activatePluginAction );
+		body.append( _settings.nonceFieldName, _settings.activateNonce );
+		body.append( _settings.pluginFieldName, plugin );
 
-		$.ajax( {
-			type:     'POST',
-			url:      _settings.ajaxUrl,
-			data:     requestData,
-			dataType: 'json',
-			context:  button,
-		} ).done( handleActivateDone ).fail( handleActivateFail );
+		window.fetch( _settings.ajaxUrl, {
+			method:      'POST',
+			credentials: 'same-origin',
+			headers:     {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			},
+			body:        body.toString(),
+		} )
+			.then( parseJsonResponse )
+			.then( function( payload ) {
+				handleActivateResponse( payload, button );
+			} )
+			.catch( function() {
+				handleActivateResponse( null, button );
+			} );
 	};
 
 
@@ -299,9 +293,6 @@
 	_publicMethods.init = function( options ) {
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
-
-		// Bail if jQuery is unavailable
-		if ( ! _hasJQuery ) { return; }
 
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );

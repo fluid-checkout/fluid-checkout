@@ -40,7 +40,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		// Bail if already enqueued (Dashboard tab may own enqueue there)
 		if ( wp_script_is( 'fc-admin-dashboard-addons', 'enqueued' ) ) { return; }
 
-		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'jquery', 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_enqueue_script( 'fc-admin-dashboard-addons', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-dashboard-addons' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-dashboard-addons', 'window.addEventListener("load",function(){FCAdminDashboardAddons.init(fcAdminDashboardAddonsSettings);});' );
 
 		// EXCEPTION: Runtime values — AJAX URL and nonce for local Activate.

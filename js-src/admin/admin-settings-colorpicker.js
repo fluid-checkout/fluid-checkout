@@ -63,34 +63,62 @@
 
 
 	/**
+	 * Trigger a deferred change event on a color input after Iris updates.
+	 *
+	 * @param  {jQuery}  $input  Color input element.
+	 */
+	var scheduleColorInputChange = function( $input ) {
+		window.setTimeout( function() {
+			$input.trigger( 'change' );
+		} );
+	};
+
+
+
+	/**
+	 * Handle Iris color changes for a settings color field.
+	 *
+	 * @param  {Event}   event  Iris change event.
+	 * @param  {Object}  ui     Iris UI payload.
+	 */
+	var handleIrisColorChange = function( event, ui ) {
+		var $input = $( event.target );
+
+		getColorControl( $input )
+			.find( _settings.previewSelector )
+			.css( { backgroundColor: ui.color.toString() } );
+
+		scheduleColorInputChange( $input );
+	};
+
+
+
+	/**
 	 * Initialize Iris color pickers for settings color fields.
 	 */
 	var initColorPickers = function() {
+		var colorInputs = document.querySelectorAll( _settings.colorInputSelector );
+		var i;
+		var $input;
+
 		// Bail if jQuery or Iris is not available
 		if ( ! _hasJQuery || 'function' !== typeof $.fn.iris ) { return; }
 
-		$( _settings.colorInputSelector ).each( function() {
-			var $input = $( this );
+		// Iterate color inputs
+		for ( i = 0; i < colorInputs.length; i++ ) {
+			$input = $( colorInputs[ i ] );
 
 			// Bail if already initialized
-			if ( $input.data( _settings.colorDataReadyKey ) ) { return; }
+			if ( $input.data( _settings.colorDataReadyKey ) ) { continue; }
 
 			$input.iris( {
-				change: function( event, ui ) {
-					getColorControl( $input )
-						.find( _settings.previewSelector )
-						.css( { backgroundColor: ui.color.toString() } );
-
-					setTimeout( function() {
-						$input.trigger( 'change' );
-					} );
-				},
-				hide: true,
+				change: handleIrisColorChange,
+				hide:   true,
 				border: true,
 			} );
 
 			$input.data( _settings.colorDataReadyKey, true );
-		} );
+		}
 	};
 
 

@@ -2,7 +2,6 @@
  * Admin image uploader setting field — media library select and clear.
  *
  * DEPENDS ON:
- * - jQuery  // wp.media frame events
  * - wp.media
  */
 (function ( root, factory ) {
@@ -18,9 +17,6 @@
 })( typeof global !== 'undefined' ? global : this.window || this.global, function ( root ) {
 
 	'use strict';
-
-	var $ = jQuery;
-	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
 	var _publicMethods = { };
@@ -215,9 +211,6 @@
 	_publicMethods.init = function() {
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
-
-		// Bail if jQuery is unavailable
-		if ( ! _hasJQuery ) { return; }
 
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );

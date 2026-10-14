@@ -672,6 +672,62 @@
 		e.preventDefault();
 	};
 
+
+
+	/**
+	 * Re-apply preview zoom and dimension labels after layout changes.
+	 */
+	var syncPreviewFrameMetrics = function() {
+		applyPreviewZoom();
+		updatePreviewDims();
+	};
+
+
+
+	/**
+	 * Handle preview iframe load events.
+	 */
+	var handlePreviewFrameLoad = function() {
+		syncPreviewFrameMetrics();
+	};
+
+
+
+	/**
+	 * Handle preview frame wrap resize observations.
+	 */
+	var handlePreviewFrameWrapResize = function() {
+		syncPreviewFrameMetrics();
+	};
+
+
+
+	/**
+	 * Route preview-related click events.
+	 *
+	 * @param  {Event}  e  Click event.
+	 */
+	var handleClick = function( e ) {
+		var matchedElement;
+
+		// EXPAND PREVIEW
+		if ( matchedElement = e.target.closest( _settings.expandSelector ) ) {
+			handleExpandClick( e );
+		}
+		// PREVIEW TOGGLE
+		else if ( matchedElement = e.target.closest( _settings.toggleSelector ) ) {
+			handleToggleClick( e );
+		}
+		// PAGE TAB
+		else if ( matchedElement = e.target.closest( _settings.pageTabSelector ) ) {
+			handlePageTabClick( e );
+		}
+		// ZOOM CONTROLS
+		else if ( matchedElement = e.target.closest( _settings.zoomInSelector ) || e.target.closest( _settings.zoomOutSelector ) || e.target.closest( _settings.zoomValueSelector ) ) {
+			handleZoomClick( e );
+		}
+	};
+
 	/**
 	 * Handle actions-bar Preview toggle clicks (compact layout).
 	 *
@@ -779,16 +835,28 @@
 
 
 	/**
+	 * Expand or collapse the preview column from other admin scripts.
+	 *
+	 * @param  {boolean}  expanded  Whether the preview should be expanded/open.
+	 */
+	_publicMethods.setExpanded = function( expanded ) {
+		setPreviewExpanded( expanded );
+	};
+
+
+
+	/**
 	 * Initialize the settings preview column.
 	 *
 	 * @param  {Object}  options  Localized settings from PHP.
 	 */
-	var init = function( options ) {
+	_publicMethods.init = function( options ) {
 		var preview;
-		var expandButton;
 		var frame;
+		var frameWrap;
 		var breakpoint;
 		var navCompactBreakpoint;
+		var previewResizeObserver;
 
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
@@ -824,14 +892,8 @@
 		}
 
 		// Add event listeners
-		expandButton = document.querySelector( _settings.expandSelector );
-		if ( expandButton ) {
-			expandButton.addEventListener( 'click', handleExpandClick );
-		}
-		document.addEventListener( 'click', handleToggleClick, true );
+		document.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'change', handleViewportChange, true );
-		document.addEventListener( 'click', handlePageTabClick, true );
-		document.addEventListener( 'click', handleZoomClick, true );
 		window.addEventListener( 'fcSettingsTabActivated', handleSettingsTabActivated );
 		// Capture scroll from nested containers; keep the drawer aligned while sticky headers move
 		window.addEventListener( 'scroll', syncPreviewDrawerPosition, true );
@@ -839,26 +901,17 @@
 
 		frame = document.querySelector( _settings.frameSelector );
 		if ( frame ) {
-			frame.addEventListener( 'load', function() {
-				applyPreviewZoom();
-				updatePreviewDims();
-			} );
+			frame.addEventListener( 'load', handlePreviewFrameLoad );
 		}
 
-		var frameWrap = document.querySelector( _settings.frameWrapSelector );
+		frameWrap = document.querySelector( _settings.frameWrapSelector );
 		if ( frameWrap && typeof ResizeObserver !== 'undefined' ) {
-			var previewResizeObserver = new ResizeObserver( function() {
-				applyPreviewZoom();
-				updatePreviewDims();
-			} );
+			previewResizeObserver = new ResizeObserver( handlePreviewFrameWrapResize );
 			previewResizeObserver.observe( frameWrap );
 		}
 		// Otherwise re-apply zoom and dims on window resize
 		else {
-			window.addEventListener( 'resize', function() {
-				applyPreviewZoom();
-				updatePreviewDims();
-			} );
+			window.addEventListener( 'resize', syncPreviewFrameMetrics );
 		}
 
 		// Sync from the initial settings tab and zoom UI
@@ -875,9 +928,11 @@
 		_hasInitialized = true;
 	};
 
-	// Public APIs
-	_publicMethods.init = init;
-	_publicMethods.setExpanded = setPreviewExpanded;
 
+
+
+	//
+	// Public APIs
+	//
 	return _publicMethods;
 } );

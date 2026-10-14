@@ -2,7 +2,7 @@
  * Manage Fluid Checkout admin settings page behavior (conditionals, actions bar).
  *
  * DEPENDS ON:
- * - None (vanilla JS)
+ * - FCUtils // Settings merge
  */
 
 (function (root, factory) {
@@ -27,6 +27,7 @@
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
+		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
@@ -56,52 +57,6 @@
 	/**
 	 * METHODS
 	 */
-
-
-
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
-	var extend = function () {
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-	};
-
-
 
 	/**
 	 * Get the field value based on field type.
@@ -145,7 +100,9 @@
 		}
 
 		return fieldValue;
-	}
+	};
+
+
 
 	/**
 	 * Get the conditional trigger key for an element (id or name, without field id prefix).
@@ -168,7 +125,9 @@
 		}
 
 		return '';
-	}
+	};
+
+
 
 	/**
 	 * Get the trigger field element by its full field id (with prefix).
@@ -196,7 +155,9 @@
 
 		// Fall back to element id
 		return document.getElementById( fieldId );
-	}
+	};
+
+
 
 	/**
 	 * Resolve the registered trigger field id for an event target element.
@@ -219,7 +180,9 @@
 		}
 
 		return null;
-	}
+	};
+
+
 
 	/**
 	 * Get the visibility container for a conditional field.
@@ -232,7 +195,7 @@
 		if ( ! element ) { return null; }
 
 		// Prefer the nearest settings field row
-		var settingsField = element.closest( '.fc-settings-field' );
+		var settingsField = element.closest( _settings.settingsFieldSelector );
 		if ( settingsField ) { return settingsField; }
 
 		// Fall back to a nested fieldset then a table row for WC embeds
@@ -240,7 +203,9 @@
 		if ( fieldset ) { return fieldset; }
 
 		return element.closest( 'tr' );
-	}
+	};
+
+
 
 	/**
 	 * Whether a container is currently hidden by conditional visibility.
@@ -253,7 +218,9 @@
 		if ( ! container ) { return false; }
 
 		return container.classList.contains( _settings.hiddenClass ) || 'none' === container.style.display;
-	}
+	};
+
+
 
 	/**
 	 * Whether a conditional field value matches the trigger value.
@@ -287,7 +254,9 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
 	 * Parse trigger ids from a conditional field attribute.
@@ -317,7 +286,9 @@
 		}
 
 		return result;
-	}
+	};
+
+
 
 	/**
 	 * Whether conditional ids in data-conditional-id should match with OR logic.
@@ -327,7 +298,9 @@
 	 */
 	var isConditionalOrMatch = function( conditionIds ) {
 		return null !== conditionIds && undefined !== conditionIds && String( conditionIds ).indexOf( '|' ) !== -1;
-	}
+	};
+
+
 
 	/**
 	 * Whether a conditional field lists the given trigger key in data-conditional-id.
@@ -351,7 +324,9 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
 	 * Evaluate whether any pipe-separated conditional id/value pair matches (OR).
@@ -392,7 +367,9 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
 	 * Evaluate whether all conditional id/value pairs currently match (AND).
@@ -458,7 +435,9 @@
 		}
 
 		return true;
-	}
+	};
+
+
 
 	/**
 	 * Whether the field row is a locked (disabled) settings field kept visible for discovery.
@@ -478,9 +457,9 @@
 		}
 
 		// Nested fieldsets still belong to a locked settings field row
-		settingsField = fieldRow.closest( '.fc-settings-field' );
+		settingsField = fieldRow.closest( _settings.settingsFieldSelector );
 		return !!( settingsField && settingsField.classList.contains( _settings.disabledFieldClass ) );
-	}
+	};
 
 
 
@@ -542,7 +521,7 @@
 			// this ensures that fields with nested conditions are displayed/hidden correctly.
 			maybeProcessConditionalFields( conditionalField );
 		}
-	}
+	};
 
 
 
@@ -593,7 +572,7 @@
 			// Process conditional fields
 			maybeProcessConditionalFields( fieldElement );
 		}
-	}
+	};
 
 
 
@@ -646,13 +625,14 @@
 	 * @param   {Event}  event  The click event.
 	 */
 	var handleClick = function( event ) {
+		var triggerFieldId;
+
 		// CONDITIONAL FIELDS TRIGGER
-		var triggerFieldId = resolveTriggerFieldId( event.target );
+		triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 	/**
 	 * Sync selected class on layout / template option buttons.
@@ -809,10 +789,9 @@
 		// CONDITIONAL FIELDS TRIGGER
 		var triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 
 
@@ -889,7 +868,7 @@
 		if ( _hasInitialized ) { return; }
 
 		// Merge settings
-		_settings = extend( true, _settings, options );
+		_settings = FCUtils.extendObject( _settings, options );
 
 		// Initialize conditionals
 		initializeConditionals();
