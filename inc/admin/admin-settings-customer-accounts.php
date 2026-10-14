@@ -186,7 +186,7 @@ class FluidCheckout_Settings_AccountMatching {
 				array(
 					'title' => __( 'Delayed account creation', 'fluid-checkout' ),
 					'type'  => 'title',
-					'desc'  => __( 'Let customers create an account after placing their order, from the order confirmation page.', 'fluid-checkout' ),
+					'desc'  => __( 'Let customers create an account after placing their order, from the thank you page.', 'fluid-checkout' ),
 					'id'    => 'fc_pro_delayed_account_creation_options',
 					'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'delayed-account-creation' ),
 				),
