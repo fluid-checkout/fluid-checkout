@@ -107,51 +107,66 @@ class FluidCheckout_Settings extends FluidCheckout {
 		}
 
 		$defaults = array(
-			// Settings checkout.
-			'fc_checkout_layout'                                            => 'multi-step',
-			'fc_checkout_column_layout'                                     => 'two_columns',
+			// =============================== GENERAL ===============================
+			'fc_debug_mode'                                                 => 'no',
+			'fc_load_unminified_assets'                                     => 'no',
+			'fc_use_enhanced_select_components'                             => 'no',
+			'fc_telemetry_enabled'                                          => 'no',
+			'fc_telemetry_data_groups'                                      => array( 'basic_environment', 'plugin_settings' ),
+			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
+
+			// =============================== DESIGN ===============================
 			'fc_design_template'                                            => 'classic',
 			'fc_enable_dark_mode_styles'                                    => 'no',
-			'fc_hide_site_header_footer_at_checkout'                        => 'yes',
 			'fc_checkout_logo_image'                                        => '',
 			'fc_checkout_header_background_color'                           => null,
 			'fc_checkout_page_background_color'                             => null,
 			'fc_checkout_footer_background_color'                           => null,
+			'fc_checkout_order_review_highlight_color'                      => null,
+			'fc_checkout_secondary_column_background_color'                 => null,
+
+			// =============================== CHECKOUT LAYOUT & STEPS ===============================
+			'fc_checkout_layout'                                            => 'multi-step',
+			'fc_checkout_column_layout'                                     => 'two_columns',
+			'fc_checkout_progress_bar_style'                                => 'bars',
 			'fc_enable_checkout_progress_bar'                               => 'yes',
 			'fc_enable_checkout_sticky_progress_bar'                        => 'yes',
-			'fc_checkout_progress_bar_style'                                => 'bars',
+			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
+			'fc_checkout_place_order_position'                              => 'below_payment_section',
+			'fc_show_order_totals_row_highlighted'                          => 'no',
+			'fc_enable_checkout_widget_areas'                               => 'yes',
+			'fc_enable_checkout_widget_area_sidebar_last_step'              => 'no',
+
+			// =============================== CHECKOUT VISIBILITY & DISPLAY ===============================
+			'fc_hide_site_header_footer_at_checkout'                        => 'yes',
+			'fc_show_shipping_section_highlighted'                          => 'yes',
+			'fc_show_billing_section_highlighted'                           => 'yes',
+
+			// =============================== EXPRESS CHECKOUT ===============================
 			'fc_enable_checkout_express_checkout'                           => 'no',
 			'fc_enable_checkout_express_checkout_inline_buttons'            => 'no',
 			'fc_enable_checkout_express_checkout_ignore_required_fields'    => 'yes',
-			'fc_checkout_order_review_highlight_color'                      => null,
-			'fc_checkout_secondary_column_background_color'                 => null,
-			'fc_show_order_totals_row_highlighted'                          => 'no',
-			'fc_enable_checkout_sticky_order_summary'                       => 'yes',
-			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
-			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
-			'fc_pro_checkout_order_summary_collapsible_initial_state'       => 'collapsed',
-			'fc_pro_enable_checkout_edit_cart'                              => 'no',
-			'fc_pro_cart_items_error_messages_hide_at_checkout'             => 'yes',
-			'fc_checkout_place_order_position'                              => 'below_payment_section',
-			'fc_enable_checkout_widget_areas'                               => 'yes',
-			'fc_enable_checkout_widget_area_sidebar_last_step'              => 'no',
-			'fc_enable_checkout_hide_optional_fields'                       => 'yes',
-			'fc_hide_optional_fields_skip_address_2'                        => 'no',
-			'fc_shipping_methods_substep_position'                          => 'before_shipping_address',
+
+			// =============================== LOCAL PICKUP ===============================
 			'fc_enable_checkout_local_pickup'                               => 'no',
 			'fc_local_pickup_default_delivery_type'                         => 'ship',
 			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
-			'fc_show_shipping_section_highlighted'                          => 'yes',
+
+			// =============================== CHECKOUT HIDE OPTIONAL FIELDS ===============================
+			'fc_enable_checkout_hide_optional_fields'                       => 'yes',
+			'fc_hide_optional_fields_skip_address_2'                        => 'no',
+
+			// =============================== FORM FIELDS ===============================
+			'fc_shipping_methods_substep_position'                          => 'before_shipping_address',
 			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
-			'fc_show_billing_section_highlighted'                           => 'yes',
 			'fc_default_to_billing_same_as_shipping'                        => 'yes',
 			'fc_shipping_company_field_visibility'                          => 'optional',
 			'woocommerce_checkout_company_field'                            => 'optional',
 			'fc_shipping_phone_field_visibility'                            => 'hidden',
 			'fc_shipping_phone_field_position'                              => 'shipping_address',
-			'woocommerce_checkout_phone_field'                              => 'required',
 			'fc_billing_phone_field_position'                               => 'billing_address',
+			'woocommerce_checkout_phone_field'                              => 'required',
 			'fc_pro_enable_international_phone_fields'                      => 'no',
 			'fc_pro_enable_international_phone_validation'                  => 'no',
 			'fc_pro_enable_international_phone_validation_precise'          => 'no',
@@ -160,48 +175,29 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_international_phone_country_list_filter'         => 'yes',
 			'fc_pro_international_phone_fields_placeholder'                 => 'OFF',
 			'woocommerce_enable_order_comments'                             => 'yes',
+
+			// =============================== GIFT OPTIONS ===============================
 			'fc_enable_checkout_gift_options'                               => 'no',
 			'fc_default_gift_options_expanded'                              => 'no',
 			'fc_display_gift_message_in_order_details'                      => 'no',
+
+			// =============================== COUPONS ===============================
 			'fc_display_coupon_code_section_title'                          => 'no',
 			'fc_pro_checkout_coupon_codes_position'                         => 'substep_before_payment',
 			'fc_pro_checkout_coupon_code_message_button_style'              => 'add_link_button',
+
+			// =============================== ACCOUNT ===============================
 			'fc_pro_enable_account_matching'                                => 'no',
 			'fc_pro_account_matching_display_account_exists_message'        => 'yes',
 
-			// Settings cart.
-			'fc_pro_enable_cart_page'                                       => 'no',
-			'fc_pro_hide_site_header_footer_at_cart'                        => 'no',
-			'fc_pro_enable_cart_sticky_order_summary'                       => 'yes',
-			'fc_pro_cart_section_position_shipping'                         => 'inside_order_summary',
-			'fc_pro_cart_section_position_coupon_code'                      => 'inside_cart_items',
-			'fc_pro_cart_section_position_cross_sells'                      => 'after_cart_items',
-			'fc_pro_enable_cart_cross_sells'                                => 'yes',
-			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
-			'fc_pro_enable_cart_widget_areas'                               => 'yes',
+			// =============================== ORDER SUMMARY ===============================
+			'fc_pro_checkout_edit_cart_replace_edit_cart_link'              => 'edit_cart_link',
+			'fc_pro_checkout_order_summary_position_mobile'                 => 'site_header',
+			'fc_pro_checkout_order_summary_collapsible_initial_state'       => 'collapsed',
+			'fc_pro_enable_checkout_edit_cart'                              => 'no',
+			'fc_pro_cart_items_error_messages_hide_at_checkout'             => 'yes',
 
-			// Settings order received.
-			'fc_pro_enable_order_received'                                  => 'no',
-			'fc_pro_enable_order_details_email_customizations'              => 'yes',
-			'fc_pro_enable_order_page_block_based_template'                 => 'no',
-			'fc_pro_enable_order_details_wide_layout'                       => 'no',
-			'fc_pro_order_details_order_actions_position'                   => 'inside_order_overview',
-			'fc_pro_enable_order_details_order_status_progress_bar'         => 'no',
-			'fc_pro_order_details_order_summary_position'                   => 'inside_order_items',
-			'fc_pro_order_details_order_downloads_position'                 => 'inside_order_items',
-			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
-			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
-			'fc_pro_enable_order_received_widget_areas'                     => 'no',
-
-			// Settings order pay.
-			'fc_pro_enable_order_pay'                                      => 'no',
-			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
-
-			// Address book.
-			'fc_pro_enable_address_book'                                    => 'no',
-			'fc_pro_enable_address_book_address_label'                      => 'yes',
-
-			// VAT Assistant.
+			// =============================== VAT ASSISTANT ===============================
 			'fc_vat_number_field_visibility'                                => 'no',
 			'fc_vat_number_field_label'                                     => '',
 			'fc_vat_number_shop'                                            => '',
@@ -217,7 +213,42 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_vat_number_eu_vat_country_confirmation'                     => 'yes',
 			'fc_vat_number_per_account_limit'                               => 'one_per_account',
 
-			// Google Address Autocomplete (feature keys; FCGAA overrides when both active).
+			// =============================== ADDRESS BOOK ===============================
+			'fc_pro_enable_address_book'                                    => 'no',
+			'fc_pro_enable_address_book_address_label'                      => 'yes',
+
+			// =============================== CART (NEW PAGE) ===============================
+			'fc_pro_enable_cart_page'                                       => 'no',
+			'fc_pro_enable_cart_sticky_order_summary'                       => 'yes',
+			'fc_pro_hide_site_header_footer_at_cart'                        => 'no',
+			'fc_pro_enable_cart_cross_sells'                                => 'yes',
+			'fc_pro_cart_section_position_shipping'                         => 'inside_order_summary',
+			'fc_pro_cart_section_position_coupon_code'                      => 'inside_cart_items',
+			'fc_pro_cart_section_position_cross_sells'                      => 'after_cart_items',
+			'fc_pro_cart_cross_sells_display_items_limit'                   => 2,
+			'fc_pro_enable_cart_widget_areas'                               => 'yes',
+
+			// =============================== ORDER RECEIVED (THANK YOU) ===============================
+			'fc_pro_enable_order_received'                                  => 'no',
+			'fc_pro_enable_order_details_email_customizations'              => 'yes',
+			'fc_pro_enable_order_page_block_based_template'                 => 'no',
+			'fc_pro_enable_order_details_wide_layout'                       => 'no',
+			'fc_pro_order_details_order_actions_position'                   => 'inside_order_overview',
+			'fc_pro_enable_order_details_order_status_progress_bar'         => 'no',
+			'fc_pro_order_details_order_summary_position'                   => 'inside_order_items',
+			'fc_pro_order_details_order_downloads_position'                 => 'inside_order_items',
+			'fc_pro_order_details_gift_message_position'                    => 'before_order_items',
+			'fc_pro_order_details_order_notes_position'                     => 'inside_order_items',
+			'fc_pro_enable_order_received_widget_areas'                     => 'no',
+			'fc_pro_enable_delayed_account_creation'                        => 'no',
+			'fc_pro_delayed_account_creation_section_position'              => 'after_order_overview',
+			'fc_pro_delayed_account_creation_benefits'                      => '',
+
+			// =============================== ORDER PAY ===============================
+			'fc_pro_enable_order_pay'                                       => 'no',
+			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
+
+			// =============================== GOOGLE ADDRESS AUTOCOMPLETE ===============================
 			'fc_gaa_enabled'                                                => 'no',
 			'fc_gaa_google_places_api_key'                                  => '',
 			'fc_gaa_google_places_api_key_validated_hash'                   => '',
@@ -233,51 +264,71 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_gaa_brasil_api_version'                                     => 'v1',
 			'fc_gaa_google_maps_dont_remove_duplicate_scripts'              => 'no',
 
-			// Compatibility settings for plugins.
-			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
-			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
-			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
-			'fc_integration_mailchimp_force_subscribe_checkbox_position'    => 'yes',
-			'fc_integration_woocommerce_gateway_stripe_apply_styles'        => 'yes',
-			'fc_integration_woocommerce_smart_coupons_position_checkout'    => 'before_progress_bar',
-			'gm_order_review_checkboxes_before_order_review'                => 'off',
-			'hezarfen_checkout_fields_auto_sort'                            => 'no',
-			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
-			'sg_enable_picker'                                              => 'enable',
-			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
-			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
-			'woocommerce_enable_guest_checkout'                             => 'yes',
-			'woocommerce_enable_signup_and_login_from_checkout'             => 'no',
-			'woocommerce_registration_generate_username'                   => 'yes',
-			'woocommerce_registration_generate_password'                   => 'yes',
-			'woocommerce_enable_shipping_calc'                              => 'yes',
-			'woocommerce_shipping_cost_requires_address'                    => 'no',
-			'woocommerce_enable_checkout_login_reminder'                    => 'no',
+			// =============================== PACKING SLIPS ===============================
 			'fc_enable_packing_slips_options'                               => 'no',
 			'fc_packing_slips_message_box_body_text'                        => '',
+
+			// =============================== PLUGIN INTEGRATIONS (GROUPED) ===============================
+			// Woo Sendinblue
+			'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' => 'yes',
+			// Bluehost
+			'fc_integration_bluehost_plugin_custom_fields'                  => 'no',
+			// Captcha Pro
+			'fc_integration_captcha_pro_captcha_position'                   => 'before_place_order_section',
+			// Mailchimp
+			'fc_integration_mailchimp_force_subscribe_checkbox_position'    => 'yes',
+			// Stripe
+			'fc_integration_woocommerce_gateway_stripe_apply_styles'        => 'yes',
+			// Woo Smart Coupons
+			'fc_integration_woocommerce_smart_coupons_position_checkout'    => 'before_progress_bar',
+			'fc_pro_integration_woocommerce_smart_coupons_position_cart'    => 'before_cart_items',
+			// Woo Points and Rewards
 			'wc_points_rewards_points_label'                                => sprintf( '%s:%s', __( 'Point', 'woocommerce-points-and-rewards' ), __( 'Points', 'woocommerce-points-and-rewards' ) ), // Intentionally use text domain from the plugin Points and Rewards as this is the default value set in that plugin.
 			'wc_points_rewards_cart_min_discount'                           => '',
 			'wc_points_rewards_partial_redemption_enabled'                  => 'no',
-			'fc_pro_integration_iconic_delivery_slots_ignore_priority'      => 'yes',
-			'fc_pro_integration_woocommerce_order_delivery_show_calendar_inline' => 'no',
-			'fc_pro_integration_woocommerce_order_delivery_hide_optional_fields' => 'yes',
 			'fc_pro_integration_woocommerce_points_and_rewards_redeem_message_position' => 'coupon_code_section',
 			'fc_pro_integration_woocommerce_points_and_rewards_display_what_points_page' => null,
-			'fc_pro_integration_woocommerce_smart_coupons_position_cart'    => 'before_cart_items',
-			'fc_pro_woocommerce_subscriptions_order_details_order_subscriptions_position' => 'inside_order_items',
+			// Iconic Delivery Slots
+			'fc_pro_integration_iconic_delivery_slots_ignore_priority'      => 'yes',
+			// Woo Order Delivery
+			'fc_pro_integration_woocommerce_order_delivery_show_calendar_inline' => 'no',
+			'fc_pro_integration_woocommerce_order_delivery_hide_optional_fields' => 'yes',
 			'fc_pro_integration_woocommerce_order_delivery_show_estimated_time_notice' => 'yes',
 			'fc_pro_integration_woocommerce_order_delivery_estimated_time_notice_text' => '',
+			'fc_pro_integration_woocommerce_germanized_dhl_preferred_delivery_position' => 'after_shipping',
+			// Woo Subscriptions
+			'fc_pro_woocommerce_subscriptions_order_details_order_subscriptions_position' => 'inside_order_items',
+			// License Manager
+			'fc_pro_license_manager_for_woocommerce_order_details_order_licenses_position' => 'inside_order_items',
+			// Amazon Pay
+			'fc_integration_woocommerce_gateway_amazon_payments_advanced_express_checkout_style' => 'only_button',
+			// Express Integration Buttons
 			'fc_pro_integration_dintero_checkout_express_checkout_button_enabled' => 'yes',
 			'fc_pro_integration_klarna_checkout_express_checkout_button_enabled' => 'yes',
 			'fc_pro_integration_payson_checkout_express_checkout_button_enabled' => 'yes',
 			'fc_pro_integration_dibs_easy_express_checkout_button_enabled'  => 'yes',
 			'fc_pro_integration_svea_checkout_express_checkout_button_enabled' => 'yes',
 			'fc_pro_integration_woo_all_products_for_subscriptions_show_options_on_checkout' => 'yes',
-			'fc_pro_integration_woocommerce_germanized_dhl_preferred_delivery_position' => 'after_shipping',
-			'fc_pro_license_manager_for_woocommerce_order_details_order_licenses_position' => 'inside_order_items',
-			'fc_integration_woocommerce_gateway_amazon_payments_advanced_express_checkout_style' => 'only_button',
 
-			// Compatibility settings for themes.
+			// ----------------------- Other plugin or theme compatibility -----------------------
+			'gm_order_review_checkboxes_before_order_review'                => 'off',
+			'hezarfen_checkout_fields_auto_sort'                            => 'no',
+			'hezarfen_hide_checkout_postcode_fields'                        => 'no',
+			'sg_enable_picker'                                              => 'enable',
+			'woocommerce_gzd_display_checkout_back_to_cart_button'          => 'no',
+			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
+
+			// =============================== WOOCOMMERCE SETTINGS (FOR OVERRIDES) ===============================
+			'woocommerce_enable_guest_checkout'                             => 'yes',
+			'woocommerce_enable_signup_and_login_from_checkout'             => 'no',
+			'woocommerce_enable_myaccount_registration'                     => 'no',
+			'woocommerce_registration_generate_username'                    => 'yes',
+			'woocommerce_registration_generate_password'                    => 'yes',
+			'woocommerce_enable_shipping_calc'                              => 'yes',
+			'woocommerce_shipping_cost_requires_address'                    => 'no',
+			'woocommerce_enable_checkout_login_reminder'                    => 'no',
+
+			// =============================== THEME COMPATIBILITY ===============================
 			'fc_compat_theme_atomion_display_order_progress'                => 'no',
 			'fc_compat_theme_atomion_display_field_labels'                  => 'yes',
 			'fc_compat_theme_impreza_header_spacing'                        => null,
@@ -295,15 +346,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_compat_theme_fennik_output_breadcrumbs_section'             => 'no',
 			'fc_compat_theme_dt_the7_output_additional_header_sections'     => 'no',
 
-			// Settings tools.
-			'fc_debug_mode'                                                 => 'no',
-			'fc_load_unminified_assets'                                     => 'no',
-			'fc_use_enhanced_select_components'                             => 'no',
-			'fc_fix_zoom_in_form_fields_mobile_devices'                     => 'yes',
-			'fc_telemetry_enabled'                                          => 'no',
-			'fc_telemetry_data_groups'                                      => array( 'basic_environment', 'plugin_settings' ),
-
-			// Settings without options in the admin panel.
+			// =============================== SETTINGS WITHOUT OPTIONS IN THE PANEL (INTERNAL) ===============================
 			'fc_apply_checkout_field_args'                                  => 'yes',
 			'fc_enable_checkout_validation'                                 => 'yes',
 			'fc_show_account_creation_notice_checkout_contact_step_text'    => 'yes',
@@ -311,13 +354,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_cart_coupon_codes_enable'                               => 'yes',
 			'fc_pro_enable_checkout_quantity_spinner_buttons'               => 'yes',
 
-			// Deprecated settings.
+			// =============================== DEPRECATED SETTINGS ===============================
 			'fc_enable_checkout_place_order_sidebar'                        => 'no',
 		);
 
 		// Bypass pre_option while building defaults — filter callbacks may call get_option()
 		$previous_bypass = $this->bypass_pre_option;
 		$this->bypass_pre_option = true;
+
 		/**
 		 * Filters the default values for Fluid Checkout options.
 		 *
@@ -326,6 +370,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		 * @param array $defaults Default option values keyed by option name.
 		 */
 		$defaults = apply_filters( 'fc_default_option_values', $defaults );
+
 		$this->bypass_pre_option = $previous_bypass;
 
 		// Fail soft to an empty map if a filter returns a non-array

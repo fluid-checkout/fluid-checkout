@@ -92,7 +92,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters the telemetry client config for an API URL.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param array  $config  Telemetry config.
 			 * @param string $api_url Remote API base URL.
@@ -159,7 +159,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters the WP-Cron hook used for telemetry.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param string $cron_hook Cron hook name. Default `fc_telemetry_weekly`.
 			 * @param string $api_url   Remote API base URL.
@@ -342,7 +342,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters the remote telemetry API base URL.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param string|null $api_url     Remote API base URL.
 			 * @param string|null $plugin_slug Plugin slug passed by the caller. Default null.
@@ -414,7 +414,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters the WP-Cron hook used for telemetry.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param string $cron_hook Cron hook name. Default `fc_telemetry_weekly`.
 			 * @param string $api_url   Remote API base URL.
@@ -793,7 +793,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters whether a site domain may send telemetry.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param bool   $eligible Whether the domain is eligible.
 			 * @param string $domain   Site host.
@@ -1431,7 +1431,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters the own plugins registered for telemetry.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param array       $plugins Map of plugin slug to plugin option names.
 			 * @param string|null $api_url Telemetry API base URL.

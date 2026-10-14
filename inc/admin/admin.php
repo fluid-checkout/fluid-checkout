@@ -384,6 +384,23 @@ class FluidCheckout_Admin extends FluidCheckout {
 	}
 
 	/**
+	 * Append the experimental label suffix to a settings field option label.
+	 *
+	 * @param  string  $label    Option label text, usually the field `desc` for checkboxes.
+	 * @param  bool    $newline  Whether to add a new line before the suffix.
+	 */
+	public function append_experimental_to_option_label( $label, $newline = false ) {
+		$label = (string) $label;
+
+		// Bail if label is empty
+		if ( '' === $label ) {
+			return ltrim( $this->get_experimental_feature_html( $newline ) );
+		}
+
+		return $label . $this->get_experimental_feature_html( $newline );
+	}
+
+	/**
 	 * Get HTML experimental features explanation.
 	 * 
 	 * @param  bool  $newline  Whether to add a new line before.

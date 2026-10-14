@@ -37,7 +37,7 @@ class FluidCheckout_Settings_OrderReceived {
 		$sections = array_merge( $sections, array(
 			'order_received' => _x( 'Thank you', 'Settings section', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
 	}
 
