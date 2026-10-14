@@ -429,7 +429,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			 *
 			 * Extensions can print markup here, for example a PRO site key field.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 */
 			do_action( 'fc_dashboard_addons_before_list' );
 			?>
