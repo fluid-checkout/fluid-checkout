@@ -3,7 +3,7 @@
 // ------------------------------------
 
 .fc-settings-card--addons {
-	border: solid 2px #646970;
+	border: solid 2px $emphasis-border-color;
 }
 
 
@@ -50,15 +50,15 @@
 }
 
 .fc-addons__item.fc-addons__item--bundle {
-	border: solid 2px #1E212B;
+	border: solid 2px $darker-grey;
 }
 
 .fc-addons__item.fc-addons__item--highlight {
-	border: solid 2px #646970;
+	border: solid 2px $emphasis-border-color;
 }
 
 .fc-addons__item.fc-addons__item--highlight-conversion {
-	border: solid 2px #0B7A6F;
+	border: solid 2px $highlighted-item-border-color;
 }
 
 
@@ -143,7 +143,7 @@
 	left: 0;
 	top: -5px;
 	font-size: 30px;
-	color: #007a3d;
+	color: $success-color;
 
 	// Copied from `.dashicons-before` and `.dashicons-yes`
 	content: "\f147";
@@ -238,8 +238,8 @@
 	gap: 0;
 	width: 100%;
 	background: $white !important; // Needed to override settings-page / disabled button background
-	border-color: #007a3d !important; // Needed to override settings-page button border
-	color: #007a3d !important; // Needed to override settings-page button color
+	border-color: $success-color !important; // Needed to override settings-page button border
+	color: $success-color !important; // Needed to override settings-page button color
 	text-align: center;
 }
 
@@ -248,8 +248,8 @@
 .fc-addons__item-actions .button.button--activated:disabled,
 .fc-addons__item-actions .button.button--activated.disabled {
 	background: $white !important; // Needed to keep Activated state on hover / disabled
-	border-color: #007a3d !important; // Needed to keep Activated state on hover / disabled
-	color: #007a3d !important; // Needed to keep Activated state on hover / disabled
+	border-color: $success-color !important; // Needed to keep Activated state on hover / disabled
+	color: $success-color !important; // Needed to keep Activated state on hover / disabled
 }
 
 .fc-addons__item-actions .button.button--activated::before {
@@ -272,7 +272,7 @@
 	text-rendering: auto;
 	text-align: center;
 	vertical-align: middle;
-	color: #007a3d;
+	color: $success-color;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	// END - Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
@@ -284,16 +284,16 @@
 
 // Install CTA keeps header button sizing; only color differs
 .fc-addons__item-actions .button.button-primary.button--install {
-	background: #007a3d;
-	border-color: #007a3d;
-	color: #fff;
+	background: $success-color;
+	border-color: $success-color;
+	color: $white;
 }
 
 .fc-addons__item-actions .button.button-primary.button--install:hover,
 .fc-addons__item-actions .button.button-primary.button--install:focus {
-	background: #006432;
-	border-color: #006432;
-	color: #fff;
+	background: $primary-action-background-hover;
+	border-color: $primary-action-background-hover;
+	color: $white;
 }
 
 .fc-addons__item-action-notice {
@@ -308,15 +308,15 @@
 }
 
 .fc-addons__item-action-notice--success {
-	background: #edfaef;
-	border: 1px solid #68de7c;
-	color: #007a3d;
+	background: $inline-notice-success-background;
+	border: 1px solid $inline-notice-success-border-color;
+	color: $success-color;
 }
 
 .fc-addons__item-action-notice--error {
-	background: #fcf0f1;
-	border: 1px solid #d63638;
-	color: #b32d2e;
+	background: $inline-notice-error-background;
+	border: 1px solid $inline-notice-error-border-color;
+	color: $feedback-message-error-color;
 }
 
 

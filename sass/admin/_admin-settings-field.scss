@@ -147,9 +147,9 @@
 	// Sit below the color input row (control padding-top + input height + gap)
 	top: calc( 5px + #{$fc-settings-input-height} + 8px );
 	left: 0;
-	border: 1px solid #ccc;
+	border: 1px solid $popover-border-color;
 	border-radius: 3px;
-	box-shadow: 0 1px 3px rgba( 0, 0, 0, .2 );
+	box-shadow: 0 1px 3px $elevation-shadow-strong;
 }
 
 // Buttons next to inputs match the field control height
@@ -398,7 +398,7 @@ input.fc-settings-toggle--round + label::after {
 	width: $fc-settings-toggle-knob-size;
 	background-color: $white;
 	border-radius: 100%;
-	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 );
+	box-shadow: 0 2px 5px $elevation-shadow-soft;
 	transition: margin .4s;
 }
 
@@ -536,7 +536,7 @@ input.fc-settings-toggle--round:focus + label {
 	border: 1px solid $fc-settings-info-tip-border-color;
 	border-radius: 4px;
 	background: $fc-settings-info-tip-background;
-	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 ), 0 0 56px rgba( 0, 0, 0, .075 );
+	box-shadow: 0 2px 5px $elevation-shadow-soft, 0 0 56px $elevation-shadow-subtle;
 	box-sizing: border-box;
 	color: $fc-settings-info-tip-text-color;
 	font-size: 13px;
@@ -597,7 +597,7 @@ input.fc-settings-toggle--round:focus + label {
 .fc-settings-info-tip__content code {
 	padding: 1px 4px;
 	border-radius: 3px;
-	background: rgba( 200, 215, 225, .35 );
+	background: $muted-panel-background-color;
 	font-size: 12px;
 }
 

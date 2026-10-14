@@ -33,6 +33,49 @@ $admin-breakpoint-auto-fold:                960px !default;
 
 
 // ----------------------------------------
+// ADMIN - UI COLORS
+
+$primary-action-background-hover:     var( --fluidcheckout--primary-action-background-hover, #006432 ) !default;
+$feedback-message-success-color:      var( --fluidcheckout--feedback-message-success-color, #007017 ) !default;
+$feedback-message-error-color:        var( --fluidcheckout--feedback-message-error-color, #b32d2e ) !default;
+
+$inline-notice-success-background:    var( --fluidcheckout--inline-notice-success-background, #edfaef ) !default;
+$inline-notice-success-border-color:  var( --fluidcheckout--inline-notice-success-border-color, #68de7c ) !default;
+$inline-notice-error-background:      var( --fluidcheckout--inline-notice-error-background, #fcf0f1 ) !default;
+$inline-notice-error-border-color:    var( --fluidcheckout--inline-notice-error-border-color, #d63638 ) !default;
+
+$secondary-text-color:                var( --fluidcheckout--secondary-text-color, #666 ) !default;
+$tertiary-text-color:                 var( --fluidcheckout--tertiary-text-color, #444 ) !default;
+
+$emphasis-border-color:               var( --fluidcheckout--emphasis-border-color, #646970 ) !default;
+$secondary-control-color:             var( --fluidcheckout--secondary-control-color, #50575e ) !default;
+$highlighted-item-border-color:       var( --fluidcheckout--highlighted-item-border-color, #0b7a6f ) !default;
+
+$code-block-background-color:         var( --fluidcheckout--code-block-background-color, #f6f7f7 ) !default;
+$modal-border-color:                  var( --fluidcheckout--modal-border-color, #c3c4c7 ) !default;
+$modal-divider-border-color:          var( --fluidcheckout--modal-divider-border-color, #dcdcde ) !default;
+$upload-dropzone-border-color:        var( --fluidcheckout--upload-dropzone-border-color, #b4b9be ) !default;
+$popover-border-color:                var( --fluidcheckout--popover-border-color, #ccc ) !default;
+
+$list-item-divider-border-color:      var( --fluidcheckout--list-item-divider-border-color, rgba( 200, 215, 225, .4 ) ) !default;
+$muted-panel-background-color:        var( --fluidcheckout--muted-panel-background-color, rgba( 200, 215, 225, .35 ) ) !default;
+
+$modal-backdrop-background:           var( --fluidcheckout--modal-backdrop-background, rgba( 0, 0, 0, .55 ) ) !default;
+$preview-backdrop-background:         var( --fluidcheckout--preview-backdrop-background, rgba( 30, 30, 30, .72 ) ) !default;
+
+$elevation-shadow-soft:               var( --fluidcheckout--elevation-shadow-soft, rgba( 0, 0, 0, .1 ) ) !default;
+$elevation-shadow-medium:             var( --fluidcheckout--elevation-shadow-medium, rgba( 0, 0, 0, .15 ) ) !default;
+$elevation-shadow-strong:             var( --fluidcheckout--elevation-shadow-strong, rgba( 0, 0, 0, .2 ) ) !default;
+$elevation-shadow-subtle:             var( --fluidcheckout--elevation-shadow-subtle, rgba( 0, 0, 0, .075 ) ) !default;
+
+// END - ADMIN - UI COLORS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // ADMIN - PAGE HEADER
 
 $fc-header-height:                          36px !default;
