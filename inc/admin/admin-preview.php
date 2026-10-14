@@ -151,6 +151,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Body classes
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
+		// Prompt to leave the page
+		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_update_before_unload' ), 10 );
+
 		// Cart fragments
 		add_filter( 'woocommerce_cart_hash_key', array( $this, 'change_cart_fragments_storage_key' ), 10 ); // Required as tabs storing different carts refresh each other endlessly
 		add_filter( 'woocommerce_cart_fragment_name', array( $this, 'change_cart_fragments_storage_key' ), 10 );
@@ -666,6 +669,15 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 
 	/**
+	 * Disable the prompt to confirm leaving the checkout page with changed field values, as the admin page reloads and replaces the page preview.
+	 *
+	 * @param   string  $update_before_unload  Whether to prompt before leaving the page, `yes` or `no`.
+	 */
+	public function disable_update_before_unload( $update_before_unload ) {
+		return 'no';
+	}
+
+	/**
 	 * Change the browser storage keys of the cart fragments script on preview pages, so the dummy cart is stored apart from the visitor's cart.
 	 *
 	 * @param   string  $key  Browser storage key.
@@ -949,7 +961,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Set the dummy addresses as the new addresses Fluid Checkout restores when a "same as" address checkbox is unchecked, as read-only fields cannot be filled.
+	 * Set the dummy addresses as the new addresses Fluid Checkout restores when a "same as" address checkbox is unchecked, so the address fields are not empty.
 	 */
 	public function set_dummy_new_address_session_values() {
 		// Bail if session is not available

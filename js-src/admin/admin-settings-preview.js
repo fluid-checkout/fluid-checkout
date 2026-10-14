@@ -33,6 +33,7 @@
 	var _cssVariables = {};
 	var _colorScheme = '';
 	var _bodyClasses = {};
+	var _fieldValues = {};
 	var _computedCssValueRequests = {};
 	var _computedCssValueRequestId = 0;
 	var _isPreviewLoading = false;
@@ -84,7 +85,6 @@
 		initialPage:                 'checkout',
 		placeholderSrcdocs:          {},
 		defaultPage:                 'checkout',
-		readOnlyFields:              'yes',
 		modeQueryArg:                'fc_preview_mode',
 		guestMode:                   'guest',
 		messageSource:               'fc-admin-preview',
@@ -635,9 +635,9 @@
 	var sendPreviewState = function() {
 		var requestId;
 
-		// Send the header and footer visibility, read-only fields and styles
+		// Send the header and footer visibility, the values entered in the fields in the current mode, and styles
 		postMessageToPreview( { type: 'setHeaderFooterVisibility', visible: _isHeaderFooterVisible } );
-		postMessageToPreview( { type: 'setReadOnlyFields', readOnly: 'yes' === _settings.readOnlyFields } );
+		postMessageToPreview( { type: 'setFieldValues', values: _fieldValues[ _previewMode ] || [] } );
 		postMessageToPreview( { type: 'setColorScheme', scheme: _colorScheme } );
 		postMessageToPreview( { type: 'setCssVariables', variables: _cssVariables } );
 		postMessageToPreview( { type: 'setBodyClasses', classes: _bodyClasses } );
@@ -1079,6 +1079,11 @@
 		// COMPUTED CSS VALUE
 		else if ( 'computedCssValue' === e.data.type ) {
 			resolveComputedCssValueRequest( e.data.requestId, e.data.value );
+		}
+		// FIELD VALUES
+		else if ( 'fieldValues' === e.data.type ) {
+			// Keep the values entered in the current mode in memory only, so reloading the settings page or saving the settings shows the dummy values again
+			_fieldValues[ _previewMode ] = e.data.values;
 		}
 	};
 

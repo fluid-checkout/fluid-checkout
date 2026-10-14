@@ -33,17 +33,22 @@
 		probeId:                      'fc-admin-preview-probe',
 		customStylesId:               'fc-custom-styles',
 
-		inertActionSelector:          '#place_order, .fc-place-order-button, .fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, body :has( > iframe )',
+		inertActionSelector:          '#place_order, .fc-place-order-button, .fc-place-order__custom-buttons, .fc-express-checkout, .checkout-button, .fc-cart-action__proceed-checkout, .add_to_cart_button, .single_add_to_cart_button, .wc-block-components-product-button__button, .quantity, .fc-coupon-code__apply, [name="calc_shipping"], body :has( > iframe )',
+		inertFieldSelector:           '.quantity input',
+		couponCodeFieldSelector:      'input[name="coupon_code"]',
 		linkSelector:                 'a[href], area[href]',
 		scriptLinkSelector:           '.woocommerce-terms-and-conditions-link',
-		readOnlyFieldSelector:        '.form-row input:not([type="checkbox"]):not([type="radio"]), .form-row textarea, .quantity input',
-		readOnlyControlSelector:      '.form-row select, .form-row .ts-wrapper, .form-row .select2-container, .quantity button, .quantity input[type="button"]',
+		checkoutFormSelector:         'form.checkout',
+		checkoutFieldSelector:        'input[name]:not([type="hidden"]):not([type="password"]):not([type="submit"]):not([type="button"]):not([type="radio"]:not(:checked)), select[name], textarea[name]',
+		checkableFieldSelector:       '[type="checkbox"], [type="radio"]',
+		countryFieldSelector:         '.country_to_state',
+		fieldByNameSelector:          '[name="###NAME###"]',
+		fieldByNameValueSelector:     '[name="###NAME###"][value="###VALUE###"]',
 		shippingMethodSelector:       '#shipping_method input',
 		colorSchemeSelector:          ':root',
 
 		packageIndexAttribute:        'data-index',
 	};
-	var _isReadOnlyFields = true;
 	var _cssVariables = {};
 	var _colorScheme = '';
 	var _hasDarkModeClass = false;
@@ -192,6 +197,89 @@
 
 		// Send ready message to the admin page
 		root.parent.postMessage( { source: _settings.messageSource, type: 'ready' }, _settings.adminOrigin );
+	};
+
+
+
+	/**
+	 * Send the values entered in the checkout fields to the admin page, which sends them back after the page preview reloads.
+	 *
+	 * @param {HTMLFormElement}  form  Checkout form.
+	 */
+	var sendFieldValues = function( form ) {
+		var fields;
+		var values;
+
+		// Get the fields with the country fields first, so they are set again before the state fields they replace
+		fields = Array.prototype.slice.call( form.querySelectorAll( _settings.checkoutFieldSelector ) ).sort( function( a, b ) {
+			return b.matches( _settings.countryFieldSelector ) - a.matches( _settings.countryFieldSelector );
+		} );
+
+		// Get the name, value and checked state of each field, leaving out radio buttons that are not checked
+		values = fields.map( function( field ) {
+			return { name: field.name, value: field.value, checked: field.matches( _settings.checkableFieldSelector ) ? field.checked : null };
+		} );
+
+		// Send field values to the admin page
+		root.parent.postMessage( { source: _settings.messageSource, type: 'fieldValues', values: values }, _settings.adminOrigin );
+	};
+
+	/**
+	 * Set the values entered in the checkout fields before the page preview reloaded.
+	 *
+	 * @param {Array}  values  Field values, each with the field name, value and checked state, with the country fields first.
+	 */
+	var setFieldValues = function( values ) {
+		var form = document.querySelector( _settings.checkoutFormSelector );
+		var hasChanged = false;
+		var field;
+		var i;
+
+		// Bail if not a checkout page
+		if ( ! form ) { return; }
+
+		// Iterate field values
+		for ( i = 0; i < values.length; i++ ) {
+			// Get the field, matching checkboxes and radio buttons by their value too
+			field = form.querySelector( ( null !== values[ i ].checked ? _settings.fieldByNameValueSelector : _settings.fieldByNameSelector ).replace( '###NAME###', CSS.escape( values[ i ].name ) ).replace( '###VALUE###', CSS.escape( values[ i ].value ) ) );
+
+			// Skip fields no longer in the page, such as fields that settings changes removed, and fields that already have the value
+			if ( ! field || ( null !== values[ i ].checked ? values[ i ].checked === field.checked : values[ i ].value === field.value ) ) { continue; }
+
+			// Maybe set the checked state of checkboxes and radio buttons
+			if ( null !== values[ i ].checked ) {
+				field.checked = values[ i ].checked;
+			}
+			// Otherwise, set the value
+			else {
+				field.value = values[ i ].value;
+			}
+
+			// Let other scripts know about the change, such as to replace the state field when the country changes
+			field.dispatchEvent( new Event( 'change', { bubbles: true } ) );
+			hasChanged = true;
+		}
+
+		// Maybe update the checkout, so the order summary and the step review texts show the values
+		if ( hasChanged ) {
+			form.dispatchEvent( new Event( 'update' ) );
+		}
+	};
+
+	/**
+	 * Set the values entered in the checkout fields before the page preview reloaded, once the page scripts set up the fields.
+	 *
+	 * @param {Array}  values  Field values, each with the field name, value and checked state, with the country fields first.
+	 */
+	var setFieldValuesWhenLoaded = function( values ) {
+		// Maybe wait for the page scripts to set up the fields, such as the country fields that replace the state fields
+		if ( 'complete' !== document.readyState ) {
+			root.addEventListener( 'load', setFieldValues.bind( null, values ), { once: true } );
+		}
+		// Otherwise, set the values right away
+		else {
+			setFieldValues( values );
+		}
 	};
 
 
@@ -415,14 +503,6 @@
 		if ( e.target.closest( _settings.inertActionSelector ) ) {
 			preventAction( e );
 		}
-		// READ-ONLY FIELD CONTROLS
-		else if ( _isReadOnlyFields && e.target.closest( _settings.readOnlyControlSelector ) ) {
-			preventAction( e );
-		}
-		// READ-ONLY FIELDS
-		else if ( _isReadOnlyFields && e.target.closest( _settings.readOnlyFieldSelector ) ) {
-			e.stopImmediatePropagation();
-		}
 		// LINKS
 		else if ( matchedElement = e.target.closest( _settings.linkSelector ) ) {
 			maybePreventLinkNavigation( e, matchedElement );
@@ -430,60 +510,51 @@
 	};
 
 	/**
-	 * Handle document mouse down events and route to the appropriate handler.
-	 *
-	 * @param {Event}  e  Mouse down event.
-	 */
-	var handleMouseDown = function( e ) {
-		// READ-ONLY FIELD CONTROLS
-		if ( _isReadOnlyFields && e.target.closest( _settings.readOnlyControlSelector ) ) {
-			preventAction( e );
-		}
-		// READ-ONLY FIELDS
-		else if ( _isReadOnlyFields && e.target.closest( _settings.readOnlyFieldSelector ) ) {
-			e.stopImmediatePropagation();
-		}
-	};
-
-	/**
 	 * Handle document key down events and route to the appropriate handler.
+	 * Quantity changes and coupon codes are inert, as the preview starts again from the dummy cart on each request.
 	 *
 	 * @param {Event}  e  Key down event.
 	 */
 	var handleKeyDown = function( e ) {
-		// READ-ONLY FIELD CONTROLS
-		if ( _isReadOnlyFields && FCUtils.keyboardKeys.TAB !== e.key && e.target.closest( _settings.readOnlyControlSelector ) ) {
+		// INERT FIELDS
+		if ( FCUtils.keyboardKeys.TAB !== e.key && e.target.closest( _settings.inertFieldSelector ) ) {
 			preventAction( e );
 		}
-		// READ-ONLY FIELDS
-		else if ( _isReadOnlyFields && e.target.closest( _settings.readOnlyFieldSelector ) ) {
-			e.stopImmediatePropagation();
+		// COUPON CODE FIELDS
+		else if ( FCUtils.keyboardKeys.ENTER === e.key && e.target.closest( _settings.couponCodeFieldSelector ) ) {
+			preventAction( e );
 		}
 	};
 
 	/**
-	 * Handle document before input, key up and focus events and route to the appropriate handler.
-	 * Events on read-only fields are also hidden from other scripts, as address autocomplete and postcode lookup scripts change values on them.
+	 * Handle document before input events and route to the appropriate handler.
 	 *
-	 * @param {Event}  e  Before input, key up, focus in or focus out event.
+	 * @param {Event}  e  Before input event.
 	 */
-	var handleFieldEvent = function( e ) {
-		// READ-ONLY FIELDS
-		if ( _isReadOnlyFields && e.target.closest( _settings.readOnlyFieldSelector ) ) {
+	var handleBeforeInput = function( e ) {
+		// INERT FIELDS
+		if ( e.target.closest( _settings.inertFieldSelector ) ) {
 			preventAction( e );
 		}
 	};
 
 	/**
-	 * Handle document change events and route to the appropriate handler.
+	 * Handle document input and change events and route to the appropriate handler.
 	 * Shipping methods are remembered by package index, to send them with the next requests.
 	 *
-	 * @param {Event}  e  Change event.
+	 * @param {Event}  e  Input or change event.
 	 */
 	var handleChange = function( e ) {
+		var matchedElement;
+
 		// SHIPPING METHODS
 		if ( e.target.matches( _settings.shippingMethodSelector ) ) {
 			_shippingMethods[ e.target.getAttribute( _settings.packageIndexAttribute ) ] = e.target.value;
+		}
+
+		// CHECKOUT FIELDS
+		if ( matchedElement = e.target.closest( _settings.checkoutFormSelector ) ) {
+			sendFieldValues( matchedElement );
 		}
 	};
 
@@ -500,9 +571,9 @@
 		if ( 'setHeaderFooterVisibility' === e.data.type ) {
 			document.body.classList.toggle( _settings.hideHeaderFooterClass, true !== e.data.visible );
 		}
-		// SET READ-ONLY FIELDS
-		else if ( 'setReadOnlyFields' === e.data.type ) {
-			_isReadOnlyFields = false !== e.data.readOnly;
+		// SET FIELD VALUES
+		else if ( 'setFieldValues' === e.data.type ) {
+			setFieldValuesWhenLoaded( e.data.values );
 		}
 		// SET CSS VARIABLES
 		else if ( 'setCssVariables' === e.data.type ) {
@@ -556,12 +627,9 @@
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'auxclick', handleClick, true ); // Middle clicks open links in new tabs
-		window.addEventListener( 'mousedown', handleMouseDown, true );
 		window.addEventListener( 'keydown', handleKeyDown, true );
-		window.addEventListener( 'beforeinput', handleFieldEvent, true );
-		window.addEventListener( 'keyup', handleFieldEvent, true );
-		window.addEventListener( 'focusin', handleFieldEvent, true );
-		window.addEventListener( 'focusout', handleFieldEvent, true );
+		window.addEventListener( 'beforeinput', handleBeforeInput, true );
+		window.addEventListener( 'input', handleChange, true );
 		window.addEventListener( 'change', handleChange, true );
 		window.addEventListener( 'submit', preventAction, true ); // Stops all form submissions, as forms must not submit from the preview
 		window.addEventListener( 'message', handleMessage, true );

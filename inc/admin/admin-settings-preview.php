@@ -115,7 +115,6 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 			'default_page'           => 'checkout',
 			'show_page_tabs'         => true,
 			'status_text'            => '',
-			'read_only_fields'       => true,
 			// Settings that only change the page styles, refreshed without reloading the preview
 			'style_settings'         => array(
 				'fc_checkout_secondary_column_background_color',
@@ -208,7 +207,6 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'initialPage'            => $this->get_preview_page_for_tab( $page->get_current_tab() ),
 				'placeholderSrcdocs'     => $this->get_placeholder_iframe_srcdocs(),
 				'defaultPage'            => $config[ 'default_page' ],
-				'readOnlyFields'         => $config[ 'read_only_fields' ] ? 'yes' : 'no',
 				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
 				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
 				'storageKey'             => self::STORAGE_KEY,
@@ -527,7 +525,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		);
 		$subtitle = $requires_pro
 			? $this->get_pro_preview_subtitle_html( $page_slug )
-			: esc_html__( 'Isolated session · fields read-only', 'fluid-checkout' );
+			: esc_html__( 'Isolated session · nothing is saved', 'fluid-checkout' );
 
 		$allowed_subtitle_html = array(
 			'a' => array(
