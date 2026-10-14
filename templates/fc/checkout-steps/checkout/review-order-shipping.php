@@ -24,8 +24,16 @@ defined( 'ABSPATH' ) || exit;
 		<?php if ( $method ) : ?>
 			<?php printf( '<span class="shipping_method_%1$s_%2$s">%3$s</span>', $index, esc_attr( sanitize_title( $method->id ) ), wp_kses_post( $formatted_shipping_price ) ); ?>
 		<?php else :
-			// Translators: %s shipping destination.
-			echo wp_kses_post( apply_filters( 'fc_checkout_no_shipping_method_chosen_html', sprintf( esc_html_x( '--', 'No shipping method chosen label for the order summary', 'fluid-checkout' ), ' <strong>' . esc_html( $formatted_destination ) . '</strong>' ) ) );
+			/**
+			 * Filters the placeholder shown when no shipping method has been chosen.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $html HTML markup.
+			 */
+			echo wp_kses_post( apply_filters( 'fc_checkout_no_shipping_method_chosen_html', sprintf( 
+				// Translators: %s shipping destination.
+				esc_html_x( '--', 'No shipping method chosen label for the order summary', 'fluid-checkout' ), ' <strong>' . esc_html( $formatted_destination ) . '</strong>' ) ) );
 		endif; ?>
 	</td>
 </tr>

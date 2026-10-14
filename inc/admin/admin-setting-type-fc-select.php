@@ -40,7 +40,7 @@ class FluidCheckout_Admin_SettingType_Select extends FluidCheckout {
 		?>
 		<select
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

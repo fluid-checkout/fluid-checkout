@@ -132,6 +132,11 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			$value[ 'field_name' ] = $value[ 'id' ];
 		}
 
+		// Maybe set a unique HTML id when the same option is rendered more than once
+		if ( empty( $value[ 'html_id' ] ) ) {
+			$value[ 'html_id' ] = $value[ 'id' ];
+		}
+
 		// Maybe add the WooCommerce row class prefix
 		if ( ! empty( $value[ 'row_class' ] ) && 0 !== strpos( $value[ 'row_class' ], 'wc-settings-row-' ) ) {
 			$value[ 'row_class' ] = 'wc-settings-row-' . $value[ 'row_class' ];
@@ -163,6 +168,22 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		}
 
 		return FluidCheckout_Settings::instance()->get_option( $value[ 'id' ], $default );
+	}
+
+	/**
+	 * Get the HTML id for a settings field.
+	 * Defaults to the option id. Set `html_id` when the same option is rendered more than once.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param  array  $value  Settings field arguments.
+	 */
+	public function get_field_html_id( $value ) {
+		if ( ! empty( $value[ 'html_id' ] ) ) {
+			return $value[ 'html_id' ];
+		}
+
+		return isset( $value[ 'id' ] ) ? $value[ 'id' ] : '';
 	}
 
 
@@ -523,7 +544,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			<div class="fc-settings-field__label">
 				<?php if ( '' !== $value[ 'title' ] ) : ?>
 					<?php if ( $args[ 'label_for' ] && ! empty( $value[ 'id' ] ) ) : ?>
-						<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo esc_html( $value[ 'title' ] ); ?></label>
+						<label for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"><?php echo esc_html( $value[ 'title' ] ); ?></label>
 					<?php else : ?>
 						<span class="fc-settings-field__title"><?php echo esc_html( $value[ 'title' ] ); ?></span>
 					<?php endif; ?>
@@ -592,7 +613,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		?>
 		<input
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			type="<?php echo esc_attr( $value[ 'type' ] ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"
@@ -618,7 +639,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		<span class="colorpickpreview" style="background: <?php echo esc_attr( $value[ 'value' ] ); ?>">&nbsp;</span>
 		<input
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			type="text"
 			dir="ltr"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
@@ -645,7 +666,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		?>
 		<textarea
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
@@ -678,10 +699,13 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		}
 
 		$this->output_field_start( $value );
+		$field_name = empty( $value[ 'display_only' ] ) ? $value[ 'field_name' ] . ( $is_multiselect ? '[]' : '' ) : '';
 		?>
 		<select
-			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?><?php echo $is_multiselect ? '[]' : ''; ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			<?php if ( '' !== $field_name ) : ?>
+			name="<?php echo esc_attr( $field_name ); ?>"
+			<?php endif; ?>
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -806,7 +830,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			<span class="fc-settings-switch<?php echo $is_disabled ? ' fc-settings-switch--disabled' : ''; ?>">
 				<input
 					name="<?php echo esc_attr( $field_name ); ?>"
-					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 					type="checkbox"
 					class="fc-settings-toggle fc-settings-toggle--round <?php echo esc_attr( $value[ 'class' ] ); ?>"
 					value="<?php echo esc_attr( $checkbox_value ); ?>"
@@ -814,16 +838,16 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 					<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php disabled( $is_disabled ); ?>
 				/>
-				<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"></label>
+				<label for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"></label>
 			</span>
 			<?php if ( ! empty( $field_description[ 'description' ] ) || '' !== $badge_html ) : ?>
-				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
+				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"><?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
 			<?php endif; ?>
 		<?php else : ?>
-			<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>">
 				<input
 					name="<?php echo esc_attr( $field_name ); ?>"
-					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 					type="checkbox"
 					class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 					value="<?php echo esc_attr( $checkbox_value ); ?>"

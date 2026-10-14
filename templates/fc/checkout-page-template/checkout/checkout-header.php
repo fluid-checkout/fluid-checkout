@@ -37,12 +37,24 @@ defined( 'ABSPATH' ) || exit;
 			if ( ! empty( $logo_image_option ) ) {
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
+					/**
+					 * Filters the URL used by the checkout header logo.
+					 *
+					 * @since 1.5.4
+					 *
+					 * @param mixed $url URL.
+					 */
 					esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) ),
 					wp_get_attachment_image( $logo_image_option, 'full' )
 				);
 			}
 			// Maybe add logo from action hook, if set
 			else if ( has_action( 'fc_checkout_header_logo' ) ) {
+				/**
+				 * Fires where the checkout header logo is rendered.
+				 *
+				 * @since 1.2.0
+				 */
 				do_action( 'fc_checkout_header_logo' );
 			}
 			// Maybe add logo from WordPress settings
@@ -53,6 +65,13 @@ defined( 'ABSPATH' ) || exit;
 			else {
 				echo sprintf(
 					'<a href="%1$s" class="custom-logo-link" rel="home">%2$s</a>',
+					/**
+					 * Filters the URL used by the checkout header logo.
+					 *
+					 * @since 1.5.4
+					 *
+					 * @param mixed $url URL.
+					 */
 					esc_url( apply_filters( 'fc_checkout_header_logo_home_url', home_url( '/' ) ) ),
 					'<span class="fc-checkout__site-name">' . esc_html( get_bloginfo( 'name' ) ) . '</span>'
 				);
@@ -76,11 +95,25 @@ defined( 'ABSPATH' ) || exit;
 			?>
 		</div>
 
-		<?php do_action( 'fc_checkout_header_widgets' ); ?>
+		<?php
+			/**
+			 * Fires where the checkout header widget area is rendered.
+			 *
+			 * @since 1.2.0
+			 */
+			do_action( 'fc_checkout_header_widgets' );
+		?>
 
 		<?php if ( has_action( 'fc_checkout_header_cart_link' ) ) : ?>
 		<div class="fc-checkout__cart-link-wrapper">
-			<?php do_action( 'fc_checkout_header_cart_link' ); ?>
+			<?php
+				/**
+				 * Fires where the checkout header cart link is rendered.
+				 *
+				 * @since 1.2.0
+				 */
+				do_action( 'fc_checkout_header_cart_link' );
+			?>
 		</div>
 		<?php endif; ?>
 

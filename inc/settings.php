@@ -88,6 +88,9 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 		// Legacy cleanup notice actions
 		add_action( 'admin_init', array( $this, 'maybe_handle_legacy_cleanup_action' ), 10 );
+
+		// Settings save
+		add_action( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_prevent_change_disabled_settings_on_save' ), 10, 3 );
 	}
 
 
@@ -134,10 +137,10 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_enable_checkout_widget_area_sidebar_last_step'              => 'no',
 			'fc_enable_checkout_hide_optional_fields'                       => 'yes',
 			'fc_hide_optional_fields_skip_address_2'                        => 'no',
-			'fc_shipping_methods_substep_position'                          => 'after_shipping_address',
-			'fc_shipping_methods_disable_auto_select'                       => 'no',
+			'fc_shipping_methods_substep_position'                          => 'before_shipping_address',
 			'fc_enable_checkout_local_pickup'                               => 'no',
-			'fc_local_pickup_display_clear_shipping_methods_button'         => 'no',
+			'fc_local_pickup_default_delivery_type'                         => 'ship',
+			'fc_local_pickup_shipping_zone_fields'                          => array(),
 			'fc_local_pickup_save_shipping_address'                         => 'no',
 			'fc_show_shipping_section_highlighted'                          => 'yes',
 			'fc_pro_checkout_billing_address_position'                      => 'step_after_shipping',
@@ -315,6 +318,13 @@ class FluidCheckout_Settings extends FluidCheckout {
 		// Bypass pre_option while building defaults — filter callbacks may call get_option()
 		$previous_bypass = $this->bypass_pre_option;
 		$this->bypass_pre_option = true;
+		/**
+		 * Filters the default values for Fluid Checkout options.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param array $defaults Default option values keyed by option name.
+		 */
 		$defaults = apply_filters( 'fc_default_option_values', $defaults );
 		$this->bypass_pre_option = $previous_bypass;
 
@@ -1256,7 +1266,32 @@ class FluidCheckout_Settings extends FluidCheckout {
 			}
 		}
 
+		// Local pickup shipping zone fields are stored as a list of field ids
+		if ( ! empty( $option[ 'id' ] ) && 'fc_local_pickup_shipping_zone_fields' === $option[ 'id' ] && class_exists( 'FluidCheckout_Settings_LocalPickup' ) ) {
+			$value = FluidCheckout_Settings_LocalPickup::sanitize_local_pickup_shipping_zone_fields( $value, $option, $raw_value );
+		}
+
 		return $value;
+	}
+
+	/**
+	 * Maybe prevent changes to the option value when the settings field is disabled.
+	 *
+	 * @param  mixed   $value      The option value.
+	 * @param  string  $option     The option arguments.
+	 * @param  mixed   $raw_value  The raw value of the option.
+	 */
+	public function maybe_prevent_change_disabled_settings_on_save( $value, $option, $raw_value ) {
+		global $current_tab;
+
+		// Bail if not saving the plugin settings, as other plugins also use the `disabled` argument on their own settings fields
+		if ( 'fc_checkout' !== $current_tab ) { return $value; }
+
+		// Bail if the settings field is not disabled
+		if ( ! array_key_exists( 'disabled', $option ) || true !== $option[ 'disabled' ] ) { return $value; }
+
+		// Return `null` to skip saving the option, as disabled fields are not submitted and would otherwise be saved with the default value
+		return null;
 	}
 
 }

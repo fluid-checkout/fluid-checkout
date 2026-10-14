@@ -198,6 +198,13 @@ class FluidCheckout_YithWooCommerceCheckoutManager extends FluidCheckout {
 
 		// Maybe show "No order notes" notice
 		if ( empty( $review_text_lines ) ) {
+			/**
+			 * Filters the no order notes order review notice.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $notice Notice shown when the order notes substep has no review text.
+			 */
 			$review_text_lines[] = apply_filters( 'fc_no_order_notes_order_review_notice', FluidCheckout_Steps::instance()->get_no_substep_review_text_notice( 'order_notes' ) );
 		}
 

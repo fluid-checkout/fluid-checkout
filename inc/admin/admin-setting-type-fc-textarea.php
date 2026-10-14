@@ -39,7 +39,7 @@ class FluidCheckout_Admin_SettingType_Textarea extends FluidCheckout {
 		?>
 		<textarea
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"

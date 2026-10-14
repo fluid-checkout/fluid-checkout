@@ -89,7 +89,9 @@ jQuery( function( $ ) {
 						placeholder: $this.attr( 'data-placeholder' ) || $this.attr( 'placeholder' ) || '',
 						label: $this.attr( 'data-label' ) || null,
 						required: $this.attr( 'aria-required' ) === 'true' || null,
-						width: '100%'
+						width: '100%',
+						// CHANGE: Allow clearing the selected value for fields that opt in
+						allowClear: $this.closest( '.fc-enhanced-select--clearable' ).length > 0
 					}, getEnhancedSelectFormatString() );
 
 					$( this )

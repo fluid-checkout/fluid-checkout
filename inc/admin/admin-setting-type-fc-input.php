@@ -57,7 +57,7 @@ class FluidCheckout_Admin_SettingType_Input extends FluidCheckout {
 		?>
 		<input
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"
 			type="<?php echo esc_attr( $input_type ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"

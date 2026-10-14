@@ -41,7 +41,7 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		add_filter( 'wc_get_template', array( $this, 'revert_terms_template' ), 10, 5 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Remove checkout elements added by the theme
 		remove_action( 'woocommerce_before_checkout_form', 'thegem_woocommerce_checkout_scripts', 1 );

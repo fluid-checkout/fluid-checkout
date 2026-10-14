@@ -47,23 +47,23 @@ class FluidCheckout_Admin_SettingType_Telemetry extends FluidCheckout {
 			<span class="fc-settings-switch<?php echo $is_disabled ? ' fc-settings-switch--disabled' : ''; ?>">
 				<input
 					name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					id="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"
 					type="checkbox"
 					class="fc-settings-toggle fc-settings-toggle--round <?php echo esc_attr( $value[ 'class' ] ); ?>"
 					value="1"
 					<?php checked( $option_value, 'yes' ); ?>
 					<?php disabled( $is_disabled ); ?>
 				/>
-				<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"></label>
+				<label for="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"></label>
 			</span>
 			<?php if ( ! empty( $label_text ) ) : ?>
-				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo $label_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
+				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"><?php echo $label_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
 			<?php endif; ?>
 		<?php else : ?>
-			<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>">
+			<label for="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>">
 				<input
 					name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					id="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"
 					type="checkbox"
 					class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 					value="1"

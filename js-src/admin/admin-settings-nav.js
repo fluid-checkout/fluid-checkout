@@ -2,12 +2,26 @@
  * Client-side tab navigation for the Fluid Checkout settings page.
  * Switches panels without a full page reload and keeps the URL in sync.
  * On narrow viewports, toggles the expandable settings menu.
+ *
+ * DEPENDS ON:
+ * - FCAdminSettingsPreview // Optional. Collapses the preview drawer when the nav changes.
  */
+( function ( root, factory ) {
+	if ( typeof define === 'function' && define.amd ) {
+		define( [], factory( root ) );
+	}
+	else if ( typeof exports === 'object' ) {
+		module.exports = factory( root );
+	}
+	else {
+		root.FCAdminSettingsNav = factory( root );
+	}
+} )( typeof global !== 'undefined' ? global : this.window || this.global, function ( root ) {
 
-( function() {
 	'use strict';
 
 	var _hasInitialized = false;
+	var _publicMethods = {};
 	var _navCompactMediaQuery = null;
 	var _settings = {
 		formSelector:           '[data-fc-settings-form]',
@@ -34,14 +48,22 @@
 
 
 	/**
+	 * METHODS
+	 */
+
+
+
+	/**
 	 * Get the settings tab slug from a URL string.
 	 *
 	 * @param   {string}  url  Absolute or relative URL.
 	 * @return  {string}       Tab slug, or empty string when missing.
 	 */
 	var getTabFromUrl = function( url ) {
+		var parsed;
+
 		try {
-			var parsed = new URL( url, window.location.origin );
+			parsed = new URL( url, window.location.origin );
 			return parsed.searchParams.get( 'tab' ) || '';
 		} catch ( err ) {
 			return '';
@@ -257,6 +279,8 @@
 		var tabPanel = document.querySelector( '[' + _settings.tabAttribute + '="' + tab + '"]' );
 		var navItems = document.querySelectorAll( _settings.navItemSelector );
 		var form = document.querySelector( _settings.formSelector );
+		var tabPanels;
+		var panel;
 		var i;
 		var navItem;
 		var navLink;
@@ -265,11 +289,14 @@
 		// Bail if tab panel is not available
 		if ( ! tabPanel ) { return false; }
 
+		tabPanels = document.querySelectorAll( _settings.tabSelector );
+
 		// Update tab panels
-		document.querySelectorAll( _settings.tabSelector ).forEach( function( panel ) {
+		for ( i = 0; i < tabPanels.length; i++ ) {
+			panel = tabPanels[ i ];
 			isActive = panel === tabPanel;
 			panel.classList.toggle( _settings.activeClass, isActive );
-		} );
+		}
 
 		// Update sidebar navigation
 		for ( i = 0; i < navItems.length; i++ ) {
@@ -399,7 +426,7 @@
 	/**
 	 * Initialize settings tab navigation.
 	 */
-	var init = function() {
+	_publicMethods.init = function() {
 		var form;
 		var breakpoint;
 		var initialTab;
@@ -446,10 +473,11 @@
 		_hasInitialized = true;
 	};
 
-	if ( 'loading' !== document.readyState ) {
-		init();
-	} else {
-		document.addEventListener( 'DOMContentLoaded', init );
-	}
 
-} )();
+
+	//
+	// Public APIs
+	//
+	return _publicMethods;
+
+} );
