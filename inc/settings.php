@@ -195,7 +195,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_delayed_account_creation'                        => 'no',
 			'fc_pro_delayed_account_creation_section_position'              => 'after_order_overview',
 			'fc_pro_delayed_account_creation_benefits'                      => '',
-			'fc_pro_delayed_account_creation_privacy_notice'                => '',
 
 			// Settings order pay.
 			'fc_pro_enable_order_pay'                                      => 'no',

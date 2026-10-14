@@ -252,25 +252,6 @@ class FluidCheckout_Settings_AccountMatching {
 				),
 
 				array(
-					'title'                 => __( 'Privacy notice', 'fluid-checkout' ),
-					/* translators: %s: Privacy policy shortcode */
-					'desc'                  => sprintf( __( 'Leaving the field empty will display the default text. You can use the shortcode %s and it will be replaced with the "privacy policy" link.', 'fluid-checkout' ), '<code>[privacy_policy]</code>' ),
-					'id'                    => 'fc_pro_delayed_account_creation_privacy_notice',
-					'type'                  => 'fc_textarea',
-					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_privacy_notice' ),
-					/* translators: %s: Privacy policy shortcode */
-					'placeholder'           => sprintf( _x( 'We treat your personal data with care, for more details view %s.', 'Delayed account creation privacy notice placeholder text', 'fluid-checkout' ), '[privacy_policy]' ),
-					'css'                   => 'width:100%; min-height: 80px;',
-					'custom_attributes'     => array(
-						'data-conditional-id'    => 'fc_pro_enable_delayed_account_creation',
-						'data-conditional-value' => 'yes',
-					),
-					'autoload'              => false,
-					'disabled'              => true,
-					'requires'              => 'pro',
-				),
-
-				array(
 					'type' => 'sectionend',
 					'id'   => 'fc_pro_delayed_account_creation_options',
 				),
