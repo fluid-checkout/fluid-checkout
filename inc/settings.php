@@ -270,8 +270,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'fc_pro_enable_order_pay_widget_areas'                          => 'yes',
 
 			// =============================== GOOGLE ADDRESS AUTOCOMPLETE ===============================
-			// Feature keys; FCGAA overrides when both active.
-			'fc_gaa_enabled'                                                => 'yes',
+			'fc_gaa_enabled'                                                => 'no',
 			'fc_gaa_google_places_api_key'                                  => '',
 			'fc_gaa_google_places_api_key_validated_hash'                   => '',
 			'fc_gaa_google_places_api_version'                              => 'current',
