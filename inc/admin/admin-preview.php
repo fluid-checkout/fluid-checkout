@@ -151,6 +151,10 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Body classes
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
 
+		// Cart fragments
+		add_filter( 'woocommerce_cart_hash_key', array( $this, 'change_cart_fragments_storage_key' ), 10 ); // Required as tabs storing different carts refresh each other endlessly
+		add_filter( 'woocommerce_cart_fragment_name', array( $this, 'change_cart_fragments_storage_key' ), 10 );
+
 		// Register assets
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ), 5 );
 
@@ -657,6 +661,17 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			'shippingMethodsQueryArg'     => self::SHIPPING_METHODS_QUERY_ARG,
 			'darkModeCssVariables'        => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
 		) );
+	}
+
+
+
+	/**
+	 * Change the browser storage keys of the cart fragments script on preview pages, so the dummy cart is stored apart from the visitor's cart.
+	 *
+	 * @param   string  $key  Browser storage key.
+	 */
+	public function change_cart_fragments_storage_key( $key ) {
+		return $key . '_fc_preview';
 	}
 
 
