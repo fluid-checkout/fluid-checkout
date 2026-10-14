@@ -67,7 +67,7 @@ class FluidCheckout_Settings_AccountMatching {
 				array(
 					'title'                 => __( 'Guest checkout', 'fluid-checkout' ),
 					'desc'                  => __( 'Allow customers to checkout without an account', 'fluid-checkout' ),
-					'desc_tip'              => __( 'When disabled, customers must create an account or log in to complete the purchase.', 'fluid-checkout' ),
+					'desc_tip'              => __( '<strong>Recommended</strong> so customers are not asked to create an account or log in during checkout, which can lower conversion rates.', 'fluid-checkout' ) . ' <br><br>' . __( 'When disabled, customers must log in or create an account to complete the purchase.', 'fluid-checkout' ),
 					'id'                    => 'woocommerce_enable_guest_checkout',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_enable_guest_checkout' ),
@@ -103,8 +103,8 @@ class FluidCheckout_Settings_AccountMatching {
 				),
 				array(
 					'title'                 => __( 'Username', 'fluid-checkout' ),
-					'desc'                  => __( 'Generate from customer\'s name (recommended)', 'fluid-checkout' ),
-					'desc_tip'              => __( 'A username is generated from the customer name, or from the email address when a name cannot be used.', 'fluid-checkout' ) . ' <br><br>' . __( 'Recommended so customers are not asked to choose a username during checkout, which can lower conversion rates.', 'fluid-checkout' ),
+					'desc'                  => __( 'Generate from customer\'s name', 'fluid-checkout' ),
+					'desc_tip'              => __( '<strong>Recommended</strong> so customers are not asked to choose a username during checkout, which can lower conversion rates.', 'fluid-checkout' ) . ' <br><br>' . __( 'A username is generated from the customer name, or from the email address when a name cannot be used.', 'fluid-checkout' ),
 					'id'                    => 'woocommerce_registration_generate_username',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_registration_generate_username' ),
@@ -116,8 +116,8 @@ class FluidCheckout_Settings_AccountMatching {
 				),
 				array(
 					'title'                 => __( 'Password', 'fluid-checkout' ),
-					'desc'                  => __( 'Send password setup link (recommended)', 'fluid-checkout' ),
-					'desc_tip'              => __( 'Customers receive an email to create their password securely.', 'fluid-checkout' ) . ' <br><br>' . __( 'Recommended so customers are not asked to set a password during checkout, which can lower conversion rates.', 'fluid-checkout' ),
+					'desc'                  => __( 'Send password setup link', 'fluid-checkout' ),
+					'desc_tip'              => __( '<strong>Recommended</strong> so customers are not asked to set a password during checkout, which can lower conversion rates.', 'fluid-checkout' ) . ' <br><br>' . __( 'Customers receive an email to create their password securely.', 'fluid-checkout' ),
 					'id'                    => 'woocommerce_registration_generate_password',
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_registration_generate_password' ),

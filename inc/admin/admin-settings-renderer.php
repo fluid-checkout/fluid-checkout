@@ -385,6 +385,26 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	}
 
 	/**
+	 * Append the experimental option label suffix when the field is marked as experimental.
+	 *
+	 * @param  array  $value  Settings field arguments.
+	 */
+	public function maybe_append_experimental_option_label( $value ) {
+		// Bail if field is not marked as experimental
+		if ( empty( $value[ 'experimental' ] ) ) { return $value; }
+
+		// Bail if admin helper is not available
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return $value; }
+
+		// Bail if field has no option label
+		if ( empty( $value[ 'desc' ] ) ) { return $value; }
+
+		$value[ 'desc' ] = FluidCheckout_Admin::instance()->append_experimental_to_option_label( $value[ 'desc' ] );
+
+		return $value;
+	}
+
+	/**
 	 * Whether the current settings page uses custom info tip icons for field descriptions.
 	 */
 	public function uses_info_tooltips() {
@@ -799,6 +819,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function output_field_checkbox( $value ) {
+		$value = $this->maybe_append_experimental_option_label( $value );
 		$field_description = $this->get_field_description( $value );
 		$has_title = '' !== $value[ 'title' ];
 		$has_legend = isset( $value[ 'legend' ] ) && '' !== $value[ 'legend' ];
