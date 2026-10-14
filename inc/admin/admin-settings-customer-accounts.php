@@ -53,6 +53,12 @@ class FluidCheckout_Settings_AccountMatching {
 		// Bail if not the customer accounts section
 		if ( 'account_matching' !== $current_section ) { return $settings; }
 
+		// Define conditionals for the username and password fields
+		$account_fields_conditional_id = 'woocommerce_enable_signup_and_login_from_checkout|woocommerce_enable_myaccount_registration';
+		if ( class_exists( 'FluidCheckout_Admin_Settings_Access' ) && FluidCheckout_Admin_Settings_Access::instance()->is_unlocked( 'pro' ) ) {
+			$account_fields_conditional_id .= '|fc_pro_enable_delayed_account_creation';
+		}
+
 		return apply_filters(
 			'fc_account_matching_settings',
 			array(
@@ -109,7 +115,7 @@ class FluidCheckout_Settings_AccountMatching {
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_registration_generate_username' ),
 					'custom_attributes'     => array(
-						'data-conditional-id'    => 'woocommerce_enable_signup_and_login_from_checkout|woocommerce_enable_myaccount_registration|fc_pro_enable_delayed_account_creation',
+						'data-conditional-id'    => $account_fields_conditional_id,
 						'data-conditional-value' => 'yes',
 					),
 					'autoload'              => false,
@@ -122,7 +128,7 @@ class FluidCheckout_Settings_AccountMatching {
 					'type'                  => 'checkbox',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'woocommerce_registration_generate_password' ),
 					'custom_attributes'     => array(
-						'data-conditional-id'    => 'woocommerce_enable_signup_and_login_from_checkout|woocommerce_enable_myaccount_registration|fc_pro_enable_delayed_account_creation',
+						'data-conditional-id'    => $account_fields_conditional_id,
 						'data-conditional-value' => 'yes',
 					),
 					'autoload'              => false,
