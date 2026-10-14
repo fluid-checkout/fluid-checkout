@@ -62,6 +62,7 @@
 		modeSelector:                '[data-fc-settings-preview-mode]',
 		headerFooterSelector:        '[data-fc-settings-preview-header-footer]',
 		viewportInputSelector:       'input[name="fc-settings-preview-viewport"]',
+		enableSettingFieldSelector:  '[name="###NAME###"][type="checkbox"]',
 		hasPreviewClass:             'has-preview',
 		isExpandedClass:             'is-preview-expanded',
 		isEnterClass:                'is-preview-enter',
@@ -70,6 +71,7 @@
 		isBusyClass:                 'is-busy',
 		pageAttribute:               'data-fc-settings-preview-page',
 		urlAttribute:                'data-fc-settings-preview-url',
+		enableSettingAttribute:      'data-fc-settings-preview-enable-setting',
 		viewportWidths:              { mobile: 350, tablet: 750, desktop: 1000 },
 		widthMin:                    320,
 		widthMax:                    1920,
@@ -488,7 +490,7 @@
 	 * Load a page preview in the iframe, or the placeholder for pages that cannot be previewed.
 	 *
 	 * @param  {string}  page  Preview page slug.
-	 * @param  {string}  url   Preview URL of the page in guest mode, empty when the page cannot be previewed, such as pages that require PRO.
+	 * @param  {string}  url   Preview URL of the page in guest mode, empty when the page cannot be previewed, such as pages that require PRO or are disabled in the settings.
 	 */
 	var setPreviewFrameSource = function( page, url ) {
 		var frame = document.querySelector( _settings.frameSelector );
@@ -532,7 +534,7 @@
 			tab.setAttribute( 'aria-selected', isActive ? 'true' : 'false' );
 
 			if ( isActive ) {
-				url = tab.getAttribute( _settings.urlAttribute );
+				url = getPageTabUrl( tab );
 			}
 		}
 
@@ -556,6 +558,42 @@
 		if ( ! isPreviewVisibleForTab( tab ) ) { return; }
 
 		setPreviewPage( getPreviewPageForTab( tab ) );
+	};
+
+
+
+	/**
+	 * Get the active preview page tab.
+	 *
+	 * @return  {Element|null}
+	 */
+	var getActivePageTab = function() {
+		return document.querySelector( _settings.pageTabSelector + '.' + _settings.isActiveClass );
+	};
+
+	/**
+	 * Get the preview URL of a page tab, or an empty string when the page cannot be previewed: pages that require PRO, and pages disabled in the settings form, also by unsaved changes.
+	 *
+	 * @param  {Element|null}  pageTab  Preview page tab.
+	 *
+	 * @return  {string}  Preview URL of the page in guest mode, or an empty string.
+	 */
+	var getPageTabUrl = function( pageTab ) {
+		var form = document.querySelector( _settings.formSelector );
+		var enableSetting;
+		var enableField;
+
+		// Bail if there is no page tab
+		if ( ! pageTab ) { return ''; }
+
+		// Get the field of the setting that enables the page, for pages that have one
+		enableSetting = pageTab.getAttribute( _settings.enableSettingAttribute );
+		enableField = form && enableSetting ? form.querySelector( _settings.enableSettingFieldSelector.replace( '###NAME###', CSS.escape( enableSetting ) ) ) : null;
+
+		// Bail if the page is disabled in the settings form
+		if ( enableField && ! enableField.checked ) { return ''; }
+
+		return pageTab.getAttribute( _settings.urlAttribute ) || '';
 	};
 
 
@@ -701,7 +739,7 @@
 	 * Load the active page tab in the page preview, such as after changing the preview mode.
 	 */
 	var loadActivePreviewPage = function() {
-		var pageTab = document.querySelector( _settings.pageTabSelector + '.' + _settings.isActiveClass );
+		var pageTab = getActivePageTab();
 
 		// Bail if no page tab is active
 		if ( ! pageTab ) { return; }
@@ -816,8 +854,13 @@
 
 		_needsRefresh = false;
 
-		// Maybe skip placeholders, as page previews show the unsaved settings when they load
-		if ( ! getPreviewOrigin() ) {
+		// Maybe load the active page anew, when the settings enabled or disabled it, which switches between its preview and placeholder
+		if ( ( '' === getPageTabUrl( getActivePageTab() ) ) !== ( '' === getPreviewOrigin() ) ) {
+			_needsReload = false;
+			loadActivePreviewPage();
+		}
+		// Otherwise, maybe skip placeholders, as page previews show the unsaved settings when they load
+		else if ( ! getPreviewOrigin() ) {
 			_needsReload = false;
 		}
 		// Otherwise, maybe refresh only the styles of the page preview

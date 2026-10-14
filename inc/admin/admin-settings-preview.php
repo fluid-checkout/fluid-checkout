@@ -74,31 +74,34 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 		$pages = array(
 			'checkout'       => array(
-				'label'        => __( 'Checkout', 'fluid-checkout' ),
-				'requires_pro' => false,
-				'url'          => wc_get_checkout_url(),
+				'label'             => __( 'Checkout', 'fluid-checkout' ),
+				'requires_pro'      => false,
+				'url'               => wc_get_checkout_url(),
 			),
 			'cart'           => array(
-				'label'        => __( 'Cart', 'fluid-checkout' ),
-				'requires_pro' => ! $is_pro_activated,
-				'url'          => wc_get_cart_url(),
+				'label'             => __( 'Cart', 'fluid-checkout' ),
+				'requires_pro'      => ! $is_pro_activated,
+				'enable_setting'    => 'fc_pro_enable_cart_page',
+				'url'               => wc_get_cart_url(),
 			),
 			'order_received' => array(
-				'label'        => __( 'Thank you', 'fluid-checkout' ),
-				'requires_pro' => ! $is_pro_activated,
-				'url'          => FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_received_url(),
+				'label'             => __( 'Thank you', 'fluid-checkout' ),
+				'requires_pro'      => ! $is_pro_activated,
+				'enable_setting'    => 'fc_pro_enable_order_received',
+				'url'               => FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_received_url(),
 			),
 			'order_pay'      => array(
-				'label'        => __( 'Order pay', 'fluid-checkout' ),
-				'requires_pro' => ! $is_pro_activated,
-				'url'          => FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_pay_url(),
+				'label'             => __( 'Order pay', 'fluid-checkout' ),
+				'requires_pro'      => ! $is_pro_activated,
+				'enable_setting'    => 'fc_pro_enable_order_pay',
+				'url'               => FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_order_pay_url(),
 			),
 		);
 
 		/**
 		 * Filter preview page tabs on the Fluid Checkout settings page.
 		 *
-		 * @param  array  $pages  Map of page slug => args (`label`, `requires_pro`, `url` of the frontend page to preview).
+		 * @param  array  $pages  Map of page slug => args (`label`, `requires_pro`, `enable_setting` that enables the page, found on the settings tab with the same slug, `url` of the frontend page to preview).
 		 */
 		return apply_filters( 'fc_admin_settings_preview_pages', $pages );
 	}
@@ -431,6 +434,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 						aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
 						data-fc-settings-preview-page="<?php echo esc_attr( $page_slug ); ?>"
 						data-fc-settings-preview-url="<?php echo esc_url( $this->get_preview_page_url( $page_args ) ); ?>"
+						data-fc-settings-preview-enable-setting="<?php echo esc_attr( isset( $page_args[ 'enable_setting' ] ) ? $page_args[ 'enable_setting' ] : '' ); ?>"
 					><?php echo esc_html( $page_args[ 'label' ] ); ?></button>
 				<?php endforeach; ?>
 			</div>
@@ -503,7 +507,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 		// Iterate preview pages
 		foreach ( $this->get_preview_pages() as $page_slug => $page_args ) {
-			$placeholders[ $page_slug ] = $this->get_placeholder_iframe_srcdoc( $page_args[ 'label' ], ! empty( $page_args[ 'requires_pro' ] ), $page_slug );
+			$placeholders[ $page_slug ] = $this->get_placeholder_iframe_srcdoc( $page_args[ 'label' ], ! empty( $page_args[ 'requires_pro' ] ), $page_slug, isset( $page_args[ 'enable_setting' ] ) ? $page_args[ 'enable_setting' ] : '' );
 		}
 
 		return $placeholders;
@@ -512,20 +516,31 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	/**
 	 * Build a minimal placeholder document for the preview iframe.
 	 *
-	 * @param  string  $page_label    Label of the preview page.
-	 * @param  bool    $requires_pro  Whether the page preview requires PRO.
-	 * @param  string  $page_slug     Preview page slug (for PRO upgrade tracking).
+	 * @param  string  $page_label      Label of the preview page.
+	 * @param  bool    $requires_pro    Whether the page preview requires PRO.
+	 * @param  string  $page_slug       Preview page slug (for PRO upgrade tracking).
+	 * @param  string  $enable_setting  Setting that enables the page, for the placeholder shown while it is disabled.
 	 * @return string
 	 */
-	private function get_placeholder_iframe_srcdoc( $page_label, $requires_pro = false, $page_slug = '' ) {
+	private function get_placeholder_iframe_srcdoc( $page_label, $requires_pro = false, $page_slug = '', $enable_setting = '' ) {
 		$title = sprintf(
 			/* translators: %s: preview page label, e.g. Checkout */
 			__( '%s preview', 'fluid-checkout' ),
 			$page_label
 		);
-		$subtitle = $requires_pro
-			? $this->get_pro_preview_subtitle_html( $page_slug )
-			: esc_html__( 'Isolated session · nothing is saved', 'fluid-checkout' );
+
+		// Maybe link to PRO, for pages that require it
+		if ( $requires_pro ) {
+			$subtitle = $this->get_pro_preview_subtitle_html( $page_slug );
+		}
+		// Maybe link to the setting that enables the page, for disabled pages
+		elseif ( ! empty( $enable_setting ) ) {
+			$subtitle = $this->get_disabled_preview_subtitle_html( $page_slug, $enable_setting );
+		}
+		// Otherwise, describe the preview
+		else {
+			$subtitle = esc_html__( 'Isolated session · nothing is saved', 'fluid-checkout' );
+		}
 
 		$allowed_subtitle_html = array(
 			'a' => array(
@@ -536,6 +551,29 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		);
 
 		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}a{color:#2271b1;text-decoration:underline}a:hover,a:focus{color:#135e96}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . wp_kses( $subtitle, $allowed_subtitle_html ) . '</span></div></body></html>';
+	}
+
+
+
+	/**
+	 * Get the subtitle HTML for the preview placeholder of a disabled page, with a link to the setting that enables it.
+	 *
+	 * @param  string  $page_slug       Preview page slug, also the slug of the settings tab with the setting.
+	 * @param  string  $enable_setting  Setting that enables the page.
+	 * @return string
+	 */
+	public function get_disabled_preview_subtitle_html( $page_slug, $enable_setting ) {
+		$link = sprintf(
+			'<a href="%1$s" target="_parent">%2$s</a>',
+			esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( $page_slug ) . '#' . $enable_setting ),
+			esc_html__( 'Turn them on', 'fluid-checkout' )
+		);
+
+		return sprintf(
+			/* translators: %s: HTML link to the setting that enables the optimizations of the page */
+			__( 'Optimizations for this page are turned off. %s to preview the page.', 'fluid-checkout' ),
+			$link
+		);
 	}
 
 }
