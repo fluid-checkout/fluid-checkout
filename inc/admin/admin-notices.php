@@ -72,7 +72,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 	 * @return  string
 	 */
 	public function get_plugin_icon_url() {
-		return self::$directory_url . 'images/fluid-checkout-icon.png';
+		return self::$directory_url . 'images/admin/fluid-checkout-icon.svg';
 	}
 
 
@@ -169,7 +169,7 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 
 			// Maybe add dismiss action
 			if ( $notice['dismissable'] ) {
-				$notice['actions'][] = '<a href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '" style="margin: 0 20px;">' . esc_html( $notice['dismiss_label'] ) . '</a>';
+				$notice['actions'][] = '<a class="fc-admin-notice__dismiss" href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '">' . esc_html( $notice['dismiss_label'] ) . '</a>';
 			}
 
 			$this->output_notice( $notice );
@@ -205,8 +205,20 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		// Bail if not dismissing notices
 		if ( ! array_key_exists( self::$plugin_prefix . '_action', $_GET ) || 'dismiss_notice' !== sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_action' ] ) ) || ! array_key_exists( self::$plugin_prefix . '_notice', $_GET ) || empty( sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) ) ) ) { return; }
 
-		// Update notice dismiss option
+		// Get notice name
 		$name = sanitize_text_field( wp_unslash( $_GET[ self::$plugin_prefix . '_notice' ] ) );
+
+		// Bail if notice name is not registered
+		$registered_notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
+		$registered_names = array();
+		foreach ( $registered_notices as $notice ) {
+			// Skip notices without a name
+			if ( empty( $notice['name'] ) ) { continue; }
+			$registered_names[] = $notice['name'];
+		}
+		if ( ! in_array( $name, $registered_names, true ) ) { return; }
+
+		// Update notice dismiss option
 		update_option( self::$plugin_prefix . '_dismissed_notice_' . $name, 1 );
 	}
 

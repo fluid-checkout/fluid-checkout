@@ -38,7 +38,7 @@
 		i18n: {
 			processing:                       'Processing…',
 			genericError:                     'Something went wrong. Please try again.',
-			activate:                         'Activate plugin',
+			activate:                         'Activate add-on',
 		},
 	};
 
@@ -67,7 +67,7 @@
 	 * @return {string} Activate button label.
 	 */
 	var getActivateLabel = function() {
-		return _settings.i18n && _settings.i18n.activate ? _settings.i18n.activate : 'Activate plugin';
+		return _settings.i18n && _settings.i18n.activate ? _settings.i18n.activate : 'Activate add-on';
 	};
 
 
@@ -104,19 +104,30 @@
 	 * @param {string}  type    success|error.
 	 */
 	var showItemNotice = function( button, message, type ) {
-		var item = button.closest( _settings.itemSelector );
+		var item = button.closest( '.fc-addons__item, .fc-settings-card--promo' );
+		var actions = button.closest( '.fc-addons__item-actions' );
 		var notice;
 
-		// Bail if item missing
-		if ( ! item ) { return; }
+		// Prefer the actions block notice when present
+		if ( actions ) {
+			notice = actions.querySelector( '.fc-addons__item-action-notice' );
 
-		notice = item.querySelector( _settings.itemActionNoticeSelector );
+			if ( ! notice ) {
+				notice = document.createElement( 'div' );
+				notice.className = 'fc-addons__item-action-notice';
+				actions.appendChild( notice );
+			}
+		} else {
+			// Bail if item missing
+			if ( ! item ) { return; }
 
-		// Maybe create the notice element
-		if ( ! notice ) {
-			notice = document.createElement( 'div' );
-			notice.className = _settings.itemActionNoticeClass;
-			button.parentNode.appendChild( notice );
+			notice = item.querySelector( '.fc-addons__item-action-notice' );
+
+			if ( ! notice ) {
+				notice = document.createElement( 'div' );
+				notice.className = 'fc-addons__item-action-notice';
+				button.parentNode.appendChild( notice );
+			}
 		}
 
 		notice.hidden = false;
@@ -202,6 +213,9 @@
 		var body;
 
 		e.preventDefault();
+
+		// Bail if the control is disabled (e.g. add-on installed while PRO is inactive)
+		if ( button.disabled || button.classList.contains( 'disabled' ) ) { return; }
 
 		// Bail if AJAX not configured
 		if ( ! plugin || ! _settings.ajaxUrl || ! _settings.activateNonce ) { return; }

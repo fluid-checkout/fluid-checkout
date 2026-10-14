@@ -254,22 +254,21 @@
 
 
 	/**
-	 * Show or hide the inline Send now button.
+	 * Enable or disable the inline Send now button.
+	 * Only the saved enabled state may enable the button — toggling the checkbox alone is not enough.
 	 *
-	 * @param {boolean} enabled Whether the enable checkbox is checked.
+	 * @param {boolean} enabled Whether reporting is saved as enabled.
 	 */
-	var updateInlineSendButtonVisibility = function( enabled ) {
+	var updateInlineSendButtonState = function( enabled ) {
 		// Bail if inline send button is not available
 		if ( ! $inlineSendButton.length ) { return; }
 
-		// Maybe show the inline send button
-		if ( enabled ) {
-			$inlineSendButton.removeClass( _settings.isHiddenClass );
-			return;
-		}
+		$inlineSendButton.prop( 'disabled', ! enabled );
 
-		$inlineSendButton.addClass( _settings.isHiddenClass );
-		clearFeedback( $inlineFeedback );
+		// Maybe clear feedback when the button is disabled
+		if ( ! enabled ) {
+			clearFeedback( $inlineFeedback );
+		}
 	};
 
 
@@ -399,15 +398,37 @@
 
 
 	/**
+	 * Apply the saved enabled state to the enable checkbox and Send now controls.
+	 *
+	 * @param {boolean} enabled Whether reporting is enabled.
+	 */
+	var applyEnabledState = function( enabled ) {
+		if ( enabled ) {
+			$( _settings.enableCheckboxSelector ).prop( 'checked', true );
+		}
+
+		_isEnabled = !! enabled;
+		updateSendButton( _isEnabled );
+		updateInlineSendButtonState( _isEnabled );
+	};
+
+
+
+	/**
 	 * Handle a successful send-now AJAX response.
 	 *
-	 * @param {Object}  response        Parsed AJAX response.
-	 * @param {jQuery}  $feedbackTarget Feedback element.
-	 * @param {boolean} enableIfDisabled Whether the request asked to enable reporting.
+	 * @param {Object} response        Parsed AJAX response.
+	 * @param {jQuery} $feedbackTarget Feedback element.
 	 */
-	var handleSendResponse = function( response, $feedbackTarget, enableIfDisabled ) {
-		// Maybe show a send error
+	var handleSendResponse = function( response, $feedbackTarget ) {
+		var isEnabled = !!( response && response.data && response.data.is_enabled );
+
+		// Maybe show a send error — still apply enabled state when the option was already saved
 		if ( ! response || ! response.success ) {
+			if ( isEnabled ) {
+				applyEnabledState( true );
+			}
+
 			showFeedback(
 				$feedbackTarget,
 				getSendErrorMessage( response && response.data ),
@@ -416,14 +437,7 @@
 			return;
 		}
 
-		// Maybe check the enable checkbox after enabling via send-now
-		if ( enableIfDisabled ) {
-			$( _settings.enableCheckboxSelector ).prop( 'checked', true );
-		}
-
-		_isEnabled = true;
-		updateSendButton( true );
-		updateInlineSendButtonVisibility( true );
+		applyEnabledState( true );
 		showFeedback(
 			$feedbackTarget,
 			response.data.message || _settings.i18n.sendSuccess || 'Site report sent successfully.',
@@ -465,8 +479,8 @@
 		$trigger = _settings.sendContextInline === context ? $inlineSendButton : $sendButton;
 		$feedbackTarget = _settings.sendContextInline === context ? $inlineFeedback : $feedback;
 
-		// Bail if inline send is used while reporting is disabled
-		if ( _settings.sendContextInline === context && _settings.enabledYesValue !== formState.enabled ) {
+		// Bail if inline send is used while reporting is not saved as enabled
+		if ( _settings.sendContextInline === context && ! _isEnabled ) {
 			return;
 		}
 
@@ -484,9 +498,16 @@
 				enable_if_disabled: enableIfDisabled ? _settings.enabledYesValue : _settings.enabledNoValue,
 			}
 		).done( function( response ) {
-			handleSendResponse( response, $feedbackTarget, enableIfDisabled );
+			handleSendResponse( response, $feedbackTarget );
 		} ).fail( function( xhr ) {
-			showFeedback( $feedbackTarget, getSendErrorMessage( getSendErrorDataFromXhr( xhr ) ), 'error' );
+			var errorData = getSendErrorDataFromXhr( xhr );
+
+			// Maybe apply enabled state when the option was already saved before the send failed
+			if ( errorData && errorData.is_enabled ) {
+				applyEnabledState( true );
+			}
+
+			showFeedback( $feedbackTarget, getSendErrorMessage( errorData ), 'error' );
 		} ).always( function() {
 			restoreSendControls( $trigger );
 		} );
@@ -517,15 +538,6 @@
 
 
 	/**
-	 * Handle enable checkbox changes and update the inline Send now button.
-	 */
-	var handleEnableCheckboxChange = function() {
-		updateInlineSendButtonVisibility( $( _settings.enableCheckboxSelector ).is( ':checked' ) );
-	};
-
-
-
-	/**
 	 * Route document clicks for preview, send, and close actions.
 	 *
 	 * @param {Event} e Click event.
@@ -549,20 +561,6 @@
 		else if ( matchedElement = e.target.closest( _settings.closeAttributeSelector ) ) {
 			e.preventDefault();
 			closeModal();
-		}
-	};
-
-
-
-	/**
-	 * Route change events for the enable checkbox.
-	 *
-	 * @param {Event} e Change event.
-	 */
-	var handleChange = function( e ) {
-		// ENABLE CHECKBOX
-		if ( e.target.closest( _settings.enableCheckboxSelector ) ) {
-			handleEnableCheckboxChange();
 		}
 	};
 
@@ -615,10 +613,11 @@
 
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
-		document.addEventListener( 'change', handleChange, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
 
-		updateInlineSendButtonVisibility( $( _settings.enableCheckboxSelector ).is( ':checked' ) );
+		// Enable Send now only when reporting is already saved as enabled
+		_isEnabled = true === _settings.isEnabledSaved || _settings.enabledYesValue === _settings.isEnabledSaved;
+		updateInlineSendButtonState( _isEnabled );
 
 		_hasInitialized = true;
 	};

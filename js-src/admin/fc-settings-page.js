@@ -1,5 +1,5 @@
 /**
- * Manage conditional field visibility on Fluid Checkout admin settings pages.
+ * Manage Fluid Checkout admin settings page behavior (conditionals, actions bar).
  *
  * DEPENDS ON:
  * - None (vanilla JS)
@@ -27,11 +27,29 @@
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
-		settingsRowSelector:                   'tr',
+		settingsRowSelector:                   '.fc-settings-field, tr',
+		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
+		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
+		isSelectedClass:                       'is-selected',
+		disabledFieldClass:                    'fc-settings-field--disabled',
+
+		contentSelector:                       '.fc-settings-content',
+		actionsSelector:                       '.fc-settings-actions',
+		formSelector:                          '[data-fc-settings-form]',
+		saveButtonSelector:                    '[data-fc-settings-save]',
+		isBusyClass:                           'is-busy',
+		isPinnedClass:                         'is-pinned',
 
 		hiddenClass:                           'hidden',
+
+		syncedSelectAttribute:                 'data-fc-settings-sync-group',
+
+		i18n: {
+			saving:                            'Saving...',
+		},
 	};
 	var _triggerFieldIds = [];
+	var _actionsSyncScheduled = false;
 
 
 
@@ -154,21 +172,30 @@
 
 	/**
 	 * Get the trigger field element by its full field id (with prefix).
+	 * Prefers named form controls so values from other settings tabs are used
+	 * (all tabs stay in the DOM during SPA navigation).
 	 *
 	 * @param   {string}   fieldId  The full field id including prefix.
 	 * @return  {Element}           The trigger field element, or null.
 	 */
 	var getTriggerFieldElement = function( fieldId ) {
-		// Try by id first
-		var element = document.getElementById( fieldId );
-		if ( element ) { return element; }
+		var checkedRadio;
+		var namedElement;
 
-		// Maybe radio group matched by name
-		var checkedRadio = document.querySelector( 'input[type="radio"][name="' + fieldId + '"]:checked' );
+		// Prefer checked radio by name (layout / template selectors)
+		checkedRadio = document.querySelector( 'input[type="radio"][name="' + fieldId + '"]:checked' );
 		if ( checkedRadio ) { return checkedRadio; }
 
 		// Fall back to the first radio in the group
-		return document.querySelector( 'input[type="radio"][name="' + fieldId + '"]' );
+		checkedRadio = document.querySelector( 'input[type="radio"][name="' + fieldId + '"]' );
+		if ( checkedRadio ) { return checkedRadio; }
+
+		// Prefer named inputs (checkboxes, selects, text) over id-only mirrors
+		namedElement = document.querySelector( '[name="' + fieldId + '"]' );
+		if ( namedElement ) { return namedElement; }
+
+		// Fall back to element id
+		return document.getElementById( fieldId );
 	}
 
 	/**
@@ -194,6 +221,267 @@
 		return null;
 	}
 
+	/**
+	 * Get the visibility container for a conditional field.
+	 *
+	 * @param   {Element}  element  The conditional field element.
+	 * @return  {Element}           The container element, or null.
+	 */
+	var getConditionalContainer = function( element ) {
+		// Bail if element is not valid
+		if ( ! element ) { return null; }
+
+		// Prefer the nearest settings field row
+		var settingsField = element.closest( '.fc-settings-field' );
+		if ( settingsField ) { return settingsField; }
+
+		// Fall back to a nested fieldset then a table row for WC embeds
+		var fieldset = element.closest( 'fieldset' );
+		if ( fieldset ) { return fieldset; }
+
+		return element.closest( 'tr' );
+	}
+
+	/**
+	 * Whether a container is currently hidden by conditional visibility.
+	 *
+	 * @param   {Element}  container  The container element.
+	 * @return  {boolean}
+	 */
+	var isContainerHidden = function( container ) {
+		// Bail if container is not valid
+		if ( ! container ) { return false; }
+
+		return container.classList.contains( _settings.hiddenClass ) || 'none' === container.style.display;
+	}
+
+	/**
+	 * Whether a conditional field value matches the trigger value.
+	 * Supports a single value or an OR list separated by commas or pipes
+	 * (e.g. `optional,required` or `optional|required` when paired in an AND list).
+	 *
+	 * @param   {string}  conditionValue  Expected value(s) from data-conditional-value.
+	 * @param   {string}  fieldValue      Current trigger field value.
+	 * @return  {boolean}
+	 */
+	var doesConditionalValueMatch = function( conditionValue, fieldValue ) {
+		var allowedValues;
+		var i;
+
+		// Bail if condition or field value is missing
+		if ( null === conditionValue || undefined === conditionValue || null === fieldValue || undefined === fieldValue ) {
+			return false;
+		}
+
+		// Exact match for a single value
+		if ( conditionValue === fieldValue ) {
+			return true;
+		}
+
+		// Otherwise match against a comma- or pipe-separated OR list
+		allowedValues = String( conditionValue ).split( /[,|]/ );
+		for ( i = 0; i < allowedValues.length; i++ ) {
+			if ( allowedValues[ i ].trim() === fieldValue ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Parse trigger ids from a conditional field attribute.
+	 * Pipe-separated ids use OR matching; comma-separated ids use AND matching.
+	 *
+	 * @param   {string}  conditionIds  Value of data-conditional-id.
+	 * @return  {Array}                 Trimmed non-empty trigger keys.
+	 */
+	var parseConditionalIds = function( conditionIds ) {
+		var parts;
+		var result = [];
+		var i;
+		var conditionIdsString;
+
+		// Bail if condition ids are missing
+		if ( null === conditionIds || undefined === conditionIds || '' === conditionIds ) {
+			return result;
+		}
+
+		conditionIdsString = String( conditionIds );
+		parts = conditionIdsString.indexOf( '|' ) !== -1 ? conditionIdsString.split( '|' ) : conditionIdsString.split( ',' );
+		for ( i = 0; i < parts.length; i++ ) {
+			var part = parts[ i ].trim();
+			if ( part ) {
+				result.push( part );
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * Whether conditional ids in data-conditional-id should match with OR logic.
+	 *
+	 * @param   {string}  conditionIds  Value of data-conditional-id.
+	 * @return  {boolean}
+	 */
+	var isConditionalOrMatch = function( conditionIds ) {
+		return null !== conditionIds && undefined !== conditionIds && String( conditionIds ).indexOf( '|' ) !== -1;
+	}
+
+	/**
+	 * Whether a conditional field lists the given trigger key in data-conditional-id.
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @param   {string}   triggerKey        Trigger key without field id prefix.
+	 * @return  {boolean}
+	 */
+	var conditionalFieldDependsOnTrigger = function( conditionalField, triggerKey ) {
+		var conditionIds;
+		var i;
+
+		// Bail if arguments are not valid
+		if ( ! conditionalField || ! triggerKey ) { return false; }
+
+		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			if ( conditionIds[ i ] === triggerKey ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Evaluate whether any pipe-separated conditional id/value pair matches (OR).
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @return  {boolean}
+	 */
+	var doAnyConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIds;
+		var conditionValuesRaw;
+		var i;
+		var triggerElement;
+		var triggerFieldRow;
+
+		// Bail if element is not valid
+		if ( ! conditionalField ) { return false; }
+
+		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+
+		// Bail if no trigger ids
+		if ( ! conditionIds.length ) { return false; }
+
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ i ] );
+
+			// Skip if trigger is missing
+			if ( ! triggerElement ) { continue; }
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				continue;
+			}
+
+			if ( doesConditionalValueMatch( conditionValuesRaw, getFieldValue( triggerElement ) ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Evaluate whether all conditional id/value pairs currently match (AND).
+	 * A single id with a comma-separated value list still uses OR matching for that value.
+	 * Pipe-separated ids in data-conditional-id use OR matching across triggers.
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @return  {boolean}
+	 */
+	var doAllConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIdsRaw;
+		var conditionIds;
+		var conditionValuesRaw;
+		var conditionValues;
+		var i;
+		var triggerElement;
+		var expectedValue;
+		var triggerFieldRow;
+
+		// Bail if element is not valid
+		if ( ! conditionalField ) { return false; }
+
+		conditionIdsRaw = conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute );
+		conditionIds = parseConditionalIds( conditionIdsRaw );
+		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+
+		// Bail if no trigger ids
+		if ( ! conditionIds.length ) { return false; }
+
+		// Pipe-separated trigger ids: any matching value shows the field
+		if ( isConditionalOrMatch( conditionIdsRaw ) ) {
+			return doAnyConditionalConditionsMatch( conditionalField );
+		}
+
+		// Single trigger: OR list in data-conditional-value (existing behavior)
+		if ( 1 === conditionIds.length ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ 0 ] );
+			if ( ! triggerElement ) { return false; }
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				return false;
+			}
+
+			return doesConditionalValueMatch( conditionValuesRaw, getFieldValue( triggerElement ) );
+		}
+
+		// Multiple triggers: pair each id with the value at the same index (AND)
+		conditionValues = String( conditionValuesRaw || '' ).split( ',' );
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ i ] );
+			expectedValue = conditionValues[ i ] ? conditionValues[ i ].trim() : '';
+
+			// Missing trigger or value mismatch hides the field
+			if ( ! triggerElement || ! doesConditionalValueMatch( expectedValue, getFieldValue( triggerElement ) ) ) {
+				return false;
+			}
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Whether the field row is a locked (disabled) settings field kept visible for discovery.
+	 *
+	 * @param   {Element}  fieldRow  The visibility container element.
+	 * @return  {boolean}
+	 */
+	var isDisabledSettingsField = function( fieldRow ) {
+		var settingsField;
+
+		// Bail if field row is not valid
+		if ( ! fieldRow ) { return false; }
+
+		// Direct match on the settings field row
+		if ( fieldRow.classList.contains( _settings.disabledFieldClass ) ) {
+			return true;
+		}
+
+		// Nested fieldsets still belong to a locked settings field row
+		settingsField = fieldRow.closest( '.fc-settings-field' );
+		return !!( settingsField && settingsField.classList.contains( _settings.disabledFieldClass ) );
+	}
+
 
 
 	/**
@@ -202,37 +490,42 @@
 	 * @param   {Element}  triggerElement  The field that controls related conditional fields.
 	 */
 	var maybeProcessConditionalFields = function( triggerElement ) {
+		var triggerKey;
+		var allConditionalFields;
+		var i;
+		var conditionalField;
+		var fieldRow;
+		var isVisible;
+
 		// Bail if element is not valid
 		if ( ! triggerElement ) { return; }
 
-		// Get related conditional fields selector
-		var triggerKey = getTriggerKey( triggerElement );
-		var selector = _settings.conditionalFieldsForTriggerSelector.replace( '###ID###', triggerKey );
+		triggerKey = getTriggerKey( triggerElement );
 
-		// Get related conditional fields
-		var relatedConditionalFields = document.querySelectorAll( selector );
+		// Bail if trigger key is missing
+		if ( ! triggerKey ) { return; }
+
+		// Scan all conditionals; attribute may list multiple trigger ids (AND)
+		allConditionalFields = document.querySelectorAll( _settings.conditionalFieldsSelector );
 
 		// Maybe show/hide related conditional fields
-		// Loop through each related conditional field
-		for ( var i = 0; i < relatedConditionalFields.length; i++ ) {
-			// Get conditional field variables
-			var conditionalField = relatedConditionalFields[ i ];
-			var fieldValueCondition = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
-			var fieldValue = getFieldValue( triggerElement );
+		for ( i = 0; i < allConditionalFields.length; i++ ) {
+			conditionalField = allConditionalFields[ i ];
 
-			// Get field row
-			var fieldRow = conditionalField.closest( _settings.settingsRowSelector );
-			var triggerFieldRow = triggerElement.closest( _settings.settingsRowSelector );
+			// Skip fields that do not depend on this trigger
+			if ( ! conditionalFieldDependsOnTrigger( conditionalField, triggerKey ) ) { continue; }
+
+			fieldRow = getConditionalContainer( conditionalField );
 
 			// Skip if field row is not found
 			if ( ! fieldRow ) { continue; }
 
 			// Define visibility state
-			// - Hide field if condition is not met
-			// - Hide related conditional fields if the trigger field itself is hidden
-			var isVisible = fieldValueCondition === fieldValue;
-			if ( triggerFieldRow && triggerFieldRow.classList.contains( _settings.hiddenClass ) ) {
-				isVisible = false;
+			// - Keep locked fields visible for discovery
+			// - Hide field if any paired condition is not met
+			isVisible = true;
+			if ( ! isDisabledSettingsField( fieldRow ) ) {
+				isVisible = doAllConditionalConditionsMatch( conditionalField );
 			}
 
 			// Maybe show/hide field row
@@ -257,31 +550,42 @@
 	 * Initialize the list of conditional field triggers.
 	 */
 	var initializeConditionals = function() {
+		var conditionalFields;
+		var i;
+		var j;
+		var conditionalField;
+		var conditionIds;
+		var fieldValue;
+		var fieldId;
+		var fieldElement;
+
 		// Get conditional fields
-		var conditionalFields = document.querySelectorAll( _settings.conditionalFieldsSelector );
+		conditionalFields = document.querySelectorAll( _settings.conditionalFieldsSelector );
 
 		// Build list of conditional field trigger ids
-		// Loop through each conditional field
-		for ( var i = 0; i < conditionalFields.length; i++ ) {
-			var conditionalField = conditionalFields[ i ];
-			var fieldId = _settings.fieldIdPrefix + conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute );
-			var fieldValue = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+		for ( i = 0; i < conditionalFields.length; i++ ) {
+			conditionalField = conditionalFields[ i ];
+			conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+			fieldValue = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
 
 			// Skip if condition field id or value is not set
-			if ( ! fieldId || ! fieldValue ) { continue; }
+			if ( ! conditionIds.length || ! fieldValue ) { continue; }
 
-			// Skip if field id is already added to conditionals
-			if ( _triggerFieldIds.includes( fieldId ) ) { continue; }
+			// Register each trigger id from an AND list
+			for ( j = 0; j < conditionIds.length; j++ ) {
+				fieldId = _settings.fieldIdPrefix + conditionIds[ j ];
 
-			// Add to conditionals
-			_triggerFieldIds.push( fieldId );
+				// Skip if field id is already added to conditionals
+				if ( _triggerFieldIds.includes( fieldId ) ) { continue; }
+
+				_triggerFieldIds.push( fieldId );
+			}
 		}
 
 		// Maybe process conditional fields
-		// Loop through each conditional field trigger
-		for ( var i = 0; i < _triggerFieldIds.length; i++ ) {
-			var fieldId = _triggerFieldIds[ i ];
-			var fieldElement = getTriggerFieldElement( fieldId );
+		for ( i = 0; i < _triggerFieldIds.length; i++ ) {
+			fieldId = _triggerFieldIds[ i ];
+			fieldElement = getTriggerFieldElement( fieldId );
 
 			// Skip if field element is not found
 			if ( ! fieldElement ) { continue; }
@@ -290,6 +594,49 @@
 			maybeProcessConditionalFields( fieldElement );
 		}
 	}
+
+
+
+	/**
+	 * Pin the actions bar to the viewport bottom, matching the center column width.
+	 * Needed when a tall WP admin menu forces page scroll past the settings layout.
+	 */
+	var syncActionsBarPosition = function() {
+		var actions = document.querySelector( _settings.actionsSelector );
+		var content = document.querySelector( _settings.contentSelector );
+		var rect;
+
+		// Bail if the actions bar is missing or hidden
+		if ( ! actions || actions.hasAttribute( 'hidden' ) ) { return; }
+
+		// Bail if the content column is missing
+		if ( ! content ) { return; }
+
+		rect = content.getBoundingClientRect();
+
+		// Bail if layout metrics are not ready yet
+		if ( rect.width <= 0 ) { return; }
+
+		actions.style.left = Math.round( rect.left ) + 'px';
+		actions.style.width = Math.round( rect.width ) + 'px';
+		actions.style.right = 'auto';
+		actions.classList.add( _settings.isPinnedClass );
+	};
+
+	/**
+	 * Schedule a single actions-bar position sync on the next animation frame.
+	 */
+	var scheduleActionsBarSync = function() {
+		// Bail if a sync is already queued
+		if ( _actionsSyncScheduled ) { return; }
+
+		_actionsSyncScheduled = true;
+
+		window.requestAnimationFrame( function() {
+			_actionsSyncScheduled = false;
+			syncActionsBarPosition();
+		} );
+	};
 
 
 
@@ -308,11 +655,157 @@
 	}
 
 	/**
+	 * Sync selected class on layout / template option buttons.
+	 *
+	 * @param  {Element}  input  Changed radio input.
+	 */
+	var syncLayoutOptionSelectedState = function( input ) {
+		var group;
+		var options;
+		var i;
+
+		// Bail if input is not a radio inside a layout options group
+		if ( ! input || 'radio' !== input.type ) { return; }
+
+		group = input.closest( _settings.layoutOptionsSelector );
+
+		// Bail if not inside a layout options group
+		if ( ! group ) { return; }
+
+		options = group.querySelectorAll( _settings.layoutOptionSelector );
+
+		// Iterate options and mark the checked one as selected
+		for ( i = 0; i < options.length; i++ ) {
+			options[ i ].classList.toggle( _settings.isSelectedClass, options[ i ].contains( input ) && input.checked );
+		}
+	};
+
+	/**
+	 * Get the sync group key for a settings control.
+	 *
+	 * @param   {Element}  element  The form control.
+	 * @return  {string}            Group key, or an empty string.
+	 */
+	var getSyncedSelectGroup = function( element ) {
+		// Bail if element is not valid
+		if ( ! element || ! element.getAttribute ) { return ''; }
+
+		return element.getAttribute( _settings.syncedSelectAttribute ) || '';
+	};
+
+	/**
+	 * Get every control in a sync group, including controls inside tabs hidden on load.
+	 * Inactive settings tabs stay in the DOM, so a hidden copy can still be updated.
+	 *
+	 * @param   {string}  group  Sync group key.
+	 * @return  {Array}          Matching elements.
+	 */
+	var getSyncedSelects = function( group ) {
+		var all;
+		var matches = [];
+		var i;
+
+		// Bail if group is missing
+		if ( ! group ) { return matches; }
+
+		all = document.querySelectorAll( '[' + _settings.syncedSelectAttribute + ']' );
+
+		// Keep controls that belong to this group
+		for ( i = 0; i < all.length; i++ ) {
+			if ( group === all[ i ].getAttribute( _settings.syncedSelectAttribute ) ) {
+				matches.push( all[ i ] );
+			}
+		}
+
+		return matches;
+	};
+
+	/**
+	 * Copy a select value to the other controls in its sync group.
+	 *
+	 * @param   {Element}  source  The select the merchant changed, or the submitted select on load.
+	 */
+	var syncMirroredSelectValue = function( source ) {
+		var group;
+		var mirrors;
+		var i;
+
+		// Bail if the control is not a select
+		if ( ! source || ! source.tagName || 'select' !== source.tagName.toLowerCase() ) { return; }
+
+		group = getSyncedSelectGroup( source );
+
+		// Bail if this select is not in a sync group
+		if ( ! group ) { return; }
+
+		mirrors = getSyncedSelects( group );
+
+		// Update the other copies without dispatching change, so this does not loop
+		for ( i = 0; i < mirrors.length; i++ ) {
+			if ( mirrors[ i ] === source ) { continue; }
+			if ( mirrors[ i ].value === source.value ) { continue; }
+
+			mirrors[ i ].value = source.value;
+		}
+	};
+
+	/**
+	 * Align each sync group with the select that is submitted.
+	 * Display-only copies have no name, so the named Checkout field is the source on load.
+	 */
+	var syncMirroredSelectsOnLoad = function() {
+		var selects;
+		var seen = {};
+		var i;
+		var j;
+		var group;
+		var mirrors;
+		var source;
+
+		selects = document.querySelectorAll( 'select[' + _settings.syncedSelectAttribute + ']' );
+
+		// Iterate groups once
+		for ( i = 0; i < selects.length; i++ ) {
+			group = getSyncedSelectGroup( selects[ i ] );
+
+			// Skip groups already synced
+			if ( ! group || seen[ group ] ) { continue; }
+
+			seen[ group ] = true;
+			mirrors = getSyncedSelects( group );
+			source = null;
+
+			// Prefer the select that posts with the form
+			for ( j = 0; j < mirrors.length; j++ ) {
+				if ( mirrors[ j ].name ) {
+					source = mirrors[ j ];
+					break;
+				}
+			}
+
+			// Fall back to the first control in the group
+			if ( ! source && mirrors.length ) {
+				source = mirrors[ 0 ];
+			}
+
+			if ( source ) {
+				syncMirroredSelectValue( source );
+			}
+		}
+	};
+
+	/**
 	 * Handle change events.
 	 *
 	 * @param   {Event}  event  The change event.
 	 */
 	var handleChange = function( event ) {
+		// LAYOUT OPTION SELECTED STATE
+		syncLayoutOptionSelectedState( event.target );
+
+		// SYNCED SELECTS
+		syncMirroredSelectValue( event.target );
+
 		// CONDITIONAL FIELDS TRIGGER
 		var triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
@@ -320,6 +813,69 @@
 			maybeProcessConditionalFields( event.target );
 		}
 	}
+
+
+
+	/**
+	 * Get the saving label from settings.
+	 *
+	 * @return  {string}  Saving label.
+	 */
+	var getSavingLabel = function() {
+		return _settings.i18n && _settings.i18n.saving ? _settings.i18n.saving : 'Saving...';
+	};
+
+	/**
+	 * Show the saving state on all settings save buttons.
+	 * Locks each button to its current width so the label change does not shrink it.
+	 */
+	var setSaveButtonsSavingState = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+		var width;
+
+		// Iterate save buttons
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+
+			// Bail if already in the saving state
+			if ( button.classList.contains( _settings.isBusyClass ) ) { continue; }
+
+			// Lock width to the idle label size before changing the text
+			width = Math.ceil( button.getBoundingClientRect().width );
+			if ( width > 0 ) {
+				button.style.minWidth = width + 'px';
+			}
+
+			button.textContent = getSavingLabel();
+			button.classList.add( _settings.isBusyClass );
+		}
+
+		// Disable after the submit has started so browsers do not cancel the POST
+		window.setTimeout( function() {
+			var saveButtons = document.querySelectorAll( _settings.saveButtonSelector );
+			var j;
+
+			// Iterate save buttons
+			for ( j = 0; j < saveButtons.length; j++ ) {
+				saveButtons[ j ].disabled = true;
+			}
+		}, 0 );
+	};
+
+	/**
+	 * Handle settings form submit events.
+	 *
+	 * @param   {Event}  event  The submit event.
+	 */
+	var handleSubmit = function( event ) {
+		// Bail if not the settings form
+		if ( ! event.target || ! event.target.matches || ! event.target.matches( _settings.formSelector ) ) { return; }
+
+		// Show saving state on save buttons
+		setSaveButtonsSavingState();
+	};
 
 
 
@@ -333,14 +889,24 @@
 		if ( _hasInitialized ) { return; }
 
 		// Merge settings
-		_settings = extend( _settings, options );
+		_settings = extend( true, _settings, options );
 
 		// Initialize conditionals
 		initializeConditionals();
 
+		// Align shared selects, including copies inside tabs that are hidden on load
+		syncMirroredSelectsOnLoad();
+
+		// Pin the actions bar before the first paint settles
+		syncActionsBarPosition();
+
 		// Event handlers
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
+		window.addEventListener( 'submit', handleSubmit, true );
+		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
+		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
+		window.addEventListener( 'resize', scheduleActionsBarSync );
 
 		// Set initialized flag
 		_hasInitialized = true;

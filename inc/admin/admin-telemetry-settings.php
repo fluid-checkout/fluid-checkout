@@ -43,8 +43,8 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		// Bail if user does not have enough permissions
 		if ( ! current_user_can( 'install_plugins' ) ) { return false; }
 
-		// Bail if site reporting is already enabled
-		if ( 'yes' === get_option( 'fc_telemetry_enabled', 'no' ) ) { return false; }
+		// Bail if telemetry is already enabled
+		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ) ) { return false; }
 
 		// Bail if the prompt was dismissed
 		if ( $this->is_dismissed() ) { return false; }
@@ -54,9 +54,9 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		// Bail if install date is missing
 		if ( $install_date <= 0 ) { return false; }
 
-		$past_date = strtotime( '-3 days' );
+		$past_date = strtotime( '-2 weeks' );
 
-		// Bail if 3 days have not passed since installation
+		// Bail if 2 weeks have not passed since installation
 		if ( $past_date < $install_date ) { return false; }
 
 		return true;
@@ -74,31 +74,13 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 
 
 	/**
-	 * Whether the current request is the Fluid Checkout Dashboard settings screen.
+	 * Whether the current request is any Fluid Checkout settings screen.
 	 */
-	public function is_fc_checkout_dashboard_screen() {
-		if ( function_exists( 'get_current_screen' ) ) {
-			$screen = get_current_screen();
+	public function is_fc_settings_screen() {
+		// Bail if settings page class is not available
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return false; }
 
-			if ( ! $screen || 'woocommerce_page_wc-settings' !== $screen->id ) {
-				return false;
-			}
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $_GET['page'] ) || 'wc-settings' !== sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) {
-			return false;
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $_GET['tab'] ) || 'fc_checkout' !== sanitize_text_field( wp_unslash( $_GET['tab'] ) ) ) {
-			return false;
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$section = isset( $_GET['section'] ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : '';
-
-		return '' === $section;
+		return FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
 	}
 
 
@@ -107,7 +89,7 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 	 * Get the Fluid Checkout Tools settings URL.
 	 */
 	public function get_tools_settings_url() {
-		return admin_url( 'admin.php?page=wc-settings&tab=fc_checkout&section=tools' );
+		return admin_url( 'admin.php?page=fluid-checkout&tab=tools' );
 	}
 
 
@@ -191,7 +173,7 @@ class FluidCheckout_Admin_TelemetrySettings extends FluidCheckout {
 		$redirect_url = wp_get_referer();
 
 		if ( empty( $redirect_url ) ) {
-			$redirect_url = admin_url( 'admin.php?page=wc-settings&tab=fc_checkout' );
+			$redirect_url = admin_url( 'admin.php?page=fluid-checkout&tab=dashboard' );
 		}
 
 		wp_safe_redirect( $redirect_url );

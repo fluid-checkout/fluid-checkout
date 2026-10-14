@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package fluid-checkout
- * @version 4.1.6
+ * @version 5.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
 <div class="fc-contact-login">
 
 	<?php if ( is_user_logged_in() ) : ?>
-		
+
 		<?php
 			/**
 			 * Filters whether the contact step shows the logout call to action for logged-in customers.
@@ -80,7 +80,7 @@ defined( 'ABSPATH' ) || exit;
 				/**
 				 * Filters the CSS classes of the checkout contact-step login link.
 				 *
-				 * @since 4.2.8
+				 * @since 5.0.0
 				 *
 				 * @param string $classes CSS classes. Default `fc-contact-login__action--underline`.
 				 */
@@ -160,6 +160,15 @@ defined( 'ABSPATH' ) || exit;
 				?></span>
 			<?php endif; ?>
 		</div>
+
+		<?php
+		/**
+		 * Fires below the contact login separator.
+		 *
+		 * @since 5.0.0
+		 */
+		do_action( 'fc_checkout_below_contact_login_separator' );
+		?>
 
 	<?php endif; ?>
 

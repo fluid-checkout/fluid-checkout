@@ -1,0 +1,277 @@
+// ----------------------------------------
+// VARIABLES FOR ADMIN PAGES
+// ----------------------------------------
+
+
+
+
+// ----------------------------------------
+// ADMIN - SHARED
+
+$admin-text-color:                          #2e4453 !default;
+$admin-text-color-muted:                    #68717a !default;
+$admin-text-color-subtle:                   #8a9ba8 !default;
+$admin-background-color:                    #f3f6f8 !default;
+$admin-border-color:                        rgba( 200, 215, 225, .5 ) !default;
+$admin-border-color-strong:                 rgba( 200, 215, 225, .7 ) !default;
+$admin-separator-color:                     #e2e4e7 !default;
+$admin-wp-content-padding:                  20px !default;
+$admin-wp-content-padding-mobile:           10px !default;
+$admin-wp-admin-bar-height:                 32px !default;
+// WordPress admin bar grows on small screens (see WP admin CSS)
+$admin-wp-admin-bar-height-mobile:          46px !default;
+$admin-wp-menu-width:                       160px !default;
+$admin-wp-menu-width-folded:                36px !default;
+$admin-breakpoint-mobile:                   782px !default;
+$admin-breakpoint-auto-fold:                960px !default;
+
+// END - ADMIN - SHARED
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ADMIN - PAGE HEADER
+
+$fc-header-height:                          36px !default;
+$fc-header-padding-y:                       10px !default;
+$fc-header-padding-x:                       10px !default;
+$fc-header-background-color:                $white !default;
+$fc-header-box-shadow:                      0 1px 1px #c8d7e1 !default;
+$fc-header-logo-max-height:                 36px !default;
+$fc-header-logo-gap:                        0 !default;
+$fc-header-logo-text-font-size:             19px !default;
+$fc-header-logo-text-font-weight:           600 !default;
+$fc-header-logo-text-line-height:           1.9 !default;
+$fc-header-logo-text-letter-spacing:        -.25px !default;
+$fc-header-logo-text-color:                 $admin-text-color !default;
+$fc-header-button-padding:                  6px 12px !default;
+$fc-header-button-margin-left:              5px !default;
+$fc-header-button-font-size:                13px !default;
+$fc-header-button-font-weight:              500 !default;
+$fc-header-button-line-height:              21px !default;
+$fc-header-button-border-radius:            4px !default;
+$fc-header-button-border-color:             #c8d7e1 !default;
+$fc-header-button-border-color-hover:       #a8bece !default;
+$fc-header-button-color:                    $admin-text-color !default;
+$fc-header-button-save-background:          #0047e3 !default;
+$fc-header-button-save-background-hover:    #0039c4 !default;
+$fc-header-button-save-border-color:        #0036b8 !default;
+$fc-header-button-save-border-color-hover:  #00277a !default;
+$fc-header-button-save-color:               $white !default;
+$fc-header-button-save-background-disabled: #b8c9ff !default;
+$fc-header-button-save-border-color-disabled: #8a9fef !default;
+$fc-header-z-index:                         200 !default;
+
+// END - ADMIN - PAGE HEADER
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ADMIN - SETTINGS PAGE LAYOUT
+
+$fc-settings-sidebar-width:                 200px !default;
+$fc-settings-admin-bar-offset:              $admin-wp-admin-bar-height !default;
+$fc-settings-page-header-height:            56px !default;
+$fc-settings-sticky-offset:                 $fc-settings-admin-bar-offset + $fc-settings-page-header-height !default;
+// Admin bar is taller on small screens; keep the compact menu bar below the sticky page header
+$fc-settings-sticky-offset-mobile:          $admin-wp-admin-bar-height-mobile + $fc-settings-page-header-height !default;
+$fc-settings-page-background-color:         $admin-background-color !default;
+$fc-settings-text-color:                    $admin-text-color !default;
+$fc-settings-content-padding:               24px 12px !default;
+$fc-settings-content-padding-mobile:        10px 5px !default;
+$fc-settings-content-padding-bottom:        16px !default;
+$fc-settings-content-max-width:             600px !default;
+$fc-settings-dashboard-content-max-width:   850px !default;
+$fc-settings-actions-padding:               12px !default;
+$fc-settings-actions-padding-mobile:        10px 5px !default;
+// Button height (~36px) + vertical actions padding; used to clear fixed/sticky bar space
+$fc-settings-actions-bar-height:            60px !default;
+$fc-settings-actions-background-color:      #fff !default;
+$fc-settings-actions-border-color:          $admin-border-color-strong !default;
+$fc-settings-actions-box-shadow:            0 -3px 12px rgba( 0, 0, 0, .1 ) !default;
+// Stacking: columns < compact nav bar < preview drawer < expanded nav drawer < page header
+$fc-settings-content-z-index:               10 !default;
+$fc-settings-actions-z-index:               20 !default;
+$fc-settings-sidebar-z-index:               30 !default;
+$fc-settings-preview-z-index:               30 !default;
+$fc-settings-nav-bar-z-index:               110 !default;
+// Above the compact settings title bar so an expanded preview covers it
+$fc-settings-drawer-z-index:                120 !default;
+// Above the preview drawer while the settings menu is open
+$fc-settings-nav-drawer-z-index:            130 !default;
+$fc-settings-content-title-margin:          0 0 20px !default;
+$fc-settings-content-title-font-size:       20px !default;
+$fc-settings-content-title-font-weight:     500 !default;
+$fc-settings-content-title-line-height:     1.3 !default;
+$fc-settings-tab-animation-duration:        .2s !default;
+
+$fc-settings-preview-toolbar-padding-x:     8px !default;
+$fc-settings-preview-toolbar-gap:           10px !default;
+$fc-settings-preview-expand-size:           36px !default;
+$fc-settings-preview-border-width:          1px !default;
+$fc-settings-preview-frame-border-width:    1px !default;
+// Inner preview frame width (panel paddings and frame borders are added separately)
+$fc-settings-preview-min-width:             280px !default;
+$fc-settings-preview-viewport-mobile:       350px !default;
+$fc-settings-preview-viewport-tablet:       750px !default;
+// Below this width the preview starts collapsed and opens vertically from the actions bar
+$fc-settings-preview-compact-breakpoint:    1280px !default;
+$fc-settings-preview-transition-duration:   .28s !default;
+$fc-settings-preview-transition-easing:     ease !default;
+
+// END - ADMIN - SETTINGS PAGE LAYOUT
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ADMIN - SETTINGS PAGE SIDEBAR
+
+$fc-settings-sidebar-background-color:      $white !default;
+$fc-settings-sidebar-box-shadow:            1px 0 0 $admin-border-color-strong !default;
+$fc-settings-sidebar-box-shadow-rtl:        -1px 0 0 $admin-border-color-strong !default;
+$fc-settings-sidebar-header-padding:        18px 20px 16px !default;
+$fc-settings-sidebar-header-border-color:   $admin-border-color !default;
+$fc-settings-sidebar-header-height:         55px !default;
+$fc-settings-sidebar-title-font-size:       14px !default;
+$fc-settings-sidebar-title-font-weight:     600 !default;
+$fc-settings-sidebar-title-line-height:     1.4 !default;
+$fc-settings-sidebar-nav-max-height-offset: $fc-settings-sticky-offset + $fc-settings-sidebar-header-height !default;
+// Below this width the settings nav collapses into an expandable menu
+$fc-settings-nav-compact-breakpoint:        980px !default;
+$fc-settings-sidebar-toggle-size:           36px !default;
+$fc-settings-sidebar-header-padding-compact: 12px !default;
+// Toggle size + vertical compact header padding
+$fc-settings-sidebar-header-height-compact: $fc-settings-sidebar-toggle-size + ( 2 * $fc-settings-sidebar-header-padding-compact ) !default;
+
+// END - ADMIN - SETTINGS PAGE SIDEBAR
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ADMIN - SETTINGS PAGE NAV
+
+$fc-settings-nav-padding-y:                 6px !default;
+$fc-settings-nav-item-margin:               0 8px !default;
+$fc-settings-nav-link-padding:              8px 16px !default;
+$fc-settings-nav-link-gap:                  10px !default;
+$fc-settings-nav-link-font-size:            13px !default;
+$fc-settings-nav-link-line-height:          1.4 !default;
+$fc-settings-nav-pill-radius:               5px !default;
+$fc-settings-nav-link-hover-background:     #f5f7f8 !default;
+$fc-settings-nav-link-active-background:    #e7edf1 !default;
+$fc-settings-nav-link-hover-color:          #3c4a55 !default;
+$fc-settings-nav-focus-outline-color:       #2271b1 !default;
+$fc-settings-nav-marker-font-size:          13px !default;
+$fc-settings-nav-marker-color:              $admin-text-color-subtle !default;
+$fc-settings-nav-separator-margin:          10px 12px !default;
+
+// END - ADMIN - SETTINGS PAGE NAV
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ADMIN - SETTINGS PAGE CARDS
+
+$fc-settings-card-max-width:                600px !default;
+$fc-settings-card-margin-bottom:            20px !default;
+$fc-settings-card-border-radius:            1px !default;
+$fc-settings-card-box-shadow:               0 0 0 1px $admin-border-color, 0 1px 2px #e9eff3 !default;
+$fc-settings-card-background-color:         $white !default;
+$fc-settings-card-padding:                  20px !default;
+$fc-settings-card-padding-mobile:           16px !default;
+$fc-settings-card-header-border-color:      $admin-border-color !default;
+$fc-settings-card-title-font-size:          15px !default;
+$fc-settings-card-title-font-weight:        500 !default;
+$fc-settings-card-description-color:        $admin-text-color-muted !default;
+$fc-settings-card-footer-background-color:  rgba( 200, 215, 225, .15 ) !default;
+$fc-settings-card-inner-field-padding-x:    0 !default;
+
+// END - ADMIN - SETTINGS PAGE CARDS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
+// ADMIN - SETTINGS PAGE FIELDS
+
+$fc-settings-field-padding-y:               8px !default;
+$fc-settings-field-border-color:            #f0f0f1 !default;
+$fc-settings-field-label-width:             180px !default;
+$fc-settings-field-label-font-size:         14px !default;
+$fc-settings-field-label-padding-top:       11px !default;
+$fc-settings-field-label-padding-top-toggle: 5px !default;
+$fc-settings-field-inline-gap:              24px !default;
+$fc-settings-input-height:                  36px !default;
+$fc-settings-input-padding:                 7px 10px !default;
+$fc-settings-input-font-size:               14px !default;
+$fc-settings-input-line-height:             26px !default;
+$fc-settings-input-border-radius:           5px !default;
+$fc-settings-input-border-color:            #cbd5e1 !default;
+$fc-settings-input-border-color-focus:      #00aadc !default;
+$fc-settings-input-background-color:        $white !default;
+$fc-settings-input-background-color-disabled: #edf2f5 !default;
+$fc-settings-input-color:                   $admin-text-color !default;
+$fc-settings-input-color-disabled:          $admin-text-color-muted !default;
+$fc-settings-input-placeholder-color:       #949494 !default;
+$fc-settings-input-box-shadow:              0 0 0 0 rgba( 0, 0, 0, 0 ), 0 0 0 0 rgba( 0, 0, 0, 0 ), 0 1px 2px 0 rgba( 0, 0, 0, .04 ) !default;
+$fc-settings-input-group-gap:               10px !default;
+$fc-settings-select-caret-size:             16px !default;
+$fc-settings-select-caret-padding-right:    36px !default;
+$fc-settings-badge-background-color:        #e7edf1 !default;
+$fc-settings-badge-font-size:               11px !default;
+$fc-settings-badge-border-radius:           10px !default;
+$fc-settings-promo-pill-background-color:   rgba( 224, 142, 11, .175 ) !default;
+$fc-settings-promo-pill-color:              #c47809 !default;
+$fc-settings-promo-pill-color-hover:        #a86608 !default;
+$fc-settings-promo-pill-border-color:       #e08e0b !default;
+$fc-settings-promo-pill-addon-background-color: rgba( 30, 33, 43, .08 ) !default;
+$fc-settings-promo-pill-addon-color:        #50575e !default;
+$fc-settings-promo-pill-addon-color-hover:  #1e212b !default;
+$fc-settings-promo-pill-addon-border-color: #1e212b !default;
+$fc-settings-promo-pill-font-size:          12px !default;
+$fc-settings-promo-pill-padding:            4px 8px !default;
+$fc-settings-promo-pill-border-radius:      20px !default;
+$fc-header-button-upgrade-background:       $fc-settings-promo-pill-background-color !default;
+$fc-header-button-upgrade-background-hover: $fc-settings-promo-pill-background-color !default;
+$fc-header-button-upgrade-border-color:     $fc-settings-promo-pill-border-color !default;
+$fc-header-button-upgrade-border-color-hover: #d6890a !default;
+$fc-header-button-upgrade-color:            $fc-settings-promo-pill-color !default;
+$fc-header-button-upgrade-color-hover:      $fc-settings-promo-pill-color-hover !default;
+$fc-settings-toggle-width:                  34px !default;
+$fc-settings-toggle-height:                 18px !default;
+$fc-settings-toggle-padding:                2px !default;
+$fc-settings-toggle-background:             #a8bece !default;
+$fc-settings-toggle-background-checked:     #2ecc71 !default;
+$fc-settings-toggle-background-checked-disabled: #8fd9ad !default;
+$fc-settings-toggle-knob-size:              18px !default;
+$fc-settings-toggle-knob-offset:            16px !default;
+$fc-settings-info-tip-size:                 18px !default;
+$fc-settings-info-tip-color:                #b8cad7 !default;
+$fc-settings-info-tip-color-hover:          $admin-text-color !default;
+$fc-settings-info-tip-offset:               26px !default;
+$fc-settings-info-tip-width:                240px !default;
+$fc-settings-info-tip-background:           $white !default;
+$fc-settings-info-tip-border-color:         #c8d7e1 !default;
+$fc-settings-info-tip-text-color:           #4f748e !default;
+$fc-settings-docs-icon-color:               $admin-text-color !default;
+$fc-settings-docs-icon-color-hover:         #2271b1 !default;
+
+// END - ADMIN - SETTINGS PAGE FIELDS
+// ----------------------------------------

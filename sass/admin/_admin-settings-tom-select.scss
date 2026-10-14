@@ -1,0 +1,13 @@
+// ------------------------------------
+// SETTINGS PAGE - TOM SELECT
+// ------------------------------------
+
+.fc-settings-field__control .ts-wrapper {
+	width: 100%;
+	max-width: none; // Needed to override WP admin `max-width: 25rem`
+}
+
+.fc-settings-field__control .ts-wrapper.multi {
+	height: auto;
+	min-height: $fc-settings-input-height;
+}

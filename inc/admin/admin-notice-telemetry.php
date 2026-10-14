@@ -35,8 +35,8 @@ class FluidCheckout_AdminNotices_Telemetry extends FluidCheckout {
 		// Bail if the telemetry prompt should not be shown
 		if ( ! $telemetry->should_show_telemetry_prompt() ) { return $notices; }
 
-		// Bail on the Dashboard settings screen where the inline prompt is shown instead
-		if ( $telemetry->is_fc_checkout_dashboard_screen() ) { return $notices; }
+		// Bail on Fluid Checkout settings screens (usage tracking is available under Tools / Getting started)
+		if ( $telemetry->is_fc_settings_screen() ) { return $notices; }
 
 		$notices[] = array(
 			'name'        => FluidCheckout_Admin_TelemetrySettings::NOTICE_NAME,
