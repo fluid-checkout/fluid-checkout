@@ -124,6 +124,7 @@ $fc-settings-actions-box-shadow:            0 -3px 12px rgba( 0, 0, 0, .1 ) !def
 // Stacking: columns < compact nav bar < preview drawer < expanded nav drawer < page header
 $fc-settings-content-z-index:               10 !default;
 $fc-settings-actions-z-index:               20 !default;
+$fc-settings-tom-select-dropdown-z-index:   25 !default;
 $fc-settings-sidebar-z-index:               30 !default;
 $fc-settings-preview-z-index:               30 !default;
 $fc-settings-nav-bar-z-index:               110 !default;

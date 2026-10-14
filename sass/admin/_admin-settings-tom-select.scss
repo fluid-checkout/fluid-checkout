@@ -55,3 +55,10 @@
 	#{ $alignment-right }: auto;
 	#{ $alignment-left }: $fc-settings-select-caret-offset-x;
 }
+
+
+
+.ts-dropdown.fc-settings-ts-dropdown.fc-ts-dropdown--dropup {
+	border-top: $ts-select-dropdown-border;
+	border-bottom: 0 none;
+}

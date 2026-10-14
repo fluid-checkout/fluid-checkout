@@ -23,12 +23,16 @@
 	var _publicMethods = {};
 	var _settings = {
 		selectFieldSelector:              '.fc-settings-wrap select:not([data-fc-enhanced-select="no"])',
+		settingsActionsSelector:          '.fc-settings-actions',
 		maximumSelectionLengthAttribute:  'data-maximum-selection-length',
+		dropdownDropupClass:              'fc-ts-dropdown--dropup',
 		fieldSettings: {
-			maxOptions:   999999,
-			create:       false,
-			diacritics:   true,
-			openOnFocus:  true,
+			maxOptions:    999999,
+			create:        false,
+			diacritics:    true,
+			openOnFocus:   true,
+			dropdownParent: 'body',
+			dropdownClass:  'ts-dropdown fc-settings-ts-dropdown',
 		},
 		fieldPluginsSingle: [],
 		fieldPluginsMulti:  [ 'remove_button' ],
@@ -90,6 +94,67 @@
 		if ( ! searchField ) { return; }
 
 		searchField.setAttribute( 'autocomplete', 'off-' + Date.now() );
+	};
+
+
+
+	/**
+	 * Position the Tom Select dropdown above or below the control so it stays in the viewport.
+	 *
+	 * @param   {object}  tomselect  Tom Select instance.
+	 */
+	var positionAdminSettingsDropdown = function( tomselect ) {
+		var control = tomselect.control;
+		var dropdown = tomselect.dropdown;
+		var rect;
+		var dropdownHeight;
+		var content;
+		var maxDropdownHeight;
+		var estimatedHeight;
+		var actionsBar;
+		var bottomInset;
+		var viewportBottom;
+		var spaceBelow;
+		var spaceAbove;
+		var openUpward;
+
+		// Bail if required elements are missing
+		if ( ! control || ! dropdown ) { return; }
+
+		rect = control.getBoundingClientRect();
+		dropdownHeight = dropdown.offsetHeight;
+		content = dropdown.querySelector( '.ts-dropdown-content' );
+		maxDropdownHeight = content ? parseInt( window.getComputedStyle( content ).maxHeight, 10 ) : 0;
+
+		if ( isNaN( maxDropdownHeight ) || maxDropdownHeight <= 0 ) {
+			maxDropdownHeight = dropdownHeight;
+		}
+
+		estimatedHeight = Math.min( dropdownHeight || maxDropdownHeight, maxDropdownHeight );
+
+		actionsBar = document.querySelector( _settings.settingsActionsSelector );
+		bottomInset = 0;
+
+		if ( actionsBar ) {
+			bottomInset = actionsBar.getBoundingClientRect().height;
+		}
+
+		viewportBottom = window.innerHeight - bottomInset;
+		spaceBelow = viewportBottom - rect.bottom;
+		spaceAbove = rect.top;
+		openUpward = spaceBelow < estimatedHeight && spaceAbove > spaceBelow;
+
+		dropdown.style.width = rect.width + 'px';
+		dropdown.style.left = rect.left + window.scrollX + 'px';
+
+		if ( openUpward ) {
+			dropdown.classList.add( _settings.dropdownDropupClass );
+			dropdown.style.top = ( rect.top + window.scrollY - dropdown.offsetHeight ) + 'px';
+		}
+		else {
+			dropdown.classList.remove( _settings.dropdownDropupClass );
+			dropdown.style.top = ( control.offsetHeight + rect.top + window.scrollY ) + 'px';
+		}
 	};
 
 
@@ -172,6 +237,10 @@
 			}
 
 			instance = new TomSelect( field, fieldSettings );
+
+			instance.hook( 'instead', 'positionDropdown', function() {
+				positionAdminSettingsDropdown( this );
+			} );
 
 			// Set value without triggering change to avoid feedback loops
 			instance.setValue( values, true );
