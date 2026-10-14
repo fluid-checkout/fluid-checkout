@@ -234,7 +234,7 @@ class FluidCheckout_Settings_InternationalPhone {
 					'requires'              => 'pro',
 				),
 				array(
-					'title'                 => __( 'Phone number validation types', 'fluid-checkout' ),
+					'title'                 => __( 'Validation types', 'fluid-checkout' ),
 					'desc'                  => '',
 					'desc_tip'              => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_enable_international_phone_validation_precise_types',

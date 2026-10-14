@@ -41,7 +41,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'subtitle'    => __( 'Conversion tools for shop and product pages.', 'fluid-checkout' ),
 				'description' => __( 'Boost conversions across your store with <strong>countdowns</strong>, a <strong>free shipping bar</strong>, <strong>product badges</strong> (bestseller, discount, on-sale, backorder), plus <strong>add to cart from listing pages</strong> and <strong>stock meter / FOMO</strong> prompts.', 'fluid-checkout' ),
 				'image'       => $directory_url . 'images/admin/plugins/fc-conversion-kit-icon.svg',
-				'product_url' => 'https://fluidcheckout.com/fc-conversion-kit/',
+				'product_url' => $this->get_tracked_product_url( 'https://fluidconversion.com/', 'fc-conversion-kit', 'learn-more' ),
 			),
 			array(
 				'id'          => 'fc-paddle-payments',
@@ -51,7 +51,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'subtitle'    => __( 'Sell digital products with Paddle as your merchant of record.', 'fluid-checkout' ),
 				'description' => __( 'Accept payments through <strong>Paddle</strong> on your WooCommerce store, with taxes and compliance handled for you.', 'fluid-checkout' ),
 				'image'       => $directory_url . 'images/admin/plugins/fc-paddle-payments-icon.svg',
-				'product_url' => 'https://fluidcheckout.com/fc-paddle-payments/',
+				'product_url' => $this->get_tracked_product_url( 'https://fluidcheckout.com/fc-paddle-payments/', 'fc-paddle-payments', 'learn-more' ),
 			),
 			array(
 				'id'          => 'fc-licenses',
@@ -61,7 +61,7 @@ class FluidCheckout_Admin_SettingType_PluginsCatalog extends FluidCheckout {
 				'subtitle'    => __( 'License keys, updates, and plugin usage tracking.', 'fluid-checkout' ),
 				'description' => __( 'Sell and manage <strong>software license keys</strong> on WooCommerce, with customer account downloads, automatic plugin updates, and <strong>plugin usage tracking</strong>.', 'fluid-checkout' ),
 				'image'       => $directory_url . 'images/admin/plugins/fc-licenses-icon.svg',
-				'product_url' => 'https://fluidcheckout.com/fc-licenses/',
+				'product_url' => $this->get_tracked_product_url( 'https://fluidlicenses.com/', 'fc-licenses', 'learn-more' ),
 			),
 		);
 
