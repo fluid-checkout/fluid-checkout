@@ -463,6 +463,9 @@ class FluidCheckout {
 		add_action( 'load_translation_file', array( $this, 'maybe_change_translation_file_path' ), 100, 3 ); // High priority to override locale files defined from other plugins (ie. Loco Translate at priority `11`)
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 
+		// Admin preview
+		add_action( 'after_setup_theme', array( $this, 'load_admin_preview' ), 5 ); // Before add-ons load their features at priority `10`, as some read settings while loading
+
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
@@ -583,6 +586,20 @@ class FluidCheckout {
 
 
 	/**
+	 * Load the admin preview, also required on the frontend to handle preview requests.
+	 */
+	public function load_admin_preview() {
+		require_once self::$directory_path . 'inc/admin/admin-preview.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-data.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-product.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-order.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-order-factory.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-session-handler.php';
+	}
+
+
+
+	/**
 	 * Load the plugin features
 	 */
 	public function load_features() {
@@ -593,14 +610,6 @@ class FluidCheckout {
 		if ( is_admin() ) {
 			require_once self::$directory_path . 'inc/admin/admin.php';
 		}
-
-		// Load admin preview, also required on the frontend to handle preview requests
-		require_once self::$directory_path . 'inc/admin/admin-preview.php';
-		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-data.php';
-		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-product.php';
-		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-order.php';
-		require_once self::$directory_path . 'inc/admin/admin-preview-order-factory.php';
-		require_once self::$directory_path . 'inc/admin/admin-preview-session-handler.php';
 
 		// Load each features
 		foreach ( self::$features as $feature_key => $feature ) {
