@@ -356,6 +356,8 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: My account registration option to Customer accounts settings.
+* Improved: Support pipe-separated OR trigger ids in settings field conditionals.
 * Removed: Privacy notice setting for delayed account creation.
 * Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
 * Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.

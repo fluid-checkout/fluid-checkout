@@ -251,6 +251,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			'woocommerce_gzd_display_checkout_table_color'                  => '#eeeeee',
 			'woocommerce_enable_guest_checkout'                             => 'yes',
 			'woocommerce_enable_signup_and_login_from_checkout'             => 'no',
+			'woocommerce_enable_myaccount_registration'                     => 'no',
 			'woocommerce_registration_generate_username'                   => 'yes',
 			'woocommerce_registration_generate_password'                   => 'yes',
 			'woocommerce_enable_shipping_calc'                              => 'yes',
