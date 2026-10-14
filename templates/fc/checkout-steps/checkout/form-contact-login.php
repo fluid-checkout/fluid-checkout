@@ -71,7 +71,7 @@ defined( 'ABSPATH' ) || exit;
 				 * Filters the CSS classes of the checkout contact-step login link.
 				 *
 				 * @since 1.5.3
-				 * @deprecated 4.2.8 Use `fc_checkout_contact_login_link_classes` instead.
+				 * @deprecated 5.0.0 Use `fc_checkout_contact_login_link_classes` instead.
 				 *
 				 * @param string $classes CSS classes. Default `fc-contact-login__action--underline`.
 				 */

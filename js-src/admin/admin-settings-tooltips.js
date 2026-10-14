@@ -239,7 +239,7 @@
 	 */
 	var handleKeydown = function( e ) {
 		// Bail if Escape was not pressed or no tip is open
-		if ( 'Escape' !== e.key || ! openTip ) { return; }
+		if ( ! window.FCUtils || FCUtils.keyboardKeys.ESC !== e.key || ! openTip ) { return; }
 
 		closeTip( openTip );
 	};
@@ -324,12 +324,12 @@
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
 
-		document.addEventListener( 'click', handleButtonClick );
-		document.addEventListener( 'click', handleDocumentClick );
-		document.addEventListener( 'keydown', handleKeydown );
-		document.addEventListener( 'mouseover', handleTipMouseOver );
-		document.addEventListener( 'mouseout', handleTipMouseOut );
-		document.addEventListener( 'focusin', handleTipFocusIn );
+		document.addEventListener( 'click', handleButtonClick, true );
+		document.addEventListener( 'click', handleDocumentClick, true );
+		document.addEventListener( 'keydown', handleKeydown, true );
+		document.addEventListener( 'mouseover', handleTipMouseOver, true );
+		document.addEventListener( 'mouseout', handleTipMouseOut, true );
+		document.addEventListener( 'focusin', handleTipFocusIn, true );
 		window.addEventListener( 'resize', syncVisibleTipPosition );
 		window.addEventListener( 'scroll', syncVisibleTipPosition, true );
 

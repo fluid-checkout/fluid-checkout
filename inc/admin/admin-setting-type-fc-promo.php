@@ -153,19 +153,18 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		$pro_plugin_file  = 'fluid-checkout-pro/fluid-checkout-pro.php';
 		$is_pro_installed = FluidCheckout::instance()->is_plugin_installed( $pro_plugin_file );
 		$is_installed     = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
-		$plugin_slug      = isset( $value[ 'plugin_slug' ] ) ? sanitize_key( (string) $value[ 'plugin_slug' ] ) : '';
+		$is_activated     = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
 		$action_type      = $is_installed ? 'activate' : 'purchase';
 		$admin            = FluidCheckout_Admin::instance();
 
-		// Fallback slug from the plugin basename folder when not provided
-		if ( '' === $plugin_slug ) {
-			$parts       = explode( '/', $plugin_file );
-			$plugin_slug = sanitize_key( $parts[0] ?? '' );
-		}
-
 		ob_start();
 
-		if ( $is_installed ) :
+		// Show the activated state when the plugin is already active
+		if ( $is_activated ) :
+			?>
+			<span class="button button--activated disabled"><?php echo esc_html( __( 'Activated', 'fluid-checkout' ) ); ?></span>
+			<?php
+		elseif ( $is_installed ) :
 			// Add-on activate requires PRO; PRO itself can still be activated without that gate
 			$activate_disabled = ! $is_pro_promo && ! FluidCheckout::instance()->is_pro_activated();
 			$activate_classes  = 'button button-primary fc-addons__item-action--activate';
@@ -200,13 +199,9 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 				<?php
 			endif;
 		else :
-			// Add-on promos
+			// Add-on promos link out to upgrade or purchase.
 			$purchase_url   = isset( $value[ 'purchase_url' ] ) ? (string) $value[ 'purchase_url' ] : '';
 			$purchase_label = isset( $value[ 'purchase_label' ] ) ? (string) $value[ 'purchase_label' ] : '';
-			$is_entitled    = '' !== $plugin_slug
-				&& class_exists( 'FC_Licenses_Client' )
-				&& FC_Licenses_Client::has_site_key()
-				&& FC_Licenses_Client::is_plugin_entitled_with_site_key( $plugin_slug );
 
 			if ( '' === $purchase_label && ! empty( $value[ 'purchase_price' ] ) ) {
 				$purchase_label = $admin->get_addon_purchase_button_label( (string) $value[ 'purchase_price' ] );
@@ -230,16 +225,8 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 				<?php if ( '' !== $purchase_url && '' !== $purchase_label ) : ?>
 					<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo wp_kses_post( $purchase_label ); ?></a>
 				<?php endif; ?>
-			<?php elseif ( $is_entitled ) : ?>
-				<?php // PRO installed: Install when entitled (PRO may replace via filter). Keep action_type as `purchase` so active PRO can swap in the licensed Install UI. ?>
-				<button
-					type="button"
-					class="button button-primary button--install fc-addons__item-action--install"
-					data-plugin="<?php echo esc_attr( $plugin_file ); ?>"
-				><?php echo esc_html( __( 'Install plugin', 'fluid-checkout' ) ); ?></button>
-				<div class="fc-addons__item-action-notice" hidden></div>
 			<?php elseif ( '' !== $purchase_url ) : ?>
-				<?php // PRO installed, not entitled: price-less purchase CTA so entitled customers are not nudged to pay again. ?>
+				<?php // PRO installed: price-less purchase CTA so customers are not nudged to pay again. ?>
 				<a href="<?php echo esc_url( $purchase_url ); ?>" class="button button-primary" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $admin->get_addon_purchase_button_label_without_price() ); ?></a>
 			<?php endif;
 		endif;
@@ -247,12 +234,13 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		$html = (string) ob_get_clean();
 
 		/**
-		 * Filter settings promo card action HTML.
+		 * Filters settings promo card action HTML.
 		 *
-		 * @param string $html        Default actions HTML.
-		 * @param array  $value       Promo field args.
-		 * @param string $action_type activate|purchase (or custom from extensions).
-		 * @param string $plugin_file Plugin basename.
+		 * @since 5.0.0
+		 *
+		 * @param  array   $value        Promo field args.
+		 * @param  string  $action_type  activate|purchase (or custom from extensions).
+		 * @param  string  $plugin_file  Plugin basename.
 		 */
 		return (string) apply_filters( 'fc_settings_promo_actions_html', $html, $value, $action_type, $plugin_file );
 	}

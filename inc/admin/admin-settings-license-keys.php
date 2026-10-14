@@ -44,6 +44,18 @@ class FluidCheckout_Settings_LicenseKeys {
 			'id'    => 'fc_license_keys',
 		);
 
+		/**
+		 * Filters extra settings rows appended to the License keys section.
+		 *
+		 * The dynamic portion of the hook name, `$current_section`, refers to the settings section slug.
+		 * Possible hook names include:
+		 *
+		 * - `fc_license_keys_settings_add`
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $current_section  Current settings section slug.
+		 */
 		$settings_add = apply_filters( 'fc_' . $current_section . '_settings_add', array(), $current_section );
 
 		// Maybe add a notice when no license keys are available
@@ -70,6 +82,18 @@ class FluidCheckout_Settings_LicenseKeys {
 			'id'   => 'fc_license_keys',
 		);
 
+		/**
+		 * Filters the License keys settings.
+		 *
+		 * The dynamic portion of the hook name, `$current_section`, refers to the settings section slug.
+		 * Possible hook names include:
+		 *
+		 * - `fc_license_keys_settings`
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $current_section  Current settings section slug.
+		 */
 		$settings = apply_filters( 'fc_' . $current_section . '_settings', $settings_new, $current_section );
 
 		return $settings;

@@ -3,8 +3,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Render settings arrays as cards and field rows on the Fluid Checkout settings page.
- * Uses the same settings arrays and field names as the WooCommerce settings API,
- * so values can be saved with `WC_Admin_Settings::save_fields()`.
+ * Uses the same settings arrays and field names as the WooCommerce settings API.
+ * Values are saved with `FluidCheckout_Settings::save_settings()`.
  */
 class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
@@ -145,6 +145,20 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		// Maybe get field value from saved options
 		if ( ! isset( $value[ 'value' ] ) && ! in_array( $value[ 'type' ], array( 'title', 'sectionend' ), true ) ) {
 			$value[ 'value' ] = $this->get_field_value( $value );
+		}
+
+		// Maybe add Tom Select class to dropdown fields
+		$dropdown_field_types = array(
+			'select',
+			'multiselect',
+			'multi_select_countries',
+			'fc_select',
+			'fc_multiselect',
+		);
+		if ( in_array( $value[ 'type' ], $dropdown_field_types, true ) ) {
+			if ( false === strpos( ' ' . $value[ 'class' ] . ' ', ' fc-enhanced-select ' ) ) {
+				$value[ 'class' ] = trim( $value[ 'class' ] . ' fc-enhanced-select' );
+			}
 		}
 
 		return $value;
@@ -711,11 +725,6 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		// Use all countries as options for country fields without options, same as the WooCommerce settings API
 		if ( 'multi_select_countries' === $value[ 'type' ] && empty( $options ) && function_exists( 'WC' ) ) {
 			$options = WC()->countries->countries;
-		}
-
-		// Use TomSelect for country multiselect fields
-		if ( 'multi_select_countries' === $value[ 'type' ] && empty( $value[ 'class' ] ) ) {
-			$value[ 'class' ] = 'fc-enhanced-select';
 		}
 
 		$this->output_field_start( $value );

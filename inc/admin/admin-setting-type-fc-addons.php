@@ -70,23 +70,23 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 				'item_class'    => 'fc-addons__item--wide',
 				'plugin_file'   => 'fluid-checkout-pro/fluid-checkout-pro.php',
 				'plugin_slug'   => 'fluid-checkout-pro',
-				'title'         => __( 'Fluid Checkout PRO', 'fluid-checkout' ) . ' - ' . __( 'The complete bundle', 'fluid-checkout' ),
+				'title'         => __( 'Fluid Checkout PRO - The complete checkout package', 'fluid-checkout' ),
 				'subtitle'      => __( 'All PRO features + all add-ons, one price. Design templates, optimized cart and order received pages, account matching, and much more.', 'fluid-checkout' ),
 				'description'   => __( 'The best tools to further <strong>improve your WooCommerce checkout conversion rate</strong> and make the purchase experience consistent on the entire journey.', 'fluid-checkout' ),
 				'features'      => array(
 					__( 'More design templates', 'fluid-checkout' ),
 					__( 'Optimized cart page', 'fluid-checkout' ),
 					__( 'Optimized order received / thank you page', 'fluid-checkout' ),
+					__( 'Optimized order pay page', 'fluid-checkout' ),
+					__( 'Express checkout buttons from supported payment methods', 'fluid-checkout' ),
 					__( 'Edit cart contents at checkout page', 'fluid-checkout' ),
+					__( 'Local pickup and in-store collection', 'fluid-checkout' ),
 					__( 'Account matching / user matching', 'fluid-checkout' ),
 					__( 'Delayed account creation', 'fluid-checkout' ),
-					__( 'Express checkout buttons from supported payment methods', 'fluid-checkout' ),
 					__( 'Trust symbols on the cart and thank you pages', 'fluid-checkout' ),
 					__( 'More positions for the coupon code on the checkout page', 'fluid-checkout' ),
-					__( 'Integrated coupon code field on the cart page', 'fluid-checkout' ),
 					__( 'International phone numbers', 'fluid-checkout' ),
 					__( 'Gift messages and packing slips', 'fluid-checkout' ),
-					__( 'Local pickup and in-store collection', 'fluid-checkout' ),
 				),
 				'image'         => $directory_url . 'images/admin/addons/fluid-checkout-pro-icon.svg',
 				'purchase_url'  => 'https://fluidcheckout.com/pricing/?mtm_campaign=addons&mtm_kwd=fc-pro&mtm_source=lite-plugin',
@@ -403,7 +403,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		?>
 		<div class="fc-settings-card fc-settings-card--addons">
 			<div class="fc-settings-card__header">
-				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Add-ons - Get more out of your checkout journey', 'fluid-checkout' ) ); ?></h3>
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Get more out of your checkout journey', 'fluid-checkout' ) ); ?></h3>
 				<div class="fc-settings-card__promo"><?php
 					echo wp_kses(
 						FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'addons', 'https://fluidcheckout.com/' ),
@@ -426,8 +426,6 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			<?php
 			/**
 			 * Fires before the Dashboard add-ons list.
-			 *
-			 * Extensions can print markup here, for example a PRO site key field.
 			 *
 			 * @since 5.0.0
 			 */

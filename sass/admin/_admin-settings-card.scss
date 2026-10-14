@@ -107,7 +107,7 @@
 	color: $fc-settings-promo-pill-color-hover;
 	text-decoration: none;
 	transform: scale( 1.025 );
-	box-shadow: 0 2px 6px 0 rgba( 0, 0, 0, .15 );
+	box-shadow: 0 2px 6px 0 $elevation-shadow-medium;
 }
 
 .fc-settings-promo-pill--addon {
@@ -205,7 +205,7 @@
 
 .fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select {
 	width: auto !important; // Override dashboard add-ons full-width select styles
-	max-width: none !important;
+	max-width: none !important; // Override dashboard add-ons full-width select styles
 }
 
 .fc-settings-card--promo .fc-settings-promo__actions .button + .fc-addons__item-action-notice,
@@ -238,7 +238,7 @@
 	margin-bottom: 20px;
 	font-size: 16px;
 	font-weight: 500;
-	color: #666;
+	color: $admin-text-color-muted;
 }
 
 
@@ -249,9 +249,8 @@
 // SETTINGS PAGE - PROMO CARDS
 // ------------------------------------
 
-.fc-settings-card--promo,
-.fc-settings-card--site-key-placeholder {
-	border: solid 2px #646970;
+.fc-settings-card--promo {
+	border: solid 2px $emphasis-border-color;
 	box-shadow: none;
 }
 
@@ -272,11 +271,11 @@
 	position: relative;
 	margin: 5px 0 0;
 	padding: 10px 0 5px 26px;
-	color: #444;
+	color: $admin-text-color-muted;
 }
 
 .fc-settings-promo__features li + li {
-	border-top: 1px solid rgba( 200, 215, 225, .4 );
+	border-top: 1px solid $admin-ui-border-color;
 }
 
 .fc-settings-promo__features li::before {
@@ -299,7 +298,7 @@
 	text-transform: none;
 	text-rendering: auto;
 	text-align: center;
-	color: #007a3d;
+	color: $success-color;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	// END - Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
