@@ -804,6 +804,29 @@
 		return _settings.i18n && _settings.i18n.saving ? _settings.i18n.saving : 'Saving...';
 	};
 
+
+
+	/**
+	 * Get the first save button that can submit the settings form.
+	 *
+	 * @return  {Element|null}  Save button, or null when saving is unavailable.
+	 */
+	var getActiveSaveButton = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+
+			if ( button.disabled || button.classList.contains( _settings.isBusyClass ) ) { continue; }
+
+			return button;
+		}
+
+		return null;
+	};
+
 	/**
 	 * Show the saving state on all settings save buttons.
 	 * Locks each button to its current width so the label change does not shrink it.
@@ -859,6 +882,42 @@
 
 
 	/**
+	 * Save settings when pressing Ctrl+S or Cmd+S.
+	 *
+	 * @param   {Event}  event  Keyboard event.
+	 */
+	var handleKeydown = function( event ) {
+		var form;
+		var saveButton;
+		var isSaveShortcut;
+
+		// Bail if FCUtils is not available
+		if ( ! window.FCUtils ) { return; }
+
+		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.SAVE === event.key.toLowerCase();
+
+		// Bail if the save shortcut was not pressed
+		if ( ! isSaveShortcut ) { return; }
+
+		form = document.querySelector( _settings.formSelector );
+		saveButton = getActiveSaveButton();
+
+		// Bail if the form or an enabled save button is missing
+		if ( ! form || ! saveButton ) { return; }
+
+		event.preventDefault();
+
+		if ( typeof form.requestSubmit === 'function' ) {
+			form.requestSubmit( saveButton );
+		}
+		else {
+			saveButton.click();
+		}
+	};
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 *
 	 * @param   {Object}  options  Optional settings overrides (e.g. fieldIdPrefix).
@@ -883,6 +942,7 @@
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
 		window.addEventListener( 'submit', handleSubmit, true );
+		document.addEventListener( 'keydown', handleKeydown, true );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
 		window.addEventListener( 'resize', scheduleActionsBarSync );

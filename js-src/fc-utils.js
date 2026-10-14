@@ -1,5 +1,13 @@
 /**
- * Utility resources shared across the scripts of Fluid Checkout.
+ * Utility resources shared across Fluid Checkout scripts.
+ *
+ * Canonical copy in fluid-checkout-standards (`shared/js-src/fc-utils.js`).
+ * Synced to consumer plugins via `shared-files.manifest.json` (id: `fc-utils`).
+ *
+ * Fluid Checkout Lite registers this file as `fc-utils`. Each standalone plugin
+ * (see standards README → FCUtils) must sync this file and register the same
+ * handle when Lite is inactive. Lite-dependent add-ons use Lite’s handle when
+ * Lite is active.
  */
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
@@ -67,6 +75,7 @@
 		ARROW_RIGHT: 'ArrowRight',
 		ARROW_UP: 'ArrowUp',
 		ARROW_DOWN: 'ArrowDown',
+		SAVE: 's',
 	}
 
 
