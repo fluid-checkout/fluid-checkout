@@ -100,12 +100,6 @@ Quite insane how the developer is doing this. And a free plugin!!
 
 * **Integrated coupon code field at the checkout**: more options for positions to display the coupon code field.
 
-Future features:
-
-* Improved Local Pickup
-* Delayed account creation
-* Customize checkout steps and fields
-* ... and more.
 
 Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
@@ -113,19 +107,6 @@ Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckou
 
 [Fluid Checkout PRO demo site](https://demos.fluidcheckout.com/pro/?add-to-cart=14&quantity=2)
 
-== Add-ons ==
-
-Even more features available as separate plugins:
-
-* **[Google Address Autocomplete for WooCommerce](https://fluidcheckout.com/fc-google-address-autocomplete/)**: let customers search their addresses and autofill fields in the checkout page using the Google APIs, reducing by around 40% the number of fields they need to type. Also available to use without Fluid Checkout.
-
-* **[Address book](https://fluidcheckout.com/fc-address-book/)**: allow customers to save multiple addresses to their account and choose which ones to use at the checkout and cart pages.
-
-* **[EU-VAT Assistant](https://fluidcheckout.com/fc-eu-vat-assistant/)**: Collect and validate EU VAT numbers at the checkout page, removes tax charges on reverse charge basis and confirms customer location when needed.
-
-[View all products](https://fluidcheckout.com/add-ons/).
-
-Want all features? Get the [Fluid Checkout PRO Bundle plan](https://fluidcheckout.com/pricing/) with all the PRO features and all add-ons for a special price.
 
 
 == Fully Customizable ==
@@ -356,9 +337,6 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: My account registration option to Customer accounts settings.
-* Improved: Support pipe-separated OR trigger ids in settings field conditionals.
-* Removed: Privacy notice setting for delayed account creation.
 * Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
 * Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
 * Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
