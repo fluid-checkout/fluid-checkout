@@ -11,7 +11,8 @@
 $admin-text-color:                          #2e4453 !default;
 $admin-text-color-muted:                    #68717a !default;
 $admin-text-color-subtle:                   #8a9ba8 !default;
-$admin-background-color:                    #f3f6f8 !default;
+$admin-muted-surface-background:            #f5f7f8 !default;
+$admin-background-color:                    $admin-muted-surface-background !default;
 $admin-border-color:                        rgba( 200, 215, 225, .5 ) !default;
 $admin-border-color-strong:                 rgba( 200, 215, 225, .7 ) !default;
 $admin-separator-color:                     #e2e4e7 !default;
@@ -35,30 +36,12 @@ $admin-breakpoint-auto-fold:                960px !default;
 // ----------------------------------------
 // ADMIN - UI COLORS
 
-$primary-action-background-hover:     var( --fluidcheckout--primary-action-background-hover, #006432 ) !default;
-$feedback-message-success-color:      var( --fluidcheckout--feedback-message-success-color, #007017 ) !default;
-$feedback-message-error-color:        var( --fluidcheckout--feedback-message-error-color, #b32d2e ) !default;
+$conversion-kit-brand-color:            var( --fluidcheckout--conversion-kit-brand-color, #0b7a6f ) !default;
 
-$inline-notice-success-background:    var( --fluidcheckout--inline-notice-success-background, #edfaef ) !default;
-$inline-notice-success-border-color:  var( --fluidcheckout--inline-notice-success-border-color, #68de7c ) !default;
-$inline-notice-error-background:      var( --fluidcheckout--inline-notice-error-background, #fcf0f1 ) !default;
-$inline-notice-error-border-color:    var( --fluidcheckout--inline-notice-error-border-color, #d63638 ) !default;
+$admin-ui-border-color:                 #d0d1d3 !default;
 
-$secondary-text-color:                var( --fluidcheckout--secondary-text-color, #666 ) !default;
-$tertiary-text-color:                 var( --fluidcheckout--tertiary-text-color, #444 ) !default;
-
-$emphasis-border-color:               var( --fluidcheckout--emphasis-border-color, #646970 ) !default;
-$secondary-control-color:             var( --fluidcheckout--secondary-control-color, #50575e ) !default;
-$highlighted-item-border-color:       var( --fluidcheckout--highlighted-item-border-color, #0b7a6f ) !default;
-
-$code-block-background-color:         var( --fluidcheckout--code-block-background-color, #f6f7f7 ) !default;
-$modal-border-color:                  var( --fluidcheckout--modal-border-color, #c3c4c7 ) !default;
-$modal-divider-border-color:          var( --fluidcheckout--modal-divider-border-color, #dcdcde ) !default;
-$upload-dropzone-border-color:        var( --fluidcheckout--upload-dropzone-border-color, #b4b9be ) !default;
-$popover-border-color:                var( --fluidcheckout--popover-border-color, #ccc ) !default;
-
-$list-item-divider-border-color:      var( --fluidcheckout--list-item-divider-border-color, rgba( 200, 215, 225, .4 ) ) !default;
-$muted-panel-background-color:        var( --fluidcheckout--muted-panel-background-color, rgba( 200, 215, 225, .35 ) ) !default;
+$emphasis-border-color:                 var( --fluidcheckout--emphasis-border-color, #646970 ) !default;
+$secondary-control-color:               var( --fluidcheckout--secondary-control-color, #50575e ) !default;
 
 $modal-backdrop-background:           var( --fluidcheckout--modal-backdrop-background, rgba( 0, 0, 0, .55 ) ) !default;
 $preview-backdrop-background:         var( --fluidcheckout--preview-backdrop-background, rgba( 30, 30, 30, .72 ) ) !default;
@@ -212,7 +195,7 @@ $fc-settings-nav-link-gap:                  10px !default;
 $fc-settings-nav-link-font-size:            13px !default;
 $fc-settings-nav-link-line-height:          1.4 !default;
 $fc-settings-nav-pill-radius:               5px !default;
-$fc-settings-nav-link-hover-background:     #f5f7f8 !default;
+$fc-settings-nav-link-hover-background:     $admin-muted-surface-background !default;
 $fc-settings-nav-link-active-background:    #e7edf1 !default;
 $fc-settings-nav-link-hover-color:          #3c4a55 !default;
 $fc-settings-nav-focus-outline-color:       #2271b1 !default;

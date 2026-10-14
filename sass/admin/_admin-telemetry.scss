@@ -12,11 +12,11 @@
 }
 
 .fc-telemetry-enable-actions__feedback.is-error {
-	color: $feedback-message-error-color;
+	color: $error-color;
 }
 
 .fc-telemetry-enable-actions__feedback.is-success {
-	color: $feedback-message-success-color;
+	color: $success-color;
 }
 
 .fc-telemetry-enable-actions__feedback.is-hidden {
@@ -51,7 +51,7 @@ body.fc-telemetry-modal-open {
 
 .fc-telemetry-modal__dialog {
 	background: $white;
-	border: 1px solid $modal-border-color;
+	border: 1px solid $admin-ui-border-color;
 	border-radius: 4px;
 	box-shadow: 0 8px 32px $elevation-shadow-strong;
 	display: flex;
@@ -65,7 +65,7 @@ body.fc-telemetry-modal-open {
 
 .fc-telemetry-modal__header {
 	align-items: center;
-	border-bottom: 1px solid $modal-divider-border-color;
+	border-bottom: 1px solid $admin-ui-border-color;
 	display: flex;
 	justify-content: space-between;
 	padding: 16px 20px;
@@ -93,8 +93,8 @@ body.fc-telemetry-modal-open {
 }
 
 .fc-telemetry-modal__payload {
-	background: $code-block-background-color;
-	border: 1px solid $modal-divider-border-color;
+	background: $admin-muted-surface-background;
+	border: 1px solid $admin-ui-border-color;
 	border-radius: 4px;
 	font-family: Consolas, Monaco, monospace;
 	font-size: 12px;
@@ -113,15 +113,15 @@ body.fc-telemetry-modal-open {
 }
 
 .fc-telemetry-modal__feedback.is-error {
-	color: $feedback-message-error-color;
+	color: $error-color;
 }
 
 .fc-telemetry-modal__feedback.is-success {
-	color: $feedback-message-success-color;
+	color: $success-color;
 }
 
 .fc-telemetry-modal__footer {
-	border-top: 1px solid $modal-divider-border-color;
+	border-top: 1px solid $admin-ui-border-color;
 	display: flex;
 	gap: 8px;
 	justify-content: flex-end;

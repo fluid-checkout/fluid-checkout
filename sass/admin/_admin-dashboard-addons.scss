@@ -58,7 +58,7 @@
 }
 
 .fc-addons__item.fc-addons__item--highlight-conversion {
-	border: solid 2px $highlighted-item-border-color;
+	border: solid 2px $conversion-kit-brand-color;
 }
 
 
@@ -291,8 +291,9 @@
 
 .fc-addons__item-actions .button.button-primary.button--install:hover,
 .fc-addons__item-actions .button.button-primary.button--install:focus {
-	background: $primary-action-background-hover;
-	border-color: $primary-action-background-hover;
+	background: $success-color;
+	border-color: $success-color;
+	box-shadow: inset 0 0 0 100vmax rgba( 0, 0, 0, .12 );
 	color: $white;
 }
 
@@ -308,15 +309,15 @@
 }
 
 .fc-addons__item-action-notice--success {
-	background: $inline-notice-success-background;
-	border: 1px solid $inline-notice-success-border-color;
+	background: $success-color-highlight;
+	border: 1px solid $success-color;
 	color: $success-color;
 }
 
 .fc-addons__item-action-notice--error {
-	background: $inline-notice-error-background;
-	border: 1px solid $inline-notice-error-border-color;
-	color: $feedback-message-error-color;
+	background: $admin-muted-surface-background;
+	border: 1px solid $error-color;
+	color: $error-color;
 }
 
 
