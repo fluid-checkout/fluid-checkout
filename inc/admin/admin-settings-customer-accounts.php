@@ -229,7 +229,7 @@ class FluidCheckout_Settings_AccountMatching {
 
 				array(
 					'title'                 => __( 'Section position', 'fluid-checkout' ),
-					'desc'                  => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_delayed_account_creation_section_position',
 					'type'                  => 'fc_select',
 					'options'               => array(
@@ -250,7 +250,7 @@ class FluidCheckout_Settings_AccountMatching {
 
 				array(
 					'title'                 => __( 'Account creation benefits', 'fluid-checkout' ),
-					'desc'                  => __( 'Leaving the field empty will display the default text.', 'fluid-checkout' ),
+					'desc_tip'              => __( 'Leaving the field empty will display the default text.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_delayed_account_creation_benefits',
 					'type'                  => 'fc_textarea',
 					'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_benefits' ),
