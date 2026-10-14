@@ -403,7 +403,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 		?>
 		<div class="fc-settings-card fc-settings-card--addons">
 			<div class="fc-settings-card__header">
-				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Add-ons - Get more out of your checkout journey', 'fluid-checkout' ) ); ?></h3>
+				<h3 class="fc-settings-card__title"><?php echo esc_html( __( 'Get more out of your checkout journey', 'fluid-checkout' ) ); ?></h3>
 				<div class="fc-settings-card__promo"><?php
 					echo wp_kses(
 						FluidCheckout_Admin::instance()->get_addon_feature_badge_html( 'addons', 'https://fluidcheckout.com/' ),
