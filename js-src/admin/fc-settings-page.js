@@ -290,7 +290,8 @@
 	}
 
 	/**
-	 * Parse comma-separated trigger ids from a conditional field attribute.
+	 * Parse trigger ids from a conditional field attribute.
+	 * Pipe-separated ids use OR matching; comma-separated ids use AND matching.
 	 *
 	 * @param   {string}  conditionIds  Value of data-conditional-id.
 	 * @return  {Array}                 Trimmed non-empty trigger keys.
@@ -299,13 +300,15 @@
 		var parts;
 		var result = [];
 		var i;
+		var conditionIdsString;
 
 		// Bail if condition ids are missing
 		if ( null === conditionIds || undefined === conditionIds || '' === conditionIds ) {
 			return result;
 		}
 
-		parts = String( conditionIds ).split( ',' );
+		conditionIdsString = String( conditionIds );
+		parts = conditionIdsString.indexOf( '|' ) !== -1 ? conditionIdsString.split( '|' ) : conditionIdsString.split( ',' );
 		for ( i = 0; i < parts.length; i++ ) {
 			var part = parts[ i ].trim();
 			if ( part ) {
@@ -314,6 +317,16 @@
 		}
 
 		return result;
+	}
+
+	/**
+	 * Whether conditional ids in data-conditional-id should match with OR logic.
+	 *
+	 * @param   {string}  conditionIds  Value of data-conditional-id.
+	 * @return  {boolean}
+	 */
+	var isConditionalOrMatch = function( conditionIds ) {
+		return null !== conditionIds && undefined !== conditionIds && String( conditionIds ).indexOf( '|' ) !== -1;
 	}
 
 	/**
@@ -341,13 +354,56 @@
 	}
 
 	/**
+	 * Evaluate whether any pipe-separated conditional id/value pair matches (OR).
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @return  {boolean}
+	 */
+	var doAnyConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIds;
+		var conditionValuesRaw;
+		var i;
+		var triggerElement;
+		var triggerFieldRow;
+
+		// Bail if element is not valid
+		if ( ! conditionalField ) { return false; }
+
+		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+
+		// Bail if no trigger ids
+		if ( ! conditionIds.length ) { return false; }
+
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ i ] );
+
+			// Skip if trigger is missing
+			if ( ! triggerElement ) { continue; }
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				continue;
+			}
+
+			if ( doesConditionalValueMatch( conditionValuesRaw, getFieldValue( triggerElement ) ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Evaluate whether all conditional id/value pairs currently match (AND).
 	 * A single id with a comma-separated value list still uses OR matching for that value.
+	 * Pipe-separated ids in data-conditional-id use OR matching across triggers.
 	 *
 	 * @param   {Element}  conditionalField  The conditional field element.
 	 * @return  {boolean}
 	 */
 	var doAllConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIdsRaw;
 		var conditionIds;
 		var conditionValuesRaw;
 		var conditionValues;
@@ -359,11 +415,17 @@
 		// Bail if element is not valid
 		if ( ! conditionalField ) { return false; }
 
-		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionIdsRaw = conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute );
+		conditionIds = parseConditionalIds( conditionIdsRaw );
 		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
 
 		// Bail if no trigger ids
 		if ( ! conditionIds.length ) { return false; }
+
+		// Pipe-separated trigger ids: any matching value shows the field
+		if ( isConditionalOrMatch( conditionIdsRaw ) ) {
+			return doAnyConditionalConditionsMatch( conditionalField );
+		}
 
 		// Single trigger: OR list in data-conditional-value (existing behavior)
 		if ( 1 === conditionIds.length ) {
