@@ -260,6 +260,9 @@ $fc-settings-input-box-shadow:              0 0 0 0 rgba( 0, 0, 0, 0 ), 0 0 0 0 
 $fc-settings-input-group-gap:               10px !default;
 $fc-settings-select-caret-size:             16px !default;
 $fc-settings-select-caret-padding-right:    36px !default;
+$fc-settings-select-caret-offset-x:         10px !default;
+$fc-settings-select-caret-background:       url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%232e4453'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" ) !default;
+$fc-settings-select-caret-background-disabled: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%2368717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" ) !default;
 $fc-settings-badge-background-color:        #e7edf1 !default;
 $fc-settings-badge-font-size:               11px !default;
 $fc-settings-badge-border-radius:           10px !default;

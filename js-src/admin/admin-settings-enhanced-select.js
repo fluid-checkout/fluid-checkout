@@ -22,7 +22,7 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _settings = {
-		selectFieldSelector:              '.fc-settings-wrap select.fc-enhanced-select',
+		selectFieldSelector:              '.fc-settings-wrap select:not([data-fc-enhanced-select="no"])',
 		maximumSelectionLengthAttribute:  'data-maximum-selection-length',
 		fieldSettings: {
 			maxOptions:   999999,

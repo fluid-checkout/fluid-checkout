@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Use Tom Select for all dropdown fields on the Fluid Checkout settings page.
 * Improved: PRO feature badges on the Getting started checklist link to pricing again, matching other settings badges.
 * Improved: Google address autocomplete is enabled by default.
 * Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
