@@ -2473,30 +2473,6 @@ msgstr ""
 "A pénztárlépések szakaszának kimenete a Nyture témából a Fluid Checkout "
 "használatakor."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Lehet, hogy \"kötelező\", ha a számlázási cím rész a szállítási cím rész "
-"után jelenik meg, és a számlázási telefon mező \"kötelező\". Erre azért van "
-"szükség, hogy a szállítási cím átmásolható legyen a számlázási címre, ha ez "
-"az opció be van jelölve."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Lehet, hogy \"kötelező\", ha a számlázási cím szakasz a számlázási cím "
-"szakasz után jelenik meg, és a számlázási telefon mező \"kötelező\". Erre "
-"azért van szükség, hogy a számlázási cím másolható legyen a számlázási "
-"címre, ha ez az opció be van jelölve."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2755,13 +2731,41 @@ msgstr "Kibővített"
 msgid "Do not show"
 msgstr "Ne mutassa"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Igen"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "igen"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Nem"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"A szállítási telefonszám mező „kötelező” mezőként jelenhet meg, ha a "
+"számlázási cím szakasz a szállítási cím szakasz után jelenik meg, és a "
+"számlázási telefonszám mező „kötelező” beállítású. Erre azért van szükség, "
+"hogy a szállítási cím átmásolható legyen a számlázási címbe, ha az adott "
+"opció be van jelölve; ellenkező esetben előfordulhat, hogy az ügyfél nem "
+"tudja kitölteni a fizetési űrlapot."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"A számlázási telefonszám mező „kötelező” mezőként jelenhet meg, ha a "
+"számlázási cím szakasz a szállítási cím szakasz előtt jelenik meg, és a "
+"szállítási telefonszám mező „kötelező” beállítású. Erre azért van szükség, "
+"hogy a szállítási cím átmásolható legyen a számlázási címbe, ha az adott "
+"opció be van jelölve; ellenkező esetben előfordulhat, hogy az ügyfél nem "
+"tudja kitölteni a fizetési űrlapot."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2904,3 +2908,14 @@ msgstr "Szállítás"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "következő lépés"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Igen"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

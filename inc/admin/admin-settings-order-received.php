@@ -5,34 +5,25 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( class_exists( 'WC_Settings_FluidCheckout_OrderReceived_Settings', false ) ) {
-	return new WC_Settings_FluidCheckout_OrderReceived_Settings();
+if ( class_exists( 'FluidCheckout_Settings_OrderReceived', false ) ) {
+	FluidCheckout_Settings_OrderReceived::hooks();
+	return;
 }
 
 /**
- * WC_Settings_FluidCheckout_OrderReceived_Settings.
+ * FluidCheckout_Settings_OrderReceived.
  */
-class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page {
-
-	/**
-	 * __construct function.
-	 */
-	public function __construct() {
-		$this->id = 'fc_checkout';
-		$this->hooks();
-	}
-
-
+class FluidCheckout_Settings_OrderReceived {
 
 	/**
 	 * Initialize hooks.
 	 */
-	public function hooks() {
+	public static function hooks() {
 		// Sections
-		add_filter( 'woocommerce_get_sections_fc_checkout', array( $this, 'add_sections' ), 10 );
+		add_filter( 'fc_admin_settings_sections', array( __CLASS__, 'add_sections' ), 10 );
 
 		// Settings
-		add_filter( 'woocommerce_get_settings_fc_checkout', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_settings' ), 10, 2 );
 	}
 
 
@@ -42,12 +33,45 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 	 *
 	 * @param   array  $sections  Admin settings sections.
 	 */
-	public function add_sections( $sections ) {
+	public static function add_sections( $sections ) {
 		$sections = array_merge( $sections, array(
 			'order_received' => _x( 'Thank you', 'Settings section', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
+	}
+
+
+
+	/**
+	 * Get the promotional settings card shown at the top of the Thank You tab when PRO is not active.
+	 */
+	public static function get_promo_settings() {
+		// Bail if PRO is already activated
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return array(); }
+
+		return array(
+			array(
+				'title'            => __( 'Thank you page optimization', 'fluid-checkout' ),
+				'type'             => 'fc_promo',
+				'id'               => 'fc_pro_order_received_promo',
+				'is_card'          => true,
+				'promo'            => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-promo' ),
+				'tagline'          => __( 'Make the thank you page and order details clearer for customers after they buy.', 'fluid-checkout' ),
+				'features'         => array(
+					__( 'Optimize the thank you page and account order details with a clearer layout.', 'fluid-checkout' ),
+					__( 'Show order status progress, actions, downloads, and notes where they make sense.', 'fluid-checkout' ),
+					__( 'Customize order details sections on email notifications.', 'fluid-checkout' ),
+					__( 'Add trust symbols and badges where shoppers need reassurance after purchase.', 'fluid-checkout' ),
+				),
+				'learn_more_url'   => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=order-received-promo-learn-more&mtm_source=lite-plugin',
+				'learn_more_label' => __( 'Learn more', 'fluid-checkout' ),
+				'plugin_file'      => 'fluid-checkout-pro/fluid-checkout-pro.php',
+				'plugin_slug'      => 'fluid-checkout-pro',
+				'purchase_url'     => 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=order-received-promo-purchase&mtm_source=lite-plugin',
+				'purchase_price'   => '129 EUR',
+			),
+		);
 	}
 
 
@@ -58,43 +82,56 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 	 * @param   array   $settings         Array with all settings for the current section.
 	 * @param   string  $current_section  Current section name.
 	 */
-	public function add_settings( $settings, $current_section ) {
+	public static function add_settings( $settings, $current_section ) {
 		if ( 'order_received' === $current_section ) {
 
+			/**
+			 * Filters the order received settings.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_pro_order_received_settings',
-				array(
+				array_merge(
+					self::get_promo_settings(),
+					array(
 
 					array(
 						'title' => __( 'Thank you page & order details layout', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => FluidCheckout_Admin::instance()->get_upgrade_pro_html( false ),
+						'desc'  => '',
 						'id'    => 'fc_pro_order_received_layout_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-layout' ),
 					),
 
 					array(
 						'title'             => __( 'Order details optimizations', 'fluid-checkout' ),
 						'desc'              => __( 'Enable thank you page and order details optimizations', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Changes the layout of order details on the thank you page and account pages.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc_tip'          => __( 'Changes the layout of order details on the thank you page and account pages.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_order_received',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_received' ),
-						'checkboxgroup'     => 'start',
-						'show_if_checked'   => 'option',
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
+						'title'             => __( 'Email notifications', 'fluid-checkout' ),
 						'desc'              => __( 'Enable order details customizations on email notifications', 'fluid-checkout' ),
 						'desc_tip'          => __( 'Display new sections and change order of sections on email notifications. Styles of order details on email notifications remain unchanged.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_order_details_email_customizations',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_details_email_customizations' ),
-						'checkboxgroup'     => 'end',
-						'show_if_checked'   => 'yes',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -107,8 +144,31 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 					array(
 						'title' => __( 'Thank you page', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'These options affect the thank you page, also known as order received or order confirmation pages.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
-						'id'    => 'fc_pro_order_received_layout_options',
+						'desc'  => '',
+						'id'    => 'fc_pro_order_received_page_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-received-page' ),
+					),
+
+					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'These options affect the thank you page, also known as order received or order confirmation pages.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_order_received_page_description',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
+					),
+
+					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'Enable thank you page and order details optimizations to see more options', 'fluid-checkout' ),
+						'id'                => 'fc_pro_order_received_page_enable_notice',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'no',
+						),
+						'requires'          => 'pro',
+						'unlocked_only'     => true,
 					),
 
 					array(
@@ -118,34 +178,34 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'id'                => 'fc_pro_enable_order_page_block_based_template',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_page_block_based_template' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
 						'title'             => __( 'Order details layout', 'fluid-checkout' ),
-						'desc'              => __( 'Display the order details with wide layout on the thank you page', 'fluid-checkout' ),
+						'desc'              => __( 'Use wide layout on thank you page', 'fluid-checkout' ),
+						'desc_tip'          => __( 'Display the order details with wide layout on the thank you page', 'fluid-checkout' ),
 						'id'                => 'fc_pro_enable_order_details_wide_layout',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_details_wide_layout' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
-					),
-
-					array(
-						'title'             => __( 'Trust symbols &amp; badges', 'fluid-checkout' ), // Intentionally use text domain from Lite plugin to avoid duplicating this text in translation files.
-						'desc'              => __( 'Add widget areas to the thank you page', 'fluid-checkout' ),
-						'desc_tip'          => __( 'These widget areas are used to add trust symbols and trust badges on the thank you page.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-trust-symbols-badges/' ),
-						'id'                => 'fc_pro_enable_order_received_widget_areas',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_received_widget_areas' ),
-						'autoload'          => false,
-						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
 						'type' => 'sectionend',
-						'id'   => 'fc_pro_order_received_layout_options',
+						'id'   => 'fc_pro_order_received_page_options',
 					),
 
 
@@ -153,13 +213,37 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 					array(
 						'title' => __( 'Order details layout', 'fluid-checkout' ),
 						'type'  => 'title',
-						'desc'  => __( 'These options affect the thank you page , view order details on account pages and on email notifications.', 'fluid-checkout' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'  => '',
 						'id'    => 'fc_pro_order_details_layout_options',
+						'promo' => FluidCheckout_Admin::instance()->get_pro_feature_badge_html( 'order-details-layout' ),
+					),
+
+					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'These options affect the thank you page, view order details on account pages and on email notifications.', 'fluid-checkout' ),
+						'id'                => 'fc_pro_order_details_layout_description',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
+					),
+
+					array(
+						'type'              => 'fc_paragraph',
+						'desc'              => __( 'Enable thank you page and order details optimizations to see more options', 'fluid-checkout' ),
+						'id'                => 'fc_pro_order_details_layout_enable_notice',
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'no',
+						),
+						'requires'          => 'pro',
+						'unlocked_only'     => true,
 					),
 
 					array(
 						'title'             => __( 'Order actions', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the order actions.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the order actions.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_actions_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -168,8 +252,13 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 							'after_order_sections'    => __( 'After order sections', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_actions_position' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -178,13 +267,19 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'id'                => 'fc_pro_enable_order_details_order_status_progress_bar',
 						'type'              => 'checkbox',
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_order_details_order_status_progress_bar' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
 						'title'             => __( 'Order summary', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_summary_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -195,13 +290,19 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 							'on_sidebar'              => __( 'On the sidebar', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_summary_position' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
 						'title'             => __( 'Order downloads', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_downloads_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -210,13 +311,19 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 							'after_order_items'       => __( 'After the order items section', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_downloads_position' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
 						'title'             => __( 'Gift message', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_gift_message_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -225,13 +332,19 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 							'after_order_items'       => __( 'After the order items section', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_gift_message_position' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
 						'title'             => __( 'Order notes', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
+						'desc'              => '',
+						'desc_tip'          => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
 						'id'                => 'fc_pro_order_details_order_notes_position',
 						'type'              => 'fc_select',
 						'options'           => array(
@@ -240,8 +353,13 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 							'after_order_items'       => __( 'After the order items section', 'fluid-checkout' ),
 						),
 						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_order_details_order_notes_position' ),
+						'custom_attributes' => array(
+							'data-conditional-id'    => 'fc_pro_enable_order_received',
+							'data-conditional-value' => 'yes',
+						),
 						'autoload'          => false,
 						'disabled'          => true,
+						'requires'          => 'pro',
 					),
 
 					array(
@@ -249,73 +367,7 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 						'id'   => 'fc_pro_order_details_layout_options',
 					),
 
-
-
-					array(
-						'title' => __( 'Delayed account creation', 'fluid-checkout' ),
-						'type'  => 'title',
-						'desc'  => '',
-						'id'    => 'fc_pro_delayed_account_creation_options',
-					),
-
-					array(
-						'title'             => __( 'Account creation', 'fluid-checkout' ),
-						'desc'              => __( 'Enable delayed account creation', 'fluid-checkout' ),
-						'desc_tip'          => __( 'Enabling this option will also enable the "Account matching" feature.', 'fluid-checkout' ),
-						'id'                => 'fc_pro_enable_delayed_account_creation',
-						'type'              => 'checkbox',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_delayed_account_creation' ),
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
-						'title'             => __( 'Section position', 'fluid-checkout' ),
-						'desc'              => __( 'Choose in which position to display the section.', 'fluid-checkout' ),
-						'id'                => 'fc_pro_delayed_account_creation_section_position',
-						'type'              => 'fc_select',
-						'options'           => array(
-							'after_order_overview'         => __( 'After the order overview', 'fluid-checkout' ),
-							'before_customer_details'      => __( 'Before customer details section', 'fluid-checkout' ),
-							'after_customer_details'       => __( 'After customer details section', 'fluid-checkout' ),
-							'on_sidebar'                   => __( 'On the sidebar', 'fluid-checkout' ),
-						),
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_section_position' ),
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
-						'title'             => __( 'Account creation benefits', 'fluid-checkout' ),
-						'desc'              => __( 'Leaving the field empty will display the default text.', 'fluid-checkout' ),
-						'id'                => 'fc_pro_delayed_account_creation_benefits',
-						'type'              => 'fc_textarea',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_benefits' ),
-						'placeholder'       => _x( "✔ Checkout faster next time\n✔ Manage your payment preferences\n✔ View order status and history", 'Delayed account creation benefits placeholder text', 'fluid-checkout' ),
-						'css'               => 'width:100%; min-height: 80px;',
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
-						'title'             => __( 'Privacy notice', 'fluid-checkout' ),
-						/* translators: %s: Privacy policy shortcode */
-						'desc'              => sprintf( __( 'Leaving the field empty will display the default text. You can use the shortcode %s and it will be replaced with the "privacy policy" link.', 'fluid-checkout' ), '<code>[privacy_policy]</code>' ),
-						'id'                => 'fc_pro_delayed_account_creation_privacy_notice',
-						'type'              => 'fc_textarea',
-						'default'           => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_delayed_account_creation_privacy_notice' ),
-						/* translators: %s: Privacy policy shortcode */
-						'placeholder'       => sprintf( _x( 'We treat your personal data with care, for more details view %s.', 'Delayed account creation privacy notice placeholder text', 'fluid-checkout' ), '[privacy_policy]' ),
-						'css'               => 'width:100%; min-height: 80px;',
-						'autoload'          => false,
-						'disabled'          => true,
-					),
-
-					array(
-						'type' => 'sectionend',
-						'id'   => 'fc_pro_delayed_account_creation_options',
-					),
-
+					)
 				)
 			);
 		}
@@ -325,4 +377,4 @@ class WC_Settings_FluidCheckout_OrderReceived_Settings extends WC_Settings_Page 
 
 }
 
-return new WC_Settings_FluidCheckout_OrderReceived_Settings();
+FluidCheckout_Settings_OrderReceived::hooks();

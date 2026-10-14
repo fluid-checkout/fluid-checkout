@@ -36,6 +36,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 
 		// Place order position
 		add_filter( 'pre_option_fc_checkout_place_order_position', array( $this, 'change_place_order_position_option' ), 10, 3 );
+		add_filter( 'fc_checkout_general_settings', array( $this, 'change_place_order_position_settings_args' ), 20 ); // Priority needs to be higher than that used by the PRO plugin to enable the settings fields (10)
 
 		// Germanized thumbnails
 		add_filter( 'woocommerce_gzd_checkout_use_legacy_table_replacement_template', '__return_false', 10 );
@@ -54,7 +55,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		add_filter( 'fc_shipping_same_as_billing_field_keys', array( $this, 'remove_pickup_location_from_copy_billing_field_keys' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_pickup_location_data_session_value' ), 10 );
 
 		// Shipping address review text
 		add_filter( 'fc_shipping_substep_text_address_data', array( $this, 'remove_customer_number_from_text_address_data' ), 10 );
@@ -187,6 +188,16 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			$_template = $plugin_path . $template_name;
 
 			// Look for template file in the theme
+			/**
+			 * Filters whether a theme template file may replace a plugin template.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param bool   $value         Value to filter. Default false.
+			 * @param string $template      Located template path.
+			 * @param string $template_name Template name.
+			 * @param string $template_path Template path.
+			 */
 			if ( apply_filters( 'fc_override_template_with_theme_file', false, $template, $template_name, $template_path ) ) {
 				$_template_override = locate_template( array(
 					trailingslashit( $template_path ) . $template_name,
@@ -220,6 +231,18 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function change_place_order_position_option( $pre_option, $option, $default ) {
 		return 'below_order_summary';
+	}
+
+	/**
+	 * Disable the place order position setting and explain why it is forced when using Germanized.
+	 *
+	 * @param   array  $settings  Admin settings args values.
+	 */
+	public function change_place_order_position_settings_args( $settings ) {
+		// Define the settings field description
+		$description = __( 'The place order position is always set to "Below the order summary" when using Germanized for WooCommerce. That plugin requires the place order button and legal checkboxes to be displayed below the order summary.', 'fluid-checkout' );
+
+		return FluidCheckout_Settings::instance()->disable_settings_field( $settings, 'fc_checkout_place_order_position', $description );
 	}
 
 
@@ -448,11 +471,11 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 	 */
 	public function get_current_checkout_shipping_address() {
 		$address = array(
-			'country'   => WC()->checkout->get_value( 'shipping_country' ),
-			'state'     => WC()->checkout->get_value( 'shipping_state' ),
-			'city'      => WC()->checkout->get_value( 'shipping_city' ),
-			'postcode'  => WC()->checkout->get_value( 'shipping_postcode' ),
-			'address_1' => WC()->checkout->get_value( 'shipping_address_1' ),
+			'country'   => WC()->checkout()->get_value( 'shipping_country' ),
+			'state'     => WC()->checkout()->get_value( 'shipping_state' ),
+			'city'      => WC()->checkout()->get_value( 'shipping_city' ),
+			'postcode'  => WC()->checkout()->get_value( 'shipping_postcode' ),
+			'address_1' => WC()->checkout()->get_value( 'shipping_address_1' ),
 		);
 		return $address;
 	}
@@ -557,7 +580,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		// Initialize variables
 		$field_group_key = 'shipping';
 		$current_location_field_key = 'current_pickup_location';
-		
+
 		// Get shipping method provider
 		$provider = $this->get_current_shipping_method_provider();
 
@@ -565,7 +588,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $fields; }
 
 		// Get current pickup location
-		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$pickup_location_code = WC()->checkout()->get_value( $current_location_field_key );
 		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
 
 		// Bail if current location is not available
@@ -682,7 +705,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 			'current_pickup_location',
 			'pickup_location_customer_number',
 		) );
-		
+
 		return $field_keys_skip_list;
 	}
 
@@ -696,7 +719,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
 		// Get customer number field value
-		$customer_number = WC()->checkout->get_value( 'pickup_location_customer_number' );
+		$customer_number = WC()->checkout()->get_value( 'pickup_location_customer_number' );
 
 		// Maybe add review text lines
 		if ( ! empty( $customer_number ) ) {
@@ -726,7 +749,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! is_object( $provider ) || ! method_exists( $provider, 'get_pickup_location_by_code' ) ) { return $is_valid; }
 
 		// Get current pickup location
-		$pickup_location_code = WC()->checkout->get_value( $current_location_field_key );
+		$pickup_location_code = WC()->checkout()->get_value( $current_location_field_key );
 		$current_location = $provider->get_pickup_location_by_code( $pickup_location_code );
 
 		// Bail if current location object or its methods are not available
@@ -736,7 +759,7 @@ class FluidCheckout_WooCommerceGermanized extends FluidCheckout {
 		if ( ! $current_location->customer_number_is_mandatory() && empty( $customer_number ) ) { return $is_valid; }
 
 		$is_valid = $current_location->customer_number_is_valid( $customer_number );
-		
+
 		return $is_valid;
 	}
 

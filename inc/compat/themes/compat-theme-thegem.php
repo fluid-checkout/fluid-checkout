@@ -41,7 +41,7 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 		add_filter( 'wc_get_template', array( $this, 'revert_terms_template' ), 10, 5 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Remove checkout elements added by the theme
 		remove_action( 'woocommerce_before_checkout_form', 'thegem_woocommerce_checkout_scripts', 1 );
@@ -158,11 +158,12 @@ class FluidCheckout_ThemeCompat_TheGem extends FluidCheckout {
 				'title' => __( 'Theme The Gem', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_thegem_options',
+				'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/compat-theme-thegem/' ),
 			),
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from The Gem theme when using Fluid Checkout header and footer.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-thegem/' ),
+				'desc'            => __( 'Output the checkout steps section from The Gem theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_thegem_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_thegem_output_checkout_steps_section' ),

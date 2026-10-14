@@ -19,7 +19,7 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		add_action( 'fc_admin_notices', array( $this, 'add_notice' ), 10 );
+		add_filter( 'fc_admin_notices', array( $this, 'add_notice' ), 10 );
 	}
 
 
@@ -32,10 +32,10 @@ class FluidCheckout_AdminNotices_GermanizedPRO_MultistepFeatureEnabled extends F
 
 		// Get plugin file path
 		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . $plugin_path_name;
-		
+
 		// Bail if plugin file does not exist
 		if ( ! file_exists( $plugin_file ) ) { return false; }
-		
+
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( $plugin_path_name ) && class_exists( 'WooCommerce_Germanized_Pro' );
 	}

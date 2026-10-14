@@ -2348,31 +2348,6 @@ msgstr ""
 "Fluid Checkout istifadə edərkən Nyture mövzusundan yoxlama addımları "
 "bölməsini çıxarın."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Faktura ünvanı bölməsi göndərmə ünvanı bölməsindən sonra göstərilibsə və "
-"faktura telefonu sahəsi &quot;tələb olunursa&quot; &quot;tələb olunur&quot; "
-"kimi məcbur edilə bilər. Bu seçim yoxlanılan zaman göndərmə ünvanının "
-"faktura ünvanına kopyalanmasını təmin etmək üçün lazımdır."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Faktura ünvanı bölməsi faktura ünvanı bölməsindən sonra göstərilibsə və "
-"faktura telefonu sahəsi &quot;tələb olunur&quot; kimi təyin edilərsə, "
-"&quot;tələb olunur&quot; kimi məcbur edilə bilər. Bu, həmin seçim "
-"yoxlanılan zaman faktura ünvanının faktura ünvanına kopyalanmasını təmin "
-"etmək üçün lazımdır."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2630,13 +2605,41 @@ msgstr "Genişləndirilmiş"
 msgid "Do not show"
 msgstr "Göstərməyin"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Bəli"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "bəli"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Xeyr"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Göndərmə ünvanı bölməsindən sonra ödəniş ünvanı bölməsi göstərilərsə və "
+"ödəniş telefonu sahəsi &quot;tələb olunur&quot; olaraq təyin olunarsa, "
+"çatdırılma telefonu sahəsi &quot;tələb olunur&quot; kimi göstərilə bilər. "
+"Bu, həmin seçim işarələndikdə çatdırılma ünvanının ödəniş ünvanına "
+"kopyalana biləcəyini təmin etmək üçün lazımdır, əks halda müştəri ödəmə "
+"formasını doldura bilməyəcək."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Göndərmə ünvanı bölməsindən əvvəl ödəniş ünvanı bölməsi göstərilərsə və "
+"çatdırılma telefonu sahəsi &quot;tələb olunur&quot; olaraq təyin olunarsa, "
+"ödəniş telefonu sahəsi &quot;tələb olunur&quot; kimi göstərilə bilər. Bu, "
+"həmin seçim işarələndikdə çatdırılma ünvanının ödəniş ünvanına kopyalana "
+"biləcəyini təmin etmək üçün lazımdır, əks halda müştəri ödəmə formasını "
+"doldura bilməyəcək."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2777,3 +2780,14 @@ msgstr "Göndərmə"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "növbəti addım"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Bəli"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

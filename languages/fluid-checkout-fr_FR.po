@@ -2588,32 +2588,6 @@ msgstr ""
 "La section des étapes de paiement du thème Nyture est supprimée lors de "
 "l'utilisation de Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Peut être forcé comme \"obligatoire\" si la section de l'adresse de "
-"facturation est affichée après la section de l'adresse d'expédition et que "
-"le champ du téléphone de facturation est défini comme \"obligatoire\". Ceci "
-"est nécessaire pour s'assurer que l'adresse d'expédition peut être copiée "
-"dans l'adresse de facturation lorsque cette option est cochée."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Peut être forcé comme \"obligatoire\" si la section de l'adresse de "
-"facturation est affichée après la section de l'adresse de facturation et "
-"que le champ du téléphone de facturation est défini comme \"obligatoire\". "
-"Ceci est nécessaire pour s'assurer que l'adresse de facturation peut être "
-"copiée dans l'adresse de facturation lorsque cette option est cochée."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2874,13 +2848,43 @@ msgstr "Élargi"
 msgid "Do not show"
 msgstr "Ne pas afficher"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Oui"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "oui"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Non"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Le champ « Numéro de téléphone (livraison) » peut être défini comme « "
+"obligatoire » si la section « Adresse de facturation » s'affiche après la "
+"section « Adresse de livraison » et si le champ « Numéro de téléphone "
+"(facturation) » est défini comme « obligatoire ». Cette mesure est "
+"nécessaire pour garantir que l'adresse de livraison puisse être copiée dans "
+"l'adresse de facturation lorsque cette option est cochée ; sinon, le client "
+"pourrait ne pas être en mesure de valider le formulaire de paiement."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Le champ « Numéro de téléphone de facturation » peut être défini comme « "
+"obligatoire » si la section « Adresse de facturation » s'affiche avant la "
+"section « Adresse de livraison » et si le champ « Numéro de téléphone de "
+"livraison » est défini comme « obligatoire ». Cette mesure est nécessaire "
+"pour garantir que l'adresse de livraison puisse être copiée dans l'adresse "
+"de facturation lorsque cette option est cochée ; sinon, le client pourrait "
+"ne pas être en mesure de valider le formulaire de paiement."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -3025,3 +3029,14 @@ msgstr "Expédition"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "prochaine étape"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Oui"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s : %2$s"

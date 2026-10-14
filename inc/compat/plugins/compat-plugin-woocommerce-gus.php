@@ -259,8 +259,8 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get field values
-		$billing_country = WC()->checkout->get_value( 'billing_country' );
-		$vat_number = WC()->checkout->get_value( self::VAT_FIELD_KEY );
+		$billing_country = WC()->checkout()->get_value( 'billing_country' );
+		$vat_number = WC()->checkout()->get_value( self::VAT_FIELD_KEY );
 
 		// Bail if Poland is not selected as billing country
 		if ( empty( $billing_country ) || 'PL' !== $billing_country ) { return $is_substep_complete; }
@@ -354,7 +354,7 @@ class FluidCheckout_WoocommerceGUS extends FluidCheckout {
 		$prefix = __( 'NIP: ', 'woogus' );
 
 		// Get entered VAT number
-		$vat_number = WC()->checkout->get_value( self::VAT_FIELD_KEY );
+		$vat_number = WC()->checkout()->get_value( self::VAT_FIELD_KEY );
 
 		// Add phone number with country code to the review text
 		$review_text_lines[] = $prefix . $vat_number;

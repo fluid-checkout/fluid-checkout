@@ -15,7 +15,8 @@
 		{
 			"type": "googleTranslate",
 			"url": "https://translation.googleapis.com/language/translate/v2",
-			"key": "*****"
+			"key": "*****",
+			"referrer": "https://fluidcheckout.local"
 		}
 	]
 }

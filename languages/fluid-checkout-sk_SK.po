@@ -2354,32 +2354,6 @@ msgid ""
 "Checkout."
 msgstr "Výstup sekcie krokov pokladnice z témy Nyture pri použití Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Môže byť vynútené ako \"povinné\", ak sa sekcia fakturačnej adresy "
-"zobrazuje po sekcii dodacej adresy a pole fakturačného telefónu je "
-"nastavené ako \"povinné\". Je to potrebné na zabezpečenie toho, aby sa pri "
-"zaškrtnutí tejto možnosti mohla dodacia adresa skopírovať do fakturačnej "
-"adresy."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Môže byť vynútené ako \"povinné\", ak sa sekcia fakturačnej adresy "
-"zobrazuje za sekciou fakturačnej adresy a pole fakturačného telefónu je "
-"nastavené ako \"povinné\". Je to potrebné na zabezpečenie možnosti "
-"kopírovania fakturačnej adresy do fakturačnej adresy, keď je táto možnosť "
-"začiarknutá."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2637,13 +2611,41 @@ msgstr "Rozšírené"
 msgid "Do not show"
 msgstr "Nezobrazujte"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Áno"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "áno"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Nie"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Pole pre telefónne číslo na doručenie môže byť označené ako „povinné“, ak "
+"sa sekcia fakturačnej adresy zobrazuje za sekciou doručovacej adresy a pole "
+"pre telefónne číslo na fakturáciu je nastavené ako „povinné“. Je to "
+"potrebné na to, aby sa doručovacia adresa mohla skopírovať do fakturačnej "
+"adresy, ak je táto možnosť zaškrtnutá; v opačnom prípade by zákazník "
+"nemusel byť schopný vyplniť formulár na dokončenie objednávky."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Pole pre telefónne číslo na fakturačné účely môže byť nastavené ako "
+"„povinné“, ak sa sekcia s fakturačnou adresou zobrazuje pred sekciou s "
+"dodacou adresou a pole pre telefónne číslo na dodanie je nastavené ako "
+"„povinné“. Je to potrebné na to, aby sa dodacie adresa mohla skopírovať do "
+"fakturačnej adresy, ak je táto možnosť zaškrtnutá; v opačnom prípade by "
+"zákazník nemusel byť schopný dokončiť formulár na dokončenie objednávky."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2784,3 +2786,14 @@ msgstr "Preprava"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "ďalší krok"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Áno"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

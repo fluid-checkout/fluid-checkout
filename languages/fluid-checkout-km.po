@@ -2338,32 +2338,6 @@ msgid ""
 "Checkout."
 msgstr "បង្ហាញផ្នែកជំហាននៃការដកប្រាក់ចេញពីស្បែក Nyture នៅពេលប្រើ Fluid Checkout ។"
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ប្រហែលជាត្រូវបានបង្ខំជា &quot;ទាមទារ&quot; "
-"ប្រសិនបើផ្នែកអាសយដ្ឋានចេញវិក្កយបត្រត្រូវបានបង្ហាញបន្ទាប់ពីផ្នែកអាសយដ្ឋានដឹកជ"
-"ញ្ជូន ហើយប្រអប់លេខទូរសព្ទចេញវិក្កយបត្រត្រូវបានកំណត់ជា &quot;ទាមទារ។ "
-"វាចាំបាច់ដើម្បីធានាថាអាសយដ្ឋានដឹកជញ្ជូនអាចត្រូវបានចម្លងទៅអាសយដ្ឋានចេញវិក្កយប"
-"ត្រ នៅពេលជម្រើសនោះត្រូវបានធីក។"
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ប្រហែលជាត្រូវបានបង្ខំថាជា &quot;តម្រូវការ&quot; "
-"ប្រសិនបើផ្នែកអាសយដ្ឋានវិក្កយបត្រត្រូវបានបង្ហាញបន្ទាប់ពីផ្នែកអាសយដ្ឋានវិក្កយប"
-"ត្រ ហើយប្រអប់លេខទូរសព្ទចេញវិក្កយបត្រត្រូវបានកំណត់ថា &quot;ទាមទារ។ "
-"វាចាំបាច់ដើម្បីធានាថាអាសយដ្ឋានវិក្កយបត្រអាចត្រូវបានចម្លងទៅអាសយដ្ឋានវិក្កយបត្"
-"រ នៅពេលដែលជម្រើសនោះត្រូវបានធីក។"
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2619,13 +2593,42 @@ msgstr "បានពង្រីក"
 msgid "Do not show"
 msgstr "កុំបង្ហាញ"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:4058
+msgid "yes"
 msgstr "បាទ/ចាស៎"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "ទេ"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"វាលលេខទូរស័ព្ទដឹកជញ្ជូនអាចត្រូវបានបង្ខំឱ្យ &quot;តម្រូវឱ្យបំពេញ&quot; "
+"ប្រសិនបើផ្នែកអាសយដ្ឋានវិក្កយបត្រត្រូវបានបង្ហាញបន្ទាប់ពីផ្នែកអាសយដ្ឋានដឹកជញ្ជ"
+"ូន ហើយវាលលេខទូរស័ព្ទវិក្កយបត្រត្រូវបានកំណត់ជា &quot;តម្រូវឱ្យបំពេញ&quot;។ "
+"នេះគឺចាំបាច់ដើម្បីធានាថាអាសយដ្ឋានដឹកជញ្ជូនអាចត្រូវបានចម្លងទៅកាន់អាសយដ្ឋានវិក"
+"្កយបត្រនៅពេលដែលជម្រើសនោះត្រូវបានធីក "
+"បើមិនដូច្នោះទេអតិថិជនប្រហែលជាមិនអាចបំពេញទម្រង់បែបបទទូទាត់ប្រាក់បានទេ។"
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"វាលលេខទូរស័ព្ទសម្រាប់ចេញវិក្កយបត្រអាចត្រូវបានបង្ខំឱ្យដាក់ជា "
+"&quot;តម្រូវឲ្យមាន&quot; "
+"ប្រសិនបើផ្នែកអាសយដ្ឋានសម្រាប់ចេញវិក្កយបត្រត្រូវបានបង្ហាញមុនផ្នែកអាសយដ្ឋានដឹក"
+"ជញ្ជូន ហើយវាលលេខទូរស័ព្ទដឹកជញ្ជូនត្រូវបានកំណត់ជា &quot;តម្រូវឲ្យមាន&quot;។ "
+"នេះគឺចាំបាច់ដើម្បីធានាថាអាសយដ្ឋានដឹកជញ្ជូនអាចត្រូវបានចម្លងទៅកាន់អាសយដ្ឋានសម្"
+"រាប់ចេញវិក្កយបត្រនៅពេលដែលជម្រើសនោះត្រូវបានធីក បើមិនដូច្នោះទេ "
+"អតិថិជនប្រហែលជាមិនអាចបំពេញទម្រង់បែបបទទូទាត់ប្រាក់បានទេ។"
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2766,3 +2769,14 @@ msgstr "ការដឹកជញ្ជូន"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "ជំហានបន្ទាប់"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "បាទ/ចាស៎"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

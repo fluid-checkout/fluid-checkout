@@ -2487,32 +2487,6 @@ msgstr ""
 "Выведите раздел \"Шаги оформления заказа\" из темы Nyture при использовании "
 "Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Может быть принудительно установлен как \"обязательный\", если раздел "
-"адреса выставления счета отображается после раздела адреса доставки, а поле "
-"телефона для выставления счета установлено как \"обязательное\". Это "
-"необходимо для того, чтобы адрес доставки мог быть скопирован в адрес "
-"выставления счета, когда этот параметр отмечен."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Может быть принудительно установлен как \"обязательный\", если раздел "
-"адреса выставления счета отображается после раздела адреса выставления "
-"счета, а поле телефона выставления счета установлено как \"обязательное\". "
-"Это необходимо для обеспечения возможности копирования адреса выставления "
-"счета в адрес выставления счета, когда этот параметр отмечен."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2772,13 +2746,43 @@ msgstr "Расширенный"
 msgid "Do not show"
 msgstr "Не показывать"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
-msgstr "Да"
+#: inc/checkout-steps.php:4058
+msgid "yes"
+msgstr "да"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "Нет"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Поле «Телефон для доставки» может быть обозначено как «обязательное» для "
+"заполнения, если раздел «Адрес для выставления счета» отображается после "
+"раздела «Адрес доставки», а поле «Телефон для выставления счета» указано "
+"как «обязательное». Это необходимо для того, чтобы при установке "
+"соответствующей отметки данные адреса доставки могли быть скопированы в "
+"адрес для выставления счета; в противном случае клиент может не смочь "
+"завершить оформление заказа."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Поле «Телефон для выставления счета» может быть обозначено как "
+"«обязательное» для заполнения, если раздел «Адрес для выставления счета» "
+"отображается перед разделом «Адрес доставки», а поле «Телефон для доставки» "
+"указано как «обязательное». Это необходимо для того, чтобы адрес доставки "
+"можно было скопировать в адрес для выставления счета при установке "
+"соответствующего флажка; в противном случае клиент может не смочь завершить "
+"оформление заказа."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2921,3 +2925,14 @@ msgstr "Доставка"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "следующий шаг"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Да"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

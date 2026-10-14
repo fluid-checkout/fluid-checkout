@@ -29,7 +29,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		add_filter( 'fc_js_settings', array( $this, 'add_js_settings' ), 10 );
 
 		// Persisted data
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_terminals_field_session_values' ), 10 );
 		add_action( 'wp', array( $this, 'maybe_set_terminals_field_from_session_to_postdata' ), 20 );
 
 		// Shipping methods hooks
@@ -149,9 +149,9 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( ! empty( $location_id_session ) ) {
 			$post_data = array(
 				'seur_pickup' => $location_id_session,
-				'shipping_country' => WC()->checkout->get_value( 'shipping_country' ),
-				'shipping_city' => WC()->checkout->get_value( 'shipping_city' ),
-				'shipping_postcode' => WC()->checkout->get_value( 'shipping_postcode' ),
+				'shipping_country' => WC()->checkout()->get_value( 'shipping_country' ),
+				'shipping_city' => WC()->checkout()->get_value( 'shipping_city' ),
+				'shipping_postcode' => WC()->checkout()->get_value( 'shipping_postcode' ),
 			);
 
 			$_POST[ 'post_data' ] = http_build_query( $post_data );
@@ -167,20 +167,38 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 * @param  object  $order               The order object.
 	 */
 	public function is_shipping_method_local_pickup( $shipping_method_id, $method = null, $order = null ) {
+		// Maybe set as local pickup when the shipping method is the SEUR local pickup method.
+		// Match the id exactly, or with a WooCommerce instance suffix (`seurlocal:1`).
+		if ( $this->shipping_method_id_matches( $shipping_method_id, 'seurlocal' ) ) { return true; }
+
 		// Get variables
 		$custom_name_seur_2shop = get_option( 'seur_2shop_custom_name_field' );
 		$custom_name_classic_2shop = get_option( 'seur_classic_int_2shop_custom_name_field' );
 
-		// Get default values if custom names are not set
-		if ( empty( $custom_name_seur_2shop ) ) { $custom_name_seur_2shop = 'SEUR 2SHOP'; }
-		if ( empty( $custom_name_classic_2shop ) ) { $custom_name_classic_2shop = 'SEUR CLASSIC 2SHOP'; }
+		// Get default values if custom names are not set.
+		// The official empty-option classic label could not be confirmed, so accept both labels used by this integration.
+		$seur_2shop_labels = empty( $custom_name_seur_2shop ) ? array( 'SEUR 2SHOP' ) : array( $custom_name_seur_2shop );
+		$classic_2shop_labels = empty( $custom_name_classic_2shop ) ? array( 'CLASSIC 2SHOP', 'SEUR CLASSIC 2SHOP' ) : array( $custom_name_classic_2shop );
 
-		// Maybe set as local pickup shipping method
-		if ( is_object( $method ) && ( $method->label === $custom_name_seur_2shop || $method->label === $custom_name_classic_2shop ) ) {
+		// Maybe set as local pickup when the shipping method label matches a SEUR 2SHOP method
+		if ( is_object( $method ) && isset( $method->label ) && ( in_array( $method->label, $seur_2shop_labels, true ) || in_array( $method->label, $classic_2shop_labels, true ) ) ) {
 			return true;
 		}
 
 		return false;
+	}
+
+	/**
+	 * Whether a shipping method id is an exact match or an instance of that method.
+	 *
+	 * @param  string  $method_id     Shipping method id, possibly with an instance suffix.
+	 * @param  string  $expected_id   Method id without an instance suffix.
+	 */
+	public function shipping_method_id_matches( $method_id, $expected_id ) {
+		$method_id = (string) $method_id;
+		$expected_id = (string) $expected_id;
+
+		return $method_id === $expected_id || 0 === strpos( $method_id, $expected_id . ':' );
 	}
 
 
@@ -194,7 +212,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( ! $this->is_shipping_method_local_pickup( $method->get_method_id(), $method ) ) { return $markup; }
 
 		// Get location id
-		$location_id = WC()->checkout->get_value( 'seur_pickup' );
+		$location_id = WC()->checkout()->get_value( 'seur_pickup' );
 
 		// Change script in the markup
 		// to set location id option as selected
@@ -233,7 +251,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 			if ( ! $this->is_shipping_method_local_pickup( $chosen_method, $method ) ) { continue; }
 
 			// Get location id
-			$location_id = WC()->checkout->get_value( 'seur_pickup' );
+			$location_id = WC()->checkout()->get_value( 'seur_pickup' );
 
 			// Maybe set substep as incomplete
 			if ( empty( $location_id ) || 'all' === $location_id ) {
@@ -253,7 +271,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 	public function maybe_set_substep_incomplete_shipping_address( $is_substep_complete ) {
 		// Get fields
 		$mobile_phone_field_key = 'shipping_mobile_phone';
-		$checkout_fields = WC()->checkout->get_checkout_fields( 'shipping' );
+		$checkout_fields = WC()->checkout()->get_checkout_fields( 'shipping' );
 
 		// Bail if mobile phone field is not set
 		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_substep_complete; }
@@ -266,7 +284,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( ! $is_mobile_phone_field_required ) { return $is_substep_complete; }
 
 		// Get mobile phone field value
-		$mobile_phone = WC()->checkout->get_value( $mobile_phone_field_key );
+		$mobile_phone = WC()->checkout()->get_value( $mobile_phone_field_key );
 
 		// Maybe set step as incomplete
 		if ( empty( $mobile_phone ) ) {
@@ -287,7 +305,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 
 		// Get fields
 		$mobile_phone_field_key = 'billing_mobile_phone';
-		$checkout_fields = WC()->checkout->get_checkout_fields( 'billing' );
+		$checkout_fields = WC()->checkout()->get_checkout_fields( 'billing' );
 
 		// Bail if mobile phone field is not set
 		if ( ! array_key_exists( $mobile_phone_field_key, $checkout_fields ) ) { return $is_substep_complete; }
@@ -300,7 +318,7 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( ! $is_mobile_phone_field_required ) { return $is_substep_complete; }
 
 		// Get mobile phone field value
-		$mobile_phone = WC()->checkout->get_value( $mobile_phone_field_key );
+		$mobile_phone = WC()->checkout()->get_value( $mobile_phone_field_key );
 
 		// Maybe set step as incomplete
 		if ( empty( $mobile_phone ) ) {
@@ -318,6 +336,9 @@ class FluidCheckout_Seur extends FluidCheckout {
 	 * @param  array  $review_text_lines  The list of lines to show in the substep review text.
 	 */
 	public function add_substep_text_lines_shipping_method( $review_text_lines = array() ) {
+		// Maybe skip adding pickup point address as review text lines
+		if ( ! FluidCheckout_Steps::instance()->is_pickup_point_info_review_text_lines_enabled() ) { return $review_text_lines; }
+
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
 
@@ -347,27 +368,27 @@ class FluidCheckout_Seur extends FluidCheckout {
 		if ( ! $has_target_shipping_method ) { return $review_text_lines; }
 
 		// Get location id
-		$location_id = WC()->checkout->get_value( 'seur_pickup' );
+		$location_id = WC()->checkout()->get_value( 'seur_pickup' );
 
 		// Bail if no location has been selected
 		if ( empty( $location_id ) || 'all' === $location_id ) { return $review_text_lines; }
 
 		// Get shipping country, or fallback to billing country
-		$country = WC()->checkout->get_value( 'shipping_country' );
+		$country = WC()->checkout()->get_value( 'shipping_country' );
 		if ( empty( $country ) ) {
-			$country = WC()->checkout->get_value( 'billing_country' );
+			$country = WC()->checkout()->get_value( 'billing_country' );
 		}
 
 		// Get shipping city, or fallback to billing city
-		$city = WC()->checkout->get_value( 'shipping_city' );
+		$city = WC()->checkout()->get_value( 'shipping_city' );
 		if ( empty( $city ) ) {
-			$city = WC()->checkout->get_value( 'billing_city' );
+			$city = WC()->checkout()->get_value( 'billing_city' );
 		}
 
 		// Get shipping postcode, or fallback to billing postcode
-		$postcode = WC()->checkout->get_value( 'shipping_postcode' );
+		$postcode = WC()->checkout()->get_value( 'shipping_postcode' );
 		if ( empty( $postcode ) ) {
-			$postcode = WC()->checkout->get_value( 'billing_postcode' );
+			$postcode = WC()->checkout()->get_value( 'billing_postcode' );
 		}
 
 		// Get available local pickup locations

@@ -1,0 +1,12 @@
+// ------------------------------------
+// CHECKOUT PAYMENT METHODS
+// ------------------------------------
+
+body#{ $_body-theme-selector } .woocommerce-checkout-payment ul.wc_payment_methods .payment_box > p:first-child {
+	margin-top: 0;
+}
+
+// Only for payment methods page with Stripe UPE enabled
+body#{ $_body-theme-selector } #add_payment_method fieldset#wc-stripe-upe-form {
+	border: none;
+}

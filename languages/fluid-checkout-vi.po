@@ -2327,31 +2327,6 @@ msgid ""
 "Checkout."
 msgstr "Xuất phần các bước thanh toán từ chủ đề Nyture khi sử dụng Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Có thể buộc phải là &quot;bắt buộc&quot; nếu phần địa chỉ thanh toán được "
-"hiển thị sau phần địa chỉ giao hàng và trường số điện thoại thanh toán được "
-"đặt là &quot;bắt buộc&quot;. Điều này là cần thiết để đảm bảo địa chỉ giao "
-"hàng có thể được sao chép vào địa chỉ thanh toán khi tùy chọn đó được chọn."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"Có thể buộc phải là &quot;bắt buộc&quot; nếu phần địa chỉ thanh toán được "
-"hiển thị sau phần địa chỉ thanh toán và trường số điện thoại thanh toán "
-"được đặt là &quot;bắt buộc&quot;. Điều này là cần thiết để đảm bảo địa chỉ "
-"thanh toán có thể được sao chép vào địa chỉ thanh toán khi tùy chọn đó được "
-"chọn."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2605,13 +2580,41 @@ msgstr "Mở rộng"
 msgid "Do not show"
 msgstr "Không hiển thị"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:4058
+msgid "yes"
 msgstr "Đúng"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "KHÔNG"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Trường số điện thoại giao hàng có thể được bắt buộc nhập nếu phần địa chỉ "
+"thanh toán được hiển thị sau phần địa chỉ giao hàng, và trường số điện "
+"thoại thanh toán được đặt là &quot;bắt buộc&quot;. Điều này cần thiết để "
+"đảm bảo địa chỉ giao hàng có thể được sao chép vào địa chỉ thanh toán khi "
+"tùy chọn đó được chọn, nếu không khách hàng có thể không hoàn tất được biểu "
+"mẫu thanh toán."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"Trường số điện thoại thanh toán có thể được bắt buộc nhập nếu phần địa chỉ "
+"thanh toán được hiển thị trước phần địa chỉ giao hàng, và trường số điện "
+"thoại giao hàng được đặt là &quot;bắt buộc&quot;. Điều này cần thiết để đảm "
+"bảo địa chỉ giao hàng có thể được sao chép vào địa chỉ thanh toán khi tùy "
+"chọn đó được chọn, nếu không khách hàng có thể không hoàn tất được biểu mẫu "
+"thanh toán."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2752,3 +2755,14 @@ msgstr "Vận chuyển"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "bước tiếp theo"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "Đúng"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

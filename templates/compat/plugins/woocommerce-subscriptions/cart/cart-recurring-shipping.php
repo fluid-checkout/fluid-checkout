@@ -3,20 +3,11 @@
  * Recurring Shipping Methods Display
  *
  * Based on the WooCommerce core template: /woocommerce/templates/cart/cart-shipping.php
- * 
- * This template can be overridden by copying it to yourtheme/woocommerce/cart/cart-recurring-shipping.php.
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
- * (the theme developer) will need to copy the new files to your theme to
- * maintain compatibility. We try to do this as little as possible, but it does
- * happen. When this occurs the version of the template file will be bumped and
- * the readme will list any important changes.
- *
- * @see https://docs.woocommerce.com/document/template-structure/
  * @author  Prospress
  * @package WooCommerce Subscriptions/Templates
  * @version 1.0.0 - Migrated from WooCommerce Subscriptions v2.6.0
- * @fc-version 3.2.5
+ * @fc-version 5.0.0
  */
 
  // CHANGE: This template has been modified to align the shipping methods for subscription plans with Fluid Checkout's original shipping methods.
@@ -24,6 +15,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+// CHANGE: Get packages from the recurring cart
 $packages = WC()->shipping()->get_packages();
 $package_index = array_search( $package, $packages );
 
@@ -32,18 +24,41 @@ $formatted_destination    = isset( $formatted_destination ) ? $formatted_destina
 $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 ?>
 
+<?php // CHANGE: Change element tag to `div` and add class `shipping-method__package` to the shipping method package container ?>
 <div class="shipping shipping-method__package recurring-total <?php echo esc_attr( $recurring_cart_key ); ?>">
 
 	<?php // CHANGE: Conditionally add the shipping package name ?>
 	<?php if ( FluidCheckout_Steps::instance()->is_shipping_package_name_display_enabled() ) : ?>
 		<?php // CHANGE: Filter the package name at the output as only the first shipping package name is displayed by default for subscriptions ?> 
-		<p class="shipping-method__package-name"><?php echo esc_html( apply_filters( 'fc_subscription_shipping_package_name', $package_name, $package_index, $package, $recurring_cart ) ); ?></p>
+		<p class="shipping-method__package-name"><?php
+			/**
+			 * Filters the name of a subscription recurring shipping package.
+			 *
+			 * @since 3.2.5
+			 *
+			 * @param string $package_name   Package name.
+			 * @param int    $package_index  Zero-based package index.
+			 * @param array  $package        Shipping package data.
+			 * @param array  $recurring_cart Recurring cart data for the subscription.
+			 */
+			echo esc_html( apply_filters( 'fc_subscription_shipping_package_name', $package_name, $package_index, $package, $recurring_cart ) );
+		?></p>
 	<?php endif; ?>
 
-	<?php if ( count( $available_methods ) > 0 ) : ?>
-
+	<?php // CHANGE: Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
+	<?php // CHANGE: Always display shipping options for recurring packages, even when only one shipping method is available ?>
+	<?php if ( 0 < count( $available_methods ) ) : ?>
 		<?php // CHANGE: Add filter to let developers change the shipping methods wrapper element markup ?>
-		<?php echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' ); ?>
+		<?php
+			/**
+			 * Filters the opening markup of the shipping method options list.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $html HTML markup.
+			 */
+			echo apply_filters( 'fc_shipping_method_option_start_tag_markup', '<ul id="shipping_method" class="shipping-method__options">' );
+		?>
 
 		<?php // CHANGE: Remove special treatment for when only one shipping method is available ?>
 			<?php
@@ -68,6 +83,17 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 					$label_extra_classes = 'has-tax-notes';
 				}
 
+				/**
+				 * Filters the HTML for the shipping method option.
+				 *
+				 * @since 1.2.0
+				 *
+				 * @param string           $html          HTML markup.
+				 * @param WC_Shipping_Rate $method        Method.
+				 * @param int              $package_index Zero-based package index.
+				 * @param string           $chosen_method Chosen method.
+				 * @param mixed            $first         First.
+				 */
 				echo apply_filters( 'fc_shipping_method_option_markup',
 					sprintf( '<li class="shipping-method__option"><input type="radio" name="shipping_method[%1$s]" data-index="%1$s" id="shipping_method_%1$s_%2$s" value="%3$s" class="shipping_method" %4$s />
 						<label for="shipping_method_%1$s_%2$s" class="shipping-method__option-label has-price %7$s"><div class="shipping-method__option-label-wrapper">%5$s</div>%8$s%6$s</label>
@@ -86,16 +112,26 @@ $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 				$first = false;
 			endforeach; ?>
 
-		<?php echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' ); ?>
+		<?php
+			/**
+			 * Filters the closing markup of the shipping method options list.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $html HTML markup. Default `</ul>`.
+			 */
+			echo apply_filters( 'fc_shipping_method_option_end_tag_markup', '</ul>' );
+		?>
 
 		<?php if ( FluidCheckout_WooCommerceSubscriptions::instance()->get_all_packages_count() > 1 ) : ?>
 			<?php echo '<p class="woocommerce-shipping-contents"><small>' . esc_html( FluidCheckout_WooCommerceSubscriptions::instance()->get_package_details( $package ) ) . '</small></p>'; ?>
 		<?php endif; ?>
-	
-	<?php endif; ?>
 
-	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package, only on the checkout page ?>
-	<?php if ( is_checkout() && count( $available_methods ) == 0 ) : ?>
+	<?php endif; ?>
+	<?php // CHANGE: END - Change the markup of this section to align with the shipping methods section from Fluid Checkout ?>
+
+	<?php // CHANGE: Conditionally display message for when no shipping methods are available for the package ?>
+	<?php if ( ( is_checkout() || FluidCheckout_Steps::instance()->is_cart_page_or_fragment() ) && 0 === count( $available_methods ) ) : ?>
 		<?php if ( $has_calculated_shipping && $formatted_destination ) : ?>
 			<div class="fc-shipping-method__no-shipping-methods shipping-method__package">
 				<div class="shipping-method__options">

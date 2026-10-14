@@ -1,9 +1,3 @@
-/**
- * Address Internationalization Script
- * 
- * Replaces the original WooCommerce `address-i18n.js`.
- */
-
 /*global wc_address_i18n_params */
 jQuery( function( $ ) {
 
@@ -20,9 +14,57 @@ jQuery( function( $ ) {
 		expansibleContentSelector: '.fc-expansible-form-section__content',
 		inputSelector: 'input, select, textarea',
 		countryFieldsSelector: '#billing_country, #shipping_country, #country',
-		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
 
+		addressFieldGroupSelector: '.woocommerce-billing-fields, .woocommerce-shipping-fields, .woocommerce-address-fields',
+		billingAddressFieldGroupSelector: '.woocommerce-billing-fields',
+		shippingAddressFieldGroupSelector: '.woocommerce-shipping-fields',
+		editAddressFieldsSelector: '.woocommerce-address-fields',
+
+		/**
+		 * The `overrideLocaleAttributes` setting defines which attributes in the address field locale
+		 * should be overridden by values from the site or plugin settings, instead of being replaced 
+		 * by the defaults provided by the country locale information.
+		 * 
+		 * Expected format:
+		 *   An array of strings, where each string is the key of a field attribute to override,
+		 *   e.g.: [ 'label', 'placeholder', 'required' ]
+		 */
 		overrideLocaleAttributes: [],
+
+		/**
+		 * The `overrideLocaleFieldAttributes` setting defines which attributes in the address field locale
+		 * should be overridden by values from the site or plugin settings, instead of being replaced 
+		 * by the defaults provided by the country locale information.
+		 * 
+		 * Expected format:
+		 *   An object, where the key is the field key and the value is an array of attribute keys to override,
+		 *   e.g.: { "billing_phone": [ "label", "required" ], "shipping_phone": [ "label", "required" ] }
+		 */
+		overrideLocaleFieldAttributes: {},
+
+		/**
+		 * Edit address fields for My Account edit address pages.
+		 *
+		 * Expected format:
+		 *   An object, where the key is the field key and the value is the field arguments object,
+		 *   e.g.: { "shipping_phone": { "label": "Shipping phone", "required": true } }
+		 */
+		editAddressFields: {},
+
+		/**
+		 * Context for edit address field key resolution on My Account edit address pages.
+		 *
+		 * Expected format:
+		 *   {
+		 *     source: "woocommerce",
+		 *     addressType: "shipping",
+		 *     fieldKeyFormat: "prefixed",
+		 *     fieldKeyPrefix: "shipping_"
+		 *   }
+		 *
+		 * Extensions such as the Address Book add-on may use `fieldKeyFormat: "unprefixed"` and an empty `fieldKeyPrefix`.
+		 */
+		editAddressContext: {},
 	};
 	if ( FCUtils && window.fcSettings && window.fcSettings.addressI18n ) {
 		_settings = FCUtils.extendObject( true, _settings, window.fcSettings.addressI18n );
@@ -36,7 +78,9 @@ jQuery( function( $ ) {
 			field.find( 'label .optional' ).remove();
 			field.addClass( 'validate-required' );
 
+			// CHANGE: Should also add required markers to fields that are not currently visible
 			if ( field.find( 'label .required' ).length === 0 ) {
+				// CHANGE: Add title attribute to required marker in label to enhance accessibility
 				field.find( 'label' ).append(
 					'&nbsp;<abbr class="required" title="' +
 					wc_address_i18n_params.i18n_required_text +
@@ -52,6 +96,114 @@ jQuery( function( $ ) {
 			}
 		}
 	}
+
+	// CHANGE: Add function to get list of locale attributes to override for a specific checkout field
+	/**
+	 * Get the list of locale attributes to override for a checkout field.
+	 *
+	 * @param   string  field_key  Checkout field key.
+	 *
+	 * @return  Array               List of attribute keys to override from checkout field settings.
+	 */
+	var getFieldLocaleOverrideAttributes = function( field_key ) {
+		// Initialize variables
+		var fieldOverrides = [];
+
+		// Bail early if no override field attributes are set, return the global overrides
+		if (
+			! _settings.overrideLocaleFieldAttributes
+			|| ! _settings.overrideLocaleFieldAttributes[ field_key ]
+			|| ! Array.isArray( _settings.overrideLocaleFieldAttributes[ field_key ] )
+		) {
+			// Get the global overrides
+			fieldOverrides = Array.isArray( _settings.overrideLocaleAttributes ) ? _settings.overrideLocaleAttributes : [];
+			return fieldOverrides;
+		}
+
+		// Get the per-field locale attribute overrides
+		fieldOverrides = _settings.overrideLocaleFieldAttributes[ field_key ];
+
+		// Get the global overrides
+		var globalOverrides = Array.isArray( _settings.overrideLocaleAttributes ) ? _settings.overrideLocaleAttributes : [];
+
+		// Combine global and per-field locale attribute overrides, per-field attributes take precedence
+		fieldOverrides = globalOverrides.filter( function( attr ) {
+			return fieldOverrides.indexOf( attr ) === -1; // Prevent duplicates
+		} ).concat( fieldOverrides );
+
+		return fieldOverrides;
+	};
+	// CHANGE: END - Add function to get list of locale attributes to override for a specific checkout field
+
+	// CHANGE: Add function to resolve field key for address locale attribute overrides
+	/**
+	 * Resolve the field key used to look up field arguments for locale attribute overrides.
+	 *
+	 * @param   string  locale_field_key  Locale field key from country locale information.
+	 * @param   object  wrapper           jQuery wrapper for the address field group.
+	 *
+	 * @return  object                    Field key and field arguments source for locale attribute overrides.
+	 */
+	var getFieldArgsForLocaleOverride = function( locale_field_key, wrapper ) {
+		// Initialize variables
+		var field_key   = locale_field_key;
+		var groupFields = null;
+
+		// Bail if settings are not available
+		if ( ! window.fcSettings ) {
+			return {
+				field_key:   field_key,
+				groupFields: groupFields,
+			};
+		}
+
+		// Edit address page
+		if ( wrapper.is( _settings.editAddressFieldsSelector ) && _settings.editAddressFields ) {
+			// Get edit address context
+			var editAddressContext = _settings.editAddressContext || {};
+
+			// Maybe add field key prefix for prefixed field key format
+			if ( 'prefixed' === editAddressContext.fieldKeyFormat ) {
+				var field_key_prefix = editAddressContext.fieldKeyPrefix || '';
+
+				// Maybe fallback to address type as field key prefix
+				if ( ! field_key_prefix && editAddressContext.addressType ) {
+					field_key_prefix = editAddressContext.addressType + '_';
+				}
+
+				if ( field_key_prefix ) {
+					field_key = field_key_prefix + locale_field_key;
+				}
+			}
+
+			// Get edit address fields
+			groupFields = _settings.editAddressFields;
+
+			return {
+				field_key:   field_key,
+				groupFields: groupFields,
+			};
+		}
+		// Checkout page
+		else if ( window.fcSettings.checkoutFields ) {
+			// Determine address field group
+			var addressFieldGroup = null;
+			if ( wrapper.is( _settings.billingAddressFieldGroupSelector ) ) { addressFieldGroup = 'billing'; }
+			else if ( wrapper.is( _settings.shippingAddressFieldGroupSelector ) ) { addressFieldGroup = 'shipping'; }
+
+			// Maybe set field key and group fields
+			if ( addressFieldGroup ) {
+				field_key   = addressFieldGroup + '_' + locale_field_key;
+				groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
+			}
+		}
+
+		return {
+			field_key:   field_key,
+			groupFields: groupFields,
+		};
+	};
+	// CHANGE: END - Add function to resolve field key for address locale attribute overrides
 
 	// Handle locale
 	// CHANGE: Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
@@ -86,43 +238,30 @@ jQuery( function( $ ) {
 				fieldLocale = $.extend( true, {}, locale['default'][ key ], thislocale[ key ] );
 
 			// CHANGE: Maybe replace field attributes from locale with attributes from checkout fields
-			if ( _settings.overrideLocaleAttributes.length > 0 && window.fcSettings && window.fcSettings.checkoutFields ) {
-				// Determine address field group
-				var addressFieldGroup = 'address';
-				if ( wrapper.hasClass( 'woocommerce-billing-fields' ) ) {
-					addressFieldGroup = 'billing';
-				} else if ( wrapper.hasClass( 'woocommerce-shipping-fields' ) ) {
-					addressFieldGroup = 'shipping';
-				}
+			if ( window.fcSettings ) {
+				// Get field key and field arguments source for locale attribute overrides
+				var fieldArgsForLocaleOverride = getFieldArgsForLocaleOverride( key, wrapper );
+				var field_key                  = fieldArgsForLocaleOverride.field_key;
+				var groupFields                = fieldArgsForLocaleOverride.groupFields;
 
-				// Determine field key prefix
-				var field_key_prefix = addressFieldGroup + '_';
+				// Get attributes to override for the current field
+				var fieldOverrideAttributes = getFieldLocaleOverrideAttributes( field_key );
 
-				// Determine field key
-				var field_key = key;
-				if ( 'address' !== addressFieldGroup ) {
-					field_key = field_key_prefix + key;
-				}
-
-				// Get fields for the current group
-				var groupFields = window.fcSettings.checkoutFields[ addressFieldGroup ];
-
-				// Check whether group fields exist
-				if ( groupFields ) {
+				// Maybe replace field attributes from locale with attributes from checkout fields
+				if ( fieldOverrideAttributes.length > 0 && groupFields ) {
 					// Get field attributes for the current field
 					var checkoutField = groupFields[ field_key ];
 
 					// Check whether field attributes exist
 					if ( checkoutField ) {
-						// Maybe replace field attribute
-						$.each( checkoutField, function( attr_key, attr_value ) {
-							if ( _settings.overrideLocaleAttributes.indexOf( attr_key ) > -1 ) {
-								fieldLocale[ attr_key ] = attr_value;
+						// Maybe replace field attribute (native JS)
+						Object.keys( checkoutField ).forEach( function( attr_key ) {
+							if ( fieldOverrideAttributes.indexOf( attr_key ) > -1 ) {
+								fieldLocale[ attr_key ] = checkoutField[ attr_key ];
 							}
 						} );
 					}
 				}
-
 			}
 			// CHANGE: END - Maybe replace field attributes from locale with attributes from checkout fields
 
@@ -142,7 +281,7 @@ jQuery( function( $ ) {
 			if (
 				typeof fieldLocale.placeholder === 'undefined' &&
 				typeof fieldLocale.label !== 'undefined' &&
-				! field.find( 'label' ).length
+				! field.find( 'label:not(.screen-reader-text)' ).length
 			) {
 				field.find( ':input' ).attr( 'placeholder', fieldLocale.label );
 				field.find( ':input' ).attr( 'data-placeholder', fieldLocale.label );
@@ -161,13 +300,12 @@ jQuery( function( $ ) {
 				field.data( 'priority', fieldLocale.priority );
 			}
 
-			// Hidden fields.
-			if ( 'state' !== key ) {
-				if ( typeof fieldLocale.hidden !== 'undefined' && true === fieldLocale.hidden ) {
-					field.hide().find( ':input' ).val( '' );
-				} else {
-					field.show();
-				}
+			// Hidden fields. State visibility (show) is managed by
+			// country-select.js, but locale can still hide it.
+			if ( true === fieldLocale.hidden ) {
+				field.hide().find( ':input' ).val( '' );
+			} else if ( 'state' !== key ) {
+				field.show();
 			}
 
 			// CHANGE: Handle collapsible fields state
@@ -311,15 +449,15 @@ jQuery( function( $ ) {
 				var row = rowsAfter[ j ];
 				row.parentNode.insertBefore( row, referenceNode.nextSibling );
 			}
-
 			// CHANGE: END - Detach rows and re-attach them in the correct order, without moving the row of the field currently focused.
-		} );
+
+		} ); // CHANGE: Close the `fieldsets.each` loop (replaces upstream `rows.detach().appendTo`)
 
 		// CHANGE: Re-set focus to the element previously with focus
 		FCUtils.maybeRefocusElement( currentFocusedElement );
 	};
-
 	// CHANGE: END - Extract function to process country to state changing as it needs to be used when event `updated_checkout` is triggered
+
 	// CHANGE: Add function to handle country to state changing when event `updated_checkout` is triggered
 	var process_country_to_state_changing_updated_checkout = function() {		
 		// Get all country fields on the page
@@ -334,8 +472,9 @@ jQuery( function( $ ) {
 			}
 		}
 	}
-
 	// CHANGE: END - Add function to handle country to state changing when event `updated_checkout` is triggered
+
+	// CHANGE: Add event listeners
 	$( document.body )
 		// CHANGE: Use extracted function to process country to state changing
 		.on( 'country_to_state_changing', process_country_to_state_changing )

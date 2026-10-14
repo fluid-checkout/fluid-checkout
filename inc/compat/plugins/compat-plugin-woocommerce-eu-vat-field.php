@@ -73,7 +73,7 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 
 		// VAT validation
 		remove_action( 'woocommerce_checkout_update_order_review', array( $class_object, 'validate_vat_field_and_remove_tax' ), 10 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_tax_exemption' ), 10 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_set_tax_exemption' ), 10 );
 	}
 
 
@@ -491,10 +491,10 @@ class FluidCheckout_WooCommerceEUVatField extends FluidCheckout {
 		if ( ! $is_substep_complete ) { return $is_substep_complete; }
 
 		// Get field values
-		$vat_number = WC()->checkout->get_value( 'billing_eu_vat' );
-		$sdi = WC()->checkout->get_value( 'billing_it_sid_pec' );
-		$codice_fiscale = WC()->checkout->get_value( 'billing_it_codice_fiscale' );
-		$nif_nie = WC()->checkout->get_value( 'billing_es_nif_nie' );
+		$vat_number = WC()->checkout()->get_value( 'billing_eu_vat' );
+		$sdi = WC()->checkout()->get_value( 'billing_it_sid_pec' );
+		$codice_fiscale = WC()->checkout()->get_value( 'billing_it_codice_fiscale' );
+		$nif_nie = WC()->checkout()->get_value( 'billing_es_nif_nie' );
 
 		// Validate field values
 		$is_vat_valid = $this->is_vat_number_valid( $vat_number );

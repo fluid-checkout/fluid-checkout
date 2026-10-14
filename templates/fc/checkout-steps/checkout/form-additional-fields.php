@@ -14,7 +14,7 @@
  * @package fluid-checkout
  * @version 3.0.0
  * @wc-version 3.6.0
- * @wc-original checkout/form-shipping.php
+ * @original plugins/woocommerce/templates/checkout/form-shipping.php
  * @global WC_Checkout $checkout
  */
 

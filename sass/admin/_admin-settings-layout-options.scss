@@ -1,0 +1,97 @@
+// ------------------------------------
+// SETTINGS PAGE - LAYOUT / TEMPLATE OPTIONS
+// ------------------------------------
+
+// Keep the default control `padding-top` on layout selectors so the label and
+// info tip align with the 36px sectioned control like text/select fields.
+.fc-settings-field--fc_layout_selector .fc-settings-field__control {
+	background-color: transparent;
+}
+
+.fc-settings-field--fc_template_selector .fc-settings-field__control {
+	padding: 0;
+	background-color: transparent;
+}
+
+
+
+.fc-settings-radio-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	width: 100%;
+}
+
+.fc-settings-radio-option {
+	display: flex;
+	flex: 1 1 calc( 50% - 4px );
+	align-items: center;
+	gap: 10px;
+	max-width: calc( 50% - 4px );
+	min-width: 0;
+	min-height: 50px;
+	margin: 0;
+	padding: 13px 12px;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	box-sizing: border-box;
+	color: $fc-settings-text-color;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.2;
+	text-align: left;
+	cursor: pointer;
+}
+
+.fc-settings-radio-option input {
+	flex: 0 0 auto;
+	margin: 0;
+	accent-color: $fc-settings-nav-focus-outline-color;
+	outline: none;
+	box-shadow: none;
+}
+
+.fc-settings-radio-option input:focus,
+.fc-settings-radio-option input:focus-visible {
+	outline: none;
+	box-shadow: none;
+}
+
+.fc-settings-radio-option__label {
+	flex: 1 1 auto;
+	min-width: 0;
+	text-align: left;
+}
+
+.fc-settings-radio-option:hover {
+	background: $fc-settings-nav-link-hover-background;
+}
+
+.fc-settings-radio-option.is-selected,
+.fc-settings-radio-option:has( input:checked ) {
+	background: $fc-settings-nav-link-active-background;
+	font-weight: 600;
+	outline: 2px solid $fc-settings-nav-focus-outline-color;
+	outline-offset: 2px;
+}
+
+.fc-settings-radio-option:has( input:focus-visible ) {
+	outline: 2px solid $fc-settings-nav-focus-outline-color;
+	outline-offset: 2px;
+}
+
+.fc-settings-radio-option.is-disabled {
+	cursor: not-allowed;
+	opacity: .5;
+}
+
+.fc-settings-radio-option.is-disabled:hover {
+	background: $white;
+}
+
+.fc-settings-radio-option.is-disabled.is-selected,
+.fc-settings-radio-option.is-disabled:has( input:checked ) {
+	background: $fc-settings-nav-link-active-background;
+}

@@ -2353,32 +2353,6 @@ msgstr ""
 "ఫ్లూయిడ్ చెక్అవుట్ ఉపయోగిస్తున్నప్పుడు Nyture థీమ్ నుండి చెక్అవుట్ స్టెప్స్ "
 "విభాగాన్ని అవుట్‌పుట్ చేయండి."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"షిప్పింగ్ అడ్రస్ విభాగం తర్వాత బిల్లింగ్ అడ్రస్ విభాగం ప్రదర్శించబడి, "
-"బిల్లింగ్ ఫోన్ ఫీల్డ్ &quot;అవసరం&quot; అని సెట్ చేయబడితే "
-"&quot;తప్పనిసరి&quot; అని బలవంతంగా నమోదు చేయబడవచ్చు. ఆ ఎంపికను "
-"ఎంచుకున్నప్పుడు షిప్పింగ్ అడ్రస్‌ను బిల్లింగ్ అడ్రస్‌కు కాపీ చేయవచ్చని "
-"నిర్ధారించుకోవడానికి ఇది అవసరం."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"బిల్లింగ్ చిరునామా విభాగం తర్వాత బిల్లింగ్ చిరునామా విభాగం ప్రదర్శించబడితే "
-"మరియు బిల్లింగ్ ఫోన్ ఫీల్డ్ &quot;అవసరం&quot; అని సెట్ చేయబడితే "
-"&quot;అవసరం&quot; అని బలవంతంగా నమోదు చేయబడవచ్చు. ఆ ఎంపికను ఎంచుకున్నప్పుడు "
-"బిల్లింగ్ చిరునామాను బిల్లింగ్ చిరునామాకు కాపీ చేయవచ్చని "
-"నిర్ధారించుకోవడానికి ఇది అవసరం."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2634,13 +2608,41 @@ msgstr "విస్తరించబడింది"
 msgid "Do not show"
 msgstr "చూపించవద్దు"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:4058
+msgid "yes"
 msgstr "అవును"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "లేదు"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"షిప్పింగ్ చిరునామా విభాగం తర్వాత బిల్లింగ్ చిరునామా విభాగం ప్రదర్శించబడి, "
+"బిల్లింగ్ ఫోన్ ఫీల్డ్ &#39;అవసరం&#39;గా సెట్ చేయబడితే, షిప్పింగ్ ఫోన్ "
+"ఫీల్డ్‌ను కూడా &#39;అవసరం&#39;గా బలవంతంగా మార్చవచ్చు. ఆ ఎంపికను "
+"ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామాను బిల్లింగ్ చిరునామాకు కాపీ చేయగలరని "
+"నిర్ధారించుకోవడానికి ఇది అవసరం, లేకపోతే కస్టమర్ చెక్అవుట్ ఫారమ్‌ను పూర్తి "
+"చేయలేకపోవచ్చు."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"షిప్పింగ్ చిరునామా విభాగానికి ముందు బిల్లింగ్ చిరునామా విభాగం "
+"ప్రదర్శించబడి, షిప్పింగ్ ఫోన్ ఫీల్డ్ కూడా &quot;అవసరం&quot;గా సెట్ "
+"చేయబడితే, బిల్లింగ్ ఫోన్ ఫీల్డ్‌ను కూడా &quot;అవసరం&quot;గా బలవంతంగా "
+"మార్చవచ్చు. ఆ ఎంపికను ఎంచుకున్నప్పుడు షిప్పింగ్ చిరునామాను బిల్లింగ్ "
+"చిరునామాకు కాపీ చేయగలరని నిర్ధారించుకోవడానికి ఇది అవసరం, లేకపోతే కస్టమర్ "
+"చెక్అవుట్ ఫారమ్‌ను పూర్తి చేయలేకపోవచ్చు."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2781,3 +2783,14 @@ msgstr "షిప్పింగ్"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "తదుపరి దశ"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "అవును"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$లు: %2$లు"

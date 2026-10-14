@@ -320,10 +320,10 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	public function add_substep_text_lines_order_notes( $review_text_lines = array() ) {
 		// Bail if not an array
 		if ( ! is_array( $review_text_lines ) ) { return $review_text_lines; }
-		
+
 		// Get checkout field
 		$field_key = 'ws_opt_in';
-		$checkout_order_fields = WC()->checkout->get_checkout_fields( 'order' );
+		$checkout_order_fields = WC()->checkout()->get_checkout_fields( 'order' );
 		$field_value = WC()->checkout()->get_value( $field_key );
 
 		// The order notes value

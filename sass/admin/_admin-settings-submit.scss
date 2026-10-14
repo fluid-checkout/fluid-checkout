@@ -1,0 +1,76 @@
+// ------------------------------------
+// SETTINGS PAGE - ACTIONS (SAVE BAR)
+// ------------------------------------
+
+// Fixed to the viewport so page scroll from a tall WP admin menu cannot move the bar.
+// Left/width are synced to the center column in `fc-settings-page.js`.
+// Hidden until `.is-pinned` so the bar does not flash full-width over the WP admin menu.
+.fc-settings-actions {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+	z-index: $fc-settings-actions-z-index;
+	margin: 0;
+	padding: $fc-settings-actions-padding;
+	width: auto;
+	border-top: 1px solid $fc-settings-actions-border-color;
+	background: $fc-settings-actions-background-color;
+	box-shadow: $fc-settings-actions-box-shadow;
+	box-sizing: border-box;
+	visibility: hidden;
+	pointer-events: none;
+
+	// Continue the nav/content separator: the sidebar face no longer stacks above this fixed bar
+	@media ( min-width: $fc-settings-nav-compact-breakpoint + 1px ) {
+		border-left: 1px solid $fc-settings-actions-border-color;
+	}
+}
+
+.fc-settings-actions.is-pinned {
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.rtl .fc-settings-actions {
+	@media ( min-width: $fc-settings-nav-compact-breakpoint + 1px ) {
+		border-left: none;
+		border-right: 1px solid $fc-settings-actions-border-color;
+	}
+}
+
+.fc-settings-actions[ hidden ] {
+	display: none !important; // Needed to override flex display when the actions bar is hidden
+}
+
+.fc-settings-actions .fc-header__button {
+	margin-left: 0;
+}
+
+.rtl .fc-settings-actions .fc-header__button {
+	margin-right: 0;
+}
+
+.fc-settings-actions__preview {
+	display: none;
+	align-items: center;
+	gap: 6px;
+}
+
+.fc-settings-actions__preview .fc-settings-preview__expand-icon {
+	width: 16px;
+	height: 16px;
+}
+
+// Show the Preview control only while the compact preview drawer is closed
+@media ( max-width: $fc-settings-preview-compact-breakpoint - 1px ) {
+	.fc-settings-layout.has-preview:not( .is-preview-expanded ) .fc-settings-actions__preview {
+		display: inline-flex;
+	}
+}

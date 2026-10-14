@@ -512,6 +512,7 @@ $order-summary-box-shadow:                       $box-shadow-offset-x $box-shado
 $order-summary-box-shadow--large-screen:         $box-shadow-offset-x $box-shadow-offset-y $box-shadow-blur-radius var( --fluidcheckout--order-summary--shadow-color--large-screen, transparent ) !default;
 $order-summary-background-color:                 var( --fluidcheckout--order-summary--background-color, $white ) !default;
 $order-summary-background-color--popup:          var( --fluidcheckout--order-summary--background-color--popup, $white ) !default;
+$secondary-column-background-color:              var( --fluidcheckout--secondary-column-background-color, $order-summary-background-color ) !default;
 
 $order-summary-container-margin:                 0 !default;
 $order-summary-container-padding:                0 !default;
@@ -693,6 +694,13 @@ $form-field-select2-inner-component-height:           var( --fluidcheckout--sele
 $form-field-select2-selection-height--single:         calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) ) !default;
 $form-field-select2-selection-height--multiple:       calc( #{ $form-field-height } - ( #{ $form-field-border-width } * 2 ) - ( #{ $form-field-select2-inner-spacing } * 2 ) ) !default;
 
+$form-field-select2-arrow-width:                      var( --fluidcheckout--select2--arrow-width, remsize( 1.5rem ) ) !default;
+$form-field-select2-arrow-offset:                     var( --fluidcheckout--select2--arrow-offset, remsize( 1rem ) ) !default;
+$form-field-select2-clear-offset:                     var( --fluidcheckout--select2--clear-offset, remsize( 3rem ) ) !default;
+
+$show-password-button-offset:                         0.7em !default;
+$show-password-button-size:                           remsize( 2.2rem ) !default;
+
 $form-field-loader-icon-top:                          calc( ( #{ $form-field-height } / 2 ) - ( #{ $icon-size } / 2 ) ) !default;
 $form-field-loader-icon-horizontal-spacing:           remsize( .5rem ) !default;
 
@@ -735,7 +743,7 @@ $checkout-validation-check-top:                                calc( ( #{ $form-
 $checkout-validation-check-horizontal-spacing:                 var( --fluidcheckout--validation-check--horizontal-spacing, remsize( .5rem ) ) !default;
 $checkout-validation-check-horizontal-spacing--select:         var( --fluidcheckout--validation-check--horizontal-spacing--select, remsize( 1.5rem ) ) !default;
 $checkout-validation-check-horizontal-spacing--select-alt:     var( --fluidcheckout--validation-check--horizontal-spacing--select-alt, remsize( 2.5rem ) ) !default;
-$checkout-validation-check-horizontal-spacing--password:       var( --fluidcheckout--validation-check--horizontal-spacing--password, remsize( 2.5rem ) ) !default;
+$checkout-validation-check-horizontal-spacing--password:       var( --fluidcheckout--validation-check--horizontal-spacing--password, calc( #{ $checkout-validation-check-horizontal-spacing } + #{ $show-password-button-offset } + #{ $show-password-button-size } ) ) !default;
 
 // END - CHECKOUT VALIDATION
 // ----------------------------------------

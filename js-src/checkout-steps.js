@@ -43,7 +43,6 @@
 
 		checkoutFormSelector: 'form.checkout',
 		fieldSubmitFormSelector: 'input[type="text"], input[type="checkbox"], input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="file"], input[type="image"], input[type="month"], input[type="number"], input[type="password"], input[type="radio"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="week"]',
-		formRowSelector: '.form-row, .shipping-method__package',
 
 		substepSelector: '.fc-step__substep',
 		substepTextContentSelector: '.fc-step__substep-text-content',
@@ -62,9 +61,20 @@
 		isLoadingClass: 'is-loading',
 		isCurrentClass: 'is-current',
 		isCompleteClass: 'is-complete',
+		isHiddenClass: 'fc-hidden',
 		stepNextIncompleteClass: 'fc-checkout-step--next-step-incomplete',
+		stepBeforeCurrentClass: 'fc-checkout-step--before-current-step',
 		currentStepClassTemplate: 'fc-checkout-step-current--##STEP_ID##',
 		currentLastStepClass: 'fc-checkout-step-current-last',
+
+		stepActionsSelector: '.fc-step__actions',
+		stepVisibleAttribute: 'data-step-visible',
+		stepProceedLabelAttribute: 'data-step-proceed-label',
+		stepFirstAttribute: 'data-step-first',
+		stepLastAttribute: 'data-step-last',
+		stepCountAttribute: 'data-step-count',
+		stepCountTotalSelector: '.fc-progress-bar__total-steps',
+		progressBarStepsContainerSelector: '.fc-progress-bar__steps',
 
 		substepEditableStateFieldSelector: '.fc-substep-editable-state[type="hidden"]',
 		substepEditableStateAttribute: 'data-substep-editable',
@@ -73,6 +83,7 @@
 		substepExpandedStateFieldSelector: '.fc-substep-expanded-state[type="hidden"]',
 
 		invalidFieldRowSelector: '.woocommerce-invalid .input-text, .woocommerce-invalid select, .woocommerce-invalid input[type="radio"], .woocommerce-invalid input[type="checkbox"]',
+		invalidRowSelector: '.woocommerce-invalid.form-row, .woocommerce-invalid.shipping-method__package',
 		invalidFocusDelay: 100,
 
 		enablePlaceOrderMove: 'yes',
@@ -141,6 +152,33 @@
 			requestAnimationFrame( function() {
 				waitForElementInViewportThenFocus( element );
 			} );
+		}
+	};
+
+	/**
+	 * Maybe scroll to the first invalid row, then focus its first invalid field when there is one.
+	 *
+	 * @param   HTMLElement  containerElement  Container element to search within.
+	 */
+	var maybeScrollToFirstInvalidRow = function( containerElement ) {
+		// Bail if container element not provided
+		if ( ! containerElement ) { return; }
+
+		// Get the first invalid row
+		var firstInvalidRow = containerElement.querySelector( _settings.invalidRowSelector );
+
+		// Bail if no invalid row found
+		if ( ! firstInvalidRow ) { return; }
+
+		// Scroll to the first invalid row
+		scrollToElement( firstInvalidRow );
+
+		// Get the first invalid field of the row
+		var firstInvalidField = firstInvalidRow.querySelector( _settings.invalidFieldRowSelector );
+
+		// Maybe focus the invalid field, as some rows only contain fields that cannot be focused
+		if ( firstInvalidField ) {
+			waitForElementInViewportThenFocus( firstInvalidField );
 		}
 	};
 
@@ -320,13 +358,7 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( substepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = substepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalidRow( substepElement );
 
 			// Bail when substep has invalid fields
 			return;
@@ -352,6 +384,33 @@
 
 
 	/**
+	 * Set progress bar item visibility state.
+	 *
+	 * @param   HTMLElement  progressBarItem  Progress bar item element.
+	 * @param   boolean      isVisible        Whether the progress bar item should be visible.
+	 */
+	var setProgressBarItemVisibility = function( progressBarItem, isVisible ) {
+		// Define visible state value
+		var visibleValue = isVisible ? 'yes' : 'no';
+
+		// Set visible state attribute
+		progressBarItem.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+
+		// Handle visible state
+		if ( isVisible ) {
+			progressBarItem.classList.remove( _settings.isHiddenClass );
+		}
+		// Handle hidden state
+		else {
+			progressBarItem.classList.add( _settings.isHiddenClass );
+			progressBarItem.classList.remove( _settings.isCurrentClass );
+			progressBarItem.classList.remove( _settings.isCompleteClass );
+		}
+	}
+
+
+
+	/**
 	 * Update the progress bar state.
 	 */
 	var updateProgressBar = function() {
@@ -361,8 +420,12 @@
 		// Bail if no current step was found
 		if ( ! currentStepElement ) { return; }
 
+		// Get the step to set as current on the progress bar.
+		// The progress bar goes back to the first visible incomplete step, while the steps sections do not.
+		var progressBarStepElement = getFirstVisibleIncompleteStep() || currentStepElement;
+
 		// Get index of the current step
-		var currentStepIndex = parseInt( currentStepElement.getAttribute( _settings.stepIndexAttribute ) );
+		var currentStepIndex = parseInt( progressBarStepElement.getAttribute( _settings.stepIndexAttribute ) );
 		currentStepIndex = isNaN( currentStepIndex ) ? -1 : currentStepIndex;
 
 		// Get progress bar items
@@ -372,34 +435,46 @@
 		if ( ! progressBarElement ) { return; }
 
 		var progressBarItems = progressBarElement.querySelectorAll( _settings.progressBarItemSelector );
-		var progressBarItemsCount = progressBarItems.length;
 
 		// Update progress bar items status
 		for ( var i = 0; i < progressBarItems.length; i++ ) {
-			var bar = progressBarItems[i];
+			var bar = progressBarItems[ i ];
+			var isBarVisible = 'no' !== bar.getAttribute( _settings.stepVisibleAttribute );
+
+			// Skip hidden progress bar items
+			if ( ! isBarVisible ) {
+				setProgressBarItemVisibility( bar, false );
+				continue;
+			}
+
+			// Remove hidden class from the progress bar item
+			bar.classList.remove( _settings.isHiddenClass );
+
+			// Get step index of the progress bar item
 			var stepIndex = parseInt( bar.getAttribute( _settings.stepIndexAttribute ) );
 			stepIndex = isNaN( stepIndex ) ? -1 : stepIndex;
 
-			// Update the `current` status for each progress bar item
-			if ( stepIndex == currentStepIndex ) {
-				bar.classList.add( _settings.isCurrentClass );
-			}
-			else {
-				bar.classList.remove( _settings.isCurrentClass );
-			}
+			// Handle `current` status using toggle method
+			bar.classList.toggle( _settings.isCurrentClass, stepIndex == currentStepIndex );
 
-			// Update the `complete` status for each progress bar item
-			if ( stepIndex < currentStepIndex ) {
-				bar.classList.add( _settings.isCompleteClass );
-			}
-			else {
-				bar.classList.remove( _settings.isCompleteClass );
-			}
+			// Toggle `complete` state based on the step index
+			bar.classList.toggle( _settings.isCompleteClass, stepIndex < currentStepIndex );
 		}
 
-		// Calculate the current step text value
-		var currentStepValue = currentStepIndex + 1;
-		currentStepValue = currentStepValue <= progressBarItemsCount ? currentStepValue : progressBarItemsCount;
+		// Get only visible progress bar items
+		var visibleProgressBarItems = Array.from( progressBarItems ).filter( function( bar ) { return 'no' !== bar.getAttribute( _settings.stepVisibleAttribute ); } );
+
+		// Iterate through visible steps and calculate current step number
+		var currentStepValue = 1;
+		for ( var i = 0; i < visibleProgressBarItems.length; i++ ) {
+			// Get step index of the progress bar item
+			var stepIndex = parseInt( visibleProgressBarItems[ i ].getAttribute( _settings.stepIndexAttribute ) );
+
+			// Count visible steps up to and including the current step
+			if ( stepIndex <= currentStepIndex ) {
+				currentStepValue = i + 1;
+			}
+		}
 
 		// Change value of the current step text indicator
 		var currentStepTextElement = progressBarElement.querySelector( _settings.progressBarCurrentSelector );
@@ -421,19 +496,22 @@
 
 		// Maybe validate fields
 		if ( window.CheckoutValidation && ! CheckoutValidation.validateAllFields( stepElement ) ) {
-			// Try to focus the first invalid field
-			var firstInvalidField = stepElement.querySelector( _settings.invalidFieldRowSelector );
-			var fieldRowElement = firstInvalidField.closest( _settings.formRowSelector );
-			if ( firstInvalidField ) {
-				scrollToElement( fieldRowElement );
-				waitForElementInViewportThenFocus( firstInvalidField );
-			}
+			maybeScrollToFirstInvalidRow( stepElement );
 
 			// Bail when any substep has invalid fields
 			return;
 		}
 
-		// Set current step as complete
+		// Get next visible step, and set it as current
+		var nextStepElement = getNextVisibleStep( stepElement );
+
+		// Bail if there is no next visible step
+		if ( ! nextStepElement ) { return; }
+
+		// Set `current` to the next step
+		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
+
+		// Set previous step as complete
 		stepElement.setAttribute( _settings.stepCompleteAttribute, '' );
 
 		// Collapse substeps fields and display step in text format
@@ -452,10 +530,6 @@
 			collapseSubstepEdit( substepElement );
 		}
 
-		// Get next step, and set it as current
-		var nextStepElement = stepElement.parentElement.querySelector( _settings.nextStepSelector );
-		nextStepElement.setAttribute( _settings.stepCurrentAttribute, '' );
-
 		// Unset `current` from the step that is closing
 		// (needs to run after setting the next step as the current one)
 		stepElement.removeAttribute( _settings.stepCurrentAttribute );
@@ -473,6 +547,9 @@
 		// Update progress bar
 		updateProgressBar();
 
+		// Update class for steps before the current step
+		updateStepBeforeCurrentClass();
+
 		// Maybe set focus to the first focusable element that is visible in the next step
 		maybeFocusFirstElement( nextStepElement );
 
@@ -483,6 +560,282 @@
 		if ( _hasJQuery ) {
 			$( document.body ).trigger( 'update_checkout' );
 		}
+	}
+
+
+
+	/**
+	 * Check if a step has any visible substeps.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to check.
+	 *
+	 * @return  Boolean                   Whether the step has at least one visible substep.
+	 */
+	var hasVisibleSubsteps = function( stepElement ) {
+		// Initialize variables
+		var _hasVisibleSubsteps = false;
+
+		// Get substeps of the step
+		var substeps = stepElement.querySelectorAll( _settings.substepSelector );
+
+		// Return true if step has no substeps (e.g. payment step)
+		if ( substeps.length === 0 ) { return true; }
+
+		// Iterate through substeps
+		for ( var i = 0; i < substeps.length; i++ ) {
+			// Skip if substep is not visible
+			if ( 'no' === substeps[ i ].getAttribute( _settings.substepVisibleStateAttribute ) ) { continue; }
+
+			// Set flag to true
+			_hasVisibleSubsteps = true;
+			break;
+		}
+
+		return _hasVisibleSubsteps;
+	}
+
+	/**
+	 * Get the next visible step after the given step element.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to start searching from.
+	 *
+	 * @return  HTMLElement|null          The next visible step element, or `null` if not found.
+	 */
+	var getNextVisibleStep = function( stepElement ) {
+		// Initialize variables
+		var nextVisibleStep = null;
+		var allSteps = getAllSteps();
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return null; }
+
+		// Get index of the step element
+		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Bail if step index not found for the given step element
+		if ( -1 === stepIndex ) { return null; }
+
+		// Iterate forward through steps after the given step
+		for ( var i = stepIndex + 1; i < allSteps.length; i++ ) {
+			// Skip if step is not visible
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) { continue; }
+
+			// Set next visible step
+			nextVisibleStep = allSteps[ i ];
+			break;
+		}
+
+		return nextVisibleStep;
+	}
+
+	/**
+	 * Get the previous visible step before the given step element.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to start searching from.
+	 *
+	 * @return  HTMLElement|null          The previous visible step element, or `null` if not found.
+	 */
+	var getPreviousVisibleStep = function( stepElement ) {
+		// Initialize variables
+		var previousVisibleStep = null;
+		var allSteps = getAllSteps();
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return null; }
+
+		// Get index of the step element
+		var stepIndex = allSteps.indexOf( stepElement );
+
+		// Bail if step index not found for the given step element
+		if ( -1 === stepIndex ) { return null; }
+
+		// Iterate backward through steps
+		for ( var i = stepIndex - 1; i >= 0; i-- ) {
+			// Skip if step is not visible
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) ) { continue; }
+
+			// Get previous visible step
+			previousVisibleStep = allSteps[ i ];
+			break;
+		}
+
+		return previousVisibleStep;
+	}
+
+	/**
+	 * Get the first visible step that is not complete.
+	 *
+	 * @return  HTMLElement|null  The first visible incomplete step element, or `null` if not found.
+	 */
+	var getFirstVisibleIncompleteStep = function() {
+		// Initialize variables
+		var firstIncompleteStep = null;
+		var allSteps = getAllSteps();
+
+		// Iterate through steps
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			// Skip if step is not visible or is complete
+			if ( 'no' === allSteps[ i ].getAttribute( _settings.stepVisibleAttribute ) || isStepComplete( allSteps[ i ] ) ) { continue; }
+
+			// Set first incomplete step
+			firstIncompleteStep = allSteps[ i ];
+			break;
+		}
+
+		return firstIncompleteStep;
+	}
+
+	/**
+	 * Check whether the step is positioned before the current step.
+	 *
+	 * @param   HTMLElement  stepElement  The step element to check.
+	 *
+	 * @return  Boolean                   Whether the step is positioned before the current step.
+	 */
+	var isStepBeforeCurrentStep = function( stepElement ) {
+		// Get current step
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+
+		// Bail if step or current step not found
+		if ( ! stepElement || ! currentStepElement ) { return false; }
+
+		// Get step positions
+		var allSteps = getAllSteps();
+		var stepIndex = allSteps.indexOf( stepElement );
+		var currentStepIndex = allSteps.indexOf( currentStepElement );
+
+		// Bail if any of the steps was not found in the steps list
+		if ( -1 === stepIndex || -1 === currentStepIndex ) { return false; }
+
+		return stepIndex < currentStepIndex;
+	}
+
+
+
+	/**
+	 * Update the class of the steps positioned before the current step.
+	 */
+	var updateStepBeforeCurrentClass = function() {
+		var allSteps = getAllSteps();
+
+		// Iterate steps to toggle the class
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			allSteps[ i ].classList.toggle( _settings.stepBeforeCurrentClass, isStepBeforeCurrentStep( allSteps[ i ] ) );
+		}
+	}
+
+	/**
+	 * Update step visibility based on substep visibility state.
+	 *
+	 * @param   Event  _event  Unused `jQuery.Event` object.
+	 * @param   Array  _data   Unused updated checkout data.
+	 */
+	var maybeChangeStepVisibility = function( _event, _data ) {
+		var allSteps = getAllSteps();
+		var visibleSteps = [];
+
+		// Bail if no steps found
+		if ( allSteps.length === 0 ) { return; }
+
+		// Iterate through steps to update their visibility and collect visible steps
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var stepElement = allSteps[ i ];
+			var stepId = stepElement.getAttribute( _settings.stepIdAttribute );
+			var progressBarItem = document.querySelector( _settings.progressBarItemSelector + '[' + _settings.stepIdAttribute + '="' + stepId + '"]' );
+
+			// Get step visibility status
+			var isVisible = hasVisibleSubsteps( stepElement );
+			var visibleValue = isVisible ? 'yes' : 'no';
+
+			// Set step visibility attribute
+			stepElement.setAttribute( _settings.stepVisibleAttribute, visibleValue );
+
+			// Reset first/last step attributes
+			stepElement.removeAttribute( _settings.stepFirstAttribute );
+			stepElement.removeAttribute( _settings.stepLastAttribute );
+
+			// Collect visible steps
+			if ( isVisible ) {
+				visibleSteps.push( stepElement );
+			}
+
+			// Update corresponding progress bar item visibility
+			if ( progressBarItem ) {
+				setProgressBarItemVisibility( progressBarItem, isVisible );
+			}
+		}
+
+		// Set first/last step attributes on visible steps only
+		if ( visibleSteps.length > 0 ) {
+			visibleSteps[ 0 ].setAttribute( _settings.stepFirstAttribute, '' );
+			visibleSteps[ visibleSteps.length - 1 ].setAttribute( _settings.stepLastAttribute, '' );
+		}
+
+		// Update step count on progress bar container to reflect only visible steps
+		var progressBarStepsContainer = document.querySelector( _settings.progressBarStepsContainerSelector );
+		if ( progressBarStepsContainer ) {
+			progressBarStepsContainer.setAttribute( _settings.stepCountAttribute, visibleSteps.length );
+		}
+
+		// Update total steps count text element
+		var totalStepsElement = document.querySelector( _settings.stepCountTotalSelector );
+		if ( totalStepsElement ) {
+			totalStepsElement.innerText = visibleSteps.length;
+		}
+
+		// Iterate through steps to update proceed button labels and visibility for each step
+		for ( var i = 0; i < allSteps.length; i++ ) {
+			var stepElement = allSteps[ i ];
+			var nextStepButton = stepElement.querySelector( _settings.nextStepButtonSelector );
+
+			// Skip hidden steps and steps with no proceed button
+			if ( 'no' === stepElement.getAttribute( _settings.stepVisibleAttribute ) || ! nextStepButton ) { continue; }
+
+			// Get step actions container
+			var stepActions = nextStepButton.closest( _settings.stepActionsSelector );
+
+			// Get next visible step
+			var nextStepElement = getNextVisibleStep( stepElement );
+
+			// Maybe hide the proceed button if there is no next visible step
+			if ( ! nextStepElement ) {
+				// Maybe hide the step actions container
+				if ( stepActions ) {
+					stepActions.style.display = 'none';
+				}
+
+				// Skip to the next step
+				continue;
+			}
+
+			// Update button label with next visible step's proceed label
+			var proceedLabel = nextStepElement.getAttribute( _settings.stepProceedLabelAttribute );
+			if ( proceedLabel ) {
+				nextStepButton.textContent = proceedLabel;
+			}
+
+			// Ensure the button container is visible
+			if ( stepActions ) {
+				stepActions.style.display = '';
+			}
+		}
+
+		// Maybe handle case where the current step has become hidden
+		var currentStepElement = document.querySelector( _settings.currentStepSelector );
+		if ( currentStepElement && 'no' === currentStepElement.getAttribute( _settings.stepVisibleAttribute ) ) {
+			// Try to move to the next visible step, or fall back to the previous visible step
+			var targetStep = getNextVisibleStep( currentStepElement ) || getPreviousVisibleStep( currentStepElement );
+			if ( targetStep ) {
+				currentStepElement.removeAttribute( _settings.stepCurrentAttribute );
+				targetStep.setAttribute( _settings.stepCurrentAttribute, '' );
+			}
+		}
+
+		// Update progress bar to reflect changes
+		updateProgressBar();
+
+		// Update class for steps before the current step
+		updateStepBeforeCurrentClass();
 	}
 
 
@@ -502,6 +855,9 @@
 			var className = _settings.currentStepClassTemplate.replace( '##STEP_ID##', stepId );
 			document.body.classList.remove( className );
 		}
+
+		// Remove last step class
+		document.body.classList.remove( _settings.currentLastStepClass );
 
 		// Maybe add current step class
 		var currentStepElement = document.querySelector( _settings.currentStepSelector );
@@ -589,9 +945,9 @@
 			// Handle expanded state
 			var expandedHiddenField = substepElement.querySelector( _settings.substepExpandedStateFieldSelector );
 			if ( expandedHiddenField ) {
+				// Maybe expand section when not already expanded
 				var isSetExpanded = expandedHiddenField && 'yes' === expandedHiddenField.value;
-				if ( isSetExpanded ) {
-					// Expand section
+				if ( isSetExpanded && ! substepElement.classList.contains( _settings.isEditingClass ) ) {
 					expandSubstepEdit( substepElement, true, false );
 				}
 
@@ -748,8 +1104,9 @@
 
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
-			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeChangeSubstepState );
+			$( document.body ).on( 'updated_checkout', maybeChangeStepVisibility );
+			$( document.body ).on( 'updated_checkout', updateGlobalStepStates );
 			$( document.body ).on( 'updated_checkout', maybeRemoveFragmentsLoadingClass );
 		}
 
@@ -774,6 +1131,11 @@
 				_resizeObservers[ i ].observe( document.body );
 			}
 		}
+
+		// Finish initialization
+		maybeChangeSubstepState();
+		maybeChangeStepVisibility();
+		updateGlobalStepStates();
 
 		// Add init class
 		document.body.classList.add( _settings.bodyClass );

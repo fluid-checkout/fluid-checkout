@@ -1,0 +1,613 @@
+// ------------------------------------
+// SETTINGS PAGE - FIELDS
+// ------------------------------------
+
+.fc-settings-field {
+	padding: $fc-settings-field-padding-y 0;
+	border-top: none;
+}
+
+.fc-settings-field:first-child {
+	border-top: none;
+}
+
+.fc-settings-field--inline {
+	display: flex;
+	align-items: flex-start;
+	gap: $fc-settings-field-inline-gap;
+
+	// Stack label above control below the content reading width
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
+		flex-direction: column;
+		gap: 8px;
+	}
+}
+
+
+
+.fc-settings-field__label {
+	position: relative;
+	flex: 0 0 $fc-settings-field-label-width;
+	padding-top: $fc-settings-field-label-padding-top;
+	font-size: $fc-settings-field-label-font-size;
+	font-weight: normal;
+	line-height: 1.4;
+	color: $fc-settings-text-color;
+
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
+		flex: 0 0 auto;
+		padding-top: 0;
+	}
+}
+
+// Align labels with shorter toggle-switch / checkbox controls
+.fc-settings-field--checkbox > .fc-settings-field__label,
+.fc-settings-field--fc_telemetry > .fc-settings-field__label,
+.fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label {
+	padding-top: $fc-settings-field-label-padding-top-toggle;
+}
+
+// Clear space for the floating info icon on the right of the label
+.fc-settings-field__label:has( > .fc-settings-info-tip ) {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		padding-right: $fc-settings-info-tip-offset;
+	}
+}
+
+.rtl .fc-settings-field__label:has( > .fc-settings-info-tip ) {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		padding-right: 0;
+		padding-left: $fc-settings-info-tip-offset;
+	}
+}
+
+.fc-settings-field__label label {
+	color: inherit;
+}
+
+.fc-settings-field__control {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 8px;
+	min-width: 0;
+	padding-top: 5px;
+
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
+		width: 100%;
+	}
+}
+
+.fc-settings-field__control > fieldset {
+	position: relative;
+	display: flex;
+	flex: 1 1 100%;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 8px;
+	width: 100%;
+	margin: 0;
+	min-width: 0;
+	padding: 0;
+	border: 0;
+}
+
+.fc-settings-field__control fieldset + fieldset {
+	margin-top: 8px;
+}
+
+// Keep checkbox label text beside the control; wrap long copy without dropping under the input
+.fc-settings-field__control > fieldset > label:has( > input[type="checkbox"] ) {
+	display: flex;
+	flex: 1 1 0;
+	align-items: flex-start;
+	gap: 8px;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.fc-settings-wrap .fc-settings-field.hide_options_if_checked ~ .fc-settings-field.hide_options_if_checked:has( > .fc-settings-field__control > fieldset:not( .hidden_option ) input[type="checkbox"]:checked ) ~ .fc-settings-field.hidden_option {
+	display: none;
+}
+
+.fc-settings-field__control .description {
+	flex: 1 1 100%;
+	width: 100%;
+	margin-top: 6px;
+	margin-bottom: 0;
+	padding-top: 0;
+	color: $admin-text-color-muted;
+}
+
+
+
+.fc-settings-field__control .colorpickpreview {
+	display: inline-block;
+	width: $fc-settings-input-height;
+	height: $fc-settings-input-height;
+	margin: 0;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	box-sizing: border-box;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.fc-settings-field__control .colorpick {
+	width: auto;
+	max-width: 8rem;
+	flex: 0 0 auto;
+}
+
+.fc-settings-field__control .iris-picker {
+	z-index: 100;
+	display: none;
+	position: absolute;
+	// Sit below the color input row (control padding-top + input height + gap)
+	top: calc( 5px + #{$fc-settings-input-height} + 8px );
+	left: 0;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-shadow: 0 1px 3px rgba( 0, 0, 0, .2 );
+}
+
+// Buttons next to inputs match the field control height
+.fc-settings-field__control > .button,
+.fc-settings-field__control > .button-secondary,
+.fc-settings-field__control > .fc-settings-button,
+.fc-settings-wrap .fc-license-key__field-wrap .button,
+.fc-settings-wrap .fc-addons__site-key-field-row .button {
+	height: $fc-settings-input-height;
+	min-height: $fc-settings-input-height;
+}
+
+
+
+.fc-settings-field__control input[type="text"],
+.fc-settings-field__control input[type="password"],
+.fc-settings-field__control input[type="email"],
+.fc-settings-field__control input[type="url"],
+.fc-settings-field__control input[type="tel"],
+.fc-settings-field__control input[type="number"],
+.fc-settings-field__control input[type="search"],
+.fc-settings-field__control select,
+.fc-settings-field__control textarea {
+	width: 100%;
+	max-width: none; // Needed to override WP admin `max-width: 25rem`
+	min-height: 1px;
+	margin: 0;
+	padding: $fc-settings-input-padding;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $fc-settings-input-background-color;
+	box-shadow: $fc-settings-input-box-shadow;
+	box-sizing: border-box;
+	color: $fc-settings-input-color;
+	font-size: $fc-settings-input-font-size;
+	line-height: $fc-settings-input-line-height;
+	transition: all .05s ease-in-out;
+}
+
+.fc-settings-field__control input[type="text"],
+.fc-settings-field__control input[type="password"],
+.fc-settings-field__control input[type="email"],
+.fc-settings-field__control input[type="url"],
+.fc-settings-field__control input[type="tel"],
+.fc-settings-field__control input[type="number"],
+.fc-settings-field__control input[type="search"],
+.fc-settings-field__control select {
+	height: $fc-settings-input-height;
+}
+
+.fc-settings-field__control select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-right: $fc-settings-select-caret-padding-right;
+	line-height: $fc-settings-input-height - 2px;
+	background-color: $fc-settings-input-background-color;
+	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%232e4453'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" );
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: $fc-settings-select-caret-size;
+}
+
+.rtl .fc-settings-field__control select {
+	padding-right: 10px;
+	padding-left: $fc-settings-select-caret-padding-right;
+	background-position: left 10px center;
+}
+
+.fc-settings-field__control textarea {
+	min-height: 100px;
+	height: auto;
+}
+
+.fc-settings-field__control input[type="text"]:disabled,
+.fc-settings-field__control input[type="password"]:disabled,
+.fc-settings-field__control input[type="email"]:disabled,
+.fc-settings-field__control input[type="url"]:disabled,
+.fc-settings-field__control input[type="tel"]:disabled,
+.fc-settings-field__control input[type="number"]:disabled,
+.fc-settings-field__control input[type="search"]:disabled,
+.fc-settings-field__control select:disabled,
+.fc-settings-field__control textarea:disabled {
+	background-color: $fc-settings-input-background-color-disabled;
+	color: $fc-settings-input-color-disabled;
+	-webkit-text-fill-color: $fc-settings-input-color-disabled;
+	opacity: 1;
+}
+
+.fc-settings-field__control select:disabled {
+	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%2368717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E" );
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: $fc-settings-select-caret-size;
+}
+
+.rtl .fc-settings-field__control select:disabled {
+	background-position: left 10px center;
+}
+
+.fc-settings-wrap .ts-wrapper.disabled .ts-control,
+.fc-settings-wrap .ts-wrapper.disabled .ts-control .item {
+	color: $fc-settings-input-color-disabled;
+}
+
+.fc-settings-field__control input[type="text"]:focus,
+.fc-settings-field__control input[type="password"]:focus,
+.fc-settings-field__control input[type="email"]:focus,
+.fc-settings-field__control input[type="url"]:focus,
+.fc-settings-field__control input[type="tel"]:focus,
+.fc-settings-field__control input[type="number"]:focus,
+.fc-settings-field__control input[type="search"]:focus,
+.fc-settings-field__control select:focus,
+.fc-settings-field__control textarea:focus {
+	border-color: $fc-settings-input-border-color-focus;
+	outline: 1px solid $fc-settings-input-border-color-focus;
+	box-shadow: none;
+}
+
+.fc-settings-field__control input::placeholder,
+.fc-settings-field__control textarea::placeholder,
+.fc-settings-wrap .ts-control > input::placeholder {
+	color: $fc-settings-input-placeholder-color;
+	opacity: 1;
+}
+
+
+
+.fc-settings-input-group {
+	display: flex;
+	gap: $fc-settings-input-group-gap;
+	width: 100%;
+}
+
+.fc-settings-field__control .fc-settings-input-group--split > input,
+.fc-settings-field__control .fc-settings-input-group--split > select {
+	flex: 1 1 50%;
+}
+
+
+
+.fc-settings-field--disabled .fc-settings-field__label,
+.fc-settings-field--disabled .fc-settings-switch__text,
+.fc-settings-field--disabled .fc-settings-field__control .description {
+	color: $fc-settings-input-color-disabled;
+}
+
+
+
+.fc-settings-field--paragraph p {
+	margin: 0;
+	color: $admin-text-color-muted;
+}
+
+.fc-settings-field--separator {
+	margin: $fc-settings-field-padding-y 0;
+	padding: 0;
+	border-top: 1px solid $fc-settings-field-border-color;
+}
+
+
+
+.fc-settings-badge {
+	display: inline-block;
+	margin-right: 6px;
+	padding: 2px 8px;
+	border-radius: $fc-settings-badge-border-radius;
+	background-color: $fc-settings-badge-background-color;
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-badge-font-size;
+	font-weight: 600;
+	line-height: 1.6;
+	vertical-align: middle;
+}
+
+.rtl .fc-settings-badge {
+	margin-right: 0;
+	margin-left: 6px;
+}
+
+
+
+.fc-settings-field--legacy .form-table {
+	margin: 0;
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - TOGGLE SWITCHES
+// ------------------------------------
+
+.fc-settings-switch {
+	position: relative;
+	display: inline-block;
+	flex: 0 0 auto;
+	vertical-align: middle;
+}
+
+.fc-settings-toggle {
+	position: absolute !important;
+	margin-left: -9999px !important;
+	visibility: hidden !important;
+}
+
+.fc-settings-toggle + label {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	outline: none;
+	user-select: none;
+}
+
+input.fc-settings-toggle--round + label {
+	padding: $fc-settings-toggle-padding;
+	width: $fc-settings-toggle-width;
+	height: $fc-settings-toggle-height;
+	background-color: $fc-settings-toggle-background;
+	border-radius: 20px;
+	box-sizing: content-box;
+	transition: background .4s;
+}
+
+input.fc-settings-toggle--round + label::before,
+input.fc-settings-toggle--round + label::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: $fc-settings-toggle-padding;
+	left: $fc-settings-toggle-padding;
+	bottom: $fc-settings-toggle-padding;
+}
+
+input.fc-settings-toggle--round + label::before {
+	right: $fc-settings-toggle-padding;
+	border-radius: 20px;
+	transition: background .4s;
+}
+
+input.fc-settings-toggle--round + label::after {
+	width: $fc-settings-toggle-knob-size;
+	background-color: $white;
+	border-radius: 100%;
+	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 );
+	transition: margin .4s;
+}
+
+input.fc-settings-toggle--round:checked + label {
+	background-color: $fc-settings-toggle-background-checked;
+}
+
+input.fc-settings-toggle--round:checked + label::after {
+	margin-left: $fc-settings-toggle-knob-offset;
+}
+
+input.fc-settings-toggle--round:checked:disabled + label,
+.fc-settings-switch--disabled input.fc-settings-toggle--round:checked + label {
+	background-color: $fc-settings-toggle-background-checked-disabled;
+}
+
+input.fc-settings-toggle--round:focus + label {
+	box-shadow: 0 0 0 1px $white, 0 0 0 3px $fc-settings-nav-focus-outline-color;
+}
+
+.fc-settings-switch--disabled .fc-settings-toggle + label {
+	cursor: not-allowed;
+}
+
+.fc-settings-switch__text {
+	flex: 1 1 0;
+	min-width: 0;
+	padding-top: 2px;
+	color: $fc-settings-text-color;
+	font-size: $fc-settings-field-label-font-size;
+	line-height: 1.4;
+}
+
+.fc-settings-switch__text .fc-settings-badge {
+	margin-left: 6px;
+	vertical-align: middle;
+}
+
+.rtl .fc-settings-switch__text .fc-settings-badge {
+	margin-right: 6px;
+	margin-left: 0;
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - INFO TIPS
+// ------------------------------------
+
+.fc-settings-info-tip {
+	position: relative;
+	z-index: auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: $fc-settings-info-tip-size;
+	height: $fc-settings-info-tip-size;
+	vertical-align: text-top;
+}
+
+// Field label tip: inline on small screens, floating to the right from 600px up.
+// Keep `position: relative` when inline so the popup anchors to the icon, not the label box.
+.fc-settings-field__label > .fc-settings-info-tip {
+	position: relative;
+	margin-inline-start: 6px;
+
+	@media ( min-width: $fc-settings-content-max-width ) {
+		position: absolute;
+		top: 15px;
+		right: -15px;
+		left: auto;
+		margin: 0;
+	}
+}
+
+// Align the tip with shorter toggle-switch / checkbox controls
+.fc-settings-field--checkbox > .fc-settings-field__label > .fc-settings-info-tip,
+.fc-settings-field--fc_telemetry > .fc-settings-field__label > .fc-settings-info-tip,
+.fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label > .fc-settings-info-tip {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		top: 8px;
+	}
+}
+
+.rtl .fc-settings-field__label > .fc-settings-info-tip {
+	@media ( min-width: $fc-settings-content-max-width ) {
+		right: auto;
+		left: -15px;
+	}
+}
+
+.fc-settings-info-tip:hover,
+.fc-settings-info-tip.is-open {
+	z-index: 100000;
+}
+
+.fc-settings-info-tip__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: $fc-settings-info-tip-color;
+	cursor: pointer;
+	line-height: 1;
+}
+
+.fc-settings-info-tip__button .dashicons {
+	width: $fc-settings-info-tip-size;
+	height: $fc-settings-info-tip-size;
+	font-size: $fc-settings-info-tip-size;
+}
+
+.fc-settings-info-tip:hover .fc-settings-info-tip__button,
+.fc-settings-info-tip.is-open .fc-settings-info-tip__button,
+.fc-settings-info-tip__button:focus {
+	color: $fc-settings-info-tip-color-hover;
+}
+
+.fc-settings-info-tip__content {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	z-index: 100000;
+	top: 28px;
+	left: 50%;
+	width: $fc-settings-info-tip-width;
+	// Center on the icon; `--fc-settings-info-tip-shift` keeps the popup inside the viewport
+	margin-left: calc( #{ -0.5 * $fc-settings-info-tip-width } + var( --fc-settings-info-tip-shift, 0px ) );
+	padding: 12px 14px;
+	border: 1px solid $fc-settings-info-tip-border-color;
+	border-radius: 4px;
+	background: $fc-settings-info-tip-background;
+	box-shadow: 0 2px 5px rgba( 0, 0, 0, .1 ), 0 0 56px rgba( 0, 0, 0, .075 );
+	box-sizing: border-box;
+	color: $fc-settings-info-tip-text-color;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 1.4;
+	transition: opacity .2s ease-in-out, visibility .2s ease-in-out, top .2s ease-in-out;
+}
+
+.fc-settings-info-tip__content::before,
+.fc-settings-info-tip__content::after {
+	content: "";
+	position: absolute;
+	// Keep the caret under the icon when the popup is shifted horizontally
+	left: calc( 50% - var( --fc-settings-info-tip-shift, 0px ) );
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-color: transparent;
+}
+
+.fc-settings-info-tip__content::before {
+	top: -10px;
+	margin-left: -10px;
+	border-width: 0 10px 10px;
+	border-bottom-color: $fc-settings-info-tip-border-color;
+}
+
+.fc-settings-info-tip__content::after {
+	top: -8px;
+	margin-left: -9px;
+	border-width: 0 9px 9px;
+	border-bottom-color: $fc-settings-info-tip-background;
+}
+
+.fc-settings-info-tip__content > :first-child {
+	margin-top: 0;
+}
+
+.fc-settings-info-tip__content > :last-child {
+	margin-bottom: 0;
+}
+
+.fc-settings-info-tip__content p,
+.fc-settings-info-tip__content ul,
+.fc-settings-info-tip__content ol {
+	margin: 0 0 .75em;
+}
+
+.fc-settings-info-tip__content ul,
+.fc-settings-info-tip__content ol {
+	padding-left: 1.25em;
+}
+
+.fc-settings-info-tip__content li + li {
+	margin-top: .25em;
+}
+
+.fc-settings-info-tip__content code {
+	padding: 1px 4px;
+	border-radius: 3px;
+	background: rgba( 200, 215, 225, .35 );
+	font-size: 12px;
+}
+
+.fc-settings-info-tip:hover .fc-settings-info-tip__content,
+.fc-settings-info-tip.is-open .fc-settings-info-tip__content {
+	opacity: 1;
+	visibility: visible;
+	top: 26px;
+}
+
+.fc-settings-info-tip__content a {
+	color: inherit;
+}

@@ -2321,32 +2321,6 @@ msgid ""
 "Checkout."
 msgstr "ສົ່ງອອກພາກສ່ວນຂັ້ນຕອນການຈ່າຍເງິນຈາກຫົວຂໍ້ Nyture ເມື່ອໃຊ້ Fluid Checkout."
 
-#: inc/admin/admin-settings-checkout.php:581
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the shipping address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the shipping address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ບາງທີອາດຈະຖືກບັງຄັບເປັນ &quot;ຕ້ອງການ&quot; "
-"ຖ້າພາກສ່ວນທີ່ຢູ່ໃບບິນຖືກສະແດງຫຼັງຈາກພາກສ່ວນທີ່ຢູ່ຈັດສົ່ງ, "
-"ແລະຊ່ອງຂໍ້ມູນການເອີ້ນເກັບເງິນຖືກຕັ້ງເປັນ &quot;ຕ້ອງການ. "
-"ນີ້ແມ່ນຈໍາເປັນເພື່ອຮັບປະກັນວ່າທີ່ຢູ່ຈັດສົ່ງສາມາດຖືກຄັດລອກໄປທີ່ທີ່ຢູ່ໃບບິນເມື"
-"່ອທາງເລືອກນັ້ນຖືກກວດສອບ."
-
-#: inc/admin/admin-settings-checkout.php:608
-msgid ""
-"Maybe be forced as \"required\" if the billing address section is displayed "
-"after the billing address section, and the billing phone field is set as "
-"\"required. This is needed to ensure the billing address can be copied to "
-"the billing address when that option is checked."
-msgstr ""
-"ບາງທີອາດຈະຖືກບັງຄັບເປັນ &quot;ຕ້ອງການ&quot; "
-"ຖ້າພາກສ່ວນທີ່ຢູ່ໃບບິນຖືກສະແດງຫຼັງຈາກພາກສ່ວນທີ່ຢູ່ໃບບິນ, "
-"ແລະຊ່ອງຂໍ້ມູນໂທລະສັບໃບບິນຖືກຕັ້ງເປັນ &quot;ຕ້ອງການ. "
-"ນີ້ແມ່ນຈໍາເປັນເພື່ອຮັບປະກັນວ່າທີ່ຢູ່ໃບບິນສາມາດຖືກຄັດລອກໄປທີ່ທີ່ຢູ່ໃບບິນເມື່ອ"
-"ທາງເລືອກນັ້ນຖືກກວດສອບ."
-
 #: inc/admin/admin-settings-order-pay.php:73
 msgid ""
 "Allows customers to make payments for orders that are either created "
@@ -2593,13 +2567,41 @@ msgstr "ຂະຫຍາຍແລ້ວ"
 msgid "Do not show"
 msgstr "ຢ່າສະແດງ"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "Yes"
+#: inc/checkout-steps.php:4058
+msgid "yes"
 msgstr "ແມ່ນແລ້ວ"
 
-#: inc/compat/plugins/compat-plugin-klaviyo.php:144
-msgid "No"
-msgstr "ບໍ່"
+#: inc/admin/admin-settings-checkout.php:661
+msgid ""
+"The shipping phone field may be forced as \"required\" if the billing "
+"address section is displayed after the shipping address section, and the "
+"billing phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"ຊ່ອງເບີໂທລະສັບສຳລັບສົ່ງສິນຄ້າອາດຈະຖືກບັງຄັບໃຫ້ເປັນ &quot;ຕ້ອງໃສ່&quot; "
+"ຖ້າພາກສ່ວນທີ່ຢູ່ສຳລັບການຮຽກເກັບເງິນຖືກສະແດງຫຼັງຈາກພາກສ່ວນທີ່ຢູ່ສຳລັບການຈັດສົ"
+"່ງ, ແລະຊ່ອງເບີໂທລະສັບສຳລັບສົ່ງສິນຄ້າຖືກຕັ້ງເປັນ &quot;ຕ້ອງໃສ່&quot;. "
+"ນີ້ແມ່ນຈຳເປັນເພື່ອຮັບປະກັນວ່າທີ່ຢູ່ສຳລັບການຈັດສົ່ງສາມາດຖືກຄັດລອກໄປຫາທີ່ຢູ່ສຳ"
+"ລັບການຮຽກເກັບເງິນໄດ້ເມື່ອເລືອກຕົວເລືອກນັ້ນ, "
+"ຖ້າບໍ່ດັ່ງນັ້ນລູກຄ້າອາດຈະບໍ່ສາມາດຕື່ມແບບຟອມຊຳລະເງິນໄດ້."
+
+#: inc/admin/admin-settings-checkout.php:687
+msgid ""
+"The billing phone field may be forced as \"required\" if the billing "
+"address section is displayed before the shipping address section, and the "
+"shipping phone field is set as \"required\". This is needed to ensure the "
+"shipping address can be copied to the billing address when that option is "
+"checked, otherwise the customer might not be able to complete the checkout "
+"form."
+msgstr ""
+"ຊ່ອງເບີໂທລະສັບສຳລັບການຮຽກເກັບເງິນອາດຈະຖືກບັງຄັບໃຫ້ເປັນ &quot;ຕ້ອງໃສ່&quot; "
+"ຖ້າພາກສ່ວນທີ່ຢູ່ສຳລັບການຮຽກເກັບເງິນຖືກສະແດງກ່ອນພາກສ່ວນທີ່ຢູ່ຈັດສົ່ງ, "
+"ແລະຊ່ອງເບີໂທລະສັບສຳລັບການຈັດສົ່ງຖືກຕັ້ງເປັນ &quot;ຕ້ອງໃສ່&quot;. "
+"ນີ້ແມ່ນຈຳເປັນເພື່ອຮັບປະກັນວ່າທີ່ຢູ່ຈັດສົ່ງສາມາດຖືກຄັດລອກໄປຫາທີ່ຢູ່ສຳລັບການຮຽ"
+"ກເກັບເງິນໄດ້ເມື່ອເລືອກຕົວເລືອກນັ້ນ, "
+"ຖ້າບໍ່ດັ່ງນັ້ນລູກຄ້າອາດຈະບໍ່ສາມາດຕື່ມແບບຟອມຊຳລະເງິນໄດ້."
 
 #: inc/checkout-coupon-codes.php:275
 msgctxt "Button label for applying coupon codes"
@@ -2740,3 +2742,14 @@ msgstr "ການຂົນສົ່ງ"
 msgctxt "Used as fallback for \"Proceed to next step\" button label"
 msgid "next step"
 msgstr "ຂັ້ນຕອນຕໍ່ໄປ"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:394
+msgctxt "Substep review checkbox value"
+msgid "Yes"
+msgstr "ແມ່ນແລ້ວ"
+
+#: inc/compat/plugins/compat-plugin-woo-cart-abandonment-recovery-pro.php:397
+#. translators: %1$s the consent message label, %2$s the "Yes" value.
+msgctxt "Substep review checkbox line"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"

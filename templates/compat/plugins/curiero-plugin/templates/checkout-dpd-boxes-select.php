@@ -1,6 +1,7 @@
+<?php // CHANGE: Add abspath check and exit ?>
 <?php defined( 'ABSPATH' ) || exit; ?>
-<?php // CHANGE: Change table elements with `div` elements ?>
 
+<?php // CHANGE: Change table elements with `div` elements ?>
 <div class="wc_shipping_dpd_boxes_header shipping" style="display: none">
 	<div style="padding-bottom:0"><b><?= esc_html_e('Alege punct de ridicare', 'curiero-plugin') ?> <abbr class="required" title="required">*</abbr></b></div>
 </div>
@@ -28,5 +29,4 @@
 		</script>
 	</div>
 </div>
-
 <?php // CHANGE: END - Change table elements with `div` elements ?>
