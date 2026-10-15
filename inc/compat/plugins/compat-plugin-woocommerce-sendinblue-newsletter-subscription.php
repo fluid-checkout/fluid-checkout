@@ -91,8 +91,12 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		add_action( 'fc_checkout_after_steps', array( $this, 'output_nonce_field' ), 10 );
 
 		// Replace the function that adds the checkbox as a checkout field
-		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early
-		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early.
+		// Brevo 4.0.61 and earlier registers these callbacks during `plugins_loaded`.
+		// Brevo 4.0.62+ registers the same callbacks on `woocommerce_init` (priority 10),
+		// which runs after this class is loaded on `after_setup_theme`.
+		$this->remove_optin_checkout_hooks_v3();
+		add_action( 'woocommerce_init', array( $this, 'remove_optin_checkout_hooks_v3' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_optin_field_v3' ), 10 );
 
 		// Order fields position
@@ -132,6 +136,34 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	}
 
 	/**
+	 * Remove Brevo's classic checkout opt-in callbacks.
+	 *
+	 * Callback names and priorities are unchanged from Brevo 3.x. Brevo 4.0.62 only
+	 * changed when they are registered: `ApiManager::add_conditional_hooks()` now
+	 * runs on `woocommerce_init` instead of during `plugins_loaded`. Call this method
+	 * once immediately, for older versions, and again on `woocommerce_init` priority 100.
+	 *
+	 * The order-meta callback `add_optin_order` is left in place so the posted checkbox
+	 * value is still saved.
+	 *
+	 * @since 4.2.8
+	 */
+	public function remove_optin_checkout_hooks_v3() {
+		// Bail if the cart events manager object is not available
+		if ( ! is_object( $this->v3_cart_events_manager ) ) { return; }
+
+		// Checkout field callback (billing or order notes, depending on Brevo's display location)
+		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+
+		// Terms checkbox is printed beside the place order button. Remove it only when
+		// Fluid Checkout moves the checkbox to the contact step.
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) { return; }
+		if ( ! is_array( $this->v3_settings ) || empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
+
+		$this->remove_filter_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
+	}
+
+	/**
 	 * Add or remove hooks for displaying the signup checkbox on the contact step.
 	 */
 	public function move_checkbox_to_contact_step_hooks_v3() {
@@ -141,9 +173,8 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		// Bail if optin field is not set to be displayed on the checkout page
 		if ( empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
 
-		// Remove fields from display location determined by Sendinblue
-		$this->remove_filter_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
-		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		// Brevo's callbacks are removed in `remove_optin_checkout_hooks_v3`.
+		// Drop the replacement field added above so the contact-step field below is the only copy.
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_optin_field_v3' ), 10 );
 
 		// Always add field to billing, then move it to the contact step
