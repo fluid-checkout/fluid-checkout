@@ -1216,8 +1216,6 @@
 
 
 
-
-
 	/**
 	 * Initialize the settings preview column.
 	 *

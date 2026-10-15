@@ -291,9 +291,9 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			 * Each item holds product properties as accepted by `WC_Product::set_props()`.
 			 */
 			$products = apply_filters( 'fc_admin_preview_dummy_products', array(
-				array( 'name' => __( 'Beanie', 'fluid-checkout' ), 'regular_price' => '20', 'sale_price' => '18', 'sku' => 'fc-preview-beanie' ),
-				array( 'name' => __( 'Cap', 'fluid-checkout' ), 'regular_price' => '18', 'sale_price' => '16', 'sku' => 'fc-preview-cap' ),
-				array( 'name' => __( 'T-Shirt', 'fluid-checkout' ), 'regular_price' => '18', 'sku' => 'fc-preview-t-shirt' ),
+				array( 'name' => _x( 'Beanie', 'Dummy product name in the admin preview', 'fluid-checkout' ), 'regular_price' => '20', 'sale_price' => '18', 'sku' => 'fc-preview-beanie' ),
+				array( 'name' => _x( 'Cap', 'Dummy product name in the admin preview', 'fluid-checkout' ), 'regular_price' => '18', 'sale_price' => '16', 'sku' => 'fc-preview-cap' ),
+				array( 'name' => _x( 'T-Shirt', 'Dummy product name in the admin preview', 'fluid-checkout' ), 'regular_price' => '18', 'sku' => 'fc-preview-t-shirt' ),
 			) );
 
 			// Iterate dummy products, assigning IDs that no real product uses

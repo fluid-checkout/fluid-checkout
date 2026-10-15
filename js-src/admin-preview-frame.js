@@ -624,8 +624,6 @@
 
 
 
-
-
 	/**
 	 * Initialize the script.
 	 *

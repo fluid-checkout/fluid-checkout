@@ -97,8 +97,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Initialize hooks.
 	 */
 	public function hooks() {
-		// Preview requests
-		add_action( 'init', array( $this, 'preview_request_hooks' ), 100 ); // Late so the hooks removed from other plugins are already registered
+		// Late hooks
+		add_action( 'init', array( $this, 'late_hooks' ), 100 ); // Late so the hooks removed from other plugins are already registered
 
 		// Expired previews
 		add_action( 'init', array( $this, 'maybe_reject_expired_preview_request' ), -100 ); // Before WooCommerce sets up the session and customer at priority `0`
@@ -126,9 +126,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove preview request hooks.
+	 * Add or remove late hooks.
 	 */
-	public function preview_request_hooks() {
+	public function late_hooks() {
 		// Bail if not a preview request
 		if ( ! $this->is_preview_request() ) { return; }
 
@@ -155,6 +155,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Body classes
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 10 );
+
+		// Link prefetching
+		add_filter( 'wp_speculation_rules_configuration', '__return_null', 10 ); // Required as browsers would prefetch links without the preview token, which then run as the visitor
 
 		// Prompt to leave the page
 		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_update_before_unload' ), 10 );
@@ -644,14 +647,17 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Iterate theme slugs
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
-			if ( apply_filters( 'fc_enable_compat_theme_admin_preview_style_' . $theme_slug, true ) === false ) { continue; }
+			/**
+			 * Filter whether to enqueue the admin preview compatibility styles of a theme, where the dynamic portion of the hook name is the theme directory name.
+			 */
+			if ( true !== apply_filters( 'fc_enable_compat_theme_admin_preview_style_' . $theme_slug, true ) ) { continue; }
 
 			// Get file path
 			$compat_file_path = FluidCheckout_Enqueue::instance()->get_style_url( 'css/compat/themes/compat-admin-preview-' . $theme_slug, false );
 
 			// Maybe load compatibility file
 			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-admin-preview-' . $theme_slug, self::$directory_url . $compat_file_path, array( 'fc-admin-preview-frame' ), null );
+				wp_enqueue_style( 'fc-theme-compat-admin-preview-' . $theme_slug, self::$directory_url . $compat_file_path, array( 'fc-admin-preview-frame' ), NULL );
 			}
 		}
 	}
@@ -819,8 +825,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @param   string  $query  Database query.
 	 */
 	public function maybe_skip_database_write( $query ) {
-		// Bail if the query does not write to the database
-		if ( 1 !== preg_match( '/^\s*(INSERT|UPDATE|DELETE|REPLACE|ALTER|DROP|TRUNCATE|RENAME|CREATE(?!\s+TEMPORARY))\s/i', $query ) ) { return $query; }
+		// Bail if the query does not write to the database, also when it starts with comments
+		if ( 1 !== preg_match( '/^\s*(\/\*.*?\*\/\s*)*(INSERT|UPDATE|DELETE|REPLACE|ALTER|DROP|TRUNCATE|RENAME|CREATE(?!\s+TEMPORARY))\s/is', $query ) ) { return $query; }
 
 		// Return an empty query, which WordPress skips
 		return '';

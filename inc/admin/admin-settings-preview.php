@@ -497,6 +497,27 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	}
 
 	/**
+	 * Get the subtitle HTML for the preview placeholder of a disabled page, with a link to the setting that enables it.
+	 *
+	 * @param  string  $page_slug       Preview page slug, also the slug of the settings tab with the setting.
+	 * @param  string  $enable_setting  Setting that enables the page.
+	 * @return string
+	 */
+	public function get_disabled_preview_subtitle_html( $page_slug, $enable_setting ) {
+		$link = sprintf(
+			'<a href="%1$s" target="_parent">%2$s</a>',
+			esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( $page_slug ) . '#' . $enable_setting ),
+			esc_html__( 'Turn them on', 'fluid-checkout' )
+		);
+
+		return sprintf(
+			/* translators: %s: HTML link to the setting that enables the optimizations of the page */
+			__( 'Optimizations for this page are turned off. %s to preview the page.', 'fluid-checkout' ),
+			$link
+		);
+	}
+
+	/**
 	 * Get the placeholder documents shown in the preview iframe for pages that cannot be previewed.
 	 *
 	 * @return array  Placeholder documents by preview page slug.
@@ -551,29 +572,6 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		);
 
 		return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#646970}body{display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}div{zoom:calc(1/var(--fc-settings-preview-scale,1))}strong{display:block;margin-bottom:6px;color:#1e1e1e;font-size:14px}a{color:#2271b1;text-decoration:underline}a:hover,a:focus{color:#135e96}</style></head><body><div><strong id="fc-settings-preview-title">' . esc_html( $title ) . '</strong><span id="fc-settings-preview-subtitle">' . wp_kses( $subtitle, $allowed_subtitle_html ) . '</span></div></body></html>';
-	}
-
-
-
-	/**
-	 * Get the subtitle HTML for the preview placeholder of a disabled page, with a link to the setting that enables it.
-	 *
-	 * @param  string  $page_slug       Preview page slug, also the slug of the settings tab with the setting.
-	 * @param  string  $enable_setting  Setting that enables the page.
-	 * @return string
-	 */
-	public function get_disabled_preview_subtitle_html( $page_slug, $enable_setting ) {
-		$link = sprintf(
-			'<a href="%1$s" target="_parent">%2$s</a>',
-			esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( $page_slug ) . '#' . $enable_setting ),
-			esc_html__( 'Turn them on', 'fluid-checkout' )
-		);
-
-		return sprintf(
-			/* translators: %s: HTML link to the setting that enables the optimizations of the page */
-			__( 'Optimizations for this page are turned off. %s to preview the page.', 'fluid-checkout' ),
-			$link
-		);
 	}
 
 }
