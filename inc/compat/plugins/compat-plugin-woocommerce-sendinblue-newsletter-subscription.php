@@ -46,19 +46,22 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function hooks_v2() {
 		// Bail if SendInBlue class is not available
-		if ( ! class_exists( 'WC_Sendinblue_Integration' ) || ! array_key_exists( 'WC_Sendinblue_Integration', $GLOBALS ) ) { return; }
+		$sendinblue_woocommerce = $this->get_sendinblue_v2_integration();
+		if ( ! is_object( $sendinblue_woocommerce ) ) { return; }
 
 		// Get instance and variables for the Sendinblue WooCommerce integration class
-		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
-		$ws_opt_field = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
-		$display_location = isset( $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] ) ? $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] : '';
+		$customizations = $this->get_sendinblue_v2_customizations( $sendinblue_woocommerce );
+		$ws_opt_field = isset( $customizations['ws_opt_field'] ) ? $customizations['ws_opt_field'] : 'no';
+		$display_location = isset( $customizations['ws_opt_checkbox_location'] ) ? $customizations['ws_opt_checkbox_location'] : '';
 
 		// Move nonce field
 		add_action( 'fc_checkout_after_steps', array( $this, 'output_nonce_field' ), 10 );
 
 		// Replace the function that adds the checkbox as a checkout field
 		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early
-		remove_filter( 'woocommerce_checkout_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields' ), 10 );
+		if ( $this->has_brevo_callback( 'woocommerce_checkout_fields', $sendinblue_woocommerce, 'maybe_add_checkout_fields', 10 ) ) {
+			remove_filter( 'woocommerce_checkout_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields' ), 10 );
+		}
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_checkout_fields' ), 10 );
 
 		// Order fields position
@@ -75,14 +78,14 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function hooks_v3() {
 		// Bail if classes do not exist
-		if ( ! class_exists( 'SendinblueWoocommerce\Managers\ApiManager' ) || ! class_exists( 'SendinblueWoocommerce\Managers\CartEventsManagers' ) ) { return; }
+		if ( ! class_exists( 'SendinblueWoocommerce\Managers\ApiManager' ) || ! class_exists( 'SendinblueWoocommerce\Managers\CartEventsManagers' ) || ! class_exists( 'SendinblueWoocommerce\Clients\SendinblueClient' ) ) { return; }
 
 		// Get the manager objects
 		$this->v3_api_manager = new SendinblueWoocommerce\Managers\ApiManager();
 		$this->v3_cart_events_manager = $this->get_object_by_class_name_from_hooks( 'SendinblueWoocommerce\Managers\CartEventsManagers' );
 		
 		// Bail if class or object is not available
-		if ( null === $this->v3_api_manager || null === $this->v3_cart_events_manager ) { return; }
+		if ( ! is_object( $this->v3_api_manager ) || ! is_object( $this->v3_cart_events_manager ) || ! method_exists( $this->v3_api_manager, 'get_settings' ) ) { return; }
 
 		// Get settings
 		$this->v3_settings = $this->v3_api_manager->get_settings();
@@ -91,12 +94,22 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		add_action( 'fc_checkout_after_steps', array( $this, 'output_nonce_field' ), 10 );
 
 		// Replace the function that adds the checkbox as a checkout field
-		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early
-		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early.
+		// Brevo 4.0.61 and earlier has already registered this callback during `plugins_loaded`.
+		if ( $this->has_brevo_callback( 'woocommerce_checkout_fields', $this->v3_cart_events_manager, 'add_optin_billing', 10 ) ) {
+			$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		}
+
+		// Brevo 4.0.62+ registers the same callbacks on `woocommerce_init` (priority 10),
+		// which runs after this class is loaded on `after_setup_theme`.
+		add_action( 'woocommerce_init', array( $this, 'remove_optin_checkout_hooks_v3' ), 100 );
 		add_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_optin_field_v3' ), 10 );
 
 		// Order fields position
-		$is_order_display_location = ! empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) && 2 == $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::DISPLAY_OPT_IN_LOCATION ]; // 2 = Order notes
+		$is_order_display_location = false;
+		if ( $this->has_brevo_v3_settings() ) {
+			$is_order_display_location = ! empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) && 2 == $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::DISPLAY_OPT_IN_LOCATION ]; // 2 = Order notes
+		}
 		if ( $is_order_display_location && 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) {
 			add_filter( 'fc_substep_order_notes_text_lines', array( $this, 'add_substep_text_lines_order_notes' ), 10 );
 		}
@@ -113,12 +126,15 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) { return; }
 
 		// Get instance and variables for the Sendinblue WooCommerce integration class
-		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
-		$ws_opt_field = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
-		$display_location = isset( $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] ) ? $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] : '';
+		$sendinblue_woocommerce = $this->get_sendinblue_v2_integration();
+		if ( ! is_object( $sendinblue_woocommerce ) ) { return; }
+
+		$customizations = $this->get_sendinblue_v2_customizations( $sendinblue_woocommerce );
+		$ws_opt_field = isset( $customizations['ws_opt_field'] ) ? $customizations['ws_opt_field'] : 'no';
+		$display_location = isset( $customizations['ws_opt_checkbox_location'] ) ? $customizations['ws_opt_checkbox_location'] : '';
 
 		// Terms and conditions position
-		if ( 'yes' == $ws_opt_field && 'terms_condition' == $display_location ) {
+		if ( 'yes' == $ws_opt_field && 'terms_condition' == $display_location && method_exists( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ) ) {
 			remove_action( 'woocommerce_checkout_after_terms_and_conditions', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ), 10 );
 			add_action( 'fc_checkout_after_contact_fields', array( $sendinblue_woocommerce, 'maybe_add_checkout_fields_terms' ), 10 );
 		}
@@ -132,6 +148,98 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	}
 
 	/**
+	 * Get the v2 Sendinblue integration object when that class is loaded.
+	 *
+	 * @return  object|null
+	 * @since   4.2.8
+	 */
+	public function get_sendinblue_v2_integration() {
+		if ( ! class_exists( 'WC_Sendinblue_Integration' ) || ! array_key_exists( 'WC_Sendinblue_Integration', $GLOBALS ) || ! is_object( $GLOBALS['WC_Sendinblue_Integration'] ) ) { return null; }
+
+		return $GLOBALS['WC_Sendinblue_Integration'];
+	}
+
+	/**
+	 * Get the v2 Sendinblue customizations array.
+	 *
+	 * @param   object  $sendinblue_woocommerce  Sendinblue integration object.
+	 * @return  array
+	 * @since   4.2.8
+	 */
+	public function get_sendinblue_v2_customizations( $sendinblue_woocommerce ) {
+		if ( ! is_object( $sendinblue_woocommerce ) || ! isset( $sendinblue_woocommerce->customizations ) || ! is_array( $sendinblue_woocommerce->customizations ) ) { return array(); }
+
+		return $sendinblue_woocommerce->customizations;
+	}
+
+	/**
+	 * Whether Brevo v3 settings and the client class are available.
+	 *
+	 * @return  bool
+	 * @since   4.2.8
+	 */
+	public function has_brevo_v3_settings() {
+		return is_array( $this->v3_settings ) && class_exists( 'SendinblueWoocommerce\Clients\SendinblueClient' );
+	}
+
+	/**
+	 * Whether a Brevo object method is hooked at the given priority.
+	 *
+	 * Matches any instance of the class, same as `remove_filter_for_class`.
+	 *
+	 * @param   string  $tag              Hook name.
+	 * @param   object  $callback_object  Brevo object used to identify the class and method.
+	 * @param   string  $method_name      Method name.
+	 * @param   int     $priority         Hook priority.
+	 * @return  bool
+	 * @since   4.2.8
+	 */
+	public function has_brevo_callback( $tag, $callback_object, $method_name, $priority ) {
+		if ( ! is_object( $callback_object ) || ! is_string( $method_name ) || ! method_exists( $callback_object, $method_name ) ) { return false; }
+
+		$class_callbacks = $this->get_hooked_function_for_class( $tag, $callback_object, $priority );
+		if ( ! is_array( $class_callbacks ) ) { return false; }
+
+		foreach ( $class_callbacks as $callback ) {
+			if ( isset( $callback['function'][1] ) && $callback['function'][1] == $method_name ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Remove Brevo's classic checkout opt-in callbacks after they are registered.
+	 *
+	 * The same `remove_filter_for_class` calls still run from `hooks_v3` and
+	 * `move_checkbox_to_contact_step_hooks_v3` for Brevo versions that hook the
+	 * checkbox during `plugins_loaded`. Brevo 4.0.62 registers those callbacks on
+	 * `woocommerce_init` priority 10, so this method runs there at priority 100.
+	 * `add_optin_order` is left in place so the posted checkbox value is still saved.
+	 *
+	 * @since 4.2.8
+	 */
+	public function remove_optin_checkout_hooks_v3() {
+		// Bail if the cart events manager object is not available
+		if ( ! is_object( $this->v3_cart_events_manager ) ) { return; }
+
+		// Checkout field callback (billing or order notes, depending on Brevo's display location)
+		if ( $this->has_brevo_callback( 'woocommerce_checkout_fields', $this->v3_cart_events_manager, 'add_optin_billing', 10 ) ) {
+			$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		}
+
+		// Terms checkbox is printed beside the place order button. Remove it only when
+		// Fluid Checkout moves the checkbox to the contact step.
+		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) { return; }
+		if ( ! $this->has_brevo_v3_settings() || empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
+
+		if ( $this->has_brevo_callback( 'woocommerce_checkout_after_terms_and_conditions', $this->v3_cart_events_manager, 'add_optin_terms', 10 ) ) {
+			$this->remove_filter_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
+		}
+	}
+
+	/**
 	 * Add or remove hooks for displaying the signup checkbox on the contact step.
 	 */
 	public function move_checkbox_to_contact_step_hooks_v3() {
@@ -139,11 +247,15 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		if ( 'yes' !== FluidCheckout_Settings::instance()->get_option( 'fc_compat_plugin_woocommerce_sendinblue_newsletter_subscription_move_checkbox_contact_step' ) ) { return; }
 		
 		// Bail if optin field is not set to be displayed on the checkout page
-		if ( empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
+		if ( ! $this->has_brevo_v3_settings() || empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
 
 		// Remove fields from display location determined by Sendinblue
-		$this->remove_filter_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
-		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		if ( $this->has_brevo_callback( 'woocommerce_checkout_after_terms_and_conditions', $this->v3_cart_events_manager, 'add_optin_terms', 10 ) ) {
+			$this->remove_filter_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
+		}
+		if ( $this->has_brevo_callback( 'woocommerce_checkout_fields', $this->v3_cart_events_manager, 'add_optin_billing', 10 ) ) {
+			$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
+		}
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_optin_field_v3' ), 10 );
 
 		// Always add field to billing, then move it to the contact step
@@ -210,19 +322,21 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function maybe_add_checkout_fields( $checkout_fields ) {
 		// CHANGE: Get SendInBlue class object
-		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
+		$sendinblue_woocommerce = $this->get_sendinblue_v2_integration();
+		if ( ! is_object( $sendinblue_woocommerce ) ) { return $checkout_fields; }
 
-		$display_location = isset( $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] ) ? $sendinblue_woocommerce->customizations['ws_opt_checkbox_location'] : '';
+		$customizations = $this->get_sendinblue_v2_customizations( $sendinblue_woocommerce );
+		$display_location = isset( $customizations['ws_opt_checkbox_location'] ) ? $customizations['ws_opt_checkbox_location'] : '';
 
 		if ( empty( $display_location ) ) {
 			$display_location = 'billing';
 		}
-		$ws_opt_field = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
+		$ws_opt_field = isset( $customizations['ws_opt_field'] ) ? $customizations['ws_opt_field'] : 'no';
 		if ( 'yes' == $ws_opt_field ) {
 			$checkout_fields[ $display_location ]['ws_opt_in'] = array(
 				'type'    => 'checkbox',
-				'label'   => esc_attr( $sendinblue_woocommerce->customizations['ws_opt_field_label'] ),
-				'default' => 'checked' == $sendinblue_woocommerce->customizations['ws_opt_default_status'] ? 1 : 0,
+				'label'   => esc_attr( isset( $customizations['ws_opt_field_label'] ) ? $customizations['ws_opt_field_label'] : '' ),
+				'default' => isset( $customizations['ws_opt_default_status'] ) && 'checked' == $customizations['ws_opt_default_status'] ? 1 : 0,
 			);
 		}
 
@@ -238,17 +352,19 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function maybe_add_checkout_fields_to_billing( $checkout_fields ) {
 		// CHANGE: Get SendInBlue class object
-		$sendinblue_woocommerce = $GLOBALS['WC_Sendinblue_Integration'];
+		$sendinblue_woocommerce = $this->get_sendinblue_v2_integration();
+		if ( ! is_object( $sendinblue_woocommerce ) ) { return $checkout_fields; }
 
 		// CHANGE: Removed unnecessary checks for display location
 
-		$ws_opt_field = isset( $sendinblue_woocommerce->customizations['ws_opt_field'] ) ? $sendinblue_woocommerce->customizations['ws_opt_field'] : 'no';
+		$customizations = $this->get_sendinblue_v2_customizations( $sendinblue_woocommerce );
+		$ws_opt_field = isset( $customizations['ws_opt_field'] ) ? $customizations['ws_opt_field'] : 'no';
 		if ( 'yes' == $ws_opt_field ) {
 			// CHANGE: Always add field to billing section, then it will be moved to contact step
 			$checkout_fields[ 'billing' ]['ws_opt_in'] = array(
 				'type'    => 'checkbox',
-				'label'   => esc_attr( $sendinblue_woocommerce->customizations['ws_opt_field_label'] ),
-				'default' => 'checked' == $sendinblue_woocommerce->customizations['ws_opt_default_status'] ? 1 : 0,
+				'label'   => esc_attr( isset( $customizations['ws_opt_field_label'] ) ? $customizations['ws_opt_field_label'] : '' ),
+				'default' => isset( $customizations['ws_opt_default_status'] ) && 'checked' == $customizations['ws_opt_default_status'] ? 1 : 0,
 			);
 		}
 
@@ -261,6 +377,9 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 * Maybe add optin field to billing or order notes section.
 	 */
 	public function maybe_add_optin_field_v3( $checkout_fields ) {
+		// Bail if Brevo settings or client class are not available
+		if ( ! $this->has_brevo_v3_settings() ) { return $checkout_fields; }
+
 		// Billing section
 		if ( ! empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) && 1 == $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::DISPLAY_OPT_IN_LOCATION ] ) { // 1 = Billing
 			$checkout_fields['billing']['ws_opt_in'] = array(
@@ -289,10 +408,15 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function add_optin_field_to_billing_v3( $checkout_fields ) {
 		// Billing or order notes section
+		$default = 0;
+		if ( $this->has_brevo_v3_settings() ) {
+			$default = 'checked' == empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_CHECKED ] ) ? 0 : 1;
+		}
+
 		$checkout_fields['billing']['ws_opt_in'] = array(
 			'type'    => 'checkbox',
 			'label'   => esc_attr( $this->checkout_label() ),
-			'default' => 'checked' == empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_CHECKED ] ) ? 0 : 1,
+			'default' => $default,
 		);
 
 		return $checkout_fields;
@@ -341,7 +465,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 	 */
 	public function checkout_label() {
 		$label = 'Add me to the newsletter';
-		if ( ! empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::DISPLAY_OPT_IN_LABEL ] ) ) {
+		if ( $this->has_brevo_v3_settings() && ! empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::DISPLAY_OPT_IN_LABEL ] ) ) {
 			$label = $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::DISPLAY_OPT_IN_LABEL ];
 		}
 
