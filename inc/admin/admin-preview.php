@@ -47,6 +47,11 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	const SHIPPING_METHODS_QUERY_ARG = 'fc_preview_shipping_methods';
 
 	/**
+	 * Query argument that carries the values of session fields in the preview page, which the frame script sends with each request.
+	 */
+	const SESSION_FIELDS_QUERY_ARG = 'fc_preview_session_fields';
+
+	/**
 	 * Admin AJAX action that saves the unsaved settings shown in the preview.
 	 */
 	const DRAFT_AJAX_ACTION = 'fc_admin_preview_save_draft';
@@ -262,6 +267,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		add_action( 'wp_loaded', array( $this, 'set_dummy_new_address_session_values' ), 5 );
 		add_action( 'wp_loaded', array( $this, 'set_dummy_order_fields_session_values' ), 5 );
 		add_filter( 'woocommerce_checkout_get_value', array( $this, 'maybe_get_dummy_checkout_field_value' ), PHP_INT_MAX, 2 ); // Last, to only fill fields that other filters leave empty, such as with session values
+
+		// Session fields
+		add_action( 'wp_loaded', array( $this, 'maybe_set_preview_session_field_values' ), 5 ); // Before WooCommerce loads the cart at priority `10`
 	}
 
 	/**
@@ -662,6 +670,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			'tokenQueryArg'               => self::TOKEN_QUERY_ARG,
 			'previewArgs'                 => $this->get_preview_args(),
 			'shippingMethodsQueryArg'     => self::SHIPPING_METHODS_QUERY_ARG,
+			'sessionFieldsQueryArg'       => self::SESSION_FIELDS_QUERY_ARG,
+			'sessionFieldKeys'            => $this->get_session_field_keys(),
 			'darkModeCssVariables'        => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
 		) );
 	}
@@ -1006,6 +1016,39 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		if ( ! array_key_exists( $input, $dummy_fields ) ) { return $value; }
 
 		return $dummy_fields[ $input ];
+	}
+
+
+
+	/**
+	 * Get the keys of session fields, which are saved to the session by their own requests, such as fields on the cart page.
+	 *
+	 * @return  string[]  Field keys.
+	 */
+	public function get_session_field_keys() {
+		/**
+		 * Filter the keys of fields saved to the session by their own requests, whose values the preview sends with each request as the preview session does not keep them.
+		 */
+		return array_values( (array) apply_filters( 'fc_admin_preview_session_field_keys', array() ) );
+	}
+
+	/**
+	 * Set the values of session fields in the preview page, which the frame script sends with each request, as the preview session does not keep them between requests.
+	 */
+	public function maybe_set_preview_session_field_values() {
+		// Bail if the request has no session field values
+		if ( ! isset( $_GET[ self::SESSION_FIELDS_QUERY_ARG ] ) || ! is_array( $_GET[ self::SESSION_FIELDS_QUERY_ARG ] ) ) { return; }
+
+		// Get field values
+		$field_values = wc_clean( wp_unslash( $_GET[ self::SESSION_FIELDS_QUERY_ARG ] ) );
+
+		// Iterate session field keys, to ignore values of other fields
+		foreach ( $this->get_session_field_keys() as $field_key ) {
+			// Skip fields not in the preview page
+			if ( ! array_key_exists( $field_key, $field_values ) ) { continue; }
+
+			FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $field_key, $field_values[ $field_key ] );
+		}
 	}
 
 

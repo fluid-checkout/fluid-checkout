@@ -23,6 +23,8 @@
 		tokenQueryArg:                'fc_preview',
 		previewArgs:                  {},
 		shippingMethodsQueryArg:      'fc_preview_shipping_methods',
+		sessionFieldsQueryArg:        'fc_preview_session_fields',
+		sessionFieldKeys:             [],
 		messageSource:                'fc-admin-preview',
 		darkModeCssVariables:         {},
 
@@ -44,6 +46,7 @@
 		countryFieldSelector:         '.country_to_state',
 		fieldByNameSelector:          '[name="###NAME###"]',
 		fieldByNameValueSelector:     '[name="###NAME###"][value="###VALUE###"]',
+		sessionFieldSelector:         '[name="###NAME###"]:not([type="radio"]:not(:checked))',
 		shippingMethodSelector:       '#shipping_method input',
 		colorSchemeSelector:          ':root',
 
@@ -87,7 +90,7 @@
 
 
 	/**
-	 * Get a request URL with the preview token and mode, and the shipping methods chosen in the page, when the request is sent to the frontend.
+	 * Get a request URL with the preview token and mode, and the shipping methods and session field values in the page, when the request is sent to the frontend.
 	 *
 	 * @param {string}  requestUrl  Request URL, which can be relative to the preview page.
 	 *
@@ -98,6 +101,8 @@
 		var addedArgs = new URLSearchParams();
 		var name;
 		var index;
+		var field;
+		var i;
 
 		// Get request URL, resolving relative URLs from the preview page
 		try {
@@ -122,6 +127,16 @@
 		// Iterate shipping methods chosen in the page, as preview requests do not keep them for the next requests
 		for ( index in _shippingMethods ) {
 			addedArgs.set( _settings.shippingMethodsQueryArg + '[' + index + ']', _shippingMethods[ index ] );
+		}
+
+		// Iterate session fields, reading their values from the page, as scripts can change them without change events
+		for ( i = 0; i < _settings.sessionFieldKeys.length; i++ ) {
+			field = document.querySelector( _settings.sessionFieldSelector.replace( '###NAME###', CSS.escape( _settings.sessionFieldKeys[ i ] ) ) );
+
+			// Skip fields not in the page
+			if ( ! field ) { continue; }
+
+			addedArgs.set( _settings.sessionFieldsQueryArg + '[' + _settings.sessionFieldKeys[ i ] + ']', field.value );
 		}
 
 		// Bail if there are no arguments to add
@@ -215,9 +230,9 @@
 			return b.matches( _settings.countryFieldSelector ) - a.matches( _settings.countryFieldSelector );
 		} );
 
-		// Get the name, value and checked state of each field, leaving out radio buttons that are not checked
+		// Get the name, value and checked state of each field, and the package index of shipping methods, leaving out radio buttons that are not checked
 		values = fields.map( function( field ) {
-			return { name: field.name, value: field.value, checked: field.matches( _settings.checkableFieldSelector ) ? field.checked : null };
+			return { name: field.name, value: field.value, checked: field.matches( _settings.checkableFieldSelector ) ? field.checked : null, packageIndex: field.matches( _settings.shippingMethodSelector ) ? field.getAttribute( _settings.packageIndexAttribute ) : null };
 		} );
 
 		// Send field values to the admin page
@@ -227,7 +242,7 @@
 	/**
 	 * Set the values entered in the checkout fields before the page preview reloaded.
 	 *
-	 * @param {Array}  values  Field values, each with the field name, value and checked state, with the country fields first.
+	 * @param {Array}  values  Field values, each with the field name, value, checked state and package index, with the country fields first.
 	 */
 	var setFieldValues = function( values ) {
 		var form = document.querySelector( _settings.checkoutFormSelector );
@@ -242,6 +257,11 @@
 		for ( i = 0; i < values.length; i++ ) {
 			// Get the field, matching checkboxes and radio buttons by their value too
 			field = form.querySelector( ( null !== values[ i ].checked ? _settings.fieldByNameValueSelector : _settings.fieldByNameSelector ).replace( '###NAME###', CSS.escape( values[ i ].name ) ).replace( '###VALUE###', CSS.escape( values[ i ].value ) ) );
+
+			// Maybe remember shipping methods not in the page yet, such as pickup locations shown after the checkout update, to send them with the next requests
+			if ( ! field && null !== values[ i ].packageIndex ) {
+				_shippingMethods[ values[ i ].packageIndex ] = values[ i ].value;
+			}
 
 			// Skip fields no longer in the page, such as fields that settings changes removed, and fields that already have the value
 			if ( ! field || ( null !== values[ i ].checked ? values[ i ].checked === field.checked : values[ i ].value === field.value ) ) { continue; }
@@ -269,7 +289,7 @@
 	/**
 	 * Set the values entered in the checkout fields before the page preview reloaded, once the page scripts set up the fields.
 	 *
-	 * @param {Array}  values  Field values, each with the field name, value and checked state, with the country fields first.
+	 * @param {Array}  values  Field values, each with the field name, value, checked state and package index, with the country fields first.
 	 */
 	var setFieldValuesWhenLoaded = function( values ) {
 		// Maybe wait for the page scripts to set up the fields, such as the country fields that replace the state fields
