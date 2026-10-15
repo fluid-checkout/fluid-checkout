@@ -809,7 +809,7 @@ class FluidCheckout {
 			'name'        => 'woocommerce_required',
 			'error'       => true,
 			'description' => $description,
-			'dismissable' => false,
+			'dismissible' => false,
 		);
 
 		return $notices;

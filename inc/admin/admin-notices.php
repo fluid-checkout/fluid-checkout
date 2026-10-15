@@ -142,6 +142,10 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 		 *
 		 * @since 2.3.2
 		 *
+		 * Each notice item may include `dismissible` (bool). Default true.
+		 * `dismissable` is a deprecated alias kept for backwards compatibility.
+		 * It is used only when `dismissible` is omitted; if both are set, `dismissible` wins.
+		 *
 		 * @param array $value Value to filter. Default empty array.
 		 */
 		$notices = apply_filters( self::$plugin_prefix . '_admin_notices', array() );
@@ -156,19 +160,25 @@ class FluidCheckout_AdminNotices extends FluidCheckout {
 			'description'     => '',
 			'error'           => false,
 			'actions'         => array(),
-			'dismissable'     => true,
+			'dismissible'     => true,
 			'dismiss_label'   => __( 'Don\'t show this again', 'fluid-checkout' ),
 			'paragraph_wrap'  => true,
 		);
 
 		foreach ( $notices as $notice ) {
+			$has_dismissible = is_array( $notice ) && array_key_exists( 'dismissible', $notice );
 			$notice = wp_parse_args( $notice, $default_options );
+
+			// `dismissable` is a deprecated alias of `dismissible`. The correct key wins when both are set.
+			if ( ! $has_dismissible && array_key_exists( 'dismissable', $notice ) ) {
+				$notice['dismissible'] = $notice['dismissable'];
+			}
 
 			// Maybe skip notice if it's already dismissed
 			if ( is_null( $notice['name'] ) || $this->is_dismissed( $notice['name'] ) ) { continue; }
 
 			// Maybe add dismiss action
-			if ( $notice['dismissable'] ) {
+			if ( $notice['dismissible'] ) {
 				$notice['actions'][] = '<a class="fc-admin-notice__dismiss" href="' . esc_url( add_query_arg( array( self::$plugin_prefix . '_action' => 'dismiss_notice', self::$plugin_prefix . '_notice' => $notice['name'], '_wpnonce' => wp_create_nonce( 'dismiss-notice' ) ) ) ) . '">' . esc_html( $notice['dismiss_label'] ) . '</a>';
 			}
 
