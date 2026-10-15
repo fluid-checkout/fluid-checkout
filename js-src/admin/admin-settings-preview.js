@@ -349,6 +349,7 @@
 
 		// Iterate preview animations
 		for ( i = 0; i < animations.length; i++ ) {
+			// Get the property the animation transitions
 			property = animations[ i ].transitionProperty;
 
 			// Skip animations other than the moving edge transition, which is the right edge in RTL
@@ -549,6 +550,7 @@
 			panel.removeAttribute( 'hidden' );
 		}
 
+		// Load the page preview, or the placeholder, in the iframe
 		setPreviewFrameSource( page, url );
 	};
 
@@ -563,6 +565,7 @@
 		// Bail if preview is hidden for this tab
 		if ( ! isPreviewVisibleForTab( tab ) ) { return; }
 
+		// Show the preview page of the settings tab
 		setPreviewPage( getPreviewPageForTab( tab ) );
 	};
 
@@ -763,6 +766,7 @@
 		var button = document.querySelector( _settings.headerFooterSelector );
 		var label = visible ? _settings.i18n.hideHeaderFooter : _settings.i18n.showHeaderFooter;
 
+		// Remember the visibility, sent again after each reload
 		_isHeaderFooterVisible = visible;
 
 		// Maybe update the toggle button
@@ -782,6 +786,7 @@
 	 * Mark the page preview as loading a page, which shows the unsaved settings saved so far.
 	 */
 	var markPreviewLoading = function() {
+		// Mark the page preview as loading, which also ends style refreshes and pending refreshes
 		_isPreviewLoading = true;
 		_isPreviewReady = false;
 		_isRefreshingStyles = false;
@@ -833,6 +838,7 @@
 	 * @param  {Response|Error}  response  Fetch response, or the error when the request failed.
 	 */
 	var handleDraftSaved = function( response ) {
+		// Mark the request as finished
 		_isSavingDraft = false;
 
 		// Maybe save the changes made during the request
@@ -858,6 +864,7 @@
 		// Bail if nothing to refresh, or the page preview is loading or refreshing its styles
 		if ( ! _needsRefresh || _isPreviewLoading || _isRefreshingStyles ) { return; }
 
+		// Mark the refresh as handled
 		_needsRefresh = false;
 
 		// Maybe load the active page anew, when the settings enabled or disabled it, which switches between its preview and placeholder
@@ -1051,6 +1058,7 @@
 		// Bail if page slug is missing
 		if ( ! page ) { return; }
 
+		// Load the page of the tab
 		setPreviewPage( page );
 		e.preventDefault();
 	};
@@ -1102,6 +1110,7 @@
 		// Bail if the load event is not for the iframe
 		if ( ! e.target.matches( _settings.frameSelector ) ) { return; }
 
+		// Mark the page preview as loaded
 		_isPreviewLoading = false;
 		_isRefreshingStyles = false;
 
@@ -1177,6 +1186,7 @@
 	 * @param  {Object}  variables  CSS variables by selector.
 	 */
 	_publicMethods.setCssVariables = function( variables ) {
+		// Remember the CSS variables, sent again after each reload
 		_cssVariables = variables;
 
 		// Send the CSS variables to the page preview
@@ -1189,6 +1199,7 @@
 	 * @param  {string}  scheme  `light` or `dark`, or an empty string to keep the color scheme of the page.
 	 */
 	_publicMethods.setColorScheme = function( scheme ) {
+		// Remember the color scheme, sent again after each reload
 		_colorScheme = scheme;
 
 		// Send the color scheme to the page preview
@@ -1201,6 +1212,7 @@
 	 * @param  {Object}  classes  Whether each class is added, by class name.
 	 */
 	_publicMethods.setBodyClasses = function( classes ) {
+		// Remember the classes, sent again after each reload
 		_bodyClasses = FCUtils.extendObject( _bodyClasses, classes );
 
 		// Send the classes to the page preview
@@ -1298,8 +1310,10 @@
 			$( document.body ).on( 'change', handleSettingsChange );
 		}
 
-		// Maybe fit the page preview in the frame when the panel size changes, such as when expanding the preview
+		// Get preview panel
 		panel = document.querySelector( _settings.panelSelector );
+
+		// Maybe fit the page preview in the frame when the panel size changes, such as when expanding the preview
 		if ( panel && window.ResizeObserver ) {
 			new ResizeObserver( applyPreviewSize ).observe( panel );
 		}

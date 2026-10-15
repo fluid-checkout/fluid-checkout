@@ -107,7 +107,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		add_action( 'wp_ajax_' . self::DRAFT_AJAX_ACTION, array( $this, 'ajax_save_draft' ), 10 );
 
 		// Preview guards
-		$this->preview_guard_hooks();
+		$this->preview_guard_hooks(); // Registered when the class loads, so the guards also apply before `init` finishes
 
 		// Preview optimizations
 		$this->preview_optimization_hooks();
@@ -190,8 +190,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove hooks that stop preview requests from placing orders, logging in, adding to cart, sending emails, saving data and contacting other sites.
-	 * Registered when the class loads, so they also apply to requests handled before `init` finishes.
+	 * Add or remove preview guard hooks.
 	 */
 	public function preview_guard_hooks() {
 		// Bail if not a preview request
@@ -229,7 +228,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove preview optimization hooks, which leave the scripts and styles of preview pages as they are.
+	 * Add or remove preview optimization hooks.
 	 */
 	public function preview_optimization_hooks() {
 		// Bail if not a preview request
@@ -321,6 +320,90 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 		// Settings profiles
 		add_filter( 'fc_settings_context_profile', '__return_null', 100 ); // Late, to show the settings being edited instead of the settings profiles of experiments
+	}
+
+
+
+	/**
+	 * Add the preview body classes, with the header and footer hidden until the admin page shows them.
+	 *
+	 * @param   array  $classes  Body classes.
+	 */
+	public function add_body_class( $classes ) {
+		return array_merge( $classes, array( 'fc-admin-preview', 'fc-admin-preview--hide-header-footer' ) );
+	}
+
+	/**
+	 * Register the frame script and styles.
+	 */
+	public function register_assets() {
+		// Scripts, initialized right away instead of on `load`, so the frame guards apply before other scripts handle clicks or send requests
+		// Settings are passed directly, as the plugin settings object is not output on every page the preview shows
+		wp_register_script( 'fc-admin-preview-frame', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin-preview-frame' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_add_inline_script( 'fc-admin-preview-frame', 'FCAdminPreviewFrame.init(' . wp_json_encode( $this->get_frame_script_settings() ) . ');' );
+
+		// Add the preview token and mode to REST requests sent through `wp.apiFetch`, also before the deferred frame script runs, such as Store API requests from blocks
+		// Uses a middleware, as filtering the REST URL would break how `wp.apiFetch` appends request paths to it
+		wp_add_inline_script( 'wp-api-fetch', 'wp.apiFetch.use(function(options,next){return next(options.path?Object.assign({},options,{path:wp.url.addQueryArgs(options.path,' . wp_json_encode( $this->get_preview_args() ) . ')}):options);});' );
+
+		// Styles
+		wp_register_style( 'fc-admin-preview-frame', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-preview-frame' ), array(), NULL );
+	}
+
+	/**
+	 * Enqueue the frame script and styles.
+	 */
+	public function enqueue_assets() {
+		// Scripts
+		wp_enqueue_script( 'fc-admin-preview-frame' );
+
+		// Styles
+		wp_enqueue_style( 'fc-admin-preview-frame' );
+	}
+
+	/**
+	 * Enqueue themes compatibility styles for preview pages.
+	 */
+	public function enqueue_theme_compat_styles() {
+		// Get currently active theme and child theme
+		$theme_slugs = array( get_template(), get_stylesheet() );
+
+		// Iterate theme slugs
+		foreach ( $theme_slugs as $theme_slug ) {
+			// Maybe skip compat file
+			/**
+			 * Filter whether to enqueue the admin preview compatibility styles of a theme, where the dynamic portion of the hook name is the theme directory name.
+			 */
+			if ( true !== apply_filters( 'fc_enable_compat_theme_admin_preview_style_' . $theme_slug, true ) ) { continue; }
+
+			// Get file path
+			$compat_file_path = FluidCheckout_Enqueue::instance()->get_style_url( 'css/compat/themes/compat-admin-preview-' . $theme_slug, false );
+
+			// Maybe load compatibility file
+			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
+				wp_enqueue_style( 'fc-theme-compat-admin-preview-' . $theme_slug, self::$directory_url . $compat_file_path, array( 'fc-admin-preview-frame' ), NULL );
+			}
+		}
+	}
+
+	/**
+	 * Get the frame script settings.
+	 *
+	 * @return  array
+	 */
+	public function get_frame_script_settings() {
+		/**
+		 * Filter the settings of the admin preview frame script.
+		 */
+		return apply_filters( 'fc_admin_preview_frame_script_settings', array(
+			'adminOrigin'                 => $this->get_admin_origin(),
+			'tokenQueryArg'               => self::TOKEN_QUERY_ARG,
+			'previewArgs'                 => $this->get_preview_args(),
+			'shippingMethodsQueryArg'     => self::SHIPPING_METHODS_QUERY_ARG,
+			'sessionFieldsQueryArg'       => self::SESSION_FIELDS_QUERY_ARG,
+			'sessionFieldKeys'            => $this->get_session_field_keys(),
+			'darkModeCssVariables'        => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
+		) );
 	}
 
 
@@ -547,6 +630,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 				// Skip empty directives, and the frame ancestors and connect sources which preview pages set
 				if ( '' === $directive || 0 === stripos( $directive, 'frame-ancestors' ) || 0 === stripos( $directive, 'connect-src' ) ) { continue; }
 
+				// Keep the directive
 				$policy_directives[] = $directive;
 			}
 		}
@@ -601,90 +685,6 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 
 	/**
-	 * Add the preview body classes, with the header and footer hidden until the admin page shows them.
-	 *
-	 * @param   array  $classes  Body classes.
-	 */
-	public function add_body_class( $classes ) {
-		return array_merge( $classes, array( 'fc-admin-preview', 'fc-admin-preview--hide-header-footer' ) );
-	}
-
-	/**
-	 * Register the frame script and styles.
-	 */
-	public function register_assets() {
-		// Scripts, initialized right away instead of on `load`, so the frame guards apply before other scripts handle clicks or send requests
-		// Settings are passed directly, as the plugin settings object is not output on every page the preview shows
-		wp_register_script( 'fc-admin-preview-frame', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin-preview-frame' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_add_inline_script( 'fc-admin-preview-frame', 'FCAdminPreviewFrame.init(' . wp_json_encode( $this->get_frame_script_settings() ) . ');' );
-
-		// Add the preview token and mode to REST requests sent through `wp.apiFetch`, also before the deferred frame script runs, such as Store API requests from blocks
-		// Uses a middleware, as filtering the REST URL would break how `wp.apiFetch` appends request paths to it
-		wp_add_inline_script( 'wp-api-fetch', 'wp.apiFetch.use(function(options,next){return next(options.path?Object.assign({},options,{path:wp.url.addQueryArgs(options.path,' . wp_json_encode( $this->get_preview_args() ) . ')}):options);});' );
-
-		// Styles
-		wp_register_style( 'fc-admin-preview-frame', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-preview-frame' ), array(), NULL );
-	}
-
-	/**
-	 * Enqueue the frame script and styles.
-	 */
-	public function enqueue_assets() {
-		// Scripts
-		wp_enqueue_script( 'fc-admin-preview-frame' );
-
-		// Styles
-		wp_enqueue_style( 'fc-admin-preview-frame' );
-	}
-
-	/**
-	 * Enqueue themes compatibility styles for preview pages.
-	 */
-	public function enqueue_theme_compat_styles() {
-		// Get currently active theme and child theme
-		$theme_slugs = array( get_template(), get_stylesheet() );
-
-		// Iterate theme slugs
-		foreach ( $theme_slugs as $theme_slug ) {
-			// Maybe skip compat file
-			/**
-			 * Filter whether to enqueue the admin preview compatibility styles of a theme, where the dynamic portion of the hook name is the theme directory name.
-			 */
-			if ( true !== apply_filters( 'fc_enable_compat_theme_admin_preview_style_' . $theme_slug, true ) ) { continue; }
-
-			// Get file path
-			$compat_file_path = FluidCheckout_Enqueue::instance()->get_style_url( 'css/compat/themes/compat-admin-preview-' . $theme_slug, false );
-
-			// Maybe load compatibility file
-			if ( file_exists( self::$directory_path . $compat_file_path ) ) {
-				wp_enqueue_style( 'fc-theme-compat-admin-preview-' . $theme_slug, self::$directory_url . $compat_file_path, array( 'fc-admin-preview-frame' ), NULL );
-			}
-		}
-	}
-
-	/**
-	 * Get the frame script settings.
-	 *
-	 * @return  array
-	 */
-	public function get_frame_script_settings() {
-		/**
-		 * Filter the settings of the admin preview frame script.
-		 */
-		return apply_filters( 'fc_admin_preview_frame_script_settings', array(
-			'adminOrigin'                 => $this->get_admin_origin(),
-			'tokenQueryArg'               => self::TOKEN_QUERY_ARG,
-			'previewArgs'                 => $this->get_preview_args(),
-			'shippingMethodsQueryArg'     => self::SHIPPING_METHODS_QUERY_ARG,
-			'sessionFieldsQueryArg'       => self::SESSION_FIELDS_QUERY_ARG,
-			'sessionFieldKeys'            => $this->get_session_field_keys(),
-			'darkModeCssVariables'        => FluidCheckout_DesignTemplates::instance()->get_css_variables_dark_mode(),
-		) );
-	}
-
-
-
-	/**
 	 * Disable the prompt to confirm leaving the checkout page with changed field values, as the admin page reloads and replaces the page preview.
 	 *
 	 * @param   string  $update_before_unload  Whether to prompt before leaving the page, `yes` or `no`.
@@ -718,6 +718,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Bail if loading an admin page, which ignores preview tokens
 		if ( is_admin() && ! wp_doing_ajax() ) { return; }
 
+		// Stop the request with the expired preview message
 		wp_die( esc_html__( 'This preview has expired. Reload the admin page to start a new preview.', 'fluid-checkout' ), esc_html__( 'Preview expired', 'fluid-checkout' ), array( 'response' => 403 ) );
 	}
 
@@ -745,6 +746,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @throws  Exception  Always, as orders cannot be placed from the preview.
 	 */
 	public function prevent_checkout_processing() {
+		// Stop checkout processing with the error notice
 		throw new Exception( $this->get_orders_unavailable_message() );
 	}
 
@@ -759,6 +761,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 		// Bail if the order already exists, as WooCommerce would add an error note to it when stopping the save
 		if ( $order instanceof WC_Abstract_Order && $order->get_id() ) { return; }
 
+		// Stop saving the new order
 		throw new Exception( $this->get_orders_unavailable_message() );
 	}
 
@@ -782,6 +785,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @param   WP_Error  $errors  Login errors.
 	 */
 	public function add_login_error( $errors ) {
+		// Add login error
 		$errors->add( 'fc_admin_preview_login', $this->get_login_unavailable_message() );
 
 		return $errors;
@@ -802,6 +806,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @param   WP_Error  $errors  Registration errors.
 	 */
 	public function add_registration_error( $errors ) {
+		// Add registration error
 		$errors->add( 'fc_admin_preview_registration', __( 'Accounts cannot be created in the preview.', 'fluid-checkout' ) );
 
 		return $errors;
@@ -870,6 +875,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			// Skip constants already defined
 			if ( defined( $constant ) ) { continue; }
 
+			// Define constant
 			define( $constant, true );
 		}
 	}
@@ -886,6 +892,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			wp_cache_add_non_persistent_groups( array( 'users' ) );
 			wp_cache_set( FluidCheckout_Admin_Preview_Dummy_Data::CUSTOMER_ID, FluidCheckout_Admin_Preview_Dummy_Data::instance()->get_customer_user_data(), 'users' );
 
+			// Switch to the dummy customer
 			wp_set_current_user( FluidCheckout_Admin_Preview_Dummy_Data::CUSTOMER_ID );
 		}
 		// Otherwise, use a guest
@@ -1053,6 +1060,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			// Skip fields not in the preview page
 			if ( ! array_key_exists( $field_key, $field_values ) ) { continue; }
 
+			// Set field value to the session
 			FluidCheckout_Steps::instance()->set_checkout_field_value_to_session( $field_key, $field_values[ $field_key ] );
 		}
 	}
@@ -1210,6 +1218,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			);
 		}
 
+		// Set cart items to the session
 		WC()->session->set( 'cart', $cart_items );
 	}
 
@@ -1230,6 +1239,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Use the preview order factory, which also gets the dummy orders shown on the order received and order pay pages.
 	 */
 	public function use_preview_order_factory() {
+		// Replace the WooCommerce order factory
 		WC()->order_factory = new FluidCheckout_Admin_Preview_Order_Factory();
 	}
 
@@ -1310,12 +1320,14 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			// Skip separators and tabs without settings to save
 			if ( 'tab' !== $tab_args[ 'type' ] || ! $tab_args[ 'show_save_button' ] ) { continue; }
 
+			// Add settings fields of the tab
 			$settings = array_merge( $settings, $settings_page->get_saveable_settings( $settings_page->get_tab_settings( $tab ) ) );
 		}
 
 		// Keep the posted values, sanitized like when saving the settings, until the token expires
 		set_transient( $this->get_draft_transient_name( $token ), FluidCheckout_Settings::instance()->get_sanitized_settings_values( $settings ), self::TOKEN_LIFETIME );
 
+		// Send success response
 		wp_send_json_success();
 	}
 

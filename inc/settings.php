@@ -1278,6 +1278,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  array|null  $data     Posted data. Defaults to `$_POST`.
 	 */
 	public function save_settings( $options, $data = null ) {
+		// Get sanitized values to save
 		$update_values = $this->get_sanitized_settings_values( $options, $data );
 
 		// Bail if nothing to update

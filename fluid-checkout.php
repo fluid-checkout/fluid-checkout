@@ -604,6 +604,7 @@ class FluidCheckout {
 	 * Load the admin preview, also required on the frontend to handle preview requests.
 	 */
 	public function load_admin_preview() {
+		// Load admin preview files
 		require_once self::$directory_path . 'inc/admin/admin-preview.php';
 		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-data.php';
 		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-product.php';

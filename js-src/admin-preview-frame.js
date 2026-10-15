@@ -74,6 +74,7 @@
 	 * @param {Event}  e  Event to stop.
 	 */
 	var preventAction = function( e ) {
+		// Stop the default action and the other listeners
 		e.preventDefault();
 		e.stopImmediatePropagation();
 	};
@@ -131,11 +132,13 @@
 
 		// Iterate session fields, reading their values from the page, as scripts can change them without change events
 		for ( i = 0; i < _settings.sessionFieldKeys.length; i++ ) {
+			// Get session field, the checked one for radio buttons
 			field = document.querySelector( _settings.sessionFieldSelector.replace( '###NAME###', CSS.escape( _settings.sessionFieldKeys[ i ] ) ) );
 
 			// Skip fields not in the page
 			if ( ! field ) { continue; }
 
+			// Add session field value
 			addedArgs.set( _settings.sessionFieldsQueryArg + '[' + _settings.sessionFieldKeys[ i ] + ']', field.value );
 		}
 
@@ -350,6 +353,7 @@
 		// Bail if the color scheme is not forced
 		if ( 'light' !== _colorScheme && 'dark' !== _colorScheme ) { return variables; }
 
+		// Define CSS variables of the color scheme selector
 		variables[ _settings.colorSchemeSelector ] = {};
 
 		// Iterate dark mode CSS variables
@@ -389,6 +393,7 @@
 	 * @param {string}  scheme  `light` or `dark`, or any other value to keep the color scheme of the page.
 	 */
 	var setColorScheme = function( scheme ) {
+		// Remember the color scheme for the preview styles
 		_colorScheme = scheme;
 
 		// Add or remove the dark mode class, as some styles also depend on it
@@ -433,13 +438,15 @@
 			document.body.appendChild( probe );
 		}
 
-		// Set the value on the hidden text field, then remove it once computed
+		// Set the value on the hidden text field
 		probe.style.setProperty( property, value );
 
 		// Maybe get the computed value, unless the value is not valid for the property
 		if ( probe.style.getPropertyValue( property ) ) {
 			computedValue = root.getComputedStyle( probe ).getPropertyValue( property );
 		}
+
+		// Remove the value from the hidden text field
 		probe.style.removeProperty( property );
 
 		// Send the computed value to the admin page

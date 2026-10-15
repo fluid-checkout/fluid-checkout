@@ -75,16 +75,7 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
-		$this->hooks();
-	}
-
-
-
-	/**
-	 * Initialize hooks.
-	 */
-	public function hooks() {
-		// Intentionally empty, the admin preview calls the dummy data getters directly.
+		// Intentionally empty, as the class has no hooks and the parent constructor sets up the plugin
 	}
 
 
@@ -175,6 +166,7 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			$country = key( $allowed_countries );
 			$states = $countries->get_states( $country );
 
+			// Use a generic address in that country
 			$address = array_merge( $address, array(
 				'address_1'    => _x( '123 Main Street', 'Dummy customer street address in the admin preview', 'fluid-checkout' ),
 				'address_2'    => '',
@@ -207,11 +199,13 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 
 		// Iterate address fields
 		foreach ( $this->get_customer_address() as $field_key => $value ) {
+			// Add billing field
 			$fields[ 'billing_' . $field_key ] = $value;
 
 			// Skip fields that WooCommerce shipping addresses do not have, such as the email or fields added by other plugins
 			if ( ! method_exists( 'WC_Customer', 'set_shipping_' . $field_key ) ) { continue; }
 
+			// Add shipping field
 			$fields[ 'shipping_' . $field_key ] = $value;
 		}
 
@@ -400,6 +394,7 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			// Skip fields saved as order properties
 			if ( method_exists( 'WC_Order', 'set_' . $field_key ) ) { continue; }
 
+			// Add field value with the underscore prefix
 			$order_meta[ '_' . $field_key ] = $value;
 		}
 
@@ -408,6 +403,7 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			// Skip the order notes, saved as the customer note
 			if ( 'order_comments' === $field_key ) { continue; }
 
+			// Add field value
 			$order_meta[ $field_key ] = $value;
 		}
 

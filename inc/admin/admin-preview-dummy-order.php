@@ -95,7 +95,7 @@ class FluidCheckout_Admin_Preview_Dummy_Order extends WC_Order {
 	 * Skip saving meta data, as dummy orders exist in memory only and plugins save order meta without saving the order on the order received page, such as to remember tracked purchases.
 	 */
 	public function save_meta_data() {
-		// Intentionally empty
+		// Intentionally empty, dummy orders exist in memory only
 	}
 
 	/**

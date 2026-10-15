@@ -178,6 +178,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 * Register preview assets.
 	 */
 	public function register_assets() {
+		// Scripts
 		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){FCAdminSettingsPreview.init(fcAdminSettingsPreviewSettings);});' );
 	}
@@ -505,6 +506,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 * @return string
 	 */
 	public function get_disabled_preview_subtitle_html( $page_slug, $enable_setting ) {
+		// Get link to the setting
 		$link = sprintf(
 			'<a href="%1$s" target="_parent">%2$s</a>',
 			esc_url( FluidCheckout_Admin_Settings_Page::instance()->get_settings_url( $page_slug ) . '#' . $enable_setting ),
