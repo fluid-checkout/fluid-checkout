@@ -50,6 +50,7 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 					'processing'   => __( 'Processing…', 'fluid-checkout' ),
 					'genericError' => __( 'Something went wrong. Please try again.', 'fluid-checkout' ),
 					'activate'     => __( 'Activate add-on', 'fluid-checkout' ),
+					'activated'    => __( 'Activated', 'fluid-checkout' ),
 				),
 			)
 		);

@@ -33,6 +33,9 @@
 		pluginAttribute:                      'data-plugin',
 		labelAttribute:                       'data-fc-activate-label',
 		disabledClass:                        'disabled',
+		activatedButtonModifierClass:         'button--activated',
+		activateActionClass:                  'fc-addons__item-action--activate',
+		reloadAfterActivateDelay:             400,
 
 		activatePluginAction:                 'fc_activate_plugin',
 		pluginFieldName:                      'plugin',
@@ -45,6 +48,7 @@
 			processing:                       'Processing…',
 			genericError:                     'Something went wrong. Please try again.',
 			activate:                         'Activate add-on',
+			activated:                        'Activated',
 		},
 	};
 
@@ -85,6 +89,89 @@
 	 */
 	var getProcessingLabel = function() {
 		return _settings.i18n && _settings.i18n.processing ? _settings.i18n.processing : 'Processing…';
+	};
+
+
+
+	/**
+	 * Get the Activated button label from settings.
+	 *
+	 * @return {string} Activated button label.
+	 */
+	var getActivatedLabel = function() {
+		return _settings.i18n && _settings.i18n.activated ? _settings.i18n.activated : 'Activated';
+	};
+
+
+
+	/**
+	 * Hide the inline notice on an add-on card or promo footer.
+	 *
+	 * @param {Element} button Activate button.
+	 */
+	var hideItemNotice = function( button ) {
+		var item;
+		var actions;
+		var notice;
+
+		// Bail if button missing
+		if ( ! button ) { return; }
+
+		actions = button.closest( _settings.actionsSelector );
+		notice = actions ? actions.querySelector( _settings.itemActionNoticeSelector ) : null;
+
+		// Hide the notice in the actions block when present
+		if ( notice ) {
+			notice.hidden = true;
+			notice.textContent = '';
+			return;
+		}
+
+		item = button.closest( _settings.itemSelector );
+		notice = item ? item.querySelector( _settings.itemActionNoticeSelector ) : null;
+
+		// Hide the notice on the card when present
+		if ( notice ) {
+			notice.hidden = true;
+			notice.textContent = '';
+		}
+	};
+
+
+
+	/**
+	 * Replace the Activate control with the Activated state before a settings reload.
+	 *
+	 * @param {Element} button Activate button.
+	 */
+	var convertActivateButtonToActivated = function( button ) {
+		// Bail if button missing
+		if ( ! button ) { return; }
+
+		button.classList.remove( 'button-primary', _settings.activateActionClass );
+		button.classList.add( _settings.activatedButtonModifierClass, _settings.disabledClass );
+		button.disabled = true;
+		button.removeAttribute( _settings.labelAttribute );
+		button.textContent = getActivatedLabel();
+	};
+
+
+
+	/**
+	 * Reload the settings page after a short delay so the Activated state is visible.
+	 */
+	var scheduleSettingsReload = function() {
+		var delay = _settings.reloadAfterActivateDelay;
+
+		// Bail if delay is not a positive number
+		if ( 'number' !== typeof delay || 0 >= delay ) {
+			window.location.reload();
+			return;
+		}
+
+		window.setTimeout( function() {
+			window.location.reload();
+		}, delay );
 	};
 
 
@@ -191,9 +278,11 @@
 			return;
 		}
 
-		// Maybe reload the page when requested by the server
+		// Maybe show Activated and reload when the server requests a refresh
 		if ( payload.data && payload.data.reload ) {
-			window.location.reload();
+			hideItemNotice( button );
+			convertActivateButtonToActivated( button );
+			scheduleSettingsReload();
 			return;
 		}
 

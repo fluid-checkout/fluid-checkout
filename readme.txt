@@ -385,6 +385,10 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Split page templates, progress bar, and order summary into their own checkout settings sections.
 * Improved: Automatically detect whether "Add" link button labels should be lowercase based on the store language, instead of a setting.
 * Fixed: PRO-only settings values are forced back to Lite-compatible options when Fluid Checkout PRO is not active.
+* Fixed: Getting started checklist steps for add-ons stayed marked complete after the add-on plugin was deactivated.
+* Fixed: Active add-ons did not unlock their settings tabs because the settings access registry loaded too late during admin bootstrap.
+* Fixed: Add-on promo cards showed Activate add-on instead of Activated when the add-on was already active and Fluid Checkout PRO was active.
+* Improved: After activating an add-on from the settings page, show the Activated button briefly instead of a success message before reloading.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.
