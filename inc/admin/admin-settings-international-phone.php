@@ -53,6 +53,11 @@ class FluidCheckout_Settings_InternationalPhone {
 		// Bail if not the phone fields section
 		if ( 'international_phone' !== $current_section ) { return $settings; }
 
+		/**
+		 * Filters the Phone fields settings.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters(
 			'fc_international_phone_settings',
 			array(
@@ -229,6 +234,7 @@ class FluidCheckout_Settings_InternationalPhone {
 					'requires'              => 'pro',
 				),
 				array(
+					'title'                 => __( 'Validation types', 'fluid-checkout' ),
 					'desc'                  => '',
 					'desc_tip'              => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
 					'id'                    => 'fc_pro_enable_international_phone_validation_precise_types',

@@ -52,6 +52,11 @@ class FluidCheckout_Settings_ExpressCheckout {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'express_checkout' !== $current_section ) { return $settings; }
 
+		/**
+		 * Filters the Express checkout settings.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters(
 			'fc_express_checkout_settings',
 			array(

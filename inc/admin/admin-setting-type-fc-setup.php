@@ -64,28 +64,25 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 				/* translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL. */
 				'label'      => sprintf( __( 'Enable optimized <a href="%1$s">cart</a>, <a href="%2$s">thank you</a> and <a href="%3$s">order pay</a> pages.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'cart' ) ), esc_url( $settings_page->get_settings_url( 'order_received' ) ), esc_url( $settings_page->get_settings_url( 'order_pay' ) ) ),
 				'badge'      => 'setup-optimized-pages',
-				'requires_pro' => true,
 			),
 			array(
 				'id'         => 'address_autocomplete',
 				/* translators: %s: Address autocomplete settings URL. */
 				'label'      => sprintf( __( 'Enable <a href="%s">address autocomplete</a> from Google Maps.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_autocomplete' ) ) ),
 				'badge'      => 'setup-address-autocomplete',
-				'requires_pro' => true,
 			),
 			array(
 				'id'         => 'address_book',
 				/* translators: %s: Address book settings URL. */
 				'label'      => sprintf( __( 'Enable multiple saved addresses with <a href="%s">address book</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_book' ) ) ),
 				'badge'      => 'setup-address-book',
-				'requires_pro' => true,
 			),
 		);
 
 		/**
-		 * Filter the getting-started checklist steps on the Dashboard.
+		 * Filters the getting-started checklist steps on the Dashboard.
 		 *
-		 * @param  array[]  $steps  Checklist steps with `id`, `label`, optional `badge`, and optional `requires_pro` keys.
+		 * @since 5.0.0
 		 */
 		return apply_filters( 'fc_setup_checklist_steps', $steps );
 	}
@@ -250,7 +247,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			</div>
 
 			<div class="fc-settings-card__inner">
-				<p><?php echo wp_kses_post( __( '<strong>Great! Your checkout page is now running on Fluid Checkout.</strong>', 'fluid-checkout' ) . ' ' . __( 'Here are a few steps to get started:', 'fluid-checkout' ) ); ?></p>
+				<p><?php echo wp_kses_post( __( '<strong>Great! Your checkout page is now running on Fluid Checkout.</strong> Here are a few steps to get started:', 'fluid-checkout' ) ); ?></p>
 
 				<ol class="fc-dashboard-checklist">
 					<?php foreach ( $steps as $step ) : ?>
@@ -263,13 +260,17 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						}
 
 						$badge_html = '';
-						if ( ! empty( $step['badge'] ) && class_exists( 'FluidCheckout_Admin' ) ) {
+						// Maybe show a PRO feature badge with pricing link
+						if ( ! empty( $step['badge'] ) ) {
 							$badge_html = FluidCheckout_Admin::instance()->get_pro_feature_badge_html( $step['badge'] );
 						}
 						?>
 						<li class="<?php echo esc_attr( $item_class ); ?>">
 							<span class="fc-dashboard-checklist__marker" aria-hidden="true"></span>
 							<span class="fc-dashboard-checklist__label"><?php echo wp_kses_post( isset( $step['label'] ) ? $step['label'] : '' ); ?></span>
+							<?php if ( $is_complete ) : ?>
+								<span class="screen-reader-text"><?php echo esc_html( __( 'Completed', 'fluid-checkout' ) ); ?></span>
+							<?php endif; ?>
 							<?php if ( ! empty( $badge_html ) ) : ?>
 								<span class="fc-dashboard-checklist__promo"><?php echo wp_kses_post( $badge_html ); ?></span>
 							<?php endif; ?>

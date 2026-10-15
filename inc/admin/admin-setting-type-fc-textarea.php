@@ -35,7 +35,6 @@ class FluidCheckout_Admin_SettingType_Textarea extends FluidCheckout {
 		$field_description = $renderer->get_field_description( $value );
 
 		$renderer->output_field_start( $value );
-		echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
 		<textarea
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
@@ -43,10 +42,12 @@ class FluidCheckout_Admin_SettingType_Textarea extends FluidCheckout {
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
+			rows="<?php echo isset( $value['rows'] ) ? esc_attr( $value['rows'] ) : 3; ?>"
 			<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<?php disabled( $renderer->is_field_disabled( $value ) ); ?>
 			><?php echo esc_textarea( $value[ 'value' ] ); ?></textarea>
 		<?php
+		echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		$renderer->output_field_end( $value );
 	}
 

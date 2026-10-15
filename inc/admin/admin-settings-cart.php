@@ -222,6 +222,7 @@ class FluidCheckout_Settings_Cart {
 
 					array(
 						'id'                => 'fc_pro_enable_cart_cross_sells',
+						'title'             => __( 'Layout of cross-sell', 'fluid-checkout' ),
 						'desc'              => '',
 						'desc_tip'          => __( 'Layout of cross-sell items on the cart page.', 'fluid-checkout' ),
 						'type'              => 'fc_select',
@@ -240,6 +241,7 @@ class FluidCheckout_Settings_Cart {
 					),
 
 					array(
+						'title'             => __( 'Cross-sells displayed', 'fluid-checkout' ),
 						'desc'              => '',
 						'desc_tip'          => __( 'Number of cross-sell items to display on the cart page', 'fluid-checkout' ),
 						'id'                => 'fc_pro_cart_cross_sells_display_items_limit',

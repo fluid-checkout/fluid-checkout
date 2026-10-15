@@ -22,16 +22,22 @@
 	var _publicMethods = { };
 	var _settings = {
 		activateSelector:                     '.fc-addons__item-action--activate',
-		itemSelector:                         '.fc-addons__item',
+		itemSelector:                         '.fc-addons__item, .fc-settings-card--promo',
+		actionsSelector:                      '.fc-addons__item-actions',
 		itemActionNoticeSelector:             '.fc-addons__item-action-notice',
 
 		itemActionNoticeClass:                'fc-addons__item-action-notice',
-		itemActionNoticeModifierClassTemplate: 'fc-addons__item-action-notice--###TYPE###',
+		itemActionNoticeSuccessClass:         'fc-addons__item-action-notice--success',
+		itemActionNoticeErrorClass:           'fc-addons__item-action-notice--error',
 
 		pluginAttribute:                      'data-plugin',
+		labelAttribute:                       'data-fc-activate-label',
+		disabledClass:                        'disabled',
 
 		activatePluginAction:                 'fc_activate_plugin',
 		pluginFieldName:                      'plugin',
+		nonceFieldName:                       'nonce',
+		actionFieldName:                      'action',
 
 		ajaxUrl:                              '',
 		activateNonce:                        '',
@@ -84,14 +90,20 @@
 
 
 	/**
-	 * Build a modifier class from a template setting.
+	 * Get the notice class list for a result type.
 	 *
-	 * @param  {string} template Class template with ###TYPE### placeholder.
-	 * @param  {string} type     Modifier type value.
-	 * @return {string} Resolved class name.
+	 * @param  {string} type success|error.
+	 * @return {string} Class attribute value.
 	 */
-	var getModifierClass = function( template, type ) {
-		return template.replace( '###TYPE###', type );
+	var getNoticeClassName = function( type ) {
+		var modifierClass = _settings.itemActionNoticeErrorClass;
+
+		// Success notices use the success modifier
+		if ( 'success' === type ) {
+			modifierClass = _settings.itemActionNoticeSuccessClass;
+		}
+
+		return _settings.itemActionNoticeClass + ' ' + modifierClass;
 	};
 
 
@@ -104,47 +116,39 @@
 	 * @param {string}  type    success|error.
 	 */
 	var showItemNotice = function( button, message, type ) {
-		var item = button.closest( '.fc-addons__item, .fc-settings-card--promo' );
-		var actions = button.closest( '.fc-addons__item-actions' );
+		var item = button.closest( _settings.itemSelector );
+		var actions = button.closest( _settings.actionsSelector );
 		var notice;
 
 		// Prefer the actions block notice when present
 		if ( actions ) {
-			notice = actions.querySelector( '.fc-addons__item-action-notice' );
+			notice = actions.querySelector( _settings.itemActionNoticeSelector );
 
+			// Create the notice when the card does not have one yet
 			if ( ! notice ) {
 				notice = document.createElement( 'div' );
-				notice.className = 'fc-addons__item-action-notice';
+				notice.className = _settings.itemActionNoticeClass;
 				actions.appendChild( notice );
 			}
-		} else {
+		}
+		// Otherwise attach the notice to the card
+		else {
 			// Bail if item missing
 			if ( ! item ) { return; }
 
-			notice = item.querySelector( '.fc-addons__item-action-notice' );
+			notice = item.querySelector( _settings.itemActionNoticeSelector );
 
+			// Create the notice when the card does not have one yet
 			if ( ! notice ) {
 				notice = document.createElement( 'div' );
-				notice.className = 'fc-addons__item-action-notice';
+				notice.className = _settings.itemActionNoticeClass;
 				button.parentNode.appendChild( notice );
 			}
 		}
 
 		notice.hidden = false;
-		notice.className = _settings.itemActionNoticeClass + ' ' + getModifierClass( _settings.itemActionNoticeModifierClassTemplate, type );
+		notice.className = getNoticeClassName( type );
 		notice.textContent = message;
-	};
-
-
-
-	/**
-	 * Parse a fetch response as JSON.
-	 *
-	 * @param  {Response} response Fetch response.
-	 * @return {Promise}  Promise resolving to the JSON payload.
-	 */
-	var parseJsonResponse = function( response ) {
-		return response.json();
 	};
 
 
@@ -155,8 +159,14 @@
 	 * @param {Element} button Activate button.
 	 */
 	var restoreActivateButton = function( button ) {
+		var storedLabel;
+
+		// Bail if button missing
+		if ( ! button ) { return; }
+
+		storedLabel = button.getAttribute( _settings.labelAttribute );
 		button.disabled = false;
-		button.textContent = getActivateLabel();
+		button.textContent = storedLabel ? storedLabel : getActivateLabel();
 	};
 
 
@@ -169,6 +179,9 @@
 	 */
 	var handleActivateResponse = function( payload, button ) {
 		var message;
+
+		// Bail if button missing
+		if ( ! button ) { return; }
 
 		// Maybe show an error notice when the request failed
 		if ( ! payload || ! payload.success ) {
@@ -191,13 +204,15 @@
 
 
 	/**
-	 * Handle a failed Activate AJAX request.
+	 * Parse a fetch response body as JSON when possible.
 	 *
-	 * @param {Element} button Activate button.
+	 * @param  {Response} response Fetch response.
+	 * @return {Promise}  Promise resolving to a parsed payload or null.
 	 */
-	var handleActivateFailure = function( button ) {
-		showItemNotice( button, getGenericErrorMessage(), 'error' );
-		restoreActivateButton( button );
+	var parseJsonResponse = function( response ) {
+		return response.json().catch( function() {
+			return null;
+		} );
 	};
 
 
@@ -215,30 +230,38 @@
 		e.preventDefault();
 
 		// Bail if the control is disabled (e.g. add-on installed while PRO is inactive)
-		if ( button.disabled || button.classList.contains( 'disabled' ) ) { return; }
+		if ( button.disabled || button.classList.contains( _settings.disabledClass ) ) { return; }
 
-		// Bail if AJAX not configured
+		// Bail if AJAX is not configured
 		if ( ! plugin || ! _settings.ajaxUrl || ! _settings.activateNonce ) { return; }
+
+		// Keep the button's own label so "Activate plugin" is not replaced with "Activate add-on"
+		if ( ! button.getAttribute( _settings.labelAttribute ) ) {
+			button.setAttribute( _settings.labelAttribute, button.textContent );
+		}
 
 		button.disabled = true;
 		button.textContent = getProcessingLabel();
 
-		body = new window.FormData();
-		body.append( 'action', _settings.activatePluginAction );
-		body.append( 'nonce', _settings.activateNonce );
+		body = new window.URLSearchParams();
+		body.append( _settings.actionFieldName, _settings.activatePluginAction );
+		body.append( _settings.nonceFieldName, _settings.activateNonce );
 		body.append( _settings.pluginFieldName, plugin );
 
 		window.fetch( _settings.ajaxUrl, {
 			method:      'POST',
 			credentials: 'same-origin',
-			body:        body,
+			headers:     {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			},
+			body:        body.toString(),
 		} )
 			.then( parseJsonResponse )
 			.then( function( payload ) {
 				handleActivateResponse( payload, button );
 			} )
 			.catch( function() {
-				handleActivateFailure( button );
+				handleActivateResponse( null, button );
 			} );
 	};
 

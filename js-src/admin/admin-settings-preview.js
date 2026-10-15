@@ -914,6 +914,48 @@
 		e.preventDefault();
 	};
 
+
+
+	/**
+	 * Route preview-related click events.
+	 *
+	 * @param  {Event}  e  Click event.
+	 */
+	var handleClick = function( e ) {
+		var matchedElement;
+
+		// EXPAND PREVIEW
+		if ( matchedElement = e.target.closest( _settings.expandSelector ) ) {
+			handleExpandClick( e );
+		}
+		// PREVIEW TOGGLE
+		else if ( matchedElement = e.target.closest( _settings.toggleSelector ) ) {
+			handleToggleClick( e );
+		}
+		// PAGE TAB
+		else if ( matchedElement = e.target.closest( _settings.pageTabSelector ) ) {
+			handlePageTabClick( e );
+		}
+		// WIDTH BUTTONS
+		else if ( matchedElement = e.target.closest( _settings.widthDecreaseSelector ) || e.target.closest( _settings.widthIncreaseSelector ) ) {
+			handleWidthClick( e, matchedElement );
+		}
+		// ZOOM HINT
+		else if ( matchedElement = e.target.closest( _settings.zoomHintSelector ) ) {
+			// Expand the preview, remembered in the browser like with the expand button
+			setPreviewExpanded( true );
+			saveState( 'expanded', true );
+			e.preventDefault();
+		}
+		// HEADER AND FOOTER TOGGLE
+		else if ( matchedElement = e.target.closest( _settings.headerFooterSelector ) ) {
+			// Toggle the header and footer, remembered in the browser
+			setHeaderFooterVisible( ! _isHeaderFooterVisible );
+			saveState( 'headerFooter', _isHeaderFooterVisible );
+			e.preventDefault();
+		}
+	};
+
 	/**
 	 * Handle actions-bar Preview toggle clicks (compact layout).
 	 *
@@ -956,17 +998,12 @@
 	/**
 	 * Handle width button clicks.
 	 *
-	 * @param  {Event}  e  Click event.
+	 * @param  {Event}    e       Click event.
+	 * @param  {Element}  button  Width button.
 	 */
-	var handleWidthClick = function( e ) {
-		var decreaseButton = e.target.closest( _settings.widthDecreaseSelector );
-		var increaseButton = e.target.closest( _settings.widthIncreaseSelector );
-
-		// Bail if click was not on a width button
-		if ( ! decreaseButton && ! increaseButton ) { return; }
-
+	var handleWidthClick = function( e, button ) {
 		// Change the width by one step
-		setPreviewWidth( _previewWidth + ( increaseButton ? _settings.widthStep : -_settings.widthStep ) );
+		setPreviewWidth( _previewWidth + ( button.matches( _settings.widthIncreaseSelector ) ? _settings.widthStep : -_settings.widthStep ) );
 		e.preventDefault();
 	};
 
@@ -994,21 +1031,6 @@
 
 		// Apply the width instead of submitting the settings form
 		setPreviewWidth( e.target.value );
-		e.preventDefault();
-	};
-
-	/**
-	 * Handle zoom hint clicks.
-	 *
-	 * @param  {Event}  e  Click event.
-	 */
-	var handleZoomHintClick = function( e ) {
-		// Bail if click was not on the zoom hint
-		if ( ! e.target.closest( _settings.zoomHintSelector ) ) { return; }
-
-		// Expand the preview, remembered in the browser like with the expand button
-		setPreviewExpanded( true );
-		saveState( 'expanded', true );
 		e.preventDefault();
 	};
 
@@ -1046,21 +1068,6 @@
 		setPreviewMode( e.target.value );
 		saveState( 'mode', _previewMode );
 		loadActivePreviewPage();
-	};
-
-	/**
-	 * Handle header and footer toggle clicks.
-	 *
-	 * @param  {Event}  e  Click event.
-	 */
-	var handleHeaderFooterClick = function( e ) {
-		// Bail if click was not on the header and footer toggle
-		if ( ! e.target.closest( _settings.headerFooterSelector ) ) { return; }
-
-		// Toggle the header and footer, remembered in the browser
-		setHeaderFooterVisible( ! _isHeaderFooterVisible );
-		saveState( 'headerFooter', _isHeaderFooterVisible );
-		e.preventDefault();
 	};
 
 	/**
@@ -1156,6 +1163,15 @@
 
 
 	/**
+	 * Expand or collapse the preview column from other admin scripts.
+	 *
+	 * @param  {boolean}  expanded  Whether the preview should be expanded/open.
+	 */
+	_publicMethods.setExpanded = function( expanded ) {
+		setPreviewExpanded( expanded );
+	};
+
+	/**
 	 * Set CSS variables in the page preview, replacing the ones set before, as a map of selectors to CSS variable names and values like the `fc_css_variables` filter.
 	 *
 	 * @param  {Object}  variables  CSS variables by selector.
@@ -1221,9 +1237,8 @@
 	 *
 	 * @param  {Object}  options  Localized settings from PHP.
 	 */
-	var init = function( options ) {
+	_publicMethods.init = function( options ) {
 		var preview;
-		var expandButton;
 		var panel;
 		var breakpoint;
 		var navCompactBreakpoint;
@@ -1263,19 +1278,11 @@
 		}
 
 		// Add event listeners
-		expandButton = document.querySelector( _settings.expandSelector );
-		if ( expandButton ) {
-			expandButton.addEventListener( 'click', handleExpandClick );
-		}
-		document.addEventListener( 'click', handleToggleClick, true );
+		document.addEventListener( 'click', handleClick, true );
 		document.addEventListener( 'change', handleViewportChange, true );
-		document.addEventListener( 'click', handlePageTabClick, true );
-		document.addEventListener( 'click', handleWidthClick, true );
 		document.addEventListener( 'change', handleWidthChange, true );
 		document.addEventListener( 'keydown', handleWidthKeyDown, true );
-		document.addEventListener( 'click', handleZoomHintClick, true );
 		document.addEventListener( 'change', handleModeChange, true );
-		document.addEventListener( 'click', handleHeaderFooterClick, true );
 		window.addEventListener( 'message', handleMessage );
 		document.addEventListener( 'load', handleFrameLoad, true ); // Load events do not bubble, but reach the document in the capture phase
 		window.addEventListener( 'fcSettingsTabActivated', handleSettingsTabActivated );
@@ -1320,9 +1327,11 @@
 		_hasInitialized = true;
 	};
 
-	// Public APIs
-	_publicMethods.init = init;
-	_publicMethods.setExpanded = setPreviewExpanded;
 
+
+
+	//
+	// Public APIs
+	//
 	return _publicMethods;
 } );

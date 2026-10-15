@@ -3,8 +3,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Render settings arrays as cards and field rows on the Fluid Checkout settings page.
- * Uses the same settings arrays and field names as the WooCommerce settings API,
- * so values can be saved with `WC_Admin_Settings::save_fields()`.
+ * Uses the same settings arrays and field names as the WooCommerce settings API.
+ * Values are saved with `FluidCheckout_Settings::save_settings()`.
  */
 class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
@@ -145,6 +145,20 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		// Maybe get field value from saved options
 		if ( ! isset( $value[ 'value' ] ) && ! in_array( $value[ 'type' ], array( 'title', 'sectionend' ), true ) ) {
 			$value[ 'value' ] = $this->get_field_value( $value );
+		}
+
+		// Maybe add Tom Select class to dropdown fields
+		$dropdown_field_types = array(
+			'select',
+			'multiselect',
+			'multi_select_countries',
+			'fc_select',
+			'fc_multiselect',
+		);
+		if ( in_array( $value[ 'type' ], $dropdown_field_types, true ) ) {
+			if ( false === strpos( ' ' . $value[ 'class' ] . ' ', ' fc-enhanced-select ' ) ) {
+				$value[ 'class' ] = trim( $value[ 'class' ] . ' fc-enhanced-select' );
+			}
 		}
 
 		return $value;
@@ -382,6 +396,26 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		}
 
 		return WC_Admin_Settings::get_field_description( $value );
+	}
+
+	/**
+	 * Append the experimental option label suffix when the field is marked as experimental.
+	 *
+	 * @param  array  $value  Settings field arguments.
+	 */
+	public function maybe_append_experimental_option_label( $value ) {
+		// Bail if field is not marked as experimental
+		if ( empty( $value[ 'experimental' ] ) ) { return $value; }
+
+		// Bail if admin helper is not available
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return $value; }
+
+		// Bail if field has no option label
+		if ( empty( $value[ 'desc' ] ) ) { return $value; }
+
+		$value[ 'desc' ] = FluidCheckout_Admin::instance()->append_experimental_to_option_label( $value[ 'desc' ] );
+
+		return $value;
 	}
 
 	/**
@@ -693,11 +727,6 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			$options = WC()->countries->countries;
 		}
 
-		// Use TomSelect for country multiselect fields
-		if ( 'multi_select_countries' === $value[ 'type' ] && empty( $value[ 'class' ] ) ) {
-			$value[ 'class' ] = 'fc-enhanced-select';
-		}
-
 		$this->output_field_start( $value );
 		$field_name = empty( $value[ 'display_only' ] ) ? $value[ 'field_name' ] . ( $is_multiselect ? '[]' : '' ) : '';
 		?>
@@ -799,6 +828,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function output_field_checkbox( $value ) {
+		$value = $this->maybe_append_experimental_option_label( $value );
 		$field_description = $this->get_field_description( $value );
 		$has_title = '' !== $value[ 'title' ];
 		$has_legend = isset( $value[ 'legend' ] ) && '' !== $value[ 'legend' ];

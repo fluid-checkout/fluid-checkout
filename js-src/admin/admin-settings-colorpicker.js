@@ -63,34 +63,62 @@
 
 
 	/**
+	 * Trigger a deferred change event on a color input after Iris updates.
+	 *
+	 * @param  {jQuery}  $input  Color input element.
+	 */
+	var scheduleColorInputChange = function( $input ) {
+		window.setTimeout( function() {
+			$input.trigger( 'change' );
+		} );
+	};
+
+
+
+	/**
+	 * Handle Iris color changes for a settings color field.
+	 *
+	 * @param  {Event}   event  Iris change event.
+	 * @param  {Object}  ui     Iris UI payload.
+	 */
+	var handleIrisColorChange = function( event, ui ) {
+		var $input = $( event.target );
+
+		getColorControl( $input )
+			.find( _settings.previewSelector )
+			.css( { backgroundColor: ui.color.toString() } );
+
+		scheduleColorInputChange( $input );
+	};
+
+
+
+	/**
 	 * Initialize Iris color pickers for settings color fields.
 	 */
 	var initColorPickers = function() {
+		var colorInputs = document.querySelectorAll( _settings.colorInputSelector );
+		var i;
+		var $input;
+
 		// Bail if jQuery or Iris is not available
 		if ( ! _hasJQuery || 'function' !== typeof $.fn.iris ) { return; }
 
-		$( _settings.colorInputSelector ).each( function() {
-			var $input = $( this );
+		// Iterate color inputs
+		for ( i = 0; i < colorInputs.length; i++ ) {
+			$input = $( colorInputs[ i ] );
 
 			// Bail if already initialized
-			if ( $input.data( _settings.colorDataReadyKey ) ) { return; }
+			if ( $input.data( _settings.colorDataReadyKey ) ) { continue; }
 
 			$input.iris( {
-				change: function( event, ui ) {
-					getColorControl( $input )
-						.find( _settings.previewSelector )
-						.css( { backgroundColor: ui.color.toString() } );
-
-					setTimeout( function() {
-						$input.trigger( 'change' );
-					} );
-				},
-				hide: true,
+				change: handleIrisColorChange,
+				hide:   true,
 				border: true,
 			} );
 
 			$input.data( _settings.colorDataReadyKey, true );
-		} );
+		}
 	};
 
 
@@ -177,8 +205,16 @@
 
 	/**
 	 * Hide open Iris pickers when clicking outside them.
+	 *
+	 * @param  {Event}  e  Click event.
 	 */
-	var handleDocumentClick = function() {
+	var handleDocumentClick = function( e ) {
+		var target = e.target;
+
+		// Bail if the click is on the color control or inside the open picker.
+		// The open and hide handlers are both on `document.body`, so `stopPropagation()` does not skip this one.
+		if ( target && target.closest && ( target.closest( _settings.controlSelector ) || target.closest( _settings.irisPickerSelector ) ) ) { return; }
+
 		$( _settings.irisPickerSelector ).hide();
 	};
 
@@ -199,12 +235,11 @@
 
 		initColorPickers();
 
-		$( document.body )
-			.on( 'click focus', _settings.colorInputSelector, handleColorInputActivate )
-			.on( 'change', _settings.colorInputSelector, handleColorInputChange )
-			.on( 'click', _settings.previewClickSelector, handlePreviewClick )
-			.on( 'click', _settings.irisSquareSelector, handleIrisSquareClick )
-			.on( 'click', handleDocumentClick );
+		$( document.body ).on( 'click focus', _settings.colorInputSelector, handleColorInputActivate );
+		$( document.body ).on( 'change', _settings.colorInputSelector, handleColorInputChange );
+		$( document.body ).on( 'click', _settings.previewClickSelector, handlePreviewClick );
+		$( document.body ).on( 'click', _settings.irisSquareSelector, handleIrisSquareClick );
+		$( document.body ).on( 'click', handleDocumentClick );
 
 		_hasInitialized = true;
 	};

@@ -85,7 +85,7 @@ class FluidCheckout_AdminNotices_SettingsLegacyCleanup extends FluidCheckout {
 			'title'           => __( 'Fluid Checkout settings cleanup', 'fluid-checkout' ),
 			'description'     => $description,
 			'paragraph_wrap'  => false,
-			'dismissable'     => false,
+			'dismissible'     => false,
 			'error'           => false,
 			'actions'         => array(
 				sprintf( '<a href="%s" class="button button-primary">%s</a>', esc_url( $cleanup_url ), esc_html( __( 'Delete leftover options', 'fluid-checkout' ) ) ),

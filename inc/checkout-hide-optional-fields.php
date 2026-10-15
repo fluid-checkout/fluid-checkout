@@ -94,8 +94,12 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		// Get language code (part before underscore)
 		$language = strtolower( strtok( $locale, '_' ) );
 
-		// Languages that preserve noun capitalization (e.g. German)
-		$preserve_case_languages = apply_filters( 
+		/**
+		 * Filters the locales and language codes that keep "Add" link labels capitalized.
+		 *
+		 * @since 5.0.0
+		 */
+		$preserve_case_languages = apply_filters(
 			'fc_optional_fields_link_label_preserve_case_languages',
 			array(
 				// Capitalize every noun
@@ -114,10 +118,20 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 				'lt_LT', 'hy',
 			)
 		);
+		$preserve_case_languages = array_map( 'strtolower', (array) $preserve_case_languages );
+		$locale_key = strtolower( $locale );
 
-		// Lowercase unless the language preserves noun capitalization
-		$should_lowercase = ! in_array( $language, $preserve_case_languages, true );
+		// Lowercase unless the language or the full locale preserves noun capitalization
+		$should_lowercase = ! in_array( $language, $preserve_case_languages, true ) && ! in_array( $locale_key, $preserve_case_languages, true );
 
+		/**
+		 * Filters whether "Add" link labels are lowercased for the current locale.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $locale    Current locale.
+		 * @param  string  $language  Language code.
+		 */
 		return (bool) apply_filters( 'fc_optional_fields_link_label_lowercase', $should_lowercase, $locale, $language );
 	}
 

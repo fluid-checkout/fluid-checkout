@@ -175,7 +175,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		if ( self::PAGE_SLUG !== $page ) { return false; }
 
 		// Bail if the current tab does not match
-		if ( ! empty( $tab ) && $tab !== $this->get_current_tab() ) { return false; }
+		if ( ! empty( $tab ) && $this->get_current_tab() !== $tab ) { return false; }
 
 		return true;
 	}
@@ -301,7 +301,12 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'license_keys'             => array( 'label' => __( 'License keys', 'fluid-checkout' ), 'section' => 'license_keys' ),
 		);
 
-		// Get settings sections registered for the Fluid Checkout settings page
+		/**
+		 * Filters settings sections registered for the Fluid Checkout settings page.
+		 * Sections that are not already a built-in tab are added as extra tabs.
+		 *
+		 * @since 5.0.0
+		 */
 		$sections = apply_filters( 'fc_admin_settings_sections', array() );
 		$sections = is_array( $sections ) ? $sections : array();
 
@@ -434,7 +439,13 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		// Bail if tab is not valid
 		if ( ! $this->is_valid_tab( $tab ) ) { return array(); }
 
-		// Get settings from the settings sections of the Fluid Checkout settings page
+		/**
+		 * Filters the settings fields for one tab of the Fluid Checkout settings page.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $section  Settings section slug. An empty string is the dashboard section.
+		 */
 		$settings = apply_filters( 'fc_admin_settings', array(), $tabs[ $tab ][ 'section' ] );
 
 		// Bail if settings are not valid
@@ -485,6 +496,19 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			// Run the section save hook
 			if ( '' !== $tab_args[ 'section' ] ) {
 				do_action( 'woocommerce_update_options_' . self::WC_SETTINGS_TAB_ID . '_' . $tab_args[ 'section' ] );
+
+				/**
+				 * Fires after one settings section is saved on the Fluid Checkout settings page.
+				 *
+				 * The dynamic portion of the hook name, `$section`, refers to the settings section slug.
+				 * Possible hook names include:
+				 *
+				 * - `fc_admin_settings_update_checkout`
+				 * - `fc_admin_settings_update_cart`
+				 * - `fc_admin_settings_update_local_pickup`
+				 *
+				 * @since 5.0.0
+				 */
 				do_action( 'fc_admin_settings_update_' . $tab_args[ 'section' ] );
 			}
 		}
@@ -512,7 +536,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_register_style( 'fc-admin-settings', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-settings' ), array( 'fc-admin-options' ), NULL );
 
 		// Scripts
-		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_localize_script(
 			'fc-settings-page',
 			'fcSettingsPageSettings',
@@ -523,9 +547,9 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			)
 		);
 		wp_add_inline_script( 'fc-settings-page', '(function(){var i=function(){FCSettingsPage.init(window.fcSettingsPageSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
-		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-tooltips', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-tooltips' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-tooltips', '(function(){var i=function(){FCAdminSettingsTooltips.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
-		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-nav', '(function(){var i=function(){FCAdminSettingsNav.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-colorpicker', '(function(){var i=function(){FCAdminSettingsColorPicker.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
@@ -559,7 +583,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 */
 	public function maybe_enqueue_assets( $hook_suffix ) {
 		// Bail if not on the settings page
-		if ( $hook_suffix !== $this->page_hook_suffix ) { return; }
+		if ( $this->page_hook_suffix !== $hook_suffix ) { return; }
 
 		$this->enqueue_assets();
 	}
@@ -573,7 +597,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 */
 	public function maybe_register_license_key_assets( $hook_suffix ) {
 		// Bail if not on the settings page
-		if ( $hook_suffix !== $this->page_hook_suffix ) { return; }
+		if ( $this->page_hook_suffix !== $hook_suffix ) { return; }
 
 		// Bail if the license key field type is not available
 		if ( ! class_exists( 'FluidCheckout_Admin_SettingType_LicenseKey' ) ) { return; }

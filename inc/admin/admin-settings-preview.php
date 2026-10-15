@@ -99,9 +99,10 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		);
 
 		/**
-		 * Filter preview page tabs on the Fluid Checkout settings page.
+		 * Filters preview page tabs on the Fluid Checkout settings page.
+		 * Each page is an array with the keys `label`, `requires_pro`, `url` of the frontend page to preview, and optionally `enable_setting`, the setting that enables the page on the settings tab with the same slug.
 		 *
-		 * @param  array  $pages  Map of page slug => args (`label`, `requires_pro`, `enable_setting` that enables the page, found on the settings tab with the same slug, `url` of the frontend page to preview).
+		 * @since 5.0.0
 		 */
 		return apply_filters( 'fc_admin_settings_preview_pages', $pages );
 	}

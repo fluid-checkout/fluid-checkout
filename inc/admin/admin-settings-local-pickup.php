@@ -56,11 +56,14 @@ class FluidCheckout_Settings_LocalPickup {
 		 * Filters the options for the local pickup shipping zone fields setting.
 		 *
 		 * @since 5.0.0
-		 *
-		 * @param array $options Field options keyed by field id.
 		 */
 		$local_pickup_shipping_zone_field_options = apply_filters( 'fc_local_pickup_shipping_zone_fields_options', array() );
 
+		/**
+		 * Filters the Local pickup settings.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters(
 			'fc_local_pickup_settings',
 			array(

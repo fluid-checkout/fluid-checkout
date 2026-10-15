@@ -211,7 +211,7 @@ class FluidCheckout_Settings_AddressAutocomplete {
 			array(
 				'title'             => __( 'Brasil API', 'fluid-checkout' ),
 				'desc'              => __( 'Enable Brasil API address autocomplete for CEP fields', 'fluid-checkout' ),
-				'desc_tip'          => __( 'Use Brasil API to retrive and autofill addresses using the CEP/Postcode field. Only relevant for Brazilian addresses.', 'fluid-checkout' ),
+				'desc_tip'          => __( 'Use Brasil API to retrieve and autofill addresses using the CEP/Postcode field. Only relevant for Brazilian addresses.', 'fluid-checkout' ),
 				'id'                => 'fc_gaa_enabled_brasil_api',
 				'type'              => 'checkbox',
 				'default'           => 'no',
@@ -281,10 +281,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 		if ( 'address_autocomplete' !== $current_section ) { return $settings; }
 
 		/**
-		 * Filter the settings for the Address Autocomplete tab.
+		 * Filters the settings for the Address Autocomplete tab.
 		 * The Address Autocomplete add-on replaces the locked placeholder settings with its own settings.
 		 *
-		 * @param  array  $settings  Locked placeholder settings.
+		 * @since 5.0.0
 		 */
 		return apply_filters( 'fc_admin_address_autocomplete_settings', self::get_locked_settings() );
 	}
@@ -300,10 +300,10 @@ class FluidCheckout_Settings_AddressAutocomplete {
 		if ( 'tools' !== $current_section ) { return $settings; }
 
 		/**
-		 * Filter the Address Autocomplete debug settings displayed on the Tools tab.
+		 * Filters the Address Autocomplete debug settings displayed on the Tools tab.
 		 * The Address Autocomplete add-on replaces the locked placeholder settings with its own settings.
 		 *
-		 * @param  array  $settings  Locked placeholder settings.
+		 * @since 5.0.0
 		 */
 		$debug_settings = apply_filters( 'fc_admin_address_autocomplete_debug_settings', self::get_locked_debug_settings() );
 

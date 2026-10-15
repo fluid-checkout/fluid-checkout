@@ -2,7 +2,7 @@
  * Manage Fluid Checkout admin settings page behavior (conditionals, actions bar).
  *
  * DEPENDS ON:
- * - None (vanilla JS)
+ * - FCUtils // Settings merge
  */
 
 (function (root, factory) {
@@ -27,6 +27,7 @@
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
+		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
@@ -56,52 +57,6 @@
 	/**
 	 * METHODS
 	 */
-
-
-
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
-	var extend = function () {
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-	};
-
-
 
 	/**
 	 * Get the field value based on field type.
@@ -145,7 +100,9 @@
 		}
 
 		return fieldValue;
-	}
+	};
+
+
 
 	/**
 	 * Get the conditional trigger key for an element (id or name, without field id prefix).
@@ -168,7 +125,9 @@
 		}
 
 		return '';
-	}
+	};
+
+
 
 	/**
 	 * Get the trigger field element by its full field id (with prefix).
@@ -196,7 +155,9 @@
 
 		// Fall back to element id
 		return document.getElementById( fieldId );
-	}
+	};
+
+
 
 	/**
 	 * Resolve the registered trigger field id for an event target element.
@@ -219,7 +180,9 @@
 		}
 
 		return null;
-	}
+	};
+
+
 
 	/**
 	 * Get the visibility container for a conditional field.
@@ -232,7 +195,7 @@
 		if ( ! element ) { return null; }
 
 		// Prefer the nearest settings field row
-		var settingsField = element.closest( '.fc-settings-field' );
+		var settingsField = element.closest( _settings.settingsFieldSelector );
 		if ( settingsField ) { return settingsField; }
 
 		// Fall back to a nested fieldset then a table row for WC embeds
@@ -240,7 +203,9 @@
 		if ( fieldset ) { return fieldset; }
 
 		return element.closest( 'tr' );
-	}
+	};
+
+
 
 	/**
 	 * Whether a container is currently hidden by conditional visibility.
@@ -253,7 +218,9 @@
 		if ( ! container ) { return false; }
 
 		return container.classList.contains( _settings.hiddenClass ) || 'none' === container.style.display;
-	}
+	};
+
+
 
 	/**
 	 * Whether a conditional field value matches the trigger value.
@@ -287,10 +254,13 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
-	 * Parse comma-separated trigger ids from a conditional field attribute.
+	 * Parse trigger ids from a conditional field attribute.
+	 * Pipe-separated ids use OR matching; comma-separated ids use AND matching.
 	 *
 	 * @param   {string}  conditionIds  Value of data-conditional-id.
 	 * @return  {Array}                 Trimmed non-empty trigger keys.
@@ -299,13 +269,15 @@
 		var parts;
 		var result = [];
 		var i;
+		var conditionIdsString;
 
 		// Bail if condition ids are missing
 		if ( null === conditionIds || undefined === conditionIds || '' === conditionIds ) {
 			return result;
 		}
 
-		parts = String( conditionIds ).split( ',' );
+		conditionIdsString = String( conditionIds );
+		parts = conditionIdsString.indexOf( '|' ) !== -1 ? conditionIdsString.split( '|' ) : conditionIdsString.split( ',' );
 		for ( i = 0; i < parts.length; i++ ) {
 			var part = parts[ i ].trim();
 			if ( part ) {
@@ -314,7 +286,21 @@
 		}
 
 		return result;
-	}
+	};
+
+
+
+	/**
+	 * Whether conditional ids in data-conditional-id should match with OR logic.
+	 *
+	 * @param   {string}  conditionIds  Value of data-conditional-id.
+	 * @return  {boolean}
+	 */
+	var isConditionalOrMatch = function( conditionIds ) {
+		return null !== conditionIds && undefined !== conditionIds && String( conditionIds ).indexOf( '|' ) !== -1;
+	};
+
+
 
 	/**
 	 * Whether a conditional field lists the given trigger key in data-conditional-id.
@@ -338,16 +324,63 @@
 		}
 
 		return false;
-	}
+	};
+
+
+
+	/**
+	 * Evaluate whether any pipe-separated conditional id/value pair matches (OR).
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @return  {boolean}
+	 */
+	var doAnyConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIds;
+		var conditionValuesRaw;
+		var i;
+		var triggerElement;
+		var triggerFieldRow;
+
+		// Bail if element is not valid
+		if ( ! conditionalField ) { return false; }
+
+		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+
+		// Bail if no trigger ids
+		if ( ! conditionIds.length ) { return false; }
+
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ i ] );
+
+			// Skip if trigger is missing
+			if ( ! triggerElement ) { continue; }
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				continue;
+			}
+
+			if ( doesConditionalValueMatch( conditionValuesRaw, getFieldValue( triggerElement ) ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+
 
 	/**
 	 * Evaluate whether all conditional id/value pairs currently match (AND).
 	 * A single id with a comma-separated value list still uses OR matching for that value.
+	 * Pipe-separated ids in data-conditional-id use OR matching across triggers.
 	 *
 	 * @param   {Element}  conditionalField  The conditional field element.
 	 * @return  {boolean}
 	 */
 	var doAllConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIdsRaw;
 		var conditionIds;
 		var conditionValuesRaw;
 		var conditionValues;
@@ -359,11 +392,17 @@
 		// Bail if element is not valid
 		if ( ! conditionalField ) { return false; }
 
-		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionIdsRaw = conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute );
+		conditionIds = parseConditionalIds( conditionIdsRaw );
 		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
 
 		// Bail if no trigger ids
 		if ( ! conditionIds.length ) { return false; }
+
+		// Pipe-separated trigger ids: any matching value shows the field
+		if ( isConditionalOrMatch( conditionIdsRaw ) ) {
+			return doAnyConditionalConditionsMatch( conditionalField );
+		}
 
 		// Single trigger: OR list in data-conditional-value (existing behavior)
 		if ( 1 === conditionIds.length ) {
@@ -396,7 +435,9 @@
 		}
 
 		return true;
-	}
+	};
+
+
 
 	/**
 	 * Whether the field row is a locked (disabled) settings field kept visible for discovery.
@@ -416,9 +457,9 @@
 		}
 
 		// Nested fieldsets still belong to a locked settings field row
-		settingsField = fieldRow.closest( '.fc-settings-field' );
+		settingsField = fieldRow.closest( _settings.settingsFieldSelector );
 		return !!( settingsField && settingsField.classList.contains( _settings.disabledFieldClass ) );
-	}
+	};
 
 
 
@@ -480,7 +521,7 @@
 			// this ensures that fields with nested conditions are displayed/hidden correctly.
 			maybeProcessConditionalFields( conditionalField );
 		}
-	}
+	};
 
 
 
@@ -531,7 +572,7 @@
 			// Process conditional fields
 			maybeProcessConditionalFields( fieldElement );
 		}
-	}
+	};
 
 
 
@@ -584,13 +625,14 @@
 	 * @param   {Event}  event  The click event.
 	 */
 	var handleClick = function( event ) {
+		var triggerFieldId;
+
 		// CONDITIONAL FIELDS TRIGGER
-		var triggerFieldId = resolveTriggerFieldId( event.target );
+		triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 	/**
 	 * Sync selected class on layout / template option buttons.
@@ -747,10 +789,9 @@
 		// CONDITIONAL FIELDS TRIGGER
 		var triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 
 
@@ -761,6 +802,29 @@
 	 */
 	var getSavingLabel = function() {
 		return _settings.i18n && _settings.i18n.saving ? _settings.i18n.saving : 'Saving...';
+	};
+
+
+
+	/**
+	 * Get the first save button that can submit the settings form.
+	 *
+	 * @return  {Element|null}  Save button, or null when saving is unavailable.
+	 */
+	var getActiveSaveButton = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+
+			if ( button.disabled || button.classList.contains( _settings.isBusyClass ) ) { continue; }
+
+			return button;
+		}
+
+		return null;
 	};
 
 	/**
@@ -818,6 +882,42 @@
 
 
 	/**
+	 * Save settings when pressing Ctrl+S or Cmd+S.
+	 *
+	 * @param   {Event}  event  Keyboard event.
+	 */
+	var handleKeydown = function( event ) {
+		var form;
+		var saveButton;
+		var isSaveShortcut;
+
+		// Bail if FCUtils is not available
+		if ( ! window.FCUtils ) { return; }
+
+		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.SAVE === event.key.toLowerCase();
+
+		// Bail if the save shortcut was not pressed
+		if ( ! isSaveShortcut ) { return; }
+
+		form = document.querySelector( _settings.formSelector );
+		saveButton = getActiveSaveButton();
+
+		// Bail if the form or an enabled save button is missing
+		if ( ! form || ! saveButton ) { return; }
+
+		event.preventDefault();
+
+		if ( typeof form.requestSubmit === 'function' ) {
+			form.requestSubmit( saveButton );
+		}
+		else {
+			saveButton.click();
+		}
+	};
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 *
 	 * @param   {Object}  options  Optional settings overrides (e.g. fieldIdPrefix).
@@ -827,7 +927,7 @@
 		if ( _hasInitialized ) { return; }
 
 		// Merge settings
-		_settings = extend( true, _settings, options );
+		_settings = FCUtils.extendObject( _settings, options );
 
 		// Initialize conditionals
 		initializeConditionals();
@@ -842,6 +942,7 @@
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
 		window.addEventListener( 'submit', handleSubmit, true );
+		document.addEventListener( 'keydown', handleKeydown, true );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
 		window.addEventListener( 'resize', scheduleActionsBarSync );

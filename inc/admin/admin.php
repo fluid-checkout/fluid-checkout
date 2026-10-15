@@ -53,21 +53,9 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 	/**
 	 * Register admin settings assets.
+	 * `fc-settings-page` is registered by the settings page class.
 	 */
 	public function register_assets() {
-		// Scripts
-		wp_register_script( 'fc-settings-page', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/fc-settings-page' ), array(), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
-		wp_localize_script(
-			'fc-settings-page',
-			'fcSettingsPageSettings',
-			array(
-				'i18n' => array(
-					'saving' => __( 'Saving...', 'fluid-checkout' ),
-				),
-			)
-		);
-		wp_add_inline_script( 'fc-settings-page', '(function(){var i=function(){FCSettingsPage.init(window.fcSettingsPageSettings||{});};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
-
 		// Styles
 		wp_register_style( 'fc-admin-options', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-options' ), array(), NULL );
 		wp_register_style( 'fc-admin-dashboard', FluidCheckout_Enqueue::instance()->get_style_url( 'css/admin-dashboard' ), array(), NULL );
@@ -76,7 +64,6 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
-	/**
 	 * Load the Fluid Checkout settings page, field renderer and settings access registry.
 	 */
 	public function load_settings_page() {
@@ -84,6 +71,8 @@ class FluidCheckout_Admin extends FluidCheckout {
 		include_once self::$directory_path . 'inc/admin/admin-settings-renderer.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-page.php';
 	}
+
+
 
 	/**
 	 * Enqueue admin settings assets.
@@ -258,6 +247,28 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
+	 * Get the legacy "Upgrade to PRO" settings description.
+	 *
+	 * @deprecated 5.0.0 Use `get_pro_feature_badge_html()` for new settings UI. Will be removed in version 6.0.0.
+	 *
+	 * @param  bool  $newline  Whether to prefix the link with a line break.
+	 */
+	public function get_upgrade_pro_html( $newline = true ) {
+		// Bail if PRO is already activated
+		if ( FluidCheckout::instance()->is_pro_activated() ) { return ''; }
+
+		// translators: %s: Upgrade link.
+		$html = wp_kses_post( sprintf( __( '<a target="_blank" href="%s">Upgrade to PRO</a> to unlock more options.', 'fluid-checkout' ), 'https://fluidcheckout.com/pricing/?mtm_campaign=upgrade-pro&mtm_kwd=plugin-settings&mtm_source=lite-plugin' ) );
+
+		// Maybe add a line break before the link
+		if ( $newline ) {
+			$html = ' <br>' . $html;
+		}
+
+		return $html;
+	}
+
+	/**
 	 * Get HTML for the PRO feature promo pill badge.
 	 *
 	 * @param  string       $section_slug  Section slug used in tracking as `mtm_kwd=pro-badge-{slug}`.
@@ -381,6 +392,23 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 */
 	public function get_experimental_feature_html( $newline = false ) {
 		return ' ' . ( $newline ? '<br>' : '' ) . __( '(experimental)', 'fluid-checkout' );
+	}
+
+	/**
+	 * Append the experimental label suffix to a settings field option label.
+	 *
+	 * @param  string  $label    Option label text, usually the field `desc` for checkboxes.
+	 * @param  bool    $newline  Whether to add a new line before the suffix.
+	 */
+	public function append_experimental_to_option_label( $label, $newline = false ) {
+		$label = (string) $label;
+
+		// Bail if label is empty
+		if ( '' === $label ) {
+			return ltrim( $this->get_experimental_feature_html( $newline ) );
+		}
+
+		return $label . $this->get_experimental_feature_html( $newline );
 	}
 
 	/**

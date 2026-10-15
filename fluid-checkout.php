@@ -258,7 +258,7 @@ class FluidCheckout {
 			/**
 			 * Filters the remote telemetry API base URL.
 			 *
-			 * @since 4.2.8
+			 * @since 5.0.0
 			 *
 			 * @param string $api_url     Canonical telemetry API base URL.
 			 * @param string $plugin_slug Plugin slug. Default `fluid-checkout`.
@@ -826,7 +826,7 @@ class FluidCheckout {
 			'name'        => 'woocommerce_required',
 			'error'       => true,
 			'description' => $description,
-			'dismissable' => false,
+			'dismissible' => false,
 		);
 
 		return $notices;
