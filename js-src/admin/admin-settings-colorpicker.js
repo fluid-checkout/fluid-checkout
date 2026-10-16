@@ -458,6 +458,22 @@
 
 
 	/**
+	 * Keep the preview swatch in sync while the color value is edited.
+	 *
+	 * @param  {Event}  e  Input event.
+	 */
+	var handleColorInputInput = function( e ) {
+		var input = getColorInputFromTarget( e.target );
+
+		// Bail if the input is not from a settings color input
+		if ( ! input ) { return; }
+
+		updateColorPreviewFromInput( input );
+	};
+
+
+
+	/**
 	 * Toggle the color picker when the preview swatch is clicked.
 	 *
 	 * @param  {Event}  e  Click event.
@@ -549,18 +565,145 @@
 
 
 	/**
-	 * Close the Iris picker when Escape is pressed on a settings color input.
+	 * Get the color input for an Iris picker inside a settings field.
+	 *
+	 * @param   {Element}             picker  Iris picker element.
+	 * @return  {HTMLInputElement|null}        Color input element.
+	 */
+	var getColorInputForIrisPicker = function( picker ) {
+		var control;
+
+		if ( ! picker ) { return null; }
+
+		control = picker.closest( _settings.controlSelector );
+
+		if ( ! control ) { return null; }
+
+		return control.querySelector( '.' + _settings.colorInputClass );
+	};
+
+
+
+	/**
+	 * Get the color input associated with a focused Iris picker control.
+	 *
+	 * @param   {Element|null}        target  Event target.
+	 * @return  {HTMLInputElement|null}       Color input element.
+	 */
+	var getColorInputFromIrisPickerTarget = function( target ) {
+		var picker;
+
+		if ( ! target || ! target.closest || ! isInsideSettingsWrap( target ) ) { return null; }
+
+		picker = target.closest( _settings.irisPickerSelector );
+
+		if ( ! picker ) { return null; }
+
+		return getColorInputForIrisPicker( picker );
+	};
+
+
+
+	/**
+	 * Apply the current Iris color to the field, then close the picker.
+	 *
+	 * @param  {HTMLInputElement}  input  Color input element.
+	 */
+	var commitColorFromIrisPicker = function( input ) {
+		var irisColorString = '';
+
+		if ( _hasJQuery && 'function' === typeof $.fn.iris ) {
+			irisColorString = $( input ).iris( 'color' );
+
+			if ( irisColorString && 'function' === typeof irisColorString.toString ) {
+				irisColorString = irisColorString.toString();
+			}
+
+			irisColorString = ( irisColorString || '' ).trim();
+		}
+
+		if ( _settings.colorPattern.test( irisColorString ) ) {
+			input.value = irisColorString;
+		}
+
+		updateColorPreviewFromInput( input );
+		dispatchColorInputChange( input );
+		hideAllIrisPickers();
+	};
+
+
+
+	/**
+	 * Commit the typed color value and close the picker.
+	 *
+	 * @param  {HTMLInputElement}  input  Color input element.
+	 */
+	var commitColorFromInputField = function( input ) {
+		var originalValue;
+
+		if ( input.classList.contains( _settings.irisErrorClass ) ) {
+			originalValue = input.dataset[ _settings.colorDataOriginalKey ];
+
+			if ( originalValue && _settings.colorPattern.test( originalValue ) ) {
+				input.value = originalValue;
+			}
+			else {
+				input.value = '';
+			}
+		}
+
+		updateColorPreviewFromInput( input );
+		dispatchColorInputChange( input );
+		hideAllIrisPickers();
+	};
+
+
+
+	/**
+	 * Keyboard shortcuts for settings color fields and Iris picker controls.
 	 *
 	 * @param  {Event}  e  Keydown event.
 	 */
-	var handleColorInputKeyDown = function( e ) {
-		// Bail if FCUtils or Escape is unavailable
-		if ( ! root.FCUtils || root.FCUtils.keyboardKeys.ESC !== e.key ) { return; }
+	var handleColorPickerKeyDown = function( e ) {
+		var input;
+		var irisInput;
 
-		// Bail if focus is not on a settings color input
-		if ( ! getColorInputFromTarget( e.target ) ) { return; }
+		if ( ! root.FCUtils ) { return; }
 
-		hideAllIrisPickers();
+		if ( root.FCUtils.keyboardKeys.ESC === e.key ) {
+			input = getColorInputFromTarget( e.target );
+			irisInput = getColorInputFromIrisPickerTarget( e.target );
+
+			if ( input || irisInput ) {
+				hideAllIrisPickers();
+			}
+
+			return;
+		}
+
+		if ( root.FCUtils.keyboardKeys.ENTER !== e.key ) { return; }
+
+		input = getColorInputFromTarget( e.target );
+
+		if ( input ) {
+			e.preventDefault();
+
+			if ( isPickerOpenForInput( input ) ) {
+				commitColorFromInputField( input );
+			}
+			else {
+				showColorPicker( input );
+			}
+
+			return;
+		}
+
+		irisInput = getColorInputFromIrisPickerTarget( e.target );
+
+		if ( irisInput ) {
+			e.preventDefault();
+			commitColorFromIrisPicker( irisInput );
+		}
 	};
 
 
@@ -585,7 +728,8 @@
 		document.body.addEventListener( 'click', handleColorInputActivate );
 		document.body.addEventListener( 'focusin', handleDocumentFocusIn );
 		document.body.addEventListener( 'focusout', handleColorInputFocusOut );
-		document.body.addEventListener( 'keydown', handleColorInputKeyDown );
+		document.body.addEventListener( 'keydown', handleColorPickerKeyDown );
+		document.body.addEventListener( 'input', handleColorInputInput );
 		document.body.addEventListener( 'change', handleColorInputChange );
 		document.body.addEventListener( 'click', handlePreviewClick );
 		document.body.addEventListener( 'click', handleIrisSquareClick );

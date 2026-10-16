@@ -890,9 +890,33 @@
 		var form;
 		var saveButton;
 		var isSaveShortcut;
+		var target;
+		var inputType;
 
 		// Bail if FCUtils is not available
 		if ( ! window.FCUtils ) { return; }
+
+		// Prevent implicit form submit when pressing Enter in settings fields
+		if ( FCUtils.keyboardKeys.ENTER === event.key ) {
+			form = document.querySelector( _settings.formSelector );
+			target = event.target;
+
+			if ( form && target && form.contains( target ) && 'TEXTAREA' !== target.tagName ) {
+				if ( target.closest && target.closest( '.iris-picker' ) ) {
+					event.preventDefault();
+				}
+				else if ( 'SELECT' === target.tagName ) {
+					event.preventDefault();
+				}
+				else if ( 'INPUT' === target.tagName ) {
+					inputType = ( target.type || 'text' ).toLowerCase();
+
+					if ( -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( inputType ) ) {
+						event.preventDefault();
+					}
+				}
+			}
+		}
 
 		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.S === event.key.toLowerCase();
 
