@@ -356,6 +356,22 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Support for Split design template for the 1-column layout (PRO feature).
+* Added: Setting to choose a background color for the Split design secondary column (PRO feature).
+* Improved: Show the Fluid Checkout plugin icon on admin notices.
+* Improved: Show settings that are locked by a compatible plugin or theme as disabled, with a note explaining why the value cannot be changed.
+* Improved: Hide dependent international phone number settings when the feature is disabled.
+* Improved: Updated replaced files for WooCommerce `address-i18n.js` and EU/UK VAT for WooCommerce to match latest upstream versions.
+* Improved: Updated replaced checkout templates `form-shipping.php` and `review-order.php` for WooCommerce 11.2.0 compatibility.
+* Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
+* Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
+* Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
+* Fixed: "Same as billing address" behavior on the cart shipping calculator.
+* Fixed: JavaScript error on every checkout update when the cart does not need shipping, with the plugins Germanized and Shiptastic active, which could stop other checkout scripts from running.
+* Fixed: JavaScript error when trying to proceed to the next checkout step or save a substep when validation fails on hidden or non-focusable fields, which could block checkout progression.
+* Fixed: Compatibility with plugin Wawp (Automation Web Platform). Fix phone country code being applied twice after a page reload, and the phone country dropdown collapsing so countries cannot be selected on checkout.
+* Fixed: Compatibility with plugin Brevo for WooCommerce (formerly Sendinblue). Prevent duplicate newsletter opt-in checkbox when it is moved to the contact step.
+* Fixed: Checkout step names appearing partially visible inside the progress bar with some themes.
 * Fixed: Checkout page reloading indefinitely when using Svea Checkout for WooCommerce 3.0.0+ as payment method.
 * Fixed: Styles from Fluid Checkout applied to the Svea Checkout page, and shipping method options missing from the order summary, when using Svea Checkout for WooCommerce 3.0.0+ as payment method.
 

@@ -107,7 +107,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 
 					array(
 						'title'                 => __( 'Design template', 'fluid-checkout' ),
-						'desc'                  => __( 'General styles for the checkout steps, order summary and other sections. <br>Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' <br>' . __( 'The design template <em>"Split"</em> is not available when using <em>"1 column"</em> layout and will fall back to <em>"Minimalist"</em> if chosen.', 'fluid-checkout' ) . ' <br>' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
+						'desc'                  => __( 'General styles for the checkout steps, order summary and other sections. <br>Might also apply to other pages such as the Cart, Order Received and View Order pages.', 'fluid-checkout' ) . ' <br>' . __( 'When using the <em>"1 column"</em> layout with the <em>"Split"</em> design template, a right column is shown only if the page sidebar widget area is active (Checkout Sidebar, Cart Sidebar, or Order Received Sidebar). Otherwise the page stays as a single column with Split styles.', 'fluid-checkout' ) . ' <br>' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/feature-design-templates/' ) . FluidCheckout_Admin::instance()->get_upgrade_pro_html(),
 						'id'                    => 'fc_design_template',
 						'type'                  => 'fc_template_selector',
 						'options'               => array(
@@ -120,6 +120,19 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'autoload'              => false,
 						'wrapper_class'         => 'fc-design-template',
 						'class'                 => 'fc-design-template__option',
+					),
+
+					array(
+						'desc'                  => __( 'Choose a background color for the Split design secondary column. Leave empty to use the order summary background color.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'id'                    => 'fc_checkout_secondary_column_background_color',
+						'type'                  => 'text',
+						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_secondary_column_background_color' ),
+						'autoload'              => false,
+						'class'                 => 'colorpick',
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_design_template',
+							'data-conditional-value' => 'split',
+						),
 					),
 
 					array(
@@ -291,8 +304,7 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 					),
 
 					array(
-						'desc_tip'              => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ),
-						'desc'                  => __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
+						'desc'                  => __( 'Choose a background color for the order summary section.', 'fluid-checkout' ) . '<br>' . __( 'HTML color value. ie: #f3f3f3', 'fluid-checkout' ),
 						'id'                    => 'fc_checkout_order_review_highlight_color',
 						'type'                  => 'text',
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_checkout_order_review_highlight_color' ),
@@ -727,6 +739,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation' ),
 						'autoload'              => false,
 						'disabled'              => true,
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+							'data-conditional-value' => 'yes',
+						),
 					),
 					array(
 						'desc'                  => __( 'Use precise phone number validation', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_experimental_feature_html(),
@@ -736,6 +752,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise' ),
 						'autoload'              => false,
 						'disabled'              => true,
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+							'data-conditional-value' => 'yes',
+						),
 					),
 					array(
 						'desc'                  => __( 'Phone number validation types used when precise validation is enabled.', 'fluid-checkout' ),
@@ -750,6 +770,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_validation_precise_types' ),
 						'autoload'              => false,
 						'disabled'              => true,
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_pro_enable_international_phone_validation_precise',
+							'data-conditional-value' => 'yes',
+						),
 					),
 
 					array(
@@ -760,6 +784,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_list_filter' ),
 						'autoload'              => false,
 						'disabled'              => true,
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+							'data-conditional-value' => 'yes',
+						),
 					),
 					array(
 						'desc'                  => __( 'Show country code beside the flag', 'fluid-checkout' ),
@@ -768,6 +796,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_enable_international_phone_country_code' ),
 						'autoload'              => false,
 						'disabled'              => true,
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+							'data-conditional-value' => 'yes',
+						),
 					),
 
 					array(
@@ -782,6 +814,10 @@ class WC_Settings_FluidCheckout_Checkout_Settings extends WC_Settings_Page {
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_pro_international_phone_fields_placeholder' ),
 						'autoload'              => false,
 						'disabled'              => true,
+						'custom_attributes'     => array(
+							'data-conditional-id'    => 'fc_pro_enable_international_phone_fields',
+							'data-conditional-value' => 'yes',
+						),
 					),
 
 					array(
