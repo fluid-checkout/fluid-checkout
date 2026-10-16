@@ -1,0 +1,16 @@
+// ------------------------------------
+// TOM SELECT CONTROL
+// ------------------------------------
+
+body.breakdance div.woocommerce form .input-text,
+body.oxygen div.woocommerce form .input-text,
+body.breakdance div.woocommerce form .ts-wrapper.single .ts-control,
+body.oxygen div.woocommerce form .ts-wrapper.single .ts-control {
+	height: $form-field-height !important; // Needed to override Breakdance Woo Global Styler styles
+	min-height: $form-field-height !important; // Needed to override Breakdance Woo Global Styler styles
+	box-sizing: border-box !important; // Needed to override Breakdance Woo Global Styler styles
+	border-width: $form-field-border-width !important; // Needed to override Breakdance Woo Global Styler styles
+	border-style: solid !important; // Needed to override Breakdance Woo Global Styler styles
+	border-color: $form-field-border-color !important; // Needed to override Breakdance Woo Global Styler styles
+	border-radius: $form-field-border-radius !important; // Needed to override Breakdance Woo Global Styler styles
+}

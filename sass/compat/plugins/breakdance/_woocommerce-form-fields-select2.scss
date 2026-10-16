@@ -2,7 +2,21 @@
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body.breakdance div.woocommerce .form-row .select2-selection--single,
-body.oxygen div.woocommerce .form-row .select2-selection--single {
-	padding-#{ $alignment-left }: var(--bde-form-input-padding-#{ $alignment-left });
+body.breakdance div.woocommerce form .form-row .select2-selection--single,
+body.oxygen div.woocommerce form .form-row .select2-selection--single {
+	height: $form-field-height !important; // Needed to override Breakdance Woo Global Styler styles
+	min-height: $form-field-height !important; // Needed to override Breakdance Woo Global Styler styles
+	box-sizing: border-box !important; // Needed to override Breakdance Woo Global Styler styles
+	border-width: $form-field-border-width !important; // Needed to override Breakdance Woo Global Styler styles
+	border-style: solid !important; // Needed to override Breakdance Woo Global Styler styles
+	border-color: $form-field-border-color !important; // Needed to override Breakdance Woo Global Styler styles
+	border-radius: $form-field-border-radius !important; // Needed to override Breakdance Woo Global Styler styles
+	padding: 0 !important; // Needed to override Breakdance Woo Global Styler styles
+}
+
+body.breakdance div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered,
+body.oxygen div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+	padding-#{ $alignment-left }: $form-field-padding-left !important; // Needed to override Breakdance Woo Global Styler styles
+	padding-#{ $alignment-right }: $form-field-padding-horizontal !important; // Needed to override Breakdance Woo Global Styler styles
+	line-height: $form-field-select2-inner-component-height !important; // Needed to match text input field height
 }

@@ -126,8 +126,10 @@ class FluidCheckout_Breakdance extends FluidCheckout {
 				// Form field styles
 				'--fluidcheckout--field--height' => '48.4px',
 				'--fluidcheckout--field--border-radius' => 'var(--bde-woo-forms__inputs-border-radius)',
-				'--fluidcheckout--field--border-color' => 'var(--bde-form-input-border-color)',
+				'--fluidcheckout--field--border-color' => 'var(--bde-form-input-border-color, #d8d8d8)',
 				'--fluidcheckout--field--background-color' => 'var(--bde-woo-forms__inputs-background-color)',
+				'--fluidcheckout--field--padding-left' => 'var(--bde-form-input-padding-left)',
+				'--fluidcheckout--field--padding-right' => 'var(--bde-form-input-padding-right)',
 				'--fluidcheckout--field--background-color--accent' => 'var(--bde-woo-buttons-and-links__text-link-color-hover)',
 				'--fluidcheckout--field--text-color--accent' => 'var(--bde-woo-base-text-on-primary-color)',
 				'--fluidcheckout--field--text-color--focus' => 'var(--bde-woo-base-text-on-primary-color)',
