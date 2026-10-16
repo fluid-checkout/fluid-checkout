@@ -1,12 +1,17 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT LOGIN
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login {
+body#{ $body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login {
 	max-width: 100%;
 }
 
-body#{ $_body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login a {
+body#{ $body-theme-selector } .fc-login-form__wrapper.woocommerce .woocommerce-form-login a {
 	text-decoration: underline;
 
 	&:hover {

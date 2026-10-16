@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // COLLAPSIBLE BLOCKS
 // ------------------------------------
@@ -32,3 +38,4 @@
 body:not( .has-collapsible-block ) .fc-wrapper [data-collapsible].is-collapsed > .collapsible-content__inner {
 	display: none;
 }
+

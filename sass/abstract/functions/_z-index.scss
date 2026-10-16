@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "../variables" as variables;
 
 /// Return z-index values for named layers.
 /// @author Diego Versiani
@@ -6,9 +7,9 @@
 /// @param {String} $layer - Name of the layer corresponding to a value in the `$z-layers` list variable.
 /// @return {String} - Z-index layer value.
 @function z( $layer ) {
-    @if not map.has-key( $z-layers, $layer ) {
+    @if not map.has-key( variables.$z-layers, $layer ) {
         @warn "No layer found for `#{$layer}` in $z-layers map. Property omitted.";
     }
 
-    @return map.get( $z-layers, $layer );
+    @return map.get( variables.$z-layers, $layer );
 }

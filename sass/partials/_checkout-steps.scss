@@ -1,3 +1,11 @@
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT STEPS
 // ------------------------------------
@@ -76,7 +84,7 @@
 
 
 
-body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
+body#{ $body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-step__substep-title {
 	margin: $checkout-substep-title-margin;
 	padding: $checkout-substep-title-padding;
 	color: $checkout-substep-title-color;
@@ -96,24 +104,24 @@ body#{ $_body-page-selector } div.woocommerce .fc-wrapper .fc-step__substep .fc-
 
 
 
-body#{ $_body-page-selector } form.woocommerce-checkout {
+body#{ $body-page-selector } form.woocommerce-checkout {
 	float: none;
 }
 
 
 
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:before,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep:after,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:before,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep .fc-step__substep-title:after,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:before,
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields:after {
 	@include clearfix();
 }
 
 
 
-body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
+body#{ $body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__substep-fields {
 	float: none;
 	width: 100%;
 	text-align: $alignment-left;
@@ -400,3 +408,4 @@ body#{ $_body-page-selector } form.woocommerce-checkout .fc-wrapper .fc-step__su
 .fc-substep__fields--coupon_codes .fc-step__substep-fields-inner {
 	padding: 0;
 }
+

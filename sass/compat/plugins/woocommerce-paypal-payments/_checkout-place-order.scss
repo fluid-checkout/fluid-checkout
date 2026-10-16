@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT PLACE ORDER
 // ------------------------------------
@@ -102,3 +108,4 @@ body:not( .has-payment-method-selected--payment_method_ppcp-pay-upon-invoice-gat
 .fc-wrapper .fc-place-order__section #ppcp-recaptcha-v2-container:empty {
 	margin: 0 !important; // Needed to override plugin styles
 }
+

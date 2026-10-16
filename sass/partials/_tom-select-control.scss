@@ -1,3 +1,10 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+@use "../abstract/variables-tom-select" as *;
+
 // ------------------------------------
 // TOM SELECT CONTROL
 // ------------------------------------
@@ -89,7 +96,7 @@
 	border-radius: 0 !important;  // Needed to enforce styles for the select component
 	background: none !important;  // Needed to enforce styles for the select component
 	text-indent: 0 !important;  // Needed to enforce styles for the select component
-	line-height: calc( $form-field-height - ( $form-field-border-width * 2 ) - ( $ts-select-padding-y * 2 ) );
+	line-height: calc( $ts-select-field-height - ( $ts-select-border-width * 2 ) - ( $ts-select-padding-y * 2 ) );
 	user-select: auto !important;  // Needed to enforce styles for the select component
 	box-shadow: none !important;  // Needed to enforce styles for the select component
 
@@ -120,8 +127,8 @@
 
 
 .ts-control:focus-within {
-	outline: $focus-outline-field !important; // Needed to override theme styles
-	outline-offset: $focus-outline-offset-field !important; // Needed to override theme styles
+	outline: $ts-select-control-focus-outline !important; // Needed to override theme styles
+	outline-offset: $ts-select-control-focus-outline-offset !important; // Needed to override theme styles
 }
 div.woocommerce form .form-row .ts-control input[type=text]:focus {
 	outline: 0 !important; // Needed to clear focus from the input element inside the control
@@ -132,9 +139,9 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 
 .ts-wrapper.single .ts-control > [data-ts-item] {
 	width: auto;
-	height: calc( $form-field-height - ( $form-field-border-width * 2 ) );
+	height: calc( $ts-select-field-height - ( $ts-select-border-width * 2 ) );
 	font-size: $ts-select-font-size;
-	line-height: calc( $form-field-height - ( $form-field-border-width * 2 ) );
+	line-height: calc( $ts-select-field-height - ( $ts-select-border-width * 2 ) );
 	color: $ts-select-color-text;
 }
 .dropdown-active.single .ts-control > [data-ts-item] {
@@ -180,3 +187,4 @@ div.woocommerce form .form-row .ts-control input[type=text]:focus {
 	position: absolute;
 	#{ $alignment-left }: -10000px;
 }
+

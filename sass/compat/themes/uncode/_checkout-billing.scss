@@ -1,6 +1,11 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT BILLING ADDRESS
 // ------------------------------------
-body#{ $_body-theme-selector } .woocommerce-billing-fields__field-wrapper {
+body#{ $body-theme-selector } .woocommerce-billing-fields__field-wrapper {
 	border: 0;
 }

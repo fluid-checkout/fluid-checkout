@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce .form-row.woocommerce-invalid > .validation-message {
+body#{ $body-theme-selector } div.woocommerce .form-row.woocommerce-invalid > .validation-message {
 	display: none;
 }

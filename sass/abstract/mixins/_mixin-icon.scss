@@ -1,3 +1,6 @@
+@use "../variables" as *;
+@use "../functions/icon-glyph" as *;
+
 @mixin icon-styles() {
     display: inline-block;
     font-family: $icon-font-name !important;

@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // SG MAP TO ADDRESS
 // ------------------------------------
@@ -30,3 +36,4 @@
 .sg-overlay {
 	z-index: z( 'sticky-element' ) + 1;
 }
+

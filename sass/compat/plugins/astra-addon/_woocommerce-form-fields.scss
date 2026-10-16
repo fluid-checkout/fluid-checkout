@@ -1,17 +1,26 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row > label {
+body#{ $body-theme-selector } div.woocommerce form .form-row > label {
 	z-index: z( 'default' ) + 2 !important; // Needed to override theme styles
 }
 
-body#{ $_body-theme-selector } div.woocommerce form #shipping_address_2_field > label,
-body#{ $_body-theme-selector } div.woocommerce form #billing_address_2_field > label {
+body#{ $body-theme-selector } div.woocommerce form #shipping_address_2_field > label,
+body#{ $body-theme-selector } div.woocommerce form #billing_address_2_field > label {
 	opacity: 0;
 }
 
-body#{ $_body-theme-selector }.ast-checkout-labels-as-placeholders form #customer_details .form-row.ast-float-label#shipping_address_2_field label,
-body#{ $_body-theme-selector }.ast-checkout-labels-as-placeholders form #customer_details .form-row.ast-float-label#billing_address_2_field label {
+body#{ $body-theme-selector }.ast-checkout-labels-as-placeholders form #customer_details .form-row.ast-float-label#shipping_address_2_field label,
+body#{ $body-theme-selector }.ast-checkout-labels-as-placeholders form #customer_details .form-row.ast-float-label#billing_address_2_field label {
 	opacity: 0;
 }
+

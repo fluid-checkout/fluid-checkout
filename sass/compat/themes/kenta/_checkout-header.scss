@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT HEADER
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-checkout-header {
+body#{ $body-theme-selector } .fc-checkout-header {
 	color: var( --kenta-accent-active );
 }

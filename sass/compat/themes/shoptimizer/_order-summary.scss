@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review .woocommerce-checkout-review-order-table .product-name .product-item-thumbnail {
+body#{ $body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review .woocommerce-checkout-review-order-table .product-name .product-item-thumbnail {
 	width: auto;
 	padding: 0;
 }

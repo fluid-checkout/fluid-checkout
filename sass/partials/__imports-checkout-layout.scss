@@ -1,34 +1,60 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"clearfix",
-	"fc-hidden",
-	"collapsible-blocks",
-	"expansible-sections",
-	"buttons--checkout",
-
-	"checkout-content-area",
-	"checkout-page-title",
-	"checkout-columns",
-	"checkout-header",
-	"checkout-footer",
-	"checkout-login-form",
-
-	"widget-areas",
-	"checkout-widget-areas--header",
-	"checkout-widget-areas--order-summary",
-	"checkout-widget-areas--sidebar",
-
-	"loading-indicator",
-	"animations",
-	"../../node_modules/flyout-block/sass/theme/animations";
+@use "scope-checkout-layout" as scope;
+@forward "clearfix" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "fc-hidden" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "collapsible-blocks" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "expansible-sections" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "buttons--checkout" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-content-area" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-page-title" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-columns" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-header" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-footer" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-login-form" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "widget-areas" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-widget-areas--header" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-widget-areas--order-summary" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-widget-areas--sidebar" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "loading-indicator" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "animations" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);

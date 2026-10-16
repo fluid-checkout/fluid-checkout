@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT STEPS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .fc-step__substep-title.fc-step__substep-title {
+body#{ $body-theme-selector } .fc-wrapper .fc-step__substep-title.fc-step__substep-title {
 	border: none;
 }

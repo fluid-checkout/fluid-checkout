@@ -1,0 +1,18 @@
+// Public Sass API for Fluid Checkout Lite.
+//
+//   @use "abstract" as *;
+//   @use "../../fluid-checkout/sass/abstract" as fc;
+//
+// See sass/IMPORTING.md and sass/README.md.
+
+@forward "variables";
+@forward "functions/strip-unit" show strip-unit;
+@forward "functions/remsize" show remsize;
+@forward "functions/icon-glyph" show icon-glyph;
+@forward "functions/str-replace" show str-replace;
+@forward "functions/z-index" show z;
+@forward "mixins/mixin-clearfix";
+@forward "mixins/mixin-font-face";
+@forward "mixins/mixin-icon";
+@forward "styles/accessibility";
+@forward "styles/buttons";

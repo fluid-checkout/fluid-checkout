@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-columns",
-	"checkout-place-order";
+@use "checkout-columns";
+@use "checkout-place-order";

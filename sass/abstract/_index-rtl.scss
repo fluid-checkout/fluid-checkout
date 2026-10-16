@@ -1,0 +1,12 @@
+// Shared RTL configuration for every RTL entry and for PRO / add-ons.
+//
+//   @use "../../fluid-checkout/sass/abstract/index-rtl";
+//
+// Must be the first load of `abstract` in that compilation.
+// See sass/IMPORTING.md.
+
+@forward "index" with (
+	$alignment-left: right !default,
+	$alignment-right: left !default,
+	$order-summary-quantity-transform: translateX( 100% ) translateY( -25% ) !default,
+);

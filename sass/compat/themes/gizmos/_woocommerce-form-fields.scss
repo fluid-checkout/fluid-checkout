@@ -1,7 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce input[type="checkbox"] {
+body#{ $body-theme-selector } div.woocommerce input[type="checkbox"] {
     background-color: $white;
 }
+

@@ -38,16 +38,9 @@ var _translationAborted = false;
 
 // Dart Sass options passed through gulp-sass 6 (modern compile API).
 //
-// `import` is silenced on purpose. Lite, PRO, and add-ons share one global
-// namespace through `@import`: `!default` overrides, RTL variable order, and
-// third-party stylesheets such as flyout-block. Loading those files with
-// `@use` / `@forward` is not possible while they still contain `@import`,
-// and rewriting the graph would change compiled CSS. See sass/IMPORTING.md.
-//
-// flyout-block is imported by relative path, so Sass `quietDeps` does not
-// treat it as a dependency. Drop deprecation warnings that originate in
-// node_modules (its `transparentize()` call) and still print any warning
-// from this plugin's own stylesheets.
+// First-party stylesheets use @use / @forward. Tom Select, flyout-block, and
+// sticky-states still use @import inside sass/vendor/ bridge files. Those
+// partials sit on a load path; quietDeps hides their deprecation warnings.
 var _sassLogger = {
 	warn: function( message, options ) {
 		var spanUrl = options && options.span && options.span.url;
@@ -62,7 +55,11 @@ var _sassLogger = {
 	},
 };
 var _sassOptions = {
-	silenceDeprecations: [ 'import' ],
+	quietDeps: true,
+	loadPaths: [
+		path.resolve( 'sass' ),
+		path.resolve( 'sass/vendor' ),
+	],
 	logger: _sassLogger,
 };
 

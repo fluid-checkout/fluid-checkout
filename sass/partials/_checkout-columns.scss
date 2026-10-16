@@ -1,5 +1,12 @@
 @use "sass:math" as math;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
 
+$body-page-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT COLUMNS LAYOUT
 // ------------------------------------
@@ -7,8 +14,8 @@ body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-m
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-info,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ) .fc-checkout-notices,
-body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-NoticeGroup,
-body:not( .has-checkout-must-login-notice )#{ $_body-page-selector } .woocommerce-notices-wrapper,
+body:not( .has-checkout-must-login-notice )#{ $body-page-selector } .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice )#{ $body-page-selector } .woocommerce-notices-wrapper,
 body:not( .has-checkout-must-login-notice ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
@@ -24,8 +31,8 @@ body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-header ~ .woocommerce-info,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-header ~ .woocommerce-error,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-checkout-notices,
-body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $_body-page-selector } .woocommerce-NoticeGroup,
-body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $_body-page-selector } .woocommerce-notices-wrapper,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $body-page-selector } .woocommerce-NoticeGroup,
+body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar )#{ $body-page-selector } .woocommerce-notices-wrapper,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-progress-bar,
 body:not( .has-checkout-must-login-notice ):not( .has-fc-sidebar ) .fc-inside {
 	@media (#{$bp-larger-than-desktop}) {
@@ -99,3 +106,4 @@ body.has-checkout-column-layout--one_column.has-fc-design-template--split.admin-
 		padding-top: calc( #{ $global-spacing-tiny } + 32px ); // Use pixels to match styles of the WordPress Admin bar
 	}
 }
+

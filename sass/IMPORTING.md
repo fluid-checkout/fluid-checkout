@@ -1,74 +1,65 @@
 # Importing Fluid Checkout Lite Sass
 
-Other Fluid Checkout plugins (PRO and add-ons) compile against Lite's Sass from a sibling directory. Those entry points are unchanged by the Dart Sass upgrade.
+Sibling plugins compile against Lite's public module at `sass/abstract/`. Load it with `@use`, not `@import`.
 
 ## Supported import
 
 From a stylesheet in a sibling plugin, for example `wp-content/plugins/fluid-checkout-pro/sass/`:
 
 ```scss
-@import "../../fluid-checkout/sass/abstract/all-early";
-@import "../../fluid-checkout/sass/abstract/all";
+@use "../../fluid-checkout/sass/abstract" as fc;
+
+.example {
+	color: fc.$black;
+	margin-top: fc.remsize( 1.6rem );
+	z-index: fc.z( modal );
+}
 ```
 
-`all-early` loads `strip-unit()` and `remsize()`. `all` loads variables, the remaining functions, mixins, and shared placeholder styles. Load `all-early` first. Members are global, which is what `@import` provides.
-
-The leading underscore and the `.scss` extension are optional. This existing form still works:
-
-```scss
-@import "../../fluid-checkout/sass/abstract/_all-early";
-@import "../../fluid-checkout/sass/abstract/_all";
-```
+Use a namespace (`fc`, `fcpro`, etc.). `@use "../../fluid-checkout/sass/abstract" as *` is allowed when you control every member name.
 
 ### RTL
 
-Import the RTL overrides **after** `all-early` and **before** `all`. Variables in `all` are `!default`, so the earlier RTL values win.
+Load the RTL module **first** in that compilation (before any other `@use` of `abstract`):
 
 ```scss
-@import "../../fluid-checkout/sass/abstract/all-early";
-@import "../../fluid-checkout/sass/abstract/variables-rtl";
-@import "../../fluid-checkout/sass/abstract/all";
+@use "../../fluid-checkout/sass/abstract/index-rtl";
+@use "partials/__imports-checkout-steps";
 ```
 
-### Tom Select
+`index-rtl` forwards the public module with alignment and other RTL overrides already applied.
 
-`variables-tom-select` reads checkout field variables from `all`, so it has to come after `all`.
+### Tom Select and admin tokens
 
 ```scss
-@import "../../fluid-checkout/sass/abstract/all-early";
-@import "../../fluid-checkout/sass/abstract/all";
-@import "../../fluid-checkout/sass/abstract/variables-tom-select";
+@use "../../fluid-checkout/sass/abstract" as fc;
+@use "../../fluid-checkout/sass/abstract/variables-admin" as fc-admin;
+@use "../../fluid-checkout/sass/abstract/variables-tom-select" as fc-ts;
 ```
 
-### Admin
+Load `variables-admin` and `variables-tom-select` after the main module. Configure checkout field variables with `@use ".../abstract" as fc with (...)` on the **first** load when needed.
+
+## PRO and add-ons extending Lite
+
+Forward Lite first, then plugin variables and styles:
 
 ```scss
-@import "../../fluid-checkout/sass/abstract/all-early";
-@import "../../fluid-checkout/sass/abstract/all";
-@import "../../fluid-checkout/sass/abstract/variables-admin";
+// fluid-checkout-pro/sass/abstract/_index.scss
+@forward "../../../fluid-checkout/sass/abstract";
+@forward "variables";
+@forward "styles/all";
 ```
 
-## Do not `@use` these files
+## Third-party Sass
 
-```scss
-// This is an error. These files still contain @import.
-@use "../../fluid-checkout/sass/abstract/all";
+Tom Select, flyout-block, and sticky-states still use `@import` inside `sass/vendor/` bridge files. Entry stylesheets load them with `@use 'sass:meta'` and `@include meta.load-css('…')`. The gulp build sets `quietDeps: true` and `loadPaths` for `sass/` and `sass/vendor/`.
+
+## Check
+
+After changing Sass sources, from the plugin root:
+
+```bash
+npx gulp build-css
 ```
 
-Sass refuses to load a stylesheet that contains `@import` with `@use` or `@forward`. One file also cannot serve both systems: members brought in with `@use` / `@forward` are not re-exported through `@import`, so converting the entry points would make the imports above stop defining variables, functions, and mixins.
-
-## Why Lite still uses `@import`
-
-A full move to the module system would change compiled CSS and break dependent plugins.
-
-- RTL and theme stylesheets set `!default` variables by import order. `@use` configuration (`with (...)`) does not preserve that order.
-- Partials read globals defined by the file that imports them, such as `$_body-theme-selector`. `@use` does not pass members into imported files.
-- Lite `@import`s third-party Sass (`flyout-block`, `sticky-states`) that still uses `@import`. `@use` cannot load those files.
-- PRO and add-ons `@import` `abstract/_all-early` and `abstract/_all` and expect a global namespace.
-
-`@import` and the global built-in functions remain deprecated in Dart Sass and are scheduled to be removed in Dart Sass 3, not Dart Sass 2. The Lite gulp build passes `silenceDeprecations: ['import']` so those warnings are not emitted. It also skips deprecation warnings whose source file is under `node_modules` (flyout-block's `transparentize()` is imported by a relative path, so Sass `quietDeps` does not apply). Warnings from Lite's own stylesheets are still printed. Dependent plugins that compile these files with Dart Sass 1.80 or newer can pass `silenceDeprecations: ['import']` until a coordinated module migration.
-
-## What did change
-
-- `sass` is Dart Sass 1.105.1 (previously 1.77.8), loaded through `gulp-sass` 6, which uses the modern `compileString` API. The legacy `render` API is not used.
-- Functions in `sass/abstract/functions/` call `sass:math`, `sass:meta`, `sass:map`, and `sass:string` instead of global built-ins. Call sites are unchanged (`strip-unit()`, `remsize()`, `z()`, `icon-glyph()`, `str-replace()`).
+See also `fc-conversion-kit/sass/README.md` for the same module pattern used across the ecosystem.

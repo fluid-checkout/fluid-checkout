@@ -1,24 +1,33 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .woocommerce form.woocommerce-checkout .fc-checkout-order-review__inner .woocommerce-checkout-review-order.woocommerce-checkout-review-order {
+body#{ $body-theme-selector }#{ $body-page-selector } .woocommerce form.woocommerce-checkout .fc-checkout-order-review__inner .woocommerce-checkout-review-order.woocommerce-checkout-review-order {
     background-image: none;
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-checkout-order-review__inner #order_review table.shop_table tbody tr td:last-child {
+body#{ $body-theme-selector }#{ $body-page-selector } .fc-checkout-order-review__inner #order_review table.shop_table tbody tr td:last-child {
     padding: remsize( 1rem ) remsize( 2rem );
 }
 
 
 
-body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
+body#{ $body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table tfoot th {
     padding-right: $order-summary-cell-padding-horizontal; // Targets only the right side, should not use `$alignment-right` in this case
 }
 
 
 
-body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .amount,
-body#{ $_body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .includes_tax .amount {
+body#{ $body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .amount,
+body#{ $body-theme-selector } form.woocommerce-checkout .fc-wrapper #order_review table.woocommerce-checkout-review-order-table .order-total td .includes_tax .amount {
 	font-size: inherit;
 }
+

@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } #page div.woocommerce form .form-row .select2-container .select2-selection__arrow:before {
+body#{ $body-theme-selector } #page div.woocommerce form .form-row .select2-container .select2-selection__arrow:before {
 	top: 0;
 	margin-top: 0;
 }

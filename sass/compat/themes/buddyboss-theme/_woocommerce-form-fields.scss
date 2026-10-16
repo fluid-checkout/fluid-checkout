@@ -1,18 +1,26 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // WOOCOMMERCE FORM-ROW
 // ------------------------------------
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type=text] {
+body#{ $body-theme-selector }#{ $body-page-selector } div.woocommerce form .form-row input[type=text] {
 	z-index: z( 'above' );
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"] {
+body#{ $body-theme-selector }#{ $body-page-selector } div.woocommerce form .form-row input[type="checkbox"] {
 	position: absolute;
 	cursor: pointer;
 }
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + label:before,
-body#{ $_body-theme-selector }#{ $_body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + span:before {
+body#{ $body-theme-selector }#{ $body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + label:before,
+body#{ $body-theme-selector }#{ $body-page-selector } div.woocommerce form .form-row input[type="checkbox"]:focus + span:before {
 	outline: $focus-outline-field;
 	outline-offset: $focus-outline-offset-field;
 }

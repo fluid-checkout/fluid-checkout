@@ -1,4 +1,9 @@
 @use "sass:math" as math;
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
 
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
@@ -254,3 +259,4 @@
 .woocommerce .fc-wrapper .shipping-method__option-label .woocommerce-shipping-contents {
 	line-height: 1.1 !important; // Needed to override theme styles
 }
+

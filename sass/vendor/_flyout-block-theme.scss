@@ -1,0 +1,7 @@
+// flyout-block theme styles (upstream may use deprecated built-ins).
+//
+// Loaded through sass/vendor and quietDeps. Not a public entry.
+
+@import "../../node_modules/flyout-block/sass/abstract/variables";
+@import "../../node_modules/flyout-block/sass/theme/flyout-block";
+@import "../../node_modules/flyout-block/sass/theme/animations";

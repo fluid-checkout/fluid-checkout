@@ -1,11 +1,20 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT STEPS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper .tt_button {
+body#{ $body-theme-selector } .fc-wrapper .tt_button {
 	z-index: z( 'default' );
 }
 
-body#{ $_body-theme-selector } .fc-wrapper .tt_button:hover {
+body#{ $body-theme-selector } .fc-wrapper .tt_button:hover {
 	background: transparent;
 }
+

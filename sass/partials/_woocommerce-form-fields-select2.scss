@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
@@ -89,3 +95,4 @@ div.woocommerce form .form-row .select2-selection--multiple .select2-search--inl
 	height: $form-field-select2-selection-height--multiple;
  	min-height: auto;
 }
+

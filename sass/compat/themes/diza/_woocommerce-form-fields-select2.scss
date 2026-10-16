@@ -1,12 +1,20 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // SELECT2 FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__rendered {
 	padding-top: 0;
 }
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--single .select2-selection__rendered {
 	@media (max-width: 480px) { // Needed to use theme's breakpoint
 		padding-#{ $alignment-left }: 8px;
 	}
@@ -14,7 +22,8 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection
 
 
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
+body#{ $body-theme-selector } div.woocommerce form .form-row .select2-selection--multiple .select2-selection__choice {
 	margin-top: $form-field-select2-inner-spacing;
 	margin-#{ $alignment-right }: $form-field-select2-inner-spacing;
 }
+

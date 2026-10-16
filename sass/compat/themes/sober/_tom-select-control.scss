@@ -1,18 +1,27 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // TOM SELECT CONTROL
 // ------------------------------------
 
-body#{ $_body-theme-selector } .ts-wrapper.single .ts-control {
+body#{ $body-theme-selector } .ts-wrapper.single .ts-control {
 	border-top: none;
 	border-#{ $alignment-left }: none;
 	border-#{ $alignment-right }: none;
 }
 
-body#{ $_body-theme-selector } .ts-control:focus-within {
+body#{ $body-theme-selector } .ts-control:focus-within {
 	outline: none !important; // Needed to override theme focus outline
 	border-bottom-color: #23232c;
 }
 
-body#{ $_body-theme-selector } .woocommerce .ts-wrapper.single .ts-control > [data-ts-item] {
+body#{ $body-theme-selector } .woocommerce .ts-wrapper.single .ts-control > [data-ts-item] {
 	color: inherit;
 }
+

@@ -1,6 +1,5 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"checkout-validation",
-	"checkout-validation-check";
+@use "checkout-validation";
+@use "checkout-validation-check";
