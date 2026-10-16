@@ -90,6 +90,18 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		// Move nonce field
 		add_action( 'fc_checkout_after_steps', array( $this, 'output_nonce_field' ), 10 );
 
+		// Brevo registers classic checkout opt-in hooks on `woocommerce_init` (since ~4.x).
+		// Run checkout field hooks after that so removals and replacements take effect.
+		add_action( 'woocommerce_init', array( $this, 'hooks_v3_checkout' ), 20 );
+	}
+
+	/**
+	 * Add or remove checkout hooks for Brevo v3+, after the plugin registers its own hooks.
+	 */
+	public function hooks_v3_checkout() {
+		// Bail if manager is not available
+		if ( null === $this->v3_cart_events_manager ) { return; }
+
 		// Replace the function that adds the checkbox as a checkout field
 		// because it outputs the nonce in the wrong place if `WC()->checkout()->get_checkout_fields()` is called early
 		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
@@ -142,7 +154,7 @@ class FluidCheckout_WooCommerceSendinblueNewsletterSubscription extends FluidChe
 		if ( empty( $this->v3_settings[ SendinblueWoocommerce\Clients\SendinblueClient::IS_DISPLAY_OPT_IN_ENABLED ] ) ) { return; }
 
 		// Remove fields from display location determined by Sendinblue
-		$this->remove_filter_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
+		$this->remove_action_for_class( 'woocommerce_checkout_after_terms_and_conditions', array( $this->v3_cart_events_manager, 'add_optin_terms' ), 10 );
 		$this->remove_filter_for_class( 'woocommerce_checkout_fields', array( $this->v3_cart_events_manager, 'add_optin_billing' ), 10 );
 		remove_filter( 'woocommerce_checkout_fields', array( $this, 'maybe_add_optin_field_v3' ), 10 );
 
