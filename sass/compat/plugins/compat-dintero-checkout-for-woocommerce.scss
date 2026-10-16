@@ -2,9 +2,7 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_all";
+@use "abstract" as *;
 
 
 
@@ -13,5 +11,4 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"dintero-checkout-for-woocommerce/__imports";
+@use "dintero-checkout-for-woocommerce/__imports";

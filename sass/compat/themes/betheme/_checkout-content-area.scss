@@ -1,17 +1,26 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-content.content_wrapper .section_wrapper {
+body#{ $body-theme-selector } .fc-content.content_wrapper .section_wrapper {
 	@media ( max-width: 768px ) { // Needs to match theme breakpoint
 		padding-#{ $alignment-left }: remsize( 2rem ) !important; // Needed to override theme styles
 		padding-#{ $alignment-right }: remsize( 2rem ) !important; // Needed to override theme styles
 	}
 }
 	
-body#{ $_body-theme-selector } .fc-content.content_wrapper .section_wrapper .the_content_wrapper {
+body#{ $body-theme-selector } .fc-content.content_wrapper .section_wrapper .the_content_wrapper {
 	@media ( max-width: 768px ) { // Needs to match theme breakpoint
 		width: 100%;
 		margin: 0;
 	}
 }
+

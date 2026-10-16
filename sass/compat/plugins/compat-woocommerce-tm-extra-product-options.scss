@@ -2,9 +2,7 @@
 // ------------------------------------
 // IMPORT ABSTRACT
 // ------------------------------------
-@import
-	"../../abstract/_all-early",
-	"../../abstract/_all";
+@use "abstract" as *;
 
 
 
@@ -13,5 +11,4 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"woocommerce-tm-extra-product-options/__imports";
+@use "woocommerce-tm-extra-product-options/__imports";

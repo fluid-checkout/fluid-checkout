@@ -1,8 +1,16 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > li.wc_payment_method > input[type="radio"]:first-child:checked + label:before {
+body#{ $body-theme-selector } .fc-wrapper #payment .payment_methods > li.wc_payment_method > input[type="radio"]:first-child:checked + label:before {
 	margin: 0;
 	width: $option-box-radio-size;
 	height: $option-box-radio-size;
@@ -10,6 +18,7 @@ body#{ $_body-theme-selector } .fc-wrapper #payment .payment_methods > li.wc_pay
 
 
 
-body#{ $_body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a {
+body#{ $body-theme-selector } .fc-wrapper #payment ul.payment_methods > li.wc_payment_method .payment_box a {
 	float: none;
 }
+

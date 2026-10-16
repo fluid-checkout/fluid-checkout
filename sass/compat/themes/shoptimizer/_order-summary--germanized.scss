@@ -1,8 +1,17 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // ORDER SUMMARY - WITH GERMANIZED
 // ------------------------------------
 
-body#{ $_body-theme-selector } .wc-gzd-checkbox-placeholder-legal .woocommerce-gzd-legal-checkbox-text {
+body#{ $body-theme-selector } .wc-gzd-checkbox-placeholder-legal .woocommerce-gzd-legal-checkbox-text {
 	display: inline;
 	padding-#{ $alignment-left }: 0;
 }
+

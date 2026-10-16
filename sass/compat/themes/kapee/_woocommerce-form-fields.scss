@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
+body#{ $body-theme-selector } div.woocommerce form .form-row input[type="checkbox"] {
 	background-color: var(--site-input-background); // Needed to use theme variable to match its styles
 }

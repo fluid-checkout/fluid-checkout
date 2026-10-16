@@ -1,13 +1,9 @@
 // ------------------------------------
-// IMPORT ABSTRACT
+// LOAD PUBLIC API (configured once)
 // ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all",
-	"abstract/variables-admin",
-	"abstract/mixin-admin-settings-focus",
-	"abstract/variables-tom-select-admin",
-	"abstract/variables-tom-select";
+@use "admin/admin-settings-tom-select-config";
+@use "abstract" as *;
+@use "abstract/variables-admin" as *;
 
 
 
@@ -16,14 +12,7 @@
 // ------------------------------------
 // IMPORT STYLES
 // ------------------------------------
-@import
-	"admin/__imports-admin-settings",
-	"partials/tom-select-control",
-	"partials/tom-select-dropdown",
-	"partials/tom-select-multi";
-
-
-
-.ts-dropdown.fc-settings-ts-dropdown {
-	z-index: $fc-settings-tom-select-dropdown-z-index !important; // Needed to stack above the fixed save bar
-}
+@use "admin/__imports-admin-settings";
+@use "partials/tom-select-control";
+@use "partials/tom-select-dropdown";
+@use "partials/tom-select-multi";

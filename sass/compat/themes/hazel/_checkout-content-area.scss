@@ -1,20 +1,28 @@
+$order-review-selector: null !default;
+
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
-body#{ $_body-theme-selector }:not( .has-checkout-header ) {
+body#{ $body-theme-selector }:not( .has-checkout-header ) {
 	padding-top: remsize( 12rem );
 }
 
 
 
 // Sticky sidebar, page with admin bar
-body#{ $_body-theme-selector }:not( .has-checkout-header ).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
+body#{ $body-theme-selector }:not( .has-checkout-header ).admin-bar .fc-sidebar[data-sticky-states].is-sticky--top .fc-sidebar__inner {
 	padding-top: $global-spacing-tiny;
 }
 
 
 
-body#{ $_body-theme-selector }#{ $_body-page-selector } .fc-content.container .container_inner {
+body#{ $body-theme-selector }#{ $body-page-selector } .fc-content.container .container_inner {
 	@media (#{$bp-smaller-than-tablet}) { 
 		width: 100%;
 		padding-#{ $alignment-left }: remsize( 2rem );

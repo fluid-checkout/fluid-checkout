@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Upgraded Sass build tooling to the latest version.
 * Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
 * Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
 * Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
@@ -367,6 +368,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Removed: Site key section from the License keys settings page.
 * Improved: Getting started checklist promotes PRO page optimizations, address autocomplete from Google Maps, and address book, completable only while PRO is active.
 * Improved: Address autocomplete checklist step completes when Google Maps is enabled with a tested API key, or when Brasil API is enabled.
+* Improved: Address autocomplete settings placeholders include legacy API, company result types, and Powered by Google fields for the add-on.
 * Improved: Show the settings page preview column from 1280px viewport width.
 * Improved: Show Checkout layout before Design template on the Checkout settings page.
 * Improved: Getting started card on the Dashboard uses a numbered checklist that marks steps as complete when visited or when usage tracking is enabled.

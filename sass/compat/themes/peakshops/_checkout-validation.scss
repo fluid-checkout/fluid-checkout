@@ -1,9 +1,17 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
+
+
+@use "abstract" as *;
 // ------------------------------------
 // CHECKOUT VALIDATION MESSAGES
 // ------------------------------------
 
 // VALID FIELDS
-body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
+body#{ $body-theme-selector } div.woocommerce form .form-row.woocommerce-validated:not( [class*='woocommerce-invalid'] ) {
 
 	// "valid" field check icon for select fields which where supposed to be `select2` fields
 	&:not( .fc-no-validation-icon ).fc-select2-field .woocommerce-input-wrapper:after {
@@ -20,3 +28,4 @@ body#{ $_body-theme-selector } div.woocommerce form .form-row.woocommerce-valida
 	}
 
 }
+

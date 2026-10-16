@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT STEP ACTIONS
 // ------------------------------------
 
-body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not( [disabled] ):not( .disabled ) {
+body#{ $body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step:not( [disabled] ):not( .disabled ) {
 	&:hover,
 	&:focus,
 	&:active {

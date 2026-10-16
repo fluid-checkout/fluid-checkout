@@ -1,19 +1,24 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
+
+
+
+
 // ------------------------------------
-$_body-page-selector:                  '.woocommerce-add-payment-method' !default;
-
-
-
-
-	
+// LOAD STYLES
 // ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"clearfix",
-	"fc-hidden",
-	"buttons--add-payment-method",
-
-	"checkout-payment-methods",
-	"account-payment-methods";
+@use "scope-add-payment-method-page" as scope;
+@forward "clearfix" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "fc-hidden" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "buttons--add-payment-method" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-payment-methods" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "account-payment-methods" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);

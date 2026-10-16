@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT CONTENT AREA
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce .columns {
+body#{ $body-theme-selector } .woocommerce .columns {
 	overflow-x: hidden;
 }

@@ -1,14 +1,19 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // ORDER SUMMARY
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order .product-quantity,
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order .product-total,
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order .cart-subtotal th,
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order .order-total th,
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order .shipping th, 
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order .about_paypal, 
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order .product-total .woocommerce-Price-amount,
-body#{ $_body-theme-selector } .woocommerce-checkout-review-order tfoot th {
+body#{ $body-theme-selector } .woocommerce-checkout-review-order .product-quantity,
+body#{ $body-theme-selector } .woocommerce-checkout-review-order .product-total,
+body#{ $body-theme-selector } .woocommerce-checkout-review-order .cart-subtotal th,
+body#{ $body-theme-selector } .woocommerce-checkout-review-order .order-total th,
+body#{ $body-theme-selector } .woocommerce-checkout-review-order .shipping th, 
+body#{ $body-theme-selector } .woocommerce-checkout-review-order .about_paypal, 
+body#{ $body-theme-selector } .woocommerce-checkout-review-order .product-total .woocommerce-Price-amount,
+body#{ $body-theme-selector } .woocommerce-checkout-review-order tfoot th {
 	color: var(--the7-h1-color); // Needed to use theme variable to match its styles
 }

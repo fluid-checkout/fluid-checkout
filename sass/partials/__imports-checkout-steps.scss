@@ -1,29 +1,57 @@
 // ------------------------------------
-// DEFINE LOCAL VARIABLES
-// ------------------------------------
-$_body-page-selector:                  '.woocommerce-checkout' !default;
-
 
 
 
 
 // ------------------------------------
-// IMPORT STYLES
+// LOAD STYLES
 // ------------------------------------
-@import
-	"checkout-progress-bar",
-	"discount-sections",
-	"checkout-steps",
-	"checkout-login",
-	"checkout-create-account",
-	"checkout-billing",
-	"checkout-shipping",
-	"checkout-shipping-methods",
-	"checkout-payment-methods",
-	"checkout-place-order",
-	"checkout-sidebar",
-	"woocommerce-form-fields",
-	"woocommerce-password-visibility",
-	"woocommerce-form-fields-select2",
-	"woocommerce-form-fields-font-size",
-	"order-summary";
+@use "scope-checkout-steps" as scope;
+@forward "checkout-progress-bar" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "discount-sections" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-steps" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-login" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-create-account" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-billing" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-shipping" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-shipping-methods" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-payment-methods" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-place-order" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "checkout-sidebar" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-form-fields" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-password-visibility" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-form-fields-select2" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "woocommerce-form-fields-font-size" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);
+@forward "order-summary" hide $body-page-selector, $body-theme-selector, $order-review-selector with (
+	$body-page-selector: scope.$body-page-selector
+);

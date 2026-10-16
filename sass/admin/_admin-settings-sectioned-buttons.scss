@@ -1,3 +1,10 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
 // ------------------------------------
 // SETTINGS PAGE - SECTIONED BUTTONS
 // ------------------------------------
@@ -84,3 +91,4 @@
 .fc-settings-sectioned-buttons__option.is-disabled:hover {
 	background: transparent;
 }
+

@@ -36,6 +36,33 @@ var _translationErrors = [];
 var _translationErrorLimit = 5;
 var _translationAborted = false;
 
+// Dart Sass options passed through gulp-sass 6 (modern compile API).
+//
+// First-party stylesheets use @use / @forward. Tom Select, flyout-block, and
+// sticky-states still use @import inside sass/vendor/ bridge files. Those
+// partials sit on a load path; quietDeps hides their deprecation warnings.
+var _sassLogger = {
+	warn: function( message, options ) {
+		var spanUrl = options && options.span && options.span.url;
+		var pathname = spanUrl ? ( spanUrl.pathname || String( spanUrl ) ) : '';
+		if ( pathname.indexOf( 'node_modules' ) !== -1 ) {
+			return;
+		}
+		process.stderr.write( message + '\n' );
+	},
+	debug: function( message ) {
+		process.stderr.write( message + '\n' );
+	},
+};
+var _sassOptions = {
+	quietDeps: true,
+	loadPaths: [
+		path.resolve( 'sass' ),
+		path.resolve( 'sass/vendor' ),
+	],
+	logger: _sassLogger,
+};
+
 
 
 // Try loading local gulpfile settings
@@ -121,7 +148,7 @@ function processCss( src, dest ) {
 		.pipe(sassImportJson({
 			isScss: true
 		}))
-		.pipe(sass())
+		.pipe(sass( _sassOptions ))
 		.pipe(autoprefixer({ cascade: false }))
 		.pipe(rename({suffix: _assetsVersion}))
 		.pipe(gulp.dest( dest )) // save .css
@@ -137,7 +164,7 @@ function processCssDev( src, dest ) {
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
 		.pipe(sassImportJson({ isScss: true }))
-		.pipe(sass())
+		.pipe(sass( _sassOptions ))
 		.pipe(autoprefixer({ cascade: false }))
 		.pipe(rename({ suffix: _assetsVersion }))
 		.pipe(gulp.dest( dest )) // save .css

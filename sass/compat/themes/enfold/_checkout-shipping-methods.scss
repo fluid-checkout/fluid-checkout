@@ -1,9 +1,14 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
-body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text,
-body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price,
-body#{ $_body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price span {
+body#{ $body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-text,
+body#{ $body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price,
+body#{ $body-theme-selector } .woocommerce ul#shipping_method .shipping-method__option .shipping-method__option-price span {
 	color: inherit;
 }

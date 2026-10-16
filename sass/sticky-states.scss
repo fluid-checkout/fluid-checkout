@@ -1,17 +1,4 @@
-// ------------------------------------
-// IMPORT ABSTRACT
-// ------------------------------------
-@import
-	"abstract/_all-early",
-	"abstract/_all";
-@import	"../node_modules/sticky-states/sass/abstract/variables";
+@use 'sass:meta';
+@use 'abstract' as *;
 
-
-
-
-	
-// ------------------------------------
-// IMPORT STYLES
-// ------------------------------------
-@import
-	"../node_modules/sticky-states/sass/theme/sticky-states";
+@include meta.load-css('sticky-states-theme');

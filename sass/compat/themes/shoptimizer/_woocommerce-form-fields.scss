@@ -1,7 +1,12 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // WOOCOMMERCE FORM FIELDS
 // ------------------------------------
 
-body#{ $_body-theme-selector } #payment .fc-payment-methods__wrapper .payment_methods li:last-child:not( .woocommerce-notice ) {
+body#{ $body-theme-selector } #payment .fc-payment-methods__wrapper .payment_methods li:last-child:not( .woocommerce-notice ) {
 	padding-bottom: 0;
 }

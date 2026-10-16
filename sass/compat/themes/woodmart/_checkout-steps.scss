@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT STEP ACTIONS
 // ------------------------------------
 
-body#{ $_body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
+body#{ $body-theme-selector }.has-checkout-layout--multi-step .fc-step__actions .fc-step__next-step {
 	color: var( --btn-accented-color, #fff );
 	box-shadow: var( --btn-accented-box-shadow, rgba( 0, 0, 0, 0.15 ) 0px -2px 0px 0px inset );
 	background-color: var( --btn-accented-bgcolor, #83b735 );

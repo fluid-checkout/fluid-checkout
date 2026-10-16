@@ -1,8 +1,13 @@
+$body-page-selector: null !default;
+$order-review-selector: null !default;
+
+$body-theme-selector: null !default;
+
 // ------------------------------------
 // CHECKOUT SHIPPING METHODS
 // ------------------------------------
 
 // Hide default radio elements with opacity to allow for keyboard navigation
-body#{ $_body-theme-selector } .shipping-method__option input[type="radio"] {
+body#{ $body-theme-selector } .shipping-method__option input[type="radio"] {
 	display: block !important; // Needed to override theme styles set with `!important`
 }

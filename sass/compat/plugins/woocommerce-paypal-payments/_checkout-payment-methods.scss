@@ -1,3 +1,9 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "abstract" as *;
+
 // ------------------------------------
 // CHECKOUT PAYMENT METHODS
 // ------------------------------------
@@ -13,3 +19,4 @@
 .fc-wrapper #ppcp-credit-card-gateway-card-cvc {
 	margin-right: 0 !important; // Needed to override the margin set by the plugin at runtime
 }
+
