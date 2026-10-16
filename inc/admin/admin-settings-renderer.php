@@ -670,7 +670,10 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
 		$this->output_field_start( $value );
 		?>
-		<span class="colorpickpreview" style="background: <?php echo esc_attr( $value[ 'value' ] ); ?>">&nbsp;</span>
+		<?php
+		$color_preview_background = '' !== trim( (string) $value[ 'value' ] ) ? $value[ 'value' ] : 'transparent';
+		?>
+		<span class="colorpickpreview" style="background: <?php echo esc_attr( $color_preview_background ); ?>">&nbsp;</span>
 		<input
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
 			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"

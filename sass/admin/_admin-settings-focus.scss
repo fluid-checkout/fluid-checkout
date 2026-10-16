@@ -1,0 +1,16 @@
+// ------------------------------------
+// SETTINGS PAGE - FOCUS OUTLINE (IRIS)
+// ------------------------------------
+
+.fc-settings-wrap .iris-picker .ui-square-handle:focus,
+.fc-settings-wrap .iris-picker .iris-strip .ui-slider-handle:focus {
+	border-color: $fc-settings-focus-outline-color;
+	border-style: solid;
+	box-shadow: none;
+	@include fc-admin-settings-focus-outline();
+}
+
+.fc-settings-wrap .iris-picker .iris-palette:focus {
+	box-shadow: none;
+	@include fc-admin-settings-focus-outline();
+}

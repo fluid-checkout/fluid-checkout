@@ -894,7 +894,7 @@
 		// Bail if FCUtils is not available
 		if ( ! window.FCUtils ) { return; }
 
-		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.SAVE === event.key.toLowerCase();
+		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.S === event.key.toLowerCase();
 
 		// Bail if the save shortcut was not pressed
 		if ( ! isSaveShortcut ) { return; }

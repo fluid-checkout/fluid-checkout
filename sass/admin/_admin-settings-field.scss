@@ -264,10 +264,11 @@
 .fc-settings-field__control input[type="number"]:focus,
 .fc-settings-field__control input[type="search"]:focus,
 .fc-settings-field__control select:focus,
-.fc-settings-field__control textarea:focus {
+.fc-settings-field__control textarea:focus,
+.fc-settings-field__control .colorpick:focus {
 	border-color: $fc-settings-input-border-color-focus;
-	outline: 1px solid $fc-settings-input-border-color-focus;
 	box-shadow: none;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-field__control input::placeholder,
@@ -416,7 +417,7 @@ input.fc-settings-toggle--round:checked:disabled + label,
 }
 
 input.fc-settings-toggle--round:focus + label {
-	box-shadow: 0 0 0 1px $white, 0 0 0 3px $fc-settings-nav-focus-outline-color;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-switch--disabled .fc-settings-toggle + label {
@@ -456,8 +457,8 @@ input.fc-settings-toggle--round:focus + label {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: $fc-settings-info-tip-size;
-	height: $fc-settings-info-tip-size;
+	width: $fc-settings-info-icon-hit-size;
+	height: $fc-settings-info-icon-hit-size;
 	vertical-align: text-top;
 }
 
@@ -470,7 +471,7 @@ input.fc-settings-toggle--round:focus + label {
 	@media ( min-width: $fc-settings-content-max-width ) {
 		position: absolute;
 		top: 15px;
-		right: -15px;
+		right: calc( -1 * #{$fc-settings-info-icon-hit-size} / 2 - 3px );
 		left: auto;
 		margin: 0;
 	}
@@ -488,7 +489,7 @@ input.fc-settings-toggle--round:focus + label {
 .rtl .fc-settings-field__label > .fc-settings-info-tip {
 	@media ( min-width: $fc-settings-content-max-width ) {
 		right: auto;
-		left: -15px;
+		left: calc( -1 * #{$fc-settings-info-icon-hit-size} / 2 - 3px );
 	}
 }
 
@@ -501,9 +502,12 @@ input.fc-settings-toggle--round:focus + label {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	width: $fc-settings-info-icon-hit-size;
+	height: $fc-settings-info-icon-hit-size;
 	margin: 0;
 	padding: 0;
 	border: 0;
+	border-radius: 50%;
 	background: transparent;
 	color: $fc-settings-info-tip-color;
 	cursor: pointer;
@@ -520,6 +524,10 @@ input.fc-settings-toggle--round:focus + label {
 .fc-settings-info-tip.is-open .fc-settings-info-tip__button,
 .fc-settings-info-tip__button:focus {
 	color: $fc-settings-info-tip-color-hover;
+}
+
+.fc-settings-info-tip__button:focus {
+	@include fc-admin-settings-info-icon-focus-outline();
 }
 
 .fc-settings-info-tip__content {

@@ -48,7 +48,7 @@
 .fc-settings-radio-option input {
 	flex: 0 0 auto;
 	margin: 0;
-	accent-color: $fc-settings-nav-focus-outline-color;
+	accent-color: $fc-settings-focus-outline-color;
 	outline: none;
 	box-shadow: none;
 }
@@ -73,13 +73,11 @@
 .fc-settings-radio-option:has( input:checked ) {
 	background: $fc-settings-nav-link-active-background;
 	font-weight: 600;
-	outline: 2px solid $fc-settings-nav-focus-outline-color;
-	outline-offset: 2px;
+	@include fc-admin-settings-selected-option-outline();
 }
 
 .fc-settings-radio-option:has( input:focus-visible ) {
-	outline: 2px solid $fc-settings-nav-focus-outline-color;
-	outline-offset: 2px;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-radio-option.is-disabled {

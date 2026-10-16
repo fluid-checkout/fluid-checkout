@@ -187,6 +187,22 @@ $fc-settings-sidebar-header-height-compact: $fc-settings-sidebar-toggle-size + (
 
 
 // ----------------------------------------
+// ADMIN - SETTINGS PAGE FOCUS
+
+$fc-settings-input-border-color-focus:      #00aadc !default;
+$fc-settings-focus-outline-color:           $fc-settings-input-border-color-focus !default;
+$fc-settings-focus-outline-width:           2px !default;
+$fc-settings-focus-outline-offset:          0.5px !default;
+$fc-settings-selected-option-outline-color: $fc-settings-text-color !default;
+
+// END - ADMIN - SETTINGS PAGE FOCUS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // ADMIN - SETTINGS PAGE NAV
 
 $fc-settings-nav-padding-y:                 6px !default;
@@ -199,7 +215,7 @@ $fc-settings-nav-pill-radius:               5px !default;
 $fc-settings-nav-link-hover-background:     $admin-muted-surface-background !default;
 $fc-settings-nav-link-active-background:    #e7edf1 !default;
 $fc-settings-nav-link-hover-color:          #3c4a55 !default;
-$fc-settings-nav-focus-outline-color:       #2271b1 !default;
+$fc-settings-nav-focus-outline-color:       $fc-settings-input-border-color-focus !default;
 $fc-settings-nav-marker-font-size:          13px !default;
 $fc-settings-nav-marker-color:              $admin-text-color-subtle !default;
 $fc-settings-nav-separator-margin:          10px 12px !default;
@@ -251,7 +267,6 @@ $fc-settings-input-font-size:               14px !default;
 $fc-settings-input-line-height:             26px !default;
 $fc-settings-input-border-radius:           5px !default;
 $fc-settings-input-border-color:            #cbd5e1 !default;
-$fc-settings-input-border-color-focus:      #00aadc !default;
 $fc-settings-input-background-color:        $white !default;
 $fc-settings-input-background-color-disabled: #edf2f5 !default;
 $fc-settings-input-color:                   $admin-text-color !default;
@@ -293,6 +308,7 @@ $fc-settings-toggle-background-checked-disabled: #8fd9ad !default;
 $fc-settings-toggle-knob-size:              18px !default;
 $fc-settings-toggle-knob-offset:            16px !default;
 $fc-settings-info-tip-size:                 18px !default;
+$fc-settings-info-icon-hit-size:            24px !default;
 $fc-settings-info-tip-color:                #b8cad7 !default;
 $fc-settings-info-tip-color-hover:          $admin-text-color !default;
 $fc-settings-info-tip-offset:               26px !default;
