@@ -2,8 +2,8 @@
 // TOM SELECT CONTROL
 // ------------------------------------
 
-body.breakdance div.woocommerce form .input-text,
-body.oxygen div.woocommerce form .input-text,
+body.breakdance div.woocommerce form .input-text:not( .qty ),
+body.oxygen div.woocommerce form .input-text:not( .qty ),
 body.breakdance div.woocommerce form .ts-wrapper.single .ts-control,
 body.oxygen div.woocommerce form .ts-wrapper.single .ts-control {
 	height: $form-field-height !important; // Needed to override Breakdance Woo Global Styler styles
