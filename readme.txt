@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
 * Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
 * Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
 * Improved: Use Tom Select for all dropdown fields on the Fluid Checkout settings page.
