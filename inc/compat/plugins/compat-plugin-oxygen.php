@@ -118,6 +118,9 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 		// Breakdance compat styles for Oxygen 6, the Breakdance plugin slug is not active
 		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_breakdance_compat_styles_for_oxygen_six' ), 10 );
 
+		// FC distraction-free checkout uses its own body template and omits Oxygen's `oxygen` body class
+		add_filter( 'body_class', array( $this, 'maybe_add_oxygen_body_class_for_oxygen_six' ), 20 );
+
 		// Themeless Oxygen pages (shortcode only) need FC content wrappers and container class
 		add_action( 'wp', array( $this, 'maybe_setup_themeless_page_wrappers_for_oxygen_six' ), 5 );
 		add_filter( 'fc_add_container_class', array( $this, 'keep_fc_container_class_for_oxygen_six' ), 20 );
@@ -194,6 +197,28 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 			add_shortcode( $checkout_shortcode_tag, array( FluidCheckout_CheckoutPageTemplate::instance(), 'output_checkout_shortcode_wrapper' ) );
 		}
 	}
+
+	/**
+	 * Add the `oxygen` body class when Oxygen 6 Breakdance compat styles apply.
+	 *
+	 * @param  array  $classes  Body classes.
+	 */
+	public function maybe_add_oxygen_body_class_for_oxygen_six( $classes ) {
+		// Bail if not applicable
+		if ( is_admin() || ! self::is_oxygen_six_with_breakdance_woocommerce() ) { return $classes; }
+
+		// Bail if not on a page that loads Breakdance checkout compat styles
+		if ( ! self::is_oxygen_six_breakdance_compat_styles_page() ) { return $classes; }
+
+		// Bail if class is already present
+		if ( in_array( 'oxygen', $classes, true ) ) { return $classes; }
+
+		$classes[] = 'oxygen';
+
+		return $classes;
+	}
+
+
 
 	/**
 	 * Enqueue Breakdance plugin compat styles when only Oxygen 6 is active.
