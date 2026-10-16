@@ -53,6 +53,11 @@ class FluidCheckout_Settings_TrustSymbols {
 		// Bail if not the trust symbols section
 		if ( 'trust_symbols' !== $current_section ) { return $settings; }
 
+		/**
+		 * Filters the Trust badges settings.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters(
 			'fc_trust_symbols_settings',
 			array(

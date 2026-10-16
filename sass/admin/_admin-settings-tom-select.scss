@@ -4,6 +4,7 @@ $order-review-selector: null !default;
 
 @use "../abstract" as *;
 @use "../abstract/variables-admin" as *;
+@use "../abstract/variables-tom-select" as *;
 
 // ------------------------------------
 // SETTINGS PAGE - TOM SELECT
@@ -19,3 +20,60 @@ $order-review-selector: null !default;
 	min-height: $fc-settings-input-height;
 }
 
+
+
+
+.fc-settings-wrap .ts-wrapper.single .ts-control {
+	padding-#{ $alignment-right }: $fc-settings-select-caret-padding-right;
+	padding-#{ $alignment-left }: $ts-select-padding-left;
+}
+
+
+
+.fc-settings-wrap .ts-wrapper.single .ts-control::after,
+.fc-settings-wrap .ts-wrapper.single.dropdown-active .ts-control::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 50%;
+	#{ $alignment-right }: $fc-settings-select-caret-offset-x;
+	#{ $alignment-left }: auto;
+	transform: translateY( -50% );
+	width: $fc-settings-select-caret-size;
+	height: $fc-settings-select-caret-size;
+	margin-top: 0;
+	border: none;
+	background-color: transparent;
+	background-image: $fc-settings-select-caret-background;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	pointer-events: none;
+}
+
+
+
+.fc-settings-wrap .ts-wrapper.disabled.single .ts-control::after {
+	background-image: $fc-settings-select-caret-background-disabled;
+}
+
+
+
+.rtl .fc-settings-wrap .ts-wrapper.single .ts-control::after,
+.rtl .fc-settings-wrap .ts-wrapper.single.dropdown-active .ts-control::after {
+	#{ $alignment-right }: auto;
+	#{ $alignment-left }: $fc-settings-select-caret-offset-x;
+}
+
+
+
+.ts-dropdown.fc-settings-ts-dropdown {
+	z-index: $fc-settings-tom-select-dropdown-z-index !important; // Needed to stack above the fixed save bar
+}
+
+
+
+.ts-dropdown.fc-settings-ts-dropdown.fc-ts-dropdown--dropup {
+	border-top: $ts-select-dropdown-border;
+	border-bottom: 0 none;
+}

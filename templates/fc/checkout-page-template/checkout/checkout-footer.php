@@ -21,7 +21,14 @@ defined( 'ABSPATH' ) || exit;
 <footer class="fc-checkout-footer">
 	<div class="fc-widget-area fc-checkout-footer__inner fc-clearfix">
 
-		<?php do_action( 'fc_checkout_footer_widgets' ); ?>
+		<?php
+			/**
+			 * Fires where the checkout footer widget area is rendered.
+			 *
+			 * @since 1.6.1
+			 */
+			do_action( 'fc_checkout_footer_widgets' );
+		?>
 
 	</div>
 </footer>

@@ -81,6 +81,12 @@ class FluidCheckout_Settings_VATAssistant {
 	 */
 	public static function get_reverse_charge_countries_skip_list_options() {
 		$countries = function_exists( 'WC' ) ? WC()->countries->countries : array();
+
+		/**
+		 * Filters the country options for the VAT reverse charge exceptions setting.
+		 *
+		 * @since 5.0.0
+		 */
 		return apply_filters( 'fc_vat_reverse_charge_countries_skip_list_options', $countries );
 	}
 
@@ -143,6 +149,16 @@ class FluidCheckout_Settings_VATAssistant {
 		// Bail if not on the VAT Assistant section
 		if ( 'vat_number' !== $current_section ) { return $settings; }
 
+		/**
+		 * Filters the settings for one VAT Assistant section.
+		 *
+		 * The dynamic portion of the hook name, `$current_section`, refers to the settings section slug.
+		 * Possible hook names include:
+		 *
+		 * - `fc_vat_number_settings`
+		 *
+		 * @since 5.0.0
+		 */
 		$settings = apply_filters(
 			'fc_vat_' . $current_section . '_settings',
 			array_merge(

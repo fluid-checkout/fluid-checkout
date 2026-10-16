@@ -215,6 +215,20 @@ class FluidCheckout_Settings_Tools {
 
 			);
 
+			/**
+			 * Filters the settings for one Fluid Checkout admin section.
+			 *
+			 * The dynamic portion of the hook name, `$current_section`, refers to the settings section
+			 * slug. At this call the section is fixed by the surrounding condition.
+			 * Possible hook names include:
+			 *
+			 * - `fc_tools_settings`
+			 *
+			 * @since 1.3.1
+			 *
+			 * @param array  $settings        Settings to output.
+			 * @param string $current_section Current settings section slug. An empty string is the dashboard section.
+			 */
 			$settings = apply_filters( 'fc_'.$current_section.'_settings', $settings, $current_section );
 		}
 

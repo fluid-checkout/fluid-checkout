@@ -28,7 +28,7 @@ $order-review-selector: null !default;
 }
 
 .fc-dashboard-checklist__item + .fc-dashboard-checklist__item {
-	border-top: 1px solid rgba( 200, 215, 225, .4 );
+	border-top: 1px solid $admin-border-color;
 }
 
 
@@ -54,8 +54,8 @@ $order-review-selector: null !default;
 }
 
 .fc-dashboard-checklist__item.is-completed .fc-dashboard-checklist__marker {
-	border-color: #007a3d;
-	background: #007a3d;
+	border-color: $success-color;
+	background: $success-color;
 	color: $white;
 }
 

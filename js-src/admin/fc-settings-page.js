@@ -2,7 +2,7 @@
  * Manage Fluid Checkout admin settings page behavior (conditionals, actions bar).
  *
  * DEPENDS ON:
- * - None (vanilla JS)
+ * - FCUtils // Settings merge
  */
 
 (function (root, factory) {
@@ -27,6 +27,7 @@
 		conditionalFieldKeyAttribute:          'data-conditional-id',
 		conditionalFieldValueAttribute:        'data-conditional-value',
 
+		settingsFieldSelector:                 '.fc-settings-field',
 		settingsRowSelector:                   '.fc-settings-field, tr',
 		layoutOptionsSelector:                 '.fc-settings-sectioned-buttons, .fc-settings-radio-options',
 		layoutOptionSelector:                  '.fc-settings-sectioned-buttons__option, .fc-settings-radio-option',
@@ -37,69 +38,39 @@
 		actionsSelector:                       '.fc-settings-actions',
 		formSelector:                          '[data-fc-settings-form]',
 		saveButtonSelector:                    '[data-fc-settings-save]',
+		noticesSelector:                       '[data-fc-settings-notices]',
 		isBusyClass:                           'is-busy',
 		isPinnedClass:                         'is-pinned',
+		noticeVisibleClass:                    'is-visible',
+		noticeHidingClass:                     'is-hiding',
 
 		hiddenClass:                           'hidden',
 
+		syncedSelectAttribute:                 'data-fc-settings-sync-group',
+
+		ajaxUrl:                               '',
+		saveAction:                            'fc_settings_save',
+		noticeDismissDelayMs:                  5000,
+		noticeHideTransitionMs:                300,
+
 		i18n: {
 			saving:                            'Saving...',
+			save:                              'Save settings',
+			saved:                             'Your settings have been saved.',
+			saveError:                         'Settings could not be saved. Please try again.',
+			dismissNotice:                     'Dismiss notice',
 		},
 	};
 	var _triggerFieldIds = [];
 	var _actionsSyncScheduled = false;
+	var _isSavingSettings = false;
+	var _settingsNoticeTimeout = null;
 
 
 
 	/**
 	 * METHODS
 	 */
-
-
-
-	/*!
-	* Merge two or more objects together.
-	* (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	* @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	* @param   {Object}   objects  The objects to merge together
-	* @returns {Object}            Merged values of defaults and options
-	*/
-	var extend = function () {
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-	};
-
-
 
 	/**
 	 * Get the field value based on field type.
@@ -143,7 +114,9 @@
 		}
 
 		return fieldValue;
-	}
+	};
+
+
 
 	/**
 	 * Get the conditional trigger key for an element (id or name, without field id prefix).
@@ -166,7 +139,9 @@
 		}
 
 		return '';
-	}
+	};
+
+
 
 	/**
 	 * Get the trigger field element by its full field id (with prefix).
@@ -194,7 +169,9 @@
 
 		// Fall back to element id
 		return document.getElementById( fieldId );
-	}
+	};
+
+
 
 	/**
 	 * Resolve the registered trigger field id for an event target element.
@@ -217,7 +194,9 @@
 		}
 
 		return null;
-	}
+	};
+
+
 
 	/**
 	 * Get the visibility container for a conditional field.
@@ -230,7 +209,7 @@
 		if ( ! element ) { return null; }
 
 		// Prefer the nearest settings field row
-		var settingsField = element.closest( '.fc-settings-field' );
+		var settingsField = element.closest( _settings.settingsFieldSelector );
 		if ( settingsField ) { return settingsField; }
 
 		// Fall back to a nested fieldset then a table row for WC embeds
@@ -238,7 +217,9 @@
 		if ( fieldset ) { return fieldset; }
 
 		return element.closest( 'tr' );
-	}
+	};
+
+
 
 	/**
 	 * Whether a container is currently hidden by conditional visibility.
@@ -251,7 +232,9 @@
 		if ( ! container ) { return false; }
 
 		return container.classList.contains( _settings.hiddenClass ) || 'none' === container.style.display;
-	}
+	};
+
+
 
 	/**
 	 * Whether a conditional field value matches the trigger value.
@@ -285,10 +268,13 @@
 		}
 
 		return false;
-	}
+	};
+
+
 
 	/**
-	 * Parse comma-separated trigger ids from a conditional field attribute.
+	 * Parse trigger ids from a conditional field attribute.
+	 * Pipe-separated ids use OR matching; comma-separated ids use AND matching.
 	 *
 	 * @param   {string}  conditionIds  Value of data-conditional-id.
 	 * @return  {Array}                 Trimmed non-empty trigger keys.
@@ -297,13 +283,15 @@
 		var parts;
 		var result = [];
 		var i;
+		var conditionIdsString;
 
 		// Bail if condition ids are missing
 		if ( null === conditionIds || undefined === conditionIds || '' === conditionIds ) {
 			return result;
 		}
 
-		parts = String( conditionIds ).split( ',' );
+		conditionIdsString = String( conditionIds );
+		parts = conditionIdsString.indexOf( '|' ) !== -1 ? conditionIdsString.split( '|' ) : conditionIdsString.split( ',' );
 		for ( i = 0; i < parts.length; i++ ) {
 			var part = parts[ i ].trim();
 			if ( part ) {
@@ -312,7 +300,21 @@
 		}
 
 		return result;
-	}
+	};
+
+
+
+	/**
+	 * Whether conditional ids in data-conditional-id should match with OR logic.
+	 *
+	 * @param   {string}  conditionIds  Value of data-conditional-id.
+	 * @return  {boolean}
+	 */
+	var isConditionalOrMatch = function( conditionIds ) {
+		return null !== conditionIds && undefined !== conditionIds && String( conditionIds ).indexOf( '|' ) !== -1;
+	};
+
+
 
 	/**
 	 * Whether a conditional field lists the given trigger key in data-conditional-id.
@@ -336,16 +338,63 @@
 		}
 
 		return false;
-	}
+	};
+
+
+
+	/**
+	 * Evaluate whether any pipe-separated conditional id/value pair matches (OR).
+	 *
+	 * @param   {Element}  conditionalField  The conditional field element.
+	 * @return  {boolean}
+	 */
+	var doAnyConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIds;
+		var conditionValuesRaw;
+		var i;
+		var triggerElement;
+		var triggerFieldRow;
+
+		// Bail if element is not valid
+		if ( ! conditionalField ) { return false; }
+
+		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
+
+		// Bail if no trigger ids
+		if ( ! conditionIds.length ) { return false; }
+
+		for ( i = 0; i < conditionIds.length; i++ ) {
+			triggerElement = getTriggerFieldElement( _settings.fieldIdPrefix + conditionIds[ i ] );
+
+			// Skip if trigger is missing
+			if ( ! triggerElement ) { continue; }
+
+			triggerFieldRow = getConditionalContainer( triggerElement );
+			if ( triggerFieldRow && isContainerHidden( triggerFieldRow ) ) {
+				continue;
+			}
+
+			if ( doesConditionalValueMatch( conditionValuesRaw, getFieldValue( triggerElement ) ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+
 
 	/**
 	 * Evaluate whether all conditional id/value pairs currently match (AND).
 	 * A single id with a comma-separated value list still uses OR matching for that value.
+	 * Pipe-separated ids in data-conditional-id use OR matching across triggers.
 	 *
 	 * @param   {Element}  conditionalField  The conditional field element.
 	 * @return  {boolean}
 	 */
 	var doAllConditionalConditionsMatch = function( conditionalField ) {
+		var conditionIdsRaw;
 		var conditionIds;
 		var conditionValuesRaw;
 		var conditionValues;
@@ -357,11 +406,17 @@
 		// Bail if element is not valid
 		if ( ! conditionalField ) { return false; }
 
-		conditionIds = parseConditionalIds( conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute ) );
+		conditionIdsRaw = conditionalField.getAttribute( _settings.conditionalFieldKeyAttribute );
+		conditionIds = parseConditionalIds( conditionIdsRaw );
 		conditionValuesRaw = conditionalField.getAttribute( _settings.conditionalFieldValueAttribute );
 
 		// Bail if no trigger ids
 		if ( ! conditionIds.length ) { return false; }
+
+		// Pipe-separated trigger ids: any matching value shows the field
+		if ( isConditionalOrMatch( conditionIdsRaw ) ) {
+			return doAnyConditionalConditionsMatch( conditionalField );
+		}
 
 		// Single trigger: OR list in data-conditional-value (existing behavior)
 		if ( 1 === conditionIds.length ) {
@@ -394,7 +449,9 @@
 		}
 
 		return true;
-	}
+	};
+
+
 
 	/**
 	 * Whether the field row is a locked (disabled) settings field kept visible for discovery.
@@ -414,9 +471,9 @@
 		}
 
 		// Nested fieldsets still belong to a locked settings field row
-		settingsField = fieldRow.closest( '.fc-settings-field' );
+		settingsField = fieldRow.closest( _settings.settingsFieldSelector );
 		return !!( settingsField && settingsField.classList.contains( _settings.disabledFieldClass ) );
-	}
+	};
 
 
 
@@ -478,7 +535,7 @@
 			// this ensures that fields with nested conditions are displayed/hidden correctly.
 			maybeProcessConditionalFields( conditionalField );
 		}
-	}
+	};
 
 
 
@@ -529,7 +586,7 @@
 			// Process conditional fields
 			maybeProcessConditionalFields( fieldElement );
 		}
-	}
+	};
 
 
 
@@ -582,13 +639,14 @@
 	 * @param   {Event}  event  The click event.
 	 */
 	var handleClick = function( event ) {
+		var triggerFieldId;
+
 		// CONDITIONAL FIELDS TRIGGER
-		var triggerFieldId = resolveTriggerFieldId( event.target );
+		triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 	/**
 	 * Sync selected class on layout / template option buttons.
@@ -617,6 +675,120 @@
 	};
 
 	/**
+	 * Get the sync group key for a settings control.
+	 *
+	 * @param   {Element}  element  The form control.
+	 * @return  {string}            Group key, or an empty string.
+	 */
+	var getSyncedSelectGroup = function( element ) {
+		// Bail if element is not valid
+		if ( ! element || ! element.getAttribute ) { return ''; }
+
+		return element.getAttribute( _settings.syncedSelectAttribute ) || '';
+	};
+
+	/**
+	 * Get every control in a sync group, including controls inside tabs hidden on load.
+	 * Inactive settings tabs stay in the DOM, so a hidden copy can still be updated.
+	 *
+	 * @param   {string}  group  Sync group key.
+	 * @return  {Array}          Matching elements.
+	 */
+	var getSyncedSelects = function( group ) {
+		var all;
+		var matches = [];
+		var i;
+
+		// Bail if group is missing
+		if ( ! group ) { return matches; }
+
+		all = document.querySelectorAll( '[' + _settings.syncedSelectAttribute + ']' );
+
+		// Keep controls that belong to this group
+		for ( i = 0; i < all.length; i++ ) {
+			if ( group === all[ i ].getAttribute( _settings.syncedSelectAttribute ) ) {
+				matches.push( all[ i ] );
+			}
+		}
+
+		return matches;
+	};
+
+	/**
+	 * Copy a select value to the other controls in its sync group.
+	 *
+	 * @param   {Element}  source  The select the merchant changed, or the submitted select on load.
+	 */
+	var syncMirroredSelectValue = function( source ) {
+		var group;
+		var mirrors;
+		var i;
+
+		// Bail if the control is not a select
+		if ( ! source || ! source.tagName || 'select' !== source.tagName.toLowerCase() ) { return; }
+
+		group = getSyncedSelectGroup( source );
+
+		// Bail if this select is not in a sync group
+		if ( ! group ) { return; }
+
+		mirrors = getSyncedSelects( group );
+
+		// Update the other copies without dispatching change, so this does not loop
+		for ( i = 0; i < mirrors.length; i++ ) {
+			if ( mirrors[ i ] === source ) { continue; }
+			if ( mirrors[ i ].value === source.value ) { continue; }
+
+			mirrors[ i ].value = source.value;
+		}
+	};
+
+	/**
+	 * Align each sync group with the select that is submitted.
+	 * Display-only copies have no name, so the named Checkout field is the source on load.
+	 */
+	var syncMirroredSelectsOnLoad = function() {
+		var selects;
+		var seen = {};
+		var i;
+		var j;
+		var group;
+		var mirrors;
+		var source;
+
+		selects = document.querySelectorAll( 'select[' + _settings.syncedSelectAttribute + ']' );
+
+		// Iterate groups once
+		for ( i = 0; i < selects.length; i++ ) {
+			group = getSyncedSelectGroup( selects[ i ] );
+
+			// Skip groups already synced
+			if ( ! group || seen[ group ] ) { continue; }
+
+			seen[ group ] = true;
+			mirrors = getSyncedSelects( group );
+			source = null;
+
+			// Prefer the select that posts with the form
+			for ( j = 0; j < mirrors.length; j++ ) {
+				if ( mirrors[ j ].name ) {
+					source = mirrors[ j ];
+					break;
+				}
+			}
+
+			// Fall back to the first control in the group
+			if ( ! source && mirrors.length ) {
+				source = mirrors[ 0 ];
+			}
+
+			if ( source ) {
+				syncMirroredSelectValue( source );
+			}
+		}
+	};
+
+	/**
 	 * Handle change events.
 	 *
 	 * @param   {Event}  event  The change event.
@@ -625,13 +797,15 @@
 		// LAYOUT OPTION SELECTED STATE
 		syncLayoutOptionSelectedState( event.target );
 
+		// SYNCED SELECTS
+		syncMirroredSelectValue( event.target );
+
 		// CONDITIONAL FIELDS TRIGGER
 		var triggerFieldId = resolveTriggerFieldId( event.target );
 		if ( triggerFieldId ) {
-			// Maybe process conditional fields
 			maybeProcessConditionalFields( event.target );
 		}
-	}
+	};
 
 
 
@@ -642,6 +816,38 @@
 	 */
 	var getSavingLabel = function() {
 		return _settings.i18n && _settings.i18n.saving ? _settings.i18n.saving : 'Saving...';
+	};
+
+	/**
+	 * Get the idle save button label from settings.
+	 *
+	 * @return  {string}  Save button label.
+	 */
+	var getSaveLabel = function() {
+		return _settings.i18n && _settings.i18n.save ? _settings.i18n.save : 'Save settings';
+	};
+
+
+
+	/**
+	 * Get the first save button that can submit the settings form.
+	 *
+	 * @return  {Element|null}  Save button, or null when saving is unavailable.
+	 */
+	var getActiveSaveButton = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+
+			if ( button.disabled || button.classList.contains( _settings.isBusyClass ) ) { continue; }
+
+			return button;
+		}
+
+		return null;
 	};
 
 	/**
@@ -684,6 +890,179 @@
 	};
 
 	/**
+	 * Restore save buttons after an AJAX save finishes.
+	 */
+	var resetSaveButtonsState = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+			button.classList.remove( _settings.isBusyClass );
+			button.disabled = false;
+			button.style.minWidth = '';
+			button.textContent = getSaveLabel();
+		}
+	};
+
+	/**
+	 * Get the active settings tab slug from the DOM.
+	 *
+	 * @return  {string}  Tab slug, or empty string when none is active.
+	 */
+	var getActiveSettingsTabSlug = function() {
+		var activeTab = document.querySelector( '.fc-settings-tab.is-active' );
+
+		if ( ! activeTab ) { return ''; }
+
+		return activeTab.getAttribute( 'data-fc-settings-tab' ) || '';
+	};
+
+	/**
+	 * Dismiss a floating save notice in the settings page header.
+	 *
+	 * @param   {Element}  notice  Notice element to dismiss.
+	 * @param   {Element}  host    Notice container element.
+	 */
+	var dismissSettingsSaveNotice = function( notice, host ) {
+		var hideTransitionMs;
+
+		if ( ! notice || ! host || ! host.contains( notice ) ) { return; }
+
+		if ( _settingsNoticeTimeout ) {
+			window.clearTimeout( _settingsNoticeTimeout );
+			_settingsNoticeTimeout = null;
+		}
+
+		hideTransitionMs = _settings.noticeHideTransitionMs;
+
+		notice.classList.remove( _settings.noticeVisibleClass );
+		notice.classList.add( _settings.noticeHidingClass );
+
+		window.setTimeout( function() {
+			if ( host.contains( notice ) ) {
+				host.removeChild( notice );
+			}
+		}, hideTransitionMs );
+	};
+
+	/**
+	 * Show a floating save notice in the settings page header.
+	 *
+	 * @param   {string}  type     Notice type: success or error.
+	 * @param   {string}  message  Notice message.
+	 */
+	var showSettingsSaveNotice = function( type, message ) {
+		var host = document.querySelector( _settings.noticesSelector );
+		var notice;
+		var noticeMessage;
+		var dismissButton;
+		var dismissLabel;
+		var dismissDelayMs;
+
+		if ( ! host || ! message ) { return; }
+
+		if ( _settingsNoticeTimeout ) {
+			window.clearTimeout( _settingsNoticeTimeout );
+			_settingsNoticeTimeout = null;
+		}
+
+		host.textContent = '';
+		notice = document.createElement( 'div' );
+		notice.className = 'fc-header__notice fc-header__notice--' + type;
+		notice.setAttribute( 'role', 'error' === type ? 'alert' : 'status' );
+
+		noticeMessage = document.createElement( 'span' );
+		noticeMessage.className = 'fc-header__notice-message';
+		noticeMessage.textContent = message;
+		notice.appendChild( noticeMessage );
+
+		dismissLabel = _settings.i18n && _settings.i18n.dismissNotice ? _settings.i18n.dismissNotice : 'Dismiss notice';
+		dismissButton = document.createElement( 'button' );
+		dismissButton.type = 'button';
+		dismissButton.className = 'fc-header__notice-dismiss';
+		dismissButton.setAttribute( 'aria-label', dismissLabel );
+		dismissButton.innerHTML = '<span class="dashicons dashicons-no-alt" aria-hidden="true"></span>';
+		dismissButton.addEventListener( 'click', function() {
+			dismissSettingsSaveNotice( notice, host );
+		} );
+		notice.appendChild( dismissButton );
+
+		host.appendChild( notice );
+
+		window.requestAnimationFrame( function() {
+			notice.classList.add( _settings.noticeVisibleClass );
+		} );
+
+		dismissDelayMs = _settings.noticeDismissDelayMs;
+
+		_settingsNoticeTimeout = window.setTimeout( function() {
+			dismissSettingsSaveNotice( notice, host );
+		}, dismissDelayMs );
+	};
+
+	/**
+	 * Save settings through admin AJAX.
+	 */
+	var saveSettingsViaAjax = function() {
+		var form;
+		var formData;
+		var activeTab;
+		var saveErrorMessage;
+		var savedMessage;
+
+		if ( _isSavingSettings ) { return; }
+
+		form = document.querySelector( _settings.formSelector );
+
+		// Bail if AJAX save is unavailable
+		if ( ! form || ! _settings.ajaxUrl ) { return; }
+
+		_isSavingSettings = true;
+		setSaveButtonsSavingState();
+
+		formData = new FormData( form );
+		formData.append( 'action', _settings.saveAction );
+
+		activeTab = getActiveSettingsTabSlug();
+		if ( activeTab ) {
+			formData.set( 'fc_settings_current_tab', activeTab );
+		}
+
+		saveErrorMessage = _settings.i18n && _settings.i18n.saveError ? _settings.i18n.saveError : 'Settings could not be saved. Please try again.';
+		savedMessage = _settings.i18n && _settings.i18n.saved ? _settings.i18n.saved : 'Your settings have been saved.';
+
+		window.fetch( _settings.ajaxUrl, {
+			method:      'POST',
+			body:        formData,
+			credentials: 'same-origin',
+		} )
+			.then( function( response ) {
+				return response.json();
+			} )
+			.then( function( response ) {
+				var message;
+
+				if ( response && response.success ) {
+					message = response.data && response.data.message ? response.data.message : savedMessage;
+					showSettingsSaveNotice( 'success', message );
+					return;
+				}
+
+				message = response && response.data && response.data.message ? response.data.message : saveErrorMessage;
+				showSettingsSaveNotice( 'error', message );
+			} )
+			.catch( function() {
+				showSettingsSaveNotice( 'error', saveErrorMessage );
+			} )
+			.finally( function() {
+				_isSavingSettings = false;
+				resetSaveButtonsState();
+			} );
+	};
+
+	/**
 	 * Handle settings form submit events.
 	 *
 	 * @param   {Event}  event  The submit event.
@@ -692,8 +1071,68 @@
 		// Bail if not the settings form
 		if ( ! event.target || ! event.target.matches || ! event.target.matches( _settings.formSelector ) ) { return; }
 
-		// Show saving state on save buttons
-		setSaveButtonsSavingState();
+		event.preventDefault();
+		saveSettingsViaAjax();
+	};
+
+
+
+	/**
+	 * Save settings when pressing Ctrl+S or Cmd+S.
+	 *
+	 * @param   {Event}  event  Keyboard event.
+	 */
+	var handleKeydown = function( event ) {
+		var form;
+		var saveButton;
+		var isSaveShortcut;
+		var target;
+		var inputType;
+
+		// Bail if FCUtils is not available
+		if ( ! window.FCUtils ) { return; }
+
+		// Prevent implicit form submit when pressing Enter in settings fields
+		if ( FCUtils.keyboardKeys.ENTER === event.key ) {
+			form = document.querySelector( _settings.formSelector );
+			target = event.target;
+
+			if ( form && target && form.contains( target ) && 'TEXTAREA' !== target.tagName ) {
+				if ( target.closest && target.closest( '.iris-picker' ) ) {
+					event.preventDefault();
+				}
+				else if ( 'SELECT' === target.tagName ) {
+					event.preventDefault();
+				}
+				else if ( 'INPUT' === target.tagName ) {
+					inputType = ( target.type || 'text' ).toLowerCase();
+
+					if ( -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( inputType ) ) {
+						event.preventDefault();
+					}
+				}
+			}
+		}
+
+		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.S === event.key.toLowerCase();
+
+		// Bail if the save shortcut was not pressed
+		if ( ! isSaveShortcut ) { return; }
+
+		form = document.querySelector( _settings.formSelector );
+		saveButton = getActiveSaveButton();
+
+		// Bail if the form or an enabled save button is missing
+		if ( ! form || ! saveButton ) { return; }
+
+		event.preventDefault();
+
+		if ( typeof form.requestSubmit === 'function' ) {
+			form.requestSubmit( saveButton );
+		}
+		else {
+			saveButton.click();
+		}
 	};
 
 
@@ -708,10 +1147,13 @@
 		if ( _hasInitialized ) { return; }
 
 		// Merge settings
-		_settings = extend( true, _settings, options );
+		_settings = FCUtils.extendObject( _settings, options );
 
 		// Initialize conditionals
 		initializeConditionals();
+
+		// Align shared selects, including copies inside tabs that are hidden on load
+		syncMirroredSelectsOnLoad();
 
 		// Pin the actions bar before the first paint settles
 		syncActionsBarPosition();
@@ -720,6 +1162,7 @@
 		window.addEventListener( 'click', handleClick, true );
 		window.addEventListener( 'change', handleChange, true );
 		window.addEventListener( 'submit', handleSubmit, true );
+		document.addEventListener( 'keydown', handleKeydown, true );
 		// Capture scroll: tall WP admin menu scroll must keep the bar on the viewport
 		window.addEventListener( 'scroll', scheduleActionsBarSync, true );
 		window.addEventListener( 'resize', scheduleActionsBarSync );

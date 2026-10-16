@@ -1,38 +1,44 @@
 /**
  * Info tip tooltips on the Fluid Checkout settings page.
+ *
+ * DEPENDS ON:
+ * - None (vanilla JS)
  */
+( function ( root, factory ) {
+	if ( typeof define === 'function' && define.amd ) {
+		define( [], factory( root ) );
+	}
+	else if ( typeof exports === 'object' ) {
+		module.exports = factory( root );
+	}
+	else {
+		root.FCAdminSettingsTooltips = factory( root );
+	}
+} )( typeof global !== 'undefined' ? global : this.window || this.global, function ( root ) {
 
-( function() {
 	'use strict';
 
+	var _hasInitialized = false;
+	var _publicMethods = {};
+	var _settings = {
+		tipSelector:                       '.fc-settings-info-tip',
+		buttonSelector:                    '.fc-settings-info-tip__button',
+		contentSelector:                   '.fc-settings-info-tip__content',
+		clipParentSelector:                '.fc-settings-content',
+		openClass:                         'is-open',
+		shiftProperty:                     '--fc-settings-info-tip-shift',
+		viewportPadding:                   8,
+	};
 	var openTip = null;
 	var hoveredTip = null;
-	var viewportPadding = 8;
-	var clipParentSelector = '.fc-settings-content';
 
 
 
 	/**
-	 * Close an open info tip.
-	 *
-	 * @param  {Element}  tip  Tip element to close.
+	 * METHODS
 	 */
-	var closeTip = function( tip ) {
-		// Bail if tip is not available
-		if ( ! tip ) { return; }
 
-		tip.classList.remove( 'is-open' );
-		clearTipPosition( tip );
 
-		var button = tip.querySelector( '.fc-settings-info-tip__button' );
-		if ( button ) {
-			button.setAttribute( 'aria-expanded', 'false' );
-		}
-
-		if ( openTip === tip ) {
-			openTip = null;
-		}
-	};
 
 	/**
 	 * Clear the viewport shift on a tip popup.
@@ -43,8 +49,39 @@
 		// Bail if tip is not available
 		if ( ! tip ) { return; }
 
-		tip.style.removeProperty( '--fc-settings-info-tip-shift' );
+		tip.style.removeProperty( _settings.shiftProperty );
 	};
+
+
+
+	/**
+	 * Close an open info tip.
+	 *
+	 * @param  {Element}  tip  Tip element to close.
+	 */
+	var closeTip = function( tip ) {
+		var button;
+
+		// Bail if tip is not available
+		if ( ! tip ) { return; }
+
+		tip.classList.remove( _settings.openClass );
+		clearTipPosition( tip );
+
+		button = tip.querySelector( _settings.buttonSelector );
+
+		// Maybe collapse the button state
+		if ( button ) {
+			button.setAttribute( 'aria-expanded', 'false' );
+		}
+
+		// Maybe clear the open tip reference
+		if ( openTip === tip ) {
+			openTip = null;
+		}
+	};
+
+
 
 	/**
 	 * Shift the tip popup horizontally so it stays inside the viewport and clip parent.
@@ -63,24 +100,24 @@
 		// Bail if tip is not available
 		if ( ! tip ) { return; }
 
-		content = tip.querySelector( '.fc-settings-info-tip__content' );
+		content = tip.querySelector( _settings.contentSelector );
 
 		// Bail if popup content is missing
 		if ( ! content ) { return; }
 
 		// Measure from the default centered position
-		tip.style.setProperty( '--fc-settings-info-tip-shift', '0px' );
+		tip.style.setProperty( _settings.shiftProperty, '0px' );
 		rect = content.getBoundingClientRect();
 
-		minLeft = viewportPadding;
-		maxRight = window.innerWidth - viewportPadding;
+		minLeft = _settings.viewportPadding;
+		maxRight = window.innerWidth - _settings.viewportPadding;
 
 		// Also keep the popup inside the settings scroll/clip container
-		clipParent = tip.closest( clipParentSelector );
+		clipParent = tip.closest( _settings.clipParentSelector );
 		if ( clipParent ) {
 			clipRect = clipParent.getBoundingClientRect();
-			minLeft = Math.max( minLeft, clipRect.left + viewportPadding );
-			maxRight = Math.min( maxRight, clipRect.right - viewportPadding );
+			minLeft = Math.max( minLeft, clipRect.left + _settings.viewportPadding );
+			maxRight = Math.min( maxRight, clipRect.right - _settings.viewportPadding );
 		}
 
 		shift = 0;
@@ -94,8 +131,10 @@
 			shift = maxRight - rect.right;
 		}
 
-		tip.style.setProperty( '--fc-settings-info-tip-shift', Math.round( shift ) + 'px' );
+		tip.style.setProperty( _settings.shiftProperty, Math.round( shift ) + 'px' );
 	};
+
+
 
 	/**
 	 * Reposition the tip that is currently visible (open or hovered).
@@ -117,6 +156,8 @@
 	 * @param  {Element}  tip  Tip element to open.
 	 */
 	var openTipElement = function( tip ) {
+		var button;
+
 		// Bail if tip is not available
 		if ( ! tip ) { return; }
 
@@ -125,10 +166,12 @@
 			closeTip( openTip );
 		}
 
-		tip.classList.add( 'is-open' );
+		tip.classList.add( _settings.openClass );
 		positionTipContent( tip );
 
-		var button = tip.querySelector( '.fc-settings-info-tip__button' );
+		button = tip.querySelector( _settings.buttonSelector );
+
+		// Maybe expand the button state
 		if ( button ) {
 			button.setAttribute( 'aria-expanded', 'true' );
 		}
@@ -144,7 +187,10 @@
 	 * @param  {Event}  e  Click event.
 	 */
 	var handleButtonClick = function( e ) {
-		var button = e.target.closest( '.fc-settings-info-tip__button' );
+		var button;
+		var tip;
+
+		button = e.target.closest( _settings.buttonSelector );
 
 		// Bail if click was not on a tip button
 		if ( ! button ) { return; }
@@ -152,13 +198,13 @@
 		e.preventDefault();
 		e.stopPropagation();
 
-		var tip = button.closest( '.fc-settings-info-tip' );
+		tip = button.closest( _settings.tipSelector );
 
 		// Bail if tip wrapper is not available
 		if ( ! tip ) { return; }
 
 		// TOGGLE TIP
-		if ( tip.classList.contains( 'is-open' ) ) {
+		if ( tip.classList.contains( _settings.openClass ) ) {
 			closeTip( tip );
 		}
 		// Otherwise open the tip
@@ -193,7 +239,7 @@
 	 */
 	var handleKeydown = function( e ) {
 		// Bail if Escape was not pressed or no tip is open
-		if ( 'Escape' !== e.key || ! openTip ) { return; }
+		if ( ! window.FCUtils || FCUtils.keyboardKeys.ESC !== e.key || ! openTip ) { return; }
 
 		closeTip( openTip );
 	};
@@ -206,7 +252,7 @@
 	 * @param  {Event}  e  Mouse event.
 	 */
 	var handleTipMouseOver = function( e ) {
-		var tip = e.target.closest( '.fc-settings-info-tip' );
+		var tip = e.target.closest( _settings.tipSelector );
 
 		// Bail if the event is not inside a tip
 		if ( ! tip ) { return; }
@@ -218,13 +264,15 @@
 		positionTipContent( tip );
 	};
 
+
+
 	/**
 	 * Clear hover tracking when the pointer leaves the tip.
 	 *
 	 * @param  {Event}  e  Mouse event.
 	 */
 	var handleTipMouseOut = function( e ) {
-		var tip = e.target.closest( '.fc-settings-info-tip' );
+		var tip = e.target.closest( _settings.tipSelector );
 
 		// Bail if the event is not inside a tip
 		if ( ! tip ) { return; }
@@ -238,10 +286,12 @@
 		}
 
 		// Keep the shift while the tip stays open from a click
-		if ( tip.classList.contains( 'is-open' ) ) { return; }
+		if ( tip.classList.contains( _settings.openClass ) ) { return; }
 
 		clearTipPosition( tip );
 	};
+
+
 
 	/**
 	 * Position the tip popup when its button receives focus.
@@ -249,13 +299,15 @@
 	 * @param  {Event}  e  Focus event.
 	 */
 	var handleTipFocusIn = function( e ) {
-		var button = e.target.closest( '.fc-settings-info-tip__button' );
+		var button;
 		var tip;
+
+		button = e.target.closest( _settings.buttonSelector );
 
 		// Bail if focus was not on a tip button
 		if ( ! button ) { return; }
 
-		tip = button.closest( '.fc-settings-info-tip' );
+		tip = button.closest( _settings.tipSelector );
 
 		// Bail if tip wrapper is not available
 		if ( ! tip ) { return; }
@@ -268,19 +320,27 @@
 	/**
 	 * Initialize info tip event listeners.
 	 */
-	var init = function() {
-		document.addEventListener( 'click', handleButtonClick );
-		document.addEventListener( 'click', handleDocumentClick );
-		document.addEventListener( 'keydown', handleKeydown );
-		document.addEventListener( 'mouseover', handleTipMouseOver );
-		document.addEventListener( 'mouseout', handleTipMouseOut );
-		document.addEventListener( 'focusin', handleTipFocusIn );
+	_publicMethods.init = function() {
+		// Bail if already initialized
+		if ( _hasInitialized ) { return; }
+
+		document.addEventListener( 'click', handleButtonClick, true );
+		document.addEventListener( 'click', handleDocumentClick, true );
+		document.addEventListener( 'keydown', handleKeydown, true );
+		document.addEventListener( 'mouseover', handleTipMouseOver, true );
+		document.addEventListener( 'mouseout', handleTipMouseOut, true );
+		document.addEventListener( 'focusin', handleTipFocusIn, true );
 		window.addEventListener( 'resize', syncVisibleTipPosition );
 		window.addEventListener( 'scroll', syncVisibleTipPosition, true );
+
+		_hasInitialized = true;
 	};
 
 
 
-	init();
+	//
+	// Public APIs
+	//
+	return _publicMethods;
 
-} )();
+} );

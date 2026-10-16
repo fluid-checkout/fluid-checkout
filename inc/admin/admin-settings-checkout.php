@@ -52,6 +52,13 @@ class FluidCheckout_Settings_Checkout {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'checkout' === $current_section ) {
 
+			/**
+			 * Filters the checkout settings fields.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_checkout_general_settings',
 				array(
@@ -609,27 +616,19 @@ class FluidCheckout_Settings_Checkout {
 
 					array(
 						'title'                 => __( 'Shipping methods', 'fluid-checkout' ),
-						'desc'                  => '',
+						'desc'                  => __( 'This setting is shared between the Checkout and Local pickup sections. On the Local pickup section, it also decides whether the Ship/Pickup selector shows inside the shipping method section (before the address) or as a separate section (after).', 'fluid-checkout' ),
 						'desc_tip'              => __( 'Choose in which position to display the shipping methods section.', 'fluid-checkout' ),
 						'id'                    => 'fc_shipping_methods_substep_position',
 						'type'                  => 'select',
+						'custom_attributes'     => array(
+							'data-fc-settings-sync-group' => 'fc_shipping_methods_substep_position',
+						),
 						'options'               => array(
 							'before_shipping_address' => __( 'Before shipping address', 'fluid-checkout' ),
 							'after_shipping_address'  => __( 'After shipping address', 'fluid-checkout' ),
 						),
 						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_substep_position' ),
 						'autoload'              => false,
-					),
-
-					array(
-						'desc'                  => FluidCheckout_Admin::instance()->get_pro_feature_option_html( true ) . __( 'Prevent automatic selection of the first shipping method', 'fluid-checkout' ),
-						'desc_tip'              => __( 'When enabled, the first shipping method available will not be automatically selected when no other shipping method was previously selected for each shipping package. <br>This option will be automatically enabled if the option for clearing the selected shipping method is enabled for the Local Pickup feature.', 'fluid-checkout' ),
-						'id'                    => 'fc_shipping_methods_disable_auto_select',
-						'type'                  => 'checkbox',
-						'default'               => FluidCheckout_Settings::instance()->get_option_default( 'fc_shipping_methods_disable_auto_select' ),
-						'autoload'              => false,
-						'disabled'              => true,
-						'requires'              => 'pro',
 					),
 
 					array(

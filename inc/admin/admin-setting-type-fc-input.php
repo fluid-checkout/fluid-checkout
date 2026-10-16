@@ -48,21 +48,31 @@ class FluidCheckout_Admin_SettingType_Input extends FluidCheckout {
 		$field_description = $renderer->get_field_description( $value );
 		$suffix_label = isset( $value[ 'suffix_label' ] ) ? $value[ 'suffix_label' ] : '';
 		$has_suffix_label = '' !== $suffix_label;
+		$accessible_name = '';
+
+		// Use the suffix as the accessible name when the field has no title
+		if ( '' === $value[ 'title' ] && $has_suffix_label ) {
+			$accessible_name = $suffix_label;
+		}
 
 		$renderer->output_field_start( $value );
 
+		// Group the input with its suffix label
 		if ( $has_suffix_label ) {
 			echo '<span class="fc-settings-input-group fc-settings-input-group--split">';
 		}
 		?>
 		<input
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $renderer->get_field_html_id( $value ) ); ?>"
 			type="<?php echo esc_attr( $input_type ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
+			<?php if ( '' !== $accessible_name ) : ?>
+				aria-label="<?php echo esc_attr( $accessible_name ); ?>"
+			<?php endif; ?>
 			<?php echo $renderer->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			<?php disabled( $renderer->is_field_disabled( $value ) ); ?>
 		/>

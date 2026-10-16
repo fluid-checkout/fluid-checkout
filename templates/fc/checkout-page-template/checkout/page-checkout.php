@@ -27,16 +27,55 @@ else {
 }
 
 // Get page title
+/**
+ * Filters the checkout page title.
+ *
+ * @since 4.0.0
+ *
+ * @param mixed $title Title text.
+ */
 $esc_title = sanitize_text_field( apply_filters( 'fc_checkout_page_title', get_the_title() ) );
 ?>
 
-<?php do_action( 'fc_checkout_before_main_section_wrapper' ); ?>
+<?php
+	/**
+	 * Fires before the main checkout section wrapper.
+	 *
+	 * @since 3.1.9
+	 */
+	do_action( 'fc_checkout_before_main_section_wrapper' );
+?>
 
-<div class="fc-content <?php echo esc_attr( apply_filters( 'fc_content_section_class', '' ) ); ?>">
+<div class="fc-content <?php
+	/**
+	 * Filters extra CSS classes for the checkout content wrapper.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param string $classes CSS classes. Default empty string.
+	 */
+	echo esc_attr( apply_filters( 'fc_content_section_class', '' ) );
+?>">
 
-	<?php do_action( 'fc_checkout_before_main_section' ); ?>
+	<?php
+		/**
+		 * Fires before the main checkout section.
+		 *
+		 * @since 3.1.9
+		 */
+		do_action( 'fc_checkout_before_main_section' );
+	?>
 
-	<h1 class="fc-checkout__title <?php echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : ''; ?>"><?php echo $esc_title; // PHPCS: XSS ok. ?></h1>
+	<h1 class="fc-checkout__title <?php
+		/**
+		 * Filters whether the checkout page title is visible.
+		 *
+		 * @since 1.4.2
+		 *
+		 * @param bool $title Title text. Default false.
+		 */
+		echo false === apply_filters( 'fc_display_checkout_page_title', false ) ? 'screen-reader-text' : '';
+	?>"><?php echo $esc_title; // PHPCS: XSS ok. ?></h1>
 
 	<?php
 	// Load the checkout page content
@@ -46,11 +85,25 @@ $esc_title = sanitize_text_field( apply_filters( 'fc_checkout_page_title', get_t
 	endwhile;
 	?>
 
-	<?php do_action( 'fc_checkout_after_main_section' ); ?>
+	<?php
+		/**
+		 * Fires after the main checkout section.
+		 *
+		 * @since 3.1.9
+		 */
+		do_action( 'fc_checkout_after_main_section' );
+	?>
 
 </div>
 
-<?php do_action( 'fc_checkout_after_main_section_wrapper' ); ?>
+<?php
+	/**
+	 * Fires after the main checkout section wrapper.
+	 *
+	 * @since 3.1.9
+	 */
+	do_action( 'fc_checkout_after_main_section_wrapper' );
+?>
 
 <?php
 // Replace footer with our distraction free template

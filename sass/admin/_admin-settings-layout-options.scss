@@ -52,16 +52,26 @@ $order-review-selector: null !default;
 	cursor: pointer;
 }
 
-.fc-settings-radio-option input {
+.fc-settings-wrap .fc-settings-radio-option input[type="radio"] {
 	flex: 0 0 auto;
 	margin: 0;
-	accent-color: $fc-settings-nav-focus-outline-color;
+	width: $fc-settings-radio-size;
+	min-width: $fc-settings-radio-size;
+	height: $fc-settings-radio-size;
+	accent-color: $fc-settings-focus-outline-color;
 	outline: none;
 	box-shadow: none;
 }
 
-.fc-settings-radio-option input:focus,
-.fc-settings-radio-option input:focus-visible {
+// Keep desktop-sized radios on small screens; WP admin enlarges them below 782px
+.fc-settings-wrap .fc-settings-radio-option input[type="radio"]:checked::before {
+	width: $fc-settings-radio-dot-size;
+	height: $fc-settings-radio-dot-size;
+	margin: auto;
+}
+
+.fc-settings-wrap .fc-settings-radio-option input[type="radio"]:focus,
+.fc-settings-wrap .fc-settings-radio-option input[type="radio"]:focus-visible {
 	outline: none;
 	box-shadow: none;
 }
@@ -80,13 +90,11 @@ $order-review-selector: null !default;
 .fc-settings-radio-option:has( input:checked ) {
 	background: $fc-settings-nav-link-active-background;
 	font-weight: 600;
-	outline: 2px solid $fc-settings-nav-focus-outline-color;
-	outline-offset: 2px;
+	@include fc-admin-settings-selected-option-outline();
 }
 
 .fc-settings-radio-option:has( input:focus-visible ) {
-	outline: 2px solid $fc-settings-nav-focus-outline-color;
-	outline-offset: 2px;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-radio-option.is-disabled {

@@ -35,6 +35,7 @@ class FluidCheckout_Settings_WCAccounts {
 			'woocommerce_enable_guest_checkout',
 			'woocommerce_enable_checkout_login_reminder',
 			'woocommerce_enable_signup_and_login_from_checkout',
+			'woocommerce_enable_myaccount_registration',
 			'woocommerce_registration_generate_username',
 			'woocommerce_registration_generate_password',
 		);

@@ -51,7 +51,7 @@ class FluidCheckout_WooCartAbandonmentRecoveryPro extends FluidCheckout {
 		add_action( 'fc_checkout_after_step_shipping_fields_inside', array( $this, 'output_wcar_gdpr_phone_message_placeholder' ), 200 );
 		add_filter( 'fc_substep_shipping_address_text_lines', array( $this, 'maybe_add_gdpr_phone_consent_substep_text_line' ), 30 );
 		add_filter( 'fc_substep_billing_address_text_lines', array( $this, 'maybe_add_gdpr_phone_consent_substep_text_line' ), 30 );
-		add_action( 'fc_set_parsed_posted_data', array( $this, 'maybe_persist_gdpr_phone_consent_to_session' ), 20 );
+		add_filter( 'fc_set_parsed_posted_data', array( $this, 'maybe_persist_gdpr_phone_consent_to_session' ), 20 );
 		add_filter( 'woocommerce_update_order_review_fragments', array( $this, 'add_gdpr_phone_consent_hidden_fragment' ), 10 );
 	}
 

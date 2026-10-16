@@ -3,6 +3,7 @@ $body-theme-selector: null !default;
 $order-review-selector: null !default;
 
 @use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
 
 // ------------------------------------
 // ADMIN IMAGE UPLOADER
@@ -20,7 +21,7 @@ $order-review-selector: null !default;
 		position: relative;
 		text-align: center;
 		cursor: default;
-		border: 1px dashed #b4b9be;
+		border: 1px dashed $admin-ui-border-color;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;

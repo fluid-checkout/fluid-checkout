@@ -23,7 +23,7 @@ class FluidCheckout_ThemeCompat_Hub extends FluidCheckout {
 		add_filter( 'fc_add_container_class', '__return_false', 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Theme's "Payment" section in order summary
 		remove_action( 'woocommerce_checkout_order_review', 'liquid_heading_payment_method', 15 );

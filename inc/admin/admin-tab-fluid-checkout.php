@@ -2,7 +2,7 @@
 /**
  * Fluid Checkout Settings Page redirect stub for WooCommerce > Settings.
  *
- * @deprecated  Will be removed in version 6.0. Settings live under WP Admin > Fluid Checkout.
+ * @deprecated 5.0.0 Will be removed in version 6.0.0. Settings live under WP Admin > Fluid Checkout.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -14,7 +14,7 @@ if ( class_exists( 'FluidCheckout_Settings_WC_FluidCheckoutTab', false ) ) {
 /**
  * FluidCheckout_Settings_WC_FluidCheckoutTab.
  *
- * @deprecated  Will be removed in version 6.0.
+ * @deprecated 5.0.0 Will be removed in version 6.0.0.
  */
 class FluidCheckout_Settings_WC_FluidCheckoutTab extends WC_Settings_Page {
 
@@ -84,7 +84,7 @@ class FluidCheckout_Settings_WC_FluidCheckoutTab extends WC_Settings_Page {
 	/**
 	 * Output a notice that the settings have moved to the Fluid Checkout settings page.
 	 *
-	 * @deprecated  Will be removed in version 6.0.
+	 * @deprecated 5.0.0 Will be removed in version 6.0.0.
 	 */
 	public function output() {
 		global $current_section;
@@ -128,6 +128,13 @@ class FluidCheckout_Settings_WC_FluidCheckoutTab extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_settings( $current_section = '' ) {
+		/**
+		 * Filters the settings fields for one section of the Fluid Checkout settings page.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $current_section  Settings section slug.
+		 */
 		return apply_filters( 'fc_admin_settings', array(), $current_section );
 	}
 

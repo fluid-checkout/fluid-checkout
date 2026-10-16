@@ -37,7 +37,7 @@ class FluidCheckout_Settings_OrderReceived {
 		$sections = array_merge( $sections, array(
 			'order_received' => _x( 'Thank you', 'Settings section', 'fluid-checkout' ),
 		) );
-		
+
 		return $sections;
 	}
 
@@ -85,6 +85,13 @@ class FluidCheckout_Settings_OrderReceived {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'order_received' === $current_section ) {
 
+			/**
+			 * Filters the order received settings.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_pro_order_received_settings',
 				array_merge(

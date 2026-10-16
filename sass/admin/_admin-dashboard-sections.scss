@@ -3,6 +3,7 @@ $body-theme-selector: null !default;
 $order-review-selector: null !default;
 
 @use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
 
 // ------------------------------------
 // DASHBOARD SECTIONS
@@ -20,8 +21,8 @@ $order-review-selector: null !default;
 	margin-bottom: 20px;
 	padding: 30px;
 	border-radius: 13px;
-	background-color: #fff;
-	box-shadow: 0 2px 4px rgba( 0, 0, 0, .15 );
+	background-color: $white;
+	box-shadow: 0 2px 4px $elevation-shadow-medium;
 }
 
 .fc-dashboard-section__row-title {
@@ -45,5 +46,5 @@ $order-review-selector: null !default;
 	margin-bottom: 20px;
 	font-size: 16px;
 	font-weight: 500;
-	color: #666;
+	color: $admin-text-color-muted;
 }

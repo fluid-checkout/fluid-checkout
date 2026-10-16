@@ -53,9 +53,9 @@ $order-review-selector: null !default;
 }
 
 .fc-settings-nav__link:focus {
-	outline: none;
-	box-shadow: 0 0 0 2px $fc-settings-nav-focus-outline-color;
+	box-shadow: none;
 	color: $fc-settings-text-color;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-nav__item.is-active .fc-settings-nav__link {

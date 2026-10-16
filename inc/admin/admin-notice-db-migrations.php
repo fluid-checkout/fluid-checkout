@@ -66,7 +66,7 @@ class FluidCheckout_AdminNotices_DBMigrations extends FluidCheckout {
 			'title'           => __( 'Fluid Checkout database update', 'fluid-checkout' ),
 			'description'     => $description,
 			'paragraph_wrap'  => false,
-			'dismissable'     => false,
+			'dismissible'     => false,
 			'actions'         => array(
 				sprintf( '<a href="%s" class="button button-primary">%s</a>', $database_update_url, __( 'Update database', 'fluid-checkout' ) ),
 			),

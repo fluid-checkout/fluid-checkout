@@ -108,6 +108,13 @@ class FluidCheckout_WooCommerceExtraCheckoutFieldsForBrazil extends FluidCheckou
 				// CHANGE: Always set mailcheck feature as disabled because we already provide this feature
 				'mailcheck'            => 'no',
 				// CHANGE: Maybe disable masked input when International phone number feature is enabled
+				/**
+				 * Filters whether the Brazilian Market masked phone input is disabled.
+				 *
+				 * @since 3.0.5
+				 *
+				 * @param bool $value Value to filter. Default false.
+				 */
 				'maskedinput_phone'    => true === apply_filters( 'fc_compat_wcbcf_disable_marked_input_phone_feature', false ) ? 'no' : 'yes',
 				'maskedinput'          => isset( $settings['maskedinput'] ) ? 'yes' : 'no',
 				'person_type'          => absint( $settings['person_type'] ),

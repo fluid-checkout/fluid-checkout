@@ -2,12 +2,26 @@
  * Client-side tab navigation for the Fluid Checkout settings page.
  * Switches panels without a full page reload and keeps the URL in sync.
  * On narrow viewports, toggles the expandable settings menu.
+ *
+ * DEPENDS ON:
+ * - FCAdminSettingsPreview // Optional. Collapses the preview drawer when the nav changes.
  */
+( function ( root, factory ) {
+	if ( typeof define === 'function' && define.amd ) {
+		define( [], factory( root ) );
+	}
+	else if ( typeof exports === 'object' ) {
+		module.exports = factory( root );
+	}
+	else {
+		root.FCAdminSettingsNav = factory( root );
+	}
+} )( typeof global !== 'undefined' ? global : this.window || this.global, function ( root ) {
 
-( function() {
 	'use strict';
 
 	var _hasInitialized = false;
+	var _publicMethods = {};
 	var _navCompactMediaQuery = null;
 	var _settings = {
 		formSelector:           '[data-fc-settings-form]',
@@ -28,8 +42,16 @@
 		navLinkAttribute:       'data-fc-settings-nav-link',
 		labelOpenAttribute:     'data-label-open',
 		labelCloseAttribute:    'data-label-close',
+		settingsLinkSelector:   'a',
+		hrefAttribute:          'href',
 		navCompactBreakpoint:   980,
 	};
+
+
+
+	/**
+	 * METHODS
+	 */
 
 
 
@@ -40,10 +62,14 @@
 	 * @return  {string}       Tab slug, or empty string when missing.
 	 */
 	var getTabFromUrl = function( url ) {
+		var parsed;
+
 		try {
-			var parsed = new URL( url, window.location.origin );
+			parsed = new URL( url, window.location.origin );
 			return parsed.searchParams.get( 'tab' ) || '';
-		} catch ( err ) {
+		}
+		// Bail when the URL cannot be parsed
+		catch ( err ) {
 			return '';
 		}
 	};
@@ -78,14 +104,16 @@
 		// Bail if the link opens in a new browsing context
 		if ( link.target && '_self' !== String( link.target ).toLowerCase() ) { return ''; }
 
-		href = link.getAttribute( 'href' );
+		href = link.getAttribute( _settings.hrefAttribute );
 
 		// Bail if href is missing or is a non-navigation value
 		if ( ! href || 0 === href.indexOf( '#' ) || 0 === href.indexOf( 'javascript:' ) ) { return ''; }
 
 		try {
 			parsed = new URL( href, window.location.origin );
-		} catch ( err ) {
+		}
+		// Bail when the href cannot be parsed
+		catch ( err ) {
 			return '';
 		}
 
@@ -232,14 +260,18 @@
 		var saveButtons = document.querySelectorAll( _settings.saveButtonSelector );
 		var i;
 
+		// Maybe show or hide the sticky submit wrapper
 		if ( submit ) {
 			if ( canSave ) {
 				submit.removeAttribute( 'hidden' );
-			} else {
+			}
+			// Otherwise hide save actions for read-only tabs
+			else {
 				submit.setAttribute( 'hidden', '' );
 			}
 		}
 
+		// Iterate save buttons
 		for ( i = 0; i < saveButtons.length; i++ ) {
 			saveButtons[ i ].disabled = ! canSave;
 		}
@@ -257,6 +289,8 @@
 		var tabPanel = document.querySelector( '[' + _settings.tabAttribute + '="' + tab + '"]' );
 		var navItems = document.querySelectorAll( _settings.navItemSelector );
 		var form = document.querySelector( _settings.formSelector );
+		var tabPanels;
+		var panel;
 		var i;
 		var navItem;
 		var navLink;
@@ -265,11 +299,14 @@
 		// Bail if tab panel is not available
 		if ( ! tabPanel ) { return false; }
 
+		tabPanels = document.querySelectorAll( _settings.tabSelector );
+
 		// Update tab panels
-		document.querySelectorAll( _settings.tabSelector ).forEach( function( panel ) {
+		for ( i = 0; i < tabPanels.length; i++ ) {
+			panel = tabPanels[ i ];
 			isActive = panel === tabPanel;
 			panel.classList.toggle( _settings.activeClass, isActive );
-		} );
+		}
 
 		// Update sidebar navigation
 		for ( i = 0; i < navItems.length; i++ ) {
@@ -318,7 +355,7 @@
 	 * @param  {Event}  e  Click event.
 	 */
 	var handleNavClick = function( e ) {
-		var link = e.target.closest( 'a' );
+		var link = e.target.closest( _settings.settingsLinkSelector );
 		var tab;
 		var activePanel;
 
@@ -374,6 +411,20 @@
 	};
 
 	/**
+	 * Close the compact settings menu when pressing Escape.
+	 *
+	 * @param  {Event}  e  Keyboard event.
+	 */
+	var handleNavKeydown = function( e ) {
+		var sidebar = getSidebar();
+
+		// Bail if Escape was not pressed or the compact menu is closed
+		if ( ! window.FCUtils || FCUtils.keyboardKeys.ESC !== e.key || ! sidebar || ! sidebar.classList.contains( _settings.isNavExpandedClass ) ) { return; }
+
+		setNavExpanded( false );
+	};
+
+	/**
 	 * Collapse the compact nav when leaving the breakpoint.
 	 */
 	var handleNavCompactBreakpointChange = function() {
@@ -399,7 +450,7 @@
 	/**
 	 * Initialize settings tab navigation.
 	 */
-	var init = function() {
+	_publicMethods.init = function() {
 		var form;
 		var breakpoint;
 		var initialTab;
@@ -415,6 +466,7 @@
 
 		document.addEventListener( 'click', handleNavClick, true );
 		document.addEventListener( 'click', handleNavToggleClick, true );
+		document.addEventListener( 'keydown', handleNavKeydown, true );
 		window.addEventListener( 'popstate', handlePopState );
 		// Capture scroll from nested containers; keep the drawer aligned while sticky headers move
 		window.addEventListener( 'scroll', syncNavDrawerPosition, true );
@@ -446,10 +498,11 @@
 		_hasInitialized = true;
 	};
 
-	if ( 'loading' !== document.readyState ) {
-		init();
-	} else {
-		document.addEventListener( 'DOMContentLoaded', init );
-	}
 
-} )();
+
+	//
+	// Public APIs
+	//
+	return _publicMethods;
+
+} );

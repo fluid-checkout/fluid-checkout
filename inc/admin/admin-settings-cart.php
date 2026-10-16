@@ -52,6 +52,13 @@ class FluidCheckout_Settings_Cart {
 	public static function add_settings( $settings, $current_section ) {
 		if ( 'cart' === $current_section ) {
 
+			/**
+			 * Filters the cart settings.
+			 *
+			 * @since 3.0.0
+			 *
+			 * @param array $settings Settings to output.
+			 */
 			$settings = apply_filters(
 				'fc_pro_cart_settings',
 				array_merge(
@@ -215,6 +222,7 @@ class FluidCheckout_Settings_Cart {
 
 					array(
 						'id'                => 'fc_pro_enable_cart_cross_sells',
+						'title'             => __( 'Layout of cross-sell', 'fluid-checkout' ),
 						'desc'              => '',
 						'desc_tip'          => __( 'Layout of cross-sell items on the cart page.', 'fluid-checkout' ),
 						'type'              => 'fc_select',
@@ -233,6 +241,7 @@ class FluidCheckout_Settings_Cart {
 					),
 
 					array(
+						'title'             => __( 'Cross-sells displayed', 'fluid-checkout' ),
 						'desc'              => '',
 						'desc_tip'          => __( 'Number of cross-sell items to display on the cart page', 'fluid-checkout' ),
 						'id'                => 'fc_pro_cart_cross_sells_display_items_limit',

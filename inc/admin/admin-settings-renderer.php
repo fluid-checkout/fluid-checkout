@@ -3,8 +3,8 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Render settings arrays as cards and field rows on the Fluid Checkout settings page.
- * Uses the same settings arrays and field names as the WooCommerce settings API,
- * so values can be saved with `WC_Admin_Settings::save_fields()`.
+ * Uses the same settings arrays and field names as the WooCommerce settings API.
+ * Values are saved with `FluidCheckout_Settings::save_settings()`.
  */
 class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
@@ -132,6 +132,11 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			$value[ 'field_name' ] = $value[ 'id' ];
 		}
 
+		// Maybe set a unique HTML id when the same option is rendered more than once
+		if ( empty( $value[ 'html_id' ] ) ) {
+			$value[ 'html_id' ] = $value[ 'id' ];
+		}
+
 		// Maybe add the WooCommerce row class prefix
 		if ( ! empty( $value[ 'row_class' ] ) && 0 !== strpos( $value[ 'row_class' ], 'wc-settings-row-' ) ) {
 			$value[ 'row_class' ] = 'wc-settings-row-' . $value[ 'row_class' ];
@@ -140,6 +145,20 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		// Maybe get field value from saved options
 		if ( ! isset( $value[ 'value' ] ) && ! in_array( $value[ 'type' ], array( 'title', 'sectionend' ), true ) ) {
 			$value[ 'value' ] = $this->get_field_value( $value );
+		}
+
+		// Maybe add Tom Select class to dropdown fields
+		$dropdown_field_types = array(
+			'select',
+			'multiselect',
+			'multi_select_countries',
+			'fc_select',
+			'fc_multiselect',
+		);
+		if ( in_array( $value[ 'type' ], $dropdown_field_types, true ) ) {
+			if ( false === strpos( ' ' . $value[ 'class' ] . ' ', ' fc-enhanced-select ' ) ) {
+				$value[ 'class' ] = trim( $value[ 'class' ] . ' fc-enhanced-select' );
+			}
 		}
 
 		return $value;
@@ -163,6 +182,22 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		}
 
 		return FluidCheckout_Settings::instance()->get_option( $value[ 'id' ], $default );
+	}
+
+	/**
+	 * Get the HTML id for a settings field.
+	 * Defaults to the option id. Set `html_id` when the same option is rendered more than once.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param  array  $value  Settings field arguments.
+	 */
+	public function get_field_html_id( $value ) {
+		if ( ! empty( $value[ 'html_id' ] ) ) {
+			return $value[ 'html_id' ];
+		}
+
+		return isset( $value[ 'id' ] ) ? $value[ 'id' ] : '';
 	}
 
 
@@ -364,6 +399,26 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	}
 
 	/**
+	 * Append the experimental option label suffix when the field is marked as experimental.
+	 *
+	 * @param  array  $value  Settings field arguments.
+	 */
+	public function maybe_append_experimental_option_label( $value ) {
+		// Bail if field is not marked as experimental
+		if ( empty( $value[ 'experimental' ] ) ) { return $value; }
+
+		// Bail if admin helper is not available
+		if ( ! class_exists( 'FluidCheckout_Admin' ) ) { return $value; }
+
+		// Bail if field has no option label
+		if ( empty( $value[ 'desc' ] ) ) { return $value; }
+
+		$value[ 'desc' ] = FluidCheckout_Admin::instance()->append_experimental_to_option_label( $value[ 'desc' ] );
+
+		return $value;
+	}
+
+	/**
 	 * Whether the current settings page uses custom info tip icons for field descriptions.
 	 */
 	public function uses_info_tooltips() {
@@ -523,7 +578,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			<div class="fc-settings-field__label">
 				<?php if ( '' !== $value[ 'title' ] ) : ?>
 					<?php if ( $args[ 'label_for' ] && ! empty( $value[ 'id' ] ) ) : ?>
-						<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo esc_html( $value[ 'title' ] ); ?></label>
+						<label for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"><?php echo esc_html( $value[ 'title' ] ); ?></label>
 					<?php else : ?>
 						<span class="fc-settings-field__title"><?php echo esc_html( $value[ 'title' ] ); ?></span>
 					<?php endif; ?>
@@ -592,7 +647,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		?>
 		<input
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			type="<?php echo esc_attr( $value[ 'type' ] ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			value="<?php echo esc_attr( $value[ 'value' ] ); ?>"
@@ -615,10 +670,13 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 
 		$this->output_field_start( $value );
 		?>
-		<span class="colorpickpreview" style="background: <?php echo esc_attr( $value[ 'value' ] ); ?>">&nbsp;</span>
+		<?php
+		$color_preview_background = '' !== trim( (string) $value[ 'value' ] ) ? $value[ 'value' ] : 'transparent';
+		?>
+		<span class="colorpickpreview" style="background: <?php echo esc_attr( $color_preview_background ); ?>">&nbsp;</span>
 		<input
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			type="text"
 			dir="ltr"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
@@ -645,7 +703,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 		?>
 		<textarea
 			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			placeholder="<?php echo esc_attr( $value[ 'placeholder' ] ); ?>"
@@ -672,16 +730,14 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			$options = WC()->countries->countries;
 		}
 
-		// Use TomSelect for country multiselect fields
-		if ( 'multi_select_countries' === $value[ 'type' ] && empty( $value[ 'class' ] ) ) {
-			$value[ 'class' ] = 'fc-enhanced-select';
-		}
-
 		$this->output_field_start( $value );
+		$field_name = empty( $value[ 'display_only' ] ) ? $value[ 'field_name' ] . ( $is_multiselect ? '[]' : '' ) : '';
 		?>
 		<select
-			name="<?php echo esc_attr( $value[ 'field_name' ] ); ?><?php echo $is_multiselect ? '[]' : ''; ?>"
-			id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+			<?php if ( '' !== $field_name ) : ?>
+			name="<?php echo esc_attr( $field_name ); ?>"
+			<?php endif; ?>
+			id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 			style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
 			class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 			<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -775,6 +831,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 	 * @param  array  $value  Settings field arguments.
 	 */
 	public function output_field_checkbox( $value ) {
+		$value = $this->maybe_append_experimental_option_label( $value );
 		$field_description = $this->get_field_description( $value );
 		$has_title = '' !== $value[ 'title' ];
 		$has_legend = isset( $value[ 'legend' ] ) && '' !== $value[ 'legend' ];
@@ -806,7 +863,7 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 			<span class="fc-settings-switch<?php echo $is_disabled ? ' fc-settings-switch--disabled' : ''; ?>">
 				<input
 					name="<?php echo esc_attr( $field_name ); ?>"
-					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 					type="checkbox"
 					class="fc-settings-toggle fc-settings-toggle--round <?php echo esc_attr( $value[ 'class' ] ); ?>"
 					value="<?php echo esc_attr( $checkbox_value ); ?>"
@@ -814,16 +871,16 @@ class FluidCheckout_Admin_Settings_Renderer extends FluidCheckout {
 					<?php echo $this->get_custom_attributes_html( $value ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<?php disabled( $is_disabled ); ?>
 				/>
-				<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>"></label>
+				<label for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"></label>
 			</span>
 			<?php if ( ! empty( $field_description[ 'description' ] ) || '' !== $badge_html ) : ?>
-				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $value[ 'id' ] ); ?>"><?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
+				<label class="fc-settings-switch__text" for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"><?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
 			<?php endif; ?>
 		<?php else : ?>
-			<label for="<?php echo esc_attr( $value[ 'id' ] ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>">
 				<input
 					name="<?php echo esc_attr( $field_name ); ?>"
-					id="<?php echo esc_attr( $value[ 'id' ] ); ?>"
+					id="<?php echo esc_attr( $this->get_field_html_id( $value ) ); ?>"
 					type="checkbox"
 					class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
 					value="<?php echo esc_attr( $checkbox_value ); ?>"

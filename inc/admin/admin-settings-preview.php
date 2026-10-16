@@ -76,9 +76,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		);
 
 		/**
-		 * Filter preview page tabs on the Fluid Checkout settings page.
+		 * Filters preview page tabs on the Fluid Checkout settings page.
 		 *
-		 * @param  array  $pages  Map of page slug => args (`label`, `requires_pro`).
+		 * @since 5.0.0
 		 */
 		return apply_filters( 'fc_admin_settings_preview_pages', $pages );
 	}

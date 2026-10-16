@@ -10,7 +10,7 @@ $order-review-selector: null !default;
 // ------------------------------------
 
 .fc-settings-card--addons {
-	border: solid 2px #646970;
+	border: solid 2px $emphasis-border-color;
 }
 
 
@@ -57,15 +57,15 @@ $order-review-selector: null !default;
 }
 
 .fc-addons__item.fc-addons__item--bundle {
-	border: solid 2px #1E212B;
+	border: solid 2px $darker-grey;
 }
 
 .fc-addons__item.fc-addons__item--highlight {
-	border: solid 2px #646970;
+	border: solid 2px $emphasis-border-color;
 }
 
 .fc-addons__item.fc-addons__item--highlight-conversion {
-	border: solid 2px #0B7A6F;
+	border: solid 2px $conversion-kit-brand-color;
 }
 
 
@@ -150,7 +150,7 @@ $order-review-selector: null !default;
 	left: 0;
 	top: -5px;
 	font-size: 30px;
-	color: #007a3d;
+	color: $success-color;
 
 	// Copied from `.dashicons-before` and `.dashicons-yes`
 	content: "\f147";
@@ -226,9 +226,8 @@ $order-review-selector: null !default;
 	margin: 0;
 	text-align: center;
 	text-align-last: center;
-	// Override WP admin `select { max-width: 25rem; }` and related width limits
-	width: 100% !important;
-	max-width: 100% !important;
+	width: 100% !important; // Needed to override WP admin select width limits
+	max-width: 100% !important; // Needed to override WP admin select max-width
 }
 
 // Match stacked button spacing on the PRO / Bundle cards
@@ -246,8 +245,8 @@ $order-review-selector: null !default;
 	gap: 0;
 	width: 100%;
 	background: $white !important; // Needed to override settings-page / disabled button background
-	border-color: #007a3d !important; // Needed to override settings-page button border
-	color: #007a3d !important; // Needed to override settings-page button color
+	border-color: $success-color !important; // Needed to override settings-page button border
+	color: $success-color !important; // Needed to override settings-page button color
 	text-align: center;
 }
 
@@ -256,8 +255,8 @@ $order-review-selector: null !default;
 .fc-addons__item-actions .button.button--activated:disabled,
 .fc-addons__item-actions .button.button--activated.disabled {
 	background: $white !important; // Needed to keep Activated state on hover / disabled
-	border-color: #007a3d !important;
-	color: #007a3d !important;
+	border-color: $success-color !important; // Needed to keep Activated state on hover / disabled
+	color: $success-color !important; // Needed to keep Activated state on hover / disabled
 }
 
 .fc-addons__item-actions .button.button--activated::before {
@@ -280,7 +279,7 @@ $order-review-selector: null !default;
 	text-rendering: auto;
 	text-align: center;
 	vertical-align: middle;
-	color: #007a3d;
+	color: $success-color;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	// END - Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
@@ -292,16 +291,17 @@ $order-review-selector: null !default;
 
 // Install CTA keeps header button sizing; only color differs
 .fc-addons__item-actions .button.button-primary.button--install {
-	background: #007a3d;
-	border-color: #007a3d;
-	color: #fff;
+	background: $success-color;
+	border-color: $success-color;
+	color: $white;
 }
 
 .fc-addons__item-actions .button.button-primary.button--install:hover,
 .fc-addons__item-actions .button.button-primary.button--install:focus {
-	background: #006432;
-	border-color: #006432;
-	color: #fff;
+	background: $success-color;
+	border-color: $success-color;
+	box-shadow: inset 0 0 0 100vmax rgba( 0, 0, 0, .12 );
+	color: $white;
 }
 
 .fc-addons__item-action-notice {
@@ -316,15 +316,15 @@ $order-review-selector: null !default;
 }
 
 .fc-addons__item-action-notice--success {
-	background: #edfaef;
-	border: 1px solid #68de7c;
-	color: #007a3d;
+	background: $success-color-highlight;
+	border: 1px solid $success-color;
+	color: $success-color;
 }
 
 .fc-addons__item-action-notice--error {
-	background: #fcf0f1;
-	border: 1px solid #d63638;
-	color: #b32d2e;
+	background: $admin-muted-surface-background;
+	border: 1px solid $error-color;
+	color: $error-color;
 }
 
 

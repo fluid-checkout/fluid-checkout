@@ -29,6 +29,9 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		// Field types
 		add_action( 'fc_admin_settings_render_field_fc_setup', array( $this, 'output_field' ), 10 );
 
+		// Drop stored completion for add-on steps when the add-on plugin is inactive
+		add_action( 'admin_init', array( $this, 'maybe_prune_inactive_add_on_checklist_steps' ), 15 );
+
 		// Mark checklist steps when visiting related settings tabs
 		add_action( 'admin_init', array( $this, 'maybe_mark_checklist_steps_from_current_tab' ), 20 );
 	}
@@ -64,28 +67,25 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 				/* translators: %1$s: Cart settings URL. %2$s: Thank you settings URL. %3$s: Order pay settings URL. */
 				'label'      => sprintf( __( 'Enable optimized <a href="%1$s">cart</a>, <a href="%2$s">thank you</a> and <a href="%3$s">order pay</a> pages.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'cart' ) ), esc_url( $settings_page->get_settings_url( 'order_received' ) ), esc_url( $settings_page->get_settings_url( 'order_pay' ) ) ),
 				'badge'      => 'setup-optimized-pages',
-				'requires_pro' => true,
 			),
 			array(
 				'id'         => 'address_autocomplete',
 				/* translators: %s: Address autocomplete settings URL. */
 				'label'      => sprintf( __( 'Enable <a href="%s">address autocomplete</a> from Google Maps.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_autocomplete' ) ) ),
 				'badge'      => 'setup-address-autocomplete',
-				'requires_pro' => true,
 			),
 			array(
 				'id'         => 'address_book',
 				/* translators: %s: Address book settings URL. */
 				'label'      => sprintf( __( 'Enable multiple saved addresses with <a href="%s">address book</a>.', 'fluid-checkout' ), esc_url( $settings_page->get_settings_url( 'address_book' ) ) ),
 				'badge'      => 'setup-address-book',
-				'requires_pro' => true,
 			),
 		);
 
 		/**
-		 * Filter the getting-started checklist steps on the Dashboard.
+		 * Filters the getting-started checklist steps on the Dashboard.
 		 *
-		 * @param  array[]  $steps  Checklist steps with `id`, `label`, optional `badge`, and optional `requires_pro` keys.
+		 * @since 5.0.0
 		 */
 		return apply_filters( 'fc_setup_checklist_steps', $steps );
 	}
@@ -110,6 +110,45 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 
 	/**
+	 * Map getting-started checklist step ids to their add-on plugin basename.
+	 *
+	 * @param   string  $step_id  Step id.
+	 * @return  string  Plugin basename, or empty when the step is not tied to an add-on.
+	 */
+	public function get_checklist_add_on_plugin_file( $step_id ) {
+		$step_id = sanitize_key( $step_id );
+
+		$map = array(
+			'address_autocomplete'          => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
+			'fc_gaa_address_autocomplete'   => 'fc-google-address-autocomplete/fc-google-address-autocomplete.php',
+			'address_book'                  => 'fc-address-book/fc-address-book.php',
+		);
+
+		return array_key_exists( $step_id, $map ) ? $map[ $step_id ] : '';
+	}
+
+
+
+	/**
+	 * Whether the add-on plugin for a checklist step is active.
+	 *
+	 * @param   string  $step_id  Step id.
+	 * @return  bool
+	 */
+	public function is_checklist_add_on_plugin_active( $step_id ) {
+		$plugin_file = $this->get_checklist_add_on_plugin_file( $step_id );
+
+		// Steps without an add-on mapping are not gated by plugin activation
+		if ( '' === $plugin_file ) {
+			return true;
+		}
+
+		return FluidCheckout::instance()->is_plugin_activated( $plugin_file );
+	}
+
+
+
+	/**
 	 * Whether a checklist step is completed.
 	 *
 	 * @param   string  $step_id  Step id.
@@ -121,6 +160,16 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 		// Usage tracking is complete only when reporting is enabled
 		if ( 'tracking' === $step_id ) {
 			return 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled' );
+		}
+
+		// Add-on steps stay incomplete while the add-on plugin is inactive
+		if ( ! $this->is_checklist_add_on_plugin_active( $step_id ) ) {
+			return false;
+		}
+
+		// Address Autocomplete (fc-google-address-autocomplete step id on the Dashboard)
+		if ( 'fc_gaa_address_autocomplete' === $step_id ) {
+			return $this->is_address_autocomplete_step_complete( FluidCheckout_Settings::instance() );
 		}
 
 		// PRO feature steps: only complete while PRO is active, even if options stay enabled in the database
@@ -205,6 +254,28 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 
 
 	/**
+	 * Remove stored completion for add-on checklist steps when their plugin is inactive.
+	 */
+	public function maybe_prune_inactive_add_on_checklist_steps() {
+		$completed = $this->get_completed_steps();
+		$pruned    = array();
+
+		foreach ( $completed as $step_id ) {
+			// Keep steps that are not add-on gated or whose add-on is still active
+			if ( $this->is_checklist_add_on_plugin_active( $step_id ) ) {
+				$pruned[] = $step_id;
+			}
+		}
+
+		// Bail if nothing changed
+		if ( count( $pruned ) === count( $completed ) ) { return; }
+
+		update_option( self::CHECKLIST_OPTION, array_values( array_unique( $pruned ) ), false );
+	}
+
+
+
+	/**
 	 * Maybe mark checklist steps when visiting related settings tabs.
 	 */
 	public function maybe_mark_checklist_steps_from_current_tab() {
@@ -250,7 +321,7 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 			</div>
 
 			<div class="fc-settings-card__inner">
-				<p><?php echo wp_kses_post( __( '<strong>Great! Your checkout page is now running on Fluid Checkout.</strong>', 'fluid-checkout' ) . ' ' . __( 'Here are a few steps to get started:', 'fluid-checkout' ) ); ?></p>
+				<p><?php echo wp_kses_post( __( '<strong>Great! Your checkout page is now running on Fluid Checkout.</strong> Here are a few steps to get started:', 'fluid-checkout' ) ); ?></p>
 
 				<ol class="fc-dashboard-checklist">
 					<?php foreach ( $steps as $step ) : ?>
@@ -263,13 +334,17 @@ class FluidCheckout_Admin_SettingType_Setup extends FluidCheckout {
 						}
 
 						$badge_html = '';
-						if ( ! empty( $step['badge'] ) && class_exists( 'FluidCheckout_Admin' ) ) {
+						// Maybe show a PRO feature badge with pricing link
+						if ( ! empty( $step['badge'] ) ) {
 							$badge_html = FluidCheckout_Admin::instance()->get_pro_feature_badge_html( $step['badge'] );
 						}
 						?>
 						<li class="<?php echo esc_attr( $item_class ); ?>">
 							<span class="fc-dashboard-checklist__marker" aria-hidden="true"></span>
 							<span class="fc-dashboard-checklist__label"><?php echo wp_kses_post( isset( $step['label'] ) ? $step['label'] : '' ); ?></span>
+							<?php if ( $is_complete ) : ?>
+								<span class="screen-reader-text"><?php echo esc_html( __( 'Completed', 'fluid-checkout' ) ); ?></span>
+							<?php endif; ?>
 							<?php if ( ! empty( $badge_html ) ) : ?>
 								<span class="fc-dashboard-checklist__promo"><?php echo wp_kses_post( $badge_html ); ?></span>
 							<?php endif; ?>

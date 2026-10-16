@@ -1,0 +1,122 @@
+$body-page-selector: null !default;
+$body-theme-selector: null !default;
+$order-review-selector: null !default;
+
+@use "../abstract" as *;
+@use "../abstract/variables-admin" as *;
+
+// ------------------------------------
+// SETTINGS PAGE - HEADER SAVE NOTICES
+// ------------------------------------
+
+#fc-header .fc-header__notices {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	// Anchor the first line vertically; extra lines extend downward only
+	transform: translateX( -50% );
+	margin-top: -$fc-header-notice-vertical-anchor-offset;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	box-sizing: border-box;
+	width: fit-content;
+	max-width: calc( 100% - #{ $fc-header-notice-inline-inset * 2 } );
+	pointer-events: none;
+}
+
+#fc-header .fc-header__notice {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	box-sizing: border-box;
+	width: fit-content;
+	max-width: 100%;
+	padding: $fc-header-notice-padding-y 4px $fc-header-notice-padding-y 14px;
+	border-radius: 4px;
+	font-size: $fc-header-notice-font-size;
+	font-weight: 500;
+	line-height: $fc-header-notice-line-height;
+	box-shadow: 0 4px 16px rgba( 0, 0, 0, .12 );
+	opacity: 0;
+	transform: translateY( -6px );
+	transition: opacity .2s ease, transform .2s ease;
+	pointer-events: auto;
+}
+
+#fc-header .fc-header__notice-message {
+	flex: 0 1 auto;
+	min-width: 0;
+	text-align: center;
+	white-space: normal;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+#fc-header .fc-header__notice-dismiss {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: $fc-header-notice-dismiss-size;
+	height: $fc-header-notice-dismiss-size;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 2px;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	opacity: .75;
+	line-height: 1;
+	box-shadow: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#fc-header .fc-header__notice-dismiss:hover {
+	opacity: 1;
+}
+
+#fc-header .fc-header__notice-dismiss:focus {
+	outline: 0;
+	@include fc-admin-settings-focus-outline();
+}
+
+#fc-header .fc-header__notice-dismiss .dashicons {
+	@include admin-dashicon-styles();
+	font-size: 14px;
+	width: 14px;
+	height: 14px;
+	margin: 0;
+}
+
+#fc-header .fc-header__notice.is-visible {
+	opacity: 1;
+	transform: translateY( 0 );
+}
+
+#fc-header .fc-header__notice.is-hiding {
+	opacity: 0;
+	transform: translateY( -6px );
+}
+
+#fc-header .fc-header__notice--success {
+	background: #edfaef;
+	border: 1px solid #68de7c;
+	color: #1e4620;
+}
+
+#fc-header .fc-header__notice--error {
+	background: #fcf0f1;
+	border: 1px solid #f1aeb5;
+	color: #3c1518;
+}
+
+@media screen and ( max-width: $admin-breakpoint-mobile ) {
+	#fc-header .fc-header__notices {
+		max-width: calc( 100% - #{ $fc-header-notice-inline-inset-mobile * 2 } );
+	}
+}
