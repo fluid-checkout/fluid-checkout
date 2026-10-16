@@ -36,7 +36,10 @@ jQuery(document).ready(function() {
 		toggle_fields( $field.is(':checked'), use_transition );
 	}
 
-	// CHANGE: Add function to trigger update_checkout event
+	// CHANGE: Ask WooCommerce to recalculate the order totals so the reverse-charge VAT exemption
+	// is reflected in the summary when the business status or VAT # changes. Without this the
+	// update_checkout AJAX (which re-applies the exemption server-side) never fires for these fields.
+	// CHANGE: Rename refresh_totals to trigger_update_checkout and use captured/delegated events
 	var trigger_update_checkout = function() {
 		jQuery( document.body ).trigger( 'update_checkout' );
 	}
@@ -46,6 +49,9 @@ jQuery(document).ready(function() {
 
 	// CHANGE: Add event to manage checkout fragments update
 	jQuery( document.body ).on( 'change', '#wi_as_company', trigger_update_checkout );
+	// CHANGE: Delegated so it keeps working after WooCommerce refreshes the checkout. 'change' fires on blur,
+	// avoiding a recalculation (and VIES lookup) on every keystroke.
+	jQuery( document.body ).on( 'change', '#billing_company_wi_vat', trigger_update_checkout );
 	jQuery( document.body ).on( 'updated_checkout', trigger_toggle_fields );
 
 	toggle_fields(jQuery('#wi_as_company').is(':checked'))
