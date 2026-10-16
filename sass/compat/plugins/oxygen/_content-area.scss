@@ -1,0 +1,53 @@
+// ------------------------------------
+// CONTENT AREA
+// ------------------------------------
+// Oxygen 6 shortcode / themeless pages do not use a Breakdance section wrapper,
+// so FC needs the same max-width constraints as the checkout page template.
+
+@mixin oxygen-six-fc-contained-content {
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	max-width: $container-width-mobile;
+	padding-left: $container-spacing-mobile;
+	padding-right: $container-spacing-mobile;
+
+	@media (#{$bp-larger-than-tablet}) {
+		max-width: $container-width-tablet;
+		padding-left: $container-spacing-tablet;
+		padding-right: $container-spacing-tablet;
+	}
+
+	@media (#{$bp-larger-than-desktop}) {
+		max-width: $container-width-desktop;
+		padding-left: $container-spacing-desktop;
+		padding-right: $container-spacing-desktop;
+	}
+
+	@media (#{$bp-larger-than-desktop-medium}) {
+		max-width: $container-width-desktop-medium;
+		padding-left: $container-spacing-desktop-medium;
+		padding-right: $container-spacing-desktop-medium;
+	}
+
+	@media (#{$bp-larger-than-desktop-large}) {
+		max-width: $container-width-desktop-large;
+		padding-left: $container-spacing-desktop-large;
+		padding-right: $container-spacing-desktop-large;
+	}
+
+	@media (#{$bp-larger-than-desktop-extra-large}) {
+		max-width: $container-width-desktop-extra-large;
+		padding-left: $container-spacing-desktop-extra-large;
+		padding-right: $container-spacing-desktop-extra-large;
+	}
+}
+
+body.oxygen.woocommerce-checkout .fc-content.fc-container,
+body.oxygen.woocommerce-cart .fc-content.fc-container,
+body.oxygen.has-fc-order-received .fc-content.fc-container,
+body.oxygen.has-fc-order-pay .fc-wrapper.fc-container,
+body.oxygen.has-fc-view-order .fc-wrapper.fc-container {
+	@include oxygen-six-fc-contained-content;
+}
