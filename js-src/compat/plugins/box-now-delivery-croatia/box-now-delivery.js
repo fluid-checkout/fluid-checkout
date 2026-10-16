@@ -151,6 +151,7 @@
      * Attach click event listener to the BOX NOW Delivery button.
      */
     function attachButtonClickListener() {
+        // CHANGE: Removed direct $("#box_now_delivery_button").off('click') binding from upstream
         // CHANGE: Use captured event listener, instead of directly attaching it to the button.
         // Needed so the handler survives Fluid Checkout shipping method fragment refreshes.
         $( document )
