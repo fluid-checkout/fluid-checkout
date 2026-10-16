@@ -82,6 +82,79 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 
 
 	/**
+	 * Whether "Add" link button labels should be lowercased for the current locale.
+	 *
+	 * @return bool
+	 */
+	public function should_lowercase_add_link_label() {
+		// Get current locale
+		$locale = function_exists( 'determine_locale' ) ? determine_locale() : get_locale();
+		$locale = str_replace( '-', '_', $locale );
+
+		// Get language code (part before underscore)
+		$language = strtolower( strtok( $locale, '_' ) );
+
+		/**
+		 * Filters the locales and language codes that keep "Add" link labels capitalized.
+		 *
+		 * @since 5.0.0
+		 */
+		$preserve_case_languages = apply_filters(
+			'fc_optional_fields_link_label_preserve_case_languages',
+			array(
+				// Capitalize every noun
+				'de_DE', 'de_DE_formal', 'de_AT', 'de_CH', 'de_CH_informal', 'lb_LU',
+				// Turkish and Azerbaijani dotted/dotless i
+				'tr_TR', 'az', 'az_TR',
+				// Dutch IJ digraph
+				'nl_NL', 'nl_NL_formal', 'nl_BE',
+				// Greek: accents and final sigma
+				'el',
+				// Irish: mutation prefixes like tSeirbhís
+				'ga',
+				// Georgian: uppercase becomes heading-only capitals
+				'ka_GE',
+				// Lithuanian dotted i and Armenian ligature (rarely matters)
+				'lt_LT', 'hy',
+			)
+		);
+		$preserve_case_languages = array_map( 'strtolower', (array) $preserve_case_languages );
+		$locale_key = strtolower( $locale );
+
+		// Lowercase unless the language or the full locale preserves noun capitalization
+		$should_lowercase = ! in_array( $language, $preserve_case_languages, true ) && ! in_array( $locale_key, $preserve_case_languages, true );
+
+		/**
+		 * Filters whether "Add" link labels are lowercased for the current locale.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param  string  $locale    Current locale.
+		 * @param  string  $language  Language code.
+		 */
+		return (bool) apply_filters( 'fc_optional_fields_link_label_lowercase', $should_lowercase, $locale, $language );
+	}
+
+	/**
+	 * Maybe lowercase a label used in an "Add" link button.
+	 *
+	 * @param   string  $label  The field label.
+	 */
+	public function maybe_lowercase_add_link_label( $label ) {
+		// Bail if should not lowercase
+		if ( ! $this->should_lowercase_add_link_label() ) { return $label; }
+
+		// Lowercase with multibyte support when available
+		if ( function_exists( 'mb_strtolower' ) ) {
+			return mb_strtolower( $label, 'UTF-8' );
+		}
+
+		return strtolower( $label );
+	}
+
+
+
+	/**
 	 * Get the checkout fields args.
 	 *
 	 * @param   string  $field  Field html markup to be changed.
@@ -164,8 +237,8 @@ class FluidCheckout_CheckoutHideOptionalFields extends FluidCheckout {
 		$form_field_label = $args[ 'label' ];
 
 		// Maybe set field label as lowercase
-		if ( ( ! array_key_exists( 'optional_expand_link_lowercase', $args ) || false !== $args[ 'optional_expand_link_lowercase' ] ) && 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_optional_fields_link_label_lowercase' ) ) {
-			$form_field_label = strtolower( $form_field_label );
+		if ( ! array_key_exists( 'optional_expand_link_lowercase', $args ) || false !== $args[ 'optional_expand_link_lowercase' ] ) {
+			$form_field_label = $this->maybe_lowercase_add_link_label( $form_field_label );
 		}
 
 		// Get toggle label

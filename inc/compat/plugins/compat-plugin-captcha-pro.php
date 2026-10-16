@@ -93,7 +93,8 @@ class FluidCheckout_CaptchaPro extends FluidCheckout {
 
 			array(
 				'title'          => __( 'Captcha position', 'fluid-checkout' ),
-				'desc'           => __( 'Define the position to display the captcha section. Some positions might not work depending on the captcha type chosen.', 'fluid-checkout' ),
+				'desc'           => '',
+				'desc_tip'          => __( 'Define the position to display the captcha section. Some positions might not work depending on the captcha type chosen.', 'fluid-checkout' ),
 				'id'             => 'fc_integration_captcha_pro_captcha_position',
 				'type'           => 'select',
 				'options'        => array(

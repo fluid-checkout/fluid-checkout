@@ -1,0 +1,91 @@
+// ------------------------------------
+// SETTINGS PAGE - NAVIGATION
+// ------------------------------------
+
+.fc-settings-nav {
+	flex: 1 1 auto;
+	min-height: 0;
+	margin: 0;
+	padding: $fc-settings-nav-padding-y 0;
+	list-style: none;
+	// Scroll inside the pinned sidebar when the nav is taller than the viewport
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	// Compact drawer styles live in `_admin-settings-sidebar.scss`
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		flex: none;
+		min-height: 0;
+	}
+}
+
+.fc-settings-nav__item {
+	margin: $fc-settings-nav-item-margin;
+	padding: 0;
+}
+
+.fc-settings-nav__link {
+	display: flex;
+	align-items: center;
+	gap: $fc-settings-nav-link-gap;
+	width: 100%;
+	padding: $fc-settings-nav-link-padding;
+	border-radius: $fc-settings-nav-pill-radius;
+	box-sizing: border-box;
+	font-size: $fc-settings-nav-link-font-size;
+	line-height: $fc-settings-nav-link-line-height;
+	color: $fc-settings-text-color;
+	text-decoration: none;
+	box-shadow: none;
+	transition: background-color .12s ease, color .12s ease;
+}
+
+.fc-settings-nav__link:hover {
+	background-color: $fc-settings-nav-link-hover-background;
+	color: $fc-settings-nav-link-hover-color;
+}
+
+.fc-settings-nav__link:focus {
+	box-shadow: none;
+	color: $fc-settings-text-color;
+	@include fc-admin-settings-focus-outline();
+}
+
+.fc-settings-nav__item.is-active .fc-settings-nav__link {
+	background-color: $fc-settings-nav-link-active-background;
+	font-weight: 600;
+	color: $fc-settings-text-color;
+}
+
+
+
+.fc-settings-nav__marker {
+	flex: 0 0 auto;
+	display: inline-block;
+	font-size: $fc-settings-nav-marker-font-size;
+	line-height: 1;
+	color: $fc-settings-nav-marker-color;
+	transform: translateY( -2px );
+}
+
+.rtl .fc-settings-nav__marker {
+	transform: translateY( -2px ) scaleX( -1 );
+}
+
+.fc-settings-nav__item.is-active .fc-settings-nav__marker {
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-nav__label {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+
+
+.fc-settings-nav__separator {
+	height: 1px;
+	margin: $fc-settings-nav-separator-margin;
+	padding: 0;
+	background-color: $admin-separator-color;
+}

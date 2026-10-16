@@ -33,18 +33,19 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 * @param string $hook Current admin page hook.
 	 */
 	public function register_scripts_styles( $hook ) {
-		if ( ! $this->is_tools_settings_screen( $hook ) ) { return; }
+		if ( ! $this->is_settings_screen( $hook ) ) { return; }
 
 		// Scripts
-		wp_register_script( 'fc-admin-telemetry', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-telemetry' ), array( 'jquery', 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-telemetry', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-telemetry' ), array( 'fc-utils' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-telemetry', 'window.addEventListener("load",function(){FCAdminTelemetry.init(fcAdminTelemetrySettings);});' );
 		wp_localize_script(
 			'fc-admin-telemetry',
 			'fcAdminTelemetrySettings',
 			array(
-				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'nonce'   => wp_create_nonce( 'fc_telemetry_admin' ),
-				'i18n'    => array(
+				'ajaxUrl'         => admin_url( 'admin-ajax.php' ),
+				'nonce'           => wp_create_nonce( 'fc_telemetry_admin' ),
+				'isEnabledSaved'  => 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_telemetry_enabled', 'no' ),
+				'i18n'            => array(
 					'modalTitle'       => __( 'Site report preview', 'fluid-checkout' ),
 					'modalDescription' => __( 'This is the data that would be included in the next site environment report based on your current settings.', 'fluid-checkout' ),
 					'loading'          => __( 'Loading report preview...', 'fluid-checkout' ),
@@ -73,7 +74,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 * Output modal markup for the site report preview.
 	 */
 	public function output_modal_markup() {
-		if ( ! $this->is_tools_settings_screen() ) { return; }
+		if ( ! $this->is_settings_screen() ) { return; }
 		?>
 		<div id="fc-telemetry-modal" class="fc-telemetry-modal" aria-hidden="true">
 			<div class="fc-telemetry-modal__backdrop" data-fc-telemetry-close></div>
@@ -176,6 +177,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 					'message'       => $this->get_send_error_message( $result ),
 					'error_code'    => $error_code,
 					'response_code' => (int) ( $result['response_code'] ?? 0 ),
+					'is_enabled'    => ! empty( $result['is_enabled'] ),
 				),
 				400
 			);
@@ -195,7 +197,7 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 	 * Verify AJAX permissions and nonce.
 	 */
 	private function verify_ajax_request() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'install_plugins' ) ) {
 			wp_send_json_error(
 				array(
 					'message' => __( 'You are not allowed to manage site reports.', 'fluid-checkout' ),
@@ -268,34 +270,16 @@ class FluidCheckout_Admin_Telemetry extends FluidCheckout {
 
 
 	/**
-	 * Whether the current request is the Fluid Checkout Tools settings screen.
+	 * Whether the current request is a Fluid Checkout settings screen.
+	 * Scripts are loaded on every settings tab because the admin UI behaves like an SPA.
 	 *
 	 * @param string $hook_suffix Optional admin page hook suffix.
 	 */
-	private function is_tools_settings_screen( $hook_suffix = '' ) {
-		if ( ! empty( $hook_suffix ) && 'woocommerce_page_wc-settings' !== $hook_suffix ) {
-			return false;
-		}
+	private function is_settings_screen( $hook_suffix = '' ) {
+		// Bail if settings page class is not available
+		if ( ! class_exists( 'FluidCheckout_Admin_Settings_Page' ) ) { return false; }
 
-		if ( empty( $hook_suffix ) && function_exists( 'get_current_screen' ) ) {
-			$screen = get_current_screen();
-
-			if ( ! $screen || 'woocommerce_page_wc-settings' !== $screen->id ) {
-				return false;
-			}
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $_GET['tab'] ) || 'fc_checkout' !== sanitize_text_field( wp_unslash( $_GET['tab'] ) ) ) {
-			return false;
-		}
-
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $_GET['section'] ) || 'tools' !== sanitize_text_field( wp_unslash( $_GET['section'] ) ) ) {
-			return false;
-		}
-
-		return true;
+		return FluidCheckout_Admin_Settings_Page::instance()->is_settings_page();
 	}
 
 }

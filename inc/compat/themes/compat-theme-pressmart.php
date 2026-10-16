@@ -180,11 +180,12 @@ class FluidCheckout_ThemeCompat_PressMart extends FluidCheckout {
 				'title' => __( 'Theme Pressmart', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_pressmart_options',
+				'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/compat-theme-pressmart/' ),
 			),
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Pressmart theme on the checkout, cart and order received pages.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-pressmart/' ),
+				'desc'            => __( 'Output the checkout steps section from the Pressmart theme on the checkout, cart and order received pages.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_pressmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_pressmart_output_checkout_steps_section' ),

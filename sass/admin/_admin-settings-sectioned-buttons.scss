@@ -1,0 +1,86 @@
+// ------------------------------------
+// SETTINGS PAGE - SECTIONED BUTTONS
+// ------------------------------------
+
+.fc-settings-sectioned-buttons {
+	display: flex;
+	width: 100%;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+}
+
+.fc-settings-sectioned-buttons__option {
+	position: relative;
+	flex: 1 1 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	min-width: 0;
+	min-height: $fc-settings-input-height;
+	height: $fc-settings-input-height;
+	padding: 0 8px;
+	border: 0;
+	border-right: 1px solid $fc-settings-input-border-color;
+	background: transparent;
+	color: $fc-settings-text-color;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.2;
+	text-align: center;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.fc-settings-sectioned-buttons__option:first-child {
+	border-radius: $fc-settings-input-border-radius 0 0 $fc-settings-input-border-radius;
+}
+
+.fc-settings-sectioned-buttons__option:last-child {
+	border-right: 0;
+	border-radius: 0 $fc-settings-input-border-radius $fc-settings-input-border-radius 0;
+}
+
+.fc-settings-sectioned-buttons__option:only-child {
+	border-radius: $fc-settings-input-border-radius;
+}
+
+.fc-settings-sectioned-buttons__option input {
+	position: absolute !important; // Needed to override WP admin radio styles
+	display: block !important; // Needed to override WP admin radio styles
+	margin: 0 !important; // Needed to override WP admin radio styles
+	padding: 0 !important; // Needed to override WP admin radio styles
+	width: 1px; // Needs to be 1px to hide element visually but still allow for keyboard navigation
+	height: 1px; // Needs to be 1px to hide element visually but still allow for keyboard navigation
+	opacity: 0 !important; // Needed to override WP admin radio styles
+	pointer-events: none;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.fc-settings-sectioned-buttons__option:hover {
+	background: $fc-settings-nav-link-hover-background;
+}
+
+.fc-settings-sectioned-buttons__option:has( input:checked ) {
+	background: $fc-settings-nav-link-active-background;
+	color: $fc-settings-text-color;
+	font-weight: 600;
+}
+
+.fc-settings-sectioned-buttons__option:has( input:focus-visible ),
+.fc-settings-sectioned-buttons__option:focus-visible {
+	z-index: 1;
+	@include fc-admin-settings-focus-outline();
+}
+
+.fc-settings-sectioned-buttons__option.is-disabled {
+	cursor: not-allowed;
+	opacity: .5;
+}
+
+.fc-settings-sectioned-buttons__option.is-disabled:hover {
+	background: transparent;
+}

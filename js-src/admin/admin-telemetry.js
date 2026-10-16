@@ -2,7 +2,6 @@
  * Admin site report preview and send-now actions.
  *
  * DEPENDS ON:
- * - jQuery  // AJAX helpers
  * - FCUtils // Settings merge, keyboard keys
  */
 (function ( root, factory ) {
@@ -18,9 +17,6 @@
 })( typeof global !== 'undefined' ? global : this.window || this.global, function ( root ) {
 
 	'use strict';
-
-	var $ = jQuery;
-	var _hasJQuery = ( $ != null );
 
 	var _hasInitialized = false;
 	var _publicMethods = { };
@@ -73,12 +69,12 @@
 	};
 
 	var _isEnabled = false;
-	var $modal;
-	var $payload;
-	var $feedback;
-	var $sendButton;
-	var $inlineSendButton;
-	var $inlineFeedback;
+	var _modal = null;
+	var _payload = null;
+	var _feedback = null;
+	var _sendButton = null;
+	var _inlineSendButton = null;
+	var _inlineFeedback = null;
 
 
 
@@ -107,20 +103,26 @@
 	 * @return {Object} Form state with enabled flag and data groups.
 	 */
 	var getFormState = function() {
-		var enabled = $( _settings.enableCheckboxSelector ).is( ':checked' );
+		var enableCheckbox = document.querySelector( _settings.enableCheckboxSelector );
+		var enabled = !!( enableCheckbox && enableCheckbox.checked );
 		var groups = [ _settings.basicEnvironmentGroup ];
+		var groupCheckboxes;
+		var i;
+		var value;
 
 		// Maybe collect checked data groups when reporting is enabled
 		if ( enabled ) {
+			groupCheckboxes = document.querySelectorAll( _settings.dataGroupsCheckboxSelector );
+
 			// Iterate checked data group checkboxes
-			$( _settings.dataGroupsCheckboxSelector ).each( function() {
-				var value = $( this ).val();
+			for ( i = 0; i < groupCheckboxes.length; i++ ) {
+				value = groupCheckboxes[ i ].value;
 
 				// Maybe add a new group value
 				if ( value && -1 === groups.indexOf( value ) ) {
 					groups.push( value );
 				}
-			} );
+			}
 		}
 
 		return {
@@ -203,13 +205,13 @@
 
 
 	/**
-	 * Normalize error payload from an AJAX failure response.
+	 * Normalize error payload from a failed AJAX response.
 	 *
-	 * @param  {jqXHR}  xhr jQuery XHR object.
-	 * @return {Object} Normalized error payload.
+	 * @param  {Object|null}  payload  Parsed JSON response body.
+	 * @return {Object}                  Normalized error payload.
 	 */
-	var getSendErrorDataFromXhr = function( xhr ) {
-		var data = xhr && xhr.responseJSON ? xhr.responseJSON.data : null;
+	var getSendErrorDataFromResponse = function( payload ) {
+		var data = payload && payload.data ? payload.data : null;
 
 		// Maybe wrap a string payload
 		if ( 'string' === typeof data ) {
@@ -222,17 +224,67 @@
 
 
 	/**
+	 * POST to admin-ajax.php and parse a JSON response body.
+	 *
+	 * @param  {Object}  requestData  Form fields for the request.
+	 * @return {Promise}               Promise resolving to a parsed payload or null.
+	 */
+	var postAdminAjax = function( requestData ) {
+		var body = new window.URLSearchParams();
+		var key;
+
+		for ( key in requestData ) {
+			var value;
+			var j;
+
+			if ( ! Object.prototype.hasOwnProperty.call( requestData, key ) ) { continue; }
+
+			value = requestData[ key ];
+
+			// Serialize array values like jQuery admin-ajax requests
+			if ( Array.isArray( value ) ) {
+				for ( j = 0; j < value.length; j++ ) {
+					body.append( key + '[]', value[ j ] );
+				}
+			}
+			// Otherwise append a scalar field
+			else {
+				body.append( key, value );
+			}
+		}
+
+		return window.fetch( _settings.ajaxUrl, {
+			method:      'POST',
+			credentials: 'same-origin',
+			headers:     {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			},
+			body:        body.toString(),
+		} ).then( function( response ) {
+			return response.json().catch( function() {
+				return null;
+			} );
+		} ).catch( function() {
+			return null;
+		} );
+	};
+
+
+
+	/**
 	 * Show feedback below the preview payload or inline actions.
 	 *
-	 * @param {jQuery} $target Feedback element.
-	 * @param {string} message Feedback message.
-	 * @param {string} type    Feedback type.
+	 * @param {Element} target  Feedback element.
+	 * @param {string}  message Feedback message.
+	 * @param {string}  type    Feedback type.
 	 */
-	var showFeedback = function( $target, message, type ) {
-		$target
-			.text( message )
-			.removeClass( _settings.isErrorClass + ' ' + _settings.isSuccessClass + ' ' + _settings.isHiddenClass )
-			.addClass( getModifierClass( _settings.feedbackTypeClassTemplate, type ) );
+	var showFeedback = function( target, message, type ) {
+		// Bail if target is missing
+		if ( ! target ) { return; }
+
+		target.textContent = message;
+		target.classList.remove( _settings.isErrorClass, _settings.isSuccessClass, _settings.isHiddenClass );
+		target.classList.add( getModifierClass( _settings.feedbackTypeClassTemplate, type ) );
 	};
 
 
@@ -240,36 +292,37 @@
 	/**
 	 * Clear modal or inline feedback.
 	 *
-	 * @param {jQuery} $target Feedback element.
+	 * @param {Element} target Feedback element.
 	 */
-	var clearFeedback = function( $target ) {
-		$target = $target || $feedback;
+	var clearFeedback = function( target ) {
+		target = target || _feedback;
 
-		$target
-			.text( '' )
-			.removeClass( _settings.isErrorClass + ' ' + _settings.isSuccessClass )
-			.addClass( _settings.isHiddenClass );
+		// Bail if target is missing
+		if ( ! target ) { return; }
+
+		target.textContent = '';
+		target.classList.remove( _settings.isErrorClass, _settings.isSuccessClass );
+		target.classList.add( _settings.isHiddenClass );
 	};
 
 
 
 	/**
-	 * Show or hide the inline Send now button.
+	 * Enable or disable the inline Send now button.
+	 * Only the saved enabled state may enable the button — toggling the checkbox alone is not enough.
 	 *
-	 * @param {boolean} enabled Whether the enable checkbox is checked.
+	 * @param {boolean} enabled Whether reporting is saved as enabled.
 	 */
-	var updateInlineSendButtonVisibility = function( enabled ) {
+	var updateInlineSendButtonState = function( enabled ) {
 		// Bail if inline send button is not available
-		if ( ! $inlineSendButton.length ) { return; }
+		if ( ! _inlineSendButton ) { return; }
 
-		// Maybe show the inline send button
-		if ( enabled ) {
-			$inlineSendButton.removeClass( _settings.isHiddenClass );
-			return;
+		_inlineSendButton.disabled = ! enabled;
+
+		// Maybe clear feedback when the button is disabled
+		if ( ! enabled ) {
+			clearFeedback( _inlineFeedback );
 		}
-
-		$inlineSendButton.addClass( _settings.isHiddenClass );
-		clearFeedback( $inlineFeedback );
 	};
 
 
@@ -284,9 +337,11 @@
 			? ( _settings.i18n.sendNow || 'Send now' )
 			: ( _settings.i18n.enableAndSendNow || 'Enable and send now' );
 
-		$sendButton
-			.text( label )
-			.removeClass( _settings.isHiddenClass );
+		// Bail if send button is missing
+		if ( ! _sendButton ) { return; }
+
+		_sendButton.textContent = label;
+		_sendButton.classList.remove( _settings.isHiddenClass );
 	};
 
 
@@ -295,8 +350,15 @@
 	 * Show the loading state in the preview area.
 	 */
 	var setLoadingState = function() {
-		$payload.text( _settings.i18n.loading || 'Loading report preview...' );
-		$sendButton.addClass( _settings.isHiddenClass );
+		// Maybe show the loading message in the preview area
+		if ( _payload ) {
+			_payload.textContent = _settings.i18n.loading || 'Loading report preview...';
+		}
+
+		// Maybe hide the modal send button while loading
+		if ( _sendButton ) {
+			_sendButton.classList.add( _settings.isHiddenClass );
+		}
 	};
 
 
@@ -305,8 +367,18 @@
 	 * Open the modal dialog.
 	 */
 	var openModal = function() {
-		$modal.addClass( _settings.isOpenClass ).attr( _settings.ariaHiddenAttribute, 'false' );
-		$( _settings.bodySelector ).addClass( _settings.modalOpenBodyClass );
+		var body = document.querySelector( _settings.bodySelector );
+
+		// Bail if modal is missing
+		if ( ! _modal ) { return; }
+
+		_modal.classList.add( _settings.isOpenClass );
+		_modal.setAttribute( _settings.ariaHiddenAttribute, 'false' );
+
+		// Maybe lock page scroll while the modal is open
+		if ( body ) {
+			body.classList.add( _settings.modalOpenBodyClass );
+		}
 	};
 
 
@@ -317,8 +389,18 @@
 	 * @param {Event} _e Optional unused click event.
 	 */
 	var closeModal = function( _e ) {
-		$modal.removeClass( _settings.isOpenClass ).attr( _settings.ariaHiddenAttribute, 'true' );
-		$( _settings.bodySelector ).removeClass( _settings.modalOpenBodyClass );
+		var body = document.querySelector( _settings.bodySelector );
+
+		// Bail if modal is missing
+		if ( ! _modal ) { return; }
+
+		_modal.classList.remove( _settings.isOpenClass );
+		_modal.setAttribute( _settings.ariaHiddenAttribute, 'true' );
+
+		// Maybe restore page scroll
+		if ( body ) {
+			body.classList.remove( _settings.modalOpenBodyClass );
+		}
 	};
 
 
@@ -332,14 +414,24 @@
 	var handlePreviewResponse = function( response, formState ) {
 		// Maybe show a preview error
 		if ( ! response || ! response.success ) {
-			showFeedback( $feedback, getPreviewErrorMessage( response && response.data ), 'error' );
-			$payload.text( '' );
+			showFeedback( _feedback, getPreviewErrorMessage( response && response.data ), 'error' );
+
+			// Maybe clear the preview payload
+			if ( _payload ) {
+				_payload.textContent = '';
+			}
+
 			updateSendButton( _settings.enabledYesValue === formState.enabled );
 			return;
 		}
 
 		_isEnabled = !! response.data.is_enabled;
-		$payload.text( response.data.payload_json || '' );
+
+		// Maybe show the preview payload
+		if ( _payload ) {
+			_payload.textContent = response.data.payload_json || '';
+		}
+
 		updateSendButton( _isEnabled );
 	};
 
@@ -348,12 +440,17 @@
 	/**
 	 * Handle a failed preview AJAX request.
 	 *
-	 * @param {jqXHR}  xhr       jQuery XHR object.
-	 * @param {Object} formState Form state used for the request.
+	 * @param {Object|null} response  Parsed JSON response body.
+	 * @param {Object}      formState Form state used for the request.
 	 */
-	var handlePreviewFailure = function( xhr, formState ) {
-		showFeedback( $feedback, getPreviewErrorMessage( getSendErrorDataFromXhr( xhr ) ), 'error' );
-		$payload.text( '' );
+	var handlePreviewFailure = function( response, formState ) {
+		showFeedback( _feedback, getPreviewErrorMessage( getSendErrorDataFromResponse( response ) ), 'error' );
+
+		// Maybe clear the preview payload
+		if ( _payload ) {
+			_payload.textContent = '';
+		}
+
 		updateSendButton( _settings.enabledYesValue === formState.enabled );
 	};
 
@@ -365,18 +462,19 @@
 	var loadPreview = function() {
 		var formState = getFormState();
 
-		$.post(
-			_settings.ajaxUrl,
-			{
-				action:      _settings.previewAction,
-				nonce:       _settings.nonce,
-				enabled:     formState.enabled,
-				data_groups: formState.data_groups,
+		postAdminAjax( {
+			action:      _settings.previewAction,
+			nonce:       _settings.nonce,
+			enabled:     formState.enabled,
+			data_groups: formState.data_groups,
+		} ).then( function( response ) {
+			// Maybe handle a failed preview request
+			if ( ! response ) {
+				handlePreviewFailure( response, formState );
+				return;
 			}
-		).done( function( response ) {
+
 			handlePreviewResponse( response, formState );
-		} ).fail( function( xhr ) {
-			handlePreviewFailure( xhr, formState );
 		} );
 	};
 
@@ -399,33 +497,51 @@
 
 
 	/**
+	 * Apply the saved enabled state to the enable checkbox and Send now controls.
+	 *
+	 * @param {boolean} enabled Whether reporting is enabled.
+	 */
+	var applyEnabledState = function( enabled ) {
+		var enableCheckbox = document.querySelector( _settings.enableCheckboxSelector );
+
+		// Maybe check the enable checkbox
+		if ( enabled && enableCheckbox ) {
+			enableCheckbox.checked = true;
+		}
+
+		_isEnabled = !! enabled;
+		updateSendButton( _isEnabled );
+		updateInlineSendButtonState( _isEnabled );
+	};
+
+
+
+	/**
 	 * Handle a successful send-now AJAX response.
 	 *
-	 * @param {Object}  response        Parsed AJAX response.
-	 * @param {jQuery}  $feedbackTarget Feedback element.
-	 * @param {boolean} enableIfDisabled Whether the request asked to enable reporting.
+	 * @param {Object} response        Parsed AJAX response.
+	 * @param {Element} feedbackTarget Feedback element.
 	 */
-	var handleSendResponse = function( response, $feedbackTarget, enableIfDisabled ) {
-		// Maybe show a send error
+	var handleSendResponse = function( response, feedbackTarget ) {
+		var isEnabled = !!( response && response.data && response.data.is_enabled );
+
+		// Maybe show a send error — still apply enabled state when the option was already saved
 		if ( ! response || ! response.success ) {
+			if ( isEnabled ) {
+				applyEnabledState( true );
+			}
+
 			showFeedback(
-				$feedbackTarget,
+				feedbackTarget,
 				getSendErrorMessage( response && response.data ),
 				'error'
 			);
 			return;
 		}
 
-		// Maybe check the enable checkbox after enabling via send-now
-		if ( enableIfDisabled ) {
-			$( _settings.enableCheckboxSelector ).prop( 'checked', true );
-		}
-
-		_isEnabled = true;
-		updateSendButton( true );
-		updateInlineSendButtonVisibility( true );
+		applyEnabledState( true );
 		showFeedback(
-			$feedbackTarget,
+			feedbackTarget,
 			response.data.message || _settings.i18n.sendSuccess || 'Site report sent successfully.',
 			'success'
 		);
@@ -434,13 +550,34 @@
 
 
 	/**
+	 * Enable or disable preview buttons while a send request is in flight.
+	 *
+	 * @param {boolean} disabled Whether preview buttons should be disabled.
+	 */
+	var setPreviewButtonsDisabled = function( disabled ) {
+		var previewButtons = document.querySelectorAll( _settings.previewButtonSelector );
+		var i;
+
+		// Iterate preview buttons
+		for ( i = 0; i < previewButtons.length; i++ ) {
+			previewButtons[ i ].disabled = disabled;
+		}
+	};
+
+
+
+	/**
 	 * Restore send/preview button enabled state after a send request.
 	 *
-	 * @param {jQuery} $trigger Button that triggered the send request.
+	 * @param {Element} trigger Button that triggered the send request.
 	 */
-	var restoreSendControls = function( $trigger ) {
-		$trigger.prop( 'disabled', false );
-		$( _settings.previewButtonSelector ).prop( 'disabled', false );
+	var restoreSendControls = function( trigger ) {
+		// Maybe re-enable the trigger button
+		if ( trigger ) {
+			trigger.disabled = false;
+		}
+
+		setPreviewButtonsDisabled( false );
 	};
 
 
@@ -454,41 +591,54 @@
 	var sendReportNow = function( e, context ) {
 		var formState;
 		var enableIfDisabled;
-		var $trigger;
-		var $feedbackTarget;
+		var trigger;
+		var feedbackTarget;
 
 		e.preventDefault();
 
 		context = context || _settings.sendContextModal;
 		formState = getFormState();
 		enableIfDisabled = _settings.enabledYesValue !== formState.enabled;
-		$trigger = _settings.sendContextInline === context ? $inlineSendButton : $sendButton;
-		$feedbackTarget = _settings.sendContextInline === context ? $inlineFeedback : $feedback;
+		trigger = _settings.sendContextInline === context ? _inlineSendButton : _sendButton;
+		feedbackTarget = _settings.sendContextInline === context ? _inlineFeedback : _feedback;
 
-		// Bail if inline send is used while reporting is disabled
-		if ( _settings.sendContextInline === context && _settings.enabledYesValue !== formState.enabled ) {
+		// Bail if inline send is used while reporting is not saved as enabled
+		if ( _settings.sendContextInline === context && ! _isEnabled ) {
 			return;
 		}
 
-		clearFeedback( $feedbackTarget );
-		$trigger.prop( 'disabled', true );
-		$( _settings.previewButtonSelector ).prop( 'disabled', true );
+		clearFeedback( feedbackTarget );
 
-		$.post(
-			_settings.ajaxUrl,
-			{
-				action:             _settings.sendNowAction,
-				nonce:              _settings.nonce,
-				enabled:            formState.enabled,
-				data_groups:        formState.data_groups,
-				enable_if_disabled: enableIfDisabled ? _settings.enabledYesValue : _settings.enabledNoValue,
+		// Disable send controls while the request is in flight
+		if ( trigger ) {
+			trigger.disabled = true;
+		}
+
+		setPreviewButtonsDisabled( true );
+
+		postAdminAjax( {
+			action:             _settings.sendNowAction,
+			nonce:              _settings.nonce,
+			enabled:            formState.enabled,
+			data_groups:        formState.data_groups,
+			enable_if_disabled: enableIfDisabled ? _settings.enabledYesValue : _settings.enabledNoValue,
+		} ).then( function( response ) {
+			// Maybe handle a failed send request
+			if ( ! response || ! response.success ) {
+				var errorData = getSendErrorDataFromResponse( response );
+
+				// Maybe apply enabled state when the option was already saved before the send failed
+				if ( errorData && errorData.is_enabled ) {
+					applyEnabledState( true );
+				}
+
+				showFeedback( feedbackTarget, getSendErrorMessage( errorData ), 'error' );
+				return;
 			}
-		).done( function( response ) {
-			handleSendResponse( response, $feedbackTarget, enableIfDisabled );
-		} ).fail( function( xhr ) {
-			showFeedback( $feedbackTarget, getSendErrorMessage( getSendErrorDataFromXhr( xhr ) ), 'error' );
-		} ).always( function() {
-			restoreSendControls( $trigger );
+
+			handleSendResponse( response, feedbackTarget );
+		} ).finally( function() {
+			restoreSendControls( trigger );
 		} );
 	};
 
@@ -512,15 +662,6 @@
 	 */
 	var handleInlineSendClick = function( e ) {
 		sendReportNow( e, _settings.sendContextInline );
-	};
-
-
-
-	/**
-	 * Handle enable checkbox changes and update the inline Send now button.
-	 */
-	var handleEnableCheckboxChange = function() {
-		updateInlineSendButtonVisibility( $( _settings.enableCheckboxSelector ).is( ':checked' ) );
 	};
 
 
@@ -555,20 +696,6 @@
 
 
 	/**
-	 * Route change events for the enable checkbox.
-	 *
-	 * @param {Event} e Change event.
-	 */
-	var handleChange = function( e ) {
-		// ENABLE CHECKBOX
-		if ( e.target.closest( _settings.enableCheckboxSelector ) ) {
-			handleEnableCheckboxChange();
-		}
-	};
-
-
-
-	/**
 	 * Close the modal when Escape is pressed.
 	 *
 	 * @param {KeyboardEvent} e Keyboard event.
@@ -578,7 +705,7 @@
 		if ( FCUtils.keyboardKeys.ESC !== e.key ) { return; }
 
 		// Bail if modal is not open
-		if ( ! $modal.hasClass( _settings.isOpenClass ) ) { return; }
+		if ( ! _modal || ! _modal.classList.contains( _settings.isOpenClass ) ) { return; }
 
 		closeModal();
 	};
@@ -596,29 +723,27 @@
 		// Bail if already initialized
 		if ( _hasInitialized ) { return; }
 
-		// Bail if jQuery is unavailable
-		if ( ! _hasJQuery ) { return; }
-
 		// Merge settings
 		_settings = FCUtils.extendObject( _settings, options );
 
-		$modal = $( _settings.modalSelector );
-		$inlineSendButton = $( _settings.inlineSendButtonSelector );
-		$inlineFeedback = $( _settings.inlineFeedbackSelector );
+		_modal = document.querySelector( _settings.modalSelector );
+		_inlineSendButton = document.querySelector( _settings.inlineSendButtonSelector );
+		_inlineFeedback = document.querySelector( _settings.inlineFeedbackSelector );
 
 		// Bail if modal is not available
-		if ( ! $modal.length ) { return; }
+		if ( ! _modal ) { return; }
 
-		$payload = $modal.find( _settings.modalPayloadSelector );
-		$feedback = $modal.find( _settings.modalFeedbackSelector );
-		$sendButton = $modal.find( _settings.modalSendButtonSelector );
+		_payload = _modal.querySelector( _settings.modalPayloadSelector );
+		_feedback = _modal.querySelector( _settings.modalFeedbackSelector );
+		_sendButton = _modal.querySelector( _settings.modalSendButtonSelector );
 
 		// Add event listeners
 		window.addEventListener( 'click', handleClick, true );
-		document.addEventListener( 'change', handleChange, true );
 		document.addEventListener( 'keydown', handleKeyDown, true );
 
-		updateInlineSendButtonVisibility( $( _settings.enableCheckboxSelector ).is( ':checked' ) );
+		// Enable Send now only when reporting is already saved as enabled
+		_isEnabled = true === _settings.isEnabledSaved || _settings.enabledYesValue === _settings.isEnabledSaved;
+		updateInlineSendButtonState( _isEnabled );
 
 		_hasInitialized = true;
 	};

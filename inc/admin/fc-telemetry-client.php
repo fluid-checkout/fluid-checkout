@@ -1,4 +1,6 @@
 <?php
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Fluid Checkout Telemetry Client.
  * Opt-in site environment telemetry for Fluid Checkout ecosystem plugins.
@@ -90,8 +92,6 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters the telemetry client config for an API URL.
 			 *
-			 * @since 4.2.8
-			 *
 			 * @param array  $config  Telemetry config.
 			 * @param string $api_url Remote API base URL.
 			 */
@@ -156,8 +156,6 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			$resolved_api_url = self::get_remote_api_url( $api_url );
 			/**
 			 * Filters the WP-Cron hook used for telemetry.
-			 *
-			 * @since 4.2.8
 			 *
 			 * @param string $cron_hook Cron hook name. Default `fc_telemetry_weekly`.
 			 * @param string $api_url   Remote API base URL.
@@ -340,8 +338,6 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			/**
 			 * Filters the remote telemetry API base URL.
 			 *
-			 * @since 4.2.8
-			 *
 			 * @param string|null $api_url     Remote API base URL.
 			 * @param string|null $plugin_slug Plugin slug passed by the caller. Default null.
 			 */
@@ -411,8 +407,6 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 			$config  = self::get_telemetry_config( $api_url );
 			/**
 			 * Filters the WP-Cron hook used for telemetry.
-			 *
-			 * @since 4.2.8
 			 *
 			 * @param string $cron_hook Cron hook name. Default `fc_telemetry_weekly`.
 			 * @param string $api_url   Remote API base URL.
@@ -495,33 +489,14 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => 'in_progress',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
-
-			if ( $enable_if_disabled && ! self::is_telemetry_enabled( $api_url ) ) {
-				update_option( $config['enable_option'], 'yes' );
-				self::schedule_telemetry_cron( $api_url );
-			}
-
-			if ( null !== $groups ) {
-				$groups = self::normalize_telemetry_data_groups( $groups );
-				update_option( $config['data_groups_option'], $groups );
-			}
-
-			if ( ! self::is_telemetry_enabled( $api_url ) ) {
-				return array(
-					'success'    => false,
-					'error_code' => 'disabled',
-				);
-			}
-
-			set_transient( $config['send_lock_transient'], 1, MINUTE_IN_SECONDS );
 
 			$host = self::get_telemetry_host();
 
+			// Bail before enabling or persisting groups when the domain cannot send reports
 			if ( '' === $host || ! self::is_telemetry_domain_eligible( $host ) ) {
-				delete_transient( $config['send_lock_transient'] );
-
 				self::log_telemetry_error(
 					'Telemetry domain is not eligible for sending.',
 					array(
@@ -533,8 +508,31 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => '' === $host ? 'empty_payload' : 'ineligible_domain',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
+
+			// Maybe enable scheduled reporting after the domain is eligible
+			if ( $enable_if_disabled && ! self::is_telemetry_enabled( $api_url ) ) {
+				update_option( $config['enable_option'], 'yes' );
+				self::schedule_telemetry_cron( $api_url );
+			}
+
+			// Normalize groups for this send only — do not persist pending form values here
+			if ( null !== $groups ) {
+				$groups = self::normalize_telemetry_data_groups( $groups );
+			}
+
+			// Bail if reporting is still disabled
+			if ( ! self::is_telemetry_enabled( $api_url ) ) {
+				return array(
+					'success'    => false,
+					'error_code' => 'disabled',
+					'is_enabled' => false,
+				);
+			}
+
+			set_transient( $config['send_lock_transient'], 1, MINUTE_IN_SECONDS );
 
 			$payload = self::build_telemetry_payload( $groups, null, $api_url );
 
@@ -551,6 +549,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => 'empty_payload',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 
@@ -562,6 +561,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 				return array(
 					'success'    => false,
 					'error_code' => 'rate_limited',
+					'is_enabled' => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 
@@ -613,6 +613,7 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 					'success'       => false,
 					'error_code'    => 'request_failed',
 					'response_code' => $response_code,
+					'is_enabled'    => self::is_telemetry_enabled( $api_url ),
 				);
 			}
 
@@ -783,8 +784,6 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 
 			/**
 			 * Filters whether a site domain may send telemetry.
-			 *
-			 * @since 4.2.8
 			 *
 			 * @param bool   $eligible Whether the domain is eligible.
 			 * @param string $domain   Site host.
@@ -1421,8 +1420,6 @@ if ( ! class_exists( 'FC_Telemetry_Client' ) ) {
 		private static function get_own_plugins_option_map( $api_url = null ) {
 			/**
 			 * Filters the own plugins registered for telemetry.
-			 *
-			 * @since 4.2.8
 			 *
 			 * @param array       $plugins Map of plugin slug to plugin option names.
 			 * @param string|null $api_url Telemetry API base URL.

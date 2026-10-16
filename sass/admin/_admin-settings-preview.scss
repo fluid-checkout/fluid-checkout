@@ -1,0 +1,543 @@
+// ------------------------------------
+// SETTINGS PAGE - PREVIEW COLUMN
+// ------------------------------------
+
+$fc-settings-preview-column-min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-frame-border-width } + #{ 2 * $fc-settings-preview-toolbar-padding-x } + #{$fc-settings-preview-border-width} );
+
+.fc-settings-layout.has-preview {
+	position: relative;
+	// Allow the preview column to extend past the viewport; clipped by #wpcontent / #wpbody-content
+	overflow-x: clip;
+}
+
+.fc-settings-preview {
+	position: sticky;
+	top: $fc-settings-sticky-offset;
+	z-index: $fc-settings-preview-z-index;
+	align-self: start;
+	// Fill leftover space, but never shrink below the usable preview width
+	flex: 1 0 $fc-settings-preview-column-min-width;
+	display: flex;
+	flex-direction: column;
+	width: $fc-settings-preview-column-min-width;
+	min-width: $fc-settings-preview-column-min-width;
+	height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	overflow: hidden;
+	border-left: $fc-settings-preview-border-width solid $admin-border-color-strong;
+	background: $white;
+	box-sizing: border-box;
+}
+
+.fc-settings-preview[ hidden ] {
+	display: none !important; // Needed to override flex display when the preview is hidden
+}
+
+.fc-settings-layout.has-preview .fc-settings-content {
+	// Keep settings column width stable so the preview fills the leftover space
+	flex: 0 0 $fc-settings-content-max-width;
+	width: $fc-settings-content-max-width;
+	max-width: $fc-settings-content-max-width;
+	min-width: 0;
+}
+
+.fc-settings-layout:not( .has-preview ) .fc-settings-content {
+	max-width: none;
+}
+
+// Desktop: expand as a fixed overlay that slides in from the right.
+// Keep left/center column widths locked so only the preview moves.
+@media ( min-width: $fc-settings-preview-compact-breakpoint ) {
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		flex: 0 0 $fc-settings-sidebar-width;
+		width: $fc-settings-sidebar-width;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content {
+		flex: 0 0 $fc-settings-content-max-width;
+		width: $fc-settings-content-max-width;
+		max-width: $fc-settings-content-max-width;
+	}
+
+	.fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		position: fixed;
+		top: $fc-settings-sticky-offset;
+		right: 0;
+		bottom: 0;
+		left: $admin-wp-menu-width;
+		z-index: $fc-settings-drawer-z-index; // Above the compact settings title bar; below the page header
+		align-self: stretch;
+		flex: none;
+		width: auto;
+		min-width: 0;
+		height: auto;
+		max-height: none;
+		min-height: 0;
+		border-left: 0;
+		border-top: 0;
+		opacity: 1;
+		transform: none;
+		pointer-events: auto;
+		transition: opacity $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing, transform $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing;
+
+		@media ( prefers-reduced-motion: reduce ) {
+			transition: none;
+		}
+	}
+
+	// Enter start frame: no transition so the overlay starts off-screen instantly
+	.fc-settings-layout.is-preview-expanded.is-preview-enter .fc-settings-preview {
+		opacity: 0;
+		transform: translateX( 100% );
+		pointer-events: none;
+		transition: none;
+	}
+
+	// Exit frame: slide out with the same transition as expand
+	.fc-settings-layout.is-preview-expanded.is-preview-collapsing .fc-settings-preview {
+		opacity: 0;
+		transform: translateX( 100% );
+		pointer-events: none;
+	}
+
+	body.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		left: 0;
+		right: $admin-wp-menu-width;
+	}
+
+	body.rtl.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview {
+		right: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded.is-preview-enter .fc-settings-preview,
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded.is-preview-collapsing .fc-settings-preview {
+		transform: translateX( -100% );
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded.is-preview-enter .fc-settings-preview {
+		transition: none;
+	}
+}
+
+body.fc-settings-page:has( .fc-settings-layout.is-preview-expanded ) #wpcontent {
+	background: $fc-settings-page-background-color;
+}
+
+// Compact preview drawer (<1280): keep left/center as desktop columns; preview overlays.
+// Let the center column grow to the right edge so the actions bar can fill that space.
+@media ( max-width: $fc-settings-preview-compact-breakpoint - 1px ) {
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		flex: 0 0 $fc-settings-sidebar-width;
+		width: $fc-settings-sidebar-width;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content {
+		flex: 1 1 auto;
+		width: auto;
+		max-width: none;
+		min-width: 0;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content__scroll {
+		max-width: $fc-settings-content-max-width;
+		width: 100%;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-preview {
+		position: fixed;
+		top: $fc-settings-sticky-offset;
+		right: 0;
+		bottom: 0;
+		left: $admin-wp-menu-width;
+		z-index: $fc-settings-drawer-z-index;
+		align-self: stretch;
+		flex: none;
+		width: auto;
+		min-width: 0;
+		height: auto;
+		max-height: none;
+		min-height: 0;
+		border-left: 0;
+		border-top: 0;
+		transform: translateY( 100% );
+		opacity: 0;
+		pointer-events: none;
+		transition: transform $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing, opacity $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing;
+
+		@media ( prefers-reduced-motion: reduce ) {
+			transition: none;
+		}
+	}
+
+	.fc-settings-layout.has-preview.is-preview-expanded .fc-settings-preview {
+		transform: none;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	body.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.has-preview .fc-settings-preview {
+		left: 0;
+		right: $admin-wp-menu-width;
+	}
+
+	body.rtl.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview {
+		right: $admin-wp-menu-width-folded;
+	}
+}
+
+// Below nav-compact: stack left/center; page scrolls naturally; preview drawer overlays
+@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+	.fc-settings-layout.has-preview {
+		flex-direction: column;
+		align-items: stretch;
+		min-height: 0;
+		overflow: visible;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		// Keep sticky full-width header bar from `_admin-settings-sidebar.scss`
+		flex: 0 0 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+		height: auto;
+		max-height: none;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content {
+		position: relative;
+		flex: 1 1 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+		min-width: 0;
+	}
+}
+
+// Menu offsets shared by the desktop expanded overlay and the compact drawer
+@media screen and ( max-width: $admin-breakpoint-auto-fold ) {
+	body.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		right: $admin-wp-menu-width-folded;
+		left: 0;
+	}
+}
+
+@media screen and ( max-width: $admin-breakpoint-mobile ) {
+	// Taller admin bar + full width (no left admin menu column on small screens).
+	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
+	.fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	.fc-settings-layout.has-preview .fc-settings-preview,
+	body.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview,
+	body.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		top: $fc-settings-sticky-offset-mobile;
+		left: 0;
+		right: 0;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page .fc-settings-layout.has-preview .fc-settings-preview,
+	body.rtl.fc-settings-page.folded .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page.folded .fc-settings-layout.has-preview .fc-settings-preview,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.is-preview-expanded .fc-settings-preview,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-layout.has-preview .fc-settings-preview {
+		left: 0;
+		right: 0;
+	}
+
+	.fc-settings-layout.has-preview .fc-settings-content {
+		position: static;
+	}
+}
+
+
+
+.fc-settings-preview__toolbar {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	gap: 8px;
+	margin: 0;
+	padding: 12px $fc-settings-preview-toolbar-padding-x;
+	width: 100%;
+	min-width: 0;
+	border-bottom: 1px solid $admin-border-color;
+	background: $white;
+	box-sizing: border-box;
+}
+
+.fc-settings-preview__controls {
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: $fc-settings-preview-toolbar-gap;
+	min-width: 0;
+}
+
+.fc-settings-preview__expand {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: $fc-settings-preview-expand-size;
+	height: $fc-settings-preview-expand-size;
+	padding: 0;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	color: $fc-settings-text-color;
+	cursor: pointer;
+}
+
+.fc-settings-preview__expand:hover {
+	background: $fc-settings-nav-link-hover-background;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-preview__expand[ aria-pressed="true" ] {
+	background: $fc-settings-nav-link-active-background;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-preview__expand-icon {
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+.fc-settings-preview__expand[ aria-pressed="true" ] .fc-settings-preview__expand-icon--expand,
+.fc-settings-preview__expand:not( [ aria-pressed="true" ] ) .fc-settings-preview__expand-icon--collapse {
+	display: none;
+}
+
+.fc-settings-actions__preview[ aria-expanded="true" ] .fc-settings-preview__expand-icon--expand,
+.fc-settings-actions__preview:not( [ aria-expanded="true" ] ) .fc-settings-preview__expand-icon--collapse {
+	display: none;
+}
+
+// Desktop: horizontal expand/collapse icons
+.fc-settings-preview__expand-icon--vertical {
+	display: none;
+}
+
+// Compact: vertical expand/collapse icons
+@media ( max-width: $fc-settings-preview-compact-breakpoint - 1px ) {
+	.fc-settings-preview__expand .fc-settings-preview__expand-icon--horizontal {
+		display: none;
+	}
+
+	.fc-settings-preview__expand:not( [ aria-pressed="true" ] ) .fc-settings-preview__expand-icon--expand.fc-settings-preview__expand-icon--vertical,
+	.fc-settings-preview__expand[ aria-pressed="true" ] .fc-settings-preview__expand-icon--collapse.fc-settings-preview__expand-icon--vertical {
+		display: block;
+	}
+
+	.fc-settings-preview__expand[ aria-pressed="true" ] .fc-settings-preview__expand-icon--expand.fc-settings-preview__expand-icon--vertical,
+	.fc-settings-preview__expand:not( [ aria-pressed="true" ] ) .fc-settings-preview__expand-icon--collapse.fc-settings-preview__expand-icon--vertical {
+		display: none;
+	}
+}
+
+.fc-settings-preview__viewports,
+.fc-settings-preview__zoom {
+	flex: 0 0 auto;
+	width: auto;
+}
+
+.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option,
+.fc-settings-preview__zoom-button,
+.fc-settings-preview__zoom-value {
+	min-height: $fc-settings-input-height;
+	height: $fc-settings-input-height;
+}
+
+.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option,
+.fc-settings-preview__zoom-button {
+	flex: 0 0 auto;
+	width: $fc-settings-input-height;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+}
+
+.fc-settings-preview__viewports .fc-settings-sectioned-buttons__option svg,
+.fc-settings-preview__zoom-button svg {
+	display: block;
+	width: 16px;
+	height: 16px;
+}
+
+button.fc-settings-preview__zoom-button,
+button.fc-settings-preview__zoom-value {
+	font-family: inherit;
+}
+
+.fc-settings-preview__zoom-button:disabled {
+	opacity: .4;
+	cursor: default;
+}
+
+.fc-settings-preview__zoom-button:disabled:hover {
+	background: transparent;
+}
+
+.fc-settings-preview__zoom-value {
+	flex: 0 0 auto;
+	width: 54px;
+	min-width: 54px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.2;
+	white-space: nowrap;
+	user-select: none;
+}
+
+
+
+.fc-settings-preview__tabs {
+	display: flex;
+	flex-wrap: nowrap;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 0;
+	padding: 8px $fc-settings-preview-toolbar-padding-x 0;
+	width: max-content;
+	max-width: none;
+	background: $white;
+	box-sizing: border-box;
+}
+
+.fc-settings-preview__tab {
+	padding: 6px 12px;
+	border: 0;
+	border-radius: $fc-settings-nav-pill-radius;
+	background: transparent;
+	color: $fc-settings-text-color;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.fc-settings-preview__tab:hover {
+	background: $fc-settings-nav-link-hover-background;
+}
+
+.fc-settings-preview__tab.is-active {
+	background: $fc-settings-nav-link-active-background;
+	font-weight: 600;
+}
+
+
+
+.fc-settings-preview__panel {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	min-height: 0;
+	width: 100%;
+	padding: 12px $fc-settings-preview-toolbar-padding-x 16px;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.fc-settings-preview__panel[ hidden ] {
+	display: none !important; // Needed to override flex display when panel is toggled
+}
+
+
+
+.fc-settings-preview__frame-wrap {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	align-self: stretch;
+	min-height: 0;
+	// Keep the iframe content box at least the configured min width
+	min-width: calc( #{$fc-settings-preview-min-width} + #{ 2 * $fc-settings-preview-frame-border-width } );
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	border: $fc-settings-preview-frame-border-width solid $admin-border-color-strong;
+	border-radius: 4px;
+	box-sizing: border-box;
+	// Clip transform-scaled iframe when zoomed
+	overflow: hidden;
+	transition: max-width .2s ease;
+
+	@media ( prefers-reduced-motion: reduce ) {
+		transition: none;
+	}
+}
+
+.fc-settings-preview__frame-wrap[ data-viewport="mobile" ] {
+	// Outer size includes the frame border so the iframe content box is the viewport width
+	max-width: calc( #{$fc-settings-preview-viewport-mobile} + #{ 2 * $fc-settings-preview-frame-border-width } );
+}
+
+.fc-settings-preview__frame-wrap[ data-viewport="tablet" ] {
+	max-width: calc( #{$fc-settings-preview-viewport-tablet} + #{ 2 * $fc-settings-preview-frame-border-width } );
+}
+
+.fc-settings-preview__frame-wrap[ data-viewport="desktop" ] {
+	max-width: none;
+}
+
+.fc-settings-preview__dims {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	z-index: 1;
+	margin: 0;
+	padding: 2px 6px;
+	border-radius: 3px;
+	background: $preview-backdrop-background;
+	color: $white;
+	font-size: 11px;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.3;
+	pointer-events: none;
+	user-select: none;
+}
+
+.rtl .fc-settings-preview__dims {
+	right: auto;
+	left: 8px;
+}
+
+.fc-settings-preview__frame {
+	position: relative;
+	flex: 1 1 auto;
+	align-self: stretch;
+	display: block;
+	width: 100%;
+	height: 100%;
+	min-height: 280px;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: $white;
+	box-sizing: border-box;
+}

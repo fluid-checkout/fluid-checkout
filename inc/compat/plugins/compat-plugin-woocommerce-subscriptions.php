@@ -177,7 +177,7 @@ class FluidCheckout_WooCommerceSubscriptions extends FluidCheckout {
 			 * Kept so callbacks on the old hook still run. Prefer `fc_override_template_with_theme_file`.
 			 *
 			 * @since 3.2.5
-			 * @deprecated 4.2.8 Use `fc_override_template_with_theme_file` instead.
+			 * @deprecated 5.0.0 Use `fc_override_template_with_theme_file` instead.
 			 *
 			 * @param bool   $value         Value to filter. Default false.
 			 * @param string $template      Located template path.

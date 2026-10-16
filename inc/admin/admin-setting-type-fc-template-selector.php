@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Checkout admin options.
+ * Design template selector field type for the Fluid Checkout settings page.
  */
 class FluidCheckout_Admin_SettingType_TemplateSelector extends FluidCheckout {
 
@@ -20,7 +20,7 @@ class FluidCheckout_Admin_SettingType_TemplateSelector extends FluidCheckout {
 	 */
 	public function hooks() {
 		// Field types
-		add_action( 'woocommerce_admin_field_fc_template_selector', array( $this, 'output_field' ), 10 );
+		add_action( 'fc_admin_settings_render_field_fc_template_selector', array( $this, 'output_field' ), 10 );
 	}
 
 
@@ -31,73 +31,74 @@ class FluidCheckout_Admin_SettingType_TemplateSelector extends FluidCheckout {
 	 * @param   array  $value  Admin settings args values.
 	 */
 	public function output_field( $value ) {
-		// Custom attribute handling.
-		$custom_attributes_esc = array();
-		if ( ! empty( $value['custom_attributes'] ) && is_array( $value['custom_attributes'] ) ) {
-			foreach ( $value['custom_attributes'] as $attribute => $attribute_value ) {
-				$custom_attributes_esc[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
-			}
+		$renderer = FluidCheckout_Admin_Settings_Renderer::instance();
+		$field_disabled = $renderer->is_field_disabled( $value );
+		$field_description = $renderer->get_field_description( $value );
+		$custom_attributes_html = $renderer->get_custom_attributes_html( $value );
+		$option_value = $this->get_selectable_option_value( $value );
+		$group_label = ! empty( $value[ 'title' ] ) ? $value[ 'title' ] : __( 'Design template', 'fluid-checkout' );
+
+		$renderer->output_field_start( $value, array( 'label_for' => false ) );
+		?>
+		<div class="fc-settings-radio-options" role="radiogroup" aria-label="<?php echo esc_attr( $group_label ); ?>">
+			<?php foreach ( $value[ 'options' ] as $key => $args ) : ?>
+				<?php
+				// Normalize option args
+				if ( ! is_array( $args ) ) {
+					$args = array( 'label' => $args );
+				}
+
+				$option_disabled = $field_disabled || ( array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] );
+				$option_classes = 'fc-settings-radio-option';
+				$option_classes .= $option_disabled ? ' is-disabled' : '';
+				$option_classes .= (string) $key === (string) $option_value ? ' is-selected' : '';
+				?>
+				<label class="<?php echo esc_attr( $option_classes ); ?>">
+					<input
+						name="<?php echo esc_attr( $value[ 'field_name' ] ); ?>"
+						value="<?php echo esc_attr( $key ); ?>"
+						type="radio"
+						style="<?php echo esc_attr( $value[ 'css' ] ); ?>"
+						class="<?php echo esc_attr( $value[ 'class' ] ); ?>"
+						<?php echo $custom_attributes_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php checked( $key, $option_value ); ?>
+						<?php disabled( $option_disabled ); ?>
+						/>
+					<span class="fc-settings-radio-option__label"><?php echo esc_html( $args[ 'label' ] ); ?></span>
+				</label>
+			<?php endforeach; ?>
+		</div>
+		<?php echo $field_description[ 'description' ]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php
+		$renderer->output_field_end( $value );
+	}
+
+	/**
+	 * Get the option value that can be selected in the UI.
+	 * Falls back to the field default when the saved value is a disabled PRO option.
+	 *
+	 * @param  array  $value  Admin settings args values.
+	 */
+	public function get_selectable_option_value( $value ) {
+		$option_value = $value[ 'value' ];
+		$options = isset( $value[ 'options' ] ) && is_array( $value[ 'options' ] ) ? $value[ 'options' ] : array();
+
+		// Bail if the current value is not a known option
+		if ( ! array_key_exists( $option_value, $options ) ) {
+			return $value[ 'default' ];
 		}
 
-		// Description handling.
-		$field_description = WC_Admin_Settings::get_field_description( $value );
-		$description       = $field_description['description'];
-		$tooltip_html      = $field_description['tooltip_html'];
+		$args = $options[ $option_value ];
+		if ( ! is_array( $args ) ) {
+			$args = array( 'label' => $args );
+		}
 
-		$option_value = $value['value'];
-		?>
-		<tr valign="top">
-			<th scope="row" class="titledesc">
-				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
-			</th>
-			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-				<fieldset>
-					<ul>
-					<?php
-					foreach ( $value['options'] as $key => $args ) {
-						?>
-						<li>
-							<label <?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'class="disabled"' : ''; ?>><input
-								name="<?php echo esc_attr( $value['id'] ); ?>"
-								value="<?php echo esc_attr( $key ); ?>"
-								type="radio"
-								style="<?php echo esc_attr( $value['css'] ); ?>"
-								class="<?php echo esc_attr( $value['class'] ); ?>"
-								<?php echo implode( ' ', $custom_attributes_esc ); // WPCS: XSS ok. ?>
-								<?php checked( $key, $option_value ); ?>
-                                        <?php echo array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ? 'disabled' : ''; ?>
-								/> <?php echo esc_html( $args[ 'label' ] ); ?></label>
-						</li>
-						<?php
-					}
-					?>
-					</ul>
-				</fieldset>
-				<?php echo $description; // WPCS: XSS ok. ?>
-				<style>
-					<?php
-					foreach ( $value['options'] as $key => $val ) {
-						/**
-						 * Filters the preview image URL of a design template option in settings.
-						 *
-						 * @since 3.0.0
-						 *
-						 * @param mixed  $url URL.
-						 * @param string $key Field key.
-						 * @param mixed  $val Val.
-						 */
-						$option_image_url = apply_filters( 'fc_design_template_option_image_url', FluidCheckout::$directory_url . 'images/admin/fc-template-'. esc_attr( $key ) .'.png', $key, $val );
-						?>
-						.forminp-fc_template_selector .fc-design-template__option[value="<?php echo esc_attr( $key ); ?>"]:after {
-							background-image: url( <?php echo esc_url( $option_image_url ) ?> );
-						}
-						<?php
-					}
-					?>
-				</style>
-			</td>
-		</tr>
-		<?php
+		// Force Lite-compatible value when the saved option is disabled
+		if ( array_key_exists( 'disabled', $args ) && false !== $args[ 'disabled' ] ) {
+			return $value[ 'default' ];
+		}
+
+		return $option_value;
 	}
 
 }

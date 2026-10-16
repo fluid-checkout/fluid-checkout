@@ -1,8 +1,10 @@
 .fc-telemetry-enable-actions {
 	display: flex;
 	flex-wrap: wrap;
+	flex: 1 1 100%;
 	gap: 8px;
 	margin: 8px 0 0;
+	width: 100%;
 }
 
 .fc-telemetry-enable-actions__feedback {
@@ -10,21 +12,18 @@
 }
 
 .fc-telemetry-enable-actions__feedback.is-error {
-	color: #b32d2e;
+	color: $error-color;
 }
 
 .fc-telemetry-enable-actions__feedback.is-success {
-	color: #007017;
+	color: $success-color;
 }
 
-.fc-telemetry-enable-actions__feedback.is-hidden,
-.fc-telemetry-send-now-button.is-hidden {
+.fc-telemetry-enable-actions__feedback.is-hidden {
 	display: none;
 }
 
-.fc-checkboxgroup-option {
-	margin: 0 0 12px;
-}
+
 
 body.fc-telemetry-modal-open {
 	overflow: hidden;
@@ -45,16 +44,16 @@ body.fc-telemetry-modal-open {
 }
 
 .fc-telemetry-modal__backdrop {
-	background: rgba( 0, 0, 0, 0.55 );
+	background: $modal-backdrop-background;
 	inset: 0;
 	position: absolute;
 }
 
 .fc-telemetry-modal__dialog {
-	background: #fff;
-	border: 1px solid #c3c4c7;
+	background: $white;
+	border: 1px solid $admin-ui-border-color;
 	border-radius: 4px;
-	box-shadow: 0 8px 32px rgba( 0, 0, 0, 0.2 );
+	box-shadow: 0 8px 32px $elevation-shadow-strong;
 	display: flex;
 	flex-direction: column;
 	max-height: calc( 100vh - 48px );
@@ -66,7 +65,7 @@ body.fc-telemetry-modal-open {
 
 .fc-telemetry-modal__header {
 	align-items: center;
-	border-bottom: 1px solid #dcdcde;
+	border-bottom: 1px solid $admin-ui-border-color;
 	display: flex;
 	justify-content: space-between;
 	padding: 16px 20px;
@@ -81,7 +80,7 @@ body.fc-telemetry-modal-open {
 .fc-telemetry-modal__close {
 	background: transparent;
 	border: 0;
-	color: #50575e;
+	color: $secondary-control-color;
 	cursor: pointer;
 	font-size: 24px;
 	line-height: 1;
@@ -94,8 +93,8 @@ body.fc-telemetry-modal-open {
 }
 
 .fc-telemetry-modal__payload {
-	background: #f6f7f7;
-	border: 1px solid #dcdcde;
+	background: $admin-muted-surface-background;
+	border: 1px solid $admin-ui-border-color;
 	border-radius: 4px;
 	font-family: Consolas, Monaco, monospace;
 	font-size: 12px;
@@ -114,15 +113,15 @@ body.fc-telemetry-modal-open {
 }
 
 .fc-telemetry-modal__feedback.is-error {
-	color: #b32d2e;
+	color: $error-color;
 }
 
 .fc-telemetry-modal__feedback.is-success {
-	color: #007017;
+	color: $success-color;
 }
 
 .fc-telemetry-modal__footer {
-	border-top: 1px solid #dcdcde;
+	border-top: 1px solid $admin-ui-border-color;
 	display: flex;
 	gap: 8px;
 	justify-content: flex-end;
