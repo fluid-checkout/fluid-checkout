@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // ----------------------------------------
 // VARIABLES FOR ADMIN PAGES
 // ----------------------------------------
@@ -267,6 +269,7 @@ $fc-settings-field-padding-y:               8px !default;
 $fc-settings-field-border-color:            #f0f0f1 !default;
 $fc-settings-field-label-width:             180px !default;
 $fc-settings-field-label-font-size:         14px !default;
+$fc-settings-field-label-line-height:       1.4 !default;
 $fc-settings-field-label-padding-top:       11px !default;
 $fc-settings-field-label-padding-top-toggle: 5px !default;
 $fc-settings-field-inline-gap:              24px !default;
@@ -320,6 +323,15 @@ $fc-settings-toggle-knob-size:              18px !default;
 $fc-settings-toggle-knob-offset:            16px !default;
 $fc-settings-info-tip-size:                 18px !default;
 $fc-settings-info-icon-hit-size:            24px !default;
+$fc-settings-field-label-half-line:         math.div( $fc-settings-field-label-font-size * $fc-settings-field-label-line-height, 2 ) !default;
+$fc-settings-info-icon-half-size:           math.div( $fc-settings-info-icon-hit-size, 2 ) !default;
+$fc-settings-info-icon-vertical-offset:   2px !default;
+$fc-settings-info-tip-label-top:            $fc-settings-field-label-padding-top + $fc-settings-field-label-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
+$fc-settings-info-tip-label-top-toggle:     $fc-settings-field-label-padding-top-toggle + $fc-settings-field-label-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
+$fc-settings-info-tip-label-top-stacked:    $fc-settings-field-label-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
+$fc-settings-card-title-line-height:        1.4 !default;
+$fc-settings-card-title-half-line:          math.div( $fc-settings-card-title-font-size * $fc-settings-card-title-line-height, 2 ) !default;
+$fc-settings-docs-icon-align-offset:        $fc-settings-card-title-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
 $fc-settings-info-tip-color:                #b8cad7 !default;
 $fc-settings-info-tip-color-hover:          $admin-text-color !default;
 $fc-settings-info-tip-offset:               26px !default;

@@ -19,7 +19,7 @@
 	// Stack label above control below the content reading width
 	@media ( max-width: $fc-settings-content-max-width - 1px ) {
 		flex-direction: column;
-		gap: 8px;
+		gap: 4px;
 	}
 }
 
@@ -31,7 +31,7 @@
 	padding-top: $fc-settings-field-label-padding-top;
 	font-size: $fc-settings-field-label-font-size;
 	font-weight: normal;
-	line-height: 1.4;
+	line-height: $fc-settings-field-label-line-height;
 	color: $fc-settings-text-color;
 
 	@media ( max-width: $fc-settings-content-max-width - 1px ) {
@@ -49,16 +49,7 @@
 
 // Clear space for the floating info icon on the right of the label
 .fc-settings-field__label:has( > .fc-settings-info-tip ) {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		padding-right: $fc-settings-info-tip-offset;
-	}
-}
-
-.rtl .fc-settings-field__label:has( > .fc-settings-info-tip ) {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		padding-right: 0;
-		padding-left: $fc-settings-info-tip-offset;
-	}
+	padding-inline-end: $fc-settings-info-tip-offset;
 }
 
 .fc-settings-field__label label {
@@ -462,18 +453,17 @@ input.fc-settings-toggle--round:focus + label {
 	vertical-align: text-top;
 }
 
-// Field label tip: inline on small screens, floating to the right from 600px up.
-// Keep `position: relative` when inline so the popup anchors to the icon, not the label box.
+// Field label tip: anchor to the first label line at every viewport width
 .fc-settings-field__label > .fc-settings-info-tip {
-	position: relative;
-	margin-inline-start: 6px;
+	position: absolute;
+	top: $fc-settings-info-tip-label-top;
+	inset-inline-end: calc( -1 * #{$fc-settings-info-icon-hit-size} / 2 - 3px );
+	inset-inline-start: auto;
+	margin: 0;
 
-	@media ( min-width: $fc-settings-content-max-width ) {
-		position: absolute;
-		top: 15px;
-		right: calc( -1 * #{$fc-settings-info-icon-hit-size} / 2 - 3px );
-		left: auto;
-		margin: 0;
+	@media ( max-width: $fc-settings-content-max-width - 1px ) {
+		top: $fc-settings-info-tip-label-top-stacked;
+		inset-inline-end: 0;
 	}
 }
 
@@ -481,16 +471,7 @@ input.fc-settings-toggle--round:focus + label {
 .fc-settings-field--checkbox > .fc-settings-field__label > .fc-settings-info-tip,
 .fc-settings-field--fc_telemetry > .fc-settings-field__label > .fc-settings-info-tip,
 .fc-settings-field--inline:has( > .fc-settings-field__control .fc-settings-switch ) > .fc-settings-field__label > .fc-settings-info-tip {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		top: 8px;
-	}
-}
-
-.rtl .fc-settings-field__label > .fc-settings-info-tip {
-	@media ( min-width: $fc-settings-content-max-width ) {
-		right: auto;
-		left: calc( -1 * #{$fc-settings-info-icon-hit-size} / 2 - 3px );
-	}
+	top: $fc-settings-info-tip-label-top-toggle;
 }
 
 .fc-settings-info-tip:hover,

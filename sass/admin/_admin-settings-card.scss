@@ -15,7 +15,7 @@
 .fc-settings-card__header {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: flex-start;
 	gap: 4px 10px;
 	padding: $fc-settings-card-padding;
 	border-bottom: 1px solid $fc-settings-card-header-border-color;
@@ -32,7 +32,7 @@
 	padding: 0;
 	font-size: $fc-settings-card-title-font-size;
 	font-weight: $fc-settings-card-title-font-weight;
-	line-height: 1.4;
+	line-height: $fc-settings-card-title-line-height;
 	color: $fc-settings-text-color;
 }
 
@@ -42,6 +42,7 @@
 	align-items: center;
 	gap: 8px;
 	margin-left: auto;
+	padding-top: $fc-settings-docs-icon-align-offset;
 }
 
 .rtl .fc-settings-card__actions {
