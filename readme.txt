@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
 * Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
 * Improved: Use Tom Select for all dropdown fields on the Fluid Checkout settings page.
 * Improved: Open settings dropdowns upward when there is not enough room below, so the full list stays visible above the save bar.
