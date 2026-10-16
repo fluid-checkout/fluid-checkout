@@ -3,6 +3,7 @@
 // ------------------------------------
 
 #fc-header {
+	position: relative;
 	padding: $fc-header-padding-y $fc-header-padding-x;
 	margin-left: 0;
 	margin-bottom: 20px;
@@ -11,6 +12,7 @@
 	height: $fc-header-height;
 	box-shadow: $fc-header-box-shadow;
 	box-sizing: content-box;
+	overflow: visible;
 }
 
 .rtl #fc-header {

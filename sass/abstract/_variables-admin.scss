@@ -90,6 +90,15 @@ $fc-header-button-save-color:               $white !default;
 $fc-header-button-save-background-disabled: #b8c9ff !default;
 $fc-header-button-save-border-color-disabled: #8a9fef !default;
 $fc-header-z-index:                         200 !default;
+$fc-header-notice-inline-inset:             16px !default;
+$fc-header-notice-inline-inset-mobile:      8px !default;
+$fc-header-notice-padding-y:                8px !default;
+$fc-header-notice-font-size:                13px !default;
+$fc-header-notice-line-height:              1.4 !default;
+$fc-header-notice-dismiss-size:             18px !default;
+$fc-header-notice-row-height:               max( $fc-header-notice-dismiss-size, $fc-header-notice-font-size * $fc-header-notice-line-height ) !default;
+$fc-header-notice-single-line-height:       $fc-header-notice-padding-y * 2 + $fc-header-notice-row-height !default;
+$fc-header-notice-vertical-anchor-offset:   $fc-header-notice-single-line-height * 0.5 !default;
 
 // END - ADMIN - PAGE HEADER
 // ----------------------------------------
@@ -274,6 +283,8 @@ $fc-settings-input-color-disabled:          $admin-text-color-muted !default;
 $fc-settings-input-placeholder-color:       #949494 !default;
 $fc-settings-input-box-shadow:              0 0 0 0 rgba( 0, 0, 0, 0 ), 0 0 0 0 rgba( 0, 0, 0, 0 ), 0 1px 2px 0 rgba( 0, 0, 0, .04 ) !default;
 $fc-settings-input-group-gap:               10px !default;
+$fc-settings-radio-size:                    1rem !default;
+$fc-settings-radio-dot-size:                0.5rem !default;
 $fc-settings-select-caret-size:             16px !default;
 $fc-settings-select-caret-padding-right:    36px !default;
 $fc-settings-select-caret-offset-x:         10px !default;
