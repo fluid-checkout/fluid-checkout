@@ -44,10 +44,10 @@
 	}
 }
 
-body.oxygen.woocommerce-checkout .fc-content.fc-container,
-body.oxygen.woocommerce-cart .fc-content.fc-container,
-body.oxygen.has-fc-order-received .fc-content.fc-container,
-body.oxygen.has-fc-order-pay .fc-wrapper.fc-container,
-body.oxygen.has-fc-view-order .fc-wrapper.fc-container {
+body.oxygen.has-fc-oxygen-six-themeless-layout.woocommerce-checkout .fc-content.fc-container,
+body.oxygen.has-fc-oxygen-six-themeless-layout.woocommerce-cart .fc-content.fc-container,
+body.oxygen.has-fc-oxygen-six-themeless-layout.has-fc-order-received .fc-content.fc-container,
+body.oxygen.has-fc-oxygen-six-themeless-layout.has-fc-order-pay .fc-wrapper.fc-container,
+body.oxygen.has-fc-oxygen-six-themeless-layout.has-fc-view-order .fc-wrapper.fc-container {
 	@include oxygen-six-fc-contained-content;
 }

@@ -35,11 +35,6 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 	}
 
 	/**
-	 * Whether the standalone Breakdance builder plugin is active.
-	 *
-	 * @return  boolean
-	 */
-	/**
 	 * Whether Breakdance checkout compat styles should load on the current request.
 	 *
 	 * @return  boolean
@@ -72,6 +67,95 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 		}
 
 		return is_plugin_active( 'breakdance/plugin.php' );
+	}
+
+	/**
+	 * Whether the current Oxygen 6 page needs FC container layout (no Breakdance document tree).
+	 *
+	 * @return  boolean
+	 */
+	public static function should_use_themeless_fc_container_layout() {
+		// Bail if not applicable
+		if ( ! self::is_oxygen_six_with_breakdance_woocommerce() ) { return false; }
+
+		// Allow complete override
+		$should_use = apply_filters( 'fc_oxygen_six_should_use_themeless_fc_container_layout', null );
+		if ( null !== $should_use ) { return (bool) $should_use; }
+
+		return self::is_current_request_oxygen_six_themeless_fc_page();
+	}
+
+	/**
+	 * Whether the current request is an Oxygen 6 themeless FC page (shortcode / no Breakdance tree).
+	 *
+	 * @return  boolean
+	 */
+	public static function is_current_request_oxygen_six_themeless_fc_page() {
+		// Bail if FC distraction-free templates already provide layout
+		if ( self::is_distraction_free_fc_page_for_current_request() ) { return false; }
+
+		$post_id = self::get_current_breakdance_post_id_for_request();
+
+		// Bail if post ID is not available
+		if ( ! $post_id ) { return false; }
+
+		return ! self::post_has_breakdance_layout_tree( $post_id );
+	}
+
+	/**
+	 * Whether the current request uses FC distraction-free header and footer templates.
+	 *
+	 * @return  boolean
+	 */
+	public static function is_distraction_free_fc_page_for_current_request() {
+		if ( function_exists( 'is_cart' ) && is_cart() && class_exists( 'FluidCheckout_PRO_CartPage' ) ) {
+			return FluidCheckout_PRO_CartPage::instance()->is_distraction_free_header_footer_cart();
+		}
+
+		if ( ! class_exists( 'FluidCheckout_CheckoutPageTemplate' ) ) { return false; }
+
+		if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+			return FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout();
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get the post ID used to load the Breakdance document tree for the current request.
+	 *
+	 * @return  int
+	 */
+	public static function get_current_breakdance_post_id_for_request() {
+		if ( is_singular() ) {
+			return (int) get_queried_object_id();
+		}
+
+		return 0;
+	}
+
+	/**
+	 * Whether a post has a saved Breakdance layout tree with content.
+	 *
+	 * @param   int  $post_id  Post ID.
+	 *
+	 * @return  boolean
+	 */
+	public static function post_has_breakdance_layout_tree( $post_id ) {
+		// Bail if post ID is not valid
+		if ( ! $post_id ) { return false; }
+
+		// Bail if Breakdance data helper is not available
+		if ( ! function_exists( '\Breakdance\Data\get_tree' ) ) { return false; }
+
+		$tree = \Breakdance\Data\get_tree( (int) $post_id );
+
+		// Bail if tree is not valid
+		if ( false === $tree || ! is_array( $tree ) ) { return false; }
+
+		$children = isset( $tree['root']['children'] ) && is_array( $tree['root']['children'] ) ? $tree['root']['children'] : array();
+
+		return count( $children ) > 0;
 	}
 
 	/**
@@ -133,8 +217,8 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 	 * @param  string  $classes  Wrapper element classes.
 	 */
 	public function maybe_append_fc_container_class_to_wrapper( $classes ) {
-		// Bail if not applicable
-		if ( ! self::is_oxygen_six_with_breakdance_woocommerce() ) { return $classes; }
+		// Bail if themeless FC container layout is not needed
+		if ( ! self::should_use_themeless_fc_container_layout() ) { return $classes; }
 
 		// Bail if not on order pay page
 		if ( ! class_exists( 'FluidCheckout_PRO_OrderPayPage' ) || ! FluidCheckout_PRO_OrderPayPage::instance()->is_order_pay_page_or_fragment() ) { return $classes; }
@@ -172,8 +256,8 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 	 * @param  boolean  $add_container_class  Whether to add the container class.
 	 */
 	public function keep_fc_container_class_for_oxygen_six( $add_container_class ) {
-		// Bail if not applicable
-		if ( ! self::is_oxygen_six_with_breakdance_woocommerce() ) { return $add_container_class; }
+		// Bail if themeless FC container layout is not needed
+		if ( ! self::should_use_themeless_fc_container_layout() ) { return $add_container_class; }
 
 		return true;
 	}
@@ -182,15 +266,14 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 	 * Add FC content wrappers around WooCommerce shortcodes on Oxygen 6 themeless pages.
 	 */
 	public function maybe_setup_themeless_page_wrappers_for_oxygen_six() {
-		// Bail if not applicable
-		if ( ! self::is_oxygen_six_with_breakdance_woocommerce() ) { return; }
+		// Bail if themeless FC container layout is not needed
+		if ( ! self::should_use_themeless_fc_container_layout() ) { return; }
 
 		// Checkout shortcode wrapper when using the theme template
 		if (
 			FluidCheckout_Steps::instance()->is_checkout_page_or_fragment()
 			&& ! is_order_received_page()
 			&& ! is_checkout_pay_page()
-			&& ! FluidCheckout_CheckoutPageTemplate::instance()->is_distraction_free_header_footer_checkout()
 		) {
 			$checkout_shortcode_tag = apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' );
 			remove_shortcode( $checkout_shortcode_tag );
@@ -214,6 +297,11 @@ class FluidCheckout_Oxygen extends FluidCheckout {
 		if ( in_array( 'oxygen', $classes, true ) ) { return $classes; }
 
 		$classes[] = 'oxygen';
+
+		// Themeless layout needs extra FC container constraints in compat CSS
+		if ( self::should_use_themeless_fc_container_layout() ) {
+			$classes[] = 'has-fc-oxygen-six-themeless-layout';
+		}
 
 		return $classes;
 	}
