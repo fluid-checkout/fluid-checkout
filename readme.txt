@@ -337,9 +337,13 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
+* Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
+* Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
 * Improved: Use Tom Select for all dropdown fields on the Fluid Checkout settings page.
 * Improved: Open settings dropdowns upward when there is not enough room below, so the full list stays visible above the save bar.
 * Added: Save Fluid Checkout settings with Ctrl+S or Cmd+S on the settings page.
+* Improved: Save Fluid Checkout settings without reloading the page, with dismissible success and error messages shown in the settings header.
 * Improved: PRO feature badges on the Getting started checklist link to pricing again, matching other settings badges.
 * Improved: Google address autocomplete is enabled by default.
 * Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
@@ -385,6 +389,11 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Split page templates, progress bar, and order summary into their own checkout settings sections.
 * Improved: Automatically detect whether "Add" link button labels should be lowercase based on the store language, instead of a setting.
 * Fixed: PRO-only settings values are forced back to Lite-compatible options when Fluid Checkout PRO is not active.
+* Fixed: Getting started checklist steps for add-ons stayed marked complete after the add-on plugin was deactivated.
+* Fixed: Active add-ons did not unlock their settings tabs because the settings access registry loaded too late during admin bootstrap.
+* Fixed: Add-on promo cards showed Activate add-on instead of Activated when the add-on was already active and Fluid Checkout PRO was active.
+* Fixed: Settings color picker hue bar appeared black on empty color fields while keeping the input empty until a color is chosen.
+* Improved: After activating an add-on from the settings page, show the Activated button briefly instead of a success message before reloading.
 * Added: Support for Split design template for the 1-column layout (PRO feature).
 * Added: Setting to choose a background color for the Split design secondary column (PRO feature).
 * Added: Filter `fc_available_shipping_methods` to change the shipping methods shown for a package.

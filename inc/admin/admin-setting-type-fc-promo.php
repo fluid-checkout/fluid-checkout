@@ -54,6 +54,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 					'processing'   => __( 'Processing…', 'fluid-checkout' ),
 					'genericError' => __( 'Something went wrong. Please try again.', 'fluid-checkout' ),
 					'activate'     => __( 'Activate plugin', 'fluid-checkout' ),
+					'activated'    => __( 'Activated', 'fluid-checkout' ),
 				),
 			)
 		);
@@ -154,8 +155,17 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		$is_pro_installed = FluidCheckout::instance()->is_plugin_installed( $pro_plugin_file );
 		$is_installed     = FluidCheckout::instance()->is_plugin_installed( $plugin_file );
 		$is_activated     = FluidCheckout::instance()->is_plugin_activated( $plugin_file );
-		$action_type      = $is_installed ? 'activate' : 'purchase';
-		$admin            = FluidCheckout_Admin::instance();
+
+		// Match dashboard add-on cards so PRO can leave Activated HTML unchanged.
+		if ( $is_activated ) {
+			$action_type = 'activated';
+		} elseif ( $is_installed ) {
+			$action_type = 'activate';
+		} else {
+			$action_type = 'purchase';
+		}
+
+		$admin = FluidCheckout_Admin::instance();
 
 		ob_start();
 
@@ -239,7 +249,7 @@ class FluidCheckout_Admin_SettingType_Promo extends FluidCheckout {
 		 * @since 5.0.0
 		 *
 		 * @param  array   $value        Promo field args.
-		 * @param  string  $action_type  activate|purchase (or custom from extensions).
+		 * @param  string  $action_type  activated|activate|purchase (or custom from extensions).
 		 * @param  string  $plugin_file  Plugin basename.
 		 */
 		return (string) apply_filters( 'fc_settings_promo_actions_html', $html, $value, $action_type, $plugin_file );

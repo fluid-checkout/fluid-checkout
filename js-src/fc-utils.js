@@ -75,7 +75,7 @@
 		ARROW_RIGHT: 'ArrowRight',
 		ARROW_UP: 'ArrowUp',
 		ARROW_DOWN: 'ArrowDown',
-		SAVE: 's',
+		S: 's',
 	}
 
 

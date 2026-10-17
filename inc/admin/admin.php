@@ -10,6 +10,7 @@ class FluidCheckout_Admin extends FluidCheckout {
 	 * __construct function.
 	 */
 	public function __construct() {
+		$this->load_settings_access();
 		$this->hooks();
 	}
 
@@ -64,10 +65,19 @@ class FluidCheckout_Admin extends FluidCheckout {
 
 
 	/**
-	 * Load the Fluid Checkout settings page, field renderer and settings access registry.
+	 * Load the settings access registry so add-ons can unlock features during bootstrap.
+	 */
+	public function load_settings_access() {
+		include_once self::$directory_path . 'inc/admin/admin-settings-access.php';
+	}
+
+
+
+	/**
+	 * Load the Fluid Checkout settings page and field renderer.
 	 */
 	public function load_settings_page() {
-		include_once self::$directory_path . 'inc/admin/admin-settings-access.php';
+		$this->load_settings_access();
 		include_once self::$directory_path . 'inc/admin/admin-settings-renderer.php';
 		include_once self::$directory_path . 'inc/admin/admin-settings-page.php';
 	}

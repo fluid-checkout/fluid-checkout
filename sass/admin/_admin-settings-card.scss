@@ -15,7 +15,7 @@
 .fc-settings-card__header {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: flex-start;
 	gap: 4px 10px;
 	padding: $fc-settings-card-padding;
 	border-bottom: 1px solid $fc-settings-card-header-border-color;
@@ -32,7 +32,7 @@
 	padding: 0;
 	font-size: $fc-settings-card-title-font-size;
 	font-weight: $fc-settings-card-title-font-weight;
-	line-height: 1.4;
+	line-height: $fc-settings-card-title-line-height;
 	color: $fc-settings-text-color;
 }
 
@@ -42,6 +42,7 @@
 	align-items: center;
 	gap: 8px;
 	margin-left: auto;
+	padding-top: $fc-settings-docs-icon-align-offset;
 }
 
 .rtl .fc-settings-card__actions {
@@ -53,22 +54,31 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 24px;
-	height: 24px;
+	width: $fc-settings-info-icon-hit-size;
+	height: $fc-settings-info-icon-hit-size;
+	border: none;
+	border-radius: 50%;
+	box-shadow: none;
 	color: $fc-settings-docs-icon-color;
 	text-decoration: none;
 	line-height: 1;
 }
 
 .fc-settings-docs-icon .dashicons {
-	width: 18px;
-	height: 18px;
-	font-size: 18px;
+	width: $fc-settings-info-tip-size;
+	height: $fc-settings-info-tip-size;
+	font-size: $fc-settings-info-tip-size;
 }
 
-.fc-settings-docs-icon:hover,
-.fc-settings-docs-icon:focus {
+.fc-settings-docs-icon:hover {
 	color: $fc-settings-docs-icon-color-hover;
+}
+
+.fc-settings-docs-icon:focus {
+	border: none;
+	box-shadow: none !important; // Needed to override WP admin link focus ring
+	color: $fc-settings-docs-icon-color-hover;
+	@include fc-admin-settings-info-icon-focus-outline();
 }
 
 .fc-settings-card__promo {
@@ -102,12 +112,19 @@
 	transition: color .15s ease-in-out, transform .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.fc-settings-promo-pill:hover,
+.fc-settings-promo-pill:hover {
+	color: $fc-settings-promo-pill-color-hover;
+	text-decoration: none;
+	transform: scale( 1.025 );
+	box-shadow: 0 2px 6px 0 $elevation-shadow-medium;
+}
+
 .fc-settings-promo-pill:focus {
 	color: $fc-settings-promo-pill-color-hover;
 	text-decoration: none;
 	transform: scale( 1.025 );
 	box-shadow: 0 2px 6px 0 $elevation-shadow-medium;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-promo-pill--addon {
@@ -362,8 +379,7 @@
 .fc-settings-wrap .button:focus,
 .fc-settings-wrap .button-secondary:focus,
 .fc-settings-button:focus {
-	outline: 2px solid $fc-settings-nav-focus-outline-color;
-	outline-offset: 2px;
+	@include fc-admin-settings-focus-outline();
 }
 
 .fc-settings-wrap .button:active:not( :disabled ):not( .disabled ),

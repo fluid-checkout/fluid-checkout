@@ -38,19 +38,33 @@
 		actionsSelector:                       '.fc-settings-actions',
 		formSelector:                          '[data-fc-settings-form]',
 		saveButtonSelector:                    '[data-fc-settings-save]',
+		noticesSelector:                       '[data-fc-settings-notices]',
 		isBusyClass:                           'is-busy',
 		isPinnedClass:                         'is-pinned',
+		noticeVisibleClass:                    'is-visible',
+		noticeHidingClass:                     'is-hiding',
 
 		hiddenClass:                           'hidden',
 
 		syncedSelectAttribute:                 'data-fc-settings-sync-group',
 
+		ajaxUrl:                               '',
+		saveAction:                            'fc_settings_save',
+		noticeDismissDelayMs:                  5000,
+		noticeHideTransitionMs:                300,
+
 		i18n: {
 			saving:                            'Saving...',
+			save:                              'Save settings',
+			saved:                             'Your settings have been saved.',
+			saveError:                         'Settings could not be saved. Please try again.',
+			dismissNotice:                     'Dismiss notice',
 		},
 	};
 	var _triggerFieldIds = [];
 	var _actionsSyncScheduled = false;
+	var _isSavingSettings = false;
+	var _settingsNoticeTimeout = null;
 
 
 
@@ -804,6 +818,15 @@
 		return _settings.i18n && _settings.i18n.saving ? _settings.i18n.saving : 'Saving...';
 	};
 
+	/**
+	 * Get the idle save button label from settings.
+	 *
+	 * @return  {string}  Save button label.
+	 */
+	var getSaveLabel = function() {
+		return _settings.i18n && _settings.i18n.save ? _settings.i18n.save : 'Save settings';
+	};
+
 
 
 	/**
@@ -867,6 +890,179 @@
 	};
 
 	/**
+	 * Restore save buttons after an AJAX save finishes.
+	 */
+	var resetSaveButtonsState = function() {
+		var buttons = document.querySelectorAll( _settings.saveButtonSelector );
+		var i;
+		var button;
+
+		for ( i = 0; i < buttons.length; i++ ) {
+			button = buttons[ i ];
+			button.classList.remove( _settings.isBusyClass );
+			button.disabled = false;
+			button.style.minWidth = '';
+			button.textContent = getSaveLabel();
+		}
+	};
+
+	/**
+	 * Get the active settings tab slug from the DOM.
+	 *
+	 * @return  {string}  Tab slug, or empty string when none is active.
+	 */
+	var getActiveSettingsTabSlug = function() {
+		var activeTab = document.querySelector( '.fc-settings-tab.is-active' );
+
+		if ( ! activeTab ) { return ''; }
+
+		return activeTab.getAttribute( 'data-fc-settings-tab' ) || '';
+	};
+
+	/**
+	 * Dismiss a floating save notice in the settings page header.
+	 *
+	 * @param   {Element}  notice  Notice element to dismiss.
+	 * @param   {Element}  host    Notice container element.
+	 */
+	var dismissSettingsSaveNotice = function( notice, host ) {
+		var hideTransitionMs;
+
+		if ( ! notice || ! host || ! host.contains( notice ) ) { return; }
+
+		if ( _settingsNoticeTimeout ) {
+			window.clearTimeout( _settingsNoticeTimeout );
+			_settingsNoticeTimeout = null;
+		}
+
+		hideTransitionMs = _settings.noticeHideTransitionMs;
+
+		notice.classList.remove( _settings.noticeVisibleClass );
+		notice.classList.add( _settings.noticeHidingClass );
+
+		window.setTimeout( function() {
+			if ( host.contains( notice ) ) {
+				host.removeChild( notice );
+			}
+		}, hideTransitionMs );
+	};
+
+	/**
+	 * Show a floating save notice in the settings page header.
+	 *
+	 * @param   {string}  type     Notice type: success or error.
+	 * @param   {string}  message  Notice message.
+	 */
+	var showSettingsSaveNotice = function( type, message ) {
+		var host = document.querySelector( _settings.noticesSelector );
+		var notice;
+		var noticeMessage;
+		var dismissButton;
+		var dismissLabel;
+		var dismissDelayMs;
+
+		if ( ! host || ! message ) { return; }
+
+		if ( _settingsNoticeTimeout ) {
+			window.clearTimeout( _settingsNoticeTimeout );
+			_settingsNoticeTimeout = null;
+		}
+
+		host.textContent = '';
+		notice = document.createElement( 'div' );
+		notice.className = 'fc-header__notice fc-header__notice--' + type;
+		notice.setAttribute( 'role', 'error' === type ? 'alert' : 'status' );
+
+		noticeMessage = document.createElement( 'span' );
+		noticeMessage.className = 'fc-header__notice-message';
+		noticeMessage.textContent = message;
+		notice.appendChild( noticeMessage );
+
+		dismissLabel = _settings.i18n && _settings.i18n.dismissNotice ? _settings.i18n.dismissNotice : 'Dismiss notice';
+		dismissButton = document.createElement( 'button' );
+		dismissButton.type = 'button';
+		dismissButton.className = 'fc-header__notice-dismiss';
+		dismissButton.setAttribute( 'aria-label', dismissLabel );
+		dismissButton.innerHTML = '<span class="dashicons dashicons-no-alt" aria-hidden="true"></span>';
+		dismissButton.addEventListener( 'click', function() {
+			dismissSettingsSaveNotice( notice, host );
+		} );
+		notice.appendChild( dismissButton );
+
+		host.appendChild( notice );
+
+		window.requestAnimationFrame( function() {
+			notice.classList.add( _settings.noticeVisibleClass );
+		} );
+
+		dismissDelayMs = _settings.noticeDismissDelayMs;
+
+		_settingsNoticeTimeout = window.setTimeout( function() {
+			dismissSettingsSaveNotice( notice, host );
+		}, dismissDelayMs );
+	};
+
+	/**
+	 * Save settings through admin AJAX.
+	 */
+	var saveSettingsViaAjax = function() {
+		var form;
+		var formData;
+		var activeTab;
+		var saveErrorMessage;
+		var savedMessage;
+
+		if ( _isSavingSettings ) { return; }
+
+		form = document.querySelector( _settings.formSelector );
+
+		// Bail if AJAX save is unavailable
+		if ( ! form || ! _settings.ajaxUrl ) { return; }
+
+		_isSavingSettings = true;
+		setSaveButtonsSavingState();
+
+		formData = new FormData( form );
+		formData.append( 'action', _settings.saveAction );
+
+		activeTab = getActiveSettingsTabSlug();
+		if ( activeTab ) {
+			formData.set( 'fc_settings_current_tab', activeTab );
+		}
+
+		saveErrorMessage = _settings.i18n && _settings.i18n.saveError ? _settings.i18n.saveError : 'Settings could not be saved. Please try again.';
+		savedMessage = _settings.i18n && _settings.i18n.saved ? _settings.i18n.saved : 'Your settings have been saved.';
+
+		window.fetch( _settings.ajaxUrl, {
+			method:      'POST',
+			body:        formData,
+			credentials: 'same-origin',
+		} )
+			.then( function( response ) {
+				return response.json();
+			} )
+			.then( function( response ) {
+				var message;
+
+				if ( response && response.success ) {
+					message = response.data && response.data.message ? response.data.message : savedMessage;
+					showSettingsSaveNotice( 'success', message );
+					return;
+				}
+
+				message = response && response.data && response.data.message ? response.data.message : saveErrorMessage;
+				showSettingsSaveNotice( 'error', message );
+			} )
+			.catch( function() {
+				showSettingsSaveNotice( 'error', saveErrorMessage );
+			} )
+			.finally( function() {
+				_isSavingSettings = false;
+				resetSaveButtonsState();
+			} );
+	};
+
+	/**
 	 * Handle settings form submit events.
 	 *
 	 * @param   {Event}  event  The submit event.
@@ -875,8 +1071,8 @@
 		// Bail if not the settings form
 		if ( ! event.target || ! event.target.matches || ! event.target.matches( _settings.formSelector ) ) { return; }
 
-		// Show saving state on save buttons
-		setSaveButtonsSavingState();
+		event.preventDefault();
+		saveSettingsViaAjax();
 	};
 
 
@@ -890,11 +1086,35 @@
 		var form;
 		var saveButton;
 		var isSaveShortcut;
+		var target;
+		var inputType;
 
 		// Bail if FCUtils is not available
 		if ( ! window.FCUtils ) { return; }
 
-		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.SAVE === event.key.toLowerCase();
+		// Prevent implicit form submit when pressing Enter in settings fields
+		if ( FCUtils.keyboardKeys.ENTER === event.key ) {
+			form = document.querySelector( _settings.formSelector );
+			target = event.target;
+
+			if ( form && target && form.contains( target ) && 'TEXTAREA' !== target.tagName ) {
+				if ( target.closest && target.closest( '.iris-picker' ) ) {
+					event.preventDefault();
+				}
+				else if ( 'SELECT' === target.tagName ) {
+					event.preventDefault();
+				}
+				else if ( 'INPUT' === target.tagName ) {
+					inputType = ( target.type || 'text' ).toLowerCase();
+
+					if ( -1 !== [ 'text', 'search', 'url', 'tel', 'email', 'password', 'number', 'color' ].indexOf( inputType ) ) {
+						event.preventDefault();
+					}
+				}
+			}
+		}
+
+		isSaveShortcut = ( event.metaKey || event.ctrlKey ) && ! event.altKey && ! event.shiftKey && FCUtils.keyboardKeys.S === event.key.toLowerCase();
 
 		// Bail if the save shortcut was not pressed
 		if ( ! isSaveShortcut ) { return; }

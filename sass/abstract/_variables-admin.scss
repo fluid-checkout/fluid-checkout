@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 // ----------------------------------------
 // VARIABLES FOR ADMIN PAGES
 // ----------------------------------------
@@ -90,6 +92,15 @@ $fc-header-button-save-color:               $white !default;
 $fc-header-button-save-background-disabled: #b8c9ff !default;
 $fc-header-button-save-border-color-disabled: #8a9fef !default;
 $fc-header-z-index:                         200 !default;
+$fc-header-notice-inline-inset:             16px !default;
+$fc-header-notice-inline-inset-mobile:      8px !default;
+$fc-header-notice-padding-y:                8px !default;
+$fc-header-notice-font-size:                13px !default;
+$fc-header-notice-line-height:              1.4 !default;
+$fc-header-notice-dismiss-size:             18px !default;
+$fc-header-notice-row-height:               max( $fc-header-notice-dismiss-size, $fc-header-notice-font-size * $fc-header-notice-line-height ) !default;
+$fc-header-notice-single-line-height:       $fc-header-notice-padding-y * 2 + $fc-header-notice-row-height !default;
+$fc-header-notice-vertical-anchor-offset:   $fc-header-notice-single-line-height * 0.5 !default;
 
 // END - ADMIN - PAGE HEADER
 // ----------------------------------------
@@ -187,6 +198,22 @@ $fc-settings-sidebar-header-height-compact: $fc-settings-sidebar-toggle-size + (
 
 
 // ----------------------------------------
+// ADMIN - SETTINGS PAGE FOCUS
+
+$fc-settings-input-border-color-focus:      #00aadc !default;
+$fc-settings-focus-outline-color:           $fc-settings-input-border-color-focus !default;
+$fc-settings-focus-outline-width:           2px !default;
+$fc-settings-focus-outline-offset:          0.5px !default;
+$fc-settings-selected-option-outline-color: $fc-settings-text-color !default;
+
+// END - ADMIN - SETTINGS PAGE FOCUS
+// ----------------------------------------
+
+
+
+
+
+// ----------------------------------------
 // ADMIN - SETTINGS PAGE NAV
 
 $fc-settings-nav-padding-y:                 6px !default;
@@ -199,7 +226,7 @@ $fc-settings-nav-pill-radius:               5px !default;
 $fc-settings-nav-link-hover-background:     $admin-muted-surface-background !default;
 $fc-settings-nav-link-active-background:    #e7edf1 !default;
 $fc-settings-nav-link-hover-color:          #3c4a55 !default;
-$fc-settings-nav-focus-outline-color:       #2271b1 !default;
+$fc-settings-nav-focus-outline-color:       $fc-settings-input-border-color-focus !default;
 $fc-settings-nav-marker-font-size:          13px !default;
 $fc-settings-nav-marker-color:              $admin-text-color-subtle !default;
 $fc-settings-nav-separator-margin:          10px 12px !default;
@@ -242,6 +269,7 @@ $fc-settings-field-padding-y:               8px !default;
 $fc-settings-field-border-color:            #f0f0f1 !default;
 $fc-settings-field-label-width:             180px !default;
 $fc-settings-field-label-font-size:         14px !default;
+$fc-settings-field-label-line-height:       1.4 !default;
 $fc-settings-field-label-padding-top:       11px !default;
 $fc-settings-field-label-padding-top-toggle: 5px !default;
 $fc-settings-field-inline-gap:              24px !default;
@@ -251,7 +279,6 @@ $fc-settings-input-font-size:               14px !default;
 $fc-settings-input-line-height:             26px !default;
 $fc-settings-input-border-radius:           5px !default;
 $fc-settings-input-border-color:            #cbd5e1 !default;
-$fc-settings-input-border-color-focus:      #00aadc !default;
 $fc-settings-input-background-color:        $white !default;
 $fc-settings-input-background-color-disabled: #edf2f5 !default;
 $fc-settings-input-color:                   $admin-text-color !default;
@@ -259,6 +286,8 @@ $fc-settings-input-color-disabled:          $admin-text-color-muted !default;
 $fc-settings-input-placeholder-color:       #949494 !default;
 $fc-settings-input-box-shadow:              0 0 0 0 rgba( 0, 0, 0, 0 ), 0 0 0 0 rgba( 0, 0, 0, 0 ), 0 1px 2px 0 rgba( 0, 0, 0, .04 ) !default;
 $fc-settings-input-group-gap:               10px !default;
+$fc-settings-radio-size:                    1rem !default;
+$fc-settings-radio-dot-size:                0.5rem !default;
 $fc-settings-select-caret-size:             16px !default;
 $fc-settings-select-caret-padding-right:    36px !default;
 $fc-settings-select-caret-offset-x:         10px !default;
@@ -293,6 +322,16 @@ $fc-settings-toggle-background-checked-disabled: #8fd9ad !default;
 $fc-settings-toggle-knob-size:              18px !default;
 $fc-settings-toggle-knob-offset:            16px !default;
 $fc-settings-info-tip-size:                 18px !default;
+$fc-settings-info-icon-hit-size:            24px !default;
+$fc-settings-field-label-half-line:         math.div( $fc-settings-field-label-font-size * $fc-settings-field-label-line-height, 2 ) !default;
+$fc-settings-info-icon-half-size:           math.div( $fc-settings-info-icon-hit-size, 2 ) !default;
+$fc-settings-info-icon-vertical-offset:   2px !default;
+$fc-settings-info-tip-label-top:            $fc-settings-field-label-padding-top + $fc-settings-field-label-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
+$fc-settings-info-tip-label-top-toggle:     $fc-settings-field-label-padding-top-toggle + $fc-settings-field-label-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
+$fc-settings-info-tip-label-top-stacked:    $fc-settings-field-label-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
+$fc-settings-card-title-line-height:        1.4 !default;
+$fc-settings-card-title-half-line:          math.div( $fc-settings-card-title-font-size * $fc-settings-card-title-line-height, 2 ) !default;
+$fc-settings-docs-icon-align-offset:        $fc-settings-card-title-half-line - $fc-settings-info-icon-half-size + $fc-settings-info-icon-vertical-offset !default;
 $fc-settings-info-tip-color:                #b8cad7 !default;
 $fc-settings-info-tip-color-hover:          $admin-text-color !default;
 $fc-settings-info-tip-offset:               26px !default;

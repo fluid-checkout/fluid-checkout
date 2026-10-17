@@ -61,6 +61,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 
 		// Save settings
 		add_action( 'admin_init', array( $this, 'maybe_save_settings' ), 10 );
+		add_action( 'wp_ajax_fc_settings_save', array( $this, 'ajax_save_settings' ), 10 );
 
 		// Admin body class
 		add_filter( 'admin_body_class', array( $this, 'add_admin_body_class' ), 10 );
@@ -250,6 +251,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		$docs_url = 'https://fluidcheckout.com/docs/?mtm_campaign=admin-header&mtm_kwd=docs&mtm_source=settings-header';
 		?>
 		<div id="fc-header">
+			<div class="fc-header__notices" data-fc-settings-notices aria-live="polite"></div>
 			<a class="fc-header__logo" href="<?php echo esc_url( $home_url ); ?>" target="_blank" rel="noopener noreferrer">
 				<img class="fc-header__logo-icon" src="<?php echo esc_url( $logo_url ); ?>" alt="" />
 				<span class="fc-header__logo-text"><?php echo esc_html( __( 'Fluid Checkout', 'fluid-checkout' ) ); ?></span>
@@ -460,37 +462,47 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 	 *
 	 * @param  array  $settings  Settings arrays.
 	 */
-	public function get_saveable_settings( $settings ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		return FluidCheckout_Admin_Settings_Access::instance()->get_saveable_settings( $settings, $_POST );
+	public function get_saveable_settings( $settings, $data = null ) {
+		if ( null === $data ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$data = $_POST;
+		}
+
+		return FluidCheckout_Admin_Settings_Access::instance()->get_saveable_settings( $settings, $data );
 	}
 
+	/**
+	 * Get the settings tab slug active when saving settings.
+	 *
+	 * @param  array  $post_data  Request data from a settings save.
+	 */
+	public function get_current_tab_from_save_request( $post_data ) {
+		if ( is_array( $post_data ) && ! empty( $post_data[ 'fc_settings_current_tab' ] ) ) {
+			$tab = sanitize_key( $post_data[ 'fc_settings_current_tab' ] );
 
+			if ( $this->is_valid_tab( $tab ) ) {
+				return $tab;
+			}
+		}
+
+		return $this->get_current_tab();
+	}
 
 	/**
-	 * Maybe save settings for all saveable tabs.
+	 * Save settings from a POST request.
 	 * All tab panels are rendered in one form, so every saveable tab is saved together.
+	 *
+	 * @param  array  $post_data  Request data from a settings save.
 	 */
-	public function maybe_save_settings() {
-		// Bail if not on the settings page
-		if ( ! $this->is_settings_page() ) { return; }
-
-		// Bail if not a save request
-		if ( ! isset( $_POST[ 'fc_settings_action' ] ) || 'save' !== sanitize_key( wp_unslash( $_POST[ 'fc_settings_action' ] ) ) ) { return; }
-
-		// Bail if user does not have enough permissions
-		if ( ! current_user_can( self::CAPABILITY ) ) { return; }
-
-		check_admin_referer( 'fc_settings_save', 'fc_settings_nonce' );
-
-		$current_tab = $this->get_current_tab();
+	public function save_settings_from_request( $post_data ) {
+		$current_tab = $this->get_current_tab_from_save_request( $post_data );
 		$tabs = $this->get_tabs();
 
 		foreach ( $tabs as $tab => $tab_args ) {
 			// Skip separators and tabs without settings to save
 			if ( 'tab' !== $tab_args[ 'type' ] || ! $tab_args[ 'show_save_button' ] ) { continue; }
 
-			$settings = $this->get_saveable_settings( $this->get_tab_settings( $tab ) );
+			$settings = $this->get_saveable_settings( $this->get_tab_settings( $tab ), $post_data );
 			FluidCheckout_Settings::instance()->save_settings( $settings );
 
 			// Run the section save hook
@@ -519,9 +531,63 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		 * @param  string  $tab  Settings tab slug that was active when saving.
 		 */
 		do_action( 'fc_admin_settings_saved', $current_tab );
+	}
+
+	/**
+	 * Maybe save settings for all saveable tabs (non-JavaScript fallback).
+	 */
+	public function maybe_save_settings() {
+		// Bail if not on the settings page
+		if ( ! $this->is_settings_page() ) { return; }
+
+		// Bail if not a save request
+		if ( ! isset( $_POST[ 'fc_settings_action' ] ) || 'save' !== sanitize_key( wp_unslash( $_POST[ 'fc_settings_action' ] ) ) ) { return; }
+
+		// Bail if user does not have enough permissions
+		if ( ! current_user_can( self::CAPABILITY ) ) { return; }
+
+		check_admin_referer( 'fc_settings_save', 'fc_settings_nonce' );
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified above.
+		$this->save_settings_from_request( $_POST );
+
+		$current_tab = $this->get_current_tab_from_save_request( $_POST );
 
 		wp_safe_redirect( add_query_arg( 'settings-updated', 'true', $this->get_settings_url( $current_tab ) ) );
 		exit;
+	}
+
+	/**
+	 * Save settings via AJAX.
+	 */
+	public function ajax_save_settings() {
+		if ( ! current_user_can( self::CAPABILITY ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'You do not have permission to save these settings.', 'fluid-checkout' ),
+				),
+				403
+			);
+		}
+
+		check_ajax_referer( 'fc_settings_save', 'fc_settings_nonce' );
+
+		if ( ! isset( $_POST[ 'fc_settings_action' ] ) || 'save' !== sanitize_key( wp_unslash( $_POST[ 'fc_settings_action' ] ) ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'Invalid save request.', 'fluid-checkout' ),
+				)
+			);
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified above.
+		$this->save_settings_from_request( $_POST );
+
+		wp_send_json_success(
+			array(
+				'message' => __( 'Your settings have been saved.', 'fluid-checkout' ),
+			)
+		);
 	}
 
 
@@ -541,8 +607,14 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 			'fc-settings-page',
 			'fcSettingsPageSettings',
 			array(
-				'i18n' => array(
-					'saving' => __( 'Saving...', 'fluid-checkout' ),
+				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
+				'saveAction' => 'fc_settings_save',
+				'i18n'       => array(
+					'saving'          => __( 'Saving...', 'fluid-checkout' ),
+					'save'            => __( 'Save settings', 'fluid-checkout' ),
+					'saved'           => __( 'Your settings have been saved.', 'fluid-checkout' ),
+					'saveError'       => __( 'Settings could not be saved. Please try again.', 'fluid-checkout' ),
+					'dismissNotice'   => __( 'Dismiss notice', 'fluid-checkout' ),
 				),
 			)
 		);
@@ -551,7 +623,7 @@ class FluidCheckout_Admin_Settings_Page extends FluidCheckout {
 		wp_add_inline_script( 'fc-admin-settings-tooltips', '(function(){var i=function(){FCAdminSettingsTooltips.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-nav', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-nav' ), array( 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-nav', '(function(){var i=function(){FCAdminSettingsNav.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
-		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-colorpicker', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-colorpicker' ), array( 'fc-utils', 'jquery', 'iris' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-colorpicker', '(function(){var i=function(){FCAdminSettingsColorPicker.init();};if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",i);}else{i();}})();' );
 		wp_register_script( 'fc-admin-settings-enhanced-select', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-enhanced-select' ), array( 'tomselect' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-enhanced-select', 'window.addEventListener("load",function(){FCAdminSettingsEnhancedSelect.init();});' );
