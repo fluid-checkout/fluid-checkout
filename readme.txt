@@ -337,6 +337,9 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.
+* Improved: Expand the desktop admin page preview to the available width, with a 1000px minimum layout size.
+* Improved: Load the admin page preview only on Fluid Checkout settings pages and during preview requests.
 * Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
 * Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
 * Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
@@ -379,7 +382,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Move the Google Maps scripts troubleshooting option into Tools > Troubleshooting.
 * Improved: Settings navigation becomes an expandable menu on smaller screens.
 * Improved: On small screens, the Upgrade and Save settings buttons move into the settings title bar.
-* Added: Page preview column on settings tabs, with viewport sizes, zoom controls, and expand to full width.
+* Added: Live preview in the plugin settings, showing setting changes before they are saved.
 * Improved: Limit settings content sections to a 600px max width for easier scanning.
 * Improved: Split design template and checkout layout into separate settings sections with larger option cards.
 * Added: New settings pages and guided setup.

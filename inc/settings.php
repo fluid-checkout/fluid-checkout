@@ -702,9 +702,20 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 
 	/**
-	 * Get the effective values map for the current request (context overlay on active).
+	 * Get the effective values map for the current request (context overlay on active), including the values that filters overlay.
 	 */
 	public function get_effective_values() {
+		/**
+		 * Filter the effective settings values for the current request.
+		 * Applied after the cache, so filtered values are never cached.
+		 */
+		return apply_filters( 'fc_settings_effective_values', $this->get_stored_effective_values() );
+	}
+
+	/**
+	 * Get the effective values map of the stored settings profiles for the current request (context overlay on active), cached.
+	 */
+	public function get_stored_effective_values() {
 		$active_slug = $this->get_active_profile_slug();
 		$context_slug = $this->get_context_profile_slug();
 		$context_key = '' !== $context_slug ? $context_slug : 'none';
@@ -1267,14 +1278,32 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @param  array|null  $data     Posted data. Defaults to `$_POST`.
 	 */
 	public function save_settings( $options, $data = null ) {
+		// Get sanitized values to save
+		$update_values = $this->get_sanitized_settings_values( $options, $data );
+
+		// Bail if nothing to update
+		if ( empty( $update_values ) ) {
+			return false;
+		}
+
+		return $this->update_active_profile_values( $update_values );
+	}
+
+	/**
+	 * Get the sanitized settings field values from posted data, as they would be saved.
+	 *
+	 * @param  array       $options  Settings field definitions.
+	 * @param  array|null  $data     Posted data. Defaults to `$_POST`.
+	 */
+	public function get_sanitized_settings_values( $options, $data = null ) {
 		// Use the current request when the caller did not pass posted data
 		if ( null === $data ) {
 			$data = $_POST; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Caller verifies nonce.
 		}
 
-		// Bail if no data to save
+		// Bail if no data to sanitize
 		if ( empty( $data ) || ! is_array( $options ) ) {
-			return false;
+			return array();
 		}
 
 		$update_values = array();
@@ -1321,12 +1350,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 			$update_values[ $option[ 'id' ] ] = $value;
 		}
 
-		// Bail if nothing to update
-		if ( empty( $update_values ) ) {
-			return false;
-		}
-
-		return $this->update_active_profile_values( $update_values );
+		return $update_values;
 	}
 
 	/**
