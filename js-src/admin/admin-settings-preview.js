@@ -778,20 +778,42 @@
 	};
 
 	/**
+	 * Enhance the preview mode dropdown with Tom Select when settings enhanced select is available.
+	 */
+	var ensurePreviewModeTomSelect = function() {
+		var modeSelect = document.querySelector( _settings.modeSelector );
+
+		// Bail if the mode dropdown is missing or already enhanced
+		if ( ! modeSelect || modeSelect.tomselect ) { return; }
+
+		// Bail if settings enhanced select is not available
+		if ( 'undefined' === typeof FCAdminSettingsEnhancedSelect ) { return; }
+
+		FCAdminSettingsEnhancedSelect.init();
+		FCAdminSettingsEnhancedSelect.enhanceFields( modeSelect );
+	};
+
+	/**
 	 * Set the preview mode, as selected in the mode dropdown.
 	 *
 	 * @param  {string}  mode  Preview mode.
 	 */
 	var setPreviewMode = function( mode ) {
 		var modeSelect = document.querySelector( _settings.modeSelector );
+		var hasModeOption;
 
 		// Bail if the mode dropdown is missing
 		if ( ! modeSelect ) { return; }
 
-		// Select the mode, using guest mode for modes the dropdown does not have
-		modeSelect.value = mode;
-		_previewMode = modeSelect.value || _settings.guestMode;
+		// Use guest mode when the dropdown has no matching option
+		hasModeOption = modeSelect.querySelector( 'option[value="' + mode + '"]' );
+		_previewMode = hasModeOption ? mode : _settings.guestMode;
 		modeSelect.value = _previewMode;
+
+		// Maybe sync Tom Select when the preview mode field was enhanced before this ran
+		if ( modeSelect.tomselect ) {
+			modeSelect.tomselect.setValue( _previewMode, true );
+		}
 	};
 
 	/**
@@ -1375,6 +1397,7 @@
 
 		// Restore the preview mode and header and footer visibility saved in the browser
 		savedState = getSavedState();
+		ensurePreviewModeTomSelect();
 		setPreviewMode( savedState.mode || _settings.guestMode );
 		setHeaderFooterVisible( true === savedState.headerFooter );
 

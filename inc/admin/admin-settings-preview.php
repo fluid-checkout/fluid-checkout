@@ -190,7 +190,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 */
 	public function register_assets() {
 		// Scripts
-		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+		wp_register_script( 'fc-admin-settings-preview', FluidCheckout_Enqueue::instance()->get_script_url( 'js/admin/admin-settings-preview' ), array( 'jquery', 'fc-utils', 'fc-admin-settings-enhanced-select' ), NULL, array( 'in_footer' => true, 'strategy' => 'defer' ) );
 		wp_add_inline_script( 'fc-admin-settings-preview', 'window.addEventListener("load",function(){FCAdminSettingsPreview.init(fcAdminSettingsPreviewSettings);});' );
 	}
 
@@ -301,10 +301,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				return;
 			}
 
-			// Maybe select the saved preview mode, keeping the first mode for modes the dropdown does not have
-			if ( modeSelect && state.mode ) {
+			// Maybe select the saved preview mode, keeping guest mode for values the dropdown does not have
+			if ( modeSelect && state.mode && modeSelect.querySelector( 'option[value="' + state.mode + '"]' ) ) {
 				modeSelect.value = state.mode;
-				modeSelect.selectedIndex = Math.max( 0, modeSelect.selectedIndex );
 			}
 
 			// Maybe show the header and footer toggle as pressed

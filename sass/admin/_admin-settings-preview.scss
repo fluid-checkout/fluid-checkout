@@ -454,7 +454,7 @@ button.fc-settings-preview__width-button {
 }
 
 select.fc-settings-preview__mode {
-	width: auto;
+	width: 120px;
 	height: $fc-settings-input-height;
 	min-height: $fc-settings-input-height;
 	margin: 0;
@@ -463,6 +463,22 @@ select.fc-settings-preview__mode {
 	box-shadow: $fc-settings-input-box-shadow;
 	color: $fc-settings-input-color;
 	font-size: $fc-settings-input-font-size;
+}
+
+.fc-settings-preview__frame-options .ts-wrapper {
+	flex: 0 0 120px;
+	width: 120px;
+	min-width: 120px;
+	max-width: 120px;
+}
+
+.fc-settings-preview__frame-options .ts-wrapper.single {
+	height: $fc-settings-input-height;
+	min-height: $fc-settings-input-height;
+}
+
+.fc-settings-preview__frame-options .ts-wrapper.single .ts-control {
+	min-height: $fc-settings-input-height;
 }
 
 .fc-settings-preview__status {

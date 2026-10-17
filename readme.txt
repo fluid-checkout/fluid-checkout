@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.
 * Improved: Expand the desktop admin page preview to the available width, with a 1000px minimum layout size.
 * Improved: Load the admin page preview only on Fluid Checkout settings pages and during preview requests.
 * Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
