@@ -424,15 +424,6 @@ class FluidCheckout_Admin_SettingType_Addons extends FluidCheckout {
 			</div>
 
 			<div class="fc-settings-card__inner">
-			<?php
-			/**
-			 * Fires before the Dashboard add-ons list.
-			 *
-			 * @since 5.0.0
-			 */
-			do_action( 'fc_dashboard_addons_before_list' );
-			?>
-
 				<ul class="fc-addons-list">
 					<?php foreach ( $this->get_addons_catalog() as $addon ) : ?>
 						<?php $this->output_addon_item( $addon ); ?>

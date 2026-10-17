@@ -351,6 +351,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: PRO feature badges on the Getting started checklist link to pricing again, matching other settings badges.
 * Improved: Google address autocomplete is enabled by default.
 * Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
+* Removed: Action hook `fc_dashboard_addons_before_list` from the Dashboard add-ons settings card.
 * Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
 * Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
 * Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
