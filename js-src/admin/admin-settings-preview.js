@@ -27,6 +27,7 @@
 	var _hasInitialized = false;
 	var _publicMethods = {};
 	var _previewWidth = 0;
+	var _isDesktopFillViewport = false;
 	var _collapseTimer = null;
 	var _previewMode = 'guest';
 	var _isHeaderFooterVisible = false;
@@ -320,13 +321,29 @@
 	};
 
 	/**
+	 * Get the width the page preview lays out at for an available panel width.
+	 *
+	 * @param   {number}  availableWidth  Width available for the page preview.
+	 * @return  {number}                  Page preview layout width in pixels.
+	 */
+	var getPreviewLayoutWidth = function( availableWidth ) {
+		// Maybe fill the available width on desktop, never below the desktop viewport minimum
+		if ( _isDesktopFillViewport ) {
+			return Math.max( _settings.viewportWidths.desktop, Math.min( availableWidth, _settings.widthMax ) );
+		}
+
+		return _previewWidth;
+	};
+
+	/**
 	 * Get the page preview scale for an available width, scaled down to fit and never up.
 	 *
 	 * @param   {number}  availableWidth  Width available for the page preview.
+	 * @param   {number}  layoutWidth     Width the page preview lays out at.
 	 * @return  {number}                  Page preview scale.
 	 */
-	var getPreviewScale = function( availableWidth ) {
-		return Math.min( 1, availableWidth / _previewWidth );
+	var getPreviewScale = function( availableWidth, layoutWidth ) {
+		return Math.min( 1, availableWidth / layoutWidth );
 	};
 
 	/**
@@ -360,10 +377,10 @@
 			edgeOffset = parseFloat( window.getComputedStyle( preview )[ property ] );
 			startWidth = availableWidth + edgeOffset - parseFloat( keyframes[ 0 ][ property ] );
 			endWidth = availableWidth + edgeOffset - parseFloat( keyframes[ keyframes.length - 1 ][ property ] );
-			startScale = getPreviewScale( startWidth );
+			startScale = getPreviewScale( startWidth, getPreviewLayoutWidth( startWidth ) );
 
 			// Return the scale as far between the start and end scales as the available width is between the start and end widths
-			return startScale + ( getPreviewScale( endWidth ) - startScale ) * ( availableWidth - startWidth ) / ( endWidth - startWidth );
+			return startScale + ( getPreviewScale( endWidth, getPreviewLayoutWidth( endWidth ) ) - startScale ) * ( availableWidth - startWidth ) / ( endWidth - startWidth );
 		}
 	};
 
@@ -382,6 +399,7 @@
 		var borderWidth;
 		var availableWidth;
 		var availableHeight;
+		var layoutWidth;
 		var scale;
 		var frameHeight;
 
@@ -397,13 +415,16 @@
 		// Bail if the available space is not known, such as while the preview is hidden
 		if ( availableWidth <= 0 || availableHeight <= 0 ) { return; }
 
+		// Get the layout width, which fills the available width on desktop down to the desktop minimum
+		layoutWidth = getPreviewLayoutWidth( availableWidth );
+
 		// Scale the page preview down to the available width, never up, along with the column while it expands or collapses, and fill the available height
-		scale = getTransitionPreviewScale( preview, availableWidth ) || getPreviewScale( availableWidth );
+		scale = getTransitionPreviewScale( preview, availableWidth ) || getPreviewScale( availableWidth, layoutWidth );
 		frameHeight = Math.round( availableHeight / scale );
 
 		// Size the frame to the scaled page preview, and lay the page out at the preview width
-		frameWrap.style.maxWidth = ( _previewWidth * scale + borderWidth ) + 'px';
-		frame.style.width = _previewWidth + 'px';
+		frameWrap.style.maxWidth = ( layoutWidth * scale + borderWidth ) + 'px';
+		frame.style.width = layoutWidth + 'px';
 		frame.style.height = frameHeight + 'px';
 		frame.style.transform = 1 === scale ? '' : 'scale( ' + scale + ' )';
 
@@ -414,12 +435,54 @@
 
 		// Maybe show the size and zoom of the page preview
 		if ( dims ) {
-			dims.textContent = _previewWidth + ' \u00d7 ' + frameHeight + ' \u00b7 ' + Math.round( scale * 100 ) + '%';
+			dims.textContent = layoutWidth + ' \u00d7 ' + frameHeight + ' \u00b7 ' + Math.round( scale * 100 ) + '%';
 		}
+
+		// Maybe sync the width field with the layout width on desktop, unless the merchant is editing it
+		syncPreviewWidthControls( layoutWidth );
 
 		// Maybe suggest expanding the preview when it is zoomed out a lot, unless already expanded or in the compact layout drawer
 		if ( zoomHint ) {
 			zoomHint.hidden = scale >= _settings.zoomHintThreshold || isCompactPreviewLayout() || ( layout && layout.classList.contains( _settings.isExpandedClass ) );
+		}
+	};
+
+	/**
+	 * Sync the width field, step buttons, and viewport radios with the current preview width.
+	 *
+	 * @param  {number}  layoutWidth  Width the page preview lays out at.
+	 */
+	var syncPreviewWidthControls = function( layoutWidth ) {
+		var widthInput = document.querySelector( _settings.widthInputSelector );
+		var decreaseButton = document.querySelector( _settings.widthDecreaseSelector );
+		var increaseButton = document.querySelector( _settings.widthIncreaseSelector );
+		var viewportInputs = document.querySelectorAll( _settings.viewportInputSelector );
+		var i;
+
+		// Maybe update the width field, unless the merchant is typing in it
+		if ( widthInput && document.activeElement !== widthInput ) {
+			widthInput.value = layoutWidth;
+		}
+
+		// Maybe disable the decrease button at the minimum width
+		if ( decreaseButton ) {
+			decreaseButton.disabled = layoutWidth <= ( _isDesktopFillViewport ? _settings.viewportWidths.desktop : _settings.widthMin );
+		}
+
+		// Maybe disable the increase button at the maximum width
+		if ( increaseButton ) {
+			increaseButton.disabled = layoutWidth >= _settings.widthMax;
+		}
+
+		// Iterate viewport buttons
+		for ( i = 0; i < viewportInputs.length; i++ ) {
+			// Select desktop while it fills the available width, otherwise select the preset with the same width
+			if ( 'desktop' === viewportInputs[ i ].value ) {
+				viewportInputs[ i ].checked = _isDesktopFillViewport;
+			}
+			else {
+				viewportInputs[ i ].checked = ! _isDesktopFillViewport && _settings.viewportWidths[ viewportInputs[ i ].value ] === _previewWidth;
+			}
 		}
 	};
 
@@ -429,37 +492,24 @@
 	 * @param  {number|string}  width  Page preview width in pixels.
 	 */
 	var setPreviewWidth = function( width ) {
-		var widthInput = document.querySelector( _settings.widthInputSelector );
-		var decreaseButton = document.querySelector( _settings.widthDecreaseSelector );
-		var increaseButton = document.querySelector( _settings.widthIncreaseSelector );
-		var viewportInputs = document.querySelectorAll( _settings.viewportInputSelector );
 		var newWidth = parseInt( width, 10 );
-		var i;
+
+		// Leave desktop fill mode when the merchant sets a custom width
+		_isDesktopFillViewport = false;
 
 		// Keep the current width for values that are not numbers, otherwise limit the width to the allowed range
 		_previewWidth = isNaN( newWidth ) ? _previewWidth : Math.min( _settings.widthMax, Math.max( _settings.widthMin, newWidth ) );
 
-		// Maybe update the width field
-		if ( widthInput ) {
-			widthInput.value = _previewWidth;
-		}
-
-		// Maybe disable the decrease button at the minimum width
-		if ( decreaseButton ) {
-			decreaseButton.disabled = _previewWidth <= _settings.widthMin;
-		}
-
-		// Maybe disable the increase button at the maximum width
-		if ( increaseButton ) {
-			increaseButton.disabled = _previewWidth >= _settings.widthMax;
-		}
-
-		// Iterate viewport buttons, selecting only the one with the same width, so each one can set its width again
-		for ( i = 0; i < viewportInputs.length; i++ ) {
-			viewportInputs[ i ].checked = _settings.viewportWidths[ viewportInputs[ i ].value ] === _previewWidth;
-		}
-
 		// Fit the page preview in the frame at the new width
+		applyPreviewSize();
+	};
+
+	/**
+	 * Use the desktop viewport, filling the available width down to the desktop minimum.
+	 */
+	var setDesktopFillViewport = function() {
+		_isDesktopFillViewport = true;
+		_previewWidth = _settings.viewportWidths.desktop;
 		applyPreviewSize();
 	};
 
@@ -998,8 +1048,13 @@
 		// Bail if the change is not for a viewport radio
 		if ( ! input || ! input.matches( _settings.viewportInputSelector ) || ! input.checked ) { return; }
 
-		// Set the width of the selected viewport button
-		setPreviewWidth( _settings.viewportWidths[ input.value ] );
+		// Maybe fill the available width on desktop, otherwise set the preset width
+		if ( 'desktop' === input.value ) {
+			setDesktopFillViewport();
+		}
+		else {
+			setPreviewWidth( _settings.viewportWidths[ input.value ] );
+		}
 	};
 
 	/**
@@ -1323,8 +1378,8 @@
 		setPreviewMode( savedState.mode || _settings.guestMode );
 		setHeaderFooterVisible( true === savedState.headerFooter );
 
-		// Sync from the initial settings tab, with the desktop page preview width
-		setPreviewWidth( _settings.viewportWidths.desktop );
+		// Sync from the initial settings tab, with the desktop page preview filling the available width
+		setDesktopFillViewport();
 		syncFromSettingsTab( _settings.initialTab );
 
 		// Start with the compact drawer closed
