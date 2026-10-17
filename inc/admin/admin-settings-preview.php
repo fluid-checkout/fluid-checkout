@@ -32,7 +32,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 
 
 	/**
-	 * __construct function.
+	 * Register hooks for the settings preview column.
 	 */
 	public function __construct() {
 		$this->hooks();
@@ -58,7 +58,9 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	/**
 	 * Whether the preview column should be visible for a settings tab.
 	 *
-	 * @param  string  $tab  Settings tab slug.
+	 * @param   string  $tab  Settings tab slug.
+	 *
+	 * @return  bool
 	 */
 	public function is_preview_visible_for_tab( $tab ) {
 		return ! in_array( $tab, self::HIDDEN_TABS, true );
@@ -102,7 +104,11 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		 * Filters preview page tabs on the Fluid Checkout settings page.
 		 * Each page is an array with the keys `label`, `requires_pro`, `url` of the frontend page to preview, and optionally `enable_setting`, the setting that enables the page on the settings tab with the same slug.
 		 *
-		 * @since 5.0.0
+		 * @since  5.0.0
+		 *
+		 * @param  array  $pages  Preview page definitions by page slug.
+		 *
+		 * @return array  Preview page definitions.
 		 */
 		return apply_filters( 'fc_admin_settings_preview_pages', $pages );
 	}
@@ -132,7 +138,12 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 		/**
 		 * Filter the preview pane configuration on the Fluid Checkout settings page.
 		 *
-		 * @param  string  $tab  Settings tab slug.
+		 * @since  5.0.0
+		 *
+		 * @param  array   $config  Preview pane configuration.
+		 * @param  string  $tab     Settings tab slug.
+		 *
+		 * @return array  Preview pane configuration.
 		 */
 		$config = apply_filters( 'fc_admin_settings_preview_config', $defaults, $tab );
 

@@ -26,7 +26,7 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 
 		// Set checkout context
 		add_filter( 'woocommerce_paypal_payments_context' , array( $this, 'maybe_change_context_checkout' ), 300 );
-		
+
 		// Payment methods
 		add_filter( 'fc_checkout_update_on_visibility_change', array( $this, 'disable_update_on_visibility_change' ), 100 );
 
@@ -183,6 +183,8 @@ class FluidCheckout_WooCommercePayPalPayments extends FluidCheckout {
 	 * Add the hosts that PayPal Payments contacts to show its payment buttons to the hosts the admin preview may contact.
 	 *
 	 * @param   array  $hosts  Host names.
+	 *
+	 * @return  array  Host names with PayPal hosts added.
 	 */
 	public function add_admin_preview_allowed_hosts( $hosts ) {
 		// Add the PayPal hosts

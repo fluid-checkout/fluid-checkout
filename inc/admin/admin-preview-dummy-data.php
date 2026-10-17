@@ -72,7 +72,9 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 
 
 	/**
-	 * __construct function.
+	 * Initialize the dummy data class.
+	 *
+	 * Intentionally has no hooks. Preview code calls the getters directly.
 	 */
 	public function __construct() {
 		// Intentionally empty, as the class has no hooks and the parent constructor sets up the plugin
@@ -182,6 +184,12 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 
 		/**
 		 * Filter the address of the dummy customer in the admin preview.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $address  Address values by field key, without the `billing_` or `shipping_` prefix.
+		 *
+		 * @return array  Address values.
 		 */
 		$this->customer_address = apply_filters( 'fc_admin_preview_dummy_customer_address', $address );
 
@@ -237,6 +245,12 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 
 		/**
 		 * Filter the meta values of the dummy logged-in customer in the admin preview.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $meta  Meta values by meta key.
+		 *
+		 * @return array  Meta values.
 		 */
 		$this->customer_meta = (array) apply_filters( 'fc_admin_preview_dummy_customer_meta', $this->customer_meta );
 
@@ -258,6 +272,12 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 
 			/**
 			 * Filter the values of the order fields the dummy customer fills at checkout in the admin preview.
+			 *
+			 * @since  5.0.0
+			 *
+			 * @param  array  $fields  Field values by field key.
+			 *
+			 * @return array  Field values.
 			 */
 			$this->order_fields = (array) apply_filters( 'fc_admin_preview_dummy_order_fields', array(
 				'order_comments'    => _x( 'Please leave the package at the front door.', 'Dummy order notes in the admin preview', 'fluid-checkout' ),
@@ -283,6 +303,12 @@ class FluidCheckout_Admin_Preview_Dummy_Data extends FluidCheckout {
 			/**
 			 * Filter the dummy products used to top up the preview cart when the catalog has fewer products.
 			 * Each item holds product properties as accepted by `WC_Product::set_props()`.
+			 *
+			 * @since  5.0.0
+			 *
+			 * @param  array  $products  Product property lists.
+			 *
+			 * @return array  Product property lists.
 			 */
 			$products = apply_filters( 'fc_admin_preview_dummy_products', array(
 				array( 'name' => _x( 'Beanie', 'Dummy product name in the admin preview', 'fluid-checkout' ), 'regular_price' => '20', 'sale_price' => '18', 'sku' => 'fc-preview-beanie' ),

@@ -70,6 +70,8 @@ class FluidCheckout_WooCommerceGatewayAmazonPaymentsAdvanced extends FluidChecko
 	 * Add the hosts that Amazon Pay contacts to show its payment messages to the hosts the admin preview may contact.
 	 *
 	 * @param   array  $hosts  Host names.
+	 *
+	 * @return  array  Host names with Amazon Pay hosts added.
 	 */
 	public function add_admin_preview_allowed_hosts( $hosts ) {
 		// Add the Amazon Pay hosts of each region

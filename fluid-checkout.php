@@ -601,9 +601,45 @@ class FluidCheckout {
 
 
 	/**
-	 * Load the admin preview, also required on the frontend to handle preview requests.
+	 * Check whether the admin preview should load for the current request.
+	 *
+	 * @return  bool
+	 */
+	public function should_load_admin_preview() {
+		// Preview iframe and frontend preview requests, including expired tokens that must be rejected
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Preview token is validated after the preview loads.
+		if ( isset( $_GET[ 'fc_preview' ] ) ) {
+			return true;
+		}
+
+		// Save unsaved settings for the preview from the settings page
+		if ( wp_doing_ajax() ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Checked when the preview handles the request.
+			$action = isset( $_REQUEST[ 'action' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'action' ] ) ) : '';
+			if ( 'fc_admin_preview_save_draft' === $action ) {
+				return true;
+			}
+		}
+
+		// Fluid Checkout settings page in the admin
+		if ( is_admin() && ! wp_doing_ajax() ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin menu page slug.
+			$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+			if ( 'fluid-checkout' === $page ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Load the admin preview when {@see should_load_admin_preview()} is true.
 	 */
 	public function load_admin_preview() {
+		// Bail if the admin preview is not needed for this request
+		if ( ! $this->should_load_admin_preview() ) { return; }
+
 		// Load admin preview files
 		require_once self::$directory_path . 'inc/admin/admin-preview.php';
 		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-data.php';

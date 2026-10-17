@@ -8,6 +8,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 	/**
 	 * Capability required to use the preview, same as the settings page.
+	 *
+	 * @return  array  Body classes.
 	 */
 	const CAPABILITY = 'manage_woocommerce';
 
@@ -85,7 +87,7 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 
 	/**
-	 * __construct function.
+	 * Initialize the class and register preview hooks.
 	 */
 	public function __construct() {
 		$this->hooks();
@@ -126,7 +128,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	}
 
 	/**
-	 * Add or remove late hooks.
+	 * Add or remove late hooks for preview requests.
+	 *
+	 * Registered at `init` after the preview token is validated.
 	 */
 	public function late_hooks() {
 		// Bail if not a preview request
@@ -191,6 +195,9 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 	/**
 	 * Add or remove preview guard hooks.
+	 *
+	 * Stops preview requests from placing orders, logging in, adding to cart, sending emails, saving data, and contacting other sites.
+	 * Registered when the class loads, so the guards also apply before `init` finishes.
 	 */
 	public function preview_guard_hooks() {
 		// Bail if not a preview request
@@ -229,6 +236,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 
 	/**
 	 * Add or remove preview optimization hooks.
+	 *
+	 * Leaves the scripts and styles of preview pages unoptimized so the frame script and refreshed custom styles load correctly.
 	 */
 	public function preview_optimization_hooks() {
 		// Bail if not a preview request
@@ -328,6 +337,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Add the preview body classes, with the header and footer hidden until the admin page shows them.
 	 *
 	 * @param   array  $classes  Body classes.
+	 *
+	 * @return  array  Body classes.
 	 */
 	public function add_body_class( $classes ) {
 		return array_merge( $classes, array( 'fc-admin-preview', 'fc-admin-preview--hide-header-footer' ) );
@@ -373,6 +384,12 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 			// Maybe skip compat file
 			/**
 			 * Filter whether to enqueue the admin preview compatibility styles of a theme, where the dynamic portion of the hook name is the theme directory name.
+			 *
+			 * @since  5.0.0
+			 *
+			 * @param  bool  $enabled  Whether to enqueue the compatibility styles.
+			 *
+			 * @return bool  Whether to enqueue the compatibility styles.
 			 */
 			if ( true !== apply_filters( 'fc_enable_compat_theme_admin_preview_style_' . $theme_slug, true ) ) { continue; }
 
@@ -394,6 +411,12 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	public function get_frame_script_settings() {
 		/**
 		 * Filter the settings of the admin preview frame script.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $settings  Frame script settings.
+		 *
+		 * @return array  Frame script settings.
 		 */
 		return apply_filters( 'fc_admin_preview_frame_script_settings', array(
 			'adminOrigin'                 => $this->get_admin_origin(),
@@ -579,6 +602,12 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	public function get_allowed_hosts() {
 		/**
 		 * Filter the hosts of other sites that preview pages and preview requests may contact, where a leading `*.` matches any subdomain.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $hosts  Host names.
+		 *
+		 * @return array  Host names.
 		 */
 		$hosts = (array) apply_filters( 'fc_admin_preview_allowed_hosts', array() );
 
@@ -594,6 +623,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Add the response headers for preview requests.
 	 *
 	 * @param   array  $headers  Response headers.
+	 *
+	 * @return  array  Response headers.
 	 */
 	public function add_preview_headers( $headers ) {
 		// Prevent caching, as preview pages must never be served to visitors
@@ -650,6 +681,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Add the preview token and mode to a URL, so requests to it are also preview requests.
 	 *
 	 * @param   string  $url  URL, such as the WooCommerce AJAX endpoint URL.
+	 *
+	 * @return  string  URL with preview arguments.
 	 */
 	public function add_preview_args_to_url( $url ) {
 		// Get URL query arguments
@@ -674,6 +707,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Add the preview token and mode to redirects within the frontend, so the frame stays in the preview, like the WordPress Customizer does.
 	 *
 	 * @param   string  $location  Redirect URL.
+	 *
+	 * @return  string  Redirect URL.
 	 */
 	public function maybe_add_preview_args_to_redirect( $location ) {
 		// Bail if redirecting outside the frontend: to another site, the admin or the login page
@@ -688,6 +723,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Disable the prompt to confirm leaving the checkout page with changed field values, as the admin page reloads and replaces the page preview.
 	 *
 	 * @param   string  $update_before_unload  Whether to prompt before leaving the page, `yes` or `no`.
+	 *
+	 * @return  string  Whether to prompt before leaving the page, `yes` or `no`.
 	 */
 	public function disable_update_before_unload( $update_before_unload ) {
 		return 'no';
@@ -697,6 +734,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Change the browser storage keys of the cart fragments script on preview pages, so the dummy cart is stored apart from the visitor's cart.
 	 *
 	 * @param   string  $key  Browser storage key.
+	 *
+	 * @return  string  Browser storage key.
 	 */
 	public function change_cart_fragments_storage_key( $key ) {
 		return $key . '_fc_preview';
@@ -771,6 +810,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @param   mixed            $result   Response to use instead of dispatching the request, `null` to dispatch it.
 	 * @param   WP_REST_Server   $server   REST server.
 	 * @param   WP_REST_Request  $request  REST request.
+	 *
+	 * @return  mixed  REST response, or `null` to dispatch the request.
 	 */
 	public function maybe_prevent_store_api_checkout( $result, $server, $request ) {
 		// Bail if not a Store API checkout request, matched without case like WordPress matches routes
@@ -783,6 +824,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Add an error to login form submissions, so WooCommerce and Fluid Checkout login forms stop before authentication.
 	 *
 	 * @param   WP_Error  $errors  Login errors.
+	 *
+	 * @return  WP_Error  Login errors.
 	 */
 	public function add_login_error( $errors ) {
 		// Add login error
@@ -795,6 +838,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Reject logins from other login forms, as logging in from the preview would change the visitor's own session.
 	 *
 	 * @param   WP_User|WP_Error|null  $user  Authenticated user, error, or `null` when not authenticated yet.
+	 *
+	 * @return  WP_Error  Login error.
 	 */
 	public function prevent_login( $user ) {
 		return new WP_Error( 'fc_admin_preview_login', $this->get_login_unavailable_message() );
@@ -804,6 +849,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Add an error to account registrations, so WooCommerce does not create customers from the preview.
 	 *
 	 * @param   WP_Error  $errors  Registration errors.
+	 *
+	 * @return  WP_Error  Registration errors.
 	 */
 	public function add_registration_error( $errors ) {
 		// Add registration error
@@ -816,6 +863,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Get the URL that scripts open when adding to cart fails: the preview page that sent the request.
 	 *
 	 * @param   string  $url  URL to open, the product page by default.
+	 *
+	 * @return  string  URL to open.
 	 */
 	public function get_add_to_cart_error_redirect_url( $url ) {
 		// Get the page that sent the request, which carries the preview token
@@ -828,6 +877,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Skip queries that write to the database, so plugins save nothing from preview requests.
 	 *
 	 * @param   string  $query  Database query.
+	 *
+	 * @return  string  Database query, or an empty string to skip the query.
 	 */
 	public function maybe_skip_database_write( $query ) {
 		// Bail if the query does not write to the database, also when it starts with comments
@@ -843,6 +894,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @param   false|array|WP_Error  $preempt  Response to return instead of sending the request, or `false` to send it.
 	 * @param   array                 $args     Request arguments.
 	 * @param   string                $url      Request URL.
+	 *
+	 * @return  false|array|WP_Error  Response to return instead of sending the request, or `false` to send it.
 	 */
 	public function maybe_block_request_to_other_site( $preempt, $args, $url ) {
 		// Bail if another filter already answers the request
@@ -920,6 +973,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * Get the WooCommerce session handler class for preview requests.
 	 *
 	 * @param   string  $class_name  Session handler class name.
+	 *
+	 * @return  string  Session handler class name.
 	 */
 	public function get_session_handler_class( $class_name ) {
 		return 'FluidCheckout_Admin_Preview_Session_Handler';
@@ -934,6 +989,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @param   int     $user_id   User ID.
 	 * @param   string  $meta_key  Meta key, or an empty string for all meta values.
 	 * @param   bool    $single    Whether a single value is requested.
+	 *
+	 * @return  mixed  Meta value.
 	 */
 	public function maybe_get_dummy_customer_meta( $value, $user_id, $meta_key, $single ) {
 		// Bail if not the dummy customer
@@ -961,6 +1018,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 *
 	 * @param   null|bool  $check    Whether to skip writing, `null` to write the meta value.
 	 * @param   int        $user_id  User ID.
+	 *
+	 * @return  null|bool  Whether to skip writing.
 	 */
 	public function maybe_skip_dummy_customer_meta_write( $check, $user_id ) {
 		// Bail if not the dummy customer
@@ -1014,6 +1073,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 *
 	 * @param   mixed   $value  Field value, `null` to get it from the customer.
 	 * @param   string  $input  Field key.
+	 *
+	 * @return  mixed  Field value.
 	 */
 	public function maybe_get_dummy_checkout_field_value( $value, $input ) {
 		// Bail if the value is already set
@@ -1041,6 +1102,12 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	public function get_session_field_keys() {
 		/**
 		 * Filter the keys of fields saved to the session by their own requests, whose values the preview sends with each request as the preview session does not keep them.
+		 *
+		 * @since  5.0.0
+		 *
+		 * @param  array  $field_keys  Session field keys.
+		 *
+		 * @return array  Session field keys.
 		 */
 		return array_values( (array) apply_filters( 'fc_admin_preview_session_field_keys', array() ) );
 	}
@@ -1072,6 +1139,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 *
 	 * @param   string|false  $product_type  Product type, or `false` to read it from the database.
 	 * @param   int           $product_id    Product ID.
+	 *
+	 * @return  string|false  Product type.
 	 */
 	public function maybe_get_dummy_product_type( $product_type, $product_id ) {
 		// Bail if not a dummy product
@@ -1087,6 +1156,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 * @param   string  $product_type  Product type.
 	 * @param   string  $post_type     Post type of the product.
 	 * @param   int     $product_id    Product ID.
+	 *
+	 * @return  string  Product class name.
 	 */
 	public function maybe_get_dummy_product_class( $class_name, $product_type, $post_type, $product_id ) {
 		// Bail if not a dummy product
@@ -1248,6 +1319,8 @@ class FluidCheckout_Admin_Preview extends FluidCheckout {
 	 *
 	 * @param   null|bool  $check    Whether to skip writing, `null` to write the meta value.
 	 * @param   int        $post_id  Post ID.
+	 *
+	 * @return  null|bool  Whether to skip writing.
 	 */
 	public function maybe_skip_dummy_order_meta_write( $check, $post_id ) {
 		// Bail if not a dummy order
