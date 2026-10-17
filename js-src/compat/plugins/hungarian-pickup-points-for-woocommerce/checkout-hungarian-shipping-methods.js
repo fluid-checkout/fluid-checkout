@@ -22,6 +22,9 @@
 	var _settings = {
 		selectedShippingMethodOptionSelector: 'input[type="radio"][name^="shipping_method"]:checked',
 		shipToDifferentAddressCheckboxSelector: '#ship-to-different-address-checkbox',
+		mapTriggerSelector: '#vp-woo-pont-show-map, .vp-woo-pont-show-map',
+		billingCountryFieldSelector: '#billing_country',
+		shippingCountryFieldSelector: '#shipping_country',
 		hungarianShippingMethodID: 'vp_pont',
 	};
 
@@ -61,6 +64,38 @@
 
 
 	/**
+	 * Maybe use the shipping country for the pickup point map, as the plugin loads points for the billing country first.
+	 * Uses a jQuery listener on `document.body`, so it runs before the plugin's listener on `document` and also receives its jQuery-triggered click.
+	 */
+	var maybeUseShippingCountryForMap = function() {
+		var billingCountryField = document.querySelector( _settings.billingCountryFieldSelector );
+		var shippingCountryField = document.querySelector( _settings.shippingCountryFieldSelector );
+
+		// Bail if country fields are not available
+		if ( ! billingCountryField || ! shippingCountryField ) { return; }
+
+		// Get billing and shipping countries
+		var billingCountry = billingCountryField.value;
+		var shippingCountry = shippingCountryField.value;
+
+		// Bail if shipping country is not set
+		if ( ! shippingCountry ) { return; }
+
+		// Bail if billing country already matches the shipping country
+		if ( billingCountry === shippingCountry ) { return; }
+
+		// Use the shipping country while the plugin reads the country fields
+		billingCountryField.value = shippingCountry;
+
+		// Restore the billing country after the plugin has read it
+		requestAnimationFrame( function() {
+			billingCountryField.value = billingCountry;
+		} );
+	};
+
+
+
+	/**
 	 * Initialize component and set related handlers.
 	 */
 	_publicMethods.init = function() {
@@ -70,6 +105,7 @@
 		// Add jQuery event listeners
 		if ( _hasJQuery ) {
 			$( document.body ).on( 'updated_checkout', maybeUpdateShippingAddressFieldsVisibility );
+			$( document.body ).on( 'click', _settings.mapTriggerSelector, maybeUseShippingCountryForMap );
 		}
 
 		_hasInitialized = true;
