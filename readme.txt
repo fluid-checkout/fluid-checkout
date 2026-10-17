@@ -404,6 +404,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
 * Improved: Settings toggles can be reached with the keyboard.
 * Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
+* Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix required shipping address field errors when placing an order with the plugin's pickup point shipping method. Fix pickup point map not listing points for the shipping country.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
