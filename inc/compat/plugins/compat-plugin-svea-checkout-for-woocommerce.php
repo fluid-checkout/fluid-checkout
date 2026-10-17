@@ -27,17 +27,32 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 		add_action( 'wp', array( $this, 'maybe_undo_hooks' ), 300 ); // After very late hooks
 
 		// Persisted data
+		add_action( 'wp', array( $this, 'maybe_remove_parsed_posted_data_hooks' ), 5 ); // Before very late hooks, which parse the posted data
 		add_filter( 'fc_checkout_update_before_unload', array( $this, 'disable_updated_before_unload' ), 10 );
+	}
+
+	/**
+	 * Maybe remove hooks that process the posted data on Svea Checkout requests.
+	 */
+	public function maybe_remove_parsed_posted_data_hooks() {
+		// Bail if not a Svea Checkout request to update the checkout fragments
+		if ( ! $this->is_svea_checkout_fragment_request() ) { return; }
+
+		// Remove hooks saving the posted data, as the Svea form does not include the checkout fields
+		remove_action( 'fc_set_parsed_posted_data', array( FluidCheckout_Steps::instance(), 'maybe_update_saved_shipping_address' ), 7 );
+		remove_action( 'fc_set_parsed_posted_data', array( FluidCheckout_Steps::instance(), 'maybe_update_saved_billing_address' ), 7 );
+		remove_action( 'fc_set_parsed_posted_data', array( FluidCheckout_Steps::instance(), 'maybe_set_billing_address_same_as_shipping' ), 10 );
+		remove_action( 'fc_set_parsed_posted_data', array( FluidCheckout_Steps::instance(), 'maybe_set_shipping_address_same_as_billing' ), 10 );
+		remove_action( 'fc_set_parsed_posted_data', array( FluidCheckout_Steps::instance(), 'maybe_fix_shipping_address_when_shipping_not_needed' ), 10 );
+		remove_action( 'fc_set_parsed_posted_data', array( FluidCheckout_Steps::instance(), 'update_customer_persisted_data' ), 100 );
 	}
 
 
 
 	/**
-	 * Maybe set the current request as a checkout fragment when Svea Checkout requests to update the checkout fragments.
-	 *
-	 * @param   bool  $is_checkout_fragment  Whether the current request is a checkout fragment.
+	 * Check whether the current request is a Svea Checkout request to update the checkout fragments.
 	 */
-	public function maybe_set_request_as_checkout_fragment( $is_checkout_fragment ) {
+	public function is_svea_checkout_fragment_request() {
 		global $wp_query;
 
 		// Get AJAX action
@@ -48,8 +63,17 @@ class FluidCheckout_SveaCheckoutForWooCommerce extends FluidCheckout {
 			$ajax_action = sanitize_text_field( wp_unslash( $_GET[ 'wc-ajax' ] ) );
 		}
 
+		return in_array( $ajax_action, array( 'refresh_sco_snippet', 'update_sco_order_nshift_information' ), true );
+	}
+
+	/**
+	 * Maybe set the current request as a checkout fragment when Svea Checkout requests to update the checkout fragments.
+	 *
+	 * @param   bool  $is_checkout_fragment  Whether the current request is a checkout fragment.
+	 */
+	public function maybe_set_request_as_checkout_fragment( $is_checkout_fragment ) {
 		// Bail if not a Svea Checkout request to update the checkout fragments
-		if ( ! in_array( $ajax_action, array( 'refresh_sco_snippet', 'update_sco_order_nshift_information' ), true ) ) { return $is_checkout_fragment; }
+		if ( ! $this->is_svea_checkout_fragment_request() ) { return $is_checkout_fragment; }
 
 		return true;
 	}
