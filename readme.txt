@@ -337,7 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
-* Added: Shared REST API error helpers for `fluid-checkout/v1` (`fc_api_*` codes, `FluidCheckout_RestApi_Errors`).
+* Added: Shared REST API base for `fluid-checkout/v1` (namespace, route registration, user-scoped permissions) and `fc_api_*` error helpers.
 * Improved: Update the sticky-states library to version 1.0.9.
 * Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.
 * Improved: Expand the desktop admin page preview to the available width, with a 1000px minimum layout size.
