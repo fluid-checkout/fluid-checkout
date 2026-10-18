@@ -5,7 +5,9 @@
 			"js/",
 			"js/**",
 			"css/",
-			"css/**"
+			"css/**",
+			"build/",
+			"build/**"
 		],
 		"exclude": [
 			"bin/",
