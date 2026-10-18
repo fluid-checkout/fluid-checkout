@@ -556,6 +556,7 @@ class FluidCheckout {
 			'FluidCheckout_Enqueue'                        => array( 'file' => self::$directory_path . 'inc/enqueue.php' ),
 			'FluidCheckout_FragmentsRefresh'               => array( 'file' => self::$directory_path . 'inc/fragments-refresh.php' ),
 			'FluidCheckout_Validation'                     => array( 'file' => self::$directory_path . 'inc/checkout-validation.php' ),
+			'FluidCheckout_RestApi_Errors'                 => array( 'file' => self::$directory_path . 'inc/rest-api/errors.php' ),
 
 			// Design templates
 			'FluidCheckout_DesignTemplates'                => array( 'file' => self::$directory_path . 'inc/design-templates.php' ),
