@@ -37,6 +37,26 @@ class FluidCheckout_Settings_AddressBook {
 
 		// Address Book migration after the main Address Book options (locked until the add-on replaces these settings)
 		add_filter( 'fc_admin_settings', array( __CLASS__, 'add_migration_settings' ), 30, 2 );
+
+		// Settings page preview
+		add_filter( 'fc_admin_settings_preview_tab_modes', array( __CLASS__, 'set_settings_preview_tab_mode' ), 10 );
+	}
+
+
+
+	/**
+	 * Use logged-in preview mode on the Address book settings tab.
+	 *
+	 * @param   array  $tab_modes  Preview mode by settings tab slug.
+	 *
+	 * @return  array  Preview mode by settings tab slug.
+	 */
+	public static function set_settings_preview_tab_mode( $tab_modes ) {
+		if ( ! class_exists( 'FluidCheckout_Admin_Preview', false ) ) { return $tab_modes; }
+
+		$tab_modes['address_book'] = FluidCheckout_Admin_Preview::MODE_LOGGED_IN;
+
+		return $tab_modes;
 	}
 
 

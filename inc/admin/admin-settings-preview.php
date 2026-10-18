@@ -225,6 +225,8 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				'defaultPage'            => $config[ 'default_page' ],
 				'modeQueryArg'           => FluidCheckout_Admin_Preview::MODE_QUERY_ARG,
 				'guestMode'              => FluidCheckout_Admin_Preview::MODE_GUEST,
+				'loggedInMode'           => FluidCheckout_Admin_Preview::MODE_LOGGED_IN,
+				'tabPreviewModes'        => apply_filters( 'fc_admin_settings_preview_tab_modes', array() ),
 				'storageKey'             => self::STORAGE_KEY,
 				'compactBreakpoint'      => self::COMPACT_BREAKPOINT,
 				'viewportWidths'         => self::VIEWPORT_WIDTHS,
@@ -283,14 +285,18 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 	 * Output the inline script that restores the preview mode and header and footer visibility saved in the browser, right after their controls.
 	 * The preview script runs once the page has loaded, so restoring them there would show the default values first.
 	 */
-	public function output_controls_state_script() {
+	public function output_controls_state_script( $current_tab ) {
+		$tab_preview_modes = apply_filters( 'fc_admin_settings_preview_tab_modes', array() );
+		$tab_preview_mode = isset( $tab_preview_modes[ $current_tab ] ) ? $tab_preview_modes[ $current_tab ] : '';
 		?>
 		<script>
 		( function() {
 			var modeSelect = document.querySelector( '[data-fc-settings-preview-mode]' );
 			var headerFooterButton = document.querySelector( '[data-fc-settings-preview-header-footer]' );
 			var hideHeaderFooterLabel = <?php echo wp_json_encode( __( 'Hide header and footer', 'fluid-checkout' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded string. ?>;
+			var tabPreviewMode = <?php echo wp_json_encode( $tab_preview_mode ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON-encoded string. ?>;
 			var state;
+			var previewMode;
 
 			// Get the preview state saved in the browser, as browser storage can be blocked or unavailable
 			try {
@@ -301,9 +307,24 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 				return;
 			}
 
-			// Maybe select the saved preview mode, keeping guest mode for values the dropdown does not have
-			if ( modeSelect && state.mode && modeSelect.querySelector( 'option[value="' + state.mode + '"]' ) ) {
-				modeSelect.value = state.mode;
+			// Prefer the preview mode configured for this settings tab, then the saved mode
+			previewMode = tabPreviewMode || state.mode || '';
+
+			// Maybe select the preview mode, keeping guest mode for values the dropdown does not have
+			if ( modeSelect && previewMode && modeSelect.querySelector( 'option[value="' + previewMode + '"]' ) ) {
+				modeSelect.value = previewMode;
+
+				// Maybe highlight the mode field when the tab overrides the saved preview mode
+				if ( tabPreviewMode && tabPreviewMode !== state.mode ) {
+					var modeField = modeSelect.closest( '[data-fc-settings-preview-mode-field]' );
+
+					if ( modeField ) {
+						modeField.classList.add( 'is-auto-changed' );
+						window.setTimeout( function() {
+							modeField.classList.remove( 'is-auto-changed' );
+						}, 3000 );
+					}
+				}
 			}
 
 			// Maybe show the header and footer toggle as pressed
@@ -415,10 +436,12 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 					</div>
 
 					<div class="fc-settings-preview__frame-options">
-						<select class="fc-settings-preview__mode" data-fc-settings-preview-mode aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>">
-							<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>"><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></option>
-							<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>"><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></option>
-						</select>
+						<div class="fc-settings-preview__mode-field" data-fc-settings-preview-mode-field>
+							<select class="fc-settings-preview__mode" data-fc-settings-preview-mode aria-label="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Preview as', 'fluid-checkout' ) ); ?>">
+								<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_GUEST ); ?>"><?php echo esc_html( __( 'Guest', 'fluid-checkout' ) ); ?></option>
+								<option value="<?php echo esc_attr( FluidCheckout_Admin_Preview::MODE_LOGGED_IN ); ?>"><?php echo esc_html( __( 'Logged in', 'fluid-checkout' ) ); ?></option>
+							</select>
+						</div>
 
 						<button type="button" class="fc-settings-preview__header-footer" data-fc-settings-preview-header-footer aria-pressed="false" aria-label="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>" title="<?php echo esc_attr( __( 'Show header and footer', 'fluid-checkout' ) ); ?>">
 							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -427,7 +450,7 @@ class FluidCheckout_Admin_Settings_Preview extends FluidCheckout {
 							</svg>
 						</button>
 
-						<?php $this->output_controls_state_script(); ?>
+						<?php $this->output_controls_state_script( $current_tab ); ?>
 					</div>
 				</div>
 
