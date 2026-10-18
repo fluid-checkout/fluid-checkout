@@ -47,7 +47,7 @@
     "collapsible-block": "^1.1.14",
     "flyout-block": "^1.2.0",
     "mailcheck": "^1.1.1",
-    "sticky-states": "^1.0.8",
+    "sticky-states": "^1.0.9",
     "tom-select": "^2.3.1"
   }
 }

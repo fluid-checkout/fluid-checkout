@@ -337,6 +337,12 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Improved: Update the sticky-states library to version 1.0.9.
+* Fixed: Show the Tom Select preview mode dropdown above the preview panel and keep Guest and Logged in in sync on the settings page.
+* Improved: Expand the desktop admin page preview to the available width, with a 1000px minimum layout size.
+* Improved: Load the admin page preview only on Fluid Checkout settings pages and during preview requests.
+* Improved: Define Address Autocomplete settings fields in Lite (locked until the add-on is active).
+* Improved: Use the same lighter divider color between Getting started checklist steps as on the Google address autocomplete guided setup.
 * Improved: Sharpen the Fluid Checkout checkmark logo and header text on the settings page with shared Dashicons font-smoothing styles.
 * Improved: Use Tom Select for all dropdown fields on the Fluid Checkout settings page.
 * Improved: Open settings dropdowns upward when there is not enough room below, so the full list stays visible above the save bar.
@@ -345,6 +351,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: PRO feature badges on the Getting started checklist link to pricing again, matching other settings badges.
 * Improved: Google address autocomplete is enabled by default.
 * Removed: Site key checks from add-on promo cards. Those cards link to upgrade or purchase pages.
+* Removed: Action hook `fc_dashboard_addons_before_list` from the Dashboard add-ons settings card.
 * Removed: Option to disable the integrated coupon code section. It is always enabled when WooCommerce coupons are available.
 * Removed: "Upgrade to PRO to unlock more options" links from settings field descriptions.
 * Improved: Keep locked settings visible for discovery, and hide dependent settings only after PRO or add-ons unlock them.
@@ -377,7 +384,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Move the Google Maps scripts troubleshooting option into Tools > Troubleshooting.
 * Improved: Settings navigation becomes an expandable menu on smaller screens.
 * Improved: On small screens, the Upgrade and Save settings buttons move into the settings title bar.
-* Added: Page preview column on settings tabs, with viewport sizes, zoom controls, and expand to full width.
+* Added: Live preview in the plugin settings, showing setting changes before they are saved.
 * Improved: Limit settings content sections to a 600px max width for easier scanning.
 * Improved: Split design template and checkout layout into separate settings sections with larger option cards.
 * Added: New settings pages and guided setup.
@@ -404,6 +411,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 * Improved: Filter `fc_shipping_method_display_package_destination_substep_text_lines` now also receives the shipping method and the package index.
 * Improved: Settings toggles can be reached with the keyboard.
 * Fixed: Compatibility with WooCommerce Subscriptions. Recurring shipping methods were hidden when the only package index was 0.
+* Fixed: Compatibility with plugin Hungarian Pickup Points & Shipping Labels for WooCommerce. Fix required shipping address field errors when placing an order with the plugin's pickup point shipping method. Fix pickup point map not listing points for the shipping country.
 * Fixed: Progress bar not showing the correct step when a hidden checkout step becomes visible again while incomplete.
 * Fixed: Proceed button being displayed instead of the edit and save buttons for an incomplete checkout step the user already passed.
 * Fixed: Admin notices not registering correctly because notice hooks used actions instead of filters.
