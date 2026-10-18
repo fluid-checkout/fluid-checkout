@@ -1,16 +1,20 @@
 // ------------------------------------
 // ADMIN IMAGE UPLOADER
 // ------------------------------------
-.image-upload-preview {
+.image-upload__wrapper {
+	width: 100%;
+}
 
-	max-width: 400px;
+.image-upload-preview {
+	width: 100%;
+	max-width: none;
 
 	.placeholder {
 		width: 100%;
 		position: relative;
 		text-align: center;
 		cursor: default;
-		border: 1px dashed #b4b9be;
+		border: 1px dashed $admin-ui-border-color;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;

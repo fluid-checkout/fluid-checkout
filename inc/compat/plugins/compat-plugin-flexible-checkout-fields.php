@@ -31,6 +31,13 @@ class FluidCheckout_FlexibleCheckoutFields extends FluidCheckout {
 	public function change_custom_checkbox_field_display_value( $field_display_value, $field_value, $field_key, $field_args ) {
 		// Checkbox display value
 		$field_label = isset( $field_args['label'] ) ? $field_args['label'] : '';
+		/**
+		 * Filters the substep text display value show field label checkbox.
+		 *
+		 * @since 3.1.8
+		 *
+		 * @param bool $label Label text. Default true.
+		 */
 		$field_display_value = FluidCheckout_Steps::instance()->get_field_display_value_with_pattern( $field_display_value, $field_key, $field_args, $field_label, apply_filters( "fc_substep_text_display_value_show_field_label_checkbox", true ) );
 
 		return $field_display_value;

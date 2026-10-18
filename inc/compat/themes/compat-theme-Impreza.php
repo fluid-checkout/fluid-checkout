@@ -40,7 +40,7 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 		add_filter( 'fc_content_section_class', array( $this, 'change_fc_content_section_class' ), 10 );
 
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 	}
 
 
@@ -97,8 +97,8 @@ class FluidCheckout_ThemeCompat_Impreza extends FluidCheckout {
 
 			array(
 				'title'           => __( 'Header', 'fluid-checkout' ),
-				'desc'            => __( 'Spacing for site header at the checkout page (in pixels)', 'fluid-checkout' ),
-				'desc_tip'        => __( 'Only applicable when using the Impreza theme header at the checkout page.', 'fluid-checkout' ),
+				'desc'            => '',
+				'desc_tip'        => __( 'Spacing for site header at the checkout page (in pixels)', 'fluid-checkout' ) . ' ' . __( 'Only applicable when using the Impreza theme header at the checkout page.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_impreza_header_spacing',
 				'type'            => 'number',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_impreza_header_spacing' ),

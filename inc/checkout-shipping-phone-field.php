@@ -117,6 +117,13 @@ class FluidCheckout_CheckoutShippingPhoneField extends FluidCheckout {
 	 * @return  array $args Arguments for adding shipping phone field.
 	 */
 	public function get_shipping_phone_field() {
+		/**
+		 * Filters the shipping phone field args.
+		 *
+		 * @since 1.2.0
+		 *
+		 * @param array $value Value to filter.
+		 */
 		return apply_filters( 'fc_shipping_phone_field_args', array(
 			'label'        => __( 'Shipping phone', 'fluid-checkout' ),
 			'description'  => __( 'Only used for shipping-related questions.', 'fluid-checkout' ),

@@ -1,0 +1,281 @@
+// ------------------------------------
+// SETTINGS PAGE - SIDEBAR
+// ------------------------------------
+
+.fc-settings-sidebar {
+	position: sticky;
+	top: $fc-settings-sticky-offset;
+	z-index: $fc-settings-sidebar-z-index;
+	flex: 0 0 $fc-settings-sidebar-width;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	align-self: flex-start;
+	width: $fc-settings-sidebar-width;
+	// Pin to the available viewport; nav scrolls inside when taller
+	height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	max-height: calc( 100vh - #{$fc-settings-sticky-offset} );
+	overflow: hidden;
+	background-color: $fc-settings-sidebar-background-color;
+	box-shadow: $fc-settings-sidebar-box-shadow;
+	box-sizing: border-box;
+
+	// Compact: full-width menu bar sticks below the settings page header
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		position: sticky;
+		top: $fc-settings-sticky-offset;
+		z-index: $fc-settings-nav-bar-z-index; // Above columns; below expanded drawers and the page header
+		flex: 0 0 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+		height: auto;
+		max-height: none;
+		overflow: visible;
+		background-color: $fc-settings-sidebar-background-color;
+		box-shadow: none;
+		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+	}
+
+	// Taller admin bar on small screens; page header is sticky above this bar
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		top: $fc-settings-sticky-offset-mobile;
+	}
+}
+
+.rtl .fc-settings-sidebar {
+	box-shadow: $fc-settings-sidebar-box-shadow-rtl;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		box-shadow: none;
+	}
+}
+
+.fc-settings-sidebar__inner {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	min-height: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.fc-settings-sidebar-header {
+	position: relative;
+	display: flex;
+	flex-shrink: 0;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 8px;
+	padding: $fc-settings-sidebar-header-padding;
+	border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+	background-color: $fc-settings-sidebar-background-color;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		z-index: 2; // Above the sliding nav drawer within the sidebar stacking context
+		padding: $fc-settings-sidebar-header-padding-compact;
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+
+.fc-settings-wrap .fc-settings-sidebar-header__title {
+	flex: 1 1 auto;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size: $fc-settings-sidebar-title-font-size;
+	font-weight: $fc-settings-sidebar-title-font-weight;
+	line-height: $fc-settings-sidebar-title-line-height;
+	color: $fc-settings-text-color;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+
+.fc-settings-sidebar-header__actions {
+	display: none;
+	flex: 0 0 auto;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 8px;
+	margin-inline-start: auto;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		display: inline-flex;
+	}
+}
+
+.fc-settings-sidebar-header__actions .fc-header__button {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.fc-settings-sidebar-header__actions .fc-header__button .dashicons {
+	display: none; // Keep the compact title bar actions short on narrow screens
+}
+
+
+
+.fc-settings-sidebar-toggle {
+	display: none;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: $fc-settings-sidebar-toggle-size;
+	height: $fc-settings-sidebar-toggle-size;
+	margin: 0;
+	padding: 0;
+	border: 1px solid $fc-settings-input-border-color;
+	border-radius: $fc-settings-input-border-radius;
+	background: $white;
+	box-shadow: $fc-settings-input-box-shadow;
+	color: $fc-settings-text-color;
+	cursor: pointer;
+
+	@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+		display: inline-flex;
+	}
+}
+
+.fc-settings-sidebar-toggle:hover {
+	background: $fc-settings-nav-link-hover-background;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-sidebar-toggle__icon {
+	display: block;
+	width: 18px;
+	height: 18px;
+}
+
+.fc-settings-sidebar-toggle__icon--close {
+	display: none;
+}
+
+.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar-toggle__icon--menu {
+	display: none;
+}
+
+.fc-settings-sidebar.is-nav-expanded .fc-settings-sidebar-toggle__icon--close {
+	display: block;
+}
+
+
+
+// Compact: nav is always the same fixed drawer box; only transform/opacity change.
+// Opposite of the preview drawer: expands top-to-bottom, collapses bottom-to-up.
+@media ( max-width: $fc-settings-nav-compact-breakpoint ) {
+	.fc-settings-layout .fc-settings-sidebar,
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		position: sticky;
+		top: $fc-settings-sticky-offset;
+		z-index: $fc-settings-nav-bar-z-index;
+		flex: 0 0 auto;
+		align-self: stretch;
+		width: 100%;
+		max-width: none;
+		height: auto;
+		max-height: none;
+		overflow: visible;
+		background-color: $fc-settings-sidebar-background-color;
+		border-bottom: 1px solid $fc-settings-sidebar-header-border-color;
+	}
+
+	.fc-settings-sidebar .fc-settings-nav {
+		display: block;
+		position: fixed;
+		// Fallback before JS pins `top` to the live title-bar bottom
+		top: $fc-settings-sticky-offset;
+		right: 0;
+		bottom: 0;
+		left: $admin-wp-menu-width;
+		z-index: 1; // Below `.fc-settings-sidebar-header` in this stacking context
+		flex: none;
+		width: auto;
+		max-width: none;
+		max-height: none;
+		min-height: 0;
+		margin: 0;
+		// No top padding: drawer `top` is the bottom edge of the title / menu bar
+		padding: $fc-settings-nav-padding-y 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: $fc-settings-sidebar-background-color;
+		transform: translateY( -100% );
+		opacity: 0;
+		pointer-events: none;
+		transition: transform $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing, opacity $fc-settings-preview-transition-duration $fc-settings-preview-transition-easing;
+		box-sizing: border-box;
+
+		@media ( prefers-reduced-motion: reduce ) {
+			transition: none;
+		}
+	}
+
+	// Match `.has-preview` sidebar specificity so this wins over the default nav-bar z-index
+	.fc-settings-layout .fc-settings-sidebar.is-nav-expanded,
+	.fc-settings-layout.has-preview .fc-settings-sidebar.is-nav-expanded {
+		z-index: $fc-settings-nav-drawer-z-index; // Above the expanded preview drawer
+	}
+
+	.fc-settings-sidebar.is-nav-expanded .fc-settings-nav {
+		transform: none;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav {
+		left: 0;
+		right: $admin-wp-menu-width;
+	}
+
+	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav {
+		right: $admin-wp-menu-width-folded;
+	}
+}
+
+@media screen and ( max-width: $admin-breakpoint-auto-fold ) {
+	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+		left: $admin-wp-menu-width-folded;
+	}
+
+	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+		right: $admin-wp-menu-width-folded;
+		left: 0;
+	}
+}
+
+@media screen and ( max-width: $admin-breakpoint-mobile ) {
+	// Taller admin bar; keep the menu bar below the sticky page header
+	.fc-settings-layout .fc-settings-sidebar,
+	.fc-settings-layout.has-preview .fc-settings-sidebar {
+		top: $fc-settings-sticky-offset-mobile;
+	}
+
+	// WP admin menu is not a left column on small screens — span the full viewport width.
+	// Match auto-fold / folded specificity so those rules do not keep a menu-width inset.
+	.fc-settings-sidebar .fc-settings-nav,
+	body.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav,
+	body.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+		top: $fc-settings-sticky-offset-mobile;
+		left: 0;
+		right: 0;
+	}
+
+	body.rtl.fc-settings-page .fc-settings-sidebar .fc-settings-nav,
+	body.rtl.fc-settings-page.folded .fc-settings-sidebar .fc-settings-nav,
+	body.rtl.fc-settings-page.auto-fold .fc-settings-sidebar .fc-settings-nav {
+		left: 0;
+		right: 0;
+	}
+}

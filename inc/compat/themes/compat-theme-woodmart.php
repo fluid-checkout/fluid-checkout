@@ -20,7 +20,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 	 */
 	public function hooks() {
 		// CSS variables
-		add_action( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
+		add_filter( 'fc_css_variables', array( $this, 'add_css_variables' ), 20 );
 
 		// Buttons
 		add_filter( 'fc_apply_button_colors_styles', '__return_true', 10 );
@@ -57,6 +57,13 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 		if ( ! class_exists( 'XTS\Modules\Checkout_Order_Table' ) ) { return; }
 
 		// Check whether to disable theme checkout options
+		/**
+		 * Filters whether WoodMart checkout options are disabled while Fluid Checkout is active.
+		 *
+		 * @since 3.0.2
+		 *
+		 * @param bool $value Value to filter. Default false.
+		 */
 		if ( 'yes' === FluidCheckout_Settings::instance()->get_option( 'fc_compat_theme_woodmart_disable_theme_checkout_options' ) || true === apply_filters( 'fc_compat_theme_woodmart_disable_theme_checkout_options', false ) ) {
 			// Get theme class instances
 			$checkout_module_instance = XTS\Modules\Checkout_Order_Table::get_instance();
@@ -151,11 +158,12 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 				'title' => __( 'Theme Woodmart', 'fluid-checkout' ),
 				'type'  => 'title',
 				'id'    => 'fc_integrations_theme_woodmart_options',
+				'docs'  => FluidCheckout_Admin::instance()->get_documentation_icon_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
 			),
 
 			array(
 				'title'           => __( 'Checkout progress', 'fluid-checkout' ),
-				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
+				'desc'            => __( 'Output the checkout steps section from the Woodmart theme when using Fluid Checkout header and footer.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_woodmart_output_checkout_steps_section',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_output_checkout_steps_section' ),
@@ -165,7 +173,7 @@ class FluidCheckout_ThemeCompat_Woodmart extends FluidCheckout {
 			array(
 				'title'           => __( 'Checkout options', 'fluid-checkout' ),
 				'desc'            => __( 'Disable the theme checkout options', 'fluid-checkout' ),
-				'desc_tip'        => __( 'The options display product image, quantity field, remove button and link to product page added by the theme are disabled by default.', 'fluid-checkout' ) . ' ' . FluidCheckout_Admin::instance()->get_documentation_link_html( 'https://fluidcheckout.com/docs/compat-theme-woodmart/' ),
+				'desc_tip'        => __( 'The options display product image, quantity field, remove button and link to product page added by the theme are disabled by default.', 'fluid-checkout' ),
 				'id'              => 'fc_compat_theme_woodmart_disable_theme_checkout_options',
 				'type'            => 'checkbox',
 				'default'         => FluidCheckout_Settings::instance()->get_option_default( 'fc_compat_theme_woodmart_disable_theme_checkout_options' ),

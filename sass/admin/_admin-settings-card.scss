@@ -1,0 +1,405 @@
+// ------------------------------------
+// SETTINGS PAGE - CARDS
+// ------------------------------------
+
+.fc-settings-card {
+	max-width: $fc-settings-card-max-width;
+	margin: 0 0 $fc-settings-card-margin-bottom;
+	border: none;
+	border-radius: $fc-settings-card-border-radius;
+	background-color: $fc-settings-card-background-color;
+	box-shadow: $fc-settings-card-box-shadow;
+	box-sizing: border-box;
+}
+
+.fc-settings-card__header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 4px 10px;
+	padding: $fc-settings-card-padding;
+	border-bottom: 1px solid $fc-settings-card-header-border-color;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+.fc-settings-wrap .fc-settings-card__title {
+	flex: 1 1 auto;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	font-size: $fc-settings-card-title-font-size;
+	font-weight: $fc-settings-card-title-font-weight;
+	line-height: $fc-settings-card-title-line-height;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-card__actions {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 8px;
+	margin-left: auto;
+	padding-top: $fc-settings-docs-icon-align-offset;
+}
+
+.rtl .fc-settings-card__actions {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.fc-settings-docs-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: $fc-settings-info-icon-hit-size;
+	height: $fc-settings-info-icon-hit-size;
+	border: none;
+	border-radius: 50%;
+	box-shadow: none;
+	color: $fc-settings-docs-icon-color;
+	text-decoration: none;
+	line-height: 1;
+}
+
+.fc-settings-docs-icon .dashicons {
+	width: $fc-settings-info-tip-size;
+	height: $fc-settings-info-tip-size;
+	font-size: $fc-settings-info-tip-size;
+}
+
+.fc-settings-docs-icon:hover {
+	color: $fc-settings-docs-icon-color-hover;
+}
+
+.fc-settings-docs-icon:focus {
+	border: none;
+	box-shadow: none !important; // Needed to override WP admin link focus ring
+	color: $fc-settings-docs-icon-color-hover;
+	@include fc-admin-settings-info-icon-focus-outline();
+}
+
+.fc-settings-card__promo {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 8px;
+}
+
+.fc-settings-card__header > .fc-settings-card__promo {
+	margin-left: auto;
+}
+
+.rtl .fc-settings-card__header > .fc-settings-card__promo {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+.fc-settings-promo-pill {
+	display: inline-flex;
+	align-items: center;
+	padding: $fc-settings-promo-pill-padding;
+	border: 1px solid $fc-settings-promo-pill-border-color;
+	border-radius: $fc-settings-promo-pill-border-radius;
+	background: $fc-settings-promo-pill-background-color;
+	color: $fc-settings-promo-pill-color;
+	font-size: $fc-settings-promo-pill-font-size;
+	font-weight: normal;
+	line-height: 12px;
+	text-decoration: none;
+	transition: color .15s ease-in-out, transform .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.fc-settings-promo-pill:hover {
+	color: $fc-settings-promo-pill-color-hover;
+	text-decoration: none;
+	transform: scale( 1.025 );
+	box-shadow: 0 2px 6px 0 $elevation-shadow-medium;
+}
+
+.fc-settings-promo-pill:focus {
+	color: $fc-settings-promo-pill-color-hover;
+	text-decoration: none;
+	transform: scale( 1.025 );
+	box-shadow: 0 2px 6px 0 $elevation-shadow-medium;
+	@include fc-admin-settings-focus-outline();
+}
+
+.fc-settings-promo-pill--addon {
+	border-color: $fc-settings-promo-pill-addon-border-color;
+	background: $fc-settings-promo-pill-addon-background-color;
+	color: $fc-settings-promo-pill-addon-color;
+}
+
+.fc-settings-promo-pill--addon:hover,
+.fc-settings-promo-pill--addon:focus {
+	color: $fc-settings-promo-pill-addon-color-hover;
+}
+
+.fc-settings-promo-pill--static,
+.fc-settings-promo-pill--static:hover,
+.fc-settings-promo-pill--static:focus {
+	cursor: default;
+	transform: none;
+	box-shadow: none;
+}
+
+.fc-settings-promo-pill--addon.fc-settings-promo-pill--static,
+.fc-settings-promo-pill--addon.fc-settings-promo-pill--static:hover,
+.fc-settings-promo-pill--addon.fc-settings-promo-pill--static:focus {
+	color: $fc-settings-promo-pill-addon-color;
+}
+
+.fc-settings-card__description {
+	margin: 0 0 16px;
+	color: $fc-settings-card-description-color;
+}
+
+.fc-settings-card__description p {
+	margin: 0;
+}
+
+.fc-settings-card__description p + p {
+	margin-top: .5em;
+}
+
+.fc-settings-card__inner > .fc-settings-card__description:last-child {
+	margin-bottom: 0;
+}
+
+.fc-settings-card__inner {
+	padding: $fc-settings-card-padding;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+.fc-settings-card__inner > p:first-child {
+	margin-top: 0;
+}
+
+.fc-settings-card__inner > p:last-child {
+	margin-bottom: 0;
+}
+
+.fc-settings-card__footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	padding: $fc-settings-card-padding;
+	border-top: 1px solid $fc-settings-card-header-border-color;
+	background-color: $fc-settings-card-footer-background-color;
+	border-radius: 0 0 $fc-settings-card-border-radius $fc-settings-card-border-radius;
+
+	@media ( max-width: $admin-breakpoint-mobile ) {
+		padding: $fc-settings-card-padding-mobile;
+	}
+}
+
+// Promo actions share dashboard button classes but stay inline with Learn more
+.fc-settings-card--promo .fc-settings-promo__actions.fc-addons__item-actions {
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	align-items: center;
+	align-self: center;
+	gap: 10px;
+	width: auto;
+	margin-top: 0;
+}
+
+.fc-settings-card--promo .fc-settings-promo__actions .button,
+.fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select {
+	width: auto;
+	max-width: none;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select {
+	width: auto !important; // Override dashboard add-ons full-width select styles
+	max-width: none !important; // Override dashboard add-ons full-width select styles
+}
+
+.fc-settings-card--promo .fc-settings-promo__actions .button + .fc-addons__item-action-notice,
+.fc-settings-card--promo .fc-settings-promo__actions .button + .button,
+.fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-license-select + .button,
+.fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-action-notice {
+	margin-top: 0;
+}
+
+.fc-settings-card--promo .fc-settings-promo__actions .fc-addons__item-action-notice {
+	flex: 1 1 100%;
+	margin: 0;
+	width: 100%;
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - DASHBOARD CARDS
+// ------------------------------------
+
+.fc-settings-card .fc-dashboard-section-title {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.fc-settings-card p.fc-dashboard-section__subtitle {
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: $admin-text-color-muted;
+}
+
+
+
+
+
+// ------------------------------------
+// SETTINGS PAGE - PROMO CARDS
+// ------------------------------------
+
+.fc-settings-card--promo {
+	border: solid 2px $emphasis-border-color;
+	box-shadow: none;
+}
+
+.fc-settings-promo__tagline {
+	margin: 0 0 16px;
+	padding: 0;
+	font-weight: 500;
+	color: $fc-settings-text-color;
+}
+
+.fc-settings-promo__features {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.fc-settings-promo__features li {
+	position: relative;
+	margin: 5px 0 0;
+	padding: 10px 0 5px 26px;
+	color: $admin-text-color-muted;
+}
+
+.fc-settings-promo__features li + li {
+	border-top: 1px solid $admin-ui-border-color;
+}
+
+.fc-settings-promo__features li::before {
+	// Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
+	content: "\f147";
+	font-family: dashicons;
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -10px;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	speak: never;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	text-align: center;
+	color: $success-color;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	// END - Copied from `.fc-addons__item-features-list li::before` / `.dashicons-yes`
+}
+
+.rtl .fc-settings-promo__features li {
+	padding: 10px 26px 5px 0;
+}
+
+.rtl .fc-settings-promo__features li::before {
+	left: auto;
+	right: 0;
+}
+
+
+
+// Match header primary / secondary button styles on settings page content.
+.fc-settings-wrap .button,
+.fc-settings-wrap .button-secondary,
+.fc-settings-button {
+	display: inline-block;
+	margin: 0;
+	padding: $fc-header-button-padding;
+	min-height: 0;
+	height: auto;
+	background: $white;
+	border-color: $fc-header-button-border-color;
+	border-style: solid;
+	border-width: 1px 1px 2px;
+	border-radius: $fc-header-button-border-radius;
+	color: $fc-header-button-color;
+	cursor: pointer;
+	outline: 0;
+	overflow: hidden;
+	font-size: $fc-header-button-font-size;
+	font-weight: $fc-header-button-font-weight;
+	line-height: $fc-header-button-line-height;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	vertical-align: middle;
+	box-sizing: border-box;
+	box-shadow: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.fc-settings-wrap .button:hover,
+.fc-settings-wrap .button:focus,
+.fc-settings-wrap .button-secondary:hover,
+.fc-settings-wrap .button-secondary:focus,
+.fc-settings-button:hover,
+.fc-settings-button:focus {
+	color: $fc-header-button-color;
+	border-color: $fc-header-button-border-color-hover;
+	background: $white;
+	box-shadow: none;
+	text-decoration: none;
+}
+
+.fc-settings-wrap .button:focus,
+.fc-settings-wrap .button-secondary:focus,
+.fc-settings-button:focus {
+	@include fc-admin-settings-focus-outline();
+}
+
+.fc-settings-wrap .button:active:not( :disabled ):not( .disabled ),
+.fc-settings-wrap .button-secondary:active:not( :disabled ):not( .disabled ),
+.fc-settings-button:active:not( :disabled ):not( .disabled ) {
+	border-width: 2px 1px 1px;
+}
+
+.fc-settings-wrap .button.button-primary,
+.fc-settings-button--primary {
+	background: $fc-header-button-save-background;
+	border-color: $fc-header-button-save-border-color;
+	color: $fc-header-button-save-color;
+}
+
+.fc-settings-wrap .button.button-primary:hover,
+.fc-settings-wrap .button.button-primary:focus,
+.fc-settings-button--primary:hover,
+.fc-settings-button--primary:focus {
+	background: $fc-header-button-save-background-hover;
+	border-color: $fc-header-button-save-border-color-hover;
+	color: $fc-header-button-save-color;
+}

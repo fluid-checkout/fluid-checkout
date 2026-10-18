@@ -3,7 +3,9 @@
 // ------------------------------------
 @import
 	"abstract/_all-early",
-	"abstract/_all";
+	"abstract/_all",
+	"abstract/variables-admin",
+	"abstract/mixin-admin-settings-focus";
 
 
 
@@ -14,6 +16,5 @@
 // ------------------------------------
 @import
 	"admin/admin-image-uploader",
-	"admin/admin-checkout-layout",
-	"admin/admin-design-template",
-	"admin/admin-license-keys";
+	"admin/admin-telemetry",
+	"admin/admin-settings-layout-options";

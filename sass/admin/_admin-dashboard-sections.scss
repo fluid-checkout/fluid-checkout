@@ -2,20 +2,6 @@
 // DASHBOARD SECTIONS
 // ------------------------------------
 
-// Hide the submit button as there are not settings to be saved on this page
-p.submit {
-	display: none;
-}
-
-
-
-.fc-dashboard__logo {
-	width: 200px;
-	height: auto;
-}
-
-
-
 .fc-dashboard-section__row [class*="fc-"] {
 	box-sizing: border-box;
 }
@@ -28,8 +14,8 @@ p.submit {
 	margin-bottom: 20px;
 	padding: 30px;
 	border-radius: 13px;
-	background-color: #fff;
-	box-shadow: 0 2px 4px rgba( 0, 0, 0, .15 );
+	background-color: $white;
+	box-shadow: 0 2px 4px $elevation-shadow-medium;
 }
 
 .fc-dashboard-section__row-title {
@@ -45,6 +31,7 @@ p.submit {
 
 
 .form-table td .fc-dashboard-section-title {
+	margin-top: 0;
 	margin-bottom: 0;
 }
 
@@ -52,5 +39,5 @@ p.submit {
 	margin-bottom: 20px;
 	font-size: 16px;
 	font-weight: 500;
-	color: #666;
+	color: $admin-text-color-muted;
 }

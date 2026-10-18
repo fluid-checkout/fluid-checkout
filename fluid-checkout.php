@@ -57,6 +57,26 @@ class FluidCheckout {
 	public static $asset_version = ''; // Values set at function `set_plugin_vars`
 
 	/**
+	 * Telemetry settings keyed by API URL.
+	 *
+	 * @var array
+	 */
+	const TELEMETRY_SETTINGS = array(
+		'https://fluidcheckout.com' => array(
+			'cron_hook'                       => 'fc_telemetry_weekly',
+			'enable_option'                   => 'fc_telemetry_enabled',
+			'data_groups_option'              => 'fc_telemetry_data_groups',
+			'fingerprint_option'              => 'fc_telemetry_last_fingerprint',
+			'last_sent_option'                => 'fc_telemetry_last_sent',
+			'send_lock_transient'             => 'fc_telemetry_send_lock',
+			'sales_backfill_sent_option'      => 'fc_telemetry_sales_backfill_sent',
+			'last_sales_metrics_month_option' => 'fc_telemetry_last_sales_metrics_month',
+			'changed_interval'                => WEEK_IN_SECONDS,
+			'unchanged_interval'              => 4 * WEEK_IN_SECONDS,
+		),
+	);
+
+	/**
 	 * Hold list of the plugin features to load when initializing.
 	 *
 	 * @var array
@@ -98,6 +118,8 @@ class FluidCheckout {
 	 */
 	public function __construct() {
 		$this->set_plugin_vars();
+		$this->load_telemetry_client_class();
+		$this->init_telemetry_hooks();
 		$this->load_db_migrations();
 		$this->load_admin_notices();
 		$this->register_features();
@@ -128,6 +150,162 @@ class FluidCheckout {
 
 
 	/**
+	 * Load the telemetry client class file when needed.
+	 */
+	private function load_telemetry_client_class() {
+		self::maybe_register_own_plugins_telemetry();
+
+		// Bail if class is already loaded
+		if ( class_exists( 'FC_Telemetry_Client' ) ) { return; }
+
+		require_once self::$directory_path . 'inc/admin/fc-telemetry-client.php';
+	}
+
+
+
+	/**
+	 * Register this plugin in the telemetry own-plugins map.
+	 */
+	private static function maybe_register_own_plugins_telemetry() {
+		if ( has_filter( 'fc_telemetry_own_plugins', array( __CLASS__, 'set_own_plugins_telemetry_options' ) ) ) {
+			return;
+		}
+
+		add_filter( 'fc_telemetry_own_plugins', array( __CLASS__, 'set_own_plugins_telemetry_options' ), 10, 2 );
+	}
+
+
+
+	/**
+	 * Add this plugin to the telemetry own-plugins map.
+	 *
+	 * @param array       $plugins Own plugins map.
+	 * @param string|null $api_url Remote API base URL from the consuming plugin.
+	 */
+	public static function set_own_plugins_telemetry_options( $plugins, $api_url = null ) {
+		// Bail if a specific API URL was requested and it is not this plugin's telemetry API.
+		if ( null !== $api_url && ! self::is_own_telemetry_api_url( $api_url ) ) { return $plugins; }
+
+		// Define own plugins options so telemetry can track activation time and optional license hashes when commercial plugins are present.
+		$own_plugins = array(
+			'fluid-checkout' => array(
+				'activation_time_option' => 'fc_plugin_activation_time',
+			),
+			'fluid-checkout-pro' => array(
+				'activation_time_option' => 'fc_pro_plugin_activation_time',
+				'license_key_option' => 'fc_pro_license_key',
+				'license_key_hash_option' => 'fc_pro_license_key_hash',
+				'license_activated_option' => 'fc_pro_license_key_activated',
+			),
+			'fc-address-book' => array(
+				'activation_time_option' => 'fc_adb_plugin_activation_time',
+				'license_key_option' => 'fc_adb_license_key',
+				'license_key_hash_option' => 'fc_adb_license_key_hash',
+				'license_activated_option' => 'fc_adb_license_key_activated',
+			),
+			'fc-vat-assistant' => array(
+				'activation_time_option' => 'fc_vat_plugin_activation_time',
+				'license_key_option' => 'fc_vat_license_key',
+				'license_key_hash_option' => 'fc_vat_license_key_hash',
+				'license_activated_option' => 'fc_vat_license_key_activated',
+			),
+			'fc-google-address-autocomplete' => array(
+				'activation_time_option' => 'fc_gaa_plugin_activation_time',
+				'license_key_option' => 'fc_gaa_license_key',
+				'license_key_hash_option' => 'fc_gaa_license_key_hash',
+				'license_activated_option' => 'fc_gaa_license_key_activated',
+			),
+			'fc-conversion-kit' => array(
+				'activation_time_option' => 'fc_kit_plugin_activation_time',
+			),
+			'fc-paddle-payments' => array(
+				'activation_time_option' => 'fc_paddle_plugin_activation_time',
+				'license_key_option' => 'fc_paddle_license_key',
+				'license_key_hash_option' => 'fc_paddle_license_key_hash',
+				'license_activated_option' => 'fc_paddle_license_key_activated',
+			),
+		);
+
+		return self::merge_own_plugins_telemetry_options( $plugins, $own_plugins );
+	}
+
+	/**
+	 * Get the primary telemetry API URL for this plugin.
+	 */
+	public static function get_telemetry_api_url() {
+		foreach ( array_keys( self::TELEMETRY_SETTINGS ) as $api_url ) {
+			return untrailingslashit( (string) $api_url );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Whether an API URL belongs to this plugin's telemetry API (canonical or filtered).
+	 *
+	 * @param string $api_url Remote API base URL.
+	 */
+	private static function is_own_telemetry_api_url( $api_url ) {
+		$api_url = untrailingslashit( (string) $api_url );
+
+		foreach ( array_keys( self::TELEMETRY_SETTINGS ) as $canonical ) {
+			$canonical = untrailingslashit( (string) $canonical );
+
+			if ( $api_url === $canonical ) {
+				return true;
+			}
+
+			/**
+			 * Filters the remote telemetry API base URL.
+			 *
+			 * @since 5.0.0
+			 *
+			 * @param string $api_url     Canonical telemetry API base URL.
+			 * @param string $plugin_slug Plugin slug. Default `fluid-checkout`.
+			 */
+			$filtered = untrailingslashit( (string) apply_filters( 'fc_telemetry_api_url', $canonical, self::$plugin_slug ) );
+
+			if ( $api_url === $filtered ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Deep merge own-plugins map entries into an existing map.
+	 *
+	 * @param array $plugins     Existing own plugins map.
+	 * @param array $own_plugins Own plugins entries to merge in.
+	 */
+	private static function merge_own_plugins_telemetry_options( $plugins, $own_plugins ) {
+		foreach ( $own_plugins as $plugin_key => $settings ) {
+			if ( isset( $plugins[ $plugin_key ] ) && is_array( $plugins[ $plugin_key ] ) ) {
+				$plugins[ $plugin_key ] = array_merge( $plugins[ $plugin_key ], $settings );
+			}
+			else {
+				$plugins[ $plugin_key ] = $settings;
+			}
+		}
+
+		return $plugins;
+	}
+
+	/**
+	 * Initialize telemetry hooks.
+	 */
+	private function init_telemetry_hooks() {
+		$this->load_telemetry_client_class();
+
+		if ( ! class_exists( 'FC_Telemetry_Client' ) ) { return; }
+
+		FC_Telemetry_Client::register_telemetry_configs( self::TELEMETRY_SETTINGS );
+	}
+
+
+
+	/**
 	 * Load settings manager.
 	 */
 	public function load_settings() {
@@ -140,6 +318,13 @@ class FluidCheckout {
 	 * Get the locales to be used for each language variant.
 	 */
 	public function get_locale_language_variants() {
+		/**
+		 * Filters the locale used for each language variant when loading translations.
+		 *
+		 * @since 2.3.2
+		 *
+		 * @param array $value Value to filter.
+		 */
 		return apply_filters( 'fc_locale_language_variant', array(
 			'de_DE'          => 'de_DE_formal',
 			'de_AT'          => 'de_DE_formal',
@@ -293,6 +478,9 @@ class FluidCheckout {
 		add_action( 'load_translation_file', array( $this, 'maybe_change_translation_file_path' ), 100, 3 ); // High priority to override locale files defined from other plugins (ie. Loco Translate at priority `11`)
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ), 10 );
 
+		// Admin preview
+		add_action( 'after_setup_theme', array( $this, 'load_admin_preview' ), 5 ); // Before add-ons load their features at priority `10`, as some read settings while loading
+
 		// Load features
 		add_action( 'after_setup_theme', array( $this, 'load_features' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'load_plugin_compat_features' ), 10 );
@@ -342,7 +530,6 @@ class FluidCheckout {
 
 	/**
 	 * Load admin notices.
-	 * @since 1.2.5
 	 */
 	private function load_admin_notices() {
 		require_once self::$directory_path . 'inc/admin/admin-notices.php';
@@ -353,13 +540,15 @@ class FluidCheckout {
 		require_once self::$directory_path . 'inc/admin/admin-notice-germanized-pro-multistep-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-woocommerce-checkout-manager-enabled.php';
 		require_once self::$directory_path . 'inc/admin/admin-notice-coderockz-delivery-plugins-detected.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-settings-legacy-cleanup.php';
+		require_once self::$directory_path . 'inc/admin/admin-telemetry-settings.php';
+		require_once self::$directory_path . 'inc/admin/admin-notice-telemetry.php';
 	}
 
 
 
 	/**
 	 * Register plugin features.
-	 * @since 1.2.0
 	 */
 	private function register_features() {
 		self::$features = array(
@@ -412,12 +601,67 @@ class FluidCheckout {
 
 
 	/**
+	 * Check whether the admin preview should load for the current request.
+	 *
+	 * @return  bool
+	 */
+	public function should_load_admin_preview() {
+		// Preview iframe and frontend preview requests, including expired tokens that must be rejected
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Preview token is validated after the preview loads.
+		if ( isset( $_GET[ 'fc_preview' ] ) ) {
+			return true;
+		}
+
+		// Save unsaved settings for the preview from the settings page
+		if ( wp_doing_ajax() ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Checked when the preview handles the request.
+			$action = isset( $_REQUEST[ 'action' ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ 'action' ] ) ) : '';
+			if ( 'fc_admin_preview_save_draft' === $action ) {
+				return true;
+			}
+		}
+
+		// Fluid Checkout settings page in the admin
+		if ( is_admin() && ! wp_doing_ajax() ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Admin menu page slug.
+			$page = isset( $_GET[ 'page' ] ) ? sanitize_text_field( wp_unslash( $_GET[ 'page' ] ) ) : '';
+			if ( 'fluid-checkout' === $page ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Load the admin preview when {@see should_load_admin_preview()} is true.
+	 */
+	public function load_admin_preview() {
+		// Bail if the admin preview is not needed for this request
+		if ( ! $this->should_load_admin_preview() ) { return; }
+
+		// Load admin preview files
+		require_once self::$directory_path . 'inc/admin/admin-preview.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-data.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-product.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-dummy-order.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-order-factory.php';
+		require_once self::$directory_path . 'inc/admin/admin-preview-session-handler.php';
+	}
+
+
+
+	/**
 	 * Load the plugin features
-	 * @since 1.2.0
 	 */
 	public function load_features() {
 		// Bail if features list is not valid
 		if ( ! is_array( self::$features )  ) { return; }
+
+		// Load admin features
+		if ( is_admin() ) {
+			require_once self::$directory_path . 'inc/admin/admin.php';
+		}
 
 		// Load each features
 		foreach ( self::$features as $feature_key => $feature ) {
@@ -427,18 +671,12 @@ class FluidCheckout {
 				require_once $file;
 			}
 		}
-
-		// Load admin features
-		if ( is_admin() ) {
-			require_once self::$directory_path . 'inc/admin/admin.php';
-		}
 	}
 
 
 
 	/**
 	 * Load plugins compatibility features.
-	 * @since 1.2.0
 	 */
 	public function load_plugin_compat_features() {
 		// Get active plugins
@@ -452,6 +690,17 @@ class FluidCheckout {
 			$plugin_slug = strpos( $plugin_file, '/' ) !== false ? explode( '/', $plugin_file )[0] : explode( '.', $plugin_file )[0];
 
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a plugin compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$plugin_slug`, refers to the plugin directory
+			 * slug (or the plugin file name without `.php` for single-file plugins). Return boolean
+			 * `true` to load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_plugin_' . $plugin_slug, true ) ) { continue; }
 
 			// Get plugin file path
@@ -468,7 +717,6 @@ class FluidCheckout {
 
 	/**
 	 * Load themes compatibility features.
-	 * @since 1.2.0
 	 */
 	public function load_theme_compat_features() {
 		// Get currently active theme and child theme
@@ -476,6 +724,17 @@ class FluidCheckout {
 
 		foreach ( $theme_slugs as $theme_slug ) {
 			// Maybe skip compat file
+			/**
+			 * Filters whether to load a theme compatibility class.
+			 *
+			 * The dynamic portion of the hook name, `$theme_slug`, refers to the active theme
+			 * directory name from `get_template()` or `get_stylesheet()`. Return boolean `true` to
+			 * load the compatibility file. Any other value skips it.
+			 *
+			 * @since 2.0.5
+			 *
+			 * @param bool $value Value to filter. Default true.
+			 */
 			if ( true !== apply_filters( 'fc_enable_compat_theme_' . $theme_slug, true ) ) { continue; }
 
 			// Get current theme's compatibility file name
@@ -512,8 +771,6 @@ class FluidCheckout {
 
 	/**
 	 * Check if Woocommerce is active on a single install or network wide.
-	 *
-	 * @since 1.0.0
 	 */
 	public function is_woocommerce_activated() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -540,7 +797,6 @@ class FluidCheckout {
 	 * Check if a plugin is installed on a single install or network wide.
 	 * 
 	 * @param  string  $plugin_file   The plugin file name.
-	 * @since 3.0.0
 	 */
 	public function is_plugin_installed( $plugin_file ) {
 		$is_installed = file_exists( trailingslashit( WP_PLUGIN_DIR ) . $plugin_file ) || $this->is_plugin_activated( $plugin_file );
@@ -551,7 +807,6 @@ class FluidCheckout {
 	 * Check if a plugin is active on a single install or network wide.
 	 * 
 	 * @param  string  $plugin_file   The plugin file name.
-	 * @since 3.0.0
 	 */
 	public function is_plugin_activated( $plugin_file ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -562,8 +817,6 @@ class FluidCheckout {
 
 	/**
 	 * Check if Fluid Checkout PRO is installed on a single install or network wide.
-	 *
-	 * @since 3.0.0
 	 */
 	public function is_pro_installed() {
 		return $this->is_plugin_installed( 'fluid-checkout-pro/fluid-checkout-pro.php' );
@@ -571,8 +824,6 @@ class FluidCheckout {
 
 	/**
 	 * Check if Fluid Checkout PRO is active on a single install or network wide.
-	 *
-	 * @since 1.5.0
 	 */
 	public function is_pro_activated() {
 		return $this->is_plugin_activated( 'fluid-checkout-pro/fluid-checkout-pro.php' );
@@ -582,7 +833,6 @@ class FluidCheckout {
 
 	/**
 	 * Display a admin notice regarding the need for WooCommerce to be active.
-	 * @since  1.2.0
 	 * @param  array  $notices  Admin notices from the plugin.
 	 */
 	public function add_woocommerce_required_notice( $notices = array() ) {
@@ -613,7 +863,7 @@ class FluidCheckout {
 			'name'        => 'woocommerce_required',
 			'error'       => true,
 			'description' => $description,
-			'dismissable' => false,
+			'dismissible' => false,
 		);
 
 		return $notices;

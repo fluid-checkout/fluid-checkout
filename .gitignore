@@ -44,6 +44,11 @@ vendor-dev
 # Local symlink to shared standards repo (see README-DEV.md)
 fluid-checkout-standards
 
+# Hook docs workflow workspace. Generated on CI; not part of the plugin.
+data/
+wp-hooks-generator/
+fluid-checkout-docs/
+
 # Git files
 .git
 .git/**

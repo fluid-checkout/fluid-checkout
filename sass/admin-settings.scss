@@ -1,0 +1,29 @@
+// ------------------------------------
+// IMPORT ABSTRACT
+// ------------------------------------
+@import
+	"abstract/_all-early",
+	"abstract/_all",
+	"abstract/variables-admin",
+	"abstract/mixin-admin-settings-focus",
+	"abstract/variables-tom-select-admin",
+	"abstract/variables-tom-select";
+
+
+
+
+
+// ------------------------------------
+// IMPORT STYLES
+// ------------------------------------
+@import
+	"admin/__imports-admin-settings",
+	"partials/tom-select-control",
+	"partials/tom-select-dropdown",
+	"partials/tom-select-multi";
+
+
+
+.ts-dropdown.fc-settings-ts-dropdown {
+	z-index: $fc-settings-tom-select-dropdown-z-index !important; // Stack above preview drawers and the fixed save bar
+}

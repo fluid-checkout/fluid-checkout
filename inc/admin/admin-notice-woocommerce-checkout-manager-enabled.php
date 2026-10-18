@@ -32,10 +32,10 @@ class FluidCheckout_AdminNotices_WooCommmerceCheckoutManager_Enabled extends Flu
 
 		// Get plugin file path
 		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . $plugin_path_name;
-		
+
 		// Bail if plugin file does not exist
 		if ( ! file_exists( $plugin_file ) ) { return false; }
-		
+
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		return is_plugin_active( $plugin_path_name ) && class_exists( 'QuadLayers\WOOCCM\Plugin' );
 	}
@@ -61,7 +61,7 @@ class FluidCheckout_AdminNotices_WooCommmerceCheckoutManager_Enabled extends Flu
 			'title'          => __( 'The plugin WooCommerce Checkout Manager by Quadlayers is not compatible with Fluid Checkout', 'fluid-checkout' ),
 			// translators: %s: Documentation link.
 			'description'    => sprintf( __( 'Some features of WooCommerce Checkout Manager by Quadlayers might not work as expected when using it with Fluid Checkout. Read <a href="%s">our documentation</a> for more information and alternative solutions.', 'fluid-checkout' ), $docs_link ),
-			'dismissable'    => true,
+			'dismissible'    => true,
 			'error'          => true,
 			'actions'        => array(
 				sprintf( '<a href="%s" class="button button-primary">%s</a>', $docs_link, __( 'Read documentation', 'fluid-checkout' ) ),
