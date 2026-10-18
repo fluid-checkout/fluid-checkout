@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * CPT-backed settings profiles with lazy load, wp_cache, and get_option BC via pre_option.
  */
-class FluidCheckout_Settings extends FluidCheckout {
+class FluidCheckout_Settings extends FluidCheckout_Profile_Storage {
 
 	/**
 	 * Settings profile post type.
@@ -51,15 +51,6 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * @var bool
 	 */
 	private $pre_option_registered = false;
-
-	/**
-	 * Runtime callback for `fc_settings_context_profile`, removed before the next one is added.
-	 *
-	 * Intentionally private. Only `set_context_profile()` should replace this callback.
-	 *
-	 * @var callable|null
-	 */
-	private $context_profile_callback = null;
 
 	/**
 	 * Whether a profile write is already in progress.
@@ -501,202 +492,50 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 
 	/**
-	 * Get the active profile slug from the options pointer, bypassing pre_option filters.
+	 * Get the post type that stores the settings profiles.
 	 */
-	public function get_active_profile_slug() {
-		$slug = $this->get_raw_option( self::ACTIVE_PROFILE_OPTION, '' );
-		$slug = is_string( $slug ) ? sanitize_title( $slug ) : '';
-
-		return $slug;
+	public function get_profile_post_type() {
+		return self::PROFILE_POST_TYPE;
 	}
 
 	/**
-	 * Set the active profile slug.
-	 *
-	 * @param  string  $slug  Profile slug.
+	 * Get the option key that holds the active settings profile slug.
 	 */
-	public function set_active_profile( $slug ) {
-		$slug = sanitize_title( (string) $slug );
-		$this->update_raw_option( self::ACTIVE_PROFILE_OPTION, $slug, false );
-		$this->invalidate_cache();
+	public function get_active_profile_option() {
+		return self::ACTIVE_PROFILE_OPTION;
 	}
 
 	/**
-	 * Get the request context profile slug from the filter, or empty when none.
+	 * Get the object cache group for the settings profile values.
 	 */
-	public function get_context_profile_slug() {
+	public function get_cache_group() {
+		return self::CACHE_GROUP;
+	}
+
+	/**
+	 * Get the name of the hook that sets the settings context profile slug for the current request.
+	 */
+	public function get_context_profile_hook_name() {
+		return 'fc_settings_context_profile';
+	}
+
+	/**
+	 * Get the settings context profile slug requested for the current request, which might not exist.
+	 */
+	public function get_requested_context_profile_slug() {
 		/**
 		 * Filters the settings profile slug to overlay for the current request.
 		 *
 		 * @since 5.0.0
 		 */
-		$slug = apply_filters( 'fc_settings_context_profile', null );
-		$slug = is_string( $slug ) ? sanitize_title( $slug ) : '';
-
-		// Ignore invalid or missing context profiles
-		if ( '' === $slug || null === $this->get_profile_post_id_by_slug( $slug ) ) {
-			return '';
-		}
-
-		return $slug;
+		return apply_filters( 'fc_settings_context_profile', null );
 	}
 
 	/**
-	 * Set the context profile slug for the current request via a one-off filter callback.
-	 * Prefer hooking `fc_settings_context_profile` from feature code instead.
-	 *
-	 * @param  string|null  $slug  Profile slug or null to clear.
+	 * Get the default settings values, which the settings profile values are merged into.
 	 */
-	public function set_context_profile( $slug ) {
-		$slug = null === $slug ? '' : sanitize_title( (string) $slug );
-
-		// Remove only the previous runtime setter so other callbacks stay registered
-		if ( is_callable( $this->context_profile_callback ) ) {
-			remove_filter( 'fc_settings_context_profile', $this->context_profile_callback, 10 );
-			$this->context_profile_callback = null;
-		}
-
-		// Overlay a profile for the rest of this request
-		if ( '' !== $slug ) {
-			$this->context_profile_callback = function() use ( $slug ) {
-				return $slug;
-			};
-			add_filter( 'fc_settings_context_profile', $this->context_profile_callback, 10 );
-		}
-
-		$this->invalidate_effective_cache();
-	}
-
-
-
-	/**
-	 * Get the profile values map for a slug.
-	 *
-	 * @param  string  $slug  Profile slug.
-	 */
-	public function get_profile_values( $slug ) {
-		$slug = sanitize_title( (string) $slug );
-
-		// Bail if slug is empty
-		if ( '' === $slug ) { return array(); }
-
-		$cache_key = 'payload:' . $slug;
-		$cached = wp_cache_get( $cache_key, self::CACHE_GROUP );
-
-		// Return cached payload when available
-		if ( false !== $cached && is_array( $cached ) ) {
-			return $cached;
-		}
-
-		$post_id = $this->get_profile_post_id_by_slug( $slug );
-
-		// Bail if profile post is missing
-		if ( null === $post_id ) {
-			wp_cache_set( $cache_key, array(), self::CACHE_GROUP );
-			return array();
-		}
-
-		$post = get_post( $post_id );
-
-		// Bail if post is unreadable
-		if ( ! $post || self::PROFILE_POST_TYPE !== $post->post_type ) {
-			wp_cache_set( $cache_key, array(), self::CACHE_GROUP );
-			return array();
-		}
-
-		// Unserialize profile payload without allowing object instantiation
-		$raw_values = $post->post_content;
-		if ( is_string( $raw_values ) ) {
-			$values = unserialize( $raw_values, array( 'allowed_classes' => false ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize
-		} else {
-			$values = maybe_unserialize( $raw_values );
-		}
-
-		// Fail soft to empty map on invalid payload
-		if ( ! is_array( $values ) ) {
-			$values = array();
-		}
-
-		wp_cache_set( $cache_key, $values, self::CACHE_GROUP );
-
-		return $values;
-	}
-
-	/**
-	 * Save a profile values map by slug.
-	 *
-	 * @param  string  $slug    Profile slug.
-	 * @param  array   $values  Option key => value map.
-	 */
-	public function save_profile_values( $slug, $values ) {
-		$slug = sanitize_title( (string) $slug );
-
-		// Bail if slug is empty
-		if ( '' === $slug ) { return false; }
-
-		$values = is_array( $values ) ? $values : array();
-		$post_id = $this->get_profile_post_id_by_slug( $slug );
-		$post_content = serialize( $values ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize -- Intentional for CPT post_content payload.
-
-		// Create the profile post without the payload. `wp_insert_post()` runs `content_save_pre`, which kses and slashes would corrupt a serialized map.
-		if ( null === $post_id ) {
-			$post_id = wp_insert_post(
-				array(
-					'post_type'    => self::PROFILE_POST_TYPE,
-					'post_status'  => 'publish',
-					'post_title'   => $slug,
-					'post_name'    => $slug,
-					'post_content' => '',
-				),
-				true
-			);
-		}
-
-		// Bail if the profile post could not be created
-		if ( is_wp_error( $post_id ) || ! $post_id ) {
-			return false;
-		}
-
-		$written = $this->write_profile_post_content( (int) $post_id, $post_content );
-
-		// Bail if the payload could not be stored
-		if ( ! $written ) { return false; }
-
-		$this->invalidate_cache_for_slug( $slug );
-
-		// Bail if the stored payload does not round-trip, so callers do not treat a corrupt write as saved
-		$stored = $this->get_profile_values( $slug );
-		if ( serialize( $stored ) !== serialize( $values ) ) { // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Write a profile payload directly, bypassing post content filters.
-	 *
-	 * @param  int     $post_id       Profile post ID.
-	 * @param  string  $post_content  Serialized option map.
-	 */
-	public function write_profile_post_content( $post_id, $post_content ) {
-		global $wpdb;
-
-		$updated = $wpdb->update(
-			$wpdb->posts,
-			array(
-				'post_content' => $post_content,
-			),
-			array(
-				'ID' => $post_id,
-			),
-			array( '%s' ),
-			array( '%d' )
-		);
-
-		clean_post_cache( $post_id );
-
-		return false !== $updated;
+	public function get_default_values() {
+		return $this->get_default_option_values();
 	}
 
 
@@ -716,69 +555,13 @@ class FluidCheckout_Settings extends FluidCheckout {
 	 * Get the effective values map of the stored settings profiles for the current request (context overlay on active), cached.
 	 */
 	public function get_stored_effective_values() {
-		$active_slug = $this->get_active_profile_slug();
-		$context_slug = $this->get_context_profile_slug();
-		$context_key = '' !== $context_slug ? $context_slug : 'none';
-		$cache_key = 'effective:' . ( '' !== $active_slug ? $active_slug : 'none' ) . ':' . $context_key;
+		// Get effective values of the stored settings profiles
+		$effective = parent::get_stored_effective_values();
 
-		$cached = wp_cache_get( $cache_key, self::CACHE_GROUP );
-
-		// Return cached effective map when available
-		if ( false !== $cached && is_array( $cached ) ) {
-			$this->maybe_register_pre_option_for_keys( array_keys( $cached ) );
-			return $cached;
-		}
-
-		$defaults = $this->get_default_option_values();
-		$effective = is_array( $defaults ) ? $defaults : array();
-
-		// Overlay active profile when available
-		if ( '' !== $active_slug ) {
-			$active_values = $this->get_profile_values( $active_slug );
-			if ( ! empty( $active_values ) ) {
-				$effective = array_merge( $effective, $active_values );
-			}
-		}
-
-		// Overlay sparse context profile when available
-		if ( '' !== $context_slug ) {
-			$context_values = $this->get_profile_values( $context_slug );
-			if ( ! empty( $context_values ) ) {
-				$effective = array_merge( $effective, $context_values );
-			}
-		}
-
-		wp_cache_set( $cache_key, $effective, self::CACHE_GROUP );
+		// Serve the loaded keys through `pre_option`
 		$this->maybe_register_pre_option_for_keys( array_keys( $effective ) );
 
 		return $effective;
-	}
-
-
-
-	/**
-	 * Update values on the active profile (merge into existing payload).
-	 *
-	 * @param  array  $values  Option key => value map to merge.
-	 */
-	public function update_active_profile_values( $values ) {
-		$values = is_array( $values ) ? $values : array();
-
-		// Bail if nothing to save
-		if ( empty( $values ) ) { return false; }
-
-		$active_slug = $this->get_active_profile_slug();
-
-		// Maybe create the default profile when none is active
-		if ( '' === $active_slug ) {
-			$active_slug = 'default';
-			$this->set_active_profile( $active_slug );
-		}
-
-		$current = $this->get_profile_values( $active_slug );
-		$merged = array_merge( is_array( $current ) ? $current : array(), $values );
-
-		return $this->save_profile_values( $active_slug, $merged );
 	}
 
 
@@ -898,8 +681,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 		if ( ! $is_managed ) {
 			$active_slug = $this->get_active_profile_slug();
 			$context_slug = $this->get_context_profile_slug();
-			$cache_key = 'effective:' . ( '' !== $active_slug ? $active_slug : 'none' ) . ':' . ( '' !== $context_slug ? $context_slug : 'none' );
-			$cached = wp_cache_get( $cache_key, self::CACHE_GROUP );
+			$cached = wp_cache_get( $this->get_effective_cache_key( $active_slug, $context_slug ), self::CACHE_GROUP );
 
 			if ( false !== $cached && is_array( $cached ) && array_key_exists( $option, $cached ) ) {
 				return $cached[ $option ];
@@ -985,85 +767,14 @@ class FluidCheckout_Settings extends FluidCheckout {
 
 
 	/**
-	 * Get the profile post ID for a slug, or null when missing.
-	 *
-	 * @param  string  $slug  Profile slug.
-	 */
-	public function get_profile_post_id_by_slug( $slug ) {
-		$slug = sanitize_title( (string) $slug );
-
-		// Bail if slug is empty
-		if ( '' === $slug ) { return null; }
-
-		$posts = get_posts(
-			array(
-				'name'             => $slug,
-				'post_type'        => self::PROFILE_POST_TYPE,
-				'post_status'      => array( 'publish', 'private', 'draft' ),
-				'posts_per_page'   => 1,
-				'fields'           => 'ids',
-				'suppress_filters' => true,
-			)
-		);
-
-		if ( empty( $posts ) ) {
-			return null;
-		}
-
-		return (int) $posts[0];
-	}
-
-
-
-	/**
-	 * Invalidate all settings profile cache entries.
+	 * Invalidate all settings profile cache entries, including the default values.
 	 */
 	public function invalidate_cache() {
+		// Delete cached default values
 		wp_cache_delete( 'default_option_values', self::CACHE_GROUP );
 
-		// Object cache group flush when supported
-		if ( function_exists( 'wp_cache_flush_group' ) ) {
-			wp_cache_flush_group( self::CACHE_GROUP );
-			return;
-		}
-
-		// Fall back to deleting known keys for the active and context profiles
-		$active_slug = $this->get_active_profile_slug();
-		$context_slug = $this->get_context_profile_slug();
-		$this->invalidate_cache_for_slug( $active_slug );
-		if ( '' !== $context_slug ) {
-			$this->invalidate_cache_for_slug( $context_slug );
-		}
-		$this->invalidate_effective_cache();
-	}
-
-	/**
-	 * Invalidate cache entries for a profile slug.
-	 *
-	 * @param  string  $slug  Profile slug.
-	 */
-	public function invalidate_cache_for_slug( $slug ) {
-		$slug = sanitize_title( (string) $slug );
-
-		// Bail if slug is empty
-		if ( '' === $slug ) { return; }
-
-		wp_cache_delete( 'payload:' . $slug, self::CACHE_GROUP );
-		$this->invalidate_effective_cache();
-	}
-
-	/**
-	 * Invalidate effective merged maps.
-	 */
-	public function invalidate_effective_cache() {
-		$active_slug = $this->get_active_profile_slug();
-		$active_key = '' !== $active_slug ? $active_slug : 'none';
-		$context_slug = $this->get_context_profile_slug();
-		$context_key = '' !== $context_slug ? $context_slug : 'none';
-
-		wp_cache_delete( 'effective:' . $active_key . ':none', self::CACHE_GROUP );
-		wp_cache_delete( 'effective:' . $active_key . ':' . $context_key, self::CACHE_GROUP );
-		wp_cache_delete( 'effective:none:none', self::CACHE_GROUP );
+		// Delete cached settings profile values
+		parent::invalidate_cache();
 	}
 
 

@@ -309,6 +309,7 @@ class FluidCheckout {
 	 * Load settings manager.
 	 */
 	public function load_settings() {
+		require_once self::$directory_path . 'inc/abstract-profile-storage.php';
 		require_once self::$directory_path . 'inc/settings.php';
 	}
 
