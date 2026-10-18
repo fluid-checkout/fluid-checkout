@@ -11,7 +11,7 @@ class FluidCheckout_Settings extends FluidCheckout {
 	/**
 	 * Settings profile post type.
 	 */
-	const PROFILE_POST_TYPE = 'fc_settings_profile';
+	const PROFILE_POST_TYPE = 'settings';
 
 	/**
 	 * Option key for the active profile slug.
