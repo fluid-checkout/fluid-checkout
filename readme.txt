@@ -337,6 +337,7 @@ The plugin provides widget areas in strategic positions on the checkout page for
 
 = Unreleased =
 
+* Added: Search icon to the Fluid Checkout icon font.
 * Added: Address search setting on the Address book tab to choose how many saved addresses are required before the search field is shown.
 * Improved: Use logged-in preview mode on the Address book settings tab so saved addresses are visible in the page preview.
 * Improved: Show a grey outline on the Guest and Logged in preview mode field when it changes automatically for a settings tab.
